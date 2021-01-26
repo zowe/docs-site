@@ -48,11 +48,9 @@ The following steps outline the overall process to onboard a REST service with t
 
 4. [Registering your service with API ML](#registering-your-service-with-api-ml)
 
-5. [Adding API documentation](#adding-api-documentation)
+5. (Optional) [Validating the discoverability of your API service by the Discovery Service](#validating-the-discoverability-of-your-api-service-by-the-discovery-service)
 
-6. (Optional) [Validating your API service discoverability](#validating-the-discoverability-of-your-api-service-by-the-discovery-service)
-
-7. (Optional) [Troubleshooting](#troubleshooting)
+6. (Optional) [Troubleshooting](#troubleshooting)
     * [Log messages during registration problems](#log-messages-during-registration-problems)
 
 ## Prerequisites
@@ -105,7 +103,7 @@ Use the following procedure to use _Gradle_ as your build automation system.
     implementation "org.zowe.apiml.sdk:onboarding-enabler-java:$zoweApimlVersion"
     implementation "org.zowe.apiml.sdk:common-service-core:$zoweApimlVersion"
     ```
-    **Note:** The published artifact from the Zowe Artifactory also contains the enabler dependencies from other software packages. If you are using an artifactory other than Zowe, add also the following dependencies in your service `build.gradle` script:
+    The published artifact from the Zowe Artifactory also contains the enabler dependencies from other software packages. If you are using an artifactory other than Zowe, add also the following dependencies in your service `build.gradle` script:
 
     ```gradle
     implementation libraries.eureka_client
@@ -141,8 +139,6 @@ Use the following procedure if you use _Maven_ as your build automation system.
             </snapshots>
         </repository>
     </repositories>
-    ```
-   
     ```
     **Tip:** If you want to use snapshot version, replace libs-release with libs-snapshot in the repository url and change snapshots->enabled to true.
 
@@ -180,6 +176,7 @@ are written in `${parameterValue}` format. For your service configuration file, 
  description: Sample API ML REST Service
  baseUrl: https://${samplehost}:${sampleport}/${sampleservice}
  serviceIpAddress: ${sampleHostIpAddress}
+ preferIpAddress: false
 
  homePageRelativeUrl: /application/home
  statusPageRelativeUrl: /application/info
@@ -199,10 +196,16 @@ authentication:
 
  apiInfo:
      - apiId: org.zowe.sampleservice
-       version: v1
+       version: 1.0.0
        gatewayUrl: api/v1
        swaggerUrl: http://${sampleServiceSwaggerHost}:${sampleServiceSwaggerPort}/sampleservice/api-doc
        doumentationUrl: http://
+     - apiId: org.zowe.sampleservice
+       version: 2.0.0
+       gatewayUrl: api/v2
+       swaggerUrl: http://${sampleServiceSwaggerHost}:${sampleServiceSwaggerPort}/sampleservice/api-doc?group=api-v2
+       documentationUrl: http://
+       defaultApi: true
  catalog:
      tile:
          id: sampleservice
@@ -214,7 +217,6 @@ authentication:
     enabled: true
     verifySslCertificatesOfServices: true
     protocol: TLSv1.2
-    ciphers: TLS_RSA_WITH_AES_128_CBC_SHA, TLS_DHE_RSA_WITH_AES_256_CBC_SHA,TLS_ECDH_RSA_WITH_AES_128_CBC_SHA256,TLS_ECDH_RSA_WITH_AES_256_CBC_SHA384,TLS_ECDH_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDH_RSA_WITH_AES_256_GCM_SHA384,TLS_ECDH_ECDSA_WITH_AES_128_CBC_SHA256,TLS_ECDH_ECDSA_WITH_AES_256_CBC_SHA384,TLS_ECDH_ECDSA_WITH_AES_128_GCM_SHA256,TLS_ECDH_ECDSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256,TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384,TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256,TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384,TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384,TLS_EMPTY_RENEGOTIATION_INFO_SCSV
     keyAlias: localhost
     keyPassword: password
     keyStore: keystore/localhost.keystore.p12
@@ -293,12 +295,16 @@ The onboarding configuration parameters are broken down into the following group
 
      `protocol://host:port/servicename`
 
+    **Note:** Do not end `baseUrl` with a trailing `/`. This will cause a malformed URL if any of the above administrative endpoints begin with a `/`. It is expected that each administrative endpoint begins with a `/`. Warnings will be logged if this recommendation is not followed.
+
 *  **serviceIpAddress** (Optional)
 
-
-    This parameter specifies the IP address of the service and can be provided by system administrator in externalized service configuration.
+    Specifies the service IP address and can be provided by a system administrator in the externalized service configuration.
     If this parameter is not present in the configuration file or is not set as a service context parameter, it will be resolved from the hostname part of the `baseUrl`.
 
+* **preferIpAddress** (Optional)
+
+    Set the value of the parameter to "true" if you want to advertise a service IP address instead of its hostname.
 
 ### Administrative endpoints
 
@@ -362,6 +368,7 @@ apiInfo:
     gatewayUrl: api/v1
     swaggerUrl: http://localhost:10021/sampleservice/api-doc
     documentationUrl: http://your.service.documentation.url
+    defaultApi: true
 ```
 
 where:
@@ -389,6 +396,11 @@ where:
 * **apiInfo.documentationUrl** (Optional)
 
      specifies the link to the external documentation. A link to the external documentation can be included along with the Swagger documentation.
+
+* **apiInfo.defaultApi** (Optional)
+
+    specifies that this API is the default one shown in the API Catalog. If no apiInfo fields have `defaultApi` set to `true`, the default API is the one
+    with the highest api `version`.
 
 
 ### API routing information
@@ -544,49 +556,6 @@ authentication:
     This parameter specifies a service APPLID.
     This parameter is valid only for `httpBasicPassTicket` authentication scheme.
     
-### API info
-
-REST services can provide multiple APIs. Add API info parameters for each API that your service wants to expose on the API ML.
-
-The following snippet presents the information properties of a single API:
-
-**Example:**
-
-```
-apiInfo:
-    - apiId: org.zowe.sampleservice
-    version: v1
-    gatewayUrl: api/v1
-    swaggerUrl: http://localhost:10021/sampleservice/api-doc
-    documentationUrl: http://your.service.documentation.url
-```
-
-where:
-* **apiInfo.apiId**
-
-    specifies the API identifier that is registered in the API ML installation.
-        The API ID uniquely identifies the API in the API ML.
-         The `apiId` can be used to locate the same APIs that are provided by different service instances. The API developer defines this ID.
-        The `apiId` must be a string of up to 64 characters
-        that uses lowercase alphanumeric characters and a dot: `.` .
-
-* **apiInfo.version**
-
-    specifies the api `version`. This parameter is used to correctly retrieve the API documentation according to requested version of the API.
-
-* **apiInfo.gatewayUrl**
-
-    specifies the base path at the API Gateway where the API is available.
-    Ensure that this value is the same path as the `gatewayUrl` value in the `routes` sections that apply to this API.
-
-* **apiInfo.swaggerUrl** (Optional)
-
-     specifies the Http or Https address where the Swagger JSON document is available.
-
-* **apiInfo.documentationUrl** (Optional)
-
-     specifies the link to the external documentation. A link to the external documentation can be included along with the Swagger documentation.    
-
 ### API Security
 
 REST services onboarded with the API ML act as both a client and a server. When communicating to API ML Discovery service, a REST service acts as a client. When the API ML Gateway is routing requests to a service, the REST service acts as a server.
@@ -644,20 +613,9 @@ TLS/SSL configuration consists of the following parameters:
 
   This parameter specifies the truststore type. The default for this parameter is PKCS12.
 
-* **ciphers:** (Optional)
-
-    This parameter specifies the recommended ciphers.
-
-    ```
-    TLS_RSA_WITH_AES_128_CBC_SHA, TLS_DHE_RSA_WITH_AES_256_CBC_SHA,TLS_ECDH_RSA_WITH_AES_128_CBC_SHA256,TLS_ECDH_RSA_WITH_AES_256_CBC_SHA384,TLS_ECDH_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDH_RSA_WITH_AES_256_GCM_SHA384,TLS_ECDH_ECDSA_WITH_AES_128_CBC_SHA256,TLS_ECDH_ECDSA_WITH_AES_256_CBC_SHA384,TLS_ECDH_ECDSA_WITH_AES_128_GCM_SHA256,TLS_ECDH_ECDSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256,TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384,TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256,TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384,TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384,TLS_EMPTY_RENEGOTIATION_INFO_SCSV
-    ```
-  
-    To secure the transfer of data, TLS/SSL uses one or more cipher suites. A cipher suite is a combination of authentication, encryption, and message authentication code (MAC) algorithms. Ciphers are used during the negotiation of security settings for a TLS/SSL connection as well as for the transfer of data.
-
 **Notes:**
 
 * Ensure that you define both the key store and the trust store even if your server is not using an Https port.
-* Currently `ciphers` is not used. It is optional and serves as a place holder only.
 
 ### SAF Keyring configuration
 
@@ -865,10 +823,14 @@ The following code block is a full example of a context listener class implement
     }
 
 ## Validating the discoverability of your API service by the Discovery Service
-
 Once you are able to build and start your service successfully, you can use the option of validating that your service is registered correctly with the API ML Discovery Service.
 
-Validating your service registration can be done in the API ML Discovery Service or the API ML Catalog. If your service appears in the Discovery Service UI but is not visible in the API Catalog, check to make sure that your configuration settings are correct.
+**Follow these steps:**
+  1. [Validate successful onboarding](./onboard-overview.md#validating-successful-onboarding)
+ 
+  2. Check that you can access your API service endpoints through the Gateway.
+
+  3. (Optional) Check that you can access your API service endpoints directly outside of the Gateway.
 
 Specific addresses and user credentials for the individual API ML components depend on your target runtime environment.
 
@@ -877,57 +839,6 @@ for both `username` and `password`. If API ML was installed by system administra
 with actual addresses of API ML components and the respective user credentials.
 
 **Tip:** Wait for the Discovery Service to discover your service. This process may take a few minutes after your service was successfully started.
-
-**Follow these steps:**
-
- 1. Use the Http `GET` method in the following format to query the Discovery Service for your service instance information:
-
-    ```
-    http://{eureka_hostname}:{eureka_port}/eureka/apps/{serviceId}
-    ```
-
- 2. Check your service metadata.
-
-    **Response example:**
-
-    ```xml
-    <application>
-        <name>{serviceId}</name>
-        <instanceId>{hostname}:{serviceId}:{port}</instanceId>
-        <hostName>{hostname}</hostName>
-        <app>{serviceId}</app>
-        <ipAddr>{ipAddress}</ipAddr>
-        <status>UP</status>
-        <port enabled="false">{port}</port>
-        <securePort enabled="true">{port}</securePort>
-        <vipAddress>{serviceId}</vipAddress>
-        <secureVipAddress>{serviceId}</secureVipAddress>
-        <metadata>
-                <apiml.service.description>Sample API service showing how to onboard the service</apiml.service.description>
-                <apiml.routes.api__v1.gatewayUrl>api/v1</apiml.routes.api__v1.gatewayUrl>
-                <apiml.catalog.tile.version>1.0.1</apiml.catalog.tile.version>
-                <apiml.routes.ws__v1.serviceUrl>/sampleclient/ws</apiml.routes.ws__v1.serviceUrl>
-                <apiml.routes.ws__v1.gatewayUrl>ws/v1</apiml.routes.ws__v1.gatewayUrl>
-                <apiml.catalog.tile.description>Applications which demonstrate how to make a service integrated to the API Mediation Layer ecosystem</apiml.catalog.tile.description>
-                <apiml.service.title>Sample Service ©</apiml.service.title>
-                <apiml.routes.ui__v1.gatewayUrl>ui/v1</apiml.routes.ui__v1.gatewayUrl>
-                <apiml.apiInfo.0.apiId>org.zowe.sampleclient</apiml.apiInfo.0.apiId>
-                <apiml.apiInfo.0.gatewayUrl>api/v1</apiml.apiInfo.0.gatewayUrl>
-                <apiml.apiInfo.0.documentationUrl>https://www.zowe.org</apiml.apiInfo.0.documentationUrl>
-                <apiml.catalog.tile.id>samples</apiml.catalog.tile.id>
-                <apiml.routes.ui__v1.serviceUrl>/sampleclient</apiml.routes.ui__v1.serviceUrl>
-                <apiml.routes.api__v1.serviceUrl>/sampleclient/api/v1</apiml.routes.api__v1.serviceUrl>
-                <apiml.apiInfo.0.swaggerUrl>https://hostname/sampleclient/api-doc</apiml.apiInfo.0.swaggerUrl>
-                <apiml.catalog.tile.title>Sample API Mediation Layer Applications</apiml.catalog.tile.title>
-        </metadata>
-    </application>
-    ```
-
-  3. Check that your API service is displayed in the API Catalog and all information including API documentation is correct.
-
-  4. Check that you can access your API service endpoints through the Gateway.
-
-  5. (Optional) Check that you can access your API service endpoints directly outside of the Gateway.
 
 ## Troubleshooting
 

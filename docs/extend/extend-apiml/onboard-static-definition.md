@@ -175,6 +175,7 @@ services:
           swaggerUrl: http://localhost:8080/v2/swagger.json
           documentationUrl: https://petstore.swagger.io/
           version: 2.0.0
+          defaultApi: true
       customMetadata:
           yourqualifier:
               key1: value1
@@ -391,6 +392,11 @@ additionalServiceMetadata:
 
         (Optional) This parameter specifies the actual version of the API in [semantic versioning](https://semver.org/) format. This can be used when _swaggerUrl_ is not provided.
 
+    * **apiInfo.defaultApi**
+        
+        (Optional) This paraemeter specifics that the API is the default one to show in the API Catalog. If this not set to true for any API, or multiple APIs have it set to true,
+        then the default API becomes the API with the highest major version as seen in `apiInfo.version`.
+
 * **customMetadata**
 
    Custom metadata are described [here](custom-metadata.md).
@@ -468,15 +474,7 @@ The following procedure describes how to add your service to the API Mediation L
 
     **Tip:** Wait for the services to be ready. This process may take a few minutes.
 
-4.  Go to the following URL to reach the API Gateway (`port 10010`) and see the paths that are routed by the API Gateway. If the authentication is required and the default configuration provider on local instance is used the username is user and password user:
-
-    `https://localhost:10010/application/routes`
-
-    The following line should appear:
-
-    `/api/v2/petstore/**: "petstore"`
-
-    This line indicates that requests to relative gateway paths that start with `/api/v2/petstore/` are routed to the service with the service ID `petstore`.
+4.  [Validate successful onboarding](./onboard-overview.md#validating-successful-onboarding)
 
     You successfully defined your Java application if your service is running and you can access the service endpoints. The following example is the service endpoint for the sample application:
 
@@ -509,15 +507,7 @@ After you define and validate the service in YAML format, you are ready to add y
 
 4. Restart Zowe runtime or follow steps in section [(Optional) Reload the services definition after the update when the API Mediation Layer is already started](#optional-reload-the-services-definition-after-the-update-when-the-api-mediation-layer-is-already-started) which allows you to add your static API service to an already running Zowe.  
 
-5.  Go to the following URL to reach the API Gateway (default port 7554) and see the paths that are routed by the API Gateway:
-
-    `https://${zoweHostname}:${gatewayHttpsPort}/application/routes`
-
-    The following line should appear:
-
-    `/api/v2/petstore/**: "petstore"`
-
-    This line indicates that requests to the relative gateway paths that start with `/api/v2/petstore/` are routed to the service with service ID `petstore`.
+5.  [Validate successful onboarding](./onboard-overview.md#validating-successful-onboarding)
 
 You successfully defined your Java application if your service is running and you can access its endpoints. The endpoint displayed for the sample application is:
 ```
@@ -552,6 +542,12 @@ The following procedure enables you to refresh the API definitions after you cha
 
     ```
     httpie --cert=keystore/localhost/localhost.pem --verify=keystore/local_ca/localca.cer -j POST     https://localhost:10011/discovery/api/v1/staticApi
+    ```
+   
+    Alternatively, it is possible to use curl to issue the POST call if it is installed on your system:
+    
+    ```
+    curl -X POST --cert keystore/localhost/localhost.pem --cacert keystore/localhost/localhost.keystore.cer https://localhost:10011/discovery/api/v1/staticApi
     ```
 
 2. Check if your updated definition is effective.

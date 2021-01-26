@@ -8,25 +8,27 @@ From the Zowe Desktop, you can access Zowe applications.
 
 ### Accessing the Zowe Desktop
 
-From a supported browser, open the Zowe Desktop at `https://myhost:httpsPort/ZLUX/plugins/org.zowe.zlux.bootstrap/web/index.html`
+From a supported browser, open the Zowe Desktop at `https://{myhost}:{httpsPort}` or you can navigate to the direct Desktop URI at `https://{myhost}:{httpsPort}/ZLUX/plugins/org.zowe.zlux.bootstrap/web/`
     
-where:
+Where:
 
 -   *myHost* is the host on which you are running the Zowe Application Server.
--   *httpsPort* is the value that was assigned to *node.https.port* in `zluxserver.json`.
-    For example, if you run the Zowe Application Server on host *myhost* and the value that is assigned to *node.https.port* in `zluxserver.json` is 12345, you would specify `https://myhost:12345/ZLUX/plugins/org.zowe.zlux.bootstrap/web/index.html`.
+-   *httpsPort* is the value that was assigned to *node.https.port* in `server.json`.
+    For example, if you run the Zowe Application Server on host *myhost* and the value that is assigned to *node.https.port* in `server.json` is 12345, you would specify `https://myhost:12345/ZLUX/plugins/org.zowe.zlux.bootstrap/web/index.html`.
 
 
 ### Logging in and out of the Zowe Desktop
 
-1. To log in, enter your mainframe credentials in the **Username** and  **Password** fields.
+1. To log in, enter your TSO credentials in the **Username** and  **Password** fields.
 2. Press Enter. Upon authentication of your user name and password, the desktop opens.
 
-To log out, click the the avatar in the lower right corner and click **Sign Out**.
+To log out, click the User icon in the lower right corner and click **Sign Out**.
+
+<img src="../images/mvd/person.png">
 
 ### Changing user password
  
-1. Click the personalization panel icon. 
+1. Open the Preferences panel by clicking on the Preferences icon in the bottom right of the desktop.
 
 <img src="../images/mvd/settings.png">
   
@@ -42,14 +44,30 @@ To log out, click the the avatar in the lower right corner and click **Sign Out*
 
 ### Pinning applications to the task bar
 
-1. Click the Start menu.
+1. Click the Start menu in the bottom left corner of the home screen.
 2. Locate the application you want to pin.
-3. Right-click the on the application icon and select **Pin to taskbar**.
+3. Right-click the application icon and select **Pin to taskbar**.
+
+### Personalizing the Desktop
+
+1. Click the **Preferences icon** to open the Preferences panel.
+
+<img src="../images/mvd/settings.png">
+
+2. Click the **Personalization icon** to open the menu.
+
+<img src="../images/mvd/personalization.png">
+
+3. Drag an image into the wallpaper grid, or press the upload button, to upload a new Desktop wallpaper.
+4. To set a new theme color, select a color from the palette or hue. 
+5. Use the lightness swatch bar to adjust the lightness of the color. 
+- Adjusting the lightness will also change the lightness of secondary text.  
+6. Select a size (small, medium, or large) to adjust the scale of the Desktop UI. 
 
 ### Changing the desktop language
-Use the Languages setting in the personalization panel to change the desktop language. After you change the language and restart Zowe, desktop menus and text display in the specified language. Applications that support the specified desktop language also display in that language.
+Use the Languages setting in the Preferences panel to change the desktop language. After you change the language and restart Zowe, desktop menus and text display in the specified language. Applications that support the specified desktop language also display in that language.
 
-1. Click the personalization icon in the lower right corner.
+1. Click the Preferences icon in the lower right corner.
 2. Click **Languages**.
 3. In the **Languages** dialog, click a language, and then click **Apply**.
 4. When you are prompted, restart Zowe.
@@ -59,7 +77,7 @@ Use the Languages setting in the personalization panel to change the desktop lan
 Application plug-ins are applications that you can use to access the mainframe and to perform various tasks. Developers can create application plug-ins using a sample application as a guide. The following application plug-ins are installed by default:
 
 ### Hello World Sample
-The Hello World sample application plug-in for developers demonstrates how to create a dataservice and how to create an application plug-in using Angular.
+The Hello World sample application plug-in for developers demonstrates how to create a dataservice and how to create an application plug-in using Angular and using React.
 
 ### IFrame Sample
 The IFrame sample application plug-in for developers demonstrates how to embed pre-made webpages within the desktop as an application and how an application can request an action of another application (see the source code for more information).
@@ -77,7 +95,7 @@ The VT Terminal plug-in provides a user interface that emulates the basic functi
 The API Catalog plug-in lets you view API services that have been discovered by the API Mediation Layer. For more information about the API Mediation Layer, Discovery Service, and API Catalog, see [API Mediation Layer Overview](../getting-started/overview.md).
 
 ### Editor
-With the Zowe Editor you can create and edit files on the system that Zowe serves.
+With the Zowe Editor you can create and edit files and view datasets on the system that Zowe serves.
 
 ### Workflows
 From the Workflows application plug-in you can create, manage, and use z/OSMF workflows to manage your system.
@@ -107,7 +125,7 @@ Use this application to browse the MVS™ file system by using a high-level qual
 
 ## Using the Workflows application plug-in
 
-The Workflows application plug-in is available from the Zowe Deskstop Start menu. To launch Workflows, click the Start menu in the lower-left corner of the desktop and click the Workflows application plug-in icon. The **Users/Tasks Workflows** window opens.
+The Workflows application plug-in is available from the Zowe Desktop Start menu. To launch Workflows, click the Start menu in the lower-left corner of the desktop and click the Workflows application plug-in icon. The **Users/Tasks Workflows** window opens.
 
 ### Logging on to the system
 

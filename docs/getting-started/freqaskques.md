@@ -4,6 +4,7 @@ Check out the following FAQs to learn more about the purpose and function of Zow
 
 - [Zowe FAQ](#zowe-faq)
 - [Zowe CLI FAQ](#zowe-cli-faq)
+- [Zowe Explorer FAQ](#zowe-explorer-faq)
 
 ## Zowe FAQ
 
@@ -33,7 +34,7 @@ Zowe technology can be used by a variety of mainframe IT and non-IT professional
 
 <summary></summary>
 
-Zowe consists of several components. The primary languages are Java and JavaScript. Zowe CLI is written in TypeScript.
+Zowe consists of several components. The primary languages are Java and JavaScript. Zowe CLI and Desktop are written in TypeScript. ZSS is written in C, while the cross memory server is written in metal C.
 
 </details>
 
@@ -96,7 +97,38 @@ To get up and running with the Zowe CLI component quickly, see [Zowe CLI quick s
 
 <summary></summary>
 
-The primary prerequisites is Java on z/OS and the z/OS Management Facility enabled and configured. For a complete list of software requirements listed by component, see [System requirements](../user-guide/systemrequirements.md).
+Prerequisites vary by component used, but in most cases the primary prerequisites are Java and NodeJS on z/OS and the z/OS Management Facility enabled and configured. For a complete list of software requirements listed by component, see [System requirements](../user-guide/systemrequirements.md).
+
+</details>
+
+### What's the difference between using Zowe with or without Docker?  
+
+<Badge text="Technical Preview"/>
+
+<details class="zowe-faq">
+
+<summary></summary>
+
+Docker is a download option for Zowe that allows you to run certain Zowe server components outside of z/OS.
+The Docker image contains the Zowe components that do not have the requirement of having to run on z/OS: The App server, API Mediation Layer, and the USS/MVS/JES Explorers.
+
+Configurating components with Docker is similar to the procedures you would follow without Docker, however tasks such as installation and running with Docker are a bit different, as these tasks become Linux oriented, rather than utilizing Jobs and STCs.
+
+**NOTE:** z/OS is still required when using the Docker image. Depending on which components of Zowe you use, you'll still need to set up z/OS Management Facility as well as Zowe's ZSS and Cross memory servers.
+
+</details>
+
+### Is the Zowe CLI packaged within the Zowe Docker download?  
+
+<Badge text="Technical Preview"/>
+
+<details class="zowe-faq">
+
+<summary></summary>
+
+At this time, the Docker image referred to in this documentation contains only Zowe server components. It is possible to make a Docker image that contains the Zowe CLI, so additional Zowe content, such as the CLI, may have Docker as a distribution option later. 
+
+If you are interested in improvements such as this one, please be sure to express that interest to the Zowe community!
 
 </details>
 
@@ -223,7 +255,7 @@ You can install Zowe CLI using the following methods:
 <summary></summary>
 
 - You can get help for any command, action, or option in Zowe CLI by issuing the command 'zowe --help'.
-- For information about the available commands in Zowe CLI, see [Command Groups](../user-guide/cli-usingcli.md#zowe-cli-command-groups).
+- For information about the available commands in Zowe CLI, see [Command Groups](../user-guide/cli-usingcli.md#understanding-core-command-groups).
 - If you have questions, the [Zowe Slack space](https://openmainframeproject.slack.com/) is the place to ask our community!
 
 </details>
@@ -258,3 +290,112 @@ As a developer, you can extend Zowe CLI in the following ways:
 
 </details>
 
+## Zowe Explorer FAQ
+
+### Why might I use Zowe Explorer versus a traditional ISPF interface to perform mainframe tasks?
+
+<details class="zowe-faq">
+
+<summary></summary>
+
+The Zowe Explorer VSCode extension provides developers new to the mainframe with a modern UI, allowing you to access and work with the data set, USS, and job functionalities in a fast and streamlined manner. In addition, Zowe Explorer enables you to work with Zowe CLI profiles and issue TSO/MVS commands.
+
+</details>
+
+### How can I get started with Zowe Explorer?
+
+<details class="zowe-faq">
+
+<summary></summary>
+
+First of all, make sure you fulfill the following Zowe Explorer software requirements:
+
+- Get access to z/OSMF.
+- Install [Node.js](https://nodejs.org/en/download/) v8.0 or later.
+- Install [VSCode](https://code.visualstudio.com/).
+- Configure TSO/E address space services, z/OS data set, file REST interface, and z/OS jobs REST interface. For more information, see [z/OS Requirements](https://docs.zowe.org/stable/user-guide/systemrequirements-zosmf.html#z-os-requirements).
+
+Once the software requirements are fulfilled, create a Zowe Explorer profile.
+
+**Follow these steps:**
+
+1. Navigate to the explorer tree.
+2. Click the **+** button next to the **DATA SETS**, **USS**, or **JOBS** bar.
+3. Select the **Create a New Connection to z/OS** option.
+4. Follow the instructions, and enter all required information to complete the profile creation.
+
+You can also watch [Getting Started with Zowe Explorer](https://www.youtube.com/watch?v=G_WCsFZIWt4) to understand how to use the basic features of the extension.
+
+</details>
+
+### Where can I use Zowe Explorer?
+
+<details class="zowe-faq">
+
+<summary></summary>
+
+You can use Zowe Explorer either in [VSCode](https://marketplace.visualstudio.com/items?itemName=Zowe.vscode-extension-for-zowe) or in Theia. For more information about Zowe Explorer in Theia, see [the Theia Readme](https://github.com/zowe/vscode-extension-for-zowe/blob/master/docs/README-Theia.md).
+
+</details>
+
+### How do I get help with using Zowe Explorer?
+
+<details class="zowe-faq">
+
+<summary></summary>
+
+- Use [the Zowe Explorer channel](https://openmainframeproject.slack.com/archives/CUVE37Z5F) in Slack to ask the Zowe Explorer community for help.
+- Open a question or issue directly in [the Zowe Explorer GitHub repository](https://github.com/zowe/vscode-extension-for-zowe/issues).
+
+</details>
+
+### How can I use Secure Credential Store with Zowe Explorer?
+
+<details class="zowe-faq">
+
+<summary></summary>
+
+Activate the Secure Credential Store plug-in in Zowe Explorer.
+
+**Follow these steps:**
+
+1. Open Zowe Explorer.
+2. Navigate to the VSCode settings.
+3. Open Zowe Explorer Settings.
+4. Add the **Zowe-Plugin** value to the `Zowe Security: Credential Key` entry field.
+5. Restart VSCode.
+6. Create a profile.
+
+Your Zowe Explorer credentials are now stored securely.
+
+For more information, see [the Enabling Secure Credential Store page](https://docs.zowe.org/stable/user-guide/ze-profiles.html#enabling-secure-credential-store-with-zowe-explorer).
+
+</details>
+
+### How can I use FTP as my back-end service for Zowe Explorer?
+
+<details class="zowe-faq">
+
+<summary></summary>
+
+Check out the GitHub article about [the FTP extension](https://github.com/zowe/zowe-explorer-ftp-extension/) with the information on how to build, install, and use FTP as your back-end service for working with Unix files.
+
+</details>
+
+### How can I contribute to Zowe Explorer? 
+
+<details class="zowe-faq">
+
+<summary></summary>
+
+As a developer, you may contribute to Zowe Explorer in the following ways:
+
+- Build a Zowe Explorer extension.
+
+- Contribute code to core Zowe Explorer.
+
+- Fix bugs in Zowe Explorer, submit enhancement requests via GitHub issues, and raise your ideas with the community in Slack.
+
+   Note: For more information, see [Extending Zowe Explorer](https://github.com/zowe/vscode-extension-for-zowe/blob/master/docs/README-Extending.md).
+
+</details>

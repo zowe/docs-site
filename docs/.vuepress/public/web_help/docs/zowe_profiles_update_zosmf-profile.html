@@ -54,6 +54,22 @@ specify this option if you are not using an API mediation layer.</li>
 </ul>
 </li>
 </ul>
+<h4 id="options">Options</h4>
+<ul>
+<li><p><code>--encoding</code>  | <code>--ec</code> <em>(number)</em></p>
+<ul>
+<li>The encoding for download and upload of z/OS data set and USS files. The
+default encoding if not specified is 1047.</li>
+</ul>
+</li>
+<li><p><code>--responseTimeout</code>  | <code>--rto</code> <em>(number)</em></p>
+<ul>
+<li>The maximum amount of time in seconds the z/OSMF Files TSO servlet should run
+before returning a response. Any request exceeding this amount of time will be
+terminated and return an error. Allowed values: 5 - 600</li>
+</ul>
+</li>
+</ul>
 <h4 id="examples">Examples</h4>
 <ul>
 <li><p>Update a zosmf profile named &#39;zos123&#39; with a new username

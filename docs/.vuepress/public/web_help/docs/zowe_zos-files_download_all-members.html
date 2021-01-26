@@ -35,11 +35,25 @@ creates a folder structure based on the data set qualifiers. For example, the
 data set ibmuser.new.cntl&#39;s members are downloaded to ibmuser/new/cntl).</li>
 </ul>
 </li>
+<li><p><code>--encoding</code>  | <code>--ec</code> <em>(number)</em></p>
+<ul>
+<li>Download the file content with encoding mode, which means that data conversion
+is performed using the file encoding specified.</li>
+</ul>
+</li>
 <li><p><code>--extension</code>  | <code>-e</code> <em>(string)</em></p>
 <ul>
 <li>Save the local files with a specified file extension. For example, .txt. Or
 &quot;&quot; for no extension. When no extension is specified, .txt is used as the
 default file extension.</li>
+</ul>
+</li>
+<li><p><code>--fail-fast</code>  | <code>--ff</code> <em>(boolean)</em></p>
+<ul>
+<li><p>Set this option to false to continue downloading dataset members if one or more
+fail.</p>
+<p>Default value: true</p>
+</li>
 </ul>
 </li>
 <li><p><code>--max-concurrent-requests</code>  | <code>--mcr</code> <em>(number)</em></p>
@@ -69,6 +83,13 @@ letter case</p>
 <li>The volume serial (VOLSER) where the data set resides. You can use this option
 at any time. However, the VOLSER is required only when the data set is not
 cataloged on the system. A VOLSER is analogous to a drive name on a PC.</li>
+</ul>
+</li>
+<li><p><code>--responseTimeout</code>  | <code>--rto</code> <em>(number)</em></p>
+<ul>
+<li>The maximum amount of time in seconds the z/OSMF Files TSO servlet should run
+before returning a response. Any request exceeding this amount of time will be
+terminated and return an error. Allowed values: 5 - 600</li>
 </ul>
 </li>
 </ul>
@@ -116,6 +137,25 @@ specify this option if you are not using an API mediation layer.</li>
 <li><p><code>--zosmf-profile</code>  | <code>--zosmf-p</code> <em>(string)</em></p>
 <ul>
 <li>The name of a (zosmf) profile to load for this command execution.</li>
+</ul>
+</li>
+<li><p><code>--base-profile</code>  | <code>--base-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (base) profile to load for this command execution.</li>
+</ul>
+</li>
+</ul>
+<h4 id="base-connection-options">Base Connection Options</h4>
+<ul>
+<li><p><code>--token-type</code>  | <code>--tt</code> <em>(string)</em></p>
+<ul>
+<li>The type of token to get and use for the API. Omit this option to use the
+default token type, which is provided by &#39;zowe auth login&#39;.</li>
+</ul>
+</li>
+<li><p><code>--token-value</code>  | <code>--tv</code> <em>(string)</em></p>
+<ul>
+<li>The value of the token to pass to the API.</li>
 </ul>
 </li>
 </ul>

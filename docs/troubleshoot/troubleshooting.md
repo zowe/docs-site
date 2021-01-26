@@ -16,7 +16,11 @@ You can also find error messages and codes, must-gathers, and information about 
 
 ## Collecting data for Zowe problems
 
-Sometimes you cannot solve a problem by troubleshooting the symptoms. In such cases, you must collect diagnostic data. To collect diagnostic data about Zowe, see [Capturing diagnostics to assist problem determination](troubleshoot-diagnostics.md). 
+Sometimes you cannot solve a problem by troubleshooting the symptoms. In such cases, you must collect diagnostic data. To collect diagnostic data about Zowe, see [Capturing diagnostics to assist problem determination](troubleshoot-diagnostics.md).
+
+## Verifying a Zowe release's integrity
+
+Following a successful install of a Zowe release, the Zowe runtime directory should contain the code needed to launch and run Zowe. If the contents of the Zowe runtime directory have been modified then this may result in unpredictable behavior. To assist with this Zowe provides the ability to validate the integrity of a Zowe runtime directory, see [Verify Zowe runtime directory](./verify-fingerprint.md)
 
 ## Understanding the Zowe release
 

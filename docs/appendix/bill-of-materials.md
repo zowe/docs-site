@@ -1,3 +1,11 @@
+---
+meta:
+  - name: description
+    content: Zowe distributes a list of materials in its binaries.
+  - name: keywords
+    content: Zowe binaries
+---
+
 # Zowe Binaries - Bill of Materials
 
 The following materials are distributed with Zowe&trade; binaries:
@@ -50,10 +58,10 @@ The following materials are distributed with Zowe&trade; binaries:
 | files/zss.pax | Zowe ZSS Cross-Memory Server | [zss](https://github.com/zowe/zss) | [zss build scripts](https://github.com/zowe/zss/tree/master/build) |
 | install/zowe-check-prereqs.sh | Script to check required environment configuration(s) | [zowe-install-packaging](https://www.github.com/zowe/zowe-install-packaging) | [Zowe Install/Packaging Pipeline](https://github.com/zowe/zowe-install-packaging/blob/master/Jenkinsfile) |
 | install/zowe-install.sh | Script to initiate Zowe automated installation | [zowe-install-packaging/install](https://github.com/zowe/zowe-install-packaging/) | [Zowe Install/Packaging Pipeline](https://github.com/zowe/zowe-install-packaging/blob/master/Jenkinsfile) |
-| scripts/allocate-dataset.sh | Script to allocate a dataset | [zowe-install-packaging](https://github.com/zowe/zowe-install-packaging/shared/scripts/) | [Zowe Install/Packaging Pipeline](https://github.com/zowe/zowe-install-packaging/blob/master/Jenkinsfile) |
-| scripts/check-dataset-dcb.sh | Script to check Database DCB property | [zowe-install-packaging](https://github.com/zowe/zowe-install-packaging/shared/scripts/) | [Zowe Install/Packaging Pipeline](https://github.com/zowe/zowe-install-packaging/blob/master/Jenkinsfile) |
-| scripts/check-dataset-exist.sh | Script to check if a dataset exists | [zowe-install-packaging](https://github.com/zowe/zowe-install-packaging/shared/scripts/) | [Zowe Install/Packaging Pipeline](https://github.com/zowe/zowe-install-packaging/blob/master/Jenkinsfile) |
-| scripts/instance.template.env | Zowe Instance Template ENV Configuration | [zowe-install-packaging](https://github.com/zowe/zowe-install-packaging/scripts/) | [Zowe Install/Packaging Pipeline](https://github.com/zowe/zowe-install-packaging/blob/master/Jenkinsfile) |
+| scripts/allocate-dataset.sh | Script to allocate a dataset | [zowe-install-packaging](https://github.com/zowe/zowe-install-packaging/tree/master/shared/scripts/) | [Zowe Install/Packaging Pipeline](https://github.com/zowe/zowe-install-packaging/blob/master/Jenkinsfile) |
+| scripts/check-dataset-dcb.sh | Script to check Database DCB property | [zowe-install-packaging](https://github.com/zowe/zowe-install-packaging/tree/master/shared/scripts/) | [Zowe Install/Packaging Pipeline](https://github.com/zowe/zowe-install-packaging/blob/master/Jenkinsfile) |
+| scripts/check-dataset-exist.sh | Script to check if a dataset exists | [zowe-install-packaging](https://github.com/zowe/zowe-install-packaging/tree/master/shared/scripts/) | [Zowe Install/Packaging Pipeline](https://github.com/zowe/zowe-install-packaging/blob/master/Jenkinsfile) |
+| scripts/instance.template.env | Zowe Instance Template ENV Configuration | [zowe-install-packaging](https://github.com/zowe/zowe-install-packaging/tree/master/scripts/) | [Zowe Install/Packaging Pipeline](https://github.com/zowe/zowe-install-packaging/blob/master/Jenkinsfile) |
 | scripts/ocopyshr.clist | A CList to copy a USS file to a PDS member | [zowe-install-packaging](https://github.com/zowe/zowe-install-packaging/tree/master/scripts) | [Zowe Install/Packaging Pipeline](https://github.com/zowe/zowe-install-packaging/blob/master/Jenkinsfile) |
 | scripts/ocopyshr.sh | Script to copy a uss JCL file to a shared PDS | [zowe-install-packaging](https://github.com/zowe/zowe-install-packaging/tree/master/scripts) | [Zowe Install/Packaging Pipeline](https://github.com/zowe/zowe-install-packaging/blob/master/Jenkinsfile) |
 | scripts/opercmd | REXX file to issue z/OS console commands | [zowe-install-packaging](https://github.com/zowe/zowe-install-packaging/tree/master/scripts) | [Zowe Install/Packaging Pipeline](https://github.com/zowe/zowe-install-packaging/blob/master/Jenkinsfile) |
@@ -103,6 +111,6 @@ The following materials are distributed with Zowe&trade; binaries:
 | licenses/zowe_licenses_full.zip | License archive for Zowe third party dependencies | N/A | [Zowe License Scan Pipeline](https://github.com/zowe/zowe-dependency-scan-pipeline/blob/master/Jenkinsfile.license-scan) |
 | cics-for-zowe-cli.tgz |  IBM® CICS® Plug-in for Zowe CLI | [zowe-cli-cics-plugin](https://github.com/zowe/zowe-cli-cics-plugin) | [zowe-cli-cics-plugin pipeline](https://github.com/zowe/zowe-cli-cics-plugin/blob/master/Jenkinsfile) |
 | db2-for-zowe-cli.tgz | IBM® Db2® for z/OS® Plug-in for Zowe CLI | [zowe-cli-db2-plugin](https://github.com/zowe/zowe-cli-db2-plugin) | [zowe-cli-db2-plugin pipeline](https://github.com/zowe/zowe-cli-db2-plugin/blob/master/Jenkinsfile) |
-| zos-ftp-for-zowe-cli.tgz | IBM® z/OS FTP Plug-in for Zowe CLI | [zowe-cli-ftp-plugin](https://github.com/zowe/zowe-cli-ftp-plugin) | [zowe-cli-ftp-plugin pipeline](https://github.com/zowe/zowe-cli-ftp-plugin/Jenkinsfile)  |
+| zos-ftp-for-zowe-cli.tgz | IBM® z/OS FTP Plug-in for Zowe CLI | [zowe-cli-ftp-plugin](https://github.com/zowe/zowe-cli-ftp-plugin) | [zowe-cli-ftp-plugin pipeline](https://github.com/zowe/zowe-cli-ftp-plugin/blob/master/Jenkinsfile)  |
 | ims-for-zowe-cli.tgz | IBM® IMS™ Plug-in for Zowe CLI | [zowe-cli-ims-plugin](https://github.com/zowe/zowe-cli-ims-plugin) | [zowe-cli-ims-plugin pipeline](https://github.com/zowe/zowe-cli-ims-plugin/blob/master/Jenkinsfile) |
 | mq-for-zowe-cli.tgz | IBM® MQ Plug-in for Zowe CLI | [zowe-cli-mq-plugin](https://github.com/zowe/zowe-cli-mq-plugin) | [zowe-cli-mq-plugin pipeline](https://github.com/zowe/zowe-cli-mq-plugin/blob/master/Jenkinsfile) |

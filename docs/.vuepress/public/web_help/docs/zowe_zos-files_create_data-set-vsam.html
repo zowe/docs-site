@@ -25,7 +25,7 @@
 <li>The SMS data class to use for the allocation</li>
 </ul>
 </li>
-<li><p><code>--data-set-organization</code>  | <code>--dso</code> <em>(string)</em></p>
+<li><p><code>--data-set-organization</code>  | <code>--dso</code> | <code>--dsorg</code> <em>(string)</em></p>
 <ul>
 <li><p>The data set organization.</p>
 <p>Default value: INDEXED</p>
@@ -89,6 +89,13 @@ the option in double-quotes and separate each VOLSER with a space. You must
 specify the volumes option when your cluster is not SMS-managed.</li>
 </ul>
 </li>
+<li><p><code>--responseTimeout</code>  | <code>--rto</code> <em>(number)</em></p>
+<ul>
+<li>The maximum amount of time in seconds the z/OSMF Files TSO servlet should run
+before returning a response. Any request exceeding this amount of time will be
+terminated and return an error. Allowed values: 5 - 600</li>
+</ul>
+</li>
 </ul>
 <h4 id="zosmf-connection-options">Zosmf Connection Options</h4>
 <ul>
@@ -136,6 +143,25 @@ specify this option if you are not using an API mediation layer.</li>
 <li>The name of a (zosmf) profile to load for this command execution.</li>
 </ul>
 </li>
+<li><p><code>--base-profile</code>  | <code>--base-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (base) profile to load for this command execution.</li>
+</ul>
+</li>
+</ul>
+<h4 id="base-connection-options">Base Connection Options</h4>
+<ul>
+<li><p><code>--token-type</code>  | <code>--tt</code> <em>(string)</em></p>
+<ul>
+<li>The type of token to get and use for the API. Omit this option to use the
+default token type, which is provided by &#39;zowe auth login&#39;.</li>
+</ul>
+</li>
+<li><p><code>--token-value</code>  | <code>--tv</code> <em>(string)</em></p>
+<ul>
+<li>The value of the token to pass to the API.</li>
+</ul>
+</li>
 </ul>
 <h4 id="examples">Examples</h4>
 <ul>
@@ -149,7 +175,7 @@ default values of INDEXED, 840 KB primary storage and 84 KB secondary storage:</
 &quot;SOME.DATA.SET.NAME&quot; with 1 MB of secondary space. Show the properties of the
 data set when it is created:</p>
 <ul>
-<li><code>zowe  zos-files create data-set-vsam SOME.DATA.SET.NAME --data-set-organization LINEAR --size 5MB --secondary-space 1MB --show-attributes</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  zos-files create data-set-vsam SOME.DATA.SET.NAME --data-set-organization LINEAR --size 5MB --secondary-space 1MB --show-attributes">Copy</button></li>
+<li><code>zowe  zos-files create data-set-vsam SOME.DATA.SET.NAME --data-set-organization LINEAR --size 5MB --secondary-space 1 --show-attributes</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  zos-files create data-set-vsam SOME.DATA.SET.NAME --data-set-organization LINEAR --size 5MB --secondary-space 1 --show-attributes">Copy</button></li>
 </ul>
 </li>
 <li><p>Create a VSAM data set named &quot;SOME.DATA.SET.NAME&quot;, which is

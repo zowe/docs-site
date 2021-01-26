@@ -35,8 +35,9 @@ You might have reached the limit for shared message queues on your LPAR. When No
 When you attempt to log in to the Zowe Desktop, you receive the following error message that is displayed beneath the **Username** and **Password** fields. 
 
 ```
-Authentication failed for 1 types:  Types: ["zss"]
+Authentication failed for 3 types:  Types: ["saf","apiml","zss"]
 ```
+The Zowe desktop attempts to authenticate the credentials using the types that have been configured, by default the three above of `["saf","apiml","zss"]`. If Zowe has been configured with the `LAUNCH_COMPONENT_GROUPS=DESKTOP` where `GATEWAY` is not a launch group, then the message will just include the types `["saf","zss"]`.
 
 **Solution:**
 
@@ -44,17 +45,18 @@ For the Zowe Desktop to work, the node server that runs under the ZWESVSTC start
 
 There are two known problems that might cause this error.  The [Zowe architecture diagram](../../getting-started/zowe-architecture.md) shows the following connections. One of these two connections likely failed. 
 
-1. The zssServer connection to the `ZWESISTC` started task using cross memory communication. If this fails, see [zssServer unable to communicate with X-MEM](#zss-server-unable-to-communicate-with-x-mem).
-2. The Zowe Desktop ZLUX server connection to the zssServer across the default port 8542. If this fails, see [ZLUX unable to communicate with zssServer](#zlux-unable-to-communicate-with-zssserver). 
+1. The zssServer connection to the `ZWESISTC` started task using cross memory communication. If this fails, see [zssServer unable to communicate with X-MEM](#zss-server-unable-to-communicate-with-x-mem).  The architecture diagram below has been annotated with a (1) to show this connection.
+2. The Zowe Desktop ZLUX server connection to the zssServer across the default port 8542. If this fails, see [ZLUX unable to communicate with zssServer](#zlux-unable-to-communicate-with-zssserver).  The architecture diagram below has been annotated with a (2) to show this connection.  
 
 <img src="../../images/common/zowe-desktop-unable-to-logon.png" alt="Zowe Desktop Unable to logon.png" width="700px"/> 
 
-
 ### ZSS server unable to communicate with X-MEM
 
-1. Open the log file `$INSTANCE_DIR/logs/zssServer-yyyy-mm-dd-hh-ss.log`.  This file is created each time ZWESVSTC is started and only the last five files are kept.  
+- Open the log file `$INSTANCE_DIR/logs/zssServer-yyyy-mm-dd-hh-ss.log`.  This file is created each time ZWESVSTC is started and only the last five files are kept.  
 
-2. Look for the message that starts with `ZIS status`.  
+- Look for the message that starts with `ZIS status`.  
+
+
 
    - If the communication works, the message includes `Ok`. For example:
 
@@ -69,12 +71,33 @@ There are two known problems that might cause this error.  The [Zowe architectur
      ```
      ZIS status - Failure (name='ZWESIS_STD      ', cmsRC=39, description='Cross-memory call ABENDed'
      ```
+     or
+     ```
+     ZIS status - Failure (name='ZWESIS_STD      ', cmsRC=64, description='N/A', clientVersion=`2`)
+     ```
+     or
+     ```
+     ZIS status - 'Failure' (name='ZWESI_STD     ', cmsRC='12', description='N/A', clientVersion='2')
+     ```
 
-     In this case, check that the ZWESISTC started task is running. If not, start it. Also, search the log for problems, such as statements indicating that the server was unable to find the load module.
+     In this case, check that the ZWESISTC started task is running. If not, start it with the TSO command `/S ZWESISTC`
     
-   - If the problem cannot be easily fixed (such as the ZWESISTC task not running), then it is likely that the cross memory server is not running. To check whether the cross memory is running, check that the started task `ZWESISTC` is active.  
+   - If the problem cannot be easily fixed (such as the ZWESISTC task not running), then it is likely that the cross memory server is not running. To check whether the cross memory is running, check the started task `ZWESISTC` log for any errors.  
+
+   - If the cross memory server `ZWESISTC` started task is running, check that the program name of the cross memory procedure matches between the `ZWESISTC` PROBLIB member and the `instance.env` file used to launch Zowe. 
+    
+     By default the proc value is `ZWESIS_STD`, and if a new name is chosen then both files need to be updated for the handshake to be successful.
+
+     The line in the `ZWESISTC` problib that defines the procedure name that cross memory will use is
+     ```
+     //ZWESISTC  PROC NAME='ZWESIS_STD',MEM=00,RGN=0M
+     ```
+     The line in the `instance.env` that specifies the cross memory procedure that the zssServer will try to attach to is
+     ```
+     ZOWE_ZSS_XMEM_SERVER_NAME=ZWESIS_STD
+     ```
    
-   - If this is the first time you set up Zowe, it is possible that the cross memory server configuration did not complete successfully. To set up and configure the cross memory server, follow steps as described in the topic [Installing and configuring the Zowe cross memory server (ZWESISTC)](../../user-guide/configure-xmem-server.md).  
+   - If this is the first time you set up Zowe, it is possible that the cross memory server configuration did not complete successfully. To set up and configure the cross memory server, follow steps as described in the topic [Installing and configuring the Zowe cross memory server (ZWESISTC)](../../user-guide/configure-xmem-server.md).  Once `ZWESISTC` is started, if problems persist, check its log to ensure it has been able to correctly locate its load module ZWESIS01 as well as the parmlib ZWESIP00.  
 
    - If there is an authorization problem, the message might include `Permission Denied`. For example:
 
@@ -96,9 +119,10 @@ There are two known problems that might cause this error.  The [Zowe architectur
 ### ZLUX unable to communicate with zssServer
 
 Follow these steps: 
-1. Open the log file `$INSTANCE_DIR/logs/appServer-yyyy-mm-dd-hh-ss.log`.  This file is created each time ZWESVSTC is started and only the last five files are kept.  
 
-2. Look for the message that starts with `GetAddrInfoReqWrap.onlookup` and the log messages below.  
+- Open the log file `$INSTANCE_DIR/logs/appServer-yyyy-mm-dd-hh-ss.log`.  This file is created each time ZWESVSTC is started and only the last five files are kept.  
+
+- Look for the message that starts with `GetAddrInfoReqWrap.onlookup` and the log messages below.  
 
    ```
    yyyy-mm-dd hh:mm:ss.ms <ZWED:16842977> ZWESVUSR INFO (_zsf.apiml,apiml.
@@ -110,7 +134,9 @@ Follow these steps:
      syscall: 'getaddrinfo',                                              
      hostname: 'localhost'                                                    
    ``` 
-3. Map localhost to port 127.0.0.1. 
+  These messages show that the host name `localhost` cannot be reached between the Zowe desktop server and the zssServer because `localhost` has not been mapped to an IP address.  
+
+- Map localhost to port 127.0.0.1. 
 
    Create an entry in the file `/etc/hosts` that contains the line
 
@@ -118,7 +144,7 @@ Follow these steps:
    127.0.0.1       localhost
    ```
 
-4. Restart the `ZWESVSTC` address space.
+- Restart the `ZWESVSTC` address space.
 
 ## Server startup problem ret=1115
 
@@ -233,11 +259,11 @@ You can ignore these messages which should not occur in 1.11 or later releases. 
 The Zowe started task `ZWESVSTC` log contains messages ending
 
 ```
-ZWED0050W - Could not read swagger doc folder <ROOT_DIR>/components/app-server/share/zlux-workflow/doc/swagger
-ZWED0050W - Could not read swagger doc folder <ROOT_DIR>/components/app-server/share/zlux-app-manager/virtual-desktop/doc/swagger
-ZWED0050W - Could not read swagger doc folder <ROOT_DIR>/components/app-server/share/zlux-app-manager/bootstrap/doc/swagger
-ZWED0050W - Could not read swagger doc folder <ROOT_DIR>/components/app-server/share/zlux-server-framework/plugins/terminal-proxy/doc/swagger
-ZWED0050W - Could not read swagger doc folder <ROOT_DIR>/components/app-server/share/tn3270-ng2/doc/swagger
+ZWED0050W - Could not read swagger doc folder <RUNTIME_DIR>/components/app-server/share/zlux-workflow/doc/swagger
+ZWED0050W - Could not read swagger doc folder <RUNTIME_DIR>/components/app-server/share/zlux-app-manager/virtual-desktop/doc/swagger
+ZWED0050W - Could not read swagger doc folder <RUNTIME_DIR>/components/app-server/share/zlux-app-manager/bootstrap/doc/swagger
+ZWED0050W - Could not read swagger doc folder <RUNTIME_DIR>/components/app-server/share/zlux-server-framework/plugins/terminal-proxy/doc/swagger
+ZWED0050W - Could not read swagger doc folder <RUNTIME_DIR>/components/app-server/share/tn3270-ng2/doc/swagger
 ```
 
 **Solution:**   
@@ -259,3 +285,24 @@ ZWED0047W - Swagger file for service (org.zowe.terminal.tn3270:statediscovery) n
 
 **Solution:**   
 You can ignore these messages. 
+
+## Unable to log in to the explorers when using Zowe V1.13 or V1.14
+
+**Symptom:**
+
+You installed Zowe V1.13 or V1.14. When you start the Zowe server, you see the following error message in the `appServer` log. 
+
+```
+failed to process config                                           
+TypeError: config.csp.frame-ancestorsÝ0¨.split is not a function   
+```
+
+When you log in to the Zowe Desktop, you cannot open the JES, MVS, or USS Explorers. You receive the following error message: 
+
+```
+{"messages":[{"messageType":"ERROR","messageNumber":"ZWEAG708E","messageContent":"The request to the URL '/ui/v1/explorer-uss/' has failed after retrying on all known service instances. Caused by: java.net.ConnectException: EDC8128I Connection refused. (errno2=0x74940000) (Connection refused)","messageKey":"org.zowe.apiml.gateway.connectionRefused"}]} 
+```
+
+**Solution:**
+
+A new property `ZOWE_EXPLORER_FRAME_ANCESTORS` was introduced in V1.12. This property is required to be present in the `instance.env` file with some valid value. When undefined, it is treated as Boolean, which breaks the string split function. To resolve the issue, define the value for this property in the `instance.env` file. 

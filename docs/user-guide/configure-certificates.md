@@ -1,202 +1,73 @@
 # Configuring Zowe certificates 
 
-A keystore directory is used by Zowe to hold the certificate used for encrypting communication between Zowe clients and the Zowe z/OS servers.  It also holds the truststore used to hold public keys of any servers that Zowe trusts. When Zowe is launched, the instance directory configuration file `instance.env` specifies the location of the keystore directory. See [Configure instance directory](configure-instance-directory.md#keystore-directory).
+Zowe uses a certificate to encrypt data for communication across secure sockets. An instance of Zowe references a USS directory referred to as a KEYSTORE_DIRECTORY which contains information about where the certificate is located.
 
-If you have already created a keystore directory from a previous release of Version 1.8 or later, then you may reuse the existing keystore directory with newer version of Zowe.
-
-You can use the existing certificate signed by an external certificate authority (CA) for HTTPS ports in the API Mediation Layer and the Zowe Application Framework, or else you can let the Zowe configuration script to generate a self-signed certificate by the local API Mediation CA.
-
-If you let the Zowe configuration to generate a self-signed certificate, the certificates should be imported into your browser to avoid untrusted network traffic challenges. See [Import the local CA certificate to your browser](../extend/extend-apiml/api-mediation-security.md#import-the-local-ca-certificate-to-your-browser).  If you do not import the certificates into your browser when you access a Zowe web page, you may be challenged that the web page cannot be trusted and, depending on the browser you are using, have to add an exception to proceed to the web page.  Some browser versions may not accept the Zowe certificate because it is self-signed and the signing authority is not recognized as a trusted source.  Manually importing the certificate into your browser makes it a trusted source and the challenges will no longer occur.  
-
-If you have an existing server certificate that is signed by an external CA, then you use this for the Zowe certificate. This could be a CA managed by the IT department of your company, which has already ensured that any certificates signed by that CA are trusted by browsers in your company because they have included their company's CA in their company's browsers' truststore.  This will avoid the need to manually import the local CA into each client machine's browsers.  
+Learn more about the key concepts of Zowe certificates in the following sections.
  
-If you want to avoid the need to have each browser trust the CA that has signed the Zowe certificate, you can use a public certificate authority such as Symantec, Comodo, or GoDaddy to create a certificate. These certificates are trusted by all browsers and most REST API clients. However, this option involves a manual process of requesting a certificate and may incur a cost payable to the publicly trusted CA.
+## Northbound Certificate
 
-It's recommended that you start with the local API Mediation Layer CA for an initial evaluation.
+The Zowe certificate is used by the API Mediation Layer on its northbound edge when identifying itself and encrypting `https://` traffic to web browsers or REST client applications.  If the Zowe Command Line Interface (CLI) has been configured to use the Zowe API Mediation Layer then the CLI is a client of the Zowe certificate. For more information, see [Using the Zowe Command Line Interface, Integrating with the API Mediation Layer](./cli-usingcli.md#integrating-with-api-mediation-layer).
 
-You can use the `<ROOT_DIR>/bin/zowe-setup-certificates.sh` script in the Zowe runtime directory to configure the certificates with the set of defined environment variables. The environment variables act as parameters for the certificate configuration are held in the file `<ROOT_DIR>/bin/zowe-setup-certificates.env`. 
+## Southbound Certificate
 
-## Generate certificate with the default values
+As well as being a server, Zowe itself is a client to services on the southbound edge of its API Mediation Layer that it communicates to over secure sockets.  These southbound services use certificates to encrypt their data, and Zowe uses a trust store to store its relationship to these certificates.  The southbound services that are started by Zowe itself and run as address spaces under its `ZWESVSTC` started task (such as the API discovery service, the explorer JES REST API server) re-use the same Zowe certificate used by the API Mediation Layer on its northbound client edge.  
 
-The script reads the default variable values that are provided in the `<ROOT_DIR>/bin/zowe-setup-certificates.env` file and generates the certificate signed by the local API Mediation CA and keystores in the `/global/zowe/keystore` location.   To set up certificates with the default environment variables, ensure that you run the following script in the Zowe runtime directory:
+## Trust store
 
-```shell script
-<ROOT_DIR>/bin/zowe-setup-certificates.sh
-```
+As well as Zowe using its certificates intra-address space, to encrypt messages between its servers, Zowe uses external services on z/OS (such as z/OSMF or Zowe conformant extensions that have registered themselves with the API Mediation Layer).  These services will present their own certificate to the API Mediation Layer, in which case the trust store is used to capture the relationship between Zowe's southbound edge and these external certificates.  
 
-generates the keystore in `/global/zowe/keystore`.  On many z/OS installations access to this location will be restricted to priveledged users so this step should be done by a system programmer with site knowledge for where the certificate should be stored in a way that the public key can be read but private key access is controlled.  
+If you wish to disable the trust store validation of southbound certificates, you can set the value `VERIFY_CERTIFICATES=true` to `false` in the `zowe-setup-certificates.env` file in the `KEYSTORE_DIRECTORY`.  A scenario when this is recommended is if certificate being presented to the API Mediation Layer is self-signed (that is, from an unknown certificate authority).  For example, the z/OSMF certificate may be self-signed in which case the Zowe API Mediation Layer will not recognize the signing authority.  
 
-## Generate certificate with the custom values
+## Certificates in the Zowe architecture
 
-We recommend that you review all the parameters in the `zowe-setup-certificates.env` file and customize the values for variables to meet your requirements. For example, set your preferred location to generate certificates and keystores. 
+The [Zowe architecture diagram](../getting-started/zowe-architecture.md) shows the Zowe API Mediation Layer positioned on the client-server boundary between applications such as web browsers or the Zowe CLI accessing z/OS services.  The following diagram is a section of the architecture annotated to describe the role of certificates and trust stores.  
 
-Follow the procedure to customize the values for variables in the `zowe-setup-certificates.env` file:
+<img src="../images/common/zowe-ssl.png" alt="Zowe SSL" width="700px"/> 
 
-1. Copy the `bin/zowe-setup-certificates.env` file from the read-only location to a new 
-    `<your_directory>/zowe-setup-certificates.env` location.  
-    
-2. Customize the values for the variables based on the descriptions that are provided in the 
-    `zowe-setup-certificates.env` file. 
-    
-3. Execute the following command with the customized environment file:
-   ```shell script
-    bin/zowe-setup-certificates.sh –p <your_directory>/zowe-setup-certificates.env [-l <log_directory>]
-   ```
-   where `<your_directory>` specifies the location of your customized environment file and `<log-directory>` is an optional parameter that overrides the default log output directory of `/global/zowe/logs`, if it is writable, or `~/zowe/logs`.
-   
-The keystore and certificates are generated based on the customized values in the 
-`bin/zowe-setup-certificates.env` file.
+The lines shown in bold red are communication over a TCP/IP connection that is encrypted with the Zowe certificate.  
+- On the northbound edge of the API gateway, the certificate is used between client applications such as web browsers, Zowe CLI, or any other application wishing to access Zowe's REST APIs.  
+- On the southbound edge of the API Gateway, there are a number of Zowe micro services providing HTML GUIs for the Zowe desktop or REST APIs for the API Catalog.  These also use the Zowe certificate for data encryption.
 
-The `zowe-setup-certificates.sh` command also generates `zowe-certificates.env` file in the 
-`KEYSTORE_DIRECTORY` directory. This file is used in the Zowe instance configuration step, see [Creating and configuring the Zowe instance directory](../user-guide/configure-instance-directory.md#keystore-configuration).
-   
-The following example shows how you can configure `zowe-setup-certificates.env` file to use the existing certificates:
+The lines in bold green are external certificates for servers that are not managed by Zowe, such as z/OSMF itself or any Zowe conformant REST API or App Framework servers that are registered with the API Mediation Layer.  For the API Mediation Layer to be able to accept these certificates, they either need to be signed by a recognized certificate authority, or else the API Mediation Layer needs to be configured to accept unverified certificates.  Even if the API Mediation Layer is configured to accept certificates signed by unverified CAs on its southbound edge, client applications on the northbound edge of the API gateway will be presented with the Zowe certificate.  
 
-1. Update the value of `EXTERNAL_CERTIFICATE`. The value needs to point to a keystore in PKCS12 format that contains the certificate with its private key. The file needs to be transferred as a binary to the z/OS system.
+## Keystore versus key ring
 
-2. Update the value of `KEYSTORE_PASSWORD`. The value is a password to the PKCS12 keystore specified in the `EXTERNAL_CERTIFICATE` variable.
-    
-3. Update the value of `EXTERNAL_CERTIFICATE_ALIAS` to the alias of the server certificate in the keystore.
-   
-    **Note:** If you do not know the certificate alias, run the following command where 
-    `externalCertificate.p12` is a value of  `EXTERNAL_CERTIFICATE` in the 
-    `zowe-setup-certificates.env` file.
+Zowe supports certificates that are stored in a USS directory **Java KeyStore** format.  
 
-   ```sh
-   keytool -list -keystore externalCertificate.p12 -storepass password -storetype pkcs12 -v
-   ```
-   Expected output:
-   ```
-   Keystore type: PKCS12
-   Keystore provider: SUN
-   Your keystore contains 1 entry
-   Alias name: apiml
-   Creation date: Oct 9, 2019
-   Entry type: PrivateKeyEntry
-   Certificate chain length: 3
-   ...
-   ```
-   In this case, the alias can be found in `Alias name: apiml`. Therefore, set `EXTERNAL_CERTIFICATE_ALIAS=apiml`.
-      
-4. Update the value of `EXTERNAL_CERTIFICATE_AUTHORITIES` to the path of the public certificate of the certificate authority that has signed the certificate. You can add additional certificate authorities separated by spaces (specify the complete value **in quotes**). This can be used for certificate authorities that have signed the certificates of the services that you want to access via the API Mediation Layer.
+Beginning with release 1.15, Zowe is including the ability to work with certificates held in a **z/OS Keyring**.  Support for Keyring certificates is currently incomplete and being provided as a beta technical preview for early preview by customers.  If you have any feedback using keyrings please create an issue in the [zowe-install-packaging repo](https://github.com/zowe/zowe-install-packaging/issues).  It is expected that in a future release keyring support will be made available as a fully supported feature.  
 
-5. (Optional) If you have trouble getting the certificates and you want only to evaluate Zowe, you can switch off the certificate validation by setting `VERIFY_CERTIFICATES=false`. The HTTPS will still be used but the API Mediation Layer will not validate any certificate.
+<!--
+Zowe supports certificates that are stored either in a USS directory **Java KeyStore** format or else held in a **z/OS Keyring**.  z/OS keystore are the preferred choice for storing certificates where system programmers are already familiar with their operation and usage.  The user ID setting up a keystore and connecting it with certificates requires elevated permissions, and in scenarios where you need to create a Zowe sandbox environment or for testing purposes and your TSO user ID doesn't have authority to manipulate key rings, USS keystores are a good alternative.  
+-->
 
-    **Important!** Switching off certificate evaluation is a non-secure setup.
+<!--
 
-Following is the part of `zowe-setup-certificates.env` file snippet that uses existing certificates:
-```shell script
-# Should APIML verify certificates of services - true/false
-VERIFY_CERTIFICATES=true
-# optional - Path to a PKCS12 keystore with a server certificate for APIML
-EXTERNAL_CERTIFICATE=/path/to/keystore.p12
-# optional - Alias of the certificate in the keystore
-EXTERNAL_CERTIFICATE_ALIAS=servercert
-# optional - Public certificates of trusted CAs
-EXTERNAL_CERTIFICATE_AUTHORITIES="/path/to/cacert_1.cer /path/to/cacert_2.cer"
-# Select a password that is used to secure EXTERNAL_CERTIFICATE keystore and 
-# that will be also used to secure newly generated keystores for API Mediation
-KEYSTORE_PASSWORD=mypass
-```
+If you are using a USS keystore, then the script `zowe-setup-certificates.env` is the only configuration step required.  This is described in detail in [Configuring Zowe certificates in a USS KeyStore](./configure-certificates-keystore.md).
 
-You may encounter the following message:
+If you are using a key ring, the sample JCL member `ZWEKRING` provided in the PDS library `SZWESAMP` contains the security commands to create a key ring and manage its associated certificates. This is described in [Configuring Zowe certificates in a key ring](./configure-certificates-keyring.md).  
 
-```
-apiml_cm.sh --action trust-zosmf has failed. See $LOG_FILE for more details
-ERROR: z/OSMF is not trusted by the API Mediation Layer. Make sure ZOWE_ZOSMF_HOST and ZOWE_ZOSMF_PORT variables define the desired z/OSMF instance.
-ZOWE_ZOSMF_HOST=${ZOWE_ZOSMF_HOST}   ZOWE_ZOSMF_PORT=${ZOWE_ZOSMF_PORT}
-You can also specify z/OSMF certificate explicitly in the ZOSMF_CERTIFICATE environmental variable in the zowe-setup-certificates.env file.
-```
+For both scenarios, where the certificate is held in a USS Java Keystore or a z/OS key ring, the USS `KEYSTORE_DIRECTORY` is still required which is created with the script `zowe-setup-certificates.sh`.  
 
-This error has to be resolved before you can proceed with the next installation step.
+-->
 
-**Notes:** 
+## Keystore directory creation
 
-- On many z/OS systems, the certificate for z/OSMF is not signed by a trusted CA and is a self-signed certificate by the z/OS system programmer who configured z/OSMF.  If that is the case, then Zowe itself will not trust the z/OSMF certificate and any function dependent on z/OSMF will not operate correctly.  To ensure that Zowe trusts a z/OSMF self-signed certificate, you must use the value `VERIFY_CERTIFICATES=false` in the `zowe-setup-certificates.env` file.  This is also required if the certificate is from a recognized CA but for a different host name, which can occur when a trusted certificate is copied from one source and reused within a z/OS installation for different servers other than that it was originally created for.  
+The `KEYSTORE_DIRECTORY` is created by running the script `<RUNTIME_DIR>/bin/zowe-setup-certificates.sh`.  This script has a number of input parameters that are specified in a configuration file whose location is passed as an argument to the `-p` parameter.  
 
-## Using web tokens for SSO on ZLUX and ZSS
+The configuration file `<RUNTIME_DIR>/bin/zowe-setup-certificates.env` is provided for setting up a Keystore directory that contains the Zowe certificate in JavaKeystore format.  The configuration file `<RUNTIME_DIR>/bin/zowe-setup-certificates-keyring.env` is provided for setting up a Keystore directory that references the Zowe certificate held in a z/OS keyring.  
 
-Users must create a PKCS#11 token before continuing. This can be done through the USS utility, "gskkyman".
+The `.env` configuration file should be customized based on security rules and practices for the z/OS environment.  Once the script has been successfully executed and the `KEYSTORE_DIRECTORY` is created successfully, it is referenced by a Zowe launch `instance.env` file. A `KEYSTORE_DIRECTORY` can be used by more than one instance of Zowe. See [Creating and configuring the Zowe instance directory](../user-guide/configure-instance-directory.md#keystore-configuration) for more information.
 
-### Creating a PKCS#11 Token
+The Zowe launch diagram shows the relationship between a Zowe instance directory, a Zowe runtime directory, the Zowe keystore directory, and (if used to store the Zowe certificate) the z/OS keyring.  
 
-Ensure that the SO.TOKEN_NAME profile exists in CRYPTOZ, and that the user who will be creating tokens has either UPDATE or CONTROL access.
+<img src="../images/common/zowe-directories-keys.png" alt="Zowe Directories" width="700"/> 
 
-1. Define profile: "RDEFINE CRYPTOZ SO.TOKEN_NAME"
-2. Add user with UPDATE access: "PERMIT SO.** ACCESS(UPDATE) CLASS(CRYPTOZ) ID(USERID)"
-3. Ensure profile was created: "RLIST CRYPTOZ *"
-4. Activate class with new profile: 
-    - "SETROPTS RACLIST(CRYPTOZ)"
-  
-    - "SETROPTS CLASSACT(CRYPTOZ)" 
+You create a `KEYSTORE_DIRECTORY` in USS by using the script `zowe-setup-certificates.sh` (1) with a `-p` argument that specifies a `.env` configuration file.  
+- If the `-p` argument file `zowe-setup-certificates.env` (2) is used, the `KEYSTORE_DIRECTORY` will contain the certificate, the certificate authority, the trust store, and the JWT Secret.  
+- If the `-p` argument file `zowe-setup-keyring-certificates.env` (3) is used, the `KEYSTORE_DIRECTORY` contains no certificates and is a pass-through to configure a Zowe instance to use a z/OS keyring.
 
-A user should now be able to use "gskkyman" to create a token.
+The JCL member `ZWEKRING` (4) is used to create a z/OS Keyring to hold the Zowe certificate and its signing certificate authority.  
 
-### Accessing token
+At launch time, a Zowe instance is started using the script `<INSTANCE_DIR>/bin/zowe-start.sh` which takes configuration arguments from `<INSTANCE_DIR>/instance.env`.  The argument (5)  `KEYSTORE_DIRECTORY=<KEYSTORE_DIRECTORY>` specifies the path to the keystore directory that Zowe will use.  
 
-Ensure USER.TOKEN_NAME profile exists in CRYPTOZ:
-
-1. Define profile: "RDEFINE CRYPTOZ USER.TOKEN_NAME"
-2. Add user with READ access: "PERMIT USER.TOKEN_NAME ACCESS(UPDATE) CLASS(CRYPTOZ) ID(USERID)"
-3. Ensure profile was created: "RLIST CRYPTOZ *"
-4. Activate class with new profile: 
-
-    - "SETROPTS RACLIST(CRYPTOZ)"
-
-    - "SETROPTS CLASSACT(CRYPTOZ)"
-
-Configure zowe-setup-certifcates.env using the following parameters. Both are required to enable SSO.
-
-- PKCS#11 token name for SSO. Must already exist.
-
-  `PKCS11_TOKEN_NAME=<newly created token name>`
-
-- PKCS#11 token label for SSO. Must not already exist.
-
-  `PKCS11_TOKEN_LABEL=<unique label>`
-
-### Enabling SSO
-
-1. Run zowe-setup-certificates.sh. 
-
-    - If you are upgrading from an older of version of Zowe that has the apiml configured: "rerun zowe-setup-certificates.sh"
-
-    - If upgrading, point the zowe instance to the newly generated keystore, or overwrite the previous one.
-
-2. In the ZSS server configuration, enable SSO and input your token name/label:
-
-```
-
-"agent": {
-
-  //host is for zlux to know, not zss
-
-  "host": "localhost",
-
-  "http": {
-
-   "ipAddresses": ["0.0.0.0"],
-
-   "port": 0000
-
-  },
-
-  "jwt": {
-
-   "enabled": true,
-
-   "fallback": false,
-
-   "key": {
-
-​    "token": "TOKEN.NAME",
-
-​    "label": "KEY_NAME"
-
-   }
-
-  },
-
- },
-
-```
+For more information on the Zowe launch topology, see [Topology of the Zowe z/OS launch process](./installandconfig.md#topology-of-the-zowe-z-os-launch-process).

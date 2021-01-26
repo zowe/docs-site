@@ -15,29 +15,20 @@ its performance and create large log files that consume a large volume of disk s
 
 **Follow these steps:**
 
-1. Open the file `<Zowe install directory>/components/api-mediation/bin/start.sh`.
+1. Open the file `instance.env`.
 
-2. Find the API Mediation Layer service, for which you want to enable the debug mode: discovery, catalog, or gateway.
-
-3. Find the line that contains the `LOG_LEVEL=` parameter and set the value to `debug`:
+2. Find the line that contains the `APIML_DEBUG_MODE_ENABLED=` parameter and set the value to `true`:
 
    ```
-    LOG_LEVEL=debug
+    APIML_DEBUG_MODE_ENABLED=true
    ```
+   By default debug mode is disabled, so the `APIML_DEBUG_MODE_ENABLED` is set to `false`.
+   
+3. Restart Zowe&trade;.
 
-4. Restart Zowe&trade;.
+   You enabled debug mode for the API ML core services (API Catalog, API Gateway and Discovery Service).
 
-    You have enabled the debug mode.
-
-5. (Optional) Reproduce a bug that causes issues and review debug messages. If you are unable to resolve the issue, create an issue [here](https://github.com/zowe/api-layer/issues/).     
-
-6. Disable the debug mode. Find the `LOG_LEVEL` parameter, and change its current value to the default `LOG_LEVEL=` one:
-    ```
-    LOG_LEVEL=
-    ```
-7. Restart Zowe.
-
-    You have disabled the debug mode.
+4. (Optional) Reproduce a bug that causes issues and review debug messages. If you are unable to resolve the issue, create an issue [here](https://github.com/zowe/api-layer/issues/).     
 
 ## Change the Log Level of Individual Code Components
 
@@ -308,3 +299,82 @@ The Zowe started task needs to run under the same user ID as z/OSMF (typically I
 The hostname that is displayed in the details of the exception is a valid hostname. You can validate that the hostname is valid by using `ping` command on the same mainframe system. For example, `ping USILCA32.lvn.broadcom.net`. If it is valid, then the problem can be caused by insufficient privileges of your started task that is not allowed to do network access.
 
 You can fix it by setting up the security environment as described in the [Zowe documentation](../user-guide/configure-zos-system.html#configure-security-environment-switching).
+
+### Certificate error when using both an external certificate and Single Sign-On to deploy Zowe
+
+**Symptom:**
+
+You used an external certificate and Single Sign-On to deploy Zowe. When you log in to the Zowe Desktop, you encounter an error similar to the following:
+
+```
+2020-07-28 02:13:43.203 <ZWED:262486> IZUSVR WARN (org.zowe.zlux.auth.safsso,apimlHandler.js:263) APIML query error: self signed certificate in certificate chain
+2020-07-28 02:13:43.288 <ZWED:262486> IZUSVR WARN (org.zowe.zlux.auth.safsso,apimlHandler.js:337) APIML login has failed:
+2020-07-28 02:13:43.288 <ZWED:262486> IZUSVR WARN (org.zowe.zlux.auth.safsso,apimlHandler.js:338)  Error: self signed certificate in certificate chain
+   at TLSSocket.onConnectSecure (_tls_wrap.js:1321:34)
+   at TLSSocket.emit (events.js:210:5)
+   at TLSSocket._finishInit (_tls_wrap.js:794:8)
+   at TLSWrap.ssl.onhandshakedone (_tls_wrap.js:608:12) {
+ code: 'SELF_SIGNED_CERT_IN_CHAIN'
+}
+```
+
+**Solution:**
+
+This issue might occur when you use a Zowe version of 1.12.0 or later. To resolve the issue, you can download your external root certificate and intermediate certificates in PEM format. Then, add the following parameter in the Zowe `instance.env` file.
+ 
+```ZWED_node_https_certificateAuthorities="/path/to/zowe/keystore/local_ca/localca.cer-ebcdic","/path/to/carootcert.pem","/path/to/caintermediatecert.pem"```
+ 
+Recycle your Zowe server. You should be able to log in to the Zowe Desktop successfully now.
+
+### Browser unable to connect due to a CIPHER error
+
+**Symptom:**
+
+When connecting to the API Mediation Layer, the web browser throws an error saying that the site is unable to provide a secure connection because of an error with ciphers.  
+
+The error shown varies depending on the browser. For example, 
+
+- For Google Chrome:
+
+   <img src="../images/common/cipher_mismatch.png" alt="CIPHER_MISMATCH" title="CIPHER_MISMATCH Error"/>
+
+- For Mozilla Firefox:
+
+   <img src="../images/common/cipher_overlap.png" alt="CIPHER_OVERLAP" title="CIPHER_OVERLAP Error"/>
+
+**Solution:**
+
+Remove `GCM` as a disabled `TLS` algorithm from the Java runtime being used by Zowe.  
+
+To do this, first locate the `$JAVA_HOME/lib/security/java.security` file. You can find the value of `$JAVA_HOME` in one of the following ways. 
+
+- Method 1: By looking at the `JAVA_HOME=` value in the `instance.env` file used to start Zowe.  
+
+   For example, if the `instance.env` file contains the following line, 
+
+   ```
+   JAVA_HOME=`/usr/lpp/java/J8.0_64/
+   ```
+
+   then, the `$JAVA_HOME/lib/security/java.security` file will be `/usr/lpp/java/J8.0_64/lib/security/java.security`.
+
+- Method 2: By inspecting the `STDOUT` JES spool file for the `ZWESVSTC` started task that launches the API Mediation Layer.
+
+   
+In the `java.security` file, there is a parameter value for `jdk.tls.disabledAlgorithms`, for example,
+
+```
+jdk.tls.disabledAlgorithms=SSLv3, RC4, MD5withRSA, DH keySize < 1024, 3DES_EDE_CBC, DESede, EC keySize < 224, GCM
+```
+
+**Note:** This line may have a continuation character `\` and be split across two lines due to its length.  
+
+Edit the parameter value for `jdk.tls.disabledAlgorithms` to remove `GCM`. If as shown above the line ends `<224, GCM`, remove the preceding comma so the values remain a well-formed list of comma-separated algorithms:
+
+```
+jdk.tls.disabledAlgorithms=SSLv3, RC4, MD5withRSA, DH keySize < 1024, 3DES_EDE_CBC, DESede, EC keySize < 224
+```
+
+**Note:** The file permissions of `java.security` might be restricted for privileged users at most z/OS sites.  
+
+After you remove `GCM`, restart the `ZWESVSTC` started task for the change to take effect.

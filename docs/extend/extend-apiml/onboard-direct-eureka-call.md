@@ -220,7 +220,7 @@ The following parameters define service information for the API Catalog:
 
 * **apiml.connectTimeout**
     
-    The value in milliseconds that specifies a period, in which API ML should establish a single, non-managed connection with this service. If omitted, the default value specified in the API ML Gateway service configuration is used.
+    The value in milliseconds that specifies a period in which API ML should establish a single, non-managed connection with this service. If omitted, the default value specified in the API ML Gateway service configuration is used.
 
 * **apiml.readTimeout**
     
@@ -228,12 +228,16 @@ The following parameters define service information for the API Catalog:
     
 * **apiml.connectionManagerTimeout**
     
-    HttpClient employs a special entity to manage access to HTTP connections called by HTTP connection manager. The purpose of an HTTP connection manager is to serve as a factory for new HTTP connections, to manage the life cycle of persistent connections, and to synchronize access to persistent connections. Internally, it works with managed connections which serve as proxies for real connections. ConnectionManagerTimeout specifies a period, in which managed connections with API ML should be established. The value is in milliseconds. If omitted, the default value specified in the API ML Gateway service configuration is used.
+    HttpClient employs a special entity to manage access to HTTP connections called by HTTP connection manager. The purpose of an HTTP connection manager is to serve as a factory for new HTTP connections, to manage the life cycle of persistent connections, and to synchronize access to persistent connections. Internally, an HTTP connection manager works with managed connections, which serve as proxies for real connections. `ConnectionManagerTimeout` specifies a period in which managed connections with API ML should be established. The value is in milliseconds. If omitted, the default value specified in the API ML Gateway service configuration is used.
+
+* **apiml.okToRetryOnAllOperations**
+    
+    Specifies whether all operations can be retried for this service. The default value is `false`. The `false` value allows retries for only GET requests if a response code of `503` is returned. Setting this value to `true` enables retry requests for all methods, which return a `503` response code. Enabling retry can impact server resources resulting from buffering of the request body.
 
 * **apiml.service.corsEnabled**
     
-    When this parameter is set to `true`, the Gateway allows CORS for the Gateway routes `api/v1/gateway/**`. 
-    The same parameter can be also set on the service level, by providing the parameter as a `customMetadata` as shown [here](custom-metadata.md).
+    When this parameter is set to `true`, CORS is enabled on the service level for all service routes. 
+    The same parameter can also be set on the service level, by providing the parameter as `customMetadata` as shown in the [custom metadata.md](custom-metadata.md).
       
 #### Routing parameters
 Routing parameters are grouped under the prefix: `apiml.routes`
@@ -273,7 +277,7 @@ This prefix is used to differentiate the routes. This prefix must be provided ma
 For more information about API ML routing, see [API Gateway Routing](https://github.com/zowe/api-layer/wiki/API-Gateway-Routing).
 
 #### Authentication parameters
-Authentication parameters are grouped under the prefix: `apiml.authentication`. When not specified, the default values are used.
+Authentication parameters are grouped under the prefix: `apiml.authentication`. When unspecified, the default values are used.
 
 This parameter enables a service to accept the Zowe JWT token. The API Gateway translates the token to an authentication method supported by a service.
 
@@ -348,6 +352,11 @@ The following parameters provide the information properties of a single API:
 
     (Optional) This parameter specifies the link to the external documentation. A link to the external documentation can be included along with the Swagger documentation.
 
+* **apiml.apiInfo.{api-index}.defaultApi**
+
+    (Optional) This parameter specifices if the API is the default one shown in the API Catalog. If no API has this parameter set to `true`, or multiple APIs have it set to `true`,
+    then the default API becomes the API with the highest major version seen in `apiml.apiInfo.{api-index}.version`.
+
 **Note:** The `{api-index}` is used to differentiate the service APIs. This index must be provided manually when _XML_ configuration is used.
 In the following example, `0` represents the `api-index`.
 
@@ -371,58 +380,14 @@ If the server does not receive a renewal in 90 seconds, it removes the instance 
 ```https://{eureka_hostname}:{eureka_port}/eureka/apps/{serviceId}/{instanceId}```
 
 ## Validating successful onboarding with the API Mediation Layer
-Ensure that you successfully onboarded a service with the API Mediation Layer.
+Ensure that you successfully onboarded a service with the API Mediation Layer. 
 
 **Follow these steps:**
+  1. [Validate successful onboarding](./onboard-overview.md#validating-successful-onboarding)
+ 
+  2. Check that you can access your API service endpoints through the Gateway.
 
- 1. In your Http client such as HTTPie, Postman, or cURL use the Http `GET` method in the following format to query the Discovery Service for your service instance information:
-
-    ```
-    http://{eureka_hostname}:{eureka_port}/eureka/apps/{serviceId}
-    ```
-
- 2. Check your service metadata.
-
-    **Response example:**
-
-    ```xml
-    <application>
-        <name>{serviceId}</name>
-        <instanceId>{hostname}:{serviceId}:{port}</instanceId>
-        <hostName>{hostname}</hostName>
-        <app>{serviceId}</app>
-        <ipAddr>{ipAddress}</ipAddr>
-        <status>UP</status>
-        <port enabled="false">{port}</port>
-        <securePort enabled="true">{port}</securePort>
-        <vipAddress>{serviceId}</vipAddress>
-        <secureVipAddress>{serviceId}</secureVipAddress>
-        <metadata>
-                <apiml.service.description>Sample API service showing how to onboard the service</apiml.service.description>
-                <apiml.routes.api__v1.gatewayUrl>api/v1</apiml.routes.api__v1.gatewayUrl>
-                <apiml.catalog.tile.version>1.0.1</apiml.catalog.tile.version>
-                <apiml.routes.ws__v1.serviceUrl>/sampleclient/ws</apiml.routes.ws__v1.serviceUrl>
-                <apiml.routes.ws__v1.gatewayUrl>ws/v1</apiml.routes.ws__v1.gatewayUrl>
-                <apiml.catalog.tile.description>Applications which demonstrate how to make a service integrated to the API Mediation Layer ecosystem</apiml.catalog.tile.description>
-                <apiml.service.title>Sample Service</apiml.service.title>
-                <apiml.routes.ui__v1.gatewayUrl>ui/v1</apiml.routes.ui__v1.gatewayUrl>
-                <apiml.apiInfo.0.apiId>org.zowe.sampleclient</apiml.apiInfo.0.apiId>
-                <apiml.apiInfo.0.gatewayUrl>api/v1</apiml.apiInfo.0.gatewayUrl>
-                <apiml.apiInfo.0.documentationUrl>https://www.zowe.org</apiml.apiInfo.0.documentationUrl>
-                <apiml.catalog.tile.id>samples</apiml.catalog.tile.id>
-                <apiml.routes.ui__v1.serviceUrl>/sampleclient</apiml.routes.ui__v1.serviceUrl>
-                <apiml.routes.api__v1.serviceUrl>/sampleclient/api/v1</apiml.routes.api__v1.serviceUrl>
-                <apiml.apiInfo.0.swaggerUrl>https://hostname/sampleclient/api-doc</apiml.apiInfo.0.swaggerUrl>
-                <apiml.catalog.tile.title>Sample API Mediation Layer Applications</apiml.catalog.tile.title>
-        </metadata>
-    </application>
-    ```
-
-  3. Check that your API service is displayed in the API Catalog and all information including API documentation is correct.
-
-  4. Check that you can access your API service endpoints through the Gateway.
-
-  5. (Optional) Check that you can access your API service endpoints directly outside of the Gateway.
+  3. (Optional) Check that you can access your API service endpoints directly outside of the Gateway.
 
 ## External Resources
 

@@ -20,7 +20,7 @@
 </ul>
 <h4 id="options">Options</h4>
 <ul>
-<li><p><code>--block-size</code>  | <code>--bs</code> <em>(number)</em></p>
+<li><p><code>--block-size</code>  | <code>--bs</code> | <code>--blksize</code> <em>(number)</em></p>
 <ul>
 <li><p>The block size for the data set (for example, 6160)</p>
 <p>Default value: 6160</p>
@@ -32,17 +32,17 @@
 <li>The SMS data class to use for the allocation</li>
 </ul>
 </li>
-<li><p><code>--data-set-type</code>  | <code>--dst</code> <em>(string)</em></p>
+<li><p><code>--data-set-type</code>  | <code>--dst</code> | <code>--dsntype</code> <em>(string)</em></p>
 <ul>
 <li>The data set type</li>
 </ul>
 </li>
-<li><p><code>--device-type</code>  | <code>--dt</code> <em>(string)</em></p>
+<li><p><code>--device-type</code>  | <code>--dt</code> | <code>--unit</code> <em>(string)</em></p>
 <ul>
 <li>The device type, also known as &#39;unit&#39;</li>
 </ul>
 </li>
-<li><p><code>--directory-blocks</code>  | <code>--db</code> <em>(number)</em></p>
+<li><p><code>--directory-blocks</code>  | <code>--db</code> | <code>--dirblks</code> <em>(number)</em></p>
 <ul>
 <li><p>The number of directory blocks (for example, 25)</p>
 <p>Default value: 5</p>
@@ -61,14 +61,14 @@
 </li>
 </ul>
 </li>
-<li><p><code>--record-format</code>  | <code>--rf</code> <em>(string)</em></p>
+<li><p><code>--record-format</code>  | <code>--rf</code> | <code>--recfm</code> <em>(string)</em></p>
 <ul>
 <li><p>The record format for the data set (for example, FB for &quot;Fixed Block&quot;)</p>
 <p>Default value: FB</p>
 </li>
 </ul>
 </li>
-<li><p><code>--record-length</code>  | <code>--rl</code> <em>(number)</em></p>
+<li><p><code>--record-length</code>  | <code>--rl</code> | <code>--lrecl</code> <em>(number)</em></p>
 <ul>
 <li><p>The logical record length. Analogous to the length of a line (for example, 80)</p>
 <p>Default value: 80</p>
@@ -97,10 +97,17 @@ becomes ~10% of the primary).</li>
 <li>The SMS storage class to use for the allocation</li>
 </ul>
 </li>
-<li><p><code>--volume-serial</code>  | <code>--vs</code> <em>(string)</em></p>
+<li><p><code>--volume-serial</code>  | <code>--vs</code> | <code>--volser</code> <em>(string)</em></p>
 <ul>
 <li>The volume serial (VOLSER) on which you want the data set to be placed. A
 VOLSER is analogous to a drive name on a PC.</li>
+</ul>
+</li>
+<li><p><code>--responseTimeout</code>  | <code>--rto</code> <em>(number)</em></p>
+<ul>
+<li>The maximum amount of time in seconds the z/OSMF Files TSO servlet should run
+before returning a response. Any request exceeding this amount of time will be
+terminated and return an error. Allowed values: 5 - 600</li>
 </ul>
 </li>
 </ul>
@@ -148,6 +155,25 @@ specify this option if you are not using an API mediation layer.</li>
 <li><p><code>--zosmf-profile</code>  | <code>--zosmf-p</code> <em>(string)</em></p>
 <ul>
 <li>The name of a (zosmf) profile to load for this command execution.</li>
+</ul>
+</li>
+<li><p><code>--base-profile</code>  | <code>--base-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (base) profile to load for this command execution.</li>
+</ul>
+</li>
+</ul>
+<h4 id="base-connection-options">Base Connection Options</h4>
+<ul>
+<li><p><code>--token-type</code>  | <code>--tt</code> <em>(string)</em></p>
+<ul>
+<li>The type of token to get and use for the API. Omit this option to use the
+default token type, which is provided by &#39;zowe auth login&#39;.</li>
+</ul>
+</li>
+<li><p><code>--token-value</code>  | <code>--tv</code> <em>(string)</em></p>
+<ul>
+<li>The value of the token to pass to the API.</li>
 </ul>
 </li>
 </ul>

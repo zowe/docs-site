@@ -27,10 +27,23 @@ performed. The data transfer process returns each line as-is, without
 translation. No delimiters are added between records.</li>
 </ul>
 </li>
+<li><p><code>--encoding</code>  | <code>--ec</code> <em>(number)</em></p>
+<ul>
+<li>Download the file content with encoding mode, which means that data conversion
+is performed using the file encoding specified.</li>
+</ul>
+</li>
 <li><p><code>--file</code>  | <code>-f</code> <em>(string)</em></p>
 <ul>
 <li>The path to the local file where you want to download the content. When you
 omit the option, the command generates a file name automatically for you.</li>
+</ul>
+</li>
+<li><p><code>--responseTimeout</code>  | <code>--rto</code> <em>(number)</em></p>
+<ul>
+<li>The maximum amount of time in seconds the z/OSMF Files TSO servlet should run
+before returning a response. Any request exceeding this amount of time will be
+terminated and return an error. Allowed values: 5 - 600</li>
 </ul>
 </li>
 </ul>
@@ -78,6 +91,25 @@ specify this option if you are not using an API mediation layer.</li>
 <li><p><code>--zosmf-profile</code>  | <code>--zosmf-p</code> <em>(string)</em></p>
 <ul>
 <li>The name of a (zosmf) profile to load for this command execution.</li>
+</ul>
+</li>
+<li><p><code>--base-profile</code>  | <code>--base-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (base) profile to load for this command execution.</li>
+</ul>
+</li>
+</ul>
+<h4 id="base-connection-options">Base Connection Options</h4>
+<ul>
+<li><p><code>--token-type</code>  | <code>--tt</code> <em>(string)</em></p>
+<ul>
+<li>The type of token to get and use for the API. Omit this option to use the
+default token type, which is provided by &#39;zowe auth login&#39;.</li>
+</ul>
+</li>
+<li><p><code>--token-value</code>  | <code>--tv</code> <em>(string)</em></p>
+<ul>
+<li>The value of the token to pass to the API.</li>
 </ul>
 </li>
 </ul>

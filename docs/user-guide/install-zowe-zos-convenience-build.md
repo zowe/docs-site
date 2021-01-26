@@ -1,6 +1,6 @@
 # Installing Zowe runtime from a convenience build
 
-You install the Zowe&trade; convenience build by obtaining a PAX file for a build and using this to create the Zowe runtime environment.  
+You install the Zowe&trade; convenience build by obtaining a PAX file for a build and using this to create the Zowe runtime environment.
 
 After you [obtain the PAX file](#obtaining-and-preparing-the-convenience-build), you can take the following steps to complete the installation.
 
@@ -12,7 +12,7 @@ After you [obtain the PAX file](#obtaining-and-preparing-the-convenience-build),
 
 ## Obtaining and preparing the convenience build
 
-The Zowe installation file for Zowe z/OS components is distributed as a PAX file that contains the runtimes and the scripts to install and launch the z/OS runtime. 
+The Zowe installation file for Zowe z/OS components is distributed as a PAX file that contains the runtimes and the scripts to install and launch the z/OS runtime.
 
 For each release, there is a PAX file that is named `zowe-V.v.p.pax`, where
 
@@ -22,12 +22,12 @@ For each release, there is a PAX file that is named `zowe-V.v.p.pax`, where
 
 The numbers are incremented each time a release is created, so the higher the numbers, the later the release.  For more information about the Zowe release number, see [Understanding the Zowe release](../troubleshoot/troubleshoot-zowe-release.md).
 
-To download the PAX file, open your web browser and click the **Zowe z/OS Components** button on the [Zowe Download](https://zowe.org/#download) website to save it to a folder on your desktop. 
+To download the PAX file, open your web browser and click the **Zowe z/OS Convenience build** button on the [Zowe Download](https://www.zowe.org/download.html) website to save it to a folder on your desktop.
 
-After you have the `zowe-V.v.p.PAX` file, follow these steps. 
+After you have the `zowe-V.v.p.PAX` file, follow these steps.
 
-1. **(Optional)** Verify the integrity of the PAX file to ensure that the file you download is officially distributed by the Zowe project.  This step is only needed if you are unsure of the provenance of the PAX file and want to ensure that it is an original Zowe release driver. 
-   
+1. **(Optional)** Verify the integrity of the PAX file to ensure that the file you download is officially distributed by the Zowe project.  This step is only needed if you are unsure of the provenance of the PAX file and want to ensure that it is an original Zowe release driver.
+
    Follow the instructions in the **Verify Hash and Signature of Zowe Binary** section on the post-download page `https://d1xozlojgf8voe.cloudfront.net/post_download.html?version=V.v.p` after you download the official build. For example, the post-download page for Version 1.4.0 is [https://d1xozlojgf8voe.cloudfront.net/post_download.html?version=1.4.0](https://d1xozlojgf8voe.cloudfront.net/post_download.html?version=1.4.0).
 
 2. Transfer the PAX file to z/OS.
@@ -61,7 +61,7 @@ After you have the `zowe-V.v.p.PAX` file, follow these steps.
     - To see what directory you are in, type `pwd`.
     - To switch directory, type `cd`.
     - To list the contents of a directory, type `ls`.
-    - To create a directory, type `mkdir`.   
+    - To create a directory, type `mkdir`.
 
     d. When you are in the directory you want to transfer the Zowe PAX file into, issue the following command:
 
@@ -71,13 +71,13 @@ After you have the `zowe-V.v.p.PAX` file, follow these steps.
 
     Where _zowe-V.v.p_ is a variable that indicates the name of the PAX file you downloaded.
 
-    **Note:** When your terminal is connected to z/OS through FTP or SFTP, you can prepend commands with `l` to have them issued against your desktop.  To list the contents of a directory on your desktop, type `lls` where `ls` lists contents of a directory on z/OS.  
+    **Note:** When your terminal is connected to z/OS through FTP or SFTP, you can prepend commands with `l` to have them issued against your desktop.  To list the contents of a directory on your desktop, type `lls` where `ls` lists contents of a directory on z/OS.
 
 3. When the PAX file is transferred, expand the PAX file by issuing the following command in an SSH session:
 
    ```
    pax -ppx -rf <zowe-V.v.p>.pax
-   ```  
+   ```
 
    Where _zowe-V.v.p_ is a variable that indicates the name of the PAX file you downloaded.
 
@@ -109,15 +109,15 @@ Navigate to the directory where the installation archive is extracted. Locate th
 
 ### Step 2: Choose a runtime USS folder
 
-For Zowe to execute, it must be installed into a runtime directory or `<RUNTIME_DIR>`.  This directory will be created during the installation process and the user who performs the installation must have write permission for the installation to succeed.  
+For Zowe to execute, it must be installed into a runtime directory or `<RUNTIME_DIR>`.  This directory will be created during the installation process and the user who performs the installation must have write permission for the installation to succeed.
 
-If you are installing an upgrade of Zowe, the runtime directory used should be the existing `<RUNTIME_DIR>` of where the previous Zowe was installed.  Upgrading Zowe is only supported for Version 1.8 or later.  
+If you are installing an upgrade of Zowe, the runtime directory used should be the existing `<RUNTIME_DIR>` of where the previous Zowe was installed.  Upgrading Zowe is only supported for Version 1.8 or later.
 
-For an enterprise installation of Zowe, a `<RUNTIME_DIR>` could be `/usr/lpp/zowe/v1`.  For users who test Zowe for themselves, it could be `~/zowe/v1`.  
+For an enterprise installation of Zowe, a `<RUNTIME_DIR>` could be `/usr/lpp/zowe/v1`.  For users who test Zowe for themselves, it could be `~/zowe/v1`.
 
 ### Step 3: Choose a dataset HLQ for the SAMPLIB and LOADLIB
 
-During installation, two PDS data sets are created: the `SZWESAMP` data set and the `SZWEAUTH` data set.  These are not used at runtime and there is a further step needed to promote these to the z/OS execution environment but they contain required JCL and load modules. 
+During installation, two PDS data sets are created: the `SZWESAMP` data set and the `SZWEAUTH` data set.  These are not used at runtime and there is a further step needed to promote these to the z/OS execution environment but they contain required JCL and load modules.
 
 You must know the `<DATA_SET_PREFIX>` into which to create the `SZWESAMP` and the `SZWEAUTH` PDS data sets.  If a `<DATA_SET_PREFIX>` of `OPENSRC.ZWE` is specified, the PDS data sets `OPENSRC.ZWE.SZWESAMP` and `OPENSRC.ZWE.SZWEAUTH` will be created during installation.  The storage requirements are included here.
 
@@ -128,11 +128,13 @@ SZWESAMP | Samples | ANY | U | PDSE | FB | 80 | 15 | 5
 
 The `SZWESAMP` data set contains the following members.
 
-Member name | Purpose  
+Member name | Purpose
 ---|---
 ZWESECUR | JCL member to configure z/OS user IDs and permissions required to run Zowe
-ZWENOSEC | JCL member to undo the configuration steps performed in ZWESECUR and revert z/OS environment changes.  
-ZWESVSTC | JCL to start Zowe 
+ZWENOSEC | JCL member to undo the configuration steps performed in ZWESECUR and revert z/OS environment changes.
+ZWEKRING | JCL member to configure a z/OS keyring containing the Zowe certificate
+ZWENOKYR | JCL member to undo the configuration steps performed in ZWEKRING
+ZWESVSTC | JCL to start Zowe
 ZWEXMSTC | JCL to start the Zowe cross memory server
 ZWESIP00 | Parmlib member for the cross memory server
 ZWESASTC | Started task JCL for the cross memory Auxiliary server
@@ -146,11 +148,11 @@ Member name | Purpose
 ZWESIS01 | Load module for the cross memory server
 ZWESAUX  | Load module for the cross memory server's auxiliary address space
 
-#### Step 3a: Choose a log directory (optional) 
+#### Step 3a: Choose a log directory (optional)
 
 By default, during installation and configuration, various logs will be created in `/global/zowe/logs` if it is writable, or `~/zowe/logs`. If neither of these directories exists, or is writable by the user who installs Zowe, or you want to override and provide your own directory that contains logs, you can specify this with the `-l` parameter.
 
-Next, you can install the Zowe runtime via different methods. 
+Next, you can install the Zowe runtime via different methods.
 
 ### Step 4 (Method 1): Install the Zowe runtime using shell script
 
@@ -164,7 +166,7 @@ In this documentation, the steps of creating the runtime directory and configuri
 
 ### Step 4 (Method 2): Install the Zowe runtime using z/OSMF Workflow
 
-A z/OSMF workflow provides the ability to encapsulate a task as a set of dependent steps. These can be divided across different areas of an organization and can form the basis for the automated auditable processes. 
+A z/OSMF workflow provides the ability to encapsulate a task as a set of dependent steps. These can be divided across different areas of an organization and can form the basis for the automated auditable processes.
 
 z/OSMF workflows consist of a workflow definition that users then operate and manage as workflow tasks. z/OSMF Workflow tasks can help to guide the activities of system programmers, security administrators, and others who are responsible for managing the configuration of the system.  For more information on z/OSMF workflows, see [z/OS 2.2 workflows](https://www.ibm.com/support/knowledgecenter/SSLTBW_2.2.0/com.ibm.zosmfworkflows.help.doc/izuWFhpAboutWorkflows.html), [z/OS 2.3 workflows](https://www.ibm.com/support/knowledgecenter/SSLTBW_2.3.0/com.ibm.zosmfworkflows.help.doc/izuWFhpAboutWorkflows.html), and [z/OS 2.4 workflows](https://www.ibm.com/support/knowledgecenter/SSLTBW_2.4.0/com.ibm.zosmfworkflows.help.doc/izuWFhpAboutWorkflows.html).
 
@@ -175,8 +177,8 @@ Perform the following steps to register and execute the Zowe runtime installatio
  1.	Log in to the z/OSMF web interface.
  2.	Select **Workflows** from the navigation tree.
  3.	Select **Create Workflow** from the **Actions** menu.
- 4.	Enter the complete path to the workflow definition file in the **Workflow Definition field**.   
-    -  The path to the workflow definition file is `<extracted_pax_folder>/files/workflows/ZWEWRF04.xml file.` 
+ 4.	Enter the complete path to the workflow definition file in the **Workflow Definition field**.
+    -  The path to the workflow definition file is `<extracted_pax_folder>/files/workflows/ZWEWRF04.xml file.`
  5. **(Optional)** Enter the path to the customized variable input file that you prepared in advance.
     - The path to the variable input file is located is `<extracted_pax_folder>/files/workflows/ZWEWRF04.xml file.`
     - Create a copy of the variable input file. Modify the file as necessary according to the built-in comments. Set the field to the path where the new file is located. When you execute the workflow, the values from the variable input file override the workflow variables default values.
@@ -213,11 +215,11 @@ Perform the following steps to register and execute the Zowe runtime installatio
 
 For general information about how to execute z/OSMF workflow steps, watch the [z/OSMF Workflows Tutorial](https://www.youtube.com/watch?v=KLKi7bhKBlE&feature=youtu.be).
 
-After you execute each step, the step is marked as Complete. The workflow is executed. 
+After you execute each step, the step is marked as Complete. The workflow is executed.
 
 ## Next steps
 
-For a z/OS system where you install Zowe 1.8 or later for the first time, follow the instructions in [Stage 3: Configure the Zowe runtime](install-zos.md#stage-3-configure-the-zowe-runtime) that describes how to [configure the z/OS environment](configure-zos-system.md) and [create a keystore directory](configure-certificates.md).  
+For a z/OS system where you install Zowe 1.8 or later for the first time, follow the instructions in [Stage 3: Configure the Zowe runtime](install-zos.md#stage-3-configure-the-zowe-runtime) that describes how to [configure the z/OS environment](configure-zos-system.md) and [create a keystore directory](configure-certificates.md).
 
 If you have previously installed Zowe 1.8 or later, then you already have an instance directory that needs to be updated. If you have not installed Zowe 1.8 or later before, you will need to create an instance directory to be able to launch Zowe. For instructions, see [Creating and configuring the Zowe instance directory](configure-instance-directory.md).
 

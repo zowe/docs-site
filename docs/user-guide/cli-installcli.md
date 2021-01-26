@@ -11,6 +11,8 @@ Use one of the following methods to install Zowe CLI.
 - [Installing Zowe CLI from a local package](#installing-zowe-cli-from-a-local-package)
 - [Installing Zowe CLI from an online registry](#installing-zowe-cli-from-an-online-registry)
 
+**Note:** If you do not have access to the public npm registry at your site, you might want to install the CLI via a proxy server. See [Installing Zowe CLI Via Proxy](install-cli-via-proxy.md) for more information.
+
 If you encounter problems when you attempt to install Zowe CLI, see [Troubleshooting Zowe CLI](../troubleshoot/cli/troubleshoot-cli.md).
 
 ### Installing Zowe CLI from a local package
@@ -21,13 +23,17 @@ If you do not have internet access at your site, use the following method to ins
 
 1. Address the following software requirements for the core CLI:
 
-    - Install [Node.js V8.0 or higher LTS versions](https://nodejs.org/en/download/)
+- **Node.js:** Install a currently supported Node.js LTS version. For an up-to-date list of supported LTS versions, see [Nodejs.org](https://nodejs.org/en/about/releases/).
 
-        **Tip:** You might need to restart the command prompt after installing Node.js. Issue the command `node --version` to verify that Node.js is installed.
+    ::: tip
+    You might need to restart the command prompt after installing Node.js. Issue the command `node --version` to verify that Node.js is installed.
+    :::
 
-    - Verify that you have **Node Package Manager (npm)** that is compatible with your version of Node.js. For a list of compatible versions, see [Node.js Previous Releases](https://nodejs.org/en/download/releases/).
+- **npm:** Install a version of Node Package Manager (npm) that is compatible with your version of Node.js.
 
-        **Tip:** npm is included with the Node.js installation. Issue the command `npm --version` to verify the version of npm that is installed.
+    ::: tip
+    Npm is included with most Node.js installations. Issue the command `npm --version` to check your current version. You can reference the [Node.js release matrix](https://nodejs.org/en/download/releases/) to verify that the versions are compatible.
+    :::
 
 2. **(Linux only)** Address the following software requirements for Secure Credential Storage:
 
@@ -35,7 +41,7 @@ If you do not have internet access at your site, use the following method to ins
 
    - **(Headless Linux)** Follow the procedure documented in the [SCS plug-in Readme](https://github.com/zowe/zowe-cli-scs-plugin/blob/master/README.md#software-requirements).
 
-3. Navigate to [Zowe.org Downloads](https://zowe.org/#download) and click the **CLI Core** button to download the core package. The "core" includes Zowe CLI and Secure Credential Store, which enhances security by encrypting your username and password.
+3. Navigate to [Zowe.org Downloads](https://www.zowe.org/download.html) and click the **CLI Core** button to download the core package. The "core" includes Zowe CLI and Secure Credential Store, which enhances security by encrypting your username and password.
 
     A file named `zowe-cli-package-v.r.m.zip` is downloaded to your computer
 
@@ -69,7 +75,7 @@ If you do not have internet access at your site, use the following method to ins
 
     **Important:** Ensure that you meet the [Software requirements for CLI plug-ins](cli-swreqplugins.md). You can install most plug-ins without meeting the requirements, but they will not function until you configure the back-end APIs. The IBM Db2 plug-in requires [additional configuration to install](cli-db2plugin.md#installing).
 
-Zowe CLI is installed on your computer. Issue the `zowe --help` command to view a list of available commands. For information about how to connect the CLI to the mainframe (using command-line options, user profiles, or environment variables), see [Defining CLI connection details](cli-configuringcli.md#defining-zowe-cli-connection-details). You can also [test your connection to z/OSMF](cli-configuringcli.md#testing-zowe-cli-connection-to-z-osmf) with or without a profile.
+Zowe CLI is installed on your computer. Issue the `zowe --help` command to view a list of available commands. For information about how to connect the CLI to the mainframe, create profiles, integrate with API ML, and more, see [Using CLI](cli-usingcli.md).
 
 ### Installing Zowe CLI from an online registry
 
@@ -79,13 +85,17 @@ If your computer is connected to the Internet, you can use the following method 
 
 1. Address the following software requirements for the core CLI:
 
-    - Install [Node.js V8.0 or higher LTS versions](https://nodejs.org/en/download/)
+- **Node.js:** Install a currently supported Node.js LTS version. For an up-to-date list of supported LTS versions, see [Nodejs.org](https://nodejs.org/en/about/releases/).
 
-        **Tip:** You might need to restart the command prompt after installing Node.js. Issue the command `node --version` to verify that Node.js is installed.
+    ::: tip
+    You might need to restart the command prompt after installing Node.js. Issue the command `node --version` to verify that Node.js is installed.
+    :::
 
-    - Verify that you have **Node Package Manager (npm)** that is compatible with your version of Node.js. For a list of compatible versions, see [Node.js Previous Releases](https://nodejs.org/en/download/releases/).
+- **npm:** Install a version of Node Package Manager (npm) that is compatible with your version of Node.js.
 
-        **Tip:** npm is included with the Node.js installation. Issue the command `npm --version` to verify the version of npm that is installed.
+    ::: tip
+    Npm is included with most Node.js installations. Issue the command `npm --version` to check your current version. You can reference the [Node.js release matrix](https://nodejs.org/en/download/releases/) to verify that the versions are compatible.
+    :::
 
 2. **(Linux only)** Address the following software requirements for Secure Credential Storage:
 
@@ -115,7 +125,7 @@ If your computer is connected to the Internet, you can use the following method 
     zowe plugins install @zowe/cics-for-zowe-cli@zowe-v1-lts @zowe/db2-for-zowe-cli@zowe-v1-lts @zowe/ims-for-zowe-cli@zowe-v1-lts @zowe/mq-for-zowe-cli@zowe-v1-lts @zowe/zos-ftp-for-zowe-cli@zowe-v1-lts
     ```
 
-After you install and configure Zowe CLI, issue the `zowe --help` command to view a list of available commands. For information about how to connect the CLI to the mainframe (using command-line options, user profiles, or environment variables), see [Defining CLI connection details](cli-configuringcli.md#defining-zowe-cli-connection-details). You can also [test your connection to z/OSMF](cli-configuringcli.md#testing-zowe-cli-connection-to-z-osmf) with or without a profile.
+Zowe CLI is installed on your computer. Issue the `zowe --help` command to view a list of available commands. For information about how to connect the CLI to the mainframe, create profiles, integrate with API ML, and more, see [Using CLI](cli-usingcli.md).
 
 
 
