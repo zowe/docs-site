@@ -44,7 +44,7 @@ When all services are fully initialized, there will be three green ticks.
 
 ### Check the startup of Zowe Desktop 
 
-The Zowe Desktop address space is named `ZWE1DS1`.  During its initialization process, the desktop loads its plug-ins and writes a message `ZWED0031I` when it is completed.  
+The Zowe Desktop address space is named `ZWE1DS1`. During its initialization process, the desktop loads its plug-ins and writes a message `ZWED0031I` when it is completed.  
 
 ```
 2021-01-22 14:35:00.300 <ZWED:16842882> ZWESVUSR INFO (_zsf.install,index.js:340) ZWED0031I - Server is ready at https://0.0.0.0:8554, Plugins successfully loaded: 100% (21/21)
@@ -68,6 +68,8 @@ When the Zowe desktop and the API Gateway are both started in a launch configura
 
 ```2021-01-22 14:36:01.846 <ZWED:16842882> ZWESVUSR INFO (_zsf.apiml,apiml.js:218) ZWED0021I - Eureka Client Registered from 127.0.0.1. Available at https://<HOSTNAME>:<APIDISCOVERYPORT>/ui/v1/zlux/
 ```
+
+If you try to log into the Zowe desktop too early before the Eureka client registration has occurred you may get an **Authentication failed** message on the login page because the APIML handshake is incomplete.  If this occurs wait for the registration to be complete as indiciated by the `ZWED0021I` message.
 
 ### Check the startup of Zowe File and Jobs API servers
 
