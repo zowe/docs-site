@@ -149,13 +149,33 @@ If the utility `db2connectactivate` has not been executed against the Db2 databa
 
 ## Creating a user profile
 
-Before you start using the IBM Db2 plug-in, create a profile.
-
-Issue the command `-DISPLAY DDF` in the SPUFI or ask your DBA for the following information:
+Before you start using the IBM Db2 plug-in, create a profile with details of the Db2 system you're connecting to.
 
   - The Db2 server host name
   - The Db2 server port number
   - The database name (you can also use the location)
+
+To get this information there are two methods
+
+- Issue the command `-DISPLAY DDF` in the Db2 SPUFI command on z/OS
+
+or
+
+- View the JES spool for the MSTR job for the Db2 subsystem and search for the message `DSNL004I`. For example, for the database DI2E the JES job `DI2EMSTR` will have an entry with similar to:
+```
+DSNL004I  #DI2E DDF START COMPLETE  025        
+           LOCATION  DSNV102E                  
+           LU        GBIBMIYA.IYCYZDBE         
+           GENERICLU -NONE                     
+           DOMAIN    host.ip.address.com  
+           TCPPORT   40100                     
+           SECPORT   30100
+```
+
+The DOMAIN is used for the <hostname>, the TCPPORT for the <port> and the LOCATION for the <database> in the zowe create profile command.  
+
+In addition you'll
+
   - The user name
   - The password
   - If your Db2 systems use a secure connection, you can also
