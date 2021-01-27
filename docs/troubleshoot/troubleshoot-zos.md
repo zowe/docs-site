@@ -2,6 +2,99 @@
 
 The following topics contain information that can help you troubleshoot problems when you encounter unexpected behavior installing Zowe z/OS components or starting Zowe's `ZWESVSTC` started task.
 
+
+## How to check if `ZWESVSTC` startup is successful 
+
+The `ZWESVSTC` started task on z/OS brings up a number of address spaces.  There is no single **Zowe has launched and is ready to run** message as the sequence of address spaces initialization is environment-dependent, although the message ID `ZWED0021I` is typically the last one that is logged.  More details on each subsystem and their startup messages are described in the following sections.
+
+- [Check the startup of API Mediation Layer](#check-the-startup-of-api-mediation-layer)
+- [Check the startup of Zowe Desktop](#check-the-startup-of-zowe-desktop)
+- [Check the startup of Zowe File and Jobs API servers](#check-the-startup-of-zowe-file-and-jobs-api-servers)
+- [Check the startup of Zowe Secure Services](#check-the-startup-of-zowe-secure-services)
+    
+To check that Zowe has started successfully, the most complete way is to check that each component successfully completed its initialization. Each component writes messages to the JES `STDOUT` and writes severe errors to the `STDERR` job spool file.  
+
+To learn more about the Zowe components and their role, see [Zowe Architecture](../getting-started/zowe-architecture.md). It is possible to configure Zowe to bring up only a subset of its components by using the `LAUNCH_COMPONENT_GROUPS` variable in the `instance.env` file. See [Component Groups](../user-guide/configure-instance-directory.md#component-groups) for more information.  
+
+To monitor `ZWESVSTC` to check whether each component has launched successfully, you can use one of the following ways: 
+- A good approach is to look at the active address spaces by using a command such as `DA` in SDSF. Each address space is named to identify its component, see [Address space names](../user-guide/configure-instance-directory.md#address-space-names).
+- You can also look for particular messages in the `STDOUT` Job spool file.
+
+### Check the startup of API Mediation Layer 
+
+The API Mediation Layer has three address spaces: API Catalog `ZWE1AC`, API Gateway `ZWE1AG`, and API Discovery `ZWE1AD`.  These might have been changed from their defaults. For more information, see [Address space names](../user-guide/configure-instance-directory.md#address-space-names). 
+
+To check whether the API mediation layer is fully initialized, you can look for the `ZWEAM000I` message. Each component writes a successful startup message `ZWEAM000I` to the JES as shown below. The message also indicates the CPU of seconds spent. Check that each address space has written this message.
+
+```
+021-01-12 17:48:23.738 <ZWEADS1:main:33557015> ZWESVUSR INFO  (o.z.a.p.s.ServiceStartupEventHandler) `ZWEAM000I` Discovery Service started in 97.725 seconds
+...
+2021-01-12 17:48:30.145 <ZWEAGW1:main:50334212> ZWESVUSR INFO  (o.z.a.p.s.ServiceStartupEventHandler) `ZWEAM000I` Gateway Service started in 104.248 seconds
+...
+2021-01-12 17:48:31.036 <ZWEAAC1:main:33557009> ZWESVUSR INFO  (o.z.a.p.s.ServiceStartupEventHandler) `ZWEAM000I` API Catalog Service started in 105.127 seconds
+```
+
+As well as looking for `ZWEAM00I` in the JES log, you can also log in to the gateway homepage and check the service status indicator.  If there is a red or yellow tick beside one of its three services, the components are still starting.  
+
+<img src="../images/api-mediation/apiml-startup.png" alt="Zowe API Mediation Layer Startup" width="600px"/> 
+
+When all services are fully initialized, there will be three green ticks.
+
+<img src="../images/api-mediation/apiml-started.png" alt="Zowe API Mediation Layer Startup" width="300px"/> 
+
+### Check the startup of Zowe Desktop 
+
+The Zowe Desktop address space is named `ZWE1DS1`. During its initialization process, the desktop loads its plug-ins and writes a message `ZWED0031I` when it is completed.  
+
+```
+2021-01-22 14:35:00.300 <ZWED:16842882> ZWESVUSR INFO (_zsf.install,index.js:340) ZWED0031I - Server is ready at https://0.0.0.0:8554, Plugins successfully loaded: 100% (21/21)
+```
+
+The `ZWED0031I` message includes a count of the number of loaded plug-ins as well as the total number of plug-ins, for example `Plugins successfully loaded: 100% (21/21)`.  A failed plug-in load will not abort the launch of the desktop.
+
+In the preceding message example, it indicates that 21 plug-ins have loaded successfully. Each of these plug-ins writes its individual message `ZWED0290I`, so `ZWED0031I` indicates 21 plug-ins have loaded and there will be 21 instances of `ZWED0290I`, for example:
+
+```
+2021-01-22 14:34:58.762 <ZWED:16842882> ZWESVUSR INFO (_zsf.install,index.js:263) ZWED0290I - Plugin (org.zowe.zosmf.workflows) loaded. Successful: 5% (1/21) Attempted: 5% (1/21)
+...
+2021-01-22 14:35:00.114 <ZWED:16842882> ZWESVUSR INFO (_zsf.install,index.js:263) ZWED0290I - Plugin (org.zowe.zlux.appmanager.app.propview) loaded. Successful: 52% (11/21) Attempted: 52% (11/21)
+...
+2021-01-22 14:35:00.278 <ZWED:16842882> ZWESVUSR INFO (_zsf.install,index.js:263) ZWED0290I - Plugin (org.zowe.api.catalog) loaded. Successful: 95% (20/21) Attempted: 95% (20/21)
+```
+
+Messages for `ZWED0290I` will be written when the JES Explorer `org.zowe.explorer-jes`, the MVS Explorer `org.zowe.explorer-mvs`, and the USS Explorer `org.zowe.explorer-uss` are loaded. 
+
+When the Zowe desktop and the API Gateway are both started in a launch configuration, it will register itself with the API Gateway after the Zowe desktop has started. This step must be completed before a user is able to successfully log in, as the API Mediation layer is used as the backing authentication service.  The message that is written to indicate that the registration has been successful is `ZWED0021I`, for example
+
+```2021-01-22 14:36:01.846 <ZWED:16842882> ZWESVUSR INFO (_zsf.apiml,apiml.js:218) ZWED0021I - Eureka Client Registered from 127.0.0.1. Available at https://<HOSTNAME>:<APIDISCOVERYPORT>/ui/v1/zlux/
+```
+
+If you try to log into the Zowe desktop too early before the Eureka client registration has occurred you may get an **Authentication failed** message on the login page because the APIML handshake is incomplete.  If this occurs wait for the registration to be complete as indiciated by the `ZWED0021I` message.
+
+### Check the startup of Zowe File and Jobs API servers
+
+Zowe has two servers that are used to provide API services for jobs and files. The Jobs API server address space is named `ZWE1EF` and the Files API server address space is named `ZWE1EJ`.  When these have successfully started, a message `Started <name> in <nn> seconds (JVM running for <nn>)` is written to the log, for example:
+
+```
+2021-01-22 14:35:17.869 <ZWEEAJ1:main:50397279> ZWESVUSR INFO  (o.z.j.JesJobsApplication,StartupInfoLogger.java:59) Started JesJobsApplication in 29.867 seconds (JVM running for 37.296)
+...
+2021-01-22 14:35:21.567 <ZWEEAD1:main:67174496> ZWESVUSR INFO  (o.z.DataSetsAndUnixFilesApplication,StartupInfoLogger.java:59) Started DataSetsAndUnixFilesApplication in 33.597 seconds (JVM running for 41.002)
+```
+
+### Check the startup of Zowe Secure Services
+
+The zssServer is used for secure services for the Zowe desktop.  
+
+```
+ZWES1013I ZSS Server has started. Version '1.18.0+20201214' 
+```
+
+The zssServer will register itself with the cross memory server running under the address space `ZWESISTC`.  You can use the attach message ID `ZWES1014I` to check that this has occurred successfully.  If this message contains a nonzero return code in the `cmsRC=` value, then a failure occurred. For more information on how to diagnose these, see [ZSS server unable to communicate with X-MEM](./app-framework/app-troubleshoot.md#zss-server-unable-to-communicate-with-x-mem).
+
+```
+ZWES1014I ZIS status - 'Ok' (name='ZWESIS_STD      ', cmsRC='0', description='Ok', clientVersion='2')
+```
+
 ## Unable to launch Zowe with { FSUM7351 }
 
 When you run `zowe-start.sh` from a unix shell path `<zowe-instance-directory>/bin`, you encounter the following error:

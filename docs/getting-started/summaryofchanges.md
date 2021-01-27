@@ -58,6 +58,20 @@ You can now start the API Mediation Layer independently of other Zowe components
 
 #### Zowe App Server
 
+- Dispatcher actions have been added to the iFrame adapter. [#302](https://github.com/zowe/zlux-app-manager/pull/302) 
+- Support has been added to a new destination property for iFrame pluginDefinition.json. iFrame with the new destination property will now make requests to /web/iFrame. [#296](https://github.com/zowe/zlux-app-manager/pull/296)
+- The compression-webpack-plugin has been updated from 3.1.0 to 4.0.0 [#304](https://github.com/zowe/zlux-app-manager/pull/304)
+- Support for a new destination property to iFrame pluginDefinition.json has been added, as well as a new double iFrame default template. [#257](https://github.com/zowe/zlux-server-framework/pull/257)
+- Axios has been updated from 0.19.2 to 0.21.1 in `/test/webapp/websocket` [#259](https://github.com/zowe/zlux-server-framework/pull/259)
+- The option to refresh file content has been added to the Editor. [#185](https://github.com/zowe/zlux-editor/pull/185)
+- Refresh buttons have been added to USS and MVS. [#108](https://github.com/zowe/zlux-file-explorer/pull/108)
+- Additional keybindings and other improvements have been added to the Editor. [#182](https://github.com/zowe/zlux-editor/pull/182)
+  - You can now move between open file tabs by using the following hotkeys: **Alt + (PAGEUP or <) and Alt + (PAGEDOWN or >)**
+  - After closing a tab, or multiple tabs, you can now undo the close by using the following hotkeys: **CTRL + ALT + T**
+  - The search function hotkey has been changed from **ALT + S** to **ALT + S**. 
+  - You can now hide/show the File Tree by using the following hotkeys: **ALT + B**. 
+- Existing code highlighters have been reorganized in order to improve their readability. Additionally, a new code highlighter for the REXX language has been added. This new code highlighter detects files and datasets wherein the files should end with the .rexx prefix, but the datasets may contain the rexx or exec qualifiers. [#181](https://github.com/zowe/zlux-editor/pull/181)
+
 #### Zowe Explorer
 <!--Pulled from https://github.com/zowe/vscode-extension-for-zowe/blob/master/packages/zowe-explorer/CHANGELOG.md, includes 1.11.1.-->
 - Updated Keytar and Jest dev deps for Node 14. 
@@ -81,6 +95,11 @@ The following features and enhancements were added to the **MVS Explorer**:
 #### Zowe API Mediation Layer
 
 #### Zowe App Server
+
+- Bugfix: In previous versions, sso-auth URL encoding that used the % sign would always return with authorization:false when using RACF. This issue has been resolved in this version. [#258](https://github.com/zowe/zlux-server-framework/pull/258) [#27](https://github.com/zowe/zss-auth/pull/27)
+- Bugfix: Fixes a bug in the Editor that prevented the unsaved changes symbol from being displayed. [#185](https://github.com/zowe/zlux-editor/pull/185)
+- Bugfix: Stopped event propagation in the Editor in order to resolve a conflict with Firefox. [#183](https://github.com/zowe/zlux-editor/pull/183)
+- Bugfix: Fixes a bug in the Editor that would cause the Languages menu to disappear when closing all tabs, then clicking undo. [#182](https://github.com/zowe/zlux-editor/pull/182)
 
 #### Zowe CLI
 
