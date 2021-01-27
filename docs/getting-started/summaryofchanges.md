@@ -42,7 +42,7 @@ Two tools `zowe-install-component.sh` and `zowe-configure-component.sh` are intr
 
 **X.509 client certificate authentication support for API Mediation Layer (Technical Preview)**
 
-This is released as technical preview in Zowe 1.19. Previously, you had to supply some sort of credentials (usually basic authentication) when you make a login call against the API Gateway. Now you can also make the call with client certificates by using ESM to map the certificate with the user mainframe identity and issue a JWT. 
+This is released as technical preview in Zowe 1.19. Previously, user were required to provide credentials (usually basic authentication) to make a login call against the API Gateway. You can now use the x509 client certificate for calls to authenticate in the API ML, whereby information from the certificate verifies user identity through SAF and then returns a proper JWT.  
 
 If you would like to offer feedback about using client certificate authentication, please create an issue against the Zowe `api-layer` repository.
 
