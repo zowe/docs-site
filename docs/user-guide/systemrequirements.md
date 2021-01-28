@@ -59,9 +59,9 @@ For more information on the relationship between the Zowe server components and 
 
 ### Zowe Web Explorers and APIs on z/OS requirements (host)
 
-- Node.js v8.x (except v8.16.1), v12.x, or v14.
+- Node.js v8.x (except v8.16.1), v12.x, or v14
   
-  **Note:** When using Node.js v12.x, it is highly recommended that plug-ins used are tagged. For more information, see [Tagging on z/OS](../extend/extend-desktop/mvd-buildingplugins.md#tagging-plugin-files-on-z-os).
+  **Note:** When using Node.js v12.x or later, it is highly recommended that plug-ins used are tagged. For more information, see [Tagging on z/OS](../extend/extend-desktop/mvd-buildingplugins.md#tagging-plugin-files-on-z-os).
   
   To install Node.js on z/OS, follow the instructions in [Installing Node.js on z/OS](install-nodejs-zos.md).
 
@@ -73,7 +73,7 @@ The Zowe Application Framework server provides the Zowe Desktop that contains an
 
 - Node.js v8.x (except v8.16.1), v12.x, or v14
   
-  **Note:** When using Node.js v12.x, it is highly recommended that plug-ins used are tagged. For more information, see [Tagging on z/OS](../extend/extend-desktop/mvd-buildingplugins.md#tagging-plugin-files-on-z-os). 
+  **Note:** When using Node.js v12.x or later, it is highly recommended that plug-ins used are tagged. For more information, see [Tagging on z/OS](../extend/extend-desktop/mvd-buildingplugins.md#tagging-plugin-files-on-z-os). 
   
   To install Node.js on z/OS, follow the instructions in [Installing Node.js on z/OS](install-nodejs-zos.md).
 
@@ -127,10 +127,10 @@ The Zowe Desktop supports Google Chrome, Mozilla Firefox, Apple Safari and Micro
 For Firefox, both the regular and Extended Support Release (ESR) versions are supported under this rule.
 
 Currently, the following browsers are supported:
-    -   Google Chrome V77, V79 or later
+    -   Google Chrome V79 or later
     -   Mozilla Firefox V68 or later
-    -   Safari V12.1, V13 or later
-    -   Microsoft Edge 18, 79
+    -   Safari V13 or later
+    -   Microsoft Edge 79
 
 If you do not see your browser listed here, please contact the Zowe community so that it can be validated and included.
 
