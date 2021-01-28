@@ -54,7 +54,19 @@ You can now start the API Mediation Layer independently of other Zowe components
 ### New features and enhancements
 
 #### Zowe API Mediation Layer
-<!-- Pulled from https://github.com/zowe/api-layer/blob/master/CHANGELOG.md. No 1.19.0 changes.-->
+<!-- Pulled from https://github.com/zowe/api-layer/blob/master/CHANGELOG.md. Includes 1.19.0 changes.-->
+
+- The connection limit of the Gateway has been configured to support multiple long-running requests by service. [#843](https://github.com/zowe/api-layer/issues/843)
+- The size of API Mediation Layer has been reduced to fit within 150MB. [#909](https://github.com/zowe/api-layer/issues/909)
+- You can now remove or configure the Catalog from appearing on the Gateway homepage [#727](https://github.com/zowe/api-layer/issues/727)
+- Connection limits have been enhanced to improve latency times when making requests through the API ML. This feature also enables concurrent requests. [#987](https://github.com/zowe/api-layer/issues/987)
+- The connection limit log messages hae been enhanced. New messages indicate when too many connections occur. [#987](https://github.com/zowe/api-layer/issues/987)
+- The `/api/v1/gateway/services/{serviceId}` endpoint has been added which provides information about a service in API ML for API clients. You can now view information to choose the applicable available API service without having a trusted service certificate. Proper SAF authorization is required. [#873](https://github.com/zowe/api-layer/issues/873)
+- The size limitation in the InMemory cache for proper handling is now supported when size limitations are reached.  [#998](https://github.com/zowe/api-layer/issues/998)
+- The 'Remove Oldest' eviction mechanism for Caching Service has been implemented to limit the volume of data in the cache.[#998](https://github.com/zowe/api-layer/issues/998)
+- Configure CORS origins per service has been configured so that onboarded services can request to delegate CORS behavior for a route to the API Mediation Layer. [#997](https://github.com/zowe/api-layer/issues/997)
+- The 'Reject eviction' strategy to Caching service has been implemented to limit the volume of data in the cache.[#998](https://github.com/zowe/api-layer/issues/998)
+- Debug logging to x509 Client certificate authentication classes has been added. This feature enables users to determine the cause of system problems during client certificate authentication setup.
 
 #### Zowe App Server
 
@@ -94,12 +106,15 @@ The following features and enhancements were added to the **MVS Explorer**:
 
 #### Zowe API Mediation Layer
 
+- API ID is not sent to Eureka in metadata by the Java enabler [#991](https://github.com/zowe/api-layer/issues/991)
+- Fixed tcp connections that are stuck open. [#1009](https://github.com/zowe/api-layer/issues/1009)
+
 #### Zowe App Server
 
-- Bugfix: In previous versions, sso-auth URL encoding that used the % sign would always return with authorization:false when using RACF. This issue has been resolved in this version. [#258](https://github.com/zowe/zlux-server-framework/pull/258) [#27](https://github.com/zowe/zss-auth/pull/27)
-- Bugfix: Fixes a bug in the Editor that prevented the unsaved changes symbol from being displayed. [#185](https://github.com/zowe/zlux-editor/pull/185)
-- Bugfix: Stopped event propagation in the Editor in order to resolve a conflict with Firefox. [#183](https://github.com/zowe/zlux-editor/pull/183)
-- Bugfix: Fixes a bug in the Editor that would cause the Languages menu to disappear when closing all tabs, then clicking undo. [#182](https://github.com/zowe/zlux-editor/pull/182)
+- In previous versions, sso-auth URL encoding that used the % sign would always return with authorization:false when using RACF. This issue has been resolved in this version. [#258](https://github.com/zowe/zlux-server-framework/pull/258) [#27](https://github.com/zowe/zss-auth/pull/27)
+- Fixes a bug in the Editor that prevented the unsaved changes symbol from being displayed. [#185](https://github.com/zowe/zlux-editor/pull/185)
+- Stopped event propagation in the Editor in order to resolve a conflict with Firefox. [#183](https://github.com/zowe/zlux-editor/pull/183)
+- Fixes a bug in the Editor that would cause the Languages menu to disappear when closing all tabs, then clicking undo. [#182](https://github.com/zowe/zlux-editor/pull/182)
 
 #### Zowe CLI
 
@@ -137,7 +152,7 @@ For more information, see [Docker Installation Roadmap](../user-guide/install-do
 - The Zowe App Framework's "single app mode" is now based on code shared with the Desktop, allowing it to support the Desktop's notification API and app2app communication. [#67](https://github.com/zowe/zlux-platform/pull/67) [#292](https://github.com/zowe/zlux-app-manager/pull/292)
   - This is backward compatible with apps that have previously used single app mode. 
   - In the case where app2app communication is used and spawns a second app, that app will spawn in a window but will not be able to be minimized due to single app mode having no Desktop, and therefore no way to restore a minimized window.
-- ZSS plugins can now issue HTTP requests as HTTP clients, provided by a new library in zowe-common-c. [#179](https://github.com/zowe/zowe-common-c/pull/179)
+- ZSS plug-ins can now issue HTTP requests as HTTP clients, provided by a new library in zowe-common-c. [#179](https://github.com/zowe/zowe-common-c/pull/179)
 
 #### Zowe CLI
 
@@ -176,7 +191,7 @@ https://github.com/zowe/zlux-app-server/blob/staging/CHANGELOG.md
 https://github.com/zowe/zss/edit/staging/CHANGELOG.md  No changes.-->
 
 - The zss server log verbosity seen when using the TN3270 desktop app has been reduced. [#188](https://github.com/zowe/zowe-common-c/pull/188)
-- Keep-alive parsing has been temporarily disabled to patch a memory leak. A permenant fix that will allow the use of keep-alive parsing is scheduled to be implemented in the next release. [#186](https://github.com/zowe/zowe-common-c/pull/186)
+- Keep-alive parsing has been temporarily disabled to patch a memory leak. A permanent fix that will allow the use of keep-alive parsing is scheduled to be implemented in the next release. [#186](https://github.com/zowe/zowe-common-c/pull/186)
 - The warning messages on the zss server startup have been removed due to a shell syntax problem. [#238](https://github.com/zowe/zss/pull/238)
 - In previous versions, static app2app recognizers would not be loaded from storage because they were treated as actions instead of as recognizers. This issue has been resolved in this release. [#297](https://github.com/zowe/zlux-app-manager/pull/297)
 
