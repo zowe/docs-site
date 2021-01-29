@@ -226,6 +226,7 @@ If the keyring or a truststore contains at least one valid certificate authority
       ALTUSER <ZOWE_RUNTIME_USER (ZWESVUSR by default)> PASSWORD(<NEWPASSWORD>)
   
   For other security system, please refer to the documentation for equivalent command.
+* Ensure that Zowe runtime user is allowed to login to ZOSMF (For example user is member of the default IZUUSER group)
 * Ensure that you have an external Certificate Authority and signed client certificates, or generate these certificates in SAF. The client certificate has to have correct `Extended Key Usage` metadata to allow being used for TLS client authentication. (`OID: 1.3.6.1.5.5.7.3.2`)
 * Import the client certificates to SAF, or add them to a user profile. (Examples: `RACDCERT ADD` or `RACDCERT GENCERT`). For more information, see your security system documentation.
 * Import the external CA to the truststore or keyring of the API Mediation Layer.
