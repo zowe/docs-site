@@ -221,11 +221,12 @@ If the keyring or a truststore contains at least one valid certificate authority
 <img src="../../images/api-mediation/zowe-client-cert-auth.png" alt="Zowe client certificate authentication diagram" align=center width="700px"/>
 
 **Prerequisities:**
-* Alter Zowe runtime user and set protection by password. The user is created with `NOPASSWORD` parameter by Zowe installer. This must be changed and new password has to be set. For RACF, issue the following TSO command: 
+* Alter the Zowe runtime user and set protection by password. The user is created with the `NOPASSWORD` parameter by the Zowe installer. This password must be changed and a new password has to be set. For RACF, issue the following TSO command: 
   
       ALTUSER <ZOWE_RUNTIME_USER (ZWESVUSR by default)> PASSWORD(<NEWPASSWORD>)
   
-  For other security system, please refer to the documentation for equivalent command.
+  For other security systems, please refer to the documentation for equivalent command.
+* Ensure that the Zowe runtime user is allowed to log in to z/OSMF (For example user is member of the default IZUUSER group)
 * Ensure that you have an external Certificate Authority and signed client certificates, or generate these certificates in SAF. The client certificate has to have correct `Extended Key Usage` metadata to allow being used for TLS client authentication. (`OID: 1.3.6.1.5.5.7.3.2`)
 * Import the client certificates to SAF, or add them to a user profile. (Examples: `RACDCERT ADD` or `RACDCERT GENCERT`). For more information, see your security system documentation.
 * Import the external CA to the truststore or keyring of the API Mediation Layer.
