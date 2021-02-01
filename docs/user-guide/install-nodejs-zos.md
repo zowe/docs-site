@@ -30,6 +30,15 @@ The corresponding [IBM Knowledge Center for Node.js - z/OS](https://www.ibm.com/
    - z/OS V2R3: PTFs UI61308, UI61375, UI61747 (APARs [PH0710](https://www-01.ibm.com/support/docview.wss?uid=isg1PH07107), [PH08352](https://www-01.ibm.com/support/docview.wss?uid=swg1PH08352), [PH09543](https://www-01.ibm.com/support/docview.wss?uid=swg1PH09543))
    - z/OS V2R4: PTFs UI64839, UI64940, UI64837, UI64830 , UI65567 (APARs [PH14559](http://www-01.ibm.com/support/docview.wss?uid=swg1PH14559), [PH16038](http://www-01.ibm.com/support/docview.wss?uid=swg1PH16038), [PH15674](http://www-01.ibm.com/support/docview.wss?uid=swg1PH15674), [PH14560](http://www-01.ibm.com/support/docview.wss?uid=swg1PH14560), [PH17481](http://www-01.ibm.com/support/docview.wss?uid=swg1PH17481))
 
+- v14 
+   - z/OS V2R3: PTFs UI61308, UI61375, UI61747 (APARs [PH07107](https://www-01.ibm.com/support/docview.wss?uid=isg1PH07107), [PH08352](https://www-01.ibm.com/support/docview.wss?uid=swg1PH08352), [PH09543](https://www-01.ibm.com/support/docview.wss?uid=swg1PH09543))    
+   - z/OS V2R4: PTFs UI64830, UI64837, UI64839, UI64940, UI65567 (APARs [PH14560](https://www.ibm.com/support/pages/apar/PH14560), 
+   [PH15674](https://www.ibm.com/support/pages/apar/PH15674),
+   [PH14559](https://www.ibm.com/support/pages/apar/PH14559),
+   [PH16038](https://www.ibm.com/support/pages/apar/PH16038),
+   [PH17481](https://www.ibm.com/support/pages/apar/PH17481))
+
+
 ## How to obtain IBM SDK for Node.js - z/OS
 
 You can obtain IBM SDK for Node.js - z/OS for free in one of the following ways:
