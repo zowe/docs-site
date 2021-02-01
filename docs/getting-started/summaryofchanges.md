@@ -36,9 +36,9 @@ Zowe Version 1.19 and earlier releases include the following enhancements, relea
 
 **Package manifest and component installer**
 
-Each Zowe extension and each core component can now use a manifest file to describe itself. The manifest file defines the name and purpose of the component. It also provides information about how this component should be installed, configured, started, and tested. For more information, see [Packaging z/OS extensions](../extend/packaging-zos-extensions.md).
+Each Zowe extension and each core component can now use a manifest file to describe itself. The manifest file defines the name and purpose of the component. It also provides information about how this component should be installed, configured, started and tested. For more information, see [Packaging z/OS extensions](../extend/packaging-zos-extensions.md).
 
-Two tools `zowe-install-component.sh` and `zowe-configure-component.sh` are introduced in this release as technical review. The `zowe-install-component.sh` helps you install any Zowe server component (extension). Zowe core components are also installed with this tool. The `zowe-configure-component.sh` tool helps you configure an installed Zowe server component (extension) for a Zowe instance. Zowe core components are also configured with this tool. In order to be compatible with the tools, it is recommended that the components follow [Zowe server component package format standard](../extend/packaging-zos-extensions.md#zowe-server-component-package-format).
+Two tools, `zowe-install-component.sh` and `zowe-configure-component.sh`, are introduced in this release for technical preview. The `zowe-install-component.sh` helps you install any Zowe server component (extension). Zowe core components are also installed with this tool. The `zowe-configure-component.sh` tool helps you configure an installed Zowe server component (extension) for a Zowe instance. Zowe core components are also configured with this tool. In order to be compatible with the tools, it is recommended that the components follow [Zowe server component package format standard](../extend/packaging-zos-extensions.md#zowe-server-component-package-format).
 
 **X.509 client certificate authentication support for API Mediation Layer (Technical Preview)**
 
@@ -95,11 +95,11 @@ USS Explorer https://github.com/zowe/explorer-uss/blob/v1.0.9/CHANGELOG.md  No c
 
 The following features and enhancements were added to the **JES Explorer**:
 - Introduced the menu shortcuts and confirmation dialog before canceling or purging the job for JES explorer. [#235](https://github.com/zowe/explorer-jes/pull/235)
-- Refactored JES packagaing and installation scripts, and folder renames to accomodate new iframe capability in ZLUX. [#236](https://github.com/zowe/explorer-jes/pull/236)
+- Refactored JES packaging and installation scripts, and folder renames to accommodate new iframe capability in ZLUX. [#236](https://github.com/zowe/explorer-jes/pull/236)
 - Added manifest for API ML and App Framework installation using new plugin installation process. [#234](https://github.com/zowe/explorer-jes/pull/234)
 
 The following features and enhancements were added to the **MVS Explorer**:
-- Refactored MVS packagaing and installation scripts, and folder renames, to accomodate new iframe capability in ZLUX. [#164](https://github.com/zowe/explorer-mvs/pull/164)
+- Refactored MVS packaging and installation scripts, and folder renames, to accommodate new iframe capability in ZLUX. [#164](https://github.com/zowe/explorer-mvs/pull/164)
 - Added manifest for API ML and App Framework installation using new plugin installation process. [#164](https://github.com/zowe/explorer-mvs/pull/164)
 
 ### Bug Fixes
