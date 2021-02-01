@@ -155,7 +155,7 @@ Before you start using the IBM Db2 plug-in, create a profile with details of the
   - The Db2 server port number
   - The database name (you can also use the location)
 
-To get this information there are two methods
+To get the Db2 system information, the following two methods can be used.
 
 - Issue the command `-DISPLAY DDF` in the Db2 SPUFI command on z/OS
 
@@ -172,7 +172,7 @@ DSNL004I  #DI2E DDF START COMPLETE  025
            SECPORT   30100
 ```
 
-The DOMAIN is used for the <hostname>, the TCPPORT for the <port> and the LOCATION for the <database> in the zowe create profile command.  
+The DOMAIN is used for the &lt;hostname&gt;, the TCPPORT for the &lt;port&gt; and the LOCATION for the &lt;database&gt; in the zowe create profile command.  
 
 In addition you'll
 
