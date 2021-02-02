@@ -4,7 +4,7 @@ Learn about what is new, changed, or removed in Zowe&trade;.
 
 Zowe Version 1.19 and earlier releases include the following enhancements, release by release.
 
-- [Version 1.19.0 LTS (January 2021)](#version-1-19-0-lts-january-2021)
+- [Version 1.19.0 LTS (February 2021)](#version-1-19-0-lts-february-2021)
 - [Version 1.18.0 LTS (January 2021)](#version-1-18-0-lts-january-2021)
 - [Version 1.17.0 LTS (November 2020)](#version-1-17-0-lts-november-2020)
 - [Version 1.16.0 LTS (October 2020)](#version-1-16-0-lts-october-2020)
@@ -30,7 +30,7 @@ Zowe Version 1.19 and earlier releases include the following enhancements, relea
 - [Version 1.0.0 (February 2019)](#version-1-0-0-february-2019)
 
 
-## Version 1.19.0 LTS (January 2021)
+## Version 1.19.0 LTS (February 2021)
 
 ### Notable changes 
 
