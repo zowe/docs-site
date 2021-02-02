@@ -174,7 +174,7 @@ DSNL004I  #DI2E DDF START COMPLETE  025
 
 The DOMAIN is used for the <hostname>, the TCPPORT for the <port> and the LOCATION for the <database> in the zowe create profile command.  
 
-In addition you'll
+In addition to the host, port and database you'll need
 
   - The user name
   - The password
