@@ -211,11 +211,36 @@ micronaut:
 ```
 where:
 
-- 
--
--
+- **`apiml.service.serviceId`**
 
+is the ID of your service
+- **`apiml.service.port`**
 
+port on which the service will be listening
+- **`apiml.service.ssl[0].keyPassword`**
+
+password protecting the key in keystore
+- **`apiml.service.ssl[0].keyStoreType`**
+
+type of the keystore, e.g. PKCS12 
+- **`apiml.service.ssl[0].keyStore`**
+
+relative path to the keystore from the point of running application
+- **`apiml.service.ssl[0].keyAlias`**
+
+alias under which the key is stored in the keystore
+- **`apiml.service.ssl[0].trustStorePassword`**
+
+password protecting the certificates in truststore
+- **`apiml.service.ssl[0].trustStore`**
+
+relative path to the trustorestore from the point of running application
+- **`apiml.service.ssl[0].trustStoreType`**
+type of the truststore, e.g. PKCS12 
+- **`apiml.service.ssl[0].ciphers`**
+list of ciphers that user wants to enable for TLS communication 
+- **`apiml.service.ssl[0].protocol`**
+type of SSL/TLS protocol, e.g. TLSv1.2
 ### (Optional) Logging configuration
 
 Setup custom logging configuration to ..... 
