@@ -4,7 +4,7 @@ As an API developer, you can onboard a REST service to the Zowe API Mediation La
 
 **Note:** For more information about onboarding API services with the API ML, see the [Onboarding Overview](onboard-overview.md).
 
-For Micronaut related documentation, visit the official [Micronaut website](https://docs.micronaut.io/latest/guide/index.html#introduction).
+For Micronaut related documentation, visit the [Micronaut website](https://docs.micronaut.io/latest/guide/index.html#introduction).
 
 - [Set up your build automation system](#set-up-your-build-automation-system)
   - [Specify the main class](#specify-the-main-class)
@@ -13,8 +13,9 @@ For Micronaut related documentation, visit the official [Micronaut website](http
   - [Start the application](#start-the-application)
 - [Configure the Micronaut application](#configure-the-micronaut-application)
   - [Add API ML configuration](#add-api-ml-configuration)
-  - [
-
+  - [Add Micronaut configuration](#add-micronaut-configuration)
+  - [Set up logging configuration](#set-up-logging-configuration)
+- [Validate successful registration](#validate-successful-registration)
 ## Set up your build automation system
 
 Currently, the only build automation system for use with onboarding a Micronaut based service is _Gradle_.
@@ -42,34 +43,34 @@ Currently, the only build automation system for use with onboarding a Micronaut 
     }
     ```
 
-4. In build.gradle file, add the micronaut enabler as a dependency:
+4. In the `build.gradle` file, add the micronaut enabler as a dependency:
 
     ```groovy
     implementation "org.zowe.apiml.sdk:onboarding-enabler-micronaut:$zoweApimlVersion"
     ```
 5. (Optional) Add a shadow plug-in to create a runnable jar file. Update the `gradle.build file` with a plugin:
 
-```
-id 'com.github.johnrengelman.shadow' version '6.1.0'
-```
+    ```
+    id 'com.github.johnrengelman.shadow' version '6.1.0'
+    ```
 
 6. Specify the main class with the following script:
 
-```
-mainClassName = '${your.packa.name.MainClassName}' #replace with your main class
-```
+    ```
+    mainClassName = '${your.packa.name.MainClassName}' #replace with your main class
+    ```
 
-7. Define the output jar file 
+7. Define the output jar file. 
 
-Add the following script to define the output of the jar file:
+    Add the following script to define the output of the jar file:
 
-```
-shadowJar {
-        archiveBaseName.set('micronaut-enabler')
-        archiveClassifier.set('')
-        archiveVersion.set('1.0')
-    }
-```
+    ```
+    shadowJar {
+            archiveBaseName.set('micronaut-enabler')
+            archiveClassifier.set('')
+            archiveVersion.set('1.0')
+        }
+    ```
 The following example shows a sample `gradle.build` file:
 
 **Example:**
@@ -113,13 +114,13 @@ The following example shows a sample `gradle.build` file:
 
 8. (Optional) Create a shadow jar.
 
-To create a shadow jar, execute the gradle `shadowJar` task. For this sample, the plugin produces the jar `micronaut-enabler-1.0.jar` in `build/libs` directory.
+    To create a shadow jar, execute the gradle `shadowJar` task. For this sample, the plugin produces the jar `micronaut-enabler-1.0.jar` in `build/libs` directory.
 
-You can now run your application with the command `java -jar micronaut-enabler-1.0.jar`.
+    You can now run your application with the command `java -jar micronaut-enabler-1.0.jar`.
 
 9. Start the application.
 
-From the root directory of your project, start the application with the command **`gradle run`**.
+    From the root directory of your project, start the application with the command **`gradle run`**.
 
 ## Configure the Micronaut application
 
@@ -134,23 +135,23 @@ Use the following procedure to add API ML configuration to the application.yaml.
 
 **Follow these steps:**
 
-1. Add the following configuration to the `apiml` section in the yaml file. 
+1. Add the following configuration to the `apiml` section in the yaml file: 
 
-```yaml
-apiml:
-    enabled: true
-    service:
-        serviceId: ${fill.your.serviceId}      # The symbolic name of the service
-    #rest of the configuration
-```
+    ```yaml
+    apiml:
+        enabled: true
+        service:
+         serviceId: ${fill.your.serviceId} # The symbolic name of the service
+     #rest of the configuration
+    ```
 
-where:
+    where:
 
-- **`fill.your.service`** 
+    - **`fill.your.service`** 
 
-  is the ID of your service
+        is the ID of your service
   
-2. Add SSL resolving properties as shown in the following example. Ensure to structure the nested objects within `apiml.service'  as arrays. Ensure to include `-` before `enabled` thereby indicating the first element of the array.
+2. Add SSL resolving properties as shown in the following example. Ensure to structure the nested objects within `apiml.service`  as arrays. Ensure to include `-` before `enabled` thereby indicating the first element of the array.
 
 **Example:**
 
@@ -185,71 +186,80 @@ Once you complete API ML configuration, add configuration to provide correct map
 
 1. Add the following yaml snippet with the micronaut configuration parameters:
 
-```yaml
-micronaut:
-    application:
-        name: ${apiml.service.serviceId}
-    server:
-        port: ${apiml.service.port}
-        context-path: /${apiml.service.serviceId}
-    ssl:
-        enabled: true
-        key-store:
-            password: ${apiml.service.ssl[0].keyPassword}
-            type: ${apiml.service.ssl[0].keyStoreType}
-            path: file:${apiml.service.ssl[0].keyStore}
-        key:
-            alias: ${apiml.service.ssl[0].keyAlias}
-            password: ${apiml.service.ssl[0].keyPassword}
-        trust-store:
-            password: ${apiml.service.ssl[0].trustStorePassword}
-            path: file:${apiml.service.ssl[0].trustStore}
-            type: ${apiml.service.ssl[0].trustStoreType}
-        port: ${apiml.service.port}
-        ciphers: ${apiml.service.ssl[0].ciphers}
-        protocol: ${apiml.service.ssl[0].protocol}
-```
-where:
+    ```yaml
+    micronaut:
+        application:
+            name: ${apiml.service.serviceId}
+        server:
+            port: ${apiml.service.port}
+            context-path: /${apiml.service.serviceId}
+        ssl:
+            enabled: true
+            key-store:
+                password: ${apiml.service.ssl[0].keyPassword}
+                type: ${apiml.service.ssl[0].keyStoreType}
+                path: file:${apiml.service.ssl[0].keyStore}
+            key:
+                alias: ${apiml.service.ssl[0].keyAlias}
+                password: ${apiml.service.ssl[0].keyPassword}
+            trust-store:
+                password: ${apiml.service.ssl[0].trustStorePassword}
+                path: file:${apiml.service.ssl[0].trustStore}
+                type: ${apiml.service.ssl[0].trustStoreType}
+            port: ${apiml.service.port}
+            ciphers: ${apiml.service.ssl[0].ciphers}
+            protocol: ${apiml.service.ssl[0].protocol}
+    ```
+    where:
 
-- **`apiml.service.serviceId`**
+    - **`apiml.service.serviceId`**
 
-ID of your service
-- **`apiml.service.port`**
+        is the ID of your service
 
-port on which the service will be listening
-- **`apiml.service.ssl[0].keyPassword`**
+    - **`apiml.service.port`**
 
-password protecting the key in keystore
-- **`apiml.service.ssl[0].keyStoreType`**
+        is the port on which the service listens
 
-type of the keystore, e.g. PKCS12 
-- **`apiml.service.ssl[0].keyStore`**
+    - **`apiml.service.ssl[0].keyPassword`**
 
-relative path to the keystore from the point of running application
-- **`apiml.service.ssl[0].keyAlias`**
+        is the password protecting the key in keystore
 
-alias under which the key is stored in the keystore
-- **`apiml.service.ssl[0].trustStorePassword`**
+    - **`apiml.service.ssl[0].keyStoreType`**
 
-password protecting the certificates in truststore
-- **`apiml.service.ssl[0].trustStore`**
+        type of the keystore, e.g. PKCS12 
 
-relative path to the trustorestore from the point of running application
-- **`apiml.service.ssl[0].trustStoreType`**
+    - **`apiml.service.ssl[0].keyStore`**
 
-type of the truststore, e.g. PKCS12 
-- **`apiml.service.ssl[0].ciphers`**
+        is the relative path to the keystore from the point of running application
 
-list of ciphers that user wants to enable for TLS communication 
-- **`apiml.service.ssl[0].protocol`**
+    - **`apiml.service.ssl[0].keyAlias`**
 
-type of SSL/TLS protocol, e.g. TLSv1.2
-### (Optional) Logging configuration
+        is the alias under which the key is stored in the keystore
 
-Setup custom logging configuration to ..... 
-**Follwo these steps:**
+    - **`apiml.service.ssl[0].trustStorePassword`**
 
-1. Create a `logback.xml` file in the `resources` folder and include the `application.yml`. Update the `logback.xml` file with following configuration:
+        is the password protecting the certificates in the truststore
+
+    - **`apiml.service.ssl[0].trustStore`**
+
+        is the relative path to the truststore from the point of running application
+
+    - **`apiml.service.ssl[0].trustStoreType`**
+
+        is the type of the truststore, (Example: PKCS12)
+
+    - **`apiml.service.ssl[0].ciphers`**
+
+        is the list of ciphers that user wants to enable for TLS communication 
+
+    - **`apiml.service.ssl[0].protocol`**
+
+        is the type of SSL/TLS protocol (Example: TLSv1.2)
+### (Optional) Set up logging configuration
+
+Set up custom logging configuration to ..... 
+
+Create a `logback.xml` file in the `resources` folder and include the `application.yml`. Update the `logback.xml` file with following configuration:
 
 ```xml
 <configuration>
@@ -271,6 +281,6 @@ Setup custom logging configuration to .....
 </configuration>
 ```
 
-### Validate successful registration
+## Validate successful registration
 
 After you complete the configuration, make sure that your application is visible within Zowe API ML. For more information, see the article [validating the discoverability of your API service by teh Discovery Service](onboard-spring-boot-enabler.md#validating-the-discoverability-of-your-api-service-by-the-discovery-service), which describes the validation procedure common for all enablers.
