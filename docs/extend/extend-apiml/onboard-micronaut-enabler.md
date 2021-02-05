@@ -1,25 +1,25 @@
-# Onboarding Micronaut based REST API service
+# Onboarding a Micronaut based REST API service
 
-As an API developer, you can onboard a REST service to the Zowe API Mediation Layer using the Micronaut framework. While using the Spring framework to develop a JVM-based service to register to the API ML is the recommended method, you can use procedure described in this article to onboard a service using the Micronaut framework.
+As an API developer, you can onboard a REST service to the Zowe API Mediation Layer using the Micronaut framework. While using the Spring framework to develop a JVM-based service to register to the API ML is the recommended method, you can use the procedure described in this article to onboard a service using the Micronaut framework.
 
-**Note:** For more information about how to onboard a service with other avilable methods, see:
-
-  * [Onboard a REST API service with the Plain Java Enabler (PJE)](onboard-plain-java-enabler.md)
-  * [Onboard a REST service directly calling eureka with xml configuration](onboard-direct-eureka-call.md)
-  * [Onboard an existing REST API service without code changes](onboard-static-definition.md)
-  * [Onboarding a Spring Boot based REST API Service](onboard-spring-boot-enabler.md)
+**Note:** For more information about onboarding API services with the API ML, see the [Onboarding Overview](onboard-overview.md).
 
 For Micronaut related documentation, visit the official [Micronaut website](https://docs.micronaut.io/latest/guide/index.html#introduction).
 
-Set up your build automation system
-Specify the main class
+- [Set up your build automation system](#set-up-your-build-automation-system)
+  - [Specify the main class](#specify-the-main-class)
+  - [Define the output jar file](#define-the-output-jar-file)
+  - (Optional) [Create a shadow jar](#create-a-shadow-jar)
+  - [Start the application](#start-the-application)
+- [Configure the Micronaut application](#configure-the-micronaut-application)
+  - [Add API ML configuration](#add-api-ml-configuration)
+  - [
 
+## Set up your build automation system
 
-# Gradle build automation system
+Currently, the only build automation system for use with onboarding a Micronaut based service is _Gradle_.
 
-For the time being, we created guideline for gradle tool only.
-
-For Gradle, follow the steps:
+**Follow these steps:**
 
 1. Create a `gradle.properties` file in the root of your project if one does not already exist.
 
@@ -42,24 +42,27 @@ For Gradle, follow the steps:
     }
     ```
 
-4. In build.gralde file, add micronaut enabler as a dependency:
+4. In build.gradle file, add the micronaut enabler as a dependency:
 
     ```groovy
     implementation "org.zowe.apiml.sdk:onboarding-enabler-micronaut:$zoweApimlVersion"
     ```
-5. (Optional) Users who want to create runnable jar file, can leverage shadow plugin. If this is the case, update gradle.build file with plugin:
+5. (Optional) Add a shadow plug-in to create a runnable jar file. Update the `gradle.build file` with a plugin:
 
 ```
 id 'com.github.johnrengelman.shadow' version '6.1.0'
 ```
-Next, you will have to specify main class:
+
+6. Specify the main class with the following script:
+
 ```
 mainClassName = '${your.packa.name.MainClassName}' #replace with your main class
 ```
 
-3. Define the output jar file as shown in the following example.
+7. Define the output jar file 
 
-**Example:**
+Add the following script to define the output of the jar file:
+
 ```
 shadowJar {
         archiveBaseName.set('micronaut-enabler')
@@ -108,15 +111,17 @@ The following example shows a sample `gradle.build` file:
         targetCompatibility = JavaVersion.toVersion('1.8')
     }
 
-4. (Optional) create a shadow jar.
+8. (Optional) Create a shadow jar.
 
 To create a shadow jar, execute the gradle `shadowJar` task. For this sample, the plugin produces the jar `micronaut-enabler-1.0.jar` in `build/libs` directory.
 
 You can now run your application with the command `java -jar micronaut-enabler-1.0.jar`.
 
-6. From the root directory of your project, start the application with the command **`gradle run`**.
+9. Start the application.
 
-## Micronaut application configuration
+From the root directory of your project, start the application with the command **`gradle run`**.
+
+## Configure the Micronaut application
 
 Use a yaml file to configure your Micronaut application. 
 Create the following two sections in your yaml file:
