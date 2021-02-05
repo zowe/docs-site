@@ -4,6 +4,7 @@ Learn about what is new, changed, or removed in Zowe&trade;.
 
 Zowe Version 1.19 and earlier releases include the following enhancements, release by release.
 
+- [Version 1.19.1 LTS (February 2021)](#version-1-19-1-lts-february-2021)
 - [Version 1.19.0 LTS (February 2021)](#version-1-19-0-lts-february-2021)
 - [Version 1.18.0 LTS (January 2021)](#version-1-18-0-lts-january-2021)
 - [Version 1.17.0 LTS (November 2020)](#version-1-17-0-lts-november-2020)
@@ -29,6 +30,20 @@ Zowe Version 1.19 and earlier releases include the following enhancements, relea
 - [Version 1.0.1 (March 2019)](#version-1-0-1-march-2019)
 - [Version 1.0.0 (February 2019)](#version-1-0-0-february-2019)
 
+
+## Version 1.19.1 LTS (February 2021)
+
+### Notable changes 
+
+**SMPE PTF**
+
+With the continuos optimization of Zowe build size, now Zowe release can fit in one PTF. This single PTF UO01969 will supersede PTF UO01967 and UO01968 from v1.19.0 release.
+
+### Bug Fixes
+
+**SMPE PTF**
+
+Fixed missing HOLD data about extra steps the system programmer should take after applying the PTF. It explains new configurations we introduced in `instance.env` and also a reconfiguration step with `zowe-configure-instance.sh` is mandatory.
 
 ## Version 1.19.0 LTS (February 2021)
 
