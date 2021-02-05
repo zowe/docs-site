@@ -230,7 +230,7 @@ Once you complete API ML configuration, add configuration to provide correct map
 
     - **`apiml.service.ssl[0].keyStore`**
 
-        is the relative path to the keystore from the point of running application
+        is the location of the keystore 
 
     - **`apiml.service.ssl[0].keyAlias`**
 
@@ -242,7 +242,7 @@ Once you complete API ML configuration, add configuration to provide correct map
 
     - **`apiml.service.ssl[0].trustStore`**
 
-        is the relative path to the truststore from the point of running application
+        is the location of the truststore
 
     - **`apiml.service.ssl[0].trustStoreType`**
 
@@ -257,7 +257,7 @@ Once you complete API ML configuration, add configuration to provide correct map
         is the type of SSL/TLS protocol (Example: TLSv1.2)
 ### (Optional) Set up logging configuration
 
-Set up custom logging configuration to ..... 
+Set up custom logging configuration to have more structured output and better control of logs.
 
 Create a `logback.xml` file in the `resources` folder and include the `application.yml`. Update the `logback.xml` file with following configuration:
 
