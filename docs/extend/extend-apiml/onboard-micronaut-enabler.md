@@ -1,15 +1,19 @@
 # Onboarding Micronaut based REST API service
 
-When users want to develope JVM-based service, there is an obvious choice to use Spring framework. Zowe provides a quick way how to setup and register such application to Zowe API Mediation Layer. Purpose of this guide is to provide such possibility for developers, whose framework of choice is Micronaut.
+As an API developer, you can onboard a REST service to the Zowe API Mediation Layer using the Micronaut framework. While using the Spring framework to develop a JVM-based service to register to the API ML is the recommended method, you can use procedure described in this article to onboard a service using the Micronaut framework.
 
-**Tip:** For more information about how to utilize another onboarding method, see:
+**Note:** For more information about how to onboard a service with other avilable methods, see:
 
   * [Onboard a REST API service with the Plain Java Enabler (PJE)](onboard-plain-java-enabler.md)
   * [Onboard a REST service directly calling eureka with xml configuration](onboard-direct-eureka-call.md)
   * [Onboard an existing REST API service without code changes](onboard-static-definition.md)
   * [Onboarding a Spring Boot based REST API Service](onboard-spring-boot-enabler.md)
 
-For Micronaut related documentation, visit official [website](https://docs.micronaut.io/latest/guide/index.html#introduction) of Micronaut framework.
+For Micronaut related documentation, visit the official [Micronaut website](https://docs.micronaut.io/latest/guide/index.html#introduction).
+
+Set up your build automation system
+Specify the main class
+
 
 # Gradle build automation system
 
@@ -53,7 +57,9 @@ Next, you will have to specify main class:
 mainClassName = '${your.packa.name.MainClassName}' #replace with your main class
 ```
 
-Then define how the output jar file should be called:
+3. Define the output jar file as shown in the following example.
+
+**Example:**
 ```
 shadowJar {
         archiveBaseName.set('micronaut-enabler')
@@ -61,9 +67,9 @@ shadowJar {
         archiveVersion.set('1.0')
     }
 ```
+The following example shows a sample `gradle.build` file:
 
-Example of complete `gradle.build` file:
-
+**Example:**
 
     plugins {
         id "io.micronaut.application" version '1.0.5'
@@ -101,16 +107,29 @@ Example of complete `gradle.build` file:
         sourceCompatibility = JavaVersion.toVersion('1.8')
         targetCompatibility = JavaVersion.toVersion('1.8')
     }
-**Note** For shadow jar to be created, you need to execute gradle `shadowJar` task. For this sample, plugin will produce `micronaut-enabler-1.0.jar` in `build/libs` directory. Then you will be able to run application with command `java -jar micronaut-enabler-1.0.jar`.
 
-6. From root directory of your project, start the application with `gradle run` command.
+4. (Optional) create a shadow jar.
+
+To create a shadow jar, execute the gradle `shadowJar` task. For this sample, the plugin produces the jar `micronaut-enabler-1.0.jar` in `build/libs` directory.
+
+You can now run your application with the command `java -jar micronaut-enabler-1.0.jar`.
+
+6. From the root directory of your project, start the application with the command **`gradle run`**.
 
 ## Micronaut application configuration
 
-To be consisten with the rest of the enablers, configuration can be provided in YAML file. Application then will search for file named `application.yml`. There are two importnat sections. First is related to API ML configuration and second is Micronaut related. Both are necessary to correctly register with Zowe API Mediation Layer.
+Use a yaml file to configure your Micronaut application. 
+Create the following two sections in your yaml file:
 
-### API ML configuration:
-Within application.yml file, this section is prefixed with `apiml`
+* `apiml` for API ML configuration
+* `micronaut` for micronaut configuration
+
+### Add API ML configuration
+Use the following procedure to add API ML configuration to the application.yaml. 
+
+**Follow these steps:**
+
+1. Add the following configuration to the `apiml` section in the yaml file. 
 
 ```yaml
 apiml:
@@ -120,11 +139,16 @@ apiml:
     #rest of the configuration
 ```
 
-1. Resolving properties
+where:
 
-Nested objects within `apiml.servce` need to be structured as arryas. If not, they won't be resolved and will result as null.
+- **`fill.your.service`** 
 
-Example:
+  is the ID of your service
+  
+2. Add SSL resolving properties as shown in the following example. Ensure to structure the nested objects within `apiml.service'  as arrays. Ensure to include `-` before `enabled` thereby indicating the first element of the array.
+
+**Example:**
+
 ```yaml
 apiml:
     service:
@@ -145,12 +169,16 @@ apiml:
             ciphers: ${fill.your.ciphers}
 
 ```
-**Note** Mind the `-` before `enabled` depicting the first element of the array.
+**Note:** For a sample of this configuration, see [API ML Onboarding Configuration Sample](onboard-spring-boot-enabler.md#api-ml-onboarding-configuration-sample).
 
-Sample can be found in [API ML Onboarding Configuration Sample](onboard-spring-boot-enabler.md#api-ml-onboarding-configuration-sample)
+The yaml now contains configuration to register to the API Mediation Layer. 
 
-### Micronaut configruation
-What is new, is the micronaut related part. This configuration provides correct mapping between API ML and micronaut parameters. 
+### Add Micronaut configuration
+Once you complete API ML configuration, add configuration to provide correct mapping between API ML and micronaut parameters. 
+
+**Follow these steps:**
+
+1. Add the following yaml snippet with the micronaut configuration parameters:
 
 ```yaml
 micronaut:
@@ -176,12 +204,20 @@ micronaut:
         ciphers: ${apiml.service.ssl[0].ciphers}
         protocol: ${apiml.service.ssl[0].protocol}
 ```
+where:
+
+- 
+-
+-
 
 
-### Logging configuration
+### (Optional) Logging configuration
 
-It is convenient to setup custom logging configuration. If you don't have one yet, following lines could be interesting for you.
-As a starting point, you will need to create `logback.xml` file in `resources` folder. This is a place where `application.yml` file lives. Update the `logback.xml` file with following configuration:
+Setup custom logging configuration to ..... 
+**Follwo these steps:**
+
+1. Create a `logback.xml` file in the `resources` folder and include the `application.yml`. Update the `logback.xml` file with following configuration:
+
 ```xml
 <configuration>
     <property resource="application.yml" />
@@ -204,4 +240,4 @@ As a starting point, you will need to create `logback.xml` file in `resources` f
 
 ### Validate successful registration
 
-After all is set and done, you can make sure that your application is visible within Zowe API ML. Follow this [validating guide](onboard-spring-boot-enabler.md#validating-the-discoverability-of-your-api-service-by-the-discovery-service), which is common for all enablers.
+After you complete the configuration, make sure that your application is visible within Zowe API ML. For more information, see the article [validating the discoverability of your API service by teh Discovery Service](onboard-spring-boot-enabler.md#validating-the-discoverability-of-your-api-service-by-the-discovery-service), which describes the validation procedure common for all enablers.
