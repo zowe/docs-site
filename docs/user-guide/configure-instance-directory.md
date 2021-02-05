@@ -1,6 +1,8 @@
 # Creating and configuring the Zowe instance directory
 
-The Zowe instance directory or `<INSTANCE_DIRECTORY>` contains configuration data required to launch a Zowe runtime.  This includes port numbers, location of dependent runtimes such as Java, Node, z/OSMF, as well as log files. When Zowe is started, configuration data will be read from files in the instance directory and logs will be written to files in the instance directory. 
+The Zowe instance directory or `<INSTANCE_DIRECTORY>` contains configuration data required to launch a Zowe runtime.  This includes port numbers, location of dependent runtimes such as Java, Node, z/OSMF, as well as log files. When Zowe is started, configuration data will be read from files in the instance directory and logs will be written to files in the instance directory.
+
+**Note: The creation of an instance directory will set default values for users who want to run all Zowe z/OS components. If you are using Docker, you must make a small configuration change to disable the components on z/OS that will instead run in Docker.**
 
 The instance directory `<INSTANCE_DIRECTORY>/bin` contains a number of key scripts
  - `zowe-start.sh` is used to start the Zowe runtime by launching the `ZWESVSTC` started task.
@@ -37,15 +39,17 @@ In order to allow the `ZWESVSTC` started task to have permission to acces the co
 
 ## Reviewing the instance.env file
 
-To operate Zowe, a number of zFS folders need to be located for prerequisites on the platform. Default values are selected when you run `zowe-configure-instance.sh`. You might want to modify the values.  
+To operate Zowe, a number of zFS folders need to be located for prerequisites on the platform. Default values are selected when you run `zowe-configure-instance.sh`. You might want to modify the values.
 
 ### Component groups
 
 `LAUNCH_COMPONENT_GROUPS`: This is a comma-separated list of which z/OS microservice groups are started when Zowe launches. 
-  - `GATEWAY` will start the API mediation layer that includes the API catalog, the API gateway, and the API discovery service.  These three address spaces are Apache Tomcat servers and use the version of Java on z/OS as determined by the `JAVA_HOME` value.  
-  - `DESKTOP` will start the Zowe desktop that is the browser GUI for hosting Zowe applications such as the 3270 Terminal emulator or the File Explorer.  The Zowe desktop is a node application and uses the version specified by the `NODE_HOME` value.  
-  - `ZSS` will start the zssServer.  The zssServer is a pre-requisite for the Zowe desktop, so when the `DESKTOP` group is specified then the zss server will be implicitly started.  For more information on the zssServer and the technology stack of the Zowe servers see [Zowe architecture](../getting-started/zowe-architecture.md).
+  - `GATEWAY` will start the API mediation layer that includes the API catalog, the API gateway, and the API discovery service.  These three address spaces are Apache Tomcat servers and use the version of Java on z/OS as determined by the `JAVA_HOME` value.  In addition to the mediation layer, the z/OS Explorer services are included here as well.
+  - `DESKTOP` will start the Zowe desktop that is the browser GUI for hosting Zowe applications such as the 3270 Terminal emulator or the File Explorer.  It will also start ZSS. The Zowe desktop is a node application and uses the version specified by the `NODE_HOME` value.
+  - `ZSS` will start the ZSS server without including the Desktop and Application Framework server. This can be used with Docker so that you do not run servers on z/OS that will already be running within Docker. This may also be useful if you want to utilize ZSS core features or plug-ins without needing the Desktop. ZSS is a pre-requisite for the Zowe desktop, so when the `DESKTOP` group is specified then the zss server will be implicitly started. For more information on the zssServer and the technology stack of the Zowe servers see [Zowe architecture](../getting-started/zowe-architecture.md).
   - Vendor products may extend Zowe with their own component group that they want to be lifecycled by the Zowe `ZWESVSTC` started task and run as a Zowe sub address space.  To do this, specify the fully qualified directory provided by the vendor that contains their Zowe extension scripts.  This directory will contain a `start.sh` script **(required)** that is called when the `ZWESVSTC` started task is launched, a `configure.sh` script **(optional)** that performs any configuration steps such as adding iFrame plug-ins to the Zowe desktop, and a `validate.sh` script **(optional)** that can be used to perform any pre-launch validation such as checking system prerequisites. For more information about how a vendor can extend Zowe with a sub address space, see the [Extending](../extend/extend-apiml/onboard-overview.md) section.
+
+**Note: If you are using Docker, it is recommended to remove GATEWAY and DESKTOP from LAUNCH_COMPONENT_GROUPS by setting `LAUNCH_COMPONENT_GROUPS=ZSS`. This will prevent duplication of servers running both in Docker and on z/OS.** <Badge text="Technical Preview"/>
 
 ### Component prerequisites
 
@@ -100,30 +104,30 @@ The STC name of the main started task is `ZOWE_PREFIX`+`ZOWE_INSTANCE`+`SV`.
 
 ### Ports
 
-When Zowe starts, a number of its microservices need to be given port numbers that they can use to allow access to their services.  The two most important port numbers are the `GATEWAY_PORT` which is for access to the API gateway through which REST APIs can be viewed and accessed, and `ZOWE_ZLUX_SERVER_HTTPS_PORT` which is used to deliver content to client web browsers logging in to the Zowe desktop.  All of the other ports are not typically used by clients and used for intra-service communication by Zowe.  
+When Zowe starts, a number of its microservices need to be given port numbers that these microservices use to provide access to their services.  You can leave default values for components that are not in use. The two most important port numbers are the `GATEWAY_PORT` which is for access to the API Gateway through which REST APIs can be viewed and accessed, and `ZOWE_ZLUX_SERVER_HTTPS_PORT` which is used to deliver content to client web browsers logging in to the Zowe desktop.  All of the other ports are not typically used by clients and used for intra-service communication by Zowe.  
 
-- `CATALOG_PORT`: The port the API catalog service will use.
-- `DISCOVERY_PORT`: The port the discovery service will use.
-- `GATEWAY_PORT`: The port the API gateway service will use.  This port is used by REST API clients to access z/OS services through the API mediation layer, so should be accessible to these clients.  This is also the port used to log on to the API catalog web page through a browser.
-- `JOBS_API_PORT`: The port the jobs API service will use.
-- `FILES_API_PORT`: The port the files API service will use.
-- `JES_EXPLORER_UI_PORT`: The port the jes-explorer UI service will use.
-- `MVS_EXPLORER_UI_PORT`: The port the mvs-explorer UI service will use.
-- `USS_EXPLORER_UI_PORT`: The port the uss-explorer UI service will use.
-- `ZOWE_ZLUX_SERVER_HTTPS_PORT`: The port used by the Zowe desktop.  It should be accessible to client machines with browsers wanting to log on to the Zowe desktop.  
-- `ZOWE_ZSS_SERVER_PORT`: This port is used by the ZSS server.  
+- `CATALOG_PORT`: The port the API Catalog service will use. Used when `LAUNCH_COMPONENT_GROUPS` includes `GATEWAY`.
+- `DISCOVERY_PORT`: The port the discovery service will use. Used when `LAUNCH_COMPONENT_GROUPS` includes `GATEWAY`.
+- `GATEWAY_PORT`: The port the API gateway service will use. Used when `LAUNCH_COMPONENT_GROUPS` includes `GATEWAY`. This port is used by REST API clients to access z/OS services through the API mediation layer, so should be accessible to these clients.  This is also the port used to log on to the API catalog web page through a browser.
+- `JOBS_API_PORT`: The port the jobs API service will use. Used when `LAUNCH_COMPONENT_GROUPS` includes `GATEWAY`.
+- `FILES_API_PORT`: The port the files API service will use. Used when `LAUNCH_COMPONENT_GROUPS` includes `GATEWAY`.
+- `JES_EXPLORER_UI_PORT`: The port the jes-explorer UI service will use. Used when `LAUNCH_COMPONENT_GROUPS` includes `GATEWAY`.
+- `MVS_EXPLORER_UI_PORT`: The port the mvs-explorer UI service will use. Used when `LAUNCH_COMPONENT_GROUPS`` includes GATEWAY`.
+- `USS_EXPLORER_UI_PORT`: The port the uss-explorer UI service will use. Used when `LAUNCH_COMPONENT_GROUPS` includes `GATEWAY`.
+- `ZOWE_ZLUX_SERVER_HTTPS_PORT`: The port used by the Zowe desktop.  Used when `LAUNCH_COMPONENT_GROUPS` includes `DESKTOP`. It should be accessible to client machines with browsers wanting to log on to the Zowe desktop.  
+- `ZOWE_ZSS_SERVER_PORT`: This port is used by the ZSS server. Used when `LAUNCH_COMPONENT_GROUPS` includes `DESKTOP` or `ZSS`.
 
 **Note:** If all of the default port values are acceptable, the ports do not need to be changed. To allocate ports for the Zowe runtime servers, ensure that the ports are not in use.
 
 To determine which ports are not available, follow these steps:
 
-1. Display a list of ports that are in use with the following command:
+1. Display the list of ports that are in use with the following command:
 
    ```
    TSO NETSTAT
    ```
 
-2. Display a list of reserved ports with the following command:
+2. Display the list of reserved ports with the following command:
 
    ```
    TSO NETSTAT PORTLIST
@@ -139,12 +143,15 @@ To determine which ports are not available, follow these steps:
 
 ### Gateway configuration
 
+The following parameters can be set to customize the configuration of the Gateway:
+
 - `APIML_ALLOW_ENCODED_SLASHES`: When this parameter is set to `true`, the Gateway allows encoded characters to be part of URL requests redirected through the Gateway.
 - `APIML_CORS_ENABLED`: When this parameter is set to `true`, CORS are enabled in the API Gateway for Gateway routes `api/v1/gateway/**`.
-- `APIML_PREFER_IP_ADDRESS`: Set the value of the parameter to `true` if you want to advertise a service IP address instead of its hostname.
-- `APIML_GATEWAY_TIMEOUT_MILLIS`: Timeout for connection to the services. 
+- `APIML_PREFER_IP_ADDRESS`: Set this parameter to `true`  to advertise a service IP address instead of its hostname.
+- `APIML_GATEWAY_TIMEOUT_MILLIS`: Spcifies the timeout for connection to the services in milliseconds. 
+- `APIML_SECURITY_X509_ENABLED`: Set this parameter to `true`, to enable the client certificate authentication functionality through ZSS.
 - `APIML_SECURITY_ZOSMF_APPLID`: The z/OSMF APPLID used for PassTicket.
-- `APIML_SECURITY_AUTH_PROVIDER`: The authentication provider used by the API Gateway. By default, the API Gateway uses z/OSMF as an authentication provider, but it is possible to switch to SAF as the authentication provider instead of z/OSMF.
+- `APIML_SECURITY_AUTH_PROVIDER`: The authentication provider used by the API Gateway. By default, the API Gateway uses z/OSMF as an authentication provider. It is possible to switch to SAF as the authentication provider instead of z/OSMF.
 - `APIML_DEBUG_MODE_ENABLED` : When this parameter is set to `true`, detailed logging of activity by the API mediation layer occurs. This can be useful to diagnose unexpected behavior of the API gateway, API discovery, or API catalog services.  Default value is `false`.  
 
 

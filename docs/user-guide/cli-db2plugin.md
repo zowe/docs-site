@@ -64,7 +64,25 @@ Download the ODBC driver before you install the Db2 plug-in.
 
 You downloaded and prepared to use the ODBC driver successfully. Proceed to install the plug-in to Zowe CLI.
 
+#### Installing Xcode on MacOS
+
+To install the Db2 CLI plug-in on MacOS, you need the command line tools, which can be obtained by installing Xcode from the [App Store](https://medium.com/r/?url=https%3A%2F%2Fapps.apple.com%2Fus%2Fapp%2Fxcode%2Fid497799835%3Fmt%3D12). 
+
+**Note:** On some versions of MacOS, you may receive the error `xcrun: error: invalid active developer path` as shown below:
+
+```
+xcrun: error: invalid active developer path (/Library/Developer/CommandLineTools), missing xcrun at: /Library/Developer/CommandLineTools/usr/bin/xcrun
+```
+
+If this occurs, a manual refresh of the command line tools is required by running the following commands:
+
+```
+sudo rm -rf /Library/Developer/CommandLineTools
+sudo xcode-select --install
+```
+
 #### Installing the plug-in
+
 
 Now that the Db2 ODBC CLI driver is downloaded, set the `IBM_DB_INSTALLER_URL` environment variable and install the Db2 plug-in to Zowe CLI.
 
@@ -96,28 +114,36 @@ Now that the Db2 ODBC CLI driver is downloaded, set the `IBM_DB_INSTALLER_URL` e
     zowe plugins install zowe-db2.tgz
     ```
 
-5. [Address the license requirements](#addressing-the-license-requirement) to begin using the plug-in.
+3. [Address the license requirements](#addressing-the-license-requirement) to begin using the plug-in.
 
 ## Addressing the license requirement
 
-The following steps are required for both the registry and offline package installation methods:
+To successfully connect the Db2 CLI plug-in to a database on z/OS, a license needs to be present either on the client where the Zowe CLI is executed from, or else on z/OS. If you don't have a license configured when you execute Db2 CLI commands, you will receive an error `SQL1598N`, for example:
 
-1. Locate your client copy of the Db2 license. You must have a properly licensed and configured Db2 instance for the Db2 plugin to successfully connect to Db2 on z/OS.
+```
+DB2 ODBC Driver Error: [node-ibm_db] SQL_ERROR
+Error Details:
+Error:    [IBM][CLI Driver] SQL1598N  An attempt to connect to the   database server failed because of a licensing problem.
+```
+
+### Server-side license
+
+You can execute the utility `db2connectactivate` on z/OS to enable a Db2 database to accept client requests. For more information, see [db2connectactivate - Server license activation utility](https://www.ibm.com/support/knowledgecenter/SSEPGG_11.5.0/com.ibm.db2.luw.licensing.doc/doc/r0057377.html). This avoids having to apply the Db2 Connect license on each database client that connects directly to the server. It is also the preferred approach to enabling users of the Zowe Db2 CLI because it avoids individual client license distribution and configuration.
+
+### Client-side license
+
+If the utility `db2connectactivate` has not been executed against the Db2 database that your profile is connecting to, then it is possible to obtain the license file `db2consv_zs.lic` from a copy of DB2 Connect and use this for client configuration. This will need to be done separately for each client PC.  
+
+1. Locate your client copy of the Db2 license file `db2consv_zs.lic`. 
 
     **Note:** The license must be of version 11.5 if the Db2 server is not `db2connectactivated`. You can buy a db2connect license from IBM. The connectivity can be enabled either on server using db2connectactivate utility or on client using client side license file.
     To know more about DB2 license and purchasing cost, please contact IBM Customer Support.
 
-2. Copy your Db2 license file and place it in the following directory.
-    - **Windows:**
-        ```
-        <zowe_home>/plugins/installed/lib/node_modules/@zowe/db2-for-zowe-cli/node_modules/ibm_db/installer/clidriver/license
-        ```
-    - **Linux:**
-        ```
-        <zowe_home>/plugins/installed/lib/node_modules/@zowe/db2-for-zowe-cli/node_modules/ibm_db/installer/clidriver/license
-              
-        ```
-    **Tip:** By default, <zowe_home> is set to `~/.zowe` on \*NIX systems, and `C:\Users\<Your_User>\.zowe` on Windows systems.
+2. Copy your Db2 license file `db2consv_za.lic` and place it in the following directory.
+      ```
+      <zowe_home>/plugins/installed/lib/node_modules/@zowe/db2-for-zowe-cli/node_modules/ibm_db/installer/clidriver/license
+      ```
+    **Tip:** By default, <zowe_home> is set to `~/.zowe` on \*UNIX Aand Mac systems, and `C:\Users\<Your_User>\.zowe` on Windows systems.
 
     After the license is copied, you can use the Db2 plugin functionality.
 
@@ -142,3 +168,14 @@ zowe profiles create db2 <profileName> -H <host> -P <port> -d <database> -u <use
 ```
 
 **Note** For more information, issue the command `zowe profiles create db2-profile --help`
+
+### SQL0805N: Database BIND
+
+To be able to run remote SQL commands against a Db2 database, you must invoke a `BIND` command against it. If the `BIND` command is not run, you will see an error that contains `SQL0805N` similar to the log below:
+
+```
+Command Error:
+DB2 ODBC Driver Error: [node-ibm_db] Error in ODBCConnection::QuerySync while executing query.Error Details:
+Error:    [IBM][CLI Driver][DB2] SQL0805N  Package "DSNV112E.NULLID.SYSSH200.5359534C564C3031" was not found.
+```
+If you receive this error, a user with `DBADM` authority must run the `BIND` command. This will typically be done by a Db2 System Programmer.  More information can be found in the [Db2 product documentation](https://medium.com/r/?url=https%3A%2F%2Fwww.ibm.com%2Fsupport%2Fproducthub%2Fdb2%2Fdocs%2Fcontent%2FSSEPGG_11.5.0%2Fcom.ibm.db2.luw.admin.cmd.doc%2Fdoc%2Fr0001935.html) and [The Bind process](https://medium.com/r/?url=https%3A%2F%2Fwww.ibm.com%2Fsupport%2Fknowledgecenter%2FSSEPEK_10.0.0%2Fapsg%2Fsrc%2Ftpc%2Fdb2z_bindprocess.html).

@@ -2,7 +2,7 @@
 
 ## Zowe runtime configuration parameters
 
-As an application developer who wants to run Zowe, set the following parameters during the Zowe runtime configuration by modifying the `<Zowe install directory>/components/api-mediation/bin/start.sh` file:
+As an application developer who wants to run Zowe, set the following parameters during the Zowe runtime configuration by modifying the `<Zowe install directory>/components/discovery/bin/start.sh` file:
 
 * **[API ML configuration](#api-ml-configuration)**
 * **[Eureka configuration](#eureka-configuration)**
