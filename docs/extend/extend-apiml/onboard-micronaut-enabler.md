@@ -213,7 +213,7 @@ where:
 
 - **`apiml.service.serviceId`**
 
-is the ID of your service
+ID of your service
 - **`apiml.service.port`**
 
 port on which the service will be listening
@@ -236,10 +236,13 @@ password protecting the certificates in truststore
 
 relative path to the trustorestore from the point of running application
 - **`apiml.service.ssl[0].trustStoreType`**
+
 type of the truststore, e.g. PKCS12 
 - **`apiml.service.ssl[0].ciphers`**
+
 list of ciphers that user wants to enable for TLS communication 
 - **`apiml.service.ssl[0].protocol`**
+
 type of SSL/TLS protocol, e.g. TLSv1.2
 ### (Optional) Logging configuration
 
