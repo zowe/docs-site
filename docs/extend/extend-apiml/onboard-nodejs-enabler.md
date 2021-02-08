@@ -37,7 +37,7 @@ Ensure that the prerequisites from the [Onboarding Overview](onboard-overview.md
 
 Install the onboarding Node.js enabler package as a dependency of your service by running npm command from your project directory:
 
-    npm i @zowe/apiml-onboarding-enabler-nodejs@latest --dev-save
+    npm i apiml-onboarding-enabler-nodejs@latest --dev-save
 
 **Note:** If you have a multi-module project, you have to run the npm command from the submodule where is your Node.js project.
 
