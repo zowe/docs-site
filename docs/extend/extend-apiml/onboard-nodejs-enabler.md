@@ -1,15 +1,14 @@
 # Onboarding a Node.js based REST API service
 
-This article is part of a series of onboarding guides, which outline the process of onboarding REST API services to the Zowe API Mediation Layer (API ML). As a service developer, you can onboard a REST service based on NodeJS with the API ML with the Zowe API Mediation Layer using our Node.js Enabler.
+This article is part of a series of onboarding articles, which outline the process of onboarding REST API services to the Zowe API Mediation Layer (API ML). As a service developer, you can onboard a REST service based on NodeJS with the API ML with the Zowe API Mediation Layer using our Node.js Enabler.
 
-**Tip:** For more information about onboarding API services with the API ML, see the [Onboarding Overview](onboard-overview.md).
+**Note:** For more information about onboarding API services with the API ML, see the [Onboarding Overview](onboard-overview.md).
 
 ## Introduction
 
 The API ML onboarding Node.js enabler is an NPM package which helps to simplify the process of onboarding a REST service written in Node.js with the API ML. 
 
-
-**Tip:** For more information about how to utilize another API ML enablers, see the documentation in
+For more information about how to utilize another API ML enablers, see the documentation in
 the [Onboarding Overview](onboard-overview.md).
 
 ## Onboarding your Node.js service with API ML
@@ -28,25 +27,25 @@ The following steps outline the overall process to onboard a REST service with t
 
 ## Prerequisites
 
-Ensure that the prerequisites from the [Onboarding Overview](onboard-overview.md) are met.
-
+* Ensure that you meet the prerequisites from the [Onboarding Overview](onboard-overview.md).
 * The REST API service to onboard is written in Node.js.
 * The service is enabled to communicate with API ML Discovery Service over a TLS v1.2 secured connection.
 
 ## Installing the npm dependency 
 
-Install the onboarding Node.js enabler package as a dependency of your service by running npm command from your project directory:
-
-    npm i apiml-onboarding-enabler-nodejs@latest --dev-save
-
-**Note:** If you have a multi-module project, you have to run the npm command from the submodule where is your Node.js project.
+Install the onboarding Node.js enabler package as a dependency of your service. Run the following npm command from your project directory:
+```
+npm i apiml-onboarding-enabler-nodejs@latest --dev-save
+```
+**Note:** If you have a multi-module project, you have to run the npm command from the submodule where your Node.js project is located.
 
 ## Configuring your service
 
-Create a yaml file named `service-configuration.yml`, add the configuration properties and place the yaml file inside a `/config` directory at the same level of your `index.js`. 
+Create a yaml file named `service-configuration.yml` inside a `/config` directory at the same level of your `index.js`, and add the following configuration properties. 
+
 Below is an example of the configuration.
  
-   **Example:**
+ **Example:**
     
    ```yaml
     serviceId: hwexpress
@@ -122,6 +121,10 @@ Below is an example of the configuration.
 
 ## Registering your service with API ML
 
+TO register your service with API ML, use the following procedure.
+
+**Follow these steps:**
+
 1. Inside your Node.js service `index.js`, add the following code block to register your service with Eureka:
 
    ```js
@@ -152,6 +155,6 @@ Specific addresses and user credentials for the individual API ML components dep
 for both `username` and `password`. If API ML was installed by system administrators, ask them to provide you
 with actual addresses of API ML components and the respective user credentials.
 
-**Tip:** Wait for the Discovery Service to fully register your service. This process may take a few minutes after your
-service was successfully started.
+**Note:** Wait for the Discovery Service to fully register your service. This process may take a few minutes after your
+service starts successfully.
 
