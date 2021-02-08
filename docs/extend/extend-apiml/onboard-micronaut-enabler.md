@@ -16,6 +16,7 @@ For Micronaut related documentation, visit the [Micronaut website](https://docs.
   - [Add Micronaut configuration](#add-micronaut-configuration)
   - [Set up logging configuration](#set-up-logging-configuration)
 - [Validate successful registration](#validate-successful-registration)
+
 ## Set up your build automation system
 
 Currently, the only build automation system for use with onboarding a Micronaut based service is _Gradle_.
@@ -151,7 +152,7 @@ Use the following procedure to add API ML configuration to the application.yaml.
 
         is the ID of your service
   
-2. Add SSL resolving properties as shown in the following example. Ensure to structure the nested objects within `apiml.service`  as arrays. Ensure to include `-` before `enabled` thereby indicating the first element of the array.
+2. Add SSL resolving properties as shown in the following example. Ensure to structure the nested objects within `apiml.service`  as arrays. Be sure to include `-` before `enabled` thereby indicating the first element of the array.
 
 **Example:**
 
@@ -226,7 +227,7 @@ Once you complete API ML configuration, add configuration to provide correct map
 
     - **`apiml.service.ssl[0].keyStoreType`**
 
-        type of the keystore, e.g. PKCS12 
+        is the type of the keystore, (Example: PKCS12)
 
     - **`apiml.service.ssl[0].keyStore`**
 
@@ -255,6 +256,7 @@ Once you complete API ML configuration, add configuration to provide correct map
     - **`apiml.service.ssl[0].protocol`**
 
         is the type of SSL/TLS protocol (Example: TLSv1.2)
+        
 ### (Optional) Set up logging configuration
 
 Set up custom logging configuration to have more structured output and better control of logs.
