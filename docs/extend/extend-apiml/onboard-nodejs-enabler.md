@@ -125,7 +125,7 @@ Below is an example of the configuration.
 1. Inside your Node.js service `index.js`, add the following code block to register your service with Eureka:
 
    ```js
-    const apiLayerService = require("@zowe/apiml-onboarding-enabler-nodejs");
+    const apiLayerService = require("apiml-onboarding-enabler-nodejs");
     tlsOptions = apiLayerService.tlsOptions;
     const httpsServer = https.createServer(tlsOptions, app);
     httpsServer.listen(args.port, function () {
