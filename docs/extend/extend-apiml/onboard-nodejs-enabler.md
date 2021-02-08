@@ -18,7 +18,7 @@ The following steps outline the overall process to onboard a REST service with t
 
 1. [Prerequisites](#prerequisites)
 
-2. [Configuring your service](#configuring-your-project)
+2. [Installing the npm dependency](#installing-the-npm-dependency)
 
 3. [Configuring your service](#configuring-your-service)
    
@@ -33,7 +33,7 @@ Ensure that the prerequisites from the [Onboarding Overview](onboard-overview.md
 * The REST API service to onboard is written in Node.js.
 * The service is enabled to communicate with API ML Discovery Service over a TLS v1.2 secured connection.
 
-## Configuring your project
+## Installing the npm dependency 
 
 Install the onboarding Node.js enabler package as a dependency of your service by running npm command from your project directory:
 
