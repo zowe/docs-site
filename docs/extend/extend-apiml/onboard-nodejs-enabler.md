@@ -8,26 +8,25 @@ This article is part of a series of onboarding articles, which outline the proce
 
 The API ML onboarding Node.js enabler is an NPM package which helps to simplify the process of onboarding a REST service written in Node.js with the API ML. 
 
-For more information about how to utilize another API ML enablers, see the documentation in
-the [Onboarding Overview](onboard-overview.md).
-
+For more information about how to utilize another API ML enablers, see the [Onboarding Overview](onboard-overview.md).
 ## Onboarding your Node.js service with API ML
 
 The following steps outline the overall process to onboard a REST service with the API ML using the onboarding Node.js enabler. Each step is described in further detail in this article.
 
 1. [Prerequisites](#prerequisites)
 
-2. [Installing the npm dependency](#installing-the-npm-dependency)
+2. [Install the npm dependency](#installing-the-npm-dependency)
 
-3. [Configuring your service](#configuring-your-service)
+3. [Configure your service](#configuring-your-service)
    
-4. [Registering your service with API ML](#registering-your-service-with-api-ml)
+4. [Register your service with API ML](#registering-your-service-with-api-ml)
 
-5. (Optional) [Validating the discoverability of your API service by the Discovery Service](#validating-the-discoverability-of-your-api-service-by-the-discovery-service)
+5. (Optional) [Validate the discoverability of your API service by the Discovery Service](#validating-the-discoverability-of-your-api-service-by-the-discovery-service)
 
 ## Prerequisites
+Ensure that you meet the following prerequisites:
 
-* Ensure that you meet the prerequisites from the [Onboarding Overview](onboard-overview.md).
+* You satisfy the prerequisites from the [Onboarding Overview](onboard-overview.md).
 * The REST API service to onboard is written in Node.js.
 * The service is enabled to communicate with API ML Discovery Service over a TLS v1.2 secured connection.
 
@@ -43,7 +42,7 @@ npm i apiml-onboarding-enabler-nodejs@latest --dev-save
 
 Create a yaml file named `service-configuration.yml` inside a `/config` directory at the same level of your `index.js`, and add the following configuration properties. 
 
-Below is an example of the configuration.
+The following example shows a sample configuration. 
  
  **Example:**
     
@@ -121,7 +120,7 @@ Below is an example of the configuration.
 
 ## Registering your service with API ML
 
-TO register your service with API ML, use the following procedure.
+To register your service with API ML, use the following procedure.
 
 **Follow these steps:**
 
@@ -136,13 +135,14 @@ TO register your service with API ML, use the following procedure.
     });
     
    ```
-2. Start your Node.js service and verify that it registers to the Zowe API Mediation Layer.
+2. Start your Node.js service and verify that the service is registered to the Zowe API Mediation Layer.
 
 ## Validating the discoverability of your API service by the Discovery Service
 
 Once you build and start your service successfully, you can use the option of validating that your service is registered correctly with the API ML Discovery Service.
 
 **Follow these steps:**
+
   1. [Validate successful onboarding](./onboard-overview.md#verify-successful-onboarding-to-the-api-ml)
  
   2. Check that you can access your API service endpoints through the Gateway.
@@ -151,8 +151,7 @@ Once you build and start your service successfully, you can use the option of va
 
 Specific addresses and user credentials for the individual API ML components depend on your target runtime environment.
 
-**Note:** If you are working with local installation of API ML and you are using our dummy identity provider, enter `user`
-for both `username` and `password`. If API ML was installed by system administrators, ask them to provide you
+**Note:** If you are working with a local installation of API ML, and you are using our dummy identity provider, enter `user` for both `username` and `password`. If API ML was installed by system administrators, ask them to provide you
 with actual addresses of API ML components and the respective user credentials.
 
 **Note:** Wait for the Discovery Service to fully register your service. This process may take a few minutes after your
