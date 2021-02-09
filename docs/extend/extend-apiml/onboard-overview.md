@@ -8,7 +8,7 @@ This Onboarding Overview article addresses the following topics:
 
 - [Prerequisites](#prerequisites)
 - [Service Onboarding Guides](#service-onboarding-guides) to onboard your REST service with the API ML
-- [Validating successful onboarding](#validating-successful-onboarding)
+- [Verify successful onboarding to the API ML](#verify-successful-onboarding-to-the-api-ml)
 - Using the [Sample REST API Service](#sample-rest-api-service)  to learn how to onboard a REST service to the API ML 
 
 ## Prerequisites
@@ -45,6 +45,11 @@ Services can be updated to support the API Mediation Layer natively by updating 
 
 - [Onboard a REST API service with the Plain Java Enabler (PJE)](onboard-plain-java-enabler.md)
 - [Onboard a Spring Boot based REST API Service](onboard-spring-boot-enabler.md)
+- [Onboard a Micronaut based REST API service](onboard-micronaut-enabler.md)
+
+### Recommended guides for services using Node.js
+
+- [Onboard a Node.js based REST API Service](onboard-nodejs-enabler.md)
 
 ### Guides for Static Onboarding and Direct Call Onboarding
 
