@@ -45,6 +45,7 @@ Services can be updated to support the API Mediation Layer natively by updating 
 
 - [Onboard a REST API service with the Plain Java Enabler (PJE)](onboard-plain-java-enabler.md)
 - [Onboard a Spring Boot based REST API Service](onboard-spring-boot-enabler.md)
+- [Onboard a Micronaut based REST API service](onboard-micronaut-enabler.md)
 
 ### Recommended guides for services using Node.js
 
