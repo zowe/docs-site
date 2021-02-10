@@ -16,9 +16,10 @@ Follow the procedures in the following sections to customize Gateway parameters 
   * [Gateway retry policy](#gateway-retry-policy)
   * [Gateway client certificate authentication](#gateway-client-certificate-authentication)
   * [Gateway timeouts](#gateway-timeouts)
-  * [Cors handling](#cors-handling)
+  * [CORS handling](#cors-handling)
   * [Encoded slashes](#encoded-slashes)
   * [Connection limits](#connection-limits)
+  * [Replace or remove catalog with another service](#replace-or-remove-catalog-with-another-service)
   * [API Mediation Layer as a standalone component](#api-mediation-layer-as-a-standalone-component)
 
 ## Prefer IP Address for API Layer services
