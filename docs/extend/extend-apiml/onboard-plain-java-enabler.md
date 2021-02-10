@@ -195,12 +195,12 @@ authentication:
     applid: ZOWEAPPL
 
  apiInfo:
-     - apiId: org.zowe.sampleservice
+     - apiId: zowe.apiml.sampleservice
        version: 1.0.0
        gatewayUrl: api/v1
        swaggerUrl: http://${sampleServiceSwaggerHost}:${sampleServiceSwaggerPort}/sampleservice/api-doc
        doumentationUrl: http://
-     - apiId: org.zowe.sampleservice
+     - apiId: zowe.apiml.sampleservice
        version: 2.0.0
        gatewayUrl: api/v2
        swaggerUrl: http://${sampleServiceSwaggerHost}:${sampleServiceSwaggerPort}/sampleservice/api-doc?group=api-v2
@@ -363,12 +363,12 @@ The following snippet presents the information properties of a single API:
 
 ```
 apiInfo:
-    - apiId: org.zowe.sampleservice
-    version: v1
-    gatewayUrl: api/v1
-    swaggerUrl: http://localhost:10021/sampleservice/api-doc
-    documentationUrl: http://your.service.documentation.url
-    defaultApi: true
+    - apiId: zowe.apiml.sampleservice
+      version: 1.0.0
+      gatewayUrl: api/v1
+      swaggerUrl: http://localhost:10021/sampleservice/api-doc
+      documentationUrl: http://your.service.documentation.url
+      defaultApi: true
 ```
 
 where:
