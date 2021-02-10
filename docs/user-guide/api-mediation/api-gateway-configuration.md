@@ -82,7 +82,7 @@ To change this default configuration, include the following parameters:
 Beginning with release 1.19 LTS, it is possible to authenticate using client certificates. The feature is functional and tested, but automated testing on various security systems is not complete. As such, the feature is provided as a beta release for early preview. If you would like to offer feedback using client certificate authentication, please create an issue against the api-layer repository. Client Certificate authentication will move out of Beta once test automation is fully implemented across different security systems.
 
 
-Use the following procedure to enable the feature of using a client certificate as a method of authentication for the API Mediation Layer Gateway.
+Use the following procedure to enable the feature to use a client certificate as the method of authentication for the API Mediation Layer Gateway.
 
 **Follow these steps:**
 
@@ -97,7 +97,7 @@ Use the following procedure to enable the feature of using a client certificate 
 
      When z/OSMF is used as an authentication provider, provide a valid `APPLID` to allow for client certificate authentication. The API ML generates a passticket for the specified `APPLID` and subsequently uses this passticket to authenticate to z/OSMF. The default value in the installation of z/OSMF is `IZUDFLT`.
   
-**Note:** The following steps are only required if the ZSS hostname or default Zowe user name are altered:
+    **Note:** The following steps are only required if the ZSS hostname or default Zowe user name are altered:
 
 3. Open the file `<Zowe install directory>/components/gateway/bin/start.sh`.
 4. Configure the following properties:
@@ -116,7 +116,7 @@ Use the following procedure to enable the feature of using a client certificate 
      
      To customize the `ZWESECUR` JCL or workflow (`// SET ZOWEUSER=ZWESVUSR * userid for Zowe started task`), change the `apiml.security.x509.externalMapperUser` to a new value.
 
-Restart Zowe&trade.
+5. Restart `Zowe&trade`.
 
 ## Gateway timeouts
 
@@ -126,7 +126,7 @@ Use the following procedure to change the global timeout value for the API Media
 
 1. Open the file `<Zowe instance directory>/instance.env`.
 2. Find the property `APIML_GATEWAY_TIMEOUT_MILLIS`, and set the value to the desired value.
-3. Restart Zowe&trade. 
+3. Restart `Zowe&trade`. 
 
 If you require finer control, you can edit the `<Zowe install directory>/components/gateway/bin/start.sh`, and modify the following properties:
 
@@ -158,7 +158,7 @@ By default, Cross-Origin Resource Sharing (CORS) is disabled in the API Gateway 
      
 1. Open the file `<Zowe instance directory>/instance.env`.
 2. Find the property `APIML_CORS_ENABLED` and set the value to `true`.
-3. Restart Zowe&trade.
+3. Restart `Zowe&trade`.
   
 Requests through the Gateway now contain a CORS header. 
 
@@ -172,7 +172,7 @@ Use the following procedure to reject encoded slashes.
     
 1. Open the file `<Zowe instance directory>/instance.env`.
 2. Find the property `APIML_ALLOW_ENCODED_SLASHES` and set the value to `false`.
-3. Restart Zowe&trade. 
+3. Restart `Zowe&trade`. 
     
 Requests with encoded slashes are now rejected by the API Mediation Layer.
 
@@ -188,30 +188,49 @@ Use the following procedure to change the number of concurrent connections.
 2. Find the property `APIML_MAX_CONNECTIONS_PER_ROUTE` and set the value to an appropriate positive integer.
 3. Find the property `APIML_MAX_TOTAL_CONNECTIONS` and set the value to an appropriate positive integer.
 
-## Replace or remove catalog with different service
+## Replace or remove catalog with another service
 
-By default, the API Mediation Layer contains API Catalog as a service showing available services. As the API Mediation Layer can be successfully run without this component it is possible to replace or remove the service from the Gateway home page and health checks. The Gateway home page and health checks behaves as explained below: 
+By default, the API Mediation Layer contains API Catalog as a service showing available services. As the API Mediation Layer can be successfully run without this component it is possible to replace or remove the service from the Gateway home page and health checks. The following section describes the behavior of the Gateway home page and health checks. 
 
-The value is `none`:
+The default option displays the API Catalog.
 
-- There will be nothing displayed on the Gateway home page and the Catalog will be removed from the /application/health
+```
+APIML_GATEWAY_CATALOG_ID = apicatalog
+```
+A value can also be applied to `API_GATEWAY_CATALOG_ID`.
 
-The value is a valid id of the onboarded service. For example `alternative-catalog`:
+**Examples:**
 
-- If the application will contain the homePageUrl and statusPageRelativeUrl then full set of information will be shown
-- If the application will contain the homePageUrl the link will be displayed without the UP information
-- If the application will contain the statusPageRelativeUrl then the UP or DOWN will be shown based on the statusPage without the link.
+- **`none`**
 
-Use the following procedure to change or replace the catalog service:
+  Nothing is displayed on the Gateway home page and the Catalog is removed from `/application/health`
+
+- **`alternative-catalog`** 
+
+  An alternative to the API Catalog is displayed
+
+- **`metrics-dashboard`**
+ 
+  A possible dashboard that could appear in place of the API Catalog 
+
+**Notes:**
+- If the application contains the `homePageUrl` and `statusPageRelativeUrl`, then the full set of information is displayed.
+- If the application contains the `homePageUrl` the link is displayed without the `UP` information
+- If the application contains the `statusPageRelativeUrl` then `UP` or `DOWN` is displayed based on the `statusPage` without the link.
+
+Use the following procedure to change or replace the Catalog service:
 
 **Follow these steps:**
 
 1. Open the file `<Zowe instance directory>/instance.env`.
-2. Add a new line at the end of the file with the property `APIML_GATEWAY_CATALOG_ID` and either set value to `none` which removes the catalog service or to id of service onboarded to the API Mediation Layer. 
+2. At the end of the file with the property `APIML_GATEWAY_CATALOG_ID` add a new line. Set the value with the following options:
+
+    - Set the value to `none` to remove the Catalog service.
+    - Set the value to the ID of the service that is onboarded to the API Mediation Layer. 
 
 # API Mediation Layer as a standalone component
 
-As a Zowe user, follow the procedure in this article to start the API Mediation Layer independently of other Zowe components. 
+You can start the API Mediation Layer independently of other Zowe components. 
 By default, the Gateway, Zowe System Services, and Virtual Desktop start when
  Zowe runs. To limit consumed resources when the Virtual Desktop or Zowe System
  Services are not required, it is possible to specify which components start in the
@@ -224,6 +243,6 @@ Once Zowe is installed, use the following procedure to limit which components st
 
 1. Open the file `<Zowe instance directory>/instance.env`.
 2. Find the property `ZWE_LAUNCH_COMPONENTS` and set `discovery,gateway,api-catalog`
-3. Restart Zowe&trade.   
+3. Restart `Zowe&trade`.   
 
 To learn more about the related section of the environment file, see [Creating and configuring the Zowe instance directory](../configure-instance-directory.md#component-groups). We recommend you open this page in a new tab.
