@@ -188,6 +188,27 @@ Use the following procedure to change the number of concurrent connections.
 2. Find the property `APIML_MAX_CONNECTIONS_PER_ROUTE` and set the value to an appropriate positive integer.
 3. Find the property `APIML_MAX_TOTAL_CONNECTIONS` and set the value to an appropriate positive integer.
 
+## Replace or remove catalog with different service
+
+By default, the API Mediation Layer contains API Catalog as a service showing available services. As the API Mediation Layer can be successfully run without this component it is possible to replace or remove the service from the Gateway home page and health checks. The Gateway home page and health checks behaves as explained below: 
+
+The value is `none`:
+
+- There will be nothing displayed on the Gateway home page and the Catalog will be removed from the /application/health
+
+The value is a valid id of the onboarded service. For example `alternative-catalog`:
+
+- If the application will contain the homePageUrl and statusPageRelativeUrl then full set of information will be shown
+- If the application will contain the homePageUrl the link will be displayed without the UP information
+- If the application will contain the statusPageRelativeUrl then the UP or DOWN will be shown based on the statusPage without the link.
+
+Use the following procedure to change or replace the catalog service:
+
+**Follow these steps:**
+
+1. Open the file `<Zowe instance directory>/instance.env`.
+2. Add a new line at the end of the file with the property `APIML_GATEWAY_CATALOG_ID` and either set value to `none` which removes the catalog service or to id of service onboarded to the API Mediation Layer. 
+
 # API Mediation Layer as a standalone component
 
 As a Zowe user, follow the procedure in this article to start the API Mediation Layer independently of other Zowe components. 
