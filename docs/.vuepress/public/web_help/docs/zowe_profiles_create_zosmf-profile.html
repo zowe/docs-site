@@ -88,26 +88,36 @@ terminated and return an error. Allowed values: 5 - 600</li>
 <ul>
 <li><p>Create a zosmf profile called &#39;zos123&#39; to connect to z/OSMF
 at host zos123 and port 1443:</p>
-<pre><code>* `$  zowe  profiles create zosmf-profile zos123 --host zos123 --port 1443 --user ibmuser --password myp4ss`</code></pre>
+<ul>
+<li><code>zowe  profiles create zosmf-profile zos123 --host zos123 --port 1443 --user ibmuser --password myp4ss</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  profiles create zosmf-profile zos123 --host zos123 --port 1443 --user ibmuser --password myp4ss">Copy</button></li>
+</ul>
 </li>
 <li><p>Create a zosmf profile called &#39;zos124&#39; to connect to z/OSMF
 at the host zos124 (default port - 443) and allow self-signed certificates:</p>
-<pre><code>* `$  zowe  profiles create zosmf-profile zos124 --host zos124 --user ibmuser --password myp4ss --reject-unauthorized false`</code></pre>
+<ul>
+<li><code>zowe  profiles create zosmf-profile zos124 --host zos124 --user ibmuser --password myp4ss --reject-unauthorized false</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  profiles create zosmf-profile zos124 --host zos124 --user ibmuser --password myp4ss --reject-unauthorized false">Copy</button></li>
+</ul>
 </li>
 <li><p>Create a zosmf profile called &#39;zos125&#39; to connect to z/OSMF
 at the host zos125 and port 1443, not specifying a username or password so they
 are not stored on disk; these will need to be specified on every command:</p>
-<pre><code>* `$  zowe  profiles create zosmf-profile zos125 --host zos125 --port 1443`</code></pre>
+<ul>
+<li><code>zowe  profiles create zosmf-profile zos125 --host zos125 --port 1443</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  profiles create zosmf-profile zos125 --host zos125 --port 1443">Copy</button></li>
+</ul>
 </li>
 <li><p>Create a zosmf profile called &#39;zos126&#39; to connect to z/OSMF
 on the default port 443 and allow self-signed certificates, not specifying a
 username, password, or host so they are not stored on disk; these will need to
 be specified on every command:</p>
-<pre><code>* `$  zowe  profiles create zosmf-profile zos126 --reject-unauthorized false`</code></pre>
+<ul>
+<li><code>zowe  profiles create zosmf-profile zos126 --reject-unauthorized false</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  profiles create zosmf-profile zos126 --reject-unauthorized false">Copy</button></li>
+</ul>
 </li>
 <li><p>Create a zosmf profile called &#39;zos124&#39; to connect to z/OSMF
 at the host zos124 (default port - 443) and allow self-signed certificates:</p>
-<pre><code>* `$  zowe  profiles create zosmf-profile zosAPIML --host zosAPIML --port 2020 --user ibmuser --password myp4ss --reject-unauthorized false --base-path basePath`</code></pre>
+<ul>
+<li><code>zowe  profiles create zosmf-profile zosAPIML --host zosAPIML --port 2020 --user ibmuser --password myp4ss --reject-unauthorized false --base-path basePath</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  profiles create zosmf-profile zosAPIML --host zosAPIML --port 2020 --user ibmuser --password myp4ss --reject-unauthorized false --base-path basePath">Copy</button></li>
+</ul>
 </li>
 </ul>
 </article>

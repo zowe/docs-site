@@ -77,22 +77,30 @@ default token type, which is provided by &#39;zowe auth login&#39;.</li>
 <ul>
 <li><p>Create a profile called &#39;base1&#39; to connect to host
 example.com and port 443:</p>
-<pre><code>* `$  zowe  profiles create base-profile base1 --host example.com --port 443 --user admin --password 123456`</code></pre>
+<ul>
+<li><code>zowe  profiles create base-profile base1 --host example.com --port 443 --user admin --password 123456</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  profiles create base-profile base1 --host example.com --port 443 --user admin --password 123456">Copy</button></li>
+</ul>
 </li>
 <li><p>Create a profile called &#39;base2&#39; to connect to host
 example.com (default port - 443) and allow self-signed certificates:</p>
-<pre><code>* `$  zowe  profiles create base-profile base2 --host example.com --user admin --password 123456 --reject-unauthorized false`</code></pre>
+<ul>
+<li><code>zowe  profiles create base-profile base2 --host example.com --user admin --password 123456 --reject-unauthorized false</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  profiles create base-profile base2 --host example.com --user admin --password 123456 --reject-unauthorized false">Copy</button></li>
+</ul>
 </li>
 <li><p>Create a profile called &#39;base3&#39; to connect to host
 example.com and port 1443, not specifying a username or password so they are not
 stored on disk; these will need to be specified on every command:</p>
-<pre><code>* `$  zowe  profiles create base-profile base3 --host example.com --port 1443`</code></pre>
+<ul>
+<li><code>zowe  profiles create base-profile base3 --host example.com --port 1443</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  profiles create base-profile base3 --host example.com --port 1443">Copy</button></li>
+</ul>
 </li>
 <li><p>Create a zosmf profile called &#39;base4&#39; to connect to default
 port 443 and allow self-signed certificates, not specifying a username,
 password, or host so they are not stored on disk; these will need to be
 specified on every command:</p>
-<pre><code>* `$  zowe  profiles create base-profile base4 --reject-unauthorized false`</code></pre>
+<ul>
+<li><code>zowe  profiles create base-profile base4 --reject-unauthorized false</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  profiles create base-profile base4 --reject-unauthorized false">Copy</button></li>
+</ul>
 </li>
 </ul>
 </article>
