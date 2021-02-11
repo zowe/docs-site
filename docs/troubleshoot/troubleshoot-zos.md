@@ -66,7 +66,8 @@ Messages for `ZWED0290I` will be written when the JES Explorer `org.zowe.explore
 
 When the Zowe desktop and the API Gateway are both started in a launch configuration, it will register itself with the API Gateway after the Zowe desktop has started. This step must be completed before a user is able to successfully log in, as the API Mediation layer is used as the backing authentication service.  The message that is written to indicate that the registration has been successful is `ZWED0021I`, for example
 
-```2021-01-22 14:36:01.846 <ZWED:16842882> ZWESVUSR INFO (_zsf.apiml,apiml.js:218) ZWED0021I - Eureka Client Registered from 127.0.0.1. Available at https://<HOSTNAME>:<APIDISCOVERYPORT>/ui/v1/zlux/
+```
+2021-01-22 14:36:01.846 <ZWED:16842882> ZWESVUSR INFO (_zsf.apiml,apiml.js:218) ZWED0021I - Eureka Client Registered from 127.0.0.1. Available at https://<HOSTNAME>:<APIDISCOVERYPORT>/ui/v1/zlux/
 ```
 
 If you try to log into the Zowe desktop too early before the Eureka client registration has occurred you may get an **Authentication failed** message on the login page because the APIML handshake is incomplete.  If this occurs wait for the registration to be complete as indiciated by the `ZWED0021I` message.
