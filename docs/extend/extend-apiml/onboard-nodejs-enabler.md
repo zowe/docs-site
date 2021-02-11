@@ -6,7 +6,7 @@ This article is part of a series of onboarding articles, which outline the proce
 
 ## Introduction
 
-The API ML onboarding Node.js enabler is an NPM package which helps to simplify the process of onboarding a REST service written in Node.js with the API ML. 
+The [API ML onboarding Node.js enabler](https://www.npmjs.com/package/@zowe/apiml-onboarding-enabler-nodejs) is an NPM package which helps to simplify the process of onboarding a REST service written in Node.js with the API ML. 
 
 For more information about how to utilize another API ML enablers, see the [Onboarding Overview](onboard-overview.md).
 ## Onboarding your Node.js service with API ML
@@ -34,7 +34,7 @@ Ensure that you meet the following prerequisites:
 
 Install the onboarding Node.js enabler package as a dependency of your service. Run the following npm command from your project directory:
 ```
-npm i apiml-onboarding-enabler-nodejs@latest --dev-save
+npm i @zowe/apiml-onboarding-enabler-nodejs@latest --dev-save
 ```
 **Note:** If you have a multi-module project, you have to run the npm command from the submodule where your Node.js project is located.
 
@@ -127,7 +127,7 @@ To register your service with API ML, use the following procedure.
 1. Inside your Node.js service `index.js`, add the following code block to register your service with Eureka:
 
    ```js
-    const apiLayerService = require("apiml-onboarding-enabler-nodejs");
+    const apiLayerService = require("@zowe/apiml-onboarding-enabler-nodejs");
     tlsOptions = apiLayerService.tlsOptions;
     const httpsServer = https.createServer(tlsOptions, app);
     httpsServer.listen(args.port, function () {
