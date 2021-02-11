@@ -10,7 +10,7 @@ The Zowe certificate is used by the API Mediation Layer on its northbound edge w
 
 ## Southbound Certificate
 
-As well as being a server, Zowe itself is a client to services on the southbound edge of its API Mediation Layer that it communicates to over secure sockets.  These southbound services use certificates to encrypt their data, and Zowe uses a trust store to store its relationship to these certificates.  The southbound services that are started by Zowe itself and run as address spaces under its `ZWESVSTC` started task (such as the API discovery service, the explorer JES REST API server) re-use the same Zowe certificate used by the API Mediation Layer on its northbound client edge.  
+As well as being a server, Zowe itself is a client to services on the southbound edge of its API Mediation Layer that it communicates to over secure sockets.  These southbound services use certificates to encrypt their data, and Zowe uses a trust store to store its relationship to these certificates.  The southbound services that are started by Zowe itself and run as address spaces under its `ZWESVSTC` started task   (such as the API discovery service, the explorer JES REST API server) re-use the same Zowe certificate used by the API Mediation Layer on its northbound client edge.  
 
 ## Trust store
 
@@ -34,7 +34,7 @@ The lines in bold green are external certificates for servers that are not manag
 
 Zowe supports certificates that are stored in a USS directory **Java KeyStore** format.  
 
-Beginning with release 1.15, Zowe is including the ability to work with certificates held in a **z/OS Keyring**.  Support for Keyring certificates is currently incomplete and being provided as a beta technical preview for early preview by customers.  If you have any feedback using keyrings please create an issue in the [zowe-install-packaging repo](https://github.com/zowe/zowe-install-packaging/issues).  It is expected that in a future release keyring support will be made available as a fully supported feature.  
+Beginning with release 1.15, Zowe is including the ability to work with certificates held in a **z/OS Keyring**.  If you have problems using keyrings please create an issue in the [zowe-install-packaging repo](https://github.com/zowe/zowe-install-packaging/issues).
 
 <!--
 Zowe supports certificates that are stored either in a USS directory **Java KeyStore** format or else held in a **z/OS Keyring**.  z/OS keystore are the preferred choice for storing certificates where system programmers are already familiar with their operation and usage.  The user ID setting up a keystore and connecting it with certificates requires elevated permissions, and in scenarios where you need to create a Zowe sandbox environment or for testing purposes and your TSO user ID doesn't have authority to manipulate key rings, USS keystores are a good alternative.  
