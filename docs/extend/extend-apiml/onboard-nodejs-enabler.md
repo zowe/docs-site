@@ -71,7 +71,7 @@ The following example shows a sample configuration.
       - gatewayUrl: api/v1
         serviceRelativeUrl: /api/v1
     apiInfo:
-      - apiId: org.zowe.hwexpress
+      - apiId: zowe.apiml.hwexpress
         gatewayUrl: "api/v1"
         swaggerUrl: https://localhost:10020/swagger.json
     catalogUiTile:
@@ -104,7 +104,7 @@ The following example shows a sample configuration.
         apiml.catalog.tile.version: '1.0.0'
         apiml.routes.api_v1.gatewayUrl: "api/v1"
         apiml.routes.api_v1.serviceUrl: "/api/v1"
-        apiml.apiInfo.0.apiId: org.zowe.hwexpress
+        apiml.apiInfo.0.apiId: zowe.apiml.hwexpress
         apiml.apiInfo.0.gatewayUrl: "api/v1"
         apiml.apiInfo.0.swaggerUrl: https://localhost:10020/swagger.json
         apiml.service.title: 'Zowe Sample Node Service'
