@@ -294,12 +294,12 @@ apiml:
             applid: ZOWEAPPL
 
         apiInfo:
-            -   apiId: org.zowe.sampleservice
+            -   apiId: zowe.apiml.sampleservice
                 version: 1.0.0
                 gatewayUrl: api/v1
                 swaggerUrl: ${apiml.service.scheme}://${apiml.service.hostname}:${apiml.service.port}${apiml.service.contextPath}/api-doc
                 documentationUrl: https://www.zowe.org
-            -   apiId: org.zowe.sampleservice
+            -   apiId: zowe.apiml.sampleservice
                 version: 2.0.0
                 gatewayUrl: api/v2
                 swaggerUrl: ${apiml.service.scheme}://${apiml.service.hostname}:${apiml.service.port}${apiml.service.contextPath}/api-doc?group=apiv2
