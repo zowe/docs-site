@@ -123,19 +123,27 @@ default token type, which is provided by &#39;zowe auth login&#39;.</li>
 <h4 id="examples">Examples</h4>
 <ul>
 <li><p>Delete the VSAM data set named &#39;ibmuser.cntl.vsam&#39;:</p>
-<pre><code>* `$  zowe  zos-files delete data-set-vsam &quot;ibmuser.cntl.vsam&quot; -f`</code></pre>
+<ul>
+<li><code>zowe  zos-files delete data-set-vsam &quot;ibmuser.cntl.vsam&quot; -f</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  zos-files delete data-set-vsam &quot;ibmuser.cntl.vsam&quot; -f">Copy</button></li>
+</ul>
 </li>
 <li><p>Delete all expired VSAM data sets that match
 &#39;ibmuser.AAA.**.FFF&#39;:</p>
-<pre><code>* `$  zowe  zos-files delete data-set-vsam &quot;ibmuser.AAA.**.FFF&quot; -f`</code></pre>
+<ul>
+<li><code>zowe  zos-files delete data-set-vsam &quot;ibmuser.AAA.**.FFF&quot; -f</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  zos-files delete data-set-vsam &quot;ibmuser.AAA.**.FFF&quot; -f">Copy</button></li>
+</ul>
 </li>
 <li><p>Delete a non-expired VSAM data set named
 &#39;ibmuser.cntl.vsam&#39;:</p>
-<pre><code>* `$  zowe  zos-files delete data-set-vsam &quot;ibmuser.cntl.vsam&quot; -f --purge`</code></pre>
+<ul>
+<li><code>zowe  zos-files delete data-set-vsam &quot;ibmuser.cntl.vsam&quot; -f --purge</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  zos-files delete data-set-vsam &quot;ibmuser.cntl.vsam&quot; -f --purge">Copy</button></li>
+</ul>
 </li>
 <li><p>Delete an expired VSAM data set named &#39;ibmuser.cntl.vsam&#39; by
 overwriting the components with zeros:</p>
-<pre><code>* `$  zowe  zos-files delete data-set-vsam &quot;ibmuser.cntl.vsam&quot; -f --erase`</code></pre>
+<ul>
+<li><code>zowe  zos-files delete data-set-vsam &quot;ibmuser.cntl.vsam&quot; -f --erase</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  zos-files delete data-set-vsam &quot;ibmuser.cntl.vsam&quot; -f --erase">Copy</button></li>
+</ul>
 </li>
 </ul>
 </article>

@@ -184,24 +184,32 @@ in the output.</li>
 set &quot;TESTID.WKFLOW&quot; that contains the workflow definition xml on the system
 &quot;TESTM1&quot; with owner &quot;OTHERID&quot; and delete workflow with the same name if it
 already exist in z/OSMF:</p>
-<pre><code>* `$  zowe  zos-workflows create workflow-from-data-set &quot;testworkflow&quot; --data-set &quot;TESTID.WKFLOW&quot; --system-name &quot;TESTM1&quot; --owner &quot;OTHERID&quot; --overwrite`</code></pre>
+<ul>
+<li><code>zowe  zos-workflows create workflow-from-data-set &quot;testworkflow&quot; --data-set &quot;TESTID.WKFLOW&quot; --system-name &quot;TESTM1&quot; --owner &quot;OTHERID&quot; --overwrite</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  zos-workflows create workflow-from-data-set &quot;testworkflow&quot; --data-set &quot;TESTID.WKFLOW&quot; --system-name &quot;TESTM1&quot; --owner &quot;OTHERID&quot; --overwrite">Copy</button></li>
+</ul>
 </li>
 <li><p>Create a workflow with name &quot;testworkflow&quot; using data set
 &quot;TESTID.WKFLOW&quot; containing workflow definition xml, on system &quot;TESTM1&quot; with
 owner &quot;MYSYSID&quot; and delete succesfully completed jobs:</p>
-<pre><code>* `$  zowe  zos-workflows create workflow-from-data-set &quot;testworkflow&quot; --data-set &quot;TESTID.WKFLOW&quot; --system-name &quot;TESTM1&quot; --owner &quot;MYSYSID&quot; --delete-completed`</code></pre>
+<ul>
+<li><code>zowe  zos-workflows create workflow-from-data-set &quot;testworkflow&quot; --data-set &quot;TESTID.WKFLOW&quot; --system-name &quot;TESTM1&quot; --owner &quot;MYSYSID&quot; --delete-completed</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  zos-workflows create workflow-from-data-set &quot;testworkflow&quot; --data-set &quot;TESTID.WKFLOW&quot; --system-name &quot;TESTM1&quot; --owner &quot;MYSYSID&quot; --delete-completed">Copy</button></li>
+</ul>
 </li>
 <li><p>Create a workflow with name &quot;testworkflow&quot; using data set
 &quot;TESTID.WKFLOW&quot; containing workflow definition xml, on system &quot;TESTM1&quot; with
 owner &quot;MYSYSID&quot; and with variable values in the member PROPERTIES of data set
 TESTID.DATA:</p>
-<pre><code>* `$  zowe  zos-workflows create workflow-from-data-set &quot;testworkflow&quot; --data-set &quot;TESTID.WKFLOW&quot; --system-name &quot;TESTM1&quot; --owner &quot;MYSYSID&quot; --variables-input-file TESTID.DATA(PROPERTIES)`</code></pre>
+<ul>
+<li><code>zowe  zos-workflows create workflow-from-data-set &quot;testworkflow&quot; --data-set &quot;TESTID.WKFLOW&quot; --system-name &quot;TESTM1&quot; --owner &quot;MYSYSID&quot; --variables-input-file TESTID.DATA(PROPERTIES)</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  zos-workflows create workflow-from-data-set &quot;testworkflow&quot; --data-set &quot;TESTID.WKFLOW&quot; --system-name &quot;TESTM1&quot; --owner &quot;MYSYSID&quot; --variables-input-file TESTID.DATA(PROPERTIES)">Copy</button></li>
+</ul>
 </li>
 <li><p>Create a workflow with name &quot;testworkflow&quot; using the data
 set &quot;TESTID.WKFLOW&quot; that contains a workflow definition xml, on a system
 &quot;TESTM1&quot; with owner &quot;MYSYSID&quot; and with the variable name DUMMYVAR and the value
 DUMMYVAL. Assign it to the owner:</p>
-<pre><code>* `$  zowe  zos-workflows create workflow-from-data-set &quot;testworkflow&quot; --data-set &quot;TESTID.WKFLOW&quot; --system-name &quot;TESTM1&quot; --owner &quot;MYSYSID&quot; --variables DUMMYVAR=DUMMYVAL --assign-to-owner`</code></pre>
+<ul>
+<li><code>zowe  zos-workflows create workflow-from-data-set &quot;testworkflow&quot; --data-set &quot;TESTID.WKFLOW&quot; --system-name &quot;TESTM1&quot; --owner &quot;MYSYSID&quot; --variables DUMMYVAR=DUMMYVAL --assign-to-owner</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  zos-workflows create workflow-from-data-set &quot;testworkflow&quot; --data-set &quot;TESTID.WKFLOW&quot; --system-name &quot;TESTM1&quot; --owner &quot;MYSYSID&quot; --variables DUMMYVAR=DUMMYVAL --assign-to-owner">Copy</button></li>
+</ul>
 </li>
 </ul>
 </article>
