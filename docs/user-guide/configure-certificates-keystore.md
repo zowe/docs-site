@@ -16,6 +16,9 @@ We recommend that you start with the local API Mediation Layer CA for an initial
 
 You can use the `<RUNTIME_DIR>/bin/zowe-setup-certificates.sh` script in the Zowe runtime directory to configure the certificates with the set of defined environment variables. The environment variables act as parameters for the certificate configuration are held in the file `<RUNTIME_DIR>/bin/zowe-setup-certificates.env`. 
 
+**Note:** In order to enable Client Authentication in your generated certificate, your server certificate must contain `TLS Web Client Authentication (1.3.6.1.5.5.7.3.2)` value in the Extended Key Usage section. 
+Furthermore, `Digital signature and/or key agreement` must be also set as extension value in the Key Usage section. [Additional information](https://help.hcltechsw.com/domino/10.0.1/admin/conf_keyusageextensionsandextendedkeyusage_r.html) can be found here.
+
 ## Generate certificate with the default values
 
 The script reads the default variable values that are provided in the `<RUNTIME_DIR>/bin/zowe-setup-certificates.env` file and generates the certificate signed by the local API Mediation CA and keystores in the `/global/zowe/keystore` location.   To set up certificates with the default environment variables, ensure that you run the following script in the Zowe runtime directory:
