@@ -94,13 +94,19 @@ default token type, which is provided by &#39;zowe auth login&#39;.</li>
 <h4 id="examples">Examples</h4>
 <ul>
 <li><p>Execute a dummy SQL query:</p>
-<pre><code>* `$  zowe  db2 execute sql --query&quot;SELECT &#39;Hello World&#39; FROM SYSIBM.SYSDUMMY1&quot;`</code></pre>
+<ul>
+<li><code>zowe  db2 execute sql --query&quot;SELECT &#39;Hello World&#39; FROM SYSIBM.SYSDUMMY1&quot;</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  db2 execute sql --query&quot;SELECT &#39;Hello World&#39; FROM SYSIBM.SYSDUMMY1&quot;">Copy</button></li>
+</ul>
 </li>
 <li><p>Retrieve the employees table and total number of rows:</p>
-<pre><code>* `$  zowe  db2 execute sql -q &quot;SELECT * FROM SAMPLE.EMP; SELECT COUNT(*) AS TOTAL FROM SAMPLE.EMP&quot;`</code></pre>
+<ul>
+<li><code>zowe  db2 execute sql -q &quot;SELECT * FROM SAMPLE.EMP; SELECT COUNT(*) AS TOTAL FROM SAMPLE.EMP&quot;</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  db2 execute sql -q &quot;SELECT * FROM SAMPLE.EMP; SELECT COUNT(*) AS TOTAL FROM SAMPLE.EMP&quot;">Copy</button></li>
+</ul>
 </li>
 <li><p>Execute a file with SQL statements:</p>
-<pre><code>* `$  zowe  db2 execute sql --file backup_sample_database.sql`</code></pre>
+<ul>
+<li><code>zowe  db2 execute sql --file backup_sample_database.sql</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  db2 execute sql --file backup_sample_database.sql">Copy</button></li>
+</ul>
 </li>
 </ul>
 </article>
