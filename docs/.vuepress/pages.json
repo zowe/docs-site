@@ -161,6 +161,7 @@
           "extend/extend-apiml/onboard-direct-eureka-call.md",
           "extend/extend-apiml/onboard-spring-boot-enabler.md",
           "extend/extend-apiml/onboard-micronaut-enabler.md",
+          "extend/extend-apiml/onboard-nodejs-enabler.md",
           "extend/extend-apiml/onboard-static-definition.md",
           "extend/extend-apiml/api-mediation-sso.md",
           "extend/extend-apiml/api-mediation-message-service.md",
