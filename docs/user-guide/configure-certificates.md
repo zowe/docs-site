@@ -1,6 +1,6 @@
 # Configuring Zowe certificates 
 
-Zowe uses a certificate to encrypt data for communication across secure sockets. An instance of Zowe references a USS directory referred to as a KEYSTORE_DIRECTORY which contains information about where the certificate is located.
+Zowe uses a certificate to encrypt data for communication across secure sockets. An instance of Zowe references a USS directory referred to as a `KEYSTORE_DIRECTORY` which contains information about where the certificate is located.
 
 Learn more about the key concepts of Zowe certificates in the following sections.
  
@@ -70,7 +70,7 @@ The JCL member `ZWEKRING` (4) is used to create a z/OS Keyring to hold the Zowe 
 
 At launch time, a Zowe instance is started using the script `<INSTANCE_DIR>/bin/zowe-start.sh` which takes configuration arguments from `<INSTANCE_DIR>/instance.env`.  The argument (5)  `KEYSTORE_DIRECTORY=<KEYSTORE_DIRECTORY>` specifies the path to the keystore directory that Zowe will use.  
 
-**Note:** In case you have generated your own server certificate, if you want to enable Client Authentication for it, your server certificate must contain `TLS Web Client Authentication (1.3.6.1.5.5.7.3.2)` value in the Extended Key Usage section. 
-Furthermore, `Digital signature and/or key agreement` must be also set as extension value in the Key Usage section. [Additional information](https://help.hcltechsw.com/domino/10.0.1/admin/conf_keyusageextensionsandextendedkeyusage_r.html) can be found here.
+**Note:** If you generated your own server certificate, and you want to enable Client Authentication for it, your server certificate must contain the `TLS Web Client Authentication (1.3.6.1.5.5.7.3.2)` value in the Extended Key Usage section. 
+Additionally, the `Digital signature and/or key agreement` must also be set as extension value in the Key Usage section. For more information, see [key usage extensions and extended key usage](https://help.hcltechsw.com/domino/10.0.1/admin/conf_keyusageextensionsandextendedkeyusage_r.html).
 
 For more information on the Zowe launch topology, see [Topology of the Zowe z/OS launch process](./installandconfig.md#topology-of-the-zowe-z-os-launch-process).
