@@ -101,11 +101,18 @@ If you missed DCO sign-off statements in a series of commits, you can retroactiv
 
 ### Previewing or testing the doc site locally
 
-If you want to preview your changes on your local machine, you will need node.js >= 8 and npm installed. Tp install npm, run `npm install`.
+If you want to preview your changes on your local machine, you will need [Git](https://git-scm.com/) and [Node.js](https://nodejs.org/en/) (version >= 8) installed, as well as npm (which comes with Node.js). Once those are installed, you can follow the steps below to set up a local copy of the docs site repository, and then build and run the docs site locally:
 
-Then, follow these steps:
-1. cd into the `docs-site` folder.
-1. Run `npm run docs:dev`.
+If you do not already have the docs site repository set up locally:
+
+1. In your local command line interface, navigate to the directory in which you want to create your local copy of the docs site repository.
+1. Clone the docs site repository by running the following command: `git clone https://github.com/zowe/docs-site`
+1. Access the newly-cloned repository by changing directories into it: `cd docs-site`
+
+Once you have the docs site repository set up locally and are in the `docs-site` directory, you can build and run the docs site locally by following the steps below:
+
+1. Run the following command to install project dependencies: `npm install`
+1. Run `npm run docs:dev`
 1. Once complete, you can preview the site locally at [http://localhost:8080/stable/](http://localhost:8080/stable/). Every time if you modify and save a documentation change, the preview build will be triggered automatically, then you can refresh your browser to see the changes.
 
 #### Errors when running the site locally?
@@ -115,6 +122,7 @@ Then, follow these steps:
    - Issues with files can be found at the top of red error text.
 - Look for images that are being called but do not exist in the file system.
 - If you encounter `JavaScript heap out of memory` error with the build command, it could be caused by `max_old_space_size` is too small. Try to define environment variable `NODE_OPTIONS=--max_old_space_size=4096`, or even higher with `NODE_OPTIONS=--max_old_space_size=8192`.
+    - **Note:** You can define this in the command line with the command `set NODE_OPTIONS="--max-old-space-size=8192"`, or you can add the following line to your `.profile` or `.bash_profile` file:  `export NODE_OPTIONS=--max_old_space_size=8192`
 
 
 ### Building the docs for production
