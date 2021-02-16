@@ -111,9 +111,9 @@ If you do not already have the docs site repository set up locally:
 
 Once you have the docs site repository set up locally and are in the `docs-site` directory, you can build and run the docs site locally by following the steps below:
 
-1. Run the following command to install project dependencies: `npm install`
+1. Run the command to install project dependencies: `npm install`
 1. Run `npm run docs:dev`
-1. Once complete, you can preview the site locally at [http://localhost:8080/stable/](http://localhost:8080/stable/). Every time if you modify and save a documentation change, the preview build will be triggered automatically, then you can refresh your browser to see the changes.
+1. Once complete, you can preview the site locally at [http://localhost:8080/stable/](http://localhost:8080/stable/). Every time you modify and save a documentation change, the preview build will be triggered automatically, and then you can refresh your browser to see the changes.
 
 #### Errors when running the site locally?
 
@@ -121,8 +121,10 @@ Once you have the docs site repository set up locally and are in the `docs-site`
 - If still errors, look for '<' in problem file not wrapped in code syntax.
    - Issues with files can be found at the top of red error text.
 - Look for images that are being called but do not exist in the file system.
-- If you encounter `JavaScript heap out of memory` error with the build command, it could be caused by `max_old_space_size` is too small. Try to define environment variable `NODE_OPTIONS=--max_old_space_size=4096`, or even higher with `NODE_OPTIONS=--max_old_space_size=8192`.
-    - **Note:** You can define this in the command line with the command `set NODE_OPTIONS="--max-old-space-size=8192"`, or you can add the following line to your `.profile` or `.bash_profile` file:  `export NODE_OPTIONS=--max_old_space_size=8192`
+- If you encounter `JavaScript heap out of memory` error with the build command, it could be caused by `max_old_space_size` being too small. Try to define environment variable `NODE_OPTIONS=--max_old_space_size=4096`, or even higher with `NODE_OPTIONS=--max_old_space_size=8192`. You can define this in the command line with one of the following commands, depending on your operating system:
+
+  - Windows: `set NODE_OPTIONS="--max-old-space-size=8192"`
+  - Linux/Mac: `export NODE_OPTIONS="--max-old-space-size=8192"`
 
 
 ### Building the docs for production
