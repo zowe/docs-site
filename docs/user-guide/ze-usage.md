@@ -34,12 +34,17 @@ Review the following use cases to understand how to use Zowe Explorer.
 
 You can use the following functionalities when interacting with data sets:
 
-* **View data sets and use multiple filters**: You can view multiple data sets simultaneously and apply filters to show specified data sets.
-* **Rename data sets**: You can rename specified data sets.
-* **Copy data sets**: You can copy a specified data sets and memebers.
-* **Download, edit, and upload existing PDS members**: You can instantly pull data sets and data set members from the mainframe, edit them and upload back.
-* **Create and delete data sets and data set members**: Enables you to easily create and delete both data sets and their members.
-* **View and access multiple profiles simultaneously**: Enables you to work with data sets from multiple profiles.
+* [View data sets and use multiple filters](#view-data-sets-and-use-multiple-filters): You can view multiple data sets simultaneously and apply filters to show specified data sets.
+* [View data sets with member filters](#view-data-sets-with-member-filters): You can apply filters to show specified data set members.
+* [Refresh the list of data sets](#refresh-the-list-of-data-sets):
+* [Rename data sets](#rename-data-sets): You can rename specified data sets.
+* [Copy data set members](#copy-data-set-members): You can copy a specified data sets and members.
+* [Edit and upload a data set member](#edit-and-upload-a-data-set-member): You can instantly pull data sets and data set members from the mainframe, edit them and upload back.
+* [Prevent merge conflicts](#prevent-merge-conflicts): You can prevent merge conflicts by using the Save functionality.
+* [Create data sets and specify the parameters](#create-data-sets-and-specify-the-parameters): You can create a new data set and specify parameter values.
+* [Create data sets and data set members](#create-data-sets-and-data-set-members): You can create a new data set and data set members.
+* [Delete a data set member and a data set](#delete-a-data-set-member-and-a-data-set): You can delete a data set and data set member.
+* [View and access multiple profiles simultaneously](#view-and-access-multiple-profiles-simultaneously): You can work with data sets from multiple profiles.
 * **Submit a JCL**: You can submit a jcl from a chosen data set.
 * **Allocate Like:** You can create a copy of a chosen data set with the same parameters.
 
@@ -54,6 +59,15 @@ You can use the following functionalities when interacting with data sets:
 
 **Tip:** To provide multiple filters, separate entries with a comma. You can append or postpend any filter with an \*, which indicates wildcard searching. You cannot enter an \* as the entire pattern.
 <img src="../images/ze/ZE-multiple-search.gif" alt="View Data Set">
+
+#### View data sets with member filters
+
+1. Navigate to the explorer tree.
+2. Open the **DATA SETS** bar.
+3. Click the **magnifying glass** icon.
+4. Enter a search pattern in the `HLQ.ZZZ.SSS(MEMBERNAME)` format to filter out and display the specified member in the tree.
+
+<img src="../images/ze/ZE-member-filter-search.gif" alt="View Data Set With Member Pattern">
 
 #### Refresh the list of data sets
 
@@ -70,7 +84,7 @@ You can use the following functionalities when interacting with data sets:
 
 <img src="../images/ze/ZE-rename.gif" alt="Rename Data Set">
 
-#### Copy data sets
+#### Copy data set members
 
 1. Navigate to the explorer tree.
 2. Open the **DATA SETS** bar.
@@ -79,9 +93,9 @@ You can use the following functionalities when interacting with data sets:
 5. Right-click the data set where the member belongs and select the **Paste Data Set** option.
 6. Enter the name of the copied member.
 
-<img src="../images/ze/ZE-copy.gif" alt="Copy Data Set">
+<img src="../images/ze/ZE-copy-member.gif" alt="Copy Data Set Member">
 
-#### Download, edit, and upload existing PDS members
+#### Edit and upload a data set member
 
 1. Navigate to the explorer tree.
 2. Open the **DATA SETS** bar.
@@ -98,9 +112,9 @@ Your PDS member (or PS) is uploaded.
 
 **Note:** If someone else has made changes to the PDS member (or PS) while you were editing it, you can merge your conflicts before uploading to the mainframe.
 
-<img src="../images/ze/ZE-download-edit.gif" alt="Edit">
+<img src="../images/ze/ZE-edit-upload.gif" alt="Edit">
 
-#### Use the save option to prevent merge conflicts
+#### Prevent merge conflicts
 
 1. Navigate to the explorer tree.
 2. Open the **DATA SETS** bar.
@@ -111,21 +125,71 @@ Your PDS member (or PS) is uploaded.
 
 <img src="../images/ze/ZE-save.gif" alt="Save">
 
-#### Create a new PDS and a PDS member
+#### Create data sets and specify the parameters
 
 1. Navigate to the explorer tree.
 2. Open the **DATA SETS** bar.
-3. Click the **Create New Data Set** button to specify the profile that you want to create the data set with.
-4. From the drop-down menu, select the type of PDS that you want to create.
-5. Enter a name for the PDS.
-   The PDS is created.
-6. To create a member, right-click the PDS and select **Create New Member**.
-7. Enter a name for the member.
-   The member is created.
+3. Right-click the profile you want to create a data set with and select **Create New Data Set**.
+4. Enter a name for your data set.
+5. From the drop-down menu, select the data set type that you want to create.
+6. Select **Edit Attributes** in the drop-down menu.
 
-<img src="../images/ze/ZE-cre-pds-member.gif" alt="Create">
+   The attributes list for the data set appears. You can edit the following attributes:
 
-#### Delete a PDS member and PDS
+   - Allocation Unit
+
+   - Average Block Length
+
+   - Block Size
+
+   - Data Class
+
+   - Device Type
+
+   - Directory Block
+
+   - Data Set Type
+
+   - Management Class
+
+   - Data Set Name
+
+   - Data Set Organization
+
+   - Primary Space
+
+   - Record Format
+
+   - Record Length
+
+   - Secondary Space
+
+   - Size
+
+   - Storage Class
+
+   - Volume Serial
+
+7. Select the attribute you want to edit, provide the value in the command palette, and click **Enter**.
+8. (Optional) Edit the parameters of your data set.
+9. Select the **+ Allocate Data Set** option to create the data set.
+   You successfully created a data set.
+
+<img src="../images/ze/ZE-set-params.gif" alt="Set Parameters">
+
+#### Create data sets and data set members
+
+1. Navigate to the explorer tree.
+2. Open the **DATA SETS** bar.
+3. Right + click on the profile where you want to create a data set and select **Create New Data Set**.
+4. Enter a name for your data set.
+5. From the drop-down menu, select the data set type that you want to create.
+6. Select **+Allocate Data Set** to create your data set.
+7. Right-click your newly-created data set and select **Create New Member**.
+8. Enter a name for your new data set member and click **Enter**.
+   The member is created and opened in the workspace.
+
+#### Delete a data set member and a data set
 
 1. Navigate to the explorer tree.
 2. Open the **DATA SETS** bar.
@@ -138,7 +202,7 @@ Your PDS member (or PS) is uploaded.
 
     **Note:** You can delete a PDS before you delete its members.
 
-<img src="../images/ze/ZE-del-pds-member.gif" alt="Delete">
+<img src="../images/ze/ZE-delete-ds.gif" alt="Delete">
 
 #### View and access multiple profiles simultaneously
 
@@ -156,17 +220,18 @@ Your PDS member (or PS) is uploaded.
 3. Right-click the data set and select the **Allocate Like (New File with Same Attributes)** option.
 4. Enter the new data set name.
 
-<img src="../images/ze/ZE-allocate-like.gif" alt="Allocate Like">
+<img src="../images/ze/ZE-allocate.gif" alt="Allocate Like">
 
 ### Work with USS Files
 
 You can use the following functionalities when interacting with USS files:
 
-* **View Unix System Services (USS) files**: You can view multiple USS files simultaneously.
-* **Rename USS files**: You can rename specified USS files.
-* **Download, edit, and upload existing USS files**: You can instantly pull USS files from the mainframe, edit them and upload back.
-* **Create and delete USS files and directories**: Enables you to easily create and delete both USS files and directories.
-* **View and access multiple profiles simultaneously**: Enables you to work with USS files from multiple profiles.
+* [View Unix System Services (USS) files](#view-unix-system-services-uss-files): You can view multiple USS files simultaneously.
+* [Refresh the list of files](#refresh-the-list-of-files): You can refresh the list of files.
+* [Rename USS files](#rename-uss-files): You can rename USS files.
+* [Download, edit, and upload existing USS files](#download-edit-and-upload-existing-uss-files): You can instantly pull USS files from the mainframe, edit them and upload back.
+* [Create and delete USS files and directories](#create-and-delete-uss-files-and-directories): Enables you to easily create and delete both USS files and directories.
+* [View and access multiple USS profiles simultaneously](#view-and-access-multiple-uss-profiles-simultaneously): Enables you to work with USS files from multiple profiles.
 
 #### View Unix System Services (USS) files
 
@@ -196,7 +261,7 @@ You can use the following functionalities when interacting with USS files:
 4. Right-click the USS file and select the **Rename USS file** option.
 5. Change the name of the USS file.
 
-#### Download, edit, and upload an existing file
+#### Download, edit, and upload existing USS files
 
 1. Click the file that you want to download.
 
@@ -213,7 +278,7 @@ Your file is uploaded.
 
 <img src="../images/ze/ZE-editUSS.gif" alt="Edit">
 
-#### Creating and deleting files and directories
+#### Create and delete USS files and directories
 
 #### Create a directory
 
@@ -262,8 +327,8 @@ Your file is uploaded.
 
 You can use the following functionalities when interacting with jobs:
 
-* **View a job**: You can view multiple jobs simultaneously.
-* **Download spool content**: You can download spool content on your computer.
+* [View a job](#view-a-job): You can view multiple jobs simultaneously.
+* [Download spool content](#download-spool-content): You can download spool content on your computer.
 
 #### View a job
 
