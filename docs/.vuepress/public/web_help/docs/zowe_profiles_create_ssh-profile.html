@@ -77,21 +77,29 @@ in the server for authentication</li>
 <ul>
 <li><p>Create a ssh profile called &#39;ssh111&#39; to connect to z/OS SSH
 server at host &#39;zos123&#39; and default port 22:</p>
-<pre><code>* `$  zowe  profiles create ssh-profile ssh111 --host sshhost --user ibmuser --password myp4ss`</code></pre>
+<ul>
+<li><code>zowe  profiles create ssh-profile ssh111 --host sshhost --user ibmuser --password myp4ss</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  profiles create ssh-profile ssh111 --host sshhost --user ibmuser --password myp4ss">Copy</button></li>
+</ul>
 </li>
 <li><p>Create a ssh profile called &#39;ssh222&#39; to connect to z/OS SSH
 server at host &#39;zos123&#39; and port 13022:</p>
-<pre><code>* `$  zowe  profiles create ssh-profile ssh222 --host sshhost --port 13022 --user ibmuser --password myp4ss`</code></pre>
+<ul>
+<li><code>zowe  profiles create ssh-profile ssh222 --host sshhost --port 13022 --user ibmuser --password myp4ss</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  profiles create ssh-profile ssh222 --host sshhost --port 13022 --user ibmuser --password myp4ss">Copy</button></li>
+</ul>
 </li>
 <li><p>Create a ssh profile called &#39;ssh333&#39; to connect to z/OS SSH
 server at host &#39;zos123&#39; using a privatekey &#39;/path/to/privatekey&#39; and its
 decryption passphrase &#39;privateKeyPassphrase&#39; for privatekey authentication:</p>
-<pre><code>* `$  zowe  profiles create ssh-profile ssh333 --host sshhost --user ibmuser --privateKey /path/to/privatekey --keyPassphrase privateKeyPassphrase`</code></pre>
+<ul>
+<li><code>zowe  profiles create ssh-profile ssh333 --host sshhost --user ibmuser --privateKey /path/to/privatekey --keyPassphrase privateKeyPassphrase</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  profiles create ssh-profile ssh333 --host sshhost --user ibmuser --privateKey /path/to/privatekey --keyPassphrase privateKeyPassphrase">Copy</button></li>
+</ul>
 </li>
 <li><p>Create a ssh profile called &#39;ssh444&#39; to connect to z/OS SSH
 server on default port 22, without specifying username, host, or password,
 preventing those values from being stored on disk:</p>
-<pre><code>* `$  zowe  profiles create ssh-profile ssh444 --privateKey /path/to/privatekey`</code></pre>
+<ul>
+<li><code>zowe  profiles create ssh-profile ssh444 --privateKey /path/to/privatekey</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  profiles create ssh-profile ssh444 --privateKey /path/to/privatekey">Copy</button></li>
+</ul>
 </li>
 </ul>
 </article>

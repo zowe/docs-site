@@ -184,24 +184,32 @@ in the output.</li>
 &quot;/path/workflow.xml&quot; containing workflow definition, on system &quot;TESTM1&quot; with
 owner &quot;OTHERID&quot; and delete workflow with the same name if it already exist in
 z/OSMF:</p>
-<pre><code>* `$  zowe  zos-workflows create workflow-from-uss-file &quot;testworkflow&quot; --uss-file &quot;/path/workflow.xml&quot; --system-name &quot;TESTM1&quot; --owner &quot;OTHERID&quot; --overwrite`</code></pre>
+<ul>
+<li><code>zowe  zos-workflows create workflow-from-uss-file &quot;testworkflow&quot; --uss-file &quot;/path/workflow.xml&quot; --system-name &quot;TESTM1&quot; --owner &quot;OTHERID&quot; --overwrite</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  zos-workflows create workflow-from-uss-file &quot;testworkflow&quot; --uss-file &quot;/path/workflow.xml&quot; --system-name &quot;TESTM1&quot; --owner &quot;OTHERID&quot; --overwrite">Copy</button></li>
+</ul>
 </li>
 <li><p>Create a workflow with name &quot;testworkflow&quot; using uss file
 &quot;/path/workflow.xml&quot; containing workflow definition, on system &quot;TESTM1&quot; with
 owner &quot;MYSYSID&quot; and delete successfully completed jobs:</p>
-<pre><code>* `$  zowe  zos-workflows create workflow-from-uss-file &quot;testworkflow&quot; --uss-file &quot;/path/workflow.xml&quot; --system-name &quot;TESTM1&quot; --owner &quot;MYSYSID&quot; --delete-completed`</code></pre>
+<ul>
+<li><code>zowe  zos-workflows create workflow-from-uss-file &quot;testworkflow&quot; --uss-file &quot;/path/workflow.xml&quot; --system-name &quot;TESTM1&quot; --owner &quot;MYSYSID&quot; --delete-completed</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  zos-workflows create workflow-from-uss-file &quot;testworkflow&quot; --uss-file &quot;/path/workflow.xml&quot; --system-name &quot;TESTM1&quot; --owner &quot;MYSYSID&quot; --delete-completed">Copy</button></li>
+</ul>
 </li>
 <li><p>Create a workflow with name &quot;testworkflow&quot; using uss file
 &quot;/path/workflow.xml&quot; containing workflow definition, on system &quot;TESTM1&quot; with
 owner &quot;MYSYSID&quot; and with variable values in the member PROPERTIES of data set
 TESTID.DATA:</p>
-<pre><code>* `$  zowe  zos-workflows create workflow-from-uss-file &quot;testworkflow&quot; --uss-file &quot;/path/workflow.xml&quot; --system-name &quot;TESTM1&quot; --owner &quot;MYSYSID&quot; --variables-input-file TESTID.DATA(PROPERTIES)`</code></pre>
+<ul>
+<li><code>zowe  zos-workflows create workflow-from-uss-file &quot;testworkflow&quot; --uss-file &quot;/path/workflow.xml&quot; --system-name &quot;TESTM1&quot; --owner &quot;MYSYSID&quot; --variables-input-file TESTID.DATA(PROPERTIES)</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  zos-workflows create workflow-from-uss-file &quot;testworkflow&quot; --uss-file &quot;/path/workflow.xml&quot; --system-name &quot;TESTM1&quot; --owner &quot;MYSYSID&quot; --variables-input-file TESTID.DATA(PROPERTIES)">Copy</button></li>
+</ul>
 </li>
 <li><p>Create a workflow with name &quot;testworkflow&quot; using uss file
 &quot;/path/workflow.xml&quot; containing workflow definition, on system &quot;TESTM1&quot; with
 owner &quot;MYSYSID&quot; and with variables VAR1 and VAR2 with values DUMMYVAL1 and
 DUMMYVAL2, and assign it to the owner:</p>
-<pre><code>* `$  zowe  zos-workflows create workflow-from-uss-file &quot;testworkflow&quot; --uss-file &quot;/path/workflow.xml&quot; --system-name &quot;TESTM1&quot;--variables VAR1=DUMMYVAL1,VAR2=DUMMYVAL2 --owner &quot;MYSYSID&quot; --assign-to-owner`</code></pre>
+<ul>
+<li><code>zowe  zos-workflows create workflow-from-uss-file &quot;testworkflow&quot; --uss-file &quot;/path/workflow.xml&quot; --system-name &quot;TESTM1&quot;--variables VAR1=DUMMYVAL1,VAR2=DUMMYVAL2 --owner &quot;MYSYSID&quot; --assign-to-owner</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  zos-workflows create workflow-from-uss-file &quot;testworkflow&quot; --uss-file &quot;/path/workflow.xml&quot; --system-name &quot;TESTM1&quot;--variables VAR1=DUMMYVAL1,VAR2=DUMMYVAL2 --owner &quot;MYSYSID&quot; --assign-to-owner">Copy</button></li>
+</ul>
 </li>
 </ul>
 </article>
