@@ -53,10 +53,10 @@ This section describes runtime configuration properties.
     This parameter lets you view the Zowe version by using the `/version` endpoint. To view the version requires setting up the launch parameter of the API Gateway - `apiml.zoweManifest` with a path to the Zowe build `manifest.json` file. This file is usually located in the root folder of Zowe build. 
     If the encoding of `manifest.json` file is different from UTF-8 and IBM1047, it requires setting up the launch parameter of API Gateway - `apiml.zoweManifestEncoding` with correct encoding.
     
-**Note:** It is also possible to know the version of API ML and Zowe (if API ML used as part of Zowe), using the `/api/v1/gateway/version` endpoint in the API Gateway service in the following format: 
-```   
-https://localhost:10010/api/v1/gateway/version    
-```
+    **Note:** It is also possible to know the version of API ML and Zowe (if API ML used as part of Zowe), using the `/api/v1/gateway/version` endpoint in the API Gateway service in the following format: 
+    ```   
+    https://localhost:10010/api/v1/gateway/version    
+    ```
 
 * **apiml.security.auth.tokenProperties.expirationInSeconds**
 
