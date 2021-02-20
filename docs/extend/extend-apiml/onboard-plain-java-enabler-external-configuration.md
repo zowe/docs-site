@@ -122,7 +122,7 @@ The following code block is an example of Java Servlet context configuration.
 Ensure that you successfully onboarded a service with the API Mediation Layer. 
 
 **Follow these steps:**
-  1. [Validate successful onboarding](./onboard-overview.md#validating-successful-onboarding)
+  1. [Validate successful onboarding](./onboard-overview.md#verify-successful-onboarding-to-the-api-ml)
  
   2. Check that you can access your API service endpoints through the Gateway.
 
