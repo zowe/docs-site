@@ -4,6 +4,7 @@ Learn about what is new, changed, or removed in Zowe&trade;.
 
 Zowe Version 1.19 and earlier releases include the following enhancements, release by release.
 
+- [Version 1.19.1 LTS (February 2021)](#version-1-19-1-lts-february-2021)
 - [Version 1.19.0 LTS (February 2021)](#version-1-19-0-lts-february-2021)
 - [Version 1.18.0 LTS (January 2021)](#version-1-18-0-lts-january-2021)
 - [Version 1.17.0 LTS (November 2020)](#version-1-17-0-lts-november-2020)
@@ -29,6 +30,38 @@ Zowe Version 1.19 and earlier releases include the following enhancements, relea
 - [Version 1.0.1 (March 2019)](#version-1-0-1-march-2019)
 - [Version 1.0.0 (February 2019)](#version-1-0-0-february-2019)
 
+
+## Version 1.19.1 LTS (February 2021)
+
+### Notable changes 
+
+**SMPE PTF**
+
+With the continuous optimization of the Zowe build size, now the Zowe release can fit in one PTF. This single PTF UO01969 will supersede PTF UO01967 and UO01968 from the v1.19.0 release.
+
+### New features and enhancements
+
+#### Zowe CLI
+
+The following enhancements were added to the **core CLI**:
+
+- Updated Imperative version to support npm@7. This fixes an error when installing plugins.
+
+The following enhancements were added in the **Imperative CLI Framework**:
+
+- Fixed plugin install commands which were broken in npm@7. [#457](https://github.com/zowe/imperative/issues/457)
+
+### Bug fixes
+
+#### SMPE PTF
+
+- Fixed the missing HOLD data about extra steps the system programmer should take after applying the PTF. It explains new configuration options that are introduced in `instance.env` and also a reconfiguration step where `zowe-configure-instance.sh` is mandatory.
+
+#### Zowe CLI
+
+The following bugs were fixed in the **Imperative CLI Framework**:
+
+- Fixed incorrect formatting of code blocks in web help. [#535](https://github.com/zowe/imperative/issues/535)
 
 ## Version 1.19.0 LTS (February 2021)
 
