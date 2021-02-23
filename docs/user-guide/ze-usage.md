@@ -21,6 +21,8 @@ Make the best use of the extension with the following tips:
 
 * **Hide a profile**: You can hide a profile from profile tree by right-clicking the profile and selecting the **Hide Profile** option. If necessary, add the profile back by clicking the **+** button from the explorer tree.
 
+* **Open recent members**: Zowe Explorer lets you open a list of members you worked on earlier. You can access the list by pressing Ctrl+Alt+R or Command+Alt+R.
+
 ## Sample Use Cases
 
 Review the following use cases to understand how to use Zowe Explorer.
