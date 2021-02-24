@@ -68,19 +68,19 @@ To use log message IDs, take the following steps:
 3. Reference the IDs in your code, for example:
 
    ```
-   this.log.info("A0001")
+   this.log.info("A001")
    ```
 
    Which compiles to:
 
    ```
-   DATE TIME:TIME:TIME.TIME <ZWED:> username INFO (org.zowe.app.name,:) A0001 - Application created.
+   DATE TIME:TIME:TIME.TIME <ZWED:> username INFO (org.zowe.app.name,:) A001 - Application created.
    ```
 
    Or in another supported language, such as Russian:
 
    ```
-   DATE TIME:TIME:TIME.TIME <ZWED:> username INFO (org.zowe.app.name,:) A0001 - Приложение создано.
+   DATE TIME:TIME:TIME.TIME <ZWED:> username INFO (org.zowe.app.name,:) A001 - Приложение создано.
    ```
 
 ## Logger API
