@@ -1250,4 +1250,112 @@ The following error message codes may appear on logs or API responses. Use the f
 
   Check the specific exception for troubleshooting.
 
+## Caching Service messages
 
+### ZWECS130E
+
+  Payload '%s' is not valid: '%s'.
+
+  **Reason:**
+
+  The payload is not in valid JSON format.
+
+  **Action:**
+
+  Provide a payload in JSON format.
+
+### ZWECS131E
+
+  Key '%s' is not in the cache for service '%s'
+
+  **Reason:**
+
+  Cache does not contain the provided key.
+
+  **Action:**
+
+  Add a key-value pair to the cache using the key or operate on an existing key in the cache.
+
+### ZWECS132E
+
+  No cache key provided.
+
+  **Reason:**
+
+  No cache key was provided.
+
+  **Action:**
+
+  Provide a key that is in the cache.
+
+### ZWECS133E
+
+  Adding key '%s' resulted in a collision in the cache.
+
+  **Reason:**
+
+  Key is already in the cache.
+
+  **Action:**
+
+  Update or delete the key, or add a different key.
+
+### ZWECS134E
+
+  Insufficient storage space limit.
+
+  **Reason:**
+
+  The storage space is full.
+
+  **Action:**
+
+  Change the definition of the VSAM and the configuration for the maximum records stored or replace Reject strategy with Remove Oldest.
+
+### ZWECS151E
+
+  Problem initializing storage of type '%s': '%s'. Exception: '%s'
+
+  **Reason:**
+
+  Caching storage was not initialized.
+
+  **Action:**
+
+  Please submit an issue with this message.
+
+### ZWECS152E
+
+  Could not query the cache for '%s' storage: '%s'
+
+  **Reason:**
+
+  There was an error querying the persistent storage.
+
+  **Action:**
+
+  Check that your configured caching storage solution is functioning properly.
+
+### ZWECS700E
+
+  Gateway service is not available at URL '%s'. Error returned: '%s'
+
+  **Reason:**
+
+  The gateway service is not available.
+
+  **Action:**
+
+  Make sure that the gateway service is running and is accessible by the URL provided in the message.
+
+### ZWECS701W
+
+  The InMemory configuration is used despite not being supported for production usage.
+
+  **Reason:**
+
+  Development configuration in the production.
+
+  **Action:**
+
+  Change the caching.storage.mode to other supported option than inMemory.
