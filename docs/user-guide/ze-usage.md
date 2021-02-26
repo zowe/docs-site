@@ -6,49 +6,49 @@ Review this section to familiarize yourself with the extension and make the best
 
 Make the best use of the extension with the following tips:
 
-* **Data set, USS and jobs persistence settings:** You can store any of data sets, USS files, or jobs permanently in the **Favorites** tab. Right-click on a data set, USS file, or job and click **Add Favorite**.
+- **Data set, USS and jobs persistence settings:** You can store any of data sets, USS files, or jobs permanently in the **Favorites** tab. Right-click on a data set, USS file, or job and click **Add Favorite**.
 
-* **Identify syntax errors with a syntax highlighter:** Zowe Explorer supports a syntax hightlighter for data sets. To enhance the experience of using the extension, download an extension that highlights syntax, such as [COBOL Language Support](https://marketplace.visualstudio.com/items?itemName=broadcomMFD.cobol-language-support) or [HLASM Language Support](https://marketplace.visualstudio.com/items?itemName=broadcomMFD.hlasm-language-support).
+- **Identify syntax errors with a syntax highlighter:** Zowe Explorer supports a syntax hightlighter for data sets. To enhance the experience of using the extension, you can download an extension that highlights syntax.
 
-* **Edit a profile**: You can edit existing profiles by clicking the **pencil** button next to the **magnifying glass** button in the explorer tree. The feature lets you modify the information inside your profile.
+- **Edit a profile**: You can edit existing profiles by clicking the **pencil** button next to the **magnifying glass** button in the explorer tree. The feature lets you modify the information inside your profile.
 
-* **Delete a profile**: You can permanently delete profiles by right-clicking the profile and selecting the **Delete Profile** option. The feature deletes a profile from your `.zowe` folder. Alternatively, you can delete a profile from the VSCode Command Palette.
+- **Delete a profile**: You can permanently delete profiles by right-clicking the profile and selecting the **Delete Profile** option. The feature deletes a profile from your `.zowe` folder. Alternatively, you can delete a profile from the VSCode Command Palette.
 
   **Follow these steps:**
 
-   1. Press **F1** on your keyboard.
-   2. Select the **Zowe: Delete a Profile Permanently** option.
+  1.  Press **F1** on your keyboard.
+  2.  Select the **Zowe: Delete a Profile Permanently** option.
 
-* **Hide a profile**: You can hide a profile from profile tree by right-clicking the profile and selecting the **Hide Profile** option. If necessary, add the profile back by clicking the **+** button from the explorer tree.
+- **Hide a profile**: You can hide a profile from profile tree by right-clicking the profile and selecting the **Hide Profile** option. If necessary, add the profile back by clicking the **+** button from the explorer tree.
 
-* **Open recent members**: Zowe Explorer lets you open a list of members you worked on earlier. You can access the list by pressing Ctrl+Alt+R or Command+Alt+R.
+- **Open recent members**: Zowe Explorer lets you open a list of members you worked on earlier. You can access the list by pressing Ctrl+Alt+R or Command+Alt+R.
 
 ## Sample Use Cases
 
 Review the following use cases to understand how to use Zowe Explorer.
 
-* [Work with Data Sets](#work-with-data-sets)
-* [Work with USS Files](#work-with-uss-files)
-* [Work with jobs](#work-with-jobs)
-* [MVS/TSO Commands](#mvs/tso-commands)
+- [Work with Data Sets](#work-with-data-sets)
+- [Work with USS Files](#work-with-uss-files)
+- [Work with jobs](#work-with-jobs)
+- [MVS/TSO Commands](#mvs/tso-commands)
 
 ### Work with Data Sets
 
 You can use the following functionalities when interacting with data sets:
 
-* [View data sets and use multiple filters](#view-data-sets-and-use-multiple-filters): You can view multiple data sets simultaneously and apply filters to show specified data sets.
-* [View data sets with member filters](#view-data-sets-with-member-filters): You can apply filters to show specified data set members.
-* [Refresh the list of data sets](#refresh-the-list-of-data-sets):
-* [Rename data sets](#rename-data-sets): You can rename specified data sets.
-* [Copy data set members](#copy-data-set-members): You can copy a specified data sets and members.
-* [Edit and upload a data set member](#edit-and-upload-a-data-set-member): You can instantly pull data sets and data set members from the mainframe, edit them and upload back.
-* [Prevent merge conflicts](#prevent-merge-conflicts): You can prevent merge conflicts by using the Save functionality.
-* [Create data sets and specify the parameters](#create-data-sets-and-specify-the-parameters): You can create a new data set and specify parameter values.
-* [Create data sets and data set members](#create-data-sets-and-data-set-members): You can create a new data set and data set members.
-* [Delete a data set member and a data set](#delete-a-data-set-member-and-a-data-set): You can delete a data set and data set member.
-* [View and access multiple profiles simultaneously](#view-and-access-multiple-profiles-simultaneously): You can work with data sets from multiple profiles.
-* **Submit a JCL**: You can submit a jcl from a chosen data set.
-* **Allocate Like:** You can create a copy of a chosen data set with the same parameters.
+- [View data sets and use multiple filters](#view-data-sets-and-use-multiple-filters): You can view multiple data sets simultaneously and apply filters to show specified data sets.
+- [View data sets with member filters](#view-data-sets-with-member-filters): You can apply filters to show specified data set members.
+- [Refresh the list of data sets](#refresh-the-list-of-data-sets):
+- [Rename data sets](#rename-data-sets): You can rename specified data sets.
+- [Copy data set members](#copy-data-set-members): You can copy a specified data sets and members.
+- [Edit and upload a data set member](#edit-and-upload-a-data-set-member): You can instantly pull data sets and data set members from the mainframe, edit them and upload back.
+- [Prevent merge conflicts](#prevent-merge-conflicts): You can prevent merge conflicts by using the Save functionality.
+- [Create data sets and specify the parameters](#create-data-sets-and-specify-the-parameters): You can create a new data set and specify parameter values.
+- [Create data sets and data set members](#create-data-sets-and-data-set-members): You can create a new data set and data set members.
+- [Delete a data set member and a data set](#delete-a-data-set-member-and-a-data-set): You can delete a data set and data set member.
+- [View and access multiple profiles simultaneously](#view-and-access-multiple-profiles-simultaneously): You can work with data sets from multiple profiles.
+- **Submit a JCL**: You can submit a jcl from a chosen data set.
+- **Allocate Like:** You can create a copy of a chosen data set with the same parameters.
 
 #### View data sets and use multiple filters
 
@@ -57,7 +57,7 @@ You can use the following functionalities when interacting with data sets:
 3. Select the profile that you want to filter.
 4. Click the **Search Data Sets by Entering Patterns** magnifying glass.
 5. From the drop-down, enter the patterns that you want to filter.  
-  The data sets that match your pattern(s) display in the explorer tree.
+   The data sets that match your pattern(s) display in the explorer tree.
 
 **Tip:** To provide multiple filters, separate entries with a comma. You can append or postpend any filter with an \*, which indicates wildcard searching. You cannot enter an \* as the entire pattern.
 <img src="../images/ze/ZE-multiple-search.gif" alt="View Data Set">
@@ -101,16 +101,17 @@ You can use the following functionalities when interacting with data sets:
 
 1. Navigate to the explorer tree.
 2. Open the **DATA SETS** bar.
-3. Open a profile.  
+3. Open a profile.
 4. Select the PDS member (or PS) that you want to download.
 
-    **Note:** To view the members of a PDS, click on the PDS to expand the tree.
+   **Note:** To view the members of a PDS, click on the PDS to expand the tree.
 
-    The PDS member displays in the text editor window of VSC.
+   The PDS member displays in the text editor window of VSC.
+
 5. Edit the document.
 6. Navigate back to the PDS member (or PS) in the explorer tree, and click the **Save** button.
 
-Your PDS member (or PS) is uploaded.  
+Your PDS member (or PS) is uploaded.
 
 **Note:** If someone else has made changes to the PDS member (or PS) while you were editing it, you can merge your conflicts before uploading to the mainframe.
 
@@ -199,10 +200,11 @@ Your PDS member (or PS) is uploaded.
 4. Right-click on the PDS member that you want to delete and select **Delete Member**.
 5. Confirm the deletion by clicking **Yes** on the drop-down menu.
 
-    **Note:** Alternatively, you can select 'No' to cancel the deletion.
+   **Note:** Alternatively, you can select 'No' to cancel the deletion.
+
 6. To delete a PDS, right-click the PDS and click **Delete PDS**, then confirm the deletion.
 
-    **Note:** You can delete a PDS before you delete its members.
+   **Note:** You can delete a PDS before you delete its members.
 
 <img src="../images/ze/ZE-delete-ds.gif" alt="Delete">
 
@@ -228,12 +230,12 @@ Your PDS member (or PS) is uploaded.
 
 You can use the following functionalities when interacting with USS files:
 
-* [View Unix System Services (USS) files](#view-unix-system-services-uss-files): You can view multiple USS files simultaneously.
-* [Refresh the list of files](#refresh-the-list-of-files): You can refresh the list of files.
-* [Rename USS files](#rename-uss-files): You can rename USS files.
-* [Download, edit, and upload existing USS files](#download-edit-and-upload-existing-uss-files): You can instantly pull USS files from the mainframe, edit them and upload back.
-* [Create and delete USS files and directories](#create-and-delete-uss-files-and-directories): Enables you to easily create and delete both USS files and directories.
-* [View and access multiple USS profiles simultaneously](#view-and-access-multiple-uss-profiles-simultaneously): Enables you to work with USS files from multiple profiles.
+- [View Unix System Services (USS) files](#view-unix-system-services-uss-files): You can view multiple USS files simultaneously.
+- [Refresh the list of files](#refresh-the-list-of-files): You can refresh the list of files.
+- [Rename USS files](#rename-uss-files): You can rename USS files.
+- [Download, edit, and upload existing USS files](#download-edit-and-upload-existing-uss-files): You can instantly pull USS files from the mainframe, edit them and upload back.
+- [Create and delete USS files and directories](#create-and-delete-uss-files-and-directories): Enables you to easily create and delete both USS files and directories.
+- [View and access multiple USS profiles simultaneously](#view-and-access-multiple-uss-profiles-simultaneously): Enables you to work with USS files from multiple profiles.
 
 #### View Unix System Services (USS) files
 
@@ -242,11 +244,11 @@ You can use the following functionalities when interacting with USS files:
 3. Select the profile that you want to filter.
 4. Click the **Search Unix System Services (USS) by Entering a Path** magnifying glass.
 5. From the drop-down, enter the path that you want as the root of your displayed tree.  
-  All child files and directories of that root file are displayed in the explorer tree.
+   All child files and directories of that root file are displayed in the explorer tree.
 
-  **Note:** You will not be able to expand directories or files that you are not authorised for.
+   **Note:** You will not be able to expand directories or files that you are not authorised for.
 
-   <img src="../images/ze/ZE-path.gif" alt="Enter Path">
+    <img src="../images/ze/ZE-path.gif" alt="Enter Path">
 
 #### Refresh the list of files
 
@@ -267,16 +269,16 @@ You can use the following functionalities when interacting with USS files:
 
 1. Click the file that you want to download.
 
-    **Note:** To view the files within a directory, click the directory to expand the tree.
+   **Note:** To view the files within a directory, click the directory to expand the tree.
 
-    The file is displayed in the text editor window of VSC.
+   The file is displayed in the text editor window of VSC.
 
-    **Note:** If you define file associations with syntax coloring, the suffix of your file will be marked up.
+   **Note:** If you define file associations with syntax coloring, the suffix of your file will be marked up.
 
 2. Edit the document.
 3. Press Ctrl+S or Command+S (OSx) to save the file
 
-Your file is uploaded.  
+Your file is uploaded.
 
 <img src="../images/ze/ZE-editUSS.gif" alt="Edit">
 
@@ -303,7 +305,7 @@ Your file is uploaded.
 1. Navigate to the explorer tree.
 2. Open the **Unix System Services (USS)** bar.
 3. Select a file you want to remove.
-4. Select the **Delete** button and click *Yes** to confirm.
+4. Select the **Delete** button and click \*Yes\*\* to confirm.
    The file is deleted.
 
 #### Delete a directory
@@ -329,8 +331,8 @@ Your file is uploaded.
 
 You can use the following functionalities when interacting with jobs:
 
-* [View a job](#view-a-job): You can view multiple jobs simultaneously.
-* [Download spool content](#download-spool-content): You can download spool content on your computer.
+- [View a job](#view-a-job): You can view multiple jobs simultaneously.
+- [Download spool content](#download-spool-content): You can download spool content on your computer.
 
 #### View a job
 
