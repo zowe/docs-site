@@ -100,7 +100,7 @@ For Node SDK usage and syntax examples, refer to the following package Readmes:
 - [z/OS Jobs](https://www.npmjs.com/package/@zowe/zos-jobs-for-zowe-sdk) - Work with batch jobs on z/OS.
 - [z/OS Management Facility](https://www.npmjs.com/package/@zowe/zosmf-for-zowe-sdk) - Return data about z/OSMF, such as connection status or a list of available systems.
 - [z/OS Provisioning](https://www.npmjs.com/package/@zowe/provisioning-for-zowe-sdk) - Provision middleware and resources such as IBM CICS, IBM Db2, IBM MQ, and more.
-- [z/OS TSO](https://www.npmjs.com/package/@zowe/zos-tso-for-zowe-sdk) - Interact with TSO/E adress spaces on z/OS.
+- [z/OS TSO](https://www.npmjs.com/package/@zowe/zos-tso-for-zowe-sdk) - Interact with TSO/E address spaces on z/OS.
 - [z/OS USS](https://www.npmjs.com/package/@zowe/zos-uss-for-zowe-sdk) - Work with UNIX system services (USS) files on z/OS.
 - [z/OS Workflows](https://www.npmjs.com/package/@zowe/zos-workflows-for-zowe-sdk) - Create and manage z/OSMF workflows on z/OS.
 

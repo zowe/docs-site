@@ -29,7 +29,7 @@ If you have an `@lts-incremental` version of Zowe CLI (Zowe v1.0.x - v1.8.x), yo
     npm uninstall -g @brightside/core
     ```
 
-    **Note:** You might recieve an `ENOENT` error when issuing this command if you installed Zowe CLI from a local package (.tgz) and the package was moved from its original location. In the event    that you recieve the error, open an issue in the   Zowe CLI GitHub repository.
+    **Note:** You might receive an `ENOENT` error when issuing this command if you installed Zowe CLI from a local package (.tgz) and the package was moved from its original location. In the event    that you receive the error, open an issue in the   Zowe CLI GitHub repository.
 
 4. Install the most recent `@zowe-v1-lts` version CLI and optional plug-ins. For more information, see [Installing CLI](./cli-installcli.md).
 

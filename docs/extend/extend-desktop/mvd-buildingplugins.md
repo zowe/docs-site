@@ -23,7 +23,7 @@ Before you can build a plugin app you must install all [prerequisites](https://g
     - Run the `npm run start` command to compile in real-time. Until you stop the script, it compiles code changes as you make them.
 
 ## Building server content
-1. Navigate to the plugin directory. If there is no `/nodeServer` directory in the plugin directory, procede to the **Building Javascript content (*.js files)** section below.
+1. Navigate to the plugin directory. If there is no `/nodeServer` directory in the plugin directory, proceed to the **Building Javascript content (*.js files)** section below.
 
 2. Run the `npm install` command to install any application dependencies. Check for successful return code.
 
@@ -33,7 +33,7 @@ Before you can build a plugin app you must install all [prerequisites](https://g
     - Run the `npm run start` command to compile in real-time. Until you stop the script, it compiles code changes as you make them.
 
 ## Tagging plugin files on z/OS
-When Zowe App Framework is installed on z/OS developrs should tag their plugin files according to the file content. Tagging files helps programs on z/OS understand how to interpret those files, most importantly to know whether a file is encoded using EBCDIC (Extended Binary Coded Decimal Interchange Code). If you are unsure if a plugin you are using is tagged, it can be checked and set using the [`chtag` command](https://www.ibm.com/support/knowledgecenter/SSLTBW_2.2.0/com.ibm.zos.v2r2.bpxa500/chtag.htm). If you want to set the tags, it can be done in bulk with the help of these programs:
+When Zowe App Framework is installed on z/OS developers should tag their plugin files according to the file content. Tagging files helps programs on z/OS understand how to interpret those files, most importantly to know whether a file is encoded using EBCDIC (Extended Binary Coded Decimal Interchange Code). If you are unsure if a plugin you are using is tagged, it can be checked and set using the [`chtag` command](https://www.ibm.com/support/knowledgecenter/SSLTBW_2.2.0/com.ibm.zos.v2r2.bpxa500/chtag.htm). If you want to set the tags, it can be done in bulk with the help of these programs:
 
 - Autotag: This free, open-source application is not part of Zowe. You can download the binary from here for example https://anaconda.org/izoda/autotag. Source: https://github.com/RocketSoftware/autotag
 - The Zowe tagging script: This script tags by file extension. It might not work for all cases, but can be altered to suit your needs. Source: https://github.com/zowe/zowe-install-packaging/blob/master/scripts/tag-files.sh

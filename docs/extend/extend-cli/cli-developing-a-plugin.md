@@ -40,7 +40,7 @@ import { IImperativeConfig } from "@zowe/imperative";
 
 const config: IImperativeConfig = {
     commandModuleGlobs: ["**/cli/*/*.definition!(.d).*s"],
-    rootCommandDescription: "Files utilty plugin for Zowe CLI",
+    rootCommandDescription: "Files utility plugin for Zowe CLI",
     envVariablePrefix: "FILES_UTIL_PLUGIN",
     defaultHome: "~/.files_util_plugin",
     productDisplayName: "Files Util Plugin",
