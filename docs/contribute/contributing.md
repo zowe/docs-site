@@ -269,7 +269,7 @@ For whatever list or steps we are introducing, the word "following" should prece
 Example:
 - Before a procedure, use "Follow these steps:"
 - The <component_name> supports the following use cases:
-- Before you intall Zowe, review the following prerequisite installation tasks:
+- Before you install Zowe, review the following prerequisite installation tasks:
 
 Avoid ending the sentence with "following".
 
@@ -368,7 +368,7 @@ application  | app
 Capitalize "Server" when it's part of the product name |
 data set| dataset
 Java  |  java
-IBM z/OS Managemnt Facility (z/OSMF) <br> z/OSMF   | zosmf (unless used in syntax)
+IBM z/OS Management Facility (z/OSMF) <br> z/OSMF   | zosmf (unless used in syntax)
 ID| id
 PAX| pax
 personal computer <br> PC <br> server| machine

@@ -330,7 +330,7 @@ The following enhancement was made to enable support for Node.js v14 for the **I
 The following features and enhancements were added to the **JES Explorer**:
 
 - Added ability to refresh content of an open job output file via context menu entry on the job file [#549](https://github.com/zowe/zlux/issues/549)
-- Major material ui update from v1.x to 4.x, and minor react update. Accordian and snackbar changes as required by latest material-ui version.
+- Major material ui update from v1.x to 4.x, and minor react update. Accordion and snackbar changes as required by latest material-ui version.
 
 ### Bug fixes
 

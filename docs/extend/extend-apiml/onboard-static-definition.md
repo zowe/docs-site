@@ -394,7 +394,7 @@ additionalServiceMetadata:
 
     * **apiInfo.defaultApi**
         
-        (Optional) This paraemeter specifics that the API is the default one to show in the API Catalog. If this not set to true for any API, or multiple APIs have it set to true,
+        (Optional) This parameter specifics that the API is the default one to show in the API Catalog. If this not set to true for any API, or multiple APIs have it set to true,
         then the default API becomes the API with the highest major version as seen in `apiInfo.version`.
 
 * **customMetadata**
