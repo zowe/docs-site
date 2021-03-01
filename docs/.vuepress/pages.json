@@ -52,6 +52,7 @@
           "user-guide/install-zowe-zos-convenience-build.md",
           "user-guide/install-zowe-smpe.md",
           "user-guide/install-zowe-smpe-zosmf-workflow.md",
+          "user-guide/api-mediation-standalone.md",  
           "user-guide/configure-zos-system.md",
           "user-guide/configure-certificates.md",
           "user-guide/configure-certificates-keystore.md",
@@ -68,9 +69,18 @@
         ]
       },
       {
+        "text": "Installing Zowe Docker Bundle",
+        "items": [
+          "user-guide/install-docker.md",
+          "user-guide/install-docker-image.md",
+          "user-guide/configuring-docker.md"
+        ]
+      },
+      {
         "text": "Installing Zowe CLI",
         "items": [
           "user-guide/cli-installcli.md",
+          "user-guide/install-cli-via-proxy.md",
           "user-guide/cli-updatingcli.md",
           "user-guide/cli-uninstall.md"
         ]
@@ -127,7 +137,12 @@
     "items": [
       {
         "text": "Overview",
-        "link": "extend/extend-zowe-overview.md"
+        "items": [
+          "extend/extend-zowe-overview.md",
+          "extend/packaging-zos-extensions.md",
+          "extend/install-configure-zos-extensions.md",
+          "extend/lifecycling-with-zwesvstc.md"
+        ]
       },
       {
         "text": "Developing for Zowe CLI",
@@ -180,10 +195,6 @@
       {
         "text": "Developing for Zowe SDKs",
         "link": "extend/extend-sdks.md"
-      },
-      {
-        "text": "Lifecycling z/OS extensions",
-        "link": "extend/lifecycling-with-zwesvstc.md"
       },
       {
         "text": "Zowe Conformance Program",
