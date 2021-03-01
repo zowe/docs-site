@@ -104,16 +104,20 @@ This section describes runtime configuration properties.
 * **server.maxTotalConnections and server.maxConnectionsPerRoute**
 
     These two properties are used to set the number of concurrent connections. Further connection requests that put the number of connections over either of these limits are queued until an existing connection completes. The API Gateway is built on top of Apache HTTP components that require these two connection limits for concurrent requests. For more information, see [Apache documentation](http://hc.apache.org/httpcomponents-client-ga/tutorial/html/connmgmt.html#d5e393).
-## Environment variables
+### Environment variables
 
- Use either dot separation, or the UPPER_CASE naming convention when adding an additional environmental variable.
+ You can add additional environment variables to store configuration properties for the API Mediation Layer. 
+ 
+ **Note:** Use either dot separation, or the UPPER_CASE naming convention when adding an additional environmental variable.
 
 One use case for adding an environmental variable is to provide a label for a JWT secret. This secret is usually generated during Zowe installation. In some scenarios, however, users may want to use their own secret which is already created and labled differently. Use this procedure to use a customized secret.
 
 **Follow the steps:**
 
 1. Open the file `<Zowe instance directory>/instance.env`.
-2. Add new line with property `apiml.security.auth.jwtKeyAlias=<your_jwtsecter_label>`. 
+2. Add a new line with the following property:
+    
+     `apiml.security.auth.jwtKeyAlias=<your_jwtsecter_label>`. 
  
     where:
 
