@@ -23,11 +23,22 @@ You must have a `zosmf` compatible profile before you can use Zowe Explorer. You
 
 You successfully created a Zowe CLI `zosmf` profile. Now you can use all the functionalities of the extension.
 
-If you need to edit a profile, click the **Update Profile** button next to the corresponding profile.
+If you need to edit a profile, right-click the profile and select **Update Profile** option.
 
-<img src="../images/ze/ZE-edit-ze-profile.gif" width="600" height="300" alt="Edit a Profile">
+<img src="../images/ze/ZE-prof-update.gif" width="600" height="300" alt="Edit a Profile">
 
 In addition, you can hide a profile from the explorer tree, and permanently delete a profile. When you delete your profile permanently, the extension erases the profile from the `.zowe` folder. To hide or delete a profile, right-click the profile and choose one of the respective options from the list.
+
+#### Profile Validation
+
+Zowe Explorer includes the profile validation feature that helps to ensure that z/OSMF is accessible and ready for use. If a profile is valid, the profile is active and can be used. By default, the feature is automatically enabled. You can disable the feature by right-clicking on your profile and selecting the **Disable Validation for Profile** option. Alternatively, you can enable or disable the feature for all profiles in the VS Code settings.
+
+Follow these steps:
+
+1. Navigate to the VS Code settings.
+2. Open Zowe Explorer Settings.
+3. Enable or disable the automatic validation of profiles option.
+4. Restart VS Code.
 
 ### Associate Profile
 
@@ -38,11 +49,12 @@ Create a secondary association for your Zowe Explorer profiles.
 **Follow these steps:**
 
 1. Navigate to the explorer tree.
-2. Click the associate profiles button.
-3. Select a secondary profile type.
-4. Select a file name you want to create an association for.
+2. Right-click your profile
+3. Select the **Associate profiles** option.
+4. Select a secondary profile type.
+5. Select a file name you want to create an association for.
 
-<img src="../images/ze/ZE-profile-links.gif" width="600" height="300" alt="Edit a Profile">
+<img src="../images/ze/ZE-associate.gif" width="600" height="300" alt="Edit a Profile">
 
 You have successfully created the secondary association for your Zowe Explorer profile.
 
