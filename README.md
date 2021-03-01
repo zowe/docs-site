@@ -49,14 +49,13 @@ Before you get started with the authoring work, it's necessary that you understa
 
   Docs for an archived version, where `v` indicates the version, `r` indicates the release number. For example, `v1.0.x`, `v1.1.x`, `v1.6.x`.
 * Branches that start with `release-` contain archived patch release documentation for historical tracking.
-*
-* You can have your own personal branch to work on content for a certain issue or feature. However, be sure to check and remove unused personal branches periodically for easy maintainance. Usually when your branch is merged, you can safely delete it.
+* You can have your own personal branch to work on content for a certain issue or feature. However, be sure to check and remove unused personal branches periodically for easy maintenance. Usually when your branch is merged, you can safely delete it.
 
 ## Understanding doc site organization and files
 
-The `docs/.vuepress` folder defines the site organziation, style and table of contents. The following files are important.
+The `docs/.vuepress` folder defines the site organization, style and table of contents. The following files are important.
 
-- **pages.json**: Defines the high level doc site architecture, including the nav bar (top navigtation) and the side bar (left-hand navigation). If you have a new file to add to the site, modify this file.
+- **pages.json**: Defines the high level doc site architecture, including the nav bar (top navigation) and the side bar (left-hand navigation). If you have a new file to add to the site, modify this file.
 
 - **versions.json**: Controls the **Version** drop down list on the doc site. When there is a new version to publish, modify this file to add a new entry.
 
@@ -117,8 +116,8 @@ Once you have the docs site repository set up locally and are in the `docs-site`
 
 #### Errors when running the site locally?
 
-- Stop (CMD + Z) and rerun start script npm run docs:dev
-- If still errors, look for '<' in problem file not wrapped in code syntax.
+- Stop (CMD + Z) and rerun start script `npm run docs:dev`
+- If still errors persist, look for '<' in problem file not wrapped in code syntax.
    - Issues with files can be found at the top of red error text.
 - Look for images that are being called but do not exist in the file system.
 - If you encounter `JavaScript heap out of memory` error with the build command, it could be caused by `max_old_space_size` being too small. Try to define environment variable `NODE_OPTIONS=--max_old_space_size=4096`, or even higher with `NODE_OPTIONS=--max_old_space_size=8192`. You can define this in the command line with one of the following commands, depending on your operating system:
@@ -202,7 +201,7 @@ The above warning / error message includes several informations:
   * **source**: in page `/v0-9-x/user-guide/cli-installcli.html`,
   * **targe**: has a link to `/v0-9-x/user-guide/cli-usingcli.html`, which is itself,
   * **lines**: at line `26, 29, 34`, which is 3 lines,
-  * **code**: received code `200 OK`, which means retreiving target link is successful,
+  * **code**: received code `200 OK`, which means retrieving target link is successful,
   * **fragments**: however it failed to find 2 target fragments `#displaying-zowe-cli-help,#accessing-an-api-mediation-layer` in the target html page.
 - For line `http://zowe-docs-test-links/stable/ https://docs.zowe.org/stable/Zowe_Documentation_1.0.0.pdf "26" "404 Not Found" "-"`, it means:
   * **source**: in page `/stable/`,

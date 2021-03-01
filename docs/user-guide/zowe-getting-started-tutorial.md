@@ -260,7 +260,7 @@ Zowe CLI is a command-line interface that lets you interact with z/OS from vario
    zowe zos-files download all-members "USER.Z23B.PARMLIB"
    ```
 
-   The message "Data set downloaded successfully" indicates that the data set members are downloaded. A file heirarchy is added to your current directory.
+   The message "Data set downloaded successfully" indicates that the data set members are downloaded. A file hierarchy is added to your current directory.
 
    ![Screen capture that shows the data set is downloaded successfully](../images/common/scenario1-cli-downloaded.png)
 

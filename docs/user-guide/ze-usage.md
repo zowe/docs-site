@@ -8,7 +8,7 @@ Make the best use of the extension with the following tips:
 
 * **Data set, USS and jobs persistence settings:** You can store any of data sets, USS files, or jobs permanently in the **Favorites** tab. Right-click on a data set, USS file, or job and click **Add Favorite**.
 
-* **Identify syntax errors with a syntax highlighter:** Zowe Explorer supports a syntax hightlighter for data sets. To enhance the experience of using the extension, download an extension that highlights syntax, such as [COBOL Language Support](https://marketplace.visualstudio.com/items?itemName=broadcomMFD.cobol-language-support) or [HLASM Language Support](https://marketplace.visualstudio.com/items?itemName=broadcomMFD.hlasm-language-support).
+* **Identify syntax errors with a syntax highlighter:** Zowe Explorer supports a syntax highlighter for data sets. To enhance the experience of using the extension, download an extension that highlights syntax, such as [COBOL Language Support](https://marketplace.visualstudio.com/items?itemName=broadcomMFD.cobol-language-support) or [HLASM Language Support](https://marketplace.visualstudio.com/items?itemName=broadcomMFD.hlasm-language-support).
 
 * **Edit a profile**: You can edit existing profiles by clicking the **pencil** button next to the **magnifying glass** button in the explorer tree. The feature lets you modify the information inside your profile.
 
@@ -36,7 +36,7 @@ You can use the following functionalities when interacting with data sets:
 
 * **View data sets and use multiple filters**: You can view multiple data sets simultaneously and apply filters to show specified data sets.
 * **Rename data sets**: You can rename specified data sets.
-* **Copy data sets**: You can copy a specified data sets and memebers.
+* **Copy data sets**: You can copy a specified data sets and members.
 * **Download, edit, and upload existing PDS members**: You can instantly pull data sets and data set members from the mainframe, edit them and upload back.
 * **Create and delete data sets and data set members**: Enables you to easily create and delete both data sets and their members.
 * **View and access multiple profiles simultaneously**: Enables you to work with data sets from multiple profiles.
@@ -177,7 +177,7 @@ You can use the following functionalities when interacting with USS files:
 5. From the drop-down, enter the path that you want as the root of your displayed tree.  
   All child files and directories of that root file are displayed in the explorer tree.
 
-  **Note:** You will not be able to expand directories or files that you are not authorised for.
+  **Note:** You will not be able to expand directories or files that you are not authorized for.
 
    <img src="../images/ze/ZE-path.gif" alt="Enter Path">
 

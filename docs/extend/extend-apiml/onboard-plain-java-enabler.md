@@ -199,7 +199,7 @@ authentication:
        version: 1.0.0
        gatewayUrl: api/v1
        swaggerUrl: http://${sampleServiceSwaggerHost}:${sampleServiceSwaggerPort}/sampleservice/api-doc
-       doumentationUrl: http://
+       documentationUrl: http://
      - apiId: org.zowe.sampleservice
        version: 2.0.0
        gatewayUrl: api/v2
