@@ -1,8 +1,8 @@
 # Information roadmap for Zowe API Mediation Layer
 
-This roadmap outlines the information resources that are available for all user roles who are interested in Zowe API Mediation Layer. These resources provide information about various subject areas, such as learning basic skills, installation, developing, and troubleshooting for Zowe API Mediation Layer.
+This roadmap outlines information resources that are applicable to the various user roles who are interested in Zowe API Mediation Layer. These resources provide information about various subject areas, such as learning basic skills, installation, developing, and troubleshooting for Zowe API Mediation Layer.
 
-The following definition of skill levels about Zowe will help you gather most relevant resources for you. 
+The following definition of skill levels about Zowe assist you with gathering the most relevant resources for you. 
 
 * Beginner: You're starting out and want to learn the fundamentals.
 * Intermediate: You have some experience but want to learn more in-depth skills. 
@@ -30,11 +30,11 @@ The following definition of skill levels about Zowe will help you gather most re
 
 - [**Planning**](../user-guide/installandconfig.md#planning-the-installation-of-zowe-server-components)
 
-  This information provides details about planning for the installation, the Zowe z/OS launch process, and so on.
+  This article includes details about planning for installation, the Zowe z/OS launch process, and information about the Zowe runtime directory, instance directory, and keystore directory.
 
 - [**Installing API Mediation Layer**](../user-guide/install-zos.md#z-os-installation-roadmap)
 
-   This information provides an overview of the essential steps involved in installing API Mediation Layer.
+   This article provides an overview of the essential steps involved in installing API Mediation Layer.
 
 ## Configuring and updating
 
@@ -44,19 +44,19 @@ The following definition of skill levels about Zowe will help you gather most re
 
    - [API Gateway configuration parameters](../user-guide/api-mediation/api-mediation-internal-configuration.md)
      
-      This information introduces the default configuration of the API Mediation Layer and how to change the parameters to meet your needs. 
+      This article introduces the default configuration of the API Mediation Layer and how to change the parameters to meet your needs. 
 
    - [Configuring the Zowe APIs](../user-guide/configure-data-sets-jobs-api.md) 
 
-      The information explains how to configure security for the Zowe API Mediation Layer. 
+      The article explains how to configure security for the Zowe API Mediation Layer. 
 
    - [Advanced Gateway features configuration](../user-guide/api-mediation/api-gateway-configuration.md)
       
-       This information is for system programmers who want to configure advanced Gateway features of the API Mediation Layer, such as gateway retry policy, connection limits, gateway timeouts, and so on.
+       This article is for system programmers who want to configure advanced Gateway features of the API Mediation Layer, such as the gateway retry policy, connection limits, gateway timeouts, and so on.
 
 - [**Upgrading the z/OS system for Zowe**](../user-guide/upgrade-zos-system.md)
 
-   Learn how to upgrade Zowe API Mediation Layer to a more recent version.
+   Learn how to upgrade Zowe API Mediation Layer to a recent version.
 
 ## Using Zowe API Mediation Layer
 
@@ -68,7 +68,7 @@ The following definition of skill levels about Zowe will help you gather most re
 
 - [**Blog: Introducing “Try it out” functionality in the Zowe API Mediation Layer**](https://medium.com/zowe/introducing-try-it-out-functionality-in-the-zowe-api-mediation-layer-930aa9e947bd) 
 
-   This blog talks about one key functionality of the Zowe API Mediation Layer. 
+   This blog talks about one key functionality of the Zowe API Mediation Layer to validate that services are returning the expected responses. 
 
 - [**Docs: Zowe API reference guide**](../appendix/zowe-api-reference.md)
 
@@ -80,11 +80,11 @@ The following definition of skill levels about Zowe will help you gather most re
 
 - [**Extend Zowe API Mediation Layer**](../extend/extend-zowe-overview.md#extend-zowe-api-mediation-layer) 
 
-   Learn how you can extend the Zowe API Mediation Layer. Extenders can build and onboard additional API services to the API ML microservices ecosystem. REST APIs can register with the API Mediation Layer, which makes them available in the API Catalog and for routing through the API Gateway.
+   Learn how you can extend the Zowe API Mediation Layer. Extenders can build and onboard additional API services to the API ML microservices ecosystem. REST APIs can register to the API Mediation Layer, which makes them available in the API Catalog and for routing through the API Gateway.
 
 - [**Onboarding overview**](../extend/extend-apiml/onboard-overview.md#prerequisites)
 
-   This information provides details about onboarding a REST API service to the Zowe API Mediation Layer. 
+   This article provides details about onboarding a REST API service to the Zowe API Mediation Layer. 
 
 - [**Zowe API ML repository**](https://github.com/zowe/zowe-api)
 
