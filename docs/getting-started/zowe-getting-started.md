@@ -1,101 +1,49 @@
 # Getting started with Zowe
 
-If you just started exploring Zowe, follow this path: 
+If you just started exploring Zowe, follow the path in this topic. 
 
+## Learning about Zowe
 
+Learn what is Zowe, how Zowe works and what it can do for you. 
 
-
-## Fundamentals
-
-> Zowe skill level: Beginner
-
-[**Zowe CLI overview**](overview.md#zowe-cli)
-
-   New to Zowe CLI? This overview topic introduces what is Zowe CLI.
-
-[**Architecture**](zowe-architecture.md#zowe-architecture)
-
-   Review the Zowe architecture to understand how Zowe CLI works in the framework. 
-
-[**Zowe CLI FAQs**](freqaskques.md#zowe-cli-faq)
+- [**Introduction video**](https://youtu.be/7XpOjREP8JU)
    
-   This section answers some of your questions about Zowe CLI.
+   Begin your journey with Zowe through this introductory video which is designed to give you an overview of Zowe's various components and features and get you familiar with them quickly.
+
+- [**Zowe overview**](overview.md)
+
+   Refer to the overview topics to walk through basic concepts of Zowe, its components and benefits. 
+
+- [**Zowe architecture**](zowe-architecture.md)
+
+   Review the Zowe architecture to understand how Zowe works. 
+
+- [**Zowe FAQs**](freqaskques.md)
    
+   If you have a question, it's a good idea to try the FAQ, which answers the most commonly asked questions about Zowe.
 
-## Quick start
+- [**Release notes**](summaryofchanges.md)
 
-> Zowe skill level: Beginner
-
-[**Zowe CLI quick start**](cli-getting-started.md)
+   Check out what's new with Zowe. 
    
-   Get started with Zowe™ CLI quickly and easily.
+- [**Zowe learning resources**](zowe-resources.md)
 
-[**Blog: Getting Started with Zowe CLI**](https://medium.com/zowe/getting-started-with-zowe-cli-7a29420c6be7)
+   Find a list of helpful Zowe resources on the web, including blogs, videos, webinars, courses, trials, and so on. 
 
-   This blog enables you to get started with Zowe CLI quickly. 
+## Install and use
 
-## Installing
+Now you know that Zowe consists of several components. You can determine which Zowe components to install and use. Follow the component-specific information roadmaps to install, use, and troubleshoot Zowe components. You can also get information about how to contribute to each specific component.  
 
-> Zowe skill level: Beginner
+Components to install and use |  Information roadmaps
+---                           |  ---
+Zowe Application Framework, Zowe API Mediation Layer (these are installed as z/OS server components) |  [Information roadmap for Zowe Application Framework](user-roadmap-app-framework.md), [Information roadmap for Zowe API Mediation Layer](user-roadmap-apiml.md)
+Zowe CLI                      |  [Information roadmap for Zowe Explorer](user-roadmap-zowe-explorer.md)
+Zowe SDKs (under development) |  [Information roadmap for Zowe client SDKs](user-roadmap-client-sdk.md)
+Zowe Mobile (Incubator) | [Information roadmap for Zowe Mobile](user-roadmap-mobile.md)
 
-[**Installing Zowe CLI**](../user-guide/cli-installcli.md)
+## Getting involved
 
-
-## Configuring 
-
-> Zowe skill level: Intermediate
-
-## Using Zowe CLI and plug-ins
-
-> Zowe skill level: Intermediate
-
-[**Using Zowe CLI**](../user-guide/cli-usingcli.md)
-
-   Learn about how to use Zowe™ CLI, including connecting to the mainframe, managing profiles, integrating with API Mediation Layer, and more.
-
-[**Zowe CLI extensions and plug-ins**](../user-guide/cli-extending.md)
-
-   This information guides you to explore the extensions and plug-ins avialable to Zowe CLI and install plug-ins to extend the capabilities of Zowe CLI. Plug-ins add functionality to the product in the form of new command groups, actions, objects, and options.
-
-**Docs: Zowe CLI command reference guide**
-
-   View detailed documentation on commands, actions, and options in Zowe CLI. The reference document is based on the @zowe-v1-lts version of the CLI. You can read an interactive online version, download a PDF document, or download a ZIP file containing the HTML for the online version:
-   - **[Browse online](../web_help/index.html)**
-   - **[Download CLI reference in PDF format](../CLIReference_Zowe.pdf)**
-   - **[Download CLI reference in ZIP format](../zowe_web_help.zip)**
-
-**Best practices**
-
-Are you looking for recommendations and tips on how to best use Zowe CLI to meet your needs? These resources provide best practices recommendations.
-- [**Blog: Zowe CLI Tips & Tricks**](https://medium.com/modern-mainframe/zowe-cli-tips-tricks-79607b8dbd4e)
-
-## Developing a Zowe CLI plug-in
-
-> Zowe skill level: Advanced
-
-[**Developing for the CLI**](../extend/extend-cli/cli-developing-a-plugin.md) 
-
-
-## Contributing to Zowe CLI
-
-> Zowe skill level: Advanced
-
-[**Contributing guidelines**](https://github.com/zowe/zowe-cli/blob/master/CONTRIBUTING.md)
-
-This document is a summary of conventions and best practices for development within Zowe CLI or development of Zowe CLI plug-ins.
-
-## Troubleshooting and support
-
-[**Troubleshooting Zowe CLI**](../troubleshoot/cli/troubleshoot-cli.md)
-
-Learn about the tools and techniques that are available to help you troubleshoot and resolve problems. You can also find a list of common issues about Zowe CLI. 
-
-## Community resources 
-
-[**Slack channel**](https://openmainframeproject.slack.com/archives/CC8AALGN6)
-
-[**Zowe CLI Blogs on Medium**](https://medium.com/zowe/search?q=Zowe%20CLI)
-
+There are many ways to contribute to Zowe, and we welcome contributions! Read the [contributor’s guide](../contribute/user-roadmap-contribute.md) to get started on the code and guidelines.
 
 
 
