@@ -27,6 +27,7 @@ Find out what's happening with Zowe in the Zowe Quarterly Update Webinar Series.
 - [Zowe Quarterly Update Webinar: January 2021](https://youtu.be/ZEwd8wZvbIw)
 
 The [OMP Youtube channel](https://www.youtube.com/channel/UC-WTXQQtz2m5iTflJLK59aw/videos) also offers other webinars about Zowe. 
+- [Treat Yourself to a Guided, Comprehensive Tour of Zowe Desktop Applications](https://youtu.be/cbEVbcsaGCs)
 - [Zowe Webinar Feb. 22, 2019](https://youtu.be/XixEltbRmds)
 - [Open Mainframe Project Webinar: Zowe Virtual Hackathon](https://youtu.be/zIPzaQK2bfU)
 
