@@ -3,7 +3,7 @@
 As an application developer who wants to change the default configuration of the API Mediation Layer, set the following parameters by modifying the `<Zowe install directory>/components/gateway/bin/start.sh` file:
 
   * [Runtime configuration](#runtime-configuration)
-    * [Environment variables](environment-variables)
+    * [Environment variables](#environment-variables)
   * [Service configuration](#service-configuration)
   * [Zuul configuration](#zuul-configuration)
   * [Hystrix configuration](#hystrix-configuration)
