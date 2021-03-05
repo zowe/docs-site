@@ -43,10 +43,10 @@ footer: Except where otherwise noted, content on this site is licensed under a C
   <div class="solutionBox feature" style="height:340px">
       <div>
         <p><img src="./images/common/objective.svg" alt="User goal" style="height:25px"/> <strong>What would you like to do?</strong></p>
-        <p><a href="./appendix/tpsr.html"><img src="./images/common/right-arrow.svg" width="25" height="15">Learn about Zowe</a></p>
-        <p><a href="./appendix/tpsr.html"><img src="./images/common/right-arrow.svg" width="25" height="15">Install and use Zowe</a></p>
-        <p><a href="./appendix/tpsr.html"><img src="./images/common/right-arrow.svg" width="25" height="15">Extend Zowe</a></p>
-        <p><a href="./appendix/tpsr.html"><img src="./images/common/right-arrow.svg" width="25" height="15">Contribute to Zowe</a></p>
+        <p><a href="./getting-started/zowe-getting-started.html#learning-about-zowe"><img src="./images/common/right-arrow.svg" width="25" height="15">Learn about Zowe</a></p>
+        <p><a href="./getting-started/zowe-getting-started.html#install-and-use"><img src="./images/common/right-arrow.svg" width="25" height="15">Install and use Zowe</a></p>
+        <p><a href="./extend/extend-zowe-overview.html"><img src="./images/common/right-arrow.svg" width="25" height="15">Extend Zowe</a></p>
+        <p><a href="./contribute/roadmap-contribute.html"><img src="./images/common/right-arrow.svg" width="25" height="15">Contribute to Zowe</a></p>
       </div>
     </a>
   </div>

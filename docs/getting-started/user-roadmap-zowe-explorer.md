@@ -73,6 +73,10 @@ The following definition of skill levels about Zowe Explorer helps you find the 
 
 > Zowe skill level: Advanced
 
+* [**Contributing guidelines**](https://github.com/zowe/vscode-extension-for-zowe/blob/master/CONTRIBUTING.md)
+
+   This document is intended to be a living summary of conventions & best practices for development of the Visual Studio Code Extension for Zowe.
+
 * [**Conformance Program**](../extend/zowe-conformance-program.md)
 
   This topic introduces the Zowe Conformance Program. Conformance provides Independent Software Vendors (ISVs), System Integrators (SIs), and end users greater confidence that their software will behave as expected. As vendors, you are invited to submit conformance testing results for review and approval by the Open Mainframe Project. If your company provides software based on Zowe CLI, you are encouraged to get certified today.
