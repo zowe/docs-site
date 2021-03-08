@@ -1,22 +1,28 @@
 # Configuring Zowe certificates 
 
-Zowe uses a certificate to encrypt data for communication across secure sockets. An instance of Zowe references a USS directory referred to as a `KEYSTORE_DIRECTORY` which contains information about where the certificate is located.
+Zowe uses a certificate to encrypt data for communication across secure sockets. An instance of Zowe references a USS directory referred to as a **KEYSTORE_DIRECTORY** which contains information about where the certificate is located.
 
 Learn more about the key concepts of Zowe certificates in the following sections.
  
 ## Northbound Certificate
 
-The Zowe certificate is used by the API Mediation Layer on its northbound edge when identifying itself and encrypting `https://` traffic to web browsers or REST client applications.  If the Zowe Command Line Interface (CLI) has been configured to use the Zowe API Mediation Layer then the CLI is a client of the Zowe certificate. For more information, see [Using the Zowe Command Line Interface, Integrating with the API Mediation Layer](./cli-usingcli.md#integrating-with-api-mediation-layer).
+The API Mediation Layer uses the Zowe certificate on its northbound edge when identifying itself and encrypting `https://` traffic to web browsers or REST client applications.  If the Zowe Command Line Interface (CLI) is configured to use the Zowe API Mediation Layer, then the CLI is a client of the Zowe certificate. For more information, see [Using the Zowe Command Line Igitnterface, Integrating with the API Mediation Layer](./cli-usingcli.md#integrating-with-api-mediation-layer).
 
 ## Southbound Certificate
 
-As well as being a server, Zowe itself is a client to services on the southbound edge of its API Mediation Layer that it communicates to over secure sockets.  These southbound services use certificates to encrypt their data, and Zowe uses a trust store to store its relationship to these certificates.  The southbound services that are started by Zowe itself and run as address spaces under its `ZWESVSTC` started task   (such as the API discovery service, the explorer JES REST API server) re-use the same Zowe certificate used by the API Mediation Layer on its northbound client edge.  
+In addition to being a server, Zowe itself is also a client to services on the southbound edge of the API Mediation Layer to which the API ML communicates over secure sockets.  These southbound services use certificates to encrypt their data, and Zowe uses a trust store to store its relationship to these certificates. The southbound services that are started by Zowe itself and run as address spaces under its `ZWESVSTC` started task (such as the API Discovery Service, and the explorer JES REST API server). These started tasks reuse the same Zowe certificate used by the API Mediation Layer on its northbound client edge.  
 
 ## Trust store
 
 In addition to Zowe using the intra-address space of certificates to encrypt messages between its servers, Zowe uses external services on z/OS (such as z/OSMF or Zowe conformant extensions that have registered themselves with the API Mediation Layer). These services present their own certificates to the API Mediation Layer. In this scenario, the trust store is used to capture the relationship between Zowe's southbound edge and these external certificates.  
 
-To disable the trust store validation of southbound certificates, you can set the value of `VERIFY_CERTIFICATES=true` to `false` in the `zowe-setup-certificates.env` file in the `KEYSTORE_DIRECTORY`.  This setting is recommended if the certificate presented to the API Mediation Layer is self-signed such as from an unknown certificate authority.  For example, the z/OSMF certificate may be self-signed in which case the Zowe API Mediation Layer cannot recognize the signing authority.  
+### Disable trust store validation of southbound certificates
+
+To disable trust store validation of southbound certificates change the following setting:
+
+In the `zowe-setup-certificates.env` file in the `KEYSTORE_DIRECTORY`, set the value of `VERIFY_CERTIFICATES=true` to `false` .  
+
+**Note:** This setting is recommended if the certificate presented to the API Mediation Layer is self-signed such as from an unknown certificate authority.  For example, the z/OSMF certificate may be self-signed in which case the Zowe API Mediation Layer cannot recognize the signing authority.  
 
 ## Certificates in the Zowe architecture
 
@@ -24,11 +30,11 @@ The [Zowe architecture diagram](../getting-started/zowe-architecture.md) shows t
 
 <img src="../images/common/zowe-ssl.png" alt="Zowe SSL" width="700px"/> 
 
-The arrows shown in red represent the communication over a TCP/IP connection that is encrypted with the Zowe certificate.  
+The red arrows represent the communication over a TCP/IP connection that is encrypted with the Zowe certificate.  
 - On the northbound edge of the API Gateway, the certificate is used between client applications such as web browsers, Zowe CLI, or any other application attempting to access Zowe REST APIs.  
 - On the southbound edge of the API Gateway are a number of Zowe micro-services providing HTML GUIs for the Zowe desktop or REST APIs for the API Catalog.  These micro-services also use the Zowe certificate for data encryption.
 
-The arrows shown in green represent external certificates for servers that are not managed by Zowe, such as z/OSMF itself or any Zowe conformant REST API or App Framework servers that are registered with the API Mediation Layer.  For the API Mediation Layer to be able to accept these certificates, they either need to be signed by a recognized certificate authority, or the API Mediation Layer needs to be configured to accept unverified certificates.  
+The green arrows represent external certificates for servers that are not managed by Zowe, such as z/OSMF itself or any Zowe conformant REST API or App Framework servers that are registered with the API Mediation Layer.  For the API Mediation Layer to be able to accept these certificates, the certificates either need to be signed by a recognized certificate authority, or the API Mediation Layer needs to be configured to accept unverified certificates.  
 
 **Note:** Even if the API Mediation Layer is configured to accept certificates signed by unverified CAs on its southbound edge, client applications on the northbound edge of the API Gateway are presented with the Zowe certificate.  
 
@@ -58,13 +64,13 @@ The `KEYSTORE_DIRECTORY` is created by running the script `<RUNTIME_DIR>/bin/zow
 
 The configuration file `<RUNTIME_DIR>/bin/zowe-setup-certificates.env` is provided for setting up a Keystore directory that contains the Zowe certificate in JavaKeystore format.  The configuration file `<RUNTIME_DIR>/bin/zowe-setup-certificates-keyring.env` is provided for setting up a Keystore directory that references the Zowe certificate held in a z/OS keyring.  
 
-The `.env` configuration file requires customization based on security rules and practices for the z/OS environment.  Once the script is successfully executed and the `KEYSTORE_DIRECTORY` is created successfully, it is referenced by a Zowe launch `instance.env` file. A `KEYSTORE_DIRECTORY` can be used by more than one instance of Zowe. For more information, see [Creating and configuring the Zowe instance directory](../user-guide/configure-instance-directory.md#keystore-configuration). 
+The `.env` configuration file requires customization based on security rules and practices for the z/OS environment.  Once the script is successfully executed and the `KEYSTORE_DIRECTORY` is created successfully, the directory is referenced by a Zowe launch `instance.env` file. A `KEYSTORE_DIRECTORY` can be used by more than one instance of Zowe. For more information, see [Creating and configuring the Zowe instance directory](../user-guide/configure-instance-directory.md#keystore-configuration). 
 
-The Zowe launch diagram shows the relationship between a Zowe instance directory, a Zowe runtime directory, the Zowe keystore directory, and (if used to store the Zowe certificate) the z/OS keyring.  
+The Zowe launch diagram shows the relationship between a Zowe instance directory, a Zowe runtime directory, the Zowe keystore directory, and the z/OS keyring if used to store the Zowe certificate.  
 
 <img src="../images/common/zowe-directories-keys.png" alt="Zowe Directories" width="700"/> 
 
-You create a `KEYSTORE_DIRECTORY` in USS by using the script `zowe-setup-certificates.sh` (1) with a `-p` argument that specifies a `.env` configuration file.  
+Create a `KEYSTORE_DIRECTORY` in USS by using the script `zowe-setup-certificates.sh` (1) with a `-p` argument that specifies a `.env` configuration file.  
 - If the `-p` argument file `zowe-setup-certificates.env` (2) is used, the `KEYSTORE_DIRECTORY` will contain the certificate, the certificate authority, the trust store, and the JWT Secret.  
 - If the `-p` argument file `zowe-setup-keyring-certificates.env` (3) is used, the `KEYSTORE_DIRECTORY` contains no certificates and is a pass-through to configure a Zowe instance to use a z/OS keyring.
 
@@ -72,5 +78,4 @@ The JCL member `ZWEKRING` (4) is used to create a z/OS Keyring to hold the Zowe 
 
 At launch time, a Zowe instance is started using the script `<INSTANCE_DIR>/bin/zowe-start.sh` which takes configuration arguments from `<INSTANCE_DIR>/instance.env`.  The argument (5)  `KEYSTORE_DIRECTORY=<KEYSTORE_DIRECTORY>` specifies the path to the keystore directory that Zowe will use.  
 
-**Note:** If you generated your own server certificate, and you want to enable Client Authentication for it, your server certificate must contain the `TLS Web Client Authentication (1.3.6.1.5.5.7.3.2)` value in the Extended Key Usage section. 
-Additionally, the `Digital signature and/or key agreement` must also be set as extension value in the Key Usage section. For more information, see [key usage extensions and extended key usage](https://help.hcltechsw.com/domino/10.0.1/admin/conf_keyusageextensionsandextendedkeyusage_r.html).
+For more information on the Zowe launch topology, see [Topology of the Zowe z/OS launch process](./installandconfig.md#topology-of-the-zowe-z-os-launch-process).
