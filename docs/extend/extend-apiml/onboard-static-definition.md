@@ -371,9 +371,9 @@ additionalServiceMetadata:
 
         **Examples:**
 
-        - `org.zowe.file`
-        - `com.ca.sysview`
-        - `com.ibm.zosmf`
+        - `zowe.file`
+        - `ca.sysview`
+        - `ibm.zosmf`
 
     * **apiInfo.gatewayUrl**
 
