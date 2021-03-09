@@ -49,14 +49,13 @@ Before you get started with the authoring work, it's necessary that you understa
 
   Docs for an archived version, where `v` indicates the version, `r` indicates the release number. For example, `v1.0.x`, `v1.1.x`, `v1.6.x`.
 * Branches that start with `release-` contain archived patch release documentation for historical tracking.
-*
-* You can have your own personal branch to work on content for a certain issue or feature. However, be sure to check and remove unused personal branches periodically for easy maintainance. Usually when your branch is merged, you can safely delete it.
+* You can have your own personal branch to work on content for a certain issue or feature. However, be sure to check and remove unused personal branches periodically for easy maintenance. Usually when your branch is merged, you can safely delete it.
 
 ## Understanding doc site organization and files
 
-The `docs/.vuepress` folder defines the site organziation, style and table of contents. The following files are important.
+The `docs/.vuepress` folder defines the site organization, style and table of contents. The following files are important.
 
-- **pages.json**: Defines the high level doc site architecture, including the nav bar (top navigtation) and the side bar (left-hand navigation). If you have a new file to add to the site, modify this file.
+- **pages.json**: Defines the high level doc site architecture, including the nav bar (top navigation) and the side bar (left-hand navigation). If you have a new file to add to the site, modify this file.
 
 - **versions.json**: Controls the **Version** drop down list on the doc site. When there is a new version to publish, modify this file to add a new entry.
 
@@ -101,20 +100,30 @@ If you missed DCO sign-off statements in a series of commits, you can retroactiv
 
 ### Previewing or testing the doc site locally
 
-If you want to preview your changes on your local machine, you will need node.js >= 8 and npm installed. Tp install npm, run `npm install`.
+If you want to preview your changes on your local machine, you will need [Git](https://git-scm.com/) and [Node.js](https://nodejs.org/en/) (version >= 8) installed, as well as npm (which comes with Node.js). Once those are installed, you can follow the steps below to set up a local copy of the docs site repository, and then build and run the docs site locally:
 
-Then, follow these steps:
-1. cd into the `docs-site` folder.
-1. Run `npm run docs:dev`.
-1. Once complete, you can preview the site locally at [http://localhost:8080/stable/](http://localhost:8080/stable/). Every time if you modify and save a documentation change, the preview build will be triggered automatically, then you can refresh your browser to see the changes.
+If you do not already have the docs site repository set up locally:
+
+1. In your local command line interface, navigate to the directory in which you want to create your local copy of the docs site repository.
+1. Clone the docs site repository by running the following command: `git clone https://github.com/zowe/docs-site`
+1. Access the newly-cloned repository by changing directories into it: `cd docs-site`
+
+Once you have the docs site repository set up locally and are in the `docs-site` directory, you can build and run the docs site locally by following the steps below:
+
+1. Run the command to install project dependencies: `npm install`
+1. Run `npm run docs:dev`
+1. Once complete, you can preview the site locally at [http://localhost:8080/stable/](http://localhost:8080/stable/). Every time you modify and save a documentation change, the preview build will be triggered automatically, and then you can refresh your browser to see the changes.
 
 #### Errors when running the site locally?
 
-- Stop (CMD + Z) and rerun start script npm run docs:dev
-- If still errors, look for '<' in problem file not wrapped in code syntax.
+- Stop (CMD + Z) and rerun start script `npm run docs:dev`
+- If still errors persist, look for '<' in problem file not wrapped in code syntax.
    - Issues with files can be found at the top of red error text.
 - Look for images that are being called but do not exist in the file system.
-- If you encounter `JavaScript heap out of memory` error with the build command, it could be caused by `max_old_space_size` is too small. Try to define environment variable `NODE_OPTIONS=--max_old_space_size=4096`, or even higher with `NODE_OPTIONS=--max_old_space_size=8192`.
+- If you encounter `JavaScript heap out of memory` error with the build command, it could be caused by `max_old_space_size` being too small. Try to define environment variable `NODE_OPTIONS=--max_old_space_size=4096`, or even higher with `NODE_OPTIONS=--max_old_space_size=8192`. You can define this in the command line with one of the following commands, depending on your operating system:
+
+  - Windows: `set NODE_OPTIONS="--max-old-space-size=8192"`
+  - Linux/Mac: `export NODE_OPTIONS="--max-old-space-size=8192"`
 
 
 ### Building the docs for production
@@ -192,7 +201,7 @@ The above warning / error message includes several informations:
   * **source**: in page `/v0-9-x/user-guide/cli-installcli.html`,
   * **targe**: has a link to `/v0-9-x/user-guide/cli-usingcli.html`, which is itself,
   * **lines**: at line `26, 29, 34`, which is 3 lines,
-  * **code**: received code `200 OK`, which means retreiving target link is successful,
+  * **code**: received code `200 OK`, which means retrieving target link is successful,
   * **fragments**: however it failed to find 2 target fragments `#displaying-zowe-cli-help,#accessing-an-api-mediation-layer` in the target html page.
 - For line `http://zowe-docs-test-links/stable/ https://docs.zowe.org/stable/Zowe_Documentation_1.0.0.pdf "26" "404 Not Found" "-"`, it means:
   * **source**: in page `/stable/`,

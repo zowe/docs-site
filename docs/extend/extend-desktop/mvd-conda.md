@@ -35,7 +35,7 @@ this can be done by providing a path or a nickname
 `conda create --prefix PATH`
 `conda create --name ENVIRONMENT`
 
-Either will work, but path helps you better seperate your content from content others use by placing it in a folder that you can have stricter permissions on.
+Either will work, but path helps you better separate your content from content others use by placing it in a folder that you can have stricter permissions on.
 
 If you need to know more about certain commands, you can use the help command for any.
 

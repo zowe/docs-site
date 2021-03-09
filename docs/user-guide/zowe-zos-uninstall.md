@@ -11,7 +11,7 @@ You can uninstall Zowe&trade; from z/OS if you no longer need to use it.
     ```
     Where ZOWE_PREFIX and ZOWE_INSTANCE are specified in your configuration (and default to ZWE and 1), see [Zowe instance directory](configure-instance-directory.md#address-space-names)
 
-    Aftter Zowe has been stopped its subcomponents will end which include the API Mediation Layer and the Zowe desktop.  
+    After Zowe has been stopped it's subcomponents will end which include the API Mediation Layer and the Zowe desktop.  
 
 2.  Delete the `ZWESVSTC` member from your system `PROCLIB` data set.
 

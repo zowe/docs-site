@@ -2,7 +2,7 @@
 
 (WORK IN PROGRESS)
 
-In this tutorial we consider how an organisation with a product or tool with an existing Rest API can be rapidly Onboarded to Zowe&trade; by getting that product or tool registered with the API Gateway. This would then allow the product to be available from a central location and benefit from other Zowe API Mediation layer functionality. To do this we need a method for defining the service to the gateway
+In this tutorial we consider how an organization with a product or tool with an existing Rest API can be rapidly Onboarded to Zowe&trade; by getting that product or tool registered with the API Gateway. This would then allow the product to be available from a central location and benefit from other Zowe API Mediation layer functionality. To do this we need a method for defining the service to the gateway
 
 As the example product we are using a simple Spring Boot sample app that can be downloaded here: [spring-boot-jzos-sample](https://github.com/zowe/spring-boot-jzos-sample). If you have your own example skip the "Get your app running" section we can adapt your script for that.
 
@@ -45,7 +45,7 @@ This information together creates the catalog tile information
 By clicking on the tile the following information is presented. Note the swagger is generated from the swaggerUrl link which needs to be v2 swagger
 ![](../../images/extender/service.png)
 
-Although the most critical information, the redirection of the urls is under routed services aloing with the service id. 
+Although the most critical information, the redirection of the urls is under routed services along with the service id. 
 ```
 routedServices.gatewayUrl+serviceId will point at instanceBaseUrls+serviceRelativeUrl
 <gateway url>api/v1/jzos ==> https://host.my.com:2956/jzos
@@ -58,7 +58,7 @@ If you are using the sample follow the instructions in the readme to get it up a
 
 As described earlier we are registering our application with the API Catalog by way of a file that is read by the Gateway when it's started. We think of this as a static definition as the details of the service won't change whilst the gateway is running. To achieve a more dynamic relationship between the application and registry, one that can respond to changes in one or the other e.g. for load balancing purposes we need to construct the product differently. See [Onboarding from scratch](./existingApp.md)
 
-The information contained in the yaml definitions file abover requires input from both the onboarding organisation (you) and the end user. Therefore the intent is to provide as much of the onboarder information into the script template so the end user has fewer choices to make. Therefore the script should be updated.  
+The information contained in the yaml definitions file abover requires input from both the onboarding organization (you) and the end user. Therefore the intent is to provide as much of the onboarder information into the script template so the end user has fewer choices to make. Therefore the script should be updated.  
 
 [Onboard-to-gateway](https://github.com/zowe/Onboarding-scripts)
 
