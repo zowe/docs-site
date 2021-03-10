@@ -161,12 +161,12 @@ Use the following procedure if you use _Maven_ as your build automation system.
 
 ## Configuring your service
 
-To configure your service, provide default service configuration in the `service-configuration.yml` file located in your service source tree resources directory.
+To configure your service, create the configuration file `service-configuration.yml` in your service source tree resources directory. The default path for a java application is `src/main/resources`. The `service-configuration.yml` file is used to set the application properties and eureka metadata. Application properties are for your service runtime. For example, the `ssl` section specifies the keystore and trustore. The eureka metadata is used for registration with API Mediation Layer.
 
 **Note:** To externalize service onboarding configuration, see: [Externalizing onboarding configuration](onboard-plain-java-enabler-external-configuration.md).
 
 The following code snippet shows an example of `service-configuration.yml`. Some parameters which are specific for your service deployment
-are written in `${parameterValue}` format. For your service configuration file, provide actual values or externalize your onboarding configuration.
+are in `${parameterValue}` format. For your service configuration file, provide actual values or externalize your onboarding configuration.
 
 **Example:**
 
@@ -227,7 +227,12 @@ authentication:
     trustStorePassword: password
  ```
 
-Optional metadata section
+**Optional metadata section**
+
+The following snippet presents additional optional metadata that can be added.
+
+**Example:**
+
 ```yaml
 customMetadata:
     yourqualifier:
