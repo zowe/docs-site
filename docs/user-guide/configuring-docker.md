@@ -137,7 +137,7 @@ For those plugins, you can run their scripts or Zowe's own `install-app.sh` scri
 
 ## Zowe's docker mount locations  
 
-When attempting to share certificates, plugins, or instance configuration to a Zowe container, the mount desination is fixed and therefore the following must be used:
+When attempting to share certificates, plugins, or instance configuration to a Zowe container, the mount destination is fixed and therefore the following must be used:
 
 - Certificates: The Zowe keystore destination must be `/root/zowe/certs`
 - App framework plugins: The folder that contains all plugins must be `/root/zowe/apps`

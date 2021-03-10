@@ -70,7 +70,7 @@ Both the File API and JES API servers are registered as tiles on the API catalog
 
 ## Cross memory server
 
-The Cross memory server is a low-level privleged server for managing mainframe data securely.
+The Cross memory server is a low-level privileged server for managing mainframe data securely.
 For security reasons, it is not an HTTP server. Instead, it has a trust relationship with ZSS. Other Zowe components can work through ZSS in order to handle z/OS data that would otherwise be unavailable or insecure to access from higher-level languages and software.
 
 Unlike all of the servers described above which run under the `ZWESVSTC` started task as address spaces for USS processes, the cross memory server has its own separate started task `ZWESISTC` and its own user ID `ZWESIUSR` that runs the program `ZWESIS01`. 

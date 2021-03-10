@@ -125,7 +125,7 @@ Verify that your service is discovered by the Discovery Service with the followi
     - Ensure that addresses and user credentials for individual API ML components correspond to your target runtime environment.
     - If you work with local installation of API ML and you use our dummy identity provider, enter `user` for both `username` and `password`. If API ML was installed by system administrators, ask them to provide you with actual addresses of API ML components and the respective user credentials.
 
-### Verifing service discovery through the API Catalog
+### Verifying service discovery through the API Catalog
 
  Services may not be immediately visible in the API Catalog. We recommend you wait for 2 minutes as it may take a moment for your service to be visible in the Catalog. If your service still does not appear in the Catalog, ensure that your configuration settings are correct.
 
