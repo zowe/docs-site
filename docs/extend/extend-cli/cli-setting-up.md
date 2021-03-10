@@ -1,7 +1,7 @@
 # Setting up your development environment
 Before you follow the development tutorials for creating a Zowe&trade; CLI plug-in, follow these steps to set up your environment.
 
-## Prequisites
+## Prerequisites
 [Install Zowe CLI](../../user-guide/cli-installcli.html#methods-to-install-zowe-cli).
 
 ## Initial setup
@@ -17,7 +17,7 @@ The `master` branch of Sample Plug-in is compatible with the `@zowe-v1-lts` vers
 
 The `master` branch of Sample Plug-in is also compatible with the `@latest` version of core CLI (Zowe Active Development release) at this time.
 
-For more information about the versioning scheme, see [Maintaner Versioning](https://github.com/zowe/zowe-cli/blob/master/docs/MaintainerVersioning.md) in the Zowe CLI repository.
+For more information about the versioning scheme, see [Maintainer Versioning](https://github.com/zowe/zowe-cli/blob/master/docs/MaintainerVersioning.md) in the Zowe CLI repository.
 
 ### Clone zowe-cli-sample-plugin and build from source
 Clone the repository into your development folder to match the following structure:

@@ -195,7 +195,7 @@ zowe plugins uninstall [plugin]
 
     Specifies the name of the plug-in that you want to uninstall.
 
-The following table describes the uninstallation command synstax for each plug-in:
+The following table describes the uninstallation command syntax for each plug-in:
 
 
 | Plug-in | Installation Command Syntax |
