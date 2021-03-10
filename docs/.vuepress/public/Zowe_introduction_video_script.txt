@@ -1,0 +1,72 @@
+﻿
+Zowe is owned and managed by the Linux Foundation as part of the Open Mainframe Project. Its goal is to provide a platform for access to the mainframe using tools that are open, simple and familiar.
+
+Information about Zowe can be found at Zowe.org. This includes links to downloads, documentation, technical blogs, as well as GitHub repositories where all of Zowe's open source code is developed and maintained by its community of committers.
+
+Zowe is composed of four main components: a Command Line Interface, a Visual Studio Code extension known as Zowe Explorer, a web user interface accessible through a desktop browser, and a powerful API Mediation Layer. Let's look at each of these in more detail.
+
+The command line interface, or CLI, allows a user to issue commands from their PC to directly operate and monitor the mainframe. CLI commands are broken down into groups. 
+- The core set includes ones to work with data sets, where you can list data sets for a file, list the members of a PDS, download members to your PC, and submit job control language data sets to the JES queue.
+- The jobs group allows you to list jobs by prefix, owner or status, view a list of spool files, as well as content for an individual spool file.
+- With the Unix System Services view, you can create directories, upload files from your PC as well as you can issue Unix commands directly within USS.
+- Other core command groups allow you to issue TSO commands, create and manage workflows.
+
+Because the CLI is running on the user's laptop, it can be embedded and executed from other tools on the same machine such as those for DevOps, CICD pipelines, automation scripts and other scenarios where mainframe orchestration is required. This allows a developer familiar with their existing software suite to seamlessly use the Zowe CLI to perform mainframe tasks. All of this is done with encrypted communication using the laptop's native credential store.
+
+As well as core capabilities, Zowe CLI is built to be an extensible framework. This allows additional plugins to be installed, such as those for CICS, Db2 and other mainframe runtimes. This is done using an extensible API so that software vendors can build their own CLI plugins using these fully supported interfaces and extension points.
+
+The Zowe conformance program is a certification process that issues badges to extensions who are built, packaged and executed using these APIs. This ensures consistency of end user experience and compatibility between plugins. A number of extensions are already available from vendors including CA Endeavor, IBM z/OS Connect, Phoenix Software EJES, and more.
+
+The second component to look at is the Zowe Explorer, an extension to the popular Visual Studio Code Integrated Development Environment. With the Zowe Explorer installed from the marketplace, it can be launched from the Zowe icon in the VS Code sidebar.
+
+
+The Zowe Explorer has three navigator views for data sets, Unix System Services and Jobs. Let's have a quick look at each one.
+
+- For data sets, they can be filtered showing a tree view that allows you to expand into the members of the partitioned data sets, together with a pop-up menu of actions for create, rename, delete and more.
+- The menu for a PDS member allows you to submit it as a job which brings up a hyperlink with a job ID from which you can directly open its spool files.
+- The jobs navigator itself allows you to filter by Owner and Prefix, or Job ID. Jobs can be expanded to see their spool files which are opened in the editor area, allowing you to use VS Code features such as searching for strings or navigate the spool using the overview pane on the right hand side.
+- For Unix System Services, you can set a directory as a filter from which to navigate to let you expand into children directories, files, pop-up menu actions, and ability to upload files from the PC directly. And again you can open files in the editor area allowing you to make changes that get saved directly back to the mainframe.
+
+The Zowe Explorer is an example of where a user who is already familiar with VS Code is able to work with mainframe data directly from within their IDE. 
+- Viewing and editing files alongside other VS Code plugins such as rich language editors or debuggers and more
+- Creating a powerful modern extensible tools workbench to enhance their mainframe productivity experience
+
+The third component to look at is the Zowe Desktop, allowing access to mainframe data and services using nothing more than a standard web browser. 
+
+Users log in to the desktop with their TSO user ID and password. Once logged in, a flyout menu shows a list of all of the available applications. Frequently used ones can be pinned to the bottom taskbar, which includes a File Editor. This File Editor lets you navigate USS directories and files together with an editor pane that allows viewing and editing the content.
+
+Syntax highlighting is provided for a number of file types which auto detects based upon file extension but can also be manually selected to choose from a wide range of content types.
+
+The pop-up menu in the navigator tree has actions for cut, copy and paste, in-place rename, the ability to tag files as well as change ownership and permissions of files, directories including recursive updates as well as working with USS content. The navigator also allows you to work with data sets, filtering by high level qualifier showing data sets and their members also including syntax highlighting, the JCL, REXX, assembler and other traditional mainframe languages.
+
+As well as rich GUI apps, the Zowe desktop also includes more traditional mainframe interfaces such as its built-in 3270 emulator. From this you can work with TSO, ISFP, SDSF, RACF, and other familiar mainframe commands.
+
+Zowe desktop apps are opened side by side allowing you to perform mainframe tasks with your preferred tool of choice. Apps running in the desktop are actually connected to each other in a number of different ways. They work under the initial logon credentials so a user only has to sign on once to enter their password. This is also known as single sign-on which can operate with extended security processes such as multi-factor authentication or client-side x509 certificates. 
+
+Apps share these within the desktop and are able to register endpoints to communicate with each other, allowing a process called app to app communication and launching. App to app launching provides the ability for desktop plugins to notify each other, send requests, and interact with each other.  An example of this is the JES Explorer. On its own this can be used to filter and find jobs, look at their spool files and issue commands. Running on the Zowe desktop, it publishes endpoints for these services, which allows a scenario where users submit some JCL in the File Editor but then have the JES Explorer be opened in the context of that submitted job ID. This app to app communication in the desktop
+enhances the entire end user experience making it far greater than the sum of the parts of each individual app on its own, allowing a smooth transition and handoff of data and context with joined up tasks between individual plugins.
+
+Zowe desktop also includes a number of utilities. It can switch languages that will operate across all of the plugins supporting that language, change TSO user password for the user as well as personalization. It provides the ability to change the color theme, icon sizes for the desktop together with setting a custom background.
+
+Zowe desktop apps themselves aren't restricted to run as tiles. They can be opened in their own browser tab so they can be viewed like any other web page. A good use of this is for mainframers who are comfortable with 3270 interfaces. You can just launch the emulator in their own tab and access data without the need for any host emulation software on their laptop as it's just running through their PC's browser.
+
+A great way to think of the Zowe desktop and its apps is like a mobile phone. Both come with a great set of base software but also have the ability to be extended through marketplace extensions. Zowe desktop is no different. Extension plugins can be provided by software vendors or even customers themselves.
+
+The Zowe extender documentation provides open source samples of how to do this together with extensive SDK documentation.
+
+Software vendors can apply for a Zowe conformance badge to demonstrate their plugin is built to these defined APIs supporting interoperability and end user consistency. An example of apps that extend the Zowe desktop
+and have a conformance badge is a Rocket BlueZone web with Segus Engineering SQL Workload assistant for DB2.
+
+Underpinning Zowe's core capabilities is a powerful API Mediation Layer based on Netflix Zuul technology. This provides a catalog of API services on the mainframe allowing a user to actually browse and explore them as well as experiment with their capabilities in place viewing the query results.
+
+This actually allows developers and system programmers to write their own client applications sitting on top of this benefiting from its features such as single sign-on, high availability and more.
+
+The API Mediation Layer is the engine that provides all of these services, the sister components: the CLI,  the Zowe Explorer and the Zowe desktop.
+
+As you've seen, Zowe provides base capabilities in its core to allow mainframers from all generations to enjoy access to the platform to a wide number of form factors. At its heart are open source ideas to embrace API's extensibility plug-in based architecture, certification program for vendors. 
+
+More than the technology however, Zowe is a vibrant community with participation from many software vendors, customers, students, open source advocates, IT professionals from across the globe.
+
+If you'd like to join us, please visit zowe.org
+
+Thank you!

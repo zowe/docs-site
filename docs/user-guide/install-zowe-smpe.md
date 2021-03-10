@@ -578,8 +578,8 @@ The AZWE001.readme.txt file uploaded in the previous step holds a sample JCL to 
   newname="@PREFIX@.ZOWE.AZWE001.F1"/>
   <ARCHDEF archid="AZWE001.F2"
   newname="@PREFIX@.ZOWE.AZWE001.F2"/>
-  <ARCHDEV archid="AZWE001.F3"
-  nawname="@PREFIX@.ZOWE.AZWE001.F3"/>
+  <ARCHDEF archid="AZWE001.F3"
+  newname="@PREFIX@.ZOWE.AZWE001.F3"/>
   <ARCHDEF archid="AZWE001.F4"
   newname="@PREFIX@.ZOWE.AZWE001.F4"/>
   </GIMUNZIP>
