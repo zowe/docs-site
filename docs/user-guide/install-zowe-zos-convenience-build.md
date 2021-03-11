@@ -180,7 +180,7 @@ Perform the following steps to register and execute the Zowe runtime installatio
  4.	Enter the complete path to the workflow definition file in the **Workflow Definition field**.
     -  The path to the workflow definition file is `<extracted_pax_folder>/files/workflows/ZWEWRF04.xml file.`
  5. **(Optional)** Enter the path to the customized variable input file that you prepared in advance.
-    - The path to the variable input file is located is `<extracted_pax_folder>/files/workflows/ZWEWRF04.xml file.`
+    - The path to the variable input file is located is `<extracted_pax_folder>/files/workflows/ZWEWRF04.properties file.`
     - Create a copy of the variable input file. Modify the file as necessary according to the built-in comments. Set the field to the path where the new file is located. When you execute the workflow, the values from the variable input file override the workflow variables default values.
 7.	Select the system where you want to execute the workflow.
 8.	Select **Next**.
