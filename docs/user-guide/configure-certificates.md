@@ -2,11 +2,17 @@
 
 Zowe uses a certificate to encrypt data for communication across secure sockets. An instance of Zowe references a USS directory referred to as a **KEYSTORE_DIRECTORY** which contains information about where the certificate is located.
 
-Learn more about the key concepts of Zowe certificates in the following sections.
- 
+Learn more about the key concepts of Zowe certificates in the following sections:
+
+* [Nothbound Certificate](#northbound-certificate)
+* [Southbound Certificate](#southbound-certificate)
+* [Trust store](#trust-store)
+    * [Disable trust store validation of southbound certificates](disable-trust-store-validation-of-southbound-certificates)
+* [Certificates in the Zowe architecture](#certificates-in-the-zowe-architecture)
+* [Keystore versus key ring](#keystore-versus-key-ring)
 ## Northbound Certificate
 
-The API Mediation Layer uses the Zowe certificate on its northbound edge when identifying itself and encrypting `https://` traffic to web browsers or REST client applications.  If the Zowe Command Line Interface (CLI) is configured to use the Zowe API Mediation Layer, then the CLI is a client of the Zowe certificate. For more information, see [Using the Zowe Command Line Igitnterface, Integrating with the API Mediation Layer](./cli-usingcli.md#integrating-with-api-mediation-layer).
+The API Mediation Layer uses the Zowe certificate on its northbound edge when identifying itself and encrypting `https://` traffic to web browsers or REST client applications.  If the Zowe Command Line Interface (CLI) is configured to use the Zowe API Mediation Layer, then the CLI is a client of the Zowe certificate. For more information, see [Using the Zowe Command Line Interface, Integrating with the API Mediation Layer](./cli-usingcli.md#integrating-with-api-mediation-layer).
 
 ## Southbound Certificate
 
