@@ -35,7 +35,7 @@ where:
 
 - **`serviceId`** is a unique name of the service that is set during the installation of the service.
 
-The fundimental principle is that by changing the base URL you can access different services with the same API because the structure after the base URL is the same.
+The fundamental principle is that by changing the base URL you can access different services with the same API because the structure after the base URL is the same.
 
 The base URL is the parameter the can be set in Zowe CLI in order to access the service. The endpoint path is prepared by the Zowe CLI plug-in but the base URL needs to be provided by the user based on installation of the REST API service.
 

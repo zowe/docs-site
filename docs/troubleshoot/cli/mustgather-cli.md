@@ -81,7 +81,7 @@ Analyze these logs for any information relevant to your issue.
 
 ### Profile configuration
 
-The `profiles` folder stores connnection information.
+The `profiles` folder stores connection information.
 
 **Important\!** The profile directory might contain "sensitive" information, such as your mainframe password. You should obfuscate any sensitive references before providing configuration files.
 
