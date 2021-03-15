@@ -78,21 +78,15 @@ The following enhancements were added to the **IBM Db2 Plug-in**:
 The following enhancement was added to the **FTP Plug-in**:
 - Added allocate command to allocate sequential or partitioned dataset.
 
-
 #### Zowe Explorer
 
-- Added the monorepo landing Readme that contains the high-level overview of the repository folders such as `packages` folder, instructions on how to contribute to the project and links to Medium articles providing additional useful information about Zowe Explorer and Zowe. [#1199](https://github.com/zowe/vscode-extension-for-zowe/pull/1199)
-- Added the previously selected `RejectUnauthorized` value to the placeholder text of the entry field while updating an existing profile. In addition, the value is highlighted and shown at the top of the selection list [#1218](https://github.com/zowe/vscode-extension-for-zowe/pull/1218)
-- Added the pre-filled and pre-selected filename of the copied member to the entry field while performing the paste member action. [#1183](https://github.com/zowe/vscode-extension-for-zowe/pull/1183)
-- Added the multiple deletion of jobs feature. [#1128](https://github.com/zowe/vscode-extension-for-zowe/pull/1128)
-- Improved error handling for the data set copy/paste member, migrate, and recall functions. [#1219](https://github.com/zowe/vscode-extension-for-zowe/pull/1219)
-- Added the ability to edit data set attributes before allocation. [#1031](https://github.com/zowe/vscode-extension-for-zowe/issues/1031)
-- Allowed filtering of member names from the Data Sets search bar. [#868](https://github.com/zowe/vscode-extension-for-zowe/issues/868)
-- Reorganized the context menus and streamlined the visible icons. [#1052](https://github.com/zowe/vscode-extension-for-zowe/issues/1052)
-- Refactored refresh functions.
-- Updated FTP and API Readme documentation.
-- Added regression tests for profiles in Theia.
+- Added the monorepo landing Readme that contains the high-level overview of the repository folders such as `packages` folder, instructions on how to contribute to the project and links to Medium articles providing additional useful information about Zowe Explorer and Zowe [#1199](https://github.com/zowe/vscode-extension-for-zowe/pull/1199).
+- Added the previously selected `RejectUnauthorized` value to the placeholder text of the entry field while updating an existing profile. In addition, the value is highlighted and shown at the top of the selection list [#1218](https://github.com/zowe/vscode-extension-for-zowe/pull/1218).
+- Added the pre-filled and pre-selected filename of the copied member to the entry field while performing the paste member action [#1183](https://github.com/zowe/vscode-extension-for-zowe/pull/1183).
+- Added the multiple deletion of jobs feature [#1128](https://github.com/zowe/vscode-extension-for-zowe/pull/1128).
+- Improved error handling for the data set copy/paste member, migrate, and recall functions [#1219](https://github.com/zowe/vscode-extension-for-zowe/pull/1219).
 
+For more information about the Zowe Explorer release notes, see [Changelog](https://marketplace.visualstudio.com/items/Zowe.vscode-extension-for-zowe/changelog).
 ### Bug Fixes
 
 #### Zowe API Mediation Layer
@@ -118,18 +112,12 @@ The following bugs were fixed in the the **Secure Credential Store Plug-in**:
 - Provided additional instruction in readme for npm@7 users.
 
 #### Zowe Explorer
-- Fixed the issue that prevented the list of recently opened files from being displayed upon request. You can access a list of recently opened files by pressing the Ctrl+Alt+R (Windows) or Command+Option+R (Mac) key combination [#1208](https://github.com/zowe/vscode-extension-for-zowe/pull/#1208)
-- Fixed the issue that prevented file picker from functioning. The file picker feature lets you filter your datasets in the tree by pressing the Ctrl+Alt+P (Windows) or Command+Option+P (Mac) key combination [#992](https://github.com/zowe/vscode-extension-for-zowe/issues/992)
-- Fixed the issue that caused the content from a previously filtered USS directory instead of the currently filtered USS directory to be served [#1134](https://github.com/zowe/vscode-extension-for-zowe/issues/1134)
-- Fixed the issue that prevented edited profile base paths from being saved [#989](https://github.com/zowe/vscode-extension-for-zowe/issues/989)
-- Fixed the issue that prevented Zowe Explorer from storing empty values for optional profile fields, such as `user`, `password`, `timeout`, and `encoding`. This is done to be consistent with the way Zowe CLI stores profile information when creating and editing profiles [#1016](https://github.com/zowe/vscode-extension-for-zowe/issues/1016)
-- Fixed the issue that caused repeated credential prompting if a user refused to authenticate [#1147](https://github.com/zowe/vscode-extension-for-zowe/issues/1147)
-- Fixed the issue that caused removed favorite profiles to be favorited again in subsequent IDE sessions [#1144](https://github.com/zowe/vscode-extension-for-zowe/issues/1144)
-- Fixed the issue that prevented updated credential prompting from occurring when a profile was marked “invalid” [#1095](https://github.com/zowe/vscode-extension-for-zowe/issues/1095)
-- Fixed the messaging displayed when handling inactive profiles and when updating profiles [#1065](https://github.com/zowe/vscode-extension-for-zowe/issues/1065) [#1096](https://github.com/zowe/vscode-extension-for-zowe/issues/1096)
-- Fixed the issue causing tree restructure when renaming a USS file or directory [#757](https://github.com/zowe/vscode-extension-for-zowe/issues/757)
-- Fixed the issue preventing issuing of commands when using profiles with tokens [#1051](https://github.com/zowe/vscode-extension-for-zowe/issues/1051)
 
+- Fixed the issue that prevented the list of recently opened files from being displayed upon request. You can access a list of recently opened files by pressing the Ctrl+Alt+R (Windows) or Command+Option+R (Mac) key combination [#1208](https://github.com/zowe/vscode-extension-for-zowe/pull/#1208).
+- Fixed the issue that prevented file picker from functioning. The file picker feature lets you filter your datasets in the tree by pressing the Ctrl+Alt+P (Windows) or Command+Option+P (Mac) key combination [#992](https://github.com/zowe/vscode-extension-for-zowe/issues/992).
+- Fixed the issue that caused the content from a previously filtered USS directory instead of the currently filtered USS directory to be served [#1134](https://github.com/zowe/vscode-extension-for-zowe/issues/1134).
+
+For more information about the Zowe Explorer release notes, see [Changelog](https://marketplace.visualstudio.com/items/Zowe.vscode-extension-for-zowe/changelog).
 
 ## Version 1.19.1 LTS (February 2021)
 
