@@ -156,6 +156,13 @@ Follow these steps:
 
 - Verify if API Mediation Layer is started or not. If it's started, you should be able to see a service status page with all green check marks by visiting `https://<your-zowe-host>:<gateway-port>`. If there are any red cross marks, please following [Troubleshooting API ML](../troubleshoot-apiml.md) to identify and solve the issue.
 - You may need to wait a little longer to allow API Mediation Layer Gateway to complete it's environment test. This could be more noticeable with certain z/OSMF level and Zowe v1.20.0 release.
+- If extra waiting time does not solve the issue, will need to check your z/OSMF level. You can do this by logging into z/OSMF web portal, select "About z/OSMF" menu item, and read the z/OSMF level code at the bottom of the page. We found if your z/OSMF level is `PH18776P` or `PH30398P`, you may need to adjust how Gateway verifying z/OSMF by adding this line to you `<instance-dir>/instance.env`. If there are more z/OSMF versions are affected, please contact us.
+
+  ```
+  APIML_SECURITY_ZOSMF_JWT_AUTOCONFIGURATION_MODE=LTPA
+  ```
+  
+  Restart Zowe `ZWESVSTC` address space after this change.
 
 
 ## Server startup problem ret=1115
