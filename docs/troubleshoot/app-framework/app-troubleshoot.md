@@ -45,7 +45,7 @@ This error may simply mean your password is not correct. If that's not the case,
 
 For the Zowe Desktop to work, the node server that runs under the ZWESVSTC started task must be able to make cross memory calls to the ZWESIS01 load module running under the ZWESISTC started task. If this communication fails, you see the authentication error.  
 
-There are three known problems that might cause this error.  The [Zowe architecture diagram](../../getting-started/zowe-architecture.md) shows the following connections. One of these three connections likely failed. 
+There are theree known problems that might cause this error.  The [Zowe architecture diagram](../../getting-started/zowe-architecture.md) shows the following connections. One of these three connections likely failed. 
 
 1. The zssServer connection to the `ZWESISTC` started task using cross memory communication. If this fails, see [zssServer unable to communicate with X-MEM](#zss-server-unable-to-communicate-with-x-mem).  The architecture diagram below has been annotated with a (1) to show this connection.
 2. The Zowe Desktop ZLUX server connection to the zssServer across the default port 8542. If this fails, see [ZLUX unable to communicate with zssServer](#zlux-unable-to-communicate-with-zssserver).  The architecture diagram below has been annotated with a (2) to show this connection.  
@@ -149,12 +149,14 @@ Follow these steps:
 
 - Restart the `ZWESVSTC` address space.
 
+
 ### ZLUX unable to communicate with API Mediation Layer
 
 Follow these steps:
 
 - Verify if API Mediation Layer is started or not. If it's started, you should be able to see a service status page with all green check marks by visiting `https://<your-zowe-host>:<gateway-port>`. If there are any red cross marks, please following [Troubleshooting API ML](../troubleshoot-apiml.md) to identify and solve the issue.
 - You may need to wait a little longer to allow API Mediation Layer Gateway to complete it's environment test. This could be more noticeable with certain z/OSMF level and Zowe v1.20.0 release.
+
 
 ## Server startup problem ret=1115
 
