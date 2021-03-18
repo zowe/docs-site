@@ -154,8 +154,8 @@ Follow these steps:
 
 Follow these steps:
 
-- Verify if API Mediation Layer is started or not. If it's started, you should be able to see a service status page with all green check marks by visiting `https://<your-zowe-host>:<gateway-port>`. If there are any red cross marks, please following [Troubleshooting API ML](../troubleshoot-apiml.md) to identify and solve the issue.
-- You may need to wait a little longer to allow API Mediation Layer Gateway to complete it's environment test. This could be more noticeable with certain z/OSMF level and Zowe v1.20.0 release.
+- Verify whether API Mediation Layer is started or not. If it is started, you can see a service status page with all green check marks by visiting `https://<your-zowe-host>:<gateway-port>`. If there are any red cross marks, follow the instructions in [Troubleshooting API ML](../troubleshoot-apiml.md) to identify and solve the issue.
+- You may need to wait a little longer to allow API Mediation Layer Gateway to complete the environment test. This could be more noticeable with certain z/OSMF level and Zowe v1.20.0 release and later.
 
 
 ## Server startup problem ret=1115
