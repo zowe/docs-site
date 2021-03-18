@@ -141,7 +141,7 @@ The API ML TLS requires servers to provide HTTPS ports. Each API ML service has 
 
     - The API Gateway handles authentication
     - There are two authentication endpoints that allow to authenticate the resource by providers
-    - Diagnostic endpoints `https://localhost:10010/application/**` in API Gateway are protected by basic authentication or Zowe JWT token
+    - Diagnostic endpoints `https://{gatewayUrl}:{gatewayPort}/application/**` in API Gateway are protected by basic authentication or Zowe JWT token
 
 - **API Catalog**
 
@@ -153,7 +153,7 @@ The API ML TLS requires servers to provide HTTPS ports. Each API ML service has 
     - Discovery Service is accessed by API Services
     - This access (reading information and registration) requires protection needs by a client certificate
     - (Optional) Access can be granted to users (administrators)
-    - Diagnostic endpoints `https://localhost:10010/application/**` in Discovery Service are protected by basic authentication or Zowe JWT token
+    - Diagnostic endpoints `https://{gatewayUrl}:{gatewayPort}/application/**` in Discovery Service are protected by basic authentication or Zowe JWT token
 
 - **API Services**
 
@@ -167,10 +167,10 @@ The API Gateway contains two REST API authentication endpoints:
 
   * `auth/login`
   
-    The full path of the `auth/login` endpoint appears as `https://localhost:10010/gateway/api/v1/auth/login` (preferred option) or `https://localhost:10010/api/v1/gateway/auth/login`.   
+    The full path of the `auth/login` endpoint appears as `https://{gatewayUrl}:{gatewayPort}/gateway/api/v1/auth/login` (preferred option) or `https://{gatewayUrl}:{gatewayPort}/api/v1/gateway/auth/login`.   
   * `auth/query`
   
-    The full path of the `auth/query` endpoint appear as `https://localhost:10010/gateway/api/v1/auth/query` (preferred option) or `https://localhost:10010/api/v1/gatewayauth/query`. 
+    The full path of the `auth/query` endpoint appear as `https://{gatewayUrl}:{gatewayPort}/gateway/api/v1/auth/query` (preferred option) or `https://{gatewayUrl}:{gatewayPort}/api/v1/gatewayauth/query`. 
     
     
 The `auth/login` endpoint authenticates mainframe user credentials and returns an authentication token. The login request requires user credentials though one of the following methods:
@@ -187,7 +187,7 @@ The query request requires the token through one of the following methods:
 
 When authentication is successful, the response to the request is a JSON object which contains information associated with the token. When authentication fails, the user receives a 401 status code.
 
-The `auth/ticket` endpoint generates a PassTicket for the user associated with a token. The full path of the `auth/ticket` endpoint appears as `https://localhost:10010/gateway/api/v1/auth/ticket` (preferred option) or `https://localhost:10010/api/v1/gateway/auth/ticket`.`
+The `auth/ticket` endpoint generates a PassTicket for the user associated with a token. The full path of the `auth/ticket` endpoint appears as https://{gatewayUrl}:{gatewayPort}/gateway/api/v1/auth/ticket` (preferred option) or `https://{gatewayUrl}:{gatewayPort}/api/v1/gateway/auth/ticket`.`
 
 This endpoint is protected by a client certificate.
 The ticket request requires the token in one of the following formats:
