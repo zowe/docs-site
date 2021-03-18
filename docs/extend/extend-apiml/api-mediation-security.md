@@ -170,7 +170,7 @@ The API Gateway contains two REST API authentication endpoints:
     The full path of the `auth/login` endpoint appears as `https://{gatewayUrl}:{gatewayPort}/gateway/api/v1/auth/login` (preferred option) or `https://{gatewayUrl}:{gatewayPort}/api/v1/gateway/auth/login`.   
   * `auth/query`
   
-    The full path of the `auth/query` endpoint appear as `https://{gatewayUrl}:{gatewayPort}/gateway/api/v1/auth/query` (preferred option) or `https://{gatewayUrl}:{gatewayPort}/api/v1/gatewayauth/query`. 
+    The full path of the `auth/query` endpoint appear as `https://{gatewayUrl}:{gatewayPort}/gateway/api/v1/auth/query` (preferred option) or `https://{gatewayUrl}:{gatewayPort}/api/v1/gateway/auth/query`. 
     
     
 The `auth/login` endpoint authenticates mainframe user credentials and returns an authentication token. The login request requires user credentials though one of the following methods:
