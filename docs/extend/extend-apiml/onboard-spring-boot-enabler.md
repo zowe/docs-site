@@ -294,12 +294,12 @@ apiml:
             applid: ZOWEAPPL
 
         apiInfo:
-            -   apiId: org.zowe.sampleservice
+            -   apiId: zowe.apiml.sampleservice
                 version: 1.0.0
                 gatewayUrl: api/v1
                 swaggerUrl: ${apiml.service.scheme}://${apiml.service.hostname}:${apiml.service.port}${apiml.service.contextPath}/api-doc
                 documentationUrl: https://www.zowe.org
-            -   apiId: org.zowe.sampleservice
+            -   apiId: zowe.apiml.sampleservice
                 version: 2.0.0
                 gatewayUrl: api/v2
                 swaggerUrl: ${apiml.service.scheme}://${apiml.service.hostname}:${apiml.service.port}${apiml.service.contextPath}/api-doc?group=apiv2
@@ -507,7 +507,7 @@ see [Springfox documentation](https://springfox.github.io/springfox/docs/snapsho
 Once you build and start your service successfully, you can use the option of validating that your service is registered correctly with the API ML Discovery Service.
 
 **Follow these steps:**
-  1. [Validate successful onboarding](./onboard-overview.md#validating-successful-onboarding)
+  1. [Validate successful onboarding](./onboard-overview.md#verify-successful-onboarding-to-the-api-ml)
  
   2. Check that you can access your API service endpoints through the Gateway.
 
