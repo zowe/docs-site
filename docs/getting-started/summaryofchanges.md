@@ -33,10 +33,6 @@ Zowe Version 1.20 and earlier releases include the following enhancements, relea
 
 ## Version 1.20.0 LTS (March 2021)
 
-### Notable changes 
-
-
-
 ### New features and enhancements
 
 #### Zowe API Mediation Layer
