@@ -147,7 +147,7 @@ At registration time, provide metadata in the following format. Metadata paramet
       <apiml.routes.ws__v1.serviceUrl>/sampleclient/ws</apiml.routes.ws__v1.serviceUrl>
       <apiml.authentication.scheme>httpBasicPassTicket</apiml.authentication.scheme>
       <apiml.authentication.applid>ZOWEAPPL</apiml.authentication.applid>
-      <apiml.apiInfo.0.apiId>org.zowe.sampleclient</apiml.apiInfo.0.apiId>
+      <apiml.apiInfo.0.apiId>zowe.apiml.sampleclient</apiml.apiInfo.0.apiId>
       <apiml.apiInfo.0.swaggerUrl>https://hostname/sampleclient/api-doc</apiml.apiInfo.0.swaggerUrl>
       <apiml.apiInfo.0.gatewayUrl>api/v1</apiml.apiInfo.0.gatewayUrl>
       <apiml.apiInfo.0.documentationUrl>https://www.zowe.org</apiml.apiInfo.0.documentationUrl>
@@ -361,7 +361,7 @@ The following parameters provide the information properties of a single API:
 In the following example, `0` represents the `api-index`.
 
 ```
-<apiml.apiInfo.0.apiId>org.zowe.sampleclient</apiml.apiInfo.0.apiId>
+<apiml.apiInfo.0.apiId>zowe.apiml.sampleclient</apiml.apiInfo.0.apiId>
 <apiml.apiInfo.0.swaggerUrl>https://hostname/sampleclient/api-doc</apiml.apiInfo.0.swaggerUrl>
 <apiml.apiInfo.0.gatewayUrl>api/v1</apiml.apiInfo.0.gatewayUrl>
 <apiml.apiInfo.0.documentationUrl>https://www.zowe.org</apiml.apiInfo.0.documentationUrl>
@@ -383,7 +383,7 @@ If the server does not receive a renewal in 90 seconds, it removes the instance 
 Ensure that you successfully onboarded a service with the API Mediation Layer. 
 
 **Follow these steps:**
-  1. [Validate successful onboarding](./onboard-overview.md#validating-successful-onboarding)
+  1. [Validate successful onboarding](./onboard-overview.md#verify-successful-onboarding-to-the-api-ml)
  
   2. Check that you can access your API service endpoints through the Gateway.
 
