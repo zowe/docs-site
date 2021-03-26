@@ -825,7 +825,7 @@ The following error message codes may appear on logs or API responses. Use the f
 
 ### ZWEAG705E
 
-  Failed to load public or private key from key with alias '%s' in the keystore '%s'.
+  Failed to load public or private key from key with alias '%s' in the keystore '%s'. Gateway is shutting down.
 
   **Reason:**
 
