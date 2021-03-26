@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>zos-extended-files copy data-set</title>
+<link rel="stylesheet" href="../css/bundle-docs.css">
+<link rel="stylesheet" href="../css/docs.css">
+<article class="markdown-body">
+<h2><a href="zowe.html">zowe</a> › <a href="zowe_zos-extended-files.html">zos-extended-files</a> › <a href="zowe_zos-extended-files_copy.html">copy</a> › <a href="zowe_zos-extended-files_copy_data-set.html">data-set</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
+<p>Copy the data set contents from one location to another.</p>
+<h4>Usage</h4>
+<p>zowe  zos-extended-files copy data-set &lt;fromDataSetName&gt; &lt;toDataSetName&gt; [options]</p>
+<h4>Positional Arguments</h4>
+<ul>
+<li>
+<p><code>fromDataSetName</code>		 <em>(string)</em></p>
+<ul>
+<li>The source data set.</li>
+</ul>
+</li>
+<li>
+<p><code>toDataSetName</code>		 <em>(string)</em></p>
+<ul>
+<li>The target data set.</li>
+</ul>
+</li>
+</ul>
+<h4>Options</h4>
+<ul>
+<li>
+<p><code>--replace</code>  | <code>--overwrite</code> | <code>--ow</code> <em>(boolean)</em></p>
+<ul>
+<li>Specifies whether a record in the source cluster is to replace a record in the
+target cluster.</li>
+</ul>
+</li>
+<li>
+<p><code>--error-limit</code>  | <code>--el</code> <em>(number)</em></p>
+<ul>
+<li>Specify a failure limit. Use this parameter to set a limit to the number of
+errors tolerated by this operation.</li>
+</ul>
+</li>
+<li>
+<p><code>--skip</code>  <em>(number)</em></p>
+<ul>
+<li>Specifies the number of logical records to skip before beginning to copy
+records.</li>
+</ul>
+</li>
+<li>
+<p><code>--count</code>  <em>(number)</em></p>
+<ul>
+<li>Specifies the number of logical records you want to copy.</li>
+</ul>
+</li>
+<li>
+<p><code>--only-print-statements</code>  | <code>--print-only</code> | <code>--print</code> <em>(boolean)</em></p>
+<ul>
+<li>Only prints the statements/commands and does not execute them.</li>
+</ul>
+</li>
+</ul>
+<h4>advanced options</h4>
+<ul>
+<li>
+<p><code>--double-byte-character-set</code>  | <code>--dbcs</code> <em>(boolean)</em></p>
+<ul>
+<li>Specifies that bytes in the logical record contain Double-Byte Character Set
+(DBCS) characters.</li>
+</ul>
+</li>
+<li>
+<p><code>--mergecat</code>  | <code>--mrgc</code> <em>(boolean)</em></p>
+<ul>
+<li>Specifies whether entries from the source catalog should be merged with the
+entries in the target catalog.</li>
+</ul>
+</li>
+<li>
+<p><code>--catalog-entries</code>  | <code>--entries</code> | <code>--ce</code> <em>(array)</em></p>
+<ul>
+<li>Specifies the name or generic name of each entry to merge.</li>
+</ul>
+</li>
+<li>
+<p><code>--qualification-level</code>  | <code>--level</code> | <code>--ql</code> <em>(string)</em></p>
+<ul>
+<li>Specifies that all entries that match this qualification level should be merged
+regardless of the number of additional qualifiers.</li>
+</ul>
+</li>
+<li>
+<p><code>--starting-key</code>  | <code>--from-key</code> <em>(string)</em></p>
+<ul>
+<li>Specifies the key of the first record you want to copy.</li>
+</ul>
+</li>
+<li>
+<p><code>--starting-address</code>  | <code>--from-address</code> <em>(string)</em></p>
+<ul>
+<li>Specifies the relative byte address (RBA) of the first record you want to copy.</li>
+</ul>
+</li>
+<li>
+<p><code>--starting-number</code>  | <code>--from-number</code> <em>(string)</em></p>
+<ul>
+<li>Specifies the relative record number of the first record you want to copy.</li>
+</ul>
+</li>
+<li>
+<p><code>--ending-key</code>  | <code>--to-key</code> <em>(string)</em></p>
+<ul>
+<li>Specifies the key of the last record you want to copy.</li>
+</ul>
+</li>
+<li>
+<p><code>--ending-address</code>  | <code>--to-address</code> <em>(string)</em></p>
+<ul>
+<li>Specifies the relative byte address (RBA) of the last record you want to copy.</li>
+</ul>
+</li>
+<li>
+<p><code>--ending-number</code>  | <code>--to-number</code> <em>(string)</em></p>
+<ul>
+<li>Specifies the relative record number of the last record you want to copy.</li>
+</ul>
+</li>
+</ul>
+<h4>Profile Options</h4>
+<ul>
+<li>
+<p><code>--zosmf-profile</code>  | <code>--zosmf-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (zosmf) profile to load for this command execution.</li>
+</ul>
+</li>
+<li>
+<p><code>--base-profile</code>  | <code>--base-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (base) profile to load for this command execution.</li>
+</ul>
+</li>
+</ul>
+<h4>Base Connection Options</h4>
+<ul>
+<li>
+<p><code>--host</code>  | <code>-H</code> <em>(string)</em></p>
+<ul>
+<li>Host name of service on the mainframe.</li>
+</ul>
+</li>
+<li>
+<p><code>--port</code>  | <code>-P</code> <em>(number)</em></p>
+<ul>
+<li>Port number of service on the mainframe.</li>
+</ul>
+</li>
+<li>
+<p><code>--user</code>  | <code>-u</code> <em>(string)</em></p>
+<ul>
+<li>User name to authenticate to service on the mainframe.</li>
+</ul>
+</li>
+<li>
+<p><code>--password</code>  | <code>--pass</code> | <code>--pw</code> <em>(string)</em></p>
+<ul>
+<li>Password to authenticate to service on the mainframe.</li>
+</ul>
+</li>
+<li>
+<p><code>--reject-unauthorized</code>  | <code>--ru</code> <em>(boolean)</em></p>
+<ul>
+<li>
+<p>Reject self-signed certificates.</p>
+<p>Default value: true</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--token-type</code>  | <code>--tt</code> <em>(string)</em></p>
+<ul>
+<li>The type of token to get and use for the API. Omit this option to use the
+default token type, which is provided by 'zowe auth login'.</li>
+</ul>
+</li>
+<li>
+<p><code>--token-value</code>  | <code>--tv</code> <em>(string)</em></p>
+<ul>
+<li>The value of the token to pass to the API.</li>
+</ul>
+</li>
+</ul>
+<h4>Examples</h4>
+<ul>
+<li>
+<p>Copy a VSAM data set named 'TEST.AAA' to 'TEST.BBB':</p>
+<ul>
+<li><code>zowe  zos-extended-files copy data-set &quot;TEST.AAA&quot; &quot;TEST.BBB&quot;</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  zos-extended-files copy data-set &quot;TEST.AAA&quot; &quot;TEST.BBB&quot;">Copy</button></li>
+</ul>
+</li>
+<li>
+<p>Copy a VSAM data set named 'TEST.AAA' that contains DBCS
+characters to 'TEST.BBB':</p>
+<ul>
+<li><code>zowe  zos-extended-files copy data-set &quot;TEST.AAA&quot; &quot;TEST.BBB&quot; --double-byte-character-set</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  zos-extended-files copy data-set &quot;TEST.AAA&quot; &quot;TEST.BBB&quot; --double-byte-character-set">Copy</button></li>
+</ul>
+</li>
+<li>
+<p>Merge an Integrated Catalog Facility (ICF) user catalog
+'TEST.AAA' into another ICF User Catalog 'TEST.BBB':</p>
+<ul>
+<li><code>zowe  zos-extended-files copy data-set &quot;TEST.AAA&quot; &quot;TEST.BBB&quot; --mergecat</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  zos-extended-files copy data-set &quot;TEST.AAA&quot; &quot;TEST.BBB&quot; --mergecat">Copy</button></li>
+</ul>
+</li>
+<li>
+<p>Copy a VSAM data set named 'TEST.AAA' to 'TEST.BBB' and
+merge all entries that match 'A.<em>.B' and 'B.</em>.C':</p>
+<ul>
+<li><code>zowe  zos-extended-files copy data-set &quot;TEST.AAA&quot; &quot;TEST.BBB&quot; --mergecat --catalog-entries &quot;A.*.B&quot; &quot;B.*.C&quot;</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  zos-extended-files copy data-set &quot;TEST.AAA&quot; &quot;TEST.BBB&quot; --mergecat --catalog-entries &quot;A.*.B&quot; &quot;B.*.C&quot;">Copy</button></li>
+</ul>
+</li>
+<li>
+<p>Copy a VSAM data set named 'TEST.AAA' to 'TEST.BBB' and
+merge all entries with a qualification level equal to 'A.*.B':</p>
+<ul>
+<li><code>zowe  zos-extended-files copy data-set &quot;TEST.AAA&quot; &quot;TEST.BBB&quot; --mergecat --qualification-level &quot;A.*.B&quot;</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  zos-extended-files copy data-set &quot;TEST.AAA&quot; &quot;TEST.BBB&quot; --mergecat --qualification-level &quot;A.*.B&quot;">Copy</button></li>
+</ul>
+</li>
+<li>
+<p>Copy a VSAM data set named 'TEST.AAA' to 'TEST.BBB' and
+replace any matching records:</p>
+<ul>
+<li><code>zowe  zos-extended-files copy data-set &quot;TEST.AAA&quot; &quot;TEST.BBB&quot; --replace</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  zos-extended-files copy data-set &quot;TEST.AAA&quot; &quot;TEST.BBB&quot; --replace">Copy</button></li>
+</ul>
+</li>
+<li>
+<p>Copy a VSAM data set named 'TEST.AAA' to 'TEST.BBB' with an
+error limit of 1:</p>
+<ul>
+<li><code>zowe  zos-extended-files copy data-set &quot;TEST.AAA&quot; &quot;TEST.BBB&quot; --error-limit 1</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  zos-extended-files copy data-set &quot;TEST.AAA&quot; &quot;TEST.BBB&quot; --error-limit 1">Copy</button></li>
+</ul>
+</li>
+<li>
+<p>Copy a VSAM data set named 'TEST.AAA' to 'TEST.BBB' and skip
+the first record:</p>
+<ul>
+<li><code>zowe  zos-extended-files copy data-set &quot;TEST.AAA&quot; &quot;TEST.BBB&quot; --skip 1</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  zos-extended-files copy data-set &quot;TEST.AAA&quot; &quot;TEST.BBB&quot; --skip 1">Copy</button></li>
+</ul>
+</li>
+<li>
+<p>Copy a VSAM data set named 'TEST.AAA' to 'TEST.BBB' up to
+the 5th record:</p>
+<ul>
+<li><code>zowe  zos-extended-files copy data-set &quot;TEST.AAA&quot; &quot;TEST.BBB&quot; --count 5</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  zos-extended-files copy data-set &quot;TEST.AAA&quot; &quot;TEST.BBB&quot; --count 5">Copy</button></li>
+</ul>
+</li>
+<li>
+<p>Copy a VSAM data set named 'TEST.AAA' to 'TEST.BBB' starting
+from key '01' and ending in key '03':</p>
+<ul>
+<li><code>zowe  zos-extended-files copy data-set &quot;TEST.AAA&quot; &quot;TEST.BBB&quot; --starting-key &quot;01&quot; --ending-key &quot;03&quot;</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  zos-extended-files copy data-set &quot;TEST.AAA&quot; &quot;TEST.BBB&quot; --starting-key &quot;01&quot; --ending-key &quot;03&quot;">Copy</button></li>
+</ul>
+</li>
+<li>
+<p>Copy a VSAM data set named 'TEST.AAA' to 'TEST.BBB' starting
+from address '01' and ending in address '03':</p>
+<ul>
+<li><code>zowe  zos-extended-files copy data-set &quot;TEST.AAA&quot; &quot;TEST.BBB&quot; --starting-address &quot;01&quot; --ending-address &quot;03&quot;</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  zos-extended-files copy data-set &quot;TEST.AAA&quot; &quot;TEST.BBB&quot; --starting-address &quot;01&quot; --ending-address &quot;03&quot;">Copy</button></li>
+</ul>
+</li>
+<li>
+<p>Copy a VSAM data set named 'TEST.AAA' to 'TEST.BBB' starting
+from number '01' ending in number '03':</p>
+<ul>
+<li><code>zowe  zos-extended-files copy data-set &quot;TEST.AAA&quot; &quot;TEST.BBB&quot; --starting-number &quot;01&quot; --ending-number &quot;03&quot;</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  zos-extended-files copy data-set &quot;TEST.AAA&quot; &quot;TEST.BBB&quot; --starting-number &quot;01&quot; --ending-number &quot;03&quot;">Copy</button></li>
+</ul>
+</li>
+<li>
+<p>Copy the content of a sequential data set named
+'TEST.SEQ.AAA' to sequential dataset named 'TEST.SEQ.BBB':</p>
+<ul>
+<li><code>zowe  zos-extended-files copy data-set &quot;TEST.SEQ.AAA&quot; &quot;TEST.SEQ.BBB&quot;</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  zos-extended-files copy data-set &quot;TEST.SEQ.AAA&quot; &quot;TEST.SEQ.BBB&quot;">Copy</button></li>
+</ul>
+</li>
+<li>
+<p>Copy the content of a sequential data set named
+'TEST.SEQ.AAA' to member named 'TESTMBR' of partitioned dataset named
+'TEST.PDS.AAA':</p>
+<ul>
+<li><code>zowe  zos-extended-files copy data-set &quot;TEST.SEQ.AAA&quot; &quot;TEST.PDS.AAA(TESTMBR)&quot;</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  zos-extended-files copy data-set &quot;TEST.SEQ.AAA&quot; &quot;TEST.PDS.AAA(TESTMBR)&quot;">Copy</button></li>
+</ul>
+</li>
+<li>
+<p>Copy the content of a member named 'TESTMBR' of partitioned
+dataset named 'TEST.PDS.AAA' to member named 'TESTMBR' of partitioned dataset
+named 'TEST.PDS.BBB':</p>
+<ul>
+<li><code>zowe  zos-extended-files copy data-set &quot;TEST.PDS.AAA(TESTMBR)&quot; &quot;TEST.PDS.BBB(TESTMBR)&quot;</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  zos-extended-files copy data-set &quot;TEST.PDS.AAA(TESTMBR)&quot; &quot;TEST.PDS.BBB(TESTMBR)&quot;">Copy</button></li>
+</ul>
+</li>
+</ul>
+</article>
+<script src="../js/bundle-docs.js"></script>
+<script src="../js/docs.js"></script>

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>zos-extended-jobs submit stdin</title>
+<link rel="stylesheet" href="../css/bundle-docs.css">
+<link rel="stylesheet" href="../css/docs.css">
+<article class="markdown-body">
+<h2><a href="zowe.html">zowe</a> › <a href="zowe_zos-extended-jobs.html">zos-extended-jobs</a> › <a href="zowe_zos-extended-jobs_submit.html">submit</a> › <a href="zowe_zos-extended-jobs_submit_stdin.html">stdin</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
+<p>Pipe JCL through stdin and submit it as a batch job The command presents errors
+verbatim from the z/OSMF Jobs REST endpoints. For more information about z/OSMF
+Jobs API errors, see the z/OSMF Jobs API REST documentation.</p>
+<h4>Usage</h4>
+<p>zowe  zos-extended-jobs submit stdin [options]</p>
+<h4>Options</h4>
+<ul>
+<li>
+<p><code>--view-all-spool-content</code>  | <code>--vasc</code> <em>(boolean)</em></p>
+<ul>
+<li>Print all spool output.</li>
+</ul>
+</li>
+<li>
+<p><code>--directory</code>  | <code>-d</code> <em>(string)</em></p>
+<ul>
+<li>The local directory you would like to download the output of the job. Creates a
+subdirectory using the jobID as the name and files are titled based on DD
+names. If you use this option you will wait the job to complete.</li>
+</ul>
+</li>
+<li>
+<p><code>--extension</code>  | <code>-e</code> <em>(string)</em></p>
+<ul>
+<li>A file extension to save the job output with. Default is '.txt'.</li>
+</ul>
+</li>
+</ul>
+<h4>Profile Options</h4>
+<ul>
+<li>
+<p><code>--zosmf-profile</code>  | <code>--zosmf-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (zosmf) profile to load for this command execution.</li>
+</ul>
+</li>
+<li>
+<p><code>--base-profile</code>  | <code>--base-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (base) profile to load for this command execution.</li>
+</ul>
+</li>
+</ul>
+<h4>Base Connection Options</h4>
+<ul>
+<li>
+<p><code>--host</code>  | <code>-H</code> <em>(string)</em></p>
+<ul>
+<li>Host name of service on the mainframe.</li>
+</ul>
+</li>
+<li>
+<p><code>--port</code>  | <code>-P</code> <em>(number)</em></p>
+<ul>
+<li>Port number of service on the mainframe.</li>
+</ul>
+</li>
+<li>
+<p><code>--user</code>  | <code>-u</code> <em>(string)</em></p>
+<ul>
+<li>User name to authenticate to service on the mainframe.</li>
+</ul>
+</li>
+<li>
+<p><code>--password</code>  | <code>--pass</code> | <code>--pw</code> <em>(string)</em></p>
+<ul>
+<li>Password to authenticate to service on the mainframe.</li>
+</ul>
+</li>
+<li>
+<p><code>--reject-unauthorized</code>  | <code>--ru</code> <em>(boolean)</em></p>
+<ul>
+<li>
+<p>Reject self-signed certificates.</p>
+<p>Default value: true</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--token-type</code>  | <code>--tt</code> <em>(string)</em></p>
+<ul>
+<li>The type of token to get and use for the API. Omit this option to use the
+default token type, which is provided by 'zowe auth login'.</li>
+</ul>
+</li>
+<li>
+<p><code>--token-value</code>  | <code>--tv</code> <em>(string)</em></p>
+<ul>
+<li>The value of the token to pass to the API.</li>
+</ul>
+</li>
+</ul>
+<h4>Examples</h4>
+<ul>
+<li>
+<p>Submit a job from stdin:</p>
+<ul>
+<li><code>zowe  zos-extended-jobs submit stdin &amp;lt; my_local_file_to_pipe.txt</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  zos-extended-jobs submit stdin &amp;lt; my_local_file_to_pipe.txt">Copy</button></li>
+</ul>
+</li>
+</ul>
+</article>
+<script src="../js/bundle-docs.js"></script>
+<script src="../js/docs.js"></script>
