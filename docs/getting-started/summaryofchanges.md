@@ -4,6 +4,7 @@ Learn about what is new, changed, or removed in Zowe&trade;.
 
 Zowe Version 1.20 and earlier releases include the following enhancements, release by release.
 
+- [Version 1.20.1 LTS (March 2021)](#version-1-20-1-lts-march-2021)
 - [Version 1.20.0 LTS (March 2021)](#version-1-20-0-lts-march-2021)
 - [Version 1.19.1 LTS (February 2021)](#version-1-19-1-lts-february-2021)
 - [Version 1.19.0 LTS (February 2021)](#version-1-19-0-lts-february-2021)
@@ -30,6 +31,14 @@ Zowe Version 1.20 and earlier releases include the following enhancements, relea
 - [Version 1.1.0 (April 2019)](#version-1-1-0-april-2019)
 - [Version 1.0.1 (March 2019)](#version-1-0-1-march-2019)
 - [Version 1.0.0 (February 2019)](#version-1-0-0-february-2019)
+
+## Version 1.20.1 LTS (March 2021)
+
+### Bug fixes
+
+#### Zowe Installation and Configuration
+
+- Fixed an issue when importing external certificate authorities. [#2032](https://github.com/zowe/zowe-install-packaging/issues/2032)
 
 ## Version 1.20.0 LTS (March 2021)
 
