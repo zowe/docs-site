@@ -99,11 +99,11 @@ Use the following procedure to enable the feature to use a client certificate as
      When z/OSMF is used as an authentication provider, provide a valid `APPLID` to allow for client certificate authentication. The API ML generates a passticket for the specified `APPLID` and subsequently uses this passticket to authenticate to z/OSMF. The default value in the installation of z/OSMF is `IZUDFLT`.
   
 
-**Note:** The following steps are only required if the ZSS hostname or default Zowe runtime userId are altered:
+**Note:** The following properties are only required to be changed if the ZSS hostname or default Zowe runtime userId are altered:
 
-  * **APIML_GATEWAY_EXTERNAL_MAPPER**
+  * **APIML_GATEWAY_EXTERNAL_MAPPER** 
 
-    The API Mediation Gateway uses an external API to map a certificate to the owner in SAF. This property informs the Gateway about the location of this API. ZSS is the API provider in Zowe. Provide the correct URL if you customize zss parameters, otherwise default value is:
+    The API Mediation Gateway uses an external API to map a certificate to the owner in SAF. This property informs the Gateway about the location of this API. ZSS is the API provider in Zowe. Provide the correct URL if you customize ZSS parameters, otherwise default value is:
 
     ```
     https://${ZOWE_EXPLORER_HOST}:${GATEWAY_PORT}/zss/api/v1/certificate/x509/map
@@ -111,9 +111,11 @@ Use the following procedure to enable the feature to use a client certificate as
 
   * **APIML_GATEWAY_MAPPER_USER**
 
-    To authenticate to the mapping API, a JWT token is sent with the request. The token represents the user that is configured with this property. The user authorization is required to use the `IRR.RUSERMAP` resource within the `FACILITY` class. The default value is `ZWESVUSR`. Permissions are set up during installation with the `ZWESECUR` JCL or workflow.
+    To authenticate to the mapping API, a JWT is sent with the request. The token represents the user that is configured with this property. The user authorization is required to use the `IRR.RUSERMAP` resource within the `FACILITY` class. The default value is `ZWESVUSR`. Permissions are set up during installation with the `ZWESECUR` JCL or workflow.
     
-         If you have customized the `ZWESECUR` JCL or workflow (`// SET ZOWEUSER=ZWESVUSR * userid for Zowe started task`) and changed the default USERID, you have to create `APIML_GATEWAY_MAPPER_USER` property and set to correct value, by adding new line like the following example:
+         If you customized the `ZWESECUR` JCL or workflow (`// SET ZOWEUSER=ZWESVUSR * userid for Zowe started task`) and changed the default USERID, create the `APIML_GATEWAY_MAPPER_USER` property and set the value by adding a new line as in the following example:
+
+**Example:**
 
     ```
     APIML_GATEWAY_MAPPER_USER=yournewuserid  
