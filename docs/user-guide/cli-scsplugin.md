@@ -24,6 +24,8 @@ For detailed command, actions, and option documentation for this plug-in, see ou
 
 Before you install the plug-in, meet the software requirements in [Software requirements for Zowe CLI plug-ins](cli-swreqplugins.md).
 
+**Note:** If you're using npm@7, an Internet connection is required during installation of the Secure Credential Store plug-in. Additionally, there is a prerequisite on Windows for npm@7 users: `npm install -g prebuild-install`
+
 ## Installing
 
 Use one of the following methods to install or update the plug-in:
