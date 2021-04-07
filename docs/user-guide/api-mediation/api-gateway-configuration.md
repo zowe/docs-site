@@ -99,21 +99,25 @@ Use the following procedure to enable the feature to use a client certificate as
      When z/OSMF is used as an authentication provider, provide a valid `APPLID` to allow for client certificate authentication. The API ML generates a passticket for the specified `APPLID` and subsequently uses this passticket to authenticate to z/OSMF. The default value in the installation of z/OSMF is `IZUDFLT`.
   
 
-**Note:** The following properties are only required to be changed if the ZSS hostname or default Zowe runtime userId are altered:
+**Note:** The following property is only required to be changed if user mapping is provided by external API:
 
   * **APIML_GATEWAY_EXTERNAL_MAPPER** 
 
-    The API Mediation Gateway uses an external API to map a certificate to the owner in SAF. This property informs the Gateway about the location of this API. ZSS is the API provider in Zowe. Provide the correct URL if you customize ZSS parameters, otherwise default value is:
+    The API Mediation Gateway uses an external API to map a certificate to the owner in SAF. This property informs the Gateway about the location of this API. ZSS is the default API provider in Zowe. You can provide your own api to perform the mapping. In this case, you have to customize this value.
+
+    Default value for Zowe and ZSS:
 
     ```
     https://${ZOWE_EXPLORER_HOST}:${GATEWAY_PORT}/zss/api/v1/certificate/x509/map
     ```
 
+**Note:** The following property is only required to be created if the Zowe runtime userId is altered from default `ZWESVUSR`:
+
   * **APIML_GATEWAY_MAPPER_USER**
 
     To authenticate to the mapping API, a JWT is sent with the request. The token represents the user that is configured with this property. The user authorization is required to use the `IRR.RUSERMAP` resource within the `FACILITY` class. The default value is `ZWESVUSR`. Permissions are set up during installation with the `ZWESECUR` JCL or workflow.
     
-         If you customized the `ZWESECUR` JCL or workflow (`// SET ZOWEUSER=ZWESVUSR * userid for Zowe started task`) and changed the default USERID, create the `APIML_GATEWAY_MAPPER_USER` property and set the value by adding a new line as in the following example:
+         If you customized the `ZWESECUR` JCL or workflow (the customization of zowe runtime user: `// SET ZOWEUSER=ZWESVUSR * userid for Zowe started task`) and changed the default USERID, create the `APIML_GATEWAY_MAPPER_USER` property and set the value by adding a new line as in the following example:
 
 **Example:**
 
