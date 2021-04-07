@@ -1,36 +1,45 @@
 # Configuring Zowe certificates in UNIX files
 
-A keystore directory is used by Zowe to hold the certificate used for encrypting communication between Zowe clients and the Zowe z/OS servers.  It also holds the truststore used to hold public keys of any servers that Zowe trusts. When Zowe is launched, the instance directory configuration file `instance.env` specifies the location of the keystore directory. See [Creating and configuring the Zowe instance directory](configure-instance-directory.md#keystore-directory).
+A keystore directory is used by Zowe to hold the certificate used for encrypting communication between Zowe clients and the Zowe z/OS servers.  The keystore directory also holds the truststore used to hold public keys of any servers that Zowe trusts. When Zowe is launched, the instance directory configuration file `instance.env` specifies the location of the keystore directory. For more information, see [Creating and configuring the Zowe instance directory](configure-instance-directory.md#keystore-directory).
 
-If you have already created a keystore directory from a previous release of Version 1.8 or later, then you may reuse the existing keystore directory with newer version of Zowe.
+If you created a keystore directory from a previous release of Version 1.8 or later, you can reuse the existing keystore directory with the newer version of Zowe.
 
-You can use the existing certificate signed by an external certificate authority (CA) for HTTPS ports in the API Mediation Layer and the Zowe Application Framework, or else you can let the Zowe configuration script to generate a self-signed certificate by the local API Mediation CA.
+You can use the existing certificate signed by an external certificate authority (CA) for HTTPS ports in the API Mediation Layer and the Zowe Application Framework. Alternatively, you can permit the Zowe configuration script to generate a self-signed certificate by the local API Mediation CA.
 
-If you let the Zowe configuration generate a self-signed certificate, the certificates should be imported into your browser to avoid untrusted network traffic challenges. See [Import the local CA certificate to your browser](../extend/extend-apiml/api-mediation-security.md#import-the-local-ca-certificate-to-your-browser).  If you do not import the certificates into your browser when you access a Zowe web page, you may be challenged that the web page cannot be trusted and, depending on the browser you are using, have to add an exception to proceed to the web page.  Some browser versions may not accept the Zowe certificate because it is self-signed and the signing authority is not recognized as a trusted source.  Manually importing the certificate into your browser makes it a trusted source and the challenges will no longer occur.  
+If you permit the Zowe configuration to generate a self-signed certificate, be sure to import the certificates into your browser to avoid untrusted network traffic challenges. For more information, see [Import the local CA certificate to your browser](../extend/extend-apiml/api-mediation-security.md#import-the-local-ca-certificate-to-your-browser). 
 
-If you have an existing server certificate that is signed by an external CA, then you use this for the Zowe certificate. This could be a CA managed by the IT department of your company, which has already ensured that any certificates signed by that CA are trusted by browsers in your company because they have included their company's CA in their company's browsers' truststore.  This will avoid the need to manually import the local CA into each client machine's browsers.  
+**Note:** If you do not import the certificates into your browser when you access a Zowe web page, you may be challenged that the web page cannot be trusted.  Depending on the browser you are using, you may have to add an exception to proceed to the web page. Some browser versions may not accept the Zowe certificate because the certificate is self-signed and the signing authority is not recognized as a trusted source.  Manually importing the certificate into your browser ensures that the source is trusted, thereby preventing authenication challenges.  
+
+If you have an existing server certificate that is signed by an external CA, use this certificate as your Zowe certificate. An example is a CA managed by the IT department of your company, which  already ensured that any certificates signed by that CA are trusted by browsers in your company because they have included the CA of teh company in the truststore in company browsers.  This avoids the need to manually import the local CA into each browser of the client machine.  
  
-If you want to avoid the need to have each browser trust the CA that has signed the Zowe certificate, you can use a public certificate authority such as Symantec, Comodo, or GoDaddy to create a certificate. These certificates are trusted by all browsers and most REST API clients. However, this option involves a manual process of requesting a certificate and may incur a cost payable to the publicly trusted CA.
+To avoid requiring each browser to trust the CA that signed the Zowe certificate, you can use a public certificate authority such as _Symantec_, _Comodo_, or _GoDaddy_to create a certificate. These certificates are trusted by all browsers and most REST API clients. This option, however, requires a manual process to request a certificate and may incur a cost payable to the publicly trusted CA.
 
 We recommend that you start with the local API Mediation Layer CA for an initial evaluation.
 
-You can use the `<RUNTIME_DIR>/bin/zowe-setup-certificates.sh` script in the Zowe runtime directory to configure the certificates with the set of defined environment variables. The environment variables act as parameters for the certificate configuration are held in the file `<RUNTIME_DIR>/bin/zowe-setup-certificates.env`. 
+You can use the `<RUNTIME_DIR>/bin/zowe-setup-certificates.sh` script in the Zowe runtime directory to configure certificates with the set of defined environment variables. The environment variables which act as parameters for the certificate configuration are held in the file `<RUNTIME_DIR>/bin/zowe-setup-certificates.env`. 
 
-## Generate certificate with the default values
+**Note:** In order to enable Client Authentication in your generated certificate, your server certificate must contain the `TLS Web Client Authentication (1.3.6.1.5.5.7.3.2)` value in the Extended Key Usage section. 
+Additionally, the `Digital signature and/or key agreement` must be also set as an extension value in the Key Usage section. For more information, see [Key usage extentions and extended key usage](https://help.hcltechsw.com/domino/10.0.1/admin/conf_keyusageextensionsandextendedkeyusage_r.html) in the HCL Software documention.
 
-The script reads the default variable values that are provided in the `<RUNTIME_DIR>/bin/zowe-setup-certificates.env` file and generates the certificate signed by the local API Mediation CA and keystores in the `/global/zowe/keystore` location.   To set up certificates with the default environment variables, ensure that you run the following script in the Zowe runtime directory:
+## Generate a certificate with default values
+
+You can generate a certificate with default values. Use a script to read the default variable values that are provided in the `<RUNTIME_DIR>/bin/zowe-setup-certificates.env` file. This script  generates the certificate signed by the local API Mediation CA and keystores in the `/global/zowe/keystore` location. To set up certificates with the default environment variables, run the following script in the Zowe runtime directory:
 
 ```shell script
 <RUNTIME_DIR>/bin/zowe-setup-certificates.sh
 ```
 
-generates the keystore in `/global/zowe/keystore`.  On many z/OS installations access to this location will be restricted to privileged users so this step should be done by a system programmer with site knowledge for where the certificate should be stored in a way that the public key can be read but private key access is controlled.  
+This script generates the keystore in `/global/zowe/keystore`.
 
-## Generate certificate with the custom values
+**Note:** As z/OS installations access to this location is restricted to privileged users, ensure that this step is performed by a system programmer with site knowledge of where the certificate should be stored so that the public key is readable but and that the private key access is controlled.  
 
-We recommend that you review all the parameters in the `zowe-setup-certificates.env` file and customize the values for variables to meet your requirements. For example, set your preferred location to generate certificates and keystores. 
+## Generate a certificate with custom values
 
-Follow the procedure to customize the values for variables in the `zowe-setup-certificates.env` file:
+We recommend that you review all parameters in the `zowe-setup-certificates.env` file, and customize the values for variables to meet your requirements. One example is to set your preferred location to generate certificates and keystores. 
+
+Use the the following procedure to customize the values for variables in the `zowe-setup-certificates.env` file.
+
+**Follow these steps:**
 
 1. Copy the `bin/zowe-setup-certificates.env` file from the read-only location to a new 
     `<your_directory>/zowe-setup-certificates.env` location.  
@@ -42,15 +51,26 @@ Follow the procedure to customize the values for variables in the `zowe-setup-ce
    ```shell script
     bin/zowe-setup-certificates.sh –p <your_directory>/zowe-setup-certificates.env [-l <log_directory>]
    ```
-   where `<your_directory>` specifies the location of your customized environment file and `<log-directory>` is an optional parameter that overrides the default log output directory of `/global/zowe/logs`, if it is writable, or `~/zowe/logs`.
+   where:
    
-The keystore and certificates are generated based on the customized values in the 
-`bin/zowe-setup-certificates.env` file.
+   * **`<your_directory>`**
+   
+     specifies the location of your customized environment file
+     
+   * **`<log-directory>`**
+   
+     is an optional parameter that overrides the default log output directory of `/global/zowe/logs`, if it is writable, or `~/zowe/logs`.
+   
+The keystore and certificates are generated based on the customized values in the `bin/zowe-setup-certificates.env` file.
 
-The `zowe-setup-certificates.sh` command also generates `zowe-certificates.env` file in the 
-`KEYSTORE_DIRECTORY` directory. This file is used in the Zowe instance configuration step, see [Creating and configuring the Zowe instance directory](../user-guide/configure-instance-directory.md#keystore-configuration).
+The `zowe-setup-certificates.sh` command also generates the `zowe-certificates.env` file in the 
+`KEYSTORE_DIRECTORY` directory. This file is used in the Zowe instance configuration step. For more information, see [Creating and configuring the Zowe instance directory](../user-guide/configure-instance-directory.md#keystore-configuration).
    
-The following example shows how you can configure `zowe-setup-certificates.env` file to use the existing certificates:
+## Configure `zowe-setup-certificates.env` to use existing certificates 
+
+The following procedure shows how to configure the `zowe-setup-certificates.env` file to use the existing certificates.
+
+**Follow these steps:**
 
 1. Update the value of `EXTERNAL_CERTIFICATE`. The value needs to point to a keystore in PKCS12 format that contains the certificate with its private key. The file needs to be transferred as a binary to the z/OS system.
 
@@ -79,26 +99,30 @@ The following example shows how you can configure `zowe-setup-certificates.env` 
    ```
    In this case, the alias can be found in `Alias name: apiml`. Therefore, set `EXTERNAL_CERTIFICATE_ALIAS=apiml`.
       
-4. Update the value of `EXTERNAL_CERTIFICATE_AUTHORITIES` to the path of the public certificate of the certificate authority that has signed the certificate. You can add additional certificate authorities separated by spaces (specify the complete value **in quotes**). This can be used for certificate authorities that have signed the certificates of the services that you want to access via the API Mediation Layer.
+4. Update the value of `EXTERNAL_CERTIFICATE_AUTHORITIES` to the path of the public certificate of the certificate authority that has signed the certificate. You can add additional certificate authorities separated by spaces. 
 
-5. (Optional) If you have trouble getting the certificates and you want only to evaluate Zowe, you can switch off the certificate validation by setting `VERIFY_CERTIFICATES=false`. The HTTPS will still be used but the API Mediation Layer will not validate any certificate.
+    **Note:**
+Be sure to specify the complete value _in quotes_. This can be used for certificate authorities that have signed the certificates of the services that you want to access through the API Mediation Layer.
+
+5. (Optional) If you have trouble getting the certificates and you want only to evaluate Zowe, you can switch off the certificate validation by setting `VERIFY_CERTIFICATES=false`. THis setting continues to use HTTPS, but the API Mediation Layer will not validate any certificate.
 
     **Important!** Switching off certificate evaluation is a non-secure setup.
 
-Following is the part of `zowe-setup-certificates.env` file snippet that uses existing certificates:
-```shell script
-# Should APIML verify certificates of services - true/false
-VERIFY_CERTIFICATES=true
-# optional - Path to a PKCS12 keystore with a server certificate for APIML
-EXTERNAL_CERTIFICATE=/path/to/keystore.p12
-# optional - Alias of the certificate in the keystore
-EXTERNAL_CERTIFICATE_ALIAS=servercert
-# optional - Public certificates of trusted CAs
-EXTERNAL_CERTIFICATE_AUTHORITIES="/path/to/cacert_1.cer /path/to/cacert_2.cer"
-# Select a password that is used to secure EXTERNAL_CERTIFICATE keystore and 
-# that will be also used to secure newly generated keystores for API Mediation
-KEYSTORE_PASSWORD=mypass
-```
+   The following script is the part of `zowe-setup-certificates.env` file  that uses existing certificates:
+
+    ```shell script
+    # Should APIML verify certificates of services - true/false
+    VERIFY_CERTIFICATES=true
+    # optional - Path to a PKCS12 keystore with a server certificate for APIML
+    EXTERNAL_CERTIFICATE=/path/to/keystore.p12
+    # optional - Alias of the certificate in the keystore
+    EXTERNAL_CERTIFICATE_ALIAS=servercert
+    # optional - Public certificates of trusted CAs
+    EXTERNAL_CERTIFICATE_AUTHORITIES="/path/to/cacert_1.cer /path/to/cacert_2.cer"
+    # Select a password that is used to secure EXTERNAL_CERTIFICATE keystore and 
+    # that will be also used to secure newly generated keystores for API Mediation
+    KEYSTORE_PASSWORD=mypass
+    ```
 
 You may encounter the following message:
 
@@ -117,46 +141,55 @@ On many z/OS systems, the certificate for z/OSMF is not signed by a trusted CA a
 
 ## Using web tokens for SSO on ZLUX and ZSS
 
-Users must create a PKCS#11 token before continuing. This can be done through the USS utility, "gskkyman".
+Users must create a `PKCS#11` token before continuing. This can be done through the USS utility, **gskkyman**.
 
-### Creating a PKCS#11 Token
+### Creating a `PKCS#11` Token
 
-Ensure that the SO.TOKEN_NAME profile exists in CRYPTOZ, and that the user who will be creating tokens has either UPDATE or CONTROL access.
+Ensure that the `SO.TOKEN_NAME` profile exists in `CRYPTOZ`, and that the user who will be creating tokens has either `UPDATE` or `CONTROL` access.
 
-1. Define profile: "RDEFINE CRYPTOZ SO.TOKEN_NAME"
-2. Add user with UPDATE access: "PERMIT SO.** ACCESS(UPDATE) CLASS(CRYPTOZ) ID(USERID)"
-3. Ensure profile was created: "RLIST CRYPTOZ *"
-4. Activate class with new profile: 
-    - "SETROPTS RACLIST(CRYPTOZ)"
+**Follow these steps:**
+
+1. Define the profile: `RDEFINE CRYPTOZ SO.TOKEN_NAME`
+2. Add a user with `UPDATE` access: `PERMIT SO.** ACCESS(UPDATE) CLASS(CRYPTOZ) ID(USERID)`
+3. Ensure the profile is created: `RLIST CRYPTOZ *`
+4. Activate the class with the new profile: 
+
+    - `SETROPTS RACLIST(CRYPTOZ)`
   
-    - "SETROPTS CLASSACT(CRYPTOZ)" 
+    - `SETROPTS CLASSACT(CRYPTOZ)` 
 
-A user should now be able to use "gskkyman" to create a token.
+A user should now be able to use **gskkyman** to create a token.
 
-### Accessing token
+### Accessing a token
 
-Ensure USER.TOKEN_NAME profile exists in CRYPTOZ:
+Ensure the `USER.TOKEN_NAME` profile exists in `CRYPTOZ`.
 
-1. Define profile: "RDEFINE CRYPTOZ USER.TOKEN_NAME"
-2. Add user with READ access: "PERMIT USER.TOKEN_NAME ACCESS(UPDATE) CLASS(CRYPTOZ) ID(USERID)"
-3. Ensure profile was created: "RLIST CRYPTOZ *"
-4. Activate class with new profile: 
+**Follow these steps:**
 
-    - "SETROPTS RACLIST(CRYPTOZ)"
+1. Define the profile: `RDEFINE CRYPTOZ USER.TOKEN_NAME`
+2. Add a user with `READ` access: `PERMIT USER.TOKEN_NAME ACCESS(UPDATE) CLASS(CRYPTOZ) ID(USERID)`
+3. Ensure the profile is created: `RLIST CRYPTOZ *`
+4. Activate the class with the new profile: 
 
-    - "SETROPTS CLASSACT(CRYPTOZ)"
+    - `SETROPTS RACLIST(CRYPTOZ)`
 
-Configure zowe-setup-certifcates.env using the following parameters. Both are required to enable SSO.
+    - `SETROPTS CLASSACT(CRYPTOZ)`
 
-- PKCS#11 token name for SSO. Must already exist.
+Configure `zowe-setup-certifcates.env` using the following parameters. Both parameters are required to enable SSO.
+
+- `PKCS#11` token name for SSO. Must already exist.
 
   `PKCS11_TOKEN_NAME=<newly created token name>`
 
-- PKCS#11 token label for SSO. Must not already exist.
+- `PKCS#11` token label for SSO. Must not already exist.
 
   `PKCS11_TOKEN_LABEL=<unique label>`
 
 ### Enabling SSO
+
+Use the following procedure to enable SSO.
+
+**Follow these steps:**
 
 1. Run zowe-setup-certificates.sh. 
 
