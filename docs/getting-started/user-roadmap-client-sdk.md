@@ -12,7 +12,7 @@ The following definition of skill levels about Zowe will help you gather most re
 
 > Zowe skill level: Beginner
 
-- [**Zowe Client SDK overview**](overview.md##zowe-client-software-development-kits-sdks)
+- [**Zowe Client SDK overview**](overview.md#zowe-client-software-development-kits-sdks)
 
    New to Zowe Client SDKs? This overview topic briefly introduces what it is.
 
