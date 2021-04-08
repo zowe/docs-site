@@ -23,7 +23,7 @@ If you have an issue that is specific to a sub-project or community team, feel f
    - [Zowe sub-projects repositories](https://github.com/zowe/community/blob/master/README.md#zowe-sub-projects)
    - [Zowe operations squads repositories](https://github.com/zowe/community/blob/master/README.md#zowe-operations-squads)
    
-  When you decide to work on an issue, check the comments on that issue to ensure that it's not taken by anyone. If nobody is working on it, comment on that issue let others know that you want to work on it to avoid duplicate work. The squad can assign that issue to you and provide guidance as well. 
+  When you decide to work on an issue, check the comments on that issue to ensure that it's not taken by anyone. If nobody is working on it, comment on that issue to let others know that you want to work on it to avoid duplicate work. The squad can assign that issue to you and provide guidance as well. 
 
 - You can also reach out to the [Zowe squads on Slack](https://github.com/zowe/community/blob/master/README.md#slack) to check with the squads if there is any good starter issue that you can work on. 
 
@@ -48,7 +48,7 @@ Please direct all security issues to `zowe-security@lists.openmainframeproject.o
 Check out the contribution guidelines for different components and squads to learn how to participate.
   - [Zowe CLI](https://github.com/zowe/zowe-cli/blob/master/CONTRIBUTING.md)
   - [Zowe API Mediation Layer]((https://github.com/zowe/api-layer/blob/master/CONTRIBUTING.md))
-  - [Zowe Application Framework](https://github.com/zowe/zlux) - 
+  - [Zowe Application Framework](https://github.com/zowe/zlux)  
   - [Zowe Explorer](https://github.com/zowe/vscode-extension-for-zowe/blob/master/CONTRIBUTING.md)
   - [Zowe Client SDKs](https://github.com/zowe/zowe-cli/blob/master/docs/SDKGuidelines.md)
   - [Zowe Docs](contributing.md)
@@ -56,7 +56,7 @@ Check out the contribution guidelines for different components and squads to lea
 ## Promote Zowe
 
 - Contribute a blog about Zowe. Read the [Zowe blog guidelines](https://github.com/zowe/community/blob/master/blogging/blog_guidelines.md) to get started. 
-- Help present Zowe on conferences and social channels
+- Present Zowe on conferences and social channels
 
 ## Helpful resources
 

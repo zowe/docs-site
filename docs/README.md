@@ -136,6 +136,7 @@ View detailed documentation on commands, actions, and options in Zowe CLI. The r
 <p class="action">
 <a href="./web_help/index.html" target="_blank" class="nav-link action-button"> <span>Browse CLI Reference (Online)</span></a>
 <a href="./CLIReference_Zowe.pdf" class="nav-link action-button"> <span>Download CLI Reference (PDF)</span></a>
+
 <a href="./zowe_web_help.zip" class="nav-link action-button"> <span>Download CLI Reference (ZIP)</span></a>
 </p>
 
@@ -155,61 +156,4 @@ Refer to the following Zowe Client SDK reference guides for information about th
 
 ## Feedback
 
-Your feedback is important to us. Tell us what you think about the experience by creating an issue in GitHub or communicating with the community on Slack.
-
-
-<!--
-<h3>Downloadable doc</h3>
-<section class="solutionBoxContainer features">
-  <div class="solutionBox feature">
-      <p><strong>Zowe Release Doc</strong></p>
-      <p>You can download the Version 1.x.x Zowe documentation in PDF format. The latest version on this website is 1.19.0.
-      <ul>
-         <li><a href="https://docs.zowe.org/stable/Zowe_Documentation.pdf">V1.19.0 PDF</a></li>
-         <li><a href="./appendix/tpsr.html">Previous Releases PDF</a></li>
-      </ul>
-      </p>
-      <p><strong>Zowe Overview Deck</strong></p>
-      <p>The information in this deck provides an introduction to Zowe, its vision and value statements, a deeper dive into the technology, how to get involved in the community, and more.
-      <ul>
-         <li><a href="https://github.com/zowe/community/tree/master/ppt_templates">Download</a></li>
-      </ul>
-      </p>
-  </div>
-
-  <div class="solutionBox feature">
-      <p><strong>Zowe CLI Command Reference</strong></p>
-      <p>View detailed documentation on commands, actions, and options in Zowe CLI. The reference document is based on the `@zowe-v1-lts` version of the CLI. A PDF document, an interactive online version, and a ZIP file containing the HTML for the online version:<ul>
-         <li><a href="./web_help/index.html">Browse Online</a></li>
-         <li><a href="./CLIReference_Zowe.pdf">Download PDF</a></li>
-         <li><a href="./zowe_web_help.zip">Download ZIP</a></li>
-      </ul></p>
-  </div>
-  <div class="solutionBox feature">
-      <p><strong>Client SDK reference guides</strong></p>
-      <p>Refer to the following Zowe Client SDK reference guides for information about the API endpoints:
-      </p>
-      <p><b>Node.js SDK</b><ul>
-         <li><a href="./typedoc/index.html">Browse Node.js SDK Reference (Online)</a></li>
-         <li><a href="./zowe-node-sdk-typedoc.zip">Download Node SDK Reference (ZIP)</a></li>
-      </ul></p>
-      <p><b>Python SDK</b><ul>
-         <li><a href="https://zowe-client-python-sdk.readthedocs.io/en/latest/index.html">Browse Python SDK Reference (Online)</a></li>
-         <li><a href="https://zowe-client-python-sdk.readthedocs.io/_/downloads/en/latest/pdf/">Download Python SDK Reference (ZIP)</a></li>
-      </ul></p>
-  </div>
-
--->
-
-<div class="features">
-  <div class="feature">
-    <h3>Feedback</h3>
-    <p>Your feedback is important to us. Tell us what you think about the experience by creating an issue in GitHub, communicating with the community on Slack, or leaving comments when a **How are we doing?** window pops up.</p>
-  </div>
-  <div>
-  <a href="https://github.com/zowe/docs-site/issues">Create a GitHub issue</a>
-  </div>
-  <div>
-  <a href="https://github.com/zowe/docs-site/issues">Connect with the community on Slack</a>
-  </div>
-</div>
+Your feedback is important to us. Tell us what you think about the experience by [creating an issue in GitHub](https://github.com/zowe/docs-site/issues) or [connecting with the community on Slack](https://slack.openmainframeproject.org/).
