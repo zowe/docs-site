@@ -19,7 +19,9 @@ You can download a Docker Image by using the Docker command line utility `docker
 
 - The latest version of zowe, `ompzowe/server-bundle:latest`
 - The latest version for the platform you are running on, such as `ompzowe/server-bundle:amd64` for Linux
+- Older versions can be found with the version tag, such as `ompzowe/server-bundle:v1.20.0`
 - A specific version by referencing the version's digest, such as `ompzowe/server-bundle@sha256:bdbc0617b02e16a452f6d4de50b8b13e56592e309b4c68f9ea52c82303ad57ec`
+- If you want the source code for all of the content in the image, that is available in the accompanying image with -sources prefix tag, such as `ompzowe/server-bundle:latest-sources`
 
 The latest digests can be seen on the [image's tags page](https://hub.docker.com/r/ompzowe/server-bundle/tags).
 
