@@ -1,6 +1,6 @@
 # Information roadmap for Zowe Application Framework
 
-This roadmap outlines the information resources that are available for all user roles who are interested in Zowe Application Framework. These resources provide information about various subject areas, such as learning basic skills, installation, developing, and troubleshooting for Zowe API Mediation Layer.
+This roadmap outlines information resources that are applicable to the various user roles who are interested in Zowe Application Framework. These resources provide information about various subject areas, such as learning basic skills, installation, developing, and troubleshooting for Zowe Application Framework.
 
 The following definition of skill levels about Zowe will help you gather most relevant resources for you. 
 
@@ -34,11 +34,11 @@ The following definition of skill levels about Zowe will help you gather most re
 
 - [**Planning**](../user-guide/installandconfig.md#planning-the-installation-of-zowe-server-components)
 
-  This information provides details about planning for the installation, the Zowe z/OS launch process, and so on.
+  This article provides details about planning for the installation, the Zowe z/OS launch process, and so on.
 
 - [**Installing Zowe Application Framework**](../user-guide/install-zos.md#z-os-installation-roadmap)
 
-   This information provides an overview of the essential steps involved in installing Zowe Application Framework. If you want to use Docker for the installation, instead follow the link below. 
+   This article provides an overview of the essential steps involved in installing Zowe Application Framework. If you want to use Docker for the installation, instead follow the link below. 
 
 - [**Installing Zowe Application Framework using Docker**](../user-guide/install-docker.md)
 

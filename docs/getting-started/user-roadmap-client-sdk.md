@@ -1,6 +1,6 @@
 # Information roadmap for Zowe Client SDKs
 
-This roadmap outlines the information resources that are available for all user roles who are interested in Zowe Client Software Development Kits (SDKs) which is a Zowe component still under development. These resources provide information about various subject areas, such as learning basic skills, installation, developing, and troubleshooting for Zowe Client SDKs.
+This roadmap outlines information resources that are applicable to the various user roles who are interested in Zowe Client Software Development Kits (SDKs) which is a Zowe component still under development. These resources provide information about various subject areas, such as learning basic skills, installation, developing, and troubleshooting for Zowe Client SDKs.
 
 The following definition of skill levels about Zowe will help you gather most relevant resources for you. 
 

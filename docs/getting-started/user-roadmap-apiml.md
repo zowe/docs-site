@@ -52,7 +52,7 @@ The following definition of skill levels about Zowe assist you with gathering th
 
    - [Advanced Gateway features configuration](../user-guide/api-mediation/api-gateway-configuration.md)
       
-       This article is for system programmers who want to configure advanced Gateway features of the API Mediation Layer, such as the gateway retry policy, connection limits, gateway timeouts, and so on.
+      This article is for system programmers who want to configure advanced Gateway features of the API Mediation Layer, such as the gateway retry policy, connection limits, gateway timeouts, and so on.
 
 - [**Upgrading the z/OS system for Zowe**](../user-guide/upgrade-zos-system.md)
 
