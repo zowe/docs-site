@@ -136,7 +136,7 @@ The Zowe Client SDKs consist of programmatic APIs that you can use to build clie
 
 ### API Mediation Layer
 
-Provides a gateway that acts as a reverse proxy for z/OS services, together with a catalog of REST APIs and a dynamic discovery capability. Base Zowe provides core services for working with MVS Data Sets, JES, as well as working with z/OSMF REST APIs.  The API Mediation Layer also provides a framework for [Single Sign On (SSO)](https://docs.zowe.org/stable/extend/extend-apiml/api-mediation-security.html#participating-in-zowe-api-ml-single-sign-on).
+Provides a gateway that acts as a reverse proxy for z/OS services, together with a catalog of REST APIs and a dynamic discovery capability. Base Zowe provides core services for working with MVS Data Sets, JES, as well as working with z/OSMF REST APIs.  The API Mediation Layer also provides a framework for [Single Sign On (SSO)](../extend/extend-apiml/api-mediation-sso.html#zowe-api-mediation-layer-single-sign-on-overview).
 
 <details>
 <summary> Learn more </summary>
