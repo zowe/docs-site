@@ -47,7 +47,7 @@ Please direct all security issues to `zowe-security@lists.openmainframeproject.o
 
 Check out the contribution guidelines for different components and squads to learn how to participate.
   - [Zowe CLI](https://github.com/zowe/zowe-cli/blob/master/CONTRIBUTING.md)
-  - [Zowe API Mediation Layer]((https://github.com/zowe/api-layer/blob/master/CONTRIBUTING.md))
+  - [Zowe API Mediation Layer](https://github.com/zowe/api-layer/blob/master/CONTRIBUTING.md)
   - [Zowe Application Framework](https://github.com/zowe/zlux)  
   - [Zowe Explorer](https://github.com/zowe/vscode-extension-for-zowe/blob/master/CONTRIBUTING.md)
   - [Zowe Client SDKs](https://github.com/zowe/zowe-cli/blob/master/docs/SDKGuidelines.md)
