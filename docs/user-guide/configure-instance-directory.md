@@ -177,8 +177,19 @@ The high availability (HA) feature of Zowe is under development and has not been
 
 - `ZWE_DISCOVERY_SERVICES_LIST`: _(Work in progress)_ **Do not modify this value** from its supplied default of `https://${ZOWE_EXPLORER_HOST}:${DISCOVERY_PORT}/eureka/`. 
 - `ZWE_CACHING_SERVICE_PORT=7555`: _(Work in progress)_ This port is not yet used so the value does not need to be availale.
-- `ZWE_CACHING_SERVICE_PERSISTENT=VSAM`: _(Work in progress)_
+- `ZWE_CACHING_SERVICE_PERSISTENT`: _(Work in progress)_ This is used to set the storage type used to persist cached data. Valid options are `REDIS` or `VSAM`.
 - `ZWE_CACHING_SERVICE_VSAM_DATASET`: _(Work in progress)_
+
+#### Redis
+
+Redis is supported for data persistence. You can use a standalone Redis instance, or [Master/replica](https://redis.io/topics/replication) and [Redis Sentinel](https://redis.io/topics/sentinel) are supported for high availability of Redis itself. If you are using Redis 6 you can [enable TLS](https://redis.io/topics/encryption). A Redis quickstart guide is available [here](https://redis.io/topics/quickstart).
+
+In order to use Redis for data persistence, you must set `ZWE_CACHING_SERVICE_PERSISTENT=REDIS` in `instance.env`. You will also need to supply:
+
+* `ZWE_CACHING_SERVICE_REDIS_HOST` - the host of the master Redis instance.
+* `ZWE_CACHING_SERVICE_REDIS_PORT` - the port of the master Redis instance.
+* `ZWE_CACHING_SERVICE_REDIS_USERNAME` - (optional) the username for authentication to Redis masters and replicas. Not needed if the Redis instances don't require authentication or use the default user.
+* `ZWE_CACHING_SERVICE_REDIS_PASSWORD` - (optional) the password for authentication to Redis masters and replicas. Not needed if the Redis instances don't require authentication.
 
 ## Configuring a Zowe instance via `instance.env` file
 
