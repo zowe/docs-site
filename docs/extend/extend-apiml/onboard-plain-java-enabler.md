@@ -431,7 +431,7 @@ routes:
 
 * **routes**
 
-    specifies the container element for the route.
+    specifies the container element for the routes.
 
 * **routes.gatewayUrl**
 
