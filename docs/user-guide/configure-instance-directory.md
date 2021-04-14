@@ -170,7 +170,7 @@ The high availability (HA) feature of Zowe is under development and has not been
 
 - `ZWE_DISCOVERY_SERVICES_LIST`: _(Work in progress)_ **Do not modify this value** from its supplied default of `https://${ZOWE_EXPLORER_HOST}:${DISCOVERY_PORT}/eureka/`. 
 - `ZWE_CACHING_SERVICE_PORT=7555`: _(Work in progress)_ This port is not yet used so the value does not need to be availale.
-- `ZWE_CACHING_SERVICE_PERSISTENT=VSAM`: _(Work in progress)_
+- `ZWE_CACHING_SERVICE_PERSISTENT`: _(Work in progress)_ This is used to set the storage type used to persist cached data. Valid options are `REDIS` or `VSAM`.
 - `ZWE_CACHING_SERVICE_VSAM_DATASET`: _(Work in progress)_
 
 ## Configuring a Zowe instance via `instance.env` file

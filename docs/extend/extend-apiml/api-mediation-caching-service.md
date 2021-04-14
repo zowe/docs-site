@@ -13,6 +13,7 @@ The Caching service is available only for internal Zowe applications, and is not
 - [Architecture](#architecture)
 - [Storage methods](#storage-methods)
   - [VSAM](#vsam)
+  - [Redis](#redis)
   - [InMemory](#inmemory)
 - [How to start the service](#how-to-start-the-service)
 - [Methods to use the Caching service API](#methods-to-use-the-caching-service-api)
@@ -39,6 +40,11 @@ The Caching Service supports the following storage solutions, which provide the 
 VSAM can be used to organize records into four types of data sets: key-sequenced, entry-sequenced, linear, or relative record. Use VSAM as the storage solution for production. VSAM is used primarily for applications and is not used for source programs, JCL, or executable modules. ISPF cannot be used to display or edit VSAM files.
 
 For more information about the VSAM storage access method, see [Using VSAM as a storage solution through the Caching service](./api-mediation-vsam.md).
+### Redis
+
+Redis is a common storage solution that runs outside of the z/OS platform. It can store data structures in key-value pairs, has high-availability support, and is highly performant.
+
+For more information about the Redis storage access method, see [Using Redis as a storage solution through the Caching service](./api-mediation-redis.md).
 ### InMemory
 TODO (add in memory procedure)
 The InMemory storage method is a method suitable for testing and integration verification. Be sure not to use InMemory storage in production. 
