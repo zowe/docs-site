@@ -109,6 +109,8 @@ The following definition of skill levels about Zowe assist you with gathering th
 - [**Blog: Single-Sign-On to z/OS REST APIs with Zowe**](https://medium.com/zowe/single-sign-on-to-z-os-rest-apis-with-zowe-6e35fd022a95)
 
    This blog takes a deeper dive in to the SSO feature of API ML.
+   
+- [**Blog: Zowe client certificate authentication**](https://medium.com/zowe/zowe-client-certificate-authentication-5f1c7d4d579)   
 
 ## Contributing to Zowe API Mediation Layer
 
