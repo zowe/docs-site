@@ -57,7 +57,7 @@ Configure Redis as a storage solution through the Caching service by modifying t
 
     An array of the Redis Sentinel nodes. Each array element must contain:
     
-    * `ip` - the IP address of the node
+    * `host` - the hostname or IP address of the node
     * `port` - the port of the node
 
     If the node enforces authentication the element must specify the `password` parameter.
