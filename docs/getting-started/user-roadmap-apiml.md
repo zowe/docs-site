@@ -56,7 +56,7 @@ The following definition of skill levels about Zowe assist you with gathering th
 
 - [**Upgrading the z/OS system for Zowe**](../user-guide/upgrade-zos-system.md)
 
-   Learn how to upgrade thw z/OS system for Zowe.
+   Learn how to upgrade the z/OS system for Zowe.
 
 ## Using Zowe API Mediation Layer
 
