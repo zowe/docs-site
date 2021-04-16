@@ -2,8 +2,10 @@
 
 Learn about what is new, changed, or removed in Zowe&trade;.
 
-Zowe Version 1.19 and earlier releases include the following enhancements, release by release.
+Zowe Version 1.20 and earlier releases include the following enhancements, release by release.
 
+- [Version 1.20.1 LTS (March 2021)](#version-1-20-1-lts-march-2021)
+- [Version 1.20.0 LTS (March 2021)](#version-1-20-0-lts-march-2021)
 - [Version 1.19.1 LTS (February 2021)](#version-1-19-1-lts-february-2021)
 - [Version 1.19.0 LTS (February 2021)](#version-1-19-0-lts-february-2021)
 - [Version 1.18.0 LTS (January 2021)](#version-1-18-0-lts-january-2021)
@@ -30,6 +32,190 @@ Zowe Version 1.19 and earlier releases include the following enhancements, relea
 - [Version 1.0.1 (March 2019)](#version-1-0-1-march-2019)
 - [Version 1.0.0 (February 2019)](#version-1-0-0-february-2019)
 
+## Version 1.20.1 LTS (March 2021)
+
+### Bug fixes
+
+#### Zowe Installation and Configuration
+
+- Fixed an issue when importing external certificate authorities. [#2032](https://github.com/zowe/zowe-install-packaging/issues/2032)
+
+## Version 1.20.0 LTS (March 2021)
+
+### New features and enhancements
+
+#### Zowe API Mediation Layer
+
+* Feature: x509 authentication scheme. This feature supports authentication with a client certificate in southbound services whereby users can decide which part of the certificate to use. (#1208) ([94dbf37](https://github.com/zowe/api-layer/commit/94dbf37)), closes [#1208](https://github.com/zowe/api-layer/issues/1208)
+* Feature: Add NodeJS sample service and enabler. This feature makes it possible for a service based on NodeJS to register with API ML in a similar way as with other onboarding enablers. (#1140) ([c86a289](https://github.com/zowe/api-layer/commit/c86a289)), closes [#1140](https://github.com/zowe/api-layer/issues/1140)
+* Feature: Allow Zowe to run without a jwtsecret if the jwtsecret is not required. (#1203) ([7dc6dad](https://github.com/zowe/api-layer/commit/7dc6dad)), closes [#1203](https://github.com/zowe/api-layer/issues/1203)
+* Feature: Introduce token validation providers. This feature provides a future mechanism of token validation whereby custom endpoint can be provided that requires authentication. (#1142) ([80cc790](https://github.com/zowe/api-layer/commit/80cc790)), closes [#1142](https://github.com/zowe/api-layer/issues/1142)
+* Feature: Reject eviction strategy has been added to VSAM. If storage is full, and `ZWE_CACHING_EVICTION_STRATEGY` is set to `reject` this feature prevents the Caching Service from removing entries, but returns a status code 507 with the message, “Insufficient storage space limit”. (#1112) ([70c2d71](https://github.com/zowe/api-layer/commit/70c2d71)), closes [#1112](https://github.com/zowe/api-layer/issues/1112) ([80cc790](https://github.com/zowe/api-layer/commit/80cc790)), closes [#1142](https://github.com/zowe/api-layer/issues/1142)
+* Feature: Base information (SSO, API ID) about a service is now displayed in the API Catalog. (#1116) ([4b61377](https://github.com/zowe/api-layer/commit/4b61377)), closes [#1116](https://github.com/zowe/api-layer/issues/1116) [#1116](https://github.com/zowe/api-layer/issues/1116)
+* Feature (Caching Service): Production logging for the Caching Service. This feature limits messages sent to Spool to the bare minimum, thereby improving the information returned to the caller. (#1185) ([7adffb1](https://github.com/zowe/api-layer/commit/7adffb1)), closes [#1185](https://github.com/zowe/api-layer/issues/1185)
+
+
+#### Zowe App Server
+- Added a manifest file, a validate script, and refactored configure, start, and app-server scripts to better conform to Zowe lifecycle management standards [#144](https://github.com/zowe/zlux-app-server/pull/144)
+- Added a method to read user and group server timeout information from a JSON file [#248](https://github.com/zowe/zss/pull/248)
+- Added a quick search to the File Tree that filters opened files, folders, and datasets [#197](https://github.com/zowe/zlux-editor/pull/197)
+- Added a preferences menu to customize the editing behavior and color theme. The preferences can be previewed in realtime, but can also be saved to the app-server so that they are applied every time the editor is opened. [#195](https://github.com/zowe/zlux-editor/pull/195)
+- Added undo and redo menu items when editing a file [#195](https://github.com/zowe/zlux-editor/pull/195)
+
+
+#### Zowe CLI
+
+The following enhancements were added to the **core CLI**:
+
+- Updated the Imperative version to handle GZIP compression on REST requests.
+- Added a `like` option to the `zowe zos-files create data-set` command. Use this option to like datasets. [#771](https://github.com/zowe/zowe-cli/issues/771)
+- Added a `--protocol` option to allow you to specify the HTTP or HTTPS protocol used. The default value remains HTTPS.[#498](https://github.com/zowe/zowe-cli/issues/498)
+- Added an example for running a Db2 command with the `zowe zos-console issue command` command. [#641](https://github.com/zowe/zowe-cli/issues/641)
+
+The following enhancement was added to the **Imperative CLI Framework**:
+
+- Added decompression support for REST responses with Content-Encoding `gzip`, `deflate`, or `br`. [#318](https://github.com/zowe/imperative/issues/318)
+
+The following enhancements were added to the **IBM Db2 Plug-in**:
+- Added a semicolon after each sql statement when exporting a table.
+- Added a help example for how to pass output values when calling a Db2 stored procedure.
+
+The following enhancement was added to the **FTP Plug-in**:
+- Added allocate command to allocate sequential or partitioned dataset.
+
+#### Zowe Explorer
+
+- Added the monorepo landing Readme that contains the high-level overview of the repository folders such as `packages` folder, instructions on how to contribute to the project and links to Medium articles providing additional useful information about Zowe Explorer and Zowe [#1199](https://github.com/zowe/vscode-extension-for-zowe/pull/1199).
+- Added the previously selected `RejectUnauthorized` value to the placeholder text of the entry field while updating an existing profile. In addition, the value is highlighted and shown at the top of the selection list [#1218](https://github.com/zowe/vscode-extension-for-zowe/pull/1218).
+- Added the pre-filled and pre-selected filename of the copied member to the entry field while performing the paste member action [#1183](https://github.com/zowe/vscode-extension-for-zowe/pull/1183).
+- Added the multiple deletion of jobs feature [#1128](https://github.com/zowe/vscode-extension-for-zowe/pull/1128).
+- Improved error handling for the data set copy/paste member, migrate, and recall functions [#1219](https://github.com/zowe/vscode-extension-for-zowe/pull/1219).
+
+For more information about the Zowe Explorer release notes, see [Changelog](https://marketplace.visualstudio.com/items/Zowe.vscode-extension-for-zowe/changelog).
+
+### Bug Fixes
+
+#### Zowe API Mediation Layer
+
+* Bugfix (authentication): Support specific z/OSMF version. This fix allows the user to force the authentication token that is used. (#1241) ([2da761a](https://github.com/zowe/api-layer/commit/2da761a)), closes [#1241](https://github.com/zowe/api-layer/issues/1241)
+* Bugfix (authentication): Ignore wrong or non-existing SAF classes when SAF is not used (#1216) ([c5ea311](https://github.com/zowe/api-layer/commit/c5ea311)), closes [#1216](https://github.com/zowe/api-layer/issues/1216)
+* Bugfix (enabler): Add unregistration method to the the Node.js enabler. (#1214) ([1ecd5c7](https://github.com/zowe/api-layer/commit/1ecd5c7)), closes [#1214](https://github.com/zowe/api-layer/issues/1214)
+* Bugfix: Enable /api/v1/gateway path format for the `/auth/logout`, `/auth/login`, `/auth/query`, and `/auth/passticket` endpoints (#1126) ([13ac9a5](https://github.com/zowe/api-layer/commit/13ac9a5)), closes [#1126](https://github.com/zowe/api-layer/issues/1126)
+* Bugfix: Accept `swagger/openapi` in yaml format (#1202) ([0c412b0](https://github.com/zowe/api-layer/commit/0c412b0)), closes [#1202](https://github.com/zowe/api-layer/issues/1202)
+
+#### Zowe CLI
+
+The following bug was fixed in the **core CLI**:
+- Removed the conflicting alias `-o` for `--protocol` option.
+
+The following bugs were fixed in the **Imperative CLI Framework**:
+- Added `Protocol` to the Error Details coming from the `AbstractRestClient`. [#539](https://github.com/zowe/imperative/issues/539)
+- Fixed vulnerabilities by replacing marked with markdown-it and sanitize-html.
+- Fixed plugin install failing to install package from private registry.
+
+The following bugs were fixed in the the **Secure Credential Store Plug-in**:
+- Updated the Keytar dependency to v7 to be compatible with Node.js v15.
+- Provided additional instruction in readme for npm@7 users.
+
+#### Zowe Explorer
+
+- Fixed the issue that prevented the list of recently opened files from being displayed upon request. You can access a list of recently opened files by pressing the Ctrl+Alt+R (Windows) or Command+Option+R (Mac) key combination [#1208](https://github.com/zowe/vscode-extension-for-zowe/pull/#1208).
+- Fixed the issue that prevented file picker from functioning. The file picker feature lets you filter your datasets in the tree by pressing the Ctrl+Alt+P (Windows) or Command+Option+P (Mac) key combination [#992](https://github.com/zowe/vscode-extension-for-zowe/issues/992).
+- Fixed the issue that caused the content from a previously filtered USS directory instead of the currently filtered USS directory to be served [#1134](https://github.com/zowe/vscode-extension-for-zowe/issues/1134).
+
+For more information about the Zowe Explorer release notes, see [Changelog](https://marketplace.visualstudio.com/items/Zowe.vscode-extension-for-zowe/changelog).
+## Version 1.20.1 LTS (March 2021)
+
+### Bug fixes
+
+#### Zowe Installation and Configuration
+
+- Fixed an issue when importing external certificate authorities. [#2032](https://github.com/zowe/zowe-install-packaging/issues/2032)
+
+## Version 1.20.0 LTS (March 2021)
+
+### New features and enhancements
+
+#### Zowe API Mediation Layer
+
+* Feature: x509 authentication scheme. This feature supports authentication with a client certificate in southbound services whereby users can decide which part of the certificate to use. (#1208) ([94dbf37](https://github.com/zowe/api-layer/commit/94dbf37)), closes [#1208](https://github.com/zowe/api-layer/issues/1208)
+* Feature: Add NodeJS sample service and enabler. This feature makes it possible for a service based on NodeJS to register with API ML in a similar way as with other onboarding enablers. (#1140) ([c86a289](https://github.com/zowe/api-layer/commit/c86a289)), closes [#1140](https://github.com/zowe/api-layer/issues/1140)
+* Feature: Allow Zowe to run without a jwtsecret if the jwtsecret is not required. (#1203) ([7dc6dad](https://github.com/zowe/api-layer/commit/7dc6dad)), closes [#1203](https://github.com/zowe/api-layer/issues/1203)
+* Feature: Introduce token validation providers. This feature provides a future mechanism of token validation whereby custom endpoint can be provided that requires authentication. (#1142) ([80cc790](https://github.com/zowe/api-layer/commit/80cc790)), closes [#1142](https://github.com/zowe/api-layer/issues/1142)
+* Feature: Reject eviction strategy has been added to VSAM. If storage is full, and `ZWE_CACHING_EVICTION_STRATEGY` is set to `reject` this feature prevents the Caching Service from removing entries, but returns a status code 507 with the message, “Insufficient storage space limit”. (#1112) ([70c2d71](https://github.com/zowe/api-layer/commit/70c2d71)), closes [#1112](https://github.com/zowe/api-layer/issues/1112) ([80cc790](https://github.com/zowe/api-layer/commit/80cc790)), closes [#1142](https://github.com/zowe/api-layer/issues/1142)
+* Feature: Base information (SSO, API ID) about a service is now displayed in the API Catalog. (#1116) ([4b61377](https://github.com/zowe/api-layer/commit/4b61377)), closes [#1116](https://github.com/zowe/api-layer/issues/1116) [#1116](https://github.com/zowe/api-layer/issues/1116)
+* Feature (Caching Service): Production logging for the Caching Service. This feature limits messages sent to Spool to the bare minimum, thereby improving the information returned to the caller. (#1185) ([7adffb1](https://github.com/zowe/api-layer/commit/7adffb1)), closes [#1185](https://github.com/zowe/api-layer/issues/1185)
+
+
+#### Zowe App Server
+- Added a manifest file, a validate script, and refactored configure, start, and app-server scripts to better conform to Zowe lifecycle management standards [#144](https://github.com/zowe/zlux-app-server/pull/144)
+- Added a method to read user and group server timeout information from a JSON file [#248](https://github.com/zowe/zss/pull/248)
+- Added a quick search to the File Tree that filters opened files, folders, and datasets [#197](https://github.com/zowe/zlux-editor/pull/197)
+- Added a preferences menu to customize the editing behavior and color theme. The preferences can be previewed in realtime, but can also be saved to the app-server so that they are applied every time the editor is opened. [#195](https://github.com/zowe/zlux-editor/pull/195)
+- Added undo and redo menu items when editing a file [#195](https://github.com/zowe/zlux-editor/pull/195)
+
+
+#### Zowe CLI
+
+The following enhancements were added to the **core CLI**:
+
+- Updated the Imperative version to handle GZIP compression on REST requests.
+- Added a `like` option to the `zowe zos-files create data-set` command. Use this option to like datasets. [#771](https://github.com/zowe/zowe-cli/issues/771)
+- Added a `--protocol` option to allow you to specify the HTTP or HTTPS protocol used. The default value remains HTTPS.[#498](https://github.com/zowe/zowe-cli/issues/498)
+- Added an example for running a Db2 command with the `zowe zos-console issue command` command. [#641](https://github.com/zowe/zowe-cli/issues/641)
+
+The following enhancement was added to the **Imperative CLI Framework**:
+
+- Added decompression support for REST responses with Content-Encoding `gzip`, `deflate`, or `br`. [#318](https://github.com/zowe/imperative/issues/318)
+
+The following enhancements were added to the **IBM Db2 Plug-in**:
+- Added a semicolon after each sql statement when exporting a table.
+- Added a help example for how to pass output values when calling a Db2 stored procedure.
+
+The following enhancement was added to the **FTP Plug-in**:
+- Added allocate command to allocate sequential or partitioned dataset.
+
+#### Zowe Explorer
+
+- Added the monorepo landing Readme that contains the high-level overview of the repository folders such as `packages` folder, instructions on how to contribute to the project and links to Medium articles providing additional useful information about Zowe Explorer and Zowe [#1199](https://github.com/zowe/vscode-extension-for-zowe/pull/1199).
+- Added the previously selected `RejectUnauthorized` value to the placeholder text of the entry field while updating an existing profile. In addition, the value is highlighted and shown at the top of the selection list [#1218](https://github.com/zowe/vscode-extension-for-zowe/pull/1218).
+- Added the pre-filled and pre-selected filename of the copied member to the entry field while performing the paste member action [#1183](https://github.com/zowe/vscode-extension-for-zowe/pull/1183).
+- Added the multiple deletion of jobs feature [#1128](https://github.com/zowe/vscode-extension-for-zowe/pull/1128).
+- Improved error handling for the data set copy/paste member, migrate, and recall functions [#1219](https://github.com/zowe/vscode-extension-for-zowe/pull/1219).
+
+For more information about the Zowe Explorer release notes, see [Changelog](https://marketplace.visualstudio.com/items/Zowe.vscode-extension-for-zowe/changelog).
+
+### Bug Fixes
+
+#### Zowe API Mediation Layer
+
+* Bugfix (authentication): Support specific z/OSMF version. This fix allows the user to force the authentication token that is used. (#1241) ([2da761a](https://github.com/zowe/api-layer/commit/2da761a)), closes [#1241](https://github.com/zowe/api-layer/issues/1241)
+* Bugfix (authentication): Ignore wrong or non-existing SAF classes when SAF is not used (#1216) ([c5ea311](https://github.com/zowe/api-layer/commit/c5ea311)), closes [#1216](https://github.com/zowe/api-layer/issues/1216)
+* Bugfix (enabler): Add unregistration method to the the Node.js enabler. (#1214) ([1ecd5c7](https://github.com/zowe/api-layer/commit/1ecd5c7)), closes [#1214](https://github.com/zowe/api-layer/issues/1214)
+* Bugfix: Enable /api/v1/gateway path format for the `/auth/logout`, `/auth/login`, `/auth/query`, and `/auth/passticket` endpoints (#1126) ([13ac9a5](https://github.com/zowe/api-layer/commit/13ac9a5)), closes [#1126](https://github.com/zowe/api-layer/issues/1126)
+* Bugfix: Accept `swagger/openapi` in yaml format (#1202) ([0c412b0](https://github.com/zowe/api-layer/commit/0c412b0)), closes [#1202](https://github.com/zowe/api-layer/issues/1202)
+
+#### Zowe CLI
+
+The following bug was fixed in the **core CLI**:
+- Removed the conflicting alias `-o` for `--protocol` option.
+
+The following bugs were fixed in the **Imperative CLI Framework**:
+- Added `Protocol` to the Error Details coming from the `AbstractRestClient`. [#539](https://github.com/zowe/imperative/issues/539)
+- Fixed vulnerabilities by replacing marked with markdown-it and sanitize-html.
+- Fixed plugin install failing to install package from private registry.
+
+The following bugs were fixed in the the **Secure Credential Store Plug-in**:
+- Updated the Keytar dependency to v7 to be compatible with Node.js v15.
+- Provided additional instruction in readme for npm@7 users.
+
+#### Zowe Explorer
+
+- Fixed the issue that prevented the list of recently opened files from being displayed upon request. You can access a list of recently opened files by pressing the Ctrl+Alt+R (Windows) or Command+Option+R (Mac) key combination [#1208](https://github.com/zowe/vscode-extension-for-zowe/pull/#1208).
+- Fixed the issue that prevented file picker from functioning. The file picker feature lets you filter your datasets in the tree by pressing the Ctrl+Alt+P (Windows) or Command+Option+P (Mac) key combination [#992](https://github.com/zowe/vscode-extension-for-zowe/issues/992).
+- Fixed the issue that caused the content from a previously filtered USS directory instead of the currently filtered USS directory to be served [#1134](https://github.com/zowe/vscode-extension-for-zowe/issues/1134).
+
+For more information about the Zowe Explorer release notes, see [Changelog](https://marketplace.visualstudio.com/items/Zowe.vscode-extension-for-zowe/changelog).
 
 ## Version 1.19.1 LTS (February 2021)
 
