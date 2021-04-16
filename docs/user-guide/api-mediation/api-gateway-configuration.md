@@ -51,36 +51,39 @@ Authentication requests now utilize SAF as the authentication provider. API ML c
 
 ## Gateway retry policy
 
-To change the Gateway retry policy, edit properties in the `<Zowe install directory>/components/gateway/bin/start.sh` file.
+To change the Gateway retry policy, edit properties in the `<Zowe install directory>/components/gateway/bin/start.sh` file:
 
 All requests are disabled as the default configuration for retry with one exception: the server retries `GET` requests that finish with status code `503`. 
 To change this default configuration, include the following parameters:
 
 * **ribbon.retryableStatusCodes**
 
-    This parameter provides a list of status codes, for which the server should retry the request.
+    Provides a list of status codes, for which the server should retry the request.
     
     **Example:** `-Dribbon.retryableStatusCodes="503, 404"` 
     
 * **ribbon.OkToRetryOnAllOperations**
 
-    This parameter specifies whether to retry all operations for this service. The default value is `false` whereby only `GET` requests are retried if they return a response code that is listed in `ribbon.retryableStatusCodes`. Setting this parameter to `true` enables retry requests for all methods which return a response code listed in `ribbon.retryableStatusCodes`. 
+     Specifies whether to retry all operations for this service. The default value is `false`. In this case, only `GET` requests are retried if they return a response code that is listed in `ribbon.retryableStatusCodes`. Setting this parameter to `true` enables retry requests for all methods which return a response code listed in `ribbon.retryableStatusCodes`. 
      
   **Note:** Enabling retry can impact server resources due to request body buffering.
 
 * **ribbon.MaxAutoRetries**
     
-    This parameter specifies the number of times a failed request is retried on the same server. This number is multiplied with `ribbon.MaxAutoRetriesNextServer`. The default value is `0`.
+    Specifies the number of times a failed request is retried on the same server. This number is multiplied with `ribbon.MaxAutoRetriesNextServer`. The default value is `0`.
     
 * **ribbon.MaxAutoRetriesNextServer**
     
-    This parameter specifies the number of additional servers that attempt to make the request. This number excludes the first server. The default value is `5`. 
+    Specifies the number of additional servers that attempt to make the request. This number excludes the first server. The default value is `5`. 
     
 ## Gateway client certificate authentication
 
-Use the following procedure to enable the feature to use a client certificate as the method of authentication for the API Mediation Layer Gateway.
+**Note:**
 
-**Note:** Beginning with release 1.19 LTS, it is possible to authenticate using client certificates. The feature is functional and tested, but automated testing on various security systems is not complete. As such, the feature is provided as a beta release for early preview. If you would like to offer feedback using client certificate authentication, please create an issue against the api-layer repository. Client Certificate authentication will move out of Beta once test automation is fully implemented across different security systems.
+Beginning with release 1.19 LTS, it is possible to authenticate using client certificates. The feature is functional and tested, but automated testing on various security systems is not complete. As such, the feature is provided as a beta release for early preview. If you would like to offer feedback using client certificate authentication, please create an issue against the api-layer repository. Client Certificate authentication will move out of Beta once test automation is fully implemented across different security systems.
+
+
+Use the following procedure to enable the feature to use a client certificate as the method of authentication for the API Mediation Layer Gateway.
 
 **Follow these steps:**
 
@@ -95,16 +98,17 @@ Use the following procedure to enable the feature to use a client certificate as
 
      When z/OSMF is used as an authentication provider, provide a valid `APPLID` to allow for client certificate authentication. The API ML generates a passticket for the specified `APPLID` and subsequently uses this passticket to authenticate to z/OSMF. The default value in the installation of z/OSMF is `IZUDFLT`.
   
+    **Note:** The following steps are only required if the ZSS hostname or default Zowe user name are altered:
 
 3. Change the following property if user mapping is provided by an external API:
 
-   * **APIML_GATEWAY_EXTERNAL_MAPPER** 
+  * **APIML_GATEWAY_EXTERNAL_MAPPER**
 
    **Note:** Skip this step if user mapping is not provided by an external API.
 
-     The API Mediation Gateway uses an external API to map a certificate to the owner in SAF. This property informs the Gateway about the location of this API. ZSS is the default API provider in Zowe. You can provide your own API to perform the mapping. In this case, it is necessary to customize this value.
+   The API Mediation Gateway uses an external API to map a certificate to the owner in SAF. This property informs the Gateway about the location of this API. ZSS is the default API provider in Zowe. You can provide your own API to perform the mapping. In this case, it is necessary to customize this value.
 
-     The following URL is the default value for Zowe and ZSS:
+   The following URL is the default value for Zowe and ZSS:
 
      ```
      https://${ZOWE_EXPLORER_HOST}:${GATEWAY_PORT}/zss/api/v1/certificate/x509/map
@@ -112,12 +116,12 @@ Use the following procedure to enable the feature to use a client certificate as
 
 4. Add the following property if the Zowe runtime userId is altered from the default `ZWESVUSR`:
 
-   * **APIML_GATEWAY_MAPPER_USER**
+  * **APIML_GATEWAY_MAPPER_USER**
 
    **Note:** Skip this step if the Zowe runtime userId is not altered from the default `ZWESVUSR`.
 
    To authenticate to the mapping API, a JWT is sent with the request. The token represents the user that is configured with this property. The user authorization is required to use the `IRR.RUSERMAP` resource within the `FACILITY` class. The default value is `ZWESVUSR`. Permissions are set up during installation with the `ZWESECUR` JCL or workflow.
-     
+
    If you customized the `ZWESECUR` JCL or workflow (the customization of zowe runtime user: `// SET ZOWEUSER=ZWESVUSR * userid for Zowe started task`) and changed the default USERID, create the `APIML_GATEWAY_MAPPER_USER` property and set the value by adding a new line as in the following example:
 
    **Example:**
@@ -138,7 +142,7 @@ Use the following procedure to change the global timeout value for the API Media
 2. Find the property `APIML_GATEWAY_TIMEOUT_MILLIS`, and set the value to the desired value.
 3. Restart `Zowe&trade`. 
 
-If you require finer control, edit the `<Zowe install directory>/components/gateway/bin/start.sh`, and modify the following properties:
+If you require finer control, you can edit the `<Zowe install directory>/components/gateway/bin/start.sh`, and modify the following properties:
 
 * **apiml.gateway.timeoutMillis**
 
@@ -150,11 +154,11 @@ Add the following properties to the file for the API Gateway:
 
 * **ribbon.connectTimeout**
     
-  This property specifies the value in milliseconds which corresponds to the period in which API ML should establish a single, non-managed connection with the service. If omitted, the default value specified in the API ML Gateway service configuration is used.
+  Specifies the value in milliseconds which corresponds to the period in which API ML should establish a single, non-managed connection with the service. If omitted, the default value specified in the API ML Gateway service configuration is used.
 
 * **ribbon.readTimeout**
     
-  This property specifies the time in milliseconds of inactivity between two packets in response from this service to API ML. If omitted, the default value specified in the API ML Gateway service configuration is used.
+  Specifies the time in milliseconds of inactivity between two packets in response from this service to API ML. If omitted, the default value specified in the API ML Gateway service configuration is used.
 
 * **ribbon.connectionManagerTimeout**
     
@@ -240,11 +244,16 @@ Use the following procedure to change or replace the Catalog service:
 
 # API Mediation Layer as a standalone component
 
-You can start the API Mediation Layer independently of other Zowe components. By default, the Gateway, Zowe System Services, and Virtual Desktop start when Zowe runs. To limit consumed resources when the Virtual Desktop or Zowe System Services are not required, it is possible to specify which components start in thecontext of Zowe. No change is required during the installation process to support this setup.
+You can start the API Mediation Layer independently of other Zowe components. 
+By default, the Gateway, Zowe System Services, and Virtual Desktop start when
+ Zowe runs. To limit consumed resources when the Virtual Desktop or Zowe System
+ Services are not required, it is possible to specify which components start in the
+ context of Zowe. No change is required during the installation process to
+ support this setup.
 
 Once Zowe is installed, use the following procedure to limit which components start.
 
-**Follow these steps:** 
+**Follow these steps:**
 
 1. Open the file `<Zowe instance directory>/instance.env`.
 2. Find the property `ZWE_LAUNCH_COMPONENTS` and set `discovery,gateway,api-catalog`
