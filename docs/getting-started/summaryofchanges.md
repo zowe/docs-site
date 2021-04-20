@@ -2,8 +2,9 @@
 
 Learn about what is new, changed, or removed in Zowe&trade;.
 
-Zowe Version 1.20 and earlier releases include the following enhancements, release by release.
+Zowe Version 1.21 and earlier releases include the following enhancements, release by release.
 
+- [Version 1.21.0 LTS (May 2021)](#version-1-21-0-lts-may-2021)
 - [Version 1.20.1 LTS (March 2021)](#version-1-20-1-lts-march-2021)
 - [Version 1.20.0 LTS (March 2021)](#version-1-20-0-lts-march-2021)
 - [Version 1.19.1 LTS (February 2021)](#version-1-19-1-lts-february-2021)
@@ -31,6 +32,21 @@ Zowe Version 1.20 and earlier releases include the following enhancements, relea
 - [Version 1.1.0 (April 2019)](#version-1-1-0-april-2019)
 - [Version 1.0.1 (March 2019)](#version-1-0-1-march-2019)
 - [Version 1.0.0 (February 2019)](#version-1-0-0-february-2019)
+
+## Version 1.21.0 LTS (May 2021)
+
+### Notable changes
+
+### New features and enhancements
+
+#### Zowe API Mediation Layer
+#### Zowe App Server
+#### Zowe CLI
+#### Zowe Explorer
+
+### Bug Fixes
+
+
 
 ## Version 1.20.1 LTS (March 2021)
 
