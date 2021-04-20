@@ -35,13 +35,80 @@ footer: Except where otherwise noted, content on this site is licensed under a C
   </div>
 </div>
 
+<div class="features">
+  <div class="feature">
+    <h3>Discover your path</h3>
+    <p>The roadmaps help you arrive at your goals faster. Choose one option and we'll suggest resources for you.</p>
+  </div>
+  <div class="solutionBox feature" style="height:340px">
+      <div>
+        <p><img src="./images/common/objective.svg" alt="User goal" style="height:25px"/> <strong>What would you like to do?</strong></p>
+        <p><a href="./getting-started/zowe-getting-started.html#learning-about-zowe"><img src="./images/common/right-arrow.svg" width="25" height="15">Learn about Zowe</a></p>
+        <p><a href="./getting-started/zowe-getting-started.html#install-and-use"><img src="./images/common/right-arrow.svg" width="25" height="15">Install and use Zowe</a></p>
+        <p><a href="./extend/extend-zowe-overview.html"><img src="./images/common/right-arrow.svg" width="25" height="15">Extend Zowe</a></p>
+        <p><a href="./contribute/roadmap-contribute.html"><img src="./images/common/right-arrow.svg" width="25" height="15">Contribute to Zowe</a></p>
+      </div>
+    </a>
+  </div>
+  <div class="solutionBox feature" style="height:340px">
+      <div>
+        <p><img src="./images/common/component.svg" alt="Component" style="height:25px; border-style: none"/> <strong>Which components are you interested in?</strong></p>
+        <p><a href="./getting-started/user-roadmap-apiml.html"><img src="./images/common/right-arrow.svg" width="25" height="15">Zowe API Mediation Layer</a></p>
+        <p><a href="./getting-started/user-roadmap-app-framework.html"><img src="./images/common/right-arrow.svg" width="25" height="15">Zowe Application Framework</a></p>
+        <p><a href="./getting-started/user-roadmap-zowe-cli.html"><img src="./images/common/right-arrow.svg" width="25" height="15">Zowe CLI</a></p>
+        <p><a href="./getting-started/user-roadmap-zowe-explorer.html"><img src="./images/common/right-arrow.svg" width="25" height="15">Zowe Explorer</a></p>
+        <p><a href="./getting-started/user-roadmap-client-sdk.html"><img src="./images/common/right-arrow.svg" width="25" height="15">Zowe Client SDKs</a></p>
+        <p><a href="./getting-started/user-roadmap-zowe-mobile.html"><img src="./images/common/right-arrow.svg" width="25" height="15">Zowe Mobile</a></p>
+      </div>
+    </a>
+  </div>
+</div>
+
+<div class="features">
+  <div class="feature">
+    <h3>Featured topics</h3>
+  </div>
+  <div class="solutionBox feature">
+      <div>
+        <p class="bx--type-caption">
+         <ul>
+         <li><a href="./getting-started/summaryofchanges.html">Release notes</a></li>
+         <li><a href="./getting-started/overview.html">Zowe overview</a></li>
+         <li><a href="./user-guide/zowe-getting-started-tutorial.html">Getting started tutorial</a></li>
+         <li><a href="./user-guide/installandconfig.html">Planning for installation</a></li>
+         <li><a href="./user-guide/systemrequirements.html">System requirements</a></li>
+         <li><a href="./user-guide/install-zos.html">Installing Zowe z/OS components</a></li>
+         <li><a href="./user-guide/systemrequirements-zosmf.html">Configuring z/OSMF </a></li>
+         </ul>
+        </p>
+      </div>
+    </a>
+  </div>
+  <div class="solutionBox feature">
+      <div>
+        <p class="bx--type-caption">
+         <ul>
+         <li><a href="./user-guide/cli-installcli.html">Installing Zowe CLI</a></li>
+         <li><a href="./user-guide/cli-usingcli.html">Using Zowe CLI</a></li>
+         <li><a href="./user-guide/install-zowe-smpe.html">Installing Zowe SMP/E</a></li>
+         <li><a href="./user-guide/configure-zos-system.html">Configuring the z/OS system</a></li>
+         <li><a href="./user-guide/configure-certificates.html">Configuring Zowe certificates</a></li>
+        <li><a href="./extend/extend-apiml/onboard-plain-java-enabler.html">Onboarding a REST API service with the Plain Java Enabler (PJE)</a></li>
+         </ul>
+        </p>
+      </div>
+    </a>
+  </div>
+</div>
+
 ## Downloadable PDF Files
 
 ### Zowe documentation
 
-You can download the Version 1.x.x Zowe documentation in PDF format from the links below. The latest version on this website is 1.19.0.
+You can download the Version 1.x.x Zowe documentation in PDF format from the links below. The latest version on this website is 1.20.1.
 
-**[V1.19.0](https://docs.zowe.org/stable/Zowe_Documentation.pdf)** |
+**[V1.20.x](https://docs.zowe.org/stable/Zowe_Documentation.pdf)** | 
+**[V1.19.x](./Zowe_Documentation_1.19.1.pdf)** | 
 **[V1.18.0](./Zowe_Documentation_1.18.0.pdf)** |
 **[V1.17.0](./Zowe_Documentation_1.17.0.pdf)** |
 **[V1.16.0](./Zowe_Documentation_1.16.0.pdf)** |
@@ -69,6 +136,7 @@ View detailed documentation on commands, actions, and options in Zowe CLI. The r
 <p class="action">
 <a href="./web_help/index.html" target="_blank" class="nav-link action-button"> <span>Browse CLI Reference (Online)</span></a>
 <a href="./CLIReference_Zowe.pdf" class="nav-link action-button"> <span>Download CLI Reference (PDF)</span></a>
+
 <a href="./zowe_web_help.zip" class="nav-link action-button"> <span>Download CLI Reference (ZIP)</span></a>
 </p>
 
@@ -88,10 +156,4 @@ Refer to the following Zowe Client SDK reference guides for information about th
 
 ## Feedback
 
-Your feedback is important to us. Tell us what you think about the experience by creating an issue in GitHub or contacting the team on Slack.
-
-[Create Issue in GitHub](https://github.com/zowe/docs-site/issues) | [Ask Question on Slack](https://slack.openmainframeproject.org/)
-
-We review your feedback and make improvements to provide better content experience. Take a look at what we have been doing to address feedback.
-
-[Progress Update](https://github.com/zowe/docs-site/wiki/User-feedback-and-content-update)
+Your feedback is important to us. Tell us what you think about the experience by [creating an issue in GitHub](https://github.com/zowe/docs-site/issues) or [connecting with the community on Slack](https://slack.openmainframeproject.org/).

@@ -85,6 +85,8 @@ You can configure the Zowe runtime with one of the following methods depending o
 - Use JCL and shell scripts
 - Use z/OSMF Workflows
 
+**Tip:** We recommend you open the links to this configuration procedure in new tabs.
+
 1. Configure the z/OS security manager to prepare for launching the Zowe started tasks. For instructions, see [Configuring the z/OS system for Zowe](configure-zos-system.md) and [Configuring Zowe with z/OSMF workflows](configure-zowe-zosmf-workflow.md).
    
    A SAMPLIB JCL member `ZWESECUR` is provided to assist with the configuration. You can submit the `ZWESECUR` JCL member as-is or customize it depending on site preferences.  

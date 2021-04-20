@@ -16,9 +16,10 @@ Follow the procedures in the following sections to customize Gateway parameters 
   * [Gateway retry policy](#gateway-retry-policy)
   * [Gateway client certificate authentication](#gateway-client-certificate-authentication)
   * [Gateway timeouts](#gateway-timeouts)
-  * [Cors handling](#cors-handling)
+  * [CORS handling](#cors-handling)
   * [Encoded slashes](#encoded-slashes)
   * [Connection limits](#connection-limits)
+  * [Replace or remove catalog with another service](#replace-or-remove-catalog-with-another-service)
   * [API Mediation Layer as a standalone component](#api-mediation-layer-as-a-standalone-component)
 
 ## Prefer IP Address for API Layer services
@@ -82,7 +83,7 @@ To change this default configuration, include the following parameters:
 Beginning with release 1.19 LTS, it is possible to authenticate using client certificates. The feature is functional and tested, but automated testing on various security systems is not complete. As such, the feature is provided as a beta release for early preview. If you would like to offer feedback using client certificate authentication, please create an issue against the api-layer repository. Client Certificate authentication will move out of Beta once test automation is fully implemented across different security systems.
 
 
-Use the following procedure to enable the feature of using a client certificate as a method of authentication for the API Mediation Layer Gateway.
+Use the following procedure to enable the feature to use a client certificate as the method of authentication for the API Mediation Layer Gateway.
 
 **Follow these steps:**
 
@@ -97,26 +98,39 @@ Use the following procedure to enable the feature of using a client certificate 
 
      When z/OSMF is used as an authentication provider, provide a valid `APPLID` to allow for client certificate authentication. The API ML generates a passticket for the specified `APPLID` and subsequently uses this passticket to authenticate to z/OSMF. The default value in the installation of z/OSMF is `IZUDFLT`.
   
-**Note:** The following steps are only required if the ZSS hostname or default Zowe user name are altered:
+    **Note:** The following steps are only required if the ZSS hostname or default Zowe user name are altered:
 
-3. Open the file `<Zowe install directory>/components/gateway/bin/start.sh`.
-4. Configure the following properties:
+3. Change the following property if user mapping is provided by an external API:
 
-   * **apiml.security.x509.externalMapperUrl**
+  * **APIML_GATEWAY_EXTERNAL_MAPPER**
 
-     The API Mediation Gateway uses an external API to map a certificate to the owner in SAF. This property informs the Gateway about the location of this API. ZSS is the API provider in Zowe. Provide the ZSS URL in the following format:
+   **Note:** Skip this step if user mapping is not provided by an external API.
+
+   The API Mediation Gateway uses an external API to map a certificate to the owner in SAF. This property informs the Gateway about the location of this API. ZSS is the default API provider in Zowe. You can provide your own API to perform the mapping. In this case, it is necessary to customize this value.
+
+   The following URL is the default value for Zowe and ZSS:
+
      ```
-     -Dapiml.security.x509.externalMapperUrl=http://localhost:<ZSS-PORT>/certificate/x509/map
+     https://${ZOWE_EXPLORER_HOST}:${GATEWAY_PORT}/zss/api/v1/certificate/x509/map
      ```
-     The default port is `8542`. The hostname is `localhost` as the ZSS server is accessible only locally.
 
-   * **apiml.security.x509.externalMapperUser**
+4. Add the following property if the Zowe runtime userId is altered from the default `ZWESVUSR`:
 
-     To authenticate to the mapping API, a JWT token is sent with the request. The token represents the user that is configured with this property. The user authorization is required to use the `IRR.RUSERMAP` resource within the `FACILITY` class. The default value is `ZWESVUSR`. Permissions are set up during installation with the `ZWESECUR` JCL or workflow. 
-     
-     To customize the `ZWESECUR` JCL or workflow (`// SET ZOWEUSER=ZWESVUSR * userid for Zowe started task`), change the `apiml.security.x509.externalMapperUser` to a new value.
+  * **APIML_GATEWAY_MAPPER_USER**
 
-Restart Zowe&trade.
+   **Note:** Skip this step if the Zowe runtime userId is not altered from the default `ZWESVUSR`.
+
+   To authenticate to the mapping API, a JWT is sent with the request. The token represents the user that is configured with this property. The user authorization is required to use the `IRR.RUSERMAP` resource within the `FACILITY` class. The default value is `ZWESVUSR`. Permissions are set up during installation with the `ZWESECUR` JCL or workflow.
+
+   If you customized the `ZWESECUR` JCL or workflow (the customization of zowe runtime user: `// SET ZOWEUSER=ZWESVUSR * userid for Zowe started task`) and changed the default USERID, create the `APIML_GATEWAY_MAPPER_USER` property and set the value by adding a new line as in the following example:
+
+   **Example:**
+
+   ```
+   APIML_GATEWAY_MAPPER_USER=yournewuserid  
+   ```
+
+5. Restart `Zowe&trade`.
 
 ## Gateway timeouts
 
@@ -126,7 +140,7 @@ Use the following procedure to change the global timeout value for the API Media
 
 1. Open the file `<Zowe instance directory>/instance.env`.
 2. Find the property `APIML_GATEWAY_TIMEOUT_MILLIS`, and set the value to the desired value.
-3. Restart Zowe&trade. 
+3. Restart `Zowe&trade`. 
 
 If you require finer control, you can edit the `<Zowe install directory>/components/gateway/bin/start.sh`, and modify the following properties:
 
@@ -158,7 +172,7 @@ By default, Cross-Origin Resource Sharing (CORS) is disabled in the API Gateway 
      
 1. Open the file `<Zowe instance directory>/instance.env`.
 2. Find the property `APIML_CORS_ENABLED` and set the value to `true`.
-3. Restart Zowe&trade.
+3. Restart `Zowe&trade`.
   
 Requests through the Gateway now contain a CORS header. 
 
@@ -172,13 +186,13 @@ Use the following procedure to reject encoded slashes.
     
 1. Open the file `<Zowe instance directory>/instance.env`.
 2. Find the property `APIML_ALLOW_ENCODED_SLASHES` and set the value to `false`.
-3. Restart Zowe&trade. 
+3. Restart `Zowe&trade`. 
     
 Requests with encoded slashes are now rejected by the API Mediation Layer.
 
 ## Connection limits
 
-By default, the API Gateway accepts up to 100 conncurrent connections per route, and 1000 total concurrent connections. Any further concurrent requests are queued until the completion of an existing request. The API Gateway is built on top of Apache HTTP components that require these two connection limits for concurrent requests. For more information, see [Apache documentation](http://hc.apache.org/httpcomponents-client-ga/tutorial/html/connmgmt.html#d5e393).
+By default, the API Gateway accepts up to 100 concurrent connections per route, and 1000 total concurrent connections. Any further concurrent requests are queued until the completion of an existing request. The API Gateway is built on top of Apache HTTP components that require these two connection limits for concurrent requests. For more information, see [Apache documentation](http://hc.apache.org/httpcomponents-client-ga/tutorial/html/connmgmt.html#d5e393).
 
 Use the following procedure to change the number of concurrent connections.
 
@@ -188,9 +202,49 @@ Use the following procedure to change the number of concurrent connections.
 2. Find the property `APIML_MAX_CONNECTIONS_PER_ROUTE` and set the value to an appropriate positive integer.
 3. Find the property `APIML_MAX_TOTAL_CONNECTIONS` and set the value to an appropriate positive integer.
 
+## Replace or remove catalog with another service
+
+By default, the API Mediation Layer contains API Catalog as a service showing available services. As the API Mediation Layer can be successfully run without this component it is possible to replace or remove the service from the Gateway home page and health checks. The following section describes the behavior of the Gateway home page and health checks. 
+
+The default option displays the API Catalog.
+
+```
+APIML_GATEWAY_CATALOG_ID = apicatalog
+```
+A value can also be applied to `API_GATEWAY_CATALOG_ID`.
+
+**Examples:**
+
+- **`none`**
+
+  Nothing is displayed on the Gateway home page and the Catalog is removed from `/application/health`
+
+- **`alternative-catalog`** 
+
+  An alternative to the API Catalog is displayed
+
+- **`metrics-dashboard`**
+ 
+  A possible dashboard that could appear in place of the API Catalog 
+
+**Notes:**
+- If the application contains the `homePageUrl` and `statusPageRelativeUrl`, then the full set of information is displayed.
+- If the application contains the `homePageUrl` the link is displayed without the `UP` information
+- If the application contains the `statusPageRelativeUrl` then `UP` or `DOWN` is displayed based on the `statusPage` without the link.
+
+Use the following procedure to change or replace the Catalog service:
+
+**Follow these steps:**
+
+1. Open the file `<Zowe instance directory>/instance.env`.
+2. At the end of the file with the property `APIML_GATEWAY_CATALOG_ID` add a new line. Set the value with the following options:
+
+    - Set the value to `none` to remove the Catalog service.
+    - Set the value to the ID of the service that is onboarded to the API Mediation Layer. 
+
 # API Mediation Layer as a standalone component
 
-As a Zowe user, follow the procedure in this article to start the API Mediation Layer independently of other Zowe components. 
+You can start the API Mediation Layer independently of other Zowe components. 
 By default, the Gateway, Zowe System Services, and Virtual Desktop start when
  Zowe runs. To limit consumed resources when the Virtual Desktop or Zowe System
  Services are not required, it is possible to specify which components start in the
@@ -203,6 +257,6 @@ Once Zowe is installed, use the following procedure to limit which components st
 
 1. Open the file `<Zowe instance directory>/instance.env`.
 2. Find the property `ZWE_LAUNCH_COMPONENTS` and set `discovery,gateway,api-catalog`
-3. Restart Zowe&trade.   
+3. Restart `Zowe&trade`.   
 
 To learn more about the related section of the environment file, see [Creating and configuring the Zowe instance directory](../configure-instance-directory.md#component-groups). We recommend you open this page in a new tab.
