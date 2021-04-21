@@ -469,6 +469,8 @@ __Expected Return Codes and Messages:__ You will receive a return code of 0 if t
 
 Upload the AZWE001.readme.txt file in text format and the AZWE001.pax.Z file in binary format from your workstation to the z/OS UNIX file system. The instructions in this section are also in the AZWE001.readme.txt file that you downloaded.
 
+**Note:** Ensure you download the pax file in a different file system than where you put Zowe runtime.
+
 There are many ways to transfer the files or make them available to the z/OS system where the package will be installed. In the following sample dialog, we use FTP from a Microsoft Windows command line to do the transfer. This assumes that the z/OS host is configured as an FTP host/server and that the workstation is an FTP client.  Commands or other information entered by the user are in bold, and the following values are assumed.
 
 User enters: | Values 
@@ -578,8 +580,8 @@ The AZWE001.readme.txt file uploaded in the previous step holds a sample JCL to 
   newname="@PREFIX@.ZOWE.AZWE001.F1"/>
   <ARCHDEF archid="AZWE001.F2"
   newname="@PREFIX@.ZOWE.AZWE001.F2"/>
-  <ARCHDEV archid="AZWE001.F3"
-  nawname="@PREFIX@.ZOWE.AZWE001.F3"/>
+  <ARCHDEF archid="AZWE001.F3"
+  newname="@PREFIX@.ZOWE.AZWE001.F3"/>
   <ARCHDEF archid="AZWE001.F4"
   newname="@PREFIX@.ZOWE.AZWE001.F4"/>
   </GIMUNZIP>

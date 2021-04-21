@@ -57,8 +57,8 @@ The following steps outline the overall process to onboard a REST service with t
 
 Ensure that the prerequisites from the [Onboarding Overview](onboard-overview.md) are met.
 
-* The REST API service to onboard is written in Java.
-* The service is enabled to communicate with API ML Discovery Service over a TLS v1.2 secured connection.
+* The REST API service to onboard is written in Java
+* The service is enabled to communicate with API ML Discovery Service over a TLS v1.2 secured connection
 
 **Notes:**
 
@@ -68,9 +68,9 @@ Ensure that the prerequisites from the [Onboarding Overview](onboard-overview.md
 
 ## Configuring your project
 
-Use either _Gradle_ or _Maven_ build automation systems to configure the project with service to be onboarded. Use the appropriate configuration procedure that corresponds to your build automation system.
+Use either _Gradle_ or _Maven_ build automation systems to configure the project with the service to be onboarded. Use the appropriate configuration procedure that corresponds to your build automation system.
 
-**Note:** You can use either the Zowe Artifactory or an artifactory of your choice. However, if you decide to build the API ML from source, you are required to publish the enabler artifact to your artifactory. Publish the enabler artifact by using the _Gradle_ tasks provided in the source code.
+**Note:** You can use either the Zowe Artifactory or an artifactory of your choice. If you decide to build the API ML from source, you are required to publish the enabler artifact to your artifactory. Publish the enabler artifact by using the _Gradle_ tasks provided in the source code.
 
 ### Gradle build automation system
 Use the following procedure to use _Gradle_ as your build automation system.
@@ -117,7 +117,7 @@ Use the following procedure to use _Gradle_ as your build automation system.
 
     **Notes:**
     * You may need to add more dependencies as required by your service implementation.
-    * The information provided in this file is valid for `ZoweApimlVersion 1.3.0` and above.
+    * The information provided in this file is valid for `ZoweApimlVersion 1.3.0` and higher.
 
 5. In your project home directory, run the `gradle clean build` command to build your project. Alternatively, you can run `gradlew` to use the specific gradle version that is working with your project.
 
@@ -140,7 +140,7 @@ Use the following procedure if you use _Maven_ as your build automation system.
         </repository>
     </repositories>
     ```
-    **Tip:** If you want to use snapshot version, replace libs-release with libs-snapshot in the repository url and change snapshots->enabled to true.
+    **Tip:** If you want to use snapshot version, replace `libs-release` with `libs-snapshot` in the repository url and change snapshots->enabled to `true`.
 
 2. Add the proper dependencies:
    ```maven
@@ -161,12 +161,12 @@ Use the following procedure if you use _Maven_ as your build automation system.
 
 ## Configuring your service
 
-To configure your service, provide default service configuration in the `service-configuration.yml` file located in your service source tree resources directory.
+To configure your service, create the configuration file `service-configuration.yml` in your service source tree resources directory. The default path for a java application is `src/main/resources`. The `service-configuration.yml` file is used to set the application properties and eureka metadata. Application properties are for your service runtime. For example, the `ssl` section specifies the keystore and trustore. The eureka metadata is used for registration with API Mediation Layer.
 
 **Note:** To externalize service onboarding configuration, see: [Externalizing onboarding configuration](onboard-plain-java-enabler-external-configuration.md).
 
 The following code snippet shows an example of `service-configuration.yml`. Some parameters which are specific for your service deployment
-are written in `${parameterValue}` format. For your service configuration file, provide actual values or externalize your onboarding configuration.
+are in `${parameterValue}` format. For your service configuration file, provide actual values or externalize your onboarding configuration.
 
 **Example:**
 
@@ -195,12 +195,12 @@ authentication:
     applid: ZOWEAPPL
 
  apiInfo:
-     - apiId: org.zowe.sampleservice
+     - apiId: zowe.apiml.sampleservice
        version: 1.0.0
        gatewayUrl: api/v1
        swaggerUrl: http://${sampleServiceSwaggerHost}:${sampleServiceSwaggerPort}/sampleservice/api-doc
        doumentationUrl: http://
-     - apiId: org.zowe.sampleservice
+     - apiId: zowe.apiml.sampleservice
        version: 2.0.0
        gatewayUrl: api/v2
        swaggerUrl: http://${sampleServiceSwaggerHost}:${sampleServiceSwaggerPort}/sampleservice/api-doc?group=api-v2
@@ -227,7 +227,12 @@ authentication:
     trustStorePassword: password
  ```
 
-Optional metadata section
+**Optional metadata section**
+
+The following snippet presents additional optional metadata that can be added.
+
+**Example:**
+
 ```yaml
 customMetadata:
     yourqualifier:
@@ -295,16 +300,16 @@ The onboarding configuration parameters are broken down into the following group
 
      `protocol://host:port/servicename`
 
-    **Note:** Do not end `baseUrl` with a trailing `/`. This will cause a malformed URL if any of the above administrative endpoints begin with a `/`. It is expected that each administrative endpoint begins with a `/`. Warnings will be logged if this recommendation is not followed.
+    **Note:** Ensure that the `baseUrl` does not end with a trailing `/`. Inclusion of `/` causes a malformed URL if any of the above administrative endpoints begin with a `/`. It is expected that each administrative endpoint begins with a `/`. Warnings will be logged if this recommendation is not followed.
 
 *  **serviceIpAddress** (Optional)
 
-    Specifies the service IP address and can be provided by a system administrator in the externalized service configuration.
-    If this parameter is not present in the configuration file or is not set as a service context parameter, it will be resolved from the hostname part of the `baseUrl`.
+    This parameter specifies the service IP address and can be provided by a system administrator in the externalized service configuration.
+    If this parameter is not present in the configuration file or is not set as a service context parameter, it is resolved from the hostname part of the `baseUrl`.
 
 * **preferIpAddress** (Optional)
 
-    Set the value of the parameter to "true" if you want to advertise a service IP address instead of its hostname.
+    Set the value of this parameter to `true` to advertise a service IP address instead of its hostname.
 
 ### Administrative endpoints
 
@@ -363,12 +368,12 @@ The following snippet presents the information properties of a single API:
 
 ```
 apiInfo:
-    - apiId: org.zowe.sampleservice
-    version: v1
-    gatewayUrl: api/v1
-    swaggerUrl: http://localhost:10021/sampleservice/api-doc
-    documentationUrl: http://your.service.documentation.url
-    defaultApi: true
+    - apiId: zowe.apiml.sampleservice
+      version: 1.0.0
+      gatewayUrl: api/v1
+      swaggerUrl: http://localhost:10021/sampleservice/api-doc
+      documentationUrl: http://your.service.documentation.url
+      defaultApi: true
 ```
 
 where:
@@ -400,7 +405,7 @@ where:
 * **apiInfo.defaultApi** (Optional)
 
     specifies that this API is the default one shown in the API Catalog. If no apiInfo fields have `defaultApi` set to `true`, the default API is the one
-    with the highest api `version`.
+    with the highest API `version`.
 
 
 ### API routing information
@@ -426,49 +431,49 @@ routes:
 
 * **routes**
 
-    specifies the container element for the routes.
+    specifies the container element for the route.
 
 * **routes.gatewayUrl**
 
-    The gatewayUrl parameter specifies the portion of the gateway URL which is replaced by the serviceUrl path part.
+    The `gatewayUrl` parameter specifies the portion of the gateway URL which is replaced by the `serviceUrl` path part.
 
 * **routes.serviceUrl**
 
-    The serviceUrl parameter provides a portion of the service instance URL path which replaces the gatewayUrl part.
+    The `serviceUrl` parameter provides a portion of the service instance URL path which replaces the `gatewayUrl` part.
 
-**Example:** 
-```
-https://gateway:10010/api/sampleservice 
-```
-will be routed to: 
-```
-https://service:10015/sampleservice-api
-```
-API major version 1:
-```
-https://gateway:10010/api/v1/sampleservice
-```
-will be routed to: 
-```
-https://service:10015/sampleservice-api/ver1
-```
-APIs docs major version 1:
-```
-https://gateway:10010/api/v1/api-doc/sampleservice
-```
-will be routed to:
-```
-https://service:10015/sampleservice-api/api-doc
-```
+**Examples:** 
+* ```
+  https://gateway:10010/api/sampleservice 
+  ```
+  is routed to: 
+  ```
+  https://service:10015/sampleservice-api
+  ```
+* API major version 1:
+    ```
+    https://gateway:10010/api/v1/sampleservice
+    ```
+    is routed to: 
+    ```
+    https://service:10015/sampleservice-api/ver1
+    ```
+* APIs docs major version 1:
+    ```
+    https://gateway:10010/api/v1/api-doc/sampleservice
+    ```
+    is routed to:
+    ```
+    https://service:10015/sampleservice-api/api-doc
+    ```
 
 ### API Catalog information
 
 The API ML Catalog UI displays information about discoverable REST services registered with the API ML Discovery Service.
-Information displayed in the Catalog is defined by the metadata provided by your service during registration. The Tile will look similar to the one shown on following image.
+Information displayed in the Catalog is defined by the metadata provided by your service during registration. The following image is an example of a tile in the API Catalog:
  
  ![Tile](../../images/api-mediation/API-Catalog-Tile.png "Tile of a sample service in API Catalog") 
 
-The Catalog groups correlated services in the same tile, if these services are configured with the same `catalog.tile.id` metadata parameter.
+The Catalog groups correlated services in the same tile if these services are configured with the same `catalog.tile.id` metadata parameter.
 
 The following code block is an example of configuration of a service tile in the Catalog:
 
@@ -508,11 +513,11 @@ where:
     **Note:** Ensure that you increase the version number when you introduce changes to the API service product family details.
 
 ### Authentication parameters
-These parameters are not required. When not specified, the default values are used.
+These parameters are not required. Parameters that are not specified results in the use of the default values. 
 
-Allows a service to accept the Zowe JWT token. The API Gateway translates the token to an authentication method supported by a service.
+Authentication parameters enables a service to accept the Zowe JWT. The API Gateway translates the token to an authentication method supported by a service.
 
-The following parameters define service authentication method:
+The following example shows the parameters that define the service authentication method:
 
 **Example:**
 
@@ -521,10 +526,11 @@ authentication:
     scheme: httpBasicPassTicket
     applid: ZOWEAPPL
 ```
+where:
 
 * **authentication.scheme**
 
-    This parameter specifies a service authentication scheme. 
+    specifies a service authentication scheme. 
     The following schemes are supported by the API Gateway:
     
     * **bypass**
@@ -535,7 +541,7 @@ authentication:
         
      * **zoweJwt**   
      
-        This value specifies that a service accepts the Zowe JWT token. No additional processing is done by the API Gateway.
+        This value specifies that a service accepts the Zowe JWT. No additional processing is done by the API Gateway.
      
      * **httpBasicPassTicket**
      
@@ -547,14 +553,33 @@ authentication:
      * **zosmf**
      
         This value specifies that a service accepts z/OSMF LTPA (Lightweight Third-Party Authentication).
-        This scheme should be used only for z/OSMF service used by the API Gateway Authentication Service and other z/OSMF services that are using the same LTPA key.
+        This scheme should be used only for a z/OSMF service used by the API Gateway Authentication Service and other z/OSMF services that use the same LTPA key.
         
         For more information about z/OSMF Single Sign-on, see [Establishing a single sign-on environment](https://www.ibm.com/support/knowledgecenter/SSLTBW_2.4.0/com.ibm.zosmfcore.multisysplex.help.doc/izuG00hpManageSecurityCredentials.html)
+    * **x509**
+
+        This value specifies that a service accepts client certificates forwarded in the HTTP header. The Gateway service extracts information from a valid client certificate. To use this scheme, it is necessary to also specify which headers to include. Specify these parameters in `headers`.
+
+    * **headers**
+        
+        When the `x509` scheme is specified, use the `headers` parameter to select which values to send to a service. Use one of the following values:
+        
+        * `X-Certificate-Public`
+        
+           The public part of client certificate base64 encoded 
+
+        * `X-Certificate-DistinguishedName`
+        
+           The distinguished name from client certificate
+
+        * `X-Certificate-CommonName` 
+        
+          The common name from the client certificate
 
 * **authentication.applid**
 
     This parameter specifies a service APPLID.
-    This parameter is valid only for `httpBasicPassTicket` authentication scheme.
+    This parameter is valid only for the `httpBasicPassTicket` authentication scheme.
     
 ### API Security
 
@@ -826,7 +851,7 @@ The following code block is a full example of a context listener class implement
 Once you are able to build and start your service successfully, you can use the option of validating that your service is registered correctly with the API ML Discovery Service.
 
 **Follow these steps:**
-  1. [Validate successful onboarding](./onboard-overview.md#validating-successful-onboarding)
+  1. [Validate successful onboarding](./onboard-overview.md#verify-successful-onboarding-to-the-api-ml)
  
   2. Check that you can access your API service endpoints through the Gateway.
 

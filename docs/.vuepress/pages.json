@@ -2,27 +2,37 @@
     "text": "Getting Started",
     "baseuri": "/getting-started/",
     "items": [{
-        "text": "Zowe overview",
-        "link": "getting-started/overview.md"
-      },
+      "text": "Zowe fundamentals",
+      "items": [
+        "getting-started/overview.md",
+        "getting-started/zowe-architecture.md",
+        "getting-started/freqaskques.md"
+      ]
+    },
       {
-        "text": "Zowe architecture",
-        "link": "getting-started/zowe-architecture.md"
-      },
-      {
-        "text": "Release notes",
+        "text": "What's new",
         "link": "getting-started/summaryofchanges.md"
       },
       {
-        "text": "Zowe CLI quick start",
-        "link": "getting-started/cli-getting-started.md"
+        "text": "Zowe quick start",
+        "items": [
+          "getting-started/zowe-getting-started.md",
+          "getting-started/cli-getting-started.md"
+        ]
       },
       {
-        "text": "Zowe FAQs",
-        "link": "getting-started/freqaskques.md"
+        "text": "Learning paths",
+        "items": [
+          "getting-started/user-roadmap-apiml.md",
+          "getting-started/user-roadmap-app-framework.md",
+          "getting-started/user-roadmap-zowe-cli.md",
+          "getting-started/user-roadmap-zowe-explorer.md",
+          "getting-started/user-roadmap-client-sdk.md",
+          "getting-started/user-roadmap-zowe-mobile.md"
+        ]
       },
       {
-        "text": "Related resources",
+        "text": "Zowe resources",
         "link": "getting-started/zowe-resources.md"
       }
     ]
@@ -160,8 +170,11 @@
           "extend/extend-apiml/onboard-plain-java-enabler-external-configuration.md",
           "extend/extend-apiml/onboard-direct-eureka-call.md",
           "extend/extend-apiml/onboard-spring-boot-enabler.md",
+          "extend/extend-apiml/onboard-micronaut-enabler.md",
+          "extend/extend-apiml/onboard-nodejs-enabler.md",
           "extend/extend-apiml/onboard-static-definition.md",
           "extend/extend-apiml/api-mediation-sso.md",
+          "extend/extend-apiml/service-information.md",
           "extend/extend-apiml/api-mediation-message-service.md",
           "extend/extend-apiml/api-mediation-security.md",
           "extend/extend-apiml/api-mediation-routing.md",
@@ -261,6 +274,10 @@
     "hideInPdf": true,
     "canHideFirst": true,
     "items": [{
+      "text": "How to contribute",
+      "link": "contribute/roadmap-contribute.md"
+      },
+      {
         "text": "Code guidelines",
         "items": [
           "contribute/guidelines-code/categories.md",

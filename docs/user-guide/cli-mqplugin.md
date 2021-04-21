@@ -8,7 +8,7 @@ The IBM MQ Plug-in for Zowe CLI lets you issue MQSC commands to a queue manager.
 
 ## Use cases
 
-You can use the plug-in to excecute MQSC Commands. With MQSC commands you can manage queue manager objects (including the queue manager itself), queues, process definitions, channels, client connection channels, listeners, services, namelists, clusters, and authentication information objects.
+You can use the plug-in to execute MQSC Commands. With MQSC commands you can manage queue manager objects (including the queue manager itself), queues, process definitions, channels, client connection channels, listeners, services, namelists, clusters, and authentication information objects.
 
 ## Using IBM MQ plug-in commands
 

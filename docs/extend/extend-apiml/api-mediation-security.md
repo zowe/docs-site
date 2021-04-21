@@ -141,7 +141,7 @@ The API ML TLS requires servers to provide HTTPS ports. Each API ML service has 
 
     - The API Gateway handles authentication
     - There are two authentication endpoints that allow to authenticate the resource by providers
-    - Diagnostic endpoints `/application/**` in API Gateway are protected by basic authentication or Zowe JWT token
+    - Diagnostic endpoints `https://{gatewayUrl}:{gatewayPort}/application/**` in API Gateway are protected by basic authentication or Zowe JWT token
 
 - **API Catalog**
 
@@ -153,7 +153,7 @@ The API ML TLS requires servers to provide HTTPS ports. Each API ML service has 
     - Discovery Service is accessed by API Services
     - This access (reading information and registration) requires protection needs by a client certificate
     - (Optional) Access can be granted to users (administrators)
-    - Diagnostic endpoints `/application/**` in Discovery Service are protected by basic authentication or Zowe JWT token
+    - Diagnostic endpoints `https://{gatewayUrl}:{gatewayPort}/application/**` in Discovery Service are protected by basic authentication or Zowe JWT token
 
 - **API Services**
 
@@ -163,23 +163,31 @@ The API ML TLS requires servers to provide HTTPS ports. Each API ML service has 
 
 #### Authentication endpoints
 
-The API Gateway contains two REST API authentication endpoints: `auth/login` and `auth/query`.
+The API Gateway contains two REST API authentication endpoints:
 
-The `/login` endpoint authenticates mainframe user credentials and returns an authentication token. The login request requires user credentials though one of the following methods:
+  * `auth/login`
+  
+    The full path of the `auth/login` endpoint appears as `https://{gatewayUrl}:{gatewayPort}/gateway/api/v1/auth/login` (preferred option) or `https://{gatewayUrl}:{gatewayPort}/api/v1/gateway/auth/login`.   
+  * `auth/query`
+  
+    The full path of the `auth/query` endpoint appear as `https://{gatewayUrl}:{gatewayPort}/gateway/api/v1/auth/query` (preferred option) or `https://{gatewayUrl}:{gatewayPort}/api/v1/gateway/auth/query`. 
+    
+    
+The `auth/login` endpoint authenticates mainframe user credentials and returns an authentication token. The login request requires user credentials though one of the following methods:
   * Basic access authentication
   * JSON with user credentials
   * Client certificate
 
 When authentication is successful, the response to the request is an empty body and a token is contained in a secure `HttpOnly` cookie named `apimlAuthenticationToken`. When authentication fails, the user receives a 401 status code.
 
-The `/query` endpoint validates the token and retrieves the information associated with the token.
+The `auth/query` endpoint validates the token and retrieves the information associated with the token.
 The query request requires the token through one of the following methods:
   * A cookie named `apimlAuthenticationToken`
   * Bearer authentication
 
 When authentication is successful, the response to the request is a JSON object which contains information associated with the token. When authentication fails, the user receives a 401 status code.
 
-The `/ticket` endpoint generates a PassTicket for the user associated with a token.
+The `auth/ticket` endpoint generates a PassTicket for the user associated with a token. The full path of the `auth/ticket` endpoint appears as https://{gatewayUrl}:{gatewayPort}/gateway/api/v1/auth/ticket` (preferred option) or `https://{gatewayUrl}:{gatewayPort}/api/v1/gateway/auth/ticket`.`
 
 This endpoint is protected by a client certificate.
 The ticket request requires the token in one of the following formats:
@@ -220,7 +228,7 @@ If the keyring or a truststore contains at least one valid certificate authority
 
 <img src="../../images/api-mediation/zowe-client-cert-auth.png" alt="Zowe client certificate authentication diagram" align=center width="700px"/>
 
-**Prerequisities:**
+**Prerequisites:**
 * Alter the Zowe runtime user and set protection by password. The user is created with the `NOPASSWORD` parameter by the Zowe installer. This password must be changed and a new password has to be set. For RACF, issue the following TSO command: 
   
       ALTUSER <ZOWE_RUNTIME_USER (ZWESVUSR by default)> PASSWORD(<NEWPASSWORD>)
@@ -307,7 +315,7 @@ by other technologies in Zowe (Node.js).
 
 As an alternative to using a keystore and truststore, API ML can read certificates from a SAF keyring. The user running the API ML must have rights to access the keyring. From the java perspective, the keyring behaves as the `JCERACFKS` keystore. The path to the keyring is specified as `safkeyring:////user_id/key_ring_id`. The content of SAF keyring is equivalent to the combined contents of the keystore and the truststore.
 
-**Note:** When using JCEFACFKS as the keystore type, ensure that you define the class to handle the RACF keyring using the `-D` options to specify the `java.protocol.handler.pkgs property`:
+**Note:** When using JCERACFKS as the keystore type, ensure that you define the class to handle the RACF keyring using the `-D` options to specify the `java.protocol.handler.pkgs property`:
 
     -Djava.protocol.handler.pkgs=com.ibm.crypto.provider
 
