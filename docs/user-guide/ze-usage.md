@@ -30,7 +30,7 @@ Review the following use cases to understand how to use Zowe Explorer.
 - [Work with Data Sets](#work-with-data-sets)
 - [Work with USS Files](#work-with-uss-files)
 - [Work with jobs](#work-with-jobs)
-- [MVS/TSO Commands](#mvs/tso-commands)
+- [MVS and TSO Commands](#mvs-and-tso-commands)
 
 ### Work with Data Sets
 
@@ -353,15 +353,28 @@ You can use the following functionalities when interacting with jobs:
 
 <img src="../images/ze/ZE-jobs-download-spool.gif" alt="Download Spool">
 
-### MVS/TSO Commands
+### MVS and TSO Commands
+
+Zowe Explorer also enables you to issue TSO commands and MVS commands. You can issue such commands as Allocate or Exec against a profile.
 
 #### Issue MVS commands
 
-Zowe Explorer also enables you to issue MVS commands. You can issue such commands as Allocate or Exec against a profile.
+1. Right-click on your profile and select the **Issue MVS Command** option. Select the **Zowe:Issue MVS Command** option.
 
-1. Press the **F1** key on your keyboard.
-2. Select the **Zowe:Issue MVS Command** option.
-3. Select your profile.
-4. Issue an MVS command.
+ Alternatively, press the **F1** key on your keyboard, then select "the **Zowe:Issue MVS Command** option.
+
+2. Select your profile.
+3. Issue an MVS command.
 
 <img src="../images/ze/ZE-Jobs-Issue-TSO-Command.gif" alt="Issue a MVS command">
+
+#### Issue TSO commands
+
+1. Right-click on your profile and select the **Issue TSO Command** option. Select the **Zowe:Issue TSO Command** option.
+
+ Alternatively, press the **F1** key on your keyboard, then select "the **Zowe:Issue TSO Command** option.
+
+2. Select your profile.
+3. Issue a TSO command.
+
+<img src="../images/ze/ZE-TSO-Command.gif" alt="Issue a TSO command">
