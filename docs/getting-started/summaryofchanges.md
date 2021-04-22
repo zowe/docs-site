@@ -44,9 +44,17 @@ Zowe Version 1.21 and earlier releases include the following enhancements, relea
 #### Zowe CLI
 #### Zowe Explorer
 
+- Added the Issue TSO Commands feature. [#1245](https://github.com/zowe/vscode-extension-for-zowe/pull/1245)
+
 ### Bug Fixes
 
+#### Zowe API Mediation Layer
+#### Zowe App Server
+#### Zowe CLI
+#### Zowe Explorer
 
+- Fixed the issue that caused the USS tree to colapse after renaming a folder. [#1259](https://github.com/zowe/vscode-extension-for-zowe/pull/1259)
+- Fixed the issue that prevented jobs with an octothorpe (#) in the name from opening. [#1253](https://github.com/zowe/vscode-extension-for-zowe/issues/1253)
 
 ## Version 1.20.1 LTS (March 2021)
 
