@@ -357,22 +357,24 @@ You can use the following functionalities when interacting with jobs:
 
 #### Issue MVS commands
 
-1. Right-click on your profile and select the **Issue MVS Command** option. Select the **Zowe:Issue MVS Command** option.
+1. Right-click on your profile and search for the **Issue MVS Command** option. Select the **Zowe:Issue MVS Command** option.
 
    Alternatively, press the **F1** key on your keyboard, then select "the **Zowe:Issue MVS Command** option.
 
-2. Select your profile.
-3. Issue an MVS command.
+2. Enter a new command or select a saved command.
+3. Press Enter to execute the command.
 
 <img src="../images/ze/ZE-Jobs-Issue-TSO-Command.gif" alt="Issue a MVS command">
 
 #### Issue TSO commands
 
-1. Right-click on your profile and select the **Issue TSO Command** option. Select the **Zowe:Issue TSO Command** option.
+1. Right-click on your profile and search for the **Issue TSO Command** option. Select the **Zowe:Issue TSO Command** option.
 
    Alternatively, press the **F1** key on your keyboard, then select "the **Zowe:Issue TSO Command** option.
 
-2. Select your profile.
-3. Issue a TSO command.
+2. Enter a new command or select a saved command.
+3. Press Enter to execute the command.
+ 
+   The output is displayed.
 
 <img src="../images/ze/ZE-TSO-Command.gif" alt="Issue a TSO command">
