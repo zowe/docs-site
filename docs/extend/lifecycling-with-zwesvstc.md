@@ -24,7 +24,9 @@ Each Zowe component will be installed with its own USS directory, which contains
 - Used for the base Zowe components that are included with the core Zowe runtime.
 - Applies to extensions to allow vendor offerings to be able to have the lifecycle of their 'microservices' within the Zowe USS shell and be included as address spaces under the `ZWESVSTC` started task.
 
-Please note, all lifecycle scripts are executed from directory of the component root directory. This directory will usually be the parent of your `/bin` directory.
+**Note:**
+
+All lifecycle scripts are executed from the root directory of the component. This directory is usually the parent directory of your `/bin` directory.
 
 ### Validate
 
@@ -47,7 +49,7 @@ If the component has manifest defined, some configure actions will be performed 
 
 For backward compatible purpose, you can choose to configure component by yourself with `/bin/configure.sh`. An example configuration step is if a component wants to install applications into the Zowe desktop as iframes, or add API endpoints statically into the API Mediation Layer.  Because a component's `configure.sh` script is run inside the USS shell that the `instance.env` has initialized, it will have all of the shell variables for prerequisites set, so the configure step can be used to query these in order to prepare the component ready for launch.
 
-From v1.20.0 or above, you can pass along configuration variables from `configure` step to `start` step by exporting it. Each components are running in separated shell space, that means variable from one component will not affect same variable of another component. For example, `export MY_VAR=val` in `/bin/configure.sh`, then `${MY_VAR}` should be available in your `/bin/start.sh`. But `${MY_VAR}` is not available for other components.
+From v1.20.0 or later, you can export configuration variables from the `configure` step to the `start` step. Each component runs in separated shell space, which means that the variable of one component does not affect the same variable of another component. For example, when you run `export MY_VAR=val` in `/bin/configure.sh`, then the variable `${MY_VAR}` will be available in your `/bin/start.sh` script. However, `${MY_VAR}` will not be available in other components.
 
 ### Start
 
