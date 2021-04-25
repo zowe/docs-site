@@ -220,6 +220,10 @@ module.exports = {
       defaultMode: "light",
       respectPrefersColorScheme: true,
     },
+    googleAnalytics: {
+      trackingID: "UA-123892882",
+      anonymizeIP: true, // Should IPs be anonymized?
+    },
   },
   presets: [
     [
