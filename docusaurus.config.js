@@ -227,23 +227,32 @@ module.exports = {
   },
   presets: [
     [
+      //For reference: https://v2.docusaurus.io/docs/api/plugins/@docusaurus/plugin-content-docs#configuration
+      //Plugins are written in form of presets
       "@docusaurus/preset-classic",
       {
         docs: {
+          path: "docs", //Path to data on filesystem relative to site dir.
           sidebarPath: require.resolve("./sidebars.js"),
-          // Please change this to your repo.
-          editUrl:
-            "https://github.com/facebook/docusaurus/edit/master/website/",
-        },
-        blog: {
-          showReadingTime: true,
-          // Please change this to your repo.
-          editUrl:
-            "https://github.com/facebook/docusaurus/edit/master/website/blog/",
+          editUrl: "https://github.com/zowe/docs-site/edit/master/",
+          // showLastUpdateAuthor: true,
+          showLastUpdateTime: true,
+          // showReadingTime: true,
+          routeBasePath: "/", //Default is docs/
+          lastVersion: "current",
+          versions: {
+            current: {
+              path: "stable", //TODO: stable
+              label: `${LATEST_VERSION}`,
+              // label: 'v1.22.x'
+            },
+          },
         },
         theme: {
           customCss: require.resolve("./src/css/custom.css"),
         },
+        // pages: {},
+        // sitemap: {},
       },
     ],
   ],
