@@ -1,0 +1,167 @@
+{
+  "version-v1.21.x/getting-started": [
+    {
+      "collapsed": true,
+      "type": "category",
+      "label": "Get Started",
+      "items": [
+        {
+          "collapsed": true,
+          "type": "category",
+          "label": "Zowe Fundamentals",
+          "items": [
+            {
+              "type": "doc",
+              "id": "version-v1.21.x/getting-started/overview"
+            },
+            {
+              "type": "doc",
+              "id": "version-v1.21.x/getting-started/zowe-architecture"
+            },
+            {
+              "type": "doc",
+              "id": "version-v1.21.x/getting-started/freqaskques"
+            },
+            {
+              "collapsed": true,
+              "type": "category",
+              "label": "Introductions Parent",
+              "items": [
+                "version-v1.21.x/getting-started/doc2",
+                {
+                  "type": "doc",
+                  "id": "version-v1.21.x/getting-started/introductions/doc1"
+                },
+                {
+                  "collapsed": true,
+                  "type": "category",
+                  "label": "Introductions Child 1",
+                  "items": [
+                    {
+                      "type": "doc",
+                      "id": "version-v1.21.x/getting-started/doc4"
+                    },
+                    {
+                      "collapsed": true,
+                      "type": "category",
+                      "label": "Introductions Child 2",
+                      "items": [
+                        {
+                          "type": "doc",
+                          "id": "version-v1.21.x/getting-started/doc7"
+                        },
+                        {
+                          "type": "doc",
+                          "id": "version-v1.21.x/getting-started/doc8"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "doc",
+          "id": "version-v1.21.x/getting-started/release-notes"
+        },
+        {
+          "collapsed": true,
+          "type": "category",
+          "label": "Zowe quick start",
+          "items": [
+            {
+              "type": "doc",
+              "id": "version-v1.21.x/getting-started/zowe-getting-started"
+            },
+            {
+              "type": "doc",
+              "id": "version-v1.21.x/getting-started/cli-getting-started"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "version-v1.21.x/extending": [
+    {
+      "collapsed": true,
+      "type": "category",
+      "label": "Extending",
+      "items": [
+        {
+          "type": "doc",
+          "id": "version-v1.21.x/extend/doc1"
+        }
+      ]
+    }
+  ],
+  "version-v1.21.x/contributing": [
+    {
+      "collapsed": true,
+      "type": "category",
+      "label": "Contributing",
+      "items": [
+        {
+          "collapsed": true,
+          "type": "category",
+          "label": "Code Guidelines",
+          "items": [
+            {
+              "type": "doc",
+              "id": "version-v1.21.x/contribute/guidelines-code/categories"
+            },
+            {
+              "type": "doc",
+              "id": "version-v1.21.x/contribute/guidelines-code/general"
+            },
+            {
+              "type": "doc",
+              "id": "version-v1.21.x/contribute/guidelines-code/code-and-patches"
+            },
+            {
+              "type": "doc",
+              "id": "version-v1.21.x/contribute/guidelines-code/documentation"
+            }
+          ]
+        },
+        {
+          "collapsed": true,
+          "type": "category",
+          "label": "UI Guidelines",
+          "items": [
+            {
+              "type": "doc",
+              "id": "version-v1.21.x/contribute/guidelines-ui/ui"
+            },
+            {
+              "type": "doc",
+              "id": "version-v1.21.x/contribute/guidelines-ui/appicon"
+            },
+            {
+              "type": "doc",
+              "id": "version-v1.21.x/contribute/guidelines-ui/colors"
+            },
+            {
+              "type": "doc",
+              "id": "version-v1.21.x/contribute/guidelines-ui/grid"
+            },
+            {
+              "type": "doc",
+              "id": "version-v1.21.x/contribute/guidelines-ui/icon"
+            },
+            {
+              "type": "doc",
+              "id": "version-v1.21.x/contribute/guidelines-ui/typography"
+            }
+          ]
+        },
+        {
+          "type": "doc",
+          "id": "version-v1.21.x/contribute/contributing"
+        }
+      ]
+    }
+  ]
+}
