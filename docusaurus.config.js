@@ -216,6 +216,10 @@ module.exports = {
       textColor: "#091E42", // Defaults to `#000`.
       isCloseable: true, // Defaults to `true`.
     },
+    colorMode: {
+      defaultMode: "light",
+      respectPrefersColorScheme: true,
+    },
   },
   presets: [
     [
