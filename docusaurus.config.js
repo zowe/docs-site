@@ -139,13 +139,46 @@ module.exports = {
     },
     footer: {
       style: "dark",
+      // logo: {
+      //   alt: 'Zowe Logo',
+      //   src: 'img/zowe-icon-dark.png',
+      //   href: 'https://www.zowe.org/',
+      // },
       links: [
         {
-          title: "Docs",
+          title: "Products",
           items: [
             {
-              label: "Tutorial",
-              to: "/docs/intro",
+              label: "Download",
+              href: "https://www.zowe.org/download.html",
+            },
+            {
+              label: "Try Zowe",
+              href: "https://www.openmainframeproject.org/projects/zowe/ztrial",
+            },
+            {
+              label: "Features",
+              href:
+                "https://docs.zowe.org/stable/getting-started/overview.html",
+            },
+          ],
+        },
+        {
+          title: "Resources",
+          items: [
+            {
+              label: "Blogs",
+              href: "https://medium.com/zowe",
+            },
+            {
+              label: "Videos",
+              href:
+                "https://www.youtube.com/playlist?list=PL8REpLGaY9QE_9d57tw3KQdwSVLKuTpUZ",
+            },
+            {
+              label: "Zowe Conformance Program",
+              href:
+                "https://www.openmainframeproject.org/projects/zowe/conformance",
             },
           ],
         },
@@ -153,34 +186,27 @@ module.exports = {
           title: "Community",
           items: [
             {
-              label: "Stack Overflow",
-              href: "https://stackoverflow.com/questions/tagged/docusaurus",
+              label: "Join us on Slack",
+              href: "https://slack.openmainframeproject.org/",
             },
             {
-              label: "Discord",
-              href: "https://discordapp.com/invite/docusaurus",
-            },
-            {
-              label: "Twitter",
-              href: "https://twitter.com/docusaurus",
-            },
-          ],
-        },
-        {
-          title: "More",
-          items: [
-            {
-              label: "Blog",
-              to: "/blog",
+              label: "Join community meetings",
+              href:
+                "https://lists.openmainframeproject.org/g/zowe-dev/calendar",
             },
             {
               label: "GitHub",
-              href: "https://github.com/facebook/docusaurus",
+              href: "https://github.com/zowe/",
+            },
+            {
+              label: "Contribute",
+              href:
+                "https://docs.zowe.org/stable/contribute/roadmap-contribute.html",
             },
           ],
         },
       ],
-      copyright: `Copyright © ${new Date().getFullYear()} My Project, Inc. Built with Docusaurus.`,
+      copyright: `© Open Mainframe Project. a Linux Foundation Project. All Rights Reserved.`,
     },
   },
   presets: [
