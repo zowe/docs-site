@@ -208,6 +208,14 @@ module.exports = {
       ],
       copyright: `© Open Mainframe Project. a Linux Foundation Project. All Rights Reserved.`,
     },
+    announcementBar: {
+      id: "support_us", // Any value that will identify this message.
+      content:
+        '<a target="_blank" rel="noopener noreferrer" href="https://github.com/zowe/docs-site/issues/new/choose">Let us know</a> what you think about the new Zowe docs experience!',
+      backgroundColor: "#fafbfc", // Defaults to `#fff`.
+      textColor: "#091E42", // Defaults to `#000`.
+      isCloseable: true, // Defaults to `true`.
+    },
   },
   presets: [
     [
