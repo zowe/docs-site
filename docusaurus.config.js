@@ -1,3 +1,5 @@
+const LATEST_VERSION = "v1.22.x";
+
 /** @type {import('@docusaurus/types').DocusaurusConfig} */
 module.exports = {
   title: "Zowe Docs",
@@ -35,7 +37,6 @@ module.exports = {
       items: [
         {
           label: "Getting Started",
-          // Prepends the baseUrl to href values.
           to: "/getting-started/overview",
           // to: "getting-started/overview", //Remove this (to) to remove onClick
           position: "right",
@@ -43,9 +44,6 @@ module.exports = {
             {
               label: "Doc 1",
               to: "getting-started/introductions/doc1",
-
-              //activeBaseRegex: 'docs/(next|v8)'
-              // See docs: https://v2.docusaurus.io/docs/api/themes/configuration#navbar-items
             },
             {
               label: "Doc 2",

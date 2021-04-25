@@ -1,0 +1,19 @@
+html[data-theme="dark"] .section {
+  background-color: var(--ifm-card-background-color);
+}
+
+.section {
+  padding: 4rem 0;
+}
+
+.features {
+  display: flex;
+  align-items: center;
+  padding: 2rem 0;
+  width: 100%;
+}
+
+.featureImage {
+  height: 200px;
+  width: 200px;
+}
