@@ -225,6 +225,21 @@ module.exports = {
       anonymizeIP: true, // Should IPs be anonymized?
     },
   },
+  // i18n: {
+  //   defaultLocale: "en",
+  //   locales: ["en", "fr", "es"],
+  //   localeConfigs: {
+  //     en: {
+  //       label: "English",
+  //     },
+  //     fr: {
+  //       label: "Français",
+  //     },
+  //     es: {
+  //       label: "Español",
+  //     },
+  //   },
+  // },
   presets: [
     [
       //For reference: https://v2.docusaurus.io/docs/api/plugins/@docusaurus/plugin-content-docs#configuration
