@@ -16,15 +16,6 @@ module.exports = {
   projectName: "docs-site",
   themeConfig: {
     hideableSidebar: true,
-    algolia: {
-      //FIXME:
-      apiKey: "aa",
-      indexName: "aaa",
-      contextualSearch: true,
-      searchParameters: {
-        // facetFilters: [`version:${PUBLISH_TARGET_PATH}`],
-      },
-    },
     navbar: {
       title: "Zowe Docs",
       hideOnScroll: true,
@@ -214,6 +205,15 @@ module.exports = {
       textColor: "#091E42", // Defaults to `#000`.
       isCloseable: true, // Defaults to `true`.
     },
+    algolia: {
+      //FIXME:
+      apiKey: "aa",
+      indexName: "aaa",
+      contextualSearch: true,
+      searchParameters: {
+        // facetFilters: [`version:${PUBLISH_TARGET_PATH}`],
+      },
+    },
     colorMode: {
       defaultMode: "light",
       respectPrefersColorScheme: true,
@@ -247,7 +247,7 @@ module.exports = {
         docs: {
           path: "docs", //Path to data on filesystem relative to site dir.
           sidebarPath: require.resolve("./sidebars.js"),
-          editUrl: "https://github.com/zowe/docs-site/edit/master/",
+          editUrl: "https://github.com/zowe/docs-site/edit/zowe-docs-v2/",
           // showLastUpdateAuthor: true,
           showLastUpdateTime: true,
           // showReadingTime: true,
