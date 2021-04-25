@@ -1,7 +1,5 @@
 ---
-title: Overview
-# sidebar_label: Overview
-# hide_title: true
+title: Review Notes
 ---
 
 Check out the following FAQs to learn more about the purpose and function of Zowe&trade;.

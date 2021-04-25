@@ -1,4 +1,9 @@
-# Frequently Asked Questions
+---
+title: Frequently Asked Questions
+# hide_title: true
+---
+
+<!-- # Frequently Asked Questions -->
 
 Check out the following FAQs to learn more about the purpose and function of Zowe&trade;.
 

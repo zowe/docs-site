@@ -1,8 +1,4 @@
----
-title: Overview
-# sidebar_label: Overview
-# hide_title: true
----
+# Document Number 2
 
 Check out the following FAQs to learn more about the purpose and function of Zowe&trade;.
 
