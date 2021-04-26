@@ -104,7 +104,7 @@ The following procedure shows how to configure the `zowe-setup-certificates.env`
     **Note:**
 Be sure to specify the complete value _in quotes_. This can be used for certificate authorities that have signed the certificates of the services that you want to access through the API Mediation Layer.
 
-5. (Optional) If you have trouble getting the certificates and you want only to evaluate Zowe, you can switch off the certificate validation by setting `VERIFY_CERTIFICATES=false` and `NONSTRICT_VERIFY_CERTIFICATES=false`. THis setting continues to use HTTPS, but the API Mediation Layer will not validate any certificate.
+5. (Optional) If you have trouble getting the certificates and you want only to evaluate Zowe, you can switch off the certificate validation by setting `VERIFY_CERTIFICATES=false` and `NONSTRICT_VERIFY_CERTIFICATES=false`. This setting continues to use HTTPS, but the API Mediation Layer will not validate any certificate.
 
     **Important!** Switching off certificate evaluation is a non-secure setup. Please talk to your system administrator before you do so and only use these options for troubleshooting purpose.
 
@@ -144,7 +144,7 @@ This error must be resolved before you can proceed with the next installation st
 
 **Note:** 
 
-On many z/OS systems, the certificate for z/OSMF is not signed by a trusted CA and is a self-signed certificate by the z/OS system programmer who configured z/OSMF. Based on the configuration, zowe-setup-certificates.sh may not be able to detect z/OSMF certificate and certificate authority successfully. In this case, you can define `ZOSMF_CERTIFICATE=` manually to let Zowe trust the certificate you determined.
+On many z/OS systems, the certificate for z/OSMF is not signed by a trusted CA and is a self-signed certificate by the z/OS system programmer who configured z/OSMF. Based on the configuration, there is chance zowe-setup-certificates.sh may not be able to detect z/OSMF certificate and certificate authority successfully. In this case, you can define `ZOSMF_CERTIFICATE=` manually to let Zowe trust the certificate you determined.
 
 If the certificate is from a recognized CA but for a different host name, which can occur when a trusted certificate is copied from one source and reused within a z/OS installation for different servers other than that it was originally created for. We recommended to regenerate certificates with correct `HOSTNAME=` option.
 
