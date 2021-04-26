@@ -39,6 +39,13 @@ Zowe Version 1.21 and earlier releases include the following enhancements, relea
 
 ### New features and enhancements
 
+#### Zowe Installation and Configuration
+
+* Enhancement: we introduced a new non-strict verify certificates mode can be customized as `NONSTRICT_VERIFY_CERTIFICATES` in `zowe-setup-certificates.env`. Comparing to strict `VERIFY_CERTIFICATES` mode, this non-strict mode will not validate certificate Command Name or Subject Alternative Name (SAN). But Zowe will still validate if the certificate authorities are in trust store. This change was introduced with [zowe/api-layer#1334](https://github.com/zowe/api-layer/issues/1334) and fixed by [#2062](https://github.com/zowe/zowe-install-packaging/pull/2062).
+* Enhancement: we add two new JCLs (`ZWESSKTK` and `ZWENOSSO`) to PDS sample library `SZWESAMP`. `ZWESSKTK` can help user to create SSO `PKCS#11` token and setup required security configurations. `ZWENOSSO` can help user to remove the `PKCS#11` token and related permission changes. This issue is described in [zowe-install-packaging#2052](https://github.com/zowe/zowe-install-packaging/issues/2052) and fixed by [2094](https://github.com/zowe/zowe-install-packaging/pull/2094).
+* Enhancement: [Reduce the amount of checking of Java and node levels](https://github.com/zowe/zowe-install-packaging/issues/1997) is fixed by [#2063](https://github.com/zowe/zowe-install-packaging/pull/2063).
+* Enhancement: [ZWESECUR. Add a list to the JCL for the client cert PERMIT to match the other RACF commands](https://github.com/zowe/zowe-install-packaging/issues/1971) is fixed by [#2063](https://github.com/zowe/zowe-install-packaging/pull/2063).
+
 #### Zowe API Mediation Layer
 #### Zowe App Server
 #### Zowe CLI
@@ -57,6 +64,13 @@ The following enhancement was added to the **Imperative CLI Framework**:
 
 ### Bug Fixes
 
+#### Zowe Installation and Configuration
+
+* Fixes [Zowe runs with prefer IP address true as default](https://github.com/zowe/zowe-install-packaging/issues/1948) with [#2063](https://github.com/zowe/zowe-install-packaging/pull/2063). **Important notes**, with this fix, `APIML_PREFER_IP_ADDRESS` configuration in `instance.env` is deprecated and Zowe will always use `false` as the value.
+* Fixes [Zowe 1.19.1 zowe-setup-certificates.sh script failed if not executed from correct dir](https://github.com/zowe/zowe-install-packaging/issues/2030) with [#2062](https://github.com/zowe/zowe-install-packaging/pull/2062).
+* Fixes [Script zowe-support.sh not working.](https://github.com/zowe/zowe-install-packaging/issues/2041) with [#2049](https://github.com/zowe/zowe-install-packaging/pull/2049).
+* Fixes [validate_certificate_domain reports false negative on wildcard domains](https://github.com/zowe/zowe-install-packaging/issues/2116) with [#2117](https://github.com/zowe/zowe-install-packaging/pull/2117).
+
 #### Zowe CLI
 
 The following bugs were fixed in the **Imperative CLI Framework**:
@@ -73,7 +87,6 @@ The following bugs were fixed in the **FTP Plug-in**:
 #### Zowe Explorer
 - Fixed the issue that caused the USS tree to collapse after renaming a folder [#1259](https://github.com/zowe/vscode-extension-for-zowe/pull/1259)
 - Fixed the issue that prevented jobs with an octothorpe (#) in the name from opening [#1253](https://github.com/zowe/vscode-extension-for-zowe/issues/1253)
-
 
 ## Version 1.20.1 LTS (March 2021)
 
