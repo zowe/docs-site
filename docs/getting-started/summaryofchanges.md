@@ -39,20 +39,70 @@ Zowe Version 1.21 and earlier releases include the following enhancements, relea
 
 ### New features and enhancements
 
+#### Zowe installation and configuration
+
+* Introduced a new non-strict verify certificates mode which can be customized as `NONSTRICT_VERIFY_CERTIFICATES` in `zowe-setup-certificates.env`. Comparing to strict `VERIFY_CERTIFICATES` mode, this non-strict mode will not validate certificate Common Name or Subject Alternative Name (SAN). However, Zowe will still validate if the certificate authorities are trusted in the trust store. This change was introduced with issue [zowe/api-layer#1334](https://github.com/zowe/api-layer/issues/1334) and fixed by [#2062](https://github.com/zowe/zowe-install-packaging/pull/2062).
+* Added two new JCLs (`ZWESSKTK` and `ZWENOSSO`) to the PDS sample library `SZWESAMP`. `ZWESSKTK` can be used to create SSO `PKCS#11` token and set up required security configurations. `ZWENOSSO` can be used to remove the `PKCS#11` token and related security changes. This issue is described in [zowe-install-packaging#2052](https://github.com/zowe/zowe-install-packaging/issues/2052) and fixed by [#2094](https://github.com/zowe/zowe-install-packaging/pull/2094).
+* Reduced the amount of checking of Java and node levels. [#1997](https://github.com/zowe/zowe-install-packaging/issues/1997), [#2063](https://github.com/zowe/zowe-install-packaging/pull/2063)
+* Added a list to the ZWESECUR JCL for the client cert PERMIT to match the other RACF commands. [#1971](https://github.com/zowe/zowe-install-packaging/issues/1971), [#2063](https://github.com/zowe/zowe-install-packaging/pull/2063)
+
 #### Zowe API Mediation Layer
+
+* The dockered deployment of Zowe now supports Redis as an off-platform storage for the Caching service. ([a7f4ad](https://github.com/zowe/api-layer/commit/a7f4ad17a1121b3e47b124f9beac095593b25ee2)), closes [1128](https://github.com/zowe/api-layer/issues/1128)
+* Configuration of the API ML run is now permitted where the hostname in the certificate is not verified in a strict manner. The certificate Common Name or Subject Alternate Name (SAN) are NOT checked. This facilitates deployment to Marist when certificates are valid but do not contain a valid hostname. This is for development purposes only and should not be used for production. (#1334) ([2da761a](https://github.com/zowe/api-layer/commit/2da761a)), closes [#1334](https://github.com/zowe/api-layer/issues/1355) 
+* Caching service: The alphanumeric constraint for keys stored in the service has been removed. (#1317) ([237420](https://github.com/zowe/api-layer/commit/23742017fb37815dc40b5e7c8645acfac5a92ccb))
+* An endpoint has been added to delete all keys for a specific service (#1253) ([0c3e01](https://github.com/zowe/api-layer/commit/0c3e01900ea646bd959472bae3bd9c1fbd7d3e31)), closes [1253](https://github.com/zowe/api-layer/issues/1253)
+
 #### Zowe App Server
+
 #### Zowe CLI
+
+The following enhancements were added to the **core CLI**:
+- Add the option `--jcl-symbols` to the jobs submit command to enable users to specify JCL symbol names and values.
+- Made changes to definition files for zowe ssh commands  [#603](https://github.com/zowe/zowe-cli/issues/603)
+- Added a standard data set template with no parameters set.
+
+The following enhancement was added to the **Imperative CLI Framework**:
+- Added `headers[]` option to `TextUtils.getTable()`. [#369](https://github.com/zowe/imperative/issues/369)
+
 #### Zowe Explorer
 
 - Added the Issue TSO Commands feature. [#1245](https://github.com/zowe/vscode-extension-for-zowe/pull/1245)
 
 ### Bug Fixes
 
-#### Zowe API Mediation Layer
-#### Zowe App Server
-#### Zowe CLI
-#### Zowe Explorer
+#### Zowe installation and configuration
 
+* Fixed an [issue](https://github.com/zowe/zowe-install-packaging/issues/1948) where Zowe runs with the prefer IP address parameter set true as default. [#2063](https://github.com/zowe/zowe-install-packaging/pull/2063). 
+   
+  **Important!** With this fix, the `APIML_PREFER_IP_ADDRESS` configuration in `instance.env` is deprecated and Zowe will always use `false` as the value.
+
+* Fixed an [issue](https://github.com/zowe/zowe-install-packaging/issues/2030) that the Zowe 1.19.1 `zowe-setup-certificates.sh` script failed if not executed from the correct dir. [#2062](https://github.com/zowe/zowe-install-packaging/pull/2062)
+* Fixed [script zowe-support.sh not working](https://github.com/zowe/zowe-install-packaging/issues/2041). [#2049](https://github.com/zowe/zowe-install-packaging/pull/2049)
+* Fixed [validate_certificate_domain reports false negative on wildcard domains](https://github.com/zowe/zowe-install-packaging/issues/2116). [#2117](https://github.com/zowe/zowe-install-packaging/pull/2117)
+
+#### Zowe API Mediation Layer
+
+* Stop leaking X-Certificate headers (#1328) ([b2737a](https://github.com/zowe/api-layer/commit/b2737a921bb543f7b6865739b8a618cca72691e3))
+* Bugfix: Remove the wait from start.sh to reduce address spaces (#1335) ([2ba780](https://github.com/zowe/api-layer/commit/2ba7803902d7796518cf1c9a5806b9c81b7360bb))
+* Make the version endpoint available at the URL: /application/version (#1312) ([0ac95a4](https://github.com/zowe/api-layer/commit/0ac95a41333e3b13dd7dedfd147a7c24d5d3088f))
+* Load the JWT secret properly when concurrently loaded and requested (#1255) ([1644a8c](https://github.com/zowe/api-layer/commit/1644a8c)), closes [#1255](https://github.com/zowe/api-layer/issues/1255) 
+* Swagger v2 yaml parsed and rendered (#1269) ([a1f2cc0](https://github.com/zowe/api-layer/commit/a1f2cc0c3580e6d36a878e0fff23b943857b38e4)), closes [1229](https://github.com/zowe/api-layer/issues/1229)
+
+#### Zowe CLI
+
+The following bugs were fixed in the **Imperative CLI Framework**:
+- Print a subset of the `stdout` and `stderr` buffers when calling `mProgressApi`'s `endBar()` to prevent duplication of output.
+- Replaced `this` with `ImperativeConfig.instance` in `ImperativeConfig.getCallerFile()`. [#5](https://github.com/zowe/imperative/issues/5)
+
+The following bugs were fixed in the **Secure Credential Store Plug-in**:
+- Updated the Keytar and prebuild-install dependencies to make offline install possible for npm@7 users.
+
+The following bugs were fixed in the **FTP Plug-in**:
+- Fixed list jobs problems.
+- Updated list jobs unit test and system test.
+
+#### Zowe Explorer
 - Fixed the issue that caused the USS tree to colapse after renaming a folder. [#1259](https://github.com/zowe/vscode-extension-for-zowe/pull/1259)
 - Fixed the issue that prevented jobs with an octothorpe (#) in the name from opening. [#1253](https://github.com/zowe/vscode-extension-for-zowe/issues/1253)
 
