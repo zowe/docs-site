@@ -235,7 +235,7 @@ Fix the missing z/OSMF host name in subject alternative names using the followin
 
 1. Re-create the Zowe keystore by deleting it and re-creating it. For more information, see [Configuring Zowe certificates](../user-guide/configure-certificates.md). In the `zowe-setup-certificates.env` file that is used to generate the keystore, ensure that the property `VERIFY_CERTIFICATES` and `NONSTRICT_VERIFY_CERTIFICATES` are set to `false`.
 
-**Important!** Disabling `VERIFY_CERTIFICATES` and/or `NONSTRICT_VERIFY_CERTIFICATES` may expose your server to secure risks. Please talk to your system administrator before you do so and only use these options for troubleshooting purpose.
+**Important!** Disabling `VERIFY_CERTIFICATES` or `NONSTRICT_VERIFY_CERTIFICATES` may expose your server to security risks. Ensure that you contact your system administrator before you do so and use these options only for troubleshooting purpose.
 
 #### Invalid z/OSMF host name in subject alternative names
 

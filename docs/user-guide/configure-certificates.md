@@ -16,7 +16,7 @@ As well as being a server, Zowe itself is a client to services on the southbound
 
 As well as Zowe using its certificates intra-address space, to encrypt messages between its servers, Zowe uses external services on z/OS (such as z/OSMF or Zowe conformant extensions that have registered themselves with the API Mediation Layer).  These services will present their own certificate to the API Mediation Layer, in which case the trust store is used to capture the relationship between Zowe's southbound edge and these external certificates.  
 
-Utility script `zowe-setup-certificates.sh` or `ZWEKRING` JCL can help you importing z/OSMF certificate authority into trust store. If you are not using Zowe to generate certificates or want to trust other external services, you can customize `zowe-setup-certificates.env` or `ZWEKRING` JCL to import them as external certificate authorities.
+The utility script `zowe-setup-certificates.sh` or the `ZWEKRING` JCL can help you import z/OSMF certificate authority into trust store. If you are not using Zowe to generate certificates or want to trust other external services, you can customize `zowe-setup-certificates.env` or `ZWEKRING` JCL to import them as external certificate authorities.
 
 A proper setup of trust store is mandatory to successfully start Zowe with `VERIFY_CERTIFICATES` or `NONSTRICT_VERIFY_CERTIFICATES` enabled in `zowe-setup-certificates.env` and used by `zowe-setup-certificates.sh`.
 
