@@ -4,7 +4,7 @@ Learn about what is new, changed, or removed in Zowe&trade;.
 
 Zowe Version 1.21 and earlier releases include the following enhancements, release by release.
 
-- [Version 1.21.0 LTS (May 2021)](#version-1-21-0-lts-may-2021)
+- [Version 1.21.0 LTS (April 2021)](#version-1-21-0-lts-april-2021)
 - [Version 1.20.1 LTS (March 2021)](#version-1-20-1-lts-march-2021)
 - [Version 1.20.0 LTS (March 2021)](#version-1-20-0-lts-march-2021)
 - [Version 1.19.1 LTS (February 2021)](#version-1-19-1-lts-february-2021)
@@ -33,7 +33,7 @@ Zowe Version 1.21 and earlier releases include the following enhancements, relea
 - [Version 1.0.1 (March 2019)](#version-1-0-1-march-2019)
 - [Version 1.0.0 (February 2019)](#version-1-0-0-february-2019)
 
-## Version 1.21.0 LTS (May 2021)
+## Version 1.21.0 LTS (April 2021)
 
 ### New features and enhancements
 
@@ -54,17 +54,17 @@ Zowe Version 1.21 and earlier releases include the following enhancements, relea
 #### Zowe App Server
 
 - Added function to toggle the file explorer
-- Added calls to the function in openfile and open dataset so that when the user inputs the string with a true in the url it will hide the file explorer
-- Adds a global "environment" object in ZoweZLUX which allows for retreiving select environment properties from the zowe instance for conditional decision-making
-- Desktop uses the new environment object to determine whether or not to contact ZSS through app-server or through apiml depending on if zss is found on apiml
+- Added calls to the function in open file and open dataset so that when the user inputs the string with a true in the url it will hide the file explorer
+- Adds a global "environment" object in Zowe ZLUX which allows for retrieving select environment properties from the zowe instance for conditional decision-making
+- Desktop uses the new environment object to determine whether to contact ZSS through app-server or through apiml depending on if zss is found on apiml
 - app-server will contact zss through apiml if apiml is enabled and app-server finds that zss is accessible from apiml
-- sso-auth plugin no longer keeps zss cookie within app-server; the cookie will now be sent to and used from the browser, to facilitate high availability
+- sso-auth plugin no longer keeps zss cookie within app-server; the cookie will now be sent to and used from the browser to facilitate high availability
 
 #### Zowe CLI
 
 The following enhancements were added to the **core CLI**:
 - Add the option `--jcl-symbols` to the jobs submit command to enable users to specify JCL symbol names and values.
-- Made changes to definition files for zowe ssh commands  [#603](https://github.com/zowe/zowe-cli/issues/603)
+- Made changes to definition files for zowe ssh commands [#603](https://github.com/zowe/zowe-cli/issues/603)
 - Added a standard data set template with no parameters set.
 
 The following enhancement was added to the **Imperative CLI Framework**:
@@ -88,7 +88,7 @@ The following enhancement was added to the **Imperative CLI Framework**:
 #### Zowe API Mediation Layer
 
 * Stop leaking X-Certificate headers (#1328) ([b2737a](https://github.com/zowe/api-layer/commit/b2737a921bb543f7b6865739b8a618cca72691e3))
-* Bugfix: Remove the wait from start.sh to reduce address spaces (#1335) ([2ba780](https://github.com/zowe/api-layer/commit/2ba7803902d7796518cf1c9a5806b9c81b7360bb))
+* Remove the wait from start.sh to reduce address spaces (#1335) ([2ba780](https://github.com/zowe/api-layer/commit/2ba7803902d7796518cf1c9a5806b9c81b7360bb))
 * Make the version endpoint available at the URL: /application/version (#1312) ([0ac95a4](https://github.com/zowe/api-layer/commit/0ac95a41333e3b13dd7dedfd147a7c24d5d3088f))
 * Load the JWT secret properly when concurrently loaded and requested (#1255) ([1644a8c](https://github.com/zowe/api-layer/commit/1644a8c)), closes [#1255](https://github.com/zowe/api-layer/issues/1255) 
 * Swagger v2 yaml parsed and rendered (#1269) ([a1f2cc0](https://github.com/zowe/api-layer/commit/a1f2cc0c3580e6d36a878e0fff23b943857b38e4)), closes [1229](https://github.com/zowe/api-layer/issues/1229)
@@ -106,7 +106,7 @@ The following bugs were fixed in the **Imperative CLI Framework**:
 - Replaced `this` with `ImperativeConfig.instance` in `ImperativeConfig.getCallerFile()`. [#5](https://github.com/zowe/imperative/issues/5)
 
 The following bugs were fixed in the **Secure Credential Store Plug-in**:
-- Updated the Keytar and prebuild-install dependencies to make offline install possible for npm@7 users.
+- Updated the Keytar and prebuild-install dependencies to make offline installation possible for npm@7 users.
 
 The following bugs were fixed in the **FTP Plug-in**:
 - Fixed list jobs problems.
