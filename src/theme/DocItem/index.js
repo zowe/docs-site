@@ -72,7 +72,8 @@ function DocItem(props) {
   });
 
   const openDocIssueURL =
-    "https://github.com/zowe/docs-site/issues/new?assignees=&labels=&template=---doc-error-report.md&title=";
+    "https://github.com/zowe/docs-site/issues/new?assignees=&labels=&template=---doc-error-report.md&title=Issue with docs.zowe.org" +
+    `${window.location.pathname}`;
   const slackInviteURL = "https://slack.openmainframeproject.org/";
   versionPassed = version.label;
 

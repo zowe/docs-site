@@ -247,7 +247,7 @@ module.exports = {
         docs: {
           path: "docs", //Path to data on filesystem relative to site dir.
           sidebarPath: require.resolve("./sidebars.js"),
-          editUrl: "https://github.com/zowe/docs-site/edit/zowe-docs-v2/",
+          editUrl: "https://github.com/zowe/docs-site/edit/zowe-docs-v2/", //FIXME:
           // showLastUpdateAuthor: true,
           showLastUpdateTime: true,
           // showReadingTime: true,

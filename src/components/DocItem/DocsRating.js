@@ -5,8 +5,16 @@ const DocsRating = ({ label }) => {
   if (!ExecutionEnvironment.canUseDOM) {
     return null;
   }
+  const slackInviteURL = "https://slack.openmainframeproject.org/";
+  const openDocIssueURL =
+    "https://github.com/zowe/docs-site/issues/new?assignees=&labels=&template=---doc-error-report.md&title=Issue with docs.zowe.org" +
+    `${window.location.pathname}`;
+  const docEnhancementURL =
+    "https://github.com/zowe/docs-site/issues/new?assignees=&labels=&template=---doc-site-enhancement-request.md&title=Doc Enhancement Request for docs.zowe.org" +
+    `${window.location.pathname}`;
 
   const [haveVoted, setHaveVoted] = useState(false);
+  const [liked, setLiked] = useState(false);
   const giveFeedback = (value) => {
     if (window.ga) {
       window.ga("send", {
@@ -17,15 +25,30 @@ const DocsRating = ({ label }) => {
         eventValue: value,
       });
     }
+    if (value == 1) {
+      setLiked(true);
+    }
+    if (value == 0) {
+      setLiked(false);
+    }
     setHaveVoted(true);
   };
 
   return (
     <div className="docsRating margin-auto margin-top--lg">
-      {haveVoted ? (
+      {haveVoted && liked == false ? (
+        <div className="text--left">
+          "Thanks for letting us know!" If you have a specific question about
+          how to use Zowe, ask it on our{" "}
+          <a href={slackInviteURL}>Slack Channel</a>. Open an issue in the
+          GitHub repo if you want to{" "}
+          <a href={openDocIssueURL}>report a problem</a> or{" "}
+          <a href={docEnhancementURL}>suggest an improvement</a>.
+        </div>
+      ) : haveVoted && liked == true ? (
         "Thanks for letting us know!"
       ) : (
-        <div>
+        <div className="text--center">
           <h3>Was this topic helpful?</h3>
           <div className="display-flex justify-content--center">
             <div

@@ -1,38 +1,41 @@
-import React from 'react';
-import clsx from 'clsx';
-import styles from './styles.module.css';
-
+import React from "react";
+import clsx from "clsx";
+import styles from "./styles.module.css";
 
 const downloadableFiles = [
   {
-    title: 'Zowe documentation',
+    title: "Zowe documentation",
     description: (
       <>
-        Download the <code>Version 1.x.x</code> Zowe documentation in PDF format from the links below. The latest version on this website is 1.20.1.
+        Download the <code>Version 1.x.x</code> Zowe documentation in PDF format
+        from the links below. The latest version on this website is 1.20.1.
       </>
     ),
   },
   {
-    title: 'Zowe CLI command reference guides',
+    title: "Zowe CLI command reference guides",
     description: (
       <>
-        View documentation on commands, actions, and options in Zowe CLI. The reference document is based on the <code>@zowe-v1-lts</code> version of the CLI.
+        View documentation on commands, actions, and options in Zowe CLI. The
+        reference document is based on the <code>@zowe-v1-lts</code> version of
+        the CLI.
       </>
     ),
   },
   {
-    title: 'Zowe Client SDK reference guides',
+    title: "Zowe Client SDK reference guides",
     description: (
       <>
-        Refer to the following Zowe Client SDK reference guides for information about the API endpoints.
+        Refer to the following Zowe Client SDK reference guides for information
+        about the API endpoints.
       </>
     ),
   },
 ];
 
-function DownloadableFile({title, description}) {
+function DownloadableFile({ title, description }) {
   return (
-    <div className={clsx('col col--4', styles.feature)}>
+    <div className={clsx("col col--4", styles.feature)}>
       <h3>{title}</h3>
       <p>{description}</p>
     </div>
