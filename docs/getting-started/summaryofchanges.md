@@ -35,8 +35,6 @@ Zowe Version 1.21 and earlier releases include the following enhancements, relea
 
 ## Version 1.21.0 LTS (May 2021)
 
-### Notable changes
-
 ### New features and enhancements
 
 #### Zowe installation and configuration
@@ -54,6 +52,14 @@ Zowe Version 1.21 and earlier releases include the following enhancements, relea
 * An endpoint has been added to delete all keys for a specific service (#1253) ([0c3e01](https://github.com/zowe/api-layer/commit/0c3e01900ea646bd959472bae3bd9c1fbd7d3e31)), closes [1253](https://github.com/zowe/api-layer/issues/1253)
 
 #### Zowe App Server
+
+- Added function to toggle the file explorer
+- Added calls to the function in openfile and open dataset so that when the user inputs the string with a true in the url it will hide the file explorer
+- Adds a global "environment" object in ZoweZLUX which allows for retreiving select environment properties from the zowe instance for conditional decision-making
+- Desktop uses the new environment object to determine whether or not to contact ZSS through app-server or through apiml depending on if zss is found on apiml
+- app-server will contact zss through apiml if apiml is enabled and app-server finds that zss is accessible from apiml
+- sso-auth plugin no longer keeps zss cookie within app-server; the cookie will now be sent to and used from the browser, to facilitate high availability
+
 #### Zowe CLI
 
 The following enhancements were added to the **core CLI**:
@@ -86,6 +92,12 @@ The following enhancement was added to the **Imperative CLI Framework**:
 * Make the version endpoint available at the URL: /application/version (#1312) ([0ac95a4](https://github.com/zowe/api-layer/commit/0ac95a41333e3b13dd7dedfd147a7c24d5d3088f))
 * Load the JWT secret properly when concurrently loaded and requested (#1255) ([1644a8c](https://github.com/zowe/api-layer/commit/1644a8c)), closes [#1255](https://github.com/zowe/api-layer/issues/1255) 
 * Swagger v2 yaml parsed and rendered (#1269) ([a1f2cc0](https://github.com/zowe/api-layer/commit/a1f2cc0c3580e6d36a878e0fff23b943857b38e4)), closes [1229](https://github.com/zowe/api-layer/issues/1229)
+
+#### Zowe App Server
+
+- Set the hostname used for eureka to match the value of `ZWE_EXTERNAL_HOSTS` if exists, or otherwise `ZOWE_EXLORER_HOST`, for the purpose of avoiding certificate verification issues between app-server and APIML under certain circumstances
+- Set cookie path to root in order to avoid multiple cookies when browser tries to set path automatically
+- Use hostname given by zowe config in order to avoid errors from the hostname certificate matching when accessing the app server through APIML
 
 #### Zowe CLI
 
