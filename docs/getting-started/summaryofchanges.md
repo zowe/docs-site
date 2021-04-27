@@ -2,8 +2,9 @@
 
 Learn about what is new, changed, or removed in Zowe&trade;.
 
-Zowe Version 1.20 and earlier releases include the following enhancements, release by release.
+Zowe Version 1.21 and earlier releases include the following enhancements, release by release.
 
+- [Version 1.21.0 LTS (May 2021)](#version-1-21-0-lts-may-2021)
 - [Version 1.20.1 LTS (March 2021)](#version-1-20-1-lts-march-2021)
 - [Version 1.20.0 LTS (March 2021)](#version-1-20-0-lts-march-2021)
 - [Version 1.19.1 LTS (February 2021)](#version-1-19-1-lts-february-2021)
@@ -31,6 +32,48 @@ Zowe Version 1.20 and earlier releases include the following enhancements, relea
 - [Version 1.1.0 (April 2019)](#version-1-1-0-april-2019)
 - [Version 1.0.1 (March 2019)](#version-1-0-1-march-2019)
 - [Version 1.0.0 (February 2019)](#version-1-0-0-february-2019)
+
+## Version 1.21.0 LTS (May 2021)
+
+### Notable changes
+
+### New features and enhancements
+
+#### Zowe API Mediation Layer
+#### Zowe App Server
+#### Zowe CLI
+
+The following enhancements were added to the **core CLI**:
+- Add the option `--jcl-symbols` to the jobs submit command to enable users to specify JCL symbol names and values.
+- Made changes to definition files for zowe ssh commands  [#603](https://github.com/zowe/zowe-cli/issues/603)
+- Added a standard data set template with no parameters set.
+
+The following enhancement was added to the **Imperative CLI Framework**:
+- Added `headers[]` option to `TextUtils.getTable()`. [#369](https://github.com/zowe/imperative/issues/369)
+
+
+#### Zowe Explorer
+- Added the Issue TSO Commands feature [#1245](https://github.com/zowe/vscode-extension-for-zowe/pull/1245)
+
+### Bug Fixes
+
+#### Zowe CLI
+
+The following bugs were fixed in the **Imperative CLI Framework**:
+- Print a subset of the `stdout` and `stderr` buffers when calling `mProgressApi`'s `endBar()` to prevent duplication of output.
+- Replaced `this` with `ImperativeConfig.instance` in `ImperativeConfig.getCallerFile()`. [#5](https://github.com/zowe/imperative/issues/5)
+
+The following bugs were fixed in the **Secure Credential Store Plug-in**:
+- Updated the Keytar and prebuild-install dependencies to make offline install possible for npm@7 users.
+
+The following bugs were fixed in the **FTP Plug-in**:
+- Fixed list jobs problems.
+- Updated list jobs unit test and system test.
+
+#### Zowe Explorer
+- Fixed the issue that caused the USS tree to collapse after renaming a folder [#1259](https://github.com/zowe/vscode-extension-for-zowe/pull/1259)
+- Fixed the issue that prevented jobs with an octothorpe (#) in the name from opening [#1253](https://github.com/zowe/vscode-extension-for-zowe/issues/1253)
+
 
 ## Version 1.20.1 LTS (March 2021)
 

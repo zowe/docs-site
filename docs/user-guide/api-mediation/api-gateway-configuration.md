@@ -100,22 +100,35 @@ Use the following procedure to enable the feature to use a client certificate as
   
     **Note:** The following steps are only required if the ZSS hostname or default Zowe user name are altered:
 
-3. Open the file `<Zowe install directory>/components/gateway/bin/start.sh`.
-4. Configure the following properties:
+3. Change the following property if user mapping is provided by an external API:
 
-   * **apiml.security.x509.externalMapperUrl**
+  * **APIML_GATEWAY_EXTERNAL_MAPPER**
 
-     The API Mediation Gateway uses an external API to map a certificate to the owner in SAF. This property informs the Gateway about the location of this API. ZSS is the API provider in Zowe. Provide the ZSS URL in the following format:
+   **Note:** Skip this step if user mapping is not provided by an external API.
+
+   The API Mediation Gateway uses an external API to map a certificate to the owner in SAF. This property informs the Gateway about the location of this API. ZSS is the default API provider in Zowe. You can provide your own API to perform the mapping. In this case, it is necessary to customize this value.
+
+   The following URL is the default value for Zowe and ZSS:
+
      ```
-     -Dapiml.security.x509.externalMapperUrl=http://localhost:<ZSS-PORT>/certificate/x509/map
+     https://${ZOWE_EXPLORER_HOST}:${GATEWAY_PORT}/zss/api/v1/certificate/x509/map
      ```
-     The default port is `8542`. The hostname is `localhost` as the ZSS server is accessible only locally.
 
-   * **apiml.security.x509.externalMapperUser**
+4. Add the following property if the Zowe runtime userId is altered from the default `ZWESVUSR`:
 
-     To authenticate to the mapping API, a JWT token is sent with the request. The token represents the user that is configured with this property. The user authorization is required to use the `IRR.RUSERMAP` resource within the `FACILITY` class. The default value is `ZWESVUSR`. Permissions are set up during installation with the `ZWESECUR` JCL or workflow. 
-     
-     To customize the `ZWESECUR` JCL or workflow (`// SET ZOWEUSER=ZWESVUSR * userid for Zowe started task`), change the `apiml.security.x509.externalMapperUser` to a new value.
+  * **APIML_GATEWAY_MAPPER_USER**
+
+   **Note:** Skip this step if the Zowe runtime userId is not altered from the default `ZWESVUSR`.
+
+   To authenticate to the mapping API, a JWT is sent with the request. The token represents the user that is configured with this property. The user authorization is required to use the `IRR.RUSERMAP` resource within the `FACILITY` class. The default value is `ZWESVUSR`. Permissions are set up during installation with the `ZWESECUR` JCL or workflow.
+
+   If you customized the `ZWESECUR` JCL or workflow (the customization of zowe runtime user: `// SET ZOWEUSER=ZWESVUSR * userid for Zowe started task`) and changed the default USERID, create the `APIML_GATEWAY_MAPPER_USER` property and set the value by adding a new line as in the following example:
+
+   **Example:**
+
+   ```
+   APIML_GATEWAY_MAPPER_USER=yournewuserid  
+   ```
 
 5. Restart `Zowe&trade`.
 
