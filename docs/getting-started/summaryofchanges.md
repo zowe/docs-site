@@ -63,7 +63,7 @@ Zowe Version 1.21 and earlier releases include the following enhancements, relea
 #### Zowe CLI
 
 The following enhancements were added to the **core CLI**:
-- Add the option `--jcl-symbols` to the jobs submit command to enable users to specify JCL symbol names and values.
+- Added the option `--jcl-symbols` to the jobs submit command to enable users to specify JCL symbol names and values.
 - Made changes to definition files for zowe ssh commands [#603](https://github.com/zowe/zowe-cli/issues/603)
 - Added a standard data set template with no parameters set.
 
