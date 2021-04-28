@@ -18,7 +18,13 @@ In addition to Zowe using the intra-address space of certificates, Zowe uses ext
 
 To disable the trust store validation of southbound certificates, set the value `VERIFY_CERTIFICATES=true` to `false` in the `zowe-setup-certificates.env` file in the `KEYSTORE_DIRECTORY`.  A scenario when this is recommended is if the certificate presented to the API Mediation Layer is self-signed, such as from an unknown certificate authority.  For example, the z/OSMF certificate may be self-signed. In this case, Zowe API Mediation Layer does not recognize the signing authority.  
 
+
 To enable certificate validation without hostname validation, set `NONSTRICT_VERIFY_CERTIFICATES=true`. Using this setting, the certificate Common Name or Subject Alternate Name (SAN) is not checked. This facilitates deployment to environments where certificates are valid but do not contain a valid hostname. This configuration is for development purposes only and should not be used for production.
+
+The utility script `zowe-setup-certificates.sh` or the `ZWEKRING` JCL can help you import z/OSMF certificate authority into trust store. If you are not using Zowe to generate certificates or want to trust other external services, you can customize `zowe-setup-certificates.env` or `ZWEKRING` JCL to import them as external certificate authorities.
+
+A proper setup of trust store is mandatory to successfully start Zowe with `VERIFY_CERTIFICATES` or `NONSTRICT_VERIFY_CERTIFICATES` enabled in `zowe-setup-certificates.env` and used by `zowe-setup-certificates.sh`.
+
 
 ## Certificates in the Zowe architecture
 
