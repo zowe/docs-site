@@ -16,6 +16,9 @@ When you install Zowe v1.8.0 or later, the Application Server automatically regi
 For earlier releases, you must register the Application Server with the Mediation Layer manually. Refer to previous release documentation for more information.
 
 ### Accessing the Application Server
+
+**Note:** Before Accessing the Application Server, first [create and configure the Zowe instance directory](configure-instance-directory.md).
+
 To access the Application Server through the Mediation Layer, use the Mediation Layer gateway server hostname and port. For example, when accessed directly, this is Zowe Desktop URL: `https://<appservername_port>/ZLUX/plugins/org.zowe.zlux.bootstrap/web/index.html`
 
 The port number for the Zowe Desktop is the value of the `ZOWE_ZLUX_SERVER_HTTPS_PORT` variable in the `instance.env` file in the instance directory, see [Creating and configuring the Zowe instance directory](configure-instance-directory.md).

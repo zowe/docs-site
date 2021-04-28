@@ -59,3 +59,21 @@ ompzowe/server-bundle                amd64               ceb8c50d2381        2 h
 ```
 
 If you see this and want to clean up the older images to preserve storage space, you can run the command `docker rmi IMAGE_ID` to remove an image, where IMAGE_ID is the code seen from the `images` command.
+
+## Verifying authenticity using Docker signing
+
+Dockerhub is equiped with an option authenticity verification feature that you can use to ensure that the Zowe release you are pulling from Dockerhub is legitimate. 
+
+**Note:** With this verification turned on, you will not be able to download images that are not signed. 
+
+To turn use this feature, you must set the environment variable `DOCKER_CONTENT_TRUST=1`, then use the "docker pull" command on images that you want to download. This feature can be set to be either temporary or permanent. 
+
+**Temporary example**
+`DOCKER_CONTENT_TRUST=1 docker pull ompzowe/server-bundle:amd64`
+
+**Permanent example**
+1. Add `export DOCKER_CONTENT_TRUST=1` to your shell profile, such as echo `export DOCKER_CONTENT_TRUST=1` >> .profile
+
+2. Login again so that the export can take effect.
+
+3. Use docker commands, such as `docker pull ompzowe/server-bundle:amd64`
