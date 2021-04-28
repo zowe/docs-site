@@ -158,7 +158,19 @@ html[data-theme="dark"] .docsRating .i_thumbsdown {
   font-size: 16px;
 }
 
+.share-button {
+  color: var(--ifm-heading-color);
+}
+
 .user-options {
   display: flex;
   align-items: center;
+}
+
+.user-options a {
+  color: var(--ifm-heading-color);
+}
+
+.user-options a:hover {
+  color: var(--ifm-link-hover-color);
 }

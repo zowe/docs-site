@@ -20,7 +20,7 @@ function ShareButton() {
         <>&nbsp;</>
       </a>
       <button
-        className="button button--lg button--link padding-horiz--none pointer"
+        className="button button--lg button--link padding-horiz--none pointer share-button"
         style={{ fontWeight: 400, fontFamily: "inherit", fontSize: "inherit" }}
       >
         Share

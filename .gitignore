@@ -34,3 +34,6 @@ yarn.lock
 .classpath
 .history
 .report.*.json
+
+# Local Netlify folder
+.netlify

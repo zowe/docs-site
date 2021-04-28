@@ -219,7 +219,7 @@ module.exports = {
       respectPrefersColorScheme: true,
     },
     googleAnalytics: {
-      trackingID: "UA-123892882",
+      trackingID: "UA-195765847-1",
       anonymizeIP: true, // Should IPs be anonymized?
     },
   },

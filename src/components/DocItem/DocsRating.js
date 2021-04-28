@@ -1,20 +1,23 @@
 import React, { useState } from "react";
+import { useLocation } from "react-router-dom";
 import ExecutionEnvironment from "@docusaurus/ExecutionEnvironment";
 
 const DocsRating = ({ label }) => {
   if (!ExecutionEnvironment.canUseDOM) {
     return null;
   }
+  const location = useLocation();
   const slackInviteURL = "https://slack.openmainframeproject.org/";
   const openDocIssueURL =
     "https://github.com/zowe/docs-site/issues/new?assignees=&labels=&template=---doc-error-report.md&title=Issue with docs.zowe.org" +
-    `${window.location.pathname}`;
+    `${location.pathname}`;
   const docEnhancementURL =
     "https://github.com/zowe/docs-site/issues/new?assignees=&labels=&template=---doc-site-enhancement-request.md&title=Doc Enhancement Request for docs.zowe.org" +
-    `${window.location.pathname}`;
+    `${location.pathname}`;
 
   const [haveVoted, setHaveVoted] = useState(false);
   const [liked, setLiked] = useState(false);
+
   const giveFeedback = (value) => {
     if (window.ga) {
       window.ga("send", {

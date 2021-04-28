@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import Head from "@docusaurus/Head";
 import { useTitleFormatter } from "@docusaurus/theme-common";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
@@ -71,9 +72,10 @@ function DocItem(props) {
     absolute: true,
   });
 
+  const location = useLocation();
   const openDocIssueURL =
     "https://github.com/zowe/docs-site/issues/new?assignees=&labels=&template=---doc-error-report.md&title=Issue with docs.zowe.org" +
-    `${window.location.pathname}`;
+    `${location.pathname}`;
   const slackInviteURL = "https://slack.openmainframeproject.org/";
   versionPassed = version.label;
 
@@ -170,10 +172,7 @@ function DocItem(props) {
 
                     <div className="user-options">
                       {/* PDF Button*/}
-                      <div
-                        className="margin-right--md pointer display-flex"
-                        style={{ display: "flex" }}
-                      >
+                      <div className="margin-right--md pointer display-flex">
                         {editUrl && (
                           <a onClick={() => window.print()}>
                             {" "}
@@ -181,16 +180,12 @@ function DocItem(props) {
                             <FontAwesomeIcon icon={faPrint} />
                             <>&nbsp;</>
                             PDF
-                            {/* <>&nbsp;</> */}
                           </a>
                         )}
                       </div>
 
                       {/* Open Doc Button*/}
-                      <div
-                        className="margin-right--md display-flex"
-                        style={{ display: "flex" }}
-                      >
+                      <div className="margin-right--md display-flex">
                         {openDocIssueURL && (
                           <a
                             className="pointer"
