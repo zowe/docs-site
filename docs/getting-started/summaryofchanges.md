@@ -53,12 +53,17 @@ Zowe Version 1.21 and earlier releases include the following enhancements, relea
 
 #### Zowe App Server
 
+- app-server now supports reaching ZSS through TLS without the need for AT-TLS, by reading new properties within the "agent" config [#151](https://github.com/zowe/zlux-app-server/pull/151)
+- Synchronize user preference setting for TLS verification so that app-server matches the value used by APIML; VERIFY_CERTIFICATES [#165](https://github.com/zowe/zlux-app-server/pull/165)
+- ZSS cookie is now sent to the browser, rather than having the app-server mediate the ZSS connection, so that ZSS can be used through APIML in the case that SSO is not enabled. [#274](https://github.com/zowe/zlux-server-framework/pull/274)
+- ZSS now uses HTTPS by default, rather than relying upon AT-TLS for the purpose. AT-TLS is still available, but now unless ZOWE_ZSS_SERVER_TLS=false is set, ZSS will use the keystore data for its HTTPS configuration, and when HTTPS is enabled will bind to ZOWE_EXPLORER_HOST value, as the other servers do, instead of 127.0.0.1 by default as ZSS would for HTTP.
 - Added function to toggle the file explorer
 - Added calls to the function in open file and open dataset so that when the user inputs the string with a true in the url it will hide the file explorer
-- Adds a global "environment" object in Zowe ZLUX which allows for retrieving select environment properties from the zowe instance for conditional decision-making
-- Desktop uses the new environment object to determine whether to contact ZSS through app-server or through apiml depending on if zss is found on apiml
-- app-server will contact zss through apiml if apiml is enabled and app-server finds that zss is accessible from apiml
-- sso-auth plugin no longer keeps zss cookie within app-server; the cookie will now be sent to and used from the browser to facilitate high availability
+- Added a global "environment" object in Zowe ZLUX which allows for retrieving select environment properties from the zowe instance for conditional decision-making
+- The Zowe desktop uses the new environment object to determine whether to contact ZSS through app-server or through APIML depending on if ZSS is found on APIML
+- app-server will contact ZSS through APIML if APIML is enabled and app-server finds that APIML is accessible from APIML
+- sso-auth plugin no longer keeps ZSS cookie within app-server; the cookie will now be sent to and used from the browser to facilitate high availability
+
 
 #### Zowe CLI
 
@@ -71,9 +76,10 @@ The following enhancement was added to the **Imperative CLI Framework**:
 - Added `headers[]` option to `TextUtils.getTable()`. [#369](https://github.com/zowe/imperative/issues/369)
 
 #### Zowe Explorer
+
 - Added the Issue TSO Commands feature [#1245](https://github.com/zowe/vscode-extension-for-zowe/pull/1245)
 
-### Bug Fixes
+### Bug fixes
 
 #### Zowe installation and configuration
 
@@ -95,9 +101,12 @@ The following enhancement was added to the **Imperative CLI Framework**:
 
 #### Zowe App Server
 
-- Set the hostname used for eureka to match the value of `ZWE_EXTERNAL_HOSTS` if exists, or otherwise `ZOWE_EXLORER_HOST`, for the purpose of avoiding certificate verification issues between app-server and APIML under certain circumstances
-- Set cookie path to root in order to avoid multiple cookies when browser tries to set path automatically
-- Use hostname given by zowe config in order to avoid errors from the hostname certificate matching when accessing the app server through APIML
+- app-server now registers to APIML using the fully qualified hostname found from `ZOWE_EXPLORER_HOST` or `ZOWE_EXTERNAL_HOSTS`. Previously, it used the short hostname reported by the OS. This resolves bugs about hostname mismatch. [#153](https://github.com/zowe/zlux-app-server/pull/153)
+- Set the hostname used for Eureka to match the value of `ZWE_EXTERNAL_HOSTS` if exists, or otherwise `ZOWE_EXLORER_HOST`, for the purpose of avoiding certificate verification issues between app-server and APIML under certain circumstances
+- Set the cookie path to root in order to avoid multiple cookies when the browser tries to set path automatically
+- Use the hostname given by Zowe config in order to avoid errors from the hostname certificate matching when accessing the app server through APIML
+- ZSS tile on the API Catalog has been fixed due to HTTPS mode listening on the hostname of ZOWE_EXPLORER_HOST to align with the other zowe servers.
+- ZSS dataset write REST API has improved handling of when a client sends fixed dataset content with too little padding [#209](https://github.com/zowe/zowe-common-c/pull/209)
 
 #### Zowe CLI
 
