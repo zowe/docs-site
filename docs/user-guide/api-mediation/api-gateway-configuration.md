@@ -309,7 +309,7 @@ This provider is one way how to enable the feature outside the mainframe (ie. ru
     }
 ```
 
-**note**: see also ZSS implementation https://github.com/zowe/zss/blob/master/c/authService.c
+**note**: see also [ZSS implementation](https://github.com/zowe/zss/blob/master/c/authService.c)
 
 ### Native
 
