@@ -203,7 +203,7 @@ Use the following procedure to change the number of concurrent connections.
 2. Find the property `APIML_MAX_CONNECTIONS_PER_ROUTE` and set the value to an appropriate positive integer.
 3. Find the property `APIML_MAX_TOTAL_CONNECTIONS` and set the value to an appropriate positive integer.
 
-## Replace or remove catalog with another service
+## Replace or remove the Catalog with another service
 
 By default, the API Mediation Layer contains API Catalog as a service showing available services. As the API Mediation Layer can be successfully run without this component it is possible to replace or remove the service from the Gateway home page and health checks. The following section describes the behavior of the Gateway home page and health checks. 
 
@@ -243,7 +243,7 @@ Use the following procedure to change or replace the Catalog service:
     - Set the value to `none` to remove the Catalog service.
     - Set the value to the ID of the service that is onboarded to the API Mediation Layer. 
 
-# API Mediation Layer as a standalone component
+## API Mediation Layer as a standalone component
 
 You can start the API Mediation Layer independently of other Zowe components. 
 By default, the Gateway, Zowe System Services, and Virtual Desktop start when
@@ -262,20 +262,25 @@ Once Zowe is installed, use the following procedure to limit which components st
 
 To learn more about the related section of the environment file, see [Creating and configuring the Zowe instance directory](../configure-instance-directory.md#component-groups). We recommend you open this page in a new tab.
 
-# SAF Resource Checking
+## SAF Resource Checking
 
-API Layer can check for user's authorization on certain endpoints. The access to SAF resource is checked with ESM.
+The API ML can check for the authorization of the user on certain endpoints. Access to a SAF resource is checked with ESM.
 
-Verification of SAF resource can be provided via three providers:
+Verification of the SAF resource is provided by the following three providers:
 
-- _the highest priority_: REST endpoint call (ZSS or similar one). This option is disabled by default. In Zowe, ZSS has the API to check for SAF resource authorization.
-- _native_: Native JZOS classes from Java are used to determine SAF resource access.
-- _the lowest priority_: dummy implementation (defined in a file)
+- **`endpoint`**
+  This is the highest priority provider, such as a REST endpoint call (ZSS or similar one). This option is disabled by default. In Zowe, ZSS has the API to check for SAF   resource authorization.
+  
+- **`native`**
+  The Native JZOS classes from Java are used to determine SAF resource access. This is the default provider.
+  
+- **`dummy`**
+  This is the lowest priority provider. This is the dummy implementation and is defined in a file.
 
-**note**: The first available based on priority will be used. In default configuration it will resolve to native provider. 
+**Note:** Verification of the SAF resource uses the first available provider based on the specified priority. The default configuration resolves to the native provider. 
 
-You can select one specific provider via specifying `APIML_SECURITY_AUTHORIZATION_PROVIDER` key in `instance.env` file. Use this value parameter to
-strictly define a provider. You use values: `endpoint`, `native` or `dummy`. You can select the `endpoint` option regardles if it's disabled. 
+You can select a specific provider by specifying the `APIML_SECURITY_AUTHORIZATION_PROVIDER` key in the `instance.env` file. Use the parameter value to
+strictly define a provider. If verification is disabled, select the `endpoint` option. 
 
 **Follow these steps:**
 
@@ -283,20 +288,31 @@ strictly define a provider. You use values: `endpoint`, `native` or `dummy`. You
 2. Add the property `APIML_SECURITY_AUTHORIZATION_PROVIDER` and set desired value.
 3. Restart `Zowe&trade`.
 
-If you decide to use the endpoint provider, you can customize the URL it's going to check for SAF resource authorization. By default, ZSS API is configured and used. 
+**Examples:**
+```
+APIML_SECURITY_AUTHORIZATION_PROVIDER=endpoint
+```
+```
+APIML_SECURITY_AUTHORIZATION_PROVIDER=native
+```
+```
+APIML_SECURITY_AUTHORIZATION_PROVIDER=dummy
+```
+
+If you decide to use the endpoint provider, you can customize the URL corresponding to SAF resource authorization. By default, the ZSS API is configured and used. 
 
 **Follow these steps:**
 
 1. Open the file `<Zowe instance directory>/instance.env`.
 2. Modify the property `APIML_SECURITY_AUTHORIZATION_ENDPOINT_URL` and set desired value.
-   Default value for ZSS API: https://${ZOWE_EXPLORER_HOST}:${GATEWAY_PORT}/zss/api/v1/saf-auth
+   The default value for ZSS API is https://${ZOWE_EXPLORER_HOST}:${GATEWAY_PORT}/zss/api/v1/saf-auth
 3. Restart `Zowe&trade`.
 
-## Checking providers
+### Checking providers
 
-### REST endpoint call
+#### REST endpoint call
 
-This provider is one way how to enable the feature outside the mainframe (ie. running in Docker).
+To enable the feature outside the mainframe (ie. running in Docker) you can use a REST endpoint call using the `GET` method:
 
 - Method: `GET`
 - URL: `{base path}/{userId}/{class}/{entity}/{level}`
@@ -308,10 +324,9 @@ This provider is one way how to enable the feature outside the mainframe (ie. ru
         "message": "{message}"
     }
 ```
+**Note:** For more information about this REST endpoint call, see [ZSS implementation](https://github.com/zowe/zss/blob/master/c/authService.c)
 
-**note**: see also [ZSS implementation](https://github.com/zowe/zss/blob/master/c/authService.c)
-
-### Native
+#### Native
 
 This provider is the easiest way, how to use the feature on the mainframe.
 
@@ -319,7 +334,7 @@ Enable, when classes `com.ibm.os390.security.PlatformAccessControl` and `com.ibm
 are available on classpath. It uses [method](https://www.ibm.com/support/knowledgecenter/SSYKE2_8.0.0/com.ibm.java.zsecurity.api.80.doc/com.ibm.os390.security/com/ibm/os390/security/PlatformAccessControl.html?view=kc#checkPermission-java.lang.String-java.lang.String-java.lang.String-int-), so
 for right using, definition of method must be also matching.
 
-### Dummy implementation
+#### Dummy implementation
 
 This provider is for testing purpose outside the mainframe.
 
@@ -334,7 +349,7 @@ Structure of YML file:
         - {UserID}
 ```
 
-**notes**:
+**Notes**:
 - Classes and resources are mapped into a map, user IDs into list.
 - load method does not support formatting with dots, like {CLASS}.{RESOURCE}, each element has to be separated
 - field `safAccess` is not required to define empty file (without any definition)
