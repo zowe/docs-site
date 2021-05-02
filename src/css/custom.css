@@ -7,22 +7,18 @@
 
 /* You can override the default Infima variables here. */
 :root {
-  /* --ifm-color-primary: #1e73be;
-  --ifm-color-primary-dark: #1b67ab;
-  --ifm-color-primary-darker: #1a62a2;
-  --ifm-color-primary-darkest: #155085;
-  --ifm-color-primary-light: #217ed1;
-  --ifm-color-primary-lighter: #2384db;
-  --ifm-color-primary-lightest: #3e94e0; */
-
-  --ifm-color-primary: #3578e5;
-  --ifm-color-primary-dark: #1d68e1;
-  --ifm-color-primary-darker: #1b62d4;
-  --ifm-color-primary-darkest: #1751af;
-  --ifm-color-primary-light: #4e89e8;
-  --ifm-color-primary-lighter: #5a91ea;
-  --ifm-color-primary-lightest: #80aaef;
+  --ifm-color-primary: #3162ac;
+  --ifm-color-primary-dark: #2c589b;
+  --ifm-color-primary-darker: #2a5392;
+  --ifm-color-primary-darkest: #224578;
+  --ifm-color-primary-light: #366cbd;
+  --ifm-color-primary-lighter: #3871c6;
+  --ifm-color-primary-lightest: #5283ce;
   --ifm-code-font-size: 95%;
+}
+
+html[data-theme='dark'] {
+  --ifm-color-primary: #3578e5;
 }
 
 .docusaurus-highlight-code-line {
@@ -44,6 +40,7 @@ h3 {
   font-size: 1.2rem !important;
 }
 
+/* NavBar */
 .navbar {
   font-size: 0.95rem;
 }
@@ -158,19 +155,7 @@ html[data-theme="dark"] .docsRating .i_thumbsdown {
   font-size: 16px;
 }
 
-.share-button {
-  color: var(--ifm-heading-color);
-}
-
 .user-options {
   display: flex;
   align-items: center;
-}
-
-.user-options a {
-  color: var(--ifm-heading-color);
-}
-
-.user-options a:hover {
-  color: var(--ifm-link-hover-color);
 }
