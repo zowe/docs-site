@@ -30,7 +30,7 @@ module.exports = {
           label: "Getting Started",
           to: "/getting-started/overview",
           // to: "getting-started/overview", //Remove this (to) to remove onClick
-          position: "right",
+          position: "left",
           items: [
             {
               label: "Doc 1",
@@ -52,8 +52,8 @@ module.exports = {
         },
         {
           label: "Extend",
-          to: "extend/",
-          position: "right",
+          to: "getting-started/doc2/",
+          position: "left",
           items: [
             {
               label: "A",
@@ -76,13 +76,53 @@ module.exports = {
         {
           to: "user-guide",
           label: "User Guide",
-          position: "right",
+          position: "left",
+          items: [
+            {
+              label: "A",
+              to: "getting-started/overview",
+            },
+            {
+              label: "B",
+              to: "getting-started/doc2",
+            },
+            {
+              label: "C",
+              to: "getting-started/doc3",
+            },
+            {
+              label: "D",
+              to: "getting-started/release-notes",
+            },
+          ],
         },
-        { to: "troubleshooting", label: "Troubleshooting", position: "right" },
+        {
+          to: "troubleshooting",
+          label: "Troubleshooting",
+          position: "left",
+          items: [
+            {
+              label: "A",
+              to: "getting-started/overview",
+            },
+            {
+              label: "B",
+              to: "getting-started/doc2",
+            },
+            {
+              label: "C",
+              to: "getting-started/doc3",
+            },
+            {
+              label: "D",
+              to: "getting-started/release-notes",
+            },
+          ],
+        },
         {
           to: "contributing",
           label: "Contributing",
-          position: "right",
+          position: "left",
           items: [
             {
               label: "Code Guidelines",
@@ -95,8 +135,29 @@ module.exports = {
             },
           ],
         },
-        // { to: "references", label: "References", position: "right" },
-        //versioning
+        {
+          to: "references",
+          label: "References",
+          position: "left",
+          items: [
+            {
+              label: "A",
+              to: "getting-started/overview",
+            },
+            {
+              label: "B",
+              to: "getting-started/doc2",
+            },
+            {
+              label: "C",
+              to: "getting-started/doc3",
+            },
+            {
+              label: "D",
+              to: "getting-started/release-notes",
+            },
+          ],
+        },
         {
           // TODO: https://v2.docusaurus.io/docs/api/themes/configuration#navbar-docs-version-dropdown
           type: "docsVersionDropdown",
@@ -105,11 +166,11 @@ module.exports = {
           // dropdownItemsAfter: [{to: '/versions', label: 'All versions'}],
           // Do not add the link active class when browsing docs.
           dropdownActiveClassDisabled: true,
-          docsPluginId: "default",
+          // docsPluginId: "default",
         },
         // {
-        //   type: 'localeDropdown',
-        //   position: 'right',
+        //   type: "localeDropdown",
+        //   position: "right",
         //   dropdownItemsBefore: [],
         //   dropdownItemsAfter: [
         //     {
@@ -129,9 +190,9 @@ module.exports = {
     footer: {
       style: "dark",
       // logo: {
-      //   alt: 'Zowe Logo',
-      //   src: 'img/zowe-icon-dark.png',
-      //   href: 'https://www.zowe.org/',
+      //   alt: "Zowe Logo",
+      //   src: "img/zowe-icon-dark.png",
+      //   href: "https://www.zowe.org/",
       // },
       links: [
         {
@@ -203,7 +264,7 @@ module.exports = {
         '<a target="_blank" rel="noopener noreferrer" href="https://github.com/zowe/docs-site/issues/new/choose">Let us know</a> what you think about the new Zowe docs experience!',
       backgroundColor: "#fafbfc", // Defaults to `#fff`.
       textColor: "#091E42", // Defaults to `#000`.
-      isCloseable: true, // Defaults to `true`.
+      isCloseable: true,
     },
     algolia: {
       //FIXME:
@@ -225,16 +286,13 @@ module.exports = {
   },
   // i18n: {
   //   defaultLocale: "en",
-  //   locales: ["en", "fr", "es"],
+  //   locales: ["en", "fr"],
   //   localeConfigs: {
   //     en: {
   //       label: "English",
   //     },
   //     fr: {
   //       label: "Français",
-  //     },
-  //     es: {
-  //       label: "Español",
   //     },
   //   },
   // },
@@ -248,7 +306,7 @@ module.exports = {
           path: "docs", //Path to data on filesystem relative to site dir.
           sidebarPath: require.resolve("./sidebars.js"),
           editUrl: "https://github.com/zowe/docs-site/edit/zowe-docs-v2/", //FIXME:
-          // showLastUpdateAuthor: true,
+          showLastUpdateAuthor: false,
           showLastUpdateTime: true,
           // showReadingTime: true,
           routeBasePath: "/", //Default is docs/
@@ -257,7 +315,6 @@ module.exports = {
             current: {
               path: "stable", //TODO: stable
               label: `${LATEST_VERSION}`,
-              // label: 'v1.22.x'
             },
           },
         },
@@ -269,4 +326,34 @@ module.exports = {
       },
     ],
   ],
+  // plugins: [
+  //   [
+  //     "@docusaurus/plugin-pwa",
+  //     {
+  //       debug: true,
+  //       offlineModeActivationStrategies: [
+  //         "appInstalled",
+  //         "standalone",
+  //         "queryString",
+  //       ],
+  //       pwaHead: [
+  //         {
+  //           tagName: "link",
+  //           rel: "icon",
+  //           href: "/img/zowe-icon.png",
+  //         },
+  //         {
+  //           tagName: "link",
+  //           rel: "manifest",
+  //           href: "/manifest.json", // your PWA manifest
+  //         },
+  //         {
+  //           tagName: "meta",
+  //           name: "theme-color",
+  //           content: "rgb(37, 194, 160)", //FIXME:
+  //         },
+  //       ],
+  //     },
+  //   ],
+  // ],
 };
