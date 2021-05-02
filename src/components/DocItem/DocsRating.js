@@ -41,10 +41,9 @@ const DocsRating = ({ label }) => {
     <div className="docsRating margin-auto margin-top--lg">
       {haveVoted && liked == false ? (
         <div className="text--left">
-          "Thanks for letting us know!" If you have a specific question about
-          how to use Zowe, ask it on our{" "}
-          <a href={slackInviteURL}>Slack Channel</a>. Open an issue in the
-          GitHub repo if you want to{" "}
+          Thanks for letting us know! If you have a specific question about how
+          to use Zowe, ask it on our <a href={slackInviteURL}>Slack Channel</a>.
+          Open an issue in the GitHub repo if you want to{" "}
           <a href={openDocIssueURL}>report a problem</a> or{" "}
           <a href={docEnhancementURL}>suggest an improvement</a>.
         </div>
