@@ -207,7 +207,7 @@ function DocItem(props) {
 
                       {/* Share Button*/}
                       <div className="display-flex">
-                        <ShareButton />
+                        <ShareButton title={title} />
                       </div>
                     </div>
                   </div>

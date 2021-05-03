@@ -8,7 +8,26 @@ import { faLinkedin } from "@fortawesome/free-brands-svg-icons";
 // import { faLinkedinIn } from '@fortawesome/free-brands-svg-icons'
 import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
 
-function ShareButton() {
+function ShareButton(props) {
+  const twitterShareURL =
+    "https://twitter.com/share?url=https://docs.zowe.org" +
+    `${location.pathname}` +
+    "&text=Check out this documentation on " +
+    `${props.title}` +
+    ": ";
+  const linkedinShareURL =
+    "http://www.linkedin.com/shareArticle?mini=true&url=https://docs.zowe.org" +
+    `${location.pathname}` +
+    "&source=docs.zowe.org";
+  const facebookShareURL =
+    "https://www.facebook.com/sharer/sharer.php?u=https://docs.zowe.org" +
+    `${location.pathname}`;
+  const emailShareURL =
+    "mailto:?subject=Check out this documentation on " +
+    `${props.title}` +
+    "&body=https://docs.zowe.org" +
+    `${location.pathname}`;
+  //www.linkedin.com/shareArticle?mini=true&url=&title=&summary=some%20summary%20if%20you%20want
   return (
     <div className="dropdown dropdown--hoverable pointer">
       <a
@@ -27,19 +46,31 @@ function ShareButton() {
       </button>
       <ul className="dropdown__menu">
         <li>
-          <a className="dropdown__link icons" href="#url">
+          <a
+            className="dropdown__link icons"
+            href={twitterShareURL}
+            target="_blank"
+          >
             <FontAwesomeIcon icon={faTwitter} className="margin-right--sm" />
             Twitter
           </a>
         </li>
         <li>
-          <a className="dropdown__link icons" href="#url">
+          <a
+            className="dropdown__link icons"
+            href={linkedinShareURL}
+            target="_blank"
+          >
             <FontAwesomeIcon icon={faLinkedin} className="margin-right--sm" />
             LinkedIn
           </a>
         </li>
         <li>
-          <a className="dropdown__link icons" href="#url">
+          <a
+            className="dropdown__link icons"
+            href={facebookShareURL}
+            target="_blank"
+          >
             <FontAwesomeIcon
               icon={faFacebookSquare}
               className="margin-right--sm"
@@ -48,7 +79,11 @@ function ShareButton() {
           </a>
         </li>
         <li>
-          <a className="dropdown__link icons" href="#url">
+          <a
+            className="dropdown__link icons"
+            href={emailShareURL}
+            target="_blank"
+          >
             <FontAwesomeIcon icon={faEnvelope} className="margin-right--sm" />
             Email
           </a>
@@ -59,23 +94,3 @@ function ShareButton() {
 }
 
 export default ShareButton;
-
-// <?xml version="1.0" encoding="UTF-8"?>
-// <div>
-
-// <a id="linkedin" href="http://www.linkedin.com/shareArticle?mini=true&url=https://docs.zowe.org/stable&source=https://docs.zowe.org/stable" onclick="window.open(this.href, 'mywin','left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" >
-// <img src="./linkedin.JPG" height="25" title='Share on LinkedIn'></a>
-
-// <a id="facebook" onclick="window.open(this.href, 'mywin','left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://docs.zowe.org/stable" class="fb-xfbml-parse-ignore"><img title='Share on Facebook' src="./facebook.JPG" height="25"></a>
-
-// <a id='tweet' onclick="window.open(this.href, 'mywin','left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"  href="https://twitter.com/share?url=https://docs.zowe.org/stable&text=I have a good article to share with you:" class="twitter-share-button" data-show-count="false"><img title='Share on Twitter' src="./tweet.JPG" height="25"></a>
-
-// <script>
-// var url= window.location.href;
-
-// document.getElementById("linkedin").href='http://www.linkedin.com/shareArticle?mini=true&url=' + url + '&source=https://docs.zowe.org/stable';
-// document.getElementById("facebook").href='https://www.facebook.com/sharer/sharer.php?u='+url;
-// document.getElementById("tweet").href='https://twitter.com/share?url='+url+'&text=I have a good article to share with you: ';
-
-// </script>
-// </div>
