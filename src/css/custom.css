@@ -59,6 +59,11 @@ html[data-theme='dark'] .navbar-github-link:before {
     no-repeat;
 }
 
+/* NavBar Dropdown*/
+.dropdown:not(.dropdown--nocaret) > .navbar__link {
+  padding-right: calc(var(--ifm-navbar-item-padding-horizontal));
+}
+
 /* Landing Page Search Bar */
 .searchDiv {
   margin: auto;
