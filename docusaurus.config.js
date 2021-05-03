@@ -326,34 +326,65 @@ module.exports = {
       },
     ],
   ],
-  // plugins: [
-  //   [
-  //     "@docusaurus/plugin-pwa",
-  //     {
-  //       debug: true,
-  //       offlineModeActivationStrategies: [
-  //         "appInstalled",
-  //         "standalone",
-  //         "queryString",
-  //       ],
-  //       pwaHead: [
-  //         {
-  //           tagName: "link",
-  //           rel: "icon",
-  //           href: "/img/zowe-icon.png",
-  //         },
-  //         {
-  //           tagName: "link",
-  //           rel: "manifest",
-  //           href: "/manifest.json", // your PWA manifest
-  //         },
-  //         {
-  //           tagName: "meta",
-  //           name: "theme-color",
-  //           content: "rgb(37, 194, 160)", //FIXME:
-  //         },
-  //       ],
-  //     },
-  //   ],
-  // ],
+  plugins: [
+    [
+      "@docusaurus/plugin-pwa",
+      {
+        debug: true, // isDeployPreview
+        offlineModeActivationStrategies: [
+          "appInstalled",
+          "standalone",
+          "queryString",
+        ],
+        pwaHead: [
+          {
+            tagName: "link",
+            rel: "icon",
+            href: "/img/zowe-icon.png",
+          },
+          {
+            tagName: "link",
+            rel: "manifest",
+            href: "/manifest.json", // your PWA manifest
+          },
+          {
+            tagName: "meta",
+            name: "theme-color",
+            content: "#3162ac",
+          },
+          {
+            tagName: "meta",
+            name: "apple-mobile-web-app-capable",
+            content: "yes",
+          },
+          {
+            tagName: "meta",
+            name: "apple-mobile-web-app-status-bar-style",
+            content: "#000",
+          },
+          {
+            tagName: "link",
+            rel: "apple-touch-icon",
+            href: "img/zowe-icon.png",
+          },
+          {
+            tagName: "link",
+            rel: "mask-icon",
+            href: "img/zowe-icon.png",
+            color: "#3162ac",
+          },
+          {
+            tagName: "meta",
+            name: "msapplication-TileImage",
+            content: "img/zowe-icon.png",
+          },
+          {
+            tagName: "meta",
+            name: "msapplication-TileColor",
+            content: "#000",
+          },
+        ],
+      },
+    ],
+  ],
 };
