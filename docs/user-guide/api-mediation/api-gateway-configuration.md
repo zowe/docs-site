@@ -65,7 +65,7 @@ To change this default configuration, include the following parameters:
     
 * **ribbon.OkToRetryOnAllOperations**
 
-     Specifies whether to retry all operations for this service. The default value is `false`. In this case, only `GET` requests are retried if they return a response code that is listed in `ribbon.retryableStatusCodes`. Setting this parameter to `true` enables retry requests for all methods which return a response code listed in `ribbon.retryableStatusCodes`. 
+    Specifies whether to retry all operations for this service. The default value is `false`. In this case, only `GET` requests are retried if they return a response code that is listed in `ribbon.retryableStatusCodes`. Setting this parameter to `true` enables retry requests for all methods which return a response code listed in `ribbon.retryableStatusCodes`. 
      
   **Note:** Enabling retry can impact server resources due to request body buffering.
 
@@ -79,10 +79,7 @@ To change this default configuration, include the following parameters:
     
 ## Gateway client certificate authentication
 
-**Note:**
-
-Beginning with release 1.19 LTS, it is possible to authenticate using client certificates. The feature is functional and tested, but automated testing on various security systems is not complete. As such, the feature is provided as a beta release for early preview. If you would like to offer feedback using client certificate authentication, please create an issue against the api-layer repository. Client Certificate authentication will move out of Beta once test automation is fully implemented across different security systems.
-
+**Note:** Beginning with release 1.19 LTS, it is possible to authenticate using client certificates. The feature is functional and tested, but automated testing on various security systems is not complete. As such, the feature is provided as a beta release for early preview. If you would like to offer feedback using client certificate authentication, please create an issue against the api-layer repository. Client Certificate authentication will move out of Beta once test automation is fully implemented across different security systems.
 
 Use the following procedure to enable the feature to use a client certificate as the method of authentication for the API Mediation Layer Gateway.
 
@@ -103,7 +100,7 @@ Use the following procedure to enable the feature to use a client certificate as
 
 3. Change the following property if user mapping is provided by an external API:
 
-  * **APIML_GATEWAY_EXTERNAL_MAPPER**
+   * **APIML_GATEWAY_EXTERNAL_MAPPER**
 
    **Note:** Skip this step if user mapping is not provided by an external API.
 
@@ -117,7 +114,7 @@ Use the following procedure to enable the feature to use a client certificate as
 
 4. Add the following property if the Zowe runtime userId is altered from the default `ZWESVUSR`:
 
-  * **APIML_GATEWAY_MAPPER_USER**
+   * **APIML_GATEWAY_MAPPER_USER**
 
    **Note:** Skip this step if the Zowe runtime userId is not altered from the default `ZWESVUSR`.
 
@@ -229,8 +226,9 @@ A value can also be applied to `API_GATEWAY_CATALOG_ID`.
   A possible dashboard that could appear in place of the API Catalog 
 
 **Notes:**
+
 - If the application contains the `homePageUrl` and `statusPageRelativeUrl`, then the full set of information is displayed.
-- If the application contains the `homePageUrl` the link is displayed without the `UP` information
+- If the application contains the `homePageUrl` the link is displayed without the `UP` information.
 - If the application contains the `statusPageRelativeUrl` then `UP` or `DOWN` is displayed based on the `statusPage` without the link.
 
 Use the following procedure to change or replace the Catalog service:
@@ -269,12 +267,15 @@ The API ML can check for the authorization of the user on certain endpoints. Acc
 Verification of the SAF resource is provided by the following three providers:
 
 - **`endpoint`**
+
   This is the highest priority provider, such as a REST endpoint call (ZSS or similar one). This option is disabled by default. In Zowe, ZSS has the API to check for SAF   resource authorization.
   
 - **`native`**
+
   The Native JZOS classes from Java are used to determine SAF resource access. This is the default provider.
   
 - **`dummy`**
+
   This is the lowest priority provider. This is the dummy implementation and is defined in a file.
 
 **Note:** Verification of the SAF resource uses the first available provider based on the specified priority. The default configuration resolves to the native provider. 
@@ -299,20 +300,20 @@ APIML_SECURITY_AUTHORIZATION_PROVIDER=native
 APIML_SECURITY_AUTHORIZATION_PROVIDER=dummy
 ```
 
-If you decide to use the endpoint provider, you can customize the URL corresponding to SAF resource authorization. By default, the ZSS API is configured and used. 
+To use the endpoint provider, customize the URL corresponding to the SAF resource authorization. By default, the ZSS API is configured and used. 
 
 **Follow these steps:**
 
 1. Open the file `<Zowe instance directory>/instance.env`.
 2. Modify the property `APIML_SECURITY_AUTHORIZATION_ENDPOINT_URL` and set desired value.
-   The default value for ZSS API is https://${ZOWE_EXPLORER_HOST}:${GATEWAY_PORT}/zss/api/v1/saf-auth
+   The default value for ZSS API is `https://${ZOWE_EXPLORER_HOST}:${GATEWAY_PORT}/zss/api/v1/saf-auth`
 3. Restart `Zowe&trade`.
 
 ### Checking providers
 
 #### REST endpoint call
 
-To enable the feature outside the mainframe (ie. running in Docker) you can use a REST endpoint call using the `GET` method:
+To enable the feature outside of the mainframe, such as when running in Docker, you can use a REST endpoint call using the `GET` method:
 
 - Method: `GET`
 - URL: `{base path}/{userId}/{class}/{entity}/{level}`
@@ -324,24 +325,26 @@ To enable the feature outside the mainframe (ie. running in Docker) you can use 
         "message": "{message}"
     }
 ```
-**Note:** For more information about this REST endpoint call, see [ZSS implementation](https://github.com/zowe/zss/blob/master/c/authService.c)
+**Note:** For more information about this REST endpoint call, see [ZSS implementation](https://github.com/zowe/zss/blob/master/c/authService.c).
 
 #### Native
 
-This provider is the easiest way, how to use the feature on the mainframe.
+This provider is the easiest approach to use the SAF resource checking feature on the mainframe.
 
-Enable, when classes `com.ibm.os390.security.PlatformAccessControl` and `com.ibm.os390.security.PlatformReturned`
-are available on classpath. It uses [method](https://www.ibm.com/support/knowledgecenter/SSYKE2_8.0.0/com.ibm.java.zsecurity.api.80.doc/com.ibm.os390.security/com/ibm/os390/security/PlatformAccessControl.html?view=kc#checkPermission-java.lang.String-java.lang.String-java.lang.String-int-), so
-for right using, definition of method must be also matching.
+Enable this provider when classes `com.ibm.os390.security.PlatformAccessControl` and `com.ibm.os390.security.PlatformReturned`
+are available on the classpath. This approach uses the following method described in the IBM documentation: [method](https://www.ibm.com/support/knowledgecenter/SSYKE2_8.0.0/com.ibm.java.zsecurity.api.80.doc/com.ibm.os390.security/com/ibm/os390/security/PlatformAccessControl.html?view=kc#checkPermission-java.lang.String-java.lang.String-java.lang.String-int-).
+
+**Note:** For proper use, ensure that the definition of the method matches.
 
 #### Dummy implementation
 
-This provider is for testing purpose outside the mainframe.
+This provider is for testing purpose outside of the mainframe.
 
-You can create file `saf.yml` and locate it in the folder, where is application running or create file `mock-saf.yml` in the
-test module (root folder). The highest priority is to read file outside the JAR. A file (inner or outside) has to exist.
+Create the file `saf.yml` and locate it in the folder, where is application running or create file `mock-saf.yml` in the
+test module (root folder). The highest priority is to read the file outside of the JAR. A file (inner or outside) has to exist.
 
-Structure of YML file:
+The following YAML presents the structure of the file:
+
 ```yaml
   safAccess:
     {CLASS}:
@@ -350,8 +353,10 @@ Structure of YML file:
 ```
 
 **Notes**:
-- Classes and resources are mapped into a map, user IDs into list.
-- load method does not support formatting with dots, like {CLASS}.{RESOURCE}, each element has to be separated
-- field `safAccess` is not required to define empty file (without any definition)
-- classes and resources cannot be defined without user ID list
-- when a user has multiple definition of same class and resource, just the most privileged access level is loaded
+- Classes and resources are mapped into a map, user IDs into a list.
+- The load method does not support formatting with dots, such as shown in the following example:
+  **Example:** {CLASS}.{RESOURCE}
+  Ensure that each element is separated.
+- The field `safAccess` is not required to define an empty file without a definition.
+- Classes and resources cannot be defined without the user ID list.
+- When a user has multiple definitions of the same class and resource, only the most privileged access level loads.
