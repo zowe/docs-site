@@ -334,7 +334,7 @@ This provider is the easiest approach to use the SAF resource checking feature o
 Enable this provider when classes `com.ibm.os390.security.PlatformAccessControl` and `com.ibm.os390.security.PlatformReturned`
 are available on the classpath. This approach uses the following method described in the IBM documentation: [method](https://www.ibm.com/support/knowledgecenter/SSYKE2_8.0.0/com.ibm.java.zsecurity.api.80.doc/com.ibm.os390.security/com/ibm/os390/security/PlatformAccessControl.html?view=kc#checkPermission-java.lang.String-java.lang.String-java.lang.String-int-).
 
-**Note:** For proper use, ensure that the definition of the method matches.
+**Note:** Ensure that the version of Java on your system has the same version of classes and method signatures.
 
 #### Dummy implementation
 
