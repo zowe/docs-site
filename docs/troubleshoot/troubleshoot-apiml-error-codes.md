@@ -593,7 +593,7 @@ The following error message codes may appear on logs or API responses. Use the f
 
   **Reason:**
 
-  General exception. There are more information in the message
+  General exception. There are more pieces of information in the message
 
   **Action:**
 
@@ -629,7 +629,7 @@ The following error message codes may appear on logs or API responses. Use the f
 
   **Reason:**
 
-  Gateway service doesn't respond.
+  Gateway service does not respond.
 
   **Action:**
 
@@ -665,7 +665,7 @@ The following error message codes may appear on logs or API responses. Use the f
 
   **Reason:**
 
-  The Zaas Client configuration didn't contain the path to the trust store
+  The Zaas Client configuration does not contain the path to the trust store
 
   **Action:**
 
@@ -677,7 +677,7 @@ The following error message codes may appear on logs or API responses. Use the f
 
   **Reason:**
 
-  The Zaas Client configuration didn't contain the path to the key store
+  The Zaas Client configuration does not contain the path to the key store
 
   **Action:**
 
@@ -817,7 +817,7 @@ The following error message codes may appear on logs or API responses. Use the f
 
   **Reason:**
 
-  No client certificate presents in HTTPS request.
+  No client certificate is present in the HTTPS request.
 
   **Action:**
 
@@ -1033,11 +1033,11 @@ The following error message codes may appear on logs or API responses. Use the f
 
   **Reason:**
 
-  The Gateway could not find the z/OSMF instance from the Discovery Service or it could not communicate with provided z/OSMF instance.
+  The Gateway could not find the z/OSMF instance from the Discovery Service or it could not communicate with the provided z/OSMF instance.
 
   **Action:**
 
-  Ensure that the z/OSMF instance is configured correctly and that it is successfully registered to the Discovery Service and that API Mediation Layer can communicate with provided z/OSMF instance.
+  Ensure that the z/OSMF instance is configured correctly and that it is successfully registered to the Discovery Service and that the API Mediation Layer can communicate with provided z/OSMF instance.
 
 ### ZWEAG109E
 
