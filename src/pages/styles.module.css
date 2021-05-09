@@ -1,11 +1,6 @@
 /* stylelint-disable docusaurus/copyright-header */
 
-/**
- * CSS files with the .module.css suffix will be treated as CSS modules
- * and scoped locally.
- */
-
- .heroBanner {
+.heroBanner {
   padding: 4rem 0;
   text-align: center;
   position: relative;
@@ -18,49 +13,4 @@
   .heroBanner {
     padding: 2rem;
   }
-}
-
-.buttons {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-details {
-  padding: 15px;
-  background-color: #f6f8fa;
-  margin-bottom: 35px;
-  border-radius: 5px;
-}
-
-html[data-theme='dark'] details {
-  background-color: #272727;
-}
-
-details[open] summary:before {
-  content: "📖 Click to hide answer";
-}
-
-summary {
-  cursor: pointer;
-  background-color: #f6f8fa;
-  list-style-image: none;
-}
-
-html[data-theme='dark'] summary {
-  background-color: #272727;
-}
-
-summary::-webkit-details-marker {
-  display: none;
-}
-
-summary::-moz-list-bullet {
-  list-style-type: none;
-  display: block;
-}
-
-summary:before {
-  content: "📘 Click to open answer";
-  margin-right: 5px;
 }
