@@ -4,15 +4,11 @@ import clsx from "clsx";
 import useBaseUrl from "@docusaurus/useBaseUrl";
 import styles from "./styles.module.css";
 
-//Icons
-// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-// import { faQuestion, faRetweet } from '@fortawesome/free-solid-svg-icons'
-
 const data = [
   {
     title: "Getting Started",
-    lightIcon: "img/question-solid.svg",
-    darkIcon: "img/question-dark-solid.svg",
+    lightIcon: "img/getting-started-icon.png",
+    darkIcon: "img/getting-started-icon.png",
     link: "stable/getting-started/overview",
     description: (
       <>
@@ -24,8 +20,8 @@ const data = [
   },
   {
     title: "User Guide",
-    lightIcon: "img/question-solid.svg",
-    darkIcon: "img/question-dark-solid.svg",
+    lightIcon: "img/user-guide-icon.png",
+    darkIcon: "img/user-guide-icon.png",
     link: "stable/user-guide/installandconfig.",
     description: (
       <>
@@ -37,8 +33,8 @@ const data = [
   },
   {
     title: "Extending",
-    lightIcon: "img/question-solid.svg",
-    darkIcon: "img/question-dark-solid.svg",
+    lightIcon: "img/extending-icon.png",
+    darkIcon: "img/extending-icon.png",
     link: "stable/extend/extend-zowe-overview",
     description: (
       <>
@@ -49,8 +45,8 @@ const data = [
   },
   {
     title: "Troubleshooting",
-    lightIcon: "img/question-solid.svg",
-    darkIcon: "img/question-dark-solid.svg",
+    lightIcon: "img/troubleshooting-icon.png",
+    darkIcon: "img/troubleshooting-icon.png",
     link: "stable/troubleshoot/troubleshooting",
     description: (
       <>
@@ -61,8 +57,8 @@ const data = [
   },
   {
     title: "Contributing",
-    lightIcon: "img/question-solid.svg",
-    darkIcon: "img/question-dark-solid.svg",
+    lightIcon: "img/contributing-icon.png",
+    darkIcon: "img/contributing-icon.png",
     link: "stable/contribute/contributing.html",
     description: (
       <>
@@ -73,9 +69,9 @@ const data = [
   },
   {
     title: "References",
-    lightIicon: "img/question-solid.svg",
-    darkIcon: "img/question-dark-solid.svg",
-    link: "stable/appendix/tpsr",
+    lightIcon: "img/references-icon.png",
+    darkIcon: "img/references-icon.png",
+    link: "stable/appendix/zowe-cli-commannd-reference",
     description: (
       <>
         Get a list of reference materials to help you use Zowe, including the
@@ -90,27 +86,25 @@ function Feature({ title, link, lightIcon, darkIcon, description }) {
   const imgDarkIconUrl = useBaseUrl(darkIcon);
   return (
     <div className={clsx("col col--4", styles.feature)}>
-      <Link to={useBaseUrl(link)}>
-        <div className={clsx("card margin-bottom--lg", styles.card)}>
-          <div className="card__header">
-            {/* <FontAwesomeIcon icon={icon} /> */}
-            <img
-              src={imgLightIconUrl}
-              alt="icons"
-              style={{ width: "16px" }}
-              className={clsx(styles.lightThemeIcon)}
-            />
-            <img
-              src={imgDarkIconUrl}
-              alt="icons"
-              style={{ width: "16px" }}
-              className={clsx(styles.darkThemeIcon)}
-            />
-            <h3>{title}</h3>
-          </div>
-          <div className="card__body">
-            <p>{description}</p>
-          </div>
+      <Link
+        to={useBaseUrl(link)}
+        className={clsx("padding--lg margin-bottom--lg", styles.card)}
+      >
+        <div style={{ height: "100%" }}>
+          <h3>{title}</h3>
+          <p>{description}</p>
+          <img
+            src={imgLightIconUrl}
+            alt="icons"
+            style={{ width: "65px" }}
+            className={clsx(styles.lightThemeIcon)}
+          />
+          <img
+            src={imgDarkIconUrl}
+            alt="icons"
+            style={{ width: "20%" }}
+            className={clsx(styles.darkThemeIcon)}
+          />
         </div>
       </Link>
     </div>
@@ -121,14 +115,10 @@ function Features() {
   return (
     <>
       {data && data.length > 0 && (
-        <section
-          id="features"
-          className={clsx(styles.features)}
-          style={{ padding: "4rem 0" }}
-        >
+        <section id="features" style={{ padding: "4rem 0" }}>
           <h1 className="text--center padding-bottom--md">Explore Content</h1>
           <div className="container">
-            <div className="row">
+            <div className={clsx(styles.block, "row")}>
               {data.map((props, idx) => (
                 <Feature key={idx} {...props} />
               ))}

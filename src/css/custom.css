@@ -75,7 +75,7 @@ html[data-theme='dark'] .navbar-github-link:before {
   width: 70%;
   height: 45px;
   padding: 0 20px;
-  border-radius: 20px;
+  border-radius: 10px;
   color: var(--docsearch-text-color);
 }
 
@@ -148,6 +148,7 @@ html[data-theme="dark"] .docsRating .i_thumbsdown {
  }
 }
 
+/* Custom classes */
 .display-flex {
   display: flex;
 }
