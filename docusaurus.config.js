@@ -5,7 +5,7 @@ module.exports = {
   title: "Zowe Docs",
   tagline:
     "Combining the past and the present to build the future of Mainframe",
-  url: "https://covalentbond.github.io", //FIXME:
+  url: "https://zowe-docs.netlify.app/", //FIXME:
   baseUrl: "/",
   //FIXME: baseUrl: "/zowe-docs/",
   onBrokenLinks: "ignore",
@@ -16,6 +16,7 @@ module.exports = {
   projectName: "docs-site",
   themeConfig: {
     hideableSidebar: true,
+    image: "img/zowe-icon.png",
     navbar: {
       title: "Zowe Docs",
       hideOnScroll: true,

@@ -76,7 +76,6 @@ function DocItem(props) {
   const openDocIssueURL =
     "https://github.com/zowe/docs-site/issues/new?assignees=&labels=&template=---doc-error-report.md&title=Issue with docs.zowe.org" +
     `${location.pathname}`;
-  const slackInviteURL = "https://slack.openmainframeproject.org/";
   versionPassed = version.label;
 
   return (
@@ -237,16 +236,4 @@ function DocItem(props) {
   );
 }
 
-// export { versionPassed };
 export default DocItem;
-
-//below Last Updated at {}
-
-{
-  /* FIXME: {process.env.NODE_ENV === 'development' && <div>
-    <small>
-      {' '}
-      (Simulated during dev for better perf)
-    </small>
-  </div>} */
-}
