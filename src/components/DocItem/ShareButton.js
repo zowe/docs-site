@@ -5,7 +5,6 @@ import { faShareSquare } from "@fortawesome/free-solid-svg-icons";
 import { faTwitter } from "@fortawesome/free-brands-svg-icons";
 import { faFacebookSquare } from "@fortawesome/free-brands-svg-icons";
 import { faLinkedin } from "@fortawesome/free-brands-svg-icons";
-// import { faLinkedinIn } from '@fortawesome/free-brands-svg-icons'
 import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
 
 function ShareButton(props) {
@@ -28,7 +27,30 @@ function ShareButton(props) {
     `${props.title}` +
     "&body=https://docs.zowe.org" +
     `${location.pathname}`;
-  //www.linkedin.com/shareArticle?mini=true&url=&title=&summary=some%20summary%20if%20you%20want
+
+  const info = [
+    {
+      link: twitterShareURL,
+      iconName: faTwitter,
+      name: "Twitter",
+    },
+    {
+      link: linkedinShareURL,
+      iconName: faLinkedin,
+      name: "LinkedIn",
+    },
+    {
+      link: facebookShareURL,
+      iconName: faFacebookSquare,
+      name: "Facebook",
+    },
+    {
+      link: emailShareURL,
+      iconName: faEnvelope,
+      name: "Email",
+    },
+  ];
+
   return (
     <div className="dropdown dropdown--hoverable pointer">
       <a
@@ -46,49 +68,22 @@ function ShareButton(props) {
         Share
       </button>
       <ul className="dropdown__menu">
-        <li>
-          <a
-            className="dropdown__link icons"
-            href={twitterShareURL}
-            target="_blank"
-          >
-            <FontAwesomeIcon icon={faTwitter} className="margin-right--sm" />
-            Twitter
-          </a>
-        </li>
-        <li>
-          <a
-            className="dropdown__link icons"
-            href={linkedinShareURL}
-            target="_blank"
-          >
-            <FontAwesomeIcon icon={faLinkedin} className="margin-right--sm" />
-            LinkedIn
-          </a>
-        </li>
-        <li>
-          <a
-            className="dropdown__link icons"
-            href={facebookShareURL}
-            target="_blank"
-          >
-            <FontAwesomeIcon
-              icon={faFacebookSquare}
-              className="margin-right--sm"
-            />
-            Facebook
-          </a>
-        </li>
-        <li>
-          <a
-            className="dropdown__link icons"
-            href={emailShareURL}
-            target="_blank"
-          >
-            <FontAwesomeIcon icon={faEnvelope} className="margin-right--sm" />
-            Email
-          </a>
-        </li>
+        {info.map((labels) => (
+          <li>
+            <a
+              className="dropdown__link icons"
+              href={labels.link}
+              target="_blank"
+              key={labels.id}
+            >
+              <FontAwesomeIcon
+                icon={labels.iconName}
+                className="margin-right--sm"
+              />
+              {labels.name}
+            </a>
+          </li>
+        ))}
       </ul>
     </div>
   );
