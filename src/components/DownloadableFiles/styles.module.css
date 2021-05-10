@@ -1,9 +1,26 @@
-html[data-theme="dark"] .section {
+.section {
+  padding: 4rem 0;
+}
+
+html[data-theme="light"] .card {
+  background-color: var(--ifm-background-section-color);
+}
+
+html[data-theme="dark"] .card {
   background-color: var(--ifm-card-background-color);
 }
 
-.section {
-  padding: 4rem 0;
+.card {
+  position: relative;
+  height: 100%;
+}
+
+.card .metadata {
+  min-height: 195px;
+}
+
+.card img {
+  width: 25px;
 }
 
 .features {

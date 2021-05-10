@@ -21,7 +21,7 @@ function Home() {
       <header className={clsx("hero", styles.heroBanner)}>
         <div className="container">
           <h1 className="hero__title">{siteConfig.title}</h1>
-          <p className="hero__subtitle">{siteConfig.tagline}</p>
+          {/* <p className="hero__subtitle">{siteConfig.tagline}</p> FIXME: */}
           {/* <div className="display-flex justify-content--center margin-vert--md">
             <div className={clsx('margin-right--md', styles.buttons)}>
               <Link
