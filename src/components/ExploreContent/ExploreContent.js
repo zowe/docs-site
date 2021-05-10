@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Link from "@docusaurus/Link";
 import clsx from "clsx";
 import useBaseUrl from "@docusaurus/useBaseUrl";
@@ -22,7 +22,7 @@ const data = [
     title: "User Guide",
     lightIcon: "img/user-guide-icon.png",
     darkIcon: "img/user-guide-icon.png",
-    link: "stable/user-guide/installandconfig.",
+    link: "stable/user-guide/installandconfig",
     description: (
       <>
         Find out how to install and configure Zowe. Learn about how to use Zowe
@@ -59,7 +59,7 @@ const data = [
     title: "Contributing",
     lightIcon: "img/contributing-icon.png",
     darkIcon: "img/contributing-icon.png",
-    link: "stable/contribute/contributing.html",
+    link: "stable/contribute/contributing",
     description: (
       <>
         Learn about how you can contribute to this documentation. Read about the
@@ -84,11 +84,19 @@ const data = [
 function Feature({ title, link, lightIcon, darkIcon, description }) {
   const imgLightIconUrl = useBaseUrl(lightIcon);
   const imgDarkIconUrl = useBaseUrl(darkIcon);
+  const [hovered, setHovered] = useState(false);
+  const toggleHover = () => setHovered(!hovered);
   return (
     <div className={clsx("col col--4", styles.feature)}>
       <Link
         to={useBaseUrl(link)}
-        className={clsx("padding--lg margin-bottom--lg", styles.card)}
+        className={
+          hovered
+            ? clsx("padding--lg margin-bottom--lg item shadow--tl", styles.card)
+            : clsx("padding--lg margin-bottom--lg", styles.card)
+        }
+        onMouseOver={toggleHover}
+        onMouseOut={toggleHover}
       >
         <div style={{ height: "100%" }}>
           <h3>{title}</h3>
@@ -115,9 +123,9 @@ function Features() {
   return (
     <>
       {data && data.length > 0 && (
-        <section id="features" style={{ padding: "4rem 0" }}>
-          <h1 className="text--center padding-bottom--md">Explore Content</h1>
+        <section id={clsx(styles.features)}>
           <div className="container">
+            <h1 className="text--center padding-bottom--md">Explore Content</h1>
             <div className={clsx(styles.block, "row")}>
               {data.map((props, idx) => (
                 <Feature key={idx} {...props} />
