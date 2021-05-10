@@ -16,7 +16,7 @@ html[data-theme="dark"] .feature {
 }
 
 .section {
-  padding: 4rem 0;
+  padding: 4rem 0rem;
 }
 
 .features {
@@ -35,4 +35,10 @@ html[data-theme="dark"] .feature {
   display: flex;
   flex-direction: row;
   align-items: baseline;
+}
+
+@media screen and (max-width: 1200px){
+  .section {
+    padding: 4rem 1rem;
+  }
 }

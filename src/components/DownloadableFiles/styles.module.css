@@ -1,5 +1,5 @@
 .section {
-  padding: 4rem 0;
+  padding: 4rem 0rem;
 }
 
 html[data-theme="light"] .card {
@@ -33,4 +33,22 @@ html[data-theme="dark"] .card {
 .featureImage {
   height: 200px;
   width: 200px;
+}
+
+@media screen and (min-width: 1450px) {
+  .card .metadata {
+    min-height: 165px;
+  }
+}
+
+@media screen and (max-width: 1200px){
+  .section {
+    padding: 4rem 1rem;
+  }
+}
+
+@media screen and (max-width: 1100px) {
+  .card .metadata {
+    min-height: inherit;
+  }
 }

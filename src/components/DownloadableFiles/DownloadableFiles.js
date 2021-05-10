@@ -57,8 +57,8 @@ function DownloadableFile({
   secondDownloadLink,
 }) {
   return (
-    <div className={clsx("col col--4")}>
-      <div className={clsx("padding--lg margin-bottom--lg", styles.card)}>
+    <div className={clsx("col col--4 margin-bottom--lg")}>
+      <div className={clsx("padding--lg", styles.card)}>
         <div className={styles.metadata}>
           <h3>{title}</h3>
           <p>{description}</p>
