@@ -89,7 +89,7 @@ html[data-theme='dark'] .navbar-github-link:before {
   font-size: inherit;
 }
 
-.zowe-faq p{
+.zowe-faq p {
   margin: revert;
 }
 
@@ -140,14 +140,6 @@ html[data-theme="dark"] .docsRating .i_thumbsdown {
   fill: #e9430f;
 }
 
-@media only screen and (max-width: 996px) {
-  .docsRating {
-    width: 100%;
-    margin: 36px 0 0 !important;
-    border-radius: var(--ifm-global-radius);
- }
-}
-
 /* Custom classes */
 .display-flex {
   display: flex;
@@ -164,4 +156,42 @@ html[data-theme="dark"] .docsRating .i_thumbsdown {
 .user-options {
   display: flex;
   align-items: center;
+}
+
+@media (min-width: 1135px) and (max-width: 1220px) {
+  .navbar__title {
+    display: none;
+  }
+  .navbar__brand {
+    margin-right: 0px;
+  }
+}
+
+@media (min-width: 996px) and (max-width: 1135px) {
+  .navbar__toggle {
+    display: inherit;
+  }
+  .navbar__item {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 996px) {
+  .docsRating {
+    width: 100%;
+    margin: 36px 0 0 !important;
+    border-radius: var(--ifm-global-radius);
+ }
+ .searchDiv .DocSearch-Button-Placeholder {
+  display: inherit;
+ }
+}
+
+@media only screen and (max-width: 768px) {
+  .searchDiv {
+    width: inherit;
+  }
+  .searchDiv .DocSearch-Button {
+    width: 90%;
+  }
 }
