@@ -12,9 +12,10 @@ function ShareButton(props) {
   const twitterShareURL =
     "https://twitter.com/share?url=https://docs.zowe.org" +
     `${location.pathname}` +
-    "&text=Check out this documentation on " +
+    "&text=Check out this article on " +
     `${props.title}` +
-    ": ";
+    ": " +
+    "&hashtags=zowe,openmainframeproject,opensource";
   const linkedinShareURL =
     "http://www.linkedin.com/shareArticle?mini=true&url=https://docs.zowe.org" +
     `${location.pathname}` +
@@ -23,9 +24,12 @@ function ShareButton(props) {
     "https://www.facebook.com/sharer/sharer.php?u=https://docs.zowe.org" +
     `${location.pathname}`;
   const emailShareURL =
-    "mailto:?subject=Check out this documentation on " +
+    "mailto:?subject=Shared Article | " +
     `${props.title}` +
-    "&body=https://docs.zowe.org" +
+    " | Zowe Docs " +
+    "&body=Check out this article on " +
+    `${props.title}` +
+    ": https://docs.zowe.org" +
     `${location.pathname}`;
 
   const info = [

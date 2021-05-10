@@ -12,7 +12,7 @@ const DocsRating = ({ label }) => {
     "https://github.com/zowe/docs-site/issues/new?assignees=&labels=&template=---doc-error-report.md&title=Issue with docs.zowe.org" +
     `${location.pathname}`;
   const docEnhancementURL =
-    "https://github.com/zowe/docs-site/issues/new?assignees=&labels=&template=---doc-site-enhancement-request.md&title=Doc Enhancement Request for docs.zowe.org" +
+    "https://github.com/zowe/docs-site/issues/new?assignees=&labels=&template=---doc-site-enhancement-request.md&title=Doc enhancement request for docs.zowe.org" +
     `${location.pathname}`;
 
   const [haveVoted, setHaveVoted] = useState(false);

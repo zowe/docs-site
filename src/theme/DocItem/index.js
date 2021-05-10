@@ -22,7 +22,6 @@ import DocsRating from "../../components/DocItem/DocsRating";
 //Icons
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBug, faPrint } from "@fortawesome/free-solid-svg-icons";
-// import { faSlack } from '@fortawesome/free-brands-svg-icons'
 
 var versionPassed = ""; //defined the variable globally
 
