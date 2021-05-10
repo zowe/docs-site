@@ -313,7 +313,7 @@ To use the endpoint provider, customize the URL corresponding to the SAF resourc
 
 #### REST endpoint call
 
-To enable the feature outside of the mainframe, such as when running in Docker, you can use a REST endpoint call using the `GET` method:
+The REST provider calls the external API to retrieve information about access rights. To enable the feature outside of the mainframe, such as when running in Docker, you can use a REST endpoint call using the `GET` method:
 
 - Method: `GET`
 - URL: `{base path}/{userId}/{class}/{entity}/{level}`
@@ -329,7 +329,7 @@ To enable the feature outside of the mainframe, such as when running in Docker, 
 
 #### Native
 
-This provider is the easiest approach to use the SAF resource checking feature on the mainframe.
+The Native provider is the easiest approach to use the SAF resource checking feature on the mainframe.
 
 Enable this provider when classes `com.ibm.os390.security.PlatformAccessControl` and `com.ibm.os390.security.PlatformReturned`
 are available on the classpath. This approach uses the following method described in the IBM documentation: [method](https://www.ibm.com/support/knowledgecenter/SSYKE2_8.0.0/com.ibm.java.zsecurity.api.80.doc/com.ibm.os390.security/com/ibm/os390/security/PlatformAccessControl.html?view=kc#checkPermission-java.lang.String-java.lang.String-java.lang.String-int-).
@@ -338,7 +338,7 @@ are available on the classpath. This approach uses the following method describe
 
 #### Dummy implementation
 
-This provider is for testing purpose outside of the mainframe.
+The Dummy provider is for testing purpose outside of the mainframe.
 
 Create the file `saf.yml` and locate it in the folder, where is application running or create file `mock-saf.yml` in the
 test module (root folder). The highest priority is to read the file outside of the JAR. A file (inner or outside) has to exist.
