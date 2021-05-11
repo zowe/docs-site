@@ -77,12 +77,11 @@ function ShareButton(props) {
       </button>
       <ul className="dropdown__menu">
         {info.map((labels) => (
-          <li>
+          <li key={labels.id}>
             <a
               className="dropdown__link icons"
               href={labels.link}
               target="_blank"
-              key={labels.id}
             >
               <FontAwesomeIcon
                 icon={labels.iconName}
