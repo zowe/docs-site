@@ -45,10 +45,10 @@ The following error message codes may appear on logs or API responses. Use the f
 
 ### ZWEAO105W
 
-  Gateway HTTP Client per-route connection limit of %s has been reached for the '%s' route.
+  Gateway HTTP Client per-route connection limit (maxConnectionsPerRoute) of %s has been reached for the '%s' route.
 
   **Reason:**
-  
+
   Too many concurrent connection requests were made to the same route.
 
   **Action:**
@@ -57,7 +57,7 @@ The following error message codes may appear on logs or API responses. Use the f
 
 ### ZWEAO106W
 
-  Gateway Http Client total connection limit of %s has been reached.
+  Gateway HTTP Client total connection limit (maxTotalConnections) of %s has been reached.
 
   **Reason:**
 
@@ -111,7 +111,7 @@ The following error message codes may appear on logs or API responses. Use the f
 
   **Reason:**
 
-  The Message service is requested to create a message with an invalid key.
+  Message service is requested to create message with an invalid key.
 
   **Action:**
 
@@ -123,7 +123,7 @@ The following error message codes may appear on logs or API responses. Use the f
 
   **Reason:**
 
-  The Message service is requested to create a message with an invalid text format.
+  Message service is requested to create a message with an invalid text format.
 
   **Action:**
 
@@ -153,7 +153,7 @@ The following error message codes may appear on logs or API responses. Use the f
 
   Refer to the specific message to identify the exact problem.
   Possible causes include:
-  - An incorrect security algorithm
+  - Incorrect security algorithm
   - The keystore is invalid or corrupted
   - The certificate is invalid or corrupted
 
@@ -379,9 +379,21 @@ The following error message codes may appear on logs or API responses. Use the f
 
   Please submit an issue with this message.
 
+### ZWEAT403E
+
+  The user is not authorized to the target resource: %s
+
+  **Reason:**
+
+  The service has accepted the authentication of the user but the user does not have access right to the resource.
+
+  **Action:**
+
+  Contact your security administrator to give you access.
+
 ### ZWEAT601E
 
-  z/OSMF service name not found. Set parameter apiml.security.auth.zosmfServiceId to your service ID.
+  z/OSMF service name not found. Set parameter apiml.security.auth.zosmf.serviceId to your service ID.
 
   **Reason:**
 
@@ -389,7 +401,31 @@ The following error message codes may appear on logs or API responses. Use the f
 
   **Action:**
 
-  Ensure that the parameter apiml.security.auth.zosmfServiceId is correctly entered with a valid z/OSMF service ID.
+  Ensure that the parameter apiml.security.auth.zosmf.serviceId is correctly entered with a valid z/OSMF service ID.
+
+### ZWEAT602E
+
+  The SAF provider `endpoint` supports only resource class 'ZOWE', but current one is '%s'
+
+  **Reason:**
+
+  The parameter `apiml.security.authorization.provider` is set to `endpoint`
+
+  **Action:**
+
+  Change the SAF provider to another one to use this endpoint
+
+### ZWEAT603E
+
+  Endpoint `%s` is not properly configured
+
+  **Reason:**
+
+  Application cannot call the endpoint to check SAF resource of user
+
+  **Action:**
+
+  Verify state of ZSS and IZS, then check if parameters `apiml.security.authorization.endpoint.*` are matching.
 
 ## Security client messages
 
@@ -545,11 +581,11 @@ The following error message codes may appear on logs or API responses. Use the f
 
   **Reason:**
 
-  The authorization header was empty or null.
+  The authorization header was empty or null
 
   **Action:**
 
-  Try again with a valid authorization header.
+  Try again with valid authorization header
 
 ### ZWEAS170E
 
@@ -557,7 +593,7 @@ The following error message codes may appear on logs or API responses. Use the f
 
   **Reason:**
 
-  General exception. There is more information in the message.
+  General exception. There are more pieces of information in the message
 
   **Action:**
 
@@ -569,11 +605,11 @@ The following error message codes may appear on logs or API responses. Use the f
 
   **Reason:**
 
-  Unable to generate a PassTicket.
+  Unable to generate PassTicket.
 
   **Action:**
 
-  Verify that the secured signon (PassTicket) function and application ID is configured properly by referring to Using PassTickets in the guide for your security provider.
+  Verify that the secured signon (PassTicket) function and application ID is configured properly by referring to Using PassTickets in the guide for your security provider
 
 ### ZWEAS401E
 
@@ -581,11 +617,11 @@ The following error message codes may appear on logs or API responses. Use the f
 
   **Reason:**
 
-  There was no JWT token provided for the generation of the PassTicket.
+  There was no JWT token provided for the generation of the PassTicket
 
   **Action:**
 
-  Ensure that you are passing a JWT token for PassTicker generation.
+  Ensure that you are passing JWT token for PassTicker generation
 
 ### ZWEAS404E
 
@@ -593,11 +629,11 @@ The following error message codes may appear on logs or API responses. Use the f
 
   **Reason:**
 
-  The Gateway Service doe not respond.
+  Gateway service does not respond.
 
   **Action:**
 
-  Ensure that the Gateway Service is up and that the path to the gateway service is properly set.
+  Ensure that the Gateway service is up and that the path to the gateway service is properly set.
 
 ### ZWEAS417E
 
@@ -605,7 +641,7 @@ The following error message codes may appear on logs or API responses. Use the f
 
   **Reason:**
 
-  The application id provided for the generation of the PassTicket was not recognized by the security provider.
+  The application id provided for the generation of the PassTicket wasn't recognized by security provider
 
   **Action:**
 
@@ -617,7 +653,7 @@ The following error message codes may appear on logs or API responses. Use the f
 
   **Reason:**
 
-  The JWT token is not valid.
+  The JWT token is not valid
 
   **Action:**
 
@@ -629,7 +665,7 @@ The following error message codes may appear on logs or API responses. Use the f
 
   **Reason:**
 
-  The Zaas Client configuration does not contain the path to the trust store.
+  The Zaas Client configuration does not contain the path to the trust store
 
   **Action:**
 
@@ -641,7 +677,7 @@ The following error message codes may appear on logs or API responses. Use the f
 
   **Reason:**
 
-  The Zaas Client configuration does not contain the path to the key store.
+  The Zaas Client configuration does not contain the path to the key store
 
   **Action:**
 
@@ -669,7 +705,7 @@ The following error message codes may appear on logs or API responses. Use the f
 
   **Action:**
 
-  Ensure that both provided paths are resolved to valid trust store and valid key store.
+  Ensure that both provided paths are resolved to valid trust store and valid key store
 
 ## Discovery service messages
 
@@ -707,7 +743,7 @@ The following error message codes may appear on logs or API responses. Use the f
 
   **Action:**
 
-  Review the static API definition directories and their setup. The static definition directories are specified as a launch parameter to a Discovery service jar. The property key is: `apiml.discovery.staticApiDefinitionsDirectories`.
+  Review the static API definition directories and their setup. The static definition directories are specified as a launch parameter to a Discovery service jar. The property key is: `apiml.discovery.staticApiDefinitionsDirectories`
 
 ### ZWEAD701E
 
@@ -774,6 +810,18 @@ The following error message codes may appear on logs or API responses. Use the f
   Review the log of Gateway Service and its configuration.
 
 ## Gateway service messages
+
+### ZWEAG500E
+
+  Client certificate is missing in request.
+
+  **Reason:**
+
+  No client certificate is present in the HTTPS request.
+
+  **Action:**
+
+  Properly configure client to send client certificate.
 
 ### ZWEAG700E
 
@@ -981,15 +1029,15 @@ The following error message codes may appear on logs or API responses. Use the f
 
 ### ZWEAG108E
 
-  z/OSMF instance '%s' not found or incorrectly configured.
+  z/OSMF instance '%s' not found or incorrectly configured. Gateway is shutting down.
 
   **Reason:**
 
-  The Gateway could not find the z/OSMF instance from the Discovery Service.
+  The Gateway could not find the z/OSMF instance from the Discovery Service or it could not communicate with the provided z/OSMF instance.
 
   **Action:**
 
-  Ensure that the z/OSMF instance is configured correctly and that it is successfully registered to the Discovery Service.
+  Ensure that the z/OSMF instance is configured correctly and that it is successfully registered to the Discovery Service and that the API Mediation Layer can communicate with provided z/OSMF instance.
 
 ### ZWEAG109E
 
@@ -1250,4 +1298,19 @@ The following error message codes may appear on logs or API responses. Use the f
 
   Check the specific exception for troubleshooting.
 
+### ZWEAC708E
+
+  The API base path for service %s was not retrieved. %s
+
+  **Reason:**
+
+  The api base path for service was not retrieved. An empty path will be used.
+
+  **Action:**
+
+  Refer to the specific printed message. Possible causes include:
+  - The URI ... is not valid. Ensure the service is providing a valid url.
+  - Not able to select a route for url ... of the service ... Original url is used. If this is a problem, check the routing metadata of the service.
+  - The path ... of the service URL ... is not valid. Ensure the service is providing the correct path.
+ 
 
