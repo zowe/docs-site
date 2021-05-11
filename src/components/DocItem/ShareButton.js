@@ -1,7 +1,6 @@
 import React from "react";
 import { useLocation } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faShareSquare } from "@fortawesome/free-solid-svg-icons";
 import { faTwitter } from "@fortawesome/free-brands-svg-icons";
 import { faFacebookSquare } from "@fortawesome/free-brands-svg-icons";
 import { faLinkedin } from "@fortawesome/free-brands-svg-icons";
@@ -62,8 +61,11 @@ function ShareButton(props) {
         rel="noreferrer noopener"
         style={{ marginTop: "0.45rem" }}
       >
-        <FontAwesomeIcon icon={faShareSquare} style={{ fontSize: "16px" }} />
-        <>&nbsp;</>
+        <img
+          className="margin-right--xs"
+          src="../../../static/img/share-icon.svg"
+          style={{ height: "16px", width: "18px", verticalAlign: "-0.125em" }}
+        ></img>
       </a>
       <button
         className="button button--lg button--link padding-horiz--none pointer share-button"

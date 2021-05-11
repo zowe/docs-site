@@ -174,8 +174,13 @@ function DocItem(props) {
                         {editUrl && (
                           <a onClick={() => window.print()}>
                             {" "}
-                            {/* href={openIssueURL} target="_blank" rel="noreferrer noopener"*/}
-                            <FontAwesomeIcon icon={faPrint} />
+                            <img
+                              src="../../../static/img/print-icon.svg"
+                              style={{
+                                width: "16px",
+                                verticalAlign: "-0.125em",
+                              }}
+                            ></img>
                             <>&nbsp;</>
                             PDF
                           </a>
@@ -191,11 +196,13 @@ function DocItem(props) {
                             target="_blank"
                             rel="noreferrer noopener"
                           >
-                            {/* <FontAwesomeIcon icon={faBug} class="fontAwesome"/><>&nbsp;</> */}
-                            <FontAwesomeIcon
-                              icon={faBug}
-                              className="fontAwesome"
-                            />
+                            <img
+                              src="../../../static/img/bug-icon.svg"
+                              style={{
+                                width: "16px",
+                                verticalAlign: "-0.125em",
+                              }}
+                            ></img>
                             <>&nbsp;</>
                             Open doc issue
                             {/* <>&nbsp;</> */}

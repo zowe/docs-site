@@ -2,10 +2,6 @@ import React from "react";
 import clsx from "clsx";
 import styles from "./styles.module.css";
 
-//Icons
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCheck } from "@fortawesome/free-solid-svg-icons";
-
 const firstSection = [
   {
     item: "Release notes",
