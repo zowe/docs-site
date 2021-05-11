@@ -2,6 +2,7 @@ import React from "react";
 import clsx from "clsx";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import styles from "./styles.module.css";
+import Dropdown from "./Dropdown";
 
 const downloadableFiles = [
   {
@@ -15,6 +16,7 @@ const downloadableFiles = [
     firstSubDescription: <>Select the version to Download</>,
     firstDownloadLink: "https://google.com/",
     version: true,
+    dropdown: true,
   },
   {
     title: "Zowe CLI command reference guides",
@@ -51,6 +53,7 @@ const downloadableFiles = [
 function DownloadableFile({
   title,
   version,
+  dropdown,
   description,
   firstSubDescription,
   firstViewOnlineLink,
@@ -73,7 +76,7 @@ function DownloadableFile({
         <div>
           <div>
             {firstSubDescription && (
-              <p className="margin-bottom--xs">{firstSubDescription}</p>
+              <p className="margin-bottom--sm">{firstSubDescription}</p>
             )}
             <div className="display-flex">
               {firstViewOnlineLink && (
@@ -96,6 +99,7 @@ function DownloadableFile({
                   </a>
                 </div>
               )}
+              {dropdown && <Dropdown />}
               {firstDownloadLink && (
                 <div className="display-flex row--align-center pointer">
                   <img
@@ -120,7 +124,7 @@ function DownloadableFile({
           </div>
           <div>
             {secondSubDescription && (
-              <p className="padding-top--lg margin-bottom--xs">
+              <p className="padding-top--lg margin-bottom--sm">
                 {secondSubDescription}
               </p>
             )}

@@ -35,6 +35,22 @@ html[data-theme="dark"] .card {
   width: 200px;
 }
 
+button img {
+  margin-right: -15px;
+}
+
+.versionButton:hover {
+  background-color: inherit;
+  color: var(--ifm-link-hover-color);
+}
+
+.versionButton {
+  border-radius: inherit;
+  font-weight: 400;
+  font-family: inherit;
+  font-size: inherit;
+}
+
 @media screen and (min-width: 1450px) {
   .card .metadata {
     min-height: 165px;
