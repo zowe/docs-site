@@ -209,8 +209,7 @@ module.exports = {
             },
             {
               label: "Features",
-              href:
-                "https://docs.zowe.org/stable/getting-started/overview.html",
+              href: "https://docs.zowe.org/stable/getting-started/overview.html",
             },
           ],
         },
@@ -223,13 +222,11 @@ module.exports = {
             },
             {
               label: "Videos",
-              href:
-                "https://www.youtube.com/playlist?list=PL8REpLGaY9QE_9d57tw3KQdwSVLKuTpUZ",
+              href: "https://www.youtube.com/playlist?list=PL8REpLGaY9QE_9d57tw3KQdwSVLKuTpUZ",
             },
             {
               label: "Zowe Conformance Program",
-              href:
-                "https://www.openmainframeproject.org/projects/zowe/conformance",
+              href: "https://www.openmainframeproject.org/projects/zowe/conformance",
             },
           ],
         },
@@ -242,8 +239,7 @@ module.exports = {
             },
             {
               label: "Join community meetings",
-              href:
-                "https://lists.openmainframeproject.org/g/zowe-dev/calendar",
+              href: "https://lists.openmainframeproject.org/g/zowe-dev/calendar",
             },
             {
               label: "GitHub",
@@ -251,8 +247,7 @@ module.exports = {
             },
             {
               label: "Contribute",
-              href:
-                "https://docs.zowe.org/stable/contribute/roadmap-contribute.html",
+              href: "https://docs.zowe.org/stable/contribute/roadmap-contribute.html",
             },
           ],
         },
@@ -285,18 +280,9 @@ module.exports = {
       anonymizeIP: true, // Should IPs be anonymized?
     },
   },
-  // i18n: {
-  //   defaultLocale: "en",
-  //   locales: ["en", "fr"],
-  //   localeConfigs: {
-  //     en: {
-  //       label: "English",
-  //     },
-  //     fr: {
-  //       label: "Français",
-  //     },
-  //   },
-  // },
+  customFields: {
+    latestVersion: LATEST_VERSION,
+  },
   presets: [
     [
       //For reference: https://v2.docusaurus.io/docs/api/plugins/@docusaurus/plugin-content-docs#configuration

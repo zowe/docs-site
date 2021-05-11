@@ -1,5 +1,6 @@
 import React from "react";
 import clsx from "clsx";
+import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import styles from "./styles.module.css";
 
 const downloadableFiles = [
@@ -8,11 +9,12 @@ const downloadableFiles = [
     description: (
       <>
         Download the <code>Version 1.x.x</code> Zowe documentation in PDF format
-        from the links below. The latest version on this website is 1.20.1.
+        from the links below. The latest version on this website is
       </>
     ),
     firstSubDescription: <>Select the version to Download</>,
     firstDownloadLink: "https://google.com/",
+    version: true,
   },
   {
     title: "Zowe CLI command reference guides",
@@ -48,6 +50,7 @@ const downloadableFiles = [
 
 function DownloadableFile({
   title,
+  version,
   description,
   firstSubDescription,
   firstViewOnlineLink,
@@ -56,12 +59,16 @@ function DownloadableFile({
   secondViewOnlineLink,
   secondDownloadLink,
 }) {
+  const { siteConfig } = useDocusaurusContext();
   return (
     <div className={clsx("col col--4 margin-bottom--lg")}>
       <div className={clsx("padding--lg", styles.card)}>
         <div className={styles.metadata}>
           <h3>{title}</h3>
-          <p>{description}</p>
+          <p>
+            {description}{" "}
+            {version && siteConfig.customFields.latestVersion + "."}
+          </p>
         </div>
         <div>
           <div>
