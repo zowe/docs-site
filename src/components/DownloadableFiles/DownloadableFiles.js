@@ -71,7 +71,14 @@ function DownloadableFile({
             <div className="display-flex">
               {firstViewOnlineLink && (
                 <div className="margin-right--md display-flex row--align-center pointer">
-                  <img src="img/right-arrow-icon.svg"></img>
+                  <img
+                    className="lightThemeIcon"
+                    src="img/right-arrow-light-icon.svg"
+                  ></img>
+                  <img
+                    className="darkThemeIcon"
+                    src="img/right-arrow-dark-icon.svg"
+                  ></img>
                   <a
                     className="margin-left--xs"
                     href={firstViewOnlineLink}
@@ -84,7 +91,14 @@ function DownloadableFile({
               )}
               {firstDownloadLink && (
                 <div className="display-flex row--align-center pointer">
-                  <img src="img/download-icon.svg"></img>
+                  <img
+                    className="lightThemeIcon"
+                    src="img/download-light-icon.svg"
+                  ></img>
+                  <img
+                    className="darkThemeIcon"
+                    src="img/download-dark-icon.svg"
+                  ></img>
                   <a
                     className="margin--xs"
                     href={firstDownloadLink}
@@ -106,7 +120,14 @@ function DownloadableFile({
             <div className="display-flex">
               {secondViewOnlineLink && (
                 <div className="margin-right--md display-flex row--align-center pointer">
-                  <img src="img/right-arrow-icon.svg"></img>
+                  <img
+                    className="lightThemeIcon"
+                    src="img/right-arrow-light-icon.svg"
+                  ></img>
+                  <img
+                    className="darkThemeIcon"
+                    src="img/right-arrow-dark-icon.svg"
+                  ></img>
                   <a
                     className="margin-left--xs"
                     href={secondViewOnlineLink}
@@ -119,7 +140,14 @@ function DownloadableFile({
               )}
               {secondDownloadLink && (
                 <div className="display-flex row--align-center pointer">
-                  <img src="img/download-icon.svg"></img>
+                  <img
+                    className="lightThemeIcon"
+                    src="img/download-light-icon.svg"
+                  ></img>
+                  <img
+                    className="darkThemeIcon"
+                    src="img/download-dark-icon.svg"
+                  ></img>
                   <a
                     className="margin--xs"
                     href={secondDownloadLink}

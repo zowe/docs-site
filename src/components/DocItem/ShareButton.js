@@ -1,4 +1,5 @@
 import React from "react";
+import useBaseUrl from "@docusaurus/useBaseUrl";
 import { useLocation } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTwitter } from "@fortawesome/free-brands-svg-icons";
@@ -30,6 +31,7 @@ function ShareButton(props) {
     `${props.title}` +
     ": https://docs.zowe.org" +
     `${location.pathname}`;
+  const shareIconUrl = useBaseUrl("img/share-icon.svg");
 
   const info = [
     {
@@ -63,7 +65,7 @@ function ShareButton(props) {
       >
         <img
           className="margin-right--xs"
-          src="../../../static/img/share-icon.svg"
+          src={shareIconUrl}
           style={{ height: "16px", width: "18px", verticalAlign: "-0.125em" }}
         ></img>
       </a>

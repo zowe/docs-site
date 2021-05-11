@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useLocation } from "react-router-dom";
 import Head from "@docusaurus/Head";
 import { useTitleFormatter } from "@docusaurus/theme-common";
@@ -19,26 +19,9 @@ import {
 import ShareButton from "../../components/DocItem/ShareButton";
 import DocsRating from "../../components/DocItem/DocsRating";
 
-//Icons
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBug, faPrint } from "@fortawesome/free-solid-svg-icons";
-
 var versionPassed = ""; //defined the variable globally
 
 function DocItem(props) {
-  useEffect(() => {
-    const script = document.createElement("script");
-
-    script.src = "https://utteranc.es/client.js";
-    script.setAttribute("repo", "your-user-name/your-repo-name");
-    script.setAttribute("issue-term", "pathname");
-    script.setAttribute("label", "comment");
-    script.setAttribute("theme", "github-light");
-    script.crossOrigin = "anonymous";
-    script.async = true;
-
-    document.getElementById("comment-system").appendChild(script);
-  }, []);
   const { siteConfig } = useDocusaurusContext();
   const { url: siteUrl } = siteConfig;
   const { content: DocContent } = props;
@@ -76,6 +59,8 @@ function DocItem(props) {
     "https://github.com/zowe/docs-site/issues/new?assignees=&labels=&template=---doc-error-report.md&title=Issue with docs.zowe.org" +
     `${location.pathname}`;
   versionPassed = version.label;
+  const bugIconUrl = useBaseUrl("img/bug-icon.svg");
+  const printIconUrl = useBaseUrl("img/print-icon.svg");
 
   return (
     <>
@@ -175,7 +160,7 @@ function DocItem(props) {
                           <a onClick={() => window.print()}>
                             {" "}
                             <img
-                              src="../../../static/img/print-icon.svg"
+                              src={printIconUrl}
                               style={{
                                 width: "16px",
                                 verticalAlign: "-0.125em",
@@ -197,7 +182,7 @@ function DocItem(props) {
                             rel="noreferrer noopener"
                           >
                             <img
-                              src="../../../static/img/bug-icon.svg"
+                              src={bugIconUrl}
                               style={{
                                 width: "16px",
                                 verticalAlign: "-0.125em",
