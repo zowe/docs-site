@@ -111,7 +111,7 @@ The following error message codes may appear on logs or API responses. Use the f
 
   **Reason:**
 
-  Message service is requested to create message with an invalid key.
+  Message service is requested to create a message with an invalid key.
 
   **Action:**
 
@@ -385,7 +385,7 @@ The following error message codes may appear on logs or API responses. Use the f
 
   **Reason:**
 
-  The service has accepted the authentication of the user but the user does not have access right to the resource.
+  The service has accepted the authentication of the user but the user does not have access rights to the resource.
 
   **Action:**
 
@@ -405,7 +405,7 @@ The following error message codes may appear on logs or API responses. Use the f
 
 ### ZWEAT602E
 
-  The SAF provider `endpoint` supports only resource class 'ZOWE', but current one is '%s'
+  The SAF provider `endpoint` supports only the resource class 'ZOWE', but the current one is '%s'
 
   **Reason:**
 
@@ -421,11 +421,11 @@ The following error message codes may appear on logs or API responses. Use the f
 
   **Reason:**
 
-  Application cannot call the endpoint to check SAF resource of user
+  The application cannot call the endpoint to check the SAF resource of the user
 
   **Action:**
 
-  Verify state of ZSS and IZS, then check if parameters `apiml.security.authorization.endpoint.*` are matching.
+  Verify the state of ZSS and IZS, then check if parameters `apiml.security.authorization.endpoint.*` are matching.
 
 ## Security client messages
 
@@ -585,7 +585,7 @@ The following error message codes may appear on logs or API responses. Use the f
 
   **Action:**
 
-  Try again with valid authorization header
+  Try again with a valid authorization header
 
 ### ZWEAS170E
 
@@ -637,11 +637,11 @@ The following error message codes may appear on logs or API responses. Use the f
 
 ### ZWEAS417E
 
-  The application name wasn't found
+  The application name was not found
 
   **Reason:**
 
-  The application id provided for the generation of the PassTicket wasn't recognized by security provider
+  The application id provided for the generation of the PassTicket was not recognized by the security provider
 
   **Action:**
 
@@ -1304,13 +1304,13 @@ The following error message codes may appear on logs or API responses. Use the f
 
   **Reason:**
 
-  The api base path for service was not retrieved. An empty path will be used.
+  The API base path for service was not retrieved. An empty path will be used.
 
   **Action:**
 
   Refer to the specific printed message. Possible causes include:
   - The URI ... is not valid. Ensure the service is providing a valid url.
-  - Not able to select a route for url ... of the service ... Original url is used. If this is a problem, check the routing metadata of the service.
-  - The path ... of the service URL ... is not valid. Ensure the service is providing the correct path.
+  - Not able to select a route for url ... of service ... The original url is used. If this is a problem, check the routing metadata of the service.
+  - The path ... of service URL ... is not valid. Ensure the service is providing the correct path.
  
 
