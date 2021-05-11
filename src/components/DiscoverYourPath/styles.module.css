@@ -16,7 +16,11 @@ html[data-theme="dark"] .feature {
 }
 
 .section {
-  padding: 4rem 0rem;
+  padding: 4rem 0 3rem 0;
+}
+
+.section a{
+  font-size: 1.1rem;
 }
 
 .features {

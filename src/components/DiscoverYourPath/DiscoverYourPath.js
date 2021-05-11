@@ -63,7 +63,12 @@ function Item({ item, link }) {
 function DiscoverYourPath() {
   return (
     <div className={styles.section}>
-      <h1 className="text--center padding-bottom--sm">Discover your path</h1>
+      <h2
+        className="text--center padding-bottom--md margin-bottom--none"
+        style={{ fontSize: "2rem" }}
+      >
+        Discover your path
+      </h2>
       <p className="text--center margin-bottom--none">
         The roadmaps help you arrive at your goals faster.
       </p>

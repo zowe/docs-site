@@ -125,7 +125,12 @@ function Features() {
       {data && data.length > 0 && (
         <section id={clsx(styles.features)}>
           <div className="container">
-            <h1 className="text--center padding-bottom--md">Explore Content</h1>
+            <h2
+              className="text--center padding-bottom--md"
+              style={{ fontSize: "2rem" }}
+            >
+              Explore Content
+            </h2>
             <div className={clsx(styles.block, "row")}>
               {data.map((props, idx) => (
                 <Feature key={idx} {...props} />

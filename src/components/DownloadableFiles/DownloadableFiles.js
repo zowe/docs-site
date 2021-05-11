@@ -143,7 +143,12 @@ function DownloadableFiles() {
     <>
       {downloadableFiles && downloadableFiles.length > 0 && (
         <div className={styles.section}>
-          <h1 className="text--center padding-bottom--md">Downloadble files</h1>
+          <h2
+            className="text--center padding-bottom--md margin-bottom--none"
+            style={{ fontSize: "2rem" }}
+          >
+            Downloadble files
+          </h2>
           <section className={styles.features}>
             <div className="container">
               <div className="row">

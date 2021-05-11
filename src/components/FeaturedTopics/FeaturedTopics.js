@@ -65,26 +65,27 @@ const thirdSection = [
 
 function Item({ item, link }) {
   return (
-    <div className={clsx("display-flex")}>
+    <li>
       <a href={link}>{item}</a>
-    </div>
+    </li>
   );
 }
 
 function FeaturedTopics() {
   return (
     <div className={styles.section}>
-      <h1 className="text--center padding-bottom--md">Featured Topics</h1>
+      <h2
+        className="text--center padding-bottom--md margin-bottom--none"
+        style={{ fontSize: "2rem" }}
+      >
+        Featured Topics
+      </h2>
       <section className={styles.features}>
         <div className="container">
           <div className="row justify-content--center">
             <div className={clsx("col col--3", styles.feature)}>
               {firstSection.map((props, idx) => (
                 <div className="display-flex row--align-center margin-bottom--md">
-                  <FontAwesomeIcon
-                    icon={faCheck}
-                    className="margin-right--sm"
-                  />
                   <Item key={idx} {...props} />
                 </div>
               ))}
@@ -92,10 +93,6 @@ function FeaturedTopics() {
             <div className={clsx("col col--4", styles.feature)}>
               {secondSection.map((props, idx) => (
                 <div className="display-flex row--align-center margin-bottom--md">
-                  <FontAwesomeIcon
-                    icon={faCheck}
-                    className="margin-right--sm"
-                  />
                   <Item key={idx} {...props} />
                 </div>
               ))}
@@ -103,10 +100,6 @@ function FeaturedTopics() {
             <div className={clsx("col col--3", styles.feature)}>
               {thirdSection.map((props, idx) => (
                 <div className="display-flex row--align-center margin-bottom--md">
-                  <FontAwesomeIcon
-                    icon={faCheck}
-                    className="margin-right--sm"
-                  />
                   <Item key={idx} {...props} />
                 </div>
               ))}

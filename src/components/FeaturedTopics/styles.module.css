@@ -1,13 +1,9 @@
-:root {
-  --ifm-background-section-color: #f2f2f2;
-}
-
 .section {
-  padding: 4rem 0;
+  padding: 4rem 0 3rem 0;
 }
 
-html[data-theme="light"] .section {
-  background-color: var(--ifm-background-section-color);
+.section a{
+  font-size: 1.1rem;
 }
 
 .features {
