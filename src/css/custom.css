@@ -140,6 +140,14 @@ html[data-theme="dark"] .docsRating .i_thumbsdown {
   fill: #e9430f;
 }
 
+html[data-theme="dark"] .lightThemeIcon {
+  display: none;
+}
+
+html[data-theme="light"] .darkThemeIcon {
+  display: none;
+}
+
 /* Custom classes */
 .display-flex {
   display: flex;

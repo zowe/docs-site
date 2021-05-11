@@ -28,7 +28,6 @@ const data = [
 function Resource({ title, link, lightIcon, darkIcon, description }) {
   const imgLightIconUrl = useBaseUrl(lightIcon);
   const imgDarkIconUrl = useBaseUrl(darkIcon);
-  // className={clsx("display-flex")}
 
   return (
     <div className={clsx("col col--4 padding--lg", styles.posRelative)}>
@@ -36,13 +35,13 @@ function Resource({ title, link, lightIcon, darkIcon, description }) {
         src={imgLightIconUrl}
         alt="icons"
         style={{ width: "65px" }}
-        className={clsx(styles.lightThemeIcon)}
+        className="lightThemeIcon"
       />
       <img
         src={imgDarkIconUrl}
         alt="icons"
         style={{ width: "20%" }}
-        className={clsx(styles.darkThemeIcon)}
+        className="darkThemeIcon"
       />
       <p>{description}</p>
       <a className={clsx("margin-top--sm", styles.posAbsolute)} href={link}>

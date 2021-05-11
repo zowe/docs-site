@@ -6,6 +6,10 @@ hr {
   border-top: 0px solid rgba(0,0,0,.1);
 }
 
+html[data-theme="dark"] hr {
+  border: var(--ifm-hr-border-width) solid #272829
+}
+
 .heroBanner {
   padding: 4rem 0;
   text-align: center;

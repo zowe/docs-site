@@ -54,14 +54,6 @@ html[data-theme="dark"] .card {
   position: relative;
 }
 
-html[data-theme="dark"] .lightThemeIcon {
-  display: none;
-}
-
-html[data-theme="light"] .darkThemeIcon {
-  display: none;
-}
-
 @media screen and (max-width: 1000px) {
   .feature:nth-child(2) img, .feature:nth-child(3) img, .feature:nth-child(5) img, .feature:nth-child(6) img {
     position: inherit;

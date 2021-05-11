@@ -105,13 +105,13 @@ function Feature({ title, link, lightIcon, darkIcon, description }) {
             src={imgLightIconUrl}
             alt="icons"
             style={{ width: "65px" }}
-            className={clsx(styles.lightThemeIcon)}
+            className="lightThemeIcon"
           />
           <img
             src={imgDarkIconUrl}
             alt="icons"
             style={{ width: "20%" }}
-            className={clsx(styles.darkThemeIcon)}
+            className="darkThemeIcon"
           />
         </div>
       </Link>
