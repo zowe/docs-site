@@ -1,5 +1,7 @@
 import React from "react";
 import Head from "@docusaurus/Head";
+import MDXComponents from "@theme/MDXComponents";
+import { MDXProvider } from "@mdx-js/react";
 import { useTitleFormatter } from "@docusaurus/theme-common";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import useBaseUrl from "@docusaurus/useBaseUrl";
@@ -104,9 +106,11 @@ function DocItem(props) {
                   title={title}
                 />
               )}
-              <div className="markdown">
-                <DocContent />
-              </div>
+              <MDXProvider components={MDXComponents}>
+                <div className="markdown">
+                  <DocContent />
+                </div>
+              </MDXProvider>
             </article>
 
             <div className="margin-left--none margin-top--md text--center">
