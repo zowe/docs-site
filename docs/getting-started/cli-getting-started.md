@@ -1,94 +1,132 @@
----
-title: CLI Getting Started
-hide_title: true
----
+# Zowe CLI quick start
 
-# Docker Installation Roadmap (Technical Preview)
+Get started with Zowe&trade; CLI quickly and easily.
 
-<Badge text="Technical Preview"/> The Zowe Docker build is a technical preview. Technical previews are for testing only and not ready for production. Any feedback that you can provide is highly appreciated.
+**Note:** This section assumes some prerequisite knowledge of command-line tools and writing scripts. If you prefer more detailed instructions, see [Installing Zowe CLI](../user-guide/cli-installcli.md).
 
-There are three parts to using Docker to install Zowe&trade;. 
+- [Installing](#installing)
+- [Issuing your first commands](#issuing-your-first-commands)
+- [Using profiles](#using-profiles)
+- [Writing scripts](#writing-scripts)
+- [Next Steps](#next-steps)
 
-- The Zowe z/OS runtime which contains the ZSS component.
+## Installing
 
-- The Zowe Cross Memory Server. This is an authorized server application that provides privileged services to Zowe in a secure manner.
+### Software Requirements
 
-- The Zowe Docker image, which runs on a Linux or zLinux host. It consists of three components: Zowe Application Framework, z/OS Explorer Services, and Zowe API Mediation Layer. 
+Before you install Zowe CLI, download and install Node.js and npm. Use an LTS version of Node.js that is compatible with your version of npm. For a list of compatible versions, see [Node.js Previous Releases](https://nodejs.org/en/download/releases/).
 
-Using the Zowe Docker bundle first requires setting up your z/OS system for Zowe. The steps for z/OS setup are detailed on the page: [Installing Zowe Server Components on z/OS](install-zos.md).
+**(Linux only):** On graphical Linux, install `gnome-keyring` and `libsecret` on your computer before you install the Secure Credential Store. On headless Linux, follow the procedure documented in the [SCS plug-in Readme](https://github.com/zowe/zowe-cli-scs-plugin/blob/master/README.md#software-requirements).
 
-**NOTE**: If you want to install all server components on z/OS instead of using Docker, completing the z/OS install instructions in the above document is all that is required.
+### Installing Zowe CLI core from public npm
 
-Review the installation diagram and the introduction in this topic to see the general installation sequence and the most important tasks that are to be performed during installation and configuration.
+Issue the following commands in sequence to install the core CLI.
 
-**NOTE**: You can click each step on the diagram for detailed instructions.
+The "core" includes Zowe CLI and Secure Credential Store, which enhances security by encrypting your username and password.
 
-<figure>
-  <img usemap="#home_map1" border="0" id="install-flow" src="../images/common/zowe-docker-install-diagram.png" width="850" alt="Click each step to get more details on the flow." />
-  <figcaption></figcaption>
-</figure>
-<map name="home_map1" id="home_map1">
-  <area href="installandconfig.html#planning-the-installation-of-zowe-server-components" alt="Plan and prepare for the installation" title="Plan and prepare for the installation" shape="rect" coords="326, 63, 474, 105" />
-  <area href="systemrequirements.html" alt="Configure system requirements" title="Configure system requirements" shape="rect" coords="318, 183, 467, 224" />
+```
+npm install @zowe/cli@zowe-v1-lts -g
+```
 
-  <area href="https://www.zowe.org/download.html" alt="Download Zowe SMP/E build" title="Download the Zowe SMP/E build from zowe.org" shape="rect" coords="131, 308, 304, 348" />
-  <area href="install-zowe-smpe.html" alt="Install the Zowe SMP/E build using JCLs" title="Install the Zowe SMP/E build using JCLs" shape="rect" coords="54, 498, 188, 555" />
-  <area href="install-zowe-smpe-zosmf-workflow.html" alt="Install the Zowe SMP/E build with z/OSMF workflow" title="Install the Zowe SMP/E build with z/OSMF workflow" shape="rect" coords="250, 498, 391, 555" />
+```
+zowe plugins install @zowe/secure-credential-store-for-zowe-cli@zowe-v1-lts
+```
 
-  <area href="https://www.zowe.org/download.html" alt="Download the Zowe convenience build" title="Download the Zowe convenience build from zowe.org" shape="rect" coords="527, 299, 694, 344" />
-  <area href="install-zowe-zos-convenience-build.html#obtaining-and-preparing-the-convenience-build" alt="Verify, transfer, and expand the PAX file on z/OS" title="Verify, transfer, and expand the PAX file on z/OS" shape="rect" coords="526, 368, 696, 410" />
-  <area href="install-zowe-zos-convenience-build.html#installing-the-zowe-runtime" alt="Install the Zowe runtime using shell script" title="Install the Zowe runtime using shell script" shape="rect" coords="450, 500, 574, 552" />
-  <area href="install-zowe-zos-convenience-build.html#installing-the-zowe-runtime" alt="Install the Zowe runtime with z/OSMF workflow" title="Install the Zowe runtime with z/OSMF workflow" shape="rect" coords="647, 499, 774, 554" />
+### Installing CLI plug-ins
 
-  <area href="configure-zos-system.html" alt="Configure the z/OS system for Zowe using ZWESECUR" title="Configure the z/OS system for Zowe using ZWESECUR" shape="rect" coords="121, 756, 426, 808" />
-  <area href="configure-certificates.html" alt="Configure Zowe certificates using shell script" title="Create the Zowe certificates keystore directory using shell script" shape="rect" coords="124, 830, 426, 882" />
-  <area href="configure-xmem-server.html" alt="Configure the Zowe cross memory server using shell script" title="Install and configure the Zowe cross memory server (ZWESISTC) using shell script" shape="rect" coords="123, 909, 426, 952" />
-  <area href="configure-instance-directory.html" alt="Create and configure the Zowe instance directory using shell script" title="Create and configure the Zowe instance directory using shell script" shape="rect" coords="121, 976, 426, 1038" />
-  <area href="configure-zowe-server.html" alt="Install and start the Zowe started task using shell script" title="Install and start the Zowe started task (ZWESVSTC) using shell script" shape="rect" coords="125, 1065, 426, 1117" />
+```
+zowe plugins install @zowe/cics-for-zowe-cli@zowe-v1-lts @zowe/db2-for-zowe-cli@zowe-v1-lts @zowe/ims-for-zowe-cli@zowe-v1-lts @zowe/mq-for-zowe-cli@zowe-v1-lts @zowe/zos-ftp-for-zowe-cli@zowe-v1-lts
+```
 
-  <area href="configure-zowe-zosmf-workflow.html#configure-z-os-security-manager" alt="Configure Zowe security manager with z/OSMF workflow" title="Configure Zowe security manager with z/OSMF workflow" shape="rect" coords="515, 759, 757, 805" />
-  <area href="configure-zowe-zosmf-workflow.html#configure-zowe-certificates" alt="Configure Zowe certificates with z/OSMF workflow" title="Configure Zowe certificates with z/OSMF workflow" shape="rect" coords="515, 832, 754, 882" />
-  <area href="configure-zowe-zosmf-workflow.html#configure-zowe-cross-memory-server" alt="Configure Zowe Cross Memory Server with z/OSMF workflow" title="Configure Zowe Cross Memory Server with z/OSMF workflow" shape="rect" coords="515, 905, 757, 960" />
-  <area href="configure-zowe-zosmf-workflow.html#create-and-configure-the-zowe-instance-directory-and-start-the-zowe-started-task" alt="Create and configure the Zowe instance directory and start Zowe with z/OSMF workflow" title="Create and configure the Zowe instance directory and start Zowe with z/OSMF workflow" shape="rect" coords="513, 977, 757, 1042" />
+The command installs most open-source plug-ins, but the IBM Db2 plug-in requires [additional configuration to install](../user-guide/cli-db2plugin.md#installing).
 
-  <area href="verify-zowe-runtime-install.html" alt="Verify Zowe installation on z/OS" title="Verify Zowe installation on z/OS" shape="rect" coords="224, 1154, 616, 1198" />
+For more information, see [Installing plug-ins](../user-guide/cli-installplugins.md).
 
-  <area href="install-docker-image.html#installing-via-docker-hub" alt="Pull image from Docker Hub" title="Pull image from Docker Hub" shape="rect" coords="46, 1390, 416, 1445" />
-  <area href="install-docker-image.html#installing-via-direct-download" alt="Download image tarball" title="Download image tarball" shape="rect" coords="495, 1390, 780, 1445" />
-  <area href="install-docker-image.html#loading-an-image-from-tarball" alt="Load image into Docker" title="Load image into Docker" shape="rect" coords="495, 1465, 780, 1515" />
-  
-  <area href="configuring-docker.html#quick-start-for-the-zowe-runtime-in-docker" alt="Copy sample scripts and instance out of container" title="Copy sample scripts and instance out of container" shape="rect" coords="250, 1605, 610, 1660" />
-  <area href="configuring-docker.html#using-an-instance-directory-external-to-the-container" alt="Configure external instance" title="Configure external instance" shape="rect" coords="250, 1680, 610, 1735" />
-  <area href="configuring-docker.html#using-external-certificates" alt="Configure security certificates" title="Configure security certificates" shape="rect" coords="250, 1755, 610, 1810" />
+## Issuing your first commands
 
-</map>
+Issue `zowe --help` to display full command help. Append `--help` (alias `-h`) to any command to see available command actions and options.
 
-## Stage 1: Plan and prepare
+To interact with the mainframe, type `zowe` followed by a command group, action, and object. Use options to specify your connection details such as password and system name.
 
-Before you start the installation, review the information on hardware and software requirements and other considerations. See [Planning the installation](installandconfig.md) for details.
+### Listing all data sets under a high-level qualifier (HLQ)
 
-## Stage 2: Install the Zowe runtime on z/OS
+```
+zowe zos-files list data-set "MY.DATASET.*" --host my.company.com --port 123 --user myusername123 --pass mypassword123
+```
 
-Complete the tasks in **Stage 2** of [z/OS Installation Roadmap](install-zos.md#stage-2-install-the-zowe-z-os-runtime).
+### Downloading a partitioned data-set (PDS) member to local file
 
-## Stage 3: Configure the Zowe z/OS runtime  
+```
+zowe zos-files download data-set "MY.DATA.SET(member)" -f "mylocalfile.txt" --host my.company.com --port 123 --user myusername123 --pass mypassword123
+```
 
-First you must complete the tasks in **Stage 3** of [z/OS installation Roadmap](install-zos.md#stage-3-configure-the-zowe-z-os-runtime).
+See [Command Groups](../user-guide/cli-usingcli.md#understanding-core-command-groups) for a list of available functionality.
 
-After, you should edit or review the chosen Component groups in the Zowe instance directory that was created. For use with Docker, only the Component group ZSS is required. This means that at minimum, the file `instance.env` will have the value `LAUNCH_OMPONENT_GROUPS=ZSS` set. See [Creating and configuring the Zowe instance directory](configure-instance-directory.md#component-groups).
+## Using profiles
 
-## Stage 4: Verify the installation
+Zowe profiles let you store configuration details such as username, password, host, and port for a mainframe system. Switch between profiles to quickly target different subsystems and avoid typing connection details on every command.
 
-Verify that Zowe is installed correctly on z/OS. See [Verifying Zowe installation on z/OS](verify-zowe-runtime-install.md).
+### Profile types
 
-## Stage 5: Install Docker image  
+Most command groups require a `zosmf-profile`, but some plug-ins add their own profile types. For example, the CICS plug-in has a `cics-profile`. The profile type that a command requires is defined in the `PROFILE OPTIONS` section of the help response.
 
-Get the latest Docker Image for the Zowe Server Components. See [Installing Zowe runtime Docker Image](install-docker-image.md).
+**Tip:** The first `zosmf` profile that you create becomes your default profile. If you don't specify any options on a command, the default profile is used. Issue `zowe profiles -h` to learn about listing profiles and setting defaults.
 
-## Stage 6: Configure Docker container  
+### Creating a zosmf profile
 
-Extract and customize the start script, instance directory, and keystore before running a Docker container. See [Configuring Zowe runtime Docker Container](configuring-docker.md).
+```
+zowe profiles create zosmf-profile myprofile123 --host my.company.com --port 123 --user myusername123 --password mypassword123
+```
 
-## Looking for troubleshooting help?
+**Note:** The port defaults to 443 if you omit the `--port` option. Specify a different port if your host system does not use port 443.
 
-If you encounter unexpected behavior when installing or verifying the Zowe runtime on z/OS, see the [Troubleshooting](../troubleshoot/troubleshooting.md) section for tips.
+### Using a zosmf profile
+
+```
+zowe zos-files download data-set "MY.DATA.SET(member)" -f "mylocalfile.txt" --zosmf-profile myprofile123
+```
+
+For detailed information about issuing commands, using profiles, and more, see [Using CLI](../user-guide/cli-usingcli.md).
+
+## Writing scripts
+
+You can write Zowe CLI scripts to streamline your daily development processes or conduct mainframe actions from an off-platform automation tool such as Jenkins or TravisCI.
+
+### Example:
+
+You want to delete a list of temporary datasets. Use Zowe CLI to download the list, loop through the list, and delete each data set using the `zowe zos-files delete` command.
+
+```
+#!/bin/bash
+
+set -e
+
+# Obtain the list of temporary project data sets
+dslist=$(zowe zos-files list dataset "my.project.ds*")
+
+# Delete each data set in the list
+IFS=$'\n'
+for ds in $dslist
+do
+     echo "Deleting Temporary Project Dataset: $ds"
+     zowe files delete ds "$ds" -f
+done
+```
+
+For more information, see [Writing scripts](../user-guide/cli-usingcli.md#writing-scripts).
+
+## Next Steps
+
+You successfully installed Zowe CLI, issued your first commands, and wrote a simple script! Next, you might want to:
+
+- Issue the `zowe --help` command to explore the product functionality, or review the online [web help](../user-guide/cli-usingcli.md#viewing-web-help).
+
+- Learn about [using environment variables](../user-guide/cli-usingcli.md#using-environment-variables) to store configuration options.
+
+- Learn about [integrating with API Mediation Layer](../user-guide/cli-usingcli.md#integrating-with-api-mediation-layer).
+
+- Write scripts and integrate them with automation server, such as Jenkins.
+
+- See what [plug-ins are available](../user-guide/cli-extending.md) for the CLI.
+
+- Learn about [developing for the CLI](../extend/extend-cli/cli-developing-a-plugin.md) (contributing to core and developing plug-ins).
