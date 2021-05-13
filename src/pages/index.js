@@ -29,9 +29,9 @@ function Home() {
       <PopularResources />
       <hr></hr>
       <ExploreContent />
-      <hr></hr>
+      <hr className="lightThemeIcon"></hr>
       <DiscoverYourPath />
-      <hr></hr>
+      <hr className="lightThemeIcon"></hr>
       <FeaturedTopics />
       <hr></hr>
       <main>

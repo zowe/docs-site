@@ -19,6 +19,8 @@
 
 html[data-theme='dark'] {
   --ifm-color-primary: #3578e5;
+  /* --ifm-background-color: #252628; FIXME:*/
+  --ifm-background-section-dark: #3d3f42;
 }
 
 .docusaurus-highlight-code-line {
@@ -97,7 +99,7 @@ Badge {
 
 .hero__title {
   font-size: 3rem !important;
-  padding-bottom: 4rem;
+  padding-bottom: 3rem;
 }
 
 /* Docs Rating Box */

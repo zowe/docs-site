@@ -7,8 +7,8 @@ const data = [
   {
     title: "Download Zowe",
     link: "",
-    lightIcon: "img/download-zowe-icon.png",
-    darkIcon: "img/download-zowe-icon.png",
+    lightIcon: "img/download-zowe-light-icon.png",
+    darkIcon: "img/download-zowe-dark-icon.png",
     description: (
       <>
         Zowe has both server and client components, which you can install
@@ -19,8 +19,8 @@ const data = [
   {
     title: "Try Zowe",
     link: "",
-    lightIcon: "img/try-zowe-icon.png",
-    darkIcon: "img/try-zowe-icon.png",
+    lightIcon: "img/try-zowe-light-icon.png",
+    darkIcon: "img/try-zowe-dark-icon.png",
     description: <>Get your hands on a Zowe trial on demand at no charge.</>,
   },
 ];
@@ -34,13 +34,13 @@ function Resource({ title, link, lightIcon, darkIcon, description }) {
       <img
         src={imgLightIconUrl}
         alt="icons"
-        style={{ width: "65px" }}
+        style={{ height: "70px", width: "70px" }}
         className="lightThemeIcon"
       />
       <img
         src={imgDarkIconUrl}
         alt="icons"
-        style={{ width: "20%" }}
+        style={{ height: "70px", width: "70px" }}
         className="darkThemeIcon"
       />
       <p>{description}</p>

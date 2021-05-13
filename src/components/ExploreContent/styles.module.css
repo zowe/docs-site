@@ -7,11 +7,11 @@ html[data-theme="light"] .card {
 }
 
 html[data-theme="dark"] .card {
-  background-color: var(--ifm-card-background-color);
+  background-color: var(--ifm-background-section-dark);
 }
 
 #features {
-  padding: 4rem 0;
+  padding: 3rem 0;
 }
 
 .feature {
@@ -40,28 +40,34 @@ html[data-theme="dark"] .card {
   margin-top: -2px;
 } */
 
-.feature:nth-child(1) img, .feature:nth-child(4) img{
-  position: inherit;
-  margin-bottom: -7px;
-}
-
-.feature:nth-child(2) img, .feature:nth-child(3) img, .feature:nth-child(5) img, .feature:nth-child(6) img {
+.feature img {
   position: absolute;
   bottom: 0px;
 }
 
-.feature:nth-child(2) div, .feature:nth-child(3) div, .feature:nth-child(5) div, .feature:nth-child(6) div {
+.feature:nth-child(1) div, .feature:nth-child(2) div, .feature:nth-child(3) div {
+  height: 290px;
+  position: relative;
+}
+
+.feature:nth-child(4) div, .feature:nth-child(5) div, .feature:nth-child(6) div {
+  height: 240px;
   position: relative;
 }
 
 @media screen and (max-width: 1000px) {
-  .feature:nth-child(2) img, .feature:nth-child(3) img, .feature:nth-child(5) img, .feature:nth-child(6) img {
+  .feature img {
     position: inherit;
+    bottom: inherit;
   }
+ .feature div {
+   height: inherit !important;
+   position: inherit !important;
+ } 
 }
 
 @media screen and (max-width: 1200px){
   #features {
-    padding: 4rem 1rem;
+    padding: 3rem 1rem;
   }
 }

@@ -7,8 +7,8 @@ import styles from "./styles.module.css";
 const data = [
   {
     title: "Getting Started",
-    lightIcon: "img/getting-started-icon.png",
-    darkIcon: "img/getting-started-icon.png",
+    lightIcon: "img/get-started-light-icon.png",
+    darkIcon: "img/get-started-dark-icon.png",
     link: "stable/getting-started/overview",
     description: (
       <>
@@ -20,8 +20,8 @@ const data = [
   },
   {
     title: "User Guide",
-    lightIcon: "img/user-guide-icon.png",
-    darkIcon: "img/user-guide-icon.png",
+    lightIcon: "img/user-guide-light-icon.png",
+    darkIcon: "img/user-guide-dark-icon.png",
     link: "stable/user-guide/installandconfig",
     description: (
       <>
@@ -33,8 +33,8 @@ const data = [
   },
   {
     title: "Extending",
-    lightIcon: "img/extending-icon.png",
-    darkIcon: "img/extending-icon.png",
+    lightIcon: "img/extend-light-icon.png",
+    darkIcon: "img/extend-dark-icon.png",
     link: "stable/extend/extend-zowe-overview",
     description: (
       <>
@@ -45,8 +45,8 @@ const data = [
   },
   {
     title: "Troubleshooting",
-    lightIcon: "img/troubleshooting-icon.png",
-    darkIcon: "img/troubleshooting-icon.png",
+    lightIcon: "img/troubleshooting-light-icon.png",
+    darkIcon: "img/troubleshooting-dark-icon.png",
     link: "stable/troubleshoot/troubleshooting",
     description: (
       <>
@@ -57,8 +57,8 @@ const data = [
   },
   {
     title: "Contributing",
-    lightIcon: "img/contributing-icon.png",
-    darkIcon: "img/contributing-icon.png",
+    lightIcon: "img/contribute-light-icon.png",
+    darkIcon: "img/contribute-dark-icon.png",
     link: "stable/contribute/contributing",
     description: (
       <>
@@ -69,8 +69,8 @@ const data = [
   },
   {
     title: "References",
-    lightIcon: "img/references-icon.png",
-    darkIcon: "img/references-icon.png",
+    lightIcon: "img/references-light-icon.png",
+    darkIcon: "img/references-dark-icon.png",
     link: "stable/appendix/zowe-cli-commannd-reference",
     description: (
       <>
@@ -98,19 +98,19 @@ function Feature({ title, link, lightIcon, darkIcon, description }) {
         onMouseOver={toggleHover}
         onMouseOut={toggleHover}
       >
-        <div style={{ height: "100%" }}>
+        <div>
           <h3>{title}</h3>
           <p>{description}</p>
           <img
             src={imgLightIconUrl}
             alt="icons"
-            style={{ width: "65px" }}
+            style={{ height: "70px", width: "70px" }}
             className="lightThemeIcon"
           />
           <img
             src={imgDarkIconUrl}
             alt="icons"
-            style={{ width: "20%" }}
+            style={{ height: "70px", width: "70px" }}
             className="darkThemeIcon"
           />
         </div>

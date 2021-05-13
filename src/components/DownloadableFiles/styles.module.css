@@ -1,5 +1,9 @@
 .section {
-  padding: 4rem 0rem;
+  padding: 3rem 0rem;
+}
+
+:root {
+  --ifm-background-section-dark: #3d3f42
 }
 
 html[data-theme="light"] .card {
@@ -7,7 +11,7 @@ html[data-theme="light"] .card {
 }
 
 html[data-theme="dark"] .card {
-  background-color: var(--ifm-card-background-color);
+  background-color: var(--ifm-background-section-dark);
 }
 
 .card {
@@ -59,7 +63,7 @@ button img {
 
 @media screen and (max-width: 1200px){
   .section {
-    padding: 4rem 1rem;
+    padding: 3rem 1rem;
   }
 }
 

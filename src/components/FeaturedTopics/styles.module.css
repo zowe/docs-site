@@ -1,9 +1,9 @@
 .section {
-  padding: 4rem 0 3rem 0;
+  padding: 3rem 0;
 }
 
 .section a {
-  font-size: 1.1rem;
+  font-size: 1.05rem;
 }
 
 .features {
@@ -20,6 +20,6 @@
 
 @media screen and (max-width: 1200px){
   .section {
-    padding: 4rem 1rem;
+    padding: 3rem 1rem;
   }
 }

@@ -1,10 +1,9 @@
 html[data-theme="dark"] .section {
-  background-color: var(--ifm-card-background-color);
+  background-color: var(--ifm-background-section-dark);
 }
 
 :root {
   --ifm-background-section-light: #f2f2f2;
-  --ifm-background-section-dark: #18191a
 }
 
 html[data-theme="light"] .feature {
@@ -12,15 +11,16 @@ html[data-theme="light"] .feature {
 }
 
 html[data-theme="dark"] .feature {
-  background-color: var(--ifm-background-section-dark);
+  background-color: #252628;
+  /* FIXME: */
 }
 
 .section {
-  padding: 4rem 0 3rem 0;
+  padding: 3rem 0 2rem 0;
 }
 
 .section a {
-  font-size: 1.1rem;
+  font-size: 1.05rem;
 }
 
 .features {
@@ -43,6 +43,12 @@ html[data-theme="dark"] .feature {
 
 @media screen and (max-width: 1200px){
   .section {
-    padding: 4rem 1rem;
+    padding: 3rem 2rem;
+  }
+}
+
+@media screen and (max-width: 996px){
+  .feature {
+    margin: auto 0px 2rem auto !important;
   }
 }
