@@ -2,11 +2,11 @@ module.exports = {
   "getting-started": [
     //id of the sidebar
     {
-      type: "category", // doc(default), 'link'(external links), 'ref'(link without sidebar)
+      type: "category", // doc(default), 'link'(external links), 'ref'(page without without sidebar)
       label: "Zowe fundamentals",
       collapsed: false,
       items: [
-        "getting-started/overview", //folder-name/filename
+        "getting-started/overview", //folder_name/file_name
         "getting-started/zowe-architecture",
         "getting-started/freqaskques",
       ],
@@ -35,7 +35,6 @@ module.exports = {
     "getting-started/zowe-resources",
   ],
   "user-guide": [
-    //id of the sidebar
     {
       type: "category",
       label: "Planning and preparing the installation",

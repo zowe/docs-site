@@ -1,4 +1,5 @@
 //Swizzled this component to adopt the changes done in DefaultNavbarItem.js
+//FIXME: Incomplete feature to use versioning, dropdown along side internationalization.
 
 import React from "react";
 import DefaultNavbarItem from "@theme/NavbarItem/DefaultNavbarItem";

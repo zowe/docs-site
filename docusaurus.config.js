@@ -1,6 +1,5 @@
 const LATEST_VERSION = "v1.22.x";
 
-/** @type {import('@docusaurus/types').DocusaurusConfig} */
 module.exports = {
   title: "Zowe Docs",
   tagline:
@@ -8,9 +7,9 @@ module.exports = {
   url: "https://zowe-docs.netlify.app/", //FIXME:
   baseUrl: "/",
   //FIXME: baseUrl: "/zowe-docs/",
-  onBrokenLinks: "ignore",
-  onBrokenMarkdownLinks: "ignore",
-  onDuplicateRoutes: "ignore",
+  onBrokenLinks: "warn",
+  onBrokenMarkdownLinks: "warn",
+  onDuplicateRoutes: "warn",
   favicon: "img/zowe-icon.png",
   organizationName: "zowe",
   projectName: "docs-site",
@@ -28,67 +27,46 @@ module.exports = {
       },
       items: [
         {
+          type: "doc",
           label: "Get Started",
-          to: "/getting-started/overview",
-          // to: "getting-started/overview", //Remove this (to) to remove onClick
+          docId: "getting-started/overview",
           position: "left",
         },
         {
-          to: "/user-guide/installandconfig",
+          type: "doc",
           label: "User Guide",
+          docId: "user-guide/installandconfig",
           position: "left",
-          //items: [
-          // {
-          //    label: "A",
-          //    to: "getting-started/overview",
-          //  },
-          //  {
-          //    label: "B",
-          //    to: "getting-started/doc2",
-          //  },
-          // ],
         },
         {
+          type: "doc",
           label: "Extend",
-          to: "/extend/extend-zowe-overview",
+          docId: "extend/extend-zowe-overview",
           position: "left",
         },        
         {
-          to: "/troubleshoot/troubleshooting",
+          type: "doc",
           label: "Troubleshoot",
+          docId: "troubleshoot/troubleshooting",
           position: "left",
         },
         {
-          to: "/contribute/roadmap-contribute",
+          type: "doc",
           label: "Contribute",
+          docId: "contribute/roadmap-contribute",
           position: "left",
         },
         {
-          to: "/appendix/zowe-cli-commannd-reference",
+          type: "doc",
           label: "Reference",
+          docId: "appendix/zowe-cli-commannd-reference",
           position: "left",
         },
         {
-          // TODO: https://v2.docusaurus.io/docs/api/themes/configuration#navbar-docs-version-dropdown
           type: "docsVersionDropdown",
           position: "right",
-          // dropdownItemsBefore: [],
-          // dropdownItemsAfter: [{to: '/versions', label: 'All versions'}],
-          // Do not add the link active class when browsing docs.
           dropdownActiveClassDisabled: true,
-          // docsPluginId: "default",
         },
-        // {
-        //   type: "localeDropdown",
-        //   position: "right",
-        //   dropdownItemsBefore: [],
-        //   dropdownItemsAfter: [
-        //     {
-        //       href: 'https://my-site.com/help-us-translate',
-        //       label: 'Help us translate',
-        //     },
-        //   ],
-        // },
         {
           href: "https://github.com/zowe/docs-site",
           position: "right",
@@ -99,11 +77,6 @@ module.exports = {
     },
     footer: {
       style: "dark",
-      // logo: {
-      //   alt: "Zowe Logo",
-      //   src: "img/zowe-icon-dark.png",
-      //   href: "https://www.zowe.org/",
-      // },
       links: [
         {
           title: "Products",
@@ -198,8 +171,6 @@ module.exports = {
   },
   presets: [
     [
-      //For reference: https://v2.docusaurus.io/docs/api/plugins/@docusaurus/plugin-content-docs#configuration
-      //Plugins are written in form of presets
       "@docusaurus/preset-classic",
       {
         docs: {
@@ -208,12 +179,11 @@ module.exports = {
           editUrl: "https://github.com/zowe/docs-site/edit/zowe-docs-v2/", //FIXME:
           showLastUpdateAuthor: false,
           showLastUpdateTime: true,
-          // showReadingTime: true,
           routeBasePath: "/", //Default is docs/
           lastVersion: "current",
           versions: {
             current: {
-              path: "stable", //TODO: stable
+              path: "stable",
               label: `${LATEST_VERSION}`,
             },
           },
@@ -245,7 +215,7 @@ module.exports = {
           {
             tagName: "link",
             rel: "manifest",
-            href: "/manifest.json", // your PWA manifest
+            href: "/manifest.json",
           },
           {
             tagName: "meta",
