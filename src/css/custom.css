@@ -102,6 +102,10 @@ Badge {
   padding-bottom: 3rem;
 }
 
+.footer__copyright {
+  font-size: 0.75rem;
+}
+
 /* Docs Rating Box */
 .docsRating {
   display: flex;
