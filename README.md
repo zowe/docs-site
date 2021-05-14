@@ -1,24 +1,15 @@
-# Zowe™ documentation <!-- omit in toc -->
+# Zowe™ documentation
 
 Welcome to the Zowe documentation repository! This repo is the source for [https://docs.zowe.org](https://docs.zowe.org), also known as "Zowe Docs"!
 
 Zowe documentation is completely open-source and we appreciate contributions from the community.
 
-- [Providing feedback](#providing-feedback)
-- [Contributing to the docs](#contributing-to-the-docs)
-- [Understanding the doc branches](#understanding-the-doc-branches)
-- [Understanding doc site organization and files](#understanding-doc-site-organization-and-files)
-- [Adding DCO signoff to commits](#adding-dco-signoff-to-commits)
-- [Building the docs](#building-the-docs)
-- [Archiving the docs and creating a new version](#archiving-the-docs-and-creating-a-new-version)
-
 ## Providing feedback
 
 Your feedback is essential in shaping the Zowe content experience. There are several ways to provide feedback:
 
-- If you see something incorrect or confusing in the docs, or have an enhancement idea to make the docs better, you can edit a page by clicking "Propose content changes" at the footer to [open a Pull Request](https://docs.zowe.org/stable/contribute/contributing.html#sending-a-github-pull-request). You can also [open a GitHub issue](https://docs.zowe.org/stable/contribute/contributing.html#opening-an-issue-for-the-documentation) for the documentation team.
-- You can take an [online survey](https://forms.gle/Ztu9AjgV6HRr1kEs9) and tell us how you think about the docs.
-- You can also rate the experience and leave comments when an NPS survey pops up on the doc site.
+- If you see something incorrect or confusing in the docs, or have an enhancement idea to make the docs better, you can edit a page by clicking "Edit this page" under the title of the topic to [open a Pull Request](https://docs.zowe.org/stable/contribute/contributing.html#sending-a-github-pull-request). You can also [open a GitHub issue](https://docs.zowe.org/stable/contribute/contributing.html#opening-an-issue-for-the-documentation) for the documentation team by clicking "Open doc issue".
+- You can rate the topic to tell us whether it is helpful.
 - If you have a question about docs, you can join the Zowe [#zowe-doc Slack channel](https://openmainframeproject.slack.com/archives/CC961JYMQ) and talk directly with the documentation team and the community.
 
 Only file issues about the Zowe docs in this repository. For issues, questions, new feature requests, or enhancement ideas about a specific component or aspect of Zowe, open an issue in the [corresponding code repository](https://github.com/zowe/community#zowe-sub-projects) or ask in the [community Slack channels](https://github.com/zowe/community#slack).
@@ -38,6 +29,7 @@ Before you get started with the authoring work, it's necessary that you understa
 * **[`master`](https://github.com/zowe/docs-site/tree/master/docs)** -  protected branch
 
   Docs for [https://docs.zowe.org/stable](https://docs.zowe.org/stable). This branch contains the most recent stable release content.
+
 * **[`docs-staging`](https://github.com/zowe/docs-site/tree/docs-staging/docs)** - protected branch
 
   Docs for the upcoming `vNext` release. When Zowe has a release, its `docs-staging` branch will be merged into `master` and the content will be visible on [https://docs.zowe.org/stable](https://docs.zowe.org/stable).
@@ -45,14 +37,17 @@ Before you get started with the authoring work, it's necessary that you understa
 * (REMOVED TEMPORARILY UNTIL NEW COMPONENT FEATURES ARE AVAILABLE) **[`active-development`](https://github.com/zowe/docs-site/tree/active-development/docs)** - protected branch
 
   Docs for a forward-version that includes features not yet included in the Zowe Stable version. Its content is published on [https://docs.zowe.org/active-development](https://docs.zowe.org/active-development) for early validation purpose.
+
 * **`v<v.r>.x`** - protected branches
 
   Docs for an archived version, where `v` indicates the version, `r` indicates the release number. For example, `v1.0.x`, `v1.1.x`, `v1.6.x`.
+
 * Branches that start with `release-` contain archived patch release documentation for historical tracking.
 * You can have your own personal branch to work on content for a certain issue or feature. However, be sure to check and remove unused personal branches periodically for easy maintenance. Usually when your branch is merged, you can safely delete it.
 
 ## Understanding doc site organization and files
 
+<!--
 The `docs/.vuepress` folder defines the site organization, style and table of contents. The following files are important.
 
 - **pages.json**: Defines the high level doc site architecture, including the nav bar (top navigation) and the side bar (left-hand navigation). If you have a new file to add to the site, modify this file.
@@ -64,6 +59,15 @@ The `docs/.vuepress` folder defines the site organization, style and table of co
 - **/public**: Contains public assets and files for download.
 
 The `docs/README.md` contains content for the homepage of the doc site.
+-->
+
+- `/docs/` - Contains the Markdown files for the docs. Customize the order of the docs sidebar in `sidebars.js`. 
+- `/docusaurus.config.js` - A config file containing the site configuration.
+- `/sidebar.js` - Specify the order of documents in the sidebar. If you have a new file to add to the site, modify this file.
+- `/src/` - Non-documentation files like pages or custom React components.
+  - `/src/pages` - Any files within this directory will be converted into a website page.
+- `/static/` - Static directory. Any contents inside here will be copied into the root of the final `build` directory.
+- `/package.json` - A Docusaurus website is a React app. You can install and use any npm packages you like in them.
 
 ## Adding DCO signoff to commits
 
@@ -100,7 +104,12 @@ If you missed DCO sign-off statements in a series of commits, you can retroactiv
 
 ### Previewing or testing the doc site locally
 
-If you want to preview your changes on your local machine, you will need [Git](https://git-scm.com/) and [Node.js](https://nodejs.org/en/) (version >= 8) installed, as well as npm (which comes with Node.js). Once those are installed, you can follow the steps below to set up a local copy of the docs site repository, and then build and run the docs site locally:
+#### Requirements
+
+- [Node.js](https://nodejs.org/en/download/) version >= 12.13.0 or above (which can be checked by running `node -v`). You can use [nvm](https://github.com/nvm-sh/nvm) for managing multiple Node versions on a single machine installed
+- [Yarn](https://yarnpkg.com/en/) version >= 1.5 (which can be checked by running `yarn --version`). Yarn is a performant package manager for JavaScript and replaces the `npm` client. It is not strictly necessary but highly encouraged.
+
+#### Procedure
 
 If you do not already have the docs site repository set up locally:
 
@@ -111,9 +120,11 @@ If you do not already have the docs site repository set up locally:
 Once you have the docs site repository set up locally and are in the `docs-site` directory, you can build and run the docs site locally by following the steps below:
 
 1. Run the command to install project dependencies: `npm install`
-1. Run `npm run docs:dev`
-1. Once complete, you can preview the site locally at [http://localhost:8080/stable/](http://localhost:8080/stable/). Every time you modify and save a documentation change, the preview build will be triggered automatically, and then you can refresh your browser to see the changes.
+1. Run `npm start`
+1. Once complete, you can preview the site locally at [http://localhost:3000/](http://localhost:3000/). Every time you modify and save a documentation change, the preview build will be triggered automatically, and then you can refresh your browser to see the changes.
 
+
+<!-->
 #### Errors when running the site locally?
 
 - Stop (CMD + Z) and rerun start script `npm run docs:dev`
@@ -124,6 +135,7 @@ Once you have the docs site repository set up locally and are in the `docs-site`
 
   - Windows: `set NODE_OPTIONS="--max-old-space-size=8192"`
   - Linux/Mac: `export NODE_OPTIONS="--max-old-space-size=8192"`
+-->
 
 
 ### Building the docs for production
@@ -144,6 +156,7 @@ docker run --name docs-site-test -p 8080:80 -v $PWD/.deploy:/usr/share/nginx/htm
 
 Now you are able to visit `http://localhost:8080/stable/` to check the content.
 
+<!-->
 ### Testing broken links
 
 You will need `Docker` to run broken links test. Check https://www.docker.com/get-started to install Docker.
@@ -223,3 +236,4 @@ For published docs, PDFs of different versions are available for download on the
 ## Archiving the docs and creating a new version
 
 Check [Build and Archive Legacy Documentation](https://github.com/zowe/docs-site/wiki/How-to#build-and-archive-legacy-documentation) for detailed explanations.
+--> 
