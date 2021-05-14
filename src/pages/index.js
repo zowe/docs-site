@@ -6,11 +6,11 @@ import { DocSearch } from "@docsearch/react";
 import styles from "./styles.module.css";
 
 //Components
-import PopularResources from "../components/PopularResources/PopularResources";
-import ExploreContent from "../components/ExploreContent/ExploreContent";
-import DiscoverYourPath from "../components/DiscoverYourPath/DiscoverYourPath";
-import FeaturedTopics from "../components/FeaturedTopics/FeaturedTopics";
-import DownloadableFiles from "../components/DownloadableFiles/DownloadableFiles";
+import PopularResources from "./components/PopularResources/PopularResources";
+import ExploreContent from "./components/ExploreContent/ExploreContent";
+import DiscoverYourPath from "./components/DiscoverYourPath/DiscoverYourPath";
+import FeaturedTopics from "./components/FeaturedTopics/FeaturedTopics";
+import DownloadableFiles from "./components/DownloadableFiles/DownloadableFiles";
 
 function Home() {
   const context = useDocusaurusContext();

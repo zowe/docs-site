@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import clsx from "clsx";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import styles from "./styles.module.css";
-import versionsArray from "../../../versions.json";
+import versionsArray from "../../../../versions.json";
 
 function Dropdown() {
   const { siteConfig } = useDocusaurusContext();
