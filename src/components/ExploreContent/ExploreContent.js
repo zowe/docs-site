@@ -6,14 +6,14 @@ import styles from "./styles.module.css";
 
 const data = [
   {
-    title: "Getting Started",
+    title: "Get Started",
     lightIcon: "img/getting-started-icon.png",
     darkIcon: "img/getting-started-icon.png",
     link: "stable/getting-started/overview",
     description: (
       <>
         Learn about Zowe™ architecture, components, and how to quickly get
-        started with Zowe CLI. Read about what's new and changed in the Release
+        started with Zowe. Read about what's new and changed in the Release
         Notes. Get answers to your frequently asked questions (FAQs).
       </>
     ),
@@ -32,7 +32,7 @@ const data = [
     ),
   },
   {
-    title: "Extending",
+    title: "Extend Zowe",
     lightIcon: "img/extending-icon.png",
     darkIcon: "img/extending-icon.png",
     link: "stable/extend/extend-zowe-overview",
@@ -44,7 +44,7 @@ const data = [
     ),
   },
   {
-    title: "Troubleshooting",
+    title: "Troubleshoot",
     lightIcon: "img/troubleshooting-icon.png",
     darkIcon: "img/troubleshooting-icon.png",
     link: "stable/troubleshoot/troubleshooting",
@@ -56,7 +56,7 @@ const data = [
     ),
   },
   {
-    title: "Contributing",
+    title: "Contribute to Zowe",
     lightIcon: "img/contributing-icon.png",
     darkIcon: "img/contributing-icon.png",
     link: "stable/contribute/contributing",
@@ -68,7 +68,7 @@ const data = [
     ),
   },
   {
-    title: "References",
+    title: "Reference",
     lightIcon: "img/references-icon.png",
     darkIcon: "img/references-icon.png",
     link: "stable/appendix/zowe-cli-commannd-reference",

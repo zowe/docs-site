@@ -28,136 +28,45 @@ module.exports = {
       },
       items: [
         {
-          label: "Getting Started",
+          label: "Get Started",
           to: "/getting-started/overview",
           // to: "getting-started/overview", //Remove this (to) to remove onClick
           position: "left",
-          items: [
-            {
-              label: "Doc 1",
-              to: "getting-started/introductions/doc1",
-            },
-            {
-              label: "Doc 2",
-              to: "getting-started/doc2",
-            },
-            {
-              label: "Doc 3",
-              to: "getting-started/doc3",
-            },
-            {
-              label: "Doc 4",
-              to: "getting-started/release-notes",
-            },
-          ],
+        },
+        {
+          to: "/user-guide/installandconfig",
+          label: "User Guide",
+          position: "left",
+          //items: [
+          // {
+          //    label: "A",
+          //    to: "getting-started/overview",
+          //  },
+          //  {
+          //    label: "B",
+          //    to: "getting-started/doc2",
+          //  },
+          // ],
         },
         {
           label: "Extend",
-          to: "getting-started/doc2/",
+          to: "/extend/extend-zowe-overview",
           position: "left",
-          items: [
-            {
-              label: "A",
-              to: "getting-started/overview",
-            },
-            {
-              label: "B",
-              to: "getting-started/doc2",
-            },
-            {
-              label: "C",
-              to: "getting-started/doc3",
-            },
-            {
-              label: "D",
-              to: "getting-started/release-notes",
-            },
-          ],
+        },        
+        {
+          to: "/troubleshoot/troubleshooting",
+          label: "Troubleshoot",
+          position: "left",
         },
         {
-          to: "user-guide",
-          label: "User Guide",
+          to: "/contribute/roadmap-contribute",
+          label: "Contribute",
           position: "left",
-          items: [
-            {
-              label: "A",
-              to: "getting-started/overview",
-            },
-            {
-              label: "B",
-              to: "getting-started/doc2",
-            },
-            {
-              label: "C",
-              to: "getting-started/doc3",
-            },
-            {
-              label: "D",
-              to: "getting-started/release-notes",
-            },
-          ],
         },
         {
-          to: "troubleshooting",
-          label: "Troubleshooting",
+          to: "/appendix/zowe-cli-commannd-reference",
+          label: "Reference",
           position: "left",
-          items: [
-            {
-              label: "A",
-              to: "getting-started/overview",
-            },
-            {
-              label: "B",
-              to: "getting-started/doc2",
-            },
-            {
-              label: "C",
-              to: "getting-started/doc3",
-            },
-            {
-              label: "D",
-              to: "getting-started/release-notes",
-            },
-          ],
-        },
-        {
-          to: "contributing",
-          label: "Contributing",
-          position: "left",
-          items: [
-            {
-              label: "Code Guidelines",
-              to: "contribute/guidelines-code/categories",
-            },
-            { label: "UI Guidelines", to: "contribute/guidelines-ui/ui" },
-            {
-              label: "Contributing to Documentation",
-              to: "contribute/contributing",
-            },
-          ],
-        },
-        {
-          to: "references",
-          label: "References",
-          position: "left",
-          items: [
-            {
-              label: "A",
-              to: "getting-started/overview",
-            },
-            {
-              label: "B",
-              to: "getting-started/doc2",
-            },
-            {
-              label: "C",
-              to: "getting-started/doc3",
-            },
-            {
-              label: "D",
-              to: "getting-started/release-notes",
-            },
-          ],
         },
         {
           // TODO: https://v2.docusaurus.io/docs/api/themes/configuration#navbar-docs-version-dropdown
@@ -225,6 +134,10 @@ module.exports = {
               href: "https://www.youtube.com/playlist?list=PL8REpLGaY9QE_9d57tw3KQdwSVLKuTpUZ",
             },
             {
+              label: "Learning",
+              href: "https://docs.zowe.org/stable/getting-started/zowe-resources",
+            },
+            {
               label: "Zowe Conformance Program",
               href: "https://www.openmainframeproject.org/projects/zowe/conformance",
             },
@@ -234,25 +147,25 @@ module.exports = {
           title: "Community",
           items: [
             {
-              label: "Join us on Slack",
+              label: "Slack community",
               href: "https://slack.openmainframeproject.org/",
             },
             {
-              label: "Join community meetings",
+              label: "Community meetings",
               href: "https://lists.openmainframeproject.org/g/zowe-dev/calendar",
             },
             {
-              label: "GitHub",
+              label: "Zowe GitHub",
               href: "https://github.com/zowe/",
             },
             {
-              label: "Contribute",
+              label: "How to contribute",
               href: "https://docs.zowe.org/stable/contribute/roadmap-contribute.html",
             },
           ],
         },
       ],
-      copyright: `© Open Mainframe Project. a Linux Foundation Project. All Rights Reserved.`,
+      copyright: `© Open Mainframe Project. a Linux Foundation Project. All Rights Reserved. The Linux Foundation has registered trademarks and uses trademarks. For a list of trademarks of The Linux Foundation, please see our Trademark Usage page. Please refer to Marketing and Branding Guidelines for name usage guidelines. Linux is a registered trademark of Linus Torvalds. Privacy Policy and Terms of Use`,
     },
     announcementBar: {
       id: "support_us", // Any value that will identify this message.
