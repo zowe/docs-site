@@ -148,11 +148,11 @@ html[data-theme="dark"] .docsRating .i_thumbsdown {
   fill: #e9430f;
 }
 
-html[data-theme="dark"] .lightThemeIcon {
+html[data-theme="dark"] .lightTheme {
   display: none;
 }
 
-html[data-theme="light"] .darkThemeIcon {
+html[data-theme="light"] .darkTheme {
   display: none;
 }
 

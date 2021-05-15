@@ -20,7 +20,6 @@ function Home() {
       <header className={clsx("hero", styles.heroBanner)}>
         <div className="container">
           <h1 className="hero__title">{siteConfig.title}</h1>
-          {/* <p className="hero__subtitle">{siteConfig.tagline}</p> FIXME: */}
           <div className="searchDiv">
             <DocSearch apiKey="aa" indexName="aa" /> {/* FIXME: */}
           </div>
@@ -29,9 +28,9 @@ function Home() {
       <PopularResources />
       <hr></hr>
       <ExploreContent />
-      <hr className="lightThemeIcon"></hr>
+      <hr className="lightTheme"></hr>
       <DiscoverYourPath />
-      <hr className="lightThemeIcon"></hr>
+      <hr className="lightTheme"></hr>
       <FeaturedTopics />
       <hr></hr>
       <main>

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Link from "@docusaurus/Link";
 import clsx from "clsx";
 import useBaseUrl from "@docusaurus/useBaseUrl";
+import ThemedImage from "@theme/ThemedImage";
 import styles from "./styles.module.css";
 
 const data = [
@@ -82,8 +83,6 @@ const data = [
 ];
 
 function Feature({ title, link, lightIcon, darkIcon, description }) {
-  const imgLightIconUrl = useBaseUrl(lightIcon);
-  const imgDarkIconUrl = useBaseUrl(darkIcon);
   const [hovered, setHovered] = useState(false);
   const toggleHover = () => setHovered(!hovered);
   return (
@@ -101,17 +100,13 @@ function Feature({ title, link, lightIcon, darkIcon, description }) {
         <div>
           <h3>{title}</h3>
           <p>{description}</p>
-          <img
-            src={imgLightIconUrl}
+          <ThemedImage
             alt="icons"
             style={{ height: "70px", width: "70px" }}
-            className="lightThemeIcon"
-          />
-          <img
-            src={imgDarkIconUrl}
-            alt="icons"
-            style={{ height: "70px", width: "70px" }}
-            className="darkThemeIcon"
+            sources={{
+              light: useBaseUrl(lightIcon),
+              dark: useBaseUrl(darkIcon),
+            }}
           />
         </div>
       </Link>

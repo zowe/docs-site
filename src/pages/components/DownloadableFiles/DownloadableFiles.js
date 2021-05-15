@@ -1,5 +1,7 @@
 import React from "react";
 import clsx from "clsx";
+import useBaseUrl from "@docusaurus/useBaseUrl";
+import ThemedImage from "@theme/ThemedImage";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import styles from "./styles.module.css";
 import Dropdown from "./Dropdown";
@@ -81,14 +83,14 @@ function DownloadableFile({
             <div className="display-flex">
               {firstViewOnlineLink && (
                 <div className="margin-right--md display-flex row--align-center pointer">
-                  <img
-                    className="lightThemeIcon"
-                    src="img/right-arrow-light-icon.svg"
-                  ></img>
-                  <img
-                    className="darkThemeIcon"
-                    src="img/right-arrow-dark-icon.svg"
-                  ></img>
+                  <ThemedImage
+                    alt="Right arrow icon"
+                    sources={{
+                      light: useBaseUrl("/img/right-arrow-light-icon.svg"),
+                      dark: useBaseUrl("/img/right-arrow-dark-icon.svg"),
+                    }}
+                  />
+                  ;
                   <a
                     className="margin-left--xs"
                     href={firstViewOnlineLink}
@@ -102,14 +104,14 @@ function DownloadableFile({
               {dropdown && <Dropdown />}
               {firstDownloadLink && (
                 <div className="display-flex row--align-center pointer">
-                  <img
-                    className="lightThemeIcon"
-                    src="img/download-light-icon.svg"
-                  ></img>
-                  <img
-                    className="darkThemeIcon"
-                    src="img/download-dark-icon.svg"
-                  ></img>
+                  <ThemedImage
+                    alt="Download icon"
+                    sources={{
+                      light: useBaseUrl("/img/download-light-icon.svg"),
+                      dark: useBaseUrl("/img/download-dark-icon.svg"),
+                    }}
+                  />
+
                   <a
                     className="margin--xs"
                     href={firstDownloadLink}
@@ -131,14 +133,13 @@ function DownloadableFile({
             <div className="display-flex">
               {secondViewOnlineLink && (
                 <div className="margin-right--md display-flex row--align-center pointer">
-                  <img
-                    className="lightThemeIcon"
-                    src="img/right-arrow-light-icon.svg"
-                  ></img>
-                  <img
-                    className="darkThemeIcon"
-                    src="img/right-arrow-dark-icon.svg"
-                  ></img>
+                  <ThemedImage
+                    alt="Right arrow icon"
+                    sources={{
+                      light: useBaseUrl("/img/right-arrow-light-icon.svg"),
+                      dark: useBaseUrl("/img/right-arrow-dark-icon.svg"),
+                    }}
+                  />
                   <a
                     className="margin-left--xs"
                     href={secondViewOnlineLink}
@@ -151,14 +152,13 @@ function DownloadableFile({
               )}
               {secondDownloadLink && (
                 <div className="display-flex row--align-center pointer">
-                  <img
-                    className="lightThemeIcon"
-                    src="img/download-light-icon.svg"
-                  ></img>
-                  <img
-                    className="darkThemeIcon"
-                    src="img/download-dark-icon.svg"
-                  ></img>
+                  <ThemedImage
+                    alt="Download icon"
+                    sources={{
+                      light: useBaseUrl("/img/download-light-icon.svg"),
+                      dark: useBaseUrl("/img/download-dark-icon.svg"),
+                    }}
+                  />
                   <a
                     className="margin--xs"
                     href={secondDownloadLink}

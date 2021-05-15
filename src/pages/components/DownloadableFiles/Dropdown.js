@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import clsx from "clsx";
+import useBaseUrl from "@docusaurus/useBaseUrl";
+import ThemedImage from "@theme/ThemedImage";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import styles from "./styles.module.css";
 import versionsArray from "../../../../versions.json";
@@ -28,16 +30,15 @@ function Dropdown() {
         )}
       >
         {version ? selectedVersion : siteConfig.customFields.latestVersion}
-        <img
-          className="lightThemeIcon margin-left--xs"
-          src="img/down-arrow-light-icon.svg"
-        ></img>
-        <img
-          className="darkThemeIcon margin-left--xs"
-          src="img/down-arrow-dark-icon.svg"
-        ></img>
+        <ThemedImage
+          className="margin-left--xs"
+          alt="right arrow"
+          sources={{
+            light: useBaseUrl("/img/down-arrow-light-icon.svg"),
+            dark: useBaseUrl("/img/down-arrow-dark-icon.svg"),
+          }}
+        />
       </button>
-
       <ul className="dropdown__menu">
         {newVersionsArray.map((props, idx) => (
           <li key={idx}>
