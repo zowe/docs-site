@@ -161,6 +161,10 @@ module.exports = {
       defaultMode: "light",
       respectPrefersColorScheme: true,
     },
+    prism: {
+      additionalLanguages: ['groovy', 'ini', 'java', 'properties']
+    },
+    //FIXME: 'txt', 'jcl', 'text', 'aidl', 'maven', 'sh', 'shell script'
     googleAnalytics: {
       trackingID: "UA-195765847-1",
       anonymizeIP: true, // Should IPs be anonymized?
