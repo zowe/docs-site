@@ -46,6 +46,12 @@ h4 {
   font-size: 1rem !important;
 }
 
+/* FIXME: img:hover {
+	transform: scale(1.5);
+  cursor: zoom-in;
+  position: relative;
+}  */
+
 /* NavBar */
 .navbar {
   font-size: 0.95rem;
@@ -104,6 +110,24 @@ Badge {
 
 .footer__copyright {
   font-size: 0.75rem;
+}
+
+/* DocItem Features */
+.zowe-faq[open] summary:before {
+  content: "📖 Click to hide answer";
+}
+
+details[open] summary:before {
+  content: "📖 ";
+}
+
+.zowe-faq summary:before {
+  content: "📘 Click to open answer";
+  margin-right: 5px;
+}
+
+summary:before {
+  content: "📘 ";
 }
 
 /* Docs Rating Box */
