@@ -1,6 +1,4 @@
----
-title: General code style guidelines
---- 
+# General code style guidelines
 
 All code written in the languages described in [Code categories](categories.md) should adhere to the following guidelines to facilitate collaboration and understanding.
 

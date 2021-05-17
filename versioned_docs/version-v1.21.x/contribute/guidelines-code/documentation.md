@@ -1,6 +1,4 @@
----
-title: Documentation Guidelines
---- 
+# Documentation Guidelines
 
 Documentation of Zowe&trade; comes in various forms depending on the subject being detailed. In general, consider how you can help end users and contributors through external documentation, in-product help, error messages, etc... and open an issue in [zowe/docs-site](https://github.com/zowe/docs-site) if you need assistance.
 

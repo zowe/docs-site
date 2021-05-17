@@ -1,7 +1,4 @@
----
-title: Colors
----  
-
+# Colors
 
 Color brings a design to life. Color is versatile; it's used to express emotion and tone, as well as place emphasis and create associations. Color should always be used in meaningful and intentional ways to create patterns and visual cues.
 
