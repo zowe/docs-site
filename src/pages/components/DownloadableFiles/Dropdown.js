@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import clsx from "clsx";
 import useBaseUrl from "@docusaurus/useBaseUrl";
-import ThemedImage from "@theme/ThemedImage";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import styles from "./styles.module.css";
 import versionsArray from "../../../../versions.json";
@@ -30,13 +29,15 @@ function Dropdown() {
         )}
       >
         {version ? selectedVersion : siteConfig.customFields.latestVersion}
-        <ThemedImage
-          className="margin-left--xs"
+        <img
+          className="margin-left--xs lightTheme"
           alt="right arrow"
-          sources={{
-            light: useBaseUrl("/img/down-arrow-light-icon.svg"),
-            dark: useBaseUrl("/img/down-arrow-dark-icon.svg"),
-          }}
+          src={useBaseUrl("/img/down-arrow-light-icon.svg")}
+        />
+        <img
+          className="margin-left--xs darkTheme"
+          alt="right arrow"
+          src={useBaseUrl("/img/down-arrow-dark-icon.svg")}
         />
       </button>
       <ul className="dropdown__menu">

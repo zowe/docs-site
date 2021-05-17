@@ -1,7 +1,6 @@
 import React from "react";
 import clsx from "clsx";
 import useBaseUrl from "@docusaurus/useBaseUrl";
-import ThemedImage from "@theme/ThemedImage";
 import styles from "./styles.module.css";
 
 const data = [
@@ -29,14 +28,17 @@ const data = [
 function Resource({ title, link, lightIcon, darkIcon, description }) {
   return (
     <div className={clsx("col col--4 padding--lg", styles.posRelative)}>
-      <ThemedImage
-        className="margin-left--xs"
+      <img
+        className="margin-left--xs lightTheme"
         alt="icons"
         style={{ height: "70px", width: "70px" }}
-        sources={{
-          light: useBaseUrl(lightIcon),
-          dark: useBaseUrl(darkIcon),
-        }}
+        src={useBaseUrl(lightIcon)}
+      />
+      <img
+        className="margin-left--xs darkTheme"
+        alt="icons"
+        style={{ height: "70px", width: "70px" }}
+        src={useBaseUrl(darkIcon)}
       />
       <p>{description}</p>
       <a className={clsx("margin-top--sm", styles.posAbsolute)} href={link}>

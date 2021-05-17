@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import Link from "@docusaurus/Link";
 import clsx from "clsx";
 import useBaseUrl from "@docusaurus/useBaseUrl";
-import ThemedImage from "@theme/ThemedImage";
 import styles from "./styles.module.css";
 
 const data = [
@@ -100,13 +99,17 @@ function Feature({ title, link, lightIcon, darkIcon, description }) {
         <div>
           <h3>{title}</h3>
           <p>{description}</p>
-          <ThemedImage
-            alt="icons"
+          <img
+            className="lightTheme"
+            alt="Download icon"
             style={{ height: "70px", width: "70px" }}
-            sources={{
-              light: useBaseUrl(lightIcon),
-              dark: useBaseUrl(darkIcon),
-            }}
+            src={useBaseUrl(lightIcon)}
+          />
+          <img
+            className="darkTheme"
+            alt="Download icon"
+            style={{ height: "70px", width: "70px" }}
+            src={useBaseUrl(darkIcon)}
           />
         </div>
       </Link>
