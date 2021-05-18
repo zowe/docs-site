@@ -46,12 +46,6 @@ h4 {
   font-size: 1rem !important;
 }
 
-/* FIXME: img:hover {
-	transform: scale(1.5);
-  cursor: zoom-in;
-  position: relative;
-}  */
-
 /* NavBar */
 .navbar {
   font-size: 0.95rem;
