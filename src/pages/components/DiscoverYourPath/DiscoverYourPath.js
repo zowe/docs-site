@@ -1,10 +1,7 @@
 import React from "react";
 import clsx from "clsx";
+import useBaseUrl from "@docusaurus/useBaseUrl";
 import styles from "./styles.module.css";
-
-//Icons
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBullseye, faBoxOpen } from "@fortawesome/free-solid-svg-icons";
 
 const firstSection = [
   {
@@ -84,10 +81,17 @@ function DiscoverYourPath() {
                 styles.feature
               )}
             >
-              <FontAwesomeIcon
-                icon={faBullseye}
-                className="margin-right--md"
-                style={{ fontSize: "32px" }}
+              <img
+                className="lightTheme margin-right--md"
+                alt="Bullseye icon"
+                style={{ width: "32px" }}
+                src={useBaseUrl("/img/bulls-eye-light-icon.svg")}
+              />
+              <img
+                className="darkTheme margin-right--md"
+                alt="Bullseye icon"
+                style={{ width: "32px" }}
+                src={useBaseUrl("/img/bulls-eye-dark-icon.svg")}
               />
               <div>
                 <h3>I want to...</h3>
@@ -102,10 +106,17 @@ function DiscoverYourPath() {
                 styles.feature
               )}
             >
-              <FontAwesomeIcon
-                icon={faBoxOpen}
-                className="margin-right--md"
-                style={{ fontSize: "32px" }}
+              <img
+                className="lightTheme margin-right--md"
+                alt="Boxopen icon"
+                style={{ width: "32px" }}
+                src={useBaseUrl("/img/box-open-light-icon.svg")}
+              />
+              <img
+                className="darkTheme margin-right--md"
+                alt="Boxopen icon"
+                style={{ width: "32px" }}
+                src={useBaseUrl("/img/box-open-dark-icon.svg")}
               />
               <div>
                 <h3>I'm interested in...</h3>
