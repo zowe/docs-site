@@ -6,6 +6,7 @@ Zowe&trade; application plug-ins can opt-in to various application framework abi
 1. [Actions](#actions)
 1. [Recognizers](#recognizers)
 1. [Dispatcher](#dispatcher)
+1. [URI Parameters](#uri-parameters)
 
 ## Why use application-to-application communication?
 
@@ -82,11 +83,11 @@ export enum ActionType {       // not all actions are meaningful for all target 
 
 Actions can be created dynamically at runtime, or saved and loaded by the system at login.
 
-### Cross-launch via URL
+### App2App via URL
 
 Another way the Zowe Application Framework invokes Actions is via URL Query Parameters, with parameters formatted in JSON. This feature enables users to bookmark a set of application-to-application communication actions (in the form of a URL) that will be executed when opening the webpage. Developers creating separate web apps can build a link that will open the Zowe Desktop and do specific actions in Apps, for example, opening a file in the Editor.
 
-The Cross-launch feature allows you to:
+The App2App via URL feature allows you to:
 
 1. Specify one or more actions that will be executed upon login, allowing you to bookmark a series of actions that you can share with someone else.
 
@@ -94,9 +95,15 @@ The Cross-launch feature allows you to:
 
 3. Customize the action type, mode, and target plugin (when the formatter is equal to an existing action ID).
 
-#### Sample URL
+#### Samples
 
-``https://localhost:8544/ZLUX/plugins/org.zowe.zlux.bootstrap/web/?app2app=org.zowe.zlux.ng2desktop.webbrowser:launch:create:data:{"url":"https://github.com/zowe/zlux-app-manager/pull/234","enableProxy":true}&app2app=org.zowe.zlux.ng2desktop.webbrowser:message:create:data:{"url":"https://github.com/zowe/zlux-app-manager/pull/234","enableProxy":true}&app2app=org.zowe.zlux.ng2desktop.webbrowser:message:create:org.zowe.zlux.test.action:{"data": {"url":"https://github.com/zowe/zlux-app-manager/pull/234","enableProxy":true}}``
+```
+https://localhost:8544/ZLUX/plugins/org.zowe.zlux.bootstrap/web/?app2app=org.zowe.zlux.ng2desktop.webbrowser:launch:create:data:{"url":"https://github.com/zowe/zlux-app-manager/pull/234","enableProxy":true}&app2app=org.zowe.zlux.ng2desktop.webbrowser:message:create:data:{"url":"https://github.com/zowe/zlux-app-manager/pull/234","enableProxy":true}&app2app=org.zowe.zlux.ng2desktop.webbrowser:message:create:org.zowe.zlux.test.action:{"data": {"url":"https://github.com/zowe/zlux-app-manager/pull/234","enableProxy":true}}
+
+https://localhost:8544/ZLUX/plugins/org.zowe.zlux.bootstrap/web/?pluginId=org.zowe.terminal.tn3270&showLogin=true
+
+https://localhost:8544/ZLUX/plugins/org.zowe.zlux.bootstrap/web/?pluginId=org.zowe.editor:data:{"type":"openFile","name":"/u/yourhome/notes.txt"}
+```
 
 Query parameter format:
 
@@ -107,6 +114,19 @@ Query parameter format:
 - `actionMode` - `'create' | 'system'`
 - `formatter` - `'data'` | actionId
 - `contextData` - context data in form of JSON
+- `windowManager` - `'MVD' | undefined` : (Optional) While in standalone mode, controls whether to use the Zowe (MVD) window manager or the deprecated simple window manager. Default is MVD.
+- `showLogin` - `true | false` : (Optional) While in standalone mode, controls whether to show Zowe's login page if credentials are not retrieved from a previous Desktop session, or if to disable it and load the application anyway (ideal solution for apps with their own login experiences). Default is true.
+
+Note that some of these parameters are shared with single app mode, therefore, you may need to adjust pluginId and app2app parameters as follows
+
+(desktop mode)
+```
+app2app=xxx.xxx.xxx:type:mode:formatter:{contextdata ...}
+```
+(single app mode)
+```
+pluginId=xxx.xxx.xxx:formatter:{"xxx":"xxx" ...}
+```
 
 ### Dynamically
 
@@ -133,7 +153,7 @@ Actions can be stored in JSON files that are loaded at login. The JSON structure
             "full_path"
           ]
         }
-      }    
+      }
     }
   ]
 }

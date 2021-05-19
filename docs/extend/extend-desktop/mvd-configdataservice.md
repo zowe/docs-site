@@ -8,6 +8,21 @@ The fundamental element of extensibility of the Zowe Application Framework is a 
 
 The behavior of the Configuration Dataservice is dependent upon the Resource structure for a plug-in. Each plug-in lists the valid resources, and the administrators can set permissions for the users who can view or modify these resources.
 
+1. [Resource Scope](#resource-scope)
+1. [REST API](#rest-api)
+    1. [REST Query Parameters](#rest-query-parameters)
+    1. [REST HTTP Methods](#rest-http-methods)
+        1. [GET](#get)
+        1. [PUT](#put)
+        1. [DELETE](#delete)
+    1. [Administrative Access & Group](#administrative-access--group)
+1. [App API](#app-api)
+1. [Internal & Bootstrapping Use](#internal--bootstrapping-use)
+1. [Packaging Defaults](#packaging-defaults)
+1. [Plugin Definition](#plugin-definition)
+1. [Aggregation Policies](#aggregation-policies)
+1. [Relevant Source Code](#relevant-source-code)
+
 ## Resource Scope
 
 Data is stored within the Configuration Dataservice according to the selected *Scope*. The intent of *Scope* within the Dataservice is to facilitate company-wide administration and privilege management of Zowe data.
@@ -17,6 +32,10 @@ When a user requests a resource, the resource that is retrieved is an override o
 When a user stores a resource, the resource is stored within a *Scope* but only if the user has access privilege to update within that *Scope*.
 
 *Scope* is one of the following:
+
+**Plugin**
+
+Configuration defaults that come with a plugin. Cannot be modified.
 
 **Product** 
 
@@ -40,7 +59,7 @@ Data for an individual user.(Pending)
 
 **Note:** While Authorization tuning can allow for settings such as GET from Instance to work without login, *User* and *Group* scope queries will be rejected if not logged in due to the requirement to pull resources from a specific user. Because of this, *User* and *Group* scopes will not be functional until the Security Framework is merged into the mainline.
 
-Where *Product* is the broadest scope and *User* is the narrowest scope.
+Where *Plugin* is the broadest scope and *User* is the narrowest scope.
 
 When you specify *Scope* *User*, the service manages configuration for your particular username, using the authentication of the session. This way, the *User* scope is always mapped to your current username.
 
@@ -238,6 +257,13 @@ Within each `_internal` directory, the following directories might exist:
 
 The JSON contents within these directories are provided as Objects to dataservices through the dataservice context Object.
 
+## Packaging Defaults
+The best way to provide default settings for a plugin is to include it as part of the plugin's package.  
+It's easy to distribute to users, requires no configuration steps, and is read-only from the server.  
+To package, all content must be stored within the `/config/storageDefaults` directory of your plugin.  
+Within, non-leaf resources are folders, and leaf resources are files, regardless of JSON or binary.  
+The `_internal` folder and content is also permitted.
+
 ## Plug-in definition
 
 Because the Configuration Dataservices stores data on a per-plug-in basis, each plug-in must define their resource structure to make use of the Configuration Dataservice. The resource structure definition is included in the plug-in's `pluginDefinition.json` file.
@@ -278,3 +304,7 @@ The following policies are currently implemented:
 * **OVERRIDE**: The Configuration Dataservice obtains data for the resource that is requested at the broadest level found, and joins the resource's properties from narrower scopes, overriding broader attributes with narrower ones, when found.
 
 
+## Examples
+
+  [zlux-app-manager](https://github.com/zowe/zlux-app-manager/tree/master/bootstrap/src/uri/mvd-uri.ts)
+  [VT Terminal App](https://github.com/zowe/vt-ng2/blob/master/webClient/src/app/app.component.ts)

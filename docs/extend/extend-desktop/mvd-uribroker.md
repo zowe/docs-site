@@ -2,6 +2,20 @@
 
 The URI Broker is an object in the application plug-in web framework, which facilitates calls to the Zowe&trade; Application Server by constructing URIs that use the context from the calling application plug-in.
 
+1. [Accessing the URI Broker](#accessing-the-uri-broker)
+    1. [Natively](#natively)
+    1. [In an iframe](#in-an-iframe)
+1. [Functions](#functions)
+    1. [Accessing App's Dataservices](#accessing-apps-dataservices)
+        1. [HTTP Dataservice URI](#http-dataservice-uri)
+        1. [Websocket Dataservice URI](#websocket-dataservice-uri)
+    1. [Accessing App's Configuration Resources](#accessing-apps-configuration-resources)
+        1. [Standard Configuration Access](#standard-configuration-access)
+        1. [Scoped Configuration Access](#scoped-configuration-access)
+    1. [Accessing Static Content](#accessing-static-content)
+    1. [Accessing the App's Root](#accessing-the-apps-root)
+    1. [Server Queries](#server-queries)
+        1. [Accessing List of Plugins](#accessing-list-of-plugins)
 
 ## Accessing the URI Broker
 

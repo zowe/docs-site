@@ -32,11 +32,17 @@ To define your dataservice, create a set of keys and values for your dataservice
 
   - **java-war**: See the topic _Defining Java dataservices_ below.
 
+  - **external**: Used to set up an endpoint in your plugin's namespace as a proxy for an endpoint on another server. External services have the following values to state how to proxy.
+
 **name**
 
  The name of the service. Names must be unique within each `pluginDefinition.json` file. The name is used to reference the dataservice during logging and to construct the URL space that the dataservice occupies.
 
-**serviceLookupMethod**
+**version**
+
+ A semver version string. More than one version of the same service can be present within a plugin, but versions must be declared to track dependencies.
+
+**initializerLookupMethod**
 
  Specify `external` unless otherwise instructed.
 
@@ -44,13 +50,48 @@ To define your dataservice, create a set of keys and values for your dataservice
 
 The name of the file that is the entry point for construction of the dataservice, relative to the application's `/lib` directory. For example, for the `sample-app` the `fileName` value is `"helloWorld.js"` - without a path. So its typescript code is transpiled to JavaScript files that are placed directly into the `/lib` directory.
 
+**dependenciesIncluded**
+
+ Specify `true` for anything in the `pluginDefinition.json` file. Only specify `false` when you are adding dataservices to the server dynamically.
+
+### Router-type specific attributes
+
 **routerFactory (Optional)**
 
  When you use a router dataservice, the dataservice is included in the proxy server through a `require()` statement. If the dataservice's exports are defined such that the router is provided through a factory of a specific name, you must state the name of the exported factory using this attribute.
 
-**dependenciesIncluded**
+### Import-type specific attributes
 
- Specify `true` for anything in the `pluginDefinition.json` file. Only specify `false` when you are adding dataservices to the server dynamically.
+**sourcePlugin**
+
+ The ID of the plugin where the service can be found for an **import** type dataservice.
+
+**sourceName**
+
+ The name of the dataservice to be found in the source plugin when using an **import** type dataservice.
+
+**localName**
+
+ The name of the dataservice within your plugin's namespace when using an **import** type dataservice.
+
+**versionRange**
+
+ A semver string plus range modifiers such as "^" to denote what range of versions would satisfy the import.
+
+
+**Note: Import-type dataservices cannot at this time override the attributes of the imported dataservice. For example, if the original dataservice had `httpCaching:false`, and the import used `httpCaching:true`, the import's value is ignored and the original value used instead.**
+
+### External-type specific attributes
+
+**urlPrefix**
+
+ The prefix to be prepended when making the proxy connection to the external source. For example, if the user tried to access `<your external service>/foo`, but your urlPrefix was `/bar`, then the proxy would make a connection to `<your external destination>/bar/foo`.
+
+**isHttps**
+
+ Boolean used to tell the server whether to proxy to a destination that is or is not using https instead of http.
+
+**Note: External-type dataservices also require specification of the proxied host & port. This is accomplished via making a JSON file, `remote.json`, with attributes `host` and `port`, and placing it within the internal configuration storage for that dataservice. See more about that storage here: https://github.com/zowe/zlux/wiki/Configuration-Dataservice#internal--bootstrapping-use**
 
 ## Defining Java dataservices
 In addition to other types of dataservice, you can use Java (also called java-war) dataservices in your applications. Java dataservices are powered by Java Servlets.
@@ -146,35 +187,6 @@ Using Java dataservices with a Zowe Application Server installed on a Windows co
 
 To create multiple instances of Tomcat on non-Windows computers, the Zowe Application Server establishes symbolic links to the service logic. On Windows computers, symbolic links require administrative privilege, so the server establishes junctions instead. Junctions only work when the source and destination reside on the same volume.
 
-## Using dataservices with RBAC
-If your administrator configures the Zowe Application Framework to use role-based access control (RBAC), then when you create a dataservice you must consider the length of its paths.
-
-To control access to dataservices, administrators can enable RBAC, then use a z/OS security product such as RACF to map roles and authorities to a System Authorization Facility (SAF) profile. For information on RBAC, see [Applying role-based access control to dataservices](../../user-guide/mvd-configuration.md#applying-role-based-access-control-to-dataservices).
-
-SAF profiles have the following format:
-
-`<product>.<instance id>.SVC.<pluginid_with_underscores>.<service>.<HTTP method>.<dataservice path with forward slashes '/' replaced by periods '.'>`
-
-For example, to access this dataservice endpoint:
-
-`/ZLUX/plugins/org.zowe.foo/services/baz/_current/users/fred`
-
-Users must have READ access to the following profile:
-
-`ZLUX.DEFAULT.SVC.ORG_ZOWE_FOO.BAZ.POST.USERS.FRED`
-
-Profiles cannot contain more than 246 characters. If the path section of an endpoint URL makes the profile name exceed limit, the path is trimmed to only include elements that do not exceed the limit. For example, imagine that each path section in this endpoint URL contains 64 characters:
-
-`/ZLUX/plugins/org.zowe.zossystem.subsystems/services/data/_current/aa..a/bb..b/cc..c/dd..d` 
-
-So `aa..a` is 64 "a" characters, `bb..b` is 64 "b" characters, and so on. The URL could then map to the following example profile:
-
-`ZLUX.DEFAULT.SVC.ORG_ZOWE_ZOSSYSTEM_SUBSYSTEMS.DATA.GET.AA..A.BB..B`
-
-The profile ends at the `BB..B` section because adding `CC..C` would put it over 246 characters. So in this example, all dataservice endpoints with paths that start with `AA..A.BB..B` are controlled by this one profile.
-
-To avoid this issue, we recommend that you maintain relatively short endpoint URL paths.
-
 ## Dataservice APIs
 
 Dataservice APIs can be categorized as Router-based or ZSS-based, and either WebSocket or not. 
@@ -191,7 +203,7 @@ Because of the nature of Router middleware, the dataservice need only specify UR
 
 The Promise for the Router can be within a Factory export function, as mentioned in the `pluginDefinition` specification for *routerFactory* above, or by the module constructor.
 
-An example is available in `sample-app/nodeServer/ts/helloWorld.ts`
+An example is available in the [Sample Angular App.](https://github.com/zowe/sample-angular-app/blob/master/nodeServer/ts/helloWorld.ts)
 
 #### WebSocket Router dataservices
 
@@ -262,3 +274,33 @@ At runtime, the Zowe Application Server does the following:
   - Application plug-in documentation: `/ZLUX/plugins/<app_name>/catalogs/swagger`
 
 - In application plug-in documentation, displays only stubs for undocumented dataservices, stating that the dataservice exists but showing no details. Undocumented dataservices include non-REST dataservices such as WebSocket services.
+
+
+## Using dataservices with RBAC
+If your administrator configures the Zowe Application Framework to use role-based access control (RBAC), then when you create a dataservice you must consider the length of its paths.
+
+To control access to dataservices, administrators can enable RBAC, then use a z/OS security product such as RACF to map roles and authorities to a System Authorization Facility (SAF) profile. For information on RBAC, see [Applying role-based access control to dataservices](../../user-guide/mvd-configuration.md#applying-role-based-access-control-to-dataservices).
+
+SAF profiles have the following format:
+
+`<product>.<instance id>.SVC.<pluginid_with_underscores>.<service>.<HTTP method>.<dataservice path with forward slashes '/' replaced by periods '.'>`
+
+For example, to access this dataservice endpoint:
+
+`/ZLUX/plugins/org.zowe.foo/services/baz/_current/users/fred`
+
+Users must have READ access to the following profile:
+
+`ZLUX.DEFAULT.SVC.ORG_ZOWE_FOO.BAZ.POST.USERS.FRED`
+
+Profiles cannot contain more than 246 characters. If the path section of an endpoint URL makes the profile name exceed limit, the path is trimmed to only include elements that do not exceed the limit. For example, imagine that each path section in this endpoint URL contains 64 characters:
+
+`/ZLUX/plugins/org.zowe.zossystem.subsystems/services/data/_current/aa..a/bb..b/cc..c/dd..d` 
+
+So `aa..a` is 64 "a" characters, `bb..b` is 64 "b" characters, and so on. The URL could then map to the following example profile:
+
+`ZLUX.DEFAULT.SVC.ORG_ZOWE_ZOSSYSTEM_SUBSYSTEMS.DATA.GET.AA..A.BB..B`
+
+The profile ends at the `BB..B` section because adding `CC..C` would put it over 246 characters. So in this example, all dataservice endpoints with paths that start with `AA..A.BB..B` are controlled by this one profile.
+
+To avoid this issue, we recommend that you maintain relatively short endpoint URL paths.
