@@ -43,7 +43,7 @@ module.exports = {
           label: "Extend",
           docId: "extend/extend-zowe-overview",
           position: "left",
-        },        
+        },
         {
           type: "doc",
           label: "Troubleshoot",
@@ -162,7 +162,7 @@ module.exports = {
       respectPrefersColorScheme: true,
     },
     prism: {
-      additionalLanguages: ['groovy', 'ini', 'java', 'properties']
+      additionalLanguages: ["groovy", "ini", "java", "properties"],
     },
     //FIXME: 'txt', 'jcl', 'text', 'aidl', 'maven', 'sh', 'shell script'
     googleAnalytics: {
@@ -201,6 +201,17 @@ module.exports = {
     ],
   ],
   plugins: [
+    [
+      "@docusaurus/plugin-client-redirects",
+      {
+        redirects: [
+          {
+            to: "/",
+            from: ["/stable"],
+          },
+        ],
+      },
+    ],
     [
       "@docusaurus/plugin-pwa",
       {
