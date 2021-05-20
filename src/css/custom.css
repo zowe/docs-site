@@ -106,6 +106,36 @@ Badge {
   font-size: 0.75rem;
 }
 
+/* DocSidebar Component */
+.menu {
+  flex-grow: 1;
+  padding: 0.5rem;
+  font-size: 14.5px;
+  font-weight: normal;
+}
+
+.menu__link--active:not(.menu__link--sublist) {
+  border-left-color: var(--ifm-menu-color-active) !important;
+  border-left-width: 4px;
+  border-left-style: solid;
+  font-weight: 500;
+  padding-left: 12px;
+}
+
+a.menu__link.menu__link--sublist {
+  color: black;
+  font-weight: 500;
+  font-size: 15.5px;
+}
+
+[data-theme="dark"] a.menu__link.menu__link--sublist {
+  color: inherit;
+}
+
+.menu__link--active, .menu__link--active:hover {
+  color: var(--ifm-heading-color);
+}
+
 /* DocItem Features */
 .zowe-faq[open] summary:before {
   content: "📖 Click to hide answer";
