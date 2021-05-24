@@ -53,7 +53,8 @@ _Note: This section is for technical preview and we are happy to hear any feedba
 _Note: this feature is added with Zowe v1.21.0 release._
 
 From Zowe v1.21.0, Zowe ships a `bin/zowe-upgrade-component.sh` tool to help you upgrade any Zowe server component (extension) to the latest version available into the Zowe Artifactory. 
-By default, Zowe core components are not updated with this tool, but the user can enable the upgrade functionality by setting the optional boolean value `ZOWE_COMPONENTS_UPGRADE` to `true` as part of the installation configuration. 
+By default, Zowe core components are not updated with this tool, but the user can enable the upgrade functionality by setting the optional boolean value `ZOWE_COMPONENTS_UPGRADE` to `true` as part of the installation configuration.
+The Zowe components will get updated and then installed and configured using the `zowe-install-component.sh` and `zowe-configure-component.sh` scripts.
 In order to be compatible with the tool, we recommend components follow [Zowe server component package format standard](packaging-zos-extensions.md#zowe-server-component-package-format).
 
 The tool can be executed from z/OS USS, and it takes these command line parameters:
