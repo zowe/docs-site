@@ -1,6 +1,5 @@
 const LATEST_VERSION = "v1.22.x";
 
-/** @type {import('@docusaurus/types').DocusaurusConfig} */
 module.exports = {
   title: "Zowe Docs",
   tagline:
@@ -28,158 +27,46 @@ module.exports = {
       },
       items: [
         {
-          label: "Getting Started",
-          to: "/getting-started/overview",
-          // to: "getting-started/overview", //Remove this (to) to remove onClick
+          type: "doc",
+          label: "Get Started",
+          docId: "getting-started/overview",
           position: "left",
-          items: [
-            {
-              label: "Doc 1",
-              to: "getting-started/introductions/doc1",
-            },
-            {
-              label: "Doc 2",
-              to: "getting-started/doc2",
-            },
-            {
-              label: "Doc 3",
-              to: "getting-started/doc3",
-            },
-            {
-              label: "Doc 4",
-              to: "getting-started/release-notes",
-            },
-          ],
         },
         {
-          label: "Extend",
-          to: "getting-started/doc2/",
-          position: "left",
-          items: [
-            {
-              label: "A",
-              to: "getting-started/overview",
-            },
-            {
-              label: "B",
-              to: "getting-started/doc2",
-            },
-            {
-              label: "C",
-              to: "getting-started/doc3",
-            },
-            {
-              label: "D",
-              to: "getting-started/release-notes",
-            },
-          ],
-        },
-        {
-          to: "user-guide",
+          type: "doc",
           label: "User Guide",
+          docId: "user-guide/installandconfig",
           position: "left",
-          items: [
-            {
-              label: "A",
-              to: "getting-started/overview",
-            },
-            {
-              label: "B",
-              to: "getting-started/doc2",
-            },
-            {
-              label: "C",
-              to: "getting-started/doc3",
-            },
-            {
-              label: "D",
-              to: "getting-started/release-notes",
-            },
-          ],
         },
         {
-          to: "troubleshooting",
-          label: "Troubleshooting",
+          type: "doc",
+          label: "Extend",
+          docId: "extend/extend-zowe-overview",
           position: "left",
-          items: [
-            {
-              label: "A",
-              to: "getting-started/overview",
-            },
-            {
-              label: "B",
-              to: "getting-started/doc2",
-            },
-            {
-              label: "C",
-              to: "getting-started/doc3",
-            },
-            {
-              label: "D",
-              to: "getting-started/release-notes",
-            },
-          ],
         },
         {
-          to: "contributing",
-          label: "Contributing",
+          type: "doc",
+          label: "Troubleshoot",
+          docId: "troubleshoot/troubleshooting",
           position: "left",
-          items: [
-            {
-              label: "Code Guidelines",
-              to: "contribute/guidelines-code/categories",
-            },
-            { label: "UI Guidelines", to: "contribute/guidelines-ui/ui" },
-            {
-              label: "Contributing to Documentation",
-              to: "contribute/contributing",
-            },
-          ],
         },
         {
-          to: "references",
-          label: "References",
+          type: "doc",
+          label: "Contribute",
+          docId: "contribute/roadmap-contribute",
           position: "left",
-          items: [
-            {
-              label: "A",
-              to: "getting-started/overview",
-            },
-            {
-              label: "B",
-              to: "getting-started/doc2",
-            },
-            {
-              label: "C",
-              to: "getting-started/doc3",
-            },
-            {
-              label: "D",
-              to: "getting-started/release-notes",
-            },
-          ],
         },
         {
-          // TODO: https://v2.docusaurus.io/docs/api/themes/configuration#navbar-docs-version-dropdown
+          type: "doc",
+          label: "Reference",
+          docId: "appendix/zowe-cli-commannd-reference",
+          position: "left",
+        },
+        {
           type: "docsVersionDropdown",
           position: "right",
-          // dropdownItemsBefore: [],
-          // dropdownItemsAfter: [{to: '/versions', label: 'All versions'}],
-          // Do not add the link active class when browsing docs.
           dropdownActiveClassDisabled: true,
-          // docsPluginId: "default",
         },
-        // {
-        //   type: "localeDropdown",
-        //   position: "right",
-        //   dropdownItemsBefore: [],
-        //   dropdownItemsAfter: [
-        //     {
-        //       href: 'https://my-site.com/help-us-translate',
-        //       label: 'Help us translate',
-        //     },
-        //   ],
-        // },
         {
           href: "https://github.com/zowe/docs-site",
           position: "right",
@@ -190,11 +77,6 @@ module.exports = {
     },
     footer: {
       style: "dark",
-      // logo: {
-      //   alt: "Zowe Logo",
-      //   src: "img/zowe-icon-dark.png",
-      //   href: "https://www.zowe.org/",
-      // },
       links: [
         {
           title: "Products",
@@ -225,6 +107,10 @@ module.exports = {
               href: "https://www.youtube.com/playlist?list=PL8REpLGaY9QE_9d57tw3KQdwSVLKuTpUZ",
             },
             {
+              label: "Learning",
+              href: "https://docs.zowe.org/stable/getting-started/zowe-resources",
+            },
+            {
               label: "Zowe Conformance Program",
               href: "https://www.openmainframeproject.org/projects/zowe/conformance",
             },
@@ -234,25 +120,25 @@ module.exports = {
           title: "Community",
           items: [
             {
-              label: "Join us on Slack",
+              label: "Slack community",
               href: "https://slack.openmainframeproject.org/",
             },
             {
-              label: "Join community meetings",
+              label: "Community meetings",
               href: "https://lists.openmainframeproject.org/g/zowe-dev/calendar",
             },
             {
-              label: "GitHub",
+              label: "Zowe GitHub",
               href: "https://github.com/zowe/",
             },
             {
-              label: "Contribute",
+              label: "How to contribute",
               href: "https://docs.zowe.org/stable/contribute/roadmap-contribute.html",
             },
           ],
         },
       ],
-      copyright: `© Open Mainframe Project. a Linux Foundation Project. All Rights Reserved.`,
+      copyright: `© Open Mainframe Project. a Linux Foundation Project. All Rights Reserved. The Linux Foundation has registered trademarks and uses trademarks. For a list of trademarks of The Linux Foundation, please see our Trademark Usage page. Please refer to Marketing and Branding Guidelines for name usage guidelines. Linux is a registered trademark of Linus Torvalds. Privacy Policy and Terms of Use`,
     },
     announcementBar: {
       id: "support_us", // Any value that will identify this message.
@@ -275,6 +161,10 @@ module.exports = {
       defaultMode: "light",
       respectPrefersColorScheme: true,
     },
+    prism: {
+      additionalLanguages: ["groovy", "ini", "java", "properties"],
+    },
+    //FIXME: 'txt', 'jcl', 'text', 'aidl', 'maven', 'sh', 'shell script'
     googleAnalytics: {
       trackingID: "UA-195765847-1",
       anonymizeIP: true, // Should IPs be anonymized?
@@ -285,8 +175,6 @@ module.exports = {
   },
   presets: [
     [
-      //For reference: https://v2.docusaurus.io/docs/api/plugins/@docusaurus/plugin-content-docs#configuration
-      //Plugins are written in form of presets
       "@docusaurus/preset-classic",
       {
         docs: {
@@ -295,12 +183,11 @@ module.exports = {
           editUrl: "https://github.com/zowe/docs-site/edit/zowe-docs-v2/", //FIXME:
           showLastUpdateAuthor: false,
           showLastUpdateTime: true,
-          // showReadingTime: true,
           routeBasePath: "/", //Default is docs/
           lastVersion: "current",
           versions: {
             current: {
-              path: "stable", //TODO: stable
+              path: "stable",
               label: `${LATEST_VERSION}`,
             },
           },
@@ -314,6 +201,17 @@ module.exports = {
     ],
   ],
   plugins: [
+    [
+      "@docusaurus/plugin-client-redirects",
+      {
+        redirects: [
+          {
+            to: "/",
+            from: ["/stable"],
+          },
+        ],
+      },
+    ],
     [
       "@docusaurus/plugin-pwa",
       {
@@ -332,7 +230,7 @@ module.exports = {
           {
             tagName: "link",
             rel: "manifest",
-            href: "/manifest.json", // your PWA manifest
+            href: "/manifest.json",
           },
           {
             tagName: "meta",

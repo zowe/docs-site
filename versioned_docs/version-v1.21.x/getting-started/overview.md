@@ -1,405 +1,196 @@
 ---
-title: Overview
-# sidebar_label: Overview
-# hide_title: true
+meta:
+  - name: description
+    content: Zowe is an open source project within the Open Mainframe Project that is part of The Linux Foundation. Zowe is an extensible framework that simplifies and speeds application development, deployment, and operations on z/OS, and provides the ability for extension through CLI plug-ins, new applications to be added to the web desktop, and onboarding of REST APIs to the API Mediation Layer. It narrows the skills gap between new and legacy z/OS developers by offering the choice to work with z/OS either through a Command Line Interface, a Zowe Explorer Visual Studio extension, a web browser served from the Zowe Application Framework, or through REST APIs and web sockets served through the API Mediation Layer.
 ---
 
-Check out the following FAQs to learn more about the purpose and function of Zowe&trade;.
+# Zowe overview
 
-- [Zowe FAQ](#zowe-faq)
-- [Zowe CLI FAQ](#zowe-cli-faq)
-- [Zowe Explorer FAQ](#zowe-explorer-faq)
+Zowe&trade; is an open source software framework that allows mainframe development and operation teams to securely manage, control, script, and develop on the mainframe. It was created to host technologies that benefit the IBM Z platform for all members of the Z community, including Integrated Software Vendors (ISVs), System Integrators, and z/OS consumers. Like Mac or Windows, Zowe comes with a set of APIs and OS capabilities that applications build on and also includes some applications out of the box. Zowe offers modern interfaces to interact with z/OS and allows you to work with z/OS in a way that is similar to what you experience on cloud platforms today. You can use these interfaces as delivered or through plug-ins and extensions that are created by clients or third-party vendors. Zowe is a project within the Open Mainframe Project.
 
-## Zowe FAQ
+## Zowe Demo Video
 
-### What is Zowe?
+Watch this [video](https://www.youtube.com/embed/NX20ZMRoTtk) to see a quick demo of Zowe. 
 
-<details class="zowe-faq">
+<iframe class="embed-responsive-item" id="youtubeplayer" title="Zowe overview demo" type="text/html" width="640" height="390" src="https://www.youtube.com/embed/7XpOjREP8JU" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen> </iframe>
 
-<summary></summary>
+[Download the deck for this video](../Zowe_introduction_video_deck.pptx) | [Download the script](../Zowe_introduction_video_script.txt)
 
-Zowe is an open source project within the [Open Mainframe Project](https://www.openmainframeproject.org/) that is part of [The Linux Foundation](https://www.linuxfoundation.org). The Zowe project provides modern software interfaces on IBM z/OS to address the needs of a variety of modern users. These interfaces include a new web graphical user interface, a script-able command-line interface, extensions to existing REST APIs, and new REST APIs on z/OS.
+## Component Overview
 
-</details>
+Zowe consists of the following components:
 
-### Who is the target audience for using Zowe?
+### Zowe Application Framework
 
-<details class="zowe-faq">
+A web user interface (UI) that provides a virtual desktop containing a number of apps allowing access to z/OS function.  Base Zowe includes apps for traditional access such as a 3270 terminal and a VT Terminal, as well as an editor and explorers for working with JES, MVS Data Sets and Unix System Services.
 
-<summary></summary>
+<details>
+<summary> Learn more </summary>
 
-Zowe technology can be used by a variety of mainframe IT and non-IT professionals. The target audience is primarily application developers and system programmers, but the Zowe Application Framework is the basis for developing web browser interactions with z/OS that can be used by anyone.
+The Zowe Application Framework modernizes and simplifies working on the mainframe. With the Zowe Application Framework, you can create applications to suit your specific needs. The Zowe Application Framework contains a web UI that has the following features:
 
-</details>
+- The web UI works with the underlying REST APIs for data, jobs, and subsystem, but presents the information in a full screen mode as compared to the command line interface.
+- The web UI makes use of leading-edge web presentation technology and is also extensible through web UI plug-ins to capture and present a wide variety of information.
+- The web UI facilitates common z/OS developer or system programmer tasks by providing an editor for common text-based files like REXX or JCL along with general purpose data set actions for both Unix System Services (USS) and Partitioned Data Sets (PDS) plus Job Entry System (JES) logs.
 
-### What language is Zowe written in?
+The Zowe Application Framework consists of the following components:
 
-<details class="zowe-faq">
+- **Zowe Desktop**
 
-<summary></summary>
+    The desktop, accessed through a browser.  The desktop contains a number of applications, including a TN3270 emulator for traditional Telnet or TLS terminal access to z/OS, a VT Termnial for SSH commands, as well as rich web GUI applications including a JES Explorer for working with jobs and spool output, a File Editor for working with USS directories and files and MVS data sets and members.   The Zowe desktop is extensible and allows vendors to provide their own applications to run within the desktop. See [Extending the Zowe Desktop](../extend/extend-desktop/mvd-extendingzlux.md).  The following screen capture of a Zowe desktop shows some of its composition as well as the TN3270 app, the JES Explorer, and the File Editor open and in use.
 
-Zowe consists of several components. The primary languages are Java and JavaScript. Zowe CLI and Desktop are written in TypeScript. ZSS is written in C, while the cross memory server is written in metal C.
+    ![Zowe Desktop Screen Capture](./diagrams/zowe-desktop-sample.png)
 
-</details>
+- **Zowe Application Server**
 
-### What is the licensing for Zowe?
+    The Zowe Application Server runs the Zowe Application Framework. It consists of the Node.js server plus the Express.js as a webservices framework, and the proxy applications that communicate with the z/OS services and components.
 
-<details class="zowe-faq">
+- **ZSS Server**
 
-<summary></summary>
+    The ZSS Server provides secure REST services to support the Zowe Application Server.  For services that need to run as APF authorized code, Zowe uses an angel process that the ZSS Server calls using cross memory communication.  During installation and configuration of Zowe, you will see the steps needed to configure and launch the cross memory server.
 
-Zowe source code is licensed under EPL2.0. For license text click [here](https://www.eclipse.org/org/documents/epl-2.0/EPL-2.0.txt) and for additional information click [here](https://www.eclipse.org/legal/epl-2.0/faq.php).
+- **Application plug-ins**
 
-In the simplest terms (taken from the FAQs above) - "...if you have modified EPL-2.0 licensed source code and you distribute that code or binaries built from that code outside your company, you must make the source code available under the EPL-2.0."
-
-</details>
-
-### Why is Zowe licensed using EPL2.0?
-
-<details class="zowe-faq">
-
-<summary></summary>
-
-The Open Mainframe Project wants to encourage adoption and innovation, and also let the community share new source code across the Zowe ecosystem. The open source code can be used by anyone, provided that they adhere to the licensing terms.
+    Several application-type plug-ins are provided. For more information, see [Using the Zowe Application Framework application plug-ins](../user-guide/mvd-using.md#zowe-desktop-application-plug-ins).
 
 </details>
 
+### z/OS Services
 
-### What are some examples of how Zowe technology might be used by z/OS products and applications?
+Provides a range of APIs for the management of z/OS JES jobs and MVS data set services.
 
-<details class="zowe-faq">
+<details>
+<summary> Learn more </summary>
 
-<summary></summary>
+Zowe provides a z/OS® RESTful web service and deployment architecture for z/OS microservices. Zowe contains the following  core z/OS services:
 
-The Zowe Desktop (web user interface) can be used in many ways, such as to provide custom graphical dashboards that monitor data for z/OS products and applications.
+ - **z/OS Datasets services**
 
-Zowe CLI can also be used in many ways, such as for simple job submission, data set manipulation, or for writing complex scripts for use in mainframe-based DevOps pipelines.
+    Get a list of data sets, retrieve content from a member, create a data set, and more.
 
-The increased capabilities of RESTful APIs on z/OS allows APIs to be used in programmable ways to interact with z/OS services.
+ - **z/OS Jobs services**
 
-</details>
+   Get a list of jobs, get content from a job file output, submit a job from a data set, and more.
 
+You can view the full list of capabilities of the RESTful APIs from the API catalog that displays the Open API Specification for their capabilities.
 
-### What is the best way to get started with Zowe?
+- These APIs are described by the Open API Specification allowing them to be incorporated to any standard-based REST API developer tool or API management process.
+- These APIs can be exploited by off-platform applications with proper security controls.
 
-<details class="zowe-faq">
-
-<summary></summary>
-
-Zowe provides a convenience build that includes the components released-to-date, as well as IP being considered for contribution, in an easy to install package on [Zowe.org](https://zowe.org). The convenience build can be easily installed and the Zowe capabilities seen in action.
-
-To install the complete Zowe solution, see [Installing Zowe](../user-guide/installandconfig.md).
-
-To get up and running with the Zowe CLI component quickly, see [Zowe CLI quick start](cli-getting-started.md).
+As a deployment architecture, the z/OS Services are running as microservices with a Springboot embedded Tomcat stack.
 
 </details>
 
+### Zowe CLI
+Zowe CLI is a command-line interface that lets you interact with the mainframe in a familiar, off-platform format. Zowe CLI helps to increase overall productivity, reduce the learning curve for developing mainframe applications, and exploit the ease-of-use of off-platform tools. Zowe CLI lets you use common tools such as Integrated Development Environments (IDEs), shell commands, bash scripts, and build tools for mainframe development. Though its ecosystem of plug-ins, you can automate actions on systems such as IBM Db2, IBM CICS, and more. It  provides a set of utilities and services for users that want to become efficient in supporting and building z/OS applications quickly.
 
-### What are the prerequisites for Zowe?
+<details>
+<summary> Learn more </summary>
 
-<details class="zowe-faq">
+Zowe CLI provides the following benefits:
 
-<summary></summary>
+  - Enables and encourages developers with limited z/OS expertise to build, modify, and debug z/OS applications.
+  - Fosters the development of new and innovative tools from a computer that can interact with z/OS. Some Zowe extensions are powered by Zowe CLI, for example the [Visual Studio Code Extension for Zowe](../user-guide/ze-install.md).
+  - Ensure that business critical applications running on z/OS can be maintained and supported by existing and generally available software development resources.
+  - Provides a more streamlined way to build software that integrates with z/OS.
 
-Prerequisites vary by component used, but in most cases the primary prerequisites are Java and NodeJS on z/OS and the z/OS Management Facility enabled and configured. For a complete list of software requirements listed by component, see [System requirements](../user-guide/systemrequirements.md).
+**Note:** For information about software requirements, installing, and upgrading Zowe CLI, see
+[Installing Zowe](../user-guide/installandconfig.md).
 
-</details>
+#### Zowe CLI capabilities
 
-### What's the difference between using Zowe with or without Docker?  
+With Zowe CLI, you can interact with z/OS remotely in the following ways:
 
-<Badge text="Technical Preview"/>
+  - **Interact with mainframe files:**
+    Create, edit, download, and
+    upload mainframe files (data sets) directly from Zowe CLI.
+  - **Submit jobs:**
+    Submit JCL from data sets or local storage, monitor the status, and view and download the output automatically.
+  - **Issue TSO and z/OS console commands:**
+    Issue TSO and console commands to the mainframe directly from Zowe CLI.
+  - **Integrate z/OS actions into scripts:**
+    Build local scripts that accomplish both mainframe and local tasks.
+  - **Produce responses as JSON documents:**
+    Return data in JSON format on request for consumption in other programming languages.
 
-<details class="zowe-faq">
+For detailed information about the available functionality in Zowe CLI, see [Zowe CLI Command Groups](../user-guide/cli-usingcli.html#understanding-core-command-groups).
 
-<summary></summary>
+For information about extending the functionality of Zowe CLI by installing plug-ins, see [Extending Zowe CLI](../user-guide/cli-extending.md).
 
-Docker is a download option for Zowe that allows you to run certain Zowe server components outside of z/OS.
-The Docker image contains the Zowe components that do not have the requirement of having to run on z/OS: The App server, API Mediation Layer, and the USS/MVS/JES Explorers.
+**More Information:**
 
-Configurating components with Docker is similar to the procedures you would follow without Docker, however tasks such as installation and running with Docker are a bit different, as these tasks become Linux oriented, rather than utilizing Jobs and STCs.
-
-**NOTE:** z/OS is still required when using the Docker image. Depending on which components of Zowe you use, you'll still need to set up z/OS Management Facility as well as Zowe's ZSS and Cross memory servers.
-
-</details>
-
-### Is the Zowe CLI packaged within the Zowe Docker download?  
-
-<Badge text="Technical Preview"/>
-
-<details class="zowe-faq">
-
-<summary></summary>
-
-At this time, the Docker image referred to in this documentation contains only Zowe server components. It is possible to make a Docker image that contains the Zowe CLI, so additional Zowe content, such as the CLI, may have Docker as a distribution option later. 
-
-If you are interested in improvements such as this one, please be sure to express that interest to the Zowe community!
-
-</details>
-
-### How is access security managed on z/OS?
-
-<details class="zowe-faq">
-
-<summary></summary>
-
-Zowe components use typical z/OS System authorization facility (SAF) calls for security.
+  - [System requirements for Zowe CLI](../user-guide/systemrequirements.md)
+  - [Installing Zowe CLI](../user-guide/cli-installcli.md)
 
 </details>
 
+### Zowe Client Software Development Kits (SDKs)
 
-### How is access to the Zowe open source managed?
+The Zowe Client SDKs consist of programmatic APIs that you can use to build client applications or scripts that interact with z/OS. The following SDKs are available:
+ - Zowe Node.js Client SDK
+ - Zowe Python Client SDK
 
-<details class="zowe-faq">
+ For more information, see [Using the Zowe SDKs](../user-guide/sdks-using.md).
 
-<summary></summary>
+### API Mediation Layer
 
-The source code for Zowe is maintained on an Open Mainframe Project GitHub server. Everyone has read access. "Committers" on the project have authority to alter the source code to make fixes or enhancements. A list of Committers is documented in [Committers to the Zowe project](https://github.com/zowe/community/blob/master/COMMITTERS.md).
+Provides a gateway that acts as a reverse proxy for z/OS services, together with a catalog of REST APIs and a dynamic discovery capability. Base Zowe provides core services for working with MVS Data Sets, JES, as well as working with z/OSMF REST APIs.  The API Mediation Layer also provides a framework for [Single Sign On (SSO)](../extend/extend-apiml/api-mediation-sso.html#zowe-api-mediation-layer-single-sign-on-overview).
 
-</details>
+<details>
+<summary> Learn more </summary>
 
+The API Mediation Layer provides a single point of access for mainframe service REST APIs. The layer offers enterprise, cloud-like features such as high-availability, scalability, dynamic API discovery, consistent security, a single sign-on experience, and documentation. The API Mediation Layer facilitates secure communication across loosely coupled microservices through the API Gateway. The API Mediation Layer consists of three components: the Gateway, the Discovery Service, and the Catalog. The Gateway provides secure communication across loosely coupled API services. The Discovery Service enables you to determine the location and status of service instances running inside the API ML ecosystem. The Catalog provides an easy-to-use interface to view all discovered services, their associated APIs, and Swagger documentation in a user-friendly manner.
 
-### How do I get involved in the open source development?
+#### Key features
+* Consistent Access: API routing and standardization of API service URLs through the Gateway component provides users with a consistent way to access mainframe APIs at a predefined address.
+* Dynamic Discovery: The Discovery Service automatically determines the location and status of API services.
+* High-Availability: API Mediation Layer is designed with high-availability of services and scalability in mind.
+* Redundancy and Scalability: API service throughput is easily increased by starting multiple API service instances without the need to change configuration.
+* Presentation of Services: The API Catalog component provides easy access to discovered API services and their associated documentation in a user-friendly manner. Access to the contents of the API Catalog is controlled through a z/OS security facility.
+* Encrypted Communication: API ML facilitates secure and trusted communication across both internal components and discovered API services.
 
-<details class="zowe-faq">
+#### API Mediation Layer architecture
+The following diagram illustrates the single point of access through the Gateway, and the interactions between API ML components and services:
 
-<summary></summary>
+![API Mediation Layer Architecture diagram](./diagrams/service-relationship-diagram.png)
 
-The best way to get started is to join a [Zowe Slack channel](https://slack.openmainframeproject.org/) and/or email distribution list and begin learning about the current capabilities, then contribute to future development.
+#### Components
+The API Layer consists of the following key components:
 
-For more information about emailing lists, community calendar, meeting minutes, and more, see the [Zowe Community](https://github.com/zowe/community/blob/master/README.md) GitHub repo.
+**API Gateway**
 
-For information and tutorials about extending Zowe with a new plug-in or application, see [Extending](../extend/extend-apiml/onboard-overview.md) on Zowe Docs.
+Services that comprise the API ML service ecosystem are located behind a gateway (reverse proxy). All end users and API client applications interact through the Gateway. Each service is assigned a unique service ID that is used in the access URL. Based on the service ID, the Gateway forwards incoming API requests to the appropriate service. Multiple Gateway instances can be started to achieve high-availability. The Gateway access URL remains unchanged. The Gateway is built using Netflix Zuul and Spring Boot technologies.
 
-</details>
+**Discovery Service**
 
+The Discovery Service is the central repository of active services in the API ML ecosystem. The Discovery Service continuously collects and aggregates service information and serves as a repository of active services. When a service is started, it sends its metadata, such as the original URL, assigned serviceId, and status information to the Discovery Service. Back-end microservices register with this service either directly or by using a Eureka client. Multiple enablers are available to help with service on-boarding of various application architectures including plain Java applications and Java applications that use the Spring Boot framework. The Discovery Service is built on Eureka and Spring Boot technology.
 
-### When will Zowe be completed?
+**Discovery Service TLS/SSL**
 
-<details class="zowe-faq">
+HTTPS protocol can be enabled during API ML configuration and is highly recommended. Beyond encrypting communication, the HTTPS configuration for the Discovery Service enables heightened security for service registration. Without HTTPS, services provide a username and password to register in the API ML ecosystem. When using HTTPS, only trusted services that provide HTTPS certificates signed by a trusted certificate authority can be registered.
 
-<summary></summary>
+**API Catalog**
 
-Zowe will continue to evolve in the coming years based on new ideas and new contributions from a growing community.
+The API Catalog is the catalog of published API services and their associated documentation. The Catalog provides both the REST APIs and a web user interface (UI) to access them. The web UI follows the industry standard Swagger UI component to visualize API documentation in OpenAPI JSON format for each service. A service can be implemented by one or more service instances, which provide exactly the same service for high-availability or scalability.
 
-</details>
+**Catalog Security**
 
+Access to the API Catalog can be protected with an Enterprise z/OS Security Manager such as IBM RACF, CA ACF2, or CA Top Secret. Only users who provide proper mainframe credentials can access the Catalog. Client authentication is implemented through the z/OSMF API.
 
-### Can I try Zowe without a z/OS instance?
+#### Onboarding APIs
+Essential to the API Mediation Layer ecosystem is the API services that expose their useful APIs. Use the following topics to discover more about adding new APIs to the API Mediation Layer and using the API Catalog:
 
-<details class="zowe-faq">
+* [Onboarding Overview](../extend/extend-apiml/onboard-overview.md)
 
-<summary></summary>
-
-IBM has contributed a free hands-on tutorial for Zowe. Visit the [Zowe Tutorial page](https://developer.ibm.com/tutorials/zowe-step-by-step-tutorial/) to learn about adding new applications to the Zowe Desktop and and how to enable communication with other Zowe components.
-
-The Zowe community is also currently working to provide a vendor-neutral site for an open z/OS build and sandbox environment.
-
-Zowe is also compatible with IBM z/OSMF Lite for non-production use. For more information, see [Configuring z/OSMF Lite](../user-guide/systemrequirements-zosmf-lite.md) on Zowe Docs.
-
-</details>
-
-
-## Zowe CLI FAQ
-
-### Why might I use Zowe CLI versus a traditional ISPF interface to perform mainframe tasks?
-
-<details class="zowe-faq">
-
-<summary></summary>
-
-For developers new to the mainframe, command-line interfaces might be more familiar than an ISPF interface. Zowe CLI lets developers be productive from day-one by using familiar tools. Zowe CLI also lets developers write scripts that automate a sequence of mainframe actions. The scripts can then be executed from off-platform automation tools such as Jenkins automation server, or manually during development.
-
-</details>
-
-
-### With what tools is Zowe CLI compatible?
-
-<details class="zowe-faq">
-
-<summary></summary>
-
-Zowe CLI is very flexible; developers can integrate with modern tools that work best for them. It can work in conjunction with popular build and testing tools such as Gulp, Gradle, Mocha, and Junit. Zowe CLI runs on a variety of operating systems, including Windows, macOS, and Linux. Zowe CLI scripts can be abstracted into automation tools such as Jenkins and TravisCI.
+* [Onboard an existing Spring Boot REST API service using Zowe API Mediation Layer](../extend/extend-apiml/onboard-spring-boot-enabler.md)
+* [Onboard an existing Node.js REST API service using Zowe API Mediation Layer](../extend/extend-apiml/onboard-nodejs-enabler.md)
+* [Using API Catalog](../user-guide/api-mediation-api-catalog.md)
 
 </details>
 
-### Where can I use the CLI?
+To learn more about the architecture of Zowe, see [Zowe architecture](zowe-architecture.md).
 
-<details class="zowe-faq">
+## Zowe Third-Party Software Requirements and Bill of Materials
 
-<summary></summary>
-
-| **Usage Scenario**    | **Example**  |
-|------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Interactive use, in a command prompt or bash terminal. | Perform one-off tasks such as submitting a batch job.                                                            |
-| Interactive use, in an IDE terminal                    | Download a data set, make local changes in your editor, then upload the changed dataset back to the mainframe.                                  |
-| Scripting, to simplify repetitive tasks         | Write a shell script that submits a job, waits for the job to complete, then returns the output.                |
-| Scripting, for use in automated pipelines       | Add a script to your Jenkins (or other automation tool) pipeline to move artifacts from a mainframe development system to a test system. |
-
-</details>
-
-### Which method should I use to install Zowe CLI?
-
-<details class="zowe-faq">
-
-<summary></summary>
-
-You can install Zowe CLI using the following methods:
-
-- **Local package installation:** The local package method lets you install Zowe CLI from a zipped file that contains the core application and all plug-ins. When you use the local package method, you can install Zowe CLI in an offline environment. We recommend that you download the package and distribute it internally if your site does not have internet access.
-
-- **Online NPM registry:** The online NPM (Node Package Manager) registry method unpacks all of the files that are necessary to install Zowe CLI using the command line. When you use the online registry method, you need an internet connection to install Zowe CLI
-
-</details>
-
-
-### How can I get help with using Zowe CLI?
-
-<details class="zowe-faq">
-
-<summary></summary>
-
-- You can get help for any command, action, or option in Zowe CLI by issuing the command 'zowe --help'.
-- For information about the available commands in Zowe CLI, see [Command Groups](../user-guide/cli-usingcli.md#understanding-core-command-groups).
-- If you have questions, the [Zowe Slack space](https://openmainframeproject.slack.com/) is the place to ask our community!
-
-</details>
-
-### How can I use Zowe CLI to automate mainframe actions?
-
-<details class="zowe-faq">
-
-<summary></summary>
-
-- You can automate a sequence of Zowe CLI commands by writing bash scripts. You can then run your scripts in an automation server such as Jenkins. For example, you might write a script that moves your Cobol code to a mainframe test system before another script runs the automated tests.
-- Zowe CLI lets you manipulate data sets, submit jobs, provision test environments, and interact with mainframe systems and source control management, all of which can help you develop robust continuous integration/delivery.
-
-</details>
-
-
-### How can I contribute to Zowe CLI?
-
-<details class="zowe-faq">
-
-<summary></summary>
-
-As a developer, you can extend Zowe CLI in the following ways:
-
-- Build a plug-in for Zowe CLI
-
-- Contribute code to the core Zowe CLI
-
-- Fix bugs in Zowe CLI or plug-in code, submit enhancement requests via GitHub issues, and raise your ideas with the community in Slack.
-
-    **Note:** For more information, see [Developing for Zowe CLI](../extend/extend-cli/cli-devTutorials.md#how-can-i-contribute).
-
-</details>
-
-## Zowe Explorer FAQ
-
-### Why might I use Zowe Explorer versus a traditional ISPF interface to perform mainframe tasks?
-
-<details class="zowe-faq">
-
-<summary></summary>
-
-The Zowe Explorer VSCode extension provides developers new to the mainframe with a modern UI, allowing you to access and work with the data set, USS, and job functionalities in a fast and streamlined manner. In addition, Zowe Explorer enables you to work with Zowe CLI profiles and issue TSO/MVS commands.
-
-</details>
-
-### How can I get started with Zowe Explorer?
-
-<details class="zowe-faq">
-
-<summary></summary>
-
-First of all, make sure you fulfill the following Zowe Explorer software requirements:
-
-- Get access to z/OSMF.
-- Install [Node.js](https://nodejs.org/en/download/) v8.0 or later.
-- Install [VSCode](https://code.visualstudio.com/).
-- Configure TSO/E address space services, z/OS data set, file REST interface, and z/OS jobs REST interface. For more information, see [z/OS Requirements](https://docs.zowe.org/stable/user-guide/systemrequirements-zosmf.html#z-os-requirements).
-
-Once the software requirements are fulfilled, create a Zowe Explorer profile.
-
-**Follow these steps:**
-
-1. Navigate to the explorer tree.
-2. Click the **+** button next to the **DATA SETS**, **USS**, or **JOBS** bar.
-3. Select the **Create a New Connection to z/OS** option.
-4. Follow the instructions, and enter all required information to complete the profile creation.
-
-You can also watch [Getting Started with Zowe Explorer](https://www.youtube.com/watch?v=G_WCsFZIWt4) to understand how to use the basic features of the extension.
-
-</details>
-
-### Where can I use Zowe Explorer?
-
-<details class="zowe-faq">
-
-<summary></summary>
-
-You can use Zowe Explorer either in [VSCode](https://marketplace.visualstudio.com/items?itemName=Zowe.vscode-extension-for-zowe) or in Theia. For more information about Zowe Explorer in Theia, see [the Theia Readme](https://github.com/zowe/vscode-extension-for-zowe/blob/master/docs/README-Theia.md).
-
-</details>
-
-### How do I get help with using Zowe Explorer?
-
-<details class="zowe-faq">
-
-<summary></summary>
-
-- Use [the Zowe Explorer channel](https://openmainframeproject.slack.com/archives/CUVE37Z5F) in Slack to ask the Zowe Explorer community for help.
-- Open a question or issue directly in [the Zowe Explorer GitHub repository](https://github.com/zowe/vscode-extension-for-zowe/issues).
-
-</details>
-
-### How can I use Secure Credential Store with Zowe Explorer?
-
-<details class="zowe-faq">
-
-<summary></summary>
-
-Activate the Secure Credential Store plug-in in Zowe Explorer.
-
-**Follow these steps:**
-
-1. Open Zowe Explorer.
-2. Navigate to the VSCode settings.
-3. Open Zowe Explorer Settings.
-4. Add the **Zowe-Plugin** value to the `Zowe Security: Credential Key` entry field.
-5. Restart VSCode.
-6. Create a profile.
-
-Your Zowe Explorer credentials are now stored securely.
-
-For more information, see [the Enabling Secure Credential Store page](https://docs.zowe.org/stable/user-guide/ze-profiles.html#enabling-secure-credential-store-with-zowe-explorer).
-
-</details>
-
-### How can I use FTP as my back-end service for Zowe Explorer?
-
-<details class="zowe-faq">
-
-<summary></summary>
-
-Check out the GitHub article about [the FTP extension](https://github.com/zowe/zowe-explorer-ftp-extension/) with the information on how to build, install, and use FTP as your back-end service for working with Unix files.
-
-</details>
-
-### How can I contribute to Zowe Explorer? 
-
-<details class="zowe-faq">
-
-<summary></summary>
-
-As a developer, you may contribute to Zowe Explorer in the following ways:
-
-- Build a Zowe Explorer extension.
-
-- Contribute code to core Zowe Explorer.
-
-- Fix bugs in Zowe Explorer, submit enhancement requests via GitHub issues, and raise your ideas with the community in Slack.
-
-   Note: For more information, see [Extending Zowe Explorer](https://github.com/zowe/vscode-extension-for-zowe/blob/master/docs/README-Extending.md).
-
-</details>
+- [Third-Party Software Requirements (TPSR)](../appendix/tpsr.md)
+- [Bill of Materials (BOM)](../appendix/bill-of-materials.md)

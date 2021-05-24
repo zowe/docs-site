@@ -6,11 +6,11 @@ import { DocSearch } from "@docsearch/react";
 import styles from "./styles.module.css";
 
 //Components
-import PopularResources from "../components/PopularResources/PopularResources";
-import ExploreContent from "../components/ExploreContent/ExploreContent";
-import DiscoverYourPath from "../components/DiscoverYourPath/DiscoverYourPath";
-import FeaturedTopics from "../components/FeaturedTopics/FeaturedTopics";
-import DownloadableFiles from "../components/DownloadableFiles/DownloadableFiles";
+import PopularResources from "./components/PopularResources/PopularResources";
+import ExploreContent from "./components/ExploreContent/ExploreContent";
+import DiscoverYourPath from "./components/DiscoverYourPath/DiscoverYourPath";
+import FeaturedTopics from "./components/FeaturedTopics/FeaturedTopics";
+import DownloadableFiles from "./components/DownloadableFiles/DownloadableFiles";
 
 function Home() {
   const context = useDocusaurusContext();
@@ -20,7 +20,6 @@ function Home() {
       <header className={clsx("hero", styles.heroBanner)}>
         <div className="container">
           <h1 className="hero__title">{siteConfig.title}</h1>
-          {/* <p className="hero__subtitle">{siteConfig.tagline}</p> FIXME: */}
           <div className="searchDiv">
             <DocSearch apiKey="aa" indexName="aa" /> {/* FIXME: */}
           </div>
@@ -29,9 +28,9 @@ function Home() {
       <PopularResources />
       <hr></hr>
       <ExploreContent />
-      <hr></hr>
+      <hr className="lightTheme"></hr>
       <DiscoverYourPath />
-      <hr></hr>
+      <hr className="lightTheme"></hr>
       <FeaturedTopics />
       <hr></hr>
       <main>

@@ -19,6 +19,8 @@
 
 html[data-theme='dark'] {
   --ifm-color-primary: #3578e5;
+  /* --ifm-background-color: #252628; FIXME:*/
+  --ifm-background-section-dark: #3d3f42;
 }
 
 .docusaurus-highlight-code-line {
@@ -97,7 +99,59 @@ Badge {
 
 .hero__title {
   font-size: 3rem !important;
-  padding-bottom: 4rem;
+  padding-bottom: 3rem;
+}
+
+.footer__copyright {
+  font-size: 0.75rem;
+}
+
+/* DocSidebar Component */
+.menu {
+  flex-grow: 1;
+  padding: 0.5rem;
+  font-size: 14.5px;
+  font-weight: normal;
+}
+
+.menu__link--active:not(.menu__link--sublist) {
+  border-left-color: var(--ifm-menu-color-active) !important;
+  border-left-width: 4px;
+  border-left-style: solid;
+  font-weight: 500;
+  padding-left: 12px;
+}
+
+a.menu__link.menu__link--sublist {
+  color: black;
+  font-weight: 500;
+  font-size: 15.5px;
+}
+
+[data-theme="dark"] a.menu__link.menu__link--sublist {
+  color: inherit;
+}
+
+.menu__link--active, .menu__link--active:hover {
+  color: var(--ifm-heading-color);
+}
+
+/* DocItem Features */
+.zowe-faq[open] summary:before {
+  content: "📖 Click to hide answer";
+}
+
+details[open] summary:before {
+  content: "📖 ";
+}
+
+.zowe-faq summary:before {
+  content: "📘 Click to open answer";
+  margin-right: 5px;
+}
+
+summary:before {
+  content: "📘 ";
 }
 
 /* Docs Rating Box */
@@ -142,11 +196,11 @@ html[data-theme="dark"] .docsRating .i_thumbsdown {
   fill: #e9430f;
 }
 
-html[data-theme="dark"] .lightThemeIcon {
+html[data-theme="dark"] .lightTheme {
   display: none;
 }
 
-html[data-theme="light"] .darkThemeIcon {
+html[data-theme="light"] .darkTheme {
   display: none;
 }
 

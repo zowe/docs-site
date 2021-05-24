@@ -1,6 +1,4 @@
----
-title: Iconography
----  
+# Iconography
 
 Icons are key component for a successful UI design because they are a visual way to help add meaning to elements.
 

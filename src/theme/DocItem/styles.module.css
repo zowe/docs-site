@@ -36,10 +36,6 @@ html[data-theme='dark'] details {
   background-color: #272727;
 }
 
-details[open] summary:before {
-  content: "📖 Click to hide answer";
-}
-
 summary {
   cursor: pointer;
   background-color: #f6f8fa;
@@ -57,9 +53,4 @@ summary::-webkit-details-marker {
 summary::-moz-list-bullet {
   list-style-type: none;
   display: block;
-}
-
-summary:before {
-  content: "📘 Click to open answer";
-  margin-right: 5px;
 }

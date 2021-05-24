@@ -1,8 +1,4 @@
----
-title: Application icon
---- 
-
-# Application
+# Application icon
 
 ## General rules
 
