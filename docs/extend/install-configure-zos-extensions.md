@@ -1,4 +1,4 @@
-# Install and configure Zowe server component
+# Install, upgrade and configure Zowe server component
 
 Learn how to install, upgrade and configure the Zowe server components or extensions manually or by using scripts `zowe-install-component.sh`, `zowe-upgrade-component.sh` and `zowe-configure-component.sh`. 
 
