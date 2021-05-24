@@ -1,6 +1,6 @@
 # Install and configure Zowe server component
 
-Learn how to install and configure the Zowe server components or extensions manually or by using scripts `zowe-install-component.sh` and `zowe-configure-component.sh`. 
+Learn how to install, upgrade and configure the Zowe server components or extensions manually or by using scripts `zowe-install-component.sh`, `zowe-upgrade-component.sh` and `zowe-configure-component.sh`. 
 
 ## Install with `zowe-install-component.sh` (Technical Preview)
 
@@ -40,6 +40,39 @@ This command installs `my-zowe-component-1.2.3.zip` into `/var/zowe/my-extension
 $ zowe-install-component.sh \
     -o /path/to/my-zowe-component-1.2.3.zip \
     -d /var/zowe/my-extensions \
+    -i /var/zowe/instance \
+    -l /var/zowe/instance/logs
+```
+
+## Upgrade with `zowe-upgrade-component.sh` (Technical Preview)
+
+<Badge text="Technical Preview"/>
+
+_Note: This section is for technical preview and we are happy to hear any feedback. Content in this section may be changed or improved in the future._
+
+_Note: this feature is added with Zowe v1.21.0 release._
+
+From Zowe v1.21.0, Zowe ships a `bin/zowe-upgrade-component.sh` tool to help you upgrade any Zowe server component (extension) to the latest version available into the Zowe Artifactory. 
+By default, Zowe core components are not updated with this tool, but the user can enable the upgrade functionality by setting the optional boolean value `ZOWE_COMPONENTS_UPGRADE` to `true` as part of the installation configuration. 
+In order to be compatible with the tool, we recommend components follow [Zowe server component package format standard](packaging-zos-extensions.md#zowe-server-component-package-format).
+
+The tool can be executed from z/OS USS, and it takes these command line parameters:
+
+- **`-o|--component-file`**: (Required) Defines the path to the component package or directory.
+- **`-l|--logs-dir`**: (Optional) Specifies the path to the log directory.
+- **`-f|--log-file`**: (Optional) Instead of writing independent log to a directory, you have option to append log to this log file specified.
+
+**Examples**
+
+```
+$ zowe-upgrade-component.sh -o /path/to/my-zowe-component-1.2.3.pax
+```
+
+This command upgrades `my-zowe-component-1.2.3.zip` to its latest version. The upgrade logs will be written into `/var/zowe/instance/logs`.
+
+```
+$ zowe-upgrade-component.sh \
+    -o /path/to/my-zowe-component-1.2.3.zip \
     -i /var/zowe/instance \
     -l /var/zowe/instance/logs
 ```
