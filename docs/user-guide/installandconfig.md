@@ -41,6 +41,8 @@ If you are installing one or more server components onto z/OS, the following inf
 
 **Note:** To start the API Mediation Layer as a standalone component, see [API Mediation Layer as a standalone component](api-mediation-standalone.md) 
 
+See [Preparing z/OS environment](./preparing-zos.md)
+
 ## Topology of the Zowe z/OS launch process
 
 The following diagram depicts the high-level structure of a Zowe installation and runtime.  
