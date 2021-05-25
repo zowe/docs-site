@@ -293,7 +293,7 @@ strictly define a provider. If verification is disabled, select the `endpoint` o
 ```
 APIML_SECURITY_AUTHORIZATION_PROVIDER=endpoint
 ```
-**Note:** If you want to configure the `endpoint` provider, you have to add additional property:
+**Note:** To configure the `endpoint` provider, add the following additional property:
 `APIML_SECURITY_AUTHORIZATION_ENDPOINT_ENABLED=true`
 ```
 APIML_SECURITY_AUTHORIZATION_PROVIDER=native
