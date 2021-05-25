@@ -50,6 +50,22 @@ the following procedure to switch to SAF.
 
 Authentication requests now utilize SAF as the authentication provider. API ML can run without z/OSMF present on the system. 
 
+### Change password with SAF provider
+
+It is possible to update user password using SAF Authentication provider. To use this functionality, provide additional parameter `newPassword` on login endpoint `/gateway/api/v1/auth/login`. The Gateway service returns valid JWT with response code `204` as a result of successful password change. User is then authenticated and can consume APIs through the Gateway. If it is not possible to change the password for any reason, the response code is `401`. 
+
+REST call:
+
+- Method: `POST`
+- URL: `/gateway/api/v1/auth/login`
+- Body: `{
+ "username" : "<username>",
+ "password" : "<password>",
+ "newPassword" : "<newPassword>"
+}`
+
+**Note:**
+It is a common practice to set limit for changing password in the ESM. This value is set by parameter `MINCHANGE` for `PASSWORD`. Password can be changed once and then user has to wait specified amount of time to be able to change again.
 ## Gateway retry policy
 
 To change the Gateway retry policy, edit properties in the `<Zowe install directory>/components/gateway/bin/start.sh` file:
