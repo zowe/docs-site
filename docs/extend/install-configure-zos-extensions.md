@@ -148,3 +148,25 @@ EXTERNAL_COMPONENTS=some-other-extensions,myapp
 You might need to manually run the script `<INSTANCE_DIR>/bin/install-app.sh` if your component is a Desktop plug-in. Or you can choose to add this step to [Zowe component Configure lifecycle stage](lifecycling-with-zwesvstc.md#configure).
 
 When the Zowe instance is launched by running `<INSTANCE_DIR>/bin/zowe-start.sh`, it will read manifest `commands` instructions and call the `/usr/lpp/myvendor/myapp/zowe-ext/bin/start.sh` script. The started task will create an address space under `ZWESVSTC` for the vendor component.  When the Zowe instance is stopped, the address space is terminated.
+
+
+## Verify with `zowe-verify-component.sh` (Technical Preview)
+
+<Badge text="Technical Preview"/>
+
+The `zowe-verify-component.sh` script checks and verifies whether a specified component is up and running. It could be used to verify both core and external components.
+
+The tool can be executed from z/OS USS, and it takes these command line parameters:
+
+- **`-c|--component-id`**: (Required) Identification of a component.
+- **`-i|--instance-dir`**: (Required) path to Zowe instance directory.
+
+**Example**
+
+This command will verify the `external-zowe-component` installed in `/global/zowe/extensions` for the Zowe instance installed at `/var/zowe/instance`.
+
+```
+$ zowe-verify-component.sh \
+    -c external-zowe-component \
+    -i /var/zowe/instance
+```
