@@ -154,18 +154,40 @@ When the Zowe instance is launched by running `<INSTANCE_DIR>/bin/zowe-start.sh`
 
 <Badge text="Technical Preview"/>
 
+_Note: This section is for technical preview and we are happy to hear any feedback. Content in this section may be changed or improved in the future._
+
+_Note: This feature is added with Zowe v1.22.0 release._
+
+From Zowe v1.22.0, Zowe ships a `bin/zowe-verify-component.sh` tool to help you configure an installed Zowe server component (extension) for a Zowe instance. Zowe core components are also configured with this tool. In order to be compatible with the tool, we recommend components follow [Zowe server component package format standard](packaging-zos-extensions.md#zowe-server-component-package-format).
+
 The `zowe-verify-component.sh` script checks and verifies whether a specified component is up and running. It could be used to verify both core and external components.
+
+_IMPORTANT: This script uses a curl command and users may need specific permission in order to access it. For more information check out this link: [Protection of Service Information](https://docs.zowe.org/stable/extend/extend-apiml/service-information.html#protection-of-service-information)
 
 The tool can be executed from z/OS USS, and it takes these command line parameters:
 
 - **`-c|--component-id`**: (Required) Identification of a component.
 - **`-i|--instance-dir`**: (Required) path to Zowe instance directory.
+- **`-u|--username`**: (Required) Username of a specified user for the current system.
+- **`-p|--password`**: (Required) Password of the specified user.
 
-**Example**
+**Examples**
 
 This command will verify the `external-zowe-component` installed in `/global/zowe/extensions` for the Zowe instance installed at `/var/zowe/instance`.
 
 ```
+$ zowe-verify-component.sh \
+    -c external-zowe-component \
+    -i /var/zowe/instance \
+    -u user \
+    -p pass
+```
+
+This command will perform the same actions and give the same results as the command above but instead of passing in values for the -u and -p flags, you can use the export command.
+
+```
+$ export VERIFY_USER_NAME=user
+$ export VERIFY_PASSWORD=pass
 $ zowe-verify-component.sh \
     -c external-zowe-component \
     -i /var/zowe/instance
