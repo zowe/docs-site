@@ -16,14 +16,14 @@ Learn how to install, upgrade, and configure the Zowe server components or exten
 
 From Zowe v1.19.0, Zowe ships a `bin/zowe-install-component.sh` tool to help you install any Zowe server component (extension). Zowe core components are also installed with this utility. In order to be compatible with the utility, we recommend components follow [Zowe server component package format standard](packaging-zos-extensions.md#zowe-server-component-package-format).
 
-Execute the utility from z/OS USS, Use the following command line parameters:
+Execute the utility from z/OS USS. Use the following command line parameters:
 
 - **`-o|--component-file`**
 
   (Required) Defines the path to the component package or directory.
 - **`-c|--component-name`**
 
-  Specifies the name of the component. This parameter is optional if `NODE_HOME` is defined and the component has the manifest file. Otherwise, this parameter is required.
+  Specifies the name of the component. This parameter is optional if `NODE_HOME` is defined and the component has the manifest file, otherwise, this parameter is required.
 - **`-i|--instance-dir`**
 
   (Optional) Defines the path to the Zowe instance directory. When a value is defined, the script also executes `bin/zowe-configure-component.sh` following installation.
@@ -81,7 +81,7 @@ $ zowe-install-component.sh \
 <Badge text="Technical Preview"/>
 
 **Notes:** 
-* This section is for technical preview. AS such, we welcome any feedback. Content in this section may be changed or improved in the future.
+* This section is for technical preview. As such, we welcome any feedback. Content in this section may be changed or improved in the future.
 
 * _This feature is to be added with the Zowe v1.22.0 release._
 
@@ -91,7 +91,7 @@ install script calls the `zowe-upgrade-component.sh` script.
 The Zowe components get updated and then installed and configured using the `zowe-install-component.sh` and `zowe-configure-component.sh` scripts.
 In order to be compatible with this utility, we recommend components follow the [Zowe server component package format standard](packaging-zos-extensions.md#zowe-server-component-package-format).
 
-The Zowe upgrade component utility can be executed from z/OS USS, and it takes the following command line parameters:
+The Zowe upgrade component utility can be executed from z/OS USS. You can use the following command line parameters:
 
 - **`-o|--component-file`**
 
