@@ -116,6 +116,34 @@ When using Docker, z/OS is still required and if using the Application Framework
 
 **Note:** The subsections of z/OS requirements such as for API Mediation Layer, Web Explorers, and Application Framework are not required because they are included in the Docker install.
 
+## Zowe HA requirements (host)
+
+Zowe high availability requires a Sysplex environment that consists of the following:
+
+- One or more central processor complexes (CPCs) that can attach to a coupling facility
+
+- At least one coupling facility
+
+- At least one Sysplex timer
+
+- Connection to shared DASD
+
+- Shared SAF database, see [Sharing a database with sysplex communication in data sharing mode](https://www.ibm.com/docs/en/zos/2.1.0?topic=sd-sharing-database-sysplex-communication-in-data-sharing-mode)
+
+- Sysplex distributor, configured Dynamic VIPA TCP/IP address
+
+- VSAM record-level sharing (RLS), see [Preparing for VSAM record-level sharing](https://www.ibm.com/docs/en/zos/2.4.0?topic=sharing-preparing-vsam-record-level)
+
+- USS Shared file system, see [How to share file systems in a Sysplex](https://www.ibm.com/docs/en/zos/2.4.0?topic=planning-sharing-file-systems-in-sysplex)
+
+- JESPlex/JES2 Multi-Access Spool (MAS) environment
+
+- z/OSMF high availability, see [Configuring z/OSMF high availability in Sysplex](systemrequirements-zosmf-ha.md)
+
+- Node.js v8.x (except v8.16.1), v12.x, or v14
+
+**Note:** It is highly recommended that Node.js installed on a shared file system.
+
 ## Zowe Desktop requirements (client)
 
 The Zowe Desktop is powered by the Application Framework which has server prereqs depending on where it is installed
