@@ -30,25 +30,48 @@ html[data-theme='dark'] {
   padding: 0 var(--ifm-pre-padding);
 }
 
+/* FIXME: remove all the font-weight, z-index */
+
 h1 {
   font-size: 2.2rem !important;
+  font-weight: 700;
 }
 
 h2 {
   font-size: 1.65rem;
+  font-weight: 700;
 }
 
 h3 {
   font-size: 1.25rem !important;
+  font-weight: 700;
 }
 
 h4 {
   font-size: 1rem !important;
+  font-weight: 700;
+}
+
+h5, h6, .navbar__title, .badge, strong {
+  font-weight: 700;
 }
 
 /* NavBar */
 .navbar {
   font-size: 0.95rem;
+  z-index: 10;
+}
+
+.navbar a {
+  font-weight: 500;
+}
+
+.dropdown .dropdown__menu {
+  z-index: 2;
+}
+
+.DocSearch-Container {
+  z-index: 100 !important;
 }
 
 .navbar-github-link:before {
