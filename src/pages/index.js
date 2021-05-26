@@ -26,13 +26,13 @@ function Home() {
         </div>
       </header>
       <PopularResources />
-      <hr></hr>
+      {/* <hr></hr> */}
       <ExploreContent />
-      <hr className="lightTheme"></hr>
+      {/* <hr></hr> */}
       <DiscoverYourPath />
-      <hr className="lightTheme"></hr>
+      {/* <hr></hr> */}
       <FeaturedTopics />
-      <hr></hr>
+      {/* <hr></hr> */}
       <main>
         <DownloadableFiles />
       </main>

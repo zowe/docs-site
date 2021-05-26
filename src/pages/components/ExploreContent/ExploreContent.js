@@ -4,24 +4,22 @@ import clsx from "clsx";
 import useBaseUrl from "@docusaurus/useBaseUrl";
 import styles from "./styles.module.css";
 
-const data = [
+const firstDataRow = [
   {
     title: "Getting Started",
-    lightIcon: "img/get-started-light-icon.png",
-    darkIcon: "img/get-started-dark-icon.png",
+    icon: "img/get_started-icon.png",
     link: "stable/getting-started/overview",
     description: (
       <>
         Learn about Zowe™ architecture, components, and how to quickly get
         started with Zowe. Read about what's new and changed in the Release
-        Notes. Get answers to your frequently asked questions (FAQs).
+        Notes, FAQs.
       </>
     ),
   },
   {
     title: "User Guide",
-    lightIcon: "img/user-guide-light-icon.png",
-    darkIcon: "img/user-guide-dark-icon.png",
+    icon: "img/user_guide-icon.png",
     link: "stable/user-guide/installandconfig",
     description: (
       <>
@@ -33,8 +31,7 @@ const data = [
   },
   {
     title: "Extending",
-    lightIcon: "img/extend-light-icon.png",
-    darkIcon: "img/extend-dark-icon.png",
+    icon: "img/extend-icon.png",
     link: "stable/extend/extend-zowe-overview",
     description: (
       <>
@@ -43,10 +40,12 @@ const data = [
       </>
     ),
   },
+];
+
+const secondDataRow = [
   {
     title: "Troubleshooting",
-    lightIcon: "img/troubleshooting-light-icon.png",
-    darkIcon: "img/troubleshooting-dark-icon.png",
+    icon: "img/troubleshooting-icon.png",
     link: "stable/troubleshoot/troubleshooting",
     description: (
       <>
@@ -57,8 +56,7 @@ const data = [
   },
   {
     title: "Contributing",
-    lightIcon: "img/contribute-light-icon.png",
-    darkIcon: "img/contribute-dark-icon.png",
+    icon: "img/contribute-icon.png",
     link: "stable/contribute/contributing",
     description: (
       <>
@@ -69,8 +67,7 @@ const data = [
   },
   {
     title: "References",
-    lightIcon: "img/references-light-icon.png",
-    darkIcon: "img/references-dark-icon.png",
+    icon: "img/references-icon.png",
     link: "stable/appendix/zowe-cli-commannd-reference",
     description: (
       <>
@@ -81,7 +78,7 @@ const data = [
   },
 ];
 
-function Feature({ title, link, lightIcon, darkIcon, description }) {
+function Feature({ title, link, icon, description }) {
   const [hovered, setHovered] = useState(false);
   const toggleHover = () => setHovered(!hovered);
   return (
@@ -97,19 +94,14 @@ function Feature({ title, link, lightIcon, darkIcon, description }) {
         onMouseOut={toggleHover}
       >
         <div>
-          <h3>{title}</h3>
-          <p>{description}</p>
+          <div className={clsx(styles.titles)}>
+            <h3>{title}</h3>
+            <p>{description}</p>
+          </div>
           <img
-            className="lightTheme"
             alt="Download icon"
             style={{ height: "70px", width: "70px" }}
-            src={useBaseUrl(lightIcon)}
-          />
-          <img
-            className="darkTheme"
-            alt="Download icon"
-            style={{ height: "70px", width: "70px" }}
-            src={useBaseUrl(darkIcon)}
+            src={useBaseUrl(icon)}
           />
         </div>
       </Link>
@@ -120,19 +112,26 @@ function Feature({ title, link, lightIcon, darkIcon, description }) {
 function Features() {
   return (
     <>
-      {data && data.length > 0 && (
-        <section id={clsx(styles.features)}>
-          <div className="container">
-            <h2
-              className="text--center padding-bottom--md"
-              style={{ fontSize: "2rem" }}
-            >
-              Explore Content
-            </h2>
-            <div className={clsx(styles.block, "row")}>
-              {data.map((props, idx) => (
-                <Feature key={idx} {...props} />
-              ))}
+      {firstDataRow && firstDataRow.length > 0 && (
+        <section className={clsx("home-container", styles.features)}>
+          <div className={clsx("row margin-horiz--lg")}>
+            <div className={clsx("col col--2")}>
+              <h3 className="padding-top--lg container-h3">Explore Content</h3>
+            </div>
+            <div className={clsx("col col--10")}>
+              <div className={clsx("row")}>
+                {firstDataRow.map((props, idx) => (
+                  <Feature key={idx} {...props} />
+                ))}
+              </div>
+            </div>
+            <div className={clsx("col col--2")}></div>
+            <div className={clsx("col col--10")}>
+              <div className={clsx("row")}>
+                {secondDataRow.map((props, idx) => (
+                  <Feature key={idx} {...props} />
+                ))}
+              </div>
             </div>
           </div>
         </section>

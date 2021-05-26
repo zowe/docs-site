@@ -1,6 +1,5 @@
 import React from "react";
 import clsx from "clsx";
-import useBaseUrl from "@docusaurus/useBaseUrl";
 import styles from "./styles.module.css";
 
 const firstSection = [
@@ -35,6 +34,9 @@ const secondSection = [
     item: "Zowe CLI",
     link: "",
   },
+];
+
+const thirdSection = [
   {
     item: "Zowe Explorer",
     link: "",
@@ -50,84 +52,82 @@ const secondSection = [
 ];
 
 function Item({ item, link }) {
-  return (
-    <div className={clsx("display-flex")}>
-      <a href={link}>{item}</a>
-    </div>
-  );
+  return <a href={link}>{item}</a>;
 }
 
 function DiscoverYourPath() {
   return (
-    <div className={styles.section}>
-      <h2
-        className="text--center padding-bottom--md margin-bottom--none"
-        style={{ fontSize: "2rem" }}
-      >
-        Discover your path
-      </h2>
-      <p className="text--center margin-bottom--none">
-        The roadmaps help you arrive at your goals faster.
-      </p>
-      <p className="text--center margin-bottom--none">
-        Choose one option and we'll suggest resources for you.
-      </p>
-      <section className={styles.features}>
-        <div className="container">
-          <div className="row justify-content--center">
+    <div className={clsx("home-container", styles.section)}>
+      <div className="row margin-horiz--lg">
+        <div className={clsx("col col--2 p-none")}>
+          <h3 className="container-h3">Discover your path</h3>
+          <p>
+            The roadmaps help you arrive at your goals faster. Choose one option
+            and we'll suggest resources for you.
+          </p>
+        </div>
+        <div className={clsx("col col--10")}>
+          <div className="row">
             <div
               className={clsx(
-                "card col col--4 padding-vert--lg margin-right--lg",
-                styles.feature
+                "col col--4 padding-horiz--md padding-bottom--md p-none"
               )}
             >
-              <img
-                className="lightTheme margin-right--md"
-                alt="Bullseye icon"
-                style={{ width: "32px" }}
-                src={useBaseUrl("/img/bulls-eye-light-icon.svg")}
-              />
-              <img
-                className="darkTheme margin-right--md"
-                alt="Bullseye icon"
-                style={{ width: "32px" }}
-                src={useBaseUrl("/img/bulls-eye-dark-icon.svg")}
-              />
-              <div>
-                <h3>I want to...</h3>
-                {firstSection.map((props, idx) => (
-                  <Item key={idx} {...props} />
-                ))}
+              <div style={{ border: "1px solid #bebebe" }}>
+                <h3
+                  className={clsx(
+                    "padding--md margin-bottom--none",
+                    styles.darkBlue
+                  )}
+                >
+                  I want to...
+                </h3>
+                <div className="padding--md">
+                  {firstSection.map((props, idx) => (
+                    <div className="margin-bottom--md">
+                      <Item key={idx} {...props} />
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
             <div
               className={clsx(
-                "card col col--4 padding-vert--lg",
-                styles.feature
+                "col col--8 padding-horiz--md padding-bottom--md p-none"
               )}
             >
-              <img
-                className="lightTheme margin-right--md"
-                alt="Boxopen icon"
-                style={{ width: "32px" }}
-                src={useBaseUrl("/img/box-open-light-icon.svg")}
-              />
-              <img
-                className="darkTheme margin-right--md"
-                alt="Boxopen icon"
-                style={{ width: "32px" }}
-                src={useBaseUrl("/img/box-open-dark-icon.svg")}
-              />
-              <div>
-                <h3>I'm interested in...</h3>
-                {secondSection.map((props, idx) => (
-                  <Item key={idx} {...props} />
-                ))}
+              <div style={{ border: "1px solid #bebebe", height: "100%" }}>
+                <div className="col padding--none">
+                  <h3
+                    className={clsx(
+                      "padding--md margin-bottom--none",
+                      styles.lightBlue
+                    )}
+                  >
+                    I'm interested in...
+                  </h3>
+                  <div className="row padding--md">
+                    <div className={clsx("col col-6")}>
+                      {secondSection.map((props, idx) => (
+                        <div className="margin-bottom--md">
+                          <Item key={idx} {...props} />
+                        </div>
+                      ))}
+                    </div>
+                    <div className={clsx("col col-6")}>
+                      {thirdSection.map((props, idx) => (
+                        <div className="margin-bottom--md">
+                          <Item key={idx} {...props} />
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </section>
+      </div>
     </div>
   );
 }

@@ -190,22 +190,21 @@ function DownloadableFiles() {
   return (
     <>
       {downloadableFiles && downloadableFiles.length > 0 && (
-        <div className={styles.section}>
-          <h2
-            className="text--center padding-bottom--md margin-bottom--none"
-            style={{ fontSize: "2rem" }}
-          >
-            Downloadble files
-          </h2>
-          <section className={styles.features}>
-            <div className="container">
-              <div className="row">
+        <div className={clsx("home-container", styles.section)}>
+          <div className="row margin-horiz--lg">
+            <div className={clsx("col col--2 p-none")}>
+              <h3 className="padding-top--lg container-h3">
+                Downloadble files
+              </h3>
+            </div>
+            <div className={clsx("col col--10 p-none")}>
+              <div className={clsx("row")}>
                 {downloadableFiles.map((props, idx) => (
                   <DownloadableFile key={idx} {...props} />
                 ))}
               </div>
             </div>
-          </section>
+          </div>
         </div>
       )}
     </>

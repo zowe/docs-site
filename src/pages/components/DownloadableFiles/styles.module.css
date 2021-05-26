@@ -1,7 +1,3 @@
-.section {
-  padding: 3rem 0rem;
-}
-
 :root {
   --ifm-background-section-dark: #3d3f42
 }
@@ -14,24 +10,21 @@ html[data-theme="dark"] .card {
   background-color: var(--ifm-background-section-dark);
 }
 
+.section {
+  padding: 3rem 0rem;
+}
+
 .card {
   position: relative;
   height: 100%;
 }
 
 .card .metadata {
-  min-height: 195px;
+  min-height: 220px;
 }
 
 .card img {
   width: 25px;
-}
-
-.features {
-  display: flex;
-  align-items: center;
-  padding: 2rem 0;
-  width: 100%;
 }
 
 .featureImage {
@@ -61,13 +54,22 @@ button img {
   }
 }
 
-@media screen and (max-width: 1200px){
-  .section {
-    padding: 3rem 1rem;
+@media (min-width: 1100px) and (max-width: 1300px) {
+  .card .metadata {
+    min-height: 250px;
   }
 }
 
-@media screen and (max-width: 1100px) {
+@media screen and (max-width: 1100px){
+  .section {
+    padding: 3rem 1rem;
+  }
+  .card .metadata {
+    min-height: 325px;
+  }
+}
+
+@media screen and (max-width: 1000px) {
   .card .metadata {
     min-height: inherit;
   }

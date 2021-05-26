@@ -60,49 +60,42 @@ const thirdSection = [
 ];
 
 function Item({ item, link }) {
-  return (
-    <li>
-      <a href={link}>{item}</a>
-    </li>
-  );
+  return <a href={link}>{item}</a>;
 }
 
 function FeaturedTopics() {
   return (
-    <div className={styles.section}>
-      <h2
-        className="text--center padding-bottom--md margin-bottom--none"
-        style={{ fontSize: "2rem" }}
-      >
-        Featured Topics
-      </h2>
-      <section className={styles.features}>
-        <div className="container">
-          <div className="row justify-content--center">
-            <div className={clsx("col col--3", styles.feature)}>
+    <div className={clsx("home-container", styles.section)}>
+      <div className="row margin-horiz--lg">
+        <div className={clsx("col col--2 p-none")}>
+          <h3 className="container-h3">Featured Topics</h3>
+        </div>
+        <div className={clsx("col col--10")}>
+          <div className="row">
+            <div className={clsx("col col--4 padding-horiz--lg p-none")}>
               {firstSection.map((props, idx) => (
-                <div className="display-flex row--align-center margin-bottom--md">
+                <div className="margin-bottom--md">
                   <Item key={idx} {...props} />
                 </div>
               ))}
             </div>
-            <div className={clsx("col col--4", styles.feature)}>
+            <div className={clsx("col col--4 padding-horiz--lg p-none")}>
               {secondSection.map((props, idx) => (
-                <div className="display-flex row--align-center margin-bottom--md">
+                <div className="margin-bottom--md">
                   <Item key={idx} {...props} />
                 </div>
               ))}
             </div>
-            <div className={clsx("col col--3", styles.feature)}>
+            <div className={clsx("col col--4 padding-horiz--lg p-none")}>
               {thirdSection.map((props, idx) => (
-                <div className="display-flex row--align-center margin-bottom--md">
+                <div className="margin-bottom--md">
                   <Item key={idx} {...props} />
                 </div>
               ))}
             </div>
           </div>
         </div>
-      </section>
+      </div>
     </div>
   );
 }

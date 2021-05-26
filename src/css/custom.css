@@ -233,12 +233,23 @@ html[data-theme="light"] .darkTheme {
   align-items: center;
 }
 
-@media (min-width: 1135px) and (max-width: 1220px) {
-  .navbar__title {
-    display: none;
-  }
+@media only screen and (min-width: 1500px) {
+  .home-container {
+    margin: auto;
+    max-width: var(--ifm-container-width-xl);
+    padding: auto 0;
+    width: 100%;
+   }
+}
+
+@media only screen and (max-width: 1220px) {
   .navbar__brand {
     margin-right: 0px;
+  }
+  /* Landing page */
+  .home-container .margin-horiz--lg {
+    margin-left: 1rem !important;
+    margin-right: 1rem !important;
   }
 }
 
@@ -260,6 +271,13 @@ html[data-theme="light"] .darkTheme {
  .searchDiv .DocSearch-Button-Placeholder {
   display: inherit;
  }
+ .home-container .container-h3 {
+  font-size: 1.75rem !important;
+  }
+  .p-none {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
 }
 
 @media only screen and (max-width: 768px) {

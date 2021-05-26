@@ -10,7 +10,7 @@ html[data-theme="dark"] .card {
   background-color: var(--ifm-background-section-dark);
 }
 
-#features {
+.features {
   padding: 3rem 0;
 }
 
@@ -29,30 +29,14 @@ html[data-theme="dark"] .card {
   justify-content: center;
 }
 
-/* .card:hover {
-  border: 1px solid;
-  border-color: var(--ifm-color-primary) !important;
-  box-shadow: var(--ifm-color-primary-lightest);
-  margin: -1px;
+.titles {
+  height: 220px;
 }
 
-.card:nth-child(1):hover {
-  margin-top: -2px;
-} */
-
-.feature img {
-  position: absolute;
-  bottom: 0px;
-}
-
-.feature:nth-child(1) div, .feature:nth-child(2) div, .feature:nth-child(3) div {
-  height: 290px;
-  position: relative;
-}
-
-.feature:nth-child(4) div, .feature:nth-child(5) div, .feature:nth-child(6) div {
-  height: 240px;
-  position: relative;
+@media screen and (max-width: 1300px) {
+  .titles {
+    height: 260px;
+  }
 }
 
 @media screen and (max-width: 1000px) {
