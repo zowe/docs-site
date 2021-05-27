@@ -1,4 +1,4 @@
-# System requirements plan
+# System requirements
 
 Zowe installation and configuration requires different privileges or permissions to perform certain tasks. To understand the user IDs and permissions involved, see the following table.
 
