@@ -73,15 +73,18 @@ function DiscoverYourPath() {
                 "col col--4 padding-horiz--md padding-bottom--md p-none"
               )}
             >
-              <div style={{ border: "1px solid #bebebe" }}>
-                <h3
+              <div
+                class="item shadow--lw"
+                style={{ border: "1px solid #bebebe" }}
+              >
+                <h4
                   className={clsx(
                     "padding--md margin-bottom--none",
                     styles.darkBlue
                   )}
                 >
                   I want to...
-                </h3>
+                </h4>
                 <div className="padding--md">
                   {firstSection.map((props, idx) => (
                     <div className="margin-bottom--md">
@@ -96,16 +99,19 @@ function DiscoverYourPath() {
                 "col col--8 padding-horiz--md padding-bottom--md p-none"
               )}
             >
-              <div style={{ border: "1px solid #bebebe", height: "100%" }}>
+              <div
+                class="item shadow--lw"
+                style={{ border: "1px solid #bebebe", height: "100%" }}
+              >
                 <div className="col padding--none">
-                  <h3
+                  <h4
                     className={clsx(
                       "padding--md margin-bottom--none",
                       styles.lightBlue
                     )}
                   >
                     I'm interested in...
-                  </h3>
+                  </h4>
                   <div className="row padding--md">
                     <div className={clsx("col col-6")}>
                       {secondSection.map((props, idx) => (

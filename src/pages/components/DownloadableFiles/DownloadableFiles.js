@@ -1,9 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import clsx from "clsx";
 import useBaseUrl from "@docusaurus/useBaseUrl";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import styles from "./styles.module.css";
-import Dropdown from "./Dropdown";
+import versionsArray from "../../../../versions.json";
 
 const downloadableFiles = [
   {
@@ -15,7 +15,7 @@ const downloadableFiles = [
       </>
     ),
     firstSubDescription: <>Select the version to Download</>,
-    firstDownloadLink: "https://google.com/",
+    firstDownloadLink: "defaultVersionedLinks",
     version: true,
     dropdown: true,
   },
@@ -64,11 +64,26 @@ function DownloadableFile({
   secondDownloadLink,
 }) {
   const { siteConfig } = useDocusaurusContext();
+  const [isVersion, setIsVersion] = useState(false);
+  const [selectedVersion, setSelectedVersion] = useState(
+    siteConfig.customFields.latestVersion
+  );
+
+  //Appended latest version in the versionsArray
+  const newVersionsArray = [siteConfig.customFields.latestVersion].concat(
+    versionsArray
+  );
+
+  function handleClick(props) {
+    setIsVersion(true);
+    setSelectedVersion(props);
+  }
   return (
     <div className={clsx("col col--4 margin-bottom--lg")}>
-      <div className={clsx("padding--lg", styles.card)}>
+      <div className={clsx("padding--lg item shadow--lw", styles.card)}>
+        {/* Common description in every card */}
         <div className={styles.metadata}>
-          <h3>{title}</h3>
+          <h4>{title}</h4>
           <p>
             {description}{" "}
             {version && siteConfig.customFields.latestVersion + "."}
@@ -102,7 +117,45 @@ function DownloadableFile({
                   </a>
                 </div>
               )}
-              {dropdown && <Dropdown />}
+
+              {/* Version Download Dropdown */}
+              {dropdown && (
+                <div className="dropdown dropdown--hoverable margin-right--md">
+                  <button
+                    className={clsx(
+                      "button button--outline button--primary display-flex",
+                      styles.versionButton
+                    )}
+                  >
+                    {isVersion
+                      ? selectedVersion
+                      : siteConfig.customFields.latestVersion}
+                    <img
+                      className="margin-left--xs lightTheme"
+                      alt="right arrow"
+                      src={useBaseUrl("/img/down-arrow-light-icon.svg")}
+                    />
+                    <img
+                      className="margin-left--xs darkTheme"
+                      alt="right arrow"
+                      src={useBaseUrl("/img/down-arrow-dark-icon.svg")}
+                    />
+                  </button>
+                  <ul className="dropdown__menu">
+                    {newVersionsArray.map((props, idx) => (
+                      <li key={idx}>
+                        <a
+                          className="dropdown__link"
+                          onClick={() => handleClick(props)}
+                        >
+                          {props}
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+
               {firstDownloadLink && (
                 <div className="display-flex row--align-center pointer">
                   <img
@@ -117,7 +170,11 @@ function DownloadableFile({
                   />
                   <a
                     className="margin--xs"
-                    href={firstDownloadLink}
+                    href={
+                      dropdown
+                        ? "/zowe-docs-" + selectedVersion + ".pdf"
+                        : firstDownloadLink
+                    }
                     target="_blank"
                     rel="noreferrer noopener"
                   >
@@ -127,6 +184,7 @@ function DownloadableFile({
               )}
             </div>
           </div>
+
           <div>
             {secondSubDescription && (
               <p className="padding-top--lg margin-bottom--sm">
@@ -156,6 +214,7 @@ function DownloadableFile({
                   </a>
                 </div>
               )}
+
               {secondDownloadLink && (
                 <div className="display-flex row--align-center pointer">
                   <img
@@ -193,9 +252,7 @@ function DownloadableFiles() {
         <div className={clsx("home-container", styles.section)}>
           <div className="row margin-horiz--lg">
             <div className={clsx("col col--2 p-none")}>
-              <h3 className="padding-top--lg container-h3">
-                Downloadble files
-              </h3>
+              <h3 className="container-h3">Downloadable files</h3>
             </div>
             <div className={clsx("col col--10 p-none")}>
               <div className={clsx("row")}>

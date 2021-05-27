@@ -88,14 +88,14 @@ function Feature({ title, link, icon, description }) {
         className={
           hovered
             ? clsx("padding--lg margin-bottom--lg item shadow--tl", styles.card)
-            : clsx("padding--lg margin-bottom--lg", styles.card)
+            : clsx("padding--lg margin-bottom--lg item shadow--lw", styles.card)
         }
         onMouseOver={toggleHover}
         onMouseOut={toggleHover}
       >
         <div>
           <div className={clsx(styles.titles)}>
-            <h3>{title}</h3>
+            <h4>{title}</h4>
             <p>{description}</p>
           </div>
           <img
@@ -116,7 +116,7 @@ function Features() {
         <section className={clsx("home-container", styles.features)}>
           <div className={clsx("row margin-horiz--lg")}>
             <div className={clsx("col col--2")}>
-              <h3 className="padding-top--lg container-h3">Explore Content</h3>
+              <h3 className="container-h3">Explore Content</h3>
             </div>
             <div className={clsx("col col--10")}>
               <div className={clsx("row")}>

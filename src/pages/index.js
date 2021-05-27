@@ -26,13 +26,9 @@ function Home() {
         </div>
       </header>
       <PopularResources />
-      {/* <hr></hr> */}
       <ExploreContent />
-      {/* <hr></hr> */}
       <DiscoverYourPath />
-      {/* <hr></hr> */}
       <FeaturedTopics />
-      {/* <hr></hr> */}
       <main>
         <DownloadableFiles />
       </main>
