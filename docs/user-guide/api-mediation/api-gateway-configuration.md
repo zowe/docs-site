@@ -21,6 +21,7 @@ Follow the procedures in the following sections to customize Gateway parameters 
   * [Connection limits](#connection-limits)
   * [Replace or remove catalog with another service](#replace-or-remove-catalog-with-another-service)
   * [API Mediation Layer as a standalone component](#api-mediation-layer-as-a-standalone-component)
+  * [SAF resource checking](#saf-resource-checking)
 
 ## Prefer IP Address for API Layer services
 
@@ -64,7 +65,7 @@ To change this default configuration, include the following parameters:
     
 * **ribbon.OkToRetryOnAllOperations**
 
-     Specifies whether to retry all operations for this service. The default value is `false`. In this case, only `GET` requests are retried if they return a response code that is listed in `ribbon.retryableStatusCodes`. Setting this parameter to `true` enables retry requests for all methods which return a response code listed in `ribbon.retryableStatusCodes`. 
+    Specifies whether to retry all operations for this service. The default value is `false`. In this case, only `GET` requests are retried if they return a response code that is listed in `ribbon.retryableStatusCodes`. Setting this parameter to `true` enables retry requests for all methods which return a response code listed in `ribbon.retryableStatusCodes`. 
      
   **Note:** Enabling retry can impact server resources due to request body buffering.
 
@@ -78,10 +79,7 @@ To change this default configuration, include the following parameters:
     
 ## Gateway client certificate authentication
 
-**Note:**
-
-Beginning with release 1.19 LTS, it is possible to authenticate using client certificates. The feature is functional and tested, but automated testing on various security systems is not complete. As such, the feature is provided as a beta release for early preview. If you would like to offer feedback using client certificate authentication, please create an issue against the api-layer repository. Client Certificate authentication will move out of Beta once test automation is fully implemented across different security systems.
-
+**Note:** Beginning with release 1.19 LTS, it is possible to authenticate using client certificates. The feature is functional and tested, but automated testing on various security systems is not complete. As such, the feature is provided as a beta release for early preview. If you would like to offer feedback using client certificate authentication, please create an issue against the api-layer repository. Client Certificate authentication will move out of Beta once test automation is fully implemented across different security systems.
 
 Use the following procedure to enable the feature to use a client certificate as the method of authentication for the API Mediation Layer Gateway.
 
@@ -102,7 +100,7 @@ Use the following procedure to enable the feature to use a client certificate as
 
 3. Change the following property if user mapping is provided by an external API:
 
-  * **APIML_GATEWAY_EXTERNAL_MAPPER**
+   * **APIML_GATEWAY_EXTERNAL_MAPPER**
 
    **Note:** Skip this step if user mapping is not provided by an external API.
 
@@ -116,7 +114,7 @@ Use the following procedure to enable the feature to use a client certificate as
 
 4. Add the following property if the Zowe runtime userId is altered from the default `ZWESVUSR`:
 
-  * **APIML_GATEWAY_MAPPER_USER**
+   * **APIML_GATEWAY_MAPPER_USER**
 
    **Note:** Skip this step if the Zowe runtime userId is not altered from the default `ZWESVUSR`.
 
@@ -202,7 +200,7 @@ Use the following procedure to change the number of concurrent connections.
 2. Find the property `APIML_MAX_CONNECTIONS_PER_ROUTE` and set the value to an appropriate positive integer.
 3. Find the property `APIML_MAX_TOTAL_CONNECTIONS` and set the value to an appropriate positive integer.
 
-## Replace or remove catalog with another service
+## Replace or remove the Catalog with another service
 
 By default, the API Mediation Layer contains API Catalog as a service showing available services. As the API Mediation Layer can be successfully run without this component it is possible to replace or remove the service from the Gateway home page and health checks. The following section describes the behavior of the Gateway home page and health checks. 
 
@@ -228,8 +226,9 @@ A value can also be applied to `API_GATEWAY_CATALOG_ID`.
   A possible dashboard that could appear in place of the API Catalog 
 
 **Notes:**
+
 - If the application contains the `homePageUrl` and `statusPageRelativeUrl`, then the full set of information is displayed.
-- If the application contains the `homePageUrl` the link is displayed without the `UP` information
+- If the application contains the `homePageUrl` the link is displayed without the `UP` information.
 - If the application contains the `statusPageRelativeUrl` then `UP` or `DOWN` is displayed based on the `statusPage` without the link.
 
 Use the following procedure to change or replace the Catalog service:
@@ -242,7 +241,7 @@ Use the following procedure to change or replace the Catalog service:
     - Set the value to `none` to remove the Catalog service.
     - Set the value to the ID of the service that is onboarded to the API Mediation Layer. 
 
-# API Mediation Layer as a standalone component
+## API Mediation Layer as a standalone component
 
 You can start the API Mediation Layer independently of other Zowe components. 
 By default, the Gateway, Zowe System Services, and Virtual Desktop start when
@@ -260,3 +259,104 @@ Once Zowe is installed, use the following procedure to limit which components st
 3. Restart `Zowe&trade`.   
 
 To learn more about the related section of the environment file, see [Creating and configuring the Zowe instance directory](../configure-instance-directory.md#component-groups). We recommend you open this page in a new tab.
+
+## SAF Resource Checking
+
+The API ML can check for the authorization of the user on certain endpoints. Access to a SAF resource is checked with ESM.
+
+Verification of the SAF resource is provided by the following three providers:
+
+- **`endpoint`**
+
+  This is the highest priority provider, such as a REST endpoint call (ZSS or similar one). This option is disabled by default. In Zowe, ZSS has the API to check for SAF   resource authorization.
+  
+- **`native`**
+
+  The Native JZOS classes from Java are used to determine SAF resource access. This is the default provider.
+  
+- **`dummy`**
+
+  This is the lowest priority provider. This is the dummy implementation and is defined in a file.
+
+**Note:** Verification of the SAF resource uses the first available provider based on the specified priority. The default configuration resolves to the native provider. 
+
+You can select a specific provider by specifying the `APIML_SECURITY_AUTHORIZATION_PROVIDER` key in the `instance.env` file. Use the parameter value to
+strictly define a provider. If verification is disabled, select the `endpoint` option. 
+
+**Follow these steps:**
+
+1. Open the file `<Zowe instance directory>/instance.env`.
+2. Add the property `APIML_SECURITY_AUTHORIZATION_PROVIDER` and set desired value.
+3. Restart `Zowe&trade`.
+
+**Examples:**
+```
+APIML_SECURITY_AUTHORIZATION_PROVIDER=endpoint
+```
+```
+APIML_SECURITY_AUTHORIZATION_PROVIDER=native
+```
+```
+APIML_SECURITY_AUTHORIZATION_PROVIDER=dummy
+```
+
+To use the endpoint provider, customize the URL corresponding to the SAF resource authorization. By default, the ZSS API is configured and used. 
+
+**Follow these steps:**
+
+1. Open the file `<Zowe instance directory>/instance.env`.
+2. Modify the property `APIML_SECURITY_AUTHORIZATION_ENDPOINT_URL` and set desired value.
+   The default value for ZSS API is `https://${ZOWE_EXPLORER_HOST}:${GATEWAY_PORT}/zss/api/v1/saf-auth`
+3. Restart `Zowe&trade`.
+
+### Checking providers
+
+#### REST endpoint call
+
+The REST provider calls the external API to retrieve information about access rights. To enable the feature outside of the mainframe, such as when running in Docker, you can use a REST endpoint call using the `GET` method:
+
+- Method: `GET`
+- URL: `{base path}/{userId}/{class}/{entity}/{level}`
+- Response:
+```json5
+    {
+        "authorized": "{true|false}",
+        "error": "{true|false}",
+        "message": "{message}"
+    }
+```
+**Note:** For more information about this REST endpoint call, see [ZSS implementation](https://github.com/zowe/zss/blob/master/c/authService.c).
+
+#### Native
+
+The Native provider is the easiest approach to use the SAF resource checking feature on the mainframe.
+
+Enable this provider when classes `com.ibm.os390.security.PlatformAccessControl` and `com.ibm.os390.security.PlatformReturned`
+are available on the classpath. This approach uses the following method described in the IBM documentation: [method](https://www.ibm.com/support/knowledgecenter/SSYKE2_8.0.0/com.ibm.java.zsecurity.api.80.doc/com.ibm.os390.security/com/ibm/os390/security/PlatformAccessControl.html?view=kc#checkPermission-java.lang.String-java.lang.String-java.lang.String-int-).
+
+**Note:** Ensure that the version of Java on your system has the same version of classes and method signatures.
+
+#### Dummy implementation
+
+The Dummy provider is for testing purpose outside of the mainframe.
+
+Create the file `saf.yml` and locate it in the folder, where is application running or create file `mock-saf.yml` in the
+test module (root folder). The highest priority is to read the file outside of the JAR. A file (inner or outside) has to exist.
+
+The following YAML presents the structure of the file:
+
+```yaml
+  safAccess:
+    {CLASS}:
+      {RESOURCE}:
+        - {UserID}
+```
+
+**Notes**:
+- Classes and resources are mapped into a map, user IDs into a list.
+- The load method does not support formatting with dots, such as shown in the following example:
+  **Example:** {CLASS}.{RESOURCE}
+  Ensure that each element is separated.
+- The field `safAccess` is not required to define an empty file without a definition.
+- Classes and resources cannot be defined without the user ID list.
+- When a user has multiple definitions of the same class and resource, only the most privileged access level loads.

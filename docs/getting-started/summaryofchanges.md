@@ -2,8 +2,9 @@
 
 Learn about what is new, changed, or removed in Zowe&trade;.
 
-Zowe Version 1.21 and earlier releases include the following enhancements, release by release.
+Zowe Version 1.22 and earlier releases include the following enhancements, release by release.
 
+- [Version 1.22.0 LTS (June 2021)](#version-1-22-0-lts-june-2021)
 - [Version 1.21.0 LTS (April 2021)](#version-1-21-0-lts-april-2021)
 - [Version 1.20.1 LTS (March 2021)](#version-1-20-1-lts-march-2021)
 - [Version 1.20.0 LTS (March 2021)](#version-1-20-0-lts-march-2021)
@@ -33,7 +34,17 @@ Zowe Version 1.21 and earlier releases include the following enhancements, relea
 - [Version 1.0.1 (March 2019)](#version-1-0-1-march-2019)
 - [Version 1.0.0 (February 2019)](#version-1-0-0-february-2019)
 
+## Version 1.22.0 LTS (June 2021)
+
+### New features and enhancements
+
+### Bug fixes
+
+
+
 ## Version 1.21.0 LTS (April 2021)
+
+Check out [this blog](https://www.openmainframeproject.org/blog/2021/05/06/zowe-1-21-release-highlights-demo-video) that summarizes some of the major enhancements and changes for this release. You can also watch a  [video](https://youtu.be/lL4oyaj0Ohs) on Open Mainframe Project’s Youtube Channel see a demo of what's new in this release. 
 
 ### New features and enhancements
 
@@ -134,6 +145,8 @@ The following bugs were fixed in the **FTP Plug-in**:
 - Fixed an issue when importing external certificate authorities. [#2032](https://github.com/zowe/zowe-install-packaging/issues/2032)
 
 ## Version 1.20.0 LTS (March 2021)
+
+Check out [this blog](https://www.openmainframeproject.org/blog/2021/04/14/zowe-1-20-release-available) that summarizes some of the major enhancements and changes for this release.
 
 ### New features and enhancements
 
