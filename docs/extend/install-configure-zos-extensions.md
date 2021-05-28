@@ -158,16 +158,16 @@ _Note: This section is for technical preview and we are happy to hear any feedba
 
 _Note: This feature is added with Zowe v1.22.0 release._
 
-From Zowe v1.22.0, Zowe ships a `bin/zowe-verify-component.sh` tool to help you configure an installed Zowe server component (extension) for a Zowe instance. Zowe core components are also configured with this tool. In order to be compatible with the tool, we recommend components follow [Zowe server component package format standard](packaging-zos-extensions.md#zowe-server-component-package-format).
+From Zowe v1.22.0, Zowe ships a `bin/zowe-verify-component.sh` tool to help you verify an installed Zowe server component (extension) for a Zowe instance. In order to be compatible with the tool, we recommend components follow [Zowe server component package format standard](packaging-zos-extensions.md#zowe-server-component-package-format) and define [Zowe component manifest](packaging-zos-extensions.md#zowe-component-manifest).
 
-The `zowe-verify-component.sh` script checks and verifies whether a specified component is up and running. It could be used to verify both core and external components.
+The `zowe-verify-component.sh` script checks and verifies whether a specified component is up and running. You can use it to verify both core and external Zowe components.
 
-_IMPORTANT: This script uses a curl command and users may need specific permission in order to access it. For more information check out this link: [Protection of Service Information](https://docs.zowe.org/stable/extend/extend-apiml/service-information.html#protection-of-service-information)._
+_IMPORTANT: To successfully verify whether a component service is registered on Zowe API Mediation Layer, this utility script requires authentication with a valid system user who has proper permission granted. For more information on the required user permission, please check [Protection of Service Information](https://docs.zowe.org/stable/extend/extend-apiml/service-information.html#protection-of-service-information)._
 
 The tool can be executed from z/OS USS, and it takes these command line parameters:
 
-- **`-c|--component-id`**: (Required) Identification of a component.
-- **`-i|--instance-dir`**: (Required) path to Zowe instance directory.
+- **`-c|--component-id`**: (Required) Specifies the name of the Zowe component that you want to verify.
+- **`-i|--instance-dir`**: (Required) Specifies the path to the Zowe instance directory.
 - **`-u|--username`**: (Required) Username of a specified user for the current system.
 - **`-p|--password`**: (Required) Password of the specified user.
 
@@ -183,7 +183,7 @@ $ zowe-verify-component.sh \
     -p pass
 ```
 
-This command will perform the same actions and give the same results as the command above but instead of passing in values for the -u and -p flags, you can use the export command.
+You can also run the following commands to get the same results but instead of passing in values for the -u and -p parameters, you can use the export command.
 
 ```
 $ export VERIFY_USER_NAME=user
