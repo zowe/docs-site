@@ -132,6 +132,18 @@ If you are interested in improvements such as this one, please be sure to expres
 
 </details>
 
+### Does ZOWE support z/OS ZIIP processors?
+
+<details class="zowe-faq">
+
+<summary></summary>
+
+Only the parts of Zowe that involve Java code are ZIIP enabled. The API Mediation Layer composed of the API Gateway, Discovery and Catalog servers along with any Java-based services that work with them such as the Jobs and Datasets servers are ZIIP enabled. Also, the CLI and VSCode Explorer make large use of z/OSMF, which is Java so they are ZIIP enabled as well. More details on portions of Zowe which are Java (ZIIP) enabled can be found [here](https://docs.zowe.org/stable/getting-started/zowe-architecture.html#zowe-architecture).
+
+This leaves C and NodeJS code which are not ZIIP enabled, BUT, we have a [tech preview](https://www.zowe.org/download.html) available currently that allows execution of Java as well as NodeJS code, on Linux or zLinux via Docker. With the tech preview, only the C code remains on z/OS, which is not ZIIP enabled.
+
+</details>
+
 ### How is access security managed on z/OS?
 
 <details class="zowe-faq">

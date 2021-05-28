@@ -26,11 +26,11 @@ footer: Except where otherwise noted, content on this site is licensed under a C
     <p>Get troubleshooting tips to help you understand and effectively resolve problems with Zowe.</p>
   </div>
   <div class="feature">
-    <h2><a href="./contribute/contributing.html">Contributing</a></h2>
-    <p>Learn about how you can contribute to this documentation. Read about the Zowe UI and code guidelines to help you contribute to Zowe.</p>
+    <h2><a href="./contribute/roadmap-contribute.html">Contributing</a></h2>
+    <p>Learn about how you can contribute to Zowe and this documentation. Read about the Zowe UI and code guidelines to help you contribute to Zowe.</p>
   </div>
   <div class="feature">
-    <h2><a href="./appendix/tpsr.html">References</a></h2>
+    <h2><a href="./appendix/zowe-cli-commannd-reference.html">References</a></h2>
     <p>Get a list of reference materials to help you use Zowe, including the Zowe command line reference, API reference, TPSR, and more.</p>
   </div>
 </div>
@@ -105,9 +105,11 @@ footer: Except where otherwise noted, content on this site is licensed under a C
 
 ### Zowe documentation
 
-You can download the Version 1.x.x Zowe documentation in PDF format from the links below. The latest version on this website is 1.20.1.
+You can download the Version 1.x.x Zowe documentation in PDF format from the links below. The latest version on this website is 1.22.0.
 
-**[V1.20.x](https://docs.zowe.org/stable/Zowe_Documentation.pdf)** | 
+**[V1.22.x](https://docs.zowe.org/stable/Zowe_Documentation.pdf)** | 
+**[V1.21.x](./Zowe_Documentation_1.21.0.pdf)** | 
+**[V1.20.x](./Zowe_Documentation_1.20.x.pdf)** | 
 **[V1.19.x](./Zowe_Documentation_1.19.1.pdf)** | 
 **[V1.18.0](./Zowe_Documentation_1.18.0.pdf)** |
 **[V1.17.0](./Zowe_Documentation_1.17.0.pdf)** |

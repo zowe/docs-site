@@ -233,8 +233,9 @@ Fix the missing z/OSMF host name in subject alternative names using the followin
 
 **Follow these steps:**
 
-1. Re-create the Zowe keystore by deleting it and re-creating it. For more information, see [Configuring Zowe certificates](../user-guide/configure-certificates.md). In the `zowe-setup-certificates.env` file that is used to generate the keystore, ensure that the property `VERIFY_CERTIFICATES` is set to `FALSE`.
+1. Re-create the Zowe keystore by deleting it and re-creating it. For more information, see [Configuring Zowe certificates](../user-guide/configure-certificates.md). In the `zowe-setup-certificates.env` file that is used to generate the keystore, ensure that the property `VERIFY_CERTIFICATES` and `NONSTRICT_VERIFY_CERTIFICATES` are set to `false`.
 
+**Important!** Disabling `VERIFY_CERTIFICATES` or `NONSTRICT_VERIFY_CERTIFICATES` may expose your server to security risks. Ensure that you contact your system administrator before you do so and use these options only for troubleshooting purpose.
 
 #### Invalid z/OSMF host name in subject alternative names
 
@@ -405,3 +406,24 @@ The Zowe desktop is able to be displayed in a browser but fails to logon.
 
 Check that the Zowe certificate has been configured as a client certificate, and not just as a server certificate. More detail can be found in [Configuring certificates](../user-guide/configure-certificates.md).
 
+### Java z/OS components of Zowe unable to read certificates from keyring
+
+**Symptom:**
+
+Java z/OS components of Zowe are unable to read certificates from a keyring. This problem may appear as an error as in teh following example where Java treats the SAF keyring as a file.
+
+**Example:**
+```
+Caused by: java.io.FileNotFoundException: safkeyring:/ZWESVUSR/ZoweKeyring
+at java.io.FileInputStream.open(FileInputStream.java:212)
+at java.io.FileInputStream.<init>(FileInputStream.java:152)
+at java.io.FileInputStream.<init>(FileInputStream.java:104)
+at com.ibm.jsse2.be$p$a.a(be$p$a.java:1)
+at com.ibm.jsse2.be$p$a.run(be$p$a.java:2)
+```
+
+**Solution:**
+
+Apply the following APAR to address this issue:
+
+* [APAR IJ31756](https://www.ibm.com/support/pages/apar/IJ31756)
