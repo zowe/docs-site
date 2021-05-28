@@ -148,7 +148,7 @@ Refer to the following Zowe Client SDK reference guides for information about th
 
 <p class="action">
 <a href="./typedoc/index.html" target="_blank" class="nav-link action-button"> <span>Browse Node.js SDK Reference (Online)</span></a>
-<a href="./zowe-node-sdk-typedoc.zip" class="nav-link action-button"> <span>Download Node SDK Reference (ZIP)</span></a>
+<a href="./zowe-nodejs-sdk-typedoc.zip" class="nav-link action-button"> <span>Download Node SDK Reference (ZIP)</span></a>
 </p>
 
 <p class="action">
