@@ -10,9 +10,9 @@ If you permit the Zowe configuration to generate a self-signed certificate, be s
 
 **Note:** If you do not import the certificates into your browser when you access a Zowe web page, you may be challenged that the web page cannot be trusted.  Depending on the browser you are using, you may have to add an exception to proceed to the web page. Some browser versions may not accept the Zowe certificate because the certificate is self-signed and the signing authority is not recognized as a trusted source.  Manually importing the certificate into your browser ensures that the source is trusted, thereby preventing authenication challenges.  
 
-If you have an existing server certificate that is signed by an external CA, use this certificate as your Zowe certificate. An example is a CA managed by the IT department of your company, which  already ensured that any certificates signed by that CA are trusted by browsers in your company because they have included the CA of teh company in the truststore in company browsers.  This avoids the need to manually import the local CA into each browser of the client machine.  
+If you have an existing server certificate that is signed by an external CA, use this certificate as your Zowe certificate. An example is a CA managed by the IT department of your company, which  already ensured that any certificates signed by that CA are trusted by browsers in your company because they have included the CA of the company in the truststore in company browsers.  This avoids the need to manually import the local CA into each browser of the client machine.  
  
-To avoid requiring each browser to trust the CA that signed the Zowe certificate, you can use a public certificate authority such as _Symantec_, _Comodo_, or _GoDaddy_to create a certificate. These certificates are trusted by all browsers and most REST API clients. This option, however, requires a manual process to request a certificate and may incur a cost payable to the publicly trusted CA.
+To avoid requiring each browser to trust the CA that signed the Zowe certificate, you can use a public certificate authority such as _Symantec_, _Comodo_, _Let's Encrypt_, or _GoDaddy_to create a certificate. These certificates are trusted by all browsers and most REST API clients. This option, however, requires a manual process to request a certificate and may incur a cost payable to the publicly trusted CA.
 
 We recommend that you start with the local API Mediation Layer CA for an initial evaluation.
 
@@ -104,15 +104,22 @@ The following procedure shows how to configure the `zowe-setup-certificates.env`
     **Note:**
 Be sure to specify the complete value _in quotes_. This can be used for certificate authorities that have signed the certificates of the services that you want to access through the API Mediation Layer.
 
-5. (Optional) If you have trouble getting the certificates and you want only to evaluate Zowe, you can switch off the certificate validation by setting `VERIFY_CERTIFICATES=false`. THis setting continues to use HTTPS, but the API Mediation Layer will not validate any certificate.
+5. (Optional) If you have trouble getting the certificates and you want only to evaluate Zowe, you can switch off the certificate validation by setting `VERIFY_CERTIFICATES=false` and `NONSTRICT_VERIFY_CERTIFICATES=false`. This setting continues to use HTTPS, but the API Mediation Layer will not validate any certificate.
 
-    **Important!** Switching off certificate evaluation is a non-secure setup.
+    **Important!** Switching off certificate evaluation is a non-secure setup. Please talk to your system administrator before you do so and only use these options for troubleshooting purpose.
 
    The following script is the part of `zowe-setup-certificates.env` file  that uses existing certificates:
 
     ```shell script
-    # Should APIML verify certificates of services - true/false
+    # Should APIML verify certificates of services it uses in strict mode - true/false
+    # "strict mode" will verify if the certificates is trusted in truststore, also verify
+    # if the certificate Common Name or Subject Alternate Name (SAN) match the service hostname.
+    # if this value is true, NONSTRICT_VERIFY_CERTIFICATES will be ignored.
     VERIFY_CERTIFICATES=true
+    # Should APIML verify certificates of services it uses in non-strict mode - true/false
+    # "non-strict mode" will verify if the certificates is trusted in truststore, but
+    # certificate Common Name or Subject Alternate Name (SAN) will NOT be checked.
+    NONSTRICT_VERIFY_CERTIFICATES=true
     # optional - Path to a PKCS12 keystore with a server certificate for APIML
     EXTERNAL_CERTIFICATE=/path/to/keystore.p12
     # optional - Alias of the certificate in the keystore
@@ -137,84 +144,60 @@ This error must be resolved before you can proceed with the next installation st
 
 **Note:** 
 
-On many z/OS systems, the certificate for z/OSMF is not signed by a trusted CA and is a self-signed certificate by the z/OS system programmer who configured z/OSMF.  If that is the case, then Zowe itself will not trust the z/OSMF certificate and any function dependent on z/OSMF will not operate correctly.  To ensure that Zowe trusts a z/OSMF self-signed certificate, you must use the value `VERIFY_CERTIFICATES=false` in the `zowe-setup-certificates.env` file.  This is also required if the certificate is from a recognized CA but for a different host name, which can occur when a trusted certificate is copied from one source and reused within a z/OS installation for different servers other than that it was originally created for.  
+On many z/OS systems, the certificate for z/OSMF is not signed by a trusted CA and is a self-signed certificate by the z/OS system programmer who configured z/OSMF. Based on the configuration, there is chance zowe-setup-certificates.sh may not be able to detect z/OSMF certificate and certificate authority successfully. In this case, you can define `ZOSMF_CERTIFICATE=` manually to let Zowe trust the certificate you determined.
+
+If the certificate is from a recognized CA but for a different host name, which can occur when a trusted certificate is copied from one source and reused within a z/OS installation for different servers other than that it was originally created for. We recommended to regenerate certificates with correct `HOSTNAME=` option.
+
+Switching off `VERIFY_CERTIFICATES`, especially `NONSTRICT_VERIFY_CERTIFICATES` is not recommended. It may expose security risks to your z/OS system.
 
 ## Using web tokens for SSO on ZLUX and ZSS
 
-Users must create a `PKCS#11` token before continuing. This can be done through the USS utility, **gskkyman**.
+Users can use `ZWESSOTK` JCL to create a `PKCS#11` token and configure required security setup. The `ZWESSOTK` JCL is provided as part of the PDS sample library `SZWESAMP` that is delivered with Zowe.
 
-### Creating a `PKCS#11` Token
+Before you submit the JCL, you must [customize it](#customizing-the-zwessotk-jcl) and review it with a system programmer who is familiar with z/OS certificates. The JCL member contains commands for two z/OS security managers: RACF and TopSecret. Adding support of ACF/2 is a work in progress.
 
-Ensure that the `SO.TOKEN_NAME` profile exists in `CRYPTOZ`, and that the user who will be creating tokens has either `UPDATE` or `CONTROL` access.
+The `ZWESSOTK` JCL contains commands for the following scenarios:
 
-**Follow these steps:**
+- Defining security requirements needed by following steps and using the `PKCS#11` token.
+- Creation of a locally generated certificated can be used as JWT secret if it does not already exist.
+- Creation of `PKCS#11` token.
+- Binding JWT secret certificate to the `PKCS#11` token.
 
-1. Define the profile: `RDEFINE CRYPTOZ SO.TOKEN_NAME`
-2. Add a user with `UPDATE` access: `PERMIT SO.** ACCESS(UPDATE) CLASS(CRYPTOZ) ID(USERID)`
-3. Ensure the profile is created: `RLIST CRYPTOZ *`
-4. Activate the class with the new profile: 
+### Customizing the `ZWESSOTK` JCL
 
-    - `SETROPTS RACLIST(CRYPTOZ)`
-  
-    - `SETROPTS CLASSACT(CRYPTOZ)` 
+To customize the `ZWESSOTK` JCL, edit the JCL variables at the beginning of the JCL and carefully review and edit all the security commands that are valid for your security manager. Review the information in this section when you customize the JCL.
 
-A user should now be able to use **gskkyman** to create a token.
+#### `PRODUCT` variable
 
-### Accessing a token
+The `PRODUCT` variable specifies the z/OS security manager. The default value is `RACF`. Change the value to `ACF2` or `TSS` if you are using Access Control Facility CA-ACF2 or CA Top Secret for z/OS as your z/OS security manager.
 
-Ensure the `USER.TOKEN_NAME` profile exists in `CRYPTOZ`.
+```
+//         SET  PRODUCT=RACF         * RACF, ACF2, or TSS
+```
 
-**Follow these steps:**
+#### `JWTDSNAM` variable
 
-1. Define the profile: `RDEFINE CRYPTOZ USER.TOKEN_NAME`
-2. Add a user with `READ` access: `PERMIT USER.TOKEN_NAME ACCESS(UPDATE) CLASS(CRYPTOZ) ID(USERID)`
-3. Ensure the profile is created: `RLIST CRYPTOZ *`
-4. Activate the class with the new profile: 
+If you already have a certificate you want to use as JWT secret, you can set the data set name and uncomment section `Import JWT secret` below.
 
-    - `SETROPTS RACLIST(CRYPTOZ)`
+#### `JWTLABEL` variable
 
-    - `SETROPTS CLASSACT(CRYPTOZ)`
+This is the certificate label of the JWT secret. This variable has a default value of `jwtsecret`. This label name should match the value of `PKCS11_TOKEN_LABEL` in `zowe-setup-certificates.env`.
 
-Configure `zowe-setup-certifcates.env` using the following parameters. Both parameters are required to enable SSO.
+#### `SSOTOKEN` variable
 
-- `PKCS#11` token name for SSO. Must already exist.
+This is the `PKCS#11` token name will be created by `ZWESSOTK` JCL. This token name should match the value of `PKCS11_TOKEN_NAME` in `zowe-setup-certificates.env`.
 
-  `PKCS11_TOKEN_NAME=<newly created token name>`
-
-- `PKCS#11` token label for SSO. Must not already exist.
-
-  `PKCS11_TOKEN_LABEL=<unique label>`
 
 ### Enabling SSO
 
-Use the following procedure to enable SSO.
+To enable SSO, you should run `zowe-setup-certificates.sh` with values of `PKCS11_TOKEN_NAME` and `PKCS11_TOKEN_LABEL` matching what you defined in `ZWESSOTK` JCL.
 
-**Follow these steps:**
+If you have already Zowe certificate generated, you should edit the `zowe-certificates.env` file in the `KEYSTORE_DIRECTORY` directory, set the `PKCS11_TOKEN_NAME` and `PKCS11_TOKEN_LABEL` with values which you have defined in `ZWESSOTK` JCL, and restart Zowe.
 
-1. Run zowe-setup-certificates.sh. 
+If you are upgrading from an old version of Zowe, you can
 
-    - If you are upgrading from an older of version of Zowe that has the apiml configured: "rerun zowe-setup-certificates.sh"
-
-    - If upgrading, point the zowe instance to the newly generated keystore, or overwrite the previous one.
-
-2. In the ZSS server configuration, enable SSO and input your token name/label:
-
-```
-"agent": {
-  //host is for zlux to know, not zss
-  "host": "localhost",
-  "http": {
-   "ipAddresses": ["0.0.0.0"],
-   "port": 0000
-  },
-  "jwt": {
-   "enabled": true,
-   "fallback": false,
-​   "token": "TOKEN.NAME",
-​   "label": "KEY_NAME"
-  },
- },
-```
+  - rerun zowe-setup-certificates.sh,
+  - then overwrite `KEYSTORE_DIRECTORY` in your `instance.env` to the newly generated keystore directory.
 
 ## Hints and tips
 
