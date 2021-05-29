@@ -1,10 +1,16 @@
 import React from "react";
-import useBaseUrl from "@docusaurus/useBaseUrl";
 import { useLocation } from "react-router-dom";
+import { useActiveVersion } from "@theme/hooks/useDocs";
+import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
+import useBaseUrl from "@docusaurus/useBaseUrl";
 import styles from "./styles.module.css";
 import ShareButton from "./ShareButton";
 
-function DocsInfo(props) {
+function DocsInfo({ docsPluginId, ...props }) {
+  const { siteConfig } = useDocusaurusContext();
+  const currentVersion = useActiveVersion(docsPluginId).label;
+  const latestVersion = siteConfig.customFields.latestVersion;
+
   const location = useLocation();
   const openDocIssueURL =
     "https://github.com/zowe/docs-site/issues/new?assignees=&labels=&template=---doc-error-report.md&title=Issue with docs.zowe.org" +
@@ -57,7 +63,13 @@ function DocsInfo(props) {
           {/* PDF Button*/}
           <div className="margin-right--md pointer display-flex">
             {props.editUrl && (
-              <a onClick={() => window.print()}>
+              <a
+                href={
+                  currentVersion == latestVersion
+                    ? "/zowe-docs.pdf"
+                    : "/zowe-docs-" + currentVersion + ".pdf"
+                }
+              >
                 {" "}
                 <img
                   src={printIconUrl}

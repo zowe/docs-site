@@ -15,7 +15,6 @@ const downloadableFiles = [
       </>
     ),
     firstSubDescription: <>Select the version to Download</>,
-    firstDownloadLink: "defaultVersionedLinks",
     version: true,
     dropdown: true,
   },
@@ -141,7 +140,7 @@ function DownloadableFile({
                       src={useBaseUrl("/img/down-arrow-dark-icon.svg")}
                     />
                   </button>
-                  <ul className="dropdown__menu">
+                  <ul className="dropdown__menu pointer">
                     {newVersionsArray.map((props, idx) => (
                       <li key={idx}>
                         <a
@@ -153,6 +152,34 @@ function DownloadableFile({
                       </li>
                     ))}
                   </ul>
+                </div>
+              )}
+
+              {dropdown && (
+                <div className="display-flex row--align-center pointer">
+                  <img
+                    className="lightTheme"
+                    alt="Download icon"
+                    src={useBaseUrl("/img/download-light-icon.svg")}
+                  />
+                  <img
+                    className="darkTheme"
+                    alt="Download icon"
+                    src={useBaseUrl("/img/download-dark-icon.svg")}
+                  />
+                  <a
+                    className="margin--xs"
+                    href={
+                      dropdown &&
+                      selectedVersion != siteConfig.customFields.latestVersion
+                        ? "/zowe-docs-" + selectedVersion + ".pdf"
+                        : "/zowe-docs.pdf"
+                    }
+                    target="_blank"
+                    rel="noreferrer noopener"
+                  >
+                    Download
+                  </a>
                 </div>
               )}
 
@@ -170,11 +197,7 @@ function DownloadableFile({
                   />
                   <a
                     className="margin--xs"
-                    href={
-                      dropdown
-                        ? "/zowe-docs-" + selectedVersion + ".pdf"
-                        : firstDownloadLink
-                    }
+                    href={firstDownloadLink}
                     target="_blank"
                     rel="noreferrer noopener"
                   >
