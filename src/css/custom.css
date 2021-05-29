@@ -98,7 +98,7 @@ Badge {
 }
 
 .hero__title {
-  font-size: 3rem !important;
+  font-size: 4rem !important;
   padding-bottom: 3rem;
 }
 
@@ -246,6 +246,7 @@ html[data-theme="light"] .darkTheme {
   .navbar__brand {
     margin-right: 0px;
   }
+
   /* Landing page */
   .home-container .margin-horiz--lg {
     margin-left: 1rem !important;
@@ -253,27 +254,35 @@ html[data-theme="light"] .darkTheme {
   }
 }
 
-@media (min-width: 996px) and (max-width: 1135px) {
+@media (min-width: 996px) and (max-width: 1150px) {
   .navbar__toggle {
     display: inherit;
   }
+
   .navbar__item {
     display: none;
   }
 }
 
 @media only screen and (max-width: 996px) {
+  .navbar__brand {
+    margin-right: 1rem;
+  }
+
   .docsRating {
     width: 100%;
     margin: 36px 0 0 !important;
     border-radius: var(--ifm-global-radius);
- }
- .searchDiv .DocSearch-Button-Placeholder {
-  display: inherit;
- }
- .home-container .container-h3 {
-  font-size: 1.75rem !important;
   }
+
+  .searchDiv .DocSearch-Button-Placeholder {
+    display: inherit;
+  }
+
+  .home-container .container-h3 {
+    font-size: 1.75rem !important;
+  }
+
   .p-none {
     padding-left: 0 !important;
     padding-right: 0 !important;
@@ -284,7 +293,13 @@ html[data-theme="light"] .darkTheme {
   .searchDiv {
     width: inherit;
   }
+
   .searchDiv .DocSearch-Button {
     width: 90%;
+  }
+
+  .hero__title {
+    font-size: 3rem !important;
+    padding-bottom: 1rem;
   }
 }

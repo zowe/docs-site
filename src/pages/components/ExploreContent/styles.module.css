@@ -44,6 +44,7 @@ html[data-theme="dark"] .card {
     position: inherit;
     bottom: inherit;
   }
+  
  .feature div {
    height: inherit !important;
    position: inherit !important;
