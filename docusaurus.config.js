@@ -4,9 +4,8 @@ module.exports = {
   title: "Zowe Docs",
   tagline:
     "Combining the past and the present to build the future of Mainframe",
-  url: "https://zowe-docs.netlify.app/", //FIXME:
+  url: "https://docs.zowe.org/",
   baseUrl: "/",
-  //FIXME: baseUrl: "/zowe-docs/",
   onBrokenLinks: "ignore",
   onBrokenMarkdownLinks: "ignore",
   onDuplicateRoutes: "ignore",
@@ -210,6 +209,7 @@ module.exports = {
             from: ["/stable"],
           },
         ],
+        fromExtensions: ["html"],
       },
     ],
     [

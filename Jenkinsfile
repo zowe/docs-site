@@ -164,15 +164,14 @@ node ('zowe-jenkins-agent-dind') {
             sh 'npm run docs:pdf'
           }
         }
-        if (fileExists('.deploy/.pdf/out/Zowe_Documentation.pdf')) {
-          def publishTargetPathConverted = publishTargetPath.replaceAll(/\./, '-')
-          sh "cp .deploy/.pdf/out/Zowe_Documentation.pdf .deploy/${publishTargetPathConverted}/"
+        if (fileExists('static/zowe-docs.pdf')) {
+          def currentVersion = this.steps.sh(
+            script: "node -e 'const config = require(\"./docusaurus.config.js\");console.log(config.customFields.latestVersion);'",
+            returnStdout: true).trim()
+        sh "mv static/zowe-docs.pdf static/zowe-docs-${currentVersion}.pdf"
         } else {
           error 'Failed to generate PDF document.'
         }
-        // clean up pdf tmp folder
-        echo 'Cleaning up .deploy/.pdf ...'
-        sh 'rm -fr .deploy/.pdf || true'
       }
     }
 
@@ -180,14 +179,12 @@ node ('zowe-jenkins-agent-dind') {
       ansiColor('xterm') {
         withCredentials([usernamePassword(
           credentialsId: params.GITHUB_CREDENTIALS,
-          passwordVariable: 'GIT_PASSWORD',
-          usernameVariable: 'GIT_USERNAME'
+          passwordVariable: 'GIT_PASS',
+          usernameVariable: 'GIT_USER'
         )]) {
           sh """
-            cd .deploy
-            git add -A
-            git commit -s -m \"deploy from ${env.JOB_NAME}#${env.BUILD_NUMBER}\"
-            git push 'https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/${githubRepository}.git' ${params.PUBLISH_BRANCH}
+            export DEPLOYMENT_BRANCH=${params.PUBLISH_BRANCH}
+            npm run deploy
           """
         }
       }
@@ -229,3 +226,4 @@ node ('zowe-jenkins-agent-dind') {
     throw err
   }
 }
+
