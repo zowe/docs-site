@@ -195,7 +195,7 @@ The following sample jobs that you might use are included in the package and ava
 
 Check out the video for a demo of the process:
 
-<iframe class="embed-responsive-item" id="youtubeplayer" title="Creating a z/OSMF nucleus on your system demo" type="text/html" width="640" height="390" src="https://www.youtube.com/embed/ebJb9RR9x9c" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen> </iframe>
+<iframe class="embed-responsive-item" id="youtubeplayer" title="Creating a z/OSMF nucleus on your system demo" type="text/html" width="100%" height="365" src="https://www.youtube.com/embed/ebJb9RR9x9c" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen> </iframe>
 
 ### Running job IZUNUSEC to create security
 
