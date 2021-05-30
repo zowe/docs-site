@@ -6,6 +6,10 @@ html[data-theme="light"] .card {
   background-color: var(--ifm-background-section-color);
 }
 
+.displayNone {
+  display: none;
+}
+
 html[data-theme="dark"] .card {
   background-color: var(--ifm-background-section-dark);
 }

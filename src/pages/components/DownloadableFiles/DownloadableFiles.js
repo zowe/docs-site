@@ -63,6 +63,7 @@ function DownloadableFile({
   secondDownloadLink,
 }) {
   const { siteConfig } = useDocusaurusContext();
+  const [clicked, setClicked] = useState(false);
   const [isVersion, setIsVersion] = useState(false);
   const [selectedVersion, setSelectedVersion] = useState(
     siteConfig.customFields.latestVersion
@@ -75,6 +76,7 @@ function DownloadableFile({
 
   function handleClick(props) {
     setIsVersion(true);
+    setClicked(true);
     setSelectedVersion(props);
   }
   return (
@@ -140,7 +142,14 @@ function DownloadableFile({
                       src={useBaseUrl("/img/down-arrow-dark-icon.svg")}
                     />
                   </button>
-                  <ul className="dropdown__menu pointer">
+                  <ul
+                    className={
+                      clicked
+                        ? clsx("dropdown__menu pointer", styles.displayNone)
+                        : "dropdown__menu pointer"
+                    }
+                    onMouseLeave={() => setClicked(false)}
+                  >
                     {newVersionsArray.map((props, idx) => (
                       <li key={idx}>
                         <a
