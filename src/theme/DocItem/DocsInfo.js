@@ -37,9 +37,10 @@ function DocsInfo({ docsPluginId, ...props }) {
                     {new Date(props.lastUpdatedAt * 1000).toLocaleDateString()}
                   </time>
                   {props.lastUpdatedBy && " "}
-                  {<>&nbsp; |</>}
+                  {<>&nbsp; |&nbsp;</>}
                 </>
               )}
+              <div>&nbsp;{props.readingTimeInWords}&nbsp;&nbsp;|</div>
               {props.lastUpdatedBy && (
                 <>
                   by <strong>{props.lastUpdatedBy}</strong>

@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import readingTime from "reading-time";
 import Head from "@docusaurus/Head";
 import MDXComponents from "@theme/MDXComponents";
 import { MDXProvider } from "@mdx-js/react";
@@ -56,6 +57,14 @@ function DocItem(props) {
   });
   versionPassed = version.label;
 
+  const [readingTimeInWords, setReadingTimeInWords] = useState("");
+
+  useEffect(() => {
+    setReadingTimeInWords(
+      readingTime(document.querySelector(".markdown").innerText).text
+    );
+  });
+
   return (
     <>
       <Head>
@@ -85,7 +94,7 @@ function DocItem(props) {
         >
           <DocVersionSuggestions />
           <div className={styles.docItemContainer}>
-            <article>
+            <article className="article-content">
               {showVersionBadge && (
                 <div>
                   <span className="badge badge--secondary">
@@ -103,6 +112,7 @@ function DocItem(props) {
                   editUrl={editUrl}
                   lastUpdatedAt={lastUpdatedAt}
                   lastUpdatedBy={lastUpdatedBy}
+                  readingTimeInWords={readingTimeInWords}
                   title={title}
                 />
               )}

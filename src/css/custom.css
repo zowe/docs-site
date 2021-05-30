@@ -303,3 +303,9 @@ html[data-theme="light"] .darkTheme {
     padding-bottom: 1rem;
   }
 }
+
+@media only screen and (max-width: 475px) {
+  .user-options:nth-child(1) {
+    display: initial;
+  }
+}
