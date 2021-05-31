@@ -36,6 +36,14 @@ Zowe Version 1.22 and earlier releases include the following enhancements, relea
 
 ## Version 1.22.0 LTS (June 2021)
 
+### Notable changes 
+
+**New tool for verifying an installed Zowe server component (Technical Preview)**
+
+You can verify an installed Zowe server component (extension) for a Zowe instance by using the `bin/zowe-verify-component.sh` tool that Zowe ships in this release. The `zowe-verify-component.sh` tool checks and verifies whether a specified component is up and running. You can use it to verify both core and external Zowe components. This tool is for technical preview now and we are happy to hear any feedback. 
+
+For more information, see [Verify with `zowe-verify-component.sh`](../extend/install-configure-zos-extensions.md#verify-with-zowe-verify-componentsh-technical-preview).
+
 ### New features and enhancements
 
 ### Bug fixes
