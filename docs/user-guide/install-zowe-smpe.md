@@ -126,14 +126,27 @@ All issues of previous releases of Zowe that were resolved before August 2019 ha
 
 The Zowe SMP/E package is a distribution of Zowe version 1.9.0 with an FMID of AZWE001.
 
-Subsequent releases of the Zowe z/OS components are delivered as rollup PTFs on [zowe.org](https://www.zowe.org/download.html).  Because of the file size of the PTF, it is packaged as two co-requisite PTFs, which are made available in a single Zip file.
+Subsequent releases of the Zowe z/OS components are delivered as rollup PTFs on [zowe.org](https://www.zowe.org/download.html). 
+- Prior to version 1.19.0, the Zowe release is packaged as two co-requisite PTFs, which are made available in a single Zip file.
+- With the continuous optimization of the Zowe build size, starting with version 1.19.1, the Zowe release is packaged as one single PTF.
+
 
 Zowe release | PTF 1 | PTF 2 
 ---|---|---
-[1.10](https://zowe.jfrog.io/zowe/list/libs-release-local/org/zowe/download/legal.html?type=smpe&version=1.10.0) | UO01939 | UO01940
-[1.11](https://zowe.jfrog.io/zowe/list/libs-release-local/org/zowe/download/legal.html?type=smpe&version=1.11.0) | UO01942 | UO01943
-[1.12](https://zowe.jfrog.io/zowe/list/libs-release-local/org/zowe/download/legal.html?type=smpe&version=1.12.0) | UO01945 | UO01946
-[1.13](https://zowe.jfrog.io/zowe/list/libs-release-local/org/zowe/download/legal.html?type=smpe&version=1.13.0) | UO01948 | UO01949
+[1.10.0](https://zowe.jfrog.io/zowe/list/libs-release-local/org/zowe/download/legal.html?type=smpe&version=1.10.0) | UO01939 | UO01940
+[1.11.0](https://zowe.jfrog.io/zowe/list/libs-release-local/org/zowe/download/legal.html?type=smpe&version=1.11.0) | UO01942 | UO01943
+[1.12.0](https://zowe.jfrog.io/zowe/list/libs-release-local/org/zowe/download/legal.html?type=smpe&version=1.12.0) | UO01945 | UO01946
+[1.13.0](https://zowe.jfrog.io/zowe/list/libs-release-local/org/zowe/download/legal.html?type=smpe&version=1.13.0) | UO01948 | UO01949
+[1.14.0](https://zowe.jfrog.io/zowe/list/libs-release-local/org/zowe/download/legal.html?type=smpe&version=1.14.0) | UO01951 | UO01952  
+[1.15.0](https://zowe.jfrog.io/zowe/list/libs-release-local/org/zowe/download/legal.html?type=smpe&version=1.15.0) | UO01953 | UO01954
+[1.16.0](https://zowe.jfrog.io/zowe/list/libs-release-local/org/zowe/download/legal.html?type=smpe&version=1.16.0) | UO01955 | UO01956
+[1.17.0](https://zowe.jfrog.io/zowe/list/libs-release-local/org/zowe/download/legal.html?type=smpe&version=1.17.0) | UO01958 | UO01959
+[1.18.0](https://zowe.jfrog.io/zowe/list/libs-release-local/org/zowe/download/legal.html?type=smpe&version=1.18.0) | UO01965 | UO01966
+[1.19.0](https://zowe.jfrog.io/zowe/list/libs-release-local/org/zowe/download/legal.html?type=smpe&version=1.19.0) | UO01967 | UO01968
+[1.19.1](https://zowe.jfrog.io/zowe/list/libs-release-local/org/zowe/download/legal.html?type=smpe&version=1.19.1) | UO01969 | 
+[1.20.0](https://zowe.jfrog.io/zowe/list/libs-release-local/org/zowe/download/legal.html?type=smpe&version=1.20.0) | UO01970 |
+[1.20.1](https://zowe.jfrog.io/zowe/list/libs-release-local/org/zowe/download/legal.html?type=smpe&version=1.20.1) | UO01980 |
+
 
 ## Installation requirements and considerations
 
