@@ -253,7 +253,7 @@ From Zowe v1.22.0, Zowe ships a `bin/zowe-verify-component.sh` tool to help you 
 
 The `zowe-verify-component.sh` script checks and verifies whether a specified component is up and running. You can use it to verify both core and external Zowe components.
 
-_IMPORTANT: To successfully verify whether a component service is registered on Zowe API Mediation Layer, this utility script requires authentication with a valid system user who has proper permission granted. For more information on the required user permission, please check [Protection of Service Information](https://docs.zowe.org/stable/extend/extend-apiml/service-information.html#protection-of-service-information)._
+_IMPORTANT: To successfully verify whether a component service is registered on Zowe API Mediation Layer, this utility script requires authentication with a valid system user who has proper permission granted. For more information on the required user permission, please check [Protection of Service Information](../extend/extend-apiml/service-information.md#protection-of-service-information)._
 
 The tool can be executed from z/OS USS, and it takes these command line parameters:
 
