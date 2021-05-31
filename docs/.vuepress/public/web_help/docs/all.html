@@ -291,6 +291,9 @@
 </ul><ul><li><a href="#zowe_zos-jobs_view_spool-file-by-id">spool-file-by-id | sfbi</a></li>
 </ul></li>
 </ul></li>
+<li><a href="#zowe_zos-ssh">zos-ssh | ssh | zos-uss | uss</a><ul><li><a href="#zowe_zos-ssh_issue">issue | iss</a><ul><li><a href="#zowe_zos-ssh_issue_command">command | cmd | ssh</a></li>
+</ul></li>
+</ul></li>
 <li><a href="#zowe_zos-tso">zos-tso | tso</a><ul><li><a href="#zowe_zos-tso_issue">issue</a><ul><li><a href="#zowe_zos-tso_issue_command">command | cmd</a></li>
 </ul></li>
 </ul><ul><li><a href="#zowe_zos-tso_ping">ping</a><ul><li><a href="#zowe_zos-tso_ping_address-space">address-space | as</a></li>
@@ -300,9 +303,6 @@
 </ul><ul><li><a href="#zowe_zos-tso_start">start | st</a><ul><li><a href="#zowe_zos-tso_start_address-space">address-space | as</a></li>
 </ul></li>
 </ul><ul><li><a href="#zowe_zos-tso_stop">stop | sp</a><ul><li><a href="#zowe_zos-tso_stop_address-space">address-space | as</a></li>
-</ul></li>
-</ul></li>
-<li><a href="#zowe_zos-uss">zos-uss | uss</a><ul><li><a href="#zowe_zos-uss_issue">issue | iss</a><ul><li><a href="#zowe_zos-uss_issue_ssh">ssh | ssh</a></li>
 </ul></li>
 </ul></li>
 <li><a href="#zowe_zos-workflows">zos-workflows | wf</a><ul><li><a href="#zowe_zos-workflows_archive">archive</a><ul><li><a href="#zowe_zos-workflows_archive_active-workflow">active-workflow | aw</a></li>
@@ -21984,7 +21984,7 @@ in the output.</li>
 </li>
 </ul>
 <a name="zowe_zos-jobs_submit"></a><h2><a href="#zowe">zowe</a> › <a href="#zowe_zos-jobs">zos-jobs</a> › <a href="#zowe_zos-jobs_submit">submit</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
-<p>Submit jobs (JCL) contained in data sets.</p>
+<p>Submit a job (JCL).</p>
 <a class="cmd-anchor" name="zowe_zos-jobs_submit_data-set"></a><h3><a href="#zowe">zowe</a> › <a href="#zowe_zos-jobs">zos-jobs</a> › <a href="#zowe_zos-jobs_submit">submit</a> › <a href="#zowe_zos-jobs_submit_data-set">data-set</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h3>
 <p>Submit a job (JCL) contained in a data set. The data set may be of type
 physical sequential or a PDS member. The command does not pre-validate the
@@ -22014,21 +22014,21 @@ only when the data set is not catalogued on the system.</li>
 </ul>
 </li>
 <li>
-<p><code>--wait-for-output</code>  | <code>--wfo</code> <em>(boolean)</em></p>
-<ul>
-<li>Wait for the job to enter OUTPUT status before completing the command.</li>
-</ul>
-</li>
-<li>
 <p><code>--wait-for-active</code>  | <code>--wfa</code> <em>(boolean)</em></p>
 <ul>
 <li>Wait for the job to enter ACTIVE status before completing the command.</li>
 </ul>
 </li>
 <li>
+<p><code>--wait-for-output</code>  | <code>--wfo</code> <em>(boolean)</em></p>
+<ul>
+<li>Wait for the job to enter OUTPUT status before completing the command.</li>
+</ul>
+</li>
+<li>
 <p><code>--view-all-spool-content</code>  | <code>--vasc</code> <em>(boolean)</em></p>
 <ul>
-<li>Print all spool output. If you use this option you will wait the job to
+<li>Print all spool output. If you use this option you will wait for the job to
 complete.</li>
 </ul>
 </li>
@@ -22037,13 +22037,23 @@ complete.</li>
 <ul>
 <li>The local directory you would like to download the output of the job. Creates a
 subdirectory using the jobID as the name and files are titled based on DD
-names. If you use this option you will wait the job to complete.</li>
+names. If you use this option you will wait for the job to complete.</li>
 </ul>
 </li>
 <li>
 <p><code>--extension</code>  | <code>-e</code> <em>(string)</em></p>
 <ul>
 <li>A file extension to save the job output with. Default is '.txt'.</li>
+</ul>
+</li>
+<li>
+<p><code>--jcl-symbols</code>  | <code>--js</code> <em>(string)</em></p>
+<ul>
+<li>A string of JCL symbols to use for substitution. For symbol values with no
+spaces: &quot;symbol1=value1 symbol2=value2 ...&quot;. When a value contains spaces,
+enclose the value in single quotes: &quot;symbol1='value 1 with spaces'
+symbol2='value 2 with spaces' ...&quot;. To embed a single quote in a value, use
+two single quotes: &quot;NAME=O''Brian&quot;.</li>
 </ul>
 </li>
 </ul>
@@ -22208,10 +22218,9 @@ Jobs API errors, see the z/OSMF Jobs API REST documentation.</p>
 <h4>Options</h4>
 <ul>
 <li>
-<p><code>--view-all-spool-content</code>  | <code>--vasc</code> <em>(boolean)</em></p>
+<p><code>--wait-for-active</code>  | <code>--wfa</code> <em>(boolean)</em></p>
 <ul>
-<li>Print all spool output. If you use this option you will wait the job to
-complete.</li>
+<li>Wait for the job to enter ACTIVE status before completing the command.</li>
 </ul>
 </li>
 <li>
@@ -22221,9 +22230,10 @@ complete.</li>
 </ul>
 </li>
 <li>
-<p><code>--wait-for-active</code>  | <code>--wfa</code> <em>(boolean)</em></p>
+<p><code>--view-all-spool-content</code>  | <code>--vasc</code> <em>(boolean)</em></p>
 <ul>
-<li>Wait for the job to enter ACTIVE status before completing the command.</li>
+<li>Print all spool output. If you use this option you will wait for the job to
+complete.</li>
 </ul>
 </li>
 <li>
@@ -22231,13 +22241,23 @@ complete.</li>
 <ul>
 <li>The local directory you would like to download the output of the job. Creates a
 subdirectory using the jobID as the name and files are titled based on DD
-names. If you use this option you will wait the job to complete.</li>
+names. If you use this option you will wait for the job to complete.</li>
 </ul>
 </li>
 <li>
 <p><code>--extension</code>  | <code>-e</code> <em>(string)</em></p>
 <ul>
 <li>A file extension to save the job output with. Default is '.txt'.</li>
+</ul>
+</li>
+<li>
+<p><code>--jcl-symbols</code>  | <code>--js</code> <em>(string)</em></p>
+<ul>
+<li>A string of JCL symbols to use for substitution. For symbol values with no
+spaces: &quot;symbol1=value1 symbol2=value2 ...&quot;. When a value contains spaces,
+enclose the value in single quotes: &quot;symbol1='value 1 with spaces'
+symbol2='value 2 with spaces' ...&quot;. To embed a single quote in a value, use
+two single quotes: &quot;NAME=O''Brian&quot;.</li>
 </ul>
 </li>
 </ul>
@@ -22387,10 +22407,9 @@ documentation.</p>
 <h4>Options</h4>
 <ul>
 <li>
-<p><code>--view-all-spool-content</code>  | <code>--vasc</code> <em>(boolean)</em></p>
+<p><code>--wait-for-active</code>  | <code>--wfa</code> <em>(boolean)</em></p>
 <ul>
-<li>Print all spool output. If you use this option you will wait the job to
-complete.</li>
+<li>Wait for the job to enter ACTIVE status before completing the command.</li>
 </ul>
 </li>
 <li>
@@ -22400,9 +22419,10 @@ complete.</li>
 </ul>
 </li>
 <li>
-<p><code>--wait-for-active</code>  | <code>--wfa</code> <em>(boolean)</em></p>
+<p><code>--view-all-spool-content</code>  | <code>--vasc</code> <em>(boolean)</em></p>
 <ul>
-<li>Wait for the job to enter ACTIVE status before completing the command.</li>
+<li>Print all spool output. If you use this option you will wait for the job to
+complete.</li>
 </ul>
 </li>
 <li>
@@ -22410,13 +22430,23 @@ complete.</li>
 <ul>
 <li>The local directory you would like to download the output of the job. Creates a
 subdirectory using the jobID as the name and files are titled based on DD
-names. If you use this option you will wait the job to complete.</li>
+names. If you use this option you will wait for the job to complete.</li>
 </ul>
 </li>
 <li>
 <p><code>--extension</code>  | <code>-e</code> <em>(string)</em></p>
 <ul>
 <li>A file extension to save the job output with. Default is '.txt'.</li>
+</ul>
+</li>
+<li>
+<p><code>--jcl-symbols</code>  | <code>--js</code> <em>(string)</em></p>
+<ul>
+<li>A string of JCL symbols to use for substitution. For symbol values with no
+spaces: &quot;symbol1=value1 symbol2=value2 ...&quot;. When a value contains spaces,
+enclose the value in single quotes: &quot;symbol1='value 1 with spaces'
+symbol2='value 2 with spaces' ...&quot;. To embed a single quote in a value, use
+two single quotes: &quot;NAME=O''Brian&quot;.</li>
 </ul>
 </li>
 </ul>
@@ -22828,6 +22858,132 @@ default token type, which is provided by 'zowe auth login'.</li>
 JOB00123:</p>
 <ul>
 <li><code>zowe  zos-jobs view spool-file-by-id JOB00123 4</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  zos-jobs view spool-file-by-id JOB00123 4">Copy</button></li>
+</ul>
+</li>
+</ul>
+<hr class="no-print">
+<a name="zowe_zos-ssh"></a><h2 class="page-break"><a href="#zowe">zowe</a> › <a href="#zowe_zos-ssh">zos-ssh</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
+<p>Issue z/OS USS commands remotely using an SSH session. Output from the commands
+is displayed on the local terminal.</p>
+<a name="zowe_zos-ssh_issue"></a><h2><a href="#zowe">zowe</a> › <a href="#zowe_zos-ssh">zos-ssh</a> › <a href="#zowe_zos-ssh_issue">issue</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
+<p>Issue a z/OS USS command</p>
+<a class="cmd-anchor" name="zowe_zos-ssh_issue_command"></a><h3><a href="#zowe">zowe</a> › <a href="#zowe_zos-ssh">zos-ssh</a> › <a href="#zowe_zos-ssh_issue">issue</a> › <a href="#zowe_zos-ssh_issue_command">command</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h3>
+<p>Issue a z/OS USS command</p>
+<h4>Usage</h4>
+<p>zowe  zos-ssh issue command &lt;command&gt; [options]</p>
+<h4>Positional Arguments</h4>
+<ul>
+<li>
+<p><code>command</code>		 <em>(string)</em></p>
+<ul>
+<li>z/OS USS command to issue</li>
+</ul>
+</li>
+</ul>
+<h4>Options</h4>
+<ul>
+<li>
+<p><code>--cwd</code>  <em>(string)</em></p>
+<ul>
+<li>Working directory in which to execute the command</li>
+</ul>
+</li>
+</ul>
+<h4>z/OS Ssh Connection Options</h4>
+<ul>
+<li>
+<p><code>--host</code>  | <code>-H</code> <em>(string)</em></p>
+<ul>
+<li>The z/OS SSH server host name.</li>
+</ul>
+</li>
+<li>
+<p><code>--port</code>  | <code>-P</code> <em>(number)</em></p>
+<ul>
+<li>
+<p>The z/OS SSH server port.</p>
+<p>Default value: 22</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--user</code>  | <code>-u</code> <em>(string)</em></p>
+<ul>
+<li>Mainframe user name, which can be the same as your TSO login.</li>
+</ul>
+</li>
+<li>
+<p><code>--password</code>  | <code>--pass</code> | <code>--pw</code> <em>(string)</em></p>
+<ul>
+<li>Mainframe password, which can be the same as your TSO password.</li>
+</ul>
+</li>
+<li>
+<p><code>--privateKey</code>  | <code>--key</code> | <code>--pk</code> <em>(string)</em></p>
+<ul>
+<li>Path to a file containing your private key, that must match a public key stored
+in the server for authentication</li>
+</ul>
+</li>
+<li>
+<p><code>--keyPassphrase</code>  | <code>--passphrase</code> | <code>--kp</code> <em>(string)</em></p>
+<ul>
+<li>Private key passphrase, which unlocks the private key.</li>
+</ul>
+</li>
+<li>
+<p><code>--handshakeTimeout</code>  | <code>--timeout</code> | <code>--to</code> <em>(number)</em></p>
+<ul>
+<li>How long in milliseconds to wait for the SSH handshake to complete.</li>
+</ul>
+</li>
+</ul>
+<h4>Profile Options</h4>
+<ul>
+<li>
+<p><code>--ssh-profile</code>  | <code>--ssh-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (ssh) profile to load for this command execution.</li>
+</ul>
+</li>
+<li>
+<p><code>--base-profile</code>  | <code>--base-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (base) profile to load for this command execution.</li>
+</ul>
+</li>
+</ul>
+<h4>Base Connection Options</h4>
+<ul>
+<li>
+<p><code>--reject-unauthorized</code>  | <code>--ru</code> <em>(boolean)</em></p>
+<ul>
+<li>
+<p>Reject self-signed certificates.</p>
+<p>Default value: true</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--token-type</code>  | <code>--tt</code> <em>(string)</em></p>
+<ul>
+<li>The type of token to get and use for the API. Omit this option to use the
+default token type, which is provided by 'zowe auth login'.</li>
+</ul>
+</li>
+<li>
+<p><code>--token-value</code>  | <code>--tv</code> <em>(string)</em></p>
+<ul>
+<li>The value of the token to pass to the API.</li>
+</ul>
+</li>
+</ul>
+<h4>Examples</h4>
+<ul>
+<li>
+<p>Issue a simple command, giving the working directory:</p>
+<ul>
+<li><code>zowe  zos-ssh issue command &quot;npm install express&quot; --cwd /u/cicprov/mnt/CICPY01I/bundles/myapp </code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  zos-ssh issue command &quot;npm install express&quot; --cwd /u/cicprov/mnt/CICPY01I/bundles/myapp ">Copy</button></li>
 </ul>
 </li>
 </ul>
@@ -23577,132 +23733,6 @@ default token type, which is provided by 'zowe auth login'.</li>
 IBMUSER-329-aafkaaoc:</p>
 <ul>
 <li><code>zowe  zos-tso stop address-space IBMUSER-329-aafkaaoc</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  zos-tso stop address-space IBMUSER-329-aafkaaoc">Copy</button></li>
-</ul>
-</li>
-</ul>
-<hr class="no-print">
-<a name="zowe_zos-uss"></a><h2 class="page-break"><a href="#zowe">zowe</a> › <a href="#zowe_zos-uss">zos-uss</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
-<p>Issue z/OS USS commands remotely using an SSH session. Output from the commands
-is displayed on the local terminal.</p>
-<a name="zowe_zos-uss_issue"></a><h2><a href="#zowe">zowe</a> › <a href="#zowe_zos-uss">zos-uss</a> › <a href="#zowe_zos-uss_issue">issue</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
-<p>Issue a z/OS USS command</p>
-<a class="cmd-anchor" name="zowe_zos-uss_issue_ssh"></a><h3><a href="#zowe">zowe</a> › <a href="#zowe_zos-uss">zos-uss</a> › <a href="#zowe_zos-uss_issue">issue</a> › <a href="#zowe_zos-uss_issue_ssh">ssh</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h3>
-<p>Issue a z/OS USS command</p>
-<h4>Usage</h4>
-<p>zowe  zos-uss issue ssh &lt;command&gt; [options]</p>
-<h4>Positional Arguments</h4>
-<ul>
-<li>
-<p><code>command</code>		 <em>(string)</em></p>
-<ul>
-<li>z/OS USS command to issue</li>
-</ul>
-</li>
-</ul>
-<h4>Options</h4>
-<ul>
-<li>
-<p><code>--cwd</code>  <em>(string)</em></p>
-<ul>
-<li>Working directory in which to execute the command</li>
-</ul>
-</li>
-</ul>
-<h4>z/OS Ssh Connection Options</h4>
-<ul>
-<li>
-<p><code>--host</code>  | <code>-H</code> <em>(string)</em></p>
-<ul>
-<li>The z/OS SSH server host name.</li>
-</ul>
-</li>
-<li>
-<p><code>--port</code>  | <code>-P</code> <em>(number)</em></p>
-<ul>
-<li>
-<p>The z/OS SSH server port.</p>
-<p>Default value: 22</p>
-</li>
-</ul>
-</li>
-<li>
-<p><code>--user</code>  | <code>-u</code> <em>(string)</em></p>
-<ul>
-<li>Mainframe user name, which can be the same as your TSO login.</li>
-</ul>
-</li>
-<li>
-<p><code>--password</code>  | <code>--pass</code> | <code>--pw</code> <em>(string)</em></p>
-<ul>
-<li>Mainframe password, which can be the same as your TSO password.</li>
-</ul>
-</li>
-<li>
-<p><code>--privateKey</code>  | <code>--key</code> | <code>--pk</code> <em>(string)</em></p>
-<ul>
-<li>Path to a file containing your private key, that must match a public key stored
-in the server for authentication</li>
-</ul>
-</li>
-<li>
-<p><code>--keyPassphrase</code>  | <code>--passphrase</code> | <code>--kp</code> <em>(string)</em></p>
-<ul>
-<li>Private key passphrase, which unlocks the private key.</li>
-</ul>
-</li>
-<li>
-<p><code>--handshakeTimeout</code>  | <code>--timeout</code> | <code>--to</code> <em>(number)</em></p>
-<ul>
-<li>How long in milliseconds to wait for the SSH handshake to complete.</li>
-</ul>
-</li>
-</ul>
-<h4>Profile Options</h4>
-<ul>
-<li>
-<p><code>--ssh-profile</code>  | <code>--ssh-p</code> <em>(string)</em></p>
-<ul>
-<li>The name of a (ssh) profile to load for this command execution.</li>
-</ul>
-</li>
-<li>
-<p><code>--base-profile</code>  | <code>--base-p</code> <em>(string)</em></p>
-<ul>
-<li>The name of a (base) profile to load for this command execution.</li>
-</ul>
-</li>
-</ul>
-<h4>Base Connection Options</h4>
-<ul>
-<li>
-<p><code>--reject-unauthorized</code>  | <code>--ru</code> <em>(boolean)</em></p>
-<ul>
-<li>
-<p>Reject self-signed certificates.</p>
-<p>Default value: true</p>
-</li>
-</ul>
-</li>
-<li>
-<p><code>--token-type</code>  | <code>--tt</code> <em>(string)</em></p>
-<ul>
-<li>The type of token to get and use for the API. Omit this option to use the
-default token type, which is provided by 'zowe auth login'.</li>
-</ul>
-</li>
-<li>
-<p><code>--token-value</code>  | <code>--tv</code> <em>(string)</em></p>
-<ul>
-<li>The value of the token to pass to the API.</li>
-</ul>
-</li>
-</ul>
-<h4>Examples</h4>
-<ul>
-<li>
-<p>Issue a simple command, giving the working directory:</p>
-<ul>
-<li><code>zowe  zos-uss issue ssh &quot;npm install express&quot; --cwd /u/cicprov/mnt/CICPY01I/bundles/myapp </code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  zos-uss issue ssh &quot;npm install express&quot; --cwd /u/cicprov/mnt/CICPY01I/bundles/myapp ">Copy</button></li>
 </ul>
 </li>
 </ul>

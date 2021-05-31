@@ -16,10 +16,9 @@ documentation.</p>
 <h4>Options</h4>
 <ul>
 <li>
-<p><code>--view-all-spool-content</code>  | <code>--vasc</code> <em>(boolean)</em></p>
+<p><code>--wait-for-active</code>  | <code>--wfa</code> <em>(boolean)</em></p>
 <ul>
-<li>Print all spool output. If you use this option you will wait the job to
-complete.</li>
+<li>Wait for the job to enter ACTIVE status before completing the command.</li>
 </ul>
 </li>
 <li>
@@ -29,9 +28,10 @@ complete.</li>
 </ul>
 </li>
 <li>
-<p><code>--wait-for-active</code>  | <code>--wfa</code> <em>(boolean)</em></p>
+<p><code>--view-all-spool-content</code>  | <code>--vasc</code> <em>(boolean)</em></p>
 <ul>
-<li>Wait for the job to enter ACTIVE status before completing the command.</li>
+<li>Print all spool output. If you use this option you will wait for the job to
+complete.</li>
 </ul>
 </li>
 <li>
@@ -39,13 +39,23 @@ complete.</li>
 <ul>
 <li>The local directory you would like to download the output of the job. Creates a
 subdirectory using the jobID as the name and files are titled based on DD
-names. If you use this option you will wait the job to complete.</li>
+names. If you use this option you will wait for the job to complete.</li>
 </ul>
 </li>
 <li>
 <p><code>--extension</code>  | <code>-e</code> <em>(string)</em></p>
 <ul>
 <li>A file extension to save the job output with. Default is '.txt'.</li>
+</ul>
+</li>
+<li>
+<p><code>--jcl-symbols</code>  | <code>--js</code> <em>(string)</em></p>
+<ul>
+<li>A string of JCL symbols to use for substitution. For symbol values with no
+spaces: &quot;symbol1=value1 symbol2=value2 ...&quot;. When a value contains spaces,
+enclose the value in single quotes: &quot;symbol1='value 1 with spaces'
+symbol2='value 2 with spaces' ...&quot;. To embed a single quote in a value, use
+two single quotes: &quot;NAME=O''Brian&quot;.</li>
 </ul>
 </li>
 </ul>
