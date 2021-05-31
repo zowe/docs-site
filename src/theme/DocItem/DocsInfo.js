@@ -30,6 +30,7 @@ function DocsInfo({ docsPluginId, ...props }) {
                 <>
                   :&nbsp;{" "}
                   <time
+                    className="margin-right--sm"
                     dateTime={new Date(
                       props.lastUpdatedAt * 1000
                     ).toISOString()}
@@ -37,10 +38,18 @@ function DocsInfo({ docsPluginId, ...props }) {
                     {new Date(props.lastUpdatedAt * 1000).toLocaleDateString()}
                   </time>
                   {props.lastUpdatedBy && " "}
-                  {<>&nbsp; |&nbsp;</>}
                 </>
               )}
-              <div>&nbsp;{props.readingTimeInWords}&nbsp;&nbsp;|</div>
+              |
+              {/* TODO:(perf) Reading time renders once the content component is mounted, thus it takes some time to load*/}
+              <div className="margin-left--sm margin-right--sm">
+                {props.readingTimeInWords ? (
+                  <>{props.readingTimeInWords}</>
+                ) : (
+                  <>0 min read</>
+                )}
+              </div>
+              |
               {props.lastUpdatedBy && (
                 <>
                   by <strong>{props.lastUpdatedBy}</strong>
@@ -50,8 +59,7 @@ function DocsInfo({ docsPluginId, ...props }) {
           )}
 
           {/* Edit URL */}
-          <div>
-            <>&nbsp;&nbsp;</>
+          <div className="margin-left--sm edit-this-page">
             {props.editUrl && (
               <a href={props.editUrl} target="_blank" rel="noreferrer noopener">
                 Edit this page
@@ -85,7 +93,7 @@ function DocsInfo({ docsPluginId, ...props }) {
             )}
           </div>
 
-          {/* Open Doc Button*/}
+          {/* Open Doc Issue Button*/}
           <div className="margin-right--md display-flex">
             {openDocIssueURL && (
               <a

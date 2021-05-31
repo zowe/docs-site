@@ -54,7 +54,6 @@ hr {
   
   html[data-theme="dark"] hr {
     --ifm-background-color: #252628;
-    /* FIXME: */
     border: var(--ifm-hr-border-width) solid var(--ifm-background-section-dark);
   }
 

@@ -308,4 +308,8 @@ html[data-theme="light"] .darkTheme {
   .user-options:nth-child(1) {
     display: initial;
   }
+  
+  .edit-this-page {
+    margin-left: 0rem !important;
+  }
 }
