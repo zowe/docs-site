@@ -240,4 +240,48 @@ EXTERNAL_COMPONENTS=some-other-extensions,myapp
 
 You might need to manually run the script `<INSTANCE_DIR>/bin/install-app.sh` if your component is a Desktop plug-in. Alternatively, you can choose to add this step to [Zowe component Configure lifecycle stage](lifecycling-with-zwesvstc.md#configure).
 
-When the Zowe instance is launched by running `<INSTANCE_DIR>/bin/zowe-start.sh`, it reads manifest `commands` instructions and calls the `/usr/lpp/myvendor/myapp/zowe-ext/bin/start.sh` script. The started task creates an address space under `ZWESVSTC` for the vendor component.  When the Zowe instance stops, the address space terminates.
+When the Zowe instance is launched by running `<INSTANCE_DIR>/bin/zowe-start.sh`, it will read manifest `commands` instructions and call the `/usr/lpp/myvendor/myapp/zowe-ext/bin/start.sh` script. The started task will create an address space under `ZWESVSTC` for the vendor component.  When the Zowe instance is stopped, the address space is terminated.
+
+
+## Verify with `zowe-verify-component.sh` (Technical Preview)
+
+<Badge text="Technical Preview"/>
+
+_Note: This section is for technical preview and we are happy to hear any feedback. Content in this section may be changed or improved in the future._
+
+_Note: This feature is added with Zowe v1.22.0 release._
+
+From Zowe v1.22.0, Zowe ships a `bin/zowe-verify-component.sh` tool to help you verify an installed Zowe server component (extension) for a Zowe instance. In order to be compatible with the tool, we recommend components follow [Zowe server component package format standard](packaging-zos-extensions.md#zowe-server-component-package-format) and define [Zowe component manifest](packaging-zos-extensions.md#zowe-component-manifest).
+
+The `zowe-verify-component.sh` script checks and verifies whether a specified component is up and running. You can use it to verify both core and external Zowe components.
+
+_IMPORTANT: To successfully verify whether a component service is registered on Zowe API Mediation Layer, this utility script requires authentication with a valid system user who has proper permission granted. For more information on the required user permission, please check [Protection of Service Information](../extend/extend-apiml/service-information.md#protection-of-service-information)._
+
+The tool can be executed from z/OS USS, and it takes these command line parameters:
+
+- **`-c|--component-id`**: (Required) Specifies the name of the Zowe component that you want to verify.
+- **`-i|--instance-dir`**: (Required) Specifies the path to the Zowe instance directory.
+- **`-u|--username`**: (Required) Username of a specified user for the current system.
+- **`-p|--password`**: (Required) Password of the specified user.
+
+**Examples**
+
+This command will verify the `external-zowe-component` installed in `/global/zowe/extensions` for the Zowe instance installed at `/var/zowe/instance`.
+
+```
+$ zowe-verify-component.sh \
+    -c external-zowe-component \
+    -i /var/zowe/instance \
+    -u user \
+    -p pass
+```
+
+You can also run the following commands to get the same results but instead of passing in values for the -u and -p parameters, you can use the export command.
+
+```
+$ export VERIFY_USER_NAME=user
+$ export VERIFY_PASSWORD=pass
+$ zowe-verify-component.sh \
+    -c external-zowe-component \
+    -i /var/zowe/instance
+```
