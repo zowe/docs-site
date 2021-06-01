@@ -13,6 +13,8 @@ The second part is the Zowe Cross Memory Server, an authorized server applicatio
 
 If you want to use Docker, instead follow this related page: [Installing Zowe Server Components using Docker](install-docker.md).   <Badge text="Technical Preview"/>
 
+If you want to use Zowe for high availability, instead follow this related page: [Installing Zowe Server Components in Sysplex](install-ha-sysplex.md).   <Badge text="Technical Preview"/>
+
 For more information on the Zowe components and how they are used to launch an instance of Zowe, see [Planning the installation](./installandconfig.md#planning-the-installation-of-zowe-z-os-components).
 
 Review the installation diagram and the introduction in this topic to see the general installation sequence and the most important tasks that are to be performed during installation and configuration. You can click each step on the diagram for detailed instructions.
