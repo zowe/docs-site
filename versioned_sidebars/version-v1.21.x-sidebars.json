@@ -542,77 +542,6 @@
       ]
     },
     {
-      "collapsed": true,
-      "type": "category",
-      "label": "Developing for Zowe Application Framework",
-      "items": [
-        {
-          "type": "doc",
-          "id": "version-v1.21.x/extend/extend-desktop/mvd-extendingzlux"
-        },
-        {
-          "type": "doc",
-          "id": "version-v1.21.x/extend/extend-desktop/mvd-plugindefandstruct"
-        },
-        {
-          "type": "doc",
-          "id": "version-v1.21.x/extend/extend-desktop/mvd-buildingplugins"
-        },
-        {
-          "type": "doc",
-          "id": "version-v1.21.x/extend/extend-desktop/mvd-installplugins"
-        },
-        {
-          "type": "doc",
-          "id": "version-v1.21.x/extend/extend-desktop/mvd-embeddingplugins"
-        },
-        {
-          "type": "doc",
-          "id": "version-v1.21.x/extend/extend-desktop/mvd-dataservices"
-        },
-        {
-          "type": "doc",
-          "id": "version-v1.21.x/extend/extend-desktop/mvd-authentication-api"
-        },
-        {
-          "type": "doc",
-          "id": "version-v1.21.x/extend/extend-desktop/mvd-internationalization"
-        },
-        {
-          "type": "doc",
-          "id": "version-v1.21.x/extend/extend-desktop/mvd-desktopandwindowmgt"
-        },
-        {
-          "type": "doc",
-          "id": "version-v1.21.x/extend/extend-desktop/mvd-configdataservice"
-        },
-        {
-          "type": "doc",
-          "id": "version-v1.21.x/extend/extend-desktop/mvd-uribroker"
-        },
-        {
-          "type": "doc",
-          "id": "version-v1.21.x/extend/extend-desktop/mvd-apptoappcommunication"
-        },
-        {
-          "type": "doc",
-          "id": "version-v1.21.x/extend/extend-desktop/mvd-iframecomm"
-        },
-        {
-          "type": "doc",
-          "id": "version-v1.21.x/extend/extend-desktop/mvd-errorreportingui"
-        },
-        {
-          "type": "doc",
-          "id": "version-v1.21.x/extend/extend-desktop/mvd-logutility"
-        },
-        {
-          "type": "doc",
-          "id": "version-v1.21.x/extend/extend-desktop/mvd-conda"
-        }
-      ]
-    },
-    {
       "type": "doc",
       "id": "version-v1.21.x/extend/extend-sdks"
     },
@@ -810,10 +739,6 @@
     {
       "type": "doc",
       "id": "version-v1.21.x/appendix/bill-of-materials"
-    },
-    {
-      "type": "doc",
-      "id": "version-v1.21.x/appendix/tpsr"
     }
   ]
 }

@@ -32,7 +32,7 @@ Applications within a Window Manager are created and acted upon in part by an Ap
 
 The following are functions of an Application Manager:
 
-- `spawnApplication(plugin: DesktopPluginDefinition, launchMetadata: any): Promise<MVDHosting.InstanceId>;`
+- ``spawnApplication(plugin: DesktopPluginDefinition, launchMetadata: any): Promise<MVDHosting.InstanceId>;``
 
   - Opens an application instance into the Window Manager, with or without context on what actions it should perform after creation.
 
