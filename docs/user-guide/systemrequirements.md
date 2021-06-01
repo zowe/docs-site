@@ -1,24 +1,22 @@
 # System requirements 
 
-Before installing Zowe&trade;, ensure that your environment meets the prerequisites.
+Before installing Zowe&trade;, ensure that your environment meets the prerequisites. Note that not all of the prerequisites below are needed. The prerequisites that you need depend on what Zowe components you want to use.
 
 - [z/OS system requirements (host)](#zos-system-requirements-host)
-  - [Zowe API Mediation Layer on z/OS requirements](#zowe-api-mediation-layer-on-zos-requirements-host)
-  - [Zowe Web Explorers and APIs on z/OS requirements](#zowe-web-explorers-and-apis-on-zos-requirements-host)
-  - [Zowe Application Framework on z/OS requirements](#zowe-application-framework-on-zos-requirements-host)
+    - [Zowe API Mediation Layer on z/OS requirements (host)](#zowe-api-mediation-layer-on-zos-requirements-host)
+    - [Zowe Web Explorers and APIs on z/OS requirements (host)](#zowe-web-explorers-and-apis-on-zos-requirements-host)
+    - [Zowe Application Framework on z/OS requirements (host)](#zowe-application-framework-on-zos-requirements-host)
     - [Important note for users upgrading to v1.14](#important-note-for-users-upgrading-to-v114)
-- [Docker requirements](#docker-requirements-host)
-- [Zowe Desktop requirements](#zowe-desktop-requirements-client)
+- [Docker requirements (host)](#docker-requirements-host)
+- [Zowe HA requirements (host)](#zowe-ha-requirements-host)
+- [Zowe Desktop requirements (client)](#zowe-desktop-requirements-client)
 - [Zowe CLI requirements](#zowe-cli-requirements)
-  - [Client-side](#client-side)
-  - [Host-side](#host-side)
-  - [Free disk space](#free-disk-space)
+    - [Client-side](#client-side)
+    - [Host-side](#host-side)
+    - [Free disk space](#free-disk-space)
 - [Feature requirements](#feature-requirements)
-  - [Multi-Factor Authentication (MFA)](#multi-factor-authentication-mfa)
-  - [Single Sign-On (SSO)](#single-sign-on-sso)
-
-
-**Please note: Not all of the prerequisites below are needed. The prerequisites needed depends on what components you want to use.**
+    - [Multi-Factor Authentication MFA](#multi-factor-authentication-mfa)
+    - [Single Sign-On SSO](#single-sign-on-sso)
 
 Zowe CLI operates independently of the Zowe z/OS component and is installed on a client PC that runs Windows, Linux, or Mac operating systems.  It can access z/OS endpoints such as z/OSMF, or can access FTP, CICS, DB2, and other z/OS services through plug-ins.  Unless required by plug-ins, the Zowe CLI does not require the Zowe server components to be installed.
 
@@ -118,7 +116,7 @@ When using Docker, z/OS is still required and if using the Application Framework
 
 ## Zowe HA requirements (host)
 
-Zowe high availability requires a Sysplex environment that consists of the following:
+Zowe high availability requires a Sysplex environment that consists of the following configurations:
 
 - One or more central processor complexes (CPCs) that can attach to a coupling facility
 
@@ -128,21 +126,21 @@ Zowe high availability requires a Sysplex environment that consists of the follo
 
 - Connection to shared DASD
 
-- Shared SAF database, see [Sharing a database with sysplex communication in data sharing mode](https://www.ibm.com/docs/en/zos/2.1.0?topic=sd-sharing-database-sysplex-communication-in-data-sharing-mode)
+- Shared SAF database. See [Sharing a database with sysplex communication in data sharing mode](https://www.ibm.com/docs/en/zos/2.1.0?topic=sd-sharing-database-sysplex-communication-in-data-sharing-mode) in IBM Docs.
 
 - Sysplex distributor, configured Dynamic VIPA TCP/IP address
 
-- VSAM record-level sharing (RLS), see [Preparing for VSAM record-level sharing](https://www.ibm.com/docs/en/zos/2.4.0?topic=sharing-preparing-vsam-record-level)
+- VSAM record-level sharing (RLS). See [Preparing for VSAM record-level sharing](https://www.ibm.com/docs/en/zos/2.4.0?topic=sharing-preparing-vsam-record-level) in IBM Docs.
 
-- USS Shared file system, see [How to share file systems in a Sysplex](https://www.ibm.com/docs/en/zos/2.4.0?topic=planning-sharing-file-systems-in-sysplex)
+- USS Shared file system. See [How to share file systems in a Sysplex](https://www.ibm.com/docs/en/zos/2.4.0?topic=planning-sharing-file-systems-in-sysplex) in IBM Docs.
 
 - JESPlex/JES2 Multi-Access Spool (MAS) environment
 
-- z/OSMF high availability, see [Configuring z/OSMF high availability in Sysplex](systemrequirements-zosmf-ha.md)
+- z/OSMF high availability. See [Configuring z/OSMF for high availability in Sysplex](systemrequirements-zosmf-ha.md).
 
 - Node.js v8.x (except v8.16.1), v12.x, or v14
 
-**Note:** It is highly recommended that Node.js installed on a shared file system.
+**Note:** It is highly recommended that you install Node.js on a shared file system.
 
 ## Zowe Desktop requirements (client)
 
