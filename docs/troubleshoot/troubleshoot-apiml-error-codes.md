@@ -931,6 +931,18 @@ The following error message codes may appear on logs or API responses. Use the f
 
   Make sure that the service is running and is accessible by the URL provided in the message.
 
+### ZWEAG710E
+
+  Load balancer does not have available server for client: %s
+
+  **Reason:**
+
+  The service is not available. It might be removed by the Circuit Breaker or by requesting specific instance that is not available
+
+  **Action:**
+
+  Try the request later or remove the request for specific instance.
+
 ### ZWEAG100E
 
   Authentication exception: '%s' for URL '%s'
