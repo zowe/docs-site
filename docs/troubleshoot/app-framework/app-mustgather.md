@@ -4,13 +4,10 @@ Gather the following information to troubleshoot Zowe&trade; Application Framewo
 
  - [z/OS release level](#z-os-release-level)
  - [Zowe version and release level](#zowe-version-and-release-level)
- - [Zowe application configuration](#zowe-application-configuration)
- - [Zowe Application Server Ports](#zowe-application-server-ports) 
  - [Log output from the Zowe Application Server](#log-output-from-the-zowe-application-server)
  - [Error message codes](#error-message-codes)
  - [JavaScript console output (Web Developer toolkit accessible by pressing F12)](#javascript-console-output)
  - [Screen captures (if applicable)](#screen-captures)
- - [Other relevant information (such as the version of Node.js that is running on the Zowe Application Server and the browser and browser version)](#other-relevant-information)
 
 ## z/OS release level
 To find the z/OS release level, issue the following command in SDSF:  
@@ -74,7 +71,7 @@ ls -lt
 
 **Output:**
 
-List of files by most recent timestamp for both nodeServer as well ZSS.
+List of files by most recent timestamp for both app-server as well ZSS.
 ```
 appServer-<yyyy-mm-dd-hh-mm>.log
 zssServer-<yyyy-mm-dd-hh-mm>.log
@@ -86,7 +83,8 @@ Warning messages contain the word "WARN", and errors contain "CRITICAL"
 
 ## Javascript console output
 
-Web Developer toolkit is accessible by pressing F12.      
+When the web UI such as the Zowe Desktop or Apps inside it have an issue, the root problem may originate from either server-side or browser-side behavior.
+In addition to the server logs, the browser logs should be gathered. They can be accessed by opening a browser's web developer toolkit. Most browsers allow this via pressing F12.
 
 Read more about it [here](https://developers.google.com/web/tools/chrome-devtools/open).
 
