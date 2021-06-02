@@ -394,7 +394,7 @@ additionalServiceMetadata:
 
     * **apiInfo.defaultApi**
         
-        (Optional) This paraemeter specifics that the API is the default one to show in the API Catalog. If this not set to true for any API, or multiple APIs have it set to true,
+        (Optional) This parameter specifics that the API is the default one to show in the API Catalog. If this not set to true for any API, or multiple APIs have it set to true,
         then the default API becomes the API with the highest major version as seen in `apiInfo.version`.
 
 * **customMetadata**
@@ -474,7 +474,7 @@ The following procedure describes how to add your service to the API Mediation L
 
     **Tip:** Wait for the services to be ready. This process may take a few minutes.
 
-4.  [Validate successful onboarding](./onboard-overview.md#validating-successful-onboarding)
+4.  [Validate successful onboarding](./onboard-overview.md#verify-successful-onboarding-to-the-api-ml)
 
     You successfully defined your Java application if your service is running and you can access the service endpoints. The following example is the service endpoint for the sample application:
 
@@ -507,7 +507,7 @@ After you define and validate the service in YAML format, you are ready to add y
 
 4. Restart Zowe runtime or follow steps in section [(Optional) Reload the services definition after the update when the API Mediation Layer is already started](#optional-reload-the-services-definition-after-the-update-when-the-api-mediation-layer-is-already-started) which allows you to add your static API service to an already running Zowe.  
 
-5.  [Validate successful onboarding](./onboard-overview.md#validating-successful-onboarding)
+5.  [Validate successful onboarding](./onboard-overview.md#verify-successful-onboarding-to-the-api-ml)
 
 You successfully defined your Java application if your service is running and you can access its endpoints. The endpoint displayed for the sample application is:
 ```

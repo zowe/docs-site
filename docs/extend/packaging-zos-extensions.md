@@ -27,7 +27,7 @@ where,
 
 - `manifest.yaml`: This is the Zowe component manifest file. You can find detailed definition of manifest in [Zowe Component Manifest](#zowe-component-manifest).
 - `apiml-static-registration.yaml.template`: This is a supporting file that instructs the Zowe launch script how to register this extension service to the API Mediation Layer Discovery service. In this case, this file is referred in the `manifest.yaml` `apimlServices.static[0].file` field. This file is optional depending on the function of the component and you can change and customize the file name in the manifest file.
-- `bin/(configure|start|validate).sh`: These are Zowe component lifecycle scripts. You may not need these files depending on the function of the component. You can find detailed definition of lifecycle scripts in [Zowe lifecycle](#zowe-runtime-lifecycle).
+- `bin/(configure|start|validate).sh`: These are Zowe component lifecycle scripts. You may not need these files depending on the function of the component. You can find detailed definition of lifecycle scripts in [Zowe component runtime lifecycle](lifecycling-with-zwesvstc.md#zowe-component-runtime-lifecycle).
 
 It is also suggested that you put the following files into the package:
 
