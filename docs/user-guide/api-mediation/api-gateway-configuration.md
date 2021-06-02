@@ -50,6 +50,32 @@ the following procedure to switch to SAF.
 
 Authentication requests now utilize SAF as the authentication provider. API ML can run without z/OSMF present on the system. 
 
+### Change password with SAF provider
+
+Update the user password using the SAF Authentication provider. To use this functionality, add the parameter `newPassword` on the login endpoint `/gateway/api/v1/auth/login`. The Gateway service returns a valid JWT with the response code `204` as a result of successful password change. The user is then authenticated and can consume APIs through the Gateway. If it is not possible to change the password for any reason, the response code is `401`. 
+
+Use a `POST` REST call against the URL `/gateway/api/v1/auth/login`:
+
+ ```
+ {
+ "username" : "<username>",
+ "password" : "<password>",
+ "newPassword" : "<newPassword>"
+}
+```
+
+**Note:**
+It is a common practice to set the limit for changing the password in the ESM. This value is set by the parameter `MINCHANGE` for `PASSWORD`. The password can be changed once. Subsequently, it is necessary to wait the specified time period before changing the password again.
+
+**Example:**
+
+`MINCHANGE=120`
+
+where:
+
+* **`120`**
+
+  Specifies the number of days before the password can be reset
 ## Gateway retry policy
 
 To change the Gateway retry policy, edit properties in the `<Zowe install directory>/components/gateway/bin/start.sh` file:
@@ -79,7 +105,7 @@ To change this default configuration, include the following parameters:
     
 ## Gateway client certificate authentication
 
-**Note:** Beginning with release 1.19 LTS, it is possible to authenticate using client certificates. The feature is functional and tested, but automated testing on various security systems is not complete. As such, the feature is provided as a beta release for early preview. If you would like to offer feedback using client certificate authentication, please create an issue against the api-layer repository. Client Certificate authentication will move out of Beta once test automation is fully implemented across different security systems.
+Beginning with release 1.19 LTS, it is possible to authenticate using client certificates. The feature is functional and tested, but automated testing on various security systems is not complete. As such, the feature is provided as a beta release for early preview. If you would like to offer feedback using client certificate authentication, please create an issue against the api-layer repository. Client Certificate authentication will move out of Beta once test automation is fully implemented across different security systems.
 
 Use the following procedure to enable the feature to use a client certificate as the method of authentication for the API Mediation Layer Gateway.
 
@@ -293,6 +319,8 @@ strictly define a provider. If verification is disabled, select the `endpoint` o
 ```
 APIML_SECURITY_AUTHORIZATION_PROVIDER=endpoint
 ```
+**Note:** To configure the `endpoint` provider, add the following additional property:
+`APIML_SECURITY_AUTHORIZATION_ENDPOINT_ENABLED=true`
 ```
 APIML_SECURITY_AUTHORIZATION_PROVIDER=native
 ```
