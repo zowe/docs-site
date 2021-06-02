@@ -49,61 +49,24 @@ Displays zowe version
 
 ```
 
-## Zowe application configuration
-
-Configuration file helps customize the Zowe app server, and is important to look at while you troubleshoot.
-
-```
-# navigate to zowe installation folder
-cd <zowe-installation-folder>
-
-# navigate to server configuration folder
-cd zlux-app-server/deploy/instance/ZLUX/serverConfig
-
-# display config
-cat zluxserver.json
-```
-
-Read more about the Zowe app server [configuration](../../user-guide/mvd-configuration.md) in the Zowe User Guide.
-
-## Zowe Application Server ports 
- 
- ```
-  # navigate to zowe installation folder
-  cd <zowe-installation-folder>
-
-  # navigate to install log directory
-  cd install_log
-  
-  # list file by most recent first
-  ls -lt
-
-  # pick latest file
-  cat 2019-05-02-17-13-09.log | grep ZOWE_ZLUX_SERVER_HTTPS_PORT
-  cat 2019-05-02-17-13-09.log | grep ZOWE_ZSS_SERVER_PORT
-
- ```
-
 ## Log output from the Zowe Application Server
 There are two major components of Zowe application server:  `ZLUX` and `ZSS`.  They log to different files.
 
-The default location for logs for both zlux and zss is folder `zlux-app-server/log`. You can customize the log location by using the environment variable.
+The default location for logs for both zlux and zss is folder `$INSTANCE_DIR/logs`, but can customize the log locations by using environment variables in $INSTANCE_DIR/instance.env
 
 ```
-env | grep ZLUX_NODE_LOG_DIR 
-env | grep ZSS_LOG_DIR  
+cat $INSTANCE_DIR/instance.env | grep ZLUX_NODE_LOG_DIR 
+cat $INSTANCE_DIR/instance.env | grep ZSS_LOG_DIR  
 ```
 
 Read more about controlling the log location [here](../../user-guide/mvd-configuration.html#controlling-the-logging-location).
 
 ```
-# navigate to zowe installation folder
-cd <zowe-installation-folder>
+# navigate to zowe instance logs folder
+cd <zowe-instance-folder>/logs
 
-# navigate to logs default location or custom location as described above
-cd zlux-app-server/log
-
-# custom log location can be found using environment variable
+# or if customized, navigate to the environment variable path
+cd $ZLUX_NODE_LOG_DIR
 
 # list file by most recent first
 ls -lt
@@ -113,12 +76,13 @@ ls -lt
 
 List of files by most recent timestamp for both nodeServer as well ZSS.
 ```
-nodeServer-<yyyy-mm-dd-hh-mm>.log
+appServer-<yyyy-mm-dd-hh-mm>.log
 zssServer-<yyyy-mm-dd-hh-mm>.log
 ```
 
 ## Error message codes
-It is advisable to look into log files for capturing error codes. 
+It is advisable to look into log files for capturing error codes.
+Warning messages contain the word "WARN", and errors contain "CRITICAL"
 
 ## Javascript console output
 
@@ -129,20 +93,3 @@ Read more about it [here](https://developers.google.com/web/tools/chrome-devtool
 ## Screen captures
 
 If possible, add a screen capture of the issue.
-
-## Other relevant information
-
-Node.js – v6.14.4 minimum for z/OS, elsewhere v6, v8, and v10 work well.
-```
-node -v
-```
-
-npm – v6.4 minimum
-```
-npm -v
-```
-
-Java – v8 minimum
-```
-java -version
-```
