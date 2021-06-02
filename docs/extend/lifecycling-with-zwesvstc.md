@@ -24,6 +24,10 @@ Each Zowe component will be installed with its own USS directory, which contains
 - Used for the base Zowe components that are included with the core Zowe runtime.
 - Applies to extensions to allow vendor offerings to be able to have the lifecycle of their 'microservices' within the Zowe USS shell and be included as address spaces under the `ZWESVSTC` started task.
 
+**Note:**
+
+All lifecycle scripts are executed from the root directory of the component. This directory is usually the parent directory of your `/bin` directory.
+
 ### Validate
 
 Each component can optionally instruct Zowe runtime to validate itself with a USS command defined in manifest `commands.validate`. If this is not defined, for backward compatible purpose, a call to its `/bin/validate.sh` script will be executed if it exists.
@@ -43,7 +47,9 @@ If the component has manifest defined, some configure actions will be performed 
 
 - `apimlServices.static`: Zowe runtime will automatically parse and add your static definition to API Mediation Layer.
 
-For backward compatible purpose, you can choose to configure component by yourself with `/bin/configure.sh`. An example configuration step is if a component wants to install applications into the Zowe desktop as iframes, or add API endpoints statically into the API Mediation Layer.  Because a component's `configure.sh` script is run inside the USS shell that the `instance.env` has initialized, it will have all of the shell variables for prerequisites set, so the configure step can be used to query these in order to prepare the component ready for launch.  
+For backward compatible purpose, you can choose to configure component by yourself with `/bin/configure.sh`. An example configuration step is if a component wants to install applications into the Zowe desktop as iframes, or add API endpoints statically into the API Mediation Layer.  Because a component's `configure.sh` script is run inside the USS shell that the `instance.env` has initialized, it will have all of the shell variables for prerequisites set, so the configure step can be used to query these in order to prepare the component ready for launch.
+
+From v1.20.0 or later, you can export configuration variables from the `configure` step to the `start` step. Each component runs in separated shell space, which means that the variable of one component does not affect the same variable of another component. For example, when you run `export MY_VAR=val` in `/bin/configure.sh`, then the variable `${MY_VAR}` will be available in your `/bin/start.sh` script. However, `${MY_VAR}` will not be available in other components.
 
 ### Start
 

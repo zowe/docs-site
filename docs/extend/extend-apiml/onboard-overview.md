@@ -8,7 +8,7 @@ This Onboarding Overview article addresses the following topics:
 
 - [Prerequisites](#prerequisites)
 - [Service Onboarding Guides](#service-onboarding-guides) to onboard your REST service with the API ML
-- [Validating successful onboarding](#validating-successful-onboarding)
+- [Verify successful onboarding to the API ML](#verify-successful-onboarding-to-the-api-ml)
 - Using the [Sample REST API Service](#sample-rest-api-service)  to learn how to onboard a REST service to the API ML 
 
 ## Prerequisites
@@ -45,6 +45,11 @@ Services can be updated to support the API Mediation Layer natively by updating 
 
 - [Onboard a REST API service with the Plain Java Enabler (PJE)](onboard-plain-java-enabler.md)
 - [Onboard a Spring Boot based REST API Service](onboard-spring-boot-enabler.md)
+- [Onboard a Micronaut based REST API service](onboard-micronaut-enabler.md)
+
+### Recommended guides for services using Node.js
+
+- [Onboard a Node.js based REST API Service](onboard-nodejs-enabler.md)
 
 ### Guides for Static Onboarding and Direct Call Onboarding
 
@@ -105,7 +110,7 @@ Verify that your service is discovered by the Discovery Service with the followi
                 <apiml.catalog.tile.description>Applications which demonstrate how to make a service integrated to the API Mediation Layer ecosystem</apiml.catalog.tile.description>
                 <apiml.service.title>Sample Service ©</apiml.service.title>
                 <apiml.routes.ui__v1.gatewayUrl>ui/v1</apiml.routes.ui__v1.gatewayUrl>
-                <apiml.apiInfo.0.apiId>org.zowe.sampleclient</apiml.apiInfo.0.apiId>
+                <apiml.apiInfo.0.apiId>zowe.apiml.sampleclient</apiml.apiInfo.0.apiId>
                 <apiml.apiInfo.0.gatewayUrl>api/v1</apiml.apiInfo.0.gatewayUrl>
                 <apiml.apiInfo.0.documentationUrl>https://www.zowe.org</apiml.apiInfo.0.documentationUrl>
                 <apiml.catalog.tile.id>samples</apiml.catalog.tile.id>
@@ -120,7 +125,7 @@ Verify that your service is discovered by the Discovery Service with the followi
     - Ensure that addresses and user credentials for individual API ML components correspond to your target runtime environment.
     - If you work with local installation of API ML and you use our dummy identity provider, enter `user` for both `username` and `password`. If API ML was installed by system administrators, ask them to provide you with actual addresses of API ML components and the respective user credentials.
 
-### Verifing service discovery through the API Catalog
+### Verifying service discovery through the API Catalog
 
  Services may not be immediately visible in the API Catalog. We recommend you wait for 2 minutes as it may take a moment for your service to be visible in the Catalog. If your service still does not appear in the Catalog, ensure that your configuration settings are correct.
 

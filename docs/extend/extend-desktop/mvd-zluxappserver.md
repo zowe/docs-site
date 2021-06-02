@@ -308,7 +308,7 @@ Within the server.json file, define or set **agent.http.port** to the port where
 When running the App Server with an Agent such as ZSS, you can either set the `server.json` with all info to connect to the Agent, or set that info via environment variable or command line arguments. The above sections detail `server.json` configuration, but the other ways to set the IP and port of the Agent are:
 
 1. Environment variable configuration
-Items in server.json can be substitued by environment variables that have a name that corresponds to each item. The pattern is 
+Items in server.json can be substituted by environment variables that have a name that corresponds to each item. The pattern is 
 
 `ZWED_json_key=value` where `ZWED_` is the prefix, and `json_key` is the name of the key. For example,
 
@@ -320,7 +320,7 @@ ZWED_node_https_ipAddresses=127.0.0.1,192.168.1.100
 This would override the `server.json` value of `agent.http.port` to be 9999, and `node.https.ipAddresses` to be ['127.0.0.1','192.168.1.100'].
 
 2. CLI argument configuration
-Items in server.json can also be substituded by arguments and flags. The pattern for arguments is
+Items in server.json can also be substituted by arguments and flags. The pattern for arguments is
 
 `-Djson.key=value`, where `-D` denotes an argument, and `json.key` is the name of the key. For example,
 
