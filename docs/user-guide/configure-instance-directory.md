@@ -175,7 +175,7 @@ Refer to detailed section about [API Gateway configuration](api-mediation/api-ga
 
 The following values are used to support high availability (HA) of Zowe.
 
-- `ZWE_DISCOVERY_SERVICES_LIST`: A comma-separated list of the `/eureka` endpoints for each Discovery Service instance. The default value is `https://${ZOWE_EXPLORER_HOST}:${DISCOVERY_PORT}/eureka/`.
+- `ZWE_DISCOVERY_SERVICES_LIST`: A comma-separated list of the endpoints for each Discovery Service instance. The default value is `https://${ZOWE_EXPLORER_HOST}:${DISCOVERY_PORT}/eureka/`.
 - `ZWE_CACHING_SERVICE_PORT=7555`: The port the Caching Service will use.
 - `ZWE_CACHING_SERVICE_PERSISTENT=VSAM`: This field sets the storage type used to persist data in the Caching Service. Valid options are `REDIS` or `VSAM`. `REDIS` is currently only supported as an off-Z storage solution. `VSAM` is only supported on Z.
 - `ZWE_CACHING_SERVICE_VSAM_DATASET`: This field sets the `VSAM` dataset name to be used to store Caching Service data. This field is required if `ZWE_CACHING_SERVICE_PERSISTENT` is set to `VSAM`, otherwise this field is not needed.
