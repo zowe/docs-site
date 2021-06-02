@@ -173,12 +173,12 @@ Refer to detailed section about [API Gateway configuration](api-mediation/api-ga
 
 ### High Availability
 
-The high availability (HA) feature of Zowe is under development and has not been fully delivered.  The following values are work in progress towards HA capability. They are not used and will be documented in more detail once HA support is finalized in a future Zowe release. 
+The following values are used to support high availability (HA) of Zowe.
 
-- `ZWE_DISCOVERY_SERVICES_LIST`: _(Work in progress)_ **Do not modify this value** from its supplied default of `https://${ZOWE_EXPLORER_HOST}:${DISCOVERY_PORT}/eureka/`. 
-- `ZWE_CACHING_SERVICE_PORT=7555`: _(Work in progress)_ This port is not yet used so the value does not need to be availale.
-- `ZWE_CACHING_SERVICE_PERSISTENT=VSAM`: _(Work in progress)_
-- `ZWE_CACHING_SERVICE_VSAM_DATASET`: _(Work in progress)_
+- `ZWE_DISCOVERY_SERVICES_LIST`: A comma-separated list of the `/eureka` endpoints for each Discovery Service instance. The default value is `https://${ZOWE_EXPLORER_HOST}:${DISCOVERY_PORT}/eureka/`.
+- `ZWE_CACHING_SERVICE_PORT=7555`: The port the Caching Service will use.
+- `ZWE_CACHING_SERVICE_PERSISTENT=VSAM`: This field sets the storage type used to persist data in the Caching Service. Valid options are `REDIS` or `VSAM`. `REDIS` is currently only supported as an off-Z storage solution. `VSAM` is only supported on Z.
+- `ZWE_CACHING_SERVICE_VSAM_DATASET`: This field sets the `VSAM` dataset name to be used to store Caching Service data. This field is required if `ZWE_CACHING_SERVICE_PERSISTENT` is set to `VSAM`, otherwise this field is not needed.
 
 ## Configuring a Zowe instance via `instance.env` file
 
