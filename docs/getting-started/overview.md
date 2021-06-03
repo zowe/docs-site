@@ -147,6 +147,7 @@ The API Mediation Layer provides a single point of access for mainframe service 
 * Consistent Access: API routing and standardization of API service URLs through the Gateway component provides users with a consistent way to access mainframe APIs at a predefined address.
 * Dynamic Discovery: The Discovery Service automatically determines the location and status of API services.
 * High-Availability: API Mediation Layer is designed with high-availability of services and scalability in mind.
+* Caching Service: This feature is designed for Zowe components in a high availability configuration. It supports the High Availability of all components within Zowe. Components either need to be stateless, or offload the state to a location accessible by all instances of the service, including those which just started.
 * Redundancy and Scalability: API service throughput is easily increased by starting multiple API service instances without the need to change configuration.
 * Presentation of Services: The API Catalog component provides easy access to discovered API services and their associated documentation in a user-friendly manner. Access to the contents of the API Catalog is controlled through a z/OS security facility.
 * Encrypted Communication: API ML facilitates secure and trusted communication across both internal components and discovered API services.
@@ -179,6 +180,10 @@ The API Catalog is the catalog of published API services and their associated do
 
 Access to the API Catalog can be protected with an Enterprise z/OS Security Manager such as IBM RACF, CA ACF2, or CA Top Secret. Only users who provide proper mainframe credentials can access the Catalog. Client authentication is implemented through the z/OSMF API.
 
+**Caching Service**
+
+The Caching Service provides an API in high availability mode which offers the possibility to store, retrieve and delete data that is associated with keys. The service will be used only by internal Zowe applications. It will not be exposed to the internet.
+
 #### Onboarding APIs
 Essential to the API Mediation Layer ecosystem is the API services that expose their useful APIs. Use the following topics to discover more about adding new APIs to the API Mediation Layer and using the API Catalog:
 
@@ -191,6 +196,12 @@ Essential to the API Mediation Layer ecosystem is the API services that expose t
 </details>
 
 To learn more about the architecture of Zowe, see [Zowe architecture](zowe-architecture.md).
+
+### Zowe Launcher
+
+Provides an advanced launcher for Zowe components in a high availability configuration. It performs the following operations:
+ - Stopping the Zowe server using the `STOP` (or `P`) operator command
+ - Stopping and starting specific Zowe components without restarting the entire Zowe using `MODIFY` (or `F`) operator command
 
 ## Zowe Third-Party Software Requirements and Bill of Materials
 

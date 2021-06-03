@@ -49,6 +49,7 @@
         "user-guide/install-nodejs-zos.md",
         "user-guide/systemrequirements-zosmf.md",
         "user-guide/systemrequirements-zosmf-lite.md",
+        "user-guide/systemrequirements-zosmf-ha.md",
         "user-guide/configure-uss.md"
       ]
       },
