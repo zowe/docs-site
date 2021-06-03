@@ -40,7 +40,8 @@ module.exports = {
         {
           type: "doc",
           label: "Extend",
-          docId: "extend/extend-zowe-overview",
+          docId: "extend/extend-apiml/api-mediation-security",
+          // docId: "extend/extend-zowe-overview", //TODO: present only from v1.11.x to v1.21.x
           position: "left",
         },
         {
@@ -52,13 +53,15 @@ module.exports = {
         {
           type: "doc",
           label: "Contribute",
-          docId: "contribute/roadmap-contribute",
+          docId: "contribute/contributing",
+          // docId: "contribute/roadmap-contribute", //TODO: only present in v1.20.x and v1.21.x
           position: "left",
         },
         {
           type: "doc",
           label: "Reference",
-          docId: "appendix/zowe-cli-command-reference",
+          docId: "appendix/bill-of-materials", //TODO: not present in v1.1.x to v1.3.x
+          // docId: "appendix/zowe-cli-command-reference", //TODO: not present in v1.1.x to v1.3.x
           position: "left",
         },
         {
