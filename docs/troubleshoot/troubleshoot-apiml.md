@@ -395,10 +395,12 @@ Externally the status of the API Gateway homepage will show ! icons against the 
 The Zowe desktop is able to start but logon fails.
  
 The log contains messages to indicate that connections are being reset. For example, the message below shows that the API Gateway `ZWEAG` is unable to connect to the API Discovery service, by default 7553.
- 
-     <ZWEAGW1:DiscoveryClient-InstanceInfoReplicator-0:16843005> ZWESVUSR INFO  (o.a.h.i.c.DefaultHttpClient) I/O exception (java.net.SocketException) caught when connecting to {s}->https://<host>:<disovery_server_port>: Connection reset
-      2021-01-26 15:21:43.302 <ZWEAGW1:DiscoveryClient-InstanceInfoReplicator-0:16843005> ZWESVUSR DEBUG (o.a.h.i.c.DefaultHttpClient) Connection reset
-      java.net.SocketException: Connection reset
+
+``` 
+<ZWEAGW1:DiscoveryClient-InstanceInfoReplicator-0:16843005> ZWESVUSR INFO  (o.a.h.i.c.DefaultHttpClient) I/O exception (java.net.SocketException) caught when connecting to {s}->https://<host>:<disovery_server_port>: Connection reset
+2021-01-26 15:21:43.302 <ZWEAGW1:DiscoveryClient-InstanceInfoReplicator-0:16843005> ZWESVUSR DEBUG (o.a.h.i.c.DefaultHttpClient) Connection reset
+java.net.SocketException: Connection reset
+```
 
 The Zowe desktop is able to be displayed in a browser but fails to logon.
  

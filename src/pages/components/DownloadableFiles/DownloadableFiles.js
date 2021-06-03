@@ -145,8 +145,8 @@ function DownloadableFile({
                   <ul
                     className={
                       clicked
-                        ? clsx("dropdown__menu pointer", styles.displayNone)
-                        : "dropdown__menu pointer"
+                        ? clsx(styles.displayNone)
+                        : clsx("dropdown__menu pointer thin-scrollbar", styles.overflow)
                     }
                     onMouseLeave={() => setClicked(false)}
                   >

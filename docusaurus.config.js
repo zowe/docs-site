@@ -58,7 +58,7 @@ module.exports = {
         {
           type: "doc",
           label: "Reference",
-          docId: "appendix/zowe-cli-commannd-reference",
+          docId: "appendix/zowe-cli-command-reference",
           position: "left",
         },
         {

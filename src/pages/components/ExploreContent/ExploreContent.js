@@ -68,7 +68,7 @@ const secondDataRow = [
   {
     title: "References",
     icon: "img/references-icon.png",
-    link: "stable/appendix/zowe-cli-commannd-reference",
+    link: "stable/appendix/zowe-cli-command-reference",
     description: (
       <>
         Get a list of reference materials to help you use Zowe, including the

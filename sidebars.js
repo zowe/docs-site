@@ -308,12 +308,12 @@ module.exports = {
         "contribute/contributing",
   ],
   reference: [
-    "appendix/zowe-cli-commannd-reference",
+    "appendix/zowe-cli-command-reference",
     "appendix/zowe-api-reference",
     "appendix/bill-of-materials",
-    "appendix/tpsr",
   ],
 };
 
+// "appendix/tpsr",
 //items should be array of only strings, or array of object and strings
 //the object should be 'string': array, not 'string': 'string'

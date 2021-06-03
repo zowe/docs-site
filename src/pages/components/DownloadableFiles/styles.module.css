@@ -10,6 +10,11 @@ html[data-theme="light"] .card {
   display: none;
 }
 
+.overflow {
+  height: 12rem;
+  overflow-y: auto;
+}
+
 html[data-theme="dark"] .card {
   background-color: var(--ifm-background-section-dark);
 }

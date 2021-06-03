@@ -19,7 +19,7 @@ After creating or obtaining the REST API war file:
     - _EX_:
       `scp /path/to/warfile <usrID>@<serverLocation>:<zowe_base>/explorer-server/wlp/usr/servers/Atlas/dropins/`
 
-::: tip
+:::tip
 Use the USS, IDZ, or IBM Explorer for z/OS to confirm that your files have transferred.
 :::
 
@@ -35,7 +35,7 @@ Use the USS, IDZ, or IBM Explorer for z/OS to confirm that your files have trans
 
 <img src={require("../../images/common/SampleMicroservesLook.png").default} alt="view" align="center"/>
 
-::: tip
+:::tip
 Make sure to set file transfer mode to binary before the transfer.
 After transferring the WAR file, check the permission on the file by running
 ls -la

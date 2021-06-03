@@ -105,7 +105,7 @@ User IDs   | User IDs require a TSO segment (access) and an OMVS segment. During
 
 - [Configure z/OS Management Facility for CA Top Secret](https://techdocs.broadcom.com/content/broadcom/techdocs/us/en/ca-mainframe-software/security/ca-top-secret-for-z-os/16-0/installing/configure-z-os-management-facility-for-ca-top-secret.html)
 
-- [Configure z/OS Management Facility for CA ACF2](https://techdocs.broadcom.com/content/broadcom/techdocs/us/en/ca-mainframe-software/security/ca-acf2-for-z-os/16-0/installing-and-implementing/configure-z-os-management-facility-for-ca-acf2.html)
+- [Configure z/OS Management Facility for CA ACF2](https://techdocs.broadcom.com/us/en/ca-mainframe-software/security/ca-acf2-for-z-os/16-0/installing/configure-z-os-management-facility-for-ca-acf2.html)
 
 ## z/OSMF REST services for the Zowe CLI
 The Zowe CLI uses z/OSMF Representational State Transfer (REST) APIs to work with system resources and extract system data. Ensure that the following REST services are configured and available.
