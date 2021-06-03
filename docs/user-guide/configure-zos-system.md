@@ -27,6 +27,7 @@ When you run the `ZWESECUR` JCL, it does not perform the following initializatio
 The `ZWESECUR` JCL performs the following initialization steps so you do not need to perform them manually if you have successfully run the JCL.  These steps are included for reference if you prefer to manually configure the z/OS environment or want to learn more about user IDs, groups, and associated security permissions that are required to operate Zowe.  
 - [User IDs and groups for the Zowe started tasks](#user-ids-and-groups-for-the-zowe-started-tasks)
 - [Configure ZWESVSTC to run under ZWESVUSR user ID](#configure-zwesvstc-to-run-under-zwesvusr-user-ID)
+- [Configure ZWESLSTC to run Zowe High Availability under ZWESVUSR user ID](#configure-zweslstc-to-run-under-zwesvusr-user-ID)
 - [Configure the cross memory server for SAF](#configure-the-cross-memory-server-for-saf)
 
 
@@ -64,9 +65,11 @@ The zssServer uses cookies that require random number generation for security. T
 
 If you have not configured your z/OS environment for ICSF, see [Cryptographic Services ICSF: System Programmer's Guide](https://www.ibm.com/support/knowledgecenter/en/SSLTBW_2.3.0/com.ibm.zos.v2r3.csfb200/abstract.htm) for more information.  To see whether ICSF has been started, check whether the started task `ICSF` or `CSF` is active.
 
+If you run Zowe High Availability on a Sysplex, ICSF needs to be configured in a Sysplex environment to share KDS data sets across systems in a Sysplex. For detailed information, see [Running in a Sysplex Environment](https://www.ibm.com/docs/en/zos/2.3.0?topic=guide-running-in-sysplex-environment)
+
 The Zowe z/OS environment configuration JCL member `ZWESECUR` does not perform any steps related to ICSF that is required for zssServer that the Zowe desktop uses. Therefore, if you want to use Zowe desktop, you must perform the steps that are described in this section manually.
 
-To generate symmetric keys, the `ZWESVUSR` user who runs `ZWESVSTC` requires READ access to `CSFRNGL` in the `CSFSERV` class.
+To generate symmetric keys, the `ZWESVUSR` user who runs Zowe server started task requires READ access to `CSFRNGL` in the `CSFSERV` class.
 
 Define or check the following configurations depending on whether ICSF is already installed:
 
@@ -140,11 +143,11 @@ Define or check the following configurations depending on whether ICSF is alread
 
 ## Configure security environment switching
     
-Typically, the user `ZWESVUSR` that the `ZWESVSTC` started task runs under needs to be able to change the security environment of its process to allow API requests to be issued on behalf of the logged on TSO user ID, rather than the server's user ID.  This capability provides the functionality that allows users to log on to the Zowe desktop and use apps such as the File Editor to list data sets or USS files that the logged on user is authorized to view and edit, rather than the user ID running the Zowe server. This technique is known as **impersonation**.  
+Typically, the user `ZWESVUSR` that the Zowe server started task runs under needs to be able to change the security environment of its process to allow API requests to be issued on behalf of the logged on TSO user ID, rather than the server's user ID.  This capability provides the functionality that allows users to log on to the Zowe desktop and use apps such as the File Editor to list data sets or USS files that the logged on user is authorized to view and edit, rather than the user ID running the Zowe server. This technique is known as **impersonation**.  
 
-To enable impersonation, you must grant the user ID `ZWESVUSR` associated with the `ZWESVSTC` started task UPDATE access to the `BPX.SERVER` and `BPX.DAEMON` profiles in the `FACILITY` class.
+To enable impersonation, you must grant the user ID `ZWESVUSR` associated with the Zowe server started task UPDATE access to the `BPX.SERVER` and `BPX.DAEMON` profiles in the `FACILITY` class.
 
-You can issue the following commands first to check whether you already have the impersonation profiles defined as part of another server configuration, such as the FTPD daemon. Review the output to confirm that the two impersonation profiles exist and the user `ZWESVUSR` who runs the `ZWESVSTC` started task has UPDATE access to both profiles.
+You can issue the following commands first to check whether you already have the impersonation profiles defined as part of another server configuration, such as the FTPD daemon. Review the output to confirm that the two impersonation profiles exist and the user `ZWESVUSR` who runs the Zowe server started task has UPDATE access to both profiles.
 
 - If you use RACF, issue the following commands:
     ```
@@ -168,7 +171,7 @@ You can issue the following commands first to check whether you already have the
     LIST BPX
     ```
 
-If the user `ZWESVUSR` who runs the ZWESVSTC started task does not have UPDATE access to both profiles follow the instructions below.
+If the user `ZWESVUSR` who runs the Zowe server started task does not have UPDATE access to both profiles follow the instructions below.
 
 - If you use RACF, complete the following steps:
       
@@ -184,14 +187,14 @@ If the user `ZWESVUSR` who runs the ZWESVSTC started task does not have UPDATE a
       ```
       RDEFINE FACILITY BPX.DAEMON UACC(NONE)                 
       ```             
-   3. Having activated and RACLIST the FACILITY class, the user ID `ZWESVUSR` who runs the ZWESVSTC started task must be given update access to the BPX.SERVER and BPX.DAEMON profiles in the FACILITY class.
+   3. Having activated and RACLIST the FACILITY class, the user ID `ZWESVUSR` who runs the Zowe server started task must be given update access to the BPX.SERVER and BPX.DAEMON profiles in the FACILITY class.
       ```
-      PERMIT BPX.SERVER CLASS(FACILITY) ID(<zwesvstc_user>) ACCESS(UPDATE)
+      PERMIT BPX.SERVER CLASS(FACILITY) ID(<zowe_stc_user>) ACCESS(UPDATE)
       ```
       ```
-      PERMIT BPX.DAEMON CLASS(FACILITY) ID(<zwesvstc_user>) ACCESS(UPDATE)
+      PERMIT BPX.DAEMON CLASS(FACILITY) ID(<zowe_stc_user>) ACCESS(UPDATE)
       ```
-      where <zwesvstc_user> is `ZWESVUSR` unless a different user ID is being used for the z/OS environment. 
+      where <zowe_stc_user> is `ZWESVUSR` unless a different user ID is being used for the z/OS environment. 
 
       /* Activate these changes */
 
@@ -207,17 +210,17 @@ If the user `ZWESVUSR` who runs the ZWESVSTC started task does not have UPDATE a
       ```
 - If you use CA Top Secret, complete the following steps:  
       
-   1. Define the BPX Resource and access for <zwesvstc_user>.
+   1. Define the BPX Resource and access for <zowe_stc_user>.
       ```
       TSS ADD(`owner-acid`) IBMFAC(BPX.)
       ```
       ```
-      TSS PERMIT(<zwesvstc_user>) IBMFAC(BPX.SERVER) ACCESS(UPDATE)
+      TSS PERMIT(<zowe_stc_user>) IBMFAC(BPX.SERVER) ACCESS(UPDATE)
       ```
       ```
-      TSS PERMIT(<zwesvstc_user>) IBMFAC(BPX.DAEMON) ACCESS(UPDATE)
+      TSS PERMIT(<zowe_stc_user>) IBMFAC(BPX.DAEMON) ACCESS(UPDATE)
       ```
-      where <zwesvstc_user> is `ZWESVUSR` unless a different user ID is being used for the z/OS environment.  
+      where <zowe_stc_user> is `ZWESVUSR` unless a different user ID is being used for the z/OS environment.  
    2. Issue the following commands and review the output to check whether permission has been successfully granted:
       ```
       TSS WHOHAS IBMFAC(BPX.SERVER)
@@ -226,17 +229,17 @@ If the user `ZWESVUSR` who runs the ZWESVSTC started task does not have UPDATE a
       TSS WHOHAS IBMFAC(BPX.DAEMON)
       ```
 - If you use CA ACF2, complete the following steps:
-   1. Define the BPX Resource and access for <zwesvstc_user>.
+   1. Define the BPX Resource and access for <zowe_stc_user>.
       ```
       SET RESOURCE(FAC)
       ```
       ```
-      RECKEY BPX ADD(SERVER ROLE(<zwesvstc_user>) SERVICE(UPDATE) ALLOW)
+      RECKEY BPX ADD(SERVER ROLE(<zowe_stc_user>) SERVICE(UPDATE) ALLOW)
       ```
       ```
-      RECKEY BPX ADD(DAEMON ROLE(<zwesvstc_user>) SERVICE(UPDATE) ALLOW)
+      RECKEY BPX ADD(DAEMON ROLE(<zowe_stc_user>) SERVICE(UPDATE) ALLOW)
       ```
-      where <zwesvstc_user> is `ZWESVUSR` unless a different user ID is being used for the z/OS environment.  
+      where <zowe_stc_user> is `ZWESVUSR` unless a different user ID is being used for the z/OS environment.  
       ```
       F ACF2,REBUILD(FAC)
       ```
@@ -250,7 +253,7 @@ If the user `ZWESVUSR` who runs the ZWESVSTC started task does not have UPDATE a
 
 ## Configure address space job naming
 
-The user ID `ZWESVUSR` that is associated with the Zowe started task `ZWESVSTC` must have `READ` permission for the `BPX.JOBNAME` profile in the `FACILITY` class. This is to allow setting of the names for the different z/OS UNIX address spaces for the Zowe runtime components. See [Address space names](configure-instance-directory.md#address-space-names).
+The user ID `ZWESVUSR` that is associated with the Zowe started task must have `READ` permission for the `BPX.JOBNAME` profile in the `FACILITY` class. This is to allow setting of the names for the different z/OS UNIX address spaces for the Zowe runtime components. See [Address space names](configure-instance-directory.md#address-space-names).
 
 To display who is authorized to the profile, issue the following command:
 ```
@@ -268,7 +271,7 @@ For more information, see [Setting up the UNIX-related FACILITY and SURROGAT cla
 
 ## Configure multi-user address space (for TSS only)
 
-The `ZWESVSTC` started task is multi-user address space, and therefore a TSS FACILITY needs to be defined and assigned to the started task. Then, all acids signing on to the started task will need to be authorized to the FACILITY.
+The Zowe server started task either `ZWESVSTC` or `ZWESLSTC` is multi-user address space, and therefore a TSS FACILITY needs to be defined and assigned to the started task. Then, all acids signing on to the started task will need to be authorized to the FACILITY.
 
 The following example shows how to create a new TSS FACILITY.
 
@@ -294,7 +297,7 @@ TSS ADD(user_acid) FAC(ZOWE)
 
 ## User IDs and groups for the Zowe started tasks
 
-Zowe requires a user ID `ZWESVUSR` to execute its main z/OS runtime started task `ZWESVSTC`. This user ID must have a valid OMVS segment.
+Zowe requires a user ID `ZWESVUSR` to execute its main z/OS runtime started task. This user ID must have a valid OMVS segment.
 
 Zowe requires a user ID `ZWESIUSR` to execute the cross memory server started task `ZWESISTC`. This user ID must have a valid OMVS segment.
 
@@ -371,6 +374,38 @@ If you have not run `ZWESECUR` and are configuring your z/OS environment manuall
   TSS ADDTO(STC) PROCNAME(ZWESVSTC) ACID(ZWESVUSR)
   ```
 
+## Configure ZWESLSTC to run Zowe High Availability under ZWESVUSR user ID
+
+You need Zowe started task `ZWESLSTC` for Zowe High Availability. When the Zowe started task `ZWESLSTC` is started, it must be associated with the user ID `ZWESVUSR` and group `ZWEADMIN`.  A different user ID and group can be used if required to conform with existing naming standards.
+
+If you have run `ZWESECUR`, you do not need to perform the steps described in this section, because they are executed during the JCL section of `ZWESECUR`.  
+```
+/* started task for ZOWE main server                   */
+...
+```
+
+If you have not run `ZWESECUR` and are configuring your z/OS environment manually, the following steps describe how to configure the started task `ZWESLSTC` to run under the correct user ID and group.  
+
+- If you use RACF, issue the following commands:
+  ```
+  RDEFINE STARTED ZWESLSTC.* UACC(NONE) STDATA(USER(ZWESVUSR) GROUP(ZWEADMIN) PRIVILEGED(NO) TRUSTED(NO) TRACE(YES))  
+  SETROPTS REFRESH RACLIST(STARTED)
+  ```
+
+- If you use CA ACF2, issue the following commands:
+
+  ```
+  SET CONTROL(GSO)
+  INSERT STC.ZWESLSTC LOGONID(ZWESVUSR) GROUP(ZWEADMIN) STCID(ZWESLSTC)
+  F ACF2,REFRESH(STC)
+  ```
+
+- If you use CA Top Secret, issue the following commands:
+
+  ```
+  TSS ADDTO(STC) PROCNAME(ZWESLSTC) ACID(ZWESVUSR)
+  ```
+
 ## Configure the cross memory server for SAF
 
 Zowe has a cross memory server that runs as an APF-authorized program with key 4 storage.  Client processes accessing the cross memory server's services must have READ access to a security profile `ZWES.IS` in the `FACILITY` class.  This authorization step is used to guard against access by non-priviledged clients.  
@@ -383,9 +418,9 @@ If you have run `ZWESECUR` you do not need to perform the steps described in thi
 
 If you have not run `ZWESECUR` and are configuring your z/OS environment manually, the following steps describe how to configure the cross memory server for SAF.
 
-Activate the FACILITY class, define a `ZWES.IS` profile, and grant READ access to the user ID `ZWESVUSR`.  This is the user ID that the Zowe started task `ZWESVSTC` runs under. 
+Activate the FACILITY class, define a `ZWES.IS` profile, and grant READ access to the user ID `ZWESVUSR`.  This is the user ID that the main Zowe started task runs under. 
     
-To do this, issue the following commands that are also included in the `ZWESECUR` JCL member. The commands assume that you run the `ZWESVSTC` under the `ZWESVUSR` user.
+To do this, issue the following commands that are also included in the `ZWESECUR` JCL member. The commands assume that you run the Zowe server under the `ZWESVUSR` user.
 
 - If you use RACF, issue the following commands:
 
@@ -407,9 +442,9 @@ To do this, issue the following commands that are also included in the `ZWESECUR
         RDEFINE FACILITY ZWES.IS UACC(NONE)
         ```
         ```
-        PERMIT ZWES.IS CLASS(FACILITY) ID(<zwesvstc_user>) ACCESS(READ)
+        PERMIT ZWES.IS CLASS(FACILITY) ID(<zowe_stc_user>) ACCESS(READ)
         ```
-        where `<zwesvstc_user>` is the user ID `ZWESVUSR` under which the ZWESVSTC started task runs.
+        where `<zowe_stc_user>` is the user ID `ZWESVUSR` under which the Zowe server started task runs.
         ```
         SETROPTS RACLIST(FACILITY) REFRESH
         ```
