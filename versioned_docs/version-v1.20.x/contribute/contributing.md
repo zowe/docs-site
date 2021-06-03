@@ -120,7 +120,7 @@ Style:
 
     Example: _myHost_
 
-- If wrap using angle brackets <> within code examples, italic font is not supported.
+- If wrap using angle brackets `<>` within code examples, italic font is not supported.
 
     Example:
     - put &lt;pax-file-name&gt;.pax
@@ -347,7 +347,7 @@ Use their English equivalents instead. Latin abbreviations are sometimes misunde
 Latin  | English equivalent
 ---|---
 e.g.  | for example
-  etc. | and so on. <br> When you list a clear sequence of elements such as "1, 2, 3, and so on" and "Monday, Tuesday, Wednesday, and so on." Otherwise, rewrite the sentence to replace "etc." with something more descriptive such as "and other output."
+  etc. | and so on. <br/> When you list a clear sequence of elements such as "1, 2, 3, and so on" and "Monday, Tuesday, Wednesday, and so on." Otherwise, rewrite the sentence to replace "etc." with something more descriptive such as "and other output."
 i.e.  | that is
 
 #### Spell out the full name and its abbreviation when the word appears for the first time. Use abbreviations in the texts that follow.
@@ -368,15 +368,15 @@ application  | app
 Capitalize "Server" when it's part of the product name |
 data set| dataset
 Java  |  java
-IBM z/OS Management Facility (z/OSMF) <br> z/OSMF   | zosmf (unless used in syntax)
+IBM z/OS Management Facility (z/OSMF) <br/> z/OSMF   | zosmf (unless used in syntax)
 ID| id
 PAX| pax
-personal computer <br> PC <br> server| machine
-later  | higher <br> Do not use to describe versions of software or fix packs.
+personal computer <br/> PC <br/> server| machine
+later  | higher <br/> Do not use to describe versions of software or fix packs.
 macOS| MacOS
-Node.js  | node.js <br> Nodejs
+Node.js  | node.js <br/> Nodejs
 plug-in| plugin
 REXX  | Rexx
-UNIX System Services <br> z/OS UNIX System Services  | USS
-zLUX  | ZLUX <br> zLux
+UNIX System Services <br/> z/OS UNIX System Services  | USS
+zLUX  | ZLUX <br/> zLux
 Zowe CLI|

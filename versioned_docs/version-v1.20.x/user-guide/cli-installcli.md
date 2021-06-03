@@ -25,13 +25,13 @@ If you do not have internet access at your site, use the following method to ins
 
 - **Node.js:** Install a currently supported Node.js LTS version. For an up-to-date list of supported LTS versions, see [Nodejs.org](https://nodejs.org/en/about/releases/).
 
-    ::: tip
+    :::tip
     You might need to restart the command prompt after installing Node.js. Issue the command `node --version` to verify that Node.js is installed.
     :::
 
 - **npm:** Install a version of Node Package Manager (npm) that is compatible with your version of Node.js.
 
-    ::: tip
+    :::tip
     Npm is included with most Node.js installations. Issue the command `npm --version` to check your current version. You can reference the [Node.js release matrix](https://nodejs.org/en/download/releases/) to verify that the versions are compatible.
     :::
 
@@ -87,13 +87,13 @@ If your computer is connected to the Internet, you can use the following method 
 
 - **Node.js:** Install a currently supported Node.js LTS version. For an up-to-date list of supported LTS versions, see [Nodejs.org](https://nodejs.org/en/about/releases/).
 
-    ::: tip
+    :::tip
     You might need to restart the command prompt after installing Node.js. Issue the command `node --version` to verify that Node.js is installed.
     :::
 
 - **npm:** Install a version of Node Package Manager (npm) that is compatible with your version of Node.js.
 
-    ::: tip
+    :::tip
     Npm is included with most Node.js installations. Issue the command `npm --version` to check your current version. You can reference the [Node.js release matrix](https://nodejs.org/en/download/releases/) to verify that the versions are compatible.
     :::
 
