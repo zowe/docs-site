@@ -36,7 +36,7 @@ The z/OS environment that Zowe CLI communicates with has some advantages that ar
 
   Conditional requisite for ssh connection.
 
-  ::: tip
+  :::tip
    - For non-production use of Zowe (such as development, proof-of-concept, demo),  you can customize the configuration of z/OSMF to create what is known as "z/OS MF Lite" that simplifies the setup of z/OSMF. As z/OS MF Lite only supports selected REST services (JES, DataSet/File, TSO and Workflow), you will observe considerable improvements in startup time as well as a reduction in the efforts involved in setting up z/OSMF. For information about how to set up z/OSMF Lite, see [Configuring z/OSMF Lite (non-production environment)](systemrequirements-zosmf-lite.md).
   - For production use of Zowe, see [Configuring z/OSMF](systemrequirements-zosmf.md).
   :::
@@ -97,13 +97,13 @@ Zowe CLI is supported on Windows, Linux, and Mac operating systems. Meet the fol
 
 - **Node.js:** Install a currently supported Node.js LTS version. For an up-to-date list of supported LTS versions, see [Nodejs.org](https://nodejs.org/en/about/releases/).
 
-    ::: tip
+    :::tip
     You might need to restart the command prompt after installing Node.js. Issue the command `node --version` to verify that Node.js is installed.
     :::
 
 - **npm:** Install a version of Node Package Manager (npm) that is compatible with your version of Node.js.
 
-    ::: tip
+    :::tip
     Npm is included with most Node.js installations. Issue the command `npm --version` to check your current version. You can reference the [Node.js release matrix](https://nodejs.org/en/download/releases/) to verify that the versions are compatible.
     :::
 

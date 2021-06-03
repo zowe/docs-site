@@ -13,7 +13,7 @@ Before installing Zowe&trade;, ensure that your environment meets the prerequisi
 
   z/OSMF is an optional prerequisite for Zowe.  It is recomended that z/OSMF is present to fully exploit Zowe's capabilities.  
   
-  ::: tip 
+  :::tip 
    - For non-production use of Zowe (such as development, proof-of-concept, demo),  you can customize the configuration of z/OSMF to create what is known as "z/OS MF Lite" that simplifies the setup of z/OSMF. As z/OS MF Lite only supports selected REST services (JES, DataSet/File, TSO and Workflow), you will observe considerable improvements in start up time as well as a reduction in the efforts involved in setting up z/OSMF. For information about how to set up z/OSMF Lite, see [Configuring z/OSMF Lite (non-production environment)](systemrequirements-zosmf-lite.md)
   - For production use of Zowe, see [Configuring z/OSMF](systemrequirements-zosmf.md). 
   :::

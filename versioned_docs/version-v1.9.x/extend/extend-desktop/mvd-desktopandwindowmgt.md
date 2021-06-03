@@ -37,7 +37,7 @@ The following are functions of an Application Manager:
 
 | Function | Description
 | --- | ---
-``spawnApplication(plugin: DesktopPluginDefinition, launchMetadata: any): Promise<MVDHosting.InstanceId>;`` |  Opens an application instance into the Window Manager, with or without context on what actions it should perform after creation.
+`spawnApplication(plugin: DesktopPluginDefinition, launchMetadata: any): Promise<MVDHosting.InstanceId>;` |  Opens an application instance into the Window Manager, with or without context on what actions it should perform after creation.
 `killApplication(plugin:ZLUX.Plugin, appId:MVDHosting.InstanceId): void;` |  Removes an application instance from the Window Manager.
 `showApplicationWindow(plugin: DesktopPluginDefinitionImpl): void;` | Makes an open application instance visible within the Window Manager.
 `isApplicationRunning(plugin: DesktopPluginDefinitionImpl): boolean;` | Determines if any instances of the application are open in the Window Manager.    

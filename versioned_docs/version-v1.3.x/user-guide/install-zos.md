@@ -279,7 +279,6 @@ To install Zowe API Mediation Layer, Zowe Application Framework, and z/OS Servic
       ```
       
 4. Select the ZOWESVR PROCLIB member.
-    <!-- TODO -->
     The `zowe-install.yaml` file contains the dataset name and member name of the ZOWESVR JCL to be used to run Zowe.  
 
     **Example:**
@@ -291,7 +290,7 @@ To install Zowe API Mediation Layer, Zowe Application Framework, and z/OS Servic
       dsName=auto
       memberName=ZOWESVR
     ```
-      <!-- TODO -->
+
     **Follow these steps:**
 
     a. Specify the dataset name of the PROCLIB member you want to use with the `dsName` tag.  For example,
@@ -359,7 +358,6 @@ To install Zowe API Mediation Layer, Zowe Application Framework, and z/OS Servic
 
     The script writes messages to your terminal window. The results are marked `OK`, `Info`, `Warning` or `Error`. Correct any reported errors and rerun the command to ensure that no errors exist before you run the `zowe-install.sh` script to install the Zowe runtime. The `zowe-check-prereqs.sh` script does not change any settings. You can run it as often as required before you run the install script.
     
-<!-- TODO -->
 7. Execute the `zowe-install.sh` script.
 
     With the current directory being the `/install` directory, execute the script `zowe-install.sh` by issuing the following command:
@@ -367,7 +365,6 @@ To install Zowe API Mediation Layer, Zowe Application Framework, and z/OS Servic
     ```
     zowe-install.sh  
     ```
-    <!-- Why not mention this before? or a part of preperation before the actual execution? -->
     You might receive the following error that the file cannot be executed:
 
     ```
@@ -393,7 +390,6 @@ To install Zowe API Mediation Layer, Zowe Application Framework, and z/OS Servic
     This error does not interfere with installation progress and can be remediated after the install completes. See [Trust z/OSMF Certificate](../extend/extend-apiml/api-mediation-security.md#trust-a-z-osmf-certificate) for more details.
     
 8. Configure Zowe as a started task.
-    <!-- TODO -->
     The ZOWESVR must be configured as a started task (STC) under the IZUSVR user ID.  You can do this after the `zowe-install.sh` script has completed by running the script `zowe-config-stc.sh`.  To run this script, use the `cd` command to switch to the `scripts` directory that is created by the `pax` command. For example:
 
      ```
@@ -403,7 +399,6 @@ To install Zowe API Mediation Layer, Zowe Application Framework, and z/OS Servic
     Alternatively, you can issue the commands manually:
     
     **Note:** You must replace `ZOWESVR` in the commands below with the name of your server that you specified as `memberName=ZOWESVR` in the `zowe-install.yaml` file.
-    <!-- TODO -->
     - If you use RACF, issue the following commands:
 
       ```
@@ -458,7 +453,6 @@ When the `zowe-install.sh` script runs, it performs a number of steps broken dow
      - `ZOWE_ZOSMF_PATH`: The path where z/OSMF is installed.  Defaults to `/usr/lpp/zosmf/lib/defaults/servers/zosmfServer`.
      - `ZOWE_JAVA_HOME`:  The path where 64 bit Java 8 or later is installed.  Defaults to `/usr/lpp/java/J8.0_64`.
      - `ZOWE_EXPLORER_HOST`: The hostname of where the explorer servers are launched from.  Defaults to running `hostname -c`.
-    <!-- TODO -->
     When you run the install script for the first time, the script attempts to locate environment variables. The install script creates a files named `.zowe_profile` that resides in the current user's home directory and adds lines that specify the values of the environment variables to the file. The next time you run the install script, it uses the same values in this file.
 
     Each time you run the install script, it retrieves environment variable settings in the following ways. 
@@ -485,7 +479,6 @@ When the `zowe-install.sh` script runs, it performs a number of steps broken dow
     The install process will execute the file `scripts/zowe-runtime-authorize.sh` in the Zowe runtime directory.  If the script is successful, the result is reported.  If for any reason the script fails to run because of insufficient authority by the user running the install, the install process reports the errors.  A user with sufficient authority should then run the `zowe-runtime-authorize.sh`.  If you attempt to start the Zowe runtime servers without the `zowe-runtime-authorize.sh` having successfully completed, the results are unpredictable and Zowe runtime startup or runtime errors will occur.  
 
 4. Creating the PROCLIB member to run the Zowe runtime
-    <!-- TODO -->
     **Note:**  The name of the PROCLIB member might vary depending on the standards in place at each z/OS site, however for this documentation, the PROCLIB member is called `ZOWESVR`.
 
     At the end of the installation, a Unix file `ZOWESVR.jcl` is created under the directory where the runtime is installed into, `$INSTALL_DIR/files/templates`. The contents of this file need to be tailored and placed in a JCL member of the PROCLIB concatenation for the Zowe runtime to be executed as a started task. The install script does this automatically.  If the user specifies `dsName=auto`, or omits the `dsName` tag, or sets it to null by coding `dsName=`,  the install script proceeds as follows and stops after the first successful write to the destination PROCLIB. 
@@ -505,7 +498,6 @@ When the `zowe-install.sh` script runs, it performs a number of steps broken dow
      ```
      Failed to put ZOWESVR.JCL in a PROCLIB dataset.
      ```
-    <!-- TODO -->
     In this case, you need to copy the PROC manually. Issue the TSO `oget` command to copy the `ZOWESVR.jcl` file to the preferred PROCLIB:  
 
      ```
@@ -771,8 +763,6 @@ The manual installation consists of the following steps.
    If the user who runs the ZWESIS01 started task does not have UPDATE access to both facilities, follow the instructions below.
 
    - If you use RACF, complete the following steps:
-      <details>
-      <summary>Click to Expand</summary>
 
       1. Activate and RACLIST the FACILITY class. This may have already been done on the z/OS environment if another z/OS server has been previously configured to take advantage of the ability to change its security environment, such as the FTPD daemon that is included with z/OS Communications Server TCP/IP services.  
          ```
@@ -796,10 +786,8 @@ The manual installation consists of the following steps.
          RLIST FACILITY BPX.SERVER AUTHUSER
          RLIST FACILITY BPX.DAEMON AUTHUSER
          ```
-      </details>
+      
     - If you use CA Top Secret, complete the following steps:  
-        <details>
-        <summary>Click to Expand</summary>
 
         1. Define the BPX Resource and access for IZUSVR.
            ```
@@ -812,10 +800,8 @@ The manual installation consists of the following steps.
            TSS WHOHAS IBMFAC(BPX.SERVER)
            TSS WHOHAS IBMFAC(BPX.DAEMON)
            ```
-       </details>
+       
     - If you use CA ACF2, complete the following steps:
-        <details>
-          <summary>Click to Expand</summary>
 
         1. Define the BPX Resource and access for IZUSVR.
            ```
@@ -829,7 +815,6 @@ The manual installation consists of the following steps.
            SET RESOURCE(FAC)
            LIST BPX
            ```
-        </details>
 
 ### Scripted install of the Zowe Cross Memory Server 
 <!-- TODO. Entire sub-section -->

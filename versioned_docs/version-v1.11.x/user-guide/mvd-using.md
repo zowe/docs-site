@@ -28,7 +28,7 @@ To log out, click the the avatar in the lower right corner and click **Sign Out*
  
 1. Click the personalization panel icon. 
 
-<img src="../images/mvd/settings.png"/>
+<img src={require("../images/mvd/settings.png").default} />
   
 2. Click the Change Password icon. 
 3. Fill out the Old Password and New Password fields.

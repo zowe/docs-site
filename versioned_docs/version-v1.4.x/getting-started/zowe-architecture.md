@@ -5,4 +5,4 @@ Zowe is a collection of components that together form a framework that allows Z 
 The following diagram depicts the high level Zowe architecture.
 
 
-<img src="../images/common/zowe-architecture.png" alt="Zowe Architecture Diagram" width="1400px"/> 
+<img src={require("../images/common/zowe-architecture.png").default} alt="Zowe Architecture Diagram" width="1400px"/> 

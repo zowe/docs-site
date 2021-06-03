@@ -60,7 +60,7 @@ The following tutorials are available in Github.
 
 Zowe allows extensions to be written in any UI framework through the use of an Iframe, or Angular and React natively. In this section, code samples of various use-cases will be provided with install instructions.
 
-::: warning Troubleshooting Suggestions:
+:::warning Troubleshooting Suggestions:
 If you are running into issues, try these suggestions:
 
 - Restart the Zowe Server/ VM.

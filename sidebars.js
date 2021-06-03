@@ -308,7 +308,7 @@ module.exports = {
         "contribute/contributing",
   ],
   reference: [
-    "appendix/zowe-cli-commannd-reference",
+    "appendix/zowe-cli-command-reference",
     "appendix/zowe-api-reference",
     "appendix/bill-of-materials",
   ],

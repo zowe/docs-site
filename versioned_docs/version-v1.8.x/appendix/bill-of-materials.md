@@ -71,7 +71,7 @@ The following materials are distributed with Zowe&trade; binaries:
 
 | File Path | Description | Source Location | Build Script(s) | 
 | --------- | ----------- | --------------- | --------------- |
-| <>/zowe-cli-package-*.zip | Zowe CLI Package containing the core Zowe CLI as well as Zowe CLI Plugins | Multiple open source repositories within [zowe](https://www.github.com/zowe) | [zowe-cli-standalone-package pipeline](https://github.com/zowe/zowe-cli-standalone-package/blob/master/Jenkinsfile) |  
+| `<>/zowe-cli-package-*.zip` | Zowe CLI Package containing the core Zowe CLI as well as Zowe CLI Plugins | Multiple open source repositories within [zowe](https://www.github.com/zowe) | [zowe-cli-standalone-package pipeline](https://github.com/zowe/zowe-cli-standalone-package/blob/master/Jenkinsfile) |  
 | licenses/zowe_licenses_full.zip | License archive for Zowe third party dependencies | n/a | Build coming soon |  
 | zowe-cli-*.tgz | Zowe CLI | [zowe-cli](https://github.com/zowe/zowe-cli/) | [zowe-cli pipeline](https://github.com/zowe/zowe-cli/blob/master/Jenkinsfile) |
 | zowe-cics-*.tgz | Zowe CLI Plug-in for IBM® CICS® | [zowe-cli-cics-plugin](https://github.com/zowe/zowe-cli-cics-plugin) | [zowe-cli-cics-plugin pipeline](https://github.com/zowe/zowe-cli-cics-plugin/blob/master/Jenkinsfile) | 

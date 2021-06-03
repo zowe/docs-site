@@ -1,4 +1,4 @@
-# Zowe Binaries - Bill of Materials
+<!-- # Zowe Binaries - Bill of Materials
 
 The following materials are distributed with Zowe binaries:
 
@@ -76,4 +76,4 @@ The following materials are distributed with Zowe binaries:
 | zowe-cli-*.tgz | Zowe CLI | [zowe-cli](https://github.com/zowe/zowe-cli/) | [zowe-cli pipeline](https://github.com/zowe/zowe-cli/blob/master/Jenkinsfile) |
 | zowe-cics-*.tgz | Zowe CLI Plug-in for IBM® CICS® | [zowe-cli-cics-plugin](https://github.com/zowe/zowe-cli-cics-plugin) | [zowe-cli-cics-plugin pipeline](https://github.com/zowe/zowe-cli-cics-plugin/blob/master/Jenkinsfile) | 
 | zowe-db2-*.tgz | Zowe CLI Plug-in for IBM® Db2® for z/OS® | [zowe-cli-db2-plugin](https://github.com/zowe/zowe-cli-db2-plugin) | [zowe-cli-db2-plugin pipeline](https://github.com/zowe/zowe-cli-db2-plugin/blob/master/Jenkinsfile) | 
-    
+     -->

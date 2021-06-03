@@ -631,8 +631,6 @@ To manually install the Cross Memory Server, take the following steps:
    If the user who runs the ZOWESVR started task does not have UPDATE access to both facilities, follow the instructions below.
 
    - If you use RACF, complete the following steps:
-      <details>
-      <summary>Click to Expand</summary>
 
       1. Activate and RACLIST the FACILITY class. This may have already been done on the z/OS environment if another z/OS server has been previously configured to take advantage of the ability to change its security environment, such as the FTPD daemon that is included with z/OS Communications Server TCP/IP services.  
          ```
@@ -666,11 +664,8 @@ To manually install the Cross Memory Server, take the following steps:
          ```
          RLIST FACILITY BPX.DAEMON AUTHUSER
          ```
-      </details>
 
     - If you use CA Top Secret, complete the following steps:  
-      <details>
-      <summary>Click to Expand</summary>
 
       1. Define the BPX Resource and access for <zss_server_user>.
            ```
@@ -689,11 +684,8 @@ To manually install the Cross Memory Server, take the following steps:
            ```
            TSS WHOHAS IBMFAC(BPX.DAEMON)
            ```
-      </details>
 
     - If you use CA ACF2, complete the following steps:
-      <details>
-      <summary>Click to Expand</summary>
 
       1. Define the BPX Resource and access for <zowesvr_user>.
            ```
@@ -715,7 +707,6 @@ To manually install the Cross Memory Server, take the following steps:
            ```
            LIST BPX
            ```
-      </details>
 
 ### Installing the Cross Memory Server using the script
 

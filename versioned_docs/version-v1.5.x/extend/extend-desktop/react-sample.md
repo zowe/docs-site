@@ -6,7 +6,7 @@
 
 For this section we have provided a react sample (through an Iframe), which connects to the API defined in the API extension sample.
 
-::: tip
+:::tip
 Make sure that you first expose an API to connect to before following the steps below. To use the sample provided, first complete the steps listed in [API extension sample](../extend-api/liberty-api-sample.md).
 :::
 
@@ -50,7 +50,7 @@ Make sure that your new plug-in was added and that it can interact with the serv
 
 If it is not able to interact with the server and you are getting CORS errors, you might need to update the server to accept all connections.
 
-::: warning
+:::warning
 Note: This is for development purposes only.
 :::
 

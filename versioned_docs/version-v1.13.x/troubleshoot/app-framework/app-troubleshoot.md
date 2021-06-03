@@ -47,7 +47,7 @@ There are two known problems that might cause this error.  The [Zowe architectur
 1. The zssServer connection to the `ZWESISTC` started task using cross memory communication. If this fails, see [zssServer unable to communicate with X-MEM](#zss-server-unable-to-communicate-with-x-mem).
 2. The Zowe Desktop ZLUX server connection to the zssServer across the default port 8542. If this fails, see [ZLUX unable to communicate with zssServer](#zlux-unable-to-communicate-with-zssserver). 
 
-<img src="../../images/common/zowe-desktop-unable-to-logon.png" alt="Zowe Desktop Unable to logon.png" width="700px"/> 
+<img src={require("../../images/common/zowe-desktop-unable-to-logon.png").default} alt="Zowe Desktop Unable to logon.png" width="700px"/> 
 
 
 ### ZSS server unable to communicate with X-MEM

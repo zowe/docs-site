@@ -50,8 +50,8 @@ In order to onboard a REST API with the Zowe ecosystem, you add the Zowe Artifac
 
       **Example:**
       ```
-         # Artifactory repositories for builds
-         artifactoryMavenRepo=https://zowe.jfrog.io/zowe/libs-release
+      # Artifactory repositories for builds
+      artifactoryMavenRepo=https://zowe.jfrog.io/zowe/libs-release
       ```
 
     * In a Maven build system, follow these steps:
@@ -95,11 +95,11 @@ In order to onboard a REST API with the Zowe ecosystem, you add the Zowe Artifac
      * If you use Spring Boot release 1.5.x in a Maven build system, add the following code to the `pom.xml` file:
 
     ```
-        <dependency>
-              <groupId>com.ca.mfaas.sdk</groupId>
-              <artifactId>mfaas-integration-enabler-spring-v1-springboot-1.5.9.RELEASE</artifactId>
-              <version>0.3.0-SNAPSHOT</version>
-        </dependency>
+    <dependency>
+          <groupId>com.ca.mfaas.sdk</groupId>
+          <artifactId>mfaas-integration-enabler-spring-v1-springboot-1.5.9.RELEASE</artifactId>
+          <version>0.3.0-SNAPSHOT</version>
+    </dependency>
     ```
      * If you use the Spring Boot release 2.0.x in a Gradle build system, add the following code to the `build.gradle` file into the `dependencies` block:   
         ```
@@ -432,7 +432,9 @@ To register with the API Mediation Layer, a service is required to have a certif
 
     When a service is running on localhost, the command can have the following format:
 
-       <api-layer-repository>/scripts/apiml_cm.sh --action new-service --service-alias localhost --service-ext SAN=dns:localhost.localdomain,dns:localhost --service-keystore keystore/localhost.keystore.p12 --service-truststore keystore/localhost.truststore.p12 --service-dname "CN=Sample REST API Service, OU=Mainframe, O=Zowe, L=Prague, S=Prague, C=Czechia" --service-password password --service-validity 365 --local-ca-filename <api-layer-repository>/keystore/local_ca/localca    
+       ```
+       <api-layer-repository>/scripts/apiml_cm.sh --action new-service --service-alias localhost --service-ext SAN=dns:localhost.localdomain,dns:localhost --service-keystore keystore/localhost.keystore.p12 --service-truststore keystore/localhost.truststore.p12 --service-dname "CN=Sample REST API Service, OU=Mainframe, O=Zowe, L=Prague, S=Prague, C=Czechia" --service-password password --service-validity 365 --local-ca-filename <api-layer-repository>/keystore/local_ca/localca
+       ```
 
     Alternatively, for the purpose of local development, copy or use the `<api-layer-repository>/keystore/localhost.truststore.p12` in your service without generating a new certificate.
 

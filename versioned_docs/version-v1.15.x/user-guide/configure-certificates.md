@@ -26,7 +26,7 @@ If you wish to disable the trust store validation of southbound certificates, yo
 
 The [Zowe architecture diagram](../getting-started/zowe-architecture.md) shows the Zowe API Mediation Layer positioned on the client-server boundary between applications such as web browsers or the Zowe CLI accessing z/OS services.  The following diagram is a section of the architecture annotated to describe the role of certificates and trust stores.  
 
-<img src="../images/common/zowe-ssl.png" alt="Zowe SSL" width="700px"/> 
+<img src={require("../images/common/zowe-ssl.png").default} alt="Zowe SSL" width="700px"/> 
 
 The lines shown in bold red are communication over a TCP/IP connection that is encrypted with the Zowe certificate.  
 - On the northbound edge of the API gateway, the certificate is used between client applications such as web browsers, Zowe CLI, or any other application wishing to access Zowe's REST APIs.  
