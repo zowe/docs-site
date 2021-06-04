@@ -40,8 +40,8 @@ module.exports = {
         {
           type: "doc",
           label: "Extend",
-          docId: "extend/extend-apiml/api-mediation-security",
-          // docId: "extend/extend-zowe-overview", //TODO: present only from v1.11.x to v1.21.x
+          // docId: "extend/extend-apiml/api-mediation-security",
+          docId: "extend/extend-zowe-overview", //TODO: present only from v1.11.x to v1.21.x
           position: "left",
         },
         {
@@ -54,14 +54,14 @@ module.exports = {
           type: "doc",
           label: "Contribute",
           docId: "contribute/contributing",
-          // docId: "contribute/roadmap-contribute", //TODO: only present in v1.20.x and v1.21.x
+          docId: "contribute/roadmap-contribute", //TODO: only present in v1.20.x and v1.21.x
           position: "left",
         },
         {
           type: "doc",
           label: "Reference",
-          docId: "appendix/bill-of-materials", //TODO: not present in v1.1.x to v1.3.x
-          // docId: "appendix/zowe-cli-command-reference", //TODO: not present in v1.1.x to v1.3.x
+          // docId: "appendix/bill-of-materials",
+          docId: "appendix/zowe-cli-command-reference", //TODO: not present in v1.1.x to v1.3.x
           position: "left",
         },
         {
@@ -146,8 +146,8 @@ module.exports = {
       id: "support_us", // Any value that will identify this message.
       content:
         '<a target="_blank" rel="noopener noreferrer" href="https://github.com/zowe/docs-site/issues/new/choose">Let us know</a> what you think about the new Zowe docs experience!',
-      backgroundColor: "#fafbfc", // Defaults to `#fff`.
-      textColor: "#091E42", // Defaults to `#000`.
+      backgroundColor: "#fafbfc",
+      textColor: "#091E42",
       isCloseable: true,
     },
     algolia: {
@@ -197,8 +197,6 @@ module.exports = {
         theme: {
           customCss: require.resolve("./src/css/custom.css"),
         },
-        // pages: {},
-        // sitemap: {},
       },
     ],
   ],

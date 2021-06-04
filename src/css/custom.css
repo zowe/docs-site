@@ -71,7 +71,7 @@ html[data-theme='dark'] .navbar-github-link:before {
 }
 
 .navbar__item.dropdown.dropdown--hoverable .dropdown__menu {
-  height: 50vh;
+  height: calc(45*5px);
   overflow-y: auto;
 }
 
@@ -187,7 +187,16 @@ summary:before {
   text-align: center;
   line-height: 32px;
   font-weight: 500;
-  border-radius: var(--ifm-global-radius);
+}
+
+.docsRating .text--left {
+  padding: 16px;
+  background-color: #f6f8fa;
+  border-radius: var(--ifm-badge-border-radius)
+}
+
+html[data-theme="dark"] .docsRating .text--left {
+  color: black;
 }
 
 .docsRating svg {
