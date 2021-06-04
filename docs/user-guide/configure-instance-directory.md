@@ -25,7 +25,7 @@ Navigate to the Zowe runtime directory `<RUNTIME_DIR>` and execute the following
 
 Multiple instance directories can be created and used to launch independent Zowe runtimes from the same Zowe runtime directory.  
 
-The Zowe instance directory contains a file `instance.env` that stores configuration data. The data is read each time Zowe is started.  
+The Zowe instance directory contains a file `instance.env` that stores configuration data. The data is read each time Zowe is started. Alternatively, from v1.22.0 release, a YAML format configuration file `zowe.yaml` can be used to configure Zowe runtime instead of `instance.env`. To learn more about `zowe.yaml`, please check [Reviewing the zowe.yaml file](#reviewing-the-zowe-yaml-file-technical-preview) section.
 
 The purpose of the instance directory is to hold information in the z/OS File System (zFS) that is created (such as log files) or modified (such as preferences) or configured (such as port numbers) away from the zFS runtime directory for Zowe.  This allows the runtime directory to be read-only and to be replaced when a new Zowe release is installed, with customizations being preserved in the instance directory.  
 
@@ -41,6 +41,36 @@ In order to allow the `ZWESVSTC` started task to have permission to acces the co
 
 To operate Zowe, a number of zFS folders need to be located for prerequisites on the platform. Default values are selected when you run `zowe-configure-instance.sh`. You might want to modify the values.
 
+### Zowe prerequisites
+
+- `JAVA_HOME`:  The path where 64-bit Java 8 or later is installed.  Only needs to be specified if not already set as a shell variable.  Defaults to `/usr/lpp/java/J8.0_64`.
+- `NODE_HOME`:  The path to the Node.js runtime.  Only needs to be specified if not already set as a shell variable.  
+- `ROOT_DIR`: The directory where the Zowe runtime is located, also referred to as the `<RUNTIME_DIR>`.  Defaults to the location of where `zowe-configure-instance` was executed. 
+- `ZOSMF_PORT`: The port used by z/OSMF REST services.  Defaults to value determined through running `netstat`.
+- `ZOSMF_HOST`: The host name of the z/OSMF REST API services.
+
+- `ZOWE_EXPLORER_HOST`: The hostname of where the Explorer servers are launched from.  Defaults to running `hostname -c`.  Ensure that this host name is externally accessible from clients who want to use Zowe as well as internally accessible from z/OS itself.  
+- `ZOWE_IP_ADDRESS`:  The IP address of your z/OS system which must be externally accessible to clients who want to use Zowe.  This is important to verify for IBM Z Development & Test Environment and cloud systems, where the default that is determined through running `ping` and `dig` on z/OS returns a different IP address from the external address.  
+
+### Domain, Hostname and IP Address
+
+- `ZOWE_EXPLORER_HOST`: The hostname of where the Explorer servers are launched from.  Defaults to running `hostname -c`.  Ensure that this host name is externally accessible from clients who want to use Zowe as well as internally accessible from z/OS itself.  
+- `ZOWE_IP_ADDRESS`:  The IP address of your z/OS system which must be externally accessible to clients who want to use Zowe.  This is important to verify for IBM Z Development & Test Environment and cloud systems, where the default that is determined through running `ping` and `dig` on z/OS returns a different IP address from the external address.  
+
+When configuring a Zowe instance through the `instance.env` file, `ZOWE_IP_ADDRESS` and `ZOWE_EXPLORER_HOST` are used to specify where the Zowe servers can be reached. 
+
+However, these values may not reflect the website name that you access Zowe from. This is especially true in the following cases:
+- You are using a proxy
+- The URL is a derivative of the value of `ZOWE_EXPLORER_HOST`, such as `myhost` versus `myhost.mycompany.com`
+
+In these cases, it may be necessary to specify a value for `ZWE_EXTERNAL_HOSTS` in the form of a comma-separated list of the addresses from which you want to access Zowe in your browser. 
+
+In the previous example, `ZWE_EXTERNAL_HOSTS` could include both `myhost` and `myhost.mycompany.com`. In the `instance.env`, this would look like: `ZWE_EXTERNAL_HOSTS=myhost,myhost.mycompany.com`
+
+This configuration value maybe used for multiple purposes, including referrer-based security checks. In the case that the values are not specified, referrer checks will use the default values of `ZOWE_IP_ADDRESS`, `ZOWE_EXPLORER_HOST`, and the system's hostname. Therefore, if these values are not what you put into your browser, you will want to specify `ZWE_EXTERNAL_HOSTS` to set the correct value. 
+
+- `ZOWE_EXPLORER_FRAME_ANCESTORS`: The MVS, USS, and JES Explorer are served by their respective explorer UI address spaces.  These are accessed through the Zowe desktop where they are hosted as iFrames.  To protect against double iFrame security vulnerabilities, browsers all of the valid address that may be used by the browser must be explicitly declared in this property.  The default values are: `"${ZOWE_EXPLORER_HOST}:*,${ZOWE_IP_ADDRESS}:*"`. If there are any other URLs by which the Zowe Explorers can be served, then these should be appended to the preceding comma-separated list.
+
 ### Component groups
 
 `LAUNCH_COMPONENT_GROUPS`: This is a comma-separated list of which z/OS microservice groups are started when Zowe launches. 
@@ -50,18 +80,6 @@ To operate Zowe, a number of zFS folders need to be located for prerequisites on
   - Vendor products may extend Zowe with their own component group that they want to be lifecycled by the Zowe `ZWESVSTC` started task and run as a Zowe sub address space.  To do this, specify the fully qualified directory provided by the vendor that contains their Zowe extension scripts.  This directory will contain a `start.sh` script **(required)** that is called when the `ZWESVSTC` started task is launched, a `configure.sh` script **(optional)** that performs any configuration steps such as adding iFrame plug-ins to the Zowe desktop, and a `validate.sh` script **(optional)** that can be used to perform any pre-launch validation such as checking system prerequisites. For more information about how a vendor can extend Zowe with a sub address space, see the [Extending](../extend/extend-apiml/onboard-overview.md) section.
 
 **Note: If you are using Docker, it is recommended to remove GATEWAY and DESKTOP from LAUNCH_COMPONENT_GROUPS by setting `LAUNCH_COMPONENT_GROUPS=ZSS`. This will prevent duplication of servers running both in Docker and on z/OS.** <Badge text="Technical Preview"/>
-
-### Component prerequisites
-
-- `JAVA_HOME`:  The path where 64-bit Java 8 or later is installed.  Only needs to be specified if not already set as a shell variable.  Defaults to `/usr/lpp/java/J8.0_64`.
-- `NODE_HOME`:  The path to the Node.js runtime.  Only needs to be specified if not already set as a shell variable.  
-- `SKIP_NODE` : When Zowe starts, it checks whether the `NODE_HOME` path is a valid node runtime. If not, it will prompt for the location of where node can be located.  Specify a value of `1` to bypass this step, or `0` for the check to occur. This may be useful in an automation scenario where the `zowe-start.sh` script is run unattended and the makeup of the components being launched does not require a node runtime.  
-- `ROOT_DIR`: The directory where the Zowe runtime is located, also referred to as the `<RUNTIME_DIR>`.  Defaults to the location of where `zowe-configure-instance` was executed. 
-- `ZOSMF_PORT`: The port used by z/OSMF REST services.  Defaults to value determined through running `netstat`.
-- `ZOSMF_HOST`: The host name of the z/OSMF REST API services.
-- `ZOWE_EXPLORER_HOST`: The hostname of where the Explorer servers are launched from.  Defaults to running `hostname -c`.  Ensure that this host name is externally accessible from clients who want to use Zowe as well as internally accessible from z/OS itself.  
-- `ZOWE_IP_ADDRESS`:  The IP address of your z/OS system which must be externally accessible to clients who want to use Zowe.  This is important to verify for IBM Z Development & Test Environment and cloud systems, where the default that is determined through running `ping` and `dig` on z/OS returns a different IP address from the external address.  
-- `APIML_ENABLE_SSO`: Define whether single sign-on should be enabled. Use a value of `true` or `false`. Defaults to `false`.
 
 ### Keystore configuration
 
@@ -141,19 +159,31 @@ To determine which ports are not available, follow these steps:
 - `ZOWE_ZLUX_TELNET_PORT`: The Zowe desktop contains an application *3270 Terminal* which opens a 3270 emulator inside the Zowe desktop web page.  This port is the number used by the z/OS telnet service and defaults to 23. The USS command `netstat -b | grep TN3270` can be used to display the telnet port used on a z/OS system.
 - `ZOWE_ZLUX_SECURITY_TYPE`: The *3270 Terminal* application needs to know whether the telnet service is using `tls` or `telnet` for security.  The default value is blank for `telnet`.
 
-### Gateway configuration
+### API Mediation Layer configuration
+
+The following parameters can be set to customize the configuration of all API Mediation Layer components:
+
+- `APIML_DEBUG_MODE_ENABLED` : When this parameter is set to `true`, detailed logging of activity by the API mediation layer occurs. This can be useful to diagnose unexpected behavior of the API gateway, API discovery, or API catalog services.  Default value is `false`.  
+
+The following parameters can be set to customize the configuration of the Discovery:
+
+- `ZWE_DISCOVERY_SERVICES_LIST`: A comma-separated list of the endpoints for each Discovery Service instance. The default value is `https://${ZOWE_EXPLORER_HOST}:${DISCOVERY_PORT}/eureka/`.
 
 The following parameters can be set to customize the configuration of the Gateway:
 
 - `APIML_ALLOW_ENCODED_SLASHES`: When this parameter is set to `true`, the Gateway allows encoded characters to be part of URL requests redirected through the Gateway.
 - `APIML_CORS_ENABLED`: When this parameter is set to `true`, CORS are enabled in the API Gateway for Gateway routes `api/v1/gateway/**`.
-- `APIML_PREFER_IP_ADDRESS`: Set this parameter to `true`  to advertise a service IP address instead of its hostname.
-- `APIML_GATEWAY_TIMEOUT_MILLIS`: Spcifies the timeout for connection to the services in milliseconds. 
+- `APIML_PREFER_IP_ADDRESS`: Set this parameter to `true`  to advertise a service IP address instead of its hostname. **Note**, this configuration is deprecated. Zowe start script will ignore this value and always set it to `false`.
+- `APIML_GATEWAY_TIMEOUT_MILLIS`: Specifies the timeout for connection to the services in milliseconds. 
 - `APIML_SECURITY_X509_ENABLED`: Set this parameter to `true`, to enable the client certificate authentication functionality through ZSS.
 - `APIML_SECURITY_ZOSMF_APPLID`: The z/OSMF APPLID used for PassTicket.
 - `APIML_SECURITY_AUTH_PROVIDER`: The authentication provider used by the API Gateway. By default, the API Gateway uses z/OSMF as an authentication provider. It is possible to switch to SAF as the authentication provider instead of z/OSMF.
-- `APIML_DEBUG_MODE_ENABLED` : When this parameter is set to `true`, detailed logging of activity by the API mediation layer occurs. This can be useful to diagnose unexpected behavior of the API gateway, API discovery, or API catalog services.  Default value is `false`.  
 
+The following values are used to customize the configuration of Caching Service.
+
+- `ZWE_CACHING_SERVICE_PORT=7555`: The port the Caching Service will use.
+- `ZWE_CACHING_SERVICE_PERSISTENT=`: This field sets the storage type used to persist data in the Caching Service. Valid options are `REDIS` or `VSAM`. `REDIS` is currently only supported as an off-Z storage solution. `VSAM` is only supported on Z.
+- `ZWE_CACHING_SERVICE_VSAM_DATASET`: This field sets the `VSAM` dataset name to be used to store Caching Service data. This field is required if `ZWE_CACHING_SERVICE_PERSISTENT` is set to `VSAM`, otherwise this field is not needed.
 
 Refer to detailed section about [API Gateway configuration](api-mediation/api-gateway-configuration.md)
 
@@ -171,30 +201,330 @@ Refer to detailed section about [API Gateway configuration](api-mediation/api-ga
 
 - `EXTERNAL_COMPONENTS`: For third-party extenders to add the full path to the directory that contains their component lifecycle scripts.  For more information, see [Zowe lifecycle - Zowe extensions](../extend/lifecycling-with-zwesvstc.md#zowe-extensions).
 
-### High Availability
+## Reviewing the zowe.yaml file (Technical Preview)
 
-The following values are used to support high availability (HA) of Zowe.
+<Badge text="Technical Preview"/>
 
-- `ZWE_DISCOVERY_SERVICES_LIST`: A comma-separated list of the endpoints for each Discovery Service instance. The default value is `https://${ZOWE_EXPLORER_HOST}:${DISCOVERY_PORT}/eureka/`.
-- `ZWE_CACHING_SERVICE_PORT=7555`: The port the Caching Service will use.
-- `ZWE_CACHING_SERVICE_PERSISTENT=VSAM`: This field sets the storage type used to persist data in the Caching Service. Valid options are `REDIS` or `VSAM`. `REDIS` is currently only supported as an off-Z storage solution. `VSAM` is only supported on Z.
-- `ZWE_CACHING_SERVICE_VSAM_DATASET`: This field sets the `VSAM` dataset name to be used to store Caching Service data. This field is required if `ZWE_CACHING_SERVICE_PERSISTENT` is set to `VSAM`, otherwise this field is not needed.
+_Note: This section is for technical preview and we are happy to hear any feedback. Content in this section may be changed or improved in the future._
 
-## Configuring a Zowe instance via `instance.env` file
+_Note: this feature is added with Zowe v1.22.0 release._
 
-When configuring a Zowe instance through the `instance.env` file, `ZOWE_IP_ADDRESS` and `ZOWE_EXPLORER_HOST` are used to specify where the Zowe servers can be reached. 
+Beside using `instance.env` to configure Zowe runtime, you can also use `zowe.yaml` to configure Zowe in more granular level. To make Zowe runtime recognize the `zowe.yaml` configuration, you will need to create a `zowe.yaml` file and remove the `instance.env` file from instance directory.
 
-However, these values may not reflect the website name that you access Zowe from. This is especially true in the following cases:
-- You are using a proxy
-- The URL is a derivative of the value of `ZOWE_EXPLORER_HOST`, such as `myhost` versus `myhost.mycompany.com`
+**Important**, `zowe.yaml` is required to start Zowe in high availability mode.
 
-In these cases, it may be necessary to specify a value for `ZWE_EXTERNAL_HOSTS` in the form of a comma-separated list of the addresses from which you want to access Zowe in your browser. 
+### Known Limitations for Zowe High Availability
 
-In the previous example, `ZWE_EXTERNAL_HOSTS` could include both `myhost` and `myhost.mycompany.com`. In the `instance.env`, this would look like: `ZWE_EXTERNAL_HOSTS=myhost,myhost.mycompany.com`
+_Note: this section is subject to change in future releases._
 
-This configuration value maybe used for multiple purposes, including referrer-based security checks. In the case that the values are not specified, referrer checks will use the default values of `ZOWE_IP_ADDRESS`, `ZOWE_EXPLORER_HOST`, and the system's hostname. Therefore, if these values are not what you put into your browser, you will want to specify `ZWE_EXTERNAL_HOSTS` to set the correct value. 
+- To allow Sysplex Distributor to route traffic to Gateway, you can only start one Gateway in each LPAR within the Sysplex. All Gateways instances should be started on same port configured on Sysplex Distributor.
+- Zowe App Server should be accessed through Gateway with URL like `https://<dvipa-domain>:<external-port>/zlux/ui/v1`.
+- Currently component `app-server` can only be configured to start one instance.
+- If you enabled more than one Discovery service, you may see a 500 error if you click on `Refresh Static APIs` button from API Catalog.
 
-- `ZOWE_EXPLORER_FRAME_ANCESTORS`: The MVS, USS, and JES Explorer are served by their respective explorer UI address spaces.  These are accessed through the Zowe desktop where they are hosted as iFrames.  To protect against double iFrame security vulnerabilities, browsers all of the valid address that may be used by the browser must be explicitly declared in this property.  The default values are: `"${ZOWE_EXPLORER_HOST}:*,${ZOWE_IP_ADDRESS}:*"`. If there are any other URLs by which the Zowe Explorers can be served, then these should be appended to the preceding comma-separated list.
+### Creation of zowe.yaml file
+
+There are two ways to create a `zowe.yaml` file.
+
+1. You can copy file `<instance-dir>/bin/example-zowe.yaml` to `<instance-dir>/zowe.yaml` and modify based on your configuration.
+2. You can convert from existing `instance.env`. Zowe ships a utility tool in `<instance-dir>/bin/convert-to-zowe-yaml.sh`. You can use it this way:
+
+   ```
+   <instance-dir>/bin/convert-to-zowe-yaml.sh <instance-dir>/instance.env <instance-dir>/zowe.yaml
+   ```
+
+   Replace the `<instance-dir>` to your real instance directory path. This will convert your current `instance.env` to `zowe.yaml` format.
+
+### High level overview of YAML configuration file
+
+The YAML configuration file has few high level sections:
+
+- **`zowe`**: defines global configurations specifically to Zowe, including default values.
+- **`java`**: defines Java configurations used by Zowe components.
+- **`node`**: defines node.js configurations used by Zowe components.
+- **`zOSMF`**: tells Zowe your z/OSMF configurations.
+- **`components`**: defines detail configurations for each Zowe component or extension. Each component or extension may have a key entry under this section. For example, `components.gateway` are configurations for API Mediation Layer Gateway service.
+- **`haInstances`**: optional section defines customized configurations for each High Availability (HA) instance.
+
+### Extract sharable configuration out of zowe.yaml
+
+Zowe YAML configuration file supports a special `@include` annotation can be used in any level of the configuration. This gives you opportunity to organize your YAML configuration files, extract sharable configurations to a separated YAML file.
+
+For example, you can define a sharable certificate configuration file `<keystore-dir>/zowe-certificates.yaml` like this:
+
+```yaml
+keystore:
+  alias: localhost
+  password: password
+  file: /global/zowe/keystore/localhost/localhost.keystore.p12
+  type: PKCS12
+trustStore:
+  file: /global/zowe/keystore/localhost/localhost.truststore.p12
+  certificateAuthorities: ""
+pem:
+  key: /global/zowe/keystore/localhost/localhost.keystore.key
+  certificate: /global/zowe/keystore/localhost/localhost.keystore.cer-ebcdic
+  certificateAuthority: /global/zowe/keystore/local_ca/localca.cer-ebcdic
+```
+
+Then in your `<instance-dir>/zowe.yaml`, you can import this certification file like this:
+
+```yaml
+zowe:
+  externalCertificate:
+    @include: "<keystore-dir>/zowe-certificates.yaml"
+  internalCertificate:
+    @include: "<keystore-dir>/zowe-certificates.yaml"
+```
+
+### Configuration override
+
+Inside `zowe.yaml`, you can define default values and it may be overridden in more granular level configurations. This may happen in several ways:
+
+- Component can override default certificate configuration. For specific entry of certification configuration, if it's not overridden, it will fall back to default configs. For example, in this configuration:
+  ```yaml
+  zowe:
+    internalCertificate:
+      keystore:
+        alias: localhost
+        password: password
+        file: /global/zowe/keystore/localhost/localhost.keystore.p12
+        type: PKCS12
+      trustStore:
+        file: /global/zowe/keystore/localhost/localhost.truststore.p12
+        certificateAuthorities: ""
+      pem:
+        key: /global/zowe/keystore/localhost/localhost.keystore.key
+        certificate: /global/zowe/keystore/localhost/localhost.keystore.cer-ebcdic
+        certificateAuthority: /global/zowe/keystore/local_ca/localca.cer-ebcdic
+  components:
+    app-server:
+      certificate:
+        keystore:
+          alias: app-server
+        pem:
+          key: /global/zowe/keystore/localhost/localhost.keystore.app-server.key
+          certificate: /global/zowe/keystore/localhost/localhost.keystore.app-server.cer-ebcdic
+  ```
+  , App Server will use certificate alias `app-server` instead of `localhost` from same keystore defined in `zowe.internalCertificate.keystore.file`. And it will use the exact same truststore defined in `zowe.internalCertificate.trustStore.file`.
+- HA instance component configuration `haInstances.<ha-instance>.components.<component>` can override global level component configurations `components.<component>`. Any configuration you can find in `components.<component>` level can be overridden in `haInstances.<ha-instance>.components.<component>` level. For example, in this configuration:
+  ```yaml
+  components:
+    app-server:
+      enabled: true
+      port: 8544
+  haInstances:
+    lpar2a:
+      components:
+        app-server:
+          enabled: false
+    lpar2b:
+      components:
+        app-server:
+          port: 28544
+  ```
+  , App Server on `lpar2a` HA instance will not be started. On `lpar2b` HA instance, it will be started but on port 28544.
+
+### YAML configurations - certificate
+
+In Zowe YAML configuration, certificate definition shares same format and this format can be used in several configuration entries. For example, `zowe.externalCertificate`, `zowe.internalCertificate`, `components.<component>.certificate`, `haInstances.<ha-instance>.components.<component>.certificate`, etc. The certificate definition may include these entries:
+
+- `keystore.type`: defines the type of the keystore. If you are using keystore, this value usually should be `PKCS12`. If you are using keyring, this value should be `JCERACFKS`.
+- `keystore.file`: defines the path of the keystore file. If you are using keyring, this should look like `safkeyring:////<keyring-owner>/<keyring-name>`. For example, `safkeyring:////ZWESVUSR/ZoweKeyring`.
+- `keystore.alias`: represents the alias name of the certificate stored in keystore. If you are using keyring, this is the certificate label connect to the keyring.
+- `keystore.password`: defines the password of the keystore.
+- `trustStore.file`: defines the path of the truststore file. If you are using keyring, this should look like `safkeyring:////<keyring-owner>/<keyring-name>`, usually will be same value of `keystore.file`.
+- `trustStore.certificateAuthorities`: defines extra certificate authorities you will trust. This should points to CA files in PEM format.
+- `pem.key`: defines private key file in PEM format. This can be used by application doesn't support either PKCS12 keystore format or z/OS keyring.
+- `pem.certificate`: defines public key file in PEM format. This can be used by application doesn't support either PKCS12 keystore format or z/OS keyring.
+- `pem.certificateAuthority`: defines certificate authorities in PEM format. This can be used by application doesn't support either PKCS12 keystore format or z/OS keyring.
+
+**Note**, with `zowe.yaml` configuration, all certificate related configurations are merged into this file. `<keystore-dir>/zowe-certificates.env` will not be used.
+
+### YAML configurations - zowe
+
+High level configuration of `zowe` supports these definitions:
+
+- `zowe.runtimeDirectory`: tells Zowe where it the runtime directory connected to this Zowe instance. This is equivalent to `instance.env` `ROOT_DIR` variable.
+- `zowe.extensionDirectory`: tells Zowe where you put all your extensions runtime. This is equivalent to `instance.env` `ZWE_EXTENSION_DIR` variable.
+- `zowe.jobPrefix`: defines the Zowe job prefix for ZWESVSTC started task. This is equivalent to `instance.env` `ZOWE_PREFIX` variable.
+- `zowe.identifier`: defines the Zowe job identifier for ZWESVSTC started task. This is equivalent to `instance.env` `ZOWE_INSTANCE` variable.
+- `zowe.externalDomains`: defines a list of external domains will be used by Zowe instance. This configuration should be an array of domain name strings. This is equivalent to `instance.env` `ZWE_EXTERNAL_HOSTS` variable but should represented as an array. For example,
+  ```yaml
+  zowe:
+    externalDomains:
+    - external.my-company.com
+    - additional-dvipa-domain.my-company.com
+  ```
+- `zowe.externalPort`: defines the port will be exposed to external Zowe users. By default, this value is set based on `instance.env` `GATEWAY_PORT`. In Syeplex environment or more complicate networking configurations, Gateway port may not represent the port number will be exposed to the users of this Zowe instance.
+- `zowe.environments`: defines extra environment variables to customize Zowe runtime. This configuration should be a list of key / value pairs. This is equivalent to adding new environment variables to `instance.env` file. For example,
+  ```yaml
+  zowe:
+    environments:
+      MY_NEW_ENV: value-of-my-env
+  ```
+- `zowe.externalCertificate`: defines the northbound certificate facing Zowe users. These configurations were defined in `<keystore-dir>/zowe-certificates.env`.
+- `zowe.internalCertificate`: defines the default southbound certificate used within Zowe services. These configurations were defined in `<keystore-dir>/zowe-certificates.env`. By default, this is same as  `zowe.externalCertificate`.
+- `zowe.sso.token.name`: defines SSO token name. This is equivalent to `PKCS11_TOKEN_NAME` variable in `<keystore-dir>/zowe-certificates.env`.
+- `zowe.sso.token.label`: defines certificate label binds to SSO token. This is equivalent to `PKCS11_TOKEN_LABEL` variable in `<keystore-dir>/zowe-certificates.env`.
+
+### YAML configurations - java
+
+High level configuration of `java` supports these definitions:
+
+- `home`: tells Zowe where it the Java runtime directory. This is equivalent to `instance.env` `JAVA_HOME` variable.
+
+### YAML configurations - node
+
+High level configuration of `node` supports these definitions:
+
+- `home`: tells Zowe where it the node.js runtime directory. This is equivalent to `instance.env` `NODE_HOME` variable.
+
+### YAML configurations - zOSMF
+
+High level configuration of `zOSMF` supports these definitions:
+
+- `zOSMF.host`: tells Zowe the hostname of your z/OSMF instance. This is equivalent to `instance.env` `ZOSMF_HOST` variable.
+- `zOSMF.port`: tells Zowe the port of your z/OSMF instance. This is equivalent to `instance.env` `ZOSMF_PORT` variable.
+- `zOSMF.applId`: tells Zowe the application ID of your z/OSMF instance. This is equivalent to `instance.env` `APIML_SECURITY_ZOSMF_APPLID` variable.
+
+### YAML configurations - components
+
+All Zowe components and extensions can have a dedicated section under `components` high level configuration.
+
+In below section, `<component>` represents any Zowe components or extensions.
+
+For all components and extensions, these are the common definitions.
+
+- `components.<component>.enabled`: defines if you want to start this component in this Zowe instance. This is a much detail granular definition of `instance.env` `LAUNCH_COMPONENT_GROUPS` variable. This allows you to control each component instead of a group. For external components, as known as extensions, this configuration also replaces `instance.env` `EXTERNAL_COMPONENTS` variable.
+- `components.<component>.certificate`: you can customize a component to use different certificate from default values. This section follows same format defined in [YAML configurations - certificate](#yaml-configurations-certificate). If this is not customized, the component will use certificate defined in `zowe.internalCertificate`.
+
+#### Configure component gateway
+
+These configurations can be used under `components.gateway` section:
+
+- `port`: defines the port which gateway should be started on. This is equivalent to `instance.env` `GATEWAY_PORT` variable.
+- `debug`: defines if we want to enable debug mode for gateway. This is equivalent to `instance.env` `APIML_DEBUG_MODE_ENABLED` variable but with better granular level.
+- `apiml.service.allowEncodedSlashes`: When this parameter is set to `true`, the Gateway allows encoded characters to be part of URL requests redirected through the Gateway.  This is equivalent to `instance.env` `APIML_ALLOW_ENCODED_SLASHES` variable.
+- `apiml.service.corsEnabled`: When this parameter is set to `true`, CORS are enabled in the API Gateway for Gateway routes `api/v1/gateway/**`. This is equivalent to `instance.env` `APIML_CORS_ENABLED` variable.
+- `apiml.service.preferIpAddress`: Set this parameter to `true`  to advertise a service IP address instead of its hostname. **Note**, this configuration is deprecated. Zowe start script will ignore this value and always set it to `false`. This is equivalent to `instance.env` `APIML_PREFER_IP_ADDRESS` variable.
+- `apiml.gateway.timeoutMillis`: Specifies the timeout for connection to the services in milliseconds. This is equivalent to `instance.env` `APIML_GATEWAY_TIMEOUT_MILLIS` variable.
+- `apiml.security.x509.enabled`: Set this parameter to `true`, to enable the client certificate authentication functionality through ZSS. This is equivalent to `instance.env` `APIML_SECURITY_X509_ENABLED` variable.
+- `apiml.security.x509.externalMapperUrl`: defines the URL where Gateway can query the mapping of client certificates. This is equivalent to `instance.env` `APIML_GATEWAY_EXTERNAL_MAPPER` variable.
+- `apiml.security.zosmf.applid`: defines the z/OSMF APPLID used for PassTicket. This is equivalent to `instance.env` `APIML_SECURITY_ZOSMF_APPLID` variable. This should have the same value of `zOSMF.applId`, we keep this entry for backward compatible purpose.
+- `apiml.security.auth.provider`: defines the authentication provider used by the API Gateway. This is equivalent to `instance.env` `APIML_SECURITY_AUTH_PROVIDER` variable.
+- `apiml.security.authorization.endpoint.url`: defines the URL to authorization endpoint. This endpoints tells Gateway if a user has a particular permission on SAF profile. For example, permission to `APIML.SERVICES` profile of `ZOWE` class. This is equivalent to `instance.env` `APIML_SECURITY_AUTHORIZATION_ENDPOINT_URL` variable.
+- `apiml.security.ssl.verifySslCertificatesOfServices`: defines whether APIML should verify certificates of services in strict mode. Set to `true` will enable `strict` mode that APIML will validate both if the certificate is trusted in turststore, and also if the certificate Common Name or Subject Alternate Name (SAN) match the service hostname. This is equivalent to `VERIFY_CERTIFICATES` variable defined in `<keystore-dir>/zowe-certificates.env`.
+- `apiml.security.ssl.nonStrictVerifySslCertificatesOfServices`: defines whether APIML should verify certificates of services in non-strict mode. Set to `true` will enable `non-strict` mode that APIML will validate both if the certificate is trusted in turststore, but ignore the certificate Common Name or Subject Alternate Name (SAN) check. Zowe will ignore this configuration if strict mode is enabled with `apiml.security.ssl.verifySslCertificatesOfServices`. This is equivalent to `NONSTRICT_VERIFY_CERTIFICATES` variable defined in `<keystore-dir>/zowe-certificates.env`.
+- `apiml.server.maxConnectionsPerRoute`: Specifies the maximum connections for each service. This is equivalent to `instance.env` `APIML_MAX_CONNECTIONS_PER_ROUTE` variable.
+- `apiml.server.maxTotalConnections`: Specifies the total connections for all services registered under API Mediation Layer. This is equivalent to `instance.env` `APIML_MAX_TOTAL_CONNECTIONS` variable.
+
+#### Configure component discovery
+
+These configurations can be used under `components.discovery` section:
+
+- `port`: defines the port which discovery should be started on. This is equivalent to `instance.env` `DISCOVERY_PORT` variable.
+- `debug`: defines if we want to enable debug mode for gateway. This is equivalent to `instance.env` `APIML_DEBUG_MODE_ENABLED` variable but with better granular level.
+- `apiml.service.preferIpAddress`: Set this parameter to `true`  to advertise a service IP address instead of its hostname. **Note**, this configuration is deprecated. Zowe start script will ignore this value and always set it to `false`. This is equivalent to `instance.env` `APIML_PREFER_IP_ADDRESS` variable.
+- `apiml.security.ssl.verifySslCertificatesOfServices`: defines whether APIML should verify certificates of services in strict mode. Set to `true` will enable `strict` mode that APIML will validate both if the certificate is trusted in turststore, and also if the certificate Common Name or Subject Alternate Name (SAN) match the service hostname. This is equivalent to `VERIFY_CERTIFICATES` variable defined in `<keystore-dir>/zowe-certificates.env`.
+- `apiml.security.ssl.nonStrictVerifySslCertificatesOfServices`: defines whether APIML should verify certificates of services in non-strict mode. Set to `true` will enable `non-strict` mode that APIML will validate both if the certificate is trusted in turststore, but ignore the certificate Common Name or Subject Alternate Name (SAN) check. Zowe will ignore this configuration if strict mode is enabled with `apiml.security.ssl.verifySslCertificatesOfServices`. This is equivalent to `NONSTRICT_VERIFY_CERTIFICATES` variable defined in `<keystore-dir>/zowe-certificates.env`.
+- `alternativeStaticApiDefinitionsDirectories`: Specifies the alternative directories of static definitions. This is equivalent to `instance.env` `APIML_MAX_CONNECTIONS_PER_ROUTE` variable.
+- `apiml.server.maxTotalConnections`: Specifies the total connections for all services registered under API Mediation Layer. This is equivalent to `instance.env` `ZWEAD_EXTERNAL_STATIC_DEF_DIRECTORIES` variable.
+
+#### Configure component api-catalog
+
+These configurations can be used under `components.api-catalog` section:
+
+- `port`: defines the port which API Catalog should be started on. This is equivalent to `instance.env` `CATALOG_PORT` variable.
+- `debug`: defines if we want to enable debug mode for gateway. This is equivalent to `instance.env` `APIML_DEBUG_MODE_ENABLED` variable but with better granular level.
+- `environment.preferIpAddress`: Set this parameter to `true`  to advertise a service IP address instead of its hostname. **Note**, this configuration is deprecated. Zowe start script will ignore this value and always set it to `false`. This is equivalent to `instance.env` `APIML_PREFER_IP_ADDRESS` variable.
+
+#### Configure component caching-service
+
+These configurations can be used under `components.caching-service` section:
+
+- `port`: defines the port which Caching Service should be started on. This is equivalent to `instance.env` `ZWE_CACHING_SERVICE_PORT` variable.
+- `debug`: defines if we want to enable debug mode for gateway. This is equivalent to `instance.env` `APIML_DEBUG_MODE_ENABLED` variable but with better granular level.
+- `storage.mode`: sets the storage type used to persist data in the Caching Service. This is equivalent to `instance.env` `ZWE_CACHING_SERVICE_PERSISTENT` variable.
+- `storage.size`: specifies amount of records before eviction strategies start evicting. This is equivalent to `instance.env` `ZWE_CACHING_STORAGE_SIZE` variable.
+- `storage.evictionStrategy`: specifies eviction strategy to be used when the storage size is achieved. This is equivalent to `instance.env` `ZWE_CACHING_EVICTION_STRATEGY` variable.
+- `storage.vsam.name`: specifies the data set name of the caching service VSAM data set. This is equivalent to `instance.env` `ZWE_CACHING_SERVICE_VSAM_DATASET` variable.
+- `environment.preferIpAddress`: Set this parameter to `true`  to advertise a service IP address instead of its hostname. **Note**, this configuration is deprecated. Zowe start script will ignore this value and always set it to `false`. This is equivalent to `instance.env` `APIML_PREFER_IP_ADDRESS` variable.
+- `apiml.security.ssl.verifySslCertificatesOfServices`: defines whether APIML should verify certificates of services in strict mode. Set to `true` will enable `strict` mode that APIML will validate both if the certificate is trusted in turststore, and also if the certificate Common Name or Subject Alternate Name (SAN) match the service hostname. This is equivalent to `VERIFY_CERTIFICATES` variable defined in `<keystore-dir>/zowe-certificates.env`.
+- `apiml.security.ssl.nonStrictVerifySslCertificatesOfServices`: defines whether APIML should verify certificates of services in non-strict mode. Set to `true` will enable `non-strict` mode that APIML will validate both if the certificate is trusted in turststore, but ignore the certificate Common Name or Subject Alternate Name (SAN) check. Zowe will ignore this configuration if strict mode is enabled with `apiml.security.ssl.verifySslCertificatesOfServices`. This is equivalent to `NONSTRICT_VERIFY_CERTIFICATES` variable defined in `<keystore-dir>/zowe-certificates.env`.
+
+#### Configure component app-server
+
+These configurations can be used under `components.app-server` section:
+
+- `port`: defines the port which App Server should be started on. This is equivalent to `instance.env` `ZOWE_ZLUX_SERVER_HTTPS_PORT` variable.
+
+#### Configure component zss
+
+These configurations can be used under `components.zss` section:
+
+- `port`: defines the port which ZSS should be started on. This is equivalent to `instance.env` `ZOWE_ZSS_SERVER_PORT` variable.
+- `crossMemoryServerName`: defines the procedure name of cross memory server. This is equivalent to `instance.env` `ZOWE_ZSS_XMEM_SERVER_NAME` variable.
+- `tls`: defines whether ZSS service has enabled TLS. This is equivalent to `instance.env` `ZOWE_ZSS_SERVER_TLS` variable.
+
+#### Configure component jobs-api
+
+These configurations can be used under `components.jobs-api` section:
+
+- `port`: defines the port which Jobs API should be started on. This is equivalent to `instance.env` `JOBS_API_PORT` variable.
+
+#### Configure component files-api
+
+These configurations can be used under `components.files-api` section:
+
+- `port`: defines the port which Files API should be started on. This is equivalent to `instance.env` `FILES_API_PORT` variable.
+
+#### Configure component explorer-jes
+
+These configurations can be used under `components.explorer-jes` section:
+
+- `port`: defines the port which JES UI Explorer should be started on. This is equivalent to `instance.env` `JES_EXPLORER_UI_PORT` variable.
+- `frameAncestors`: defines the frame ancestors supported by UI Explorer. This is equivalent to `instance.env` `ZOWE_EXPLORER_FRAME_ANCESTORS` variable but in better granular level.
+
+#### Configure component explorer-mvs
+
+These configurations can be used under `components.explorer-mvs` section:
+
+- `port`: defines the port which MVS UI Explorer should be started on. This is equivalent to `instance.env` `MVS_EXPLORER_UI_PORT` variable.
+- `frameAncestors`: defines the frame ancestors supported by UI Explorer. This is equivalent to `instance.env` `ZOWE_EXPLORER_FRAME_ANCESTORS` variable but in better granular level.
+
+#### Configure component explorer-uss
+
+These configurations can be used under `components.explorer-uss` section:
+
+- `port`: defines the port which USS UI Explorer should be started on. This is equivalent to `instance.env` `USS_EXPLORER_UI_PORT` variable.
+- `frameAncestors`: defines the frame ancestors supported by UI Explorer. This is equivalent to `instance.env` `ZOWE_EXPLORER_FRAME_ANCESTORS` variable but in better granular level.
+
+#### Configure external extension
+
+You can define a `components.<extension-id>` section and use common component configuration entries.
+
+For example, enable `my-extension`:
+
+```yaml
+components:
+  # for extensions, you can add your definition like this
+  my-extension:
+    enabled: true
+```
+
+### YAML configurations - haInstances
+
+All Zowe high availability instances should have a dedicated section under `haInstances` high level configuration.
+
+In below section, `<ha-instance>` represents any Zowe high availability instance ID.
+
+For all high availability instances, these are the common definitions.
+
+- `haInstances.<ha-instance>.hostname`: defines the host name where you want to start this instance. This could be the host name of one LPAR in your Sysplex.
+- `haInstances.<ha-instance>.ip`: defines the IP address where you want to start this instance. This could be the IP address of one LPAR in your Sysplex.
+- `haInstances.<ha-instance>.components.<component>`: optional settings you can override component configurations for this high availability instance. Please check [Configuration override](#configuration-override) section for more details.
+
 
 ## Hints and tips
 
