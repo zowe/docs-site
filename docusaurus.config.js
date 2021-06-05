@@ -1,4 +1,5 @@
 const LATEST_VERSION = "v1.22.x";
+const versionsArray = require("./versions.json");
 
 module.exports = {
   title: "Zowe Docs",
@@ -211,6 +212,17 @@ module.exports = {
           },
         ],
         fromExtensions: ["html"],
+        //redirects older links like "v1-22-x" to "v1.22.x";
+        createRedirects: function (existingPath) {
+          for (var i = 0; i < versionsArray.length; i++) {
+            var x = versionsArray[i];
+            if (existingPath.includes(x)) {
+              return [
+                existingPath.replace(x, x.replace(".", "-").replace(".", "-")),
+              ];
+            }
+          }
+        },
       },
     ],
     [
