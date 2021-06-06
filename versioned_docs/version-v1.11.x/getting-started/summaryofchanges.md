@@ -415,7 +415,7 @@ Review the [Zowe Explorer Change Log](https://github.com/zowe/vscode-extension-f
 
 You can install the latest version of the extension from the [Visual Studio Code Marketplace](https://marketplace.visualstudio.com/items?itemName=Zowe.vscode-extension-for-zowe).
 
-Check the new "Getting Started with Zowe Explorer" video to learn how to install and get started with the extension. For more information, see [Zowe Explorer Extension for VSCode](https://docs.zowe.org/stable/user-guide/cli-vscodeplugin.html#installing).
+Check the new "Getting Started with Zowe Explorer" video to learn how to install and get started with the extension. For more information, see [Zowe Explorer Extension for VSCode](https://docs.zowe.org/stable/user-guide/cli-vscodeplugin#installing).
 
 
 ### Bug fixes
@@ -916,7 +916,7 @@ Version 1.0.1 contains the following changes since the last version.
 
 ### What's new in Zowe installation on z/OS
 
-During product operation of the Zowe Cross Memory Server which was introduced in V1.0.0, the z/OSMF user ID IZUSVR or its equivalent must have UPDATE access to the BPX.SERVER and BPX.DAEMON FACILITY classes. The install script will do this automatically if the installing user has enough authority, or provide the commands to be issued manually if not. For more information, see [Installing the Zowe Cross Memory Server on z/OS](../user-guide/install-zos.html#installing-the-zowe-cross-memory-server-on-z-os)
+During product operation of the Zowe Cross Memory Server which was introduced in V1.0.0, the z/OSMF user ID IZUSVR or its equivalent must have UPDATE access to the BPX.SERVER and BPX.DAEMON FACILITY classes. The install script will do this automatically if the installing user has enough authority, or provide the commands to be issued manually if not. For more information, see [Installing the Zowe Cross Memory Server on z/OS](../user-guide/install-zos#installing-the-zowe-cross-memory-server-on-z-os)
 
 ### What's new in the Zowe App Server
 

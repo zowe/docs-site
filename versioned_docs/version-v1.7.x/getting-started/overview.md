@@ -103,7 +103,7 @@ With Zowe CLI, you can interact with z/OS remotely in the following ways:
   - **Produce responses as JSON documents:**
     Return data in JSON format on request for consumption in other programming languages.
 
-For detailed information about the available functionality in Zowe CLI, see [Zowe CLI Command Groups](../user-guide/cli-usingcli.html#zowe-cli-command-groups).
+For detailed information about the available functionality in Zowe CLI, see [Zowe CLI Command Groups](../user-guide/cli-usingcli#zowe-cli-command-groups).
 
 For information about extending the functionality of Zowe CLI by installing plug-ins, see [Extending Zowe CLI](../user-guide/cli-extending.md).
 

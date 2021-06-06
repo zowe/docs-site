@@ -185,7 +185,7 @@ Each Router dataservice can safely import Express, express-ws, and bluebird with
 
 #### HTTP/REST Router dataservices
 
-Router-based dataservices must return a (bluebird) Promise that resolves to an ExpressJS router upon success. For more information, see the ExpressJS guide on use of Router middleware: [Using Router Middleware](http://expressjs.com/en/guide/using-middleware.html#middleware.router).
+Router-based dataservices must return a (bluebird) Promise that resolves to an ExpressJS router upon success. For more information, see the ExpressJS guide on use of Router middleware: [Using Router Middleware](http://expressjs.com/en/guide/using-middleware#middleware.router).
 
 Because of the nature of Router middleware, the dataservice need only specify URLs that stem from a root '/' path, as the paths specified in the router are later prepended with the unique URL space of the dataservice.
 

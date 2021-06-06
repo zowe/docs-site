@@ -4,7 +4,7 @@ As an API developer, you can onboard a REST service to the Zowe API Mediation La
 
 **Note:** For more information about onboarding API services with the API ML, see the [Onboarding Overview](onboard-overview.md).
 
-For Micronaut-related documentation, see the [Micronaut website](https://docs.micronaut.io/latest/guide/index.html#introduction).
+For Micronaut-related documentation, see the [Micronaut website](https://docs.micronaut.io/latest/guide/index#introduction).
 
 - [Set up your build automation system](#set-up-your-build-automation-system)
   - [Specify the main class](#specify-the-main-class)

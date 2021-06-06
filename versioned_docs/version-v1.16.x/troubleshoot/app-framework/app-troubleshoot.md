@@ -93,7 +93,7 @@ There are two known problems that might cause this error.  The [Zowe architectur
     ```
     ZIS status - Failure read failed ret code 1121 reason 0x76650446
     ```
-    If you are using AT/TLS, then the ```"attls" : true``` statement might be missing from the ```zluxserver.json``` file. For more information, see [Configuring Zowe App Server for HTTPS communication with ZSS](../../user-guide/mvd-configuration.html#configuring-zss-for-https).
+    If you are using AT/TLS, then the ```"attls" : true``` statement might be missing from the ```zluxserver.json``` file. For more information, see [Configuring Zowe App Server for HTTPS communication with ZSS](../../user-guide/mvd-configuration#configuring-zss-for-https).
 
 
 ### ZLUX unable to communicate with zssServer

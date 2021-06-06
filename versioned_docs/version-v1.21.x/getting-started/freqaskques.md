@@ -138,7 +138,7 @@ If you are interested in improvements such as this one, please be sure to expres
 
 <summary></summary>
 
-Only the parts of Zowe that involve Java code are ZIIP enabled. The API Mediation Layer composed of the API Gateway, Discovery and Catalog servers along with any Java-based services that work with them such as the Jobs and Datasets servers are ZIIP enabled. Also, the CLI and VSCode Explorer make large use of z/OSMF, which is Java so they are ZIIP enabled as well. More details on portions of Zowe which are Java (ZIIP) enabled can be found [here](https://docs.zowe.org/stable/getting-started/zowe-architecture.html#zowe-architecture).
+Only the parts of Zowe that involve Java code are ZIIP enabled. The API Mediation Layer composed of the API Gateway, Discovery and Catalog servers along with any Java-based services that work with them such as the Jobs and Datasets servers are ZIIP enabled. Also, the CLI and VSCode Explorer make large use of z/OSMF, which is Java so they are ZIIP enabled as well. More details on portions of Zowe which are Java (ZIIP) enabled can be found [here](https://docs.zowe.org/stable/getting-started/zowe-architecture#zowe-architecture).
 
 This leaves C and NodeJS code which are not ZIIP enabled, BUT, we have a [tech preview](https://www.zowe.org/download.html) available currently that allows execution of Java as well as NodeJS code, on Linux or zLinux via Docker. With the tech preview, only the C code remains on z/OS, which is not ZIIP enabled.
 
@@ -325,7 +325,7 @@ First of all, make sure you fulfill the following Zowe Explorer software require
 - Get access to z/OSMF.
 - Install [Node.js](https://nodejs.org/en/download/) v8.0 or later.
 - Install [VSCode](https://code.visualstudio.com/).
-- Configure TSO/E address space services, z/OS data set, file REST interface, and z/OS jobs REST interface. For more information, see [z/OS Requirements](https://docs.zowe.org/stable/user-guide/systemrequirements-zosmf.html#z-os-requirements).
+- Configure TSO/E address space services, z/OS data set, file REST interface, and z/OS jobs REST interface. For more information, see [z/OS Requirements](https://docs.zowe.org/stable/user-guide/systemrequirements-zosmf#z-os-requirements).
 
 Once the software requirements are fulfilled, create a Zowe Explorer profile.
 
@@ -380,7 +380,7 @@ Activate the Secure Credential Store plug-in in Zowe Explorer.
 
 Your Zowe Explorer credentials are now stored securely.
 
-For more information, see [the Enabling Secure Credential Store page](https://docs.zowe.org/stable/user-guide/ze-profiles.html#enabling-secure-credential-store-with-zowe-explorer).
+For more information, see [the Enabling Secure Credential Store page](https://docs.zowe.org/stable/user-guide/ze-profiles#enabling-secure-credential-store-with-zowe-explorer).
 
 </details>
 

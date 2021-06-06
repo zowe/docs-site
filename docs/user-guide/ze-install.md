@@ -25,7 +25,7 @@ Ensure that you meet the following prerequisites before you use the extension:
 * Get access to z/OSMF.
 * Install [Node.js](https://nodejs.org/en/download/) v8.0 or later.
 * Install [VSCode](https://code.visualstudio.com/).
-* Configure TSO/E address space services, z/OS data set, file REST interface, and z/OS jobs REST interface. For more information, see [z/OS Requirements](https://docs.zowe.org/stable/user-guide/systemrequirements-zosmf.html#z-os-requirements).
+* Configure TSO/E address space services, z/OS data set, file REST interface, and z/OS jobs REST interface. For more information, see [z/OS Requirements](https://docs.zowe.org/stable/user-guide/systemrequirements-zosmf#z-os-requirements).
 * Create one Zowe CLI `zosmf` profile so that the extension can communicate with the mainframe.
 
    **Notes:**

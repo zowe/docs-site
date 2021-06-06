@@ -9,14 +9,14 @@ Review the installation diagram and the introduction in this topic to see the ge
   <figcaption></figcaption>
 </figure>
 <map name="home_map1" id="home_map1">
-  <area href="installandconfig.html#planning-the-installation-of-zowe-z-os-components" alt="Plan and prepare for the installation" title="Plan and prepare for the installation" shape="rect" coords="231, 40, 387, 80" />
+  <area href="installandconfig#planning-the-installation-of-zowe-z-os-components" alt="Plan and prepare for the installation" title="Plan and prepare for the installation" shape="rect" coords="231, 40, 387, 80" />
   <area href="systemrequirements.html" alt="Configure system requirements" title="Configure system requirements" shape="rect" coords="230, 158, 388, 201" />
   <area href="https://www.zowe.org/#download" alt="Download Zowe SMP/E build" title="Download the Zowe SMP/E build from zowe.org" shape="rect" coords="143, 342, 324, 385" />
   <area href="install-zowe-smpe.html" alt="Install the Zowe SMP/E build" title="Install the Zowe SMP/E build" shape="rect" coords="141, 407, 322, 451" />
 
   <area href="https://www.zowe.org/#download" alt="Download the Zowe convenience build" title="Download the Zowe convenience build from zowe.org" shape="rect" coords="334, 343, 515, 386" />
-  <area href="install-zowe-zos-convenience-build.html#obtaining-and-preparing-the-convenience-build" alt="Verify, transfer, and expand the PAX file on z/OS" title="Verify, transfer, and expand the PAX file on z/OS" shape="rect" coords="336, 407, 514, 450" />
-  <area href="install-zowe-zos-convenience-build.html#installing-the-zowe-runtime" alt="Install the Zowe runtime" title="Install the Zowe runtime" shape="rect" coords="335, 469, 515, 513" />
+  <area href="install-zowe-zos-convenience-build#obtaining-and-preparing-the-convenience-build" alt="Verify, transfer, and expand the PAX file on z/OS" title="Verify, transfer, and expand the PAX file on z/OS" shape="rect" coords="336, 407, 514, 450" />
+  <area href="install-zowe-zos-convenience-build#installing-the-zowe-runtime" alt="Install the Zowe runtime" title="Install the Zowe runtime" shape="rect" coords="335, 469, 515, 513" />
   <area href="configure-zos-system.html" alt="Configure the z/OS system for Zowe" title="Configure the z/OS system for Zowe" shape="rect" coords="163, 565, 507, 610" />
   <area href="configure-certificates.html" alt="Configure Zowe certificates" title="Create the Zowe certificates keystore directory" shape="rect" coords="164, 638, 507, 683" />
   <area href="configure-instance-directory.html" alt="Create and configure the Zowe instance directory" title="Create and configure the Zowe instance directory" shape="rect" coords="163, 711, 508, 758" />

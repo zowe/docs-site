@@ -21,7 +21,7 @@ Make sure that you first expose an API to connect to before following the steps 
     - EX: `/Desktop/<Your_Project_Name>` and `Desktop/<Your_Project_Name>/web`
 4.  Copy the built project into `Desktop/<Your_Project_Name>/web`
     - If you are using the sample, copy `app.min.js` , `index.html` , `icon.png` and `css` into to `/Desktop/<Your_Project_Name>/web/`
-5.  Create a `pluginDefinition.json` [following the guide](../extend-api/ReactJSUI.html#configuring-your-app-for-zowe) and copy it to `Desktop/<Your_Project_Name>/`
+5.  Create a `pluginDefinition.json` [following the guide](../extend-api/ReactJSUI#configuring-your-app-for-zowe) and copy it to `Desktop/<Your_Project_Name>/`
     - If you are using the sample, this is included within the project. Copy to `Desktop/<Your_Project_Name>/`
 6.  Copy the project from `/Desktop` to `<zowe_base>/`
     - Use `scp <userID>@<server> /Users/path/to/files <zowe_base>/`

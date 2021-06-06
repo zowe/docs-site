@@ -196,7 +196,7 @@ For more details, see the OpenAPI documentation of the API Mediation Layer in th
 The API Mediation Layer provides multiple methods which clients can use to authenticate. When the API ML is run as a part of Zowe, all of the following methods are enabled and supported. All the methods are supported at least to some extent with each authentication provider.
 
 ##### Username/Password
-The client can authenticate via Username and password. There are multiple methods which can be used to deliver the credentials. There are more details in the [ZAAS Client documentation](https://docs.zowe.org/stable/extend/extend-apiml/api-mediation-security.html#zaas-client).
+The client can authenticate via Username and password. There are multiple methods which can be used to deliver the credentials. There are more details in the [ZAAS Client documentation](https://docs.zowe.org/stable/extend/extend-apiml/api-mediation-security#zaas-client).
 
 ##### JWT Token
 When the client authenticates with the API ML, it receives in exchange the JWT token which can be used for further authentication. If z/OSMF is configured as the authentication provider and the client already received a JWT token produced by the z/OSMF, it is possible to reuse this token within the API ML for authentication.

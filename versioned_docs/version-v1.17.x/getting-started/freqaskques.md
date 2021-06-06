@@ -282,7 +282,7 @@ First of all, make sure you fulfill the following Zowe Explorer software require
 - Get access to z/OSMF.
 - Install [Node.js](https://nodejs.org/en/download/) v8.0 or later.
 - Install [VSCode](https://code.visualstudio.com/).
-- Configure TSO/E address space services, z/OS data set, file REST interface, and z/OS jobs REST interface. For more information, see [z/OS Requirements](https://docs.zowe.org/stable/user-guide/systemrequirements-zosmf.html#z-os-requirements).
+- Configure TSO/E address space services, z/OS data set, file REST interface, and z/OS jobs REST interface. For more information, see [z/OS Requirements](https://docs.zowe.org/stable/user-guide/systemrequirements-zosmf#z-os-requirements).
 
 Once the software requirements are fulfilled, create a Zowe Explorer profile.
 
@@ -337,7 +337,7 @@ Activate the Secure Credential Store plug-in in Zowe Explorer.
 
 Your Zowe Explorer credentials are now stored securely.
 
-For more information, see [the Enabling Secure Credential Store page](https://docs.zowe.org/stable/user-guide/ze-profiles.html#enabling-secure-credential-store-with-zowe-explorer).
+For more information, see [the Enabling Secure Credential Store page](https://docs.zowe.org/stable/user-guide/ze-profiles#enabling-secure-credential-store-with-zowe-explorer).
 
 </details>
 

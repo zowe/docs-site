@@ -56,8 +56,8 @@ If you have a service that cannot be changed to adopt the Zowe authentication to
 ## Further resources
 
 * [Authentication Methods](api-mediation-security.md#Supported-authentication-methods)
-* [User guide for SSO in Zowe CLI ](https://docs.zowe.org/stable/user-guide/cli-usingcli.html#accessing-multiple-services-with-sso)
-* [System requirements for using web tokens for SSO in Zlux and ZSS](https://docs.zowe.org/stable/user-guide/systemrequirements.html#using-web-tokens-for-sso-on-zlux-and-zss)
-* [Certificate configuration for the usage of web tokens for SSO in Zlux and ZSS](https://docs.zowe.org/stable/user-guide/configure-certificates.html#using-web-tokens-for-sso-on-zlux-and-zss) 
+* [User guide for SSO in Zowe CLI ](https://docs.zowe.org/stable/user-guide/cli-usingcli#accessing-multiple-services-with-sso)
+* [System requirements for using web tokens for SSO in Zlux and ZSS](https://docs.zowe.org/stable/user-guide/systemrequirements#using-web-tokens-for-sso-on-zlux-and-zss)
+* [Certificate configuration for the usage of web tokens for SSO in Zlux and ZSS](https://docs.zowe.org/stable/user-guide/configure-certificates#using-web-tokens-for-sso-on-zlux-and-zss) 
 
 

@@ -244,9 +244,9 @@ Keep this file open to continue with agent setup.
  
 #### Agent Setup (App Server side)
 Within the server.json file, you need to define or set **agent.http.ipAddresses** to a hostname or ip address where ZSS is located that is also visible to the App Server. This could be '0.0.0.0' or '127.0.0.1' if they are located on the same system, but it may otherwise be a hostname or external IP address.
-You must also define or set **agent.http.port**. This is the TCP port which ZSS will listen on to be contacted by the App Server. Define this in the configuration file as a value between 1024-65535. See [zss configuration](https://docs.zowe.org/stable/user-guide/mvd-configuration.html#configuring-zss-for-https) for more information and an example.
+You must also define or set **agent.http.port**. This is the TCP port which ZSS will listen on to be contacted by the App Server. Define this in the configuration file as a value between 1024-65535. See [zss configuration](https://docs.zowe.org/stable/user-guide/mvd-configuration#configuring-zss-for-https) for more information and an example.
 
-**Note: It is highly recommended to turn on HTTPS for ZSS via [configuring AT-TLS](https://zowe.github.io/docs-site/latest/user-guide/mvd-configuration.html#configuring-zss-for-https) when using ZSS externally, as the session security is essential for all but trivial development environments**
+**Note: It is highly recommended to turn on HTTPS for ZSS via [configuring AT-TLS](https://docs.zowe.org/stable/user-guide/mvd-configuration#configuring-zss-for-https) when using ZSS externally, as the session security is essential for all but trivial development environments**
 
 As a result of the above edits to server.json, an example of what it may now look like is:
 

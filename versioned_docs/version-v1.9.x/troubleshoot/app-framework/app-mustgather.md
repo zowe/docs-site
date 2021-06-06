@@ -94,7 +94,7 @@ env | grep ZLUX_NODE_LOG_DIR
 env | grep ZSS_LOG_DIR  
 ```
 
-Read more about controlling the log location [here](../../user-guide/mvd-configuration.html#controlling-the-logging-location).
+Read more about controlling the log location [here](../../user-guide/mvd-configuration#controlling-the-logging-location).
 
 ```
 # navigate to zowe installation folder

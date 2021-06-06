@@ -523,7 +523,7 @@ Static API definition file: /Users/plape03/workspace/api-layer/config/local/api-
 Adding static instance STATIC-localhost:petstore:8080 for service ID petstore mapped to URL http://localhost:8080
 ```
 
-   **Note:** If these messages are not displayed in the log, ensure that the [API ML debug mode](https://docs.zowe.org/stable/troubleshoot/troubleshoot-apiml.html#enable-api-ml-debug-mode) is active.
+   **Note:** If these messages are not displayed in the log, ensure that the [API ML debug mode](https://docs.zowe.org/stable/troubleshoot/troubleshoot-apiml#enable-api-ml-debug-mode) is active.
 
 ## (Optional) Reload the services definition after the update when the API Mediation Layer is already started
 

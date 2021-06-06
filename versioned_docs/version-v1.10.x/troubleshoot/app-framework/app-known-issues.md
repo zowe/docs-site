@@ -60,14 +60,14 @@ To solve the problem, follow these steps:
 
     If communication is not working, check that the ZWESISTC started task is running. If not, start it. Also, search the log for problems, for example statements saying that the server was unable to find the load module.
     
-    If the problem is not easily-fixable (such as the ZWESISTC task not running), then it is likely that the cross memory server setup and configuration did not complete successfully. To set up and configure the cross memory server, follow steps as described in the topic [Manually installing the Zowe Cross Memory Server](../../user-guide/install-zos.html#manually-installing-the-zowe-cross-memory-server).  
+    If the problem is not easily-fixable (such as the ZWESISTC task not running), then it is likely that the cross memory server setup and configuration did not complete successfully. To set up and configure the cross memory server, follow steps as described in the topic [Manually installing the Zowe Cross Memory Server](../../user-guide/install-zos#manually-installing-the-zowe-cross-memory-server).  
 
     If there is an authorization problem, the message might include `Permission Denied`. For example:
 
     ```
     ZIS status - Failure (name='ZWESIS_STD      ', cmsRC=33, description='Permission denied'
     ```
-    Check that the user ID of the ZWESVSTC started task is authorized to access the load module. Only authorized code can call ZWESIS01 because it is an APF-authorized load module. The setup for each security manager is different and is documented in the section "Security requirements for the cross memory server" in the topic  [Manually installing the Zowe Cross Memory Server](../../user-guide/install-zos.html#manually-installing-the-zowe-cross-memory-server).
+    Check that the user ID of the ZWESVSTC started task is authorized to access the load module. Only authorized code can call ZWESIS01 because it is an APF-authorized load module. The setup for each security manager is different and is documented in the section "Security requirements for the cross memory server" in the topic  [Manually installing the Zowe Cross Memory Server](../../user-guide/install-zos#manually-installing-the-zowe-cross-memory-server).
 
     **Note** If you are using RACF security manager, a common reason for seeing `Permission Denied` is that the user running the started task ZWESVSTC (typically IZUSVR) does not have READ access to the FACILITY class ZWES.IS.
 
@@ -76,7 +76,7 @@ To solve the problem, follow these steps:
     ```
     ZIS status - Failure read failed ret code 1121 reason 0x76650446
     ```
-    If you are using AT/TLS, then the ```"attls" : true``` statement might be missing from the ```zluxserver.json``` file. For more information, see [Configuring Zowe App Server for HTTPS communication with ZSS](../../user-guide/mvd-configuration.html#configuring-zss-for-https)
+    If you are using AT/TLS, then the ```"attls" : true``` statement might be missing from the ```zluxserver.json``` file. For more information, see [Configuring Zowe App Server for HTTPS communication with ZSS](../../user-guide/mvd-configuration#configuring-zss-for-https)
 
 ## Server startup problem ret=1115
 

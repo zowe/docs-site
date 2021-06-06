@@ -111,7 +111,7 @@ With Zowe CLI, you can interact with z/OS remotely in the following ways:
   - **Produce responses as JSON documents:**
     Return data in JSON format on request for consumption in other programming languages.
 
-For detailed information about the available functionality in Zowe CLI, see [Zowe CLI Command Groups](../user-guide/cli-usingcli.html#understanding-core-command-groups).
+For detailed information about the available functionality in Zowe CLI, see [Zowe CLI Command Groups](../user-guide/cli-usingcli#understanding-core-command-groups).
 
 For information about extending the functionality of Zowe CLI by installing plug-ins, see [Extending Zowe CLI](../user-guide/cli-extending.md).
 
@@ -124,7 +124,7 @@ For information about extending the functionality of Zowe CLI by installing plug
 
 ### API Mediation Layer
 
-Provides a gateway that acts as a reverse proxy for z/OS services, together with a catalog of REST APIs and a dynamic discovery capability. Base Zowe provides core services for working with MVS Data Sets, JES, as well as working with z/OSMF REST APIs.  The API Mediation Layer also provides a framework for [Single Sign On (SSO)](https://docs.zowe.org/stable/extend/extend-apiml/api-mediation-security.html#participating-in-zowe-api-ml-single-sign-on).
+Provides a gateway that acts as a reverse proxy for z/OS services, together with a catalog of REST APIs and a dynamic discovery capability. Base Zowe provides core services for working with MVS Data Sets, JES, as well as working with z/OSMF REST APIs.  The API Mediation Layer also provides a framework for [Single Sign On (SSO)](https://docs.zowe.org/stable/extend/extend-apiml/api-mediation-security#participating-in-zowe-api-ml-single-sign-on).
 
 <details>
 <summary> Learn more </summary>

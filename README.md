@@ -8,7 +8,7 @@ Zowe documentation is completely open-source and we appreciate contributions fro
 
 Your feedback is essential in shaping the Zowe content experience. There are several ways to provide feedback:
 
-- If you see something incorrect or confusing in the docs, or have an enhancement idea to make the docs better, you can edit a page by clicking "Edit this page" under the title of the topic to [open a Pull Request](https://docs.zowe.org/stable/contribute/contributing.html#sending-a-github-pull-request). You can also [open a GitHub issue](https://docs.zowe.org/stable/contribute/contributing.html#opening-an-issue-for-the-documentation) for the documentation team by clicking "Open doc issue".
+- If you see something incorrect or confusing in the docs, or have an enhancement idea to make the docs better, you can edit a page by clicking "Edit this page" under the title of the topic to [open a Pull Request](https://docs.zowe.org/stable/contribute/contributing#sending-a-github-pull-request). You can also [open a GitHub issue](https://docs.zowe.org/stable/contribute/contributing#opening-an-issue-for-the-documentation) for the documentation team by clicking "Open doc issue".
 - You can rate the topic to tell us whether it is helpful.
 - If you have a question about docs, you can join the Zowe [#zowe-doc Slack channel](https://openmainframeproject.slack.com/archives/CC961JYMQ) and talk directly with the documentation team and the community.
 
@@ -21,7 +21,7 @@ You can click the **Fork** button in the upper-right area of the screen to creat
 After that, a Zowe documentation reviewer will review your PR and provide feedback. The doc reviewer might ask for a technical review from a Zowe tech reviewer depending on the specific changes in the PR.
 
 For more information about contributing to the Zowe documentation, see:
-- [Zowe documentation style guide](https://docs.zowe.org/stable/contribute/contributing.html#documentation-style-guide)
+- [Zowe documentation style guide](https://docs.zowe.org/stable/contribute/contributing#documentation-style-guide)
 
 ## Understanding the doc branches
 

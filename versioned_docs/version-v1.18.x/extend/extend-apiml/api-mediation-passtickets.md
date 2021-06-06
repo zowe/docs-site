@@ -5,7 +5,7 @@ As system programmer, you can configure Zowe to use PassTickets for API services
 ## Overview <!-- omit in toc -->
 
 API clients can use a Zowe JWT token to access an API service even if the API service itself does not support the JWT token.
-The Zowe JWT token is available through the API Gateway [authentication endpoint](https://docs.zowe.org/stable/extend/extend-apiml/api-mediation-security.html#authentication-for-api-ml-services).
+The Zowe JWT token is available through the API Gateway [authentication endpoint](https://docs.zowe.org/stable/extend/extend-apiml/api-mediation-security#authentication-for-api-ml-services).
 
 When an API client provides a valid Zowe JWT token to the API ML, the API Gateway then generates a valid PassTicket for any API service that supports PassTickets.
 The API Gateway then uses the PassTicket to access that API service.

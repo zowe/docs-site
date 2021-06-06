@@ -394,7 +394,7 @@ This **`respondWithRows`** function expects an array of rows, so we'll improve t
 
 Zowe's use of ExpressJS Routers allows you to quickly assign functions to HTTP calls such as GET, PUT, POST, DELETE, or even websockets, and provides you with easy parsing and filtering of the HTTP requests so that there is very little involved in making a good API for users.
 
-This REST API now allows for two GET calls to be made: one to root /, and the other to /_filter_/_value_. The behavior here is as is defined in [ExpressJS documentation](https://expressjs.com/en/guide/routing.html#route-parameters) for routers, where the URL is parameterized to give us arguments that we can feed into our function for filtering the user table rows before giving the result to **respondWithRows** for sending back to the caller.
+This REST API now allows for two GET calls to be made: one to root /, and the other to /_filter_/_value_. The behavior here is as is defined in [ExpressJS documentation](https://expressjs.com/en/guide/routing#route-parameters) for routers, where the URL is parameterized to give us arguments that we can feed into our function for filtering the user table rows before giving the result to **respondWithRows** for sending back to the caller.
 
 ### Adding your Dataservice to the Plugin Definition
 
