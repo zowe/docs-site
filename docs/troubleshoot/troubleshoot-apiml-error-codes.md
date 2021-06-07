@@ -937,7 +937,7 @@ The following error message codes may appear on logs or API responses. Use the f
 
   **Reason:**
 
-  The service is not available. It might be removed by the Circuit Breaker or by requesting specific instance that is not available
+  The service is not available. It is possible that the Circuit Breaker removed it, or because a specific instance was requested that is not available.
 
   **Action:**
 
