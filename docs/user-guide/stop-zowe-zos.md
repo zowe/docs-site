@@ -36,7 +36,7 @@ z/OS STOP command is used to terminate the Zowe launcher server (ZWESLSTC) which
 P ZWESLSTC
 ```
 
-The <instance-job-name> specified in the JOBNAME= parameter of the Zowe launcher START command can be used to terminate the relevant high available instance. See [Installing and starting the Zowe high availability started task (ZWESLSTC)](configure-zowe-ha-server.md)
+The `instance-job-name` specified in the JOBNAME= parameter of the Zowe launcher START command can be used to terminate the relevant high available instance. See [Installing and starting the Zowe high availability started task (ZWESLSTC)](configure-zowe-ha-server.md)
 
 ```
 P <instance-job-name>
@@ -50,7 +50,7 @@ F ZWESLSTC,APPL=STOP(<ha-component-name>)
 
 The `ha-component-name` argument is the high available instance component that is defined in `components` section of `zowe.yaml` configuration file. To learn more about `zowe.yaml`, see [Reviewing the zowe.yaml file](configure-instance-directory.md) section.
 
-The <instance-job-name> specified in the JOBNAME= parameter of the Zowe launcher START command can be used to terminate a specific component of a running high available instance:
+The `instance-job-name` specified in the JOBNAME= parameter of the Zowe launcher START command can be used to terminate a specific component of a running high available instance:
 
 ```
 F <instance-job-name>,APPL=STOP(<ha-component-name>)
