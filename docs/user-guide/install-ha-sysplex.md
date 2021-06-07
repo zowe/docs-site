@@ -149,10 +149,10 @@ You can configure the Zowe runtime with one of the following methods depending o
    
    **Note** 
    
-   - To learn more about `zowe.yaml`, see [Reviewing the zowe.yaml file](#reviewing-the-zowe-yaml-file-technical-preview) section.
+   - To learn more about `zowe.yaml`, see [Reviewing the zowe.yaml file](configure-instance-directory.md) section.
    - For more information about Gateway and Discovery Service parameters that can be set during the Zowe runtime configuration, see [API Gateway runtime configuration parameters](./api-mediation/api-gateway-configuration.md) and [Discovery Service runtime configuration parameters](./api-mediation/discovery-service-configuration.md).
 
-7. Configure and start the `ZWESLSTC` started task. For instructions, see [Installing and starting the Zowe high availability started task](configure-zowe-ha-server.md). 
+7. Configure and start the `ZWESLSTC` started task. For instructions, see [Installing and starting the Zowe high availability started task (ZWESLSTC)](configure-zowe-ha-server.md). 
 
 ## Stage 4: Verify the installation
 

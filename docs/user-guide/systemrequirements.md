@@ -8,6 +8,7 @@ Before installing Zowe&trade;, ensure that your environment meets the prerequisi
   - [Zowe Application Framework on z/OS requirements](#zowe-application-framework-on-zos-requirements-host)
     - [Important note for users upgrading to v1.14](#important-note-for-users-upgrading-to-v114)
 - [Docker requirements](#docker-requirements-host)
+- [Zowe High Availability requirements](#zowe-high-availability-requirements-host)
 - [Zowe Desktop requirements](#zowe-desktop-requirements-client)
 - [Zowe CLI requirements](#zowe-cli-requirements)
   - [Client-side](#client-side)
