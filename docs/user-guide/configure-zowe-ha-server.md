@@ -34,11 +34,7 @@ If you have more than one Zowe high available instance, You can use the optional
 S ZWESLSTC,HAINST=<ha-instance-id>,JOBNAME=<instance-job-name>
 ```
 
-<<<<<<< HEAD
 In PROCLIB member `ZWESLSTC`, you need to perform the following steps before starting ZWESLSTC:
-=======
-In PROCLIB member `ZWESLSTC`, you need to perform the following steps before running ZWESLSTC:
->>>>>>> c4b3d24285157fd0eb1e3e455bc69cfc63936553
 
 1. Set parameter `INSTANCE_DIR` to the location (fully qualified path) of the Zowe instance directory that contains the `zowe.yaml` configuration file.
 2. Update the STEPLIB DD statement with the location of the load library that contains the load module `ZWELNCH`.
