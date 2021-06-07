@@ -941,7 +941,7 @@ The following error message codes may appear on logs or API responses. Use the f
 
   **Action:**
 
-  Try the request later or remove the request for specific instance.
+  Try the request later or remove the request for the specific instance.
 
 ### ZWEAG100E
 
