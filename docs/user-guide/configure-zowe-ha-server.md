@@ -24,8 +24,8 @@ If you issue the SDSF command `S ZWESLSTC`, the JCL will need to know which high
 S ZWESLSTC,HAINST=<ha-instance-id>
 ```
 
-The `ha-instance-id` argument is the high available instance ID that is defined in `haInstances` section of `zowe.yaml` file.
+The `ha-instance-id` argument is the high available instance ID that is defined in `haInstances` section of `zowe.yaml` configuration file. To learn more about `zowe.yaml`, see [Reviewing the zowe.yaml file](#reviewing-the-zowe-yaml-file-technical-preview) section.
 
 This command enables you to start multiple instances of a same component which eliminate single points of failure to ensure continuous Zowe components operations.
 
-In PROCLIB member `ZWESLSTC`, you need to set parameter `INSTANCE_DIR` to the location (fully qualified path) of the Zowe instance directory that contains the `zowe.yaml` file.
+In PROCLIB member `ZWESLSTC`, you need to set parameter `INSTANCE_DIR` to the location (fully qualified path) of the Zowe instance directory that contains the `zowe.yaml` configuration file.

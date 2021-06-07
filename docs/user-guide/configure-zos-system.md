@@ -27,7 +27,7 @@ When you run the `ZWESECUR` JCL, it does not perform the following initializatio
 The `ZWESECUR` JCL performs the following initialization steps so you do not need to perform them manually if you have successfully run the JCL.  These steps are included for reference if you prefer to manually configure the z/OS environment or want to learn more about user IDs, groups, and associated security permissions that are required to operate Zowe.  
 - [User IDs and groups for the Zowe started tasks](#user-ids-and-groups-for-the-zowe-started-tasks)
 - [Configure ZWESVSTC to run under ZWESVUSR user ID](#configure-zwesvstc-to-run-under-zwesvusr-user-ID)
-- [Configure ZWESLSTC to run Zowe High Availability under ZWESVUSR user ID](#configure-zweslstc-to-run-under-zwesvusr-user-ID)
+- [Configure ZWESLSTC to run high availability instances under ZWESVUSR user ID](#configure-zweslstc-to-run-under-zwesvusr-user-ID)
 - [Configure the cross memory server for SAF](#configure-the-cross-memory-server-for-saf)
 
 
@@ -65,7 +65,7 @@ The zssServer uses cookies that require random number generation for security. T
 
 If you have not configured your z/OS environment for ICSF, see [Cryptographic Services ICSF: System Programmer's Guide](https://www.ibm.com/support/knowledgecenter/en/SSLTBW_2.3.0/com.ibm.zos.v2r3.csfb200/abstract.htm) for more information.  To see whether ICSF has been started, check whether the started task `ICSF` or `CSF` is active.
 
-If you run Zowe High Availability on a Sysplex, ICSF needs to be configured in a Sysplex environment to share KDS data sets across systems in a Sysplex. For detailed information, see [Running in a Sysplex Environment](https://www.ibm.com/docs/en/zos/2.3.0?topic=guide-running-in-sysplex-environment)
+If you run Zowe high availability on a Sysplex, ICSF needs to be configured in a Sysplex environment to share KDS data sets across systems in a Sysplex. For detailed information, see [Running in a Sysplex Environment](https://www.ibm.com/docs/en/zos/2.3.0?topic=guide-running-in-sysplex-environment)
 
 The Zowe z/OS environment configuration JCL member `ZWESECUR` does not perform any steps related to ICSF that is required for zssServer that the Zowe desktop uses. Therefore, if you want to use Zowe desktop, you must perform the steps that are described in this section manually.
 
@@ -374,13 +374,13 @@ If you have not run `ZWESECUR` and are configuring your z/OS environment manuall
   TSS ADDTO(STC) PROCNAME(ZWESVSTC) ACID(ZWESVUSR)
   ```
 
-## Configure ZWESLSTC to run Zowe High Availability under ZWESVUSR user ID
+## Configure ZWESLSTC to run Zowe high availability instances under ZWESVUSR user ID
 
-You need Zowe started task `ZWESLSTC` for Zowe High Availability. When the Zowe started task `ZWESLSTC` is started, it must be associated with the user ID `ZWESVUSR` and group `ZWEADMIN`.  A different user ID and group can be used if required to conform with existing naming standards.
+You need Zowe started task `ZWESLSTC` for Zowe high availability. When the Zowe started task `ZWESLSTC` is started, it must be associated with the user ID `ZWESVUSR` and group `ZWEADMIN`.  A different user ID and group can be used if required to conform with existing naming standards.
 
 If you have run `ZWESECUR`, you do not need to perform the steps described in this section, because they are executed during the JCL section of `ZWESECUR`.  
 ```
-/* started task for ZOWE main server                   */
+/* started task for ZOWE Launcher in high availability               */
 ...
 ```
 

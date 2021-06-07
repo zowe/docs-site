@@ -31,7 +31,7 @@ If you are installing one or more server components onto z/OS, the following inf
 
 - Multiple instances of Zowe can be started from the same Zowe z/OS runtime. Each launch of Zowe has its own zFS directory that is known as an instance directory.
 
-- For Zowe in a high availability configuration, there will be only one instance directory which must be created on a shared file system (zFS directory) where all LPARs in the Sysplex can access. To install Zowe in a Parallel Sysplex environment, a YAML configuration file is used to customize the Zowe instance.
+- For Zowe in a high availability configuration, there will be only one instance directory which must be created on a shared file system (zFS directory) where all LPARs in a Sysplex can access. To install Zowe in a Parallel Sysplex environment, a YAML configuration file is used to customize the Zowe high availability instances.
 
 - (If not using Docker) Zowe uses a zFS directory to contain its northbound certificate keys as well as a truststore for its southbound keys. Northbound keys are one presented to clients of the Zowe desktop or Zowe API Gateway, and southbound keys are for servers that the Zowe API gateway connects to.  The certificate directory is not part of the Zowe runtime so that it can be shared between multiple Zowe runtimes and have its permissions secured independently. 
 
@@ -39,7 +39,7 @@ If you are installing one or more server components onto z/OS, the following inf
    - `ZWESISTC` is a cross memory server that the Zowe desktop uses to perform APF-authorized code. More details on the cross memory server are described in [Configuring the Zowe cross memory server](configure-xmem-server.md).
    - `ZWESASTC` is a cross memory Auxiliary server that is used under some situations in support of a Zowe extension. Auxiliary server is started, controlled, and stopped by the cross memory server, so no need to start it manually. More details are described in [Zowe auxiliary service](configure-xmem-server.md)
    - `ZWESVSTC` brings up the every other part of the Zowe runtime on z/OS that was requested. This may include Desktop, API mediation layer, ZSS, and more, but when using Docker likely only ZSS will be used here.
-   - `ZWESLSTC` is used for Zowe high availability configuration rather than ZWESVSTC. It brings up and stops Zowe high-availability instances, or specific Zowe components without restarting the entire Zowe high-availability instance.
+   - `ZWESLSTC` is used for Zowe high availability configuration rather than ZWESVSTC. It brings up and stops Zowe high availability instances, or specific Zowe components without restarting the entire Zowe high availability instances.
    
      In order for above started tasks to run correctly, security manager configuration needs to be performed.  This is documented in [Configuring the z/OS system for Zowe](configure-zos-system.md) and a sample JCL member `ZWESECUR` is shipped with Zowe that contains commands for RACF, TopSecret, and ACF2 security managers.  
 
@@ -62,15 +62,16 @@ During execution of Zowe, the runtime directory contents are not modified.  Main
 
 ### INSTANCE_DIR
 
-The instance directory `<INSTANCE_DIR>` is required to launch Zowe.  It is created with the script `<RUNTIME_DIR>/bin/zowe-configure-instance.sh`.  More than one instance directory can be created and used to launch multiple instances of Zowe sharing the same runtime directory `<RUNTIME_DIR>`.
+The instance directory `<INSTANCE_DIR>` is required to launch Zowe.  It is created with the script `<RUNTIME_DIR>/bin/zowe-configure-instance.sh`. More than one instance directory can be created and used to launch multiple instances of Zowe sharing the same runtime directory `<RUNTIME_DIR>`.
 
-Zowe instances are started by running the script `<INSTANCE_DIR>/bin/zowe-start.sh`.  This creates a started task with the PROCLIB member `ZWESVSTC` that is provided with the samplib `SZWESAMP` created during the installation of Zowe.  The JCL member `ZWESVSTC` starts a USS shell under which it launches its address spaces.  
+Zowe instances are started by running the script `<INSTANCE_DIR>/bin/zowe-start.sh`. This creates a started task with the PROCLIB member `ZWESVSTC` that is provided with the samplib `SZWESAMP` created during the installation of Zowe. The JCL member `ZWESVSTC` starts a USS shell under which it launches its address spaces.  
 
-The instance directory file `instance.env` is used to configure a Zowe launchable.  The file is executed during the launch of Zowe and specifies shell variables such as ports and location of dependent directories and services on z/OS.  
+The instance directory file `instance.env` is used to configure a Zowe launchable. The file is executed during the launch of Zowe and specifies shell variables such as ports and location of dependent directories and services on z/OS.  
 
 The `instance.env` file sets the location of the `<RUNTIME_DIRECTORY>` as well as the `<KEYSTORE_DIRECTORY>`
 
+**Note:** Alternatively, from v1.22.0 release, a YAML format configuration file `zowe.yaml` can be used to configure Zowe runtime for high availability instead of `instance.env`. To learn more about `zowe.yaml`, see [Reviewing the zowe.yaml file](#reviewing-the-zowe-yaml-file-technical-preview) section.
+
 ### KEYSTORE_DIRECTORY
 
-Zowe uses certificates to encrypt data as well as a truststore.  The keystore directory `<KEYSTORE_DIRECTORY>` controls where the certificates are located, either in a JavaKeystore or a z/OS keyring.  A `<KEYSTORE_DIRECTORY>` is created by using the script `<RUNTIME_DIR>/bin/zowe-setup-certificates.sh`.  
-
+Zowe uses certificates to encrypt data as well as a truststore.  The keystore directory `<KEYSTORE_DIRECTORY>` controls where the certificates are located, either in a JavaKeystore or a z/OS keyring.  A `<KEYSTORE_DIRECTORY>` is created by using the script `<RUNTIME_DIR>/bin/zowe-setup-certificates.sh`.
