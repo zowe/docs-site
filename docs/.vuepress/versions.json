@@ -1,6 +1,10 @@
 [{
-  "text": "v1.21.x LTS",
+  "text": "v1.22.x LTS",
   "link": "stable/"
+},
+{
+  "text": "v1.21.x LTS",
+  "link": "v1-21-x/"
 },
 {
   "text": "v1.20.x LTS",

@@ -197,6 +197,12 @@ Essential to the API Mediation Layer ecosystem is the API services that expose t
 
 To learn more about the architecture of Zowe, see [Zowe architecture](zowe-architecture.md).
 
+### Zowe Launcher
+
+Provides an advanced launcher for Zowe components in a high availability configuration. It performs the following operations:
+ - Stopping the Zowe server using the `STOP` (or `P`) operator command
+ - Stopping and starting specific Zowe components without restarting the entire Zowe using `MODIFY` (or `F`) operator command
+
 ## Zowe Third-Party Software Requirements and Bill of Materials
 
 - [Third-Party Software Requirements (TPSR)](../appendix/tpsr.md)
