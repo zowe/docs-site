@@ -36,7 +36,17 @@ Zowe Version 1.22 and earlier releases include the following enhancements, relea
 
 ## Version 1.22.0 LTS (June 2021)
 
-### Notable changes 
+### New features and enhancements
+
+#### Zowe installation and configuration
+
+**Configure Zowe for high availability (Technical Preview)**
+
+You can deploy Zowe in Parallel Sysplex for high availability with several enhancements shipped with v1.22.0 release.
+
+- By deploying Zowe in Sysplex, comparing to a single instance of Zowe, you are configuring and starting multiple Zowe instances. Check here to learn how [Zowe architecture](zowe-architecture.md) is changed.
+- Beside using `instance.env` to configure Zowe, now you can use a new YAML configuration file `zowe.yaml` to configure multiple Zowe instances in more granular level. Check [Reviewing the zowe.yaml file](../user-guide/configure-instance-directory.md#reviewing-the-zowe-yaml-file-technical-preview) for more information.
+- New `ZWESLSTC` started task can monitor status of microservices running within Zowe and restart the missing microservice(s) when needed. Check [Configure ZWESLSTC to run Zowe High Availability under ZWESVUSR user ID](../user-guide/configure-zos-system.md#configure-zweslstc-to-run-zowe-high-availability-under-zwesvusr-user-id) for more information.
 
 **New tool for verifying an installed Zowe server component (Technical Preview)**
 
@@ -44,11 +54,13 @@ You can verify an installed Zowe server component (extension) for a Zowe instanc
 
 For more information, see [Verify with `zowe-verify-component.sh`](../extend/install-configure-zos-extensions.md#verify-with-zowe-verify-componentsh-technical-preview).
 
-### New features and enhancements
-
 ### Bug fixes
 
+#### Zowe installation and configuration
 
+- Several improvements with fix [#2101](https://github.com/zowe/zowe-install-packaging/pull/2101) related to `ZWEKRING` [#2089](https://github.com/zowe/zowe-install-packaging/issues/2089) and `ZWESSOTK` [#2144](https://github.com/zowe/zowe-install-packaging/issues/2144) sample JCLs.
+- Fixed [issue #2120](https://github.com/zowe/zowe-install-packaging/issues/2120) about handling external certificate authorities when using keyring.
+- Fixed several issues described in [#1976](https://github.com/zowe/zowe-install-packaging/issues/1976) related to install and configuration when z/OSMF is absent.
 
 ## Version 1.21.0 LTS (April 2021)
 
