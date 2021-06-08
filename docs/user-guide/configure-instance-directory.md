@@ -213,6 +213,17 @@ Beside using `instance.env` to configure Zowe runtime, you can also use `zowe.ya
 
 **Important**, `zowe.yaml` is required to start Zowe in high availability mode.
 
+_Note: In below sections, we refer configuration keys with concatenation of key names and dots._
+
+For example, if you want to update configuration key `zowe.internalCertificate.keystore.type` with value `PKCS12`, you should set value for this entry in the `zowe.yaml`:
+
+```yaml
+zowe:
+  internalCertificate:
+    keystore:
+      type: PKCS12
+```
+
 ### Known Limitations for Zowe High Availability
 
 _Note: this section is subject to change in future releases._
@@ -235,6 +246,8 @@ There are two ways to create a `zowe.yaml` file.
 
    Replace the `<instance-dir>` to your real instance directory path. This will convert your current `instance.env` to `zowe.yaml` format.
 
+   After `zowe.yaml` is created, you should add new `haInstances` section and define ha-instance(s) you would like to start in your Sysplex.
+
 ### High level overview of YAML configuration file
 
 The YAML configuration file has few high level sections:
@@ -244,7 +257,7 @@ The YAML configuration file has few high level sections:
 - **`node`**: defines node.js configurations used by Zowe components.
 - **`zOSMF`**: tells Zowe your z/OSMF configurations.
 - **`components`**: defines detail configurations for each Zowe component or extension. Each component or extension may have a key entry under this section. For example, `components.gateway` are configurations for API Mediation Layer Gateway service.
-- **`haInstances`**: optional section defines customized configurations for each High Availability (HA) instance.
+- **`haInstances`**: defines customized configurations for each High Availability (HA) instance. You should predefine all Zowe HA instances you would like to start within your Sysplex.
 
 ### Extract sharable configuration out of zowe.yaml
 
