@@ -4,7 +4,7 @@ Before installing Zowe&trade; z/OS components, ensure that your z/OS environment
 
 All Zowe server components can be installed on a z/OS environment, while some can alternatively be installed on Linux or zLinux via Docker. The components provide a number of services that are accessed through a web browser such as an API catalog and a web desktop.  
 
-- [z/OS system requirements](#zos-system-requirements)
+- [z/OS system requirements](#z-os-system-requirements)
     - [Zowe API Mediation Layer on z/OS requirements](#zowe-api-mediation-layer-on-zos-requirements)
     - [Zowe Web Explorers and APIs on z/OS requirements](#zowe-web-explorers-and-apis-on-zos-requirements)
     - [Zowe Application Framework on z/OS requirements](#zowe-application-framework-on-zos-requirements)
@@ -47,6 +47,10 @@ The following prerequisites are
   
   Some features of Zowe require SSH, such as the Desktop's SSH terminal.
   Some users may also find it convenient to install and manage Zowe via SSH, as an alternative to OMVS over TN3270. 
+
+- (Optional, recommended) Parallel Sysplex.
+  
+  To deploy Zowe for high availability, Parallel Sysplex environment is recommended. Please check [Configuring Sysplex](configure-sysplex.md#z-os-system-requirements) for more information.
 
 ### Zowe API Mediation Layer on z/OS requirements
 

@@ -29,9 +29,11 @@ The Zowe instance directory contains a file `instance.env` that stores configura
 
 The purpose of the instance directory is to hold information in the z/OS File System (zFS) that is created (such as log files) or modified (such as preferences) or configured (such as port numbers) away from the zFS runtime directory for Zowe.  This allows the runtime directory to be read-only and to be replaced when a new Zowe release is installed, with customizations being preserved in the instance directory.  
 
+If you plan to run Zowe in Sysplex for high availability, the instance directory should be placed in a shared USS file system. This way, all Zowe instances within the Sysplex can read and write to the same instance directory.
+
 If you have an instance directory that is created from a previous release of Zowe 1.8 or later and are installing a newer release of Zowe, then you should run `zowe-configure-instance.sh -c <PATH_TO_INSTANCE_DIR>` pointing to the existing instance directory to have it updated with any new values.  The release documentation for each new release will specify when this is required, and the file `manifest.json` within each instance directory contains information for which Zowe release it was created from.
 
-In order to allow the `ZWESVSTC` started task to have permission to acces the contents of the `<INSTANCE_DIR>` the `zowe-configure-instance.sh` script sets the group ownership of the top level directory and its child to be `ZWEADMIN`.  If a different group is used for the `ZWESVSTC` started task you can specify this with the optional `-g` argument, for example.
+In order to allow the `ZWESVSTC` started task to have permission to access the contents of the `<INSTANCE_DIR>` the `zowe-configure-instance.sh` script sets the group ownership of the top level directory and its child to be `ZWEADMIN`.  If a different group is used for the `ZWESVSTC` started task you can specify this with the optional `-g` argument, for example.
 
 ```sh
 <RUNTIME_DIR>/bin/zowe-configure-instance.sh -c <PATH_TO_INSTANCE_DIR> -g <GROUP>
@@ -224,6 +226,8 @@ zowe:
       type: PKCS12
 ```
 
+To learn more about YAML format, please visit [yaml.org](https://yaml.org/).
+
 ### Known Limitations for Zowe High Availability
 
 _Note: this section is subject to change in future releases._
@@ -362,22 +366,24 @@ High level configuration of `zowe` supports these definitions:
 - `zowe.extensionDirectory`: tells Zowe where you put all your extensions runtime. This is equivalent to `instance.env` `ZWE_EXTENSION_DIR` variable.
 - `zowe.jobPrefix`: defines the Zowe job prefix for ZWESVSTC started task. This is equivalent to `instance.env` `ZOWE_PREFIX` variable.
 - `zowe.identifier`: defines the Zowe job identifier for ZWESVSTC started task. This is equivalent to `instance.env` `ZOWE_INSTANCE` variable.
-- `zowe.externalDomains`: defines a list of external domains will be used by Zowe instance. This configuration should be an array of domain name strings. This is equivalent to `instance.env` `ZWE_EXTERNAL_HOSTS` variable but should represented as an array. For example,
+- `zowe.externalDomains`: defines a list of external domains will be used by Zowe instance. This configuration should be an array of domain name strings. This is equivalent to `instance.env` `ZWE_EXTERNAL_HOSTS` variable but should represented as an array. In Sysplex deployment, this should be the DVIPA domain name defined in Sysplex Distributor. For example,
   ```yaml
   zowe:
     externalDomains:
     - external.my-company.com
     - additional-dvipa-domain.my-company.com
   ```
-- `zowe.externalPort`: defines the port will be exposed to external Zowe users. By default, this value is set based on `instance.env` `GATEWAY_PORT`. In Syeplex environment or more complicate networking configurations, Gateway port may not represent the port number will be exposed to the users of this Zowe instance.
+- `zowe.externalPort`: defines the port will be exposed to external Zowe users. By default, this value is set based on `instance.env` `GATEWAY_PORT`. In Sysplex deployment, this should be the DVIPA port defined in Sysplex Distributor. Check [Configure Sysplex Distributor](configure-sysplex.md#configure-sysplex-distributor) for more information.
 - `zowe.environments`: defines extra environment variables to customize Zowe runtime. This configuration should be a list of key / value pairs. This is equivalent to adding new environment variables to `instance.env` file. For example,
   ```yaml
   zowe:
     environments:
       MY_NEW_ENV: value-of-my-env
   ```
-- `zowe.externalCertificate`: defines the northbound certificate facing Zowe users. These configurations were defined in `<keystore-dir>/zowe-certificates.env`.
-- `zowe.internalCertificate`: defines the default southbound certificate used within Zowe services. These configurations were defined in `<keystore-dir>/zowe-certificates.env`. By default, this is same as  `zowe.externalCertificate`.
+- `zowe.externalCertificate`: defines the [northbound certificate](configure-certificates.md#northbound-certificate) facing Zowe users. These configurations were defined in `<keystore-dir>/zowe-certificates.env`.
+  
+  _Note: this configuration is not same as `EXTERNAL_CERTIFICATE` configuration in `zowe-setup-certificates.env`. In `zowe-setup-certificates.env`, `EXTERNAL_CERTIFICATE` means the certificate is not generated by `zowe-setup-certificates.sh` utility script._ 
+- `zowe.internalCertificate`: defines the default [southbound certificate](configure-certificates.md#southbound-certificate) used within Zowe services. These configurations were defined in `<keystore-dir>/zowe-certificates.env`. By default, this is same as  `zowe.externalCertificate`.
 - `zowe.sso.token.name`: defines SSO token name. This is equivalent to `PKCS11_TOKEN_NAME` variable in `<keystore-dir>/zowe-certificates.env`.
 - `zowe.sso.token.label`: defines certificate label binds to SSO token. This is equivalent to `PKCS11_TOKEN_LABEL` variable in `<keystore-dir>/zowe-certificates.env`.
 
