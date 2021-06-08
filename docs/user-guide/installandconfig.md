@@ -4,26 +4,18 @@ The installation of Zowe&trade; consists of two independent processes: installin
 
 The Zowe server components provide a web desktop that runs in a web browser providing a number of applications for z/OS users, together with an API mediation layer provides single-sign on (SSO), organization of the multiple zowe servers under a single website, and other capabilities useful for z/OS developers. 
 
-Zowe CLI can connect to z/OS servers and allows tasks to be performed through a command line interface.
-
 Because Zowe is a set of components, before installing Zowe, first determine which components you want to install and where you want to install them. This guide provides documentation for all of the components and it is split into sections so you can install as much as you need.
 
 Here are some scenarios to consider:
 
-- If you will only be accessing the Zowe server components through a web browser or REST API client, then you do not need to install the Zowe CLI.
-- If you will only be using the Zowe CLI, depending on the plugins used you may not need to install the Zowe server components.
-- If you intend to use Docker for the server components, less components need to be installed on z/OS. If you are not using the Desktop or ZSS, then it's possible run the other Zowe components without installing any of Zowe onto z/OS.
+- If you will only be using the Zowe CLI on PCs, depending on the plugins being used you may not need to install the Zowe server components.  If you are just using core Zowe CLI groups from your PC the z/OS you connect to does not required any components of Zowe to be installed on z/OS, unless you want to take advantage of advanced authentication methods such as single sign-on or multi-factor authentication.
+- If you are using the Docker technical preview to run the linux parts of Zowe in a container, then you only need to configure Zowe's z/OS component to start the ZSS server.  
 
 Before you start the installation, review the information on system requirements and other considerations.
 
-## Planning the installation of Zowe server components
+## Planning z/OS installation
 
-All Zowe server components can be installed on z/OS, but some have the alternative option of being run inside of a Docker image on a Linux host.
-Which option you choose effects the prerequisites, where they are installed, and the installation steps needed.
-
-### Planning z/OS installation
-
-If you are installing one or more server components onto z/OS, the following information is required during the installation process. Software and hardware prerequisites are covered in the next section.
+The following information is required during the installation process. Software and hardware prerequisites are covered in the next section.
 
 - The zFS directory where you will install the Zowe runtime files and folders. For more details of setting up and configuring the UNIX Systems Services (USS) environment, see [UNIX System Services considerations for Zowe](configure-uss.md).
 
@@ -43,7 +35,7 @@ If you are installing one or more server components onto z/OS, the following inf
    
      In order for above started tasks to run correctly, security manager configuration needs to be performed.  This is documented in [Configuring the z/OS system for Zowe](configure-zos-system.md) and a sample JCL member `ZWESECUR` is shipped with Zowe that contains commands for RACF, TopSecret, and ACF2 security managers.  
 
-**Note:** To start the API Mediation Layer as a standalone component, see [API Mediation Layer as a standalone component](api-mediation-standalone.md) 
+**Note:** To start the API Mediation Layer as a standalone component, see [API Mediation Layer as a standalone component](api-mediation-standalone.md).
 
 ## Topology of the Zowe z/OS launch process
 

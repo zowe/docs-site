@@ -937,11 +937,11 @@ The following error message codes may appear on logs or API responses. Use the f
 
   **Reason:**
 
-  The service is not available. It might be removed by the Circuit Breaker or by requesting a specific instance that is not available
+  The service is not available. It might be removed by the Circuit Breaker or by requesting specific instance that is not available
 
   **Action:**
 
-  Try the request later or remove the request for the specific instance.
+  Try the request later or remove the request for specific instance.
 
 ### ZWEAG100E
 
