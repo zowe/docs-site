@@ -74,7 +74,7 @@ function DiscoverYourPath() {
               )}
             >
               <div
-                class="item shadow--lw"
+                className="item shadow--lw"
                 style={{ border: "1px solid #bebebe" }}
               >
                 <h4
@@ -87,8 +87,8 @@ function DiscoverYourPath() {
                 </h4>
                 <div className="padding--md">
                   {firstSection.map((props, idx) => (
-                    <div className="margin-bottom--md">
-                      <Item key={idx} {...props} />
+                    <div className="margin-bottom--md" key={idx}>
+                      <Item {...props} />
                     </div>
                   ))}
                 </div>
@@ -100,7 +100,7 @@ function DiscoverYourPath() {
               )}
             >
               <div
-                class="item shadow--lw"
+                className="item shadow--lw"
                 style={{ border: "1px solid #bebebe", height: "100%" }}
               >
                 <div className="col padding--none">
@@ -115,15 +115,15 @@ function DiscoverYourPath() {
                   <div className="row padding--md">
                     <div className={clsx("col col-6")}>
                       {secondSection.map((props, idx) => (
-                        <div className="margin-bottom--md">
-                          <Item key={idx} {...props} />
+                        <div className="margin-bottom--md" key={idx}>
+                          <Item {...props} />
                         </div>
                       ))}
                     </div>
                     <div className={clsx("col col-6")}>
                       {thirdSection.map((props, idx) => (
-                        <div className="margin-bottom--md">
-                          <Item key={idx} {...props} />
+                        <div className="margin-bottom--md" key={idx}>
+                          <Item {...props} />
                         </div>
                       ))}
                     </div>

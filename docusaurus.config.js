@@ -152,13 +152,9 @@ module.exports = {
       isCloseable: true,
     },
     algolia: {
-      //FIXME:
-      apiKey: "aa",
-      indexName: "aaa",
-      contextualSearch: true,
-      searchParameters: {
-        // facetFilters: [`version:${PUBLISH_TARGET_PATH}`],
-      },
+      apiKey: "59ff39ed48d0820010c7e09fc4b677bf",
+      indexName: "zowe",
+      contextualSearch: true
     },
     colorMode: {
       defaultMode: "light",

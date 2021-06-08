@@ -74,22 +74,22 @@ function FeaturedTopics() {
           <div className="row">
             <div className={clsx("col col--4 padding-horiz--lg p-none")}>
               {firstSection.map((props, idx) => (
-                <div className="margin-bottom--md">
-                  <Item key={idx} {...props} />
+                <div className="margin-bottom--md" key={idx}>
+                  <Item {...props} />
                 </div>
               ))}
             </div>
             <div className={clsx("col col--4 padding-horiz--lg p-none")}>
               {secondSection.map((props, idx) => (
-                <div className="margin-bottom--md">
-                  <Item key={idx} {...props} />
+                <div className="margin-bottom--md" key={idx}>
+                  <Item {...props} />
                 </div>
               ))}
             </div>
             <div className={clsx("col col--4 padding-horiz--lg p-none")}>
               {thirdSection.map((props, idx) => (
-                <div className="margin-bottom--md">
-                  <Item key={idx} {...props} />
+                <div className="margin-bottom--md" key={idx}>
+                  <Item {...props} />
                 </div>
               ))}
             </div>
