@@ -31,9 +31,7 @@ The following information is required during the installation process. Software 
    
      In order for the two started tasks to run correctly, security manager configuration needs to be performed.  This is documented in [Configuring the z/OS system for Zowe](configure-zos-system.md) and a sample JCL member `ZWESECUR` is shipped with Zowe that contains commands for RACF, TopSecret, and ACF2 security managers.  
 
-**Note:** To start the API Mediation Layer as a standalone component, see [API Mediation Layer as a standalone component](api-mediation-standalone.md) 
-
-See [Preparing z/OS environment](./preparing-zos.md)
+**Note:** To start the API Mediation Layer as a standalone component, see [API Mediation Layer as a standalone component](api-mediation-standalone.md).
 
 ## Topology of the Zowe z/OS launch process
 

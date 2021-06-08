@@ -1,16 +1,16 @@
-# z/OS Installation Roadmap
+# z/OS installation roadmap
 
-There are two parts to installing Zowe&trade; on z/OS. 
+When you install Zowe&trade; on z/OS, you install the following two parts: 
 
-1) The Zowe runtime, consisting of the following components: 
+1. The Zowe runtime, which consists of the following components: 
    - Zowe Application Framework (ZLUX)
    - Zowe API Mediation Layer
    - Z Secure Services (ZSS)
    - z/OS Explorer Services 
 
-2) The Zowe Cross Memory Server, (an APF authorized server application that provides privileged services to Zowe in a secure manner).
+2. The Zowe Cross Memory Server, which is an APF authorized server application that provides privileged services to Zowe in a secure manner.
 
-Zowe provides the ability for some of its unix components to be run not under USS, but as a Linux Docker container, see [Installing Zowe Server Components using Docker](install-docker.md).  <Badge text="Technical Preview"/>   
+Zowe provides the ability for some of its unix components to be run not under USS, but as a Linux Docker container, see [Installing Zowe Server Components using Docker](install-docker.md). <Badge text="Technical Preview"/>   
 
 Review the installation diagram and the introduction in this topic to see the general installation sequence and the most important tasks that are to be performed during installation and configuration. You can click each step on the diagram for detailed instructions.
 

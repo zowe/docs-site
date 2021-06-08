@@ -1,6 +1,8 @@
 # System requirements 
 
-Before installing Zowe&trade; z/OS components, ensure that your z/OS environment meets the prerequisites.
+Before installing Zowe&trade; z/OS components, ensure that your z/OS environment meets the prerequisites. The prerequisites you need to install depend on what Zowe components you want to use and how you want to install and configure Zowe. Therefore, assess your installation scenario and install the prerequisites that meet your needs. 
+
+All Zowe server components can be installed on a z/OS environment, while some can alternatively be installed on Linux or zLinux via Docker. The components provide a number of services that are accessed through a web browser such as an API catalog and a web desktop.  
 
 - [z/OS system requirements](#zos-system-requirements)
     - [Zowe API Mediation Layer on z/OS requirements](#zowe-api-mediation-layer-on-zos-requirements)
@@ -17,13 +19,10 @@ Before installing Zowe&trade; z/OS components, ensure that your z/OS environment
     - [Multi-Factor Authentication MFA](#multi-factor-authentication-mfa)
     - [Single Sign-On SSO](#single-sign-on-sso)
 - [Zowe Docker requirements](#zowe-docker-requirements)
-- [Important note for users upgrading to v1.14](#important-note-for-users-upgrading-to-v114)
-
-**Note: Not all of the prerequisites in this topic are needed. The prerequisites needed depends on what components you want to use.**
-
-All Zowe server components can be installed on a z/OS environment, while some can alternatively be installed on Linux or zLinux via Docker. The components provide a number of services that are accessed through a web browser such as an API catalog and a web desktop.  
 
 ## z/OS system requirements
+
+The following prerequisites are 
 
 - z/OS version in active support, such as Version 2.3 and Version 2.4
 
@@ -126,7 +125,7 @@ The following ports are required for Zowe. These are default values. You can cha
 ## Zowe Desktop requirements (client PC)
 
 The Zowe Desktop is powered by the Application Framework which has server prereqs depending on where it is installed
-- [Application Framework on z/OS prerequisites](#zowe-application-framework-requirements-host)
+- [Zowe Application Framework on z/OS requirements](#zowe-application-framework-on-zos-requirements)
 - [Application Framework on Docker prerequisites](#docker-requirements-host)
 
 The Zowe Desktop runs inside of a browser. No browser extensions or plugins are required.
@@ -180,18 +179,3 @@ When using Docker the USS components of Zowe will run off z/OS in the Linux cont
 
 **Note:** The subsections of z/OS requirements such as for API Mediation Layer, Web Explorers, and Application Framework are not required because they are included in the Docker install.
 
-## Important note for users upgrading to v1.14
-
-If you are upgrading to Zowe v1.14 (or higher) from a previous release,
-and the value of `ZOWE_EXPLORER_HOST` does not match the host and domain that you put into your browser to access Zowe, you must update your configuration due to updated referrer-based security.
-
-To configure your system for the version 1.14 update, perform **one** of the following tasks to update the `instance.env` configuration file:
-- Define `ZWE_EXTERNAL_HOSTS` as a comma-separated list of hosts from which you would access Zowe from your browser.
-  - `ZWE_EXTERNAL_HOSTS=host1,host2,...`
-
-- Define `ZWE_REFERRER_HOSTS` as a comma-separated list for the value to be applied specifically for referrer purposes.
-  - `ZWE_REFERRER_HOSTS=host1,host2,...`
-
-See [Reviewing the instance env file](../user-guide/configure-instance-directory.md#reviewing-the-instanceenv-file) for additional information on the use of `instance.env` files.
-
-See [Configuring a Zowe instance via instance.env file](../user-guide/configure-instance-directory.md#configuring-a-Zowe-instance-via-instanceenv-file) for additional information on configuring `instance.env` files.
