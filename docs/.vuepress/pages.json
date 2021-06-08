@@ -88,6 +88,13 @@
         ]
       },
       {
+        "text": "Zowe High Availability",
+        "items": [
+          "user-guide/install-ha-sysplex.md",
+          "user-guide/configure-zowe-ha-server.md"
+        ]
+      },
+      {
         "text": "Installing Zowe CLI",
         "items": [
           "user-guide/systemrequirements-cli.md",

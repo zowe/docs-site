@@ -14,11 +14,12 @@ All Zowe server components can be installed on a z/OS environment, while some ca
     - [ZWEADMIN](#zweadmin)
     - [zowe_user](#zowe_user)
 - [Network requirements](#network-requirements)
-- [Zowe Desktop requirements client PC](#zowe-desktop-requirements-client-pc)
+- [Zowe Docker requirements](#zowe-docker-requirements)
+- [Zowe high availability requirements](#zowe-high-availability-requirements)
+- [Zowe Desktop requirements (client PC)](#zowe-desktop-requirements-client-pc)
 - [Feature requirements](#feature-requirements)
     - [Multi-Factor Authentication MFA](#multi-factor-authentication-mfa)
     - [Single Sign-On SSO](#single-sign-on-sso)
-- [Zowe Docker requirements](#zowe-docker-requirements)
 
 ## z/OS system requirements
 
@@ -126,6 +127,43 @@ The following ports are required for Zowe. These are default values. You can cha
 | 8544 | _ZOWE_ZLUX_SERVER_HTTPS_PORT_ | The Zowe Desktop (also known as ZLUX) port used to log in through web browsers.
 | 8542 | _ZOWE_ZSS_SERVER_PORT_ | Z Secure Services (ZSS) provides REST API services to ZLUX, used by the File Editor application and other ZLUX applications in the Zowe Desktop.
 
+## Zowe Docker requirements
+
+<Badge text="Technical Preview"/> The Zowe Docker build is a technical preview.
+
+Docker is a technology for delivering a set of software and all its prerequisites and run them in an isolated manner to reduce installation steps and to eliminate troubleshooting environmental differences.
+Docker can run on many operating systems, but currently the Zowe Docker image is for x86 Linux (Intel, AMD) and zLinux ("s390x"). Support for platforms such as zCX, Windows, and more will be added over time.
+
+To get Docker for Linux, you should check your Linux software repository. Whether using Ubuntu, Red Hat, SuSE, and many other types of Linux, you can install Docker the same way you install other software on Linux through the package manager.
+
+Once you have Docker, the Zowe Docker image has the following requirements
+
+- 4 GB free RAM, 8 GB recommended
+- 4 GB free disk space
+- Network access to the z/OS host. The Linux host must be able to communicate with the z/OS host.
+
+When using Docker the USS components of Zowe will run off z/OS in the Linux container, however a z/OS installation of Zowe is still required for the ZSS and cross memory server.  
+
+**Note:** The subsections of z/OS requirements such as for API Mediation Layer, Web Explorers, and Application Framework are not required because they are included in the Docker install.
+
+## Zowe high availability requirements
+
+Zowe high availability instances requires a Sysplex environment that consists of the following:
+
+- One or more central processor complexes (CPCs) that can attach to a coupling facility
+- At least one coupling facility
+- At least one Sysplex timer
+- Connection to shared DASD
+- Shared SAF database, see [Sharing a database with sysplex communication in data sharing mode](https://www.ibm.com/docs/en/zos/2.1.0?topic=sd-sharing-database-sysplex-communication-in-data-sharing-mode)
+- Sysplex distributor, configured Dynamic VIPA TCP/IP address
+- VSAM record-level sharing (RLS), see [Preparing for VSAM record-level sharing](https://www.ibm.com/docs/en/zos/2.4.0?topic=sharing-preparing-vsam-record-level)
+- USS Shared file system, see [How to share file systems in a Sysplex](https://www.ibm.com/docs/en/zos/2.4.0?topic=planning-sharing-file-systems-in-sysplex)
+- JESPlex/JES2 Multi-Access Spool (MAS) environment
+- z/OSMF high availability, see [Configuring z/OSMF high availability in Sysplex](systemrequirements-zosmf-ha.md)
+- Node.js v8.x (except v8.16.1), v12.x, or v14
+
+   **Note:** It is highly recommended that Node.js installed on a shared file system.
+
 ## Zowe Desktop requirements (client PC)
 
 The Zowe Desktop is powered by the Application Framework which has server prereqs depending on where it is installed
@@ -163,23 +201,3 @@ Zowe has an SSO scheme with the goal that each time you use use multiple Zowe co
 Requirements: 
 - IBM z/OS Management Facility (z/OSMF)
 - (Optional, recommended) PKCS#11 token setup is required when using ZSS, the Desktop, and Application Framework with SSO. See [Creating a PKCS#11 Token](configure-certificates.md#creating-a-pkcs11-token) for more information.
-
-## Zowe Docker requirements
-
-<Badge text="Technical Preview"/> The Zowe Docker build is a technical preview.
-
-Docker is a technology for delivering a set of software and all its prerequisites and run them in an isolated manner to reduce installation steps and to eliminate troubleshooting environmental differences.
-Docker can run on many operating systems, but currently the Zowe Docker image is for x86 Linux (Intel, AMD) and zLinux ("s390x"). Support for platforms such as zCX, Windows, and more will be added over time.
-
-To get Docker for Linux, you should check your Linux software repository. Whether using Ubuntu, Red Hat, SuSE, and many other types of Linux, you can install Docker the same way you install other software on Linux through the package manager.
-
-Once you have Docker, the Zowe Docker image has the following requirements
-
-- 4 GB free RAM, 8 GB recommended
-- 4 GB free disk space
-- Network access to the z/OS host. The Linux host must be able to communicate with the z/OS host.
-
-When using Docker the USS components of Zowe will run off z/OS in the Linux container, however a z/OS installation of Zowe is still required for the ZSS and cross memory server.  
-
-**Note:** The subsections of z/OS requirements such as for API Mediation Layer, Web Explorers, and Application Framework are not required because they are included in the Docker install.
-
