@@ -1,15 +1,12 @@
 # System requirements 
 
 Before installing Zowe&trade; CLI, ensure that your environment meets the prerequisites.
+  
+- [Client-side](#client-side)
+- [Host-side](#host-side)
+- [Free disk space](#free-disk-space)
 
-- [Zowe CLI requirements](#zowe-cli-requirements)
-  - [Client-side](#client-side)
-  - [Host-side](#host-side)
-  - [Free disk space](#free-disk-space)
-
-## Zowe CLI requirements
-
-### Client-side
+## Client-side
 
 Zowe CLI is supported on Windows, Linux, and Mac operating systems. Meet the following requirements before you install the CLI:
 
@@ -27,7 +24,7 @@ Zowe CLI is supported on Windows, Linux, and Mac operating systems. Meet the fol
 
 - **Plug-in client requirements:** If you plan to install plug-ins, review the [Software requirements for CLI plug-ins](./cli-swreqplugins.md). You *must* meet the client requirements for the Secure Credential Store and IBM Db2 plug-ins prior to installing them.
 
-### Host-side
+## Host-side
 
 Zowe CLI requires the following mainframe configuration:
 
@@ -37,6 +34,6 @@ Zowe CLI requires the following mainframe configuration:
 
 - **Zowe CLI on z/OS is not supported:** Zowe CLI can be installed on an IBM z/OS environment and run under Unix System Services (USS). However, the IBM Db2 and Secure Credentials Store plug-ins will *not* run on z/OS due to native code requirements. As such, Zowe CLI is *not supported on z/OS* and is currently experimental.
 
-### Free disk space
+## Free disk space
 
 Zowe CLI requires approximately **100 MB** of free disk space. The actual quantity of free disk space consumed might vary depending on your operating system, the plug-ins that you install, and user profiles saved to disk.
