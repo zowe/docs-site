@@ -143,7 +143,7 @@ You can configure the Zowe runtime with one of the following methods depending o
 
    One instance directory must be created on a shared file system (zFS directory). A single Zowe runtime can be launched multiple times from a shared instance directory.
 
-6. Create and customize `<INSTANCE_DIR>/zowe.yaml` by a utility tool in `<INSTANCE_DIR>/bin/convert-to-zowe-yaml.sh`. The utility converts the existing `<INSTANCE_DIR>/instance.env` to `<INSTANCE_DIR>/zowe.yaml`.
+6. Create and customize `<INSTANCE_DIR>/zowe.yaml` configuration file. To learn more about how to create `zowe.yaml`, see [Creation of zowe.yaml file](configure-instance-directory.md) section.
 
    Next, you will install and configure the Zowe started tasks. Zowe in high availability mode has two high-level started tasks: `ZWESLSTC` that launches the Zowe high availability instances, and `ZWESISTC` that is a cross memory server that runs all of the APF-authorized code. The JCLs for the tasks are included in the PDS SAMPLIB `SZWESAMP` installed by Zowe and the load modules for the cross memory server are included in the PDS load library `SZWEAUTH`.
    

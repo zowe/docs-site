@@ -9,7 +9,7 @@ To stop the Zowe server, the ZWESVSTC started task needs to be ended. Run the `z
 cd $ZOWE_INSTANCE_DIR/bin
 ./zowe-stop.sh
 ```
-where _<ZOWE_INSTANCE_DIR>_ is the directory where you set the instance directory to.
+where `ZOWE_INSTANCE_DIR` is the directory where you set the instance directory to.
 
 When you stop ZWESVSTC, you might get the following error message:
 
@@ -22,7 +22,8 @@ This error results when there is more than one started task named ZWESVSTC. To r
 ```
 C ${ZOWE_PREFIX}${ZOWE_INSTANCE}SV,A=asid
 ```
-Where _ZOWE_PREFIX_ and _ZOWE_INSTANCE_ are specified in your configuration (and default to ZWE and 1) and you can obtain the _asid_ from the value of `A=asid` when you issue the following commands:
+
+Where `ZOWE_PREFIX` and `ZOWE_INSTANCE` are specified in your configuration (and default to ZWE and 1) and you can obtain the `asid` from the value of `A=asid` when you issue the following commands:
 
 ```
 D A,${ZOWE_PREFIX}${ZOWE_INSTANCE}SV

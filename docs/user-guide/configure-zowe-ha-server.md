@@ -28,7 +28,7 @@ The `ha-instance-id` argument is the high available instance ID that is defined 
 
 This command enables you to start multiple instances of a same component which eliminate single points of failure to ensure continuous Zowe components operations.
 
-If you have more than one Zowe high available instance, You can use the optional parameter `JOBNAME` with the START command to distinguish the Zowe high available instances from each other.
+If you intend to have more than one Zowe high available instance running concurrently, You can use the optional parameter `JOBNAME` with the START command to distinguish the Zowe high available instances from each other.
 
 ```
 S ZWESLSTC,HAINST=<ha-instance-id>,JOBNAME=<instance-job-name>
@@ -38,3 +38,17 @@ In PROCLIB member `ZWESLSTC`, you need to perform the following steps before sta
 
 1. Set parameter `INSTANCE_DIR` to the location (fully qualified path) of the Zowe instance directory that contains the `zowe.yaml` configuration file.
 2. Update the STEPLIB DD statement with the location of the load library that contains the load module `ZWELNCH`.
+
+Zowe Launcher also enables you to restart a specific component of a high available instance by using z/OS MODIFY command:
+
+```
+F ZWESLSTC,APPL=START(<ha-component-name>)
+```
+
+The `ha-component-name` argument is the high available instance component that is defined in `components` section of `zowe.yaml` configuration file. To learn more about `zowe.yaml`, see [Reviewing the zowe.yaml file](configure-instance-directory.md) section.
+
+If you specified the JOBNAME= parameter on the START command, the `instance-job-name` can be used with MODIFY command to restart a specific component:
+
+```
+F <instance-job-name>,APPL=START(<ha-component-name>)
+```
