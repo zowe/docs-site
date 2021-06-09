@@ -1,5 +1,6 @@
-# Stopping Zowe Server started task
+# Stopping the Zowe server started task
 
+Learn how to stop the Zowe server started tasks ZWESVSTC and ZWESLSTC. 
 
 ## Stopping the ZWESVSTC started task
 
@@ -17,7 +18,7 @@ When you stop ZWESVSTC, you might get the following error message:
 IEE842I ZWESVSTC DUPLICATE NAME FOUND- REENTER COMMAND WITH 'A='
 ```
 
-This error results when there is more than one started task named ZWESVSTC. To resolve the issue, stop the required ZWESVSTC instance by issuing the following commands:
+This error occurs when there is more than one started task named ZWESVSTC. To resolve the issue, stop the required ZWESVSTC instance by issuing the following commands:
 
 ```
 C ${ZOWE_PREFIX}${ZOWE_INSTANCE}SV,A=asid
@@ -31,27 +32,27 @@ D A,${ZOWE_PREFIX}${ZOWE_INSTANCE}SV
 
 ## Stopping the ZWESLSTC started task
 
-z/OS STOP command is used to terminate the Zowe launcher server (ZWESLSTC) which started Zowe high availability instance. You can use SDSF to end ZWESLSTC with the following command:
+z/OS STOP command is used to terminate the Zowe launcher server (ZWESLSTC) which started the Zowe high availability instance. You can use SDSF to end ZWESLSTC with the following command:
 
 ```
 P ZWESLSTC
 ```
 
-The `instance-job-name` specified in the JOBNAME= parameter of the Zowe launcher START command can be used to terminate the relevant high available instance. See [Installing and starting the Zowe high availability started task (ZWESLSTC)](configure-zowe-ha-server.md)
+The `instance-job-name` specified in the `JOBNAME=` parameter of the Zowe launcher START command can be used to terminate the relevant high availability instance. See [Installing and starting the Zowe high availability started task (ZWESLSTC)](configure-zowe-ha-server.md) for more information.
 
 ```
 P <instance-job-name>
 ```
 
-Zowe Launcher also enables you to stop a specific component of a running high available instance by using z/OS MODIFY command:
+Zowe Launcher also enables you to stop a specific component of a running high availability instance by using the z/OS MODIFY command:
 
 ```
 F ZWESLSTC,APPL=STOP(<ha-component-name>)
 ```
 
-The `ha-component-name` argument is the high available instance component that is defined in `components` section of `zowe.yaml` configuration file. To learn more about `zowe.yaml`, see [Reviewing the zowe.yaml file](configure-instance-directory.md) section.
+The `ha-component-name` argument is the high availability instance component that is defined in the `components` section of the `zowe.yaml` configuration file. To learn more about `zowe.yaml`, see the [Reviewing the zowe.yaml file](configure-instance-directory.md) section.
 
-The `instance-job-name` specified in the JOBNAME= parameter of the Zowe launcher START command can be used to terminate a specific component of a running high available instance:
+The `instance-job-name` specified in the `JOBNAME=` parameter of the Zowe launcher START command can be used to terminate a specific component of a running high availability instance:
 
 ```
 F <instance-job-name>,APPL=STOP(<ha-component-name>)

@@ -6,16 +6,16 @@ You can uninstall Zowe&trade; from z/OS if you no longer need to use it.
 
 1.  Stop the Zowe started task which stops all of its microservices. See [Stopping Zowe Server started task](stop-zowe-zos.md)
 
-    After Zowe has been stopped, it's subcomponents will end which include the API Mediation Layer and the Zowe desktop.
+    After Zowe has been stopped, its subcomponents will end which include API Mediation Layer and the Zowe desktop.
     
-    To make sure that all Zowe subcomponents are ended, you can check either SDSF, DA (Active users) or SDSF, PS (Processes) panel for ZWE* address spaces. If there are Zowe zombie processes still running, you need to cancel them either from SDSF, DA panel or from USS command line by the following commands:
+    To make sure that all Zowe subcomponents are ended, you can check either SDSF, DA (Active users) or SDSF, PS (Processes) panel for `ZWE*` address spaces. If any Zowe zombie processe is still running, cancel them either from SDSF, DA panel or from USS command line by using the following commands:
 
     ```
     su
     ps -elf | grep ZWESVUSR | awk '{print $2}' | xargs kill -9
     ```
 
-2.  Delete Zowe PROCLIB member from your system `PROCLIB` data set.
+2.  Delete the Zowe PROCLIB member from your system `PROCLIB` data set.
 
     To do this, you can issue the following TSO DELETE command from the TSO READY prompt or from ISPF option 6:
 

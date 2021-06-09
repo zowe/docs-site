@@ -49,16 +49,15 @@
         "user-guide/install-nodejs-zos.md",
         "user-guide/systemrequirements-zosmf.md",
         "user-guide/systemrequirements-zosmf-lite.md",
+        "user-guide/configure-sysplex.md",
         "user-guide/systemrequirements-zosmf-ha.md",
-        "user-guide/configure-uss.md",
-        "user-guide/configure-sysplex.md"
+        "user-guide/configure-uss.md"
       ]
       },
       {
         "text": "Installing Zowe z/OS components",
         "items": [
           "user-guide/install-zos.md",
-          "user-guide/install-ha-sysplex.md",
           "user-guide/install-zowe-zos-convenience-build.md",
           "user-guide/install-zowe-smpe.md",
           "user-guide/install-zowe-smpe-zosmf-workflow.md",
@@ -70,7 +69,6 @@
           "user-guide/configure-xmem-server.md",
           "user-guide/configure-instance-directory.md",
           "user-guide/configure-zowe-server.md",
-          "user-guide/configure-zowe-ha-server.md",
           "user-guide/configure-zowe-zosmf-workflow.md",
           "user-guide/verify-zowe-runtime-install.md",
           "user-guide/configure-auxiliary-address-space.md",

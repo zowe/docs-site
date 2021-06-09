@@ -15,15 +15,12 @@ All Zowe server components can be installed on a z/OS environment, while some ca
     - [zowe_user](#zowe_user)
 - [Network requirements](#network-requirements)
 - [Zowe Docker requirements](#zowe-docker-requirements)
-- [Zowe high availability requirements](#zowe-high-availability-requirements)
 - [Zowe Desktop requirements (client PC)](#zowe-desktop-requirements-client-pc)
 - [Feature requirements](#feature-requirements)
     - [Multi-Factor Authentication MFA](#multi-factor-authentication-mfa)
     - [Single Sign-On SSO](#single-sign-on-sso)
 
 ## z/OS system requirements
-
-The following prerequisites are 
 
 - z/OS version in active support, such as Version 2.3 and Version 2.4
 
@@ -51,7 +48,7 @@ The following prerequisites are
 
 - (Optional, recommended) Parallel Sysplex.
   
-  To deploy Zowe for high availability, Parallel Sysplex environment is recommended. Please check [Configuring Sysplex](configure-sysplex.md#z-os-system-requirements) for more information.
+  To deploy Zowe for high availability, a Parallel Sysplex environment is recommended. Please check [Configuring Sysplex for high availability](configure-sysplex.md) for more information.
 
 ### Zowe API Mediation Layer on z/OS requirements
 
@@ -145,24 +142,6 @@ Once you have Docker, the Zowe Docker image has the following requirements
 When using Docker the USS components of Zowe will run off z/OS in the Linux container, however a z/OS installation of Zowe is still required for the ZSS and cross memory server.  
 
 **Note:** The subsections of z/OS requirements such as for API Mediation Layer, Web Explorers, and Application Framework are not required because they are included in the Docker install.
-
-## Zowe high availability requirements
-
-Zowe high availability instances requires a Sysplex environment that consists of the following:
-
-- One or more central processor complexes (CPCs) that can attach to a coupling facility
-- At least one coupling facility
-- At least one Sysplex timer
-- Connection to shared DASD
-- Shared SAF database, see [Sharing a database with sysplex communication in data sharing mode](https://www.ibm.com/docs/en/zos/2.1.0?topic=sd-sharing-database-sysplex-communication-in-data-sharing-mode)
-- Sysplex distributor, configured Dynamic VIPA TCP/IP address
-- VSAM record-level sharing (RLS), see [Preparing for VSAM record-level sharing](https://www.ibm.com/docs/en/zos/2.4.0?topic=sharing-preparing-vsam-record-level)
-- USS Shared file system, see [How to share file systems in a Sysplex](https://www.ibm.com/docs/en/zos/2.4.0?topic=planning-sharing-file-systems-in-sysplex)
-- JESPlex/JES2 Multi-Access Spool (MAS) environment
-- z/OSMF high availability, see [Configuring z/OSMF high availability in Sysplex](systemrequirements-zosmf-ha.md)
-- Node.js v8.x (except v8.16.1), v12.x, or v14
-
-   **Note:** It is highly recommended that Node.js installed on a shared file system.
 
 ## Zowe Desktop requirements (client PC)
 
