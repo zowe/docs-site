@@ -78,10 +78,10 @@ The following enhancements were made to the **FTP Plug-in**:
 
 #### Zowe Explorer
 
-- Added the secure credentials support for Extenders API [#1306](https://github.com/zowe/vscode-extension-for-zowe/pull/1306). Thanks @JillieBeanSim
-- Improved Zowe Explorer extenders. Zowe Explorer extenders can now utilize Extender API to have profile folder and meta file created upon initialization [#1282](https://github.com/zowe/vscode-extension-for-zowe/pull/1282). Thanks @JillieBeanSim
-- Improved the Command Palette by adding "Zowe Explorer:" before all commands that are related to the extension. Removed some commands from the palette that caused issues [#1308](https://github.com/zowe/vscode-extension-for-zowe/pull/1308). Thanks @lauren-li
-- Updated Theia Tests. Now you need to have Zowe CLI 6.31.0 and the latest .vsix file in the `theia/plugins` folder to run Theia tests [#1268](https://github.com/zowe/vscode-extension-for-zowe/pull/1268). Thanks @deepali-hub
+- Added the refresh data set member names option. You can now retrieve a new list of members from the mainframe. [#1343](https://github.com/zowe/vscode-extension-for-zowe/pull/1343)
+- Added the best practice documentation for error handling. [#1335](https://github.com/zowe/vscode-extension-for-zowe/pull/1335)
+- Added the developer guide for adding commands to core Zowe Explorer menus. [#1332](https://github.com/zowe/vscode-extension-for-zowe/pull/1332)
+- Standardized context group names. [#1340](https://github.com/zowe/vscode-extension-for-zowe/pull/1340)
 
 #### Zowe JES/MVS/USS Explorers   
 
@@ -133,13 +133,7 @@ The following bug was fixed in the **FTP Plug-in**:
 
 #### Zowe Explorer
 
-- Fixed the issue that required the vscode module to be imported in the API package [#1318](https://github.com/zowe/vscode-extension-for-zowe/pull/1318) 
-- Fixed the issue that prevented the `issue STOP command` function from executing correctly [#1304](https://github.com/zowe/vscode-extension-for-zowe/pull/1304) 
-- Fixed the issue that caused the Add Profile icon to disappear [#1307](https://github.com/zowe/vscode-extension-for-zowe/pull/1307)
-- Fixed the vulnerability in NPM Audit [#1309](https://github.com/zowe/vscode-extension-for-zowe/pull/1309)
-- Fixed the issue that doubled the occurrence of the port prompt [#1298](https://github.com/zowe/vscode-extension-for-zowe/pull/1298)
-- Fixed the issue that triggered the `Delete Job` command even outside Zowe Explorer views [#1310](https://github.com/zowe/vscode-extension-for-zowe/pull/1310)
-- Fixed the trailing slash issue that caused issues with USS search [#1313](https://github.com/zowe/vscode-extension-for-zowe/pull/1313)
+- Fixed the error message that popped up when accessing profiles from Favorites. [#1344](https://github.com/zowe/vscode-extension-for-zowe/pull/1344)
 
 
 ## Version 1.21.0 LTS (April 2021)
