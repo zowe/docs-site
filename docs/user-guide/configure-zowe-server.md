@@ -14,7 +14,7 @@ The `ZWESVSTC` should be configured as a started task under the `ZWESVUSR `user 
 
 ## Step 3: Launch the ZWESVSTC started task
 
-You can launch the Zowe started task in two ways.  
+You can launch the Zowe started task in two ways. To see whether the started task has successfully launched see [Troubleshooting installation and startup of Zowe z/OS components](../troubleshoot/troubleshoot-zos.md)
 
 ### Option 1: Starting Zowe from a USS shell
 

@@ -62,7 +62,7 @@ plugin.component.ts
     @Input() sampleInput: string;
     @Output() sampleOutput: EventEmitter<string> = new EventEmitter<string>();
 ```
-Obtain a reference to AppicationManager in your component constructor:
+Obtain a reference to ApplicationManager in your component constructor:
 ```
 app.component.ts
 ```
@@ -76,7 +76,7 @@ app.component.ts
       this.applicationManager = this.injector.get(MVDHosting.Tokens.ApplicationManagerToken);   
     }
 ```
-*Note:* We are unable to inject `AppicationManager` with `@Inject()` until an AoT-compiler issue with namespaces is resolved: [angular/angular#15613](https://github.com/angular/angular/issues/15613)
+*Note:* We are unable to inject `ApplicationManager` with `@Inject()` until an AoT-compiler issue with namespaces is resolved: [angular/angular#15613](https://github.com/angular/angular/issues/15613)
 
 Now you can set `sampleInput` property, obtain `sampleOutput` property and subscribe to it:
 ```

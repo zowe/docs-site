@@ -2,27 +2,37 @@
     "text": "Getting Started",
     "baseuri": "/getting-started/",
     "items": [{
-        "text": "Zowe overview",
-        "link": "getting-started/overview.md"
-      },
+      "text": "Zowe fundamentals",
+      "items": [
+        "getting-started/overview.md",
+        "getting-started/zowe-architecture.md",
+        "getting-started/freqaskques.md"
+      ]
+    },
       {
-        "text": "Zowe architecture",
-        "link": "getting-started/zowe-architecture.md"
-      },
-      {
-        "text": "Release notes",
+        "text": "What's new",
         "link": "getting-started/summaryofchanges.md"
       },
       {
-        "text": "Zowe CLI quick start",
-        "link": "getting-started/cli-getting-started.md"
+        "text": "Zowe quick start",
+        "items": [
+          "getting-started/zowe-getting-started.md",
+          "getting-started/cli-getting-started.md"
+        ]
       },
       {
-        "text": "Zowe FAQs",
-        "link": "getting-started/freqaskques.md"
+        "text": "Learning paths",
+        "items": [
+          "getting-started/user-roadmap-apiml.md",
+          "getting-started/user-roadmap-app-framework.md",
+          "getting-started/user-roadmap-zowe-cli.md",
+          "getting-started/user-roadmap-zowe-explorer.md",
+          "getting-started/user-roadmap-client-sdk.md",
+          "getting-started/user-roadmap-zowe-mobile.md"
+        ]
       },
       {
-        "text": "Related resources",
+        "text": "Zowe resources",
         "link": "getting-started/zowe-resources.md"
       }
     ]
@@ -32,13 +42,14 @@
     "baseuri": "/user-guide/",
     "items": [
       {
-      "text": "Planning and preparing the installation",
+      "text": "Planning and preparing the z/OS installation",
       "items": [
         "user-guide/installandconfig.md",
-        "user-guide/systemrequirements.md",
+        "user-guide/systemrequirements-zos.md",
         "user-guide/install-nodejs-zos.md",
         "user-guide/systemrequirements-zosmf.md",
         "user-guide/systemrequirements-zosmf-lite.md",
+        "user-guide/systemrequirements-zosmf-ha.md",
         "user-guide/configure-uss.md"
       ]
       },
@@ -49,6 +60,7 @@
           "user-guide/install-zowe-zos-convenience-build.md",
           "user-guide/install-zowe-smpe.md",
           "user-guide/install-zowe-smpe-zosmf-workflow.md",
+          "user-guide/api-mediation-standalone.md",  
           "user-guide/configure-zos-system.md",
           "user-guide/configure-certificates.md",
           "user-guide/configure-certificates-keystore.md",
@@ -65,9 +77,19 @@
         ]
       },
       {
+        "text": "Installing Zowe Docker Bundle",
+        "items": [
+          "user-guide/install-docker.md",
+          "user-guide/install-docker-image.md",
+          "user-guide/configuring-docker.md"
+        ]
+      },
+      {
         "text": "Installing Zowe CLI",
         "items": [
+          "user-guide/systemrequirements-cli.md",
           "user-guide/cli-installcli.md",
+          "user-guide/install-cli-via-proxy.md",
           "user-guide/cli-updatingcli.md",
           "user-guide/cli-uninstall.md"
         ]
@@ -124,7 +146,12 @@
     "items": [
       {
         "text": "Overview",
-        "link": "extend/extend-zowe-overview.md"
+        "items": [
+          "extend/extend-zowe-overview.md",
+          "extend/packaging-zos-extensions.md",
+          "extend/install-configure-zos-extensions.md",
+          "extend/lifecycling-with-zwesvstc.md"
+        ]
       },
       {
         "text": "Developing for Zowe CLI",
@@ -145,8 +172,11 @@
           "extend/extend-apiml/onboard-plain-java-enabler-external-configuration.md",
           "extend/extend-apiml/onboard-direct-eureka-call.md",
           "extend/extend-apiml/onboard-spring-boot-enabler.md",
+          "extend/extend-apiml/onboard-micronaut-enabler.md",
+          "extend/extend-apiml/onboard-nodejs-enabler.md",
           "extend/extend-apiml/onboard-static-definition.md",
           "extend/extend-apiml/api-mediation-sso.md",
+          "extend/extend-apiml/service-information.md",
           "extend/extend-apiml/api-mediation-message-service.md",
           "extend/extend-apiml/api-mediation-security.md",
           "extend/extend-apiml/api-mediation-routing.md",
@@ -177,10 +207,6 @@
       {
         "text": "Developing for Zowe SDKs",
         "link": "extend/extend-sdks.md"
-      },
-      {
-        "text": "Lifecycling z/OS extensions",
-        "link": "extend/lifecycling-with-zwesvstc.md"
       },
       {
         "text": "Zowe Conformance Program",
@@ -250,6 +276,10 @@
     "hideInPdf": true,
     "canHideFirst": true,
     "items": [{
+      "text": "How to contribute",
+      "link": "contribute/roadmap-contribute.md"
+      },
+      {
         "text": "Code guidelines",
         "items": [
           "contribute/guidelines-code/categories.md",

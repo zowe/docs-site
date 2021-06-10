@@ -34,7 +34,7 @@ Zowe technology can be used by a variety of mainframe IT and non-IT professional
 
 <summary></summary>
 
-Zowe consists of several components. The primary languages are Java and JavaScript. Zowe CLI is written in TypeScript.
+Zowe consists of several components. The primary languages are Java and JavaScript. Zowe CLI and Desktop are written in TypeScript. ZSS is written in C, while the cross memory server is written in metal C.
 
 </details>
 
@@ -97,7 +97,50 @@ To get up and running with the Zowe CLI component quickly, see [Zowe CLI quick s
 
 <summary></summary>
 
-The primary prerequisites is Java on z/OS and the z/OS Management Facility enabled and configured. For a complete list of software requirements listed by component, see [System requirements](../user-guide/systemrequirements.md).
+Prerequisites vary by component used, but in most cases the primary prerequisites are Java and NodeJS on z/OS and the z/OS Management Facility enabled and configured. For a complete list of software requirements listed by component, see [System requirements](../user-guide/systemrequirements.md).
+
+</details>
+
+### What's the difference between using Zowe with or without Docker?  
+
+<Badge text="Technical Preview"/>
+
+<details class="zowe-faq">
+
+<summary></summary>
+
+Docker is a download option for Zowe that allows you to run certain Zowe server components outside of z/OS.
+The Docker image contains the Zowe components that do not have the requirement of having to run on z/OS: The App server, API Mediation Layer, and the USS/MVS/JES Explorers.
+
+Configurating components with Docker is similar to the procedures you would follow without Docker, however tasks such as installation and running with Docker are a bit different, as these tasks become Linux oriented, rather than utilizing Jobs and STCs.
+
+**NOTE:** z/OS is still required when using the Docker image. Depending on which components of Zowe you use, you'll still need to set up z/OS Management Facility as well as Zowe's ZSS and Cross memory servers.
+
+</details>
+
+### Is the Zowe CLI packaged within the Zowe Docker download?  
+
+<Badge text="Technical Preview"/>
+
+<details class="zowe-faq">
+
+<summary></summary>
+
+At this time, the Docker image referred to in this documentation contains only Zowe server components. It is possible to make a Docker image that contains the Zowe CLI, so additional Zowe content, such as the CLI, may have Docker as a distribution option later. 
+
+If you are interested in improvements such as this one, please be sure to express that interest to the Zowe community!
+
+</details>
+
+### Does ZOWE support z/OS ZIIP processors?
+
+<details class="zowe-faq">
+
+<summary></summary>
+
+Only the parts of Zowe that involve Java code are ZIIP enabled. The API Mediation Layer composed of the API Gateway, Discovery and Catalog servers along with any Java-based services that work with them such as the Jobs and Datasets servers are ZIIP enabled. Also, the CLI and VSCode Explorer make large use of z/OSMF, which is Java so they are ZIIP enabled as well. More details on portions of Zowe which are Java (ZIIP) enabled can be found [here](https://docs.zowe.org/stable/getting-started/zowe-architecture.html#zowe-architecture).
+
+This leaves C and NodeJS code which are not ZIIP enabled, BUT, we have a [tech preview](https://www.zowe.org/download.html) available currently that allows execution of Java as well as NodeJS code, on Linux or zLinux via Docker. With the tech preview, only the C code remains on z/OS, which is not ZIIP enabled.
 
 </details>
 

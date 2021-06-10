@@ -233,8 +233,9 @@ Fix the missing z/OSMF host name in subject alternative names using the followin
 
 **Follow these steps:**
 
-1. Re-create the Zowe keystore by deleting it and re-creating it. For more information, see [Configuring Zowe certificates](../user-guide/configure-certificates.md). In the `zowe-setup-certificates.env` file that is used to generate the keystore, ensure that the property `VERIFY_CERTIFICATES` is set to `FALSE`.
+1. Re-create the Zowe keystore by deleting it and re-creating it. For more information, see [Configuring Zowe certificates](../user-guide/configure-certificates.md). In the `zowe-setup-certificates.env` file that is used to generate the keystore, ensure that the property `VERIFY_CERTIFICATES` and `NONSTRICT_VERIFY_CERTIFICATES` are set to `false`.
 
+**Important!** Disabling `VERIFY_CERTIFICATES` or `NONSTRICT_VERIFY_CERTIFICATES` may expose your server to security risks. Ensure that you contact your system administrator before you do so and use these options only for troubleshooting purpose.
 
 #### Invalid z/OSMF host name in subject alternative names
 
@@ -378,3 +379,51 @@ jdk.tls.disabledAlgorithms=SSLv3, RC4, MD5withRSA, DH keySize < 1024, 3DES_EDE_C
 **Note:** The file permissions of `java.security` might be restricted for privileged users at most z/OS sites.  
 
 After you remove `GCM`, restart the `ZWESVSTC` started task for the change to take effect.
+
+### API Components unable to handshake
+
+**Symptom:**
+
+The API Mediation Layer address spaces ZWE1AG, ZWE1AC and ZWE1AD start successfully and are visible in SDSF, 
+however they are unable to communicate with each other.
+
+Externally the status of the API Gateway homepage will show ! icons against the API Catalog, Discovery Service and Authentication Service (shown on the left side image below)
+ which do not progress to green tick icons as normally occurs during successful startup (shown on the right side image below).
+ 
+ <img src="../images/api-mediation/apiml-startup.png" alt="Zowe API Mediation Layer Startup" width="600px"/> 
+ 
+The Zowe desktop is able to start but logon fails.
+ 
+The log contains messages to indicate that connections are being reset. For example, the message below shows that the API Gateway `ZWEAG` is unable to connect to the API Discovery service, by default 7553.
+ 
+     <ZWEAGW1:DiscoveryClient-InstanceInfoReplicator-0:16843005> ZWESVUSR INFO  (o.a.h.i.c.DefaultHttpClient) I/O exception (java.net.SocketException) caught when connecting to {s}->https://<host>:<disovery_server_port>: Connection reset
+      2021-01-26 15:21:43.302 <ZWEAGW1:DiscoveryClient-InstanceInfoReplicator-0:16843005> ZWESVUSR DEBUG (o.a.h.i.c.DefaultHttpClient) Connection reset
+      java.net.SocketException: Connection reset
+
+The Zowe desktop is able to be displayed in a browser but fails to logon.
+ 
+**Solution:**
+
+Check that the Zowe certificate has been configured as a client certificate, and not just as a server certificate. More detail can be found in [Configuring certificates](../user-guide/configure-certificates.md).
+
+### Java z/OS components of Zowe unable to read certificates from keyring
+
+**Symptom:**
+
+Java z/OS components of Zowe are unable to read certificates from a keyring. This problem may appear as an error as in teh following example where Java treats the SAF keyring as a file.
+
+**Example:**
+```
+Caused by: java.io.FileNotFoundException: safkeyring:/ZWESVUSR/ZoweKeyring
+at java.io.FileInputStream.open(FileInputStream.java:212)
+at java.io.FileInputStream.<init>(FileInputStream.java:152)
+at java.io.FileInputStream.<init>(FileInputStream.java:104)
+at com.ibm.jsse2.be$p$a.a(be$p$a.java:1)
+at com.ibm.jsse2.be$p$a.run(be$p$a.java:2)
+```
+
+**Solution:**
+
+Apply the following APAR to address this issue:
+
+* [APAR IJ31756](https://www.ibm.com/support/pages/apar/IJ31756)

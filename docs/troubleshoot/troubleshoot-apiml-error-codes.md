@@ -111,7 +111,7 @@ The following error message codes may appear on logs or API responses. Use the f
 
   **Reason:**
 
-  Message service is requested to create message with an invalid key.
+  Message service is requested to create a message with an invalid key.
 
   **Action:**
 
@@ -385,7 +385,7 @@ The following error message codes may appear on logs or API responses. Use the f
 
   **Reason:**
 
-  The service has accepted the authentication of the user but the user does not have access right to the resource.
+  The service has accepted the authentication of the user but the user does not have access rights to the resource.
 
   **Action:**
 
@@ -393,7 +393,7 @@ The following error message codes may appear on logs or API responses. Use the f
 
 ### ZWEAT601E
 
-  z/OSMF service name not found. Set parameter apiml.security.auth.zosmfServiceId to your service ID.
+  z/OSMF service name not found. Set parameter apiml.security.auth.zosmf.serviceId to your service ID.
 
   **Reason:**
 
@@ -401,7 +401,31 @@ The following error message codes may appear on logs or API responses. Use the f
 
   **Action:**
 
-  Ensure that the parameter apiml.security.auth.zosmfServiceId is correctly entered with a valid z/OSMF service ID.
+  Ensure that the parameter apiml.security.auth.zosmf.serviceId is correctly entered with a valid z/OSMF service ID.
+
+### ZWEAT602E
+
+  The SAF provider `endpoint` supports only the resource class 'ZOWE', but the current one is '%s'
+
+  **Reason:**
+
+  The parameter `apiml.security.authorization.provider` is set to `endpoint`
+
+  **Action:**
+
+  Change the SAF provider to another one to use this endpoint
+
+### ZWEAT603E
+
+  Endpoint `%s` is not properly configured
+
+  **Reason:**
+
+  The application cannot call the endpoint to check the SAF resource of the user
+
+  **Action:**
+
+  Verify the state of ZSS and IZS, then check if parameters `apiml.security.authorization.endpoint.*` are matching.
 
 ### ZWEAT602E
 
@@ -585,7 +609,7 @@ The following error message codes may appear on logs or API responses. Use the f
 
   **Action:**
 
-  Try again with valid authorization header
+  Try again with a valid authorization header
 
 ### ZWEAS170E
 
@@ -593,7 +617,7 @@ The following error message codes may appear on logs or API responses. Use the f
 
   **Reason:**
 
-  General exception. There are more information in the message
+  General exception. There are more pieces of information in the message
 
   **Action:**
 
@@ -629,7 +653,7 @@ The following error message codes may appear on logs or API responses. Use the f
 
   **Reason:**
 
-  Gateway service doesn't respond.
+  Gateway service does not respond.
 
   **Action:**
 
@@ -637,11 +661,11 @@ The following error message codes may appear on logs or API responses. Use the f
 
 ### ZWEAS417E
 
-  The application name wasn't found
+  The application name was not found
 
   **Reason:**
 
-  The application id provided for the generation of the PassTicket wasn't recognized by security provider
+  The application id provided for the generation of the PassTicket was not recognized by the security provider
 
   **Action:**
 
@@ -665,7 +689,7 @@ The following error message codes may appear on logs or API responses. Use the f
 
   **Reason:**
 
-  The Zaas Client configuration didn't contain the path to the trust store
+  The Zaas Client configuration does not contain the path to the trust store
 
   **Action:**
 
@@ -677,7 +701,7 @@ The following error message codes may appear on logs or API responses. Use the f
 
   **Reason:**
 
-  The Zaas Client configuration didn't contain the path to the key store
+  The Zaas Client configuration does not contain the path to the key store
 
   **Action:**
 
@@ -811,6 +835,18 @@ The following error message codes may appear on logs or API responses. Use the f
 
 ## Gateway service messages
 
+### ZWEAG500E
+
+  Client certificate is missing in request.
+
+  **Reason:**
+
+  No client certificate is present in the HTTPS request.
+
+  **Action:**
+
+  Properly configure client to send client certificate.
+
 ### ZWEAG700E
 
   No instance of the service '%s' found. Routing will not be available.
@@ -861,7 +897,7 @@ The following error message codes may appear on logs or API responses. Use the f
 
 ### ZWEAG705E
 
-  Failed to load public or private key from key with alias '%s' in the keystore '%s'.
+  Failed to load public or private key from key with alias '%s' in the keystore '%s'. Gateway is shutting down.
 
   **Reason:**
 
@@ -918,6 +954,18 @@ The following error message codes may appear on logs or API responses. Use the f
   **Action:**
 
   Make sure that the service is running and is accessible by the URL provided in the message.
+
+### ZWEAG710E
+
+  Load balancer does not have available server for client: %s
+
+  **Reason:**
+
+  The service is not available. It might be removed by the Circuit Breaker or by requesting specific instance that is not available
+
+  **Action:**
+
+  Try the request later or remove the request for specific instance.
 
 ### ZWEAG100E
 
@@ -1017,15 +1065,15 @@ The following error message codes may appear on logs or API responses. Use the f
 
 ### ZWEAG108E
 
-  z/OSMF instance '%s' not found or incorrectly configured.
+  z/OSMF instance '%s' not found or incorrectly configured. Gateway is shutting down.
 
   **Reason:**
 
-  The Gateway could not find the z/OSMF instance from the Discovery Service.
+  The Gateway could not find the z/OSMF instance from the Discovery Service or it could not communicate with the provided z/OSMF instance.
 
   **Action:**
 
-  Ensure that the z/OSMF instance is configured correctly and that it is successfully registered to the Discovery Service.
+  Ensure that the z/OSMF instance is configured correctly and that it is successfully registered to the Discovery Service and that the API Mediation Layer can communicate with provided z/OSMF instance.
 
 ### ZWEAG109E
 
@@ -1292,7 +1340,7 @@ The following error message codes may appear on logs or API responses. Use the f
 
   **Reason:**
 
-  The api base path for service was not retrieved. An empty path will be used.
+  The API base path for service was not retrieved. An empty path will be used.
 
   **Action:**
 
@@ -1459,4 +1507,7 @@ The following error message codes may appear on logs or API responses. Use the f
   **Action:**
 
   Change the caching.storage.mode to other supported option than inMemory.
+
+ 
+
 

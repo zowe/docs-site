@@ -52,7 +52,7 @@ The following steps describe how to list the profiles that you created, delete t
     npm uninstall --global @zowe/cli
     ```
 
-    **Note:** You might recieve an `ENOENT` error when issuing this command if you installed Zowe CLI from a local package (.tgz) and the package was moved from its original location. In the event that you recieve the error, open an issue in the Zowe CLI GitHub repository.
+    **Note:** You might receive an `ENOENT` error when issuing this command if you installed Zowe CLI from a local package (.tgz) and the package was moved from its original location. In the event that you receive the error, open an issue in the Zowe CLI GitHub repository.
 
     The uninstall process removes all Zowe CLI installation directories and files from your computer.
 
