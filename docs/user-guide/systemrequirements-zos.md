@@ -5,9 +5,9 @@ Before installing Zowe&trade; z/OS components, ensure that your z/OS environment
 All Zowe server components can be installed on a z/OS environment, while some can alternatively be installed on Linux or zLinux via Docker. The components provide a number of services that are accessed through a web browser such as an API catalog and a web desktop.  
 
 - [z/OS system requirements](#zos-system-requirements)
-    - [Zowe API Mediation Layer on z/OS requirements](#zowe-api-mediation-layer-on-zos-requirements)
-    - [Zowe Web Explorers and APIs on z/OS requirements](#zowe-web-explorers-and-apis-on-zos-requirements)
-    - [Zowe Application Framework on z/OS requirements](#zowe-application-framework-on-zos-requirements)
+    - [Java 8.0 64 bit (or higher)](#java)
+    - [Node v8 or higher](#node)
+    - [(Optional) z/OSMF](#z/osmf-(optional))
 - [User ID requirements](#user-id-requirements)
     - [ZWESVUSR](#zwesvusr)
     - [ZWESIUSR](#zwesiusr)
@@ -24,6 +24,8 @@ All Zowe server components can be installed on a z/OS environment, while some ca
 
 The following prerequisites are 
 
+### z/OS
+
 - z/OS version in active support, such as Version 2.3 and Version 2.4
 
    **Note:** z/OS V2.2 reached end of support on 30 September 2020. For more information, see the z/OS v2.2 lifecycle details [https://www.ibm.com/support/lifecycle/details?q45=Z497063S01245B61](https://www.ibm.com/support/lifecycle/details?q45=Z497063S01245B61). 
@@ -32,47 +34,34 @@ The following prerequisites are
 
    **Requirement for:** Zowe Server Components (API Mediation Layer, Application Framework, ZSS)
 
-- (Optional, recommended) IBM z/OS Management Facility (z/OSMF) Version 2.2, Version 2.3 or Version 2.4.
-
-  When a Zowe instance directory is created, it looks for the presence of z/OSMF. If z/OSMF is present, it is used for authentication and generating a single sign-on JSON Web Token (JWT).  If z/OSMF is not present, Zowe will still work and it generates its own JWT and make SAF calls directly.  
+- (Optional, recommended) z/OS OpenSSH V2.2.0 or higher.
   
-  When using z/OSMF with Zowe, ensure that the [z/OSMF JWT Support is available via APAR and associated PTFs](https://www.ibm.com/support/pages/apar/PH12143).
+  Some features of Zowe require SSH, such as the Desktop's SSH terminal.
+  Some users may also find it convenient to install and manage Zowe via SSH, as an alternative to OMVS over TN3270. 
+
+### Node
+
+- Node.js v8.x (except v8.16.1), v12.x, or v14
+
+  Node is not included with z/OS so must be installed separately.  To install Node.js on z/OS, follow the instructions in [Installing Node.js on z/OS](install-nodejs-zos.md).
+  
+  **Note:** If you are a software vendor building extensions for Zowe, when using Node.js v12.x or later, it is highly recommended that plug-ins used are tagged. For more information, see [Tagging on z/OS](../extend/extend-desktop/mvd-buildingplugins.md#tagging-plugin-files-on-z-os).
+
+### z/OSMF (Optional)
+
+- (Optional,) IBM z/OS Management Facility (z/OSMF) Version 2.2, Version 2.3 or Version 2.4.
+
+  z/OSMF is included with z/OS so does not need to be separately installed.  If z/OSMF is present Zowe will detect this when it is configured and use z/OS for two purposes:
+
+    - Authenticating TSO users and generating a single sign-on JSON Web Token (JWT). Ensure that the [z/OSMF JWT Support is available via APAR and associated PTFs](https://www.ibm.com/support/pages/apar/PH12143).  If z/OSMF is not available then Zowe is still able to provide SSO by generating its own JWT and direct SAF calls.  
+
+    - REST API services for Files (Data Sets and USS), JES, and z/OSMF workflows.  These are used by some Zowe applications such as the Zowe Explorers in the Zowe Desktop.  If z/OSMF REST APIs are not present other Zowe desktop application, such as the File Editor that provides access to USS directories and files as well as MVS data sets and members, will work as these us the Zowe Z Secure Services (ZSS) component to access z/OS resources.   
 
   **Tips:**
 
    - For non-production use of Zowe (such as development, proof-of-concept, demo), you can customize the configuration of z/OSMF to create what is known as "z/OS MF Lite" that simplifies the setup of z/OSMF. As z/OS MF Lite only supports selected REST services (JES, DataSet/File, TSO and Workflow), you will observe considerable improvements in startup time as well as a reduction in the efforts involved in setting up z/OSMF. For information about how to set up z/OSMF Lite, see [Configuring z/OSMF Lite (non-production environment)](systemrequirements-zosmf-lite.md).
    - For production use of Zowe, see [Configuring z/OSMF](systemrequirements-zosmf.md).
   
-- (Optional, recommended) z/OS OpenSSH V2.2.0 or higher.
-  
-  Some features of Zowe require SSH, such as the Desktop's SSH terminal.
-  Some users may also find it convenient to install and manage Zowe via SSH, as an alternative to OMVS over TN3270. 
-
-### Zowe API Mediation Layer on z/OS requirements
-
-- IBM SDK for Java Technology Edition V8 or later
-
-### Zowe Web Explorers and APIs on z/OS requirements
-
-- Node.js v8.x (except v8.16.1), v12.x, or v14
-  
-  **Note:** When using Node.js v12.x or later, it is highly recommended that plug-ins used are tagged. For more information, see [Tagging on z/OS](../extend/extend-desktop/mvd-buildingplugins.md#tagging-plugin-files-on-z-os).
-  
-  To install Node.js on z/OS, follow the instructions in [Installing Node.js on z/OS](install-nodejs-zos.md).
-
-- IBM SDK for Java Technology Edition V8 or later
-
-### Zowe Application Framework on z/OS requirements
-
-The Zowe Application Framework server provides the Zowe Desktop that contains an extensible GUI with a number of applications allowing access to z/OS functions, such as the File Editor, TN3270 emulator, JES Explorer, and more. For more information, see [Zowe Architecture](../getting-started/zowe-architecture.md#zlux).
-
-- Node.js v8.x (except v8.16.1), v12.x, or v14
-  
-  **Note:** When using Node.js v12.x or later, it is highly recommended that plug-ins used are tagged. For more information, see [Tagging on z/OS](../extend/extend-desktop/mvd-buildingplugins.md#tagging-plugin-files-on-z-os). 
-  
-  To install Node.js on z/OS, follow the instructions in [Installing Node.js on z/OS](install-nodejs-zos.md).
-
-- IBM SDK for Java Technology Edition V8 or later
 
 ## User ID requirements
 
