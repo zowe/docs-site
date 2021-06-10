@@ -46,8 +46,29 @@ For more information, see [Verify with `zowe-verify-component.sh`](../extend/ins
 
 ### New features and enhancements
 
+#### Zowe CLI
+
+The following enhancements were made to the **FTP Plug-in**:
+- Added retcode in the output of the view job-status-by-jobid and submit command to be consistent with ZOSMF plugin.
+- Added --rdw to download dataset command to download variable-length dataset.
+
 ### Bug fixes
 
+#### Zowe CLI
+
+The follow bug was fixed in **Zowe CLI**:
+- Ensured that the like field will always be added to all allocate like requests. [#1017](https://github.com/zowe/zowe-cli/pull/1017)
+
+The following bugs were fixed in the **Secure Credential Store Plug-in**:
+- Updated the Keytar and prebuild-install dependencies to make offline install possible for npm@7 users.
+- Updated the Keytar dependency to v7.7 to be compatible with Node.js v16.
+
+The following bugs were fixed in the **Imperative CLI Framework**:
+- Fixed active command tree item not updating in web help when scrolling. [#425](https://github.com/zowe/imperative/issues/425)
+- Fixed main page of web help not staying scrolled to top of page when loaded. [#525](https://github.com/zowe/imperative/issues/525)
+
+The following bug was fixed in the **FTP Plug-in**:
+- Expose meta data for Zowe Explorer FTP extension.
 
 
 ## Version 1.21.0 LTS (April 2021)
