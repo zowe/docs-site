@@ -89,7 +89,7 @@
           "user-guide/install-ha-sysplex.md",
           "user-guide/configure-sysplex.md",
           "user-guide/systemrequirements-zosmf-ha.md",
-          "user-guide/configure-caching-service.md",
+          "user-guide/configure-caching-service-ha.md",
           "user-guide/configure-zowe-ha-server.md"
         ]
       },

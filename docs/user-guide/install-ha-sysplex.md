@@ -33,11 +33,11 @@ Review the installation diagram and the high-level instructions in this topic to
   <area href="install-zowe-zos-convenience-build.html#installing-the-zowe-runtime" target="_blank" alt="Install the Zowe runtime with z/OSMF workflow" title="Install the Zowe runtime with z/OSMF workflow" shape="rect" coords="687,546,831,610" />
 
   <area href="configure-zos-system.html" target="_blank" alt="Configure the z/OS system for Zowe using ZWESECUR" title="Configure the z/OS system for Zowe using ZWESECUR" shape="rect" coords="230,738,628,795" />
-  <area href="configure-caching-service.html" target="_blank" alt="Create the VSAM data set for Caching Service" title="Create the VSAM data set for Caching Service" shape="rect" coords="230,820,628,877" />
+  <area href="configure-caching-service-ha.html" target="_blank" alt="Create the VSAM data set for Caching Service" title="Create the VSAM data set for Caching Service" shape="rect" coords="230,820,628,877" />
   <area href="configure-certificates.html" target="_blank" alt="Configure Zowe certificates using shell script" title="Create the Zowe certificates keystore directory using shell script" shape="rect" coords="230,901,628,958" />
   <area href="configure-xmem-server.html" target="_blank" alt="Configure the Zowe cross memory server using shell script" title="Install and configure the Zowe cross memory server (ZWESISTC) using shell script" shape="rect" coords="230,980,628,1037" />
   <area href="configure-instance-directory.html" target="_blank" alt="Create and configure the Zowe instance directory using shell script" title="Create and configure the Zowe instance directory using shell script" shape="rect" coords="230,1061,628,1110" />
-  <area href="configure-instance-directory.html#reviewing-the-zowe-yaml-file-technical-preview" target="_blank" alt="Create and customize Zowe YAML configuration file" title="Create and customize Zowe YAML configuration file using shell script" shape="rect" coords="230,1132,628,1182" />
+  <area href="configure-instance-directory.html#updating-the-zowe-yaml-configuration-file-technical-preview" target="_blank" alt="Create and customize Zowe YAML configuration file" title="Create and customize Zowe YAML configuration file using shell script" shape="rect" coords="230,1132,628,1182" />
   <area href="configure-zowe-ha-server.html" target="_blank" alt="Install and start the Zowe high availability started task using JCL" title="Install and start the Zowe high availability started task (ZWESLSTC) using JCL" shape="rect" coords="230,1206,628,1255" />
 
   <area href="verify-zowe-runtime-install.html" target="_blank" alt="Verify Zowe installation on z/OS" title="Verify Zowe installation on z/OS" shape="rect" coords="204,1283,648,1332" />
@@ -143,7 +143,7 @@ You can configure the Zowe high availability runtime by using JCL and shell scri
    
    **Notes:** 
    
-   - To learn more about `zowe.yaml`, see the [Reviewing the zowe.yaml file](configure-instance-directory.md) section.
+   - To learn more about `zowe.yaml`, see the [Updating the zowe.yaml configuration file](configure-instance-directory.md) section.
    - For more information about Gateway and Discovery Service parameters that can be set during the Zowe runtime configuration, see [API Gateway runtime configuration parameters](./api-mediation/api-gateway-configuration.md) and [Discovery Service runtime configuration parameters](./api-mediation/discovery-service-configuration.md).
 
 7. Configure and start the `ZWESLSTC` started task. For instructions, see [Installing and starting the Zowe high availability started task (ZWESLSTC)](configure-zowe-ha-server.md). 

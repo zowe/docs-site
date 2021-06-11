@@ -49,7 +49,7 @@ Welcome to the Version 1.22.0 release of Zowe! You can find some of the highligh
 You can deploy Zowe in Parallel Sysplex for high availability with several enhancements shipped with v1.22.0 release.
 
 - By deploying Zowe in Sysplex, comparing to a single instance of Zowe, you are configuring and starting multiple Zowe instances. See how [Zowe architecture](zowe-architecture.md) is changed with high availability.
-- In addition to the `instance.env` file that is used to configure Zowe, now you can use a new YAML configuration file `zowe.yaml` to configure multiple Zowe instances in more granular level. See [Reviewing the zowe.yaml file](../user-guide/configure-instance-directory.md#reviewing-the-zowe-yaml-file-technical-preview) for more information.
+- In addition to the `instance.env` file that is used to configure Zowe, now you can use a new YAML configuration file `zowe.yaml` to configure multiple Zowe instances in more granular level. See [Updating the zowe.yaml configuration file](../user-guide/configure-instance-directory.md#updating-the-zowe-yaml-configuration-file-technical-preview) for more information.
 - The new `ZWESLSTC` started task can monitor status of microservices running within Zowe and restart the missing microservice(s) when needed. See [Configure ZWESLSTC to run Zowe High Availability under ZWESVUSR user ID](../user-guide/configure-zos-system.md#configure-zweslstc-to-run-zowe-high-availability-under-zwesvusr-user-id) for more information.
 
 To get started with Zowe high availability, see [Zowe high availability installation roadmap](../user-guide/install-ha-sysplex.md).

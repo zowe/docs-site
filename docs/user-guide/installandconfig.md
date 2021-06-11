@@ -62,7 +62,7 @@ The instance directory file `instance.env` is used to configure a Zowe launchabl
 
 The `instance.env` file sets the location of the `<RUNTIME_DIRECTORY>` as well as the `<KEYSTORE_DIRECTORY>`
 
-**Note:** Alternatively, from v1.22.0 release, you can use a YAML format configuration file `zowe.yaml` instead of `instance.env` to configure the Zowe runtime for high availability. To learn more about the `zowe.yaml` file, see [Reviewing the zowe.yaml file](configure-instance-directory.md).
+**Note:** Alternatively, from v1.22.0 release, you can use a YAML format configuration file `zowe.yaml` instead of `instance.env` to configure the Zowe runtime for high availability. To learn more about the `zowe.yaml` file, see [Updating the zowe.yaml configuration file](configure-instance-directory.md).
 
 
 ### KEYSTORE_DIRECTORY

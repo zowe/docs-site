@@ -50,7 +50,7 @@ Zowe Launcher also enables you to stop a specific component of a running high av
 F ZWESLSTC,APPL=STOP(<ha-component-name>)
 ```
 
-The `ha-component-name` argument is the high availability instance component that is defined in the `components` section of the `zowe.yaml` configuration file. To learn more about `zowe.yaml`, see the [Reviewing the zowe.yaml file](configure-instance-directory.md) section.
+The `ha-component-name` argument is the high availability instance component that is defined in the `components` section of the `zowe.yaml` configuration file. To learn more about `zowe.yaml`, see the [Updating the zowe.yaml configuration file](configure-instance-directory.md) section.
 
 The `instance-job-name` specified in the `JOBNAME=` parameter of the Zowe launcher START command can be used to terminate a specific component of a running high availability instance:
 
