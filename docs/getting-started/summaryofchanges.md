@@ -134,8 +134,7 @@ The following bug was fixed in the **FTP Plug-in**:
 #### Zowe Explorer
 
 - Fixed the error message that popped up when accessing profiles from Favorites. [#1344](https://github.com/zowe/vscode-extension-for-zowe/pull/1344)
-- Fixed the issue that prevented the ALlocate Like feature from working correctly. [#1322](https://github.com/zowe/vscode-extension-for-zowe/pull/1322)
-
+- Fixed the issue that prevented the Allocate Like feature from working correctly. [#1322](https://github.com/zowe/vscode-extension-for-zowe/pull/1322)
 
 ## Version 1.21.0 LTS (April 2021)
 
