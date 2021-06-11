@@ -53,7 +53,7 @@ Before you start the installation, review the information on hardware and softwa
 
 ## Stage 2: Install the Zowe z/OS runtime
 
-1. Ensure that the software requirements are met. The prerequisites are described in [System requirements](systemrequirements.md).
+1. Ensure that the software requirements are met. The prerequisites are described in [System requirements](systemrequirements-zos.md).
 
 1. Choose the method of installing Zowe on z/OS. 
 

@@ -41,7 +41,7 @@ The following definition of skill levels about Zowe will help you gather most re
 
 > Zowe skill level: Beginner
 
-- [**System requirements**](../user-guide/systemrequirements.md#zowe-cli-requirements)
+- [**System requirements**](../user-guide/systemrequirements-cli.md)
 
    Review this topic to ensure that your system meets the requirements for installing Zowe CLI. 
 
