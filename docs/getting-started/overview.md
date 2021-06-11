@@ -119,7 +119,7 @@ For information about extending the functionality of Zowe CLI by installing plug
 
 **More Information:**
 
-  - [System requirements for Zowe CLI](../user-guide/systemrequirements.md)
+  - [System requirements for Zowe CLI](../user-guide/systemrequirements-cli.md)
   - [Installing Zowe CLI](../user-guide/cli-installcli.md)
 
 </details>
