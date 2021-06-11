@@ -1,13 +1,14 @@
 # System requirements 
 
-Before installing Zowe&trade; z/OS components, ensure that your z/OS environment meets the prerequisites. The prerequisites you need to install depend on what Zowe components you want to use and how you want to install and configure Zowe. Therefore, assess your installation scenario and install the prerequisites that meet your needs. 
+Before installing Zowe&trade; z/OS components, ensure that your z/OS environment meets the prerequisites. The prerequisites you need to install depend on what Zowe z/OS components you want to use and how you want to install and configure Zowe on z/OS. Therefore, assess your installation scenario and install the prerequisites that meet your needs. 
 
 All Zowe server components can be installed on a z/OS environment, while some can alternatively be installed on Linux or zLinux via Docker. The components provide a number of services that are accessed through a web browser such as an API catalog and a web desktop.  
 
 - [z/OS system requirements](#zos-system-requirements)
-    - [Java 8.0 64 bit (or higher)](#java)
-    - [Node v8 or higher](#node)
-    - [(Optional) z/OSMF](#z/osmf-(optional))
+    - [z/OS](#zos)
+    - [Node.js](#nodejs)
+    - [Java](#java)
+    - [z/OSMF (Optional)](#zosmf-optional)
 - [User ID requirements](#user-id-requirements)
     - [ZWESVUSR](#zwesvusr)
     - [ZWESIUSR](#zwesiusr)
@@ -22,7 +23,7 @@ All Zowe server components can be installed on a z/OS environment, while some ca
 
 ## z/OS system requirements
 
-The following prerequisites are 
+Be sure your z/OS system meets the following prerequisites.
 
 ### z/OS
 
@@ -32,14 +33,11 @@ The following prerequisites are
 
 - zFS volume with at least 833 mb of free space for Zowe server components, their keystore, instance configuration files and logs, and third-party plug-ins.
 
-   **Requirement for:** Zowe Server Components (API Mediation Layer, Application Framework, ZSS)
-
-- (Optional, recommended) z/OS OpenSSH V2.2.0 or higher.
+- (Optional, recommended) z/OS OpenSSH V2.2.0 or later
   
-  Some features of Zowe require SSH, such as the Desktop's SSH terminal.
-  Some users may also find it convenient to install and manage Zowe via SSH, as an alternative to OMVS over TN3270. 
+  Some features of Zowe require SSH, such as the Desktop's SSH terminal. Or, you want to install and manage Zowe via SSH, as an alternative to OMVS over TN3270. 
 
-### Node
+### Node.js
 
 - Node.js v8.x (except v8.16.1), v12.x, or v14
 
@@ -47,15 +45,19 @@ The following prerequisites are
   
   **Note:** If you are a software vendor building extensions for Zowe, when using Node.js v12.x or later, it is highly recommended that plug-ins used are tagged. For more information, see [Tagging on z/OS](../extend/extend-desktop/mvd-buildingplugins.md#tagging-plugin-files-on-z-os).
 
-### z/OSMF (Optional)
+### Java 
 
-- (Optional,) IBM z/OS Management Facility (z/OSMF) Version 2.2, Version 2.3 or Version 2.4.
+- IBM SDK for Java Technology Edition V8 or later
 
-  z/OSMF is included with z/OS so does not need to be separately installed.  If z/OSMF is present Zowe will detect this when it is configured and use z/OS for two purposes:
+### z/OSMF (Optional) 
 
-    - Authenticating TSO users and generating a single sign-on JSON Web Token (JWT). Ensure that the [z/OSMF JWT Support is available via APAR and associated PTFs](https://www.ibm.com/support/pages/apar/PH12143).  If z/OSMF is not available then Zowe is still able to provide SSO by generating its own JWT and direct SAF calls.  
+- (Optional, recommended) IBM z/OS Management Facility (z/OSMF) Version 2.2, Version 2.3 or Version 2.4.
 
-    - REST API services for Files (Data Sets and USS), JES, and z/OSMF workflows.  These are used by some Zowe applications such as the Zowe Explorers in the Zowe Desktop.  If z/OSMF REST APIs are not present other Zowe desktop application, such as the File Editor that provides access to USS directories and files as well as MVS data sets and members, will work as these us the Zowe Z Secure Services (ZSS) component to access z/OS resources.   
+  z/OSMF is included with z/OS so does not need to be separately installed.  If z/OSMF is present, Zowe will detect this when it is configured and use z/OSMF for the following purposes:
+
+    - Authenticating TSO users and generating a single sign-on JSON Web Token (JWT). Ensure that the [z/OSMF JWT Support is available via APAR and associated PTFs](https://www.ibm.com/support/pages/apar/PH12143).  If z/OSMF is not available, then Zowe is still able to provide SSO by generating its own JWT and making direct SAF calls.  
+
+    - REST API services for Files (Data Sets and USS), JES, and z/OSMF workflows.  These are used by some Zowe applications such as the Zowe Explorers in the Zowe Desktop. If z/OSMF REST APIs are not present, other Zowe desktop application, such as the File Editor that provides access to USS directories and files as well as MVS data sets and members, will work through the Zowe Z Secure Services (ZSS) component to access z/OS resources.   
 
   **Tips:**
 

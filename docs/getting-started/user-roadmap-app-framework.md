@@ -28,7 +28,7 @@ The following definition of skill levels about Zowe will help you gather most re
 
 > Zowe skill level: Beginner
 
-- [**System requirements**](../user-guide/systemrequirements.md)
+- [**System requirements**](../user-guide/systemrequirements-zos.md)
 
    Review this topic to ensure that your system meets the requirements for installing the Zowe Application Framework. Zowe Application Framework is one of the server-side components. 
 
