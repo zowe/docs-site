@@ -123,7 +123,7 @@ You can configure the Zowe high availability runtime by using JCL and shell scri
    - STCGRP is the group for Zowe started tasks. Default should be ZWEADMIN.
    - ZOWEUSER is the user ID for the Zowe started task. Default should be ZWESVUSR.
 
-2. Create a VSAM data set which is used by the Caching Service feature of API Mediation Layer. For instructions, see [Configuring Caching Service for HA](configure-caching-service.md).
+2. Create a VSAM data set which is used by the Caching Service feature of API Mediation Layer. For instructions, see [Configuring Caching Service for HA](configure-caching-service-ha.md).
    
    A SAMPLIB JCL member `ZWECSVSM` is provided to assist with the creation of this VSAM data set. You need to customize the `ZWECSVSM` JCL member depending on your site preferences and then submit the JCL.
 
