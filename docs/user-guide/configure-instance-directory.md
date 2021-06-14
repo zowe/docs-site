@@ -282,10 +282,10 @@ To learn more about the YAML format, please visit [yaml.org](https://yaml.org/).
 There are two ways to create a `zowe.yaml` file.
 
 - Copy the example file `<instance-dir>/bin/example-zowe.yaml` to `<instance-dir>/zowe.yaml` and modify it based on your configuration.
-- Convert from an existing `instance.env` file by using a utility tool in `<instance-dir>/bin/convert-to-zowe-yaml.sh` shipped with Zowe. Issue the following command to convert an `instance.env` file to `zowe.yaml` format: 
+- Convert from an existing `instance.env` file by using a utility tool in `<instance-dir>/bin/utils/convert-to-zowe-yaml.sh` shipped with Zowe. Issue the following command to convert an `instance.env` file to `zowe.yaml` format: 
 
    ```
-   <instance-dir>/bin/convert-to-zowe-yaml.sh <instance-dir>/instance.env <instance-dir>/zowe.yaml
+   <instance-dir>/bin/utils/convert-to-zowe-yaml.sh <instance-dir>/instance.env <instance-dir>/zowe.yaml
    ```
 
    where, the `<instance-dir>` is your instance directory path. 
