@@ -7,9 +7,10 @@ In Hot Standby mode, there is at least one backup (hot-standby) server and a pre
 - [Configuring z/OSMF for availability](https://www.ibm.com/docs/en/zos/2.2.0?topic=environment-configuring-zosmf-availability)
 - [Configuring z/OSMF for high availability](https://www.ibm.com/docs/en/zos/2.4.0?topic=configurations-configuring-zosmf-high-availability)
 
-## Sysplex environment requirements for z/OSMF REST services
 
-Before you begin, ensure that the Sysplex environment meets the following requirements:
+## Sysplex environment requirements 
+
+Before you begin, ensure that the Sysplex environment meets the following requirements for z/OSMF REST services:
 
 - Shared SAF database. See [Sharing a database with sysplex communication in data sharing mode](https://www.ibm.com/docs/en/zos/2.1.0?topic=sd-sharing-database-sysplex-communication-in-data-sharing-mode) in IBM Documentation.
 - USS Shared file system. See [How to share file systems in a Sysplex](https://www.ibm.com/docs/en/zos/2.4.0?topic=planning-sharing-file-systems-in-sysplex) in IBM Documentation.

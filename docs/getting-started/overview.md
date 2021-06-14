@@ -147,7 +147,7 @@ The API Mediation Layer provides a single point of access for mainframe service 
 * Consistent Access: API routing and standardization of API service URLs through the Gateway component provides users with a consistent way to access mainframe APIs at a predefined address.
 * Dynamic Discovery: The Discovery Service automatically determines the location and status of API services.
 * High-Availability: API Mediation Layer is designed with high-availability of services and scalability in mind.
-* Caching Service: This feature is designed for Zowe components in a high availability configuration. It supports the High Availability of all components within Zowe. Components either need to be stateless, or offload the state to a location accessible by all instances of the service, including those which just started.
+* Caching Service: This feature is designed for Zowe components in a high availability configuration. It supports the High Availability of all components within Zowe, allowing components to be stateless by providing a mechanism to offload their state to a location accessible by all instances of the service, including those which just started.
 * Redundancy and Scalability: API service throughput is easily increased by starting multiple API service instances without the need to change configuration.
 * Presentation of Services: The API Catalog component provides easy access to discovered API services and their associated documentation in a user-friendly manner. Access to the contents of the API Catalog is controlled through a z/OS security facility.
 * Encrypted Communication: API ML facilitates secure and trusted communication across both internal components and discovered API services.
@@ -155,7 +155,7 @@ The API Mediation Layer provides a single point of access for mainframe service 
 #### API Mediation Layer architecture
 The following diagram illustrates the single point of access through the Gateway, and the interactions between API ML components and services:
 
-![API Mediation Layer Architecture diagram](./diagrams/service-relationship-diagram.png)
+![API Mediation Layer Architecture diagram](./diagrams/apiml-architecture.png)
 
 #### Components
 The API Layer consists of the following key components:
@@ -182,7 +182,7 @@ Access to the API Catalog can be protected with an Enterprise z/OS Security Mana
 
 **Caching Service**
 
-The Caching Service provides an API in high availability mode which offers the possibility to store, retrieve and delete data that is associated with keys. The service will be used only by internal Zowe applications. It will not be exposed to the internet.
+It provides an API in high-availability mode which offers the possibility to store, retrieve and delete data associated with keys. The service will be used only by internal Zowe applications and will not be exposed to the internet.
 
 #### Onboarding APIs
 Essential to the API Mediation Layer ecosystem is the API services that expose their useful APIs. Use the following topics to discover more about adding new APIs to the API Mediation Layer and using the API Catalog:

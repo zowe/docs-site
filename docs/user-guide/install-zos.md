@@ -10,7 +10,9 @@ When you install Zowe&trade; on z/OS, you install the following two parts:
 
 2. The Zowe Cross Memory Server, which is an APF authorized server application that provides privileged services to Zowe in a secure manner.
 
-Zowe provides the ability for some of its unix components to be run not under USS, but as a Linux Docker container, see [Installing Zowe Server Components using Docker](install-docker.md). <Badge text="Technical Preview"/>   
+Zowe provides the ability for some of its unix components to be run not under USS, but as a Linux Docker container, see [Installing Zowe Server Components using Docker](install-docker.md). <Badge text="Technical Preview"/> 
+
+If you want to configure Zowe for high availability, see [Installing Zowe Server Components in Sysplex](install-ha-sysplex.md) for instructions.  <Badge text="Technical Preview"/>
 
 Review the installation diagram and the introduction in this topic to see the general installation sequence and the most important tasks that are to be performed during installation and configuration. You can click each step on the diagram for detailed instructions.
 

@@ -25,7 +25,7 @@ After installing a new version of Zowe, the new runtime will either be in the sa
 
 In both situations, you can keep and reuse the instance directory that is used for the previous version of Zowe to launch the new version of Zowe. To do this, run the script `zowe-configure-instance.sh` from the new `<RUNTIME_DIR>/bin` directory with the `-c` argument pointing to the location of the existing instance directory. This is the same method used to create an instance directory with default values in an empty target directory, however if `-c` argument is a pre-existing instance directory rather than wiping and creating fresh contents, the contents are updated.  In the situation where the previous instance directory was created from a different runtime directory, the `ROOT_DIR=` value in `instance.env` will be updated to reference the `<RUNTIME_DIR>` from which `zowe-configure-instance.sh` was executed.  In addition the `manifest.json` file in the instance directory will be updated with the `"version:"` of the `<RUNTIME_DIR>`.  This can be used as a way to see the Zowe version that an instance was last configured from. See [Check the Zowe release number](../troubleshoot/troubleshoot-zowe-release.md#check-the-zowe-release-number).  
 
-The `zowe-configure-instance.sh` script will detect if there are new configuration values that have been introduced since the instance directory was last created, and append these to `instance.env` with default values.  New values added will be echoed in the shell running the `zowe-configure-instance.sh` script, and are be described in [Reviewing the instance.env file](./configure-instance-directory.md#reviewing-the-instance.env-file).  Values in `instance.env` previously changed from their default, such as port values or locations of dependent runtimes, are not modified.
+The `zowe-configure-instance.sh` script will detect if there are new configuration values that have been introduced since the instance directory was last created, and append these to `instance.env` with default values.  New values added will be echoed in the shell running the `zowe-configure-instance.sh` script, and are be described in [Updating the instance.env configuration file](./configure-instance-directory.md#updating-the-instance-env-configuration-file).  Values in `instance.env` previously changed from their default, such as port values or locations of dependent runtimes, are not modified.
 
 The `zowe-configure-instance.sh` script will echo any values that are added to the `instance.env` file.
 
@@ -44,7 +44,7 @@ To configure your system for the version 1.14 update, perform **one** of the fol
 - Define `ZWE_REFERRER_HOSTS` as a comma-separated list for the value to be applied specifically for referrer purposes.
   - `ZWE_REFERRER_HOSTS=host1,host2,...`
 
-See [Reviewing the instance env file](../user-guide/configure-instance-directory.md#reviewing-the-instanceenv-file) for additional information on the use of `instance.env` files.
+See [Updating the instance.env configuration file](../user-guide/configure-instance-directory.md#updating-the-instance-env-configuration-file) for additional information on the use of `instance.env` files.
 
 See [Configuring a Zowe instance via instance.env file](../user-guide/configure-instance-directory.md#configuring-a-Zowe-instance-via-instanceenv-file) for additional information on configuring `instance.env` files.
 
