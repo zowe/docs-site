@@ -275,6 +275,12 @@ html[data-theme="light"] .darkTheme {
    }
 }
 
+@media (min-width: 997px) and (max-width: 1320px) {
+  .docItemWrapper_node_modules-\@docusaurus-theme-classic-lib-next-theme-DocPage- {
+    max-width: initial !important;
+  }
+}
+
 @media only screen and (max-width: 1220px) {
   .navbar__brand {
     margin-right: 0px;
