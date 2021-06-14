@@ -1,6 +1,8 @@
 # Installing and configuring Zowe z/OS components using scripts
 
-A Zowe installation creates two PDS sample libraries, `SZWEAUTH` and `SZWESAMPE`.  Before starting the two Zowe started tasks `ZWESVSTC` (for the main Zowe z/OS components), and `ZWESISTC` (for the cross memory server), you must complete additional configuration steps as described in [Installing and starting the Zowe started task (ZWESVSTC)](configure-zowe-server.md) and [Installing and configuring the Zowe cross memory server (ZWESISTC)](configure-xmem-server.md).   
+A Zowe installation creates two PDS sample libraries, `SZWEAUTH` and `SZWESAMP`. Before starting the two Zowe started tasks for the main Zowe z/OS components and the cross memory server, you must complete additional configuration steps as described in
+  - [Installing and starting the Zowe started task (ZWESVSTC)](configure-zowe-server.md) or [Installing and starting the Zowe high availability started task (ZWESLSTC)](configure-zowe-ha-server.md)
+  - [Installing and configuring the Zowe cross memory server (ZWESISTC)](configure-xmem-server.md)
 
 Zowe provides UNIX shell scripts to assist with installation and configuration for scenarios where you wish to automate this process, for example if you have a DevOps pipeline or other repeatable scenario where you are installing and starting a Zowe runtime. These are the same scripts used by the Zowe community themselves for the automated Zowe continuous integration continuous delivery (CICD) pipeline which creates Zowe releases.
 
@@ -10,7 +12,7 @@ The script `<RUNTIME_DIR>/scripts/utils/zowe-install-proc.sh -d <dataSetPrefix> 
 
 - **`-d <dataSetPrefix>`** - Source PDS Prefix
 
-   Dataset prefix of the source PDS where `.SZWESAMP(ZWESVSTC)` was installed into.  
+   Dataset prefix of the source PDS `.SZWESAMP` where Zowe was installed into.  
 
    For an installation from a convenience build, this will be the value of the `-h` argument when `zowe-install.sh` was executed.
 
@@ -18,7 +20,7 @@ The script `<RUNTIME_DIR>/scripts/utils/zowe-install-proc.sh -d <dataSetPrefix> 
 
 - **`-r <proclib>`** - Target PROCLIB PDS (optional)
    
-   Target PROCLIB PDS where ZWESVSTC will be placed. If the parameter is omitted, the script scans the JES PROCLIB concatenation path and uses the first data set where the user has write access
+   Target PROCLIB PDS where Zowe server started task procedure will be placed. If the parameter is omitted, the script scans the JES PROCLIB concatenation path and uses the first data set where the user has write access
 
 - **`-l <log_directory>`** - Log directory (optional)
 
@@ -35,11 +37,11 @@ The script `<RUNTIME_DIR>/scripts/utils/zowe-install-xmem.sh -d <dataSetPrefix> 
 
 - **`-d <dataSetPrefix>`** - Source PDS prefix.
   
-  This is the data set prefix of the source PDS where `.SZWESAMP` was installed into.   
+  This is the data set prefix of the source PDS `.SZWESAMP` where Zowe was installed into.   
 
 - **`-a <parmlib>`** - Target DSN for PARMLIB (optional)
 
-  This is the data set name where the PARMLIB member `ZWESIP00` will be placed. If the parameter is omitted, then source data set `SZWESAMP` will be used by the started task PROCLIB `ZWESISTC`.  If `-a` is set, then the `EXEC DD PARMLIB=` statement in the JCL PROCLIB `ZWESISTC` will be updated.  
+  This is the data set name where the PARMLIB member `ZWESIP00` will be placed. If the parameter is omitted, then source data set `.SZWESAMP` will be used by the started task PROCLIB `ZWESISTC`.  If `-a` is set, then the `EXEC DD PARMLIB=` statement in the JCL PROCLIB `ZWESISTC` will be updated.  
 
 - **`-r <proclib>`** - Target PROCLIB PDS where `ZWESASTC` and `ZWESISTC` will be placed. 
 

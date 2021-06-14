@@ -24,7 +24,7 @@ The following definition of skill levels about Zowe assist you with gathering th
 
 > Zowe skill level: Beginner
 
-- [**System requirements**](../user-guide/systemrequirements.md)
+- [**System requirements**](../user-guide/systemrequirements-zos.md)
 
    Review this topic to ensure that your system meets the requirements for installing the API Mediation Layer. API Mediation Layer is one of the server-side components. 
 
