@@ -139,7 +139,7 @@ You can configure the Zowe high availability runtime by using JCL and shell scri
 
    One instance directory must be created on a shared file system (zFS directory). A single Zowe runtime can be launched multiple times from a shared instance directory.
 
-6. Create and customize the `<INSTANCE_DIR>/zowe.yaml` configuration file. To learn more about how to create `zowe.yaml`, see the [Creation of zowe.yaml file](configure-instance-directory.md##creation-of-zoweyaml-file) section.
+6. Create and customize the `<INSTANCE_DIR>/zowe.yaml` configuration file. To learn more about how to create `zowe.yaml`, see the [Creation of zowe.yaml file](configure-instance-directory.md#creation-of-zoweyaml-file) section.
    
    **Notes:** 
    
