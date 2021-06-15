@@ -159,7 +159,7 @@ Before you submit the JCL, you must [customize it](#customizing-the-zwessotk-jcl
 The `ZWESSOTK` JCL contains commands for the following scenarios:
 
 - Defining security requirements needed by following steps and using the `PKCS#11` token.
-- (Optional) Creation of a locally generated certificated can be used as JWT secret.
+- Creation of a locally generated certificated can be used as JWT secret if it does not already exist.
 - Creation of `PKCS#11` token.
 - Binding JWT secret certificate to the `PKCS#11` token.
 
@@ -190,7 +190,9 @@ This is the `PKCS#11` token name will be created by `ZWESSOTK` JCL. This token n
 
 ### Enabling SSO
 
-To enable SSO, you should run `zowe-setup-certificates.sh` with values of `PKCS11_TOKEN_NAME` and `PKCS11_TOKEN_LABEL` matching what you defined in `ZWESSKTK` JCL.
+To enable SSO, you should run `zowe-setup-certificates.sh` with values of `PKCS11_TOKEN_NAME` and `PKCS11_TOKEN_LABEL` matching what you defined in `ZWESSOTK` JCL.
+
+If you have already Zowe certificate generated, you should edit the `zowe-certificates.env` file in the `KEYSTORE_DIRECTORY` directory, set the `PKCS11_TOKEN_NAME` and `PKCS11_TOKEN_LABEL` with values which you have defined in `ZWESSOTK` JCL, and restart Zowe.
 
 If you are upgrading from an old version of Zowe, you can
 

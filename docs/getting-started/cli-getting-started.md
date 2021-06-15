@@ -78,7 +78,10 @@ Most command groups require a `zosmf-profile`, but some plug-ins add their own p
 zowe profiles create zosmf-profile myprofile123 --host my.company.com --port 123 --user myusername123 --password mypassword123
 ```
 
-**Note:** The port defaults to 443 if you omit the `--port` option. Specify a different port if your host system does not use port 443.
+**Notes:** 
+
+- The port defaults to 443 if you omit the `--port` option. Specify a different port if your host system does not use port 443.
+- If z/OSMF is configured for high availability in Sysplex, create the CLI zosmf-profile with DVIPA address/hostname to ensure availability of REST services. For more information, see [Configuring z/OSMF high availability in Sysplex](../user-guide/systemrequirements-zosmf-ha.md).
 
 ### Using a zosmf profile
 

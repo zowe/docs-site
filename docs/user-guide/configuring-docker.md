@@ -92,7 +92,7 @@ If you have migrated the instance directory from z/OS, copied the simple instanc
 --env EXTERNAL_INSTANCE=/home/zowe/external_instance \
 ```
 
-See [Creating and configuring the Zowe instance directory](configure-instance-directory.md#reviewing-the-instance-env-file) to review options for instance directory configuration.
+See [Creating and configuring the Zowe instance directory](configure-instance-directory.md#updating-the-instance-env-configuration-file) to review options for instance directory configuration.
 
 
 ### Using external certificates  

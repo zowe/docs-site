@@ -97,7 +97,7 @@ To get up and running with the Zowe CLI component quickly, see [Zowe CLI quick s
 
 <summary></summary>
 
-Prerequisites vary by component used, but in most cases the primary prerequisites are Java and NodeJS on z/OS and the z/OS Management Facility enabled and configured. For a complete list of software requirements listed by component, see [System requirements](../user-guide/systemrequirements.md).
+Prerequisites vary by component used, but in most cases the primary prerequisites are Java and NodeJS on z/OS and the z/OS Management Facility enabled and configured. For a complete list of software requirements listed by component, see [System requirements for z/OS components](../user-guide/systemrequirements-zos.md) and [System requirements for Zowe CLI](../user-guide/systemrequirements-cli.md).
 
 </details>
 

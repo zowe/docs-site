@@ -42,10 +42,10 @@
     "baseuri": "/user-guide/",
     "items": [
       {
-      "text": "Planning and preparing the installation",
+      "text": "Planning and preparing the z/OS installation",
       "items": [
         "user-guide/installandconfig.md",
-        "user-guide/systemrequirements.md",
+        "user-guide/systemrequirements-zos.md",
         "user-guide/install-nodejs-zos.md",
         "user-guide/systemrequirements-zosmf.md",
         "user-guide/systemrequirements-zosmf-lite.md",
@@ -84,8 +84,19 @@
         ]
       },
       {
+        "text": "Zowe High Availability",
+        "items": [
+          "user-guide/install-ha-sysplex.md",
+          "user-guide/configure-sysplex.md",
+          "user-guide/systemrequirements-zosmf-ha.md",
+          "user-guide/configure-caching-service-ha.md",
+          "user-guide/configure-zowe-ha-server.md"
+        ]
+      },
+      {
         "text": "Installing Zowe CLI",
         "items": [
+          "user-guide/systemrequirements-cli.md",
           "user-guide/cli-installcli.md",
           "user-guide/install-cli-via-proxy.md",
           "user-guide/cli-updatingcli.md",
