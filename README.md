@@ -292,8 +292,9 @@ The icons used in all the sections are stored in the `./staic/img` folder. To up
     ```
 
 - To update the CSS:
-   1. Navigate to the `/src/pages/styles.module.css` directory and change the **.heroBanner** submodule:
-  ```
+1. Navigate to the `/src/pages/styles.module.css` directory and change the **.heroBanner** submodule:
+  
+```
   .heroBanner {
   padding: 4rem 0;
   text-align: center;
@@ -301,11 +302,12 @@ The icons used in all the sections are stored in the `./staic/img` folder. To up
   overflow: hidden;
   background-color: var(--ifm-color-primary);
   color: #ffffff;
-}
+  }
 ```
 
- 2. Navigate to the `/src/css/custom.css` directory and change the **.hero__title** submodule.
- ```
+1. Navigate to the `/src/css/custom.css` directory and change the **.hero__title** submodule.
+ 
+```
 .hero__title {
   font-size: 4rem !important;
   padding-bottom: 3rem;
@@ -315,12 +317,13 @@ The icons used in all the sections are stored in the `./staic/img` folder. To up
 ### Updating Banner: Search Bar
 
 Navigate to the `/src/css/custom.css` directory and change the **.searchDiv** and **.searchDiv .DocSearch-Button** submodules.
+
 ```
 /* Landing Page Search Bar */
 .searchDiv {
   margin: auto;
   width: calc(var(--ifm-container-width) / 12 * 7);
-}
+ }
 
 .searchDiv .DocSearch-Button {
   margin: auto;
@@ -329,11 +332,11 @@ Navigate to the `/src/css/custom.css` directory and change the **.searchDiv** an
   padding: 0 20px;
   border-radius: 10px;
   color: var(--docsearch-text-color);
-}
+ }
 
 [data-theme="dark"] .searchDiv .DocSearch-Button {
   color: var(--docsearch-muted-color);
-}
+  }
 ```
 
 ### Updating Components
