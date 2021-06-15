@@ -220,6 +220,8 @@ Beginning with release 1.19 LTS, it is possible to perform authentication with c
 
 If the keyring or a truststore contains at least one valid certificate authority (CA) other than the CA of the API ML, it is possible to use the client certificates issued by this CA to authenticate to the API ML. This feature is not enabled by default and needs to be configured.
 
+When providing credentials in any form together with client certificate on the same login request, the credentials take precedence and client certificate is ignored.
+
 **Authentication is performed in the following ways:**
 * The client calls the API ML Gateway login endpoint with the client certificate.
 * The client certificate and private key are checked as a valid TLS client certificate against the Gateway's trusted CAs.
