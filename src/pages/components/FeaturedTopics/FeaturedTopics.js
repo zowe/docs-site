@@ -68,7 +68,7 @@ function FeaturedTopics() {
     <div className={clsx("home-container", styles.section)}>
       <div className="row margin-horiz--lg">
         <div className={clsx("col col--2 p-none")}>
-          <h3 className="container-h3">Featured Topics</h3>
+          <h3 className="container-h3">Featured topics</h3>
         </div>
         <div className={clsx("col col--10")}>
           <div className="row">
