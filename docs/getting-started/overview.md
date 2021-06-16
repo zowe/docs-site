@@ -12,7 +12,7 @@ Zowe&trade; is an open source software framework that allows mainframe developme
 
 Watch this [video](https://www.youtube.com/embed/NX20ZMRoTtk) to see a quick demo of Zowe. 
 
-<iframe class="embed-responsive-item" id="youtubeplayer" title="Zowe overview demo" type="text/html" width="100%" height="365" src="https://www.youtube.com/embed/7XpOjREP8JU" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen> </iframe>
+<iframe class="embed-responsive-item" id="youtubeplayer" title="Zowe overview demo" type="text/html" width="640" height="390" src="https://www.youtube.com/embed/7XpOjREP8JU" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen> </iframe>
 
 [Download the deck for this video](../Zowe_introduction_video_deck.pptx) | [Download the script](../Zowe_introduction_video_script.txt)
 
@@ -113,13 +113,13 @@ With Zowe CLI, you can interact with z/OS remotely in the following ways:
   - **Produce responses as JSON documents:**
     Return data in JSON format on request for consumption in other programming languages.
 
-For detailed information about the available functionality in Zowe CLI, see [Zowe CLI Command Groups](../user-guide/cli-usingcli#understanding-core-command-groups).
+For detailed information about the available functionality in Zowe CLI, see [Zowe CLI Command Groups](../user-guide/cli-usingcli.html#understanding-core-command-groups).
 
 For information about extending the functionality of Zowe CLI by installing plug-ins, see [Extending Zowe CLI](../user-guide/cli-extending.md).
 
 **More Information:**
 
-  - [System requirements for Zowe CLI](../user-guide/systemrequirements.md)
+  - [System requirements for Zowe CLI](../user-guide/systemrequirements-cli.md)
   - [Installing Zowe CLI](../user-guide/cli-installcli.md)
 
 </details>
@@ -132,9 +132,11 @@ The Zowe Client SDKs consist of programmatic APIs that you can use to build clie
 
  For more information, see [Using the Zowe SDKs](../user-guide/sdks-using.md).
 
+  </details>
+
 ### API Mediation Layer
 
-Provides a gateway that acts as a reverse proxy for z/OS services, together with a catalog of REST APIs and a dynamic discovery capability. Base Zowe provides core services for working with MVS Data Sets, JES, as well as working with z/OSMF REST APIs.  The API Mediation Layer also provides a framework for [Single Sign On (SSO)](../extend/extend-apiml/api-mediation-sso#zowe-api-mediation-layer-single-sign-on-overview).
+Provides a gateway that acts as a reverse proxy for z/OS services, together with a catalog of REST APIs and a dynamic discovery capability. Base Zowe provides core services for working with MVS Data Sets, JES, as well as working with z/OSMF REST APIs.  The API Mediation Layer also provides a framework for [Single Sign On (SSO)](../extend/extend-apiml/api-mediation-sso.html#zowe-api-mediation-layer-single-sign-on-overview).
 
 <details>
 <summary> Learn more </summary>
@@ -145,6 +147,7 @@ The API Mediation Layer provides a single point of access for mainframe service 
 * Consistent Access: API routing and standardization of API service URLs through the Gateway component provides users with a consistent way to access mainframe APIs at a predefined address.
 * Dynamic Discovery: The Discovery Service automatically determines the location and status of API services.
 * High-Availability: API Mediation Layer is designed with high-availability of services and scalability in mind.
+* Caching Service: This feature is designed for Zowe components in a high availability configuration. It supports the High Availability of all components within Zowe, allowing components to be stateless by providing a mechanism to offload their state to a location accessible by all instances of the service, including those which just started.
 * Redundancy and Scalability: API service throughput is easily increased by starting multiple API service instances without the need to change configuration.
 * Presentation of Services: The API Catalog component provides easy access to discovered API services and their associated documentation in a user-friendly manner. Access to the contents of the API Catalog is controlled through a z/OS security facility.
 * Encrypted Communication: API ML facilitates secure and trusted communication across both internal components and discovered API services.
@@ -152,7 +155,7 @@ The API Mediation Layer provides a single point of access for mainframe service 
 #### API Mediation Layer architecture
 The following diagram illustrates the single point of access through the Gateway, and the interactions between API ML components and services:
 
-![API Mediation Layer Architecture diagram](./diagrams/service-relationship-diagram.png)
+![API Mediation Layer Architecture diagram](./diagrams/apiml-architecture.png)
 
 #### Components
 The API Layer consists of the following key components:
@@ -177,6 +180,10 @@ The API Catalog is the catalog of published API services and their associated do
 
 Access to the API Catalog can be protected with an Enterprise z/OS Security Manager such as IBM RACF, CA ACF2, or CA Top Secret. Only users who provide proper mainframe credentials can access the Catalog. Client authentication is implemented through the z/OSMF API.
 
+**Caching Service**
+
+It provides an API in high-availability mode which offers the possibility to store, retrieve and delete data associated with keys. The service will be used only by internal Zowe applications and will not be exposed to the internet.
+
 #### Onboarding APIs
 Essential to the API Mediation Layer ecosystem is the API services that expose their useful APIs. Use the following topics to discover more about adding new APIs to the API Mediation Layer and using the API Catalog:
 
@@ -189,6 +196,12 @@ Essential to the API Mediation Layer ecosystem is the API services that expose t
 </details>
 
 To learn more about the architecture of Zowe, see [Zowe architecture](zowe-architecture.md).
+
+### Zowe Launcher
+
+Provides an advanced launcher for Zowe components in a high availability configuration. It performs the following operations:
+ - Stopping the Zowe server using the `STOP` (or `P`) operator command
+ - Stopping and starting specific Zowe components without restarting the entire Zowe using `MODIFY` (or `F`) operator command
 
 ## Zowe Third-Party Software Requirements and Bill of Materials
 
