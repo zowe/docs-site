@@ -1,4 +1,4 @@
-# System requirements <!-- omit in toc -->
+# System requirements 
 
 Before installing Zowe&trade;, ensure that your environment meets the prerequisites.
 

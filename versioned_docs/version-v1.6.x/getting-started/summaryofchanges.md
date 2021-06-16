@@ -1,4 +1,4 @@
-# Release notes <!-- omit in toc -->
+# Release notes 
 
 Learn about what is new, changed, or removed in Zowe&trade;. 
 

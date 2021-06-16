@@ -1,4 +1,4 @@
-# Updating Zowe CLI <!-- omit in toc -->
+# Updating Zowe CLI
 
 Zowe&trade; CLI is updated continuously. You can update Zowe CLI to a more recent version using online registry method or the local package method. However, you can only update Zowe CLI using the method that you used to install Zowe CLI.
 
