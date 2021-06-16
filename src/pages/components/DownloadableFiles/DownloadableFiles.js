@@ -28,10 +28,10 @@ const downloadableFiles = [
       </>
     ),
     firstSubDescription: <>Online interactive version</>,
-    firstViewOnlineLink: "https://docs.zowe.org/stable/web_help/index.html",
-    firstDownloadLink: "https://docs.zowe.org/stable/CLIReference_Zowe.pdf",
+    firstViewOnlineLink: "./web_help/index.html",
+    firstDownloadLink: "./CLIReference_Zowe.pdf",
     secondSubDescription: <>PDF document</>,
-    secondDownloadLink: "https://docs.zowe.org/stable/zowe_web_help.zip",
+    secondDownloadLink: "./zowe_web_help.zip",
   },
   {
     title: "Zowe Client SDK reference guides",
@@ -42,8 +42,8 @@ const downloadableFiles = [
       </>
     ),
     firstSubDescription: <>Node SDK Reference</>,
-    firstViewOnlineLink: "https://docs.zowe.org/stable/typedoc/index.html",
-    firstDownloadLink: "https://docs.zowe.org/stable/zowe-nodejs-sdk-typedoc.zip",
+    firstViewOnlineLink: "./typedoc/index.html",
+    firstDownloadLink: "./zowe-nodejs-sdk-typedoc.zip",
     secondSubDescription: <>Python SDK Reference</>,
     secondViewOnlineLink: "https://zowe-client-python-sdk.readthedocs.io/en/latest/index.html",
     secondDownloadLink: "https://zowe-client-python-sdk.readthedocs.io/_/downloads/en/latest/pdf/",

@@ -5,7 +5,7 @@ import styles from "./styles.module.css";
 const firstSection = [
   {
     item: "Learn about Zowe",
-    link: "stable/getting-started/zowe-getting-started",
+    link: "stable/getting-started/zowe-getting-started#learning-about-zowe",
   },
   {
     item: "Install and use Zowe",
@@ -24,30 +24,30 @@ const firstSection = [
 const secondSection = [
   {
     item: "Zowe API Mediation Layer",
-    link: "",
+    link: "stable/getting-started/user-roadmap-apiml",
   },
   {
     item: "Zowe Application Framework",
-    link: "",
+    link: "stable/getting-started/user-roadmap-app-framework",
   },
   {
     item: "Zowe CLI",
-    link: "",
+    link: "stable/getting-started/user-roadmap-zowe-cli",
   },
 ];
 
 const thirdSection = [
   {
     item: "Zowe Explorer",
-    link: "",
+    link: "stable/getting-started/user-roadmap-zowe-explorer",
   },
   {
     item: "Zowe Client SDKs",
-    link: "",
+    link: "stable/getting-started/user-roadmap-client-sdk",
   },
   {
     item: "Zowe Mobile",
-    link: "",
+    link: "stable/getting-started/user-roadmap-zowe-mobile",
   },
 ];
 
