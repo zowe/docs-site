@@ -6,7 +6,7 @@ import styles from "./styles.module.css";
 
 const firstDataRow = [
   {
-    title: "Getting Started",
+    title: "Get Started",
     icon: "img/get_started-icon.png",
     link: "stable/getting-started/overview",
     description: (
@@ -30,7 +30,7 @@ const firstDataRow = [
     ),
   },
   {
-    title: "Extending",
+    title: "Extend",
     icon: "img/extend-icon.png",
     link: "stable/extend/extend-zowe-overview",
     description: (
@@ -44,7 +44,7 @@ const firstDataRow = [
 
 const secondDataRow = [
   {
-    title: "Troubleshooting",
+    title: "Troubleshoot",
     icon: "img/troubleshooting-icon.png",
     link: "stable/troubleshoot/troubleshooting",
     description: (
@@ -55,7 +55,7 @@ const secondDataRow = [
     ),
   },
   {
-    title: "Contributing",
+    title: "Contribute",
     icon: "img/contribute-icon.png",
     link: "stable/contribute/contributing",
     description: (
@@ -116,7 +116,7 @@ function Features() {
         <section className={clsx("home-container", styles.features)}>
           <div className={clsx("row margin-horiz--lg")}>
             <div className={clsx("col col--2")}>
-              <h3 className="container-h3">Explore Content</h3>
+              <h3 className="container-h3">Explore content</h3>
             </div>
             <div className={clsx("col col--10")}>
               <div className={clsx("row")}>
