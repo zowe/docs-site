@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>mq run mqsc</title>
+<link rel="stylesheet" href="../css/bundle-docs.css">
+<link rel="stylesheet" href="../css/docs.css">
+<article class="markdown-body">
+<h2><a href="zowe.html">zowe</a> › <a href="zowe_mq.html">mq</a> › <a href="zowe_mq_run.html">run</a> › <a href="zowe_mq_run_mqsc.html">mqsc</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
+<p>MQ Utilities</p>
+<h4 id="usage">Usage</h4>
+<p>   zowe  mq run mqsc &lt;qmgr&gt; &lt;cmd&gt; [options]</p>
+<h4 id="positional-arguments">Positional Arguments</h4>
+<ul>
+<li><p><code>qmgr</code>         <em>(string)</em></p>
+<ul>
+<li>The queue manager to apply the command to</li>
+</ul>
+</li>
+<li><p><code>cmd</code>         <em>(string)</em></p>
+<ul>
+<li>The MQSC command</li>
+</ul>
+</li>
+</ul>
+<h4 id="mq-connection-options">MQ Connection Options</h4>
+<ul>
+<li><p><code>--host</code>  | <code>-H</code> <em>(string)</em></p>
+<ul>
+<li>The host name used to access the IBM MQ REST API. This might be the host name
+of the IBM MQ mqweb server, or the Zowe API Mediation Layer..</li>
+</ul>
+</li>
+<li><p><code>--port</code>  | <code>-P</code> <em>(number)</em></p>
+<ul>
+<li>The port number used to access the IBM MQ REST API. This might be the port
+number of the IBM MQ mqweb server, or the Zowe API Mediation Layer.</li>
+</ul>
+</li>
+<li><p><code>--user</code>  | <code>-u</code> <em>(string)</em></p>
+<ul>
+<li>The mainframe (MQ) user name, which can be the same as your TSO login.</li>
+</ul>
+</li>
+<li><p><code>--password</code>  | <code>--pass</code> | <code>--pw</code> <em>(string)</em></p>
+<ul>
+<li>The mainframe (MQ) password, which can be the same as your TSO password.</li>
+</ul>
+</li>
+<li><p><code>--reject-unauthorized</code>  | <code>--ru</code> <em>(boolean)</em></p>
+<ul>
+<li>Reject self-signed certificates.</li>
+</ul>
+</li>
+<li><p><code>--protocol</code>  | <code>-o</code> <em>(string)</em></p>
+<ul>
+<li><p>Specifies the MQ protocol (http or https).</p>
+<p>Default value: http</p>
+<p>Allowed values: http, https</p>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="profile-options">Profile Options</h4>
+<ul>
+<li><p><code>--mq-profile</code>  | <code>--mq-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (mq) profile to load for this command execution.</li>
+</ul>
+</li>
+</ul>
+<h4 id="examples">Examples</h4>
+<ul>
+<li><p>The following sequence shows how to query a
+server-connection channel that is called NEWSVRCONN on an MQ queue manager - our
+example queue manager is called MQ99:</p>
+<ul>
+<li><code>zowe  mq run mqsc MQ99 &quot;DISPLAY CHANNEL(NEWSVRCONN)&quot;</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  mq run mqsc MQ99 &quot;DISPLAY CHANNEL(NEWSVRCONN)&quot;">Copy</button></li>
+</ul>
+</li>
+</ul>
+</article>
+<script src="../js/bundle-docs.js"></script>
+<script src="../js/docs.js"></script>
