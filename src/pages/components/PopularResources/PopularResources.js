@@ -6,7 +6,7 @@ import styles from "./styles.module.css";
 const data = [
   {
     title: "Download Zowe",
-    link: "",
+    link: "https://www.zowe.org/download.html",
     icon: "img/download_zowe-icon.png",
     description: (
       <>
@@ -17,7 +17,7 @@ const data = [
   },
   {
     title: "Try Zowe",
-    link: "",
+    link: "https://www.ibm.com/account/reg/cn-zh/signup?formid=urx-38870",
     icon: "img/try_zowe-icon.png",
     description: <>Get your hands on a Zowe trial on demand at no charge.</>,
   },
@@ -47,9 +47,9 @@ function PopularResources() {
         <section className={clsx("home-container", styles.features)}>
           <div className={clsx("row margin-horiz--lg")}>
             <div className={clsx("col col--2")}>
-              <h3 className="padding-top--lg container-h3">
+              <h4 className="padding-top--lg container-h4">
                 Popular resources
-              </h3>
+              </h4>
             </div>
             <div className={clsx("col col--10")}>
               <div className={clsx("row")}>
