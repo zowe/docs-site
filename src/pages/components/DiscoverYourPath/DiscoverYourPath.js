@@ -5,19 +5,19 @@ import styles from "./styles.module.css";
 const firstSection = [
   {
     item: "Learn about Zowe",
-    link: "",
+    link: "stable/getting-started/zowe-getting-started",
   },
   {
     item: "Install and use Zowe",
-    link: "",
+    link: "stable/getting-started/zowe-getting-started#install-and-use",
   },
   {
     item: "Extend Zowe",
-    link: "",
+    link: "stable/extend/extend-zowe-overview",
   },
   {
     item: "Contribute to Zowe",
-    link: "",
+    link: "stable/contribute/roadmap-contribute",
   },
 ];
 
