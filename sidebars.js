@@ -40,7 +40,7 @@ module.exports = {
       label: "Planning and preparing the installation",
       items: [
         "user-guide/installandconfig",
-        "user-guide/systemrequirements",
+        "user-guide/systemrequirements-zos",
         "user-guide/install-nodejs-zos",
         "user-guide/systemrequirements-zosmf",
         "user-guide/systemrequirements-zosmf-lite",
@@ -82,8 +82,20 @@ module.exports = {
     },
     {
       type: "category",
+      label: "Zowe High Availability",
+      items: [
+        "user-guide/install-ha-sysplex",
+          "user-guide/configure-sysplex",
+          "user-guide/systemrequirements-zosmf-ha",
+          "user-guide/configure-caching-service-ha",
+          "user-guide/configure-zowe-ha-server"
+      ],
+    },
+    {
+      type: "category",
       label: "Installing Zowe CLI",
       items: [
+        "user-guide/systemrequirements-cli",
         "user-guide/cli-installcli",
         "user-guide/install-cli-via-proxy",
         "user-guide/cli-updatingcli",
