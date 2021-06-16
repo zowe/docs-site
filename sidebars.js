@@ -301,6 +301,11 @@ module.exports = {
     "appendix/zowe-cli-command-reference",
     "appendix/zowe-api-reference",
     "appendix/bill-of-materials",
+    { 
+    type: "link", 
+    label: "Third Party Software Requirements", 
+    href: "https://github.com/zowe/docs-site/blob/zowe-docs-v2/tpsr/tpsr-v1.22.md" 
+    }
   ],
 };
 

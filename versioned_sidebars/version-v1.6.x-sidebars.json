@@ -432,6 +432,11 @@
     {
       "type": "doc",
       "id": "version-v1.6.x/appendix/bill-of-materials"
+    },
+    { 
+      "type": "link", 
+      "label": "Third Party Software Requirements", 
+      "href": "https://github.com/zowe/docs-site/blob/zowe-docs-v2/tpsr/tpsr-v1.6.md" 
     }
   ]
 }
