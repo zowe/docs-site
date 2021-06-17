@@ -142,7 +142,6 @@ Use the following procedure if you use _Maven_ as your build automation system.
     </repositories>
     ```
    
-    ```
     **Tip:** If you want to use snapshot version, replace libs-release with libs-snapshot in the repository url and change snapshots->enabled to true.
 
 2. Add the proper dependencies:
