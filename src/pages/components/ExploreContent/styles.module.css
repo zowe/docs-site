@@ -33,7 +33,7 @@ html[data-theme="dark"] .card {
   height: 220px;
 }
 
-@media screen and (max-width: 1300px) {
+@media screen and (max-width: 1200px) {
   .titles {
     height: 260px;
   }

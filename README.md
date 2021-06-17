@@ -459,8 +459,8 @@ const data = [
 - Update the font size of 'Explore Content'.
 ```
 <div className={clsx("col col--2")}>
-              <h3 className="container-h3">Explore Content</h3>
-            </div>
+  <h3 className="container-h3">Explore Content</h3>
+</div>
 ```
 - Update the cards of the first row in the `const firstDataRow = [ ]` code snippet.
 ```
@@ -517,21 +517,21 @@ const thirdSection = [
 For example, to update the `Products` section, edit the variables in the following code snippet.
 ```
 {
-          title: "Products",
-          items: [
-            {
-              label: "Download",
-              href: "https://www.zowe.org/download.html",
-            },
-            {
-              label: "Try Zowe",
-              href: "https://www.openmainframeproject.org/projects/zowe/ztrial",
-            },
-            {
-              label: "Features",
-              href: "https://docs.zowe.org/stable/getting-started/overview.html",
-            },
-          ],
-        },
+  title: "Products",
+  items: [
+    {
+      label: "Download",
+      href: "https://www.zowe.org/download.html",
+    },
+    {
+      label: "Try Zowe",
+      href: "https://www.openmainframeproject.org/projects/zowe/ztrial",
+    },
+    {
+      label: "Features",
+      href: "https://docs.zowe.org/stable/getting-started/overview.html",
+    },
+  ],
+},
 ```
 
