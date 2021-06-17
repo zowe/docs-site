@@ -276,7 +276,7 @@ html[data-theme="light"] .darkTheme {
 }
 
 @media (min-width: 997px) and (max-width: 1320px) {
-  .docItemWrapper_node_modules-\@docusaurus-theme-classic-lib-next-theme-DocPage- {
+  .main-wrapper.docs-wrapper.doc-page > div > main > .container {
     max-width: initial !important;
   }
 }

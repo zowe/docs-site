@@ -76,8 +76,8 @@ function ShareButton(props) {
         Share
       </button>
       <ul className="dropdown__menu">
-        {info.map((labels) => (
-          <li key={labels.id}>
+        {info.map((labels, idx) => (
+          <li key={idx}>
             <a
               className="dropdown__link icons"
               href={labels.link}
