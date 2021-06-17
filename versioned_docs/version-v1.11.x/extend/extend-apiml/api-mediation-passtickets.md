@@ -55,7 +55,7 @@ The following code is an example of security commands that need to be issued.
 
 **Example:**
 
-```txt
+```markup
 ACF
 SET RESOURCE(PTK)
 RECKEY IRRPTAUTH ADD(<applid>.- UID(<zowesrv>) SERVICE(UPDATE,READ) ALLOW)
@@ -69,7 +69,7 @@ Grant the Zowe started task user ID permission to generate PassTickets for users
 
 **Example:**
 
-```txt
+```markup
 TSS PERMIT(<zowesrv>) PTKTDATA(IRRPTAUTH.<applid>.) ACCESS(READ,UPDATE)
 TSS REFRESH
 ```
@@ -82,7 +82,7 @@ Grant the Zowe started task user ID permission to generate PassTickets for users
 
 **Example:**
 
-```txt
+```markup
 RDEFINE PTKTDATA IRRPTAUTH.<applid>.* UACC(NONE)
 PERMIT IRRPTAUTH.<applid>.* CL(PTKTDATA) ID(<zowesrv>) ACCESS(UPDATE)
 SETROPTS RACLIST(PTKTDATA) REFRESH

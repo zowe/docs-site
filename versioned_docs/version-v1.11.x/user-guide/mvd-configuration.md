@@ -33,21 +33,21 @@ Follow these optional steps to configure the default connection to open for the 
 
 `_defaultTN3270.json` is a file in `tn3270-ng2/`, which is deployed during setup. Within this file, you can specify the following parameters to configure the terminal connection:
 ```
-      "host": <hostname>
-      "port": <port>
-      "security": {
-      type: <"telnet" or "tls">
-    }
+  "host": <hostname>
+  "port": <port>
+  "security": {
+    type: <"telnet" or "tls">
+  }
 ```
 ### Setting up the VT Terminal application plug-in
 
 `_defaultVT.json` is a file in `vt-ng2/`, which is deployed during setup. Within this file, you can specify the following parameters to configure the terminal connection:
 ```
-    "host":<hostname>
-    "port":<port>
-    "security": {
-      type: <"telnet" or "ssh">
-    }
+  "host":<hostname>
+  "port":<port>
+  "security": {
+    type: <"telnet" or "ssh">
+  }
 ```
 
 ## Configuration file
@@ -381,7 +381,7 @@ The following steps assume you have installed a Zowe runtime instance (which inc
 
 1. To stop the installed Zowe runtime, in SDSF enter the following command:
 
-   ```text
+   ```
     /C ${ZOWE_PREFIX}${ZOWE_INSTANCE}SV
     ```
     Where ZOWE_PREFIX and ZOWE_INSTANCE are specified in your configuration (and default to ZWE and 1)
@@ -392,7 +392,7 @@ The following steps assume you have installed a Zowe runtime instance (which inc
 
 3. To restart the first Zowe runtime, in SDSF enter the following command:
 
-   ```text
+   ```
    /S ZWESVSTC,SRVRPATH='$ZOWE_ROOT_DIR'
    ```
 
@@ -440,7 +440,7 @@ The following steps assume you have installed a Zowe runtime instance (which inc
 
 8. To start the new Zowe runtime, in SDSF enter the following command:
 
-   ```text
+   ```
    /S ZWESVSTC,INSTANCE='$ZOWE_INSTANCE_DIR'
    ```
 

@@ -328,7 +328,7 @@ The following steps assume you have installed a Zowe runtime instance (which inc
 
 1. To stop the installed Zowe runtime, in SDSF enter the following command:
 
-   ```text
+   ```
     /C ${ZOWE_PREFIX}${ZOWE_INSTANCE}SV
     ```
     Where ZOWE_PREFIX and ZOWE_INSTANCE are specified in your configuration (and default to ZWE and 1)
@@ -339,7 +339,7 @@ The following steps assume you have installed a Zowe runtime instance (which inc
 
 3. To restart the first Zowe runtime, in SDSF enter the following command:
 
-   ```text
+   ```
    /S ZWESVSTC,SRVRPATH='$ZOWE_ROOT_DIR'
    ```
 
@@ -387,7 +387,7 @@ The following steps assume you have installed a Zowe runtime instance (which inc
 
 8. To start the new Zowe runtime, in SDSF enter the following command:
 
-   ```text
+   ```
    /S ZWESVSTC,INSTANCE='$ZOWE_INSTANCE_DIR'
    ```
 

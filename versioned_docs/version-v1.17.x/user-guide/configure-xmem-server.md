@@ -113,7 +113,7 @@ You need to update the `ZWESISTC` member in the JES concatenation path with the 
 
 For example, the sample JCL below shows `ZWESVSTC` where the APF-authorized PDSE containing `ZWESI00` is `ZWESVUSR.SZWEAUTH` and the PDS PARMLIB containing `ZWESIP00` is `ZWESVUSR.SZWESAMP`.  
 
-```jcl
+```cobol
 //ZWESIS01 EXEC PGM=ZWESIS01,REGION=&RGN,
 //         PARM='NAME=&NAME,MEM=&MEM'
 //STEPLIB  DD   DSNAME=ZWESVUSR.SZWEAUTH,DISP=SHR

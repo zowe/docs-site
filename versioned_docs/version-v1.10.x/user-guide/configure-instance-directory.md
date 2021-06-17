@@ -15,7 +15,7 @@ Before creating an instance directory, ensure that you have created a keystore d
 
 To create an instance directory, navigate to the Zowe runtime directory `<ZOWE_ROOT_DIR>` and execute the following commands:
 
-```sh
+```shell
 <ROOT_DIR>/bin/zowe-configure-instance.sh -c <PATH_TO_INSTANCE_DIR>
 ```
 
@@ -29,7 +29,7 @@ If you have an instance directory that is created from a previous release of Zow
 
 In order to allow the `ZWESVSTC` started task to have permission to acces the contents of the `<INSTANCE_DIR>` the `zowe-configure-instance.sh` script sets the group ownership of the top level directory and its child to be `ZWEADMIN`.  If a different group is used for the `ZWESVSTC` started task you can specify this with the optional `-g` argument, for example.
 
-```sh
+```shell
 <ROOT_DIR>/bin/zowe-configure-instance.sh -c <PATH_TO_INSTANCE_DIR> -g <GROUP>
 ```
 

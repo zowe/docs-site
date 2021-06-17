@@ -10,7 +10,7 @@ Before creating an instance directory, ensure that you have created a keystore d
 
 To create an instance directory, navigate to the Zowe runtime directory `<ZOWE_ROOT_DIR>` and execute the following commands:
 
-```sh
+```shell
 <ROOT_DIR>/bin/zowe-configure-instance.sh -c <PATH_TO_INSTANCE_DIR>
 ```
 

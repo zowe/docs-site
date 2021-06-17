@@ -130,7 +130,7 @@ Use the following procedure if you use _Maven_ as your build automation system.
   
    2.1 For spring version 2.1.1, use the following artifact 
 
-   ```maven
+   ```java
    <dependency>
        <groupId>org.zowe.apiml.sdk</groupId>
        <artifactId>onboarding-enabler-spring-v2-springboot-2.1.1.RELEASE</artifactId>
@@ -140,7 +140,7 @@ Use the following procedure if you use _Maven_ as your build automation system.
 
    2.2 For spring version 1.5.9, use the following artifact 
 
-   ```maven
+   ```java
    <dependency>
        <groupId>org.zowe.apiml.sdk</groupId>
        <artifactId>onboarding-enabler-spring-v1-springboot-2.1.1.RELEASE</artifactId>

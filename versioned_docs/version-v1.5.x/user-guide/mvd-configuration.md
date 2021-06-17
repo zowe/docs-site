@@ -24,7 +24,7 @@ You must use SSL certificates to configure the Zowe Application Server to commun
    - `enabled` (boolean): Specify `true` to enable the Application Server to use the Mediation Layer.
 
     For example:
-   ```text
+   ```
        "mediationLayer": {
          "server": {
            "hostname": "localhost",
@@ -346,7 +346,7 @@ The following steps assume you have installed a Zowe runtime instance (which inc
 
 1. To stop the installed Zowe runtime, in SDSF enter the following command:
 
-   ```text
+   ```
    /C ZOWESVR
    ```
 
@@ -356,7 +356,7 @@ The following steps assume you have installed a Zowe runtime instance (which inc
 
 3. To restart the first Zowe runtime, in SDSF enter the following command:
 
-   ```text
+   ```
    /S ZOWESVR,SRVRPATH='$ZOWE_ROOT_DIR'
    ```
 
@@ -404,7 +404,7 @@ The following steps assume you have installed a Zowe runtime instance (which inc
 
 9. To start the new Zowe runtime, in SDSF enter the following command:
 
-   ```text
+   ```
    /S ZOWESVR
    ```
 

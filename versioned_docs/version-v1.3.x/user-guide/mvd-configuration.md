@@ -24,7 +24,7 @@ You must use SSL certificates to configure the Zowe Application Server to commun
    - `enabled` (boolean): Specify `true` to enable the Application Server to use the Mediation Layer.
 
     For example:
-   ```text
+   ```
        "mediationLayer": {
          "server": {
            "hostname": "localhost",
@@ -66,11 +66,11 @@ Follow these optional steps to configure the default connection to open for the 
 
 `_defaultVT.json` is a file in `vt-ng2/`, which is deployed during setup. Within this file, you can specify the following parameters to configure the terminal connection:
 ```
-    "host":<hostname>
-    "port":<port>
-    "security": {
-      type: <"telnet" or "ssh">
-    }
+  "host":<hostname>
+  "port":<port>
+  "security": {
+    type: <"telnet" or "ssh">
+  }
 ```    
 
 ## Configuration file

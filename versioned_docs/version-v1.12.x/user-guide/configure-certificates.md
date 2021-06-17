@@ -20,7 +20,7 @@ You can use the `<ROOT_DIR>/bin/zowe-setup-certificates.sh` script in the Zowe r
 
 The script reads the default variable values that are provided in the `<ROOT_DIR>/bin/zowe-setup-certificates.env` file and generates the certificate signed by the local API Mediation CA and keystores in the `/global/zowe/keystore` location.   To set up certificates with the default environment variables, ensure that you run the following script in the Zowe runtime directory:
 
-```shell script
+```shell
 <ROOT_DIR>/bin/zowe-setup-certificates.sh
 ```
 
@@ -39,7 +39,7 @@ Follow the procedure to customize the values for variables in the `zowe-setup-ce
     `zowe-setup-certificates.env` file. 
     
 3. Execute the following command with the customized environment file:
-   ```shell script
+   ```shell
     bin/zowe-setup-certificates.sh –p <your_directory>/zowe-setup-certificates.env [-l <log_directory>]
    ```
    where `<your_directory>` specifies the location of your customized environment file and `<log-directory>` is an optional parameter that overrides the default log output directory of `/global/zowe/logs`, if it is writable, or `~/zowe/logs`.
@@ -62,7 +62,7 @@ The following example shows how you can configure `zowe-setup-certificates.env` 
     `externalCertificate.p12` is a value of  `EXTERNAL_CERTIFICATE` in the 
     `zowe-setup-certificates.env` file.
 
-   ```sh
+   ```shell
    keytool -list -keystore externalCertificate.p12 -storepass password -storetype pkcs12 -v
    ```
    Expected output:
@@ -85,7 +85,7 @@ The following example shows how you can configure `zowe-setup-certificates.env` 
     **Important!** Switching off certificate evaluation is a non-secure setup.
 
 Following is the part of `zowe-setup-certificates.env` file snippet that uses existing certificates:
-```shell script
+```shell
 # Should APIML verify certificates of services - true/false
 VERIFY_CERTIFICATES=true
 # optional - Path to a PKCS12 keystore with a server certificate for APIML

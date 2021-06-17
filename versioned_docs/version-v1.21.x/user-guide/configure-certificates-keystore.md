@@ -25,7 +25,7 @@ Additionally, the `Digital signature and/or key agreement` must be also set as a
 
 You can generate a certificate with default values. Use a script to read the default variable values that are provided in the `<RUNTIME_DIR>/bin/zowe-setup-certificates.env` file. This script  generates the certificate signed by the local API Mediation CA and keystores in the `/global/zowe/keystore` location. To set up certificates with the default environment variables, run the following script in the Zowe runtime directory:
 
-```shell script
+```shell
 <RUNTIME_DIR>/bin/zowe-setup-certificates.sh
 ```
 
@@ -48,7 +48,7 @@ Use the the following procedure to customize the values for variables in the `zo
     `zowe-setup-certificates.env` file. 
     
 3. Execute the following command with the customized environment file:
-   ```shell script
+   ```shell
     bin/zowe-setup-certificates.sh –p <your_directory>/zowe-setup-certificates.env [-l <log_directory>]
    ```
    where:
@@ -82,7 +82,7 @@ The following procedure shows how to configure the `zowe-setup-certificates.env`
     `externalCertificate.p12` is a value of  `EXTERNAL_CERTIFICATE` in the 
     `zowe-setup-certificates.env` file.
 
-   ```sh
+   ```shell
    keytool -list -keystore externalCertificate.p12 -storepass password -storetype pkcs12 -v
    ```
    
@@ -110,7 +110,7 @@ Be sure to specify the complete value _in quotes_. This can be used for certific
 
    The following script is the part of `zowe-setup-certificates.env` file  that uses existing certificates:
 
-    ```shell script
+    ```shell
     # Should APIML verify certificates of services it uses in strict mode - true/false
     # "strict mode" will verify if the certificates is trusted in truststore, also verify
     # if the certificate Common Name or Subject Alternate Name (SAN) match the service hostname.

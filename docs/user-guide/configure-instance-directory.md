@@ -34,7 +34,7 @@ To create an instance directory, use the `zowe-configure-instance.sh` script.
 
 Navigate to the Zowe runtime directory `<RUNTIME_DIR>` and execute the following commands:
 
-```sh
+```shell
 <RUNTIME_DIR>/bin/zowe-configure-instance.sh -c <PATH_TO_INSTANCE_DIR>
 ```
 
@@ -42,7 +42,7 @@ If you have an instance directory that is created from a previous release of Zow
 
 In order to allow the `ZWESVSTC` started task to have permission to access the contents of the `<INSTANCE_DIR>` the `zowe-configure-instance.sh` script sets the group ownership of the top level directory and its child to be `ZWEADMIN`.  If a different group is used for the `ZWESVSTC` started task you can specify this with the optional `-g` argument, for example.
 
-```sh
+```shell
 <RUNTIME_DIR>/bin/zowe-configure-instance.sh -c <PATH_TO_INSTANCE_DIR> -g <GROUP>
 ```
 

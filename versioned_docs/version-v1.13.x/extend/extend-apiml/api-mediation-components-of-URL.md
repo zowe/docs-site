@@ -43,7 +43,7 @@ The base URL is the parameter the can be set in Zowe CLI in order to access the 
 
 ### URL to a service endpoint without API gateway
 
-```txt
+```markup
 http://ca11.ca.com:19876/fileMasterPlus/api/v1/mvs/dataSets/test/ping
 \_____/\_______________/\____________________/\_____________________/
 scheme       host             basePath             endpointPath
@@ -53,7 +53,7 @@ scheme       host             basePath             endpointPath
 
 ### URL with empty basePath
 
-```txt
+```markup
 https://ca32.ca.com:1443/zosmf/info
 \_____/\_______________/\_________/
 scheme       host        endpointPath
@@ -63,7 +63,7 @@ scheme       host        endpointPath
 
 ### URL to a service endpoint via API gateway
 
-```txt
+```markup
 https://ca3x.ca.com:10310/api/v1/cafilemasterplus/mvs/dataSets/test/ping
 \______/\_______________/\______________________/\_____________________/
 scheme       host             basePath                  endpointPath
@@ -77,7 +77,7 @@ scheme       host             basePath                  endpointPath
 
 ### URL to a service endpoint via API gateway without version
 
-```txt
+```markup
 https://ca3x.ca.com:10310/api/zosmfca32/zosmf/info
 \_____/\________________/\____________/\_________/
 scheme        host          basePath    endpointPath

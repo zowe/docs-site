@@ -253,7 +253,7 @@ You can use an existing certificate with the following procedure.
 
    **Note:** If you don't know the certificate alias, run the following command where `externalCertificate.p12` is a value of  `externalCertificate` in the `api-mediation` section of the `scripts/configure/zowe-install.yaml` file.
    
-   ```sh
+   ```shell
    keytool -list -keystore externalCertificate.p12 -storepass password -storetype pkcs12 -v
    ```
    Expected output:

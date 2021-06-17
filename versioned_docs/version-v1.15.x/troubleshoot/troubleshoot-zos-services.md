@@ -45,7 +45,7 @@ If your started task `ZWESVSTC` is configured to run under the user ID `IZUUSER`
 If you need to run `ZWESVSTC` under the same user ID as z/OSMF for your environment, you can update the z/OSMF configuration to switch off shared class caching which stops the crash from occurring.  Disabling shared class caching reduces the performance of z/OSMF so the preferred fix is to change the user ID of  `ZWESVSTC` away from `IZUUSER` to `ZWESVUSR` as described above.  
 
 Navigate to the file `/var/zosmf/configuration/local_override.cfg`.  This contains the startup arguments for the Java runtime used by z/OSMF.  Add the following line:
-```sh
+```shell
 JVM_OPTIONS=-Xshareclasses:none
 ```
 You will need to recycle the z/OSMF server running, which by default will be running under the started task `IZUSVR1`.  
