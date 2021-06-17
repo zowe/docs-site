@@ -47,9 +47,9 @@ function PopularResources() {
         <section className={clsx("home-container", styles.features)}>
           <div className={clsx("row margin-horiz--lg")}>
             <div className={clsx("col col--2")}>
-              <h4 className="padding-top--lg container-h4">
+              <h3 className="padding-top--lg container-h3">
                 Popular resources
-              </h4>
+              </h3>
             </div>
             <div className={clsx("col col--10")}>
               <div className={clsx("row")}>
