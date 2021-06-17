@@ -29,7 +29,7 @@ To correct this behavior, verify the following:
 - Node.js and NPM are installed.
 - PATH contains the correct path to the NodeJS folder.
 
-**More Information:** [System requirements for Zowe CLI](../../user-guide/systemrequirements.md)
+**More Information:** [System requirements for Zowe CLI](../../user-guide/systemrequirements-cli.md)
 
 ## `npm install -g `Command Fails Due to an EPERM Error
 

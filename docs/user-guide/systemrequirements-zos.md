@@ -1,28 +1,31 @@
 # System requirements 
 
-Before installing Zowe&trade; z/OS components, ensure that your z/OS environment meets the prerequisites. The prerequisites you need to install depend on what Zowe components you want to use and how you want to install and configure Zowe. Therefore, assess your installation scenario and install the prerequisites that meet your needs. 
+Before installing Zowe&trade; z/OS components, ensure that your z/OS environment meets the prerequisites. The prerequisites you need to install depend on what Zowe z/OS components you want to use and how you want to install and configure Zowe on z/OS. Therefore, assess your installation scenario and install the prerequisites that meet your needs. 
 
 All Zowe server components can be installed on a z/OS environment, while some can alternatively be installed on Linux or zLinux via Docker. The components provide a number of services that are accessed through a web browser such as an API catalog and a web desktop.  
 
 - [z/OS system requirements](#zos-system-requirements)
-    - [Zowe API Mediation Layer on z/OS requirements](#zowe-api-mediation-layer-on-zos-requirements)
-    - [Zowe Web Explorers and APIs on z/OS requirements](#zowe-web-explorers-and-apis-on-zos-requirements)
-    - [Zowe Application Framework on z/OS requirements](#zowe-application-framework-on-zos-requirements)
+    - [z/OS](#zos)
+    - [Node.js](#nodejs)
+    - [Java](#java)
+    - [z/OSMF (Optional)](#zosmf-optional)
 - [User ID requirements](#user-id-requirements)
     - [ZWESVUSR](#zwesvusr)
     - [ZWESIUSR](#zwesiusr)
     - [ZWEADMIN](#zweadmin)
     - [zowe_user](#zowe_user)
 - [Network requirements](#network-requirements)
-- [Zowe Desktop requirements client PC](#zowe-desktop-requirements-client-pc)
+- [Zowe Docker requirements](#zowe-docker-requirements)
+- [Zowe Desktop requirements (client PC)](#zowe-desktop-requirements-client-pc)
 - [Feature requirements](#feature-requirements)
     - [Multi-Factor Authentication MFA](#multi-factor-authentication-mfa)
     - [Single Sign-On SSO](#single-sign-on-sso)
-- [Zowe Docker requirements](#zowe-docker-requirements)
 
 ## z/OS system requirements
 
-The following prerequisites are 
+Be sure your z/OS system meets the following prerequisites.
+
+### z/OS
 
 - z/OS version in active support, such as Version 2.3 and Version 2.4
 
@@ -30,49 +33,41 @@ The following prerequisites are
 
 - zFS volume with at least 833 mb of free space for Zowe server components, their keystore, instance configuration files and logs, and third-party plug-ins.
 
-   **Requirement for:** Zowe Server Components (API Mediation Layer, Application Framework, ZSS)
+- (Optional, recommended) z/OS OpenSSH V2.2.0 or later
+  
+  Some features of Zowe require SSH, such as the Desktop's SSH terminal. Or, you want to install and manage Zowe via SSH, as an alternative to OMVS over TN3270. 
+
+- (Optional, recommended) Parallel Sysplex.
+  
+  To deploy Zowe for high availability, a Parallel Sysplex environment is recommended. Please check [Configuring Sysplex for high availability](configure-sysplex.md) for more information.
+
+### Node.js
+
+- Node.js v8.x (except v8.16.1), v12.x, or v14
+
+  Node is not included with z/OS so must be installed separately.  To install Node.js on z/OS, follow the instructions in [Installing Node.js on z/OS](install-nodejs-zos.md).
+  
+  **Note:** If you are a software vendor building extensions for Zowe, when using Node.js v12.x or later, it is highly recommended that plug-ins used are tagged. For more information, see [Tagging on z/OS](../extend/extend-desktop/mvd-buildingplugins.md#tagging-plugin-files-on-z-os).
+
+### Java 
+
+- IBM SDK for Java Technology Edition V8 or later
+
+### z/OSMF (Optional) 
 
 - (Optional, recommended) IBM z/OS Management Facility (z/OSMF) Version 2.2, Version 2.3 or Version 2.4.
 
-  When a Zowe instance directory is created, it looks for the presence of z/OSMF. If z/OSMF is present, it is used for authentication and generating a single sign-on JSON Web Token (JWT).  If z/OSMF is not present, Zowe will still work and it generates its own JWT and make SAF calls directly.  
-  
-  When using z/OSMF with Zowe, ensure that the [z/OSMF JWT Support is available via APAR and associated PTFs](https://www.ibm.com/support/pages/apar/PH12143).
+  z/OSMF is included with z/OS so does not need to be separately installed.  If z/OSMF is present, Zowe will detect this when it is configured and use z/OSMF for the following purposes:
+
+    - Authenticating TSO users and generating a single sign-on JSON Web Token (JWT). Ensure that the [z/OSMF JWT Support is available via APAR and associated PTFs](https://www.ibm.com/support/pages/apar/PH12143).  If z/OSMF is not available, then Zowe is still able to provide SSO by generating its own JWT and making direct SAF calls.  
+
+    - REST API services for Files (Data Sets and USS), JES, and z/OSMF workflows.  These are used by some Zowe applications such as the Zowe Explorers in the Zowe Desktop. If z/OSMF REST APIs are not present, other Zowe desktop application, such as the File Editor that provides access to USS directories and files as well as MVS data sets and members, will work through the Zowe Z Secure Services (ZSS) component to access z/OS resources.   
 
   **Tips:**
 
    - For non-production use of Zowe (such as development, proof-of-concept, demo), you can customize the configuration of z/OSMF to create what is known as "z/OS MF Lite" that simplifies the setup of z/OSMF. As z/OS MF Lite only supports selected REST services (JES, DataSet/File, TSO and Workflow), you will observe considerable improvements in startup time as well as a reduction in the efforts involved in setting up z/OSMF. For information about how to set up z/OSMF Lite, see [Configuring z/OSMF Lite (non-production environment)](systemrequirements-zosmf-lite.md).
    - For production use of Zowe, see [Configuring z/OSMF](systemrequirements-zosmf.md).
   
-- (Optional, recommended) z/OS OpenSSH V2.2.0 or higher.
-  
-  Some features of Zowe require SSH, such as the Desktop's SSH terminal.
-  Some users may also find it convenient to install and manage Zowe via SSH, as an alternative to OMVS over TN3270. 
-
-### Zowe API Mediation Layer on z/OS requirements
-
-- IBM SDK for Java Technology Edition V8 or later
-
-### Zowe Web Explorers and APIs on z/OS requirements
-
-- Node.js v8.x (except v8.16.1), v12.x, or v14
-  
-  **Note:** When using Node.js v12.x or later, it is highly recommended that plug-ins used are tagged. For more information, see [Tagging on z/OS](../extend/extend-desktop/mvd-buildingplugins.md#tagging-plugin-files-on-z-os).
-  
-  To install Node.js on z/OS, follow the instructions in [Installing Node.js on z/OS](install-nodejs-zos.md).
-
-- IBM SDK for Java Technology Edition V8 or later
-
-### Zowe Application Framework on z/OS requirements
-
-The Zowe Application Framework server provides the Zowe Desktop that contains an extensible GUI with a number of applications allowing access to z/OS functions, such as the File Editor, TN3270 emulator, JES Explorer, and more. For more information, see [Zowe Architecture](../getting-started/zowe-architecture.md#zlux).
-
-- Node.js v8.x (except v8.16.1), v12.x, or v14
-  
-  **Note:** When using Node.js v12.x or later, it is highly recommended that plug-ins used are tagged. For more information, see [Tagging on z/OS](../extend/extend-desktop/mvd-buildingplugins.md#tagging-plugin-files-on-z-os). 
-  
-  To install Node.js on z/OS, follow the instructions in [Installing Node.js on z/OS](install-nodejs-zos.md).
-
-- IBM SDK for Java Technology Edition V8 or later
 
 ## User ID requirements
 
@@ -106,7 +101,7 @@ If z/OSMF is used for authentication and serving REST APIs for Zowe CLI and Zowe
 
 ## Network requirements
 
-The following ports are required for Zowe. These are default values. You can change the values by updating variable values in the `instance.env` file. For more information, see [Configuring the Zowe instance directory](configure-instance-directory.md#reviewing-the-instance-env-file).
+The following ports are required for Zowe. These are default values. You can change the values by updating variable values in the `instance.env` file. For more information, see [Configuring the Zowe instance directory](configure-instance-directory.md#updating-the-instance-env-configuration-file).
 
 | Port number | Variable name | Purpose |
 |------|------|------|
@@ -121,6 +116,25 @@ The following ports are required for Zowe. These are default values. You can cha
 | 8550 | _USS_EXPLORER_UI_PORT_ | Port of the USS Explorer GUI for working with USS in the Zowe Desktop.
 | 8544 | _ZOWE_ZLUX_SERVER_HTTPS_PORT_ | The Zowe Desktop (also known as ZLUX) port used to log in through web browsers.
 | 8542 | _ZOWE_ZSS_SERVER_PORT_ | Z Secure Services (ZSS) provides REST API services to ZLUX, used by the File Editor application and other ZLUX applications in the Zowe Desktop.
+
+## Zowe Docker requirements
+
+<Badge text="Technical Preview"/> The Zowe Docker build is a technical preview.
+
+Docker is a technology for delivering a set of software and all its prerequisites and run them in an isolated manner to reduce installation steps and to eliminate troubleshooting environmental differences.
+Docker can run on many operating systems, but currently the Zowe Docker image is for x86 Linux (Intel, AMD) and zLinux ("s390x"). Support for platforms such as zCX, Windows, and more will be added over time.
+
+To get Docker for Linux, you should check your Linux software repository. Whether using Ubuntu, Red Hat, SuSE, and many other types of Linux, you can install Docker the same way you install other software on Linux through the package manager.
+
+Once you have Docker, the Zowe Docker image has the following requirements
+
+- 4 GB free RAM, 8 GB recommended
+- 4 GB free disk space
+- Network access to the z/OS host. The Linux host must be able to communicate with the z/OS host.
+
+When using Docker the USS components of Zowe will run off z/OS in the Linux container, however a z/OS installation of Zowe is still required for the ZSS and cross memory server.  
+
+**Note:** The subsections of z/OS requirements such as for API Mediation Layer, Web Explorers, and Application Framework are not required because they are included in the Docker install.
 
 ## Zowe Desktop requirements (client PC)
 
@@ -159,23 +173,3 @@ Zowe has an SSO scheme with the goal that each time you use use multiple Zowe co
 Requirements: 
 - IBM z/OS Management Facility (z/OSMF)
 - (Optional, recommended) PKCS#11 token setup is required when using ZSS, the Desktop, and Application Framework with SSO. See [Creating a PKCS#11 Token](configure-certificates.md#creating-a-pkcs11-token) for more information.
-
-## Zowe Docker requirements
-
-<Badge text="Technical Preview"/> The Zowe Docker build is a technical preview.
-
-Docker is a technology for delivering a set of software and all its prerequisites and run them in an isolated manner to reduce installation steps and to eliminate troubleshooting environmental differences.
-Docker can run on many operating systems, but currently the Zowe Docker image is for x86 Linux (Intel, AMD) and zLinux ("s390x"). Support for platforms such as zCX, Windows, and more will be added over time.
-
-To get Docker for Linux, you should check your Linux software repository. Whether using Ubuntu, Red Hat, SuSE, and many other types of Linux, you can install Docker the same way you install other software on Linux through the package manager.
-
-Once you have Docker, the Zowe Docker image has the following requirements
-
-- 4 GB free RAM, 8 GB recommended
-- 4 GB free disk space
-- Network access to the z/OS host. The Linux host must be able to communicate with the z/OS host.
-
-When using Docker the USS components of Zowe will run off z/OS in the Linux container, however a z/OS installation of Zowe is still required for the ZSS and cross memory server.  
-
-**Note:** The subsections of z/OS requirements such as for API Mediation Layer, Web Explorers, and Application Framework are not required because they are included in the Docker install.
-

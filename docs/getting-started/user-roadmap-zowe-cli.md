@@ -41,7 +41,7 @@ The following definition of skill levels about Zowe will help you gather most re
 
 > Zowe skill level: Beginner
 
-- [**System requirements**](../user-guide/systemrequirements.md#zowe-cli-requirements)
+- [**System requirements**](../user-guide/systemrequirements-cli.md)
 
    Review this topic to ensure that your system meets the requirements for installing Zowe CLI. 
 
@@ -76,9 +76,9 @@ The following definition of skill levels about Zowe will help you gather most re
 - **Docs: Zowe CLI command reference guide**
 
    View detailed documentation on commands, actions, and options in Zowe CLI. The reference document is based on the @zowe-v1-lts version of the CLI. You can read an interactive online version, download a PDF document, or download a ZIP file containing the HTML for the online version:
-   - **[Browse online](../web_help/index.html)**
-   - **[Download CLI reference in PDF format](../CLIReference_Zowe.pdf)**
-   - **[Download CLI reference in ZIP formuserat](../zowe_web_help.zip)**
+   - **[Browse online](https://docs.zowe.org/v1-4-x/web_help/index.html)**
+   - **[Download CLI reference in PDF format](https://docs.zowe.org/v1-4-x/CLIReference_Zowe.pdf)**
+   - **[Download CLI reference in ZIP formuserat](https://docs.zowe.org/v1-4-x/zowe_web_help.zip)**
 
 - **Best practices**
 

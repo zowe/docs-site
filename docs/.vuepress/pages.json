@@ -49,7 +49,6 @@
         "user-guide/install-nodejs-zos.md",
         "user-guide/systemrequirements-zosmf.md",
         "user-guide/systemrequirements-zosmf-lite.md",
-        "user-guide/systemrequirements-zosmf-ha.md",
         "user-guide/configure-uss.md"
       ]
       },
@@ -82,6 +81,16 @@
           "user-guide/install-docker.md",
           "user-guide/install-docker-image.md",
           "user-guide/configuring-docker.md"
+        ]
+      },
+      {
+        "text": "Zowe High Availability",
+        "items": [
+          "user-guide/install-ha-sysplex.md",
+          "user-guide/configure-sysplex.md",
+          "user-guide/systemrequirements-zosmf-ha.md",
+          "user-guide/configure-caching-service-ha.md",
+          "user-guide/configure-zowe-ha-server.md"
         ]
       },
       {

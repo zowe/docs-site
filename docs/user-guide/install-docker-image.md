@@ -9,7 +9,7 @@ To use this image, you must have set up the Zowe server runtime on z/OS, z/OSMF,
 
 If you have not set up the Zowe server runtime on z/OS, please follow the steps found in [Docker Installation Roadmap](install-docker.md).
 
-This guide assumes you are using Linux or zLinux and have already downloaded Docker itself. If you have not yet done so, please review [System Requirements](systemrequirements.md).
+This guide assumes you are using Linux or zLinux and have already downloaded Docker itself. If you have not yet done so, please review [System Requirements](systemrequirements-zos.md).
 
 ## Installing via Docker Hub  
 
