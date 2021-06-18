@@ -203,5 +203,13 @@ Provides an advanced launcher for Zowe components in a high availability configu
 
 ## Zowe Third-Party Software Requirements and Bill of Materials
 
-- [Third-Party Software Requirements (TPSR)](../appendix/tpsr.md)
+<!-- 
+
+<tpsr /> is a React component which will create a dynamic link to latest versioned tpsr file
+tpsrLatestLink = "https://github.com/zowe/docs-site/tree/master/src/tpsr/tpsr-" + latestVersion + ".md";
+This returns <a href={tpsrLatestLink}>Third-Party Software Requirements (TPSR)</a>
+
+-->
+
+- <tpsr />
 - [Bill of Materials (BOM)](../appendix/bill-of-materials.md)
