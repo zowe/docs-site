@@ -8,7 +8,7 @@ import ShareButton from "./ShareButton";
 
 function DocsInfo({ docsPluginId, ...props }) {
   const { siteConfig } = useDocusaurusContext();
-  const currentVersion = useActiveVersion(docsPluginId).label;
+  const currentVersion = useActiveVersion(docsPluginId).label.split(" ")[0];
   const latestVersion = siteConfig.customFields.latestVersion;
 
   const location = useLocation();
@@ -78,6 +78,7 @@ function DocsInfo({ docsPluginId, ...props }) {
                     ? "/zowe-docs.pdf"
                     : "/zowe-docs-" + currentVersion + ".pdf"
                 }
+                target="_blank"
               >
                 {" "}
                 <img
