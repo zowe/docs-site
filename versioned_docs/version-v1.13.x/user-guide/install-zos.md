@@ -5,7 +5,7 @@ To install Zowe&trade; on z/OS, there are two parts. The first part is the Zowe 
 Review the installation diagram and the introduction in this topic to see the general installation sequence and the most important tasks that are to be performed during installation and configuration. You can click each step on the diagram for detailed instructions.
 
 <figure>
-  <img usemap="#home_map1" border="0" id="install-flow" src="../images/common/zowe-zos-install-diagram.png" width="850" alt="Click each step to get more details on the flow." />
+  <image usemap="#home_map1" border="0" id="install-flow" src={require("../images/common/zowe-zos-install-diagram.png").default} width="850" alt="Click each step to get more details on the flow." />
   <figcaption></figcaption>
 </figure>
 <map name="home_map1" id="home_map1">

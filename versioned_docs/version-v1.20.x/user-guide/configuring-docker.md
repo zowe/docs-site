@@ -22,7 +22,7 @@ The Zowe Docker Image comes with a sample script for starting a container of Zow
 ```
 # docker images
 REPOSITORY                         TAG                 IMAGE ID            CREATED             SIZE
-ompzowe/server-bundle                amd64               ceb8c50d2381        2 hours ago         1.27GB
+ompzowe/server-bundle              amd64               ceb8c50d2381        2 hours ago         1.27GB
 ```
 
 2. Start a container of the image without starting Zowe yet by using the environment value `ZOWE_START=0`
