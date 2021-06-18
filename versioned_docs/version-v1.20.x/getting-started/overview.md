@@ -14,7 +14,7 @@ Watch this [video](https://www.youtube.com/embed/NX20ZMRoTtk) to see a quick dem
 
 <iframe class="embed-responsive-item" id="youtubeplayer" title="Zowe overview demo" type="text/html" width="640" height="390" src="https://www.youtube.com/embed/7XpOjREP8JU" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen> </iframe>
 
-[Download the deck for this video](../Zowe_introduction_video_deck.pptx) | [Download the script](../Zowe_introduction_video_script.txt)
+[Download the deck for this video](/Zowe_introduction_video_deck.pptx) | [Download the script](/Zowe_introduction_video_script.txt)
 
 ## Component Overview
 
