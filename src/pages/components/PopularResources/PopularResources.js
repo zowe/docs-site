@@ -17,7 +17,7 @@ const data = [
   },
   {
     title: "Try Zowe",
-    link: "https://www.ibm.com/account/reg/cn-zh/signup?formid=urx-38870",
+    link: "https://www.ibm.com/account/reg/us-en/signup?formid=urx-38870",
     icon: "img/try_zowe-icon.png",
     description: <>Get your hands on a Zowe trial on demand at no charge.</>,
   },

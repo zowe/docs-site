@@ -513,6 +513,10 @@
   ],
   "version-v1.12.x/contributing": [
     {
+      "type": "doc",
+      "id": "version-v1.12.x/contribute/roadmap-contribute"
+    },
+    {
       "collapsed": true,
       "type": "category",
       "label": "Code Guidelines",

@@ -128,6 +128,10 @@
   ],
   "version-v1.0.x/extending": [
     {
+      "type": "doc",
+      "id": "version-v1.0.x/extend/extend-zowe-overview"
+    },
+    {
       "collapsed": true,
       "type": "category",
       "label": "Developing for Zowe API Mediation Layer",
@@ -294,10 +298,18 @@
   "version-v1.0.x/contributing": [
     {
       "type": "doc",
+      "id": "version-v1.0.x/contribute/roadmap-contribute"
+    },
+    {
+      "type": "doc",
       "id": "version-v1.0.x/contribute/contributing"
     }
   ],
   "version-v1.0.x/reference": [
+    {
+      "type": "doc",
+      "id": "version-v1.0.x/appendix/zowe-cli-command-reference"
+    },
     {
       "type": "doc",
       "id": "version-v1.0.x/appendix/bill-of-materials"

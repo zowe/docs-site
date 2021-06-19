@@ -218,6 +218,10 @@
   ],
   "version-v1.10.x/extending": [
     {
+      "type": "doc",
+      "id": "version-v1.10.x/extend/extend-zowe-overview"
+    },
+    {
       "collapsed": true,
       "type": "category",
       "label": "Developing for Zowe API Mediation Layer",
@@ -447,6 +451,10 @@
     }
   ],
   "version-v1.10.x/contributing": [
+    {
+      "type": "doc",
+      "id": "version-v1.10.x/contribute/roadmap-contribute"
+    },
     {
       "collapsed": true,
       "type": "category",
