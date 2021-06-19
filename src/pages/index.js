@@ -27,7 +27,7 @@ function Home() {
           />
           <h1 className="hero__title">{siteConfig.title}</h1>
           <div className="searchDiv">
-            <DocSearch apiKey="aa" indexName="aa" /> {/* FIXME: */}
+            <DocSearch apiKey="59ff39ed48d0820010c7e09fc4b677bf" indexName="zowe" />
           </div>
         </div>
       </header>

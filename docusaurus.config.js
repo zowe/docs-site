@@ -162,7 +162,7 @@ module.exports = {
       additionalLanguages: ["ini", "java", "properties", "groovy", "markup"],
     },
     googleAnalytics: {
-      trackingID: "UA-195765847-1",
+      trackingID: "UA-123892882-1",
       anonymizeIP: true, // Should IPs be anonymized?`
     },
   },
