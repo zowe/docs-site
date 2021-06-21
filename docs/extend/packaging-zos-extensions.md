@@ -81,7 +81,7 @@ The manifest file contains the following properties:
     - **`file`**: Defines the path to the static definition file. This file is supposed to be a template.
 - **`appfwPlugins`**: Array of objects. This section defines how the component will be registered to the App Framework plug-in. All subfields are optional.
   * **`path`**: This points to the directory where App Framework `pluginDefinition.json` file is located. If you use the `<RUNTIME_DIR>/bin/zowe-configure-component.sh` utility tool to configure this component for an instance, the script will automatically execute `<INSTANCE_DIR>/bin/install-app.sh` with this path.
-- **`dependencies`**: (Optional) This section defines the components dependencies.
+- **`dependencies`**: (Optional) This section defines the component's dependencies.
   * **`zos`**: Array of objects. This subfield defines components or services from z/OS.
     - **`apiml`**: true or false. Indicates whether the dependency is registered/searchable with the Discovery service
     - **`version`**: This defines the version range of the dependency. Acceptable formats: `version`, `>version`, `>=version`, `<version`, `<=version`
