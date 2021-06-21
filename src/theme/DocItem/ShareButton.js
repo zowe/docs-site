@@ -1,11 +1,6 @@
 import React from "react";
 import useBaseUrl from "@docusaurus/useBaseUrl";
 import { useLocation } from "react-router-dom";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTwitter } from "@fortawesome/free-brands-svg-icons";
-import { faFacebookSquare } from "@fortawesome/free-brands-svg-icons";
-import { faLinkedin } from "@fortawesome/free-brands-svg-icons";
-import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
 
 function ShareButton(props) {
   const location = useLocation();
@@ -36,22 +31,26 @@ function ShareButton(props) {
   const info = [
     {
       link: twitterShareURL,
-      iconName: faTwitter,
+      lightIcon: useBaseUrl("img/twitter-light-icon.svg"),
+      darkIcon: useBaseUrl("img/twitter-dark-icon.svg"),
       name: "Twitter",
     },
     {
       link: linkedinShareURL,
-      iconName: faLinkedin,
+      lightIcon: useBaseUrl("img/linkedin-light-icon.svg"),
+      darkIcon: useBaseUrl("img/linkedin-dark-icon.svg"),
       name: "LinkedIn",
     },
     {
       link: facebookShareURL,
-      iconName: faFacebookSquare,
+      lightIcon: useBaseUrl("img/facebook-light-icon.svg"),
+      darkIcon: useBaseUrl("img/facebook-dark-icon.svg"),
       name: "Facebook",
     },
     {
       link: emailShareURL,
-      iconName: faEnvelope,
+      lightIcon: useBaseUrl("img/email-light-icon.svg"),
+      darkIcon: useBaseUrl("img/email-dark-icon.svg"),
       name: "Email",
     },
   ];
@@ -79,14 +78,20 @@ function ShareButton(props) {
         {info.map((labels, idx) => (
           <li key={idx}>
             <a
-              className="dropdown__link icons"
+              className="dropdown__link icons display-flex"
               href={labels.link}
               target="_blank"
             >
-              <FontAwesomeIcon
-                icon={labels.iconName}
-                className="margin-right--sm"
-              />
+              <img
+                className="lightTheme margin-right--sm"
+                alt="Share Icon"
+                src={labels.lightIcon}
+              ></img>
+              <img
+                className="darkTheme margin-right--sm"
+                alt="Share Icon"
+                src={labels.darkIcon}
+              ></img>
               {labels.name}
             </a>
           </li>
