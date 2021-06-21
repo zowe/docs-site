@@ -56,9 +56,9 @@ zowe --help-web
 
 You can download web help from this site in any of the following formats: HTML, a zip file that contains the HTML, or PDF:
 
-- <a href="../web_help/index.html" target="_blank">Browse Online</a>
-- <a href="../zowe_web_help.zip">Download (ZIP)</a>
-- <a href="../CLIReference_Zowe.pdf">Download (PDF)</a>
+- <a href="/v1.18.x/web_help/index.html" target="_blank">Browse Online</a>
+- <a href="/v1.18.x/zowe_web_help.zip" target="_blank">Download (ZIP)</a>
+- <a href="/v1.18.x/CLIReference_Zowe.pdf" target="_blank">Download (PDF)</a>
 
 ## How command precedence works
 

@@ -55,9 +55,9 @@ zowe --help-web
 
 Command reference is available for download in three formats: a static copy of the interactive Web help, a ZIP file that contains the HTML web help, and a static PDF:
 
-- <a href="../web_help/index.html" target="_blank">Browse Online</a>
-- <a href="../zowe_web_help.zip">Download (ZIP)</a>
-- <a href="../CLIReference_Zowe.pdf">Download (PDF)</a>
+- <a href="/v1.11.x/web_help/index.html" target="_blank">Browse Online</a>
+- <a href="/v1.11.x/zowe_web_help.zip" target="_blank">Download (ZIP)</a>
+- <a href="/v1.11.x/CLIReference_Zowe.pdf" target="_blank">Download (PDF)</a>
 
 ## Using the prompt for sensitive options
 
