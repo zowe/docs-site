@@ -1,39 +1,44 @@
-# How to contribute
+# Contributing to Zowe Documentation <!-- omit in toc -->
 
-:fireworks: :balloon: **First off, thanks for taking the time to contribute!** :sparkler: :confetti_ball:
+- [Before You Get Started<a name="start"></a>](#before-you-get-started)
+- [Getting Started Checklist](#getting-started-checklist)
+- [The Zowe Documentation Repository](#the-zowe-documentation-repository)
+- [Sending a GitHub Pull Request](#sending-a-github-pull-request)
+- [Opening An Issue for Zowe Documentation](#opening-an-issue-for-zowe-documentation)
+- [Documentation Style guide <a name="style"></a>](#documentation-style-guide-)
+  - [Headings and titles<a name="headings"></a>](#headings-and-titles)
+  - [Technical elements<a name="ui"></a>](#technical-elements)
+  - [Tone<a name="tone"></a>](#tone)
+  - [Word usage<a name="word"></a>](#word-usage)
+  - [Graphics<a name="graphics"></a>](#graphics)
+  - [Abbreviations<a name="abbreviations"></a>](#abbreviations)
+  - [Structure and format<a name="Structure"></a>](#structure-and-format)
+  - [Word usage<a name="usage"></a>](#word-usage-1)
+   
 
-We provide you a set of guidelines for contributing to Zowe&trade; documentation, which are hosted in the [Zowe / docs-site][b5d824b5] on GitHub. These are mostly guidelines, not rules. Use your best judgment, and feel free to propose content changes to this documentation.
+## Before You Get Started<a name="start"></a>
+You are welcome to contribute to the Zowe&trade; documentation repository. Anyone can open an issue about documentation, or contribute a change with a pull request (PR) to the zowe/docs-site GitHub repository. However, before contributing a documentation change to the repository, you should be familiar with:
+* Git and Github: To learn about git and GitHub, refer to the [Github Guides](https://guides.github.com/).
+* Slack: The Zowe Documentation team communicates using the Slack application. To learn about Slack, refer to the [Slack Help Center](https://slack.com/help). The Zowe team is part of the [Open Mainframe Project](https://openmainframeproject.slack.com
+) channel.
+* Markdown Language: The Zowe documentation is written in Markdown language. To learn about Markdown, refer to  [The Markdown Guide](https://www.markdownguide.org/)
 
-  [b5d824b5]: https://github.com/zowe/docs-site "https://github.com/zowe/docs-site"
+In addition to being familiar with the Zowe community and how we work together, you will need to sign the CNCF Contributor License Agreement. The Contributor License Agreement defines the terms under which you contribute to Zowe documentation. Contributions to Zowe documentation are reviewed before being committed to the repository. Committing changes to the Zowe repository requires additional access rights. See https://github.com/zowe/community/blob/master/COMMITTERS.md. Also see Participating in Zowe Documentation for more details about roles and permissions.
 
+## Getting Started Checklist
+If you are ready to get started contributing to the Zowe Documentation repository:
+* Verify that you are familiar with the concepts in [Before You Get Started<a name="start"></a>](#before-you-get-started).
+* Familiarize yourself with the [Zowe documentation repository](#the-zowe-documentation-repository)
+* Verify that you can open a [pull request and review changes](#sending-a-github-pull-request)
+* [Open an issue for Zowe documentation](#opening-an-issue-for-zowe-documentation) if you find a problem
+* Read the [documentation style guide](#documentation-style-guide-)
 
-:arrow_right: [Before you get started](#start)
+## The Zowe Documentation Repository
+The Zowe documentation is managed in a [GitHub repository](https://github.com/zowe/docs-site).
+* Review the site's overall organization and structure
+* Review the help files related to your planned changes or addition
 
-:arrow_right: [Contributing to documentation](#contribute)
-
-:arrow_right: [Documentation style guide](#style)
-
-:arrow_right: [Word usage](#usage)
-
-
-## Before you get started<a name="start"></a>
-
-The Zowe documentation is written in Markdown markup language. Not familiar with Markdown? [**Learn the basic syntax**][84fff357].
-
-
-[84fff357]: https://www.markdownguide.org/basic-syntax "https://www.markdownguide.org/basic-syntax"
-
-
-
-## Contributing to documentation<a name="contribute"></a>
-
-You can use one of the following ways to contribute to documentation:
-
-- Send a GitHub pull request to provide a suggested edit for the content by clicking the **Propose content change in GitHub** link on each documentation page.
-- Open an issue in GitHub to request documentation to be updated, improved, or clarified by providing a comment.
-
-### Sending a GitHub pull request
-
+## Sending a GitHub Pull Request
 You can provide suggested edit to any documentation page by using the **Propose content change in GitHub** link on each page. After you make the changes, you submit updates in a pull request for the Zowe content team to review and merge.
 
 Follow these steps:
@@ -45,8 +50,7 @@ Follow these steps:
 6. Select **Propose file change**.
 7. Select **Create pull request**.
 
-### Opening an issue for the documentation
-
+## Opening An Issue for Zowe Documentation
 You can request the documentation to be improved or clarified, report an error, or submit suggestions and ideas by opening an issue in GitHub for the Zowe content team to address. The content team tracks the issues and works to address your feedback.
 
 Follow these steps:
@@ -57,26 +61,17 @@ Follow these steps:
 4. Enter a title and description for the issue.
 5. Click **Submit new issue**.
 
-
-
 ## Documentation Style guide <a name="style"></a>
 
-This section gives writing style guidelines for the Zowe documentation. These are guidelines, not rules. Use your best judgment, and feel free to propose content changes to this documentation in a pull request.
+This section gives writing style guidelines for the Zowe documentation.
 
-:arrow_right: [Headings and titles](#headings)
-
-:arrow_right: [Technical elements](#ui)
-
-:arrow_right: [Tone](#tone)
-
-:arrow_right: [Word usage](#word)
-
-:arrow_right: [Graphics](#graphics)
-
-:arrow_right: [Abbreviations](#abbreviations)
-
-:arrow_right: [Structure and format](#Structure)
-
+* [Headings and titles](#headings)
+* [Technical elements](#ui)
+* [Tone](#tone)
+* [Word usage](#word)
+* [Graphics](#graphics)
+* [Abbreviations](#abbreviations)
+* [Structure and format](#Structure)
 
 ### Headings and titles<a name="headings"></a>
 
@@ -126,7 +121,6 @@ Style:
     - put &lt;pax-file-name&gt;.pax
 
     - Where _pax-file-name_ is a variable that indicates the full name of the PAX file you download. For example, zoe-0.8.1.pax.
-
 
 #### Message text and prompts to the user
 
@@ -357,7 +351,7 @@ Example: Mainframe Virtual Desktop (MVD)
 ### Structure and format<a name="Structure"></a>
 Add "More information" to link to useful resources or related topics at the end of topics where necessary.
 
-## Word usage<a name="usage"></a>
+### Word usage<a name="usage"></a>
 
 The following table alphabetically lists the common used words and their usage guidelines.
 
