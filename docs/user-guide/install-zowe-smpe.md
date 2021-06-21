@@ -821,6 +821,21 @@ __Expected Return Codes and Messages:__ You will receive a return code of 0 if t
 
 In this step, you run the sample job ZWE7APLY to apply Zowe. This step can take a long time to run, depending on the capacity of your system, and on what other jobs are running.
 
+Zowe has an HFS element with the PROGCTL attribute, therefore you must run the SMP/E job with a user ID that has at least READ access to the BPX.FILEATTR.PROGCTL resource in the FACILITY class, even if you run the ZWE7APLY job as a user with UID 0. Users of SMP/E will normally already have READ access to BPX.FILEATTR.PROGCTL if your site uses SMP/E to install HFS elements.  If not, you can issue this command to grant you access
+
+For RACF:
+```
+PERMIT BPX.FILEATTR.PROGCTL CL(FACILITY) ACCESS(READ) ID(userid)
+```
+For TopSecret:
+```
+TSS PER(userid) IBMFAC(BPX.JOBNAME) ACCESS(READ)
+```
+For ACF/2:
+```
+RECKEY BPX2 ADD(PROGCTL SERVICE(READ) ROLE(userid or group?) ALLOW)   *** ACF/2 SME please correct!
+```
+
 **Follow these steps**
 
 1. Ensure that you have the latest HOLDDATA; then edit and submit sample job ZWE7APLY to perform an SMP/E APPLY CHECK for Zowe. Consult the instructions in the sample job for more information.
