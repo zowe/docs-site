@@ -25,15 +25,15 @@ If you do not have internet access at your site, use the following method to ins
 
 - **Node.js:** Install a currently supported Node.js LTS version. For an up-to-date list of supported LTS versions, see [Nodejs.org](https://nodejs.org/en/about/releases/).
 
-    :::tip
-    You might need to restart the command prompt after installing Node.js. Issue the command `node --version` to verify that Node.js is installed.
-    :::
+  :::tip
+  You might need to restart the command prompt after installing Node.js. Issue the command `node --version` to verify that Node.js is installed.
+  :::
 
 - **npm:** Install a version of Node Package Manager (npm) that is compatible with your version of Node.js.
 
-    :::tip
-    Npm is included with most Node.js installations. Issue the command `npm --version` to check your current version. You can reference the [Node.js release matrix](https://nodejs.org/en/download/releases/) to verify that the versions are compatible.
-    :::
+  :::tip
+  Npm is included with most Node.js installations. Issue the command `npm --version` to check your current version. You can reference the [Node.js release matrix](https://nodejs.org/en/download/releases/) to verify that the versions are compatible.
+  :::
 
 2. **(Linux only)** Address the following software requirements for Secure Credential Storage:
 
@@ -43,7 +43,7 @@ If you do not have internet access at your site, use the following method to ins
 
 3. Navigate to [Zowe.org Downloads](https://www.zowe.org/download.html) and click the **CLI Core** button to download the core package. The "core" includes Zowe CLI and Secure Credential Store, which enhances security by encrypting your username and password.
 
-    A file named `zowe-cli-package-v.r.m.zip` is downloaded to your computer
+   A file named `zowe-cli-package-v.r.m.zip` is downloaded to your computer
 
 4. **(Optional)** Click the **CLI Plugins** button to download the optional plugins.
 
@@ -53,27 +53,28 @@ If you do not have internet access at your site, use the following method to ins
 
 6. Open a command-line window. Issue the following commands in sequence against the extracted directory to install core Zowe CLI on your computer:
 
-    ```
-    npm install -g zowe-cli.tgz
-    ```
+   ```
+   npm install -g zowe-cli.tgz
+   ```
 
-    ```
-    zowe plugins install secure-credential-store-for-zowe-cli.tgz
-    ```
+   ```
+   zowe plugins install secure-credential-store-for-zowe-cli.tgz
+   ```
 
-    **Notes:**
-    - If the command returns an `EACCESS` error, refer to [Resolving EACCESS permissions errors when installing packages globally](https://docs.npmjs.com/resolving-eacces-permissions-errors-when-installing-packages-globally) in the npm documentation.
-    - On Linux, you might need to prepend `sudo` to your `npm` commands. For more information, see [Troubleshooting Zowe CLI](../troubleshoot/cli/troubleshoot-cli.md).
+   **Notes:**
+
+   - If the command returns an `EACCESS` error, refer to [Resolving EACCESS permissions errors when installing packages globally](https://docs.npmjs.com/resolving-eacces-permissions-errors-when-installing-packages-globally) in the npm documentation.
+   - On Linux, you might need to prepend `sudo` to your `npm` commands. For more information, see [Troubleshooting Zowe CLI](../troubleshoot/cli/troubleshoot-cli.md).
 
 7. **(Optional)** Address the [Software requirements for CLI plug-ins](cli-swreqplugins.md). You can install most plug-ins without meeting the requirements, but they will not function until you configure the back-end APIs. The IBM Db2 plug-in requires [additional configuration to install](cli-db2plugin.md#installing).
 
 8. **(Optional)** Issue the following command to install each available plug-in:
 
-    ```
-    zowe plugins install cics-for-zowe-cli.tgz db2-for-zowe-cli.tgz zos-ftp-for-zowe-cli.tgz  ims-for-zowe-cli.tgz mq-for-zowe-cli.tgz
-    ```
+   ```
+   zowe plugins install cics-for-zowe-cli.tgz db2-for-zowe-cli.tgz zos-ftp-for-zowe-cli.tgz  ims-for-zowe-cli.tgz mq-for-zowe-cli.tgz
+   ```
 
-    **Important:** Ensure that you meet the [Software requirements for CLI plug-ins](cli-swreqplugins.md). You can install most plug-ins without meeting the requirements, but they will not function until you configure the back-end APIs. The IBM Db2 plug-in requires [additional configuration to install](cli-db2plugin.md#installing).
+   **Important:** Ensure that you meet the [Software requirements for CLI plug-ins](cli-swreqplugins.md). You can install most plug-ins without meeting the requirements, but they will not function until you configure the back-end APIs. The IBM Db2 plug-in requires [additional configuration to install](cli-db2plugin.md#installing).
 
 Zowe CLI is installed on your computer. Issue the `zowe --help` command to view a list of available commands. For information about how to connect the CLI to the mainframe, create profiles, integrate with API ML, and more, see [Using CLI](cli-usingcli.md).
 
@@ -87,15 +88,15 @@ If your computer is connected to the Internet, you can use the following method 
 
 - **Node.js:** Install a currently supported Node.js LTS version. For an up-to-date list of supported LTS versions, see [Nodejs.org](https://nodejs.org/en/about/releases/).
 
-    :::tip
-    You might need to restart the command prompt after installing Node.js. Issue the command `node --version` to verify that Node.js is installed.
-    :::
+  :::tip
+  You might need to restart the command prompt after installing Node.js. Issue the command `node --version` to verify that Node.js is installed.
+  :::
 
 - **npm:** Install a version of Node Package Manager (npm) that is compatible with your version of Node.js.
 
-    :::tip
-    Npm is included with most Node.js installations. Issue the command `npm --version` to check your current version. You can reference the [Node.js release matrix](https://nodejs.org/en/download/releases/) to verify that the versions are compatible.
-    :::
+  :::tip
+  Npm is included with most Node.js installations. Issue the command `npm --version` to check your current version. You can reference the [Node.js release matrix](https://nodejs.org/en/download/releases/) to verify that the versions are compatible.
+  :::
 
 2. **(Linux only)** Address the following software requirements for Secure Credential Storage:
 
@@ -105,27 +106,25 @@ If your computer is connected to the Internet, you can use the following method 
 
 3. Issue the following commands in sequence to install the core from the public npm registry. The "core" includes Zowe CLI and Secure Credential Store, which enhances security by encrypting your username and password.
 
-    ```
-    npm install -g @zowe/cli@zowe-v1-lts
-    ```
+   ```
+   npm install -g @zowe/cli@zowe-v1-lts
+   ```
 
-    ```
-    zowe plugins install @zowe/secure-credential-store-for-zowe-cli@zowe-v1-lts
-    ```
+   ```
+   zowe plugins install @zowe/secure-credential-store-for-zowe-cli@zowe-v1-lts
+   ```
 
-    **Notes:**
-    - If the command returns an `EACCESS` error, refer to [Resolving EACCESS permissions errors when installing packages globally](https://docs.npmjs.com/resolving-eacces-permissions-errors-when-installing-packages-globally) in the npm documentation.
-    - On Linux, you might need to prepend `sudo` to your `npm` commands. For more information, see [Troubleshooting Zowe CLI](../troubleshoot/cli/troubleshoot-cli.md).
+   **Notes:**
+
+   - If the command returns an `EACCESS` error, refer to [Resolving EACCESS permissions errors when installing packages globally](https://docs.npmjs.com/resolving-eacces-permissions-errors-when-installing-packages-globally) in the npm documentation.
+   - On Linux, you might need to prepend `sudo` to your `npm` commands. For more information, see [Troubleshooting Zowe CLI](../troubleshoot/cli/troubleshoot-cli.md).
 
 4. **(Optional)** Address the [Software requirements for CLI plug-ins](cli-swreqplugins.md). You can install most plug-ins without meeting the requirements, but they will not function until you configure the back-end APIs. The IBM Db2 plug-in requires [additional configuration to install](cli-db2plugin.md#installing).
 
 5. **(Optional)** To install all available plug-ins to Zowe CLI, issue the following command:
 
-    ```
-    zowe plugins install @zowe/cics-for-zowe-cli@zowe-v1-lts @zowe/db2-for-zowe-cli@zowe-v1-lts @zowe/ims-for-zowe-cli@zowe-v1-lts @zowe/mq-for-zowe-cli@zowe-v1-lts @zowe/zos-ftp-for-zowe-cli@zowe-v1-lts
-    ```
+   ```
+   zowe plugins install @zowe/cics-for-zowe-cli@zowe-v1-lts @zowe/db2-for-zowe-cli@zowe-v1-lts @zowe/ims-for-zowe-cli@zowe-v1-lts @zowe/mq-for-zowe-cli@zowe-v1-lts @zowe/zos-ftp-for-zowe-cli@zowe-v1-lts
+   ```
 
 Zowe CLI is installed on your computer. Issue the `zowe --help` command to view a list of available commands. For information about how to connect the CLI to the mainframe, create profiles, integrate with API ML, and more, see [Using CLI](cli-usingcli.md).
-
-
-
