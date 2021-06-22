@@ -82,7 +82,7 @@ The manifest file contains the following properties:
 - **`appfwPlugins`**: Array of objects. This section defines how the component will be registered to the App Framework plug-in. All subfields are optional.
   * **`path`**: This points to the directory where App Framework `pluginDefinition.json` file is located. If you use the `<RUNTIME_DIR>/bin/zowe-configure-component.sh` utility tool to configure this component for an instance, the script will automatically execute `<INSTANCE_DIR>/bin/install-app.sh` with this path.
 - **`zisPlugins`**: Array of objects. This section defines the ZIS plugin(s) attributes necessary for ZIS plugin installation, high availability, and automation.
-  * **`path`**: This points to the directory where the load modules are housed for a plugin, for example `zisServer/`. If the manifest is located above the plugin's root directory (say for a product family of multiple plugins), then multiple path variables can be contained within the manifest with an example path, `your-plugin-1/zisServer/`).
+  * **`path`**: This points to the directory where the load modules are housed for a plugin, for example `zisServer/`. If the manifest is located above the plugin's root directory (say for a product family of multiple plugins), then multiple path variables can be contained within the manifest, for example `your-plugin-1/zisServer/`).
     - **`id`**: This is the unique plugin ID of the ZIS plugin.
     - **`samplib`**: Defines the name(s) of the parameters for the Zowe parmlib.
     - **`loadlib`**: Defines the name(s) of the plugin executables.
