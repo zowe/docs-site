@@ -84,7 +84,7 @@ The manifest file contains the following properties:
 - **`zisPlugins`**: Array of objects. This section defines the ZIS plugin(s) attributes necessary for ZIS plugin installation, high availability, and automation.
   * **`path`**: This points to the directory where the load modules are housed for a plugin, for example `zisServer/`. If the manifest is located above the plugin's root directory (say for a product family of multiple plugins), then multiple path variables can be contained within the manifest with an example path, `your-plugin-1/zisServer/`).
     - **`id`**: This is the unique plugin ID of the ZIS plugin.
-    - **`samplelib`**: Defines the name(s) of the parameters for the Zowe parmlib.
+    - **`samplib`**: Defines the name(s) of the parameters for the Zowe parmlib.
     - **`loadlib`**: Defines the name(s) of the plugin executables.
 
 _Please note: All paths of directories or files mentioned above should be relative paths to the root directory where manifest is located._
