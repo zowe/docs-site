@@ -18,7 +18,7 @@
 }
 
 html[data-theme='dark'] {
-  --ifm-color-primary: #3578e5;
+  --ifm-color-primary: #569CD6;
   /* --ifm-background-color: #252628; FIXME:*/
   --ifm-background-section-dark: #3d3f42;
 }
