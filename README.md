@@ -4,15 +4,16 @@ Welcome to the Zowe documentation repository! This repo is the source for [https
 
 Zowe documentation is completely open-source and we appreciate contributions from the community.
 
+
 ## Providing feedback
 
 Your feedback is essential in shaping the Zowe content experience. There are several ways to provide feedback:
 
-- If you see something incorrect or confusing in the docs, or have an enhancement idea to make the docs better, you can edit a page by clicking "Edit this page" under the title of the topic to [open a Pull Request](https://docs.zowe.org/stable/contribute/contributing#sending-a-github-pull-request). You can also [open a GitHub issue](https://docs.zowe.org/stable/contribute/contributing#opening-an-issue-for-the-documentation) for the documentation team by clicking "Open doc issue".
-- You can rate the topic to tell us whether it is helpful.
-- If you have a question about docs, you can join the Zowe [#zowe-doc Slack channel](https://openmainframeproject.slack.com/archives/CC961JYMQ) and talk directly with the documentation team and the community.
+- If you see something incorrect or confusing in the docs, or have an enhancement idea to make the docs better, you can edit a page by clicking **Edit this page** at the top of the page to [open a Pull Request](https://docs.zowe.org/stable/contribute/contributing#sending-a-github-pull-request). You can also [open a GitHub issue](https://docs.zowe.org/stable/contribute/contributing#opening-an-issue-for-the-documentation) for the documentation team by clicking **Open doc issue**.
+- You can rate the topic at the bottom of each page to tell us whether it is helpful.
+- If you have a question about docs, you can join the Zowe [#zowe-doc Slack channel](https://openmainframeproject.slack.com/archives/CC961JYMQ) to reach out to the Zowe Doc Squad and the community.
 
-Only file issues about the Zowe docs in this repository. For issues, questions, new feature requests, or enhancement ideas about a specific component or aspect of Zowe, open an issue in the [corresponding code repository](https://github.com/zowe/community#zowe-sub-projects) or ask in the [community Slack channels](https://github.com/zowe/community#slack).
+Only file issues about Zowe docs in this repository. For issues, questions, new feature requests, or enhancement ideas about a specific component or aspect of Zowe, open an issue in the [corresponding code repository](https://github.com/zowe/community#zowe-sub-projects) or ask in the [community Slack channels](https://github.com/zowe/community#slack).
 
 ## Contributing to the docs
 
@@ -23,7 +24,38 @@ After that, a Zowe documentation reviewer will review your PR and provide feedba
 For more information about contributing to the Zowe documentation, see:
 - [Zowe documentation style guide](https://docs.zowe.org/stable/contribute/contributing#documentation-style-guide)
 
-## Understanding the doc branches
+### Adding DCO signoff to commits
+
+Zowe requires the use of the Developer’s Certificate of Origin 1.1 (DCO). Every commit to this repo and other Zowe repos should be signed off using DCO. Otherwise, the PR could not be merged.
+
+To sign off a commit, add a Signed-off-by line to your commit message. For example, `Signed-off-by: John Doe john.doe@hisdomain.com`.
+
+#### Tools for automatic DCO signoff
+
+If you don't want to manually copy/paste your signature in every commit, use one or both of the following tools:
+
+- To enable auto-signoff for local commits, download and enable the [DCO signoff tool](https://github.com/coderanger/dco) on your PC. This method works when committing via command-line or Github Desktop.
+
+    **Tip:** To enable the tool, issue the `dco enable` on each new repository that you clone.
+
+- **(Google Chrome)** To enable auto-signoff for commits made through the GitHub Web UI, install [DCO GitHub UI](https://chrome.google.com/webstore/detail/dco-github-ui/onhgmjhnaeipfgacbglaphlmllkpoijo?hl=en) in your browser.
+
+#### What to do if I missed DCO signoff in previous commits?
+
+If you missed DCO sign-off statements in a series of commits, you can retroactively sign commits by following these steps:
+
+1. Check and review all commits that report missing DCO signoff. If you already opened a PR, you can find this information by clicking the **Details** link in the DCO check entry.
+2. Create a new text (.txt) file (suggested name is `past_commits_<your name>.txt`) within the `doc_signoffs` folder.
+3. Add the following contents to the file. Take a look at [this folder](https://github.com/zowe/docs-site/tree/master/dco_signoffs) for examples.
+
+    ```
+    I, <author_name> hereby sign-off-by all of my past commits to this repo subject to the Developer Certificate of Origin (DCO), Version 1.1. In the past I have used emails: <emails>
+    <COMMIT HASH> <COMMIT MSG>
+    ```
+
+4. Commit this file to the doc site. Remember to include the signoff line in the commit message as well.
+
+## Doc branches
 
 Before you get started with the authoring work, it's necessary that you understand the different branches to work on.
 * **[`master`](https://github.com/zowe/docs-site/tree/master/docs)** -  protected branch
@@ -45,21 +77,7 @@ Before you get started with the authoring work, it's necessary that you understa
 * Branches that start with `release-` contain archived patch release documentation for historical tracking.
 * You can have your own personal branch to work on content for a certain issue or feature. However, be sure to check and remove unused personal branches periodically for easy maintenance. Usually when your branch is merged, you can safely delete it.
 
-## Understanding doc site organization and files
-
-<!--
-The `docs/.vuepress` folder defines the site organization, style and table of contents. The following files are important.
-
-- **pages.json**: Defines the high level doc site architecture, including the nav bar (top navigation) and the side bar (left-hand navigation). If you have a new file to add to the site, modify this file.
-
-- **versions.json**: Controls the **Version** drop down list on the doc site. When there is a new version to publish, modify this file to add a new entry.
-
-- **config.js**: Defines the doc site configuration, such as the version number, the theme, and the Edit in GitHub links.
-
-- **/public**: Contains public assets and files for download.
-
-The `docs/README.md` contains content for the homepage of the doc site.
--->
+## Site organization and files
 
 - `/docs/` - Contains the Markdown files for the docs. Customize the order of the docs sidebar in `sidebars.js`. 
 - `/docusaurus.config.js` - A config file containing the site configuration.
@@ -69,469 +87,30 @@ The `docs/README.md` contains content for the homepage of the doc site.
 - `/static/` - Static directory. Any contents inside here will be copied into the root of the final `build` directory.
 - `/package.json` - A Docusaurus website is a React app. You can install and use any npm packages you like in them.
 
-## Adding DCO signoff to commits
+## Running the doc site locally
 
-Zowe requires the use of the Developer’s Certificate of Origin 1.1 (DCO). Every commit to this repo and other Zowe repos should be signed off using DCO. Otherwise, the PR could not be merged.
+### Prerequisites
 
-To sign off a commit, add a Signed-off-by line to your commit message. For example, `Signed-off-by: John Doe john.doe@hisdomain.com`.
-
-### Tools for automatic DCO signoff
-
-If you don't want to manually copy/paste your signature in every commit, use one or both of the following tools:
-
-- To enable auto-signoff for local commits, download and enable the [DCO signoff tool](https://github.com/coderanger/dco) on your PC. This method works when committing via command-line or Github Desktop.
-
-    **Tip:** To enable the tool, issue the `dco enable` on each new repository that you clone.
-
-- **(Google Chrome)** To enable auto-signoff for commits made through the GitHub Web UI, install [DCO GitHub UI](https://chrome.google.com/webstore/detail/dco-github-ui/onhgmjhnaeipfgacbglaphlmllkpoijo?hl=en) in your browser.
-
-### What to do if I missed DCO signoff in previous commits?
-
-If you missed DCO sign-off statements in a series of commits, you can retroactively sign commits by following these steps:
-
-1. Check and review all commits that report missing DCO signoff. If you already opened a PR, you can find this information by clicking the **Details** link in the DCO check entry.
-2. Create a new text (.txt) file (suggested name is `past_commits_<your name>.txt`) within the `doc_signoffs` folder.
-3. Add the following contents to the file. Take a look at [this folder](https://github.com/zowe/docs-site/tree/master/dco_signoffs) for examples.
-
-    ```
-    I, <author_name> hereby sign-off-by all of my past commits to this repo subject to the Developer Certificate of Origin (DCO), Version 1.1. In the past I have used emails: <emails>
-    <COMMIT HASH> <COMMIT MSG>
-    ```
-
-4. Commit this file to the doc site. Remember to include the signoff line in the commit message as well.
-
-## Building the docs
-
-### Previewing or testing the doc site locally
-
-#### Requirements
+You need the following installed locally:
 
 - [Node.js](https://nodejs.org/en/download/) version >= 12.13.0 or above (which can be checked by running `node -v`). You can use [nvm](https://github.com/nvm-sh/nvm) for managing multiple Node versions on a single machine installed
 - [Yarn](https://yarnpkg.com/en/) version >= 1.5 (which can be checked by running `yarn --version`). Yarn is a performant package manager for JavaScript and replaces the `npm` client. It is not strictly necessary but highly encouraged.
 
-#### Procedure
+### Procedure
 
-If you do not already have the docs site repository set up locally:
+Before you start, clone this repository and navigate to the directory:
 
-1. In your local command line interface, navigate to the directory in which you want to create your local copy of the docs site repository.
-1. Clone the docs site repository by running the following command: `git clone https://github.com/zowe/docs-site`
+1. In your local command line interface, navigate to the directory in which you want to create your local copy of this repository.
+1. Clone this repository by running the following command: `git clone https://github.com/zowe/docs-site`
 1. Access the newly-cloned repository by changing directories into it: `cd docs-site`
 
-Once you have the docs site repository set up locally and are in the `docs-site` directory, you can build and run the docs site locally by following the steps below:
+Once you have this repository set up locally and are in the `docs-site` directory, you can build and run the docs site locally by following the steps below:
 
 1. Run the command to install project dependencies: `npm install`
 1. Run `npm start`
-1. Once complete, you can preview the site locally at [http://localhost:3000/](http://localhost:3000/). Every time you modify and save a documentation change, the preview build will be triggered automatically, and then you can refresh your browser to see the changes.
 
+Once complete, you can open your browser and view the doc site locally at [http://localhost:3000/](http://localhost:3000/). As you make changes to the source files, the preview build will be triggered automatically, and then you can refresh your browser to see the changes.
 
-<!-->
-#### Errors when running the site locally?
+## Thank you!
 
-- Stop (CMD + Z) and rerun start script `npm run docs:dev`
-- If still errors persist, look for '<' in problem file not wrapped in code syntax.
-   - Issues with files can be found at the top of red error text.
-- Look for images that are being called but do not exist in the file system.
-- If you encounter `JavaScript heap out of memory` error with the build command, it could be caused by `max_old_space_size` being too small. Try to define environment variable `NODE_OPTIONS=--max_old_space_size=4096`, or even higher with `NODE_OPTIONS=--max_old_space_size=8192`. You can define this in the command line with one of the following commands, depending on your operating system:
-
-  - Windows: `set NODE_OPTIONS="--max-old-space-size=8192"`
-  - Linux/Mac: `export NODE_OPTIONS="--max-old-space-size=8192"`
--->
-
-
-### Building the docs for production
-
-You can build the docs with this command:
-
-```
-npm run docs:build
-```
-
-All build results will be put under the `.deploy` folder. If you didn't configure special variables for the build, the above command will generate HTML pages and put into `.deploy/stable/` folder.
-
-You can check the generated result and verify the content. You can also host the content in `.deploy` and view the result in browser. The below shows how to start the web server with Docker:
-
-```
-docker run --name docs-site-test -p 8080:80 -v $PWD/.deploy:/usr/share/nginx/html:ro --rm nginx
-```
-
-Now you are able to visit `http://localhost:8080/stable/` to check the content.
-
-<!-->
-### Testing broken links
-
-You will need `Docker` to run broken links test. Check https://www.docker.com/get-started to install Docker.
-
-After you build the documentation described above, you can run broken links test with this command:
-
-```
-npm run test:links:stable
-```
-
-Check `Warning of broken links and other issues (source target lines code fragments):` sections for warnings, and Check `Errors of broken links and other issues (source target lines code fragments):` sections for errors.
-
-Errors must be fixed before merge to the `master` branch, otherwise the pull request will be blocked.
-
-_Please note, if we have multiple documentation versions in place, you may see broken links warnings on links to other versions._
-
-### Understanding the link check warning / error message
-
-If you don't see a section of `Error(s) of broken links and other issues` in the job console log, that means you are all good to go! However, there may be a `Warning(s) of broken links and other issues` which includes warnings but it won't fail the build pipeline. The `(source target lines code fragments)` indicates the fields of each warning / error message.
-
-A typical link check *warning* message may look like this:
-
-```
-=================================================================================
-Warning(s) of broken links and other issues (source target lines code fragments):
-- - http://zowe-docs-test-links/v0-9-x/user-guide/cli-installcli.html http://zowe-docs-test-links/v0-9-x/user-guide/cli-usingcli.html "26, 29, 34" "200 OK" "#displaying-zowe-cli-help,#accessing-an-api-mediation-layer"
-- http://zowe-docs-test-links/stable/extend/extend-apiml/api-mediation-onboard-an-existing-java-rest-api-service-without-spring-boot-with-zowe-api-mediation-layer.html http://zowe-docs-test-links/stable/extend/extend-apiml/api-mediation-onboard-an-existing-java-rest-api-service-without-spring-boot-with-zowe-api-mediation-layer.html "24" "200 OK" "#add-context-listener"
-- http://zowe-docs-test-links/stable/extend/extend-apiml/api-mediation-security.html http://zowe-docs-test-links/stable/extend/extend-apiml/api-mediation-security.html "24" "200 OK" "#add-a-service-with-an-existing-certificate-to-api-ml-on-zos,#zowe-runtime-on-zos,#certificates-for-zos-installation-from-the-zowe-pax-file,#trust-a-zosmf-certificate,#generate-a-keystore-and-truststore-for-a-new-service-on-zos"
-- http://zowe-docs-test-links/stable/user-guide/systemrequirements.html http://zowe-docs-test-links/stable/user-guide/systemrequirements.html "24" "200 OK" "#zosmf-configuration"
-Total 5 warning(s).
-```
-
-A typical link check *error* message may look like this:
-
-```
-===============================================================================
-Error(s) of broken links and other issues (source target lines code fragments):
-- http://zowe-docs-test-links/stable/ https://docs.zowe.org/stable/Zowe_Documentation_1.0.0.pdf "26" "404 Not Found" "-"
-- http://zowe-docs-test-links/stable/ http://zowe-docs-test-links/stable/... "26" "404 Not Found" "-"
-Total 2 error(s).
-```
-
-The above warning / error message includes several informations:
-
-- There are 5 warnings found in the docs build result.
-- There are 2 errors found in the docs build result.
-- Each line starts with `-` is one particular warning / error.
-- Each warning / error line includes 5 fields:
-  * source
-  * target
-  * lines, separated by comma (,)
-  * code
-  * fragments, separated by comma (,)
-- For a line like `- http://zowe-docs-test-links/v0-9-x/user-guide/cli-installcli.html http://zowe-docs-test-links/v0-9-x/user-guide/cli-usingcli.html "26, 29, 34" "200 OK" "#displaying-zowe-cli-help,#accessing-an-api-mediation-layer"`, it means:
-  * **source**: in page `/v0-9-x/user-guide/cli-installcli.html`,
-  * **targe**: has a link to `/v0-9-x/user-guide/cli-usingcli.html`, which is itself,
-  * **lines**: at line `26, 29, 34`, which is 3 lines,
-  * **code**: received code `200 OK`, which means retrieving target link is successful,
-  * **fragments**: however it failed to find 2 target fragments `#displaying-zowe-cli-help,#accessing-an-api-mediation-layer` in the target html page.
-- For line `http://zowe-docs-test-links/stable/ https://docs.zowe.org/stable/Zowe_Documentation_1.0.0.pdf "26" "404 Not Found" "-"`, it means:
-  * **source**: in page `/stable/`,
-  * **targe**: has a link to `https://docs.zowe.org/stable/Zowe_Documentation_1.0.0.pdf`,
-  * **lines**: at line `26`,
-  * **code**: received error code `404 Not Found`,
-  * **fragments**: without fragments defined.
-
-### Previewing the docs in PDF format
-
-You can build the doc site into a PDF document to preview locally. Launch the build script with command `npm run docs:pdf`. The build result will be put into the `.deploy/.pdf/out` folder if there are no errors.
-
-To update what should be included in PDF document, go ahead edit `docs/.vuepress/config.js ALL_PAGES` property.
-
-Check [Build PDF](docs/.pdf/README.md) for detailed explanations.
-
-For published docs, PDFs of different versions are available for download on the doc site homepage.
-
-## Archiving the docs and creating a new version
-
-Check [Build and Archive Legacy Documentation](https://github.com/zowe/docs-site/wiki/How-to#build-and-archive-legacy-documentation) for detailed explanations.
---> 
-## How to update the homepage?
-
-### About this task
-
-Homepage is composed of the following sections:
-- Header
-- Banner
-  - Zowe Docs
-  - Search Bar
-- Components
-  - Popular Resources
-  - Explore Content
-  - Discover Your Path
-  - Featured Topics
-  - Downloadable Files
-- Footer
-
-The icons used in all the sections are stored in the `./staic/img` folder. To update the icons, replace with the updated icons with the same name.
-
-### Updating the navigation elements in the header section
-
-1. Navigate to the `/docusaurus.config.js` file and locate the `themeConfig:` > `Items` section.
-   The definition of each navigation is specified in the following format:
-
-   ```
-   {
-      type: "",
-      label: "",
-      docId: "",
-      position: "",
-    },
-   ```
-
-1. Edit the variables within the `{ }` section of each navigation element.
-   For example, to add a navigation element named `Command Reference`, add the following code snippet under the `Items` section.
-
-   ```
-   {
-      type: "Doc",
-      label: "Command Reference",
-      docId: "appendix/zowe-cli-command-reference",
-      position: "left",
-    },
-   ```
-
-### Updating Banner: Zowe Docs
-- To update the content:
-    Navigate to the `/docusaurus.config.js` directory and change the **title** field:
-    ```
-    module.exports = {
-      title: "Zowe Docs",
-    ```
-
-- To update the CSS:
-  1. Navigate to the `/src/pages/styles.module.css` directory and change the **.heroBanner** submodule:
-
-  ```
-  .heroBanner {
-  padding: 4rem 0;
-  text-align: center;
-  position: relative;
-  overflow: hidden;
-  background-color: var(--ifm-color-primary);
-  color: #ffffff;
-  }
-  ```
-
-  2. Navigate to the `/src/css/custom.css` directory and change the **.hero__title** submodule.
-
-  ```
-  .hero__title {
-    font-size: 4rem !important;
-    padding-bottom: 3rem;
-  }
-  ```
-
-### Updating Banner: Search Bar
-
-Navigate to the `/src/css/custom.css` directory and change the **.searchDiv** and **.searchDiv .DocSearch-Button** submodules.
-
-```
-/* Landing Page Search Bar */
-.searchDiv {
-  margin: auto;
-  width: calc(var(--ifm-container-width) / 12 * 7);
- }
-
-.searchDiv .DocSearch-Button {
-  margin: auto;
-  width: 70%;
-  height: 45px;
-  padding: 0 20px;
-  border-radius: 10px;
-  color: var(--docsearch-text-color);
- }
-
-[data-theme="dark"] .searchDiv .DocSearch-Button {
-  color: var(--docsearch-muted-color);
-  }
-```
-
-### Updating Components
-
-Each component has an independent subfolder in the `/src/pages/components` directory. Each subfolder contains a `.js` file and a `.css` file to control the content and style for each component.
-
-```
-├── src
-│   └── pages
-│       └──components
-│           ├──DiscoverYourPath
-│           ├──DownloadableFiles
-│           ├──ExploreContent
-│           ├──FeaturedTopics
-└           └─PopularResources
-```
-
-For example:
-
-To update the hyperlink to `Download Zowe` in the the **Popular Resources** section:
-
-1. Navigate to the `/src/pages/components/PopularResources` directory and locate the `PopularResources.js` file.
-
-1. Find the `title: "Download Zowe"` line to identify the right location and update its `link` variable.
-
-```
-{
-    title: "Download Zowe",
-    link: "https://www.zowe.org/download.html",
-    icon: "img/download_zowe-icon.png",
-    description: (
-      <>
-        Zowe has both server and client components, which you can install
-        independently.
-      </>
-    ),
-  },
-```
-
-#### Updating the **Popular Resources** section
-
-**File location: `/src/pages/components/PopularResources/PopularResources.js`.**
-
-- Update the font size of 'Popular Resources'.
-```
-<h4 className="padding-top--lg container-h4">
-  Popular resources
-</h4>
-```
-- Update the height and width of the icons. The current size is 70px*70px.
-```
-function Resource({ title, link, icon, description }) {
-  return (
-    <div className={clsx("col col--4 padding--lg", styles.posRelative)}>
-      <img
-        className="margin-left--xs"
-        alt="icons"
-        style={{ height: "70px", width: "70px" }}
-        src={useBaseUrl(icon)}
-      />
-      <p>{description}</p>
-      <a className={clsx("margin-top--sm", styles.posAbsolute)} href={link}>
-        {title}
-      </a>
-    </div>
-  );
-}
-```
-- Update the contents and links of `Dowload Zowe` and `Try Zowe`.
-```
-const data = [
-  {
-    title: "Download Zowe",
-    link: "https://www.zowe.org/download.html",
-    icon: "img/download_zowe-icon.png",
-    description: (
-      <>
-        Zowe has both server and client components, which you can install
-        independently.
-      </>
-    ),
-  },
-  {
-    title: "Try Zowe",
-    link: "https://www.ibm.com/account/reg/us-en/signup?formid=urx-38870",
-    icon: "img/try_zowe-icon.png",
-    description: <>Get your hands on a Zowe trial on demand at no charge.</>,
-  },
-];
-```
-- Update the overview video.
-```
-<div
-  className={clsx(
-    "col col--4 padding--lg display-flex",
-    styles.posRelative
-  )}
->
-  <iframe
-    src="https://www.youtube.com/embed/7XpOjREP8JU"
-    className={clsx(styles.responsiveIframe)}
-    title="Introduction to Zowe"
-    frameBorder="0"
-    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-    allowFullScreen
-  ></iframe>
-  <a
-    className={clsx("margin-top--sm", styles.posAbsolute)}
-    href="https://www.youtube.com/embed/7XpOjREP8JU"
-  >
-    Get an overview of Zowe
-  </a>
-</div>
-</div>
-```
-
-#### Updating the Explore Content section
-
-**File location: `/src/pages/components/ExploreContent/ExploreContent.js`**
-
-- Update the font size of 'Explore Content'.
-```
-<div className={clsx("col col--2")}>
-  <h3 className="container-h3">Explore Content</h3>
-</div>
-```
-- Update the cards of the first row in the `const firstDataRow = [ ]` code snippet.
-```
-const firstDataRow = [
-  {
-    title: "Getting Started",
-    icon: "img/get_started-icon.png",
-    link: "stable/getting-started/overview",
-    description: (
-      <>
-        Learn about Zowe™ architecture, components, and how to quickly get
-        started with Zowe. Read about what's new and changed in the Release
-        Notes, FAQs.
-      </>
-    ),
-  },
-  ];
-```
-- Update the cards of the second row in the `const secondDataRow = [ ]` code snippet.
-
-#### Updating the Discover your path section
-
-**File location: `/src/pages/components/DiscoverYourPath/DiscoverYourPath.js`**
-
-The section of Discover your path is arranged in three columns. The first column is used for the `I want to...` subsection, and the second and third columns is used for the 'I'm interested in...' subsection. To change the link and content, update the following code snippet.
-```
-const firstSection = [
-];
-const secondSection = [
-];
-const thirdSection = [
-];
-```
-
-#### Updating the Featured Topics section
-
-**File location: `/src/pages/components/FeaturedTopics/FeaturedTopics.js`**
-
-The section of Featured Topics is arranged in three rows. To change the link and content, update the following code snippet.
-```
-const firstSection = [
-];
-const secondSection = [
-];
-const thirdSection = [
-];
-```
-
-
-### Updating the footer section
-
-1. Navigate to the `/docusaurus.config.js` file and locate the `footer:{ } ` section.
-1. Edit the variables.
-For example, to update the `Products` section, edit the variables in the following code snippet.
-```
-{
-  title: "Products",
-  items: [
-    {
-      label: "Download",
-      href: "https://www.zowe.org/download.html",
-    },
-    {
-      label: "Try Zowe",
-      href: "https://www.openmainframeproject.org/projects/zowe/ztrial",
-    },
-    {
-      label: "Features",
-      href: "https://docs.zowe.org/stable/getting-started/overview.html",
-    },
-  ],
-},
-```
-
+We appreciate your contributions to our documentation!
