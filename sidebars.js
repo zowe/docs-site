@@ -193,6 +193,15 @@ module.exports = {
         "extend/extend-apiml/api-mediation-security",
         "extend/extend-apiml/api-mediation-routing",
         "extend/extend-apiml/api-mediation-passtickets",
+        {
+          type: "category",
+          label: "Caching service",
+          items: [
+            "extend/extend-apiml/api-mediation-caching-service",
+            "extend/extend-apiml/api-mediation-vsam",
+            "extend/extend-apiml/api-mediation-redis",
+          ],
+        }
       ],
     },
     {
