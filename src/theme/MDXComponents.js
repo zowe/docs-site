@@ -9,7 +9,7 @@ const MDXComponents = {
   Badge: Badge,
   tpsr: tpsr,
   img: img,
-  image: image
+  image: image,
 };
 
 export default MDXComponents;

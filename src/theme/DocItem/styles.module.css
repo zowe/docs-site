@@ -32,7 +32,7 @@ details {
   border-radius: 5px;
 }
 
-html[data-theme='dark'] details {
+html[data-theme="dark"] details {
   background-color: #272727;
 }
 
@@ -42,7 +42,7 @@ summary {
   list-style-image: none;
 }
 
-html[data-theme='dark'] summary {
+html[data-theme="dark"] summary {
   background-color: #272727;
 }
 

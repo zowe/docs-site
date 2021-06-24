@@ -49,9 +49,9 @@ hr {
     display: block;
     margin: auto;
     width: 75%;
-    border-top: 0px solid rgba(0,0,0,.1);
+    border-top: 0px solid rgba(0, 0, 0, 0.1);
   }
-  
+
   html[data-theme="dark"] hr {
     --ifm-background-color: #252628;
     border: var(--ifm-hr-border-width) solid var(--ifm-background-section-dark);

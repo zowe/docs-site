@@ -44,14 +44,14 @@ html[data-theme="dark"] .card {
     position: inherit;
     bottom: inherit;
   }
-  
- .feature div {
-   height: inherit !important;
-   position: inherit !important;
- } 
+
+  .feature div {
+    height: inherit !important;
+    position: inherit !important;
+  }
 }
 
-@media screen and (max-width: 1200px){
+@media screen and (max-width: 1200px) {
   #features {
     padding: 3rem 1rem;
   }

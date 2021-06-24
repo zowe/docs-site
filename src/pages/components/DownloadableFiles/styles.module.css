@@ -1,5 +1,5 @@
 :root {
-  --ifm-background-section-dark: #3d3f42
+  --ifm-background-section-dark: #3d3f42;
 }
 
 html[data-theme="light"] .card {
@@ -69,11 +69,11 @@ button img {
   }
 }
 
-@media screen and (max-width: 1100px){
+@media screen and (max-width: 1100px) {
   .section {
     padding: 3rem 1rem;
   }
-  
+
   .card .metadata {
     min-height: 325px;
   }

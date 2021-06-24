@@ -2,7 +2,7 @@
   padding: 3rem 0;
 }
 
-.features a{
+.features a {
   font-size: 1.05rem;
 }
 
@@ -27,7 +27,7 @@
 }
 
 @media screen and (max-width: 1140px) {
-  .responsiveIframe{
+  .responsiveIframe {
     height: 50%;
   }
 }
@@ -36,21 +36,21 @@
   .posRelative {
     height: inherit;
   }
-  
-  .responsiveIframe{
+
+  .responsiveIframe {
     width: 40%;
     height: 100%;
   }
 }
 
 @media screen and (max-width: 768px) {
-  .responsiveIframe{
+  .responsiveIframe {
     width: 50%;
   }
 }
 
 @media screen and (max-width: 425px) {
-  .responsiveIframe{
+  .responsiveIframe {
     width: 100%;
   }
 }

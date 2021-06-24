@@ -45,8 +45,10 @@ const downloadableFiles = [
     firstViewOnlineLink: "./stable/typedoc/index.html",
     firstDownloadLink: "./stable/zowe-nodejs-sdk-typedoc.zip",
     secondSubDescription: <>Python SDK Reference</>,
-    secondViewOnlineLink: "https://zowe-client-python-sdk.readthedocs.io/en/latest/index.html",
-    secondDownloadLink: "https://zowe-client-python-sdk.readthedocs.io/_/downloads/en/latest/pdf/",
+    secondViewOnlineLink:
+      "https://zowe-client-python-sdk.readthedocs.io/en/latest/index.html",
+    secondDownloadLink:
+      "https://zowe-client-python-sdk.readthedocs.io/_/downloads/en/latest/pdf/",
   },
 ];
 
@@ -146,7 +148,10 @@ function DownloadableFile({
                     className={
                       clicked
                         ? clsx(styles.displayNone)
-                        : clsx("dropdown__menu pointer thin-scrollbar", styles.overflow)
+                        : clsx(
+                            "dropdown__menu pointer thin-scrollbar",
+                            styles.overflow
+                          )
                     }
                     onMouseLeave={() => setClicked(false)}
                   >

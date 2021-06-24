@@ -85,10 +85,10 @@ module.exports = {
       label: "Zowe High Availability",
       items: [
         "user-guide/install-ha-sysplex",
-          "user-guide/configure-sysplex",
-          "user-guide/systemrequirements-zosmf-ha",
-          "user-guide/configure-caching-service-ha",
-          "user-guide/configure-zowe-ha-server"
+        "user-guide/configure-sysplex",
+        "user-guide/systemrequirements-zosmf-ha",
+        "user-guide/configure-caching-service-ha",
+        "user-guide/configure-zowe-ha-server",
       ],
     },
     {
@@ -301,11 +301,11 @@ module.exports = {
     "appendix/zowe-cli-command-reference",
     "appendix/zowe-api-reference",
     "appendix/bill-of-materials",
-    { 
-    type: "link", 
-    label: "Third Party Software Requirements", 
-    href: "https://github.com/zowe/docs-site/tree/master/src/tpsr/tpsr-v1.22.x.md"
-    }
+    {
+      type: "link",
+      label: "Third Party Software Requirements",
+      href: "https://github.com/zowe/docs-site/tree/master/src/tpsr/tpsr-v1.22.x.md",
+    },
   ],
 };
 

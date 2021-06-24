@@ -152,7 +152,7 @@ module.exports = {
     algolia: {
       apiKey: "59ff39ed48d0820010c7e09fc4b677bf",
       indexName: "zowe",
-      contextualSearch: true
+      contextualSearch: true,
     },
     colorMode: {
       defaultMode: "light",
@@ -187,43 +187,43 @@ module.exports = {
               label: `${LATEST_VERSION}` + " LTS",
             },
             "v1.21.x": {
-              "label": "v1.21.x LTS"
+              label: "v1.21.x LTS",
             },
             "v1.20.x": {
-              "label": "v1.20.x LTS"
+              label: "v1.20.x LTS",
             },
             "v1.19.x": {
-              "label": "v1.19.x LTS"
+              label: "v1.19.x LTS",
             },
             "v1.18.x": {
-              "label": "v1.18.x LTS"
+              label: "v1.18.x LTS",
             },
             "v1.17.x": {
-              "label": "v1.17.x LTS"
+              label: "v1.17.x LTS",
             },
             "v1.16.x": {
-              "label": "v1.16.x LTS"
+              label: "v1.16.x LTS",
             },
             "v1.15.x": {
-              "label": "v1.15.x LTS"
+              label: "v1.15.x LTS",
             },
             "v1.14.x": {
-              "label": "v1.14.x LTS"
+              label: "v1.14.x LTS",
             },
             "v1.13.x": {
-              "label": "v1.13.x LTS"
+              label: "v1.13.x LTS",
             },
             "v1.12.x": {
-              "label": "v1.12.x LTS"
+              label: "v1.12.x LTS",
             },
             "v1.11.x": {
-              "label": "v1.11.x LTS"
+              label: "v1.11.x LTS",
             },
             "v1.10.x": {
-              "label": "v1.10.x LTS"
+              label: "v1.10.x LTS",
             },
             "v1.9.x": {
-              "label": "v1.9.x LTS"
+              label: "v1.9.x LTS",
             },
           },
         },

@@ -15,7 +15,7 @@
   background-color: #00bfe4;
 }
 
-@media screen and (max-width: 1200px){
+@media screen and (max-width: 1200px) {
   .section {
     padding: 3rem 1rem;
   }
