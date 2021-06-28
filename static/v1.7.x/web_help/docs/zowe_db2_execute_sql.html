@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>db2 execute sql</title>
+<link rel="stylesheet" href="../css/bundle-docs.css">
+<link rel="stylesheet" href="../css/docs.css">
+<article class="markdown-body">
+<h2><a href="zowe.html">zowe</a> → <a href="zowe_db2.html">db2</a> → <a href="zowe_db2_execute.html">execute</a> → <a href="zowe_db2_execute_sql.html">sql</a></h2>
+<p>Execute one or multiple SQL statements separated by a semicolon from a command
+line or from a file.</p>
+<h4 id="usage">Usage</h4>
+<p>   zowe  db2 execute sql [options]</p>
+<h4 id="options">Options</h4>
+<ul>
+<li><p><code>--query</code>  | <code>-q</code> <em>(string)</em></p>
+<ul>
+<li>The SQL statement verbatim to execute</li>
+</ul>
+</li>
+<li><p><code>--file</code>  | <code>-f</code> <em>(string)</em></p>
+<ul>
+<li>A local file containing the SQL statements to execute</li>
+</ul>
+</li>
+</ul>
+<h4 id="db2-connection-options">DB2 Connection Options</h4>
+<ul>
+<li><p><code>--hostname</code>  | <code>-H</code> <em>(string)</em></p>
+<ul>
+<li>The Db2 server host name</li>
+</ul>
+</li>
+<li><p><code>--port</code>  | <code>-P</code> <em>(number)</em></p>
+<ul>
+<li>The Db2 server port number</li>
+</ul>
+</li>
+<li><p><code>--username</code>  | <code>--user</code> | <code>-u</code> <em>(string)</em></p>
+<ul>
+<li>The Db2 user ID (may be the same as the TSO login)</li>
+</ul>
+</li>
+<li><p><code>--password</code>  | <code>--pass</code> | <code>--pw</code> <em>(string)</em></p>
+<ul>
+<li>The Db2 password (may be the same as the TSO password)</li>
+</ul>
+</li>
+<li><p><code>--database</code>  | <code>--db</code> <em>(string)</em></p>
+<ul>
+<li>The name of the database</li>
+</ul>
+</li>
+<li><p><code>--sslFile</code>  | <code>--ssl</code> <em>(string)</em></p>
+<ul>
+<li>Path to an SSL Certificate file</li>
+</ul>
+</li>
+</ul>
+<h4 id="profile-options">Profile Options</h4>
+<ul>
+<li><p><code>--db2-profile</code>  | <code>--db2-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (db2) profile to load for this command execution.</li>
+</ul>
+</li>
+</ul>
+<h4 id="examples">Examples</h4>
+<ul>
+<li><p>Execute a dummy SQL query:</p>
+<ul>
+<li><code>zowe  db2 execute sql --query&quot;SELECT &#39;Hello World&#39; FROM SYSIBM.SYSDUMMY1&quot;</code> <button class="btn-copy" data-balloon-pos="right" data-clipboard-text="zowe  db2 execute sql --query&quot;SELECT &#39;Hello World&#39; FROM SYSIBM.SYSDUMMY1&quot;">Copy</button></li>
+</ul>
+</li>
+<li><p>Retrieve the employees table and total number of rows:</p>
+<ul>
+<li><code>zowe  db2 execute sql -q &quot;SELECT * FROM SAMPLE.EMP; SELECT COUNT(*) AS TOTAL FROM SAMPLE.EMP&quot;</code> <button class="btn-copy" data-balloon-pos="right" data-clipboard-text="zowe  db2 execute sql -q &quot;SELECT * FROM SAMPLE.EMP; SELECT COUNT(*) AS TOTAL FROM SAMPLE.EMP&quot;">Copy</button></li>
+</ul>
+</li>
+<li><p>Execute a file with SQL statements:</p>
+<ul>
+<li><code>zowe  db2 execute sql --file backup_sample_database.sql</code> <button class="btn-copy" data-balloon-pos="right" data-clipboard-text="zowe  db2 execute sql --file backup_sample_database.sql">Copy</button></li>
+</ul>
+</li>
+</ul>
+</article>
+<script src="../js/bundle-docs.js"></script>
+<script src="../js/docs.js"></script>

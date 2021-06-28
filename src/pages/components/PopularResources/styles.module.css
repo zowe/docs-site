@@ -1,0 +1,56 @@
+.features {
+  padding: 3rem 0;
+}
+
+.features a {
+  font-size: 1.05rem;
+}
+
+.iframeDiv {
+  position: relative;
+}
+
+.responsiveIframe {
+  width: 100%;
+  height: fit-content;
+  border: none;
+}
+
+.posRelative {
+  position: relative;
+  height: 250px;
+}
+
+.posAbsolute {
+  position: absolute;
+  bottom: 0;
+}
+
+@media screen and (max-width: 1140px) {
+  .responsiveIframe {
+    height: 50%;
+  }
+}
+
+@media screen and (max-width: 996px) {
+  .posRelative {
+    height: inherit;
+  }
+
+  .responsiveIframe {
+    width: 40%;
+    height: 100%;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .responsiveIframe {
+    width: 50%;
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .responsiveIframe {
+    width: 100%;
+  }
+}

@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>zos-files create data-set-classic</title>
+<link rel="stylesheet" href="../css/bundle-docs.css">
+<link rel="stylesheet" href="../css/docs.css">
+<article class="markdown-body">
+<h2><a href="zowe.html">zowe</a> → <a href="zowe_zos-files.html">zos-files</a> → <a href="zowe_zos-files_create.html">create</a> → <a href="zowe_zos-files_create_data-set-classic.html">data-set-classic</a></h2>
+<p>Create classic data sets (JCL, HLASM, CBL, etc...)</p>
+<h4 id="usage">Usage</h4>
+<p>   zowe  zos-files create data-set-classic &lt;dataSetName&gt; [options]</p>
+<h4 id="positional-arguments">Positional Arguments</h4>
+<ul>
+<li><p><code>dataSetName</code>         <em>(string)</em></p>
+<ul>
+<li>The name of the data set that you want to create</li>
+</ul>
+</li>
+</ul>
+<h4 id="options">Options</h4>
+<ul>
+<li><p><code>--block-size</code>  | <code>--bs</code> <em>(number)</em></p>
+<ul>
+<li><p>The block size for the data set (for example, 6160)</p>
+<p>Default value: 6160</p>
+</li>
+</ul>
+</li>
+<li><p><code>--data-class</code>  | <code>--dc</code> <em>(string)</em></p>
+<ul>
+<li>The SMS data class to use for the allocation</li>
+</ul>
+</li>
+<li><p><code>--data-set-type</code>  | <code>--dst</code> <em>(string)</em></p>
+<ul>
+<li>The data set type</li>
+</ul>
+</li>
+<li><p><code>--device-type</code>  | <code>--dt</code> <em>(string)</em></p>
+<ul>
+<li>The device type, also known as &#39;unit&#39;</li>
+</ul>
+</li>
+<li><p><code>--directory-blocks</code>  | <code>--db</code> <em>(number)</em></p>
+<ul>
+<li><p>The number of directory blocks (for example, 25)</p>
+<p>Default value: 25</p>
+</li>
+</ul>
+</li>
+<li><p><code>--management-class</code>  | <code>--mc</code> <em>(string)</em></p>
+<ul>
+<li>The SMS management class to use for the allocation</li>
+</ul>
+</li>
+<li><p><code>--record-format</code>  | <code>--rf</code> <em>(string)</em></p>
+<ul>
+<li><p>The record format for the data set (for example, FB for &quot;Fixed Block&quot;)</p>
+<p>Default value: FB</p>
+</li>
+</ul>
+</li>
+<li><p><code>--record-length</code>  | <code>--rl</code> <em>(number)</em></p>
+<ul>
+<li><p>The logical record length. Analogous to the length of a line (for example, 80)</p>
+<p>Default value: 80</p>
+</li>
+</ul>
+</li>
+<li><p><code>--secondary-space</code>  | <code>--ss</code> <em>(number)</em></p>
+<ul>
+<li><p>The secondary space allocation (for example, 1)</p>
+<p>Default value: 1</p>
+</li>
+</ul>
+</li>
+<li><p><code>--show-attributes</code>  | <code>--pa</code> <em>(boolean)</em></p>
+<ul>
+<li>Show the full allocation attributes</li>
+</ul>
+</li>
+<li><p><code>--size</code>  | <code>--sz</code> <em>(string)</em></p>
+<ul>
+<li><p>The size of the data set (specified as nCYL or nTRK - where n is the number of
+cylinders or tracks). Sets the primary allocation (the secondary allocation
+becomes ~10% of the primary).</p>
+<p>Default value: 1CYL</p>
+</li>
+</ul>
+</li>
+<li><p><code>--storage-class</code>  | <code>--sc</code> <em>(string)</em></p>
+<ul>
+<li>The SMS storage class to use for the allocation</li>
+</ul>
+</li>
+<li><p><code>--volume-serial</code>  | <code>--vs</code> <em>(string)</em></p>
+<ul>
+<li>The volume serial (VOLSER) on which you want the data set to be placed. A
+VOLSER is analogous to a drive name on a PC.</li>
+</ul>
+</li>
+</ul>
+<h4 id="zosmf-connection-options">Zosmf Connection Options</h4>
+<ul>
+<li><p><code>--host</code>  | <code>-H</code> <em>(string)</em></p>
+<ul>
+<li>The z/OSMF server host name.</li>
+</ul>
+</li>
+<li><p><code>--port</code>  | <code>-P</code> <em>(number)</em></p>
+<ul>
+<li><p>The z/OSMF server port.</p>
+<p>Default value: 443</p>
+</li>
+</ul>
+</li>
+<li><p><code>--user</code>  | <code>-u</code> <em>(string)</em></p>
+<ul>
+<li>Mainframe (z/OSMF) user name, which can be the same as your TSO login.</li>
+</ul>
+</li>
+<li><p><code>--password</code>  | <code>--pass</code> | <code>--pw</code> <em>(string)</em></p>
+<ul>
+<li>Mainframe (z/OSMF) password, which can be the same as your TSO password.</li>
+</ul>
+</li>
+<li><p><code>--reject-unauthorized</code>  | <code>--ru</code> <em>(boolean)</em></p>
+<ul>
+<li><p>Reject self-signed certificates.</p>
+<p>Default value: true</p>
+</li>
+</ul>
+</li>
+<li><p><code>--base-path</code>  | <code>--bp</code> <em>(string)</em></p>
+<ul>
+<li>The base path for your API mediation layer instance. Specify this option to
+prepend the base path to all z/OSMF resources when making REST requests. Do not
+specify this option if you are not using an API mediation layer.</li>
+</ul>
+</li>
+</ul>
+<h4 id="profile-options">Profile Options</h4>
+<ul>
+<li><p><code>--zosmf-profile</code>  | <code>--zosmf-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (zosmf) profile to load for this command execution.</li>
+</ul>
+</li>
+</ul>
+<h4 id="examples">Examples</h4>
+<ul>
+<li><p>Create an empty z/OS &#39;classic&#39; PDS with default parameters:</p>
+<ul>
+<li><code>zowe  zos-files create data-set-classic NEW.CLASSIC.DATASET</code> <button class="btn-copy" data-balloon-pos="right" data-clipboard-text="zowe  zos-files create data-set-classic NEW.CLASSIC.DATASET">Copy</button></li>
+</ul>
+</li>
+</ul>
+</article>
+<script src="../js/bundle-docs.js"></script>
+<script src="../js/docs.js"></script>
