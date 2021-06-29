@@ -9,6 +9,7 @@ Follow these steps:
 
 - Change the folder name from `SwizzledNavbarItem` to `NavbarItem` back. This will replace the default NavbarItem files.
 - Add Navbar dropdowns items in `docusaurus.config.js`:
+
 ```
 {
   to: "/folder_name/file_name",

@@ -7,26 +7,20 @@ import { useTitleFormatter } from "@docusaurus/theme-common";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import useBaseUrl from "@docusaurus/useBaseUrl";
 import DocPaginator from "@theme/DocPaginator";
-import DocVersionSuggestions from "@theme/DocVersionSuggestions";
+import DocVersionBanner from "@theme/DocVersionBanner";
 import TOC from "@theme/TOC";
 import clsx from "clsx";
 import styles from "./styles.module.css";
-import {
-  useActivePlugin,
-  useVersions,
-  useActiveVersion,
-} from "@theme/hooks/useDocs";
+import { useActivePlugin, useVersions } from "@theme/hooks/useDocs";
 
 //Components
 import DocsInfo from "./DocsInfo";
 import DocsRating from "./DocsRating";
 
-var versionPassed = ""; //defined the variable globally
-
 function DocItem(props) {
   const { siteConfig } = useDocusaurusContext();
   const { url: siteUrl } = siteConfig;
-  const { content: DocContent } = props;
+  const { content: DocContent, versionMetadata } = props;
   const {
     metadata,
     frontMatter: {
@@ -48,14 +42,12 @@ function DocItem(props) {
   const { pluginId } = useActivePlugin({ failfast: true });
 
   const versions = useVersions(pluginId);
-  const version = useActiveVersion(pluginId);
 
   const showVersionBadge = versions.length > 1;
   const metaTitle = useTitleFormatter(title);
   const metaImageUrl = useBaseUrl(metaImage, {
     absolute: true,
   });
-  versionPassed = version.label;
 
   const [readingTimeInWords, setReadingTimeInWords] = useState("");
 
@@ -92,13 +84,13 @@ function DocItem(props) {
             [styles.docItemCol]: !hideTableOfContents,
           })}
         >
-          <DocVersionSuggestions />
+          <DocVersionBanner versionMetadata={versionMetadata} />
           <div className={styles.docItemContainer}>
             <article className="article-content">
               {showVersionBadge && (
                 <div>
                   <span className="badge badge--secondary">
-                    Version: {version.label}
+                    Version: {versionMetadata.label}
                   </span>
                 </div>
               )}
