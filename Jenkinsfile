@@ -118,8 +118,6 @@ node ('zowe-jenkins-agent-dind') {
       sh """
         git config --global user.email \"${params.GITHUB_USER_EMAIL}\"
         git config --global user.name \"${params.GITHUB_USER_NAME}\"
-        mkdir -p .deploy
-        cd .deploy
         git init
         git remote add origin https://github.com/${githubRepository}.git
         git fetch
@@ -127,32 +125,12 @@ node ('zowe-jenkins-agent-dind') {
         if [ -n "\$(git ls-remote --heads origin ${params.PUBLISH_BRANCH})" ]; then git pull origin ${params.PUBLISH_BRANCH}; fi
         cd ..
       """
-      if (isMasterBranch) {
-        // alway try to update default pages from master branch
-        sh 'cp -r gh-pages-default/. .deploy/'
-      }
     }
 
     stage('build') {
       ansiColor('xterm') {
         sh 'npm install'
         sh "PUBLISH_TARGET_PATH=${publishTargetPath} npm run build"
-      }
-    }
-
-    stage('test') {
-      ansiColor('xterm') {
-        // list all files generated
-        sh "find .deploy | grep -v '.deploy/.git'"
-        // check broken links
-        timeout(30) {
-          if (params.FULL_SITE_LINKS_CHECK) {
-            sh 'npm run test:links'
-          } else {
-            def publishTargetPathConverted = publishTargetPath.replaceAll(/\./, '-')
-            sh "npm run test:links -- --start-point /${publishTargetPathConverted}/"
-          }
-        }
       }
     }
 
