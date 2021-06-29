@@ -113,13 +113,13 @@ node ('zowe-jenkins-agent-dind') {
     }
 
     stage('prepare') {
-      // prepare .build folder
-      // checkout params.PUBLISH_BRANCH to .build folder
+      // prepare .deploy folder
+      // checkout params.PUBLISH_BRANCH to .deploy folder
       sh """
         git config --global user.email \"${params.GITHUB_USER_EMAIL}\"
         git config --global user.name \"${params.GITHUB_USER_NAME}\"
-        mkdir -p .build
-        cd .build
+        mkdir -p .deploy
+        cd .deploy
         git init
         git remote add origin https://github.com/${githubRepository}.git
         git fetch
@@ -129,7 +129,7 @@ node ('zowe-jenkins-agent-dind') {
       """
       if (isMasterBranch) {
         // alway try to update default pages from master branch
-        sh 'cp -r gh-pages-default/. .build/'
+        sh 'cp -r gh-pages-default/. .deploy/'
       }
     }
 
@@ -143,7 +143,7 @@ node ('zowe-jenkins-agent-dind') {
     stage('test') {
       ansiColor('xterm') {
         // list all files generated
-        sh "find .build | grep -v '.build/.git'"
+        sh "find .deploy | grep -v '.deploy/.git'"
         // check broken links
         timeout(30) {
           if (params.FULL_SITE_LINKS_CHECK) {
