@@ -119,8 +119,7 @@ node ('zowe-jenkins-agent-dind') {
         git config --global user.email \"${params.GITHUB_USER_EMAIL}\"
         git config --global user.name \"${params.GITHUB_USER_NAME}\"
         git init
-        git remote add origin https://github.com/${githubRepository}.git
-        git fetch
+        git fetch origin https://github.com/${githubRepository}.git
         git checkout -B ${params.PUBLISH_BRANCH}
         if [ -n "\$(git ls-remote --heads origin ${params.PUBLISH_BRANCH})" ]; then git pull origin ${params.PUBLISH_BRANCH}; fi
         cd ..
