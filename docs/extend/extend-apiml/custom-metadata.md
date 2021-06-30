@@ -51,4 +51,25 @@
     
     **Note:** If you use the Spring enabler, use the following parameter name:
     
-    `apiml.service.customMetadata.apiml.corsEnabled`    
+    `apiml.service.customMetadata.apiml.corsEnabled`   
+    
+ * **customMetadata.apiml.instanceIdHeaderEnabled**
+ 
+    When this parameter is set to `true`, the request header will be checked to verify 
+    whether it contains the serviceId and whether it matches on the specified target server.
+ 
+     **Note:** This parameter is part of the load balancing Deterministic routing configuration.
+     
+ * **customMetadata.apiml.authenticationBasedEnabled**
+ 
+    When this parameter set to `true`, the user is able call the application's API through the API Gateway by using the Zowe authentication and always get to 
+    the same instance of the service for a given period of time.
+    
+    **Note:** This parameter is part of the load balancing Deterministic routing configuration.
+
+ * **customMetadata.apiml.cacheRecordExpirationTimeInHours**  
+    
+    When `instanceIdHeaderEnabled` and `authenticationBasedEnabled` are enabled, the user can also define the expiration 
+    time for the selected instance that is cached. The default value is 8 hours.  
+
+    **Note:** This parameter is part of the load balancing Deterministic routing configuration.
