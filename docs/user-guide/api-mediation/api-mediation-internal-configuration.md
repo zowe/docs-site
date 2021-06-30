@@ -85,23 +85,6 @@ This section describes runtime configuration properties.
         refers to the specific time before expiration
     
     4. Restart Zowe&trade.
-    
-* **instance.metadata.apiml.lb.instanceIdHeaderEnabled**
-    
-    This parameter is part of the load balancing configuration for the Deterministic Routing capability, where the client can now specify 
-    which instance of a service the user should be routed to. When the `instanceIdHeaderEnabled` is set to `true`, the request header will be checked to verify 
-    whether it contains the serviceId and whether it matches on the specified target server.
-                           
-* **instance.metadata.apiml.lb.authenticationBasedEnabled**
-
-    This parameter is part of the load balancing configuration for the Deterministic Routing capability. When `authenticationBasedEnabled`
-    is set to `true`, the user is able call the application's API through the API Gateway by using the Zowe authentication and always get to 
-    the same instance of the service for a given period of time.
-    
-* **instance.metadata.apiml.lb.cacheRecordExpirationTimeInHours**
-
-    This parameter is part of the load balancing configuration for the Deterministic Routing capability. It defines the expiration time for the selected 
-    instance that is cached. The default value is 8 hours. 
 
 * **ibm.serversocket.recover**
 

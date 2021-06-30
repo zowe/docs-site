@@ -53,23 +53,18 @@
     
     `apiml.service.customMetadata.apiml.corsEnabled`   
     
- * **customMetadata.apiml.instanceIdHeaderEnabled**
- 
-    When this parameter is set to `true`, the request header will be checked to verify 
-    whether it contains the serviceId and whether it matches on the specified target server.
- 
-     **Note:** This parameter is part of the load balancing Deterministic routing configuration.
-     
- * **customMetadata.apiml.authenticationBasedEnabled**
- 
-    When this parameter set to `true`, the user is able call the application's API through the API Gateway by using the Zowe authentication and always get to 
-    the same instance of the service for a given period of time.
+ * **customMetadata.apiml.lb.type**
+    This parameter is part of the load balancing configuration for the Deterministic Routing capability, where the client can now specify 
+    which instance of a service the user should be routed to. This parameter can be set to two different values:
+    * `headerRequest`: in this case the request header will be checked to verify 
+    whether it contains the service ID and whether it matches on the specified target server
     
-    **Note:** This parameter is part of the load balancing Deterministic routing configuration.
-
+    * `authentication`: in this case, if the user is authenticated, the instance information will get cached and 
+    used afterwards to forward the client request to the specified target server
+           
  * **customMetadata.apiml.cacheRecordExpirationTimeInHours**  
     
-    When `instanceIdHeaderEnabled` and `authenticationBasedEnabled` are enabled, the user can also define the expiration 
-    time for the selected instance that is cached. The default value is 8 hours.  
+    When the property `customMetadata.apiml.lb.type` is set to `authentication`, the user can also define the expiration 
+    time for the selected instance information that is cached. This property aims to prevent any discrepancy which might possibly occur if 
+    the required target server is not available anymore. The default value is 8 hours.  
 
-    **Note:** This parameter is part of the load balancing Deterministic routing configuration.
