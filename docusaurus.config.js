@@ -13,6 +13,16 @@ module.exports = {
   favicon: "img/zowe-icon.png",
   organizationName: "zowe",
   projectName: "docs-site",
+  webpack: {
+    jsLoader: (isServer) => ({
+      loader: require.resolve("esbuild-loader"),
+      options: {
+        loader: "tsx",
+        format: isServer ? "cjs" : undefined,
+        target: isServer ? "node12" : "es2017",
+      },
+    }),
+  },
   themeConfig: {
     hideableSidebar: true,
     image: "img/zowe-icon.png",
