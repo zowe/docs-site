@@ -40,6 +40,7 @@
     ]
   },
   "devDependencies": {
-    "mr-pdf": "1.0.5"
+    "mr-pdf": "1.0.5",
+    "netlify-plugin-cache": "^1.0.3"
   }
 }

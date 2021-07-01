@@ -217,24 +217,6 @@ module.exports = {
             "v1.15.x": {
               label: "v1.15.x LTS",
             },
-            "v1.14.x": {
-              label: "v1.14.x LTS",
-            },
-            "v1.13.x": {
-              label: "v1.13.x LTS",
-            },
-            "v1.12.x": {
-              label: "v1.12.x LTS",
-            },
-            "v1.11.x": {
-              label: "v1.11.x LTS",
-            },
-            "v1.10.x": {
-              label: "v1.10.x LTS",
-            },
-            "v1.9.x": {
-              label: "v1.9.x LTS",
-            },
           },
         },
         theme: {
