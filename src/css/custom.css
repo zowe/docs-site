@@ -14,13 +14,21 @@
   --ifm-color-primary-light: #366cbd;
   --ifm-color-primary-lighter: #3871c6;
   --ifm-color-primary-lightest: #5283ce;
+  --ifm-link-hover-color: #2a5392;
   --ifm-code-font-size: 95%;
 }
 
 html[data-theme="dark"] {
-  --ifm-color-primary: #569cd6;
+  --ifm-color-primary: #5192c7;
+  --ifm-link-hover-color: #4b89bd;
   /* --ifm-background-color: #252628; FIXME:*/
   --ifm-background-section-dark: #3d3f42;
+}
+
+[data-theme="dark"] .shadow--tl {
+  box-shadow: 1px 1px 8px 4px rgba(255, 255, 255, 0.37) !important;
+  -webkit-box-shadow: 1px 1px 8px 4px rgba(255, 255, 255, 0.37) !important;
+  -moz-box-shadow: 1px 1px 8px 4px rgba(255, 255, 255, 0.37) !important;
 }
 
 .docusaurus-highlight-code-line {

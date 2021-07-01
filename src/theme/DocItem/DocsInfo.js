@@ -82,13 +82,13 @@ function DocsInfo({ docsPluginId, ...props }) {
               >
                 {" "}
                 <img
+                  className="padding-right--sm"
                   src={printIconUrl}
                   style={{
                     width: "16px",
                     verticalAlign: "-0.125em",
                   }}
                 ></img>
-                <>&nbsp;</>
                 PDF
               </a>
             )}
@@ -98,21 +98,19 @@ function DocsInfo({ docsPluginId, ...props }) {
           <div className="margin-right--md display-flex">
             {openDocIssueURL && (
               <a
-                className="pointer"
                 href={openDocIssueURL}
                 target="_blank"
                 rel="noreferrer noopener"
               >
                 <img
+                  className="padding-right--sm"
                   src={bugIconUrl}
                   style={{
                     width: "16px",
                     verticalAlign: "-0.125em",
                   }}
                 ></img>
-                <>&nbsp;</>
                 Open doc issue
-                {/* <>&nbsp;</> */}
               </a>
             )}
           </div>
