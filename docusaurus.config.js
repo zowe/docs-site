@@ -1,5 +1,6 @@
 const LATEST_VERSION = "v1.22.x";
 const versionsArray = require("./versions.json");
+const VersionsArchived = require("./versionsArchived.json");
 
 module.exports = {
   title: "Zowe Docs",
@@ -77,6 +78,18 @@ module.exports = {
           type: "docsVersionDropdown",
           position: "right",
           dropdownActiveClassDisabled: true,
+          dropdownItemsAfter: [
+            // ...Object.entries(VersionsArchived).map(
+            //   ([versionName, versionUrl]) => ({
+            //     label: versionName,
+            //     href: versionUrl,
+            //   })
+            // ),
+            {
+              to: "/versions",
+              label: "All versions",
+            },
+          ],
         },
         {
           href: "https://github.com/zowe/docs-site",
@@ -216,6 +229,12 @@ module.exports = {
             },
             "v1.15.x": {
               label: "v1.15.x LTS",
+            },
+            "v1.14.x": {
+              label: "v1.14.x LTS",
+            },
+            "v1.13.x": {
+              label: "v1.13.x LTS",
             },
           },
         },
