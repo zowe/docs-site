@@ -62,7 +62,7 @@
     * `authentication`: in this case, if the user is authenticated, the instance information will get cached and 
     used afterwards to forward the client request to the specified target server
            
- * **customMetadata.apiml.cacheRecordExpirationTimeInHours**  
+ * **customMetadata.apiml.lb.cacheRecordExpirationTimeInHours**  
     
     When the property `customMetadata.apiml.lb.type` is set to `authentication`, the user can also define the expiration 
     time for the selected instance information that is cached. This property aims to prevent any discrepancy which might possibly occur if 
