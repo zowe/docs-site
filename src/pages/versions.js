@@ -1,12 +1,4 @@
-/**
- * Copyright (c) Facebook, Inc. and its affiliates.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- */
-
 import React from "react";
-import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import Link from "@docusaurus/Link";
 import Layout from "@theme/Layout";
 
@@ -26,10 +18,10 @@ function Version() {
   return (
     <Layout
       title="Versions"
-      description="Docusaurus 2 Versions page listing all documented site versions"
+      description="Zowe Versions page listing all documented site versions"
     >
       <main className="container margin-vert--lg">
-        <h1>Docusaurus documentation versions</h1>
+        <h1>Zowe documentation versions</h1>
 
         {latestVersion && (
           <div className="margin-bottom--lg">
@@ -73,11 +65,6 @@ function Version() {
                         Documentation
                       </Link>
                     </td>
-                    <td>
-                      <a href={`${version.name}/getting-started/overview`}>
-                        Release Notes
-                      </a>
-                    </td>
                   </tr>
                 ))}
                 {VersionsArchivedList.map(([versionName, versionUrl]) => (
@@ -85,11 +72,6 @@ function Version() {
                     <th>{versionName}</th>
                     <td>
                       <Link to={versionUrl}>Documentation</Link>
-                    </td>
-                    <td>
-                      <a href={`stable/getting-started/summaryofchanges/`}>
-                        Release Notes
-                      </a>
                     </td>
                   </tr>
                 ))}
