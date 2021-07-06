@@ -1,6 +1,56 @@
 # Maintainer handbook
 
-### Building the docs for production
+- [Tagging a new version](#tagging-a-new-version)
+- [Building the docs for production](#building-the-docs-for-production)
+- [Testing the build locally](#testing-the-build-locally)
+- [Removing archived version](#removing-archived-version)
+- [How to update the homepage?](#how-to-update-the-homepage)
+
+## Tagging a new version
+
+- First, make sure your content in the docs directory is ready to be frozen as a version. A version always should be based from master.
+- Search all instances of `<a href="/stable/web_help/index.html" target="_blank">` & replace `stable` with current latest version before adding the new version. Example: `<a href="/v1.22.x/web_help/index.html" target="_blank">`.
+- Search all instaces of `<a href="/stable/CLIReference_Zowe.pdf" target="_blank">` & replace `stable` with current latest version before adding the new version. Example: `<a href="/v1.22.x/CLIReference_Zowe.pdf" target="_blank">`.
+- Search all instaces of `<a href="/stable/zowe_web_help.zip" target="_blank">` & replace `stable` with current latest version before adding the new version. Example: `<a href="/v1.22.x/zowe_web_help.zip" target="_blank">`.
+  Note: All the instances will be only present in `/docs` directory only.
+
+- Enter a new version number and run the following command:
+
+  ```
+  npm run docusaurus docs:version v1.23.x
+  ```
+  Tagging a new version, the document versioning mechanism will:
+
+  - Copy the full `docs/` folder contents into a new `versioned_docs/version-<version>/` folder.
+  - Create a versioned sidebars file based from your current sidebar configuration - saved as `versioned_sidebars/version-<version>-sidebars.json`.
+  - Append the new version number to `versions.json`.
+
+- Add the new version's **Zowe Third Party Library Usage guide** in `/tpsr` directory. Example: `tpsr/tpsr-v1.23.x.md`.
+- Create a empty directory with a name of **Previous version** `v1.22.x` in `/static`. Example: `static/v1.22.x`.
+- Copy all contents of `/static/stable` in the **Previous version's** empty directory in the above step like `/static/v1.22.x`.
+- Add the new version's static files in `/static/stable`.
+- Change the `LATEST_VERSION` variable present in `/docusaurus.config.js` to a new version.
+- Navigate to the `/docusaurus.config.js` file and locate the `presets:` > `@docusaurus/preset-classic"` > `docs` > `versions`.
+
+  Create a **Previous version's** entry label. Example: if version `v1.22.x` docs is getting updated to `v1.23.x`. Then `v1.22.x` will be appended between `current` & `v1.21.x` in the following format:
+
+  ```
+  current: {
+    path: "stable",
+    label: `${LATEST_VERSION}` + " LTS",
+  },
+  "v1.22.x": { 
+    label: "v1.22.x LTS",
+  },
+  "v1.21.x": {
+    label: "v1.21.x LTS",
+  },
+  ```
+
+- **NOTE:** It's recommended to remove the oldest archived version every time a new version is added to minimize the build time.
+The steps are mentioned in [Removing archived version](#removing-archived-version).
+
+## Building the docs for production
 
 You can build the docs with this command:
 
@@ -8,15 +58,35 @@ You can build the docs with this command:
 npm run build
 ```
 
-All build results will be put under the `.deploy` folder. If you didn't configure special variables for the build, the above command will generate HTML pages and put into `.deploy/stable/` folder.
+## Testing the build locally
 
-You can check the generated result and verify the content. You can also host the content in `.deploy` and view the result in browser. The below shows how to start the web server with Docker:
+Once `npm run build` finishes, the static files will be generated within the build directory.
+
+You can test the build using this command:
 
 ```
-docker run --name docs-site-test -p 8080:80 -v $PWD/.deploy:/usr/share/nginx/html:ro --rm nginx
+npm run serve
 ```
 
-Now you are able to visit `http://localhost:3030/stable/` to check the content.
+Now you will be able to visit `http://localhost:3000/` to check the content.
+
+## Removing archived version
+
+Removing archived version is necessary once two new versions are released to reduce total deploy & build time. It is advisable to keep latest **8-9 versions only** in the master branch to avoid build failure.
+
+- Remove the specific version from `/versions.json` file.
+- Delete the specific complete version folder from `/versioned_docs` directory. Example: `versioned_docs/version-v1.17.x.`
+- Delete the versioned sidebars JSON file from `/versioned_sidebars`. Example: `versioned_sidebars/version-v1.17.x-sidebars.json`.
+- Delete the specific version's static files from `/static` directory. Example: `static/v1.17.x`.
+- Add the specific version entry in `versionsArchived.json` file. Example: `"v1.17.x LTS": "https:??zowe-archived-docs.netlify.app/v1.17.x/getting-started/overview"`.
+- Navigate to the `/docusaurus.config.js` file and locate the `presets:` > `@docusaurus/preset-classic"` > `docs` > `versions`.
+  Delete the definition of that version which is specified in the following format:
+
+  ```
+   "v1.17.x": {
+     label: "v1.17.x LTS",
+   },
+  ```
 
 ## How to update the homepage?
 
@@ -289,7 +359,6 @@ const secondSection = [
 const thirdSection = [
 ];
 ```
-
 
 ### Updating the footer section
 
