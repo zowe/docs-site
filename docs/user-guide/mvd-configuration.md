@@ -37,21 +37,21 @@ Follow these optional steps to configure the default connection to open for the 
 
 `_defaultTN3270.json` is a file in `tn3270-ng2/`, which is deployed during setup. Within this file, you can specify the following parameters to configure the terminal connection:
 ```
-      "host": <hostname>
-      "port": <port>
-      "security": {
-      type: <"telnet" or "tls">
-    }
+  "host": <hostname>
+  "port": <port>
+  "security": {
+    type: <"telnet" or "tls">
+  }
 ```
 ### Setting up the VT Terminal application plug-in
 
 `_defaultVT.json` is a file in `vt-ng2/`, which is deployed during setup. Within this file, you can specify the following parameters to configure the terminal connection:
 ```
-    "host":<hostname>
-    "port":<port>
-    "security": {
-      type: <"telnet" or "ssh">
-    }
+  "host":<hostname>
+  "port":<port>
+  "security": {
+    type: <"telnet" or "ssh">
+  }
 ```
 
 ## Configuration file
@@ -385,7 +385,7 @@ The following steps assume you have installed a Zowe runtime instance (which inc
 
 1. To stop the installed Zowe runtime, in SDSF enter the following command:
 
-   ```text
+   ```
     /C ${ZOWE_PREFIX}${ZOWE_INSTANCE}SV
     ```
     Where ZOWE_PREFIX and ZOWE_INSTANCE are specified in your configuration (and default to ZWE and 1)
@@ -396,7 +396,7 @@ The following steps assume you have installed a Zowe runtime instance (which inc
 
 3. To restart the first Zowe runtime, in SDSF enter the following command:
 
-   ```text
+   ```
    /S ZWESVSTC,INSTANCE='$INSTANCE_DIR'
    ```
 
@@ -444,7 +444,7 @@ The following steps assume you have installed a Zowe runtime instance (which inc
 
 8. To start the new Zowe runtime, in SDSF enter the following command:
 
-   ```text
+   ```
    /S ZWESVSTC,INSTANCE='$ZOWE_INSTANCE_DIR'
    ```
 
@@ -619,7 +619,7 @@ For information on endpoint URLs, see [Dataservice endpoint URL lengths and RBAC
 
 As of Zowe version 1.8.0, the Zowe App Framework, Desktop, and all apps present in the SMP/E or convenience builds support [out-of-band MFA](https://www.ibm.com/support/knowledgecenter/SSNR6Z_2.0.0/com.ibm.mfa.v2r0.azfu100/azf_oobconcepts.htm) by entering an MFA assigned token or passcode into password field of the Desktop login screen, or by accessing the app-server `/auth` REST API endpoint.
 
-For a list of compatible MFA products, see [Known compatible MFA products](systemrequirements.md#known-compatible-mfa-products)
+For a list of compatible MFA products, see [Known compatible MFA products](systemrequirements-zos.md#multi-factor-authentication-mfa).
 
 ### Session duration and expiration
 

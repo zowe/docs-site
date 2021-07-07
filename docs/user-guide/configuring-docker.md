@@ -22,7 +22,7 @@ The Zowe Docker Image comes with a sample script for starting a container of Zow
 ```
 # docker images
 REPOSITORY                         TAG                 IMAGE ID            CREATED             SIZE
-ompzowe/server-bundle                amd64               ceb8c50d2381        2 hours ago         1.27GB
+ompzowe/server-bundle              amd64               ceb8c50d2381        2 hours ago         1.27GB
 ```
 
 2. Start a container of the image without starting Zowe yet by using the environment value `ZOWE_START=0`
@@ -92,7 +92,7 @@ If you have migrated the instance directory from z/OS, copied the simple instanc
 --env EXTERNAL_INSTANCE=/home/zowe/external_instance \
 ```
 
-See [Creating and configuring the Zowe instance directory](configure-instance-directory.md#reviewing-the-instance-env-file) to review options for instance directory configuration.
+See [Creating and configuring the Zowe instance directory](configure-instance-directory.md#updating-the-instance-env-configuration-file) to review options for instance directory configuration.
 
 
 ### Using external certificates  

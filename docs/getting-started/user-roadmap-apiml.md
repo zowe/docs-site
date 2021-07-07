@@ -14,19 +14,19 @@ The following definition of skill levels about Zowe assist you with gathering th
 
 - [**Zowe API Mediation Layer overview**](overview.md#api-mediation-layer)
 
-   New to API Mediation Layer? This overview topic introduces the key features, main components, benefits, and architecture of API Mediation Layer.
+   New to API Mediation Layer? This overview topic introduces the key features, main components, benefits, and architecture of the API Mediation Layer.
 
 - [**Architecture**](zowe-architecture.md#zowe-architecture)
 
-   Review the Zowe architecture to understand how API Mediation Layer works in the Zowe framework.
+   Review the Zowe architecture to understand how the API Mediation Layer works in the Zowe framework.
 
 ## Installing
 
 > Zowe skill level: Beginner
 
-- [**System requirements**](../user-guide/systemrequirements.md)
+- [**System requirements**](../user-guide/systemrequirements-zos.md)
 
-   Review this topic to ensure that your system meets the requirements for installing the API Mediation Layer. API Mediation Layer is one of the server-side components. 
+   Review this topic to ensure that your system meets the requirements for installing the API Mediation Layer. The API Mediation Layer is one of the server-side components. 
 
 - [**Planning**](../user-guide/installandconfig.md#planning-the-installation-of-zowe-server-components)
 
@@ -34,7 +34,7 @@ The following definition of skill levels about Zowe assist you with gathering th
 
 - [**Installing API Mediation Layer**](../user-guide/install-zos.md#z-os-installation-roadmap)
 
-   This article provides an overview of the essential steps involved in installing API Mediation Layer.
+   This article provides an overview of the essential steps involved in installing the API Mediation Layer.
 
 ## Configuring and updating
 
@@ -48,11 +48,11 @@ The following definition of skill levels about Zowe assist you with gathering th
 
    - [Configuring the Zowe APIs](../user-guide/configure-data-sets-jobs-api.md) 
 
-      The article explains how to configure security for the Zowe API Mediation Layer. 
+      This article explains how to configure security for the Zowe API Mediation Layer. 
 
    - [Advanced Gateway features configuration](../user-guide/api-mediation/api-gateway-configuration.md)
       
-      This article is for system programmers who want to configure advanced Gateway features of the API Mediation Layer, such as the gateway retry policy, connection limits, gateway timeouts, and so on.
+      This article is for system programmers who want to configure advanced Gateway features of the API Mediation Layer, such as the Gateway retry policy, connection limits, Gateway timeouts, and other advanced Gateway features.
 
 - [**Upgrading the z/OS system for Zowe**](../user-guide/upgrade-zos-system.md)
 
@@ -64,15 +64,15 @@ The following definition of skill levels about Zowe assist you with gathering th
 
 - [**Using API Catalog**](../user-guide/api-mediation-api-catalog.md)
 
-   Learn about how to use the API Catalog to view what services are running in the API Mediation Layer. Through the API Catalog, you can also view the associated API documentation corresponding to a service, descriptive information about the service, and the current state of the service. 
+   Learn how to use the API Catalog to view what services are running in the API Mediation Layer. Through the API Catalog, you can also view associated API documentation corresponding to a service, descriptive information about the service, and the current state of the service. 
 
 - [**Blog: Introducing “Try it out” functionality in the Zowe API Mediation Layer**](https://medium.com/zowe/introducing-try-it-out-functionality-in-the-zowe-api-mediation-layer-930aa9e947bd) 
 
-   This blog talks about one key functionality of the Zowe API Mediation Layer to validate that services are returning the expected responses. 
+   This blog describes one key functionality of the Zowe API Mediation Layer to validate that services are returning the expected responses. 
 
 - [**Docs: Zowe API reference guide**](../appendix/zowe-api-reference.md)
 
-   Find and learn about the Zowe APIs that you can use.
+   Discover and learn about Zowe APIs that you can use.
 
 ## Onboarding APIs
 
@@ -80,7 +80,7 @@ The following definition of skill levels about Zowe assist you with gathering th
 
 - [**Extend Zowe API Mediation Layer**](../extend/extend-zowe-overview.md#extend-zowe-api-mediation-layer) 
 
-   Learn how you can extend the Zowe API Mediation Layer. Extenders can build and onboard additional API services to the API ML microservices ecosystem. REST APIs can register to the API Mediation Layer, which makes them available in the API Catalog and for routing through the API Gateway.
+   Learn how you can extend the Zowe API Mediation Layer. Extenders make it possible to build and onboard additional API services to the API ML microservices ecosystem. REST APIs can register to the API Mediation Layer, which makes them available in the API Catalog, and for routing through the API Gateway.
 
 - [**Onboarding overview**](../extend/extend-apiml/onboard-overview.md#prerequisites)
 
@@ -88,7 +88,7 @@ The following definition of skill levels about Zowe assist you with gathering th
 
 - [**Zowe API ML repository**](https://github.com/zowe/zowe-api)
 
-   If you want to start working with the code immediately, check out this code repository. 
+   To start working with the code immediately, check out this code repository. 
 
 ## Security
 
@@ -104,11 +104,11 @@ The following definition of skill levels about Zowe assist you with gathering th
 
 - [**Blog: The ZAAS Client: a library for the API Mediation Layer**](https://medium.com/zowe/the-zaas-client-a-library-for-the-api-mediation-layer-822ea2994388)
 
-   This blog introduces you to Zowe Authentication and Authorization Service (ZAAS) Client — a library that contains methods for retrieval of JWT tokens, PassTickets, and even verifying JTW token information.
+   This blog introduces you to Zowe Authentication and Authorization Service (ZAAS) Client — a library that contains methods for retrieval of JWT tokens, PassTickets, as well as verifying JTW token information.
 
 - [**Blog: Single-Sign-On to z/OS REST APIs with Zowe**](https://medium.com/zowe/single-sign-on-to-z-os-rest-apis-with-zowe-6e35fd022a95)
 
-   This blog takes a deeper dive in to the SSO feature of API ML.
+   This blog takes a deeper dive into the SSO feature of API ML.
    
 - [**Blog: Zowe client certificate authentication**](https://medium.com/zowe/zowe-client-certificate-authentication-5f1c7d4d579)   
 
