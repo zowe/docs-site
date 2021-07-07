@@ -14,7 +14,7 @@ Watch this [video](https://www.youtube.com/embed/NX20ZMRoTtk) to see a quick dem
 
 <iframe class="embed-responsive-item" id="youtubeplayer" title="Zowe overview demo" type="text/html" width="640" height="390" src="https://www.youtube.com/embed/7XpOjREP8JU" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen> </iframe>
 
-[Download the deck for this video](../Zowe_introduction_video_deck.pptx) | [Download the script](../Zowe_introduction_video_script.txt)
+[Download the deck for this video](/Zowe_introduction_video_deck.pptx) | [Download the script](/Zowe_introduction_video_script.txt)
 
 ## Component Overview
 
@@ -132,8 +132,6 @@ The Zowe Client SDKs consist of programmatic APIs that you can use to build clie
 
  For more information, see [Using the Zowe SDKs](../user-guide/sdks-using.md).
 
-  </details>
-
 ### API Mediation Layer
 
 Provides a gateway that acts as a reverse proxy for z/OS services, together with a catalog of REST APIs and a dynamic discovery capability. Base Zowe provides core services for working with MVS Data Sets, JES, as well as working with z/OSMF REST APIs.  The API Mediation Layer also provides a framework for [Single Sign On (SSO)](../extend/extend-apiml/api-mediation-sso.html#zowe-api-mediation-layer-single-sign-on-overview).
@@ -205,5 +203,13 @@ Provides an advanced launcher for Zowe components in a high availability configu
 
 ## Zowe Third-Party Software Requirements and Bill of Materials
 
-- [Third-Party Software Requirements (TPSR)](../appendix/tpsr.md)
+<!-- 
+
+<tpsr /> is a React component which will create a dynamic link to latest versioned tpsr file
+tpsrLatestLink = "https://github.com/zowe/docs-site/tree/master/src/tpsr/tpsr-" + latestVersion + ".md";
+This returns <a href={tpsrLatestLink}>Third-Party Software Requirements (TPSR)</a>
+
+-->
+
+- <tpsr />
 - [Bill of Materials (BOM)](../appendix/bill-of-materials.md)
