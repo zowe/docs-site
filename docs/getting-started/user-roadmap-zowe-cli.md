@@ -76,9 +76,9 @@ The following definition of skill levels about Zowe will help you gather most re
 - **Docs: Zowe CLI command reference guide**
 
    View detailed documentation on commands, actions, and options in Zowe CLI. The reference document is based on the @zowe-v1-lts version of the CLI. You can read an interactive online version, download a PDF document, or download a ZIP file containing the HTML for the online version:
-   - **[Browse online](https://docs.zowe.org/v1-4-x/web_help/index.html)**
-   - **[Download CLI reference in PDF format](https://docs.zowe.org/v1-4-x/CLIReference_Zowe.pdf)**
-   - **[Download CLI reference in ZIP formuserat](https://docs.zowe.org/v1-4-x/zowe_web_help.zip)**
+   - <b><a href="/stable/web_help/index.html" target="_blank">Browse online</a></b>
+   - <b><a href="/stable/CLIReference_Zowe.pdf" target="_blank">Download CLI reference in PDF format</a></b>
+   - <b><a href="/stable/zowe_web_help.zip" target="_blank">Download CLI reference in ZIP format</a></b>
 
 - **Best practices**
 

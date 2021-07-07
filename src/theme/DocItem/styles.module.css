@@ -1,0 +1,56 @@
+@media only screen and (min-width: 997px) {
+  .docItemCol {
+    max-width: 75% !important;
+  }
+}
+
+.docItemContainer {
+  margin: 0 auto;
+  padding: 0 0.5rem;
+}
+
+@media only screen and (max-width: 996px) {
+  .docItemContainer {
+    padding: 0 0.3rem;
+  }
+}
+
+.docTitle {
+  font-size: 3rem;
+  margin-bottom: -calc(var(--ifm-leading-desktop) * var(--ifm-leading));
+}
+
+.docLastUpdatedAt {
+  font-weight: bold;
+}
+
+/* Collapsible Components present in specific documentation */
+details {
+  padding: 15px;
+  background-color: #f6f8fa;
+  margin-bottom: 35px;
+  border-radius: 5px;
+}
+
+html[data-theme="dark"] details {
+  background-color: #272727;
+}
+
+summary {
+  cursor: pointer;
+  background-color: #f6f8fa;
+  list-style-image: none;
+}
+
+html[data-theme="dark"] summary {
+  background-color: #272727;
+}
+
+summary::-webkit-details-marker {
+  display: none;
+}
+
+summary::-moz-list-bullet {
+  list-style-type: none;
+  display: block;
+}
