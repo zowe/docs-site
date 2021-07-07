@@ -23,22 +23,20 @@ The Zowe documentation is written in Markdown markup language. Not familiar with
 
 [84fff357]: https://www.markdownguide.org/basic-syntax "https://www.markdownguide.org/basic-syntax"
 
-
-
 ## Contributing to documentation<a name="contribute"></a>
 
 You can use one of the following ways to contribute to documentation:
 
-- Send a GitHub pull request to provide a suggested edit for the content by clicking the **Propose content change in GitHub** link on each documentation page.
-- Open an issue in GitHub to request documentation to be updated, improved, or clarified by providing a comment.
+- Send a GitHub pull request to provide a suggested edit for the content by clicking the **Edit this page** link at the top of each page.
+- Open an issue in GitHub by clicking the **Open doc issue** link at the top of each page to request documentation to be updated, improved, or clarified by providing a comment.
 
 ### Sending a GitHub pull request
 
-You can provide suggested edit to any documentation page by using the **Propose content change in GitHub** link on each page. After you make the changes, you submit updates in a pull request for the Zowe content team to review and merge.
+You can provide suggested edit to any documentation page. After you make the changes, you submit updates in a pull request for the Zowe content team to review and merge.
 
 Follow these steps:
 
-1. Click **Propose content change in GitHub** on the page that you want to update.
+1. Click **Edit this page** at the top of the page that you want to update.
 3. Make the changes to the file.
 4. Scroll to the end of the page and enter a brief description about your change.
 5. Optional: Enter an extended description.
@@ -51,10 +49,8 @@ You can request the documentation to be improved or clarified, report an error, 
 
 Follow these steps:
 
-1. Click the **GitHub** link at the top of the page.
-2. Select **Issues**.
-3. Click **New issue**.
-4. Enter a title and description for the issue.
+1. Click the **Open doc issue** link at the top of the page.
+4. Enter the description for the issue or enhancement.
 5. Click **Submit new issue**.
 
 
@@ -120,7 +116,7 @@ Style:
 
     Example: _myHost_
 
-- If wrap using angle brackets <> within code examples, italic font is not supported.
+- If wrap using angle brackets `<>` within code examples, italic font is not supported.
 
     Example:
     - put &lt;pax-file-name&gt;.pax
@@ -347,7 +343,7 @@ Use their English equivalents instead. Latin abbreviations are sometimes misunde
 Latin  | English equivalent
 ---|---
 e.g.  | for example
-  etc. | and so on. <br> When you list a clear sequence of elements such as "1, 2, 3, and so on" and "Monday, Tuesday, Wednesday, and so on." Otherwise, rewrite the sentence to replace "etc." with something more descriptive such as "and other output."
+  etc. | and so on. <br/> When you list a clear sequence of elements such as "1, 2, 3, and so on" and "Monday, Tuesday, Wednesday, and so on." Otherwise, rewrite the sentence to replace "etc." with something more descriptive such as "and other output."
 i.e.  | that is
 
 #### Spell out the full name and its abbreviation when the word appears for the first time. Use abbreviations in the texts that follow.
@@ -368,15 +364,15 @@ application  | app
 Capitalize "Server" when it's part of the product name |
 data set| dataset
 Java  |  java
-IBM z/OS Management Facility (z/OSMF) <br> z/OSMF   | zosmf (unless used in syntax)
+IBM z/OS Management Facility (z/OSMF) <br/> z/OSMF   | zosmf (unless used in syntax)
 ID| id
 PAX| pax
-personal computer <br> PC <br> server| machine
-later  | higher <br> Do not use to describe versions of software or fix packs.
+personal computer <br/> PC <br/> server| machine
+later  | higher <br/> Do not use to describe versions of software or fix packs.
 macOS| MacOS
-Node.js  | node.js <br> Nodejs
+Node.js  | node.js <br/> Nodejs
 plug-in| plugin
 REXX  | Rexx
-UNIX System Services <br> z/OS UNIX System Services  | USS
-zLUX  | ZLUX <br> zLux
+UNIX System Services <br/> z/OS UNIX System Services  | USS
+zLUX  | ZLUX <br/> zLux
 Zowe CLI|
