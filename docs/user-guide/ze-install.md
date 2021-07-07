@@ -1,7 +1,7 @@
 # Installing Zowe Explorer
 
-<img src="https://codecov.io/gh/zowe/vscode-extension-for-zowe/branch/master/graph/badge.svg" alt="codecov" scope="external">
-<img src="https://img.shields.io/badge/chat-on%20Slack-blue" alt="slack" scope="external">
+<img src="https://codecov.io/gh/zowe/vscode-extension-for-zowe/branch/master/graph/badge.svg" alt="codecov" scope="external"/>
+<img src="https://img.shields.io/badge/chat-on%20Slack-blue" alt="slack" scope="external"/>
 
 The Zowe Explorer extension for Visual Studio Code (VSCode) modernizes the way developers and system administrators interact with z/OS mainframes, and lets you interact with data sets, USS files and jobs. Install the extension directly to [VSCode](https://code.visualstudio.com/) to enable the extension within the GUI. Working with data sets and USS files from VSCode can be more convenient than using 3270 emulators, and complements your Zowe CLI experience. The extension provides the following benefits:
 
@@ -25,7 +25,7 @@ Ensure that you meet the following prerequisites before you use the extension:
 * Get access to z/OSMF.
 * Install [Node.js](https://nodejs.org/en/download/) v8.0 or later.
 * Install [VSCode](https://code.visualstudio.com/).
-* Configure TSO/E address space services, z/OS data set, file REST interface, and z/OS jobs REST interface. For more information, see [z/OS Requirements](https://docs.zowe.org/stable/user-guide/systemrequirements-zosmf.html#z-os-requirements).
+* Configure TSO/E address space services, z/OS data set, file REST interface, and z/OS jobs REST interface. For more information, see [z/OS Requirements](https://docs.zowe.org/stable/user-guide/systemrequirements-zosmf#z-os-requirements).
 * Create one Zowe CLI `zosmf` profile so that the extension can communicate with the mainframe.
 
    **Notes:**
@@ -51,9 +51,9 @@ The extension is now installed and available for use.
 
 You can also watch the following videos to learn how to get started with Zowe Explorer, and work with data sets.
 
-<iframe class="embed-responsive-item" id="youtubeplayer" title="Getting Started with Zowe" type="text/html" width="640" height="390" src="https://www.youtube.com/embed/G_WCsFZIWt4" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen> </iframe>
+<iframe class="embed-responsive-item" id="youtubeplayer" title="Getting Started with Zowe" type="text/html" width="100%" height="365" src="https://www.youtube.com/embed/G_WCsFZIWt4" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen> </iframe>
 
-<iframe class="embed-responsive-item" id="youtubeplayer2" title="How to Work with Data Sets" type="text/html" width="640" height="390" src="https://www.youtube.com/embed/X4oSHrI4oN4" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen> </iframe>
+<iframe class="embed-responsive-item" id="youtubeplayer2" title="How to Work with Data Sets" type="text/html" width="100%" height="365" src="https://www.youtube.com/embed/X4oSHrI4oN4" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen> </iframe>
 
 ## Configuration
 
@@ -67,7 +67,7 @@ Configure Zowe Explorer in the settings file of the extension. To access the ext
 2. Edit the settings as needed.
 3. Save the settings.
 
-<img src="../images/ze/ZE-Configuration.gif" alt="Configure Zowe settings">
+<img src={require("../images/ze/ZE-Configuration.gif").default} alt="Configure Zowe settings"/>
 
 * **Set the Temporary Folder Location:** You can change the default folder location where temporary files are stored. 
 

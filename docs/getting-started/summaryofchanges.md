@@ -4,35 +4,35 @@ Learn about what is new, changed, or removed in Zowe&trade;.
 
 Zowe Version 1.22 and earlier releases include the following enhancements, release by release.
 
-- [Version 1.22.0 LTS (June 2021)](#version-1-22-0-lts-june-2021)
-- [Version 1.21.0 LTS (April 2021)](#version-1-21-0-lts-april-2021)
-- [Version 1.20.1 LTS (March 2021)](#version-1-20-1-lts-march-2021)
-- [Version 1.20.0 LTS (March 2021)](#version-1-20-0-lts-march-2021)
-- [Version 1.19.1 LTS (February 2021)](#version-1-19-1-lts-february-2021)
-- [Version 1.19.0 LTS (February 2021)](#version-1-19-0-lts-february-2021)
-- [Version 1.18.0 LTS (January 2021)](#version-1-18-0-lts-january-2021)
-- [Version 1.17.0 LTS (November 2020)](#version-1-17-0-lts-november-2020)
-- [Version 1.16.0 LTS (October 2020)](#version-1-16-0-lts-october-2020)
-- [Version 1.15.0 LTS (September 2020)](#version-1-15-0-lts-september-2020)
-- [Version 1.14.0 LTS (August 2020)](#version-1-14-0-lts-august-2020)
-- [Version 1.13.0 LTS (July 2020)](#version-1-13-0-lts-july-2020)
-- [Version 1.12.0 LTS (June 2020)](#version-1-12-0-lts-june-2020)
-- [Version 1.11.0 LTS (May 2020)](#version-1-11-0-lts-may-2020)
-- [Version 1.10.0 LTS (April 2020)](#version-1-10-0-lts-april-2020)
-- [Version 1.9.0 LTS (February 2020)](#version-1-9-0-lts-february-2020)
-- [Version 1.8.1 (February 2020)](#version-1-8-1-february-2020)
-- [Version 1.8.0 (February 2020)](#version-1-8-0-february-2020)
-- [Version 1.7.1 (December 2019)](#version-1-7-1-december-2019)
-- [Version 1.7.0 (November 2019)](#version-1-7-0-november-2019)
-- [Version 1.6.0 (October 2019)](#version-1-6-0-october-2019)
-- [Version 1.5.0 (September 2019)](#version-1-5-0-september-2019)
-- [Zowe SMP/E Alpha (August 2019)](#zowe-smp-e-alpha-august-2019)
-- [Version 1.4.0 (August 2019)](#version-1-4-0-august-2019)
-- [Version 1.3.0 (June 2019)](#version-1-3-0-june-2019)
-- [Version 1.2.0 (May 2019)](#version-1-2-0-may-2019)
-- [Version 1.1.0 (April 2019)](#version-1-1-0-april-2019)
-- [Version 1.0.1 (March 2019)](#version-1-0-1-march-2019)
-- [Version 1.0.0 (February 2019)](#version-1-0-0-february-2019)
+- [Version 1.22.0 LTS (June 2021)](#version-1220-lts-june-2021)
+- [Version 1.21.0 LTS (April 2021)](#version-1210-lts-april-2021)
+- [Version 1.20.1 LTS (March 2021)](#version-1201-lts-march-2021)
+- [Version 1.20.0 LTS (March 2021)](#version-1200-lts-march-2021)
+- [Version 1.19.1 LTS (February 2021)](#version-1191-lts-february-2021)
+- [Version 1.19.0 LTS (February 2021)](#version-1190-lts-february-2021)
+- [Version 1.18.0 LTS (January 2021)](#version-1180-lts-january-2021)
+- [Version 1.17.0 LTS (November 2020)](#version-1170-lts-november-2020)
+- [Version 1.16.0 LTS (October 2020)](#version-1160-lts-october-2020)
+- [Version 1.15.0 LTS (September 2020)](#version-1150-lts-september-2020)
+- [Version 1.14.0 LTS (August 2020)](#version-1140-lts-august-2020)
+- [Version 1.13.0 LTS (July 2020)](#version-1130-lts-july-2020)
+- [Version 1.12.0 LTS (June 2020)](#version-1120-lts-june-2020)
+- [Version 1.11.0 LTS (May 2020)](#version-1110-lts-may-2020)
+- [Version 1.10.0 LTS (April 2020)](#version-1100-lts-april-2020)
+- [Version 1.9.0 LTS (February 2020)](#version-190-lts-february-2020)
+- [Version 1.8.1 (February 2020)](#version-181-february-2020)
+- [Version 1.8.0 (February 2020)](#version-180-february-2020)
+- [Version 1.7.1 (December 2019)](#version-171-december-2019)
+- [Version 1.7.0 (November 2019)](#version-170-november-2019)
+- [Version 1.6.0 (October 2019)](#version-160-october-2019)
+- [Version 1.5.0 (September 2019)](#version-150-september-2019)
+- [Zowe SMP/E Alpha (August 2019)](#zowe-smpe-alpha-august-2019)
+- [Version 1.4.0 (August 2019)](#version-140-august-2019)
+- [Version 1.3.0 (June 2019)](#version-130-june-2019)
+- [Version 1.2.0 (May 2019)](#version-120-may-2019)
+- [Version 1.1.0 (April 2019)](#version-110-april-2019)
+- [Version 1.0.1 (March 2019)](#version-101-march-2019)
+- [Version 1.0.0 (February 2019)](#version-100-february-2019)
 
 ## Version 1.22.0 LTS (June 2021)
 
@@ -1687,7 +1687,7 @@ The following features and enhancements were added.
 
   You can now right-click a job label and click "Get JCL" to retrieve the JCL used to submit the job.  This JCL can then be edited and resubmitted.
 
-  <img src="../images/releasenotes/v17-sjdemo.gif" alt="SJ Demo" width="550px"/>
+  <img src={require("../images/releasenotes/v17-sjdemo.gif").default} alt="SJ Demo" width="550px"/>
 
 - File Explorer now offers a right click Delete option for files and folders ([#43](https://github.com/zowe/zlux-file-explorer/pull/43))
 - Prevented creation/deletion of files and folders queued for deletion. ([#48](https://github.com/zowe/zlux-file-explorer/pull/48))
@@ -1896,7 +1896,7 @@ Add OMVS information API to uribroker ([#116](https://github.com/zowe/zlux-app-m
 
 ### What's new in Zowe CLI and Plug-ins
 
-You can now explore the Zowe CLI command help in an interactive online format. See [Zowe CLI Web Help](../web_help/index.html).
+You can now explore the Zowe CLI command help in an interactive online format. See <a href="/stable/web_help/index.html" target="_blank">Zowe CLI Web Help</a>.
 
 The following new commands and enhancements are added:
 
@@ -2046,7 +2046,7 @@ The Zowe CLI core component contains the following improvements and fixes:
 
 - Updated and clarified the description the `-- overwrite` option for the `zowe zos-workflows create workflow-from-data-set` command and the `Zowe zos-workflows create workflow-from-uss-file` command.
 
-- The [CLI Reference Guide](../CLIReference_Zowe.pdf) is featured on the Zowe Docs home page. The document is a comprehensive guide to commands and options in Zowe CLI.
+- The <a href="/stable/CLIReference_Zowe.pdf" target="_blank">CLI Reference Guide</a> is featured on the Zowe Docs home page. The document is a comprehensive guide to commands and options in Zowe CLI.
 
 - You can now click the links on the Welcome to Zowe help section and open the URL in a browser window. Note that the shell application must support the capability to display and click hyperlinks.
 

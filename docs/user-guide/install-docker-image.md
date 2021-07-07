@@ -40,7 +40,7 @@ The `docker images` command lists the images a system currently has, which make 
 ```
 # docker images
 REPOSITORY                         TAG                 IMAGE ID            CREATED             SIZE
-ompzowe/server-bundle                amd64               ceb8c50d2381        2 hours ago         1.27GB
+ompzowe/server-bundle              amd64               ceb8c50d2381        2 hours ago         1.27GB
 ```
 
 ## Upgrading  
@@ -54,7 +54,7 @@ You may see the old image tagged as `<none>`.
 ```
 # docker images
 REPOSITORY                         TAG                 IMAGE ID            CREATED             SIZE
-ompzowe/server-bundle                amd64               ceb8c50d2381        2 hours ago         1.27GB
+ompzowe/server-bundle              amd64               ceb8c50d2381        2 hours ago         1.27GB
 <none>                             <none>              1e52fadc2918        2 weeks ago         3.03GB
 ```
 
