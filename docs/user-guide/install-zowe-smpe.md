@@ -126,14 +126,29 @@ All issues of previous releases of Zowe that were resolved before August 2019 ha
 
 The Zowe SMP/E package is a distribution of Zowe version 1.9.0 with an FMID of AZWE001.
 
-Subsequent releases of the Zowe z/OS components are delivered as rollup PTFs on [zowe.org](https://www.zowe.org/download.html).  Because of the file size of the PTF, it is packaged as two co-requisite PTFs, which are made available in a single Zip file.
+Subsequent releases of the Zowe z/OS components are delivered as rollup PTFs on [zowe.org](https://www.zowe.org/download.html). 
+- For Zowe v1.19.1 - v1.21.0, the Zowe release is packaged as one single PTF.
+- For other versions, the Zowe release is packaged as two co-requisite PTFs, which are made available in a single .zip file.
+
 
 Zowe release | PTF 1 | PTF 2 
 ---|---|---
-[1.10](https://zowe.jfrog.io/zowe/list/libs-release-local/org/zowe/download/legal.html?type=smpe&version=1.10.0) | UO01939 | UO01940
-[1.11](https://zowe.jfrog.io/zowe/list/libs-release-local/org/zowe/download/legal.html?type=smpe&version=1.11.0) | UO01942 | UO01943
-[1.12](https://zowe.jfrog.io/zowe/list/libs-release-local/org/zowe/download/legal.html?type=smpe&version=1.12.0) | UO01945 | UO01946
-[1.13](https://zowe.jfrog.io/zowe/list/libs-release-local/org/zowe/download/legal.html?type=smpe&version=1.13.0) | UO01948 | UO01949
+[1.10.0](https://zowe.jfrog.io/zowe/list/libs-release-local/org/zowe/download/legal.html?type=smpe&version=1.10.0) | UO01939 | UO01940
+[1.11.0](https://zowe.jfrog.io/zowe/list/libs-release-local/org/zowe/download/legal.html?type=smpe&version=1.11.0) | UO01942 | UO01943
+[1.12.0](https://zowe.jfrog.io/zowe/list/libs-release-local/org/zowe/download/legal.html?type=smpe&version=1.12.0) | UO01945 | UO01946
+[1.13.0](https://zowe.jfrog.io/zowe/list/libs-release-local/org/zowe/download/legal.html?type=smpe&version=1.13.0) | UO01948 | UO01949
+[1.14.0](https://zowe.jfrog.io/zowe/list/libs-release-local/org/zowe/download/legal.html?type=smpe&version=1.14.0) | UO01951 | UO01952  
+[1.15.0](https://zowe.jfrog.io/zowe/list/libs-release-local/org/zowe/download/legal.html?type=smpe&version=1.15.0) | UO01953 | UO01954
+[1.16.0](https://zowe.jfrog.io/zowe/list/libs-release-local/org/zowe/download/legal.html?type=smpe&version=1.16.0) | UO01955 | UO01956
+[1.17.0](https://zowe.jfrog.io/zowe/list/libs-release-local/org/zowe/download/legal.html?type=smpe&version=1.17.0) | UO01958 | UO01959
+[1.18.0](https://zowe.jfrog.io/zowe/list/libs-release-local/org/zowe/download/legal.html?type=smpe&version=1.18.0) | UO01965 | UO01966
+[1.19.0](https://zowe.jfrog.io/zowe/list/libs-release-local/org/zowe/download/legal.html?type=smpe&version=1.19.0) | UO01967 | UO01968
+[1.19.1](https://zowe.jfrog.io/zowe/list/libs-release-local/org/zowe/download/legal.html?type=smpe&version=1.19.1) | UO01969 | 
+[1.20.0](https://zowe.jfrog.io/zowe/list/libs-release-local/org/zowe/download/legal.html?type=smpe&version=1.20.0) | UO01970 |
+[1.20.1](https://zowe.jfrog.io/zowe/list/libs-release-local/org/zowe/download/legal.html?type=smpe&version=1.20.1) | UO01980 |
+[1.21.0](https://zowe.jfrog.io/zowe/list/libs-release-local/org/zowe/download/legal.html?type=smpe&version=1.21.0) | UO01981 |
+[1.22.0](https://zowe.jfrog.io/zowe/list/libs-release-local/org/zowe/download/legal.html?type=smpe&version=1.22.0) | UO01982 | UO01983
+
 
 ## Installation requirements and considerations
 
@@ -145,7 +160,6 @@ The following sections identify the system requirements for installing and activ
 Use separate driving and target systems in the following situations:
 
   * When you install a new level of a product that is already installed, the new level of the product will replace the old one. By installing the new level onto a separate target system, you can test the new level and keep the old one in production at the same time.
-<!--TODO - Is this standard nomenclature ?  Some customers won't have multiples to test with.  The above statement doesn't make sense. We need better separation of concerns ...  (@hogstrom) -->
   * When you install a product that shares libraries or load modules with other products, the installation can disrupt the other products. By installing the product onto a separate target system, you can assess these impacts without disrupting your production system.
 
 ### Driving system requirements
@@ -468,6 +482,8 @@ __Expected Return Codes and Messages:__ You will receive a return code of 0 if t
 ### Upload the download package to the host
 
 Upload the AZWE001.readme.txt file in text format and the AZWE001.pax.Z file in binary format from your workstation to the z/OS UNIX file system. The instructions in this section are also in the AZWE001.readme.txt file that you downloaded.
+
+**Note:** Ensure you download the pax file in a different file system than where you put Zowe runtime.
 
 There are many ways to transfer the files or make them available to the z/OS system where the package will be installed. In the following sample dialog, we use FTP from a Microsoft Windows command line to do the transfer. This assumes that the z/OS host is configured as an FTP host/server and that the workstation is an FTP client.  Commands or other information entered by the user are in bold, and the following values are assumed.
 
@@ -895,38 +911,3 @@ You can find the necessary information about customizing and using Zowe on the Z
 - For more information about how to use Zowe, see [Using Zowe](zowe-getting-started-tutorial.md).
 
 
-<!-- The following are commented out for the use of a program directory in bookmaster format
-
-## Notices
-
-APAR numbers are provided in this document to assist in locating PTFs that may be required. Ongoing problem reporting may result in additional APARs being created. Therefore, the APAR lists in this document may not be complete.
-
-## Trademarks
-
-Zowe, the Zowe logo, and zowe.org are trademarks or registered trademarks of Linux Foundation, registered in many jurisdictions worldwide. Other product and service names might be trademarks of Linux Foundation or other companies.
-
-## Reader's Comments
-
-Program Directory for Zowe Open Source Project (Base), August 2019
-
-We appreciate your input on this publication. Feel free to comment on the clarity, accuracy, and completeness of the information or give us any other feedback that you might have.
-
-Report your comments in https://github.com/zowe/community/issues/new/choose.
-
-Thank you for your participation.
-
------------------
-
-??? Where does this section belong ???
-
-<< TODO - Where does this section belong ? >>
-### SMP/E CALLLIBS Processing
-
-Zowe uses the CALLLIBS function that is provided in SMP/E to resolve external references during installation. When Zowe is installed, ensure that DDDEFs exist for the following libraries:
-<!--Needs a list of libraries-->
-<!--
-- CSSLIB
-- DSNLOAD
-- MACLIB
-**Note:** CALLLIBS uses the previous DDDEFs only to resolve the link-edit for Zowe. These data sets are not updated during the installation of Zowe.
--->

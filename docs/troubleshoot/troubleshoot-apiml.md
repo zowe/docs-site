@@ -154,7 +154,7 @@ Restart API Mediation Layer.
 
 SEC0002 error typically appears when users fail to log in to API Catalog. The following image shows the API Catalog login page with the SEC0002 error.
 
-<img src="../images/common/Error.png" alt="SEC0002 Error" title="SEC0002 Error" width="450" height="350"/>
+<img src={require("../images/common/Error.png").default} alt="SEC0002 Error" title="SEC0002 Error" width="450" height="350"/>
 
 The error is caused by failed z/OSMF authentication. To determine the reason authentication failed, open the ZWESVSTC joblog and look for a message that contains `ZosmfAuthenticationProvider`. The following is an example of the message that contains `ZosmfAuthenticationProvider`:
 
@@ -233,8 +233,9 @@ Fix the missing z/OSMF host name in subject alternative names using the followin
 
 **Follow these steps:**
 
-1. Re-create the Zowe keystore by deleting it and re-creating it. For more information, see [Configuring Zowe certificates](../user-guide/configure-certificates.md). In the `zowe-setup-certificates.env` file that is used to generate the keystore, ensure that the property `VERIFY_CERTIFICATES` is set to `FALSE`.
+1. Re-create the Zowe keystore by deleting it and re-creating it. For more information, see [Configuring Zowe certificates](../user-guide/configure-certificates.md). In the `zowe-setup-certificates.env` file that is used to generate the keystore, ensure that the property `VERIFY_CERTIFICATES` and `NONSTRICT_VERIFY_CERTIFICATES` are set to `false`.
 
+**Important!** Disabling `VERIFY_CERTIFICATES` or `NONSTRICT_VERIFY_CERTIFICATES` may expose your server to security risks. Ensure that you contact your system administrator before you do so and use these options only for troubleshooting purpose.
 
 #### Invalid z/OSMF host name in subject alternative names
 
@@ -294,11 +295,11 @@ main¨ o.a.http.impl.client.DefaultHttpClient   : Retrying connect to {s}->https
 
 **Solution:**
 
-The Zowe started task needs to run under the same user ID as z/OSMF (typically IZUSVR). This is stated in the [installation documentation](../user-guide/configure-zos-system.html#grant-users-permission-to-access-z-osmf).
+The Zowe started task needs to run under the same user ID as z/OSMF (typically IZUSVR). This is stated in the [installation documentation](../user-guide/configure-zos-system#grant-users-permission-to-access-z-osmf).
 
 The hostname that is displayed in the details of the exception is a valid hostname. You can validate that the hostname is valid by using `ping` command on the same mainframe system. For example, `ping USILCA32.lvn.broadcom.net`. If it is valid, then the problem can be caused by insufficient privileges of your started task that is not allowed to do network access.
 
-You can fix it by setting up the security environment as described in the [Zowe documentation](../user-guide/configure-zos-system.html#configure-security-environment-switching).
+You can fix it by setting up the security environment as described in the [Zowe documentation](../user-guide/configure-zos-system#configure-security-environment-switching).
 
 ### Certificate error when using both an external certificate and Single Sign-On to deploy Zowe
 
@@ -336,11 +337,11 @@ The error shown varies depending on the browser. For example,
 
 - For Google Chrome:
 
-   <img src="../images/common/cipher_mismatch.png" alt="CIPHER_MISMATCH" title="CIPHER_MISMATCH Error"/>
+   <img src={require("../images/common/cipher_mismatch.png").default} alt="CIPHER_MISMATCH" title="CIPHER_MISMATCH Error"/>
 
 - For Mozilla Firefox:
 
-   <img src="../images/common/cipher_overlap.png" alt="CIPHER_OVERLAP" title="CIPHER_OVERLAP Error"/>
+   <img src={require("../images/common/cipher_overlap.png").default} alt="CIPHER_OVERLAP" title="CIPHER_OVERLAP Error"/>
 
 **Solution:**
 
@@ -389,15 +390,17 @@ however they are unable to communicate with each other.
 Externally the status of the API Gateway homepage will show ! icons against the API Catalog, Discovery Service and Authentication Service (shown on the left side image below)
  which do not progress to green tick icons as normally occurs during successful startup (shown on the right side image below).
  
- <img src="../images/api-mediation/apiml-startup.png" alt="Zowe API Mediation Layer Startup" width="600px"/> 
- 
+<img src={require("../images/api-mediation/apiml-startup.png").default} alt="Zowe API Mediation Layer Startup" width="600px"/> 
+
 The Zowe desktop is able to start but logon fails.
  
 The log contains messages to indicate that connections are being reset. For example, the message below shows that the API Gateway `ZWEAG` is unable to connect to the API Discovery service, by default 7553.
- 
-     <ZWEAGW1:DiscoveryClient-InstanceInfoReplicator-0:16843005> ZWESVUSR INFO  (o.a.h.i.c.DefaultHttpClient) I/O exception (java.net.SocketException) caught when connecting to {s}->https://<host>:<disovery_server_port>: Connection reset
-      2021-01-26 15:21:43.302 <ZWEAGW1:DiscoveryClient-InstanceInfoReplicator-0:16843005> ZWESVUSR DEBUG (o.a.h.i.c.DefaultHttpClient) Connection reset
-      java.net.SocketException: Connection reset
+
+``` 
+<ZWEAGW1:DiscoveryClient-InstanceInfoReplicator-0:16843005> ZWESVUSR INFO  (o.a.h.i.c.DefaultHttpClient) I/O exception (java.net.SocketException) caught when connecting to {s}->https://<host>:<disovery_server_port>: Connection reset
+2021-01-26 15:21:43.302 <ZWEAGW1:DiscoveryClient-InstanceInfoReplicator-0:16843005> ZWESVUSR DEBUG (o.a.h.i.c.DefaultHttpClient) Connection reset
+java.net.SocketException: Connection reset
+```
 
 The Zowe desktop is able to be displayed in a browser but fails to logon.
  
@@ -405,3 +408,24 @@ The Zowe desktop is able to be displayed in a browser but fails to logon.
 
 Check that the Zowe certificate has been configured as a client certificate, and not just as a server certificate. More detail can be found in [Configuring certificates](../user-guide/configure-certificates.md).
 
+### Java z/OS components of Zowe unable to read certificates from keyring
+
+**Symptom:**
+
+Java z/OS components of Zowe are unable to read certificates from a keyring. This problem may appear as an error as in teh following example where Java treats the SAF keyring as a file.
+
+**Example:**
+```
+Caused by: java.io.FileNotFoundException: safkeyring:/ZWESVUSR/ZoweKeyring
+at java.io.FileInputStream.open(FileInputStream.java:212)
+at java.io.FileInputStream.<init>(FileInputStream.java:152)
+at java.io.FileInputStream.<init>(FileInputStream.java:104)
+at com.ibm.jsse2.be$p$a.a(be$p$a.java:1)
+at com.ibm.jsse2.be$p$a.run(be$p$a.java:2)
+```
+
+**Solution:**
+
+Apply the following APAR to address this issue:
+
+* [APAR IJ31756](https://www.ibm.com/support/pages/apar/IJ31756)

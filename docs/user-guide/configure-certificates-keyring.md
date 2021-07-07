@@ -58,10 +58,6 @@ The `ZOWERING` label is used for the name of the key ring created. The default v
 - The value of the `ZOWERING` label should match the value of the `ZOWE_KEYRING` variable in the `zowe-setup-keyring-certificates.env` file.  
 - The value of the `LABEL` label should match the value of the `KEYSTORE_ALIAS` variable in the `zowe-setup-keyring-certificates.env` file.  
 
-<!--[//]: # "TODO keyring documentation - ZWEKRING JCL - describe what it does, describe how to work with 	
-            it(self signed, externally signed certs), describe parts that could be confusing, 	
-            connecting CA chain and z/osmf cert. Give an example of the keyring content" -->	
-
 ### `ROOTZFCA` label
 
 <!--Configuring Zowe key ring as a trust store -->
@@ -70,9 +66,9 @@ The `ROOTZFCA` label connects the root CA of the z/OSMF certificate with the Zow
 
 **When to set this label?** 
 
-The value of the parameter `VERIFY_CERTIFICATES` in the `zowe-certificates.env` file in the `KEYSTORE_DIRECTORY` controls whether Zowe's servers validate the authenticity of any southbound certificates at runtime.  If the value is `true`, then the certificate must be signed by a recognized certificate authority (CA), and if the value is `false` then self-signed certificates are allowed.  This section of the keystore configuration is only required if you are using `VERIFY_CERTIFICATES=true`.  
+The value of the parameter `VERIFY_CERTIFICATES` and `NONSTRICT_VERIFY_CERTIFICATES` in the `zowe-certificates.env` file in the `KEYSTORE_DIRECTORY` controls whether Zowe's servers validate the authenticity of any southbound certificates at runtime.  If the `NONSTRICT_VERIFY_CERTIFICATES` value is `true`, then the certificate must be signed by a recognized certificate authority (CA), and if the value is `false` then Zowe services will not validate authenticity of the certificate.  If the `VERIFY_CERTIFICATES` value is `true`, beyond the validation of `NONSTRICT_VERIFY_CERTIFICATES`, Zowe will also validate if the certificate "Common Name" or "Subject Alternate Name" (SAN) matches the domain name. This section of the keystore configuration is only required if you are using `VERIFY_CERTIFICATES=true` or `NONSTRICT_VERIFY_CERTIFICATES=true`.  
 
-When you set `VERIFY_CERTIFICATES=true`, then Zowe will validate the authenticity of the z/OSMF certificate, so the root CA of the z/OSMF certificate must be connected with the Zowe key ring. You can connect them by setting the label `ROOTZFCA`.  
+When you set `VERIFY_CERTIFICATES=true` or `NONSTRICT_VERIFY_CERTIFICATES=true`, then Zowe will validate the authenticity of the z/OSMF certificate, so the root CA of the z/OSMF certificate must be connected with the Zowe key ring. You can connect them by setting the label `ROOTZFCA`.  
 
 ```
 //*      * Name/Label of the root CA of the z/OSMF certificate
@@ -83,17 +79,23 @@ If you are unsure of the root CA you can find it by listing the chain of the z/O
 
 - RACF 	
    ```	
-   RACDCERT ID(IZUSVR) LISTCHAIN(LABEL('DefaultzOSMFCert.IZUDFLT'))	
-   ```	
+   RACDCERT ID(IZUSVR) LISTCHAIN(LABEL('DefaultzOSMFCert.IZUDFLT'))
+   ```
+
+   You can use the `CERTAUTH` certificate label as the value of `ROOTZFCA`.
 - Top Secret	
-   ```	
-   TSS LIST(IZUSVR) LABLCERT('DefaultzOSMFCert.IZUDFLT') CHAIN	
-   ``` 	
+   ```
+   TSS LIST(IZUSVR) LABLCERT('DefaultzOSMFCert.IZUDFLT') CHAIN
+   ```
+
+   If you see a line like `DIGICERT = ZOSMFCA          ACCESSORID = CERTAUTH`, you should use `CERTAUTH` record ID `ZOSMFCA` as the value of `ROOTZFCA`.
 - ACF2	
    ```	
-   SET PROFILE(USER) DIVISION(CERTDATA)	
-   CHKCERT IZUSVR LABEL(DefaultzOSMFCert.IZUDFLT) CHAIN	
-   ``` 	
+   SET PROFILE(USER) DIVISION(CERTDATA)
+   CHKCERT IZUSVR LABEL(DefaultzOSMFCert.IZUDFLT) CHAIN
+   ```
+
+   You should use `CERTAUTH` record ID as the value of `ROOTZFCA`.
 
 <!--
 

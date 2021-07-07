@@ -32,23 +32,25 @@ The security administrator needs to permit READ access to the `APIML.SERVICES` r
 
 In IBM RACF, the access to the service information can be given by:
 
-```txt
+```markup
 PERMIT APIML.SERVICES CLASS(ZOWE) ID(user) ACCESS(READ)
 ```
 
 In CA Top Secret:
 
-```txt
+```markup
 TSS PERMIT(user) ZOWE(APIML.SERVICES) ACCESS(READ)
 ```
 
 In ACF2:
 
-```txt
+```markup
 SET RESOURCE(ZWE)
 RECKEY APIML ADD(SERVICES SERVICE(READ) ROLE(user) ALLOW)
 F ACF2,REBUILD(ZWE)
 ```
+
+API Gateway can be configured to check for SAF resource authorization in several ways. For details, see [SAF Resource Checking](../../user-guide/api-mediation/api-gateway-configuration.md#saf-resource-checking)
 
 ## API Endpoints
 

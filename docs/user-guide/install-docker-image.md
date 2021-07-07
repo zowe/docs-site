@@ -9,7 +9,7 @@ To use this image, you must have set up the Zowe server runtime on z/OS, z/OSMF,
 
 If you have not set up the Zowe server runtime on z/OS, please follow the steps found in [Docker Installation Roadmap](install-docker.md).
 
-This guide assumes you are using Linux or zLinux and have already downloaded Docker itself. If you have not yet done so, please review [System Requirements](systemrequirements.md).
+This guide assumes you are using Linux or zLinux and have already downloaded Docker itself. If you have not yet done so, please review [System Requirements](systemrequirements-zos.md).
 
 ## Installing via Docker Hub  
 
@@ -19,7 +19,9 @@ You can download a Docker Image by using the Docker command line utility `docker
 
 - The latest version of zowe, `ompzowe/server-bundle:latest`
 - The latest version for the platform you are running on, such as `ompzowe/server-bundle:amd64` for Linux
+- Older versions can be found with the version tag, such as `ompzowe/server-bundle:v1.20.0`
 - A specific version by referencing the version's digest, such as `ompzowe/server-bundle@sha256:bdbc0617b02e16a452f6d4de50b8b13e56592e309b4c68f9ea52c82303ad57ec`
+- If you want the source code for all of the content in the image, that is available in the accompanying image with -sources prefix tag, such as `ompzowe/server-bundle:latest-sources`
 
 The latest digests can be seen on the [image's tags page](https://hub.docker.com/r/ompzowe/server-bundle/tags).
 
@@ -38,7 +40,7 @@ The `docker images` command lists the images a system currently has, which make 
 ```
 # docker images
 REPOSITORY                         TAG                 IMAGE ID            CREATED             SIZE
-ompzowe/server-bundle                amd64               ceb8c50d2381        2 hours ago         1.27GB
+ompzowe/server-bundle              amd64               ceb8c50d2381        2 hours ago         1.27GB
 ```
 
 ## Upgrading  
@@ -52,8 +54,26 @@ You may see the old image tagged as `<none>`.
 ```
 # docker images
 REPOSITORY                         TAG                 IMAGE ID            CREATED             SIZE
-ompzowe/server-bundle                amd64               ceb8c50d2381        2 hours ago         1.27GB
+ompzowe/server-bundle              amd64               ceb8c50d2381        2 hours ago         1.27GB
 <none>                             <none>              1e52fadc2918        2 weeks ago         3.03GB
 ```
 
 If you see this and want to clean up the older images to preserve storage space, you can run the command `docker rmi IMAGE_ID` to remove an image, where IMAGE_ID is the code seen from the `images` command.
+
+## Verifying authenticity using Docker signing
+
+Dockerhub is equiped with an option authenticity verification feature that you can use to ensure that the Zowe release you are pulling from Dockerhub is legitimate. 
+
+**Note:** With this verification turned on, you will not be able to download images that are not signed. 
+
+To turn use this feature, you must set the environment variable `DOCKER_CONTENT_TRUST=1`, then use the "docker pull" command on images that you want to download. This feature can be set to be either temporary or permanent. 
+
+**Temporary example**
+`DOCKER_CONTENT_TRUST=1 docker pull ompzowe/server-bundle:amd64`
+
+**Permanent example**
+1. Add `export DOCKER_CONTENT_TRUST=1` to your shell profile, such as echo `export DOCKER_CONTENT_TRUST=1` >> .profile
+
+2. Login again so that the export can take effect.
+
+3. Use docker commands, such as `docker pull ompzowe/server-bundle:amd64`
