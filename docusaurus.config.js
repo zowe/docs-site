@@ -1,6 +1,5 @@
 const LATEST_VERSION = "v1.22.x";
 const versionsArray = require("./versions.json");
-const VersionsArchived = require("./versionsArchived.json");
 
 module.exports = {
   title: "Zowe Docs",
@@ -79,12 +78,6 @@ module.exports = {
           position: "right",
           dropdownActiveClassDisabled: true,
           dropdownItemsAfter: [
-            // ...Object.entries(VersionsArchived).map(
-            //   ([versionName, versionUrl]) => ({
-            //     label: versionName,
-            //     href: versionUrl,
-            //   })
-            // ),
             {
               to: "/versions",
               label: "All versions",
@@ -199,7 +192,7 @@ module.exports = {
         docs: {
           path: "docs", //Path to data on filesystem relative to site dir.
           sidebarPath: require.resolve("./sidebars.js"),
-          editUrl: "https://github.com/zowe/docs-site/edit/zowe-docs-v2/", //FIXME:
+          editUrl: "https://github.com/zowe/docs-site/edit/master/", //FIXME:
           showLastUpdateAuthor: false,
           showLastUpdateTime: true,
           routeBasePath: "/", //Default is docs/
