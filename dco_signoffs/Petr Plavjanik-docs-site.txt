@@ -1,0 +1,41 @@
+I, Petr Plavjanik hereby sign-off-by all of my past commits to this repo subject to the Developer Certificate of Origin (DCO), Version 1.1. In the past I have used emails: petr.plavjanik@broadcom.com
+
+c71bf7cc687786515942486173507dbffb222683 Use latest version of enabler, fixed routing
+67ab81c0771381094d1fa268f5224dbf6a14dae4 Fix typo in Using the Zowe Desktop page (#432)
+adbbef53eb50b51e5684e45d949c85d45a552986 Fix links
+39921ab4a7daf5e67fc064e3ffa6bd882c31ed49 UPDATE access for LISTCERT
+da21fb8eb611bf2c2d97dfacf0056e17e7fe6708 Updates related to authentication and secutity to reflect current state
+1f60be4c99a7901b9f1987387587902a638eb02b Update message severity
+751660f76750e3e5d6b2bcdad2db256e90857c8c Updated level of a message
+a3decb300fcf3657ba37f3c2a45c092472a22a00 fixup!
+7b738332f99c6959dccce456f79d09f90251f44a External certificates
+6eaf3254cce7be0ee2cc5626c1be8bf89b556eff Port properties in YAML
+4d9f106568f9e718e61fa56235d84a6e5533428e Disabling certificate validation
+3a65f6485fb0819f970c01cb6b4193341715a04f Importing z/OSMF certificates
+f138be615d224d35ef13906da66edd00514cc7b9 Updated TOC
+b959d9602deed18e0f8b590420a42403554bb0c3 Use same spelling of keystore and truststore as Oracle
+0812e07c1a9a31e7fc85d9bf7770bed33dd57229 Adding certificates to APIML truststore
+7795e81f83489f80c42e01cfa3db6af258a768ef Add sftp instructions
+3f1fe2f7c047a49879f9d3b2e51779471ef29356 Sections planned for new stories
+be232df795ff5e71eec88f41f191174a97b61c07 How to install the local CA certificate to your browser
+74d6d3bef5599c215f01997d020e48ca036c737c Java onboarding HTTPS
+b6969a9c57227935f1c0359b81a06c1ae827f529 Spring Boot HTTPS
+13a089a92b70802bf8ef36c3c9d8a40dcfc7a9f1 Update api-mediation-security.md
+c79411cd9750c107d64178cfcd189f66abcfeb77 Update api-mediation-security.md
+fc49b530627df267d964ce32c637c3cfab35c2a3 Information about HTTPS in Discovery Service
+b99f2e2bad43a4665cde650ca8a05400a810b976 Update for Discovery service with HTTPS
+2e7517f3d8725ba4fb6781a30f208db3dc058269 Details about Zowe services
+309923a862db969af645cd544d28be7932d810c2 Details about Zowe API Mediation Layer Security
+558ff8bc7b9c8210d86316e29ecd8cbe7fd1e7cb Update systemrequirements.md
+28fb8ee33ff0c71911a30bd8005a79f511222774 More specific API ID description
+884a12a6a720e3003677673b8614563388bbea3d Information engineer review
+33053249f6ce947c7190be1f11aa234fa1265ed8 Details about API documentation for static onboarding
+45b61036dd8c77cb219365f631d9c9f8a0721c63 Add information about API catalog metadata for static APIs
+227fc76aa2e8b15879dabb06d7ff906a37b22dd2 Update api-mediation-onboard-overview.md
+d0fdbd37b3e28fa13d1c6680b01690a2f20bb5e9 Update api-mediation-onboard-overview.md
+cff0cc5ad0b71ee9b25fa87f357f10aa0d04453b Diagram update
+6227ee63eea090e40ab5c2d07b9855c3ef04090f Update api-mediation-onboard-overview.md
+9466e03952be8de177f9336d5b46d5b5b49c4e2a Split the API overview to new topic and describe steps for identification (#128)
+064ce5a047a58a17ed591b88497f600554726dfd Split the API overview to new topic and describe steps for identification
+c3946850500c88c3a67ceb326adf339bea4ef9e7 Add instructions how to define static API to the Zowe runtime (#102)
+a651b9a3d2a532c0988614818cb2afa6fe6a94b0 Onboarding an existing REST API service without code changes (#93)
