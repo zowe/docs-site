@@ -220,13 +220,15 @@ Beginning with release 1.19 LTS, it is possible to perform authentication with c
 
 If the keyring or a truststore contains at least one valid certificate authority (CA) other than the CA of the API ML, it is possible to use the client certificates issued by this CA to authenticate to the API ML. This feature is not enabled by default and needs to be configured.
 
+When providing credentials in any form together with client certificate on the same login request, the credentials take precedence and client certificate is ignored.
+
 **Authentication is performed in the following ways:**
 * The client calls the API ML Gateway login endpoint with the client certificate.
 * The client certificate and private key are checked as a valid TLS client certificate against the Gateway's trusted CAs.
 * The public part of the provided client certificate is checked against SAF, and SAF subsequently returns a user ID that owns this certificate. ZSS  provides this API for the Mediation Layer.
 * The Gateway performs the login of the mapped user and returns a valid JWT token.
 
-<img src="../../images/api-mediation/zowe-client-cert-auth.png" alt="Zowe client certificate authentication diagram" align=center width="700px"/>
+![Zowe client certificate authentication diagram](../../images/api-mediation/zowe-client-cert-auth.png)
 
 **Prerequisites:**
 * Alter the Zowe runtime user and set protection by password. The user is created with the `NOPASSWORD` parameter by the Zowe installer. This password must be changed and a new password has to be set. For RACF, issue the following TSO command: 

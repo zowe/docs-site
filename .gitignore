@@ -1,19 +1,26 @@
-# node.js dependencies
-node_modules
-!docs/.vuepress/public/web_help/node_modules
+# Dependencies
+/node_modules
+
+# Production
+/build
+
+# Generated files
+.docusaurus
+.cache-loader
+
+# Misc
+.DS_Store
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
 
 # ignore yarn lock because we have package-lock.json and npmjs is more stable
 yarn.lock
-
-# build result
-docs/.vuepress/dist
-docs-site
-# deployment temp directory
-.deploy
-.tmp
-
-# OS temp files
-.DS_Store
 .vscode/last.sql
 .history/
 
@@ -27,3 +34,6 @@ docs-site
 .classpath
 .history
 .report.*.json
+
+# Local Netlify folder
+.netlify

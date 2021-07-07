@@ -1,11 +1,11 @@
-# Enabling PassTicket creation for API Services that Accept PassTickets <!-- omit in toc -->
+# Enabling PassTicket creation for API Services that Accept PassTickets
 
 As system programmer, you can configure Zowe to use PassTickets for API services that are compatible to accept them to authenticate your service with the API Mediation Layer.
 
-## Overview <!-- omit in toc -->
+## Overview
 
 API clients can use a Zowe JWT token to access an API service even if the API service itself does not support the JWT token.
-The Zowe JWT token is available through the API Gateway [authentication endpoint](https://docs.zowe.org/stable/extend/extend-apiml/api-mediation-security.html#authentication-for-api-ml-services).
+The Zowe JWT token is available through the API Gateway [authentication endpoint](https://docs.zowe.org/stable/extend/extend-apiml/api-mediation-security#authentication-for-api-ml-services).
 
 When an API client provides a valid Zowe JWT token to the API ML, the API Gateway then generates a valid PassTicket for any API service that supports PassTickets.
 The API Gateway then uses the PassTicket to access that API service.
@@ -55,7 +55,7 @@ The following code is an example of security commands that need to be issued.
 
 **Example:**
 
-```txt
+```markup
 ACF
 SET RESOURCE(PTK)
 RECKEY IRRPTAUTH ADD(<applid>.- UID(<zowesrv>) SERVICE(UPDATE,READ) ALLOW)
@@ -69,7 +69,7 @@ Grant the Zowe started task user ID permission to generate PassTickets for users
 
 **Example:**
 
-```txt
+```markup
 TSS PERMIT(<zowesrv>) PTKTDATA(IRRPTAUTH.<applid>.) ACCESS(READ,UPDATE)
 TSS REFRESH
 ```
@@ -82,7 +82,7 @@ Grant the Zowe started task user ID permission to generate PassTickets for users
 
 **Example:**
 
-```txt
+```markup
 RDEFINE PTKTDATA IRRPTAUTH.<applid>.* UACC(NONE)
 PERMIT IRRPTAUTH.<applid>.* CL(PTKTDATA) ID(<zowesrv>) ACCESS(UPDATE)
 SETROPTS RACLIST(PTKTDATA) REFRESH
