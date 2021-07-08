@@ -160,7 +160,7 @@ module.exports = {
     announcementBar: {
       id: "support_us",
       content:
-        '<a target="_blank" rel="noopener noreferrer" href="https://github.com/zowe/docs-site/issues/new/choose">Let us know</a> what you think about the new Zowe docs experience!',
+        '<a target="_blank" rel="noopener noreferrer" href="https://github.com/zowe/docs-site/discussions/1742">Let us know</a> what you think about the new Zowe docs experience!',
       backgroundColor: "#fafbfc",
       textColor: "#091E42",
       isCloseable: true,
