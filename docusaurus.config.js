@@ -158,7 +158,7 @@ module.exports = {
       copyright: `© Open Mainframe Project. a Linux Foundation Project. All Rights Reserved. The Linux Foundation has registered trademarks and uses trademarks. For a list of trademarks of The Linux Foundation, please see our Trademark Usage page. Please refer to Marketing and Branding Guidelines for name usage guidelines. Linux is a registered trademark of Linus Torvalds. Privacy Policy and Terms of Use`,
     },
     announcementBar: {
-      id: "support_us", // Any value that will identify this message.
+      id: "support_us",
       content:
         '<a target="_blank" rel="noopener noreferrer" href="https://github.com/zowe/docs-site/issues/new/choose">Let us know</a> what you think about the new Zowe docs experience!',
       backgroundColor: "#fafbfc",
@@ -179,7 +179,7 @@ module.exports = {
     },
     googleAnalytics: {
       trackingID: "UA-123892882-1",
-      anonymizeIP: true, // Should IPs be anonymized?`
+      anonymizeIP: true,
     },
   },
   customFields: {
@@ -190,12 +190,12 @@ module.exports = {
       "@docusaurus/preset-classic",
       {
         docs: {
-          path: "docs", //Path to data on filesystem relative to site dir.
+          path: "docs",
           sidebarPath: require.resolve("./sidebars.js"),
-          editUrl: "https://github.com/zowe/docs-site/edit/master/", //FIXME:
+          editUrl: "https://github.com/zowe/docs-site/edit/master/",
           showLastUpdateAuthor: false,
           showLastUpdateTime: true,
-          routeBasePath: "/", //Default is docs/
+          routeBasePath: "/",
           lastVersion: "current",
           versions: {
             current: {
@@ -245,7 +245,7 @@ module.exports = {
           },
         ],
         fromExtensions: ["html"],
-        //For eg. redirects "v1-22-x" to "v1.22.x";
+        //Redirects Vuepress links like "v1-22-x" to "v1.22.x";
         createRedirects: function (existingPath) {
           for (var i = 0; i < versionsArray.length; i++) {
             var x = versionsArray[i];
@@ -261,7 +261,7 @@ module.exports = {
     [
       "@docusaurus/plugin-pwa",
       {
-        debug: true, // isDeployPreview
+        debug: true, 
         offlineModeActivationStrategies: [
           "appInstalled",
           "standalone",

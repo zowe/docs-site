@@ -124,11 +124,6 @@ html[data-theme="dark"] .navbar-github-link:before {
   color: var(--docsearch-muted-color);
 }
 
-/* FIXME: v2.0.0-beta.1 version breaking change */
-.article-content .markdown header {
-  display: none;
-}
-
 Badge {
   display: none;
 }
@@ -140,6 +135,10 @@ Badge {
 .hero__title {
   font-size: 4rem !important;
   padding-bottom: 3rem;
+}
+
+footer .footer__items svg {
+  display: none;
 }
 
 .footer__copyright {
@@ -290,12 +289,6 @@ html[data-theme="light"] .darkTheme {
     max-width: var(--ifm-container-width-xl);
     padding: auto 0;
     width: 100%;
-  }
-}
-
-@media (min-width: 997px) and (max-width: 1320px) {
-  .main-wrapper.docs-wrapper.doc-page > div > main > .container {
-    max-width: initial !important;
   }
 }
 
