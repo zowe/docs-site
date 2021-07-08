@@ -78,7 +78,7 @@ Removing archived version is necessary once two new versions are released to red
 - Delete the specific complete version folder from `/versioned_docs` directory. Example: `versioned_docs/version-v1.17.x.`
 - Delete the versioned sidebars JSON file from `/versioned_sidebars`. Example: `versioned_sidebars/version-v1.17.x-sidebars.json`.
 - Delete the specific version's static files from `/static` directory. Example: `static/v1.17.x`.
-- Add the specific version entry in `versionsArchived.json` file. Example: `"v1.17.x LTS": "https:??zowe-archived-docs.netlify.app/v1.17.x/getting-started/overview"`.
+- Add the specific version entry in `versionsArchived.json` file. Example: `"v1.17.x LTS": "https://zowe-archived-docs.netlify.app/v1.17.x/getting-started/overview"`.
 - Navigate to the `/docusaurus.config.js` file and locate the `presets:` > `@docusaurus/preset-classic"` > `docs` > `versions`.
   Delete the definition of that version which is specified in the following format:
 
