@@ -2,7 +2,6 @@ import React from "react";
 import clsx from "clsx";
 import Layout from "@theme/Layout";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
-import { DocSearch } from "@docsearch/react";
 import useBaseUrl from "@docusaurus/useBaseUrl";
 import styles from "./styles.module.css";
 
@@ -12,6 +11,7 @@ import ExploreContent from "./components/ExploreContent/ExploreContent";
 import DiscoverYourPath from "./components/DiscoverYourPath/DiscoverYourPath";
 import FeaturedTopics from "./components/FeaturedTopics/FeaturedTopics";
 import DownloadableFiles from "./components/DownloadableFiles/DownloadableFiles";
+import SearchHeader from "./components/SearchHeader/SearchHeader";
 
 function Home() {
   const context = useDocusaurusContext();
@@ -27,10 +27,7 @@ function Home() {
           />
           <h1 className="hero__title">{siteConfig.title}</h1>
           <div className="searchDiv">
-            <DocSearch
-              apiKey="59ff39ed48d0820010c7e09fc4b677bf"
-              indexName="zowe"
-            />
+            <SearchHeader />
           </div>
         </div>
       </header>
