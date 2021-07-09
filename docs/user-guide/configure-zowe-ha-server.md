@@ -21,7 +21,7 @@ You launch the ZWESLSTC started task with the z/OS START command.
 Before starting ZWESLSTC, you need to perform the following steps in PROCLIB member `ZWESLSTC`:
 
 1. Set the parameter `INSTANCE_DIR` to the location (fully qualified path) of the Zowe instance directory that contains the `zowe.yaml` configuration file.
-2. Update the STEPLIB DD statement with the location of the load library that contains the load module `ZWELNCH`.
+2. Update the STEPLIB DD statement with the location of the Zowe load library (default: HLQ.PREFIX.SZWEAUTH) that contains the load module `ZWELNCH`.
 
 ### Procedure
 
@@ -33,7 +33,7 @@ S ZWESLSTC,HAINST=<ha-instance-id>
 
 where, the `ha-instance-id` argument is the high availability instance ID that is defined in the `haInstances` section of the `zowe.yaml` configuration file. To learn more about `zowe.yaml`, see the [Updating the zowe.yaml configuration file](configure-instance-directory.md) section.
 
-This command enables you to start multiple instances of a same component, which eliminates single point of failure to ensure continuous operation of Zowe components.
+This command enables you to start multiple instances of a same component, which eliminates single point of failure to ensure continuous operation of Zowe z/OS server components.
 
 - If you want to have more than one Zowe high availability instance running concurrently, use the optional parameter `JOBNAME` with the START command to distinguish the Zowe high availability instances from each other.
 
