@@ -191,7 +191,7 @@ Navigate to the `/src/css/custom.css` directory and change the **.searchDiv** an
 
 ### Updating Components
 
-Each component has an independent subfolder in the `/src/pages/components` directory. Each subfolder contains a `.js` file and a `.css` file to control the content and style for each component.
+Each component has an independent subfolder in the `/src/components` directory. Each subfolder contains a `.js` file and a `.css` file to control the content and style for each component.
 
 ```
 ├── src
@@ -208,7 +208,7 @@ For example:
 
 To update the hyperlink to `Download Zowe` in the the **Popular Resources** section:
 
-1. Navigate to the `/src/pages/components/PopularResources` directory and locate the `PopularResources.js` file.
+1. Navigate to the `/src/components/PopularResources` directory and locate the `PopularResources.js` file.
 
 1. Find the `title: "Download Zowe"` line to identify the right location and update its `link` variable.
 
@@ -228,7 +228,7 @@ To update the hyperlink to `Download Zowe` in the the **Popular Resources** sect
 
 #### Updating the **Popular Resources** section
 
-**File location: `/src/pages/components/PopularResources/PopularResources.js`.**
+**File location: `/src/components/PopularResources/PopularResources.js`.**
 
 - Update the font size of 'Popular Resources'.
 ```
@@ -305,7 +305,7 @@ const data = [
 
 #### Updating the Explore Content section
 
-**File location: `/src/pages/components/ExploreContent/ExploreContent.js`**
+**File location: `/src/components/ExploreContent/ExploreContent.js`**
 
 - Update the font size of 'Explore Content'.
 ```
@@ -334,7 +334,7 @@ const firstDataRow = [
 
 #### Updating the Discover your path section
 
-**File location: `/src/pages/components/DiscoverYourPath/DiscoverYourPath.js`**
+**File location: `/src/components/DiscoverYourPath/DiscoverYourPath.js`**
 
 The section of Discover your path is arranged in three columns. The first column is used for the `I want to...` subsection, and the second and third columns is used for the 'I'm interested in...' subsection. To change the link and content, update the following code snippet.
 ```
@@ -348,7 +348,7 @@ const thirdSection = [
 
 #### Updating the Featured Topics section
 
-**File location: `/src/pages/components/FeaturedTopics/FeaturedTopics.js`**
+**File location: `/src/components/FeaturedTopics/FeaturedTopics.js`**
 
 The section of Featured Topics is arranged in three rows. To change the link and content, update the following code snippet.
 ```

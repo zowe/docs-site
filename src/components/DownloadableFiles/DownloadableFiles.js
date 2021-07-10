@@ -3,7 +3,7 @@ import clsx from "clsx";
 import useBaseUrl from "@docusaurus/useBaseUrl";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import styles from "./styles.module.css";
-import versionsArray from "../../../../versions.json";
+import versionsArray from "../../../versions.json";
 
 const downloadableFiles = [
   {
