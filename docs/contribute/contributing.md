@@ -1,4 +1,4 @@
-# Contributing to Zowe Documentation <!-- omit in toc -->
+# Contributing to Zowe Documentation
 
 - [Before You Get Started<a name="start"></a>](#before-you-get-started)
 - [Getting Started Checklist](#getting-started-checklist)
