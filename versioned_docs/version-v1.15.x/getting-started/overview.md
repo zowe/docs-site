@@ -181,5 +181,5 @@ To learn more about the architecture of Zowe, see [Zowe architecture](zowe-archi
 
 ## Zowe Third-Party Software Requirements and Bill of Materials
 
-- [Third-Party Software Requirements (TPSR)](../appendix/tpsr.md)
+- [Third-Party Software Requirements (TPSR)](https://github.com/zowe/docs-site/blob/master/tpsr/tpsr-v1.15.x.md)
 - [Bill of Materials (BOM)](../appendix/bill-of-materials.md)
