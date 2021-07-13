@@ -58,10 +58,6 @@ The `ZOWERING` label is used for the name of the key ring created. The default v
 - The value of the `ZOWERING` label should match the value of the `ZOWE_KEYRING` variable in the `zowe-setup-keyring-certificates.env` file.  
 - The value of the `LABEL` label should match the value of the `KEYSTORE_ALIAS` variable in the `zowe-setup-keyring-certificates.env` file.  
 
-<!--[//]: # "TODO keyring documentation - ZWEKRING JCL - describe what it does, describe how to work with 	
-            it(self signed, externally signed certs), describe parts that could be confusing, 	
-            connecting CA chain and z/osmf cert. Give an example of the keyring content" -->	
-
 ### `ROOTZFCA` label
 
 <!--Configuring Zowe key ring as a trust store -->

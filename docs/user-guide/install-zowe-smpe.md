@@ -127,8 +127,8 @@ All issues of previous releases of Zowe that were resolved before August 2019 ha
 The Zowe SMP/E package is a distribution of Zowe version 1.9.0 with an FMID of AZWE001.
 
 Subsequent releases of the Zowe z/OS components are delivered as rollup PTFs on [zowe.org](https://www.zowe.org/download.html). 
-- Prior to version 1.19.0, the Zowe release is packaged as two co-requisite PTFs, which are made available in a single Zip file.
-- With the continuous optimization of the Zowe build size, starting with version 1.19.1, the Zowe release is packaged as one single PTF.
+- For Zowe v1.19.1 - v1.21.0, the Zowe release is packaged as one single PTF.
+- For other versions, the Zowe release is packaged as two co-requisite PTFs, which are made available in a single .zip file.
 
 
 Zowe release | PTF 1 | PTF 2 
@@ -146,6 +146,8 @@ Zowe release | PTF 1 | PTF 2
 [1.19.1](https://zowe.jfrog.io/zowe/list/libs-release-local/org/zowe/download/legal.html?type=smpe&version=1.19.1) | UO01969 | 
 [1.20.0](https://zowe.jfrog.io/zowe/list/libs-release-local/org/zowe/download/legal.html?type=smpe&version=1.20.0) | UO01970 |
 [1.20.1](https://zowe.jfrog.io/zowe/list/libs-release-local/org/zowe/download/legal.html?type=smpe&version=1.20.1) | UO01980 |
+[1.21.0](https://zowe.jfrog.io/zowe/list/libs-release-local/org/zowe/download/legal.html?type=smpe&version=1.21.0) | UO01981 |
+[1.22.0](https://zowe.jfrog.io/zowe/list/libs-release-local/org/zowe/download/legal.html?type=smpe&version=1.22.0) | UO01982 | UO01983
 
 
 ## Installation requirements and considerations
@@ -158,7 +160,6 @@ The following sections identify the system requirements for installing and activ
 Use separate driving and target systems in the following situations:
 
   * When you install a new level of a product that is already installed, the new level of the product will replace the old one. By installing the new level onto a separate target system, you can test the new level and keep the old one in production at the same time.
-<!--TODO - Is this standard nomenclature ?  Some customers won't have multiples to test with.  The above statement doesn't make sense. We need better separation of concerns ...  (@hogstrom) -->
   * When you install a product that shares libraries or load modules with other products, the installation can disrupt the other products. By installing the product onto a separate target system, you can assess these impacts without disrupting your production system.
 
 ### Driving system requirements
@@ -910,38 +911,3 @@ You can find the necessary information about customizing and using Zowe on the Z
 - For more information about how to use Zowe, see [Using Zowe](zowe-getting-started-tutorial.md).
 
 
-<!-- The following are commented out for the use of a program directory in bookmaster format
-
-## Notices
-
-APAR numbers are provided in this document to assist in locating PTFs that may be required. Ongoing problem reporting may result in additional APARs being created. Therefore, the APAR lists in this document may not be complete.
-
-## Trademarks
-
-Zowe, the Zowe logo, and zowe.org are trademarks or registered trademarks of Linux Foundation, registered in many jurisdictions worldwide. Other product and service names might be trademarks of Linux Foundation or other companies.
-
-## Reader's Comments
-
-Program Directory for Zowe Open Source Project (Base), August 2019
-
-We appreciate your input on this publication. Feel free to comment on the clarity, accuracy, and completeness of the information or give us any other feedback that you might have.
-
-Report your comments in https://github.com/zowe/community/issues/new/choose.
-
-Thank you for your participation.
-
------------------
-
-??? Where does this section belong ???
-
-<< TODO - Where does this section belong ? >>
-### SMP/E CALLLIBS Processing
-
-Zowe uses the CALLLIBS function that is provided in SMP/E to resolve external references during installation. When Zowe is installed, ensure that DDDEFs exist for the following libraries:
-<!--Needs a list of libraries-->
-<!--
-- CSSLIB
-- DSNLOAD
-- MACLIB
-**Note:** CALLLIBS uses the previous DDDEFs only to resolve the link-edit for Zowe. These data sets are not updated during the installation of Zowe.
--->

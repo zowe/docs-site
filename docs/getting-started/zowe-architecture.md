@@ -4,7 +4,7 @@ Zowe&trade; is a collection of components that together form a framework that al
 
 The following diagram depicts the high-level Zowe architecture.
 
-<img src="../images/common/zowe-architecture.png" alt="Zowe Architecture Diagram" width="700px"/> 
+![Zowe Architecture Diagram](../images/common/zowe-architecture.png)
 
 The diagram shows the default port numbers that are used by Zowe.  These are dependent on each instance of Zowe and are held in the Zowe instance directory configuration file `instance.env`. For more information, see [Creating and configuring the Zowe instance directory](../user-guide/configure-instance-directory.md).
 
@@ -12,13 +12,24 @@ Zowe components can be categorized by location: server or client. While the clie
 
 Zowe server components can be installed and run entirely on z/OS, but a subset of the components can alternatively run on Linux or z/Linux via Docker. While on z/OS, many of these components run under Unix System Services (USS). The ones that do not run under USS must remain on z/OS when using Docker in order to provide connectivity to the mainframe.
 
+## Zowe architecture with high availability Enablement on Sysplex
+
+<Badge text="Technical Preview"/> The Zowe high availability enablement on Sysplex is a technical preview. 
+
+
+The following diagram depicts the difference in locations of Zowe components when deploying Zowe into Sysplex with high availability enabled as opposed to running all components on a single z/OS system.
+
+![Zowe Architecture Diagram with High Availability Enablement](../images/common/zowe-architecture-ha.png)
+
+Instead of using started task `ZWESVSTC`, to enable high availability for Zowe, `ZWESLSTC` started task is used. Also a new YAML configuration file is required to customize each high availability instance. To learn more about Zowe with high availability enablement, please check [Zowe high availability installation roadmap](../user-guide/install-ha-sysplex.md).
+
 ## Zowe architecture when using Docker image
 
 <Badge text="Technical Preview"/> The Zowe Docker build is a technical preview. 
 
 The following diagram depicts the difference in locations of Zowe components when using Docker as opposed to running all components on z/OS.
 
-<img src="../images/common/zowe-architecture-docker.png" alt="Zowe Architecture Diagram using Docker" width="700px"/> 
+![Zowe Architecture Diagram using Docker](../images/common/zowe-architecture-docker.png)
 
 The components on z/OS run under the Zowe started task `ZWESVSTC`, which has its own user ID `ZWESVUSR` and includes a number of servers each with their own address space.  The `ZWESVSTC` started task has a `STDOUT` file that includes log and trace information for its servers.  Sever error messages are written to `STDERR`. For problem determination, see [Troubleshooting](../troubleshoot/troubleshooting.md).
 
@@ -28,7 +39,7 @@ When Docker is used, server components not running on z/OS instead run in a Linu
 
 The App Server is a node.js server that is responsible for the Zowe Application Framework. It provides the Zowe desktop, which is accessible through a web browser via port 8544. The Zowe desktop includes a number of applications that run inside the Application Framework such as a 3270 emulator and a File Editor. 
 
-<img src="../images/mvd/zowe-desktop.png" alt="Zowe Desktop Diagram" width="600px"/> 
+![Zowe Desktop Diagram](../images/mvd/zowe-desktop.png)
 
 The App Server server logs are written to `<INSTANCE_DIR>/logs/appServer-yyyy-mm-dd-hh-mm.log`.  The Application Framework provides REST APIs for its services that are included on the API catalog tile `Zowe Application Framework` that can be viewed at `https://<ZOWE_HOST_IP>:7554/ui/v1/apicatalog/#/tile/ZLUX/zlux`.
 
@@ -40,19 +51,24 @@ The Zowe desktop delegates a number of its services to the ZSS server which it a
 
 The API Gateway is a proxy server that routes requests from clients on its northbound edge, such as web browsers or the Zowe command line interface, to servers on its southbound edge that are able to provide data to serve the request.  It is also responsible for generating the authentication token used to provide single sign-on (SSO) functionality.  The API Gateway homepage is `https://<ZOWE_HOST_IP>:7554`, that after authentication allows you to navigate to the API Catalog. 
 
-<img src="../images/api-mediation/api-mediationlayer.png" alt="Zowe API Mediation Layer" width="600px"/> 
+![Zowe API Mediation Layer](../images/api-mediation/api-mediationlayer.png)
 
 ## API Catalog
 
 The API Catalog provides a list of the API services that have registered themselves as catalog tiles.  These allow you to view the available APIs from Zowe's southbound servers as well as test REST API calls.  
 
-<img src="../images/api-mediation/api-catalog.png" alt="Zowe API Catalog" width="600px"/> 
+![Zowe API Catalog](../images/api-mediation/api-catalog.png)
 
 ## API Discovery
 
 The API Discovery server acts as the registration service broker between the API Gateway and its southbound servers.  It can be accessed through the URL `https://<ZOWE_HOST_IP>:7552`.  You can view a list of registered API services on the API discovery homepage. 
 
-<img src="../images/api-mediation/api-discovery.png" alt="Zowe API Discovery" width="600px"/> 
+![Zowe API Discovery](../images/api-mediation/api-discovery.png)
+
+## Caching service
+
+The Caching service aims to provide an API which offers the possibility to store, retrieve and delete data associated with keys. The service is used only by internal Zowe applications and will not be exposed to the internet. Its URL is `https://<ZOWE_HOST_IP>:7555`. 
+For more information about the Caching service, see its [documentation](../extend/extend-apiml/api-mediation-caching-service.md).
 
 ## Caching service
 
@@ -63,7 +79,7 @@ For more  information about the Caching service, see its [documentation](../exte
 
 Zowe provides a number of rich GUI web applications for working with z/OS.  This includes the MVS Explorer for data sets, the JES Explorer for jobs, and the USS Explorer for the Unix File System. You can access them through the Zowe desktop.
 
-<img src="../images/mvd/desktop-explorers.png" alt="Zowe Desktop Explorers" width="600px"/> 
+![Zowe Desktop Explorers](../images/mvd/desktop-explorers.png)
 
 ### File API and JES API
 
