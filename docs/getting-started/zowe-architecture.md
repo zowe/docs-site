@@ -12,6 +12,17 @@ Zowe components can be categorized by location: server or client. While the clie
 
 Zowe server components can be installed and run entirely on z/OS, but a subset of the components can alternatively run on Linux or z/Linux via Docker. While on z/OS, many of these components run under Unix System Services (USS). The ones that do not run under USS must remain on z/OS when using Docker in order to provide connectivity to the mainframe.
 
+## Zowe architecture with high availability Enablement on Sysplex
+
+<Badge text="Technical Preview"/> The Zowe high availability enablement on Sysplex is a technical preview. 
+
+
+The following diagram depicts the difference in locations of Zowe components when deploying Zowe into Sysplex with high availability enabled as opposed to running all components on a single z/OS system.
+
+![Zowe Architecture Diagram with High Availability Enablement](../images/common/zowe-architecture-ha.png)
+
+Instead of using started task `ZWESVSTC`, to enable high availability for Zowe, `ZWESLSTC` started task is used. Also a new YAML configuration file is required to customize each high availability instance. To learn more about Zowe with high availability enablement, please check [Zowe high availability installation roadmap](../user-guide/install-ha-sysplex.md).
+
 ## Zowe architecture when using Docker image
 
 <Badge text="Technical Preview"/> The Zowe Docker build is a technical preview. 
@@ -58,6 +69,11 @@ The API Discovery server acts as the registration service broker between the API
 
 The Caching service aims to provide an API which offers the possibility to store, retrieve and delete data associated with keys. The service is used only by internal Zowe applications and will not be exposed to the internet. Its URL is `https://<ZOWE_HOST_IP>:7555`. 
 For more information about the Caching service, see its [documentation](../extend/extend-apiml/api-mediation-caching-service.md).
+
+## Caching service
+
+The Caching service aims to provide an API which offers the possibility to store, retrieve and delete data associated with keys. The service is used only by internal Zowe applications and will not be exposed to the internet. Its URL is `https://<ZOWE_HOST_IP>:7555`. 
+For more  information about the Caching service, see its [documentation](../extend/extend-apiml/api-mediation-caching-service.md).
 
 ## MVS, JES, and USS UI
 
