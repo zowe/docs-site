@@ -437,6 +437,11 @@ The high-level configuration `zowe` supports these definitions:
 - `zowe.sso.token.name`: Defines SSO token name. This is equivalent to the `PKCS11_TOKEN_NAME` variable in `<keystore-dir>/zowe-certificates.env`.
 - `zowe.sso.token.label`: Defines the certificate label that binds to SSO token. This is equivalent to the `PKCS11_TOKEN_LABEL` variable in `<keystore-dir>/zowe-certificates.env`.
 
+- `zowe.launcher`: The launcher section defines defaults about how the Zowe launcher should act upon components.
+- `zowe.launcher.restartIntervals`: An array of positive integers that defines how many times a component should be tried to be restarted if it fails, and how much time to wait in seconds for that restart to succeed before retrying.
+- `zowe.launcher.minUptime`: The minimum amount of time a zowe component should be running in order to be declared as started successfully.
+- `zowe.launcher.shareAs`: Whether or not the launcher should start components in the same address space as it. See documentation for [_BPX_SHAREAS](https://www.ibm.com/docs/en/zos/2.4.0?topic=shell-setting-bpx-shareas-bpx-spawn-script) for details.
+
 ### YAML configurations - java
 
 The high-level configuration `java` supports these definitions:
@@ -465,6 +470,7 @@ In this section, `<component>` represents any Zowe components or extensions. For
 
 - `components.<component>.enabled`: Defines if you want to start this component in this Zowe instance. This is a much detailed granular definition of the `LAUNCH_COMPONENT_GROUPS` variable in `instance.env`. This allows you to control each component instead of a group. For external components, also known as extensions, this configuration also replaces the `EXTERNAL_COMPONENTS` variable in `instance.env`.
 - `components.<component>.certificate`: you can customize a component to use different certificate from default values. This section follows same format defined in [YAML configurations - certificate](#yaml-configurations-certificate). If this is not customized, the component will use certificates defined in `zowe.internalCertificate`.
+- `components.<component>.launcher`: Any component can have a launcher section which overrides the overall Zowe Launcher default defined in `zowe.launcher`.
 
 #### Configure component gateway
 
