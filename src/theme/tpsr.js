@@ -5,7 +5,7 @@ function tpsr() {
   const { siteConfig } = useDocusaurusContext();
   const latestVersion = siteConfig.customFields.latestVersion;
   const tpsrLatestLink =
-    "https://github.com/zowe/docs-site/tree/master/src/tpsr/tpsr-" +
+    "https://github.com/zowe/docs-site/blob/master/tpsr/tpsr-" +
     latestVersion +
     ".md";
   return (
