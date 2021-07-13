@@ -35,9 +35,9 @@ The following error message codes may appear on Zowe Launcher SYSPRINT. Use the 
   **Reason:**
 
   Component <component-name> initialized.
-  - `restart_cnt` - number of attempts to restart the component in case of failure
-  - `min_uptime` - min uptime that the component can be considered as successfully started
-  - `share_as` - one of <yes|no|must>, indicates whether child processes of the component start in the same address space. See documentation for [_BPX_SHAREAS](https://www.ibm.com/docs/en/zos/2.4.0?topic=shell-setting-bpx-shareas-bpx-spawn-script) for details.
+  - `restart_cnt` - Number of attempts to restart the component in case of failure
+  - `min_uptime` - Minimum uptime that the component can be considered as successfully started
+  - `share_as` - One of <yes|no|must> which indicates whether child processes of the component start in the same address space. See documentation for [_BPX_SHAREAS](https://www.ibm.com/docs/en/zos/2.4.0?topic=shell-setting-bpx-shareas-bpx-spawn-script) for details.
 
   **Action:**
 
@@ -75,7 +75,7 @@ The following error message codes may appear on Zowe Launcher SYSPRINT. Use the 
 
   **Reason:**
 
-  Failed to prepared Zowe HA instance.
+  Failed to prepare the Zowe high availability (HA) instance.
 
   **Action:**
 
@@ -87,11 +87,11 @@ The following error message codes may appear on Zowe Launcher SYSPRINT. Use the 
 
   **Reason:**
 
-  Max retries reached to restart component `<component-name`>.
+  Maximum retries reached for restarting component `<component-name`>.
 
   **Action:**
 
-  Check `<component-name>` configuration and correct if needed, then restart the component by using z/OS MODIFY command `F ZWESLSTC,APPL=STOP(<component-name>)`
+  Check `<component-name>` configuration and correct the maximum restart count via configuration attribute `restartIntervals` if needed, then restart the component by using z/OS MODIFY command `F ZWESLSTC,APPL=STOP(<component-name>)`
 
 ### ZWEL0040E
 
