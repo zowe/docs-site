@@ -40,62 +40,51 @@ in separate Docker containers, the replica container's IP address needs to be ac
 
 ## Redis configuration
 
-Configure Redis as a storage solution through the Caching service by modifying the following configuration parameters in the Caching service `application.yml`.
+Configure Redis as a storage solution through the Caching service by setting the following environment variables. Environment variables can be set by adding them to `instance.env`.
 
-* **`caching.storage.redis.host`** 
+* **`CACHING_STORAGE_REDIS_MASTERNODEURI`**
 
-    The hostname or IP address for the Redis master instance
+    The URI used to connect to the Redis master instance in the form `username:password@host:port`.
 
-* **`caching.storage.redis.port`** 
+    * The host section of the URI is mandatory
+    * The port section is optional and if not included defaults to `6379`.
+    * The username section is optional and if not included defaults to the Redis default username `default`.
+    * The password section is optional, but must be included if a username is included. If the password is not set a username cannot be set.
 
-    The port for the Redis master instance. Defaults to `6379`
+* **`CACHING_STORAGE_REDIS_TIMEOUT`** 
 
-* **`caching.storage.redis.username`** 
+    The timeout duration in seconds for the Caching service when first connecting to Redis. Defaults to 60 seconds.
 
-    The username used for authentication for the Redis master instance. Defaults to `default`. Not required if authentication is not enforced by the instances
+* **`CACHING_STORAGE_REDIS_SENTINEL_MASTERINSTANCE`** 
 
-* **`caching.storage.redis.password`** 
+    The Redis master instance ID used by the Redis Sentinel instances. Required if Redis Sentinel is being used.
 
-    The password used for authentication for the Redis master and replica instances. Not required if authentication is not enforced by the instances
+* **`CACHING_STORAGE_REDIS_SENTINEL_NODES`** 
 
-* **`caching.storage.redis.timeout`** 
+    The URI used to connect to a Redis Sentinel instance in the form `username:password@host:port`.
 
-    The timeout duration in seconds for the Caching service when first connecting to Redis
+    * The host section of the URI is mandatory
+    * The port section is optional and if not included defaults to `6379`.
+    * The password section is optional and defaults to no password.
 
-* **`caching.storage.redis.sentinel.master`** 
+    To supply multiple Redis Sentinel URIs, concatenate the URIs with a comma `,`.
 
-    The Redis master instance ID used by the Redis Sentinel instances. Required if Redis Sentinel is being used
+* **`CACHING_STORAGE_REDIS_SSL_ENABLED`** 
 
-* **`caching.storage.redis.sentinel.nodes`** 
+    A flag indicating if Redis is being used with SSL/TLS support. Defaults to `true`.
 
-    An array of the Redis Sentinel nodes. Each array element must contain:
-    
-    * `host`
-    
-      the hostname or IP address of the node
+* **`CACHING_STORAGE_REDIS_SSL_KEYSTORE`** 
 
-    * `port`
-    
-      the port of the node
+    The keystore file used to store the private key. Defaults to the Caching Service's keystore.
 
-    If the node enforces authentication, the element must specify the `password` parameter.
+* **`CACHING_STORAGE_REDIS_SSL_KEYSTOREPASSWORD`** 
 
-* **`caching.storage.redis.ssl.enabled`** 
+    The password used to unlock the keystore. Defaults to the Caching Service's keystore password.
 
-    A flag indicating if Redis is being used with SSL/TLS support. Defaults to `false`
+* **`CACHING_STORAGE_REDIS_SSL_TRUSTSTORE`** 
 
-* **`caching.storage.redis.ssl.keyStore`** 
+    The truststore file used to keep other parties public keys and certificates. Defaults to the Caching Service's truststore.
 
-    The keystore file used to store the private key
+* **`CACHING_STORAGE_REDIS_SSL_TRUSTSTOREPASSWORD`** 
 
-* **`caching.storage.redis.ssl.keyStorePassword`** 
-
-    The password used to unlock the keystore
-
-* **`caching.storage.redis.ssl.trustStore`** 
-
-    The truststore file used to keep other parties public keys and certificates
-
-* **`caching.storage.redis.ssl.trustStorePassword`** 
-
-    The password used to unlock the truststore
+    The password used to unlock the truststore. Defaults to the Caching Service's truststore password.
