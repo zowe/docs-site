@@ -82,10 +82,11 @@ The manifest file contains the following properties:
 - **`appfwPlugins`**: Array of objects. This section defines how the component will be registered to the App Framework plug-in. All subfields are optional.
   * **`path`**: This points to the directory where App Framework `pluginDefinition.json` file is located. If you use the `<RUNTIME_DIR>/bin/zowe-configure-component.sh` utility tool to configure this component for an instance, the script will automatically execute `<INSTANCE_DIR>/bin/install-app.sh` with this path.
 - **`zisPlugins`**: Array of objects. This section defines the ZIS plugin(s) attributes necessary for ZIS plugin installation and automation.
-  * **`your-plugin-id`**: This is the unique plugin ID of the ZIS plugin.
-    * **`path`**: This points to the directory where the load modules are housed for a plugin, for example `zisServer/`. If there is more than 1 plugin to a single manifest (say for a product family of multiple plugins), then multiple path variables can be contained within the manifest denoted by individual folders, for example `your-plugin-1/zisServer/`.
-    - **`samplib`**: (Optional) Defines the name(s) of the parameters for the Zowe parmlib. Default is all in `<PATH>/samplib`.
-    - **`loadlib`**: (Optional) Defines the name(s) of the plugin executables. Default is all in `<PATH>/loadlib`.
+    - 
+    **`your-plugin-id`**: This is the unique plugin ID of the ZIS plugin.
+    **`path`**: This points to the directory where the load modules are housed for a plugin, for example `zisServer/`. If there is more than 1 plugin to a single manifest (say for a product family of multiple plugins), then multiple path variables can be contained within the manifest denoted by individual folders, for example `your-plugin-1/zisServer/`.
+    **`samplib`**: (Optional) Defines the name(s) of the parameters for the Zowe parmlib. Default is all in `<PATH>/samplib`.
+    **`loadlib`**: (Optional) Defines the name(s) of the plugin executables. Default is all in `<PATH>/loadlib`.
 
 _Please note: All paths of directories or files mentioned above should be relative paths to the root directory where manifest is located._
 
