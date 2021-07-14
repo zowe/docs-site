@@ -19,7 +19,9 @@ Zowe uses the Caching Service to centralize the state data persistent in high av
 
 - **redis**
 
-   To enable this method, set the value of `ZWE_CACHING_SERVICE_PERSISTENT` to `redis` in the `instance.env` configuration file. <!--See [Redis configuration](../extend/extend-apiml/api-mediation-redis.md#redis-configuration) for more information. To learn more about Caching Service, see [Using the Caching Service](../extend/extend-apiml/api-mediation-caching-service.md).-->
+   To enable this method, set the value of `ZWE_CACHING_SERVICE_PERSISTENT` to `redis` in the `instance.env` configuration file. See [Redis configuration](../extend/extend-apiml/api-mediation-redis.md#redis-configuration) for more information. To learn more about Caching Service, see [Using the Caching Service](../extend/extend-apiml/api-mediation-caching-service.md).
+
+If you are using `zowe.yaml` configuration other than `instance.env`, please check [Configure component caching-service](configure-instance-directory.md#configure-component-caching-service) for configuration details.
 
 ## Creating a VSAM data set
 
