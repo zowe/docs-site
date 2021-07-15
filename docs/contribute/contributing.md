@@ -40,11 +40,11 @@ The Zowe documentation is managed in a [GitHub repository](https://github.com/zo
 * Review the help files related to your planned changes or addition
 
 ## Sending a GitHub Pull Request
-You can provide suggested edit to any documentation page by using the **Open doc issue** link on each page. After you make the changes, you submit updates in a pull request for the Zowe content team to review and merge.
+You can provide suggested edit to any documentation page by using the **Propose content change in GitHub** link on each page. After you make the changes, you submit updates in a pull request for the Zowe content team to review and merge.
 
 Follow these steps:
 
-1. Click **Open doc issue** on the page that you want to update.
+1. Click **Propose content change in GitHub** on the page that you want to update.
 3. Make the changes to the file.
 4. Scroll to the end of the page and enter a brief description about your change.
 5. Optional: Enter an extended description.
