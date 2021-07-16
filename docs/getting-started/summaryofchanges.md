@@ -4,6 +4,7 @@ Learn about what is new, changed, or removed in Zowe&trade;.
 
 Zowe Version 1.22 and earlier releases include the following enhancements, release by release.
 
+- [Version 1.23.0 LTS (July 2021)](#version-1230-lts-july-2021)
 - [Version 1.22.0 LTS (June 2021)](#version-1220-lts-june-2021)
 - [Version 1.21.0 LTS (April 2021)](#version-1210-lts-april-2021)
 - [Version 1.20.1 LTS (March 2021)](#version-1201-lts-march-2021)
@@ -33,6 +34,36 @@ Zowe Version 1.22 and earlier releases include the following enhancements, relea
 - [Version 1.1.0 (April 2019)](#version-110-april-2019)
 - [Version 1.0.1 (March 2019)](#version-101-march-2019)
 - [Version 1.0.0 (February 2019)](#version-100-february-2019)
+
+## Version 1.23.0 LTS (July 2021)
+
+Welcome to the Version 1.23.0 release of Zowe! You can find some of the highlights included in this release in the **Notable changes** section. To see a full list of release enhancements and fixes, see **New features and enhancements** and **Bug fixes**. 
+
+**Release demo:** Join the Zowe System Demo on Aug 4 to see a demo of what's new in this release, and ask the community questions. Check out the [Zowe calendar](https://lists.openmainframeproject.org/g/zowe-dev/viewevent?eventid=1205575&calstart=2021-08-04) for detailed call-in information.
+
+**Download v1.23.0 build:** Want to try new features as soon as possible? You can download the v1.23.0 build from [Zowe.org](https://www.zowe.org/download.html).
+
+### Notable changes 
+
+### New features and enhancements
+
+#### Zowe installation and configuration
+#### Zowe API Mediation Layer
+#### Zowe App Server
+#### Zowe CLI
+#### Zowe Explorer
+#### Zowe JES/MVS/USS Explorers
+
+### Bug fixes
+
+#### Zowe installation and configuration
+#### Zowe API Mediation Layer
+#### Zowe App Server
+#### Zowe CLI
+#### Zowe Explorer
+#### Zowe JES/MVS/USS Explorers
+
+
 
 ## Version 1.22.0 LTS (June 2021)
 
