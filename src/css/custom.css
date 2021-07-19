@@ -254,6 +254,10 @@ html[data-theme="light"] .darkTheme {
   display: none;
 }
 
+.markdown header h1:first-of-type {
+  display: none;
+}
+
 /* Custom classes */
 .icons {
   font-weight: 400;
