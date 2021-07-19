@@ -614,7 +614,7 @@ To use this library, use the procedure described in this section.
    **Example:**
 
     ```java
-    ZaasClient zaasClient = new ZaasClientHttps(getConfigProperties());
+    ZaasClient zaasClient = new ZaasClientImpl(getConfigProperties());
     ```
 
 You can now use any method from `ZaasClient` in your class.
@@ -642,7 +642,7 @@ public class SampleZaasClientImplementation {
      */
     public String login(String username, String password) {
         try {
-            ZaasClient zaasClient = new ZaasClientHttps(getConfigProperties());
+            ZaasClient zaasClient = new ZaasClientImpl(getConfigProperties());
             String zaasClientToken = zaasClient.login(username, password);
             //Use this token  in subsequent calls
             return zaasClientToken;
