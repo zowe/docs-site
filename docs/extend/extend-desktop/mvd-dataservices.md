@@ -187,6 +187,35 @@ Using Java dataservices with a Zowe Application Server installed on a Windows co
 
 To create multiple instances of Tomcat on non-Windows computers, the Zowe Application Server establishes symbolic links to the service logic. On Windows computers, symbolic links require administrative privilege, so the server establishes junctions instead. Junctions only work when the source and destination reside on the same volume.
 
+## Using dataservices with RBAC
+If your administrator configures the Zowe Application Framework to use role-based access control (RBAC), then when you create a dataservice you must consider the length of its paths.
+
+To control access to dataservices, administrators can enable RBAC, then use a z/OS security product such as RACF to map roles and authorities to a System Authorization Facility (SAF) profile. For information on RBAC, see [Applying role-based access control to dataservices](../../user-guide/mvd-configuration.md#applying-role-based-access-control-to-dataservices).
+
+SAF profiles have the following format:
+
+`<product>.<instance id>.SVC.<pluginid_with_underscores>.<service>.<HTTP method>.<dataservice path with forward slashes '/' replaced by periods '.'>`
+
+For example, to access this dataservice endpoint:
+
+`/ZLUX/plugins/org.zowe.foo/services/baz/_current/users/fred`
+
+Users must have READ access to the following profile:
+
+`ZLUX.DEFAULT.SVC.ORG_ZOWE_FOO.BAZ.POST.USERS.FRED`
+
+Profiles cannot contain more than 246 characters. If the path section of an endpoint URL makes the profile name exceed limit, the path is trimmed to only include elements that do not exceed the limit. For example, imagine that each path section in this endpoint URL contains 64 characters:
+
+`/ZLUX/plugins/org.zowe.zossystem.subsystems/services/data/_current/aa..a/bb..b/cc..c/dd..d`
+
+So `aa..a` is 64 "a" characters, `bb..b` is 64 "b" characters, and so on. The URL could then map to the following example profile:
+
+`ZLUX.DEFAULT.SVC.ORG_ZOWE_ZOSSYSTEM_SUBSYSTEMS.DATA.GET.AA..A.BB..B`
+
+The profile ends at the `BB..B` section because adding `CC..C` would put it over 246 characters. So in this example, all dataservice endpoints with paths that start with `AA..A.BB..B` are controlled by this one profile.
+
+To avoid this issue, we recommend that you maintain relatively short endpoint URL paths.
+
 ## Dataservice APIs
 
 Dataservice APIs can be categorized as Router-based or ZSS-based, and either WebSocket or not. 
@@ -251,6 +280,120 @@ An object that contains more context from the plug-in scope, including:
 
     - **user**: Configuration information of the server, such as the port on which it is listening.
 
+#### Router storage API
+
+
+
+### ZSS based dataservices
+
+ZSS dataservices much like zlux router services can be used to implement REST or websocket APIs.
+Each service is associated with a URL which when requested will call a function to handle the request or websocket message event.
+
+#### HTTP/REST ZSS dataservices
+
+ZSS REST dataservices are registered into ZSS with a service installer function, where `initializerName` is the function name located in the dll `libraryName`. The `methods` list what HTTP methods are expected of this dataservice.
+Example:
+
+```
+{
+  "type": "service",
+  "name": "data",
+  "version": "1.0.0",
+  "initializerLookupMethod": "external",
+  "initializerName": "helloWorldDataServiceInstaller",
+  "libraryName": "helloWorld.so",
+  "methods": ["GET", "POST"],
+  "dependenciesIncluded": true
+}
+```
+
+The service installer is given `DataService`, which includes context such as the above definition plus a `loggingIdentifier`. The service is also given `HttpServer`, a reference to ZSS and its configuration.
+To register the dataservice, you must make an `HttpService` object like
+
+```
+HttpService *httpService = makeHttpDataService(dataService, server);
+```
+
+Then you must assign properties to the dataservice, such as
+
+* authType: What type of authentication and authorization checks should be done before calling this service. values such as `SERVICE_AUTH_NONE` when the service does not need securty or `SERVICE_AUTH_NATIVE_WITH_SESSION_TOKEN` when the service should be protected by ZSS's cookie are valid.
+* serviceFunction: The function within this dataservice that will be called whenever a request is received.
+* runInSubtask: (TRUE/FALSE) Whether to run the service function in a subtask or not whenever a request is received.
+* doImpersonation: (TRUE/FALSE) When true, the service function will be ran as the authenticated user, rather than the server user. This is recommended whenever possible to keep permissions management in line with the users own permissions.
+
+Example of service installer:
+
+```
+void helloWorldDataServiceInstaller(DataService *dataService, HttpServer *server) {
+  HttpService *httpService = makeHttpDataService(dataService, server);
+  httpService->authType = SERVICE_AUTH_NATIVE_WITH_SESSION_TOKEN;
+  httpService->serviceFunction = serveHelloWorldDataService;
+  httpService->runInSubtask = TRUE;
+  httpService->doImpersonation = TRUE;
+
+  HelloServiceData *serviceData = (HelloServiceData*)safeMalloc(sizeof(HelloServiceData), "HelloServiceData");
+  serviceData->loggingId = dataService->loggingIdentifier;
+
+  httpService->userPointer = serviceData;
+}
+```
+
+When a request is received, the service function is called with the `HttpService` and `HttpResponse` objects. `HttpService` is used to store and retrieve cached data and access the storage API. `HttpRequest` is a pointer within the response object, and utilities exist to help with parsing it.
+
+Example of request handling:
+
+```
+static int serveHelloWorldDataService(HttpService *service, HttpResponse *response) {
+  HttpRequest *request = response->request;
+  char *routeFragment = stringListPrint(request->parsedFile, 1, 1000, "/", 0);
+  char *route = stringConcatenate(response->slh, "/", routeFragment);
+
+  HelloServiceData *serviceData = service->userPointer;
+  serviceData->timesVisited++;
+
+  zowelog(NULL, serviceData->loggingId, ZOWE_LOG_WARNING,
+          "Inside serveHelloWorldDataService\n");
+
+  if (!strcmp(request->method, methodGET)) {
+    jsonPrinter *p = respondWithJsonPrinter(response);
+
+    setResponseStatus(response, 200, "OK");
+    setDefaultJSONRESTHeaders(response);
+    writeHeader(response);
+
+    jsonStart(p);
+    {
+      jsonAddString(p, "message", "Hello World!");
+      jsonAddInt(p, "timesVisited", serviceData->timesVisited);
+    }
+    jsonEnd(p);
+  }
+
+  finishResponse(response);
+  return 0;
+}
+```
+
+#### ZSS dataservice context and structs
+
+Headers to important dataservice structs include
+* [HttpResponse](https://github.com/zowe/zowe-common-c/blob/zss-v1.23.0-RC1/h/httpserver.h#L117)
+* [HttpRequest](https://github.com/zowe/zowe-common-c/blob/zss-v1.23.0-RC1/h/http.h#L124)
+* [HttpService](https://github.com/zowe/zowe-common-c/blob/zss-v1.23.0-RC1/h/httpserver.h#L173)
+* [HttpServer](https://github.com/zowe/zowe-common-c/blob/zss-v1.23.0-RC1/h/httpserver.h#L223)
+* [Json handling](https://github.com/zowe/zowe-common-c/blob/zss-v1.23.0-RC1/h/json.h)
+* [DataService context](https://github.com/zowe/zowe-common-c/blob/zss-v1.23.0-RC1/h/dataservice.h#L57)
+* [Utilities](https://github.com/zowe/zowe-common-c/blob/zss-v1.23.0-RC1/h/utils.h)
+* [Data structures](https://github.com/zowe/zowe-common-c/blob/zss-v1.23.0-RC1/h/collections.h)
+
+
+#### ZSS storage API
+
+The [DataService](https://github.com/zowe/zowe-common-c/blob/zss-v1.23.0-RC1/h/dataservice.h#L57) struct contains two [Storage structs](https://github.com/zowe/zowe-common-c/blob/zss-v1.23.0-RC1/h/storage.h#L22), `localStorage` and `remoteStorage`. They implement the same API for getting, setting, and removing data, but manage the data in different locations. `localStorage` stores data within the ZSS server, for high speed access. `remoteStorage` stores data in the Caching Service, for high availability state storage.
+
+Usage example:
+Sample angular app storage test api: https://github.com/zowe/sample-angular-app/blob/v1.23.0-RC1/zssServer/src/storage.c
+
 ## Documenting dataservices
 It is recommended that you document your RESTful application dataservices in OpenAPI (Swagger) specification documents. The Zowe Application Server hosts Swagger files for users to view at runtime.
 
@@ -262,7 +405,7 @@ To document a dataservice, take the following steps:
 
 3. Place the Swagger file in the `/doc/swagger` directory below your application plug-in directory, for example:
 
-   `/zlux-server-framework/plugins/<servicename>/doc/swagger/<servicename_1.1.0>.yaml`
+   `/sample-angular-app/doc/swagger/hello.yaml`
 
 
 
@@ -270,37 +413,7 @@ At runtime, the Zowe Application Server does the following:
 
 - Dynamically substitutes known values in the files, such as the hostname and whether the endpoint is accessible using HTTP or HTTPS.
 - Builds documentation for each dataservice and for each application plug-in, in the following locations:
-  - Dataservice documentation: `/ZLUX/plugins/<app_name>/catalogs/swagger/servicename` 
+  - Dataservice documentation: `/ZLUX/plugins/<app_name>/catalogs/swagger/servicename`
   - Application plug-in documentation: `/ZLUX/plugins/<app_name>/catalogs/swagger`
 
 - In application plug-in documentation, displays only stubs for undocumented dataservices, stating that the dataservice exists but showing no details. Undocumented dataservices include non-REST dataservices such as WebSocket services.
-
-
-## Using dataservices with RBAC
-If your administrator configures the Zowe Application Framework to use role-based access control (RBAC), then when you create a dataservice you must consider the length of its paths.
-
-To control access to dataservices, administrators can enable RBAC, then use a z/OS security product such as RACF to map roles and authorities to a System Authorization Facility (SAF) profile. For information on RBAC, see [Applying role-based access control to dataservices](../../user-guide/mvd-configuration.md#applying-role-based-access-control-to-dataservices).
-
-SAF profiles have the following format:
-
-`<product>.<instance id>.SVC.<pluginid_with_underscores>.<service>.<HTTP method>.<dataservice path with forward slashes '/' replaced by periods '.'>`
-
-For example, to access this dataservice endpoint:
-
-`/ZLUX/plugins/org.zowe.foo/services/baz/_current/users/fred`
-
-Users must have READ access to the following profile:
-
-`ZLUX.DEFAULT.SVC.ORG_ZOWE_FOO.BAZ.POST.USERS.FRED`
-
-Profiles cannot contain more than 246 characters. If the path section of an endpoint URL makes the profile name exceed limit, the path is trimmed to only include elements that do not exceed the limit. For example, imagine that each path section in this endpoint URL contains 64 characters:
-
-`/ZLUX/plugins/org.zowe.zossystem.subsystems/services/data/_current/aa..a/bb..b/cc..c/dd..d` 
-
-So `aa..a` is 64 "a" characters, `bb..b` is 64 "b" characters, and so on. The URL could then map to the following example profile:
-
-`ZLUX.DEFAULT.SVC.ORG_ZOWE_ZOSSYSTEM_SUBSYSTEMS.DATA.GET.AA..A.BB..B`
-
-The profile ends at the `BB..B` section because adding `CC..C` would put it over 246 characters. So in this example, all dataservice endpoints with paths that start with `AA..A.BB..B` are controlled by this one profile.
-
-To avoid this issue, we recommend that you maintain relatively short endpoint URL paths.
