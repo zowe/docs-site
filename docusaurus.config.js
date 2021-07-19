@@ -73,17 +73,17 @@ module.exports = {
           docId: "appendix/zowe-cli-command-reference",
           position: "left",
         },
-        {
-          type: "docsVersionDropdown",
-          position: "right",
-          dropdownActiveClassDisabled: true,
-          dropdownItemsAfter: [
-            {
-              to: "/versions",
-              label: "All versions",
-            },
-          ],
-        },
+        // {
+        //   type: "docsVersionDropdown",
+        //   position: "right",
+        //   dropdownActiveClassDisabled: true,
+        //   dropdownItemsAfter: [
+        //     {
+        //       to: "/versions",
+        //       label: "All versions",
+        //     },
+        //   ],
+        // },
         {
           href: "https://github.com/zowe/docs-site",
           position: "right",

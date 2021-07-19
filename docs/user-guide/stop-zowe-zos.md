@@ -1,10 +1,10 @@
-# Stopping the Zowe server started task
+# Stopping the Zowe server components started task
 
-Learn how to stop the Zowe server started tasks ZWESVSTC and ZWESLSTC. 
+Learn how to stop the Zowe server components started tasks ZWESVSTC and ZWESLSTC.
 
 ## Stopping the ZWESVSTC started task
 
-To stop the Zowe server, the ZWESVSTC started task needs to be ended. Run the `zowe-stop.sh` script at the Unix Systems Services command prompt that is in the zowe instance directory used to start the Zowe started task:
+To stop the Zowe z/OS server components, the ZWESVSTC started task needs to be ended. Run the `zowe-stop.sh` script at the Unix Systems Services command prompt that is in the Zowe instance directory used to start the Zowe started task:
 
 ```
 cd $ZOWE_INSTANCE_DIR/bin
