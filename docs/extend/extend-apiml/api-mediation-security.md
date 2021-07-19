@@ -530,20 +530,62 @@ To use this library, use the procedure described in this section.
 
     Gradle:
 
-      ```groovy
-      dependencies {
-          compile 'org.zowe.apiml.sdk:zaas-client:{{version}}'
-      }
+      1. Create a `gradle.properties` file in the root of your project if one does not already exist.
+
+      2. In the `gradle.properties` file, set the URL of the specific Artifactory containing the _SpringEnabler_ artifact.
+
       ```
+      # Repository URL for getting the enabler-java artifact
+      artifactoryMavenRepo=https://zowe.jfrog.io/zowe/libs-release/
+      ```
+
+      3. Add the following _Gradle_ code block to the `repositories` section of your `build.gradle` file:
+
+        ```gradle
+        repositories {
+            ...
+
+            maven {
+                url artifactoryMavenRepo
+            }
+        }
+        ```
+
+      4. Add the following _Gradle_ dependency:
+
+        ```groovy
+        dependencies {
+            compile 'org.zowe.apiml.sdk:zaas-client:{{version}}'
+        }
+        ```
 
     Maven:
 
-      ```xml
-      <dependency>
-                  <groupId>org.zowe.apiml.sdk:zaas-client</groupId>
-                  <artifactId>{{version}}</artifactId>
-      </dependency>
-      ```
+      1. Add the following _XML_ tags within the newly created `pom.xml` file:
+
+        ```xml
+        <repositories>
+            <repository>
+                <id>libs-release</id>
+                <name>libs-release</name>
+                <url>https://zowe.jfrog.io/zowe/libs-release/</url>
+                <snapshots>
+                    <enabled>false</enabled>
+                </snapshots>
+            </repository>
+        </repositories>
+        ```
+    
+        **Tip:** If you want to use snapshot version, replace libs-release with libs-snapshot in the repository url and change snapshots->enabled to true.
+      
+      2. Then add the following _Maven_ dependency:
+    
+        ```xml
+        <dependency>
+                    <groupId>org.zowe.apiml.sdk:zaas-client</groupId>
+                    <artifactId>{{version}}</artifactId>
+        </dependency>
+        ```
 
 2. In your application, create your java class which will be used to create an instance of `ZaasClient`, which enables you to use its method to login, query, and to issue passTicket.
 
