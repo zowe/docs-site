@@ -1,0 +1,74 @@
+/* stylelint-disable docusaurus/copyright-header */
+
+hr {
+  display: none;
+}
+
+.heroBanner {
+  padding: 4rem 0;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  background-color: #3578e5;
+  color: #ffffff;
+}
+
+.heroLogo {
+  display: none;
+}
+
+@keyframes zoweInTheBox {
+  from {
+    opacity: 0;
+    transform: scale(0.1) rotate(30deg);
+    transform-origin: center bottom;
+  }
+
+  50% {
+    transform: rotate(-10deg);
+  }
+
+  70% {
+    transform: rotate(3deg);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@media screen and (max-width: 966px) {
+  .heroBanner {
+    padding: 2rem;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  hr {
+    display: block;
+    margin: auto;
+    width: 75%;
+    border-top: 0px solid rgba(0, 0, 0, 0.1);
+  }
+
+  html[data-theme="dark"] hr {
+    --ifm-background-color: #252628;
+    border: var(--ifm-hr-border-width) solid var(--ifm-background-section-dark);
+  }
+
+  .heroBanner {
+    padding: 2rem 0;
+  }
+
+  .heroLogo {
+    display: initial;
+    animation-duration: 2s;
+    animation-name: zoweInTheBox;
+    padding-bottom: 20px;
+  }
+
+  .hero__title {
+    padding-bottom: 1rem;
+  }
+}
