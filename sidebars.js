@@ -275,8 +275,7 @@ module.exports = {
       label: "Zowe Explorer",
       items: [
         "troubleshoot/ze/troubleshoot-ze",
-        "troubleshoot/ze/known-ze",
-        "troubleshoot/ze/ze-issue",
+        "troubleshoot/ze/known-ze"
       ],
     },
   ],

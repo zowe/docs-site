@@ -16,12 +16,23 @@ Zowe server components can be installed and run entirely on z/OS, but a subset o
 
 <Badge text="Technical Preview"/> The Zowe high availability enablement on Sysplex is a technical preview. 
 
+The following diagram depicts the difference in locations of Zowe components when deploying Zowe into Sysplex with high availability enabled as opposed to running all components on a single z/OS system.  
 
-The following diagram depicts the difference in locations of Zowe components when deploying Zowe into Sysplex with high availability enabled as opposed to running all components on a single z/OS system.
+![Zowe Architecture Diagram with High Availability Enablement](../images/common/zowe-architecture-lpar.png)
 
-![Zowe Architecture Diagram with High Availability Enablement](../images/common/zowe-architecture-ha.png)
+Instead of using started task `ZWESVSTC`, to enable high availability for Zowe, `ZWESLSTC` started task is used. Instead of `instance.env` the configuration details are held in a `zowe.yaml` configuration file which contains settings for each high availability instance that the launcher starts. 
 
-Instead of using started task `ZWESVSTC`, to enable high availability for Zowe, `ZWESLSTC` started task is used. Also a new YAML configuration file is required to customize each high availability instance. To learn more about Zowe with high availability enablement, please check [Zowe high availability installation roadmap](../user-guide/install-ha-sysplex.md).
+The diagram above shows `ZWESLSTC` has started two Zowe instances running on two separate LPARs that can be on the same, or different, sysplexes.  Sysplex distributor port sharing enables the API GAteway 7554 ports to be shared so incoming requests can be routed to either the gateway on LPAR A or LPAR B.  The discovery servers on each LPAR communicate with each other sharing their registered instances which allows the gateway on LPAR A to dispatch APIs to components either on its own LPAR, or else to components on LPAR B.  This is indicated on the diagram by each component having two input lines, one from its own LPAR's API gateway and one from the gateway on the other LPAR.  When one of the LPARs goes down the other LPAR can remain operating within the sysplex providing high availability to clients that just connect through the shared port and are agnostic as to which Zowe instance is serving the API requests.  
+
+The `zowe.yaml` file can be configured to start Zowe instances on more than two LPARS, and also to start more than one Zowe instance on a single LPAR, providing a grid cluster of Zowe components that can meet availability and scalability requirements.  
+
+Each LPAR's configuration entries in `zowe.yaml` control which components will be started, which means that one LPAR it is possible to start just the desktop and API Mediation Layer, and on the second LPAR to start all of the Zowe components, and because the desktop on the first LPAR is available to the second LPAR's gateway all desktop traffic will be routed there.  
+
+The caching services for each Zowe instance, whether on the same LPAR or distributed across the sysplex, are connected to each other by the same shared VSMA file.  This allows state sharing so that each instance behaves similarily to the end user irrespective of where their request is routed.  
+
+For simplification of above diagram the Zowe Explorer API and UI servers are not shown as being started, although if they were defined to be started in the `zowe.yaml` configuration file they would behave as for the servers illustrated, i.e. they would register to their API discovery server which will then communicate with other discovery servers on other Zowe instances on either the same or other LPARs, and API traffic received by any API gateway on any Zowe instance will be route to any of the Zowe Explorer API or UI components that are available.  
+
+To learn more about Zowe with high availability enablement, please check [Zowe high availability installation roadmap](../user-guide/install-ha-sysplex.md).
 
 ## Zowe architecture when using Docker image
 
