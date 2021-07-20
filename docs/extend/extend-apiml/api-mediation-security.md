@@ -582,8 +582,9 @@ To use this library, use the procedure described in this section.
     
         ```xml
         <dependency>
-                    <groupId>org.zowe.apiml.sdk:zaas-client</groupId>
-                    <artifactId>{{version}}</artifactId>
+                    <groupId>org.zowe.apiml.sdk</groupId>
+                    <artifactId>zaas-client</artifactId>
+                    <version>{{version}}</version>
         </dependency>
         ```
 
