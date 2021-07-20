@@ -195,7 +195,7 @@ Example of the agent body:
 When running the App Server, simply specify a few flags to declare which ZSS instance the App Server will proxy ZSS requests to:
 
 - *-h*: Declares the host where ZSS can be found. Use as "-h \<hostname\>"
-- *-P*: Declares the port at which ZSS is listening. Use as "-P \<port\>" 
+- *-P*: Declares the port at which ZSS is listening. Use as "-P \<port\>"
 
 ### Configuring ZSS for HTTPS
 To secure ZSS communication, you can use Application Transparent Transport Layer Security (AT-TLS) to enable Hyper Text Transfer Protocol Secure (HTTPS) communication with ZSS.
