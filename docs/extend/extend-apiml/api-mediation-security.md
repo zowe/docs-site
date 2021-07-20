@@ -528,6 +528,8 @@ To use this library, use the procedure described in this section.
 
 1. Add `zaas-client` as a dependency in your project.
 
+    You will need to specify the version of the `zaas-client` you want. `zaas-client` versioning followings the semantic versioning format of `major.minor.patch`. For example, `1.22.0`.
+
     Gradle:
 
       1. Create a `gradle.properties` file in the root of your project if one does not already exist.
