@@ -635,13 +635,18 @@ The following codeblock is an example of a `SampleZaasClientImplementation`.
 **Example:**
 
 ```java
+import org.zowe.apiml.zaasclient.config.ConfigProperties;
+import org.zowe.apiml.zaasclient.exception.ZaasClientException;
+import org.zowe.apiml.zaasclient.exception.ZaasConfigurationException;
+import org.zowe.apiml.zaasclient.service.ZaasClient;
+
 public class SampleZaasClientImplementation {
 
     /**
      * This method is used to fetch token from zaasClient
      * @param username
      * @param password
-     * @return
+     * @return valid JWT token returned from the authentication service
      */
     public String login(String username, String password) {
         try {
