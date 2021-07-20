@@ -10,7 +10,7 @@ The following error message codes may appear on Zowe Launcher SYSPRINT. Use the 
 
   **Reason:**
 
-  Component <component-name> started.
+  Component `<component-name>` started.
 
   **Action:**
 
@@ -22,7 +22,7 @@ The following error message codes may appear on Zowe Launcher SYSPRINT. Use the 
 
   **Reason:**
 
-  Component <component-name> stopped.
+  Component `<component-name>` stopped.
 
   **Action:**
 
@@ -34,10 +34,10 @@ The following error message codes may appear on Zowe Launcher SYSPRINT. Use the 
 
   **Reason:**
 
-  Component <component-name> initialized.
+  Component `<component-name>` initialized.
   - `restart_cnt` - Number of attempts to restart the component in case of failure
   - `min_uptime` - Minimum uptime that the component can be considered as successfully started
-  - `share_as` - One of <yes|no|must> which indicates whether child processes of the component start in the same address space. See documentation for [_BPX_SHAREAS](https://www.ibm.com/docs/en/zos/2.4.0?topic=shell-setting-bpx-shareas-bpx-spawn-script) for details.
+  - `share_as` - One of `<yes|no|must>` which indicates whether child processes of the component start in the same address space. See documentation for [_BPX_SHAREAS](https://www.ibm.com/docs/en/zos/2.4.0?topic=shell-setting-bpx-shareas-bpx-spawn-script) for details.
 
   **Action:**
 
