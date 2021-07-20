@@ -195,7 +195,7 @@ Example of the agent body:
 When running the App Server, simply specify a few flags to declare which ZSS instance the App Server will proxy ZSS requests to:
 
 - *-h*: Declares the host where ZSS can be found. Use as "-h \<hostname\>"
-- *-P*: Declares the port at which ZSS is listening. Use as "-P \<port\>"
+- *-P*: Declares the port at which ZSS is listening. Use as "-P \<port\>" 
 
 ### Configuring ZSS for HTTPS
 To secure ZSS communication, you can use Application Transparent Transport Layer Security (AT-TLS) to enable Hyper Text Transfer Protocol Secure (HTTPS) communication with ZSS.
@@ -451,6 +451,35 @@ The following steps assume you have installed a Zowe runtime instance (which inc
 9.  To verify that the new cross-memory server is being used, check for the following messages in the `ZWESVSTC` server job log:
 
    `ZIS status - Ok (name='ZWESIS_MYSRV    ', cmsRC=0, description='Ok', clientVersion=2)`
+
+### Configuring AT-TLS on Client System
+
+When connecting to a Zowe instance whose host system is configured to use AT-TLS for HTTPS, the connecting client/client system must also define an outbound AT-TLS rule. To define the AT-TLS rule, use the sample below to specify values in your AT-TLS Policy Agent Configuration file:
+
+```
+TTLSRule                     XYZClientRule
+{
+  RemotePortRange                   [gateway_or_desktop_port]
+  Direction                         Outbound
+  TTLSGroupActionRef                XYZGroup
+  TTLSEnvironmentActionRef          XYZClientEnvironment
+}
+TTLSGroupAction              XYZGroup
+{
+  TTLSEnabled                       On
+}
+TTLSEnvironmentAction        XYZClientEnvironment
+{
+  TTLSKeyRingParms
+    {
+      Keyring                       [client_key_ring]
+    }
+  HandshakeRole                     CLIENT
+  Trace                             7
+}
+```
+
+**Note:** \[client_key_ring\] is a key ring containing the client certificate. To retrieve a signed client certificate, contact the administrator of the host system.
 
 ## Controlling access to applications
 
