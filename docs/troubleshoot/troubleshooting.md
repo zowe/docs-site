@@ -13,6 +13,7 @@ You can also find error messages and codes, must-gathers, and information about 
 - [Troubleshooting Zowe Application Framework](./app-framework/app-troubleshoot.md)
 - [Troubleshooting z/OS Services](troubleshoot-zos-services.md)
 - [Troubleshooting Zowe CLI](./cli/troubleshoot-cli.md)
+- [Troubleshooting Zowe Launcher](./launcher/launcher-troubleshoot.md)
 
 ## Collecting data for Zowe problems
 
