@@ -21,7 +21,7 @@ The instance directory `<INSTANCE_DIRECTORY>/bin` contains other key scripts as 
 
 **High availability considerations:** 
 
-- If you plan to run Zowe in Sysplex for high availability, the instance directory should be placed in a shared USS file system. This way, all Zowe instances within the Sysplex can read and write to the same instance directory.
+- If you plan to run Zowe in a Sysplex for high availability, the instance directory should be placed in a shared USS file system. This way, all Zowe instances within the Sysplex can read and write to the same instance directory.
 - `zowe.yaml` is required if you want to start Zowe in high availability mode. 
 
 ## Prerequisites
@@ -217,6 +217,11 @@ Refer to detailed section about [API Gateway configuration](api-mediation/api-ga
    //ZWESISTC  PROC NAME='ZWESIS_STD',MEM=00,RGN=0M
    ```
 
+- `ZWES_ZIS_LOADLIB`: The dataset name where the Zowe cross memory server (ZIS) load library resides. Having this value defined can help in automation around ZIS and ZIS plugins.
+- `ZWES_ZIS_PLUGINLIB`: The dataset name where plugins for ZIS should be placed. When this is specified, components that contain ZIS plugins will have their load library content placed here.
+- `ZWES_ZIS_PARMLIB`: The dataset name where parameters about ZIS should be placed. Having this value defined is necessary for automatically installing ZIS plugins that are within a component.
+
+
 ### Extensions
 
 - `ZWEAD_EXTERNAL_STATIC_DEF_DIRECTORIES`:  Full USS path to the directory that contains static API Mediation Layer .yml definition files.  For more information, see [Onboard a REST API without code changes required](../extend/extend-apiml/onboard-static-definition.md#add-a-definition-in-the-api-mediation-layer-in-the-zowe-runtime).  Multiple paths should be semicolon separated. This value allows a Zowe instance to be configured so that the API Mediation Layer can be extended by third party REST API and web UI servers. 
@@ -274,8 +279,8 @@ To learn more about the YAML format, please visit [yaml.org](https://yaml.org/).
 
 ### Known limitations for Zowe high availability
 
-- To allow Sysplex Distributor to route traffic to Gateway, you can only start one Gateway in each LPAR within the Sysplex. All Gateways instances should be started on the same port configured on Sysplex Distributor.
-- Zowe App Server should be accessed through Gateway with URL like `https://<dvipa-domain>:<external-port>/zlux/ui/v1`.
+- To allow Sysplex Distributor to route traffic to the Gateway, you can only start one Gateway in each LPAR within the Sysplex. All Gateways instances should be started on the same port configured on Sysplex Distributor.
+- Zowe App Server should be accessed through the Gateway with a URL like `https://<dvipa-domain>:<external-port>/zlux/ui/v1`.
 - Currently, the `app-server` component can only be configured to start one instance.
 - If you enabled more than one Discovery service, you may see a 500 error if you click on the `Refresh Static APIs` button from API Catalog.
 
@@ -437,6 +442,11 @@ The high-level configuration `zowe` supports these definitions:
 - `zowe.sso.token.name`: Defines SSO token name. This is equivalent to the `PKCS11_TOKEN_NAME` variable in `<keystore-dir>/zowe-certificates.env`.
 - `zowe.sso.token.label`: Defines the certificate label that binds to SSO token. This is equivalent to the `PKCS11_TOKEN_LABEL` variable in `<keystore-dir>/zowe-certificates.env`.
 
+- `zowe.launcher`: The launcher section defines defaults about how the Zowe launcher should act upon components.
+- `zowe.launcher.restartIntervals`: An array of positive integers that defines how many times a component should be tried to be restarted if it fails, and how much time to wait in seconds for that restart to succeed before retrying.
+- `zowe.launcher.minUptime`: The minimum amount of time a zowe component should be running in order to be declared as started successfully.
+- `zowe.launcher.shareAs`: Whether or not the launcher should start components in the same address space as it. See documentation for [_BPX_SHAREAS](https://www.ibm.com/docs/en/zos/2.4.0?topic=shell-setting-bpx-shareas-bpx-spawn-script) for details.
+
 ### YAML configurations - java
 
 The high-level configuration `java` supports these definitions:
@@ -465,6 +475,7 @@ In this section, `<component>` represents any Zowe components or extensions. For
 
 - `components.<component>.enabled`: Defines if you want to start this component in this Zowe instance. This is a much detailed granular definition of the `LAUNCH_COMPONENT_GROUPS` variable in `instance.env`. This allows you to control each component instead of a group. For external components, also known as extensions, this configuration also replaces the `EXTERNAL_COMPONENTS` variable in `instance.env`.
 - `components.<component>.certificate`: you can customize a component to use different certificate from default values. This section follows same format defined in [YAML configurations - certificate](#yaml-configurations-certificate). If this is not customized, the component will use certificates defined in `zowe.internalCertificate`.
+- `components.<component>.launcher`: Any component can have a launcher section which overrides the overall Zowe Launcher default defined in `zowe.launcher`.
 
 #### Configure component gateway
 
@@ -516,6 +527,15 @@ These configurations can be used under the `components.caching-service` section:
 - `storage.size`: Specifies amount of records before eviction strategies start evicting. This is equivalent to the `ZWE_CACHING_STORAGE_SIZE` variable in `instance.env`.
 - `storage.evictionStrategy`: Specifies eviction strategy to be used when the storage size is achieved. This is equivalent to the `ZWE_CACHING_EVICTION_STRATEGY` variable in `instance.env`.
 - `storage.vsam.name`: Specifies the data set name of the caching service VSAM data set. This is equivalent to the `ZWE_CACHING_SERVICE_VSAM_DATASET` variable in `instance.env`.
+- `storage.redis.masterNodeUri`: Specifies the URI used to connect to the Redis master instance in the form `username:password@host:port`. This is equivalent to the `CACHING_STORAGE_REDIS_MASTERNODEURI` variable in `instance.env`.
+- `storage.redis.timeout`: Specifies the timeout second to Redis. Defaults to 60 seconds. This is equivalent to the `CACHING_STORAGE_REDIS_TIMEOUT` variable in `instance.env`.
+- `storage.redis.sentinel.masterInstance`: Specifies the Redis master instance ID used by the Redis Sentinel instances. This is equivalent to the `CACHING_STORAGE_REDIS_SENTINEL_MASTERINSTANCE` variable in `instance.env`.
+- `storage.redis.sentinel.nodes`: Specifies the array of URIs used to connect to a Redis Sentinel instances in the form `username:password@host:port`. This is equivalent to the `CACHING_STORAGE_REDIS_SENTINEL_NODES` variable in `instance.env`.
+- `storage.redis.ssl.enabled`: Specifies the boolean flag indicating if Redis is being used with SSL/TLS support. Defaults to `true`. This is equivalent to the `CACHING_STORAGE_REDIS_SSL_ENABLED` variable in `instance.env`.
+- `storage.redis.ssl.keystore`: Specifies the keystore file used to store the private key. This is equivalent to the `CACHING_STORAGE_REDIS_SSL_KEYSTORE` variable in `instance.env`.
+- `storage.redis.ssl.keystorePassword`: Specifies the password used to unlock the keystore. This is equivalent to the `CACHING_STORAGE_REDIS_SSL_KEYSTOREPASSWORD` variable in `instance.env`.
+- `storage.redis.ssl.truststore`: Specifies the truststore file used to keep other parties public keys and certificates. This is equivalent to the `CACHING_STORAGE_REDIS_SSL_TRUSTSTORE` variable in `instance.env`.
+- `storage.redis.ssl.truststorePassword`: Specifies the password used to unlock the truststore. This is equivalent to the `CACHING_STORAGE_REDIS_SSL_TRUSTSTOREPASSWORD` variable in `instance.env`.
 - `environment.preferIpAddress`: Set this parameter to `true`  to advertise a service IP address instead of its hostname. **Note:** this configuration is deprecated. Zowe start script will ignore this value and always set it to `false`. This is equivalent to the `APIML_PREFER_IP_ADDRESS` variable in `instance.env`.
 - `apiml.security.ssl.verifySslCertificatesOfServices`: Specifies whether APIML should verify certificates of services in strict mode. Set to `true` will enable `strict` mode that APIML will validate both if the certificate is trusted in turststore, and also if the certificate Common Name or Subject Alternate Name (SAN) match the service hostname. This is equivalent to the `VERIFY_CERTIFICATES` variable defined in `<keystore-dir>/zowe-certificates.env`.
 - `apiml.security.ssl.nonStrictVerifySslCertificatesOfServices`: Defines whether APIML should verify certificates of services in non-strict mode. Setting to `true` will enable `non-strict` mode where APIML will validate if the certificate is trusted in turststore, but ignore the certificate Common Name or Subject Alternate Name (SAN) check. Zowe will ignore this configuration if strict mode is enabled with `apiml.security.ssl.verifySslCertificatesOfServices`. This is equivalent to the `NONSTRICT_VERIFY_CERTIFICATES` variable defined in `<keystore-dir>/zowe-certificates.env`.
