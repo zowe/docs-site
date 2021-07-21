@@ -486,7 +486,7 @@ To set up this security configuration, submit the `ZWESECUR` JCL member. For use
 
 ### Using RACF
 
-If you use RAFC, verify and update permission in the `FACILITY` class.
+If you use RACF, verify and update permission in the `FACILITY` class.
 
 **Follow these steps:**
 
