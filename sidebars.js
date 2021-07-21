@@ -278,6 +278,14 @@ module.exports = {
         "troubleshoot/ze/known-ze"
       ],
     },
+    {
+      type: "category",
+      label: "Zowe Launcher",
+      items: [
+        "troubleshoot/launcher/launcher-troubleshoot",
+        "troubleshoot/launcher/launcher-error-codes"
+      ],
+    },
   ],
   contributing: [
     "contribute/roadmap-contribute",
