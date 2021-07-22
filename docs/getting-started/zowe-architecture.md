@@ -12,16 +12,29 @@ Zowe components can be categorized by location: server or client. While the clie
 
 Zowe server components can be installed and run entirely on z/OS, but a subset of the components can alternatively run on Linux or z/Linux via Docker. While on z/OS, many of these components run under Unix System Services (USS). The ones that do not run under USS must remain on z/OS when using Docker in order to provide connectivity to the mainframe.
 
-## Zowe architecture with high availability Enablement on Sysplex
+## Zowe architecture with high availability enablement on Sysplex
 
 <Badge text="Technical Preview"/> The Zowe high availability enablement on Sysplex is a technical preview. 
 
+The following diagram depicts the difference in locations of Zowe components when deploying Zowe into Sysplex with high availability enabled as opposed to running all components on a single z/OS system.  
 
-The following diagram depicts the difference in locations of Zowe components when deploying Zowe into Sysplex with high availability enabled as opposed to running all components on a single z/OS system.
+![Zowe Architecture Diagram with High Availability Enablement](../images/common/zowe-architecture-lpar.png)
 
-![Zowe Architecture Diagram with High Availability Enablement](../images/common/zowe-architecture-ha.png)
+To enable high availability for Zowe, the `ZWESLSTC` started task is used instead of using `ZWESVSTC`. Also, the configuration details are held in a `zowe.yaml` configuration file instead of `instance.env`. `zowe.yaml` contains settings for each high availability instance that the launcher starts. 
 
-Instead of using started task `ZWESVSTC`, to enable high availability for Zowe, `ZWESLSTC` started task is used. Also a new YAML configuration file is required to customize each high availability instance. To learn more about Zowe with high availability enablement, please check [Zowe high availability installation roadmap](../user-guide/install-ha-sysplex.md).
+The diagram above shows that `ZWESLSTC` has started two Zowe instances running on two separate LPARs that can be on the same, or different, sysplexes.  
+- The Sysplex distributor port sharing enables the API Gateway 7554 ports to be shared so incoming requests can be routed to either the gateway on LPAR A or LPAR B.  
+- The discovery servers on each LPAR communicate with each other and share their registered instances, which allows the API gateway on LPAR A to dispatch APIs to components either on its own LPAR, or else to components on LPAR B.  As indicated on the diagram, each component has two input lines: one from the API gateway on its own LPAR and one from the gateway on the other LPAR.  When one of the LPARs goes down, the other LPAR remains operating within the sysplex providing high availability to clients that connect through the shared port irrespective of which Zowe instance is serving the API requests.
+
+The `zowe.yaml` file can be configured to start Zowe instances on more than two LPARS, and also to start more than one Zowe instance on a single LPAR, providing a grid cluster of Zowe components that can meet availability and scalability requirements.  
+
+Each LPAR's configuration entries in `zowe.yaml` control which components will be started. This allows you to start just the desktop and API Mediation Layer on the first LPAR, and start all of the Zowe components on the second LPAR. Because the desktop on the first LPAR is available to the second LPAR's gateway, all desktop traffic will be routed there.  
+
+The caching services for each Zowe instance, whether on the same LPAR or distributed across the sysplex, are connected to each other by the same shared VSMA file.  This allows state sharing so that each instance behaves similarly to the user irrespective of where their request is routed.  
+
+For simplification of the diagram above, the Zowe Explorer API and UI servers are not shown as being started. If you define them to be started in the `zowe.yaml` configuration file, they would behave the same as the servers illustrated. That means, they will register to their API discovery server which will then communicate with other discovery servers on other Zowe instances on either the same or other LPARs. The API traffic received by any API gateway on any Zowe instance will be routed to any of the Zowe Explorer API or UI components that are available.  
+
+To learn more about Zowe with high availability enablement, see [Zowe high availability installation roadmap](../user-guide/install-ha-sysplex.md).
 
 ## Zowe architecture when using Docker image
 

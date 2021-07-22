@@ -276,7 +276,15 @@ module.exports = {
       items: [
         "troubleshoot/ze/troubleshoot-ze",
         "troubleshoot/ze/known-ze",
-        "troubleshoot/ze/ze-issue",
+        "troubleshoot/ze/ze-issues",
+      ],
+    },
+    {
+      type: "category",
+      label: "Zowe Launcher",
+      items: [
+        "troubleshoot/launcher/launcher-troubleshoot",
+        "troubleshoot/launcher/launcher-error-codes"
       ],
     },
   ],
