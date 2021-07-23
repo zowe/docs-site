@@ -54,21 +54,28 @@
     `apiml.service.customMetadata.apiml.corsEnabled`   
     
  * **customMetadata.apiml.lb.type**
-    This parameter is part of the load balancing configuration for the Deterministic Routing capability, where the client can now specify 
-    which instance of a service the user should be routed to. This parameter can be set to the following values:
+   
+    This parameter is part of the load balancing configuration for the Deterministic Routing capability. Through this parameter, the service can specify which load balancing schema it requires. If you don't specify this parameter, the service will be routed using basic round robin schema. This parameter can be set to the following values:
+   
     * **`headerRequest`**
     
-    Use this value to check the request header to verify if this header
-    contains the service ID and if a match is present on the specified target server
+    This applies the Header Request load balancing schema. Clients can call API Gateway and provide special header with the value of reuqested instanceId. The gateway will understand this as a Client's request to be routed to such instance. Clients have several possibilities how they can understand the topology of service instances: To name a few: the `/eureka/apps` endpoint on Discovery service or the `/gateway/services` endpoint on Gateway, that both provide this information. Client can then request a specific instance through using the special header described below.
+
+    The header name is `X-InstanceId` and sample value is `discoverable-client:discoverableclient:10012`. This is identical to `instanceId` property in Discovery service's registration.
+    
+    In combination with enabling [Routed instance header](../../user-guide/api-mediation/api-gateway-configuration.md#routed-instance-header), the client can achieve sticky session functionality. The benefit of this approach is that there is no session on Gateway and the client is in full control over whether he wants to go to a specific instance or not. 
+    
+    1) The client calls API Gateway and gets routed to a service
+    2) The client reads the `X-InstanceId` header value from the response to understand the service was routed to
+    3) On all subsequent requests, client provides the `X-InstanceId` header with previously read value to get routed to the same instance of service
     
     * **`authentication`**
-    
-    Use this value if the user is authenticated. The instance information is cached and 
-    used afterwards to forward the client request to the specified target server
+
+   This applies the Authentication load balancing schema. This is sticky session functionality based on user's ID. The user's ID is understood from Zowe SSO token on client's request. Requests without the token will be routed in round robin fashion. The user is first routed in round robin fashion and then the routed instance Id is cached. The instance information is used for subsequent requests to route the client to the cached target service instance. This session's default expiration time is 8 hours. After the session expires, the process initiates again.
+
+    In default configuration, this cache is stored on each gateway instance. You can choose to distribute this cache between gateway's instances. To do so, please follow [Distributed load balancer cache](../../user-guide/api-mediation/api-gateway-configuration.md#distributed-load-balancer-cache)
            
  * **customMetadata.apiml.lb.cacheRecordExpirationTimeInHours**  
     
-    When the property `customMetadata.apiml.lb.type` is set to `authentication`, the user can also define the expiration 
-    time for the selected instance information that is cached. This property aims to prevent any discrepancy which might possibly occur if 
-    the required target server is not available anymore. The default value is 8 hours.  
+    When the property `customMetadata.apiml.lb.type` is set to `authentication`, the user can also define the expiration time for the selected instance information that is cached. This property aims to prevent any discrepancy which might possibly occur if the required target server is not available anymore. The default value is 8 hours.  
 

@@ -19,6 +19,8 @@ Follow the procedures in the following sections to customize Gateway parameters 
   * [CORS handling](#cors-handling)
   * [Encoded slashes](#encoded-slashes)
   * [Connection limits](#connection-limits)
+  * [Routed instance header](#routed-instance-header)
+  * [Distributed load balancer cache](#distributed-load-balancer-cache)
   * [Replace or remove catalog with another service](#replace-or-remove-catalog-with-another-service)
   * [API Mediation Layer as a standalone component](#api-mediation-layer-as-a-standalone-component)
   * [SAF resource checking](#saf-resource-checking)
@@ -225,6 +227,28 @@ Use the following procedure to change the number of concurrent connections.
 1. Open the file `<Zowe instance directory>/instance.env`.
 2. Find the property `APIML_MAX_CONNECTIONS_PER_ROUTE` and set the value to an appropriate positive integer.
 3. Find the property `APIML_MAX_TOTAL_CONNECTIONS` and set the value to an appropriate positive integer.
+
+## Routed instance header
+
+API Gateway can output a special header, that contains the value of instance ID of API service, that the request has been routed to. This is useful for understanding which service instance has been called.
+
+The header name is `X-InstanceId` and sample value is `discoverable-client:discoverableclient:10012`. This is identical to `instanceId` property in Discovery service's registration.
+
+**Follow these steps:**
+
+1. Open the file `<Zowe instance directory>/instance.env`.
+2. Add the property with value `APIML_ROUTING_INSTANCEIDHEADER=true`.
+3. Restart Zowe.
+
+## Distributed load balancer cache
+
+You can choose to distribute load balancer cache between API Gateway's instances. To do so, the caching service is required to be running. Gateway service instances are reuqired to have the same DN (Distinguished name) on the server certificate.
+
+**Follow these steps:**
+
+1. Open the file `<Zowe instance directory>/instance.env`.
+2. Add the property with value `APIML_LOADBALANCER_DISTRIBUTE=true`.
+3. Restart Zowe.
 
 ## Replace or remove the Catalog with another service
 
