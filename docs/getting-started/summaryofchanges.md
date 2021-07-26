@@ -36,7 +36,7 @@ Learn about what is new, changed, or removed in Zowe&trade; in version 1.22.0 an
 
 Welcome to the Version 1.22.0 release of Zowe! You can find some of the highlights included in this release in the **Notable changes** section. To see a full list of release enhancements and fixes, see **New features and enhancements** and **Bug fixes**. 
 
-**Release demo:** Join the Zowe System Demo on June 21 to see a demo of what's new in this release, and ask the community questions. Check out the [Zowe calendar](https://lists.openmainframeproject.org/g/zowe-dev/calendar) for detailed call-in information.
+**Blog and video:** Check out [this blog](https://www.openmainframeproject.org/blog/2021/07/07/zowe-1-22-release-highlights-demo-video) that summarizes some of the major enhancements and changes for this release. You can also watch a [video](https://youtu.be/BYG2Vb4QkYM) on Open Mainframe Project’s Youtube Channel see a demo of what's new in this release. 
 
 **Download v1.22.0 build:** Want to try new features as soon as possible? You can download the v1.22.0 build from [Zowe.org](https://www.zowe.org/download.html).
 
