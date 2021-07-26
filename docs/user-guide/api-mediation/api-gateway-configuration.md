@@ -230,9 +230,11 @@ Use the following procedure to change the number of concurrent connections.
 
 ## Routed instance header
 
-API Gateway can output a special header, that contains the value of instance ID of API service, that the request has been routed to. This is useful for understanding which service instance has been called.
+The API Gateway can output a special header that contains the value of the instance ID of the API service that the request has been routed to. This is useful for understanding which service instance is being called.
 
-The header name is `X-InstanceId` and sample value is `discoverable-client:discoverableclient:10012`. This is identical to `instanceId` property in Discovery service's registration.
+The header name is `X-InstanceId`, and the sample value is `discoverable-client:discoverableclient:10012`. This is identical to `instanceId` property in Discovery service's registration.
+
+Use the following procedure to output a special header that contains the value of the instance ID of the API service.
 
 **Follow these steps:**
 
@@ -242,7 +244,9 @@ The header name is `X-InstanceId` and sample value is `discoverable-client:disco
 
 ## Distributed load balancer cache
 
-You can choose to distribute load balancer cache between API Gateway's instances. To do so, the caching service is required to be running. Gateway service instances are reuqired to have the same DN (Distinguished name) on the server certificate.
+You can choose to distribute the load balancer cache between API Gateway's instances. To distribute the load balancer cache is is necessary that the caching service is running. Gateway service instances are reuqired to have the same DN (Distinguished name) on the server certificate.
+
+Use the following procedure to distribute the load balancer cache between API Gateway's instances.
 
 **Follow these steps:**
 
@@ -281,7 +285,7 @@ A value can also be applied to `API_GATEWAY_CATALOG_ID`.
 - If the application contains the `homePageUrl` the link is displayed without the `UP` information.
 - If the application contains the `statusPageRelativeUrl` then `UP` or `DOWN` is displayed based on the `statusPage` without the link.
 
-Use the following procedure to change or replace the Catalog service:
+Use the following procedure to change or replace the Catalog service.
 
 **Follow these steps:**
 
