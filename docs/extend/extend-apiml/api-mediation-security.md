@@ -591,7 +591,7 @@ To use this library, use the procedure described in this section.
         </dependency>
         ```
 
-2. In your application, create your java class which will be used to create an instance of `ZaasClient`, which enables you to use its method to login, query, and to issue passTicket.
+2. In your application, create your Java class which will be used to create an instance of `ZaasClient`, which enables you to use its method to login, query, and to issue a PassTicket.
 
 3. To use `zaas-client`, provide a property file for configuration.
 
@@ -610,8 +610,12 @@ To use this library, use the procedure described in this section.
         private String trustStoreType;
         private String trustStorePath;
         private String trustStorePassword;
+        private boolean httpOnly;
     }
     ```
+    
+    **Note:** If `httpOnly` property is set to true, the ZAAS Client will access the API ML via HTTP protocol without TLS. 
+    This meant for z/OS configuration with AT-TLS that will ensure that TLS and the required client certificates are used.
 
 4. Create an instance of `ZaasClient` in your class and provide the `configProperties` object.
 
