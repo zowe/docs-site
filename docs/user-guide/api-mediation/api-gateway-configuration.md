@@ -244,7 +244,7 @@ Use the following procedure to output a special header that contains the value o
 
 ## Distributed load balancer cache
 
-You can choose to distribute the load balancer cache between API Gateway's instances. To distribute the load balancer cache is is necessary that the caching service is running. Gateway service instances are reuqired to have the same DN (Distinguished name) on the server certificate.
+You can choose to distribute the load balancer cache between API Gateway's instances. To distribute the load balancer cache it is necessary that the caching service is running. Gateway service instances are reuqired to have the same DN (Distinguished name) on the server certificate.
 
 Use the following procedure to distribute the load balancer cache between API Gateway's instances.
 
