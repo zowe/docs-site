@@ -84,18 +84,42 @@ Use the following procedure to use _Gradle_ as your build automation system.
    
 4.  In the same `build.gradle` file, add the necessary dependencies for your service. If you use the _SpringEnabler_ from the Zowe Artifactory, add the following code block to your `build.gradle` script:
 
-    Use the corresponding artifact according to the Spring version you are using.
+    Use the corresponding artifact according to the Zowe APIML version you are using.
 
-    - For Spring boot version 2.1.1, use the following artifact:
+    - For Zowe APIML versions greater than 1.23.5 use the following artifact:
+
+        ```groovy
+        implementation "org.zowe.apiml.sdk:onboarding-enabler-spring:$zoweApimlVersion"
+        ```
+
+    - For Zowe APIML version 1.23.5 use the following artifact:
+
+        ```groovy
+        implementation "org.zowe.apiml.sdk:onboarding-enabler-spring-v2-springboot-2.3.12.RELEASE:$zoweApimlVersion"
+        ```
+
+    - For Zowe APIML versions 1.22.3, 1.22.4, and 1.23.0 - 1.23.4 use the following artifact:
+
+        ```groovy
+        implementation "org.zowe.apiml.sdk:onboarding-enabler-spring-v2-springboot-2.3.11.RELEASE:$zoweApimlVersion"
+        ```
+
+    - For Zowe APIML versions 1.21.6 - 1.21.13 and 1.22.0 - 1.22.2 use the following artifact:
+
+        ```groovy
+        implementation "org.zowe.apiml.sdk:onboarding-enabler-spring-v2-springboot-2.3.9.RELEASE:$zoweApimlVersion"
+        ```
+
+    - For Zowe APIML versions earlier than 1.21.6 that use Spring 2.1.1 use the following artifact:
 
         ```groovy
         implementation "org.zowe.apiml.sdk:onboarding-enabler-spring-v2-springboot-2.1.1.RELEASE:$zoweApimlVersion"
         ```
 
-    - For Spring boot version 1.5.9, use the following artifact:
+    - For Zowe APIML versions earlier than 1.21.6 that use Spring 1.5.9 use the following artifact:
 
         ```groovy
-        implementation "org.zowe.apiml.sdk:onboarding-enabler-spring-v1-springboot-2.1.1.RELEASE:$zoweApimlVersion"
+        implementation "org.zowe.apiml.sdk:onboarding-enabler-spring-v1-springboot-1.5.9.RELEASE:$zoweApimlVersion"
         ```
 
     **Notes:**
@@ -124,30 +148,69 @@ Use the following procedure if you use _Maven_ as your build automation system.
     </repositories>
     ```
    
-    ```
     **Tip:** If you want to use snapshot version, replace libs-release with libs-snapshot in the repository url and change snapshots->enabled to true.
 
-2. Add the proper dependencies 
-  
-   2.1 For spring version 2.1.1, use the following artifact 
+2. Add the proper dependencies
 
-   ```maven
-   <dependency>
-       <groupId>org.zowe.apiml.sdk</groupId>
-       <artifactId>onboarding-enabler-spring-v2-springboot-2.1.1.RELEASE</artifactId>
-       <version>$zoweApimlVersion</version>
-   </dependency>
-    ```
+    - For Zowe APIML versions greater than 1.23.5 use the following artifact:
 
-   2.2 For spring version 1.5.9, use the following artifact 
+        ```XML
+        <dependency>
+            <groupId>org.zowe.apiml.sdk</groupId>
+            <artifactId>onboarding-enabler-spring</artifactId>
+            <version>$zoweApimlVersion</version>
+        </dependency>
+        ```
 
-   ```maven
-   <dependency>
-       <groupId>org.zowe.apiml.sdk</groupId>
-       <artifactId>onboarding-enabler-spring-v1-springboot-2.1.1.RELEASE</artifactId>
-       <version>$zoweApimlVersion</version>
-   </dependency>
-    ```
+    - For Zowe APIML version 1.23.5 use the following artifact:
+
+        ```XML
+        <dependency>
+            <groupId>org.zowe.apiml.sdk</groupId>
+            <artifactId>onboarding-enabler-spring-v2-springboot-2.3.12.RELEASE</artifactId>
+            <version>$zoweApimlVersion</version>
+        </dependency>
+        ```
+
+    - For Zowe APIML versions 1.22.3, 1.22.4, and 1.23.0 - 1.23.4 use the following artifact:
+
+        ```XML
+        <dependency>
+            <groupId>org.zowe.apiml.sdk</groupId>
+            <artifactId>onboarding-enabler-spring-v2-springboot-2.3.11.RELEASE</artifactId>
+            <version>$zoweApimlVersion</version>
+        </dependency>
+        ```
+
+    - For Zowe APIML versions 1.21.6 - 1.21.13 and 1.22.0 - 1.22.2 use the following artifact:
+
+        ```XML
+        <dependency>
+            <groupId>org.zowe.apiml.sdk</groupId>
+            <artifactId>onboarding-enabler-spring-v2-springboot-2.3.9.RELEASE</artifactId>
+            <version>$zoweApimlVersion</version>
+        </dependency>
+        ```
+
+    - For Zowe APIML versions earlier than 1.21.6 that use Spring 2.1.1 use the following artifact:
+
+        ```XML
+        <dependency>
+            <groupId>org.zowe.apiml.sdk</groupId>
+            <artifactId>onboarding-enabler-spring-v2-springboot-2.1.1.RELEASE</artifactId>
+            <version>$zoweApimlVersion</version>
+        </dependency>
+        ```
+
+    - For Zowe APIML versions earlier than 1.21.6 that use Spring 1.5.9 use the following artifact:
+
+        ```XML
+        <dependency>
+            <groupId>org.zowe.apiml.sdk</groupId>
+            <artifactId>onboarding-enabler-spring-v1-springboot-1.5.9.RELEASE</artifactId>
+            <version>$zoweApimlVersion</version>
+        </dependency>
+        ```
 
 3. In the directory of your project, run the `mvn clean package` command to build the project.
 
@@ -294,10 +357,15 @@ apiml:
             applid: ZOWEAPPL
 
         apiInfo:
-            -   apiId: org.zowe.sampleservice
+            -   apiId: zowe.apiml.sampleservice
                 version: 1.0.0
                 gatewayUrl: api/v1
                 swaggerUrl: ${apiml.service.scheme}://${apiml.service.hostname}:${apiml.service.port}${apiml.service.contextPath}/api-doc
+                documentationUrl: https://www.zowe.org
+            -   apiId: zowe.apiml.sampleservice
+                version: 2.0.0
+                gatewayUrl: api/v2
+                swaggerUrl: ${apiml.service.scheme}://${apiml.service.hostname}:${apiml.service.port}${apiml.service.contextPath}/api-doc?group=apiv2
                 documentationUrl: https://www.zowe.org
 
         catalog:
@@ -455,7 +523,27 @@ Use the following procedure to add Swagger API documentation to your project.
             return new Docket(DocumentationType.SWAGGER_2)
                 .select()
                 .apis(RequestHandlerSelectors.any())
-                .paths(PathSelectors.any())
+                .paths(PathSelectors.ant("/api/v1/**"))
+                .build()
+                .apiInfo(new ApiInfo(
+                    "Spring REST API",
+                    "Example of REST API",
+                    "1.0.0",
+                    null,
+                    null,
+                    null,
+                    null,
+                    new ArrayList<>()
+                ));
+        }
+
+        @Bean
+        public Docket apiv2() {
+            return new Docket(DocumentationType.SWAGGER_2)
+                .groupName("apiv2")
+                .select()
+                .apis(RequestHandlerSelectors.any())
+                .paths(PathSelectors.ant("/api/v2/**"))
                 .build()
                 .apiInfo(new ApiInfo(
                     "Spring REST API",
@@ -482,7 +570,7 @@ see [Springfox documentation](https://springfox.github.io/springfox/docs/snapsho
 Once you build and start your service successfully, you can use the option of validating that your service is registered correctly with the API ML Discovery Service.
 
 **Follow these steps:**
-  1. [Validate successful onboarding](./onboard-overview.md#validating-successful-onboarding)
+  1. [Validate successful onboarding](./onboard-overview.md#verify-successful-onboarding-to-the-api-ml)
  
   2. Check that you can access your API service endpoints through the Gateway.
 

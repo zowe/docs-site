@@ -78,7 +78,7 @@ opts.push(parameters(customParameters))
 // set build properties
 properties(opts)
 
-node ('ibm-jenkins-slave-dind') {
+node ('zowe-jenkins-agent-dind') {
   currentBuild.result = 'SUCCESS'
 
   // if we are on master, or v?.?.? / v?.?.x branch, we allow publish
@@ -136,7 +136,7 @@ node ('ibm-jenkins-slave-dind') {
     stage('build') {
       ansiColor('xterm') {
         sh 'npm install'
-        sh "PUBLISH_TARGET_PATH=${publishTargetPath} NODE_OPTIONS=--max_old_space_size=4096 npm run docs:build"
+        sh "PUBLISH_TARGET_PATH=${publishTargetPath} NODE_OPTIONS=--max_old_space_size=4096 npm run build"
       }
     }
 
@@ -164,15 +164,14 @@ node ('ibm-jenkins-slave-dind') {
             sh 'npm run docs:pdf'
           }
         }
-        if (fileExists('.deploy/.pdf/out/Zowe_Documentation.pdf')) {
-          def publishTargetPathConverted = publishTargetPath.replaceAll(/\./, '-')
-          sh "cp .deploy/.pdf/out/Zowe_Documentation.pdf .deploy/${publishTargetPathConverted}/"
+        if (fileExists('static/zowe-docs.pdf')) {
+          def currentVersion = this.steps.sh(
+            script: "node -e 'const config = require(\"./docusaurus.config.js\");console.log(config.customFields.latestVersion);'",
+            returnStdout: true).trim()
+        sh "mv static/zowe-docs.pdf static/zowe-docs-${currentVersion}.pdf"
         } else {
           error 'Failed to generate PDF document.'
         }
-        // clean up pdf tmp folder
-        echo 'Cleaning up .deploy/.pdf ...'
-        sh 'rm -fr .deploy/.pdf || true'
       }
     }
 
@@ -180,14 +179,12 @@ node ('ibm-jenkins-slave-dind') {
       ansiColor('xterm') {
         withCredentials([usernamePassword(
           credentialsId: params.GITHUB_CREDENTIALS,
-          passwordVariable: 'GIT_PASSWORD',
-          usernameVariable: 'GIT_USERNAME'
+          passwordVariable: 'GIT_PASS',
+          usernameVariable: 'GIT_USER'
         )]) {
           sh """
-            cd .deploy
-            git add -A
-            git commit -s -m \"deploy from ${env.JOB_NAME}#${env.BUILD_NUMBER}\"
-            git push 'https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/${githubRepository}.git' ${params.PUBLISH_BRANCH}
+            export DEPLOYMENT_BRANCH=${params.PUBLISH_BRANCH}
+            npm run deploy
           """
         }
       }
@@ -229,3 +226,4 @@ node ('ibm-jenkins-slave-dind') {
     throw err
   }
 }
+

@@ -56,9 +56,9 @@ zowe --help-web
 
 You can download web help from this site in any of the following formats: HTML, a zip file that contains the HTML, or PDF:
 
-- <a href="../web_help/index.html" target="_blank">Browse Online</a>
-- <a href="../zowe_web_help.zip">Download (ZIP)</a>
-- <a href="../CLIReference_Zowe.pdf">Download (PDF)</a>
+- <a href="/stable/web_help/index.html" target="_blank">Browse Online</a>
+- <a href="/stable/zowe_web_help.zip" target="_blank">Download (ZIP)</a>
+- <a href="/stable/CLIReference_Zowe.pdf" target="_blank">Download (PDF)</a>
 
 ## How command precedence works
 
@@ -72,7 +72,7 @@ When you issue a command, the CLI *searches* for your command arguments in the f
 4. **Base profiles** that you create (can contain credentials for use with multiple services and/or an API ML login token).
 5. **Default option value**.
 
-If you omit an option from the command line, Zowe CLI searches for an environment variable that contains a value for the option. If no environment variable exists, the CLI checks your service profiles for the value. Base profiles provide values to other service profles such that you do not need to specify the same options (i.e. username and password) in multiple service profiles.
+If you omit an option from the command line, Zowe CLI searches for an environment variable that contains a value for the option. If no environment variable exists, the CLI checks your service profiles for the value. Base profiles provide values to other service profiles such that you do not need to specify the same options (i.e. username and password) in multiple service profiles.
 
 **Note:** If you do not provide a value using one of these methods, the default value is used. If a required option value is not located, you receive a syntax error message  `Missing Positional Argument` or `Missing Option`.
 
@@ -344,7 +344,7 @@ The following table provides examples of CLI options and the corresponding envir
 | Command Option          | Environment Variable           | Use Case   |
 | ----------------------- | ------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | `--user`                | `ZOWE_OPT_USER`                | Define your mainframe username to an environment variable to avoid specifying it on all commands or profiles.                           |
-| `--reject-unauthorized` | `ZOWE_OPT_REJECT_UNAUTHORIZED` | Define a value of `true` to the `--reject-unathorized` flag when you always require the flag and do not want to specify it on all commands or profiles. |
+| `--reject-unauthorized` | `ZOWE_OPT_REJECT_UNAUTHORIZED` | Define a value of `true` to the `--reject-unauthorized` flag when you always require the flag and do not want to specify it on all commands or profiles. |
 
 #### Setting environment variables in an automation server
 
@@ -627,7 +627,7 @@ The zos-tso command group lets you issue TSO commands and interact with TSO addr
 
 With the zos-tso command group, you can perform the following tasks:
 
-- Excecute REXX scripts
+- Execute REXX scripts
 - Create a TSO address space and issue TSO commands to the address space.
 - Review TSO command response data in Zowe CLI.
 
