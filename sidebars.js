@@ -11,7 +11,14 @@ module.exports = {
         "getting-started/freqaskques",
       ],
     },
-    "getting-started/summaryofchanges",
+    {
+      type: "category",
+      label: "Release notes",
+      items: [
+        "getting-started/release-notes/v1_23",
+        "getting-started/summaryofchanges",
+      ],
+    },
     {
       type: "category",
       label: "Zowe quick start",
@@ -276,7 +283,15 @@ module.exports = {
       items: [
         "troubleshoot/ze/troubleshoot-ze",
         "troubleshoot/ze/known-ze",
-        "troubleshoot/ze/ze-issue",
+        "troubleshoot/ze/ze-issues",
+      ],
+    },
+    {
+      type: "category",
+      label: "Zowe Launcher",
+      items: [
+        "troubleshoot/launcher/launcher-troubleshoot",
+        "troubleshoot/launcher/launcher-error-codes"
       ],
     },
   ],
@@ -313,7 +328,7 @@ module.exports = {
     {
       type: "link",
       label: "Third Party Software Requirements",
-      href: "https://github.com/zowe/docs-site/tree/master/src/tpsr/tpsr-v1.22.x.md",
+      href: "https://github.com/zowe/docs-site/tree/master/src/tpsr/tpsr-v1.23.x.md",
     },
   ],
 };

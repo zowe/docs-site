@@ -1,4 +1,4 @@
-const LATEST_VERSION = "v1.22.x";
+const LATEST_VERSION = "v1.23.x";
 const versionsArray = require("./versions.json");
 
 module.exports = {
@@ -73,17 +73,17 @@ module.exports = {
           docId: "appendix/zowe-cli-command-reference",
           position: "left",
         },
-        {
-          type: "docsVersionDropdown",
-          position: "right",
-          dropdownActiveClassDisabled: true,
-          dropdownItemsAfter: [
-            {
-              to: "/versions",
-              label: "All versions",
-            },
-          ],
-        },
+         {
+           type: "docsVersionDropdown",
+           position: "right",
+           dropdownActiveClassDisabled: true,
+           dropdownItemsAfter: [
+             {
+               to: "/versions",
+               label: "All versions",
+             },
+           ],
+         },
         {
           href: "https://github.com/zowe/docs-site",
           position: "right",
@@ -202,6 +202,9 @@ module.exports = {
               path: "stable",
               label: `${LATEST_VERSION}` + " LTS",
             },
+            "v1.22.x": {
+              label: "v1.22.x LTS",
+            },
             "v1.21.x": {
               label: "v1.21.x LTS",
             },
@@ -222,9 +225,6 @@ module.exports = {
             },
             "v1.15.x": {
               label: "v1.15.x LTS",
-            },
-            "v1.14.x": {
-              label: "v1.14.x LTS",
             },
           },
         },
