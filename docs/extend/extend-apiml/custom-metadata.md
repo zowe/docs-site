@@ -63,7 +63,7 @@
 
     The header name is `X-InstanceId`, and the sample value is `discoverable-client:discoverableclient:10012`. This is identical to `instanceId` property in Discovery service's registration.
     
-    In combination with enabling [Routed instance header](../../user-guide/api-mediation/api-gateway-configuration.md#routed-instance-header), the client can achieve sticky session functionality. The benefit of this approach is that there is no session on the Gateway, and the client ultimately decides whether or not to go to a specific instance. This method uses the following sequence:
+    In combination with enabling [Routed instance header](../../user-guide/api-mediation/api-gateway-configuration.md#routed-instance-header), the client can achieve sticky session functionality (Sticky session refers to the feature of many load balancing solutions to route the requests for a particular session to the same physical machine that serviced the first request for that session). The benefit of this approach is that there is no session on the Gateway, and the client ultimately decides whether or not to go to a specific instance. This method uses the following sequence:
     
     1) The client calls API Gateway and gets routed to a service.
     2) The client reads the `X-InstanceId` header value from the response to understand the service was routed to.
@@ -71,7 +71,7 @@
     
     * **`authentication`**
 
-   This value applies the Authentication load balancing schema. This is a sticky session functionality based on the ID of teh user. The user ID is understood from the Zowe SSO token on the client's request. Requests without the token are routed in a round robin fashion. The user is first routed in a round robin fashion, and then the routed instance Id is cached. The instance information is used for subsequent requests to route the client to the cached target service instance. This session's default expiration time is 8 hours. After the session expires, the process initiates again.
+   This value applies the Authentication load balancing schema. This is a sticky session functionality based on the ID of the user. The user ID is understood from the Zowe SSO token on the client's request. Requests without the token are routed in a round robin fashion. The user is first routed in a round robin fashion, and then the routed instance Id is cached. The instance information is used for subsequent requests to route the client to the cached target service instance. This session's default expiration time is 8 hours. After the session expires, the process initiates again.
 
     In default configuration, this cache is stored on each Gateway instance. You can choose to distribute this cache between the Gateway's instances. To do so, follow the steps described in [Distributed load balancer cache](../../user-guide/api-mediation/api-gateway-configuration.md#distributed-load-balancer-cache).
            
