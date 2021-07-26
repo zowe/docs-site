@@ -73,17 +73,17 @@ module.exports = {
           docId: "appendix/zowe-cli-command-reference",
           position: "left",
         },
-        // {
-        //   type: "docsVersionDropdown",
-        //   position: "right",
-        //   dropdownActiveClassDisabled: true,
-        //   dropdownItemsAfter: [
-        //     {
-        //       to: "/versions",
-        //       label: "All versions",
-        //     },
-        //   ],
-        // },
+         {
+           type: "docsVersionDropdown",
+           position: "right",
+           dropdownActiveClassDisabled: true,
+           dropdownItemsAfter: [
+             {
+               to: "/versions",
+               label: "All versions",
+             },
+           ],
+         },
         {
           href: "https://github.com/zowe/docs-site",
           position: "right",
@@ -197,36 +197,36 @@ module.exports = {
           showLastUpdateTime: true,
           routeBasePath: "/",
           lastVersion: "current",
-          //versions: {
-          //  current: {
-          //    path: "stable",
-          //    label: `${LATEST_VERSION}` + " LTS",
-          //  },
-          //  "v1.22.x": {
-          //    label: "v1.22.x LTS",
-          //  },
-          //  "v1.21.x": {
-          //    label: "v1.21.x LTS",
-          //  },
-          //  "v1.20.x": {
-          //    label: "v1.20.x LTS",
-          //  },
-          //  "v1.19.x": {
-          //    label: "v1.19.x LTS",
-          //  },
-          //  "v1.18.x": {
-          //    label: "v1.18.x LTS",
-          //  },
-          //  "v1.17.x": {
-          //    label: "v1.17.x LTS",
-          //  },
-          //  "v1.16.x": {
-          //    label: "v1.16.x LTS",
-          //  },
-          //  "v1.15.x": {
-          //    label: "v1.15.x LTS",
-          //  },
-          //},
+          versions: {
+            current: {
+              path: "stable",
+              label: `${LATEST_VERSION}` + " LTS",
+            },
+            "v1.22.x": {
+              label: "v1.22.x LTS",
+            },
+            "v1.21.x": {
+              label: "v1.21.x LTS",
+            },
+            "v1.20.x": {
+              label: "v1.20.x LTS",
+            },
+            "v1.19.x": {
+              label: "v1.19.x LTS",
+            },
+            "v1.18.x": {
+              label: "v1.18.x LTS",
+            },
+            "v1.17.x": {
+              label: "v1.17.x LTS",
+            },
+            "v1.16.x": {
+              label: "v1.16.x LTS",
+            },
+            "v1.15.x": {
+              label: "v1.15.x LTS",
+            },
+          },
         },
         theme: {
           customCss: require.resolve("./src/css/custom.css"),
