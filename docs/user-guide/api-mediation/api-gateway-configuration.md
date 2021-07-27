@@ -232,7 +232,7 @@ Use the following procedure to change the number of concurrent connections.
 
 The API Gateway can output a special header that contains the value of the instance ID of the API service that the request has been routed to. This is useful for understanding which service instance is being called.
 
-The header name is `X-InstanceId`, and the sample value is `discoverable-client:discoverableclient:10012`. This is identical to `instanceId` property in Discovery service's registration.
+The header name is `X-InstanceId`, and the sample value is `discoverable-client:discoverableclient:10012`. This is identical to `instanceId` property in the registration of the Discovery service.
 
 Use the following procedure to output a special header that contains the value of the instance ID of the API service.
 
@@ -244,9 +244,9 @@ Use the following procedure to output a special header that contains the value o
 
 ## Distributed load balancer cache
 
-You can choose to distribute the load balancer cache between API Gateway's instances. To distribute the load balancer cache it is necessary that the caching service is running. Gateway service instances are reuqired to have the same DN (Distinguished name) on the server certificate.
+You can choose to distribute the load balancer cache between instances of the API Gateway. To distribute the load balancer cache, it is necessary that the caching service is running. Gateway service instances are reuqired to have the same DN (Distinguished name) on the server certificate.
 
-Use the following procedure to distribute the load balancer cache between API Gateway's instances.
+Use the following procedure to distribute the load balancer cache between instances of the API Gateway.
 
 **Follow these steps:**
 
