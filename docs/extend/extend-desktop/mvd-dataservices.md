@@ -1,3 +1,9 @@
+---
+tags:
+  - Zowe
+  - Desktop
+---
+
 # Dataservices
 
 Dataservices are dynamic backend components of Zowe&trade; plug-in applications. You can optionally add them to your applications to make the application do more than receive static content from the proxy server. Each dataservice defines a URL space that the server can use to run extensible code from the application. Dataservices are mainly intended to create REST APIs and WebSocket channels.

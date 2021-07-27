@@ -1,3 +1,9 @@
+---
+tags:
+  - Zowe
+  - Desktop
+---
+
 # Building plugin apps
 You can build a plugin app by using the following steps as a model. Alternatively, you can follow the [Sample Angular App tutorial](https://github.com/zowe/sample-angular-app/blob/lab/step-1-hello-world/README.md).
 

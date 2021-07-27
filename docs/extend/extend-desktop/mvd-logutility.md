@@ -1,3 +1,9 @@
+---
+tags:
+  - Zowe
+  - Desktop
+---
+
 # Logging utility
 
 The `zlux-shared` repository provides a logging utility for use by dataservices and web content for an application plug-in.

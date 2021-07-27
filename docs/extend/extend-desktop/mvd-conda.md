@@ -1,3 +1,9 @@
+---
+tags:
+  - Zowe
+  - Desktop
+---
+
 # Using Conda to make and manage packages of Application Framework Plugins
 
 As Zowe is composed of components which can be extended by Plugins, 

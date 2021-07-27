@@ -1,3 +1,9 @@
+---
+tags:
+  - Zowe
+  - Desktop
+---
+
 # Internationalizing applications
 You can internationalize Zowe&trade; application plug-ins using Angular and React frameworks. Internationalized applications display in translated languages and include structures for ongoing translation updates.
 

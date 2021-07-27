@@ -1,3 +1,9 @@
+---
+tags:
+  - Zowe
+  - Desktop
+---
+
 # URI Broker
 
 The URI Broker is an object in the application plug-in web framework, which facilitates calls to the Zowe&trade; Application Server by constructing URIs that use the context from the calling application plug-in.
