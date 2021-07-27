@@ -22,7 +22,7 @@
 <p><code>dataSet</code>		 <em>(string)</em></p>
 <ul>
 <li>The data set (PDS member or physical sequential data set) to which you would
-like to upload content.</li>
+like to upload content\.</li>
 </ul>
 </li>
 </ul>
@@ -146,14 +146,15 @@ default token type, which is provided by 'zowe auth login'.</li>
 <h4>Examples</h4>
 <ul>
 <li>
-<p>Upload to &quot;ibmuser.cntl(iefbr14)&quot; from the file iefbr14.txt:</p>
+<p>Upload to &quot;ibmuser.cntl(iefbr14)&quot; from the file
+iefbr14.txt:</p>
 <ul>
 <li><code>zowe  zos-ftp upload file-to-data-set iefbr14.txt &quot;ibmuser.cntl(iefbr14)&quot;</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  zos-ftp upload file-to-data-set iefbr14.txt &quot;ibmuser.cntl(iefbr14)&quot;">Copy</button></li>
 </ul>
 </li>
 <li>
-<p>Upload to &quot;ibmuser.cntl(iefbr14)&quot; from the file iefbr14.txt
-with the DCB parameters:</p>
+<p>Upload to &quot;ibmuser.cntl(iefbr14)&quot; from the file
+iefbr14.txt with the DCB parameters:</p>
 <ul>
 <li><code>zowe  zos-ftp upload file-to-data-set iefbr14.txt &quot;ibmuser.cntl(iefbr14)&quot; --dcb &quot;RECFM=FB LRECL=326 BLKSIZE=23472&quot;</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  zos-ftp upload file-to-data-set iefbr14.txt &quot;ibmuser.cntl(iefbr14)&quot; --dcb &quot;RECFM=FB LRECL=326 BLKSIZE=23472&quot;">Copy</button></li>
 </ul>
