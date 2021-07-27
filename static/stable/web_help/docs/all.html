@@ -9,8 +9,8 @@
 <h2><a href="#zowe" name="zowe">zowe</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
 <p>Welcome to Zowe CLI!</p>
 <p>Zowe CLI is a command line interface (CLI) that provides a simple and streamlined way to interact with IBM z/OS.</p>
-<p>For additional Zowe CLI documentation, visit https://docs.zowe.org</p>
-<p>For Zowe CLI support, visit https://www.zowe.org</p>
+<p>For additional Zowe CLI documentation, visit <a href="https://docs.zowe.org">https://docs.zowe.org</a></p>
+<p>For Zowe CLI support, visit <a href="https://www.zowe.org">https://www.zowe.org</a></p>
 
 
 <h4>Global Options</h4>
@@ -204,12 +204,12 @@
 </ul><ul><li><a href="#zowe_zos-files_delete">delete | del</a><ul><li><a href="#zowe_zos-files_delete_data-set">data-set | ds</a></li>
 </ul><ul><li><a href="#zowe_zos-files_delete_data-set-vsam">data-set-vsam | vsam</a></li>
 </ul><ul><li><a href="#zowe_zos-files_delete_migrated-data-set">migrated-data-set | mds</a></li>
-</ul><ul><li><a href="#zowe_zos-files_delete_uss-file">uss-file | uss</a></li>
+</ul><ul><li><a href="#zowe_zos-files_delete_uss-file">uss-file | uf | uss</a></li>
 </ul><ul><li><a href="#zowe_zos-files_delete_zos-file-system">zos-file-system | zfs</a></li>
 </ul></li>
 </ul><ul><li><a href="#zowe_zos-files_download">download | dl</a><ul><li><a href="#zowe_zos-files_download_all-members">all-members | am</a></li>
 </ul><ul><li><a href="#zowe_zos-files_download_data-set">data-set | ds</a></li>
-</ul><ul><li><a href="#zowe_zos-files_download_uss-file">uss-file | uf</a></li>
+</ul><ul><li><a href="#zowe_zos-files_download_uss-file">uss-file | uf | uss</a></li>
 </ul></li>
 </ul><ul><li><a href="#zowe_zos-files_invoke">invoke | call</a><ul><li><a href="#zowe_zos-files_invoke_ams-file">ams-file | af</a></li>
 </ul><ul><li><a href="#zowe_zos-files_invoke_ams-statements">ams-statements | as</a></li>
@@ -217,7 +217,7 @@
 </ul><ul><li><a href="#zowe_zos-files_list">list | ls</a><ul><li><a href="#zowe_zos-files_list_all-members">all-members | am</a></li>
 </ul><ul><li><a href="#zowe_zos-files_list_data-set">data-set | ds</a></li>
 </ul><ul><li><a href="#zowe_zos-files_list_file-system">file-system | fs</a></li>
-</ul><ul><li><a href="#zowe_zos-files_list_uss-files">uss-files | uss</a></li>
+</ul><ul><li><a href="#zowe_zos-files_list_uss-files">uss-files | uf | uss</a></li>
 </ul></li>
 </ul><ul><li><a href="#zowe_zos-files_migrate">migrate | hmigr | hMigrate</a><ul><li><a href="#zowe_zos-files_migrate_data-set">data-set | ds</a></li>
 </ul></li>
@@ -515,14 +515,14 @@ CMCI.</p>
 <li>
 <p><code>name</code>		 <em>(string)</em></p>
 <ul>
-<li>The name of the CSD Group to add. The maximum length of the CSD Group name is
+<li>The name of the CSD Group to add\. The maximum length of the CSD Group name is
 eight characters</li>
 </ul>
 </li>
 <li>
 <p><code>csdList</code>		 <em>(string)</em></p>
 <ul>
-<li>The name of the CSD List to add the group to. The maximum length of the CSD
+<li>The name of the CSD List to add the group to\. The maximum length of the CSD
 List name is eight characters</li>
 </ul>
 </li>
@@ -643,15 +643,15 @@ named MYREG:</p>
 <li>
 <p><code>programName</code>		 <em>(string)</em></p>
 <ul>
-<li>The name of the new program to define. The maximum length of the program name
-is eight characters.</li>
+<li>The name of the new program to define\. The maximum length of the program name
+is eight characters\.</li>
 </ul>
 </li>
 <li>
 <p><code>csdGroup</code>		 <em>(string)</em></p>
 <ul>
 <li>The CICS system definition (CSD) Group for the new program that you want to
-define. The maximum length of the group name is eight characters.</li>
+define\. The maximum length of the group name is eight characters\.</li>
 </ul>
 </li>
 </ul>
@@ -769,22 +769,22 @@ the CSD group MYGRP:</p>
 <li>
 <p><code>transactionName</code>		 <em>(string)</em></p>
 <ul>
-<li>The name of the new transaction to define. The maximum length of the
-transaction name is four characters.</li>
+<li>The name of the new transaction to define\. The maximum length of the
+transaction name is four characters\.</li>
 </ul>
 </li>
 <li>
 <p><code>programName</code>		 <em>(string)</em></p>
 <ul>
-<li>The name of the program that the transaction uses. The maximum length of the
-program name is eight characters.</li>
+<li>The name of the program that the transaction uses\. The maximum length of the
+program name is eight characters\.</li>
 </ul>
 </li>
 <li>
 <p><code>csdGroup</code>		 <em>(string)</em></p>
 <ul>
 <li>The CICS system definition (CSD) Group for the new transaction that you want to
-define. The maximum length of the group name is eight characters.</li>
+define\. The maximum length of the group name is eight characters\.</li>
 </ul>
 </li>
 </ul>
@@ -902,15 +902,15 @@ to the region named MYREGION in the CSD group MYGRP:</p>
 <li>
 <p><code>urimapName</code>		 <em>(string)</em></p>
 <ul>
-<li>The name of the URIMAP to create. The maximum length of the urimap name is
-eight characters.</li>
+<li>The name of the URIMAP to create\. The maximum length of the urimap name is
+eight characters\.</li>
 </ul>
 </li>
 <li>
 <p><code>csdGroup</code>		 <em>(string)</em></p>
 <ul>
 <li>The CICS system definition (CSD) Group for the new urimap that you want to
-define. The maximum length of the group name is eight characters.</li>
+define\. The maximum length of the group name is eight characters\.</li>
 </ul>
 </li>
 </ul>
@@ -1069,7 +1069,7 @@ default token type, which is provided by 'zowe auth login'.</li>
 <ul>
 <li>
 <p>Define a URIMAP named URIMAPA to the region named MYREGION
-in the CSD group MYGRP where the host is www.example.com and the path is
+in the CSD group MYGRP where the host is <a href="http://www.example.com">www.example.com</a> and the path is
 /example/index.html:</p>
 <ul>
 <li><code>zowe  cics define urimap-client URIMAPA MYGRP --urimap-path /example/index.html --urimap-host www.example.com --region-name MYREGION</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  cics define urimap-client URIMAPA MYGRP --urimap-path /example/index.html --urimap-host www.example.com --region-name MYREGION">Copy</button></li>
@@ -1086,15 +1086,15 @@ requests</p>
 <li>
 <p><code>urimapName</code>		 <em>(string)</em></p>
 <ul>
-<li>The name of the URIMAP to create. The maximum length of the urimap name is
-eight characters.</li>
+<li>The name of the URIMAP to create\. The maximum length of the urimap name is
+eight characters\.</li>
 </ul>
 </li>
 <li>
 <p><code>csdGroup</code>		 <em>(string)</em></p>
 <ul>
 <li>The CICS system definition (CSD) Group for the new urimap that you want to
-define. The maximum length of the group name is eight characters.</li>
+define\. The maximum length of the group name is eight characters\.</li>
 </ul>
 </li>
 </ul>
@@ -1265,7 +1265,7 @@ default token type, which is provided by 'zowe auth login'.</li>
 <li>
 <p>Define a URIMAP named URIMAPA for the pipeline named PIPE123
 to the region named MYREGION in the CSD group MYGRP where the host is
-www.example.com and the path is /example/index.html:</p>
+<a href="http://www.example.com">www.example.com</a> and the path is /example/index.html:</p>
 <ul>
 <li><code>zowe  cics define urimap-pipeline URIMAPA MYGRP --urimap-path /example/index.html --urimap-host www.example.com --pipeline-name PIPE123 --region-name MYREGION</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  cics define urimap-pipeline URIMAPA MYGRP --urimap-path /example/index.html --urimap-host www.example.com --pipeline-name PIPE123 --region-name MYREGION">Copy</button></li>
 </ul>
@@ -1280,15 +1280,15 @@ www.example.com and the path is /example/index.html:</p>
 <li>
 <p><code>urimapName</code>		 <em>(string)</em></p>
 <ul>
-<li>The name of the URIMAP to create. The maximum length of the urimap name is
-eight characters.</li>
+<li>The name of the URIMAP to create\. The maximum length of the urimap name is
+eight characters\.</li>
 </ul>
 </li>
 <li>
 <p><code>csdGroup</code>		 <em>(string)</em></p>
 <ul>
 <li>The CICS system definition (CSD) Group for the new urimap that you want to
-define. The maximum length of the group name is eight characters.</li>
+define\. The maximum length of the group name is eight characters\.</li>
 </ul>
 </li>
 </ul>
@@ -1444,7 +1444,7 @@ default token type, which is provided by 'zowe auth login'.</li>
 <li>
 <p>Define a URIMAP named URIMAPA for the program named PGM123
 to the region named MYREGION in the CSD group MYGRP where the host is
-www.example.com and the path is /example/index.html:</p>
+<a href="http://www.example.com">www.example.com</a> and the path is /example/index.html:</p>
 <ul>
 <li><code>zowe  cics define urimap-server URIMAPA MYGRP --urimap-path /example/index.html --urimap-host www.example.com --program-name PGM123 --region-name MYREGION</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  cics define urimap-server URIMAPA MYGRP --urimap-path /example/index.html --urimap-host www.example.com --program-name PGM123 --region-name MYREGION">Copy</button></li>
 </ul>
@@ -1459,15 +1459,15 @@ www.example.com and the path is /example/index.html:</p>
 <li>
 <p><code>webserviceName</code>		 <em>(string)</em></p>
 <ul>
-<li>The name of the WEBSERVICE to create. The maximum length of the web service
-name is eight characters.</li>
+<li>The name of the WEBSERVICE to create\. The maximum length of the web service
+name is eight characters\.</li>
 </ul>
 </li>
 <li>
 <p><code>csdGroup</code>		 <em>(string)</em></p>
 <ul>
 <li>The CICS system definition (CSD) Group for the new web service that you want to
-define. The maximum length of the group name is eight characters.</li>
+define\. The maximum length of the group name is eight characters\.</li>
 </ul>
 </li>
 </ul>
@@ -1626,15 +1626,15 @@ file is /u/exampleapp/wsbind/example.log:</p>
 <li>
 <p><code>programName</code>		 <em>(string)</em></p>
 <ul>
-<li>The name of the program to delete. The maximum length of the program name is
-eight characters.</li>
+<li>The name of the program to delete\. The maximum length of the program name is
+eight characters\.</li>
 </ul>
 </li>
 <li>
 <p><code>csdGroup</code>		 <em>(string)</em></p>
 <ul>
-<li>The CICS system definition (CSD) Group for the program that you want to delete.
-The maximum length of the group name is eight characters.</li>
+<li>The CICS system definition (CSD) Group for the program that you want to
+delete\. The maximum length of the group name is eight characters\.</li>
 </ul>
 </li>
 </ul>
@@ -1752,15 +1752,15 @@ MYREGION:</p>
 <li>
 <p><code>transactionName</code>		 <em>(string)</em></p>
 <ul>
-<li>The name of the transaction to delete. The maximum length of the transaction
-name is four characters.</li>
+<li>The name of the transaction to delete\. The maximum length of the transaction
+name is four characters\.</li>
 </ul>
 </li>
 <li>
 <p><code>csdGroup</code>		 <em>(string)</em></p>
 <ul>
 <li>The CICS system definition (CSD) Group for the transaction that you want to
-delete. The maximum length of the group name is eight characters.</li>
+delete\. The maximum length of the group name is eight characters\.</li>
 </ul>
 </li>
 </ul>
@@ -1878,15 +1878,15 @@ MYREGION:</p>
 <li>
 <p><code>urimapName</code>		 <em>(string)</em></p>
 <ul>
-<li>The name of the urimap to delete. The maximum length of the urimap name is
-eight characters.</li>
+<li>The name of the urimap to delete\. The maximum length of the urimap name is
+eight characters\.</li>
 </ul>
 </li>
 <li>
 <p><code>csdGroup</code>		 <em>(string)</em></p>
 <ul>
-<li>The CICS system definition (CSD) Group for the urimap that you want to delete.
-The maximum length of the group name is eight characters.</li>
+<li>The CICS system definition (CSD) Group for the urimap that you want to delete\.
+The maximum length of the group name is eight characters\.</li>
 </ul>
 </li>
 </ul>
@@ -1998,15 +1998,15 @@ belonging to the csdgroup MYGRP:</p>
 <li>
 <p><code>webserviceName</code>		 <em>(string)</em></p>
 <ul>
-<li>The name of the web service to delete. The maximum length of the web service
-name is eight characters.</li>
+<li>The name of the web service to delete\. The maximum length of the web service
+name is eight characters\.</li>
 </ul>
 </li>
 <li>
 <p><code>csdGroup</code>		 <em>(string)</em></p>
 <ul>
 <li>The CICS system definition (CSD) Group for the web service that you want to
-delete. The maximum length of the group name is eight characters.</li>
+delete\. The maximum length of the group name is eight characters\.</li>
 </ul>
 </li>
 </ul>
@@ -2120,8 +2120,8 @@ MYREGION belonging to the csdgroup MYGRP:</p>
 <li>
 <p><code>urimapName</code>		 <em>(string)</em></p>
 <ul>
-<li>The name of the urimap to disable. The maximum length of the urimap name is
-eight characters.</li>
+<li>The name of the urimap to disable\. The maximum length of the urimap name is
+eight characters\.</li>
 </ul>
 </li>
 </ul>
@@ -2235,8 +2235,8 @@ MYREGION:</p>
 <li>
 <p><code>programName</code>		 <em>(string)</em></p>
 <ul>
-<li>The name of the program to discard. The maximum length of the program name is
-eight characters.</li>
+<li>The name of the program to discard\. The maximum length of the program name is
+eight characters\.</li>
 </ul>
 </li>
 </ul>
@@ -2354,8 +2354,8 @@ MYREGION:</p>
 <li>
 <p><code>transactionName</code>		 <em>(string)</em></p>
 <ul>
-<li>The name of the transaction to discard. The maximum length of the transaction
-name is four characters.</li>
+<li>The name of the transaction to discard\. The maximum length of the transaction
+name is four characters\.</li>
 </ul>
 </li>
 </ul>
@@ -2473,8 +2473,8 @@ MYREGION:</p>
 <li>
 <p><code>urimapName</code>		 <em>(string)</em></p>
 <ul>
-<li>The name of the urimap to discard. The maximum length of the urimap name is
-eight characters.</li>
+<li>The name of the urimap to discard\. The maximum length of the urimap name is
+eight characters\.</li>
 </ul>
 </li>
 </ul>
@@ -2588,8 +2588,8 @@ MYREGION:</p>
 <li>
 <p><code>urimapName</code>		 <em>(string)</em></p>
 <ul>
-<li>The name of the urimap to enable. The maximum length of the urimap name is
-eight characters.</li>
+<li>The name of the urimap to enable\. The maximum length of the urimap name is
+eight characters\.</li>
 </ul>
 </li>
 </ul>
@@ -2704,7 +2704,7 @@ CMCI.</p>
 <li>
 <p><code>resourceName</code>		 <em>(string)</em></p>
 <ul>
-<li>The name of the resource to get.</li>
+<li>The name of the resource to get\.</li>
 </ul>
 </li>
 </ul>
@@ -2929,15 +2929,15 @@ the region named MYREGION and display various fields as a table:</p>
 <li>
 <p><code>programName</code>		 <em>(string)</em></p>
 <ul>
-<li>The name of the program to install. The maximum length of the program name is
-eight characters.</li>
+<li>The name of the program to install\. The maximum length of the program name is
+eight characters\.</li>
 </ul>
 </li>
 <li>
 <p><code>csdGroup</code>		 <em>(string)</em></p>
 <ul>
 <li>The CICS system definition (CSD) Group for the program that you want to
-install. The maximum length of the group name is eight characters.</li>
+install\. The maximum length of the group name is eight characters\.</li>
 </ul>
 </li>
 </ul>
@@ -3055,15 +3055,15 @@ in the CSD group MYGRP:</p>
 <li>
 <p><code>transactionName</code>		 <em>(string)</em></p>
 <ul>
-<li>The name of the transaction to install. The maximum length of the transaction
-name is four characters.</li>
+<li>The name of the transaction to install\. The maximum length of the transaction
+name is four characters\.</li>
 </ul>
 </li>
 <li>
 <p><code>csdGroup</code>		 <em>(string)</em></p>
 <ul>
 <li>The CICS system definition (CSD) Group for the transaction that you want to
-install. The maximum length of the group name is eight characters.</li>
+install\. The maximum length of the group name is eight characters\.</li>
 </ul>
 </li>
 </ul>
@@ -3181,15 +3181,15 @@ MYREGION in the CSD group MYGRP:</p>
 <li>
 <p><code>urimapName</code>		 <em>(string)</em></p>
 <ul>
-<li>The name of the urimap to install. The maximum length of the urimap name is
-eight characters.</li>
+<li>The name of the urimap to install\. The maximum length of the urimap name is
+eight characters\.</li>
 </ul>
 </li>
 <li>
 <p><code>csdGroup</code>		 <em>(string)</em></p>
 <ul>
-<li>The CICS system definition (CSD) Group for the urimap that you want to install.
-The maximum length of the group name is eight characters.</li>
+<li>The CICS system definition (CSD) Group for the urimap that you want to
+install\. The maximum length of the group name is eight characters\.</li>
 </ul>
 </li>
 </ul>
@@ -3303,8 +3303,8 @@ belonging to the csdgroup MYGRP:</p>
 <li>
 <p><code>programName</code>		 <em>(string)</em></p>
 <ul>
-<li>The name of the program to refresh. The maximum length of the program name is
-eight characters.</li>
+<li>The name of the program to refresh\. The maximum length of the program name is
+eight characters\.</li>
 </ul>
 </li>
 </ul>
@@ -3425,14 +3425,14 @@ CMCI.</p>
 <li>
 <p><code>name</code>		 <em>(string)</em></p>
 <ul>
-<li>The name of the CSD Group to remove. The maximum length of the CSD Group name
+<li>The name of the CSD Group to remove\. The maximum length of the CSD Group name
 is eight characters</li>
 </ul>
 </li>
 <li>
 <p><code>csdList</code>		 <em>(string)</em></p>
 <ul>
-<li>The name of the CSD List to remove the group from. The maximum length of the
+<li>The name of the CSD List to remove the group from\. The maximum length of the
 CSD List name is eight characters</li>
 </ul>
 </li>
@@ -3627,9 +3627,9 @@ command.</p>
 <li>
 <p><code>configName</code>		 <em>(string)</em></p>
 <ul>
-<li>Setting name. Possible values:
-CredentialManager - The package name of a plugin that will override the default
-credential manager to allow for different credential storage methods.</li>
+<li>Setting name\. Possible values:
+CredentialManager \- The package name of a plugin that will override the
+default credential manager to allow for different credential storage methods\.</li>
 </ul>
 </li>
 <li>
@@ -3642,7 +3642,8 @@ credential manager to allow for different credential storage methods.</li>
 <h4>Examples</h4>
 <ul>
 <li>
-<p>Set the default credential manager to my-credential-manager:</p>
+<p>Set the default credential manager to
+my-credential-manager:</p>
 <ul>
 <li><code>zowe  config set CredentialManager my-credential-manager</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  config set CredentialManager my-credential-manager">Copy</button></li>
 </ul>
@@ -3772,8 +3773,8 @@ indicators:</p>
 </li>
 <li>
 <p>Call a stored procedure and pass values for two output
-parameters. The first output requires a 2-character buffer. The second output is
-a message that will be truncated to the length of the placeholder.:</p>
+parameters. The first output requires a 2-character buffer. The second output
+is a message that will be truncated to the length of the placeholder.:</p>
 <ul>
 <li><code>zowe  db2 call procedure &quot;DEMO.SP3(NULL, ?, ?)&quot; --parameters &quot;00&quot; &quot;message_placeholder_message_placeholder&quot;</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  db2 call procedure &quot;DEMO.SP3(NULL, ?, ?)&quot; --parameters &quot;00&quot; &quot;message_placeholder_message_placeholder&quot;">Copy</button></li>
 </ul>
@@ -4039,7 +4040,7 @@ the output.</p>
 <li>
 <p><code>name...</code>		 <em>(string)</em></p>
 <ul>
-<li>Specifies the name of the program(s) to query.</li>
+<li>Specifies the name of the program(s) to query\.</li>
 </ul>
 </li>
 </ul>
@@ -4456,8 +4457,8 @@ parameters:</p>
 <li>
 <p><code>name...</code>		 <em>(string)</em></p>
 <ul>
-<li>Specifies the name of transaction(s) to query. You can use an * character as a
-wildcard to select multiple transactions.</li>
+<li>Specifies the name of transaction(s) to query\. You can use an \* character as
+a wildcard to select multiple transactions\.</li>
 </ul>
 </li>
 </ul>
@@ -4727,8 +4728,8 @@ available for reference and use. This command submits a '/START REGION',
 <li>
 <p><code>name...</code>		 <em>(string)</em></p>
 <ul>
-<li>The name of the application program(s) to start. The maximum length of a
-program name is eight characters.</li>
+<li>The name of the application program(s) to start\. The maximum length of a
+program name is eight characters\.</li>
 </ul>
 </li>
 </ul>
@@ -4929,8 +4930,8 @@ connection parameters:</p>
 <li>
 <p><code>memberName</code>		 <em>(string)</em></p>
 <ul>
-<li>The name of the member that contains JCL for the region to start. The maximum
-length of the member name is eight characters. If no member name is specified,
+<li>The name of the member that contains JCL for the region to start\. The maximum
+length of the member name is eight characters\. If no member name is specified,
 the default member name is used</li>
 </ul>
 </li>
@@ -5139,8 +5140,8 @@ optional connection parameters:</p>
 <li>
 <p><code>name...</code>		 <em>(string)</em></p>
 <ul>
-<li>The name of the transaction(s) to start. The maximum length of a transaction
-name is eight characters.</li>
+<li>The name of the transaction(s) to start\. The maximum length of a transaction
+name is eight characters\.</li>
 </ul>
 </li>
 </ul>
@@ -5345,8 +5346,8 @@ the output.&quot;,</p>
 <li>
 <p><code>name...</code>		 <em>(string)</em></p>
 <ul>
-<li>The name( of the program(s) to stop. The maximum length of a program name is
-eight characters.</li>
+<li>The name( of the program(s) to stop\. The maximum length of a program name is
+eight characters\.</li>
 </ul>
 </li>
 </ul>
@@ -5770,8 +5771,8 @@ connection parameters:</p>
 <li>
 <p><code>name...</code>		 <em>(string)</em></p>
 <ul>
-<li>The name of the transaction(s) to stop. The maximum length of a transaction
-name is eight characters.</li>
+<li>The name of the transaction(s) to stop\. The maximum length of a transaction
+name is eight characters\.</li>
 </ul>
 </li>
 </ul>
@@ -5975,8 +5976,8 @@ submits a 'UPDATE PGM' or 'UPDATE TRAN' IMS command and returns the output.</p>
 <li>
 <p><code>name...</code>		 <em>(string)</em></p>
 <ul>
-<li>The name of the application program(s) to update. The maximum length of a
-program name is eight characters.</li>
+<li>The name of the application program(s) to update\. The maximum length of a
+program name is eight characters\.</li>
 </ul>
 </li>
 </ul>
@@ -6233,7 +6234,8 @@ run in a BMP type region:</p>
 </ul>
 </li>
 <li>
-<p>Unlock all programs beginning with PGM* to allow scheduling:</p>
+<p>Unlock all programs beginning with PGM* to allow
+scheduling:</p>
 <ul>
 <li><code>zowe  ims update program &quot;PGM*&quot; --lock &quot;OFF&quot;</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  ims update program &quot;PGM*&quot; --lock &quot;OFF&quot;">Copy</button></li>
 </ul>
@@ -6262,8 +6264,8 @@ scheduling specifying optional connection parameters:</p>
 <li>
 <p><code>name...</code>		 <em>(string)</em></p>
 <ul>
-<li>The name of the transaction(s) to update. The maximum length of a transaction
-name is eight characters.</li>
+<li>The name of the transaction(s) to update\. The maximum length of a transaction
+name is eight characters\.</li>
 </ul>
 </li>
 </ul>
@@ -6851,8 +6853,8 @@ default token type, which is provided by 'zowe auth login'.</li>
 <ul>
 <li>
 <p>The following sequence shows how to query a
-server-connection channel that is called NEWSVRCONN on an MQ queue manager - our
-example queue manager is called MQ99:</p>
+server-connection channel that is called NEWSVRCONN on an MQ queue manager -
+our example queue manager is called MQ99:</p>
 <ul>
 <li><code>zowe  mq run mqsc MQ99 &quot;DISPLAY CHANNEL(NEWSVRCONN)&quot;</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  mq run mqsc MQ99 &quot;DISPLAY CHANNEL(NEWSVRCONN)&quot;">Copy</button></li>
 </ul>
@@ -6860,7 +6862,7 @@ example queue manager is called MQ99:</p>
 </ul>
 <hr class="no-print">
 <a name="zowe_plugins"></a><h2 class="page-break"><a href="#zowe">zowe</a> › <a href="#zowe_plugins">plugins</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
-<p>Install and manage plug-ins</p>
+<p>Install and manage plug-ins.</p>
 <a class="cmd-anchor" name="zowe_plugins_install"></a><h3><a href="#zowe">zowe</a> › <a href="#zowe_plugins">plugins</a> › <a href="#zowe_plugins_install">install</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h3>
 <p>Install plug-ins to an application.</p>
 <h4>Usage</h4>
@@ -6871,19 +6873,19 @@ example queue manager is called MQ99:</p>
 <p><code>plugin...</code>		 <em>(string)</em></p>
 <ul>
 <li>
-<p>A space-separated list of plug-ins to install. A plug-in can be any format
-that is accepted by the `npm install` command (local directory, TAR file, git
-URL, public package, private package, etc...).</p>
+<p>A space\-separated list of plug\-ins to install\. A plug\-in can be any
+format that is accepted by the \<code>npm install\\</code> command (local directory, TAR
+file, git URL, public package, private package, etc\.\.\.)\.</p>
 <p>To use a relative local directory, at least one '/' or '' must exist in the
-plug-in path. For example, you have a local plug-in in a folder called
-'test-plugin' that you want to install. Specify the relative local directory
+plug\-in path\. For example, you have a local plug\-in in a folder called
+'test\-plugin' that you want to install\. Specify the relative local directory
 by issuing the following command:</p>
-<p>zowe plugins install ./test-plugin</p>
-<p>If you omit the './', then the install command looks for 'test-plugin' in an
-npm registry.</p>
-<p>If the plugin argument is omitted, the plugins.json file will determine which
-plug-ins are installed. For more information on the plugins.json file, see
-the --file option.</p>
+<p>zowe plugins install \./test\-plugin</p>
+<p>If you omit the '\./', then the install command looks for 'test\-plugin' in an
+npm registry\.</p>
+<p>If the plugin argument is omitted, the plugins\.json file will determine which
+plug\-ins are installed\. For more information on the plugins\.json file, see
+the \-\-file option\.</p>
 </li>
 </ul>
 </li>
@@ -6912,7 +6914,7 @@ after reinstalling or updating Zowe CLI.</p>
 <p>The npm registry that is used when installing remote packages. When this value
 is omitted, the value returned by `npm config get registry` is used.</p>
 <p>For more information about npm registries, see:
-https://docs.npmjs.com/misc/registry</p>
+<a href="https://docs.npmjs.com/misc/registry">https://docs.npmjs.com/misc/registry</a></p>
 </li>
 </ul>
 </li>
@@ -6926,7 +6928,7 @@ omitted, credentials from .npmrc file is used. If you used this flag once for
 specific registry, you don't have to use it again, it uses credentials from
 .npmrc file.</p>
 <p>For more information about npm registries, see:
-https://docs.npmjs.com/cli/adduser</p>
+<a href="https://docs.npmjs.com/cli/adduser">https://docs.npmjs.com/cli/adduser</a></p>
 </li>
 </ul>
 </li>
@@ -6992,8 +6994,8 @@ authorization(don't need to use this flag if you have already logged in before):
 <p><code>plugin...</code>		 <em>(string)</em></p>
 <ul>
 <li>
-<p>The name of the plug-in to uninstall.</p>
-<p>If the plug-in argument is omitted, no action is taken.</p>
+<p>The name of the plug\-in to uninstall\.</p>
+<p>If the plug\-in argument is omitted, no action is taken\.</p>
 </li>
 </ul>
 </li>
@@ -7017,8 +7019,8 @@ authorization(don't need to use this flag if you have already logged in before):
 <p><code>plugin...</code>		 <em>(string)</em></p>
 <ul>
 <li>
-<p>The name of the plug-in to update.</p>
-<p>If the plug-in argument is omitted, no action is taken.</p>
+<p>The name of the plug\-in to update\.</p>
+<p>If the plug\-in argument is omitted, no action is taken\.</p>
 </li>
 </ul>
 </li>
@@ -7032,7 +7034,7 @@ authorization(don't need to use this flag if you have already logged in before):
 <p>The npm registry that is used when installing remote packages. When this value
 is omitted, the value returned by `npm config get registry` is used.</p>
 <p>For more information about npm registries, see:
-https://docs.npmjs.com/misc/registry</p>
+<a href="https://docs.npmjs.com/misc/registry">https://docs.npmjs.com/misc/registry</a></p>
 </li>
 </ul>
 </li>
@@ -7046,7 +7048,7 @@ omitted, credentials from .npmrc file is used. If you used this flag once for
 specific registry, you don't have to use it again, it uses credentials from
 .npmrc file.</p>
 <p>For more information about npm registries, see:
-https://docs.npmjs.com/cli/adduser</p>
+<a href="https://docs.npmjs.com/cli/adduser">https://docs.npmjs.com/cli/adduser</a></p>
 </li>
 </ul>
 </li>
@@ -7077,9 +7079,9 @@ authorization(don't need to use this flag if you have already logged in before):
 <p><code>plugin</code>		 <em>(string)</em></p>
 <ul>
 <li>
-<p>The name of the plug-in to validate.
-Validation issues identified for this plug-in are displayed.</p>
-<p>If the plug-in argument is omitted, all installed plug-ins are validated.</p>
+<p>The name of the plug\-in to validate\.
+Validation issues identified for this plug\-in are displayed\.</p>
+<p>If the plug\-in argument is omitted, all installed plug\-ins are validated\.</p>
 </li>
 </ul>
 </li>
@@ -7101,7 +7103,7 @@ Validation issues identified for this plug-in are displayed.</p>
 </ul>
 <hr class="no-print">
 <a name="zowe_profiles"></a><h2 class="page-break"><a href="#zowe">zowe</a> › <a href="#zowe_profiles">profiles</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
-<p>Create and manage configuration profiles</p>
+<p>Create and manage configuration profiles.</p>
 <a name="zowe_profiles_create"></a><h2><a href="#zowe">zowe</a> › <a href="#zowe_profiles">profiles</a> › <a href="#zowe_profiles_create">create</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
 <p>Create new configuration profiles.</p>
 <a class="cmd-anchor" name="zowe_profiles_create_base-profile"></a><h3><a href="#zowe">zowe</a> › <a href="#zowe_profiles">profiles</a> › <a href="#zowe_profiles_create">create</a> › <a href="#zowe_profiles_create_base-profile">base-profile</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h3>
@@ -7113,8 +7115,8 @@ Validation issues identified for this plug-in are displayed.</p>
 <li>
 <p><code>profileName</code>		 <em>(string)</em></p>
 <ul>
-<li>Specifies the name of the new base profile. You can load this profile by using
-the name on commands that support the &quot;--base-profile&quot; option.</li>
+<li>Specifies the name of the new base profile\. You can load this profile by using
+the name on commands that support the &quot;\-\-base\-profile&quot; option\.</li>
 </ul>
 </li>
 </ul>
@@ -7186,22 +7188,22 @@ default token type, which is provided by 'zowe auth login'.</li>
 <ul>
 <li>
 <p>Create a profile called 'base1' to connect to host
-example.com and port 443:</p>
+<a href="http://example.com">example.com</a> and port 443:</p>
 <ul>
 <li><code>zowe  profiles create base-profile base1 --host example.com --port 443 --user admin --password 123456</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  profiles create base-profile base1 --host example.com --port 443 --user admin --password 123456">Copy</button></li>
 </ul>
 </li>
 <li>
 <p>Create a profile called 'base2' to connect to host
-example.com (default port - 443) and allow self-signed certificates:</p>
+<a href="http://example.com">example.com</a> (default port - 443) and allow self-signed certificates:</p>
 <ul>
 <li><code>zowe  profiles create base-profile base2 --host example.com --user admin --password 123456 --reject-unauthorized false</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  profiles create base-profile base2 --host example.com --user admin --password 123456 --reject-unauthorized false">Copy</button></li>
 </ul>
 </li>
 <li>
 <p>Create a profile called 'base3' to connect to host
-example.com and port 1443, not specifying a username or password so they are not
-stored on disk; these will need to be specified on every command:</p>
+<a href="http://example.com">example.com</a> and port 1443, not specifying a username or password so they are
+not stored on disk; these will need to be specified on every command:</p>
 <ul>
 <li><code>zowe  profiles create base-profile base3 --host example.com --port 1443</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  profiles create base-profile base3 --host example.com --port 1443">Copy</button></li>
 </ul>
@@ -7228,8 +7230,8 @@ your choice.</p>
 <li>
 <p><code>profileName</code>		 <em>(string)</em></p>
 <ul>
-<li>Specifies the name of the new cics profile. You can load this profile by using
-the name on commands that support the &quot;--cics-profile&quot; option.</li>
+<li>Specifies the name of the new cics profile\. You can load this profile by using
+the name on commands that support the &quot;\-\-cics\-profile&quot; option\.</li>
 </ul>
 </li>
 </ul>
@@ -7331,8 +7333,8 @@ host zos123 and port 1490:</p>
 <li>
 <p><code>profileName</code>		 <em>(string)</em></p>
 <ul>
-<li>Specifies the name of the new db2 profile. You can load this profile by using
-the name on commands that support the &quot;--db2-profile&quot; option.</li>
+<li>Specifies the name of the new db2 profile\. You can load this profile by using
+the name on commands that support the &quot;\-\-db2\-profile&quot; option\.</li>
 </ul>
 </li>
 </ul>
@@ -7399,8 +7401,8 @@ name.</p>
 <li>
 <p><code>profileName</code>		 <em>(string)</em></p>
 <ul>
-<li>Specifies the name of the new ims profile. You can load this profile by using
-the name on commands that support the &quot;--ims-profile&quot; option.</li>
+<li>Specifies the name of the new ims profile\. You can load this profile by using
+the name on commands that support the &quot;\-\-ims\-profile&quot; option\.</li>
 </ul>
 </li>
 </ul>
@@ -7497,8 +7499,8 @@ password for the IBM MQ System Console interface</p>
 <li>
 <p><code>profileName</code>		 <em>(string)</em></p>
 <ul>
-<li>Specifies the name of the new mq profile. You can load this profile by using
-the name on commands that support the &quot;--mq-profile&quot; option.</li>
+<li>Specifies the name of the new mq profile\. You can load this profile by using
+the name on commands that support the &quot;\-\-mq\-profile&quot; option\.</li>
 </ul>
 </li>
 </ul>
@@ -7585,8 +7587,8 @@ host zos123 and port 1234:</p>
 <li>
 <p><code>profileName</code>		 <em>(string)</em></p>
 <ul>
-<li>Specifies the name of the new ssh profile. You can load this profile by using
-the name on commands that support the &quot;--ssh-profile&quot; option.</li>
+<li>Specifies the name of the new ssh profile\. You can load this profile by using
+the name on commands that support the &quot;\-\-ssh\-profile&quot; option\.</li>
 </ul>
 </li>
 </ul>
@@ -7696,8 +7698,8 @@ preventing those values from being stored on disk:</p>
 <li>
 <p><code>profileName</code>		 <em>(string)</em></p>
 <ul>
-<li>Specifies the name of the new tso profile. You can load this profile by using
-the name on commands that support the &quot;--tso-profile&quot; option.</li>
+<li>Specifies the name of the new tso profile\. You can load this profile by using
+the name on commands that support the &quot;\-\-tso\-profile&quot; option\.</li>
 </ul>
 </li>
 </ul>
@@ -7814,8 +7816,8 @@ and region size of 8192, without storing the user account on disk:</p>
 <li>
 <p><code>profileName</code>		 <em>(string)</em></p>
 <ul>
-<li>Specifies the name of the new zftp profile. You can load this profile by using
-the name on commands that support the &quot;--zftp-profile&quot; option.</li>
+<li>Specifies the name of the new zftp profile\. You can load this profile by using
+the name on commands that support the &quot;\-\-zftp\-profile&quot; option\.</li>
 </ul>
 </li>
 </ul>
@@ -7923,8 +7925,8 @@ settings (port, timeout, etc.) to connect with the host system 123.:</p>
 <li>
 <p><code>profileName</code>		 <em>(string)</em></p>
 <ul>
-<li>Specifies the name of the new zosmf profile. You can load this profile by using
-the name on commands that support the &quot;--zosmf-profile&quot; option.</li>
+<li>Specifies the name of the new zosmf profile\. You can load this profile by
+using the name on commands that support the &quot;\-\-zosmf\-profile&quot; option\.</li>
 </ul>
 </li>
 </ul>
@@ -8069,9 +8071,9 @@ default, you will be prompted to confirm the profile removal.</p>
 <li>
 <p><code>profileName</code>		 <em>(string)</em></p>
 <ul>
-<li>Specifies the name of the base profile to be deleted. You can also load this
-profile by using the name on commands that support the &quot;--base-profile&quot;
-option.</li>
+<li>Specifies the name of the base profile to be deleted\. You can also load this
+profile by using the name on commands that support the &quot;\-\-base\-profile&quot;
+option\.</li>
 </ul>
 </li>
 </ul>
@@ -8105,9 +8107,9 @@ default, you will be prompted to confirm the profile removal.</p>
 <li>
 <p><code>profileName</code>		 <em>(string)</em></p>
 <ul>
-<li>Specifies the name of the cics profile to be deleted. You can also load this
-profile by using the name on commands that support the &quot;--cics-profile&quot;
-option.</li>
+<li>Specifies the name of the cics profile to be deleted\. You can also load this
+profile by using the name on commands that support the &quot;\-\-cics\-profile&quot;
+option\.</li>
 </ul>
 </li>
 </ul>
@@ -8141,9 +8143,9 @@ default, you will be prompted to confirm the profile removal.</p>
 <li>
 <p><code>profileName</code>		 <em>(string)</em></p>
 <ul>
-<li>Specifies the name of the db2 profile to be deleted. You can also load this
-profile by using the name on commands that support the &quot;--db2-profile&quot;
-option.</li>
+<li>Specifies the name of the db2 profile to be deleted\. You can also load this
+profile by using the name on commands that support the &quot;\-\-db2\-profile&quot;
+option\.</li>
 </ul>
 </li>
 </ul>
@@ -8177,9 +8179,9 @@ default, you will be prompted to confirm the profile removal.</p>
 <li>
 <p><code>profileName</code>		 <em>(string)</em></p>
 <ul>
-<li>Specifies the name of the ims profile to be deleted. You can also load this
-profile by using the name on commands that support the &quot;--ims-profile&quot;
-option.</li>
+<li>Specifies the name of the ims profile to be deleted\. You can also load this
+profile by using the name on commands that support the &quot;\-\-ims\-profile&quot;
+option\.</li>
 </ul>
 </li>
 </ul>
@@ -8213,9 +8215,9 @@ default, you will be prompted to confirm the profile removal.</p>
 <li>
 <p><code>profileName</code>		 <em>(string)</em></p>
 <ul>
-<li>Specifies the name of the mq profile to be deleted. You can also load this
-profile by using the name on commands that support the &quot;--mq-profile&quot;
-option.</li>
+<li>Specifies the name of the mq profile to be deleted\. You can also load this
+profile by using the name on commands that support the &quot;\-\-mq\-profile&quot;
+option\.</li>
 </ul>
 </li>
 </ul>
@@ -8249,9 +8251,9 @@ default, you will be prompted to confirm the profile removal.</p>
 <li>
 <p><code>profileName</code>		 <em>(string)</em></p>
 <ul>
-<li>Specifies the name of the ssh profile to be deleted. You can also load this
-profile by using the name on commands that support the &quot;--ssh-profile&quot;
-option.</li>
+<li>Specifies the name of the ssh profile to be deleted\. You can also load this
+profile by using the name on commands that support the &quot;\-\-ssh\-profile&quot;
+option\.</li>
 </ul>
 </li>
 </ul>
@@ -8285,9 +8287,9 @@ default, you will be prompted to confirm the profile removal.</p>
 <li>
 <p><code>profileName</code>		 <em>(string)</em></p>
 <ul>
-<li>Specifies the name of the tso profile to be deleted. You can also load this
-profile by using the name on commands that support the &quot;--tso-profile&quot;
-option.</li>
+<li>Specifies the name of the tso profile to be deleted\. You can also load this
+profile by using the name on commands that support the &quot;\-\-tso\-profile&quot;
+option\.</li>
 </ul>
 </li>
 </ul>
@@ -8321,9 +8323,9 @@ default, you will be prompted to confirm the profile removal.</p>
 <li>
 <p><code>profileName</code>		 <em>(string)</em></p>
 <ul>
-<li>Specifies the name of the zftp profile to be deleted. You can also load this
-profile by using the name on commands that support the &quot;--zftp-profile&quot;
-option.</li>
+<li>Specifies the name of the zftp profile to be deleted\. You can also load this
+profile by using the name on commands that support the &quot;\-\-zftp\-profile&quot;
+option\.</li>
 </ul>
 </li>
 </ul>
@@ -8357,9 +8359,9 @@ default, you will be prompted to confirm the profile removal.</p>
 <li>
 <p><code>profileName</code>		 <em>(string)</em></p>
 <ul>
-<li>Specifies the name of the zosmf profile to be deleted. You can also load this
-profile by using the name on commands that support the &quot;--zosmf-profile&quot;
-option.</li>
+<li>Specifies the name of the zosmf profile to be deleted\. You can also load this
+profile by using the name on commands that support the &quot;\-\-zosmf\-profile&quot;
+option\.</li>
 </ul>
 </li>
 </ul>
@@ -8383,7 +8385,7 @@ be displayed before deletion occurs.</li>
 </li>
 </ul>
 <a name="zowe_profiles_list"></a><h2><a href="#zowe">zowe</a> › <a href="#zowe_profiles">profiles</a> › <a href="#zowe_profiles_list">list</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
-<p>List profiles of the type {{type}}</p>
+<p>List profiles of the type {{type}}.</p>
 <a class="cmd-anchor" name="zowe_profiles_list_base-profiles"></a><h3><a href="#zowe">zowe</a> › <a href="#zowe_profiles">profiles</a> › <a href="#zowe_profiles_list">list</a> › <a href="#zowe_profiles_list_base-profiles">base-profiles</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h3>
 <p>Base profile that stores values shared by multiple service profiles</p>
 <h4>Usage</h4>
@@ -8669,9 +8671,9 @@ requirements.</p>
 <p><code>profileName</code>		 <em>(string)</em></p>
 <ul>
 <li>Specify a
-profile for default usage within the base group. When you issue commands within
-the base group without a profile specified as part of the command, the default
-will be loaded instead.</li>
+profile for default usage within the base group\. When you issue commands
+within the base group without a profile specified as part of the command, the
+default will be loaded instead\.</li>
 </ul>
 </li>
 </ul>
@@ -8699,9 +8701,9 @@ requirements.</p>
 <p><code>profileName</code>		 <em>(string)</em></p>
 <ul>
 <li>Specify a
-profile for default usage within the cics group. When you issue commands within
-the cics group without a profile specified as part of the command, the default
-will be loaded instead.</li>
+profile for default usage within the cics group\. When you issue commands
+within the cics group without a profile specified as part of the command, the
+default will be loaded instead\.</li>
 </ul>
 </li>
 </ul>
@@ -8729,9 +8731,9 @@ requirements.</p>
 <p><code>profileName</code>		 <em>(string)</em></p>
 <ul>
 <li>Specify a
-profile for default usage within the db2 group. When you issue commands within
+profile for default usage within the db2 group\. When you issue commands within
 the db2 group without a profile specified as part of the command, the default
-will be loaded instead.</li>
+will be loaded instead\.</li>
 </ul>
 </li>
 </ul>
@@ -8759,9 +8761,9 @@ requirements.</p>
 <p><code>profileName</code>		 <em>(string)</em></p>
 <ul>
 <li>Specify a
-profile for default usage within the ims group. When you issue commands within
+profile for default usage within the ims group\. When you issue commands within
 the ims group without a profile specified as part of the command, the default
-will be loaded instead.</li>
+will be loaded instead\.</li>
 </ul>
 </li>
 </ul>
@@ -8788,9 +8790,9 @@ loaded for the command based on the commands profile requirements.</p>
 <p><code>profileName</code>		 <em>(string)</em></p>
 <ul>
 <li>Specify a
-profile for default usage within the mq group. When you issue commands within
+profile for default usage within the mq group\. When you issue commands within
 the mq group without a profile specified as part of the command, the default
-will be loaded instead.</li>
+will be loaded instead\.</li>
 </ul>
 </li>
 </ul>
@@ -8818,9 +8820,9 @@ requirements.</p>
 <p><code>profileName</code>		 <em>(string)</em></p>
 <ul>
 <li>Specify a
-profile for default usage within the ssh group. When you issue commands within
+profile for default usage within the ssh group\. When you issue commands within
 the ssh group without a profile specified as part of the command, the default
-will be loaded instead.</li>
+will be loaded instead\.</li>
 </ul>
 </li>
 </ul>
@@ -8848,9 +8850,9 @@ requirements.</p>
 <p><code>profileName</code>		 <em>(string)</em></p>
 <ul>
 <li>Specify a
-profile for default usage within the tso group. When you issue commands within
+profile for default usage within the tso group\. When you issue commands within
 the tso group without a profile specified as part of the command, the default
-will be loaded instead.</li>
+will be loaded instead\.</li>
 </ul>
 </li>
 </ul>
@@ -8878,9 +8880,9 @@ requirements.</p>
 <p><code>profileName</code>		 <em>(string)</em></p>
 <ul>
 <li>Specify a
-profile for default usage within the zftp group. When you issue commands within
-the zftp group without a profile specified as part of the command, the default
-will be loaded instead.</li>
+profile for default usage within the zftp group\. When you issue commands
+within the zftp group without a profile specified as part of the command, the
+default will be loaded instead\.</li>
 </ul>
 </li>
 </ul>
@@ -8908,9 +8910,9 @@ requirements.</p>
 <p><code>profileName</code>		 <em>(string)</em></p>
 <ul>
 <li>Specify a
-profile for default usage within the zosmf group. When you issue commands
+profile for default usage within the zosmf group\. When you issue commands
 within the zosmf group without a profile specified as part of the command, the
-default will be loaded instead.</li>
+default will be loaded instead\.</li>
 </ul>
 </li>
 </ul>
@@ -8937,8 +8939,8 @@ review the result of the updates.</p>
 <li>
 <p><code>profileName</code>		 <em>(string)</em></p>
 <ul>
-<li>Specifies the name of the new base profile. You can load this profile by using
-the name on commands that support the &quot;--base-profile&quot; option.</li>
+<li>Specifies the name of the new base profile\. You can load this profile by using
+the name on commands that support the &quot;\-\-base\-profile&quot; option\.</li>
 </ul>
 </li>
 </ul>
@@ -9010,8 +9012,8 @@ your choice.</p>
 <li>
 <p><code>profileName</code>		 <em>(string)</em></p>
 <ul>
-<li>Specifies the name of the new cics profile. You can load this profile by using
-the name on commands that support the &quot;--cics-profile&quot; option.</li>
+<li>Specifies the name of the new cics profile\. You can load this profile by using
+the name on commands that support the &quot;\-\-cics\-profile&quot; option\.</li>
 </ul>
 </li>
 </ul>
@@ -9081,8 +9083,8 @@ the name on commands that support the &quot;--cics-profile&quot; option.</li>
 <li>
 <p><code>profileName</code>		 <em>(string)</em></p>
 <ul>
-<li>Specifies the name of the new db2 profile. You can load this profile by using
-the name on commands that support the &quot;--db2-profile&quot; option.</li>
+<li>Specifies the name of the new db2 profile\. You can load this profile by using
+the name on commands that support the &quot;\-\-db2\-profile&quot; option\.</li>
 </ul>
 </li>
 </ul>
@@ -9137,8 +9139,8 @@ name.</p>
 <li>
 <p><code>profileName</code>		 <em>(string)</em></p>
 <ul>
-<li>Specifies the name of the new ims profile. You can load this profile by using
-the name on commands that support the &quot;--ims-profile&quot; option.</li>
+<li>Specifies the name of the new ims profile\. You can load this profile by using
+the name on commands that support the &quot;\-\-ims\-profile&quot; option\.</li>
 </ul>
 </li>
 </ul>
@@ -9208,8 +9210,8 @@ password for the IBM MQ System Console interface</p>
 <li>
 <p><code>profileName</code>		 <em>(string)</em></p>
 <ul>
-<li>Specifies the name of the new mq profile. You can load this profile by using
-the name on commands that support the &quot;--mq-profile&quot; option.</li>
+<li>Specifies the name of the new mq profile\. You can load this profile by using
+the name on commands that support the &quot;\-\-mq\-profile&quot; option\.</li>
 </ul>
 </li>
 </ul>
@@ -9267,8 +9269,8 @@ the name on commands that support the &quot;--mq-profile&quot; option.</li>
 <li>
 <p><code>profileName</code>		 <em>(string)</em></p>
 <ul>
-<li>Specifies the name of the new ssh profile. You can load this profile by using
-the name on commands that support the &quot;--ssh-profile&quot; option.</li>
+<li>Specifies the name of the new ssh profile\. You can load this profile by using
+the name on commands that support the &quot;\-\-ssh\-profile&quot; option\.</li>
 </ul>
 </li>
 </ul>
@@ -9327,8 +9329,8 @@ in the server for authentication</li>
 <li>
 <p><code>profileName</code>		 <em>(string)</em></p>
 <ul>
-<li>Specifies the name of the new tso profile. You can load this profile by using
-the name on commands that support the &quot;--tso-profile&quot; option.</li>
+<li>Specifies the name of the new tso profile\. You can load this profile by using
+the name on commands that support the &quot;\-\-tso\-profile&quot; option\.</li>
 </ul>
 </li>
 </ul>
@@ -9398,8 +9400,8 @@ information:</p>
 <li>
 <p><code>profileName</code>		 <em>(string)</em></p>
 <ul>
-<li>Specifies the name of the new zftp profile. You can load this profile by using
-the name on commands that support the &quot;--zftp-profile&quot; option.</li>
+<li>Specifies the name of the new zftp profile\. You can load this profile by using
+the name on commands that support the &quot;\-\-zftp\-profile&quot; option\.</li>
 </ul>
 </li>
 </ul>
@@ -9473,8 +9475,8 @@ you are connecting securely</li>
 <li>
 <p><code>profileName</code>		 <em>(string)</em></p>
 <ul>
-<li>Specifies the name of the new zosmf profile. You can load this profile by using
-the name on commands that support the &quot;--zosmf-profile&quot; option.</li>
+<li>Specifies the name of the new zosmf profile\. You can load this profile by
+using the name on commands that support the &quot;\-\-zosmf\-profile&quot; option\.</li>
 </ul>
 </li>
 </ul>
@@ -9572,7 +9574,7 @@ services.</p>
 <li>
 <p><code>name</code>		 <em>(string)</em></p>
 <ul>
-<li>Deprovisioned Instance name.</li>
+<li>Deprovisioned Instance name\.</li>
 </ul>
 </li>
 </ul>
@@ -10211,7 +10213,7 @@ default token type, which is provided by 'zowe auth login'.</li>
 <li>
 <p><code>name</code>		 <em>(string)</em></p>
 <ul>
-<li>The name of a z/OSMF cloud provisioning template.</li>
+<li>The name of a z/OSMF cloud provisioning template\.</li>
 </ul>
 </li>
 </ul>
@@ -10337,14 +10339,14 @@ instance-info &lt;name&gt;&quot; command to view the available instance actions.
 <li>
 <p><code>name</code>		 <em>(string)</em></p>
 <ul>
-<li>Provisioned Instance name.</li>
+<li>Provisioned Instance name\.</li>
 </ul>
 </li>
 <li>
 <p><code>actionname</code>		 <em>(string)</em></p>
 <ul>
-<li>The action name. Use the &quot;zowe provisioning list instance-info &lt;name&gt;&quot;
-command to view available instance actions.</li>
+<li>The action name\. Use the &quot;zowe provisioning list instance\-info &lt;name&gt;&quot;
+command to view available instance actions\.</li>
 </ul>
 </li>
 </ul>
@@ -10459,7 +10461,7 @@ catalog-templates command.</p>
 <li>
 <p><code>name</code>		 <em>(string)</em></p>
 <ul>
-<li>The name of a z/OSMF cloud provisioning template.</li>
+<li>The name of a z/OSMF cloud provisioning template\.</li>
 </ul>
 </li>
 </ul>
@@ -10678,8 +10680,8 @@ additional solicited command responses.</p>
 <p><code>responsekey</code>		 <em>(string)</em></p>
 <ul>
 <li>The &quot;solicited response key&quot; provided in response to a previously issued console
-command. Used by the z/OSMF console API to collect any additional outstanding
-solicited responses from a previously issued console command. Must match
+command\. Used by the z/OSMF console API to collect any additional outstanding
+solicited responses from a previously issued console command\. Must match
 regular expression: <code>^\[a\-zA\-Z0\-9\]\+$</code></li>
 </ul>
 </li>
@@ -10829,7 +10831,7 @@ interval.</p>
 <li>
 <p><code>commandtext</code>		 <em>(string)</em></p>
 <ul>
-<li>The z/OS console command to issue.</li>
+<li>The z/OS console command to issue\.</li>
 </ul>
 </li>
 </ul>
@@ -11165,8 +11167,8 @@ named 'USER.TO.SET':</p>
 </ul>
 </li>
 <li>
-<p>Copy the data set member named 'USER.FROM.SET(MEM1)' to the
-data set member named 'USER.TO.SET(MEM2)':</p>
+<p>Copy the data set member named 'USER.FROM.SET(MEM1)' to
+the data set member named 'USER.TO.SET(MEM2)':</p>
 <ul>
 <li><code>zowe  zos-files copy data-set &quot;USER.FROM.SET(mem1)&quot; &quot;USER.TO.SET(mem2)&quot;</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  zos-files copy data-set &quot;USER.FROM.SET(mem1)&quot; &quot;USER.TO.SET(mem2)&quot;">Copy</button></li>
 </ul>
@@ -11179,8 +11181,8 @@ member named 'USER.TO.SET(MEM2)':</p>
 </ul>
 </li>
 <li>
-<p>Copy the data set member named 'USER.FROM.SET(MEM1)' to the
-data set named 'USER.TO.SET':</p>
+<p>Copy the data set member named 'USER.FROM.SET(MEM1)' to
+the data set named 'USER.TO.SET':</p>
 <ul>
 <li><code>zowe  zos-files copy data-set &quot;USER.FROM.SET(mem1)&quot; &quot;USER.TO.SET&quot;</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  zos-files copy data-set &quot;USER.FROM.SET(mem1)&quot; &quot;USER.TO.SET&quot;">Copy</button></li>
 </ul>
@@ -11225,7 +11227,7 @@ named 'USER.TO.SET' and replace like-named members:</p>
 <li>
 <p><code>--data-set-type</code>  | <code>--dst</code> | <code>--dsntype</code> <em>(string)</em></p>
 <ul>
-<li>The data set type</li>
+<li>The data set type (BASIC, EXTPREF, EXTREQ, HFS, LARGE, PDS, LIBRARY, PIPE)</li>
 </ul>
 </li>
 <li>
@@ -11403,16 +11405,22 @@ default token type, which is provided by 'zowe auth login'.</li>
 <h4>Examples</h4>
 <ul>
 <li>
-<p>Create an dataset with default parameters and like flag:</p>
+<p>Create a data set with default parameters and like flag:</p>
 <ul>
 <li><code>zowe  zos-files create data-set NEW.DATASET --like EXISTING.DATASET</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  zos-files create data-set NEW.DATASET --like EXISTING.DATASET">Copy</button></li>
 </ul>
 </li>
 <li>
-<p>Create an dataset with default parameters and like flag and
+<p>Create a data set with default parameters and like flag and
 lrecl flag:</p>
 <ul>
 <li><code>zowe  zos-files create data-set NEW.DATASET --like EXISTING.DATASET --lrecl 1024</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  zos-files create data-set NEW.DATASET --like EXISTING.DATASET --lrecl 1024">Copy</button></li>
+</ul>
+</li>
+<li>
+<p>Create a data set with type LIBRARY:</p>
+<ul>
+<li><code>zowe  zos-files create data-set NEW.DATASET --data-set-type LIBRARY</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  zos-files create data-set NEW.DATASET --data-set-type LIBRARY">Copy</button></li>
 </ul>
 </li>
 </ul>
@@ -11449,7 +11457,7 @@ lrecl flag:</p>
 <li>
 <p><code>--data-set-type</code>  | <code>--dst</code> | <code>--dsntype</code> <em>(string)</em></p>
 <ul>
-<li>The data set type</li>
+<li>The data set type (BASIC, EXTPREF, EXTREQ, HFS, LARGE, PDS, LIBRARY, PIPE)</li>
 </ul>
 </li>
 <li>
@@ -11639,6 +11647,12 @@ default parameters:</p>
 <li><code>zowe  zos-files create data-set-binary NEW.BINARY.DATASET</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  zos-files create data-set-binary NEW.BINARY.DATASET">Copy</button></li>
 </ul>
 </li>
+<li>
+<p>Create an empty binary PDSE using data set type LIBRARY:</p>
+<ul>
+<li><code>zowe  zos-files create data-set-binary NEW.BINARY.DATASET --data-set-type LIBRARY</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  zos-files create data-set-binary NEW.BINARY.DATASET --data-set-type LIBRARY">Copy</button></li>
+</ul>
+</li>
 </ul>
 <a class="cmd-anchor" name="zowe_zos-files_create_data-set-c"></a><h3><a href="#zowe">zowe</a> › <a href="#zowe_zos-files">zos-files</a> › <a href="#zowe_zos-files_create">create</a> › <a href="#zowe_zos-files_create_data-set-c">data-set-c</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h3>
 <p>Create data sets for C code programming</p>
@@ -11673,7 +11687,7 @@ default parameters:</p>
 <li>
 <p><code>--data-set-type</code>  | <code>--dst</code> | <code>--dsntype</code> <em>(string)</em></p>
 <ul>
-<li>The data set type</li>
+<li>The data set type (BASIC, EXTPREF, EXTREQ, HFS, LARGE, PDS, LIBRARY, PIPE)</li>
 </ul>
 </li>
 <li>
@@ -11862,6 +11876,12 @@ default token type, which is provided by 'zowe auth login'.</li>
 <li><code>zowe  zos-files create data-set-c NEW.CCODE.DATASET</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  zos-files create data-set-c NEW.CCODE.DATASET">Copy</button></li>
 </ul>
 </li>
+<li>
+<p>Create an empty C code PDSE using data set type LIBRARY:</p>
+<ul>
+<li><code>zowe  zos-files create data-set-c NEW.CCODE.DATASET --data-set-type LIBRARY</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  zos-files create data-set-c NEW.CCODE.DATASET --data-set-type LIBRARY">Copy</button></li>
+</ul>
+</li>
 </ul>
 <a class="cmd-anchor" name="zowe_zos-files_create_data-set-classic"></a><h3><a href="#zowe">zowe</a> › <a href="#zowe_zos-files">zos-files</a> › <a href="#zowe_zos-files_create">create</a> › <a href="#zowe_zos-files_create_data-set-classic">data-set-classic</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h3>
 <p>Create classic data sets (JCL, HLASM, CBL, etc...)</p>
@@ -11896,7 +11916,7 @@ default token type, which is provided by 'zowe auth login'.</li>
 <li>
 <p><code>--data-set-type</code>  | <code>--dst</code> | <code>--dsntype</code> <em>(string)</em></p>
 <ul>
-<li>The data set type</li>
+<li>The data set type (BASIC, EXTPREF, EXTREQ, HFS, LARGE, PDS, LIBRARY, PIPE)</li>
 </ul>
 </li>
 <li>
@@ -12085,6 +12105,13 @@ default token type, which is provided by 'zowe auth login'.</li>
 <li><code>zowe  zos-files create data-set-classic NEW.CLASSIC.DATASET</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  zos-files create data-set-classic NEW.CLASSIC.DATASET">Copy</button></li>
 </ul>
 </li>
+<li>
+<p>Create an empty z/OS 'classic' PDSE using data set type
+LIBRARY:</p>
+<ul>
+<li><code>zowe  zos-files create data-set-classic NEW.CLASSIC.DATASET --data-set-type LIBRARY</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  zos-files create data-set-classic NEW.CLASSIC.DATASET --data-set-type LIBRARY">Copy</button></li>
+</ul>
+</li>
 </ul>
 <a class="cmd-anchor" name="zowe_zos-files_create_data-set-partitioned"></a><h3><a href="#zowe">zowe</a> › <a href="#zowe_zos-files">zos-files</a> › <a href="#zowe_zos-files_create">create</a> › <a href="#zowe_zos-files_create_data-set-partitioned">data-set-partitioned</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h3>
 <p>Create partitioned data sets (PDS)</p>
@@ -12119,7 +12146,7 @@ default token type, which is provided by 'zowe auth login'.</li>
 <li>
 <p><code>--data-set-type</code>  | <code>--dst</code> | <code>--dsntype</code> <em>(string)</em></p>
 <ul>
-<li>The data set type</li>
+<li>The data set type (BASIC, EXTPREF, EXTREQ, HFS, LARGE, PDS, LIBRARY, PIPE)</li>
 </ul>
 </li>
 <li>
@@ -12306,6 +12333,12 @@ default token type, which is provided by 'zowe auth login'.</li>
 <p>Create an empty PDS with default parameters:</p>
 <ul>
 <li><code>zowe  zos-files create data-set-partitioned NEW.PDS.DATASET</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  zos-files create data-set-partitioned NEW.PDS.DATASET">Copy</button></li>
+</ul>
+</li>
+<li>
+<p>Create an empty PDSE using data set type LIBRARY:</p>
+<ul>
+<li><code>zowe  zos-files create data-set-partitioned NEW.PDSE.DATASET --data-set-type LIBRARY</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  zos-files create data-set-partitioned NEW.PDSE.DATASET --data-set-type LIBRARY">Copy</button></li>
 </ul>
 </li>
 </ul>
@@ -12720,7 +12753,7 @@ default token type, which is provided by 'zowe auth login'.</li>
 <h4>Examples</h4>
 <ul>
 <li>
-<p>Create a VSAM data set named &quot;SOME.DATA.SET.NAME&quot; using
+<p>Create a VSAM data set named &quot;<a href="http://SOME.DATA.SET.NAME">SOME.DATA.SET.NAME</a>&quot; using
 default values of INDEXED, 840 KB primary storage and 84 KB secondary storage:</p>
 <ul>
 <li><code>zowe  zos-files create data-set-vsam SOME.DATA.SET.NAME</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  zos-files create data-set-vsam SOME.DATA.SET.NAME">Copy</button></li>
@@ -12728,15 +12761,15 @@ default values of INDEXED, 840 KB primary storage and 84 KB secondary storage:</
 </li>
 <li>
 <p>Create a 5 MB LINEAR VSAM data set named
-&quot;SOME.DATA.SET.NAME&quot; with 1 MB of secondary space. Show the properties of the
-data set when it is created:</p>
+&quot;<a href="http://SOME.DATA.SET.NAME">SOME.DATA.SET.NAME</a>&quot; with 1 MB of secondary space. Show the properties of
+the data set when it is created:</p>
 <ul>
 <li><code>zowe  zos-files create data-set-vsam SOME.DATA.SET.NAME --data-set-organization LINEAR --size 5MB --secondary-space 1 --show-attributes</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  zos-files create data-set-vsam SOME.DATA.SET.NAME --data-set-organization LINEAR --size 5MB --secondary-space 1 --show-attributes">Copy</button></li>
 </ul>
 </li>
 <li>
-<p>Create a VSAM data set named &quot;SOME.DATA.SET.NAME&quot;, which is
-retained for 100 days:</p>
+<p>Create a VSAM data set named &quot;<a href="http://SOME.DATA.SET.NAME">SOME.DATA.SET.NAME</a>&quot;, which
+is retained for 100 days:</p>
 <ul>
 <li><code>zowe  zos-files create data-set-vsam SOME.DATA.SET.NAME --retain-for 100 </code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  zos-files create data-set-vsam SOME.DATA.SET.NAME --retain-for 100 ">Copy</button></li>
 </ul>
@@ -12751,7 +12784,7 @@ retained for 100 days:</p>
 <li>
 <p><code>ussPath</code>		 <em>(string)</em></p>
 <ul>
-<li>The name of the directory that you want to create.</li>
+<li>The name of the directory that you want to create\.</li>
 </ul>
 </li>
 </ul>
@@ -12885,7 +12918,7 @@ default token type, which is provided by 'zowe auth login'.</li>
 <li>
 <p><code>ussPath</code>		 <em>(string)</em></p>
 <ul>
-<li>The name of the file that you want to create.</li>
+<li>The name of the file that you want to create\.</li>
 </ul>
 </li>
 </ul>
@@ -13018,7 +13051,7 @@ default token type, which is provided by 'zowe auth login'.</li>
 <li>
 <p><code>fileSystemName</code>		 <em>(string)</em></p>
 <ul>
-<li>The name of the file system to create.</li>
+<li>The name of the file system to create\.</li>
 </ul>
 </li>
 </ul>
@@ -13534,8 +13567,8 @@ default token type, which is provided by 'zowe auth login'.</li>
 </ul>
 </li>
 <li>
-<p>Delete an expired VSAM data set named 'ibmuser.cntl.vsam' by
-overwriting the components with zeros:</p>
+<p>Delete an expired VSAM data set named 'ibmuser.cntl.vsam'
+by overwriting the components with zeros:</p>
 <ul>
 <li><code>zowe  zos-files delete data-set-vsam &quot;ibmuser.cntl.vsam&quot; -f --erase</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  zos-files delete data-set-vsam &quot;ibmuser.cntl.vsam&quot; -f --erase">Copy</button></li>
 </ul>
@@ -13550,7 +13583,7 @@ overwriting the components with zeros:</p>
 <li>
 <p><code>dataSetName</code>		 <em>(string)</em></p>
 <ul>
-<li>The name of the migrated data set you want to delete.</li>
+<li>The name of the migrated data set you want to delete\.</li>
 </ul>
 </li>
 </ul>
@@ -13841,7 +13874,7 @@ default token type, which is provided by 'zowe auth login'.</li>
 <li>
 <p><code>fileSystemName</code>		 <em>(string)</em></p>
 <ul>
-<li>The name of the z/OS file system that you want to delete.</li>
+<li>The name of the z/OS file system that you want to delete\.</li>
 </ul>
 </li>
 </ul>
@@ -14332,8 +14365,8 @@ default token type, which is provided by 'zowe auth login'.</li>
 <h4>Examples</h4>
 <ul>
 <li>
-<p>Download the data set &quot;ibmuser.loadlib(main)&quot; in binary mode
-to the local file &quot;main.obj&quot;:</p>
+<p>Download the data set &quot;ibmuser.loadlib(main)&quot; in binary
+mode to the local file &quot;main.obj&quot;:</p>
 <ul>
 <li><code>zowe  zos-files download data-set &quot;ibmuser.loadlib(main)&quot; -b -f main.obj</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  zos-files download data-set &quot;ibmuser.loadlib(main)&quot; -b -f main.obj">Copy</button></li>
 </ul>
@@ -14476,7 +14509,8 @@ default token type, which is provided by 'zowe auth login'.</li>
 <h4>Examples</h4>
 <ul>
 <li>
-<p>Download the file &quot;/a/ibmuser/my_text.txt&quot; to ./my_text.txt:</p>
+<p>Download the file &quot;/a/ibmuser/my_text.txt&quot; to
+./my_text.txt:</p>
 <ul>
 <li><code>zowe  zos-files download uss-file &quot;/a/ibmuser/my_text.txt&quot; -f ./my_text.txt</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  zos-files download uss-file &quot;/a/ibmuser/my_text.txt&quot; -f ./my_text.txt">Copy</button></li>
 </ul>
@@ -14504,9 +14538,9 @@ expects. For more information about control statements, see the IBM publication
 <li>
 <p><code>controlStatementsFile</code>		 <em>(string)</em></p>
 <ul>
-<li>The path to a file that contains IDCAMS control statements. Ensure that your
+<li>The path to a file that contains IDCAMS control statements\. Ensure that your
 file does not contain statements that are longer than 255 characters (maximum
-allowed length).</li>
+allowed length)\.</li>
 </ul>
 </li>
 </ul>
@@ -14632,8 +14666,8 @@ expects. For more information about control statements, see the IBM publication
 <li>
 <p><code>controlStatements</code>		 <em>(string)</em></p>
 <ul>
-<li>The IDCAMS control statement that you want to submit. Zowe CLI attempts to
-split the inline control statement at 255 characters.</li>
+<li>The IDCAMS control statement that you want to submit\. Zowe CLI attempts to
+split the inline control statement at 255 characters\.</li>
 </ul>
 </li>
 </ul>
@@ -14950,6 +14984,14 @@ modified.</li>
 <li>The option --max-length specifies the maximum number of items to return.
 Skip this parameter to return all items. If you specify an incorrect value, the
 parameter returns up to 1000 items.</li>
+</ul>
+</li>
+<li>
+<p><code>--volume-serial</code>  | <code>--vs</code> <em>(string)</em></p>
+<ul>
+<li>The volume serial (VOLSER) where the data set resides. You can use this option
+at any time. However, the VOLSER is required only when the data set is not
+cataloged on the system. A VOLSER is analogous to a drive name on a PC.</li>
 </ul>
 </li>
 <li>
@@ -15461,7 +15503,7 @@ displaying the headers associated with the file detail:</p>
 <li>
 <p><code>dataSetName</code>		 <em>(string)</em></p>
 <ul>
-<li>The name of the data set you want to migrate.</li>
+<li>The name of the data set you want to migrate\.</li>
 </ul>
 </li>
 </ul>
@@ -15595,13 +15637,13 @@ USS file systems.</p>
 <li>
 <p><code>fileSystemName</code>		 <em>(string)</em></p>
 <ul>
-<li>The name of the file system to mount.</li>
+<li>The name of the file system to mount\.</li>
 </ul>
 </li>
 <li>
 <p><code>mountPoint</code>		 <em>(string)</em></p>
 <ul>
-<li>The directory to use as a mount point.</li>
+<li>The directory to use as a mount point\.</li>
 </ul>
 </li>
 </ul>
@@ -15752,7 +15794,7 @@ default token type, which is provided by 'zowe auth login'.</li>
 <li>
 <p><code>dataSetName</code>		 <em>(string)</em></p>
 <ul>
-<li>The name of the data set you want to recall.</li>
+<li>The name of the data set you want to recall\.</li>
 </ul>
 </li>
 </ul>
@@ -15885,13 +15927,13 @@ default token type, which is provided by 'zowe auth login'.</li>
 <li>
 <p><code>beforeDataSetName</code>		 <em>(string)</em></p>
 <ul>
-<li>The name of the data set that you want to rename.</li>
+<li>The name of the data set that you want to rename\.</li>
 </ul>
 </li>
 <li>
 <p><code>afterDataSetName</code>		 <em>(string)</em></p>
 <ul>
-<li>The name you want to rename the data set to.</li>
+<li>The name you want to rename the data set to\.</li>
 </ul>
 </li>
 </ul>
@@ -16013,19 +16055,19 @@ default token type, which is provided by 'zowe auth login'.</li>
 <li>
 <p><code>dataSetName</code>		 <em>(string)</em></p>
 <ul>
-<li>The name of the data set the member belongs to.</li>
+<li>The name of the data set the member belongs to\.</li>
 </ul>
 </li>
 <li>
 <p><code>beforeMemberName</code>		 <em>(string)</em></p>
 <ul>
-<li>The name of the data set member that you want to rename.</li>
+<li>The name of the data set member that you want to rename\.</li>
 </ul>
 </li>
 <li>
 <p><code>afterMemberName</code>		 <em>(string)</em></p>
 <ul>
-<li>The name you want to rename the data set member to.</li>
+<li>The name you want to rename the data set member to\.</li>
 </ul>
 </li>
 </ul>
@@ -16150,7 +16192,7 @@ file systems.</p>
 <li>
 <p><code>fileSystemName</code>		 <em>(string)</em></p>
 <ul>
-<li>The name of the file system to unmount.</li>
+<li>The name of the file system to unmount\.</li>
 </ul>
 </li>
 </ul>
@@ -16263,7 +16305,7 @@ default token type, which is provided by 'zowe auth login'.</li>
 </li>
 </ul>
 <a name="zowe_zos-files_upload"></a><h2><a href="#zowe">zowe</a> › <a href="#zowe_zos-files">zos-files</a> › <a href="#zowe_zos-files_upload">upload</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
-<p>Upload the contents of a file to z/OS data sets</p>
+<p>Upload the contents of a file to data sets</p>
 <a class="cmd-anchor" name="zowe_zos-files_upload_dir-to-pds"></a><h3><a href="#zowe">zowe</a> › <a href="#zowe_zos-files">zos-files</a> › <a href="#zowe_zos-files_upload">upload</a> › <a href="#zowe_zos-files_upload_dir-to-pds">dir-to-pds</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h3>
 <p>Upload files from a local directory to a partitioned data set (PDS)</p>
 <h4>Usage</h4>
@@ -16419,7 +16461,8 @@ default token type, which is provided by 'zowe auth login'.</li>
 <h4>Examples</h4>
 <ul>
 <li>
-<p>Upload a directory named &quot;src&quot; to a PDS named &quot;ibmuser.src&quot;:</p>
+<p>Upload a directory named &quot;src&quot; to a PDS named
+&quot;ibmuser.src&quot;:</p>
 <ul>
 <li><code>zowe  zos-files upload dir-to-pds &quot;src&quot; &quot;ibmuser.src&quot;</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  zos-files upload dir-to-pds &quot;src&quot; &quot;ibmuser.src&quot;">Copy</button></li>
 </ul>
@@ -16449,7 +16492,7 @@ to three positional attributes:</p>
 <li>A pattern to match a set of files. Pattern-matching syntax follows
 the same rules as those that apply in .gitignore files (note that negated
 patterns that begin with ‘!’ are not supported). See
-https://git-scm.com/docs/gitignore#_pattern_format.</li>
+<a href="https://git-scm.com/docs/gitignore#_pattern_format">https://git-scm.com/docs/gitignore#_pattern_format</a>.</li>
 <li>A local-encoding to identify a file’s encoding on the local
 workstation. If '-' is specified for local-encoding,files that match the
 pattern are not transferred.</li>
@@ -16659,8 +16702,8 @@ sub-directories, to the &quot;/a/ibmuser/my_dir&quot; USS directory::</p>
 </li>
 <li>
 <p>Upload all files from the &quot;local_dir&quot; directory to the
-&quot;/a/ibmuser/my_dir&quot; USS directory in default ASCII mode, while specifying a list
-of file names (without path) to be uploaded in binary mode::</p>
+&quot;/a/ibmuser/my_dir&quot; USS directory in default ASCII mode, while specifying a
+list of file names (without path) to be uploaded in binary mode::</p>
 <ul>
 <li><code>zowe  zos-files upload dir-to-uss &quot;local_dir&quot; &quot;/a/ibmuser/my_dir&quot; --binary-files &quot;myFile1.exe,myFile2.exe,myFile3.exe&quot;</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  zos-files upload dir-to-uss &quot;local_dir&quot; &quot;/a/ibmuser/my_dir&quot; --binary-files &quot;myFile1.exe,myFile2.exe,myFile3.exe&quot;">Copy</button></li>
 </ul>
@@ -16838,7 +16881,7 @@ default token type, which is provided by 'zowe auth login'.</li>
 <ul>
 <li>
 <p>Upload file contents to a sequential data set named
-&quot;ibmuser.ps&quot;:</p>
+&quot;<a href="http://ibmuser.ps">ibmuser.ps</a>&quot;:</p>
 <ul>
 <li><code>zowe  zos-files upload file-to-data-set &quot;file.txt&quot; &quot;ibmuser.ps&quot;</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  zos-files upload file-to-data-set &quot;file.txt&quot; &quot;ibmuser.ps&quot;">Copy</button></li>
 </ul>
@@ -17144,7 +17187,7 @@ default token type, which is provided by 'zowe auth login'.</li>
 <ul>
 <li>
 <p>Stream content from stdin to a sequential data set named
-&quot;ibmuser.ps&quot; from a Windows console:</p>
+&quot;<a href="http://ibmuser.ps">ibmuser.ps</a>&quot; from a Windows console:</p>
 <ul>
 <li><code>echo &quot;hello world&quot; |  zowe  zos-files upload stdin-to-data-set &quot;ibmuser.ps&quot;</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="echo &quot;hello world&quot; |  zowe  zos-files upload stdin-to-data-set &quot;ibmuser.ps&quot;">Copy</button></li>
 </ul>
@@ -17183,7 +17226,7 @@ issuing TSO and console commands) by using core Zowe CLI.</p>
 <li>
 <p><code>datasetName</code>		 <em>(string)</em></p>
 <ul>
-<li>The dataset name you'd like to allocate.</li>
+<li>The dataset name you'd like to allocate\.</li>
 </ul>
 </li>
 </ul>
@@ -17319,7 +17362,7 @@ default token type, which is provided by 'zowe auth login'.</li>
 <p><code>dataSet</code>		 <em>(string)</em></p>
 <ul>
 <li>The data set (PDS member or physical sequential data set) which you would like
-to delete.</li>
+to delete\.</li>
 </ul>
 </li>
 </ul>
@@ -17580,7 +17623,7 @@ abbreviating the job ID:</p>
 <li>
 <p><code>ussFile</code>		 <em>(string)</em></p>
 <ul>
-<li>The absolute path to a USS file you would like to delete.</li>
+<li>The absolute path to a USS file you would like to delete\.</li>
 </ul>
 </li>
 </ul>
@@ -17873,7 +17916,7 @@ directory build/job_output:</p>
 <p><code>dataSet</code>		 <em>(string)</em></p>
 <ul>
 <li>The data set (PDS member or physical sequential data set) which you would like
-to download to a local file.</li>
+to download to a local file\.</li>
 </ul>
 </li>
 </ul>
@@ -17892,6 +17935,14 @@ translation. No delimiters are added between records.</li>
 <ul>
 <li>The path to the local file where you want to download the content. When you
 omit the option, the command generates a file name automatically for you.</li>
+</ul>
+</li>
+<li>
+<p><code>--rdw</code>  <em>(boolean)</em></p>
+<ul>
+<li>Download the variable-length data set with RECFM of V, VB, VBS, etc in rdw
+mode, in which the 4-byte RDW (Record Descriptor Word) is inserted at the
+begining of each record.</li>
 </ul>
 </li>
 <li>
@@ -17999,8 +18050,8 @@ default token type, which is provided by 'zowe auth login'.</li>
 <h4>Examples</h4>
 <ul>
 <li>
-<p>Download the data set &quot;ibmuser.loadlib(main)&quot; in binary mode
-to the local file &quot;main.obj&quot;:</p>
+<p>Download the data set &quot;ibmuser.loadlib(main)&quot; in binary
+mode to the local file &quot;main.obj&quot;:</p>
 <ul>
 <li><code>zowe  zos-ftp download data-set &quot;ibmuser.loadlib(main)&quot; -b -f main.obj</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  zos-ftp download data-set &quot;ibmuser.loadlib(main)&quot; -b -f main.obj">Copy</button></li>
 </ul>
@@ -18015,7 +18066,7 @@ to the local file &quot;main.obj&quot;:</p>
 <li>
 <p><code>ussFile</code>		 <em>(string)</em></p>
 <ul>
-<li>The path to the USS file you would like to download.</li>
+<li>The path to the USS file you would like to download\.</li>
 </ul>
 </li>
 </ul>
@@ -18162,17 +18213,17 @@ used, recfm, lrecl, blksz, dsorg, and dsname.</p>
 <li>
 <p><code>pattern</code>		 <em>(string)</em></p>
 <ul>
-<li>The pattern or patterns to match data sets against. Also known as 'DSLEVEL', it
-is somewhat similar to the concept of a 'glob' (but not identical). The
+<li>The pattern or patterns to match data sets against\. Also known as 'DSLEVEL',
+it is somewhat similar to the concept of a 'glob' (but not identical)\. The
 following special sequences can be used in the pattern:
 %: Matches any single character
-*: Matches any number of characters within a data set name qualifier (e.g.
-&quot;ibmuser.j*.old&quot; matches &quot;ibmuser.jcl.old&quot; but not
-&quot;ibmuser.jcl.very.old&quot;)
-**: Matches any number of characters within any number of data set name
-qualifiers (e.g. &quot;ibmuser.**.old&quot; matches both &quot;ibmuser.jcl.old&quot; and
-&quot;ibmuser.jcl.very.old&quot;)
-However, the pattern cannot begin with any of these sequences.</li>
+\<em>: Matches any number of characters within a data set name qualifier (e\.g\.
+&quot;ibmuser\.j\</em>\.old&quot; matches &quot;ibmuser\.jcl\.old&quot; but not
+&quot;ibmuser\.jcl\.very\.old&quot;)
+\<em>\</em>: Matches any number of characters within any number of data set name
+qualifiers (e\.g\. &quot;ibmuser\.\<em>\</em>\.old&quot; matches both &quot;ibmuser\.jcl\.old&quot;
+and &quot;ibmuser\.jcl\.very\.old&quot;)
+However, the pattern cannot begin with any of these sequences\.</li>
 </ul>
 </li>
 </ul>
@@ -18338,7 +18389,7 @@ in the output.</li>
 <li>
 <p><code>dsname</code>		 <em>(string)</em></p>
 <ul>
-<li>The PDS or PDSE data set name.</li>
+<li>The PDS or PDSE data set name\.</li>
 </ul>
 </li>
 </ul>
@@ -18681,8 +18732,8 @@ JES/spool queues. The command does not pre-validate the JOBID.</p>
 <li>
 <p><code>jobid</code>		 <em>(string)</em></p>
 <ul>
-<li>The z/OS JOBID of the job with the spool files you want to list. No
-pre-validation of the JOBID is performed.</li>
+<li>The z/OS JOBID of the job with the spool files you want to list\. No
+pre\-validation of the JOBID is performed\.</li>
 </ul>
 </li>
 </ul>
@@ -19024,7 +19075,7 @@ only the file name:</p>
 <li>
 <p><code>ussDirectory</code>		 <em>(string)</em></p>
 <ul>
-<li>The USS directory you'd like to make.</li>
+<li>The USS directory you'd like to make\.</li>
 </ul>
 </li>
 </ul>
@@ -19152,13 +19203,13 @@ default token type, which is provided by 'zowe auth login'.</li>
 <li>
 <p><code>oldDataSet</code>		 <em>(string)</em></p>
 <ul>
-<li>The current name of the data set you want to rename.</li>
+<li>The current name of the data set you want to rename\.</li>
 </ul>
 </li>
 <li>
 <p><code>newDataSet</code>		 <em>(string)</em></p>
 <ul>
-<li>The new name for the data set.</li>
+<li>The new name for the data set\.</li>
 </ul>
 </li>
 </ul>
@@ -19293,13 +19344,13 @@ command.:</p>
 <li>
 <p><code>olduss</code>		 <em>(string)</em></p>
 <ul>
-<li>The current name of the USS file you want to rename.</li>
+<li>The current name of the USS file you want to rename\.</li>
 </ul>
 </li>
 <li>
 <p><code>newuss</code>		 <em>(string)</em></p>
 <ul>
-<li>The new name for the USS file.</li>
+<li>The new name for the USS file\.</li>
 </ul>
 </li>
 </ul>
@@ -19812,8 +19863,8 @@ print only the job ID:</p>
 </ul>
 </li>
 <li>
-<p>Submit a job from the local file &quot;my_build_jcl.txt&quot; and wait
-for job complete.:</p>
+<p>Submit a job from the local file &quot;my_build_jcl.txt&quot; and
+wait for job complete.:</p>
 <ul>
 <li><code>zowe  zos-ftp submit local-file &quot;my_build_jcl.txt&quot; --wait 5,12</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  zos-ftp submit local-file &quot;my_build_jcl.txt&quot; --wait 5,12">Copy</button></li>
 </ul>
@@ -19996,8 +20047,8 @@ my_jcl.txt in.:</p>
 </ul>
 </li>
 <li>
-<p>Submit a job from the local file &quot;my_build_jcl.txt&quot; and wait
-for job complete.:</p>
+<p>Submit a job from the local file &quot;my_build_jcl.txt&quot; and
+wait for job complete.:</p>
 <ul>
 <li><code>zowe  zos-ftp submit stdin &quot;my_build_jcl.txt&quot; --wait 5,12</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  zos-ftp submit stdin &quot;my_build_jcl.txt&quot; --wait 5,12">Copy</button></li>
 </ul>
@@ -20021,7 +20072,7 @@ for job complete.:</p>
 <p><code>dataSet</code>		 <em>(string)</em></p>
 <ul>
 <li>The data set (PDS member or physical sequential data set) to which you would
-like to upload content.</li>
+like to upload content\.</li>
 </ul>
 </li>
 </ul>
@@ -20145,14 +20196,15 @@ default token type, which is provided by 'zowe auth login'.</li>
 <h4>Examples</h4>
 <ul>
 <li>
-<p>Upload to &quot;ibmuser.cntl(iefbr14)&quot; from the file iefbr14.txt:</p>
+<p>Upload to &quot;ibmuser.cntl(iefbr14)&quot; from the file
+iefbr14.txt:</p>
 <ul>
 <li><code>zowe  zos-ftp upload file-to-data-set iefbr14.txt &quot;ibmuser.cntl(iefbr14)&quot;</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  zos-ftp upload file-to-data-set iefbr14.txt &quot;ibmuser.cntl(iefbr14)&quot;">Copy</button></li>
 </ul>
 </li>
 <li>
-<p>Upload to &quot;ibmuser.cntl(iefbr14)&quot; from the file iefbr14.txt
-with the DCB parameters:</p>
+<p>Upload to &quot;ibmuser.cntl(iefbr14)&quot; from the file
+iefbr14.txt with the DCB parameters:</p>
 <ul>
 <li><code>zowe  zos-ftp upload file-to-data-set iefbr14.txt &quot;ibmuser.cntl(iefbr14)&quot; --dcb &quot;RECFM=FB LRECL=326 BLKSIZE=23472&quot;</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  zos-ftp upload file-to-data-set iefbr14.txt &quot;ibmuser.cntl(iefbr14)&quot; --dcb &quot;RECFM=FB LRECL=326 BLKSIZE=23472&quot;">Copy</button></li>
 </ul>
@@ -20167,13 +20219,13 @@ with the DCB parameters:</p>
 <li>
 <p><code>file</code>		 <em>(local file path)</em></p>
 <ul>
-<li>Upload the contents of this local file to a data set.</li>
+<li>Upload the contents of this local file to a data set\.</li>
 </ul>
 </li>
 <li>
 <p><code>ussFile</code>		 <em>(string)</em></p>
 <ul>
-<li>The USS file to which you would like to upload content.</li>
+<li>The USS file to which you would like to upload content\.</li>
 </ul>
 </li>
 </ul>
@@ -20307,7 +20359,7 @@ iefbr14.txt:</p>
 <p><code>dataSet</code>		 <em>(string)</em></p>
 <ul>
 <li>The data set (PDS member or physical sequential data set) to which you would
-like to upload content.</li>
+like to upload content\.</li>
 </ul>
 </li>
 </ul>
@@ -20440,7 +20492,7 @@ can pipe into this command):</p>
 <li>
 <p><code>ussFile</code>		 <em>(string)</em></p>
 <ul>
-<li>The USS file to which you would like to upload content.</li>
+<li>The USS file to which you would like to upload content\.</li>
 </ul>
 </li>
 </ul>
@@ -20557,8 +20609,8 @@ default token type, which is provided by 'zowe auth login'.</li>
 <h4>Examples</h4>
 <ul>
 <li>
-<p>Upload to &quot;/u/users/ibmuser/iefbr14.txt&quot; from standard input
-(you can pipe into this command):</p>
+<p>Upload to &quot;/u/users/ibmuser/iefbr14.txt&quot; from standard
+input (you can pipe into this command):</p>
 <ul>
 <li><code>zowe  zos-ftp upload stdin-to-uss-file &quot;/u/users/ibmuser/iefbr14.txt&quot;</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  zos-ftp upload stdin-to-uss-file &quot;/u/users/ibmuser/iefbr14.txt&quot;">Copy</button></li>
 </ul>
@@ -20703,7 +20755,7 @@ default token type, which is provided by 'zowe auth login'.</li>
 <p><code>dataSet</code>		 <em>(string)</em></p>
 <ul>
 <li>The data set (PDS member or physical sequential data set) which you would like
-to view the contents of.</li>
+to view the contents of\.</li>
 </ul>
 </li>
 </ul>
@@ -20826,8 +20878,8 @@ default token type, which is provided by 'zowe auth login'.</li>
 </ul>
 </li>
 <li>
-<p>View the content of the data set &quot;ibmuser.loadlib(main)&quot; and
-pipe it into the hex viewer program xxd:</p>
+<p>View the content of the data set &quot;ibmuser.loadlib(main)&quot;
+and pipe it into the hex viewer program xxd:</p>
 <ul>
 <li><code>zowe  zos-ftp view data-set &quot;ibmuser.loadlib(main)&quot; -b | xxd</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  zos-ftp view data-set &quot;ibmuser.loadlib(main)&quot; -b | xxd">Copy</button></li>
 </ul>
@@ -21010,15 +21062,15 @@ command does not pre-validate the JOBID or spool ID.</p>
 <li>
 <p><code>jobid</code>		 <em>(string)</em></p>
 <ul>
-<li>The z/OS JOBID of the job containing the spool file you want to view. No
-pre-validation of the JOBID is performed.</li>
+<li>The z/OS JOBID of the job containing the spool file you want to view\. No
+pre\-validation of the JOBID is performed\.</li>
 </ul>
 </li>
 <li>
 <p><code>spoolfileid</code>		 <em>(number)</em></p>
 <ul>
-<li>The spool file ID number for the spool file to view. No pre-validation of the
-ID is performed.</li>
+<li>The spool file ID number for the spool file to view\. No pre\-validation of
+the ID is performed\.</li>
 </ul>
 </li>
 </ul>
@@ -21145,7 +21197,7 @@ JOB00123:</p>
 <li>
 <p><code>ussFile</code>		 <em>(string)</em></p>
 <ul>
-<li>The USS file you'd like to view the contents of.</li>
+<li>The USS file you'd like to view the contents of\.</li>
 </ul>
 </li>
 </ul>
@@ -21292,10 +21344,10 @@ input.</p>
 <li>
 <p><code>jobid</code>		 <em>(string)</em></p>
 <ul>
-<li>The job ID (e.g. JOB00123) of the job. Job ID is a unique identifier for z/OS
-batch jobs -- no two jobs on one system can have the same ID. Note: z/OS
-allows you to abbreviate the job ID if desired. You can use, for example
-&quot;J123&quot;.</li>
+<li>The job ID (e\.g\. JOB00123) of the job\. Job ID is a unique identifier for
+z/OS batch jobs \-\- no two jobs on one system can have the same ID\. Note:
+z/OS allows you to abbreviate the job ID if desired\. You can use, for example
+&quot;J123&quot;\.</li>
 </ul>
 </li>
 </ul>
@@ -21408,10 +21460,10 @@ running and purges its output from the system</p>
 <li>
 <p><code>jobid</code>		 <em>(string)</em></p>
 <ul>
-<li>The job ID (e.g. JOB00123) of the job. Job ID is a unique identifier for z/OS
-batch jobs -- no two jobs on one system can have the same ID. Note: z/OS
-allows you to abbreviate the job ID if desired. You can use, for example
-&quot;J123&quot;.</li>
+<li>The job ID (e\.g\. JOB00123) of the job\. Job ID is a unique identifier for
+z/OS batch jobs \-\- no two jobs on one system can have the same ID\. Note:
+z/OS allows you to abbreviate the job ID if desired\. You can use, for example
+&quot;J123&quot;\.</li>
 </ul>
 </li>
 </ul>
@@ -21524,8 +21576,8 @@ to its own file in the directory.</p>
 <li>
 <p><code>jobid</code>		 <em>(string)</em></p>
 <ul>
-<li>The z/OS JOBID of the job containing the spool files you want to view. No
-pre-validation of the JOBID is performed.</li>
+<li>The z/OS JOBID of the job containing the spool files you want to view\. No
+pre\-validation of the JOBID is performed\.</li>
 </ul>
 </li>
 </ul>
@@ -21842,8 +21894,8 @@ presents errors verbatim from the z/OSMF Jobs REST endpoints.</p>
 <li>
 <p><code>jobid</code>		 <em>(string)</em></p>
 <ul>
-<li>The z/OS JOBID of the job with the spool files you want to list. No
-pre-validation of the JOBID is performed.</li>
+<li>The z/OS JOBID of the job with the spool files you want to list\. No
+pre\-validation of the JOBID is performed\.</li>
 </ul>
 </li>
 </ul>
@@ -21998,9 +22050,9 @@ Jobs API REST documentation.</p>
 <li>
 <p><code>dataset</code>		 <em>(string)</em></p>
 <ul>
-<li>The z/OS data set containing the JCL to submit. You can specify a physical
-sequential data set (for example, &quot;DATA.SET&quot;) or a partitioned data set
-qualified by a member (for example, &quot;DATA.SET(MEMBER)&quot;).</li>
+<li>The z/OS data set containing the JCL to submit\. You can specify a physical
+sequential data set (for example, &quot;DATA\.SET&quot;) or a partitioned data set
+qualified by a member (for example, &quot;DATA\.SET(MEMBER)&quot;)\.</li>
 </ul>
 </li>
 </ul>
@@ -22211,7 +22263,7 @@ Jobs API errors, see the z/OSMF Jobs API REST documentation.</p>
 <li>
 <p><code>localFile</code>		 <em>(string)</em></p>
 <ul>
-<li>The local file containing the JCL to submit.</li>
+<li>The local file containing the JCL to submit\.</li>
 </ul>
 </li>
 </ul>
@@ -22590,8 +22642,8 @@ Jobs REST endpoints (expect for &quot;no jobs found&quot;).</p>
 <li>
 <p><code>jobid</code>		 <em>(string)</em></p>
 <ul>
-<li>The z/OS JOBID of the job you want to view. No prevalidation of the JOBID is
-performed.</li>
+<li>The z/OS JOBID of the job you want to view\. No prevalidation of the JOBID is
+performed\.</li>
 </ul>
 </li>
 </ul>
@@ -22750,16 +22802,16 @@ errors verbatim from the z/OSMF Jobs REST endpoints.</p>
 <li>
 <p><code>jobid</code>		 <em>(string)</em></p>
 <ul>
-<li>The z/OS JOBID of the job containing the spool file you want to view. No
-pre-validation of the JOBID is performed.</li>
+<li>The z/OS JOBID of the job containing the spool file you want to view\. No
+pre\-validation of the JOBID is performed\.</li>
 </ul>
 </li>
 <li>
 <p><code>spoolfileid</code>		 <em>(number)</em></p>
 <ul>
-<li>The spool file ID number for the spool file to view. Use the &quot;zowe zos-jobs
-list spool-files-by-jobid&quot; command to obtain spool ID numbers.No
-pre-validation of the ID is performed.</li>
+<li>The spool file ID number for the spool file to view\. Use the &quot;zowe zos\-jobs
+list spool\-files\-by\-jobid&quot; command to obtain spool ID numbers\.No
+pre\-validation of the ID is performed\.</li>
 </ul>
 </li>
 </ul>
@@ -23004,7 +23056,7 @@ not including) the TSO 'READY' prompt.</p>
 <li>
 <p><code>commandText</code>		 <em>(string)</em></p>
 <ul>
-<li>The TSO command to issue.</li>
+<li>The TSO command to issue\.</li>
 </ul>
 </li>
 </ul>
@@ -23199,7 +23251,7 @@ jobs for your user ID.:</p>
 <li>
 <p><code>servletKey</code>		 <em>(string)</em></p>
 <ul>
-<li>The servlet key from a previously started TSO address space.</li>
+<li>The servlet key from a previously started TSO address space\.</li>
 </ul>
 </li>
 </ul>
@@ -23313,7 +23365,7 @@ received a token (a.k.a 'servlet-key').</p>
 <li>
 <p><code>servletKey</code>		 <em>(string)</em></p>
 <ul>
-<li>The servlet key from a previously started TSO address space.</li>
+<li>The servlet key from a previously started TSO address space\.</li>
 </ul>
 </li>
 </ul>
@@ -23634,7 +23686,7 @@ format:</p>
 <li>
 <p><code>servletkey</code>		 <em>(string)</em></p>
 <ul>
-<li>The servlet key from a previously started TSO address space.</li>
+<li>The servlet key from a previously started TSO address space\.</li>
 </ul>
 </li>
 </ul>
@@ -24388,9 +24440,9 @@ in the output.</li>
 <ul>
 <li>
 <p>Create a workflow with name &quot;testworkflow&quot; using the local
-file &quot;TESTID_WKFLOW.xml&quot; that contains the workflow definition xml on the system
-&quot;TESTM1&quot; with owner &quot;OTHERID&quot; and delete workflow with the same name if it
-already exist in z/OSMF:</p>
+file &quot;TESTID_WKFLOW.xml&quot; that contains the workflow definition xml on the
+system &quot;TESTM1&quot; with owner &quot;OTHERID&quot; and delete workflow with the same name if
+it already exist in z/OSMF:</p>
 <ul>
 <li><code>zowe  zos-workflows create workflow-from-local-file &quot;testworkflow&quot; --local-file &quot;TESTID_WKFLOW.xml&quot; --system-name &quot;TESTM1&quot; --owner &quot;OTHERID&quot; --overwrite</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  zos-workflows create workflow-from-local-file &quot;testworkflow&quot; --local-file &quot;TESTID_WKFLOW.xml&quot; --system-name &quot;TESTM1&quot; --owner &quot;OTHERID&quot; --overwrite">Copy</button></li>
 </ul>
@@ -25397,7 +25449,7 @@ in the output.</li>
 <p><code>definitionFilePath</code>		 <em>(string)</em></p>
 <ul>
 <li>Specifies the location of the workflow definition file, which is either a UNIX
-path name or a fully qualified z/OS data set name.</li>
+path name or a fully qualified z/OS data set name\.</li>
 </ul>
 </li>
 </ul>
@@ -25670,8 +25722,8 @@ default token type, which is provided by 'zowe auth login'.</li>
 </li>
 <li>
 <p>To start a workflow instance in z/OSMF with workflow key
-&quot;d043b5f1-adab-48e7-b7c3-d41cd95fa4b0&quot;and if there is a conflict in variable's
-value use the value that is in output file:</p>
+&quot;d043b5f1-adab-48e7-b7c3-d41cd95fa4b0&quot;and if there is a conflict in
+variable's value use the value that is in output file:</p>
 <ul>
 <li><code>zowe  zos-workflows start workflow-full --workflow-key &quot;d043b5f1-adab-48e7-b7c3-d41cd95fa4b0&quot; --resolve-conflict-by &quot;outputFileValue&quot;</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  zos-workflows start workflow-full --workflow-key &quot;d043b5f1-adab-48e7-b7c3-d41cd95fa4b0&quot; --resolve-conflict-by &quot;outputFileValue&quot;">Copy</button></li>
 </ul>
@@ -25694,7 +25746,7 @@ value use the value that is in output file:</p>
 <li>
 <p><code>stepName</code>		 <em>(string)</em></p>
 <ul>
-<li>Specifies the step name that will be run.</li>
+<li>Specifies the step name that will be run\.</li>
 </ul>
 </li>
 </ul>
