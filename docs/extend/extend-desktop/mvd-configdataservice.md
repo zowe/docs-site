@@ -1,3 +1,9 @@
+---
+tags:
+  - Zowe
+  - Desktop
+---
+
 # Configuration Dataservice
 
 The Configuration Dataservice is an essential component of the Zowe&trade; Application Framework, which acts as a JSON resource storage service, and is accessible externally by REST API and internally to the server by dataservices.

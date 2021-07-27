@@ -26,6 +26,7 @@ function DocItem(props) {
     frontMatter: {
       image: metaImage,
       keywords,
+      tags: tags,
       hide_title: hideTitle,
       hide_table_of_contents: hideTableOfContents,
     },
@@ -53,6 +54,7 @@ function DocItem(props) {
 
   useEffect(() => {
     setReadingTimeInWords(
+      document.querySelector(".markdown") && 
       readingTime(document.querySelector(".markdown").innerText).text
     );
   });
@@ -78,57 +80,61 @@ function DocItem(props) {
         {permalink && <link rel="canonical" href={siteUrl + permalink} />}
       </Head>
 
-      <div className="row">
-        <div
-          className={clsx("col", {
-            [styles.docItemCol]: !hideTableOfContents,
-          })}
-        >
-          <DocVersionBanner versionMetadata={versionMetadata} />
-          <div className={styles.docItemContainer}>
-            <article className="article-content">
-              {showVersionBadge && (
-                <div>
-                  <span className="badge badge--secondary">
-                    Version: {versionMetadata.label}
-                  </span>
-                </div>
-              )}
-              {!hideTitle && (
-                <header>
-                  <h1 className={styles.docTitle}>{title}</h1>
-                </header>
-              )}
-              {(editUrl || lastUpdatedAt || lastUpdatedBy) && (
-                <DocsInfo
-                  editUrl={editUrl}
-                  lastUpdatedAt={lastUpdatedAt}
-                  lastUpdatedBy={lastUpdatedBy}
-                  readingTimeInWords={readingTimeInWords}
-                  title={title}
-                />
-              )}
-              <MDXProvider components={MDXComponents}>
-                <div className="markdown">
-                  <DocContent />
-                </div>
-              </MDXProvider>
-            </article>
-
-            <div className="margin-left--none margin-top--md text--center">
-              <DocsRating label={unversionedId} />
-            </div>
-            <div className="margin-vert--lg">
-              <DocPaginator metadata={metadata} />
+      {DocContent.frontMatter.tags && DocContent.frontMatter.tags.includes("Desktop") ? ( //FIXME:
+        <div className="row">
+          <div
+            className={clsx("col", {
+              [styles.docItemCol]: !hideTableOfContents,
+            })}
+          >
+            <DocVersionBanner versionMetadata={versionMetadata} />
+            <div className={styles.docItemContainer}>
+              <article className="article-content">
+                {showVersionBadge && (
+                  <div>
+                    <span className="badge badge--secondary">
+                      Version: {versionMetadata.label}
+                    </span>
+                  </div>
+                )}
+                {!hideTitle && (
+                  <header>
+                    <h1 className={styles.docTitle}>{title}</h1>
+                  </header>
+                )}
+                {(editUrl || lastUpdatedAt || lastUpdatedBy) && (
+                  <DocsInfo
+                    editUrl={editUrl}
+                    lastUpdatedAt={lastUpdatedAt}
+                    lastUpdatedBy={lastUpdatedBy}
+                    readingTimeInWords={readingTimeInWords}
+                    tags={tags}
+                    title={title}
+                  />
+                )}
+                <MDXProvider components={MDXComponents}>
+                  <div className="markdown">
+                    <DocContent />
+                  </div>
+                </MDXProvider>
+              </article>
+              <div className="margin-left--none margin-top--md text--center">
+                <DocsRating label={unversionedId} />
+              </div>
+              <div className="margin-vert--lg">
+                <DocPaginator metadata={metadata} />
+              </div>
             </div>
           </div>
+          {!hideTableOfContents && DocContent.toc && (
+            <div className="col col--3">
+              <TOC toc={DocContent.toc} />
+            </div>
+          )}
         </div>
-        {!hideTableOfContents && DocContent.toc && (
-          <div className="col col--3">
-            <TOC toc={DocContent.toc} />
-          </div>
-        )}
-      </div>
+      )
+        :
+        <p className="text--center margin-auto">No matched doc found</p>} {/* FIXME: */}
     </>
   );
 }

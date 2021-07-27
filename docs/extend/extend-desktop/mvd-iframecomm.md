@@ -1,3 +1,9 @@
+---
+tags:
+  - Zowe
+  - Desktop
+---
+
 # Configuring IFrame communication
 The Zowe Application Framework provides the following shared resource functions through a [ZoweZLUX object](https://github.com/zowe/zlux-platform/blob/master/interface/src/index.d.ts#L720): `pluginManager`, `uriBroker`, `dispatcher`, `logger`, `registry`, `notificationManager`, and `globalization`
 

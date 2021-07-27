@@ -1,3 +1,9 @@
+---
+tags:
+  - Zowe
+  - Desktop
+---
+
 # Zowe Desktop and Window management
 
 The Zowe&trade; Desktop (MVD) is a web component of Zowe, which is an implementation of **MVDWindowManagement**, the interface that is used to create a window manager.

@@ -1,3 +1,9 @@
+---
+tags:
+  - Zowe
+  - Desktop
+---
+
 # Add a React app to Zowe
 
 :::tip Github Sample Repo:

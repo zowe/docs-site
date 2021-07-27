@@ -1,3 +1,9 @@
+---
+tags:
+  - Zowe
+  - Desktop
+---
+
 # Authentication API
 This topic describes the web service API for user authentication. 
 

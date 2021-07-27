@@ -1,3 +1,9 @@
+---
+tags:
+  - Zowe
+  - Desktop
+---
+
 # Embedding plugins
 Add these imports to a component where you want to embed another plugin:
 ```

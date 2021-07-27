@@ -1,4 +1,5 @@
 import React from "react";
+import clsx from "clsx";
 import { useLocation } from "react-router-dom";
 import { useActiveVersion } from "@theme/hooks/useDocs";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
@@ -121,6 +122,13 @@ function DocsInfo({ docsPluginId, ...props }) {
           </div>
         </div>
       </div>
+      {props.tags && (
+        <div className='display-flex '>
+          <p className={clsx("margin-bottom--none", styles.docLastUpdatedAt)} style={{ textAlgin: "right" }}>Tags: </p>
+          &nbsp;
+          <p className="margin-bottom--none">{props.tags.join(", ")}</p>
+      </div>
+      )}
     </div>
   );
 }
