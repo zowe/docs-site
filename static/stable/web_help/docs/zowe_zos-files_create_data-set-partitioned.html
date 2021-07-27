@@ -39,7 +39,7 @@
 <li>
 <p><code>--data-set-type</code>  | <code>--dst</code> | <code>--dsntype</code> <em>(string)</em></p>
 <ul>
-<li>The data set type</li>
+<li>The data set type (BASIC, EXTPREF, EXTREQ, HFS, LARGE, PDS, LIBRARY, PIPE)</li>
 </ul>
 </li>
 <li>
@@ -226,6 +226,12 @@ default token type, which is provided by 'zowe auth login'.</li>
 <p>Create an empty PDS with default parameters:</p>
 <ul>
 <li><code>zowe  zos-files create data-set-partitioned NEW.PDS.DATASET</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  zos-files create data-set-partitioned NEW.PDS.DATASET">Copy</button></li>
+</ul>
+</li>
+<li>
+<p>Create an empty PDSE using data set type LIBRARY:</p>
+<ul>
+<li><code>zowe  zos-files create data-set-partitioned NEW.PDSE.DATASET --data-set-type LIBRARY</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  zos-files create data-set-partitioned NEW.PDSE.DATASET --data-set-type LIBRARY">Copy</button></li>
 </ul>
 </li>
 </ul>

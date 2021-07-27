@@ -39,7 +39,7 @@ var searchTimeout = 0;
 function flattenNodes(nestedNodes) {
     var flattenedNodes = [];
     nestedNodes.forEach(function (node) {
-        if (node.children && (node.children.length > 0)) {
+        if (node.children && node.children.length > 0) {
             flattenedNodes.push.apply(flattenedNodes, flattenNodes(node.children));
         }
         else {
@@ -86,7 +86,7 @@ function permuteSearchStr(searchStr) {
 function updateCurrentNode(newNodeId, goto, expand, force) {
     if (force === void 0) { force = false; }
     if (!force) {
-        if ((newNodeId === currentNodeId) || !jquery_1.default("#cmd-tree").jstree(true).get_node(newNodeId)) {
+        if (newNodeId === currentNodeId || !jquery_1.default("#cmd-tree").jstree(true).get_node(newNodeId)) {
             // Ignore if node already selected or does not exist
             return;
         }
@@ -161,7 +161,7 @@ function onTreeContextMenu(node) {
  * @returns True if the node matches
  */
 function onTreeSearch(permutedSearchStr, node) {
-    if ((node.parent === "#") && (currentView === 0)) {
+    if (node.parent === "#" && currentView === 0) {
         return false; // Don't match root node
     }
     // Strip off ".html" to get full command name
@@ -174,7 +174,7 @@ function onTreeSearch(permutedSearchStr, node) {
             var needle = searchStrList_1[_b];
             var matchIndex = haystack.lastIndexOf(needle);
             if (matchIndex !== -1) { // A search string was matched
-                if ((currentView === 1) || (haystack.indexOf(" ", matchIndex + needle.length) === -1)) {
+                if (currentView === 1 || haystack.indexOf(" ", matchIndex + needle.length) === -1) {
                     // Don't match node if text that matches is only in label of parent node
                     return true;
                 }
@@ -189,8 +189,8 @@ function onTreeSearch(permutedSearchStr, node) {
 function onTreeLoaded() {
     var tempNodeId = currentNodeId;
     if (!tempNodeId) {
-        var tempCmdToLoad = cmdToLoad || urlParams.get("p");
-        tempNodeId = tempCmdToLoad ? tempCmdToLoad + ".html" : treeNodes[0].id;
+        var cmdToLoad = urlParams.get("p");
+        tempNodeId = (cmdToLoad != null) ? cmdToLoad + ".html" : treeNodes[0].id;
     }
     updateCurrentNode(tempNodeId, true, true, true);
     if (jquery_1.default("#tree-search").val()) {
