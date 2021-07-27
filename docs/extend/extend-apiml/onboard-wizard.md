@@ -8,7 +8,7 @@ The following procedure describes how to onboard your REST service with the Wiza
 
 **Follow these steps:**
 
-1. In the ... , click the 'Onboard New API' dropdown located in the navbar.  
+1. In the dashboard of the API Catalog, click the 'Onboard New API' dropdown located in the navbar.  
    ![Onboarding](../../images/api-mediation/wizard-onboard-button.png)
 2. Choose the type of onboarding according to your preference (static or via enablers).
    ![Enablers](../../images/api-mediation/wizard-enablers.png)
