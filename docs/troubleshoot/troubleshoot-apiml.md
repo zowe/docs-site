@@ -43,23 +43,21 @@ This activates the application/loggers endpoints in each API ML internal service
     ```
     GET scheme://hostname:port/application/loggers
     ```
-
-    Where:
     - **scheme**
 
-        API ML service scheme (http or https)
+        Specifies the API ML service scheme (http or https)
 
     - **hostname**
 
-        API ML service hostname
+        Specifies the API ML service hostname
 
     - **port**
 
-        TCP port where API ML service listens on. The port is defined by the configuration parameter MFS_GW_PORT for the Gateway,
+        Specifies the TCP port where API ML service listens on. The port is defined by the configuration parameter MFS_GW_PORT for the Gateway,
     MFS_DS_PORT for the Discovery Service (by default, set to gateway port + 1), and MFS_AC_PORT for the Catalog
     (by default, set to gateway port + 2).
 
-    **Exception:** For the catalog you will able to get list the available loggers by issuing the GET request for the given service URL:
+    **Note:**  For the Catalog you can list the available loggers by issuing a GET request for the given service URL in the following format:
     ```
     GET [gateway-scheme]://[gateway-hostname]:[gateway-port]/api/v1/apicatalog/application/loggers
     ```
@@ -88,11 +86,10 @@ This activates the application/loggers endpoints in each API ML internal service
     ```
     GET scheme://hostname:port/application/loggers/{name}
     ```
-    Where:
 
     - **{name}**
 
-         is the logger name
+         Specifies the logger name
 
 4. Change the log level of the given component of the API ML internal service. Use the POST request for the given service URL:
 
@@ -107,11 +104,10 @@ This activates the application/loggers endpoints in each API ML internal service
 
     }
     ```
-    Where:
 
     - **level**
 
-        is the new log level: **OFF**, **ERROR**, **WARN**, **INFO**, **DEBUG**, **TRACE**
+        Specifies the new log level: **OFF**, **ERROR**, **WARN**, **INFO**, **DEBUG**, **TRACE**
 
     **Example:**
 

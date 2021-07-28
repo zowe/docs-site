@@ -52,24 +52,31 @@ function setTooltip(btn, message) {
 var clipboard = new (require("clipboard"))(".btn-copy");
 clipboard.on("success", function (e) { return setTooltip(e.trigger, "Copied!"); });
 clipboard.on("error", function (e) { return setTooltip(e.trigger, "Failed!"); });
+/**
+ * Find the currently scrolled to command anchor in iframe
+ * @returns Element with <a> tag
+ */
+function findCurrentCmdAnchor() {
+    var anchors = arrayFrom(document.getElementsByClassName("cmd-anchor"));
+    var lastAnchor;
+    for (var _i = 0, anchors_1 = anchors; _i < anchors_1.length; _i++) {
+        var anchor = anchors_1[_i];
+        var headerBounds = anchor.nextElementSibling.getBoundingClientRect();
+        if (headerBounds.top > window.innerHeight) {
+            break;
+        }
+        lastAnchor = anchor;
+    }
+    return lastAnchor;
+}
 // If in flat view, select currently scrolled to command in tree
-if (isInIframe && (window.location.href.indexOf("/all.html") !== -1)) {
+if (isInIframe && window.location.href.indexOf("/all.html") !== -1) {
     var currentCmdName_1;
     window.onscroll = function (_) {
-        var anchors = arrayFrom(document.getElementsByClassName("cmd-anchor"));
-        for (var _i = 0, anchors_1 = anchors; _i < anchors_1.length; _i++) {
-            var anchor = anchors_1[_i];
-            var headerBounds = anchor.nextElementSibling.getBoundingClientRect();
-            if (0 < headerBounds.bottom) {
-                if (headerBounds.top < window.innerHeight) {
-                    var cmdName = anchor.getAttribute("name");
-                    if (cmdName && (cmdName !== currentCmdName_1)) {
-                        window.parent.postMessage(cmdName + ".html", "*");
-                        currentCmdName_1 = cmdName;
-                    }
-                }
-                break;
-            }
+        var cmdName = findCurrentCmdAnchor().getAttribute("name");
+        if (cmdName != null && cmdName !== currentCmdName_1) {
+            window.parent.postMessage(cmdName + ".html", "*");
+            currentCmdName_1 = cmdName;
         }
     };
 }

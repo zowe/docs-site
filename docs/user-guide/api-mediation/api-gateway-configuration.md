@@ -19,6 +19,8 @@ Follow the procedures in the following sections to customize Gateway parameters 
   * [CORS handling](#cors-handling)
   * [Encoded slashes](#encoded-slashes)
   * [Connection limits](#connection-limits)
+  * [Routed instance header](#routed-instance-header)
+  * [Distributed load balancer cache](#distributed-load-balancer-cache)
   * [Replace or remove catalog with another service](#replace-or-remove-catalog-with-another-service)
   * [API Mediation Layer as a standalone component](#api-mediation-layer-as-a-standalone-component)
   * [SAF resource checking](#saf-resource-checking)
@@ -226,6 +228,32 @@ Use the following procedure to change the number of concurrent connections.
 2. Find the property `APIML_MAX_CONNECTIONS_PER_ROUTE` and set the value to an appropriate positive integer.
 3. Find the property `APIML_MAX_TOTAL_CONNECTIONS` and set the value to an appropriate positive integer.
 
+## Routed instance header
+
+The API Gateway can output a special header that contains the value of the instance ID of the API service that the request has been routed to. This is useful for understanding which service instance is being called.
+
+The header name is `X-InstanceId`, and the sample value is `discoverable-client:discoverableclient:10012`. This is identical to `instanceId` property in the registration of the Discovery service.
+
+Use the following procedure to output a special header that contains the value of the instance ID of the API service.
+
+**Follow these steps:**
+
+1. Open the file `<Zowe instance directory>/instance.env`.
+2. Add the property with value `APIML_ROUTING_INSTANCEIDHEADER=true`.
+3. Restart Zowe.
+
+## Distributed load balancer cache
+
+You can choose to distribute the load balancer cache between instances of the API Gateway. To distribute the load balancer cache, it is necessary that the caching service is running. Gateway service instances are reuqired to have the same DN (Distinguished name) on the server certificate.
+
+Use the following procedure to distribute the load balancer cache between instances of the API Gateway.
+
+**Follow these steps:**
+
+1. Open the file `<Zowe instance directory>/instance.env`.
+2. Add the property with value `APIML_LOADBALANCER_DISTRIBUTE=true`.
+3. Restart Zowe.
+
 ## Replace or remove the Catalog with another service
 
 By default, the API Mediation Layer contains API Catalog as a service showing available services. As the API Mediation Layer can be successfully run without this component it is possible to replace or remove the service from the Gateway home page and health checks. The following section describes the behavior of the Gateway home page and health checks. 
@@ -257,7 +285,7 @@ A value can also be applied to `API_GATEWAY_CATALOG_ID`.
 - If the application contains the `homePageUrl` the link is displayed without the `UP` information.
 - If the application contains the `statusPageRelativeUrl` then `UP` or `DOWN` is displayed based on the `statusPage` without the link.
 
-Use the following procedure to change or replace the Catalog service:
+Use the following procedure to change or replace the Catalog service.
 
 **Follow these steps:**
 

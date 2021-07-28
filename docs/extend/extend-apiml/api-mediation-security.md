@@ -529,24 +529,69 @@ To use this library, use the procedure described in this section.
 
 1. Add `zaas-client` as a dependency in your project.
 
+    You will need to specify the version of the `zaas-client` you want. `zaas-client` versioning following the semantic versioning format of `major.minor.patch`. For example, `1.22.0`.
+
     Gradle:
 
-      ```groovy
-      dependencies {
-          compile 'org.zowe.apiml.sdk:zaas-client:{{version}}'
-      }
+      1. Create a `gradle.properties` file in the root of your project if one does not already exist.
+
+      2. In the `gradle.properties` file, set the URL of the specific Artifactory containing the _SpringEnabler_ artifact.
+
       ```
+      # Repository URL for getting the enabler-java artifact
+      artifactoryMavenRepo=https://zowe.jfrog.io/zowe/libs-release/
+      ```
+
+      3. Add the following _Gradle_ code block to the `repositories` section of your `build.gradle` file:
+
+        ```gradle
+        repositories {
+            ...
+
+            maven {
+                url artifactoryMavenRepo
+            }
+        }
+        ```
+
+      4. Add the following _Gradle_ dependency:
+
+        ```groovy
+        dependencies {
+            compile 'org.zowe.apiml.sdk:zaas-client:{{version}}'
+        }
+        ```
 
     Maven:
 
-      ```xml
-      <dependency>
-                  <groupId>org.zowe.apiml.sdk:zaas-client</groupId>
-                  <artifactId>{{version}}</artifactId>
-      </dependency>
-      ```
+      1. Add the following _XML_ tags within the newly created `pom.xml` file:
 
-2. In your application, create your java class which will be used to create an instance of `ZaasClient`, which enables you to use its method to login, query, and to issue passTicket.
+        ```xml
+        <repositories>
+            <repository>
+                <id>libs-release</id>
+                <name>libs-release</name>
+                <url>https://zowe.jfrog.io/zowe/libs-release/</url>
+                <snapshots>
+                    <enabled>false</enabled>
+                </snapshots>
+            </repository>
+        </repositories>
+        ```
+    
+        **Tip:** If you want to use snapshot version, replace libs-release with libs-snapshot in the repository url and change snapshots->enabled to true.
+      
+      2. Then add the following _Maven_ dependency:
+    
+        ```xml
+        <dependency>
+                    <groupId>org.zowe.apiml.sdk</groupId>
+                    <artifactId>zaas-client</artifactId>
+                    <version>{{version}}</version>
+        </dependency>
+        ```
+
+2. In your application, create your Java class which will be used to create an instance of `ZaasClient`, which enables you to use its method to login, query, and to issue a PassTicket.
 
 3. To use `zaas-client`, provide a property file for configuration.
 
@@ -565,15 +610,19 @@ To use this library, use the procedure described in this section.
         private String trustStoreType;
         private String trustStorePath;
         private String trustStorePassword;
+        private boolean httpOnly;
     }
     ```
+    
+    **Note:** If `httpOnly` property is set to true, the ZAAS Client will access the API ML via HTTP protocol without TLS. 
+    This meant for z/OS configuration with AT-TLS that will ensure that TLS and the required client certificates are used.
 
 4. Create an instance of `ZaasClient` in your class and provide the `configProperties` object.
 
    **Example:**
 
     ```java
-    ZaasClient zaasClient = new ZaasClientHttps(getConfigProperties());
+    ZaasClient zaasClient = new ZaasClientImpl(getConfigProperties());
     ```
 
 You can now use any method from `ZaasClient` in your class.
@@ -591,17 +640,22 @@ The following codeblock is an example of a `SampleZaasClientImplementation`.
 **Example:**
 
 ```java
+import org.zowe.apiml.zaasclient.config.ConfigProperties;
+import org.zowe.apiml.zaasclient.exception.ZaasClientException;
+import org.zowe.apiml.zaasclient.exception.ZaasConfigurationException;
+import org.zowe.apiml.zaasclient.service.ZaasClient;
+
 public class SampleZaasClientImplementation {
 
     /**
      * This method is used to fetch token from zaasClient
      * @param username
      * @param password
-     * @return
+     * @return valid JWT token returned from the authentication service
      */
     public String login(String username, String password) {
         try {
-            ZaasClient zaasClient = new ZaasClientHttps(getConfigProperties());
+            ZaasClient zaasClient = new ZaasClientImpl(getConfigProperties());
             String zaasClientToken = zaasClient.login(username, password);
             //Use this token  in subsequent calls
             return zaasClientToken;
