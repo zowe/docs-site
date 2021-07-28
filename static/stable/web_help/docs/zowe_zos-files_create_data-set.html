@@ -36,7 +36,7 @@
 <li>
 <p><code>--data-set-type</code>  | <code>--dst</code> | <code>--dsntype</code> <em>(string)</em></p>
 <ul>
-<li>The data set type</li>
+<li>The data set type (BASIC, EXTPREF, EXTREQ, HFS, LARGE, PDS, LIBRARY, PIPE)</li>
 </ul>
 </li>
 <li>
@@ -214,16 +214,22 @@ default token type, which is provided by 'zowe auth login'.</li>
 <h4>Examples</h4>
 <ul>
 <li>
-<p>Create an dataset with default parameters and like flag:</p>
+<p>Create a data set with default parameters and like flag:</p>
 <ul>
 <li><code>zowe  zos-files create data-set NEW.DATASET --like EXISTING.DATASET</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  zos-files create data-set NEW.DATASET --like EXISTING.DATASET">Copy</button></li>
 </ul>
 </li>
 <li>
-<p>Create an dataset with default parameters and like flag and
+<p>Create a data set with default parameters and like flag and
 lrecl flag:</p>
 <ul>
 <li><code>zowe  zos-files create data-set NEW.DATASET --like EXISTING.DATASET --lrecl 1024</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  zos-files create data-set NEW.DATASET --like EXISTING.DATASET --lrecl 1024">Copy</button></li>
+</ul>
+</li>
+<li>
+<p>Create a data set with type LIBRARY:</p>
+<ul>
+<li><code>zowe  zos-files create data-set NEW.DATASET --data-set-type LIBRARY</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  zos-files create data-set NEW.DATASET --data-set-type LIBRARY">Copy</button></li>
 </ul>
 </li>
 </ul>
