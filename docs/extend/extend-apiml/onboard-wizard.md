@@ -16,3 +16,10 @@ The following procedure describes how to onboard your REST service with the Wiza
 4. Go over all categories in the dialog dropdown by clicking 'Next'  
    ![Categories](../../images/api-mediation/wizard-categories.png)
 5. Click **Save** to apply your changes.
+6. In case you are onboarding your service statically, the process has been successful, if a validation message appears on the screen.  
+   ![Validation](../../images/api-mediation/wizard-validation.png)  
+   If you are onboarding your service via enablers, click the copy button to save the generated YAML file to your clipboard and then paste it in your project's service-configuration.yml file.   
+   ![Validation](../../images/api-mediation/wizard-save-button.png)  
+   
+If you see your service in the list of API Catalog available services, you have onboarded your service successfully.
+
