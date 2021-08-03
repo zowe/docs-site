@@ -216,5 +216,5 @@ You then need to set attributes to native library:
     chmod a+x <library.so>
     extattr +p <library.so>
     ```
-Required part around AT-TLS is to provide Zowe with Key ring configuration in zowe-setup-keyring-certificates.env. This needs to be the same Key ring configuration as the one specified in AT-TLS rule. This is needed for correct behaviour of API Mediation Layer around selecting client certificates for the authentication.
+
 
