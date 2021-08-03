@@ -203,6 +203,11 @@ Update instance.env with following environment variables to activate AT-TLS prof
 ```
 SPRING_PROFILES_ACTIVE=attls
 JAVA_LIBRARY_PATH=<path-to-native-lib-directory>
+APIML_SSL_ENABLED=false 
+KEYSTORE=<SAF-key-ring-from-AT-TLS-rule>
+KEYSTORE_TYPE=JCERACFKS
+KEYSTORE_PASSWORD=<keyring-password>
+KEY_ALIAS=<certificate-alias-from-AT-TLS-rule>
 ```
 
 You then need to set attributes to native library:
