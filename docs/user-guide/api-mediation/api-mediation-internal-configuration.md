@@ -189,3 +189,27 @@ Hystrix is a latency and fault tolerance library designed to isolate points of a
 services and third-party libraries, stop cascading failure, and enable resilience in complex distributed systems where failure is inevitable.
 
 **Note:** For more information about Hystrix configuration parameters, see the [Netflix - Hystrix documentation](https://github.com/Netflix/Hystrix/wiki/Configuration#execution.isolation.strategy).
+
+## AT-TLS (Technical preview)
+
+<Badge text="Technical Preview"/>
+
+**Notes:** 
+* This section is for technical preview. As such, we welcome  feedback. Content in this section may be changed or improved in the future.
+
+Each component belogings to API ML can run with AT-TLS rules applied. Some of them, e.g. Discovery serivce, needs to be AT-TLS aware so they can consume infromation around TLS context from zOS Communication server. Starting Zowe v. 1.24.0, it is possible to enable AT-TLS profile and make whole API Mediation Layer HTTP communication secured by zOS Communication server. 
+Update instance.env with following environment variables to activate AT-TLS profile and inform API ML where the native library can be found:
+
+```
+SPRING_PROFILES_ACTIVE=attls
+JAVA_LIBRARY_PATH=<path-to-native-lib-directory>
+```
+
+You then need to set attributes to native library:
+
+    ```sh
+    chmod a+x <library.so>
+    extattr +p <library.so>
+    ```
+Required part around AT-TLS is to provide Zowe with Key ring configuration in zowe-setup-keyring-certificates.env. This needs to be the same Key ring configuration as the one specified in AT-TLS rule. This is needed for correct behaviour of API Mediation Layer around selecting client certificates for the authentication.
+
