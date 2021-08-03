@@ -190,18 +190,26 @@ services and third-party libraries, stop cascading failure, and enable resilienc
 
 **Note:** For more information about Hystrix configuration parameters, see the [Netflix - Hystrix documentation](https://github.com/Netflix/Hystrix/wiki/Configuration#execution.isolation.strategy).
 
-## AT-TLS 
+## AT-TLS (Technical preview)
 
-The communication server on z/OS provides a functionality to encrypt HTTP communication for on-platform running jobs. This functionality is refered to as Application Transparent Transport Layer Security (AT-TLS). Starting with Zowe version 1.24, it is possible to leverage AT-TLS within the API Mediation Layer. Each API ML component can run with AT-TLS rules applied. Some components, such as the Discovery service, can be made AT-TLS aware by enabling the AT-TLS profile, whereby TLS information can be utilized. To enable the AT-TLS profile and disable the TLS application in API ML, update `instance.env` with the following environment variables:
+<Badge text="Technical Preview"/>
+
+**Notes:** 
+* This section is for technical preview. As such, we welcome  feedback. Content in this section may be changed or improved in the future.
+
+Each component belogings to API ML can run with AT-TLS rules applied. Some of them, e.g. Discovery serivce, needs to be AT-TLS aware so they can consume infromation around TLS context from zOS Communication server. Starting Zowe v. 1.24.0, it is possible to enable AT-TLS profile and make whole API Mediation Layer HTTP communication secured by zOS Communication server. 
+Update instance.env with following environment variables to activate AT-TLS profile and inform API ML where the native library can be found:
+
 ```
 SPRING_PROFILES_ACTIVE=attls
-APIML_SSL_ENABLED=false 
+JAVA_LIBRARY_PATH=<path-to-native-lib-directory>
 ```
-API ML does not perform TLS on its own, but rather API ML utilizes certificate data from AT-TLS. API ML requires client certificate information that is defined in the AT-TLS rule, whereby API ML is able to select which certificate belongs to API ML components. Update the `instance.env` file with the path to the SAF Key ring from the AT-TLS rule and specify the alias that is used for Inbound communication:
-```
-KEYSTORE=<SAF-key-ring-from-AT-TLS-rule>
-KEYSTORE_TYPE=JCERACFKS
-KEYSTORE_PASSWORD=<keyring-password>
-KEY_ALIAS=<certificate-alias-from-AT-TLS-rule>
-```
-**Note:** This procedure does not configure AT-TLS on z/OS, but rather enables API ML to work with AT-TLS in place.
+
+You then need to set attributes to native library:
+
+    ```sh
+    chmod a+x <library.so>
+    extattr +p <library.so>
+    ```
+Required part around AT-TLS is to provide Zowe with Key ring configuration in zowe-setup-keyring-certificates.env. This needs to be the same Key ring configuration as the one specified in AT-TLS rule. This is needed for correct behaviour of API Mediation Layer around selecting client certificates for the authentication.
+
