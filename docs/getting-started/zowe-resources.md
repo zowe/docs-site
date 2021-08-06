@@ -23,8 +23,11 @@ As well as [Zowe videos](https://www.youtube.com/embed?listType=playlist&list=PL
 
 Find out what's happening with Zowe in the Zowe Quarterly Update Webinar Series.
 
-- [Zowe Quarterly Update Webinar: October 2020](https://youtu.be/GbAFO5vzBhw)
+- [Zowe Quarterly Update Webinar: July 2021](https://youtu.be/T3Z4hMwElII)
+- [Zowe Quarterly Update Webinar: April 2021](https://youtu.be/9rQCcZGVDzQ)
 - [Zowe Quarterly Update Webinar: January 2021](https://youtu.be/ZEwd8wZvbIw)
+- [Zowe Quarterly Update Webinar: October 2020](https://youtu.be/GbAFO5vzBhw)
+
 
 The [OMP Youtube channel](https://www.youtube.com/channel/UC-WTXQQtz2m5iTflJLK59aw/videos) also offers other webinars about Zowe. 
 - [Treat Yourself to a Guided, Comprehensive Tour of Zowe Desktop Applications](https://youtu.be/cbEVbcsaGCs)
