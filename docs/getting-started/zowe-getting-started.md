@@ -36,7 +36,7 @@ Now you know that Zowe consists of several components. You can determine which Z
 
 ### Zowe versions for use with other products and plugins
 
-While it is generally recommended that you always use the most recently updated release of Zowe, users who intend to use Zowe as a prerequisite for a commercial product or plugin should refer to the documentation for those products to determine which versions of Zowe are compatible. 
+While it is generally recommended that you use more recent releases of Zowe, users who intend to use Zowe as a prerequisite for a commercial product or plugin should refer to the documentation for those products to determine which versions of Zowe are compatible and have been tested with the commercial product in question. 
 
 Components to install and use |  Information roadmaps
 ---                           |  ---
