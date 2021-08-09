@@ -1,4 +1,4 @@
-The App framework's logger allows for messages to have IDs which can be used to find the right version of a message for foreign languages or just as a way to quickly find documentation for a message. It is detailed here:
+The App framework's logger allows for messages to have IDs that can be used to find the right version of a message for foreign languages or to quickly find documentation for a message. More information about ID messages can be found here:
  
 https://github.com/zowe/zlux/wiki/Logging#logger-message-substitution-using-ids
 
