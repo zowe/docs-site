@@ -133,21 +133,22 @@ Subsequent releases of the Zowe z/OS components are delivered as rollup PTFs on 
 
 Zowe release | PTF 1 | PTF 2 
 ---|---|---
-[1.10.0](https://zowe.jfrog.io/zowe/list/libs-release-local/org/zowe/download/legal.html?type=smpe&version=1.10.0) | UO01939 | UO01940
-[1.11.0](https://zowe.jfrog.io/zowe/list/libs-release-local/org/zowe/download/legal.html?type=smpe&version=1.11.0) | UO01942 | UO01943
-[1.12.0](https://zowe.jfrog.io/zowe/list/libs-release-local/org/zowe/download/legal.html?type=smpe&version=1.12.0) | UO01945 | UO01946
-[1.13.0](https://zowe.jfrog.io/zowe/list/libs-release-local/org/zowe/download/legal.html?type=smpe&version=1.13.0) | UO01948 | UO01949
-[1.14.0](https://zowe.jfrog.io/zowe/list/libs-release-local/org/zowe/download/legal.html?type=smpe&version=1.14.0) | UO01951 | UO01952  
-[1.15.0](https://zowe.jfrog.io/zowe/list/libs-release-local/org/zowe/download/legal.html?type=smpe&version=1.15.0) | UO01953 | UO01954
-[1.16.0](https://zowe.jfrog.io/zowe/list/libs-release-local/org/zowe/download/legal.html?type=smpe&version=1.16.0) | UO01955 | UO01956
-[1.17.0](https://zowe.jfrog.io/zowe/list/libs-release-local/org/zowe/download/legal.html?type=smpe&version=1.17.0) | UO01958 | UO01959
-[1.18.0](https://zowe.jfrog.io/zowe/list/libs-release-local/org/zowe/download/legal.html?type=smpe&version=1.18.0) | UO01965 | UO01966
-[1.19.0](https://zowe.jfrog.io/zowe/list/libs-release-local/org/zowe/download/legal.html?type=smpe&version=1.19.0) | UO01967 | UO01968
-[1.19.1](https://zowe.jfrog.io/zowe/list/libs-release-local/org/zowe/download/legal.html?type=smpe&version=1.19.1) | UO01969 | 
-[1.20.0](https://zowe.jfrog.io/zowe/list/libs-release-local/org/zowe/download/legal.html?type=smpe&version=1.20.0) | UO01970 |
-[1.20.1](https://zowe.jfrog.io/zowe/list/libs-release-local/org/zowe/download/legal.html?type=smpe&version=1.20.1) | UO01980 |
-[1.21.0](https://zowe.jfrog.io/zowe/list/libs-release-local/org/zowe/download/legal.html?type=smpe&version=1.21.0) | UO01981 |
-[1.22.0](https://zowe.jfrog.io/zowe/list/libs-release-local/org/zowe/download/legal.html?type=smpe&version=1.22.0) | UO01982 | UO01983
+[1.10.0](https://www.zowe.org/legal.html?type=smpe&version=1.10.0) | UO01939 | UO01940
+[1.11.0](https://www.zowe.org/legal.html?type=smpe&version=1.11.0) | UO01942 | UO01943
+[1.12.0](https://www.zowe.org/legal.html?type=smpe&version=1.12.0) | UO01945 | UO01946
+[1.13.0](https://www.zowe.org/legal.html?type=smpe&version=1.13.0) | UO01948 | UO01949
+[1.14.0](https://www.zowe.org/legal.html?type=smpe&version=1.14.0) | UO01951 | UO01952  
+[1.15.0](https://www.zowe.org/legal.html?type=smpe&version=1.15.0) | UO01953 | UO01954
+1.16.0 | UO01955 | UO01956
+1.17.0 | UO01958 | UO01959
+1.18.0 | UO01965 | UO01966
+[1.19.0](https://www.zowe.org/legal.html?type=smpe&version=1.19.0) | UO01967 | UO01968
+[1.19.1](https://www.zowe.org/legal.html?type=smpe&version=1.19.1) | UO01969 | 
+[1.20.0](https://www.zowe.org/legal.html?type=smpe&version=1.20.0) | UO01970 |
+[1.20.1](https://www.zowe.org/legal.html?type=smpe&version=1.20.1) | UO01980 |
+[1.21.0](https://www.zowe.org/legal.html?type=smpe&version=1.21.0) | UO01981 |
+[1.22.0](https://www.zowe.org/legal.html?type=smpe&version=1.22.0) | UO01982 | UO01983
+[1.23.0](https://www.zowe.org/legal.html?type=smpe&version=1.23.0) | UO01984 | UO01991
 
 
 ## Installation requirements and considerations

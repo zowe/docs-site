@@ -1282,7 +1282,7 @@ The following error message codes may appear on logs or API responses. Use the f
   Refer to the specific printed message. Possible causes include:
   - The Gateway was not found. The Transform service cannot perform the request. Wait for the Gateway to be discovered.
   - The URI is not valid. Ensure the service is providing a valid URL.
-  - Not able to select a route for URL of the service. The original URL is used. If this is a problem, check the routing metadata of the service.
+  - Not able to select a route for the URL of the specific service. The original URL is used. If necessary, check the routing metadata of the service.
   - The path of the service URL is not valid. Ensure the service is providing the correct path.
  
 
@@ -1321,8 +1321,8 @@ The following error message codes may appear on logs or API responses. Use the f
   **Action:**
 
   Refer to the specific printed message. Possible causes include:
-  - The URI is not valid. Ensure the service is providing a valid url.
-  - Not able to select a route for the URL of the specific service. The original url is used. If this is a problem, check the routing metadata of the service.
+  - The URI is not valid. Ensure the service is providing a valid URL.
+  - Not able to select a route for the URL of the specific service. The original URL is used. If necessary, check the routing metadata of the service.
   - The path of the service URL is not valid. Ensure the service is providing the correct path.
  
 
