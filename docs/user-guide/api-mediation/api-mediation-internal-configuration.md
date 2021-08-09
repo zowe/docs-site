@@ -190,31 +190,19 @@ services and third-party libraries, stop cascading failure, and enable resilienc
 
 **Note:** For more information about Hystrix configuration parameters, see the [Netflix - Hystrix documentation](https://github.com/Netflix/Hystrix/wiki/Configuration#execution.isolation.strategy).
 
-## AT-TLS (Technical preview)
+## AT-TLS 
 
-<Badge text="Technical Preview"/>
-
-**Notes:** 
-* This section is for technical preview. As such, we welcome  feedback. Content in this section may be changed or improved in the future.
-
-Each component belogings to API ML can run with AT-TLS rules applied. Some of them, e.g. Discovery serivce, needs to be AT-TLS aware so they can consume infromation around TLS context from zOS Communication server. Starting Zowe v. 1.24.0, it is possible to enable AT-TLS profile and make whole API Mediation Layer HTTP communication secured by zOS Communication server. 
-Update instance.env with following environment variables to activate AT-TLS profile and inform API ML where the native library can be found:
-
+The communication server on the z/OS provides a functionality to encrypt HTTP communication for on-platform running jobs called Application Transparent Transport Layer Security - AT-TLS. Starting with Zowe version 1.24, it is possible to leverage this within the API Mediation Layer. Each API ML component can run with AT-TLS rules applied. Some of them, for example, Discovery service, need to be AT-TLS aware so they can consume information from TLS context. Such information could be a client certificate. To enable AT-TLS profile and disable application TLS in API ML, update instance.env with the following environment variables:
 ```
 SPRING_PROFILES_ACTIVE=attls
-JAVA_LIBRARY_PATH=<path-to-native-lib-directory>
 APIML_SSL_ENABLED=false 
+```
+Although API ML will not handle TLS on its own, it needs to have information around the server certificate that is defined in AT-TLS rule. Update the instance.env file with the path to SAF Key ring from AT-TLS rule and specify alias which is being used for Inbound communication:
+```
 KEYSTORE=<SAF-key-ring-from-AT-TLS-rule>
 KEYSTORE_TYPE=JCERACFKS
 KEYSTORE_PASSWORD=<keyring-password>
 KEY_ALIAS=<certificate-alias-from-AT-TLS-rule>
 ```
-
-You then need to set attributes to native library:
-
-    ```sh
-    chmod a+x <library.so>
-    extattr +p <library.so>
-    ```
-
-
+**Note**
+This guide will not configure AT-TLS on z/OS. It will make API ML works with AT-TLS in place.
