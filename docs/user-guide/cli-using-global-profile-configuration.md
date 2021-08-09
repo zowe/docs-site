@@ -1,8 +1,8 @@
 # Using Global Profile Configuration (Technical Preview) <!-- omit in toc -->
 
-<Badge text="Technical Preview"/> The Zowe CLI @next release is a technical preview. Technical previews are for testing only and are not ready for production. Your feedback is valued and appreciated.
+<Badge text="Technical Preview"/> Global profiles are available in the `@next` version of Zowe CLI. The Zowe CLI `@next` release is a technical preview. Technical previews are for testing only and are not ready for production. Your feedback is valued and appreciated.
 
-**Early access feature:** Global profiles are available in the `@next` version of Zowe CLI. If you already installed the supported version `@zowe-v1-lts`, switch versions to try this feature. The functionality will be included in the next major Zowe release, V2.0.0-LTS.
+If you already installed the supported version `@zowe-v1-lts`, switch versions to try this feature. The functionality will be included in the next major Zowe release, V2.0.0-LTS.
 
 **Table of Contents:**
 - [Feature overview](#feature-overview)
@@ -20,23 +20,23 @@
 
 ## Feature overview
 
-In the V1-LTS version of the CLI, users issue commands from the `zowe profiles` group to create, edit, and manage user profiles. Each profile contains the host, port, username, and password for a specific mainframe service instance. While that approach is effective, users often need to duplicate values across profiles and spend time managing many profiles separately.
+In the V1-LTS version of Zowe CLI, users issue commands from the `zowe profiles` group to create, edit, and manage user profiles. Each profile contains the host, port, username, and password for a specific mainframe service instance. While that approach is effective, users often need to duplicate values across profiles and spend time managing many profiles separately.
 
 The **global profile functionality** simplifies profile management by letting you edit, store, and share mainframe configuration details in one location. You can use a text editor to populate configuration files with connection details for your mainframe services.
 
 ### Benefits
 
-Global profile configuration can improve your Zowe CLI experience in the following ways:
+Global profile configuration can improve your Zowe CLI experience:
 
-- As a CLI user, you can manage your connection details efficiently in one location.
+- As a user, you can manage your connection details efficiently in one location.
 - As a team leader, you can share a configuration file with your team members so that they can easily access mainframe services. You can add the file directly to your project in an SCM.
-- As a new team member, you can onboard quickly by consuming your team's configuration file.
+- As a new team member, you can onboard quickly by using your team's configuration file.
 
 ### Changes to secure credential storage
 
-In this version, Secure Credential Store (SCS) Plug-in is deprecated. The `zowe scs` and `zowe config` command groups are obsolete. The equivalent functionality that encrypts your credentials is now included in the core CLI.
+The  Secure Credential Store (SCS) Plug-in is deprecated in the `@next` version. The `zowe scs` and `zowe config` command groups are obsolete. Secure credential encryption is now included in the core CLI.
 
-With the new configuration, the CLI prompts you to enter username and password securely by default. Commands in the new `zowe config` command group let you manage security for any option value.
+The CLI prompts you to enter username and password securely by default. Commands in the new `zowe config` command group let you manage security for any option value.
 
 ## Installing @next version
 
