@@ -192,7 +192,7 @@ services and third-party libraries, stop cascading failure, and enable resilienc
 
 ## AT-TLS 
 
-The communication server on z/OS provides a functionality to encrypt HTTP communication for on-platform running jobs. This functionality is refered to as Application Transparent Transport Layer Security - AT-TLS. Starting with Zowe version 1.24, it is possible to leverage AT-TLS within the API Mediation Layer. Each API ML component can run with AT-TLS rules applied. Some components, such as the Discovery service, need to be AT-TLS aware so they can consume information from TLS context. Such information could be a client certificate. To enable the AT-TLS profile and disable the TLS application in API ML, update instance.env with the following environment variables:
+The communication server on z/OS provides a functionality to encrypt HTTP communication for on-platform running jobs. This functionality is refered to as Application Transparent Transport Layer Security (AT-TLS). Starting with Zowe version 1.24, it is possible to leverage AT-TLS within the API Mediation Layer. Each API ML component can run with AT-TLS rules applied. Some components, such as the Discovery service, can be made AT-TLS aware by enabling the AT-TLS profile, whereby TLS information can be utilized. Such information could be a client certificate. To enable the AT-TLS profile and disable the TLS application in API ML, update `instance.env` with the following environment variables:
 ```
 SPRING_PROFILES_ACTIVE=attls
 APIML_SSL_ENABLED=false 
