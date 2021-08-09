@@ -192,17 +192,16 @@ services and third-party libraries, stop cascading failure, and enable resilienc
 
 ## AT-TLS 
 
-The communication server on the z/OS provides a functionality to encrypt HTTP communication for on-platform running jobs called Application Transparent Transport Layer Security - AT-TLS. Starting with Zowe version 1.24, it is possible to leverage this within the API Mediation Layer. Each API ML component can run with AT-TLS rules applied. Some of them, for example, Discovery service, need to be AT-TLS aware so they can consume information from TLS context. Such information could be a client certificate. To enable AT-TLS profile and disable application TLS in API ML, update instance.env with the following environment variables:
+The communication server on z/OS provides a functionality to encrypt HTTP communication for on-platform running jobs. This functionality is refered to as Application Transparent Transport Layer Security - AT-TLS. Starting with Zowe version 1.24, it is possible to leverage AT-TLS within the API Mediation Layer. Each API ML component can run with AT-TLS rules applied. Some components, such as the Discovery service, need to be AT-TLS aware so they can consume information from TLS context. Such information could be a client certificate. To enable the AT-TLS profile and disable the TLS application in API ML, update instance.env with the following environment variables:
 ```
 SPRING_PROFILES_ACTIVE=attls
 APIML_SSL_ENABLED=false 
 ```
-Although API ML will not handle TLS on its own, it needs to have information around the server certificate that is defined in AT-TLS rule. Update the instance.env file with the path to SAF Key ring from AT-TLS rule and specify alias which is being used for Inbound communication:
+While API ML can not handle TLS on its own, the Mediation Layer needs information about the server certificate that is defined in the AT-TLS rule. Update the instance.env file with the path to the SAF Key ring from the AT-TLS rule and specify the alias that is used for Inbound communication:
 ```
 KEYSTORE=<SAF-key-ring-from-AT-TLS-rule>
 KEYSTORE_TYPE=JCERACFKS
 KEYSTORE_PASSWORD=<keyring-password>
 KEY_ALIAS=<certificate-alias-from-AT-TLS-rule>
 ```
-**Note**
-This guide will not configure AT-TLS on z/OS. It will make API ML works with AT-TLS in place.
+**Note:** This procedure does not configure AT-TLS on z/OS, but rather enablesAPI ML to work with AT-TLS in place.
