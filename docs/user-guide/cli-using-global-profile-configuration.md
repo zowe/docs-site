@@ -14,6 +14,7 @@ If you already installed the supported version `@zowe-v1-lts`, switch versions t
 - [Editing global configuration](#editing-global-configuration)
 - [Managing credential security](#managing-credential-security)
 - [Tips for efficient configuration](#tips-for-efficient-configuration)
+  - [Command option order of precedence](#command-option-order-of-precedence)
   - [Tips for using the base array](#tips-for-using-the-base-array)
 - [Sharing global configuration](#sharing-global-configuration)
 - [Example configurations](#example-configurations)
@@ -226,30 +227,34 @@ For example, to add a new instance of z/OSMF that runs on a different mainframe 
 You can continue to add more LPARs and more services within each LPAR. After you make changes, save the file and issue a Zowe CLI command to the service to verify the connection.
 ## Managing credential security
 
-When you first run the `zowe config init --global-config` command, the `profiles.base.properties.user` and `profiles.base.properties.password` fields are defined to the "secure" array in your configuration file. This ensures that username and password are stored securely on your computer.
+When you first run the `zowe config init --global-config` command, the `profiles.base.properties.user` and `profiles.base.properties.password` fields are defined to the "secure" array in your configuration file. This ensures that the username and password are stored securely on your computer.
 
-Issue the `zowe config secure` command to re-prompt for all secure fields when you want to update them (for example, when you want to change your username and password).
+To update the secure fields (for example, when you want to change your username and password), issue the `zowe config secure` command.
 
-To secure a specific field, use the command `zowe config set --secure <property-path>`. For example, you can issue `zowe config set --secure profiles.base.properties.password`. If you issue the command for an option that is already secure, the CLI re-prompts you to enter a new option value.
+To secure a specific field, use the command `zowe config set --secure <property-path>`. For example, you can issue `zowe config set --secure profiles.base.properties.password`. If you issue the command for an option that is already secured, the CLI prompts you to enter a new option value.
 
-Alternatively, you can use an editor to define options to the secure array in `zowe.config.json` manually. Any option that you define to there becomes secure/prompted-for.
+You can use an editor to define options to the secure array in `zowe.config.json`. Any option that you define to there becomes secure/prompted-for.
 
 ## Tips for efficient configuration
 
-There are several methods you can employ to more efficiently update and maintain your configuration.
+There are several methods to more efficiently update and maintain your configuration:
+* Leverage the command option order of precedence
+* Utilize a base array
 
-Zowe CLI uses a "command option order of precedence" that lets your service definitions inherit option values. You can use this to your advantage, because it lets you avoid duplicating the same option value in several places.
+### Command option order of precedence
 
-The CLI checks for option values in the following order. If not found, the next location is checked:
-1. Options you define explicitly on the command-line
+Zowe CLI uses a **command option order of precedence** by which service definitions inherit option values. Use this feature to avoid duplicating option values.
+
+Zowe CLI checks for option values in order, skipping null values:
+1. Explicit command-line option values
 2. Environment variables
 3. Service type profiles
 4. Base type profiles
-5. If no value is found, the default value for the option is used.
+5. Default option value
 
 The user name and password fields are not supplied in the service definitions.
 
-In the following example, the username and password fields for ZOSMF1 and ZOSMF2 are user name and password fields are not supplied in the service definitions to allow them to inherit values from the base array:
+**Example:** <!--Not sure what this is trying to same, as there seems to be something missing --> The username and password fields for ZOSMF1 and ZOSMF2 are not supplied in the service definitions to allow them to inherit values from the base array:
 
 ```json
 {
@@ -302,21 +307,21 @@ In the following example, the username and password fields for ZOSMF1 and ZOSMF2
 
 ### Tips for using the base array
 
-The base array is a useful tool for sharing option values between services. You might define options to the base array in the following situations:
+Use the base array to share option values between services. You might share option values between services in the following situations:
 - You have multiple services that share the same username, password, or other value.
 - You want to store a web token to access all services through Zowe API Mediation Layer.
-- You want to trust a known self-signed certificate, or your site does not have server certificates configured. You can define `reject-unauthorized` in the base array with a value of  `false` to apply to all services. Understand the security implications of accepting self-signed certificates at your site before you use this method.
+- You want to trust a known self-signed certificate or your site does not have server certificates configured. You can define `reject-unauthorized` in the base array with a value of  `false` to apply to all services. Understand the security implications of accepting self-signed certificates at your site before you use this method.
 
 ## Sharing global configuration
 
-You might want to share configuration in the following scenarios:
-- Share global config with developers so that they can begin working with a defined set of mainframe services. The recipient of the file manually places it in their local `~/.zowe` folder before issuing CLI commands.
-- Add global config to your project directory in an SCM tool such as GitHub. This lets other developers pull the project to their local machine and make use of the defined configuration. Zowe CLI commands that you issue from within the project directory automatically use the project's config scheme.
-- Enable test automation and CI/CD, letting your pipelines make use of the project configuration.
+You might want to share a configuration globally:
+- With developers so that they can begin working with a defined set of mainframe services. The recipient of the file manually places it in their local `~/.zowe` folder before issuing CLI commands.
+- To add to your project directory in an SCM tool such as GitHub. This lets other developers pull the project to their local machine and make use of the defined configuration. Zowe CLI commands that you issue from within the project directory automatically use the project's config scheme.
+- To enable test automation and CI/CD, letting your pipelines make use of the project configuration.
 
 ## Example configurations
 
-In this example configuration, the settings are accessing multiple services directly on multiple LPARs that share the same username and password.
+**Example 1:** The settings are accessing multiple services directly on multiple LPARs that share the same username and password.
 
 ```json
 {
@@ -382,7 +387,7 @@ In this example configuration, the settings are accessing multiple services dire
     "plugins": []
 }
 ```
-In this example configuration, the settings are accessing multiple services via the API ML (where MFA/SSO is achievable via token-based authorization).
+**Example 2:** The settings are accessing multiple services using the API ML (where MFA/SSO is achievable via token-based authorization).
 ```json
 {
     "$schema": "./zowe.schema.json",
@@ -430,7 +435,7 @@ In this example configuration, the settings are accessing multiple services via 
     "plugins": []
 }
 ```
-In this example configuration, the settings are accessing multiple services directly on LPAR1 and LPAR2 where username and password varies between the LPAR1 and LPAR2 services. This example is identical to first example except that LPAR1 and LPAR2 each contain a secure array, instead of just one secure array in the "my_base" profile.
+**Example 3:** The settings are accessing multiple services directly on LPAR1 and LPAR2 where username and password varies between the LPAR1 and LPAR2 services. This example is identical to Example 1 except that LPAR1 and LPAR2 each contain a secure array, instead of just one secure array in the "my_base" profile.
 ```json
 {
     "$schema": "./zowe.schema.json",
@@ -500,7 +505,7 @@ In this example configuration, the settings are accessing multiple services dire
 }
 ```
 
-In this example configuration, API ML is leveraged to access production services but services on a dev-test environment can be accessed directly.
+**Example 4:** Using API ML to access production services while services on a dev-test environment can be accessed directly.
 ```json
 {
     "$schema": "./zowe.schema.json",
