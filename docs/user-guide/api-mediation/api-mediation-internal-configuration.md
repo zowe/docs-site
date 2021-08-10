@@ -192,16 +192,16 @@ services and third-party libraries, stop cascading failure, and enable resilienc
 
 ## AT-TLS 
 
-The communication server on z/OS provides a functionality to encrypt HTTP communication for on-platform running jobs. This functionality is refered to as Application Transparent Transport Layer Security (AT-TLS). Starting with Zowe version 1.24, it is possible to leverage AT-TLS within the API Mediation Layer. Each API ML component can run with AT-TLS rules applied. Some components, such as the Discovery service, can be made AT-TLS aware by enabling the AT-TLS profile, whereby TLS information can be utilized. This is how API ML components can obtain a client certificate for authentication. To enable the AT-TLS profile and disable the TLS application in API ML, update `instance.env` with the following environment variables:
+The communication server on z/OS provides a functionality to encrypt HTTP communication for on-platform running jobs. This functionality is refered to as Application Transparent Transport Layer Security (AT-TLS). Starting with Zowe version 1.24, it is possible to leverage AT-TLS within the API Mediation Layer. Each API ML component can run with AT-TLS rules applied. Some components, such as the Discovery service, can be made AT-TLS aware by enabling the AT-TLS profile, whereby TLS information can be utilized. To enable the AT-TLS profile and disable the TLS application in API ML, update `instance.env` with the following environment variables:
 ```
 SPRING_PROFILES_ACTIVE=attls
 APIML_SSL_ENABLED=false 
 ```
-While API ML can not handle TLS on its own, the Mediation Layer needs information about the server certificate that is defined in the AT-TLS rule. Update the instance.env file with the path to the SAF Key ring from the AT-TLS rule and specify the alias that is used for Inbound communication:
+API ML does not perform TLS on its own, but rather API ML utilizes certificate data from AT-TLS. API ML requires client certificate information that is defined in the AT-TLS rule, whereby API ML is able to select which certificate belongs to API ML components. Update the `instance.env` file with the path to the SAF Key ring from the AT-TLS rule and specify the alias that is used for Inbound communication:
 ```
 KEYSTORE=<SAF-key-ring-from-AT-TLS-rule>
 KEYSTORE_TYPE=JCERACFKS
 KEYSTORE_PASSWORD=<keyring-password>
 KEY_ALIAS=<certificate-alias-from-AT-TLS-rule>
 ```
-**Note:** This procedure does not configure AT-TLS on z/OS, but rather enablesAPI ML to work with AT-TLS in place.
+**Note:** This procedure does not configure AT-TLS on z/OS, but rather enables API ML to work with AT-TLS in place.
