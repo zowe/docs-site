@@ -2,7 +2,7 @@
 
 <Badge text="Technical Preview"/> Global profiles are available in the `@next` version of Zowe CLI. The Zowe CLI `@next` release is a technical preview. Technical previews are for testing only and are not ready for production. Your feedback is valued and appreciated.
 
-If you already installed the supported version `@zowe-v1-lts`, switch versions to try this feature. Global profiles will be included in the next major Zowe release, V2.0.0-LTS. Otherwise, you can [install the @next release of Zowe CLI](cli-install-cli-next.md).
+If you already installed the supported version `@zowe-v1-lts`, switch versions to try this feature. Global profiles will be included in the next major Zowe release, V2.0.0-LTS. You can also [install the @next release of Zowe CLI](cli-install-cli-next.md).
 
 **Table of Contents:**
 - [Feature overview](#feature-overview)
