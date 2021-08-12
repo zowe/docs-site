@@ -108,9 +108,7 @@ where:
 
     specifies the `serviceId` when you use Http.
 
-     **Important!** Ensure that the value of `vipAddress` is the same as the value of `app`. 
-     Furthermore, ensure to not omit `vipAddress`, even if you provided `secureVipAddress`. In fact, due to 
-     a current limitation in Spring Cloud Netflix, only the instances with `vipAdress` defined will get the routes created.
+     **Important!** Ensure that the value of `vipAddress` is the same as the value of `app`.
 
  * **secureVipAddress**
 
