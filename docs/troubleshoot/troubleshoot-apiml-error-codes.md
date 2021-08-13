@@ -391,6 +391,102 @@ The following error message codes may appear on logs or API responses. Use the f
 
   Contact your security administrator to give you access.
 
+### ZWEAT409E
+
+  The platform returned error: %s
+
+  **Reason:**
+
+  The platform responded with unknown errno code.
+
+  **Action:**
+
+  Please submit an issue with this message.
+
+### ZWEAT410E
+
+  The platform returned error: %s
+
+  **Reason:**
+
+  The specified password is incorrect.
+
+  **Action:**
+
+  Provide correct password.
+
+### ZWEAT411E
+
+  The platform returned error: %s
+
+  **Reason:**
+
+  The platform returned error, specified in the error message.
+
+  **Action:**
+
+  Contact your security administrator with the message.
+
+### ZWEAT412E
+
+  The platform returned error: %s
+
+  **Reason:**
+
+  The specified password is expired.
+
+  **Action:**
+
+  Contact your security administrator to reset your password.
+
+### ZWEAT413E
+
+  The platform returned error: %s
+
+  **Reason:**
+
+  The new password is not valid.
+
+  **Action:**
+
+  Provide valid password.
+
+### ZWEAT414E
+
+  The platform returned error: %s
+
+  **Reason:**
+
+  The user name access has been revoked.
+
+  **Action:**
+
+  Contact your security administrator to unsuspend your account.
+
+### ZWEAT415E
+
+  The platform returned error: %s
+
+  **Reason:**
+
+  The user name does not exist in the system.
+
+  **Action:**
+
+  Provide correct user name.
+
+### ZWEAT416E
+
+  The platform returned error: %s
+
+  **Reason:**
+
+  The specified user name or password is invalid.
+
+  **Action:**
+
+  Provide correct user name or password.
+
 ### ZWEAT601E
 
   z/OSMF service name not found. Set parameter apiml.security.auth.zosmf.serviceId to your service ID.
