@@ -110,7 +110,7 @@ where:
 
      **Important!** Ensure that the value of `vipAddress` is the same as the value of `app`. 
      Furthermore, be sure not to omit `vipAddress`, even if you provided `secureVipAddress`. Due to 
-     a current limitation in Spring Cloud Netflix, only the instances with `vipAddress` defined can utilize created routes. 
+     a current limitation in Spring Cloud Netflix, routes are created only for instances in which `vipAddress` is defined.
 
  * **secureVipAddress**
 
