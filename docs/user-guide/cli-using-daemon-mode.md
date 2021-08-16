@@ -15,18 +15,13 @@ If you already installed the supported version `@zowe-v1-lts`, switch versions t
 
 
 ## Feature overview
-Under some conditions, Zowe CLI start up time can be may be three to fifteen seconds (measured with V8). A contributing factor is the startup of the Node.js runtime.
+Under some conditions, Zowe CLI start up time can be may be three to fifteen seconds. A contributing factor is the startup of the Node.js runtime.
 
-Daemon mode allows you to run Zowe CLI as a persistent background process (daemon). Daemon mode enables a one-time startup of the Node.js and a native-built Rust client to communicate with the daemon via TCP/IP sockets.
+Use daemon mode to run Zowe CLI as a persistent background process (daemon). Daemon mode enables a one-time startup of Node.js and a native-built Rust client to communicate with the daemon via TCP/IP sockets.
 * The `zowex` Rust client calls pass Zowe commands to the server via TCP writing
 * The Zowe server responds with text data from command output as it normally would, but response is directed towards the socket connection instead of the console
 
-Certain Zowe CLI features such as progress bars, writing to `stderr`, and prompting for user input use a lightweight protocol built onto the communication between server and client. The protocol consists of headers that begin with `x-zowe-daemon-`. If the header is detected in the data steam (either the client or the server side), this data is parsed to control behavior between the client and the server.
-
-DaemonUtils.ts in imperative describes some rules for headers sent from server to client.
-
-All headers must appear on the same line without newline, are separated by a semi-colon and may contain PRECEDING data that is not part of a header.
-
+Certain Zowe CLI features such as progress bars, writing to `stderr`, and prompting for user input use the lightweight protocol built onto the server/client communication. The protocol consists of headers that begin with `x-zowe-daemon-`. If the header is detected (either the client or the server side), it is parsed to control behavior between the client and the server.
 
 ### Benefits
 Initial testing shows the potential benefits of daemon mode:
@@ -46,6 +41,10 @@ Rust client is called zowex.exe while in PoC / validation stage. Otherwise, we m
 Imperative is updated in several places to write to a stream in addition to / instead of `stdout` and `stderr`. Stream is passed in yargs “context” which is our own user data.
 
 dcd global flag added for Zowe CLI operations that implicitly depend on the current working directory. For example, Zowe CLI daemon could be running at any arbitrary location on the system; however, we want zowex to operate against whatever directory it was run. --dcd allows for alternate dcd.
+
+DaemonUtils.ts in imperative describes some rules for headers sent from server to client.
+
+All headers must appear on the same line without newline, are separated by a semi-colon and may contain PRECEDING data that is not part of a header.
 
 ### Zowe CLI Server
 Zowe CLI is updated to launch a server if an undocumented --daemon parameter is detected. The server is a simple TCP/IP server.
