@@ -79,7 +79,7 @@ where:
 
     * The service ID value contains only lowercase alphanumeric characters.
     * The service ID does not contain more than 40 characters.
-    * The same service ID is only set for multiple API service instances to support API scalability. When two API services use the same service ID, the API Gateway considers the services as clones of each other. An incoming API request can be routed to either of them through load balancing.
+    * The same service ID is only set for multiple API service instances to support API scalability. When two API services use the same service ID, the API Gateway considers the services as clones of each other. An incoming API request can be routed to either instance through load balancing.
 
     **Example:**
     * If the `serviceId` is `sampleservice`, the service URL in the API ML Gateway address space appears as:
@@ -108,7 +108,9 @@ where:
 
     specifies the `serviceId` when you use Http.
 
-     **Important!** Ensure that the value of `vipAddress` is the same as the value of `app`.
+     **Important!** Ensure that the value of `vipAddress` is the same as the value of `app`. 
+     Furthermore, be sure not to omit `vipAddress`, even if you provided `secureVipAddress`. Due to 
+     a current limitation in Spring Cloud Netflix, routes are created only for instances in which `vipAddress` is defined.
 
  * **secureVipAddress**
 
