@@ -17,20 +17,15 @@ If you already installed the supported version `@zowe-v1-lts`, switch versions t
 ## Feature overview
 Under some conditions, Zowe CLI start up time can be may be three to fifteen seconds (measured with V8). A contributing factor is the startup of the Node.js runtime.
 
-Daemon mode allows you to run Zowe CLI as a persistent process daemon. Daemon mode enables a one-time startup of the Node.js and a native-built, Rust client to communicate with the daemon via TCP/IP sockets.
+Daemon mode allows you to run Zowe CLI as a persistent background process (daemon). Daemon mode enables a one-time startup of the Node.js and a native-built Rust client to communicate with the daemon via TCP/IP sockets.
 * The `zowex` Rust client calls pass Zowe commands to the server via TCP writing
 * The Zowe server responds with text data from command output as it normally would, but response is directed towards the socket connection instead of the console
 
-Certain Zowe CLI features such as:
-* progress bars
-* writing to stderr
-* prompting for user input
-
-In these cases, a lightweight protocol is built onto the communication between server and client. The protocol consists of "headers" that begin with x-zowe-daemon-. If detected in data steam on either the client or server side, this data is parsed to control behavior between client and server.
+Certain Zowe CLI features such as progress bars, writing to `stderr`, and prompting for user input use a lightweight protocol built onto the communication between server and client. The protocol consists of headers that begin with `x-zowe-daemon-`. If the header is detected in the data steam (either the client or the server side), this data is parsed to control behavior between the client and the server.
 
 DaemonUtils.ts in imperative describes some rules for headers sent from server to client.
 
-All headers must appear on the same line without newline, are separated by ;, and may contain PRECEDING data that is not part of a header.
+All headers must appear on the same line without newline, are separated by a semi-colon and may contain PRECEDING data that is not part of a header.
 
 
 ### Benefits
