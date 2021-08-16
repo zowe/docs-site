@@ -39,7 +39,7 @@ function Version() {
                     </Link>
                   </td>
                   <td>
-                    <a href={`stable/getting-started/summaryofchanges/`}>
+                    <a href={`stable/getting-started/release-notes/v1_23`}>
                       Release Notes
                     </a>
                   </td>
