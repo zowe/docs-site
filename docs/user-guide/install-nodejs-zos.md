@@ -38,7 +38,7 @@ The corresponding [IBM Knowledge Center for Node.js - z/OS](https://www.ibm.com/
    [PH16038](https://www.ibm.com/support/pages/apar/PH16038),
    [PH17481](https://www.ibm.com/support/pages/apar/PH17481))
 
-   **Known issue:** There is a known issue with node.js v14.17.2 will cause error of `ZWESLSTC not found in "<dsn-prefix>.SZWESAMP"` when you run `zowe-install-proc.sh` utility.
+   **Known issue:** There is a known issue with node.js v14.17.2. It will cause the error of `ZWESLSTC not found in "<dsn-prefix>.SZWESAMP"` when you run the `zowe-install-proc.sh` utility.
 
 ## How to obtain IBM SDK for Node.js - z/OS
 
