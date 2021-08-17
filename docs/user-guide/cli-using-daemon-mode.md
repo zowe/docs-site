@@ -7,7 +7,7 @@ If you already installed the supported version `@zowe-v1-lts`, switch versions t
 **Table of Contents:**
 - [Feature overview](#feature-overview)
   - [Benefits](#benefits)
-  - [Rust Client](#rust-client)
+  - [Rust client](#rust-client)
   - [Imperative](#imperative)
   - [Zowe CLI Server](#zowe-cli-server)
 - [Starting Zowe in daemon mode](#starting-zowe-in-daemon-mode)
@@ -15,27 +15,26 @@ If you already installed the supported version `@zowe-v1-lts`, switch versions t
 
 
 ## Feature overview
-Under some conditions, Zowe CLI start up time can be may be three to fifteen seconds. A contributing factor is the startup of the Node.js runtime.
+Zowe CLI start up can take as long as fifteen seconds. A contributing factor is the startup of the Node.js runtime.
 
-Use daemon mode to run Zowe CLI as a persistent background process (daemon). Daemon mode enables a one-time startup of Node.js and a native-built Rust client to communicate with the daemon via TCP/IP sockets.
+Daemon mode saves time by running Zowe CLI as a persistent background process (daemon). Using daemon mode enables a one-time startup of the Node.js runtime and a native-built Rust client to communicate with the daemon via TCP/IP sockets.
 * The `zowex` Rust client calls pass Zowe commands to the server via TCP writing
 * The Zowe server responds with text data from command output as it normally would, but response is directed towards the socket connection instead of the console
 
-Certain Zowe CLI features such as progress bars, writing to `stderr`, and prompting for user input use the lightweight protocol built onto the server/client communication. The protocol consists of headers that begin with `x-zowe-daemon-`. If the header is detected (either the client or the server side), it is parsed to control behavior between the client and the server.
+Certain Zowe CLI features such as progress bars, writing to `stderr`, and prompting for user input use a lightweight protocol built onto the server/client communication. The protocol consists of headers that begin with `x-zowe-daemon-`. If the header is detected (either on the client or the server side), it is parsed to control the behavior between the client and the server.
 
 ### Benefits
 Initial testing shows the potential benefits of daemon mode:
-* Root level help (`zowe --help`) response time is reduced from approximately 3 seconds to just under 1 second.
+* Root level help (`zowe --help`) response time is reduced from approximately three seconds to under one second.
+
+### Rust client
+The native-built Rust client communicate with the Zowe CLI persistent process (daemon) via TCP/IP sockets. Set the environmental variable (`ZOWE_DAEMON=<PORT>`) to connect to the TCP socket. The default port value is 4000.
 
 
-### Rust Client
-A native Rust client calls the Zowe CLI persistent process (daemon). An environmental variable (`ZOWE_DAEMON=<PORT>`) can be set for the port to connect to the TCP socket.  The default port value is 4000.
 
 Rust binderies are released on GitHub.
 
-Rust client sets --daemon-client-directory (or --dcd) for Zowe CLI / imperative usage which is the daemon client directory. This flag is hidden from Zowe help display since it's not intended for end users.
-
-Rust client is called zowex.exe while in PoC / validation stage. Otherwise, we might call it zowe for seamless transition. 
+Rust client sets --daemon-client-directory (or --dcd) for Zowe CLI / imperative usage which is the daemon client directory. This flag is hidden from Zowe help display since it's not intended for end users. 
 ### Imperative
 
 Imperative is updated in several places to write to a stream in addition to / instead of `stdout` and `stderr`. Stream is passed in yargs “context” which is our own user data.
