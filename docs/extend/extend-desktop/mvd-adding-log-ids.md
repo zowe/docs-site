@@ -4,18 +4,24 @@ https://github.com/zowe/zlux/wiki/Logging#logger-message-substitution-using-ids
 
 The IDs are per-logger, where loggers for plugins are automatically made and given to the plugin code at runtime. During that time, the messages that map to each ID is found in a JSON file relative to the plugin & part of the plugin. All router dataservices share a file, and the web code has another file.
 
-Logs always include the name of the plugin, but it is good practice to make the IDs be unique relative to other software. For example, all of Zowe's own code has IDs starting with ZWE. These are documented here: 
+Logs always include the name of the plugin, but it is good practice to make the IDs unique relative to other software. For example, all of Zowe's own code has IDs starting with ZWE. These are documented here: 
 
 https://github.com/zowe/zlc/blob/master/process/messageManagement.md
 
 # How to add new IDs to app framework code
-All code in the app server or app framework should start with ZWED, have 4 numbers, and a letter at the end signifying the level of message. Therefore the format is ZWEDnnnnL where the n is number, and the L is level. Levels such as I for info, W for warning, and E for error are expected.
+All code in the app server or app framework must conform to the following formatting guidelines: 
+
+- The code must start with ZWED 
+- The code must have 4 numbers 
+- The code must end with a letter that signifies the level of message. 
+
+Therefore the format is ZWEDnnnnL where the n is number, and the L is level. Levels such as I for info, W for warning, and E for error are expected.
 
 Server-side code should have a number between **0000** and **4999**, whereas web code can be between **5000** and **9999**. This is to make it easier to prevent accidental duplication.
 
 Messages must be added in specific places relative to the part of the codebase, explained below.
 
-**NOTE: There should be no duplication of ZWED IDs among the framework because it will make documentation wrong**
+**NOTE: There should be no duplication of ZWED IDs among the framework because it will create inaccuracies in the documentation**
 
 
 
@@ -36,8 +42,8 @@ Such as:
 https://github.com/zowe/zlux-server-framework/blob/master/plugins/config/lib/assets/i18n/log/messages_en.json
 
 ## Adding messages to the app server
-The app server is not a plugin, and therefore has its logs in a specific place.
-The message file is here: 
+Since the app server is not a plugin, it has its logs in a specific place.
+The message file is located here: 
 
 https://github.com/zowe/zlux-server-framework/blob/master/lib/assets/i18n/log/messages_en.json
 
