@@ -30,13 +30,7 @@ Initial testing shows the potential benefits of daemon mode:
 ### Rust client
 The native-built Rust client communicate with the Zowe CLI persistent process (daemon) via TCP/IP sockets. Set the environmental variable (`ZOWE_DAEMON=<PORT>`) to connect to the TCP socket. The default port value is 4000.
 
-
-
-Rust binderies are released on GitHub.
-
-Rust client sets --daemon-client-directory (or --dcd) for Zowe CLI / imperative usage which is the daemon client directory. This flag is hidden from Zowe help display since it's not intended for end users. 
 ### Imperative
-
 Imperative is updated in several places to write to a stream in addition to / instead of `stdout` and `stderr`. Stream is passed in yargs “context” which is our own user data.
 
 dcd global flag added for Zowe CLI operations that implicitly depend on the current working directory. For example, Zowe CLI daemon could be running at any arbitrary location on the system; however, we want zowex to operate against whatever directory it was run. --dcd allows for alternate dcd.
