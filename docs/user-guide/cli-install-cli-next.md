@@ -2,13 +2,17 @@
 
 <Badge text="Technical Preview"/> The Zowe CLI @next release is a technical preview. Technical previews are for testing only and are not ready for production. Your feedback is valued and appreciated.
 
-Install the Zowe CLI `@next` version from the online registry. You can follow this procedure for a first-time installation, or to update a currently installed version.
+Install the Zowe CLI `@next` version from the online registry or download it from the [Zowe Downloads](https://www.zowe.org/download.html) site under the Zowe Technical Preview section. You can follow this procedure for a first-time installation, or to update a currently installed version.
 
 ***Prerequisites***
-*  Meet the [software requirements for Zowe CLI](https://docs.zowe.org/stable/user-guide/systemrequirements.html#zowe-cli-requirements).
-*  Meet the [software requirements for each plug-in](https://docs.zowe.org/stable/user-guide/cli-swreqplugins.html#software-requirements-for-zowe-cli-plug-ins).
+*  Meet the [software requirements](https://docs.zowe.org/stable/user-guide/systemrequirements.html#zowe-cli-requirements) for Zowe CLI.
+*  Meet the [software requirements](https://docs.zowe.org/stable/user-guide/cli-swreqplugins.html#software-requirements-for-zowe-cli-plug-ins) for each plug-in.
 
-***Follow these steps:***
+**Note:** Linux users may need to prepend `sudo` to `npm` commands. For more information, see [Troubleshooting Zowe CLI](../troubleshoot/cli/troubleshoot-cli.md).
+
+
+## Install Zowe CLI from npm
+**Follow these steps:**
 
 1. To install or update the core CLI, open a command-line window:
 
@@ -54,4 +58,34 @@ Install the Zowe CLI `@next` version from the online registry. You can follow th
    - `.zowe/settings/imperative.json`
    - `.zowe/profiles`
  
+You can now try out the [technical preview features](cli-development-roadmap-next.md).
+
+## Install Zowe CLI from a download
+**Follow these steps:**
+
+1. Navigate to [Zowe Downloads](https://www.zowe.org/download.html) and click the **Zowe vNext CLI Core** button.
+   
+2. Read the End User License Agreement for Zowe and click **I agree** to download the core package.
+
+   A file named `zowe-cli-package-next-2021MMDD.zip` is downloaded to your computer (where MMDD indicates the month and day of the build).
+
+3. **(Optional)** Click the **Zowe vNext CLI Plugins** button to download the plugins.
+
+4. **(Optional)** Read the End User License Agreement for Zowe plugins and click **I agree** to download the plugins package.
+
+   A file named `zowe-cli-plugins-next-2021MMDD.zip` is downloaded to your computer (where MMDD indicates the month and day of the build).
+
+5. Unzip the contents of `zowe-cli-package-next-2021MMDD.zip` (and optionally `zowe-cli-plugins-2021MMDD.zip`) to a working directory.
+
+6. Open a command-line window and issue the following commands in sequence to the working directory:
+
+   ```
+   npm install -g zowe-cli.tgz
+   ```
+   **(Optional)**
+   ```
+   zowe plugins install zowe plugins install cics-for-zowe-cli.tgz db2-for-zowe-cli.tgz zos-ftp-for-zowe-cli.tgz  ims-for-zowe-cli.tgz mq-for-zowe-cli.tgz
+   ```
+   **Note:** If an `EACCESS` error is returned, refer to [Resolving EACCESS permissions errors when installing packages globally](https://docs.npmjs.com/resolving-eacces-permissions-errors-when-installing-packages-globally) in the npm documentation.
+
 You can now try out the [technical preview features](cli-development-roadmap-next.md).
