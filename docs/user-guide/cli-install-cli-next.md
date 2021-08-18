@@ -69,7 +69,7 @@ You can now try out the [technical preview features](cli-development-roadmap-nex
 
    A file named `zowe-cli-package-next-2021MMDD.zip` is downloaded to your computer (where MMDD indicates the month and day of the build).
 
-3. **(Optional)** Click the **Zowe vNext CLI Plugins** button to download the plugins.
+3. **(Optional)** Navigate to [Zowe Downloads](https://www.zowe.org/download.html) and click the **Zowe vNext CLI Plugins** button to download the plugins.
 
 4. **(Optional)** Read the End User License Agreement for Zowe plugins and click **I agree** to download the plugins package.
 
@@ -82,10 +82,11 @@ You can now try out the [technical preview features](cli-development-roadmap-nex
    ```
    npm install -g zowe-cli.tgz
    ```
+   **Note:** If an `EACCESS` error is returned, refer to [Resolving EACCESS permissions errors when installing packages globally](https://docs.npmjs.com/resolving-eacces-permissions-errors-when-installing-packages-globally) in the npm documentation.
+
    **(Optional)**
    ```
    zowe plugins install zowe plugins install cics-for-zowe-cli.tgz db2-for-zowe-cli.tgz zos-ftp-for-zowe-cli.tgz  ims-for-zowe-cli.tgz mq-for-zowe-cli.tgz
    ```
-   **Note:** If an `EACCESS` error is returned, refer to [Resolving EACCESS permissions errors when installing packages globally](https://docs.npmjs.com/resolving-eacces-permissions-errors-when-installing-packages-globally) in the npm documentation.
 
 You can now try out the [technical preview features](cli-development-roadmap-next.md).
