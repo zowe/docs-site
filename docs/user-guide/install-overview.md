@@ -9,7 +9,7 @@ The installation of Zowe&trade; consists of the following processes:
 
 The Zowe server components provide a web desktop that runs a number of applications such as API Mediation Layer that includes the Single Sign-on (SSO) capability, organization of the multiple Zowe servers under a single website, and other useful features for z/OS developers. 
 
-Because Zowe is a set of components, before installing Zowe, first determine which components you want to install and where you want to install them. This guide provides documentation for all of the components and it is split into sections so you can install as much as you need.
+Because Zowe is a set of components, before installing Zowe, use this guide to determine which components you want to install and where you want to install them.
 
 Here are some scenarios to consider:
 
