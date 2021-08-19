@@ -1,6 +1,11 @@
 # Overview
 
-The installation of Zowe&trade; consists of two independent processes: installing the Zowe server components either entirely on z/OS or a combination of z/OS and Docker, and then installing Zowe CLI on a desktop computer.
+The installation of Zowe&trade; consists of the following processes:
+- installation of the Zowe server components.
+
+   You can install the components either on z/OS only or you can install the components both on z/OS and on Docker.
+   
+- installation of Zowe CLI on a desktop computer.
 
 The Zowe server components provide a web desktop that runs in a web browser providing a number of applications for z/OS users, together with an API mediation layer provides single-sign on (SSO), organization of the multiple zowe servers under a single website, and other capabilities useful for z/OS developers. 
 
