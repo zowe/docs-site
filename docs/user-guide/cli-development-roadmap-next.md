@@ -2,7 +2,7 @@
 
 <Badge text="Technical Preview"/> The Zowe CLI @next release is a technical preview. Technical previews are for testing only and are not ready for production. Your feedback is valued and appreciated.
 
-To try out technical preview features, [install the @next release of Zowe CLI](cli-install-cli-next.md). This version may receive breaking changes and is intended to gather early feedback on what may become a future LTS release.
+To preview the features of the @next version of Zowe CLI, [install the @next release](cli-install-cli-next.md). This version may receive breaking changes and is intended to gather early feedback on what may become a future LTS release.
 
 The @next version features:
 * Global Profile Configuration - Improves the initial setup of the command line interface by making service connection details easier to share and easier to store within projects. For information, see [Using Global Profile Configuration](cli-using-global-profile-configuration.md).
