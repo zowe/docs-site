@@ -42,7 +42,9 @@ module.exports = {
     },
     "getting-started/zowe-resources",
   ],
-  "user-guide": [
+
+  "setup": [
+    "user-guide/install-overview",
     {
       type: "category",
       label: "Installing Zowe z/OS components",
@@ -52,18 +54,18 @@ module.exports = {
           type: "category",
           label: "Planning the installation",
           items: [
-            "user-guide/installandconfig",
-            {
-              type: "category",
-              label: "System requirements",
-              items: [
-                "user-guide/systemrequirements-zos",
-                "user-guide/install-nodejs-zos",
-                "user-guide/systemrequirements-zosmf",
-                "user-guide/systemrequirements-zosmf-lite",
-              ],
-            },           
+            "user-guide/installandconfig",     
             "user-guide/configure-uss",
+          ],
+        },
+        {
+          type: "category",
+          label: "System requirements",
+          items: [
+            "user-guide/systemrequirements-zos",
+            "user-guide/install-nodejs-zos",
+            "user-guide/systemrequirements-zosmf",
+            "user-guide/systemrequirements-zosmf-lite",
           ],
         },
         {
@@ -166,7 +168,7 @@ module.exports = {
       ],
     },
   ],
-  "user-guide": [
+  "use": [
      {
       type: "category",
       label: "Using Zowe",

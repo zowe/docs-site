@@ -45,7 +45,7 @@ module.exports = {
         {
           type: "doc",
           label: "Setup",
-          docId: "user-guide/installandconfig",
+          docId: "user-guide/install-zos",
           position: "left",
         },
         {
