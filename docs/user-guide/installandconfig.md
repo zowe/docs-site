@@ -29,8 +29,6 @@ The following information is required during the installation process. Software 
 
 - Zowe has the following started tasks:
 
-   **Note**: API ML installation requires only `ZWESVSTC`, so you can skip `ZWESISTC` and `ZWESASTC`.
-
    - `ZWESISTC` is a cross memory server that the Zowe desktop uses to perform APF-authorized code. More details on the cross memory server are described in [Configuring the Zowe cross memory server](configure-xmem-server.md).
    - `ZWESASTC` is a cross memory Auxiliary server that is used under some situations in support of a Zowe extension. Auxiliary server is started, controlled, and stopped by the cross memory server, so no need to start it manually. More details are described in [Zowe auxiliary service](configure-xmem-server.md)
    - `ZWESVSTC` brings up other parts of the Zowe runtime on z/OS as requested. This may include Desktop, API mediation layer, ZSS, and more, but when using Docker likely only ZSS will be used here.
@@ -38,7 +36,12 @@ The following information is required during the installation process. Software 
    
      In order for above started tasks to run correctly, security manager configuration needs to be performed.  This is documented in [Configuring the z/OS system for Zowe](configure-zos-system.md) and a sample JCL member `ZWESECUR` is shipped with Zowe that contains commands for RACF, TopSecret, and ACF2 security managers.  
 
-**Note:** To start the API Mediation Layer as a standalone component, see [API Mediation Layer as a standalone component](api-mediation-standalone.md).
+**Notes:**
+  - To start the API Mediation Layer as a standalone component, see [API Mediation Layer as a standalone component](api-mediation-standalone.md).
+
+  - If you plan to use API ML with basic authentication and JSON web token authentication, you need to run only `ZWESVSTC`. No need to run `ZWESISTC` and `ZWESASTC`.
+
+  - IF you plan to use API ML with x509 client-side certificate authentication, you need to run `ZWESISTC`.
 
 ## Topology of the Zowe z/OS launch process
 
