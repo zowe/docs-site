@@ -34,7 +34,7 @@ The server REST APIs allow plugin management without restarting the server - you
 
 [This swagger file documents the REST API for plugin management](https://github.com/zowe/zlux-app-server/blob/master/doc/swagger/server-plugins-api.yaml)
 
-The API only works when RBAC is configured, and an RBAC-compatible security plugin is being used. An example of this is [zss-auth](https://github.com/zowe/zss-auth), and [use of RBAC](https://docs.zowe.org/stable/user-guide/mvd-configuration.html#enabling-rbac) is described in this documentation and in the [wiki](https://github.com/zowe/zlux/wiki/Auth-Plugin-Configuration).
+The API only works when RBAC is configured, and an RBAC-compatible security plugin is being used. An example of this is [zss-auth](https://github.com/zowe/zss-auth), and [use of RBAC](https://docs.zowe.org/stable/user-guide/mvd-configuration#enabling-rbac) is described in this documentation and in the [wiki](https://github.com/zowe/zlux/wiki/Auth-Plugin-Configuration).
 
 
 *NOTE:* If you do not see your plugin in the Zowe desktop check the server log in the `<INSTANCE_DIR>/log/install-app.log` directory to troubleshoot the problem.  If you are building your own desktop extension then you need to [pre-build](https://github.com/zowe/zlux/wiki/Building-Plugins) your plugin with the correct [directory structure](https://github.com/zowe/zlux/wiki/ZLUX-Plugin-Definition-&-Structure), and meet all dependencies. 

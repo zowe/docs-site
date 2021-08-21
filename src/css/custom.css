@@ -1,0 +1,369 @@
+/* stylelint-disable docusaurus/copyright-header */
+/**
+ * Any CSS included here will be global. The classic template
+ * bundles Infima by default. Infima is a CSS framework designed to
+ * work well for content-centric websites.
+ */
+
+/* You can override the default Infima variables here. */
+:root {
+  --ifm-color-primary: #3162ac;
+  --ifm-color-primary-dark: #2c589b;
+  --ifm-color-primary-darker: #2a5392;
+  --ifm-color-primary-darkest: #224578;
+  --ifm-color-primary-light: #366cbd;
+  --ifm-color-primary-lighter: #3871c6;
+  --ifm-color-primary-lightest: #5283ce;
+  --ifm-link-hover-color: #2a5392;
+  --ifm-code-font-size: 95%;
+}
+
+html[data-theme="dark"] {
+  --ifm-color-primary: #5192c7;
+  --ifm-link-hover-color: #4b89bd;
+  /* --ifm-background-color: #252628; FIXME:*/
+  --ifm-background-section-dark: #3d3f42;
+}
+
+[data-theme="dark"] .shadow--tl {
+  box-shadow: 1px 1px 8px 4px rgba(255, 255, 255, 0.37) !important;
+  -webkit-box-shadow: 1px 1px 8px 4px rgba(255, 255, 255, 0.37) !important;
+  -moz-box-shadow: 1px 1px 8px 4px rgba(255, 255, 255, 0.37) !important;
+}
+
+.docusaurus-highlight-code-line {
+  background-color: rgb(72, 77, 91);
+  display: block;
+  margin: 0 calc(-1 * var(--ifm-pre-padding));
+  padding: 0 var(--ifm-pre-padding);
+}
+
+h1 {
+  font-size: 2.2rem !important;
+}
+
+h2 {
+  font-size: 1.65rem;
+}
+
+h3 {
+  font-size: 1.25rem !important;
+}
+
+h4 {
+  font-size: 1rem !important;
+}
+
+/* NavBar */
+.navbar {
+  font-size: 0.95rem;
+}
+
+.navbar-github-link:before {
+  content: "";
+  width: 24px;
+  height: 24px;
+  display: flex;
+  background: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12'/%3E%3C/svg%3E")
+    no-repeat;
+}
+
+html[data-theme="dark"] .navbar-github-link:before {
+  background: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill='white' d='M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12'/%3E%3C/svg%3E")
+    no-repeat;
+}
+
+/* NavBar Dropdown */
+.dropdown:not(.dropdown--nocaret) > .navbar__link {
+  padding-right: calc(var(--ifm-navbar-item-padding-horizontal));
+}
+
+.navbar__item.dropdown.dropdown--hoverable .dropdown__menu {
+  height: calc(45 * 5px);
+  overflow-y: auto;
+}
+
+.navbar__item.dropdown.dropdown--hoverable .dropdown__menu::-webkit-scrollbar {
+  height: var(--ifm-scrollbar-size);
+  width: var(--ifm-scrollbar-size);
+}
+
+.navbar__item.dropdown.dropdown--hoverable
+  .dropdown__menu::-webkit-scrollbar-track {
+  background: var(--ifm-scrollbar-track-background-color);
+  border-radius: var(--ifm-global-radius);
+}
+
+.navbar__item.dropdown.dropdown--hoverable
+  .dropdown__menu::-webkit-scrollbar-thumb {
+  background: var(--ifm-scrollbar-thumb-background-color);
+  border-radius: var(--ifm-global-radius);
+}
+
+.navbar__item.dropdown.dropdown--hoverable
+  .dropdown__menu::-webkit-scrollbar-thumb:hover {
+  background: var(--ifm-scrollbar-thumb-hover-background-color);
+}
+
+/* Landing Page Search Bar */
+.searchDiv {
+  margin: auto;
+  width: calc(var(--ifm-container-width) / 12 * 7);
+}
+
+.searchDiv .DocSearch-Button {
+  margin: auto;
+  width: 70%;
+  height: 45px;
+  padding: 0 20px;
+  border-radius: 10px;
+  color: var(--docsearch-text-color);
+}
+
+[data-theme="dark"] .searchDiv .DocSearch-Button {
+  color: var(--docsearch-muted-color);
+}
+
+Badge {
+  display: none;
+}
+
+.zowe-faq p {
+  margin: revert;
+}
+
+.hero__title {
+  font-size: 4rem !important;
+  padding-bottom: 3rem;
+}
+
+footer .footer__items svg {
+  display: none;
+}
+
+.footer__copyright {
+  font-size: 0.75rem;
+}
+
+/* DocSidebar Component */
+.menu {
+  flex-grow: 1;
+  padding: 0.5rem;
+  font-size: 14.5px;
+  font-weight: normal;
+}
+
+.menu__link--active:not(.menu__link--sublist) {
+  border-left-color: var(--ifm-menu-color-active) !important;
+  border-left-width: 4px;
+  border-left-style: solid;
+  font-weight: 500;
+  padding-left: 12px;
+}
+
+a.menu__link.menu__link--sublist {
+  color: black;
+  font-weight: 500;
+  font-size: 15.5px;
+}
+
+[data-theme="dark"] a.menu__link.menu__link--sublist {
+  color: inherit;
+}
+
+.menu__link--active,
+.menu__link--active:hover {
+  color: var(--ifm-heading-color);
+}
+
+/* DocItem Features */
+.zowe-faq[open] summary:before {
+  content: "📖 Click to hide answer";
+}
+
+details[open] summary:before {
+  content: "📖 ";
+}
+
+.zowe-faq summary:before {
+  content: "📘 Click to open answer";
+  margin-right: 5px;
+}
+
+summary:before {
+  content: "📘 ";
+}
+
+/* Docs Rating Box */
+.docsRating {
+  display: flex;
+  flex-direction: column;
+  padding: 16px 0px;
+  min-height: 66px;
+  text-align: center;
+  line-height: 32px;
+  font-weight: 500;
+}
+
+.docsRating .text--left {
+  padding: 16px;
+  background-color: #f6f8fa;
+  border-radius: var(--ifm-badge-border-radius);
+}
+
+html[data-theme="dark"] .docsRating .text--left {
+  color: black;
+}
+
+.docsRating svg {
+  height: 1.5em;
+  width: 1.5em;
+  margin: 0 0 0 6px;
+}
+
+.sub-rating:hover,
+.docsRating svg:focus {
+  cursor: pointer;
+  fill: var(--ifm-color-primary);
+}
+
+.docsRating .i_thumbsup {
+  -webkit-transform: scaleX(-1);
+  transform: scaleX(-1);
+  margin: auto 14px;
+}
+
+.docsRating .i_thumbsdown {
+  transform: scale(-1, -1) translateY(-0.25em);
+  margin: -3px 14px auto 14px;
+}
+
+html[data-theme="dark"] .docsRating .i_thumbsup {
+  fill: #56a211;
+}
+
+html[data-theme="dark"] .docsRating .i_thumbsdown {
+  fill: #e9430f;
+}
+
+html[data-theme="dark"] .lightTheme {
+  display: none;
+}
+
+html[data-theme="light"] .darkTheme {
+  display: none;
+}
+
+.markdown header h1:first-of-type {
+  display: none;
+}
+
+/* Custom classes */
+.icons {
+  font-weight: 400;
+  font-family: inherit;
+  font-size: inherit;
+}
+
+.pointer {
+  cursor: pointer;
+  text-decoration: none !important;
+}
+
+.display-flex {
+  display: flex;
+}
+
+.justify-content--center {
+  justify-content: center;
+}
+
+.fontAwesome {
+  font-size: 16px;
+}
+
+.user-options {
+  display: flex;
+  align-items: center;
+}
+
+@media only screen and (min-width: 1500px) {
+  .home-container {
+    margin: auto;
+    max-width: var(--ifm-container-width-xl);
+    padding: auto 0;
+    width: 100%;
+  }
+}
+
+@media only screen and (max-width: 1220px) {
+  .navbar__brand {
+    margin-right: 0px;
+  }
+
+  /* Landing page */
+  .home-container .margin-horiz--lg {
+    margin-left: 1rem !important;
+    margin-right: 1rem !important;
+  }
+}
+
+@media (min-width: 996px) and (max-width: 1150px) {
+  .navbar__toggle {
+    display: inherit;
+  }
+
+  .navbar__item {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 996px) {
+  .navbar__brand {
+    margin-right: 1rem;
+  }
+
+  .docsRating {
+    width: 100%;
+    margin: 36px 0 0 !important;
+    border-radius: var(--ifm-global-radius);
+  }
+
+  .searchDiv .DocSearch-Button-Placeholder {
+    display: inherit;
+  }
+
+  .home-container .container-h3 {
+    font-size: 1.75rem !important;
+  }
+
+  .p-none {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .searchDiv {
+    width: inherit;
+  }
+
+  .searchDiv .DocSearch-Button {
+    width: 90%;
+  }
+
+  .hero__title {
+    font-size: 3rem !important;
+    padding-bottom: 1rem;
+  }
+}
+
+@media only screen and (max-width: 475px) {
+  .user-options:nth-child(1) {
+    display: initial;
+  }
+
+  .edit-this-page {
+    margin-left: 0rem !important;
+  }
+}

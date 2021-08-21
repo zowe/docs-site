@@ -142,6 +142,7 @@ For example:
     //"_unp.dsauth": 2
   },
 ```
+<<<<<<< HEAD
 For more information about the server configuration file, see [Zowe Application Framework (zLUX) configuration](../../user-guide/mvd-configuration.html#zowe-application-framework-configuration).
 
 ## Using log message IDs
@@ -186,3 +187,6 @@ To use log message IDs, take the following steps:
 ### Message ID logging examples
 
 Server core: https://github.com/zowe/zlux-server-framework/blob/master/plugins/config/lib/assets/i18n/log/messages_en.json
+=======
+For more information about the server configuration file, see [Zowe Application Framework (zLUX) configuration](../../user-guide/mvd-configuration#zowe-application-framework-configuration).
+>>>>>>> docs-staging
