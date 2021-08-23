@@ -165,56 +165,57 @@ The API ML TLS requires servers to provide HTTPS ports. Each API ML service has 
 
 The API Gateway contains the following REST API authentication endpoints:
 
-##### auth/login
+- `auth/login`
   
-The full path of the `auth/login` endpoint appears as `https://{gatewayUrl}:{gatewayPort}/gateway/api/v1/auth/login` (preferred option) or `https://{gatewayUrl}:{gatewayPort}/api/v1/gateway/auth/login`.   
+  The full path of the `auth/login` endpoint appears as `https://{gatewayUrl}  :{gatewayPort}/gateway/api/v1/auth/login` (preferred option) or `https://  {gatewayUrl}:{gatewayPort}/api/v1/gateway/auth/login`.
+
+  The `auth/login` endpoint authenticates mainframe user credentials and   returns an authentication token. The login request requires user   credentials though one of the following methods:
+    * Basic access authentication
+    * JSON with user credentials
+    * Client certificate
   
-    
-The `auth/login` endpoint authenticates mainframe user credentials and returns an authentication token. The login request requires user credentials though one of the following methods:
-  * Basic access authentication
-  * JSON with user credentials
-  * Client certificate
+  When authentication is successful, the response to the request is an empty body and a token is contained in a secure `HttpOnly` cookie named `apimlAuthenticationToken`. When authentication fails, the user receives a 401 status code.
 
-When authentication is successful, the response to the request is an empty body and a token is contained in a secure `HttpOnly` cookie named `apimlAuthenticationToken`. When authentication fails, the user receives a 401 status code.
+- `auth/query`
 
-##### auth/query
+   The full path of the `auth/query` endpoint appear as `https://{gatewayUrl}:   {gatewayPort}/gateway/api/v1/auth/query` (preferred option) or `https://   {gatewayUrl}:{gatewayPort}/api/v1/gateway/auth/query`.
 
-The full path of the `auth/query` endpoint appear as `https://{gatewayUrl}:{gatewayPort}/gateway/api/v1/auth/query` (preferred option) or `https://{gatewayUrl}:{gatewayPort}/api/v1/gateway/auth/query`.
+   The `auth/query` endpoint validates the token and retrieves the    information associated with the token.
+   The query request requires the token through one of the following methods:
+     * A cookie named `apimlAuthenticationToken`
+     * Bearer authentication
 
-The `auth/query` endpoint validates the token and retrieves the information associated with the token.
-The query request requires the token through one of the following methods:
-  * A cookie named `apimlAuthenticationToken`
-  * Bearer authentication
+   When authentication is successful, the response to the request is a JSON object which contains information associated with the token. When authentication fails, the user receives a 401 status code.
 
-When authentication is successful, the response to the request is a JSON object which contains information associated with the token. When authentication fails, the user receives a 401 status code.
+- `auth/ticket`
 
-##### auth/ticket
+  The `auth/ticket` endpoint generates a PassTicket for the user associated with a token. The full path of the `auth/ticket` endpoint appears as `https://{gatewayUrl}:{gatewayPort}/gateway/api/v1/auth/ticket` (preferred    option) or `https://{gatewayUrl}:{gatewayPort}/api/v1/gateway/auth/ticket`.
 
-The `auth/ticket` endpoint generates a PassTicket for the user associated with a token. The full path of the `auth/ticket` endpoint appears as https://{gatewayUrl}:{gatewayPort}/gateway/api/v1/auth/ticket` (preferred option) or `https://{gatewayUrl}:{gatewayPort}/api/v1/gateway/auth/ticket`.`
+  This endpoint is protected by a client certificate.
+  The ticket request requires the token in one of the following formats:
+  
+  - Cookie named `apimlAuthenticationToken`.
+  - Bearer authentication
+  
+  The request takes the `applicationName` parameter, which is the name of the application for which the PassTicket should be generated. Supply this parameter.
 
-This endpoint is protected by a client certificate.
-The ticket request requires the token in one of the following formats:
+  The response is a JSON object, which contains information associated with the ticket.
 
-- Cookie named `apimlAuthenticationToken`.
-- Bearer authentication
+- `auth/refresh`
 
-The request takes the `applicationName` parameter, which is the name of the application for which the PassTicket should be generated. This parameter must be supplied.
+  **Notes:** 
+  
+   - The endpoint is disabled by default. [Jwt token refresh endpoint   enablement](../../user-guide/api-mediation/api-gateway-configuration.  md#jwt-token-refresh-endpoint-enablement)
+   - The endpoint is protected by a client certificate.
+  
+  The `auth/refresh` endpoint generates a new token for the user based on valid jwt token. The full path of the `auth/refresh` endpoint appears as `https://{gatewayUrl}:{gatewayPort}/gateway/api/v1/auth/refresh` (preferred option) or `https://{gatewayUrl}:{gatewayPort}/api/v1/gateway/auth/refresh`. The new token overwrites the old cookie with a `Set-Cookie` header. As part of the process, the old token gets invalidated and is not usable anymore.
 
-The response is a JSON object, which contains information associated with the ticket.
-
-##### auth/refresh
-
-**Note:** This endpoint is disabled by default. [Jwt token refresh endpoint enablement](../../user-guide/api-mediation/api-gateway-configuration.md#jwt-token-refresh-endpoint-enablement)
-
-The `auth/refresh` endpoint generates a new token for the user based on valid jwt token. The full path of the `auth/refresh` endpoint appears as `https://{gatewayUrl}:{gatewayPort}/gateway/api/v1/auth/refresh` (preferred option) or `https://{gatewayUrl}:{gatewayPort}/api/v1/gateway/auth/refresh`. The new token overwrites the old cookie with a `Set-Cookie` header. As part of the process, the old token gets invalidated and is not usable anymore.
-
-This endpoint is protected by a client certificate.
-The refresh request requires the token in one of the following formats:
-
-- Cookie named `apimlAuthenticationToken`.
-- Bearer authentication
-
-**Note:** For more information, see the OpenAPI documentation of the API Mediation Layer in the API Catalog.
+  The refresh request requires the token in one of the following formats:
+  
+  - Cookie named `apimlAuthenticationToken`.
+  - Bearer authentication
+  
+  For more information, see the OpenAPI documentation of the API Mediation Layer in the API Catalog.
 
 #### Supported authentication methods
 
