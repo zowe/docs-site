@@ -53,9 +53,9 @@ the following procedure to switch to SAF.
 
 Authentication requests now utilize SAF as the authentication provider. API ML can run without z/OSMF present on the system. 
 
-## Jwt token refresh endpoint enablement
+## Enable Jwt token refresh endpoint
 
-Enable `/gateway/api/v1/auth/refresh` endpoint that allows you to exchange existing valid JWT token for a new one with fresh expiration time. This endpoint has to be called with valid JWT token and trusted client certificate. In case of z/OSMF authentication provider, API Mediation Layer has to be enabled for passticket generation for requesting user and z/OSMF's APPLID and z/OSMF's APPLID has to be configured. [Configure Passtickets](../../extend/extend-apiml/api-mediation-passtickets.md)
+Enable the `/gateway/api/v1/auth/refresh` endpoint to exchange a valid JWT token for a new token with a new expiration date. Call the endpoint with a valid JWT token and trusted client certificate. In case of z/OSMF authentication provider, enable API Mediation Layer for passticket generation and configure z/OSMF APPLID. [Configure Passtickets](../../extend/extend-apiml/api-mediation-passtickets.md)
 
 **Follow these steps:**
 
@@ -63,13 +63,13 @@ Enable `/gateway/api/v1/auth/refresh` endpoint that allows you to exchange exist
 3. Configure the following properties:
 
     * **APIML_SECURITY_ALLOWTOKENREFRESH=true**
-      
+
       Add this property to enable the refresh endpoint.
-   
+
     * **APIML_SECURITY_ZOSMF_APPLID**
 
-      When z/OSMF is used as an authentication provider, provide a valid `APPLID`. The API ML generates a passticket for the specified `APPLID` and subsequently uses this passticket to authenticate to z/OSMF. The default value in the installation of z/OSMF is `IZUDFLT`.
-    
+      If you use z/OSMF as an authentication provider, provide a valid `APPLID`. The API ML generates a passticket for the specified `APPLID` and subsequently uses this passticket to authenticate to z/OSMF. The default value in the installation of z/OSMF is `IZUDFLT`.
+
 3. Restart Zowe.
 
 ### Change password with SAF provider
