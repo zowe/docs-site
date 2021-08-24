@@ -63,8 +63,6 @@ You have two options to initialize the global configuration:
 
    After you respond, the `zowe.config.json` global configuration file is added to your local `.zowe` directory. This is the primary location where your MF service connection details such as host and port are defined. Use this configuration file for the following procedures.
 
-3. Edit the `zowe.config.json` file to edit the name of the LPAR,  supply a value for the host name, and edit the port number as needed.
-
 4. Issue a Zowe CLI command to test that you can access z/OSMF. For example, list all data sets under your user ID:
 
    ```
@@ -75,7 +73,7 @@ You have two options to initialize the global configuration:
 
    If the CLI returns an error message, verify that you have access to the target system. Examine your configuration files in a text editor to verify that the information you entered is correct.
 
-**Important!:** After the configuration files are in place (either via the `zowe config init` command or by manually creating the files), the now-deprectaed `zowe profiles` commands will no longer function. Zowe CLI will return errors if you attempt to make use of old profiles.
+**Important!:** After the configuration files are in place (either via the `zowe config init` command or by manually creating the files), the now-deprecated `zowe profiles` commands will no longer function. Zowe CLI will return errors if you attempt to use deprecated profile commands.
 
 ## Initializing user-specific configuration (Optional) 
 
@@ -115,7 +113,6 @@ Open the `~/.zowe/zowe.config.json` file in a text editor or IDE on your compute
     "defaults": {
         "zosmf": "lpar1.zosmf"
     },
-    "plugins": []
 }
 ```
 

@@ -22,7 +22,6 @@ Install the Zowe CLI `@next` version from the online npm registry or download it
    ```
    Zowe CLI is installed.
 
-
 2. (Optional) Check [npmjs.com](https://www.npmjs.com/) for any Zowe plug-ins that have an `@next` version available. If an `@next` version is available, you can install it: 
 
     ```
@@ -38,21 +37,17 @@ Install the Zowe CLI `@next` version from the online npm registry or download it
     Optional plug-ins are installed.
 
 3. Issue the command:
-
    ```
    zowe scs revert --force
    ```
 
 4. If you have the Secure Credential Store plug-in installed, uninstall it now to avoid unexpected behavior:
-
     ```
     zowe plugins uninstall @zowe/secure-credential-store-for-zowe-cli
     ```
-
     **Note:** If you have a previous instance of Zowe CLI installed, your current configuration files are ignored if zowe.config.json is found globally, at the project level, or up the directory structure.
 
 5. Save the contents of the `/profiles` directory to another location on your computer so that you can reference or restore the profiles later.
-
      **Important!** Prior to deleting the contents of the `/profiles` directory, take note of any mainframe service details that you need.
 
 6. Delete the following files from your local `.zowe/` directory:
