@@ -13,7 +13,7 @@ Follow the procedures in the following sections to customize Gateway parameters 
 
   * [Prefer IP Address for API Layer services](#prefer-ip-address-for-api-layer-services)
   * [SAF as an Authentication provider](#saf-as-an-authentication-provider)
-  * [Jwt token refresh endpoint enablement](#jwt-token-refresh-endpoint-enablement)
+  * [Enable Jwt token refresh endpoint](#enable-jwt-token-refresh-endpoint)
   * [Gateway retry policy](#gateway-retry-policy)
   * [Gateway client certificate authentication](#gateway-client-certificate-authentication)
   * [Gateway timeouts](#gateway-timeouts)
