@@ -21,26 +21,26 @@ Review the installation diagram and the high-level instructions in this topic to
 </figure>
 <map name="home_map1" id="home_map1">
   <area href="installandconfig#planning-the-installation-of-zowe-server-components" target="_blank" alt="Plan and prepare for the installation" title="Plan and prepare for the installation" shape="rect" coords="326, 63, 474, 105" />
-  <area href="systemrequirements-zos.html" target="_blank" alt="Configure system requirements" title="Configure system requirements" shape="rect" coords="318, 183, 467, 224" />
+  <area href="./systemrequirements-zos" target="_blank" alt="Configure system requirements" title="Configure system requirements" shape="rect" coords="318, 183, 467, 224" />
 
   <area href="https://www.zowe.org/download.html" target="_blank" alt="Download Zowe SMP/E build" title="Download the Zowe SMP/E build from zowe.org" shape="rect" coords="111,327,304,374" />
-  <area href="install-zowe-smpe.html" target="_blank" alt="Install the Zowe SMP/E build using JCLs" title="Install the Zowe SMP/E build using JCLs" shape="rect" coords="20,546,167,610" />
-  <area href="install-zowe-smpe-zosmf-workflow.html" target="_blank" alt="Install the Zowe SMP/E build with z/OSMF workflow" title="Install the Zowe SMP/E build with z/OSMF workflow" shape="rect" coords="236,546,399,610" />
+  <area href="./install-zowe-smpe" target="_blank" alt="Install the Zowe SMP/E build using JCLs" title="Install the Zowe SMP/E build using JCLs" shape="rect" coords="20,546,167,610" />
+  <area href="./install-zowe-smpe-zosmf-workflow" target="_blank" alt="Install the Zowe SMP/E build with z/OSMF workflow" title="Install the Zowe SMP/E build with z/OSMF workflow" shape="rect" coords="236,546,399,610" />
 
   <area href="https://www.zowe.org/download.html" target="_blank" alt="Download the Zowe convenience build" title="Download the Zowe convenience build from zowe.org" shape="rect" coords="549,327,742,374" />
-  <area href="install-zowe-zos-convenience-build#obtaining-and-preparing-the-convenience-build" target="_blank" alt="Verify, transfer, and expand the PAX file on z/OS" title="Verify, transfer, and expand the PAX file on z/OS" shape="rect" coords="550,401,744,448" />
-  <area href="install-zowe-zos-convenience-build#installing-the-zowe-runtime" target="_blank" alt="Install the Zowe runtime using shell script" title="Install the Zowe runtime using shell script" shape="rect" coords="460,546,604,610" />
-  <area href="install-zowe-zos-convenience-build#installing-the-zowe-runtime" target="_blank" alt="Install the Zowe runtime with z/OSMF workflow" title="Install the Zowe runtime with z/OSMF workflow" shape="rect" coords="687,546,831,610" />
+  <area href="./install-zowe-zos-convenience-build#obtaining-and-preparing-the-convenience-build" target="_blank" alt="Verify, transfer, and expand the PAX file on z/OS" title="Verify, transfer, and expand the PAX file on z/OS" shape="rect" coords="550,401,744,448" />
+  <area href="./install-zowe-zos-convenience-build#installing-the-zowe-runtime" target="_blank" alt="Install the Zowe runtime using shell script" title="Install the Zowe runtime using shell script" shape="rect" coords="460,546,604,610" />
+  <area href="./install-zowe-zos-convenience-build#installing-the-zowe-runtime" target="_blank" alt="Install the Zowe runtime with z/OSMF workflow" title="Install the Zowe runtime with z/OSMF workflow" shape="rect" coords="687,546,831,610" />
 
-  <area href="configure-zos-system.html" target="_blank" alt="Configure the z/OS system for Zowe using ZWESECUR" title="Configure the z/OS system for Zowe using ZWESECUR" shape="rect" coords="230,738,628,795" />
-  <area href="configure-caching-service-ha.html" target="_blank" alt="Create the VSAM data set for Caching Service" title="Create the VSAM data set for Caching Service" shape="rect" coords="230,820,628,877" />
-  <area href="configure-certificates.html" target="_blank" alt="Configure Zowe certificates using shell script" title="Create the Zowe certificates keystore directory using shell script" shape="rect" coords="230,901,628,958" />
-  <area href="configure-xmem-server.html" target="_blank" alt="Configure the Zowe cross memory server using shell script" title="Install and configure the Zowe cross memory server (ZWESISTC) using shell script" shape="rect" coords="230,980,628,1037" />
-  <area href="configure-instance-directory.html" target="_blank" alt="Create and configure the Zowe instance directory using shell script" title="Create and configure the Zowe instance directory using shell script" shape="rect" coords="230,1061,628,1110" />
-  <area href="configure-instance-directory#updating-the-zowe-yaml-configuration-file-technical-preview" target="_blank" alt="Create and customize Zowe YAML configuration file" title="Create and customize Zowe YAML configuration file using shell script" shape="rect" coords="230,1132,628,1182" />
-  <area href="configure-zowe-ha-server.html" target="_blank" alt="Install and start the Zowe high availability started task using JCL" title="Install and start the Zowe high availability started task (ZWESLSTC) using JCL" shape="rect" coords="230,1206,628,1255" />
+  <area href="./configure-zos-system" target="_blank" alt="Configure the z/OS system for Zowe using ZWESECUR" title="Configure the z/OS system for Zowe using ZWESECUR" shape="rect" coords="230,738,628,795" />
+  <area href="./configure-caching-service-ha" target="_blank" alt="Create the VSAM data set for Caching Service" title="Create the VSAM data set for Caching Service" shape="rect" coords="230,820,628,877" />
+  <area href="./configure-certificates" target="_blank" alt="Configure Zowe certificates using shell script" title="Create the Zowe certificates keystore directory using shell script" shape="rect" coords="230,901,628,958" />
+  <area href="./configure-xmem-server" target="_blank" alt="Configure the Zowe cross memory server using shell script" title="Install and configure the Zowe cross memory server (ZWESISTC) using shell script" shape="rect" coords="230,980,628,1037" />
+  <area href="./configure-instance-directory" target="_blank" alt="Create and configure the Zowe instance directory using shell script" title="Create and configure the Zowe instance directory using shell script" shape="rect" coords="230,1061,628,1110" />
+  <area href="./configure-instance-directory#updating-the-zowe-yaml-configuration-file-technical-preview" target="_blank" alt="Create and customize Zowe YAML configuration file" title="Create and customize Zowe YAML configuration file using shell script" shape="rect" coords="230,1132,628,1182" />
+  <area href="./configure-zowe-ha-server" target="_blank" alt="Install and start the Zowe high availability started task using JCL" title="Install and start the Zowe high availability started task (ZWESLSTC) using JCL" shape="rect" coords="230,1206,628,1255" />
 
-  <area href="verify-zowe-runtime-install.html" target="_blank" alt="Verify Zowe installation on z/OS" title="Verify Zowe installation on z/OS" shape="rect" coords="204,1283,648,1332" />
+  <area href="./verify-zowe-runtime-install" target="_blank" alt="Verify Zowe installation on z/OS" title="Verify Zowe installation on z/OS" shape="rect" coords="204,1283,648,1332" />
 </map>
 
 ## Stage 1: Plan and prepare
