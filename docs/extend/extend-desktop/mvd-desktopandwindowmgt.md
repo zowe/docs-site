@@ -51,6 +51,7 @@ When the Window is created, the application plug-in's web content is encapsulate
 
 * *"angular2"*: The web content is written in Angular, and packaged with Webpack. Application plug-in framework objects are given through @injectables and imports.
 * *"iframe"*: The web content can be written using any framework, but is included through an iframe tag. Application plug-ins within an iframe can access framework objects through *parent.RocketMVD* and callbacks.
+* *"react"*: The web content is written in React, Typescript, and packaged with Webpack. App framework objects are provided via the [ReactMVDResources object](https://github.com/zowe/zlux-app-manager/blob/master/virtual-desktop/src/pluginlib/react-inject-resources.ts)
 
 In the case of the Zowe Desktop, this framework-specific wrapping is handled by the Plugin Manager.
 
@@ -145,3 +146,38 @@ An application plug-in can request actions to be performed on the Window through
 `setPosition(pos: {top: number, left: number, width: number, height: number}): void` | Sets the position of the Window on the page and the size of the window.     
 `spawnContextMenu(xPos: number, yPos: number, items: ContextMenuItem[]): void` | Opens a context menu on the application plug-in instance, which uses the Context Menu framework.
 `registerCloseHandler(handler: () => Promise<void>): void` | Registers a handler, which is called when the Window and application plug-in instance are closed.
+
+## Framework API examples
+
+The following are examples of how you would access the Window Actions API to begin an App in maximized mode upon start-up.
+
+**Angular**
+
+1. Import `Angular2InjectionTokens `from `'pluginlib/inject-resources'`
+2. Within the constructor of your App, in the arguments, do
+`@Optional() @Inject(Angular2InjectionTokens.WINDOW_ACTIONS) private windowActions: Angular2PluginWindowActions`
+3. Then inside the constructor, check that window actions exist and then execute the action
+if (this.windowActions) {
+   this.windowActions.maximize();
+}
+4. Depending on your App layout, certain UI elements may not have loaded so to wait for them to load, one may want to use something like Angular's NgOnInit directive.
+
+**React**
+
+1. Similar to how we do things in Angular, except the Window Actions (& other Zowe resources) are located in the `resources` object. So if we were using a React.Component, we could have a constructor with
+`constructor(props){
+    super(props);
+    ...   
+}`
+
+2. Then accessing Window Actions would be as simple as `this.props.resources.windowActions`
+
+**IFrames**
+
+1. Iframes are similar to Angular & React, but require a different import step. Instead to use Window Actions (& other Zowe resources), we have to import the Iframe adapter. The Iframe adapter is located in `zlux-app-manager/bootstrap/web/iframe-adapter.js` so something like a relative path in my JS code will suffice,
+
+`<script type="text/javascript" src="../../../org.zowe.zlux.bootstrap/web/iframe-adapter.js"></script>`
+
+2. Then to use Window Actions would be as simple as `await windowActions.minimize();`
+
+NOTE: The Iframe adapter is not yet feature-complete. If you are attempting to use an event supported by Angular or React, but not yet supported in Iframes, try to use the `window.parent.ZoweZLUX` object instead.
