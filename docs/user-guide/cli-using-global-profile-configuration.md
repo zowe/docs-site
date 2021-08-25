@@ -14,7 +14,7 @@ If you already installed the supported version `@zowe-v1-lts`, switch versions t
 - [Managing credential security](#managing-credential-security)
 - [Tips for efficient configuration](#tips-for-efficient-configuration)
   - [Command option order of precedence](#command-option-order-of-precedence)
-  - [Tips for using the base array](#tips-for-using-the-base-array)
+  - [Tips for using the base profile](#tips-for-using-the-base-profile)
 - [Sharing global configuration](#sharing-global-configuration)
 - [Example configurations](#example-configurations)
 
@@ -81,7 +81,7 @@ You can generate a *user-specific* configuration file that overrides the values 
 
 To generate both global (`zowe.config.json`) and user (`zowe.config.user.json`) config files, issue the command `zowe config init --global-config --user-config`.
 
-In your user-specific file, notice that the top level defaults, plugins, and secure fields are empty. The profiles do not have any properties. You can add your connection details as properties here to override properties in `zowe.config.json`, or add add new connections.
+In your user-specific file, notice that the "defaults" object is empty and the profiles do not have any properties. You can add your connection details as properties here to override properties in `zowe.config.json`, or add add new connections.
 ## Editing global configuration
 
 After the initial setup, you can define additional mainframe services to the global (or user-specific) configuration file.
@@ -92,17 +92,16 @@ Open the `~/.zowe/zowe.config.json` file in a text editor or IDE on your compute
 {
     "$schema": "./zowe.schema.json",
     "profiles": {
-        "lpar1": {
+        "zosmf": {
+            "type": "zosmf",
+            "properties": {
+                "port": 443
+            }
+        },
+        "base": {
+            "type": "base",
             "properties": {
                 "host": "example1.com"
-            },
-            "profiles": {
-                "zosmf": {
-                    "type": "zosmf",
-                    "properties": {
-                        "port": 443
-                    }
-                }
             },
             "secure": [
                 "user",
@@ -111,60 +110,54 @@ Open the `~/.zowe/zowe.config.json` file in a text editor or IDE on your compute
         }
     },
     "defaults": {
-        "zosmf": "lpar1.zosmf"
+        "zosmf": "zosmf",
+        "base": "base"
     },
 }
 ```
 
 You can edit the details as needed and save the file.
 
-For example, to add a new instance of z/OSMF that runs on a different mainframe LPAR, you can build on the existing array as follows:
+For example, to add a new instance of z/OSMF that runs on a different mainframe LPAR, you can build on the existing config as follows:
 
 ```json
 {
     "$schema": "./zowe.schema.json",
     "profiles": {
-        "lpar1": {
+        "zosmf_lpar1": {
+            "type": "zosmf",
             "properties": {
-                "host": "example1.com"
-            },
-            "profiles": {
-                "zosmf": {
-                    "type": "zosmf",
-                    "properties": {
-                        "port": 443
-                    }
-                }
+                "port": 443
+            }
+        },
+        "zosmf_lpar2": {
+            "type": "cics",
+            "properties": {
+                "host": "example2.com",
+                "port": 1443
             },
             "secure": [
+                // This secure array isn't needed if user and password are same as for LPAR1
                 "user",
                 "password"
             ]
         },
-        "lpar2": {
+        "base": {
+            "type": "base",
             "properties": {
-                "host": "example2.com"
-            },
-            "profiles": {
-                "zosmf": {
-                    "type": "zosmf",
-                    "properties": {
-                        "port": 1443
-                    }
-                }
+                "host": "example1.com"
             },
             "secure": [
-                // See below about tips for using base array to avoid duplicating these
                 "user",
                 "password"
             ]
         }
     },
     "defaults": {
-        // Change to lpar2.zosmf if you wish to change default profile
-        "zosmf": "lpar1.zosmf"
-    },
-    "plugins": []
+        // Change to zosmf_lpar2 if you wish to change default profile
+        "zosmf": "zosmf_lpar1",
+        "base": "base"
+    }
 }
 ```
 
@@ -183,7 +176,7 @@ You can use an editor to define options to the secure array in `zowe.config.json
 
 There are several methods to more efficiently update and maintain your configuration:
 * Leverage the command option order of precedence
-* Utilize a base array
+* Utilize a base profile or nested profiles
 
 ### Command option order of precedence
 
@@ -196,65 +189,16 @@ Zowe CLI checks for option values in order, skipping null values:
 4. Base type profiles
 5. Default option value
 
-The user name and password fields are not supplied in the service definitions.
+In the example config above, the host, user, and password fields are not supplied in the service profile for "zosmf_lpar1", because they inherit values from the base profile.
 
-**Example:** <!--Not sure what this is trying to same, as there seems to be something missing --> The username and password fields for ZOSMF1 and ZOSMF2 are not supplied in the service definitions to allow them to inherit values from the base array:
+### Tips for using the base profile
 
-```json
-{
-    "$schema": "./zowe.schema.json",
-    "profiles": {
-        "lpar1": {
-            "properties": {
-                "host": "example1.com"
-            },
-            "profiles": {
-                "zosmf": {
-                    "type": "zosmf",
-                    "properties": {
-                        "port": 443
-                    }
-                }
-            }
-        },
-        "lpar2": {
-            "properties": {
-                "host": "example2.com"
-            },
-            "profiles": {
-                "zosmf": {
-                    "type": "zosmf",
-                    "properties": {
-                        "port": 1443
-                    }
-                }
-            }
-        },
-        "my_base": {
-            "type": "base",
-            "properties": {
-                "rejectUnauthorized": true
-            },
-            "secure": [
-                "user",
-                "password"
-            ]
-        }
-    },
-    "defaults": {
-        "zosmf": "lpar1.zosmf",
-        "base": "my_base"
-    },
-    "plugins": []
-}
-```
-
-### Tips for using the base array
-
-Use the base array to share option values between services. You might share option values between services in the following situations:
+Use the base profile to share option values between services. You might share option values between services in the following situations:
 - You have multiple services that share the same username, password, or other value.
 - You want to store a web token to access all services through Zowe API Mediation Layer.
-- You want to trust a known self-signed certificate or your site does not have server certificates configured. You can define `reject-unauthorized` in the base array with a value of  `false` to apply to all services. Understand the security implications of accepting self-signed certificates at your site before you use this method.
+- You want to trust a known self-signed certificate or your site does not have server certificates configured. You can define `reject-unauthorized` in the base profile with a value of  `false` to apply to all services. Understand the security implications of accepting self-signed certificates at your site before you use this method.
+
+If you have multiple LPARs and want to share option values only between services that run on the same LPAR, you can use nested profiles to achieve this (see Example 1 below).
 
 ## Sharing global configuration
 
@@ -265,7 +209,7 @@ You might want to share a configuration globally:
 
 ## Example configurations
 
-**Example 1:** The settings are accessing multiple services directly on multiple LPARs that share the same username and password.
+**Example 1:** The settings are using nested profiles to access multiple services directly on multiple LPARs that share the same username and password.
 
 ```json
 {
@@ -311,7 +255,7 @@ You might want to share a configuration globally:
                 }
             }
         },
-        "my_base": {
+        "base": {
             "type": "base",
             "properties": {
                 "rejectUnauthorized": true
@@ -326,9 +270,8 @@ You might want to share a configuration globally:
         "zosmf": "lpar2.zosmf",
         "tso": "lpar1.tso",
         "ssh": "lpar1.ssh",
-        "base": "my_base"
-    },
-    "plugins": []
+        "base": "base"
+    }
 }
 ```
 **Example 2:** The settings are accessing multiple services using the API ML (where MFA/SSO is achievable via token-based authorization).
@@ -336,50 +279,46 @@ You might want to share a configuration globally:
 {
     "$schema": "./zowe.schema.json",
     "profiles": {
-        "lpar1": {
-            "profiles": {
-                "zosmf": {
-                    "type": "zosmf",
-                    "properties": {
-                        "basePath": "api/v1"
-                    }
-                },
-                "cics": {
-                    "type": "cics",
-                    "properties": {
-                        "basePath": "api/v1/my_cics"
-                    }
-                },
-                "db2": {
-                    "type": "db2",
-                    "properties": {
-                        "basePath": "api/v1/my_db2"
-                    }
-                }
+        "zosmf": {
+            "type": "zosmf",
+            "properties": {
+                "basePath": "api/v1"
             }
         },
-        "my_base": {
+        "cics": {
+            "type": "cics",
+            "properties": {
+                "basePath": "api/v1/cics"
+            }
+        },
+        "db2": {
+            "type": "db2",
+            "properties": {
+                "basePath": "api/v1/db2"
+            }
+        },
+        "base": {
             "type": "base",
             "properties": {
-                "host": "example1.com",
+                "host": "example.com",
                 "port": 443,
-                "rejectUnauthorized": true
+                "rejectUnauthorized": true,
+                "tokenType": "apimlAuthenticationToken"
             },
             "secure": [
-                "authToken"
+                "tokenValue"
             ]
         }
     },
     "defaults": {
-        "zosmf": "lpar1.zosmf",
-        "cics": "lpar1.cics",
-        "db2": "lpar1.db2",
-        "base": "my_base"
-    },
-    "plugins": []
+        "zosmf": "zosmf",
+        "cics": "cics",
+        "db2": "db2",
+        "base": "base"
+    }
 }
 ```
-**Example 3:** The settings are accessing multiple services directly on LPAR1 and LPAR2 where username and password varies between the LPAR1 and LPAR2 services. This example is identical to Example 1 except that LPAR1 and LPAR2 each contain a secure array, instead of just one secure array in the "my_base" profile.
+**Example 3:** The settings are accessing multiple services directly on LPAR1 and LPAR2 where username and password varies between the LPAR1 and LPAR2 services. This example is identical to Example 1 except that LPAR1 and LPAR2 each contain a secure array, instead of just one secure array in the "base" profile.
 ```json
 {
     "$schema": "./zowe.schema.json",
@@ -432,7 +371,7 @@ You might want to share a configuration globally:
                 "password"
             ]
         },
-        "my_base": {
+        "base": {
             "type": "base",
             "properties": {
                 "rejectUnauthorized": true
@@ -443,9 +382,8 @@ You might want to share a configuration globally:
         "zosmf": "lpar2.zosmf",
         "tso": "lpar1.tso",
         "ssh": "lpar1.ssh",
-        "base": "my_base"
-    },
-    "plugins": []
+        "base": "base"
+    }
 }
 ```
 
@@ -465,20 +403,20 @@ You might want to share a configuration globally:
                 "cics": {
                     "type": "cics",
                     "properties": {
-                        "basePath": "api/v1/my_cics"
+                        "basePath": "api/v1/cics"
                     }
                 },
                 "db2": {
                     "type": "db2",
                     "properties": {
-                        "basePath": "api/v1/my_db2"
+                        "basePath": "api/v1/db2"
                     }
                 }
             }
         },
         "dev": {
             "properties": {
-                "host": "example1.com"
+                "host": "example2.com"
             },
             "profiles": {
                 "zosmf": {
@@ -507,15 +445,16 @@ You might want to share a configuration globally:
                 "password"
             ]
         },
-        "my_base": {
+        "base": {
             "type": "base",
             "properties": {
                 "host": "example1.com",
                 "port": 443,
-                "rejectUnauthorized": true
+                "rejectUnauthorized": true,
+                "tokenType": "apimlAuthenticationToken"
             },
             "secure": [
-                "authToken"
+                "tokenValue"
             ]
         }
     },
@@ -525,8 +464,7 @@ You might want to share a configuration globally:
         "db2": "prod.db2",
         "tso": "dev.tso",
         "ssh": "dev.ssh",
-        "base": "my_base"
-    },
-    "plugins": []
+        "base": "base"
+    }
 }
 ```
