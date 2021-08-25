@@ -41,7 +41,7 @@ The following information is required during the installation process. Software 
   
   - If you plan to use API ML with basic authentication and JSON web token authentication, you need to run only `ZWESVSTC`. No need to run `ZWESISTC` and `ZWESASTC`.
   
-  - If you plan to use API ML with x509 client-side certificate authentication, you need to run `ZWESISTC`.
+  - If you plan to use API ML with x509 client-side certificate authentication, you need to run `ZWESISTC` and `ZWESISTC`.
 
 ## Topology of the Zowe z/OS launch process
 
