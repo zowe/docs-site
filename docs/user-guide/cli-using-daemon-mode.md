@@ -2,7 +2,7 @@
 
 <Badge text="Technical Preview"/> Daemon mode is available in the `@next` version of Zowe CLI. The Zowe CLI @next release is a technical preview. Technical previews are for testing only and are not ready for production. Your feedback is valued and appreciated.
 
-If you already installed the supported version `@zowe-v1-lts`, switch versions to try this feature. Daemon mode will be included in the next major Zowe release, V2.0.0-LTS. You can also [install the @next release of Zowe CLI](cli-install-cli-next.md).
+If you already installed the supported version `@zowe-v1-lts`, switch versions to try this feature. Daemon mode will be included in the next major Zowe release, V2.0.0-LTS. You can also [install the @next release of Zowe CLI](cli-install-cli-next.md#install-zowe-cli-from-a-download).
 
 **Table of Contents:**
 - [Feature overview](#feature-overview)
@@ -13,12 +13,15 @@ If you already installed the supported version `@zowe-v1-lts`, switch versions t
 Daemon Mode significantly improves the performance of Zowe CLI commands by running Zowe CLI as a persistent background process (daemon).
 
 ## Install the zowex native executable
+You can download and install the zowex native executable from Zowe Downloads (preferred) or from the Zowe Github repository. To install the zowex native executable from Zowe Downloads, see [Install Zowe CLI from a download](cli-install-cli-next.md#install-zowe-cli-from-a-download).
+
+To download and install the zowex native executable from the Zowe Github repository:
 1. Navigate to the Zowe CLI GitHub [repository](https://github.com/zowe/zowe-cli)
 2. Under the **Release** section, click **Native Client Release**.
    The Download page is displayed.
-4. Click the link to download the executable (.tgz file) for your operating system.
-5. Unzip the zowex .tgz file that you downloaded.
-6. Place the zowex (or zowex.exe) file into a directory which occurs on your PATH earlier than the directory containing the NodeJS zowe command.
+3. Click the link to download the executable (.tgz file) for your operating system.
+4. Unzip the zowex .tgz file that you downloaded.
+5. Place the zowex (or zowex.exe) file into a directory which occurs on your PATH earlier than the directory containing the NodeJS zowe command.
 
 
 ## Starting Zowe in daemon mode

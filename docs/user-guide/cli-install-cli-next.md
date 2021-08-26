@@ -13,6 +13,7 @@ Install the Zowe CLI `@next` version from the online npm registry or download it
 - [Install Zowe CLI from a download](#install-zowe-cli-from-a-download)
 
 ## Install Zowe CLI from npm
+
 **Follow these steps:**
 
 1. To install or update the core CLI, open a command-line window:
