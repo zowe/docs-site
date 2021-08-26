@@ -14,6 +14,8 @@ Install the Zowe CLI `@next` version from the online npm registry or download it
 
 ## Install Zowe CLI from npm
 
+**Note:** This method does not install the zowex native executable required to run [Zowe daemon mode](cli-using-daemon-mode.md). To install the zowex native executable, see [Install Zowe CLI from a download](#install-zowe-cli-from-a-download).
+
 **Follow these steps:**
 
 1. To install or update the core CLI, open a command-line window:
