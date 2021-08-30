@@ -682,7 +682,7 @@ where:
 
 ### Custom Metadata
 
-Custom metadata are described [here](custom-metadata.md).
+Custom metadata are described [here](../extend-apiml/custom-metadata.md).
     
 ##  Registering your service with API ML
 
