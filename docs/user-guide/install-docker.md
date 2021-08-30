@@ -23,38 +23,38 @@ Review the installation diagram and the introduction in this topic to see the ge
   <figcaption></figcaption>
 </figure>
 <map name="home_map1" id="home_map1">
-  <area href="installandconfig#planning-the-installation-of-zowe-server-components" target="_blank" alt="Plan and prepare for the installation" title="Plan and prepare for the installation" shape="rect" coords="326, 63, 474, 105" />
-  <area href="systemrequirements-zos" target="_blank" alt="Configure system requirements" title="Configure system requirements" shape="rect" coords="318, 183, 467, 224" />
+  <area href="https://docs.zowe.org/stable/user-guide/installandconfig" target="_blank" alt="Plan and prepare for the installation" title="Plan and prepare for the installation" shape="rect" coords="326, 63, 474, 105" />
+  <area href="https://docs.zowe.org/stable/user-guide/systemrequirements-zos/" target="_blank" alt="Configure system requirements" title="Configure system requirements" shape="rect" coords="318, 183, 467, 224" />
 
   <area href="https://www.zowe.org/download.html" target="_blank" alt="Download Zowe SMP/E build" title="Download the Zowe SMP/E build from zowe.org" shape="rect" coords="131, 308, 304, 348" />
-  <area href="install-zowe-smpe" target="_blank" alt="Install the Zowe SMP/E build using JCLs" title="Install the Zowe SMP/E build using JCLs" shape="rect" coords="54, 498, 188, 555" />
-  <area href="install-zowe-smpe-zosmf-workflow" target="_blank" alt="Install the Zowe SMP/E build with z/OSMF workflow" title="Install the Zowe SMP/E build with z/OSMF workflow" shape="rect" coords="250, 498, 391, 555" />
+  <area href="https://docs.zowe.org/stable/user-guide/install-zowe-smpe" target="_blank" alt="Install the Zowe SMP/E build using JCLs" title="Install the Zowe SMP/E build using JCLs" shape="rect" coords="54, 498, 188, 555" />
+  <area href="https://docs.zowe.org/stable/user-guide/install-zowe-smpe-zosmf-workflow" target="_blank" alt="Install the Zowe SMP/E build with z/OSMF workflow" title="Install the Zowe SMP/E build with z/OSMF workflow" shape="rect" coords="250, 498, 391, 555" />
 
   <area href="https://www.zowe.org/download.html" target="_blank" alt="Download the Zowe convenience build" title="Download the Zowe convenience build from zowe.org" shape="rect" coords="527, 299, 694, 344" />
-  <area href="install-zowe-zos-convenience-build#obtaining-and-preparing-the-convenience-build" target="_blank" alt="Verify, transfer, and expand the PAX file on z/OS" title="Verify, transfer, and expand the PAX file on z/OS" shape="rect" coords="526, 368, 696, 410" />
-  <area href="install-zowe-zos-convenience-build#installing-the-zowe-runtime" target="_blank" alt="Install the Zowe runtime using shell script" title="Install the Zowe runtime using shell script" shape="rect" coords="450, 500, 574, 552" />
-  <area href="install-zowe-zos-convenience-build#installing-the-zowe-runtime" target="_blank" alt="Install the Zowe runtime with z/OSMF workflow" title="Install the Zowe runtime with z/OSMF workflow" shape="rect" coords="647, 499, 774, 554" />
+  <area href="https://docs.zowe.org/stable/user-guide/install-zowe-zos-convenience-build/#obtaining-and-preparing-the-convenience-build" target="_blank" alt="Verify, transfer, and expand the PAX file on z/OS" title="Verify, transfer, and expand the PAX file on z/OS" shape="rect" coords="526, 368, 696, 410" />
+  <area href="https://docs.zowe.org/stable/user-guide/install-zowe-zos-convenience-build/#installing-the-zowe-runtime" target="_blank" alt="Install the Zowe runtime using shell script" title="Install the Zowe runtime using shell script" shape="rect" coords="450, 500, 574, 552" />
+  <area href="https://docs.zowe.org/stable/user-guide/install-zowe-zos-convenience-build/#installing-the-zowe-runtime" target="_blank" alt="Install the Zowe runtime with z/OSMF workflow" title="Install the Zowe runtime with z/OSMF workflow" shape="rect" coords="647, 499, 774, 554" />
 
-  <area href="configure-zos-system" target="_blank" alt="Configure the z/OS system for Zowe using ZWESECUR" title="Configure the z/OS system for Zowe using ZWESECUR" shape="rect" coords="121, 756, 426, 808" />
-  <area href="configure-certificates" target="_blank" alt="Configure Zowe certificates using shell script" title="Create the Zowe certificates keystore directory using shell script" shape="rect" coords="124, 830, 426, 882" />
-  <area href="configure-xmem-server" target="_blank" alt="Configure the Zowe cross memory server using shell script" title="Install and configure the Zowe cross memory server (ZWESISTC) using shell script" shape="rect" coords="123, 909, 426, 952" />
-  <area href="configure-instance-directory" target="_blank" alt="Create and configure the Zowe instance directory using shell script" title="Create and configure the Zowe instance directory using shell script" shape="rect" coords="121, 976, 426, 1038" />
-  <area href="configure-zowe-server" target="_blank" alt="Install and start the Zowe started task using shell script" title="Install and start the Zowe started task (ZWESVSTC) using shell script" shape="rect" coords="125, 1065, 426, 1117" />
+  <area href="https://docs.zowe.org/stable/user-guide/configure-zos-system" target="_blank" alt="Configure the z/OS system for Zowe using ZWESECUR" title="Configure the z/OS system for Zowe using ZWESECUR" shape="rect" coords="121, 756, 426, 808" />
+  <area href="https://docs.zowe.org/stable/user-guide/configure-certificates" target="_blank" alt="Configure Zowe certificates using shell script" title="Create the Zowe certificates keystore directory using shell script" shape="rect" coords="124, 830, 426, 882" />
+  <area href="https://docs.zowe.org/stable/user-guide/configure-xmem-server" target="_blank" alt="Configure the Zowe cross memory server using shell script" title="Install and configure the Zowe cross memory server (ZWESISTC) using shell script" shape="rect" coords="123, 909, 426, 952" />
+  <area href="https://docs.zowe.org/stable/user-guide/configure-instance-directory" target="_blank" alt="Create and configure the Zowe instance directory using shell script" title="Create and configure the Zowe instance directory using shell script" shape="rect" coords="121, 976, 426, 1038" />
+  <area href="https://docs.zowe.org/stable/user-guide/configure-zowe-server" target="_blank" alt="Install and start the Zowe started task using shell script" title="Install and start the Zowe started task (ZWESVSTC) using shell script" shape="rect" coords="125, 1065, 426, 1117" />
 
-  <area href="configure-zowe-zosmf-workflow#configure-z-os-security-manager" target="_blank" alt="Configure Zowe security manager with z/OSMF workflow" title="Configure Zowe security manager with z/OSMF workflow" shape="rect" coords="515, 759, 757, 805" />
-  <area href="configure-zowe-zosmf-workflow#configure-zowe-certificates" target="_blank" alt="Configure Zowe certificates with z/OSMF workflow" title="Configure Zowe certificates with z/OSMF workflow" shape="rect" coords="515, 832, 754, 882" />
-  <area href="configure-zowe-zosmf-workflow#configure-zowe-cross-memory-server" target="_blank" alt="Configure Zowe Cross Memory Server with z/OSMF workflow" title="Configure Zowe Cross Memory Server with z/OSMF workflow" shape="rect" coords="515, 905, 757, 960" />
-  <area href="configure-zowe-zosmf-workflow#create-and-configure-the-zowe-instance-directory-and-start-the-zowe-started-task" target="_blank" alt="Create and configure the Zowe instance directory and start Zowe with z/OSMF workflow" title="Create and configure the Zowe instance directory and start Zowe with z/OSMF workflow" shape="rect" coords="513, 977, 757, 1042" />
+  <area href="https://docs.zowe.org/stable/user-guide/configure-zowe-zosmf-workflow/#configure-z-os-security-manager" target="_blank" alt="Configure Zowe security manager with z/OSMF workflow" title="Configure Zowe security manager with z/OSMF workflow" shape="rect" coords="515, 759, 757, 805" />
+  <area href="https://docs.zowe.org/stable/user-guide/configure-zowe-zosmf-workflow/#configure-zowe-certificates" target="_blank" alt="Configure Zowe certificates with z/OSMF workflow" title="Configure Zowe certificates with z/OSMF workflow" shape="rect" coords="515, 832, 754, 882" />
+  <area href="https://docs.zowe.org/stable/user-guide/configure-zowe-zosmf-workflow/#configure-zowe-cross-memory-server" target="_blank" alt="Configure Zowe Cross Memory Server with z/OSMF workflow" title="Configure Zowe Cross Memory Server with z/OSMF workflow" shape="rect" coords="515, 905, 757, 960" />
+  <area href="https://docs.zowe.org/stable/user-guide/configure-zowe-zosmf-workflow/#create-and-configure-the-zowe-instance-directory-and-start-the-zowe-started-task" target="_blank" alt="Create and configure the Zowe instance directory and start Zowe with z/OSMF workflow" title="Create and configure the Zowe instance directory and start Zowe with z/OSMF workflow" shape="rect" coords="513, 977, 757, 1042" />
 
-  <area href="verify-zowe-runtime-install" target="_blank" alt="Verify Zowe installation on z/OS" title="Verify Zowe installation on z/OS" shape="rect" coords="224, 1154, 616, 1198" />
+  <area href="https://docs.zowe.org/stable/user-guide/verify-zowe-runtime-install" target="_blank" alt="Verify Zowe installation on z/OS" title="Verify Zowe installation on z/OS" shape="rect" coords="224, 1154, 616, 1198" />
 
-  <area href="install-docker-image#installing-via-docker-hub" target="_blank" alt="Pull image from Docker Hub" title="Pull image from Docker Hub" shape="rect" coords="46, 1390, 416, 1445" />
-  <area href="install-docker-image#installing-via-direct-download" target="_blank" alt="Download image tarball" title="Download image tarball" shape="rect" coords="495, 1390, 780, 1445" />
-  <area href="install-docker-image#loading-an-image-from-tarball" target="_blank" alt="Load image into Docker" title="Load image into Docker" shape="rect" coords="495, 1465, 780, 1515" />
+  <area href="https://docs.zowe.org/stable/user-guide/install-docker-image/#installing-via-docker-hub" target="_blank" alt="Pull image from Docker Hub" title="Pull image from Docker Hub" shape="rect" coords="46, 1390, 416, 1445" />
+  <area href="https://docs.zowe.org/stable/user-guide/install-docker-image/#installing-via-direct-download" target="_blank" alt="Download image tarball" title="Download image tarball" shape="rect" coords="495, 1390, 780, 1445" />
+  <area href="https://docs.zowe.org/stable/user-guide/install-docker-image/#loading-an-image-from-tar-file" target="_blank" alt="Load image into Docker" title="Load image into Docker" shape="rect" coords="495, 1465, 780, 1515" />
   
-  <area href="configuring-docker#quick-start-for-the-zowe-runtime-in-docker" target="_blank" alt="Copy sample scripts and instance out of container" title="Copy sample scripts and instance out of container" shape="rect" coords="250, 1605, 610, 1660" />
-  <area href="configuring-docker#using-an-instance-directory-external-to-the-container" target="_blank" alt="Configure external instance" title="Configure external instance" shape="rect" coords="250, 1680, 610, 1735" />
-  <area href="configuring-docker#using-external-certificates" target="_blank" alt="Configure security certificates" title="Configure security certificates" shape="rect" coords="250, 1755, 610, 1810" />
+  <area href="https://docs.zowe.org/stable/user-guide/configuring-docker/#quick-start-for-the-zowe-runtime-in-docker" target="_blank" alt="Copy sample scripts and instance out of container" title="Copy sample scripts and instance out of container" shape="rect" coords="250, 1605, 610, 1660" />
+  <area href="https://docs.zowe.org/stable/user-guide/configuring-docker/#using-an-instance-directory-external-to-the-zowe-container" target="_blank" alt="Configure external instance" title="Configure external instance" shape="rect" coords="250, 1680, 610, 1735" />
+  <area href="https://docs.zowe.org/stable/user-guide/configuring-docker/#using-external-certificates" target="_blank" alt="Configure security certificates" title="Configure security certificates" shape="rect" coords="250, 1755, 610, 1810" />
 
 </map>
 

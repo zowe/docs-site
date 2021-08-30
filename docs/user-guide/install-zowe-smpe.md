@@ -243,10 +243,10 @@ Zowe libraries can reside on all supported DASD types.
 
 Library Type | Total Space Required in 3390 Trks | Description
 ---|---|---
-Target |30 Tracks	| /
-Distribution | 12030 Tracks	| /
-File System(s) | 9000 Tracks | /
-Web Download | 26111 Tracks | These are temporary data sets, which can be removed after the SMP/E install.
+Target |45 Tracks	| /
+Distribution | 12045 Tracks	| /
+File System(s) | 21000 Tracks | /
+Web Download | 38666 Tracks | These are temporary data sets, which can be removed after the SMP/E install.
 
 **Notes:**
 
