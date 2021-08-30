@@ -15,11 +15,14 @@ The service can define what WebSocket services are exposed using Eureka metadata
                             gatewayUrl: "ws/v1"
                             serviceUrl: /discoverableclient/ws
 
-These metadata allow to map the requests `wss://gatewayHost:port/ws/v1/serviceId/path` to `ws://serviceHost:port/discoverableclient/ws/path`,
+These metadata make it possible for requests from `wss://gatewayHost:port/ws/v1/serviceId/path` to map to `ws://serviceHost:port/discoverableclient/ws/path`,
 where:
 
-* `serviceId` is the service ID of the service
-* `path` is the remaining path segment in the URL.
+* **`serviceId`**
+  is the service ID of the service
+  
+* **`path`**
+  is the remaining path segment in the URL.
 
 ## Security and Authentication
 
@@ -28,8 +31,8 @@ The API Gateway also supports basic authentication via WebSocket.
 
 ## High availability
 
-In the high availability scenario, the API Gateway allows to open a new Websocket session by leveraging the load balancing mechanism. 
-Therefore, even if an instance of the service which implements WebSocket is taken off,
+In the high availability scenario, the API Gateway makes it possible to open a new Websocket session by leveraging the load balancing mechanism. 
+As such, even if an instance of the service which implements WebSocket is taken off,
 the communication between the client and the server can be handled by the API Gateway by propagating the session to the alive instance.
 
 ## Diagnostics 
@@ -38,4 +41,4 @@ The list of active routed WebSocket sessions is available at the Actuator endpoi
 
 ## Limitations
 
-Different HTTP status code errors may result. The WebSocket session starts before the session between the Gateway and the service starts. When a failure occurs when connecting to a service, the WebSocket session terminates with a WebSocket close code and the reason for the failure rather than an HTTP error code.
+Different HTTP status code errors may result. The WebSocket session starts before the session between the Gateway and the service starts. When a failure occurs when connecting to a service, the WebSocket session terminates with a WebSocket close code anda description of the failure rather than an HTTP error code.
