@@ -87,19 +87,22 @@ You can now try out the [technical preview features](cli-development-roadmap-nex
    ```
    zowe plugins install zowe plugins install cics-for-zowe-cli.tgz db2-for-zowe-cli.tgz zos-ftp-for-zowe-cli.tgz  ims-for-zowe-cli.tgz mq-for-zowe-cli.tgz
    ```
-7. If you have the Secure Credential Store plug-in installed, uninstall it now to avoid unexpected behavior:
 
-    ```
-    zowe plugins uninstall @zowe/secure-credential-store-for-zowe-cli
-    ```
+7. **(Optional)** To use [daemon mode](cli-using-daemon-mode.md), unzip the zowex .tgz file and place the zowex (or zowex.exe) file into a directory which occurs on your PATH earlier than the directory containing the NodeJS zowe command.
 
-    **Note:** If you have a previous instance of Zowe CLI installed, your current configuration files are ignored if zowe.config.json is found globally, at the project level, or up the directory structure.
+9. If you have the Secure Credential Store plug-in installed, uninstall it now to avoid unexpected behavior:
 
-8. Save the contents of the `/profiles` directory to another location on your computer so that you can reference or restore the profiles later.
+   ```
+   zowe plugins uninstall @zowe/secure-credential-store-for-zowe-cli
+   ```
+
+   **Note:** If you have a previous instance of Zowe CLI installed, your current configuration files are ignored if zowe.config.json is found globally, at the project level, or up the directory structure.
+
+10. Save the contents of the `/profiles` directory to another location on your computer so that you can reference or restore the profiles later.
 
      **Important!** Prior to deleting the contents of the `/profiles` directory, take note of any mainframe service details that you need.
 
-9. Delete the following files from your local `.zowe/` directory:
+11. Delete the following files from your local `.zowe/` directory:
    - `.zowe/settings/imperative.json`
    - `.zowe/profiles`
 
