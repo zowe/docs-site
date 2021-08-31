@@ -200,6 +200,7 @@ module.exports = {
         "extend/extend-apiml/api-mediation-security",
         "extend/extend-apiml/api-mediation-routing",
         "extend/extend-apiml/api-mediation-passtickets",
+        "extend/extend-apiml/custom-metadata",
         {
           type: "category",
           label: "Caching service",
