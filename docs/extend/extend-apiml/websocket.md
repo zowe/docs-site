@@ -41,4 +41,4 @@ The list of active routed WebSocket sessions is available at the Actuator endpoi
 
 ## Limitations
 
-Different HTTP status code errors may result. The WebSocket session starts before the session between the Gateway and the service starts. When a failure occurs when connecting to a service, the WebSocket session terminates with a WebSocket close code anda description of the failure rather than an HTTP error code.
+Different HTTP status code errors may result. The WebSocket session starts before the session between the Gateway and the service starts. When a failure occurs when connecting to a service, the WebSocket session terminates with a WebSocket close code and a description of the failure rather than an HTTP error code.
