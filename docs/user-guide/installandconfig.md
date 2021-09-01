@@ -35,7 +35,13 @@ The following information is required during the installation process. Software 
    
      In order for above started tasks to run correctly, security manager configuration needs to be performed.  This is documented in [Configuring the z/OS system for Zowe](configure-zos-system.md) and a sample JCL member `ZWESECUR` is shipped with Zowe that contains commands for RACF, TopSecret, and ACF2 security managers.  
 
-**Note:** To start the API Mediation Layer as a standalone component, see [API Mediation Layer as a standalone component](api-mediation-standalone.md).
+  **Notes:**
+  
+  - To start the API Mediation Layer as a standalone component, see [API Mediation Layer as a standalone component](api-mediation-standalone.md).
+  
+  - If you plan to use API ML with basic authentication and JSON web token authentication, you need to run only `ZWESVSTC`. No need to run `ZWESISTC` and `ZWESASTC`.
+  
+  - If you plan to use API ML with x509 client-side certificate authentication, you need to run `ZWESISTC` and `ZWESVSTC`.
 
 ## Topology of the Zowe z/OS launch process
 
