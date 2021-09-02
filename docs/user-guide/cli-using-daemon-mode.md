@@ -20,7 +20,7 @@ To download and install the zowex native executable from the Zowe Github reposit
 2. Under the **Release** section, click **Native Client Release**.
    The Download page is displayed.
 3. Click the link to download the executable (.tgz file) for your operating system.
-4. Unzip the zowex .tgz file  and place the zowex (or zowex.exe) file into a directory which occurs on your PATH earlier than the directory containing the NodeJS zowe command.
+4. Unzip the zowex .tgz file and place the zowex (or zowex.exe) file into a directory which occurs on your PATH earlier than the directory containing the NodeJS zowe command.
 
 
 ## Starting Zowe in daemon mode
