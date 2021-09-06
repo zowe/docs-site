@@ -79,3 +79,15 @@
     
    When the property `customMetadata.apiml.lb.type` is set to `authentication`, the user can also define the expiration time for the selected instance information that is cached. This property aims to prevent any discrepancy which might occur if the required target server is no longer available. The default value is 8 hours.   
 
+* **customMetadata.apiml.response.compress**
+
+    When this parameter is set to `true`, API ML will compress content for all responses from this services using GZIP. API ML will also add the `Content-Encoding` header with value `gzip` to responses.
+
+* **customMetadata.apiml.response.compressRoutes**
+
+    When the customMetadata.apiml.response.compress parameter is set to `true`, this parameter allows the services to further limit the compressed routes. The parameter accepts [ant style](https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/util/AntPathMatcher.html) routes deliminated by `,` . The expectation is to provide the absolute paths. 
+
+    **Examples** 
+
+    /service/** - Compress all paths starting with /service/
+    /service/api/v1/compress,/service/api/v1/custom-compress - Compress the specific two routes. 
