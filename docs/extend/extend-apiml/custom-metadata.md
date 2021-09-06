@@ -85,9 +85,10 @@
 
 * **customMetadata.apiml.response.compressRoutes**
 
-    When the customMetadata.apiml.response.compress parameter is set to `true`, this parameter allows the services to further limit the compressed routes. The parameter accepts [ant style](https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/util/AntPathMatcher.html) routes deliminated by `,` . The expectation is to provide the absolute paths. 
+    When the customMetadata.apiml.response.compress parameter is set to `true`, this parameter allows the services to further limit the compressed routes. The parameter accepts [ant style](https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/util/AntPathMatcher.html) routes deliminated by `,` . The expectation is to provide the absolute paths. In case relative paths are provided the starting / will be added. If you don't care about the beginning of the pattern, use **/{pathYouAreInterestedIn}
 
     **Examples** 
 
     /service/** - Compress all paths starting with /service/
     /service/api/v1/compress,/service/api/v1/custom-compress - Compress the specific two routes. 
+    /\*\*/compress/\*\* - Compress all paths that contain compress as a specific path.
