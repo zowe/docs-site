@@ -28,3 +28,7 @@
     
     When this parameter is set to `true`, CORS is enabled on the service level for all the service routes. 
     For more information, see this article about [Cross-Origin Resource Sharing (CORS)](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS).
+
+* **customMetadata.apiml.response.compress**
+
+    When this parameter is set to `true`, API ML will compress content for all responses from this services using GZIP. API ML will also add the `Content-Encoding` header with value `gzip` to responses.
