@@ -44,8 +44,14 @@ module.exports = {
         },
         {
           type: "doc",
-          label: "User Guide",
-          docId: "user-guide/installandconfig",
+          label: "Setup",
+          docId: "user-guide/install-zos",
+          position: "left",
+        },
+        {
+          type: "doc",
+          label: "Use",
+          docId: "user-guide/zowe-getting-started-tutorial",
           position: "left",
         },
         {

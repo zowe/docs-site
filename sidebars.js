@@ -42,61 +42,99 @@ module.exports = {
     },
     "getting-started/zowe-resources",
   ],
-  "user-guide": [
-    {
-      type: "category",
-      label: "Planning and preparing the installation",
-      items: [
-        "user-guide/installandconfig",
-        "user-guide/systemrequirements-zos",
-        "user-guide/install-nodejs-zos",
-        "user-guide/systemrequirements-zosmf",
-        "user-guide/systemrequirements-zosmf-lite",
-        "user-guide/configure-uss",
-      ],
-    },
+
+  "setup": [
+    "user-guide/install-overview",
     {
       type: "category",
       label: "Installing Zowe z/OS components",
       items: [
         "user-guide/install-zos",
-        "user-guide/install-zowe-zos-convenience-build",
-        "user-guide/install-zowe-smpe",
-        "user-guide/install-zowe-smpe-zosmf-workflow",
-        "user-guide/api-mediation-standalone",
-        "user-guide/configure-zos-system",
-        "user-guide/configure-certificates",
-        "user-guide/configure-certificates-keystore",
-        "user-guide/configure-certificates-keyring",
-        "user-guide/configure-xmem-server",
-        "user-guide/configure-instance-directory",
-        "user-guide/configure-zowe-server",
-        "user-guide/configure-zowe-zosmf-workflow",
+        {
+          type: "category",
+          label: "Planning the installation",
+          items: [
+            "user-guide/installandconfig",     
+            "user-guide/configure-uss",
+          ],
+        },
+        {
+          type: "category",
+          label: "System requirements",
+          items: [
+            "user-guide/systemrequirements-zos",
+            "user-guide/install-nodejs-zos",
+            "user-guide/systemrequirements-zosmf",
+            "user-guide/systemrequirements-zosmf-lite",
+          ],
+        },
+        {
+          type: "category",
+          label: "Installing",
+          items: [
+            "user-guide/install-zowe-zos-convenience-build",
+            {
+            type: "category",
+            label: "Installing Zowe SMP/E build",
+            items: [
+              "user-guide/install-zowe-smpe",
+              "user-guide/install-zowe-smpe-zosmf-workflow",
+              ],
+            },
+            {
+              type: "category",
+              label: "Installing Zowe Docker Bundle",
+              items: [
+                "user-guide/install-docker",
+                "user-guide/install-docker-image",
+                "user-guide/configuring-docker",
+              ],
+            },
+          ],
+        }, 
+        {
+          type: "category",
+          label: "Configuring",
+          items: [
+            {
+              type: "category",
+              label: "Configuring and starting Zowe with script",
+              items: [
+                "user-guide/configure-zos-system",
+                {
+                  type: "category",
+                  label: "Configuring certificates",
+                  items: [
+                    "user-guide/configure-certificates",
+                    "user-guide/configure-certificates-keystore",
+                    "user-guide/configure-certificates-keyring",
+                  ],
+                },
+                "user-guide/configure-xmem-server",
+                "user-guide/configure-instance-directory",
+                "user-guide/configure-zowe-server",
+                "user-guide/api-mediation-standalone",
+                "user-guide/configure-auxiliary-address-space",
+              ],
+            },
+            "user-guide/configure-zowe-zosmf-workflow",
+          ],
+        },
+        {
+          type: "category",
+          label: "High Availability",
+          items: [
+            "user-guide/install-ha-sysplex",
+            "user-guide/configure-sysplex",
+            "user-guide/systemrequirements-zosmf-ha",
+            "user-guide/configure-caching-service-ha",
+            "user-guide/configure-zowe-ha-server",
+          ],
+        }, 
         "user-guide/verify-zowe-runtime-install",
-        "user-guide/configure-auxiliary-address-space",
-        "user-guide/upgrade-zos-system",
         "user-guide/stop-zowe-zos",
-        "user-guide/zowe-zos-uninstall",
-      ],
-    },
-    {
-      type: "category",
-      label: "Installing Zowe Docker Bundle",
-      items: [
-        "user-guide/install-docker",
-        "user-guide/install-docker-image",
-        "user-guide/configuring-docker",
-      ],
-    },
-    {
-      type: "category",
-      label: "Zowe High Availability",
-      items: [
-        "user-guide/install-ha-sysplex",
-        "user-guide/configure-sysplex",
-        "user-guide/systemrequirements-zosmf-ha",
-        "user-guide/configure-caching-service-ha",
-        "user-guide/configure-zowe-ha-server",
+        "user-guide/upgrade-zos-system",
+        "user-guide/zowe-zos-uninstall",       
       ],
     },
     {
@@ -112,6 +150,14 @@ module.exports = {
     },
     {
       type: "category",
+      label: "Installing Zowe Explorer",
+      items: [
+        "user-guide/ze-install",
+        "user-guide/ze-profiles",
+      ],
+    },
+    {
+      type: "category",
       label: "Advanced Zowe configuration",
       items: [
         "user-guide/mvd-configuration",
@@ -121,7 +167,9 @@ module.exports = {
         "user-guide/api-mediation/api-mediation-internal-configuration",
       ],
     },
-    {
+  ],
+  "use": [
+     {
       type: "category",
       label: "Using Zowe",
       items: [
@@ -130,12 +178,13 @@ module.exports = {
         "user-guide/mvd-editor",
         "user-guide/api-mediation-api-catalog",
         "user-guide/cli-usingcli",
+        "user-guide/ze-usage",
         "user-guide/sdks-using",
       ],
-    },
+     },
     {
       type: "category",
-      label: "Zowe CLI extensions and plug-ins",
+      label: "Zowe CLI plug-ins",
       items: [
         "user-guide/cli-extending",
         "user-guide/cli-swreqplugins",
@@ -148,18 +197,7 @@ module.exports = {
         "user-guide/cli-scsplugin",
       ],
     },
-    {
-      type: "category",
-      label: "Zowe Explorer",
-      items: [
-        "user-guide/ze-install",
-        "user-guide/ze-profiles",
-        "user-guide/ze-usage",
-        "user-guide/ze-extensions",
-      ],
-    },
   ],
-
   extending: [
     {
       type: "category",
@@ -235,6 +273,7 @@ module.exports = {
         "extend/extend-desktop/mvd-conda",
       ],
     },
+    "extend/extend-ze/ze-extensions",
     "extend/extend-sdks",
     "extend/zowe-conformance-program",
   ],
@@ -330,7 +369,7 @@ module.exports = {
     {
       type: "link",
       label: "Third Party Software Requirements",
-      href: "https://github.com/zowe/docs-site/tree/master/src/tpsr/tpsr-v1.23.x.md",
+      href: "https://github.com/zowe/docs-site/tree/master/tpsr/tpsr-v1.23.x.md",
     },
   ],
 };
