@@ -18,17 +18,17 @@ used, recfm, lrecl, blksz, dsorg, and dsname.</p>
 <li>
 <p><code>pattern</code>		 <em>(string)</em></p>
 <ul>
-<li>The pattern or patterns to match data sets against\. Also known as 'DSLEVEL',
-it is somewhat similar to the concept of a 'glob' (but not identical)\. The
+<li>The pattern or patterns to match data sets against. Also known as 'DSLEVEL', it
+is somewhat similar to the concept of a 'glob' (but not identical). The
 following special sequences can be used in the pattern:
 %: Matches any single character
-\<em>: Matches any number of characters within a data set name qualifier (e\.g\.
-&quot;ibmuser\.j\</em>\.old&quot; matches &quot;ibmuser\.jcl\.old&quot; but not
-&quot;ibmuser\.jcl\.very\.old&quot;)
-\<em>\</em>: Matches any number of characters within any number of data set name
-qualifiers (e\.g\. &quot;ibmuser\.\<em>\</em>\.old&quot; matches both &quot;ibmuser\.jcl\.old&quot;
-and &quot;ibmuser\.jcl\.very\.old&quot;)
-However, the pattern cannot begin with any of these sequences\.</li>
+*: Matches any number of characters within a data set name qualifier (e.g.
+&quot;ibmuser.j*.old&quot; matches &quot;ibmuser.jcl.old&quot; but not
+&quot;ibmuser.jcl.very.old&quot;)
+**: Matches any number of characters within any number of data set name
+qualifiers (e.g. &quot;ibmuser.**.old&quot; matches both &quot;ibmuser.jcl.old&quot; and
+&quot;ibmuser.jcl.very.old&quot;)
+However, the pattern cannot begin with any of these sequences.</li>
 </ul>
 </li>
 </ul>

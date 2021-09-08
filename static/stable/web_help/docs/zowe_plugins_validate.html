@@ -16,9 +16,31 @@
 <p><code>plugin</code>		 <em>(string)</em></p>
 <ul>
 <li>
-<p>The name of the plug\-in to validate\.
-Validation issues identified for this plug\-in are displayed\.</p>
-<p>If the plug\-in argument is omitted, all installed plug\-ins are validated\.</p>
+<p>The name of the plug-in to validate.
+Validation issues identified for this plug-in are displayed.</p>
+<p>If the plug-in argument is omitted, all installed plug-ins are validated.</p>
+</li>
+</ul>
+</li>
+</ul>
+<h4>Options</h4>
+<ul>
+<li>
+<p><code>--fail-on-error</code>  | <code>--foe</code> <em>(boolean)</em></p>
+<ul>
+<li>
+<p>Enables throwing an error and setting an error code if plugin validation detects
+an error</p>
+<p>Default value: false</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--fail-on-warning</code>  | <code>--fow</code> <em>(boolean)</em></p>
+<ul>
+<li>
+<p>Treat validation warnings as errors. Requires fail-on-error.</p>
+<p>Default value: false</p>
 </li>
 </ul>
 </li>
@@ -35,6 +57,13 @@ Validation issues identified for this plug\-in are displayed\.</p>
 <p>Validate all installed plug-ins:</p>
 <ul>
 <li><code>zowe  plugins validate</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  plugins validate">Copy</button></li>
+</ul>
+</li>
+<li>
+<p>Validate a plug-in named my-plugin, and treat warnings as
+errors:</p>
+<ul>
+<li><code>zowe  plugins validate my-plugin --fail-on-warning</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  plugins validate my-plugin --fail-on-warning">Copy</button></li>
 </ul>
 </li>
 </ul>
