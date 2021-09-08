@@ -9,8 +9,17 @@
 * Copyright Contributors to the Zowe Project.
 *
 */
-// Load polyfill for IE11 support
-var arrayFrom = require("array-from");
+// Array.from polyfill for IE11 support
+function arrayFrom(items) {
+    if (typeof Array.from === "function") {
+        return Array.from(items);
+    }
+    var tempArray = [];
+    for (var i = 0; i < items.length; i++) {
+        tempArray.push(items[i]);
+    }
+    return tempArray;
+}
 var isInIframe = window.location !== window.parent.location;
 var links = arrayFrom(document.getElementsByTagName("a"));
 // Process all <a> tags on page
@@ -49,7 +58,7 @@ function setTooltip(btn, message) {
     }, 1000);
 }
 // Enable clipboard access for copy buttons
-var clipboard = new (require("clipboard"))(".btn-copy");
+var clipboard = new ClipboardJS(".btn-copy");
 clipboard.on("success", function (e) { return setTooltip(e.trigger, "Copied!"); });
 clipboard.on("error", function (e) { return setTooltip(e.trigger, "Failed!"); });
 /**

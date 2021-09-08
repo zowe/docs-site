@@ -7,10 +7,12 @@
 <link rel="stylesheet" href="../css/docs.css">
 <article class="markdown-body">
 <h2><a href="zowe.html">zowe</a> › <a href="zowe_zos-ftp.html">zos-ftp</a> › <a href="zowe_zos-ftp_list.html">list</a> › <a href="zowe_zos-ftp_list_uss-files.html">uss-files</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
-<p>List USS files and subdirectories in a directory.
-The following values can be used with the --response-format-filter (--rff)
-argument todisplay more data from the data sets:name, size, owner, group, and
-permissions</p>
+<p>List USS files and subdirectories in a directory. Optional file name pattern
+like &quot;prefix*&quot;, &quot;*suffix&quot;, or &quot;prefix*suffix&quot; can be specified at the end of
+directory. See EXAMPLES section.</p>
+<p>The following values can be used with the --response-format-filter (--rff)
+argument to display more data from the data sets: name, size, owner, group, and
+permissions.</p>
 <h4>Usage</h4>
 <p>zowe  zos-ftp list uss-files &lt;directory&gt; [options]</p>
 <h4>Positional Arguments</h4>
@@ -18,7 +20,7 @@ permissions</p>
 <li>
 <p><code>directory</code>		 <em>(string)</em></p>
 <ul>
-<li>The USS directory to list files in</li>
+<li>The USS directory to list files in, or the directory with file name pattern</li>
 </ul>
 </li>
 </ul>
@@ -171,6 +173,13 @@ in the output.</li>
 <p>List USS files in the directory &quot;/u/users/ibmuser/&quot;:</p>
 <ul>
 <li><code>zowe  zos-ftp list uss-files &quot;/u/users/ibmuser&quot;</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  zos-ftp list uss-files &quot;/u/users/ibmuser&quot;">Copy</button></li>
+</ul>
+</li>
+<li>
+<p>List USS files with suffix of &quot;.txt&quot; in the directory
+&quot;/u/users/ibmuser/&quot;:</p>
+<ul>
+<li><code>zowe  zos-ftp list uss-files &quot;/u/users/ibmuser/*.txt&quot;</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  zos-ftp list uss-files &quot;/u/users/ibmuser/*.txt&quot;">Copy</button></li>
 </ul>
 </li>
 <li>
