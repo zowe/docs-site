@@ -13,6 +13,7 @@ Follow the procedures in the following sections to customize Gateway parameters 
 
   * [Prefer IP Address for API Layer services](#prefer-ip-address-for-api-layer-services)
   * [SAF as an Authentication provider](#saf-as-an-authentication-provider)
+  * [Enable Jwt token refresh endpoint](#enable-jwt-token-refresh-endpoint)
   * [Gateway retry policy](#gateway-retry-policy)
   * [Gateway client certificate authentication](#gateway-client-certificate-authentication)
   * [Gateway timeouts](#gateway-timeouts)
@@ -51,6 +52,25 @@ the following procedure to switch to SAF.
 3. Restart Zowe&trade.
 
 Authentication requests now utilize SAF as the authentication provider. API ML can run without z/OSMF present on the system. 
+
+## Enable Jwt token refresh endpoint
+
+Enable the `/gateway/api/v1/auth/refresh` endpoint to exchange a valid JWT token for a new token with a new expiration date. Call the endpoint with a valid JWT token and trusted client certificate. In case of z/OSMF authentication provider, enable API Mediation Layer for passticket generation and configure z/OSMF APPLID. [Configure Passtickets](../../extend/extend-apiml/api-mediation-passtickets.md)
+
+**Follow these steps:**
+
+1. Open the file `<Zowe instance directory>/instance.env`.
+3. Configure the following properties:
+
+    * **APIML_SECURITY_ALLOWTOKENREFRESH=true**
+
+      Add this property to enable the refresh endpoint.
+
+    * **APIML_SECURITY_ZOSMF_APPLID**
+
+      If you use z/OSMF as an authentication provider, provide a valid `APPLID`. The API ML generates a passticket for the specified `APPLID` and subsequently uses this passticket to authenticate to z/OSMF. The default value in the installation of z/OSMF is `IZUDFLT`.
+
+3. Restart Zowe.
 
 ### Change password with SAF provider
 

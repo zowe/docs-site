@@ -41,8 +41,27 @@ The `lib` directory is where router-type dataservices are loaded by use in the Z
 
 The `web` directory is where the server serves static content for an application plug-in that includes the *webContent* attribute in its definition. Typically, this directory contains the output of a webpack build. Anything you place in this directory can be accessed by a client, so only include content that is intended to be consumed by clients.
 
-### Packaging applications as compressed files
+#### Packaging applications as compressed files
 Application plug-in files can be served to browsers as compressed files in brotli (.br) or gzip (.gz) format. The file must be below the application's `/web` directory, and the browser must support the compression method. If there are multiple compressed files in the `/web` directory, the Zowe Application Server and browser perform runtime negotiation to decide which file to use.
+
+### Default user configuration
+[Configuration Dataservice](https://github.com/zowe/zlux/wiki/Configuration-Dataservice) default settings for users can be packaged within a plugin.  
+This is done by putting content within the `/config/storageDefaults` folder, and more on that subject can be [found here](https://github.com/zowe/zlux/wiki/Configuration-Dataservice#packaging-defaults)
+
+### App-to-App Communication
+App-to-App communication behaviors can be statically defined or dynamically created at runtime. Static definitions help as a form of documentation and to be able to depend upon them, so it is recommended that these be packaged with a plugin if you wish other's to be able to use App-to-App communication on your App.  
+[This page describes the subject in more detail](https://github.com/zowe/zlux/wiki/App-to-App-Communication#saved-on-system).  
+In summary, App-to-App Actions and Recognizers can be stored within an App's `/config/actions` and `/config/recognizers` folders, respectively, where the filenames much match the identifiers of Apps.
+
+### Documentation
+In order for Zowe servers to pick up documentation to present to UIs, they must be in a uniform place.
+
+The **/doc** folder of any Plugin can contain at its root any READMEs or documents that an administrator or developer may care about when working with a Plugin for the first time.
+
+The **/doc/swagger** folder on the other hand, will be used to store .yaml extension Swagger 2.0 files that document the APIs of a Plugin's dataservices if they exist.
+
+Other folders may exist, such as **/doc/ui** to document help behavior that may be shown in a UI, but is not implemented at this time.
+
 
 ## Location of plug-in files
 
@@ -123,7 +142,22 @@ A string that specifies the type of plug-in. The type of plug-in determines the 
 
 -  **library**: Defines the plug-in as a library that serves static content at a known URL space.
 
--  **node authentication**: Authentication and Authorization handlers for the Zowe Application Server.
+-  **nodeAuthentication**: Authentication and Authorization handlers for the Zowe Application Server.
+
+**requirements** (optional)
+
+Describes the environmental requirements that a plugin may have. 
+
+-  **components**: Houses the list of any component requirements for that plugin.  
+
+-    **id**: Defines the component requirement. This is a growing list of support: `app-server`, `zss`
+
+-      **os**: Describes the set of supported OS' that component should run on.
+
+-      **cpu**: Describes the CPU architecture that component should run on.
+
+-      **endpoints**: Describes any endpoints that are, or aren't, required from this component.
+
 
 ### Application attributes
 
@@ -151,7 +185,9 @@ The following attributes determine some of this behavior:
 
 States the type of web framework that is used, which determines the other attributes that are valid in *webContent*.
 
--  **angular2**: Defines the application as having an Angular (2+) web framework component. This is the standard for a "native" framework Zowe application.
+-  **angular2**: (or **angular**) Defines the application as having an Angular (2+) web framework component. This is the standard for a "native" framework Zowe application.
+
+-  **react**: Defines this App as having a React web framework component.
 
 -  **iframe**: Defines the application as being external to the native Zowe web application environment, but instead embedded in an iframe wrapper.
 
@@ -181,3 +217,19 @@ Specify *startingPage* as a relative path rather than an absolute path because t
 
 Within an IFrame, the application plug-in still has access to the globals that are used by Zowe for application-to-application communication; simply access *window.parent.ZoweZLUX*.
 
+### Plugin Definition Schema Revision Notes
+The initial Plugin Definition Schema is version 1.0.0, since then, the following updates have been made
+
+* 1.0.1
+    * Added `webContent.hasComponents` which instructs the App code as to if it needs to load Zowe App Component logic from a `components.js` file, rather than the `main.js` webpack file, for non-iframe Apps.
+    * Added `os` as an object and `os.platform`, and `os.type` as arrays of strings to be able to know if a Plugin should be loaded dependent upon the host OS.
+* 1.1.0
+    * Added "binary" as a property of configuration dataservice resources.
+* 1.15.0
+    * Added "pluginReqs" as an optional section to state plugin environmental & other requirements.
+
+### Application Dataservices
+See [Dataservices](https://github.com/zowe/zlux/wiki/ZLUX-Dataservices)
+
+### Application Configuration Data
+The App server has a component for managing an App's configuration & user data, organized by scope such as user, group, and server instance. For more information, see [Configuration Dataservice Documentation.](https://github.com/zowe/zlux/wiki/Configuration-Dataservice)

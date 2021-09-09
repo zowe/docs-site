@@ -1,4 +1,4 @@
-const LATEST_VERSION = "v1.23.x";
+const LATEST_VERSION = "v1.24.x";
 const versionsArray = require("./versions.json");
 
 module.exports = {
@@ -44,8 +44,14 @@ module.exports = {
         },
         {
           type: "doc",
-          label: "User Guide",
-          docId: "user-guide/installandconfig",
+          label: "Setup",
+          docId: "user-guide/install-zos",
+          position: "left",
+        },
+        {
+          type: "doc",
+          label: "Use",
+          docId: "user-guide/zowe-getting-started-tutorial",
           position: "left",
         },
         {
@@ -202,30 +208,33 @@ module.exports = {
               path: "stable",
               label: `${LATEST_VERSION}` + " LTS",
             },
-            "v1.22.x": {
-              label: "v1.22.x LTS",
-            },
-            "v1.21.x": {
-              label: "v1.21.x LTS",
-            },
-            "v1.20.x": {
-              label: "v1.20.x LTS",
-            },
-            "v1.19.x": {
-              label: "v1.19.x LTS",
-            },
-            "v1.18.x": {
-              label: "v1.18.x LTS",
-            },
-            "v1.17.x": {
-              label: "v1.17.x LTS",
-            },
-            "v1.16.x": {
-              label: "v1.16.x LTS",
-            },
-            "v1.15.x": {
-              label: "v1.15.x LTS",
-            },
+            //"v1.23.x": {
+            //  label: "v1.23.x LTS",
+            //},
+            //"v1.22.x": {
+            //  label: "v1.22.x LTS",
+            //},
+            //"v1.21.x": {
+            //  label: "v1.21.x LTS",
+            //},
+            //"v1.20.x": {
+            //  label: "v1.20.x LTS",
+            //},
+            //"v1.19.x": {
+            //  label: "v1.19.x LTS",
+            //},
+            //"v1.18.x": {
+            //  label: "v1.18.x LTS",
+            //},
+            //"v1.17.x": {
+            //  label: "v1.17.x LTS",
+            //},
+            //"v1.16.x": {
+            //  label: "v1.16.x LTS",
+            //},
+            //"v1.15.x": {
+            //  label: "v1.15.x LTS",
+            //},
           },
         },
         theme: {

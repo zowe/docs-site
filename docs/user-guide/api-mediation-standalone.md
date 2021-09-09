@@ -1,4 +1,4 @@
-# API Mediation Layer as a standalone component
+# Start API Mediation Layer as a standalone component
 
 As a Zowe user, follow the procedure in this article to start the API Mediation Layer independently of other Zowe components. 
 By default, the Gateway, Zowe System Services, and Virtual Desktop start when
