@@ -484,12 +484,11 @@ __Expected Return Codes and Messages:__ You will receive a return code of 0 if t
 
 Upload the AZWE001.readme.txt file in text format and the AZWE001.pax.Z file in binary format from your workstation to the z/OS UNIX file system. The instructions in this section are also in the AZWE001.readme.txt file that you downloaded.
 
-**Note:** Ensure you download the pax file in a different file system than where you put Zowe runtime.
+**Note:** Ensure you download the pax file in a different file system than where you put Zowe runtime. 
 
-<!--UX study comment: Nowhere does it say that the installer needs an open port on the mainframe to transfer the files. They may need to consult with a network expert what protocol to use (sftp, scp, etc.) on which port, and they may need to be granted access to do this. 
-Suggestion: Add information about potentially opening a port, what protocol to use and and the fact that you may need to be granted access by the network security admin.-->
+There are many ways to transfer the files or make them available to the z/OS system where the package will be installed. In the following sample dialog, we use FTP from a Microsoft Windows command line to do the transfer. This assumes that the z/OS host is configured as an FTP host/server and that the workstation is an FTP client.  Commands or other information entered by the user are in bold, and the following values are assumed. 
 
-There are many ways to transfer the files or make them available to the z/OS system where the package will be installed. In the following sample dialog, we use FTP from a Microsoft Windows command line to do the transfer. This assumes that the z/OS host is configured as an FTP host/server and that the workstation is an FTP client.  Commands or other information entered by the user are in bold, and the following values are assumed.
+If you are not sure which protocol or port to use to transfer the files or any access that might be needed, you may need to consult with the network administrator. 
 
 User enters: | Values 
 ---|---
