@@ -501,8 +501,7 @@ d: | Location of the downloaded files
 
 **Important!**  The AZWE001.pax.Z file must be uploaded to the z/OS driving system in binary format, or the subsequent UNPAX step will fail.
 
-<!--Issue: There is nothing saying that the Z file may take a long time to transfer to the mainframe. 
-Suggestion: Add a sentence that indicates that sending AZWE001.pax.Z (binary) to the mainframe takes a long time (up to 30 mins). -->
+This step of tranferring the files can take a long time to run, depending on the capacity of your system, and on what other jobs are running.
 
 Sample FTP upload scenario:
 
