@@ -240,6 +240,29 @@ The following parameters define service information for the API Catalog:
     
     When this parameter is set to `true`, CORS is enabled on the service level for all service routes. 
     The same parameter can also be set on the service level, by providing the parameter as `customMetadata` as shown in the [custom metadata.md](custom-metadata.md).
+
+* **apiml.response.compress**
+
+    When this parameter is set to `true`, API ML compresses content for all responses from these services using GZIP. API ML also adds the `Content-Encoding` header with the value `gzip` to responses.
+
+* **customMetadata.apiml.response.compressRoutes**
+
+    When the `customMetadata.apiml.response.compress` parameter is set to `true`, this parameter allows the services to further limit the compressed routes. The parameter accepts [ant style](https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/util/AntPathMatcher.html) routes deliminated by `,` . The expectation is to provide the absolute paths. If relative paths are provided, the starting `/` is added. If the beginning of the pattern does not require specification, use `**/{pathYouAreInterestedIn}`
+
+    **Examples** 
+
+    * `/service/**`
+    
+      Compresses all paths starting with `/service/`
+
+    * `/service/api/v1/compress,/service/api/v1/custom-compress`
+    
+      Compresses the specific two routes
+
+    * `/\*\*/compress/\*\*`
+    
+      Compresses all paths that contain `compress` as a specific path
+
       
 #### Routing parameters
 Routing parameters are grouped under the prefix: `apiml.routes`
