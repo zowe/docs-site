@@ -488,6 +488,9 @@ Upload the AZWE001.readme.txt file in text format and the AZWE001.pax.Z file in 
 
 There are many ways to transfer the files or make them available to the z/OS system where the package will be installed. In the following sample dialog, we use FTP from a Microsoft Windows command line to do the transfer. This assumes that the z/OS host is configured as an FTP host/server and that the workstation is an FTP client.  Commands or other information entered by the user are in bold, and the following values are assumed. 
 
+<!--UX study comment: Nowhere does it say that the installer needs an open port on the mainframe to transfer the files. They may need to consult with a network expert what protocol to use (sftp, scp, etc.) on which port, and they may need to be granted access to do this. 
+Suggestion: Add information about potentially opening a port, what protocol to use and and the fact that you may need to be granted access by the network security admin.-->
+
 If you are not sure which protocol or port to use to transfer the files or any access that might be needed, you may need to consult with the network administrator. 
 
 User enters: | Values 
@@ -661,9 +664,6 @@ The following sample installation jobs are provided in `hlq.ZOWE.AZWE001.F1`, or
 <!--Observer notes 1: If you do not create a new filesystem for the runtime USS components of API ML separate to the install USS subdirectory (an optional step), you need to create the subdirectories in PuTTY for the runtime directory.
 Suggestions: ZWE4ZFS is optional and it should be indicated in the doc and if you don't run it, you need to run the following Unix commands in USS cd [installdir] mkdir -p usr/lpp/zowe in order to create the required directory. -->
 
-<!--Observer notes 2: Reinforce that we need to APPLY the maintenance to API ML not just APPLY CHECK.
-Suggestion: You need to run ZWE7APLY and ZWE8ACPT twice with and without CHECK. This information is only in JCL and needs to be in the doc as well.-->
-
 Job Name | Job Type | Description | RELFILE
 ---|---|---|---
 ZWE1SMPE | SMP/E | Sample job to create an SMP/E environment (optional) | ZOWE.AZWE001.F1
@@ -775,7 +775,7 @@ __Expected Return Codes and Messages:__ You will receive a return code of 0 if t
 Edit and submit sample job ZWE3ALOC to allocate the SMP/E target and distribution libraries for Zowe. Consult the instructions in the sample job for more information.
 
 <!--Issue: DLIB and TARGET do not default - maybe provide sensible defaults
-Suggestion: You would hope that the installer knows SMP/E, but adding a suggestion of ZWET0 and ZWED0 for the target and distribution libraries does no harm. -->
+Suggestion: You would hope that the installer knows SMP/E, but adding a suggestion of ZWET0 and ZWED0 for the target and distribution libraries does no harm.-->
 
 __Expected Return Codes and Messages:__ You will receive a return code of 0 if this job runs correctly.
 
@@ -882,7 +882,11 @@ In this step, you run the sample job ZWE7APLY to apply Zowe. This step can take 
 
 2. After you take actions that are indicated by the APPLY CHECK, remove the CHECK operand and run the job again to perform the APPLY.
 
-**Note:** The GROUPEXTENDED operand indicates the SMP/E applies all requisite SYSMODs. The requisite SYSMODS might be applicable to other functions.
+**Notes:** 
+- The GROUPEXTENDED operand indicates the SMP/E applies all requisite SYSMODs. The requisite SYSMODS might be applicable to other functions.
+- If you are installing Zowe API Mediation Layer, you need to follow the preceding steps to run the jobs ZWE7APLY and ZWE8ACPT twice. 
+<!--Observer notes 2: Reinforce that we need to APPLY the maintenance to API ML not just APPLY CHECK.
+Suggestion: You need to run ZWE7APLY and ZWE8ACPT twice with and without CHECK. This information is only in JCL and needs to be in the doc as well.-->
 
 **Expected Return Codes and Messages from APPLY CHECK:** You will receive a return code of 0 if the job runs correctly.
 
