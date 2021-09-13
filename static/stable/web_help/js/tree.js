@@ -16,16 +16,6 @@ var __spreadArrays = (this && this.__spreadArrays) || function () {
             r[k] = a[j];
     return r;
 };
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-// Imports to help Browserify find dependencies
-var jquery_1 = __importDefault(require("jquery"));
-require("bootstrap");
-require("jstree");
-require("url-search-params-polyfill");
-var scrollIntoView = require("scroll-into-view-if-needed");
 // Define global variables
 var urlParams = new URLSearchParams(window.location.search);
 var currentNodeId;
@@ -86,7 +76,7 @@ function permuteSearchStr(searchStr) {
 function updateCurrentNode(newNodeId, goto, expand, force) {
     if (force === void 0) { force = false; }
     if (!force) {
-        if (newNodeId === currentNodeId || !jquery_1.default("#cmd-tree").jstree(true).get_node(newNodeId)) {
+        if (newNodeId === currentNodeId || !$("#cmd-tree").jstree(true).get_node(newNodeId)) {
             // Ignore if node already selected or does not exist
             return;
         }
@@ -96,20 +86,20 @@ function updateCurrentNode(newNodeId, goto, expand, force) {
     if (goto) {
         // Load docs page for node in iframe
         if (currentView === 0) {
-            jquery_1.default("#docs-page").attr("src", "./docs/" + currentNodeId);
+            $("#docs-page").attr("src", "./docs/" + currentNodeId);
         }
         else {
-            jquery_1.default("#docs-page").attr("src", "./docs/all.html#" + nodeIdWithoutExt);
+            $("#docs-page").attr("src", "./docs/all.html#" + nodeIdWithoutExt);
         }
     }
     // Update page title
     document.title = nodeIdWithoutExt.replace(/_/g, " ") + " | " + headerStr + " Docs";
     // Select node in command tree
-    jquery_1.default("#cmd-tree").jstree(true).deselect_all();
-    jquery_1.default("#cmd-tree").jstree(true).select_node(currentNodeId);
+    $("#cmd-tree").jstree(true).deselect_all();
+    $("#cmd-tree").jstree(true).select_node(currentNodeId);
     if (expand) {
         // Expand node in command tree
-        jquery_1.default("#cmd-tree").jstree(true).open_node(currentNodeId);
+        $("#cmd-tree").jstree(true).open_node(currentNodeId);
     }
     // Scroll node into view if needed
     setTimeout(function () {
@@ -142,14 +132,14 @@ function onTreeContextMenu(node) {
         expandAll: {
             label: "Expand All",
             action: function () {
-                jquery_1.default("#cmd-tree").jstree("open_all");
+                $("#cmd-tree").jstree("open_all");
             }
         },
         collapseAll: {
             label: "Collapse All",
             action: function () {
-                jquery_1.default("#cmd-tree").jstree("close_all");
-                jquery_1.default("#cmd-tree").jstree(true).toggle_node(treeNodes[0].id);
+                $("#cmd-tree").jstree("close_all");
+                $("#cmd-tree").jstree(true).toggle_node(treeNodes[0].id);
             }
         }
     };
@@ -193,7 +183,7 @@ function onTreeLoaded() {
         tempNodeId = (cmdToLoad != null) ? cmdToLoad + ".html" : treeNodes[0].id;
     }
     updateCurrentNode(tempNodeId, true, true, true);
-    if (jquery_1.default("#tree-search").val()) {
+    if ($("#tree-search").val()) {
         onSearchTextChanged(true);
     }
 }
@@ -218,8 +208,8 @@ function onSearchTextChanged(noDelay) {
         clearTimeout(searchTimeout);
     }
     searchTimeout = window.setTimeout(function () {
-        var searchStr = (jquery_1.default("#tree-search").val() || "").toString().trim();
-        jquery_1.default("#cmd-tree").jstree(true).search(permuteSearchStr(searchStr));
+        var searchStr = ($("#tree-search").val() || "").toString().trim();
+        $("#cmd-tree").jstree(true).search(permuteSearchStr(searchStr));
         if (!searchStr) {
             updateCurrentNode(currentNodeId, false, false, true);
         }
@@ -238,15 +228,15 @@ function onDocsPageChanged(e) {
  */
 function loadTree() {
     // Set header and footer strings
-    jquery_1.default("#header-text").text(headerStr);
-    jquery_1.default("#footer").text(footerStr);
+    $("#header-text").text(headerStr);
+    $("#footer").text(footerStr);
     // Change active tab if not loading default view
     if (currentView === 1) {
-        jquery_1.default("#tree-view-link").toggleClass("active");
-        jquery_1.default("#flat-view-link").toggleClass("active");
+        $("#tree-view-link").toggleClass("active");
+        $("#flat-view-link").toggleClass("active");
     }
     // Load jsTree
-    jquery_1.default("#cmd-tree").jstree({
+    $("#cmd-tree").jstree({
         core: {
             animation: 0,
             multiple: false,
@@ -266,7 +256,7 @@ function loadTree() {
         .on("ready.jstree refresh.jstree", onTreeLoaded)
         .on("changed.jstree", onTreeSelectionChanged);
     // Connect events to search box and iframe
-    jquery_1.default("#tree-search").on("change keyup mouseup paste", function () { return onSearchTextChanged(); });
+    $("#tree-search").on("change keyup mouseup paste", function () { return onSearchTextChanged(); });
     window.addEventListener("message", onDocsPageChanged, false);
 }
 /**
@@ -274,15 +264,15 @@ function loadTree() {
  * @param splitter - Split.js object
  */
 function toggleTree(splitter) {
-    if (jquery_1.default("#panel-left").is(":visible")) {
-        jquery_1.default("#panel-left").children().hide();
-        jquery_1.default("#panel-left").hide();
+    if ($("#panel-left").is(":visible")) {
+        $("#panel-left").children().hide();
+        $("#panel-left").hide();
         splitter.setSizes([0, 100]);
     }
     else {
         splitter.setSizes([20, 80]);
-        jquery_1.default("#panel-left").show();
-        jquery_1.default("#panel-left").children().show();
+        $("#panel-left").show();
+        $("#panel-left").children().show();
     }
 }
 /**
@@ -294,9 +284,9 @@ function changeView(newMode) {
         return;
     }
     currentView = newMode;
-    jquery_1.default("#tree-view-link").toggleClass("active");
-    jquery_1.default("#flat-view-link").toggleClass("active");
+    $("#tree-view-link").toggleClass("active");
+    $("#flat-view-link").toggleClass("active");
     var newNodes = (currentView === 0) ? treeNodes : flattenNodes(treeNodes);
-    jquery_1.default("#cmd-tree").jstree(true).settings.core.data = newNodes;
-    jquery_1.default("#cmd-tree").jstree(true).refresh(false, true);
+    $("#cmd-tree").jstree(true).settings.core.data = newNodes;
+    $("#cmd-tree").jstree(true).refresh(false, true);
 }
