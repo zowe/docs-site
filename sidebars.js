@@ -50,14 +50,8 @@ module.exports = {
       label: "Installing Zowe z/OS components",
       items: [
         "user-guide/install-zos",
-        {
-          type: "category",
-          label: "Planning the installation",
-          items: [
-            "user-guide/installandconfig",     
-            "user-guide/configure-uss",
-          ],
-        },
+        "user-guide/installandconfig", 
+        "user-guide/configure-uss",
         {
           type: "category",
           label: "System requirements",
@@ -148,17 +142,17 @@ module.exports = {
         "user-guide/cli-uninstall",
       ],
     },
-        {
+    {
       type: "category",
       label: "Installing Zowe CLI @next version",
       items: [
-        "user-guide/cli-development-roadmap",
+        "user-guide/cli-development-roadmap-next",
         "user-guide/cli-install-cli-next",
         "user-guide/cli-using-daemon-mode",
         "user-guide/cli-using-global-profile-configuration",
       ],
     },
-        {
+    {
       type: "category",
       label: "Installing Zowe Explorer",
       items: [
@@ -179,34 +173,34 @@ module.exports = {
     },
   ],
   "use": [
-     {
-      type: "category",
-      label: "Using Zowe",
-      items: [
         "user-guide/zowe-getting-started-tutorial",
-        "user-guide/mvd-using",
-        "user-guide/mvd-editor",
+        {
+          type: "category",
+          label: "Using Zowe Desktop",
+          items: [
+            "user-guide/mvd-using",
+            "user-guide/mvd-editor",
+          ],
+        },
         "user-guide/api-mediation-api-catalog",
         "user-guide/cli-usingcli",
+        {
+          type: "category",
+          label: "Zowe CLI plug-ins",
+          items: [
+            "user-guide/cli-extending",
+            "user-guide/cli-swreqplugins",
+            "user-guide/cli-installplugins",
+            "user-guide/cli-cicsplugin",
+            "user-guide/cli-db2plugin",
+            "user-guide/cli-ftpplugin",
+            "user-guide/cli-imsplugin",
+            "user-guide/cli-mqplugin",
+            "user-guide/cli-scsplugin",
+          ],
+        },
         "user-guide/ze-usage",
         "user-guide/sdks-using",
-      ],
-     },
-    {
-      type: "category",
-      label: "Zowe CLI plug-ins",
-      items: [
-        "user-guide/cli-extending",
-        "user-guide/cli-swreqplugins",
-        "user-guide/cli-installplugins",
-        "user-guide/cli-cicsplugin",
-        "user-guide/cli-db2plugin",
-        "user-guide/cli-ftpplugin",
-        "user-guide/cli-imsplugin",
-        "user-guide/cli-mqplugin",
-        "user-guide/cli-scsplugin",
-      ],
-    },
   ],
   extending: [
     {
