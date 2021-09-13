@@ -148,7 +148,17 @@ module.exports = {
         "user-guide/cli-uninstall",
       ],
     },
-    {
+        {
+      type: "category",
+      label: "Installing Zowe CLI @next version",
+      items: [
+        "user-guide/cli-development-roadmap",
+        "user-guide/cli-install-cli-next",
+        "user-guide/cli-using-daemon-mode",
+        "user-guide/cli-using-global-profile-configuration",
+      ],
+    },
+        {
       type: "category",
       label: "Installing Zowe Explorer",
       items: [
