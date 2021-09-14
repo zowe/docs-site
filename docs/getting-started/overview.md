@@ -8,7 +8,7 @@ meta:
 
 Zowe&trade; is an open source software framework that allows mainframe development and operation teams to securely manage, control, script, and develop on the mainframe. It was created to host technologies that benefit the IBM Z platform for all members of the Z community, including Integrated Software Vendors (ISVs), System Integrators, and z/OS consumers. Like Mac or Windows, Zowe comes with a set of APIs and OS capabilities that applications build on and also includes some applications out of the box. Zowe offers modern interfaces to interact with z/OS and allows you to work with z/OS in a way that is similar to what you experience on cloud platforms today. You can use these interfaces as delivered or through plug-ins and extensions that are created by clients or third-party vendors. Zowe is a project within the Open Mainframe Project.
 
-## Zowe Demo Video
+## Zowe demo video
 
 Watch this [video](https://www.youtube.com/embed/NX20ZMRoTtk) to see a quick demo of Zowe. 
 
@@ -16,9 +16,18 @@ Watch this [video](https://www.youtube.com/embed/NX20ZMRoTtk) to see a quick dem
 
 [Download the deck for this video](/Zowe_introduction_video_deck.pptx) | [Download the script](/Zowe_introduction_video_script.txt)
 
-## Component Overview
+## Component overview
 
 Zowe consists of the following components:
+
+- [Zowe Application Framework](#zowe-application-framework)
+- [API Mediation Layer](#api-mediation-layer)
+- [Zowe CLI](#zowe-cli)
+- [Zowe Explorer](#zowe-explorer)
+- [Zowe Client Software Development Kits SDKs](#zowe-client-software-development-kits-sdks)
+- [Zowe Launcher](#zowe-launcher)
+- [Zowe Mobile - Incubator](#zowe-mobile---incubator)
+- [ZEBRA (Zowe Embedded Browser for RMF/SMF and APIs) - Incubator](#zebra-zowe-embedded-browser-for-rmfsmf-and-apis---incubator)
 
 ### Zowe Application Framework
 
@@ -54,83 +63,6 @@ The Zowe Application Framework consists of the following components:
     Several application-type plug-ins are provided. For more information, see [Using the Zowe Application Framework application plug-ins](../user-guide/mvd-using.md#zowe-desktop-application-plug-ins).
 
 </details>
-
-### z/OS Services
-
-Provides a range of APIs for the management of z/OS JES jobs and MVS data set services.
-
-<details>
-<summary> Learn more </summary>
-
-Zowe provides a z/OS® RESTful web service and deployment architecture for z/OS microservices. Zowe contains the following  core z/OS services:
-
- - **z/OS Datasets services**
-
-    Get a list of data sets, retrieve content from a member, create a data set, and more.
-
- - **z/OS Jobs services**
-
-   Get a list of jobs, get content from a job file output, submit a job from a data set, and more.
-
-You can view the full list of capabilities of the RESTful APIs from the API catalog that displays the Open API Specification for their capabilities.
-
-- These APIs are described by the Open API Specification allowing them to be incorporated to any standard-based REST API developer tool or API management process.
-- These APIs can be exploited by off-platform applications with proper security controls.
-
-As a deployment architecture, the z/OS Services are running as microservices with a Springboot embedded Tomcat stack.
-
-</details>
-
-### Zowe CLI
-Zowe CLI is a command-line interface that lets you interact with the mainframe in a familiar, off-platform format. Zowe CLI helps to increase overall productivity, reduce the learning curve for developing mainframe applications, and exploit the ease-of-use of off-platform tools. Zowe CLI lets you use common tools such as Integrated Development Environments (IDEs), shell commands, bash scripts, and build tools for mainframe development. Though its ecosystem of plug-ins, you can automate actions on systems such as IBM Db2, IBM CICS, and more. It  provides a set of utilities and services for users that want to become efficient in supporting and building z/OS applications quickly.
-
-<details>
-<summary> Learn more </summary>
-
-Zowe CLI provides the following benefits:
-
-  - Enables and encourages developers with limited z/OS expertise to build, modify, and debug z/OS applications.
-  - Fosters the development of new and innovative tools from a computer that can interact with z/OS. Some Zowe extensions are powered by Zowe CLI, for example the [Visual Studio Code Extension for Zowe](../user-guide/ze-install.md).
-  - Ensure that business critical applications running on z/OS can be maintained and supported by existing and generally available software development resources.
-  - Provides a more streamlined way to build software that integrates with z/OS.
-
-**Note:** For information about software requirements, installing, and upgrading Zowe CLI, see
-[Installing Zowe](../user-guide/installandconfig.md).
-
-#### Zowe CLI capabilities
-
-With Zowe CLI, you can interact with z/OS remotely in the following ways:
-
-  - **Interact with mainframe files:**
-    Create, edit, download, and
-    upload mainframe files (data sets) directly from Zowe CLI.
-  - **Submit jobs:**
-    Submit JCL from data sets or local storage, monitor the status, and view and download the output automatically.
-  - **Issue TSO and z/OS console commands:**
-    Issue TSO and console commands to the mainframe directly from Zowe CLI.
-  - **Integrate z/OS actions into scripts:**
-    Build local scripts that accomplish both mainframe and local tasks.
-  - **Produce responses as JSON documents:**
-    Return data in JSON format on request for consumption in other programming languages.
-
-For detailed information about the available functionality in Zowe CLI, see [Zowe CLI Command Groups](../user-guide/cli-usingcli.html#understanding-core-command-groups).
-
-For information about extending the functionality of Zowe CLI by installing plug-ins, see [Extending Zowe CLI](../user-guide/cli-extending.md).
-
-**More Information:**
-
-  - [System requirements for Zowe CLI](../user-guide/systemrequirements-cli.md)
-  - [Installing Zowe CLI](../user-guide/cli-installcli.md)
-
-</details>
-
-### Zowe Client Software Development Kits (SDKs)
-
-The Zowe Client SDKs consist of programmatic APIs that you can use to build client applications or scripts that interact with z/OS. The following SDKs are available:
- - Zowe Node.js Client SDK
- - Zowe Python Client SDK
-
- For more information, see [Using the Zowe SDKs](../user-guide/sdks-using.md).
 
 ### API Mediation Layer
 
@@ -195,11 +127,93 @@ Essential to the API Mediation Layer ecosystem is the API services that expose t
 
 To learn more about the architecture of Zowe, see [Zowe architecture](zowe-architecture.md).
 
+### Zowe CLI
+Zowe CLI is a command-line interface that lets you interact with the mainframe in a familiar, off-platform format. Zowe CLI helps to increase overall productivity, reduce the learning curve for developing mainframe applications, and exploit the ease-of-use of off-platform tools. Zowe CLI lets you use common tools such as Integrated Development Environments (IDEs), shell commands, bash scripts, and build tools for mainframe development. Though its ecosystem of plug-ins, you can automate actions on systems such as IBM Db2, IBM CICS, and more. It  provides a set of utilities and services for users that want to become efficient in supporting and building z/OS applications quickly.
+
+<details>
+<summary> Learn more </summary>
+
+Zowe CLI provides the following benefits:
+
+  - Enables and encourages developers with limited z/OS expertise to build, modify, and debug z/OS applications.
+  - Fosters the development of new and innovative tools from a computer that can interact with z/OS. Some Zowe extensions are powered by Zowe CLI, for example the [Visual Studio Code Extension for Zowe](../user-guide/ze-install.md).
+  - Ensure that business critical applications running on z/OS can be maintained and supported by existing and generally available software development resources.
+  - Provides a more streamlined way to build software that integrates with z/OS.
+
+**Note:** For information about software requirements, installing, and upgrading Zowe CLI, see
+[Installing Zowe](../user-guide/installandconfig.md).
+
+#### Zowe CLI capabilities
+
+With Zowe CLI, you can interact with z/OS remotely in the following ways:
+
+  - **Interact with mainframe files:**
+    Create, edit, download, and
+    upload mainframe files (data sets) directly from Zowe CLI.
+  - **Submit jobs:**
+    Submit JCL from data sets or local storage, monitor the status, and view and download the output automatically.
+  - **Issue TSO and z/OS console commands:**
+    Issue TSO and console commands to the mainframe directly from Zowe CLI.
+  - **Integrate z/OS actions into scripts:**
+    Build local scripts that accomplish both mainframe and local tasks.
+  - **Produce responses as JSON documents:**
+    Return data in JSON format on request for consumption in other programming languages.
+
+For detailed information about the available functionality in Zowe CLI, see [Zowe CLI Command Groups](../user-guide/cli-usingcli.html#understanding-core-command-groups).
+
+For information about extending the functionality of Zowe CLI by installing plug-ins, see [Extending Zowe CLI](../user-guide/cli-extending.md).
+
+**More Information:**
+
+  - [System requirements for Zowe CLI](../user-guide/systemrequirements-cli.md)
+  - [Installing Zowe CLI](../user-guide/cli-installcli.md)
+
+</details>
+
+### Zowe Explorer
+
+Zowe Explorer is a Visual Studio Code extension that modernizes the way developers and system administrators interact with z/OS mainframes. Zowe Explorer lets you interact with data sets, USS files, and jobs that are stored on z/OS. The extension complements your Zowe CLI experience and lets you use authentication services like API Mediation Layer. The extension provides the following benefits:
+
+- Enabling you to create, modify, rename, copy, and upload data sets directly to a z/OS mainframe.
+- Enabling you to create, modify, rename, and upload USS files directly to a z/OS mainframe.
+- Providing a more streamlined way to access data sets, uss files, and jobs.
+- Letting you create, edit, and delete Zowe CLI `zosmf` compatible profiles.
+- Letting you use the Secure Credential Store plug-in to store your credentials securely in the settings.
+- Letting you leverage the API Mediation Layer token-based authentication to access z/OSMF.
+
+For more information, see [Information roadmap for Zowe Explorer](user-roadmap-zowe-explorer.md).
+
+### Zowe Client Software Development Kits (SDKs)
+
+The Zowe Client SDKs consist of programmatic APIs that you can use to build client applications or scripts that interact with z/OS. The following SDKs are available:
+ - Zowe Node.js Client SDK
+ - Zowe Python Client SDK
+
+For more information, see [Using the Zowe SDKs](../user-guide/sdks-using.md).
+
 ### Zowe Launcher
 
 Provides an advanced launcher for Zowe z/OS server components in a high availability configuration. It performs the following operations:
  - Stopping the Zowe server components using the `STOP` (or `P`) operator command
  - Stopping and starting specific server components without restarting the entire Zowe instance using `MODIFY` (or `F`) operator command
+
+### Zowe Mobile - Incubator
+
+Lets you interact with your Zowe instance running on the mainframe from your mobile. 
+
+For more information, see [Information roadmap for Zowe Mobile](user-roadmap-zowe-mobile.md).
+
+### ZEBRA (Zowe Embedded Browser for RMF/SMF and APIs) - Incubator 
+
+Provides re-usable and industry compliant JSON formatted RMF/SMF data records, so that many other ISV SW and users can exploit them using open-source SW for many ways.
+
+For more information, see the [ZEBRA documentation](https://github.com/zowe/zebra/tree/main/Documentation) or visit the [ZEBRA test/trial site](https://zebra.talktothemainframe.com/).
+
+### Zowe Workflow wiZard - Incubator
+
+The Workflow wiZard delivers a workflow builder which simplifies the creation of z/OSMF workflows. The workflow builder reads a library of templates along with a set of properties, determines which steps are necessary based upon rules that use property values, determines a suitable order to satisfy the workflow engine requirements, inserts variable definitions when required, and outputs workflow XML.
+
+For more information, see the [Workflow Template Reference](https://github.com/zowe/workflow-wizard/raw/main/doc/Workflow%20Templates%20Reference.docx).
 
 ## Zowe Third-Party Software Requirements and Bill of Materials
 
