@@ -1,4 +1,4 @@
-# Install the Zowe CLI @next version <!-- omit in toc -->
+# Install the Zowe CLI @next version
 
 <Badge text="Technical Preview"/> The Zowe CLI @next release is a technical preview. Technical previews are for testing only and are not ready for production. Your feedback is valued and appreciated.
 
