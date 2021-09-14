@@ -21,7 +21,6 @@
     <link rel="stylesheet" href="./css/bundle.css">
     <link rel="stylesheet" href="./css/main.css">
     <script src="./js/bundle.js"></script>
-    <script>var exports = {};</script>
     <script src="./js/tree.js"></script>
     <script src="./tree-data.js"></script>
 </head>
@@ -53,12 +52,12 @@
     </div>
     <script>
     document.title = headerStr + " " + document.title;
-    const splitter = require("split.js")(["#panel-left", "#panel-right"], {
+    const splitter = Split(["#panel-left", "#panel-right"], {
         sizes: [20, 80],
         minSize: 0
     });
     loadTree();
-    document.querySelector(".gutter").addEventListener("dblclick", function () {
+    $(".gutter").on("dblclick", function () {
         toggleTree(splitter)
     });
     </script>

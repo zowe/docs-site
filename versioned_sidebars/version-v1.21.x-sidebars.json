@@ -74,7 +74,7 @@
       "id": "version-v1.21.x/getting-started/zowe-resources"
     }
   ],
-  "version-v1.21.x/user-guide": [
+  "version-v1.21.x/setup": [
     {
       "collapsed": true,
       "type": "category",
@@ -257,6 +257,23 @@
     {
       "collapsed": true,
       "type": "category",
+      "label": "Zowe Explorer",
+      "items": [
+        {
+          "type": "doc",
+          "id": "version-v1.21.x/user-guide/ze-install"
+        },
+        {
+          "type": "doc",
+          "id": "version-v1.21.x/user-guide/ze-profiles"
+        }
+      ]
+    }
+  ],
+  "version-v1.21.x/use": [
+    {
+      "collapsed": true,
+      "type": "category",
       "label": "Using Zowe",
       "items": [
         {
@@ -333,14 +350,6 @@
       "type": "category",
       "label": "Zowe Explorer",
       "items": [
-        {
-          "type": "doc",
-          "id": "version-v1.21.x/user-guide/ze-install"
-        },
-        {
-          "type": "doc",
-          "id": "version-v1.21.x/user-guide/ze-profiles"
-        },
         {
           "type": "doc",
           "id": "version-v1.21.x/user-guide/ze-usage"
@@ -743,7 +752,7 @@
     { 
       "type": "link", 
       "label": "Third Party Software Requirements", 
-      "href": "https://github.com/zowe/docs-site/tree/master/src/tpsr/tpsr-v1.21.x.md" 
+      "href": "https://github.com/zowe/docs-site/tree/master/tpsr/tpsr-v1.21.x.md" 
     }
   ]
 }

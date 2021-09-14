@@ -34,6 +34,11 @@ Learn what is Zowe, how Zowe works and what it can do for you.
 
 Now you know that Zowe consists of several components. You can determine which Zowe components to install and use. Follow the component-specific information roadmaps to install, use, and troubleshoot Zowe components. You can also get information about how to contribute to each specific component.  
 
+### Zowe versions for use with other products and plugins
+
+While it is generally recommended that you use more recent releases of Zowe, users who intend to use Zowe as a prerequisite for a commercial product or plugin should refer to the documentation for those products to determine which versions of Zowe are compatible and have been tested with the commercial product in question. 
+=======
+
 Components to install and use |  Information roadmaps
 ---                           |  ---
 Zowe Application Framework, <br/> Zowe API Mediation Layer <br/> (these are installed as z/OS server components) |  [Information roadmap for Zowe Application Framework](user-roadmap-app-framework.md), <br/> [Information roadmap for Zowe API Mediation Layer](user-roadmap-apiml.md) <br/>-
