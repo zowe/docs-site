@@ -1,17 +1,19 @@
 import React from "react";
 
-// groom code, toc, make pr
-
 function TagsWrapper({props, activeIDs}) {
-  // React.Children.toArray() 
   const {children, ...rest} = props; // do we need 'rest' for anything?
 
+  const removeEmptyH6 = (arr) => {
+    return arr.filter(i => !(i.props && i.props.originalType === 'h6' && i.props.children === ''));
+  }
+
   if (!activeIDs) {
-    return <React.Fragment {...props}/>; // page does not contain any tags or nothing is selected or everything is selected.
+    const newProps = {...props, children: removeEmptyH6(children)};
+    return <React.Fragment {...newProps}/>; // page does not contain any tags or nothing is selected or everything is selected.
   }
 
   const isNextChildLower = (nextItem, currentHeader) => {
-    const headers = ['h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'h7'];
+    const headers = ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'];
     if (!headers.includes(nextItem.toLowerCase())) { 
       return true; // next item is not a header
     } else if (headers.indexOf(currentHeader.toLowerCase()) < headers.indexOf(nextItem.toLowerCase())) {
@@ -43,12 +45,16 @@ function TagsWrapper({props, activeIDs}) {
         acc.children = [...acc.children, ...highterHeaders];
     } else {
         acc.showChild = false;
+        // Note: Manipulating children style is possible like that by adding the child.props.style, i.e. to gray out some of them instead of filtering. 
+        // newChild = {...child, props: {...child.props, style: {opacity: '0.3'}}}
     }
     return acc.showChild ? {...acc, children: [...acc.children, child]} : acc;
 
   }, {showChild: false, currentHeaderType: '', children: []});
 
-  return <React.Fragment children={activeChildren.children}/>
+  activeChildren.children.push(<p style={{textAlign: 'center', color: '#606770', fontSize: '90%'}}>Not found what you was looking for? Check the active filters</p>);
+
+  return <React.Fragment children={removeEmptyH6(activeChildren.children)}/>
 };
 
 export default TagsWrapper;
