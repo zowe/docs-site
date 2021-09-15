@@ -46,8 +46,8 @@
               
 * **customMetadata.apiml.corsEnabled**
     
-    When this parameter is set to `true`, CORS handling by Gateway is enabled on the service level for all the service routes. 
-    For more information, see this article about [Cross-Origin Resource Sharing (CORS)](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS).
+    When this parameter is set to `true`, CORS handling by the Gateway is enabled on the service level for all service routes. 
+    For more information, see [Cross-Origin Resource Sharing (CORS)](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS).
     
     **Note:** If you use the Spring enabler, use the following parameter name:
     

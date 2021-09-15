@@ -212,15 +212,15 @@ Add the following properties to the file for the API Gateway:
     
 ## CORS handling
 
-You can enable Gateway to terminate CORS requests for itself and also for routed services. By default, Cross-Origin Resource Sharing (CORS) handling is disabled in the API Gateway for the Gateway routes `api/v1/gateway/**`. To enable CORS at the service level, it is necessary to enable CORS as stated here first. Individual services can control whether they want Gateway to handle CORS for them through the [Custom Metadata](../../extend/extend-apiml/custom-metadata.md) parameters.
+You can enable the Gateway to terminate CORS requests for itself and also for routed services. By default, Cross-Origin Resource Sharing (CORS) handling is disabled in the API Gateway for Gateway routes `api/v1/gateway/**`. To enable CORS at the service level, it is necessary to enable CORS as stated here first. Individual services can control whether they want the Gateway to handle CORS for them through the [Custom Metadata](../../extend/extend-apiml/custom-metadata.md) parameters.
 
-When Gateway handles CORS on behalf of service, it sanitizes defined headers from the communication (upstream and downstream). `Access-Control-Request-Method,Access-Control-Request-Headers,Access-Control-Allow-Origin,Access-Control-Allow-Methods,Access-Control-Allow-Headers,Access-Control-Allow-Credentials,Origin` The resulting request to the service is not a CORS request and the service does not need to do anything extra. The list can be overriden by specifying different comma separated list in property `APIML_SERVICE_IGNOREDHEADERSWHENCORSENABLED` in `<Zowe instance directory>/instance.env`
+When the Gateway handles CORS on behalf of service, it sanitizes defined headers from the communication (upstream and downstream). `Access-Control-Request-Method,Access-Control-Request-Headers,Access-Control-Allow-Origin,Access-Control-Allow-Methods,Access-Control-Allow-Headers,Access-Control-Allow-Credentials,Origin` The resulting request to the service is not a CORS request and the service does not need to do anything extra. The list can be overridden by specifying different comma-separated list in the property `APIML_SERVICE_IGNOREDHEADERSWHENCORSENABLED` in `<Zowe instance directory>/instance.env`
 
-Additionally, Gateway handles the preflight requests on behalf of the service, replying with CORS headers:
+Additionally, the Gateway handles the preflight requests on behalf of the service, replying with CORS headers:
 - `Access-Control-Allow-Methods: GET,HEAD,POST,DELETE,PUT,OPTIONS`
 - `Access-Control-Allow-Headers: origin, x-requested-with`
 - `Access-Control-Allow-Credentials: true`
-- `Access-Control-Allow-Origin: *` or list of origins as configured by the service
+- `Access-Control-Allow-Origin: *` or a list of origins as configured by the service.
 
 Use the following procedure to enable CORS handling.
 
