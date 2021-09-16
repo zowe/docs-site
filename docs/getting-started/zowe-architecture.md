@@ -14,8 +14,6 @@ Zowe server components can be installed and run entirely on z/OS, but a subset o
 
 ## Zowe architecture with high availability enablement on Sysplex
 
-<Badge text="Technical Preview"/> The Zowe high availability enablement on Sysplex is a technical preview. 
-
 The following diagram depicts the difference in locations of Zowe components when deploying Zowe into Sysplex with high availability enabled as opposed to running all components on a single z/OS system.  
 
 ![Zowe Architecture Diagram with High Availability Enablement](../images/common/zowe-architecture-lpar.png)

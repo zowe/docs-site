@@ -12,7 +12,7 @@ Multiple instance directories can be created and used to launch independent Zowe
 
 The Zowe instance directory contains a file `instance.env` that stores the Zowe configuration data. The data is read each time Zowe is started. You can modify `instance.env` to configure the Zowe runtime. See [Updating the instance.env configuration file](#updating-the-instanceenv-configuration-file) for more information.  
 
-Alternatively, from v1.22.0 release, you can use a YAML format configuration file `zowe.yaml` instead of `instance.env` to configure the Zowe runtime. See [Updating the zowe.yaml configuration file (Technical Preview)](#updating-the-zowe-yaml-configuration-file-technical-preview) for more information.
+Alternatively, from v1.22.0 release, you can use a YAML format configuration file `zowe.yaml` instead of `instance.env` to configure the Zowe runtime. See [Updating the zowe.yaml configuration file](#updating-the-zowe-yaml-configuration-file) for more information.
 
 The instance directory `<INSTANCE_DIRECTORY>/bin` contains other key scripts as follows:
 - `zowe-start.sh` is used to start the Zowe runtime by launching the `ZWESVSTC` started task.
@@ -231,11 +231,7 @@ Refer to detailed section about [API Gateway configuration](api-mediation/api-ga
 - `ZWE_CACHING_SERVICE_PERSISTENT`: _(Work in progress)_ This is used to set the storage type used to persist cached data. Valid options are `REDIS` or `VSAM`.
 - `ZWE_CACHING_SERVICE_VSAM_DATASET`: _(Work in progress)_
 
-## Updating the zowe.yaml configuration file (Technical Preview)
-
-<Badge text="Technical Preview"/>
-
-_Note: This feature is added with Zowe v1.22.0 release for technical preview and we are happy to hear any feedback. Content in this section may be changed or improved in the future._
+## Updating the zowe.yaml configuration file
 
 Instead of using `instance.env` to configure the Zowe runtime, you can also use a `zowe.yaml` file to configure Zowe in more granular level. `zowe.yaml` is also required to start Zowe in high availability mode.  To make Zowe runtime recognize the `zowe.yaml` configuration, you must create a `zowe.yaml` file and remove the `instance.env` file from the instance directory. See [Creating the zowe.yaml file](#creating-the-zoweyaml-file) for instructions.
 

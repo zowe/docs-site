@@ -1,8 +1,10 @@
 # Installing Plugins
 Plugins can be added or removed from the Zowe App Server, as well as upgraded. There are two ways to do these actions: By REST API or by filesystem. The instructions below assume you have administrative permissions either to access the correct REST APIs or to have the necessary permissions to update server directories & files.
 
+**NOTE: Plugins must be [pre-built](https://github.com/zowe/zlux/wiki/Building-Plugins), and follow the [directory structure](https://github.com/zowe/zlux/wiki/ZLUX-App-filesystem-structure), and have all dependencies met to be successfully installed. Read the server log in `<INSTANCE_DIR>/log/install-app.log`, (ex `~/.zowe/log/install-app.log`) if a plugin does not show in the Zowe desktop, but has been installed successfully.**
+
 ## By filesystem
-The App server uses directories of JSON files, described in the [wiki](https://github.com/zowe/zlux/wiki/Configuration-for-ZLUX-App-Server-&-ZSS#deploy-configuration). Defaults are located in the folder `zlux-app-server/defaults/plugins`, but the server reads the list of plugins instead from the instance directory, at `<INSTANCE_DIR>/workspace/app-server/plugins` (for example, `~/.zowe/workspace/app-server/plugins` which includes JSON files describing where to find a plugin. Adding or removing JSONs from this folder will add or remove plugins upon server restart, or you can use REST APIs and cluster mode to add or remove plugins without restarting).
+The App server uses directories of JSON files, described in the [wiki](https://github.com/zowe/zlux/wiki/Configuration-for-ZLUX-App-Server-&-ZSS#deploy-configuration). Defaults are located in the folder `zlux-app-server/defaults/plugins`, but the server reads the list of plugins instead from the instance directory, at `<INSTANCE_DIR>/workspace/app-server/plugins` (for example, `~/.zowe/workspace/app-server/plugins` (Or in prior releases, the [Old plugins folder](#old-plugins-folder)) which includes JSON files describing where to find a plugin. Adding or removing JSONs from this folder will add or remove plugins upon server restart, or you can use REST APIs and cluster mode to add or remove plugins without restarting).
 
 ### Adding/Installing
 To add or install a plugin, run the script `<INSTANCE_DIR>/workspace/bin/install-app.sh` providing the location to a plugin folder. For example:
@@ -11,7 +13,7 @@ To add or install a plugin, run the script `<INSTANCE_DIR>/workspace/bin/install
 
 This will generate a JSON file  `<INSTANCE_DIR>/workspace/app-server/plugins/org.zowe.zlux.sample.angular.json` that contains the plugin's ID and its location on disk. These JSON files tell the Desktop where to find apps and are the glue between the Zowe instance's desktop and the plugin code itself held in its directory.  
 
-. For example, if we were to install the sample angular-app in the folder `/home/john/zowe/sample-angular-app`, then the JSON would be:
+. For example, if we were to install the [sample angular-app](https://github.com/zowe/sample-angular-app) in the folder `/home/john/zowe/sample-angular-app`, then the JSON would be:
 ```
 {
   "identifier":"org.zowe.zlux.sample.angular", 
@@ -37,7 +39,7 @@ The API only works when RBAC is configured, and an RBAC-compatible security plug
 
 *NOTE:* If you do not see your plugin in the Zowe desktop check the server log in the `<INSTANCE_DIR>/log/install-app.log` directory to troubleshoot the problem.  If you are building your own desktop extension then you need to [pre-build](https://github.com/zowe/zlux/wiki/Building-Plugins) your plugin with the correct [directory structure](https://github.com/zowe/zlux/wiki/ZLUX-Plugin-Definition-&-Structure), and meet all dependencies. 
 
-###  plugins folder
+### Old plugins folder
 
 Prior to the start of Zowe Long Term Support for v1 (that began with Zowe 1.9.0) the location of the default and instance plugins directory were located within `zlux-app-server` folder (unless otherwise customized). Zowe v1 releases (1.9.0 and later) have backwards compatibility for the existence of these directories, but they can and should be migrated to take advantage of future enhancements.
 
