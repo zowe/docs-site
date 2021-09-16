@@ -1,4 +1,4 @@
-# Using Global Profile Configuration (Technical Preview) <!-- omit in toc -->
+# Using Global Profile Configuration (Technical Preview) 
 
 <Badge text="Technical Preview"/> Global profiles are available in the `@next` version of Zowe CLI. The Zowe CLI `@next` release is a technical preview. Technical previews are for testing only and are not ready for production. Your feedback is valued and appreciated.
 
