@@ -21,9 +21,6 @@ For more information on USS, see the following resources:
 
 If you have not enabled USS for your z/OS environment before, the SMP/E distribution of Zowe provides a number of JCL jobs to assist with this purpose. You can consult with your USS administrator if you need more information such as the USS file system. 
 
-<!-- Guidance is needed on the Unix name for the API ML USS file system - the installer may not know much about USS and may need to be advised by a Unix expert what to call the directory. 
-suggestion: Add a note to the doc to ask the person who administers USS if the installer does not know themselves.-->
-
 ## Language environment
 
 To ensure that Zowe has enough memory, the recommended HEAP64 site should be large enough.
