@@ -486,10 +486,7 @@ Upload the AZWE001.readme.txt file in text format and the AZWE001.pax.Z file in 
 
 **Note:** Ensure you download the pax file in a different file system than where you put Zowe runtime. 
 
-There are many ways to transfer the files or make them available to the z/OS system where the package will be installed. In the following sample dialog, we use FTP from a Microsoft Windows command line to do the transfer. This assumes that the z/OS host is configured as an FTP host/server and that the workstation is an FTP client.  Commands or other information entered by the user are in bold, and the following values are assumed. 
-
-<!--UX study comment: Nowhere does it say that the installer needs an open port on the mainframe to transfer the files. They may need to consult with a network expert what protocol to use (sftp, scp, etc.) on which port, and they may need to be granted access to do this. 
-Suggestion: Add information about potentially opening a port, what protocol to use and and the fact that you may need to be granted access by the network security admin.-->
+There are many ways to transfer the files or make them available to the z/OS system where the package will be installed. In the following sample dialog, we use FTP from a Microsoft Windows command line to do the transfer. This assumes that the z/OS host is configured as an FTP host/server and that the workstation is an FTP client.  Commands or other information entered by the user are in bold, and the following values are assumed.
 
 If you are not sure which protocol or port to use to transfer the files or any access that might be needed, you may need to consult with the network administrator. 
 
@@ -666,10 +663,10 @@ Suggestions: ZWE4ZFS is optional and it should be indicated in the doc and if yo
 
 Job Name | Job Type | Description | RELFILE
 ---|---|---|---
-ZWE1SMPE | SMP/E | Sample job to create an SMP/E environment (optional) | ZOWE.AZWE001.F1
+ZWE1SMPE | SMP/E | (Optional) Sample job to create an SMP/E environment | ZOWE.AZWE001.F1
 ZWE2RCVE | RECEIVE | Sample SMP/E RECEIVE job  | ZOWE.AZWE001.F1
 ZWE3ALOC | ALLOCATE | Sample job to allocate target and distribution libraries | ZOWE.AZWE001.F1
-ZWE4ZFS | ALLOMZFS | Sample job to allocate, create mountpoint, and mount zFS data sets (optional) | ZOWE.AZWE001.F1
+ZWE4ZFS | ALLOMZFS | (Optional) Sample job to allocate, create mountpoint, and mount zFS data sets | ZOWE.AZWE001.F1
 ZWE5MKD | MKDIR | Sample job to invoke the supplied ZWEMKDIR EXEC to allocate file system paths | ZOWE.AZWE001.F1
 ZWE6DDEF | DDDEF | Sample job to  define SMP/E DDDEFs | ZOWE.AZWE001.F1
 ZWE7APLY | APPLY | Sample SMP/E APPLY job | ZOWE.AZWE001.F1
@@ -774,9 +771,6 @@ __Expected Return Codes and Messages:__ You will receive a return code of 0 if t
 
 Edit and submit sample job ZWE3ALOC to allocate the SMP/E target and distribution libraries for Zowe. Consult the instructions in the sample job for more information.
 
-<!--Issue: DLIB and TARGET do not default - maybe provide sensible defaults
-Suggestion: You would hope that the installer knows SMP/E, but adding a suggestion of ZWET0 and ZWED0 for the target and distribution libraries does no harm.-->
-
 __Expected Return Codes and Messages:__ You will receive a return code of 0 if this job runs correctly.
 
 ### Allocate, create and mount ZSF files (Optional)
@@ -806,12 +800,6 @@ See the following information to update the statements in the previous sample:
   * __#dsn__ is the name of the data set holding the z/OS UNIX file system.
   * ___/usr/lpp/zowe___ is the name of the mountpoint where the z/OS UNIX file system will be mounted.
 
-**Note:** If you don't run this optional ZWE4ZFS job to perform the tasks, you need to run the following Unix commands in USS in order to create the required directory. 
-```
-cd [installdir]
-mkdir -p usr/lpp/zowe
-```
-
 __Expected Return Codes and Messages:__ You will receive a return code of 0 if this job runs correctly.
 
 ### Allocate z/OS UNIX paths
@@ -821,8 +809,6 @@ The target system HFS or zFS data set must be mounted on the driving system when
 Before running the sample job to create the paths in the file system, you must ensure that OMVS is active on the driving system and that the target system's HFS or zFS file system is mounted on the driving system. zFS must be active on the driving system if you are installing Zowe into a file system that is zFS.
 
 If you plan to install Zowe into a new HFS or zFS file system, you must create the mountpoint and mount the new file system on the driving system for Zowe.
-
-<!--Should this be /usr/lpp/zowe/v1?-->
 
 The recommended mountpoint is _/usr/lpp/zowe._
 
@@ -882,11 +868,7 @@ In this step, you run the sample job ZWE7APLY to apply Zowe. This step can take 
 
 2. After you take actions that are indicated by the APPLY CHECK, remove the CHECK operand and run the job again to perform the APPLY.
 
-**Notes:** 
-- The GROUPEXTENDED operand indicates the SMP/E applies all requisite SYSMODs. The requisite SYSMODS might be applicable to other functions.
-- If you are installing Zowe API Mediation Layer, you need to follow the preceding steps to run the jobs ZWE7APLY and ZWE8ACPT twice. 
-<!--Observer notes 2: Reinforce that we need to APPLY the maintenance to API ML not just APPLY CHECK.
-Suggestion: You need to run ZWE7APLY and ZWE8ACPT twice with and without CHECK. This information is only in JCL and needs to be in the doc as well.-->
+**Note:** The GROUPEXTENDED operand indicates the SMP/E applies all requisite SYSMODs. The requisite SYSMODS might be applicable to other functions.
 
 **Expected Return Codes and Messages from APPLY CHECK:** You will receive a return code of 0 if the job runs correctly.
 
