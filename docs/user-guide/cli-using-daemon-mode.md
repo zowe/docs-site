@@ -1,4 +1,4 @@
-# Using Daemon Mode (Technical Preview) <!-- omit in toc -->
+# Using Daemon Mode (Technical Preview)
 
 <Badge text="Technical Preview"/> Daemon mode is available in the `@next` version of Zowe CLI. The Zowe CLI @next release is a technical preview. Technical previews are for testing only and are not ready for production. Your feedback is valued and appreciated.
 

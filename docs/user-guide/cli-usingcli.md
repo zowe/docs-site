@@ -1,4 +1,4 @@
-# Using Zowe CLI <!-- omit in toc -->
+# Using Zowe CLI
 
 Learn about how to use Zowe&trade; CLI, including connecting to the mainframe, managing profiles, integrating with API Mediation Layer, and more.
 
