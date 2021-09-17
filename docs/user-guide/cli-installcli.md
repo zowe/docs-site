@@ -1,17 +1,15 @@
-# Installing Zowe CLI
+# Installing Zowe CLI <!-- omit in toc -->
 
 Install Zowe&trade; CLI on your computer.
 
 **Tip:** If you are familiar with command-line tools and want to get started using Zowe CLI quickly, see [Zowe CLI quick start](../getting-started/cli-getting-started.md). You can learn about new CLI features in the [Release notes](../getting-started/summaryofchanges.md).
 
-## Methods to install Zowe CLI
+## Methods to install Zowe CLI <!-- omit in toc -->
 
 Use one of the following methods to install Zowe CLI.
 
-- [Installing Zowe CLI](#installing-zowe-cli)
-  - [Methods to install Zowe CLI](#methods-to-install-zowe-cli)
-    - [Installing Zowe CLI from a local package](#installing-zowe-cli-from-a-local-package)
-    - [Installing Zowe CLI from an online registry](#installing-zowe-cli-from-an-online-registry)
+- [Installing Zowe CLI from a local package](#installing-zowe-cli-from-a-local-package)
+- [Installing Zowe CLI from an online registry](#installing-zowe-cli-from-an-online-registry)
 
 **Note:** If you do not have access to the public npm registry at your site, you might want to install the CLI via a proxy server. See [Installing Zowe CLI Via Proxy](install-cli-via-proxy.md) for more information.
 
@@ -101,6 +99,9 @@ If your computer is connected to the Internet, you can use the following method 
   :::tip
   Npm is included with most Node.js installations. Issue the command `npm --version` to check your current version. You can reference the [Node.js release matrix](https://nodejs.org/en/download/releases/) to verify that the versions are compatible.
   :::
+
+  - **(Optional) ssh2 Package:** Zowe CLI has a dependency on the ssh2 package. This package allows for more secure cryptographic ciphers to be used first on supporting hardware. See [Installing the ssh2 Package for Zowe CLI](cli-installing-ssh2-package.md).
+
 
 2. **(Linux only)** Address the following software requirements for Secure Credential Storage:
 
