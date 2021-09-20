@@ -1,4 +1,4 @@
-# Introduction
+# Planning the installation
 
 The following information is required during the installation process. Software and hardware prerequisites are covered in the next section.
 
