@@ -442,6 +442,12 @@ Copy and paste the sample JCL into a separate data set, uncomment the job, and m
 //*   @zfs_dsn@
 //*              - To your file system data set name
 //*
+//*   #size
+//*              - To the amount of space to be
+//*                allocated for the mount point.
+//*                It is recommended that this is
+//*                set to at least 3300 cylinders.
+//*              
 //* Your userid MUST be defined as a SUPERUSER to successfully
 //* run this job
 //*
@@ -452,7 +458,7 @@ Copy and paste the sample JCL into a separate data set, uncomment the job, and m
 //SYSIN    DD *
   DEFINE CLUSTER ( -
          NAME(@zfs_dsn@) -
-         TRK(#size) -
+         CYL(#size) -
        /*VOLUME(volser)*/ -
          LINEAR -
          SHAREOPTIONS(3) -
