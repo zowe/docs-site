@@ -49,7 +49,7 @@ Before you start the installation, review the information on hardware and softwa
 
 ## Stage 2: Install the Zowe runtime
 
-1. Ensure that the software requirements are met. The prerequisites are described in [Zowe high availability requirements (host)](systemrequirements.md).
+1. Ensure that the software requirements are met. The prerequisites are described in [Zowe high availability requirements (host)](install-ha-sysplex.md).
 
 1. Choose the method of installing Zowe high availability instances on a Sysplex. 
 
