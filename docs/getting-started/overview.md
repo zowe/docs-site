@@ -2,11 +2,6 @@
 meta:
   - name: description
     content: Zowe is an open source project within the Open Mainframe Project that is part of The Linux Foundation. Zowe is an extensible framework that simplifies and speeds application development, deployment, and operations on z/OS, and provides the ability for extension through CLI plug-ins, new applications to be added to the web desktop, and onboarding of REST APIs to the API Mediation Layer. It narrows the skills gap between new and legacy z/OS developers by offering the choice to work with z/OS either through a Command Line Interface, a Zowe Explorer Visual Studio extension, a web browser served from the Zowe Application Framework, or through REST APIs and web sockets served through the API Mediation Layer.
-    tags: {
-      desktop: ["Zowe Application Framework", "z/OS Services"],
-      cli: ["Test Header 2"],
-      "mediation layer": ["API Mediation Layer", "z/OS Services"]
-    }
 ---
 
 # Zowe overview

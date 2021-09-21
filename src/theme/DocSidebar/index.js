@@ -343,8 +343,8 @@ function DocSidebar({
             collapsible={sidebarCollapsible}
             activePath={path}
           />
+          <ComponentSelector/>
         </ul>
-        <ComponentSelector/>
       </nav>
       {hideableSidebar && <HideableSidebarButton onClick={onCollapse} />}
     </div>

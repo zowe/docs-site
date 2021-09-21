@@ -62,14 +62,21 @@ function DocItem(props) {
     if (!metadata.frontMatter.meta || !metadata.frontMatter.meta[0].tags || !Object.keys(metadata.frontMatter.meta[0].tags).length) {
       return undefined; // No tags defined for that page
     }
-    const numberOfSelectedComponents = Object.values(selectedComponents).filter(i => !!i).length;
-    if (!numberOfSelectedComponents || numberOfSelectedComponents === Object.keys(selectedComponents).length) {
-      return undefined; // Nothing is selected or everything is selected
+    if (!selectedComponents || !(selectedComponents.tags instanceof Object)) {
+      return undefined; // No selectedComponents or object has wrong structure
     }
-    const components = JSON.parse(window.sessionStorage.getItem('ZoweDocs::selectedComponents') || "{}");
-    const activeTags = Object.keys(components).filter(tag => !!components[tag]).map(i => i.toLowerCase());
+    const numberOfSelectedComponents = Object.values(selectedComponents.tags).filter(i => i.value).length;
+    const activeDownloadType = selectedComponents.downloadType && selectedComponents.downloadType.toLowerCase() !== 'all'; 
+    const activeESM = selectedComponents.esm && selectedComponents.esm.toLowerCase() !== 'all'; 
+    if (!numberOfSelectedComponents && !activeDownloadType && !activeESM) {
+      return undefined; // Nothing is selected
+    }
+    const activeTags = Object.keys(selectedComponents.tags).filter(tag => selectedComponents.tags[tag].value).map(tag => tag.toLowerCase());
+    activeDownloadType && activeTags.push(selectedComponents.downloadType.toLowerCase());
+    activeESM && activeTags.push(selectedComponents.esm.toLowerCase());
     const tagsDictionary = metadata.frontMatter.meta[0].tags;
-    const activeHeaders = activeTags.reduce((acc, tag) => tagsDictionary[tag] ? [...acc, ...tagsDictionary[tag]] : acc, []);
+    const lowerCaseTagsDict = Object.keys(tagsDictionary).reduce((acc, i) => ({...acc, [i.toLowerCase()]: tagsDictionary[i]}), {});
+    const activeHeaders = activeTags.reduce((acc, tag) => lowerCaseTagsDict[tag] ? [...acc, ...lowerCaseTagsDict[tag]] : acc, []);
     return activeHeaders.map(i => i.toLowerCase().replaceAll(' ', '-').replaceAll(/[^\w-]/ig, ''));
   }
 

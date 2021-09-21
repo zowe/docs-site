@@ -65,6 +65,59 @@
     margin-bottom: var(--docusaurus-announcement-bar-height);
   }
 
+  .tagsSelectorContainer {
+    padding: 24px 0px 0px;
+  }
+  
+  .collapsibleTagsSelector {
+    cursor: pointer;
+    padding: 4px 16px;
+    border-radius: 4px;
+    display: flex; 
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .collapsibleTagsSelector:hover {
+    background-color: var(--ifm-color-secondary);
+  }
+  
+  .tagsSeparator {
+    border-top: solid 1px var(--ifm-toc-border-color); 
+    margin: 0 16px 8px 16px;
+  }
+  
+  .tagsSection {
+    padding-bottom: 12px;
+  }
+  
+  .tagSectionLabel {
+    color: var(--ifm-font-color-base)
+  }
+  
+  .tagOption {
+    display: flex; 
+    align-items: center;
+    height: 24px;
+  }
+  
+  .tagRadioInput {
+    margin: 0 7px 0 4px;
+  }
+  
+  .arrowIcon {
+    transition: transform 0.2s linear; 
+    max-width: 20px; 
+    max-height: 20px; 
+  }
+  
+  .tagsSelectorContent {
+    color: var(--ifm-menu-color);
+    padding: 8px 16px 0 32px;
+    overflow: hidden;
+    transition: height 0.2s linear;
+  }
+
   .collapseSidebarButton {
     display: block !important;
     background-color: var(--ifm-button-background-color);
