@@ -56,7 +56,7 @@ const ComponentSelector = () => {
     <div className={styles.tagsSelectorContainer}>
       <div className={styles.tagsSeparator}/>
       <div className={styles.collapsibleTagsSelector} onClick={() => toggleTagsSelector(!showTagsSelector)}>
-        <p style={{margin: 0, color: "black"}}>Select tags or components</p>
+        <p className={styles.tagsSelectorLabel}>Select tags or components</p>
         <a className={`${styles.arrowIcon} menu__link--sublist`} style={{transform: showTagsSelector ? 'rotate(0deg)' : 'rotate(-90deg)'}}/>
       </div>
       

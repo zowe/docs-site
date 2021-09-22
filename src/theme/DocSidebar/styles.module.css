@@ -68,6 +68,15 @@
   .tagsSelectorContainer {
     padding: 24px 0px 0px;
   }
+
+  .tagsSelectorLabel {
+    margin: 0;
+    color: black;
+  }
+
+  [data-theme="dark"] .tagsSelectorLabel {
+    color: inherit;
+  }
   
   .collapsibleTagsSelector {
     cursor: pointer;
@@ -79,7 +88,7 @@
   }
   
   .collapsibleTagsSelector:hover {
-    background-color: var(--ifm-color-secondary);
+    background: var(--ifm-menu-color-background-active);
   }
   
   .tagsSeparator {
