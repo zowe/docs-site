@@ -1,10 +1,10 @@
-# Installing Zowe CLI
+# Installing Zowe CLI <!-- omit in toc -->
 
 Install Zowe&trade; CLI on your computer.
 
 **Tip:** If you are familiar with command-line tools and want to get started using Zowe CLI quickly, see [Zowe CLI quick start](../getting-started/cli-getting-started.md). You can learn about new CLI features in the [Release notes](../getting-started/summaryofchanges.md).
 
-## Methods to install Zowe CLI
+## Methods to install Zowe CLI <!-- omit in toc -->
 
 Use one of the following methods to install Zowe CLI.
 
@@ -34,6 +34,8 @@ If you do not have internet access at your site, use the following method to ins
   :::tip
   Npm is included with most Node.js installations. Issue the command `npm --version` to check your current version. You can reference the [Node.js release matrix](https://nodejs.org/en/download/releases/) to verify that the versions are compatible.
   :::
+
+- **(Optional) ssh2 Package:** Zowe CLI has a dependency on the ssh2 package. This package allows for more secure cryptographic ciphers to be used first on supporting hardware. See [Installing the ssh2 Package for Zowe CLI](cli-installing-ssh2-package.md).
 
 2. **(Linux only)** Address the following software requirements for Secure Credential Storage:
 
@@ -97,6 +99,9 @@ If your computer is connected to the Internet, you can use the following method 
   :::tip
   Npm is included with most Node.js installations. Issue the command `npm --version` to check your current version. You can reference the [Node.js release matrix](https://nodejs.org/en/download/releases/) to verify that the versions are compatible.
   :::
+
+  - **(Optional) ssh2 Package:** Zowe CLI has a dependency on the ssh2 package. This package allows for more secure cryptographic ciphers to be used first on supporting hardware. See [Installing the ssh2 Package for Zowe CLI](cli-installing-ssh2-package.md).
+
 
 2. **(Linux only)** Address the following software requirements for Secure Credential Storage:
 
