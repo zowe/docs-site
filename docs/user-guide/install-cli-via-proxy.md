@@ -6,6 +6,7 @@ You can install Zowe CLI from an online registry via proxy on Windows, macOS, or
 
 *  This method requires access to an internal server that will allow you to connect to the appropriate registries. For other installation methods, see Installing CLI.
 *  Your default registry must be public npm (or a mirror of public npm).
+*  **(Optional) ssh2 Package:** Zowe CLI has a dependency on the ssh2 package. This package allows for more secure cryptographic ciphers to be used first on supporting hardware. See [Installing the ssh2 Package for Zowe CLI](cli-installing-ssh2-package.md).
 *  If you previously installed the CLI and want to update to a current version, see Update Zowe CLI.
 
 ​Follow these steps: 
@@ -37,7 +38,7 @@ You can install Zowe CLI from an online registry via proxy on Windows, macOS, or
 
 2. Ensure that you meet the [Software Requirements for CLI](cli-swreqplugins.md).
 
-3. To install Zowe CLI, issue the following command. On Linux, you might need to prepend sudo to your npm commands:
+3. To install Zowe CLI, issue the following command. On Linux, you might need to prepend `sudo` to your npm commands:
 
     ```
     npm install @zowe/cli@zowe-v1-lts -g

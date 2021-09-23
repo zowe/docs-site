@@ -46,13 +46,21 @@
               
 * **customMetadata.apiml.corsEnabled**
     
-    When this parameter is set to `true`, CORS is enabled on the service level for all the service routes. 
-    For more information, see this article about [Cross-Origin Resource Sharing (CORS)](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS).
+    When this parameter is set to `true`, CORS handling by the Gateway is enabled on the service level for all service routes. 
+    For more information, see [Cross-Origin Resource Sharing (CORS)](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS).
     
     **Note:** If you use the Spring enabler, use the following parameter name:
     
-    `apiml.service.customMetadata.apiml.corsEnabled`   
+    `apiml.service.customMetadata.apiml.corsEnabled`
+  
+* **customMetadata.apiml.corsAllowedOrigins**
+
+  Optionally, service can specify which origins will be accepted by Gateway during the CORS handling. When this parameter is not set, the accepted origins are `*` by default. You can provide a coma separated list of values to explicitly limit the accepted origins.
     
+    **Note:** If you use the Spring enabler, use the following parameter name:
+
+    `apiml.service.customMetadata.apiml.corsAllowedOrigins`
+  
  * **customMetadata.apiml.lb.type**
    
     This parameter is part of the load balancing configuration for the Deterministic Routing capability. Through this parameter, the service can specify which load balancing schema the service requires. If this parameter is not specified, the service is routed using the basic round robin schema. This parameter can be set to the following values:

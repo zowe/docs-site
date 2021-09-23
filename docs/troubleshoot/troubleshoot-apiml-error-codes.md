@@ -1039,6 +1039,18 @@ The following error message codes may appear on logs or API responses. Use the f
 
   Try the request later or remove the request for specific instance.
 
+### ZWEAG711E
+
+  The principal '%s' is missing queried authorization.
+
+  **Reason:**
+
+  The principal does not have the queried access to resource name within resource class.
+
+  **Action:**
+
+  No action needed.
+
 ### ZWEAG100E
 
   Authentication exception: '%s' for URL '%s'
@@ -1145,7 +1157,7 @@ The following error message codes may appear on logs or API responses. Use the f
 
   **Action:**
 
-  Ensure that the z/OSMF instance is configured correctly and that it is successfully registered to the Discovery Service and that the API Mediation Layer can communicate with provided z/OSMF instance.
+  Ensure that the z/OSMF instance is configured correctly and that it is successfully registered to the Discovery Service and that the API Mediation Layer can communicate with provided z/OSMF instance. The default timeout is 5 minutes. On slower system, add APIML_SECURITY_JWTINITIALIZERTIMEOUT=... variable and value in minutes into Zowe's configuration to override this value.
 
 ### ZWEAG109E
 
@@ -1421,4 +1433,16 @@ The following error message codes may appear on logs or API responses. Use the f
   - Not able to select a route for the URL of the specific service. The original URL is used. If necessary, check the routing metadata of the service.
   - The path of the service URL is not valid. Ensure the service is providing the correct path.
  
+
+### ZWEAC709E
+
+  Static definition generation failed, caused by exception: %s
+
+  **Reason:**
+
+  The Static definition generation could not be performed because of exception.
+
+  **Action:**
+
+  Check the specific exception for troubleshooting.
 
