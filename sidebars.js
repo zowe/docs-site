@@ -136,6 +136,7 @@ module.exports = {
       label: "Installing Zowe CLI",
       items: [
         "user-guide/systemrequirements-cli",
+        "user-guide/cli-installing-ssh2-package.md",
         "user-guide/cli-installcli",
         "user-guide/install-cli-via-proxy",
         "user-guide/cli-updatingcli",
