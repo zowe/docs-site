@@ -1,6 +1,4 @@
-# Zowe high availability installation roadmap (Technical Preview)
-
-<Badge text="Technical Preview"/> Zowe&trade; high availability is a technical preview. Technical previews are for testing only and not ready for production. Any feedback that you can provide is highly appreciated.
+# Zowe high availability installation roadmap
 
 To install Zowe on a Sysplex, there are two parts: 
 
@@ -37,7 +35,7 @@ Review the installation diagram and the high-level instructions in this topic to
   <area href="https://docs.zowe.org/stable/user-guide/configure-certificates" target="_blank" alt="Configure Zowe certificates using shell script" title="Create the Zowe certificates keystore directory using shell script" shape="rect" coords="230,901,628,958" />
   <area href="https://docs.zowe.org/stable/user-guide/configure-xmem-server" target="_blank" alt="Configure the Zowe cross memory server using shell script" title="Install and configure the Zowe cross memory server (ZWESISTC) using shell script" shape="rect" coords="230,980,628,1037" />
   <area href="https://docs.zowe.org/stable/user-guide/configure-instance-directory" target="_blank" alt="Create and configure the Zowe instance directory using shell script" title="Create and configure the Zowe instance directory using shell script" shape="rect" coords="230,1061,628,1110" />
-  <area href="https://docs.zowe.org/stable/user-guide/configure-instance-directory/#updating-the-zoweyaml-configuration-file-technical-preview" target="_blank" alt="Create and customize Zowe YAML configuration file" title="Create and customize Zowe YAML configuration file using shell script" shape="rect" coords="230,1132,628,1182" />
+  <area href="https://docs.zowe.org/stable/user-guide/configure-instance-directory/#updating-the-zoweyaml-configuration-file" target="_blank" alt="Create and customize Zowe YAML configuration file" title="Create and customize Zowe YAML configuration file using shell script" shape="rect" coords="230,1132,628,1182" />
   <area href="https://docs.zowe.org/stable/user-guide/configure-zowe-ha-server" target="_blank" alt="Install and start the Zowe high availability started task using JCL" title="Install and start the Zowe high availability started task (ZWESLSTC) using JCL" shape="rect" coords="230,1206,628,1255" />
 
   <area href="https://docs.zowe.org/stable/user-guide/verify-zowe-runtime-install" target="_blank" alt="Verify Zowe installation on z/OS" title="Verify Zowe installation on z/OS" shape="rect" coords="204,1283,648,1332" />

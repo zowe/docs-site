@@ -13,6 +13,7 @@ Follow the procedures in the following sections to customize Gateway parameters 
 
   * [Prefer IP Address for API Layer services](#prefer-ip-address-for-api-layer-services)
   * [SAF as an Authentication provider](#saf-as-an-authentication-provider)
+  * [Enable Jwt token refresh endpoint](#enable-jwt-token-refresh-endpoint)
   * [Gateway retry policy](#gateway-retry-policy)
   * [Gateway client certificate authentication](#gateway-client-certificate-authentication)
   * [Gateway timeouts](#gateway-timeouts)
@@ -51,6 +52,25 @@ the following procedure to switch to SAF.
 3. Restart Zowe&trade.
 
 Authentication requests now utilize SAF as the authentication provider. API ML can run without z/OSMF present on the system. 
+
+## Enable Jwt token refresh endpoint
+
+Enable the `/gateway/api/v1/auth/refresh` endpoint to exchange a valid JWT token for a new token with a new expiration date. Call the endpoint with a valid JWT token and trusted client certificate. In case of z/OSMF authentication provider, enable API Mediation Layer for passticket generation and configure z/OSMF APPLID. [Configure Passtickets](../../extend/extend-apiml/api-mediation-passtickets.md)
+
+**Follow these steps:**
+
+1. Open the file `<Zowe instance directory>/instance.env`.
+3. Configure the following properties:
+
+    * **APIML_SECURITY_ALLOWTOKENREFRESH=true**
+
+      Add this property to enable the refresh endpoint.
+
+    * **APIML_SECURITY_ZOSMF_APPLID**
+
+      If you use z/OSMF as an authentication provider, provide a valid `APPLID`. The API ML generates a passticket for the specified `APPLID` and subsequently uses this passticket to authenticate to z/OSMF. The default value in the installation of z/OSMF is `IZUDFLT`.
+
+3. Restart Zowe.
 
 ### Change password with SAF provider
 
@@ -192,8 +212,18 @@ Add the following properties to the file for the API Gateway:
     
 ## CORS handling
 
-By default, Cross-Origin Resource Sharing (CORS) is disabled in the API Gateway for the Gateway routes `api/v1/gateway/**`. To enable CORS at the service level, it is necessary to enable CORS in the Gateway. Use the following procedure to enable CORS.
-        
+You can enable the Gateway to terminate CORS requests for itself and also for routed services. By default, Cross-Origin Resource Sharing (CORS) handling is disabled for Gateway routes `api/v1/gateway/**` and for individual services. After enabling the feature as stated in the prodecure below, API Gateway endpoints start handling CORS requests and individual services can control whether they want the Gateway to handle CORS for them through the [Custom Metadata](../../extend/extend-apiml/custom-metadata.md) parameters.
+
+When the Gateway handles CORS on behalf of the service, it sanitizes defined headers from the communication (upstream and downstream). `Access-Control-Request-Method,Access-Control-Request-Headers,Access-Control-Allow-Origin,Access-Control-Allow-Methods,Access-Control-Allow-Headers,Access-Control-Allow-Credentials,Origin` The resulting request to the service is not a CORS request and the service does not need to do anything extra. The list can be overridden by specifying different comma-separated list in the property `APIML_SERVICE_IGNOREDHEADERSWHENCORSENABLED` in `<Zowe instance directory>/instance.env`
+
+Additionally, the Gateway handles the preflight requests on behalf of the service, replying with CORS headers:
+- `Access-Control-Allow-Methods: GET,HEAD,POST,DELETE,PUT,OPTIONS`
+- `Access-Control-Allow-Headers: origin, x-requested-with`
+- `Access-Control-Allow-Credentials: true`
+- `Access-Control-Allow-Origin: *` or a list of origins as configured by the service.
+
+Use the following procedure to enable CORS handling.
+
 **Follow these steps:**
      
 1. Open the file `<Zowe instance directory>/instance.env`.
