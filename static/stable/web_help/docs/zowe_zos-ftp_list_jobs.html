@@ -10,45 +10,17 @@
 <p>List all data sets that match a DSLEVEL pattern (see help below).</p>
 <h4>Usage</h4>
 <p>zowe  zos-ftp list jobs [options]</p>
-<h4>Required Options</h4>
+<h4>Options</h4>
 <ul>
 <li>
 <p><code>--prefix</code>  <em>(string)</em></p>
 <ul>
 <li>Specify the job name prefix of the jobs you own and want to list. You can
-specify a wildcard, which is usually in the form &quot;JOB*&quot;.</li>
+specify a wildcard, which is usually in the form &quot;JOB*&quot;.
+If you don't specify this option all jobs under this owner will be listed by
+default.</li>
 </ul>
 </li>
-<li>
-<p><code>--host</code>  | <code>-H</code> <em>(string)</em></p>
-<ul>
-<li>The hostname or IP address of the z/OS server to connect to.</li>
-</ul>
-</li>
-<li>
-<p><code>--port</code>  | <code>-P</code> <em>(number)</em></p>
-<ul>
-<li>
-<p>The port of the z/OS FTP server.</p>
-<p>Default value: 21</p>
-</li>
-</ul>
-</li>
-<li>
-<p><code>--user</code>  | <code>-u</code> <em>(string)</em></p>
-<ul>
-<li>Username for authentication on z/OS</li>
-</ul>
-</li>
-<li>
-<p><code>--password</code>  | <code>-p</code> | <code>--pass</code> | <code>--pw</code> <em>(string)</em></p>
-<ul>
-<li>Password to authenticate to FTP.</li>
-</ul>
-</li>
-</ul>
-<h4>Options</h4>
-<ul>
 <li>
 <p><code>--owner</code>  | <code>-o</code> <em>(string)</em></p>
 <ul>
@@ -77,6 +49,36 @@ and FTPS, not 'SFTP' which is FTP over SSH.</p>
 established.</p>
 <p>Default value: 10000</p>
 </li>
+</ul>
+</li>
+</ul>
+<h4>Required Options</h4>
+<ul>
+<li>
+<p><code>--host</code>  | <code>-H</code> <em>(string)</em></p>
+<ul>
+<li>The hostname or IP address of the z/OS server to connect to.</li>
+</ul>
+</li>
+<li>
+<p><code>--port</code>  | <code>-P</code> <em>(number)</em></p>
+<ul>
+<li>
+<p>The port of the z/OS FTP server.</p>
+<p>Default value: 21</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--user</code>  | <code>-u</code> <em>(string)</em></p>
+<ul>
+<li>Username for authentication on z/OS</li>
+</ul>
+</li>
+<li>
+<p><code>--password</code>  | <code>-p</code> | <code>--pass</code> | <code>--pw</code> <em>(string)</em></p>
+<ul>
+<li>Password to authenticate to FTP.</li>
 </ul>
 </li>
 </ul>
