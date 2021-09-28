@@ -5,21 +5,21 @@ Before installing Zowe&trade; z/OS components, ensure that your z/OS environment
 All Zowe server components can be installed on a z/OS environment, while some can alternatively be installed on Linux or zLinux via Docker. The components provide a number of services that are accessed through a web browser such as an API catalog and a web desktop.  
 
 - [z/OS system requirements](#zos-system-requirements)
-    - [z/OS](#zos)
-    - [Node.js](#nodejs)
-    - [Java](#java)
-    - [z/OSMF (Optional)](#zosmf-optional)
+  - [z/OS](#zos)
+  - [Node.js](#nodejs)
+  - [Java](#java)
+  - [z/OSMF (Optional)](#zosmf-optional)
 - [User ID requirements](#user-id-requirements)
-    - [ZWESVUSR](#zwesvusr)
-    - [ZWESIUSR](#zwesiusr)
-    - [ZWEADMIN](#zweadmin)
-    - [zowe_user](#zowe_user)
+  - [ZWESVUSR](#zwesvusr)
+  - [ZWESIUSR](#zwesiusr)
+  - [ZWEADMIN](#zweadmin)
+  - [zowe_user](#zowe_user)
 - [Network requirements](#network-requirements)
 - [Zowe Docker requirements](#zowe-docker-requirements)
 - [Zowe Desktop requirements (client PC)](#zowe-desktop-requirements-client-pc)
 - [Feature requirements](#feature-requirements)
-    - [Multi-Factor Authentication MFA](#multi-factor-authentication-mfa)
-    - [Single Sign-On SSO](#single-sign-on-sso)
+  - [Multi-Factor Authentication MFA](#multi-factor-authentication-mfa)
+  - [Single Sign-On SSO](#single-sign-on-sso)
 
 ## z/OS system requirements
 
@@ -59,14 +59,14 @@ Be sure your z/OS system meets the following prerequisites.
 
   z/OSMF is included with z/OS so does not need to be separately installed.  If z/OSMF is present, Zowe will detect this when it is configured and use z/OSMF for the following purposes:
 
-    - Authenticating TSO users and generating a single sign-on JSON Web Token (JWT). Ensure that the [z/OSMF JWT Support is available via APAR and associated PTFs](https://www.ibm.com/support/pages/apar/PH12143).  If z/OSMF is not available, then Zowe is still able to provide SSO by generating its own JWT and making direct SAF calls.  
+  - Authenticating TSO users and generating a single sign-on JSON Web Token (JWT). Ensure that the [z/OSMF JWT Support is available via APAR and associated PTFs](https://www.ibm.com/support/pages/apar/PH12143).  If z/OSMF is not available, then Zowe is still able to provide SSO by generating its own JWT and making direct SAF calls.  
 
-    - REST API services for Files (Data Sets and USS), JES, and z/OSMF workflows.  These are used by some Zowe applications such as the Zowe Explorers in the Zowe Desktop. If z/OSMF REST APIs are not present, other Zowe desktop application, such as the File Editor that provides access to USS directories and files as well as MVS data sets and members, will work through the Zowe Z Secure Services (ZSS) component to access z/OS resources.   
+  - REST API services for Files (Data Sets and USS), JES, and z/OSMF workflows.  These are used by some Zowe applications such as the Zowe Explorers in the Zowe Desktop. If z/OSMF REST APIs are not present, other Zowe desktop application, such as the File Editor that provides access to USS directories and files as well as MVS data sets and members, will work through the Zowe Z Secure Services (ZSS) component to access z/OS resources.   
 
   **Tips:**
 
-   - For non-production use of Zowe (such as development, proof-of-concept, demo), you can customize the configuration of z/OSMF to create what is known as "z/OS MF Lite" that simplifies the setup of z/OSMF. As z/OS MF Lite only supports selected REST services (JES, DataSet/File, TSO and Workflow), you will observe considerable improvements in startup time as well as a reduction in the efforts involved in setting up z/OSMF. For information about how to set up z/OSMF Lite, see [Configuring z/OSMF Lite (non-production environment)](systemrequirements-zosmf-lite.md).
-   - For production use of Zowe, see [Configuring z/OSMF](systemrequirements-zosmf.md).
+  - For non-production use of Zowe (such as development, proof-of-concept, demo), you can customize the configuration of z/OSMF to create what is known as "z/OS MF Lite" that simplifies the setup of z/OSMF. As z/OS MF Lite only supports selected REST services (JES, DataSet/File, TSO and Workflow), you will observe considerable improvements in startup time as well as a reduction in the efforts involved in setting up z/OSMF. For information about how to set up z/OSMF Lite, see [Configuring z/OSMF Lite (non-production environment)](systemrequirements-zosmf-lite.md).
+  - For production use of Zowe, see [Configuring z/OSMF](systemrequirements-zosmf.md).
   
 
 ## User ID requirements
@@ -140,6 +140,7 @@ When using Docker the USS components of Zowe will run off z/OS in the Linux cont
 ## Zowe Desktop requirements (client PC)
 
 The Zowe Desktop is powered by the Application Framework which has server prereqs depending on where it is installed
+
 - [Zowe Application Framework on z/OS requirements](#zowe-application-framework-on-zos-requirements)
 - [Application Framework on Docker prerequisites](#docker-requirements-host)
 
@@ -148,6 +149,7 @@ The Zowe Desktop supports Google Chrome, Mozilla Firefox, Apple Safari and Micro
 For Firefox, both the regular and Extended Support Release (ESR) versions are supported under this rule.
 
 Currently, the following browsers are supported:
+
 - Google Chrome V79 or later
 - Mozilla Firefox V68 or later
 - Safari V13 or later
@@ -172,5 +174,6 @@ For information on using MFA in Zowe, see [Multi-Factor Authentication](mvd-conf
 Zowe has an SSO scheme with the goal that each time you use use multiple Zowe components you should only be prompted to login once.
 
 Requirements: 
+
 - IBM z/OS Management Facility (z/OSMF)
 - (Optional, recommended) PKCS#11 token setup is required when using ZSS, the Desktop, and Application Framework with SSO. See [Creating a PKCS#11 Token](configure-certificates.md#creating-a-pkcs11-token) for more information.

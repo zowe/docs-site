@@ -115,8 +115,8 @@ When the container is running, the servers' log output may be printed to the scr
 
 After startup, you can verify that Zowe is running by opening the browser to:
 
- - API Mediation Layer: `https://your_hostname:7554`
- - App Framework: `https://your_hostname:8544`
+- API Mediation Layer: `https://your_hostname:7554`
+- App Framework: `https://your_hostname:8544`
 
 Or, if the ports were modified, `https://your_hostname:$GATEWAY_PORT` and `https://your_hostname:$APP_SERVER_PORT`
 
