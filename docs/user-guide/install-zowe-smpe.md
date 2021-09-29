@@ -79,10 +79,6 @@ Basic Machine-Readable Materials are materials that are supplied under the base 
 
 The distribution medium for this program is via downloadable files. This program is in SMP/E RELFILE format and is installed using SMP/E. See [Installation instructions](#installation-instructions) for more information about how to install the program.
 
-### Program publications
-
-You can obtain the Zowe documentation from the Zowe doc site at [https://docs.zowe.org/](https://docs.zowe.org/). No optional publications are provided for Zowe.
-
 ### Program source materials
 
 No program source materials or viewable program listings are provided for Zowe in the SMP/E installation package. However, program source materials can be downloaded from the Zowe GitHub repositories at [https://github.com/zowe/](https://github.com/zowe/).
@@ -442,6 +438,12 @@ Copy and paste the sample JCL into a separate data set, uncomment the job, and m
 //*   @zfs_dsn@
 //*              - To your file system data set name
 //*
+//*   #size
+//*              - To the amount of space to be
+//*                allocated for the mount point.
+//*                It is recommended that this is
+//*                set to at least 3300 cylinders.
+//*              
 //* Your userid MUST be defined as a SUPERUSER to successfully
 //* run this job
 //*
@@ -452,7 +454,7 @@ Copy and paste the sample JCL into a separate data set, uncomment the job, and m
 //SYSIN    DD *
   DEFINE CLUSTER ( -
          NAME(@zfs_dsn@) -
-         TRK(#size) -
+         CYL(#size) -
        /*VOLUME(volser)*/ -
          LINEAR -
          SHAREOPTIONS(3) -
