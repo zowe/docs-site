@@ -19,7 +19,7 @@ Review the installation diagram and the high-level instructions in this topic to
 </figure>
 <map name="home_map1" id="home_map1">
   <area href="https://docs.zowe.org/stable/user-guide/installandconfig" target="_blank" alt="Plan and prepare for the installation" title="Plan and prepare for the installation" shape="rect" coords="326, 63, 474, 105" />
-  <area href="https://docs.zowe.org/stable/user-guide/systemrequirements-zos/" target="_blank" alt="Configure system requirements" title="Configure system requirements" shape="rect" coords="318, 183, 467, 224" />
+  <area href="https://docs.zowe.org/stable/user-guide/configure-sysplex/#sysplex-environment-requirements" target="_blank" alt="Configure system requirements" title="Configure system requirements" shape="rect" coords="318, 183, 467, 224" />
 
   <area href="https://www.zowe.org/download.html" target="_blank" alt="Download Zowe SMP/E build" title="Download the Zowe SMP/E build from zowe.org" shape="rect" coords="111,327,304,374" />
   <area href="https://docs.zowe.org/stable/user-guide/install-zowe-smpe" target="_blank" alt="Install the Zowe SMP/E build using JCLs" title="Install the Zowe SMP/E build using JCLs" shape="rect" coords="20,546,167,610" />
@@ -47,7 +47,7 @@ Before you start the installation, review the information on hardware and softwa
 
 ## Stage 2: Install the Zowe runtime
 
-1. Ensure that the software requirements are met. The prerequisites are described in [Zowe high availability requirements (host)](systemrequirements.md).
+1. Ensure that the software requirements are met. The prerequisites are described in [Zowe high availability requirements (host)](configure-sysplex.md#sysplex-environment-requirements).
 
 1. Choose the method of installing Zowe high availability instances on a Sysplex. 
 

@@ -1,21 +1,23 @@
-# Updating Zowe on z/OS using Update Script
+# Updating Zowe on z/OS using the update script
 
 In the past, to update Zowe&trade; on z/OS, you had to install a new version of Zowe on top of an existing one. With the introduction of the Zowe update script, the update process becomes faster and more seamless. You can update Zowe on z/OS using shell.
 
-### Prerequisites
+## Prerequisites
 
 Ensure that you meet the following requirements before you run the update script:
 
-  - Stop a running instance of Zowe.
-  - Download and unpaсk the [pax file](https://www.zowe.org/download.html). Use the following command to unpack the file:
+- Stop a running instance of Zowe.
+- Download and unpaсk the [pax file](https://www.zowe.org/download.html). Use the following command to unpack the file:
+
     ```
      pax -ppx -rf <path/to/pax>
     ```
+    
     where:
 
-    - `<path/to/pax>` - a path to a directory with Zowe installation files.
+    `<path/to/pax>` - a path to a directory with Zowe installation files.
 
-### Update Zowe using the Update Script
+## Update Zowe using the update script
 
 Run the update script to update Zowe.
 
@@ -36,7 +38,7 @@ Run the update script to update Zowe.
 
 You successfully updated Zowe.
 
-### Restore Zowe Installation 
+## Restore Zowe installation 
 
 Zowe installation backup is created before the update. Restore a previous Zowe installation. 
 
