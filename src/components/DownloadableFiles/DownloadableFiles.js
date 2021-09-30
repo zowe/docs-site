@@ -10,11 +10,11 @@ const downloadableFiles = [
     title: "Zowe documentation",
     description: (
       <>
-        Download the <code>Version 1.x.x</code> Zowe documentation in PDF format
+        Download the Zowe documentation in PDF format
         from the links below. The latest version on this website is
       </>
     ),
-    firstSubDescription: <>Select the version to Download</>,
+    firstSubDescription: <>Select the version to download</>,
     version: true,
     dropdown: true,
   },
@@ -30,7 +30,7 @@ const downloadableFiles = [
     firstSubDescription: <>Online interactive version</>,
     firstViewOnlineLink: "./stable/web_help/index.html",
     firstDownloadLink: "./stable/CLIReference_Zowe.pdf",
-    secondSubDescription: <>PDF document</>,
+    secondSubDescription: <>ZIP format</>,
     secondDownloadLink: "./stable/zowe_web_help.zip",
   },
   {
