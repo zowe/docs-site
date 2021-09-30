@@ -11,6 +11,13 @@ hr {
   overflow: hidden;
   background-color: #3578e5;
   color: #ffffff;
+  background-image: linear-gradient(#002fa9, rgba(82, 151, 233, 0.79)), url("../../static/img/background-img.svg");
+  animation: waveX 10s linear infinite, waveY 10s linear infinite;
+  animation-play-state: paused;
+}
+
+.heroBanner:hover {
+  animation-play-state: running;
 }
 
 .heroLogo {
@@ -70,5 +77,22 @@ hr {
 
   .hero__title {
     padding-bottom: 1rem;
+  }
+}
+
+@keyframes waveX {
+  0% {
+    background-position-x: 100%, 0;
+  }
+  100% {
+    background-position-x: 100%, 33rem;
+  }
+}
+@keyframes waveY {
+  100% {
+    background-position-y: 100%, 0;
+  }
+  0% {
+    background-position-y: 100%, 33rem;
   }
 }

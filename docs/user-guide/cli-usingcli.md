@@ -6,6 +6,38 @@ You can use the CLI interactively from a command window on any computer on which
 
 **Tip:** If you want to use the CLI together with a screen reader to provide accessibility, we recommend using the Mac™ Terminal application enabled for Accessibility through [System Preferences > Accessibility](https://support.apple.com/zh-sg/guide/terminal/trml1020/mac). On Windows™, adjust the Properties settings in Command Prompt. For other operating systems, or for alternative terminals, check the specification for the terminal to ensure that it meets accessibility requirements.
 
+- [Displaying help](#displaying-help)
+  - [Top-level help](#top-level-help)
+  - [Group, action, and object help](#group-action-and-object-help)
+  - [Launch local web help](#launch-local-web-help)
+- [Viewing web help](#viewing-web-help)
+- [How command precedence works](#how-command-precedence-works)
+- [Issuing commands](#issuing-commands)
+- [Using profiles](#using-profiles)
+  - [Displaying profile help](#displaying-profile-help)
+  - [Service profiles](#service-profiles)
+  - [Base profiles](#base-profiles)
+  - [Profile best practices](#profile-best-practices)
+- [Testing connection to z/OSMF](#testing-connection-to-zosmf)
+- [Integrating with API Mediation Layer](#integrating-with-api-mediation-layer)
+  - [How token management works](#how-token-management-works)
+  - [Logging in](#logging-in)
+  - [Logging out](#logging-out)
+  - [Accessing a service through API ML](#accessing-a-service-through-api-ml)
+  - [Accessing multiple services with SSO](#accessing-multiple-services-with-sso)
+  - [Accessing services through SSO + one service not through APIML](#accessing-services-through-sso--one-service-not-through-apiml)
+  - [Accessing services through SSO + one service through API ML but not SSO](#accessing-services-through-sso--one-service-through-api-ml-but-not-sso)
+- [Working with certificates](#working-with-certificates)
+  - [Configure certificates signed by a Certificate Authority (CA)](#configure-certificates-signed-by-a-certificate-authority-ca)
+  - [Extend trusted certificates on client](#extend-trusted-certificates-on-client)
+  - [Bypass certificate requirement](#bypass-certificate-requirement)
+- [Using environment variables](#using-environment-variables)
+  - [Formatting environment variables](#formatting-environment-variables)
+  - [Setting environment variables in an automation server](#setting-environment-variables-in-an-automation-server)
+- [Using the prompt feature](#using-the-prompt-feature)
+- [Writing scripts](#writing-scripts)
+- [Understanding core command groups](#understanding-core-command-groups)
+
 ## Displaying help
 
 Zowe CLI has a command-line help system that details the commands, actions, and options available in the product.
@@ -14,7 +46,7 @@ Zowe CLI has a command-line help system that details the commands, actions, and 
 - [Group, action, and object help](#group-action-and-object-help)
 - [Launch local web help](#launch-local-web-help)
 
-#### Top-level help
+### Top-level help
 
 To view top-level help, open a command-line and issue the following command:
 
@@ -32,7 +64,7 @@ zowe --ac
 
 **Tip:** All Zowe CLI commands begin with `zowe.`
 
-#### Group, action, and object help
+### Group, action, and object help
 
 Append the global `--help` option to learn about a specific command group, action, or object.
 
@@ -42,7 +74,7 @@ For example, issue the following command to learn about the `create` action in t
 zowe zos-files create --help
 ```
 
-#### Launch local web help
+### Launch local web help
 
 Launch an interactive form of help in a web browser. When you issue the following command, web help is custom-generated to include commands for all currently installed plug-ins:
 
@@ -236,13 +268,13 @@ To access services through API ML using the token in your base profile, specify 
 The following example illustrates a complete path for a z/OSMF instance registered to API ML. The format of base path can vary based on how API ML is configured at your site:
 
 ```
-https://myapilayerhost:port/api/v1/zosmf
+https://myapilayerhost:port/ibmzosmf/api/v1
 ```
 
 To access that API ML instance, create a service profile (or issue a command) with the `--base-path` value of `api/v1`. Your service profile uses the token and credentials stored in your default base profile.
 
 ```
-zowe profiles create zosmf myprofile123 --base-path api/v1 --disable-defaults
+zowe profiles create zosmf myprofile123 --base-path ibmzosmf/api/v1 --disable-defaults
 ```
 
 Commands issued with this profile are routed through the layer to access an appropriate z/OSMF instance.
@@ -327,7 +359,7 @@ You might want to assign a variable in the following scenarios:
 
     You can set environment variables for use in scripts that run in your CI/CD pipeline. For example, can define environment variables in Jenkins so that your password is not seen in plaintext in logs. You can also define sensitive information in the Jenkins secure credential store.
 
-#### Formatting environment variables
+### Formatting environment variables
 
 Transform an option into the proper format for a Zowe CLI environment variable, then define a value to the variable. Transform option names according to the following rules:
 
@@ -346,7 +378,7 @@ The following table provides examples of CLI options and the corresponding envir
 | `--user`                | `ZOWE_OPT_USER`                | Define your mainframe username to an environment variable to avoid specifying it on all commands or profiles.                           |
 | `--reject-unauthorized` | `ZOWE_OPT_REJECT_UNAUTHORIZED` | Define a value of `true` to the `--reject-unauthorized` flag when you always require the flag and do not want to specify it on all commands or profiles. |
 
-#### Setting environment variables in an automation server
+### Setting environment variables in an automation server
 
 You can use environment variables in an automation server, such as Jenkins, to write more efficient scripts and make use of secure credential storage. Automation tools such as Jenkins automation server usually provide a mechanism for securely storing configuration (for example, credentials). In Jenkins, you can use withCredentials to expose credentials as an environment variable (ENV) or Groovy variable.
 
