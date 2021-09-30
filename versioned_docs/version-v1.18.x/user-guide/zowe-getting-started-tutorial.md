@@ -67,7 +67,7 @@ There are two ways to log in to the Zowe Desktop:
 - Through the API mediation layer: `https://myhost:<gateway port>/ui/v1/zlux/`
    - Example: `https://s0w1:7554/ui/v1/zlux/ZLUX/plugins/org.zowe.zlux.bootstrap/web/index.html`
 - Directly, if the mediation layer is not used: `https://myhost:<appserver httpsPort>/`
-   - Example `https://s0w1:8544/ZLUX/plugins/org.zowe.zlux.bootstrap/web/index.html`
+   - Example `https://s0w1:7556/ZLUX/plugins/org.zowe.zlux.bootstrap/web/index.html`
 
 - *myHost* is the host on which you are running the Zowe Application Server.
 - *httpsPort* is the value that was assigned to *node.https.port* in `zluxserver.json`. For example, if you run the Zowe Application Server on host *myhost* and the value that is assigned to *node.https.port* in `zluxserver.json` is 12345, you would specify `https://myhost:12345/ZLUX/plugins/org.zowe.zlux.bootstrap/web/index.html`.
@@ -76,7 +76,7 @@ There are two ways to log in to the Zowe Desktop:
 
 1. In the address field, enter the URL to access the Zowe Desktop. In this tutorial, the following URL is used as an example:
 
-   ```https://s0w1:8544/ZLUX/plugins/org.zowe.zlux.bootstrap/web/index.html```
+   ```https://s0w1:7556/ZLUX/plugins/org.zowe.zlux.bootstrap/web/index.html```
 
    <img src={require("../images/common/zowe-desktop-login.png").default} alt="Zowe Desktop login" width="300"/>
 

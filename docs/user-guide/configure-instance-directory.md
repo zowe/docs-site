@@ -376,7 +376,7 @@ Inside `zowe.yaml`, you can define default values and they may be overridden in 
   components:
     app-server:
       enabled: true
-      port: 8544
+      port: 7556
   haInstances:
     lpar2a:
       components:
@@ -385,10 +385,10 @@ Inside `zowe.yaml`, you can define default values and they may be overridden in 
     lpar2b:
       components:
         app-server:
-          port: 28544
+          port: 27556
   ```
   
-  App Server on `lpar2a` HA instance will not be started. On `lpar2b` HA instance, it will be started but on port 28544.
+  App Server on `lpar2a` HA instance will not be started. On `lpar2b` HA instance, it will be started but on port 27556.
 
 ### YAML configurations - certificate
 

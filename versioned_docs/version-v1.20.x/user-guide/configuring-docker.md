@@ -36,7 +36,7 @@ ompzowe/server-bundle              amd64               ceb8c50d2381        2 hou
 ```
 # docker container list
 CONTAINER ID        IMAGE                      COMMAND               CREATED             STATUS              PORTS                                                            NAMES
-7664336131e9        ceb8c50d2381               "/root/zowe/run.sh"   3 minutes ago       Up 3 minutes        7553-7554/tcp, 8544/tcp    
+7664336131e9        ceb8c50d2381               "/root/zowe/run.sh"   3 minutes ago       Up 3 minutes        7553-7554/tcp, 7556/tcp    
 ```
 
 4. Copy the samples out.
@@ -116,7 +116,7 @@ When the container is running, the servers' log output may be printed to the scr
 After startup, you can verify that Zowe is running by opening the browser to:
 
  - API Mediation Layer: `https://your_hostname:7554`
- - App Framework: `https://your_hostname:8544`
+ - App Framework: `https://your_hostname:7556`
 
 Or, if the ports were modified, `https://your_hostname:$GATEWAY_PORT` and `https://your_hostname:$APP_SERVER_PORT`
 

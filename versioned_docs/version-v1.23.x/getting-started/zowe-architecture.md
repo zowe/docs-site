@@ -50,7 +50,7 @@ When Docker is used, server components not running on z/OS instead run in a Linu
 
 ## App Server
 
-The App Server is a node.js server that is responsible for the Zowe Application Framework. It provides the Zowe desktop, which is accessible through a web browser via port 8544. The Zowe desktop includes a number of applications that run inside the Application Framework such as a 3270 emulator and a File Editor. 
+The App Server is a node.js server that is responsible for the Zowe Application Framework. It provides the Zowe desktop, which is accessible through a web browser via port 7556. The Zowe desktop includes a number of applications that run inside the Application Framework such as a 3270 emulator and a File Editor. 
 
 ![Zowe Desktop Diagram](../images/mvd/zowe-desktop.png)
 

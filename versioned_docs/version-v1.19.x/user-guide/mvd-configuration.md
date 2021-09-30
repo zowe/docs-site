@@ -100,7 +100,7 @@ In the example configuration, both HTTP and HTTPS are specified:
   "node": {
     "https": {
       "ipAddresses": ["0.0.0.0"],
-      "port": 8544,
+      "port": 7556,
       //pfx (string), keys, certificates, certificateAuthorities, and certificateRevocationLists are all valid here.
       "keys": ["../defaults/serverConfig/server.key"],
       "certificates": ["../defaults/serverConfig/server.cert"]

@@ -12,7 +12,7 @@ A number of servers run under Unix System Services (USS) on z/OS.  These run und
 
 ## ZLUX
 
-The ZLUX Node.js server is also known as the Zowe Application Framework. It provides the Zowe desktop that you can access through a web browser via port 8544. The Zowe desktop includes a number of applications that run inside the ZLUX Zowe Application Framework including a 3270 emulator and a File Editor. 
+The ZLUX Node.js server is also known as the Zowe Application Framework. It provides the Zowe desktop that you can access through a web browser via port 7556. The Zowe desktop includes a number of applications that run inside the ZLUX Zowe Application Framework including a 3270 emulator and a File Editor. 
 
 <img src={require("../images/mvd/zowe-desktop.png").default} alt="Zowe Desktop Diagram" width="600px"/> 
 

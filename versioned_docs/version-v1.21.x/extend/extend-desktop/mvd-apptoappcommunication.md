@@ -96,7 +96,7 @@ The Cross-launch feature allows you to:
 
 #### Sample URL
 
-``https://localhost:8544/ZLUX/plugins/org.zowe.zlux.bootstrap/web/?app2app=org.zowe.zlux.ng2desktop.webbrowser:launch:create:data:{"url":"https://github.com/zowe/zlux-app-manager/pull/234","enableProxy":true}&app2app=org.zowe.zlux.ng2desktop.webbrowser:message:create:data:{"url":"https://github.com/zowe/zlux-app-manager/pull/234","enableProxy":true}&app2app=org.zowe.zlux.ng2desktop.webbrowser:message:create:org.zowe.zlux.test.action:{"data": {"url":"https://github.com/zowe/zlux-app-manager/pull/234","enableProxy":true}}``
+``https://localhost:7556/ZLUX/plugins/org.zowe.zlux.bootstrap/web/?app2app=org.zowe.zlux.ng2desktop.webbrowser:launch:create:data:{"url":"https://github.com/zowe/zlux-app-manager/pull/234","enableProxy":true}&app2app=org.zowe.zlux.ng2desktop.webbrowser:message:create:data:{"url":"https://github.com/zowe/zlux-app-manager/pull/234","enableProxy":true}&app2app=org.zowe.zlux.ng2desktop.webbrowser:message:create:org.zowe.zlux.test.action:{"data": {"url":"https://github.com/zowe/zlux-app-manager/pull/234","enableProxy":true}}``
 
 Query parameter format:
 

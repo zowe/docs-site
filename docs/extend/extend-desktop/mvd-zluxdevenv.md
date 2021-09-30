@@ -131,7 +131,7 @@ With the App Server started, you can access Apps and the Zowe Desktop from it in
 In this example, the address you will want to go to first is the location of the window management App - Zowe Desktop.
 The URL for this is:
 
-https://\<App Server\>:8544/ZLUX/plugins/org.zowe.zlux.bootstrap/web/index.html
+https://\<App Server\>:7556/ZLUX/plugins/org.zowe.zlux.bootstrap/web/index.html
 
 Once here, you should be greeted with a Login screen. By default trivial authentication is used which allows to login with arbitrary credentials.
 So, you can type in any username to get access to the desktop, which likely does not yet have any Apps. Next, the server should be configured, Apps added, and authentication set up.
@@ -255,7 +255,7 @@ As a result of the above edits to server.json, an example of what it may now loo
   "node": {
     "https": {
       "ipAddresses": ["0.0.0.0"],
-      "port": 8544,
+      "port": 7556,
       "keys": ["../defaults/serverConfig/zlux.keystore.key"],
       "certificates": ["../defaults/serverConfig/zlux.keystore.cer"],
       "certificateAuthorities": ["../defaults/serverConfig/apiml-localca.cer"]
