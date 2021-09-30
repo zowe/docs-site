@@ -452,6 +452,35 @@ The following steps assume you have installed a Zowe runtime instance (which inc
 
    `ZIS status - Ok (name='ZWESIS_MYSRV    ', cmsRC=0, description='Ok', clientVersion=2)`
 
+### Configuring AT-TLS on Client System
+
+When connecting to a Zowe instance whose host system is configured to use AT-TLS for HTTPS, the connecting client/client system must also define an outbound AT-TLS rule. To define the AT-TLS rule, use the sample below to specify values in your AT-TLS Policy Agent Configuration file:
+
+```
+TTLSRule                     XYZClientRule
+{
+  RemotePortRange                   [gateway_or_desktop_port]
+  Direction                         Outbound
+  TTLSGroupActionRef                XYZGroup
+  TTLSEnvironmentActionRef          XYZClientEnvironment
+}
+TTLSGroupAction              XYZGroup
+{
+  TTLSEnabled                       On
+}
+TTLSEnvironmentAction        XYZClientEnvironment
+{
+  TTLSKeyRingParms
+    {
+      Keyring                       [client_key_ring]
+    }
+  HandshakeRole                     CLIENT
+  Trace                             7
+}
+```
+
+**Note:** \[client_key_ring\] is a key ring containing the client certificate. To retrieve a signed client certificate, contact the administrator of the host system.
+
 ## Controlling access to applications
 
 You can control which applications are accessible (visible) to all Zowe desktop users, and which are accessible only to individual users. For example, you can make an application that is under development only visible to the team working on it.
