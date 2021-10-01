@@ -1051,6 +1051,18 @@ The following error message codes may appear on logs or API responses. Use the f
 
   No action needed.
 
+### ZWEAG712E
+
+  The URI '%s' is an invalid format
+
+  **Reason:**
+
+  The URI did not follow the format /{serviceId}/{type}/{version}/{endpoint} or /{type}/{version}/{serviceId}/{endpoint}.
+
+  **Action:**
+
+  Use a properly formatted URI.
+
 ### ZWEAG100E
 
   Authentication exception: '%s' for URL '%s'
