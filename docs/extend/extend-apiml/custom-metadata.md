@@ -113,4 +113,4 @@
 
 * **customMetadata.apiml.headersToIgnore**
 
-    Optionally, a service can specify headers that will be removed from the request to the southbound service by the Gateway. When this parameter is not set or is empty, no headers are removed. Multiple headers can be removed, delimited by `,`.
+    (Optional) A service can specify headers that are removed from the request to the southbound service by the Gateway. When this parameter is not set or is empty, no headers are removed. Multiple headers can be removed, delimited by `,`.
