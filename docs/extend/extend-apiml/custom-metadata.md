@@ -111,6 +111,23 @@
     
       Compresses all paths that contain `compress` as a specific path
 
+* **customMetadata.apiml.response.headers**
+
+    (Optional) A service can specify headers that are added to the response by the Gateway. When this parameter is not set or is empty, no headers are added. Header names and header values are separated by `:`. Multiple headers can be added, delimited by `,`. If a header with the same name already exists in the response, the Gateway overwrites the value of the header. 
+
+    **Examples:**
+
+    * `Strict-Transport-Security:max-age=1234; includeSubDomains`
+    
+      Sets a header with name `Strict-Transport-Security` and value `max-age=1234; includeSubDomains`.
+    
+    * `Strict-Transport-Security:max-age=1234; includeSubDomains, X-Frame-Options:SAMEORIGIN`
+
+      Sets two headers:
+
+        1) Header with name `Strict-Transport-Security` and value `max-age=1234; includeSubDomains`.
+        2) Header with name `X-Frame-Options` and value `SAMEORIGIN.
+
 * **customMetadata.apiml.headersToIgnore**
 
     (Optional) A service can specify headers that are removed from the request to the southbound service by the Gateway. When this parameter is not set or is empty, no headers are removed. Multiple headers can be removed, delimited by `,`.
