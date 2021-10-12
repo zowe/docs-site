@@ -66,6 +66,8 @@ Ensure that the prerequisites from the [Onboarding Overview](onboard-overview.md
 
 * Following this guide enables REST services to be deployed on a z/OS environment. Deployment to a z/OS environment, however, is not required. As such, you can first develop on a local machine before you deploy on z/OS.
 
+* The API Mediation Layer provides the sample application using the Plain Java Enabler in the [api-layer repository](https://github.com/zowe/api-layer/tree/master/onboarding-enabler-java-sample-app)
+
 ## Configuring your project
 
 Use either _Gradle_ or _Maven_ build automation systems to configure the project with the service to be onboarded. Use the appropriate configuration procedure that corresponds to your build automation system.
@@ -106,13 +108,13 @@ Use the following procedure to use _Gradle_ as your build automation system.
     The published artifact from the Zowe Artifactory also contains the enabler dependencies from other software packages. If you are using an artifactory other than Zowe, add also the following dependencies in your service `build.gradle` script:
 
     ```gradle
-    implementation libraries.eureka_client
-    implementation libraries.httpcore
-    implementation libraries.jackson_databind
-    implementation libraries.jackson_dataformat_yaml
+    implementation "com.netflix.eureka:eureka-client:1.10.15"
+    implementation "org.apache.httpcomponents:httpcore:4.4.14"
+    implementation "com.fasterxml.jackson.core:jackson-databind:2.11.4"
+    implementation "com.fasterxml.jackson.dataformat:jackson-dataformat-yaml:2.9.10"
 
-    providedCompile libraries.javax_servlet_api
-    compileOnly libraries.lombok
+    providedCompile "javax.servlet:javax.servlet-api:3.1.0"
+    compileOnly "org.projectlombok:lombok:1.18.20"
     ```
 
     **Notes:**
@@ -558,7 +560,7 @@ where:
         For more information about z/OSMF Single Sign-on, see [Establishing a single sign-on environment](https://www.ibm.com/support/knowledgecenter/SSLTBW_2.4.0/com.ibm.zosmfcore.multisysplex.help.doc/izuG00hpManageSecurityCredentials.html)
     * **x509**
 
-        This value specifies that a service accepts client certificates forwarded in the HTTP header. The Gateway service extracts information from a valid client certificate. To use this scheme, it is necessary to also specify which headers to include. Specify these parameters in `headers`.
+        This value specifies that a service accepts client certificates forwarded in the HTTP header. The Gateway service extracts information from a valid client certificate. For validation, the certificate needs to be trusted by API Mediation Layer, and needs to contain a Client Authentication (1.3.6.1.5.5.7.3.2) entry in Extended Key Usage. To use this scheme, it is also necessary to specify which headers to include. Specify these parameters in `headers`.
 
     * **headers**
         
@@ -616,7 +618,9 @@ TLS/SSL configuration consists of the following parameters:
 
 * **keyStore**
 
-  This parameter specifies the keystore file used to store the private key. When using keyring, this should be set to SAF keyring location. For information about required certificates, see [Zowe API ML TLS requirements](api-mediation-security.md#Zowe-API-ML-TLS-requirements).
+  This parameter specifies the keystore file used to store the private key. When using keyring, the value should be set to the SAF keyring location. For information about required certificates, see [Zowe API ML TLS requirements](api-mediation-security.md#Zowe-API-ML-TLS-requirements). 
+
+  If you have an issue with loading the keystore file in your environment, try to provide the absolute path to the keystore file. The sample keystore file for local deployment is in [api-layer repository](https://github.com/zowe/api-layer/tree/master/keystore/localhost)
 
 * **keyStorePassword**
 
@@ -628,7 +632,9 @@ TLS/SSL configuration consists of the following parameters:
 
 * **trustStore**
 
-  This parameter specifies the truststore file used to keep other parties public keys and certificates. When using keyring, this should be set to SAF keyring location. For information about required certificates, see [Zowe API ML TLS requirements](api-mediation-security.md#Zowe-API-ML-TLS-requirements).
+  This parameter specifies the truststore file used to keep other parties public keys and certificates. When using keyring, this value should be set to the SAF keyring location. For information about required certificates, see [Zowe API ML TLS requirements](api-mediation-security.md#Zowe-API-ML-TLS-requirements).
+
+  If you have an issue with loading the truststore file in your environment, try to provide the absolute path to the truststore file. The sample truststore file for local deployment is in [api-layer repository](https://github.com/zowe/api-layer/tree/master/keystore/localhost)
 
 * **trustStorePassword: password**
 

@@ -2,6 +2,23 @@
 
 The `zlux-shared` repository provides a logging utility for use by dataservices and web content for an application plug-in.
 
+1. [Logging Objects](#logging-objects)
+1. [Logger IDs](#logger-ids)
+1. [Accessing Logger Objects](#accessing-logger-objects)
+    1. [Logger](#logger)
+        1. [App Server](#app-server)
+        1. [Web](#web)
+    1. [Component Logger](#component-logger)
+        1. [App Server](#app-server-1)
+        1. [Web](#web-1)
+1. [Logger API](#logger-api)
+1. [Component Logger API](#component-logger-api)
+1. [Log Levels](#log-levels)
+1. [Logging Verbosity](#logging-verbosity)
+    1. [Configuring Logging Verbosity](#configuring-logging-verbosity)
+        1. [Server Startup Logging Configuration](#server-startup-logging-configuration)
+1. [Using log message IDs](#using-log-message-ids)
+
 
 ## Logging objects
 
@@ -44,44 +61,6 @@ See **Router Dataservice Context** in the topic [Dataservices](mvd-dataservices.
 
 (Angular App Instance Injectible). See **Logger** in [Zowe Desktop and window management](mvd-desktopandwindowmgt.md).  
 
-## Using log message IDs
-To make technical support for your application easier, create IDs for common log messages and use substitution to generate them. When you use IDs, people fielding support calls can identify and solve problems more quickly. IDs are particularly helpful if your application is translated, because it avoids users having to explain problems using language that the tech support person might not understand.
-
-To use log message IDs, take the following steps:
-
-1. Depending on how your application is structured, create message files in the following locations:
-   - Web log messages: `\src\assets\i18n\log\messages_{language}.json`
-   - App server log messages: `\lib\assets\i18n\log\messages_{language}.json`
-
-2. In the files, create ID-message pairs using the following format:
-
-   ```
-   { "id1": "value1", "id2": "value2" [...] }
-   ```
-
-   Where "id#" is the message ID and "value#" is the text. For example:
-
-    ```
-    { "A001": "Application created.", "A002": "Application deleted." [...] }
-    ```
-
-3. Reference the IDs in your code, for example:
-
-   ```
-   this.log.info("A001")
-   ```
-
-   Which compiles to:
-
-   ```
-   DATE TIME:TIME:TIME.TIME <ZWED:> username INFO (org.zowe.app.name,:) A001 - Application created.
-   ```
-
-   Or in another supported language, such as Russian:
-
-   ```
-   DATE TIME:TIME:TIME.TIME <ZWED:> username INFO (org.zowe.app.name,:) A001 - Приложение создано.
-   ```
 
 ## Logger API
 
@@ -98,17 +77,23 @@ The following constants and functions are available to each component logger.
 
 | Attribute | Type | Description | Arguments
 |-----------|------|-------------|----------
+| `CRITICAL` | const | Is a const for `logLevel`
 | `SEVERE` | const | Is a const for `logLevel`
+| `WARN` | const | Is a const for `logLevel`
 | `WARNING` | const | Is a const for `logLevel`
 | `INFO` | const | Is a const for `logLevel`
+| `DEBUG` | const | Is a const for `logLevel`
 | `FINE` | const | Is a const for `logLevel`
 | `FINER` | const | Is a const for `logLevel`
+| `TRACE` | const | Is a const for `logLevel`
 | `FINEST` | const | Is a const for `logLevel`
 | `log` | function | Used to write a log, specifying the log level | `logLevel`, `messageString`
+| `critical` | function | Used to write a CRITICAL log. | `messageString`
 | `severe` | function | Used to write a SEVERE log. | `messageString`
 | `warn` | function | Used to write a WARNING log. | `messageString`
 | `info` | function | Used to write an INFO log. | `messageString`
 | `debug` | function | Used to write a FINE log. | `messageString`
+| `trace` | function | Used to write a TRACE log. | `messageString`
 | `makeSublogger` | function | Creates a new component logger with an ID appended by the string given | `componentNameSuffix`
 
 ## Log Levels
@@ -117,12 +102,12 @@ An enum, `LogLevel`, exists for specifying the verbosity level of a logger. The 
 
 | Level | Number
 |-------|-------
-| SEVERE | 0
-| WARNING| 1
+| CRITICAL | 0
+| WARNING | 1
 | INFO | 2
-| FINE | 3
+| DEBUG | 3
 | FINER | 4
-| FINEST | 5
+| TRACE | 5
 
 **Note:** The default log level for a logger is **INFO**.
 
@@ -142,7 +127,7 @@ The application plug-in framework provides ways to specify what component logger
 
 #### Server startup logging configuration
 
-The server configuration file allows for specification of default log levels, as a top-level attribute `logLevel`, which takes key-value pairs where the key is a regex pattern for component IDs, and the value is an integer for the log levels.
+[The server configuration file](https://github.com/zowe/zlux/wiki/Configuration-for-zLUX-App-Server-&-ZSS) allows for specification of default log levels, as a top-level attribute `logLevel`, which takes key-value pairs where the key is a regex pattern for component IDs, and the value is an integer for the log levels.
 
 For example:
 ```  
@@ -157,4 +142,47 @@ For example:
     //"_unp.dsauth": 2
   },
 ```
-For more information about the server configuration file, see [Zowe Application Framework (zLUX) configuration](../../user-guide/mvd-configuration#zowe-application-framework-configuration).
+For more information about the server configuration file, see [Zowe Application Framework (zLUX) configuration](../../user-guide/mvd-configuration.html#zowe-application-framework-configuration).
+
+## Using log message IDs
+To make technical support for your application easier, create IDs for common log messages and use substitution to generate them. When you use IDs, people fielding support calls can identify and solve problems more quickly. IDs are particularly helpful if your application is translated, because it avoids users having to explain problems using language that the tech support person might not understand.
+
+To use log message IDs, take the following steps:
+
+1. Depending on how your application is structured, create message files in the following locations:
+   - Web log messages: `{plugin}/web/assets/i18n/log/messages_{language}.json`
+   - App server log messages: `{plugin}/lib/assets/i18n/log/messages_{language}.json`
+
+2. In the files, create ID-message pairs using the following format:
+
+   ```
+   { "id1": "value1", "id2": "value2" [...] }
+   ```
+
+   Where "id#" is the message ID and "value#" is the text. For example:
+
+   ```
+   { "A001": "Application created.", "A002": "Application deleted." [...] }
+   ```
+
+3. Reference the IDs in your code, for example:
+
+   ```
+   this.log.info("A001")
+   ```
+
+   Which compiles to:
+
+   ```
+   DATE TIME:TIME:TIME.TIME <ZWED:> username INFO (org.zowe.app.name,:) A001 - Application created.
+   ```
+
+   Or in another supported language, such as Russian:
+
+   ```
+   DATE TIME:TIME:TIME.TIME <ZWED:> username INFO (org.zowe.app.name,:) A001 - Приложение создано.
+   ```
+   
+### Message ID logging examples
+
+Server core: https://github.com/zowe/zlux-server-framework/blob/master/plugins/config/lib/assets/i18n/log/messages_en.json
