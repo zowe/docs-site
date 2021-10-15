@@ -1,5 +1,10 @@
+# Troubleshooting Kuberentes Environments
+
+The following topics contain information that can help you troubleshoot problems when you encounter unexpected behavior installing and using Zowe™ containers in a Kubernetes environment.
+
 ## ISSUE: `/tmp` Directory Is Not Writable
 
+**Problem**
 We enabled `readOnlyRootFilesystem` SecurityContext by default in `Deployment` object definition. This will result in `/tmp` is readonly and not writable to `zowe` runtime user.
 
 **Recommended fix:**
