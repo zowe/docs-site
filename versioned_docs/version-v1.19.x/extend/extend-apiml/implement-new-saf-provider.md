@@ -1,8 +1,14 @@
 # Implement new SAF IDT provider
 
-If you want to create your own implementation of the SAF IDT provider, you can implement the `org.zowe.apiml.gateway.security.service.saf.SafIdtProvider` interface. 
+API Gateway offers the capability to create an extension to implement a new SAF IDT provider.
+
+- [How to create the SAF IDT provider](#how-to-create-the-saf-idt-provider)
+- [How to integrate your extension to API ML](#how-to-integrate-your-extension-to-api-ml)
+- [How to use the SAF IDT provider](#how-to-use-the-saf-idt-provider)
 
 ## How to create the SAF IDT provider
+
+If you want to create your own implementation of the SAF IDT provider, you can implement the existing `org.zowe.apiml.gateway.security.service.saf.SafIdtProvider` interface. 
 
 ```java
 public interface SafIdtProvider {
