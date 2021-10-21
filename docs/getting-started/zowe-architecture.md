@@ -34,6 +34,26 @@ For simplification of the diagram above, the Zowe Explorer API and UI servers ar
 
 To learn more about Zowe with high availability enablement, see [Zowe high availability installation roadmap](../user-guide/install-ha-sysplex.md).
 
+## Zowe architecture when running in Kubernetes cluster
+
+The following diagram depicts the difference in locations of Zowe components when deploying Zowe into Kubernetes cluster as opposed to running all components on a single z/OS system.
+
+![Zowe Architecture Diagram in Kubernetes](../images/common/zowe-architecture-k8s.png)
+
+The components on z/OS run under the Zowe started task `ZWESVSTC`, which has its own user ID `ZWESVUSR` and includes a number of servers each with their own address space.  The `ZWESVSTC` started task has a `STDOUT` file that includes log and trace information for its servers.  Sever error messages are written to `STDERR`. For problem determination, see [Troubleshooting](../troubleshoot/troubleshooting.md).
+
+When deploying other server components into container orchestration software like Kubernetes, Zowe follows standard Kubernetes practices and the cluster can be monitored and managed with common Kubernetes administration methods.
+
+- All Zowe workloads are running on a dedicated namespace (`zowe` by default) to distinguish from other workloads in same Kubernetes cluster.
+- Zowe has it's own `ServiceAccount` to help on managing permissions.
+- Server components uses similar `instance.env` or `zowe.yaml` on z/OS, which are stored in `ConfigMap` and `Secret`, to configure and start.
+- Server components can be configured using same certificates used on z/OS components.
+- Zowe claims it's own `Persistent Volume` to share files across components.
+- Each server components are running in separated containers.
+- Components may register themselves to Discovery with their own `Pod` name within the cluster.
+- Zowe workloads use `zowe-launch-scripts` `initContainers` step to prepare required runtime directories.
+- Only necessary components ports are exposed outside of Kubernetes with `Service`.
+
 ## Zowe architecture when using Docker image
 
 <Badge text="Technical Preview"/> The Zowe Docker build is a technical preview. 
