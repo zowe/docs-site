@@ -1,10 +1,11 @@
-# Troubleshooting Kuberentes Environments
+# Troubleshooting Kubernetes Environments
 
 The following topics contain information that can help you troubleshoot problems when you encounter unexpected behavior installing and using Zowe™ containers in a Kubernetes environment.
 
 ## ISSUE: `/tmp` Directory Is Not Writable
 
 **Problem**
+
 We enabled `readOnlyRootFilesystem` SecurityContext by default in `Deployment` object definition. This will result in `/tmp` is readonly and not writable to `zowe` runtime user.
 
 **Recommended fix:**
@@ -33,24 +34,43 @@ spec:
 
 With this added to your `Deployment`, your component should be able to write to `/tmp` directory.
 
-## Launch Single Image On Local Computer Without Kubernetes
 
-**NOTE: This is for debugging purposes only.**
+### ISSUE: `Permission denied` Showing In Pod Log
 
-### Init `tmp` Folder
+**Problem**
 
-- Create `tmp` folder:
-
-```
-mkdir -p tmp
-cd tmp
-```
-
-- Init with `zowe-launch-scripts` image:
+If you see error messages like in your pod log
 
 ```
-docker run -it --rm -v $(pwd):/home/zowe zowe-docker-release.jfrog.io/ompzowe/zowe-launch-scripts:1.24.0-ubuntu.staging
+cp: cannot create regular file '/home/zowe/instance/workspace/manifest.json': Permission denied
+mkdir: cannot create directory '/home/zowe/instance/workspace/api-mediation': Permission denied
+mkdir: cannot create directory '/home/zowe/instance/workspace/backups': Permission denied
+cp: cannot create regular file '/home/zowe/instance/workspace/active_configuration.cfg': Permission denied
+/home/zowe/runtime/bin/internal/prepare-instance.sh: line 236: /home/zowe/instance/workspace/active_configuration.cfg: Permission denied
+/home/zowe/runtime/bin/internal/prepare-instance.sh: line 240: /home/zowe/instance/workspace/active_configuration.cfg: Permission denied
+/home/zowe/runtime/bin/internal/prepare-instance.sh: line 241: /home/zowe/instance/workspace/active_configuration.cfg: Permission denied
 ```
 
-- Create `tmp/instance/instance.env` with your desired content. This content you can modify from `samples/config-cm.yaml`.
-- Create `tmp/keystore/` and `tmp/keystore/zowe-certificates.env` with your desired content.
+, it means `zowe` user (UID `20000`) does not have write permission to your persistent volume. It's very likely the persistent volume is mounted as `root` user.
+
+**Recommended fix:**
+
+To solve this issue, you can modify workload files with extra `initContainers` step like this:
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+spec:
+  template:
+    spec:
+      initContainers:
+        - name: update-workspace-permission
+          image: busybox:1.28
+          command: ['sh', '-c', 'OWNER=`stat -c "%u:%g" /home/zowe/instance/workspace` && echo "Owner of workspace is ${OWNER}" && if [ $OWNER != "20000:20000" ]; then chown -R 20000:20000 /home/zowe/instance/workspace; fi']
+          volumeMounts:
+            - name: zowe-workspace
+              mountPath: "/home/zowe/instance/workspace"
+          securityContext:
+            runAsUser: 0
+            runAsGroup: 0
+```
