@@ -53,9 +53,9 @@ The script `<RUNTIME_DIR>/scripts/utils/zowe-install-xmem.sh -d <dataSetPrefix> 
 
   **Example:**
 
-  Executing the command `zowe-install-xmem.sh -d MYUSERID.ZWE -a SYS1.PARMLIB -r USER.PROCLIB` copies:
+  Executing the command `zowe-install-xmem.sh -d MYUSERID.ZWE -a USER.PARMLIB -r USER.PROCLIB` copies:
 
-  - the PARMLIB member `MYUSERID.ZWE.SZWESAMP(ZWESIP00)` to `SYS1.PARMLIB(ZWESIP00)`
+  - the PARMLIB member `MYUSERID.ZWE.SZWESAMP(ZWESIP00)` to `USER.PARMLIB(ZWESIP00)`
   - the PROCLIB member `MYUSERID.ZWE.SZWESAMP(ZWESISTC)` to `USER.PROCLIB(ZWESISTC)` and `MYUSERID.ZWESAMP(ZWESASTC)` to `USER.PROCLIB(ZWESASTC)`
 
 The script `zowe-install-xmem.sh` moves and modifies files, but does not perform the steps needed to APF-authorize the PDSE containing the load module `ZWESIS00` and does not enable it to run in key(4) non-swappable.  The steps required to do this are described in [Installing and configuring the Zowe cross memory server: APF authorize](configure-xmem-server.md#apf-authorize) and [Installing and configuring the Zowe cross memory server: Key 4 non-swappable](configure-xmem-server.md#key-4-non-swappable).
