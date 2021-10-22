@@ -15,9 +15,12 @@ You can customize the configuration or make your own. If you do, note that the f
 | [Ingress](https://kubernetes.io/docs/concepts/services-networking/ingress/) | gateway-ingress | Used for external access to the Gateway service |
 | [Route](https://docs.openshift.com/enterprise/3.0/architecture/core_concepts/routes.html) | discovery | Used for external access to the Discovery service |
 | [Route](https://docs.openshift.com/enterprise/3.0/architecture/core_concepts/routes.html) | gateway | Used for external access to the Gateway service |
-| [Service](https://kubernetes.io/docs/concepts/services-networking/service/) | discovery-service | Used for external access to the Discovery service |
+| [Service](https://kubernetes.io/docs/concepts/services-networking/service/) | discovery-service | Used for internal or external access to the Discovery service |
 | [Service](https://kubernetes.io/docs/concepts/services-networking/service/) | gateway-service | Used for external access to the Gateway service |
+| [Service](https://kubernetes.io/docs/concepts/services-networking/service/) | catalog-service | Used for access to the Catalog service |
 | [PersistentVolumeClaim](https://kubernetes.io/docs/concepts/storage/persistent-volumes/) | zowe-workspace-pvc | |
+| [HorizontalPodAutoscaler](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/) | * | Autoscalers exist for the various pods |
+| [PodDisruptionBudget](https://kubernetes.io/docs/tasks/run-application/configure-pdb/) | * | Disruption budgets exist for the various pods |
 
 The following tasks are a step-by-step list that can be used to configure the Zowe container environment:
 
@@ -221,8 +224,8 @@ a. Edit `samples/gateway-ingress.yaml` and `samples/discovery-ingress.yaml` befo
 b. Run the following commands:
 
 ```
-kubectl apply -f samples/gateway-ingress.yaml
-kubectl apply -f samples/discovery-ingress.yaml
+kubectl apply -f samples/bare-metal/gateway-ingress.yaml
+kubectl apply -f samples/bare-metal/discovery-ingress.yaml
 ```
 
 To verify:
@@ -245,8 +248,8 @@ a. Check and set the value of `spec.port.targetPort` in `samples/gateway-route.y
 b. Run the commands:
 
 ```
-oc apply -f samples/gateway-route.yaml
-oc apply -f samples/discovery-route.yaml
+oc apply -f samples/openshift/gateway-route.yaml
+oc apply -f samples/openshift/discovery-route.yaml
 ```
 
 To verify:
