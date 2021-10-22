@@ -43,7 +43,7 @@ To verify:
 
 ### 2. Create Persistent Volume Claim (PVC)
 
-Zowe's [PVC](https://kubernetes.io/docs/concepts/storage/persistent-volumes/) has a default StorageClass value that may not apply to all Kubernetes clusters. Check and customize the `storageClassName` value of `samples/workspace-pvc.yaml` as needed, using `kubectl get sc` to confirm which StorageClass you can use. Then apply the result:
+Zowe's [PVC](https://kubernetes.io/docs/concepts/storage/persistent-volumes/) has a default StorageClass value that may not apply to all Kubernetes clusters. Check and customize the `storageClassName` value of [samples/workspace-pvc.yaml](https://raw.githubusercontent.com/zowe/zowe-install-packaging/master/containers/kubernetes/samples/workspace-pvc.yaml) as needed, using `kubectl get sc` to confirm which StorageClass you can use. Then apply the result:
 
 ```
 kubectl apply -f samples/workspace-pvc.yaml
@@ -55,11 +55,12 @@ To verify:
 
 ### 3. Create And Modify ConfigMaps and Secrets
 
-The Kubernetes environment can re-use instance and keystore configuration from a pre-existing Zowe z/OS install (v1.24+).
+Similarly to running Zowe services on z/OS, you can use either `instance.env` or `zowe.yaml` to customize Zowe.
+You can modify `samples/config-cm.yaml`, `samples/certificates-cm.yaml` and `samples/certificates-secret.yaml` directly. Or more conveniently, if you have Zowe ZSS/ZIS running on z/OS, the Kubernetes environment can re-use instance and keystore configuration from that installation (v1.25+).
 
 If you want to manually create, or later customize the ConfigMaps and Secrets, [read this section about customization](#customizing-or-manually-creating-configmaps-and-secrets)
 
-To create and modify [ConfigMaps](https://kubernetes.io/docs/concepts/configuration/configmap/) and [Secrets](https://kubernetes.io/docs/concepts/configuration/secret/), perform the following steps:
+To create and modify [ConfigMaps](https://kubernetes.io/docs/concepts/configuration/configmap/) and [Secrets](https://kubernetes.io/docs/concepts/configuration/secret/) using the migrate configuration script, perform the following steps:
 
 a. On z/OS, run the following command:
 
@@ -69,7 +70,17 @@ cd <instance-dir>
 o
 ``` 
 
-This creates a file, `zowe-config-exported-k8s.yaml`.
+This migration script supports these parameters:
+
+- `-x`: is the list of domains you will use to visit Zowe Kubernetes cluster separated by comma. These domains and IP addresses will be added to your new certificate if needed. This is optional, default value is `localhost`.
+- `-n`: is the Zowe Kubernetes cluster namespace. This is optional, default value is `zowe`.
+- `-u`: is the Kubernetes cluster name. This is optional, default value is `cluster.local`.
+- `-p`: is the password of local certificate authority PKCS#12 file. This is optional, default value is `local_ca_password`.
+- `-a`: is the certificate alias of local certificate authority. This is optional, default value is `localca`.
+- `-v`: is a switch to enable verbose mode which will display more debugging information.
+
+
+Running this command creates a file, `zowe-config-exported-k8s.yaml`.
 It contains ConfigMaps (`zowe-config`, `zowe-certificates-cm`) and Secrets (`zowe-certificates-secret`) Kubernetes objects which are based upon the Zowe instance and keystore used. The content should look similar to `samples/config-cm.yaml`, `samples/certificates-cm.yaml` and `samples/certificates-secret.yaml` but with real values.
 
 b. Copy the file over to the computer with Kubernetes.
@@ -91,71 +102,121 @@ To verify:
    This command must display a Secret `zowe-certificates-secret`.
 
 
-### 4. Expose Gateway and Discovery
+### 4. Expose API Mediaiton Layer Components
 
-This step makes Zowe's Gateway and Discovery servers available over a network. The step varies depending upon your Kubernetes cluster configuration. If you are uncertain about this section, please contact your Kubernetes administrator or reach out to the Zowe community.
+This step makes Zowe's Gateway, Discovery, and API Catalog servers available over a network.
+The Gateway is always required to be externally accessible, and depending upon your environment the Discovery service may also need to be externally accessible.
 
-#### Create Service
+The actions you need to take in this step vary depending upon your Kubernetes cluster configuration. If you are uncertain about this section, please contact your Kubernetes administrator or the Zowe community.
+
+#### 4a. Create Service
 
 You can setup either a `LoadBalancer` or `NodePort` type [Service](https://kubernetes.io/docs/concepts/services-networking/service/).
 
-`LoadBalancer` is a good choice for Service when Kuberenetes is being provided by:
-  * Cloud Vendors
-  * Docker Desktop
+**NOTE:** Because `NodePort` cannot be used together with `NetworkPolicies`, `LoadBalancer` and `Ingress` is a preferred configuration option.
 
-`NodePort` is an alternative for when:
-  * Kubenetes is running on your own server hardware, for example with minikube
-  * You don't have a load balancer
+The Table below is a suggestion for what steps you may take depending on which Kubernetes provider you use:
+<a id="table"></a>
+| Kubernetes provider       | Service                  | Additional setups required                                 |
+| :------------------------ | :----------------------  | :--------------------------------------------------------- |
+| minikube                  | LoadBalancer or NodePort | [Port Forward](#4b-port-forward-for-minikube-only)         |
+| docker-desktop            | LoadBalancer             | none                                                       |
+| bare-metal                | LoadBalancer or NodePort | [Create Ingress](#4c-create-ingress-for-bare-metal-only)   |
+| cloud-vendors             | LoadBalancer             | none                                                       |
+| OpenShift                 | LoadBalancer or NodePort | [Create Route](#4d-create-route-for-openshift-only)        |
 
-*Option 1 - Applying LoadBalancer Service*
 
-Run the commands:
+**Defining api-catalog service**
+api-catalog-service is required by Zowe, but not necessarily exposed to external users. So api-catalog-service is defined as type ClusterIP. 
 
+To define this service, run the command:
+
+```
+kubectl apply -f samples/api-catalog-service.yaml
+```
+
+Upon success, you should see following output: 
+
+```
+service/api-catalog-service created
+```
+
+Then, you can proceed with creating the Gateway and Discovery services according to your environment.
+
+*Applying Gateway Service*
+
+If using `LoadBalancer`, run the command:
 
 ```
 kubectl apply -f samples/gateway-service-lb.yaml
+```
+
+Or if using `NodePort` instead:
+* First check spec.ports[0].nodePort as this will be the port to be exposed to external. The default gateway port is not 7554 but 32554. You can use https://<your-k8s-node>:32554/ to access APIML Gateway.
+
+* Then run the command:
+
+```
+kubectl apply -f samples/gateway-service-np.yaml
+```
+
+To verify either case:
+
+`kubectl get services --namespace zowe`
+ This command must display the service `gateway-service`.
+
+*Applying Discovery Service*
+
+Exposing the Discovery service is only required when there is a Zowe service or extension which needs to be registered to the API Mediation Layer but is running outside of Kubernetes, such as on z/OS. Otherwise, the discovery service can remain accessible only within the Kubernetes environment.
+
+**Optional** To setup the discovery service without exposing it externally, edit `samples/discovery-service-lb.yaml` if using `LoadBalancer` type services, or `samples/discovery-service-np.yaml` if using `NodePort` type services. In either file, specify `ClusterIP` as the type, replacing the `NodePort` or `LoadBalancer` value.
+
+
+To enable the service externally when using `LoadBalancer` services, run the command:
+
+```
 kubectl apply -f samples/discovery-service-lb.yaml
 ```
 
-To verify:
+Or if using `NodePort` instead:
+* First check spec.ports[0].nodePort as this will be the port to be exposed to external. The default discovery port is not 7553 but 32553. You can use https://<your-k8s-node>:32553/ to access APIML Discovery.
 
-`kubectl get services --namespace zowe`
- This command must display the two Services `gateway-service` and `discovery-service`.
-
-
-*Option 2 - Applying NodePort Service*
-
-To apply a `NodePort` Service, make the following changes:
-
-a. Check the `samples/gateway-service-np.yaml` and `samples/discovery-service-np.yaml` files to verify or change the following values:
-
-* `spec.type`.
-* `spec.ports[0].nodePort` - this will be the port exposed externally, meaning if you are using `NodePort` service, the default gateway port is not `7554` but `32554`. You can use `https://<your-k8s-node>:32554/` to access APIML Gateway.
-
-b. Run the commands:
+* Then run the command:
 
 ```
-kubectl apply -f samples/gateway-service-lb.yaml
-kubectl apply -f samples/discovery-service-lb.yaml
+kubectl apply -f samples/discovery-service-np.yaml
 ```
 
-To verify:
+To verify either case:
 
 `kubectl get services --namespace zowe`
- This command must display the two Services `gateway-service` and `discovery-service`.
+ This command must display the service `discovery-service`. 
 
-#### Create Ingress
+Upon completion of this 4a. Create Service section, you may need to run additional setups. Refer to "Additional setups required" in the table. Return to table If you don't need additional setups, you can skip 4b, 4c, 4d and jump directly to Apply Zowe section.
 
-You may not need to define an `Ingress` if:
-  * You choose `NodePort` for the Services
-  * The Kubernetes cluster is from a Cloud vendor or Docker Desktop.
-  * You are using OpenShift
+#### 4b. Port forwarding (minikube)
+
+[Kubectl port-forward](https://kubernetes.io/docs/tasks/access-application-cluster/port-forward-access-application-cluster/) allows you to access and interact with internal Kubernetes cluster processes from your localhost. For debugging or development, you may wish to port forward to make Zowe gateway or discovery service available externally quickly.
+
+To use port-forward, run the command: 
+
+```
+kubectl port-forward -n zowe svc/gateway-service --address=<your-ip> <external-port>:<internal-port, such as 7554> &
+kubectl port-forward -n zowe svc/discovery-service --address=<your-ip> <external-port>:<internal-port, such as 7553> &
+```
+
+The `&` at the command will run the command as a background process, as otherwise it will occupy the terminal indefintely until canceled as a foreground service.
+
+
+Upon completion, you can finish the setup by [apply zowe and starting it](k8s-using.md)
+
+#### 4c. Create Ingress (Bare-metal)
 
 An [Ingress](https://kubernetes.io/docs/concepts/services-networking/ingress/) gives Services externally-reachable URLs, and may provide other abilities such as traffic load balancing.
 
 To create Ingress, perform the following steps:
 
-a. Check and set the values of `spec.rules[0].http.host` in `samples/gateway-ingress.yaml` and `samples/discovery-ingress.yaml` before applying them.
+a. Edit `samples/gateway-ingress.yaml` and `samples/discovery-ingress.yaml` before applying them, by uncommenting the lines (19 and 20) for defining `spec.rules[0].host` and `http:`, and then commenting out the line below, `- http:` 
 
 b. Run the following commands:
 
@@ -169,7 +230,9 @@ To verify:
 `kubectl get ingresses --namespace zowe`
 This command must display two Ingresses `gateway-ingress` and `discovery-ingress`.
 
-#### Create Route
+Upon completion, you can finish the setup by [apply zowe and starting it](k8s-using.md)
+
+#### 4d. Create Route (OpenShift)
 
 If you are using OpenShift container platform, you must define `Route` instead of `Ingress`.
 
@@ -191,18 +254,7 @@ To verify:
 `oc get routes --namespace zowe`
 This command must displays the two Services `gateway` and `discovery`.
 
-### 5. Port forwarding
-
-[Kubectl port-forward](https://kubernetes.io/docs/tasks/access-application-cluster/port-forward-access-application-cluster/) allows you to access and interact with internal Kubernetes cluster processes from your localhost. For debugging or development, you may wish to port forward to make Zowe gateway or discovery service available externally quickly.
-
-To use port-forward, run the command: 
-
-```
-kubectl port-forward -n zowe svc/gateway-service --address=<your-ip> <external-port>:<internal-port, such as 7554> &`
-```
-
-The `&` at the command will run the command as a background process, as otherwise it will occupy the terminal indefintely until canceled as a foreground service.
-
+Upon completion, you can finish the setup by [apply zowe and starting it](k8s-using.md)
 
 
 ## Customizing or manually creating ConfigMaps and Secrets
@@ -254,6 +306,9 @@ To manually create the [ConfigMaps](https://kubernetes.io/docs/concepts/configur
 * Must append and customize these 2 values:
   * `ZWED_agent_host=${ZOWE_ZOS_HOST}`
   * `ZWED_agent_https_port=${ZOWE_ZSS_SERVER_PORT}`
+
+
+If you are using `zowe.yaml`, the above configuration items are still valid, but should use the matching `zowe.yaml` configuration entries. Check [Updating the zowe.yaml configuration file](https://docs.zowe.org/stable/user-guide/configure-instance-directory/#updating-the-zoweyaml-configuration-file) for more details.
 
 2. A ConfigMap, with values based upon a Zowe keystore's `zowe-certificates.env` and similar to the example `samples/certificates-cm.yaml`.
 

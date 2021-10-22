@@ -133,6 +133,33 @@ module.exports = {
       ],
     },
     {
+      "collapsed": true,
+      "type": "category",
+      "label": "Installing Zowe Containers",
+      "items": [
+        {
+          "type": "doc",
+          "id": "version-1.24.x/user-guide/k8s-introduction"
+        },
+        {
+          "type": "doc",
+          "id": "version-1.24.x/user-guide/k8s-prereqs"
+        },
+        {
+          "type": "doc",
+          "id": "version-1.24.x/user-guide/k8s-downloading"
+        },
+        {
+          "type": "doc",
+          "id": "version-1.24.x/user-guide/k8s-config.md"
+        },
+        {
+          "type": "doc",
+          "id": "version-1.24.x/user-guide/k8s-using.md"
+        }
+      ],
+    },
+    {
       type: "category",
       label: "Installing Zowe CLI",
       items: [
@@ -294,6 +321,10 @@ module.exports = {
       ],
     },
     "troubleshoot/troubleshoot-zos",
+    {
+      "type": "doc",
+      "id": "version-v1.24.x/troubleshoot/k8s-troubleshoot"
+    },
     {
       type: "category",
       label: "Zowe API Mediation Layer",

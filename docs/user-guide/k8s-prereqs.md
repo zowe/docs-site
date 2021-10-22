@@ -17,6 +17,8 @@
 
 ### Kubernetes Cluster
 
+The Zowe containerization solution is compatible with Kubernetes v1.19+ or OpenShift v4.6+.
+
 You can prepare a Kubernetes cluster based on your requirements in many different ways.
 
 For development purpose, you can setup a Kubernetes cluster on your local computer by:
