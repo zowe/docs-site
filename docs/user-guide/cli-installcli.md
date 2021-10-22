@@ -7,9 +7,9 @@ Install Zowe&trade; CLI on your computer.
 ## Methods to install Zowe CLI
 
 Use one of the following methods to install Zowe CLI.
-
 - [Installing Zowe CLI from a local package](#installing-zowe-cli-from-a-local-package)
 - [Installing Zowe CLI from an online registry](#installing-zowe-cli-from-an-online-registry)
+
 
 **Note:** If you do not have access to the public npm registry at your site, you might want to install the CLI via a proxy server. See [Installing Zowe CLI Via Proxy](install-cli-via-proxy.md) for more information.
 
@@ -23,16 +23,16 @@ If you do not have internet access at your site, use the following method to ins
 
 1. Address the following software requirements for the core CLI:
    - **Node.js:** Install a currently supported Node.js LTS version. For an up-to-date list of supported LTS versions, see [Nodejs.org](https://nodejs.org/en/about/releases/).
-   :::tip
+   :::
    You might need to restart the command prompt after installing Node.js. Issue the command `node --version` to verify that Node.js is installed.
    :::
 
    - **npm:** Install a version of Node Package Manager (npm) that is compatible with your version of Node.js.
-   :::tip
+   :::
    Npm is included with most Node.js installations. Issue the command `npm --version` to check your current version. You can reference the [Node.js release matrix](https://nodejs.org/en/download/releases/) to verify that the versions are compatible.
    :::
 
-   :::note
+   :::
    If you are using Node.js version 16 with npm version 8 on Windows, wish to install from the TGZ, and have limited Internet access, refer to [Installing Zowe CLI with Node.js 16 on Windows](cli-install-cli-nodejs-windows.md).
    :::
 
