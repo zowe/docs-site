@@ -1,10 +1,10 @@
-# Installing Zowe CLI <!-- omit in toc -->
+# Installing Zowe CLI
 
 Install Zowe&trade; CLI on your computer.
 
 **Tip:** If you are familiar with command-line tools and want to get started using Zowe CLI quickly, see [Zowe CLI quick start](../getting-started/cli-getting-started.md). You can learn about new CLI features in the [Release notes](../getting-started/summaryofchanges.md).
 
-## Methods to install Zowe CLI <!-- omit in toc -->
+## Methods to install Zowe CLI
 
 Use one of the following methods to install Zowe CLI.
 - [Installing Zowe CLI from a local package](#installing-zowe-cli-from-a-local-package)
@@ -23,13 +23,17 @@ If you do not have internet access at your site, use the following method to ins
 
 1. Address the following software requirements for the core CLI:
    - **Node.js:** Install a currently supported Node.js LTS version. For an up-to-date list of supported LTS versions, see [Nodejs.org](https://nodejs.org/en/about/releases/).
-   :::tip
+   :::
    You might need to restart the command prompt after installing Node.js. Issue the command `node --version` to verify that Node.js is installed.
    :::
 
    - **npm:** Install a version of Node Package Manager (npm) that is compatible with your version of Node.js.
-   :::tip
+   :::
    Npm is included with most Node.js installations. Issue the command `npm --version` to check your current version. You can reference the [Node.js release matrix](https://nodejs.org/en/download/releases/) to verify that the versions are compatible.
+   :::
+
+   :::
+   If you are using Node.js version 16 with npm version 8 on Windows, wish to install from the TGZ, and have limited Internet access, refer to [Installing Zowe CLI with Node.js 16 on Windows](cli-install-cli-nodejs-windows.md).
    :::
 
    - **(Optional) ssh2 Package:** Zowe CLI has a dependency on the ssh2 package. This package allows for more secure cryptographic ciphers to be used first on supporting hardware. See [Installing the ssh2 Package for Zowe CLI](cli-installing-ssh2-package.md).
