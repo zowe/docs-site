@@ -486,9 +486,11 @@ __Expected Return Codes and Messages:__ You will receive a return code of 0 if t
 
 Upload the AZWE001.readme.txt file in text format and the AZWE001.pax.Z file in binary format from your workstation to the z/OS UNIX file system. The instructions in this section are also in the AZWE001.readme.txt file that you downloaded.
 
-**Note:** Ensure you download the pax file in a different file system than where you put Zowe runtime.
+**Note:** Ensure you download the pax file in a different file system than where you put Zowe runtime. 
 
 There are many ways to transfer the files or make them available to the z/OS system where the package will be installed. In the following sample dialog, we use FTP from a Microsoft Windows command line to do the transfer. This assumes that the z/OS host is configured as an FTP host/server and that the workstation is an FTP client.  Commands or other information entered by the user are in bold, and the following values are assumed.
+
+If you are not sure which protocol or port to use to transfer the files or any access that might be needed, you may need to consult with the network administrator. 
 
 User enters: | Values 
 ---|---
@@ -499,6 +501,8 @@ d: | Location of the downloaded files
 @zfs_path@ | z/OS UNIX path where to store the files. This matches the @zfs_path@ variable you specified in the previous step.
 
 **Important!**  The AZWE001.pax.Z file must be uploaded to the z/OS driving system in binary format, or the subsequent UNPAX step will fail.
+
+This step of tranferring the files can take a long time to run, depending on the capacity of your system, and on what other jobs are running.
 
 Sample FTP upload scenario:
 
@@ -656,12 +660,15 @@ where, `&VOLSER` is a DISK volume with sufficient free space to hold temporary c
 
 The following sample installation jobs are provided in `hlq.ZOWE.AZWE001.F1`, or equivalent, as part of the project to help you install Zowe:
 
+<!--Observer notes 1: If you do not create a new filesystem for the runtime USS components of API ML separate to the install USS subdirectory (an optional step), you need to create the subdirectories in PuTTY for the runtime directory.
+Suggestions: ZWE4ZFS is optional and it should be indicated in the doc and if you don't run it, you need to run the following Unix commands in USS cd [installdir] mkdir -p usr/lpp/zowe in order to create the required directory. -->
+
 Job Name | Job Type | Description | RELFILE
 ---|---|---|---
-ZWE1SMPE | SMP/E | Sample job to create an SMP/E environment (optional) | ZOWE.AZWE001.F1
+ZWE1SMPE | SMP/E | (Optional) Sample job to create an SMP/E environment | ZOWE.AZWE001.F1
 ZWE2RCVE | RECEIVE | Sample SMP/E RECEIVE job  | ZOWE.AZWE001.F1
 ZWE3ALOC | ALLOCATE | Sample job to allocate target and distribution libraries | ZOWE.AZWE001.F1
-ZWE4ZFS | ALLOMZFS | Sample job to allocate, create mountpoint, and mount zFS data sets | ZOWE.AZWE001.F1
+ZWE4ZFS | ALLOMZFS | (Optional) Sample job to allocate, create mountpoint, and mount zFS data sets | ZOWE.AZWE001.F1
 ZWE5MKD | MKDIR | Sample job to invoke the supplied ZWEMKDIR EXEC to allocate file system paths | ZOWE.AZWE001.F1
 ZWE6DDEF | DDDEF | Sample job to  define SMP/E DDDEFs | ZOWE.AZWE001.F1
 ZWE7APLY | APPLY | Sample SMP/E APPLY job | ZOWE.AZWE001.F1
@@ -804,8 +811,6 @@ The target system HFS or zFS data set must be mounted on the driving system when
 Before running the sample job to create the paths in the file system, you must ensure that OMVS is active on the driving system and that the target system's HFS or zFS file system is mounted on the driving system. zFS must be active on the driving system if you are installing Zowe into a file system that is zFS.
 
 If you plan to install Zowe into a new HFS or zFS file system, you must create the mountpoint and mount the new file system on the driving system for Zowe.
-
-<!--Should this be /usr/lpp/zowe/v1?-->
 
 The recommended mountpoint is _/usr/lpp/zowe._
 

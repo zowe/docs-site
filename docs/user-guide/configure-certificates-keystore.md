@@ -39,6 +39,8 @@ We recommend that you review all parameters in the `zowe-setup-certificates.env`
 
 Use the the following procedure to customize the values for variables in the `zowe-setup-certificates.env` file.
 
+<!--Issue: Both the zowe-setup-certificates.sh and zowe-configure-instance.sh ask for a zOSMF host and port. Question: Is a working connection between them required? What about for customers who wish to install this without z/OSMF. Include an explanation about how these scripts use z/OSMF and if they will work if the customer doesn't have this set up. -->
+
 **Follow these steps:**
 
 1. Copy the `bin/zowe-setup-certificates.env` file from the read-only location to a new 
