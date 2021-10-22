@@ -133,30 +133,14 @@ module.exports = {
       ],
     },
     {
-      "collapsed": true,
       "type": "category",
       "label": "Installing Zowe Containers",
       "items": [
-        {
-          "type": "doc",
-          "id": "version-1.24.x/user-guide/k8s-introduction"
-        },
-        {
-          "type": "doc",
-          "id": "version-1.24.x/user-guide/k8s-prereqs"
-        },
-        {
-          "type": "doc",
-          "id": "version-1.24.x/user-guide/k8s-downloading"
-        },
-        {
-          "type": "doc",
-          "id": "version-1.24.x/user-guide/k8s-config.md"
-        },
-        {
-          "type": "doc",
-          "id": "version-1.24.x/user-guide/k8s-using.md"
-        }
+        "user-guide/k8s-introduction",
+        "user-guide/k8s-prereqs",
+        "user-guide/k8s-downloading",
+        "user-guide/k8s-config.md",
+        "user-guide/k8s-using.md"
       ],
     },
     {
@@ -305,6 +289,7 @@ module.exports = {
         "extend/extend-desktop/mvd-conda",
       ],
     },
+    "extend/k8s-extend",
     "extend/extend-ze/ze-extensions",
     "extend/extend-sdks",
     "extend/zowe-conformance-program",
@@ -321,10 +306,7 @@ module.exports = {
       ],
     },
     "troubleshoot/troubleshoot-zos",
-    {
-      "type": "doc",
-      "id": "version-v1.24.x/troubleshoot/k8s-troubleshoot"
-    },
+    "troubleshoot/k8s-troubleshoot",
     {
       type: "category",
       label: "Zowe API Mediation Layer",
