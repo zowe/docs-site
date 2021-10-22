@@ -139,8 +139,8 @@ module.exports = {
         "user-guide/k8s-introduction",
         "user-guide/k8s-prereqs",
         "user-guide/k8s-downloading",
-        "user-guide/k8s-config.md",
-        "user-guide/k8s-using.md"
+        "user-guide/k8s-config",
+        "user-guide/k8s-using"
       ],
     },
     {
@@ -148,7 +148,7 @@ module.exports = {
       label: "Installing Zowe CLI",
       items: [
         "user-guide/systemrequirements-cli",
-        "user-guide/cli-installing-ssh2-package.md",
+        "user-guide/cli-installing-ssh2-package",
         "user-guide/cli-installcli",
         "user-guide/install-cli-via-proxy",
         "user-guide/cli-updatingcli",

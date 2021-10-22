@@ -119,7 +119,7 @@ You can setup either a `LoadBalancer` or `NodePort` type [Service](https://kuber
 **NOTE:** Because `NodePort` cannot be used together with `NetworkPolicies`, `LoadBalancer` and `Ingress` is a preferred configuration option.
 
 The Table below is a suggestion for what steps you may take depending on which Kubernetes provider you use:
-<a id="table"></a>
+
 | Kubernetes provider       | Service                  | Additional setups required                                 |
 | :------------------------ | :----------------------  | :--------------------------------------------------------- |
 | minikube                  | LoadBalancer or NodePort | [Port Forward](#4b-port-forward-for-minikube-only)         |
@@ -130,6 +130,7 @@ The Table below is a suggestion for what steps you may take depending on which K
 
 
 **Defining api-catalog service**
+
 api-catalog-service is required by Zowe, but not necessarily exposed to external users. So api-catalog-service is defined as type ClusterIP. 
 
 To define this service, run the command:
@@ -146,7 +147,7 @@ service/api-catalog-service created
 
 Then, you can proceed with creating the Gateway and Discovery services according to your environment.
 
-*Applying Gateway Service*
+**Applying Gateway Service**
 
 If using `LoadBalancer`, run the command:
 
@@ -155,7 +156,7 @@ kubectl apply -f samples/gateway-service-lb.yaml
 ```
 
 Or if using `NodePort` instead:
-* First check spec.ports[0].nodePort as this will be the port to be exposed to external. The default gateway port is not 7554 but 32554. You can use https://<your-k8s-node>:32554/ to access APIML Gateway.
+* First check `spec.ports[0].nodePort` as this will be the port to be exposed to external. The default gateway port is not 7554 but 32554. You can use `https://<your-k8s-node>:32554/` to access APIML Gateway.
 
 * Then run the command:
 
@@ -168,7 +169,7 @@ To verify either case:
 `kubectl get services --namespace zowe`
  This command must display the service `gateway-service`.
 
-*Applying Discovery Service*
+**Applying Discovery Service**
 
 Exposing the Discovery service is only required when there is a Zowe service or extension which needs to be registered to the API Mediation Layer but is running outside of Kubernetes, such as on z/OS. Otherwise, the discovery service can remain accessible only within the Kubernetes environment.
 
@@ -182,7 +183,7 @@ kubectl apply -f samples/discovery-service-lb.yaml
 ```
 
 Or if using `NodePort` instead:
-* First check spec.ports[0].nodePort as this will be the port to be exposed to external. The default discovery port is not 7553 but 32553. You can use https://<your-k8s-node>:32553/ to access APIML Discovery.
+* First check `spec.ports[0].nodePort` as this will be the port to be exposed to external. The default discovery port is not 7553 but 32553. You can use `https://<your-k8s-node>:32553/` to access APIML Discovery.
 
 * Then run the command:
 
