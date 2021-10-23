@@ -69,7 +69,7 @@ a. On z/OS, run the following command:
 
 ```
 cd <instance-dir> 
-./bin/utils/convert-for-k8s.sh > zowe-config-exported-k8s.yaml
+./bin/utils/convert-for-k8s.sh -x "my-k8s-cluster.company.com,9.10.11.12"
 o
 ``` 
 
@@ -83,8 +83,7 @@ This migration script supports these parameters:
 - `-v`: is a switch to enable verbose mode which will display more debugging information.
 
 
-Running this command creates a file, `zowe-config-exported-k8s.yaml`.
-It contains ConfigMaps (`zowe-config`, `zowe-certificates-cm`) and Secrets (`zowe-certificates-secret`) Kubernetes objects which are based upon the Zowe instance and keystore used. The content should look similar to `samples/config-cm.yaml`, `samples/certificates-cm.yaml` and `samples/certificates-secret.yaml` but with real values.
+As a result, it displays ConfigMaps (`zowe-config`, `zowe-certificates-cm`) and Secrets (`zowe-certificates-secret`) Kubernetes objects which are based upon the Zowe instance and keystore used. The content should look similar to `samples/config-cm.yaml`, `samples/certificates-cm.yaml` and `samples/certificates-secret.yaml` but with real values. Follow the instruction on script output to copy the output and save as a YAML file `configs.yaml` on your server that you have set up kubernetes, next run following command to apply configurations:
 
 b. Copy the file over to the computer with Kubernetes.
 
@@ -105,7 +104,7 @@ To verify:
    This command must display a Secret `zowe-certificates-secret`.
 
 
-### 4. Expose API Mediaiton Layer Components
+### 4. Expose API Mediation Layer Components
 
 This step makes Zowe's Gateway, Discovery, and API Catalog servers available over a network.
 The Gateway is always required to be externally accessible, and depending upon your environment the Discovery service may also need to be externally accessible.
@@ -209,7 +208,7 @@ kubectl port-forward -n zowe svc/gateway-service --address=<your-ip> <external-p
 kubectl port-forward -n zowe svc/discovery-service --address=<your-ip> <external-port>:<internal-port, such as 7553> &
 ```
 
-The `&` at the command will run the command as a background process, as otherwise it will occupy the terminal indefintely until canceled as a foreground service.
+The `&` at the command will run the command as a background process, as otherwise it will occupy the terminal indefinitely until canceled as a foreground service.
 
 
 Upon completion, you can finish the setup by [apply zowe and starting it](k8s-using.md)
@@ -280,6 +279,11 @@ To manually create the [ConfigMaps](https://kubernetes.io/docs/concepts/configur
 * `ZWE_EXTERNAL_HOSTS` is suggested to define as a list domains you are using to access your Kubernetes cluster.
 
 * `ZOWE_EXTERNAL_HOST=$(echo "${ZWE_EXTERNAL_HOSTS}" | awk -F, '{print $1}' | tr -d '[[:space:]]')` is needed to define after `ZWE_EXTERNAL_HOSTS`. It's the primary external domain.
+
+* `ZWE_EXTERNAL_PORT` (or `zowe.externalPort` if you are using `zowe.yaml`) must be the port you expose to end-user. This value is optional if it's same as default `GATEWAY_PORT` `7554`. With default settings,
+  * if you choose `LoadBalancer` `gateway-service`, this value is optional, or set to `7554`,
+  * if you choose `NodePort` `gateway-service` and access the service directly, this value should be same as `spec.ports[0].nodePort` with default value `32554`,
+  * if you choose `NodePort` `gateway-service` and access the service through port forwarding, the value should be the forwarded port you set.
 
 * `ZOWE_ZOS_HOST` is recommended to be set to where the z/OS system where your Zowe ZSS/ZIS is running.
 
