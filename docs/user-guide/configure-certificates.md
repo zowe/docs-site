@@ -3,6 +3,7 @@
 As a system administrator, review this article to learn about the key concepts of Zowe certificates.
 
 Zowe uses a certificate to encrypt data for communication across secure sockets. An instance of Zowe references a USS directory referred to as a `KEYSTORE_DIRECTORY` which contains information about where the certificate is located.
+<!--issue: Make separate pages for keyring/keystore instructions.-->
  
 ## Northbound Certificate
 

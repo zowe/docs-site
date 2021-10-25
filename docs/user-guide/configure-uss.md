@@ -19,7 +19,7 @@ For more information on USS, see the following resources:
 
 ## Setting up USS for the first time
 
-If you have not enabled USS for your z/OS environment before, the Zowe SMP/E distribution of Zowe provides a number of JCL jobs to assist with this purpose.  If you are not familiar with USS file system or configurations required for setting up Zowe, you can consult your USS administrator. 
+If you have not enabled USS for your z/OS environment before, the SMP/E distribution of Zowe provides a number of JCL jobs to assist with this purpose. You can consult with your USS administrator if you need more information such as the USS file system. 
 
 ## Language environment
 
