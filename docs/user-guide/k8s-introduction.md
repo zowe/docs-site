@@ -9,7 +9,7 @@ Zowe (server) containers are available for download as an alternative to running
 
 If you are new to containers, you can learn about the concepts from the [Kubernetes website](https://kubernetes.io/docs/concepts/overview/what-is-kubernetes/).
 
-The Zowe containers are designed to be run together with extensions and Zowe utilities, and therefore are built for orchestration software that can manage the relationship and lifecycle of the containers. The following topics guide you to set up and use Zowe's containers with the Kubernetes orchestration software. 
+The Zowe containers are designed to be run together with extensions and Zowe utilities and therefore are built for orchestration software that can manage the relationship and lifecycle of the containers. The following topics guide you to set up and use Zowe's containers with the Kubernetes orchestration software. 
 
 1. [Prerequisites](k8s-prereqs.md)
 2. [Downloading and installing](k8s-downloading.md)
@@ -21,4 +21,4 @@ The Zowe containers are designed to be run together with extensions and Zowe uti
 
 - IP Explorer App Framework application is not currently available in Kubernetes deployment.
 - You may have an issue that API Catalog is not showing up in Zowe Desktop. Temporary mitigation is restarting the api-catalog Pod.
-- You may have issue to use API Catalog Try Out function. The test server is not reachable from your browser.
+- You may have an issue using API Catalog Try Out function. The test server is not reachable from your browser.

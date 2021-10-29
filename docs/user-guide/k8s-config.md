@@ -32,7 +32,7 @@ kubectl apply -f common/zowe-ns.yaml
 kubectl apply -f common/zowe-sa.yaml
 ```
 
-Note that by default, `zowe-sa` service account has `automountServiceAccountToken` disabled for security purpose.
+Note that by default, `zowe-sa` service account has `automountServiceAccountToken` disabled for security purposes.
 
 To verify, check the following configurations.
 
@@ -46,7 +46,7 @@ To verify, check the following configurations.
 
 ## 2. Create Persistent Volume Claim (PVC)
 
-Zowe's [PVC](https://kubernetes.io/docs/concepts/storage/persistent-volumes/) has a default StorageClass value that may not apply to all Kubernetes clusters. Check and customize the `storageClassName` value of [samples/workspace-pvc.yaml](https://raw.githubusercontent.com/zowe/zowe-install-packaging/master/containers/kubernetes/samples/workspace-pvc.yaml) as needed. You can use `kubectl get sc` to confirm which StorageClass you can use. 
+Zowe's [PVC](https://kubernetes.io/docs/concepts/storage/persistent-volumes/) has a default StorageClass value that may not apply to all Kubernetes clusters. Check and customize the `storageClassName` value of `samples/workspace-pvc.yaml` as needed. You can use `kubectl get sc` to confirm which StorageClass you can use.
 
 After you customize the `storageClassName` value, apply the result by issuing the following commands:
 
@@ -54,11 +54,35 @@ After you customize the `storageClassName` value, apply the result by issuing th
 kubectl apply -f samples/workspace-pvc.yaml
 ```
 
-To verify, run the following commands and check that `STATUS` shows as `Bound`.
+To verify, run the following commands and check if the `STATUS` of line item `zowe-workspace-pvc` shows as `Bound`.
 
 ```
 kubectl get pvc --namespace zowe
-``` 
+```
+
+Please note that `zowe-workspace-pvc` `PersistentVolumeClaim` must be declared in access mode `ReadWriteMany`.
+
+In some Kubernetes environment, you may need to define `PeristentVolume` and define `volumeName` in `PersistentVolumeClaim` instead of defining `storageClassName`. Please consult your Kubernetes administrator to confirm what's the appropriate way for your environment. This is an example to configure `PersistentVolumeClaim` with pre-configured `zowe-workspace-pv` `PeristentVolume`.
+
+```yaml
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: zowe-workspace-pvc
+  namespace: zowe
+  labels:
+    app.kubernetes.io/name: zowe
+    app.kubernetes.io/instance: zowe
+    app.kubernetes.io/managed-by: manual
+spec:
+  storageClassName: ""
+  volumeName: zowe-workspace-pv
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 50Mi
+```
 
 ## 3. Create and modify ConfigMaps and Secrets
 
@@ -75,7 +99,6 @@ a. On z/OS, run the following command:
 ```
 cd <instance-dir> 
 ./bin/utils/convert-for-k8s.sh -x "my-k8s-cluster.company.com,9.10.11.12"
-o
 ``` 
 
 This migration script supports these parameters:
@@ -83,21 +106,21 @@ This migration script supports these parameters:
 - `-x`: is a comma-separated list of domains you will use to visit the Zowe Kubernetes cluster. These domains and IP addresses will be added to your new certificate if needed. This is optional. The default value is `localhost`.
 - `-n`: is the Zowe Kubernetes cluster namespace. This is optional. The default value is `zowe`.
 - `-u`: is the Kubernetes cluster name. This is optional. The default value is `cluster.local`.
-- `-p`: is the password of local certificate authority PKCS#12 file. This is optional. The default value is `local_ca_password`.
-- `-a`: is the certificate alias of local certificate authority. This is optional. The default value is `localca`.
+- `-p`: is the password of the local certificate authority PKCS#12 file. This is optional. The default value is `local_ca_password`.
+- `-a`: is the certificate alias of the local certificate authority. This is optional. The default value is `localca`.
 - `-v`: is a switch to enable verbose mode which will display more debugging information.
 
-As a result, it displays ConfigMaps (`zowe-config`, `zowe-certificates-cm`) and Secrets (`zowe-certificates-secret`) Kubernetes objects which are based on the Zowe instance and keystore used. The content looks similar to `samples/config-cm.yaml`, `samples/certificates-cm.yaml` and `samples/certificates-secret.yaml` but with real values. Follow the instructions in the script output to copy the output and save as a YAML file `configs.yaml` on your server where you have set up Kubernetes.
+As a result, it displays ConfigMaps (`zowe-config`, `zowe-certificates-cm`) and Secrets (`zowe-certificates-secret`) Kubernetes objects which are based on the Zowe instance and keystore used. The content looks similar to `samples/config-cm.yaml`, `samples/certificates-cm.yaml` and `samples/certificates-secret.yaml` but with real values.
 
-b. Copy the file over to the computer with Kubernetes.
+b. Follow the instructions in the script output to copy the output and save it as a YAML file `configs.yaml` on your computer where you manage Kubernetes.
 
-c. Remove the .yaml file from z/OS for security.
-
-d. Apply the file into Kubernetes:
+c. Apply the file into Kubernetes:
 
 ```
-`kubectl apply -f /path/to/your/zowe-config-exported-k8s.yaml`
+`kubectl apply -f /path/to/your/configs.yaml`
 ```
+
+d. Remove the previously saved `configs.yaml` file from all systems for security.
 
 To verify:
 
@@ -122,7 +145,7 @@ The actions you need to take in this step vary depending upon your Kubernetes cl
 
 You can set up either a `LoadBalancer` or `NodePort` type [Service](https://kubernetes.io/docs/concepts/services-networking/service/).
 
-**Note:** Because `NodePort` cannot be used together with `NetworkPolicies`, `LoadBalancer` and `Ingress` is a preferred configuration option.
+**Note:** Because `NodePort` cannot be used together with `NetworkPolicies`, `LoadBalancer` and `Ingress` is preferred configuration option.
 
 Review the following table for steps you may take depending on the Kubernetes provider you use. If you don't need additional setups, you can skip steps 4b, 4c, 4d and jump directly to the [Apply zowe](k8s-using.md) section.
 
@@ -137,7 +160,7 @@ Review the following table for steps you may take depending on the Kubernetes pr
 
 #### Defining api-catalog service
 
-`api-catalog-service` is required by Zowe, but not necessarily exposed to external users. Therefore, `api-catalog-service` is defined as type ClusterIP. 
+`api-catalog-service` is required by Zowe, but not necessarily exposed to external users. Therefore, `api-catalog-service` is defined as type `ClusterIP`. 
 
 To define this service, run the command:
 
@@ -161,7 +184,7 @@ If using `LoadBalancer`, run the command:
 kubectl apply -f samples/gateway-service-lb.yaml
 ```
 
-Or if using `NodePort` instead, first check `spec.ports[0].nodePort` as this will be the port to be exposed to external. The default gateway port is not 7554 but 32554. You can use `https://<your-k8s-node>:32554/` to access APIML Gateway. Then, run the following command:
+Or if using `NodePort` instead, first check `spec.ports[0].nodePort` as this will be the port to be exposed to external. In this case, the default gateway port is not 7554 but 32554. You will need to use `https://<your-k8s-node>:32554/` to access APIML Gateway. To apply `NodePort` type `gateway-service`, run the following command:
 
 ```
 kubectl apply -f samples/gateway-service-np.yaml
@@ -185,7 +208,7 @@ To enable the service externally when using `LoadBalancer` services, run the com
 kubectl apply -f samples/discovery-service-lb.yaml
 ```
 
-Or if using `NodePort` instead, first check `spec.ports[0].nodePort` as this will be the port to be exposed to external. The default discovery port is not 7553 but 32553. You can use `https://<your-k8s-node>:32553/` to access APIML Discovery. Then, run the following command:
+Or if using `NodePort` instead, first check `spec.ports[0].nodePort` as this will be the port to be exposed to external. In this case, the default discovery port is not 7553 but 32553. And you will need to use `https://<your-k8s-node>:32553/` to access APIML Discovery. To apply `NodePort` type `discovery-service`, run the following command:
 
 ```
 kubectl apply -f samples/discovery-service-np.yaml
@@ -195,7 +218,7 @@ To verify either case, run the following command and check that this command dis
 
 ```kubectl get services --namespace zowe``` 
 
-Upon completion of all the preceding steps in this [a. Create service](#a-create-service) section, you may need to run additional setups. Refer to "Additional setups required" in the table. If you don't need additional setups, you can skip 4b, 4c, 4d and jump directly to Apply Zowe section.
+Upon completion of all the preceding steps in this [a. Create service](#a-create-service) section, you may need to run additional setups. Refer to "Additional setups required" in the table. If you don't need additional setups, you can skip 4b, 4c, 4d, and jump directly to Apply Zowe section.
 
 ### 4b. Port forwarding (minikube)
 
@@ -208,13 +231,13 @@ kubectl port-forward -n zowe svc/gateway-service --address=<your-ip> <external-p
 kubectl port-forward -n zowe svc/discovery-service --address=<your-ip> <external-port>:<internal-port, such as 7553> &
 ```
 
-The `&` at the command will run the command as a background process, as otherwise it will occupy the terminal indefinitely until canceled as a foreground service.
+The `&` at the command will run the command as a background process, as otherwise, it will occupy the terminal indefinitely until canceled as a foreground service.
 
 Upon completion, you can finish the setup by [applying zowe and starting it](k8s-using.md).
 
 ### 4c. Create Ingress (Bare-metal)
 
-An [Ingress](https://kubernetes.io/docs/concepts/services-networking/ingress/) gives Services externally-reachable URLs, and may provide other abilities such as traffic load balancing.
+An [Ingress](https://kubernetes.io/docs/concepts/services-networking/ingress/) gives Services externally-reachable URLs and may provide other abilities such as traffic load balancing.
 
 To create Ingress, perform the following steps:
 
@@ -237,9 +260,13 @@ Upon completion, you can finish the setup by [applying zowe and starting it](k8s
 
 ### 4d. Create Route (OpenShift)
 
-If you are using OpenShift container platform, you must define `Route` instead of `Ingress`.
+If you are using OpenShift and choose to use `LoadBalancer` services, you may already have an external IP for the service. You can use that external IP to access Zowe APIML Gateway. To verify your service external IP, run:
 
-A [Route](https://docs.openshift.com/enterprise/3.0/architecture/core_concepts/routes.html) is a way to expose a service by giving it an externally-reachable hostname. 
+```
+oc get svc -n zowe
+```
+
+If you see an IP in `EXTERNAL-IP` column, that means your OpenShift is properly configured and can provision external IP for you. If you see `<pending>` and it won't change after waiting for a while, that means you may not be able to use `LoadBalancer` services with your current configuration. Please try `ClusterIP` services and define `Route`. A [Route](https://docs.openshift.com/enterprise/3.0/architecture/core_concepts/routes.html) is a way to expose a service by giving it an externally-reachable hostname. 
 
 To create a route, perform the following steps:
 
@@ -256,7 +283,7 @@ To verify, run the following commands:
 
 ```oc get routes --namespace zowe```
 
-This command must displays the two Services `gateway` and `discovery`.
+This command must display the two Services `gateway` and `discovery`.
 
 Upon completion, you can finish the setup by [applying zowe and starting it](k8s-using.md).
 
@@ -272,7 +299,7 @@ To manually create the [ConfigMaps](https://kubernetes.io/docs/concepts/configur
    * `JAVA_HOME` and `NODE_HOME` are not usually needed if you are using Zowe base images.
    * `ROOT_DIR` must be set to `/home/zowe/runtime`.
    * `KEYSTORE_DIRECTORY` must be set to `/home/zowe/keystore`.
-   * `ZWE_EXTERNAL_HOSTS` is suggested to define as a list domains you are using to access your Kubernetes cluster.
+   * `ZWE_EXTERNAL_HOSTS` is suggested to define as a list of domains you are using to access your Kubernetes cluster.
    * `ZOWE_EXTERNAL_HOST=$(echo "${ZWE_EXTERNAL_HOSTS}" | awk -F, '{print $1}' | tr -d '[[:space:]]')` is needed to define after `ZWE_EXTERNAL_HOSTS`. It's the primary external domain.
    * `ZWE_EXTERNAL_PORT` (or `zowe.externalPort` if you are using `zowe.yaml`) must be the port you expose to end-user. This value is optional if it's same as default `GATEWAY_PORT` `7554`. With default settings,
      * if you choose `LoadBalancer` `gateway-service`, this value is optional, or set to `7554`,
@@ -295,12 +322,12 @@ To manually create the [ConfigMaps](https://kubernetes.io/docs/concepts/configur
    * `APIML_GATEWAY_EXTERNAL_MAPPER` should be set to `https://${GATEWAY_HOST}:${GATEWAY_PORT}/zss/api/v1/certificate/x509/map`.
    * `APIML_SECURITY_AUTHORIZATION_ENDPOINT_URL` should be set to `https://${GATEWAY_HOST}:${GATEWAY_PORT}/zss/api/v1/saf-auth`.
    * `ZOWE_EXPLORER_FRAME_ANCESTORS` should be set to `${ZOWE_EXTERNAL_HOST}:*`
-   * `ZWE_CACHING_SERVICE_PERSISTENT` should NOT be set to `VSAM`. `redis` is suggested. Follow [Redis configuration](https://docs.zowe.org/stable/extend/extend-apiml/api-mediation-redis/#redis-configuration) documentation to customize other redis related variables. Leave the value to empty for debugging purpose.
+   * `ZWE_CACHING_SERVICE_PERSISTENT` should NOT be set to `VSAM`. `redis` is suggested. Follow [Redis configuration](https://docs.zowe.org/stable/extend/extend-apiml/api-mediation-redis/#redis-configuration) documentation to customize other Redis related variables. Leave the value to empty for debugging purposes.
    * Must append and customize these 2 values:
      * `ZWED_agent_host=${ZOWE_ZOS_HOST}`
      * `ZWED_agent_https_port=${ZOWE_ZSS_SERVER_PORT}`
 
-   If you are using `zowe.yaml`, the above configuration items are still valid, but should use the matching `zowe.yaml` configuration entries. Check [Updating the zowe.yaml configuration file](configure-instance-directory#updating-the-zoweyaml-configuration-file) for more details.
+   If you are using `zowe.yaml`, the above configuration items are still valid but should use the matching `zowe.yaml` configuration entries. Check [Updating the zowe.yaml configuration file](configure-instance-directory#updating-the-zoweyaml-configuration-file) for more details.
 
 2. A ConfigMap, with values based upon a Zowe keystore's `zowe-certificates.env` and similar to the example `samples/certificates-cm.yaml`.
 

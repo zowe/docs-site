@@ -6,11 +6,18 @@ After Zowe's containers are installed and configured, you can refer to the follo
 
 The Kubernetes cluster will automatically start as many containers as needed per service according to the Deployment configuration.
 
-To apply the deployment files, run the command:
+To apply the deployment files, run the command if you are using `instance.env`:
 
 ```
-kubectl apply -f workloads/
+kubectl apply -f workloads/instance-env/
 ```
+
+. Or run this command if you are using `zowe.yaml`:
+
+```
+kubectl apply -f workloads/zowe-yaml/
+```
+.
 
 The containers will start soon after applying the deployments.
 
@@ -36,7 +43,7 @@ You can monitor Zowe containers using a UI or CLI.
 
 Kubernetes provides a container that allows you to manage your cluster through a web browser. When using Docker Desktop, it is already installed in the namespace `kubernetes-dashboard`. See the [Kubernetes website](https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/) for install instructions.
 
-[Metrics Server](https://github.com/kubernetes-sigs/metrics-server) is also recommended and is required if you want to define [Horizontal Pod Autoscaler](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/). Check if you have `metrics-server` `Service` in `kube-system` namespace with this command `kubectl get services --namespace kube-system`. If you don't have, you can follow this [Installation](https://github.com/kubernetes-sigs/metrics-server#installation) instruction to install it.
+[Metrics Server](https://github.com/kubernetes-sigs/metrics-server) is also recommended and is required if you want to define [Horizontal Pod Autoscaler](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/). Check if you have `metrics-server` `Service` in `kube-system` namespace with this command `kubectl get services --namespace kube-system`. If you don't have it, you can follow this [Installation](https://github.com/kubernetes-sigs/metrics-server#installation) instruction to install it.
 
 ### Monitoring Zowe containers via CLI
 
@@ -49,7 +56,7 @@ Here are a few commands you can use to monitor your environment:
 * `kubectl logs -n zowe <podid>` will show you the terminal output of a particular pod, with `-f` allowing you to keep the logs open as new messages are added.
 * `kubectl get nodes -n zowe -owide` will tell you more about the environment you're running.
 
-## Stopping, pausing, or removing Zowe containers
+## Stopping, pausing or removing Zowe containers
 
 To temporarily stop a component, locate the `Deployment` component and scale down to `0`. For example, if you want to stop the `jobs-api` container, run this command:
 
@@ -59,7 +66,7 @@ kubectl scale -n zowe deployment jobs-api --replicas=0
 
 You can later re-enable a component by scaling the component back to 1 or more.
 
-If you want to permanently remove a component, you can delete the component `Deployment`. To use `jobs-api` as example, run this command:
+If you want to permanently remove a component, you can delete the component `Deployment`. To use `jobs-api` as an example, run this command:
 
 ```
 kubectl delete -n zowe deployment jobs-api
