@@ -33,7 +33,7 @@ public interface SafIdtProvider {
 The `SafIdtProvider` interface contains the `generate` and `verify` methods, that can be overridden by your SAF IDT implementation
 to generate the SAF token, on behalf of the specified user and to verify that the provided SAF token is valid.
 
-[Here](https://github.com/zowe/api-layer/blob/master/gateway-service/src/main/java/org/zowe/apiml/gateway/security/service/saf/SafRestAuthenticationService.java) is an example of the SAF IDT provider implementation which uses REST as a method of communication.
+[SafRestAuthenticationService](https://github.com/zowe/api-layer/blob/master/gateway-service/src/main/java/org/zowe/apiml/gateway/security/service/saf/SafRestAuthenticationService.java) is an example of the SAF IDT provider implementation which uses REST as a method of communication.
 
 You will have then to register a bean in order to use the implemented SAF IDT provider.
 
