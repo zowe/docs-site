@@ -1,6 +1,7 @@
 # Implement new SAF IDT provider
 
-API Gateway offers the capability to create an extension to implement a new SAF IDT provider.
+API Gateway offers the capability to implement your own SAF IDT provider, by implementing 
+an existing interface.
 
 - [How to create the SAF IDT provider](#how-to-create-the-saf-idt-provider)
 - [How to integrate your extension to API ML](#how-to-integrate-your-extension-to-api-ml)
@@ -194,8 +195,7 @@ Gateway configuration parameter is set to `rest`.
 
 ## How to integrate your extension to API ML
 
-// TODO 
-The new implementation can be added to the Gateway classpath by defining...
+To include your SAF IDT provider as an extension of API ML, check [Create extension for API ML](%20create-apiml-extension.md).
 
 ## How to use the SAF IDT provider
 
