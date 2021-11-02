@@ -267,11 +267,11 @@ Use the following property of the API Gateway to enable the `SAF Authentication 
 apiml.security.auth.provider: saf
 ```
 
-**Note:** Please check out the [Implement new SAF provider](implement-new-saf-provider.md) guidelines if you want to provide your own implementation of the SAF IDT provider.
+**Note:** To provide your own implementation of the SAF IDT provider, see the [Implement new SAF provider](implement-new-saf-provider.md) guidelines.
 
 ##### Dummy Authentication Provider
 
-The `Dummy Authentication Provider` implements simple authentication for development purpose using dummy credentials (username:  `user`, password `user`). The `Dummy Authentication Provider` makes it possible for the API Gateway to run without authenticating with the z/OSMF service.
+The `Dummy Authentication Provider` implements simple authentication for development purposes using dummy credentials (username:  `user`, password `user`). The `Dummy Authentication Provider` makes it possible for the API Gateway to run without authenticating with the z/OSMF service.
 
 Use the following property of API Gateway to enable the `Dummy Authentication Provider`:
 ```

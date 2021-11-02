@@ -1,6 +1,6 @@
 # Implement new SAF IDT provider
 
-API Gateway offers the capability to implement your own SAF Identity Token (IDT) provider, by implementing 
+API Gateway offers the capability to implement your own SAF Identity Token (IDT) provider by implementing 
 an existing interface.
 
 - [How to create the SAF IDT provider](#how-to-create-the-saf-idt-provider)
@@ -9,7 +9,9 @@ an existing interface.
 
 ## How to create the SAF IDT provider
 
-If you want to create your own implementation of the SAF IDT provider, you can implement the existing `org.zowe.apiml.gateway.security.service.saf.SafIdtProvider` interface. 
+To create your own implementation of the SAF IDT provider, follow these steps:
+
+1. Implement the existing `org.zowe.apiml.gateway.security.service.saf.SafIdtProvider` interface. 
 
 ```java
 public interface SafIdtProvider {
@@ -30,12 +32,11 @@ public interface SafIdtProvider {
 }
 ```
 
-The `SafIdtProvider` interface contains the `generate` and `verify` methods, that can be overridden by your SAF IDT implementation
-to generate the SAF token, on behalf of the specified user and to verify that the provided SAF token is valid.
+The `SafIdtProvider` interface contains the `generate` and `verify` methods. These methods can be overridden by your SAF IDT implementation to generate the SAF token on behalf of the specified user. This also verifies that the provided SAF token is valid.
 
 [SafRestAuthenticationService](https://github.com/zowe/api-layer/blob/master/gateway-service/src/main/java/org/zowe/apiml/gateway/security/service/saf/SafRestAuthenticationService.java) is an example of the SAF IDT provider implementation which uses REST as a method of communication.
 
-You will have then to register a bean in order to use the implemented SAF IDT provider.
+2. Register a bean in order to use the implemented SAF IDT provider.
 
 **Example:**
 
@@ -76,14 +77,14 @@ public class SafProviderBeansConfig {
 
 ```
 
-In this case the REST provider `SafRestAuthenticationService` will be used when the `apiml.security.saf.provider` 
+In this case, the REST provider `SafRestAuthenticationService` is used when the `apiml.security.saf.provider` 
 Gateway configuration parameter is set to `rest`. 
 
 ## How to integrate your extension to API ML
 
-To use your SAF IDT provider as an extension of API ML, check [Create extension for API ML](%20create-apiml-extension.md).
+To use your SAF IDT provider as an extension of API ML, see [Create extension for API ML](%20create-apiml-extension.md).
 
 ## How to use the SAF IDT provider
 
-In order to use the new SAF IDT provider that you have created, you need to set the parameter `apiml.authentication.scheme` to `safIdt` in your service configuration.
-Your application will then properly recognize the SAF IDT scheme and fill the `X-SAF-Token` header with the token produced by your SAF IDT provider. 
+To use the new SAF IDT provider that you created, it is necessary to set the parameter `apiml.authentication.scheme` to `safIdt` in your service configuration.
+Your application then properly recognizes the SAF IDT scheme and fills the `X-SAF-Token` header with the token produced by your SAF IDT provider. 
