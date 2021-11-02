@@ -1,6 +1,6 @@
 # Implement new SAF IDT provider
 
-API Gateway offers the capability to implement your own SAF IDT provider, by implementing 
+API Gateway offers the capability to implement your own SAF Identity Token (IDT) provider, by implementing 
 an existing interface.
 
 - [How to create the SAF IDT provider](#how-to-create-the-saf-idt-provider)
