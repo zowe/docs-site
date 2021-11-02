@@ -57,6 +57,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.client.RestTemplate;
 import org.zowe.apiml.gateway.security.service.AuthenticationService;
+import org.zowe.apiml.passticket.PassTicketService;
 
 @Configuration
 @RequiredArgsConstructor
@@ -64,12 +65,14 @@ public class SafProviderBeansConfig {
     @Bean
     @ConditionalOnProperty(name = "apiml.security.saf.provider", havingValue = "rest")
     public SafIdtProvider restSafProvider(
-        RestTemplate restTemplate,
-        AuthenticationService authenticationService
+            RestTemplate restTemplate,
+            AuthenticationService authenticationService,
+            PassTicketService passTicketService
     ) {
-        return new SafRestAuthenticationService(restTemplate, authenticationService);
+        return new SafRestAuthenticationService(restTemplate, authenticationService, passTicketService);
     }
 }
+
 
 ```
 
@@ -78,7 +81,7 @@ Gateway configuration parameter is set to `rest`.
 
 ## How to integrate your extension to API ML
 
-To include your SAF IDT provider as an extension of API ML, check [Create extension for API ML](%20create-apiml-extension.md).
+To use your SAF IDT provider as an extension of API ML, check [Create extension for API ML](%20create-apiml-extension.md).
 
 ## How to use the SAF IDT provider
 
