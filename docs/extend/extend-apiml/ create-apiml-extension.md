@@ -4,7 +4,7 @@ Zowe allows extenders to define their own extension for API ML. Follow the steps
 API Gateway classpath:
 
 1. Create a JAR file from your extension.
-2. Create a `manifest.yml` with the following structure:
+2. Create a `manifest.yml` with the following structure (check out [Packaging z/OS extensions](../packaging-zos-extensions.md) for more information):
 
    **Example:**
     ```yaml
