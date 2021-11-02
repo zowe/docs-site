@@ -93,7 +93,7 @@ These ZSS endpoints will be used by the `SafRestAuthenticationService` to genera
 
 ## How to integrate your extension to API ML
 
-To use your SAF IDT provider as an extension of API ML, see [Create extension for API ML](%20create-apiml-extension.md).
+To use your SAF IDT provider as an extension of API ML, see [Create extension for API ML](create-apiml-extension.md).
 
 ## How to use the SAF IDT provider
 
