@@ -1,4 +1,4 @@
-# Create extension for API ML
+# Create an Extension for API ML
 
 Zowe allows extenders to define their own extension for API ML. Follow the steps in this article to create your extension and include it to the
 API Gateway classpath:
