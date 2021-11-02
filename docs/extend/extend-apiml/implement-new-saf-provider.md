@@ -33,7 +33,7 @@ public interface SafIdtProvider {
 }
 ```
 
-The `SafIdtProvider` interface contains the `generate` and `verify` methods. These methods can be overridden by your SAF IDT implementation to generate the SAF token on behalf of the specified user. This also verifies that the provided SAF token is valid.
+The `SafIdtProvider` interface contains the `generate` and `verify` methods. The `generate` method can be overridden by your SAF IDT implementation to generate the SAF token on behalf of the specified user. The `verify` method can be overridden to verify that the provided SAF token is valid.
 
 2. Register a bean in order to use the implemented SAF IDT provider.
 
