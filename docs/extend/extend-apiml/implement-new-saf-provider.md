@@ -100,7 +100,7 @@ These ZSS endpoints are used by the `SafRestAuthenticationService` to generate a
 
 <img src={require("../../images/api-mediation/safidt-providers.png").default} alt="SAF IDT providers"/>
 
-The following diagram illustrates how the communication using SAF IDT provider works:
+The following diagram illustrates how communication using the SAF IDT provider works:
 
 <img src={require("../../images/api-mediation/safidt-diagram.png").default} alt="SAF IDT diagram"/>
 
