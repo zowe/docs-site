@@ -97,3 +97,11 @@ Set the following environment parameters in the `instance.env`:
 * `APIML_SECURITY_SAF_URLS_VERIFY=https://${ZOWE_EXPLORER_HOST}:${GATEWAY_PORT}/zss/api/v1/saf/verify`
 
 These ZSS endpoints are used by the `SafRestAuthenticationService` to generate and validate the SAF token.
+
+<img src={require("../../images/api-mediation/safidt-providers.png").default} alt="SAF IDT providers" width="700"/>
+
+The following diagram illustrates how the communication using SAF IDT provider works:
+
+<img src={require("../../images/api-mediation/safidt-diagram.png").default} alt="SAF IDT diagram" width="700"/>
+
+
