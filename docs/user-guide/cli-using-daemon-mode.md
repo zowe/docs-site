@@ -8,7 +8,7 @@ If you already installed the supported version `@zowe-v1-lts`, switch versions t
 
 - [Feature overview](#feature-overview)
 - [Install the zowe native executable](#install-the-zowe-native-executable)
-- [Starting Zowe in daemon mode](#starting-zowe-in-daemon-mode)
+- [Running zowe commands with the zowe executable](#running-zowe-commands-with-zowe-executable)
 
 ## Feature overview
 
@@ -26,25 +26,19 @@ To download and install the zowe native executable from the Zowe Github reposito
 3. Click the link to download the executable (.tgz file) for your operating system.
 4. Unzip the zowe .tgz file and place the zowe (or zowe.exe) file into a directory which occurs on your PATH earlier than the directory containing the NodeJS zowe command.
 
-## Starting Zowe in daemon mode
+## Running zowe commands with the zowe executable
 
 Verify that you have installed [the @next release of Zowe CLI](cli-install-cli-next.md) and the [zowe native executable](#install-the-zowex-native-executable).
 
-To start Zowe CLI in daemon mode:
+Run any zowe command as you normally would. The first time you run any zowe command, the command will automatically start a daemon in the background. It will then run your desired command. Since that first command must start the daemon, that first zowe command will actually run slower than a traditional zowe command. However, every zowe command afterward will run significantly faster. The daemon will continue to run in the background until you close your terminal window.
 
-1. Issue the command:
-   Windows command prompt (cmd.exe):
+Example:
 
-   ```
-   start zowe --daemon
-   ```
+```text
+zowe --version
+Starting a background process to increase performance ...
+7.0.0-next.202110211759
 
-   Linux or Windows PowerShell:
-
-   ```
-   zowe --daemon &
-   ```
-
-   The CLI responds with prompts for a username and password.
-
-2. Enter the username and password.
+zowe --version
+7.0.0-next.202110211759
+```
