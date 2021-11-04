@@ -12,12 +12,29 @@ To apply the deployment files, run the command if you are using `instance.env`:
 kubectl apply -f workloads/instance-env/
 ```
 
-. Or run this command if you are using `zowe.yaml`:
+Or run this command if you are using `zowe.yaml`:
 
 ```
 kubectl apply -f workloads/zowe-yaml/
 ```
-.
+
+### Port forwarding (for minikube only)
+
+[Kubectl port-forward](https://kubernetes.io/docs/tasks/access-application-cluster/port-forward-access-application-cluster/) allows you to access and interact with internal Kubernetes cluster processes from your localhost. For debugging or development, you may wish to port forward to make Zowe gateway or discovery service available externally quickly.
+
+Before issuing port forward commands, make sure gateway and discovery services pods are running. You can run:
+`kubectl get pods -n zowe` and check if `discovery-*` and `gateway-*` both `STATUS` is `RUNNING`. If not, you may have to wait.
+
+Once both shows `RUNNING`, run the following command to port forward:
+
+```
+kubectl port-forward -n zowe svc/gateway-service --address=<your-ip> <external-port>:<internal-port, such as 7554> &
+kubectl port-forward -n zowe svc/discovery-service --address=<your-ip> <external-port>:<internal-port, such as 7553> &
+```
+
+The `&` at the command will run the command as a background process, as otherwise, it will occupy the terminal indefinitely until canceled as a foreground service.  
+
+## Verifying Zowe containers
 
 The containers will start soon after applying the deployments.
 

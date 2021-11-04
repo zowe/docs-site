@@ -147,15 +147,15 @@ You can set up either a `LoadBalancer` or `NodePort` type [Service](https://kube
 
 **Note:** Because `NodePort` cannot be used together with `NetworkPolicies`, `LoadBalancer` and `Ingress` is preferred configuration option.
 
-Review the following table for steps you may take depending on the Kubernetes provider you use. If you don't need additional setups, you can skip steps 4b, 4c, 4d and jump directly to the [Apply zowe](k8s-using.md) section.
+Review the following table for steps you may take depending on the Kubernetes provider you use. If you don't need additional setups, you can skip steps 4b, 4c and jump directly to the [Apply zowe](k8s-using.md) section.
 
 | Kubernetes provider       | Service                  | Additional setups required                                 |
 | :------------------------ | :----------------------  | :--------------------------------------------------------- |
-| minikube                  | LoadBalancer or NodePort | [Port Forward](#4b-port-forward-for-minikube-only)         |
+| minikube                  | LoadBalancer or NodePort | Port Forward (on next section Starting, stopping, and monitoring)|
 | docker-desktop            | LoadBalancer             | none                                                       |
-| bare-metal                | LoadBalancer or NodePort | [Create Ingress](#4c-create-ingress-for-bare-metal-only)   |
+| bare-metal                | LoadBalancer or NodePort | [Create Ingress](#4b-create-ingress-for-bare-metal-only)   |
 | cloud-vendors             | LoadBalancer             | none                                                       |
-| OpenShift                 | LoadBalancer or NodePort | [Create Route](#4d-create-route-for-openshift-only)        |
+| OpenShift                 | LoadBalancer or NodePort | [Create Route](#4c-create-route-for-openshift-only)        |
 
 
 #### Defining api-catalog service
@@ -220,22 +220,7 @@ To verify either case, run the following command and check that this command dis
 
 Upon completion of all the preceding steps in this [a. Create service](#a-create-service) section, you may need to run additional setups. Refer to "Additional setups required" in the table. If you don't need additional setups, you can skip 4b, 4c, 4d, and jump directly to Apply Zowe section.
 
-### 4b. Port forwarding (minikube)
-
-[Kubectl port-forward](https://kubernetes.io/docs/tasks/access-application-cluster/port-forward-access-application-cluster/) allows you to access and interact with internal Kubernetes cluster processes from your localhost. For debugging or development, you may wish to port forward to make Zowe gateway or discovery service available externally quickly.
-
-To use port-forward, run the command: 
-
-```
-kubectl port-forward -n zowe svc/gateway-service --address=<your-ip> <external-port>:<internal-port, such as 7554> &
-kubectl port-forward -n zowe svc/discovery-service --address=<your-ip> <external-port>:<internal-port, such as 7553> &
-```
-
-The `&` at the command will run the command as a background process, as otherwise, it will occupy the terminal indefinitely until canceled as a foreground service.
-
-Upon completion, you can finish the setup by [applying zowe and starting it](k8s-using.md).
-
-### 4c. Create Ingress (Bare-metal)
+### 4b. Create Ingress (Bare-metal)
 
 An [Ingress](https://kubernetes.io/docs/concepts/services-networking/ingress/) gives Services externally-reachable URLs and may provide other abilities such as traffic load balancing.
 
@@ -258,7 +243,7 @@ This command must display two Ingresses `gateway-ingress` and `discovery-ingress
 
 Upon completion, you can finish the setup by [applying zowe and starting it](k8s-using.md).
 
-### 4d. Create Route (OpenShift)
+### 4c. Create Route (OpenShift)
 
 If you are using OpenShift and choose to use `LoadBalancer` services, you may already have an external IP for the service. You can use that external IP to access Zowe APIML Gateway. To verify your service external IP, run:
 
