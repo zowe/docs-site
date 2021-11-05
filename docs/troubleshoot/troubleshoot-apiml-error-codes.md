@@ -609,6 +609,18 @@ The following error message codes may appear on logs or API responses. Use the f
 
   Provide valid authentication.
 
+### ZWEAS123E
+
+  Invalid token type in response from Authentication service.
+
+  **Reason:**
+
+  Could not retrieve the proper authentication token from the Authentication service response.
+
+  **Action:**
+
+  Review your APIML authentication provider configuration and ensure your Authentication service is working.
+
 ### ZWEAS130E
 
   Token is not valid for URL '%s'
@@ -1266,6 +1278,18 @@ The following error message codes may appear on logs or API responses. Use the f
   **Action:**
 
   Provide valid authentication.
+
+### ZWEAS123E
+
+  Invalid token type in response from Authentication service.
+
+  **Reason:**
+
+  Could not retrieve the proper authentication token from the Authentication service response.
+
+  **Action:**
+
+  Review your APIML authentication provider configuration and ensure your Authentication service is working.
 
 ### ZWEAG130E
 
