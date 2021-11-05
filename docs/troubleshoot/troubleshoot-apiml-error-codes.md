@@ -609,6 +609,18 @@ The following error message codes may appear on logs or API responses. Use the f
 
   Provide valid authentication.
 
+### ZWEAS123E
+
+  Invalid token type in response from Authentication service.
+
+  **Reason:**
+
+  Could not retrieve the proper authentication token from the Authentication service response.
+
+  **Action:**
+
+  Review your APIML authentication provider configuration and ensure your Authentication service is working.
+
 ### ZWEAS130E
 
   Token is not valid for URL '%s'
@@ -1063,6 +1075,54 @@ The following error message codes may appear on logs or API responses. Use the f
 
   Use a properly formatted URI.
 
+### ZWEAG713E
+
+  Configuration error when trying to establish JWT producer. Events: %s
+
+  **Reason:**
+
+  A problem occurred while trying to make sure that there is a valid JWT producer avaliable.
+
+  **Action:**
+
+  Based on the information in the message either: verify that the key configuration is correct or that the zOSMF is available.
+
+### ZWEAG714E
+
+  Unknown error happened while retrieving the used public key
+
+  **Reason:**
+
+  Unknown problem occured when retrieving the used public key. This should never happen.
+
+  **Action:**
+
+  Try again later.
+
+### ZWEAG715E
+
+  The wrong amount of keys retrieved. The amount of retrieved keys is: %s
+
+  **Reason:**
+
+  In either case verify the configuration of zOSMF.
+
+  **Action:**
+
+  Verify the configuration of the zOSMF to make sure that zOSMF provides only one used key.
+
+### ZWEAG716E
+
+  The system doesn't know yet what key should be used.
+
+  **Reason:**
+
+  Typically zOSMF is either unavailable or offline.
+
+  **Action:**
+
+  Verify the zOSMF is available, accessible by the gateway service and online.
+
 ### ZWEAG100E
 
   Authentication exception: '%s' for URL '%s'
@@ -1218,6 +1278,18 @@ The following error message codes may appear on logs or API responses. Use the f
   **Action:**
 
   Provide valid authentication.
+
+### ZWEAS123E
+
+  Invalid token type in response from Authentication service.
+
+  **Reason:**
+
+  Could not retrieve the proper authentication token from the Authentication service response.
+
+  **Action:**
+
+  Review your APIML authentication provider configuration and ensure your Authentication service is working.
 
 ### ZWEAG130E
 
