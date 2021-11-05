@@ -28,7 +28,7 @@ You can prepare a Kubernetes cluster based on your requirements in many differen
   * [Enable Kubernetes shipped with Docker Desktop](https://docs.docker.com/desktop/kubernetes/)
   * [Set up minikube](https://minikube.sigs.k8s.io/docs/start/)  
 
-  **Attention:** You will need to make sure the kubernetes cluster you have created has a minimum RAM of 3GB in order for zowe to start.
+  **Attention!** You must make sure that the Kubernetes cluster you have created has a minimum RAM of 3GB in order for Zowe to start.
 
 * For production purposes, you can set up a Kubernetes cluster in one of the following ways:
 

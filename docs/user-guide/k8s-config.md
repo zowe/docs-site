@@ -60,9 +60,9 @@ To verify, run the following commands and check if the `STATUS` of line item `zo
 kubectl get pvc --namespace zowe
 ```
 
-Please note that `zowe-workspace-pvc` `PersistentVolumeClaim` must be declared in access mode `ReadWriteMany`.
+Note that `zowe-workspace-pvc` `PersistentVolumeClaim` must be declared in access mode `ReadWriteMany`.
 
-In some Kubernetes environment, you may need to define `PeristentVolume` and define `volumeName` in `PersistentVolumeClaim` instead of defining `storageClassName`. Please consult your Kubernetes administrator to confirm what's the appropriate way for your environment. This is an example to configure `PersistentVolumeClaim` with pre-configured `zowe-workspace-pv` `PeristentVolume`.
+In some Kubernetes environment, you may need to define `PeristentVolume` and define `volumeName` in `PersistentVolumeClaim` instead of defining `storageClassName`. Please consult your Kubernetes administrator to confirm the appropriate way for your environment. This is an example to configure `PersistentVolumeClaim` with pre-configured `zowe-workspace-pv` `PeristentVolume`.
 
 ```yaml
 apiVersion: v1
@@ -251,7 +251,7 @@ If you are using OpenShift and choose to use `LoadBalancer` services, you may al
 oc get svc -n zowe
 ```
 
-If you see an IP in `EXTERNAL-IP` column, that means your OpenShift is properly configured and can provision external IP for you. If you see `<pending>` and it won't change after waiting for a while, that means you may not be able to use `LoadBalancer` services with your current configuration. Please try `ClusterIP` services and define `Route`. A [Route](https://docs.openshift.com/enterprise/3.0/architecture/core_concepts/routes.html) is a way to expose a service by giving it an externally-reachable hostname. 
+If you see an IP in the `EXTERNAL-IP` column, that means your OpenShift is properly configured and can provision external IP for you. If you see `<pending>` and it does not change after waiting for a while, that means you may not be able to use `LoadBalancer` services with your current configuration. Try `ClusterIP` services and define `Route`. A [Route](https://docs.openshift.com/enterprise/3.0/architecture/core_concepts/routes.html) is a way to expose a service by giving it an externally-reachable hostname. 
 
 To create a route, perform the following steps:
 
@@ -320,7 +320,7 @@ To manually create the [ConfigMaps](https://kubernetes.io/docs/concepts/configur
 
 ## `PodDisruptionBudget`
 
-Zowe provides optional `PodDisruptionBudget` which can help on providing high availability during upgrade. By default, Zowe defines `minAvailable` to be `1` for all deployments. This configuration is optional but recommended. To apply `PodDisruptionBudget`, run this command:
+Zowe provides optional `PodDisruptionBudget` which can provide high availability during upgrade. By default, Zowe defines `minAvailable` to be `1` for all deployments. This configuration is optional but recommended. To apply `PodDisruptionBudget`, run this command:
 
 ```
 kubectl apply -f samples/pod-disruption-budget/
@@ -332,7 +332,7 @@ To verify this step, run:
 kubectl get pdb --namespace zowe
 ```
 
-should show you list of `PodDisruptionBudget` like this:
+This should show you a list of `PodDisruptionBudget` like this:
 
 ```
 NAME               MIN AVAILABLE   MAX UNAVAILABLE   ALLOWED DISRUPTIONS   AGE
@@ -350,7 +350,7 @@ jobs-api-pdb       1               N/A               0                     1d
 
 ## `HorizontalPodAutoscaler`
 
-Zowe provides optional `HorizontalPodAutoscaler` which can help on automatically scaling Zowe components based on resource usage. By default, each workload has minimal 1 replica and maximum 3 to 5 replicas based on CPU usage. This configuration is optional but recommended. `HorizontalPodAutoscaler` relies on Kubernetes [Metrics server](https://github.com/kubernetes-sigs/metrics-server) monitoring to provide metrics through the [Metrics API](https://github.com/kubernetes/metrics). To learn how to deploy the metrics-server, see the [metrics-server documentation](https://github.com/kubernetes-sigs/metrics-server#deployment). Please adjust the `HorizontalPodAutoscaler` definitions based on your cluster resources, then run this command to apply them to your cluster:
+Zowe provides optional `HorizontalPodAutoscaler` which can automatically scale Zowe components based on resource usage. By default, each workload has a minimum of 1 replica and a maximum of 3 to 5 replicas based on CPU usage. This configuration is optional but recommended. `HorizontalPodAutoscaler` relies on Kubernetes [Metrics server](https://github.com/kubernetes-sigs/metrics-server) monitoring to provide metrics through the [Metrics API](https://github.com/kubernetes/metrics). To learn how to deploy the metrics-server, see the [metrics-server documentation](https://github.com/kubernetes-sigs/metrics-server#deployment). Please adjust the `HorizontalPodAutoscaler` definitions based on your cluster resources, then run this command to apply them to your cluster:
 
 ```
 kubectl apply -f samples/horizontal-pod-autoscaler/
@@ -362,7 +362,7 @@ To verify this step, run:
 kubectl get hpa --namespace zowe
 ```
 
-should show you list of `HorizontalPodAutoscaler` like this:
+This should show you a list of `HorizontalPodAutoscaler` like this:
 
 ```
 NAME               REFERENCE                 TARGETS   MINPODS   MAXPODS   REPLICAS   AGE
@@ -380,7 +380,7 @@ jobs-api-hpa       Deployment/jobs-api       8%/70%    1         3         1    
 
 ## Kubernetes v1.21+
 
-If you have Kubernetes v1.21+, there are few optional changes recommended based on [Deprecated API Migration Guide](https://kubernetes.io/docs/reference/using-api/deprecation-guide/).
+If you have Kubernetes v1.21+, several optional changes are recommended based on [Deprecated API Migration Guide](https://kubernetes.io/docs/reference/using-api/deprecation-guide/).
 
 - Kind `CronJob`: change `apiVersion: batch/v1beta1` to `apiVersion: batch/v1` on `workloads/zowe-yaml/cleanup-static-definitions-cronjob.yaml` and `workloads/instance-env/cleanup-static-definitions-cronjob.yaml`. `apiVersion: batch/v1beta1` will stop working on Kubernetes v1.25.
 - Kind `PodDisruptionBudget`: change `apiVersion: policy/v1beta1` to `apiVersion: policy/v1` on all files in `samples/pod-disruption-budget/`. `apiVersion: policy/v1beta1` will stop working on Kubernetes v1.25.
