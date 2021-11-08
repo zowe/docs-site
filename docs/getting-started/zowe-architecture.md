@@ -1,8 +1,8 @@
 # Zowe architecture
 
-Zowe&trade; is a collection of components that together form a framework that allows Z-based functionality to be accessible across an organization. This includes exposing Z-based components such as z/OSMF as REST APIs. The Zowe framework provides an environment where other components can be included and exposed to a broader non-Z based audience.
+Zowe&trade; is a collection of components that together form a framework that makes Z-based functionality accessible across an organization. Zowe functionality includes exposing Z-based components, such as z/OSMF, as REST APIs. The Zowe framework provides an environment where other components can be included and exposed to a broader non-Z based audience.
 
-The following diagram depicts the high-level Zowe architecture.
+The following diagram illustrates the high-level Zowe architecture.
 
 ![Zowe Architecture Diagram](../images/common/zowe-architecture.png)
 
@@ -14,38 +14,38 @@ Zowe server components can be installed and run entirely on z/OS, but a subset o
 
 ## Zowe architecture with high availability enablement on Sysplex
 
-The following diagram depicts the difference in locations of Zowe components when deploying Zowe into Sysplex with high availability enabled as opposed to running all components on a single z/OS system.  
+The following diagram illustrates the difference in locations of Zowe components when deploying Zowe into a Sysplex with high availability enabled as opposed to running all components on a single z/OS system.  
 
 ![Zowe Architecture Diagram with High Availability Enablement](../images/common/zowe-architecture-lpar.png)
 
-To enable high availability for Zowe, the `ZWESLSTC` started task is used instead of using `ZWESVSTC`. Also, the configuration details are held in a `zowe.yaml` configuration file instead of `instance.env`. The `zowe.yaml` file contains settings for each high availability instance that the launcher starts.
+To enable high availability for Zowe, the `ZWESLSTC` started task is used rather than the `ZWESVSTC` started task. Also, the configuration details are held in a `zowe.yaml` configuration file instead of an `instance.env` file. The `zowe.yaml` file contains settings for each high availability instance that the launcher starts.
 
 The diagram above shows that `ZWESLSTC` started two Zowe instances running on two separate LPARs that can be on the same, or different, sysplexes.  
 
-- The Sysplex distributor port sharing enables the API Gateway 7554 ports to be shared so incoming requests can be routed to either the gateway on LPAR A or LPAR B.
-- The discovery servers on each LPAR communicate with each other and share their registered instances, which allows the API gateway on LPAR A to dispatch APIs to components either on its own LPAR, or else to components on LPAR B.  As indicated on the diagram, each component has two input lines: one from the API gateway on its own LPAR and one from the gateway on the other LPAR.  When one of the LPARs goes down, the other LPAR remains operating within the sysplex providing high availability to clients that connect through the shared port irrespective of which Zowe instance is serving the API requests.
+- The Sysplex distributor port-sharing enables API Gateway 7554 ports to be shared so that incoming requests can be routed to either the gateway on LPAR A or LPAR B.
+- The discovery servers on each LPAR communicate with each other and share their registered instances, which allows the API gateway on LPAR A to dispatch APIs to components either on its own LPAR, or alternatively to components on LPAR B. As indicated on the diagram, each component has two input lines: one from the API gateway on its own LPAR and one from the gateway on the other LPAR.  When one of the LPARs goes down, the other LPAR remains operating within the sysplex providing high availability to clients that connect through the shared port irrespective of which Zowe instance is serving the API requests.
 
 The `zowe.yaml` file can be configured to start Zowe instances on more than two LPARS, and also to start more than one Zowe instance on a single LPAR, providing a grid cluster of Zowe components that can meet availability and scalability requirements.  
 
-Each LPAR's configuration entries in `zowe.yaml` control which components will be started. This allows you to start just the desktop and API Mediation Layer on the first LPAR, and start all of the Zowe components on the second LPAR. Because the desktop on the first LPAR is available to the second LPAR's gateway, all desktop traffic will be routed there.  
+The configuration enteries of each LPAR in the `zowe.yaml` file control which components are started. This configuration mechinism makes it possible for users to start the desktop and API Mediation Layer exclusively on the first LPAR, and start all of the Zowe components on the second LPAR. Because the desktop on the first LPAR is available to gateway on the second LPAR, all desktop traffic is routed there.  
 
-The caching services for each Zowe instance, whether on the same LPAR or distributed across the sysplex, are connected to each other by the same shared VSMA file.  This allows state sharing so that each instance behaves similarly to the user irrespective of where their request is routed.  
+The caching services for each Zowe instance, whether on the same LPAR, or distributed across the sysplex, are connected to each other by the same shared VSMA file.  This arrangement allows state sharing so that each instance behaves similarly to the user irrespective of where their request is routed.  
 
-For simplification of the diagram above, the Zowe Explorer API and UI servers are not shown as being started. If you define them to be started in the `zowe.yaml` configuration file, they behave the same as the servers illustrated. That means, they will register to their API discovery server which will then communicate with other discovery servers on other Zowe instances on either the same or other LPARs. The API traffic received by any API gateway on any Zowe instance will be routed to any of the Zowe Explorer API or UI components that are available.  
+For simplification of the diagram above, the Zowe Explorer API and UI servers are not shown as being started. If the user defines them to be started in the `zowe.yaml` configuration file, these servers behave the same as the servers illustrated. In otehr words, these services register to their API discovery server which then communicates with other discovery servers on other Zowe instances on either the same or other LPARs. The API traffic that is received by any API gateway on any Zowe instance is subsequently routed to any of the Zowe Explorer API or UI components that are available.  
 
 To learn more about Zowe with high availability enablement, see [Zowe high availability installation roadmap](../user-guide/install-ha-sysplex.md).
 
 ## Zowe architecture when running in Kubernetes cluster
 
-The following diagram depicts the difference in locations of Zowe components when deploying Zowe into Kubernetes cluster as opposed to running all components on a single z/OS system.
+The following diagram illustrates the difference in locations of Zowe components when deploying Zowe into a Kubernetes cluster as opposed to running all components on a single z/OS system.
 
 ![Zowe Architecture Diagram in Kubernetes](../images/common/zowe-architecture-k8s.png)
 
-The components on z/OS run under the Zowe started task `ZWESVSTC`, which has its own user ID `ZWESVUSR` and includes a number of servers, each server with its own address space.  The `ZWESVSTC` started task has a `STDOUT` file that includes log and trace information for its servers.  Sever error messages are written to `STDERR`. For problem determination, see [Troubleshooting](../troubleshoot/troubleshooting.md).
+The components on z/OS run under the Zowe started task `ZWESVSTC`, which has its own user ID `ZWESVUSR` and includes a number of servers, each server with its own address space.  The `ZWESVSTC` started task has a `STDOUT` file that includes log and trace information for its servers. Sever error messages write to `STDERR`. For problem determination, see [Troubleshooting](../troubleshoot/troubleshooting.md).
 
-When deploying other server components into container orchestration software like Kubernetes, Zowe follows standard Kubernetes practices and the cluster can be monitored and managed with common Kubernetes administration methods.
+When deploying other server components into container orchestration software like Kubernetes, Zowe follows standard Kubernetes practices. The cluster can be monitored and managed with common Kubernetes administration methods.
 
-- All Zowe workloads run on a dedicated namespace (`zowe` by default) to distinguish from other workloads in same Kubernetes cluster.
+- All Zowe workloads run on a dedicated namespace (`zowe` by default) to distinguish from other workloads in the same Kubernetes cluster.
 - Zowe has its own `ServiceAccount` to help with managing permissions.
 - Server components use similar `instance.env` or `zowe.yaml` files on z/OS, which are stored in `ConfigMap` and `Secret`, to configure and start.
 - Server components can be configured using the same certificates used on z/OS components.
@@ -53,17 +53,17 @@ When deploying other server components into container orchestration software lik
 - Each server components run in separated containers.
 - Components may register themselves to Discovery with their own `Pod` name within the cluster.
 - Zowe workloads use the `zowe-launch-scripts` `initContainers` step to prepare required runtime directories.
-- Only necessary components' ports are exposed outside of Kubernetes with `Service`.
+- Only necessary ports of components are exposed outside of Kubernetes with `Service`.
 
 ## Zowe architecture when using Docker image
 
 <Badge text="Technical Preview"/> The Zowe Docker build is a technical preview.
 
-The following diagram depicts the difference in locations of Zowe components when using Docker as opposed to running all components on z/OS.
+The following diagram illustrates the difference in locations of Zowe components when using Docker as opposed to running all components on z/OS.
 
 ![Zowe Architecture Diagram using Docker](../images/common/zowe-architecture-docker.png)
 
-The components on z/OS run under the Zowe started task `ZWESVSTC`, which has its own user ID `ZWESVUSR` and includes a number of servers each with their own address space.  The `ZWESVSTC` started task has a `STDOUT` file that includes log and trace information for its servers. Sever error messages are written to `STDERR`. For problem determination, see [Troubleshooting](../troubleshoot/troubleshooting.md).
+The components on z/OS run under the Zowe started task `ZWESVSTC`, which has its own user ID `ZWESVUSR`, and includes a number of servers each with their own address space.  The `ZWESVSTC` started task has a `STDOUT` file that includes log and trace information for its servers. Sever error messages write to `STDERR`. For problem determination, see [Troubleshooting](../troubleshoot/troubleshooting.md).
 
 When Docker is used, server components not running on z/OS instead run in a Linux environment provided via Docker container technology. The servers run as processes within the container which log to `STDOUT` and `STDERR` of that container, with some components also writing to the log directory of the Zowe instance.
 
@@ -77,23 +77,23 @@ The App Server server logs write to `<INSTANCE_DIR>/logs/appServer-yyyy-mm-dd-hh
 
 ## ZSS
 
-The Zowe desktop delegates a number of its services to the ZSS server which it accesses through http port 8542. ZSS is written in C and has native calls to z/OS to provide its services.  ZSS logs are written `STDOUT` and `STDERR` for capture into job logs, but also as a file into `<INSTANCE_DIR>/logs/zssServer-yyyy-mm-dd-hh-mm.log`.  
+The Zowe desktop delegates a number of its services to the ZSS server which it accesses through http port 8542. ZSS is written in C and has native calls to z/OS to provide its services.  ZSS logs write to `STDOUT` and `STDERR` for capture into job logs, but also as a file into `<INSTANCE_DIR>/logs/zssServer-yyyy-mm-dd-hh-mm.log`.  
 
 ## API Gateway
 
-The API Gateway is a proxy server that routes requests from clients on its northbound edge, such as web browsers or the Zowe command line interface, to servers on its southbound edge that are able to provide data to serve the request. The API Gateway is also responsible for generating an authentication token used to provide single sign-on (SSO) functionality.  The API Gateway homepage is `https://<ZOWE_HOST_IP>:7554`. Following authentication, this URL enables users to navigate to the API Catalog.
+The API Gateway is a proxy server that routes requests from clients on its northbound edge, such as web browsers or the Zowe command line interface, to servers on its southbound edge that are able to provide data to serve the request. The API Gateway is also responsible for generating an authentication token that is used to provide single sign-on (SSO) functionality. The API Gateway homepage is `https://<ZOWE_HOST_IP>:7554`. Following authentication, this URL enables users to navigate to the API Catalog.
 
 ![Zowe API Mediation Layer](../images/api-mediation/api-mediationlayer.png)
 
 ## API Catalog
 
-The API Catalog provides a list of the API services that have registered themselves as catalog tiles.  These tiles allow users to view the available APIs from Zowe's southbound servers as well as test REST API calls.  
+The API Catalog provides a list of the API services that have registered themselves as catalog tiles. These tiles make it possible for users to view the available APIs from Zowe's southbound servers as well as test REST API calls.  
 
 ![Zowe API Catalog](../images/api-mediation/api-catalog.png)
 
 ## API Discovery
 
-The API Discovery server acts as the registration service broker between the API Gateway and its southbound servers.  It can be accessed through the URL `https://<ZOWE_HOST_IP>:7552`.  You can view a list of registered API services on the API Discovery homepage.
+The API Discovery server acts as the registration service broker between the API Gateway and its southbound servers. It can be accessed through the URL `https://<ZOWE_HOST_IP>:7552`. Users can view a list of registered API services on the API Discovery homepage.
 
 ![Zowe API Discovery](../images/api-mediation/api-discovery.png)
 
@@ -104,13 +104,13 @@ For more information about the Caching service, see the [Caching service documen
 
 ## MVS, JES, and USS UI
 
-Zowe provides a number of rich GUI web applications for working with z/OS.  GUI web applications include the MVS Explorer for data sets, the JES Explorer for jobs, and the USS Explorer for the Unix File System. You can access these GUI web applications through the Zowe desktop.
+Zowe provides a number of rich GUI web applications for working with z/OS. GUI web applications include the MVS Explorer for data sets, the JES Explorer for jobs, and the USS Explorer for the Unix File System. Users can access these GUI web applications through the Zowe desktop.
 
 ![Zowe Desktop Explorers](../images/mvd/desktop-explorers.png)
 
 ### File API and JES API
 
-The File API server provides a set of REST APIs for working with z/OS data sets and Unix files.  These APIs are used by the MVS and USS Explorer apps.  
+The File API server provides a set of REST APIs for working with z/OS data sets and Unix files. These APIs are used by the MVS and USS Explorer apps.  
 
 The JES API server provides a set of REST APIs for working with JES.  These APIs are used by the JES Explorer application.
 
