@@ -141,6 +141,6 @@ The Zowe CLI uses z/OSMF Representational State Transfer (REST) APIs to work wit
 
 ## Configuration of z/OSMF to properly work with API ML
 
-There is an issue observed in z/OSMF which leads to a stuck JSON web token(JWT). It manifests as /zosmf/services/authenticate endpoint issuing a JWT with success RC that is not valid for API calls, resulting in 401 response status code. This is a persistent condition.
-To get the token unstuck, a logout has to be performed with the LTPA token from the login request. This causes logins to start serving unique JWTs again.
-Until this will be properly fixed in z/OSMF, we are proposing a possible temporary workaround. You can update z/OSMF configuration with `allowBasicAuthLookup="false"`. After applying this change, each authentication call will result in generating a new JWT. 
+There is an issue observed in z/OSMF which leads to a stuck JSON web token(JWT). It manifests as the endpoint `/zosmf/services/authenticate` issuing a JWT with success RC that is not valid for API calls, resulting in 401 response status code. This is a persistent condition.
+To get the token unstuck, perform a logout with the LTPA token from the login request. This causes logins to start serving unique JWTs again.
+Until this issue is properly fixed in z/OSMF, we propose a possible temporary workaround. Update z/OSMF configuration with `allowBasicAuthLookup="false"`. After applying this change, each authentication call results in generating a new JWT. 
