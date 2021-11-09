@@ -26,6 +26,8 @@ To download and install the zowe native executable from the Zowe Github reposito
 3. Click the link to download the executable (.tgz file) for your operating system.
 4. Unzip the zowe .tgz file and place the zowe (or zowe.exe) file into a directory which occurs on your PATH earlier than the directory containing the NodeJS zowe command.
 
+**Note:** The Mac executable may need an exception for an unidentified developer: [Open a Mac app from an unidentified developer](https://support.apple.com/guide/mac-help/open-a-mac-app-from-an-unidentified-developer-mh40616/mac)
+
 ## Running zowe commands with the zowe executable
 
 Verify that you have installed [the @next release of Zowe CLI](cli-install-cli-next.md) and the [zowe native executable](#install-the-zowex-native-executable).
