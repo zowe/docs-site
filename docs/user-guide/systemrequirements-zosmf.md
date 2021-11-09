@@ -138,3 +138,9 @@ The Zowe CLI uses z/OSMF Representational State Transfer (REST) APIs to work wit
 
   - Browsing z/OSMF endpoints requests your user ID and password for defaultRealm; these are your TSO user credentials.
   - The browser returns the status code 200 and a list of all jobs on the z/OS system. The list is in raw JSON format.
+
+## Configuration of z/OSMF to properly work with API ML
+
+There is an issue observed in z/OSMF which leads to a stuck JSON web token(JWT). It manifests as /zosmf/services/authenticate endpoint issuing a JWT with success RC that is not valid for API calls, resulting in 401 response status code. This is a persistent condition.
+To get the token unstuck, a logout has to be performed with the LTPA token from the login request. This causes logins to start serving unique JWTs again.
+Until this will be properly fixed in z/OSMF, we are proposing a possible temporary workaround. You can update z/OSMF configuration with `allowBasicAuthLookup="false"`. After applying this change, each authentication call will result in generating a new JWT. 
