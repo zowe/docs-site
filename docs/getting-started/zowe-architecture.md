@@ -8,9 +8,9 @@ The following diagram illustrates the high-level Zowe architecture.
 
 The diagram shows the default port numbers that are used by Zowe.  These are dependent on each instance of Zowe and are held in the Zowe instance directory configuration file `instance.env`. For more information, see [Creating and configuring the Zowe instance directory](../user-guide/configure-instance-directory.md).
 
-Zowe components can be categorized by location: server or client. While the client is always an end user tool such as a PC, browser, or mobile device, the server components can be further categorized by what machine they run on.
+Zowe components can be categorized by location: server or client. While the client is always an end-user tool such as a PC, browser, or mobile device, the server components can be further categorized by what machine they run on.
 
-Zowe server components can be installed and run entirely on z/OS, but a subset of the components can alternatively run on Linux or z/Linux via Docker. While on z/OS, many of these components run under Unix System Services (USS). The components that do not run under USS must remain on z/OS when using Docker in order to provide connectivity to the mainframe.
+Zowe server components can be installed and run entirely on z/OS, but a subset of the components can alternatively run on Linux or z/Linux via Docker. While on z/OS, many of these components run under UNIX System Services (USS). The components that do not run under USS must remain on z/OS when using Docker in order to provide connectivity to the mainframe.
 
 ## Zowe architecture with high availability enablement on Sysplex
 
@@ -41,16 +41,16 @@ The following diagram illustrates the difference in locations of Zowe components
 
 ![Zowe Architecture Diagram in Kubernetes](../images/common/zowe-architecture-k8s.png)
 
-The components on z/OS run under the Zowe started task `ZWESVSTC`, which has its own user ID `ZWESVUSR` and includes a number of servers each with their own address space.  The `ZWESVSTC` started task has a `STDOUT` file that includes log and trace information for its servers.  Sever error messages write to `STDERR`. For problem determination, see [Troubleshooting](../troubleshoot/troubleshooting.md).
+The components on z/OS run under the Zowe started task `ZWESVSTC`, which has its own user ID `ZWESVUSR` and includes a number of servers each with their own address space.  The `ZWESVSTC` started task has a `STDOUT` file that includes log and trace information for its servers.  Server error messages write to `STDERR`. For problem determination, see [Troubleshooting](../troubleshoot/troubleshooting.md).
 
 When deploying other server components into container orchestration software like Kubernetes, Zowe follows standard Kubernetes practices. The cluster can be monitored and managed with common Kubernetes administration methods.
 
 - All Zowe workloads run on a dedicated namespace (`zowe` by default) to distinguish from other workloads in same Kubernetes cluster.
 - Zowe has its own `ServiceAccount` to help with managing permissions.
-- Server components uses similar `instance.env` or `zowe.yaml` on z/OS, which are stored in `ConfigMap` and `Secret`, to configure and start.
-- Server components can be configured using the same certificates used on z/OS components.
+- Server components use similar `instance.env` or `zowe.yaml` on z/OS, which are stored in `ConfigMap` and `Secret`, to configure and start.
+- Server components can be configured by using the same certificates used on z/OS components.
 - Zowe claims its own `Persistent Volume` to share files across components.
-- Each server components run in separated containers.
+- Each server component runs in separated containers.
 - Components may register themselves to Discovery with their own `Pod` name within the cluster.
 - Zowe workloads use the `zowe-launch-scripts` `initContainers` step to prepare required runtime directories.
 - Only necessary components ports are exposed outside of Kubernetes with `Service`.
@@ -63,7 +63,7 @@ The following diagram illustrates the difference in locations of Zowe components
 
 ![Zowe Architecture Diagram using Docker](../images/common/zowe-architecture-docker.png)
 
-The components on z/OS run under the Zowe started task `ZWESVSTC`, which has its own user ID `ZWESVUSR` and includes a number of servers each with their own address space.  The `ZWESVSTC` started task has a `STDOUT` file that includes log and trace information for its servers. Sever error messages write to `STDERR`. For problem determination, see [Troubleshooting](../troubleshoot/troubleshooting.md).
+The components on z/OS run under the Zowe started task `ZWESVSTC`, which has its own user ID `ZWESVUSR` and includes a number of servers each with their own address space.  The `ZWESVSTC` started task has a `STDOUT` file that includes log and trace information for its servers. Server error messages write to `STDERR`. For problem determination, see [Troubleshooting](../troubleshoot/troubleshooting.md).
 
 When Docker is used, server components not running on z/OS instead run in a Linux environment provided via Docker container technology. The servers run as processes within the container which log to `STDOUT` and `STDERR` of that container. Some components also write to the log directory of the Zowe instance.
 
