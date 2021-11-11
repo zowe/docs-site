@@ -42,6 +42,8 @@ Follow these steps:
 
 ### Associate Profile
 
+ > **Note**: The Associate Profile functionality is deprecated and will be removed in the version 2 of Zowe Explorer.
+
 Extensions built on Zowe Explorer provide users with additional functionality through unique profile types, such as RSE or FTP. The "associate profiles" function allows users to link, or associate, these extension profile types with an existing zOSMF profile. Every Zowe Explorer profile has two types of association: primary and secondary. While the primary association is `zosmf`, the secondary association includes Zowe CLI plug-ins or other services you might have. Within the scope of their own extender package, associated profiles can be used to access a relevant REST API that is available to the extender.
 
 Create a secondary association for your Zowe Explorer profiles.
