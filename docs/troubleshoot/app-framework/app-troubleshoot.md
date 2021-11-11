@@ -331,7 +331,6 @@ BPXTLS failed: rc=-1, return code=163, reason code=0x0be80820
 
 **Solution:**
 
-Access to the ZSS endpoints are protected and require the user to have `READ` acces on the resource `OMVSAPPL` i;n the class `APPL`.
 Access to the ZSS endpoints are protected. To access the ZSS endpoints, the user must have `READ` access on the `OMVSAPPL` resource in the `APPL` class.
 
 To fix this permit access, issue the following TSO command, where `userID` is the started task ID of the requesting process. The vendor documentation describes which userID to use which might be `ZWESVUSR`.  
