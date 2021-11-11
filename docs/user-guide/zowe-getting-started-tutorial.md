@@ -132,7 +132,7 @@ Close the JES Explorer window. Next, you'll use the TN3270 application plug-in i
 
 Use the 3270 Terminal application plug-in to view the same job that you filtered out in the previous task.
 
-Zowe not only provides new, modern applications to interact with z/OS®, but it also integrates the traditional 3270 terminal interface that you may also be familiar with. The 3270 Terminal application plug-in provides a basic, emulated 3270 terminal connection to the mainframe via the Zowe Application Server.
+Zowe not only provides new, modern applications to interact with z/OS®, but it also integrates the traditional 3270 terminal interface that you may also be familiar with. The 3270 Terminal application plug-in provides a basic, emulated 3270 terminal connection to the mainframe via the Zowe Application Server. The basic functionality includes the support for the [special keys](plugin-tn3270-keyboard.md) such as Attention or PF keys.
 
 **Follow these steps:**
 
