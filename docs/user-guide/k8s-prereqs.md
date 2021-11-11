@@ -23,12 +23,14 @@ The Zowe containerization solution is compatible with Kubernetes v1.19+ or OpenS
 
 You can prepare a Kubernetes cluster based on your requirements in many different ways.
 
-* For development purpose, you can set up a Kubernetes cluster on your local computer in one of the following ways:
+* For development purposes, you can set up a Kubernetes cluster on your local computer in one of the following ways:
 
   * [Enable Kubernetes shipped with Docker Desktop](https://docs.docker.com/desktop/kubernetes/)
-  * [Set up minikube](https://minikube.sigs.k8s.io/docs/start/)
+  * [Set up minikube](https://minikube.sigs.k8s.io/docs/start/)  
 
-* For production purpose, you can set up a Kubernetes cluster in one of the following ways:
+  **Attention!** You must make sure that the Kubernetes cluster you have created has a minimum RAM of 3GB in order for Zowe to start.
+
+* For production purposes, you can set up a Kubernetes cluster in one of the following ways:
 
   * Bootstrap your own cluster by following instructions in [Installing Kubernetes with deployment tools](https://kubernetes.io/docs/setup/production-environment/tools/) in the Kubernetes documentation.
 

@@ -1075,7 +1075,6 @@ The following error message codes may appear on logs or API responses. Use the f
 
   Use a properly formatted URI.
 
-
 ### ZWEAG713E
 
   Configuration error when trying to establish JWT producer. Events: %s
