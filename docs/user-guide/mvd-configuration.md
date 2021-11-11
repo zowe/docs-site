@@ -24,7 +24,7 @@ To access the Application Server through the Mediation Layer, use the Mediation 
 The port number for the Zowe Desktop is the value of the `ZOWE_ZLUX_SERVER_HTTPS_PORT` variable in the `instance.env` file in the instance directory, see [Creating and configuring the Zowe instance directory](configure-instance-directory.md).
 
 When accessed through the API Mediation Layer, this is the Zowe Desktop URL:
-`https://<gwsname_port>/ui/v1/zlux/ZLUX/plugins/org.zowe.zlux.bootstrap/web/index.html`
+`https://<gwsname_port>/zlux/ui/v1/ZLUX/plugins/org.zowe.zlux.bootstrap/web/index.html`
 
 The port number for the API Mediation Layer is the value of the `GATEWAY_PORT` variable in the `instance.env` file in the instance directory.
 
