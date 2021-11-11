@@ -236,7 +236,7 @@ To access services through API ML using the token in your base profile, specify 
 The following example illustrates a complete path for a z/OSMF instance registered to API ML. The format of base path can vary based on how API ML is configured at your site:
 
 ```
-https://myapilayerhost:port/api/v1/zosmf
+https://myapilayerhost:port/zosmf/api/v1
 ```
 
 To access that API ML instance, create a service profile (or issue a command) with the `--base-path` value of `api/v1`. Your service profile uses the token and credentials stored in your default base profile.

@@ -272,7 +272,7 @@ The onboarding configuration parameters are broken down into the following group
     * If the `serviceId` is `sampleservice`, the service URL in the API ML Gateway address space appears as the following path:
 
        ```
-       https://gateway-host:gateway-port/api/v1/sampleservice/...
+       https://gateway-host:gateway-port/sampleservice/api/v1/...
        ```
 
 * **title**
@@ -451,7 +451,7 @@ routes:
   ```
 * API major version 1:
     ```
-    https://gateway:10010/api/v1/sampleservice
+    https://gateway:10010/sampleservice/api/v1
     ```
     is routed to: 
     ```
@@ -459,7 +459,7 @@ routes:
     ```
 * APIs docs major version 1:
     ```
-    https://gateway:10010/api/v1/api-doc/sampleservice
+    https://gateway:10010/sampleservice/api/v1/api-doc
     ```
     is routed to:
     ```

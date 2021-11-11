@@ -68,11 +68,11 @@ Services that belong to the same product family are displayed on the same tile.
 
    **Example:**
 
-    `/api/v1/{yourServiceId}/{endpointName}`
+    `/{yourServiceId}/api/v1/{endpointName}`
 
     The path of the full URL that includes the base URL is also displayed in the following format:
 
-    `https://hostName:basePort/api/v1/{yourServiceId}/{endpointName}`
+    `https://hostName:basePort/{yourServiceId}/api/v1/{endpointName}`
 
     Both links target the same endpoint location.
 

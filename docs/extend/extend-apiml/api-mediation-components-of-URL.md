@@ -64,20 +64,6 @@ scheme       host        endpointPath
 ### URL to a service endpoint via API gateway
 
 ```markup
-https://ca3x.ca.com:10310/api/v1/cafilemasterplus/mvs/dataSets/test/ping
-\______/\_______________/\______________________/\_____________________/
-scheme       host             basePath                  endpointPath
-                          \_/ \/\______________/
-                           t  v    serviceId
-
-\_______________________________________________/
-                 baseUrl
-
-```
-
-Or, alternatively:
-
-```markup
 https://ca3x.ca.com:10310/cafilemasterplus/api/v1/mvs/dataSets/test/ping
 \______/\_______________/\______________________/\_____________________/
 scheme       host             basePath                  endpointPath
@@ -90,19 +76,6 @@ scheme       host             basePath                  endpointPath
 ```
 
 ### URL to a service endpoint via API gateway without version
-
-```markup
-https://ca3x.ca.com:10310/api/zosmfca32/zosmf/info
-\_____/\________________/\____________/\_________/
-scheme        host          basePath    endpointPath
-                          \_/\________/
-                           t  serviceId
-
-\______________________/
-        baseUrl
-```
-
-Or, alternatively:
 
 ```markup
 https://ca3x.ca.com:10310/zosmfca32/api/zosmf/info

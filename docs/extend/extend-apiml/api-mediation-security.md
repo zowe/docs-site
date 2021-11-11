@@ -167,10 +167,10 @@ The API Gateway contains two REST API authentication endpoints:
 
   * `auth/login`
   
-    The full path of the `auth/login` endpoint appears as `https://{gatewayUrl}:{gatewayPort}/gateway/api/v1/auth/login` (preferred option) or `https://{gatewayUrl}:{gatewayPort}/api/v1/gateway/auth/login`.   
+    The full path of the `auth/login` endpoint appears as `https://{gatewayUrl}:{gatewayPort}/gateway/api/v1/auth/login`.
   * `auth/query`
   
-    The full path of the `auth/query` endpoint appear as `https://{gatewayUrl}:{gatewayPort}/gateway/api/v1/auth/query` (preferred option) or `https://{gatewayUrl}:{gatewayPort}/api/v1/gateway/auth/query`. 
+    The full path of the `auth/query` endpoint appear as `https://{gatewayUrl}:{gatewayPort}/gateway/api/v1/auth/query`.
     
     
 The `auth/login` endpoint authenticates mainframe user credentials and returns an authentication token. The login request requires user credentials though one of the following methods:
@@ -187,7 +187,7 @@ The query request requires the token through one of the following methods:
 
 When authentication is successful, the response to the request is a JSON object which contains information associated with the token. When authentication fails, the user receives a 401 status code.
 
-The `auth/ticket` endpoint generates a PassTicket for the user associated with a token. The full path of the `auth/ticket` endpoint appears as https://{gatewayUrl}:{gatewayPort}/gateway/api/v1/auth/ticket` (preferred option) or `https://{gatewayUrl}:{gatewayPort}/api/v1/gateway/auth/ticket`.`
+The `auth/ticket` endpoint generates a PassTicket for the user associated with a token. The full path of the `auth/ticket` endpoint appears as `https://{gatewayUrl}:{gatewayPort}/gateway/api/v1/auth/ticket`.
 
 This endpoint is protected by a client certificate.
 The ticket request requires the token in one of the following formats:
@@ -300,12 +300,12 @@ You can find the JWT secret, alias `jwtsecret`, in the PKCS12 keystore that is s
 
 For easy access, you can find the public key in the `${KEYSTORE_DIRECTORY}/localhost/localhost.keystore.jwtsecret.pem` file.
 
-You can also use `/api/v1/gateway/auth/keys/public/all` endpoint to obtain all public keys that can be used to verify JWT tokens signature in a standard [JWK format](https://openid.net/specs/).
+You can also use `/gateway/api/v1/auth/keys/public/all` endpoint to obtain all public keys that can be used to verify JWT tokens signature in a standard [JWK format](https://openid.net/specs/).
 
 ### z/OSMF JSON Web Tokens Support
 
 Your z/OSMF instance can be enabled to support JWT tokens as described at [Enabling JSON Web Token support](https://www.ibm.com/support/knowledgecenter/SSLTBW_2.4.0/com.ibm.zos.v2r4.izua300/izuconfig_EnableJSONWebTokens.htm).
-In this case, the Zowe API ML uses this JWT token and does not generate its own Zowe JWT token. All authentication APIs, such as `/api/v1/gateway/login` and `/api/v1/gateway/check` function in the same way as without z/OSMF JWT.
+In this case, the Zowe API ML uses this JWT token and does not generate its own Zowe JWT token. All authentication APIs, such as `/gateway/api/v1/login` and `/gateway/api/v1/check` function in the same way as without z/OSMF JWT.
 The `zowe-setup-certificates.sh` stores the z/OSMF JWT public key to the `localhost.keystore.jwtsecret.pem` that can be used for JWT signature validation.
 
 ### API ML truststore and keystore
@@ -811,7 +811,7 @@ If your service is not trusted, you may receive a response with the HTTP status 
 
 **Example:**
 
-```http --verify=$KEYSTORE_DIRECTORY/local_ca/localca.cer GET https://<gatewayHost>:<port></port>/api/v1/<untrustedService>/greeting```
+```http --verify=$KEYSTORE_DIRECTORY/local_ca/localca.cer GET https://<gatewayHost>:<port></port>/<untrustedService>/api/v1/greeting```
 
 In this example, you receive a similar response:
 
@@ -822,7 +822,7 @@ In this example, you receive a similar response:
     {
         "messages": [
             {
-                "messageContent": "The certificate of the service accessed by HTTPS using URI '/api/v1/<untrustedService>/greeting' is not trusted by the API Gateway: sun.security.validator.ValidatorException: PKIX path building failed: sun.security.provider.certpath.SunCertPathBuilderException: unable to find valid certification path to requested target",
+                "messageContent": "The certificate of the service accessed by HTTPS using URI '/<untrustedService>/api/v1/greeting' is not trusted by the API Gateway: sun.security.validator.ValidatorException: PKIX path building failed: sun.security.provider.certpath.SunCertPathBuilderException: unable to find valid certification path to requested target",
                 "messageKey": "apiml.common.tlsError",
                 "messageNumber": "AML0105",
                 "messageType": "ERROR"

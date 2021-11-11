@@ -98,7 +98,7 @@ In this example, a suitable name for the file is `petstore.yml`.
 
 * The service can have one or more instances. In this case, only one instance `http://localhost:8080` is used.
 
-* One API is provided and the requests with the relative base path `api/v2` at the API Gateway (full gateway URL: `https://gateway:port/api/v2/serviceId/...`) are routed to the relative base path `/v2` at the full URL of the service (`http://localhost:8080/v2/...`).
+* One API is provided and the requests with the relative base path `api/v2` at the API Gateway (full gateway URL: `https://gateway:port/serviceId/api/v2/...`) are routed to the relative base path `/v2` at the full URL of the service (`http://localhost:8080/v2/...`).
 
 * The file on USS should be encoded in ASCII to be read correctly by the API Mediation Layer.
 
@@ -112,7 +112,7 @@ In this example, a suitable name for the file is `petstore.yml`.
 Routing is the process of sending requests from the API Gateway to a specific API service. Route your API by using the same format as in the following `petstore` example. The configuration parameters are explained in [Customize configuration parameters](#customize-configuration-parameters).
 Gateway URL format:
 ```
-https://{gatewayHost}:{port}/api/v{majorVersion}/{serviceId}/{resource}
+https://{gatewayHost}:{port}/{serviceId}/api/v{majorVersion}/{resource}
 ```
 **Note:** The API Gateway differentiates major versions of an API.
 
@@ -130,7 +130,7 @@ services:
 ```
 To access API version 2 of the service `petstore`, gateway URL will be:
 ```
-https://gateway-host:port/api/v2/petstore
+https://gateway-host:port/petstore/api/v2
 ```
 It will be routed to:
 ```
@@ -139,7 +139,7 @@ https://localhost:8080/v2
 
 To access resource `pets` of the `petstore` version 2 API, gateway URL will be:
 ```
-https://gateway:port/api/v2/petstore/pets
+https://gateway:port/petstore/api/v2/pets
 ```
 It will be routed to: 
  ```
@@ -212,12 +212,12 @@ additionalServiceMetadata:
     * If the customer system administrator sets the service ID to `monitoringpr1`,
     the API URL in the API Gateway appears as the following URL:
 
-        `https://gateway:port/api/v1/monitoringpr1/...`
+        `https://gateway:port/monitoringpr1/api/v1/...`
 
     * If customer system administrator sets the service ID to `authenticationprod1`,
     the API URL in the API Gateway appears as the following URL:
 
-        `http://gateway:port/api/v1/authenticationprod1/...`
+        `http://gateway:port/authenticationprod1/api/v1/...`
 
  * **title**
 
@@ -308,7 +308,7 @@ additionalServiceMetadata:
         
         For the petstore example, the full Gateway URL would be:
 
-        `https://gatewayUrl:1345/api/v2/petstore/pets/1`
+        `https://gatewayUrl:1345/petstore/api/v2/pets/1`
         
          In this case, the URL that will be called on the service is:
 
@@ -511,7 +511,7 @@ After you define and validate the service in YAML format, you are ready to add y
 
 You successfully defined your Java application if your service is running and you can access its endpoints. The endpoint displayed for the sample application is:
 ```
-https://l${zoweHostname}:${gatewayHttpsPort}/api/v2/petstore/pets/1
+https://l${zoweHostname}:${gatewayHttpsPort}/petstore/api/v2/pets/1
 ```
 
 ## (Optional) Check the log of the API Mediation Layer

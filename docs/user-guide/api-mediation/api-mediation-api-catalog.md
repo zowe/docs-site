@@ -48,10 +48,10 @@ Use the API Catalog to view services, API documentation, descriptive information
    
    In the Endpoint panel header section, the abbreviated endpoint relative to the base URL is displayed as the following path:
    ```aidl
-    /api/v1/discoverableclient/movies/list
+    /discoverableclient/api/v1/movies/list
    ```
    A full URL that includes the base URL is also displayed as the following path:
    ```aidl
-    https://hostName:basePort/api/v1/discoverableclient/movies/list
+    https://hostName:basePort/discoverableclient/api/v1/movies/list
    ```
    Both links target the same endpoint location.

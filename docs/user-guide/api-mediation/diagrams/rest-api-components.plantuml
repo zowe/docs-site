@@ -9,12 +9,12 @@ skinparam rectangle {
 rectangle gateway [
 <b>API Gateway</b>
 ===
-/api/v1/service1
-/api/v2/service1
+/service1/api/v1
+/service1/api/v2
 ---
-/api/v2/service2
+/service2/api/v2
 ---
-/api/v1/service3
+/service3/api/v1
 ]
 
 rectangle service1 <<Service>> {
