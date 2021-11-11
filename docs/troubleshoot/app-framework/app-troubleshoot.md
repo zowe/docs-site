@@ -323,7 +323,7 @@ A new property `ZOWE_EXPLORER_FRAME_ANCESTORS` was introduced in V1.12. This pro
 
 **Symptom:**
 
-Zowe extensions that access the ZSS APIs such as the `security-mgmt/classes/default-class/profiles` endpoint fail and the following error is written to the log
+Zowe extensions fail when accessing the ZSS APIs such as the `security-mgmt/classes/default-class/profiles` endpoint. The following error is written to the log.
 
 ```
 BPXTLS failed: rc=-1, return code=163, reason code=0x0be80820
@@ -332,8 +332,9 @@ BPXTLS failed: rc=-1, return code=163, reason code=0x0be80820
 **Solution:**
 
 Access to the ZSS endpoints are protected and require the user to have `READ` acces on the resource `OMVSAPPL` i;n the class `APPL`.
+Access to the ZSS endpoints are protected. To access the ZSS endpoints, the user must have `READ` access on the `OMVSAPPL` resource in the `APPL` class.
 
-To fix this permit access using the TSO command, where the userID is the started task ID of the requesting process.  The vendor documentation will describe which userID is to be used which likely may be `ZWESVUSR`.  
+To fix this permit access, issue the following TSO command, where `userID` is the started task ID of the requesting process. The vendor documentation describes which userID to use which might be `ZWESVUSR`.  
 
 ```
 PERMIT OMVSAPPL CLASS(APPL) ACCESS(READ) ID(userID)
