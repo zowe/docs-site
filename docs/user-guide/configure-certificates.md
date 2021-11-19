@@ -8,9 +8,13 @@ Zowe uses a certificate to encrypt data for communication across secure sockets.
 
 The Zowe certificate is used by the API Mediation Layer on its northbound edge when identifying itself and encrypting `https://` traffic to web browsers or REST client applications.  If the Zowe Command Line Interface (CLI) is configured to use the Zowe API Mediation Layer, then the CLI is a client of the Zowe certificate. For more information, see [Using the Zowe Command Line Interface, Integrating with the API Mediation Layer](./cli-usingcli.md#integrating-with-api-mediation-layer).
 
+**Note** The certificate used by Zowe for its northbound edge must have the extended key usage `TLS Web Server authentication` set, see [Extended Key Usage](#extended-key-usage)
+
 ## Southbound Certificate
 
 As well as being a server, Zowe itself is a client to services on the southbound edge of its API Mediation Layer. Zowe communicates to these services over secure sockets.  These southbound services use certificates to encrypt their data, and Zowe uses a trust store to store its relationship to these certificates.  The southbound services that are started by Zowe itself and run as address spaces under its `ZWESVSTC` started task (such as the API discovery service, the explorer JES REST API server) re-use the same Zowe certificate used by the API Mediation Layer on its northbound client edge.  
+
+**Note** The certificate used by Zowe for its southbound edge must have the extended key usage `TLS Web Client Authentication` set,  see [Extended Key Usage](#extended-key-usage).  
 
 ## Trust store
 
@@ -78,7 +82,12 @@ The JCL member `ZWEKRING` (4) is used to create a z/OS Keyring to hold the Zowe 
 
 At launch time, a Zowe instance is started using the script `<INSTANCE_DIR>/bin/zowe-start.sh` which takes configuration arguments from `<INSTANCE_DIR>/instance.env`.  The argument (5)  `KEYSTORE_DIRECTORY=<KEYSTORE_DIRECTORY>` specifies the path to the keystore directory that Zowe will use.  
 
-**Note:** If you generated your own server certificate, and you want to enable Client Authentication for it, your server certificate must contain the `TLS Web Client Authentication (1.3.6.1.5.5.7.3.2)` value in the Extended Key Usage section. 
+## Extended Key Usage
+
+When a TLS certficiate is used for encryption across a socket connection, one of those endpoints is the client and the other is a server.  This usage is restricted with the `Extended Key Usage` attribute.  
+
+Many existing z/OS certificates will be configured to act as server certificates, however Zowe requires certificates to be enabled for Client Authentication in order for its servers to communicate and trust each other appropriately.  For this to occur please ensure the certificate contains the `TLS Web Client Authentication (1.3.6.1.5.5.7.3.2)` value in the Extended Key Usage section. 
+
 Additionally, the `Digital signature and/or key agreement` must also be set as extension value in the Key Usage section. For more information, see [key usage extensions and extended key usage](https://help.hcltechsw.com/domino/10.0.1/admin/conf_keyusageextensionsandextendedkeyusage_r.html).
 
-For more information on the Zowe launch topology, see [Topology of the Zowe z/OS launch process](./installandconfig.md#topology-of-the-zowe-z-os-launch-process).
+ 
