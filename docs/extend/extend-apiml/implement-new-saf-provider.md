@@ -8,6 +8,8 @@ an existing interface.
 - [How to use an existing SAF IDT provider](#how-to-use-an-existing-saf-idt-provider)
 - [How to use the SAF IDT provider](#how-to-use-the-saf-idt-provider)
 
+To configure SAF IDT on z/OS, check the **Configure signed SAF Identity tokens (IDT)** page, [here](../../user-guide/configure-zos-system.md#configure-signed-saf-identity-tokens-idt). 
+
 ## How to create a SAF IDT provider
 
 To create your own implementation of the SAF IDT provider, follow these steps:

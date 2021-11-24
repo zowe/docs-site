@@ -534,3 +534,23 @@ If you use TSS, verify and update permission in `FACILITY` class.
     ```
     TSS PER(ZWESVUSR) IBMFAC(IRR.RUSERMAP) ACCESS(READ)
     ```
+
+## Configure signed SAF Identity tokens (IDT)
+
+This section provides a brief description of how to configure SAF Identity tokens on z/OS so that they can be used by Zowe components 
+like zss or API Mediation layer ([Implement a new SAF IDT provider](../extend/extend-apiml/implement-new-saf-provider.md))
+
+General steps are:
+1. Create PKCS#11 token 
+2. Generate a secret key for the PKCS#11 token (you can use the sample program ZWESECKG in the SZWESAMP dataset)
+3. Define a SAF resource profile under the IDTDATA SAF resource class
+
+Details with examples can be found in documentation of external security products:
+* **RACF** - **_Signed and Unsigned Identity Tokens_** and **_IDT Configuration_** subsections in _z/OS Security Server RACROUTE Macro Reference_ book, [link](https://www.ibm.com/docs/en/zos/2.4.0?topic=reference-activating-using-idta-parameter-in-racroute-requestverify)
+* **Top Secret** - _**Maintain Identity Token (IDT) Records**_ subsection in _Administrating_ chapter, [link](https://techdocs.broadcom.com/us/en/ca-mainframe-software/security/ca-top-secret-for-z-os/16-0/administrating/maintaining-special-security-records/maintain-identity-token-(idt)-records.html)
+* **ACF2** - _**IDTDATA Profile Records**_ subsection in _Administrating_ chapter, [link](https://techdocs.broadcom.com/us/en/ca-mainframe-software/security/ca-acf2-for-z-os/16-0/administrating/administer-records/profile-records/idtdata-profile-records.html)
+
+A part of the Signed SAF Identity token configuration is a nontrivial step that has to generate 
+a secret key for the PKCS#11 token. The secret key is generated in ICSF by calling the PKCS#11 
+Generate Secret Key (CSFPGSK) or Token Record Create (CSFPTRC) callable services. An example of the 
+CSFPGSK callable service can be found in the SZWESAMP dataset as the ZWESECKG job.
