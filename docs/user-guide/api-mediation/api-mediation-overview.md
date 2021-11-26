@@ -46,4 +46,8 @@ The most important part of the ecosystem are the real API services that provide 
 ## Caching service
 
 The Caching service aims to provide an API which offers the possibility to store, retrieve and delete data associated with keys. The service is used only by internal Zowe applications and will not be exposed to the internet. Its URL is `https://<ZOWE_HOST_IP>:7555`. 
-For more  information about the Caching service, see its [documentation](../../extend/extend-apiml/api-mediation-caching-service.md).
+For more information about the Caching service, see its [documentation](../../extend/extend-apiml/api-mediation-caching-service.md).
+
+## Metrics service (Techincal Preview)
+
+The Metrics service aims to provide a web user interface to visualize requests to API Mediation Layer services. The Metrics service is currently a technical preview and is not ready for production. At this time, only core API Mediation Layer services integrate with the Metrics service, onboarded services will not have metrics displayed. For more information about the Metrics service, see its [documentation](../../api-mediation-metrics-service.md).
