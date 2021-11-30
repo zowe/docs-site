@@ -117,7 +117,7 @@ It provides an API in high-availability mode which offers the possibility to sto
 **Metrics Service (Technical Preview)**
 
 The Metrics Service provides a web user interface to visualize requests to API Mediation Layer services. HTTP metrics such as number of requests and error rates are displayed for
-each API Mediation Layer service. This service is currently a technical preview and is not ready for production.
+each API Mediation Layer service. This service is currently in technical preview and is not ready for production.
 
 #### Onboarding APIs
 Essential to the API Mediation Layer ecosystem is the API services that expose their useful APIs. Use the following topics to discover more about adding new APIs to the API Mediation Layer and using the API Catalog:
