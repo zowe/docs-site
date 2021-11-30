@@ -29,6 +29,8 @@ To register a z/OS service with the API Mediation Layer, there are two approache
 
 For information about how to onboard REST APIs, see the [Onboarding Overview](extend-apiml/onboard-overview.md).
 
+To streamline the process of onboarding new REST API services to the API Mediation Layer, see [Onboarding a REST API service with the YAML Wizard](./extend-apiml/onboard-wizard.md)
+
 ### Dynamic API registration
 
 Registration of a REST API service to the API ML is performed through a call to the Discovery Service by sending registration data and metadata for the service being registered. Registration requires that the z/OS service must know the web address of the API ML Discovery Service. When Dynamic registration is performed, the service that performs the registration must periodically send heartbeat requests to the Discovery Service for each registered service instance. These heartbeat requests serve to renew the corresponding service instance registration with API ML. These requests enable the Discovery Service to monitor the availability of registered service instances. Services that are registered dynamically display the status of the service in the API Catalog after initial service registration.
