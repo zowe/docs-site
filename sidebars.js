@@ -197,6 +197,7 @@ module.exports = {
           ],
         },
         "user-guide/api-mediation-api-catalog",
+        "user-guide/api-mediation-metrics-service",
         "user-guide/cli-usingcli",
         {
           type: "category",

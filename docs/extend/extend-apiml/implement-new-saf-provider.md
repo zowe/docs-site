@@ -1,12 +1,14 @@
 # Implement a new SAF IDT provider
 
-API Gateway offers the capability to implement your own SAF Identity Token (IDT) provider by implementing 
+As a Zowe API ML user, you can use the API Gateway to apply your own SAF Identity Token (IDT) provider by implementing 
 an existing interface.
 
 - [How to create a SAF IDT provider](#how-to-create-a-saf-idt-provider)
 - [How to integrate your extension with API ML](#how-to-integrate-your-extension-with-api-ml)
 - [How to use an existing SAF IDT provider](#how-to-use-an-existing-saf-idt-provider)
 - [How to use the SAF IDT provider](#how-to-use-the-saf-idt-provider)
+
+To configure SAF IDT on z/OS, see [Configure signed SAF Identity tokens (IDT)](../../user-guide/configure-zos-system.md#configure-signed-saf-identity-tokens-idt). 
 
 ## How to create a SAF IDT provider
 
