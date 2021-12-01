@@ -318,3 +318,23 @@ When you log in to the Zowe Desktop, you cannot open the JES, MVS, or USS Explor
 **Solution:**
 
 A new property `ZOWE_EXPLORER_FRAME_ANCESTORS` was introduced in V1.12. This property is required to be present in the `instance.env` file with some valid value. When undefined, it is treated as Boolean, which breaks the string split function. To resolve the issue, define the value for this property in the `instance.env` file. 
+
+## Warning: Zowe extensions access to ZSS security endpoints fail 
+
+**Symptom:**
+
+Zowe extensions fail when accessing the ZSS APIs such as the `security-mgmt/classes/default-class/profiles` endpoint. The following error is written to the log.
+
+```
+BPXTLS failed: rc=-1, return code=163, reason code=0x0be80820
+```
+
+**Solution:**
+
+Access to the ZSS endpoints are protected. To access the ZSS endpoints, the user must have `READ` access on the `OMVSAPPL` resource in the `APPL` class.
+
+To fix this permit access, issue the following TSO command, where `userID` is the started task ID of the requesting process. The vendor documentation describes which userID to use which might be `ZWESVUSR`.  
+
+```
+PERMIT OMVSAPPL CLASS(APPL) ACCESS(READ) ID(userID)
+```
