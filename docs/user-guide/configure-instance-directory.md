@@ -45,6 +45,9 @@ In order to allow the `ZWESVSTC` started task to have permission to access the c
 ```shell
 <RUNTIME_DIR>/bin/zowe-configure-instance.sh -c <PATH_TO_INSTANCE_DIR> -g <GROUP>
 ```
+The following video shows the creation of an `instance.env` file used to launch Zowe with default parameters and a USS keystore containing a self signed TLS certificate.
+
+<iframe class="embed-responsive-item" id="youtubeplayer" title="Zowe overview demo" type="text/html" width="640" height="390" src="https://www.youtube.com/embed/oxmDHZUFjtg" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen> </iframe>
 
 ## Updating the instance.env configuration file
 
