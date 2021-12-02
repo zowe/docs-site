@@ -98,7 +98,7 @@ You can configure the Zowe high availability runtime by using JCL and shell scri
    SETROPTS RACLIST(STARTED) REFRESH
    ```
 
-   - If you use CA ACF2, issue the following commands:
+   - If you use ACF2, issue the following commands:
 
    ```
    SET CONTROL(GSO)
@@ -109,7 +109,7 @@ You can configure the Zowe high availability runtime by using JCL and shell scri
    F ACF2,REFRESH(STC)  
    ```
 
-   - If you use CA Top Secret, issue the following commands:
+   - If you use Top Secret, issue the following commands:
 
    ```
    TSS ADD(STC) PROCNAME(&ZLNCHSTC.) ACID(&ZOWEUSER.)
