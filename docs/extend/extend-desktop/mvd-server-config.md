@@ -13,7 +13,7 @@ For example:
 "node": {
     "https": {
       "ipAddresses": ["0.0.0.0"],
-      "port": 8544,
+      "port": 7556,
       //pfx (string), keys, certificates, certificateAuthorities, and certificateRevocationLists are all valid here.
       "keys": ["../defaults/serverConfig/server.key"],
       "certificates": ["../defaults/serverConfig/server.cert"]
@@ -46,7 +46,7 @@ For example:
 "node": {
     "https": {
       "ipAddresses": ["0.0.0.0"],
-      "port": 8544,
+      "port": 7556,
       //pfx (string), keys, certificates, certificateAuthorities, and certificateRevocationLists are all valid here.
       "keys": ["../defaults/serverConfig/server.key"],
       "certificates": ["../defaults/serverConfig/server.cert"]
@@ -124,7 +124,7 @@ In our example configuration, you can see we've specified both HTTP and HTTPS:
   "node": {
     "https": {
       "ipAddresses": ["0.0.0.0"],
-      "port": 8544,
+      "port": 7556,
       //pfx (string), keys, certificates, certificateAuthorities, and certificateRevocationLists are all valid here.
       "keys": ["../defaults/serverConfig/server.key"],
       "certificates": ["../defaults/serverConfig/server.cert"]

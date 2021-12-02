@@ -196,7 +196,7 @@ When you configure the Zowe environment variable `ZOWE_EXPLORER_HOST` in `instan
 
 - Certificate warnings similar to the following one:
   ```
-  domain-b.com:8544 uses an invalid security certificate.
+  domain-b.com:7556 uses an invalid security certificate.
 
   The certificate is only valid for the following names: domain-a.com, <ip-of-domain-a>, localhost.localdomain, localhost, 127.0.0.1
   ```
@@ -232,4 +232,4 @@ You can take the following steps:
 
 **Drawback:**
 
-With this change, you must use the API Mediation Layer Gateway port (default is 7554) to access Zowe Desktop, for example, `https://domain-a.com:7554/ui/v1/zlux` or `https://domain-b.com:7554/ui/v1/zlux`. Using Desktop port (default is 8544) like `https://domain-b.com:8544/` is not supported.
+With this change, you must use the API Mediation Layer Gateway port (default is 7554) to access Zowe Desktop, for example, `https://domain-a.com:7554/ui/v1/zlux` or `https://domain-b.com:7554/ui/v1/zlux`. Using Desktop port (default is 7556) like `https://domain-b.com:7556/` is not supported.
