@@ -99,7 +99,7 @@ After you have the `zowe-V.v.p.PAX` file, follow these steps.
 
 The following video shows the scenario of transferring a *zowe.V.v.p.pax* file and expanding it on USS ready for installation.
 
-<iframe class="embed-responsive-item" id="youtubeplayer" title="Install Zowe Convenience Build zowe-install.sh" type="text/html" width="640" height="390" src="https://www.youtube.com/embed/fA5ykEqvCNM" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen> </iframe>
+<iframe class="embed-responsive-item" id="youtubeplayer" title="Install Zowe Convenience Build zowe-install.sh" type="text/html" width="640" height="390" src="https://www.youtube.com/embed/LcpHQ8HE1uc" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen> </iframe>
 
 ## Installing the Zowe runtime
 
