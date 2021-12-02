@@ -111,9 +111,9 @@ The following ports are required for Zowe. These are default values. You can cha
 | 7553 | _DISCOVERY_PORT_ | Discovery server port which dynamic API services can issue APIs to register or unregister themselves.
 | 7554 | _GATEWAY_PORT_ | The northbound edge of the API Gateway used to accept client requests before routing them to registered API services.  This port must be exposed outside the z/OS network so clients (web browsers, VS Code, processes running the Zowe CLI) can reach the gateway.
 | 7555 | _ZWE_CACHING_SERVICE_PORT_ | Port of the caching service that is used to share state between different Zowe instances in a high availability topology.
-| 8545 | _JOBS_API_PORT_ | Port of the service that provides REST APIs to z/OS jobs used by the JES Explorer.
+| 7600 | _JOBS_API_PORT_ | Port of the service that provides REST APIs to z/OS jobs used by the JES Explorer.
 | 7560 | _JES_EXPLORER_UI_PORT_ | Port of the JES Explorer GUI for viewing and working with jobs in the Zowe Desktop.
-| 8547 | _FILES_API_PORT_ | Port of the service that provides REST APIs to MVS and USS file systems.
+| 7559 | _FILES_API_PORT_ | Port of the service that provides REST APIs to MVS and USS file systems.
 | 7561 | _MVS_EXPLORER_UI_PORT_ | Port of the MVS Explorer GUI for working with data sets in the Zowe Desktop.
 | 7562 | _USS_EXPLORER_UI_PORT_ | Port of the USS Explorer GUI for working with USS in the Zowe Desktop.
 | 7556 | _ZOWE_ZLUX_SERVER_HTTPS_PORT_ | The Zowe Desktop (also known as ZLUX) port used to log in through web browsers.
