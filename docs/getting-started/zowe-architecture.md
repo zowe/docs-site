@@ -77,7 +77,7 @@ The App Server server logs write to `<INSTANCE_DIR>/logs/appServer-yyyy-mm-dd-hh
 
 ## ZSS
 
-The Zowe desktop delegates a number of its services to the ZSS server which it accesses through the http port 8542. ZSS is written in C and has native calls to z/OS to provide its services. ZSS logs write to `STDOUT` and `STDERR` for capture into job logs, but also as a file into `<INSTANCE_DIR>/logs/zssServer-yyyy-mm-dd-hh-mm.log`.  
+The Zowe desktop delegates a number of its services to the ZSS server which it accesses through the http port 7557. ZSS is written in C and has native calls to z/OS to provide its services. ZSS logs write to `STDOUT` and `STDERR` for capture into job logs, but also as a file into `<INSTANCE_DIR>/logs/zssServer-yyyy-mm-dd-hh-mm.log`.  
 
 ## API Gateway
 

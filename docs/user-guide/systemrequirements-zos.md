@@ -117,7 +117,7 @@ The following ports are required for Zowe. These are default values. You can cha
 | 8548 | _MVS_EXPLORER_UI_PORT_ | Port of the MVS Explorer GUI for working with data sets in the Zowe Desktop.
 | 8550 | _USS_EXPLORER_UI_PORT_ | Port of the USS Explorer GUI for working with USS in the Zowe Desktop.
 | 7556 | _ZOWE_ZLUX_SERVER_HTTPS_PORT_ | The Zowe Desktop (also known as ZLUX) port used to log in through web browsers.
-| 8542 | _ZOWE_ZSS_SERVER_PORT_ | Z Secure Services (ZSS) provides REST API services to ZLUX, used by the File Editor application and other ZLUX applications in the Zowe Desktop.
+| 7557 | _ZOWE_ZSS_SERVER_PORT_ | Z Secure Services (ZSS) provides REST API services to ZLUX, used by the File Editor application and other ZLUX applications in the Zowe Desktop.
 
 ## Zowe Docker requirements
 

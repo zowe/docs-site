@@ -185,7 +185,7 @@ Example of the agent body:
     "host": "localhost",
     "http": {
       "ipAddresses": ["127.0.0.1"],
-      "port": 8542
+      "port": 7557
     }
   }
 ```
@@ -372,7 +372,7 @@ cp "//'[output_dataset_name]'" '[INSTANCE_DIR]/workspace/app-server/serverConfig
   "host": "localhost",
   "http": {
     "ipAddresses": ["127.0.0.1"],
-    "port": 8542,
+    "port": 7557,
     "attls": true
   }
 }
