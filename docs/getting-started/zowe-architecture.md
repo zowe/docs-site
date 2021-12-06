@@ -93,7 +93,7 @@ The API Catalog provides a list of the API services that have registered themsel
 
 ## API Discovery
 
-The API Discovery server acts as the registration service broker between the API Gateway and its southbound servers. This server can be accessed through the URL `https://<ZOWE_HOST_IP>:7552` making it possible to view a list of registered API services on the API discovery homepage.
+The API Discovery server acts as the registration service broker between the API Gateway and its southbound servers. This server can be accessed through the URL `https://<ZOWE_HOST_IP>:7553` making it possible to view a list of registered API services on the API discovery homepage.
 
 ![Zowe API Discovery](../images/api-mediation/api-discovery.png)
 
