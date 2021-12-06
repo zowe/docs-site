@@ -302,15 +302,15 @@ To manually create the [ConfigMaps](https://kubernetes.io/docs/concepts/configur
      * `JES_EXPLORER_UI_PORT` is `8546`,
      * `MVS_EXPLORER_UI_PORT` is `8548`,
      * `USS_EXPLORER_UI_PORT` is `8550`,
-     * `ZOWE_ZLUX_SERVER_HTTPS_PORT` is `8544`.
-   * `ZOWE_ZSS_SERVER_PORT` should be set to the port where your Zowe ZSS is running on `ZOWE_ZOS_HOST`.
+     * `ZWED_SERVER_HTTPS_PORT` is `8544`.
+   * `ZWES_SERVER_PORT` should be set to the port where your Zowe ZSS is running on `ZOWE_ZOS_HOST`.
    * `APIML_GATEWAY_EXTERNAL_MAPPER` should be set to `https://${GATEWAY_HOST}:${GATEWAY_PORT}/zss/api/v1/certificate/x509/map`.
    * `APIML_SECURITY_AUTHORIZATION_ENDPOINT_URL` should be set to `https://${GATEWAY_HOST}:${GATEWAY_PORT}/zss/api/v1/saf-auth`.
    * `ZOWE_EXPLORER_FRAME_ANCESTORS` should be set to `${ZOWE_EXTERNAL_HOST}:*`
    * `ZWE_CACHING_SERVICE_PERSISTENT` should NOT be set to `VSAM`. `redis` is suggested. Follow [Redis configuration](https://docs.zowe.org/stable/extend/extend-apiml/api-mediation-redis/#redis-configuration) documentation to customize other Redis related variables. Leave the value to empty for debugging purposes.
    * Must append and customize these 2 values:
      * `ZWED_agent_host=${ZOWE_ZOS_HOST}`
-     * `ZWED_agent_https_port=${ZOWE_ZSS_SERVER_PORT}`
+     * `ZWED_agent_https_port=${ZWES_SERVER_PORT}`
 
    If you are using `zowe.yaml`, the above configuration items are still valid but should use the matching `zowe.yaml` configuration entries. Check [Updating the zowe.yaml configuration file](configure-instance-directory#updating-the-zoweyaml-configuration-file) for more details.
 

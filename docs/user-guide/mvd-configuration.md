@@ -21,7 +21,7 @@ For earlier releases, you must register the Application Server with the Mediatio
 
 To access the Application Server through the Mediation Layer, use the Mediation Layer gateway server hostname and port. For example, when accessed directly, this is Zowe Desktop URL: `https://<appservername_port>/ZLUX/plugins/org.zowe.zlux.bootstrap/web/index.html`
 
-The port number for the Zowe Desktop is the value of the `ZOWE_ZLUX_SERVER_HTTPS_PORT` variable in the `instance.env` file in the instance directory, see [Creating and configuring the Zowe instance directory](configure-instance-directory.md).
+The port number for the Zowe Desktop is the value of the `ZWED_SERVER_HTTPS_PORT` variable in the `instance.env` file in the instance directory, see [Creating and configuring the Zowe instance directory](configure-instance-directory.md).
 
 When accessed through the API Mediation Layer, this is the Zowe Desktop URL:
 `https://<gwsname_port>/ui/v1/zlux/ZLUX/plugins/org.zowe.zlux.bootstrap/web/index.html`
@@ -823,22 +823,22 @@ The logs are timestamped in the format yyyy-mm-dd-hh-mm and older logs are delet
 
 The log information is written to a file and to the screen. (On Windows, logs are written to a file only.)
 
-#### ZLUX_NODE_LOG_DIR and ZSS_LOG_DIR environment variables
+#### ZWED_NODE_LOG_DIR and ZWES_LOG_DIR environment variables
 
-To control where the information is logged, use the environment variable *ZLUX_NODE_LOG_DIR*, for the Zowe Application Server, and *ZSS_LOG_DIR*, for ZSS. While these variables are intended to specify a directory, if you specify a location that is a file name, Zowe will write the logs to the specified file instead (for example: `/dev/null` to disable logging).
+To control where the information is logged, use the environment variable *ZWED_NODE_LOG_DIR*, for the Zowe Application Server, and *ZWES_LOG_DIR*, for ZSS. While these variables are intended to specify a directory, if you specify a location that is a file name, Zowe will write the logs to the specified file instead (for example: `/dev/null` to disable logging).
 
-When you specify the environment variables *ZLUX_NODE_LOG_DIR* and *ZSS_LOG_DIR* and you specify directories rather than files, Zowe will timestamp the logs and delete the older logs that exceed the *ZLUX_NODE_LOGS_TO_KEEP* threshold.
+When you specify the environment variables *ZWED_NODE_LOG_DIR* and *ZWES_LOG_DIR* and you specify directories rather than files, Zowe will timestamp the logs and delete the older logs that exceed the *ZWED_NODE_LOGS_TO_KEEP* threshold.
 
-#### ZLUX_NODE_LOG_FILE and ZSS_LOG_FILE environment variables
+#### ZWED_NODE_LOG_FILE and ZWES_LOG_FILE environment variables
 
-If you set the log file name for the Zowe Application Server by setting the *ZLUX_NODE_LOG_FILE* environment variable, or if you set the log file for ZSS by setting the *ZSS_LOG_FILE* environment variable, there will only be one log file, and it will be overwritten each time the server is launched.
+If you set the log file name for the Zowe Application Server by setting the *ZWED_NODE_LOG_FILE* environment variable, or if you set the log file for ZSS by setting the *ZWES_LOG_FILE* environment variable, there will only be one log file, and it will be overwritten each time the server is launched.
 
-**Note**: When you set the *ZLUX_NODE_LOG_FILE* or *ZSS_LOG_FILE* environment variables, Zowe will not override the log names, set a timestamp, or delete the logs.
+**Note**: When you set the *ZWED_NODE_LOG_FILE* or *ZWES_LOG_FILE* environment variables, Zowe will not override the log names, set a timestamp, or delete the logs.
 
 If the directory or file cannot be created, the server will run (but it might not perform logging properly).
 
 ### Retaining logs
-By default, the last five logs are retained. To specify a different number of logs to retain, set *ZLUX_NODE_LOGS_TO_KEEP* (Zowe Application Server logs) or *ZSS_LOGS_TO_KEEP* (ZSS logs) to the number of logs that you want to keep. For example, if you set *ZLUX_NODE_LOGS_TO_KEEP* to 10, when the eleventh log is created, the first log is deleted.
+By default, the last five logs are retained. To specify a different number of logs to retain, set *ZWED_NODE_LOGS_TO_KEEP* (Zowe Application Server logs) or *ZWES_LOGS_TO_KEEP* (ZSS logs) to the number of logs that you want to keep. For example, if you set *ZWED_NODE_LOGS_TO_KEEP* to 10, when the eleventh log is created, the first log is deleted.
 
 ## Administering the servers and plugins using an API
 You can use a REST API to retrieve and edit Zowe Application Server and ZSS server configuration values, and list, add, update, and delete plugins. If an administrator has configured Zowe to [use RBAC](https://docs.zowe.org/stable/user-guide/mvd-configuration.html#applying-role-based-access-control-to-dataservices), they must authorize you to access the endpoints.
