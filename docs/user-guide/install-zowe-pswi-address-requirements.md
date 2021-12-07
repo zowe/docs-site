@@ -28,6 +28,6 @@ Before you install Zowe using IBM z/OSMF, address the following installation and
 
 * **Configure SMP/E Internet Service Retrieval**
     * **Role**: Systems programmer, security administrator
-    * Configure SMP/E Internet Service Retrieval to receive and download maintenance on a regular cadence or build custom maintenance packages (order PTFs, APARs, critical, recommended, all, or just HOLDDATA). This step is our recommended best practice when installing maintenance and is required to use z/OSMF Software Update. For configuration details, see the Mainframe Common Maintenance Procedures documentation.	
+    * Configure SMP/E Internet Service Retrieval to receive and download maintenance on a regular cadence or build custom maintenance packages (order PTFs, APARs, critical, recommended, all, or just HOLDDATA). This step is our recommended best practice when installing maintenance and is required to use the z/OSMF Software Update. For configuration details, see the Mainframe Common Maintenance Procedures documentation.	
 
 After these requirements have been addressed, you are ready to acquire a z/OSMF Portable Software Instance or Configure a Software Instance using z/OSMF Workflows.
