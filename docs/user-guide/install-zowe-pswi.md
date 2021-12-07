@@ -24,7 +24,5 @@ Provides the steps to install (deploy) the portable software instance to an LPAR
     * Customizes the data set names that are defined to SMP/E.
     * Mounts required USS files if necessary.
     * Performs workflow execution to customize the deployed runtime environment for use on a specific z/OS system.
-* **Import Product Information into z/OSMF**  
-Provides the steps to import the product information file so that z/OSMF has access to the latest product information.
 
 When these tasks are completed, you are ready to install preventive maintenance.
