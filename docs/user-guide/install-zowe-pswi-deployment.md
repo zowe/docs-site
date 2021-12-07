@@ -8,8 +8,6 @@ For more information about these tasks, see [Deploying software](https://www.ibm
 
 Subsequent maintenance activities for the product update the SMP/E environment without affecting your active product runtime environments. You decide when to redeploy the maintenance-updated SMP/E target data sets to each of the product runtime environments.
 
-Before you begin this process, review the installation best practices and verify that you meet the installation requirements in Prepare for Installation.
-
 **Note**: The installer requires read, create, update, and execute privileges in z/OS. Write access is also required to the USS directories that are used for the installation process. To deploy a product that has USS components, the installer's user ID must have access to the appropriate resource profiles in the UNIXPRIV class, access to the BPX.SUPERUSER resource profile in the FACILITY class, or UID(0). For UNIXPRIV, read access is required to SUPERUSER.FILESYS.CHOWN, SUPERUSER.FILESYS.CHGRP, and SUPERUSER.FILESYS.MOUNT.
 
 1. Display the Deployments table in z/OSMF (**Software ManagementU**, **Deployments**).
@@ -19,7 +17,7 @@ The deployment checklist displays. You can also modify, view, copy, cancel, or r
 As you complete the deployment checklist, be sure to make the following selections:
     1. Specify the properties for this deployment (name, description, and optional category).
     2. Select the software to deploy.  
-    For this step, select the **Portable Software Instance** button and select your package.
+    For this step, select **Portable Software Instance** and select your package.
     3. Select the objective for this deployment to indicate where and how you want to install the selected portable software instance.  
     For this step, indicate that you want to create a software instance and specify the global zone CSI and the system where the target software instance will reside.
     4. Check for missing SYSMODs and view missing SYSMOD reports.  
@@ -37,9 +35,9 @@ As you complete the deployment checklist, be sure to make the following selectio
         - **Note**: If your product does not include USS directories, ignore this instruction.
     6. Define the job settings to generate JCL to install the software and view the deployment summary. For this step, update the JOB statement as needed.
         - **Note**: If the target system for the deployment is in a JES Multi-Access Spool (MAS) and the mount point is only accessible from the target system, add a System Affinity (SYSAFF) to the job card to ensure execution on the system where the zFS resides.
-    7. Submit the deployment jobs in sequential order, wait for each job to complete, and then select Refresh to register job completion in z/OSMF.  
+    7. Submit the deployment jobs in sequential order, wait for each job to complete, and then select **Refresh** to register job completion in z/OSMF.  
     A return code of zero is expected.  
-    When all deployment jobs have executed successfully, you have unzipped and renamed the product data sets, and updated the CSI data sets. The product data sets have also been successfully copied and the properties for the target software instance have been specified.
+    When all deployment jobs are executed successfully, you have unzipped, renamed and copied the product data sets, updated the CSI data set, and specified the properties for the target software instance.
     8. Execute the following workflows:
         - **Zowe Mount Workflow (ZWE9MNT)**  
         Mounts the Zowe zFS.
