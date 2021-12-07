@@ -5,7 +5,7 @@ As products and vendors adopt z/OSMF services, you can install and maintain all 
 
 ## Prerequisites
 
-To install Zowe using z/OSMF, ensure that you have:
+To install Zowe using z/OSMF, ensure that you meet the following requirements:
 
 - z/OSMF 2.3 or higher
 - 1.2GB of free space
@@ -25,6 +25,6 @@ Provides the steps to install (deploy) the portable software instance to an LPAR
     * Mounts required USS files if necessary.
     * Performs workflow execution to customize the deployed runtime environment for use on a specific z/OS system.
 * **Import Product Information into z/OSMF**  
-Provides the steps to import the product information file so that z/OSMF has access to the latest product information. For a list of products using z/OSMF, see Mainframe Products using z/OSMF in the Mainframe Common Maintenance Procedures documentation.
+Provides the steps to import the product information file so that z/OSMF has access to the latest product information.
 
-When these tasks are completed, you are ready to install preventive maintenance. You can also configure software instances using z/OSMF workflows.
+When these tasks are completed, you are ready to install preventive maintenance.
