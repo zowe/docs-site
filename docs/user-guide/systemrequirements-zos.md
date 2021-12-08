@@ -176,4 +176,4 @@ Zowe has an SSO scheme with the goal that each time you use use multiple Zowe co
 Requirements: 
 
 - IBM z/OS Management Facility (z/OSMF)
-- (Optional, recommended) PKCS#11 token setup is required when using ZSS, the Desktop, and Application Framework with SSO. See [Creating a PKCS#11 Token](configure-certificates.md#creating-a-pkcs11-token) for more information.
+- (Optional, recommended) PKCS#11 token setup is required when using ZSS, the Desktop, and Application Framework with SSO. See [Creating a PKCS#11 Token](https://docs.zowe.org/stable/user-guide/configure-certificates-keystore#using-web-tokens-for-sso-on-zlux-and-zss) for more information.
