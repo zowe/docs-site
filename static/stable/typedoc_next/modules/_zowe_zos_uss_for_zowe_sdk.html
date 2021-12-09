@@ -70,6 +70,52 @@
 						<h1>z/OS USS Package</h1>
 					</a>
 					<p>Contains APIs to interact with USS on z/OS (using the z/OS SSH service).</p>
+					<a href="#installation-instructions" id="installation-instructions" style="color: inherit; text-decoration: none;">
+						<h2>Installation Instructions</h2>
+					</a>
+					<p>The z/OS USS SDK has a dependency on the ssh2 package. This package allows for more secure cryptographic ciphers to be used first on supporting hardware. In order to do this, the dependency attempts to build some native modules at install time.</p>
+					<p>If these modules cannot be built, the dependency will continue to function, without the optimal cipher list order. However, some error messaging may be visible. These errors can be safely ignored, if desired.</p>
+					<p>To consume the optimal cipher list and build the native modules, the following software is pre-requisite:</p>
+					<a href="#windows" id="windows" style="color: inherit; text-decoration: none;">
+						<h3>Windows</h3>
+					</a>
+					<p>We recommend NodeJS be installed with Chocolatey, which includes most of the required tooling. An additional tool, <a href="https://cmake.org/download/">CMake</a>, will need to be installed in addition to Chocolatey.</p>
+					<p>Alternatively, install the following:</p>
+					<ul>
+						<li>Python 3.7 or greater</li>
+						<li><a href="https://cmake.org/download/">CMake</a></li>
+						<li>Choose one of the following:<ul>
+								<li>Visual Studio Build Tools<ul>
+										<li>&quot;Visual C++ build tools&quot; workload</li>
+									</ul>
+								</li>
+								<li>Visual Studio Community<ul>
+										<li>&quot;Desktop development with C++&quot; workload</li>
+									</ul>
+								</li>
+							</ul>
+						</li>
+					</ul>
+					<a href="#unix" id="unix" style="color: inherit; text-decoration: none;">
+						<h3>Unix</h3>
+					</a>
+					<ul>
+						<li>Python 3.7 or greater</li>
+						<li><a href="https://cmake.org/download/">CMake</a></li>
+						<li><code>make</code></li>
+						<li>A C/C++ Compiler (i.e. <code>gcc-c++</code>, <code>g++</code>)</li>
+					</ul>
+					<a href="#macos" id="macos" style="color: inherit; text-decoration: none;">
+						<h3>MacOS</h3>
+					</a>
+					<ul>
+						<li>Python 3.7 or greater</li>
+						<li><a href="https://cmake.org/download/">CMake</a></li>
+						<li>XCode<ul>
+								<li>Including <code>XCode Command Line Tools</code></li>
+							</ul>
+						</li>
+					</ul>
 					<a href="#api-examples" id="api-examples" style="color: inherit; text-decoration: none;">
 						<h2>API Examples</h2>
 					</a>
@@ -177,7 +223,7 @@
 					<div class="tsd-signature tsd-kind-icon">start<wbr>Cmd<wbr>Flag<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">"@@START OF COMMAND@@"</span><span class="tsd-signature-symbol"> = &quot;@@START OF COMMAND@@&quot;</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/next/packages/zosuss/src/Shell.ts#L23">@zowe/zos-uss-for-zowe-sdk/src/Shell.ts:23</a></li>
+							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/next/packages/zosuss/src/Shell.ts#L21">@zowe/zos-uss-for-zowe-sdk/src/Shell.ts:21</a></li>
 						</ul>
 					</aside>
 				</section>
