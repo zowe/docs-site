@@ -41,3 +41,11 @@ Therefore, you can download these manually with the `docker pull` commands. For 
 You do not need to install the Zowe containers if you use Zowe's Kubernetes configuration samples. The installation is automatic.
 
 An image could be considered "installed" when it is findable by Kubernetes. Just like downloading, this is done automatically by Kubernetes but commands such as `docker pull` or `docker load` accomplishes the same task.
+
+## Upgrading
+Upgrade is an automatic process when the user applies Kubernetes deployment configuration. The configuration files tell Kubernetes to automatically download the latest version of Zowe. Here, latest is the keyword for constantly updated version.
+
+For example, 
+"zowe-docker-release.jfrog.io/ompzowe/gateway-service:latest-ubuntu"
+
+**Note**: Automatic upgrades can fail if a user has changed the workload configuration files to use a specific Zowe version. In that case, the user must enter the latest version manually in the configuration file such as "zowe-docker-release.jfrog.io/ompzowe/gateway-service:1.26.0-ubuntu"
