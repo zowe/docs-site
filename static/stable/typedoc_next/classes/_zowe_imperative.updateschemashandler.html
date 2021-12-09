@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>IConfigLoadedProfile | Zowe Node.js SDK - vNext</title>
+	<title>UpdateSchemasHandler | Zowe Node.js SDK - vNext</title>
 	<meta name="description" content="Documentation for Zowe Node.js SDK - vNext">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -57,10 +57,10 @@
 					<a href="../modules/_zowe_imperative.html">@zowe/imperative</a>
 				</li>
 				<li>
-					<a href="_zowe_imperative.iconfigloadedprofile.html">IConfigLoadedProfile</a>
+					<a href="_zowe_imperative.updateschemashandler.html">UpdateSchemasHandler</a>
 				</li>
 			</ul>
-			<h1>Interface IConfigLoadedProfile</h1>
+			<h1>Class UpdateSchemasHandler</h1>
 		</div>
 	</div>
 </header>
@@ -71,13 +71,14 @@
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<a href="_zowe_imperative.iconfigprofile.html" class="tsd-signature-type">IConfigProfile</a>
-						<ul class="tsd-hierarchy">
-							<li>
-								<span class="target">IConfigLoadedProfile</span>
-							</li>
-						</ul>
+						<span class="target">UpdateSchemasHandler</span>
 					</li>
+				</ul>
+			</section>
+			<section class="tsd-panel">
+				<h3>Implements</h3>
+				<ul class="tsd-hierarchy">
+					<li><a href="../interfaces/_zowe_imperative.icommandhandler.html" class="tsd-signature-type">ICommandHandler</a></li>
 				</ul>
 			</section>
 			<section class="tsd-panel-group tsd-index-group">
@@ -85,78 +86,52 @@
 				<section class="tsd-panel tsd-index-panel">
 					<div class="tsd-index-content">
 						<section class="tsd-index-section ">
-							<h3>Properties</h3>
+							<h3>Methods</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-overwrite"><a href="_zowe_imperative.iconfigloadedprofile.html#profiles" class="tsd-kind-icon">profiles</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-overwrite"><a href="_zowe_imperative.iconfigloadedprofile.html#properties" class="tsd-kind-icon">properties</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="_zowe_imperative.iconfigloadedprofile.html#secure" class="tsd-kind-icon">secure</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="_zowe_imperative.iconfigloadedprofile.html#type" class="tsd-kind-icon">type</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_zowe_imperative.updateschemashandler.html#process" class="tsd-kind-icon">process</a></li>
 							</ul>
 						</section>
 					</div>
 				</section>
 			</section>
 			<section class="tsd-panel-group tsd-member-group ">
-				<h2>Properties</h2>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-overwrite">
-					<a name="profiles" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagOptional">Optional</span> profiles</h3>
-					<div class="tsd-signature tsd-kind-icon">profiles<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">{}</span></div>
-					<aside class="tsd-sources">
-						<p>Overrides <a href="_zowe_imperative.iconfigprofile.html">IConfigProfile</a>.<a href="_zowe_imperative.iconfigprofile.html#profiles">profiles</a></p>
-						<ul>
-							<li>Defined in <a href="https://github.com/zowe/imperative/blob/next/packages/config/src/doc/IConfigLoadedProfile.ts#L23">@zowe/imperative/packages/config/src/doc/IConfigLoadedProfile.ts:23</a></li>
-						</ul>
-					</aside>
-					<div class="tsd-type-declaration">
-						<h4>Type declaration</h4>
-						<ul class="tsd-parameters">
-							<li class="tsd-parameter-index-signature">
-								<h5><span class="tsd-signature-symbol">[</span>key: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">]: </span><a href="_zowe_imperative.iconfigloadedprofile.html" class="tsd-signature-type">IConfigLoadedProfile</a></h5>
-							</li>
-						</ul>
-					</div>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-overwrite">
-					<a name="properties" class="tsd-anchor"></a>
-					<h3>properties</h3>
-					<div class="tsd-signature tsd-kind-icon">properties<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">{}</span></div>
-					<aside class="tsd-sources">
-						<p>Overrides <a href="_zowe_imperative.iconfigprofile.html">IConfigProfile</a>.<a href="_zowe_imperative.iconfigprofile.html#properties">properties</a></p>
-						<ul>
-							<li>Defined in <a href="https://github.com/zowe/imperative/blob/next/packages/config/src/doc/IConfigLoadedProfile.ts#L22">@zowe/imperative/packages/config/src/doc/IConfigLoadedProfile.ts:22</a></li>
-						</ul>
-					</aside>
-					<div class="tsd-type-declaration">
-						<h4>Type declaration</h4>
-						<ul class="tsd-parameters">
-							<li class="tsd-parameter-index-signature">
-								<h5><span class="tsd-signature-symbol">[</span>key: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">]: </span><a href="_zowe_imperative.iconfigloadedproperty.html" class="tsd-signature-type">IConfigLoadedProperty</a></h5>
-							</li>
-						</ul>
-					</div>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
-					<a name="secure" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagOptional">Optional</span> secure</h3>
-					<div class="tsd-signature tsd-kind-icon">secure<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span></div>
-					<aside class="tsd-sources">
-						<p>Inherited from <a href="_zowe_imperative.iconfigprofile.html">IConfigProfile</a>.<a href="_zowe_imperative.iconfigprofile.html#secure">secure</a></p>
-						<ul>
-							<li>Defined in <a href="https://github.com/zowe/imperative/blob/next/packages/config/src/doc/IConfigProfile.ts#L16">@zowe/imperative/packages/config/src/doc/IConfigProfile.ts:16</a></li>
-						</ul>
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
-					<a name="type" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagOptional">Optional</span> type</h3>
-					<div class="tsd-signature tsd-kind-icon">type<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
-					<aside class="tsd-sources">
-						<p>Inherited from <a href="_zowe_imperative.iconfigprofile.html">IConfigProfile</a>.<a href="_zowe_imperative.iconfigprofile.html#type">type</a></p>
-						<ul>
-							<li>Defined in <a href="https://github.com/zowe/imperative/blob/next/packages/config/src/doc/IConfigProfile.ts#L14">@zowe/imperative/packages/config/src/doc/IConfigProfile.ts:14</a></li>
-						</ul>
-					</aside>
+				<h2>Methods</h2>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="process" class="tsd-anchor"></a>
+					<h3>process</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">process<span class="tsd-signature-symbol">(</span>params<span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_imperative.ihandlerparameters.html" class="tsd-signature-type">IHandlerParameters</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_imperative.ipromisewithprogress.html#promise" class="tsd-signature-type">Promise</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Implementation of <a href="../interfaces/_zowe_imperative.icommandhandler.html">ICommandHandler</a>.<a href="../interfaces/_zowe_imperative.icommandhandler.html#process">process</a></p>
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/next/packages/imperative/src/config/cmd/update-schemas/update-schemas.handler.ts#L26">@zowe/imperative/packages/imperative/src/config/cmd/update-schemas/update-schemas.handler.ts:26</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Process the command and input.</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>throws</dt>
+									<dd><p>{ImperativeError}</p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>params: <a href="../interfaces/_zowe_imperative.ihandlerparameters.html" class="tsd-signature-type">IHandlerParameters</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Parameters supplied by yargs</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="../interfaces/_zowe_imperative.ipromisewithprogress.html#promise" class="tsd-signature-type">Promise</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
 				</section>
 			</section>
 		</div>
@@ -208,20 +183,11 @@
 					<li class="current tsd-kind-module">
 						<a href="../modules/_zowe_imperative.html" class="tsd-kind-icon">@zowe/imperative</a>
 						<ul>
-							<li class="current tsd-kind-interface tsd-parent-kind-module">
-								<a href="_zowe_imperative.iconfigloadedprofile.html" class="tsd-kind-icon">IConfig<wbr>Loaded<wbr>Profile</a>
+							<li class="current tsd-kind-class tsd-parent-kind-module">
+								<a href="_zowe_imperative.updateschemashandler.html" class="tsd-kind-icon">Update<wbr>Schemas<wbr>Handler</a>
 								<ul>
-									<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-overwrite">
-										<a href="_zowe_imperative.iconfigloadedprofile.html#profiles" class="tsd-kind-icon">profiles</a>
-									</li>
-									<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-overwrite">
-										<a href="_zowe_imperative.iconfigloadedprofile.html#properties" class="tsd-kind-icon">properties</a>
-									</li>
-									<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
-										<a href="_zowe_imperative.iconfigloadedprofile.html#secure" class="tsd-kind-icon">secure</a>
-									</li>
-									<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
-										<a href="_zowe_imperative.iconfigloadedprofile.html#type" class="tsd-kind-icon">type</a>
+									<li class=" tsd-kind-method tsd-parent-kind-class">
+										<a href="_zowe_imperative.updateschemashandler.html#process" class="tsd-kind-icon">process</a>
 									</li>
 								</ul>
 							</li>
@@ -270,13 +236,13 @@
 				<li class="tsd-kind-type-alias tsd-has-type-parameter"><span class="tsd-kind-icon">Type alias with type parameter</span></li>
 			</ul>
 			<ul class="tsd-legend">
-				<li class="tsd-kind-interface"><span class="tsd-kind-icon">Interface</span></li>
-				<li class="tsd-kind-interface tsd-has-type-parameter"><span class="tsd-kind-icon">Interface with type parameter</span></li>
-				<li class="tsd-kind-property tsd-parent-kind-interface"><span class="tsd-kind-icon">Property</span></li>
-			</ul>
-			<ul class="tsd-legend">
 				<li class="tsd-kind-class"><span class="tsd-kind-icon">Class</span></li>
 				<li class="tsd-kind-class tsd-has-type-parameter"><span class="tsd-kind-icon">Class with type parameter</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class"><span class="tsd-kind-icon">Method</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-interface"><span class="tsd-kind-icon">Interface</span></li>
+				<li class="tsd-kind-interface tsd-has-type-parameter"><span class="tsd-kind-icon">Interface with type parameter</span></li>
 			</ul>
 			<ul class="tsd-legend">
 				<li class="tsd-kind-enum"><span class="tsd-kind-icon">Enumeration</span></li>

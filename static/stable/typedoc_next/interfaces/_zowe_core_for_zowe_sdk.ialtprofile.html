@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>IConfigLoadedProperty | Zowe Node.js SDK - vNext</title>
+	<title>IAltProfile | Zowe Node.js SDK - vNext</title>
 	<meta name="description" content="Documentation for Zowe Node.js SDK - vNext">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -54,24 +54,33 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="../modules/_zowe_imperative.html">@zowe/imperative</a>
+					<a href="../modules/_zowe_core_for_zowe_sdk.html">@zowe/core-for-zowe-sdk</a>
 				</li>
 				<li>
-					<a href="_zowe_imperative.iconfigloadedproperty.html">IConfigLoadedProperty</a>
+					<a href="_zowe_core_for_zowe_sdk.ialtprofile.html">IAltProfile</a>
 				</li>
 			</ul>
-			<h1>Interface IConfigLoadedProperty</h1>
+			<h1>Interface IAltProfile</h1>
 		</div>
 	</div>
 </header>
 <div class="container container-main">
 	<div class="row">
 		<div class="col-8 col-content">
+			<section class="tsd-panel tsd-comment">
+				<div class="tsd-comment tsd-typography">
+					<div class="lead">
+						<p>As part of the auto-init output report, this structure
+							represents the alternate profiles that were not selected
+						for the profile type.</p>
+					</div>
+				</div>
+			</section>
 			<section class="tsd-panel tsd-hierarchy">
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<span class="target">IConfigLoadedProperty</span>
+						<span class="target">IAltProfile</span>
 					</li>
 				</ul>
 			</section>
@@ -82,10 +91,9 @@
 						<section class="tsd-index-section ">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_zowe_imperative.iconfigloadedproperty.html#global" class="tsd-kind-icon">global</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_zowe_imperative.iconfigloadedproperty.html#secure" class="tsd-kind-icon">secure</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_zowe_imperative.iconfigloadedproperty.html#user" class="tsd-kind-icon">user</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_zowe_imperative.iconfigloadedproperty.html#value" class="tsd-kind-icon">value</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_zowe_core_for_zowe_sdk.ialtprofile.html#altbasepath" class="tsd-kind-icon">alt<wbr>Base<wbr>Path</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_zowe_core_for_zowe_sdk.ialtprofile.html#altprofname" class="tsd-kind-icon">alt<wbr>Prof<wbr>Name</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_zowe_core_for_zowe_sdk.ialtprofile.html#altproftype" class="tsd-kind-icon">alt<wbr>Prof<wbr>Type</a></li>
 							</ul>
 						</section>
 					</div>
@@ -94,42 +102,32 @@
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Properties</h2>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="global" class="tsd-anchor"></a>
-					<h3>global</h3>
-					<div class="tsd-signature tsd-kind-icon">global<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
+					<a name="altbasepath" class="tsd-anchor"></a>
+					<h3>alt<wbr>Base<wbr>Path</h3>
+					<div class="tsd-signature tsd-kind-icon">alt<wbr>Base<wbr>Path<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/zowe/imperative/blob/next/packages/config/src/doc/IConfigLoadedProfile.ts#L18">@zowe/imperative/packages/config/src/doc/IConfigLoadedProfile.ts:18</a></li>
+							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/next/packages/core/src/apiml/doc/IAltProfile.ts#L20">@zowe/core-for-zowe-sdk/src/apiml/doc/IAltProfile.ts:20</a></li>
 						</ul>
 					</aside>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="secure" class="tsd-anchor"></a>
-					<h3>secure</h3>
-					<div class="tsd-signature tsd-kind-icon">secure<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
+					<a name="altprofname" class="tsd-anchor"></a>
+					<h3>alt<wbr>Prof<wbr>Name</h3>
+					<div class="tsd-signature tsd-kind-icon">alt<wbr>Prof<wbr>Name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/zowe/imperative/blob/next/packages/config/src/doc/IConfigLoadedProfile.ts#L16">@zowe/imperative/packages/config/src/doc/IConfigLoadedProfile.ts:16</a></li>
+							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/next/packages/core/src/apiml/doc/IAltProfile.ts#L18">@zowe/core-for-zowe-sdk/src/apiml/doc/IAltProfile.ts:18</a></li>
 						</ul>
 					</aside>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="user" class="tsd-anchor"></a>
-					<h3>user</h3>
-					<div class="tsd-signature tsd-kind-icon">user<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
+					<a name="altproftype" class="tsd-anchor"></a>
+					<h3>alt<wbr>Prof<wbr>Type</h3>
+					<div class="tsd-signature tsd-kind-icon">alt<wbr>Prof<wbr>Type<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/zowe/imperative/blob/next/packages/config/src/doc/IConfigLoadedProfile.ts#L17">@zowe/imperative/packages/config/src/doc/IConfigLoadedProfile.ts:17</a></li>
-						</ul>
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="value" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagOptional">Optional</span> value</h3>
-					<div class="tsd-signature tsd-kind-icon">value<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">any</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/zowe/imperative/blob/next/packages/config/src/doc/IConfigLoadedProfile.ts#L15">@zowe/imperative/packages/config/src/doc/IConfigLoadedProfile.ts:15</a></li>
+							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/next/packages/core/src/apiml/doc/IAltProfile.ts#L19">@zowe/core-for-zowe-sdk/src/apiml/doc/IAltProfile.ts:19</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -141,10 +139,10 @@
 					<li class="globals  ">
 						<a href="../globals.html"><em>Globals</em></a>
 					</li>
-					<li class=" tsd-kind-module">
+					<li class="current tsd-kind-module">
 						<a href="../modules/_zowe_core_for_zowe_sdk.html">@zowe/core-<wbr>for-<wbr>zowe-<wbr>sdk</a>
 					</li>
-					<li class="current tsd-kind-module">
+					<li class=" tsd-kind-module">
 						<a href="../modules/_zowe_imperative.html">@zowe/imperative</a>
 					</li>
 					<li class=" tsd-kind-module">
@@ -175,35 +173,113 @@
 			</nav>
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
-					<li class=" tsd-kind-module">
-						<a href="../modules/_zowe_core_for_zowe_sdk.html" class="tsd-kind-icon">@zowe/core-<wbr>for-<wbr>zowe-<wbr>sdk</a>
-					</li>
 				</ul>
 				<ul class="current">
 					<li class="current tsd-kind-module">
-						<a href="../modules/_zowe_imperative.html" class="tsd-kind-icon">@zowe/imperative</a>
+						<a href="../modules/_zowe_core_for_zowe_sdk.html" class="tsd-kind-icon">@zowe/core-<wbr>for-<wbr>zowe-<wbr>sdk</a>
 						<ul>
+							<li class=" tsd-kind-class tsd-parent-kind-module">
+								<a href="../classes/_zowe_core_for_zowe_sdk.apimlconstants.html" class="tsd-kind-icon">Apiml<wbr>Constants</a>
+							</li>
+							<li class=" tsd-kind-class tsd-parent-kind-module">
+								<a href="../classes/_zowe_core_for_zowe_sdk.login.html" class="tsd-kind-icon">Login</a>
+							</li>
+							<li class=" tsd-kind-class tsd-parent-kind-module">
+								<a href="../classes/_zowe_core_for_zowe_sdk.loginconstants.html" class="tsd-kind-icon">Login<wbr>Constants</a>
+							</li>
+							<li class=" tsd-kind-class tsd-parent-kind-module">
+								<a href="../classes/_zowe_core_for_zowe_sdk.logout.html" class="tsd-kind-icon">Logout</a>
+							</li>
+							<li class=" tsd-kind-class tsd-parent-kind-module">
+								<a href="../classes/_zowe_core_for_zowe_sdk.logoutconstants.html" class="tsd-kind-icon">Logout<wbr>Constants</a>
+							</li>
+							<li class=" tsd-kind-class tsd-parent-kind-module">
+								<a href="../classes/_zowe_core_for_zowe_sdk.services.html" class="tsd-kind-icon">Services</a>
+							</li>
+							<li class=" tsd-kind-class tsd-parent-kind-module">
+								<a href="../classes/_zowe_core_for_zowe_sdk.zosmfheaders.html" class="tsd-kind-icon">Zosmf<wbr>Headers</a>
+							</li>
+							<li class=" tsd-kind-class tsd-parent-kind-module">
+								<a href="../classes/_zowe_core_for_zowe_sdk.zosmfrestclient.html" class="tsd-kind-icon">Zosmf<wbr>Rest<wbr>Client</a>
+							</li>
 							<li class="current tsd-kind-interface tsd-parent-kind-module">
-								<a href="_zowe_imperative.iconfigloadedproperty.html" class="tsd-kind-icon">IConfig<wbr>Loaded<wbr>Property</a>
+								<a href="_zowe_core_for_zowe_sdk.ialtprofile.html" class="tsd-kind-icon">IAlt<wbr>Profile</a>
 								<ul>
 									<li class=" tsd-kind-property tsd-parent-kind-interface">
-										<a href="_zowe_imperative.iconfigloadedproperty.html#global" class="tsd-kind-icon">global</a>
+										<a href="_zowe_core_for_zowe_sdk.ialtprofile.html#altbasepath" class="tsd-kind-icon">alt<wbr>Base<wbr>Path</a>
 									</li>
 									<li class=" tsd-kind-property tsd-parent-kind-interface">
-										<a href="_zowe_imperative.iconfigloadedproperty.html#secure" class="tsd-kind-icon">secure</a>
+										<a href="_zowe_core_for_zowe_sdk.ialtprofile.html#altprofname" class="tsd-kind-icon">alt<wbr>Prof<wbr>Name</a>
 									</li>
 									<li class=" tsd-kind-property tsd-parent-kind-interface">
-										<a href="_zowe_imperative.iconfigloadedproperty.html#user" class="tsd-kind-icon">user</a>
-									</li>
-									<li class=" tsd-kind-property tsd-parent-kind-interface">
-										<a href="_zowe_imperative.iconfigloadedproperty.html#value" class="tsd-kind-icon">value</a>
+										<a href="_zowe_core_for_zowe_sdk.ialtprofile.html#altproftype" class="tsd-kind-icon">alt<wbr>Prof<wbr>Type</a>
 									</li>
 								</ul>
+							</li>
+							<li class=" tsd-kind-interface tsd-parent-kind-module">
+								<a href="_zowe_core_for_zowe_sdk.iapimlprofileinfo.html" class="tsd-kind-icon">IApiml<wbr>Profile<wbr>Info</a>
+							</li>
+							<li class=" tsd-kind-interface tsd-parent-kind-module">
+								<a href="_zowe_core_for_zowe_sdk.iapimlservice.html" class="tsd-kind-icon">IApiml<wbr>Service</a>
+							</li>
+							<li class=" tsd-kind-interface tsd-parent-kind-module">
+								<a href="_zowe_core_for_zowe_sdk.iapimlserviceapiinfo.html" class="tsd-kind-icon">IApiml<wbr>Service<wbr>Api<wbr>Info</a>
+							</li>
+							<li class=" tsd-kind-interface tsd-parent-kind-module">
+								<a href="_zowe_core_for_zowe_sdk.iapimlserviceauthentication.html" class="tsd-kind-icon">IApiml<wbr>Service<wbr>Authentication</a>
+							</li>
+							<li class=" tsd-kind-interface tsd-parent-kind-module">
+								<a href="_zowe_core_for_zowe_sdk.iapimlsvcattrsloaded.html" class="tsd-kind-icon">IApiml<wbr>Svc<wbr>Attrs<wbr>Loaded</a>
+							</li>
+							<li class=" tsd-kind-interface tsd-parent-kind-module">
+								<a href="_zowe_core_for_zowe_sdk.iautoinitrpt.html" class="tsd-kind-icon">IAuto<wbr>Init<wbr>Rpt</a>
+							</li>
+							<li class=" tsd-kind-interface tsd-parent-kind-module">
+								<a href="_zowe_core_for_zowe_sdk.ibaseprofileoverride.html" class="tsd-kind-icon">IBase<wbr>Profile<wbr>Override</a>
+							</li>
+							<li class=" tsd-kind-interface tsd-parent-kind-module">
+								<a href="_zowe_core_for_zowe_sdk.iheadercontent.html" class="tsd-kind-icon">IHeader<wbr>Content</a>
+							</li>
+							<li class=" tsd-kind-interface tsd-parent-kind-module">
+								<a href="_zowe_core_for_zowe_sdk.iprofilerpt.html" class="tsd-kind-icon">IProfile<wbr>Rpt</a>
+							</li>
+							<li class=" tsd-kind-function tsd-parent-kind-module">
+								<a href="../modules/_zowe_core_for_zowe_sdk.html#asyncpool" class="tsd-kind-icon">async<wbr>Pool</a>
+							</li>
+							<li class=" tsd-kind-function tsd-parent-kind-module">
+								<a href="../modules/_zowe_core_for_zowe_sdk.html#getdefaultprofile" class="tsd-kind-icon">get<wbr>Default<wbr>Profile</a>
+							</li>
+							<li class=" tsd-kind-function tsd-parent-kind-module">
+								<a href="../modules/_zowe_core_for_zowe_sdk.html#geterrorcontext" class="tsd-kind-icon">get<wbr>Error<wbr>Context</a>
+							</li>
+							<li class=" tsd-kind-function tsd-parent-kind-module">
+								<a href="../modules/_zowe_core_for_zowe_sdk.html#getzowedir" class="tsd-kind-icon">get<wbr>Zowe<wbr>Dir</a>
+							</li>
+							<li class=" tsd-kind-function tsd-parent-kind-module">
+								<a href="../modules/_zowe_core_for_zowe_sdk.html#padleft" class="tsd-kind-icon">pad<wbr>Left</a>
+							</li>
+							<li class=" tsd-kind-function tsd-parent-kind-module">
+								<a href="../modules/_zowe_core_for_zowe_sdk.html#readstdin" class="tsd-kind-icon">read<wbr>Stdin</a>
+							</li>
+							<li class=" tsd-kind-function tsd-parent-kind-module">
+								<a href="../modules/_zowe_core_for_zowe_sdk.html#sleep" class="tsd-kind-icon">sleep</a>
+							</li>
+							<li class=" tsd-kind-function tsd-parent-kind-module">
+								<a href="../modules/_zowe_core_for_zowe_sdk.html#trimlinetoterminalwidth" class="tsd-kind-icon">trim<wbr>Line<wbr>ToTerminal<wbr>Width</a>
+							</li>
+							<li class=" tsd-kind-object-literal tsd-parent-kind-module">
+								<a href="../modules/_zowe_core_for_zowe_sdk.html#nosession" class="tsd-kind-icon">no<wbr>Session</a>
+							</li>
+							<li class=" tsd-kind-object-literal tsd-parent-kind-module">
+								<a href="../modules/_zowe_core_for_zowe_sdk.html#nozosmfversion" class="tsd-kind-icon">nozOSMFVersion</a>
 							</li>
 						</ul>
 					</li>
 				</ul>
 				<ul class="after-current">
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_imperative.html" class="tsd-kind-icon">@zowe/imperative</a>
+					</li>
 					<li class=" tsd-kind-module">
 						<a href="../modules/_zowe_provisioning_for_zowe_sdk.html" class="tsd-kind-icon">@zowe/provisioning-<wbr>for-<wbr>zowe-<wbr>sdk</a>
 					</li>
