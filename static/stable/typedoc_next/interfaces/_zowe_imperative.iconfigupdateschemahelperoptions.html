@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>IDaemonHeaderOptions | Zowe Node.js SDK - vNext</title>
+	<title>IConfigUpdateSchemaHelperOptions | Zowe Node.js SDK - vNext</title>
 	<meta name="description" content="Documentation for Zowe Node.js SDK - vNext">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -57,35 +57,21 @@
 					<a href="../modules/_zowe_imperative.html">@zowe/imperative</a>
 				</li>
 				<li>
-					<a href="_zowe_imperative.idaemonheaderoptions.html">IDaemonHeaderOptions</a>
+					<a href="_zowe_imperative.iconfigupdateschemahelperoptions.html">IConfigUpdateSchemaHelperOptions</a>
 				</li>
 			</ul>
-			<h1>Interface IDaemonHeaderOptions</h1>
+			<h1>Interface IConfigUpdateSchemaHelperOptions</h1>
 		</div>
 	</div>
 </header>
 <div class="container container-main">
 	<div class="row">
 		<div class="col-8 col-content">
-			<section class="tsd-panel tsd-comment">
-				<div class="tsd-comment tsd-typography">
-					<div class="lead">
-						<p>Option interface to construct headers for daemon mode protocol</p>
-					</div>
-					<dl class="tsd-comment-tags">
-						<dt>export</dt>
-						<dd></dd>
-						<dt>interface</dt>
-						<dd><p>IDaemonHeaderOptions</p>
-						</dd>
-					</dl>
-				</div>
-			</section>
 			<section class="tsd-panel tsd-hierarchy">
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<span class="target">IDaemonHeaderOptions</span>
+						<span class="target">IConfigUpdateSchemaHelperOptions</span>
 					</li>
 				</ul>
 			</section>
@@ -96,11 +82,10 @@
 						<section class="tsd-index-section ">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_zowe_imperative.idaemonheaderoptions.html#exitcode" class="tsd-kind-icon">exit<wbr>Code</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_zowe_imperative.idaemonheaderoptions.html#progress" class="tsd-kind-icon">progress</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_zowe_imperative.idaemonheaderoptions.html#prompt" class="tsd-kind-icon">prompt</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_zowe_imperative.idaemonheaderoptions.html#stderr" class="tsd-kind-icon">stderr</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_zowe_imperative.idaemonheaderoptions.html#stdout" class="tsd-kind-icon">stdout</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_zowe_imperative.iconfigupdateschemahelperoptions.html#config" class="tsd-kind-icon">config</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_zowe_imperative.iconfigupdateschemahelperoptions.html#layer" class="tsd-kind-icon">layer</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_zowe_imperative.iconfigupdateschemahelperoptions.html#updateoptions" class="tsd-kind-icon">update<wbr>Options</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_zowe_imperative.iconfigupdateschemahelperoptions.html#updatedpaths" class="tsd-kind-icon">updated<wbr>Paths</a></li>
 							</ul>
 						</section>
 					</div>
@@ -109,104 +94,44 @@
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Properties</h2>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="exitcode" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagOptional">Optional</span> exit<wbr>Code</h3>
-					<div class="tsd-signature tsd-kind-icon">exit<wbr>Code<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
+					<a name="config" class="tsd-anchor"></a>
+					<h3>config</h3>
+					<div class="tsd-signature tsd-kind-icon">config<span class="tsd-signature-symbol">:</span> <a href="../classes/_zowe_imperative.config.html" class="tsd-signature-type">Config</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/zowe/imperative/blob/next/packages/utilities/src/doc/IDaemonHeaderOptions.ts#L25">@zowe/imperative/packages/utilities/src/doc/IDaemonHeaderOptions.ts:25</a></li>
+							<li>Defined in <a href="https://github.com/zowe/imperative/blob/next/packages/config/src/doc/IConfigSchema.ts#L44">@zowe/imperative/packages/config/src/doc/IConfigSchema.ts:44</a></li>
 						</ul>
 					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>Process exit code</p>
-						</div>
-						<dl class="tsd-comment-tags">
-							<dt>memberof</dt>
-							<dd><p>IDaemonHeaderOptions</p>
-							</dd>
-						</dl>
-					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="progress" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagOptional">Optional</span> progress</h3>
-					<div class="tsd-signature tsd-kind-icon">progress<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
+					<a name="layer" class="tsd-anchor"></a>
+					<h3>layer</h3>
+					<div class="tsd-signature tsd-kind-icon">layer<span class="tsd-signature-symbol">:</span> <a href="_zowe_imperative.iconfiglayer.html" class="tsd-signature-type">IConfigLayer</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/zowe/imperative/blob/next/packages/utilities/src/doc/IDaemonHeaderOptions.ts#L53">@zowe/imperative/packages/utilities/src/doc/IDaemonHeaderOptions.ts:53</a></li>
+							<li>Defined in <a href="https://github.com/zowe/imperative/blob/next/packages/config/src/doc/IConfigSchema.ts#L43">@zowe/imperative/packages/config/src/doc/IConfigSchema.ts:43</a></li>
 						</ul>
 					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>Content is progress spinner</p>
-						</div>
-						<dl class="tsd-comment-tags">
-							<dt>memberof</dt>
-							<dd><p>IDaemonHeaderOptions</p>
-							</dd>
-						</dl>
-					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="prompt" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagOptional">Optional</span> prompt</h3>
-					<div class="tsd-signature tsd-kind-icon">prompt<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
+					<a name="updateoptions" class="tsd-anchor"></a>
+					<h3>update<wbr>Options</h3>
+					<div class="tsd-signature tsd-kind-icon">update<wbr>Options<span class="tsd-signature-symbol">:</span> <a href="_zowe_imperative.iconfigupdateschemaoptions.html" class="tsd-signature-type">IConfigUpdateSchemaOptions</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/zowe/imperative/blob/next/packages/utilities/src/doc/IDaemonHeaderOptions.ts#L32">@zowe/imperative/packages/utilities/src/doc/IDaemonHeaderOptions.ts:32</a></li>
+							<li>Defined in <a href="https://github.com/zowe/imperative/blob/next/packages/config/src/doc/IConfigSchema.ts#L46">@zowe/imperative/packages/config/src/doc/IConfigSchema.ts:46</a></li>
 						</ul>
 					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>Indicator for prompting</p>
-						</div>
-						<dl class="tsd-comment-tags">
-							<dt>memberof</dt>
-							<dd><p>IDaemonHeaderOptions</p>
-							</dd>
-						</dl>
-					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="stderr" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagOptional">Optional</span> stderr</h3>
-					<div class="tsd-signature tsd-kind-icon">stderr<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
+					<a name="updatedpaths" class="tsd-anchor"></a>
+					<h3>updated<wbr>Paths</h3>
+					<div class="tsd-signature tsd-kind-icon">updated<wbr>Paths<span class="tsd-signature-symbol">:</span> <a href="_zowe_imperative.iconfigupdateschemapaths.html" class="tsd-signature-type">IConfigUpdateSchemaPaths</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/zowe/imperative/blob/next/packages/utilities/src/doc/IDaemonHeaderOptions.ts#L46">@zowe/imperative/packages/utilities/src/doc/IDaemonHeaderOptions.ts:46</a></li>
+							<li>Defined in <a href="https://github.com/zowe/imperative/blob/next/packages/config/src/doc/IConfigSchema.ts#L45">@zowe/imperative/packages/config/src/doc/IConfigSchema.ts:45</a></li>
 						</ul>
 					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>Content is for stderr</p>
-						</div>
-						<dl class="tsd-comment-tags">
-							<dt>memberof</dt>
-							<dd><p>IDaemonHeaderOptions</p>
-							</dd>
-						</dl>
-					</div>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="stdout" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagOptional">Optional</span> stdout</h3>
-					<div class="tsd-signature tsd-kind-icon">stdout<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/zowe/imperative/blob/next/packages/utilities/src/doc/IDaemonHeaderOptions.ts#L39">@zowe/imperative/packages/utilities/src/doc/IDaemonHeaderOptions.ts:39</a></li>
-						</ul>
-					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>Content is for stdout</p>
-						</div>
-						<dl class="tsd-comment-tags">
-							<dt>memberof</dt>
-							<dd><p>IDaemonHeaderOptions</p>
-							</dd>
-						</dl>
-					</div>
 				</section>
 			</section>
 		</div>
@@ -259,22 +184,19 @@
 						<a href="../modules/_zowe_imperative.html" class="tsd-kind-icon">@zowe/imperative</a>
 						<ul>
 							<li class="current tsd-kind-interface tsd-parent-kind-module">
-								<a href="_zowe_imperative.idaemonheaderoptions.html" class="tsd-kind-icon">IDaemon<wbr>Header<wbr>Options</a>
+								<a href="_zowe_imperative.iconfigupdateschemahelperoptions.html" class="tsd-kind-icon">IConfig<wbr>Update<wbr>Schema<wbr>Helper<wbr>Options</a>
 								<ul>
 									<li class=" tsd-kind-property tsd-parent-kind-interface">
-										<a href="_zowe_imperative.idaemonheaderoptions.html#exitcode" class="tsd-kind-icon">exit<wbr>Code</a>
+										<a href="_zowe_imperative.iconfigupdateschemahelperoptions.html#config" class="tsd-kind-icon">config</a>
 									</li>
 									<li class=" tsd-kind-property tsd-parent-kind-interface">
-										<a href="_zowe_imperative.idaemonheaderoptions.html#progress" class="tsd-kind-icon">progress</a>
+										<a href="_zowe_imperative.iconfigupdateschemahelperoptions.html#layer" class="tsd-kind-icon">layer</a>
 									</li>
 									<li class=" tsd-kind-property tsd-parent-kind-interface">
-										<a href="_zowe_imperative.idaemonheaderoptions.html#prompt" class="tsd-kind-icon">prompt</a>
+										<a href="_zowe_imperative.iconfigupdateschemahelperoptions.html#updateoptions" class="tsd-kind-icon">update<wbr>Options</a>
 									</li>
 									<li class=" tsd-kind-property tsd-parent-kind-interface">
-										<a href="_zowe_imperative.idaemonheaderoptions.html#stderr" class="tsd-kind-icon">stderr</a>
-									</li>
-									<li class=" tsd-kind-property tsd-parent-kind-interface">
-										<a href="_zowe_imperative.idaemonheaderoptions.html#stdout" class="tsd-kind-icon">stdout</a>
+										<a href="_zowe_imperative.iconfigupdateschemahelperoptions.html#updatedpaths" class="tsd-kind-icon">updated<wbr>Paths</a>
 									</li>
 								</ul>
 							</li>

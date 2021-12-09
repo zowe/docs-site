@@ -3,8 +3,8 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>IRecallOptions | Zowe Node.js SDK - v1.23.0</title>
-	<meta name="description" content="Documentation for Zowe Node.js SDK - v1.23.0">
+	<title>ISystemInfo | Zowe Node.js SDK - vNext</title>
+	<meta name="description" content="Documentation for Zowe Node.js SDK - vNext">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
 </head>
@@ -22,7 +22,7 @@
 						<li class="state loading">Preparing search index...</li>
 						<li class="state failure">The search index is not available</li>
 					</ul>
-					<a href="../index.html" class="title">Zowe Node.js SDK - v1.23.0</a>
+					<a href="../index.html" class="title">Zowe Node.js SDK - vNext</a>
 				</div>
 				<div class="table-cell" id="tsd-widgets">
 					<div id="tsd-filter">
@@ -54,13 +54,13 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="../modules/_zowe_zos_files_for_zowe_sdk.html">@zowe/zos-files-for-zowe-sdk</a>
+					<a href="../modules/_zowe_imperative.html">@zowe/imperative</a>
 				</li>
 				<li>
-					<a href="_zowe_zos_files_for_zowe_sdk.irecalloptions.html">IRecallOptions</a>
+					<a href="_zowe_imperative.isysteminfo.html">ISystemInfo</a>
 				</li>
 			</ul>
-			<h1>Interface IRecallOptions</h1>
+			<h1>Interface ISystemInfo</h1>
 		</div>
 	</div>
 </header>
@@ -70,20 +70,22 @@
 			<section class="tsd-panel tsd-comment">
 				<div class="tsd-comment tsd-typography">
 					<div class="lead">
-						<p>This interface defines the options that can be sent into the recall data set function.</p>
+						<p>Information interface for basic system information</p>
 					</div>
+					<dl class="tsd-comment-tags">
+						<dt>export</dt>
+						<dd></dd>
+						<dt>interface</dt>
+						<dd><p>ISystemInfo</p>
+						</dd>
+					</dl>
 				</div>
 			</section>
 			<section class="tsd-panel tsd-hierarchy">
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<a href="_zowe_zos_files_for_zowe_sdk.imigrateoptions.html" class="tsd-signature-type">IMigrateOptions</a>
-						<ul class="tsd-hierarchy">
-							<li>
-								<span class="target">IRecallOptions</span>
-							</li>
-						</ul>
+						<span class="target">ISystemInfo</span>
 					</li>
 				</ul>
 			</section>
@@ -91,49 +93,56 @@
 				<h2>Index</h2>
 				<section class="tsd-panel tsd-index-panel">
 					<div class="tsd-index-content">
-						<section class="tsd-index-section tsd-is-inherited">
+						<section class="tsd-index-section ">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="_zowe_zos_files_for_zowe_sdk.irecalloptions.html#responsetimeout" class="tsd-kind-icon">response<wbr>Timeout</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="_zowe_zos_files_for_zowe_sdk.irecalloptions.html#wait" class="tsd-kind-icon">wait</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_zowe_imperative.isysteminfo.html#arch" class="tsd-kind-icon">arch</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_zowe_imperative.isysteminfo.html#platform" class="tsd-kind-icon">platform</a></li>
 							</ul>
 						</section>
 					</div>
 				</section>
 			</section>
-			<section class="tsd-panel-group tsd-member-group tsd-is-inherited">
+			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Properties</h2>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
-					<a name="responsetimeout" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagOptional">Optional</span> response<wbr>Timeout</h3>
-					<div class="tsd-signature tsd-kind-icon">response<wbr>Timeout<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="arch" class="tsd-anchor"></a>
+					<h3>arch</h3>
+					<div class="tsd-signature tsd-kind-icon">arch<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
-						<p>Inherited from <a href="_zowe_zos_files_for_zowe_sdk.izosfilesoptions.html">IZosFilesOptions</a>.<a href="_zowe_zos_files_for_zowe_sdk.izosfilesoptions.html#responsetimeout">responseTimeout</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v6.32.1/packages/zosfiles/src/doc/IZosFilesOptions.ts#L22">@zowe/zos-files-for-zowe-sdk/src/doc/IZosFilesOptions.ts:22</a></li>
+							<li>Defined in <a href="https://github.com/zowe/imperative/blob/next/packages/utilities/src/doc/ISystemInfo.ts#L25">@zowe/imperative/packages/utilities/src/doc/ISystemInfo.ts:25</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
-							<p>The maximum amount of time for the TSO servlet to wait for a response before returning an error</p>
+							<p>The system&#39;s CPU architecture</p>
 						</div>
+						<dl class="tsd-comment-tags">
+							<dt>memberof</dt>
+							<dd><p>ISystemInfo</p>
+							</dd>
+						</dl>
 					</div>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
-					<a name="wait" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagOptional">Optional</span> wait</h3>
-					<div class="tsd-signature tsd-kind-icon">wait<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="platform" class="tsd-anchor"></a>
+					<h3>platform</h3>
+					<div class="tsd-signature tsd-kind-icon">platform<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
-						<p>Inherited from <a href="_zowe_zos_files_for_zowe_sdk.imigrateoptions.html">IMigrateOptions</a>.<a href="_zowe_zos_files_for_zowe_sdk.imigrateoptions.html#wait">wait</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v6.32.1/packages/zosfiles/src/methods/hMigrate/doc/IMigrateOptions.ts#L23">@zowe/zos-files-for-zowe-sdk/src/methods/hMigrate/doc/IMigrateOptions.ts:23</a></li>
+							<li>Defined in <a href="https://github.com/zowe/imperative/blob/next/packages/utilities/src/doc/ISystemInfo.ts#L32">@zowe/imperative/packages/utilities/src/doc/ISystemInfo.ts:32</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
-							<p>If true then the function waits for completion of the request.
-							If false (default) the request is queued.</p>
+							<p>The OS platform in use</p>
 						</div>
+						<dl class="tsd-comment-tags">
+							<dt>memberof</dt>
+							<dd><p>ISystemInfo</p>
+							</dd>
+						</dl>
 					</div>
 				</section>
 			</section>
@@ -147,7 +156,7 @@
 					<li class=" tsd-kind-module">
 						<a href="../modules/_zowe_core_for_zowe_sdk.html">@zowe/core-<wbr>for-<wbr>zowe-<wbr>sdk</a>
 					</li>
-					<li class=" tsd-kind-module">
+					<li class="current tsd-kind-module">
 						<a href="../modules/_zowe_imperative.html">@zowe/imperative</a>
 					</li>
 					<li class=" tsd-kind-module">
@@ -156,7 +165,7 @@
 					<li class=" tsd-kind-module">
 						<a href="../modules/_zowe_zos_console_for_zowe_sdk.html">@zowe/zos-<wbr>console-<wbr>for-<wbr>zowe-<wbr>sdk</a>
 					</li>
-					<li class="current tsd-kind-module">
+					<li class=" tsd-kind-module">
 						<a href="../modules/_zowe_zos_files_for_zowe_sdk.html">@zowe/zos-<wbr>files-<wbr>for-<wbr>zowe-<wbr>sdk</a>
 					</li>
 					<li class=" tsd-kind-module">
@@ -181,28 +190,19 @@
 					<li class=" tsd-kind-module">
 						<a href="../modules/_zowe_core_for_zowe_sdk.html" class="tsd-kind-icon">@zowe/core-<wbr>for-<wbr>zowe-<wbr>sdk</a>
 					</li>
-					<li class=" tsd-kind-module">
-						<a href="../modules/_zowe_imperative.html" class="tsd-kind-icon">@zowe/imperative</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="../modules/_zowe_provisioning_for_zowe_sdk.html" class="tsd-kind-icon">@zowe/provisioning-<wbr>for-<wbr>zowe-<wbr>sdk</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="../modules/_zowe_zos_console_for_zowe_sdk.html" class="tsd-kind-icon">@zowe/zos-<wbr>console-<wbr>for-<wbr>zowe-<wbr>sdk</a>
-					</li>
 				</ul>
 				<ul class="current">
 					<li class="current tsd-kind-module">
-						<a href="../modules/_zowe_zos_files_for_zowe_sdk.html" class="tsd-kind-icon">@zowe/zos-<wbr>files-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+						<a href="../modules/_zowe_imperative.html" class="tsd-kind-icon">@zowe/imperative</a>
 						<ul>
 							<li class="current tsd-kind-interface tsd-parent-kind-module">
-								<a href="_zowe_zos_files_for_zowe_sdk.irecalloptions.html" class="tsd-kind-icon">IRecall<wbr>Options</a>
+								<a href="_zowe_imperative.isysteminfo.html" class="tsd-kind-icon">ISystem<wbr>Info</a>
 								<ul>
-									<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
-										<a href="_zowe_zos_files_for_zowe_sdk.irecalloptions.html#responsetimeout" class="tsd-kind-icon">response<wbr>Timeout</a>
+									<li class=" tsd-kind-property tsd-parent-kind-interface">
+										<a href="_zowe_imperative.isysteminfo.html#arch" class="tsd-kind-icon">arch</a>
 									</li>
-									<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
-										<a href="_zowe_zos_files_for_zowe_sdk.irecalloptions.html#wait" class="tsd-kind-icon">wait</a>
+									<li class=" tsd-kind-property tsd-parent-kind-interface">
+										<a href="_zowe_imperative.isysteminfo.html#platform" class="tsd-kind-icon">platform</a>
 									</li>
 								</ul>
 							</li>
@@ -210,6 +210,15 @@
 					</li>
 				</ul>
 				<ul class="after-current">
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_provisioning_for_zowe_sdk.html" class="tsd-kind-icon">@zowe/provisioning-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_zos_console_for_zowe_sdk.html" class="tsd-kind-icon">@zowe/zos-<wbr>console-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_zos_files_for_zowe_sdk.html" class="tsd-kind-icon">@zowe/zos-<wbr>files-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
 					<li class=" tsd-kind-module">
 						<a href="../modules/_zowe_zos_jobs_for_zowe_sdk.html" class="tsd-kind-icon">@zowe/zos-<wbr>jobs-<wbr>for-<wbr>zowe-<wbr>sdk</a>
 					</li>
@@ -244,6 +253,7 @@
 			<ul class="tsd-legend">
 				<li class="tsd-kind-interface"><span class="tsd-kind-icon">Interface</span></li>
 				<li class="tsd-kind-interface tsd-has-type-parameter"><span class="tsd-kind-icon">Interface with type parameter</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-interface"><span class="tsd-kind-icon">Property</span></li>
 			</ul>
 			<ul class="tsd-legend">
 				<li class="tsd-kind-class"><span class="tsd-kind-icon">Class</span></li>
