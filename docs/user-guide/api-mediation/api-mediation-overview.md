@@ -36,7 +36,7 @@ The API Catalog is the catalog of published API services and their associated do
 
 #### Catalog Security
  
-Access to the API Catalog can be protected with an Enterprise z/OS Security Manager such as IBM RACF, CA ACF2, or CA Top Secret. Only users who provide proper mainframe credentials can access the Catalog. Client authentication is implemented through the zOSMF API. 
+Access to the API Catalog can be protected with an Enterprise z/OS Security Manager such as IBM RACF, ACF2, or Top Secret. Only users who provide proper mainframe credentials can access the Catalog. Client authentication is implemented through the zOSMF API. 
 
 ## Onboarding APIs
 The most important part of the ecosystem are the real API services that provide useful APIs. Use the following topics to understand what options you have for adding new APIs to the Mediation Layer:
@@ -45,5 +45,9 @@ The most important part of the ecosystem are the real API services that provide 
 
 ## Caching service
 
-The Caching service aims to provide an API which offers the possibility to store, retrieve and delete data associated with keys. The service is used only by internal Zowe applications and will not be exposed to the internet. Its URL is `https://<ZOWE_HOST_IP>:7555`. 
-For more  information about the Caching service, see its [documentation](../../extend/extend-apiml/api-mediation-caching-service.md).
+The Caching service aims to provide an API which offers the possibility to store, retrieve and delete data associated with keys. The service is used only by internal Zowe applications and is not exposed to the internet. The URL of the Caching service is `https://<ZOWE_HOST_IP>:7555`. 
+For more information, see the [Caching service documentation](../../extend/extend-apiml/api-mediation-caching-service.md).
+
+## Metrics service (Techincal Preview)
+
+The Metrics service aims to provide a web user interface to visualize requests to API Mediation Layer services. The Metrics service is currently in technical preview and is not ready for production. At this time, only core API Mediation Layer services integrate with the Metrics service. Metrics are not displayed for onboarded services. For more information, see the [Metrics service documentation](../../api-mediation-metrics-service.md).

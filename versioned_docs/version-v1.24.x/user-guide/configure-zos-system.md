@@ -45,14 +45,14 @@ For every TSO user ID that is going to log on to Zowe and use services that requ
   CONNECT (userid) GROUP(IZUUSER)
   ```
 
-- If you use CA ACF2, issue the following commands:
+- If you use ACF2, issue the following commands:
 
   ```
   ACFNRULE TYPE(TGR) KEY(IZUUSER) ADD(UID(<uid string of user>) ALLOW)
   F ACF2,REBUILD(TGR)
   ```
 
-- If you use CA Top Secret, issue the following commands:
+- If you use Top Secret, issue the following commands:
 
   ```
   TSS ADD(userid)  PROFILE(IZUUSER)
@@ -95,7 +95,7 @@ Define or check the following configurations depending on whether ICSF is alread
         ```
         SETROPTS RACLIST(CSFSERV) REFRESH
         ```
-    - If you use CA ACF2, issue the following commands (note that `profile-prefix` and `profile-suffix` are user-defined):
+    - If you use ACF2, issue the following commands (note that `profile-prefix` and `profile-suffix` are user-defined):
         ```
         SET CONTROL(GSO)
         ```
@@ -119,7 +119,7 @@ Define or check the following configurations depending on whether ICSF is alread
         ```
         F ACF2,REBUILD(CSF)
         ```
-    - If you use CA Top Secret, issue the following command (note that `profile-prefix` and `profile-suffix` are user defined):
+    - If you use Top Secret, issue the following command (note that `profile-prefix` and `profile-suffix` are user defined):
         ```
         TSS ADDTO(owner-acid) RESCLASS(CSFSERV)              
         ```
@@ -156,14 +156,14 @@ You can issue the following commands first to check whether you already have the
     ```
     RLIST FACILITY BPX.DAEMON AUTHUSER
     ```
-- If you use CA Top Secret, issue the following commands:
+- If you use Top Secret, issue the following commands:
     ```
     TSS WHOHAS IBMFAC(BPX.SERVER)
     ```
     ```
     TSS WHOHAS IBMFAC(BPX.DAEMON)
     ```
-- If you use CA ACF2, issue the following commands:
+- If you use ACF2, issue the following commands:
     ```
     SET RESOURCE(FAC)
     ```
@@ -208,7 +208,7 @@ If the user `ZWESVUSR` who runs the Zowe server started task does not have UPDAT
       ```
       RLIST FACILITY BPX.DAEMON AUTHUSER
       ```
-- If you use CA Top Secret, complete the following steps:  
+- If you use Top Secret, complete the following steps:  
       
    1. Define the BPX Resource and access for <zowe_stc_user>.
       ```
@@ -228,7 +228,7 @@ If the user `ZWESVUSR` who runs the Zowe server started task does not have UPDAT
       ```
       TSS WHOHAS IBMFAC(BPX.DAEMON)
       ```
-- If you use CA ACF2, complete the following steps:
+- If you use ACF2, complete the following steps:
    1. Define the BPX Resource and access for <zowe_stc_user>.
       ```
       SET RESOURCE(FAC)
@@ -360,7 +360,7 @@ If you have not run `ZWESECUR` and are configuring your z/OS environment manuall
   SETROPTS REFRESH RACLIST(STARTED)
   ```
 
-- If you use CA ACF2, issue the following commands:
+- If you use ACF2, issue the following commands:
 
   ```
   SET CONTROL(GSO)
@@ -368,7 +368,7 @@ If you have not run `ZWESECUR` and are configuring your z/OS environment manuall
   F ACF2,REFRESH(STC)
   ```
 
-- If you use CA Top Secret, issue the following commands:
+- If you use Top Secret, issue the following commands:
 
   ```
   TSS ADDTO(STC) PROCNAME(ZWESVSTC) ACID(ZWESVUSR)
@@ -392,7 +392,7 @@ If you have not run `ZWESECUR` and are configuring your z/OS environment manuall
   SETROPTS REFRESH RACLIST(STARTED)
   ```
 
-- If you use CA ACF2, issue the following commands:
+- If you use ACF2, issue the following commands:
 
   ```
   SET CONTROL(GSO)
@@ -400,7 +400,7 @@ If you have not run `ZWESECUR` and are configuring your z/OS environment manuall
   F ACF2,REFRESH(STC)
   ```
 
-- If you use CA Top Secret, issue the following commands:
+- If you use Top Secret, issue the following commands:
 
   ```
   TSS ADDTO(STC) PROCNAME(ZWESLSTC) ACID(ZWESVUSR)
@@ -454,7 +454,7 @@ To do this, issue the following commands that are also included in the `ZWESECUR
         ```
         This shows the user IDs who have access to the `ZWES.IS` class, which should include Zowe's started task user ID with READ access.
 
-- If you use CA ACF2, issue the following commands:
+- If you use ACF2, issue the following commands:
 
     ```
     SET RESOURCE(FAC)
@@ -466,7 +466,7 @@ To do this, issue the following commands that are also included in the `ZWESECUR
     F ACF2,REBUILD(FAC)
     ```
 
-- If you use CA Top Secret, issue the following commands, where `owner-acid` can be IZUSVR or a different ACID:
+- If you use Top Secret, issue the following commands, where `owner-acid` can be IZUSVR or a different ACID:
 
     ```
     TSS ADD(`owner-acid`) IBMFAC(ZWES.)

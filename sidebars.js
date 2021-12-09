@@ -15,6 +15,7 @@ module.exports = {
       type: "category",
       label: "Release notes",
       items: [
+        "getting-started/release-notes/v1_26",
         "getting-started/release-notes/v1_25",
         "getting-started/release-notes/v1_24",
         "getting-started/release-notes/v1_23",
@@ -196,6 +197,7 @@ module.exports = {
           ],
         },
         "user-guide/api-mediation-api-catalog",
+        "user-guide/api-mediation-metrics-service",
         "user-guide/cli-usingcli",
         {
           type: "category",
@@ -388,7 +390,7 @@ module.exports = {
     {
       type: "link",
       label: "Third Party Software Requirements",
-      href: "https://github.com/zowe/docs-site/tree/master/tpsr/tpsr-v1.25.x.md",
+      href: "https://github.com/zowe/docs-site/tree/master/tpsr/tpsr-v1.26.x.md",
     },
   ],
 };
