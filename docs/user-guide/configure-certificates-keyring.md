@@ -4,20 +4,24 @@ Zowe is able to work with certificates held in a **z/OS Keyring**.  For backgrou
 
 Before you submit the JCL, you must [customize it](#customizing-the-zwekring-jcl) and review it with a system programmer who is familiar with z/OS certificates and key rings. The JCL member contains commands for three z/OS security managers: RACF, TopSecret, and ACF/2.
 
-The `ZWEKRING` JCL contains commands for the following scenarios:
+The `ZWEKRING` JCL contains commands for three scenarios:
+
 - Creation of a local CA which is used to sign a locally generated certificate, both of which are placed into the key ring.
-- (**Beta**) Importing an existing certificate already held in z/OS to the key ring for use by Zowe. 
-- (**Beta**) Creation of a locally generated certificated and signing it with an existing certificate authority, and placing the certificate into the key ring. 
+- Importing an existing certificate already held in z/OS to the key ring for use by Zowe. 
+- Creation of a locally generated certificated and signing it with an existing certificate authority, and placing the certificate into the key ring. 
 
-**Note:** The scenarios marked **Beta** are provided for technical preview.  If you have any feedback on using key rings, create an issue in the Zowe community repo at [https://github.com/zowe/community](https://github.com/zowe/community). 
 
-After you run the `ZWEKRING` JCL, a key ring that contains the Zowe certificate is created.  In order for a Zowe instance to work with the keystore certificate, you also need to create a USS keystore directory.  This USS keystore directory does not contain any certificates, but is required for the Zowe [instance.env](./configure-instance-directory.md#keystore-configuration.md) file to configure the Zowe shell correctly so that the keystore certificate can be located by the Zowe runtime. 
+After you run the `ZWEKRING` JCL, a keyring named `ZoweKeyring` containing the Zowe certificate is created.  In order for a Zowe instance to work with the keystore certificate, you also need to create a USS keystore directory.  This USS keystore directory does not contain any certificates, but is required for the Zowe [instance.env](./configure-instance-directory.md#keystore-configuration.md) file to configure the Zowe shell correctly so that the keystore certificate can be located by the Zowe runtime. 
 
 To create the USS keystore directory after successfully running `ZWEKRING` JCL member, run the script `<RUNTIME_DIR>/bin/zowe-setup-certificates.sh`. This script has an input parameter `-p` which specifies the location of a configuration file controlling how and where the directory and its contents are created.  Copy the file `<RUNTIME_DIR>/bin/zowe-setup-certificates.env` to a writeable location and review and edit its contents to match property values used in `ZWEKRING` JCL member.  Then, run the script by using the following command:
 
 ```.sh
 zowe-setup-certificates.sh -p <path to zowe-setup-keyring-certificates.env>
 ```
+
+Watch this end to end [video] for the top down scenario, where a RACF certificate authority is generated and used to self-sign Zowe's certificate, both of which are held in the `ZoweKeyring`.  
+
+<iframe class="embed-responsive-item" id="youtubeplayer" title="Zowe overview demo" type="text/html" width="640" height="390" src="https://www.youtube.com/embed/PGpXaje4DJk" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen> </iframe>
 
 ## Customizing the ZWEKRING JCL
 
