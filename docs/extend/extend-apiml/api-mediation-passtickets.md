@@ -14,8 +14,9 @@ The API Gateway provides the user ID and password in the Authorization header of
 
 - [Outline for enabling PassTicket support](#outline-for-enabling-passticket-support)
 - [Security configuration that allows the Zowe API Gateway to generate PassTickets for an API service](#security-configuration-that-allows-the-zowe-api-gateway-to-generate-passtickets-for-an-api-service)
-  - [CA ACF2](#ca-acf2)
-  - [CA Top Secret](#ca-top-secret)
+
+  - [ACF2](#acf2)
+  - [Top Secret](#top-secret)
   - [RACF](#racf)
 - [API services that support PassTickets](#api-services-that-support-passtickets)
   - [API Services that register dynamically with API ML that provide authentication information](#api-services-that-register-dynamically-with-api-ml-that-provide-authentication-information)
@@ -48,7 +49,7 @@ Use the following variables to generate PassTickets for the API service to enabl
 
 Replace the variables in the following examples with actual values.
 
-### CA ACF2
+### ACF2
 
 Grant the Zowe started task user ID permission to generate PassTickets for users of that API service.
 The following code is an example of security commands that need to be issued.
@@ -63,7 +64,7 @@ F ACF2,REBUILD(PTK),CLASS(P)
 END
 ```
 
-### CA Top Secret
+### Top Secret
 
 Grant the Zowe started task user ID permission to generate PassTickets for users of that API service.
 

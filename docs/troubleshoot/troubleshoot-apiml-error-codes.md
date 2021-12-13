@@ -973,7 +973,7 @@ The following error message codes may appear on logs or API responses. Use the f
 
   **Reason:**
 
-  A problem occurred while trying to read the jwt secret key from the keystore.
+  A problem occurred while trying to read the JWT secret key from the keystore.
 
   **Action:**
 
@@ -981,7 +981,7 @@ The following error message codes may appear on logs or API responses. Use the f
 
 ### ZWEAG705E
 
-  Failed to load public or private key from key with alias '%s' in the keystore '%s'. Gateway is shutting down.
+  Failed to load public or private key from key with alias '%s' in the keystore '%s'. The Gateway is shutting down.
 
   **Reason:**
 
@@ -1009,11 +1009,11 @@ The following error message codes may appear on logs or API responses. Use the f
 
   **Reason:**
 
-  Request to the server instance failed and will not be retried on another instance.
+  The request to the server instance failed and will not be retried on another instance.
 
   **Action:**
 
-  Refer to Caused by details for troubleshooting.
+  Refer to 'Caused by' details for troubleshooting.
 
 ### ZWEAG708E
 
@@ -1045,11 +1045,11 @@ The following error message codes may appear on logs or API responses. Use the f
 
   **Reason:**
 
-  The service is not available. It might be removed by the Circuit Breaker or by requesting specific instance that is not available
+  The service is not available. It might be removed by the Circuit Breaker or by requesting specific instance that is not available.
 
   **Action:**
 
-  Try the request later or remove the request for specific instance.
+  Try the request later, or remove the request for the specific instance.
 
 ### ZWEAG711E
 
@@ -1057,11 +1057,11 @@ The following error message codes may appear on logs or API responses. Use the f
 
   **Reason:**
 
-  The principal does not have the queried access to resource name within resource class.
+  The principal does not have the queried access to the resource name within the resource class.
 
   **Action:**
 
-  No action needed.
+  No action is needed.
 
 ### ZWEAG712E
 
@@ -1069,7 +1069,7 @@ The following error message codes may appear on logs or API responses. Use the f
 
   **Reason:**
 
-  The URI did not follow the format /{serviceId}/{type}/{version}/{endpoint} or /{type}/{version}/{serviceId}/{endpoint}.
+  The URI does not follow the format /{serviceId}/{type}/{version}/{endpoint} or /{type}/{version}/{serviceId}/{endpoint}.
 
   **Action:**
 
@@ -1085,15 +1085,15 @@ The following error message codes may appear on logs or API responses. Use the f
 
   **Action:**
 
-  Based on the information in the message either: verify that the key configuration is correct or that the zOSMF is available.
+  Based on the specific information in the message, verify that the key configuration is correct, or alternatively, that z/OSMF is available.
 
 ### ZWEAG714E
 
-  Unknown error happened while retrieving the used public key
+  Unknown error occurred while retrieving the used public key
 
   **Reason:**
 
-  Unknown problem occured when retrieving the used public key. This should never happen.
+  An unknown problem occured when retrieving the used public key. This should never occur.
 
   **Action:**
 
@@ -1105,23 +1105,23 @@ The following error message codes may appear on logs or API responses. Use the f
 
   **Reason:**
 
-  In either case verify the configuration of zOSMF.
+  There are too many keys in the JWK set. As such, it is not possible to choose the correct one.
 
   **Action:**
 
-  Verify the configuration of the zOSMF to make sure that zOSMF provides only one used key.
+  Verify the configuration of the z/OSMF to make sure that z/OSMF provides only one used key.
 
 ### ZWEAG716E
 
-  The system doesn't know yet what key should be used.
+  The system does not know what key should be used.
 
   **Reason:**
 
-  Typically zOSMF is either unavailable or offline.
+  Typically z/OSMF is either unavailable or offline.
 
   **Action:**
 
-  Verify the zOSMF is available, accessible by the gateway service and online.
+  Verify that z/OSMF is available, accessible by the Gateway service, and online.
 
 ### ZWEAG100E
 
@@ -1169,7 +1169,7 @@ The following error message codes may appear on logs or API responses. Use the f
 
   **Action:**
 
-  Obtain new token by performing an authentication request.
+  Obtain a new token by performing an authentication request.
 
 ### ZWEAG104E
 
@@ -1229,7 +1229,7 @@ The following error message codes may appear on logs or API responses. Use the f
 
   **Action:**
 
-  Ensure that the z/OSMF instance is configured correctly and that it is successfully registered to the Discovery Service and that the API Mediation Layer can communicate with provided z/OSMF instance. The default timeout is 5 minutes. On slower system, add APIML_SECURITY_JWTINITIALIZERTIMEOUT=... variable and value in minutes into Zowe's configuration to override this value.
+  Ensure that the z/OSMF instance is configured correctly and that it is successfully registered to the Discovery Service and that the API Mediation Layer can communicate with the provided z/OSMF instance. The default timeout is 5 minutes. On a slower system, add the variable APIML_SECURITY_JWTINITIALIZERTIMEOUT=... and the value in minutes into Zowe's configuration to override this value.
 
 ### ZWEAG109E
 

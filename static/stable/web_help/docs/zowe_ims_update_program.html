@@ -81,7 +81,7 @@ program as using the JAVA language (ASSEM, COBOL, JAVA, PASCAL, PLI).</p>
 <p><code>--option</code>  | <code>-o</code> <em>(string)</em></p>
 <ul>
 <li>
-<p>Specifies to return response lines for all resources that are processed. It is
+<p>Returns response lines for all resources that are processed.  The option is only valid if `--name * (ALLRSP)` is specified.
 only valid with --name * (ALLRSP).</p>
 <p>Allowed values: ALLRSP</p>
 </li>
@@ -214,6 +214,18 @@ default token type, which is provided by 'zowe auth login'.</li>
 <p><code>--token-value</code>  | <code>--tv</code> <em>(string)</em></p>
 <ul>
 <li>The value of the token to pass to the API.</li>
+</ul>
+</li>
+<li>
+<p><code>--cert-file</code>  <em>(local file path)</em></p>
+<ul>
+<li>The file path to a certificate file to use for authentication</li>
+</ul>
+</li>
+<li>
+<p><code>--cert-key-file</code>  <em>(local file path)</em></p>
+<ul>
+<li>The file path to a certificate key file to use for authentication</li>
 </ul>
 </li>
 </ul>
