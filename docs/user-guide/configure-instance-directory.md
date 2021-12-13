@@ -280,8 +280,6 @@ To learn more about the YAML format, please visit [yaml.org](https://yaml.org/).
 
 - To allow Sysplex Distributor to route traffic to the Gateway, you can only start one Gateway in each LPAR within the Sysplex. All Gateways instances should be started on the same port configured on Sysplex Distributor.
 - Zowe App Server should be accessed through the Gateway with a URL like `https://<dvipa-domain>:<external-port>/zlux/ui/v1`.
-- Currently, the `app-server` component can only be configured to start one instance.
-- If you enabled more than one Discovery service, you may see a 500 error if you click on the `Refresh Static APIs` button from API Catalog.
 
 ### Creating the zowe.yaml file
 
