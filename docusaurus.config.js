@@ -229,12 +229,6 @@ module.exports = {
             "v1.19.x": {
               label: "v1.19.x LTS",
             },
-            "v1.18.x": {
-              label: "v1.18.x LTS",
-            },
-            "v1.17.x": {
-              label: "v1.17.x LTS",
-            },
           },
         },
         theme: {
