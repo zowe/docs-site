@@ -59,6 +59,18 @@ the name on commands that support the &quot;--zosmf-profile&quot; option.</li>
 </ul>
 </li>
 <li>
+<p><code>--cert-file</code>  <em>(local file path)</em></p>
+<ul>
+<li>The file path to a certificate file to use for authentication</li>
+</ul>
+</li>
+<li>
+<p><code>--cert-key-file</code>  <em>(local file path)</em></p>
+<ul>
+<li>The file path to a certificate key file to use for authentication</li>
+</ul>
+</li>
+<li>
 <p><code>--base-path</code>  | <code>--bp</code> <em>(string)</em></p>
 <ul>
 <li>The base path for your API mediation layer instance. Specify this option to
@@ -125,7 +137,7 @@ at the host zos124 (default port - 443) and allow self-signed certificates:</p>
 </li>
 <li>
 <p>Create a zosmf profile called 'zos125' to connect to z/OSMF
-at the host zos125 and port 1443, not specifying a username or password so they
+at the host zos125 and port 1443,  not specifying a username or password so they
 are not stored on disk; these will need to be specified on every command:</p>
 <ul>
 <li><code>zowe  profiles create zosmf-profile zos125 --host zos125 --port 1443</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  profiles create zosmf-profile zos125 --host zos125 --port 1443">Copy</button></li>

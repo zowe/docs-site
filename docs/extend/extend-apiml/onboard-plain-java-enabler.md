@@ -541,23 +541,30 @@ where:
           
         **Note:** This is the default scheme when no authentication parameters are specified. 
         
-     * **zoweJwt**   
+    * **zoweJwt**   
      
-        This value specifies that a service accepts the Zowe JWT. No additional processing is done by the API Gateway.
+       This value specifies that a service accepts the Zowe JWT. No additional processing is done by the API Gateway.
      
-     * **httpBasicPassTicket**
+    * **httpBasicPassTicket**
      
-        This value specifies that a service accepts PassTickets in the Authorization header of the HTTP requests using the basic authentication scheme.
-        It is necessary to provide a service APPLID in `authentication.applid` parameter.
+       This value specifies that a service accepts PassTickets in the Authorization header of the HTTP requests using the basic authentication scheme.
+       It is necessary to provide a service APPLID in `authentication.applid` parameter.
         
-        For more information, see [Enabling PassTicket creation for API Services that Accept PassTickets](api-mediation-passtickets.md)
+       For more information, see [Enabling PassTicket creation for API Services that Accept PassTickets](api-mediation-passtickets.md)
      
-     * **zosmf**
+    * **zosmf**
      
-        This value specifies that a service accepts z/OSMF LTPA (Lightweight Third-Party Authentication).
-        This scheme should be used only for a z/OSMF service used by the API Gateway Authentication Service and other z/OSMF services that use the same LTPA key.
+       This value specifies that a service accepts z/OSMF LTPA (Lightweight Third-Party Authentication).
+       This scheme should be used only for a z/OSMF service used by the API Gateway Authentication Service and other z/OSMF services that use the same LTPA key.
         
-        For more information about z/OSMF Single Sign-on, see [Establishing a single sign-on environment](https://www.ibm.com/support/knowledgecenter/SSLTBW_2.4.0/com.ibm.zosmfcore.multisysplex.help.doc/izuG00hpManageSecurityCredentials.html)
+       For more information about z/OSMF Single Sign-on, see [Establishing a single sign-on environment](https://www.ibm.com/support/knowledgecenter/SSLTBW_2.4.0/com.ibm.zosmfcore.multisysplex.help.doc/izuG00hpManageSecurityCredentials.html)
+  
+    * **safIdt**
+
+       This value specifies that the application recognizes the SAF IDT scheme and fills the `X-SAF-Token` header with the token produced by the Saf IDT provider implementation.
+  
+       For more information, see [SAF IDT provider](implement-new-saf-provider.md)
+
     * **x509**
 
         This value specifies that a service accepts client certificates forwarded in the HTTP header. The Gateway service extracts information from a valid client certificate. For validation, the certificate needs to be trusted by API Mediation Layer, and needs to contain a Client Authentication (1.3.6.1.5.5.7.3.2) entry in Extended Key Usage. To use this scheme, it is also necessary to specify which headers to include. Specify these parameters in `headers`.

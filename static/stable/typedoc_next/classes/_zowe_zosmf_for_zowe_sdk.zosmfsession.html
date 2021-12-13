@@ -113,6 +113,8 @@
 							<h3>Object literals</h3>
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-object-literal tsd-parent-kind-class tsd-is-static"><a href="_zowe_zosmf_for_zowe_sdk.zosmfsession.html#zosmf_option_base_path" class="tsd-kind-icon">ZOSMF_<wbr>OPTION_<wbr>BASE_<wbr>PATH</a></li>
+								<li class="tsd-kind-object-literal tsd-parent-kind-class tsd-is-static"><a href="_zowe_zosmf_for_zowe_sdk.zosmfsession.html#zosmf_option_cert_file" class="tsd-kind-icon">ZOSMF_<wbr>OPTION_<wbr>CERT_<wbr>FILE</a></li>
+								<li class="tsd-kind-object-literal tsd-parent-kind-class tsd-is-static"><a href="_zowe_zosmf_for_zowe_sdk.zosmfsession.html#zosmf_option_cert_key_file" class="tsd-kind-icon">ZOSMF_<wbr>OPTION_<wbr>CERT_<wbr>KEY_<wbr>FILE</a></li>
 								<li class="tsd-kind-object-literal tsd-parent-kind-class tsd-is-static"><a href="_zowe_zosmf_for_zowe_sdk.zosmfsession.html#zosmf_option_host" class="tsd-kind-icon">ZOSMF_<wbr>OPTION_<wbr>HOST</a></li>
 								<li class="tsd-kind-object-literal tsd-parent-kind-class tsd-is-static"><a href="_zowe_zosmf_for_zowe_sdk.zosmfsession.html#zosmf_option_host_profile" class="tsd-kind-icon">ZOSMF_<wbr>OPTION_<wbr>HOST_<wbr>PROFILE</a></li>
 								<li class="tsd-kind-object-literal tsd-parent-kind-class tsd-is-static"><a href="_zowe_zosmf_for_zowe_sdk.zosmfsession.html#zosmf_option_password" class="tsd-kind-icon">ZOSMF_<wbr>OPTION_<wbr>PASSWORD</a></li>
@@ -132,10 +134,10 @@
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-static">
 					<a name="zosmf_connection_options" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagStatic">Static</span> ZOSMF_<wbr>CONNECTION_<wbr>OPTIONS</h3>
-					<div class="tsd-signature tsd-kind-icon">ZOSMF_<wbr>CONNECTION_<wbr>OPTIONS<span class="tsd-signature-symbol">:</span> <a href="../interfaces/_zowe_imperative.icommandoptiondefinition.html" class="tsd-signature-type">ICommandOptionDefinition</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol"> = [ZosmfSession.ZOSMF_OPTION_HOST,ZosmfSession.ZOSMF_OPTION_PORT,ZosmfSession.ZOSMF_OPTION_USER,ZosmfSession.ZOSMF_OPTION_PASSWORD,ZosmfSession.ZOSMF_OPTION_REJECT_UNAUTHORIZED,ZosmfSession.ZOSMF_OPTION_BASE_PATH,ZosmfSession.ZOSMF_OPTION_PROTOCOL]</span></div>
+					<div class="tsd-signature tsd-kind-icon">ZOSMF_<wbr>CONNECTION_<wbr>OPTIONS<span class="tsd-signature-symbol">:</span> <a href="../interfaces/_zowe_imperative.icommandoptiondefinition.html" class="tsd-signature-type">ICommandOptionDefinition</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol"> = [ZosmfSession.ZOSMF_OPTION_HOST,ZosmfSession.ZOSMF_OPTION_PORT,ZosmfSession.ZOSMF_OPTION_USER,ZosmfSession.ZOSMF_OPTION_PASSWORD,ZosmfSession.ZOSMF_OPTION_REJECT_UNAUTHORIZED,ZosmfSession.ZOSMF_OPTION_BASE_PATH,ZosmfSession.ZOSMF_OPTION_PROTOCOL,ZosmfSession.ZOSMF_OPTION_CERT_FILE,ZosmfSession.ZOSMF_OPTION_CERT_KEY_FILE// ZosmfSession.ZOSMF_OPTION_CERT_FILE_PASSPHRASE]</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/next/packages/zosmf/src/ZosmfSession.ts#L131">@zowe/zosmf-for-zowe-sdk/src/ZosmfSession.ts:131</a></li>
+							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/next/packages/zosmf/src/ZosmfSession.ts#L161">@zowe/zosmf-for-zowe-sdk/src/ZosmfSession.ts:161</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -168,7 +170,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/next/packages/zosmf/src/ZosmfSession.ts#L154">@zowe/zosmf-for-zowe-sdk/src/ZosmfSession.ts:154</a></li>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/next/packages/zosmf/src/ZosmfSession.ts#L187">@zowe/zosmf-for-zowe-sdk/src/ZosmfSession.ts:187</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <a href="_zowe_imperative.logger.html" class="tsd-signature-type">Logger</a></h4>
@@ -188,7 +190,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/next/packages/zosmf/src/ZosmfSession.ts#L146">@zowe/zosmf-for-zowe-sdk/src/ZosmfSession.ts:146</a></li>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/next/packages/zosmf/src/ZosmfSession.ts#L179">@zowe/zosmf-for-zowe-sdk/src/ZosmfSession.ts:179</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -281,6 +283,116 @@
 					</section>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-object-literal tsd-parent-kind-class tsd-is-static">
+					<a name="zosmf_option_cert_file" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> ZOSMF_<wbr>OPTION_<wbr>CERT_<wbr>FILE</h3>
+					<div class="tsd-signature tsd-kind-icon">ZOSMF_<wbr>OPTION_<wbr>CERT_<wbr>FILE<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/next/packages/zosmf/src/ZosmfSession.ts#L130">@zowe/zosmf-for-zowe-sdk/src/ZosmfSession.ts:130</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Option used to specify the path to the certificate file for authentication</p>
+						</div>
+					</div>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+						<a name="zosmf_option_cert_file.description-1" class="tsd-anchor"></a>
+						<h3>description</h3>
+						<div class="tsd-signature tsd-kind-icon">description<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &quot;The file path to a certificate file to use for authentication&quot;</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/next/packages/zosmf/src/ZosmfSession.ts#L132">@zowe/zosmf-for-zowe-sdk/src/ZosmfSession.ts:132</a></li>
+							</ul>
+						</aside>
+					</section>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+						<a name="zosmf_option_cert_file.group-1" class="tsd-anchor"></a>
+						<h3>group</h3>
+						<div class="tsd-signature tsd-kind-icon">group<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = ZosmfSession.ZOSMF_CONNECTION_OPTION_GROUP</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/next/packages/zosmf/src/ZosmfSession.ts#L134">@zowe/zosmf-for-zowe-sdk/src/ZosmfSession.ts:134</a></li>
+							</ul>
+						</aside>
+					</section>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+						<a name="zosmf_option_cert_file.name-1" class="tsd-anchor"></a>
+						<h3>name</h3>
+						<div class="tsd-signature tsd-kind-icon">name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &quot;cert-file&quot;</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/next/packages/zosmf/src/ZosmfSession.ts#L131">@zowe/zosmf-for-zowe-sdk/src/ZosmfSession.ts:131</a></li>
+							</ul>
+						</aside>
+					</section>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+						<a name="zosmf_option_cert_file.type-1" class="tsd-anchor"></a>
+						<h3>type</h3>
+						<div class="tsd-signature tsd-kind-icon">type<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &quot;existingLocalFile&quot;</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/next/packages/zosmf/src/ZosmfSession.ts#L133">@zowe/zosmf-for-zowe-sdk/src/ZosmfSession.ts:133</a></li>
+							</ul>
+						</aside>
+					</section>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-object-literal tsd-parent-kind-class tsd-is-static">
+					<a name="zosmf_option_cert_key_file" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> ZOSMF_<wbr>OPTION_<wbr>CERT_<wbr>KEY_<wbr>FILE</h3>
+					<div class="tsd-signature tsd-kind-icon">ZOSMF_<wbr>OPTION_<wbr>CERT_<wbr>KEY_<wbr>FILE<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/next/packages/zosmf/src/ZosmfSession.ts#L140">@zowe/zosmf-for-zowe-sdk/src/ZosmfSession.ts:140</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Option used to specify the path to the cert&#39;s key file for authentication</p>
+						</div>
+					</div>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+						<a name="zosmf_option_cert_key_file.description-2" class="tsd-anchor"></a>
+						<h3>description</h3>
+						<div class="tsd-signature tsd-kind-icon">description<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &quot;The file path to a certificate key file to use for authentication&quot;</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/next/packages/zosmf/src/ZosmfSession.ts#L142">@zowe/zosmf-for-zowe-sdk/src/ZosmfSession.ts:142</a></li>
+							</ul>
+						</aside>
+					</section>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+						<a name="zosmf_option_cert_key_file.group-2" class="tsd-anchor"></a>
+						<h3>group</h3>
+						<div class="tsd-signature tsd-kind-icon">group<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = ZosmfSession.ZOSMF_CONNECTION_OPTION_GROUP</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/next/packages/zosmf/src/ZosmfSession.ts#L144">@zowe/zosmf-for-zowe-sdk/src/ZosmfSession.ts:144</a></li>
+							</ul>
+						</aside>
+					</section>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+						<a name="zosmf_option_cert_key_file.name-2" class="tsd-anchor"></a>
+						<h3>name</h3>
+						<div class="tsd-signature tsd-kind-icon">name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &quot;cert-key-file&quot;</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/next/packages/zosmf/src/ZosmfSession.ts#L141">@zowe/zosmf-for-zowe-sdk/src/ZosmfSession.ts:141</a></li>
+							</ul>
+						</aside>
+					</section>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+						<a name="zosmf_option_cert_key_file.type-2" class="tsd-anchor"></a>
+						<h3>type</h3>
+						<div class="tsd-signature tsd-kind-icon">type<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &quot;existingLocalFile&quot;</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/next/packages/zosmf/src/ZosmfSession.ts#L143">@zowe/zosmf-for-zowe-sdk/src/ZosmfSession.ts:143</a></li>
+							</ul>
+						</aside>
+					</section>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-object-literal tsd-parent-kind-class tsd-is-static">
 					<a name="zosmf_option_host" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagStatic">Static</span> ZOSMF_<wbr>OPTION_<wbr>HOST</h3>
 					<div class="tsd-signature tsd-kind-icon">ZOSMF_<wbr>OPTION_<wbr>HOST<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
@@ -305,7 +417,7 @@
 						</aside>
 					</section>
 					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
-						<a name="zosmf_option_host.description-1" class="tsd-anchor"></a>
+						<a name="zosmf_option_host.description-3" class="tsd-anchor"></a>
 						<h3>description</h3>
 						<div class="tsd-signature tsd-kind-icon">description<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &quot;The z/OSMF server host name.&quot;</span></div>
 						<aside class="tsd-sources">
@@ -315,7 +427,7 @@
 						</aside>
 					</section>
 					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
-						<a name="zosmf_option_host.group-1" class="tsd-anchor"></a>
+						<a name="zosmf_option_host.group-3" class="tsd-anchor"></a>
 						<h3>group</h3>
 						<div class="tsd-signature tsd-kind-icon">group<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = ZosmfSession.ZOSMF_CONNECTION_OPTION_GROUP</span></div>
 						<aside class="tsd-sources">
@@ -325,7 +437,7 @@
 						</aside>
 					</section>
 					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
-						<a name="zosmf_option_host.name-1" class="tsd-anchor"></a>
+						<a name="zosmf_option_host.name-3" class="tsd-anchor"></a>
 						<h3>name</h3>
 						<div class="tsd-signature tsd-kind-icon">name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &quot;host&quot;</span></div>
 						<aside class="tsd-sources">
@@ -345,7 +457,7 @@
 						</aside>
 					</section>
 					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
-						<a name="zosmf_option_host.type-1" class="tsd-anchor"></a>
+						<a name="zosmf_option_host.type-3" class="tsd-anchor"></a>
 						<h3>type</h3>
 						<div class="tsd-signature tsd-kind-icon">type<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &quot;string&quot;</span></div>
 						<aside class="tsd-sources">
@@ -400,7 +512,7 @@
 						</aside>
 					</section>
 					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
-						<a name="zosmf_option_password.description-2" class="tsd-anchor"></a>
+						<a name="zosmf_option_password.description-4" class="tsd-anchor"></a>
 						<h3>description</h3>
 						<div class="tsd-signature tsd-kind-icon">description<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &quot;Mainframe (z/OSMF) password, which can be the same as your TSO password.&quot;</span></div>
 						<aside class="tsd-sources">
@@ -410,7 +522,7 @@
 						</aside>
 					</section>
 					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
-						<a name="zosmf_option_password.group-2" class="tsd-anchor"></a>
+						<a name="zosmf_option_password.group-4" class="tsd-anchor"></a>
 						<h3>group</h3>
 						<div class="tsd-signature tsd-kind-icon">group<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = ZosmfSession.ZOSMF_CONNECTION_OPTION_GROUP</span></div>
 						<aside class="tsd-sources">
@@ -420,7 +532,7 @@
 						</aside>
 					</section>
 					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
-						<a name="zosmf_option_password.name-2" class="tsd-anchor"></a>
+						<a name="zosmf_option_password.name-4" class="tsd-anchor"></a>
 						<h3>name</h3>
 						<div class="tsd-signature tsd-kind-icon">name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &quot;password&quot;</span></div>
 						<aside class="tsd-sources">
@@ -440,7 +552,7 @@
 						</aside>
 					</section>
 					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
-						<a name="zosmf_option_password.type-2" class="tsd-anchor"></a>
+						<a name="zosmf_option_password.type-4" class="tsd-anchor"></a>
 						<h3>type</h3>
 						<div class="tsd-signature tsd-kind-icon">type<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &quot;string&quot;</span></div>
 						<aside class="tsd-sources">
@@ -505,7 +617,7 @@
 						</aside>
 					</section>
 					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
-						<a name="zosmf_option_port.description-3" class="tsd-anchor"></a>
+						<a name="zosmf_option_port.description-5" class="tsd-anchor"></a>
 						<h3>description</h3>
 						<div class="tsd-signature tsd-kind-icon">description<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &quot;The z/OSMF server port.&quot;</span></div>
 						<aside class="tsd-sources">
@@ -515,7 +627,7 @@
 						</aside>
 					</section>
 					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
-						<a name="zosmf_option_port.group-3" class="tsd-anchor"></a>
+						<a name="zosmf_option_port.group-5" class="tsd-anchor"></a>
 						<h3>group</h3>
 						<div class="tsd-signature tsd-kind-icon">group<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = ZosmfSession.ZOSMF_CONNECTION_OPTION_GROUP</span></div>
 						<aside class="tsd-sources">
@@ -525,7 +637,7 @@
 						</aside>
 					</section>
 					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
-						<a name="zosmf_option_port.name-3" class="tsd-anchor"></a>
+						<a name="zosmf_option_port.name-5" class="tsd-anchor"></a>
 						<h3>name</h3>
 						<div class="tsd-signature tsd-kind-icon">name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &quot;port&quot;</span></div>
 						<aside class="tsd-sources">
@@ -535,7 +647,7 @@
 						</aside>
 					</section>
 					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
-						<a name="zosmf_option_port.type-3" class="tsd-anchor"></a>
+						<a name="zosmf_option_port.type-5" class="tsd-anchor"></a>
 						<h3>type</h3>
 						<div class="tsd-signature tsd-kind-icon">type<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &quot;number&quot;</span></div>
 						<aside class="tsd-sources">
@@ -570,7 +682,7 @@
 						</aside>
 					</section>
 					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
-						<a name="zosmf_option_protocol.description-4" class="tsd-anchor"></a>
+						<a name="zosmf_option_protocol.description-6" class="tsd-anchor"></a>
 						<h3>description</h3>
 						<div class="tsd-signature tsd-kind-icon">description<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &quot;The protocol used (HTTP or HTTPS)&quot;</span></div>
 						<aside class="tsd-sources">
@@ -580,7 +692,7 @@
 						</aside>
 					</section>
 					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
-						<a name="zosmf_option_protocol.group-4" class="tsd-anchor"></a>
+						<a name="zosmf_option_protocol.group-6" class="tsd-anchor"></a>
 						<h3>group</h3>
 						<div class="tsd-signature tsd-kind-icon">group<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = ZosmfSession.ZOSMF_CONNECTION_OPTION_GROUP</span></div>
 						<aside class="tsd-sources">
@@ -590,7 +702,7 @@
 						</aside>
 					</section>
 					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
-						<a name="zosmf_option_protocol.name-4" class="tsd-anchor"></a>
+						<a name="zosmf_option_protocol.name-6" class="tsd-anchor"></a>
 						<h3>name</h3>
 						<div class="tsd-signature tsd-kind-icon">name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &quot;protocol&quot;</span></div>
 						<aside class="tsd-sources">
@@ -600,7 +712,7 @@
 						</aside>
 					</section>
 					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
-						<a name="zosmf_option_protocol.type-4" class="tsd-anchor"></a>
+						<a name="zosmf_option_protocol.type-6" class="tsd-anchor"></a>
 						<h3>type</h3>
 						<div class="tsd-signature tsd-kind-icon">type<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &quot;string&quot;</span></div>
 						<aside class="tsd-sources">
@@ -675,7 +787,7 @@
 						</aside>
 					</section>
 					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
-						<a name="zosmf_option_reject_unauthorized.description-5" class="tsd-anchor"></a>
+						<a name="zosmf_option_reject_unauthorized.description-7" class="tsd-anchor"></a>
 						<h3>description</h3>
 						<div class="tsd-signature tsd-kind-icon">description<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &quot;Reject self-signed certificates.&quot;</span></div>
 						<aside class="tsd-sources">
@@ -685,7 +797,7 @@
 						</aside>
 					</section>
 					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
-						<a name="zosmf_option_reject_unauthorized.group-5" class="tsd-anchor"></a>
+						<a name="zosmf_option_reject_unauthorized.group-7" class="tsd-anchor"></a>
 						<h3>group</h3>
 						<div class="tsd-signature tsd-kind-icon">group<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = ZosmfSession.ZOSMF_CONNECTION_OPTION_GROUP</span></div>
 						<aside class="tsd-sources">
@@ -695,7 +807,7 @@
 						</aside>
 					</section>
 					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
-						<a name="zosmf_option_reject_unauthorized.name-5" class="tsd-anchor"></a>
+						<a name="zosmf_option_reject_unauthorized.name-7" class="tsd-anchor"></a>
 						<h3>name</h3>
 						<div class="tsd-signature tsd-kind-icon">name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &quot;reject-unauthorized&quot;</span></div>
 						<aside class="tsd-sources">
@@ -705,7 +817,7 @@
 						</aside>
 					</section>
 					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
-						<a name="zosmf_option_reject_unauthorized.type-5" class="tsd-anchor"></a>
+						<a name="zosmf_option_reject_unauthorized.type-7" class="tsd-anchor"></a>
 						<h3>type</h3>
 						<div class="tsd-signature tsd-kind-icon">type<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &quot;boolean&quot;</span></div>
 						<aside class="tsd-sources">
@@ -740,7 +852,7 @@
 						</aside>
 					</section>
 					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
-						<a name="zosmf_option_user.description-6" class="tsd-anchor"></a>
+						<a name="zosmf_option_user.description-8" class="tsd-anchor"></a>
 						<h3>description</h3>
 						<div class="tsd-signature tsd-kind-icon">description<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &quot;Mainframe (z/OSMF) user name, which can be the same as your TSO login.&quot;</span></div>
 						<aside class="tsd-sources">
@@ -750,7 +862,7 @@
 						</aside>
 					</section>
 					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
-						<a name="zosmf_option_user.group-6" class="tsd-anchor"></a>
+						<a name="zosmf_option_user.group-8" class="tsd-anchor"></a>
 						<h3>group</h3>
 						<div class="tsd-signature tsd-kind-icon">group<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = ZosmfSession.ZOSMF_CONNECTION_OPTION_GROUP</span></div>
 						<aside class="tsd-sources">
@@ -760,7 +872,7 @@
 						</aside>
 					</section>
 					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
-						<a name="zosmf_option_user.name-6" class="tsd-anchor"></a>
+						<a name="zosmf_option_user.name-8" class="tsd-anchor"></a>
 						<h3>name</h3>
 						<div class="tsd-signature tsd-kind-icon">name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &quot;user&quot;</span></div>
 						<aside class="tsd-sources">
@@ -780,7 +892,7 @@
 						</aside>
 					</section>
 					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
-						<a name="zosmf_option_user.type-6" class="tsd-anchor"></a>
+						<a name="zosmf_option_user.type-8" class="tsd-anchor"></a>
 						<h3>type</h3>
 						<div class="tsd-signature tsd-kind-icon">type<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &quot;string&quot;</span></div>
 						<aside class="tsd-sources">
@@ -910,6 +1022,12 @@
 									</li>
 									<li class=" tsd-kind-object-literal tsd-parent-kind-class tsd-is-static">
 										<a href="_zowe_zosmf_for_zowe_sdk.zosmfsession.html#zosmf_option_base_path" class="tsd-kind-icon">ZOSMF_<wbr>OPTION_<wbr>BASE_<wbr>PATH</a>
+									</li>
+									<li class=" tsd-kind-object-literal tsd-parent-kind-class tsd-is-static">
+										<a href="_zowe_zosmf_for_zowe_sdk.zosmfsession.html#zosmf_option_cert_file" class="tsd-kind-icon">ZOSMF_<wbr>OPTION_<wbr>CERT_<wbr>FILE</a>
+									</li>
+									<li class=" tsd-kind-object-literal tsd-parent-kind-class tsd-is-static">
+										<a href="_zowe_zosmf_for_zowe_sdk.zosmfsession.html#zosmf_option_cert_key_file" class="tsd-kind-icon">ZOSMF_<wbr>OPTION_<wbr>CERT_<wbr>KEY_<wbr>FILE</a>
 									</li>
 									<li class=" tsd-kind-object-literal tsd-parent-kind-class tsd-is-static">
 										<a href="_zowe_zosmf_for_zowe_sdk.zosmfsession.html#zosmf_option_host" class="tsd-kind-icon">ZOSMF_<wbr>OPTION_<wbr>HOST</a>

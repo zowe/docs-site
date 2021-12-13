@@ -68,6 +68,18 @@ default token type, which is provided by 'zowe auth login'.</li>
 <li>The value of the token to pass to the API.</li>
 </ul>
 </li>
+<li>
+<p><code>--cert-file</code>  <em>(local file path)</em></p>
+<ul>
+<li>The file path to a certificate file to use for authentication</li>
+</ul>
+</li>
+<li>
+<p><code>--cert-key-file</code>  <em>(local file path)</em></p>
+<ul>
+<li>The file path to a certificate key file to use for authentication</li>
+</ul>
+</li>
 </ul>
 <h4>Options</h4>
 <ul>
@@ -102,7 +114,7 @@ default token type, which is provided by 'zowe auth login'.</li>
 </li>
 <li>
 <p>Create a profile called 'base3' to connect to host
-<a href="http://example.com">example.com</a> and port 1443, not specifying a username or password so they are
+<a href="http://example.com">example.com</a> and port 1443,  not specifying a username or password so they are
 not stored on disk; these will need to be specified on every command:</p>
 <ul>
 <li><code>zowe  profiles create base-profile base3 --host example.com --port 1443</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  profiles create base-profile base3 --host example.com --port 1443">Copy</button></li>
