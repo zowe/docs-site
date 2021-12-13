@@ -91,6 +91,18 @@ specify this option if you are not using an API mediation layer.</li>
 </li>
 </ul>
 </li>
+<li>
+<p><code>--cert-file</code>  <em>(local file path)</em></p>
+<ul>
+<li>The file path to a certificate file to use for authentication</li>
+</ul>
+</li>
+<li>
+<p><code>--cert-key-file</code>  <em>(local file path)</em></p>
+<ul>
+<li>The file path to a certificate key file to use for authentication</li>
+</ul>
+</li>
 </ul>
 <h4>Profile Options</h4>
 <ul>
@@ -136,7 +148,7 @@ UNIX file &quot;/user/dir/workflow.xml&quot; including its steps and variables:<
 <p>To list the contents of a workflow definition stored in the
 z/OS data set &quot;USER.DATA.SET.XML&quot; including its steps and variables:</p>
 <ul>
-<li><code>zowe  zos-workflows list definition-file-details --workflow-name &quot;testWorkflow&quot; --list-steps --list-variables</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  zos-workflows list definition-file-details --workflow-name &quot;testWorkflow&quot; --list-steps --list-variables">Copy</button></li>
+<li><code>zowe  zos-workflows list definition-file-details &quot;USER.DATA.SET.XML&quot; --list-steps --list-variables</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  zos-workflows list definition-file-details &quot;USER.DATA.SET.XML&quot; --list-steps --list-variables">Copy</button></li>
 </ul>
 </li>
 </ul>

@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>IGetOptions | Zowe Node.js SDK - vNext</title>
+	<title>IDaemonRequest | Zowe Node.js SDK - vNext</title>
 	<meta name="description" content="Documentation for Zowe Node.js SDK - vNext">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -54,13 +54,13 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="../modules/_zowe_zos_files_for_zowe_sdk.html">@zowe/zos-files-for-zowe-sdk</a>
+					<a href="../modules/_zowe_imperative.html">@zowe/imperative</a>
 				</li>
 				<li>
-					<a href="_zowe_zos_files_for_zowe_sdk.igetoptions.html">IGetOptions</a>
+					<a href="_zowe_imperative.idaemonrequest.html">IDaemonRequest</a>
 				</li>
 			</ul>
-			<h1>Interface IGetOptions</h1>
+			<h1>Interface IDaemonRequest</h1>
 		</div>
 	</div>
 </header>
@@ -70,13 +70,13 @@
 			<section class="tsd-panel tsd-comment">
 				<div class="tsd-comment tsd-typography">
 					<div class="lead">
-						<p>This interface defines the options that can be sent to get a data set or USS file function</p>
+						<p>Option interface to construct request to daemon client</p>
 					</div>
 					<dl class="tsd-comment-tags">
 						<dt>export</dt>
 						<dd></dd>
 						<dt>interface</dt>
-						<dd><p>IGetOptions</p>
+						<dd><p>IDaemonRequest</p>
 						</dd>
 					</dl>
 				</div>
@@ -85,12 +85,7 @@
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<a href="_zowe_zos_files_for_zowe_sdk.ioptions.html" class="tsd-signature-type">IOptions</a>
-						<ul class="tsd-hierarchy">
-							<li>
-								<span class="target">IGetOptions</span>
-							</li>
-						</ul>
+						<span class="target">IDaemonRequest</span>
 					</li>
 				</ul>
 			</section>
@@ -98,100 +93,140 @@
 				<h2>Index</h2>
 				<section class="tsd-panel tsd-index-panel">
 					<div class="tsd-index-content">
-						<section class="tsd-index-section tsd-is-inherited">
+						<section class="tsd-index-section ">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="_zowe_zos_files_for_zowe_sdk.igetoptions.html#binary" class="tsd-kind-icon">binary</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="_zowe_zos_files_for_zowe_sdk.igetoptions.html#encoding" class="tsd-kind-icon">encoding</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="_zowe_zos_files_for_zowe_sdk.igetoptions.html#responsetimeout" class="tsd-kind-icon">response<wbr>Timeout</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="_zowe_zos_files_for_zowe_sdk.igetoptions.html#task" class="tsd-kind-icon">task</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="_zowe_zos_files_for_zowe_sdk.igetoptions.html#volume" class="tsd-kind-icon">volume</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_zowe_imperative.idaemonrequest.html#exitcode" class="tsd-kind-icon">exit<wbr>Code</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_zowe_imperative.idaemonrequest.html#progress" class="tsd-kind-icon">progress</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_zowe_imperative.idaemonrequest.html#prompt" class="tsd-kind-icon">prompt</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_zowe_imperative.idaemonrequest.html#secureprompt" class="tsd-kind-icon">secure<wbr>Prompt</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_zowe_imperative.idaemonrequest.html#stderr" class="tsd-kind-icon">stderr</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_zowe_imperative.idaemonrequest.html#stdout" class="tsd-kind-icon">stdout</a></li>
 							</ul>
 						</section>
 					</div>
 				</section>
 			</section>
-			<section class="tsd-panel-group tsd-member-group tsd-is-inherited">
+			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Properties</h2>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
-					<a name="binary" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagOptional">Optional</span> binary</h3>
-					<div class="tsd-signature tsd-kind-icon">binary<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="exitcode" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> exit<wbr>Code</h3>
+					<div class="tsd-signature tsd-kind-icon">exit<wbr>Code<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
-						<p>Inherited from <a href="_zowe_zos_files_for_zowe_sdk.ioptions.html">IOptions</a>.<a href="_zowe_zos_files_for_zowe_sdk.ioptions.html#binary">binary</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/next/packages/zosfiles/src/doc/IOptions.ts#L25">@zowe/zos-files-for-zowe-sdk/src/doc/IOptions.ts:25</a></li>
+							<li>Defined in <a href="https://github.com/zowe/imperative/blob/next/packages/utilities/src/doc/IDaemonRequest.ts#L25">@zowe/imperative/packages/utilities/src/doc/IDaemonRequest.ts:25</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
-							<p>The indicator to view the data set or USS file in binary mode</p>
+							<p>Process exit code</p>
 						</div>
+						<dl class="tsd-comment-tags">
+							<dt>memberof</dt>
+							<dd><p>IDaemonRequest</p>
+							</dd>
+						</dl>
 					</div>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
-					<a name="encoding" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagOptional">Optional</span> encoding</h3>
-					<div class="tsd-signature tsd-kind-icon">encoding<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="progress" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> progress</h3>
+					<div class="tsd-signature tsd-kind-icon">progress<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
 					<aside class="tsd-sources">
-						<p>Inherited from <a href="_zowe_zos_files_for_zowe_sdk.ioptions.html">IOptions</a>.<a href="_zowe_zos_files_for_zowe_sdk.ioptions.html#encoding">encoding</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/next/packages/zosfiles/src/doc/IOptions.ts#L31">@zowe/zos-files-for-zowe-sdk/src/doc/IOptions.ts:31</a></li>
+							<li>Defined in <a href="https://github.com/zowe/imperative/blob/next/packages/utilities/src/doc/IDaemonRequest.ts#L60">@zowe/imperative/packages/utilities/src/doc/IDaemonRequest.ts:60</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
-							<p>Code page encoding</p>
+							<p>Content is progress spinner</p>
 						</div>
+						<dl class="tsd-comment-tags">
+							<dt>memberof</dt>
+							<dd><p>IDaemonRequest</p>
+							</dd>
+						</dl>
 					</div>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
-					<a name="responsetimeout" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagOptional">Optional</span> response<wbr>Timeout</h3>
-					<div class="tsd-signature tsd-kind-icon">response<wbr>Timeout<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="prompt" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> prompt</h3>
+					<div class="tsd-signature tsd-kind-icon">prompt<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
-						<p>Inherited from <a href="_zowe_zos_files_for_zowe_sdk.izosfilesoptions.html">IZosFilesOptions</a>.<a href="_zowe_zos_files_for_zowe_sdk.izosfilesoptions.html#responsetimeout">responseTimeout</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/next/packages/zosfiles/src/doc/IZosFilesOptions.ts#L22">@zowe/zos-files-for-zowe-sdk/src/doc/IZosFilesOptions.ts:22</a></li>
+							<li>Defined in <a href="https://github.com/zowe/imperative/blob/next/packages/utilities/src/doc/IDaemonRequest.ts#L46">@zowe/imperative/packages/utilities/src/doc/IDaemonRequest.ts:46</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
-							<p>The maximum amount of time for the TSO servlet to wait for a response before returning an error</p>
+							<p>Content is for prompting</p>
 						</div>
+						<dl class="tsd-comment-tags">
+							<dt>memberof</dt>
+							<dd><p>IDaemonRequest</p>
+							</dd>
+						</dl>
 					</div>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
-					<a name="task" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagOptional">Optional</span> task</h3>
-					<div class="tsd-signature tsd-kind-icon">task<span class="tsd-signature-symbol">:</span> <a href="_zowe_imperative.itaskwithstatus.html" class="tsd-signature-type">ITaskWithStatus</a></div>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="secureprompt" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> secure<wbr>Prompt</h3>
+					<div class="tsd-signature tsd-kind-icon">secure<wbr>Prompt<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
-						<p>Inherited from <a href="_zowe_zos_files_for_zowe_sdk.ioptions.html">IOptions</a>.<a href="_zowe_zos_files_for_zowe_sdk.ioptions.html#task">task</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/next/packages/zosfiles/src/doc/IOptions.ts#L44">@zowe/zos-files-for-zowe-sdk/src/doc/IOptions.ts:44</a></li>
+							<li>Defined in <a href="https://github.com/zowe/imperative/blob/next/packages/utilities/src/doc/IDaemonRequest.ts#L53">@zowe/imperative/packages/utilities/src/doc/IDaemonRequest.ts:53</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
-							<p>Task status object used by CLI handlers to create progress bars
-							Optional</p>
+							<p>Content is for secure prompting</p>
 						</div>
+						<dl class="tsd-comment-tags">
+							<dt>memberof</dt>
+							<dd><p>IDaemonRequest</p>
+							</dd>
+						</dl>
 					</div>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
-					<a name="volume" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagOptional">Optional</span> volume</h3>
-					<div class="tsd-signature tsd-kind-icon">volume<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="stderr" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> stderr</h3>
+					<div class="tsd-signature tsd-kind-icon">stderr<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
-						<p>Inherited from <a href="_zowe_zos_files_for_zowe_sdk.ioptions.html">IOptions</a>.<a href="_zowe_zos_files_for_zowe_sdk.ioptions.html#volume">volume</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/next/packages/zosfiles/src/doc/IOptions.ts#L37">@zowe/zos-files-for-zowe-sdk/src/doc/IOptions.ts:37</a></li>
+							<li>Defined in <a href="https://github.com/zowe/imperative/blob/next/packages/utilities/src/doc/IDaemonRequest.ts#L39">@zowe/imperative/packages/utilities/src/doc/IDaemonRequest.ts:39</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
-							<p>The volume on which the data set is stored</p>
+							<p>Content is for stderr</p>
 						</div>
+						<dl class="tsd-comment-tags">
+							<dt>memberof</dt>
+							<dd><p>IDaemonRequest</p>
+							</dd>
+						</dl>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="stdout" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> stdout</h3>
+					<div class="tsd-signature tsd-kind-icon">stdout<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/zowe/imperative/blob/next/packages/utilities/src/doc/IDaemonRequest.ts#L32">@zowe/imperative/packages/utilities/src/doc/IDaemonRequest.ts:32</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Content is for stdout</p>
+						</div>
+						<dl class="tsd-comment-tags">
+							<dt>memberof</dt>
+							<dd><p>IDaemonRequest</p>
+							</dd>
+						</dl>
 					</div>
 				</section>
 			</section>
@@ -205,7 +240,7 @@
 					<li class=" tsd-kind-module">
 						<a href="../modules/_zowe_core_for_zowe_sdk.html">@zowe/core-<wbr>for-<wbr>zowe-<wbr>sdk</a>
 					</li>
-					<li class=" tsd-kind-module">
+					<li class="current tsd-kind-module">
 						<a href="../modules/_zowe_imperative.html">@zowe/imperative</a>
 					</li>
 					<li class=" tsd-kind-module">
@@ -214,7 +249,7 @@
 					<li class=" tsd-kind-module">
 						<a href="../modules/_zowe_zos_console_for_zowe_sdk.html">@zowe/zos-<wbr>console-<wbr>for-<wbr>zowe-<wbr>sdk</a>
 					</li>
-					<li class="current tsd-kind-module">
+					<li class=" tsd-kind-module">
 						<a href="../modules/_zowe_zos_files_for_zowe_sdk.html">@zowe/zos-<wbr>files-<wbr>for-<wbr>zowe-<wbr>sdk</a>
 					</li>
 					<li class=" tsd-kind-module">
@@ -239,37 +274,31 @@
 					<li class=" tsd-kind-module">
 						<a href="../modules/_zowe_core_for_zowe_sdk.html" class="tsd-kind-icon">@zowe/core-<wbr>for-<wbr>zowe-<wbr>sdk</a>
 					</li>
-					<li class=" tsd-kind-module">
-						<a href="../modules/_zowe_imperative.html" class="tsd-kind-icon">@zowe/imperative</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="../modules/_zowe_provisioning_for_zowe_sdk.html" class="tsd-kind-icon">@zowe/provisioning-<wbr>for-<wbr>zowe-<wbr>sdk</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="../modules/_zowe_zos_console_for_zowe_sdk.html" class="tsd-kind-icon">@zowe/zos-<wbr>console-<wbr>for-<wbr>zowe-<wbr>sdk</a>
-					</li>
 				</ul>
 				<ul class="current">
 					<li class="current tsd-kind-module">
-						<a href="../modules/_zowe_zos_files_for_zowe_sdk.html" class="tsd-kind-icon">@zowe/zos-<wbr>files-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+						<a href="../modules/_zowe_imperative.html" class="tsd-kind-icon">@zowe/imperative</a>
 						<ul>
 							<li class="current tsd-kind-interface tsd-parent-kind-module">
-								<a href="_zowe_zos_files_for_zowe_sdk.igetoptions.html" class="tsd-kind-icon">IGet<wbr>Options</a>
+								<a href="_zowe_imperative.idaemonrequest.html" class="tsd-kind-icon">IDaemon<wbr>Request</a>
 								<ul>
-									<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
-										<a href="_zowe_zos_files_for_zowe_sdk.igetoptions.html#binary" class="tsd-kind-icon">binary</a>
+									<li class=" tsd-kind-property tsd-parent-kind-interface">
+										<a href="_zowe_imperative.idaemonrequest.html#exitcode" class="tsd-kind-icon">exit<wbr>Code</a>
 									</li>
-									<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
-										<a href="_zowe_zos_files_for_zowe_sdk.igetoptions.html#encoding" class="tsd-kind-icon">encoding</a>
+									<li class=" tsd-kind-property tsd-parent-kind-interface">
+										<a href="_zowe_imperative.idaemonrequest.html#progress" class="tsd-kind-icon">progress</a>
 									</li>
-									<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
-										<a href="_zowe_zos_files_for_zowe_sdk.igetoptions.html#responsetimeout" class="tsd-kind-icon">response<wbr>Timeout</a>
+									<li class=" tsd-kind-property tsd-parent-kind-interface">
+										<a href="_zowe_imperative.idaemonrequest.html#prompt" class="tsd-kind-icon">prompt</a>
 									</li>
-									<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
-										<a href="_zowe_zos_files_for_zowe_sdk.igetoptions.html#task" class="tsd-kind-icon">task</a>
+									<li class=" tsd-kind-property tsd-parent-kind-interface">
+										<a href="_zowe_imperative.idaemonrequest.html#secureprompt" class="tsd-kind-icon">secure<wbr>Prompt</a>
 									</li>
-									<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
-										<a href="_zowe_zos_files_for_zowe_sdk.igetoptions.html#volume" class="tsd-kind-icon">volume</a>
+									<li class=" tsd-kind-property tsd-parent-kind-interface">
+										<a href="_zowe_imperative.idaemonrequest.html#stderr" class="tsd-kind-icon">stderr</a>
+									</li>
+									<li class=" tsd-kind-property tsd-parent-kind-interface">
+										<a href="_zowe_imperative.idaemonrequest.html#stdout" class="tsd-kind-icon">stdout</a>
 									</li>
 								</ul>
 							</li>
@@ -277,6 +306,15 @@
 					</li>
 				</ul>
 				<ul class="after-current">
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_provisioning_for_zowe_sdk.html" class="tsd-kind-icon">@zowe/provisioning-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_zos_console_for_zowe_sdk.html" class="tsd-kind-icon">@zowe/zos-<wbr>console-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_zos_files_for_zowe_sdk.html" class="tsd-kind-icon">@zowe/zos-<wbr>files-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
 					<li class=" tsd-kind-module">
 						<a href="../modules/_zowe_zos_jobs_for_zowe_sdk.html" class="tsd-kind-icon">@zowe/zos-<wbr>jobs-<wbr>for-<wbr>zowe-<wbr>sdk</a>
 					</li>
@@ -311,6 +349,7 @@
 			<ul class="tsd-legend">
 				<li class="tsd-kind-interface"><span class="tsd-kind-icon">Interface</span></li>
 				<li class="tsd-kind-interface tsd-has-type-parameter"><span class="tsd-kind-icon">Interface with type parameter</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-interface"><span class="tsd-kind-icon">Property</span></li>
 			</ul>
 			<ul class="tsd-legend">
 				<li class="tsd-kind-class"><span class="tsd-kind-icon">Class</span></li>

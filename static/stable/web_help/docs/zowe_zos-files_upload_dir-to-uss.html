@@ -11,12 +11,12 @@
 <p>An optional .zosattributes file in the source directory can be used to control
 file conversion and tagging.</p>
 <p>An example .zosattributes file:<br>
-# pattern local-encoding remote-encoding<br>
+# pattern        local-encoding        remote-encoding<br>
 # Don't upload the node_modules directory<br>
-.* -<br>
-*.jpg binary binary<br>
+.*               -<br>
+*.jpg            binary                binary<br>
 # Convert CICS Node.js profiles to EBCDIC<br>
-*.profile ISO8859-1 EBCDIC</p>
+*.profile        ISO8859-1             EBCDIC</p>
 <p>Lines starting with the ‘#’ character are comments. Each line can specify up
 to three positional attributes:</p>
 <ul>
@@ -181,6 +181,18 @@ specify this option if you are not using an API mediation layer.</li>
 <p>Default value: https</p>
 <p>Allowed values: http, https</p>
 </li>
+</ul>
+</li>
+<li>
+<p><code>--cert-file</code>  <em>(local file path)</em></p>
+<ul>
+<li>The file path to a certificate file to use for authentication</li>
+</ul>
+</li>
+<li>
+<p><code>--cert-key-file</code>  <em>(local file path)</em></p>
+<ul>
+<li>The file path to a certificate key file to use for authentication</li>
 </ul>
 </li>
 </ul>
