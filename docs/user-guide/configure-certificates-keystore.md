@@ -1,32 +1,32 @@
 # Configuring Zowe certificates in UNIX files
 
-A keystore directory is used by Zowe to hold the certificate used for encrypting communication between Zowe clients and the Zowe z/OS servers.  This is a USS path, whose default is `/global/zowe/keystore`.  The keystore directory also holds the truststore used to hold public keys of any servers that Zowe trusts. When Zowe is launched, the instance directory configuration file `instance.env` specifies the location of the keystore directory that Zowe's servers use to locate their TLS certificate and trust store. For more information on Zowe launch, see [Creating and configuring the Zowe instance directory](configure-instance-directory.md#keystore-directory).
+A keystore directory is used by Zowe to hold the certificate that is used for encrypting communication between Zowe clients and the Zowe z/OS servers.  This is a USS path, whose default is `/global/zowe/keystore`.  The keystore directory also holds the truststore used to hold public keys of any servers that Zowe trusts. When Zowe is launched, the instance directory configuration file `instance.env` specifies the location of the keystore directory that Zowe's servers use to locate their TLS certificate and trust store. For more information on Zowe launch, see [Creating and configuring the Zowe instance directory](configure-instance-directory.md#keystore-directory).
 
-To create the keystore directory use the `<RUNTIME_DIR>/bin/zowe-setup-certificates.sh` script.  This takes its input parameters from the file `<RUNTIME_DIR>/bin/zowe-setup-certificates.env`.  
+To create the keystore directory, use the `<RUNTIME_DIR>/bin/zowe-setup-certificates.sh` script.  This takes its input parameters from the file `<RUNTIME_DIR>/bin/zowe-setup-certificates.env`.  
 
-The default directory that the certificates are generated in is `/global/zowe/keystore`. At many z/OS installations access to this directory is restricted to privileged users.  You will need to change the value of `KEYSTORE_DIRECTORY` in `zowe-setup-certificates.env` to choose a directory that you have write authority for, or else ensure that the execution of `zowe-setup-certificates.sh` step is performed by a system programmer with site knowledge of where the certificate should be stored. This will ensure the public key is readable but and that the private key access is controlled.  
+The default directory that the certificates are generated in is `/global/zowe/keystore`. At many z/OS installations, access to this directory is restricted to privileged users.  You must change the value of `KEYSTORE_DIRECTORY` in `zowe-setup-certificates.env` to choose a directory that you have write authority for, or else ensure that the execution of the `zowe-setup-certificates.sh` step is performed by a system programmer with site knowledge of where the certificate should be stored. This will ensure that the public key is readable and that the private key access is controlled.  
 
-
-
-The Zowe setup is able to work with a number of scenarios
+The Zowe setup can work with the following scenarios:
 
 - [Create a certificate authority and use it to sign a newly created certificate](#self-signed-certificate)
 - Create a new certificate and sign it with an existing certificate authority
 - Import an existing certificate
 
-## Self signed certificate
+## Self-signed certificate
 
-Zowe is able to create its own certificate, and sign it with a certificate authority that it also creates.  This is sometimes referred to as a self-signed certificate, and is the simplest scenario to do for evaluation and proof of concept deployment of Zowe.  
+Zowe can create its own certificate and sign it with a certificate authority that is also creeated by Zowe.  This is sometimes referred to as a self-signed certificate, and is the simplest scenario to do for evaluation and proof of concept deployment of Zowe.  
 
 ```shell
 <RUNTIME_DIR>/bin/zowe-setup-certificates.sh
 ```
 
-The following video shows how to create a self-signed certificate.  
+The following [video](https://youtu.be/5C0XguWXLoU) shows how to create a self-signed certificate.  
 
-<iframe class="embed-responsive-item" id="youtubeplayer" title="Zowe overview demo" type="text/html" width="640" height="390" src="https://www.youtube.com/embed/5C0XguWXLoU" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen> </iframe>
+<iframe class="embed-responsive-item" id="youtubeplayer" title="Zowe configuration for self-signed certificate in USS keystore" type="text/html" width="640" height="390" src="https://www.youtube.com/embed/5C0XguWXLoU" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen> </iframe>
 
-If you are using a self-signed certificate then you will be challenged by your browser when logging into Zowe to accept working with an untrusted certificate authority.  Depending on the browser you are using you may be able to add an exception and proceed to the web page, or you may be prevented from continuing altogether.  
+[Download the script](/Zowe_configuration_self_signed_USS_keystore_certificate.txt)
+
+If you are using a self-signed certificate, then you will be challenged by your browser when logging in to Zowe to accept working with an untrusted certificate authority.  Depending on the browser you are using, you may be able to add an exception and proceed to the web page, or you may be prevented from continuing altogether.  
 
 ### Manually import a certificate authority into a web browser
 
@@ -48,12 +48,6 @@ Additionally, the `Digital signature and/or key agreement` must be also set as a
 ## Generate a Keystore Directory
 
 The file `<RUNTIME_DIR>/bin/zowe-setup-certificates.sh` takes its input parameters from `<RUNTIME_DIR>/bin/zowe-setup-certificates.env`, and the `KEYSTORE_DIRECTORY` parameter specifies the directory that wil be created to store the certificate.  The default value is `/global/zowe/keystore`.
-
-
-
-This script generates the keystore in 
-
-
 
 ## Generate a certificate with custom values
 

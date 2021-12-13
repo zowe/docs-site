@@ -24,6 +24,8 @@ The numbers are incremented each time a release is created, so the higher the nu
 
 To download the PAX file, open your web browser and click the **Zowe z/OS Convenience build** button on the [Zowe Download](https://www.zowe.org/download.html) website to save it to a folder on your desktop.
 
+The following [video](https://youtu.be/U4XH6TyIrSw) shows how to download the Zowe convenience build.
+
 <iframe class="embed-responsive-item" id="youtubeplayer" title="Zowe convenience build download demo" type="text/html" width="640" height="390" src="https://www.youtube.com/embed/U4XH6TyIrSw"
 frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen> </iframe>
 
@@ -97,7 +99,7 @@ After you have the `zowe-V.v.p.PAX` file, follow these steps.
 
     **Note**: The PAX file will expand into the current directory. A good practice is to keep the installation directory apart from the directory that contains the PAX file.  To do this, you can create a directory such as `/zowe/paxes` that contains the PAX files, and another such as `/zowe/builds`.  Use SFTP to transfer the Zowe PAX file into the `/zowe/paxes` directory, use the `cd` command to switch into `/zowe/builds` and issue the command `pax -ppx -rf ../paxes/<zowe-V.v.p>.pax`.  The `/install` folder will be created inside the `zowe/builds` directory from where the installation can be launched.
 
-The following video shows the scenario of transferring a *zowe.V.v.p.pax* file and expanding it on USS ready for installation.
+The following [video](https://youtu.be/LcpHQ8HE1uc) shows the scenario of transferring a *zowe.V.v.p.pax* file and expanding it on USS ready for installation.
 
 <iframe class="embed-responsive-item" id="youtubeplayer" title="Install Zowe Convenience Build zowe-install.sh" type="text/html" width="640" height="390" src="https://www.youtube.com/embed/LcpHQ8HE1uc" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen> </iframe>
 
