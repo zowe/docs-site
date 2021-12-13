@@ -1,0 +1,65 @@
+Before starting Zowe an instance directory must be created.
+This holds configuration launch parameters and is also well as where runtime logs are collected.
+
+Navigate to the runtime directory's /bin folder and execute the script zowe-configjure-instance.sh
+
+The script takes a single named -c argument that specifies the path location for where the instance directory should be created
+
+In this video we're going to place it in my home directory /zowe-instance
+
+As the script executes feedback is echoed to the terminal showing its progress.  
+
+When the script finishes the message "Configure instance comleted" will be shown.
+
+This lets you know the next two steps
+
+Check the instance.env file that contains the launch parameters.
+Having done that the script zowe-start.sh to start Zowe.  
+
+Within the shell if you navigate to the instance directory, you can see the instance.env file.
+
+You can use any editor such as ISPF or VI, and for this video we're going to use the Zowe Explorer
+
+Set the KEYSTORE_DIRECTORY value to be the USS path containing a file zowe-setup-certificates.env.
+
+If you haven't already created a keystore directory check the documentation chapter on how to configure certificates.
+
+For this particular Zowe launch video I created a self signed certificate in my home directory / zowe-keystore.
+
+Another parameter that we'll change for this launch is the ZOWE_PREFIX.  
+This allows us to control the name of Zowe's started task, so adding a J means it'll be called ZWEJ1SV
+
+To launch Zowe from USS, open the shell and execute the script zowe-start.sh in the /bin folder of the zowe instance directory.
+
+This will echo the name of the started task, in our case ZWEJ1SV, together with the command that was used to start the proclib itself.  
+
+To monitor progress of the Zowe started task you can use SDSF, 
+   although for this video we're going to use the Jobs view in the Zowe Explorer
+   using a filter of ZWEJ*
+
+Check STDERR for any errors.  This file should be empty in a clean launch.
+As the different components that make up Zowe are started messages will be written to STDOUT
+The message ZWEAM000I is written when each of the API Mediation Layer services have finished started, 
+    so check to see that there are four of these, one for the caching service, 
+    one for API Catalog
+    one for API Gateway
+    and one for API Discovery
+
+One of the last messages written is ZWE002I which indicates that the Zowe Desktop has registered itself successfull with the API Mediation Layer's discovery service
+
+We're now ready to test Zowe
+
+In order to test Zowe we'll need to know the GATEWAY_PORT specified in the instance.env file,
+   in our case 7554,  as well as Zowe's host name and IP address.
+
+From a web browser enter Zowe's host name or IP address, the gateway port 7554, and /ui/v1/zlux
+This will launch the Zowe desktop running behind the API Mediation Layer
+
+Log into the Desktop with your TSO user ID and password
+
+From the desktop test some of the applications,
+    for example the File Editor
+
+
+
+

@@ -30,6 +30,9 @@ The `ZWESECUR` JCL performs the following initialization steps so you do not nee
 - [Configure ZWESLSTC to run high availability instances under ZWESVUSR user ID](#configure-zweslstc-to-run-under-zwesvusr-user-ID)
 - [Configure the cross memory server for SAF](#configure-the-cross-memory-server-for-saf)
 
+The following video shows how to locate the `ZWESECUR` JCL member and execute it.
+
+<iframe class="embed-responsive-item" id="youtubeplayer" title="Zowe ZWESECUR configure system for security (one-time)" type="text/html" width="640" height="390" src="https://www.youtube.com/embed/-7PZFVESitI" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen> </iframe>
 
 ## Grant users permission to access z/OSMF
 
