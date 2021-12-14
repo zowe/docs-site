@@ -215,6 +215,7 @@ module.exports = {
           ],
         },
         "user-guide/ze-usage",
+        "user-guide/ze-cics",
         "user-guide/sdks-using",
   ],
   extending: [
