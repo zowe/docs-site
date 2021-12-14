@@ -35,7 +35,7 @@ This CICS Extension for Zowe Explorer adds additional functionality to the popul
 - Apply multiple filters to regions, programs, local transactions and/or local files.
 - View and interact with all resources under a plex.
 
-To Install CICS Extension for Zowe Explorer see [Installation](./docs/installation-guide.md)
+To Install CICS Extension for Zowe Explorer see [Installation](ze-cics-installation.md)
 
 ## Getting Started
 
