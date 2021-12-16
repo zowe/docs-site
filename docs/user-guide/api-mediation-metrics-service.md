@@ -21,6 +21,6 @@ Metrics are provided on a near real-time basis, so the display shows the current
 
 Service instances expose their HTTP metrics at `https://<service_host>:<service_port>/application/hystrix.stream` using the Server-Sent-Events protocol. The Metrics Service collects these streams and aggregates them across service instances before displaying.
 
-**Note: At this time, the `/application/hystrix.stream` endpoint does not require authentication if `APIML_METRICS_ENABLED` is set to `true`.**
+**Note:** At this time, the `/application/hystrix.stream` endpoint does not require authentication if `APIML_METRICS_ENABLED` is set to `true`.
 
 If `APIML_METRICS_ENABLED` is not set to `true`, the Metrics Service does not start, and `/application/hystrix.stream` endpoints are protected by authentication.
