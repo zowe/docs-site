@@ -108,11 +108,16 @@ The API Catalog is the catalog of published API services and their associated do
 
 **Catalog Security**
 
-Access to the API Catalog can be protected with an Enterprise z/OS Security Manager such as IBM RACF, CA ACF2, or CA Top Secret. Only users who provide proper mainframe credentials can access the Catalog. Client authentication is implemented through the z/OSMF API.
+Access to the API Catalog can be protected with an Enterprise z/OS Security Manager such as IBM RACF, ACF2, or Top Secret. Only users who provide proper mainframe credentials can access the Catalog. Client authentication is implemented through the z/OSMF API.
 
 **Caching Service**
 
 It provides an API in high-availability mode which offers the possibility to store, retrieve and delete data associated with keys. The service will be used only by internal Zowe applications and will not be exposed to the internet.
+
+**Metrics Service (Technical Preview)**
+
+The Metrics Service provides a web user interface to visualize requests to API Mediation Layer services. HTTP metrics such as number of requests and error rates are displayed for
+each API Mediation Layer service. This service is currently in technical preview and is not ready for production.
 
 #### Onboarding APIs
 Essential to the API Mediation Layer ecosystem is the API services that expose their useful APIs. Use the following topics to discover more about adding new APIs to the API Mediation Layer and using the API Catalog:
