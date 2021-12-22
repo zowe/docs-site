@@ -86,6 +86,16 @@ module.exports = {
                 "user-guide/configuring-docker",
               ],
             },
+            {
+              type: "category",
+              label: "Installing Zowe Portable Software Instance",
+              items: [
+                "user-guide/install-zowe-pswi",
+                "user-guide/install-zowe-pswi-address-requirements",
+                "user-guide/install-zowe-pswi-acquire",
+                "user-guide/install-zowe-pswi-deployment",
+              ],
+            },
           ],
         }, 
         {
