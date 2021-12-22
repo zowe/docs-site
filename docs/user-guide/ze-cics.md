@@ -47,12 +47,12 @@ Install [Visual Studio Code](https://code.visualstudio.com/download) on your PC.
 
 ## Installing
 
-You can install or update the extension from Visual Studio Code or from a VSIX file.
+You can install or update the extension from Visual Studio Code Extensions or from a VSIX file.
 
-- [Installing from Visual Studio Code](#installing-from-visual-studio-code)
+- [Installing from Visual Studio Code Extensions](#installing-from-visual-studio-code-extensions)
 - [Installing from a VSIX file](#installing-from-a-vsix-file)
 
-### Installing from Visual Studio Code
+### Installing from Visual Studio Code Extensions
 
 1. Navigate to **Extensions** tab of your VS Code application.
 
@@ -68,7 +68,7 @@ You can install or update the extension from Visual Studio Code or from a VSIX f
 
    ![Download Zowe CICS Explorer](../images/ze-cics/cics-latest-vsix.png)
 
-2. Open the Extensions icon in the side bar, navigate to the **...** menu, press **Install from VSIX ...** and select the downloaded `cics-extension-for-zowe-0.0.1.vsix` file.
+2. Open the Extensions icon in the side bar, navigate to the **...** menu, press **Install from VSIX ...** and select the downloaded `cics-extension-for-zowe-1.x.x.vsix` file.
 
    ![Installing Zowe CICS Explorer](../images/ze-cics/zowe-cics-explorer-install.gif)
 
@@ -207,8 +207,6 @@ The `New copy count` for a program which is greater than zero is shown next to t
 1. Right-click against a closed local file. 
 2. Select **Open Local File** to toggle the `openstatus` attribute to `OPEN`.
 
-<!--*Screen capture needed here*-->
-
 **Close a local file**
 
 1. Right-click against an open local file and select **Close Local File**. 
@@ -245,10 +243,10 @@ You are welcome to contribute to the Zowe Explorer CICS Extension in many forms 
 
 ### Checking the source of an error
 
-Before filing an issue, check if an error is arising from the Zowe Explorer for IBM CICS extension instead of the Zowe Explorer extension. To check the error source, expand the error message and review the `Source` description. 
+Before filing an issue, check if an error is arising from the Zowe Explorer for IBM CICS extension instead of the Zowe Explorer extension. To check the error source, expand the error message and review the `Source` description.
 
-- Errors arising from the Zowe Explorer CICS extension will have the `Source` as `Zowe Explorer for IBM CICS (Extension)`, 
-- Errors arising from the Zowe Explorer extension will have the `Source` as `Zowe Explorer(Extension)`.
+- Errors arising from the Zowe Explorer CICS extension will have the `Source` as `Zowe Explorer for IBM CICS (Extension)`,
+- Errors arising from the Zowe Explorer extension will have the `Source` as `Zowe Explorer (Extension)`.
 
 ![Image that shows how to check the error source](../images/ze-cics/expand-error-cics.gif)
 
@@ -258,7 +256,7 @@ To file issues, use the [Zowe Explorer for IBM CICS issue list](https://github.c
 
 ## Uninstalling
 
-You can uninstall the Zowe Explorer CICS extension from the VS Code Extensions tab. 
+You can uninstall the Zowe Explorer CICS extension from the VS Code Extensions tab.
 
 1. Navigate to **Extensions** tab of the VS Code application.
 
