@@ -7,7 +7,7 @@ The CICS Extension for Zowe Explorer adds additional functionality to the popula
 - [Features](#features)
 - [System requirements](#system-requirements)
 - [Installing](#installing)
-    - [Installing from Visual Studio Code](#installing-from-visual-studio-code)
+    - [Installing from Visual Studio Code Extensions](#installing-from-visual-studio-code-extensions)
     - [Installing from a VSIX file](#installing-from-a-vsix-file)
 - [Getting started](#getting-started)
     - [Creating profile](#creating-profile)
@@ -31,7 +31,7 @@ The CICS Extension for Zowe Explorer adds additional functionality to the popula
 
 ## Features
 
-- **Load profiles** directly from a locally installed Zowe instance. 
+- **Load profiles** directly from a locally installed Zowe instance.
 - Create new Zowe CICS profiles and connect to them.
 - **Update** session details, and **delete** profiles by using the user-friendly interface.
 - **Work with multiple regions** that contain programs, local transactions, and local files within a plex in a comprehensible tree-like format.
@@ -63,6 +63,10 @@ You can install or update the extension from Visual Studio Code Extensions or fr
    If you do not have Zowe Explorer installed, it will automatically install it for you as part of the installation.
 
 ### Installing from a VSIX file
+
+Before you perform the following steps, ensure that you have installed Zowe Explorer which is a required dependency. For more information, see [Installing Zowe Explorer](https://docs.zowe.org/stable/user-guide/ze-install#installing).
+
+If your Zowe Explorer is installed, please follow the steps below to install Zowe Explorer CICS Extension from a VSIX file.
 
 1. Visit the [download site](https://github.com/zowe/vscode-extension-for-cics). Select the **Latest** button which directs to a page that includes the latest version of `.vsix` file. Download it to your PC.
 
