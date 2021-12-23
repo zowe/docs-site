@@ -15,7 +15,7 @@ Because the CLI is running on the user's laptop, it can be embedded and executed
 
 As well as core capabilities, Zowe CLI is built to be an extensible framework. This allows additional plugins to be installed, such as those for CICS, Db2 and other mainframe runtimes. This is done using an extensible API so that software vendors can build their own CLI plugins using these fully supported interfaces and extension points.
 
-The Zowe conformance program is a certification process that issues badges to extensions who are built, packaged and executed using these APIs. This ensures consistency of end user experience and compatibility between plugins. A number of extensions are already available from vendors including CA Endeavor, IBM z/OS Connect, Phoenix Software EJES, and more.
+The Zowe conformance program is a certification process that issues badges to extensions who are built, packaged and executed using these APIs. This ensures consistency of end user experience and compatibility between plugins. A number of extensions are already available from vendors including Endeavor, IBM z/OS Connect, Phoenix Software EJES, and more.
 
 The second component to look at is the Zowe Explorer, an extension to the popular Visual Studio Code Integrated Development Environment. With the Zowe Explorer installed from the marketplace, it can be launched from the Zowe icon in the VS Code sidebar.
 
