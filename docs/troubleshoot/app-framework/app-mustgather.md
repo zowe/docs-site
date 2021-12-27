@@ -81,6 +81,20 @@ zssServer-<yyyy-mm-dd-hh-mm>.log
 It is advisable to look into log files for capturing error codes.
 Warning messages contain the word "WARN", and errors contain "CRITICAL"
 
+### AppServer log messages
+
+#### ZWED0171W
+
+  Rejected undefined referrer for url=/login, ip=`xx.xx.xx.xx`
+
+  **Reason:**
+
+  The IP Address that you log in with should be the the client IP Address that initiates the request, but now it is the server IP address that is used in `ZOWE_IP_ADDRESS=xx.xx.xx.xx`. It means that the server contacts itself not through localhost.
+
+  **Action:**
+
+  The server should contain a loopback address by adding `ZWED_node_https_ipAddresses=$ZOWE_IP_ADDRESS` in `instance.env`.
+
 ## Javascript console output
 
 When the web UI such as the Zowe Desktop or Apps inside it have an issue, the root problem may originate from either server-side or browser-side behavior.
