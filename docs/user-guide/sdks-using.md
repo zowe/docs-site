@@ -59,9 +59,9 @@ Pull the packages from an online registry such as npm or PyPi.
 
 2. **(Optional)** You might want to automatically update the SDK version when updates become available, or you might want to prevent automatic updates.
 
-    - To define the versioning scheme for Node packages, use [npm semver](https://docs.npmjs.com/misc/semver#x-ranges-12x-1x-12-).
+    - To define the versioning scheme for Node packages, use [semantic versioning](https://docs.npmjs.com/about-semantic-versioning).
 
-    - To define versioning for Python packages, specify versions or version ranges in a `requirements.txt` file checked-in to your project. More information, see [pip documentation](https://pip.pypa.io/en/stable/reference/pip_install/#example-requirements-file)
+    - To define versioning for Python packages, specify versions or version ranges in a `requirements.txt` file checked-in to your project. More information, see [pip install in the pip documentation](https://pip.pypa.io/en/stable/cli/pip_install/)
 
 ### Install SDK from local package
 
