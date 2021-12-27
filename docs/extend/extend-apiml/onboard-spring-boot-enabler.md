@@ -24,15 +24,14 @@ The following steps outline the overall process to onboard a REST service with t
 
 3. [Configuring your Spring Boot based service to onboard with API ML](#configuring-your-spring-boot-based-service-to-onboard-with-api-ml)
 
-    * [Sample API ML Onboarding Configuration](#Sample-API-ML-Onboarding-Configuration)
-    * [SAF Keyring configuration](#SAF-Keyring-configuration)
-    * [Custom Metadata](#Custom-Metadata)
-    * [Api Mediation Layer specific metadata](#Api-Mediation-Layer-specific-metadata)
+    * [Sample API ML Onboarding Configuration](#sample-api-ml-onboarding-configuration)
+    * [SAF Keyring configuration](#saf-keyring-configuration)
+    * [Custom Metadata](#custom-metadata)
     
 4. [Registering and unregistering your service with API ML](#registering-and-unregistering-your-service-with-api-ml)
     
-    * [Unregistering your service with API ML](#Unregistering-your-service-with-API-ML)
-    * [Basic routing](#Basic-routing)
+    * [Unregistering your service with API ML](#unregistering-your-service-with-api-ml)
+    * [Basic routing](#basic-routing)
     
 5. [Adding API documentation](#adding-api-documentation)
 
@@ -435,7 +434,7 @@ logging:
 ### SAF Keyring configuration
 
 You can choose to use a SAF keyring instead of keystore and truststore for storing certificates.
-For information about required certificates, see [Zowe API ML TLS requirements](api-mediation-security.md#Zowe-API-ML-TLS-requirements). For information about running Java on z/OS with a keyring, see [SAF Keyring](api-mediation-security.md#API-ML-SAF-Keyring). Make sure that the enabler can access and read the keyring. Please refer to documentation of your security system for details.
+For information about required certificates, see [Zowe API ML TLS requirements](api-mediation-security.md#zowe-api-ml-tls-requirements). For information about running Java on z/OS with a keyring, see [SAF Keyring](api-mediation-security.md#API-ML-SAF-Keyring). Make sure that the enabler can access and read the keyring. Please refer to documentation of your security system for details.
 
 The following example shows enabler configuration with keyrings: 
 ```

@@ -20,7 +20,7 @@ If you want to undo all of the z/OS security configuration steps performed by th
 If you run `ZWENOSEC` on a z/OS system, then you will no longer be able to run Zowe until you rerun `ZWESECUR` to reinitialize the z/OS security configuration.
 
 When you run the `ZWESECUR` JCL, it does not perform the following initialization steps. Therefore, you must complete these steps manually for a z/OS environment.  
-- [Grant users permission to access z/OSMF](#grant-users-permission-to-access-z-osmf)
+- [Grant users permission to access z/OSMF](#grant-users-permission-to-access-zosmf)
 - [Configure an ICSF cryptographic services environment](#configure-an-icsf-cryptographic-services-environment)
 - [Configure multi-user address space (for TSS only)](#configure-multi-user-address-space-for-tss-only) 
 
