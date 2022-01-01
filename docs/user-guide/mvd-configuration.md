@@ -452,6 +452,24 @@ The following steps assume you have installed a Zowe runtime instance (which inc
 
    `ZIS status - Ok (name='ZWESIS_MYSRV    ', cmsRC=0, description='Ok', clientVersion=2)`
 
+
+## Keeping ZSS secure with TLS
+
+ZSS log shows message
+```
+ ** WARNING: Connection is insecure! TLS needed but not found on socket. **
+```
+
+ZSS is a webserver that performs certain system calls for data management and even security. It is important to have a configuration that keeps the network traffic for ZSS secure at all times. When TLS is not active on ZSS, at startup and periodically the warning will be shown. If there is no need for ZSS communication to a client outside the z/OS system, it is possible to make ZSS accessible only internal to z/OS, but if TLS is not activated, the warning will remain.
+
+There are two ways to ensure ZSS has TLS.
+The default, when the environment variable ZOWE_ZSS_SERVER_TLS=true is set. This will use the Zowe keystore for TLS certificate management.
+
+AT-TLS, as described here: https://docs.zowe.org/stable/user-guide/mvd-configuration/#configuring-zss-for-https
+Note that AT-TLS and ZOWE_ZSS_SERVER_TLS=true are mutually exclusive, but perform the same task of making ZSS use HTTPS.
+
+When TLS is enabled, it is fine to have ZSS be externally accessible, but it is still recommended to access it via the API Mediation Layer Gateway for additional benefits such as high availability. When using containers, the Gateway may be external to z/OS, requiring ZSS to be externally accessible.
+
 ## Controlling access to applications
 
 You can control which applications are accessible (visible) to all Zowe desktop users, and which are accessible only to individual users. For example, you can make an application that is under development only visible to the team working on it.
