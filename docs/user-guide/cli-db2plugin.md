@@ -199,3 +199,14 @@ DB2 ODBC Driver Error: [node-ibm_db] Error in ODBCConnection::QuerySync while ex
 Error:    [IBM][CLI Driver][DB2] SQL0805N  Package "DSNV112E.NULLID.SYSSH200.5359534C564C3031" was not found.
 ```
 If you receive this error, a user with `DBADM` authority must run the `BIND` command. This will typically be done by a Db2 System Programmer.  More information can be found in the [Db2 product documentation](https://medium.com/r/?url=https%3A%2F%2Fwww.ibm.com%2Fsupport%2Fproducthub%2Fdb2%2Fdocs%2Fcontent%2FSSEPGG_11.5.0%2Fcom.ibm.db2.luw.admin.cmd.doc%2Fdoc%2Fr0001935.html) and [The Bind process](https://medium.com/r/?url=https%3A%2F%2Fwww.ibm.com%2Fsupport%2Fknowledgecenter%2FSSEPEK_10.0.0%2Fapsg%2Fsrc%2Ftpc%2Fdb2z_bindprocess.html).
+
+### Error message help for SQLCODE: -30081 and SQLSTATE:08001
+
+```
+DB2 ODBC Driver Error: [node-ibm_db] SQL_ERROR
+Error Details:
+Error:    [IBM][CLI Driver] SQL30081N  A communication error has been detected. Communication protocol being used: "TCP/IP".  Communication API being used: "SOCKETS".  Location where the error was detected: "9.63.66.57".  Communication function detecting the error: "recv".  Protocol specific error code(s): "10054", "*", "0".  SQLSTATE=08001
+SQLCODE:  -30081
+SQLSTATE: 08001
+```
+This message occurs if the secport is being used instead of the unsecured port. Refer to the DSN400I message..
