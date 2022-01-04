@@ -233,6 +233,45 @@ ZWED_node_cluster_storageTimeout=30000
 ```
 where the timeout value is in milliseconds.
 
+## Error: Exception thrown when reading SAF keyring {ZWED0148E}
+
+**Symptom:**
+The error message indicates that Zowe's local certificate authority (local CA) `ZoweCert`, the certificate `jwtsecret`, or the Zowe certificate `localhost` does not exist in the Zowe keyring. The message contains the messages as below.
+
+```
+2021-01-18 10:16:33.601 <ZWED:16847011> ZWESVUSR WARN (_zsf.bootstrap,webserver.js:156) ZWED0148E - Exception thrown when reading SAF keyring, e= TypeError: R_datalib call failed: function code: 01, SAF rc: 8, RACF rc: 8, RACF rsn: 44
+at Object.getPemEncodedData (/software/zowev15/1.15.0/components/app-server/share/zlux-server-framework/node_modules/keyring_js/index.js:21:26)
+```
+
+**Solution:**
+
+Zowe's local CA certificate has its default name `ZoweCert`, and the Zowe Desktop hardcodes this certificate in the configration scripts.
+
+If you are using your own trusted CA certificate in the keyring, and the name is different from the default one. The error will occur and cause **ZWED0148E**. In this case, you should match the names in the [Zowe configuration](../../user-guide/configure-certificates-keyring.md). 
+
+If you are using Zowe's local CA certificate, but it still reports **ZWED0148E**. You may find the following message in the same log.
+
+```
+  "https": {
+    "ipAddresses": [
+      "0.0.0.0"
+    ],
+    "port": 8544,
+    "keys": [
+      "safkeyring:////ZWESVUSR/ring&Label A"
+    ],
+    "certificates": [
+      "safkeyring:////ZWESVUSR/ring&Label A"
+    ],
+    "certificateAuthorities": [
+      "safkeyring:////ZWESVUSR/ring&Label B",
+      "safkeyring:////ZWESVUSR/ring&Label B"
+    ]
+  },
+```
+
+In this case, you must make sure that the label names exactly match the names in TSO when looking up the keyring you own. Any difference in spaces, capitalization, or other places will cause the error.
+
 ## Warning: Problem making eureka request { Error: connect ECONNREFUSED }
 
 **Symptom:** 
