@@ -1,7 +1,6 @@
 # Zowe API Mediation Layer Security
 
 - [Zowe API Mediation Layer Security](#zowe-api-mediation-layer-security)
-  * [Zowe API Mediation Layer Single-Sign-On Overview](#zowe-api-mediation-layer-single-sign-on-overview)
   * [How API ML transport security works](#how-api-ml-transport-security-works)
     + [Transport layer security](#transport-layer-security)
     + [Authentication](#authentication)
@@ -35,7 +34,7 @@
       - [Generate a certificate for a new service on localhost](#generate-a-certificate-for-a-new-service-on-localhost)
       - [Add a service with an existing certificate to API ML on localhost](#add-a-service-with-an-existing-certificate-to-api-ml-on-localhost)
       - [Service registration to Discovery Service on localhost](#service-registration-to-discovery-service-on-localhost)
-    + [Zowe runtime on z/OS](#zowe-runtime-on-z-os)
+    + [Zowe runtime on z/OS](#zowe-runtime-on-zos)
       - [Import the local CA certificate to your browser](#import-the-local-ca-certificate-to-your-browser)
       - [Generate a keystore and truststore for a new service on z/OS](#generate-a-keystore-and-truststore-for-a-new-service-on-z-os)
       - [Add a service with an existing certificate to API ML on z/OS](#add-a-service-with-an-existing-certificate-to-api-ml-on-z-os)
