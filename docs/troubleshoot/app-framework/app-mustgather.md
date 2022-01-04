@@ -2,25 +2,29 @@
 
 Gather the following information to troubleshoot Zowe&trade; Application Framework issues:
 
- - [z/OS release level](#z-os-release-level)
- - [Zowe version and release level](#zowe-version-and-release-level)
- - [Log output from the Zowe Application Server](#log-output-from-the-zowe-application-server)
- - [Error message codes](#error-message-codes)
- - [JavaScript console output (Web Developer toolkit accessible by pressing F12)](#javascript-console-output)
- - [Screen captures (if applicable)](#screen-captures)
+- [z/OS release level](#z-os-release-level)
+- [Zowe version and release level](#zowe-version-and-release-level)
+- [Log output from the Zowe Application Server](#log-output-from-the-zowe-application-server)
+- [Error message codes](#error-message-codes)
+- [JavaScript console output (Web Developer toolkit accessible by pressing F12)](#javascript-console-output)
+- [Screen captures (if applicable)](#screen-captures)
 
 ## z/OS release level
+
 To find the z/OS release level, issue the following command in SDSF:  
 
 ```
 /D IPLINFO
 ```
-Check the output for the release level, for example: 
+
+Check the output for the release level, for example:
+
 ```
 RELEASE z/OS 02.02.00
 ```
 
 ## Zowe version and release level
+
 ```
   cd <zowe-installation-directory>
   cat manifest.json
@@ -29,6 +33,7 @@ RELEASE z/OS 02.02.00
 **Output:**
 
 Displays zowe version
+
 ```  
   {
     "name": "Zowe",
@@ -47,6 +52,7 @@ Displays zowe version
 ```
 
 ## Log output from the Zowe Application Server
+
 There are two major components of Zowe application server:  `ZLUX` and `ZSS`.  They log to different files.
 
 The default location for logs for both zlux and zss is folder `$INSTANCE_DIR/logs`, but can customize the log locations by using environment variables in $INSTANCE_DIR/instance.env
@@ -72,28 +78,16 @@ ls -lt
 **Output:**
 
 List of files by most recent timestamp for both app-server as well ZSS.
+
 ```
 appServer-<yyyy-mm-dd-hh-mm>.log
 zssServer-<yyyy-mm-dd-hh-mm>.log
 ```
 
 ## Error message codes
+
 It is advisable to look into log files for capturing error codes.
 Warning messages contain the word "WARN", and errors contain "CRITICAL"
-
-### AppServer log messages
-
-#### ZWED0171W
-
-  Rejected undefined referrer for url=/login, ip=`xx.xx.xx.xx`
-
-  **Reason:**
-
-  The IP Address that you log in with should be the the client IP Address that initiates the request, but now it is the server IP address that is used in `ZOWE_IP_ADDRESS=xx.xx.xx.xx`. It means that the server contacts itself not through localhost.
-
-  **Action:**
-
-  The server should contain a loopback address by adding `ZWED_node_https_ipAddresses=$ZOWE_IP_ADDRESS` in `instance.env`.
 
 ## Javascript console output
 
