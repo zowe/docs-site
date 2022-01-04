@@ -61,7 +61,7 @@ Pull the packages from an online registry such as npm or PyPi.
 
     - To define the versioning scheme for Node packages, use [semantic versioning](https://docs.npmjs.com/about-semantic-versioning).
 
-    - To define versioning for Python packages, specify versions or version ranges in a `requirements.txt` file checked-in to your project. More information, see [pip install in the pip documentation](https://pip.pypa.io/en/stable/cli/pip_install/)
+    - To define versioning for Python packages, specify versions or version ranges in a `requirements.txt` file checked-in to your project. For more information, see [pip install](https://pip.pypa.io/en/stable/cli/pip_install/) in the pip documentation.
 
 ### Install SDK from local package
 
