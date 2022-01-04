@@ -239,7 +239,11 @@ The following parameters define service information for the API Catalog:
 * **apiml.service.corsEnabled**
     
     When this parameter is set to `true`, CORS is enabled on the service level for all service routes. 
+<<<<<<< Updated upstream
     The same parameter can also be set on the service level, by providing the parameter as `customMetadata` as shown in the [custom metadata.md](custom-metadata).
+=======
+    The same parameter can also be set on the service level, by providing the parameter as `customMetadata` as shown in the [Custom Metadata](custom-metadata).
+>>>>>>> Stashed changes
 
 * **apiml.response.compress**
 
