@@ -16,15 +16,15 @@ For more information about how to onboard a REST service, see the following link
 This article outlines a process to make an API service available in the API Mediation Layer by making a direct call to the Eureka Discovery Service.
 
 * [Introduction](#introduction)
-* [Registering with the Discovery Service](#Registering-with-the-Discovery-Service)
-    * [API Mediation Layer Service onboarding metadata](#API-Mediation-Layer-Service-onboarding-metadata)
-        * [Catalog parameters](#Catalog-parameters)
-        * [Service parameters](#Service-parameters)
-        * [Routing parameters](#Routing-parameters)
-        * [API Info Parameters](#API-Info-parameters)
-* [Sending a heartbeat to API Mediation Layer Discovery Service](#Sending-a-heartbeat-to-API-Mediation-Layer-Discovery-Service)
-* [Validating successful onboarding with the API Mediation Layer](#Validating-successful-onboarding-with-the-API-Mediation-Layer)
-* [External Resources](#External-Resources)
+* [Registering with the Discovery Service](#registering-with-the-discovery-service)
+    * [API Mediation Layer Service onboarding metadata](#api-mediation-layer-service-onboarding-metadata)
+        * [Catalog parameters](#catalog-parameters)
+        * [Service parameters](#service-parameters)
+        * [Routing parameters](#routing-parameters)
+        * [API Info Parameters](#api-info-parameters)
+* [Sending a heartbeat to API Mediation Layer Discovery Service](#sending-a-heartbeat-to-api-mediation-layer-discovery-service)
+* [Validating successful onboarding with the API Mediation Layer](#validating-successful-onboarding-with-the-api-mediation-layer)
+* [External Resources](#external-resources)
 
 ## Introduction
 
@@ -159,11 +159,11 @@ At registration time, provide metadata in the following format. Metadata paramet
 
 Metadata parameters are broken down into the following categories:
 
-* [Catalog parameters](#Catalog-parameters)
-* [Service parameters](#Service-parameters)
-* [Routing parameters](#Routing-parameters)
-* [Authentication parameters](#Authentication-parameters)
-* [API Info parameters](#API-Info-parameters)
+* [Catalog parameters](#catalog-parameters)
+* [Service parameters](#service-parameters)
+* [Routing parameters](#routing-parameters)
+* [Authentication parameters](#authentication-parameters)
+* [API Info parameters](#api-info-parameters)
 
 #### Catalog parameters
 Catalog parameters are grouped under the prefix: `apiml.catalog.tile`.
@@ -218,7 +218,7 @@ The following parameters define service information for the API Catalog:
 
     When this parameter is set to `true`, the Gateway allows encoded characters to be part of URL requests redirected through the Gateway. The default setting of `false` is the recommended setting. Change this setting to `true` only if you expect certain encoded characters in your application's requests.
 
-    **Important!**  When the expected encoded character is an encoded slash or backslash (`%2F`, `%5C`), make sure the Gateway is also configured to allow encoded slashes. For more info see [Installing the Zowe runtime on z/OS](../../user-guide/install-zos.md).
+    **Important!**  When the expected encoded character is an encoded slash or backslash (`%2F`, `%5C`), make sure the Gateway is also configured to allow encoded slashes. For more info see [Installing the Zowe runtime on z/OS](../../user-guide/install-zos).
 
 * **apiml.connectTimeout**
     
@@ -239,7 +239,7 @@ The following parameters define service information for the API Catalog:
 * **apiml.service.corsEnabled**
     
     When this parameter is set to `true`, CORS is enabled on the service level for all service routes. 
-    The same parameter can also be set on the service level, by providing the parameter as `customMetadata` as shown in the [custom metadata.md](custom-metadata.md).
+    The same parameter can also be set on the service level, by providing the parameter as `customMetadata` as shown in the [Custom Metadata](custom-metadata).
 
 * **apiml.response.compress**
 
@@ -328,7 +328,7 @@ The following parameters define the service authentication method:
         This value specifies that a service accepts PassTickets in the Authorization header of the HTTP requests using the basic authentication scheme.
         It is necessary to provide a service APPLID in the `apiml.authentication.applid` parameter.
 
-        **Tip:** For more information, see [Enabling PassTicket creation for API Services that Accept PassTickets](api-mediation-passtickets.md).
+        **Tip:** For more information, see [Enabling PassTicket creation for API Services that Accept PassTickets](api-mediation-passtickets).
 
      * **zosmf**
 
