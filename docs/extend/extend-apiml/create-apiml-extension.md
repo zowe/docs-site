@@ -1,10 +1,16 @@
 # Create an Extension for API ML
 
 Zowe allows extenders to define their own extension for API ML. Follow the steps in this article to create your extension and include it to the
-API Gateway classpath:
+API Gateway classpath.
 
-1. Create a JAR file from your extension.
-2. Create a `manifest.yml` with the following structure (check out [Packaging z/OS extensions](../packaging-zos-extensions.md) for more information):
+**Note:** The `api-sample-extension-package` contains a sample `manifest.yml` and the `apiml-sample-extension` JAR to use and modify for your application.
+
+**Follow these steps:**
+
+1. Create a JAR file from your extension. See [API ML sample extension](https://github.com/zowe/api-layer/blob/master/apiml-sample-extension) to model the format of the JAR.
+2. Create a `manifest.yml` with the following structure. See the sample [`manifest.yml`](https://github.com/zowe/api-layer/blob/master/apiml-sample-extension-package/src/main/resources/manifest.yaml) to model the format of the yaml file.     
+
+For more information, see [Packaging z/OS extensions](../packaging-zos-extensions.md).
 
    **Example:**
     ```yaml
@@ -35,8 +41,8 @@ API Gateway classpath:
 The `ZWE_GATEWAY_SHARED_LIBS` environment variable points to the 
 extension directory `<instance>/workspace/gateway/sharedLibs/`.
 The extension directory is then added to the API Gateway class path as part of the Zowe instance preparation.
-**Note:** The paths defined under `gatewaySharedLibs` can either be a path to the directory where the
-extensions JARs are located, or a path to the files. 
+
+**Note:** The paths defined under `gatewaySharedLibs` can either be a path to the directory where the extensions JARs are located, or a path to the files. 
 
 **Example:**
    ```yaml
@@ -45,16 +51,11 @@ extensions JARs are located, or a path to the files.
       - path/to/my/lib2/extension2.jar
    ```
 
-## API ML sample extension
+After the JAR file and `manifest.yml` are customized according to your application, the extension is extracted, scanned and added to the extension directory during the Zowe instance preparation. When the API Gateway is started, the sample extension is consumed by the API Gateway.
+The extension should now be correctly added to the API Gateway classpath. 
 
-There is an [API ML sample extension](https://github.com/zowe/api-layer/blob/master/apiml-sample-extension) that contains a simple controller for testing
-and which is packaged in Zowe.
+## Call the REST endpoint for validation 
 
-[Here](https://github.com/zowe/api-layer/blob/master/apiml-sample-extension-package/src/main/resources/manifest.yaml) you can find the `manifest.yaml` described in the paragraph above.
-The extension is extracted, scanned and added to the extension directory during the Zowe instance preparation, and afterwards the sample extension will be consumed 
-by the API Gateway once it is started.
-If the extension is correctly added to the API Gateway classpath, it will be possible to
-call the REST endpoint defined in the controller via API Gateway.
-
-1. Call the `https://<hostname>:<gatewayPort>/api/v1/greeting` endpoint though Gateway
-2. Verify that you get the message `Hello, I'm a sample extension!` as response
+Follow these steps to validate that you can call the REST endpoint defined in the controller via the API Gateway. 
+1. Call the `https://<hostname>:<gatewayPort>/api/v1/greeting` endpoint though Gateway.
+2. Verify that you get the message `Hello, I'm a sample extension!` as response.
