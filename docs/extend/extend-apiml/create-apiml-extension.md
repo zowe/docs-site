@@ -47,3 +47,16 @@ extensions JARs are located, or a path to the files.
       - path/to/my/lib1/extension1.jar
       - path/to/my/lib2/extension2.jar
    ```
+
+## API ML sample extension
+
+There is an [API ML sample extension](https://github.com/zowe/api-layer/blob/master/apiml-sample-extension) that contains a simple controller for testing
+and which is packaged in Zowe.
+
+The extension is extracted, scanned and added to the extension directory during the Zowe instance preparation, and afterwards the sample extension will be consumed 
+by the API Gateway once it is started.
+If the extension is correctly added to the API Gateway classpath, it will be possible to
+call the REST endpoint defined in the controller via API Gateway.
+
+1. Call the `https://<hostname>:<gatewayPort>/api/v1/greeting` endpoint though Gateway
+2. Verify that you get the message `Hello, I'm a sample extension!` as response
