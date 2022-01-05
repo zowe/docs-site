@@ -22,6 +22,19 @@ allows you to abbreviate the job ID if desired. You can use, for example
 </ul>
 </li>
 </ul>
+<h4>Options</h4>
+<ul>
+<li>
+<p><code>--modifyVersion</code>  <em>(string)</em></p>
+<ul>
+<li>
+<p>Using this option to set X-IBM-Job-Modify-Version to &quot;2.0&quot; will make the
+cancel job API synchronous. Otherwise, it will be asynchronous by default.</p>
+<p>Default value: 1.0</p>
+</li>
+</ul>
+</li>
+</ul>
 <h4>Zosmf Connection Options</h4>
 <ul>
 <li>
@@ -78,6 +91,18 @@ specify this option if you are not using an API mediation layer.</li>
 </li>
 </ul>
 </li>
+<li>
+<p><code>--cert-file</code>  <em>(local file path)</em></p>
+<ul>
+<li>The file path to a certificate file to use for authentication</li>
+</ul>
+</li>
+<li>
+<p><code>--cert-key-file</code>  <em>(local file path)</em></p>
+<ul>
+<li>The file path to a certificate key file to use for authentication</li>
+</ul>
+</li>
 </ul>
 <h4>Profile Options</h4>
 <ul>
@@ -116,6 +141,12 @@ default token type, which is provided by 'zowe auth login'.</li>
 <p>Cancel job with job ID JOB03456:</p>
 <ul>
 <li><code>zowe  zos-jobs cancel job JOB03456</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  zos-jobs cancel job JOB03456">Copy</button></li>
+</ul>
+</li>
+<li>
+<p>Cancel job with job ID JOB03456 synchronously:</p>
+<ul>
+<li><code>zowe  zos-jobs cancel job JOB03456 --modify-version &quot;2.0&quot;</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  zos-jobs cancel job JOB03456 --modify-version &quot;2.0&quot;">Copy</button></li>
 </ul>
 </li>
 </ul>
