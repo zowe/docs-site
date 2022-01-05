@@ -6,27 +6,27 @@ The URI Broker is an object in the application plug-in web framework, which faci
     1. [Natively](#natively)
     1. [In an iframe](#in-an-iframe)
 1. [Functions](#functions)
-    1. [Accessing App's Dataservices](#accessing-apps-dataservices)
-        1. [HTTP Dataservice URI](#http-dataservice-uri)
-        1. [Websocket Dataservice URI](#websocket-dataservice-uri)
-    1. [Accessing App's Configuration Resources](#accessing-apps-configuration-resources)
-        1. [Standard Configuration Access](#standard-configuration-access)
-        1. [Scoped Configuration Access](#scoped-configuration-access)
-    1. [Accessing Static Content](#accessing-static-content)
-    1. [Accessing the App's Root](#accessing-the-apps-root)
-    1. [Server Queries](#server-queries)
-        1. [Accessing List of Plugins](#accessing-list-of-plugins)
+    1. [Accessing an application plug-in's dataservices](#accessing-an-application-plug-ins-dataservices)
+        1. [HTTP dataservice URI](#http-dataservice-uri)
+        1. [Websocket dataservice URI](#websocket-dataservice-uri)
+    1. [Accessing the application plug-in's configuration resources](#accessing-application-plug-ins-configuration-resources)
+        1. [Standard configuration access](#standard-configuration-access)
+        1. [Scoped configuration access](#scoped-configuration-access)
+    1. [Accessing static content](#accessing-static-content)
+    1. [Accessing the application plug-in's root](#accessing-the-application-plug-ins-root)
+    1. [Server queries](#server-queries)
+        1. [Accessing list of plugins](#accessing-list-of-plugins)
 
 ## Accessing the URI Broker
 
 The URI Broker is accessible independent of other frameworks involved such as Angular, and is also accessible through iframe. This is because it is attached to a global when within the Zowe Desktop. For more information, see [Zowe Desktop and window management](mvd-desktopandwindowmgt.md).
 Access the URI Broker through one of two locations:
 
-Natively:
+### Natively:
 
 `window.ZoweZLUX.uriBroker`
 
-In an iframe:
+### In an iframe:
 
 `window.parent.ZoweZLUX.uriBroker`
 
