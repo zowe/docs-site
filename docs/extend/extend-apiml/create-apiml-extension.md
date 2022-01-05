@@ -3,7 +3,7 @@
 Zowe allows extenders to define their own extension for API ML. Follow the steps in this article to create your extension and include it to the
 API Gateway classpath.
 
-**Note:** The `api-sample-extension-package` contains a sample `manifest.yml` and the `apiml-sample-extension` JAR to use and modify for your application.
+**Note:** The `api-sample-extension-package` contains a sample `manifest.yml` and the `apiml-sample-extension` JAR that contains the extension.
 
 **Follow these steps:**
 
