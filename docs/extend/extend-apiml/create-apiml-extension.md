@@ -32,11 +32,8 @@ API Gateway classpath:
       - path/to/my/lib1/
       - path/to/my/lib2/
     ```
-3. Define the `ZWE_GATEWAY_SHARED_LIBS` environment variable in the `instance.env`. This variable points to the 
-   extension directory.
-   
-   **Example:** `<instance>/workspace/gateway/sharedLibs/<extension_id>`
-
+The `ZWE_GATEWAY_SHARED_LIBS` environment variable points to the 
+extension directory `<instance>/workspace/gateway/sharedLibs/`.
 The extension directory is then added to the API Gateway class path as part of the Zowe instance preparation.
 **Note:** The paths defined under `gatewaySharedLibs` can either be a path to the directory where the
 extensions JARs are located, or a path to the files. 
@@ -53,6 +50,7 @@ extensions JARs are located, or a path to the files.
 There is an [API ML sample extension](https://github.com/zowe/api-layer/blob/master/apiml-sample-extension) that contains a simple controller for testing
 and which is packaged in Zowe.
 
+[Here](https://github.com/zowe/api-layer/blob/master/apiml-sample-extension-package/src/main/resources/manifest.yaml) you can find the `manifest.yaml` described in the paragraph above.
 The extension is extracted, scanned and added to the extension directory during the Zowe instance preparation, and afterwards the sample extension will be consumed 
 by the API Gateway once it is started.
 If the extension is correctly added to the API Gateway classpath, it will be possible to
