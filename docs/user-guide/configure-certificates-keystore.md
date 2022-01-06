@@ -196,26 +196,6 @@ The `PRODUCT` variable specifies the z/OS security manager. The default value is
 
 If you already have a certificate you want to use as JWT secret, you can set the data set name and uncomment section `Import JWT secret` below.
 
-#### `JWTLABEL` variable
-
-This is the certificate label of the JWT secret. This variable has a default value of `jwtsecret`. This label name should match the value of `PKCS11_TOKEN_LABEL` in `zowe-setup-certificates.env`.
-
-#### `SSOTOKEN` variable
-
-This is the `PKCS#11` token name will be created by `ZWESSOTK` JCL. This token name should match the value of `PKCS11_TOKEN_NAME` in `zowe-setup-certificates.env`.
-
-
-### Enabling SSO
-
-To enable SSO, you should run `zowe-setup-certificates.sh` with values of `PKCS11_TOKEN_NAME` and `PKCS11_TOKEN_LABEL` matching what you defined in `ZWESSOTK` JCL.
-
-If you have already Zowe certificate generated, you should edit the `zowe-certificates.env` file in the `KEYSTORE_DIRECTORY` directory, set the `PKCS11_TOKEN_NAME` and `PKCS11_TOKEN_LABEL` with values which you have defined in `ZWESSOTK` JCL, and restart Zowe.
-
-If you are upgrading from an old version of Zowe, you can
-
-  - rerun zowe-setup-certificates.sh,
-  - then overwrite `KEYSTORE_DIRECTORY` in your `instance.env` to the newly generated keystore directory.
-
 ## Hints and tips
 
 Learn about some hints and tips that you might find useful when you create certificates. 
