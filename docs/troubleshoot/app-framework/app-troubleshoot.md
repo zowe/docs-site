@@ -154,11 +154,11 @@ Follow these steps:
 
 **Symptom:**
 
-When you try to use VT Terminal on the Zowe Desktop to connect to the Unix System Services through SSH, the VT Terminal on node v12 slows down. Then the connection will fail bacause the connecting process can run into the 3-minute limit.
+When you try to use VT terminal on the Zowe Desktop to connect to the UNIX System Services through SSH, the VT terminal on node v12 slows down. Then, the connection fails bacause the connecting process can run into the 3-minute limit.
 
 **Solution:**
 
-To solve this issue, use Telnet via port 1023 to connect to the Unix System Services.
+To solve this issue, use Telnet through port 1023 to connect to the UNIX System Services.
 
 
 ### ZLUX unable to communicate with API Mediation Layer
