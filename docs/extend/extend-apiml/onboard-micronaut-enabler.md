@@ -14,7 +14,7 @@ For Micronaut-related documentation, see the [Micronaut website](https://docs.mi
 - [Configure the Micronaut application](#configure-the-micronaut-application)
   - [Add API ML configuration](#add-api-ml-configuration)
   - [Add Micronaut configuration](#add-micronaut-configuration)
-  - [Set up logging configuration](#set-up-logging-configuration)
+  - [Set up logging configuration](#optional-set-up-logging-configuration)
 - [Validate successful registration](#validate-successful-registration)
 
 ## Set up your build automation system

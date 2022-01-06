@@ -25,23 +25,23 @@
 		- [DASD storage requirements](#dasd-storage-requirements)
 	- [FMIDs deleted](#fmids-deleted)
 - [Installation instructions](#installation-instructions)
-	- [SMP/E considerations for installing Zowe](#smp-e-considerations-for-installing-zowe)
-	- [SMP/E options subentry values](#smp-e-options-subentry-values)
+	- [SMP/E considerations for installing Zowe](#smpe-considerations-for-installing-zowe)
+	- [SMP/E options subentry values](#smpe-options-subentry-values)
 	- [Overview of the installation steps](#overview-of-the-installation-steps)
-	- [Download the Zowe SMP/E package](#download-the-zowe-smp-e-package)
+	- [Download the Zowe SMP/E package](#download-the-zowe-smpe-package)
 	- [Allocate file system to hold the download package](#allocate-file-system-to-hold-the-download-package)
 	- [Upload the download package to the host](#upload-the-download-package-to-the-host)
 	- [Extract and expand the compressed SMPMCS and RELFILEs](#extract-and-expand-the-compressed-smpmcs-and-relfiles)
 		- [GIMUNZIP](#gimunzip)
 	- [Sample installation jobs](#sample-installation-jobs)
-	- [Create SMP/E environment (optional)](#create-smp-e-environment-optional)
+	- [Create SMP/E environment (optional)](#create-smpe-environment-optional)
 	- [Perform SMP/E RECEIVE](#perform-smp-e-receive)
-	- [Allocate SMP/E Target and Distributions Libraries](#allocate-smp-e-target-and-distributions-libraries)
+	- [Allocate SMP/E Target and Distributions Libraries](#allocate-smpe-target-and-distributions-libraries)
 	- [Allocate, create and mount ZSF Files (Optional)](#allocate-create-and-mount-zsf-files-optional)
-	- [Allocate z/OS UNIX Paths](#allocate-z-os-unix-paths)
+	- [Allocate z/OS UNIX Paths](#allocate-zos-unix-paths)
 	- [Create DDDEF Entries](#create-dddef-entries)
-	- [Perform SMP/E APPLY](#perform-smp-e-apply)
-	- [Perform SMP/E ACCEPT](#perform-smp-e-accept)
+	- [Perform SMP/E APPLY](#perform-smpe-apply)
+	- [Perform SMP/E ACCEPT](#perform-smpe-accept)
 	- [Run REPORT CROSSZONE](#run-report-crosszone)
 	- [Cleaning up obsolete data sets, paths, and DDDEFs](#cleaning-up-obsolete-data-sets-paths-and-dddefs)
 - [Activating Zowe](#activating-zowe)
@@ -377,19 +377,19 @@ PEMAX | SMP/E Default | IBM recommends using the SMP/E default for PEMAX.
 
 Follow these high-level steps to download and install Zowe Open Source Project (Base).
 
-  1. [Download the Zowe SMP/E package](#download-the-zowe-smp-e-package)
+  1. [Download the Zowe SMP/E package](#download-the-zowe-smpe-package)
   2. [Allocate file system to hold web download package](#allocate-file-system-to-hold-the-download-package)
   3. [Upload the download package to the host](#upload-the-download-package-to-the-host)
   4. [Extract and expand the compress SMPMCS and RELFILEs](#extract-and-expand-the-compressed-smpmcs-and-relfiles)
   5. [Sample installation jobs](#sample-installation-jobs)
-  6. [Create SMP/E environment (optional)](#create-smp-e-environment-optional)
-  7. [Perform SMP/E RECEIVE](#perform-smp-e-receive)
-  8. [Allocate SMP/E target and distribution libraries](#allocate-smp-e-target-and-distributions-libraries)
+  6. [Create SMP/E environment (optional)](#create-smpe-environment-optional)
+  7. [Perform SMP/E RECEIVE](#perform-smpe-receive)
+  8. [Allocate SMP/E target and distribution libraries](#allocate-smpe-target-and-distributions-libraries)
   9. [Allocate, create and mount ZSF files (Optional)](#allocate-create-and-mount-zsf-files-optional)
   10. [Allocate z/OS UNIX paths](#allocate-z-os-unix-paths)
   11. [Create DDDEF Entries](#create-dddef-entries)
-  12. [Perform SMP/E APPLY](#perform-smp-e-apply)
-  13. [Perform SMP/E ACCEPT](#perform-smp-e-accept)
+  12. [Perform SMP/E APPLY](#perform-smpe-apply)
+  13. [Perform SMP/E ACCEPT](#perform-smpe-accept)
   14. [Run REPORT CROSSZONE](#run-report-crosszone)
   15. [Cleaning up obsolete data sets, paths, and DDDEFs](#cleaning-up-obsolete-data-sets-paths-and-dddefs)
 
@@ -676,7 +676,7 @@ ZWE8ACPT | ACCEPT | Sample SMP/E ACCEPT job | ZOWE.AZWE001.F1
 
 **Note:** When Zowe is downloaded from the web, the RELFILE data set name will be prefixed by your chosen high-level qualifier, as documented in the [Extract and expand the compressed SMPMCS and RELFILEs](#extract-and-expand-the-compressed-smpmcs-and-relfiles) section.
 
-You can access the sample installation jobs by performing an SMP/E RECEIVE (refer to [Perform SMP/E RECEIVE](#perform-smp-e-receive)), then copy the jobs from the RELFILES to a work data set for editing and submission.
+You can access the sample installation jobs by performing an SMP/E RECEIVE (refer to [Perform SMP/E RECEIVE](#perform-smpe-receive)), then copy the jobs from the RELFILES to a work data set for editing and submission.
 
 You can also copy the sample installation jobs from the product files by submitting the following job.  Before you submit the job, add a job statement and change the lowercase parameters to uppercase values to meet the requirements of your site.
 
@@ -915,7 +915,7 @@ If you mount the file system in which you have installed Zowe in read-only mode 
 ## Zowe customization
 
 You can find the necessary information about customizing and using Zowe on the Zowe doc site.
-- For more information about how to customize Zowe, see [Configuring Zowe after installation](mvd-configuration.md).
-- For more information about how to use Zowe, see [Using Zowe](zowe-getting-started-tutorial.md).
+- For more information about how to customize Zowe, see [Configuring Zowe after installation](mvd-configuration).
+- For more information about how to use Zowe, see [Using Zowe](zowe-getting-started-tutorial).
 
 
