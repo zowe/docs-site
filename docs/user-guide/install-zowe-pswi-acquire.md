@@ -23,10 +23,10 @@ The portable software instance is a portable form of a software instance, includ
 2. Download the latest version of the package to your workstation.
 3. Use an file transfer utility such as an FTP client to transfer the single pax file to the mainframe.
 4. Execute the JCL to unpack the installation file and restore the individual pax files. Sample JCL follows:  
-` //USSBATCH EXEC PGM=BPXBATCH,`  
-`//STDOUT   DD=SYSOUT=*`  
-`//STDERR   DD=SYSOUT=*`  
-`//STDPARM  DD=SYSOUT=*`  
+` //USSBATCH EXEC PGM=BPXBATCH`  
+`//STDOUT DD SYSOUT=*`
+`//STDERR DD SYSOUT=*`
+`//STDPARM DD *` 
 `sh cd /yourUSSpaxdirectory/;`  
 `pax -rvf yourpaxfilename.ZOSMF.pax.Z`  
 `/*`  
