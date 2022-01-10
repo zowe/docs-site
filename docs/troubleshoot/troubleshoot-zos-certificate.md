@@ -26,9 +26,9 @@ You can follow these steps to resolve the issue.
 
 1. Download the external certificate when your browser is pointed to the Zowe virtual Desktop.
 
-2. Save this certificate in a `USS` file.
+2. Save this certificate in a `USS` file. For example, the file is named as `public.cer-ebcdic` here.
 
-3. Run the following command in `zowe-setup-certificates.env` file to import this certificate into the truststore.
+3. Run the following command in the `<Keystore_Directory>` to import this certificate into the Zowe truststore, `localhost.truststore.p12`.
 
 ```
 keytool -import -alias public1 -file public.cer-ebcdic -storetype PKCS12 -storepass xxxxxx -keystore localhost.truststore.p12
