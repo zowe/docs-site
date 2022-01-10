@@ -1,7 +1,27 @@
 # Create an Extension for API ML
 
-Zowe allows extenders to define their own extension for API ML. Follow the steps in this article to create your extension and add it to the
-API Gateway classpath.
+Zowe allows extenders to define their own extension for API ML. 
+
+## API ML Services with Class Path Extension Support
+
+For API ML services with extension support, extension executables can be loaded by setting the appropriate service's shared library path variable.
+
+|Service          |Extension directory environment variable|
+|-----------------|----------------------------------------|
+|API Gateway      | `ZWE_GATEWAY_SHARED_LIBS`              |
+|Discovery Service| `ZWE_DISCOVERY_SHARED_LIBS`            |
+
+## API ML Services with Library Path Extension Support
+
+For API ML with native library extension support, native libraries can be loaded by setting the appropriate service's library path variable.
+
+|Service          |Extension directory environment variable|
+|-----------------|----------------------------------------|
+|API Gateway      | `ZWE_GATEWAY_LIBRARY_PATH`             |
+
+## Example API Gateway Extension
+
+Follow the steps in this article to create your extension. The example in this article is for an extension of the API Gateway.
 
 **Note:** The `api-sample-extension-package` contains a sample `manifest.yml` and the `apiml-sample-extension` JAR that contains the extension.
 
