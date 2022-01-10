@@ -81,9 +81,9 @@ This section describes runtime configuration properties.
     ```
     where:
     
-    * `{expirationTimeInSeconds}` 
+    * **`{expirationTimeInSeconds}`** 
     
-        refers to the specific time before expiration
+      refers to the specific time before expiration
     
     4. Restart Zowe&trade.
 
@@ -112,7 +112,7 @@ This section describes runtime configuration properties.
  
  **Note:** Use either dot separation, or the UPPER_CASE naming convention when adding an additional environmental variable.
 
-One use case for adding an environmental variable is to change authentication provider. The `SAF Authentication Provider` allows the API Gateway to authenticate directly with the z/OS SAF provider that is installed on the system. The user needs a SAF account to authenticate. Use this procedure to customize authentication provider.
+One use case for adding an environmental variable is to change the authentication provider. The `SAF Authentication Provider` allows the API Gateway to authenticate directly with the z/OS SAF provider that is installed on the system. The user needs a SAF account to authenticate. Use this procedure to customize authentication provider.
 
 **Follow the steps:**
 
