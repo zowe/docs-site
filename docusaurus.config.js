@@ -1,4 +1,4 @@
-const LATEST_VERSION = "v1.27.x";
+const LATEST_VERSION = "v2.0.x";
 const versionsArray = require("./versions.json");
 
 module.exports = {
@@ -163,14 +163,14 @@ module.exports = {
       ],
       copyright: `© Open Mainframe Project. a Linux Foundation Project. All Rights Reserved. The Linux Foundation has registered trademarks and uses trademarks. For a list of trademarks of The Linux Foundation, please see our Trademark Usage page. Please refer to Marketing and Branding Guidelines for name usage guidelines. Linux is a registered trademark of Linus Torvalds. Privacy Policy and Terms of Use`,
     },
-    // announcementBar: {
-    //   id: "support_us",
-    //   content:
-    //     '<a target="_blank" rel="noopener noreferrer" href="https://github.com/zowe/docs-site/discussions/1742">Let us know</a> what you think about the new Zowe docs experience!',
-    //   backgroundColor: "#fafbfc",
-    //   textColor: "#091E42",
-    //   isCloseable: true,
-    // },
+    announcementBar: {
+    id: "zowe_v2",
+    content:
+    '<a target="_blank" rel="noopener noreferrer" href="https://www.zowe.org/vnext">Zowe Version 2 release</a> is upcoming! Check out this preview site for the V2 updates.',
+    backgroundColor: "#333333",
+    textColor: "#FFFFFF",
+    isCloseable: true,
+    },
     algolia: {
       apiKey: "59ff39ed48d0820010c7e09fc4b677bf",
       indexName: "zowe",
@@ -206,32 +206,32 @@ module.exports = {
           versions: {
             current: {
               path: "stable",
-              label: `${LATEST_VERSION}` + " LTS",
+              label: `${LATEST_VERSION}` + " LTS Preview",
             },
-            "v1.26.x": {
-              label: "v1.26.x LTS",
-            },
-            "v1.25.x": {
-              label: "v1.25.x LTS",
-            },
-            "v1.24.x": {
-              label: "v1.24.x LTS",
-            },
-            "v1.23.x": {
-              label: "v1.23.x LTS",
-            },
-            "v1.22.x": {
-              label: "v1.22.x LTS",
-            },
-            "v1.21.x": {
-              label: "v1.21.x LTS",
-            },
-            "v1.20.x": {
-              label: "v1.20.x LTS",
-            },
-            "v1.19.x": {
-              label: "v1.19.x LTS",
-            },
+            // "v1.26.x": {
+            //  label: "v1.26.x LTS",
+            //},
+            //"v1.25.x": {
+            //  label: "v1.25.x LTS",
+            //},
+            //"v1.24.x": {
+            //  label: "v1.24.x LTS",
+            //},
+            //"v1.23.x": {
+            //  label: "v1.23.x LTS",
+            //},
+            //"v1.22.x": {
+            //  label: "v1.22.x LTS",
+            //},
+            //"v1.21.x": {
+            //  label: "v1.21.x LTS",
+            //},
+            //"v1.20.x": {
+            //  label: "v1.20.x LTS",
+            //},
+            //"v1.19.x": {
+            //  label: "v1.19.x LTS",
+            //},
           },
         },
         theme: {
