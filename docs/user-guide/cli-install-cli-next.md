@@ -14,9 +14,7 @@ Install the Zowe CLI `@next` version from the online npm registry or download it
 
 ## Install Zowe CLI from npm
 
-**Note:** This method does not install the zowex native executable required to run [Zowe daemon mode](cli-using-daemon-mode.md). To install the zowex native executable, see [Install Zowe CLI from a download](#install-zowe-cli-from-a-download).
-
-**Follow these steps:**
+Use the following procedure to install Zowe CLI from an npm registry:
 
 1. To install or update the core CLI, open a command-line window:
 
@@ -60,7 +58,8 @@ Install the Zowe CLI `@next` version from the online npm registry or download it
 You can now try out the [technical preview features](cli-development-roadmap-next.md).
 
 ## Install Zowe CLI from a download
-**Follow these steps:**
+
+Use the following procedure to install Zowe CLI from a download package:
 
 1. Navigate to [Zowe Downloads](https://www.zowe.org/download.html) and click the **Zowe vNext CLI Core** button.
    
@@ -88,9 +87,7 @@ You can now try out the [technical preview features](cli-development-roadmap-nex
    zowe plugins install zowe plugins install cics-for-zowe-cli.tgz db2-for-zowe-cli.tgz zos-ftp-for-zowe-cli.tgz  ims-for-zowe-cli.tgz mq-for-zowe-cli.tgz
    ```
 
-7. **(Optional)** To use [daemon mode](cli-using-daemon-mode.md), unzip the zowex .tgz file and place the zowex (or zowex.exe) file into a directory which occurs on your PATH earlier than the directory containing the NodeJS zowe command.
-
-9. If you have the Secure Credential Store plug-in installed, uninstall it now to avoid unexpected behavior:
+7. If you have the Secure Credential Store plug-in installed, uninstall it now to avoid unexpected behavior:
 
    ```
    zowe plugins uninstall @zowe/secure-credential-store-for-zowe-cli
@@ -98,11 +95,11 @@ You can now try out the [technical preview features](cli-development-roadmap-nex
 
    **Note:** If you have a previous instance of Zowe CLI installed, your current configuration files are ignored if zowe.config.json is found globally, at the project level, or up the directory structure.
 
-10. Save the contents of the `/profiles` directory to another location on your computer so that you can reference or restore the profiles later.
+8. Save the contents of the `/profiles` directory to another location on your computer so that you can reference or restore the profiles later.
 
      **Important!** Prior to deleting the contents of the `/profiles` directory, take note of any mainframe service details that you need.
 
-11. Delete the following files from your local `.zowe/` directory:
+9. Delete the following files from your local `.zowe/` directory:
    - `.zowe/settings/imperative.json`
    - `.zowe/profiles`
 
