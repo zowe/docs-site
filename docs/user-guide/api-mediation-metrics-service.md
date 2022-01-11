@@ -5,6 +5,12 @@ Currently, only HTTP metrics are displayed for core API Mediation Layer services
 
 In order for the Metrics Service to run, you must set the environment variable `APIML_METRICS_ENABLED=true`. When this variable is set, the Gateway homepage displays a link to the Metrics Service dashboard. The dashboard is available at `https://{gateway_host}:{gateway_port}/metrics-service/ui/v1`.`
 
+## API Mediation Layer Metrics Service Demo Video
+
+Watch this [video](https://youtu.be/KkuE6xADxPk) to see a demo of APIML Metrics Service.
+
+<iframe class="embed-responsive-item" id="youtubeplayer" title="APIML metrics service demo" type="text/html" width="640" height="390" src="https://youtu.be/KkuE6xADxPk" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen> </iframe>
+
 ## View HTTP Metrics in the Metrics Service Dashboard
 
 Use the Metrics Service to view HTTP metrics such as number of requests, response times, and error rates. The below image describes the information provided in the Metrics Service dashboard.
