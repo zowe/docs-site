@@ -83,12 +83,12 @@ module.exports = {
            type: "docsVersionDropdown",
            position: "right",
            dropdownActiveClassDisabled: true,
-           dropdownItemsAfter: [
-             {
-               to: "/versions",
-               label: "All versions",
-             },
-           ],
+        //   dropdownItemsAfter: [
+        //     {
+        //       to: "/versions",
+        //       label: "All versions",
+        //     },
+        //   ],
          },
         {
           href: "https://github.com/zowe/docs-site",
@@ -166,7 +166,7 @@ module.exports = {
     announcementBar: {
     id: "zowe_v2",
     content:
-    '<a target="_blank" rel="noopener noreferrer" href="https://www.zowe.org/vnext">Zowe Version 2 release</a> is upcoming! Check out this preview site for the V2 updates.',
+    '<a target="_blank" rel="noopener noreferrer" href="https://www.zowe.org/vnext">Zowe Version 2 release</a> is upcoming! This is unreleased Zowe V2 documentation for preview purposes.',
     backgroundColor: "#333333",
     textColor: "#FFFFFF",
     isCloseable: true,
