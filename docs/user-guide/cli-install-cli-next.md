@@ -8,10 +8,7 @@
 
 **Note:** Linux users may need to prepend `sudo` to `npm` commands. For more information, see [Troubleshooting Zowe CLI](../troubleshoot/cli/troubleshoot-cli.md).
 
-Install the Zowe CLI `@next` version from the online npm registry or download it from the Zowe Downloads site:
-- [Install Zowe CLI from npm](#install-zowe-cli-from-npm)
-- [Install Zowe CLI from a download](#install-zowe-cli-from-a-download)
-
+You can install the Zowe CLI `@next` version from the online npm registry or download it from the Zowe Downloads site.
 ## Install Zowe CLI from npm
 
 Use the following procedure to install Zowe CLI from an npm registry:

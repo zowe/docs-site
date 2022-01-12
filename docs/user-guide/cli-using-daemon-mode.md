@@ -4,10 +4,6 @@
 
 If you already installed the supported version `@zowe-v1-lts`, switch versions to try this feature. Daemon mode will be included in the next major Zowe release, V2.0.0-LTS. You can also [install the @next release of Zowe CLI](cli-install-cli-next.md#install-zowe-cli-from-a-download).
 
-- [Feature overview](#feature-overview)
-- [Installation notes](#installation-notes)
-- [Running Zowe commands in daemon mode](#running-zowe-commands-in-daemon-mode)
-
 ## Feature overview
 
 Daemon mode significantly improves the performance of Zowe CLI commands by running Zowe CLI as a persistent background process (daemon). Running Zowe CLI as daemon lets Zowe absorb the one-time startup of Node.js modules, which resusts in significantly faster responses to Zowe commands.
@@ -20,7 +16,6 @@ The following notes apply to running Zowe in daemon mode:
 
 - To enable daemon mode, ensure that you installed [the @next release of Zowe CLI](cli-install-cli-next.md).
 - When you are running Zowe on a Windows operating system in a virtual environment (for example, Windows Sandbox), you might receive an error message that indicates that a library named VCRUNTIME140.dll is missing. To correct the error, install Visual C++ Redistributable for Visual Studio 2015. For more information, see [Download Visual C++ Redistributable for Visual Studio 2015](https://www.microsoft.com/en-us/download/details.aspx?id=48145).
-- When you are running Zowe on a Mac operating system, the Mac executable might need an exception for an unidentified developer. For more information, see [Open a Mac app from an unidentified developer](https://support.apple.com/guide/mac-help/open-a-mac-app-from-an-unidentified-developer-mh40616/mac).
 
 ## Running Zowe commands in daemon mode
 
@@ -28,7 +23,7 @@ When you run Zowe in daemon mode, you run all Zowe commands as you normally run 
 
 If you want to run Zowe in daemon mode constantly, add the path of the $ZOWE_CLI_HOME/bin (.zowe/bin) executables to the directory path of your computer's environment variables. When you configure Zowe to constantly run in daemon mode, daemon mode starts automatically after you issue the first Zowe command. When you open multiple terminal windows and issue Zowe commands, the Zowe commands in all of the terminal windows run in daemon mode.
 
-**Enable daemon mode**
+### Enable daemon mode
 
 The following steps describe how to enable daemon mode and how to (optionally) configure Zowe to run in daemon mode constantly.
 
@@ -45,7 +40,8 @@ The following steps describe how to enable daemon mode and how to (optionally) c
 
    **Note:** Complete the environment variable configuration step (Step 2) only one time.
 
-Example:
+The following example illustrates running Zowe commands with the daemon mode enabled:
+
    ```zowe --version
    Starting a background process to increase performance ...
    7.0.0-next.202110211759
@@ -53,7 +49,7 @@ Example:
    zowe --version
    7.0.0-next.202110211759
    ```
-**Disable daemon mode**
+### Disable daemon mode
 
 You can disable Zowe from running in daemon mode at any time. For example, daemon mode lacks functionality that you desire, such as viewing colored-coded commands.
 
