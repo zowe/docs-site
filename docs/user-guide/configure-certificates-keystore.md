@@ -167,35 +167,6 @@ If the certificate is from a recognized CA but for a different host name, which 
 
 Switching off `VERIFY_CERTIFICATES`, especially `NONSTRICT_VERIFY_CERTIFICATES` is not recommended. It may expose security risks to your z/OS system.
 
-## Using web tokens for SSO on ZLUX and ZSS
-
-Users can use `ZWESSOTK` JCL to create a `PKCS#11` token and configure required security setup. The `ZWESSOTK` JCL is provided as part of the PDS sample library `SZWESAMP` that is delivered with Zowe.
-
-Before you submit the JCL, you must [customize it](#customizing-the-zwessotk-jcl) and review it with a system programmer who is familiar with z/OS certificates. The JCL member contains commands for two z/OS security managers: RACF and TopSecret. Adding support of ACF/2 is a work in progress.
-
-The `ZWESSOTK` JCL contains commands for the following scenarios:
-
-- Defining security requirements needed by following steps and using the `PKCS#11` token.
-- Creation of a locally generated certificated can be used as JWT secret if it does not already exist.
-- Creation of `PKCS#11` token.
-- Binding JWT secret certificate to the `PKCS#11` token.
-
-### Customizing the `ZWESSOTK` JCL
-
-To customize the `ZWESSOTK` JCL, edit the JCL variables at the beginning of the JCL and carefully review and edit all the security commands that are valid for your security manager. Review the information in this section when you customize the JCL.
-
-#### `PRODUCT` variable
-
-The `PRODUCT` variable specifies the z/OS security manager. The default value is `RACF`. Change the value to `ACF2` or `TSS` if you are using ACF2 or Top Secret for z/OS as your z/OS security manager.
-
-```
-//         SET  PRODUCT=RACF         * RACF, ACF2, or TSS
-```
-
-#### `JWTDSNAM` variable
-
-If you already have a certificate you want to use as JWT secret, you can set the data set name and uncomment section `Import JWT secret` below.
-
 ## Hints and tips
 
 Learn about some hints and tips that you might find useful when you create certificates. 
