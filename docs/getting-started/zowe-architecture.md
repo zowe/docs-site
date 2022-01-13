@@ -31,7 +31,7 @@ The configuration entries of each LPAR in the `zowe.yaml` file control which com
 
 The caching services for each Zowe instance, whether on the same LPAR, or distributed across the sysplex, are connected to each other by the same shared VSMA file.  This arrangement allows state sharing so that each instance behaves similarly to the user irrespective of where their request is routed.  
 
-For simplification of the diagram above, the Zowe Explorer API and UI servers are not shown as being started. If the user defines Zowe Explorer API and UI servers to be started in the `zowe.yaml` configuration file, these servers behave the same as the servers illustrated. In other words, these services register to their API discovery server which then communicates with other discovery servers on other Zowe instances on either the same or other LPARs. The API traffic received by any API gateway on any Zowe instance is routed to any of the Zowe Explorer API or UI components that are available.  
+For simplification of the diagram above, the Jobs and Files API servers are not shown as being started. If the user defines Jobs and Files API servers to be started in the `zowe.yaml` configuration file, these servers behave the same as the servers illustrated. In other words, these services register to their API discovery server which then communicates with other discovery servers on other Zowe instances on either the same or other LPARs. The API traffic received by any API gateway on any Zowe instance is routed to any of the Jobs or Files API components that are available.  
 
 To learn more about Zowe with high availability enablement, see [Zowe high availability installation roadmap](../user-guide/install-ha-sysplex.md).
 
@@ -102,17 +102,17 @@ The API Discovery server acts as the registration service broker between the API
 The Caching service aims to provide an API which offers the possibility to store, retrieve, and delete data associated with keys. The service is used only by internal Zowe applications and is not exposed to the internet. The Caching service URL is `https://<ZOWE_HOST_IP>:7555`.
 For more information about the Caching service, see the [Caching service documentation](../extend/extend-apiml/api-mediation-caching-service.md).
 
-## MVS, JES, and USS UI
+## Desktop Apps
 
-Zowe provides a number of rich GUI web applications for working with z/OS. Such applications include the MVS Explorer for data sets, the JES Explorer for jobs, and the USS Explorer for the Unix File System. You can access them through the Zowe desktop.
+Zowe provides a number of rich GUI web applications for working with z/OS. Such applications include the Editor for files and datasets, the JES Explorer for jobs, and the IP Explorer for the TCPIP stack. You can access them through the Zowe desktop.
 
 ![Zowe Desktop Explorers](../images/mvd/desktop-explorers.png)
 
 ### File API and JES API
 
-The File API server provides a set of REST APIs for working with z/OS data sets and Unix files. These APIs are used by the MVS and USS Explorer apps.  
+The File API server provides a set of REST APIs for working with z/OS data sets and Unix files. These APIs can be abled in zowe server configuration.  
 
-The JES API server provides a set of REST APIs for working with JES. These APIs are used by the JES Explorer application.
+The JES API server provides a set of REST APIs for working with JES. These APIs can be abled in zowe server configuration.
 
 Both the File API and JES API servers are registered as tiles on the API Catalog, so users can view the Swagger definition and test API requests and responses.
 

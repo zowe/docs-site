@@ -157,7 +157,7 @@ Use the following procedure to enable the feature to use a client certificate as
    The following URL is the default value for Zowe and ZSS:
 
      ```
-     https://${ZOWE_EXPLORER_HOST}:${GATEWAY_PORT}/zss/api/v1/certificate/x509/map
+     https://${ZWE_haInstance_hostname}:${GATEWAY_PORT}/zss/api/v1/certificate/x509/map
      ```
 
 4. Add the following property if the Zowe runtime userId is altered from the default `ZWESVUSR`:
@@ -392,7 +392,7 @@ To use the endpoint provider, customize the URL corresponding to the SAF resourc
 
 1. Open the file `<Zowe instance directory>/instance.env`.
 2. Modify the property `APIML_SECURITY_AUTHORIZATION_ENDPOINT_URL` and set desired value.
-   The default value for ZSS API is `https://${ZOWE_EXPLORER_HOST}:${GATEWAY_PORT}/zss/api/v1/saf-auth`
+   The default value for ZSS API is `https://${ZWE_haInstance_hostname}:${GATEWAY_PORT}/zss/api/v1/saf-auth`
 3. Restart `Zowe&trade`.
 
 ### Checking providers

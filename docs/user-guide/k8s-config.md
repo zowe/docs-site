@@ -280,7 +280,7 @@ To manually create the [ConfigMaps](https://kubernetes.io/docs/concepts/configur
 
 1. A ConfigMap, with values based upon a Zowe instance's `instance.env` and similar to the example `samples/config-cm.yaml` with the following differences to the values seen on a z/OS install:
 
-   * `ZOWE_EXPLORER_HOST`, `ZOWE_IP_ADDRESS`, `ZWE_LAUNCH_COMPONENTS`, `ZWE_DISCOVERY_SERVICES_LIST` and `SKIP_NODE` are not needed for Zowe running in Kubernetes and will be ignored. You can remove them.
+   * `ZWE_haInstance_hostname`, `ZOWE_IP_ADDRESS`, `ZWE_LAUNCH_COMPONENTS`, `ZWE_DISCOVERY_SERVICES_LIST` and `SKIP_NODE` are not needed for Zowe running in Kubernetes and will be ignored. You can remove them.
    * `JAVA_HOME` and `NODE_HOME` are not usually needed if you are using Zowe base images.
    * `ROOT_DIR` must be set to `/home/zowe/runtime`.
    * `KEYSTORE_DIRECTORY` must be set to `/home/zowe/keystore`.

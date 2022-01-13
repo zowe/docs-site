@@ -77,27 +77,27 @@ To operate Zowe, a number of zFS folders need to be located for prerequisites on
 - `ZOSMF_PORT`: The port used by z/OSMF REST services.  Defaults to value determined through running `netstat`.
 - `ZOSMF_HOST`: The host name of the z/OSMF REST API services.
 
-- `ZOWE_EXPLORER_HOST`: The hostname of where the Explorer servers are launched from.  Defaults to running `hostname -c`.  Ensure that this host name is externally accessible from clients who want to use Zowe as well as internally accessible from z/OS itself.  
+- `ZWE_haInstance_hostname`: The hostname of where the Explorer servers are launched from.  Defaults to running `hostname -c`.  Ensure that this host name is externally accessible from clients who want to use Zowe as well as internally accessible from z/OS itself.  
 - `ZOWE_IP_ADDRESS`:  The IP address of your z/OS system which must be externally accessible to clients who want to use Zowe.  This is important to verify for IBM Z Development & Test Environment and cloud systems, where the default that is determined through running `ping` and `dig` on z/OS returns a different IP address from the external address.  
 
 ### Domain, Hostname and IP Address
 
-- `ZOWE_EXPLORER_HOST`: The hostname of where the Explorer servers are launched from.  Defaults to running `hostname -c`.  Ensure that this host name is externally accessible from clients who want to use Zowe as well as internally accessible from z/OS itself.  
+- `ZWE_haInstance_hostname`: The hostname of where the Explorer servers are launched from.  Defaults to running `hostname -c`.  Ensure that this host name is externally accessible from clients who want to use Zowe as well as internally accessible from z/OS itself.  
 - `ZOWE_IP_ADDRESS`:  The IP address of your z/OS system which must be externally accessible to clients who want to use Zowe.  This is important to verify for IBM Z Development & Test Environment and cloud systems, where the default that is determined through running `ping` and `dig` on z/OS returns a different IP address from the external address.  
 
-When configuring a Zowe instance through the `instance.env` file, `ZOWE_IP_ADDRESS` and `ZOWE_EXPLORER_HOST` are used to specify where the Zowe servers can be reached. 
+When configuring a Zowe instance through the `instance.env` file, `ZOWE_IP_ADDRESS` and `ZWE_haInstance_hostname` are used to specify where the Zowe servers can be reached. 
 
 However, these values may not reflect the website name that you access Zowe from. This is especially true in the following cases:
 - You are using a proxy
-- The URL is a derivative of the value of `ZOWE_EXPLORER_HOST`, such as `myhost` versus `myhost.mycompany.com`
+- The URL is a derivative of the value of `ZWE_haInstance_hostname`, such as `myhost` versus `myhost.mycompany.com`
 
 In these cases, it may be necessary to specify a value for `ZWE_EXTERNAL_HOSTS` in the form of a comma-separated list of the addresses from which you want to access Zowe in your browser. 
 
 In the previous example, `ZWE_EXTERNAL_HOSTS` could include both `myhost` and `myhost.mycompany.com`. In the `instance.env`, this would look like: `ZWE_EXTERNAL_HOSTS=myhost,myhost.mycompany.com`
 
-This configuration value maybe used for multiple purposes, including referrer-based security checks. In the case that the values are not specified, referrer checks will use the default values of `ZOWE_IP_ADDRESS`, `ZOWE_EXPLORER_HOST`, and the system's hostname. Therefore, if these values are not what you put into your browser, you will want to specify `ZWE_EXTERNAL_HOSTS` to set the correct value. 
+This configuration value maybe used for multiple purposes, including referrer-based security checks. In the case that the values are not specified, referrer checks will use the default values of `ZOWE_IP_ADDRESS`, `ZWE_haInstance_hostname`, and the system's hostname. Therefore, if these values are not what you put into your browser, you will want to specify `ZWE_EXTERNAL_HOSTS` to set the correct value. 
 
-- `ZOWE_EXPLORER_FRAME_ANCESTORS`: The MVS, USS, and JES Explorer are served by their respective explorer UI address spaces.  These are accessed through the Zowe desktop where they are hosted as iFrames.  To protect against double iFrame security vulnerabilities, browsers all of the valid address that may be used by the browser must be explicitly declared in this property.  The default values are: `"${ZOWE_EXPLORER_HOST}:*,${ZOWE_IP_ADDRESS}:*"`. If there are any other URLs by which the Zowe Explorers can be served, then these should be appended to the preceding comma-separated list.
+- `ZOWE_EXPLORER_FRAME_ANCESTORS`: The MVS, USS, and JES Explorer are served by their respective explorer UI address spaces.  These are accessed through the Zowe desktop where they are hosted as iFrames.  To protect against double iFrame security vulnerabilities, browsers all of the valid address that may be used by the browser must be explicitly declared in this property.  The default values are: `"${ZWE_haInstance_hostname}:*,${ZOWE_IP_ADDRESS}:*"`. If there are any other URLs by which the Zowe Explorers can be served, then these should be appended to the preceding comma-separated list.
 
 ### Component groups
 
@@ -195,7 +195,7 @@ The following parameters can be set to customize the configuration of all API Me
 
 The following parameters can be set to customize the configuration of the Discovery:
 
-- `ZWE_DISCOVERY_SERVICES_LIST`: A comma-separated list of the endpoints for each Discovery Service instance. The default value is `https://${ZOWE_EXPLORER_HOST}:${DISCOVERY_PORT}/eureka/`.
+- `ZWE_DISCOVERY_SERVICES_LIST`: A comma-separated list of the endpoints for each Discovery Service instance. The default value is `https://${ZWE_haInstance_hostname}:${DISCOVERY_PORT}/eureka/`.
 
 The following parameters can be set to customize the configuration of the Gateway:
 
@@ -232,7 +232,7 @@ Refer to detailed section about [API Gateway configuration](api-mediation/api-ga
 
 - `ZWEAD_EXTERNAL_STATIC_DEF_DIRECTORIES`:  Full USS path to the directory that contains static API Mediation Layer .yml definition files.  For more information, see [Onboard a REST API without code changes required](../extend/extend-apiml/onboard-static-definition.md#add-a-definition-in-the-api-mediation-layer-in-the-zowe-runtime).  Multiple paths should be semicolon separated. This value allows a Zowe instance to be configured so that the API Mediation Layer can be extended by third party REST API and web UI servers. 
 - `EXTERNAL_COMPONENTS`: For third-party extenders to add the full path to the directory that contains their component lifecycle scripts.  For more information, see [Zowe lifecycle - Zowe extensions](../extend/lifecycling-with-zwesvstc.md#zowe-extensions).
-- `ZWE_DISCOVERY_SERVICES_LIST`: _(Work in progress)_ **Do not modify this value** from its supplied default of `https://${ZOWE_EXPLORER_HOST}:${DISCOVERY_PORT}/eureka/`. 
+- `ZWE_DISCOVERY_SERVICES_LIST`: _(Work in progress)_ **Do not modify this value** from its supplied default of `https://${ZWE_haInstance_hostname}:${DISCOVERY_PORT}/eureka/`. 
 - `ZWE_CACHING_SERVICE_PORT=7555`: _(Work in progress)_ This port is not yet used so the value does not need to be availale.
 - `ZWE_CACHING_SERVICE_PERSISTENT`: _(Work in progress)_ This is used to set the storage type used to persist cached data. Valid options are `REDIS` or `VSAM`.
 - `ZWE_CACHING_SERVICE_VSAM_DATASET`: _(Work in progress)_
@@ -634,14 +634,14 @@ The creation of a Zowe instance is controlled by the [`instance.env` file](#upda
    
    In `instance.env`,  you specify the IP address and hostname using the following keywords:
    ```
-   ZOWE_EXPLORER_HOST=
+   ZWE_haInstance_hostname=
    ZOWE_IP_ADDRESS= 
    ```
 
-   The `ZOWE_EXPLORER_HOST` value must resolve to the external IP address, otherwise you should use the external IP address as the value for `ZOWE_EXPLORER_HOST`.   
+   The `ZWE_haInstance_hostname` value must resolve to the external IP address, otherwise you should use the external IP address as the value for `ZWE_haInstance_hostname`.   
 
    The `zowe-configure-instance.sh` script will attempt to discover the IP address and hostname of your system if you leave these unset.  
 
-   When the script cannot determine the hostname or the IP address, it will ask you to enter the IP address manually during the dialog.  If you have not specified a value for `ZOWE_EXPLORER_HOST`, then the script will use the IP address as the hostname. 
+   When the script cannot determine the hostname or the IP address, it will ask you to enter the IP address manually during the dialog.  If you have not specified a value for `ZWE_haInstance_hostname`, then the script will use the IP address as the hostname. 
 
-   The values of `ZOWE_EXPLORER_HOST` and `ZOWE_IP_ADDRESS` that the script discovered are appended to the `instance.env` file unless they were already set in that file or as shell environment variables before you ran the script. 
+   The values of `ZWE_haInstance_hostname` and `ZOWE_IP_ADDRESS` that the script discovered are appended to the `instance.env` file unless they were already set in that file or as shell environment variables before you ran the script. 
