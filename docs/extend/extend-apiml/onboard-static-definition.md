@@ -342,6 +342,16 @@ additionalServiceMetadata:
             
             **Tip:** For more information, see [Enabling PassTicket creation for API Services that accept PassTickets](api-mediation-passtickets.md).
          
+        * **safIdt**
+
+            This value specifies that the application recognizes the SAF IDT scheme and fills the `X-SAF-Token` header with the token produced by the Saf IDT provider implementation.
+        
+            For more information, see [SAF IDT provider](implement-new-saf-provider.md)
+
+        * **x509**
+
+            This value specifies that a service accepts client certificates forwarded in the HTTP header. The Gateway service extracts information from a valid client certificate. For validation, the certificate needs to be trusted by API Mediation Layer, and needs to contain a Client Authentication (1.3.6.1.5.5.7.3.2) entry in Extended Key Usage. To use this scheme, it is also necessary to specify which headers to include. Specify these parameters in `headers`.
+
          * **zosmf**
          
             This value specifies that a service accepts z/OSMF LTPA (Lightweight Third-Party Authentication).
