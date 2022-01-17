@@ -11,7 +11,7 @@ Want to contribute a blog? Details for how to contribute to the [Zowe blogs on M
 
 ## Videos
 
-<iframe class="embed-responsive-item" id="youtubeplayer" title="Zowe videos" type="text/html" width="100%" height="365" src="https://www.youtube.com/embed?listType=playlist&list=PL8REpLGaY9QE_9d57tw3KQdwSVLKuTpUZ" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen> </iframe>
+<iframe class="embed-responsive-item" id="youtubeplayer" title="Zowe videos" type="text/html" width="100%" height="365" src="https://www.youtube.com/embed?listType=playlist&list=PL8REpLGaY9QE_9d57tw3KQdwSVLKuTpUZ" frameborder="0" webkitallowfullscreen="true" mozallowfullscreen="true" allowfullscreen="true"> </iframe>
 
 As well as [Zowe videos](https://www.youtube.com/embed?listType=playlist&list=PL8REpLGaY9QE_9d57tw3KQdwSVLKuTpUZ) owned and managed by the community, there are a number of external youtubers who host Zowe related content. 
 
