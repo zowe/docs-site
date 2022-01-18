@@ -30,7 +30,7 @@ additional solicited command responses.</p>
 <ul>
 <li>The &quot;solicited response key&quot; provided in response to a previously issued console
 command. Used by the z/OSMF console API to collect any additional outstanding
-solicited responses from a previously issued console command. Must match
+solicited responses from a previously issued console command.      Must match
 regular expression: <code>^\[a\-zA\-Z0\-9\]\+$</code></li>
 </ul>
 </li>
@@ -104,6 +104,18 @@ specify this option if you are not using an API mediation layer.</li>
 <p>Default value: https</p>
 <p>Allowed values: http, https</p>
 </li>
+</ul>
+</li>
+<li>
+<p><code>--cert-file</code>  <em>(local file path)</em></p>
+<ul>
+<li>The file path to a certificate file to use for authentication</li>
+</ul>
+</li>
+<li>
+<p><code>--cert-key-file</code>  <em>(local file path)</em></p>
+<ul>
+<li>The file path to a certificate key file to use for authentication</li>
 </ul>
 </li>
 </ul>

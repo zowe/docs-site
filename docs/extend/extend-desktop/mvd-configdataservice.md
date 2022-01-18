@@ -15,13 +15,13 @@ The behavior of the Configuration Dataservice is dependent upon the Resource str
         1. [GET](#get)
         1. [PUT](#put)
         1. [DELETE](#delete)
-    1. [Administrative Access & Group](#administrative-access--group)
-1. [App API](#app-api)
-1. [Internal & Bootstrapping Use](#internal--bootstrapping-use)
+    1. [Administrative Access & Group](#administrative-access-group)
+1. [App API](#application-api)
+1. [Internal and Bootstrapping](#internal-and-bootstrapping)
 1. [Packaging Defaults](#packaging-defaults)
-1. [Plugin Definition](#plugin-definition)
+1. [Plugin Definition](#plug-in-definition)
 1. [Aggregation Policies](#aggregation-policies)
-1. [Relevant Source Code](#relevant-source-code)
+1. [Examples](#examples)
 
 ## Resource Scope
 

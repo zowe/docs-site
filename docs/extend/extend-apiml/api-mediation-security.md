@@ -1,7 +1,6 @@
 # Zowe API Mediation Layer Security
 
 - [Zowe API Mediation Layer Security](#zowe-api-mediation-layer-security)
-  * [Zowe API Mediation Layer Single-Sign-On Overview](#zowe-api-mediation-layer-single-sign-on-overview)
   * [How API ML transport security works](#how-api-ml-transport-security-works)
     + [Transport layer security](#transport-layer-security)
     + [Authentication](#authentication)
@@ -35,7 +34,7 @@
       - [Generate a certificate for a new service on localhost](#generate-a-certificate-for-a-new-service-on-localhost)
       - [Add a service with an existing certificate to API ML on localhost](#add-a-service-with-an-existing-certificate-to-api-ml-on-localhost)
       - [Service registration to Discovery Service on localhost](#service-registration-to-discovery-service-on-localhost)
-    + [Zowe runtime on z/OS](#zowe-runtime-on-z-os)
+    + [Zowe runtime on z/OS](#zowe-runtime-on-zos)
       - [Import the local CA certificate to your browser](#import-the-local-ca-certificate-to-your-browser)
       - [Generate a keystore and truststore for a new service on z/OS](#generate-a-keystore-and-truststore-for-a-new-service-on-z-os)
       - [Add a service with an existing certificate to API ML on z/OS](#add-a-service-with-an-existing-certificate-to-api-ml-on-z-os)
@@ -294,10 +293,11 @@ Use the following property of the API Gateway to enable the `SAF Authentication 
 ```
 apiml.security.auth.provider: saf
 ```
+**Note:** To provide your own implementation of the SAF IDT provider, see the [Implement new SAF provider](implement-new-saf-provider.md) guidelines.
 
 ##### Dummy Authentication Provider
 
-The `Dummy Authentication Provider` implements simple authentication for development purpose using dummy credentials (username:  `user`, password `user`). The `Dummy Authentication Provider` makes it possible for the API Gateway to run without authenticating with the z/OSMF service.
+The `Dummy Authentication Provider` implements simple authentication for development purposes using dummy credentials (username:  `user`, password `user`). The `Dummy Authentication Provider` makes it possible for the API Gateway to run without authenticating with the z/OSMF service.
 
 Use the following property of API Gateway to enable the `Dummy Authentication Provider`:
 ```
@@ -308,7 +308,7 @@ apiml.security.auth.provider: dummy
 
 Authorization is a method used to determine access rights of an entity.
 
-In the API ML, authorization is performed by the z/OS security manager ([CA ACF2](https://www.broadcom.com/products/mainframe/identity-access/acf2), [IBM RACF](https://www.ibm.com/support/knowledgecenter/zosbasics/com.ibm.zos.zsecurity/zsecc_042.htm), [CA Top Secret](https://www.broadcom.com/products/mainframe/identity-access/top-secret)). An authentication token is used as proof of valid authentication. The authorization checks, however, are always performed by the z/OS security manager.
+In the API ML, authorization is performed by the z/OS security manager ([ACF2](https://www.broadcom.com/products/mainframe/identity-access/acf2), [IBM RACF](https://www.ibm.com/support/knowledgecenter/zosbasics/com.ibm.zos.zsecurity/zsecc_042.htm), [Top Secret](https://www.broadcom.com/products/mainframe/identity-access/top-secret)). An authentication token is used as proof of valid authentication. The authorization checks, however, are always performed by the z/OS security manager.
 
 ### JWT Token
 

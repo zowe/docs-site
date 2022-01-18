@@ -10,11 +10,11 @@ The following topics contain information that can help you troubleshoot problems
 
 **Recommended solution:**
 
-Adjust your component to check the `TMPDIR` or `TMP` environment variable to determine location of the temporary directory. Zowe runtime customizes those variables and points them to `/home/zowe/instance/tmp` directory, which is writable.
+Adjust your component to check the `TMPDIR` or `TMP` environment variable to determine the location of the temporary directory. Zowe runtime customizes those variables and points them to `/home/zowe/instance/tmp` directory, which is writable.
 
 **Alternative solution:**
 
-Disabling `readOnlyRootFilesystem` SecurityContext is not recommended. But you can make `/tmp` writable by replacing it with a new mounted volume. Here is an example of defining the `/tmp` volume.
+Disabling `readOnlyRootFilesystem` SecurityContext is not recommended. But you can make `/tmp` writable by replacing it with a newly mounted volume. Here is an example of defining the `/tmp` volume.
 
 ```yaml
 apiVersion: apps/v1
@@ -65,11 +65,26 @@ spec:
       initContainers:
         - name: update-workspace-permission
           image: busybox:1.28
-          command: ['sh', '-c', 'OWNER=`stat -c "%u:%g" /home/zowe/instance/workspace` && echo "Owner of workspace is ${OWNER}" && if [ $OWNER != "20000:20000" ]; then chown -R 20000:20000 /home/zowe/instance/workspace; fi']
+          command: ['sh', '-c', 'OWNER=`stat -c "%u:%g" /home/zowe/instance/workspace` && PERMISSION=`stat -c "%a" /home/zowe/instance/workspace` && echo "Zowe workspace owner is ${OWNER} with ${PERMISSION} permission" && if [ "${OWNER}" != "20000:20000" -a "${PERMISSION}" != "777" ]; then chown -R 20000:20000 /home/zowe/instance/workspace; fi']
+          imagePullPolicy: Always
+          resources:
+            requests:
+              memory: "64Mi"
+              cpu: "10m"
+            limits:
+              memory: "128Mi"
+              cpu: "100m"
           volumeMounts:
             - name: zowe-workspace
               mountPath: "/home/zowe/instance/workspace"
           securityContext:
+            readOnlyRootFilesystem: true
+            allowPrivilegeEscalation: false
+            capabilities:
+              drop:
+                - all
+              add:
+                - CHOWN
             runAsUser: 0
             runAsGroup: 0
 ```
@@ -89,7 +104,7 @@ That means the Zowe ServiceAccount `zowe-sa` doesn't have any SecurityContextCon
 
 **Solution:**
 
-You can run this command to grant certain level of permission, for example `privileged`, to `zowe-sa` ServiceAccount:
+You can run this command to grant a certain level of permission, for example, `privileged`, to `zowe-sa` ServiceAccount:
 
 ```
 oc admin policy add-scc-to-user privileged -z zowe-sa -n zowe

@@ -46,6 +46,12 @@ In order to allow the `ZWESVSTC` started task to have permission to access the c
 <RUNTIME_DIR>/bin/zowe-configure-instance.sh -c <PATH_TO_INSTANCE_DIR> -g <GROUP>
 ```
 
+Watch the following video that shows how to create an `instance.env` file that is used to launch Zowe with default parameters and a USS keystore containing a self-signed TLS certificate.
+
+<iframe class="embed-responsive-item" id="youtubeplayer" title="Zowe Configure Instance and Launch with Self-Signed Keystore Certificate" type="text/html" width="640" height="390" src="https://www.youtube.com/embed/oxmDHZUFjtg" frameborder="0" webkitallowfullscreen="true" mozallowfullscreen="true" allowfullscreen="true"> </iframe>
+
+[Download the script](/Zowe_launch_self_signed_certificate.txt)
+
 ## Updating the instance.env configuration file
 
 To operate Zowe, a number of zFS folders need to be located for prerequisites on the platform. Default values are selected when you run `zowe-configure-instance.sh`. You might want to modify the values. 
