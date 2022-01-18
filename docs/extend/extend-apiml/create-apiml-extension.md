@@ -13,11 +13,7 @@ For API ML services with extension support, extension executables can be loaded 
 
 ## API ML Services with Library Path Extension Support
 
-For API ML with native library extension support, native libraries can be loaded by setting the library path variable that corresponds to the service.
-
-|Service          |Extension directory environment variable|
-|-----------------|----------------------------------------|
-|API Gateway      | `ZWE_GATEWAY_LIBRARY_PATH`             |
+The API Gateway can load native Java libraries by setting `ZWE_GATEWAY_LIBRARY_PATH` to a path pointing to the native library.
 
 ## Example API Gateway Extension
 
