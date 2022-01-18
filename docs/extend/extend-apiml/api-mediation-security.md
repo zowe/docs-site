@@ -314,9 +314,7 @@ In the API ML, authorization is performed by the z/OS security manager ([ACF2](h
 
 The JWT secret that signs the JWT Token is an asymmetric private key that is generated during Zowe keystore configuration. The JWT token is signed with the RS256 signature algorithm.
 
-You can find the JWT secret, alias `jwtsecret`, in the PKCS12 keystore that is stored in `${KEYSTORE_DIRECTORY}/localhost/localhost.keystore.p12`. The public key necessary to validate the JWT signature is read from the keystore.
-
-For easy access, you can find the public key in the `${KEYSTORE_DIRECTORY}/localhost/localhost.keystore.jwtsecret.pem` file.
+You can find the JWT secret, alias `localhost`, in the PKCS12 keystore that is stored in `${KEYSTORE_DIRECTORY}/localhost/localhost.keystore.p12`. The public key necessary to validate the JWT signature is read from the keystore.
 
 You can also use the `/api/v1/gateway/auth/keys/public/all` endpoint to obtain all public keys that can be used to verify JWT tokens signature in standard [JWK format](https://openid.net/specs/).
 
@@ -324,7 +322,7 @@ You can also use the `/api/v1/gateway/auth/keys/public/all` endpoint to obtain a
 
 Your z/OSMF instance can be enabled to support JWT tokens as described at [Enabling JSON Web Token support](https://www.ibm.com/support/knowledgecenter/SSLTBW_2.4.0/com.ibm.zos.v2r4.izua300/izuconfig_EnableJSONWebTokens.htm).
 In this case, the Zowe API ML uses this JWT token and does not generate its own Zowe JWT token. All authentication APIs, such as `/api/v1/gateway/login` and `/api/v1/gateway/check` function in the same way as without z/OSMF JWT.
-The `zowe-setup-certificates.sh` stores the z/OSMF JWT public key to the `localhost.keystore.jwtsecret.pem` that can be used for JWT signature validation.
+Gateway service endpoint `/api/v1/gateway/auth/keys/public/all` serves the z/OSMF JWK that can be used for JWT signature validation.
 
 ### API ML truststore and keystore
 
@@ -352,7 +350,6 @@ The elements in the following list, which apply to the API ML SAF Keyring, have 
 - Server certificate of the Gateway (with PK). This can be signed by the local CA or an external CA.
 - Server certificate of the Discovery Service (with PK). This can be signed by the local CA.
 - Server certificate of the Catalog (with PK). This can be signed by the local CA.
-- Private asymmetric key for the JWT token, alias `jwtsecret`. The public key is exported to the `localhost.keystore.jwtsecret.cer` directory.
 - The API ML keystore is used by API ML services.
 
 **The API ML truststore or API ML SAF Keyring**

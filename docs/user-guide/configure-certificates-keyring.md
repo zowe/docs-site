@@ -149,7 +149,6 @@ After the ZWEKRING JCL successfully configures the certificates and key ring, yo
 When the `ZWEKRING` JCL runs successfully, it will create a key ring named `ZoweKeyring` owned by `ZWESVUSR` containing the following: 
 - The Zowe certificate (called `localhost`)
 - The local CA (called `ZoweCert`)
-- The certificate used to encrypt the JSON Web Token (JWT) required for single sign-on (called `jwtsecret`)
 
 When the `zowe-setup-certificates.sh` script executes successfully, it will generate the USS `KEYSTORE_DIRECTORY` that contains the file `zowe-certificates.env`. This file is used in the Zowe instance configuration step. See [Creating and configuring the Zowe instance directory](../user-guide/configure-instance-directory.md#keystore-configuration).
 
