@@ -1,9 +1,25 @@
 # Create an Extension for API ML
 
-Zowe allows extenders to define their own extension for API ML. Follow the steps in this article to create your extension and add it to the
-API Gateway classpath.
+Zowe allows extenders to define their own extension for API ML. 
 
-**Note:** The `api-sample-extension-package` contains a sample `manifest.yml` and the `apiml-sample-extension` JAR that contains the extension.
+## API ML Services with Class Path Extension Support
+
+For API ML services with extension support, extension executables can be loaded by setting the shared library path variable that corresponds to the particular service.
+
+|Service          |Extension directory environment variable|
+|-----------------|----------------------------------------|
+|API Gateway      | `ZWE_GATEWAY_SHARED_LIBS`              |
+|Discovery Service| `ZWE_DISCOVERY_SHARED_LIBS`            |
+
+## API ML Services with Library Path Extension Support
+
+The API Gateway can load native Java libraries by setting `ZWE_GATEWAY_LIBRARY_PATH` to a path pointing to the native library.
+
+## Example API Gateway Extension
+
+Follow the steps in this article to create your extension. The example in this article is for an extension of the API Gateway.
+
+**Note:** The `api-sample-extension-package` contains a sample `manifest.yml`, and the `apiml-sample-extension` JAR that contains the extension.
 
 **Follow these steps:**
 
@@ -13,6 +29,7 @@ API Gateway classpath.
 For more information, see [Packaging z/OS extensions](../packaging-zos-extensions.md).
 
    **Example:**
+
     ```yaml
     ---
     name: apiml-extension
@@ -38,6 +55,7 @@ For more information, see [Packaging z/OS extensions](../packaging-zos-extension
       - path/to/my/lib1/
       - path/to/my/lib2/
     ```
+
 The `ZWE_GATEWAY_SHARED_LIBS` environment variable points to the 
 extension directory `<instance>/workspace/gateway/sharedLibs/`.
 The extension directory is then added to the API Gateway class path as part of the Zowe instance preparation.
@@ -51,7 +69,7 @@ The extension directory is then added to the API Gateway class path as part of t
       - path/to/my/lib2/extension2.jar
    ```
 
-After the JAR file and `manifest.yml` are customized according to your application, the extension is extracted, scanned and added to the extension directory during the Zowe instance preparation. When the API Gateway starts, the the API Gateway consumes the sample extension. 
+After the JAR file and `manifest.yml` are customized according to your application, the extension is extracted, scanned, and added to the extension directory during the Zowe instance preparation. When the API Gateway starts, the API Gateway consumes the sample extension. 
 
 The extension should now be correctly added to the API Gateway classpath. 
 
