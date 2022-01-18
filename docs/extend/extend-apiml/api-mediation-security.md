@@ -453,6 +453,7 @@ The plain java library provides the `ZaasClient` interface with following public
 ```java
 public interface ZaasClient {
     String login(String userId, String password) throws ZaasClientException;
+    String login(String userId, String password, String newPassword) throws ZaasClientException;
     String login(String authorizationHeader) throws ZaasClientException;
     ZaasToken query(String token) throws ZaasClientException;
     ZaasToken query(HttpServletRequest request) throws ZaasClientException;
