@@ -4,7 +4,7 @@ Zowe allows extenders to define their own extension for API ML.
 
 ## API ML Services with Class Path Extension Support
 
-For API ML services with extension support, extension executables can be loaded by setting the shared library path variable that corresponds to the services.
+For API ML services with extension support, extension executables can be loaded by setting the shared library path variable that corresponds to the particular service.
 
 |Service          |Extension directory environment variable|
 |-----------------|----------------------------------------|
