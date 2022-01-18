@@ -207,6 +207,20 @@ module.exports = {
         "user-guide/cli-usingcli",
         {
           type: "category",
+          label: "Using Zowe CLI",
+          items: [
+            "user-guide/cli-using-usingcli",
+            "user-guide/cli-using-displaying-help",
+            "user-guide/cli-using-understanding-core-command-groups",
+            "user-guide/cli-using-issuing-first-command",
+            "user-guide/cli-using-using-profiles",
+            "user-guide/cli-using-integrating-apiml",
+            "user-guide/cli-using-working-certificates",
+            "user-guide/cli-using-completing-advanced-tasks",
+          ],
+        },
+        {
+          type: "category",
           label: "Zowe CLI plug-ins",
           items: [
             "user-guide/cli-extending",
