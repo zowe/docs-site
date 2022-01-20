@@ -21,7 +21,7 @@ zowe-setup-certificates.sh -p <path to zowe-setup-keyring-certificates.env>
 
 Watch this end to end [video](https://youtu.be/PGpXaje4DJk) for the top down scenario, where a RACF certificate authority is generated and used to self-sign Zowe's certificate, both of which are held in the `ZoweKeyring`.  
 
-<iframe class="embed-responsive-item" id="youtubeplayer" title="Generate a self-signed certificate in a RACF keyring" type="text/html" width="640" height="390" src="https://www.youtube.com/embed/PGpXaje4DJk" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen> </iframe>
+<iframe class="embed-responsive-item" id="youtubeplayer" title="Generate a self-signed certificate in a RACF keyring" type="text/html" width="640" height="390" src="https://www.youtube.com/embed/PGpXaje4DJk" frameborder="0" webkitallowfullscreen="true" mozallowfullscreen="true" allowfullscreen="true"> </iframe>
 
 [Download the script](/Zowe_configuration_self_signed_keyring_certificate.txt)
 
@@ -149,7 +149,6 @@ After the ZWEKRING JCL successfully configures the certificates and key ring, yo
 When the `ZWEKRING` JCL runs successfully, it will create a key ring named `ZoweKeyring` owned by `ZWESVUSR` containing the following: 
 - The Zowe certificate (called `localhost`)
 - The local CA (called `ZoweCert`)
-- The certificate used to encrypt the JSON Web Token (JWT) required for single sign-on (called `jwtsecret`)
 
 When the `zowe-setup-certificates.sh` script executes successfully, it will generate the USS `KEYSTORE_DIRECTORY` that contains the file `zowe-certificates.env`. This file is used in the Zowe instance configuration step. See [Creating and configuring the Zowe instance directory](../user-guide/configure-instance-directory.md#keystore-configuration).
 
