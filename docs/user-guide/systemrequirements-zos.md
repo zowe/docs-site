@@ -168,6 +168,8 @@ Multi-factor authentication is supported for several components, such as the Des
 Multi-factor authentication is provided by third-party products which Zowe is compatible with. The following are known to work:
 - [IBM Z Multi-Factor Authentication](https://www.ibm.com/us-en/marketplace/ibm-multifactor-authentication-for-zos).
 
+**Note:** To support the multi-factor authentication, it is necessary to apply z/OSMF APAR  [PH39582](https://www.ibm.com/support/pages/apar/PH39582). 
+
 For information on using MFA in Zowe, see [Multi-Factor Authentication](mvd-configuration.md#multi-factor-authentication-configuration).
 
 ### Single Sign-On (SSO)
