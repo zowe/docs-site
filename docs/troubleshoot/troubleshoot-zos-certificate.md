@@ -16,7 +16,6 @@ code: 'EPROTO',
 syscall: 'write'
 ```
 
-In this condition, you can still log on to the Zowe Desktop, but the API Mediation Layer, API Catalog, and the Zowe Explorer cannot work.
 
 **Solution**
 
