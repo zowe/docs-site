@@ -9,7 +9,7 @@ In order for the Metrics Service to run, you must set the environment variable `
 
 Watch this [video](https://youtu.be/KkuE6xADxPk) to see a demo of the Metrics Service.
 
-<iframe class="embed-responsive-item" id="youtubeplayer" title="APIML metrics service demo" type="text/html" width="640" height="390" src="https://www.youtube.com/embed/KkuE6xADxPk" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen> </iframe>
+<iframe class="embed-responsive-item" id="youtubeplayer" title="APIML metrics service demo" type="text/html" width="640" height="390" src="https://www.youtube.com/embed/KkuE6xADxPk" frameborder="0" webkitallowfullscreen="true" mozallowfullscreen="true" allowfullscreen="true"> </iframe>
 
 ## View HTTP Metrics in the Metrics Service Dashboard
 

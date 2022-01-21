@@ -27,7 +27,7 @@ To download the PAX file, open your web browser and click the **Zowe z/OS Conven
 The following [video](https://youtu.be/U4XH6TyIrSw) shows how to download the Zowe convenience build.
 
 <iframe class="embed-responsive-item" id="youtubeplayer" title="Zowe convenience build download demo" type="text/html" width="640" height="390" src="https://www.youtube.com/embed/U4XH6TyIrSw"
-frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen> </iframe>
+frameborder="0" webkitallowfullscreen="true" mozallowfullscreen="true" allowfullscreen="true"> </iframe>
 
 After you have the `zowe-V.v.p.PAX` file, follow these steps.
 
@@ -101,7 +101,7 @@ After you have the `zowe-V.v.p.PAX` file, follow these steps.
 
 The following [video](https://youtu.be/LcpHQ8HE1uc) shows the scenario of transferring a *zowe.V.v.p.pax* file and expanding it on USS ready for installation.
 
-<iframe class="embed-responsive-item" id="youtubeplayer" title="Install Zowe Convenience Build zowe-install.sh" type="text/html" width="640" height="390" src="https://www.youtube.com/embed/LcpHQ8HE1uc" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen> </iframe>
+<iframe class="embed-responsive-item" id="youtubeplayer" title="Install Zowe Convenience Build zowe-install.sh" type="text/html" width="640" height="390" src="https://www.youtube.com/embed/LcpHQ8HE1uc" frameborder="0" webkitallowfullscreen="true" mozallowfullscreen="true" allowfullscreen="true"> </iframe>
 
 ## Installing the Zowe runtime
 
@@ -173,7 +173,7 @@ You install the Zowe runtime by executing the `zowe-install.sh` script passing i
 
 In this documentation, the steps of creating the runtime directory and configuring the runtime directory are described separately. The configuration step is the same for a Zowe runtime whether it is installed from a convenience build or from an SMP/E distribution.
 
-<iframe class="embed-responsive-item" id="youtubeplayer" title="Zowe overview demo" type="text/html" width="640" height="390" src="https://www.youtube.com/embed/fYdVjk1VA4c" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen> </iframe>
+<iframe class="embed-responsive-item" id="youtubeplayer" title="Zowe overview demo" type="text/html" width="640" height="390" src="https://www.youtube.com/embed/fYdVjk1VA4c" frameborder="0" webkitallowfullscreen="true" mozallowfullscreen="true" allowfullscreen="true"> </iframe>
 
 ### Step 4 (Method 2): Install the Zowe runtime using z/OSMF Workflow
 

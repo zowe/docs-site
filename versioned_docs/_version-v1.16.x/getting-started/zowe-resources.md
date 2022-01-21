@@ -11,7 +11,7 @@ Details for how to contribute to the [Zowe blogs on Medium](https://medium.com/z
 
 ## Videos, webinars
 
-<iframe class="embed-responsive-item" id="youtubeplayer" title="Zowe videos" type="text/html" width="640" height="390" src="https://www.youtube.com/embed?listType=playlist&list=PL8REpLGaY9QE_9d57tw3KQdwSVLKuTpUZ" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen> </iframe>
+<iframe class="embed-responsive-item" id="youtubeplayer" title="Zowe videos" type="text/html" width="640" height="390" src="https://www.youtube.com/embed?listType=playlist&list=PL8REpLGaY9QE_9d57tw3KQdwSVLKuTpUZ" frameborder="0" webkitallowfullscreen="true" mozallowfullscreen="true" allowfullscreen="true"> </iframe>
 
 As well as Zowe videos owned and managed by the community, there are a number of external youtubers who host Zowe related content. 
 
