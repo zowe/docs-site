@@ -300,19 +300,19 @@ You can ignore these messages.
 
 ## Warning: ZWED0171W - Rejected undefined referrer for url=/login, ip=(...)
 
+**Symptom:**
+
 The following message will be shown in the appServer log when you encounter this warning.
 
 ```
 ZOWE WARN (_zsf.auth,webauth.js:328) ZWED0003W - mq5xJaY71xUDA19ku5ScQbdm6bwUF1pN: Session security call authenticate failed for auth handler org.zowe.zlux.auth.safsso. Plugin response: {"success":false,"error":{"message":"ZSS 403 Forbidden"},"reason":"Unknown","apiml":true,"zss":true,"sso":false,"canChangePassword":true}
 ```
 
-**Symptom:**
-
-The IP Address that you log in with should be the the client IP Address that initiates the request, but now it is the server IP address that is used in `ZOWE_IP_ADDRESS=xx.xx.xx.xx`. It means that the server contacts itself not through the localhost.
-
 **Solution:**
 
-  The server should contain a loopback address by adding `ZWED_node_https_ipAddresses=$ZOWE_IP_ADDRESS` in `instance.env`.
+The IP address that you log in with should be the client IP address that initiates the request, but now it is the server IP address that is used in `ZOWE_IP_ADDRESS=xx.xx.xx.xx`. It means that the server contacts itself, not through the localhost.
+
+The server should contain a loopback address by adding `ZWED_node_https_ipAddresses=$ZOWE_IP_ADDRESS` in `instance.env`.
 
 ## Unable to log in to the explorers when using Zowe V1.13 or V1.14
 
