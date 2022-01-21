@@ -199,4 +199,4 @@ z/OSMF workflow simplifies the procedure to configure and start Zowe. Perform th
 
 After you execute each step, the step is marked as Complete. The workflow is executed. For general information about how to execute z/OSMF workflow steps, watch the [z/OSMF Workflows Tutorial](https://www.youtube.com/watch?v=KLKi7bhKBlE&feature=youtu.be).
 
-<iframe class="embed-responsive-item" id="youtubeplayer" title="z/OSMF Workflows Tutorial" type="text/html" width="640" height="390" src="https://www.youtube.com/embed/KLKi7bhKBlE" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen> </iframe>
+<iframe class="embed-responsive-item" id="youtubeplayer" title="z/OSMF Workflows Tutorial" type="text/html" width="640" height="390" src="https://www.youtube.com/embed/KLKi7bhKBlE" frameborder="0" webkitallowfullscreen="true" mozallowfullscreen="true" allowfullscreen="true"> </iframe>
