@@ -150,6 +150,16 @@ Follow these steps:
 - Restart the `ZWESVSTC` address space.
 
 
+### Slow performance of the VT terminal on SSH
+
+**Symptom:**
+
+When you try to use VT terminal on the Zowe Desktop to connect to the UNIX System Services through SSH, the VT terminal on node v12 slows down. Then, the connection fails because the connecting process can run into the 3-minute limit.
+
+**Solution:**
+
+To solve this issue, use Telnet through port 1023 to connect to the UNIX System Services.
+
 ### ZLUX unable to communicate with API Mediation Layer
 
 Follow these steps:
