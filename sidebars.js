@@ -326,6 +326,7 @@ module.exports = {
       ],
     },
     "troubleshoot/troubleshoot-zos",
+    "troubleshoot/troubleshoot-zos-certificate",
     "troubleshoot/k8s-troubleshoot",
     {
       type: "category",
