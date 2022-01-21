@@ -110,9 +110,9 @@ The following definition of skill levels about Zowe will help you gather most re
 
 - [**Troubleshooting Zowe Application Framework**](../troubleshoot/app-framework/app-troubleshoot.md)
 
-   Learn about the tools and techniques that are available to help you troubleshoot and resolve problems. You can also find a list of common issues about Zowe Application Framework. 
+   Learn about the tools and techniques that are available to help you troubleshoot and resolve problems. You can also find a list of common issues about Zowe Application Framework.
 
-- [**Sumit an issue**](https://github.com/zowe/zlux/issues)
+- [**Submit an issue**](https://github.com/zowe/zlux/issues)
 
    If you have an issue that is specific to Zowe Application Framework, you can submit an issue against the `zlux` repo.
 
