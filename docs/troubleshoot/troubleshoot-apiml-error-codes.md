@@ -303,19 +303,25 @@ The following error message codes may appear on logs or API responses. Use the f
 
 ### ZWEAM511E
 
-  The certificate of the service accessed using URL '%s' is not trusted by the API Gateway: %s
+  There was a TLS request error accessing the URL '%s': '%s'
 
   **Reason:**
 
-  The Gateway does not trust the requested service and refuses to communicate with it.
+  The Gateway refuses to communicate with the requested service.
 
   **Action:**
 
   Possible actions regarding to message content:
+  - Message: The certificate is not trusted by the API Gateway.
+  Action: Verify trust of the certificate is the issue by disabling certificate verification and retry the request.
   - Message: Certificate does not match any of the subject alternative names.
-  Action: Verify that the hostname which the certificate is issued for matches the hostname of the service. 
+  Action: Verify that the hostname which the certificate is issued for matches the hostname of the service.
   - Message: Unable to find the valid certification path to the requested target.
-  Action: Import the root CA that issued services's certificate to API Gateway truststore 
+  Action: Import the root CA that issued services' certificate to API Gateway truststore.
+  - Message: Verify the requested service supports TLS.
+  Action: Ensure the requested service is running with TLS enabled.
+  - Message: Review the APIML debug log for more information.
+  Action: Enable APIML debug mode and retry the request, then review the APIML log for TLS errors.
 
 ### ZWEAM600W
 
@@ -969,11 +975,11 @@ The following error message codes may appear on logs or API responses. Use the f
 
 ### ZWEAG704E
 
-  Configuration error '%s' when trying to read jwt secret: %s
+  Configuration error '%s' when trying to read the public and private key for signing JWT: %s
 
   **Reason:**
 
-  A problem occurred while trying to read the jwt secret key from the keystore.
+  A problem occurred while trying to read the certificate-key pair from the keystore.
 
   **Action:**
 
@@ -1009,11 +1015,11 @@ The following error message codes may appear on logs or API responses. Use the f
 
   **Reason:**
 
-  Request to the server instance failed and will not be retried on another instance.
+  The request to the server instance failed and will not be retried on another instance.
 
   **Action:**
 
-  Refer to Caused by details for troubleshooting.
+  Refer to 'Caused by' details for troubleshooting.
 
 ### ZWEAG708E
 
@@ -1045,11 +1051,11 @@ The following error message codes may appear on logs or API responses. Use the f
 
   **Reason:**
 
-  The service is not available. It might be removed by the Circuit Breaker or by requesting specific instance that is not available
+  The service is not available. It might be removed by the Circuit Breaker or by requesting specific instance that is not available.
 
   **Action:**
 
-  Try the request later or remove the request for specific instance.
+  Try the request later, or remove the request for the specific instance.
 
 ### ZWEAG711E
 
@@ -1057,11 +1063,11 @@ The following error message codes may appear on logs or API responses. Use the f
 
   **Reason:**
 
-  The principal does not have the queried access to resource name within resource class.
+  The principal does not have the queried access to the resource name within the resource class.
 
   **Action:**
 
-  No action needed.
+  No action is needed.
 
 ### ZWEAG712E
 
@@ -1069,7 +1075,7 @@ The following error message codes may appear on logs or API responses. Use the f
 
   **Reason:**
 
-  The URI did not follow the format /{serviceId}/{type}/{version}/{endpoint} or /{type}/{version}/{serviceId}/{endpoint}.
+  The URI does not follow the format /{serviceId}/{type}/{version}/{endpoint} or /{type}/{version}/{serviceId}/{endpoint}.
 
   **Action:**
 
@@ -1085,15 +1091,15 @@ The following error message codes may appear on logs or API responses. Use the f
 
   **Action:**
 
-  Based on the information in the message either: verify that the key configuration is correct or that the zOSMF is available.
+  Based on the specific information in the message, verify that the key configuration is correct, or alternatively, that z/OSMF is available.
 
 ### ZWEAG714E
 
-  Unknown error happened while retrieving the used public key
+  Unknown error occurred while retrieving the used public key
 
   **Reason:**
 
-  Unknown problem occured when retrieving the used public key. This should never happen.
+  An unknown problem occured when retrieving the used public key. This should never occur.
 
   **Action:**
 
@@ -1105,23 +1111,23 @@ The following error message codes may appear on logs or API responses. Use the f
 
   **Reason:**
 
-  In either case verify the configuration of zOSMF.
+  There are too many keys in the JWK set. As such, it is not possible to choose the correct one.
 
   **Action:**
 
-  Verify the configuration of the zOSMF to make sure that zOSMF provides only one used key.
+  Verify the configuration of the z/OSMF to make sure that z/OSMF provides only one used key.
 
 ### ZWEAG716E
 
-  The system doesn't know yet what key should be used.
+  The system does not know what key should be used.
 
   **Reason:**
 
-  Typically zOSMF is either unavailable or offline.
+  Typically z/OSMF is either unavailable or offline.
 
   **Action:**
 
-  Verify the zOSMF is available, accessible by the gateway service and online.
+  Verify that z/OSMF is available, accessible by the Gateway service, and online.
 
 ### ZWEAG100E
 
@@ -1169,7 +1175,7 @@ The following error message codes may appear on logs or API responses. Use the f
 
   **Action:**
 
-  Obtain new token by performing an authentication request.
+  Obtain a new token by performing an authentication request.
 
 ### ZWEAG104E
 
@@ -1229,7 +1235,7 @@ The following error message codes may appear on logs or API responses. Use the f
 
   **Action:**
 
-  Ensure that the z/OSMF instance is configured correctly and that it is successfully registered to the Discovery Service and that the API Mediation Layer can communicate with provided z/OSMF instance. The default timeout is 5 minutes. On slower system, add APIML_SECURITY_JWTINITIALIZERTIMEOUT=... variable and value in minutes into Zowe's configuration to override this value.
+  Ensure that the z/OSMF instance is configured correctly and that it is successfully registered to the Discovery Service and that the API Mediation Layer can communicate with the provided z/OSMF instance. The default timeout is 5 minutes. On a slower system, add the variable APIML_SECURITY_JWTINITIALIZERTIMEOUT=... and the value in minutes into Zowe's configuration to override this value.
 
 ### ZWEAG109E
 

@@ -1,4 +1,4 @@
-const LATEST_VERSION = "v1.26.x";
+const LATEST_VERSION = "v1.27.x";
 const versionsArray = require("./versions.json");
 
 module.exports = {
@@ -163,14 +163,14 @@ module.exports = {
       ],
       copyright: `© Open Mainframe Project. a Linux Foundation Project. All Rights Reserved. The Linux Foundation has registered trademarks and uses trademarks. For a list of trademarks of The Linux Foundation, please see our Trademark Usage page. Please refer to Marketing and Branding Guidelines for name usage guidelines. Linux is a registered trademark of Linus Torvalds. Privacy Policy and Terms of Use`,
     },
-    // announcementBar: {
-    //   id: "support_us",
-    //   content:
-    //     '<a target="_blank" rel="noopener noreferrer" href="https://github.com/zowe/docs-site/discussions/1742">Let us know</a> what you think about the new Zowe docs experience!',
-    //   backgroundColor: "#fafbfc",
-    //   textColor: "#091E42",
-    //   isCloseable: true,
-    // },
+    announcementBar: {
+    id: "v1_27_GA",
+    content:
+    '<a target="_blank" rel="noopener noreferrer" href="release-notes/v1_27">Zowe Version 1.27</a> is now available! Read about the new features and fixes in this release.',
+    backgroundColor: "#333333",
+    textColor: "#FFFFFF",
+    isCloseable: true,
+    },
     algolia: {
       apiKey: "59ff39ed48d0820010c7e09fc4b677bf",
       indexName: "zowe",
@@ -208,6 +208,9 @@ module.exports = {
               path: "stable",
               label: `${LATEST_VERSION}` + " LTS",
             },
+            "v1.26.x": {
+              label: "v1.26.x LTS",
+            },
             "v1.25.x": {
               label: "v1.25.x LTS",
             },
@@ -228,12 +231,6 @@ module.exports = {
             },
             "v1.19.x": {
               label: "v1.19.x LTS",
-            },
-            "v1.18.x": {
-              label: "v1.18.x LTS",
-            },
-            "v1.17.x": {
-              label: "v1.17.x LTS",
             },
           },
         },

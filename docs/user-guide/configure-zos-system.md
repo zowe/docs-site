@@ -20,7 +20,7 @@ If you want to undo all of the z/OS security configuration steps performed by th
 If you run `ZWENOSEC` on a z/OS system, then you will no longer be able to run Zowe until you rerun `ZWESECUR` to reinitialize the z/OS security configuration.
 
 When you run the `ZWESECUR` JCL, it does not perform the following initialization steps. Therefore, you must complete these steps manually for a z/OS environment.  
-- [Grant users permission to access z/OSMF](#grant-users-permission-to-access-z-osmf)
+- [Grant users permission to access z/OSMF](#grant-users-permission-to-access-zosmf)
 - [Configure an ICSF cryptographic services environment](#configure-an-icsf-cryptographic-services-environment)
 - [Configure multi-user address space (for TSS only)](#configure-multi-user-address-space-for-tss-only) 
 
@@ -30,6 +30,9 @@ The `ZWESECUR` JCL performs the following initialization steps so you do not nee
 - [Configure ZWESLSTC to run high availability instances under ZWESVUSR user ID](#configure-zweslstc-to-run-under-zwesvusr-user-ID)
 - [Configure the cross memory server for SAF](#configure-the-cross-memory-server-for-saf)
 
+The following video shows how to locate the `ZWESECUR` JCL member and execute it.
+
+<iframe class="embed-responsive-item" id="youtubeplayer" title="Zowe ZWESECUR configure system for security (one-time)" type="text/html" width="640" height="390" src="https://www.youtube.com/embed/-7PZFVESitI" frameborder="0" webkitallowfullscreen="true" mozallowfullscreen="true" allowfullscreen="true"> </iframe>
 
 ## Grant users permission to access z/OSMF
 
@@ -45,14 +48,14 @@ For every TSO user ID that is going to log on to Zowe and use services that requ
   CONNECT (userid) GROUP(IZUUSER)
   ```
 
-- If you use CA ACF2, issue the following commands:
+- If you use ACF2, issue the following commands:
 
   ```
   ACFNRULE TYPE(TGR) KEY(IZUUSER) ADD(UID(<uid string of user>) ALLOW)
   F ACF2,REBUILD(TGR)
   ```
 
-- If you use CA Top Secret, issue the following commands:
+- If you use Top Secret, issue the following commands:
 
   ```
   TSS ADD(userid)  PROFILE(IZUUSER)
@@ -95,7 +98,7 @@ Define or check the following configurations depending on whether ICSF is alread
         ```
         SETROPTS RACLIST(CSFSERV) REFRESH
         ```
-    - If you use CA ACF2, issue the following commands (note that `profile-prefix` and `profile-suffix` are user-defined):
+    - If you use ACF2, issue the following commands (note that `profile-prefix` and `profile-suffix` are user-defined):
         ```
         SET CONTROL(GSO)
         ```
@@ -119,7 +122,7 @@ Define or check the following configurations depending on whether ICSF is alread
         ```
         F ACF2,REBUILD(CSF)
         ```
-    - If you use CA Top Secret, issue the following command (note that `profile-prefix` and `profile-suffix` are user defined):
+    - If you use Top Secret, issue the following command (note that `profile-prefix` and `profile-suffix` are user defined):
         ```
         TSS ADDTO(owner-acid) RESCLASS(CSFSERV)              
         ```
@@ -156,14 +159,14 @@ You can issue the following commands first to check whether you already have the
     ```
     RLIST FACILITY BPX.DAEMON AUTHUSER
     ```
-- If you use CA Top Secret, issue the following commands:
+- If you use Top Secret, issue the following commands:
     ```
     TSS WHOHAS IBMFAC(BPX.SERVER)
     ```
     ```
     TSS WHOHAS IBMFAC(BPX.DAEMON)
     ```
-- If you use CA ACF2, issue the following commands:
+- If you use ACF2, issue the following commands:
     ```
     SET RESOURCE(FAC)
     ```
@@ -208,7 +211,7 @@ If the user `ZWESVUSR` who runs the Zowe server started task does not have UPDAT
       ```
       RLIST FACILITY BPX.DAEMON AUTHUSER
       ```
-- If you use CA Top Secret, complete the following steps:  
+- If you use Top Secret, complete the following steps:  
       
    1. Define the BPX Resource and access for <zowe_stc_user>.
       ```
@@ -228,7 +231,7 @@ If the user `ZWESVUSR` who runs the Zowe server started task does not have UPDAT
       ```
       TSS WHOHAS IBMFAC(BPX.DAEMON)
       ```
-- If you use CA ACF2, complete the following steps:
+- If you use ACF2, complete the following steps:
    1. Define the BPX Resource and access for <zowe_stc_user>.
       ```
       SET RESOURCE(FAC)
@@ -360,7 +363,7 @@ If you have not run `ZWESECUR` and are configuring your z/OS environment manuall
   SETROPTS REFRESH RACLIST(STARTED)
   ```
 
-- If you use CA ACF2, issue the following commands:
+- If you use ACF2, issue the following commands:
 
   ```
   SET CONTROL(GSO)
@@ -368,7 +371,7 @@ If you have not run `ZWESECUR` and are configuring your z/OS environment manuall
   F ACF2,REFRESH(STC)
   ```
 
-- If you use CA Top Secret, issue the following commands:
+- If you use Top Secret, issue the following commands:
 
   ```
   TSS ADDTO(STC) PROCNAME(ZWESVSTC) ACID(ZWESVUSR)
@@ -392,7 +395,7 @@ If you have not run `ZWESECUR` and are configuring your z/OS environment manuall
   SETROPTS REFRESH RACLIST(STARTED)
   ```
 
-- If you use CA ACF2, issue the following commands:
+- If you use ACF2, issue the following commands:
 
   ```
   SET CONTROL(GSO)
@@ -400,7 +403,7 @@ If you have not run `ZWESECUR` and are configuring your z/OS environment manuall
   F ACF2,REFRESH(STC)
   ```
 
-- If you use CA Top Secret, issue the following commands:
+- If you use Top Secret, issue the following commands:
 
   ```
   TSS ADDTO(STC) PROCNAME(ZWESLSTC) ACID(ZWESVUSR)
@@ -454,7 +457,7 @@ To do this, issue the following commands that are also included in the `ZWESECUR
         ```
         This shows the user IDs who have access to the `ZWES.IS` class, which should include Zowe's started task user ID with READ access.
 
-- If you use CA ACF2, issue the following commands:
+- If you use ACF2, issue the following commands:
 
     ```
     SET RESOURCE(FAC)
@@ -466,7 +469,7 @@ To do this, issue the following commands that are also included in the `ZWESECUR
     F ACF2,REBUILD(FAC)
     ```
 
-- If you use CA Top Secret, issue the following commands, where `owner-acid` can be IZUSVR or a different ACID:
+- If you use Top Secret, issue the following commands, where `owner-acid` can be IZUSVR or a different ACID:
 
     ```
     TSS ADD(`owner-acid`) IBMFAC(ZWES.)
@@ -534,3 +537,23 @@ If you use TSS, verify and update permission in `FACILITY` class.
     ```
     TSS PER(ZWESVUSR) IBMFAC(IRR.RUSERMAP) ACCESS(READ)
     ```
+
+## Configure signed SAF Identity tokens (IDT)
+
+This section provides a brief description of how to configure SAF Identity tokens on z/OS so that they can be used by Zowe components 
+like zss or API Mediation layer ([Implement a new SAF IDT provider](../extend/extend-apiml/implement-new-saf-provider.md))
+
+General steps are:
+1. Create PKCS#11 token 
+2. Generate a secret key for the PKCS#11 token (you can use the sample program ZWESECKG in the SZWESAMP dataset)
+3. Define a SAF resource profile under the IDTDATA SAF resource class
+
+Details with examples can be found in documentation of external security products:
+* **RACF** - **_Signed and Unsigned Identity Tokens_** and **_IDT Configuration_** subsections in _z/OS Security Server RACROUTE Macro Reference_ book, [link](https://www.ibm.com/docs/en/zos/2.4.0?topic=reference-activating-using-idta-parameter-in-racroute-requestverify)
+* **Top Secret** - _**Maintain Identity Token (IDT) Records**_ subsection in _Administrating_ chapter, [link](https://techdocs.broadcom.com/us/en/ca-mainframe-software/security/ca-top-secret-for-z-os/16-0/administrating/maintaining-special-security-records/maintain-identity-token-(idt)-records.html)
+* **ACF2** - _**IDTDATA Profile Records**_ subsection in _Administrating_ chapter, [link](https://techdocs.broadcom.com/us/en/ca-mainframe-software/security/ca-acf2-for-z-os/16-0/administrating/administer-records/profile-records/idtdata-profile-records.html)
+
+A part of the Signed SAF Identity token configuration is a nontrivial step that has to generate 
+a secret key for the PKCS#11 token. The secret key is generated in ICSF by calling the PKCS#11 
+Generate Secret Key (CSFPGSK) or Token Record Create (CSFPTRC) callable services. An example of the 
+CSFPGSK callable service can be found in the SZWESAMP dataset as the ZWESECKG job.

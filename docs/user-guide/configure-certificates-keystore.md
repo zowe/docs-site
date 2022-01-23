@@ -1,37 +1,53 @@
 # Configuring Zowe certificates in UNIX files
 
-A keystore directory is used by Zowe to hold the certificate used for encrypting communication between Zowe clients and the Zowe z/OS servers.  The keystore directory also holds the truststore used to hold public keys of any servers that Zowe trusts. When Zowe is launched, the instance directory configuration file `instance.env` specifies the location of the keystore directory. For more information, see [Creating and configuring the Zowe instance directory](configure-instance-directory.md#keystore-directory).
+A keystore directory is used by Zowe to hold the certificate that is used for encrypting communication between Zowe clients and the Zowe z/OS servers.  This is a USS path, whose default is `/global/zowe/keystore`.  The keystore directory also holds the truststore used to hold public keys of any servers that Zowe trusts. When Zowe is launched, the instance directory configuration file `instance.env` specifies the location of the keystore directory that Zowe's servers use to locate their TLS certificate and trust store. For more information on Zowe launch, see [Creating and configuring the Zowe instance directory](configure-instance-directory.md#keystore-directory).
 
-If you created a keystore directory from a previous release of Version 1.8 or later, you can reuse the existing keystore directory with the newer version of Zowe.
+To create the keystore directory, use the `<RUNTIME_DIR>/bin/zowe-setup-certificates.sh` script.  This takes its input parameters from the file `<RUNTIME_DIR>/bin/zowe-setup-certificates.env`.  
 
-You can use the existing certificate signed by an external certificate authority (CA) for HTTPS ports in the API Mediation Layer and the Zowe Application Framework. Alternatively, you can permit the Zowe configuration script to generate a self-signed certificate by the local API Mediation CA.
+The default directory that the certificates are generated in is `/global/zowe/keystore`. At many z/OS installations, access to this directory is restricted to privileged users.  You must change the value of `KEYSTORE_DIRECTORY` in `zowe-setup-certificates.env` to choose a directory that you have write authority for, or else ensure that the execution of the `zowe-setup-certificates.sh` step is performed by a system programmer with site knowledge of where the certificate should be stored. This will ensure that the public key is readable and that the private key access is controlled.  
 
-If you permit the Zowe configuration to generate a self-signed certificate, be sure to import the certificates into your browser to avoid untrusted network traffic challenges. For more information, see [Import the local CA certificate to your browser](../extend/extend-apiml/api-mediation-security.md#import-the-local-ca-certificate-to-your-browser). 
+The Zowe setup can work with the following scenarios:
 
-**Note:** If you do not import the certificates into your browser when you access a Zowe web page, you may be challenged that the web page cannot be trusted.  Depending on the browser you are using, you may have to add an exception to proceed to the web page. Some browser versions may not accept the Zowe certificate because the certificate is self-signed and the signing authority is not recognized as a trusted source.  Manually importing the certificate into your browser ensures that the source is trusted, thereby preventing authenication challenges.  
+- [Create a certificate authority and use it to sign a newly created certificate](#self-signed-certificate)
+- Create a new certificate and sign it with an existing certificate authority
+- Import an existing certificate
 
-If you have an existing server certificate that is signed by an external CA, use this certificate as your Zowe certificate. An example is a CA managed by the IT department of your company, which  already ensured that any certificates signed by that CA are trusted by browsers in your company because they have included the CA of the company in the truststore in company browsers.  This avoids the need to manually import the local CA into each browser of the client machine.  
- 
-To avoid requiring each browser to trust the CA that signed the Zowe certificate, you can use a public certificate authority such as _Symantec_, _Comodo_, _Let's Encrypt_, or _GoDaddy_to create a certificate. These certificates are trusted by all browsers and most REST API clients. This option, however, requires a manual process to request a certificate and may incur a cost payable to the publicly trusted CA.
+## Self-signed certificate
 
-We recommend that you start with the local API Mediation Layer CA for an initial evaluation.
-
-You can use the `<RUNTIME_DIR>/bin/zowe-setup-certificates.sh` script in the Zowe runtime directory to configure certificates with the set of defined environment variables. The environment variables which act as parameters for the certificate configuration are held in the file `<RUNTIME_DIR>/bin/zowe-setup-certificates.env`. 
-
-**Note:** In order to enable Client Authentication in your generated certificate, your server certificate must contain the `TLS Web Client Authentication (1.3.6.1.5.5.7.3.2)` value in the Extended Key Usage section. 
-Additionally, the `Digital signature and/or key agreement` must be also set as an extension value in the Key Usage section. For more information, see [Key usage extentions and extended key usage](https://help.hcltechsw.com/domino/10.0.1/admin/conf_keyusageextensionsandextendedkeyusage_r.html) in the HCL Software documention.
-
-## Generate a certificate with default values
-
-You can generate a certificate with default values. Use a script to read the default variable values that are provided in the `<RUNTIME_DIR>/bin/zowe-setup-certificates.env` file. This script  generates the certificate signed by the local API Mediation CA and keystores in the `/global/zowe/keystore` location. To set up certificates with the default environment variables, run the following script in the Zowe runtime directory:
+Zowe can create its own certificate and sign it with a certificate authority that is also creeated by Zowe.  This is sometimes referred to as a self-signed certificate, and is the simplest scenario to do for evaluation and proof of concept deployment of Zowe.  
 
 ```shell
 <RUNTIME_DIR>/bin/zowe-setup-certificates.sh
 ```
 
-This script generates the keystore in `/global/zowe/keystore`.
+The following [video](https://youtu.be/5C0XguWXLoU) shows how to create a self-signed certificate.  
 
-**Note:** As z/OS installations access to this location is restricted to privileged users, ensure that this step is performed by a system programmer with site knowledge of where the certificate should be stored so that the public key is readable but and that the private key access is controlled.  
+<iframe class="embed-responsive-item" id="youtubeplayer" title="Zowe configuration for self-signed certificate in USS keystore" type="text/html" width="640" height="390" src="https://www.youtube.com/embed/5C0XguWXLoU" frameborder="0" webkitallowfullscreen="true" mozallowfullscreen="true" allowfullscreen="true"> </iframe>
+
+[Download the script](/Zowe_configuration_self_signed_USS_keystore_certificate.txt)
+
+If you are using a self-signed certificate, then you will be challenged by your browser when logging in to Zowe to accept working with an untrusted certificate authority.  Depending on the browser you are using, you may be able to add an exception and proceed to the web page, or you may be prevented from continuing altogether.  
+
+### Manually import a certificate authority into a web browser
+
+To avoid the browser untrusted CA challenge, you can import Zowe's certificates into the browser to avoid untrusted network traffic challenges. For more information, see [Import the local CA certificate to your browser](../extend/extend-apiml/api-mediation-security.md#import-the-local-ca-certificate-to-your-browser). 
+
+To avoid requiring each browser to trust the CA that signed the Zowe certificate, you can use a public certificate authority such as _Symantec_, _Comodo_, _Let's Encrypt_, or _GoDaddy_to create a certificate. These certificates are trusted by all browsers and most REST API clients. This option, however, requires a manual process to request a certificate and may incur a cost payable to the publicly trusted CA.
+
+<!--
+
+## Import an existing certificate 
+
+If you have an existing server certificate that is signed by an external CA, use this certificate as your Zowe certificate. An example is a CA managed by the IT department of your company, which  already ensured that any certificates signed by that CA are trusted by browsers in your company because they have included the CA of the company in the truststore in company browsers.  This avoids the need to manually import the local CA into each browser of the client machine.  
+ 
+**Note:** In order to enable Client Authentication in your generated certificate, your server certificate must contain the `TLS Web Client Authentication (1.3.6.1.5.5.7.3.2)` value in the Extended Key Usage section. 
+Additionally, the `Digital signature and/or key agreement` must be also set as an extension value in the Key Usage section. For more information, see [Key usage extentions and extended key usage](https://help.hcltechsw.com/domino/10.0.1/admin/conf_keyusageextensionsandextendedkeyusage_r.html) in the HCL Software documention.
+
+-->
+
+## Generate a Keystore Directory
+
+The file `<RUNTIME_DIR>/bin/zowe-setup-certificates.sh` takes its input parameters from `<RUNTIME_DIR>/bin/zowe-setup-certificates.env`, and the `KEYSTORE_DIRECTORY` parameter specifies the directory that wil be created to store the certificate.  The default value is `/global/zowe/keystore`.
 
 ## Generate a certificate with custom values
 
@@ -103,8 +119,7 @@ The following procedure shows how to configure the `zowe-setup-certificates.env`
       
 4. Update the value of `EXTERNAL_CERTIFICATE_AUTHORITIES` to the path of the public certificate of the certificate authority that has signed the certificate. You can add additional certificate authorities separated by spaces. 
 
-    **Note:**
-Be sure to specify the complete value _in quotes_. This can be used for certificate authorities that have signed the certificates of the services that you want to access through the API Mediation Layer.
+    **Note:** Be sure to specify the complete value _in quotes_. This can be used for certificate authorities that have signed the certificates of the services that you want to access through the API Mediation Layer.
 
 5. (Optional) If you have trouble getting the certificates and you want only to evaluate Zowe, you can switch off the certificate validation by setting `VERIFY_CERTIFICATES=false` and `NONSTRICT_VERIFY_CERTIFICATES=false`. This setting continues to use HTTPS, but the API Mediation Layer will not validate any certificate.
 
@@ -151,55 +166,6 @@ On many z/OS systems, the certificate for z/OSMF is not signed by a trusted CA a
 If the certificate is from a recognized CA but for a different host name, which can occur when a trusted certificate is copied from one source and reused within a z/OS installation for different servers other than that it was originally created for. We recommended to regenerate certificates with correct `HOSTNAME=` option.
 
 Switching off `VERIFY_CERTIFICATES`, especially `NONSTRICT_VERIFY_CERTIFICATES` is not recommended. It may expose security risks to your z/OS system.
-
-## Using web tokens for SSO on ZLUX and ZSS
-
-Users can use `ZWESSOTK` JCL to create a `PKCS#11` token and configure required security setup. The `ZWESSOTK` JCL is provided as part of the PDS sample library `SZWESAMP` that is delivered with Zowe.
-
-Before you submit the JCL, you must [customize it](#customizing-the-zwessotk-jcl) and review it with a system programmer who is familiar with z/OS certificates. The JCL member contains commands for two z/OS security managers: RACF and TopSecret. Adding support of ACF/2 is a work in progress.
-
-The `ZWESSOTK` JCL contains commands for the following scenarios:
-
-- Defining security requirements needed by following steps and using the `PKCS#11` token.
-- Creation of a locally generated certificated can be used as JWT secret if it does not already exist.
-- Creation of `PKCS#11` token.
-- Binding JWT secret certificate to the `PKCS#11` token.
-
-### Customizing the `ZWESSOTK` JCL
-
-To customize the `ZWESSOTK` JCL, edit the JCL variables at the beginning of the JCL and carefully review and edit all the security commands that are valid for your security manager. Review the information in this section when you customize the JCL.
-
-#### `PRODUCT` variable
-
-The `PRODUCT` variable specifies the z/OS security manager. The default value is `RACF`. Change the value to `ACF2` or `TSS` if you are using Access Control Facility CA-ACF2 or CA Top Secret for z/OS as your z/OS security manager.
-
-```
-//         SET  PRODUCT=RACF         * RACF, ACF2, or TSS
-```
-
-#### `JWTDSNAM` variable
-
-If you already have a certificate you want to use as JWT secret, you can set the data set name and uncomment section `Import JWT secret` below.
-
-#### `JWTLABEL` variable
-
-This is the certificate label of the JWT secret. This variable has a default value of `jwtsecret`. This label name should match the value of `PKCS11_TOKEN_LABEL` in `zowe-setup-certificates.env`.
-
-#### `SSOTOKEN` variable
-
-This is the `PKCS#11` token name will be created by `ZWESSOTK` JCL. This token name should match the value of `PKCS11_TOKEN_NAME` in `zowe-setup-certificates.env`.
-
-
-### Enabling SSO
-
-To enable SSO, you should run `zowe-setup-certificates.sh` with values of `PKCS11_TOKEN_NAME` and `PKCS11_TOKEN_LABEL` matching what you defined in `ZWESSOTK` JCL.
-
-If you have already Zowe certificate generated, you should edit the `zowe-certificates.env` file in the `KEYSTORE_DIRECTORY` directory, set the `PKCS11_TOKEN_NAME` and `PKCS11_TOKEN_LABEL` with values which you have defined in `ZWESSOTK` JCL, and restart Zowe.
-
-If you are upgrading from an old version of Zowe, you can
-
-  - rerun zowe-setup-certificates.sh,
-  - then overwrite `KEYSTORE_DIRECTORY` in your `instance.env` to the newly generated keystore directory.
 
 ## Hints and tips
 

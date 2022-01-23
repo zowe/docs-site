@@ -15,6 +15,7 @@ module.exports = {
       type: "category",
       label: "Release notes",
       items: [
+        "getting-started/release-notes/v1_27",
         "getting-started/release-notes/v1_26",
         "getting-started/release-notes/v1_25",
         "getting-started/release-notes/v1_24",
@@ -84,6 +85,16 @@ module.exports = {
                 "user-guide/install-docker",
                 "user-guide/install-docker-image",
                 "user-guide/configuring-docker",
+              ],
+            },
+            {
+              type: "category",
+              label: "Installing Zowe Portable Software Instance",
+              items: [
+                "user-guide/install-zowe-pswi",
+                "user-guide/install-zowe-pswi-address-requirements",
+                "user-guide/install-zowe-pswi-acquire",
+                "user-guide/install-zowe-pswi-deployment",
               ],
             },
           ],
@@ -197,6 +208,7 @@ module.exports = {
           ],
         },
         "user-guide/api-mediation-api-catalog",
+        "user-guide/api-mediation-metrics-service",
         "user-guide/cli-usingcli",
         {
           type: "category",
@@ -214,6 +226,13 @@ module.exports = {
           ],
         },
         "user-guide/ze-usage",
+        {
+          type: "category",
+          label: "Zowe Explorer extensions",
+          items: [
+            "user-guide/ze-cics",
+          ],
+        },
         "user-guide/sdks-using",
   ],
   extending: [

@@ -9,7 +9,7 @@
 <h2><a href="zowe.html">zowe</a> › <a href="zowe_zos-files.html">zos-files</a> › <a href="zowe_zos-files_download.html">download</a> › <a href="zowe_zos-files_download_data-set.html">data-set</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
 <p>Download content from a z/OS data set to a local file</p>
 <h4>Usage</h4>
-<p>zowe  zos-files download data-set &lt;dataSetName&gt; [options]</p>
+<p>zowe  rse-api-for-zowe-cli download data-set &lt;dataSetName&gt; [options]</p>
 <h4>Positional Arguments</h4>
 <ul>
 <li>
@@ -134,6 +134,18 @@ specify this option if you are not using an API mediation layer.</li>
 </li>
 </ul>
 </li>
+<li>
+<p><code>--cert-file</code>  <em>(local file path)</em></p>
+<ul>
+<li>The file path to a certificate file to use for authentication</li>
+</ul>
+</li>
+<li>
+<p><code>--cert-key-file</code>  <em>(local file path)</em></p>
+<ul>
+<li>The file path to a certificate key file to use for authentication</li>
+</ul>
+</li>
 </ul>
 <h4>Profile Options</h4>
 <ul>
@@ -172,7 +184,7 @@ default token type, which is provided by 'zowe auth login'.</li>
 <p>Download the data set &quot;ibmuser.loadlib(main)&quot; in binary
 mode to the local file &quot;main.obj&quot;:</p>
 <ul>
-<li><code>zowe  zos-files download data-set &quot;ibmuser.loadlib(main)&quot; -b -f main.obj</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  zos-files download data-set &quot;ibmuser.loadlib(main)&quot; -b -f main.obj">Copy</button></li>
+<li><code>zowe  rse-api-for-zowe-cli download data-set &quot;ibmuser.loadlib(main)&quot; -b -f main.obj</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  rse-api-for-zowe-cli download data-set &quot;ibmuser.loadlib(main)&quot; -b -f main.obj">Copy</button></li>
 </ul>
 </li>
 </ul>

@@ -1,0 +1,129 @@
+﻿This video shows how to create a self signed certificate for use by Zowe, that will be held in a RACF Keyring. 
+
+Open the JCL member ZWEKRING in the samplib created when you installed Zowe.  
+
+For this video I'll be using the Zowe Explorer.  
+
+The JCL member can be configured to work for three scenarios.
+
+Option 1.  This is a top down scenario to generate a new certificate authority,
+  and use this to sign a newly generated certificate.   
+
+Option 2. Configure Zowe to work with an existing certificate already held in the RACF database.  
+    This is a bottom up scenario to configure Zowe to re-use an existing certificate already configured on z/OS  
+
+Option 3. Configure Zowe to work with an existing certificate held in PKCS12 format in a data set.
+    This is a bottom up scenario to configure Zowe to re-use a certificate that may have been externally created
+    off-platform by a trusted signing authority.  
+
+For this video we are using a top down self signed certificate, so leave OPTION=1.
+
+The Zowe team who wrote this JCL member are based in Prague, Czech republic, so the defaults reflect their homebase.  
+
+I'm going to change the city, province and country for the certificate authority
+to my hometown of Hursley, in Hampshire, in the United Kingdom.
+
+The certificate we're creating needs to be include the network addresses that we'll using for Zowe's transport layer.
+Update these to be your hostname and IP address.  
+
+Submit the ZWEKRING JCL member to run as a batch job.
+
+It's a good idea to check the steps to make sure everything ran as expected.
+RUNRACF 
+RUNOPT1 as we were generating top down option 1
+and also COMRACF will show us the results of all of the commands the JCL issued.
+
+From the Zowe Explorer it's also possible to issue TSO commands to look at the artifacts created.
+
+RACDCERT LISTRING shows us the contents of ZoweKeyring owned by Zowe's functional ID ZWESVUSR
+
+This contains our certificate authority, and our localhost certificate.
+We can look at these in more detail
+RACDCERT LIST CERTAUTH for localca shows us the certificate authority and we can see it was signed in Hampshire in the United Kingdom
+
+RACDCERT LIST localhost shows us the certificate itself, which will include the host name and the IP address, 
+and also details of the signing authority that we used.
+
+Having created the cert authority localca, the locahost certificate and connecting them all to the newly created ZoweKeyring keyring.
+the next step is to configure our Zowe instance to use them at startup.
+
+This is done by creating a USS keyring directory that will act as a proxy for the RACF certificates.
+The zowe runtime bin directory contains the file zowe-setup-keyring-certificates.env.  
+Open this in an editor.
+
+VERIFY_CERTIFICATES controls whether Zowe will check the signing authority of certificates presented to in order to 
+trust their provenance.
+
+On the LPAR we're starting Zowe the z/OSMF certificate is self signed so we need to override VERIFY_CERTIFICATES to be false.
+
+If your z/OSMF certificate is signed by a trusted authority, or if you are intending to imported the certificate
+into Zowe's trust store, you can leave VERIFY_CERTIFICATES as true.  
+
+The VERIFY_CERTIFICATES parameter affects not just z/OSMF, but all API services that present certificates to the API Gateway.
+
+One scenario that occurs with certificates is that even though they are signed by a trusted authority, 
+the network address they are being used for does not match an IP address they are signed for.  For example, 
+a trusted certificate for address a.b.c.d is used for the address a.b.c.e.  The correct fix for this is to have a.b.c.e added as a
+subject alternate name or SAN to the original certificate.
+
+The parameter NONSTRICT_VERIFY_CERTIFICATES can be set to false. This tells Zowe to not check that the network address being used 
+to present a certificate is one of the ones the certificate is signed for.  On our LPAR our z/OSMF certificate was signed for a different IP
+address so we'll set this to false to avoid runtime errors.
+
+Having relaxed all of Zowe's certificate trust checking, the next step is to set the USS directory we wish our proxy keystore to be genreated into.
+We'll be creating one called zowe-keystore in my home directory.
+
+Open a USS terminal.  For this video I'm going to ssh into unix system services.  
+
+To generate the keystore directory execute the script zowe-setup-certificate.sh from the Zowe runtime /bin directory.  
+To tell the script to use the zowe-setup-keyring-certificates.env file set this as the value to the script's -p parameter
+
+The script generates the keyring directory by reading the certificates.env file
+In our case home directory / zowe-keyring.  Let's take a look inside this directory using the Zowe Explorer
+
+Because the certificate authority and the certificates themselves are held in the RACF keyring
+The local_ca and localhost directories within the keystore are actually empty
+By comparision another keystore directory,  Zowe-keystore, was generated earlier by myself to contain the certificate authority and the keys themselves
+
+The location of the keystore directory used by a Zowe instance is held within the instance.env file's KEYSTORE_DIRECTORY property
+Let's set this to be the newly generated keystore, home directory /zowe-keyring
+
+Now we're all set to launch Zowe
+
+Do this by navigating to the zowe instance directory itself and within the bin directory running the script zowe-start.should
+
+This will echo to us the name of the started task, which in our case is ZWEJ1SV
+
+We can monitor Zowe's startup progress within the Zowe Explorer by setting a filter for ZWEJ*
+The first thing to do is keep an eye on STERRR and make sure nothing is written here
+
+Then check STDOUT to make sure all of the services start up correctly
+
+A good way to check when Zowe is finished starting is to look for the message ZWEAM00I
+There should be four of these, one for each of API Mediation Layer's services.
+Also ensure the message ZWED0021 has been successfully written to the STDOUT log
+
+Now we're ready to actually test Zowe
+
+Open a web browser and navigate to the Zowe host name and port 7554 for the API mediation layer
+
+Because we generated our own certificate authority and used this to self sign Zowe's certificate
+the browser doesn't trust this and will challenge us to make sure we're OK before proceeding
+
+Let's use the browser to make sure why it didn't trust Zowe's certificate
+In our case as we can see it's because the certificate authority was signed in Hursley, Hampsire, UK
+This however was the same certificate authority we generated earlier using the ZWEKRING JCL so all is good
+
+Select API catalog and make sure we're able to successfully log on using our TSO user ID and password
+
+Another good smoke test is to try and reach the Zowe desktop
+This is done using the gateway port 7554 and the URL / ui / v1 / zlux
+Make sure we can log into the desktop using our TSO user ID and password again
+and also try out some of its applications, such as the File Editor
+to work with USS files,   datasets,    and it's also a good idea to try some of the applications
+such as the 3270 emulator or in our case the JES Explorer
+
+
+
+
+

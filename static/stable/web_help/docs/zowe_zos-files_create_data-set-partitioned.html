@@ -9,7 +9,7 @@
 <h2><a href="zowe.html">zowe</a> › <a href="zowe_zos-files.html">zos-files</a> › <a href="zowe_zos-files_create.html">create</a> › <a href="zowe_zos-files_create_data-set-partitioned.html">data-set-partitioned</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
 <p>Create partitioned data sets (PDS)</p>
 <h4>Usage</h4>
-<p>zowe  zos-files create data-set-partitioned &lt;dataSetName&gt; [options]</p>
+<p>zowe  rse-api-for-zowe-cli create data-set-partitioned &lt;dataSetName&gt; [options]</p>
 <h4>Positional Arguments</h4>
 <ul>
 <li>
@@ -188,6 +188,18 @@ specify this option if you are not using an API mediation layer.</li>
 </li>
 </ul>
 </li>
+<li>
+<p><code>--cert-file</code>  <em>(local file path)</em></p>
+<ul>
+<li>The file path to a certificate file to use for authentication</li>
+</ul>
+</li>
+<li>
+<p><code>--cert-key-file</code>  <em>(local file path)</em></p>
+<ul>
+<li>The file path to a certificate key file to use for authentication</li>
+</ul>
+</li>
 </ul>
 <h4>Profile Options</h4>
 <ul>
@@ -225,13 +237,13 @@ default token type, which is provided by 'zowe auth login'.</li>
 <li>
 <p>Create an empty PDS with default parameters:</p>
 <ul>
-<li><code>zowe  zos-files create data-set-partitioned NEW.PDS.DATASET</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  zos-files create data-set-partitioned NEW.PDS.DATASET">Copy</button></li>
+<li><code>zowe  rse-api-for-zowe-cli create data-set-partitioned NEW.PDS.DATASET</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  rse-api-for-zowe-cli create data-set-partitioned NEW.PDS.DATASET">Copy</button></li>
 </ul>
 </li>
 <li>
 <p>Create an empty PDSE using data set type LIBRARY:</p>
 <ul>
-<li><code>zowe  zos-files create data-set-partitioned NEW.PDSE.DATASET --data-set-type LIBRARY</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  zos-files create data-set-partitioned NEW.PDSE.DATASET --data-set-type LIBRARY">Copy</button></li>
+<li><code>zowe  rse-api-for-zowe-cli create data-set-partitioned NEW.PDSE.DATASET --data-set-type LIBRARY</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  rse-api-for-zowe-cli create data-set-partitioned NEW.PDSE.DATASET --data-set-type LIBRARY">Copy</button></li>
 </ul>
 </li>
 </ul>

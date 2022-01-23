@@ -36,7 +36,7 @@ In IBM RACF, the access to the service information can be given by:
 PERMIT APIML.SERVICES CLASS(ZOWE) ID(user) ACCESS(READ)
 ```
 
-In CA Top Secret:
+In Top Secret:
 
 ```markup
 TSS PERMIT(user) ZOWE(APIML.SERVICES) ACCESS(READ)
