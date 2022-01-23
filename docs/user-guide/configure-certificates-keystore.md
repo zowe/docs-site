@@ -22,7 +22,7 @@ Zowe can create its own certificate and sign it with a certificate authority tha
 
 The following [video](https://youtu.be/5C0XguWXLoU) shows how to create a self-signed certificate.  
 
-<iframe class="embed-responsive-item" id="youtubeplayer" title="Zowe configuration for self-signed certificate in USS keystore" type="text/html" width="640" height="390" src="https://www.youtube.com/embed/5C0XguWXLoU" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen> </iframe>
+<iframe class="embed-responsive-item" id="youtubeplayer" title="Zowe configuration for self-signed certificate in USS keystore" type="text/html" width="640" height="390" src="https://www.youtube.com/embed/5C0XguWXLoU" frameborder="0" webkitallowfullscreen="true" mozallowfullscreen="true" allowfullscreen="true"> </iframe>
 
 [Download the script](/Zowe_configuration_self_signed_USS_keystore_certificate.txt)
 
