@@ -37,15 +37,14 @@ From the Zowe Explorer it's also possible to issue TSO commands to look at the a
 
 RACDCERT LISTRING shows us the contents of ZoweKeyring owned by Zowe's functional ID ZWESVUSR
 
-This contains our certificate authority, and our two certificates localhost and jwtsecret
+This contains our certificate authority, and our localhost certificate.
 We can look at these in more detail
 RACDCERT LIST CERTAUTH for localca shows us the certificate authority and we can see it was signed in Hampshire in the United Kingdom
 
 RACDCERT LIST localhost shows us the certificate itself, which will include the host name and the IP address, 
 and also details of the signing authority that we used.
-The second certificate jwtsecret should look similar to our localhost
 
-Having the created the cert authority localca, the two certificates locahost and jwtsecret and connecting them all to the newly created ZoweKeyring keyring.
+Having created the cert authority localca, the locahost certificate and connecting them all to the newly created ZoweKeyring keyring.
 the next step is to configure our Zowe instance to use them at startup.
 
 This is done by creating a USS keyring directory that will act as a proxy for the RACF certificates.

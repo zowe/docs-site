@@ -20,7 +20,7 @@ All Zowe server components can be installed on a z/OS environment, while some ca
 - [Feature requirements](#feature-requirements)
   - [Multi-Factor Authentication MFA](#multi-factor-authentication-mfa)
   - [Single Sign-On SSO](#single-sign-on-sso)
-
+- [Memory requirements](#memory-requirements)
 ## z/OS system requirements
 
 Be sure your z/OS system meets the following prerequisites.
@@ -168,6 +168,8 @@ Multi-factor authentication is supported for several components, such as the Des
 Multi-factor authentication is provided by third-party products which Zowe is compatible with. The following are known to work:
 - [IBM Z Multi-Factor Authentication](https://www.ibm.com/us-en/marketplace/ibm-multifactor-authentication-for-zos).
 
+**Note:** To support the multi-factor authentication, it is necessary to apply z/OSMF APAR  [PH39582](https://www.ibm.com/support/pages/apar/PH39582). 
+
 For information on using MFA in Zowe, see [Multi-Factor Authentication](mvd-configuration.md#multi-factor-authentication-configuration).
 
 ### Single Sign-On (SSO)
@@ -177,4 +179,15 @@ Zowe has an SSO scheme with the goal that each time you use use multiple Zowe co
 Requirements: 
 
 - IBM z/OS Management Facility (z/OSMF)
-- (Optional, recommended) PKCS#11 token setup is required when using ZSS, the Desktop, and Application Framework with SSO. See [Creating a PKCS#11 Token](configure-certificates-keystore.md#using-web-tokens-for-sso-on-zlux-and-zss) for more information. 
+
+## Memory requirements
+
+Zowe API ML components have following memory requiremets:
+
+Component name | Memory usage
+---|---
+Gateway service | 256MB
+Discovery service | 256MB
+API Catalog | 512MB
+Metrics service | 512MB
+Caching service | 512MB
