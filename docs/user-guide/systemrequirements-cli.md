@@ -12,15 +12,13 @@ Zowe CLI is supported on Windows, Linux, and Mac operating systems. Meet the fol
 
 - **Node.js:** Install a currently supported Node.js LTS version. For an up-to-date list of supported LTS versions, see [Nodejs.org](https://nodejs.org/en/about/releases/).
 
-  :::tip
-  You might need to restart the command prompt after installing Node.js. Issue the command `node --version` to verify that Node.js is installed.
-  :::
+  **Tip:**  You might need to restart the command prompt after installing Node.js. Issue the command `node --version` to verify that Node.js is installed.
+
+  **Note:** If you are installing Zowe CLI with Node.js 16 on a Windows operating system, see [Installing Zowe CLI with Node.js 16 on Windows](cli-install-cli-nodejs-windows).
 
 - **npm:** Install a version of Node Package Manager (npm) that is compatible with your version of Node.js.
 
-  :::tip
-  Npm is included with most Node.js installations. Issue the command `npm --version` to check your current version. You can reference the [Node.js release matrix](https://nodejs.org/en/download/releases/) to verify that the versions are compatible.
-  :::
+  **Tip:** Npm is included with most Node.js installations. Issue the command `npm --version` to check your current version. You can reference the [Node.js release matrix](https://nodejs.org/en/download/releases/) to verify that the versions are compatible.
 
 - **(Optional) ssh2 Package:** Zowe CLI has a dependency on the ssh2 package. This package allows for more secure cryptographic ciphers to be used first on supporting hardware. See [Installing the ssh2 Package for Zowe CLI](cli-installing-ssh2-package.md).
 
