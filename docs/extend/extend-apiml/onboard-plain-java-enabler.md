@@ -571,19 +571,19 @@ where:
 
 * **authentication.headers**
         
-        When the `x509` scheme is specified, use the `headers` parameter to select which values to send to a service. Use one of the following values:
-        
-        * `X-Certificate-Public`
-        
-           The public part of client certificate base64 encoded 
+    When the `x509` scheme is specified, use the `headers` parameter to select which values to send to a service. Use one of the following values:
+    
+    * `X-Certificate-Public`
+    
+        The public part of client certificate base64 encoded 
 
-        * `X-Certificate-DistinguishedName`
-        
-           The distinguished name from client certificate
+    * `X-Certificate-DistinguishedName`
+    
+        The distinguished name from client certificate
 
-        * `X-Certificate-CommonName` 
-        
-          The common name from the client certificate
+    * `X-Certificate-CommonName` 
+    
+        The common name from the client certificate
 
 * **authentication.applid**
 
