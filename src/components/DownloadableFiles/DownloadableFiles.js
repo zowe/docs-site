@@ -29,9 +29,9 @@ const downloadableFiles = [
     ),
     firstSubDescription: <>Online interactive version</>,
     firstViewOnlineLink: "./stable/web_help/index.html",
-    firstDownloadLink: "./stable/CLIReference_Zowe.pdf",
-    secondSubDescription: <>ZIP format</>,
-    secondDownloadLink: "./stable/zowe_web_help.zip",
+    firstDownloadLink: "./stable/zowe_web_help.zip",
+    secondSubDescription: <>PDF format</>,
+    secondDownloadLink: "./stable/CLIReference_Zowe.pdf",
   },
   {
     title: "Zowe Client SDK reference guides",

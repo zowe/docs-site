@@ -81,6 +81,16 @@ Add one of the following lines to your active `PROGxx` PARMLIB member, for examp
 
 The PDS member `SZWESAMP(ZWESIMPRG)` contains the SETPROG statement and PROGxx update for reference.
 
+### APF authorize PLUGLIB
+
+When a Zowe server instance is created, a data set named `SZWEPLUG` is created.
+It is used to install and run ZIS plugins. Prior to Zowe 1.25, ZIS plugins were stored in the load library `SZWEAUTH` instead, but as a side effect would be removed during Zowe upgrades.
+
+This previous behavior can be retained with the instance variable `ZWES_ZIS_INSTALL_TO_PLUGINLIB=false`, but otherwise ZIS plugins will be installed into `SZWEPLUG`.
+
+Follow the APF authorize steps in ["APF authorize"](configure-xmem-server.md#apf-authorize) but for the data set named `SZWEPLUG` to be able to use ZIS plugins.
+
+
 ### Key 4 non-swappable
 
 The cross memory server load module `ZWESIS01` must run in key 4 and be non-swappable. For the server to start in this environment, add the following PPT entries for the server and address spaces to the SCHEDxx member of the system PARMLIB.
@@ -117,9 +127,13 @@ For example, the sample JCL below shows `ZWESVSTC` where the APF-authorized PDSE
 //ZWESIS01 EXEC PGM=ZWESIS01,REGION=&RGN,
 //         PARM='NAME=&NAME,MEM=&MEM'
 //STEPLIB  DD   DSNAME=ZWESVUSR.SZWEAUTH,DISP=SHR
+//* APF authorize pluginlib and uncomment below to use as plugin DS  */
+//*         DD   DSNAME=ZWESVUSR.SZWEPLUG,DISP=SHR                   */
 //PARMLIB  DD   DSNAME=ZWESVUSR.SZWESAMP,DISP=SHR
 //SYSPRINT DD   SYSOUT=*
 ```
+
+The data set `.SZWEPLUG` is an optional data set that must be APF authorized and is used for running ZIS plugins. When using ZIS plugins, uncomment the DD statement and [authorize the data set](configure-xmem-server.md#apf-authorize-pluglib)
 
 ## SAF configuration
 
