@@ -166,7 +166,7 @@ module.exports = {
     announcementBar: {
     id: "v1_27_GA",
     content:
-    '<a target="_blank" rel="noopener noreferrer" href="release-notes/v1_27">Zowe Version 1.27</a> is now available! Read about the new features and fixes in this release.',
+    "Zowe Version 1.27 is now available! Read about the new features and fixes in this release.",
     backgroundColor: "#333333",
     textColor: "#FFFFFF",
     isCloseable: true,
