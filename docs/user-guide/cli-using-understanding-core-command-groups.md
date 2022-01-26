@@ -6,9 +6,11 @@ The commands available in the product are organized in a hierarchical structure.
 Zowe CLI contains the following command groups:
 
 ## plugins
+
 The plugins command group lets you install and manage third-party
 plug-ins for the product. Plug-ins extend the functionality of Zowe CLI in the form of new commands.
 With the plugins command group, you can perform the following tasks:
+
 * Install or uninstall third-party plug-ins.
 * Display a list of installed plug-ins.
 * Validate that a plug-in integrates with the base product
@@ -16,6 +18,7 @@ properly.
 
 **Note:** For more information about `plugins` syntax, actions, and options, open Zowe CLI and issue the following
 command:
+
 ```
 zowe plugins -h
 ```
@@ -24,30 +27,37 @@ zowe plugins -h
 
 The profiles command group lets you create and manage profiles for use with other Zowe CLI command groups. Profiles allow you to issue commands to different mainframe systems quickly, without specifying your connection details with every command.
 With the profiles command group, you can perform the following tasks:
+
 * Create, update, and delete profiles for any Zowe CLI command group that supports profiles.
 * Set the default profile to be used within any command group.
 * List profile names and details for any command group, including the default active profile.
 
 **Note:** For more information about `profiles` syntax, actions, and options, open Zowe CLI, and issue the following command:
+
 ```
 zowe profiles -h
 ```
+
 ## provisioning
+
 The provisioning command group lets you perform IBM z/OSMF provisioning tasks with templates and provisioned instances from Zowe CLI.
 
 With the provisioning command group, you can perform the following
 tasks:
+
 * Provision cloud instances using z/OSMF Software Services templates.
 * List information about the available z/OSMF Service Catalog published templates and the templates that you used to publish cloud instances.
 * List summary information about the templates that you used to provision cloud instances. You can filter the information by application (for example, DB2 and CICS) and by the external name of the provisioned instances.
 * List detail information about the variables used (and their corresponding values) on named, published cloud instances.
 
 **Note:** For more information about provisioning syntax, actions, and options, open Zowe CLI and issue the following command:
+
 ```
 zowe provisioning -h
 ```
 
 ## zos-console
+
 The zos-console command group lets you issue commands to the z/OS console by establishing an extended Multiple Console Support (MCS) console.
 
 With the zos-console command group, you can perform the following
@@ -67,9 +77,11 @@ zowe zos-console -h
 ```
 
 ## zos-files
+
 The zos-files command group lets you interact with data sets on z/OS systems.
 
 With the zos-files command group, you can perform the following tasks:
+
 * Create partitioned data sets (PDS) with members, physical sequential data sets (PS), and other types of data sets from templates. You can specify options to customize the data sets you create.
 * Download mainframe data sets and edit them locally in your preferred Integrated Development Environment (IDE).
 * Upload local files to mainframe data sets.
@@ -105,7 +117,7 @@ The zos-uss command group lets you issue Unix System Services shell commands by 
 With the zos-uss command group, you can perform the following task:
 
 **Important\!** Before you issue z/OS UNIX System Services commands with Zowe CLI, security administrators must provide access for your user ID to login via SSH.
-- Issue z/OS UNIX System Services shell commands over an SSH connection and stream back the response.
+* Issue z/OS UNIX System Services shell commands over an SSH connection and stream back the response.
 
 **Note:** For more information about `zos-uss` syntax, actions, and options, open Zowe CLI and issue the following command:
 
@@ -135,6 +147,7 @@ zowe zos-workflows -h
 The zos-tso command group lets you issue TSO commands and interact with TSO address spaces on z/OS systems.
 
 With the zos-tso command group, you can perform the following tasks:
+
 * Execute REXX scripts
 * Create a TSO address space and issue TSO commands to the address space.
 * Review TSO command response data in Zowe CLI.

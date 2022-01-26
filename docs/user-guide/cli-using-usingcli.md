@@ -1,6 +1,6 @@
 # Using Zowe CLI
 
-Learn about how to use Zowe&trade; CLI, including connecting to the mainframe, managing profiles, integrating with API Mediation Layer, and more.
+Learn about how to use Zowe CLI, including connecting to the mainframe, managing profiles, integrating with API Mediation Layer, and more.
 
 You can use the CLI interactively from a command window on any computer on which it is installed, or run it in a container or automation environment.
 

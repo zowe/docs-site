@@ -7,9 +7,11 @@ Profiles let you store configuration details for reuse, and for logging in to au
 * **Base profiles:** Store connection information for use with one or more services. Your service profiles can pull information from base profiles as needed, so that you can specify a common username and password once. The base profile can optionally store tokens to connect to Zowe API Mediation Layer, which improves security by enabling Multi-Factor Authentication (MFA) and Single Sign-on (SSO).
 
 **Tips:**
+
 * You can have multiple service profiles and multiple base profiles.
 * Profiles are **not** required. You can choose to specify all connection details for every command.
 * Profile values are stored on your computer in plaintext in `C:\Users\<yourUsername>\.zowe\profiles` (Windows) or `~/.zowe/profiles` (Mac/Linux).
+
 ## Displaying profile help
 
 Use help to learn about options for creating profiles. For example, for a `zosmf` profile, issue the following command:
@@ -17,6 +19,7 @@ Use help to learn about options for creating profiles. For example, for a `zosmf
 ```
 zowe profiles create zosmf-profile --help
 ```
+
 ## Service profiles
 
 Create profiles that target a specific mainframe service, then use profiles to issue commands. For example, issue the following command (substituting your connection details) to create a `zosmf` service profile named `myprofile123`:
