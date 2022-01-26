@@ -360,11 +360,11 @@ The following parameters define the service authentication method:
     
     * `X-Certificate-Public`
     
-        The public part of client certificate base64 encoded 
+        The public part of the client certificate base64 encoded 
 
     * `X-Certificate-DistinguishedName`
     
-        The distinguished name from client certificate
+        The distinguished name the from client certificate
 
     * `X-Certificate-CommonName` 
     
