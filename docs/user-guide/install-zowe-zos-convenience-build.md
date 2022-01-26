@@ -3,9 +3,10 @@
 You install the Zowe&trade; convenience build by obtaining a PAX file for a build and using this to create the Zowe runtime environment.
 
 After you [obtain the PAX file](#obtaining-and-preparing-the-convenience-build), you can take the following steps to complete the installation.
+
+- [Transfer the convenience build to USS and expand its contents](#transfer-the-convenience-build-to-uss-and-expand-its-contents)
+- [Update $PATH to include `zwe` command](#update-$PATH-to-include-zwe-command)
 <!--
-- [Step 1: Locate the install directory](#step-1-locate-the-install-directory)
-- [Step 2: Choose a runtime USS folder](#step-2-choose-a-runtime-uss-folder)
 - [Step 3: Choose a dataset HLQ for the SAMPLIB and LOADLIB](#step-3-choose-a-dataset-hlq-for-the-samplib-and-loadlib)
 - [Step 4 (Method 1): Install the Zowe runtime using shell script](#step-4-method-1-install-the-zowe-runtime-using-shell-script)
 - [Step 4 (Method 2): Install the Zowe runtime using z/OSMF Workflow](#step-4-method-2-install-the-zowe-runtime-using-zosmf-workflow)
@@ -30,7 +31,7 @@ After you have the `zowe-2.0.0*.pax` file, follow these steps.
 
    Follow the instructions in the **Verify Hash and Signature of Zowe Binary** section on the post-download page `https://d1xozlojgf8voe.cloudfront.net/post_download.html?version=V.v.p` after you download the official build. For example, the post-download page for Version 1.4.0 is [https://d1xozlojgf8voe.cloudfront.net/post_download.html?version=1.4.0](https://d1xozlojgf8voe.cloudfront.net/post_download.html?version=1.4.0).
 -->
-### Step 1:  Transfer the convenience build to USS and expand its contents
+### Transfer the convenience build to USS and expand its contents
 
 1. Transfer the PAX file to z/OS.
 
@@ -95,7 +96,7 @@ After you have the `zowe-2.0.0*.pax` file, follow these steps.
 
    **Note**Zowe version 1 had a script `zowe-install.sh` that created a separate Zowe runtime directory from the expanded contents of the Zowe .pax file.  Zowe v2 no longer has this step.  **The contents of the expanded Zowe .pax file are the Zowe runtime directory.**
 
-### Step 2: PATH environment
+### Update $PATH to include `zwe` command
 
 To install and configure Zowe the command `zwe` is provided, which is in the `<RUNTIME_DIR>/bin` folder.  It is recommended that you add this to your `PATH` which will allow you to execute the `zwe` command without needing to fully qualify its location and for the remainder of the documentation when `zwe` command is referenced it is assumed that it has been added to your `PATH`.
 
@@ -106,19 +107,82 @@ export PATH=${PATH}:<RUNTIME_DIR>/bin
 ```
 This will update the `PATH` for the current shell.  To make this update persistent you can add the line to your `~/.profile` file, or if you are using a bash shell the `~/.bashProfile` file.  To make the path be updated system wide you can update the `/etc/.profile` file.  
 
-### Step 3: Choose a dataset HLQ for the SAMPLIB and LOADLIB
+Zowe uses a configuration file `zowe.yaml` to store configuration data that is read by the `zwe` command. Copy the template file `<RUNTIME_DIR>\example-zowe.yaml` file to a new location, such as `/var/lpp/zowe/zowe.yaml` or your home directory `~/.zowe.yaml`.  This will now become your configuration file that contains data used by the `zwe` command at a number of parts of the lifecycle of configuring and starting Zowe.  You will need to modify the `zowe.yaml` file based on your environment. 
 
-During installation, six PDS data sets are created. 
-The storage requirements are included here.
+The `zwe` command has built in help that can be retrieved with the `-h` suffix.  For example `zwe -h` displays all of the supported commands.  These are broken down into a number of sub-commands.  
+
+```
+zwe -h
+ ...
+Available sub-command(s):
+  - certificate
+  - components
+  - init
+  - install
+  - internal
+  - sample
+  - start
+  - stop
+  - version
+```
+
+To execute the `zwe` command the `-c` argument is used to pass the location of a `zowe.yaml` file containing configuration information.  
+
+### Install the MVS data sets
+
+Zowe includes a number of files that are stored in data sets. The command `zwe initialize` is used to create three data sets. The storage requirements are included here.
 
 Library DDNAME | Member Type | Target Volume | Type | Org | RECFM | LRECL | No. of 3390 Trks | No. of DIR Blks
----|---|---|---|---|---|---|---|---
-SZWEAUTH | APF Load Modules	| ANY | U | PDSE | U | 0 | 15 | N/A
+---|---|---|---|---|---|---|---|---|--
 SZWESAMP | Samples | ANY | U | PDSE | FB | 80 | 15 | 5
+SZWEAUTH | Zowe APF Load Modules | ANY | U | PDSE | U | 0 | 15 | N/A
 SZWEEXEC | CLIST copy utilities | ANY | U | PDSE | FB | 80 | 15 | 5
-JCLLIB | <TODO> | ANY | U | PDSE | FB | 80 | 15 | 5
-PARMLIB | PARMLIB members | ANY | U | PDSE | FB | 80 | 15 | 5
-CUSTAUTH | <TODO>	| ANY | U | PDSE | U | 0 | 15 | N/A
+
+The high level qualifer (or HLQ) for these is specified in the `zowe.yaml` section below: 
+
+```
+zowe:
+  setup:
+    # MVS data set related configurations
+    mvs:
+      hlq: IBMUSER.ZWEV2
+```
+
+You should update `zowe.setup.mvs.hlq` value to match your system.  In a USS shell execute the command `zwe init -c zowe.yaml` which creates the three data sets and copy across their content.  If the data sets already exist specify `--allow-overwritten`.  The command `zwe install -h` can be used to see the full list of parameters. 
+
+A sample run of the command is shown below using default values.  
+
+```
+#>zwe install -c ./zowe.yaml
+===============================================================================
+>> INSTALL ZOWE MVS DATA SETS
+
+Create MVS data sets if they are not exist
+Creating Zowe sample library - IBMUSER.ZWEV2.SZWESAMP
+Creating Zowe authorized load library - IBMUSER.ZWEV2.SZWEAUTH
+Creating Zowe executable utilities library - IBMUSER.ZWEV2.SZWEEXEC
+
+Copy files/SZWESAMP/ZWESIPRG to IBMUSER.ZWEV2.SZWESAMP
+...
+Copy components/launcher/samplib/ZWESLSTC to IBMUSER.ZWEV2.SZWESAMP
+Copy components/launcher/bin/zowe_launcher to IBMUSER.ZWEV2.SZWEAUTH
+...
+Copy components/zss/SAMPLIB/ZWESISCH to IBMUSER.ZWEV2.SZWESAMP(ZWESISCH)
+...
+Copy components/zss/LOADLIB/ZWESAUX to IBMUSER.ZWEV2.SZWEAUTH
+
+-------------------------------------------------------------------------------
+>> Zowe MVS data sets are installed successfully.
+#>
+```
+
+The next step of the installation is done using the `zwe init` command.  This step is common for installing and configuring Zowe from either a convenience build `.pax` file or from an `SMP/E` distribution, so is described in the chapter **Configuring the z/OS System for Zowe** <TODO Link to next section that covers zwe init>
+
+<TODO> End section here
+
+<TODO Copy these to another section as they are applicable to both convenience build and SMP/E> 
+
+## Move to shared section below
 
 The `SZWESAMP` data set contains the following members.
 
@@ -140,7 +204,7 @@ The `SZWEAUTH` data set is a load library containing the following members.
 
 Member name | Purpose
 ---|---
-ZWELNCHD | The Zowe launcher that marshall Zowe's address spaces
+ZWELNCH | The Zowe launcher that controls the startup, restart and shutdown of Zowe's address spaces
 ZWESIS01 | Load module for the cross memory server
 ZWESAUX  | Load module for the cross memory server's auxiliary address space
 
@@ -152,24 +216,11 @@ JCLLIB
 CUSTAUTH
 <TODO>
 
-#### Step 3. Initialize the z/OS data sets
+.
 
-Zowe uses a configuration file `zowe.yaml` to store configuration data.  Copy the `<RUNTIME_DIR>\example-zowe.yaml` file to a new location, such as `/var/lpp/zowe/zowe.yaml` or your home directory `~/.zowe.yaml`.  You will need to modify the `zowe.yaml` file based on your environment. 
+### Initialize the z/OS data sets
 
-To initialize the z/OS data sets the command `zwe init -mvs` will be used.  
 
-- `zowe.setup.mvs.hlq` shows where the `SZWEAUTH` data set is installed.
-- `zowe.setup.mvs.parmlib` is the user custom parameter library. Zowe server
-  command may generate sample PARMLIB members and stores here.
-- `zowe.setup.mvs.jcllib` is the custom JCL library. Zowe server command may
-  generate sample JCLs and put into this data set.
-- `zowe.setup.mvs.authLoadlib` is the user custom APF LOADLIB. This field is
-  optional. If this is defined, members of `SZWEAUTH` will be copied over to
-  this data set and it will be APF authorized. If it's not defined, `SZWEAUTH`
-  from HLQ will be APF authorized.
-- `zowe.setup.mvs.authPluginLib` is the user custom APF PLUGINLIB.
-  You can install Zowe ZIS plugins into this load library.
-  This loadlib requires APF authorize.
 
 <!--
 #### Step 3a: Choose a log directory (optional)
@@ -254,4 +305,103 @@ For a z/OS system where you install Zowe 1.8 or later for the first time, follow
 If you have previously installed Zowe 1.8 or later, then you already have an instance directory that needs to be updated. If you have not installed Zowe 1.8 or later before, you will need to create an instance directory to be able to launch Zowe. For instructions, see [Creating and configuring the Zowe instance directory](configure-instance-directory.md).
 
 Zowe has two started tasks that need to be installed and configured ready to be started.  These are the Zowe server, see [Installing the Zowe started task (ZWESVSTC)](configure-zowe-server.md) and the Zowe cross memory server, see [Installing and configuring the Zowe cross memory server (ZWESISTC)](configure-xmem-server.md).
+-->
+
+<!--
+The command `zwe init` is used to initialize the z/OS environment.  `zwe init -h` will display the sub-commands for system initializtion.  
+
+```
+zwe init -h
+  ...
+Available sub-command(s):
+  - apfauth
+  - certificate
+  - mvs
+  - security
+  - stc
+  - vsam
+```
+
+To execute the `zwe` command the `-c` argument is used to pass the location of a `zowe.yaml` file containing configuration information.  For example the command 
+
+```
+`zwe init mvs -c ~/zowe.yaml` 
+```
+
+will perform the initialization of the MVS datasets.  
+
+Running `zwe init -c ~/.zowe.yaml` will perform all of the sub commands which covers `apfauth`, `certificate`, `mvs`, `security`, `stc`, and `vsam`.
+
+Some of the sub commands for initialization only need to be performed the first time Zowe is installed into a z/OS environment (such as `zwe init security` or `zwe init certificate`) while others should be performed each time Zowe is updated (such as `zwe init mvs`).  
+
+System programmers have the choice of using `zwe init` under USS to manage their Zowe installation, or else using JCL and TSO commands directly.  
+
+### Initialize the MVS data sets
+
+During installation, a number of data sets are created. The command `zwe init mvs` will read values from the `zowe.yaml` file under the section `zowe.setup.mvs` that specify the data set names.  You should update these to match your system.  
+
+```
+zowe:
+  setup:
+    # MVS data set related configurations
+    mvs:
+      hlq: IBMUSER.ZWEV2
+      proclib: USER.PROCLIB
+      parmlib: IBMUSER.ZWEV2.CUST.PARMLIB
+      jcllib: IBMUSER.ZWEV2.CUST.JCLLIB
+      authLoadlib: 
+      authPluginLib: IBMUSER.ZWEV2.CUST.ZWESAPL
+```
+
+For the following example I have changed `IBMUSER` to `WINCHJ`.  
+
+
+
+
+The storage requirements are included here.
+
+Library DDNAME | Member Type | YAML argument | Target Volume | Type | Org | RECFM | LRECL | No. of 3390 Trks | No. of DIR Blks
+---|---|---|---|---|---|---|---|---|--
+SZWESAMP | Samples | zowe.setup.mvs.hlq | ANY | U | PDSE | FB | 80 | 15 | 5
+SZWEAUTH | Zowe APF Load Modules| zowe.setup.mvs.hlq	| ANY | U | PDSE | U | 0 | 15 | N/A
+SZWEEXEC | CLIST copy utilities| zowe.setup.mvs.hlq  | ANY | U | PDSE | FB | 80 | 15 | 5
+JCLLIB | Custome JCL Library| zowe.setup.mvs.jcllib |ANY | U | PDSE | FB | 80 | 15 | 5
+PARMLIB | PARMLIB members | zowe.setup.mvs.parmlib | ANY | U | PDSE | FB | 80 | 15 | 5
+CUSTAUTH | Customer APF Load Modules | zowe.setup.mvs.authLoadlib | ANY | U | PDSE | U | 0 | 15 | N/A
+
+The `SZWESAMP` data set contains the following members.
+
+Member name | Purpose
+---|---
+ZWESECUR | JCL member to configure z/OS user IDs and permissions required to run Zowe
+ZWENOSEC | JCL member to undo the configuration steps performed in ZWESECUR and revert z/OS environment changes.
+ZWEKRING | JCL member to configure a z/OS keyring containing the Zowe certificate
+ZWENOKYR | JCL member to undo the configuration steps performed in ZWEKRING
+ZWESLSTC | JCL to start Zowe
+ZWEXMSTC | JCL to start the Zowe cross memory server
+ZWESIP00 | Parmlib member for the cross memory server
+ZWESASTC | Started task JCL for the cross memory Auxiliary server
+ZWESIPRG | Console commands to APF authorize the cross memory server load library
+ZWESISCH | PPT entries required by Cross memory server and its Auxiliary address spaces to run in Key(4)
+ZWECSVSM | JCL Member to create the VSAM data set for the caching service 
+
+The `SZWEAUTH` data set is a load library containing the following members.
+
+Member name | Purpose
+---|---
+ZWELNCH | The Zowe launcher that controls the startup, restart and shutdown of Zowe's address spaces
+ZWESIS01 | Load module for the cross memory server
+ZWESAUX  | Load module for the cross memory server's auxiliary address space
+
+<TODO>
+Document
+ZWEEXEC
+PARMLIB
+JCLLIB
+CUSTAUTH
+<TODO>
+
+.
+
+
 -->
