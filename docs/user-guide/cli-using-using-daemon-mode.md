@@ -16,20 +16,25 @@ When you run Zowe in daemon mode, you run all Zowe commands as you normally run 
 The following steps describe how to enable daemon mode and how to configure Zowe to run constantly in daemon mode.
 
 1. Open a terminal window and issue the following command:
+
     ```
     zowe daemon enable
     ```
+
     The command copies the Zowe executables for your operating system into the `$ZOWE_CLI_HOME/bin` (`.zowe/bin`) directory. The next command that you issue starts the daemon.
 
 2. Add the path to the Zowe executables to the environment variables for your computer. For example:
+
     ```
     C:\Users\<user_ID>\.zowe\bin
     ```
+
     Ensure that you position the path to your Zowe executables before the path into which NPM installed the Node.js script. For information about configuring environment variables, see the documentation for your computer's operating system.
-    
+
     **Note:** Complete Step 2 only one time.
 
 The following example illustrates running Zowe commands with the daemon mode enabled:
+
 ```
 zowe --version
 Starting a background process to increase performance ...
@@ -40,6 +45,7 @@ zowe --version
 ```
 
 ## Disable daemon mode
+
 You can disable Zowe from running in daemon mode at any time. For example, daemon mode lacks functionality that you desire, such as viewing colored-coded commands.
 
 1. Open a terminal window and issue the following command:
