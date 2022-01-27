@@ -22,11 +22,13 @@ The numbers are incremented each time a release is created, so the higher the nu
 To download the PAX file, open your web browser on the [Zowe Download](https://www.zowe.org/download.html) website, navigate to **Download z/OS Convenience vNext**, and select the button to download a `vNext` convenience build.  
 
 After you have the `zowe-2.0.0*.pax` file, follow these steps.
+
 <!--
 1. **(Optional)** Verify the integrity of the PAX file to ensure that the file you download is officially distributed by the Zowe project.  This step is only needed if you are unsure of the provenance of the PAX file and want to ensure that it is an original Zowe release driver.
 
    Follow the instructions in the **Verify Hash and Signature of Zowe Binary** section on the post-download page `https://d1xozlojgf8voe.cloudfront.net/post_download.html?version=V.v.p` after you download the official build. For example, the post-download page for Version 1.4.0 is [https://d1xozlojgf8voe.cloudfront.net/post_download.html?version=1.4.0](https://d1xozlojgf8voe.cloudfront.net/post_download.html?version=1.4.0).
 -->
+
 ### Transfer the convenience build to USS and expand its contents
 
 1. Transfer the PAX file to z/OS.
@@ -174,11 +176,7 @@ Copy components/zss/LOADLIB/ZWESAUX to IBMUSER.ZWEV2.SZWEAUTH
 
 The next step of the installation is done using the `zwe init` command.  This step is common for installing and configuring Zowe from either a convenience build `.pax` file or from an `SMP/E` distribution, so is described in the chapter **Configuring the z/OS System for Zowe** 
 
-<TODO> End section here
-
-<TODO> Copy these to another section as they are applicable to both convenience build and SMP/E
-
-## Move to shared section below
+**Move to shared section below as appliable to SMP/E also**
 
 The `SZWESAMP` data set contains the following members.
 
@@ -203,201 +201,3 @@ Member name | Purpose
 ZWELNCH | The Zowe launcher that controls the startup, restart and shutdown of Zowe's address spaces
 ZWESIS01 | Load module for the cross memory server
 ZWESAUX  | Load module for the cross memory server's auxiliary address space
-
-<TODO>
-Document
-ZWEEXEC
-PARMLIB
-JCLLIB
-CUSTAUTH
-<TODO>
-
-.
-
-### Initialize the z/OS data sets
-
-
-
-<!--
-#### Step 3a: Choose a log directory (optional)
-
-By default, during installation and configuration, various logs will be created in `/global/zowe/logs` if it is writable, or `~/zowe/logs`. If neither of these directories exists, or is writable by the user who installs Zowe, or you want to override and provide your own directory that contains logs, you can specify this with the `-l` parameter.
-
-Next, you can install the Zowe runtime via different methods.
-
-### Step 4 (Method 1): Install the Zowe runtime using shell script
-
-You install the Zowe runtime by executing the `zowe-install.sh` script passing in the arguments for the USS runtime directory and the prefix for the SAMPLIB and loadlib PDS members.
-
- ```
-    zowe-install.sh -i <RUNTIME_DIR> -h <DATASET_PREFIX> [-l <LOG_DIR>]
- ```
-
-In this documentation, the steps of creating the runtime directory and configuring the runtime directory are described separately. The configuration step is the same for a Zowe runtime whether it is installed from a convenience build or from an SMP/E distribution.
-
-<iframe class="embed-responsive-item" id="youtubeplayer" title="Zowe overview demo" type="text/html" width="640" height="390" src="https://www.youtube.com/embed/fYdVjk1VA4c" frameborder="0" webkitallowfullscreen="true" mozallowfullscreen="true" allowfullscreen="true"> </iframe>
--->
-
-
-<!--
-### Step 4 (Method 2): Install the Zowe runtime using z/OSMF Workflow
-<TODO>
-
-A z/OSMF workflow provides the ability to encapsulate a task as a set of dependent steps. These can be divided across different areas of an organization and can form the basis for the automated auditable processes.
-
-z/OSMF workflows consist of a workflow definition that users then operate and manage as workflow tasks. z/OSMF Workflow tasks can help to guide the activities of system programmers, security administrators, and others who are responsible for managing the configuration of the system.  For more information on z/OSMF workflows, see [z/OS 2.2 workflows](https://www.ibm.com/support/knowledgecenter/SSLTBW_2.2.0/com.ibm.zosmfworkflows.help.doc/izuWFhpAboutWorkflows.html), [z/OS 2.3 workflows](https://www.ibm.com/support/knowledgecenter/SSLTBW_2.3.0/com.ibm.zosmfworkflows.help.doc/izuWFhpAboutWorkflows.html), and [z/OS 2.4 workflows](https://www.ibm.com/support/knowledgecenter/SSLTBW_2.4.0/com.ibm.zosmfworkflows.help.doc/izuWFhpAboutWorkflows.html).
-
-Zowe provides a z/OSMF workflow definition that can be used to create a runtime environment from the Zowe convenience build. Register and execute the z/OSMF workflow to create a runtime environment with the z/OSMF web interface.
-
-Perform the following steps to register and execute the Zowe runtime installation workflow in the z/OSMF web interface:
-
- 1.	Log in to the z/OSMF web interface.
- 2.	Select **Workflows** from the navigation tree.
- 3.	Select **Create Workflow** from the **Actions** menu.
- 4.	Enter the complete path to the workflow definition file in the **Workflow Definition field**.
-    -  The path to the workflow definition file is `<extracted_pax_folder>/files/workflows/ZWEWRF04.xml file.`
- 5. **(Optional)** Enter the path to the customized variable input file that you prepared in advance.
-    - The path to the variable input file is located is `<extracted_pax_folder>/files/workflows/ZWEWRF04.properties file.`
-    - Create a copy of the variable input file. Modify the file as necessary according to the built-in comments. Set the field to the path where the new file is located. When you execute the workflow, the values from the variable input file override the workflow variables default values.
-7.	Select the system where you want to execute the workflow.
-8.	Select **Next**.
-9.	Specify the unique workflow name.
-10.Select or enter an Owner Use ID and select **Assign all steps to owner user ID**.
-
-11. Select **Finish**.
-
-    The workflow is registered in z/OSMF and ready to execute.
-
-11. Select the workflow that you registered from the workflow list.
-12. Execute the steps in order. The following steps are displayed that are ready to execute manually:
-    - **Define Variables**
-       - Define the values for variables for the convenience build runtime installation.
-    - **Allocate ZFS data set**
-       - Execute the step to allocate the zFS data set for the Zowe USS.
-    - **Zowe make dir**
-       - Execute the step create a directory for the Zowe USS file system.
-    - **Mount ZFS**
-       - Execute the step to mount the zFS data set to the created directory
-    - **Set Mountpoint Owner**
-       - Execute the step to sets the user who executes the step as the owner of the mountpoint.
-      - **Run install script**
-        Execute the step executes the Zowe convenience build install script.
-14.	Perform the following steps to execute each step individually:
-    1.	Double-click the title of the step.
-    2.	Select the **Perform** tab.
-    3.	Review the step contents and update the input values as required.
-    4.	Select **Next**.
-    5.	Repeat the previous two steps to complete all items until the option Finish is available.
-    6.	Select **Finish**.
-
-For general information about how to execute z/OSMF workflow steps, watch the [z/OSMF Workflows Tutorial](https://www.youtube.com/watch?v=KLKi7bhKBlE&feature=youtu.be).
-
-After you execute each step, the step is marked as Complete. The workflow is executed.
-
-## Next steps
-
-For a z/OS system where you install Zowe 1.8 or later for the first time, follow the instructions in [Stage 3: Configure the Zowe runtime](install-zos.md#stage-3-configure-the-zowe-runtime) that describes how to [configure the z/OS environment](configure-zos-system.md) and [create a keystore directory](configure-certificates.md).
-
-If you have previously installed Zowe 1.8 or later, then you already have an instance directory that needs to be updated. If you have not installed Zowe 1.8 or later before, you will need to create an instance directory to be able to launch Zowe. For instructions, see [Creating and configuring the Zowe instance directory](configure-instance-directory.md).
-
-Zowe has two started tasks that need to be installed and configured ready to be started.  These are the Zowe server, see [Installing the Zowe started task (ZWESVSTC)](configure-zowe-server.md) and the Zowe cross memory server, see [Installing and configuring the Zowe cross memory server (ZWESISTC)](configure-xmem-server.md).
--->
-
-<!--
-The command `zwe init` is used to initialize the z/OS environment.  `zwe init -h` will display the sub-commands for system initializtion.  
-
-```
-zwe init -h
-  ...
-Available sub-command(s):
-  - apfauth
-  - certificate
-  - mvs
-  - security
-  - stc
-  - vsam
-```
-
-To execute the `zwe` command the `-c` argument is used to pass the location of a `zowe.yaml` file containing configuration information.  For example the command 
-
-```
-`zwe init mvs -c ~/zowe.yaml` 
-```
-
-will perform the initialization of the MVS datasets.  
-
-Running `zwe init -c ~/.zowe.yaml` will perform all of the sub commands which covers `apfauth`, `certificate`, `mvs`, `security`, `stc`, and `vsam`.
-
-Some of the sub commands for initialization only need to be performed the first time Zowe is installed into a z/OS environment (such as `zwe init security` or `zwe init certificate`) while others should be performed each time Zowe is updated (such as `zwe init mvs`).  
-
-System programmers have the choice of using `zwe init` under USS to manage their Zowe installation, or else using JCL and TSO commands directly.  
-
-### Initialize the MVS data sets
-
-During installation, a number of data sets are created. The command `zwe init mvs` will read values from the `zowe.yaml` file under the section `zowe.setup.mvs` that specify the data set names.  You should update these to match your system.  
-
-```
-zowe:
-  setup:
-    # MVS data set related configurations
-    mvs:
-      hlq: IBMUSER.ZWEV2
-      proclib: USER.PROCLIB
-      parmlib: IBMUSER.ZWEV2.CUST.PARMLIB
-      jcllib: IBMUSER.ZWEV2.CUST.JCLLIB
-      authLoadlib: 
-      authPluginLib: IBMUSER.ZWEV2.CUST.ZWESAPL
-```
-
-For the following example I have changed `IBMUSER` to `WINCHJ`.  
-
-
-
-
-The storage requirements are included here.
-
-Library DDNAME | Member Type | YAML argument | Target Volume | Type | Org | RECFM | LRECL | No. of 3390 Trks | No. of DIR Blks
----|---|---|---|---|---|---|---|---|--
-SZWESAMP | Samples | zowe.setup.mvs.hlq | ANY | U | PDSE | FB | 80 | 15 | 5
-SZWEAUTH | Zowe APF Load Modules| zowe.setup.mvs.hlq	| ANY | U | PDSE | U | 0 | 15 | N/A
-SZWEEXEC | CLIST copy utilities| zowe.setup.mvs.hlq  | ANY | U | PDSE | FB | 80 | 15 | 5
-JCLLIB | Custome JCL Library| zowe.setup.mvs.jcllib |ANY | U | PDSE | FB | 80 | 15 | 5
-PARMLIB | PARMLIB members | zowe.setup.mvs.parmlib | ANY | U | PDSE | FB | 80 | 15 | 5
-CUSTAUTH | Customer APF Load Modules | zowe.setup.mvs.authLoadlib | ANY | U | PDSE | U | 0 | 15 | N/A
-
-The `SZWESAMP` data set contains the following members.
-
-Member name | Purpose
----|---
-ZWESECUR | JCL member to configure z/OS user IDs and permissions required to run Zowe
-ZWENOSEC | JCL member to undo the configuration steps performed in ZWESECUR and revert z/OS environment changes.
-ZWEKRING | JCL member to configure a z/OS keyring containing the Zowe certificate
-ZWENOKYR | JCL member to undo the configuration steps performed in ZWEKRING
-ZWESLSTC | JCL to start Zowe
-ZWEXMSTC | JCL to start the Zowe cross memory server
-ZWESIP00 | Parmlib member for the cross memory server
-ZWESASTC | Started task JCL for the cross memory Auxiliary server
-ZWESIPRG | Console commands to APF authorize the cross memory server load library
-ZWESISCH | PPT entries required by Cross memory server and its Auxiliary address spaces to run in Key(4)
-ZWECSVSM | JCL Member to create the VSAM data set for the caching service 
-
-The `SZWEAUTH` data set is a load library containing the following members.
-
-Member name | Purpose
----|---
-ZWELNCH | The Zowe launcher that controls the startup, restart and shutdown of Zowe's address spaces
-ZWESIS01 | Load module for the cross memory server
-ZWESAUX  | Load module for the cross memory server's auxiliary address space
-
-<TODO>
-Document
-ZWEEXEC
-PARMLIB
-JCLLIB
-CUSTAUTH
-<TODO>
-
-.
-
-
--->
