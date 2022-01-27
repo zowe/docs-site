@@ -172,11 +172,11 @@ Copy components/zss/LOADLIB/ZWESAUX to IBMUSER.ZWEV2.SZWEAUTH
 #>
 ```
 
-The next step of the installation is done using the `zwe init` command.  This step is common for installing and configuring Zowe from either a convenience build `.pax` file or from an `SMP/E` distribution, so is described in the chapter **Configuring the z/OS System for Zowe** <TODO Link to next section that covers zwe init>
+The next step of the installation is done using the `zwe init` command.  This step is common for installing and configuring Zowe from either a convenience build `.pax` file or from an `SMP/E` distribution, so is described in the chapter **Configuring the z/OS System for Zowe** 
 
 <TODO> End section here
 
-<TODO Copy these to another section as they are applicable to both convenience build and SMP/E> 
+<TODO> Copy these to another section as they are applicable to both convenience build and SMP/E
 
 ## Move to shared section below
 
