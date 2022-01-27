@@ -6,15 +6,11 @@ After you [obtain the PAX file](#obtaining-and-preparing-the-convenience-build),
 
 - [Transfer the convenience build to USS and expand its contents](#transfer-the-convenience-build-to-uss-and-expand-its-contents)
 - [Update $PATH to include `zwe` command](#update-$PATH-to-include-zwe-command)
-<!--
-- [Step 3: Choose a dataset HLQ for the SAMPLIB and LOADLIB](#step-3-choose-a-dataset-hlq-for-the-samplib-and-loadlib)
-- [Step 4 (Method 1): Install the Zowe runtime using shell script](#step-4-method-1-install-the-zowe-runtime-using-shell-script)
-- [Step 4 (Method 2): Install the Zowe runtime using z/OSMF Workflow](#step-4-method-2-install-the-zowe-runtime-using-zosmf-workflow)
--->
+
 ## Obtaining and preparing the convenience build
 
 The Zowe installation file for Zowe z/OS components is distributed as a PAX file that contains the runtimes and the scripts to install and launch the z/OS runtime.
-<!--
+
 For each release, there is a PAX file that is named `zowe-V.v.p.pax`, where
 
 - `V` indicates the Major Version
@@ -22,7 +18,7 @@ For each release, there is a PAX file that is named `zowe-V.v.p.pax`, where
 - `p` indicates the Patch Version
 
 The numbers are incremented each time a release is created, so the higher the numbers, the later the release.  For more information about the Zowe release number, see [Understanding the Zowe release](../troubleshoot/troubleshoot-zowe-release.md).
--->
+
 To download the PAX file, open your web browser on the [Zowe Download](https://www.zowe.org/download.html) website, navigate to **Download z/OS Convenience vNext**, and select the button to download a `vNext` convenience build.  
 
 After you have the `zowe-2.0.0*.pax` file, follow these steps.
