@@ -29,6 +29,14 @@ where:
 The API Gateway is usually using TLS with the `wss` protocol. Services that use TLS enable the API Gateway to use `wss` to access these services. Services that do not use TLS require the API Gateway to use the `ws` protocol without TLS.
 The API Gateway also supports basic authentication via WebSocket.
 
+## Subprotocols
+
+In addition to plain WebSocket, API Mediation layer supports WebSocket subprotocols, too. Currently, only STOPM v1.2 and STOMP v1.1 are officially supported and tested. 
+
+**Note:** It is possible to update the list of currently supported WebSocket subprotocols. You need to update the API Gateway configuration using the environment variable `SERVER_WEBSOCKET_SUPPORTEDPROTOCOLS` with the value of comma-separated subprotocol names. However, there is no guarantee of support for any additional subprotocols. Use this at your own risk! **Example:**
+```
+SERVER_WEBSOCKET_SUPPORTEDPROTOCOLS=v12.stomp,v11.stomp,wamp,soap
+```
 ## High availability
 
 In the high availability scenario, the API Gateway makes it possible to open a new Websocket session by leveraging the load balancing mechanism. 
