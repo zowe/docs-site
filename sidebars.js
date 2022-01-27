@@ -102,7 +102,7 @@ module.exports = {
               type: "category",
               label: "Configuring and starting Zowe with script",
               items: [
-                "user-guide/initialize-zos-system.md",
+                "user-guide/initialize-zos-system",
                 "user-guide/configure-zos-system",
                 {
                   type: "category",
