@@ -64,7 +64,7 @@ scheme       host        endpointPath
 ### URL to a service endpoint via API gateway
 
 ```markup
-https://ca3x.ca.com:10310/api/v1/cafilemasterplus/mvs/dataSets/test/ping
+https://ca3x.ca.com:10310/cafilemasterplus/api/v1/mvs/dataSets/test/ping
 \______/\_______________/\______________________/\_____________________/
 scheme       host             basePath                  endpointPath
                           \_/ \/\______________/

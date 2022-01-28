@@ -52,7 +52,7 @@ http://service:10015/enablerv1sampleapp/api/v1/samples
 The following address shows the API Gateway URL of the resource:
 
 ```
-https://gateway:10010/api/v1/enablerv1sampleapp/samples
+https://gateway:10010/enablerv1sampleapp/api/v1/samples
 ```
 
 The following diagram illustrates how basic routing works:

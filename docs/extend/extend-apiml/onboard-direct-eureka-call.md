@@ -85,7 +85,7 @@ where:
     * If the `serviceId` is `sampleservice`, the service URL in the API ML Gateway address space appears as:
 
        ```
-       https://gateway-host:gateway-port/api/v1/sampleservice/...
+       https://gateway-host:gateway-port/sampleservice/api/v1/...
        ```
 
  * **ipAddr**

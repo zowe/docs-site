@@ -59,7 +59,7 @@ This activates the application/loggers endpoints in each API ML internal service
 
     **Note:**  For the Catalog you can list the available loggers by issuing a GET request for the given service URL in the following format:
     ```
-    GET [gateway-scheme]://[gateway-hostname]:[gateway-port]/api/v1/apicatalog/application/loggers
+    GET [gateway-scheme]://[gateway-hostname]:[gateway-port]/apicatalog/api/v1/application/loggers
     ```
 
     **Tip:** One way to issue REST calls is to use the http command in the free HTTPie tool: https://httpie.org/.
