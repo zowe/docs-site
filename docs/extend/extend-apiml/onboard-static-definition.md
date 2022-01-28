@@ -130,7 +130,7 @@ services:
 ```
 To access API version 2 of the service `petstore`, gateway URL will be:
 ```
-https://gateway-host:port/api/v2/petstore
+https://gateway-host:port/petstore/api/v2
 ```
 It will be routed to:
 ```
@@ -139,7 +139,7 @@ https://localhost:8080/v2
 
 To access resource `pets` of the `petstore` version 2 API, gateway URL will be:
 ```
-https://gateway:port/api/v2/petstore/pets
+https://gateway:port/petstore/api/v2/pets
 ```
 It will be routed to: 
  ```

@@ -445,7 +445,7 @@ routes:
 
 **Examples:** 
 * ```
-  https://gateway:10010/api/sampleservice 
+  https://gateway:10010/sampleservice/api
   ```
   is routed to: 
   ```

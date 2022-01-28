@@ -887,7 +887,7 @@ If your service is not trusted, you may receive a response with the HTTP status 
 
 **Example:**
 
-```http --verify=$KEYSTORE_DIRECTORY/local_ca/localca.cer GET https://<gatewayHost>:<port></port>/<untrustedService>/api/v1/greeting```
+```http --verify=$KEYSTORE_DIRECTORY/local_ca/localca.cer GET https://<gatewayHost>:<port>/<untrustedService>/api/v1/greeting```
 
 In this example, you receive a similar response:
 
