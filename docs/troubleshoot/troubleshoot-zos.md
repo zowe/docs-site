@@ -232,4 +232,4 @@ You can take the following steps:
 
 **Drawback:**
 
-With this change, you must use the API Mediation Layer Gateway port (default is 7554) to access Zowe Desktop, for example, `https://domain-a.com:7554/ui/v1/zlux` or `https://domain-b.com:7554/ui/v1/zlux`. Using Desktop port (default is 8544) like `https://domain-b.com:8544/` is not supported.
+With this change, you must use the API Mediation Layer Gateway port (default is 7554) to access Zowe Desktop, for example, `https://domain-a.com:7554/zlux/ui/v1` or `https://domain-b.com:7554/zlux/ui/v1`. Using Desktop port (default is 8544) like `https://domain-b.com:8544/` is not supported.
