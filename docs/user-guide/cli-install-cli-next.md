@@ -6,6 +6,9 @@
 
 * Meet the [software requirements](https://docs.zowe.org/stable/user-guide/systemrequirements.html#zowe-cli-requirements) for Zowe CLI.
 * Meet the [software requirements](https://docs.zowe.org/stable/user-guide/cli-swreqplugins.html#software-requirements-for-zowe-cli-plug-ins) for each plug-in.
+* Node.js 16 on Windows:
+   
+   If you are installing Zowe CLI @next on a computer that is running a Windows operating system, see [Installing Zowe CLI with Node.js 16 on Windows](cli-install-cli-nodejs-windows).
 
 * NPM version 7 (`npm@7`) and NPM version 8 (`npm@8`):
 
