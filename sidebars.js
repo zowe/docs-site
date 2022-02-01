@@ -217,7 +217,17 @@ module.exports = {
             "user-guide/cli-using-issuing-first-command",
             "user-guide/cli-using-using-daemon-mode",
             "user-guide/cli-using-using-profiles",
-            "user-guide/cli-using-configuring-global-profiles",
+            {
+              type: "category",
+              label: "Using Global Profiles",
+              items: [
+                "user-guide/cli-using-configuring-global-profiles",
+                "user-guide/cli-using-initializing-global-configuration",
+                "user-guide/cli-using-creating-global-user-profiles",
+                "user-guide/cli-using-creating-global-team-profiles",
+                              ],
+            },
+            
             "user-guide/cli-using-integrating-apiml",
             "user-guide/cli-using-working-certificates",
             "user-guide/cli-using-completing-advanced-tasks",
