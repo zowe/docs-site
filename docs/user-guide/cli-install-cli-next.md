@@ -2,25 +2,25 @@
 
 <Badge text="Technical Preview"/> The Zowe CLI @next release is a technical preview. Technical previews are for testing only and are not ready for production. Your feedback is valued and appreciated.
 
+You can install the Zowe CLI `@next` version from the online npm registry or download it from the Zowe Downloads site.
+
 ***Prerequisites***
 
 * Meet the [software requirements](https://docs.zowe.org/stable/user-guide/systemrequirements.html#zowe-cli-requirements) for Zowe CLI.
 * Meet the [software requirements](https://docs.zowe.org/stable/user-guide/cli-swreqplugins.html#software-requirements-for-zowe-cli-plug-ins) for each plug-in.
-* Node.js 16 on Windows:
-   
-   If you are installing Zowe CLI @next on a computer that is running a Windows operating system, see [Installing Zowe CLI with Node.js 16 on Windows](cli-install-cli-nodejs-windows).
 
-* NPM version 7 (`npm@7`) and NPM version 8 (`npm@8`):
+**Prerequisite notes:**
 
-   On Windows operating systems, ensure that your computer is connected to the Internet. Issue the following command before you install Zowe CLI @next:
+* If you are installing Zowe CLI @next on a computer that is running Node.js 16 on Windows operating system, see [Installing Zowe CLI with Node.js 16 on Windows](cli-install-cli-nodejs-windows).
+
+* If you are running NPM version 7 (`npm@7`) or NPM version 8 (`npm@8`) on a Windows operating system, ensure that your computer is connected to the Internet. Issue the following command before you install Zowe CLI @next:
 
    ```
    npm install -g prebuild-install
    ```
+* Linux users may need to prepend `sudo` to `npm` commands. For more information, see [Troubleshooting Zowe CLI](../troubleshoot/cli/troubleshoot-cli.md).
 
-**Note:** Linux users may need to prepend `sudo` to `npm` commands. For more information, see [Troubleshooting Zowe CLI](../troubleshoot/cli/troubleshoot-cli.md).
 
-You can install the Zowe CLI `@next` version from the online npm registry or download it from the Zowe Downloads site.
 
 ## Install Zowe CLI from npm
 
