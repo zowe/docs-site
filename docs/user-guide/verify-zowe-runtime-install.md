@@ -29,7 +29,7 @@ If the desktop appears but you are unable to log on, check [Cannot log into the 
 Use your preferred REST API client to review the value of the status variable of the API Catalog service that is routed through the API Gateway using the following URL:
 
 ```
-https://myhost:httpsPort/api/v1/apicatalog/application/health
+https://myhost:httpsPort/apicatalog/api/v1/application/health
 ```
 
 where, 
@@ -42,7 +42,7 @@ where,
 The following example illustrates how to use the **curl** utility to invoke API Mediation Layer endpoint and the **grep** utility to parse out the response status variable value
 
 ```
-$ curl -v -k --silent https://myhost:httpsPort/api/v1/apicatalog/application/health 2>&1 | grep -Po '(?<=\"status\"\:\")[^\"]+'
+$ curl -v -k --silent https://myhost:httpsPort/apicatalog/api/v1/application/health 2>&1 | grep -Po '(?<=\"status\"\:\")[^\"]+'
 UP
 ```
 
