@@ -7,13 +7,12 @@
 <link rel="stylesheet" href="../css/docs.css">
 <article class="markdown-body">
 <h2><a href="zowe.html">zowe</a> › <a href="zowe_system-automation.html">system-automation</a> › <a href="zowe_system-automation_list.html">list</a> › <a href="zowe_system-automation_list_policies.html">policies</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
-<p>List the active configuration (policy) of all SAPlex members (agent and
-manager).</p>
+<p>List the active configuration (policy) of all SAPlex members (agent and manager).</p>
 <p>Requires (min.): SA Operations API 1.0.0</p>
-<p>Following Success Message can be returned by this command:
+<p>Following Success Message can be returned by this command:<br>
 SACLI006500 - Listing policies success</p>
 <h4>Usage</h4>
-<p>zowe  system-automation list policies [options]</p>
+<p>zowe system-automation list policies [options]</p>
 <h4>Options</h4>
 <ul>
 <li>
@@ -85,8 +84,7 @@ SACLI006500 - Listing policies success</p>
 <li>
 <p><code>--token-type</code>  | <code>--tt</code> <em>(string)</em></p>
 <ul>
-<li>The type of token to get and use for the API. Omit this option to use the
-default token type, which is provided by 'zowe auth login'.</li>
+<li>The type of token to get and use for the API. Omit this option to use the default token type, which is provided by 'zowe auth login'.</li>
 </ul>
 </li>
 <li>
@@ -113,13 +111,13 @@ default token type, which is provided by 'zowe auth login'.</li>
 <li>
 <p>List all policies of all members.:</p>
 <ul>
-<li><code>zowe  system-automation list policies</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  system-automation list policies">Copy</button></li>
+<li><code>zowe system-automation list policies</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe system-automation list policies">Copy</button></li>
 </ul>
 </li>
 <li>
 <p>List all policies of members running on system &lt;SYSA&gt;:</p>
 <ul>
-<li><code>zowe  system-automation list policies --system=SYSA</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  system-automation list policies --system=SYSA">Copy</button></li>
+<li><code>zowe system-automation list policies --system=SYSA</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe system-automation list policies --system=SYSA">Copy</button></li>
 </ul>
 </li>
 </ul>

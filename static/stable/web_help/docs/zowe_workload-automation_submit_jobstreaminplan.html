@@ -9,7 +9,7 @@
 <h2><a href="zowe.html">zowe</a> › <a href="zowe_workload-automation.html">workload-automation</a> › <a href="zowe_workload-automation_submit.html">submit</a> › <a href="zowe_workload-automation_submit_jobstreaminplan.html">jobstreaminplan</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
 <p>Submit a  jobstream to the plan.</p>
 <h4>Usage</h4>
-<p>zowe  workload-automation submit jobstreaminplan [options]</p>
+<p>zowe workload-automation submit jobstreaminplan [options]</p>
 <h4>Required Options</h4>
 <ul>
 <li>
@@ -42,8 +42,7 @@
 <li>
 <p><code>--jclvariables</code>  | <code>--jv</code> <em>(array)</em></p>
 <ul>
-<li>A pair composed by variable name and value to be replaced in the JCL. Must be a
-promptable variable.</li>
+<li>A pair composed by variable name and value to be replaced in the JCL. Must be a promptable variable.</li>
 </ul>
 </li>
 </ul>
@@ -82,9 +81,7 @@ promptable variable.</li>
 <li>
 <p><code>--base-path</code>  | <code>--bp</code> <em>(string)</em></p>
 <ul>
-<li>Base path of your API mediation layer instance. If a base path is specified,
-the plug-in connects to API ML. Specify this value according to the yaml
-static file added to API ML</li>
+<li>Base path of your API mediation layer instance. If a base path is specified, the plug-in connects to API ML. Specify this value according to the yaml static file added to API ML</li>
 </ul>
 </li>
 <li>
@@ -117,8 +114,7 @@ static file added to API ML</li>
 <li>
 <p><code>--token-type</code>  | <code>--tt</code> <em>(string)</em></p>
 <ul>
-<li>The type of token to get and use for the API. Omit this option to use the
-default token type, which is provided by 'zowe auth login'.</li>
+<li>The type of token to get and use for the API. Omit this option to use the default token type, which is provided by 'zowe auth login'.</li>
 </ul>
 </li>
 <li>
@@ -143,24 +139,21 @@ default token type, which is provided by 'zowe auth login'.</li>
 <h4>Examples</h4>
 <ul>
 <li>
-<p>Submit a jobstream in the current plan whose name is
-'myjobstream' with the specified start time:</p>
+<p>Submit a jobstream in the current plan whose name is 'myjobstream' with the specified start time:</p>
 <ul>
-<li><code>zowe  workload-automation submit jobstreaminplan --name myjobstream --starttime 2018-10-17T19:00:00</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  workload-automation submit jobstreaminplan --name myjobstream --starttime 2018-10-17T19:00:00">Copy</button></li>
+<li><code>zowe workload-automation submit jobstreaminplan --name myjobstream --starttime 2018-10-17T19:00:00</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe workload-automation submit jobstreaminplan --name myjobstream --starttime 2018-10-17T19:00:00">Copy</button></li>
 </ul>
 </li>
 <li>
-<p>Submit a jobstream in the current plan whose name is
-'myjobstream' with all jobs on hold:</p>
+<p>Submit a jobstream in the current plan whose name is 'myjobstream' with all jobs on hold:</p>
 <ul>
-<li><code>zowe  workload-automation submit jobstreaminplan --name myjobstream --holdall</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  workload-automation submit jobstreaminplan --name myjobstream --holdall">Copy</button></li>
+<li><code>zowe workload-automation submit jobstreaminplan --name myjobstream --holdall</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe workload-automation submit jobstreaminplan --name myjobstream --holdall">Copy</button></li>
 </ul>
 </li>
 <li>
-<p>Submit a jobstream in the current plan whose name is
-'myjobstream' resolving promptable variables in the JCL:</p>
+<p>Submit a jobstream in the current plan whose name is 'myjobstream' resolving promptable variables in the JCL:</p>
 <ul>
-<li><code>zowe  workload-automation submit jobstreaminplan --name myjobstream --jclvariables key1 value1 key2 value2</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  workload-automation submit jobstreaminplan --name myjobstream --jclvariables key1 value1 key2 value2">Copy</button></li>
+<li><code>zowe workload-automation submit jobstreaminplan --name myjobstream --jclvariables key1 value1 key2 value2</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe workload-automation submit jobstreaminplan --name myjobstream --jclvariables key1 value1 key2 value2">Copy</button></li>
 </ul>
 </li>
 </ul>

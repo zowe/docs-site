@@ -7,12 +7,11 @@
 <link rel="stylesheet" href="../css/docs.css">
 <article class="markdown-body">
 <h2><a href="zowe.html">zowe</a> › <a href="zowe_caview.html">caview</a> › <a href="zowe_caview_search.html">search</a> › <a href="zowe_caview_search_index.html">index</a> › <a href="zowe_caview_search_index_names.html">names</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
-<p>Search cross-report index names in a repository.
-Use the returned 'IndexNameHandle' to reference a cross-report index name.
-For example, use the 'IndexNameHandle' in the 'search index values' command to
-retrieve the list of index values for that cross-report index.</p>
+<p>Search cross-report index names in a repository.<br>
+Use the returned 'IndexNameHandle' to reference a cross-report index name.<br>
+For example, use the 'IndexNameHandle' in the 'search index values' command to retrieve the list of index values for that cross-report index.</p>
 <h4>Usage</h4>
-<p>zowe  caview search index names &lt;repositoryId&gt; [options]</p>
+<p>zowe caview search index names &lt;repositoryId&gt; [options]</p>
 <h4>Positional Arguments</h4>
 <ul>
 <li>
@@ -28,8 +27,7 @@ retrieve the list of index values for that cross-report index.</p>
 <p><code>--filter-reports</code>  | <code>--reports</code> <em>(string)</em></p>
 <ul>
 <li>
-<p>Filter (include) based on report names (IDs). Use the asterisk (*) as a
-wildcard to represent any number of characters.</p>
+<p>Filter (include) based on report names (IDs). Use the asterisk (*) as a wildcard to represent any number of characters.</p>
 <p>Default value: *</p>
 </li>
 </ul>
@@ -38,9 +36,7 @@ wildcard to represent any number of characters.</p>
 <p><code>--filter-names</code>  | <code>--names</code> <em>(string)</em></p>
 <ul>
 <li>
-<p>Filter (include) based on index name. Separate multiple index names with
-commas. Use the asterisk (*) as a wildcard to represent any number of
-characters.</p>
+<p>Filter (include) based on index name. Separate multiple index names with commas. Use the asterisk (*) as a wildcard to represent any number of characters.</p>
 <p>Default value: *,*,*,*,*,*,*,*</p>
 </li>
 </ul>
@@ -49,8 +45,7 @@ characters.</p>
 <p><code>--latest-versions</code>  | <code>--latest-version</code> | <code>--lv</code> <em>(number)</em></p>
 <ul>
 <li>
-<p>Number of latest versions (of reports) to include. If not specified, all
-versions of reports are included.</p>
+<p>Number of latest versions (of reports) to include. If not specified, all versions of reports are included.</p>
 <p>Default value: 0</p>
 </li>
 </ul>
@@ -58,15 +53,13 @@ versions of reports are included.</p>
 <li>
 <p><code>--archival-since</code>  | <code>--since</code> | <code>--archival-from</code> | <code>--from</code> <em>(string)</em></p>
 <ul>
-<li>Date of earliest archived reports to include based on archival date. Specify a
-value in the ISO-8601 format.</li>
+<li>Date of earliest archived reports to include based on archival date. Specify a value in the ISO-8601 format.</li>
 </ul>
 </li>
 <li>
 <p><code>--archival-until</code>  | <code>--until</code> | <code>--archival-to</code> | <code>--to</code> <em>(string)</em></p>
 <ul>
-<li>Date of latest archived reports to include based on archival date. Specify a
-value in the ISO-8601 format.</li>
+<li>Date of latest archived reports to include based on archival date. Specify a value in the ISO-8601 format.</li>
 </ul>
 </li>
 <li>
@@ -82,10 +75,9 @@ value in the ISO-8601 format.</li>
 <p><code>--output-format</code>  | <code>--output</code> <em>(string)</em></p>
 <ul>
 <li>
-<p>Output format. This option is ignored if '--response-format-json' is
-specified.</p>
-<p>Default value: tabular</p>
-<p>Allowed values: ^tabular$, ^csv$, ^json$, ^xml$</p>
+<p>Output format. This option is ignored if '--response-format-json' is specified.</p>
+<p>Default value: tabular<br>
+Allowed values: ^tabular$, ^csv$, ^json$, ^xml$</p>
 </li>
 </ul>
 </li>
@@ -93,8 +85,7 @@ specified.</p>
 <p><code>--output-header</code>  | <code>--header</code> <em>(boolean)</em></p>
 <ul>
 <li>
-<p>Include header with field names in the output when you specify 'tabular' or
-'csv' for the output format.
+<p>Include header with field names in the output when you specify 'tabular' or 'csv' for the output format.<br>
 This option is ignored when you specify any other output format.</p>
 <p>Default value: true</p>
 </li>
@@ -104,7 +95,7 @@ This option is ignored when you specify any other output format.</p>
 <p><code>--output-field</code>  | <code>-f</code> <em>(array)</em></p>
 <ul>
 <li>
-<p>Field to include in the output. Multiple fields can be specified.
+<p>Field to include in the output. Multiple fields can be specified.<br>
 Fields appear in the order you specify.</p>
 <p>Allowed values: Index,SubIndexNames,IndexNameHandle</p>
 <p>Default value: Index,SubIndexNames,IndexNameHandle</p>
@@ -165,8 +156,7 @@ Fields appear in the order you specify.</p>
 <li>
 <p><code>--token-type</code>  | <code>--tt</code> <em>(string)</em></p>
 <ul>
-<li>The type of token to get and use for the API. Omit this option to use the
-default token type, which is provided by 'zowe auth login'.</li>
+<li>The type of token to get and use for the API. Omit this option to use the default token type, which is provided by 'zowe auth login'.</li>
 </ul>
 </li>
 <li>

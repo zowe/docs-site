@@ -7,10 +7,9 @@
 <link rel="stylesheet" href="../css/docs.css">
 <article class="markdown-body">
 <h2><a href="zowe.html">zowe</a> › <a href="zowe_ca7.html">ca7</a> › <a href="zowe_ca7_demand.html">demand</a> › <a href="zowe_ca7_demand_jobl.html">jobl</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
-<p>The demanded jobs are placed in the request queue and assigned a unique CA 7 job
-number.</p>
+<p>The demanded jobs are placed in the request queue and assigned a unique CA 7 job number.</p>
 <h4>Usage</h4>
-<p>zowe  ca7 demand jobl &lt;jobl&gt; [options]</p>
+<p>zowe ca7 demand jobl &lt;jobl&gt; [options]</p>
 <h4>Positional Arguments</h4>
 <ul>
 <li>
@@ -18,9 +17,8 @@ number.</p>
 <ul>
 <li>
 <p>jobl=payrollSW123</p>
-<p>Defines the long name of the job being demanded.
-The demanded jobs are placed in the request queue and assigned a unique CA 7 job
-number.</p>
+<p>Defines the long name of the job being demanded.<br>
+The demanded jobs are placed in the request queue and assigned a unique CA 7 job number.</p>
 </li>
 </ul>
 </li>
@@ -32,9 +30,8 @@ number.</p>
 <ul>
 <li>
 <p>arfset={arfsetname|**NONE**}</p>
-<p>Defines the ARF set name that is used for this run of the job.
-If you specify **NONE**, no ARF processing is performed for this run of the
-job.</p>
+<p>Defines the ARF set name that is used for this run of the job.<br>
+If you specify **NONE**, no ARF processing is performed for this run of the job.</p>
 <p>Limits: 1 to 8 alphanumeric characters or **NONE**</p>
 </li>
 </ul>
@@ -44,12 +41,9 @@ job.</p>
 <ul>
 <li>
 <p>cc=nnn</p>
-<p>Defines, with RO (relational operator), the job-level condition codes that are
-used to determine whether a job executes successfully.</p>
-<p>If specified, this value overrides the RO defined for the job in the CA WA CA 7
-Edition database. RO is required when CC is specified.</p>
-<p>Default: The job definition panel COND-CODE value when the job is defined to CA
-WA CA 7 Edition; otherwise 0.
+<p>Defines, with RO (relational operator), the job-level condition codes that are used to determine whether a job executes successfully.</p>
+<p>If specified, this value overrides the RO defined for the job in the CA WA CA 7 Edition database. RO is required when CC is specified.</p>
+<p>Default: The job definition panel COND-CODE value when the job is defined to CA WA CA 7 Edition; otherwise 0.<br>
 Limits: 1 to 4 numeric characters from 0 to 4095. Invalid with agent jobs.</p>
 </li>
 </ul>
@@ -69,11 +63,9 @@ Limits: 1 to 4 numeric characters from 0 to 4095. Invalid with agent jobs.</p>
 <ul>
 <li>
 <p>count=nnnn</p>
-<p>Defines the maximum number of times to repeat the job. COUNT is ignored if
-INTERVAL is not specified.</p>
-<p>Default: None. The job continues repeating until the STOP time is reached.
-Limits: 1 to 4 numeric characters from 0 to 1439. The leading zeros can be
-discarded.</p>
+<p>Defines the maximum number of times to repeat the job. COUNT is ignored if INTERVAL is not specified.</p>
+<p>Default: None. The job continues repeating until the STOP time is reached.<br>
+Limits: 1 to 4 numeric characters from 0 to 1439. The leading zeros can be discarded.</p>
 </li>
 </ul>
 </li>
@@ -82,11 +74,11 @@ discarded.</p>
 <ul>
 <li>
 <p>date={+nn|yyddd}</p>
-<p>Defines due-out and submit dates.
-Limits: If used, specify DOTM or TIME.
+<p>Defines due-out and submit dates.<br>
+Limits: If used, specify DOTM or TIME.<br>
 +nn</p>
-<p>Defines the number of days after the current date.
-Limits: 1 to 2 numeric characters from 1 to 99
+<p>Defines the number of days after the current date.<br>
+Limits: 1 to 2 numeric characters from 1 to 99<br>
 yyddd</p>
 <p>Defines the Julian date to run the job.</p>
 </li>
@@ -97,8 +89,7 @@ yyddd</p>
 <ul>
 <li>
 <p>depjob=jobname2</p>
-<p>Defines a single predecessor job that must complete while the demanded job is
-waiting.
+<p>Defines a single predecessor job that must complete while the demanded job is waiting.<br>
 Limits: 1 to 8 alphanumeric characters</p>
 </li>
 </ul>
@@ -108,13 +99,10 @@ Limits: 1 to 8 alphanumeric characters</p>
 <ul>
 <li>
 <p>dotm=hhmm</p>
-<p>Defines the due-out time-of-day for the job in hours (hh) and minutes (mm).
-If DOTM is specified on the DEMAND/DEMANDH command and the value that is given
-is earlier than the current time, the due-out day is assumed to be the
-following day.</p>
-<p>If DOTM and LEADTM are both omitted, then deadline start time is assumed to be
-the current time plus the LEADTM.</p>
-<p>Limits:  hh= 1 through 2 numeric characters from 0 to 24
+<p>Defines the due-out time-of-day for the job in hours (hh) and minutes (mm).<br>
+If DOTM is specified on the DEMAND/DEMANDH command and the value that is given is earlier than the current time, the due-out day is assumed to be the following day.</p>
+<p>If DOTM and LEADTM are both omitted, then deadline start time is assumed to be the current time plus the LEADTM.</p>
+<p>Limits:  hh= 1 through 2 numeric characters from 0 to 24<br>
 mm= 2 numeric characters from 00 to 59</p>
 <p>Required: No (unless DATE is used, if so, DOTM or TIME must be specified)</p>
 </li>
@@ -125,12 +113,9 @@ mm= 2 numeric characters from 00 to 59</p>
 <ul>
 <li>
 <p>exec={NO|YES}</p>
-<p>Specifies whether to execute the job (YES/NO).
-If NO (N) is used, the job does not run but shows a normal completion as if it
-did run. The value that is specified here overrides the value that is coded on
-the job definition EXEC field.</p>
-<p>Default: The job definition panel EXEC value if the job is defined to CA WA CA 7
-Edition; otherwise YES.</p>
+<p>Specifies whether to execute the job (YES/NO).<br>
+If NO (N) is used, the job does not run but shows a normal completion as if it did run. The value that is specified here overrides the value that is coded on the job definition EXEC field.</p>
+<p>Default: The job definition panel EXEC value if the job is defined to CA WA CA 7 Edition; otherwise YES.</p>
 </li>
 </ul>
 </li>
@@ -139,12 +124,9 @@ Edition; otherwise YES.</p>
 <ul>
 <li>
 <p>interval=hhmm</p>
-<p>Identifies that the job is repeated (executed more than once) and defines the
-amount of time between each iteration.</p>
-<p>If INTERVAL is specified, the TIME and TYPE keywords are required. If both
-INTERVAL and COUNT are specified, the INTERVAL value times the COUNT value must
-total less than 24 hours.</p>
-<p>Limits: hh=1 through 2 numeric characters from 0 to 23
+<p>Identifies that the job is repeated (executed more than once) and defines the amount of time between each iteration.</p>
+<p>If INTERVAL is specified, the TIME and TYPE keywords are required. If both INTERVAL and COUNT are specified, the INTERVAL value times the COUNT value must total less than 24 hours.</p>
+<p>Limits: hh=1 through 2 numeric characters from 0 to 23<br>
 mm=2 numeric characters from 00 to 59</p>
 </li>
 </ul>
@@ -155,10 +137,8 @@ mm=2 numeric characters from 00 to 59</p>
 <li>
 <p>jclid=nnn</p>
 <p>Defines the JCL data set that contains the execution JCL to be submitted.</p>
-<p>If used, the value must be a numeric INDEX associated with the wanted JCL data
-set (on the JCL statement in the initialization file).</p>
-<p>Limits: 1 to 3 numeric characters from 0 through 254 and from 256 through 999.
-255 is reserved.</p>
+<p>If used, the value must be a numeric INDEX associated with the wanted JCL data set (on the JCL statement in the initialization file).</p>
+<p>Limits: 1 to 3 numeric characters from 0 through 254 and from 256 through 999. 255 is reserved.</p>
 </li>
 </ul>
 </li>
@@ -168,8 +148,7 @@ set (on the JCL statement in the initialization file).</p>
 <li>
 <p>jcllib=&amp;x...x</p>
 <p>Defines the JCL data set that contains the execution JCL to be submitted.</p>
-<p>If used, the value must be a symbolic INDEX associated with the wanted JCL data
-set (on the JCL statement in the initialization file).</p>
+<p>If used, the value must be a symbolic INDEX associated with the wanted JCL data set (on the JCL statement in the initialization file).</p>
 <p>Limits: 2 to 16 alphanumeric characters beginning with ampersand (&amp;)</p>
 </li>
 </ul>
@@ -179,10 +158,8 @@ set (on the JCL statement in the initialization file).</p>
 <ul>
 <li>
 <p>late={NO|YES}</p>
-<p>Specifies whether a notification occurs when the job becomes late.
-Specify YES (Y) to make the job eligible to be marked LATE. If NO (N) is used,
-the job is never marked LATE. The value that is specified here overrides the
-value that is coded on the job definition PROMPTS field.</p>
+<p>Specifies whether a notification occurs when the job becomes late.<br>
+Specify YES (Y) to make the job eligible to be marked LATE. If NO (N) is used, the job is never marked LATE. The value that is specified here overrides the value that is coded on the job definition PROMPTS field.</p>
 </li>
 </ul>
 </li>
@@ -191,9 +168,9 @@ value that is coded on the job definition PROMPTS field.</p>
 <ul>
 <li>
 <p>leadtm={0100|hhmm}</p>
-<p>Defines the amount of elapsed time that is required to process the job.
-Default: 1 hour
-Limits: hh= 1 through 2 numeric characters from 0 to 24
+<p>Defines the amount of elapsed time that is required to process the job.<br>
+Default: 1 hour<br>
+Limits: hh= 1 through 2 numeric characters from 0 to 24<br>
 mm= 2 numeric characters from 00 to 59</p>
 </li>
 </ul>
@@ -203,19 +180,15 @@ mm= 2 numeric characters from 00 to 59</p>
 <ul>
 <li>
 <p>mainid={ALL|SYn|/SYn|-SYn}</p>
-<p>Specifies the MAINID, as defined in the initialization file CPU statement, to
-which you want to redirect the job.</p>
-<p>ALL
+<p>Specifies the MAINID, as defined in the initialization file CPU statement, to which you want to redirect the job.</p>
+<p>ALL<br>
 Specifies all CPUs are acceptable for executing the job.</p>
-<p>SYn
-n defines the CPU to which the job is being redirected. The value of n can
-range from 1 to 7.</p>
-<p>/SYn
-n defines a CPU to which the job cannot be submitted. The value of n can range
-from 1 to 7.</p>
-<p>-SYn
-n defines a CPU to which the job cannot be submitted. The value of n can range
-from 1 to 7.</p>
+<p>SYn<br>
+n defines the CPU to which the job is being redirected. The value of n can range from 1 to 7.</p>
+<p>/SYn<br>
+n defines a CPU to which the job cannot be submitted. The value of n can range from 1 to 7.</p>
+<p>-SYn<br>
+n defines a CPU to which the job cannot be submitted. The value of n can range from 1 to 7.</p>
 <p>Limits: Invalid for internal cross-platform jobs.</p>
 </li>
 </ul>
@@ -224,7 +197,7 @@ from 1 to 7.</p>
 <p><code>--prty</code>  <em>(string)</em></p>
 <ul>
 <li>
-<p>prty=nnn
+<p>prty=nnn<br>
 Defines the initial workload balancing priority</p>
 <p>Limits: 1-3 numeric (1-255).</p>
 </li>
@@ -235,13 +208,9 @@ Defines the initial workload balancing priority</p>
 <ul>
 <li>
 <p>rms={NO|YES}</p>
-<p>Specifies whether CA WA CA 7 Edition inserts the CA Workload Automation Restart
-Option for z/OS Schedulers RMS step.</p>
-<p>Specify YES (Y) to insert the step with the CA Workload Automation Restart
-Option for z/OS Schedulers processing code of P. Enter NO (N) to indicate do
-not insert of the RMS step.</p>
-<p>Default: The job definition panel INSERT-RMS value if job defined to CA WA CA 7
-Edition; otherwise NO.
+<p>Specifies whether CA WA CA 7 Edition inserts the CA Workload Automation Restart Option for z/OS Schedulers RMS step.</p>
+<p>Specify YES (Y) to insert the step with the CA Workload Automation Restart Option for z/OS Schedulers processing code of P. Enter NO (N) to indicate do not insert of the RMS step.</p>
+<p>Default: The job definition panel INSERT-RMS value if job defined to CA WA CA 7 Edition; otherwise NO.<br>
 Limits: Invalid for internal cross-platform jobs.</p>
 </li>
 </ul>
@@ -251,26 +220,23 @@ Limits: Invalid for internal cross-platform jobs.</p>
 <ul>
 <li>
 <p>ro={EQ|LT|GT|GE|LE|NE|#S|IG|0}</p>
-<p>Specifies the relational operator of the condition code (CC) or if the step
-level #SCC statements are being used in the JCL of the job.</p>
-<p>EQ
+<p>Specifies the relational operator of the condition code (CC) or if the step level #SCC statements are being used in the JCL of the job.</p>
+<p>EQ<br>
 Equal to</p>
-<p>LT
+<p>LT<br>
 Less than</p>
-<p>GT
+<p>GT<br>
 Greater than</p>
-<p>GE
+<p>GE<br>
 Greater than or equal to</p>
-<p>LE
+<p>LE<br>
 Less than or equal to</p>
-<p>NE
+<p>NE<br>
 Not equal to</p>
-<p>#S
+<p>#S<br>
 Step condition code tests to be made based on a #SCC statement.</p>
-<p>IG
-No evaluation of the job is done. CA WA CA 7 Edition always assumes that the
-job completes successfully, regardless of condition codes, abend codes, or
-run-time JCL errors.</p>
+<p>IG<br>
+No evaluation of the job is done. CA WA CA 7 Edition always assumes that the job completes successfully, regardless of condition codes, abend codes, or run-time JCL errors.</p>
 <p>Limits: Invalid with agent jobs.</p>
 </li>
 </ul>
@@ -280,12 +246,10 @@ run-time JCL errors.</p>
 <ul>
 <li>
 <p>schid={1|nnn}</p>
-<p>Defines the schedule ID within the job’s total schedule definition to use for
-this run.</p>
-<p>Default: 1
+<p>Defines the schedule ID within the job’s total schedule definition to use for this run.</p>
+<p>Default: 1<br>
 Limits: 1 to 3 numeric characters from 1 to 255 (See Note)</p>
-<p>If the SCHEDULE statement in the initialization file specifies SCHID=YES, this
-parameter is required.</p>
+<p>If the SCHEDULE statement in the initialization file specifies SCHID=YES, this parameter is required.</p>
 </li>
 </ul>
 </li>
@@ -294,19 +258,13 @@ parameter is required.</p>
 <ul>
 <li>
 <p>set={NDB|NTR|SKP}</p>
-<p>Specifies skip the next scheduled cycle for the job (SKP), disable triggering
-(NTR), or bypass the database updating at the job completion.</p>
-<p>SKP
-Specifies this run of the job takes the place of the next scheduled run. This
-value has the same effect as entering NXTCYC,SET=SKP. It is reflected on output
-from LJOB and LLOCK commands as if NXTCYC,SET=SKP was used. This parameter is
-invalid if the job has no schedule. SET=SKP has no impact on repeating jobs
-that are already in the queues.</p>
-<p>NTR
+<p>Specifies skip the next scheduled cycle for the job (SKP), disable triggering (NTR), or bypass the database updating at the job completion.</p>
+<p>SKP<br>
+Specifies this run of the job takes the place of the next scheduled run. This value has the same effect as entering NXTCYC,SET=SKP. It is reflected on output from LJOB and LLOCK commands as if NXTCYC,SET=SKP was used. This parameter is invalid if the job has no schedule. SET=SKP has no impact on repeating jobs that are already in the queues.</p>
+<p>NTR<br>
 Specifies normal triggering is disabled only for this run of the job.</p>
-<p>NDB
-Allows a job to bypass all load processing at the job completion, but allows
-other processing to proceed typically.</p>
+<p>NDB<br>
+Allows a job to bypass all load processing at the job completion, but allows other processing to proceed typically.</p>
 </li>
 </ul>
 </li>
@@ -315,10 +273,9 @@ other processing to proceed typically.</p>
 <ul>
 <li>
 <p>stop=hhmm</p>
-<p>Defines the clock time after which the job is not repeated. STOP is ignored if
-INTERVAL is not specified.</p>
-<p>Default: 1439 minutes (24 hours minus 1 minute) after the submit time
-Limits: hh=1 through 2 numeric characters from 0 to 23
+<p>Defines the clock time after which the job is not repeated. STOP is ignored if INTERVAL is not specified.</p>
+<p>Default: 1439 minutes (24 hours minus 1 minute) after the submit time<br>
+Limits: hh=1 through 2 numeric characters from 0 to 23<br>
 mm=2 numeric characters from 00 to 59</p>
 </li>
 </ul>
@@ -329,11 +286,10 @@ mm=2 numeric characters from 00 to 59</p>
 <li>
 <p>time={hhmm|+hhmm}</p>
 <p>Defines a submit time-of-day requirement for the job.</p>
-<p>Limits: + is optional
-hh= 1 through 2 numeric characters from 0 to 23
+<p>Limits: + is optional<br>
+hh= 1 through 2 numeric characters from 0 to 23<br>
 mm= 2 numeric characters from 00 to 59</p>
-<p>Required: No (unless DATE is used, if so, specify DOTM or TIME (hhmm format).
-Also required if TYPE=CLOCK is specified.</p>
+<p>Required: No (unless DATE is used, if so, specify DOTM or TIME (hhmm format). Also required if TYPE=CLOCK is specified.</p>
 </li>
 </ul>
 </li>
@@ -342,9 +298,8 @@ Also required if TYPE=CLOCK is specified.</p>
 <ul>
 <li>
 <p>type={CLOCK|END|RES|START}</p>
-<p>TYPE=RES specifies the job is being scheduled in restart/rerun status.
-TYPE=CLOCK, START, or END controls how the submit time requirement is calculated
-for repeating jobs.</p>
+<p>TYPE=RES specifies the job is being scheduled in restart/rerun status.<br>
+TYPE=CLOCK, START, or END controls how the submit time requirement is calculated for repeating jobs.</p>
 <p>Limits: RES, CLOCK, START, or END</p>
 </li>
 </ul>
@@ -374,8 +329,7 @@ for repeating jobs.</p>
 <p><code>--user</code>  | <code>-u</code> <em>(string)</em></p>
 <ul>
 <li>
-<p>User name for authenticating connections to the CA7 API service that is running
-on the mainframe system.</p>
+<p>User name for authenticating connections to the CA7 API service that is running on the mainframe system.</p>
 <p>Default value: MASTER</p>
 </li>
 </ul>
@@ -384,8 +338,7 @@ on the mainframe system.</p>
 <p><code>--password</code>  | <code>--pass</code> | <code>--pw</code> <em>(string)</em></p>
 <ul>
 <li>
-<p>Password for authenticating connections to the CA7 API service that is running
-on the mainframe system.</p>
+<p>Password for authenticating connections to the CA7 API service that is running on the mainframe system.</p>
 <p>Default value:</p>
 </li>
 </ul>
@@ -393,9 +346,7 @@ on the mainframe system.</p>
 <li>
 <p><code>--base-path</code>  | <code>--bp</code> <em>(string)</em></p>
 <ul>
-<li>The base path for your API mediation layer instance. Specify this option to
-prepend the base path to all resources when making REST requests. Do not
-specify this option if you are not using an API mediation layer.</li>
+<li>The base path for your API mediation layer instance. Specify this option to prepend the base path to all resources when making REST requests. Do not specify this option if you are not using an API mediation layer.</li>
 </ul>
 </li>
 <li>
@@ -403,8 +354,8 @@ specify this option if you are not using an API mediation layer.</li>
 <ul>
 <li>
 <p>Specifies protocol to use for CA7 connection (http or https).</p>
-<p>Default value: https</p>
-<p>Allowed values: http, https</p>
+<p>Default value: https<br>
+Allowed values: http, https</p>
 </li>
 </ul>
 </li>
@@ -438,8 +389,7 @@ specify this option if you are not using an API mediation layer.</li>
 <li>
 <p><code>--token-type</code>  | <code>--tt</code> <em>(string)</em></p>
 <ul>
-<li>The type of token to get and use for the API. Omit this option to use the
-default token type, which is provided by 'zowe auth login'.</li>
+<li>The type of token to get and use for the API. Omit this option to use the default token type, which is provided by 'zowe auth login'.</li>
 </ul>
 </li>
 <li>
@@ -466,7 +416,7 @@ default token type, which is provided by 'zowe auth login'.</li>
 <li>
 <p>Demand long job, payrollSW123 to CA 7:</p>
 <ul>
-<li><code>zowe  ca7 demand jobl payrollSW123</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  ca7 demand jobl payrollSW123">Copy</button></li>
+<li><code>zowe ca7 demand jobl payrollSW123</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe ca7 demand jobl payrollSW123">Copy</button></li>
 </ul>
 </li>
 </ul>

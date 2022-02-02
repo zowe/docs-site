@@ -7,11 +7,9 @@
 <link rel="stylesheet" href="../css/docs.css">
 <article class="markdown-body">
 <h2><a href="zowe.html">zowe</a> › <a href="zowe_auth.html">auth</a> › <a href="zowe_auth_logout.html">logout</a> › <a href="zowe_auth_logout_apiml.html">apiml</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
-<p>Log out of the Zowe API Mediation Layer authentication service and revoke the
-token so it can no longer authenticate. Also remove the token from the default
-base profile, if it is stored on disk.</p>
+<p>Log out of the Zowe API Mediation Layer authentication service and revoke the token so it can no longer authenticate. Also remove the token from the default base profile, if it is stored on disk.</p>
 <h4>Usage</h4>
-<p>zowe  auth logout apiml [options]</p>
+<p>zowe auth logout apiml [options]</p>
 <h4>Base Connection Options</h4>
 <ul>
 <li>
@@ -30,8 +28,7 @@ base profile, if it is stored on disk.</p>
 <p><code>--token-type</code>  | <code>--tt</code> <em>(string)</em></p>
 <ul>
 <li>
-<p>The type of token to get and use for the API. Omit this option to use the
-default token type, which is provided by 'zowe auth login'.</p>
+<p>The type of token to get and use for the API. Omit this option to use the default token type, which is provided by 'zowe auth login'.</p>
 <p>Allowed values: apimlAuthenticationToken, jwtToken, LtpaToken2</p>
 </li>
 </ul>
@@ -64,17 +61,15 @@ default token type, which is provided by 'zowe auth login'.</p>
 <h4>Examples</h4>
 <ul>
 <li>
-<p>Log out of an API ML instance to revoke the token that was
-in use and remove it from your base profile:</p>
+<p>Log out of an API ML instance to revoke the token that was in use and remove it from your base profile:</p>
 <ul>
-<li><code>zowe  auth logout apiml</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  auth logout apiml">Copy</button></li>
+<li><code>zowe auth logout apiml</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe auth logout apiml">Copy</button></li>
 </ul>
 </li>
 <li>
-<p>Log out of an API ML instance to revoke a token that was not
-stored in a profile:</p>
+<p>Log out of an API ML instance to revoke a token that was not stored in a profile:</p>
 <ul>
-<li><code>zowe  auth logout apiml --token-value &amp;lt;token&amp;gt;</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  auth logout apiml --token-value &amp;lt;token&amp;gt;">Copy</button></li>
+<li><code>zowe auth logout apiml --token-value &lt;token&gt;</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe auth logout apiml --token-value &lt;token&gt;">Copy</button></li>
 </ul>
 </li>
 </ul>

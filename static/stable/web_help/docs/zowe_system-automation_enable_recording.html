@@ -9,10 +9,10 @@
 <h2><a href="zowe.html">zowe</a> › <a href="zowe_system-automation.html">system-automation</a> › <a href="zowe_system-automation_enable.html">enable</a> › <a href="zowe_system-automation_enable_recording.html">recording</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
 <p>Enable the recording processing to a specified dataset.</p>
 <p>Requires (min.): SA Operations API 1.1.0</p>
-<p>Following Success Message can be returned by this command:
+<p>Following Success Message can be returned by this command:<br>
 SACLI005100 - Recording to {DatasetName} has been enabled</p>
 <h4>Usage</h4>
-<p>zowe  system-automation enable recording [options]</p>
+<p>zowe system-automation enable recording [options]</p>
 <h4>Options</h4>
 <ul>
 <li>
@@ -75,8 +75,7 @@ SACLI005100 - Recording to {DatasetName} has been enabled</p>
 <li>
 <p><code>--token-type</code>  | <code>--tt</code> <em>(string)</em></p>
 <ul>
-<li>The type of token to get and use for the API. Omit this option to use the
-default token type, which is provided by 'zowe auth login'.</li>
+<li>The type of token to get and use for the API. Omit this option to use the default token type, which is provided by 'zowe auth login'.</li>
 </ul>
 </li>
 <li>
@@ -101,10 +100,9 @@ default token type, which is provided by 'zowe auth login'.</li>
 <h4>Examples</h4>
 <ul>
 <li>
-<p>Enable recording to dataset &lt;DATASET_NAME&gt;. If the dataset
-does not exist it will be attempted to allocate it:</p>
+<p>Enable recording to dataset &lt;DATASET_NAME&gt;. If the dataset does not exist it will be attempted to allocate it:</p>
 <ul>
-<li><code>zowe  system-automation enable recording --dsname=DATASET_NAME</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  system-automation enable recording --dsname=DATASET_NAME">Copy</button></li>
+<li><code>zowe system-automation enable recording --dsname=DATASET_NAME</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe system-automation enable recording --dsname=DATASET_NAME">Copy</button></li>
 </ul>
 </li>
 </ul>

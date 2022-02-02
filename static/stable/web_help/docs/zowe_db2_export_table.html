@@ -9,7 +9,7 @@
 <h2><a href="zowe.html">zowe</a> › <a href="zowe_db2.html">db2</a> › <a href="zowe_db2_export.html">export</a> › <a href="zowe_db2_export_table.html">table</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
 <p>Export a Db2 table to the stdout or a file.</p>
 <h4>Usage</h4>
-<p>zowe  db2 export table &lt;table&gt; [options]</p>
+<p>zowe db2 export table &lt;table&gt; [options]</p>
 <h4>Positional Arguments</h4>
 <ul>
 <li>
@@ -102,8 +102,7 @@
 <li>
 <p><code>--token-type</code>  | <code>--tt</code> <em>(string)</em></p>
 <ul>
-<li>The type of token to get and use for the API. Omit this option to use the
-default token type, which is provided by 'zowe auth login'.</li>
+<li>The type of token to get and use for the API. Omit this option to use the default token type, which is provided by 'zowe auth login'.</li>
 </ul>
 </li>
 <li>
@@ -128,10 +127,9 @@ default token type, which is provided by 'zowe auth login'.</li>
 <h4>Examples</h4>
 <ul>
 <li>
-<p>Export employees data from the table SAMPLE.EMP and save it
-to the file 'employees.sql':</p>
+<p>Export employees data from the table SAMPLE.EMP and save it to the file 'employees.sql':</p>
 <ul>
-<li><code>zowe  db2 export table SAMPLE.EMP --outfile employees.sql</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  db2 export table SAMPLE.EMP --outfile employees.sql">Copy</button></li>
+<li><code>zowe db2 export table SAMPLE.EMP --outfile employees.sql</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe db2 export table SAMPLE.EMP --outfile employees.sql">Copy</button></li>
 </ul>
 </li>
 </ul>

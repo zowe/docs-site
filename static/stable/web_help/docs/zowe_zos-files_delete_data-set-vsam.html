@@ -9,7 +9,7 @@
 <h2><a href="zowe.html">zowe</a> › <a href="zowe_zos-files.html">zos-files</a> › <a href="zowe_zos-files_delete.html">delete</a> › <a href="zowe_zos-files_delete_data-set-vsam.html">data-set-vsam</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
 <p>Delete a VSAM cluster permanently</p>
 <h4>Usage</h4>
-<p>zowe  zos-files delete data-set-vsam &lt;dataSetName&gt; [options]</p>
+<p>zowe zos-files delete data-set-vsam &lt;dataSetName&gt; [options]</p>
 <h4>Positional Arguments</h4>
 <ul>
 <li>
@@ -25,9 +25,7 @@
 <p><code>--erase</code>  | <code>-e</code> <em>(boolean)</em></p>
 <ul>
 <li>
-<p>Specify this option to overwrite the data component for the cluster with binary
-zeros. This option is ignored if the NOERASE attribute was specified when the
-cluster was defined or altered.</p>
+<p>Specify this option to overwrite the data component for the cluster with binary zeros. This option is ignored if the NOERASE attribute was specified when the cluster was defined or altered.</p>
 <p>Default value: false</p>
 </li>
 </ul>
@@ -36,8 +34,7 @@ cluster was defined or altered.</p>
 <p><code>--purge</code>  | <code>-p</code> <em>(boolean)</em></p>
 <ul>
 <li>
-<p>Specify this option to delete the VSAM cluster regardless of its retention
-period or date.</p>
+<p>Specify this option to delete the VSAM cluster regardless of its retention period or date.</p>
 <p>Default value: false</p>
 </li>
 </ul>
@@ -45,9 +42,7 @@ period or date.</p>
 <li>
 <p><code>--response-timeout</code>  | <code>--rto</code> <em>(number)</em></p>
 <ul>
-<li>The maximum amount of time in seconds the z/OSMF Files TSO servlet should run
-before returning a response. Any request exceeding this amount of time will be
-terminated and return an error. Allowed values: 5 - 600</li>
+<li>The maximum amount of time in seconds the z/OSMF Files TSO servlet should run before returning a response. Any request exceeding this amount of time will be terminated and return an error. Allowed values: 5 - 600</li>
 </ul>
 </li>
 </ul>
@@ -56,8 +51,7 @@ terminated and return an error. Allowed values: 5 - 600</li>
 <li>
 <p><code>--for-sure</code>  | <code>-f</code> <em>(boolean)</em></p>
 <ul>
-<li>Specify this option to confirm that you want to delete the VSAM cluster
-permanently.</li>
+<li>Specify this option to confirm that you want to delete the VSAM cluster permanently.</li>
 </ul>
 </li>
 </ul>
@@ -102,9 +96,7 @@ permanently.</li>
 <li>
 <p><code>--base-path</code>  | <code>--bp</code> <em>(string)</em></p>
 <ul>
-<li>The base path for your API mediation layer instance. Specify this option to
-prepend the base path to all z/OSMF resources when making REST requests. Do not
-specify this option if you are not using an API mediation layer.</li>
+<li>The base path for your API mediation layer instance. Specify this option to prepend the base path to all z/OSMF resources when making REST requests. Do not specify this option if you are not using an API mediation layer.</li>
 </ul>
 </li>
 <li>
@@ -112,8 +104,8 @@ specify this option if you are not using an API mediation layer.</li>
 <ul>
 <li>
 <p>The protocol used (HTTP or HTTPS)</p>
-<p>Default value: https</p>
-<p>Allowed values: http, https</p>
+<p>Default value: https<br>
+Allowed values: http, https</p>
 </li>
 </ul>
 </li>
@@ -150,8 +142,7 @@ specify this option if you are not using an API mediation layer.</li>
 <li>
 <p><code>--token-type</code>  | <code>--tt</code> <em>(string)</em></p>
 <ul>
-<li>The type of token to get and use for the API. Omit this option to use the
-default token type, which is provided by 'zowe auth login'.</li>
+<li>The type of token to get and use for the API. Omit this option to use the default token type, which is provided by 'zowe auth login'.</li>
 </ul>
 </li>
 <li>
@@ -166,28 +157,25 @@ default token type, which is provided by 'zowe auth login'.</li>
 <li>
 <p>Delete the VSAM data set named 'ibmuser.cntl.vsam':</p>
 <ul>
-<li><code>zowe  zos-files delete data-set-vsam &quot;ibmuser.cntl.vsam&quot; -f</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  zos-files delete data-set-vsam &quot;ibmuser.cntl.vsam&quot; -f">Copy</button></li>
+<li><code>zowe zos-files delete data-set-vsam &quot;ibmuser.cntl.vsam&quot; -f</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe zos-files delete data-set-vsam &quot;ibmuser.cntl.vsam&quot; -f">Copy</button></li>
 </ul>
 </li>
 <li>
-<p>Delete all expired VSAM data sets that match
-'ibmuser.AAA.**.FFF':</p>
+<p>Delete all expired VSAM data sets that match 'ibmuser.AAA.**.FFF':</p>
 <ul>
-<li><code>zowe  zos-files delete data-set-vsam &quot;ibmuser.AAA.**.FFF&quot; -f</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  zos-files delete data-set-vsam &quot;ibmuser.AAA.**.FFF&quot; -f">Copy</button></li>
+<li><code>zowe zos-files delete data-set-vsam &quot;ibmuser.AAA.**.FFF&quot; -f</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe zos-files delete data-set-vsam &quot;ibmuser.AAA.**.FFF&quot; -f">Copy</button></li>
 </ul>
 </li>
 <li>
-<p>Delete a non-expired VSAM data set named
-'ibmuser.cntl.vsam':</p>
+<p>Delete a non-expired VSAM data set named 'ibmuser.cntl.vsam':</p>
 <ul>
-<li><code>zowe  zos-files delete data-set-vsam &quot;ibmuser.cntl.vsam&quot; -f --purge</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  zos-files delete data-set-vsam &quot;ibmuser.cntl.vsam&quot; -f --purge">Copy</button></li>
+<li><code>zowe zos-files delete data-set-vsam &quot;ibmuser.cntl.vsam&quot; -f --purge</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe zos-files delete data-set-vsam &quot;ibmuser.cntl.vsam&quot; -f --purge">Copy</button></li>
 </ul>
 </li>
 <li>
-<p>Delete an expired VSAM data set named 'ibmuser.cntl.vsam'
-by overwriting the components with zeros:</p>
+<p>Delete an expired VSAM data set named 'ibmuser.cntl.vsam' by overwriting the components with zeros:</p>
 <ul>
-<li><code>zowe  zos-files delete data-set-vsam &quot;ibmuser.cntl.vsam&quot; -f --erase</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  zos-files delete data-set-vsam &quot;ibmuser.cntl.vsam&quot; -f --erase">Copy</button></li>
+<li><code>zowe zos-files delete data-set-vsam &quot;ibmuser.cntl.vsam&quot; -f --erase</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe zos-files delete data-set-vsam &quot;ibmuser.cntl.vsam&quot; -f --erase">Copy</button></li>
 </ul>
 </li>
 </ul>

@@ -9,10 +9,10 @@
 <h2><a href="zowe.html">zowe</a> › <a href="zowe_system-automation.html">system-automation</a> › <a href="zowe_system-automation_set.html">set</a> › <a href="zowe_system-automation_set_PrimaryManager.html">PrimaryManager</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
 <p>Set an Automation Manager to Primary Automation Manager (PAM)</p>
 <p>Requires (min.): SA Operations API 1.1.0</p>
-<p>Following Success Message can be returned by this command:
+<p>Following Success Message can be returned by this command:<br>
 SACLI008100 - Setting Primary Automation Manger on {SYSTEM} success</p>
 <h4>Usage</h4>
-<p>zowe  system-automation set PrimaryManager [options]</p>
+<p>zowe system-automation set PrimaryManager [options]</p>
 <h4>Options</h4>
 <ul>
 <li>
@@ -26,8 +26,8 @@ SACLI008100 - Setting Primary Automation Manger on {SYSTEM} success</p>
 <ul>
 <li>
 <p>The start type of the Automation Manager</p>
-<p>Default value: HOT</p>
-<p>Allowed values: HOT, WARM, COLD</p>
+<p>Default value: HOT<br>
+Allowed values: HOT, WARM, COLD</p>
 </li>
 </ul>
 </li>
@@ -85,8 +85,7 @@ SACLI008100 - Setting Primary Automation Manger on {SYSTEM} success</p>
 <li>
 <p><code>--token-type</code>  | <code>--tt</code> <em>(string)</em></p>
 <ul>
-<li>The type of token to get and use for the API. Omit this option to use the
-default token type, which is provided by 'zowe auth login'.</li>
+<li>The type of token to get and use for the API. Omit this option to use the default token type, which is provided by 'zowe auth login'.</li>
 </ul>
 </li>
 <li>

@@ -9,7 +9,7 @@
 <h2><a href="zowe.html">zowe</a> › <a href="zowe_znetview-network.html">znetview-network</a> › <a href="zowe_znetview-network_list.html">list</a> › <a href="zowe_znetview-network_list_ddvipa-health.html">ddvipa-health</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
 <p>List health information for distributed Dynamic Virtual IP Addresses (DDVIPAs).</p>
 <h4>Usage</h4>
-<p>zowe  znetview-network list ddvipa-health [options]</p>
+<p>zowe znetview-network list ddvipa-health [options]</p>
 <h4>Options</h4>
 <ul>
 <li>
@@ -17,8 +17,7 @@
 <ul>
 <li>
 <p>The NetView domain to which the request will be sent.</p>
-<p>The default is the NetView domain to which the NetView REST Server is
-connected.</p>
+<p>The default is the NetView domain to which the NetView REST Server is connected.</p>
 </li>
 </ul>
 </li>
@@ -80,11 +79,8 @@ connected.</p>
 <p><code>--base-path</code>  | <code>--bp</code> <em>(string)</em></p>
 <ul>
 <li>
-<p>The base path for your Zowe API Mediation Layer instance. Specify this option
-to prepend the base path to NetView REST service when making REST requests to
-the Zowe API Mediation Layer.</p>
-<p>Note: Do not specify this option if you are not using the Zowe API Mediation
-Layer.</p>
+<p>The base path for your Zowe API Mediation Layer instance. Specify this option to prepend the base path to NetView REST service when making REST requests to the Zowe API Mediation Layer.</p>
+<p>Note: Do not specify this option if you are not using the Zowe API Mediation Layer.</p>
 </li>
 </ul>
 </li>
@@ -131,10 +127,9 @@ Layer.</p>
 <h4>Examples</h4>
 <ul>
 <li>
-<p>List the DDVIPA health data from domain CNM01 and filter the
-data by DVIPA IP 201.2.10.20, and port 623.:</p>
+<p>List the DDVIPA health data from domain CNM01 and filter the data by DVIPA IP 201.2.10.20, and port 623.:</p>
 <ul>
-<li><code>zowe  znetview-network list ddvipa-health --dvipa 201.2.10.20 --dvipa-port 623 --domain CNM01</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  znetview-network list ddvipa-health --dvipa 201.2.10.20 --dvipa-port 623 --domain CNM01">Copy</button></li>
+<li><code>zowe znetview-network list ddvipa-health --dvipa 201.2.10.20 --dvipa-port 623 --domain CNM01</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe znetview-network list ddvipa-health --dvipa 201.2.10.20 --dvipa-port 623 --domain CNM01">Copy</button></li>
 </ul>
 </li>
 </ul>

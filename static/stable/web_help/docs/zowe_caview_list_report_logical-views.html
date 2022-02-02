@@ -7,14 +7,12 @@
 <link rel="stylesheet" href="../css/docs.css">
 <article class="markdown-body">
 <h2><a href="zowe.html">zowe</a> › <a href="zowe_caview.html">caview</a> › <a href="zowe_caview_list.html">list</a> › <a href="zowe_caview_list_report.html">report</a> › <a href="zowe_caview_list_report_logical-views.html">logical-views</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
-<p>List logical views available for a specific report.
-Use the returned 'ReportHandle' to reference a logical view in other commands.
-For example, use 'ReportHandle' in the 'download report' command to download the
-logical view of that report.
-Use the returned 'IndexNameHandle' in the 'list report index-values' command to
-retrieve the list of associated index values (if defined) for that index.</p>
+<p>List logical views available for a specific report.<br>
+Use the returned 'ReportHandle' to reference a logical view in other commands.<br>
+For example, use 'ReportHandle' in the 'download report' command to download the logical view of that report.<br>
+Use the returned 'IndexNameHandle' in the 'list report index-values' command to retrieve the list of associated index values (if defined) for that index.</p>
 <h4>Usage</h4>
-<p>zowe  caview list report logical-views &lt;repositoryId&gt; &lt;reportHandle&gt; [options]</p>
+<p>zowe caview list report logical-views &lt;repositoryId&gt; &lt;reportHandle&gt; [options]</p>
 <h4>Positional Arguments</h4>
 <ul>
 <li>
@@ -36,10 +34,9 @@ retrieve the list of associated index values (if defined) for that index.</p>
 <p><code>--output-format</code>  | <code>--output</code> <em>(string)</em></p>
 <ul>
 <li>
-<p>Output format. This option is ignored if '--response-format-json' is
-specified.</p>
-<p>Default value: tabular</p>
-<p>Allowed values: ^tabular$, ^csv$, ^json$, ^xml$</p>
+<p>Output format. This option is ignored if '--response-format-json' is specified.</p>
+<p>Default value: tabular<br>
+Allowed values: ^tabular$, ^csv$, ^json$, ^xml$</p>
 </li>
 </ul>
 </li>
@@ -47,8 +44,7 @@ specified.</p>
 <p><code>--output-header</code>  | <code>--header</code> <em>(boolean)</em></p>
 <ul>
 <li>
-<p>Include header with field names in the output when you specify 'tabular' or
-'csv' for the output format.
+<p>Include header with field names in the output when you specify 'tabular' or 'csv' for the output format.<br>
 This option is ignored when you specify any other output format.</p>
 <p>Default value: true</p>
 </li>
@@ -58,10 +54,9 @@ This option is ignored when you specify any other output format.</p>
 <p><code>--output-field</code>  | <code>-f</code> <em>(array)</em></p>
 <ul>
 <li>
-<p>Field to include in the output. Multiple fields can be specified.
+<p>Field to include in the output. Multiple fields can be specified.<br>
 Fields appear in the order you specify.</p>
-<p>Allowed values:
-Description,Index,SubIndexNames,ReportHandle,IndexNameHandle,Number,ViewId,Default</p>
+<p>Allowed values: Description,Index,SubIndexNames,ReportHandle,IndexNameHandle,Number,ViewId,Default</p>
 <p>Default value: Description,Index,SubIndexNames,ReportHandle,IndexNameHandle</p>
 </li>
 </ul>
@@ -120,8 +115,7 @@ Description,Index,SubIndexNames,ReportHandle,IndexNameHandle,Number,ViewId,Defau
 <li>
 <p><code>--token-type</code>  | <code>--tt</code> <em>(string)</em></p>
 <ul>
-<li>The type of token to get and use for the API. Omit this option to use the
-default token type, which is provided by 'zowe auth login'.</li>
+<li>The type of token to get and use for the API. Omit this option to use the default token type, which is provided by 'zowe auth login'.</li>
 </ul>
 </li>
 <li>

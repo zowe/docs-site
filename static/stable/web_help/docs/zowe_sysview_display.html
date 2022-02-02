@@ -9,14 +9,14 @@
 <h2><a href="zowe.html">zowe</a> › <a href="zowe_sysview.html">sysview</a> › <a href="zowe_sysview_display.html">display</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
 <p>Issue a CA SYSVIEW primary command and display output, including any messages</p>
 <h4>Usage</h4>
-<p>zowe  sysview display &lt;command-string&gt; [options]</p>
+<p>zowe sysview display &lt;command-string&gt; [options]</p>
 <h4>Positional Arguments</h4>
 <ul>
 <li>
 <p><code>command-string</code>		 <em>(string)</em></p>
 <ul>
-<li>Command(s) to be issued
-(If more than one command, separated by a semi-colon)
+<li>Command(s) to be issued<br>
+(If more than one command, separated by a semi-colon)<br>
 Example:  &quot;ACTIVITY;SORT CPU% D&quot;</li>
 </ul>
 </li>
@@ -32,8 +32,7 @@ Example:  &quot;ACTIVITY;SORT CPU% D&quot;</li>
 <li>
 <p><code>--all-rows</code>  | <code>--ar</code> <em>(boolean)</em></p>
 <ul>
-<li>Return all rows of data, no matter how many. Overrides --row-start and
---row-end</li>
+<li>Return all rows of data, no matter how many. Overrides --row-start and --row-end</li>
 </ul>
 </li>
 <li>
@@ -160,8 +159,7 @@ Example:  &quot;ACTIVITY;SORT CPU% D&quot;</li>
 <p><code>--base-path</code>  | <code>--bp</code> <em>(string)</em></p>
 <ul>
 <li>
-<p>The base path for your API mediation layer instance. Do not specify this option
-if you are not using an API mediation layer.</p>
+<p>The base path for your API mediation layer instance. Do not specify this option if you are not using an API mediation layer.</p>
 <p>Default value: /api/v1</p>
 </li>
 </ul>
@@ -193,8 +191,7 @@ if you are not using an API mediation layer.</p>
 <li>
 <p><code>--token-type</code>  | <code>--tt</code> <em>(string)</em></p>
 <ul>
-<li>The type of token to get and use for the API. Omit this option to use the
-default token type, which is provided by 'zowe auth login'.</li>
+<li>The type of token to get and use for the API. Omit this option to use the default token type, which is provided by 'zowe auth login'.</li>
 </ul>
 </li>
 <li>
@@ -219,17 +216,15 @@ default token type, which is provided by 'zowe auth login'.</li>
 <h4>Examples</h4>
 <ul>
 <li>
-<p>Issue the CSMSTAT command and show the 'message' field from
-the context area of the response:</p>
+<p>Issue the CSMSTAT command and show the 'message' field from the context area of the response:</p>
 <ul>
-<li><code>zowe  sysview display &quot;CSMSTAT&quot; --cf message</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  sysview display &quot;CSMSTAT&quot; --cf message">Copy</button></li>
+<li><code>zowe sysview display &quot;CSMSTAT&quot; --cf message</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe sysview display &quot;CSMSTAT&quot; --cf message">Copy</button></li>
 </ul>
 </li>
 <li>
-<p>Issue the JOBSUM command to list jobs starting with &quot;CS&quot;
-showing only the fields Jobname, Jobid, and Status:</p>
+<p>Issue the JOBSUM command to list jobs starting with &quot;CS&quot; showing only the fields Jobname, Jobid, and Status:</p>
 <ul>
-<li><code>zowe  sysview display &quot;jobs CS&amp;amp;VLMC&quot; --fields Jobname Jobid Status</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  sysview display &quot;jobs CS&amp;amp;VLMC&quot; --fields Jobname Jobid Status">Copy</button></li>
+<li><code>zowe sysview display &quot;jobs CS&amp;VLMC&quot; --fields Jobname Jobid Status</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe sysview display &quot;jobs CS&amp;VLMC&quot; --fields Jobname Jobid Status">Copy</button></li>
 </ul>
 </li>
 </ul>

@@ -9,14 +9,13 @@
 <h2><a href="zowe.html">zowe</a> › <a href="zowe_workload-automation.html">workload-automation</a> › <a href="zowe_workload-automation_list.html">list</a> › <a href="zowe_workload-automation_list_jobstreaminplan.html">jobstreaminplan</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
 <p>List the jobstreams in plan.</p>
 <h4>Usage</h4>
-<p>zowe  workload-automation list jobstreaminplan [options]</p>
+<p>zowe workload-automation list jobstreaminplan [options]</p>
 <h4>Options</h4>
 <ul>
 <li>
 <p><code>--name</code>  | <code>-n</code> <em>(string)</em></p>
 <ul>
-<li>Name of the jobstream to list, you can use the wildcard character asterisk
-(*).</li>
+<li>Name of the jobstream to list, you can use the wildcard character asterisk (*).</li>
 </ul>
 </li>
 <li>
@@ -85,9 +84,7 @@
 <li>
 <p><code>--base-path</code>  | <code>--bp</code> <em>(string)</em></p>
 <ul>
-<li>Base path of your API mediation layer instance. If a base path is specified,
-the plug-in connects to API ML. Specify this value according to the yaml
-static file added to API ML</li>
+<li>Base path of your API mediation layer instance. If a base path is specified, the plug-in connects to API ML. Specify this value according to the yaml static file added to API ML</li>
 </ul>
 </li>
 <li>
@@ -120,8 +117,7 @@ static file added to API ML</li>
 <li>
 <p><code>--token-type</code>  | <code>--tt</code> <em>(string)</em></p>
 <ul>
-<li>The type of token to get and use for the API. Omit this option to use the
-default token type, which is provided by 'zowe auth login'.</li>
+<li>The type of token to get and use for the API. Omit this option to use the default token type, which is provided by 'zowe auth login'.</li>
 </ul>
 </li>
 <li>
@@ -148,11 +144,7 @@ default token type, which is provided by 'zowe auth login'.</li>
 <li>
 <p><code>--response-format-filter</code>  | <code>--rff</code> <em>(array)</em></p>
 <ul>
-<li>Filter (include) fields in the response. Accepts an array of field/property
-names to include in the output response. You can filter JSON objects properties
-OR table columns/fields. In addition, you can use this option in conjunction
-with '--response-format-type' to reduce the output of a command to a single
-field/property or a list of a single field/property.</li>
+<li>Filter (include) fields in the response. Accepts an array of field/property names to include in the output response. You can filter JSON objects properties OR table columns/fields. In addition, you can use this option in conjunction with '--response-format-type' to reduce the output of a command to a single field/property or a list of a single field/property.</li>
 </ul>
 </li>
 <li>
@@ -160,15 +152,9 @@ field/property or a list of a single field/property.</li>
 <ul>
 <li>
 <p>The command response output format type. Must be one of the following:</p>
-<p>table: Formats output data as a table. Use this option when the output data is
-an array of homogeneous JSON objects. Each property of the object will become a
-column in the table.</p>
-<p>list: Formats output data as a list of strings. Can be used on any data type
-(JSON objects/arrays) are stringified and a new line is added after each entry
-in an array.</p>
-<p>object: Formats output data as a list of prettified objects (or single object).
-Can be used in place of &quot;table&quot; to change from tabular output to a list of
-prettified objects.</p>
+<p>table: Formats output data as a table. Use this option when the output data is an array of homogeneous JSON objects. Each property of the object will become a column in the table.</p>
+<p>list: Formats output data as a list of strings. Can be used on any data type (JSON objects/arrays) are stringified and a new line is added after each entry in an array.</p>
+<p>object: Formats output data as a list of prettified objects (or single object). Can be used in place of &quot;table&quot; to change from tabular output to a list of prettified objects.</p>
 <p>string: Formats output data as a string. JSON objects/arrays are stringified.</p>
 <p>Allowed values: table, list, object, string</p>
 </li>
@@ -177,38 +163,34 @@ prettified objects.</p>
 <li>
 <p><code>--response-format-header</code>  | <code>--rfh</code> <em>(boolean)</em></p>
 <ul>
-<li>If &quot;--response-format-type table&quot; is specified, include the column headers
-in the output.</li>
+<li>If &quot;--response-format-type table&quot; is specified, include the column headers in the output.</li>
 </ul>
 </li>
 </ul>
 <h4>Examples</h4>
 <ul>
 <li>
-<p>List all jobstreams in current plan whose name starts with A
-and are in SUCCESSFUL or ERROR status:</p>
+<p>List all jobstreams in current plan whose name starts with A and are in SUCCESSFUL or ERROR status:</p>
 <ul>
-<li><code>zowe  workload-automation list jobstreaminplan --name &quot;A*&quot; --statuslist SUCCESSFUL ERROR</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  workload-automation list jobstreaminplan --name &quot;A*&quot; --statuslist SUCCESSFUL ERROR">Copy</button></li>
+<li><code>zowe workload-automation list jobstreaminplan --name &quot;A*&quot; --statuslist SUCCESSFUL ERROR</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe workload-automation list jobstreaminplan --name &quot;A*&quot; --statuslist SUCCESSFUL ERROR">Copy</button></li>
 </ul>
 </li>
 <li>
-<p>List all jobstreams in WAITING, limiting response to 50
-jobstreams:</p>
+<p>List all jobstreams in WAITING, limiting response to 50 jobstreams:</p>
 <ul>
-<li><code>zowe  workload-automation list jobstreaminplan --statuslist WAITING --howmany 50</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  workload-automation list jobstreaminplan --statuslist WAITING --howmany 50">Copy</button></li>
+<li><code>zowe workload-automation list jobstreaminplan --statuslist WAITING --howmany 50</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe workload-automation list jobstreaminplan --statuslist WAITING --howmany 50">Copy</button></li>
 </ul>
 </li>
 <li>
 <p>List all jobstreams within a specified range:</p>
 <ul>
-<li><code>zowe  workload-automation list jobstreaminplan --timerange 2019-11-10T00:00:00 2019-11-10T23:59:00</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  workload-automation list jobstreaminplan --timerange 2019-11-10T00:00:00 2019-11-10T23:59:00">Copy</button></li>
+<li><code>zowe workload-automation list jobstreaminplan --timerange 2019-11-10T00:00:00 2019-11-10T23:59:00</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe workload-automation list jobstreaminplan --timerange 2019-11-10T00:00:00 2019-11-10T23:59:00">Copy</button></li>
 </ul>
 </li>
 <li>
-<p>List all jobstreams by displaying only jobstream name and
-status in table format:</p>
+<p>List all jobstreams by displaying only jobstream name and status in table format:</p>
 <ul>
-<li><code>zowe  workload-automation list jobstreaminplan  --rff key[name] status[commonStatus] --rft table</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  workload-automation list jobstreaminplan  --rff key[name] status[commonStatus] --rft table">Copy</button></li>
+<li><code>zowe workload-automation list jobstreaminplan  --rff key[name] status[commonStatus] --rft table</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe workload-automation list jobstreaminplan  --rff key[name] status[commonStatus] --rft table">Copy</button></li>
 </ul>
 </li>
 </ul>

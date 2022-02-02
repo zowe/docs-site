@@ -9,7 +9,7 @@
 <h2><a href="zowe.html">zowe</a> › <a href="zowe_zos-files.html">zos-files</a> › <a href="zowe_zos-files_create.html">create</a> › <a href="zowe_zos-files_create_data-set-vsam.html">data-set-vsam</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
 <p>Create a VSAM cluster</p>
 <h4>Usage</h4>
-<p>zowe  zos-files create data-set-vsam &lt;dataSetName&gt; [options]</p>
+<p>zowe zos-files create data-set-vsam &lt;dataSetName&gt; [options]</p>
 <h4>Positional Arguments</h4>
 <ul>
 <li>
@@ -32,8 +32,8 @@
 <ul>
 <li>
 <p>The data set organization.</p>
-<p>Default value: INDEXED</p>
-<p>Allowed values: INDEXED, IXD, LINEAR, LIN, NONINDEXED, NIXD, NUMBERED, NUMD, ZFS</p>
+<p>Default value: INDEXED<br>
+Allowed values: INDEXED, IXD, LINEAR, LIN, NONINDEXED, NIXD, NUMBERED, NUMD, ZFS</p>
 </li>
 </ul>
 </li>
@@ -46,29 +46,19 @@
 <li>
 <p><code>--retain-for</code>  | <code>--rf</code> <em>(number)</em></p>
 <ul>
-<li>The number of days that the VSAM cluster will be retained on the system. You
-can delete the cluster at any time when neither retain-for nor retain-to is
-specified.</li>
+<li>The number of days that the VSAM cluster will be retained on the system. You can delete the cluster at any time when neither retain-for nor retain-to is specified.</li>
 </ul>
 </li>
 <li>
 <p><code>--retain-to</code>  | <code>--rt</code> <em>(string)</em></p>
 <ul>
-<li>The earliest date that a command without the PURGE parameter can delete an
-entry. Specify the expiration date in the form yyyyddd, where yyyy is a
-four-digit year (maximum value: 2155) and ddd is the three-digit day of the
-year from 001 through 365 (for non-leap years) or 366 (for leap years). You
-can delete the cluster at any time when neither retain-for nor retain-to is
-used. You cannot specify both the 'retain-to' and 'retain-for' options.</li>
+<li>The earliest date that a command without the PURGE parameter can delete an entry. Specify the expiration date in the form yyyyddd, where yyyy is a four-digit year (maximum value: 2155) and ddd is the three-digit day of the year from 001 through 365 (for non-leap years) or 366 (for leap years). You can delete the cluster at any time when neither retain-for nor retain-to is used. You cannot specify both the 'retain-to' and 'retain-for' options.</li>
 </ul>
 </li>
 <li>
 <p><code>--secondary-space</code>  | <code>--ss</code> <em>(number)</em></p>
 <ul>
-<li>The number of items for the secondary space allocation (for example, 840). The
-type of item allocated is the same as the type used for the '--size' option.
-If you do not specify a secondary allocation, a value of ~10% of the primary
-allocation is used.</li>
+<li>The number of items for the secondary space allocation (for example, 840). The type of item allocated is the same as the type used for the '--size' option. If you do not specify a secondary allocation, a value of ~10% of the primary allocation is used.</li>
 </ul>
 </li>
 <li>
@@ -81,8 +71,7 @@ allocation is used.</li>
 <p><code>--size</code>  | <code>--sz</code> <em>(string)</em></p>
 <ul>
 <li>
-<p>The primary size to allocate for the VSAM cluster. Specify size as the number
-of items to allocate (nItems). You specify the type of item by keyword.</p>
+<p>The primary size to allocate for the VSAM cluster. Specify size as the number of items to allocate (nItems). You specify the type of item by keyword.</p>
 <p>Default value: 840KB</p>
 </li>
 </ul>
@@ -96,18 +85,13 @@ of items to allocate (nItems). You specify the type of item by keyword.</p>
 <li>
 <p><code>--volumes</code>  | <code>-v</code> <em>(string)</em></p>
 <ul>
-<li>The storage volumes on which to allocate a VSAM cluster. Specify a single
-volume by its volume serial (VOLSER). To specify more than one volume, enclose
-the option in double-quotes and separate each VOLSER with a space. You must
-specify the volumes option when your cluster is not SMS-managed.</li>
+<li>The storage volumes on which to allocate a VSAM cluster. Specify a single volume by its volume serial (VOLSER). To specify more than one volume, enclose the option in double-quotes and separate each VOLSER with a space. You must specify the volumes option when your cluster is not SMS-managed.</li>
 </ul>
 </li>
 <li>
 <p><code>--response-timeout</code>  | <code>--rto</code> <em>(number)</em></p>
 <ul>
-<li>The maximum amount of time in seconds the z/OSMF Files TSO servlet should run
-before returning a response. Any request exceeding this amount of time will be
-terminated and return an error. Allowed values: 5 - 600</li>
+<li>The maximum amount of time in seconds the z/OSMF Files TSO servlet should run before returning a response. Any request exceeding this amount of time will be terminated and return an error. Allowed values: 5 - 600</li>
 </ul>
 </li>
 </ul>
@@ -152,9 +136,7 @@ terminated and return an error. Allowed values: 5 - 600</li>
 <li>
 <p><code>--base-path</code>  | <code>--bp</code> <em>(string)</em></p>
 <ul>
-<li>The base path for your API mediation layer instance. Specify this option to
-prepend the base path to all z/OSMF resources when making REST requests. Do not
-specify this option if you are not using an API mediation layer.</li>
+<li>The base path for your API mediation layer instance. Specify this option to prepend the base path to all z/OSMF resources when making REST requests. Do not specify this option if you are not using an API mediation layer.</li>
 </ul>
 </li>
 <li>
@@ -162,8 +144,8 @@ specify this option if you are not using an API mediation layer.</li>
 <ul>
 <li>
 <p>The protocol used (HTTP or HTTPS)</p>
-<p>Default value: https</p>
-<p>Allowed values: http, https</p>
+<p>Default value: https<br>
+Allowed values: http, https</p>
 </li>
 </ul>
 </li>
@@ -200,8 +182,7 @@ specify this option if you are not using an API mediation layer.</li>
 <li>
 <p><code>--token-type</code>  | <code>--tt</code> <em>(string)</em></p>
 <ul>
-<li>The type of token to get and use for the API. Omit this option to use the
-default token type, which is provided by 'zowe auth login'.</li>
+<li>The type of token to get and use for the API. Omit this option to use the default token type, which is provided by 'zowe auth login'.</li>
 </ul>
 </li>
 <li>
@@ -214,25 +195,21 @@ default token type, which is provided by 'zowe auth login'.</li>
 <h4>Examples</h4>
 <ul>
 <li>
-<p>Create a VSAM data set named &quot;<a href="http://SOME.DATA.SET.NAME">SOME.DATA.SET.NAME</a>&quot; using
-default values of INDEXED, 840 KB primary storage and 84 KB secondary storage:</p>
+<p>Create a VSAM data set named &quot;<a href="http://SOME.DATA.SET.NAME">SOME.DATA.SET.NAME</a>&quot; using default values of INDEXED, 840 KB primary storage and 84 KB secondary storage:</p>
 <ul>
-<li><code>zowe  zos-files create data-set-vsam SOME.DATA.SET.NAME</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  zos-files create data-set-vsam SOME.DATA.SET.NAME">Copy</button></li>
+<li><code>zowe zos-files create data-set-vsam SOME.DATA.SET.NAME</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe zos-files create data-set-vsam SOME.DATA.SET.NAME">Copy</button></li>
 </ul>
 </li>
 <li>
-<p>Create a 5 MB LINEAR VSAM data set named
-&quot;<a href="http://SOME.DATA.SET.NAME">SOME.DATA.SET.NAME</a>&quot; with 1 MB of secondary space. Show the properties of
-the data set when it is created:</p>
+<p>Create a 5 MB LINEAR VSAM data set named &quot;<a href="http://SOME.DATA.SET.NAME">SOME.DATA.SET.NAME</a>&quot; with 1 MB of secondary space. Show the properties of the data set when it is created:</p>
 <ul>
-<li><code>zowe  zos-files create data-set-vsam SOME.DATA.SET.NAME --data-set-organization LINEAR --size 5MB --secondary-space 1 --show-attributes</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  zos-files create data-set-vsam SOME.DATA.SET.NAME --data-set-organization LINEAR --size 5MB --secondary-space 1 --show-attributes">Copy</button></li>
+<li><code>zowe zos-files create data-set-vsam SOME.DATA.SET.NAME --data-set-organization LINEAR --size 5MB --secondary-space 1 --show-attributes</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe zos-files create data-set-vsam SOME.DATA.SET.NAME --data-set-organization LINEAR --size 5MB --secondary-space 1 --show-attributes">Copy</button></li>
 </ul>
 </li>
 <li>
-<p>Create a VSAM data set named &quot;<a href="http://SOME.DATA.SET.NAME">SOME.DATA.SET.NAME</a>&quot;, which
-is retained for 100 days:</p>
+<p>Create a VSAM data set named &quot;<a href="http://SOME.DATA.SET.NAME">SOME.DATA.SET.NAME</a>&quot;, which is retained for 100 days:</p>
 <ul>
-<li><code>zowe  zos-files create data-set-vsam SOME.DATA.SET.NAME --retain-for 100 </code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  zos-files create data-set-vsam SOME.DATA.SET.NAME --retain-for 100 ">Copy</button></li>
+<li><code>zowe zos-files create data-set-vsam SOME.DATA.SET.NAME --retain-for 100 </code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe zos-files create data-set-vsam SOME.DATA.SET.NAME --retain-for 100 ">Copy</button></li>
 </ul>
 </li>
 </ul>

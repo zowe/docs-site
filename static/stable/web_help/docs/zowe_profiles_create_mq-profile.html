@@ -7,18 +7,15 @@
 <link rel="stylesheet" href="../css/docs.css">
 <article class="markdown-body">
 <h2><a href="zowe.html">zowe</a> › <a href="zowe_profiles.html">profiles</a> › <a href="zowe_profiles_create.html">create</a> › <a href="zowe_profiles_create_mq-profile.html">mq-profile</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
-<p>An MQREST profile is required to issue commands in the MQ command group that
-interacts with MQSC. The mq profile contains your host, port, user name, and
-password for the IBM MQ System Console interface</p>
+<p>An MQREST profile is required to issue commands in the MQ command group that interacts with MQSC. The mq profile contains your host, port, user name, and password for the IBM MQ System Console interface</p>
 <h4>Usage</h4>
-<p>zowe  profiles create mq-profile &lt;profileName&gt; [options]</p>
+<p>zowe profiles create mq-profile &lt;profileName&gt; [options]</p>
 <h4>Positional Arguments</h4>
 <ul>
 <li>
 <p><code>profileName</code>		 <em>(string)</em></p>
 <ul>
-<li>Specifies the name of the new mq profile. You can load this profile by using
-the name on commands that support the &quot;--mq-profile&quot; option.</li>
+<li>Specifies the name of the new mq profile. You can load this profile by using the name on commands that support the &quot;--mq-profile&quot; option.</li>
 </ul>
 </li>
 </ul>
@@ -65,8 +62,8 @@ the name on commands that support the &quot;--mq-profile&quot; option.</li>
 <ul>
 <li>
 <p>Specifies the MQ protocol (http or https).</p>
-<p>Default value: http</p>
-<p>Allowed values: http, https</p>
+<p>Default value: http<br>
+Allowed values: http, https</p>
 </li>
 </ul>
 </li>
@@ -89,10 +86,9 @@ the name on commands that support the &quot;--mq-profile&quot; option.</li>
 <h4>Examples</h4>
 <ul>
 <li>
-<p>Create an MQ profile named 'mqprofile' to connect to MQ at
-host zos123 and port 1234:</p>
+<p>Create an MQ profile named 'mqprofile' to connect to MQ at host zos123 and port 1234:</p>
 <ul>
-<li><code>zowe  profiles create mq-profile mq --host mq123 --port 1234 --user ibmuser --password myp4ss</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  profiles create mq-profile mq --host mq123 --port 1234 --user ibmuser --password myp4ss">Copy</button></li>
+<li><code>zowe profiles create mq-profile mq --host mq123 --port 1234 --user ibmuser --password myp4ss</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe profiles create mq-profile mq --host mq123 --port 1234 --user ibmuser --password myp4ss">Copy</button></li>
 </ul>
 </li>
 </ul>

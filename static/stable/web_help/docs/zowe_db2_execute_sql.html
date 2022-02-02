@@ -7,10 +7,9 @@
 <link rel="stylesheet" href="../css/docs.css">
 <article class="markdown-body">
 <h2><a href="zowe.html">zowe</a> › <a href="zowe_db2.html">db2</a> › <a href="zowe_db2_execute.html">execute</a> › <a href="zowe_db2_execute_sql.html">sql</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
-<p>Execute one or multiple SQL statements separated by a semicolon from a command
-line or from a file.</p>
+<p>Execute one or multiple SQL statements separated by a semicolon from a command line or from a file.</p>
 <h4>Usage</h4>
-<p>zowe  db2 execute sql [options]</p>
+<p>zowe db2 execute sql [options]</p>
 <h4>Options</h4>
 <ul>
 <li>
@@ -94,8 +93,7 @@ line or from a file.</p>
 <li>
 <p><code>--token-type</code>  | <code>--tt</code> <em>(string)</em></p>
 <ul>
-<li>The type of token to get and use for the API. Omit this option to use the
-default token type, which is provided by 'zowe auth login'.</li>
+<li>The type of token to get and use for the API. Omit this option to use the default token type, which is provided by 'zowe auth login'.</li>
 </ul>
 </li>
 <li>
@@ -122,19 +120,19 @@ default token type, which is provided by 'zowe auth login'.</li>
 <li>
 <p>Execute a dummy SQL query:</p>
 <ul>
-<li><code>zowe  db2 execute sql --query &quot;SELECT 'Hello World' FROM SYSIBM.SYSDUMMY1&quot;</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  db2 execute sql --query &quot;SELECT 'Hello World' FROM SYSIBM.SYSDUMMY1&quot;">Copy</button></li>
+<li><code>zowe db2 execute sql --query &quot;SELECT 'Hello World' FROM SYSIBM.SYSDUMMY1&quot;</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe db2 execute sql --query &quot;SELECT 'Hello World' FROM SYSIBM.SYSDUMMY1&quot;">Copy</button></li>
 </ul>
 </li>
 <li>
 <p>Retrieve the employees table and total number of rows:</p>
 <ul>
-<li><code>zowe  db2 execute sql -q &quot;SELECT * FROM SAMPLE.EMP; SELECT COUNT(*) AS TOTAL FROM SAMPLE.EMP&quot;</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  db2 execute sql -q &quot;SELECT * FROM SAMPLE.EMP; SELECT COUNT(*) AS TOTAL FROM SAMPLE.EMP&quot;">Copy</button></li>
+<li><code>zowe db2 execute sql -q &quot;SELECT * FROM SAMPLE.EMP; SELECT COUNT(*) AS TOTAL FROM SAMPLE.EMP&quot;</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe db2 execute sql -q &quot;SELECT * FROM SAMPLE.EMP; SELECT COUNT(*) AS TOTAL FROM SAMPLE.EMP&quot;">Copy</button></li>
 </ul>
 </li>
 <li>
 <p>Execute a file with SQL statements:</p>
 <ul>
-<li><code>zowe  db2 execute sql --file backup_sample_database.sql</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  db2 execute sql --file backup_sample_database.sql">Copy</button></li>
+<li><code>zowe db2 execute sql --file backup_sample_database.sql</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe db2 execute sql --file backup_sample_database.sql">Copy</button></li>
 </ul>
 </li>
 </ul>

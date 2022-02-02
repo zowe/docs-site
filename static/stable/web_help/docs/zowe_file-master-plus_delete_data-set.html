@@ -7,10 +7,10 @@
 <link rel="stylesheet" href="../css/docs.css">
 <article class="markdown-body">
 <h2><a href="zowe.html">zowe</a> › <a href="zowe_file-master-plus.html">file-master-plus</a> › <a href="zowe_file-master-plus_delete.html">delete</a> › <a href="zowe_file-master-plus_delete_data-set.html">data-set</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
-<p>Permanently deletes a data set.
+<p>Permanently deletes a data set.<br>
 It supports all data set types that are supported by CA File Master Plus.</p>
 <h4>Usage</h4>
-<p>zowe  file-master-plus delete data-set &lt;name&gt; [options]</p>
+<p>zowe file-master-plus delete data-set &lt;name&gt; [options]</p>
 <h4>Positional Arguments</h4>
 <ul>
 <li>
@@ -51,8 +51,8 @@ It supports all data set types that are supported by CA File Master Plus.</p>
 <ul>
 <li>
 <p>Specifies CA File Master Plus REST API protocol.</p>
-<p>Default value: https</p>
-<p>Allowed values: http, https</p>
+<p>Default value: https<br>
+Allowed values: http, https</p>
 </li>
 </ul>
 </li>
@@ -68,9 +68,7 @@ It supports all data set types that are supported by CA File Master Plus.</p>
 <li>
 <p><code>--base-path</code>  | <code>--bp</code> <em>(string)</em></p>
 <ul>
-<li>The base path for your API mediation layer instance. Specify this option to
-prepend the base path to all FMP resources when making REST requests. Do not
-specify this option if you are not using an API mediation layer.</li>
+<li>The base path for your API mediation layer instance. Specify this option to prepend the base path to all FMP resources when making REST requests. Do not specify this option if you are not using an API mediation layer.</li>
 </ul>
 </li>
 </ul>
@@ -94,8 +92,7 @@ specify this option if you are not using an API mediation layer.</li>
 <li>
 <p><code>--token-type</code>  | <code>--tt</code> <em>(string)</em></p>
 <ul>
-<li>The type of token to get and use for the API. Omit this option to use the
-default token type, which is provided by 'zowe auth login'.</li>
+<li>The type of token to get and use for the API. Omit this option to use the default token type, which is provided by 'zowe auth login'.</li>
 </ul>
 </li>
 <li>
@@ -122,7 +119,7 @@ default token type, which is provided by 'zowe auth login'.</li>
 <li>
 <p>Deleting a data set:</p>
 <ul>
-<li><code>zowe  file-master-plus delete data-set fmmvs.dsname</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  file-master-plus delete data-set fmmvs.dsname">Copy</button></li>
+<li><code>zowe file-master-plus delete data-set fmmvs.dsname</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe file-master-plus delete data-set fmmvs.dsname">Copy</button></li>
 </ul>
 </li>
 </ul>

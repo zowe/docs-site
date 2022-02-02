@@ -9,7 +9,7 @@
 <h2><a href="zowe.html">zowe</a> › <a href="zowe_caspool.html">caspool</a> › <a href="zowe_caspool_issue.html">issue</a> › <a href="zowe_caspool_issue_command.html">command</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
 <p>Issue commands to work with CA Spool.</p>
 <h4>Usage</h4>
-<p>zowe  caspool issue command &lt;commandText&gt; [options]</p>
+<p>zowe caspool issue command &lt;commandText&gt; [options]</p>
 <h4>Positional Arguments</h4>
 <ul>
 <li>
@@ -45,8 +45,7 @@
 <li>
 <p><code>--outds</code>  | <code>--out</code> <em>(string)</em></p>
 <ul>
-<li>The SYSTSPRT data set allocated by CAI.CBQ4JCL(BQ4JZOWE). It must be unique
-for each Zowe CLI user interacting with CA Spool.</li>
+<li>The SYSTSPRT data set allocated by CAI.CBQ4JCL(BQ4JZOWE). It must be unique for each Zowe CLI user interacting with CA Spool.</li>
 </ul>
 </li>
 <li>
@@ -97,9 +96,7 @@ for each Zowe CLI user interacting with CA Spool.</li>
 <li>
 <p><code>--base-path</code>  | <code>--bp</code> <em>(string)</em></p>
 <ul>
-<li>The base path for your API mediation layer instance. Specify this option to
-prepend the base path to all z/OSMF resources when making REST requests. Do not
-specify this option if you are not using an API mediation layer.</li>
+<li>The base path for your API mediation layer instance. Specify this option to prepend the base path to all z/OSMF resources when making REST requests. Do not specify this option if you are not using an API mediation layer.</li>
 </ul>
 </li>
 <li>
@@ -107,8 +104,8 @@ specify this option if you are not using an API mediation layer.</li>
 <ul>
 <li>
 <p>The protocol used (HTTP or HTTPS)</p>
-<p>Default value: https</p>
-<p>Allowed values: http, https</p>
+<p>Default value: https<br>
+Allowed values: http, https</p>
 </li>
 </ul>
 </li>
@@ -151,8 +148,7 @@ specify this option if you are not using an API mediation layer.</li>
 <li>
 <p><code>--token-type</code>  | <code>--tt</code> <em>(string)</em></p>
 <ul>
-<li>The type of token to get and use for the API. Omit this option to use the
-default token type, which is provided by 'zowe auth login'.</li>
+<li>The type of token to get and use for the API. Omit this option to use the default token type, which is provided by 'zowe auth login'.</li>
 </ul>
 </li>
 <li>
@@ -165,10 +161,9 @@ default token type, which is provided by 'zowe auth login'.</li>
 <h4>Examples</h4>
 <ul>
 <li>
-<p>Issue the CA Spool command 'DS' to display the status of the
-ESF system:</p>
+<p>Issue the CA Spool command 'DS' to display the status of the ESF system:</p>
 <ul>
-<li><code>zowe  caspool issue command &quot;DS&quot;</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  caspool issue command &quot;DS&quot;">Copy</button></li>
+<li><code>zowe caspool issue command &quot;DS&quot;</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe caspool issue command &quot;DS&quot;">Copy</button></li>
 </ul>
 </li>
 </ul>
