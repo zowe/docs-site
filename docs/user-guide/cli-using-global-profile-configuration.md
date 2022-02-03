@@ -79,7 +79,17 @@ You have two options to initialize the global configuration:
 
 You can generate a *user-specific* configuration file that overrides the values defined in the global `zowe.config.json` file.
 
-To generate both global (`zowe.config.json`) and user (`zowe.config.user.json`) config files, issue the command `zowe config init --global-config --user-config`.
+To generate the global profile configuration file (`zowe.config.json`), issue the following command:
+
+```
+zowe config init --global-config
+```
+
+To generate the user profile configuration file (`zowe.config.user.json`), issue the following command:
+
+```
+zowe config init --global-config --user-config
+```
 
 In your user-specific file, notice that the "defaults" object is empty and the profiles do not have any properties. You can add your connection details as properties here to override properties in `zowe.config.json`, or add add new connections.
 ## Editing global configuration
