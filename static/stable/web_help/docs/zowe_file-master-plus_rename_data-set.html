@@ -7,10 +7,10 @@
 <link rel="stylesheet" href="../css/docs.css">
 <article class="markdown-body">
 <h2><a href="zowe.html">zowe</a> › <a href="zowe_file-master-plus.html">file-master-plus</a> › <a href="zowe_file-master-plus_rename.html">rename</a> › <a href="zowe_file-master-plus_rename_data-set.html">data-set</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
-<p>Rename a data set.
+<p>Rename a data set.<br>
 It supports all data set types that are supported by CA File Master Plus.</p>
 <h4>Usage</h4>
-<p>zowe  file-master-plus rename data-set &lt;old&gt; &lt;new&gt; [options]</p>
+<p>zowe file-master-plus rename data-set &lt;old&gt; &lt;new&gt; [options]</p>
 <h4>Positional Arguments</h4>
 <ul>
 <li>
@@ -32,12 +32,11 @@ It supports all data set types that are supported by CA File Master Plus.</p>
 <p><code>--vsam-component</code>  | <code>--vsamc</code> <em>(string)</em></p>
 <ul>
 <li>
-<p>Rename the data and index components of a VSAM cluster if they share the cluster
-name.
-Note: Used only if the target data set is a VSAM cluster.
+<p>Rename the data and index components of a VSAM cluster if they share the cluster name.<br>
+Note: Used only if the target data set is a VSAM cluster.<br>
 Example: --vsamc y.</p>
-<p>Default value: n</p>
-<p>Allowed values: y, n</p>
+<p>Default value: n<br>
+Allowed values: y, n</p>
 </li>
 </ul>
 </li>
@@ -73,8 +72,8 @@ Example: --vsamc y.</p>
 <ul>
 <li>
 <p>Specifies CA File Master Plus REST API protocol.</p>
-<p>Default value: https</p>
-<p>Allowed values: http, https</p>
+<p>Default value: https<br>
+Allowed values: http, https</p>
 </li>
 </ul>
 </li>
@@ -90,9 +89,7 @@ Example: --vsamc y.</p>
 <li>
 <p><code>--base-path</code>  | <code>--bp</code> <em>(string)</em></p>
 <ul>
-<li>The base path for your API mediation layer instance. Specify this option to
-prepend the base path to all FMP resources when making REST requests. Do not
-specify this option if you are not using an API mediation layer.</li>
+<li>The base path for your API mediation layer instance. Specify this option to prepend the base path to all FMP resources when making REST requests. Do not specify this option if you are not using an API mediation layer.</li>
 </ul>
 </li>
 </ul>
@@ -116,8 +113,7 @@ specify this option if you are not using an API mediation layer.</li>
 <li>
 <p><code>--token-type</code>  | <code>--tt</code> <em>(string)</em></p>
 <ul>
-<li>The type of token to get and use for the API. Omit this option to use the
-default token type, which is provided by 'zowe auth login'.</li>
+<li>The type of token to get and use for the API. Omit this option to use the default token type, which is provided by 'zowe auth login'.</li>
 </ul>
 </li>
 <li>
@@ -144,13 +140,13 @@ default token type, which is provided by 'zowe auth login'.</li>
 <li>
 <p>Renaming a data set:</p>
 <ul>
-<li><code>zowe  file-master-plus rename data-set fmmvs.old.dsname fmmvs.new.dsname</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  file-master-plus rename data-set fmmvs.old.dsname fmmvs.new.dsname">Copy</button></li>
+<li><code>zowe file-master-plus rename data-set fmmvs.old.dsname fmmvs.new.dsname</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe file-master-plus rename data-set fmmvs.old.dsname fmmvs.new.dsname">Copy</button></li>
 </ul>
 </li>
 <li>
 <p>Renaming a VSAM data set along with its components:</p>
 <ul>
-<li><code>zowe  file-master-plus rename data-set fmmvs.oldvsam.dsname fmmvs.newvsam.dsname --vsamc y</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  file-master-plus rename data-set fmmvs.oldvsam.dsname fmmvs.newvsam.dsname --vsamc y">Copy</button></li>
+<li><code>zowe file-master-plus rename data-set fmmvs.oldvsam.dsname fmmvs.newvsam.dsname --vsamc y</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe file-master-plus rename data-set fmmvs.oldvsam.dsname fmmvs.newvsam.dsname --vsamc y">Copy</button></li>
 </ul>
 </li>
 </ul>

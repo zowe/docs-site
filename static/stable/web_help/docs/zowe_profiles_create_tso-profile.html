@@ -9,14 +9,13 @@
 <h2><a href="zowe.html">zowe</a> › <a href="zowe_profiles.html">profiles</a> › <a href="zowe_profiles_create.html">create</a> › <a href="zowe_profiles_create_tso-profile.html">tso-profile</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
 <p>z/OS TSO/E User Profile</p>
 <h4>Usage</h4>
-<p>zowe  profiles create tso-profile &lt;profileName&gt; [options]</p>
+<p>zowe profiles create tso-profile &lt;profileName&gt; [options]</p>
 <h4>Positional Arguments</h4>
 <ul>
 <li>
 <p><code>profileName</code>		 <em>(string)</em></p>
 <ul>
-<li>Specifies the name of the new tso profile. You can load this profile by using
-the name on commands that support the &quot;--tso-profile&quot; option.</li>
+<li>Specifies the name of the new tso profile. You can load this profile by using the name on commands that support the &quot;--tso-profile&quot; option.</li>
 </ul>
 </li>
 </ul>
@@ -32,8 +31,7 @@ the name on commands that support the &quot;--tso-profile&quot; option.</li>
 <p><code>--character-set</code>  | <code>--cs</code> <em>(string)</em></p>
 <ul>
 <li>
-<p>Character set for address space to convert messages and responses from UTF-8 to
-EBCDIC.</p>
+<p>Character set for address space to convert messages and responses from UTF-8 to EBCDIC.</p>
 <p>Default value: 697</p>
 </li>
 </ul>
@@ -42,8 +40,7 @@ EBCDIC.</p>
 <p><code>--code-page</code>  | <code>--cp</code> <em>(string)</em></p>
 <ul>
 <li>
-<p>Codepage value for TSO/E address space to convert messages and responses from
-UTF-8 to EBCDIC.</p>
+<p>Codepage value for TSO/E address space to convert messages and responses from UTF-8 to EBCDIC.</p>
 <p>Default value: 1047</p>
 </li>
 </ul>
@@ -103,24 +100,21 @@ UTF-8 to EBCDIC.</p>
 <h4>Examples</h4>
 <ul>
 <li>
-<p>Create a tso profile called 'myprof' with default settings
-and JES accounting information of 'IZUACCT':</p>
+<p>Create a tso profile called 'myprof' with default settings and JES accounting information of 'IZUACCT':</p>
 <ul>
-<li><code>zowe  profiles create tso-profile myprof -a IZUACCT</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  profiles create tso-profile myprof -a IZUACCT">Copy</button></li>
+<li><code>zowe profiles create tso-profile myprof -a IZUACCT</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe profiles create tso-profile myprof -a IZUACCT">Copy</button></li>
 </ul>
 </li>
 <li>
-<p>Create a tso profile called 'largeregion' with a region size
-of 8192, a logon procedure of MYPROC, and JES accounting information of '1234':</p>
+<p>Create a tso profile called 'largeregion' with a region size of 8192, a logon procedure of MYPROC, and JES accounting information of '1234':</p>
 <ul>
-<li><code>zowe  profiles create tso-profile largeregion -a 1234 --rs 8192</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  profiles create tso-profile largeregion -a 1234 --rs 8192">Copy</button></li>
+<li><code>zowe profiles create tso-profile largeregion -a 1234 --rs 8192</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe profiles create tso-profile largeregion -a 1234 --rs 8192">Copy</button></li>
 </ul>
 </li>
 <li>
-<p>Create a tso profile called 'myprof2' with default settings
-and region size of 8192, without storing the user account on disk:</p>
+<p>Create a tso profile called 'myprof2' with default settings and region size of 8192, without storing the user account on disk:</p>
 <ul>
-<li><code>zowe  profiles create tso-profile myprof2 --rs 8192</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  profiles create tso-profile myprof2 --rs 8192">Copy</button></li>
+<li><code>zowe profiles create tso-profile myprof2 --rs 8192</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe profiles create tso-profile myprof2 --rs 8192">Copy</button></li>
 </ul>
 </li>
 </ul>

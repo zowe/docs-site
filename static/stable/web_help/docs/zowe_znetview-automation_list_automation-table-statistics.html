@@ -9,7 +9,7 @@
 <h2><a href="zowe.html">zowe</a> › <a href="zowe_znetview-automation.html">znetview-automation</a> › <a href="zowe_znetview-automation_list.html">list</a> › <a href="zowe_znetview-automation_list_automation-table-statistics.html">automation-table-statistics</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
 <p>Retrieve automation table statistics for the specified member and report type.</p>
 <h4>Usage</h4>
-<p>zowe  znetview-automation list automation-table-statistics &lt;tableName&gt; [options]</p>
+<p>zowe znetview-automation list automation-table-statistics &lt;tableName&gt; [options]</p>
 <h4>Positional Arguments</h4>
 <ul>
 <li>
@@ -29,8 +29,7 @@
 <p>MSG</p>
 <p>Requests information and statistics on message-type automation statements.</p>
 <p>MSU</p>
-<p>Requests information and statistics on Management Services Unit (MSU) type
-automation statements.</p>
+<p>Requests information and statistics on Management Services Unit (MSU) type automation statements.</p>
 <p>BOTH</p>
 <p>Requests a report containing both message and MSU information.</p>
 <p>Allowed values: MSG, MSU, BOTH</p>
@@ -45,8 +44,7 @@ automation statements.</p>
 <ul>
 <li>
 <p>The NetView domain to which the request will be sent.</p>
-<p>The default value is the NetView domain to which the NetView REST Server is
-connected.</p>
+<p>The default value is the NetView domain to which the NetView REST Server is connected.</p>
 </li>
 </ul>
 </li>
@@ -96,11 +94,8 @@ connected.</p>
 <p><code>--base-path</code>  | <code>--bp</code> <em>(string)</em></p>
 <ul>
 <li>
-<p>The base path for your Zowe API Mediation Layer instance. Specify this option
-to prepend the base path to NetView REST service when making REST requests to
-the Zowe API Mediation Layer.</p>
-<p>Note: Do not specify this option if you are not using the Zowe API Mediation
-Layer.</p>
+<p>The base path for your Zowe API Mediation Layer instance. Specify this option to prepend the base path to NetView REST service when making REST requests to the Zowe API Mediation Layer.</p>
+<p>Note: Do not specify this option if you are not using the Zowe API Mediation Layer.</p>
 </li>
 </ul>
 </li>
@@ -147,10 +142,9 @@ Layer.</p>
 <h4>Examples</h4>
 <ul>
 <li>
-<p>List all statistics for automation table TESTTBL for domain
-CNM01:</p>
+<p>List all statistics for automation table TESTTBL for domain CNM01:</p>
 <ul>
-<li><code>zowe  znetview-automation list automation-table-statistics TESTTBL --report-type  BOTH --domain CNM01</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  znetview-automation list automation-table-statistics TESTTBL --report-type  BOTH --domain CNM01">Copy</button></li>
+<li><code>zowe znetview-automation list automation-table-statistics TESTTBL --report-type  BOTH --domain CNM01</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe znetview-automation list automation-table-statistics TESTTBL --report-type  BOTH --domain CNM01">Copy</button></li>
 </ul>
 </li>
 </ul>

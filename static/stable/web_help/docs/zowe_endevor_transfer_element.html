@@ -7,10 +7,9 @@
 <link rel="stylesheet" href="../css/docs.css">
 <article class="markdown-body">
 <h2><a href="zowe.html">zowe</a> › <a href="zowe_endevor.html">endevor</a> › <a href="zowe_endevor_transfer.html">transfer</a> › <a href="zowe_endevor_transfer_element.html">element</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
-<p>The Transfer element command transfers Elements from one CA Endevor SCM location
-to another.</p>
+<p>The Transfer element command transfers Elements from one CA Endevor SCM location to another.</p>
 <h4>Usage</h4>
-<p>zowe  endevor transfer element &lt;element&gt; [options]</p>
+<p>zowe endevor transfer element &lt;element&gt; [options]</p>
 <h4>Positional Arguments</h4>
 <ul>
 <li>
@@ -71,8 +70,7 @@ to another.</p>
 <p><code>--maxrc</code>  <em>(number)</em></p>
 <ul>
 <li>
-<p>The maximum value of the return code of a successful action. When the return
-code is greater than the maxrc value, the command fails</p>
+<p>The maximum value of the return code of a successful action. When the return code is greater than the maxrc value, the command fails</p>
 <p>Default value: 8</p>
 </li>
 </ul>
@@ -152,29 +150,25 @@ code is greater than the maxrc value, the command fails</p>
 <li>
 <p><code>--sync</code>  | <code>-s</code> <em>(boolean)</em></p>
 <ul>
-<li>Specify if you want to synchronize source and current level of the Elements
-while performing this action.</li>
+<li>Specify if you want to synchronize source and current level of the Elements while performing this action.</li>
 </ul>
 </li>
 <li>
 <p><code>--with-history</code>  | <code>--wh</code> <em>(boolean)</em></p>
 <ul>
-<li>Specify if you want to preserve the change history of the Elements while
-performing this action.</li>
+<li>Specify if you want to preserve the change history of the Elements while performing this action.</li>
 </ul>
 </li>
 <li>
 <p><code>--ignore-generate-failed</code>  | <code>--igf</code> <em>(boolean)</em></p>
 <ul>
-<li>Process the transfer request regardless of whether the FAILED flag is set for
-the element or if the element was generated or moved successfully.</li>
+<li>Process the transfer request regardless of whether the FAILED flag is set for the element or if the element was generated or moved successfully.</li>
 </ul>
 </li>
 <li>
 <p><code>--bypass-element-delete</code>  | <code>--bed</code> <em>(boolean)</em></p>
 <ul>
-<li>Specify if you want to retain the Elements in the source Stage after
-successfully completing this action.</li>
+<li>Specify if you want to retain the Elements in the source Stage after successfully completing this action.</li>
 </ul>
 </li>
 <li>
@@ -186,64 +180,53 @@ successfully completing this action.</li>
 <li>
 <p><code>--bypass-generate-proc</code>  | <code>--bgp</code> <em>(boolean)</em></p>
 <ul>
-<li>Specify to bypasses the execution of the generate or move processor (whichever
-may be chosen) upon element transfer.</li>
+<li>Specify to bypasses the execution of the generate or move processor (whichever may be chosen) upon element transfer.</li>
 </ul>
 </li>
 <li>
 <p><code>--retain-signout</code>  | <code>--rs</code> <em>(boolean)</em></p>
 <ul>
-<li>Specify if you want to retain the source location signouts for all Elements at
-the target location while performing this action.</li>
+<li>Specify if you want to retain the source location signouts for all Elements at the target location while performing this action.</li>
 </ul>
 </li>
 <li>
 <p><code>--signout-to</code>  | <code>--st</code> <em>(string)</em></p>
 <ul>
-<li>Specify if you want to sign all Elements out to the specified user ID at the
-target Stage while performing this action.</li>
+<li>Specify if you want to sign all Elements out to the specified user ID at the target Stage while performing this action.</li>
 </ul>
 </li>
 <li>
 <p><code>--override-signout</code>  | <code>--os</code> <em>(boolean)</em></p>
 <ul>
-<li>Specify if you want to override the Signout of an Endevor element while
-performing this action.</li>
+<li>Specify if you want to override the Signout of an Endevor element while performing this action.</li>
 </ul>
 </li>
 <li>
 <p><code>--where-proc-group</code>  | <code>--wpg</code> <em>(string)</em></p>
 <ul>
-<li>Lets you select Elements according to a specified Processor group. You can use
-a wildcard when specifying the Processor group name.
+<li>Lets you select Elements according to a specified Processor group. You can use a wildcard when specifying the Processor group name.<br>
 Accepts up to 8 Processor group names separated by &quot;, &quot;.</li>
 </ul>
 </li>
 <li>
 <p><code>--where-ccid-all</code>  | <code>--wca</code> <em>(string)</em></p>
 <ul>
-<li>Instructs CA Endevor SCM to search both the Master Control File and the SOURCE
-DELTA levels for a specified CCIDs.
-Accepts up to 8 CCIDs separated by &quot;, &quot;. Enclose CCIDs that contain special
-characters in quotes.</li>
+<li>Instructs CA Endevor SCM to search both the Master Control File and the SOURCE DELTA levels for a specified CCIDs.<br>
+Accepts up to 8 CCIDs separated by &quot;, &quot;. Enclose CCIDs that contain special characters in quotes.</li>
 </ul>
 </li>
 <li>
 <p><code>--where-ccid-current</code>  | <code>--wcc</code> <em>(string)</em></p>
 <ul>
-<li>Instructs CA Endevor SCM to search through the CCID fields in the Master Control
-File to find a specified CCIDs.
-Accept up to 8 CCIDs separated by &quot;, &quot;. Enclose CCIDs that contain special
-characters in quotes.</li>
+<li>Instructs CA Endevor SCM to search through the CCID fields in the Master Control File to find a specified CCIDs.<br>
+Accept up to 8 CCIDs separated by &quot;, &quot;. Enclose CCIDs that contain special characters in quotes.</li>
 </ul>
 </li>
 <li>
 <p><code>--where-ccid-retrieve</code>  | <code>--wcr</code> <em>(string)</em></p>
 <ul>
-<li>Instructs CA Endevor SCM to use the CCID in the Master Control File RETRIEVE
-CCID field.
-Accepts up to 8 CCIDs separated by &quot;, &quot;. Enclose CCIDs that contain special
-characters in quotes.</li>
+<li>Instructs CA Endevor SCM to use the CCID in the Master Control File RETRIEVE CCID field.<br>
+Accepts up to 8 CCIDs separated by &quot;, &quot;. Enclose CCIDs that contain special characters in quotes.</li>
 </ul>
 </li>
 </ul>
@@ -266,8 +249,8 @@ characters in quotes.</li>
 <ul>
 <li>
 <p>Specifies the protocol used for connecting to CA Endevor SCM Rest API</p>
-<p>Default value: https</p>
-<p>Allowed values: http, https</p>
+<p>Default value: https<br>
+Allowed values: http, https</p>
 </li>
 </ul>
 </li>
@@ -286,8 +269,7 @@ characters in quotes.</li>
 <li>
 <p><code>--reject-unauthorized</code>  | <code>--ru</code> <em>(boolean)</em></p>
 <ul>
-<li>Specify this option to have the server certificate verified against the list of
-supplied CAs</li>
+<li>Specify this option to have the server certificate verified against the list of supplied CAs</li>
 </ul>
 </li>
 <li>
@@ -314,17 +296,13 @@ supplied CAs</li>
 <li>
 <p><code>--report-dir</code>  <em>(string)</em></p>
 <ul>
-<li>Directory for saving reports from Endevor SCM locally, if --report-file
-wasn't specified. Defaults to current directory.</li>
+<li>Directory for saving reports from Endevor SCM locally, if --report-file wasn't specified. Defaults to current directory.</li>
 </ul>
 </li>
 <li>
 <p><code>--write-report</code>  <em>(boolean)</em></p>
 <ul>
-<li>Write the endevor reports to a file. By default, when return code is 0, no
-report will be written, unless this option is specified. When return code is
-bigger than 0, reports will be written to a file, unless this option is specifed
-to be false</li>
+<li>Write the endevor reports to a file. By default, when return code is 0, no report will be written, unless this option is specified. When return code is bigger than 0, reports will be written to a file, unless this option is specifed to be false</li>
 </ul>
 </li>
 </ul>
@@ -354,8 +332,7 @@ to be false</li>
 <li>
 <p><code>--token-type</code>  | <code>--tt</code> <em>(string)</em></p>
 <ul>
-<li>The type of token to get and use for the API. Omit this option to use the
-default token type, which is provided by 'zowe auth login'.</li>
+<li>The type of token to get and use for the API. Omit this option to use the default token type, which is provided by 'zowe auth login'.</li>
 </ul>
 </li>
 <li>
@@ -380,10 +357,9 @@ default token type, which is provided by 'zowe auth login'.</li>
 <h4>Examples</h4>
 <ul>
 <li>
-<p>Transfer element from specified inventory location to 1
-stage higher in map, with endevor profile set up:</p>
+<p>Transfer element from specified inventory location to 1 stage higher in map, with endevor profile set up:</p>
 <ul>
-<li><code>zowe  endevor transfer element elementName --env ENV --sn 1 --tosn 2 --sys SYS --sub SUB --typ TYPE -i ENDEVOR</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  endevor transfer element elementName --env ENV --sn 1 --tosn 2 --sys SYS --sub SUB --typ TYPE -i ENDEVOR">Copy</button></li>
+<li><code>zowe endevor transfer element elementName --env ENV --sn 1 --tosn 2 --sys SYS --sub SUB --typ TYPE -i ENDEVOR</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe endevor transfer element elementName --env ENV --sn 1 --tosn 2 --sys SYS --sub SUB --typ TYPE -i ENDEVOR">Copy</button></li>
 </ul>
 </li>
 </ul>

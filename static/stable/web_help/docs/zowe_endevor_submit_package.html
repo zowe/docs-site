@@ -7,10 +7,9 @@
 <link rel="stylesheet" href="../css/docs.css">
 <article class="markdown-body">
 <h2><a href="zowe.html">zowe</a> › <a href="zowe_endevor.html">endevor</a> › <a href="zowe_endevor_submit.html">submit</a> › <a href="zowe_endevor_submit_package.html">package</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
-<p>The submit package command submits a JCL job stream to execute one or more
-Packages.</p>
+<p>The submit package command submits a JCL job stream to execute one or more Packages.</p>
 <h4>Usage</h4>
-<p>zowe  endevor submit package [package] [options]</p>
+<p>zowe endevor submit package [package] [options]</p>
 <h4>Positional Arguments</h4>
 <ul>
 <li>
@@ -52,8 +51,7 @@ Packages.</p>
 <li>
 <p><code>--to-ddname</code>  | <code>--tdd</code> <em>(string)</em></p>
 <ul>
-<li>Send the submission of the package to be processed according to a DDName
-specified in the starter task (STC).</li>
+<li>Send the submission of the package to be processed according to a DDName specified in the starter task (STC).</li>
 </ul>
 </li>
 </ul>
@@ -63,23 +61,16 @@ specified in the starter task (STC).</li>
 <p><code>--status</code>  | <code>--st</code> <em>(string)</em></p>
 <ul>
 <li>
-<p>Specify the status of the packages. Valid values are [APPROVED, EXECFAILED]
-for execute action, and additional values [INEDIT, INAPPROVAL, INEXECUTION,
-EXECUTED, COMMITTED, DENIED] for list action, additional value [ALLSTATE] for
-delete action.
-It is possible to specify multiple status separated by &quot;,&quot; during list and
-delete package.</p>
-<p>Allowed values: ALLSTATE, INEDIT, INAPPROVAL, APPROVED, INEXECUTION, EXECUTED,
-COMMITTED, DENIED, EXECFAILED</p>
+<p>Specify the status of the packages. Valid values are [APPROVED, EXECFAILED] for execute action, and additional values [INEDIT, INAPPROVAL, INEXECUTION, EXECUTED, COMMITTED, DENIED] for list action, additional value [ALLSTATE] for delete action.<br>
+It is possible to specify multiple status separated by &quot;,&quot; during list and delete package.</p>
+<p>Allowed values: ALLSTATE, INEDIT, INAPPROVAL, APPROVED, INEXECUTION, EXECUTED, COMMITTED, DENIED, EXECFAILED</p>
 </li>
 </ul>
 </li>
 <li>
 <p><code>--multiple-streams</code>  | <code>--ms</code> <em>(boolean)</em></p>
 <ul>
-<li>Specify to submit a separate, unique job for each package. If you do not
-specify this, a single job with a unique job step for each package is
-submitted.</li>
+<li>Specify to submit a separate, unique job for each package. If you do not specify this, a single job with a unique job step for each package is submitted.</li>
 </ul>
 </li>
 <li>
@@ -91,15 +82,13 @@ submitted.</li>
 <li>
 <p><code>--jcl-procedure</code>  | <code>--jp</code> <em>(string)</em></p>
 <ul>
-<li>This option lets you to identify the name of the JCL procedure that you want to
-invoke. ENDEVOR is used by default if any processor is specified.</li>
+<li>This option lets you to identify the name of the JCL procedure that you want to invoke. ENDEVOR is used by default if any processor is specified.</li>
 </ul>
 </li>
 <li>
 <p><code>--CA7-dependent-job</code>  | <code>--7dj</code> <em>(string)</em></p>
 <ul>
-<li>Specifies a single predecessor job which must complete while demanded job is
-waiting in the CA7 scheduler.</li>
+<li>Specifies a single predecessor job which must complete while demanded job is waiting in the CA7 scheduler.</li>
 </ul>
 </li>
 </ul>
@@ -109,8 +98,7 @@ waiting in the CA7 scheduler.</li>
 <p><code>--maxrc</code>  <em>(number)</em></p>
 <ul>
 <li>
-<p>The maximum value of the return code of a successful action. When the return
-code is greater than the maxrc value, the command fails</p>
+<p>The maximum value of the return code of a successful action. When the return code is greater than the maxrc value, the command fails</p>
 <p>Default value: 8</p>
 </li>
 </ul>
@@ -141,8 +129,8 @@ code is greater than the maxrc value, the command fails</p>
 <ul>
 <li>
 <p>Specifies the protocol used for connecting to CA Endevor SCM Rest API</p>
-<p>Default value: https</p>
-<p>Allowed values: http, https</p>
+<p>Default value: https<br>
+Allowed values: http, https</p>
 </li>
 </ul>
 </li>
@@ -161,8 +149,7 @@ code is greater than the maxrc value, the command fails</p>
 <li>
 <p><code>--reject-unauthorized</code>  | <code>--ru</code> <em>(boolean)</em></p>
 <ul>
-<li>Specify this option to have the server certificate verified against the list of
-supplied CAs</li>
+<li>Specify this option to have the server certificate verified against the list of supplied CAs</li>
 </ul>
 </li>
 <li>
@@ -189,17 +176,13 @@ supplied CAs</li>
 <li>
 <p><code>--report-dir</code>  <em>(string)</em></p>
 <ul>
-<li>Directory for saving reports from Endevor SCM locally, if --report-file
-wasn't specified. Defaults to current directory.</li>
+<li>Directory for saving reports from Endevor SCM locally, if --report-file wasn't specified. Defaults to current directory.</li>
 </ul>
 </li>
 <li>
 <p><code>--write-report</code>  <em>(boolean)</em></p>
 <ul>
-<li>Write the endevor reports to a file. By default, when return code is 0, no
-report will be written, unless this option is specified. When return code is
-bigger than 0, reports will be written to a file, unless this option is specifed
-to be false</li>
+<li>Write the endevor reports to a file. By default, when return code is 0, no report will be written, unless this option is specified. When return code is bigger than 0, reports will be written to a file, unless this option is specifed to be false</li>
 </ul>
 </li>
 </ul>
@@ -229,8 +212,7 @@ to be false</li>
 <li>
 <p><code>--token-type</code>  | <code>--tt</code> <em>(string)</em></p>
 <ul>
-<li>The type of token to get and use for the API. Omit this option to use the
-default token type, which is provided by 'zowe auth login'.</li>
+<li>The type of token to get and use for the API. Omit this option to use the default token type, which is provided by 'zowe auth login'.</li>
 </ul>
 </li>
 <li>
@@ -255,10 +237,9 @@ default token type, which is provided by 'zowe auth login'.</li>
 <h4>Examples</h4>
 <ul>
 <li>
-<p>Submit package using jobcard from local file, with endevor
-profile set up:</p>
+<p>Submit package using jobcard from local file, with endevor profile set up:</p>
 <ul>
-<li><code>zowe  endevor submit package packageName --ff jobcardfile.txt -i ENDEVOR</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  endevor submit package packageName --ff jobcardfile.txt -i ENDEVOR">Copy</button></li>
+<li><code>zowe endevor submit package packageName --ff jobcardfile.txt -i ENDEVOR</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe endevor submit package packageName --ff jobcardfile.txt -i ENDEVOR">Copy</button></li>
 </ul>
 </li>
 </ul>

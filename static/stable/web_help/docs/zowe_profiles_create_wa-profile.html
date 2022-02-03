@@ -9,14 +9,13 @@
 <h2><a href="zowe.html">zowe</a> › <a href="zowe_profiles.html">profiles</a> › <a href="zowe_profiles_create.html">create</a> › <a href="zowe_profiles_create_wa-profile.html">wa-profile</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
 <p>A profile for interaction with WA REST Services</p>
 <h4>Usage</h4>
-<p>zowe  profiles create wa-profile &lt;profileName&gt; [options]</p>
+<p>zowe profiles create wa-profile &lt;profileName&gt; [options]</p>
 <h4>Positional Arguments</h4>
 <ul>
 <li>
 <p><code>profileName</code>		 <em>(string)</em></p>
 <ul>
-<li>Specifies the name of the new wa profile. You can load this profile by using
-the name on commands that support the &quot;--wa-profile&quot; option.</li>
+<li>Specifies the name of the new wa profile. You can load this profile by using the name on commands that support the &quot;--wa-profile&quot; option.</li>
 </ul>
 </li>
 </ul>
@@ -55,9 +54,7 @@ the name on commands that support the &quot;--wa-profile&quot; option.</li>
 <li>
 <p><code>--base-path</code>  | <code>--bp</code> <em>(string)</em></p>
 <ul>
-<li>Base path of your API mediation layer instance. If a base path is specified,
-the plug-in connects to API ML. Specify this value according to the yaml
-static file added to API ML</li>
+<li>Base path of your API mediation layer instance. If a base path is specified, the plug-in connects to API ML. Specify this value according to the yaml static file added to API ML</li>
 </ul>
 </li>
 <li>
@@ -88,17 +85,15 @@ static file added to API ML</li>
 <h4>Examples</h4>
 <ul>
 <li>
-<p>Create a WA profile named 'waprof1' to connect to Z
-Connector at host zconnhost and port 9443:</p>
+<p>Create a WA profile named 'waprof1' to connect to Z Connector at host zconnhost and port 9443:</p>
 <ul>
-<li><code>zowe  profiles create wa-profile waprof --host zconnhost --port 9443 --user wauser --password wapwd --engine myengine --reject-unauthorized true</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  profiles create wa-profile waprof --host zconnhost --port 9443 --user wauser --password wapwd --engine myengine --reject-unauthorized true">Copy</button></li>
+<li><code>zowe profiles create wa-profile waprof --host zconnhost --port 9443 --user wauser --password wapwd --engine myengine --reject-unauthorized true</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe profiles create wa-profile waprof --host zconnhost --port 9443 --user wauser --password wapwd --engine myengine --reject-unauthorized true">Copy</button></li>
 </ul>
 </li>
 <li>
-<p>Create a WA profile named 'waprof2' to connect to Api
-mediaton layer at host gatewayhost and port 443:</p>
+<p>Create a WA profile named 'waprof2' to connect to Api mediaton layer at host gatewayhost and port 443:</p>
 <ul>
-<li><code>zowe  profiles create wa-profile waprof2 --host gatewayhost --port 443 --user wauser --password wapwd --engine myengine --base-path /api/v1/serviceId  </code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  profiles create wa-profile waprof2 --host gatewayhost --port 443 --user wauser --password wapwd --engine myengine --base-path /api/v1/serviceId  ">Copy</button></li>
+<li><code>zowe profiles create wa-profile waprof2 --host gatewayhost --port 443 --user wauser --password wapwd --engine myengine --base-path /api/v1/serviceId  </code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe profiles create wa-profile waprof2 --host gatewayhost --port 443 --user wauser --password wapwd --engine myengine --base-path /api/v1/serviceId  ">Copy</button></li>
 </ul>
 </li>
 </ul>

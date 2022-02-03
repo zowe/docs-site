@@ -7,10 +7,9 @@
 <link rel="stylesheet" href="../css/docs.css">
 <article class="markdown-body">
 <h2><a href="zowe.html">zowe</a> › <a href="zowe_db2.html">db2</a> › <a href="zowe_db2_call.html">call</a> › <a href="zowe_db2_call_procedure.html">procedure</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
-<p>Call a Db2 stored procedure. Specify the stored procedure name and optionally
-provide values.</p>
+<p>Call a Db2 stored procedure. Specify the stored procedure name and optionally provide values.</p>
 <h4>Usage</h4>
-<p>zowe  db2 call procedure &lt;routine&gt; [options]</p>
+<p>zowe db2 call procedure &lt;routine&gt; [options]</p>
 <h4>Positional Arguments</h4>
 <ul>
 <li>
@@ -97,8 +96,7 @@ provide values.</p>
 <li>
 <p><code>--token-type</code>  | <code>--tt</code> <em>(string)</em></p>
 <ul>
-<li>The type of token to get and use for the API. Omit this option to use the
-default token type, which is provided by 'zowe auth login'.</li>
+<li>The type of token to get and use for the API. Omit this option to use the default token type, which is provided by 'zowe auth login'.</li>
 </ul>
 </li>
 <li>
@@ -125,22 +123,19 @@ default token type, which is provided by 'zowe auth login'.</li>
 <li>
 <p>Call stored procedure DEMO.SP1:</p>
 <ul>
-<li><code>zowe  db2 call procedure &quot;DEMO.SP1&quot;</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  db2 call procedure &quot;DEMO.SP1&quot;">Copy</button></li>
+<li><code>zowe db2 call procedure &quot;DEMO.SP1&quot;</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe db2 call procedure &quot;DEMO.SP1&quot;">Copy</button></li>
 </ul>
 </li>
 <li>
-<p>Call a stored procedure and pass values for parameter
-indicators:</p>
+<p>Call a stored procedure and pass values for parameter indicators:</p>
 <ul>
-<li><code>zowe  db2 call procedure &quot;DEMO.SP2(?, ?)&quot; --parameters &quot;Hello&quot; &quot;world!&quot;</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  db2 call procedure &quot;DEMO.SP2(?, ?)&quot; --parameters &quot;Hello&quot; &quot;world!&quot;">Copy</button></li>
+<li><code>zowe db2 call procedure &quot;DEMO.SP2(?, ?)&quot; --parameters &quot;Hello&quot; &quot;world!&quot;</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe db2 call procedure &quot;DEMO.SP2(?, ?)&quot; --parameters &quot;Hello&quot; &quot;world!&quot;">Copy</button></li>
 </ul>
 </li>
 <li>
-<p>Call a stored procedure and pass values for two output
-parameters. The first output requires a 2-character buffer. The second output
-is a message that will be truncated to the length of the placeholder.:</p>
+<p>Call a stored procedure and pass values for two output parameters. The first output requires a 2-character buffer. The second output is a message that will be truncated to the length of the placeholder.:</p>
 <ul>
-<li><code>zowe  db2 call procedure &quot;DEMO.SP3(NULL, ?, ?)&quot; --parameters &quot;00&quot; &quot;message_placeholder_message_placeholder&quot;</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  db2 call procedure &quot;DEMO.SP3(NULL, ?, ?)&quot; --parameters &quot;00&quot; &quot;message_placeholder_message_placeholder&quot;">Copy</button></li>
+<li><code>zowe db2 call procedure &quot;DEMO.SP3(NULL, ?, ?)&quot; --parameters &quot;00&quot; &quot;message_placeholder_message_placeholder&quot;</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe db2 call procedure &quot;DEMO.SP3(NULL, ?, ?)&quot; --parameters &quot;00&quot; &quot;message_placeholder_message_placeholder&quot;">Copy</button></li>
 </ul>
 </li>
 </ul>

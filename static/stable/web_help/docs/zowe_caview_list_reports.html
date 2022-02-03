@@ -7,12 +7,11 @@
 <link rel="stylesheet" href="../css/docs.css">
 <article class="markdown-body">
 <h2><a href="zowe.html">zowe</a> › <a href="zowe_caview.html">caview</a> › <a href="zowe_caview_list.html">list</a> › <a href="zowe_caview_list_reports.html">reports</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
-<p>List reports in a repository.
-Use the returned 'ReportHandle' to reference a report in other commands.
-For example, use the 'ReportHandle' in the 'download report' command to download
-that report.</p>
+<p>List reports in a repository.<br>
+Use the returned 'ReportHandle' to reference a report in other commands.<br>
+For example, use the 'ReportHandle' in the 'download report' command to download that report.</p>
 <h4>Usage</h4>
-<p>zowe  caview list reports &lt;repositoryId&gt; [options]</p>
+<p>zowe caview list reports &lt;repositoryId&gt; [options]</p>
 <h4>Positional Arguments</h4>
 <ul>
 <li>
@@ -28,8 +27,7 @@ that report.</p>
 <p><code>--filter-name</code>  | <code>-n</code> <em>(string)</em></p>
 <ul>
 <li>
-<p>Filter (include) based on report name. Use the asterisk (*) as a wildcard to
-represent any number of characters.</p>
+<p>Filter (include) based on report name. Use the asterisk (*) as a wildcard to represent any number of characters.</p>
 <p>Default value: *</p>
 </li>
 </ul>
@@ -47,8 +45,7 @@ represent any number of characters.</p>
 <p><code>--latest-versions</code>  | <code>--latest-version</code> | <code>--lv</code> <em>(number)</em></p>
 <ul>
 <li>
-<p>Number of latest versions (of reports) to include. If not specified, all
-versions of reports are included.</p>
+<p>Number of latest versions (of reports) to include. If not specified, all versions of reports are included.</p>
 <p>Default value: 0</p>
 </li>
 </ul>
@@ -56,23 +53,20 @@ versions of reports are included.</p>
 <li>
 <p><code>--archival-since</code>  | <code>--since</code> | <code>--archival-from</code> | <code>--from</code> <em>(string)</em></p>
 <ul>
-<li>Date of earliest archived reports to include based on archival date. Specify a
-value in the ISO-8601 format.</li>
+<li>Date of earliest archived reports to include based on archival date. Specify a value in the ISO-8601 format.</li>
 </ul>
 </li>
 <li>
 <p><code>--archival-until</code>  | <code>--until</code> | <code>--archival-to</code> | <code>--to</code> <em>(string)</em></p>
 <ul>
-<li>Date of latest archived reports to include based on archival date. Specify a
-value in the ISO-8601 format.</li>
+<li>Date of latest archived reports to include based on archival date. Specify a value in the ISO-8601 format.</li>
 </ul>
 </li>
 <li>
 <p><code>--output-header</code>  | <code>--header</code> <em>(boolean)</em></p>
 <ul>
 <li>
-<p>Include header with field names in the output when you specify 'tabular' or
-'csv' for the output format.
+<p>Include header with field names in the output when you specify 'tabular' or 'csv' for the output format.<br>
 This option is ignored when you specify any other output format.</p>
 <p>Default value: true</p>
 </li>
@@ -82,10 +76,9 @@ This option is ignored when you specify any other output format.</p>
 <p><code>--output-format</code>  | <code>--output</code> <em>(string)</em></p>
 <ul>
 <li>
-<p>Output format. This option is ignored if '--response-format-json' is
-specified.</p>
-<p>Default value: tabular</p>
-<p>Allowed values: ^tabular$, ^csv$, ^json$, ^xml$</p>
+<p>Output format. This option is ignored if '--response-format-json' is specified.</p>
+<p>Default value: tabular<br>
+Allowed values: ^tabular$, ^csv$, ^json$, ^xml$</p>
 </li>
 </ul>
 </li>
@@ -93,12 +86,10 @@ specified.</p>
 <p><code>--output-field</code>  | <code>-f</code> <em>(array)</em></p>
 <ul>
 <li>
-<p>Field to include in the output. Multiple fields can be specified.
+<p>Field to include in the output. Multiple fields can be specified.<br>
 Fields appear in the order you specify.</p>
-<p>Allowed values:
-ReportName,Lines,Pages,Type,ArchivalDate,Description,UserComments,ReportHandle,TotalPages,OriginalType,Destination,JobName,Origin,Generation,SequenceNumber,SysoutClass,Status,JobID,Forms,XCode,UserID,ReadDate,PrintDate,OnDisk,OnTape,OnOptical,IndexOnDisk,Location,TapeSequence,TapePosition,TapeCount,ExtendedRetentionOptionID,RemainingDays,RemainingGenerations,RemainingCopy,RemainingDiskDays,RemainingDiskGeneration,RemainingDiskCopy,RemainingDisk2days</p>
-<p>Default value:
-ReportName,Lines,Pages,Type,ArchivalDate,Description,UserComments,ReportHandle</p>
+<p>Allowed values: ReportName,Lines,Pages,Type,ArchivalDate,Description,UserComments,ReportHandle,TotalPages,OriginalType,Destination,JobName,Origin,Generation,SequenceNumber,SysoutClass,Status,JobID,Forms,XCode,UserID,ReadDate,PrintDate,OnDisk,OnTape,OnOptical,IndexOnDisk,Location,TapeSequence,TapePosition,TapeCount,ExtendedRetentionOptionID,RemainingDays,RemainingGenerations,RemainingCopy,RemainingDiskDays,RemainingDiskGeneration,RemainingDiskCopy,RemainingDisk2days</p>
+<p>Default value: ReportName,Lines,Pages,Type,ArchivalDate,Description,UserComments,ReportHandle</p>
 </li>
 </ul>
 </li>
@@ -156,8 +147,7 @@ ReportName,Lines,Pages,Type,ArchivalDate,Description,UserComments,ReportHandle</
 <li>
 <p><code>--token-type</code>  | <code>--tt</code> <em>(string)</em></p>
 <ul>
-<li>The type of token to get and use for the API. Omit this option to use the
-default token type, which is provided by 'zowe auth login'.</li>
+<li>The type of token to get and use for the API. Omit this option to use the default token type, which is provided by 'zowe auth login'.</li>
 </ul>
 </li>
 <li>

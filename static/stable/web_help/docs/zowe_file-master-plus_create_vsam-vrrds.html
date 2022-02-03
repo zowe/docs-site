@@ -7,10 +7,9 @@
 <link rel="stylesheet" href="../css/docs.css">
 <article class="markdown-body">
 <h2><a href="zowe.html">zowe</a> › <a href="zowe_file-master-plus.html">file-master-plus</a> › <a href="zowe_file-master-plus_create.html">create</a> › <a href="zowe_file-master-plus_create_vsam-vrrds.html">vsam-vrrds</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
-<p>Create a variable-length relative-record data set (VRRDS) Virtual Storage
-Access Method (VSAM) data set.</p>
+<p>Create a variable-length relative-record data set (VRRDS) Virtual Storage Access Method (VSAM) data set.</p>
 <h4>Usage</h4>
-<p>zowe  file-master-plus create vsam-vrrds &lt;name&gt; [options]</p>
+<p>zowe file-master-plus create vsam-vrrds &lt;name&gt; [options]</p>
 <h4>Positional Arguments</h4>
 <ul>
 <li>
@@ -25,44 +24,40 @@ Access Method (VSAM) data set.</p>
 <li>
 <p><code>--model</code>  | <code>-m</code> <em>(string)</em></p>
 <ul>
-<li>Specifies the name of a model VRRDS (variable-length relative-record VSAM data
-set) for allocating parameters.
-The parameters of the model data set override all defaults.
+<li>Specifies the name of a model VRRDS (variable-length relative-record VSAM data set) for allocating parameters.<br>
+The parameters of the model data set override all defaults.<br>
 Example: -m fmmvs.model.dsname</li>
 </ul>
 </li>
 <li>
 <p><code>--maximum-record-size</code>  | <code>--mrs</code> <em>(number)</em></p>
 <ul>
-<li>Specifies the maximum length of data records.
-This parameter is mandatory unless a model data set is specified and it should
-be greater than the average record size.
+<li>Specifies the maximum length of data records.<br>
+This parameter is mandatory unless a model data set is specified and it should be greater than the average record size.<br>
 Example: --mrs 180</li>
 </ul>
 </li>
 <li>
 <p><code>--average-record-size</code>  | <code>--ars</code> <em>(number)</em></p>
 <ul>
-<li>Specifies the average length of data records.
-This parameter is mandatory unless a model data set is specified and it should
-be less than the maximum record size.
+<li>Specifies the average length of data records.<br>
+This parameter is mandatory unless a model data set is specified and it should be less than the maximum record size.<br>
 Example: --ars 110</li>
 </ul>
 </li>
 <li>
 <p><code>--data-dsname</code>  | <code>--ddsn</code> <em>(string)</em></p>
 <ul>
-<li>Specifies the data set name of the data VSAM component.
-If this parameter is not specified then by default it is set to the cluster name
-with ‘.DATA’.
+<li>Specifies the data set name of the data VSAM component.<br>
+If this parameter is not specified then by default it is set to the cluster name with ‘.DATA’.<br>
 Example: --ddsn fmmvs.vsam.ksds.data</li>
 </ul>
 </li>
 <li>
 <p><code>--data-control-interval-size</code>  | <code>--dcis</code> <em>(number)</em></p>
 <ul>
-<li>Specifies the size of the Control Interval for the data VSAM component.
-Default value: 20480
+<li>Specifies the size of the Control Interval for the data VSAM component.<br>
+Default value: 20480<br>
 Example: --dcis 3584</li>
 </ul>
 </li>
@@ -70,14 +65,14 @@ Example: --dcis 3584</li>
 <p><code>--data-space-units</code>  | <code>--dsu</code> <em>(string)</em></p>
 <ul>
 <li>
-<p>Specifies the space allocation unit for data vsam component.
-The allowed values have the following meaning:
-TRK - Tracks
-CYL - Cylinders
-REC - Records
-K - Kilobytes
-M - Megabytes
-Default value: TRK
+<p>Specifies the space allocation unit for data vsam component.<br>
+The allowed values have the following meaning:<br>
+TRK - Tracks<br>
+CYL - Cylinders<br>
+REC - Records<br>
+K - Kilobytes<br>
+M - Megabytes<br>
+Default value: TRK<br>
 Example: --dsu rec</p>
 <p>Allowed values: TRK, CYL, REC, K, M</p>
 </li>
@@ -86,42 +81,41 @@ Example: --dsu rec</p>
 <li>
 <p><code>--data-primary-space</code>  | <code>--dps</code> <em>(number)</em></p>
 <ul>
-<li>Specifies the primary space allocation unit for the data VSAM component.
-Allowed values: 1-16777215
-Default value: 18
+<li>Specifies the primary space allocation unit for the data VSAM component.<br>
+Allowed values: 1-16777215<br>
+Default value: 18<br>
 Example: --dps 3</li>
 </ul>
 </li>
 <li>
 <p><code>--data-secondary-space</code>  | <code>--dss</code> <em>(number)</em></p>
 <ul>
-<li>Specifies the secondary space allocation unit for the data VSAM component.
-Allowed values: 1-16777215
-Default value: 3
+<li>Specifies the secondary space allocation unit for the data VSAM component.<br>
+Allowed values: 1-16777215<br>
+Default value: 3<br>
 Example: --dss 5</li>
 </ul>
 </li>
 <li>
 <p><code>--data-volume</code>  | <code>--dv</code> <em>(array)</em></p>
 <ul>
-<li>Specifies a disk volume or specific tapes for the data VSAM component.
+<li>Specifies a disk volume or specific tapes for the data VSAM component.<br>
 Example: -dv vol002</li>
 </ul>
 </li>
 <li>
 <p><code>--index-dsname</code>  | <code>--idsn</code> <em>(string)</em></p>
 <ul>
-<li>Specifies the data set name of the index VSAM component.
-If this parameter is not specified then it is set to the cluster name with
-‘.INDEX’ appended.
+<li>Specifies the data set name of the index VSAM component.<br>
+If this parameter is not specified then it is set to the cluster name with ‘.INDEX’ appended.<br>
 Example: --ddsn fmmvs.vsam.ksds.index</li>
 </ul>
 </li>
 <li>
 <p><code>--index-control-interval-size</code>  | <code>--icis</code> <em>(number)</em></p>
 <ul>
-<li>Specifies the size of Control Interval for index VSAM component.
-Default value: 512
+<li>Specifies the size of Control Interval for index VSAM component.<br>
+Default value: 512<br>
 Example: --icis 3584</li>
 </ul>
 </li>
@@ -129,14 +123,14 @@ Example: --icis 3584</li>
 <p><code>--index-space-units</code>  | <code>--isu</code> <em>(string)</em></p>
 <ul>
 <li>
-<p>Specifies the space allocation unit for index VSAM component.
-The allowed values have the following meaning:
-TRK - Tracks
-CYL - Cylinders
-REC - Records
-K - Kilobytes
-M - Megabytes
-Default value: TRK
+<p>Specifies the space allocation unit for index VSAM component.<br>
+The allowed values have the following meaning:<br>
+TRK - Tracks<br>
+CYL - Cylinders<br>
+REC - Records<br>
+K - Kilobytes<br>
+M - Megabytes<br>
+Default value: TRK<br>
 Example: --isu cyl</p>
 <p>Allowed values: TRK, CYL, REC, K, M</p>
 </li>
@@ -145,32 +139,32 @@ Example: --isu cyl</p>
 <li>
 <p><code>--index-primary-space</code>  | <code>--ips</code> <em>(number)</em></p>
 <ul>
-<li>Specifies primary space allocation unit for index VSAM component.
-Allowed values: 1-16777215
-Default value: 1
+<li>Specifies primary space allocation unit for index VSAM component.<br>
+Allowed values: 1-16777215<br>
+Default value: 1<br>
 Example: --ips 3</li>
 </ul>
 </li>
 <li>
 <p><code>--index-secondary-space</code>  | <code>--iss</code> <em>(number)</em></p>
 <ul>
-<li>Specifies secondary space allocation unit for index VSAM component.
-Allowed values: 1-16777215
-Default value: 1
+<li>Specifies secondary space allocation unit for index VSAM component.<br>
+Allowed values: 1-16777215<br>
+Default value: 1<br>
 Example: --iss 5</li>
 </ul>
 </li>
 <li>
 <p><code>--index-volume</code>  | <code>--iv</code> <em>(array)</em></p>
 <ul>
-<li>Specifies a disk volume or specific tapes for the data VSAM component.
+<li>Specifies a disk volume or specific tapes for the data VSAM component.<br>
 Example: -iv vol002</li>
 </ul>
 </li>
 <li>
 <p><code>--buffer-space</code>  | <code>--bs</code> <em>(number)</em></p>
 <ul>
-<li>Specifies the minimum buffer space to allocate when this VSAM file is accessed.
+<li>Specifies the minimum buffer space to allocate when this VSAM file is accessed.<br>
 Example: --bs 37376</li>
 </ul>
 </li>
@@ -178,10 +172,8 @@ Example: --bs 37376</li>
 <p><code>--erase</code>  | <code>-e</code> <em>(string)</em></p>
 <ul>
 <li>
-<p>Indicates whether the VSAM file was allocated with the ERASE parameter, causing
-all components of the file to be overwritten with binary zeros, when the VSAM
-file is deleted from the catalog.
-Default value: n
+<p>Indicates whether the VSAM file was allocated with the ERASE parameter, causing all components of the file to be overwritten with binary zeros, when the VSAM file is deleted from the catalog.<br>
+Default value: n<br>
 Example: -e y</p>
 <p>Allowed values: y, n</p>
 </li>
@@ -191,14 +183,9 @@ Example: -e y</p>
 <p><code>--load-restartable</code>  | <code>--lr</code> <em>(string)</em></p>
 <ul>
 <li>
-<p>Specify 'Y' to request that the VSAM component definition use the 'RECOVERY'
-parameter (which causes the data component to be preformatted previous to the
-initial load). Using this option causes the initial load to take longer, but
-loads which do not complete successfully can be restarted.
-Specify 'N' to request that the VSAM component definition use the 'SPEED'
-parameter (which causes the data component to NOT be preformatted previous to
-the initial load).
-Default value: n
+<p>Specify 'Y' to request that the VSAM component definition use the 'RECOVERY' parameter (which causes the data component to be preformatted previous to the initial load). Using this option causes the initial load to take longer, but loads which do not complete successfully can be restarted.<br>
+Specify 'N' to request that the VSAM component definition use the 'SPEED' parameter (which causes the data component to NOT be preformatted previous to the initial load).<br>
+Default value: n<br>
 Example: -lr y</p>
 <p>Allowed values: y, n</p>
 </li>
@@ -208,10 +195,8 @@ Example: -lr y</p>
 <p><code>--reuse</code>  | <code>-r</code> <em>(string)</em></p>
 <ul>
 <li>
-<p>Indicates whether the VSAM file was allocated with the REUSE parameter
-specifying that the cluster can be opened again and again as a reusable
-cluster.
-Default value: n
+<p>Indicates whether the VSAM file was allocated with the REUSE parameter specifying that the cluster can be opened again and again as a reusable cluster.<br>
+Default value: n<br>
 Example: -r y</p>
 <p>Allowed values: y, n</p>
 </li>
@@ -221,10 +206,8 @@ Example: -r y</p>
 <p><code>--write-check</code>  | <code>--wc</code> <em>(string)</em></p>
 <ul>
 <li>
-<p>Indicates whether the VSAM file was allocated with the WRITECHECK parameter
-requesting each write to the VSAM file to be validated by a read without data
-transfer.
-Default value: n
+<p>Indicates whether the VSAM file was allocated with the WRITECHECK parameter requesting each write to the VSAM file to be validated by a read without data transfer.<br>
+Default value: n<br>
 Example: --wc y</p>
 <p>Allowed values: y, n</p>
 </li>
@@ -233,18 +216,14 @@ Example: --wc y</p>
 <li>
 <p><code>--control-interval-freespace-percentage</code>  | <code>--cifp</code> <em>(number)</em></p>
 <ul>
-<li>Specifies the percentage of empty space in each control interval when the file
-is initially loaded.The free space lets records be inserted or expanded within
-a control interval before requiring a control interval split.
+<li>Specifies the percentage of empty space in each control interval when the file is initially loaded.The free space lets records be inserted or expanded within a control interval before requiring a control interval split.<br>
 Example: --cifp 10</li>
 </ul>
 </li>
 <li>
 <p><code>--control-area-freespace-percentage</code>  | <code>--cafp</code> <em>(number)</em></p>
 <ul>
-<li>Specifies the percentage of control intervals to be left unused in each control
-area as the file is initially loaded. The use of control area free space lets
-some control interval splits occur before requiring a control area split.
+<li>Specifies the percentage of control intervals to be left unused in each control area as the file is initially loaded. The use of control area free space lets some control interval splits occur before requiring a control area split.<br>
 Example: --cafp 10</li>
 </ul>
 </li>
@@ -252,19 +231,13 @@ Example: --cafp 10</li>
 <p><code>--cross-region-share-option</code>  | <code>--crso</code> <em>(number)</em></p>
 <ul>
 <li>
-<p>Specifies that the file can be shared among regions within the same system or
-within multiple systems using GRS (Global Resource Serialization).
-The allowed values have the following meaning:
-1 - The data set can be opened for read processing by an unlimited number of
-users, but the data set can be accessed by only one user when that user is doing
-read and write processing.
-2 - The data set can be opened by only one user at a time for read and write
-processing, but any number of users can also be accessing the data set for read
-processing
-3 - The data set can be fully shared by any number of users.
-4 - The data set can be fully shared by any number of users. VSAM immediately
-updates the data set for PUTs and refreshes all input buffers for GETs.
-Default value: 1
+<p>Specifies that the file can be shared among regions within the same system or within multiple systems using GRS (Global Resource Serialization).<br>
+The allowed values have the following meaning:<br>
+1 - The data set can be opened for read processing by an unlimited number of users, but the data set can be accessed by only one user when that user is doing read and write processing.<br>
+2 - The data set can be opened by only one user at a time for read and write processing, but any number of users can also be accessing the data set for read processing<br>
+3 - The data set can be fully shared by any number of users.<br>
+4 - The data set can be fully shared by any number of users. VSAM immediately updates the data set for PUTs and refreshes all input buffers for GETs.<br>
+Default value: 1<br>
 Example: --crso 2</p>
 <p>Allowed values: 1, 2, 3, 4</p>
 </li>
@@ -274,12 +247,11 @@ Example: --crso 2</p>
 <p><code>--cross-system-share-option</code>  | <code>--csso</code> <em>(number)</em></p>
 <ul>
 <li>
-<p>Specifies how the file can be shared among systems.
-The allowed values have the following meaning:
-3 - The data set can be fully shared by any number of users.
-4 - The data set can be fully shared by any number of users. VSAM immediately
-updates the data set for PUTs and refreshes all input buffers for GETs.
-Default value: 3
+<p>Specifies how the file can be shared among systems.<br>
+The allowed values have the following meaning:<br>
+3 - The data set can be fully shared by any number of users.<br>
+4 - The data set can be fully shared by any number of users. VSAM immediately updates the data set for PUTs and refreshes all input buffers for GETs.<br>
+Default value: 3<br>
 Example: --csso 4</p>
 <p>Allowed values: 3, 4</p>
 </li>
@@ -288,30 +260,29 @@ Example: --csso 4</p>
 <li>
 <p><code>--expiration-date</code>  | <code>--ed</code> <em>(string)</em></p>
 <ul>
-<li>Specifies the expiration date after which the data set can be deleted.
-Specify 'P' or 'p' to make the data set permanent, or an expiration date in
-YYYY-MM-DD format.
+<li>Specifies the expiration date after which the data set can be deleted.<br>
+Specify 'P' or 'p' to make the data set permanent, or an expiration date in YYYY-MM-DD format.<br>
 Example: --ed 2032-07-31</li>
 </ul>
 </li>
 <li>
 <p><code>--storage-class</code>  | <code>--sc</code> <em>(string)</em></p>
 <ul>
-<li>Specifies the storage class.
+<li>Specifies the storage class.<br>
 Example: --sc scl002</li>
 </ul>
 </li>
 <li>
 <p><code>--management-class</code>  | <code>--mc</code> <em>(string)</em></p>
 <ul>
-<li>Specifies the management class.
+<li>Specifies the management class.<br>
 Example: --mc mcl002</li>
 </ul>
 </li>
 <li>
 <p><code>--data-class</code>  | <code>--dc</code> <em>(string)</em></p>
 <ul>
-<li>Specifies the data class.
+<li>Specifies the data class.<br>
 Example: --dc dcl002</li>
 </ul>
 </li>
@@ -319,8 +290,7 @@ Example: --dc dcl002</li>
 <p><code>--log</code>  | <code>-l</code> <em>(string)</em></p>
 <ul>
 <li>
-<p>When specified, 'ALL' or 'UNDO' or 'NONE' indicates the VSAM RLS recovery
-option.
+<p>When specified, 'ALL' or 'UNDO' or 'NONE' indicates the VSAM RLS recovery option.<br>
 Example: --log ALL</p>
 <p>Allowed values: NONE, UNDO, ALL</p>
 </li>
@@ -330,14 +300,12 @@ Example: --log ALL</p>
 <p><code>--frlog</code>  | <code>--fr</code> <em>(string)</em></p>
 <ul>
 <li>
-<p>Specifies the type of VSAM batch logging to perform for this VSAM data set.
-The allowed values have the following meaning:
-NONE - Disables VSAM batch logging.
-REDO - Enables VSAM batch logging.
-UNDO - Changes made to your VSAM data set are backed out using VSAM batch
-logging.
-ALL - Changes made to your VSAM data set are backed out and forward recovered
-using VSAM batch logging.
+<p>Specifies the type of VSAM batch logging to perform for this VSAM data set.<br>
+The allowed values have the following meaning:<br>
+NONE - Disables VSAM batch logging.<br>
+REDO - Enables VSAM batch logging.<br>
+UNDO - Changes made to your VSAM data set are backed out using VSAM batch logging.<br>
+ALL - Changes made to your VSAM data set are backed out and forward recovered using VSAM batch logging.<br>
 Example: --frlog ALL</p>
 <p>Allowed values: NONE, UNDO, ALL, REDO</p>
 </li>
@@ -347,7 +315,7 @@ Example: --frlog ALL</p>
 <p><code>--log-replicate</code>  | <code>--lrp</code> <em>(string)</em></p>
 <ul>
 <li>
-<p>Specify 'Y' to enable VSAM replication for this data set.
+<p>Specify 'Y' to enable VSAM replication for this data set.<br>
 Example: --lrp y</p>
 <p>Allowed values: Y, N</p>
 </li>
@@ -356,7 +324,7 @@ Example: --lrp y</p>
 <li>
 <p><code>--log-stream-id</code>  | <code>--lsi</code> <em>(string)</em></p>
 <ul>
-<li>Specifies the 1- to 26-character name of the forward recovery log stream.
+<li>Specifies the 1- to 26-character name of the forward recovery log stream.<br>
 Example: --lsi LOGSTRA</li>
 </ul>
 </li>
@@ -364,8 +332,8 @@ Example: --lsi LOGSTRA</li>
 <p><code>--rls-enable</code>  | <code>--rls</code> | <code>--re</code> <em>(string)</em></p>
 <ul>
 <li>
-<p>Specify 'N' to disable VSAM record-level sharing.
-Default value: y
+<p>Specify 'N' to disable VSAM record-level sharing.<br>
+Default value: y<br>
 Example: --rls n</p>
 <p>Allowed values: Y, N</p>
 </li>
@@ -403,8 +371,8 @@ Example: --rls n</p>
 <ul>
 <li>
 <p>Specifies CA File Master Plus REST API protocol.</p>
-<p>Default value: https</p>
-<p>Allowed values: http, https</p>
+<p>Default value: https<br>
+Allowed values: http, https</p>
 </li>
 </ul>
 </li>
@@ -420,9 +388,7 @@ Example: --rls n</p>
 <li>
 <p><code>--base-path</code>  | <code>--bp</code> <em>(string)</em></p>
 <ul>
-<li>The base path for your API mediation layer instance. Specify this option to
-prepend the base path to all FMP resources when making REST requests. Do not
-specify this option if you are not using an API mediation layer.</li>
+<li>The base path for your API mediation layer instance. Specify this option to prepend the base path to all FMP resources when making REST requests. Do not specify this option if you are not using an API mediation layer.</li>
 </ul>
 </li>
 </ul>
@@ -446,8 +412,7 @@ specify this option if you are not using an API mediation layer.</li>
 <li>
 <p><code>--token-type</code>  | <code>--tt</code> <em>(string)</em></p>
 <ul>
-<li>The type of token to get and use for the API. Omit this option to use the
-default token type, which is provided by 'zowe auth login'.</li>
+<li>The type of token to get and use for the API. Omit this option to use the default token type, which is provided by 'zowe auth login'.</li>
 </ul>
 </li>
 <li>
@@ -472,35 +437,33 @@ default token type, which is provided by 'zowe auth login'.</li>
 <h4>Examples</h4>
 <ul>
 <li>
-<p>Creating a VRRDS with default option values and mandatory
-options:</p>
+<p>Creating a VRRDS with default option values and mandatory options:</p>
 <ul>
-<li><code>zowe  file-master-plus create vsam-vrrds fmmvs.test.dsname --mrs 160</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  file-master-plus create vsam-vrrds fmmvs.test.dsname --mrs 160">Copy</button></li>
+<li><code>zowe file-master-plus create vsam-vrrds fmmvs.test.dsname --mrs 160</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe file-master-plus create vsam-vrrds fmmvs.test.dsname --mrs 160">Copy</button></li>
 </ul>
 </li>
 <li>
 <p>Creating a VRRDS with options:</p>
 <ul>
-<li><code>zowe  file-master-plus create vsam-vrrds fmmvs.test.dsname --mrs 160 --ars 120 --dcis 3584 --dsu cyl --dps 1 --dss 3 --dv vol002 --icis 512 --isu cyl --ips 1 --iss 1 --iv vol002 --bs 37376 -e y -r y --ed 2025-09-27</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  file-master-plus create vsam-vrrds fmmvs.test.dsname --mrs 160 --ars 120 --dcis 3584 --dsu cyl --dps 1 --dss 3 --dv vol002 --icis 512 --isu cyl --ips 1 --iss 1 --iv vol002 --bs 37376 -e y -r y --ed 2025-09-27">Copy</button></li>
+<li><code>zowe file-master-plus create vsam-vrrds fmmvs.test.dsname --mrs 160 --ars 120 --dcis 3584 --dsu cyl --dps 1 --dss 3 --dv vol002 --icis 512 --isu cyl --ips 1 --iss 1 --iv vol002 --bs 37376 -e y -r y --ed 2025-09-27</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe file-master-plus create vsam-vrrds fmmvs.test.dsname --mrs 160 --ars 120 --dcis 3584 --dsu cyl --dps 1 --dss 3 --dv vol002 --icis 512 --isu cyl --ips 1 --iss 1 --iv vol002 --bs 37376 -e y -r y --ed 2025-09-27">Copy</button></li>
 </ul>
 </li>
 <li>
 <p>Creating a RLS enabled VRRDS with logging options:</p>
 <ul>
-<li><code>zowe  file-master-plus create vsam-vrrds fmmvs.test.dsname --mrs 160 --ars 120 --dcis 3584 --dsu cyl --dps 1 --dss 3 --dv vol002 --icis 512 --isu cyl --ips 1 --iss 1 --iv vol002 --bs 37376 -e y -r y --rls y -l all --lsi loga --lrp y --fr ALL</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  file-master-plus create vsam-vrrds fmmvs.test.dsname --mrs 160 --ars 120 --dcis 3584 --dsu cyl --dps 1 --dss 3 --dv vol002 --icis 512 --isu cyl --ips 1 --iss 1 --iv vol002 --bs 37376 -e y -r y --rls y -l all --lsi loga --lrp y --fr ALL">Copy</button></li>
+<li><code>zowe file-master-plus create vsam-vrrds fmmvs.test.dsname --mrs 160 --ars 120 --dcis 3584 --dsu cyl --dps 1 --dss 3 --dv vol002 --icis 512 --isu cyl --ips 1 --iss 1 --iv vol002 --bs 37376 -e y -r y --rls y -l all --lsi loga --lrp y --fr ALL</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe file-master-plus create vsam-vrrds fmmvs.test.dsname --mrs 160 --ars 120 --dcis 3584 --dsu cyl --dps 1 --dss 3 --dv vol002 --icis 512 --isu cyl --ips 1 --iss 1 --iv vol002 --bs 37376 -e y -r y --rls y -l all --lsi loga --lrp y --fr ALL">Copy</button></li>
 </ul>
 </li>
 <li>
 <p>Creating a VRRDS data set like a model VRRDS data set:</p>
 <ul>
-<li><code>zowe  file-master-plus create vsam-vrrds fmmvs.test.dsname --model fmmvs.model.dsname</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  file-master-plus create vsam-vrrds fmmvs.test.dsname --model fmmvs.model.dsname">Copy</button></li>
+<li><code>zowe file-master-plus create vsam-vrrds fmmvs.test.dsname --model fmmvs.model.dsname</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe file-master-plus create vsam-vrrds fmmvs.test.dsname --model fmmvs.model.dsname">Copy</button></li>
 </ul>
 </li>
 <li>
-<p>Creating a VRRDS like a model VRRDS data set and overriding
-the parameters with options:</p>
+<p>Creating a VRRDS like a model VRRDS data set and overriding the parameters with options:</p>
 <ul>
-<li><code>zowe  file-master-plus create vsam-vrrds fmmvs.test.dsname --model fmmvs.model.dsname --mrs 160 --wc y --bs 37376 --crso 3 --csso 4 --ed p</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  file-master-plus create vsam-vrrds fmmvs.test.dsname --model fmmvs.model.dsname --mrs 160 --wc y --bs 37376 --crso 3 --csso 4 --ed p">Copy</button></li>
+<li><code>zowe file-master-plus create vsam-vrrds fmmvs.test.dsname --model fmmvs.model.dsname --mrs 160 --wc y --bs 37376 --crso 3 --csso 4 --ed p</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe file-master-plus create vsam-vrrds fmmvs.test.dsname --model fmmvs.model.dsname --mrs 160 --wc y --bs 37376 --crso 3 --csso 4 --ed p">Copy</button></li>
 </ul>
 </li>
 </ul>

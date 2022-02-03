@@ -7,13 +7,12 @@
 <link rel="stylesheet" href="../css/docs.css">
 <article class="markdown-body">
 <h2><a href="zowe.html">zowe</a> › <a href="zowe_system-automation.html">system-automation</a> › <a href="zowe_system-automation_start.html">start</a> › <a href="zowe_system-automation_start_resource.html">resource</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
-<p>Issues a start request, that will cause the resource to start in case the
-request is winning.</p>
+<p>Issues a start request, that will cause the resource to start in case the request is winning.</p>
 <p>Requires (min.): SA Operations API 1.0.0</p>
-<p>Following Success Message can be returned by this command:
+<p>Following Success Message can be returned by this command:<br>
 SACLI009100 - Requesting start of resource {ResourceName} success</p>
 <h4>Usage</h4>
-<p>zowe  system-automation start resource [options]</p>
+<p>zowe system-automation start resource [options]</p>
 <h4>Options</h4>
 <ul>
 <li>
@@ -48,8 +47,8 @@ SACLI009100 - Requesting start of resource {ResourceName} success</p>
 <ul>
 <li>
 <p>The priority of this start request</p>
-<p>Default value: LOW</p>
-<p>Allowed values: LOW, HIGH, FORCE</p>
+<p>Default value: LOW<br>
+Allowed values: LOW, HIGH, FORCE</p>
 </li>
 </ul>
 </li>
@@ -73,8 +72,8 @@ SACLI009100 - Requesting start of resource {ResourceName} success</p>
 <ul>
 <li>
 <p>Whether the startup affects a resource or its descendants or both</p>
-<p>Default value: ONLY</p>
-<p>Allowed values: ALL, ONLY</p>
+<p>Default value: ONLY<br>
+Allowed values: ALL, ONLY</p>
 </li>
 </ul>
 </li>
@@ -132,8 +131,7 @@ SACLI009100 - Requesting start of resource {ResourceName} success</p>
 <li>
 <p><code>--token-type</code>  | <code>--tt</code> <em>(string)</em></p>
 <ul>
-<li>The type of token to get and use for the API. Omit this option to use the
-default token type, which is provided by 'zowe auth login'.</li>
+<li>The type of token to get and use for the API. Omit this option to use the default token type, which is provided by 'zowe auth login'.</li>
 </ul>
 </li>
 <li>
@@ -158,31 +156,27 @@ default token type, which is provided by 'zowe auth login'.</li>
 <h4>Examples</h4>
 <ul>
 <li>
-<p>Issue start request on resource with ID &lt;RESOURCE_ID&gt;. Use
-the ID that is displayed in &quot;zowe sa list resources --showid&quot;:</p>
+<p>Issue start request on resource with ID &lt;RESOURCE_ID&gt;. Use the ID that is displayed in &quot;zowe sa list resources --showid&quot;:</p>
 <ul>
-<li><code>zowe  system-automation start resource --id=RESOURCE_ID</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  system-automation start resource --id=RESOURCE_ID">Copy</button></li>
+<li><code>zowe system-automation start resource --id=RESOURCE_ID</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe system-automation start resource --id=RESOURCE_ID">Copy</button></li>
 </ul>
 </li>
 <li>
-<p>Issue start request on resource with name &lt;RESOURCE_NAME&gt;It
-is possible to use the syntax &lt;NAME&gt;/&lt;TYPE&gt;/&lt;SYSTEM&gt;:</p>
+<p>Issue start request on resource with name &lt;RESOURCE_NAME&gt;It is possible to use the syntax &lt;NAME&gt;/&lt;TYPE&gt;/&lt;SYSTEM&gt;:</p>
 <ul>
-<li><code>zowe  system-automation start resource --name=RESOURCE_NAME</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  system-automation start resource --name=RESOURCE_NAME">Copy</button></li>
+<li><code>zowe system-automation start resource --name=RESOURCE_NAME</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe system-automation start resource --name=RESOURCE_NAME">Copy</button></li>
 </ul>
 </li>
 <li>
-<p>Start a resource identified by ID specifying a priority and
-a comment.:</p>
+<p>Start a resource identified by ID specifying a priority and a comment.:</p>
 <ul>
-<li><code>zowe  system-automation start resource --id=RESOURCE_ID --priority=low --comment=&quot;This is a request comment&quot;</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  system-automation start resource --id=RESOURCE_ID --priority=low --comment=&quot;This is a request comment&quot;">Copy</button></li>
+<li><code>zowe system-automation start resource --id=RESOURCE_ID --priority=low --comment=&quot;This is a request comment&quot;</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe system-automation start resource --id=RESOURCE_ID --priority=low --comment=&quot;This is a request comment&quot;">Copy</button></li>
 </ul>
 </li>
 <li>
-<p>Start a resource identified by ID specifying override value
-to the &quot;FLG&quot; and &quot;STS&quot;:</p>
+<p>Start a resource identified by ID specifying override value to the &quot;FLG&quot; and &quot;STS&quot;:</p>
 <ul>
-<li><code>zowe  system-automation start resource --id=RESOURCE_ID --override=flg sts</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  system-automation start resource --id=RESOURCE_ID --override=flg sts">Copy</button></li>
+<li><code>zowe system-automation start resource --id=RESOURCE_ID --override=flg sts</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe system-automation start resource --id=RESOURCE_ID --override=flg sts">Copy</button></li>
 </ul>
 </li>
 </ul>

@@ -7,17 +7,15 @@
 <link rel="stylesheet" href="../css/docs.css">
 <article class="markdown-body">
 <h2><a href="zowe.html">zowe</a> › <a href="zowe_zos-jobs.html">zos-jobs</a> › <a href="zowe_zos-jobs_download.html">download</a> › <a href="zowe_zos-jobs_download_output.html">output</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
-<p>Download all job output to a local directory. Each spool DD will be downloaded
-to its own file in the directory.</p>
+<p>Download all job output to a local directory. Each spool DD will be downloaded to its own file in the directory.</p>
 <h4>Usage</h4>
-<p>zowe  rse-api-for-zowe-cli download output &lt;jobid&gt; [options]</p>
+<p>zowe zos-jobs download output &lt;jobid&gt; [options]</p>
 <h4>Positional Arguments</h4>
 <ul>
 <li>
 <p><code>jobid</code>		 <em>(string)</em></p>
 <ul>
-<li>The z/OS JOBID of the job containing the spool files you want to view. No
-pre-validation of the JOBID is performed.</li>
+<li>The z/OS JOBID of the job containing the spool files you want to view. No pre-validation of the JOBID is performed.</li>
 </ul>
 </li>
 </ul>
@@ -38,8 +36,7 @@ pre-validation of the JOBID is performed.</li>
 <li>
 <p><code>--omit-jobid-directory</code>  | <code>--ojd</code> <em>(boolean)</em></p>
 <ul>
-<li>If specified, job output will be saved directly to the specified directory
-rather than creating a subdirectory named after the ID of the job.</li>
+<li>If specified, job output will be saved directly to the specified directory rather than creating a subdirectory named after the ID of the job.</li>
 </ul>
 </li>
 </ul>
@@ -84,9 +81,7 @@ rather than creating a subdirectory named after the ID of the job.</li>
 <li>
 <p><code>--base-path</code>  | <code>--bp</code> <em>(string)</em></p>
 <ul>
-<li>The base path for your API mediation layer instance. Specify this option to
-prepend the base path to all z/OSMF resources when making REST requests. Do not
-specify this option if you are not using an API mediation layer.</li>
+<li>The base path for your API mediation layer instance. Specify this option to prepend the base path to all z/OSMF resources when making REST requests. Do not specify this option if you are not using an API mediation layer.</li>
 </ul>
 </li>
 <li>
@@ -94,8 +89,8 @@ specify this option if you are not using an API mediation layer.</li>
 <ul>
 <li>
 <p>The protocol used (HTTP or HTTPS)</p>
-<p>Default value: https</p>
-<p>Allowed values: http, https</p>
+<p>Default value: https<br>
+Allowed values: http, https</p>
 </li>
 </ul>
 </li>
@@ -132,8 +127,7 @@ specify this option if you are not using an API mediation layer.</li>
 <li>
 <p><code>--token-type</code>  | <code>--tt</code> <em>(string)</em></p>
 <ul>
-<li>The type of token to get and use for the API. Omit this option to use the
-default token type, which is provided by 'zowe auth login'.</li>
+<li>The type of token to get and use for the API. Omit this option to use the default token type, which is provided by 'zowe auth login'.</li>
 </ul>
 </li>
 <li>
@@ -146,10 +140,9 @@ default token type, which is provided by 'zowe auth login'.</li>
 <h4>Examples</h4>
 <ul>
 <li>
-<p>Download all the output of the job with job ID JOB00234 to
-an automatically generated directory.:</p>
+<p>Download all the output of the job with job ID JOB00234 to an automatically generated directory.:</p>
 <ul>
-<li><code>zowe  rse-api-for-zowe-cli download output JOB00234</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  rse-api-for-zowe-cli download output JOB00234">Copy</button></li>
+<li><code>zowe zos-jobs download output JOB00234</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe zos-jobs download output JOB00234">Copy</button></li>
 </ul>
 </li>
 </ul>

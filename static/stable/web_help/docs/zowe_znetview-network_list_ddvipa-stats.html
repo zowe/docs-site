@@ -7,19 +7,15 @@
 <link rel="stylesheet" href="../css/docs.css">
 <article class="markdown-body">
 <h2><a href="zowe.html">zowe</a> › <a href="zowe_znetview-network.html">znetview-network</a> › <a href="zowe_znetview-network_list.html">list</a> › <a href="zowe_znetview-network_list_ddvipa-stats.html">ddvipa-stats</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
-<p>List information on the percentage of connections distributed to a specific IP
-address and port in comparison to the Workload Manager (WLM) recommended
-distribution percentage. The Workload Manager related information is also
-displayed. Several parameters are provided for filtering the data.</p>
+<p>List information on the percentage of connections distributed to a specific IP address and port in comparison to the Workload Manager (WLM) recommended distribution percentage. The Workload Manager related information is also displayed. Several parameters are provided for filtering the data.</p>
 <h4>Usage</h4>
-<p>zowe  znetview-network list ddvipa-stats [options]</p>
+<p>zowe znetview-network list ddvipa-stats [options]</p>
 <h4>Options</h4>
 <ul>
 <li>
 <p><code>--begin</code>  | <code>--beg</code> <em>(string)</em></p>
 <ul>
-<li>The range of sampling interval start times in “mm/dd/yy hh:mm:ss” format. An
-STCK value can also be specified.</li>
+<li>The range of sampling interval start times in “mm/dd/yy hh:mm:ss” format. An STCK value can also be specified.</li>
 </ul>
 </li>
 <li>
@@ -27,8 +23,7 @@ STCK value can also be specified.</li>
 <ul>
 <li>
 <p>The NetView domain to which the request will be sent.</p>
-<p>The default is the NetView domain to which the NetView REST Server is
-connected.</p>
+<p>The default is the NetView domain to which the NetView REST Server is connected.</p>
 </li>
 </ul>
 </li>
@@ -47,15 +42,13 @@ connected.</p>
 <li>
 <p><code>--end</code>  <em>(string)</em></p>
 <ul>
-<li>The range of sampling interval end times in “mm/dd/yy hh:mm:ss” format. An STCK
-value can also be specified.</li>
+<li>The range of sampling interval end times in “mm/dd/yy hh:mm:ss” format. An STCK value can also be specified.</li>
 </ul>
 </li>
 <li>
 <p><code>--interval</code>  | <code>--in</code> <em>(number)</em></p>
 <ul>
-<li>The number of sampling intervals for which to return data, beginning with the
-most recent data available.</li>
+<li>The number of sampling intervals for which to return data, beginning with the most recent data available.</li>
 </ul>
 </li>
 <li>
@@ -67,15 +60,13 @@ most recent data available.</li>
 <li>
 <p><code>--system</code>  | <code>-s</code> <em>(string)</em></p>
 <ul>
-<li>The z/OS system name. The wildcard character (*) is supported at the end of
-the string.</li>
+<li>The z/OS system name. The wildcard character (*) is supported at the end of the string.</li>
 </ul>
 </li>
 <li>
 <p><code>--tcp-name</code>  | <code>--tcp</code> <em>(string)</em></p>
 <ul>
-<li>The TCP/IP stack name. The wildcard character (*) is supported at the end of
-the string.</li>
+<li>The TCP/IP stack name. The wildcard character (*) is supported at the end of the string.</li>
 </ul>
 </li>
 </ul>
@@ -124,11 +115,8 @@ the string.</li>
 <p><code>--base-path</code>  | <code>--bp</code> <em>(string)</em></p>
 <ul>
 <li>
-<p>The base path for your Zowe API Mediation Layer instance. Specify this option
-to prepend the base path to NetView REST service when making REST requests to
-the Zowe API Mediation Layer.</p>
-<p>Note: Do not specify this option if you are not using the Zowe API Mediation
-Layer.</p>
+<p>The base path for your Zowe API Mediation Layer instance. Specify this option to prepend the base path to NetView REST service when making REST requests to the Zowe API Mediation Layer.</p>
+<p>Note: Do not specify this option if you are not using the Zowe API Mediation Layer.</p>
 </li>
 </ul>
 </li>
@@ -175,10 +163,9 @@ Layer.</p>
 <h4>Examples</h4>
 <ul>
 <li>
-<p>List the DDVIPA statistics from domain CNM01 and filter the
-data by system NMPIPL12, DVIPA IP 201.2.10.20, and port 623.:</p>
+<p>List the DDVIPA statistics from domain CNM01 and filter the data by system NMPIPL12, DVIPA IP 201.2.10.20, and port 623.:</p>
 <ul>
-<li><code>zowe  znetview-network list ddvipa-stats --dvipa 201.2.10.20 –-dvipa-port 623 -–system NMPIPL12 –-domain CNM01</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  znetview-network list ddvipa-stats --dvipa 201.2.10.20 –-dvipa-port 623 -–system NMPIPL12 –-domain CNM01">Copy</button></li>
+<li><code>zowe znetview-network list ddvipa-stats --dvipa 201.2.10.20 –-dvipa-port 623 -–system NMPIPL12 –-domain CNM01</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe znetview-network list ddvipa-stats --dvipa 201.2.10.20 –-dvipa-port 623 -–system NMPIPL12 –-domain CNM01">Copy</button></li>
 </ul>
 </li>
 </ul>

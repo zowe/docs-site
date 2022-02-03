@@ -9,15 +9,13 @@
 <h2><a href="zowe.html">zowe</a> › <a href="zowe_profiles.html">profiles</a> › <a href="zowe_profiles_create.html">create</a> › <a href="zowe_profiles_create_sysview-format-profile.html">sysview-format-profile</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
 <p>The SYSVIEW format profile schema, where you specify display settings</p>
 <h4>Usage</h4>
-<p>zowe  profiles create sysview-format-profile &lt;profileName&gt; [options]</p>
+<p>zowe profiles create sysview-format-profile &lt;profileName&gt; [options]</p>
 <h4>Positional Arguments</h4>
 <ul>
 <li>
 <p><code>profileName</code>		 <em>(string)</em></p>
 <ul>
-<li>Specifies the name of the new sysview-format profile. You can load this
-profile by using the name on commands that support the
-&quot;--sysview-format-profile&quot; option.</li>
+<li>Specifies the name of the new sysview-format profile. You can load this profile by using the name on commands that support the &quot;--sysview-format-profile&quot; option.</li>
 </ul>
 </li>
 </ul>
@@ -81,12 +79,9 @@ profile by using the name on commands that support the
 <h4>Examples</h4>
 <ul>
 <li>
-<p>Create a SYSVIEW format profile to display the context
-fields 'commandName' and 'screenTitle', the information area, and not the
-overview area for all requests. Data will be formatted, and '0's will be
-blanked:</p>
+<p>Create a SYSVIEW format profile to display the context fields 'commandName' and 'screenTitle', the information area, and not the overview area for all requests. Data will be formatted, and '0's will be blanked:</p>
 <ul>
-<li><code>zowe  profiles create sysview-format-profile myFormat --cf commandName screenTitle --overview false --info true --pretty true --biz true</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  profiles create sysview-format-profile myFormat --cf commandName screenTitle --overview false --info true --pretty true --biz true">Copy</button></li>
+<li><code>zowe profiles create sysview-format-profile myFormat --cf commandName screenTitle --overview false --info true --pretty true --biz true</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe profiles create sysview-format-profile myFormat --cf commandName screenTitle --overview false --info true --pretty true --biz true">Copy</button></li>
 </ul>
 </li>
 </ul>

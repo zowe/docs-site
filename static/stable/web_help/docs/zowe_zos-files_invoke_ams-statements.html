@@ -7,20 +7,15 @@
 <link rel="stylesheet" href="../css/docs.css">
 <article class="markdown-body">
 <h2><a href="zowe.html">zowe</a> › <a href="zowe_zos-files.html">zos-files</a> › <a href="zowe_zos-files_invoke.html">invoke</a> › <a href="zowe_zos-files_invoke_ams-statements.html">ams-statements</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
-<p>Submit control statements for execution by Access Method Services (IDCAMS). You
-can use IDCAMS to create VSAM data sets (CSI, ZFS, etc...), delete data sets,
-and more. You must format the control statements exactly as the IDCAMS utility
-expects. For more information about control statements, see the IBM publication
-'z/OS DFSMS Access Method Services Commands'.</p>
+<p>Submit control statements for execution by Access Method Services (IDCAMS). You can use IDCAMS to create VSAM data sets (CSI, ZFS, etc...), delete data sets, and more. You must format the control statements exactly as the IDCAMS utility expects. For more information about control statements, see the IBM publication 'z/OS DFSMS Access Method Services Commands'.</p>
 <h4>Usage</h4>
-<p>zowe  zos-files invoke ams-statements &lt;controlStatements&gt; [options]</p>
+<p>zowe zos-files invoke ams-statements &lt;controlStatements&gt; [options]</p>
 <h4>Positional Arguments</h4>
 <ul>
 <li>
 <p><code>controlStatements</code>		 <em>(string)</em></p>
 <ul>
-<li>The IDCAMS control statement that you want to submit. Zowe CLI attempts to
-split the inline control statement at 255 characters.</li>
+<li>The IDCAMS control statement that you want to submit. Zowe CLI attempts to split the inline control statement at 255 characters.</li>
 </ul>
 </li>
 </ul>
@@ -65,9 +60,7 @@ split the inline control statement at 255 characters.</li>
 <li>
 <p><code>--base-path</code>  | <code>--bp</code> <em>(string)</em></p>
 <ul>
-<li>The base path for your API mediation layer instance. Specify this option to
-prepend the base path to all z/OSMF resources when making REST requests. Do not
-specify this option if you are not using an API mediation layer.</li>
+<li>The base path for your API mediation layer instance. Specify this option to prepend the base path to all z/OSMF resources when making REST requests. Do not specify this option if you are not using an API mediation layer.</li>
 </ul>
 </li>
 <li>
@@ -75,8 +68,8 @@ specify this option if you are not using an API mediation layer.</li>
 <ul>
 <li>
 <p>The protocol used (HTTP or HTTPS)</p>
-<p>Default value: https</p>
-<p>Allowed values: http, https</p>
+<p>Default value: https<br>
+Allowed values: http, https</p>
 </li>
 </ul>
 </li>
@@ -98,9 +91,7 @@ specify this option if you are not using an API mediation layer.</li>
 <li>
 <p><code>--response-timeout</code>  | <code>--rto</code> <em>(number)</em></p>
 <ul>
-<li>The maximum amount of time in seconds the z/OSMF Files TSO servlet should run
-before returning a response. Any request exceeding this amount of time will be
-terminated and return an error. Allowed values: 5 - 600</li>
+<li>The maximum amount of time in seconds the z/OSMF Files TSO servlet should run before returning a response. Any request exceeding this amount of time will be terminated and return an error. Allowed values: 5 - 600</li>
 </ul>
 </li>
 </ul>
@@ -124,8 +115,7 @@ terminated and return an error. Allowed values: 5 - 600</li>
 <li>
 <p><code>--token-type</code>  | <code>--tt</code> <em>(string)</em></p>
 <ul>
-<li>The type of token to get and use for the API. Omit this option to use the
-default token type, which is provided by 'zowe auth login'.</li>
+<li>The type of token to get and use for the API. Omit this option to use the default token type, which is provided by 'zowe auth login'.</li>
 </ul>
 </li>
 <li>
@@ -140,13 +130,13 @@ default token type, which is provided by 'zowe auth login'.</li>
 <li>
 <p>Defines a cluster named 'DUMMY.VSAM.CLUSTER':</p>
 <ul>
-<li><code>zowe  zos-files invoke ams-statements &quot;DEFINE CLUSTER ( NAME (DUMMY.VSAM.CLUSTER) CYL(1 1))&quot;</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  zos-files invoke ams-statements &quot;DEFINE CLUSTER ( NAME (DUMMY.VSAM.CLUSTER) CYL(1 1))&quot;">Copy</button></li>
+<li><code>zowe zos-files invoke ams-statements &quot;DEFINE CLUSTER ( NAME (DUMMY.VSAM.CLUSTER) CYL(1 1))&quot;</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe zos-files invoke ams-statements &quot;DEFINE CLUSTER ( NAME (DUMMY.VSAM.CLUSTER) CYL(1 1))&quot;">Copy</button></li>
 </ul>
 </li>
 <li>
 <p>Deletes a cluster named 'DUMMY.VSAM.CLUSTER':</p>
 <ul>
-<li><code>zowe  zos-files invoke ams-statements &quot;DELETE DUMMY.VSAM.CLUSTER CLUSTER&quot;</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  zos-files invoke ams-statements &quot;DELETE DUMMY.VSAM.CLUSTER CLUSTER&quot;">Copy</button></li>
+<li><code>zowe zos-files invoke ams-statements &quot;DELETE DUMMY.VSAM.CLUSTER CLUSTER&quot;</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe zos-files invoke ams-statements &quot;DELETE DUMMY.VSAM.CLUSTER CLUSTER&quot;">Copy</button></li>
 </ul>
 </li>
 </ul>

@@ -9,7 +9,7 @@
 <h2><a href="zowe.html">zowe</a> › <a href="zowe_workload-automation.html">workload-automation</a> › <a href="zowe_workload-automation_update.html">update</a> › <a href="zowe_workload-automation_update_jobinplan.html">jobinplan</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
 <p>Update the job in plan.</p>
 <h4>Usage</h4>
-<p>zowe  workload-automation update jobinplan [options]</p>
+<p>zowe workload-automation update jobinplan [options]</p>
 <h4>Required Options</h4>
 <ul>
 <li>
@@ -42,8 +42,7 @@
 <li>
 <p><code>--parallel-servers</code>  | <code>--ps</code> <em>(number)</em></p>
 <ul>
-<li>Number of parallel servers that can concurrently run the operation at the
-workstation</li>
+<li>Number of parallel servers that can concurrently run the operation at the workstation</li>
 </ul>
 </li>
 <li>
@@ -88,8 +87,7 @@ workstation</li>
 <li>
 <p>Jobs are to be submitted at a specific time or as soon as possible.</p>
 <p>True: job must NOT start before the input arrival time is reached.</p>
-<p>False: job can start as soon as predecessors are completed and resources are
-available.</p>
+<p>False: job can start as soon as predecessors are completed and resources are available.</p>
 </li>
 </ul>
 </li>
@@ -104,10 +102,8 @@ available.</p>
 <ul>
 <li>
 <p>Start time date and time of the job, in the format YYYY-MM-DDTHH:MM:SS</p>
-<p>The date and time cannot be earlier than the application input arrival, nor
-later than the application deadline.</p>
-<p>Use it in combination with the follow-job-stream-input-arrival option set to
-false.</p>
+<p>The date and time cannot be earlier than the application input arrival, nor later than the application deadline.</p>
+<p>Use it in combination with the follow-job-stream-input-arrival option set to false.</p>
 </li>
 </ul>
 </li>
@@ -116,10 +112,8 @@ false.</p>
 <ul>
 <li>
 <p>Deadline date and time of the job, in the format YYYY-MM-DDTHH:MM:SS</p>
-<p>The date and time cannot be earlier than the application input arrival, nor
-later than the application deadline.</p>
-<p>To clear existent deadline-time pass an empty &quot;&quot; value. Note that any
-correlated actions will be cleared.</p>
+<p>The date and time cannot be earlier than the application input arrival, nor later than the application deadline.</p>
+<p>To clear existent deadline-time pass an empty &quot;&quot; value. Note that any correlated actions will be cleared.</p>
 </li>
 </ul>
 </li>
@@ -127,15 +121,11 @@ correlated actions will be cleared.</p>
 <p><code>--deadline-action</code>  | <code>--dla</code> <em>(string)</em></p>
 <ul>
 <li>
-<p>Action to be taken if the operation is still not completed when deadline day and
-time are reached. If you specify an action, an alert message is issued.
-Optional.</p>
+<p>Action to be taken if the operation is still not completed when deadline day and time are reached. If you specify an action, an alert message is issued. Optional.</p>
 <p>ALERT: Alert only.</p>
-<p>COMPLETE: Operation is completed if its status allows this kind of change,
-otherwise is NOPed.</p>
+<p>COMPLETE: Operation is completed if its status allows this kind of change, otherwise is NOPed.</p>
 <p>NOP: Operation and all its internal successors are NOPed.</p>
-<p>ERROR: Operation is set to error with error code ODEA if its status allows this
-kind of change.</p>
+<p>ERROR: Operation is set to error with error code ODEA if its status allows this kind of change.</p>
 <p>BLANK: No action.</p>
 <p>Allowed values: ALERT, COMPLETE, NOP, ERROR, BLANK</p>
 </li>
@@ -145,8 +135,7 @@ kind of change.</p>
 <p><code>--not-started-alert-date</code>  | <code>--nsald</code> <em>(string)</em></p>
 <ul>
 <li>
-<p>Date and time, in the format YYYY-MM-DDTHH:MM:SS, to check if the operation
-has not yet started. If so, an alert is issued.</p>
+<p>Date and time, in the format YYYY-MM-DDTHH:MM:SS, to check if the operation has not yet started. If so, an alert is issued.</p>
 <p>To clear existent not-started-alert-date pass an empty &quot;&quot; value.</p>
 </li>
 </ul>
@@ -155,11 +144,8 @@ has not yet started. If so, an alert is issued.</p>
 <p><code>--not-started-action-date</code>  | <code>--nsacd</code> <em>(string)</em></p>
 <ul>
 <li>
-<p>Date and time, in the format YYYY-MM-DDTHH:MM:SS, to check if the operation
-has not yet started.This check is applied only to ready operations. If you
-specify date and time, an action is required.</p>
-<p>To clear existent not-started-action-date pass an empty &quot;&quot; value. Note that
-any correlated actions will be cleared.</p>
+<p>Date and time, in the format YYYY-MM-DDTHH:MM:SS, to check if the operation has not yet started.This check is applied only to ready operations. If you specify date and time, an action is required.</p>
+<p>To clear existent not-started-action-date pass an empty &quot;&quot; value. Note that any correlated actions will be cleared.</p>
 </li>
 </ul>
 </li>
@@ -167,14 +153,11 @@ any correlated actions will be cleared.</p>
 <p><code>--not-started-action</code>  | <code>--nsa</code> <em>(string)</em></p>
 <ul>
 <li>
-<p>Action to be taken if the operation has not yet started when the specified time
-is reached. If you specify an action, day and time are required.</p>
+<p>Action to be taken if the operation has not yet started when the specified time is reached. If you specify an action, day and time are required.</p>
 <p>ALERT: Alert only.</p>
-<p>COMPLETE: Operation is completed if its status allows this kind of change,
-otherwise is NOPed.</p>
+<p>COMPLETE: Operation is completed if its status allows this kind of change, otherwise is NOPed.</p>
 <p>NOP: Operation and all its internal successors are NOPed.</p>
-<p>ERROR: Operation is set to error with error code OLAT if its status allows this
-kind of change.</p>
+<p>ERROR: Operation is set to error with error code OLAT if its status allows this kind of change.</p>
 <p>Allowed values: ALERT, COMPLETE, NOP, ERROR</p>
 </li>
 </ul>
@@ -189,8 +172,7 @@ kind of change.</p>
 <p><code>--critical</code>  | <code>--crit</code> <em>(string)</em></p>
 <ul>
 <li>
-<p>If the job is to be considered a Critical Path target, eligible for WLM
-assistance, or Not eligible for WLM assistance.</p>
+<p>If the job is to be considered a Critical Path target, eligible for WLM assistance, or Not eligible for WLM assistance.</p>
 <p>Allowed values: NO, PATH, WLM</p>
 </li>
 </ul>
@@ -201,11 +183,9 @@ assistance, or Not eligible for WLM assistance.</p>
 <li>
 <p>Policy to be used for WLM assistance, if the job has been defined as critical.</p>
 <p>LONGDURATION: job is assisted if it runs beyond its estimated duration</p>
-<p>DEADLINE: job is assisted if it has not finished when its deadline time is
-reached</p>
+<p>DEADLINE: job is assisted if it has not finished when its deadline time is reached</p>
 <p>LATESTSTART: job is assisted if it is submitted after its latest start time</p>
-<p>CONDITIONAL: an algorithm calculates whether to apply the Deadline or Latest
-start policy</p>
+<p>CONDITIONAL: an algorithm calculates whether to apply the Deadline or Latest start policy</p>
 <p>DEFAULT: the policy specified in OPCOPTS is applied</p>
 <p>Allowed values: CONDITIONAL, DEADLINE, LATESTSTART, LONGDURATION, DEFAULT</p>
 </li>
@@ -231,8 +211,7 @@ start policy</p>
 <p><code>--auto-release</code>  | <code>--ar</code> <em>(boolean)</em></p>
 <ul>
 <li>
-<p>Jobs submitted by other than the product must be automatically released at their
-appropriate time, if placed in HOLD status at job submission time.</p>
+<p>Jobs submitted by other than the product must be automatically released at their appropriate time, if placed in HOLD status at job submission time.</p>
 <p>True: release jobs at their appropriate time.</p>
 <p>False: release jobs immediately.</p>
 </li>
@@ -242,11 +221,9 @@ appropriate time, if placed in HOLD status at job submission time.</p>
 <p><code>--cancel-if-late</code>  | <code>--clate</code> <em>(boolean)</em></p>
 <ul>
 <li>
-<p>Job must be submitted, regardless of the fact that its assigned start time has
-passed.</p>
+<p>Job must be submitted, regardless of the fact that its assigned start time has passed.</p>
 <p>True: suppress the submit or release of a time-dependent job, if it is late.</p>
-<p>False: submit or release a job when ready, even if the specified time has
-passed.</p>
+<p>False: submit or release a job when ready, even if the specified time has passed.</p>
 </li>
 </ul>
 </li>
@@ -265,18 +242,15 @@ passed.</p>
 <ul>
 <li>
 <p>How error conditions are to be managed for the job.</p>
-<p>True: error conditions are automatically tracked and the job is assigned an
-ended-in-error status if it fails.</p>
-<p>False: ignore error conditions and give the job a completed status when it
-ends.</p>
+<p>True: error conditions are automatically tracked and the job is assigned an ended-in-error status if it fails.</p>
+<p>False: ignore error conditions and give the job a completed status when it ends.</p>
 </li>
 </ul>
 </li>
 <li>
 <p><code>--highest-return-code</code>  | <code>--hrc</code> <em>(number)</em></p>
 <ul>
-<li>Highest accepted return code for a job  NOT to be reported as ended-in-error.
-For FT workstations, this value can be only 0.</li>
+<li>Highest accepted return code for a job  NOT to be reported as ended-in-error. For FT workstations, this value can be only 0.</li>
 </ul>
 </li>
 <li>
@@ -289,8 +263,7 @@ For FT workstations, this value can be only 0.</li>
 <p><code>--cleanup-option</code>  | <code>--clean</code> <em>(string)</em></p>
 <ul>
 <li>
-<p>Cleanup action to be taken on computer workstations for operations that end in
-error or are rerun.</p>
+<p>Cleanup action to be taken on computer workstations for operations that end in error or are rerun.</p>
 <p>Allowed values: AUTOMATIC, IMMEDIATE, MANUAL, NONE</p>
 </li>
 </ul>
@@ -309,8 +282,7 @@ error or are rerun.</p>
 <p><code>--restartable</code>  | <code>--rest</code> <em>(string)</em></p>
 <ul>
 <li>
-<p>The operation can be restarted when its primary workstation becomes inactive.
-Ignored for Fault-Tolerant workstations. Use installation default action.</p>
+<p>The operation can be restarted when its primary workstation becomes inactive. Ignored for Fault-Tolerant workstations. Use installation default action.</p>
 <p>YES: the operation can be restarted.</p>
 <p>NO: the operation CANNOT be restarted.</p>
 <p>DEFAULT: use installation default action.</p>
@@ -322,8 +294,7 @@ Ignored for Fault-Tolerant workstations. Use installation default action.</p>
 <p><code>--reroutable</code>  | <code>--rero</code> <em>(string)</em></p>
 <ul>
 <li>
-<p>The operation can be rerouted if its primary workstation is rerouted. Ignored
-for Fault Tolerance Workstation.</p>
+<p>The operation can be rerouted if its primary workstation is rerouted. Ignored for Fault Tolerance Workstation.</p>
 <p>YES: operation can be rerouted.</p>
 <p>NO: operation CANNOT be rerouted.</p>
 <p>DEFAULT: use installation default action.</p>
@@ -367,9 +338,7 @@ for Fault Tolerance Workstation.</p>
 <li>
 <p><code>--base-path</code>  | <code>--bp</code> <em>(string)</em></p>
 <ul>
-<li>Base path of your API mediation layer instance. If a base path is specified,
-the plug-in connects to API ML. Specify this value according to the yaml
-static file added to API ML</li>
+<li>Base path of your API mediation layer instance. If a base path is specified, the plug-in connects to API ML. Specify this value according to the yaml static file added to API ML</li>
 </ul>
 </li>
 <li>
@@ -402,8 +371,7 @@ static file added to API ML</li>
 <li>
 <p><code>--token-type</code>  | <code>--tt</code> <em>(string)</em></p>
 <ul>
-<li>The type of token to get and use for the API. Omit this option to use the
-default token type, which is provided by 'zowe auth login'.</li>
+<li>The type of token to get and use for the API. Omit this option to use the default token type, which is provided by 'zowe auth login'.</li>
 </ul>
 </li>
 <li>
@@ -430,11 +398,7 @@ default token type, which is provided by 'zowe auth login'.</li>
 <li>
 <p><code>--response-format-filter</code>  | <code>--rff</code> <em>(array)</em></p>
 <ul>
-<li>Filter (include) fields in the response. Accepts an array of field/property
-names to include in the output response. You can filter JSON objects properties
-OR table columns/fields. In addition, you can use this option in conjunction
-with '--response-format-type' to reduce the output of a command to a single
-field/property or a list of a single field/property.</li>
+<li>Filter (include) fields in the response. Accepts an array of field/property names to include in the output response. You can filter JSON objects properties OR table columns/fields. In addition, you can use this option in conjunction with '--response-format-type' to reduce the output of a command to a single field/property or a list of a single field/property.</li>
 </ul>
 </li>
 <li>
@@ -442,15 +406,9 @@ field/property or a list of a single field/property.</li>
 <ul>
 <li>
 <p>The command response output format type. Must be one of the following:</p>
-<p>table: Formats output data as a table. Use this option when the output data is
-an array of homogeneous JSON objects. Each property of the object will become a
-column in the table.</p>
-<p>list: Formats output data as a list of strings. Can be used on any data type
-(JSON objects/arrays) are stringified and a new line is added after each entry
-in an array.</p>
-<p>object: Formats output data as a list of prettified objects (or single object).
-Can be used in place of &quot;table&quot; to change from tabular output to a list of
-prettified objects.</p>
+<p>table: Formats output data as a table. Use this option when the output data is an array of homogeneous JSON objects. Each property of the object will become a column in the table.</p>
+<p>list: Formats output data as a list of strings. Can be used on any data type (JSON objects/arrays) are stringified and a new line is added after each entry in an array.</p>
+<p>object: Formats output data as a list of prettified objects (or single object). Can be used in place of &quot;table&quot; to change from tabular output to a list of prettified objects.</p>
 <p>string: Formats output data as a string. JSON objects/arrays are stringified.</p>
 <p>Allowed values: table, list, object, string</p>
 </li>
@@ -459,8 +417,7 @@ prettified objects.</p>
 <li>
 <p><code>--response-format-header</code>  | <code>--rfh</code> <em>(boolean)</em></p>
 <ul>
-<li>If &quot;--response-format-type table&quot; is specified, include the column headers
-in the output.</li>
+<li>If &quot;--response-format-type table&quot; is specified, include the column headers in the output.</li>
 </ul>
 </li>
 </ul>
@@ -469,14 +426,13 @@ in the output.</li>
 <li>
 <p>Update the jobname and workstation of the specified job:</p>
 <ul>
-<li><code>zowe  workload-automation update jobinplan --jobname myjclname --workstation myws</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  workload-automation update jobinplan --jobname myjclname --workstation myws">Copy</button></li>
+<li><code>zowe workload-automation update jobinplan --jobname myjclname --workstation myws</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe workload-automation update jobinplan --jobname myjclname --workstation myws">Copy</button></li>
 </ul>
 </li>
 <li>
-<p>Update options start-time, monitored, and duration of the
-specified job:</p>
+<p>Update options start-time, monitored, and duration of the specified job:</p>
 <ul>
-<li><code>zowe  workload-automation update jobinplan --start-time 2020-10-26T10:00:00 --monitored false --duration 180000</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  workload-automation update jobinplan --start-time 2020-10-26T10:00:00 --monitored false --duration 180000">Copy</button></li>
+<li><code>zowe workload-automation update jobinplan --start-time 2020-10-26T10:00:00 --monitored false --duration 180000</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe workload-automation update jobinplan --start-time 2020-10-26T10:00:00 --monitored false --duration 180000">Copy</button></li>
 </ul>
 </li>
 </ul>

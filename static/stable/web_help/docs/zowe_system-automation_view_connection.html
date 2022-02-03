@@ -7,17 +7,14 @@
 <link rel="stylesheet" href="../css/docs.css">
 <article class="markdown-body">
 <h2><a href="zowe.html">zowe</a> › <a href="zowe_system-automation.html">system-automation</a> › <a href="zowe_system-automation_view.html">view</a> › <a href="zowe_system-automation_view_connection.html">connection</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
-<p>View connection information of SA Operations REST Server that would be used by
-any other CLI command.</p>
-<p>In case you have connection problems with any other CLI command - you can use
-this command instead</p>
-<p>to check the connection options as resulting combination from base profile, sa
-profile and command line</p>
+<p>View connection information of SA Operations REST Server that would be used by any other CLI command.</p>
+<p>In case you have connection problems with any other CLI command - you can use this command instead</p>
+<p>to check the connection options as resulting combination from base profile, sa profile and command line</p>
 <p>parameters that are being used to connect the SA Operations Server.</p>
-<p>Following Success Message can be created by this command:
+<p>Following Success Message can be created by this command:<br>
 SACLI012500 - Connected SA Operations API REST Server: {Server} on Port: {Port}</p>
 <h4>Usage</h4>
-<p>zowe  system-automation view connection [options]</p>
+<p>zowe system-automation view connection [options]</p>
 <h4>Options</h4>
 <ul>
 <li>
@@ -83,8 +80,7 @@ SACLI012500 - Connected SA Operations API REST Server: {Server} on Port: {Port}<
 <li>
 <p><code>--token-type</code>  | <code>--tt</code> <em>(string)</em></p>
 <ul>
-<li>The type of token to get and use for the API. Omit this option to use the
-default token type, which is provided by 'zowe auth login'.</li>
+<li>The type of token to get and use for the API. Omit this option to use the default token type, which is provided by 'zowe auth login'.</li>
 </ul>
 </li>
 <li>
@@ -109,17 +105,15 @@ default token type, which is provided by 'zowe auth login'.</li>
 <h4>Examples</h4>
 <ul>
 <li>
-<p>View servername and port number of the server that would be
-connected with any other CLI command:</p>
+<p>View servername and port number of the server that would be connected with any other CLI command:</p>
 <ul>
-<li><code>zowe  system-automation view connection</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  system-automation view connection">Copy</button></li>
+<li><code>zowe system-automation view connection</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe system-automation view connection">Copy</button></li>
 </ul>
 </li>
 <li>
-<p>View more details of the connections options that are in
-effect when doing any other CLI command:</p>
+<p>View more details of the connections options that are in effect when doing any other CLI command:</p>
 <ul>
-<li><code>zowe  system-automation view connection --detailed</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  system-automation view connection --detailed">Copy</button></li>
+<li><code>zowe system-automation view connection --detailed</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe system-automation view connection --detailed">Copy</button></li>
 </ul>
 </li>
 </ul>
