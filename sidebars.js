@@ -278,7 +278,6 @@ module.exports = {
         "extend/extend-apiml/api-mediation-routing",
         "extend/extend-apiml/api-mediation-passtickets",
         "extend/extend-apiml/custom-metadata",
-        "extend/extend-apiml/websocket",
         {
           type: "category",
           label: "Caching service",
@@ -411,7 +410,7 @@ module.exports = {
     {
       type: "link",
       label: "Third Party Software Requirements",
-      href: "https://github.com/zowe/docs-site/tree/master/tpsr/tpsr-v1.26.x.md",
+      href: "https://github.com/zowe/docs-site/tree/master/tpsr/tpsr-v1.27.x.md",
     },
   ],
 };
