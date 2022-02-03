@@ -161,6 +161,7 @@ module.exports = {
       items: [
         "user-guide/systemrequirements-cli",
         "user-guide/cli-installing-ssh2-package",
+        "user-guide/cli-install-cli-nodejs-windows",
         "user-guide/cli-installcli",
         "user-guide/install-cli-via-proxy",
         "user-guide/cli-updatingcli",
@@ -277,6 +278,7 @@ module.exports = {
         "extend/extend-apiml/api-mediation-routing",
         "extend/extend-apiml/api-mediation-passtickets",
         "extend/extend-apiml/custom-metadata",
+        "extend/extend-apiml/websocket",
         {
           type: "category",
           label: "Caching service",
@@ -409,7 +411,7 @@ module.exports = {
     {
       type: "link",
       label: "Third Party Software Requirements",
-      href: "https://github.com/zowe/docs-site/tree/master/tpsr/tpsr-v1.27.x.md",
+      href: "https://github.com/zowe/docs-site/tree/master/tpsr/tpsr-v1.26.x.md",
     },
   ],
 };
