@@ -161,6 +161,7 @@ module.exports = {
       items: [
         "user-guide/systemrequirements-cli",
         "user-guide/cli-installing-ssh2-package",
+        "user-guide/cli-install-cli-nodejs-windows",
         "user-guide/cli-installcli",
         "user-guide/install-cli-via-proxy",
         "user-guide/cli-updatingcli",
