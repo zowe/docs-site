@@ -7,12 +7,11 @@
 <link rel="stylesheet" href="../css/docs.css">
 <article class="markdown-body">
 <h2><a href="zowe.html">zowe</a> › <a href="zowe_file-master-plus.html">file-master-plus</a> › <a href="zowe_file-master-plus_copy.html">copy</a> › <a href="zowe_file-master-plus_copy_data-set.html">data-set</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
-<p>Copy from a data set to another data set.
-If the &lt;to&gt; data set does not exist, CA File Master Plus automatically creates a
-new data set using the attributes of &lt;from&gt; data set.
+<p>Copy from a data set to another data set.<br>
+If the &lt;to&gt; data set does not exist, CA File Master Plus automatically creates a new data set using the attributes of &lt;from&gt; data set.<br>
 It supports all data set types that are supported by CA File Master Plus.</p>
 <h4>Usage</h4>
-<p>zowe  file-master-plus copy data-set &lt;from&gt; &lt;to&gt; [options]</p>
+<p>zowe file-master-plus copy data-set &lt;from&gt; &lt;to&gt; [options]</p>
 <h4>Positional Arguments</h4>
 <ul>
 <li>
@@ -33,27 +32,19 @@ It supports all data set types that are supported by CA File Master Plus.</p>
 <li>
 <p><code>--members</code>  | <code>-m</code> <em>(array)</em></p>
 <ul>
-<li>Specifies the members that you want to copy from the data set. To rename the
-member, specify a new member name after the delimiter ','.If this parameter is
-not specified all the members are copied.
-Note: This parameter only applies to a PDS or PDSE.
-Example: --mem mem1,newmem1 mem2. Here 'mem2' is copied as it is, and 'mem1'
-is renamed as 'newmem1'.</li>
+<li>Specifies the members that you want to copy from the data set. To rename the member, specify a new member name after the delimiter ','.If this parameter is not specified all the members are copied.<br>
+Note: This parameter only applies to a PDS or PDSE.<br>
+Example: --mem mem1,newmem1 mem2. Here 'mem2' is copied as it is, and 'mem1' is renamed as 'newmem1'.</li>
 </ul>
 </li>
 <li>
 <p><code>--generation</code>  | <code>-g</code> <em>(string)</em></p>
 <ul>
-<li>Specifies the PDSE V2 generation number that you want to copy from the data set
-from.
-Note: This parameter should only be specified if data set from is PDSEV2. If
-not specified and data set from is a PDSE V2 then current generation, i.e.
-generation 0, is copied. If generation is negative specifies Relative
-generation, positive specifies Absolute generation, * specifies all generations
-and 0 specifies current generation.
-Example1: --generation *. All generations of member(s) is copied.
-Example2: --generation -1. Relative generation -1 of member(s) is copied.
-Example3: --generation 4. Absolute generation 4 of member(s) is copied.
+<li>Specifies the PDSE V2 generation number that you want to copy from the data set from.<br>
+Note: This parameter should only be specified if data set from is PDSEV2. If not specified and data set from is a PDSE V2 then current generation, i.e. generation 0, is copied. If generation is negative specifies Relative generation, positive specifies Absolute generation, * specifies all generations and 0 specifies current generation.<br>
+Example1: --generation *. All generations of member(s) is copied.<br>
+Example2: --generation -1. Relative generation -1 of member(s) is copied.<br>
+Example3: --generation 4. Absolute generation 4 of member(s) is copied.<br>
 Allowed values: '*','range from -2000000000 to 2000000000'</li>
 </ul>
 </li>
@@ -61,45 +52,38 @@ Allowed values: '*','range from -2000000000 to 2000000000'</li>
 <p><code>--replace</code>  | <code>-r</code> <em>(string)</em></p>
 <ul>
 <li>
-<p>Replace resource-specific items in the target data set. Note: Used only if the
-target data set is a PDS or a VSAM KSDS.
+<p>Replace resource-specific items in the target data set. Note: Used only if the target data set is a PDS or a VSAM KSDS.<br>
 Example: -r n.</p>
-<p>Default value: y</p>
-<p>Allowed values: y, n</p>
+<p>Default value: y<br>
+Allowed values: y, n</p>
 </li>
 </ul>
 </li>
 <li>
 <p><code>--static-selection-criteria</code>  | <code>--ssc</code> <em>(string)</em></p>
 <ul>
-<li>Specifies the name of pre-defined CA File Master Plus selection criteria. The
-name refers to a member in the defaultselection criteria data set as defined in
-the FMM_CLIST parameter in CA File Master Plus server.
+<li>Specifies the name of pre-defined CA File Master Plus selection criteria. The name refers to a member in the defaultselection criteria data set as defined in the FMM_CLIST parameter in CA File Master Plus server.<br>
 Example: --ssc testcri</li>
 </ul>
 </li>
 <li>
 <p><code>--dynamic-selection-criteria</code>  | <code>--dsc</code> <em>(string)</em></p>
 <ul>
-<li>Specifies path of the .txt file where the dynamic selection criteria exist.
-Ensure the format of the file is identical to the static selection criteria
-created by CA File Master Plus. If the selection criteria refer to field names
-in a Cobol or PL/I copybook, use the --layout-member and
---layout-data-set parameters to name the copybook location.
+<li>Specifies path of the .txt file where the dynamic selection criteria exist. Ensure the format of the file is identical to the static selection criteria created by CA File Master Plus. If the selection criteria refer to field names in a Cobol or PL/I copybook, use the --layout-member and --layout-data-set parameters to name the copybook location.<br>
 Example: --dsc ../selcri/testcri.txt</li>
 </ul>
 </li>
 <li>
 <p><code>--layout-member</code>  | <code>--lm</code> <em>(string)</em></p>
 <ul>
-<li>Specifies name of the Cobol or PL/I copybook.
+<li>Specifies name of the Cobol or PL/I copybook.<br>
 Example: -lm testlay.</li>
 </ul>
 </li>
 <li>
 <p><code>--layout-data-set</code>  | <code>--lds</code> <em>(string)</em></p>
 <ul>
-<li>Specifies name of the data set that contains the layout member.
+<li>Specifies name of the data set that contains the layout member.<br>
 Example: -lds fmmvs.layout.dataset.</li>
 </ul>
 </li>
@@ -135,8 +119,8 @@ Example: -lds fmmvs.layout.dataset.</li>
 <ul>
 <li>
 <p>Specifies CA File Master Plus REST API protocol.</p>
-<p>Default value: https</p>
-<p>Allowed values: http, https</p>
+<p>Default value: https<br>
+Allowed values: http, https</p>
 </li>
 </ul>
 </li>
@@ -152,9 +136,7 @@ Example: -lds fmmvs.layout.dataset.</li>
 <li>
 <p><code>--base-path</code>  | <code>--bp</code> <em>(string)</em></p>
 <ul>
-<li>The base path for your API mediation layer instance. Specify this option to
-prepend the base path to all FMP resources when making REST requests. Do not
-specify this option if you are not using an API mediation layer.</li>
+<li>The base path for your API mediation layer instance. Specify this option to prepend the base path to all FMP resources when making REST requests. Do not specify this option if you are not using an API mediation layer.</li>
 </ul>
 </li>
 </ul>
@@ -178,8 +160,7 @@ specify this option if you are not using an API mediation layer.</li>
 <li>
 <p><code>--token-type</code>  | <code>--tt</code> <em>(string)</em></p>
 <ul>
-<li>The type of token to get and use for the API. Omit this option to use the
-default token type, which is provided by 'zowe auth login'.</li>
+<li>The type of token to get and use for the API. Omit this option to use the default token type, which is provided by 'zowe auth login'.</li>
 </ul>
 </li>
 <li>
@@ -206,19 +187,19 @@ default token type, which is provided by 'zowe auth login'.</li>
 <li>
 <p>Copying a data set:</p>
 <ul>
-<li><code>zowe  file-master-plus copy data-set fmmvs.pds1 fmmvs.pds2</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  file-master-plus copy data-set fmmvs.pds1 fmmvs.pds2">Copy</button></li>
+<li><code>zowe file-master-plus copy data-set fmmvs.pds1 fmmvs.pds2</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe file-master-plus copy data-set fmmvs.pds1 fmmvs.pds2">Copy</button></li>
 </ul>
 </li>
 <li>
 <p>Copying a data set with dynamic selection criteria:</p>
 <ul>
-<li><code>zowe  file-master-plus copy data-set fmmvs.from.ps fmmvs.to.ps --lds fmmvs.layout.dataset --lm testlay --dsc ./fmmvs/selcri/testcri</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  file-master-plus copy data-set fmmvs.from.ps fmmvs.to.ps --lds fmmvs.layout.dataset --lm testlay --dsc ./fmmvs/selcri/testcri">Copy</button></li>
+<li><code>zowe file-master-plus copy data-set fmmvs.from.ps fmmvs.to.ps --lds fmmvs.layout.dataset --lm testlay --dsc ./fmmvs/selcri/testcri</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe file-master-plus copy data-set fmmvs.from.ps fmmvs.to.ps --lds fmmvs.layout.dataset --lm testlay --dsc ./fmmvs/selcri/testcri">Copy</button></li>
 </ul>
 </li>
 <li>
 <p>Copying a PDSE V2 data set with all generations:</p>
 <ul>
-<li><code>zowe  file-master-plus copy data-set fmmvs.from.psdsev2 fmmvs.to.psdsev2 --generation *</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  file-master-plus copy data-set fmmvs.from.psdsev2 fmmvs.to.psdsev2 --generation *">Copy</button></li>
+<li><code>zowe file-master-plus copy data-set fmmvs.from.psdsev2 fmmvs.to.psdsev2 --generation *</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe file-master-plus copy data-set fmmvs.from.psdsev2 fmmvs.to.psdsev2 --generation *">Copy</button></li>
 </ul>
 </li>
 </ul>

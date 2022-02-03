@@ -7,10 +7,10 @@
 <link rel="stylesheet" href="../css/docs.css">
 <article class="markdown-body">
 <h2><a href="zowe.html">zowe</a> › <a href="zowe_file-master-plus.html">file-master-plus</a> › <a href="zowe_file-master-plus_populate.html">populate</a> › <a href="zowe_file-master-plus_populate_data-set.html">data-set</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
-<p>Populate a specific data set with records.
+<p>Populate a specific data set with records.<br>
 The layout of the records to add are described by a Cobol or PL/I copybook.</p>
 <h4>Usage</h4>
-<p>zowe  file-master-plus populate data-set &lt;name&gt; [options]</p>
+<p>zowe file-master-plus populate data-set &lt;name&gt; [options]</p>
 <h4>Positional Arguments</h4>
 <ul>
 <li>
@@ -25,8 +25,8 @@ The layout of the records to add are described by a Cobol or PL/I copybook.</p>
 <li>
 <p><code>--member</code>  | <code>-m</code> <em>(string)</em></p>
 <ul>
-<li>Specifies name of the member.
-Note: Used only if the specified data set is a PDS or PDSE.
+<li>Specifies name of the member.<br>
+Note: Used only if the specified data set is a PDS or PDSE.<br>
 Example: -m member1.</li>
 </ul>
 </li>
@@ -36,23 +36,21 @@ Example: -m member1.</li>
 <li>
 <p><code>--layout-member</code>  | <code>--lm</code> <em>(string)</em></p>
 <ul>
-<li>Specifies the name of the Cobol or PL/I copybook.
+<li>Specifies the name of the Cobol or PL/I copybook.<br>
 Example: --lm testlay.</li>
 </ul>
 </li>
 <li>
 <p><code>--layout-data-set</code>  | <code>--lds</code> <em>(string)</em></p>
 <ul>
-<li>Specifies the name of the data set that contains the layout member.
+<li>Specifies the name of the data set that contains the layout member.<br>
 Example: --lds fmmvs.layout.dataset.</li>
 </ul>
 </li>
 <li>
 <p><code>--data</code>  | <code>-d</code> <em>(string)</em></p>
 <ul>
-<li>Specifies path of the .txt/.json file of the data stream. Ensure the data
-stream is an array in JSON format represented by a layout data set and its
-member.
+<li>Specifies path of the .txt/.json file of the data stream. Ensure the data stream is an array in JSON format represented by a layout data set and its member.<br>
 Example: -d ../instream/data1.txt</li>
 </ul>
 </li>
@@ -88,8 +86,8 @@ Example: -d ../instream/data1.txt</li>
 <ul>
 <li>
 <p>Specifies CA File Master Plus REST API protocol.</p>
-<p>Default value: https</p>
-<p>Allowed values: http, https</p>
+<p>Default value: https<br>
+Allowed values: http, https</p>
 </li>
 </ul>
 </li>
@@ -105,9 +103,7 @@ Example: -d ../instream/data1.txt</li>
 <li>
 <p><code>--base-path</code>  | <code>--bp</code> <em>(string)</em></p>
 <ul>
-<li>The base path for your API mediation layer instance. Specify this option to
-prepend the base path to all FMP resources when making REST requests. Do not
-specify this option if you are not using an API mediation layer.</li>
+<li>The base path for your API mediation layer instance. Specify this option to prepend the base path to all FMP resources when making REST requests. Do not specify this option if you are not using an API mediation layer.</li>
 </ul>
 </li>
 </ul>
@@ -131,8 +127,7 @@ specify this option if you are not using an API mediation layer.</li>
 <li>
 <p><code>--token-type</code>  | <code>--tt</code> <em>(string)</em></p>
 <ul>
-<li>The type of token to get and use for the API. Omit this option to use the
-default token type, which is provided by 'zowe auth login'.</li>
+<li>The type of token to get and use for the API. Omit this option to use the default token type, which is provided by 'zowe auth login'.</li>
 </ul>
 </li>
 <li>
@@ -159,7 +154,7 @@ default token type, which is provided by 'zowe auth login'.</li>
 <li>
 <p>Populating a data set:</p>
 <ul>
-<li><code>zowe  file-master-plus populate data-set fmmvs.dsname --lds fmmvs.layout.dataset --lm testlay --data ../instream/data1.txt  </code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  file-master-plus populate data-set fmmvs.dsname --lds fmmvs.layout.dataset --lm testlay --data ../instream/data1.txt  ">Copy</button></li>
+<li><code>zowe file-master-plus populate data-set fmmvs.dsname --lds fmmvs.layout.dataset --lm testlay --data ../instream/data1.txt  </code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe file-master-plus populate data-set fmmvs.dsname --lds fmmvs.layout.dataset --lm testlay --data ../instream/data1.txt  ">Copy</button></li>
 </ul>
 </li>
 </ul>

@@ -7,17 +7,15 @@
 <link rel="stylesheet" href="../css/docs.css">
 <article class="markdown-body">
 <h2><a href="zowe.html">zowe</a> › <a href="zowe_profiles.html">profiles</a> › <a href="zowe_profiles_create.html">create</a> › <a href="zowe_profiles_create_sysview-profile.html">sysview-profile</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
-<p>The SYSVIEW session profile schema, where you specify your session information
-and credentials</p>
+<p>The SYSVIEW session profile schema, where you specify your session information and credentials</p>
 <h4>Usage</h4>
-<p>zowe  profiles create sysview-profile &lt;profileName&gt; [options]</p>
+<p>zowe profiles create sysview-profile &lt;profileName&gt; [options]</p>
 <h4>Positional Arguments</h4>
 <ul>
 <li>
 <p><code>profileName</code>		 <em>(string)</em></p>
 <ul>
-<li>Specifies the name of the new sysview profile. You can load this profile by
-using the name on commands that support the &quot;--sysview-profile&quot; option.</li>
+<li>Specifies the name of the new sysview profile. You can load this profile by using the name on commands that support the &quot;--sysview-profile&quot; option.</li>
 </ul>
 </li>
 </ul>
@@ -66,8 +64,7 @@ using the name on commands that support the &quot;--sysview-profile&quot; option
 <p><code>--base-path</code>  | <code>--bp</code> <em>(string)</em></p>
 <ul>
 <li>
-<p>The base path for your API mediation layer instance. Do not specify this option
-if you are not using an API mediation layer.</p>
+<p>The base path for your API mediation layer instance. Do not specify this option if you are not using an API mediation layer.</p>
 <p>Default value: /api/v1</p>
 </li>
 </ul>
@@ -91,26 +88,21 @@ if you are not using an API mediation layer.</p>
 <h4>Examples</h4>
 <ul>
 <li>
-<p>Create a SYSVIEW profile called 'myLPAR' to connect to the
-SYSVIEW REST API at host lpar123, port 8080, and ssid ABCD:</p>
+<p>Create a SYSVIEW profile called 'myLPAR' to connect to the SYSVIEW REST API at host lpar123, port 8080, and ssid ABCD:</p>
 <ul>
-<li><code>zowe  profiles create sysview-profile myLPAR --host lpar123 --port 8080 --user ibmuser --password !@#$^ --ssid ABCD</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  profiles create sysview-profile myLPAR --host lpar123 --port 8080 --user ibmuser --password !@#$^ --ssid ABCD">Copy</button></li>
+<li><code>zowe profiles create sysview-profile myLPAR --host lpar123 --port 8080 --user ibmuser --password !@#$^ --ssid ABCD</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe profiles create sysview-profile myLPAR --host lpar123 --port 8080 --user ibmuser --password !@#$^ --ssid ABCD">Copy</button></li>
 </ul>
 </li>
 <li>
-<p>You already have a base profile with username and password.
-Create a SYSVIEW profile to specify host lpar123 and port 8080, using the
-default ssid of GSVX:</p>
+<p>You already have a base profile with username and password. Create a SYSVIEW profile to specify host lpar123 and port 8080, using the default ssid of GSVX:</p>
 <ul>
-<li><code>zowe  profiles create sysview-profile myLPAR2 --host lpar123 --port 8080</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  profiles create sysview-profile myLPAR2 --host lpar123 --port 8080">Copy</button></li>
+<li><code>zowe profiles create sysview-profile myLPAR2 --host lpar123 --port 8080</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe profiles create sysview-profile myLPAR2 --host lpar123 --port 8080">Copy</button></li>
 </ul>
 </li>
 <li>
-<p>You already have a base profile to connect to an API
-Mediation Layer and use SSO tokens. Create a SYSVIEW profile to point to the
-SYSVIEW REST API by specifying the base path /my-sysview-instance/api/v1:</p>
+<p>You already have a base profile to connect to an API Mediation Layer and use SSO tokens. Create a SYSVIEW profile to point to the SYSVIEW REST API by specifying the base path /my-sysview-instance/api/v1:</p>
 <ul>
-<li><code>zowe  profiles create sysview-profile myLPAR3 --base-path /api/v1/my-sysview-instance</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  profiles create sysview-profile myLPAR3 --base-path /api/v1/my-sysview-instance">Copy</button></li>
+<li><code>zowe profiles create sysview-profile myLPAR3 --base-path /api/v1/my-sysview-instance</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe profiles create sysview-profile myLPAR3 --base-path /api/v1/my-sysview-instance">Copy</button></li>
 </ul>
 </li>
 </ul>

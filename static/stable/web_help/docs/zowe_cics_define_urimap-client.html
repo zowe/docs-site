@@ -9,21 +9,19 @@
 <h2><a href="zowe.html">zowe</a> › <a href="zowe_cics.html">cics</a> › <a href="zowe_cics_define.html">define</a> › <a href="zowe_cics_define_urimap-client.html">urimap-client</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
 <p>Define a new URIMAP of type client to CICS. This acts as an HTTP(S) client</p>
 <h4>Usage</h4>
-<p>zowe  cics define urimap-client &lt;urimapName&gt; &lt;csdGroup&gt; [options]</p>
+<p>zowe cics define urimap-client &lt;urimapName&gt; &lt;csdGroup&gt; [options]</p>
 <h4>Positional Arguments</h4>
 <ul>
 <li>
 <p><code>urimapName</code>		 <em>(string)</em></p>
 <ul>
-<li>The name of the URIMAP to create. The maximum length of the urimap name is
-eight characters.</li>
+<li>The name of the URIMAP to create. The maximum length of the urimap name is eight characters.</li>
 </ul>
 </li>
 <li>
 <p><code>csdGroup</code>		 <em>(string)</em></p>
 <ul>
-<li>The CICS system definition (CSD) Group for the new urimap that you want to
-define. The maximum length of the group name is eight characters.</li>
+<li>The CICS system definition (CSD) Group for the new urimap that you want to define. The maximum length of the group name is eight characters.</li>
 </ul>
 </li>
 </ul>
@@ -49,8 +47,8 @@ define. The maximum length of the group name is eight characters.</li>
 <ul>
 <li>
 <p>The scheme component to be used with the request (http or https).</p>
-<p>Default value: https</p>
-<p>Allowed values: http, https</p>
+<p>Default value: https<br>
+Allowed values: http, https</p>
 </li>
 </ul>
 </li>
@@ -66,8 +64,7 @@ define. The maximum length of the group name is eight characters.</li>
 <li>
 <p><code>--certificate</code>  | <code>--cert</code> <em>(string)</em></p>
 <ul>
-<li>The label of a certificate in the keyring that is to be used as the client
-certificate in SSL handshakes</li>
+<li>The label of a certificate in the keyring that is to be used as the client certificate in SSL handshakes</li>
 </ul>
 </li>
 <li>
@@ -141,8 +138,8 @@ certificate in SSL handshakes</li>
 <ul>
 <li>
 <p>Specifies CMCI protocol (http or https).</p>
-<p>Default value: https</p>
-<p>Allowed values: http, https</p>
+<p>Default value: https<br>
+Allowed values: http, https</p>
 </li>
 </ul>
 </li>
@@ -167,8 +164,7 @@ certificate in SSL handshakes</li>
 <li>
 <p><code>--token-type</code>  | <code>--tt</code> <em>(string)</em></p>
 <ul>
-<li>The type of token to get and use for the API. Omit this option to use the
-default token type, which is provided by 'zowe auth login'.</li>
+<li>The type of token to get and use for the API. Omit this option to use the default token type, which is provided by 'zowe auth login'.</li>
 </ul>
 </li>
 <li>
@@ -193,11 +189,9 @@ default token type, which is provided by 'zowe auth login'.</li>
 <h4>Examples</h4>
 <ul>
 <li>
-<p>Define a URIMAP named URIMAPA to the region named MYREGION
-in the CSD group MYGRP where the host is <a href="http://www.example.com">www.example.com</a> and the path is
-/example/index.html:</p>
+<p>Define a URIMAP named URIMAPA to the region named MYREGION in the CSD group MYGRP where the host is <a href="http://www.example.com">www.example.com</a> and the path is /example/index.html:</p>
 <ul>
-<li><code>zowe  cics define urimap-client URIMAPA MYGRP --urimap-path /example/index.html --urimap-host www.example.com --region-name MYREGION</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  cics define urimap-client URIMAPA MYGRP --urimap-path /example/index.html --urimap-host www.example.com --region-name MYREGION">Copy</button></li>
+<li><code>zowe cics define urimap-client URIMAPA MYGRP --urimap-path /example/index.html --urimap-host www.example.com --region-name MYREGION</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe cics define urimap-client URIMAPA MYGRP --urimap-path /example/index.html --urimap-host www.example.com --region-name MYREGION">Copy</button></li>
 </ul>
 </li>
 </ul>

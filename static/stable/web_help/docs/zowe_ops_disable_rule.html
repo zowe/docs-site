@@ -9,7 +9,7 @@
 <h2><a href="zowe.html">zowe</a> › <a href="zowe_ops.html">ops</a> › <a href="zowe_ops_disable.html">disable</a> › <a href="zowe_ops_disable_rule.html">rule</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
 <p>Disable the specified rule.</p>
 <h4>Usage</h4>
-<p>zowe  ops disable rule &lt;ruleset&gt; &lt;rule&gt; [options]</p>
+<p>zowe ops disable rule &lt;ruleset&gt; &lt;rule&gt; [options]</p>
 <h4>Positional Arguments</h4>
 <ul>
 <li>
@@ -55,8 +55,7 @@
 <p><code>--reject-unauthorized</code>  | <code>--ru</code> <em>(boolean)</em></p>
 <ul>
 <li>
-<p>If set to true, the server certificate is verified against the list of supplied
-CAs. If set to false, certificate verification is not performed.</p>
+<p>If set to true, the server certificate is verified against the list of supplied CAs. If set to false, certificate verification is not performed.</p>
 <p>Default value: true</p>
 </li>
 </ul>
@@ -66,16 +65,15 @@ CAs. If set to false, certificate verification is not performed.</p>
 <ul>
 <li>
 <p>The protocol used for connecting to OPS Web Services</p>
-<p>Default value: https</p>
-<p>Allowed values: http, https</p>
+<p>Default value: https<br>
+Allowed values: http, https</p>
 </li>
 </ul>
 </li>
 <li>
 <p><code>--subsystem</code>  | <code>--subs</code> <em>(string)</em></p>
 <ul>
-<li>Specifies the subsystem id of the OPS/MVS instance to which commands will be
-directed.</li>
+<li>Specifies the subsystem id of the OPS/MVS instance to which commands will be directed.</li>
 </ul>
 </li>
 </ul>
@@ -99,8 +97,7 @@ directed.</li>
 <li>
 <p><code>--token-type</code>  | <code>--tt</code> <em>(string)</em></p>
 <ul>
-<li>The type of token to get and use for the API. Omit this option to use the
-default token type, which is provided by 'zowe auth login'.</li>
+<li>The type of token to get and use for the API. Omit this option to use the default token type, which is provided by 'zowe auth login'.</li>
 </ul>
 </li>
 <li>
@@ -127,7 +124,7 @@ default token type, which is provided by 'zowe auth login'.</li>
 <li>
 <p>Disable MYRULE on ruleset OPSRULES on subsystem OPSS.:</p>
 <ul>
-<li><code>zowe  ops disable rule OPSRULES MYRULE --subsystem OPSS</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  ops disable rule OPSRULES MYRULE --subsystem OPSS">Copy</button></li>
+<li><code>zowe ops disable rule OPSRULES MYRULE --subsystem OPSS</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe ops disable rule OPSRULES MYRULE --subsystem OPSS">Copy</button></li>
 </ul>
 </li>
 </ul>

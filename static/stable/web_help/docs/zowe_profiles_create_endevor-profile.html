@@ -7,17 +7,15 @@
 <link rel="stylesheet" href="../css/docs.css">
 <article class="markdown-body">
 <h2><a href="zowe.html">zowe</a> › <a href="zowe_profiles.html">profiles</a> › <a href="zowe_profiles_create.html">create</a> › <a href="zowe_profiles_create_endevor-profile.html">endevor-profile</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
-<p>The CA Endevor SCM endevor profile schema, where you specify your endevor
-session information and credentials</p>
+<p>The CA Endevor SCM endevor profile schema, where you specify your endevor session information and credentials</p>
 <h4>Usage</h4>
-<p>zowe  profiles create endevor-profile &lt;profileName&gt; [options]</p>
+<p>zowe profiles create endevor-profile &lt;profileName&gt; [options]</p>
 <h4>Positional Arguments</h4>
 <ul>
 <li>
 <p><code>profileName</code>		 <em>(string)</em></p>
 <ul>
-<li>Specifies the name of the new endevor profile. You can load this profile by
-using the name on commands that support the &quot;--endevor-profile&quot; option.</li>
+<li>Specifies the name of the new endevor profile. You can load this profile by using the name on commands that support the &quot;--endevor-profile&quot; option.</li>
 </ul>
 </li>
 </ul>
@@ -52,8 +50,8 @@ using the name on commands that support the &quot;--endevor-profile&quot; option
 <ul>
 <li>
 <p>The protocol used for connecting to CA Endevor SCM Rest API</p>
-<p>Default value: http</p>
-<p>Allowed values: http, https</p>
+<p>Default value: http<br>
+Allowed values: http, https</p>
 </li>
 </ul>
 </li>
@@ -76,8 +74,7 @@ using the name on commands that support the &quot;--endevor-profile&quot; option
 <p><code>--report-dir</code>  | <code>--rd</code> <em>(string)</em></p>
 <ul>
 <li>
-<p>The default path where any reports will be written to, either absolute or
-relative to current directory</p>
+<p>The default path where any reports will be written to, either absolute or relative to current directory</p>
 <p>Default value: .</p>
 </li>
 </ul>
@@ -98,11 +95,9 @@ relative to current directory</p>
 <h4>Examples</h4>
 <ul>
 <li>
-<p>Create an endevor profile called 'ndvrSample' to connect to
-CA Endevor SCM web services at host ndvr123 and port 8080,using http protocol,
-with / EndevorService/api/v2 base path, allowing self-signed certificates:</p>
+<p>Create an endevor profile called 'ndvrSample' to connect to CA Endevor SCM web services at host ndvr123 and port 8080,using http protocol, with / EndevorService/api/v2 base path, allowing self-signed certificates:</p>
 <ul>
-<li><code>zowe  profiles create endevor-profile ndvrSample --host ndvr123 --port 8080 --user ibmuser --password myp4ss --prot http --base-path  EndevorService/api/v2 --reject-unauthorized false</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  profiles create endevor-profile ndvrSample --host ndvr123 --port 8080 --user ibmuser --password myp4ss --prot http --base-path  EndevorService/api/v2 --reject-unauthorized false">Copy</button></li>
+<li><code>zowe profiles create endevor-profile ndvrSample --host ndvr123 --port 8080 --user ibmuser --password myp4ss --prot http --base-path  EndevorService/api/v2 --reject-unauthorized false</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe profiles create endevor-profile ndvrSample --host ndvr123 --port 8080 --user ibmuser --password myp4ss --prot http --base-path  EndevorService/api/v2 --reject-unauthorized false">Copy</button></li>
 </ul>
 </li>
 </ul>

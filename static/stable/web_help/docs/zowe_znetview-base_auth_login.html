@@ -7,20 +7,16 @@
 <link rel="stylesheet" href="../css/docs.css">
 <article class="markdown-body">
 <h2><a href="zowe.html">zowe</a> › <a href="zowe_znetview-base.html">znetview-base</a> › <a href="zowe_znetview-base_auth.html">auth</a> › <a href="zowe_znetview-base_auth_login.html">login</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
-<p>Log in to the NetView REST Server authentication service and obtain a token.
-When you log in to the NetView REST Server authentication service without any
-option, the token will be stored in your default NetView profile until it
-expires.</p>
+<p>Log in to the NetView REST Server authentication service and obtain a token. When you log in to the NetView REST Server authentication service without any option, the token will be stored in your default NetView profile until it expires.</p>
 <h4>Usage</h4>
-<p>zowe  znetview-base auth login [options]</p>
+<p>zowe znetview-base auth login [options]</p>
 <h4>Options</h4>
 <ul>
 <li>
 <p><code>--show-token</code>  | <code>--st</code> <em>(boolean)</em></p>
 <ul>
 <li>
-<p>Displays the token when the login is successful and does not save the token in a
-profile.</p>
+<p>Displays the token when the login is successful and does not save the token in a profile.</p>
 <p>Default value: false</p>
 </li>
 </ul>
@@ -55,9 +51,7 @@ profile.</p>
 <li>
 <p><code>--token-type</code>  | <code>--tt</code> <em>(string)</em></p>
 <ul>
-<li>The type of the token to authenticate to your NetView REST Server. The only
-token type that is valid when using NetView REST Server authentication is
-JSESSIONID.</li>
+<li>The type of the token to authenticate to your NetView REST Server. The only token type that is valid when using NetView REST Server authentication is JSESSIONID.</li>
 </ul>
 </li>
 <li>
@@ -70,11 +64,8 @@ JSESSIONID.</li>
 <p><code>--base-path</code>  | <code>--bp</code> <em>(string)</em></p>
 <ul>
 <li>
-<p>The base path for your Zowe API Mediation Layer instance. Specify this option
-to prepend the base path to NetView REST service when making REST requests to
-the Zowe API Mediation Layer.</p>
-<p>Note: Do not specify this option if you are not using the Zowe API Mediation
-Layer.</p>
+<p>The base path for your Zowe API Mediation Layer instance. Specify this option to prepend the base path to NetView REST service when making REST requests to the Zowe API Mediation Layer.</p>
+<p>Note: Do not specify this option if you are not using the Zowe API Mediation Layer.</p>
 </li>
 </ul>
 </li>
@@ -121,17 +112,15 @@ Layer.</p>
 <h4>Examples</h4>
 <ul>
 <li>
-<p>Log in to the NetView REST Server. The authentication token
-will be stored in your default NetView profile.:</p>
+<p>Log in to the NetView REST Server. The authentication token will be stored in your default NetView profile.:</p>
 <ul>
-<li><code>zowe  znetview-base auth login</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  znetview-base auth login">Copy</button></li>
+<li><code>zowe znetview-base auth login</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe znetview-base auth login">Copy</button></li>
 </ul>
 </li>
 <li>
-<p>Log in to the NetView REST Server. The authentication token
-will not be stored in your default NetView profile:</p>
+<p>Log in to the NetView REST Server. The authentication token will not be stored in your default NetView profile:</p>
 <ul>
-<li><code>zowe  znetview-base auth login --show-token</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  znetview-base auth login --show-token">Copy</button></li>
+<li><code>zowe znetview-base auth login --show-token</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe znetview-base auth login --show-token">Copy</button></li>
 </ul>
 </li>
 </ul>

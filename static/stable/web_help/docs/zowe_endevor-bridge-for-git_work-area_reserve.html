@@ -7,17 +7,15 @@
 <link rel="stylesheet" href="../css/docs.css">
 <article class="markdown-body">
 <h2><a href="zowe.html">zowe</a> › <a href="zowe_endevor-bridge-for-git.html">endevor-bridge-for-git</a> › <a href="zowe_endevor-bridge-for-git_work-area.html">work-area</a> › <a href="zowe_endevor-bridge-for-git_work-area_reserve.html">reserve</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
-<p>Reserve the first found available Endevor work area. When success, returns the
-reserved work area id</p>
+<p>Reserve the first found available Endevor work area. When success, returns the reserved work area id</p>
 <h4>Usage</h4>
-<p>zowe  endevor-bridge-for-git work-area reserve [work-area-id] [options]</p>
+<p>zowe endevor-bridge-for-git work-area reserve [work-area-id] [options]</p>
 <h4>Positional Arguments</h4>
 <ul>
 <li>
 <p><code>work-area-id</code>		 <em>(string)</em></p>
 <ul>
-<li>Reserve the Endevor work area with the ID specified. Name-masking is not
-allowed.</li>
+<li>Reserve the Endevor work area with the ID specified. Name-masking is not allowed.</li>
 </ul>
 </li>
 </ul>
@@ -150,8 +148,7 @@ allowed.</li>
 <li>
 <p><code>--token-type</code>  | <code>--tt</code> <em>(string)</em></p>
 <ul>
-<li>The type of token to get and use for the API. Omit this option to use the
-default token type, which is provided by 'zowe auth login'.</li>
+<li>The type of token to get and use for the API. Omit this option to use the default token type, which is provided by 'zowe auth login'.</li>
 </ul>
 </li>
 <li>
@@ -176,17 +173,15 @@ default token type, which is provided by 'zowe auth login'.</li>
 <h4>Examples</h4>
 <ul>
 <li>
-<p>Reserve the first found available Endevor work area using an
-existing Endevor profile:</p>
+<p>Reserve the first found available Endevor work area using an existing Endevor profile:</p>
 <ul>
-<li><code>zowe  endevor-bridge-for-git work-area reserve --endevor-instance ENDEVOR</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  endevor-bridge-for-git work-area reserve --endevor-instance ENDEVOR">Copy</button></li>
+<li><code>zowe endevor-bridge-for-git work-area reserve --endevor-instance ENDEVOR</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe endevor-bridge-for-git work-area reserve --endevor-instance ENDEVOR">Copy</button></li>
 </ul>
 </li>
 <li>
-<p>Reserve the work area with ID &quot;WORKAREA1&quot;, if available,
-using an existing Endevor profile:</p>
+<p>Reserve the work area with ID &quot;WORKAREA1&quot;, if available, using an existing Endevor profile:</p>
 <ul>
-<li><code>zowe  endevor-bridge-for-git work-area reserve WORKAREA1 --endevor-instance ENDEVOR</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  endevor-bridge-for-git work-area reserve WORKAREA1 --endevor-instance ENDEVOR">Copy</button></li>
+<li><code>zowe endevor-bridge-for-git work-area reserve WORKAREA1 --endevor-instance ENDEVOR</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe endevor-bridge-for-git work-area reserve WORKAREA1 --endevor-instance ENDEVOR">Copy</button></li>
 </ul>
 </li>
 </ul>

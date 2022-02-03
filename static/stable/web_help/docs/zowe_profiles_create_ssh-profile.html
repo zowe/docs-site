@@ -9,14 +9,13 @@
 <h2><a href="zowe.html">zowe</a> › <a href="zowe_profiles.html">profiles</a> › <a href="zowe_profiles_create.html">create</a> › <a href="zowe_profiles_create_ssh-profile.html">ssh-profile</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
 <p>z/OS SSH Profile</p>
 <h4>Usage</h4>
-<p>zowe  profiles create ssh-profile &lt;profileName&gt; [options]</p>
+<p>zowe profiles create ssh-profile &lt;profileName&gt; [options]</p>
 <h4>Positional Arguments</h4>
 <ul>
 <li>
 <p><code>profileName</code>		 <em>(string)</em></p>
 <ul>
-<li>Specifies the name of the new ssh profile. You can load this profile by using
-the name on commands that support the &quot;--ssh-profile&quot; option.</li>
+<li>Specifies the name of the new ssh profile. You can load this profile by using the name on commands that support the &quot;--ssh-profile&quot; option.</li>
 </ul>
 </li>
 </ul>
@@ -52,8 +51,7 @@ the name on commands that support the &quot;--ssh-profile&quot; option.</li>
 <li>
 <p><code>--privateKey</code>  | <code>--key</code> | <code>--pk</code> <em>(string)</em></p>
 <ul>
-<li>Path to a file containing your private key, that must match a public key stored
-in the server for authentication</li>
+<li>Path to a file containing your private key, that must match a public key stored in the server for authentication</li>
 </ul>
 </li>
 <li>
@@ -87,33 +85,27 @@ in the server for authentication</li>
 <h4>Examples</h4>
 <ul>
 <li>
-<p>Create a ssh profile called 'ssh111' to connect to z/OS SSH
-server at host 'zos123' and default port 22:</p>
+<p>Create a ssh profile called 'ssh111' to connect to z/OS SSH server at host 'zos123' and default port 22:</p>
 <ul>
-<li><code>zowe  profiles create ssh-profile ssh111 --host sshhost --user ibmuser --password myp4ss</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  profiles create ssh-profile ssh111 --host sshhost --user ibmuser --password myp4ss">Copy</button></li>
+<li><code>zowe profiles create ssh-profile ssh111 --host sshhost --user ibmuser --password myp4ss</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe profiles create ssh-profile ssh111 --host sshhost --user ibmuser --password myp4ss">Copy</button></li>
 </ul>
 </li>
 <li>
-<p>Create a ssh profile called 'ssh222' to connect to z/OS SSH
-server at host 'zos123' and port 13022:</p>
+<p>Create a ssh profile called 'ssh222' to connect to z/OS SSH server at host 'zos123' and port 13022:</p>
 <ul>
-<li><code>zowe  profiles create ssh-profile ssh222 --host sshhost --port 13022 --user ibmuser --password myp4ss</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  profiles create ssh-profile ssh222 --host sshhost --port 13022 --user ibmuser --password myp4ss">Copy</button></li>
+<li><code>zowe profiles create ssh-profile ssh222 --host sshhost --port 13022 --user ibmuser --password myp4ss</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe profiles create ssh-profile ssh222 --host sshhost --port 13022 --user ibmuser --password myp4ss">Copy</button></li>
 </ul>
 </li>
 <li>
-<p>Create a ssh profile called 'ssh333' to connect to z/OS SSH
-server at host 'zos123' using a privatekey '/path/to/privatekey' and its
-decryption passphrase 'privateKeyPassphrase' for privatekey authentication:</p>
+<p>Create a ssh profile called 'ssh333' to connect to z/OS SSH server at host 'zos123' using a privatekey '/path/to/privatekey' and its decryption passphrase 'privateKeyPassphrase' for privatekey authentication:</p>
 <ul>
-<li><code>zowe  profiles create ssh-profile ssh333 --host sshhost --user ibmuser --privateKey /path/to/privatekey --keyPassphrase privateKeyPassphrase</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  profiles create ssh-profile ssh333 --host sshhost --user ibmuser --privateKey /path/to/privatekey --keyPassphrase privateKeyPassphrase">Copy</button></li>
+<li><code>zowe profiles create ssh-profile ssh333 --host sshhost --user ibmuser --privateKey /path/to/privatekey --keyPassphrase privateKeyPassphrase</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe profiles create ssh-profile ssh333 --host sshhost --user ibmuser --privateKey /path/to/privatekey --keyPassphrase privateKeyPassphrase">Copy</button></li>
 </ul>
 </li>
 <li>
-<p>Create a ssh profile called 'ssh444' to connect to z/OS SSH
-server on default port 22, without specifying username, host, or password,
-preventing those values from being stored on disk:</p>
+<p>Create a ssh profile called 'ssh444' to connect to z/OS SSH server on default port 22, without specifying username, host, or password, preventing those values from being stored on disk:</p>
 <ul>
-<li><code>zowe  profiles create ssh-profile ssh444 --privateKey /path/to/privatekey</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  profiles create ssh-profile ssh444 --privateKey /path/to/privatekey">Copy</button></li>
+<li><code>zowe profiles create ssh-profile ssh444 --privateKey /path/to/privatekey</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe profiles create ssh-profile ssh444 --privateKey /path/to/privatekey">Copy</button></li>
 </ul>
 </li>
 </ul>

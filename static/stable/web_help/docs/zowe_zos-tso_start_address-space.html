@@ -7,10 +7,9 @@
 <link rel="stylesheet" href="../css/docs.css">
 <article class="markdown-body">
 <h2><a href="zowe.html">zowe</a> › <a href="zowe_zos-tso.html">zos-tso</a> › <a href="zowe_zos-tso_start.html">start</a> › <a href="zowe_zos-tso_start_address-space.html">address-space</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
-<p>Start a TSO address space, from which you will receive a token (a.k.a
-'servlet-key') for further address space interaction (e.g. termination).</p>
+<p>Start a TSO address space, from which you will receive a token (a.k.a 'servlet-key') for further address space interaction (e.g. termination).</p>
 <h4>Usage</h4>
-<p>zowe  zos-tso start address-space [options]</p>
+<p>zowe zos-tso start address-space [options]</p>
 <h4>TSO ADDRESS SPACE OPTIONS</h4>
 <ul>
 <li>
@@ -23,8 +22,7 @@
 <p><code>--character-set</code>  | <code>--cs</code> <em>(string)</em></p>
 <ul>
 <li>
-<p>Character set for address space to convert messages and responses from UTF-8 to
-EBCDIC.</p>
+<p>Character set for address space to convert messages and responses from UTF-8 to EBCDIC.</p>
 <p>Default value: 697</p>
 </li>
 </ul>
@@ -33,8 +31,7 @@ EBCDIC.</p>
 <p><code>--code-page</code>  | <code>--cp</code> <em>(string)</em></p>
 <ul>
 <li>
-<p>Codepage value for TSO/E address space to convert messages and responses from
-UTF-8 to EBCDIC.</p>
+<p>Codepage value for TSO/E address space to convert messages and responses from UTF-8 to EBCDIC.</p>
 <p>Default value: 1047</p>
 </li>
 </ul>
@@ -126,9 +123,7 @@ UTF-8 to EBCDIC.</p>
 <li>
 <p><code>--base-path</code>  | <code>--bp</code> <em>(string)</em></p>
 <ul>
-<li>The base path for your API mediation layer instance. Specify this option to
-prepend the base path to all z/OSMF resources when making REST requests. Do not
-specify this option if you are not using an API mediation layer.</li>
+<li>The base path for your API mediation layer instance. Specify this option to prepend the base path to all z/OSMF resources when making REST requests. Do not specify this option if you are not using an API mediation layer.</li>
 </ul>
 </li>
 <li>
@@ -136,8 +131,8 @@ specify this option if you are not using an API mediation layer.</li>
 <ul>
 <li>
 <p>The protocol used (HTTP or HTTPS)</p>
-<p>Default value: https</p>
-<p>Allowed values: http, https</p>
+<p>Default value: https<br>
+Allowed values: http, https</p>
 </li>
 </ul>
 </li>
@@ -180,8 +175,7 @@ specify this option if you are not using an API mediation layer.</li>
 <li>
 <p><code>--token-type</code>  | <code>--tt</code> <em>(string)</em></p>
 <ul>
-<li>The type of token to get and use for the API. Omit this option to use the
-default token type, which is provided by 'zowe auth login'.</li>
+<li>The type of token to get and use for the API. Omit this option to use the default token type, which is provided by 'zowe auth login'.</li>
 </ul>
 </li>
 <li>
@@ -196,20 +190,19 @@ default token type, which is provided by 'zowe auth login'.</li>
 <li>
 <p>Start TSO/E address space:</p>
 <ul>
-<li><code>zowe  zos-tso start address-space</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  zos-tso start address-space">Copy</button></li>
+<li><code>zowe zos-tso start address-space</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe zos-tso start address-space">Copy</button></li>
 </ul>
 </li>
 <li>
-<p>Start TSO/E address space, and receive response in JSON
-format:</p>
+<p>Start TSO/E address space, and receive response in JSON format:</p>
 <ul>
-<li><code>zowe  zos-tso start address-space --rfj</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  zos-tso start address-space --rfj">Copy</button></li>
+<li><code>zowe zos-tso start address-space --rfj</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe zos-tso start address-space --rfj">Copy</button></li>
 </ul>
 </li>
 <li>
 <p>Start TSO/E address space, and print only the servlet key:</p>
 <ul>
-<li><code>zowe  zos-tso start address-space --sko</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  zos-tso start address-space --sko">Copy</button></li>
+<li><code>zowe zos-tso start address-space --sko</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe zos-tso start address-space --sko">Copy</button></li>
 </ul>
 </li>
 </ul>

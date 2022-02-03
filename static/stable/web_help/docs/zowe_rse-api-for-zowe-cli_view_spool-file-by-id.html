@@ -7,26 +7,21 @@
 <link rel="stylesheet" href="../css/docs.css">
 <article class="markdown-body">
 <h2><a href="zowe.html">zowe</a> › <a href="zowe_rse-api-for-zowe-cli.html">rse-api-for-zowe-cli</a> › <a href="zowe_rse-api-for-zowe-cli_view.html">view</a> › <a href="zowe_rse-api-for-zowe-cli_view_spool-file-by-id.html">spool-file-by-id</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
-<p>View the contents of a spool file from a z/OS job on spool/JES queues. The
-command does not pre-validate the JOBID or spool ID. The command presents
-errors verbatim from the Jobs REST endpoints.</p>
+<p>View the contents of a spool file from a z/OS job on spool/JES queues. The command does not pre-validate the JOBID or spool ID. The command presents errors verbatim from the Jobs REST endpoints.</p>
 <h4>Usage</h4>
-<p>zowe  rse-api-for-zowe-cli view spool-file-by-id &lt;jobid&gt; &lt;spoolfileid&gt; [options]</p>
+<p>zowe rse-api-for-zowe-cli view spool-file-by-id &lt;jobid&gt; &lt;spoolfileid&gt; [options]</p>
 <h4>Positional Arguments</h4>
 <ul>
 <li>
 <p><code>jobid</code>		 <em>(string)</em></p>
 <ul>
-<li>The z/OS JOBID of the job containing the spool file you want to view. No
-pre-validation of the JOBID is performed.</li>
+<li>The z/OS JOBID of the job containing the spool file you want to view. No pre-validation of the JOBID is performed.</li>
 </ul>
 </li>
 <li>
 <p><code>spoolfileid</code>		 <em>(number)</em></p>
 <ul>
-<li>The spool file ID number for the spool file to view. Use the &quot;zowe rse list
-spool-files-by-jobid&quot; command to obtain spool ID <a href="http://numbers.No">numbers.No</a> pre-validation
-of the ID is performed.</li>
+<li>The spool file ID number for the spool file to view. Use the &quot;zowe rse list spool-files-by-jobid&quot; command to obtain spool ID <a href="http://numbers.No">numbers.No</a> pre-validation of the ID is performed.</li>
 </ul>
 </li>
 </ul>
@@ -83,8 +78,7 @@ of the ID is performed.</li>
 <li>
 <p><code>--token-type</code>  | <code>--tt</code> <em>(string)</em></p>
 <ul>
-<li>The type of token to get and use for the API. Omit this option to use the
-default token type, which is provided by 'zowe auth login'.</li>
+<li>The type of token to get and use for the API. Omit this option to use the default token type, which is provided by 'zowe auth login'.</li>
 </ul>
 </li>
 <li>
@@ -109,10 +103,9 @@ default token type, which is provided by 'zowe auth login'.</li>
 <h4>Examples</h4>
 <ul>
 <li>
-<p>View the spool file with ID 4 for the job with job ID
-JOB00123:</p>
+<p>View the spool file with ID 4 for the job with job ID JOB00123:</p>
 <ul>
-<li><code>zowe  rse-api-for-zowe-cli view spool-file-by-id JOB00123 4</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  rse-api-for-zowe-cli view spool-file-by-id JOB00123 4">Copy</button></li>
+<li><code>zowe rse-api-for-zowe-cli view spool-file-by-id JOB00123 4</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe rse-api-for-zowe-cli view spool-file-by-id JOB00123 4">Copy</button></li>
 </ul>
 </li>
 </ul>

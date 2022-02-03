@@ -9,14 +9,14 @@
 <h2><a href="zowe.html">zowe</a> › <a href="zowe_znetview-base.html">znetview-base</a> › <a href="zowe_znetview-base_list.html">list</a> › <a href="zowe_znetview-base_list_canzlog.html">canzlog</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
 <p>List a message or a set of messages from Canzlog.</p>
 <h4>Usage</h4>
-<p>zowe  znetview-base list canzlog &lt;requestType&gt; [options]</p>
+<p>zowe znetview-base list canzlog &lt;requestType&gt; [options]</p>
 <h4>Positional Arguments</h4>
 <ul>
 <li>
 <p><code>requestType</code>		 <em>(string)</em></p>
 <ul>
 <li>
-<p>Specifies the type of request to be used to retrieve Canzlog messages.
+<p>Specifies the type of request to be used to retrieve Canzlog messages.<br>
 The following values are valid:</p>
 <p>czid</p>
 <p>timestamp</p>
@@ -32,8 +32,7 @@ The following values are valid:</p>
 <p><code>--begin</code>  | <code>--beg</code> <em>(string)</em></p>
 <ul>
 <li>
-<p>The specific time for the request type 'timestamp' or the start time for the
-request type 'timerange', in format of &quot;mm/dd/yy hh:mm:ss&quot;.</p>
+<p>The specific time for the request type 'timestamp' or the start time for the request type 'timerange', in format of &quot;mm/dd/yy hh:mm:ss&quot;.</p>
 <p>Note: It is required for the request types 'timerange' and 'timestamp'.</p>
 </li>
 </ul>
@@ -42,11 +41,10 @@ request type 'timerange', in format of &quot;mm/dd/yy hh:mm:ss&quot;.</p>
 <p><code>--direction</code>  | <code>--dir</code> <em>(string)</em></p>
 <ul>
 <li>
-<p>Specifies which direction, backward or forward, for which to retrieve additional
-Canzlog messages.</p>
+<p>Specifies which direction, backward or forward, for which to retrieve additional Canzlog messages.</p>
 <p>Note: This is valid for request types 'czid', 'timestamp'.</p>
-<p>Default value: fwd</p>
-<p>Allowed values: fwd, bwd</p>
+<p>Default value: fwd<br>
+Allowed values: fwd, bwd</p>
 </li>
 </ul>
 </li>
@@ -55,8 +53,7 @@ Canzlog messages.</p>
 <ul>
 <li>
 <p>The NetView domain to which the request will be sent.</p>
-<p>The default is the NetView domain to which the NetView REST Server is
-connected.</p>
+<p>The default is the NetView domain to which the NetView REST Server is connected.</p>
 </li>
 </ul>
 </li>
@@ -127,9 +124,7 @@ connected.</p>
 <li>
 <p><code>--token-type</code>  | <code>--tt</code> <em>(string)</em></p>
 <ul>
-<li>The type of the token to authenticate to your NetView REST Server. The only
-token type that is valid when using NetView REST Server authentication is
-JSESSIONID.</li>
+<li>The type of the token to authenticate to your NetView REST Server. The only token type that is valid when using NetView REST Server authentication is JSESSIONID.</li>
 </ul>
 </li>
 <li>
@@ -142,11 +137,8 @@ JSESSIONID.</li>
 <p><code>--base-path</code>  | <code>--bp</code> <em>(string)</em></p>
 <ul>
 <li>
-<p>The base path for your Zowe API Mediation Layer instance. Specify this option
-to prepend the base path to NetView REST service when making REST requests to
-the Zowe API Mediation Layer.</p>
-<p>Note: Do not specify this option if you are not using the Zowe API Mediation
-Layer.</p>
+<p>The base path for your Zowe API Mediation Layer instance. Specify this option to prepend the base path to NetView REST service when making REST requests to the Zowe API Mediation Layer.</p>
+<p>Note: Do not specify this option if you are not using the Zowe API Mediation Layer.</p>
 </li>
 </ul>
 </li>
@@ -193,30 +185,27 @@ Layer.</p>
 <h4>Examples</h4>
 <ul>
 <li>
-<p>List 3 Canzlog messages starting with the message specified
-by czid and retrieving the next 2 messages for domain CNM01:</p>
+<p>List 3 Canzlog messages starting with the message specified by czid and retrieving the next 2 messages for domain CNM01:</p>
 <ul>
-<li><code>zowe  znetview-base list canzlog czid --id 237766 --direction fwd --number 3 --domain CNM01</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  znetview-base list canzlog czid --id 237766 --direction fwd --number 3 --domain CNM01">Copy</button></li>
+<li><code>zowe znetview-base list canzlog czid --id 237766 --direction fwd --number 3 --domain CNM01</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe znetview-base list canzlog czid --id 237766 --direction fwd --number 3 --domain CNM01">Copy</button></li>
 </ul>
 </li>
 <li>
-<p>List 4 Canzlog messages starting with the message specified
-by the timestamp and retrieving the previous 3 messages for domain CNM01:</p>
+<p>List 4 Canzlog messages starting with the message specified by the timestamp and retrieving the previous 3 messages for domain CNM01:</p>
 <ul>
-<li><code>zowe  znetview-base list canzlog timestamp --begin &quot;09/10/20 00:00:00&quot; --direction bwd --number 4 --domain CNM01</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  znetview-base list canzlog timestamp --begin &quot;09/10/20 00:00:00&quot; --direction bwd --number 4 --domain CNM01">Copy</button></li>
+<li><code>zowe znetview-base list canzlog timestamp --begin &quot;09/10/20 00:00:00&quot; --direction bwd --number 4 --domain CNM01</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe znetview-base list canzlog timestamp --begin &quot;09/10/20 00:00:00&quot; --direction bwd --number 4 --domain CNM01">Copy</button></li>
 </ul>
 </li>
 <li>
-<p>List Canzlog messages specified by the timerange for domain
-CNM01:</p>
+<p>List Canzlog messages specified by the timerange for domain CNM01:</p>
 <ul>
-<li><code>zowe  znetview-base list canzlog timerange –-begin &quot;09/10/20 00:00:00&quot; --end &quot;09/10/20 00:10:00&quot; --domain CNM01</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  znetview-base list canzlog timerange –-begin &quot;09/10/20 00:00:00&quot; --end &quot;09/10/20 00:10:00&quot; --domain CNM01">Copy</button></li>
+<li><code>zowe znetview-base list canzlog timerange –-begin &quot;09/10/20 00:00:00&quot; --end &quot;09/10/20 00:10:00&quot; --domain CNM01</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe znetview-base list canzlog timerange –-begin &quot;09/10/20 00:00:00&quot; --end &quot;09/10/20 00:10:00&quot; --domain CNM01">Copy</button></li>
 </ul>
 </li>
 <li>
 <p>List the 2 most recent Canzlog messages for domain CNM01:</p>
 <ul>
-<li><code>zowe  znetview-base list canzlog recent --number 2 --domain CNM01</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  znetview-base list canzlog recent --number 2 --domain CNM01">Copy</button></li>
+<li><code>zowe znetview-base list canzlog recent --number 2 --domain CNM01</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe znetview-base list canzlog recent --number 2 --domain CNM01">Copy</button></li>
 </ul>
 </li>
 </ul>

@@ -9,7 +9,7 @@
 <h2><a href="zowe.html">zowe</a> › <a href="zowe_endevor-bridge-for-git.html">endevor-bridge-for-git</a> › <a href="zowe_endevor-bridge-for-git_endevor-connection.html">endevor-connection</a> › <a href="zowe_endevor-bridge-for-git_endevor-connection_create.html">create</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
 <p>Create new Endevor connection for CA Endevor Bridge for Git.</p>
 <h4>Usage</h4>
-<p>zowe  endevor-bridge-for-git endevor-connection create &lt;connection&gt; [options]</p>
+<p>zowe endevor-bridge-for-git endevor-connection create &lt;connection&gt; [options]</p>
 <h4>Positional Arguments</h4>
 <ul>
 <li>
@@ -161,8 +161,7 @@
 <li>
 <p><code>--token-type</code>  | <code>--tt</code> <em>(string)</em></p>
 <ul>
-<li>The type of token to get and use for the API. Omit this option to use the
-default token type, which is provided by 'zowe auth login'.</li>
+<li>The type of token to get and use for the API. Omit this option to use the default token type, which is provided by 'zowe auth login'.</li>
 </ul>
 </li>
 <li>
@@ -187,24 +186,21 @@ default token type, which is provided by 'zowe auth login'.</li>
 <h4>Examples</h4>
 <ul>
 <li>
-<p>Create the Endevor connection 'MY-CONNECTION' using the
-default EBG and Endevor profile:</p>
+<p>Create the Endevor connection 'MY-CONNECTION' using the default EBG and Endevor profile:</p>
 <ul>
-<li><code>zowe  endevor-bridge-for-git endevor-connection create MY-CONNECTION --endevor-instance INSTANCE</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  endevor-bridge-for-git endevor-connection create MY-CONNECTION --endevor-instance INSTANCE">Copy</button></li>
+<li><code>zowe endevor-bridge-for-git endevor-connection create MY-CONNECTION --endevor-instance INSTANCE</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe endevor-bridge-for-git endevor-connection create MY-CONNECTION --endevor-instance INSTANCE">Copy</button></li>
 </ul>
 </li>
 <li>
-<p>Create the Endevor connection 'MY-CONNECTION' using the
-default EBG profile:</p>
+<p>Create the Endevor connection 'MY-CONNECTION' using the default EBG profile:</p>
 <ul>
-<li><code>zowe  endevor-bridge-for-git endevor-connection create MY-CONNECTION --endevor-protocol http --endevor-host endevor-host --endevor-port 12345 --endevor-instance INSTANCE</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  endevor-bridge-for-git endevor-connection create MY-CONNECTION --endevor-protocol http --endevor-host endevor-host --endevor-port 12345 --endevor-instance INSTANCE">Copy</button></li>
+<li><code>zowe endevor-bridge-for-git endevor-connection create MY-CONNECTION --endevor-protocol http --endevor-host endevor-host --endevor-port 12345 --endevor-instance INSTANCE</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe endevor-bridge-for-git endevor-connection create MY-CONNECTION --endevor-protocol http --endevor-host endevor-host --endevor-port 12345 --endevor-instance INSTANCE">Copy</button></li>
 </ul>
 </li>
 <li>
-<p>Create the Endevor connection 'MY-CONNECTION' using the
-default Endevor profile:</p>
+<p>Create the Endevor connection 'MY-CONNECTION' using the default Endevor profile:</p>
 <ul>
-<li><code>zowe  endevor-bridge-for-git endevor-connection create MY-CONNECTION --protocol http --host bridge-host --port 8080 --endevor-instance INSTANCE</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  endevor-bridge-for-git endevor-connection create MY-CONNECTION --protocol http --host bridge-host --port 8080 --endevor-instance INSTANCE">Copy</button></li>
+<li><code>zowe endevor-bridge-for-git endevor-connection create MY-CONNECTION --protocol http --host bridge-host --port 8080 --endevor-instance INSTANCE</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe endevor-bridge-for-git endevor-connection create MY-CONNECTION --protocol http --host bridge-host --port 8080 --endevor-instance INSTANCE">Copy</button></li>
 </ul>
 </li>
 </ul>

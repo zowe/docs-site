@@ -7,10 +7,9 @@
 <link rel="stylesheet" href="../css/docs.css">
 <article class="markdown-body">
 <h2><a href="zowe.html">zowe</a> › <a href="zowe_sysview.html">sysview</a> › <a href="zowe_sysview_check.html">check</a> › <a href="zowe_sysview_check_status.html">status</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
-<p>Confirm that the SYSVIEW REST server is running on a system specified. The
-command outputs properties of the z/OS system and the SYSVIEW REST server.</p>
+<p>Confirm that the SYSVIEW REST server is running on a system specified. The command outputs properties of the z/OS system and the SYSVIEW REST server.</p>
 <h4>Usage</h4>
-<p>zowe  sysview check status [options]</p>
+<p>zowe sysview check status [options]</p>
 <h4>sysview connection options</h4>
 <ul>
 <li>
@@ -56,8 +55,7 @@ command outputs properties of the z/OS system and the SYSVIEW REST server.</p>
 <p><code>--base-path</code>  | <code>--bp</code> <em>(string)</em></p>
 <ul>
 <li>
-<p>The base path for your API mediation layer instance. Do not specify this option
-if you are not using an API mediation layer.</p>
+<p>The base path for your API mediation layer instance. Do not specify this option if you are not using an API mediation layer.</p>
 <p>Default value: /api/v1</p>
 </li>
 </ul>
@@ -83,8 +81,7 @@ if you are not using an API mediation layer.</p>
 <li>
 <p><code>--token-type</code>  | <code>--tt</code> <em>(string)</em></p>
 <ul>
-<li>The type of token to get and use for the API. Omit this option to use the
-default token type, which is provided by 'zowe auth login'.</li>
+<li>The type of token to get and use for the API. Omit this option to use the default token type, which is provided by 'zowe auth login'.</li>
 </ul>
 </li>
 <li>
@@ -109,24 +106,21 @@ default token type, which is provided by 'zowe auth login'.</li>
 <h4>Examples</h4>
 <ul>
 <li>
-<p>Report the status of the SYSVIEW REST server that you
-specified in your default SYSVIEW REST profile:</p>
+<p>Report the status of the SYSVIEW REST server that you specified in your default SYSVIEW REST profile:</p>
 <ul>
-<li><code>zowe  sysview check status</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  sysview check status">Copy</button></li>
+<li><code>zowe sysview check status</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe sysview check status">Copy</button></li>
 </ul>
 </li>
 <li>
-<p>Report the status of the SYSVIEW REST server that you
-specified in a supplied SYSVIEW REST profile:</p>
+<p>Report the status of the SYSVIEW REST server that you specified in a supplied SYSVIEW REST profile:</p>
 <ul>
-<li><code>zowe  sysview check status --sysview-profile SomeSysviewProfileName</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  sysview check status --sysview-profile SomeSysviewProfileName">Copy</button></li>
+<li><code>zowe sysview check status --sysview-profile SomeSysviewProfileName</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe sysview check status --sysview-profile SomeSysviewProfileName">Copy</button></li>
 </ul>
 </li>
 <li>
-<p>Report the status of the SYSVIEW REST server that you
-specified manually via command line:</p>
+<p>Report the status of the SYSVIEW REST server that you specified manually via command line:</p>
 <ul>
-<li><code>zowe  sysview check status --host myhost --port 443 --user myuser --password mypass</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  sysview check status --host myhost --port 443 --user myuser --password mypass">Copy</button></li>
+<li><code>zowe sysview check status --host myhost --port 443 --user myuser --password mypass</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe sysview check status --host myhost --port 443 --user myuser --password mypass">Copy</button></li>
 </ul>
 </li>
 </ul>

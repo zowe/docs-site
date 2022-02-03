@@ -7,10 +7,9 @@
 <link rel="stylesheet" href="../css/docs.css">
 <article class="markdown-body">
 <h2><a href="zowe.html">zowe</a> › <a href="zowe_znetview-base.html">znetview-base</a> › <a href="zowe_znetview-base_list.html">list</a> › <a href="zowe_znetview-base_list_task-info.html">task-info</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
-<p>Lists the CPU utilization, storage utilization, number of queued messages, and
-the running command  (if available) for active NetView tasks.</p>
+<p>Lists the CPU utilization, storage utilization, number of queued messages, and the running command  (if available) for active NetView tasks.</p>
 <h4>Usage</h4>
-<p>zowe  znetview-base list task-info [options]</p>
+<p>zowe znetview-base list task-info [options]</p>
 <h4>Options</h4>
 <ul>
 <li>
@@ -18,8 +17,7 @@ the running command  (if available) for active NetView tasks.</p>
 <ul>
 <li>
 <p>The NetView domain to which the request will be sent.</p>
-<p>The default is the NetView domain to which the NetView REST Server is
-connected.</p>
+<p>The default is the NetView domain to which the NetView REST Server is connected.</p>
 </li>
 </ul>
 </li>
@@ -53,9 +51,7 @@ connected.</p>
 <li>
 <p><code>--token-type</code>  | <code>--tt</code> <em>(string)</em></p>
 <ul>
-<li>The type of the token to authenticate to your NetView REST Server. The only
-token type that is valid when using NetView REST Server authentication is
-JSESSIONID.</li>
+<li>The type of the token to authenticate to your NetView REST Server. The only token type that is valid when using NetView REST Server authentication is JSESSIONID.</li>
 </ul>
 </li>
 <li>
@@ -68,11 +64,8 @@ JSESSIONID.</li>
 <p><code>--base-path</code>  | <code>--bp</code> <em>(string)</em></p>
 <ul>
 <li>
-<p>The base path for your Zowe API Mediation Layer instance. Specify this option
-to prepend the base path to NetView REST service when making REST requests to
-the Zowe API Mediation Layer.</p>
-<p>Note: Do not specify this option if you are not using the Zowe API Mediation
-Layer.</p>
+<p>The base path for your Zowe API Mediation Layer instance. Specify this option to prepend the base path to NetView REST service when making REST requests to the Zowe API Mediation Layer.</p>
+<p>Note: Do not specify this option if you are not using the Zowe API Mediation Layer.</p>
 </li>
 </ul>
 </li>
@@ -121,7 +114,7 @@ Layer.</p>
 <li>
 <p>List the task utilization information from domain CNM01:</p>
 <ul>
-<li><code>zowe  znetview-base list task-info –-domain CNM01</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  znetview-base list task-info –-domain CNM01">Copy</button></li>
+<li><code>zowe znetview-base list task-info –-domain CNM01</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe znetview-base list task-info –-domain CNM01">Copy</button></li>
 </ul>
 </li>
 </ul>

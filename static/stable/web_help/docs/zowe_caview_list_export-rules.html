@@ -7,11 +7,10 @@
 <link rel="stylesheet" href="../css/docs.css">
 <article class="markdown-body">
 <h2><a href="zowe.html">zowe</a> › <a href="zowe_caview.html">caview</a> › <a href="zowe_caview_list.html">list</a> › <a href="zowe_caview_list_export-rules.html">export-rules</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
-<p>List export rules defined for a report.
-Use the returned 'Identifier' in the 'export report' command to reference that
-rule.</p>
+<p>List export rules defined for a report.<br>
+Use the returned 'Identifier' in the 'export report' command to reference that rule.</p>
 <h4>Usage</h4>
-<p>zowe  caview list export-rules &lt;reportId&gt; [options]</p>
+<p>zowe caview list export-rules &lt;reportId&gt; [options]</p>
 <h4>Positional Arguments</h4>
 <ul>
 <li>
@@ -27,10 +26,9 @@ rule.</p>
 <p><code>--output-format</code>  | <code>--output</code> <em>(string)</em></p>
 <ul>
 <li>
-<p>Output format. This option is ignored if '--response-format-json' is
-specified.</p>
-<p>Default value: tabular</p>
-<p>Allowed values: ^tabular$, ^csv$, ^json$, ^xml$</p>
+<p>Output format. This option is ignored if '--response-format-json' is specified.</p>
+<p>Default value: tabular<br>
+Allowed values: ^tabular$, ^csv$, ^json$, ^xml$</p>
 </li>
 </ul>
 </li>
@@ -38,8 +36,7 @@ specified.</p>
 <p><code>--output-header</code>  | <code>--header</code> <em>(boolean)</em></p>
 <ul>
 <li>
-<p>Include header with field names in the output when you specify 'tabular' or
-'csv' for the output format.
+<p>Include header with field names in the output when you specify 'tabular' or 'csv' for the output format.<br>
 This option is ignored when you specify any other output format.</p>
 <p>Default value: true</p>
 </li>
@@ -49,7 +46,7 @@ This option is ignored when you specify any other output format.</p>
 <p><code>--output-field</code>  | <code>-f</code> <em>(array)</em></p>
 <ul>
 <li>
-<p>Field to include in the output. Multiple fields can be specified.
+<p>Field to include in the output. Multiple fields can be specified.<br>
 Fields appear in the order you specify.</p>
 <p>Allowed values: Identifier,Name,Description,Owner,Public</p>
 <p>Default value: Identifier,Name,Description</p>
@@ -110,8 +107,7 @@ Fields appear in the order you specify.</p>
 <li>
 <p><code>--token-type</code>  | <code>--tt</code> <em>(string)</em></p>
 <ul>
-<li>The type of token to get and use for the API. Omit this option to use the
-default token type, which is provided by 'zowe auth login'.</li>
+<li>The type of token to get and use for the API. Omit this option to use the default token type, which is provided by 'zowe auth login'.</li>
 </ul>
 </li>
 <li>

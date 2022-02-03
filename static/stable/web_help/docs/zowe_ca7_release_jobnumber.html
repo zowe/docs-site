@@ -7,10 +7,9 @@
 <link rel="stylesheet" href="../css/docs.css">
 <article class="markdown-body">
 <h2><a href="zowe.html">zowe</a> › <a href="zowe_ca7.html">ca7</a> › <a href="zowe_ca7_release.html">release</a> › <a href="zowe_ca7_release_jobnumber.html">jobnumber</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
-<p>Indicates the individual job to release, and the value must be a CA 7 job
-number.</p>
+<p>Indicates the individual job to release, and the value must be a CA 7 job number.</p>
 <h4>Usage</h4>
-<p>zowe  ca7 release jobnumber [jobnumber] [options]</p>
+<p>zowe ca7 release jobnumber [jobnumber] [options]</p>
 <h4>Positional Arguments</h4>
 <ul>
 <li>
@@ -18,9 +17,8 @@ number.</p>
 <ul>
 <li>
 <p>jobnumber=0016</p>
-<p>Defines the name of the job number to release.
-Indicates the individual job to release. JOB is required to release a specific
-job. Omit JOB when JOBL or Q is specified.</p>
+<p>Defines the name of the job number to release.<br>
+Indicates the individual job to release. JOB is required to release a specific job. Omit JOB when JOBL or Q is specified.</p>
 </li>
 </ul>
 </li>
@@ -32,11 +30,10 @@ job. Omit JOB when JOBL or Q is specified.</p>
 <ul>
 <li>
 <p>Q={REQ|RDY}</p>
-<p>Indicates to release the contents of an entire queue. Omit Q when JOB or JOBL
-is specified.</p>
-<p>REQ
+<p>Indicates to release the contents of an entire queue. Omit Q when JOB or JOBL is specified.</p>
+<p>REQ<br>
 Release the contents of the request queue.</p>
-<p>RDY
+<p>RDY<br>
 Release the contents of the ready queue.</p>
 </li>
 </ul>
@@ -66,8 +63,7 @@ Release the contents of the ready queue.</p>
 <p><code>--user</code>  | <code>-u</code> <em>(string)</em></p>
 <ul>
 <li>
-<p>User name for authenticating connections to the CA7 API service that is running
-on the mainframe system.</p>
+<p>User name for authenticating connections to the CA7 API service that is running on the mainframe system.</p>
 <p>Default value: MASTER</p>
 </li>
 </ul>
@@ -76,8 +72,7 @@ on the mainframe system.</p>
 <p><code>--password</code>  | <code>--pass</code> | <code>--pw</code> <em>(string)</em></p>
 <ul>
 <li>
-<p>Password for authenticating connections to the CA7 API service that is running
-on the mainframe system.</p>
+<p>Password for authenticating connections to the CA7 API service that is running on the mainframe system.</p>
 <p>Default value:</p>
 </li>
 </ul>
@@ -85,9 +80,7 @@ on the mainframe system.</p>
 <li>
 <p><code>--base-path</code>  | <code>--bp</code> <em>(string)</em></p>
 <ul>
-<li>The base path for your API mediation layer instance. Specify this option to
-prepend the base path to all resources when making REST requests. Do not
-specify this option if you are not using an API mediation layer.</li>
+<li>The base path for your API mediation layer instance. Specify this option to prepend the base path to all resources when making REST requests. Do not specify this option if you are not using an API mediation layer.</li>
 </ul>
 </li>
 <li>
@@ -95,8 +88,8 @@ specify this option if you are not using an API mediation layer.</li>
 <ul>
 <li>
 <p>Specifies protocol to use for CA7 connection (http or https).</p>
-<p>Default value: https</p>
-<p>Allowed values: http, https</p>
+<p>Default value: https<br>
+Allowed values: http, https</p>
 </li>
 </ul>
 </li>
@@ -130,8 +123,7 @@ specify this option if you are not using an API mediation layer.</li>
 <li>
 <p><code>--token-type</code>  | <code>--tt</code> <em>(string)</em></p>
 <ul>
-<li>The type of token to get and use for the API. Omit this option to use the
-default token type, which is provided by 'zowe auth login'.</li>
+<li>The type of token to get and use for the API. Omit this option to use the default token type, which is provided by 'zowe auth login'.</li>
 </ul>
 </li>
 <li>
@@ -158,7 +150,7 @@ default token type, which is provided by 'zowe auth login'.</li>
 <li>
 <p>Release job number, 0016 from CA 7:</p>
 <ul>
-<li><code>zowe  ca7 release jobnumber 0016</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  ca7 release jobnumber 0016">Copy</button></li>
+<li><code>zowe ca7 release jobnumber 0016</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe ca7 release jobnumber 0016">Copy</button></li>
 </ul>
 </li>
 </ul>
