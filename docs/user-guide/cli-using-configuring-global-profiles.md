@@ -15,13 +15,13 @@ Consider the following benefits of using global profiles:
 Issue the following command to create the global profiles configuration file (`zowe.config.json`) and the user profile configuration file (`zowe.config.user.json`):
 
 ```
-zowe config init --global-config --user-config
+zowe config init --global-config 
 ```
 
 After you create the configuration files, you can use a text editor to populate global profiles with connection details for your mainframe services.
 
 ## Secure Credential Store Plug-in is deprecated
 
-The Zowe core CLI contains secure credential encryption, which eliminates the need for the plug-in. The `zowe scs` and `zowe config` command groups are obsolete.
+With the introduction of global profiles, the Secure Credential Store (SCS) Plug-in is deprecated. The `zowe scs` and `zowe config` command groups are obsolete. Secure credential encryption is now included in the core CLI.
 
-The CLI prompts you to enter the username and password securely by default. Commands in the `zowe config` command group let you manage security for any option value.
+The CLI prompts you to enter the username and password securely by default. Commands in the `zowe config` command group now let you manage security for any option value.
