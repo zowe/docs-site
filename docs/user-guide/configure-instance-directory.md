@@ -479,7 +479,7 @@ In this section, `<component>` represents any Zowe components or extensions. For
 
 These configurations can be used under the `components.gateway` section:
 
-- `port`: Defines the port which the gateway should be started on. This is equivalent to the `GATEWAY_PORT` variable in `instance.env`.
+- `port`: Defines the port which the gateway should be started on. This is equivalent to the `GATEWAY_PORT` variable in `instance.env`. This must be a valid port number.
 - `debug`: Defines whether to enable debug mode for gateway. This is equivalent to the `APIML_DEBUG_MODE_ENABLED` variable in `instance.env` but with better granular level.
 - `apiml.service.allowEncodedSlashes`: When this parameter is set to `true`, the Gateway allows encoded characters to be part of URL requests redirected through the Gateway.  This is equivalent to the `APIML_ALLOW_ENCODED_SLASHES` variable in `instance.env`.
 - `apiml.service.corsEnabled`: When this parameter is set to `true`, CORS are enabled in the API Gateway for Gateway routes `gateway/api/v1/**`. This is equivalent to the `APIML_CORS_ENABLED` variable in `instance.env`.
@@ -499,7 +499,7 @@ These configurations can be used under the `components.gateway` section:
 
 These configurations can be used under the `components.discovery` section:
 
-- `port`: Defines the port which discovery should be started on. This is equivalent to the `DISCOVERY_PORT` variable in `instance.env`.
+- `port`: Defines the port which discovery should be started on. This is equivalent to the `DISCOVERY_PORT` variable in `instance.env`. This may be defined as a valid port number or as an offset from the Gateway component's port. To define an offset enter `"+{offset}"` or `"-{offset}"` as a string. The offset must start with `+` or `-`.
 - `debug`: Defines whether to enable debug mode for gateway. This is equivalent to the `APIML_DEBUG_MODE_ENABLED` variable in `instance.env` but with better granular level.
 - `apiml.service.preferIpAddress`: Set this parameter to `true`  to advertise a service IP address instead of its hostname. **Note:** This configuration is deprecated. The Zowe start script will ignore this value and always set it to `false`. This is equivalent to the  `APIML_PREFER_IP_ADDRESS` variable in `instance.env`.
 - `apiml.security.ssl.verifySslCertificatesOfServices`: Defines whether APIML should verify certificates of services in strict mode. Setting to `true` will enable the `strict` mode where APIML will validate both if the certificate is trusted in turststore, and also if the certificate Common Name or Subject Alternate Name (SAN) matches the service hostname. This is equivalent to the `VERIFY_CERTIFICATES` variable defined in `<keystore-dir>/zowe-certificates.env`.
@@ -519,7 +519,7 @@ These configurations can be used under the `components.api-catalog` section:
 
 These configurations can be used under the `components.caching-service` section:
 
-- `port`: Defines the port which Caching Service should be started on. This is equivalent to the `ZWE_CACHING_SERVICE_PORT` variable in `instance.env`.
+- `port`: Defines the port which Caching Service should be started on. This is equivalent to the `ZWE_CACHING_SERVICE_PORT` variable in `instance.env`. This may be defined as a valid port number or as an offset from the Gateway component's port. To define an offset enter `"+{offset}"` or `"-{offset}"` as a string. The offset must start with `+` or `-`.
 - `debug`: Defines if we want to enable debug mode for gateway. This is equivalent to the `APIML_DEBUG_MODE_ENABLED` variable in `instance.env` but with better granular level.
 - `storage.mode`: Sets the storage type used to persist data in the Caching Service. This is equivalent to the `ZWE_CACHING_SERVICE_PERSISTENT` variable in `instance.env`.
 - `storage.size`: Specifies amount of records before eviction strategies start evicting. This is equivalent to the `ZWE_CACHING_STORAGE_SIZE` variable in `instance.env`.
@@ -542,13 +542,13 @@ These configurations can be used under the `components.caching-service` section:
 
 These configurations can be used under the `components.app-server` section:
 
-- `port`: Defines the port which App Server should be started on. This is equivalent to the `ZOWE_ZLUX_SERVER_HTTPS_PORT` variable in `instance.env`.
+- `port`: Defines the port which App Server should be started on. This is equivalent to the `ZOWE_ZLUX_SERVER_HTTPS_PORT` variable in `instance.env`. This may be defined as a valid port number or as an offset from the Gateway component's port. To define an offset enter `"+{offset}"` or `"-{offset}"` as a string. The offset must start with `+` or `-`.
 
 #### Configure component zss
 
 These configurations can be used under the `components.zss` section:
 
-- `port`: Defines the port which ZSS should be started on. This is equivalent to the `ZOWE_ZSS_SERVER_PORT` variable in `instance.env`.
+- `port`: Defines the port which ZSS should be started on. This is equivalent to the `ZOWE_ZSS_SERVER_PORT` variable in `instance.env`. This may be defined as a valid port number or as an offset from the Gateway component's port. To define an offset enter `"+{offset}"` or `"-{offset}"` as a string. The offset must start with `+` or `-`.
 - `crossMemoryServerName`: Defines the procedure name of cross memory server. This is equivalent to the `ZOWE_ZSS_XMEM_SERVER_NAME` variable in `instance.env`.
 - `tls`: Defines whether ZSS service has enabled TLS. This is equivalent to the `ZOWE_ZSS_SERVER_TLS` variable in `instance.env`.
 
@@ -556,33 +556,33 @@ These configurations can be used under the `components.zss` section:
 
 These configurations can be used under the `components.jobs-api` section:
 
-- `port`: Defines the port which Jobs API should be started on. This is equivalent to the `JOBS_API_PORT` variable in `instance.env`.
+- `port`: Defines the port which Jobs API should be started on. This is equivalent to the `JOBS_API_PORT` variable in `instance.env`. This may be defined as a valid port number or as an offset from the Gateway component's port. To define an offset enter `"+{offset}"` or `"-{offset}"` as a string. The offset must start with `+` or `-`.
 
 #### Configure component files-api
 
 These configurations can be used under the `components.files-api` section:
 
-- `port`: Defines the port which Files API should be started on. This is equivalent to the `FILES_API_PORT` variable in `instance.env`.
+- `port`: Defines the port which Files API should be started on. This is equivalent to the `FILES_API_PORT` variable in `instance.env`. This may be defined as a valid port number or as an offset from the Gateway component's port. To define an offset enter `"+{offset}"` or `"-{offset}"` as a string. The offset must start with `+` or `-`.
 
 #### Configure component explorer-jes
 
 These configurations can be used under the `components.explorer-jes` section:
 
-- `port`: Defines the port which JES UI Explorer should be started on. This is equivalent to the `JES_EXPLORER_UI_PORT` variable in `instance.env`.
+- `port`: Defines the port which JES UI Explorer should be started on. This is equivalent to the `JES_EXPLORER_UI_PORT` variable in `instance.env`. This may be defined as a valid port number or as an offset from the Gateway component's port. To define an offset enter `"+{offset}"` or `"-{offset}"` as a string. The offset must start with `+` or `-`.
 - `frameAncestors`: Defines the frame ancestors supported by UI Explorer. This is equivalent to the `ZOWE_EXPLORER_FRAME_ANCESTORS` variable in `instance.env` but in better granular level.
 
 #### Configure component explorer-mvs
 
 These configurations can be used under the `components.explorer-mvs` section:
 
-- `port`: Defines the port which MVS UI Explorer should be started on. This is equivalent to the `MVS_EXPLORER_UI_PORT` variable in `instance.env`.
+- `port`: Defines the port which MVS UI Explorer should be started on. This is equivalent to the `MVS_EXPLORER_UI_PORT` variable in `instance.env`. This may be defined as a valid port number or as an offset from the Gateway component's port. To define an offset enter `"+{offset}"` or `"-{offset}"` as a string. The offset must start with `+` or `-`.
 - `frameAncestors`: Defines the frame ancestors supported by UI Explorer. This is equivalent to the `ZOWE_EXPLORER_FRAME_ANCESTORS` variable in `instance.env` but in better granular level.
 
 #### Configure component explorer-uss
 
 These configurations can be used under the `components.explorer-uss` section:
 
-- `port`: Defines the port which USS UI Explorer should be started on. This is equivalent to the `USS_EXPLORER_UI_PORT` variable in `instance.env`.
+- `port`: Defines the port which USS UI Explorer should be started on. This is equivalent to the `USS_EXPLORER_UI_PORT` variable in `instance.env`. This may be defined as a valid port number or as an offset from the Gateway component's port. To define an offset enter `"+{offset}"` or `"-{offset}"` as a string. The offset must start with `+` or `-`.
 - `frameAncestors`: Defines the frame ancestors supported by UI Explorer. This is equivalent to the `ZOWE_EXPLORER_FRAME_ANCESTORS` variable in `instance.env` but in better granular level.
 
 #### Configure external extension
