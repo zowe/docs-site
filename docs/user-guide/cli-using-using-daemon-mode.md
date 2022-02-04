@@ -21,7 +21,7 @@ The following steps describe how to enable daemon mode and how to configure Zowe
     zowe daemon enable
     ```
 
-    The command copies the Zowe executables for your operating system into the `$ZOWE_CLI_HOME/bin` (`.zowe/bin`) directory. The next command that you issue starts the daemon.
+    The command copies the Zowe executables for your operating system into the `$ZOWE_CLI_HOME/bin` (`.zowe/bin`) directory. The ***next command*** that you issue starts the daemon.
 
 2. Add the path to the Zowe executables to the environment variables for your computer. For example:
 
@@ -54,4 +54,4 @@ You can disable Zowe from running in daemon mode at any time. For example, daemo
     zowe daemon disable
     ```
 
-    The disable command removes the Zowe executables from your `.zowe/bin` directory and disables daemon mode.
+    The disable command stops daemon mode, removes the Zowe executables from your `.zowe/bin` directory, and disables daemon mode.

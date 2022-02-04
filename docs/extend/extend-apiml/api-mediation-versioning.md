@@ -24,8 +24,8 @@
  representations of Web resources using uniform and a predefined set of stateless operations.
  Usually via HTTP(S) protocol and using JSON format. Resources are identified by their Uniform
  Resource Identifier (URIs). The services are accessed via APIML gateway. Example of a URI:
- `https://host:10010/api/v1/endevormfno/ENWSQA01/packages/PACKAGETST
- (https://{gatewayHost}:{port}/api/v{majorVersion}/{serviceName}/{resource}`)
+ `https://host:10010/endevormfno/api/v1/ENWSQA01/packages/PACKAGETST
+ (https://{gatewayHost}:{port}/{serviceName}/api/v{majorVersion}/{resource}`)
  See [Components of URL](../extend-apiml/api-mediation-components-of-URL.md) for more information about the URL components of REST APIs.
  
  ## Data Model

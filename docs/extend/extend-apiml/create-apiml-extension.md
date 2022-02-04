@@ -38,9 +38,8 @@ For more information, see [Packaging z/OS extensions](../packaging-zos-extension
       - path/to/my/lib1/
       - path/to/my/lib2/
     ```
-The `ZWE_GATEWAY_SHARED_LIBS` environment variable points to the 
-extension directory `<instance>/workspace/gateway/sharedLibs/`.
-The extension directory is then added to the API Gateway class path as part of the Zowe instance preparation.
+
+The extension directory `<instance>/workspace/gateway/sharedLibs/` is then added to the API Gateway class path as part of the Zowe instance preparation.
 
 **Note:** The paths defined under `gatewaySharedLibs` can either be a path to the directory where the extensions JARs are located, or a path to the files. 
 

@@ -200,7 +200,7 @@ The following parameters can be set to customize the configuration of the Discov
 The following parameters can be set to customize the configuration of the Gateway:
 
 - `APIML_ALLOW_ENCODED_SLASHES`: When this parameter is set to `true`, the Gateway allows encoded characters to be part of URL requests redirected through the Gateway.
-- `APIML_CORS_ENABLED`: When this parameter is set to `true`, CORS are enabled in the API Gateway for Gateway routes `api/v1/gateway/**`.
+- `APIML_CORS_ENABLED`: When this parameter is set to `true`, CORS are enabled in the API Gateway for Gateway routes `gateway/api/v1/**`.
 - `APIML_PREFER_IP_ADDRESS`: Set this parameter to `true`  to advertise a service IP address instead of its hostname. **Note**, this configuration is deprecated. Zowe start script will ignore this value and always set it to `false`.
 - `APIML_GATEWAY_TIMEOUT_MILLIS`: Specifies the timeout for connection to the services in milliseconds. 
 - `APIML_SECURITY_X509_ENABLED`: Set this parameter to `true`, to enable the client certificate authentication functionality through ZSS.
@@ -482,7 +482,7 @@ These configurations can be used under the `components.gateway` section:
 - `port`: Defines the port which the gateway should be started on. This is equivalent to the `GATEWAY_PORT` variable in `instance.env`.
 - `debug`: Defines whether to enable debug mode for gateway. This is equivalent to the `APIML_DEBUG_MODE_ENABLED` variable in `instance.env` but with better granular level.
 - `apiml.service.allowEncodedSlashes`: When this parameter is set to `true`, the Gateway allows encoded characters to be part of URL requests redirected through the Gateway.  This is equivalent to the `APIML_ALLOW_ENCODED_SLASHES` variable in `instance.env`.
-- `apiml.service.corsEnabled`: When this parameter is set to `true`, CORS are enabled in the API Gateway for Gateway routes `api/v1/gateway/**`. This is equivalent to the `APIML_CORS_ENABLED` variable in `instance.env`.
+- `apiml.service.corsEnabled`: When this parameter is set to `true`, CORS are enabled in the API Gateway for Gateway routes `gateway/api/v1/**`. This is equivalent to the `APIML_CORS_ENABLED` variable in `instance.env`.
 - `apiml.service.preferIpAddress`: Set this parameter to `true`  to advertise a service IP address instead of its hostname. **Note:** This configuration is deprecated. Zowe start script will ignore this value and always set it to `false`. This is equivalent to the `APIML_PREFER_IP_ADDRESS` variable in `instance.env`.
 - `apiml.gateway.timeoutMillis`: Specifies the timeout for connection to the services in milliseconds. This is equivalent to the `APIML_GATEWAY_TIMEOUT_MILLIS` variable in `instance.env`.
 - `apiml.security.x509.enabled`: Set this parameter to `true` to enable the client certificate authentication functionality through ZSS. This is equivalent to the `APIML_SECURITY_X509_ENABLED` variable in `instance.env`.
