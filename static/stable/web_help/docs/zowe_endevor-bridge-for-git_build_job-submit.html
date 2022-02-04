@@ -7,12 +7,9 @@
 <link rel="stylesheet" href="../css/docs.css">
 <article class="markdown-body">
 <h2><a href="zowe.html">zowe</a> › <a href="zowe_endevor-bridge-for-git.html">endevor-bridge-for-git</a> › <a href="zowe_endevor-bridge-for-git_build.html">build</a> › <a href="zowe_endevor-bridge-for-git_build_job-submit.html">job-submit</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
-<p>Build changes from git local repository in Endevor by submitting a job. It
-supports autogen for building dependencies using with the option of selecting
-autogen span. After submitting, the command 'build job-report' must be issued
-to finalize processing.</p>
+<p>Build changes from git local repository in Endevor by submitting a job. It supports autogen for building dependencies using with the option of selecting autogen span. After submitting, the command 'build job-report' must be issued to finalize processing.</p>
 <h4>Usage</h4>
-<p>zowe  endevor-bridge-for-git build job-submit [options]</p>
+<p>zowe endevor-bridge-for-git build job-submit [options]</p>
 <h4>Required Options</h4>
 <ul>
 <li>
@@ -24,9 +21,7 @@ to finalize processing.</p>
 <li>
 <p><code>--skeleton-jcl</code>  | <code>--sjcl</code> <em>(string)</em></p>
 <ul>
-<li>The path of the file of skeleton JCL to submit endevor scl statements. Download
-it from:
-<a href="https://techdocs.broadcom.com/content/broadcom/techdocs/us/en/ca-mainframe-software/devops/ca-endevor-integrations-for-enterprise-devops/1-0/ca-endevor-bridge-for-git/set-up-and-run-the-ca-endevor-bridge-for-git/configuration-for-build-using-zowe-cli.html">https://techdocs.broadcom.com/content/broadcom/techdocs/us/en/ca-mainframe-software/devops/ca-endevor-integrations-for-enterprise-devops/1-0/ca-endevor-bridge-for-git/set-up-and-run-the-ca-endevor-bridge-for-git/configuration-for-build-using-zowe-cli.html</a></li>
+<li>The path of the file of skeleton JCL to submit endevor scl statements. Download it from: <a href="https://techdocs.broadcom.com/content/broadcom/techdocs/us/en/ca-mainframe-software/devops/ca-endevor-integrations-for-enterprise-devops/1-0/ca-endevor-bridge-for-git/set-up-and-run-the-ca-endevor-bridge-for-git/configuration-for-build-using-zowe-cli.html">https://techdocs.broadcom.com/content/broadcom/techdocs/us/en/ca-mainframe-software/devops/ca-endevor-integrations-for-enterprise-devops/1-0/ca-endevor-bridge-for-git/set-up-and-run-the-ca-endevor-bridge-for-git/configuration-for-build-using-zowe-cli.html</a></li>
 </ul>
 </li>
 </ul>
@@ -41,8 +36,7 @@ it from:
 <li>
 <p><code>--endevor-subsystem</code>  | <code>--endevorsub</code> <em>(string)</em></p>
 <ul>
-<li>The CA Endevor SCM build subsystem. Note: The build subsystem can be cleared
-without prior permission.</li>
+<li>The CA Endevor SCM build subsystem. Note: The build subsystem can be cleared without prior permission.</li>
 </ul>
 </li>
 <li>
@@ -82,18 +76,14 @@ without prior permission.</li>
 <p><code>--autogen-span</code>  | <code>--ags</code> <em>(string)</em></p>
 <ul>
 <li>
-<p>Specifies the autogen action option to automatically generate using elements.
-The allowed values which have the following meaning:
-NONE - Generates all elements that use the component being acted upon.
-ALL - Generates using elements that are found in any System and Subsystem
-combinations within the Environment and Stage of the component's logical map.
-SYSTEMS - Generates using elements that are found in any System, provided the
-element's Subsystem name matches the name of the Subsystem of the target
-component.
-SUBSYSTEMS - Generates using elements from all Subsystems with the same-named
-System of the component specified.</p>
-<p>Default value: NONE</p>
-<p>Allowed values: NONE, ALL, SYSTEMS, SUBSYSTEMS</p>
+<p>Specifies the autogen action option to automatically generate using elements.<br>
+The allowed values which have the following meaning:<br>
+NONE - Generates all elements that use the component being acted upon.<br>
+ALL - Generates using elements that are found in any System and Subsystem combinations within the Environment and Stage of the component's logical map.<br>
+SYSTEMS - Generates using elements that are found in any System, provided the element's Subsystem name matches the name of the Subsystem of the target component.<br>
+SUBSYSTEMS - Generates using elements from all Subsystems with the same-named System of the component specified.</p>
+<p>Default value: NONE<br>
+Allowed values: NONE, ALL, SYSTEMS, SUBSYSTEMS</p>
 </li>
 </ul>
 </li>
@@ -194,9 +184,7 @@ System of the component specified.</p>
 <li>
 <p><code>--zosmf-base-path</code>  | <code>--zosmfbp</code> <em>(string)</em></p>
 <ul>
-<li>The base path for your API mediation layer instance. Specify this option
-toprepend the base path to all z/OSMF resources when making REST requests. Do
-notspecify this option if you are not using an API mediation layer.</li>
+<li>The base path for your API mediation layer instance. Specify this option toprepend the base path to all z/OSMF resources when making REST requests. Do notspecify this option if you are not using an API mediation layer.</li>
 </ul>
 </li>
 </ul>
@@ -259,8 +247,7 @@ notspecify this option if you are not using an API mediation layer.</li>
 <li>
 <p><code>--token-type</code>  | <code>--tt</code> <em>(string)</em></p>
 <ul>
-<li>The type of token to get and use for the API. Omit this option to use the
-default token type, which is provided by 'zowe auth login'.</li>
+<li>The type of token to get and use for the API. Omit this option to use the default token type, which is provided by 'zowe auth login'.</li>
 </ul>
 </li>
 <li>
@@ -287,11 +274,7 @@ default token type, which is provided by 'zowe auth login'.</li>
 <li>
 <p><code>--response-format-filter</code>  | <code>--rff</code> <em>(array)</em></p>
 <ul>
-<li>Filter (include) fields in the response. Accepts an array of field/property
-names to include in the output response. You can filter JSON objects properties
-OR table columns/fields. In addition, you can use this option in conjunction
-with '--response-format-type' to reduce the output of a command to a single
-field/property or a list of a single field/property.</li>
+<li>Filter (include) fields in the response. Accepts an array of field/property names to include in the output response. You can filter JSON objects properties OR table columns/fields. In addition, you can use this option in conjunction with '--response-format-type' to reduce the output of a command to a single field/property or a list of a single field/property.</li>
 </ul>
 </li>
 <li>
@@ -299,15 +282,9 @@ field/property or a list of a single field/property.</li>
 <ul>
 <li>
 <p>The command response output format type. Must be one of the following:</p>
-<p>table: Formats output data as a table. Use this option when the output data is
-an array of homogeneous JSON objects. Each property of the object will become a
-column in the table.</p>
-<p>list: Formats output data as a list of strings. Can be used on any data type
-(JSON objects/arrays) are stringified and a new line is added after each entry
-in an array.</p>
-<p>object: Formats output data as a list of prettified objects (or single object).
-Can be used in place of &quot;table&quot; to change from tabular output to a list of
-prettified objects.</p>
+<p>table: Formats output data as a table. Use this option when the output data is an array of homogeneous JSON objects. Each property of the object will become a column in the table.</p>
+<p>list: Formats output data as a list of strings. Can be used on any data type (JSON objects/arrays) are stringified and a new line is added after each entry in an array.</p>
+<p>object: Formats output data as a list of prettified objects (or single object). Can be used in place of &quot;table&quot; to change from tabular output to a list of prettified objects.</p>
 <p>string: Formats output data as a string. JSON objects/arrays are stringified.</p>
 <p>Allowed values: table, list, object, string</p>
 </li>
@@ -316,27 +293,22 @@ prettified objects.</p>
 <li>
 <p><code>--response-format-header</code>  | <code>--rfh</code> <em>(boolean)</em></p>
 <ul>
-<li>If &quot;--response-format-type table&quot; is specified, include the column headers
-in the output.</li>
+<li>If &quot;--response-format-type table&quot; is specified, include the column headers in the output.</li>
 </ul>
 </li>
 </ul>
 <h4>Examples</h4>
 <ul>
 <li>
-<p>Compile the changed elements at &quot;/endevor/ebg/repository&quot;
-using work area with ID &quot;WORKAREA1&quot;, jcl skeleton at &quot;/endevor/jcl/jcl.txt&quot; and
-existing Endevor and z/OSMF profiles:</p>
+<p>Compile the changed elements at &quot;/endevor/ebg/repository&quot; using work area with ID &quot;WORKAREA1&quot;, jcl skeleton at &quot;/endevor/jcl/jcl.txt&quot; and existing Endevor and z/OSMF profiles:</p>
 <ul>
-<li><code>zowe  endevor-bridge-for-git build job-submit --skeleton-jcl /endevor/jcl/jcl.txt --work-area-id WORKAREA1 --work-dir /endevor/ebg/repository</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  endevor-bridge-for-git build job-submit --skeleton-jcl /endevor/jcl/jcl.txt --work-area-id WORKAREA1 --work-dir /endevor/ebg/repository">Copy</button></li>
+<li><code>zowe endevor-bridge-for-git build job-submit --skeleton-jcl /endevor/jcl/jcl.txt --work-area-id WORKAREA1 --work-dir /endevor/ebg/repository</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe endevor-bridge-for-git build job-submit --skeleton-jcl /endevor/jcl/jcl.txt --work-area-id WORKAREA1 --work-dir /endevor/ebg/repository">Copy</button></li>
 </ul>
 </li>
 <li>
-<p>Compile the changed elements at &quot;/endevor/ebg/repository&quot;
-using build subsystem &quot;SUBNAME&quot;, jcl skeleton at &quot;/endevor/jcl/jcl.txt&quot; and
-existing Endevor and z/OSMF profiles:</p>
+<p>Compile the changed elements at &quot;/endevor/ebg/repository&quot; using build subsystem &quot;SUBNAME&quot;, jcl skeleton at &quot;/endevor/jcl/jcl.txt&quot; and existing Endevor and z/OSMF profiles:</p>
 <ul>
-<li><code>zowe  endevor-bridge-for-git build job-submit --skeleton-jcl /endevor/jcl/jcl.txt --endevor-subsystem SUBNAME --endevor-environment ENVNAME --endevor-system SYSNAME --work-dir /endevor/ebg/repository</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  endevor-bridge-for-git build job-submit --skeleton-jcl /endevor/jcl/jcl.txt --endevor-subsystem SUBNAME --endevor-environment ENVNAME --endevor-system SYSNAME --work-dir /endevor/ebg/repository">Copy</button></li>
+<li><code>zowe endevor-bridge-for-git build job-submit --skeleton-jcl /endevor/jcl/jcl.txt --endevor-subsystem SUBNAME --endevor-environment ENVNAME --endevor-system SYSNAME --work-dir /endevor/ebg/repository</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe endevor-bridge-for-git build job-submit --skeleton-jcl /endevor/jcl/jcl.txt --endevor-subsystem SUBNAME --endevor-environment ENVNAME --endevor-system SYSNAME --work-dir /endevor/ebg/repository">Copy</button></li>
 </ul>
 </li>
 </ul>

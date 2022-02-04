@@ -9,10 +9,10 @@
 <h2><a href="zowe.html">zowe</a> › <a href="zowe_system-automation.html">system-automation</a> › <a href="zowe_system-automation_resume.html">resume</a> › <a href="zowe_system-automation_resume_resource.html">resource</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
 <p>Resume a resource.</p>
 <p>Requires (min.): SA Operations API 1.0.0</p>
-<p>Following Success Message can be returned by this command:
+<p>Following Success Message can be returned by this command:<br>
 SACLI007200 - Requesting resume of resource {ResourceName} success</p>
 <h4>Usage</h4>
-<p>zowe  system-automation resume resource [options]</p>
+<p>zowe system-automation resume resource [options]</p>
 <h4>Options</h4>
 <ul>
 <li>
@@ -96,8 +96,7 @@ SACLI007200 - Requesting resume of resource {ResourceName} success</p>
 <li>
 <p><code>--token-type</code>  | <code>--tt</code> <em>(string)</em></p>
 <ul>
-<li>The type of token to get and use for the API. Omit this option to use the
-default token type, which is provided by 'zowe auth login'.</li>
+<li>The type of token to get and use for the API. Omit this option to use the default token type, which is provided by 'zowe auth login'.</li>
 </ul>
 </li>
 <li>
@@ -122,18 +121,16 @@ default token type, which is provided by 'zowe auth login'.</li>
 <h4>Examples</h4>
 <ul>
 <li>
-<p>Resume the resource with this ID &lt;RESOURCE_ID&gt;. Use the ID
-that is displayed in &quot;zowe sa list resources --showid&quot;:</p>
+<p>Resume the resource with this ID &lt;RESOURCE_ID&gt;. Use the ID that is displayed in &quot;zowe sa list resources --showid&quot;:</p>
 <ul>
-<li><code>zowe  system-automation resume resource --id=RESOURCE_ID</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  system-automation resume resource --id=RESOURCE_ID">Copy</button></li>
+<li><code>zowe system-automation resume resource --id=RESOURCE_ID</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe system-automation resume resource --id=RESOURCE_ID">Copy</button></li>
 </ul>
 </li>
 <li>
-<p>Resume the resource with specified name &lt;RESOURCE_NAME&gt;Use
-the name that is displayed in &quot;zowe sa list resources&quot;.
+<p>Resume the resource with specified name &lt;RESOURCE_NAME&gt;Use the name that is displayed in &quot;zowe sa list resources&quot;.<br>
 It is possible to use the syntax &lt;NAME&gt;/&lt;TYPE&gt;/&lt;SYSTEM&gt;.:</p>
 <ul>
-<li><code>zowe  system-automation resume resource --name=RESOURCE_NAME</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  system-automation resume resource --name=RESOURCE_NAME">Copy</button></li>
+<li><code>zowe system-automation resume resource --name=RESOURCE_NAME</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe system-automation resume resource --name=RESOURCE_NAME">Copy</button></li>
 </ul>
 </li>
 </ul>

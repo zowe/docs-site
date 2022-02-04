@@ -7,10 +7,9 @@
 <link rel="stylesheet" href="../css/docs.css">
 <article class="markdown-body">
 <h2><a href="zowe.html">zowe</a> › <a href="zowe_endevor.html">endevor</a> › <a href="zowe_endevor_synchronize.html">synchronize</a> › <a href="zowe_endevor_synchronize_workspace.html">workspace</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
-<p>Synchronize a selected subset of remote CA Endevor SCM inventory with a local CA
-Endevor SCM workspace</p>
+<p>Synchronize a selected subset of remote CA Endevor SCM inventory with a local CA Endevor SCM workspace</p>
 <h4>Usage</h4>
-<p>zowe  endevor synchronize workspace [workspace-dir] [options]</p>
+<p>zowe endevor synchronize workspace [workspace-dir] [options]</p>
 <h4>Positional Arguments</h4>
 <ul>
 <li>
@@ -79,15 +78,13 @@ Endevor SCM workspace</p>
 <li>
 <p><code>--override-signout</code>  | <code>--os</code> <em>(boolean)</em></p>
 <ul>
-<li>Specify if you want to override the Signout of any Endevor elements affected by
-this action.</li>
+<li>Specify if you want to override the Signout of any Endevor elements affected by this action.</li>
 </ul>
 </li>
 <li>
 <p><code>--signout</code>  <em>(boolean)</em></p>
 <ul>
-<li>Specify if you want to perform the action with signing out any retrieved
-elements.</li>
+<li>Specify if you want to perform the action with signing out any retrieved elements.</li>
 </ul>
 </li>
 <li>
@@ -111,16 +108,14 @@ elements.</li>
 <li>
 <p><code>--reset</code>  | <code>--rst</code> <em>(boolean)</em></p>
 <ul>
-<li>Revert any local changes, resetting the local workspace to match the current
-state of the remote Endevor inventory.</li>
+<li>Revert any local changes, resetting the local workspace to match the current state of the remote Endevor inventory.</li>
 </ul>
 </li>
 <li>
 <p><code>--limit</code>  | <code>--lim</code> <em>(number)</em></p>
 <ul>
 <li>
-<p>If the synchronization would need to perform more than 'limit' Endevor actions,
-do not perform the actions now, only report them. 0 means no limit.</p>
+<p>If the synchronization would need to perform more than 'limit' Endevor actions, do not perform the actions now, only report them. 0 means no limit.</p>
 <p>Default value: 0</p>
 </li>
 </ul>
@@ -128,8 +123,7 @@ do not perform the actions now, only report them. 0 means no limit.</p>
 <li>
 <p><code>--one-way</code>  <em>(boolean)</em></p>
 <ul>
-<li>Do not update Endevor elements with local changes, only retrieve remote changes
-from Endevor and resolve any conflicts.</li>
+<li>Do not update Endevor elements with local changes, only retrieve remote changes from Endevor and resolve any conflicts.</li>
 </ul>
 </li>
 </ul>
@@ -152,8 +146,8 @@ from Endevor and resolve any conflicts.</li>
 <ul>
 <li>
 <p>Specifies the protocol used for connecting to CA Endevor SCM Rest API</p>
-<p>Default value: https</p>
-<p>Allowed values: http, https</p>
+<p>Default value: https<br>
+Allowed values: http, https</p>
 </li>
 </ul>
 </li>
@@ -172,8 +166,7 @@ from Endevor and resolve any conflicts.</li>
 <li>
 <p><code>--reject-unauthorized</code>  | <code>--ru</code> <em>(boolean)</em></p>
 <ul>
-<li>Specify this option to have the server certificate verified against the list of
-supplied CAs</li>
+<li>Specify this option to have the server certificate verified against the list of supplied CAs</li>
 </ul>
 </li>
 <li>
@@ -209,8 +202,7 @@ supplied CAs</li>
 <li>
 <p><code>--token-type</code>  | <code>--tt</code> <em>(string)</em></p>
 <ul>
-<li>The type of token to get and use for the API. Omit this option to use the
-default token type, which is provided by 'zowe auth login'.</li>
+<li>The type of token to get and use for the API. Omit this option to use the default token type, which is provided by 'zowe auth login'.</li>
 </ul>
 </li>
 <li>
@@ -235,51 +227,39 @@ default token type, which is provided by 'zowe auth login'.</li>
 <h4>Examples</h4>
 <ul>
 <li>
-<p>Synchronize all elements in the map location defined by the
-currently active endevor-location profile with current directory:</p>
+<p>Synchronize all elements in the map location defined by the currently active endevor-location profile with current directory:</p>
 <ul>
-<li><code>zowe  endevor synchronize workspace</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  endevor synchronize workspace">Copy</button></li>
+<li><code>zowe endevor synchronize workspace</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe endevor synchronize workspace">Copy</button></li>
 </ul>
 </li>
 <li>
-<p>Synchronize all elements in the map location defined by the
-currently active endevor-location profile with workspace directory
-'C:/projects/myWorkspace':</p>
+<p>Synchronize all elements in the map location defined by the currently active endevor-location profile with workspace directory 'C:/projects/myWorkspace':</p>
 <ul>
-<li><code>zowe  endevor synchronize workspace 'C:/projects/myWorkspace'</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  endevor synchronize workspace 'C:/projects/myWorkspace'">Copy</button></li>
+<li><code>zowe endevor synchronize workspace 'C:/projects/myWorkspace'</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe endevor synchronize workspace 'C:/projects/myWorkspace'">Copy</button></li>
 </ul>
 </li>
 <li>
-<p>Synchronize all elements in system SYSTEM1 subsystem SUBSYS1
-from environment DEV stage 1, whose type begins with 'ASM', with current
-directory:</p>
+<p>Synchronize all elements in system SYSTEM1 subsystem SUBSYS1 from environment DEV stage 1, whose type begins with 'ASM', with current directory:</p>
 <ul>
-<li><code>zowe  endevor synchronize workspace --environment DEV --stage_number 1 --system SYSTEM1 --subsystem SUBSYS1 --type ASM* --ccid myccid --comment 'my changes'</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  endevor synchronize workspace --environment DEV --stage_number 1 --system SYSTEM1 --subsystem SUBSYS1 --type ASM* --ccid myccid --comment 'my changes'">Copy</button></li>
+<li><code>zowe endevor synchronize workspace --environment DEV --stage_number 1 --system SYSTEM1 --subsystem SUBSYS1 --type ASM* --ccid myccid --comment 'my changes'</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe endevor synchronize workspace --environment DEV --stage_number 1 --system SYSTEM1 --subsystem SUBSYS1 --type ASM* --ccid myccid --comment 'my changes'">Copy</button></li>
 </ul>
 </li>
 <li>
-<p>Synchronize all elements in the map location defined by the
-currently active endevor-location profile, whose name is 'PRFX' followed by any
-2 characters and ending with '11', with workspace directory
-'C:/projects/myWorkspace':</p>
+<p>Synchronize all elements in the map location defined by the currently active endevor-location profile, whose name is 'PRFX' followed by any 2 characters and ending with '11', with workspace directory 'C:/projects/myWorkspace':</p>
 <ul>
-<li><code>zowe  endevor synchronize workspace 'C:/projects/myWorkspace' --ccid myccid --comment 'my changes' --element PRFX%%11</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  endevor synchronize workspace 'C:/projects/myWorkspace' --ccid myccid --comment 'my changes' --element PRFX%%11">Copy</button></li>
+<li><code>zowe endevor synchronize workspace 'C:/projects/myWorkspace' --ccid myccid --comment 'my changes' --element PRFX%%11</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe endevor synchronize workspace 'C:/projects/myWorkspace' --ccid myccid --comment 'my changes' --element PRFX%%11">Copy</button></li>
 </ul>
 </li>
 <li>
-<p>Display all actions needed to synchronize all elements in
-the map location defined by endevor-location profile 'mysandbox' with current
-directory, without performing them:</p>
+<p>Display all actions needed to synchronize all elements in the map location defined by endevor-location profile 'mysandbox' with current directory, without performing them:</p>
 <ul>
-<li><code>zowe  endevor synchronize workspace --dry-run --endevor-location-profile mysandbox</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  endevor synchronize workspace --dry-run --endevor-location-profile mysandbox">Copy</button></li>
+<li><code>zowe endevor synchronize workspace --dry-run --endevor-location-profile mysandbox</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe endevor synchronize workspace --dry-run --endevor-location-profile mysandbox">Copy</button></li>
 </ul>
 </li>
 <li>
-<p>Revert all local changes in the map location defined by the
-currently active endevor-location profile, resetting your workspace to match
-Endevor:</p>
+<p>Revert all local changes in the map location defined by the currently active endevor-location profile, resetting your workspace to match Endevor:</p>
 <ul>
-<li><code>zowe  endevor synchronize workspace --reset</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  endevor synchronize workspace --reset">Copy</button></li>
+<li><code>zowe endevor synchronize workspace --reset</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe endevor synchronize workspace --reset">Copy</button></li>
 </ul>
 </li>
 </ul>

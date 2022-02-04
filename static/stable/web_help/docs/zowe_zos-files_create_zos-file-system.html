@@ -9,7 +9,7 @@
 <h2><a href="zowe.html">zowe</a> › <a href="zowe_zos-files.html">zos-files</a> › <a href="zowe_zos-files_create.html">create</a> › <a href="zowe_zos-files_create_zos-file-system.html">zos-file-system</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
 <p>Create a z/OS file system.</p>
 <h4>Usage</h4>
-<p>zowe  zos-files create zos-file-system &lt;fileSystemName&gt; [options]</p>
+<p>zowe zos-files create zos-file-system &lt;fileSystemName&gt; [options]</p>
 <h4>Positional Arguments</h4>
 <ul>
 <li>
@@ -82,9 +82,7 @@
 <p><code>--timeout</code>  | <code>-t</code> <em>(number)</em></p>
 <ul>
 <li>
-<p>The number of seconds to wait for the underlying &quot;zfsadm format&quot; command to
-complete. If this command times out, the ZFS may have been created but not
-formatted correctly.</p>
+<p>The number of seconds to wait for the underlying &quot;zfsadm format&quot; command to complete. If this command times out, the ZFS may have been created but not formatted correctly.</p>
 <p>Default value: 20</p>
 </li>
 </ul>
@@ -92,18 +90,13 @@ formatted correctly.</p>
 <li>
 <p><code>--volumes</code>  | <code>-v</code> <em>(array)</em></p>
 <ul>
-<li>The storage volumes on which to allocate the z/OS file system. Specify a single
-volume by its volume serial (VOLSER). To specify more than one volume, separate
-each VOLSER with a space. You must specify the volumes option when your cluster
-is not SMS-managed.</li>
+<li>The storage volumes on which to allocate the z/OS file system. Specify a single volume by its volume serial (VOLSER). To specify more than one volume, separate each VOLSER with a space. You must specify the volumes option when your cluster is not SMS-managed.</li>
 </ul>
 </li>
 <li>
 <p><code>--response-timeout</code>  | <code>--rto</code> <em>(number)</em></p>
 <ul>
-<li>The maximum amount of time in seconds the z/OSMF Files TSO servlet should run
-before returning a response. Any request exceeding this amount of time will be
-terminated and return an error. Allowed values: 5 - 600</li>
+<li>The maximum amount of time in seconds the z/OSMF Files TSO servlet should run before returning a response. Any request exceeding this amount of time will be terminated and return an error. Allowed values: 5 - 600</li>
 </ul>
 </li>
 </ul>
@@ -148,9 +141,7 @@ terminated and return an error. Allowed values: 5 - 600</li>
 <li>
 <p><code>--base-path</code>  | <code>--bp</code> <em>(string)</em></p>
 <ul>
-<li>The base path for your API mediation layer instance. Specify this option to
-prepend the base path to all z/OSMF resources when making REST requests. Do not
-specify this option if you are not using an API mediation layer.</li>
+<li>The base path for your API mediation layer instance. Specify this option to prepend the base path to all z/OSMF resources when making REST requests. Do not specify this option if you are not using an API mediation layer.</li>
 </ul>
 </li>
 <li>
@@ -158,8 +149,8 @@ specify this option if you are not using an API mediation layer.</li>
 <ul>
 <li>
 <p>The protocol used (HTTP or HTTPS)</p>
-<p>Default value: https</p>
-<p>Allowed values: http, https</p>
+<p>Default value: https<br>
+Allowed values: http, https</p>
 </li>
 </ul>
 </li>
@@ -196,8 +187,7 @@ specify this option if you are not using an API mediation layer.</li>
 <li>
 <p><code>--token-type</code>  | <code>--tt</code> <em>(string)</em></p>
 <ul>
-<li>The type of token to get and use for the API. Omit this option to use the
-default token type, which is provided by 'zowe auth login'.</li>
+<li>The type of token to get and use for the API. Omit this option to use the default token type, which is provided by 'zowe auth login'.</li>
 </ul>
 </li>
 <li>
@@ -210,24 +200,21 @@ default token type, which is provided by 'zowe auth login'.</li>
 <h4>Examples</h4>
 <ul>
 <li>
-<p>Create a ZFS named &quot;HLQ.MYNEW.ZFS&quot; using default values of
-755 permissions, 10 primary and 2 secondary cylinders allocated, and a timeout
-of 20 seconds:</p>
+<p>Create a ZFS named &quot;HLQ.MYNEW.ZFS&quot; using default values of 755 permissions, 10 primary and 2 secondary cylinders allocated, and a timeout of 20 seconds:</p>
 <ul>
-<li><code>zowe  zos-files create zos-file-system HLQ.MYNEW.ZFS</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  zos-files create zos-file-system HLQ.MYNEW.ZFS">Copy</button></li>
+<li><code>zowe zos-files create zos-file-system HLQ.MYNEW.ZFS</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe zos-files create zos-file-system HLQ.MYNEW.ZFS">Copy</button></li>
 </ul>
 </li>
 <li>
-<p>Create a ZFS with 100 primary and 10 secondary cylinders
-allocated:</p>
+<p>Create a ZFS with 100 primary and 10 secondary cylinders allocated:</p>
 <ul>
-<li><code>zowe  zos-files create zos-file-system HLQ.MYNEW.ZFS --cp 100 --cs 10</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  zos-files create zos-file-system HLQ.MYNEW.ZFS --cp 100 --cs 10">Copy</button></li>
+<li><code>zowe zos-files create zos-file-system HLQ.MYNEW.ZFS --cp 100 --cs 10</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe zos-files create zos-file-system HLQ.MYNEW.ZFS --cp 100 --cs 10">Copy</button></li>
 </ul>
 </li>
 <li>
 <p>Create a ZFS specifying the volumes that should be used:</p>
 <ul>
-<li><code>zowe  zos-files create zos-file-system HLQ.MYNEW.ZFS -v ZFS001 ZFS002</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  zos-files create zos-file-system HLQ.MYNEW.ZFS -v ZFS001 ZFS002">Copy</button></li>
+<li><code>zowe zos-files create zos-file-system HLQ.MYNEW.ZFS -v ZFS001 ZFS002</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe zos-files create zos-file-system HLQ.MYNEW.ZFS -v ZFS001 ZFS002">Copy</button></li>
 </ul>
 </li>
 </ul>

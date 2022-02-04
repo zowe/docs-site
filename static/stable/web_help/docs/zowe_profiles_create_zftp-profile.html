@@ -9,14 +9,13 @@
 <h2><a href="zowe.html">zowe</a> › <a href="zowe_profiles.html">profiles</a> › <a href="zowe_profiles_create.html">create</a> › <a href="zowe_profiles_create_zftp-profile.html">zftp-profile</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
 <p>Configuration profile for z/OS FTP</p>
 <h4>Usage</h4>
-<p>zowe  profiles create zftp-profile &lt;profileName&gt; [options]</p>
+<p>zowe profiles create zftp-profile &lt;profileName&gt; [options]</p>
 <h4>Positional Arguments</h4>
 <ul>
 <li>
 <p><code>profileName</code>		 <em>(string)</em></p>
 <ul>
-<li>Specifies the name of the new zftp profile. You can load this profile by using
-the name on commands that support the &quot;--zftp-profile&quot; option.</li>
+<li>Specifies the name of the new zftp profile. You can load this profile by using the name on commands that support the &quot;--zftp-profile&quot; option.</li>
 </ul>
 </li>
 </ul>
@@ -56,11 +55,7 @@ the name on commands that support the &quot;--zftp-profile&quot; option.</li>
 <p><code>--secure-ftp</code>  <em>(boolean)</em></p>
 <ul>
 <li>
-<p>Set to true for both control and data connection encryption, 'control' for
-control connection encryption only, or 'implicit' for implicitly encrypted
-control connection (this mode is deprecated in modern times, but usually uses
-port 990). Note: Unfortunately, this plugin's functionality only works with FTP
-and FTPS, not 'SFTP' which is FTP over SSH.</p>
+<p>Set to true for both control and data connection encryption, 'control' for control connection encryption only, or 'implicit' for implicitly encrypted control connection (this mode is deprecated in modern times, but usually uses port 990). Note: Unfortunately, this plugin's functionality only works with FTP and FTPS, not 'SFTP' which is FTP over SSH.</p>
 <p>Default value: true</p>
 </li>
 </ul>
@@ -69,8 +64,7 @@ and FTPS, not 'SFTP' which is FTP over SSH.</p>
 <p><code>--connection-timeout</code>  | <code>--ct</code> <em>(number)</em></p>
 <ul>
 <li>
-<p>How long (in milliseconds) to wait for the control connection to be
-established.</p>
+<p>How long (in milliseconds) to wait for the control connection to be established.</p>
 <p>Default value: 10000</p>
 </li>
 </ul>
@@ -93,25 +87,22 @@ established.</p>
 <li>
 <p><code>--reject-unauthorized</code>  | <code>--ru</code> <em>(boolean)</em></p>
 <ul>
-<li>Reject self-signed certificates. Only specify this if you are connecting to a
-secure FTP instance.</li>
+<li>Reject self-signed certificates. Only specify this if you are connecting to a secure FTP instance.</li>
 </ul>
 </li>
 <li>
 <p><code>--server-name</code>  | <code>--sn</code> <em>(string)</em></p>
 <ul>
-<li>Server name for the SNI (Server Name Indication) TLS extension. Only specify if
-you are connecting securely</li>
+<li>Server name for the SNI (Server Name Indication) TLS extension. Only specify if you are connecting securely</li>
 </ul>
 </li>
 </ul>
 <h4>Examples</h4>
 <ul>
 <li>
-<p>Create a zftp profile called 'myprofile' with default
-settings (port, timeout, etc.) to connect with the host system 123.:</p>
+<p>Create a zftp profile called 'myprofile' with default settings (port, timeout, etc.) to connect with the host system 123.:</p>
 <ul>
-<li><code>zowe  profiles create zftp-profile myprofile -u ibmuser -p ibmp4ss -H sys123</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  profiles create zftp-profile myprofile -u ibmuser -p ibmp4ss -H sys123">Copy</button></li>
+<li><code>zowe profiles create zftp-profile myprofile -u ibmuser -p ibmp4ss -H sys123</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe profiles create zftp-profile myprofile -u ibmuser -p ibmp4ss -H sys123">Copy</button></li>
 </ul>
 </li>
 </ul>

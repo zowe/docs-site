@@ -7,14 +7,12 @@
 <link rel="stylesheet" href="../css/docs.css">
 <article class="markdown-body">
 <h2><a href="zowe.html">zowe</a> › <a href="zowe_ca7.html">ca7</a> › <a href="zowe_ca7_run.html">run</a> › <a href="zowe_ca7_run_job.html">job</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
-<p>The value must be a job name.
-If the job has not been defined in the database, this name must also match the
-member name for the JCL unless the job is defined in the database.
-this name must also match the member name for the JCL unless the job is defined
-in the database.
+<p>The value must be a job name.<br>
+If the job has not been defined in the database, this name must also match the member name for the JCL unless the job is defined in the database.<br>
+this name must also match the member name for the JCL unless the job is defined in the database.<br>
 See also JCLID. JOB and JOBL are mutually exclusive.</p>
 <h4>Usage</h4>
-<p>zowe  ca7 run job &lt;job&gt; [options]</p>
+<p>zowe ca7 run job &lt;job&gt; [options]</p>
 <h4>Positional Arguments</h4>
 <ul>
 <li>
@@ -22,9 +20,8 @@ See also JCLID. JOB and JOBL are mutually exclusive.</p>
 <ul>
 <li>
 <p>job=PAYROLL</p>
-<p>Defines the long name of the job to run.
-The ran jobs are placed in the request queue and assigned a unique CA 7 job
-number.</p>
+<p>Defines the long name of the job to run.<br>
+The ran jobs are placed in the request queue and assigned a unique CA 7 job number.</p>
 </li>
 </ul>
 </li>
@@ -36,9 +33,8 @@ number.</p>
 <ul>
 <li>
 <p>arfset={arfsetname|**NONE**}</p>
-<p>Defines the ARF set name that is used for this run of the job.
-If you specify **NONE**, no ARF processing is performed for this run of the
-job.</p>
+<p>Defines the ARF set name that is used for this run of the job.<br>
+If you specify **NONE**, no ARF processing is performed for this run of the job.</p>
 <p>Limits: 1 to 8 alphanumeric characters or **NONE**</p>
 </li>
 </ul>
@@ -58,13 +54,10 @@ job.</p>
 <ul>
 <li>
 <p>dotm=hhmm</p>
-<p>Defines the due-out time-of-day for the job in hours (hh) and minutes (mm).
-If DOTM is specified on the DEMAND/DEMANDH command and the value that is given
-is earlier than the current time, the due-out day is assumed to be the
-following day.</p>
-<p>If DOTM and LEADTM are both omitted, then deadline start time is assumed to be
-the current time plus the LEADTM.</p>
-<p>Limits:  hh= 1 through 2 numeric characters from 0 to 24
+<p>Defines the due-out time-of-day for the job in hours (hh) and minutes (mm).<br>
+If DOTM is specified on the DEMAND/DEMANDH command and the value that is given is earlier than the current time, the due-out day is assumed to be the following day.</p>
+<p>If DOTM and LEADTM are both omitted, then deadline start time is assumed to be the current time plus the LEADTM.</p>
+<p>Limits:  hh= 1 through 2 numeric characters from 0 to 24<br>
 mm= 2 numeric characters from 00 to 59</p>
 <p>Required: No (unless DATE is used, if so, DOTM or TIME must be specified)</p>
 </li>
@@ -75,12 +68,9 @@ mm= 2 numeric characters from 00 to 59</p>
 <ul>
 <li>
 <p>exec={NO|YES}</p>
-<p>Specifies whether to execute the job (YES/NO).
-If NO (N) is used, the job does not run but shows a normal completion as if it
-did run. The value that is specified here overrides the value that is coded on
-the job definition EXEC field.</p>
-<p>Default: The job definition panel EXEC value if the job is defined to CA WA CA 7
-Edition; otherwise YES.</p>
+<p>Specifies whether to execute the job (YES/NO).<br>
+If NO (N) is used, the job does not run but shows a normal completion as if it did run. The value that is specified here overrides the value that is coded on the job definition EXEC field.</p>
+<p>Default: The job definition panel EXEC value if the job is defined to CA WA CA 7 Edition; otherwise YES.</p>
 </li>
 </ul>
 </li>
@@ -88,8 +78,7 @@ Edition; otherwise YES.</p>
 <p><code>--inboxnod</code>  | <code>--ibn</code> <em>(string)</em></p>
 <ul>
 <li>
-<p>inboxnod=MYWEBNODThe  Web Service node where events associated with the job are
-to be delivered.</p>
+<p>inboxnod=MYWEBNODThe  Web Service node where events associated with the job are to be delivered.</p>
 <p>Limits: 1 to 8 alphanumeric characters</p>
 </li>
 </ul>
@@ -100,10 +89,8 @@ to be delivered.</p>
 <li>
 <p>jclid=nnn</p>
 <p>Defines the JCL data set that contains the execution JCL to be submitted.</p>
-<p>If used, the value must be a numeric INDEX associated with the wanted JCL data
-set (on the JCL statement in the initialization file).</p>
-<p>Limits: 1 to 3 numeric characters from 0 through 254 and from 256 through 999.
-255 is reserved.</p>
+<p>If used, the value must be a numeric INDEX associated with the wanted JCL data set (on the JCL statement in the initialization file).</p>
+<p>Limits: 1 to 3 numeric characters from 0 through 254 and from 256 through 999. 255 is reserved.</p>
 </li>
 </ul>
 </li>
@@ -113,8 +100,7 @@ set (on the JCL statement in the initialization file).</p>
 <li>
 <p>jcllib=&amp;x...x</p>
 <p>Defines the JCL data set that contains the execution JCL to be submitted.</p>
-<p>If used, the value must be a symbolic INDEX associated with the wanted JCL data
-set (on the JCL statement in the initialization file).</p>
+<p>If used, the value must be a symbolic INDEX associated with the wanted JCL data set (on the JCL statement in the initialization file).</p>
 <p>Limits: 2 to 16 alphanumeric characters beginning with ampersand (&amp;)</p>
 </li>
 </ul>
@@ -124,10 +110,8 @@ set (on the JCL statement in the initialization file).</p>
 <ul>
 <li>
 <p>late={NO|YES}</p>
-<p>Specifies whether a notification occurs when the job becomes late.
-Specify YES (Y) to make the job eligible to be marked LATE. If NO (N) is used,
-the job is never marked LATE. The value that is specified here overrides the
-value that is coded on the job definition PROMPTS field.</p>
+<p>Specifies whether a notification occurs when the job becomes late.<br>
+Specify YES (Y) to make the job eligible to be marked LATE. If NO (N) is used, the job is never marked LATE. The value that is specified here overrides the value that is coded on the job definition PROMPTS field.</p>
 </li>
 </ul>
 </li>
@@ -136,9 +120,9 @@ value that is coded on the job definition PROMPTS field.</p>
 <ul>
 <li>
 <p>leadtm={0100|hhmm}</p>
-<p>Defines the amount of elapsed time that is required to process the job.
-Default: 1 hour
-Limits: hh= 1 through 2 numeric characters from 0 to 24
+<p>Defines the amount of elapsed time that is required to process the job.<br>
+Default: 1 hour<br>
+Limits: hh= 1 through 2 numeric characters from 0 to 24<br>
 mm= 2 numeric characters from 00 to 59</p>
 </li>
 </ul>
@@ -148,19 +132,15 @@ mm= 2 numeric characters from 00 to 59</p>
 <ul>
 <li>
 <p>mainid={ALL|SYn|/SYn|-SYn}</p>
-<p>Specifies the MAINID, as defined in the initialization file CPU statement, to
-which you want to redirect the job.</p>
-<p>ALL
+<p>Specifies the MAINID, as defined in the initialization file CPU statement, to which you want to redirect the job.</p>
+<p>ALL<br>
 Specifies all CPUs are acceptable for executing the job.</p>
-<p>SYn
-n defines the CPU to which the job is being redirected. The value of n can
-range from 1 to 7.</p>
-<p>/SYn
-n defines a CPU to which the job cannot be submitted. The value of n can range
-from 1 to 7.</p>
-<p>-SYn
-n defines a CPU to which the job cannot be submitted. The value of n can range
-from 1 to 7.</p>
+<p>SYn<br>
+n defines the CPU to which the job is being redirected. The value of n can range from 1 to 7.</p>
+<p>/SYn<br>
+n defines a CPU to which the job cannot be submitted. The value of n can range from 1 to 7.</p>
+<p>-SYn<br>
+n defines a CPU to which the job cannot be submitted. The value of n can range from 1 to 7.</p>
 <p>Limits: Invalid for internal cross-platform jobs.</p>
 </li>
 </ul>
@@ -170,13 +150,9 @@ from 1 to 7.</p>
 <ul>
 <li>
 <p>rms={NO|YES}</p>
-<p>Specifies whether CA WA CA 7 Edition inserts the CA Workload Automation Restart
-Option for z/OS Schedulers RMS step.</p>
-<p>Specify YES (Y) to insert the step with the CA Workload Automation Restart
-Option for z/OS Schedulers processing code of P. Enter NO (N) to indicate do
-not insert of the RMS step.</p>
-<p>Default: The job definition panel INSERT-RMS value if job defined to CA WA CA 7
-Edition; otherwise NO.
+<p>Specifies whether CA WA CA 7 Edition inserts the CA Workload Automation Restart Option for z/OS Schedulers RMS step.</p>
+<p>Specify YES (Y) to insert the step with the CA Workload Automation Restart Option for z/OS Schedulers processing code of P. Enter NO (N) to indicate do not insert of the RMS step.</p>
+<p>Default: The job definition panel INSERT-RMS value if job defined to CA WA CA 7 Edition; otherwise NO.<br>
 Limits: Invalid for internal cross-platform jobs.</p>
 </li>
 </ul>
@@ -186,12 +162,10 @@ Limits: Invalid for internal cross-platform jobs.</p>
 <ul>
 <li>
 <p>schid={1|nnn}</p>
-<p>Defines the schedule ID within the job’s total schedule definition to use for
-this run.</p>
-<p>Default: 1
+<p>Defines the schedule ID within the job’s total schedule definition to use for this run.</p>
+<p>Default: 1<br>
 Limits: 1 to 3 numeric characters from 1 to 255 (See Note)</p>
-<p>If the SCHEDULE statement in the initialization file specifies SCHID=YES, this
-parameter is required.</p>
+<p>If the SCHEDULE statement in the initialization file specifies SCHID=YES, this parameter is required.</p>
 </li>
 </ul>
 </li>
@@ -201,11 +175,10 @@ parameter is required.</p>
 <li>
 <p>time={hhmm|+hhmm}</p>
 <p>Defines a submit time-of-day requirement for the job.</p>
-<p>Limits: + is optional
-hh= 1 through 2 numeric characters from 0 to 23
+<p>Limits: + is optional<br>
+hh= 1 through 2 numeric characters from 0 to 23<br>
 mm= 2 numeric characters from 00 to 59</p>
-<p>Required: No (unless DATE is used, if so, specify DOTM or TIME (hhmm format).
-Also required if TYPE=CLOCK is specified.</p>
+<p>Required: No (unless DATE is used, if so, specify DOTM or TIME (hhmm format). Also required if TYPE=CLOCK is specified.</p>
 </li>
 </ul>
 </li>
@@ -214,9 +187,8 @@ Also required if TYPE=CLOCK is specified.</p>
 <ul>
 <li>
 <p>type={CLOCK|END|RES|START}</p>
-<p>TYPE=RES specifies the job is being scheduled in restart/rerun status.
-TYPE=CLOCK, START, or END controls how the submit time requirement is calculated
-for repeating jobs.</p>
+<p>TYPE=RES specifies the job is being scheduled in restart/rerun status.<br>
+TYPE=CLOCK, START, or END controls how the submit time requirement is calculated for repeating jobs.</p>
 <p>Limits: RES, CLOCK, START, or END</p>
 </li>
 </ul>
@@ -246,8 +218,7 @@ for repeating jobs.</p>
 <p><code>--user</code>  | <code>-u</code> <em>(string)</em></p>
 <ul>
 <li>
-<p>User name for authenticating connections to the CA7 API service that is running
-on the mainframe system.</p>
+<p>User name for authenticating connections to the CA7 API service that is running on the mainframe system.</p>
 <p>Default value: MASTER</p>
 </li>
 </ul>
@@ -256,8 +227,7 @@ on the mainframe system.</p>
 <p><code>--password</code>  | <code>--pass</code> | <code>--pw</code> <em>(string)</em></p>
 <ul>
 <li>
-<p>Password for authenticating connections to the CA7 API service that is running
-on the mainframe system.</p>
+<p>Password for authenticating connections to the CA7 API service that is running on the mainframe system.</p>
 <p>Default value:</p>
 </li>
 </ul>
@@ -265,9 +235,7 @@ on the mainframe system.</p>
 <li>
 <p><code>--base-path</code>  | <code>--bp</code> <em>(string)</em></p>
 <ul>
-<li>The base path for your API mediation layer instance. Specify this option to
-prepend the base path to all resources when making REST requests. Do not
-specify this option if you are not using an API mediation layer.</li>
+<li>The base path for your API mediation layer instance. Specify this option to prepend the base path to all resources when making REST requests. Do not specify this option if you are not using an API mediation layer.</li>
 </ul>
 </li>
 <li>
@@ -275,8 +243,8 @@ specify this option if you are not using an API mediation layer.</li>
 <ul>
 <li>
 <p>Specifies protocol to use for CA7 connection (http or https).</p>
-<p>Default value: https</p>
-<p>Allowed values: http, https</p>
+<p>Default value: https<br>
+Allowed values: http, https</p>
 </li>
 </ul>
 </li>
@@ -310,8 +278,7 @@ specify this option if you are not using an API mediation layer.</li>
 <li>
 <p><code>--token-type</code>  | <code>--tt</code> <em>(string)</em></p>
 <ul>
-<li>The type of token to get and use for the API. Omit this option to use the
-default token type, which is provided by 'zowe auth login'.</li>
+<li>The type of token to get and use for the API. Omit this option to use the default token type, which is provided by 'zowe auth login'.</li>
 </ul>
 </li>
 <li>
@@ -338,7 +305,7 @@ default token type, which is provided by 'zowe auth login'.</li>
 <li>
 <p>Run a job, PAYROLL to CA 7:</p>
 <ul>
-<li><code>zowe  ca7 run job PAYROLL</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  ca7 run job PAYROLL">Copy</button></li>
+<li><code>zowe ca7 run job PAYROLL</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe ca7 run job PAYROLL">Copy</button></li>
 </ul>
 </li>
 </ul>

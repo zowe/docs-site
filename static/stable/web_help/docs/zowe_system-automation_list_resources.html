@@ -7,20 +7,18 @@
 <link rel="stylesheet" href="../css/docs.css">
 <article class="markdown-body">
 <h2><a href="zowe.html">zowe</a> › <a href="zowe_system-automation.html">system-automation</a> › <a href="zowe_system-automation_list.html">list</a> › <a href="zowe_system-automation_list_resources.html">resources</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
-<p>List all resources currently being automated and matching the specified filter
-options in a table.</p>
+<p>List all resources currently being automated and matching the specified filter options in a table.</p>
 <p>Requires (min.): SA Operations API 1.0.0</p>
-<p>Following Success Message can be returned by this command:
+<p>Following Success Message can be returned by this command:<br>
 SACLI006300 - Listing resources success</p>
 <h4>Usage</h4>
-<p>zowe  system-automation list resources [options]</p>
+<p>zowe system-automation list resources [options]</p>
 <h4>Options</h4>
 <ul>
 <li>
 <p><code>--name</code>  <em>(string)</em></p>
 <ul>
-<li>The name of the resource. Wildcard '*' is allowed. It is possible to use the
-syntax &lt;NAME&gt;/&lt;TYPE&gt;/&lt;SYSTEM&gt;.</li>
+<li>The name of the resource. Wildcard '*' is allowed. It is possible to use the syntax &lt;NAME&gt;/&lt;TYPE&gt;/&lt;SYSTEM&gt;.</li>
 </ul>
 </li>
 <li>
@@ -55,8 +53,7 @@ syntax &lt;NAME&gt;/&lt;TYPE&gt;/&lt;SYSTEM&gt;.</li>
 <ul>
 <li>
 <p>List Only resources with this observed state</p>
-<p>Allowed values: AVAILABLE, DEGRADED, HARDDOWN, PROBLEM, SOFTDOWN, STANDBY,
-STARTING, STOPPING, SYSGONE, UNKNONW, WASAVAILABLE</p>
+<p>Allowed values: AVAILABLE, DEGRADED, HARDDOWN, PROBLEM, SOFTDOWN, STANDBY, STARTING, STOPPING, SYSGONE, UNKNONW, WASAVAILABLE</p>
 </li>
 </ul>
 </li>
@@ -74,8 +71,7 @@ STARTING, STOPPING, SYSGONE, UNKNONW, WASAVAILABLE</p>
 <ul>
 <li>
 <p>List Only resources with this compound state</p>
-<p>Allowed values: AWAITING, DEGRADED, DENIED, INAUTO, INHIBITED, PROBLEM,
-SATISFACTORY</p>
+<p>Allowed values: AWAITING, DEGRADED, DENIED, INAUTO, INHIBITED, PROBLEM, SATISFACTORY</p>
 </li>
 </ul>
 </li>
@@ -223,8 +219,7 @@ SATISFACTORY</p>
 <li>
 <p><code>--token-type</code>  | <code>--tt</code> <em>(string)</em></p>
 <ul>
-<li>The type of token to get and use for the API. Omit this option to use the
-default token type, which is provided by 'zowe auth login'.</li>
+<li>The type of token to get and use for the API. Omit this option to use the default token type, which is provided by 'zowe auth login'.</li>
 </ul>
 </li>
 <li>
@@ -251,25 +246,25 @@ default token type, which is provided by 'zowe auth login'.</li>
 <li>
 <p>List all resources:</p>
 <ul>
-<li><code>zowe  system-automation list resources</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  system-automation list resources">Copy</button></li>
+<li><code>zowe system-automation list resources</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe system-automation list resources">Copy</button></li>
 </ul>
 </li>
 <li>
 <p>List all resources including their ID:</p>
 <ul>
-<li><code>zowe  system-automation list resources --showid</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  system-automation list resources --showid">Copy</button></li>
+<li><code>zowe system-automation list resources --showid</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe system-automation list resources --showid">Copy</button></li>
 </ul>
 </li>
 <li>
 <p>List all AVAILABLE resources including ID:</p>
 <ul>
-<li><code>zowe  system-automation list resources --observed=available --showid</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  system-automation list resources --observed=available --showid">Copy</button></li>
+<li><code>zowe system-automation list resources --observed=available --showid</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe system-automation list resources --observed=available --showid">Copy</button></li>
 </ul>
 </li>
 <li>
 <p>List all resources where name is starting with WEB:</p>
 <ul>
-<li><code>zowe  system-automation list resources --name=WEB*</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  system-automation list resources --name=WEB*">Copy</button></li>
+<li><code>zowe system-automation list resources --name=WEB*</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe system-automation list resources --name=WEB*">Copy</button></li>
 </ul>
 </li>
 </ul>

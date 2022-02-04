@@ -7,10 +7,9 @@
 <link rel="stylesheet" href="../css/docs.css">
 <article class="markdown-body">
 <h2><a href="zowe.html">zowe</a> › <a href="zowe_endevor.html">endevor</a> › <a href="zowe_endevor_commit.html">commit</a> › <a href="zowe_endevor_commit_package.html">package</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
-<p>The commit package command commits a Package, which removes all backout/backin
-data while retaining Package event information.</p>
+<p>The commit package command commits a Package, which removes all backout/backin data while retaining Package event information.</p>
 <h4>Usage</h4>
-<p>zowe  endevor commit package [package] [options]</p>
+<p>zowe endevor commit package [package] [options]</p>
 <h4>Positional Arguments</h4>
 <ul>
 <li>
@@ -31,8 +30,7 @@ data while retaining Package event information.</p>
 <li>
 <p><code>--delete-promotion-history</code>  | <code>--dph</code> <em>(boolean)</em></p>
 <ul>
-<li>Specifies whether you want to delete all  promotion history associated with
-previous versions of the Package</li>
+<li>Specifies whether you want to delete all  promotion history associated with previous versions of the Package</li>
 </ul>
 </li>
 </ul>
@@ -42,8 +40,7 @@ previous versions of the Package</li>
 <p><code>--maxrc</code>  <em>(number)</em></p>
 <ul>
 <li>
-<p>The maximum value of the return code of a successful action. When the return
-code is greater than the maxrc value, the command fails</p>
+<p>The maximum value of the return code of a successful action. When the return code is greater than the maxrc value, the command fails</p>
 <p>Default value: 8</p>
 </li>
 </ul>
@@ -74,8 +71,8 @@ code is greater than the maxrc value, the command fails</p>
 <ul>
 <li>
 <p>Specifies the protocol used for connecting to CA Endevor SCM Rest API</p>
-<p>Default value: https</p>
-<p>Allowed values: http, https</p>
+<p>Default value: https<br>
+Allowed values: http, https</p>
 </li>
 </ul>
 </li>
@@ -94,8 +91,7 @@ code is greater than the maxrc value, the command fails</p>
 <li>
 <p><code>--reject-unauthorized</code>  | <code>--ru</code> <em>(boolean)</em></p>
 <ul>
-<li>Specify this option to have the server certificate verified against the list of
-supplied CAs</li>
+<li>Specify this option to have the server certificate verified against the list of supplied CAs</li>
 </ul>
 </li>
 <li>
@@ -122,17 +118,13 @@ supplied CAs</li>
 <li>
 <p><code>--report-dir</code>  <em>(string)</em></p>
 <ul>
-<li>Directory for saving reports from Endevor SCM locally, if --report-file
-wasn't specified. Defaults to current directory.</li>
+<li>Directory for saving reports from Endevor SCM locally, if --report-file wasn't specified. Defaults to current directory.</li>
 </ul>
 </li>
 <li>
 <p><code>--write-report</code>  <em>(boolean)</em></p>
 <ul>
-<li>Write the endevor reports to a file. By default, when return code is 0, no
-report will be written, unless this option is specified. When return code is
-bigger than 0, reports will be written to a file, unless this option is specifed
-to be false</li>
+<li>Write the endevor reports to a file. By default, when return code is 0, no report will be written, unless this option is specified. When return code is bigger than 0, reports will be written to a file, unless this option is specifed to be false</li>
 </ul>
 </li>
 </ul>
@@ -162,8 +154,7 @@ to be false</li>
 <li>
 <p><code>--token-type</code>  | <code>--tt</code> <em>(string)</em></p>
 <ul>
-<li>The type of token to get and use for the API. Omit this option to use the
-default token type, which is provided by 'zowe auth login'.</li>
+<li>The type of token to get and use for the API. Omit this option to use the default token type, which is provided by 'zowe auth login'.</li>
 </ul>
 </li>
 <li>
@@ -188,10 +179,9 @@ default token type, which is provided by 'zowe auth login'.</li>
 <h4>Examples</h4>
 <ul>
 <li>
-<p>Commit package with endevor profile set up, specifying
-deletion of all promotion history:</p>
+<p>Commit package with endevor profile set up, specifying deletion of all promotion history:</p>
 <ul>
-<li><code>zowe  endevor commit package packageName --delete-promotion-history -i ENDEVOR</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  endevor commit package packageName --delete-promotion-history -i ENDEVOR">Copy</button></li>
+<li><code>zowe endevor commit package packageName --delete-promotion-history -i ENDEVOR</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe endevor commit package packageName --delete-promotion-history -i ENDEVOR">Copy</button></li>
 </ul>
 </li>
 </ul>

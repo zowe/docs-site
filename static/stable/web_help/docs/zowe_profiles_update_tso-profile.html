@@ -9,14 +9,13 @@
 <h2><a href="zowe.html">zowe</a> › <a href="zowe_profiles.html">profiles</a> › <a href="zowe_profiles_update.html">update</a> › <a href="zowe_profiles_update_tso-profile.html">tso-profile</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
 <p>z/OS TSO/E User Profile</p>
 <h4>Usage</h4>
-<p>zowe  profiles create tso-profile &lt;profileName&gt; [options]</p>
+<p>zowe profiles update tso-profile &lt;profileName&gt; [options]</p>
 <h4>Positional Arguments</h4>
 <ul>
 <li>
 <p><code>profileName</code>		 <em>(string)</em></p>
 <ul>
-<li>Specifies the name of the new tso profile. You can load this profile by using
-the name on commands that support the &quot;--tso-profile&quot; option.</li>
+<li>Specifies the name of the new tso profile. You can load this profile by using the name on commands that support the &quot;--tso-profile&quot; option.</li>
 </ul>
 </li>
 </ul>
@@ -31,15 +30,13 @@ the name on commands that support the &quot;--tso-profile&quot; option.</li>
 <li>
 <p><code>--character-set</code>  | <code>--cs</code> <em>(string)</em></p>
 <ul>
-<li>Character set for address space to convert messages and responses from UTF-8 to
-EBCDIC.</li>
+<li>Character set for address space to convert messages and responses from UTF-8 to EBCDIC.</li>
 </ul>
 </li>
 <li>
 <p><code>--code-page</code>  | <code>--cp</code> <em>(string)</em></p>
 <ul>
-<li>Codepage value for TSO/E address space to convert messages and responses from
-UTF-8 to EBCDIC.</li>
+<li>Codepage value for TSO/E address space to convert messages and responses from UTF-8 to EBCDIC.</li>
 </ul>
 </li>
 <li>
@@ -70,10 +67,9 @@ UTF-8 to EBCDIC.</li>
 <h4>Examples</h4>
 <ul>
 <li>
-<p>Update a tso profile called myprof with new JES accounting
-information:</p>
+<p>Update a tso profile called myprof with new JES accounting information:</p>
 <ul>
-<li><code>zowe  profiles create tso-profile myprof -a NEWACCT</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  profiles create tso-profile myprof -a NEWACCT">Copy</button></li>
+<li><code>zowe profiles update tso-profile myprof -a NEWACCT</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe profiles update tso-profile myprof -a NEWACCT">Copy</button></li>
 </ul>
 </li>
 </ul>

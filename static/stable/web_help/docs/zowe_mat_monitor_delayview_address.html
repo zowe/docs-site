@@ -9,15 +9,13 @@
 <h2><a href="zowe.html">zowe</a> › <a href="zowe_mat.html">mat</a> › <a href="zowe_mat_monitor.html">monitor</a> › <a href="zowe_mat_monitor_delayview.html">delayview</a> › <a href="zowe_mat_monitor_delayview_address.html">address</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
 <p>Get the delay address details for the measurement.</p>
 <h4>Usage</h4>
-<p>zowe  mat monitor delayview address [options]</p>
+<p>zowe mat monitor delayview address [options]</p>
 <h4>Options</h4>
 <ul>
 <li>
 <p><code>--profile</code>  <em>(string)</em></p>
 <ul>
-<li>Specifies the name of the profile that you want to analyze. When you specify
-the profile name, you get the data for the latest measurement within the
-specified profile.</li>
+<li>Specifies the name of the profile that you want to analyze. When you specify the profile name, you get the data for the latest measurement within the specified profile.</li>
 </ul>
 </li>
 <li>
@@ -29,17 +27,13 @@ specified profile.</li>
 <li>
 <p><code>--majorcategory</code>  <em>(string)</em></p>
 <ul>
-<li>Specifies the major delay category name identified for the analysis item
-(e.g., --majorcategory &quot;PC routine delay&quot;). You get the majorcategory value
-from the 'delayview delay' command response.</li>
+<li>Specifies the major delay category name identified for the analysis item (e.g., --majorcategory &quot;PC routine delay&quot;). You get the majorcategory value from the 'delayview delay' command response.</li>
 </ul>
 </li>
 <li>
 <p><code>--minorcategory</code>  <em>(string)</em></p>
 <ul>
-<li>Specifies the minor delay category name identified for the analysis item
-(e.g.,  --minorcategory &quot;PC CALL&quot;). You get the minorcategory value from
-the 'delayview delay' command response.</li>
+<li>Specifies the minor delay category name identified for the analysis item (e.g.,  --minorcategory &quot;PC CALL&quot;). You get the minorcategory value from the 'delayview delay' command response.</li>
 </ul>
 </li>
 </ul>
@@ -96,8 +90,7 @@ the 'delayview delay' command response.</li>
 <li>
 <p><code>--token-type</code>  | <code>--tt</code> <em>(string)</em></p>
 <ul>
-<li>The type of token to get and use for the API. Omit this option to use the
-default token type, which is provided by 'zowe auth login'.</li>
+<li>The type of token to get and use for the API. Omit this option to use the default token type, which is provided by 'zowe auth login'.</li>
 </ul>
 </li>
 <li>
@@ -122,18 +115,15 @@ default token type, which is provided by 'zowe auth login'.</li>
 <h4>Examples</h4>
 <ul>
 <li>
-<p>Get the delay address details for majorcategory &quot;PC routine
-delay&quot; and minorcategory &quot;PC CALL&quot; for monitor number 5:</p>
+<p>Get the delay address details for majorcategory &quot;PC routine delay&quot; and minorcategory &quot;PC CALL&quot; for monitor number 5:</p>
 <ul>
-<li><code>zowe  mat monitor delayview address --mon_num 5 –-majorcategory &quot;PC routine delay&quot; –-minorcategory &quot;PC CALL&quot;</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  mat monitor delayview address --mon_num 5 –-majorcategory &quot;PC routine delay&quot; –-minorcategory &quot;PC CALL&quot;">Copy</button></li>
+<li><code>zowe mat monitor delayview address --mon_num 5 –-majorcategory &quot;PC routine delay&quot; –-minorcategory &quot;PC CALL&quot;</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe mat monitor delayview address --mon_num 5 –-majorcategory &quot;PC routine delay&quot; –-minorcategory &quot;PC CALL&quot;">Copy</button></li>
 </ul>
 </li>
 <li>
-<p>Get the delay address details for majorcategory &quot;PC routine
-delay&quot; and minorcategory &quot;PC CALL&quot; for the latest monitor in the TESTPROF
-profile:</p>
+<p>Get the delay address details for majorcategory &quot;PC routine delay&quot; and minorcategory &quot;PC CALL&quot; for the latest monitor in the TESTPROF profile:</p>
 <ul>
-<li><code>zowe  mat monitor delayview address --profile TESTPROF –-majorcategory &quot;PC routine delay&quot; –-minorcategory &quot;PC CALL&quot;</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  mat monitor delayview address --profile TESTPROF –-majorcategory &quot;PC routine delay&quot; –-minorcategory &quot;PC CALL&quot;">Copy</button></li>
+<li><code>zowe mat monitor delayview address --profile TESTPROF –-majorcategory &quot;PC routine delay&quot; –-minorcategory &quot;PC CALL&quot;</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe mat monitor delayview address --profile TESTPROF –-majorcategory &quot;PC routine delay&quot; –-minorcategory &quot;PC CALL&quot;">Copy</button></li>
 </ul>
 </li>
 </ul>
