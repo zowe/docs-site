@@ -85,7 +85,7 @@ To generate the global profile configuration file (`zowe.config.json`), issue th
 zowe config init --global-config
 ```
 
-To generate the user profile configuration file (`zowe.config.user.json`), issue the following command:
+To generate the global user profile configuration file (`zowe.config.user.json`), issue the following command:
 
 ```
 zowe config init --global-config --user-config
