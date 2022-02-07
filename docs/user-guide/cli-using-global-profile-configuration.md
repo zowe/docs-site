@@ -92,6 +92,7 @@ zowe config init --global-config --user-config
 ```
 
 In your user-specific file, notice that the "defaults" object is empty and the profiles do not have any properties. You can add your connection details as properties here to override properties in `zowe.config.json`, or add add new connections.
+
 ## Editing global configuration
 
 After the initial setup, you can define additional mainframe services to the global (or user-specific) configuration file.
@@ -172,6 +173,7 @@ For example, to add a new instance of z/OSMF that runs on a different mainframe 
 ```
 
 You can continue to add more LPARs and more services within each LPAR. After you make changes, save the file and issue a Zowe CLI command to the service to verify the connection.
+
 ## Managing credential security
 
 When you first run the `zowe config init --global-config` command, the `profiles.base.properties.user` and `profiles.base.properties.password` fields are defined to the "secure" array in your configuration file. This ensures that the username and password are stored securely on your computer.
