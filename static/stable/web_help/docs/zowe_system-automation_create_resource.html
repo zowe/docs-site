@@ -9,11 +9,10 @@
 <h2><a href="zowe.html">zowe</a> › <a href="zowe_system-automation.html">system-automation</a> › <a href="zowe_system-automation_create.html">create</a> › <a href="zowe_system-automation_create_resource.html">resource</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
 <p>Create a dynamic resource from template</p>
 <p>Requires (min.): SA Operations API 1.0.0</p>
-<p>Following Success Message can be returned by this command:
-SACLI002100 - Dynamic resource {ResourceName} has been created from template
-{TemplateName}</p>
+<p>Following Success Message can be returned by this command:<br>
+SACLI002100 - Dynamic resource {ResourceName} has been created from template {TemplateName}</p>
 <h4>Usage</h4>
-<p>zowe  system-automation create resource [options]</p>
+<p>zowe system-automation create resource [options]</p>
 <h4>Options</h4>
 <ul>
 <li>
@@ -31,9 +30,7 @@ SACLI002100 - Dynamic resource {ResourceName} has been created from template
 <li>
 <p><code>--name</code>  <em>(string)</em></p>
 <ul>
-<li>This is subsystem name of the new resource. It will normally be taken as the
-resource name                   as it is shown for example in the list resources
-command</li>
+<li>This is subsystem name of the new resource. It will normally be taken as the resource name                   as it is shown for example in the list resources command</li>
 </ul>
 </li>
 <li>
@@ -63,8 +60,7 @@ command</li>
 <li>
 <p><code>--group</code>  <em>(string)</em></p>
 <ul>
-<li>This is the name of the resource group (APG) that will host the new resource as
-group member</li>
+<li>This is the name of the resource group (APG) that will host the new resource as group member</li>
 </ul>
 </li>
 <li>
@@ -82,8 +78,7 @@ group member</li>
 <li>
 <p><code>--path</code>  <em>(string)</em></p>
 <ul>
-<li>Specified the USS path and command to start the application represented by this
-resource</li>
+<li>Specified the USS path and command to start the application represented by this resource</li>
 </ul>
 </li>
 <li>
@@ -146,8 +141,7 @@ resource</li>
 <li>
 <p><code>--token-type</code>  | <code>--tt</code> <em>(string)</em></p>
 <ul>
-<li>The type of token to get and use for the API. Omit this option to use the
-default token type, which is provided by 'zowe auth login'.</li>
+<li>The type of token to get and use for the API. Omit this option to use the default token type, which is provided by 'zowe auth login'.</li>
 </ul>
 </li>
 <li>
@@ -172,17 +166,15 @@ default token type, which is provided by 'zowe auth login'.</li>
 <h4>Examples</h4>
 <ul>
 <li>
-<p>Create a resource with (subsys)name &lt;SUBS_NAME&gt; from
-template with name &lt;TEMPLATE_NAME&gt; on system &lt;SYS_NAME&gt;:</p>
+<p>Create a resource with (subsys)name &lt;SUBS_NAME&gt; from template with name &lt;TEMPLATE_NAME&gt; on system &lt;SYS_NAME&gt;:</p>
 <ul>
-<li><code>zowe  system-automation create resource --template=TEMPLATE_NAME --name=SUBS_NAME --system=SYS_NAME</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  system-automation create resource --template=TEMPLATE_NAME --name=SUBS_NAME --system=SYS_NAME">Copy</button></li>
+<li><code>zowe system-automation create resource --template=TEMPLATE_NAME --name=SUBS_NAME --system=SYS_NAME</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe system-automation create resource --template=TEMPLATE_NAME --name=SUBS_NAME --system=SYS_NAME">Copy</button></li>
 </ul>
 </li>
 <li>
-<p>Create a resource with (subsys)name &lt;SUBS_NAME&gt; from
-template with ID &lt;TEMPLATE_ID&gt; on system &lt;SYS_NAME&gt;:</p>
+<p>Create a resource with (subsys)name &lt;SUBS_NAME&gt; from template with ID &lt;TEMPLATE_ID&gt; on system &lt;SYS_NAME&gt;:</p>
 <ul>
-<li><code>zowe  system-automation create resource --id=TEMPLATE_ID --name=SUBS_NAME --system=SYS_NAME</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  system-automation create resource --id=TEMPLATE_ID --name=SUBS_NAME --system=SYS_NAME">Copy</button></li>
+<li><code>zowe system-automation create resource --id=TEMPLATE_ID --name=SUBS_NAME --system=SYS_NAME</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe system-automation create resource --id=TEMPLATE_ID --name=SUBS_NAME --system=SYS_NAME">Copy</button></li>
 </ul>
 </li>
 </ul>

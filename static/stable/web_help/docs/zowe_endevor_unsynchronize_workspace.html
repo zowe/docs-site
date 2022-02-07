@@ -7,10 +7,9 @@
 <link rel="stylesheet" href="../css/docs.css">
 <article class="markdown-body">
 <h2><a href="zowe.html">zowe</a> › <a href="zowe_endevor.html">endevor</a> › <a href="zowe_endevor_unsynchronize.html">unsynchronize</a> › <a href="zowe_endevor_unsynchronize_workspace.html">workspace</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
-<p>Remove a selected subset of remote CA Endevor SCM inventory from a local CA
-Endevor SCM workspace</p>
+<p>Remove a selected subset of remote CA Endevor SCM inventory from a local CA Endevor SCM workspace</p>
 <h4>Usage</h4>
-<p>zowe  endevor unsynchronize workspace [workspace-dir] [options]</p>
+<p>zowe endevor unsynchronize workspace [workspace-dir] [options]</p>
 <h4>Positional Arguments</h4>
 <ul>
 <li>
@@ -79,8 +78,7 @@ Endevor SCM workspace</p>
 <li>
 <p><code>--force</code>  | <code>-f</code> <em>(boolean)</em></p>
 <ul>
-<li>Force unsynchronization of local workspace regardless of any local changes not
-yet saved into Endevor.</li>
+<li>Force unsynchronization of local workspace regardless of any local changes not yet saved into Endevor.</li>
 </ul>
 </li>
 </ul>
@@ -103,8 +101,8 @@ yet saved into Endevor.</li>
 <ul>
 <li>
 <p>Specifies the protocol used for connecting to CA Endevor SCM Rest API</p>
-<p>Default value: https</p>
-<p>Allowed values: http, https</p>
+<p>Default value: https<br>
+Allowed values: http, https</p>
 </li>
 </ul>
 </li>
@@ -123,8 +121,7 @@ yet saved into Endevor.</li>
 <li>
 <p><code>--reject-unauthorized</code>  | <code>--ru</code> <em>(boolean)</em></p>
 <ul>
-<li>Specify this option to have the server certificate verified against the list of
-supplied CAs</li>
+<li>Specify this option to have the server certificate verified against the list of supplied CAs</li>
 </ul>
 </li>
 <li>
@@ -160,8 +157,7 @@ supplied CAs</li>
 <li>
 <p><code>--token-type</code>  | <code>--tt</code> <em>(string)</em></p>
 <ul>
-<li>The type of token to get and use for the API. Omit this option to use the
-default token type, which is provided by 'zowe auth login'.</li>
+<li>The type of token to get and use for the API. Omit this option to use the default token type, which is provided by 'zowe auth login'.</li>
 </ul>
 </li>
 <li>
@@ -186,33 +182,27 @@ default token type, which is provided by 'zowe auth login'.</li>
 <h4>Examples</h4>
 <ul>
 <li>
-<p>Remove all elements in the map location defined by the
-currently active endevor-location profile from current directory:</p>
+<p>Remove all elements in the map location defined by the currently active endevor-location profile from current directory:</p>
 <ul>
-<li><code>zowe  endevor unsynchronize workspace</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  endevor unsynchronize workspace">Copy</button></li>
+<li><code>zowe endevor unsynchronize workspace</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe endevor unsynchronize workspace">Copy</button></li>
 </ul>
 </li>
 <li>
-<p>Remove all elements in the map location defined by the
-currently active endevor-location profile from current directory, throwing away
-any local changes not saved in Endevor:</p>
+<p>Remove all elements in the map location defined by the currently active endevor-location profile from current directory, throwing away any local changes not saved in Endevor:</p>
 <ul>
-<li><code>zowe  endevor unsynchronize workspace --force</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  endevor unsynchronize workspace --force">Copy</button></li>
+<li><code>zowe endevor unsynchronize workspace --force</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe endevor unsynchronize workspace --force">Copy</button></li>
 </ul>
 </li>
 <li>
-<p>Remove all elements in the map location defined by the
-currently active endevor-location profile from workspace directory
-'C:/projects/myWorkspace':</p>
+<p>Remove all elements in the map location defined by the currently active endevor-location profile from workspace directory 'C:/projects/myWorkspace':</p>
 <ul>
-<li><code>zowe  endevor unsynchronize workspace 'C:/projects/myWorkspace'</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  endevor unsynchronize workspace 'C:/projects/myWorkspace'">Copy</button></li>
+<li><code>zowe endevor unsynchronize workspace 'C:/projects/myWorkspace'</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe endevor unsynchronize workspace 'C:/projects/myWorkspace'">Copy</button></li>
 </ul>
 </li>
 <li>
-<p>Remove all elements in system SYSTEM1 subsystem SUBSYS1
-environment DEV stage 1, whose type begins with 'ASM', from current directory:</p>
+<p>Remove all elements in system SYSTEM1 subsystem SUBSYS1 environment DEV stage 1, whose type begins with 'ASM', from current directory:</p>
 <ul>
-<li><code>zowe  endevor unsynchronize workspace --environment DEV --stage_number 1 --system SYSTEM1 --subsystem SUBSYS1 --type ASM* --ccid myccid --comment 'my changes'</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  endevor unsynchronize workspace --environment DEV --stage_number 1 --system SYSTEM1 --subsystem SUBSYS1 --type ASM* --ccid myccid --comment 'my changes'">Copy</button></li>
+<li><code>zowe endevor unsynchronize workspace --environment DEV --stage_number 1 --system SYSTEM1 --subsystem SUBSYS1 --type ASM* --ccid myccid --comment 'my changes'</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe endevor unsynchronize workspace --environment DEV --stage_number 1 --system SYSTEM1 --subsystem SUBSYS1 --type ASM* --ccid myccid --comment 'my changes'">Copy</button></li>
 </ul>
 </li>
 </ul>

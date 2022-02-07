@@ -7,19 +7,15 @@
 <link rel="stylesheet" href="../css/docs.css">
 <article class="markdown-body">
 <h2><a href="zowe.html">zowe</a> › <a href="zowe_profiles.html">profiles</a> › <a href="zowe_profiles_update.html">update</a> › <a href="zowe_profiles_update_ims-profile.html">ims-profile</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
-<p>An ims profile is used to issue commands in the ims command group that interact
-with IMS regions. The ims profile contains your IMS Operations API web server
-host, port, user name and password, IMS Connect host and port and IMS plex
-name.</p>
+<p>An ims profile is used to issue commands in the ims command group that interact with IMS regions. The ims profile contains your IMS Operations API web server host, port, user name and password, IMS Connect host and port and IMS plex name.</p>
 <h4>Usage</h4>
-<p>zowe  profiles create ims-profile &lt;profileName&gt; [options]</p>
+<p>zowe profiles update ims-profile &lt;profileName&gt; [options]</p>
 <h4>Positional Arguments</h4>
 <ul>
 <li>
 <p><code>profileName</code>		 <em>(string)</em></p>
 <ul>
-<li>Specifies the name of the new ims profile. You can load this profile by using
-the name on commands that support the &quot;--ims-profile&quot; option.</li>
+<li>Specifies the name of the new ims profile. You can load this profile by using the name on commands that support the &quot;--ims-profile&quot; option.</li>
 </ul>
 </li>
 </ul>
@@ -40,15 +36,13 @@ the name on commands that support the &quot;--ims-profile&quot; option.</li>
 <li>
 <p><code>--ims-connect-host</code>  | <code>--ich</code> <em>(string)</em></p>
 <ul>
-<li>The hostname of your instance of IMS Connect. This is typically the hostname of
-the mainframe LPAR where IMS Connect is running.</li>
+<li>The hostname of your instance of IMS Connect. This is typically the hostname of the mainframe LPAR where IMS Connect is running.</li>
 </ul>
 </li>
 <li>
 <p><code>--ims-connect-port</code>  | <code>--icp</code> <em>(number)</em></p>
 <ul>
-<li>The port of your instance of IMS Connect. This port can be found in your IMS
-Connect configuration file on the mainframe.</li>
+<li>The port of your instance of IMS Connect. This port can be found in your IMS Connect configuration file on the mainframe.</li>
 </ul>
 </li>
 <li>
@@ -72,9 +66,7 @@ Connect configuration file on the mainframe.</li>
 <li>
 <p><code>--base-path</code>  | <code>--bp</code> <em>(string)</em></p>
 <ul>
-<li>The base path for your API mediation layer instance. Specify this option to
-prepend the base path to all z/OSMF resources when making REST requests. Do not
-specify this option if you are not using an API mediation layer.</li>
+<li>The base path for your API mediation layer instance. Specify this option to prepend the base path to all z/OSMF resources when making REST requests. Do not specify this option if you are not using an API mediation layer.</li>
 </ul>
 </li>
 </ul>

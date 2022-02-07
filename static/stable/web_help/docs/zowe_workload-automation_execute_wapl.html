@@ -9,14 +9,13 @@
 <h2><a href="zowe.html">zowe</a> › <a href="zowe_workload-automation.html">workload-automation</a> › <a href="zowe_workload-automation_execute.html">execute</a> › <a href="zowe_workload-automation_execute_wapl.html">wapl</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
 <p>Execute one or multiple WAPL statements from a command line.</p>
 <h4>Usage</h4>
-<p>zowe  workload-automation execute wapl [options]</p>
+<p>zowe workload-automation execute wapl [options]</p>
 <h4>Options</h4>
 <ul>
 <li>
 <p><code>--command</code>  | <code>--cmd</code> <em>(string)</em></p>
 <ul>
-<li>Execute one or multiple WAPL statements from a command line using semicolon (;)
-as command separator</li>
+<li>Execute one or multiple WAPL statements from a command line using semicolon (;) as command separator</li>
 </ul>
 </li>
 <li>
@@ -61,9 +60,7 @@ as command separator</li>
 <li>
 <p><code>--base-path</code>  | <code>--bp</code> <em>(string)</em></p>
 <ul>
-<li>Base path of your API mediation layer instance. If a base path is specified,
-the plug-in connects to API ML. Specify this value according to the yaml
-static file added to API ML</li>
+<li>Base path of your API mediation layer instance. If a base path is specified, the plug-in connects to API ML. Specify this value according to the yaml static file added to API ML</li>
 </ul>
 </li>
 <li>
@@ -96,8 +93,7 @@ static file added to API ML</li>
 <li>
 <p><code>--token-type</code>  | <code>--tt</code> <em>(string)</em></p>
 <ul>
-<li>The type of token to get and use for the API. Omit this option to use the
-default token type, which is provided by 'zowe auth login'.</li>
+<li>The type of token to get and use for the API. Omit this option to use the default token type, which is provided by 'zowe auth login'.</li>
 </ul>
 </li>
 <li>
@@ -124,13 +120,13 @@ default token type, which is provided by 'zowe auth login'.</li>
 <li>
 <p>List all applications named MYAD:</p>
 <ul>
-<li><code>zowe  workload-automation execute wapl --command  &quot;LOADDEF AD* DATA(-) LOADER(*);OPTIONS STRIP(Y) EXPAND(N) SELECT(Y) SERVER(Y);LIST AD ADID(MYAD)&quot;</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  workload-automation execute wapl --command  &quot;LOADDEF AD* DATA(-) LOADER(*);OPTIONS STRIP(Y) EXPAND(N) SELECT(Y) SERVER(Y);LIST AD ADID(MYAD)&quot;">Copy</button></li>
+<li><code>zowe workload-automation execute wapl --command  &quot;LOADDEF AD* DATA(-) LOADER(*);OPTIONS STRIP(Y) EXPAND(N) SELECT(Y) SERVER(Y);LIST AD ADID(MYAD)&quot;</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe workload-automation execute wapl --command  &quot;LOADDEF AD* DATA(-) LOADER(*);OPTIONS STRIP(Y) EXPAND(N) SELECT(Y) SERVER(Y);LIST AD ADID(MYAD)&quot;">Copy</button></li>
 </ul>
 </li>
 <li>
 <p>Execute a file with WAPL statements:</p>
 <ul>
-<li><code>zowe  workload-automation execute wapl --file  waplfile.txt</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  workload-automation execute wapl --file  waplfile.txt">Copy</button></li>
+<li><code>zowe workload-automation execute wapl --file  waplfile.txt</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe workload-automation execute wapl --file  waplfile.txt">Copy</button></li>
 </ul>
 </li>
 </ul>

@@ -7,17 +7,15 @@
 <link rel="stylesheet" href="../css/docs.css">
 <article class="markdown-body">
 <h2><a href="zowe.html">zowe</a> › <a href="zowe_profiles.html">profiles</a> › <a href="zowe_profiles_update.html">update</a> › <a href="zowe_profiles_update_caspool-profile.html">caspool-profile</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
-<p>Configuration profile for CA Spool, where you specify information about your CA
-Spool instance</p>
+<p>Configuration profile for CA Spool, where you specify information about your CA Spool instance</p>
 <h4>Usage</h4>
-<p>zowe  profiles create caspool-profile &lt;profileName&gt; [options]</p>
+<p>zowe profiles update caspool-profile &lt;profileName&gt; [options]</p>
 <h4>Positional Arguments</h4>
 <ul>
 <li>
 <p><code>profileName</code>		 <em>(string)</em></p>
 <ul>
-<li>Specifies the name of the new caspool profile. You can load this profile by
-using the name on commands that support the &quot;--caspool-profile&quot; option.</li>
+<li>Specifies the name of the new caspool profile. You can load this profile by using the name on commands that support the &quot;--caspool-profile&quot; option.</li>
 </ul>
 </li>
 </ul>
@@ -44,8 +42,7 @@ using the name on commands that support the &quot;--caspool-profile&quot; option
 <li>
 <p><code>--outds</code>  | <code>--out</code> <em>(string)</em></p>
 <ul>
-<li>The SYSTSPRT data set allocated by CAI.CBQ4JCL(BQ4JZOWE). It must be unique
-for each Zowe CLI user interacting with CA Spool.</li>
+<li>The SYSTSPRT data set allocated by CAI.CBQ4JCL(BQ4JZOWE). It must be unique for each Zowe CLI user interacting with CA Spool.</li>
 </ul>
 </li>
 <li>
@@ -58,38 +55,33 @@ for each Zowe CLI user interacting with CA Spool.</li>
 <h4>Examples</h4>
 <ul>
 <li>
-<p>Update the TSO account information to '3213213210' for CA
-Spool profile named 'myProfile':</p>
+<p>Update the TSO account information to '3213213210' for CA Spool profile named 'myProfile':</p>
 <ul>
-<li><code>zowe  profiles create caspool-profile myProfile --account 3213213210</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  profiles create caspool-profile myProfile --account 3213213210">Copy</button></li>
+<li><code>zowe profiles update caspool-profile myProfile --account 3213213210</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe profiles update caspool-profile myProfile --account 3213213210">Copy</button></li>
 </ul>
 </li>
 <li>
-<p>Update high level qualifier of the CA Spool installation to
-'CASPOOL.HLQ' for CA Spool profile named 'myProfile':</p>
+<p>Update high level qualifier of the CA Spool installation to 'CASPOOL.HLQ' for CA Spool profile named 'myProfile':</p>
 <ul>
-<li><code>zowe  profiles create caspool-profile myProfile --spoolhlq CASPOOL.HLQ</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  profiles create caspool-profile myProfile --spoolhlq CASPOOL.HLQ">Copy</button></li>
+<li><code>zowe profiles update caspool-profile myProfile --spoolhlq CASPOOL.HLQ</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe profiles update caspool-profile myProfile --spoolhlq CASPOOL.HLQ">Copy</button></li>
 </ul>
 </li>
 <li>
-<p>Update the CA Spool subsystem name to 'ESF2' for CA Spool
-profile named 'myProfile':</p>
+<p>Update the CA Spool subsystem name to 'ESF2' for CA Spool profile named 'myProfile':</p>
 <ul>
-<li><code>zowe  profiles create caspool-profile myProfile --subsys ESF2</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  profiles create caspool-profile myProfile --subsys ESF2">Copy</button></li>
+<li><code>zowe profiles update caspool-profile myProfile --subsys ESF2</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe profiles update caspool-profile myProfile --subsys ESF2">Copy</button></li>
 </ul>
 </li>
 <li>
-<p>Update the output response data set to
-'OUTPUT.RESPONSE.DS.NEW' for CA Spool profile named 'myProfile':</p>
+<p>Update the output response data set to 'OUTPUT.RESPONSE.DS.NEW' for CA Spool profile named 'myProfile':</p>
 <ul>
-<li><code>zowe  profiles create caspool-profile myProfile --outds OUTPUT.RESPONSE.DS.NEW</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  profiles create caspool-profile myProfile --outds OUTPUT.RESPONSE.DS.NEW">Copy</button></li>
+<li><code>zowe profiles update caspool-profile myProfile --outds OUTPUT.RESPONSE.DS.NEW</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe profiles update caspool-profile myProfile --outds OUTPUT.RESPONSE.DS.NEW">Copy</button></li>
 </ul>
 </li>
 <li>
-<p>Update the data set containing ESFZOWE REXX exec to
-'USER.CLIST' for CA Spool profile named 'myProfile':</p>
+<p>Update the data set containing ESFZOWE REXX exec to 'USER.CLIST' for CA Spool profile named 'myProfile':</p>
 <ul>
-<li><code>zowe  profiles create caspool-profile myProfile --clist USER.CLIST</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  profiles create caspool-profile myProfile --clist USER.CLIST">Copy</button></li>
+<li><code>zowe profiles update caspool-profile myProfile --clist USER.CLIST</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe profiles update caspool-profile myProfile --clist USER.CLIST">Copy</button></li>
 </ul>
 </li>
 </ul>

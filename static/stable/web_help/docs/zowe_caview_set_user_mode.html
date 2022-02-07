@@ -9,7 +9,7 @@
 <h2><a href="zowe.html">zowe</a> › <a href="zowe_caview.html">caview</a> › <a href="zowe_caview_set.html">set</a> › <a href="zowe_caview_set_user.html">user</a> › <a href="zowe_caview_set_user_mode.html">mode</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
 <p>Set mode for current user in repository.</p>
 <h4>Usage</h4>
-<p>zowe  caview set user mode &lt;repositoryId&gt; &lt;mode&gt; [options]</p>
+<p>zowe caview set user mode &lt;repositoryId&gt; &lt;mode&gt; [options]</p>
 <h4>Positional Arguments</h4>
 <ul>
 <li>
@@ -21,7 +21,7 @@
 <li>
 <p><code>mode</code>		 <em>(string)</em></p>
 <ul>
-<li>User mode.
+<li>User mode.<br>
 Must match regular expression: <code>^(ALL|SAR|SARO|EXP|EXPO)$</code></li>
 </ul>
 </li>
@@ -32,10 +32,9 @@ Must match regular expression: <code>^(ALL|SAR|SARO|EXP|EXPO)$</code></li>
 <p><code>--output-format</code>  | <code>--output</code> <em>(string)</em></p>
 <ul>
 <li>
-<p>Output format. This option is ignored if '--response-format-json' is
-specified.</p>
-<p>Default value: tabular</p>
-<p>Allowed values: ^tabular$, ^csv$, ^json$, ^xml$</p>
+<p>Output format. This option is ignored if '--response-format-json' is specified.</p>
+<p>Default value: tabular<br>
+Allowed values: ^tabular$, ^csv$, ^json$, ^xml$</p>
 </li>
 </ul>
 </li>
@@ -43,8 +42,7 @@ specified.</p>
 <p><code>--output-header</code>  | <code>--header</code> <em>(boolean)</em></p>
 <ul>
 <li>
-<p>Include header with field names in the output when you specify 'tabular' or
-'csv' for the output format.
+<p>Include header with field names in the output when you specify 'tabular' or 'csv' for the output format.<br>
 This option is ignored when you specify any other output format.</p>
 <p>Default value: true</p>
 </li>
@@ -54,10 +52,9 @@ This option is ignored when you specify any other output format.</p>
 <p><code>--output-field</code>  | <code>-f</code> <em>(array)</em></p>
 <ul>
 <li>
-<p>Field to include in the output. Multiple fields can be specified.
+<p>Field to include in the output. Multiple fields can be specified.<br>
 Fields appear in the order you specify.</p>
-<p>Allowed values:
-Mode,DistId,ModeAccess,DistMask,Banner,Language,MasterAuthority,Printer,UserId</p>
+<p>Allowed values: Mode,DistId,ModeAccess,DistMask,Banner,Language,MasterAuthority,Printer,UserId</p>
 <p>Default value: Mode,DistId,ModeAccess,DistMask</p>
 </li>
 </ul>
@@ -116,8 +113,7 @@ Mode,DistId,ModeAccess,DistMask,Banner,Language,MasterAuthority,Printer,UserId</
 <li>
 <p><code>--token-type</code>  | <code>--tt</code> <em>(string)</em></p>
 <ul>
-<li>The type of token to get and use for the API. Omit this option to use the
-default token type, which is provided by 'zowe auth login'.</li>
+<li>The type of token to get and use for the API. Omit this option to use the default token type, which is provided by 'zowe auth login'.</li>
 </ul>
 </li>
 <li>

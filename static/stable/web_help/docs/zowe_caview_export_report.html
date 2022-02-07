@@ -9,7 +9,7 @@
 <h2><a href="zowe.html">zowe</a> › <a href="zowe_caview.html">caview</a> › <a href="zowe_caview_export.html">export</a> › <a href="zowe_caview_export_report.html">report</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
 <p>Export text report to spreadsheet using a predefined export rule.</p>
 <h4>Usage</h4>
-<p>zowe  caview export report &lt;repositoryId&gt; &lt;reportHandle&gt; &lt;ruleId&gt; [fileTarget] [options]</p>
+<p>zowe caview export report &lt;repositoryId&gt; &lt;reportHandle&gt; &lt;ruleId&gt; [fileTarget] [options]</p>
 <h4>Positional Arguments</h4>
 <ul>
 <li>
@@ -33,15 +33,11 @@
 <li>
 <p><code>fileTarget</code>		 <em>(string)</em></p>
 <ul>
-<li>Local file path.
-If the path represents a directory location, the report will be exported into
-that directory using a default file name.
-If the path does not represent a directory location, the report will be exported
-into the specified path.
-If the path is not specified, the file will be saved to the current working
-directory using the default file name.
-Any missing directories will be created. If the target file already exists, the
-file will be overwritten.</li>
+<li>Local file path.<br>
+If the path represents a directory location, the report will be exported into that directory using a default file name.<br>
+If the path does not represent a directory location, the report will be exported into the specified path.<br>
+If the path is not specified, the file will be saved to the current working directory using the default file name.<br>
+Any missing directories will be created. If the target file already exists, the file will be overwritten.</li>
 </ul>
 </li>
 </ul>
@@ -51,10 +47,8 @@ file will be overwritten.</li>
 <p><code>--pages</code>  <em>(string)</em></p>
 <ul>
 <li>
-<p>Include the specified page numbers (or page ranges). Separate page numbers (or
-page ranges) with commas.
-Separate boundaries of a page range with a dash (-). If you do not specify
-this option, all the pages of the report are exported.</p>
+<p>Include the specified page numbers (or page ranges). Separate page numbers (or page ranges) with commas.<br>
+Separate boundaries of a page range with a dash (-). If you do not specify this option, all the pages of the report are exported.</p>
 <p>Allowed values: ^(\d+(-\d+)?)(,(\d+(-\d+)?))*$</p>
 </li>
 </ul>
@@ -113,8 +107,7 @@ this option, all the pages of the report are exported.</p>
 <li>
 <p><code>--token-type</code>  | <code>--tt</code> <em>(string)</em></p>
 <ul>
-<li>The type of token to get and use for the API. Omit this option to use the
-default token type, which is provided by 'zowe auth login'.</li>
+<li>The type of token to get and use for the API. Omit this option to use the default token type, which is provided by 'zowe auth login'.</li>
 </ul>
 </li>
 <li>

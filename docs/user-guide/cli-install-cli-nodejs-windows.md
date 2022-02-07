@@ -2,16 +2,18 @@
 
 There are three preferred installation workarounds in the event that you are:
 
-- using Node.js version 16 with npm version 8 on Windows, wish to install from the TGZ, and have restricted Internet access
-- otherwise unable to install from the Zowe CLI TGZ bundle on Windows while offline
+* Using Node.js version 16 with npm version 8 on Windows, wish to install from the TGZ, and have restricted Internet access
+* Otherwise unable to install from the Zowe CLI TGZ bundle on Windows while offline
+
+**Note:** The TGZ bundle that we supply is designed to support offline installation (the computer is not connected to the Internet). We recently detected (and reported) an issue with NPM that prevents you from installing the TGZ bundle when the computer is not connected to the Internet. If you encountered this problem, we ask you to upvote the issue ([NPM fails to globally install packages from TGZ bundle without Internet connection #4332](https://github.com/npm/cli/issues/4332)).
 
 The workaround installation options are, in order of preference:
 
-- Configure NPM proxy to access the public NPM registry (npmjs.org) so that the install from TGZ can succeed. To configure an NPM proxy:
-  - If your proxy is HTTP: `npm config set proxy <proxyUrl>`
-  - If your proxy is HTTPS: `npm config set https-proxy <proxyUrl>`
-- Install CLI from an online registry instead of TGZ. This may also require configuring an NPM proxy. See [Installing Zowe CLI from an online registry](cli-installcli.md#installing-zowe-cli-from-an-online-registry).
-- Downgrade NPM to version 6. To downgrade from a newer version of NPM, issue the command: `npm install -g npm@6.x`
+* Configure NPM proxy to access the public NPM registry (npmjs.org) so that the install from TGZ can succeed. To configure an NPM proxy:
+  * If your proxy is HTTP: `npm config set proxy <proxyUrl>`
+  * If your proxy is HTTPS: `npm config set https-proxy <proxyUrl>`
+* Install CLI from an online registry instead of TGZ. This may also require configuring an NPM proxy. See [Installing Zowe CLI from an online registry](cli-installcli.md#installing-zowe-cli-from-an-online-registry).
+* Downgrade NPM to version 6. To downgrade from a newer version of NPM, issue the command: `npm install -g npm@6.x`
 
 ## Additional Considerations
 

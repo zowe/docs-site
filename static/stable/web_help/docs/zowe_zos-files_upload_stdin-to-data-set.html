@@ -9,7 +9,7 @@
 <h2><a href="zowe.html">zowe</a> › <a href="zowe_zos-files.html">zos-files</a> › <a href="zowe_zos-files_upload.html">upload</a> › <a href="zowe_zos-files_upload_stdin-to-data-set.html">stdin-to-data-set</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
 <p>Upload the content of a stdin to a z/OS data set</p>
 <h4>Usage</h4>
-<p>zowe  zos-files upload stdin-to-data-set &lt;dataSetName&gt; [options]</p>
+<p>zowe zos-files upload stdin-to-data-set &lt;dataSetName&gt; [options]</p>
 <h4>Positional Arguments</h4>
 <ul>
 <li>
@@ -24,18 +24,14 @@
 <li>
 <p><code>--binary</code>  | <code>-b</code> <em>(boolean)</em></p>
 <ul>
-<li>Data content in binary mode, which means that no data conversion is performed.
-The data transfer process returns each record as-is, without translation. No
-delimiters are added between records.</li>
+<li>Data content in binary mode, which means that no data conversion is performed. The data transfer process returns each record as-is, without translation. No delimiters are added between records.</li>
 </ul>
 </li>
 <li>
 <p><code>--migrated-recall</code>  | <code>--mr</code> <em>(string)</em></p>
 <ul>
 <li>
-<p>The method by which migrated data set is handled. By default, a migrated data
-set is recalled synchronously. You can specify the following values: wait,
-nowait, error</p>
+<p>The method by which migrated data set is handled. By default, a migrated data set is recalled synchronously. You can specify the following values: wait, nowait, error</p>
 <p>Default value: nowait</p>
 </li>
 </ul>
@@ -43,17 +39,13 @@ nowait, error</p>
 <li>
 <p><code>--volume-serial</code>  | <code>--vs</code> <em>(string)</em></p>
 <ul>
-<li>The volume serial (VOLSER) where the data set resides. You can use this option
-at any time. However, the VOLSER is required only when the data set is not
-cataloged on the system. A VOLSER is analogous to a drive name on a PC.</li>
+<li>The volume serial (VOLSER) where the data set resides. You can use this option at any time. However, the VOLSER is required only when the data set is not cataloged on the system. A VOLSER is analogous to a drive name on a PC.</li>
 </ul>
 </li>
 <li>
 <p><code>--response-timeout</code>  | <code>--rto</code> <em>(number)</em></p>
 <ul>
-<li>The maximum amount of time in seconds the z/OSMF Files TSO servlet should run
-before returning a response. Any request exceeding this amount of time will be
-terminated and return an error. Allowed values: 5 - 600</li>
+<li>The maximum amount of time in seconds the z/OSMF Files TSO servlet should run before returning a response. Any request exceeding this amount of time will be terminated and return an error. Allowed values: 5 - 600</li>
 </ul>
 </li>
 </ul>
@@ -98,9 +90,7 @@ terminated and return an error. Allowed values: 5 - 600</li>
 <li>
 <p><code>--base-path</code>  | <code>--bp</code> <em>(string)</em></p>
 <ul>
-<li>The base path for your API mediation layer instance. Specify this option to
-prepend the base path to all z/OSMF resources when making REST requests. Do not
-specify this option if you are not using an API mediation layer.</li>
+<li>The base path for your API mediation layer instance. Specify this option to prepend the base path to all z/OSMF resources when making REST requests. Do not specify this option if you are not using an API mediation layer.</li>
 </ul>
 </li>
 <li>
@@ -108,8 +98,8 @@ specify this option if you are not using an API mediation layer.</li>
 <ul>
 <li>
 <p>The protocol used (HTTP or HTTPS)</p>
-<p>Default value: https</p>
-<p>Allowed values: http, https</p>
+<p>Default value: https<br>
+Allowed values: http, https</p>
 </li>
 </ul>
 </li>
@@ -146,8 +136,7 @@ specify this option if you are not using an API mediation layer.</li>
 <li>
 <p><code>--token-type</code>  | <code>--tt</code> <em>(string)</em></p>
 <ul>
-<li>The type of token to get and use for the API. Omit this option to use the
-default token type, which is provided by 'zowe auth login'.</li>
+<li>The type of token to get and use for the API. Omit this option to use the default token type, which is provided by 'zowe auth login'.</li>
 </ul>
 </li>
 <li>
@@ -160,24 +149,21 @@ default token type, which is provided by 'zowe auth login'.</li>
 <h4>Examples</h4>
 <ul>
 <li>
-<p>Stream content from stdin to a sequential data set named
-&quot;<a href="http://ibmuser.ps">ibmuser.ps</a>&quot; from a Windows console:</p>
+<p>Stream content from stdin to a sequential data set named &quot;<a href="http://ibmuser.ps">ibmuser.ps</a>&quot; from a Windows console:</p>
 <ul>
-<li><code>echo &quot;hello world&quot; |  zowe  zos-files upload stdin-to-data-set &quot;ibmuser.ps&quot;</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="echo &quot;hello world&quot; |  zowe  zos-files upload stdin-to-data-set &quot;ibmuser.ps&quot;">Copy</button></li>
+<li><code>echo &quot;hello world&quot; |  zowe zos-files upload stdin-to-data-set &quot;ibmuser.ps&quot;</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="echo &quot;hello world&quot; |  zowe zos-files upload stdin-to-data-set &quot;ibmuser.ps&quot;">Copy</button></li>
 </ul>
 </li>
 <li>
-<p>Stream content from stdin to a partition data set member
-named &quot;ibmuser.pds(mem)&quot; from a Windows console:</p>
+<p>Stream content from stdin to a partition data set member named &quot;ibmuser.pds(mem)&quot; from a Windows console:</p>
 <ul>
-<li><code>echo &quot;hello world&quot; |  zowe  zos-files upload stdin-to-data-set &quot;ibmuser.pds(mem)&quot;</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="echo &quot;hello world&quot; |  zowe  zos-files upload stdin-to-data-set &quot;ibmuser.pds(mem)&quot;">Copy</button></li>
+<li><code>echo &quot;hello world&quot; |  zowe zos-files upload stdin-to-data-set &quot;ibmuser.pds(mem)&quot;</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="echo &quot;hello world&quot; |  zowe zos-files upload stdin-to-data-set &quot;ibmuser.pds(mem)&quot;">Copy</button></li>
 </ul>
 </li>
 <li>
-<p>Stream content from stdin to a migrated data set and wait
-for it to be recalled from a Windows console:</p>
+<p>Stream content from stdin to a migrated data set and wait for it to be recalled from a Windows console:</p>
 <ul>
-<li><code>echo &quot;hello world&quot; |  zowe  zos-files upload stdin-to-data-set &quot;ibmuser.ps&quot; --mr wait</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="echo &quot;hello world&quot; |  zowe  zos-files upload stdin-to-data-set &quot;ibmuser.ps&quot; --mr wait">Copy</button></li>
+<li><code>echo &quot;hello world&quot; |  zowe zos-files upload stdin-to-data-set &quot;ibmuser.ps&quot; --mr wait</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="echo &quot;hello world&quot; |  zowe zos-files upload stdin-to-data-set &quot;ibmuser.ps&quot; --mr wait">Copy</button></li>
 </ul>
 </li>
 </ul>

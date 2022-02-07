@@ -7,15 +7,14 @@
 <link rel="stylesheet" href="../css/docs.css">
 <article class="markdown-body">
 <h2><a href="zowe.html">zowe</a> › <a href="zowe_system-automation.html">system-automation</a> › <a href="zowe_system-automation_activate.html">activate</a> › <a href="zowe_system-automation_activate_policy.html">policy</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
-<p>Updates all SAPlex members (Automation Manager and -Agents) with the definition
-that is stored in the specified policy dataset.
+<p>Updates all SAPlex members (Automation Manager and -Agents) with the definition that is stored in the specified policy dataset.<br>
 Using '*' as policyName causes a refresh of current policy.</p>
 <p>Requires (min.): SA Operations API 1.1.0</p>
-<p>Following Success Messages can be returned by this command:
-SACLI001100 - Policy activation with {PolicyDatasetName} has been requested
+<p>Following Success Messages can be returned by this command:<br>
+SACLI001100 - Policy activation with {PolicyDatasetName} has been requested<br>
 SACLI001110 - Re-Activation of current active policy has been requested</p>
 <h4>Usage</h4>
-<p>zowe  system-automation activate policy [options]</p>
+<p>zowe system-automation activate policy [options]</p>
 <h4>Options</h4>
 <ul>
 <li>
@@ -35,8 +34,8 @@ SACLI001110 - Re-Activation of current active policy has been requested</p>
 <ul>
 <li>
 <p>Enables the suspend file option</p>
-<p>Default value: NOSUSPEND</p>
-<p>Allowed values: NOSUSPEND, FORCESUSPEND</p>
+<p>Default value: NOSUSPEND<br>
+Allowed values: NOSUSPEND, FORCESUSPEND</p>
 </li>
 </ul>
 </li>
@@ -94,8 +93,7 @@ SACLI001110 - Re-Activation of current active policy has been requested</p>
 <li>
 <p><code>--token-type</code>  | <code>--tt</code> <em>(string)</em></p>
 <ul>
-<li>The type of token to get and use for the API. Omit this option to use the
-default token type, which is provided by 'zowe auth login'.</li>
+<li>The type of token to get and use for the API. Omit this option to use the default token type, which is provided by 'zowe auth login'.</li>
 </ul>
 </li>
 <li>
@@ -122,14 +120,13 @@ default token type, which is provided by 'zowe auth login'.</li>
 <li>
 <p>Re-activate the current active policy:</p>
 <ul>
-<li><code>zowe  system-automation activate policy *</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  system-automation activate policy *">Copy</button></li>
+<li><code>zowe system-automation activate policy *</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe system-automation activate policy *">Copy</button></li>
 </ul>
 </li>
 <li>
-<p>Activate the policy specified by the dataset
-USER.POLICIES.SACNTL with option FORCESUSPEND:</p>
+<p>Activate the policy specified by the dataset USER.POLICIES.SACNTL with option FORCESUSPEND:</p>
 <ul>
-<li><code>zowe  system-automation activate policy --policyName USER.POLICIES.SACNTL --suspendFileOption=FORCESUSPEND</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  system-automation activate policy --policyName USER.POLICIES.SACNTL --suspendFileOption=FORCESUSPEND">Copy</button></li>
+<li><code>zowe system-automation activate policy --policyName USER.POLICIES.SACNTL --suspendFileOption=FORCESUSPEND</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe system-automation activate policy --policyName USER.POLICIES.SACNTL --suspendFileOption=FORCESUSPEND">Copy</button></li>
 </ul>
 </li>
 </ul>

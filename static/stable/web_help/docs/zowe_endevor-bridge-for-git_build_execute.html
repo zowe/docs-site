@@ -7,11 +7,9 @@
 <link rel="stylesheet" href="../css/docs.css">
 <article class="markdown-body">
 <h2><a href="zowe.html">zowe</a> › <a href="zowe_endevor-bridge-for-git.html">endevor-bridge-for-git</a> › <a href="zowe_endevor-bridge-for-git_build.html">build</a> › <a href="zowe_endevor-bridge-for-git_build_execute.html">execute</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
-<p>Build changes against remote git repository's CA Endevor Bridge for Git
-synchronized branch, using work area or build <a href="http://subsystem.It">subsystem.It</a> does not support
-autogen for building dependencies.</p>
+<p>Build changes against remote git repository's CA Endevor Bridge for Git synchronized branch, using work area or build <a href="http://subsystem.It">subsystem.It</a> does not support autogen for building dependencies.</p>
 <h4>Usage</h4>
-<p>zowe  endevor-bridge-for-git build execute [options]</p>
+<p>zowe endevor-bridge-for-git build execute [options]</p>
 <h4>Required Options</h4>
 <ul>
 <li>
@@ -32,8 +30,7 @@ autogen for building dependencies.</p>
 <li>
 <p><code>--endevor-subsystem</code>  | <code>--endevorsub</code> <em>(string)</em></p>
 <ul>
-<li>The CA Endevor SCM build subsystem. Note: The build subsystem can be cleared
-without prior permission.</li>
+<li>The CA Endevor SCM build subsystem. Note: The build subsystem can be cleared without prior permission.</li>
 </ul>
 </li>
 <li>
@@ -73,8 +70,7 @@ without prior permission.</li>
 <p><code>--listing-rc</code>  <em>(number)</em></p>
 <ul>
 <li>
-<p>All the elements that have a generate result equal to or greater than
-&quot;listing-rc&quot; will have their build outputs downloaded into &quot;listing-dir&quot;</p>
+<p>All the elements that have a generate result equal to or greater than &quot;listing-rc&quot; will have their build outputs downloaded into &quot;listing-dir&quot;</p>
 <p>Default value: 4</p>
 </li>
 </ul>
@@ -197,8 +193,7 @@ without prior permission.</li>
 <li>
 <p><code>--token-type</code>  | <code>--tt</code> <em>(string)</em></p>
 <ul>
-<li>The type of token to get and use for the API. Omit this option to use the
-default token type, which is provided by 'zowe auth login'.</li>
+<li>The type of token to get and use for the API. Omit this option to use the default token type, which is provided by 'zowe auth login'.</li>
 </ul>
 </li>
 <li>
@@ -225,11 +220,7 @@ default token type, which is provided by 'zowe auth login'.</li>
 <li>
 <p><code>--response-format-filter</code>  | <code>--rff</code> <em>(array)</em></p>
 <ul>
-<li>Filter (include) fields in the response. Accepts an array of field/property
-names to include in the output response. You can filter JSON objects properties
-OR table columns/fields. In addition, you can use this option in conjunction
-with '--response-format-type' to reduce the output of a command to a single
-field/property or a list of a single field/property.</li>
+<li>Filter (include) fields in the response. Accepts an array of field/property names to include in the output response. You can filter JSON objects properties OR table columns/fields. In addition, you can use this option in conjunction with '--response-format-type' to reduce the output of a command to a single field/property or a list of a single field/property.</li>
 </ul>
 </li>
 <li>
@@ -237,15 +228,9 @@ field/property or a list of a single field/property.</li>
 <ul>
 <li>
 <p>The command response output format type. Must be one of the following:</p>
-<p>table: Formats output data as a table. Use this option when the output data is
-an array of homogeneous JSON objects. Each property of the object will become a
-column in the table.</p>
-<p>list: Formats output data as a list of strings. Can be used on any data type
-(JSON objects/arrays) are stringified and a new line is added after each entry
-in an array.</p>
-<p>object: Formats output data as a list of prettified objects (or single object).
-Can be used in place of &quot;table&quot; to change from tabular output to a list of
-prettified objects.</p>
+<p>table: Formats output data as a table. Use this option when the output data is an array of homogeneous JSON objects. Each property of the object will become a column in the table.</p>
+<p>list: Formats output data as a list of strings. Can be used on any data type (JSON objects/arrays) are stringified and a new line is added after each entry in an array.</p>
+<p>object: Formats output data as a list of prettified objects (or single object). Can be used in place of &quot;table&quot; to change from tabular output to a list of prettified objects.</p>
 <p>string: Formats output data as a string. JSON objects/arrays are stringified.</p>
 <p>Allowed values: table, list, object, string</p>
 </li>
@@ -254,25 +239,22 @@ prettified objects.</p>
 <li>
 <p><code>--response-format-header</code>  | <code>--rfh</code> <em>(boolean)</em></p>
 <ul>
-<li>If &quot;--response-format-type table&quot; is specified, include the column headers
-in the output.</li>
+<li>If &quot;--response-format-type table&quot; is specified, include the column headers in the output.</li>
 </ul>
 </li>
 </ul>
 <h4>Examples</h4>
 <ul>
 <li>
-<p>Compile the changed elements in the current Git working
-directory using the work area &quot;WORKAREA1&quot; and an existing Endevor profile:</p>
+<p>Compile the changed elements in the current Git working directory using the work area &quot;WORKAREA1&quot; and an existing Endevor profile:</p>
 <ul>
-<li><code>zowe  endevor-bridge-for-git build execute --endevor-instance INSTANCE --work-area-id WORKAREA1</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  endevor-bridge-for-git build execute --endevor-instance INSTANCE --work-area-id WORKAREA1">Copy</button></li>
+<li><code>zowe endevor-bridge-for-git build execute --endevor-instance INSTANCE --work-area-id WORKAREA1</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe endevor-bridge-for-git build execute --endevor-instance INSTANCE --work-area-id WORKAREA1">Copy</button></li>
 </ul>
 </li>
 <li>
-<p>Compile the changed elements in the current Git working
-directory using the build subsystem &quot;SUBNAME&quot; and an existing Endevor profile:</p>
+<p>Compile the changed elements in the current Git working directory using the build subsystem &quot;SUBNAME&quot; and an existing Endevor profile:</p>
 <ul>
-<li><code>zowe  endevor-bridge-for-git build execute --endevor-instance INSTANCE --endevor-subsystem SUBNAME --endevor-environment ENVNAME --endevor-system SYSNAME</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  endevor-bridge-for-git build execute --endevor-instance INSTANCE --endevor-subsystem SUBNAME --endevor-environment ENVNAME --endevor-system SYSNAME">Copy</button></li>
+<li><code>zowe endevor-bridge-for-git build execute --endevor-instance INSTANCE --endevor-subsystem SUBNAME --endevor-environment ENVNAME --endevor-system SYSNAME</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe endevor-bridge-for-git build execute --endevor-instance INSTANCE --endevor-subsystem SUBNAME --endevor-environment ENVNAME --endevor-system SYSNAME">Copy</button></li>
 </ul>
 </li>
 </ul>

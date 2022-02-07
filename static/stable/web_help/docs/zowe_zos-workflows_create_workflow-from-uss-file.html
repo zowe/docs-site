@@ -9,7 +9,7 @@
 <h2><a href="zowe.html">zowe</a> › <a href="zowe_zos-workflows.html">zos-workflows</a> › <a href="zowe_zos-workflows_create.html">create</a> › <a href="zowe_zos-workflows_create_workflow-from-uss-file.html">workflow-from-uss-file</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
 <p>Create a workflow instance in z/OSMF using a USS file</p>
 <h4>Usage</h4>
-<p>zowe  zos-workflows create workflow-from-uss-file &lt;workflowName&gt; [options]</p>
+<p>zowe zos-workflows create workflow-from-uss-file &lt;workflowName&gt; [options]</p>
 <h4>Positional Arguments</h4>
 <ul>
 <li>
@@ -36,8 +36,7 @@
 <li>
 <p><code>--owner</code>  | <code>--ow</code> <em>(string)</em></p>
 <ul>
-<li>User ID of the workflow owner. This user can perform the workflow steps or
-delegate the steps to other users.</li>
+<li>User ID of the workflow owner. This user can perform the workflow steps or delegate the steps to other users.</li>
 </ul>
 </li>
 </ul>
@@ -46,18 +45,13 @@ delegate the steps to other users.</li>
 <li>
 <p><code>--variables-input-file</code>  | <code>--vif</code> <em>(string)</em></p>
 <ul>
-<li>Specifies an optional properties file that you can use to pre-specify values
-for one or more of the variables that are defined in the workflow definition
-file.</li>
+<li>Specifies an optional properties file that you can use to pre-specify values for one or more of the variables that are defined in the workflow definition file.</li>
 </ul>
 </li>
 <li>
 <p><code>--variables</code>  | <code>--vs</code> <em>(string)</em></p>
 <ul>
-<li>Includes a list of variables for the workflow. The variables that you specify
-here take precedence over the variables that are specified in the workflow
-variable input file. Make sure the value meets all regular expression
-requirements set for the corresponding variable.</li>
+<li>Includes a list of variables for the workflow. The variables that you specify here take precedence over the variables that are specified in the workflow variable input file. Make sure the value meets all regular expression requirements set for the corresponding variable.</li>
 </ul>
 </li>
 <li>
@@ -129,9 +123,7 @@ requirements set for the corresponding variable.</li>
 <li>
 <p><code>--base-path</code>  | <code>--bp</code> <em>(string)</em></p>
 <ul>
-<li>The base path for your API mediation layer instance. Specify this option to
-prepend the base path to all z/OSMF resources when making REST requests. Do not
-specify this option if you are not using an API mediation layer.</li>
+<li>The base path for your API mediation layer instance. Specify this option to prepend the base path to all z/OSMF resources when making REST requests. Do not specify this option if you are not using an API mediation layer.</li>
 </ul>
 </li>
 <li>
@@ -139,8 +131,8 @@ specify this option if you are not using an API mediation layer.</li>
 <ul>
 <li>
 <p>The protocol used (HTTP or HTTPS)</p>
-<p>Default value: https</p>
-<p>Allowed values: http, https</p>
+<p>Default value: https<br>
+Allowed values: http, https</p>
 </li>
 </ul>
 </li>
@@ -177,8 +169,7 @@ specify this option if you are not using an API mediation layer.</li>
 <li>
 <p><code>--token-type</code>  | <code>--tt</code> <em>(string)</em></p>
 <ul>
-<li>The type of token to get and use for the API. Omit this option to use the
-default token type, which is provided by 'zowe auth login'.</li>
+<li>The type of token to get and use for the API. Omit this option to use the default token type, which is provided by 'zowe auth login'.</li>
 </ul>
 </li>
 <li>
@@ -193,11 +184,7 @@ default token type, which is provided by 'zowe auth login'.</li>
 <li>
 <p><code>--response-format-filter</code>  | <code>--rff</code> <em>(array)</em></p>
 <ul>
-<li>Filter (include) fields in the response. Accepts an array of field/property
-names to include in the output response. You can filter JSON objects properties
-OR table columns/fields. In addition, you can use this option in conjunction
-with '--response-format-type' to reduce the output of a command to a single
-field/property or a list of a single field/property.</li>
+<li>Filter (include) fields in the response. Accepts an array of field/property names to include in the output response. You can filter JSON objects properties OR table columns/fields. In addition, you can use this option in conjunction with '--response-format-type' to reduce the output of a command to a single field/property or a list of a single field/property.</li>
 </ul>
 </li>
 <li>
@@ -205,15 +192,9 @@ field/property or a list of a single field/property.</li>
 <ul>
 <li>
 <p>The command response output format type. Must be one of the following:</p>
-<p>table: Formats output data as a table. Use this option when the output data is
-an array of homogeneous JSON objects. Each property of the object will become a
-column in the table.</p>
-<p>list: Formats output data as a list of strings. Can be used on any data type
-(JSON objects/arrays) are stringified and a new line is added after each entry
-in an array.</p>
-<p>object: Formats output data as a list of prettified objects (or single object).
-Can be used in place of &quot;table&quot; to change from tabular output to a list of
-prettified objects.</p>
+<p>table: Formats output data as a table. Use this option when the output data is an array of homogeneous JSON objects. Each property of the object will become a column in the table.</p>
+<p>list: Formats output data as a list of strings. Can be used on any data type (JSON objects/arrays) are stringified and a new line is added after each entry in an array.</p>
+<p>object: Formats output data as a list of prettified objects (or single object). Can be used in place of &quot;table&quot; to change from tabular output to a list of prettified objects.</p>
 <p>string: Formats output data as a string. JSON objects/arrays are stringified.</p>
 <p>Allowed values: table, list, object, string</p>
 </li>
@@ -222,46 +203,34 @@ prettified objects.</p>
 <li>
 <p><code>--response-format-header</code>  | <code>--rfh</code> <em>(boolean)</em></p>
 <ul>
-<li>If &quot;--response-format-type table&quot; is specified, include the column headers
-in the output.</li>
+<li>If &quot;--response-format-type table&quot; is specified, include the column headers in the output.</li>
 </ul>
 </li>
 </ul>
 <h4>Examples</h4>
 <ul>
 <li>
-<p>Create a workflow with name &quot;testworkflow&quot; using uss file
-&quot;/path/workflow.xml&quot; containing workflow definition, on system &quot;TESTM1&quot; with
-owner &quot;OTHERID&quot; and delete workflow with the same name if it already exist in
-z/OSMF:</p>
+<p>Create a workflow with name &quot;testworkflow&quot; using uss file &quot;/path/workflow.xml&quot; containing workflow definition, on system &quot;TESTM1&quot; with owner &quot;OTHERID&quot; and delete workflow with the same name if it already exist in z/OSMF:</p>
 <ul>
-<li><code>zowe  zos-workflows create workflow-from-uss-file &quot;testworkflow&quot; --uss-file &quot;/path/workflow.xml&quot; --system-name &quot;TESTM1&quot; --owner &quot;OTHERID&quot; --overwrite</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  zos-workflows create workflow-from-uss-file &quot;testworkflow&quot; --uss-file &quot;/path/workflow.xml&quot; --system-name &quot;TESTM1&quot; --owner &quot;OTHERID&quot; --overwrite">Copy</button></li>
+<li><code>zowe zos-workflows create workflow-from-uss-file &quot;testworkflow&quot; --uss-file &quot;/path/workflow.xml&quot; --system-name &quot;TESTM1&quot; --owner &quot;OTHERID&quot; --overwrite</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe zos-workflows create workflow-from-uss-file &quot;testworkflow&quot; --uss-file &quot;/path/workflow.xml&quot; --system-name &quot;TESTM1&quot; --owner &quot;OTHERID&quot; --overwrite">Copy</button></li>
 </ul>
 </li>
 <li>
-<p>Create a workflow with name &quot;testworkflow&quot; using uss file
-&quot;/path/workflow.xml&quot; containing workflow definition, on system &quot;TESTM1&quot; with
-owner &quot;MYSYSID&quot; and delete successfully completed jobs:</p>
+<p>Create a workflow with name &quot;testworkflow&quot; using uss file &quot;/path/workflow.xml&quot; containing workflow definition, on system &quot;TESTM1&quot; with owner &quot;MYSYSID&quot; and delete successfully completed jobs:</p>
 <ul>
-<li><code>zowe  zos-workflows create workflow-from-uss-file &quot;testworkflow&quot; --uss-file &quot;/path/workflow.xml&quot; --system-name &quot;TESTM1&quot; --owner &quot;MYSYSID&quot; --delete-completed</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  zos-workflows create workflow-from-uss-file &quot;testworkflow&quot; --uss-file &quot;/path/workflow.xml&quot; --system-name &quot;TESTM1&quot; --owner &quot;MYSYSID&quot; --delete-completed">Copy</button></li>
+<li><code>zowe zos-workflows create workflow-from-uss-file &quot;testworkflow&quot; --uss-file &quot;/path/workflow.xml&quot; --system-name &quot;TESTM1&quot; --owner &quot;MYSYSID&quot; --delete-completed</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe zos-workflows create workflow-from-uss-file &quot;testworkflow&quot; --uss-file &quot;/path/workflow.xml&quot; --system-name &quot;TESTM1&quot; --owner &quot;MYSYSID&quot; --delete-completed">Copy</button></li>
 </ul>
 </li>
 <li>
-<p>Create a workflow with name &quot;testworkflow&quot; using uss file
-&quot;/path/workflow.xml&quot; containing workflow definition, on system &quot;TESTM1&quot; with
-owner &quot;MYSYSID&quot; and with variable values in the member PROPERTIES of data set
-TESTID.DATA:</p>
+<p>Create a workflow with name &quot;testworkflow&quot; using uss file &quot;/path/workflow.xml&quot; containing workflow definition, on system &quot;TESTM1&quot; with owner &quot;MYSYSID&quot; and with variable values in the member PROPERTIES of data set TESTID.DATA:</p>
 <ul>
-<li><code>zowe  zos-workflows create workflow-from-uss-file &quot;testworkflow&quot; --uss-file &quot;/path/workflow.xml&quot; --system-name &quot;TESTM1&quot; --owner &quot;MYSYSID&quot; --variables-input-file TESTID.DATA(PROPERTIES)</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  zos-workflows create workflow-from-uss-file &quot;testworkflow&quot; --uss-file &quot;/path/workflow.xml&quot; --system-name &quot;TESTM1&quot; --owner &quot;MYSYSID&quot; --variables-input-file TESTID.DATA(PROPERTIES)">Copy</button></li>
+<li><code>zowe zos-workflows create workflow-from-uss-file &quot;testworkflow&quot; --uss-file &quot;/path/workflow.xml&quot; --system-name &quot;TESTM1&quot; --owner &quot;MYSYSID&quot; --variables-input-file TESTID.DATA(PROPERTIES)</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe zos-workflows create workflow-from-uss-file &quot;testworkflow&quot; --uss-file &quot;/path/workflow.xml&quot; --system-name &quot;TESTM1&quot; --owner &quot;MYSYSID&quot; --variables-input-file TESTID.DATA(PROPERTIES)">Copy</button></li>
 </ul>
 </li>
 <li>
-<p>Create a workflow with name &quot;testworkflow&quot; using uss file
-&quot;/path/workflow.xml&quot; containing workflow definition, on system &quot;TESTM1&quot; with
-owner &quot;MYSYSID&quot; and with variables VAR1 and VAR2 with values DUMMYVAL1 and
-DUMMYVAL2, and assign it to the owner:</p>
+<p>Create a workflow with name &quot;testworkflow&quot; using uss file &quot;/path/workflow.xml&quot; containing workflow definition, on system &quot;TESTM1&quot; with owner &quot;MYSYSID&quot; and with variables VAR1 and VAR2 with values DUMMYVAL1 and DUMMYVAL2, and assign it to the owner:</p>
 <ul>
-<li><code>zowe  zos-workflows create workflow-from-uss-file &quot;testworkflow&quot; --uss-file &quot;/path/workflow.xml&quot; --system-name &quot;TESTM1&quot;--variables VAR1=DUMMYVAL1,VAR2=DUMMYVAL2 --owner &quot;MYSYSID&quot; --assign-to-owner</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  zos-workflows create workflow-from-uss-file &quot;testworkflow&quot; --uss-file &quot;/path/workflow.xml&quot; --system-name &quot;TESTM1&quot;--variables VAR1=DUMMYVAL1,VAR2=DUMMYVAL2 --owner &quot;MYSYSID&quot; --assign-to-owner">Copy</button></li>
+<li><code>zowe zos-workflows create workflow-from-uss-file &quot;testworkflow&quot; --uss-file &quot;/path/workflow.xml&quot; --system-name &quot;TESTM1&quot;--variables VAR1=DUMMYVAL1,VAR2=DUMMYVAL2 --owner &quot;MYSYSID&quot; --assign-to-owner</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe zos-workflows create workflow-from-uss-file &quot;testworkflow&quot; --uss-file &quot;/path/workflow.xml&quot; --system-name &quot;TESTM1&quot;--variables VAR1=DUMMYVAL1,VAR2=DUMMYVAL2 --owner &quot;MYSYSID&quot; --assign-to-owner">Copy</button></li>
 </ul>
 </li>
 </ul>

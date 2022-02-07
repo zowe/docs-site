@@ -7,10 +7,10 @@
 <link rel="stylesheet" href="../css/docs.css">
 <article class="markdown-body">
 <h2><a href="zowe.html">zowe</a> › <a href="zowe_caview.html">caview</a> › <a href="zowe_caview_download.html">download</a> › <a href="zowe_caview_download_report.html">report</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
-<p>Download report data.
+<p>Download report data.<br>
 Optionally convert text report to PDF.</p>
 <h4>Usage</h4>
-<p>zowe  caview download report &lt;repositoryId&gt; &lt;reportHandle&gt; [fileTarget] [options]</p>
+<p>zowe caview download report &lt;repositoryId&gt; &lt;reportHandle&gt; [fileTarget] [options]</p>
 <h4>Positional Arguments</h4>
 <ul>
 <li>
@@ -28,15 +28,11 @@ Optionally convert text report to PDF.</p>
 <li>
 <p><code>fileTarget</code>		 <em>(string)</em></p>
 <ul>
-<li>Local file path.
-If the path represents a directory location, the report will be downloaded into
-that directory using a default file name.
-If the path does not represent a directory location, the report will be
-downloaded into the specified path.
-If the path is not specified, the file will be saved to the current working
-directory using the default file name.
-Any missing directories will be created. If the target file already exists, the
-file will be overwritten.</li>
+<li>Local file path.<br>
+If the path represents a directory location, the report will be downloaded into that directory using a default file name.<br>
+If the path does not represent a directory location, the report will be downloaded into the specified path.<br>
+If the path is not specified, the file will be saved to the current working directory using the default file name.<br>
+Any missing directories will be created. If the target file already exists, the file will be overwritten.</li>
 </ul>
 </li>
 </ul>
@@ -56,8 +52,8 @@ file will be overwritten.</li>
 <ul>
 <li>
 <p>Page orientation for converted PDF.</p>
-<p>Default value: PORTRAIT</p>
-<p>Allowed values: ^PORTRAIT$, ^LANDSCAPE$</p>
+<p>Default value: PORTRAIT<br>
+Allowed values: ^PORTRAIT$, ^LANDSCAPE$</p>
 </li>
 </ul>
 </li>
@@ -83,10 +79,8 @@ file will be overwritten.</li>
 <p><code>--pages</code>  <em>(string)</em></p>
 <ul>
 <li>
-<p>Include the specified page numbers (or page ranges). Separate page numbers (or
-page ranges) with commas.
-Separate boundaries of a page range with a dash (-). If you do not specify
-this option, all the pages of the report are downloaded.</p>
+<p>Include the specified page numbers (or page ranges). Separate page numbers (or page ranges) with commas.<br>
+Separate boundaries of a page range with a dash (-). If you do not specify this option, all the pages of the report are downloaded.</p>
 <p>Allowed values: ^(\d+(-\d+)?)(,(\d+(-\d+)?))*$</p>
 </li>
 </ul>
@@ -94,7 +88,7 @@ this option, all the pages of the report are downloaded.</p>
 <li>
 <p><code>--content-filter</code>  | <code>--filter</code> <em>(string)</em></p>
 <ul>
-<li>Filter text report content using a permanent filter definition.
+<li>Filter text report content using a permanent filter definition.<br>
 If the product instance does not support this feature, this option is ignored.</li>
 </ul>
 </li>
@@ -152,8 +146,7 @@ If the product instance does not support this feature, this option is ignored.</
 <li>
 <p><code>--token-type</code>  | <code>--tt</code> <em>(string)</em></p>
 <ul>
-<li>The type of token to get and use for the API. Omit this option to use the
-default token type, which is provided by 'zowe auth login'.</li>
+<li>The type of token to get and use for the API. Omit this option to use the default token type, which is provided by 'zowe auth login'.</li>
 </ul>
 </li>
 <li>

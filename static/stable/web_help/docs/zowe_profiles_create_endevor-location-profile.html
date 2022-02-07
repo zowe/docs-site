@@ -7,18 +7,15 @@
 <link rel="stylesheet" href="../css/docs.css">
 <article class="markdown-body">
 <h2><a href="zowe.html">zowe</a> › <a href="zowe_profiles.html">profiles</a> › <a href="zowe_profiles_create.html">create</a> › <a href="zowe_profiles_create_endevor-location-profile.html">endevor-location-profile</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
-<p>The CA Endevor SCM element location, where you specify your working environment,
-system and subsystem</p>
+<p>The CA Endevor SCM element location, where you specify your working environment, system and subsystem</p>
 <h4>Usage</h4>
-<p>zowe  profiles create endevor-location-profile &lt;profileName&gt; [options]</p>
+<p>zowe profiles create endevor-location-profile &lt;profileName&gt; [options]</p>
 <h4>Positional Arguments</h4>
 <ul>
 <li>
 <p><code>profileName</code>		 <em>(string)</em></p>
 <ul>
-<li>Specifies the name of the new endevor-location profile. You can load this
-profile by using the name on commands that support the
-&quot;--endevor-location-profile&quot; option.</li>
+<li>Specifies the name of the new endevor-location profile. You can load this profile by using the name on commands that support the &quot;--endevor-location-profile&quot; option.</li>
 </ul>
 </li>
 </ul>
@@ -91,8 +88,7 @@ profile by using the name on commands that support the
 <p><code>--override-signout</code>  | <code>--os</code> <em>(boolean)</em></p>
 <ul>
 <li>
-<p>Always override element signout, without having to specify the override signout
-option on each command</p>
+<p>Always override element signout, without having to specify the override signout option on each command</p>
 <p>Default value: false</p>
 </li>
 </ul>
@@ -113,19 +109,15 @@ option on each command</p>
 <h4>Examples</h4>
 <ul>
 <li>
-<p>Create a location profile called 'ndvrLoc' to work at CA
-Endevor SCM location ENV/1/SYS/SUBSYS, with elements of type COBOL, using CA
-Endevor SCM web services configuration ENDEVOR:</p>
+<p>Create a location profile called 'ndvrLoc' to work at CA Endevor SCM location ENV/1/SYS/SUBSYS, with elements of type COBOL, using CA Endevor SCM web services configuration ENDEVOR:</p>
 <ul>
-<li><code>zowe  profiles create endevor-location-profile ndvrLoc --env ENV --sys SYS --sub SUBSYS --typ COBOL --sn 1 -i ENDEVOR</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  profiles create endevor-location-profile ndvrLoc --env ENV --sys SYS --sub SUBSYS --typ COBOL --sn 1 -i ENDEVOR">Copy</button></li>
+<li><code>zowe profiles create endevor-location-profile ndvrLoc --env ENV --sys SYS --sub SUBSYS --typ COBOL --sn 1 -i ENDEVOR</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe profiles create endevor-location-profile ndvrLoc --env ENV --sys SYS --sub SUBSYS --typ COBOL --sn 1 -i ENDEVOR">Copy</button></li>
 </ul>
 </li>
 <li>
-<p>Create a location profile called 'ndvrLoc2' to work at CA
-Endevor SCM location ENV/1/SYS/SUBSYS, using CCID 'CCID' and comment 'sample
-comment':</p>
+<p>Create a location profile called 'ndvrLoc2' to work at CA Endevor SCM location ENV/1/SYS/SUBSYS, using CCID 'CCID' and comment 'sample comment':</p>
 <ul>
-<li><code>zowe  profiles create endevor-location-profile ndvrLoc2 --env ENV --sys SYS --sub SUBSYS --sn 1 --com 'sample comment' --cci 'CCID'</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  profiles create endevor-location-profile ndvrLoc2 --env ENV --sys SYS --sub SUBSYS --sn 1 --com 'sample comment' --cci 'CCID'">Copy</button></li>
+<li><code>zowe profiles create endevor-location-profile ndvrLoc2 --env ENV --sys SYS --sub SUBSYS --sn 1 --com 'sample comment' --cci 'CCID'</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe profiles create endevor-location-profile ndvrLoc2 --env ENV --sys SYS --sub SUBSYS --sn 1 --com 'sample comment' --cci 'CCID'">Copy</button></li>
 </ul>
 </li>
 </ul>

@@ -9,89 +9,68 @@
 <h2><a href="zowe.html">zowe</a> › <a href="zowe_cics-deploy.html">cics-deploy</a> › <a href="zowe_cics-deploy_push.html">push</a> › <a href="zowe_cics-deploy_push_bundle.html">bundle</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
 <p>Push a CICS bundle from the working directory to a target CICSplex.</p>
 <h4>Usage</h4>
-<p>zowe  cics-deploy push bundle [options]</p>
+<p>zowe cics-deploy push bundle [options]</p>
 <h4>cics-deploy Options</h4>
 <ul>
 <li>
 <p><code>--name</code>  | <code>-n</code> <em>(string)</em></p>
 <ul>
-<li>Required. Specifies the name of the CICS BUNDLE resource (up to 8 characters)
-to deploy or undeploy.</li>
+<li>Required. Specifies the name of the CICS BUNDLE resource (up to 8 characters) to deploy or undeploy.</li>
 </ul>
 </li>
 <li>
 <p><code>--target-directory</code>  | <code>--td</code> | <code>--targetdir</code> | <code>--target-dir</code> <em>(string)</em></p>
 <ul>
-<li>Specifies the target zFS location in which the CICS bundle is to be created (up
-to 255 characters). This parameter defaults to the value specified in the
-cics-deploy profile.</li>
+<li>Specifies the target zFS location in which the CICS bundle is to be created (up to 255 characters). This parameter defaults to the value specified in the cics-deploy profile.</li>
 </ul>
 </li>
 <li>
 <p><code>--cicsplex</code>  | <code>--cp</code> <em>(string)</em></p>
 <ul>
-<li>Specifies the CICSplex (up to 8 characters) to target. This parameter defaults
-to the value specified in the cics-deploy profile.</li>
+<li>Specifies the CICSplex (up to 8 characters) to target. This parameter defaults to the value specified in the cics-deploy profile.</li>
 </ul>
 </li>
 <li>
 <p><code>--scope</code>  | <code>--sc</code> <em>(string)</em></p>
 <ul>
-<li>Specifies the name of the CICS System, or CICS System Group (up to 8 characters)
-to target. This parameter defaults to the value specified in the cics-deploy
-profile.</li>
+<li>Specifies the name of the CICS System, or CICS System Group (up to 8 characters) to target. This parameter defaults to the value specified in the cics-deploy profile.</li>
 </ul>
 </li>
 <li>
 <p><code>--csd-group</code>  | <code>--cg</code> | <code>--csdgroup</code> <em>(string)</em></p>
 <ul>
-<li>Specifies the CSD group (up to 8 characters) for the bundle resource. If a
-bundle is deployed, a definition is added to this group. If a bundle is
-undeployed, then the definition is removed from this group. The definition is
-added or removed from the CSD of each system that is specified by the --scope
-option. The --csd-group and --res-group options are mutually exclusive.</li>
+<li>Specifies the CSD group (up to 8 characters) for the bundle resource. If a bundle is deployed, a definition is added to this group. If a bundle is undeployed, then the definition is removed from this group. The definition is added or removed from the CSD of each system that is specified by the --scope option. The --csd-group and --res-group options are mutually exclusive.</li>
 </ul>
 </li>
 <li>
 <p><code>--res-group</code>  | <code>--rg</code> | <code>--resgroup</code> <em>(string)</em></p>
 <ul>
-<li>Specifies the BAS resource group (up to 8 characters) for the bundle resource.
-If a bundle is deployed, a resource is defined in the BAS data repository. If a
-bundle is undeployed, the definition is removed. The --csd-group and
---res-group options are mutually exclusive.</li>
+<li>Specifies the BAS resource group (up to 8 characters) for the bundle resource. If a bundle is deployed, a resource is defined in the BAS data repository. If a bundle is undeployed, the definition is removed. The --csd-group and --res-group options are mutually exclusive.</li>
 </ul>
 </li>
 <li>
 <p><code>--cics-hlq</code>  | <code>--cq</code> | <code>--cicshlq</code> <em>(string)</em></p>
 <ul>
-<li>Specifies the high-level qualifier (up to 35 characters) at which the CICS
-datasets can be found in the target environment. This parameter defaults to the
-value specified in the cics-deploy profile.</li>
+<li>Specifies the high-level qualifier (up to 35 characters) at which the CICS datasets can be found in the target environment. This parameter defaults to the value specified in the cics-deploy profile.</li>
 </ul>
 </li>
 <li>
 <p><code>--cpsm-hlq</code>  | <code>--cph</code> | <code>--cpsmhlq</code> <em>(string)</em></p>
 <ul>
-<li>Specifies the high-level qualifier (up to 35 characters) at which the CPSM
-datasets can be found in the target environment. This parameter defaults to the
-value specified in the cics-deploy profile.</li>
+<li>Specifies the high-level qualifier (up to 35 characters) at which the CPSM datasets can be found in the target environment. This parameter defaults to the value specified in the cics-deploy profile.</li>
 </ul>
 </li>
 <li>
 <p><code>--description</code>  | <code>--desc</code> <em>(string)</em></p>
 <ul>
-<li>An optional value that specifies a description of the bundle definition (up to
-58 characters).</li>
+<li>An optional value that specifies a description of the bundle definition (up to 58 characters).</li>
 </ul>
 </li>
 <li>
 <p><code>--job-card</code>  | <code>--jc</code> | <code>--jobcard</code> <em>(string)</em></p>
 <ul>
 <li>
-<p>Specifies the job card to use with any generated DFHDPLOY JCL. Use this
-parameter if you need to tailor the job card and you have not set the
---cics-deploy-profile option. You can separate multiple lines of the
-jobcard with \n.</p>
+<p>Specifies the job card to use with any generated DFHDPLOY JCL. Use this parameter if you need to tailor the job card and you have not set the --cics-deploy-profile option. You can separate multiple lines of the jobcard with \n.</p>
 <p>Default value: //DFHDPLOY JOB DFHDPLOY,CLASS=A,MSGCLASS=X,TIME=NOLIMIT</p>
 </li>
 </ul>
@@ -99,9 +78,7 @@ jobcard with \n.</p>
 <li>
 <p><code>--timeout</code>  | <code>--to</code> <em>(number)</em></p>
 <ul>
-<li>An optional numerical value that specifies the maximum amount of time in seconds
-(1 - 1800 inclusive) for the DFHDPLOY command to complete. If not specified
-DFHDPLOY will use its default of 300 seconds.</li>
+<li>An optional numerical value that specifies the maximum amount of time in seconds (1 - 1800 inclusive) for the DFHDPLOY command to complete. If not specified DFHDPLOY will use its default of 300 seconds.</li>
 </ul>
 </li>
 <li>
@@ -109,8 +86,8 @@ DFHDPLOY will use its default of 300 seconds.</li>
 <ul>
 <li>
 <p>Specifies the target state for the deployed bundle.</p>
-<p>Default value: ENABLED</p>
-<p>Allowed values: DISABLED, ENABLED, AVAILABLE</p>
+<p>Default value: ENABLED<br>
+Allowed values: DISABLED, ENABLED, AVAILABLE</p>
 </li>
 </ul>
 </li>
@@ -127,8 +104,7 @@ DFHDPLOY will use its default of 300 seconds.</li>
 <p><code>--overwrite</code>  | <code>--ow</code> <em>(boolean)</em></p>
 <ul>
 <li>
-<p>Enable or disable the ability to replace an existing bundle directory or bundle
-on the remote system.</p>
+<p>Enable or disable the ability to replace an existing bundle directory or bundle on the remote system.</p>
 <p>Default value: false</p>
 </li>
 </ul>
@@ -169,9 +145,7 @@ on the remote system.</p>
 <li>
 <p><code>--zosmf-base-path</code>  | <code>--zbp</code> <em>(string)</em></p>
 <ul>
-<li>The base path for your API mediation layer instance. Specify this option to
-prepend the base path to all z/OSMF resources when making REST requests. Do not
-specify this option if you are not using an API mediation layer.</li>
+<li>The base path for your API mediation layer instance. Specify this option to prepend the base path to all z/OSMF resources when making REST requests. Do not specify this option if you are not using an API mediation layer.</li>
 </ul>
 </li>
 </ul>
@@ -204,8 +178,7 @@ specify this option if you are not using an API mediation layer.</li>
 <li>
 <p><code>--ssh-private-key</code>  | <code>--spk</code> <em>(string)</em></p>
 <ul>
-<li>Path to a file containing your private key, that must match a public key stored
-in the server for authentication</li>
+<li>Path to a file containing your private key, that must match a public key stored in the server for authentication</li>
 </ul>
 </li>
 <li>
@@ -334,8 +307,7 @@ in the server for authentication</li>
 <li>
 <p><code>--token-type</code>  | <code>--tt</code> <em>(string)</em></p>
 <ul>
-<li>The type of token to get and use for the API. Omit this option to use the
-default token type, which is provided by 'zowe auth login'.</li>
+<li>The type of token to get and use for the API. Omit this option to use the default token type, which is provided by 'zowe auth login'.</li>
 </ul>
 </li>
 <li>
@@ -360,24 +332,21 @@ default token type, which is provided by 'zowe auth login'.</li>
 <h4>Examples</h4>
 <ul>
 <li>
-<p>Push a CICS bundle from the working directory by using
-default cics-deploy, cics, ssh and zosmf profiles:</p>
+<p>Push a CICS bundle from the working directory by using default cics-deploy, cics, ssh and zosmf profiles:</p>
 <ul>
-<li><code>zowe  cics-deploy push bundle --name EXAMPLE --target-directory /u/example/bundles</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  cics-deploy push bundle --name EXAMPLE --target-directory /u/example/bundles">Copy</button></li>
+<li><code>zowe cics-deploy push bundle --name EXAMPLE --target-directory /u/example/bundles</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe cics-deploy push bundle --name EXAMPLE --target-directory /u/example/bundles">Copy</button></li>
 </ul>
 </li>
 <li>
-<p>Push a CICS bundle from the working directory by using
-specific zosmf, ssh &amp; cics-deploy profiles:</p>
+<p>Push a CICS bundle from the working directory by using specific zosmf, ssh &amp; cics-deploy profiles:</p>
 <ul>
-<li><code>zowe  cics-deploy push bundle --name EXAMPLE --target-directory /u/example/bundles --zosmf-profile testplex --cics-deploy-profile devcics --ssh-profile ssh</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  cics-deploy push bundle --name EXAMPLE --target-directory /u/example/bundles --zosmf-profile testplex --cics-deploy-profile devcics --ssh-profile ssh">Copy</button></li>
+<li><code>zowe cics-deploy push bundle --name EXAMPLE --target-directory /u/example/bundles --zosmf-profile testplex --cics-deploy-profile devcics --ssh-profile ssh</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe cics-deploy push bundle --name EXAMPLE --target-directory /u/example/bundles --zosmf-profile testplex --cics-deploy-profile devcics --ssh-profile ssh">Copy</button></li>
 </ul>
 </li>
 <li>
-<p>Push a CICS bundle from the working directory replacing any
-bundle of the same name that is already deployed:</p>
+<p>Push a CICS bundle from the working directory replacing any bundle of the same name that is already deployed:</p>
 <ul>
-<li><code>zowe  cics-deploy push bundle --name EXAMPLE --target-directory /u/example/bundles --overwrite</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  cics-deploy push bundle --name EXAMPLE --target-directory /u/example/bundles --overwrite">Copy</button></li>
+<li><code>zowe cics-deploy push bundle --name EXAMPLE --target-directory /u/example/bundles --overwrite</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe cics-deploy push bundle --name EXAMPLE --target-directory /u/example/bundles --overwrite">Copy</button></li>
 </ul>
 </li>
 </ul>

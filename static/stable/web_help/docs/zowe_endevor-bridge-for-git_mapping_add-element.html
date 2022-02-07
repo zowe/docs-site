@@ -9,14 +9,13 @@
 <h2><a href="zowe.html">zowe</a> › <a href="zowe_endevor-bridge-for-git.html">endevor-bridge-for-git</a> › <a href="zowe_endevor-bridge-for-git_mapping.html">mapping</a> › <a href="zowe_endevor-bridge-for-git_mapping_add-element.html">add-element</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
 <p>Add an element from up the map in your CA Endevor to your Git repository.</p>
 <h4>Usage</h4>
-<p>zowe  endevor-bridge-for-git mapping add-element &lt;context&gt; &lt;mapping&gt; [options]</p>
+<p>zowe endevor-bridge-for-git mapping add-element &lt;context&gt; &lt;mapping&gt; [options]</p>
 <h4>Positional Arguments</h4>
 <ul>
 <li>
 <p><code>context</code>		 <em>(string)</em></p>
 <ul>
-<li>Git-Endevor mapping context (ID of the organization, project, team or owner of
-the Git repository).</li>
+<li>Git-Endevor mapping context (ID of the organization, project, team or owner of the Git repository).</li>
 </ul>
 </li>
 <li>
@@ -56,8 +55,7 @@ the Git repository).</li>
 <p><code>--withDependencies</code>  <em>(boolean)</em></p>
 <ul>
 <li>
-<p>If specified, the requested element will be added with dependencies (eg. COBOL
-copybooks).</p>
+<p>If specified, the requested element will be added with dependencies (eg. COBOL copybooks).</p>
 <p>Default value: false</p>
 </li>
 </ul>
@@ -66,8 +64,7 @@ copybooks).</p>
 <p><code>--force-get-dependencies</code>  | <code>--force</code> <em>(boolean)</em></p>
 <ul>
 <li>
-<p>If specified, the maximum number of dependencies will be bypassed. This only
-applies to the repository administrator.</p>
+<p>If specified, the maximum number of dependencies will be bypassed. This only applies to the repository administrator.</p>
 <p>Default value: false</p>
 </li>
 </ul>
@@ -91,8 +88,7 @@ applies to the repository administrator.</p>
 <p><code>--all-branches</code>  <em>(boolean)</em></p>
 <ul>
 <li>
-<p>If specified, the requested elements will be added to all synchronized branches
-in your repository.</p>
+<p>If specified, the requested elements will be added to all synchronized branches in your repository.</p>
 <p>Default value: false</p>
 </li>
 </ul>
@@ -100,8 +96,7 @@ in your repository.</p>
 <li>
 <p><code>--file</code>  | <code>--fn</code> <em>(local file path)</em></p>
 <ul>
-<li>If specified, the elements to add will be read from file. Make sure that the
-file is in the correct format as specified in the documentation.</li>
+<li>If specified, the elements to add will be read from file. Make sure that the file is in the correct format as specified in the documentation.</li>
 </ul>
 </li>
 </ul>
@@ -238,8 +233,7 @@ file is in the correct format as specified in the documentation.</li>
 <li>
 <p><code>--token-type</code>  | <code>--tt</code> <em>(string)</em></p>
 <ul>
-<li>The type of token to get and use for the API. Omit this option to use the
-default token type, which is provided by 'zowe auth login'.</li>
+<li>The type of token to get and use for the API. Omit this option to use the default token type, which is provided by 'zowe auth login'.</li>
 </ul>
 </li>
 <li>
@@ -264,17 +258,15 @@ default token type, which is provided by 'zowe auth login'.</li>
 <h4>Examples</h4>
 <ul>
 <li>
-<p>Add an element 'MY-ELEMENT-TYPE / MY-ELEMENT-NAME' for
-your mapping 'MY-CONTEXT / MY-MAPPING':</p>
+<p>Add an element 'MY-ELEMENT-TYPE / MY-ELEMENT-NAME' for your mapping 'MY-CONTEXT / MY-MAPPING':</p>
 <ul>
-<li><code>zowe  endevor-bridge-for-git mapping add-element MY-CONTEXT MY-MAPPING --name MY-ELEMENT-NAME --type MY-ELEMENT-TYPE</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  endevor-bridge-for-git mapping add-element MY-CONTEXT MY-MAPPING --name MY-ELEMENT-NAME --type MY-ELEMENT-TYPE">Copy</button></li>
+<li><code>zowe endevor-bridge-for-git mapping add-element MY-CONTEXT MY-MAPPING --name MY-ELEMENT-NAME --type MY-ELEMENT-TYPE</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe endevor-bridge-for-git mapping add-element MY-CONTEXT MY-MAPPING --name MY-ELEMENT-NAME --type MY-ELEMENT-TYPE">Copy</button></li>
 </ul>
 </li>
 <li>
-<p>Add multiple elements for your mapping 'MY-CONTEXT /
-MY-MAPPING' from file:</p>
+<p>Add multiple elements for your mapping 'MY-CONTEXT / MY-MAPPING' from file:</p>
 <ul>
-<li><code>zowe  endevor-bridge-for-git mapping add-element MY-CONTEXT MY-MAPPING --fileName MY-FILEPATH.json</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  endevor-bridge-for-git mapping add-element MY-CONTEXT MY-MAPPING --fileName MY-FILEPATH.json">Copy</button></li>
+<li><code>zowe endevor-bridge-for-git mapping add-element MY-CONTEXT MY-MAPPING --fileName MY-FILEPATH.json</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe endevor-bridge-for-git mapping add-element MY-CONTEXT MY-MAPPING --fileName MY-FILEPATH.json">Copy</button></li>
 </ul>
 </li>
 </ul>

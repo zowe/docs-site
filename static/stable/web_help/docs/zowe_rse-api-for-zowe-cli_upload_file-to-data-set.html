@@ -9,7 +9,7 @@
 <h2><a href="zowe.html">zowe</a> › <a href="zowe_rse-api-for-zowe-cli.html">rse-api-for-zowe-cli</a> › <a href="zowe_rse-api-for-zowe-cli_upload.html">upload</a> › <a href="zowe_rse-api-for-zowe-cli_upload_file-to-data-set.html">file-to-data-set</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
 <p>Upload the contents of a file to a z/OS data set</p>
 <h4>Usage</h4>
-<p>zowe  rse-api-for-zowe-cli upload file-to-data-set &lt;inputfile&gt; &lt;dataSetName&gt; [options]</p>
+<p>zowe rse-api-for-zowe-cli upload file-to-data-set &lt;inputfile&gt; &lt;dataSetName&gt; [options]</p>
 <h4>Positional Arguments</h4>
 <ul>
 <li>
@@ -30,16 +30,13 @@
 <li>
 <p><code>--binary</code>  | <code>-b</code> <em>(boolean)</em></p>
 <ul>
-<li>Data content in binary mode, which means that no data conversion is performed.
-The data transfer process returns each record as-is, without translation. No
-delimiters are added between records.</li>
+<li>Data content in binary mode, which means that no data conversion is performed. The data transfer process returns each record as-is, without translation. No delimiters are added between records.</li>
 </ul>
 </li>
 <li>
 <p><code>--encoding</code>  | <code>--ec</code> <em>(string)</em></p>
 <ul>
-<li>Upload the file content with encoding mode, which means that data conversion is
-performed using the file encoding specified.</li>
+<li>Upload the file content with encoding mode, which means that data conversion is performed using the file encoding specified.</li>
 </ul>
 </li>
 <li>
@@ -51,9 +48,7 @@ performed using the file encoding specified.</li>
 <li>
 <p><code>--volume-serial</code>  | <code>--vs</code> <em>(string)</em></p>
 <ul>
-<li>The volume serial (VOLSER) where the data set resides. You can use this option
-at any time. However, the VOLSER is required only when the data set is not
-cataloged on the system. A VOLSER is analogous to a drive name on a PC.</li>
+<li>The volume serial (VOLSER) where the data set resides. You can use this option at any time. However, the VOLSER is required only when the data set is not cataloged on the system. A VOLSER is analogous to a drive name on a PC.</li>
 </ul>
 </li>
 </ul>
@@ -110,8 +105,7 @@ cataloged on the system. A VOLSER is analogous to a drive name on a PC.</li>
 <li>
 <p><code>--token-type</code>  | <code>--tt</code> <em>(string)</em></p>
 <ul>
-<li>The type of token to get and use for the API. Omit this option to use the
-default token type, which is provided by 'zowe auth login'.</li>
+<li>The type of token to get and use for the API. Omit this option to use the default token type, which is provided by 'zowe auth login'.</li>
 </ul>
 </li>
 <li>
@@ -136,17 +130,15 @@ default token type, which is provided by 'zowe auth login'.</li>
 <h4>Examples</h4>
 <ul>
 <li>
-<p>Upload file contents to a sequential data set named
-&quot;<a href="http://ibmuser.ps">ibmuser.ps</a>&quot;:</p>
+<p>Upload file contents to a sequential data set named &quot;<a href="http://ibmuser.ps">ibmuser.ps</a>&quot;:</p>
 <ul>
-<li><code>zowe  rse-api-for-zowe-cli upload file-to-data-set &quot;file.txt&quot; &quot;ibmuser.ps&quot;</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  rse-api-for-zowe-cli upload file-to-data-set &quot;file.txt&quot; &quot;ibmuser.ps&quot;">Copy</button></li>
+<li><code>zowe rse-api-for-zowe-cli upload file-to-data-set &quot;file.txt&quot; &quot;ibmuser.ps&quot;</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe rse-api-for-zowe-cli upload file-to-data-set &quot;file.txt&quot; &quot;ibmuser.ps&quot;">Copy</button></li>
 </ul>
 </li>
 <li>
-<p>Upload file contents to a PDS member named
-&quot;ibmuser.pds(mem)&quot;:</p>
+<p>Upload file contents to a PDS member named &quot;ibmuser.pds(mem)&quot;:</p>
 <ul>
-<li><code>zowe  rse-api-for-zowe-cli upload file-to-data-set &quot;file.txt&quot; &quot;ibmuser.pds(mem)&quot;</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  rse-api-for-zowe-cli upload file-to-data-set &quot;file.txt&quot; &quot;ibmuser.pds(mem)&quot;">Copy</button></li>
+<li><code>zowe rse-api-for-zowe-cli upload file-to-data-set &quot;file.txt&quot; &quot;ibmuser.pds(mem)&quot;</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe rse-api-for-zowe-cli upload file-to-data-set &quot;file.txt&quot; &quot;ibmuser.pds(mem)&quot;">Copy</button></li>
 </ul>
 </li>
 </ul>

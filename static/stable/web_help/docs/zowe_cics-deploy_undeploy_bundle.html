@@ -7,78 +7,58 @@
 <link rel="stylesheet" href="../css/docs.css">
 <article class="markdown-body">
 <h2><a href="zowe.html">zowe</a> › <a href="zowe_cics-deploy.html">cics-deploy</a> › <a href="zowe_cics-deploy_undeploy.html">undeploy</a> › <a href="zowe_cics-deploy_undeploy_bundle.html">bundle</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
-<p>Undeploy a CICS bundle from one or more CICS regions within a CICSplex. The
-DFHDPLOY utility is used to undeploy and remove a BUNDLE resource from the
-target group of CICS regions.</p>
+<p>Undeploy a CICS bundle from one or more CICS regions within a CICSplex. The DFHDPLOY utility is used to undeploy and remove a BUNDLE resource from the target group of CICS regions.</p>
 <h4>Usage</h4>
-<p>zowe  cics-deploy undeploy bundle [options]</p>
+<p>zowe cics-deploy undeploy bundle [options]</p>
 <h4>cics-deploy Options</h4>
 <ul>
 <li>
 <p><code>--name</code>  | <code>-n</code> <em>(string)</em></p>
 <ul>
-<li>Required. Specifies the name of the CICS BUNDLE resource (up to 8 characters)
-to deploy or undeploy.</li>
+<li>Required. Specifies the name of the CICS BUNDLE resource (up to 8 characters) to deploy or undeploy.</li>
 </ul>
 </li>
 <li>
 <p><code>--cicsplex</code>  | <code>--cp</code> <em>(string)</em></p>
 <ul>
-<li>Specifies the CICSplex (up to 8 characters) to target. This parameter defaults
-to the value specified in the cics-deploy profile.</li>
+<li>Specifies the CICSplex (up to 8 characters) to target. This parameter defaults to the value specified in the cics-deploy profile.</li>
 </ul>
 </li>
 <li>
 <p><code>--scope</code>  | <code>--sc</code> <em>(string)</em></p>
 <ul>
-<li>Specifies the name of the CICS System, or CICS System Group (up to 8 characters)
-to target. This parameter defaults to the value specified in the cics-deploy
-profile.</li>
+<li>Specifies the name of the CICS System, or CICS System Group (up to 8 characters) to target. This parameter defaults to the value specified in the cics-deploy profile.</li>
 </ul>
 </li>
 <li>
 <p><code>--csd-group</code>  | <code>--cg</code> | <code>--csdgroup</code> <em>(string)</em></p>
 <ul>
-<li>Specifies the CSD group (up to 8 characters) for the bundle resource. If a
-bundle is deployed, a definition is added to this group. If a bundle is
-undeployed, then the definition is removed from this group. The definition is
-added or removed from the CSD of each system that is specified by the --scope
-option. The --csd-group and --res-group options are mutually exclusive.</li>
+<li>Specifies the CSD group (up to 8 characters) for the bundle resource. If a bundle is deployed, a definition is added to this group. If a bundle is undeployed, then the definition is removed from this group. The definition is added or removed from the CSD of each system that is specified by the --scope option. The --csd-group and --res-group options are mutually exclusive.</li>
 </ul>
 </li>
 <li>
 <p><code>--res-group</code>  | <code>--rg</code> | <code>--resgroup</code> <em>(string)</em></p>
 <ul>
-<li>Specifies the BAS resource group (up to 8 characters) for the bundle resource.
-If a bundle is deployed, a resource is defined in the BAS data repository. If a
-bundle is undeployed, the definition is removed. The --csd-group and
---res-group options are mutually exclusive.</li>
+<li>Specifies the BAS resource group (up to 8 characters) for the bundle resource. If a bundle is deployed, a resource is defined in the BAS data repository. If a bundle is undeployed, the definition is removed. The --csd-group and --res-group options are mutually exclusive.</li>
 </ul>
 </li>
 <li>
 <p><code>--cics-hlq</code>  | <code>--cq</code> | <code>--cicshlq</code> <em>(string)</em></p>
 <ul>
-<li>Specifies the high-level qualifier (up to 35 characters) at which the CICS
-datasets can be found in the target environment. This parameter defaults to the
-value specified in the cics-deploy profile.</li>
+<li>Specifies the high-level qualifier (up to 35 characters) at which the CICS datasets can be found in the target environment. This parameter defaults to the value specified in the cics-deploy profile.</li>
 </ul>
 </li>
 <li>
 <p><code>--cpsm-hlq</code>  | <code>--cph</code> | <code>--cpsmhlq</code> <em>(string)</em></p>
 <ul>
-<li>Specifies the high-level qualifier (up to 35 characters) at which the CPSM
-datasets can be found in the target environment. This parameter defaults to the
-value specified in the cics-deploy profile.</li>
+<li>Specifies the high-level qualifier (up to 35 characters) at which the CPSM datasets can be found in the target environment. This parameter defaults to the value specified in the cics-deploy profile.</li>
 </ul>
 </li>
 <li>
 <p><code>--job-card</code>  | <code>--jc</code> | <code>--jobcard</code> <em>(string)</em></p>
 <ul>
 <li>
-<p>Specifies the job card to use with any generated DFHDPLOY JCL. Use this
-parameter if you need to tailor the job card and you have not set the
---cics-deploy-profile option. You can separate multiple lines of the
-jobcard with \n.</p>
+<p>Specifies the job card to use with any generated DFHDPLOY JCL. Use this parameter if you need to tailor the job card and you have not set the --cics-deploy-profile option. You can separate multiple lines of the jobcard with \n.</p>
 <p>Default value: //DFHDPLOY JOB DFHDPLOY,CLASS=A,MSGCLASS=X,TIME=NOLIMIT</p>
 </li>
 </ul>
@@ -86,9 +66,7 @@ jobcard with \n.</p>
 <li>
 <p><code>--timeout</code>  | <code>--to</code> <em>(number)</em></p>
 <ul>
-<li>An optional numerical value that specifies the maximum amount of time in seconds
-(1 - 1800 inclusive) for the DFHDPLOY command to complete. If not specified
-DFHDPLOY will use its default of 300 seconds.</li>
+<li>An optional numerical value that specifies the maximum amount of time in seconds (1 - 1800 inclusive) for the DFHDPLOY command to complete. If not specified DFHDPLOY will use its default of 300 seconds.</li>
 </ul>
 </li>
 <li>
@@ -96,8 +74,8 @@ DFHDPLOY will use its default of 300 seconds.</li>
 <ul>
 <li>
 <p>Specifies the target state for the undeployed bundle.</p>
-<p>Default value: DISCARDED</p>
-<p>Allowed values: UNAVAILABLE, DISABLED, DISCARDED</p>
+<p>Default value: DISCARDED<br>
+Allowed values: UNAVAILABLE, DISABLED, DISCARDED</p>
 </li>
 </ul>
 </li>
@@ -146,9 +124,7 @@ DFHDPLOY will use its default of 300 seconds.</li>
 <li>
 <p><code>--zosmf-base-path</code>  | <code>--zbp</code> <em>(string)</em></p>
 <ul>
-<li>The base path for your API mediation layer instance. Specify this option to
-prepend the base path to all z/OSMF resources when making REST requests. Do not
-specify this option if you are not using an API mediation layer.</li>
+<li>The base path for your API mediation layer instance. Specify this option to prepend the base path to all z/OSMF resources when making REST requests. Do not specify this option if you are not using an API mediation layer.</li>
 </ul>
 </li>
 </ul>
@@ -211,8 +187,7 @@ specify this option if you are not using an API mediation layer.</li>
 <li>
 <p><code>--token-type</code>  | <code>--tt</code> <em>(string)</em></p>
 <ul>
-<li>The type of token to get and use for the API. Omit this option to use the
-default token type, which is provided by 'zowe auth login'.</li>
+<li>The type of token to get and use for the API. Omit this option to use the default token type, which is provided by 'zowe auth login'.</li>
 </ul>
 </li>
 <li>
@@ -237,24 +212,21 @@ default token type, which is provided by 'zowe auth login'.</li>
 <h4>Examples</h4>
 <ul>
 <li>
-<p>Undeploy a CICS bundle by using the default cics-deploy and
-zosmf profiles:</p>
+<p>Undeploy a CICS bundle by using the default cics-deploy and zosmf profiles:</p>
 <ul>
-<li><code>zowe  cics-deploy undeploy bundle --name EXAMPLE</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  cics-deploy undeploy bundle --name EXAMPLE">Copy</button></li>
+<li><code>zowe cics-deploy undeploy bundle --name EXAMPLE</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe cics-deploy undeploy bundle --name EXAMPLE">Copy</button></li>
 </ul>
 </li>
 <li>
-<p>Undeploy a CICS bundle, and declare a timeout if the
-processing takes too long:</p>
+<p>Undeploy a CICS bundle, and declare a timeout if the processing takes too long:</p>
 <ul>
-<li><code>zowe  cics-deploy undeploy bundle --name EXAMPLE --timeout 60</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  cics-deploy undeploy bundle --name EXAMPLE --timeout 60">Copy</button></li>
+<li><code>zowe cics-deploy undeploy bundle --name EXAMPLE --timeout 60</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe cics-deploy undeploy bundle --name EXAMPLE --timeout 60">Copy</button></li>
 </ul>
 </li>
 <li>
-<p>Undeploy a CICS bundle from a specific target environment by
-using specific zosmf and cics-deploy profiles:</p>
+<p>Undeploy a CICS bundle from a specific target environment by using specific zosmf and cics-deploy profiles:</p>
 <ul>
-<li><code>zowe  cics-deploy undeploy bundle --name EXAMPLE --cics-plex TESTPLEX --scope SCOPE --res-group BUNDGRP --cics-hlq CICSTS55.CICS720 --cpsm-hlq CICSTS55.CPSM550 --zosmf-profile testplex --cics-deploy-profile devcics</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  cics-deploy undeploy bundle --name EXAMPLE --cics-plex TESTPLEX --scope SCOPE --res-group BUNDGRP --cics-hlq CICSTS55.CICS720 --cpsm-hlq CICSTS55.CPSM550 --zosmf-profile testplex --cics-deploy-profile devcics">Copy</button></li>
+<li><code>zowe cics-deploy undeploy bundle --name EXAMPLE --cics-plex TESTPLEX --scope SCOPE --res-group BUNDGRP --cics-hlq CICSTS55.CICS720 --cpsm-hlq CICSTS55.CPSM550 --zosmf-profile testplex --cics-deploy-profile devcics</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe cics-deploy undeploy bundle --name EXAMPLE --cics-plex TESTPLEX --scope SCOPE --res-group BUNDGRP --cics-hlq CICSTS55.CICS720 --cpsm-hlq CICSTS55.CPSM550 --zosmf-profile testplex --cics-deploy-profile devcics">Copy</button></li>
 </ul>
 </li>
 </ul>

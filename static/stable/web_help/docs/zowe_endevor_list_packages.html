@@ -9,7 +9,7 @@
 <h2><a href="zowe.html">zowe</a> › <a href="zowe_endevor.html">endevor</a> › <a href="zowe_endevor_list.html">list</a> › <a href="zowe_endevor_list_packages.html">packages</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
 <p>The list packages command lists package information in CA Endevor SCM</p>
 <h4>Usage</h4>
-<p>zowe  endevor list packages [package] [options]</p>
+<p>zowe endevor list packages [package] [options]</p>
 <h4>Positional Arguments</h4>
 <ul>
 <li>
@@ -25,30 +25,23 @@
 <p><code>--status</code>  | <code>--st</code> <em>(string)</em></p>
 <ul>
 <li>
-<p>Specify the status of the packages. Valid values are [APPROVED, EXECFAILED]
-for execute action, and additional values [INEDIT, INAPPROVAL, INEXECUTION,
-EXECUTED, COMMITTED, DENIED] for list action, additional value [ALLSTATE] for
-delete action.
-It is possible to specify multiple status separated by &quot;,&quot; during list and
-delete package.</p>
-<p>Allowed values: ALLSTATE, INEDIT, INAPPROVAL, APPROVED, INEXECUTION, EXECUTED,
-COMMITTED, DENIED, EXECFAILED</p>
+<p>Specify the status of the packages. Valid values are [APPROVED, EXECFAILED] for execute action, and additional values [INEDIT, INAPPROVAL, INEXECUTION, EXECUTED, COMMITTED, DENIED] for list action, additional value [ALLSTATE] for delete action.<br>
+It is possible to specify multiple status separated by &quot;,&quot; during list and delete package.</p>
+<p>Allowed values: ALLSTATE, INEDIT, INAPPROVAL, APPROVED, INEXECUTION, EXECUTED, COMMITTED, DENIED, EXECFAILED</p>
 </li>
 </ul>
 </li>
 <li>
 <p><code>--emergency-package</code>  | <code>--ep</code> <em>(boolean)</em></p>
 <ul>
-<li>Specify if the package should be an emergency package. When not specified, the
-package is a standard package.</li>
+<li>Specify if the package should be an emergency package. When not specified, the package is a standard package.</li>
 </ul>
 </li>
 <li>
 <p><code>--enterprise</code>  | <code>--ent</code> <em>(string)</em></p>
 <ul>
 <li>
-<p>Specify to filter the list by enterprise Package parameter. A - All, E -
-Enterprise, X - eXclude.</p>
+<p>Specify to filter the list by enterprise Package parameter. A - All, E - Enterprise, X - eXclude.</p>
 <p>Allowed values: A, E, X</p>
 </li>
 </ul>
@@ -57,8 +50,7 @@ Enterprise, X - eXclude.</p>
 <p><code>--promotion-status</code>  | <code>--ps</code> <em>(string)</em></p>
 <ul>
 <li>
-<p>Specify to filter the list by promotion Package parameter. A - All, P -
-Promotion, X - eXclude.</p>
+<p>Specify to filter the list by promotion Package parameter. A - All, P - Promotion, X - eXclude.</p>
 <p>Allowed values: A, P, X</p>
 </li>
 </ul>
@@ -66,24 +58,19 @@ Promotion, X - eXclude.</p>
 <li>
 <p><code>--prom-target-env</code>  | <code>--pte</code> <em>(string)</em></p>
 <ul>
-<li>Promotion target environment. Specifies the promotion package target
-environment. This field only applies to promotion packages and can only be
-specified when the promotion package type is A or P.</li>
+<li>Promotion target environment. Specifies the promotion package target environment. This field only applies to promotion packages and can only be specified when the promotion package type is A or P.</li>
 </ul>
 </li>
 <li>
 <p><code>--prom-target-stgID</code>  | <code>--pts</code> <em>(string)</em></p>
 <ul>
-<li>Promotion target stage ID. Specifies the promotion package target stage ID.
-This field only applies to promotion packages and can only be specified when the
-promotion package type is A or P.</li>
+<li>Promotion target stage ID. Specifies the promotion package target stage ID. This field only applies to promotion packages and can only be specified when the promotion package type is A or P.</li>
 </ul>
 </li>
 <li>
 <p><code>--approver</code>  | <code>--apr</code> <em>(string)</em></p>
 <ul>
-<li>Specifies a one to eight character approver ID. Only one approver ID can be
-specified and name masking is not supported.</li>
+<li>Specifies a one to eight character approver ID. Only one approver ID can be specified and name masking is not supported.</li>
 </ul>
 </li>
 </ul>
@@ -93,8 +80,7 @@ specified and name masking is not supported.</li>
 <p><code>--maxrc</code>  <em>(number)</em></p>
 <ul>
 <li>
-<p>The maximum value of the return code of a successful action. When the return
-code is greater than the maxrc value, the command fails</p>
+<p>The maximum value of the return code of a successful action. When the return code is greater than the maxrc value, the command fails</p>
 <p>Default value: 8</p>
 </li>
 </ul>
@@ -125,8 +111,8 @@ code is greater than the maxrc value, the command fails</p>
 <ul>
 <li>
 <p>Specifies the protocol used for connecting to CA Endevor SCM Rest API</p>
-<p>Default value: https</p>
-<p>Allowed values: http, https</p>
+<p>Default value: https<br>
+Allowed values: http, https</p>
 </li>
 </ul>
 </li>
@@ -145,8 +131,7 @@ code is greater than the maxrc value, the command fails</p>
 <li>
 <p><code>--reject-unauthorized</code>  | <code>--ru</code> <em>(boolean)</em></p>
 <ul>
-<li>Specify this option to have the server certificate verified against the list of
-supplied CAs</li>
+<li>Specify this option to have the server certificate verified against the list of supplied CAs</li>
 </ul>
 </li>
 <li>
@@ -173,17 +158,13 @@ supplied CAs</li>
 <li>
 <p><code>--report-dir</code>  <em>(string)</em></p>
 <ul>
-<li>Directory for saving reports from Endevor SCM locally, if --report-file
-wasn't specified. Defaults to current directory.</li>
+<li>Directory for saving reports from Endevor SCM locally, if --report-file wasn't specified. Defaults to current directory.</li>
 </ul>
 </li>
 <li>
 <p><code>--write-report</code>  <em>(boolean)</em></p>
 <ul>
-<li>Write the endevor reports to a file. By default, when return code is 0, no
-report will be written, unless this option is specified. When return code is
-bigger than 0, reports will be written to a file, unless this option is specifed
-to be false</li>
+<li>Write the endevor reports to a file. By default, when return code is 0, no report will be written, unless this option is specified. When return code is bigger than 0, reports will be written to a file, unless this option is specifed to be false</li>
 </ul>
 </li>
 <li>
@@ -219,8 +200,7 @@ to be false</li>
 <li>
 <p><code>--token-type</code>  | <code>--tt</code> <em>(string)</em></p>
 <ul>
-<li>The type of token to get and use for the API. Omit this option to use the
-default token type, which is provided by 'zowe auth login'.</li>
+<li>The type of token to get and use for the API. Omit this option to use the default token type, which is provided by 'zowe auth login'.</li>
 </ul>
 </li>
 <li>
@@ -247,11 +227,7 @@ default token type, which is provided by 'zowe auth login'.</li>
 <li>
 <p><code>--response-format-filter</code>  | <code>--rff</code> <em>(array)</em></p>
 <ul>
-<li>Filter (include) fields in the response. Accepts an array of field/property
-names to include in the output response. You can filter JSON objects properties
-OR table columns/fields. In addition, you can use this option in conjunction
-with '--response-format-type' to reduce the output of a command to a single
-field/property or a list of a single field/property.</li>
+<li>Filter (include) fields in the response. Accepts an array of field/property names to include in the output response. You can filter JSON objects properties OR table columns/fields. In addition, you can use this option in conjunction with '--response-format-type' to reduce the output of a command to a single field/property or a list of a single field/property.</li>
 </ul>
 </li>
 <li>
@@ -259,15 +235,9 @@ field/property or a list of a single field/property.</li>
 <ul>
 <li>
 <p>The command response output format type. Must be one of the following:</p>
-<p>table: Formats output data as a table. Use this option when the output data is
-an array of homogeneous JSON objects. Each property of the object will become a
-column in the table.</p>
-<p>list: Formats output data as a list of strings. Can be used on any data type
-(JSON objects/arrays) are stringified and a new line is added after each entry
-in an array.</p>
-<p>object: Formats output data as a list of prettified objects (or single object).
-Can be used in place of &quot;table&quot; to change from tabular output to a list of
-prettified objects.</p>
+<p>table: Formats output data as a table. Use this option when the output data is an array of homogeneous JSON objects. Each property of the object will become a column in the table.</p>
+<p>list: Formats output data as a list of strings. Can be used on any data type (JSON objects/arrays) are stringified and a new line is added after each entry in an array.</p>
+<p>object: Formats output data as a list of prettified objects (or single object). Can be used in place of &quot;table&quot; to change from tabular output to a list of prettified objects.</p>
 <p>string: Formats output data as a string. JSON objects/arrays are stringified.</p>
 <p>Allowed values: table, list, object, string</p>
 </li>
@@ -276,18 +246,16 @@ prettified objects.</p>
 <li>
 <p><code>--response-format-header</code>  | <code>--rfh</code> <em>(boolean)</em></p>
 <ul>
-<li>If &quot;--response-format-type table&quot; is specified, include the column headers
-in the output.</li>
+<li>If &quot;--response-format-type table&quot; is specified, include the column headers in the output.</li>
 </ul>
 </li>
 </ul>
 <h4>Examples</h4>
 <ul>
 <li>
-<p>List all packages in CA Endevor SCM with endevor profile set
-up:</p>
+<p>List all packages in CA Endevor SCM with endevor profile set up:</p>
 <ul>
-<li><code>zowe  endevor list packages -i ENDEVOR</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  endevor list packages -i ENDEVOR">Copy</button></li>
+<li><code>zowe endevor list packages -i ENDEVOR</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe endevor list packages -i ENDEVOR">Copy</button></li>
 </ul>
 </li>
 </ul>

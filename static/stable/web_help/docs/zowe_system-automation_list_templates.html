@@ -7,13 +7,12 @@
 <link rel="stylesheet" href="../css/docs.css">
 <article class="markdown-body">
 <h2><a href="zowe.html">zowe</a> › <a href="zowe_system-automation.html">system-automation</a> › <a href="zowe_system-automation_list.html">list</a> › <a href="zowe_system-automation_list_templates.html">templates</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
-<p>List all templates currently defined matching the spcecified filter options in a
-table.</p>
+<p>List all templates currently defined matching the spcecified filter options in a table.</p>
 <p>Requires (min.): SA Operations API 1.0.0</p>
-<p>Following Success Message can be returned by this command:
+<p>Following Success Message can be returned by this command:<br>
 SACLI006400 - Listing templates success</p>
 <h4>Usage</h4>
-<p>zowe  system-automation list templates [options]</p>
+<p>zowe system-automation list templates [options]</p>
 <h4>Options</h4>
 <ul>
 <li>
@@ -103,8 +102,7 @@ SACLI006400 - Listing templates success</p>
 <li>
 <p><code>--token-type</code>  | <code>--tt</code> <em>(string)</em></p>
 <ul>
-<li>The type of token to get and use for the API. Omit this option to use the
-default token type, which is provided by 'zowe auth login'.</li>
+<li>The type of token to get and use for the API. Omit this option to use the default token type, which is provided by 'zowe auth login'.</li>
 </ul>
 </li>
 <li>
@@ -131,25 +129,25 @@ default token type, which is provided by 'zowe auth login'.</li>
 <li>
 <p>List all templates:</p>
 <ul>
-<li><code>zowe  system-automation list templates</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  system-automation list templates">Copy</button></li>
+<li><code>zowe system-automation list templates</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe system-automation list templates">Copy</button></li>
 </ul>
 </li>
 <li>
 <p>List all templates including their ID:</p>
 <ul>
-<li><code>zowe  system-automation list templates --showid</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  system-automation list templates --showid">Copy</button></li>
+<li><code>zowe system-automation list templates --showid</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe system-automation list templates --showid">Copy</button></li>
 </ul>
 </li>
 <li>
 <p>List all current templates including ID:</p>
 <ul>
-<li><code>zowe  system-automation list templates --current --showid</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  system-automation list templates --current --showid">Copy</button></li>
+<li><code>zowe system-automation list templates --current --showid</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe system-automation list templates --current --showid">Copy</button></li>
 </ul>
 </li>
 <li>
 <p>List all templates where name is starting with CICS:</p>
 <ul>
-<li><code>zowe  system-automation list templates --name=CICS*</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  system-automation list templates --name=CICS*">Copy</button></li>
+<li><code>zowe system-automation list templates --name=CICS*</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe system-automation list templates --name=CICS*">Copy</button></li>
 </ul>
 </li>
 </ul>

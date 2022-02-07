@@ -7,14 +7,9 @@
 <link rel="stylesheet" href="../css/docs.css">
 <article class="markdown-body">
 <h2><a href="zowe.html">zowe</a> › <a href="zowe_znetview-base.html">znetview-base</a> › <a href="zowe_znetview-base_list.html">list</a> › <a href="zowe_znetview-base_list_domains.html">domains</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
-<p>List data about active NetView domains in a sysplex or active domains configured
-to the enterprise master NetView program. The command that NetView program is
-running is LIST STATUS=XCFGRPS, which returns a list of z/OS® XCF groups in
-which the NetView program participates. Note: The DISCOVERY Tower must be
-enabled to retrieve data from other NetView domains configured to the enterprise
-master NetView program.</p>
+<p>List data about active NetView domains in a sysplex or active domains configured to the enterprise master NetView program. The command that NetView program is running is LIST STATUS=XCFGRPS, which returns a list of z/OS® XCF groups in which the NetView program participates. Note: The DISCOVERY Tower must be enabled to retrieve data from other NetView domains configured to the enterprise master NetView program.</p>
 <h4>Usage</h4>
-<p>zowe  znetview-base list domains [options]</p>
+<p>zowe znetview-base list domains [options]</p>
 <h4>Options</h4>
 <ul>
 <li>
@@ -22,8 +17,7 @@ master NetView program.</p>
 <ul>
 <li>
 <p>The NetView domain to which the request will be sent.</p>
-<p>The default is the NetView domain to which the NetView REST Server is
-connected.</p>
+<p>The default is the NetView domain to which the NetView REST Server is connected.</p>
 </li>
 </ul>
 </li>
@@ -57,9 +51,7 @@ connected.</p>
 <li>
 <p><code>--token-type</code>  | <code>--tt</code> <em>(string)</em></p>
 <ul>
-<li>The type of the token to authenticate to your NetView REST Server. The only
-token type that is valid when using NetView REST Server authentication is
-JSESSIONID.</li>
+<li>The type of the token to authenticate to your NetView REST Server. The only token type that is valid when using NetView REST Server authentication is JSESSIONID.</li>
 </ul>
 </li>
 <li>
@@ -72,11 +64,8 @@ JSESSIONID.</li>
 <p><code>--base-path</code>  | <code>--bp</code> <em>(string)</em></p>
 <ul>
 <li>
-<p>The base path for your Zowe API Mediation Layer instance. Specify this option
-to prepend the base path to NetView REST service when making REST requests to
-the Zowe API Mediation Layer.</p>
-<p>Note: Do not specify this option if you are not using the Zowe API Mediation
-Layer.</p>
+<p>The base path for your Zowe API Mediation Layer instance. Specify this option to prepend the base path to NetView REST service when making REST requests to the Zowe API Mediation Layer.</p>
+<p>Note: Do not specify this option if you are not using the Zowe API Mediation Layer.</p>
 </li>
 </ul>
 </li>
