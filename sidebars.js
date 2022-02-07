@@ -136,7 +136,6 @@ module.exports = {
         }, 
         "user-guide/verify-zowe-runtime-install",
         "user-guide/start-stop-zowe-zos",
-        "user-guide/stop-zowe-zos",
         "user-guide/upgrade-zos-system",
         "user-guide/zowe-zos-uninstall",       
       ],
