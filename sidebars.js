@@ -176,11 +176,11 @@ module.exports = {
       items: [
         "user-guide/cli-development-roadmap-next",
         "user-guide/cli-install-cli-next",
-        "cli-configure-secure-credential-store-on-zlinux-operating-systems.md",
-        "cli-configure-operating-systems-where-the-secure-credential-store-is-not-available.md",
         "user-guide/cli-using-daemon-mode",
-        "cli-configure-daemon-mode-on-zlinux-operating-systems.md",
         "user-guide/cli-using-global-profile-configuration",
+        "user-guide/cli-configure-daemon-on-zlinux-os",
+        "user-guide/cli-configure-os-where-scs-unavailable",
+        "user-guide/cli-configure-scs-on-zlinux-os",
       ],
     },
     {

@@ -1,0 +1,1 @@
+# Configure operating systems where the Secure Credential Store is not available
