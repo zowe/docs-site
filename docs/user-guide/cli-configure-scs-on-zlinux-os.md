@@ -23,6 +23,7 @@ The following steps describe how to install and build the credential store binar
     ```
     subscription-manager repos —-enable rhel-#-for-system-z-optional-rpms
     ```
+    
     - **#**
         
         Replace **#** with the major version of RHEL that is running on the z/Linux system.
