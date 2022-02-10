@@ -32,11 +32,7 @@ The following steps describe how to install and build the daemon binaries on z/L
    cargo build —-release
    ```
 
-   After the command completes, the Zowe daemon binary can be found in the following directory:
-
-   ```
-   target/release/zowe
-   ```
+   After the command completes successfully, the Zowe daemon binary is a file named `zowe` that can be found in the `target/release` directory.
 
 7. Copy the binary to another location on the system and add it to your PATH.
 8. (Optional) Modify the file permissions to allow others to use the same binary:
