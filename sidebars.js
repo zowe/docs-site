@@ -368,6 +368,7 @@ module.exports = {
     //    "troubleshoot/app-framework/app-troubleshoot",
         "troubleshoot/app-framework/app-mustgather",
     //    "troubleshoot/app-framework/app-issue",
+        "troubleshoot/app-framework/zss-error-codes",
       ],
     },
     //"troubleshoot/troubleshoot-zos-services",
