@@ -23,7 +23,7 @@ The following steps describe how to install and build the credential store binar
     ```
     subscription-manager repos —-enable rhel-#-for-system-z-optional-rpms
     ```
-    
+
     - **#**
         
         Replace **#** with the major version of RHEL that is running on the z/Linux system.
@@ -49,4 +49,4 @@ The following steps describe how to install and build the credential store binar
     scl enable devtoolset-11 ‘npm install -g @zowe/cli@next’
     scl enable devtoolset-11 ‘npm install -g zowe-cli.tgz’
     ```
-    When you run these commands, Zowe CLI is installed globally and the system will the latest version of the C++ compiler to build the native components. Refer back to the instructions to set up the Secure Credential Storage component of the Zowe CLI.
+    When you run these commands, Zowe CLI is installed globally and the system will use the latest version of the C++ compiler to build the native components. Refer back to the instructions to set up the Secure Credential Storage component of the Zowe CLI.
