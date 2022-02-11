@@ -1,8 +1,8 @@
 # Configure daemon mode on z/Linux operating systems
 
-Currently, Zowe does not offer a prebuilt daemon that can run on z/Linux operating systems. However, developers can build the daemon binaries from source.
+Currently, Zowe does not offer a prebuilt daemon that can run on z/Linux operating systems. However, developers can build the daemon binary from source.
 
-The following steps describe how to install and build the daemon binaries on z/Linux systems and the technical limitations.
+The following steps describe how to install and build the daemon binary on z/Linux systems and the technical limitations.
 
 1. Ensure that the z/Linux system can communicate using the Internet.
 2. Install Zowe CLI on the z/Linux system.
@@ -26,7 +26,7 @@ The following steps describe how to install and build the daemon binaries on z/L
    zowe-cli/zowex
    ```
 
-6. Build the daemon binaries. Issue the following command:
+6. Build the daemon binary. Issue the following command from the `zowe-cli/zowex` directory:
 
    ```
    cargo build —-release
@@ -42,10 +42,10 @@ The following steps describe how to install and build the daemon binaries on z/L
    chown <user>:<group> zowe
    ```
 
-**Example:** The following example illustrates the command to allow all users to run the Zowe binaries. However, only the user that created the binaries can overwrite the binaries.
+   **Example:** The following example illustrates the command to allow all users to run the Zowe binary. However, only the user that created the binary can overwrite the binary.
 
-```
-chmod 755 zowe
-```
+   ```
+   chmod 755 zowe
+   ```
 
-**Note:** You can delete the `zowe-cli` folder that was created in **Step 4** after the binary builds successfully. The Zowe daemon commands will not function, and the daemon will need to be rebuilt for all new versions of Zowe CLI.
+   **Note:** You can delete the `.zowe-cli` folder that was created in **Step 4** after the binary builds successfully. The Zowe daemon commands will not function, and the daemon will need to be rebuilt for all new versions of Zowe CLI.

@@ -24,9 +24,7 @@ The following steps describe how to install and build the credential store binar
     subscription-manager repos —-enable rhel-#-for-system-z-optional-rpms
     ```
 
-    - **#**
-        
-        Replace **#** with the major version of RHEL that is running on the z/Linux system.
+    - **#**: Replace # with the major version of RHEL that is running on the z/Linux system.
 4. If you are configuring SCS to run on RHEL V8.x or later, no further action is required. You can now install Zowe CLI. For RHEL V7.x, continue to the next step.
 5. Install the Red Hat Developer Toolset to ensure that you are running version of the gcc-c++ compiler that can build the SCS native binaries.
     

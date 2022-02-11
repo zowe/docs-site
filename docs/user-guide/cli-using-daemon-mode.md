@@ -12,11 +12,11 @@ Daemon mode significantly improves the performance of Zowe CLI commands by runni
 
 Review the following installation notes before you configure Zowe CLI to run in daemon mode:
 
+- Daemon mode does not function on z/OS UNIX System Services (USS) systems.
+- When you want to run Zowe CLI to run in daemon mode on **z/Linux** operating systems, you must build the daemon mode binary on the z/Linux systems. For information about how to build the binary, see [Configure daemon mode on z/Linux operating systems](cli-configure-daemon-on-zlinux-os.md). The sections [Enable daemon mode](#enable-daemon-mode) and [Disable daemon mode](#disable-daemon-mode) (in this article) do not apply to running Zowe CLI in daemon mode on z/Linux operating systems.
+- We do not recommend using daemon mode in an environment where multiple users use the same system. For example, a shared Linux server.
 - To enable daemon mode, ensure that you installed [the @next release of Zowe CLI](cli-install-cli-next.md).
 - When you are running Zowe on a Windows operating system in a virtual environment (for example, Windows Sandbox), you might receive an error message that indicates that a library named VCRUNTIME140.dll is missing. To correct the error, install Visual C++ Redistributable for Visual Studio 2015. For more information, see [Download Visual C++ Redistributable for Visual Studio 2015](https://www.microsoft.com/en-us/download/details.aspx?id=48145).
-- We do not recommend using daemon mode in an environment where multiple users use the same system. For example, a shared Linux server.
-- Daemon mode does not function on z/OS UNIX System Services (USS) systems.
-- If you are running Zowe CLI on a z/Linux operating system and you want to enable Zowe CLI to run in daemon mode on z/Linux, you must build the daemon mode binaries on the z/Linux system. For information about how to build the binaries, see [Configure daemon mode on z/Linux operating systems](cli-configure-daemon-on-zlinux-os.md). The sections *Enable daemon mode* and *Disable daemon mode* in this article do not apply to running Zowe CLI in daemon mode on z/Linux operating systems.
 
 ## Enable daemon mode
 

@@ -6,19 +6,19 @@ You can install the Zowe CLI `@next` version from the online npm registry or dow
 
 ## Installation guidelines
   
-To install the CLI @next version on Windows, Mac, and Linux operating systems, follow the steps in *Install Zowe CLI from npm* or *Install Zowe CLI from a download*.
+To install the CLI @next version on **Windows**, **Mac**, and **Linux** operating systems, follow the steps in [Install Zowe CLI from npm](install-zowe-cli-from-npm) or [Install Zowe CLI from a download](#install-zowe-cli-from-a-download).
 
-However, to install Zowe CLI @next on z/Linux, z/OS UNIX System Services (USS), or on an operating system where the **Secure Credential Store** is **not required** or **cannot be installed**, use the following installation guidelines:
+However, to install Zowe CLI @next on **z/Linux**, **z/OS UNIX System Services (USS)**, or on an operating system where the *Secure Credential Store* is *not required* or *cannot be installed*, use the following installation guidelines:
 
 *  To install Zowe CLI @next on a z/Linux operating system and you **require** the Secure Credential Store:
-   1. Follow the steps in *Configure Secure Credential Store on z/Linux operating systems*.
-   2. Follow the steps in *Install Zowe CLI from npm* or *Install Zowe CLI from a download*.
+   1. Follow the steps in [Configure Secure Credential Store on z/Linux operating systems](cli-configure-scs-on-zlinux-os).
+   2. Follow the steps in follow the steps in [Install Zowe CLI from npm](install-zowe-cli-from-npm) or [Install Zowe CLI from a download](#install-zowe-cli-from-a-download).
 *  To install Zowe CLI @next on a z/Linux operating system and you **do not require** the Secure Credential Store:
-   1. Follow the steps in *Install Zowe CLI from npm* or *Install Zowe CLI from a download*.
-   2. Follow the steps in *Configure operating systems where the Secure Credential Store is not available*.
+   1. Follow the steps in follow the steps in [Install Zowe CLI from npm](install-zowe-cli-from-npm) or [Install Zowe CLI from a download](#install-zowe-cli-from-a-download).
+   2. Follow the steps in [Configure operating systems where the Secure Credential Store is not available](cli-configure-os-where-scs-unavailable).
 *  To install Zowe CLI @next on a USS system or on an operating system where you cannot install the Secure Credential Store:
-   1. Follow the steps in *Install Zowe CLI from npm* or *Install Zowe CLI from a download*.
-   2. Follow the steps in *Configure operating systems where the Secure Credential Store is not available*.
+   1. Follow the steps in follow the steps in [Install Zowe CLI from npm](install-zowe-cli-from-npm) or [Install Zowe CLI from a download](#install-zowe-cli-from-a-download).
+   2. Follow the steps in [Configure operating systems where the Secure Credential Store is not available](cli-configure-os-where-scs-unavailable).
 
 ## Prerequisites
 
