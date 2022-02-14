@@ -17,5 +17,8 @@ This checklist summarizes the required steps for a base installation (first-time
 | start here ... | start here ... |Title       | Complete, TBD, NA |
 | Review Zowe CLI Tips and Tricks            | [Read blogs about getting started quickly with Zowe CLI](https://medium.com/zowe/zowe-cli-getting-started-made-easy-f53d769c678e)| System programmer, system administrator           | Complete, TBD, NA |
 | Review the advanced configuration options | Learn about how to configure Zowe CLI, such as changing log levels and setting the home directory location. | System programmer, system administrator|Complete, TBD, NA |
+|||||
+|||||
+|||||
 
 You are now ready to install Zowe CLI!
