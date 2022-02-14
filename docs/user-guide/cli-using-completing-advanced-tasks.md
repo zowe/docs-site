@@ -1,4 +1,4 @@
-# Using advanced tasks
+# Completing advanced tasks
 
  This section describes how to use Zowe CLI using its advanced capabilities.
 
