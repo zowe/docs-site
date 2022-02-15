@@ -1,6 +1,6 @@
-# Configuring global/team profiles
+# Configuring team profiles
 
-This release of Zowe CLI introduces the concept of **global profiles**.
+This release of Zowe CLI introduces the concept of **team profiles**.
 
 ## Overview of global profiles
 
