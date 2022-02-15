@@ -126,11 +126,10 @@ module.exports = {
           type: "category",
           label: "High Availability",
           items: [
-            "user-guide/install-ha-sysplex",
+            "user-guide/zowe-ha-overview",
             "user-guide/configure-sysplex",
             "user-guide/systemrequirements-zosmf-ha",
             "user-guide/configure-caching-service-ha",
-            "user-guide/configure-zowe-ha-server",
           ],
         }, 
         "user-guide/verify-zowe-runtime-install",
@@ -425,6 +424,8 @@ module.exports = {
   reference: [
     "appendix/zowe-cli-command-reference",
     "appendix/zowe-api-reference",
+    "appendix/server-component-manifest.md",
+    "appendix/zowe-yaml-configuration.md",
     "appendix/bill-of-materials",
     {
       type: "link",

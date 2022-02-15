@@ -6,7 +6,7 @@ To make component compatible with Zowe version 2, there are several changes shou
 
 ### Component manifest
 
-Component must define a manifest file and package it into the extension root directory. This manifest file is used by Zowe to understand how this component should be installed, configured, and started. For detail references of this file, please check [Component Manifest File Reference](../appendix/component-manifest.md).
+Component must define a manifest file and package it into the extension root directory. This manifest file is used by Zowe to understand how this component should be installed, configured, and started. For detail references of this file, please check [Server Component Manifest File Reference](../appendix/server-component-manifest.md).
 
 ### Lifecycle scripts
 
@@ -15,6 +15,8 @@ With Zowe v2, lifecycle scripts can be located anywhere in your component direct
 ### Environment variables
 
 Please be aware that Zowe v1 and v2 environment variables are not one-to-one match. Some variables in Zowe v1 are removed completely, some are separated into 2 or more variables. Please check below mapping table of Zowe v1 and v2 variables.
+
+FIXME: jack
 
 | Zowe v1 Variable |  Zowe v2 YAML Configuration | Zowe v2 Variable | Notes |
 | --- |  --- | --- | --- |

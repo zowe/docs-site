@@ -251,7 +251,7 @@ _Note: This section is for technical preview and we are happy to hear any feedba
 
 _Note: This feature is added with Zowe v1.22.0 release._
 
-From Zowe v1.22.0, Zowe ships a `bin/zowe-verify-component.sh` tool to help you verify an installed Zowe server component (extension) for a Zowe instance. In order to be compatible with the tool, we recommend components follow [Zowe server component package format standard](packaging-zos-extensions.md#zowe-server-component-package-format) and define [Zowe component manifest](packaging-zos-extensions.md#zowe-component-manifest).
+From Zowe v1.22.0, Zowe ships a `bin/zowe-verify-component.sh` tool to help you verify an installed Zowe server component (extension) for a Zowe instance. In order to be compatible with the tool, we recommend components follow [Zowe server component package format standard](packaging-zos-extensions.md#zowe-server-component-package-format) and define [Server Component Manifest File Reference](../appendix/server-component-manifest.md).
 
 The `zowe-verify-component.sh` script checks and verifies whether a specified component is up and running. You can use it to verify both core and external Zowe components.
 
