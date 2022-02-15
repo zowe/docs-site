@@ -23,3 +23,5 @@ zowe config init --global-config
 ```
 
 After you create the configuration files, you can use a text editor to populate global profiles with connection details for your mainframe services.
+
+

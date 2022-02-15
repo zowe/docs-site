@@ -94,3 +94,7 @@ zowe zosmf check status --zosmf-profile <profile_name>
 ```
 
 The commands return a success or failure message and display information about your z/OSMF server, such as the z/OSMF version number. Report failures to your systems administrator and use the information for diagnostic purposes.
+
+
+
+
