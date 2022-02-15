@@ -86,7 +86,7 @@ spec:
 
 ## 3. Create and modify ConfigMaps and Secrets
 
-Similarly, to running Zowe services on z/OS, you can use either `instance.env` or `zowe.yaml` to customize Zowe.
+Similarly, to running Zowe services on z/OS, you can use `zowe.yaml` to customize Zowe in Kubernetes.
 
 You can modify `samples/config-cm.yaml`,  , and `samples/certificates-secret.yaml` directly. Or more conveniently, if you have Zowe ZSS/ZIS running on z/OS, the Kubernetes environment can reuse instance and keystore configuration from that installation (supported in v1.25 and later).
 
@@ -97,9 +97,11 @@ To create and modify [ConfigMaps](https://kubernetes.io/docs/concepts/configurat
 a. On z/OS, run the following command:
 
 ```
-cd <instance-dir> 
-./bin/utils/convert-for-k8s.sh -x "my-k8s-cluster.company.com,9.10.11.12"
+cd <runtime-dir> 
+./bin/zwe migrate for kubernetes --domains "my-k8s-cluster.company.com,9.10.11.12"
 ``` 
+
+FIXME: jack
 
 This migration script supports these parameters:
 
@@ -279,6 +281,8 @@ Upon completion, you can finish the setup by [applying zowe and starting it](k8s
 To manually create the [ConfigMaps](https://kubernetes.io/docs/concepts/configuration/configmap/) and [Secrets](https://kubernetes.io/docs/concepts/configuration/secret/) used by Zowe containers, you must create the following objects:
 
 1. A ConfigMap, with values based upon a Zowe instance's `instance.env` and similar to the example `samples/config-cm.yaml` with the following differences to the values seen on a z/OS install:
+
+FIXME: jack
 
    * `ZWE_haInstance_hostname`, `ZOWE_IP_ADDRESS`, `ZWE_LAUNCH_COMPONENTS`, `ZWE_DISCOVERY_SERVICES_LIST` and `SKIP_NODE` are not needed for Zowe running in Kubernetes and will be ignored. You can remove them.
    * `JAVA_HOME` and `NODE_HOME` are not usually needed if you are using Zowe base images.

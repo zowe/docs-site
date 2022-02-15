@@ -75,15 +75,6 @@ module.exports = {
             },
             {
               type: "category",
-              label: "Installing Zowe Docker Bundle",
-              items: [
-                "user-guide/install-docker",
-                "user-guide/install-docker-image",
-                "user-guide/configuring-docker",
-              ],
-            },
-            {
-              type: "category",
               label: "Installing Zowe Portable Software Instance",
               items: [
                 "user-guide/install-zowe-pswi",
