@@ -71,7 +71,7 @@ Zowe extensions, as well as core components, can use a manifest file to describe
 
 For examples of manifests thoughout Zowe GitHub repositories, see the following links:  
 
-- [API Catalog manifest.yaml](https://github.com/zowe/api-layer/blob/master/api-catalog-package/src/main/resources/manifest.yaml)
-- [Jobs API manifest.yaml](https://github.com/zowe/jobs/blob/master/jobs-zowe-server-package/src/main/resources/manifest.yaml)
+- [API Catalog manifest.yaml](https://github.com/zowe/api-layer/blob/v2.x.x/api-catalog-package/src/main/resources/manifest.yaml)
+- [Jobs API manifest.yaml](https://github.com/zowe/jobs/blob/v2.x/master/jobs-zowe-server-package/src/main/resources/manifest.yaml)
 - [Sample Node API and API Catalog extension manifest.yaml](https://github.com/zowe/sample-node-api/blob/master/manifest.yaml)
 - [Sample Zowe App Framework extension manifest.yaml](https://github.com/zowe/sample-trial-app/blob/master/manifest.yaml)
