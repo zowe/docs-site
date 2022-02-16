@@ -7,7 +7,7 @@
 <link rel="stylesheet" href="../css/docs.css">
 <article class="markdown-body">
 <h2><a href="zowe.html">zowe</a> › <a href="zowe_endevor.html">endevor</a> › <a href="zowe_endevor_update.html">update</a> › <a href="zowe_endevor_update_package.html">package</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
-<p>The update package command lets you update a package in CA Endevor SCM.</p>
+<p>The update package command lets you update a package in Endevor.</p>
 <h4>Usage</h4>
 <p>zowe endevor update package [package] [options]</p>
 <h4>Positional Arguments</h4>
@@ -15,7 +15,7 @@
 <li>
 <p><code>package</code>		 <em>(string)</em></p>
 <ul>
-<li>Name of the CA Endevor SCM package.</li>
+<li>Name of the Endevor package.</li>
 </ul>
 </li>
 </ul>
@@ -57,7 +57,7 @@
 <li>
 <p><code>--description</code>  | <code>-d</code> <em>(string)</em></p>
 <ul>
-<li>Allows you to associate a 50-character description when creating or updating package.</li>
+<li>Allows you to associate a 50-character description when creating package.</li>
 </ul>
 </li>
 <li>
@@ -73,30 +73,24 @@
 </ul>
 </li>
 <li>
-<p><code>--backout</code>  <em>(boolean)</em></p>
+<p><code>--nobackout</code>  | <code>--nb</code> <em>(boolean)</em></p>
 <ul>
-<li>
-<p>Set this option to false (or specify --no-backout) if you don't want to have the backout facility available for this package. By default backout is enabled.</p>
-<p>Default value: true</p>
-</li>
-</ul>
-</li>
-<li>
-<p><code>--notes</code>  | <code>-n</code> <em>(string)</em></p>
-<ul>
-<li>Notes for package.</li>
+<li>Specify this option to NOT have backout facility available for this package.</li>
 </ul>
 </li>
 <li>
 <p><code>--notes-from-file</code>  | <code>--nff</code> <em>(string)</em></p>
 <ul>
-<li>Local file of notes for package.</li>
+<li>Local file of notes for approve/deny package.</li>
 </ul>
 </li>
 <li>
-<p><code>--emergency-package</code>  | <code>--ep</code> <em>(boolean)</em></p>
+<p><code>--type</code>  | <code>-t</code> <em>(string)</em></p>
 <ul>
-<li>Specify if the package should be an emergency package. When not specified, the package is a standard package.</li>
+<li>
+<p>Specify the package type, where S = STANDARD and E = EMERGENCY, by default S is used.</p>
+<p>Allowed values: S, E</p>
+</li>
 </ul>
 </li>
 <li>
@@ -106,24 +100,36 @@
 </ul>
 </li>
 <li>
+<p><code>--append</code>  | <code>-a</code> <em>(boolean)</em></p>
+<ul>
+<li>Specify this option to append the SCL you are adding to the existing package SCL. Otherwise it would be replaced.</li>
+</ul>
+</li>
+<li>
 <p><code>--promotion</code>  | <code>--pr</code> <em>(boolean)</em></p>
 <ul>
 <li>Specify this option to define the package as a promotion package.</li>
 </ul>
 </li>
 <li>
-<p><code>--validate-scl</code>  | <code>--vs</code> <em>(boolean)</em></p>
+<p><code>--novalidate-scl</code>  | <code>--nvs</code> <em>(boolean)</em></p>
+<ul>
+<li>Specify this option to NOT validate the package components while creating a package.</li>
+</ul>
+</li>
+</ul>
+<h4>output customization options</h4>
 <ul>
 <li>
-<p>Set this option to false (or specify --no-validate-scl) to skip validion of the package components while creating a package. By default the SCL is validated</p>
-<p>Default value: true</p>
-</li>
+<p><code>--suppress-messages</code>  | <code>--sm</code> <em>(boolean)</em></p>
+<ul>
+<li>Suppress all [INFO]/[WARN] messages from terminal output.</li>
 </ul>
 </li>
 <li>
-<p><code>--append</code>  | <code>-a</code> <em>(boolean)</em></p>
+<p><code>--file-name</code>  | <code>--fn</code> <em>(string)</em></p>
 <ul>
-<li>Specify this option to append the SCL you are adding to the existing package SCL. Otherwise it would be replaced.</li>
+<li>File name for saving output messages from Endevor locally.</li>
 </ul>
 </li>
 </ul>
@@ -132,16 +138,13 @@
 <li>
 <p><code>--maxrc</code>  <em>(number)</em></p>
 <ul>
-<li>
-<p>The maximum value of the return code of a successful action. When the return code is greater than the maxrc value, the command fails</p>
-<p>Default value: 8</p>
-</li>
+<li>The return code of a failed action</li>
 </ul>
 </li>
 <li>
 <p><code>--instance</code>  | <code>-i</code> <em>(string)</em></p>
 <ul>
-<li>Specifies CA Endevor SCM Web Services dataSource name.</li>
+<li>Specifies Endevor Web Services dataSource name.</li>
 </ul>
 </li>
 </ul>
@@ -163,7 +166,7 @@
 <p><code>--protocol</code>  | <code>--prot</code> <em>(string)</em></p>
 <ul>
 <li>
-<p>Specifies the protocol used for connecting to CA Endevor SCM Rest API</p>
+<p>Specifies the protocol used for connecting to Endevor Rest API</p>
 <p>Default value: https<br>
 Allowed values: http, https</p>
 </li>
@@ -190,34 +193,7 @@ Allowed values: http, https</p>
 <li>
 <p><code>--base-path</code>  | <code>--bp</code> <em>(string)</em></p>
 <ul>
-<li>Specifies the base path used for connecting to CA Endevor SCM Rest API</li>
-</ul>
-</li>
-</ul>
-<h4>output customization options</h4>
-<ul>
-<li>
-<p><code>--suppress-messages</code>  | <code>--sm</code> <em>(boolean)</em></p>
-<ul>
-<li>Suppress all [INFO]/[WARN] messages from terminal output.</li>
-</ul>
-</li>
-<li>
-<p><code>--report-file</code>  | <code>--file-name</code> <em>(string)</em></p>
-<ul>
-<li>File name for saving reports from Endevor SCM locally.</li>
-</ul>
-</li>
-<li>
-<p><code>--report-dir</code>  <em>(string)</em></p>
-<ul>
-<li>Directory for saving reports from Endevor SCM locally, if --report-file wasn't specified. Defaults to current directory.</li>
-</ul>
-</li>
-<li>
-<p><code>--write-report</code>  <em>(boolean)</em></p>
-<ul>
-<li>Write the endevor reports to a file. By default, when return code is 0, no report will be written, unless this option is specified. When return code is bigger than 0, reports will be written to a file, unless this option is specifed to be false</li>
+<li>Specifies the base path used for connecting to Endevor Rest API</li>
 </ul>
 </li>
 </ul>
