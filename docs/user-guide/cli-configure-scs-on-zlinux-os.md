@@ -14,19 +14,22 @@ The following steps describe how to install and build the credential store binar
     - libsecret-devel (sometimes available as libsecret-1-dev)
     - Python 3.6 or later
 
-    **Note:** The z/Linux system where you are configuring SCS might require internet access to install the packages.
+    **Note:** If you are installing the Linux packages on a RHEL system, the system where you are configuring SCS might require Internet access. When a site hosts its own package repositories, the repositories might not contain all of the packages that are required to configure the SCS. Under this scenario, the RHEL system requires Internet access to install the required packages.
 
 2. If you are configuring SCS on a Ubuntu z/Linux operating system, no further action is required. You can now install Zowe CLI. For all other platforms (RHEL), continue to the next step.
 
-3. Enable the `rhel-#-for-system-z-optional-rpms` repository to download libsecret-devel. If your license entitles you to this repository, enable the repository by issuing the following command:
+3. Enable the `rhel-#-for-system-z-optional-rpms` repository to download libsecret-devel.
 
+    Replace ***#*** with the major version of RHEL that is running on the z/Linux system.
+
+    If your license entitles you to this repository, issue the following command to enable it:
+    
     ```
     subscription-manager repos —-enable rhel-#-for-system-z-optional-rpms
     ```
 
-    - **#**: Replace # with the major version of RHEL that is running on the z/Linux system.
 4. If you are configuring SCS to run on RHEL V8.x or later, no further action is required. You can now install Zowe CLI. For RHEL V7.x, continue to the next step.
-5. Install the Red Hat Developer Toolset to ensure that you are running version of the gcc-c++ compiler that can build the SCS native binaries.
+5. Install the Red Hat Developer Toolset to ensure that you are running a version of the gcc-c++ compiler that can build the SCS native binaries.
     
     Issue the following commands to enable the repositories that are required to install the toolset:
     ```

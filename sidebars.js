@@ -181,7 +181,7 @@ module.exports = {
           items: [
             "user-guide/cli-install-cli-next",
             "user-guide/cli-configure-scs-on-zlinux-os",
-            "user-guide/cli-configure-os-where-scs-unavailable",
+            "user-guide/cli-configure-cli-on-os-where-scs-unavailable",
           ],
         },
         {

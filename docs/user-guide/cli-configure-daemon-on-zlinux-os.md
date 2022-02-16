@@ -12,7 +12,7 @@ The following steps describe how to install and build the daemon binary on z/Lin
     - gcc-c++ (or g++)
     - git
     - Rust
-
+      
       For information about how to install Rust, see the [Rust documentation](https://forge.rust-lang.org/infra/other-installation-methods.html).
 4. Shallow clone the Zowe CLI Git repository for the version of CLI that you installed. Issue the following command:
 
