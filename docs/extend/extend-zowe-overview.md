@@ -10,8 +10,8 @@ Zowe can be extended in the following ways:
   - [Static API registration](#static-api-registration)
 - [Add a plug-in to the Zowe Desktop](#add-a-plug-in-to-the-zowe-desktop)
 
-To help Zowe extenders to better understand how extensions are developed and deployed,
-we provide a set of [sample extensions](#sample-extensions), which contain the necessary boilerplate project setup, application code and installation scripts to jumpstart the extension development and deployment to Zowe.
+To help Zowe extenders better understand how extensions are developed and deployed,
+we provide a set of [sample extensions](#sample-extensions). These sample extensions contain the necessary boilerplate project setup, application code, and installation scripts to jumpstart the extension development and deployment to Zowe.
 
 **Note:** For more information on the architecture of Zowe, see [Zowe Architecture](../getting-started/zowe-architecture.md).
 
