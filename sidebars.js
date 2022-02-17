@@ -216,7 +216,7 @@ module.exports = {
             "user-guide/cli-using-using-profiles",
             {
               type: "category",
-              label: "Using Global Profiles",
+              label: "Using team profiles",
               items: [
                 "user-guide/cli-using-configuring-global-profiles",
                 "user-guide/cli-using-initializing-global-configuration",
