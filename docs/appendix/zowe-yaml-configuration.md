@@ -266,11 +266,10 @@ zowe:
         sysProg: ZWEADMIN
       users:
         zowe: ZWESVUSR
-        xmem: ZWESIUSR
-        aux: ZWESIUSR
+        zis: ZWESIUSR
       stcs:
         zowe: ZWESLSTC
-        xmem: ZWESISTC
+        zis: ZWESISTC
         aux: ZWESASTC
     certificate:
       type: PKCS12
@@ -331,11 +330,10 @@ zowe:
 - `zowe.setup.security.groups.stc` is the group for Zowe started tasks. This configuration is optional. Default value is `ZWEADMIN`.
 - `zowe.setup.security.groups.sysProg` is system programmer user ID/group. This configuration is optional. Default value is `ZWEADMIN`.
 - `zowe.setup.security.users.zowe` is the userid for Zowe started task. This configuration is optional. Default value is `ZWESVUSR`.
-- `zowe.setup.security.users.xmem` is userid for xmem started task. This configuration is optional. Default value is `ZWESIUSR`.
-- `zowe.setup.security.users.aux` is userid for xmem AUX started task. This configuration is optional. Default value is `ZWESIUSR`.
+- `zowe.setup.security.users.zis` is userid for ZIS started task. This configuration is optional. Default value is `ZWESIUSR`.
 - `zowe.setup.security.stcs.zowe` is Zowe started task name. This configuration is optional. Default value is `ZWESLSTC`.
-- `zowe.setup.security.stcs.xmem` is xmem started task name. This configuration is optional. Default value is `ZWESISTC`.
-- `zowe.setup.security.stcs.aux` is xmem AUX started task name. This configuration is optional. Default value is `ZWESASTC`.
+- `zowe.setup.security.stcs.zis` is ZIS started task name. This configuration is optional. Default value is `ZWESISTC`.
+- `zowe.setup.security.stcs.aux` is ZIS AUX started task name. This configuration is optional. Default value is `ZWESASTC`.
 
 - `zowe.setup.certificate.type` is the type of certificate. Valid values are `PKCS1` (USS keystore) or `JCERACFKS` (z/OS keyring).
 - `zowe.setup.certificate.dname` is the distinguished name of the certificate. You can define `caCommonName`, `commonName`, `orgUnit`, `org`, `locality`, `state`, and / or `country`. These configurations are optional.
@@ -531,9 +529,9 @@ These configurations can be used under the `components.zss` section:
 - **`port`**  
  Defines the port which ZSS should be started on. This is equivalent to the `ZOWE_ZSS_SERVER_PORT` variable in `instance.env`. This may be defined as a valid port number or as an offset from the Gateway component's port. To define an offset enter `"+{offset}"` or `"-{offset}"` as a string. The offset must start with `+` or `-`.
 - **`crossMemoryServerName`**  
- Defines the procedure name of cross memory server. This is equivalent to the `ZOWE_ZSS_XMEM_SERVER_NAME` variable in `instance.env`.
+ Defines the procedure name of cross memory server.
 - **`tls`**  
- Defines whether ZSS service has enabled TLS. This is equivalent to the `ZOWE_ZSS_SERVER_TLS` variable in `instance.env`.
+ Defines whether ZSS service has enabled TLS.
 
 #### Configure component jobs-api
 
