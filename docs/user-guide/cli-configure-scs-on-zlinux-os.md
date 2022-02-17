@@ -14,7 +14,7 @@ The following steps describe how to install and build the credential store binar
     - libsecret-devel (sometimes available as libsecret-1-dev)
     - Python 3.6 or later
 
-    **Note:** If you are installing the Linux packages on a RHEL system, the system where you are configuring SCS might require Internet access. When a site hosts its own package repositories, the repositories might not contain all of the packages that are required to configure the SCS. Under this scenario, the RHEL system requires Internet access to install the required packages.
+    **Note:** If you are installing the Linux packages on a z/Linux system, the system where you are configuring SCS might require Internet access. When a site hosts its own package repositories, the repositories might not contain all of the packages that are required to configure the SCS. In this scenario, the z/Linux system requires Internet access to install the required packages.
 
 2. If you are configuring SCS on a Ubuntu z/Linux operating system, no further action is required. You can now install Zowe CLI. For all other platforms (RHEL), continue to the next step.
 
