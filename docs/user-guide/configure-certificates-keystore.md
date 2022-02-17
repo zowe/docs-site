@@ -13,12 +13,12 @@ are specified in the section `zowe.setup.certificates`
 
 ## Create a self signed PKCS12 certificate
 
-The following example will generate: 
+The following `zowe.yaml` example will generate: 
 
  - A `PKCS12` certificate, specified in `zowe.setup.certificate.type` 
- - Create a keystore directory `/global/zowe/keystore` specified in  `zowe.setup.certificate.pkcs12.directory`. 
- - The certificate name (or alias) is `localhost` specified in `zowe.setup.certificate.pkcs12.name`  
- - The certificate authority name is `local_ca` specified in `zowe.setup.certificate.certificate.pkcs12.caAlias`.
+ - A keystore directory `/global/zowe/keystore` specified in  `zowe.setup.certificate.pkcs12.directory`. 
+ - A certificate name (or alias) `localhost` specified in `zowe.setup.certificate.pkcs12.name`  
+ - A certificate authority name `local_ca` specified in `zowe.setup.certificate.certificate.pkcs12.caAlias`.
 
 ```
 zowe:
@@ -45,6 +45,8 @@ zowe:
           password:
           alias:
 ```
+
+To assist with updating `zowe.yaml` the values to generate a self signed PKCS12 certificate are included in the section beginning ` # >>>> Certificate setup scenario 1`.  Other certificate scenarios lower down in the `zowe.yaml` file are commented out.
 
 The `zwe init certificate` command will generate a certificate based on the `zowe.yaml` values in the `zowe.setup.certificate` section.  These certificate values used at runtime are referenced in the `zowe.yanl` section `zowe.certificates`. Specify `--update-config` for the `zwe` command to update the runtime `zowe.certificates` section to reference the generated certificate generated from the `zowe.setup.certificate`. 
 
