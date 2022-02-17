@@ -323,6 +323,7 @@ module.exports = {
     "extend/k8s-extend",
     "extend/extend-ze/ze-extensions",
     "extend/extend-sdks",
+    "extend/migration.md",
     "extend/zowe-conformance-program",
   ],
   troubleshooting: [
