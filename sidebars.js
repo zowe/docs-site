@@ -296,6 +296,7 @@ module.exports = {
         "extend/extend-apiml/api-mediation-routing",
         "extend/extend-apiml/api-mediation-passtickets",
         "extend/extend-apiml/custom-metadata",
+        "extend/extend-apiml/websocket",
         {
           type: "category",
           label: "Caching service",

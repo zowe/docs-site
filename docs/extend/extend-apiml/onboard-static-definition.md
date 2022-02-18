@@ -358,7 +358,23 @@ additionalServiceMetadata:
             This scheme should only be used for a z/OSMF service used by the API Gateway Authentication Service, and other z/OSMF services that are using the same LTPA key.
             
             **Tip:** For more information about z/OSMF Single Sign-on, see [Establishing a single sign-on environment](https://www.ibm.com/support/knowledgecenter/SSLTBW_2.4.0/com.ibm.zosmfcore.multisysplex.help.doc/izuG00hpManageSecurityCredentials.html).
-    
+
+    * **authentication.headers**
+        
+        When the `x509` scheme is specified, use the `headers` parameter to select which values to send to a service. Use one of the following values:
+        
+        * `X-Certificate-Public`
+        
+           The public part of client certificate base64 encoded 
+
+        * `X-Certificate-DistinguishedName`
+        
+           The distinguished name from client certificate
+
+        * `X-Certificate-CommonName` 
+        
+          The common name from the client certificate
+          
     * **authentication.applid**
     
         This parameter specifies a service APPLID.

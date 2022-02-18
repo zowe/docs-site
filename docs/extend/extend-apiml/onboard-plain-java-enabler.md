@@ -569,21 +569,21 @@ where:
 
         This value specifies that a service accepts client certificates forwarded in the HTTP header. The Gateway service extracts information from a valid client certificate. For validation, the certificate needs to be trusted by API Mediation Layer, and needs to contain a Client Authentication (1.3.6.1.5.5.7.3.2) entry in Extended Key Usage. To use this scheme, it is also necessary to specify which headers to include. Specify these parameters in `headers`.
 
-    * **headers**
+* **authentication.headers**
         
-        When the `x509` scheme is specified, use the `headers` parameter to select which values to send to a service. Use one of the following values:
-        
-        * `X-Certificate-Public`
-        
-           The public part of client certificate base64 encoded 
+    When the `x509` scheme is specified, use the `headers` parameter to select which values to send to a service. Use one of the following values:
+    
+    * `X-Certificate-Public`
+    
+        The public part of client certificate base64 encoded 
 
-        * `X-Certificate-DistinguishedName`
-        
-           The distinguished name from client certificate
+    * `X-Certificate-DistinguishedName`
+    
+        The distinguished name from client certificate
 
-        * `X-Certificate-CommonName` 
-        
-          The common name from the client certificate
+    * `X-Certificate-CommonName` 
+    
+        The common name from the client certificate
 
 * **authentication.applid**
 
