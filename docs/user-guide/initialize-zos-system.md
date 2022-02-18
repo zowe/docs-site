@@ -1,11 +1,11 @@
-# Initialize the z/OS system for Zowe
+# Extract the installation data sets
 
 Before Zowe can be started a number of steps need to occur to prepare the z/OS Environmemnt and to configure all of the required artefacts to successfully start the Zowe started task.
 
 Whether you have obtained Zowe from a `.pax` convenience build, or an SMP/E distribution, the steps to initialize the system are the same.
 
-- Security.   Create the user IDs and security manager settings.  
-- [MVS](#initialize-the-mvs-data-sets-using-zwe-init-mvs).  Copy the data sets provided with Zowe to cust data sets.
+- security.   Create the user IDs and security manager settings.  
+- [mvs](#initialize-the-mvs-data-sets-using-zwe-init-mvs).  Copy the data sets provided with Zowe to cust data sets.
 - stc. Configure the system to launch the Zowe started task.
 - apfauth.  APF authorize the LOADLIB containing the modules that need to perform z/OS priviledged security calls.  
 - certificate.  Configure Zowe to use TLS certificates.
@@ -62,4 +62,4 @@ As well as the three `CUST` data sets, the PDS `SZWEAUTH` is created.  This may 
 
 ## Verifying Data Set initialization
 
-If this step is successful there will be three data sets matching the values in `zowe.setup.mvs.parmlib`, `zowe.setup.mvs.jcllib` and `zowe.setup.mvs.authPluginLib` in the `zowe.yaml` file.  The member `ZWESIP00` will exist in the `CUST.PARMLIB` and the `JCLLIB` and `ZWESAPL` will be empty.
+If this step is successful there will be three data sets matching the values in `zowe.setup.mvs.parmlib`, `zowe.setup.mvs.jcllib` and `zowe.setup.mvs.authPluginLib` in the `zowe.yaml` file.  The member `ZWESIP00` will exist in the `CUST.PARMLIB` and the `JCLLIB` and `ZWESAPL` will be empty.  
