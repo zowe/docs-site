@@ -1,4 +1,4 @@
-# Creating global user profiles
+# Creating team user profiles
 
 As a system programmer or Zowe CLI user, you want to manage your connection details efficiently and in one location.
 
@@ -50,9 +50,9 @@ In your user-specific file , observe that the "defaults" object is empty and the
 
 ```
 
-## Editing global profiles
+## Editing team profiles
 
-After the initial setup, as a system programmer you can define additional mainframe services to the global (or user-specific) configuration file.
+After the initial setup, as a system programmer you can define additional mainframe services to the team (or user-specific) configuration file.
 
 Open the `~/.zowe/zowe.config.json` file in a text editor or IDE on your computer. The profiles object contains connection and other frequently needed information for accessing various services. For example:
 
@@ -83,9 +83,3 @@ Open the `~/.zowe/zowe.config.json` file in a text editor or IDE on your compute
     },
 }
 ```
-
-
-
-
-
-
