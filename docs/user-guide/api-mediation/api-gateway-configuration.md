@@ -74,7 +74,9 @@ Enable the `/gateway/api/v1/auth/refresh` endpoint to exchange a valid JWT token
 
 ### Change password with SAF provider
 
-Update the user password using the SAF Authentication provider. To use this functionality, add the parameter `newPassword` on the login endpoint `/gateway/api/v1/auth/login`. The Gateway service returns a valid JWT with the response code `204` as a result of successful password change. The user is then authenticated and can consume APIs through the Gateway. If it is not possible to change the password for any reason, the response code is `401`. 
+Update the user password using the SAF Authentication provider. To use this functionality, add the parameter `newPassword` on the login endpoint `/gateway/api/v1/auth/login`. The Gateway service returns a valid JWT with the response code `204` as a result of successful password change. The user is then authenticated and can consume APIs through the Gateway. If it is not possible to change the password for any reason, the response code is `401`.
+
+This feature is also available in the API Catalog.
 
 Use a `POST` REST call against the URL `/gateway/api/v1/auth/login`:
 
@@ -102,6 +104,8 @@ where:
 ### Change password with z/OSMF provider
 
 Update the user password using the z/OSMF Authentication provider. To use this functionality, add the parameter `newPassword` on the login endpoint `/gateway/api/v1/auth/login`. The Gateway service returns a valid JWT with the response code `204` as a result of successful password change. The user is then authenticated and can consume APIs through the Gateway. If it is not possible to change the password for any reason, the response code is `401`.
+
+This feature is also available in the API Catalog.
 
 Use a `POST` REST call against the URL `/gateway/api/v1/auth/login`:
 
