@@ -430,7 +430,7 @@ module.exports = {
   ],
   reference: [
     "appendix/zowe-cli-command-reference",
-    "appendix/zwe_cli_reference/zwe-cli-reference",
+    "appendix/zwe_server_command_reference/zwe-server-command-reference",
     "appendix/zowe-api-reference",
     "appendix/bill-of-materials",
     {
