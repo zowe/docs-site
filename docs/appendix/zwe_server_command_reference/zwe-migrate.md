@@ -2,7 +2,7 @@
 
 [zwe](./zwe) > [migrate](./zwe-migrate)
 
-	zwe migrate [sub-command [sub-command]...] [parameter [parameter]...]
+	zwe migrate test[sub-command [sub-command]...] [parameter [parameter]...]
 
 ## Sub-commands
 

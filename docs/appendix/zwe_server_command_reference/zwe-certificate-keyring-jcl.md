@@ -2,7 +2,7 @@
 
 [zwe](./zwe) > [certificate](./zwe-certificate) > [keyring-jcl](./zwe-certificate-keyring-jcl)
 
-	zwe certificate keyring-jcl [sub-command [sub-command]...] [parameter [parameter]...]
+	zwe certificate keyring-jcl test[sub-command [sub-command]...] [parameter [parameter]...]
 
 ## Sub-commands
 
