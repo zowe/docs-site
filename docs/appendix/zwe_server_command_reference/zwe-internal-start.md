@@ -2,7 +2,7 @@
 
 [zwe](./zwe) > [internal](./zwe-internal) > [start](./zwe-internal-start)
 
-	zwe internal start test[sub-command [sub-command]...] [parameter [parameter]...]
+	zwe internal start [sub-command [sub-command]...] [parameter [parameter]...]
 
 ## Sub-commands
 

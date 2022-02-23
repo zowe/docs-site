@@ -2,7 +2,7 @@
 
 [zwe](./zwe) > [certificate](./zwe-certificate)
 
-	zwe certificate test[sub-command [sub-command]...] [parameter [parameter]...]
+	zwe certificate [sub-command [sub-command]...] [parameter [parameter]...]
 
 ## Sub-commands
 

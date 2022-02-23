@@ -2,7 +2,7 @@
 
 [zwe](./zwe)
 
-	zwe test[sub-command [sub-command]...] [parameter [parameter]...]
+	zwe [sub-command [sub-command]...] [parameter [parameter]...]
 
 ## Sub-commands
 
