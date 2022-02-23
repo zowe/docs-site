@@ -2,7 +2,7 @@
 
 [zwe](./zwe) > [components](./zwe-components)
 
-	zwe components test[sub-command [sub-command]...] [parameter [parameter]...]
+	zwe components [sub-command [sub-command]...] [parameter [parameter]...]
 
 ## Sub-commands
 

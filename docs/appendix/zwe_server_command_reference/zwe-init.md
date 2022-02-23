@@ -2,7 +2,7 @@
 
 [zwe](./zwe) > [init](./zwe-init)
 
-	zwe init test[sub-command [sub-command]...] [parameter [parameter]...]
+	zwe init [sub-command [sub-command]...] [parameter [parameter]...]
 
 ## Sub-commands
 

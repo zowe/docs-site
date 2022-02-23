@@ -2,7 +2,7 @@
 
 [zwe](./zwe) > [migrate](./zwe-migrate) > [for](./zwe-migrate-for)
 
-	zwe migrate for test[sub-command [sub-command]...] [parameter [parameter]...]
+	zwe migrate for [sub-command [sub-command]...] [parameter [parameter]...]
 
 ## Sub-commands
 
