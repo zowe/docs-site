@@ -4,7 +4,7 @@
 
 	zwe init certificate [parameter [parameter]...]
 
-## Description
+## test Description
 
 This command will generate certificate used by Zowe services.
 
@@ -159,18 +159,18 @@ zOSMF:
     the label of z/OSMF root certificate authority.
 
 
-## Examples
+## test Examples
 
 zwe init certificate -v -c /path/to/zowe.yaml
 
 
-## Parameters
+## test Parameters
 
 Full name|Alias|Type|Required|Help message
 |---|---|---|---|---
 --allow-overwrite,--allow-overwritten||boolean|no||Allow overwritten existing MVS data set.
 --update-config||boolean|no||Whether to update YAML configuration file with initialization result.
-### Inherited from parent command
+### test Inherited from parent command
 
 Full name|Alias|Type|Required|Help message
 |---|---|---|---|---
@@ -186,13 +186,13 @@ Full name|Alias|Type|Required|Help message
 --config|-c|string|no||Path to Zowe configuration zowe.yaml file.
 
 
-## Errors
+## test Errors
 
 Error code|Exit code|Error message
 |---|---|---
 ZWEL0157E|157|%s (%s) is not defined in Zowe YAML configuration file.
 ZWEL0164E|164|Value of %s (%s) defined in Zowe YAML configuration file is invalid. Valid values are %s.
-### Inherited from parent command
+### test Inherited from parent command
 
 Error code|Exit code|Error message
 |---|---|---

@@ -4,21 +4,21 @@
 
 	zwe certificate keyring-jcl generate [parameter [parameter]...]
 
-## Description
+## test Description
 
 Generate new set of certificate in Zowe keyring.
 
 
-### Inherited from parent command
+### test Inherited from parent command
 
 WARNING: This command is for experimental purposes and may not fully function.
 
-## Examples
+## test Examples
 
 zwe certificate keyring-jcl generate --hlq my-hlq --jcllib my-jcllib --security-dry-run --security-dry-run --keyring-owner my-keyring-owner --keyring-name my-keyring-name -d my-domain -a certificate-alias -ca ca-alias
 
 
-## Parameters
+## test Parameters
 
 Full name|Alias|Type|Required|Help message
 |---|---|---|---|---
@@ -42,7 +42,7 @@ Full name|Alias|Type|Required|Help message
 --trust-zosmf||boolean|no||Whether to trust z/OSMF CA.
 --zosmf-ca||string|no||Labels of z/OSMF root certificate authorities. Specify "_auto_" to let Zowe to detect automatically. This only works for RACF.
 --zosmf-user||string|no||z/OSMF user name. This is used to automatically detect z/OSMF root certificate authorities.
-### Inherited from parent command
+### test Inherited from parent command
 
 Full name|Alias|Type|Required|Help message
 |---|---|---|---|---
@@ -54,12 +54,12 @@ Full name|Alias|Type|Required|Help message
 --config|-c|string|no||Path to Zowe configuration zowe.yaml file.
 
 
-## Errors
+## test Errors
 
 Error code|Exit code|Error message
 |---|---|---
 ZWEL0174E|174|Failed to generate certificate in Zowe keyring "%s".
-### Inherited from parent command
+### test Inherited from parent command
 
 Error code|Exit code|Error message
 |---|---|---

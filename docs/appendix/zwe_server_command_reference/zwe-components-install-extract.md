@@ -4,7 +4,7 @@
 
 	zwe components install extract [parameter [parameter]...]
 
-## Description
+## test Description
 
 Extract module package and lay down to target directory.
 
@@ -12,18 +12,18 @@ NOTE: this sub-command will be automatically executed by `zwe components install
       so usually you don't need to execute this manually.
 
 
-## Examples
+## test Examples
 
 zwe components install extract -c /path/to/zowe.yaml -o /path/to/component/package
 
 
-## Parameters
+## test Parameters
 
 Full name|Alias|Type|Required|Help message
 |---|---|---|---|---
 --component-file,--component|-o|string|yes||Path to the component package or directory.
 --auto-encoding|-e|string|no||If we want to automatically tagging the module files.
-### Inherited from parent command
+### test Inherited from parent command
 
 Full name|Alias|Type|Required|Help message
 |---|---|---|---|---
@@ -35,7 +35,7 @@ Full name|Alias|Type|Required|Help message
 --config|-c|string|no||Path to Zowe configuration zowe.yaml file.
 
 
-## Errors
+## test Errors
 
 Error code|Exit code|Error message
 |---|---|---
@@ -43,7 +43,7 @@ ZWEL0153E|153|Cannot install Zowe component to system root directory.
 ZWEL0154E|154|Temporary directory is empty.
 ZWEL0155E|155|Component %s already exists in %s.
 ZWEL0167E|167|Cannot find component name from %s package manifest.
-### Inherited from parent command
+### test Inherited from parent command
 
 Error code|Exit code|Error message
 |---|---|---

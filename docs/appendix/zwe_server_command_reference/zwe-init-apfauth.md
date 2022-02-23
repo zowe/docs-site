@@ -4,7 +4,7 @@
 
 	zwe init apfauth [parameter [parameter]...]
 
-## Description
+## test Description
 
 This command will APF authorize load library for you.
 
@@ -28,17 +28,17 @@ zowe:
   You can install Zowe ZIS plugins into this load library.
 
 
-## Examples
+## test Examples
 
 zwe init apfauth --security-dry-run -c /path/to/zowe.yaml
 
 
-## Parameters
+## test Parameters
 
 Full name|Alias|Type|Required|Help message
 |---|---|---|---|---
 --security-dry-run||boolean|no||Whether to dry run security related setup.
-### Inherited from parent command
+### test Inherited from parent command
 
 Full name|Alias|Type|Required|Help message
 |---|---|---|---|---
@@ -54,12 +54,12 @@ Full name|Alias|Type|Required|Help message
 --config|-c|string|no||Path to Zowe configuration zowe.yaml file.
 
 
-## Errors
+## test Errors
 
 Error code|Exit code|Error message
 |---|---|---
 ZWEL0157E|157|%s (%s) is not defined in Zowe YAML configuration file.
-### Inherited from parent command
+### test Inherited from parent command
 
 Error code|Exit code|Error message
 |---|---|---

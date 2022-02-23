@@ -4,30 +4,30 @@
 
 	zwe internal [sub-command [sub-command]...] [parameter [parameter]...]
 
-## Sub-commands
+## test Sub-commands
 
 * [config](./zwe-internal-config)
 * [container](./zwe-internal-container)
 * [get-launch-components](./zwe-internal-get-launch-components)
 * [start](./zwe-internal-start)
 
-## Description
+## test Description
 
 Commands will be executed internally by other Zowe commands.
 
 
 WARNING: This command is for experimental purposes and may not fully function.
 
-## Examples
+## test Examples
 
 zwe internal start -c /path/to/zowe.yaml
 
 zwe internal config set -p path-of-configuration -e new-value-of-configuration -c /path/to/zowe.yaml
 
 
-## Parameters
+## test Parameters
 
-### Inherited from parent command
+### test Inherited from parent command
 
 Full name|Alias|Type|Required|Help message
 |---|---|---|---|---
@@ -39,9 +39,9 @@ Full name|Alias|Type|Required|Help message
 --config|-c|string|no||Path to Zowe configuration zowe.yaml file.
 
 
-## Errors
+## test Errors
 
-### Inherited from parent command
+### test Inherited from parent command
 
 Error code|Exit code|Error message
 |---|---|---

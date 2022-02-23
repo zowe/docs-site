@@ -4,19 +4,19 @@
 
 	zwe version [parameter [parameter]...]
 
-## Description
+## test Description
 
 Display Zowe version.
 
 
-## Examples
+## test Examples
 
 zwe version
 
 
-## Parameters
+## test Parameters
 
-### Inherited from parent command
+### test Inherited from parent command
 
 Full name|Alias|Type|Required|Help message
 |---|---|---|---|---
@@ -28,12 +28,12 @@ Full name|Alias|Type|Required|Help message
 --config|-c|string|no||Path to Zowe configuration zowe.yaml file.
 
 
-## Errors
+## test Errors
 
 Error code|Exit code|Error message
 |---|---|---
 ZWEL0150E|150|Failed to find Zowe manifest.json. Zowe runtimeDirectory is invalid.
-### Inherited from parent command
+### test Inherited from parent command
 
 Error code|Exit code|Error message
 |---|---|---

@@ -4,21 +4,21 @@
 
 	zwe certificate pkcs12 import [parameter [parameter]...]
 
-## Description
+## test Description
 
 Import certificate and/or certificate authorities into PKCS12 keystore.
 
 
-### Inherited from parent command
+### test Inherited from parent command
 
 WARNING: This command is for experimental purposes and may not fully function.
 
-## Examples
+## test Examples
 
 zwe certificate pkcs12 import -f /path/to/my/keystore/file -p keystore-cert-password
 
 
-## Parameters
+## test Parameters
 
 Full name|Alias|Type|Required|Help message
 |---|---|---|---|---
@@ -29,7 +29,7 @@ Full name|Alias|Type|Required|Help message
 --source-password|-sp|string|no||Password of the source PKCS12 keystore.
 --source-alias|-sa|string|no||Private keys should also be exported.
 --trust-cas||string|no||PEM files of extra certificate authorities should be trusted, separated by comma.
-### Inherited from parent command
+### test Inherited from parent command
 
 Full name|Alias|Type|Required|Help message
 |---|---|---|---|---
@@ -41,12 +41,12 @@ Full name|Alias|Type|Required|Help message
 --config|-c|string|no||Path to Zowe configuration zowe.yaml file.
 
 
-## Errors
+## test Errors
 
 Error code|Exit code|Error message
 |---|---|---
 ZWEL0179E|179|Failed to import certificate (authorities) into keystore %s.
-### Inherited from parent command
+### test Inherited from parent command
 
 Error code|Exit code|Error message
 |---|---|---

@@ -4,12 +4,12 @@
 
 	zwe sample sub [sub-command [sub-command]...] [parameter [parameter]...]
 
-## Sub-commands
+## test Sub-commands
 
 * [deep](./zwe-sample-sub-deep)
 * [second](./zwe-sample-sub-second)
 
-## Description
+## test Description
 
 A sample sub-command.
 
@@ -17,22 +17,22 @@ NOTE: This command is to demonstrate how `zwe` command works. There are no real
       meaningful functionalities defined in this command and sub-commands.
 
 
-### Inherited from parent command
+### test Inherited from parent command
 
 WARNING: This command is for experimental purposes and may not fully function.
 
-## Examples
+## test Examples
 
 zwe sample sub second -d required-parameter
 
 
-## Parameters
+## test Parameters
 
 Full name|Alias|Type|Required|Help message
 |---|---|---|---|---
 --target-dir,--target|-d|string|yes||This parameter is required.
 --auto-encoding|-e|string|no||This parameter has default value.\nThis help message has multiple lines.\n  - another line
-### Inherited from parent command
+### test Inherited from parent command
 
 Full name|Alias|Type|Required|Help message
 |---|---|---|---|---
@@ -44,9 +44,9 @@ Full name|Alias|Type|Required|Help message
 --config|-c|string|no||Path to Zowe configuration zowe.yaml file.
 
 
-## Errors
+## test Errors
 
-### Inherited from parent command
+### test Inherited from parent command
 
 Error code|Exit code|Error message
 |---|---|---

@@ -4,18 +4,18 @@
 
 	zwe components [sub-command [sub-command]...] [parameter [parameter]...]
 
-## Sub-commands
+## test Sub-commands
 
 * [install](./zwe-components-install)
 
-## Examples
+## test Examples
 
 zwe components install -c /path/to/zowe.yaml -o /path/to/component/package
 
 
-## Parameters
+## test Parameters
 
-### Inherited from parent command
+### test Inherited from parent command
 
 Full name|Alias|Type|Required|Help message
 |---|---|---|---|---
@@ -27,9 +27,9 @@ Full name|Alias|Type|Required|Help message
 --config|-c|string|no||Path to Zowe configuration zowe.yaml file.
 
 
-## Errors
+## test Errors
 
-### Inherited from parent command
+### test Inherited from parent command
 
 Error code|Exit code|Error message
 |---|---|---

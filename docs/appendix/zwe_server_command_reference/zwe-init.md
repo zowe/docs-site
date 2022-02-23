@@ -4,7 +4,7 @@
 
 	zwe init [sub-command [sub-command]...] [parameter [parameter]...]
 
-## Sub-commands
+## test Sub-commands
 
 * [apfauth](./zwe-init-apfauth)
 * [certificate](./zwe-init-certificate)
@@ -13,7 +13,7 @@
 * [stc](./zwe-init-stc)
 * [vsam](./zwe-init-vsam)
 
-## Description
+## test Description
 
 Init Zowe instance based on zowe.yaml configuration.
 
@@ -253,7 +253,7 @@ components:
 - `components.caching-service.storage.vsam.name` defines the VSAM data set name.
 
 
-## Examples
+## test Examples
 
 zwe init --allow-overwrite -c /path/to/zowe.yaml
 
@@ -262,7 +262,7 @@ zwe init apfauth -v -c /path/to/zowe.yaml
 zwe init certificate -v -c /path/to/zowe.yaml
 
 
-## Parameters
+## test Parameters
 
 Full name|Alias|Type|Required|Help message
 |---|---|---|---|---
@@ -270,7 +270,7 @@ Full name|Alias|Type|Required|Help message
 --skip-security-setup||boolean|no||Whether should skip security related setup.
 --security-dry-run||boolean|no||Whether to dry run security related setup.
 --update-config||boolean|no||Whether to update YAML configuration file with initialization result.
-### Inherited from parent command
+### test Inherited from parent command
 
 Full name|Alias|Type|Required|Help message
 |---|---|---|---|---
@@ -282,9 +282,9 @@ Full name|Alias|Type|Required|Help message
 --config|-c|string|no||Path to Zowe configuration zowe.yaml file.
 
 
-## Errors
+## test Errors
 
-### Inherited from parent command
+### test Inherited from parent command
 
 Error code|Exit code|Error message
 |---|---|---

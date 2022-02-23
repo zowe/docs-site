@@ -4,28 +4,28 @@
 
 	zwe certificate pkcs12 export [parameter [parameter]...]
 
-## Description
+## test Description
 
 Export PKCS12 keystore as PEM files.
 
 
-### Inherited from parent command
+### test Inherited from parent command
 
 WARNING: This command is for experimental purposes and may not fully function.
 
-## Examples
+## test Examples
 
 zwe certificate pkcs12 export -f /path/to/my/keystore/file -p keystore-cert-password
 
 
-## Parameters
+## test Parameters
 
 Full name|Alias|Type|Required|Help message
 |---|---|---|---|---
 --keystore|-f|string|yes||PKCS12 keystore file name.
 --password|-p|string|yes||Password of the certificate keystore.
 --private-keys||string|no||Private keys should also be exported.
-### Inherited from parent command
+### test Inherited from parent command
 
 Full name|Alias|Type|Required|Help message
 |---|---|---|---|---
@@ -37,12 +37,12 @@ Full name|Alias|Type|Required|Help message
 --config|-c|string|no||Path to Zowe configuration zowe.yaml file.
 
 
-## Errors
+## test Errors
 
 Error code|Exit code|Error message
 |---|---|---
 ZWEL0178E|178|Failed to export PKCS12 keystore %s.
-### Inherited from parent command
+### test Inherited from parent command
 
 Error code|Exit code|Error message
 |---|---|---

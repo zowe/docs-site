@@ -4,29 +4,29 @@
 
 	zwe certificate [sub-command [sub-command]...] [parameter [parameter]...]
 
-## Sub-commands
+## test Sub-commands
 
 * [keyring-jcl](./zwe-certificate-keyring-jcl)
 * [pkcs12](./zwe-certificate-pkcs12)
 * [verify-service](./zwe-certificate-verify-service)
 
-## Description
+## test Description
 
 Set of commands to help you manage certificates.
 
 
 WARNING: This command is for experimental purposes and may not fully function.
 
-## Examples
+## test Examples
 
 zwe certificate keyring-jcl clean --hlq my-hlq --jcllib my-jcllib --security-dry-run --keyring-owner my-keyring-owner --keyring-name my-keyring-name -a certificate-alias -ca ca-alias
 
 zwe certificate verify-service --host service-hostname --port service-port
 
 
-## Parameters
+## test Parameters
 
-### Inherited from parent command
+### test Inherited from parent command
 
 Full name|Alias|Type|Required|Help message
 |---|---|---|---|---
@@ -38,9 +38,9 @@ Full name|Alias|Type|Required|Help message
 --config|-c|string|no||Path to Zowe configuration zowe.yaml file.
 
 
-## Errors
+## test Errors
 
-### Inherited from parent command
+### test Inherited from parent command
 
 Error code|Exit code|Error message
 |---|---|---

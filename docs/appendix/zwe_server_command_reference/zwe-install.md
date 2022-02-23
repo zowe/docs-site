@@ -4,7 +4,7 @@
 
 	zwe install [parameter [parameter]...]
 
-## Description
+## test Description
 
 After you extract Zowe convenience build, you can run this command to install
 MVS data sets.
@@ -29,18 +29,18 @@ Expected outputs:
   * `SZWEEXEC` contains few utilities used by Zowe.
 
 
-## Examples
+## test Examples
 
 zwe install -v -c /path/to/zowe.yaml
 
 
-## Parameters
+## test Parameters
 
 Full name|Alias|Type|Required|Help message
 |---|---|---|---|---
 --allow-overwrite,--allow-overwritten||boolean|no||Allow overwritten existing MVS data set.
 --hlq||string|no||Install Zowe to this high level qualifier.\nIf you specify this value, --config is not required.
-### Inherited from parent command
+### test Inherited from parent command
 
 Full name|Alias|Type|Required|Help message
 |---|---|---|---|---
@@ -52,7 +52,7 @@ Full name|Alias|Type|Required|Help message
 --config|-c|string|no||Path to Zowe configuration zowe.yaml file.
 
 
-## Errors
+## test Errors
 
 Error code|Exit code|Error message
 |---|---|---
@@ -60,7 +60,7 @@ ZWEL0157E|157|%s (%s) is not defined in Zowe YAML configuration file.
 ZWEL0300W||%s already exists. Members in this data set will be overwritten.
 ZWEL0301W||%s already exists and will not be overwritten. For upgrades, you must use --allow-overwrite.
 ZWEL0158E|158|%s already exists.
-### Inherited from parent command
+### test Inherited from parent command
 
 Error code|Exit code|Error message
 |---|---|---

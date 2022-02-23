@@ -4,7 +4,7 @@
 
 	zwe init mvs [parameter [parameter]...]
 
-## Description
+## test Description
 
 This command will prepare Zowe custom data sets.
 
@@ -42,17 +42,17 @@ NOTE: Existing members in custom data sets will not be overwritten by default.
       You can pass `--allow-overwrite` parameters to force update.
 
 
-## Examples
+## test Examples
 
 zwe init mvs -v -c /path/to/zowe.yaml
 
 
-## Parameters
+## test Parameters
 
 Full name|Alias|Type|Required|Help message
 |---|---|---|---|---
 --allow-overwrite,--allow-overwritten||boolean|no||Allow overwritten existing MVS data set.
-### Inherited from parent command
+### test Inherited from parent command
 
 Full name|Alias|Type|Required|Help message
 |---|---|---|---|---
@@ -68,7 +68,7 @@ Full name|Alias|Type|Required|Help message
 --config|-c|string|no||Path to Zowe configuration zowe.yaml file.
 
 
-## Errors
+## test Errors
 
 Error code|Exit code|Error message
 |---|---|---
@@ -76,7 +76,7 @@ ZWEL0157E|157|%s (%s) is not defined in Zowe YAML configuration file.
 ZWEL0300W||%s already exists. This data set member will be overwritten during configuration.
 ZWEL0301W||%s already exists and will not be overwritten. For upgrades, you must use --allow-overwrite.
 ZWEL0158E|158|%s already exists.
-### Inherited from parent command
+### test Inherited from parent command
 
 Error code|Exit code|Error message
 |---|---|---

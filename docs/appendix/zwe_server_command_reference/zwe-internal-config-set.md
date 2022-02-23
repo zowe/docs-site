@@ -4,28 +4,28 @@
 
 	zwe internal config set [parameter [parameter]...]
 
-## Description
+## test Description
 
 Set value of a configuration and write back to the YAML configuration.
 
 
-### Inherited from parent command
+### test Inherited from parent command
 
 WARNING: This command is for experimental purposes and may not fully function.
 
-## Examples
+## test Examples
 
 zwe internal config set -p path-of-configuration -e new-value-of-configuration -c /path/to/zowe.yaml
 
 
-## Parameters
+## test Parameters
 
 Full name|Alias|Type|Required|Help message
 |---|---|---|---|---
 --ha-instance|-i|string|no||Zowe high availability instance ID.
 --path|-p|string|yes||Path of the configuration. For example, `components.gateway.port`.
 --value|-e|string|no||New value of the configuration.
-### Inherited from parent command
+### test Inherited from parent command
 
 Full name|Alias|Type|Required|Help message
 |---|---|---|---|---
@@ -37,9 +37,9 @@ Full name|Alias|Type|Required|Help message
 --config|-c|string|no||Path to Zowe configuration zowe.yaml file.
 
 
-## Errors
+## test Errors
 
-### Inherited from parent command
+### test Inherited from parent command
 
 Error code|Exit code|Error message
 |---|---|---

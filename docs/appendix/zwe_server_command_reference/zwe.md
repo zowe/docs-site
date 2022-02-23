@@ -4,7 +4,7 @@
 
 	zwe [sub-command [sub-command]...] [parameter [parameter]...]
 
-## Sub-commands
+## test Sub-commands
 
 * [certificate](./zwe-certificate)
 * [components](./zwe-components)
@@ -17,14 +17,14 @@
 * [stop](./zwe-stop)
 * [version](./zwe-version)
 
-## Description
+## test Description
 
 A command line utility helps you managing Zowe instance.
 
 You can issue --help or -h to find information for all commands it supports.
 
 
-## Examples
+## test Examples
 
 zwe install -h
 
@@ -33,7 +33,7 @@ zwe init --allow-overwrite --config /path/to/zowe.yaml
 zwe start -c /path/to/zowe.yaml
 
 
-## Parameters
+## test Parameters
 
 Full name|Alias|Type|Required|Help message
 |---|---|---|---|---
@@ -45,7 +45,7 @@ Full name|Alias|Type|Required|Help message
 --config|-c|string|no||Path to Zowe configuration zowe.yaml file.
 
 
-## Errors
+## test Errors
 
 Error code|Exit code|Error message
 |---|---|---

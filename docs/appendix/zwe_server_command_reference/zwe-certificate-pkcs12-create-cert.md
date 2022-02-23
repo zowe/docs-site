@@ -4,21 +4,21 @@
 
 	zwe certificate pkcs12 create cert [parameter [parameter]...]
 
-## Description
+## test Description
 
 Create a new  PKCS12 format certificate.
 
 
-### Inherited from parent command
+### test Inherited from parent command
 
 WARNING: This command is for experimental purposes and may not fully function.
 
-## Examples
+## test Examples
 
 zwe certificate pkcs12 create cert -d /path/to/my/keystore/dir -a cert-alias -p cert-keystore-password -k keystore-name --ca-alias ca-alias --ca-password ca-keystore-password
 
 
-## Parameters
+## test Parameters
 
 Full name|Alias|Type|Required|Help message
 |---|---|---|---|---
@@ -38,7 +38,7 @@ Full name|Alias|Type|Required|Help message
 --validity||string|no||Validity days of certificate.
 --key-usage||string|no||Key usage of certificate.
 --extended-key-usage||string|no||Extended key usage of certificate.
-### Inherited from parent command
+### test Inherited from parent command
 
 Full name|Alias|Type|Required|Help message
 |---|---|---|---|---
@@ -51,14 +51,14 @@ Full name|Alias|Type|Required|Help message
 --config|-c|string|no||Path to Zowe configuration zowe.yaml file.
 
 
-## Errors
+## test Errors
 
 Error code|Exit code|Error message
 |---|---|---
 ZWEL0300W||%s already exists. This %s will be overwritten during configuration.
 ZWEL0158E|158|%s already exists.
 ZWEL0169E|169|Failed to create certificate "%s".
-### Inherited from parent command
+### test Inherited from parent command
 
 Error code|Exit code|Error message
 |---|---|---

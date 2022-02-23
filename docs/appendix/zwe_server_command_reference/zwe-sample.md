@@ -4,12 +4,12 @@
 
 	zwe sample [sub-command [sub-command]...] [parameter [parameter]...]
 
-## Sub-commands
+## test Sub-commands
 
 * [sub](./zwe-sample-sub)
 * [test](./zwe-sample-test)
 
-## Description
+## test Description
 
 This is a sample command.
 
@@ -19,14 +19,14 @@ NOTE: This command is to demonstrate how `zwe` command works. There are no real
 
 WARNING: This command is for experimental purposes and may not fully function.
 
-## Examples
+## test Examples
 
 zwe sample sub second -d required-parameter
 
 
-## Parameters
+## test Parameters
 
-### Inherited from parent command
+### test Inherited from parent command
 
 Full name|Alias|Type|Required|Help message
 |---|---|---|---|---
@@ -38,9 +38,9 @@ Full name|Alias|Type|Required|Help message
 --config|-c|string|no||Path to Zowe configuration zowe.yaml file.
 
 
-## Errors
+## test Errors
 
-### Inherited from parent command
+### test Inherited from parent command
 
 Error code|Exit code|Error message
 |---|---|---

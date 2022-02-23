@@ -4,22 +4,22 @@
 
 	zwe certificate pkcs12 lock [parameter [parameter]...]
 
-## Description
+## test Description
 
 This command will lock the keystore directory to only be accessible by specified
 user group.
 
 
-### Inherited from parent command
+### test Inherited from parent command
 
 WARNING: This command is for experimental purposes and may not fully function.
 
-## Examples
+## test Examples
 
 zwe certificate pkcs12 lock -d /path/to/my/keystore/dir --user keystore-user --group keystore-group
 
 
-## Parameters
+## test Parameters
 
 Full name|Alias|Type|Required|Help message
 |---|---|---|---|---
@@ -27,7 +27,7 @@ Full name|Alias|Type|Required|Help message
 --user||string|yes||Owner of the keystore directory.
 --group||string|yes||Group of the keystore directory.
 --group-permission||string|no||Group permission. Can be <empty> for no permission, or `read`, `write`.
-### Inherited from parent command
+### test Inherited from parent command
 
 Full name|Alias|Type|Required|Help message
 |---|---|---|---|---
@@ -39,12 +39,12 @@ Full name|Alias|Type|Required|Help message
 --config|-c|string|no||Path to Zowe configuration zowe.yaml file.
 
 
-## Errors
+## test Errors
 
 Error code|Exit code|Error message
 |---|---|---
 ZWEL0177E|177|Failed to lock keystore directory %s.
-### Inherited from parent command
+### test Inherited from parent command
 
 Error code|Exit code|Error message
 |---|---|---

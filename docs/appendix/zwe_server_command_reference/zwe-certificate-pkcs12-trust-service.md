@@ -4,7 +4,7 @@
 
 	zwe certificate pkcs12 trust-service [parameter [parameter]...]
 
-## Description
+## test Description
 
 This command can detect and trust any service by importing the certificate
 into truststore.
@@ -12,16 +12,16 @@ into truststore.
 NOTE: the service must be online and accessible.
 
 
-### Inherited from parent command
+### test Inherited from parent command
 
 WARNING: This command is for experimental purposes and may not fully function.
 
-## Examples
+## test Examples
 
 zwe certificate pkcs12 trust-service -s service-name -d /path/to/my/keystore/dir -k keystore-name -p keystore-cert-password --host service-hostname --port service-port -a cert-alias
 
 
-## Parameters
+## test Parameters
 
 Full name|Alias|Type|Required|Help message
 |---|---|---|---|---
@@ -32,7 +32,7 @@ Full name|Alias|Type|Required|Help message
 --host||string|yes||Host name of the service.
 --port||string|yes||Port of the service.
 --alias|-a|string|yes||Certificate alias name for the imported the certificate.
-### Inherited from parent command
+### test Inherited from parent command
 
 Full name|Alias|Type|Required|Help message
 |---|---|---|---|---
@@ -44,13 +44,13 @@ Full name|Alias|Type|Required|Help message
 --config|-c|string|no||Path to Zowe configuration zowe.yaml file.
 
 
-## Errors
+## test Errors
 
 Error code|Exit code|Error message
 |---|---|---
 ZWEL0300W||%s already exists. This %s will be overwritten during configuration.
 ZWEL0170E|170|Failed to trust service "%s".
-### Inherited from parent command
+### test Inherited from parent command
 
 Error code|Exit code|Error message
 |---|---|---

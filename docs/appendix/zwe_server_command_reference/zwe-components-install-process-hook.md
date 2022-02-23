@@ -4,7 +4,7 @@
 
 	zwe components install process-hook [parameter [parameter]...]
 
-## Description
+## test Description
 
 Process module install hook if exists.
 
@@ -12,17 +12,17 @@ NOTE: this sub-command will be automatically executed by `zwe components install
       so usually you don't need to execute this manually.
 
 
-## Examples
+## test Examples
 
 zwe components install process-hook -c /path/to/zowe.yaml -n component-name
 
 
-## Parameters
+## test Parameters
 
 Full name|Alias|Type|Required|Help message
 |---|---|---|---|---
 --component-name|-n|string|yes||Component name.
-### Inherited from parent command
+### test Inherited from parent command
 
 Full name|Alias|Type|Required|Help message
 |---|---|---|---|---
@@ -34,9 +34,9 @@ Full name|Alias|Type|Required|Help message
 --config|-c|string|no||Path to Zowe configuration zowe.yaml file.
 
 
-## Errors
+## test Errors
 
-### Inherited from parent command
+### test Inherited from parent command
 
 Error code|Exit code|Error message
 |---|---|---

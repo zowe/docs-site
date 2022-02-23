@@ -4,7 +4,7 @@
 
 	zwe start [parameter [parameter]...]
 
-## Description
+## test Description
 
 Start Zowe with main started task.
 
@@ -31,17 +31,17 @@ haInstances:
   will be routed to.
 
 
-## Examples
+## test Examples
 
 zwe start -c /path/to/zowe.yaml
 
 
-## Parameters
+## test Parameters
 
 Full name|Alias|Type|Required|Help message
 |---|---|---|---|---
 --ha-instance|-i|string|no||Zowe high availability instance ID.
-### Inherited from parent command
+### test Inherited from parent command
 
 Full name|Alias|Type|Required|Help message
 |---|---|---|---|---
@@ -53,12 +53,12 @@ Full name|Alias|Type|Required|Help message
 --config|-c|string|no||Path to Zowe configuration zowe.yaml file.
 
 
-## Errors
+## test Errors
 
 Error code|Exit code|Error message
 |---|---|---
 ZWEL0165E|165|Failed to start job %s: %s.
-### Inherited from parent command
+### test Inherited from parent command
 
 Error code|Exit code|Error message
 |---|---|---

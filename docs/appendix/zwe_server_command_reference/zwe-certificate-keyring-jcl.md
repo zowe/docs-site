@@ -4,32 +4,32 @@
 
 	zwe certificate keyring-jcl [sub-command [sub-command]...] [parameter [parameter]...]
 
-## Sub-commands
+## test Sub-commands
 
 * [clean](./zwe-certificate-keyring-jcl-clean)
 * [connect](./zwe-certificate-keyring-jcl-connect)
 * [generate](./zwe-certificate-keyring-jcl-generate)
 * [import-ds](./zwe-certificate-keyring-jcl-import-ds)
 
-## Description
+## test Description
 
 Manage z/OS Keyring with JCL.
 
 
-### Inherited from parent command
+### test Inherited from parent command
 
 WARNING: This command is for experimental purposes and may not fully function.
 
-## Examples
+## test Examples
 
 zwe certificate keyring-jcl clean --hlq my-hlq --jcllib my-jcllib --security-dry-run --keyring-owner my-keyring-owner --keyring-name my-keyring-name -a certificate-alias -ca ca-alias
 
 zwe certificate keyring-jcl connect --hlq my-hlq --jcllib my-jcllib --security-dry-run --keyring-owner my-keyring-owner --keyring-name my-keyring-name --connect-user cert-owner --connect-label cert-label
 
 
-## Parameters
+## test Parameters
 
-### Inherited from parent command
+### test Inherited from parent command
 
 Full name|Alias|Type|Required|Help message
 |---|---|---|---|---
@@ -41,9 +41,9 @@ Full name|Alias|Type|Required|Help message
 --config|-c|string|no||Path to Zowe configuration zowe.yaml file.
 
 
-## Errors
+## test Errors
 
-### Inherited from parent command
+### test Inherited from parent command
 
 Error code|Exit code|Error message
 |---|---|---

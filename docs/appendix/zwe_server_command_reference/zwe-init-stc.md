@@ -4,7 +4,7 @@
 
 	zwe init stc [parameter [parameter]...]
 
-## Description
+## test Description
 
 This command will copy Zowe started tasks `ZWESLSTC`, `ZWESISTC`, `ZWESASTC` to
 your target procedure library.
@@ -46,17 +46,17 @@ zowe:
   This configuration is optional. Default value is `ZWESASTC`.
 
 
-## Examples
+## test Examples
 
 zwe init stc -v -c /path/to/zowe.yaml
 
 
-## Parameters
+## test Parameters
 
 Full name|Alias|Type|Required|Help message
 |---|---|---|---|---
 --allow-overwrite,--allow-overwritten||boolean|no||Allow overwritten existing MVS data set.
-### Inherited from parent command
+### test Inherited from parent command
 
 Full name|Alias|Type|Required|Help message
 |---|---|---|---|---
@@ -72,7 +72,7 @@ Full name|Alias|Type|Required|Help message
 --config|-c|string|no||Path to Zowe configuration zowe.yaml file.
 
 
-## Errors
+## test Errors
 
 Error code|Exit code|Error message
 |---|---|---
@@ -82,7 +82,7 @@ ZWEL0301W||%s already exists and will not be overwritten. For upgrades, you must
 ZWEL0158E|158|%s already exists.
 ZWEL0159E|159|Failed to modify %s.
 ZWEL0160E|160|Failed to write to %s. Please check if target data set is opened by others.
-### Inherited from parent command
+### test Inherited from parent command
 
 Error code|Exit code|Error message
 |---|---|---

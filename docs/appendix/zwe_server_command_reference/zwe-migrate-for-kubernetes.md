@@ -4,7 +4,7 @@
 
 	zwe migrate for kubernetes [parameter [parameter]...]
 
-## Description
+## test Description
 
 Migrate your YAML configuration on z/OS for Kubernetes.
 
@@ -59,7 +59,7 @@ set of certificate for you with proper domain names listed above.
 - enabled `STRICT` mode `zowe.verifyCertificates`.
 
 
-## Parameters
+## test Parameters
 
 Full name|Alias|Type|Required|Help message
 |---|---|---|---|---
@@ -69,7 +69,7 @@ Full name|Alias|Type|Required|Help message
 --k8s-cluster-name||string|no||Kubernetes cluster name.
 --alias|-a|string|no||Certificate alias name.
 --password|-p|string|no||Password of the certificate keystore.
-### Inherited from parent command
+### test Inherited from parent command
 
 Full name|Alias|Type|Required|Help message
 |---|---|---|---|---
@@ -81,9 +81,9 @@ Full name|Alias|Type|Required|Help message
 --config|-c|string|no||Path to Zowe configuration zowe.yaml file.
 
 
-## Errors
+## test Errors
 
-### Inherited from parent command
+### test Inherited from parent command
 
 Error code|Exit code|Error message
 |---|---|---

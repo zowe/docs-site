@@ -4,7 +4,7 @@
 
 	zwe sample sub deep [parameter [parameter]...]
 
-## Description
+## test Description
 
 Sample of deep embedded sub-command.
 
@@ -14,21 +14,21 @@ NOTE: This command is to demonstrate how `zwe` command works. There are no real
       meaningful functionalities defined in this command and sub-commands.
 
 
-WARNING: This command is for experimental purposes and may not fully function.### Inherited from parent command
+WARNING: This command is for experimental purposes and may not fully function.### test Inherited from parent command
 
 WARNING: This command is for experimental purposes and may not fully function.
 
-## Examples
+## test Examples
 
 zwe sample sub deep -d required-parameter
 
 
-## Parameters
+## test Parameters
 
 Full name|Alias|Type|Required|Help message
 |---|---|---|---|---
 --another-parameter|-p|boolean|no||Every command level can have their own parameters.
-### Inherited from parent command
+### test Inherited from parent command
 
 Full name|Alias|Type|Required|Help message
 |---|---|---|---|---
@@ -42,9 +42,9 @@ Full name|Alias|Type|Required|Help message
 --config|-c|string|no||Path to Zowe configuration zowe.yaml file.
 
 
-## Errors
+## test Errors
 
-### Inherited from parent command
+### test Inherited from parent command
 
 Error code|Exit code|Error message
 |---|---|---

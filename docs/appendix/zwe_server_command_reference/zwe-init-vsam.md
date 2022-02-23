@@ -4,7 +4,7 @@
 
 	zwe init vsam [parameter [parameter]...]
 
-## Description
+## test Description
 
 This command will run ZWECSVSM jcl to create VSAM data set for Zowe APIML
 Caching Service.
@@ -44,17 +44,17 @@ components:
 - `components.caching-service.storage.vsam.name` defines the VSAM data set name.
 
 
-## Examples
+## test Examples
 
 zwe init vsam -v -c /path/to/zowe.yaml
 
 
-## Parameters
+## test Parameters
 
 Full name|Alias|Type|Required|Help message
 |---|---|---|---|---
 --allow-overwrite,--allow-overwritten||boolean|no||Allow overwritten existing MVS data set.
-### Inherited from parent command
+### test Inherited from parent command
 
 Full name|Alias|Type|Required|Help message
 |---|---|---|---|---
@@ -70,7 +70,7 @@ Full name|Alias|Type|Required|Help message
 --config|-c|string|no||Path to Zowe configuration zowe.yaml file.
 
 
-## Errors
+## test Errors
 
 Error code|Exit code|Error message
 |---|---|---
@@ -84,7 +84,7 @@ ZWEL0161E|161|Failed to run JCL %s.
 ZWEL0162E|162|Failed to find job %s result.
 ZWEL0163E|163|Job %s ends with code %s.
 ZWEL0301W|0|Zowe Caching Service is not configured to use VSAM. Command skipped.
-### Inherited from parent command
+### test Inherited from parent command
 
 Error code|Exit code|Error message
 |---|---|---

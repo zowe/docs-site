@@ -4,26 +4,26 @@
 
 	zwe internal container [sub-command [sub-command]...] [parameter [parameter]...]
 
-## Sub-commands
+## test Sub-commands
 
 * [cleanup](./zwe-internal-container-cleanup)
 * [init](./zwe-internal-container-init)
 * [prestop](./zwe-internal-container-prestop)
 
-## Description
+## test Description
 
 Internal commands to help manager workloads in Zowe containers.
 
 NOTE: these internal commands are only used by Zowe Containerization use scenario.
 
 
-### Inherited from parent command
+### test Inherited from parent command
 
 WARNING: This command is for experimental purposes and may not fully function.
 
-## Parameters
+## test Parameters
 
-### Inherited from parent command
+### test Inherited from parent command
 
 Full name|Alias|Type|Required|Help message
 |---|---|---|---|---
@@ -35,9 +35,9 @@ Full name|Alias|Type|Required|Help message
 --config|-c|string|no||Path to Zowe configuration zowe.yaml file.
 
 
-## Errors
+## test Errors
 
-### Inherited from parent command
+### test Inherited from parent command
 
 Error code|Exit code|Error message
 |---|---|---

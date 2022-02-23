@@ -4,7 +4,7 @@
 
 	zwe certificate verify-service [parameter [parameter]...]
 
-## Description
+## test Description
 
 This command can verify if the service certificate is valid by checking the
 certificate Common Name (CN) and Subject Alternate Name (SAN).
@@ -12,22 +12,22 @@ certificate Common Name (CN) and Subject Alternate Name (SAN).
 NOTE: the service must be online and accessible.
 
 
-### Inherited from parent command
+### test Inherited from parent command
 
 WARNING: This command is for experimental purposes and may not fully function.
 
-## Examples
+## test Examples
 
 zwe certificate verify-service --host service-hostname --port service-port
 
 
-## Parameters
+## test Parameters
 
 Full name|Alias|Type|Required|Help message
 |---|---|---|---|---
 --host||string|yes||Host name of the service.
 --port||string|yes||Port of the service.
-### Inherited from parent command
+### test Inherited from parent command
 
 Full name|Alias|Type|Required|Help message
 |---|---|---|---|---
@@ -39,12 +39,12 @@ Full name|Alias|Type|Required|Help message
 --config|-c|string|no||Path to Zowe configuration zowe.yaml file.
 
 
-## Errors
+## test Errors
 
 Error code|Exit code|Error message
 |---|---|---
 ZWEL0171E|171|Failed to verify certificate (CN and SAN) of service "%s".
-### Inherited from parent command
+### test Inherited from parent command
 
 Error code|Exit code|Error message
 |---|---|---

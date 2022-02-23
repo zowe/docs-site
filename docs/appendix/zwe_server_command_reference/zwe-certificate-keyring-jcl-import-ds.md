@@ -4,21 +4,21 @@
 
 	zwe certificate keyring-jcl import-ds [parameter [parameter]...]
 
-## Description
+## test Description
 
 Import certificate stored in MVS data set into Zowe keyring.
 
 
-### Inherited from parent command
+### test Inherited from parent command
 
 WARNING: This command is for experimental purposes and may not fully function.
 
-## Examples
+## test Examples
 
 zwe certificate keyring-jcl import-ds --hlq my-hlq --jcllib my-jcllib --security-dry-run --security-dry-run --keyring-owner my-keyring-owner --keyring-name my-keyring-name -a certificate-alias --import-ds-name my-ds-name --import-ds-password my-ds-password
 
 
-## Parameters
+## test Parameters
 
 Full name|Alias|Type|Required|Help message
 |---|---|---|---|---
@@ -35,7 +35,7 @@ Full name|Alias|Type|Required|Help message
 --zosmf-user||string|no||z/OSMF user name. This is used to automatically detect z/OSMF root certificate authorities.
 --import-ds-name||string|yes||Name of the data set holds certificate to import into keyring.
 --import-ds-password||string|yes||Password of the data set holds certificate to import.
-### Inherited from parent command
+### test Inherited from parent command
 
 Full name|Alias|Type|Required|Help message
 |---|---|---|---|---
@@ -47,12 +47,12 @@ Full name|Alias|Type|Required|Help message
 --config|-c|string|no||Path to Zowe configuration zowe.yaml file.
 
 
-## Errors
+## test Errors
 
 Error code|Exit code|Error message
 |---|---|---
 ZWEL0173E|173|Failed to import certificate to Zowe keyring "%s".
-### Inherited from parent command
+### test Inherited from parent command
 
 Error code|Exit code|Error message
 |---|---|---

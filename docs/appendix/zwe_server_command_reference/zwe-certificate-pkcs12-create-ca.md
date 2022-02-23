@@ -4,21 +4,21 @@
 
 	zwe certificate pkcs12 create ca [parameter [parameter]...]
 
-## Description
+## test Description
 
 Create a new PKCS12 format certificate authority.
 
 
-### Inherited from parent command
+### test Inherited from parent command
 
 WARNING: This command is for experimental purposes and may not fully function.
 
-## Examples
+## test Examples
 
 zwe certificate pkcs12 create ca -d /path/to/my/keystore/dir -a ca-alias -p ca-keystore-password
 
 
-## Parameters
+## test Parameters
 
 Full name|Alias|Type|Required|Help message
 |---|---|---|---|---
@@ -32,7 +32,7 @@ Full name|Alias|Type|Required|Help message
 --state||string|no||State of certificate authority.
 --country||string|no||Country of certificate authority.
 --validity||string|no||Validity days of certificate authority.
-### Inherited from parent command
+### test Inherited from parent command
 
 Full name|Alias|Type|Required|Help message
 |---|---|---|---|---
@@ -45,14 +45,14 @@ Full name|Alias|Type|Required|Help message
 --config|-c|string|no||Path to Zowe configuration zowe.yaml file.
 
 
-## Errors
+## test Errors
 
 Error code|Exit code|Error message
 |---|---|---
 ZWEL0300W||%s already exists. This %s will be overwritten during configuration.
 ZWEL0158E|158|%s already exists.
 ZWEL0168E|168|Failed to create certificate authority %s.
-### Inherited from parent command
+### test Inherited from parent command
 
 Error code|Exit code|Error message
 |---|---|---

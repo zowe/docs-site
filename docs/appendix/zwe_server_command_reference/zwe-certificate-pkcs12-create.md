@@ -4,28 +4,28 @@
 
 	zwe certificate pkcs12 create [sub-command [sub-command]...] [parameter [parameter]...]
 
-## Sub-commands
+## test Sub-commands
 
 * [ca](./zwe-certificate-pkcs12-create-ca)
 * [cert](./zwe-certificate-pkcs12-create-cert)
 
-### Inherited from parent command
+### test Inherited from parent command
 
 WARNING: This command is for experimental purposes and may not fully function.
 
-## Examples
+## test Examples
 
 zwe certificate pkcs12 create cert -d /path/to/my/keystore/dir -a cert-alias -p cert-keystore-password -k keystore-name --ca-alias ca-alias --ca-password ca-keystore-password
 
 zwe certificate pkcs12 create ca -d /path/to/my/keystore/dir -a ca-alias -p ca-keystore-password
 
 
-## Parameters
+## test Parameters
 
 Full name|Alias|Type|Required|Help message
 |---|---|---|---|---
 --keystore-dir|-d|string|yes||Keystore directory.
-### Inherited from parent command
+### test Inherited from parent command
 
 Full name|Alias|Type|Required|Help message
 |---|---|---|---|---
@@ -37,9 +37,9 @@ Full name|Alias|Type|Required|Help message
 --config|-c|string|no||Path to Zowe configuration zowe.yaml file.
 
 
-## Errors
+## test Errors
 
-### Inherited from parent command
+### test Inherited from parent command
 
 Error code|Exit code|Error message
 |---|---|---

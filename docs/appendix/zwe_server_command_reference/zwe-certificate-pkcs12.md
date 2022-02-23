@@ -4,7 +4,7 @@
 
 	zwe certificate pkcs12 [sub-command [sub-command]...] [parameter [parameter]...]
 
-## Sub-commands
+## test Sub-commands
 
 * [create](./zwe-certificate-pkcs12-create)
 * [export](./zwe-certificate-pkcs12-export)
@@ -12,25 +12,25 @@
 * [lock](./zwe-certificate-pkcs12-lock)
 * [trust-service](./zwe-certificate-pkcs12-trust-service)
 
-## Description
+## test Description
 
 Manage PKCS12 format keystore and truststore.
 
 
-### Inherited from parent command
+### test Inherited from parent command
 
 WARNING: This command is for experimental purposes and may not fully function.
 
-## Examples
+## test Examples
 
 zwe certificate pkcs12 trust-service -s service-name -d /path/to/my/keystore/dir -k keystore-name -p keystore-cert-password --host service-hostname --port service-port -a cert-alias
 
 zwe certificate pkcs12 export -f /path/to/my/keystore/file -p keystore-cert-password
 
 
-## Parameters
+## test Parameters
 
-### Inherited from parent command
+### test Inherited from parent command
 
 Full name|Alias|Type|Required|Help message
 |---|---|---|---|---
@@ -42,9 +42,9 @@ Full name|Alias|Type|Required|Help message
 --config|-c|string|no||Path to Zowe configuration zowe.yaml file.
 
 
-## Errors
+## test Errors
 
-### Inherited from parent command
+### test Inherited from parent command
 
 Error code|Exit code|Error message
 |---|---|---

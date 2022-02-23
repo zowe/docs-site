@@ -4,21 +4,21 @@
 
 	zwe certificate keyring-jcl clean [parameter [parameter]...]
 
-## Description
+## test Description
 
 Remove Zowe keyring.
 
 
-### Inherited from parent command
+### test Inherited from parent command
 
 WARNING: This command is for experimental purposes and may not fully function.
 
-## Examples
+## test Examples
 
 zwe certificate keyring-jcl clean --hlq my-hlq --jcllib my-jcllib --security-dry-run --keyring-owner my-keyring-owner --keyring-name my-keyring-name -a certificate-alias -ca ca-alias
 
 
-## Parameters
+## test Parameters
 
 Full name|Alias|Type|Required|Help message
 |---|---|---|---|---
@@ -30,7 +30,7 @@ Full name|Alias|Type|Required|Help message
 --keyring-name||string|yes||Name of the keyring.
 --alias|-a|string|yes||Certificate alias name.
 --ca-alias|-ca|string|yes||Certificate authority alias name.
-### Inherited from parent command
+### test Inherited from parent command
 
 Full name|Alias|Type|Required|Help message
 |---|---|---|---|---
@@ -42,12 +42,12 @@ Full name|Alias|Type|Required|Help message
 --config|-c|string|no||Path to Zowe configuration zowe.yaml file.
 
 
-## Errors
+## test Errors
 
 Error code|Exit code|Error message
 |---|---|---
 ZWEL0176E|176|Failed to clean up Zowe keyring "%s".
-### Inherited from parent command
+### test Inherited from parent command
 
 Error code|Exit code|Error message
 |---|---|---

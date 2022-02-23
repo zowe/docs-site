@@ -4,7 +4,7 @@
 
 	zwe init security [parameter [parameter]...]
 
-## Description
+## test Description
 
 This command will run ZWESECUR jcl.
 
@@ -56,17 +56,17 @@ zowe:
   This configuration is optional. Default value is `ZWESASTC`.
 
 
-## Examples
+## test Examples
 
 zwe init security -v -c /path/to/zowe.yaml
 
 
-## Parameters
+## test Parameters
 
 Full name|Alias|Type|Required|Help message
 |---|---|---|---|---
 --security-dry-run||boolean|no||Whether to dry run security related setup.
-### Inherited from parent command
+### test Inherited from parent command
 
 Full name|Alias|Type|Required|Help message
 |---|---|---|---|---
@@ -82,7 +82,7 @@ Full name|Alias|Type|Required|Help message
 --config|-c|string|no||Path to Zowe configuration zowe.yaml file.
 
 
-## Errors
+## test Errors
 
 Error code|Exit code|Error message
 |---|---|---
@@ -92,7 +92,7 @@ ZWEL0160E|160|Failed to write to %s. Please check if target data set is opened b
 ZWEL0161E|161|Failed to run JCL %s.
 ZWEL0162E|162|Failed to find job %s result.
 ZWEL0163E|163|Job %s ends with code %s.
-### Inherited from parent command
+### test Inherited from parent command
 
 Error code|Exit code|Error message
 |---|---|---

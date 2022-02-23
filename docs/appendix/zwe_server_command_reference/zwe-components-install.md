@@ -4,24 +4,24 @@
 
 	zwe components install [sub-command [sub-command]...] [parameter [parameter]...]
 
-## Sub-commands
+## test Sub-commands
 
 * [extract](./zwe-components-install-extract)
 * [process-hook](./zwe-components-install-process-hook)
 
-## Description
+## test Description
 
 Install a Zowe module.
 
 
-## Examples
+## test Examples
 
 zwe components install -c /path/to/zowe.yaml -o /path/to/component/package
 
 zwe components install extract -c /path/to/zowe.yaml -o /path/to/component/package
 
 
-## Parameters only for this command
+## test Parameters only for this command
 
 Full name|Alias|Type|Required|Help message
 |---|---|---|---|---
@@ -29,9 +29,9 @@ Full name|Alias|Type|Required|Help message
 --auto-encoding|-e|string|no||If we want to automatically tagging the module files.
 
 
-## Parameters
+## test Parameters
 
-### Inherited from parent command
+### test Inherited from parent command
 
 Full name|Alias|Type|Required|Help message
 |---|---|---|---|---
@@ -43,13 +43,13 @@ Full name|Alias|Type|Required|Help message
 --config|-c|string|no||Path to Zowe configuration zowe.yaml file.
 
 
-## Errors
+## test Errors
 
 Error code|Exit code|Error message
 |---|---|---
 ZWEL0156E|156|Component name is not initialized after extract step.
 ZWEL0180E|180|Zowe extension directory (zowe.extensionDirectory) is not defined in Zowe YAML configuration file.
-### Inherited from parent command
+### test Inherited from parent command
 
 Error code|Exit code|Error message
 |---|---|---
