@@ -1,8 +1,8 @@
-# Zowe YAML Configuration File Reference
+# Zowe YAML configuration file reference
 
-Zowe v2 uses a YAML configuration file during install, configure and runtime. This file is usually referred as `zowe.yaml`. YAML is a human-friendly data serialization language for all programming languages. To learn more about YAML specifications, please visit https://yaml.org/.
+Zowe v2 uses a YAML configuration file during installation, configuration and runtime. This file is usually referred to as `zowe.yaml`. YAML is a human-friendly data serialization language for all programming languages. To learn more about YAML specifications, see [https://yaml.org/](https://yaml.org/).
 
-**Note:** In the following sections, we refer configuration keys with concatenation of key names and dots. For example, if you want to update the configuration key `zowe.internalCertificate.keystore.type` with value `PKCS12`, you should set value for this entry in the `zowe.yaml`:
+**Note:** In the following sections, we refer to configuration keys by using concatenation of key names and dots. For example, if you want to update the configuration key `zowe.internalCertificate.keystore.type` with value `PKCS12`, you should set value for this entry in the `zowe.yaml`:
 
 ```yaml
 zowe:
@@ -11,9 +11,9 @@ zowe:
       type: PKCS12
 ```
 
-**Contents in this section**
+**Table of Contents**
 
-- [High level overview of YAML configuration file](#high-level-overview-of-yaml-configuration-file)
+- [High-level overview of YAML configuration file](#high-level-overview-of-yaml-configuration-file)
 - [Extract sharable configuration out of zowe.yaml](#extract-sharable-configuration-out-of-zoweyaml)
 - [Configuration override](#configuration-override)
 - [YAML configurations - certificate](#yaml-configurations---certificate)
@@ -37,9 +37,9 @@ zowe:
 - [YAML configurations - haInstances](#yaml-configurations---hainstances)
 - [Auto-generated environment variables](#auto-generated-environment-variables)
 
-### High level overview of YAML configuration file
+### High-level overview of YAML configuration file
 
-The YAML configuration file has few high level sections:
+The YAML configuration file has few high-level sections:
 
 - **`zowe`**  
  Defines global configurations specific to Zowe, including default values.
@@ -226,7 +226,7 @@ The high-level configuration `zowe` supports these definitions:
  Defines the [northbound certificate](configure-certificates.md#northbound-certificate) facing Zowe users.
 - **`zowe.verifyCertificates`**
   Defines how Zowe should validate the certificates used by components or external service(s) like z/OSMF. It can be a value of:
-  * `STRICT`: This is the default value. Zowe will validate if the certificate is trusted in our trust store and if the certificate Command Name and Subject Alternative Name (SAN)is validate. This is recommended for the best security.
+  * `STRICT`: This is the default value. Zowe will validate if the certificate is trusted in our trust store and if the certificate Command Name and Subject Alternative Name (SAN)is validated. This is recommended for the best security.
   * `NONSTRICT`: Zowe will validate if the certificate is trusted in our trust store. In this mode, Zowe does not validate certificate Common Name and Subject Alternative Name (SAN). This option does not have the best security but allows you to try out Zowe when you don't have permission to fix certificate used by external services like z/OSMF.
   * `DISABLED`: This will disable certificate validation completely. This is **NOT** recommended for security purpose.
 
@@ -323,7 +323,7 @@ zowe:
 - `zowe.setup.mvs.parmlib` is the user custom parameter library. Zowe server command may generate sample PARMLIB members and stores here.
 - `zowe.setup.mvs.jcllib` is the custom JCL library. Zowe server command may generate sample JCLs and put into this data set.
 - `zowe.setup.mvs.authLoadlib` is the user custom APF LOADLIB. This field is optional. If this is defined, members of `SZWEAUTH` will be copied over to this data set and it will be APF authorized. If it's not defined, `SZWEAUTH` from HLQ will be APF authorized.
-- `zowe.setup.mvs.authPluginLib` is the user custom APF PLUGINLIB. You can install Zowe ZIS plugins into this load library. This loadlib requires APF authorize.
+- `zowe.setup.mvs.authPluginLib` is the user custom APF PLUGINLIB. You can install Zowe ZIS plug-ins into this load library. This loadlib requires APF authorize.
 
 - `zowe.setup.security.product` is security product. Can be `RACF`, `ACF2`, or `TSS`. This configuration is optional. Default value is `RACF`.
 - `zowe.setup.security.groups.admin` is the group for Zowe administrators. This configuration is optional. Default value is `ZWEADMIN`.
@@ -338,7 +338,7 @@ zowe:
 - `zowe.setup.certificate.type` is the type of certificate. Valid values are `PKCS1` (USS keystore) or `JCERACFKS` (z/OS keyring).
 - `zowe.setup.certificate.dname` is the distinguished name of the certificate. You can define `caCommonName`, `commonName`, `orgUnit`, `org`, `locality`, `state`, and / or `country`. These configurations are optional.
 - `zowe.setup.certificate.validity` is the validity days of the certificate. This is optional.
-- `zowe.setup.certificate.san` is the `Subject Alternative Name`(s) of the certificate if they are different from `zowe.externalDomains`. Please note, for `JCERACFKS` type, with limitation of RACDCERT command, this should contain exact one hostname (domain) and one IP address.
+- `zowe.setup.certificate.san` is the `Subject Alternative Name`(s) of the certificate if they are different from `zowe.externalDomains`. Note that for `JCERACFKS` type, with limitation of RACDCERT command, this should contain exact one hostname (domain) and one IP address.
 - `zowe.setup.certificate.importCertificateAuthorities` is the list of certificate authorities will be imported to Zowe `PKCS12` keystore or `JCERACFKS` keyring. Please note, for JCERACFKS type, only maximum 2 CAs is supported. If you are using `PKCS12` certificate, this should be USS files in PEM format. If you are using `JCERACFKS` certificate, this should be certificate labels on the z/OS system.
 
 **For `PKCS12` certificate users,**
@@ -594,8 +594,8 @@ For examples:
 
 - `ZWE_zowe_runtimeDirectory`, parent directory of where `zwe` server command is located.
 - `ZWE_zowe_workspaceDirectory` is the path of user customized workspace directory.
-- `ZWE_zowe_setup_mvs_hlq` is the high level qualifier where Zowe MVS data sets are installed.
-- `ZWE_zowe_setup_mvs_parmlib` is the data set that end-user configured to store his customized version of parameter library members.
-- `ZWE_zowe_setup_mvs_authPluginLib` is the data set that end-user configured to store his APF authorized ZIS plugins load library.
+- `ZWE_zowe_setup_mvs_hlq` is the high-level qualifier where Zowe MVS data sets are installed.
+- `ZWE_zowe_setup_mvs_parmlib` is the data set configured to store customized version of parameter library members.
+- `ZWE_zowe_setup_mvs_authPluginLib` is the data set configured to store APF authorized ZIS plug-ins load library.
 - `ZWE_zowe_setup_security_users_zowe` is the name of Zowe runtime user.
 - `ZWE_configs_port` is your component port number you can use in your start script. It points to the value of `haInstances.<current-ha-instance>.components.<your-component>.port`, or fall back to `components.<my-component>.port`, or fall back to `configs.port` defined in your component manifest.

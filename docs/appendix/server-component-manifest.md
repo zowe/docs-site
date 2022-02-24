@@ -1,4 +1,4 @@
-# Server Component Manifest File Reference
+# Server component manifest file reference
 
 Zowe server component manifest file defines the name and purpose of the component. It also provides information about how this component should be installed, configured, and started. It can be named as `manifest.yaml`, `manifest.yml`, or `manifest.json` and should be located in the root directory of the component. Currently, only `YAML` or `JSON` format are supported.
 
@@ -12,7 +12,9 @@ The manifest file contains the following properties:
 
   (Optional) Defines a long, computer-readable identifier of the component. If the component is hosted as one of the projects in [Open Mainframe Project](https://www.openmainframeproject.org/), the identifier also matches the component path in the Zowe Artifactory. For example, `org.zowe.explorer-jes` is a valid identifier. You can locate the component's official releases by looking into the `libs-release-local/org/zowe/explorer-jes/` directory in the [Zowe Artifactory](https://zowe.jfrog.io/ui/repos/tree/General/libs-release-local%2Forg%2Fzowe%2Fexplorer-jes).
 
-- **`version`**: (Optional but recommended) This is the current version of the component without the prefix of `v`. For example, `1.0.4` is a valid `version` value.
+- **`version`**: 
+
+  (Optional but recommended) This is the current version of the component without the prefix of `v`. For example, `2.0.0` is a valid `version` value.
 
 - **`title`**
 
@@ -29,9 +31,10 @@ The manifest file contains the following properties:
 - **`build`**
 
   (Optional but strongly recommended) Defines the build information of the current package, including git commit hash, and so on. When Zowe core components define manifest file, these fields are left as template variables. The template will be updated when a publishable package is created. It supports the following subfields:
+
   * **`branch`**
   
-    It tells the user which branch this package is built from.
+    It indicates which branch this package is built from.
 
   * **`number`**
   
@@ -75,7 +78,7 @@ The manifest file contains the following properties:
 
     - **`serviceId`**
     
-      This defines the service ID registered to the Discovery service
+      This defines the service ID registered to the Discovery service.
       
   * **`static`**
   
@@ -84,14 +87,17 @@ The manifest file contains the following properties:
     - **`file`**
   
       Defines the path to the static definition file. This file is supposed to be a template.
+
 - **`appfwPlugins`**
 
   Array of objects. This section defines how the component will be registered to the App Framework plug-in. All subfields are optional.
+  
   * **`path`**
   
     This points to the directory where App Framework `pluginDefinition.json` file is located. If you use the `<RUNTIME_DIR>/bin/zowe-configure-component.sh` utility tool to configure this component for an instance, the script will automatically execute `<INSTANCE_DIR>/bin/install-app.sh` with this path.
 
 - **`gatewaySharedLibs`**: Array of objects. This section defines the API ML extension(s) attributes which will get installed and used by API ML.
+  
   * **`path`**
   
     This points to the directory where the JAR files are housed for an extension and later on copied into the API ML extensions workspace directory. If there is more than 1 extension to a single manifest (say for a product family of multiple extensions), then multiple path variables can be contained within the manifest denoted by individual folders, for example `path/to/yourextension1/`.
@@ -109,7 +115,7 @@ The manifest file contains the following properties:
     
     This points to the directory where the load modules are housed for a plugin, for example `/zisServer`. If there is more than 1 plugin to a single manifest (say for a product family of multiple plugins), then multiple path variables can be contained within the manifest denoted by individual folders, for example `yourplugin1/zisServer`. The parameters for the Zowe parmlib are assumed to be in `<PATH>/samplib`. The names of the plugin executables are assumed to be in `<PATH>/loadlib`.
 
-  i.e.
+  For example,
   
   ```yaml
   zisPlugins:
@@ -135,7 +141,7 @@ The manifest file contains the following properties:
       config: value
   ```
 
-  The user can choose to put those configurations into `components.myextension` or `haInstance.<ha-instance>.components.myextension` of `zowe.yaml` like this:
+  You can choose to put those configurations into `components.myextension` or `haInstance.<ha-instance>.components.myextension` of `zowe.yaml` like this:
 
   ```yaml
   zowe:
@@ -157,14 +163,14 @@ The manifest file contains the following properties:
             config: my-value2
   ```
 
-  Component can use auto-generated environment variables in lifecycle scripts to learn how the component is configured for current HA instance. In above use case,
+  Component can use auto-generate environment variables in lifecycle scripts to learn how the component is configured for current HA instance. In the preceding use case,
 
-  * for HA instance `lpar1`, `ZWE_configs_port` value is `14567`, `ZWE_configs_another_config` value is `my-value`, which are default values.
-  * for HA instance `lpar2`, `ZWE_configs_port` value is `24567`, `ZWE_configs_another_config` value is `my-value2`.
+  * For HA instance `lpar1`, `ZWE_configs_port` value is `14567`, `ZWE_configs_another_config` value is `my-value`, which are default values.
+  * For HA instance `lpar2`, `ZWE_configs_port` value is `24567`, `ZWE_configs_another_config` value is `my-value2`.
 
   From another component, you can find `myextension` configurations like this,
 
-  * for HA instance `lpar1`, `ZWE_components_myextension_port` value is `14567`, `ZWE_components_myextension_another_config` value is `my-value`, which are default values.
-  * for HA instance `lpar2`, `ZWE_components_myextension_port` value is `24567`, `ZWE_components_myextension_another_config` value is `my-value2`.
+  * For HA instance `lpar1`, `ZWE_components_myextension_port` value is `14567`, `ZWE_components_myextension_another_config` value is `my-value`, which are default values.
+  * For HA instance `lpar2`, `ZWE_components_myextension_port` value is `24567`, `ZWE_components_myextension_another_config` value is `my-value2`.
 
 **Note:** All paths of directories or files mentioned previously should be relative paths to the root directory where manifest is located.

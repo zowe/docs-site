@@ -277,9 +277,9 @@ Upon completion, you can finish the setup by [applying zowe and starting it](k8s
 
 [The z/OS to k8s convert tool](#3-create-and-modify-configmaps-and-secrets) can automatically create a config map and secret. However, if you want to customize or create your own, review the instructions in this section.
 
-In order to make certificates working in Kubernetes, the certificate you are using should have these domains defined in certificate Subject Alt Name (SAN):
+To make certificates work in Kubernetes, make sure the certificate you are using have defined the following domains in certificate Subject Alt Name (SAN):
 
-- your external domains to access Zowe APIML Gateway Service running in Kubernetes cluster,
+- your external domains to access Zowe APIML Gateway Service running in Kubernetes cluster
 - `*.<k8s-namespace>.svc.<k8s-cluster-name>`
 - `*.discovery-service.<k8s-namespace>.svc.<k8s-cluster-name>`
 - `*.gateway-service.<k8s-namespace>.svc.<k8s-cluster-name>`
@@ -291,18 +291,22 @@ Without the additional domains in SAN, you may see warnings/errors related to ce
 
 If you cannot add those domains into certificate Subject Alt Name (SAN), you can change `zowe.verifyCertificates` to `NONSTRICT` mode. Zowe components will not validate domain names but will continue to validate certificate chain, validity and whether it's trusted in Zowe truststore.
 
-**IMPORTANT**: It's not recommended to disable `zowe.verifyCertificates`.
+:::caution
 
-**NOTES**: With below conditions, this migration script will re-generate a new set of certificate for you with proper domain names listed above.
+It's not recommended to disable `zowe.verifyCertificates`.
 
-- you use `zwe init` command to initialize Zowe,
-- use `PKCS#12` format keystore by defining `zowe.setup.certificate.type: PKCS12`
-- did not define `zowe.setup.certificate.pkcs12.import.keystore` and let `zwe` command to generate PKCS12 keystore for you
-- enabled `STRICT` mode `zowe.verifyCertificates`.
+:::
+
+**Notes**: When the following conditions are true, this migration script will regenerate a new set of certificates for you with proper domain names listed above.
+
+- You use `zwe init` command to initialize Zowe
+- You use `PKCS#12` format keystore by defining `zowe.setup.certificate.type: PKCS12`
+- You did not define `zowe.setup.certificate.pkcs12.import.keystore` and let `zwe` command to generate PKCS12 keystore for you
+- You enabled `STRICT` mode `zowe.verifyCertificates`
 
 To manually create the [ConfigMaps](https://kubernetes.io/docs/concepts/configuration/configmap/) and [Secrets](https://kubernetes.io/docs/concepts/configuration/secret/) used by Zowe containers, you must create the following objects:
 
-1. A ConfigMap, with values based upon a Zowe configuration `zowe.yaml` and similar to the example `samples/config-cm.yaml` with the following differences to the values seen on a z/OS install:
+1. A ConfigMap, with values based upon a Zowe configuration `zowe.yaml` and similar to the example `samples/config-cm.yaml` with the following differences to the values seen on a z/OS installation:
 
    * `zowe.setup` and `haInstances` are not needed for Zowe running in Kubernetes and will be ignored. You can remove them.
    * `java.home` and `node.home` are not usually needed if you are using Zowe base images.
@@ -328,7 +332,7 @@ To manually create the [ConfigMaps](https://kubernetes.io/docs/concepts/configur
 
 2. A Secret, with values based upon a Zowe keystore's files, and similar to the example `samples/certificates-secret.yaml`.
 
-    You need 2 entries under `data` section:
+    You need 2 entries under the `data` section:
 
     - `keystore.p12`: which is base64 encoded PKCS#12 keystore,
     - `truststore.p12`: which is base64 encoded PKCS#12 truststore.

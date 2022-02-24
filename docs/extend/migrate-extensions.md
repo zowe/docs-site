@@ -1,26 +1,37 @@
-# Migration Zowe v1.x component to v2.x
+# Migrating Zowe server component from v1 to v2
 
-## Server component packaging and lifecycle scripts
+This doc guides you through migrating an existing Zowe server component from version 1 to version 2. 
 
-To make Zowe server component compatible with Zowe version 2, there are several changes should be applied.
+To make Zowe server component compatible with Zowe version 2, you must update the following configurations.
 
-### Component manifest
+- [Component manifest](#component-manifest)
+- [Lifecycle scripts](#lifecycle-scripts)
+- [Environment variables](#environment-variables)
+- [Packaging one component deliverable for both Zowe v1 and v2](#packaging-one-component-deliverable-for-both-zowe-v1-and-v2)
 
-Component must define a manifest file and package it into the extension root directory. This manifest file is used by Zowe to understand how this component should be installed, configured, and started. For detail references of this file, please check [Server Component Manifest File Reference](../appendix/server-component-manifest.md).
+## Component manifest
 
-### Lifecycle scripts
+In Zowe v2, the component must define a manifest file and package it into the extension's root directory. This manifest file is used by Zowe to understand how this component should be installed, configured, and started. For detailed information of this file, see [Server Component Manifest File Reference](../appendix/server-component-manifest.md).
 
-With Zowe v2, lifecycle scripts can be located anywhere in your component directory, but they must be explicitly defined in `commands` section of component manifest file.
+## Lifecycle scripts
 
-### Environment variables
+In Zowe v2, lifecycle scripts can be located anywhere in your component directory. However, you must explicitly define them in the `commands` section of the component manifest file.
 
-Please be aware that Zowe v1 and v2 environment variables are not one-to-one match. Some variables in Zowe v1 are removed completely, some are separated into 2 or more variables, and v2 defines more configuration options than v1. Please check below mapping table of Zowe v1 and v2 variables.
+## Environment variables
+
+Zowe v1 and v2 environment variables are not exact match. There are the following differences:
+
+- Some variables in Zowe v1 are removed in v2. 
+- Some are separated into two or more variables. 
+- Zowe v2 defines more configuration options than v1.
+
+Review the following table for a detailed mapping of Zowe v1 and v2 variables. 
 
 | Zowe v1 Variable |  Zowe v2 YAML Configuration | Zowe v2 Variable | Notes |
 | --- |  --- | --- | --- |
 | `APIML_ALLOW_ENCODED_SLASHES` | `components.gateway.apiml.service.allowEncodedSlashes` | `ZWE_components_gateway_apiml_service_allowEncodedSlashes` | |
 | `APIML_CORS_ENABLED` | `components.gateway.apiml.service.corsEnabled` | `ZWE_components_gateway_apiml_service_corsEnabled` | |
-| `APIML_DEBUG_MODE_ENABLED` | `components.gateway.debug`, etc | `ZWE_components_gateway_debug`, etc | In v2, you can enabled debug mode for APIML components separately. The `gateway` place holder can be `discovery`, `api-catalog`, or `metrics-service`, etc. |
+| `APIML_DEBUG_MODE_ENABLED` | `components.gateway.debug`, etc | `ZWE_components_gateway_debug`, etc | In v2, you can enable debug mode for APIML components separately. The `gateway` placeholder can be `discovery`, `api-catalog`, or `metrics-service`, and so on. |
 | `APIML_ENABLE_SSO` | Removed in v2 | Removed in v2 | |
 | `APIML_GATEWAY_EXTERNAL_MAPPER` | `components.gateway.apiml.security.x509.externalMapperUrl` | `ZWE_components_gateway_apiml_security_x509_externalMapperUrl` | |
 | `APIML_GATEWAY_INTERNAL_HOST` | Not configurable in v2 | Not configurable in v2 | |
@@ -36,39 +47,39 @@ Please be aware that Zowe v1 and v2 environment variables are not one-to-one mat
 | `CATALOG_PORT` | `components.api-catalog.port` | `ZWE_components_api_catalog_port` | |
 | `DISCOVERY_PORT` | `components.discovery.port` | `ZWE_components_discovery_port` | |
 | `EXTERNAL_CERTIFICATE_AUTHORITIES` | `zowe.certificate.pem.certificateAuthorities` | `ZWE_zowe_certificate_pem_certificateAuthorities` | |
-| `EXTERNAL_COMPONENTS` | Removed in v2 | Removed in v2 | Zowe v2 configuration does not distinguish core components and extensions on how to enable them. They all use same `components.<component>.enabled` configuration. |
+| `EXTERNAL_COMPONENTS` | Removed in v2 | Removed in v2 | Zowe v2 configuration does not distinguish core components and extensions on how to enable them. They  use the same `components.<component>.enabled` configuration. |
 | `FILES_API_PORT` | `components.files-api.port` | `ZWE_components_files_api_port` | |
 | `GATEWAY_PORT` | `components.gateway.port` | `ZWE_components_gateway_port` | |
-| `INSTANCE_DIR` | Removed in v2 | `ZWE_zowe_workspaceDirectory` or `ZWE_zowe_logDirectory` | Instance directory has been broken down into workspace and logs directory in v2. |
+| `INSTANCE_DIR` | Removed in v2 | `ZWE_zowe_workspaceDirectory` or `ZWE_zowe_logDirectory` | The instance directory is split into workspace and logs directory in v2. |
 | `JAVA_HOME` | `java.home` | `JAVA_HOME` | |
-| `JES_EXPLORER_UI_PORT` | Removed in v2 | Removed in v2 | In v2, explorer-jes re-uses web server provided by App Server, will not start independent web server. |
+| `JES_EXPLORER_UI_PORT` | Removed in v2 | Removed in v2 | In v2, explorer-jes reuses the web server provided by App Server. It does not start independent web server. |
 | `JOBS_API_PORT` | `components.jobs-api.port` | `ZWE_components_jobs_api_port` | |
 | `KEY_ALIAS` | `zowe.certificate.keystore.alias` | `ZWE_zowe_certificate_keystore_alias` | |
 | `KEYSTORE_CERTIFICATE_AUTHORITY` | `zowe.certificate.pem.certificateAuthorities` | `ZWE_zowe_certificate_pem_certificateAuthorities` | |
 | `KEYSTORE_CERTIFICATE` | `zowe.certificate.pem.certificate` | `ZWE_zowe_certificate_pem_certificate` | |
-| `KEYSTORE_DIRECTORY` | `zowe.setup.certificate.pkcs12.directory` | `ZWE_zowe_setup_certificate_pkcs12_directory` | This is a setup variable in v2, it is optional and may not have a value if the end-user manually prepares keystores by themselves. |
+| `KEYSTORE_DIRECTORY` | `zowe.setup.certificate.pkcs12.directory` | `ZWE_zowe_setup_certificate_pkcs12_directory` | This is a setup variable in v2. It is optional and may not have a value if you manually prepare keystores by yourself. |
 | `KEYSTORE_KEY` | `zowe.certificate.pem.key` | `ZWE_zowe_certificate_pem_key` | |
 | `KEYSTORE_PASSWORD` | `zowe.certificate.keystore.password` and `zowe.certificate.truststore.password` | `ZWE_zowe_certificate_keystore_password` and `ZWE_zowe_certificate_truststore_password` | |
 | `KEYSTORE_TYPE` | `zowe.certificate.keystore.type` and `zowe.certificate.truststore.type` | `ZWE_zowe_certificate_keystore_type` and `ZWE_zowe_certificate_truststore_type` | |
 | `KEYSTORE` | `zowe.certificate.keystore.file` | `ZWE_zowe_certificate_keystore_file` | |
-| `LAUNCH_COMPONENT_GROUPS` | Removed in v2 | Removed in v2 | Zowe v2 doesn't group several components together. Enable or disable individual component is suggested. |
-| `MVS_EXPLORER_UI_PORT` | Removed in v2 | Removed in v2 | In v2, explorer-mvs re-uses web server provided by App Server, will not start independent web server. |
+| `LAUNCH_COMPONENT_GROUPS` | Removed in v2 | Removed in v2 | Zowe v2 doesn't group several components together. It us suggested that you enable or disable component individually. |
+| `MVS_EXPLORER_UI_PORT` | Removed in v2 | Removed in v2 | In v2, explorer-mvs reuses web server provided by App Server. It will not start independent web server. |
 | `PKCS11_TOKEN_LABEL` | Removed in v2 | Removed in v2 | |
 | `PKCS11_TOKEN_NAME` | Removed in v2 | Removed in v2 | |
 | `ROOT_DIR` | `zowe.runtimeDirectory` | `ZWE_zowe_runtimeDirectory` | |
 | `SKIP_NODE` | Removed in v2 | Removed in v2 | |
 | `STATIC_DEF_CONFIG_DIR` | - | `ZWE_STATIC_DEFINITIONS_DIR` | Value is always `${ZWE_zowe_workspaceDirectory}/api-mediation/api-defs`. |
 | `TRUSTSTORE` | `zowe.certificate.truststore.file` | `ZWE_zowe_certificate_truststore_file` | |
-| `USS_EXPLORER_UI_PORT` | Removed in v2 | Removed in v2 | In v2, explorer-uss re-uses web server provided by App Server, will not start independent web server. |
+| `USS_EXPLORER_UI_PORT` | Removed in v2 | Removed in v2 | In v2, explorer-uss reuses web server provided by App Server. It does not start independent web server. |
 | `ZOSMF_HOST` | `zOSMF.host` | `ZOSMF_HOST` | |
 | `ZOSMF_PORT` | `zOSMF.port` | `ZOSMF_PORT` | |
 | `ZOWE_APIM_NONSTRICT_VERIFY_CERTIFICATES` | `zowe.verifyCertificates` | `ZWE_zowe_verifyCertificates` | `zowe.verifyCertificates` has 3 options: `STRICT`, `NONSTRICT`, and `DISABLED`. |
 | `ZOWE_APIM_VERIFY_CERTIFICATES` | `zowe.verifyCertificates` | `ZWE_zowe_verifyCertificates` | `zowe.verifyCertificates` has 3 options: `STRICT`, `NONSTRICT`, and `DISABLED`. |
 | `ZOWE_EXPLORER_FRAME_ANCESTORS` | Removed in v2 | Removed in v2 | |
-| `ZOWE_EXPLORER_HOST` | `zowe.externalDomains` or `haInstances.<ha-instance>.hostname` | `ZWE_zowe_externalDomains`, `ZWE_zowe_externalDomains_0`, `ZWE_haInstance_hostname` or `ZWE_haInstances_<ha-instance>_hostname` | Zowe v2 separate external domain name from internal host name. Choose the appropriate variable by northbound or southbound facing. |
+| `ZOWE_EXPLORER_HOST` | `zowe.externalDomains` or `haInstances.<ha-instance>.hostname` | `ZWE_zowe_externalDomains`, `ZWE_zowe_externalDomains_0`, `ZWE_haInstance_hostname` or `ZWE_haInstances_<ha-instance>_hostname` | Zowe v2 separates external domain name from internal host name. Choose the appropriate variable by northbound or southbound facing. |
 | `ZOWE_INSTANCE` | Removed in v2 | Removed in v2 | Use `ZWE_zowe_job_prefix` or `ZWE_zowe_job_name` instead. |
-| `ZOWE_IP_ADDRESS` | Removed in v2 | Removed in v2 | If you don't have a hostname but using IP to access Zowe, you can put IP into `zowe.externalDomains` |
-| `ZOWE_PREFIX` | `zowe.job.prefix` | `ZWE_zowe_job_prefix` | The meaning of this variable changed in v2. In v1, this combine with `ZOWE_INSTANCE` makes job prefix. In v2, `ZOWE_INSTANCE` is removed and this only affects the address space names under Zowe job. V2 variable `ZWE_zowe_job_name` defines the full job name for Zowe. |
+| `ZOWE_IP_ADDRESS` | Removed in v2 | Removed in v2 | If you don't have a hostname but use IP to access Zowe, you can put IP into `zowe.externalDomains` |
+| `ZOWE_PREFIX` | `zowe.job.prefix` | `ZWE_zowe_job_prefix` | The meaning of this variable is changed in v2. In v1, this combines with `ZOWE_INSTANCE` as the job prefix. In v2, `ZOWE_INSTANCE` is removed and this affects only the address space names under Zowe job. V2 variable `ZWE_zowe_job_name` defines the full job name for Zowe. |
 | `ZOWE_ZLUX_SECURITY_TYPE` | - | - | |
 | `ZOWE_ZLUX_SERVER_HTTPS_PORT` | - | - | |
 | `ZOWE_ZLUX_SSH_PORT` | - | - | |
@@ -95,17 +106,20 @@ Please be aware that Zowe v1 and v2 environment variables are not one-to-one mat
 | `ZWES_ZIS_PLUGINLIB` | `zowe.setup.mvs.authPluginLib` | `ZWE_zowe_setup_mvs_authPluginLib` | |
 
 
-### Packaging one component deliverable for both Zowe v1 and v2
+## Packaging one component deliverable for both Zowe v1 and v2
 
-We recommend extensions create a dedicated package for Zowe v2 - this is the most straight-forward way to address all of the breaking changes. We recognize this presents the challenge of maintaining 2 sets of packages. If you prefer not to maintain 2 sets of packages, we believe it's possible to maintain one version of an extension which works for both Zowe v1 and v2. However, the lifecycle code will be complicated - comprehensive testing should be performed. 
+It is recommended that you create a dedicated package of extensions for Zowe v2, which is the most straight-forward way to address all of the breaking changes introduced in v2. We understand that this method presents the challenge of maintaining two sets of packages. If you prefer not to maintain two sets of packages, it's still possible to maintain one version of an extension which works for both Zowe v1 and v2. However, the lifecycle code will be complicated and in this case, comprehensive testing should be performed. 
 
-**PLEASE BE AWARE** The Zowe V2 app framework desktop upgraded from angular version 6 to angular version 12 for support & security -  websites have  a "1 version of a library" limitation. This means that plugins dependent upon angular must be coded for either v6 or v12 [not both] thus the single version approach is not applicable.
+:::caution
 
-If the lifecycle scripts are the main concern, the following steps outline requirements and our recommendations for the single version approach:
+The Zowe v2 App Framework desktop is upgraded from Angular version 6 to angular version 12 for support and security -  websites have a "1 version of a library" limitation. This means that plug-ins dependent upon Angular must be coded for either v6 or v12 [not both] thus the single version approach is not applicable.
 
-- Package manifest.yaml is required. This is a hard requirement for Zowe v2. If you define lifecycle scripts with default names, for example, use bin/start.sh as `commands.start`, it should work for v1.
+:::
+
+If the lifecycle scripts are the main concern, the following steps outline requirements and recommendations for the single version approach:
+
+- Packaging `manifest.yaml` is required. This is a hard requirement for Zowe v2. If you define lifecycle scripts with default names, for example, use `bin/start.sh` as `commands.start`, it should work for v1.
 - Revisit all environment variables used in the lifecycle scripts and apply fallback variables. For example, if you use `$ROOT_DIR` in Zowe v1, this should be changed to `${ZWE_zowe_runtimeDirectory:-${ROOT_DIR}}` to make it compatible with both versions. Other variables like `$EXPLORER_HOST` should be changed to `${ZWE_haInstance_hostname:-${EXPLORER_HOST}}` or `${ZWE_externalDomains_0:-${EXPLORER_HOST}}` based on purpose.
-- A Zowe v2 recommendation is defining extension configurations in the manifest.yaml `configs` section and use `${ZWE_configs_*}` variables to access them. This feature does not exist in Zowe v1. So if you use `${ZWE_configs_*}` variables, it should fall back to the matching environment variable used in v1.
-- For installation, Zowe v2 recommends defining a `commands.install` lifecycle script to handle Extension installation. This lifecycle script will be executed by `zwe components install`. In v1, this also exists if the end-user uses `zowe-install-components.sh` utility to install an Extension. So if we consider one Extension package working for both Zowe v1 and v2, this install lifecycle script should also be compatible with both v1 and v2. Or consider instructing the user to not use `zowe-install-components.sh` with Zowe v1.
-- As discussed in slack, a new v2 variable `${ZWE_VERSION}` may help you determine if the user is using Zowe v2 or v1. This variable does not exist in Zowe v1.
-  * By knowing the Zowe version, the lifecycle scripts can implement logic to source v1 or v2 dedicated scripts to avoid handling fallbacks in the same script. This could be a cleaner way to avoid complicated compatibility version checks, and it could be easier in the future should you decide to drop Zowe v1 support.
+- In Zowe v2, we recommend you to define extension configurations in the manifest.yaml `configs` section and use `${ZWE_configs_*}` variables to access them. This feature does not exist in Zowe v1. So if you use `${ZWE_configs_*}` variables, it should fall back to the matching environment variable used in v1.
+- In Zowe v2, we recommend you to define a `commands.install` lifecycle script to handle extension installation. This lifecycle script will be executed by `zwe components install`. In v1, this also exists if you use the `zowe-install-components.sh` utility to install a Zowe extension. So if you want one extension package to work for both Zowe v1 and v2, this install lifecycle script should also be compatible with both v1 and v2. <!--Or consider not using `zowe-install-components.sh` with Zowe v1.-->
+- A new v2 variable `${ZWE_VERSION}` may help you determine the Zowe version number. This variable does not exist in Zowe v1. By knowing the Zowe version, the lifecycle scripts can implement logic to source v1 or v2 dedicated scripts to avoid handling fallbacks in the same script. This could help avoid complicated compatibility version checks, and it could be easier in the future if you decide to drop Zowe v1.

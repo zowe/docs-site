@@ -33,6 +33,14 @@ module.exports = {
     //    "getting-started/cli-getting-started",
       ],
     },
+    {
+      type: "category",
+      label: "Migrating from v1 to v2",
+      items: [
+        "getting-started/migrate-instance",
+        "extend/migrate-extensions",
+      ],
+    },
     //{
     //  type: "category",
     //  label: "Learning paths",
@@ -262,6 +270,7 @@ module.exports = {
         "extend/lifecycling-with-zwesvstc",
       ],
     },
+    "extend/migrate-extensions",
     //{
     //  type: "category",
     //  label: "Developing for Zowe CLI",
@@ -421,15 +430,15 @@ module.exports = {
   reference: [
  //   "appendix/zowe-cli-command-reference",
  //   "appendix/zowe-api-reference",
-    "appendix/server-component-manifest",
-    "appendix/zowe-yaml-configuration",
+      "appendix/server-component-manifest",
+      "appendix/zowe-yaml-configuration",
   //  "appendix/bill-of-materials",
   //  {
   //    type: "link",
   //    label: "Third Party Software Requirements",
   //    href: "https://github.com/zowe/docs-site/tree/master/tpsr/tpsr-v2.0.x.md",
   //  },
-  //],
+  ],
 };
 
 // "appendix/tpsr",
