@@ -135,17 +135,17 @@ module.exports = {
         //    "user-guide/configure-zowe-zosmf-workflow",
           ],
         },
-    //    {
-    //      type: "category",
-    //      label: "High Availability",
-    //      items: [
-    //        "user-guide/install-ha-sysplex",
-    //        "user-guide/configure-sysplex",
-    //        "user-guide/systemrequirements-zosmf-ha",
-    //        "user-guide/configure-caching-service-ha",
-    //        "user-guide/configure-zowe-ha-server",
-    //      ],
-    //    }, 
+       {
+         type: "category",
+         label: "High Availability",
+         items: [
+          "user-guide/zowe-ha-overview",
+          "user-guide/configure-sysplex",
+          "user-guide/systemrequirements-zosmf-ha",
+          "user-guide/configure-caching-service-ha",
+          // "user-guide/configure-zowe-zosmf-workflow",
+         ],
+       }, 
         "user-guide/verify-zowe-runtime-install",
     //    "user-guide/upgrade-zos-system",
     //    "user-guide/zowe-zos-uninstall",       
