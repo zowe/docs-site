@@ -33,6 +33,14 @@ module.exports = {
     //    "getting-started/cli-getting-started",
       ],
     },
+    {
+      type: "category",
+      label: "Migrating from v1 to v2",
+      items: [
+        "getting-started/migrate-instance",
+        "extend/migrate-extensions",
+      ],
+    },
     //{
     //  type: "category",
     //  label: "Learning paths",
@@ -82,15 +90,6 @@ module.exports = {
         //    },
         //    {
         //      type: "category",
-        //      label: "Installing Zowe Docker Bundle",
-        //      items: [
-        //        "user-guide/install-docker",
-        //        "user-guide/install-docker-image",
-        //        "user-guide/configuring-docker",
-        //      ],
-        //    },
-        //    {
-        //      type: "category",
         //      label: "Installing Zowe Portable Software Instance",
         //      items: [
         //        "user-guide/install-zowe-pswi",
@@ -127,17 +126,17 @@ module.exports = {
         //    "user-guide/configure-zowe-zosmf-workflow",
           ],
         },
-    //    {
-    //      type: "category",
-    //      label: "High Availability",
-    //      items: [
-    //        "user-guide/install-ha-sysplex",
-    //        "user-guide/configure-sysplex",
-    //        "user-guide/systemrequirements-zosmf-ha",
-    //        "user-guide/configure-caching-service-ha",
-    //        "user-guide/configure-zowe-ha-server",
-    //      ],
-    //    }, 
+       {
+         type: "category",
+         label: "High Availability",
+         items: [
+          "user-guide/zowe-ha-overview",
+          "user-guide/configure-sysplex",
+          "user-guide/systemrequirements-zosmf-ha",
+          "user-guide/configure-caching-service-ha",
+          // "user-guide/configure-zowe-zosmf-workflow",
+         ],
+       }, 
         "user-guide/verify-zowe-runtime-install",
     //    "user-guide/upgrade-zos-system",
     //    "user-guide/zowe-zos-uninstall",       
@@ -270,6 +269,7 @@ module.exports = {
         "extend/lifecycling-with-zwesvstc",
       ],
     },
+    "extend/migrate-extensions",
     //{
     //  type: "category",
     //  label: "Developing for Zowe CLI",
@@ -426,16 +426,18 @@ module.exports = {
     },
     "contribute/contributing",
   ],
-  //reference: [
-  //  "appendix/zowe-cli-command-reference",
-  //  "appendix/zowe-api-reference",
+  reference: [
+ //   "appendix/zowe-cli-command-reference",
+ //   "appendix/zowe-api-reference",
+      "appendix/server-component-manifest",
+      "appendix/zowe-yaml-configuration",
   //  "appendix/bill-of-materials",
   //  {
   //    type: "link",
   //    label: "Third Party Software Requirements",
   //    href: "https://github.com/zowe/docs-site/tree/master/tpsr/tpsr-v2.0.x.md",
   //  },
-  //],
+  ],
 };
 
 // "appendix/tpsr",

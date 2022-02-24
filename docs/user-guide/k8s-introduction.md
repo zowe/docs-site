@@ -19,6 +19,5 @@ The Zowe containers are designed to be run together with extensions and Zowe uti
 
 ## Known limitations
 
-- IP Explorer App Framework application is not currently available in Kubernetes deployment.
-- You may encounter an issue that API Catalog is not showing up in Zowe Desktop. You can restart the api-catalog Pod as a temporary mitigation.
-- You may encounter an issue when using the API Catalog Try Out function. The test server is not reachable from your browser.
+- You may encounter an issue that some plugins are not showing up in Zowe Desktop. You can try `Refresh Applications` icon showing up in Desktop start menu.
+- You may encounter an issue that some services are not showing up in Zowe API Catalog. You can try `Refresh Static APIs` button showing up in top-right corner of API Catalog web page.
