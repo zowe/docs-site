@@ -13,9 +13,9 @@ You can download Zowe's containers in one of the following ways:
 
 The easiest way to install and run Zowe's containers is by using the configuration samples that are provided on Zowe's website. If you don't already have these samples, you can download them by completing the following tasks:
 
-1. [Download the Zowe `zowe-install-packaging` repository as a .zip file](https://github.com/zowe/zowe-install-packaging/archive/refs/heads/master.zip).  
+1. [Download Zowe containerization build from zowe.org](https://www.zowe.org/download.html).
 2. Extract the compressed file to the system where you will run the Zowe containers.  
-3. Find the samples within the extracted folder `containers/kubernetes`.
+3. Find the samples within the extracted folder `kubernetes`.
 
 ### Downloading container images
 
@@ -44,8 +44,8 @@ An image could be considered "installed" when it is findable by Kubernetes. Just
 
 ## Upgrading
 
-Upgrade is an automatic process when you apply Kubernetes deployment configuration. The configuration files tell Kubernetes to automatically download the latest version of Zowe. Here, latest is the keyword for constantly updated version. For example `zowe-docker-release.jfrog.io/ompzowe/gateway-service:latest-ubuntu`.
+Upgrade is an automatic process when you apply Kubernetes deployment configuration. The configuration files tell Kubernetes to automatically download the latest version of Zowe. Here, `latest` is the keyword for constantly updated version. For example `zowe-docker-release.jfrog.io/ompzowe/gateway-service:latest-ubuntu`.
 
-**Note**: Automatic upgrades can fail if you have changed the workload configuration files to use a specific Zowe version. In that case, you must enter the latest version manually in the configuration file such as `zowe-docker-release.jfrog.io/ompzowe/gateway-service:1.26.0-ubuntu`.
+**Note**: Automatic upgrades can fail if you have changed the workload configuration files to use a specific Zowe version. In that case, you must enter the latest version manually in the configuration file such as `zowe-docker-release.jfrog.io/ompzowe/gateway-service:2.0.0-ubuntu`.
 
 If your Kubernetes nodes do not have an Internet connection, you can follow the instruction of the previous step to manually pull all images into all your Kubernetes nodes. After you have done this, you need to modify all occurrences of `imagePullPolicy: Always` in the sample configurations and replace them with `imagePullPolicy: Never` before applying them.
