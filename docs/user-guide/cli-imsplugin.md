@@ -4,8 +4,6 @@ The IBM IMS Plug-in for Zowe CLI lets you extend Zowe CLI such that it can inter
 
 **Note:** For more information about IMS, see [IBM Information Management System (IMS)](https://www.ibm.com/it-infrastructure/z/ims) on the IBM  Knowledge Center.
 
-[[toc]]
-
 ## Use cases
 
 As an application developer or DevOps administrator, you can use IBM IMS Plug-in for Zowe CLI to perform the following tasks:

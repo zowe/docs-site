@@ -37,13 +37,12 @@ Install Zowe CLI plug-ins using npm commands on Windows, Mac, and Linux. The pro
 
     | Plug-in | Installation Command Syntax |
     |---------|-----------------------------|
-    | IBM CICS Plug-in for Zowe CLI | `@zowe/cics-for-zowe-cli@zowe-v1-lts` |
-    | IBM Db2 Plug-in for Zowe CLI| `@zowe/db2-for-zowe-cli@zowe-v1-lts` |
-    | IBM z/OS FTP Plug-in for Zowe CLI | `@zowe/zos-ftp-for-zowe-cli@zowe-v1-lts` |
-    | IBM IMS Plug-in for Zowe CLI | `@zowe/ims-for-zowe-cli@zowe-v1-lts` |
-    | IBM MQ Plug-in for Zowe CLI | `@zowe/mq-for-zowe-cli@zowe-v1-lts` |
-    | Secure Credential Store Plug-in for Zowe CLI | `@zowe/secure-credential-store-for-zowe-cli@zowe-v1-lts` |
-    |    |    |
+    | IBM CICS Plug-in for Zowe CLI | `@zowe/cics-for-zowe-cli@zowe-v2-lts` |
+    | IBM Db2 Plug-in for Zowe CLI| `@zowe/db2-for-zowe-cli@zowe-v2-lts` |
+    | IBM z/OS FTP Plug-in for Zowe CLI | `@zowe/zos-ftp-for-zowe-cli@zowe-v2-lts` |
+    | IBM IMS Plug-in for Zowe CLI | `@zowe/ims-for-zowe-cli@zowe-v2-lts` |
+    | IBM MQ Plug-in for Zowe CLI | `@zowe/mq-for-zowe-cli@zowe-v2-lts` |
+    | Secure Credential Store Plug-in for Zowe CLI | `@zowe/secure-credential-store-for-zowe-cli@zowe-v2-lts` |
 
 
 3.  (Optional) Issue the following command to install two or more plug-ins using one command. Separate the `<my-plugin>` names with one space.
