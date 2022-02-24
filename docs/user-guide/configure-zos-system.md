@@ -1,10 +1,44 @@
 # Configuring the z/OS system for Zowe
 
-Configure the z/OS security manager to prepare for launching the Zowe started tasks.  
+To configure the z/OS system for Zowe a number of steps need to be performed
 
-If Zowe has already been launched on a z/OS system from a previous release of Version 1.8 or later, then you are applying a newer Zowe build. You can skip this security configuration step unless told otherwise in the release documentation.
+- [stc].  Create the PROCLIB members in the JES concatenation path required to run Zowe's started tasks.  
+- [vsam].  Create the VSAM data sets used by the Zowe caching service.  This is optional and only needed if you are configuring Zowe for cross LPAR sysplex high availability.  
 
-A SAMPLIB JCL member `ZWESECUR` is provided to assist with the security configuration. You can submit the `ZWESECUR` JCL member as-is or customize it depending on site preferences.  The JCL allows you to vary which security manager you use by setting the _PRODUCT_ variable to be one of `RACF`, `ACF2`, or `TSS`.  
+Each phase of configuring the z/OS system is done by issuing TSO commands.  To assist with the `zwe init` command is able to construct the command symtax based on values from the `zowe.yaml` file.  
+
+The JCL member `.SZWESAMP(ZWESECUR)` is provided to assist with the security configuration.  Before submitting the `ZWESECUR` JCL member you should customize it to match site security rules.  For script driven scenarios, the command `zwe init security` can be executed which uses `ZWESECUR` as a template to create a customized member in `.CUST.JCLLIB` which contains the commands needed to perform the configuration.  
+
+## Initialize Zowe user IDs and security permissions
+
+If Zowe has already been launched on a z/OS system from a previous release of Zowe v2 you can skip this security configuration step unless told otherwise in the release documentation.
+
+### Configuring using `zwe init security`
+
+The command `zwe init security` reads data from `zowe.yaml` and will construct a JCL member using `ZWESECUR` as a template which is then submitted.  This is a convenience step to assist with driving Zowe configuration through a pipeline or for users who prefer to use USS commands rather than directly edit and customize JCL members.
+
+Specify the parameter `--security-dry-run` to construct a JCL member containing the security commmands without running it.  This is useful for previewing commands and can also be used to copy and paste commands into a TSO command prompt for step by step manual execution.  
+
+```
+#>zwe init security -c ./zowe.yaml --security-dry-run
+-------------------------------------------------------------------------------
+>> Run Zowe security configurations
+
+Modify ZWESECUR
+- IBMUSER.ZWEV2.CUST.JCLLIB(ZW134428) is prepared
+
+Dry-run mode, security setup is NOT performed on the system.
+Please submit IBMUSER.ZWEV2.CUST.JCLLIB(ZW134428) manually.
+>> Zowe security configurations are applied successfully.
+
+WINCHJ:/u/winchj/v2 #>
+```
+
+### Configuring Using `ZWESECUR`
+
+You may skip using `zwe init security` to prepare a JCL member to configure the z/OS system, and edit `ZWESECUR` directly to make changes.  
+
+The JCL allows you to vary which security manager you use by setting the _PRODUCT_ variable to be one of `RACF`, `ACF2`, or `TSS`.  
 
 ```
 //         SET PRODUCT=RACF          * RACF, ACF2, or TSS
@@ -20,6 +54,8 @@ If you want to undo all of the z/OS security configuration steps performed by th
 If you run `ZWENOSEC` on a z/OS system, then you will no longer be able to run Zowe until you rerun `ZWESECUR` to reinitialize the z/OS security configuration.
 
 When you run the `ZWESECUR` JCL, it does not perform the following initialization steps. Therefore, you must complete these steps manually for a z/OS environment.  
+- [Perform APF authorization of Zowe load libraries that require access to make privileged calls](#apf-authorize-load-libraries)
+- [Copy the JCL members for Zowe's started tasks to a PDS on proclib concatenation path](#install-zowe-stc-proclib-members)
 - [Grant users permission to access z/OSMF](#grant-users-permission-to-access-zosmf)
 - [Configure an ICSF cryptographic services environment](#configure-an-icsf-cryptographic-services-environment)
 - [Configure multi-user address space (for TSS only)](#configure-multi-user-address-space-for-tss-only) 
@@ -33,6 +69,65 @@ The `ZWESECUR` JCL performs the following initialization steps so you do not nee
 The following video shows how to locate the `ZWESECUR` JCL member and execute it.
 
 <iframe class="embed-responsive-item" id="youtubeplayer" title="Zowe ZWESECUR configure system for security (one-time)" type="text/html" width="640" height="390" src="https://www.youtube.com/embed/-7PZFVESitI" frameborder="0" webkitallowfullscreen="true" mozallowfullscreen="true" allowfullscreen="true"> </iframe>
+
+## APF Authorize Load Libraries
+
+Zowe contains load modules that require access to make privileged z/OS security manager calls.  These are held in two load libraries which must be APF authorized.  The command `zwe init apfauth` will read the PDS names for the load libraries from `zowe.yaml` and perform the APF authority commands.  
+
+- `zowe.setup.mvs.authLoadLib` specifies the user custom load library, containing the `ZWELNCH`, `ZWESIS01` and `ZWESAUX` load modules.  These are the Zowe launcher, the ZIS cross memory server and the auxiliary server.  
+- `zowe.setup.mvsauthPluginLib` which references the load library for ZIS plugins.  
+
+```
+#>zwe init apfauth -c ./zowe.yaml
+-------------------------------------------------------------------------------
+>> APF authorize load libraries
+
+APF authorize IBMUSER.ZWEV2.SZWEAUTH
+APF authorize IBMUSER.ZWEV2.CUST.ZWESAPL
+
+>> Zowe load libraries are APF authorized successfully.
+#>
+```
+
+Specify `--security-dry-run` to have the command echo the commands that need to be run without them being executed.  
+
+  ```
+  SETPROG APF,ADD,DSNAME=IBMUSER.ZWEV2.SZWEAUTH,SMS
+  SETPROG APF,ADD,DSNAME=IBMUISER.ZWEV2.CUST.ZWESAPL,SMS
+  ```
+
+## Install Zowe STC proclib members
+
+The JCL members for each of Zowe's started tasks need to be present on the JES proclib concatenation path.  The command `zwe init stc` will copy these from the install source location `.SZWESAMP` to the targted PDS specified in the `zowe.setup.mvs.proclib` value `USER.PROCLIB`.  The three proclib member names are specified in `zowe.yaml` arguments.  
+
+```
+zowe
+  setup
+    security
+      stcs
+        zowe: ZWESLSTC
+        xmem: ZWESISTC
+        aux: ZWESASTC
+```
+
+The `zwe init stc` command uses the `CUST.JCL` data sets as a staging area to contain intermediatory JCL, 
+
+```
+#>zwe init stc -c ./zowe.yaml
+-------------------------------------------------------------------------------
+>> Install Zowe main started task
+
+Modify ZWESLSTC
+Modify ZWESISTC
+Modify ZWESASTC
+
+Copy IBMUSER.ZWEV2.CUST.JCLLIB(ZWESLSTC) to IBMUSER.ZWE200.JCLLIB(ZWESLSTC)
+Copy IBMUSER.ZWEV2.CUST.JCLLIB(ZWESISTC) to IBMUSER.ZWE200.JCLLIB(ZWESISTC)
+Copy IBMUSER.ZWEV2.CUST.JCLLIB(ZWESASTC) to IBMUSER.ZWE200.JCLLIB(ZWESASTC)
+
+>> Zowe main started tasks are installed successfully.
+#>
+```
 
 ## Grant users permission to access z/OSMF
 
@@ -413,7 +508,8 @@ If you have not run `ZWESECUR` and are configuring your z/OS environment manuall
 
 Zowe has a cross memory server that runs as an APF-authorized program with key 4 storage.  Client processes accessing the cross memory server's services must have READ access to a security profile `ZWES.IS` in the `FACILITY` class.  This authorization step is used to guard against access by non-priviledged clients.  
 
-If you have run `ZWESECUR` you do not need to perform the steps described in this section, as they are executed during the JCL section of `ZWESECUR`.  
+If you have run `ZWESECUR` you do not need to perform the steps described in this section.
+
 ```
 /* permit Zowe main server to use XMEM cross memory server       */
 ...

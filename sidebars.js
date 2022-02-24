@@ -72,33 +72,33 @@ module.exports = {
           label: "Installing",
           items: [
             "user-guide/install-zowe-zos-convenience-build",
-            {
-            type: "category",
-            label: "Installing Zowe SMP/E build",
-            items: [
-              "user-guide/install-zowe-smpe",
-              "user-guide/install-zowe-smpe-zosmf-workflow",
-              ],
-            },
-            {
-              type: "category",
-              label: "Installing Zowe Docker Bundle",
-              items: [
-                "user-guide/install-docker",
-                "user-guide/install-docker-image",
-                "user-guide/configuring-docker",
-              ],
-            },
-            {
-              type: "category",
-              label: "Installing Zowe Portable Software Instance",
-              items: [
-                "user-guide/install-zowe-pswi",
-                "user-guide/install-zowe-pswi-address-requirements",
-                "user-guide/install-zowe-pswi-acquire",
-                "user-guide/install-zowe-pswi-deployment",
-              ],
-            },
+        //    {
+        //    type: "category",
+        //    label: "Installing Zowe SMP/E build",
+        //    items: [
+        //      "user-guide/install-zowe-smpe",
+        //      "user-guide/install-zowe-smpe-zosmf-workflow",
+        //      ],
+        //    },
+        //    {
+        //      type: "category",
+        //      label: "Installing Zowe Docker Bundle",
+        //      items: [
+        //        "user-guide/install-docker",
+        //        "user-guide/install-docker-image",
+        //        "user-guide/configuring-docker",
+        //      ],
+        //    },
+        //    {
+        //      type: "category",
+        //      label: "Installing Zowe Portable Software Instance",
+        //      items: [
+        //        "user-guide/install-zowe-pswi",
+        //        "user-guide/install-zowe-pswi-address-requirements",
+        //        "user-guide/install-zowe-pswi-acquire",
+        //        "user-guide/install-zowe-pswi-deployment",
+        //      ],
+        //    },
           ],
         }, 
         {
@@ -120,29 +120,27 @@ module.exports = {
                   ],
                 },
                 "user-guide/configure-xmem-server",
-                "user-guide/configure-instance-directory",
                 "user-guide/configure-zowe-server",
-                "user-guide/api-mediation-standalone",
                 "user-guide/configure-auxiliary-address-space",
               ],
             },
-            "user-guide/configure-zowe-zosmf-workflow",
+        //    "user-guide/configure-zowe-zosmf-workflow",
           ],
         },
-        {
-          type: "category",
-          label: "High Availability",
-          items: [
-            "user-guide/install-ha-sysplex",
-            "user-guide/configure-sysplex",
-            "user-guide/systemrequirements-zosmf-ha",
-            "user-guide/configure-caching-service-ha",
-            "user-guide/configure-zowe-ha-server",
-          ],
-        }, 
+    //    {
+    //      type: "category",
+    //      label: "High Availability",
+    //      items: [
+    //        "user-guide/install-ha-sysplex",
+    //        "user-guide/configure-sysplex",
+    //        "user-guide/systemrequirements-zosmf-ha",
+    //        "user-guide/configure-caching-service-ha",
+    //        "user-guide/configure-zowe-ha-server",
+    //      ],
+    //    }, 
         "user-guide/verify-zowe-runtime-install",
-        "user-guide/upgrade-zos-system",
-        "user-guide/zowe-zos-uninstall",       
+    //    "user-guide/upgrade-zos-system",
+    //    "user-guide/zowe-zos-uninstall",       
       ],
     },
     {
