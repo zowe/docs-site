@@ -528,10 +528,6 @@ These configurations can be used under the `components.zss` section:
 
 - **`port`**  
  Defines the port which ZSS should be started on. This is equivalent to the `ZOWE_ZSS_SERVER_PORT` variable in `instance.env`. This may be defined as a valid port number or as an offset from the Gateway component's port. To define an offset enter `"+{offset}"` or `"-{offset}"` as a string. The offset must start with `+` or `-`.
-- **`crossMemoryServerName`**  
- Defines the procedure name of cross memory server.
-- **`tls`**  
- Defines whether ZSS service has enabled TLS.
 
 #### Configure component jobs-api
 

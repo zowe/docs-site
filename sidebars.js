@@ -139,7 +139,7 @@ module.exports = {
           ],
         }, 
         "user-guide/verify-zowe-runtime-install",
-        "user-guide/upgrade-zos-system",
+        // "user-guide/upgrade-zos-system",
         "user-guide/zowe-zos-uninstall",       
       ],
     },

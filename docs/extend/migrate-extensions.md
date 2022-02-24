@@ -80,13 +80,13 @@ Review the following table for a detailed mapping of Zowe v1 and v2 variables.
 | `ZOWE_INSTANCE` | Removed in v2 | Removed in v2 | Use `ZWE_zowe_job_prefix` or `ZWE_zowe_job_name` instead. |
 | `ZOWE_IP_ADDRESS` | Removed in v2 | Removed in v2 | If you don't have a hostname but use IP to access Zowe, you can put IP into `zowe.externalDomains` |
 | `ZOWE_PREFIX` | `zowe.job.prefix` | `ZWE_zowe_job_prefix` | The meaning of this variable is changed in v2. In v1, this combines with `ZOWE_INSTANCE` as the job prefix. In v2, `ZOWE_INSTANCE` is removed and this affects only the address space names under Zowe job. V2 variable `ZWE_zowe_job_name` defines the full job name for Zowe. |
-| `ZOWE_ZLUX_SECURITY_TYPE` | - | - | |
-| `ZOWE_ZLUX_SERVER_HTTPS_PORT` | - | - | |
-| `ZOWE_ZLUX_SSH_PORT` | - | - | |
-| `ZOWE_ZLUX_TELNET_PORT` | - | - | |
-| `ZOWE_ZSS_SERVER_PORT` | - | - | |
-| `ZOWE_ZSS_SERVER_TLS` | - | - | |
-| `ZOWE_ZSS_XMEM_SERVER_NAME` | - | - | |
+| `ZOWE_ZLUX_SECURITY_TYPE` | - | - | (Coming soon) |
+| `ZOWE_ZLUX_SERVER_HTTPS_PORT` | - | - | (Coming soon) |
+| `ZOWE_ZLUX_SSH_PORT` | - | - | (Coming soon) |
+| `ZOWE_ZLUX_TELNET_PORT` | - | - | (Coming soon) |
+| `ZOWE_ZSS_SERVER_PORT` | - | - | (Coming soon) |
+| `ZOWE_ZSS_SERVER_TLS` | - | - | (Coming soon) |
+| `ZOWE_ZSS_XMEM_SERVER_NAME` | - | - | (Coming soon) |
 | `ZWE_CACHING_EVICTION_STRATEGY` | `components.caching-service.storage.evictionStrategy` | `ZWE_components_caching_service_storage_evictionStrategy` | |
 | `ZWE_CACHING_SERVICE_PERSISTENT` | `components.caching-service.storage.mode` | `ZWE_components_caching_service_storage_mode` | |
 | `ZWE_CACHING_SERVICE_PORT` | `components.caching-service.port` | `ZWE_components_caching_service_port` | |
