@@ -244,7 +244,7 @@ When providing credentials in any form together with client certificate on the s
 * The client calls the API ML Gateway login endpoint with the client certificate.
 * The client certificate and private key are checked as a valid TLS client certificate against the Gateway's trusted CAs.
 * The public part of the provided client certificate is checked against SAF, and SAF subsequently returns a user ID that owns this certificate. ZSS  provides this API for the Mediation Layer.
-* The Gateway performs the login of the mapped user and returns a valid JWT token.
+*  Information about the user is extracted from the received certificate and then passed in specific headers to the southbound service. The Gateway authenticates itself to the service via the certificate to guarantee validity of the information.
 
 ![Zowe client certificate authentication diagram](../../images/api-mediation/zowe-client-cert-auth.png)
 
