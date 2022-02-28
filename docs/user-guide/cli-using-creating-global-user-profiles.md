@@ -54,6 +54,7 @@ In your user-specific file , observe that the "defaults" object is empty and the
 
 After the initial setup, as a system programmer you can define additional mainframe services to the team (or user-specific) configuration file.
 
+
 Open the `~/.zowe/zowe.config.json` file in a text editor or IDE on your computer. The profiles object contains connection and other frequently needed information for accessing various services. For example:
 
 ```
