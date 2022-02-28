@@ -76,7 +76,7 @@ module.exports = {
         {
           type: "doc",
           label: "Reference",
-          docId: "appendix/zowe-cli-command-reference",
+          docId: "appendix/server-component-manifest",
           position: "left",
         },
          {

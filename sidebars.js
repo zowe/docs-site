@@ -33,6 +33,14 @@ module.exports = {
     //    "getting-started/cli-getting-started",
       ],
     },
+    {
+      type: "category",
+      label: "Migrating from v1 to v2",
+      items: [
+        "getting-started/migrate-instance",
+        "extend/migrate-extensions",
+      ],
+    },
     //{
     //  type: "category",
     //  label: "Learning paths",
@@ -72,33 +80,24 @@ module.exports = {
           label: "Installing",
           items: [
             "user-guide/install-zowe-zos-convenience-build",
-            {
-            type: "category",
-            label: "Installing Zowe SMP/E build",
-            items: [
-              "user-guide/install-zowe-smpe",
-              "user-guide/install-zowe-smpe-zosmf-workflow",
-              ],
-            },
-            {
-              type: "category",
-              label: "Installing Zowe Docker Bundle",
-              items: [
-                "user-guide/install-docker",
-                "user-guide/install-docker-image",
-                "user-guide/configuring-docker",
-              ],
-            },
-            {
-              type: "category",
-              label: "Installing Zowe Portable Software Instance",
-              items: [
-                "user-guide/install-zowe-pswi",
-                "user-guide/install-zowe-pswi-address-requirements",
-                "user-guide/install-zowe-pswi-acquire",
-                "user-guide/install-zowe-pswi-deployment",
-              ],
-            },
+        //    {
+        //    type: "category",
+        //    label: "Installing Zowe SMP/E build",
+        //    items: [
+        //      "user-guide/install-zowe-smpe",
+        //      "user-guide/install-zowe-smpe-zosmf-workflow",
+        //      ],
+        //    },
+        //    {
+        //      type: "category",
+        //      label: "Installing Zowe Portable Software Instance",
+        //      items: [
+        //        "user-guide/install-zowe-pswi",
+        //        "user-guide/install-zowe-pswi-address-requirements",
+        //        "user-guide/install-zowe-pswi-acquire",
+        //        "user-guide/install-zowe-pswi-deployment",
+        //      ],
+        //    },
           ],
         }, 
         {
@@ -120,29 +119,27 @@ module.exports = {
                   ],
                 },
                 "user-guide/configure-xmem-server",
-                "user-guide/configure-instance-directory",
                 "user-guide/configure-zowe-server",
-                "user-guide/api-mediation-standalone",
                 "user-guide/configure-auxiliary-address-space",
               ],
             },
-            "user-guide/configure-zowe-zosmf-workflow",
+        //    "user-guide/configure-zowe-zosmf-workflow",
           ],
         },
-        {
-          type: "category",
-          label: "High Availability",
-          items: [
-            "user-guide/install-ha-sysplex",
-            "user-guide/configure-sysplex",
-            "user-guide/systemrequirements-zosmf-ha",
-            "user-guide/configure-caching-service-ha",
-            "user-guide/configure-zowe-ha-server",
-          ],
-        }, 
+       {
+         type: "category",
+         label: "High Availability",
+         items: [
+          "user-guide/zowe-ha-overview",
+          "user-guide/configure-sysplex",
+          "user-guide/systemrequirements-zosmf-ha",
+          "user-guide/configure-caching-service-ha",
+          // "user-guide/configure-zowe-zosmf-workflow",
+         ],
+       }, 
         "user-guide/verify-zowe-runtime-install",
-        "user-guide/upgrade-zos-system",
-        "user-guide/zowe-zos-uninstall",       
+    //    "user-guide/upgrade-zos-system",
+    //    "user-guide/zowe-zos-uninstall",       
       ],
     },
     {
@@ -223,14 +220,14 @@ module.exports = {
             "user-guide/cli-using-using-profiles",
             {
               type: "category",
-              label: "Using team profiles",
+              label: "Configuring team profiles",
               items: [
                 "user-guide/cli-using-configuring-global-profiles",
                 "user-guide/cli-using-initializing-global-configuration",
                 "user-guide/cli-using-creating-global-user-profiles",
                 "user-guide/cli-using-creating-global-team-profiles",
                               ],
-            },          
+            },
             "user-guide/cli-using-integrating-apiml",
             "user-guide/cli-using-working-certificates",
             "user-guide/cli-using-completing-advanced-tasks",
@@ -272,6 +269,7 @@ module.exports = {
         "extend/lifecycling-with-zwesvstc",
       ],
     },
+    "extend/migrate-extensions",
     //{
     //  type: "category",
     //  label: "Developing for Zowe CLI",
@@ -429,15 +427,17 @@ module.exports = {
     "contribute/contributing",
   ],
   reference: [
-    "appendix/zowe-cli-command-reference",
-    "appendix/zwe_server_command_reference/zwe-server-command-reference",
-    "appendix/zowe-api-reference",
-    "appendix/bill-of-materials",
-    {
-      type: "link",
-      label: "Third Party Software Requirements",
-      href: "https://github.com/zowe/docs-site/tree/master/tpsr/tpsr-v2.0.x.md",
-    },
+ //   "appendix/zowe-cli-command-reference",
+ //     "appendix/zwe_server_command_reference/zwe-server-command-reference",
+ //   "appendix/zowe-api-reference",
+      "appendix/server-component-manifest",
+      "appendix/zowe-yaml-configuration",
+  //  "appendix/bill-of-materials",
+  //  {
+  //    type: "link",
+  //    label: "Third Party Software Requirements",
+  //    href: "https://github.com/zowe/docs-site/tree/master/tpsr/tpsr-v2.0.x.md",
+  //  },
   ],
 };
 
