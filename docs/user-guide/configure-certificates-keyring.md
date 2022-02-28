@@ -53,7 +53,7 @@ zowe
 
 The follow command output shows generation of a self signed JCERACFKS certificate using the default values.  Some detailed output messages have been omitted.
 
-When the command is run a customized JCL member name in created the `CUST.JCLLIB` data set.  The PDS name is defined in the `zowe.setup.mvs.jcllib` property.  In the sample below the PDS meember `WINCHJ.ZWEV2.CUST.JCLLIB(ZW101431)` is created that contains the security manager commands and then submitted as a job ID `ZWEKRING(JOB03054)`.  
+When the command is run a customized JCL member name in created the `CUST.JCLLIB` data set.  The PDS name is defined in the `zowe.setup.mvs.jcllib` property.  In the sample below the PDS meember `IBMUSER.ZWEV2.CUST.JCLLIB(ZW101431)` is created that contains the security manager commands and then submitted as a job ID `ZWEKRING(JOB03054)`.  
 
 ```
 #>zwe init certificate -c ./zowe.yaml --update-config
@@ -62,7 +62,7 @@ When the command is run a customized JCL member name in created the `CUST.JCLLIB
 
 >>>> Modify ZWEKRING
     - IBMUSER.ZWEV2.CUST.JCLLIB(ZW101431) is prepared
->>>> Submit WINCHJ.ZWEV2.CUST.JCLLIB(ZW101431)
+>>>> Submit IBMUSER.ZWEV2.CUST.JCLLIB(ZW101431)
     - Job ZWEKRING(JOB03054) ends with code 0 (COMPLETED).
 >> Certificate is generated in keyring successfully.
 
