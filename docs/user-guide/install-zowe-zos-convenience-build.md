@@ -92,7 +92,7 @@ After you have the `zowe-2.0.0*.pax` file, follow these steps.
    ```
    This is the Zowe runtime directory, and in referenced as `<RUNTIME_DIR>` throughout the remainder of the documentation.  
 
-   **Note**Zowe version 1 had a script `zowe-install.sh` that created a separate Zowe runtime directory from the expanded contents of the Zowe .pax file.  Zowe v2 no longer has this step.  **The contents of the expanded Zowe .pax file are the Zowe runtime directory.**
+   **Note** Zowe version 1 had a script `zowe-install.sh` that created a separate Zowe runtime directory from the expanded contents of the Zowe .pax file.  Zowe v2 no longer has this step.  **The contents of the expanded Zowe .pax file are the Zowe runtime directory.**
 
 ### Update $PATH to include `zwe` command
 
