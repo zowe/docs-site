@@ -67,7 +67,7 @@ The following error message codes may appear on ZSS log. Use the following messa
 
   **Reason:**
 
-  Caching Service settings are gateway host `<Gateway-host>`, port `<Gateway-port>`.
+  Caching Service settings are gateway host `<Gateway-host>`, port `<Gateway-port>`. HA is mode enabled.
 
   **Action:**
 
@@ -79,7 +79,7 @@ The following error message codes may appear on ZSS log. Use the following messa
 
   **Reason:**
 
-  Caching Service not configured.
+  Caching Service not configured. HA mode is disabled.
 
   **Action:**
 
@@ -158,7 +158,7 @@ The following error message codes may appear on ZSS log. Use the following messa
 
   **Action:**
 
-  Check `<error-details>` and fix the error by editing `<plugin-definition-file>`.
+  If you are a plugin developer check `<error-details>` and fix the error by editing `<plugin-definition-file>`, otherwise, report the error to the plugin vendor.
 
 ### ZWES1034E
 
@@ -166,11 +166,11 @@ The following error message codes may appear on ZSS log. Use the following messa
 
   **Reason:**
 
-  IP address is not valid.
+  IP address nor hostname is not valid.
 
   **Action:**
 
-  Use valid IP address, e.g. `0.0.0.0`.
+  Use valid IP address or hostname, e.g. `0.0.0.0`.
 
 ### ZWES1036E
 
@@ -182,7 +182,7 @@ The following error message codes may appear on ZSS log. Use the following messa
 
   **Action:**
 
-  If the next message is `ZWES1037E` then refer [ZWES1037E](###ZWES1037E).
+  If the next message is `ZWES1037E` then refer [ZWES1037E](###ZWES1037E). Otherwise, examine the reason code with [`bpxmtext`](https://www.ibm.com/docs/en/zos/2.4.0?topic=descriptions-bpxmtext-display-reason-code-text) command, e.g. use `bpxmtext 744c7247` if you got `res='0x744c7247'`
 
 ### ZWES1037E
 
@@ -194,7 +194,7 @@ The following error message codes may appear on ZSS log. Use the following messa
 
   **Action:**
 
-  Check if another ZSS instance is already running, or chose another free port number.
+  Check if another ZSS instance is already running, or chose another free port number and restart Zowe.
 
 ### ZWES1065E
 
@@ -217,11 +217,11 @@ The following error message codes may appear on ZSS log. Use the following messa
 
   **Reason:**
 
-  Privileged server name not configured in `zowe.yaml`.
+  Privileged server name not defined in configuration file.
 
   **Action:**
 
-  If your privileged server name is `ZWESIS_STD` then no action required. Otherwise set `components.zss.crossMemoryServerName` property in `zowe.yaml` to the correct name.
+  If your privileged server name is `ZWESIS_STD` then no action required. Otherwise set `components.zss.crossMemoryServerName` property in configuration to the correct name.
 
 ### ZWES1005W
 
@@ -229,11 +229,11 @@ The following error message codes may appear on ZSS log. Use the following messa
 
   **Reason:**
 
-  `pluginId` property wasn't found in `<path-to-pluginDefinition.json>` file.
+  `pluginId` property wasn't found in `<path-to-pluginDefinition.json>` file. The plugin skipped.
 
   **Action:**
 
-  Add `pluginId` property into `<path-to-pluginDefinition.json>` file.
+  If you are a plugin developer add `pluginId` property into `<path-to-pluginDefinition.json>` file. Otherwise, contact the plugin vendor.
 
 ### ZWES1012W
 
@@ -245,7 +245,7 @@ The following error message codes may appear on ZSS log. Use the following messa
 
   **Action:**
 
-  Check that `<pluginsDir>` exists and allows reading.
+  Check that `<pluginsDir>` exists and allows reading. Examine the reason code with [`bpxmtext`](https://www.ibm.com/docs/en/zos/2.4.0?topic=descriptions-bpxmtext-display-reason-code-text) command for additional information.
 
 ### ZWES1060W
 
@@ -253,11 +253,11 @@ The following error message codes may appear on ZSS log. Use the following messa
 
   **Reason:**
 
-  Failed to initialized TLS environment.
+  Failed to initialized TLS environment GSKit return code `<rc>`(`<description>`)
 
   **Action:**
 
-  Ensure that ZSS certificate is configured correctly.
+  Ensure that ZSS certificate is configured correctly. Check GSKit return code and description for additional information. 
 
 ### ZWES1103W
 
@@ -269,7 +269,7 @@ The following error message codes may appear on ZSS log. Use the following messa
 
   **Action:**
 
-  No action required.
+  Examine the return code at [https://www.ibm.com/docs/en/zos/2.2.0?topic=requeststatus-return-codes] and correct the error.
 
 ### ZWES1201W
 
@@ -281,7 +281,7 @@ The following error message codes may appear on ZSS log. Use the following messa
 
   **Action:**
 
-  No action required.
+  Action depends on return/reason code. For additional information examine the reason code with [`bpxmtext`](https://www.ibm.com/docs/en/zos/2.4.0?topic=descriptions-bpxmtext-display-reason-code-text) command.
 
 ### ZWES1103W
 
@@ -293,20 +293,7 @@ The following error message codes may appear on ZSS log. Use the following messa
 
   **Action:**
 
-  No action required.
-
-### ZWES1400W
-
-  Non standard class provided for '%s' '%s', ending request...
-
-  **Reason:**
-
-  Non standard class provided in the request for Security service. The request was cancelled.
-
-  **Action:**
-
-  No action required.
-
+  Action depends on return/reason code. For additional information examine the reason code with [`bpxmtext`](https://www.ibm.com/docs/en/zos/2.4.0?topic=descriptions-bpxmtext-display-reason-code-text) command.
 
 ### ZWES1602W
 
@@ -318,7 +305,7 @@ The following error message codes may appear on ZSS log. Use the following messa
 
   **Action:**
 
-  No action required.
+  Report an issue at [https://github.com/zowe/zlux/issues]
 
 ### ZWES1603W
 
@@ -330,7 +317,7 @@ The following error message codes may appear on ZSS log. Use the following messa
 
   **Action:**
 
-  No action required.
+  Report an issue at [https://github.com/zowe/zlux/issues]
 
 ### ZWES1604W
 
@@ -342,7 +329,7 @@ The following error message codes may appear on ZSS log. Use the following messa
 
   **Action:**
 
-  Check that your certificate setup.
+  Check the zowe keystore configuration and specification of it within the zowe server config.
 
 ### ZWES1605W
 
