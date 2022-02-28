@@ -220,14 +220,14 @@ module.exports = {
             "user-guide/cli-using-using-profiles",
             {
               type: "category",
-              label: "Using team profiles",
+              label: "Configuring team profiles",
               items: [
                 "user-guide/cli-using-configuring-global-profiles",
                 "user-guide/cli-using-initializing-global-configuration",
                 "user-guide/cli-using-creating-global-user-profiles",
                 "user-guide/cli-using-creating-global-team-profiles",
                               ],
-            },          
+            },
             "user-guide/cli-using-integrating-apiml",
             "user-guide/cli-using-working-certificates",
             "user-guide/cli-using-completing-advanced-tasks",
