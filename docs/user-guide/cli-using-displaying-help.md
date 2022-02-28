@@ -38,11 +38,11 @@ zowe --help-web
 ```
 
 **Tip:** Append `--help-web` to a specific command or action to launch directly into the appropriate web help page.
-
 ## Viewing web help
 
-You can download web help from this site in any of the following formats: HTML, a zip file that contains the HTML, or PDF:
+We provide you with several methods to view Zowe CLI web help. You can browse Zowe CLI web help online, download the web help in a ZIP file that contains the HTML, or download the web help in a PDF file.
 
 - <a href="/stable/web_help/index.html" target="_blank">Browse Online</a>
 - <a href="/stable/zowe_web_help.zip" target="_blank">Download (ZIP)</a>
 - <a href="/stable/CLIReference_Zowe.pdf" target="_blank">Download (PDF)</a>
+
