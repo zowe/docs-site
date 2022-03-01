@@ -2,7 +2,7 @@
 
 View detailed documentation about commands, actions, and options in Zowe CLI.
 
-This reference document is based on the `@zowe-v1-lts` version of Zowe CLI. The content also contains the web help for all Zowe ecosystem conformant plug-ins that contributed to this site.
+This reference document is based on the `@zowe-v1-lts` version of Zowe CLI. The content also contains the web help for all Zowe ecosystem-conformant plug-ins that contributed to this site.
 
 You can read an interactive online version, download a PDF document, or download a ZIP file containing the HTML for the online version:
 
