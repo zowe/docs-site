@@ -44,7 +44,7 @@ The following steps describe how to enable daemon mode and how to configure Zowe
 
    - **Linux and macOS:**
 
-      Specify `ZOWE_DAEMON` as the path to the UNIX socket that the daemon uses for communication.
+      Specify `ZOWE_DAEMON` as the path to the socket that the daemon uses for communication.
       
       **Default:** `~/.zowe-daemon.sock`
 
