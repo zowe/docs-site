@@ -34,7 +34,7 @@ The following steps describe how to enable daemon mode and how to configure Zowe
    ```
    C:\Users\<user_ID>\.zowe\bin
    ```
-   **Alternative configuration**: By default, the daemon binary creates or reuses a file in the user's home directory every time a Zowe CLI command runs. In some cases, this behavior is undesirable. For example, the home directory resides on a network drive and has poor file performance. To change the location that the daemon uses, set the environment variable for your operating system:
+   **Alternative configuration**: By default, the daemon binary creates or reuses a file in the user's home directory every time a Zowe CLI command runs. In some cases, this behavior is undesirable. For example, the home directory resides on a network drive and has poor file performance. To change the location that the daemon uses, set the following environment variable for your operating system:
 
    - **Windows:**
 
