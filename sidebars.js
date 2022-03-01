@@ -431,6 +431,7 @@ module.exports = {
  //   "appendix/zowe-api-reference",
       "appendix/server-component-manifest",
       "appendix/zowe-yaml-configuration",
+      "appendix/zwe_server_command_reference/zwe-server-command-reference",
   //  "appendix/bill-of-materials",
   //  {
   //    type: "link",
