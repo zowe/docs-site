@@ -34,10 +34,31 @@ The following steps describe how to enable daemon mode and how to configure Zowe
    ```
    C:\Users\<user_ID>\.zowe\bin
    ```
+   **Alternative configuration**: By default, the daemon binary creates (reuses) a file in the user's home directory every time a Zowe CLI command runs. In some cases, this behavior is undesirable. For example, the home directory resides a network drive and has poor file performance. To change the location that the daemon uses, set the environment variable for your operating system:
+
+   - Windows:
+
+       Specify `ZOWE_DAEMON_LOCK` as the path to the lock file that restricts access to the named pipe that the daemon uses for communication.
+       
+       **Default:**  `%HOMEPATH%\.zowe-daemon.lock`
+
+   - UNIX:
+
+      Specify `ZOWE_DAEMON` as the path to the UNIX socket that the daemon uses for communication.
+      
+      **Default:** `~/.zowe-daemon.sock`
+
+   - macOS:
+
+      needed?
+
+   - Linux:
+
+      needed?
 
    **Important!** Ensure that you position the path to your Zowe executables before the path into which NPM installed the Node.js script. For information about configuring environment variables, see the documentation for your computer's operating system.
 
-   **Note:** Complete the environment variable configuration step (Step 2) only one time.
+   **Note:** Complete the environment variable configuration step (Step 2) only once.
 
 The following example illustrates running Zowe commands with the daemon mode enabled:
 
