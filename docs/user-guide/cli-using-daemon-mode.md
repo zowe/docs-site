@@ -28,33 +28,25 @@ The following steps describe how to enable daemon mode and how to configure Zowe
    zowe daemon enable
    ```
 
-   The command copies the Zowe executables for your operating system into the $ZOWE_CLI_HOME/bin (.zowe/bin) directory. The next command that you issue starts the daemon.
+   The command copies the Zowe executables for your operating system into the `$ZOWE_CLI_HOME/bin` (`.zowe/bin`) directory. The next command that you issue starts the daemon.
 2. Add the path to the Zowe executables to the environment variables for your computer. For example:
 
    ```
    C:\Users\<user_ID>\.zowe\bin
    ```
-   **Alternative configuration**: By default, the daemon binary creates (reuses) a file in the user's home directory every time a Zowe CLI command runs. In some cases, this behavior is undesirable. For example, the home directory resides a network drive and has poor file performance. To change the location that the daemon uses, set the environment variable for your operating system:
+   **Alternative configuration**: By default, the daemon binary creates or reuses a file in the user's home directory every time a Zowe CLI command runs. In some cases, this behavior is undesirable. For example, the home directory resides on a network drive and has poor file performance. To change the location that the daemon uses, set the environment variable for your operating system:
 
-   - Windows:
+   - **Windows:**
 
        Specify `ZOWE_DAEMON_LOCK` as the path to the lock file that restricts access to the named pipe that the daemon uses for communication.
        
        **Default:**  `%HOMEPATH%\.zowe-daemon.lock`
 
-   - UNIX:
+   - **Linux and macOS:**
 
       Specify `ZOWE_DAEMON` as the path to the UNIX socket that the daemon uses for communication.
       
       **Default:** `~/.zowe-daemon.sock`
-
-   - macOS:
-
-      needed?
-
-   - Linux:
-
-      needed?
 
    **Important!** Ensure that you position the path to your Zowe executables before the path into which NPM installed the Node.js script. For information about configuring environment variables, see the documentation for your computer's operating system.
 
