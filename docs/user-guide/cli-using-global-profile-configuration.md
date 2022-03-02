@@ -124,6 +124,7 @@ Open the `~/.zowe/zowe.config.json` file in a text editor or IDE on your compute
         "zosmf": "zosmf",
         "base": "base"
     },
+    "autoStore": true
 }
 ```
 
@@ -168,7 +169,8 @@ For example, to add a new instance of z/OSMF that runs on a different mainframe 
         // Change to zosmf_lpar2 if you wish to change default profile
         "zosmf": "zosmf_lpar1",
         "base": "base"
-    }
+    },
+    "autoStore": true
 }
 ```
 
@@ -178,11 +180,19 @@ You can continue to add more LPARs and more services within each LPAR. After you
 
 When you first run the `zowe config init --global-config` command, the `profiles.base.properties.user` and `profiles.base.properties.password` fields are defined to the "secure" array in your configuration file. This ensures that the username and password are stored securely on your computer.
 
-To update the secure fields (for example, when you want to change your username and password), issue the `zowe config secure` command.
+To store values for the secure fields or update them (for example, when you want to change your username and password), issue the `zowe config secure` command.
 
 To secure a specific field, use the command `zowe config set --secure <property-path>`. For example, you can issue `zowe config set --secure profiles.base.properties.password`. If you issue the command for an option that is already secured, the CLI prompts you to enter a new option value.
 
 You can use an editor to define options to the secure array in `zowe.config.json`. Any option that you define to there becomes secure/prompted-for.
+
+## Automatic property storage
+
+When you issue a command that is missing a required option value like host or password, the CLI prompts you to enter the option value. In the V1-LTS version of Zowe CLI, this value was not remembered for future commands to use, so you had to either respond to a prompt on every command issued or issue a profile update command to store the missing value.
+
+If the `autoStore` property in `zowe.config.json` is `true`, the value you enter when prompted will be stored for future commands to use. Values for secure fields will be stored securely in the credential vault, and other values will be written to `zowe.config.json` on disk.
+
+The default value of `autoStore` is `true` but if this behavior is undesirable then set it to `false` to return to V1-LTS behavior of being prompted for missing values on every command issued.
 
 ## Tips for efficient configuration
 
@@ -221,8 +231,7 @@ You might want to share a configuration globally:
 
 ## Example configurations
 
-**Example 1:** The settings are using nested profiles to access multiple services directly on multiple LPARs that share the same username and password.
-
+**Example 1:** The settings are using nested profiles that share the same host to access multiple services directly on multiple LPARs which share the same username and password stored in a base profile.
 ```json
 {
     "$schema": "./zowe.schema.json",
@@ -283,9 +292,11 @@ You might want to share a configuration globally:
         "tso": "lpar1.tso",
         "ssh": "lpar1.ssh",
         "base": "base"
-    }
+    },
+    "autoStore": true
 }
 ```
+
 **Example 2:** The settings are accessing multiple services using the API ML (where MFA/SSO is achievable via token-based authorization).
 ```json
 {
@@ -327,9 +338,11 @@ You might want to share a configuration globally:
         "cics": "cics",
         "db2": "db2",
         "base": "base"
-    }
+    },
+    "autoStore": true
 }
 ```
+
 **Example 3:** The settings are accessing multiple services directly on LPAR1 and LPAR2 where username and password varies between the LPAR1 and LPAR2 services. This example is identical to Example 1 except that LPAR1 and LPAR2 each contain a secure array, instead of just one secure array in the "base" profile.
 ```json
 {
@@ -395,7 +408,8 @@ You might want to share a configuration globally:
         "tso": "lpar1.tso",
         "ssh": "lpar1.ssh",
         "base": "base"
-    }
+    },
+    "autoStore": true
 }
 ```
 
@@ -477,6 +491,7 @@ You might want to share a configuration globally:
         "tso": "dev.tso",
         "ssh": "dev.ssh",
         "base": "base"
-    }
+    },
+    "autoStore": true
 }
 ```
