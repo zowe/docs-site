@@ -2,131 +2,136 @@
 
 Install Zowe&trade; CLI on your computer.
 
-**Tip:** If you are familiar with command-line tools and want to get started using Zowe CLI quickly, see [Zowe CLI quick start](../getting-started/cli-getting-started.md). You can learn about new CLI features in the [Release notes](../getting-started/summaryofchanges.md).
+If you are familiar with command-line tools and want to get started using Zowe CLI quickly, see [Zowe CLI quick start](../getting-started/cli-getting-started.md). You can learn about new CLI features in the [Release notes](../getting-started/summaryofchanges.md).
 
-## Methods to install Zowe CLI
+After you install Zowe CLI using your preferred installation method, see [Using CLI](../user-guide/cli-using-usingcli.md) to learn about how to connect Zowe CLI to the mainframe, create Zowe CLI profiles and team profiles, integrate Zowe CLI with API ML, enable daemon mode, and much, much more!
+## Installation guidelines
+  
+To install CLI on **Windows**, **Mac**, and **Linux** operating systems, follow the steps in [Install Zowe CLI from npm](#install-zowe-cli-from-npm) or [Install Zowe CLI from a download](#install-zowe-cli-from-a-download).
 
-Use one of the following methods to install Zowe CLI.
-- [Installing Zowe CLI from a local package](#installing-zowe-cli-from-a-local-package)
-- [Installing Zowe CLI from an online registry](#installing-zowe-cli-from-an-online-registry)
+***However***, to install Zowe CLI on **z/Linux**, **z/OS UNIX System Services (USS)**, or on an operating system where the **Secure Credential Store** is ***not required*** or ***cannot be installed***, use the following installation guidelines:
 
+-  To install Zowe CLI on a z/Linux operating system and you **require** the Secure Credential Store:
+   1. Follow the steps in [Configure Secure Credential Store on z/Linux operating systems](cli-configure-scs-on-zlinux-os).
+   2. Follow the steps in [Install Zowe CLI from npm](#install-zowe-cli-from-npm) or [Install Zowe CLI from a download](#install-zowe-cli-from-a-download).
+-  To install Zowe CLI on a z/Linux operating system and you **do not require** the Secure Credential Store:
+   1. Follow the steps in [Install Zowe CLI from npm](#install-zowe-cli-from-npm) or [Install Zowe CLI from a download](#install-zowe-cli-from-a-download).
+   2. Follow the steps in [Configure Zowe CLI on operating systems where the Secure Credential Store is not available](cli-configure-cli-on-os-where-scs-unavailable).
+-  To install Zowe CLI on a USS system or on an operating system where you **cannot install** the Secure Credential Store:
+   1. Follow the steps in [Install Zowe CLI from npm](#install-zowe-cli-from-npm) or [Install Zowe CLI from a download](#install-zowe-cli-from-a-download).
+   2. Follow the steps in [Configure Zowe CLI on operating systems where the Secure Credential Store is not available](cli-configure-cli-on-os-where-scs-unavailable).
 
-**Note:** If you do not have access to the public npm registry at your site, you might want to install the CLI via a proxy server. See [Installing Zowe CLI Via Proxy](install-cli-via-proxy.md) for more information.
+## Prerequisites
 
-If you encounter problems when you attempt to install Zowe CLI, see [Troubleshooting Zowe CLI](../troubleshoot/cli/troubleshoot-cli.md).
+- Meet the [software requirements](../user-guide/systemrequirements-cli.md) for Zowe CLI.
+- Meet the [software requirements](../user-guide/cli-swreqplugins.md) for each plug-in.
 
-### Installing Zowe CLI from a local package
+### Prerequisite notes
 
-If you do not have internet access at your site, use the following method to install Zowe CLI from a local package.
+- If you are installing Zowe CLI on a computer that is running Node.js 16 on Windows operating system, see [Installing Zowe CLI with Node.js 16 on Windows](../user-guide/cli-install-cli-nodejs-windows.md).
 
-**Follow these steps:**
+- If you are installing Zowe CLI on hardware where you require *secure cryptographic encryption*, install the ssh2 package for Zowe CLI. For more information, see [Installing the ssh2 Package for Zowe CLI](../user-guide/cli-installing-ssh2-package.md). 
 
-1. Address the following software requirements for the core CLI:
-   - **Node.js:** Install a currently supported Node.js LTS version. For an up-to-date list of supported LTS versions, see [Nodejs.org](https://nodejs.org/en/about/releases/).
-   :::tip
-   You might need to restart the command prompt after installing Node.js. Issue the command `node --version` to verify that Node.js is installed.
-   :::
+- If you are running NPM version 7 (`npm@7`) or NPM version 8 (`npm@8`) on a Windows operating system, ensure that your computer is connected to the Internet. Issue the following command before you install Zowe CLI:
 
-   - **npm:** Install a version of Node Package Manager (npm) that is compatible with your version of Node.js.
-   :::tip
-   Npm is included with most Node.js installations. Issue the command `npm --version` to check your current version. You can reference the [Node.js release matrix](https://nodejs.org/en/download/releases/) to verify that the versions are compatible.
-   :::
+   ```
+   npm install -g prebuild-install
+   ```
 
-   :::note
-   If you are using Node.js version 16 with npm version 8 on Windows, wish to install from the TGZ, and have limited Internet access, refer to [Installing Zowe CLI with Node.js 16 on Windows](cli-install-cli-nodejs-windows.md).
-   :::
+- Linux users may need to prepend `sudo` to `npm` commands. For more information, see [Troubleshooting Zowe CLI](../troubleshoot/cli/troubleshoot-cli.md).
 
-   - **(Optional) ssh2 Package:** Zowe CLI has a dependency on the ssh2 package. This package allows for more secure cryptographic ciphers to be used first on supporting hardware. See [Installing the ssh2 Package for Zowe CLI](cli-installing-ssh2-package.md).
+## Install Zowe CLI from npm
 
-2. **(Linux only)** Address the following software requirements for Secure Credential Storage:
+Use the following procedure to install Zowe CLI from an npm registry:
 
-   - **(Graphical Linux)** Install `gnome-keyring` and `libsecret` on your computer.
+1. To install or update the core CLI, open a command-line window:
 
-   - **(Headless Linux)** Follow the procedure documented in the [SCS plug-in Readme](https://github.com/zowe/zowe-cli-scs-plugin/blob/master/README.md#software-requirements).
+   ```
+   npm install -g @zowe/cli@next
+   ```
 
-3. Navigate to [Zowe.org Downloads](https://www.zowe.org/download.html) and click the **CLI Core** button to download the core package. The "core" includes Zowe CLI and Secure Credential Store, which enhances security by encrypting your username and password.
+   Zowe CLI is installed.
 
-   A file named `zowe-cli-package-v.r.m.zip` is downloaded to your computer
+2. (Optional) Check [npmjs.com](https://www.npmjs.com/) for any Zowe plug-ins that have an `@next` version available. If an `@next` version is available, you can install it:
 
-4. **(Optional)** Click the **CLI Plugins** button to download the optional plugins.
+    ```
+    zowe plugins install @zowe/<plugin-name>@next
+    ```
 
-   A file named `zowe-cli-plugins-v.r.m.zip` is downloaded to your computer.
+    If no `@next` version is available,  install the `@latest` version of the plug-in:
 
-5. Unzip the contents of `zowe-cli-package-v.r.m.zip` (and optionally `zowe-cli-plugins-v.r.m.zip`) to a preferred location on your computer.
+    ```
+    zowe plugins install @zowe/<plugin-name>
+    ```
 
-6. Open a command-line window. Issue the following commands in sequence against the extracted directory to install core Zowe CLI on your computer:
+    Optional plug-ins are installed.
 
-   ```bash
+3. Migrate your Zowe CLI profiles from your current installation to your @next installation. Issue the following command:
+
+   ```
+   zowe config convert-profiles
+   ```
+
+   **Note:** Profile data is backed up in case you want to revert the profiles to your previous Zowe CLI installation.
+
+4. (Optional) If you no longer require the profiles for your previous Zowe CLI installation, you can delete them.
+
+   **Important:** We do not recommend deleting the profiles for your previous Zowe CLI installation until you have tested your @next installation and are satisfied with its performance.
+
+   Issue the following command:
+
+   ```
+   zowe config convert-profiles --delete
+   ```
+
+## Install Zowe CLI from a download
+
+Use the following procedure to install Zowe CLI from a download package:
+
+1. Navigate to [Zowe Downloads](https://www.zowe.org/download.html) and click the **Zowe vNext CLI Core** button.
+
+2. Read the End User License Agreement for Zowe and click **I agree** to download the core package.
+
+    `zowe-cli-package-next-2021MMDD.zip` is downloaded to your computer (where MMDD indicates the month and day of the build).
+
+3. **(Optional)** Navigate to [Zowe Downloads](https://www.zowe.org/download.html) and click the **Zowe vNext CLI Plugins** button to download the plugins.
+
+4. **(Optional)** Read the End User License Agreement for Zowe plugins and click **I agree** to download the plugins package.
+
+    `zowe-cli-plugins-next-2021MMDD.zip` is downloaded to your computer (where MMDD indicates the month and day of the build).
+
+5. Unzip the contents of `zowe-cli-package-next-2021MMDD.zip` (and optionally `zowe-cli-plugins-2021MMDD.zip`) to a working directory.
+
+6. Open a command-line window and issue the following commands to the working directory:
+
+   ```
    npm install -g zowe-cli.tgz
    ```
 
-   ```bash
-   zowe plugins install secure-credential-store-for-zowe-cli.tgz
+   **Note:** If an `EACCESS` error is returned, refer to [Resolving EACCESS permissions errors when installing packages globally](https://docs.npmjs.com/resolving-eacces-permissions-errors-when-installing-packages-globally) in the npm documentation.
+
+   **(Optional)**
+
+   ```
+   zowe plugins install zowe plugins install cics-for-zowe-cli.tgz db2-for-zowe-cli.tgz zos-ftp-for-zowe-cli.tgz  ims-for-zowe-cli.tgz mq-for-zowe-cli.tgz
    ```
 
-   **Notes:**
+7. Migrate your Zowe CLI profiles from your current installation to your @next installation. Issue the following command:
 
-   - If the command returns an `EACCESS` error, refer to [Resolving EACCESS permissions errors when installing packages globally](https://docs.npmjs.com/resolving-eacces-permissions-errors-when-installing-packages-globally) in the npm documentation.
-   - On Linux, you might need to prepend `sudo` to your `npm` commands. For more information, see [Troubleshooting Zowe CLI](../troubleshoot/cli/troubleshoot-cli.md).
-
-7. **(Optional)** Address the [Software requirements for CLI plug-ins](cli-swreqplugins.md). You can install most plug-ins without meeting the requirements, but they will not function until you configure the back-end APIs. The IBM Db2 plug-in requires [additional configuration to install](cli-db2plugin.md#installing).
-
-8. **(Optional)** Issue the following command to install each available plug-in:
-
-   ```bash
-   zowe plugins install cics-for-zowe-cli.tgz db2-for-zowe-cli.tgz zos-ftp-for-zowe-cli.tgz  ims-for-zowe-cli.tgz mq-for-zowe-cli.tgz
+   ```
+   zowe config convert-profiles
    ```
 
-   **Important:** Ensure that you meet the [Software requirements for CLI plug-ins](cli-swreqplugins.md). You can install most plug-ins without meeting the requirements, but they will not function until you configure the back-end APIs. The IBM Db2 plug-in requires [additional configuration to install](cli-db2plugin.md#installing).
+   **Note:** Profile data is backed up in case you want to revert the profiles to your previous Zowe CLI installation.
 
-Zowe CLI is installed on your computer. Issue the `zowe --help` command to view a list of available commands. For information about how to connect the CLI to the mainframe, create profiles, integrate with API ML, and more, see [Using CLI](cli-usingcli.md).
+8. (Optional) If you no longer require the profiles for your previous Zowe CLI installation, you can delete them.
 
-### Installing Zowe CLI from an online registry
+   **Important:** We do not recommend deleting the profiles for your previous Zowe CLI installation until you have tested your @next installation and are satisfied with its performance.
 
-If your computer is connected to the Internet, you can use the following method to install Zowe CLI from an npm registry.
+   Issue the following command:
 
-**Follow these steps:**
-
-1. Address the following software requirements for the core CLI:
-   - **Node.js:** Install a currently supported Node.js LTS version. For an up-to-date list of supported LTS versions, see [Nodejs.org](https://nodejs.org/en/about/releases/).
-   :::tip
-   You might need to restart the command prompt after installing Node.js. Issue the command `node --version` to verify that Node.js is installed.
-   :::
-
-   - **npm:** Install a version of Node Package Manager (npm) that is compatible with your version of Node.js.
-   :::tip
-   Npm is included with most Node.js installations. Issue the command `npm --version` to check your current version. You can reference the [Node.js release matrix](https://nodejs.org/en/download/releases/) to verify that the versions are compatible.
-   :::
-
-   - **(Optional) ssh2 Package:** Zowe CLI has a dependency on the ssh2 package. This package allows for more secure cryptographic ciphers to be used first on supporting hardware. See [Installing the ssh2 Package for Zowe CLI](cli-installing-ssh2-package.md).
-
-2. **(Linux only)** Address the following software requirements for Secure Credential Storage:
-
-   - **(Graphical Linux)** Install `gnome-keyring` and `libsecret` on your computer.
-
-   - **(Headless Linux)** Follow the procedure documented in the [SCS plug-in Readme](https://github.com/zowe/zowe-cli-scs-plugin/blob/master/README.md#software-requirements).
-
-3. Issue the following commands in sequence to install the core from the public npm registry. The "core" includes Zowe CLI and Secure Credential Store, which enhances security by encrypting your username and password.
-
-   ```bash
-   npm install -g @zowe/cli@zowe-v1-lts
+   ```
+   zowe config convert-profiles --delete
    ```
 
-   ```bash
-   zowe plugins install @zowe/secure-credential-store-for-zowe-cli@zowe-v1-lts
-   ```
-
-   **Notes:**
-
-   - If the command returns an `EACCESS` error, refer to [Resolving EACCESS permissions errors when installing packages globally](https://docs.npmjs.com/resolving-eacces-permissions-errors-when-installing-packages-globally) in the npm documentation.
-   - On Linux, you might need to prepend `sudo` to your `npm` commands. For more information, see [Troubleshooting Zowe CLI](../troubleshoot/cli/troubleshoot-cli.md).
-
-4. **(Optional)** Address the [Software requirements for CLI plug-ins](cli-swreqplugins.md). You can install most plug-ins without meeting the requirements, but they will not function until you configure the back-end APIs. The IBM Db2 plug-in requires [additional configuration to install](cli-db2plugin.md#installing).
-
-5. **(Optional)** To install all available plug-ins to Zowe CLI, issue the following command:
-
-   ```bash
-   zowe plugins install @zowe/cics-for-zowe-cli@zowe-v1-lts @zowe/db2-for-zowe-cli@zowe-v1-lts @zowe/ims-for-zowe-cli@zowe-v1-lts @zowe/mq-for-zowe-cli@zowe-v1-lts @zowe/zos-ftp-for-zowe-cli@zowe-v1-lts
-   ```
-
-Zowe CLI is installed on your computer. Issue the `zowe --help` command to view a list of available commands. For information about how to connect the CLI to the mainframe, create profiles, integrate with API ML, and more, see [Using CLI](cli-usingcli.md).
+Zowe CLI is installed on your computer. Issue the `zowe --help` command to view a list of available commands. For information about how to connect the CLI to the mainframe, create profiles and team profiles, integrate with API ML, enable daemon mode, and more, see [Using CLI](../user-guide/cli-using-usingcli.md).

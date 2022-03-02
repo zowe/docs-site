@@ -159,33 +159,22 @@ module.exports = {
       items: [
         "user-guide/cli-install-cli-checklist",
         "user-guide/systemrequirements-cli",
-        "user-guide/cli-installing-ssh2-package",
-        "user-guide/cli-install-cli-nodejs-windows",
-        {
+                {
           type: "category",
           label: "Install CLI",
           items: [
             "user-guide/cli-installcli",
             "user-guide/cli-configure-scs-on-zlinux-os",
             "user-guide/cli-configure-cli-on-os-where-scs-unavailable",
-                          ],
+            "user-guide/cli-installing-ssh2-package",
+            "user-guide/cli-install-cli-nodejs-windows",                          ],
         },
-        
         "user-guide/install-cli-via-proxy",
         "user-guide/cli-updatingcli",
         "user-guide/cli-uninstall",
       ],
     },
-    {
-      type: "category",
-      label: "Installing Zowe CLI @next version",
-      items: [
-        "user-guide/cli-development-roadmap-next",
-        "user-guide/cli-install-cli-next",
-        "user-guide/cli-using-daemon-mode",
-        "user-guide/cli-using-global-profile-configuration",
-      ],
-    },
+    
     //{
     //  type: "category",
     //  label: "Installing Zowe Explorer",
@@ -444,7 +433,7 @@ module.exports = {
     "contribute/contributing",
   ],
   reference: [
- //   "appendix/zowe-cli-command-reference",
+    "appendix/zowe-cli-command-reference",
  //   "appendix/zowe-api-reference",
       "appendix/server-component-manifest",
       "appendix/zowe-yaml-configuration",
