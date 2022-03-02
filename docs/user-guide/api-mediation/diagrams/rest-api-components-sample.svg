@@ -9,7 +9,7 @@ skinparam rectangle {
 rectangle gateway [
 <b>API Gateway</b>
 ===
-/api/v2/petstore
+/petstore/api/v2
 ]
 
 rectangle petstore <<Service>> {
