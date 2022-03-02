@@ -161,9 +161,16 @@ module.exports = {
         "user-guide/systemrequirements-cli",
         "user-guide/cli-installing-ssh2-package",
         "user-guide/cli-install-cli-nodejs-windows",
-        "user-guide/cli-installcli",
-        "user-guide/cli-configure-scs-on-zlinux-os",
-        "user-guide/cli-configure-cli-on-os-where-scs-unavailable",
+        {
+          type: "category",
+          label: "Install CLI",
+          items: [
+            "user-guide/cli-installcli",
+            "user-guide/cli-configure-scs-on-zlinux-os",
+            "user-guide/cli-configure-cli-on-os-where-scs-unavailable",
+                          ],
+        },
+        
         "user-guide/install-cli-via-proxy",
         "user-guide/cli-updatingcli",
         "user-guide/cli-uninstall",
@@ -219,7 +226,14 @@ module.exports = {
             "user-guide/cli-using-displaying-help",
             "user-guide/cli-using-understanding-core-command-groups",
             "user-guide/cli-using-issuing-first-command",
-            "user-guide/cli-using-using-daemon-mode",
+            {
+              type: "category",
+              label: "Configuring daemon mode",
+              items: [
+                "user-guide/cli-using-using-daemon-mode",
+                "user-guide/cli-configure-daemon-on-zlinux-os",
+                              ],
+            },
             "user-guide/cli-using-using-profiles",
             {
               type: "category",
