@@ -6,7 +6,7 @@ The following error message codes may appear on ZSS log. Use the following messa
 
 ### ZWES0013I
 
-  ZSS Server has started. Version '%s'
+  ZSS Server has started. Version '%s' '%s'
 
   **Reason:**
 
@@ -26,7 +26,13 @@ The following error message codes may appear on ZSS log. Use the following messa
 
   **Action:**
 
-  if Status is `OK` then no action required. If Status is `Failure` see [ZLUX unable to communicate with zssServer](app-troubleshoot/#zss-server-unable-to-communicate-with-x-mem).
+  if Status is `OK` then no action required. If Status is `Failure` see check `<cmsRC>` and description.
+  In the cases listed below check that the ZWESISTC started task is running. If not, start it with the TSO command `/S ZWESISTC`:
+  - `cmsRC=12`, description=`'Global area address is NULL'`
+  - `cmsRC=39`, description=`'Cross-memory server abended'`
+  - `cmsRC=47`, description=`'ZVT is NULL'`
+  - `cmsRC=64`, description=`'PC is unavailable'`
+
 ### ZWES0035I
 
   ZSS Server settings: Address='%s', port='%d', protocol='%s'
