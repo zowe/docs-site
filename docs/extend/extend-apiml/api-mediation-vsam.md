@@ -58,8 +58,8 @@ Test subjects:
 Results:
 - The most important operation is `READ`.
 - Two Caching Services achieve better `READ` performance than a single Caching Service.
-- Based on data, the `READ` performance appears to be acceptable, ranging from 300 ms to 1000 ms.
-- With two Caching Services and a high load, `READ` performance is significantly better.
+- Based on data from the testing results, the `READ` performance appears to be acceptable, ranging from 300 ms to 1000 ms.
+- With two Caching Services and a high load, `READ` performance significantly increased.
 - Response times of other operations are also acceptable, yet error rates increase with higher concurrency.
 - Two Caching Services produce higher load on shared resource (VSAM) and have higher error rate.
 - VSAM implemetation appears to be sufficient for user-based workloads. For light automation workloads VSAM implementation appears to be acceptable as well. For heavy workloads this implementatin may not be sufficient. 
