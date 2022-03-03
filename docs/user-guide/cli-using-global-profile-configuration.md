@@ -172,7 +172,7 @@ To secure a specific field, issue `zowe config set --secure <property-path>`. Fo
 
 You can use an editor to define options to the secure array in `zowe.config.json`. Any option that you define to there becomes secure/prompted-for.
 
-## Store properties automatically
+## Storing properties automatically
 
 When you issue a command that is missing a required option value for a property (for example, host or password) the CLI prompts you to enter the option value. In the V1-LTS version of Zowe CLI, the value that was specified was not stored for future commands to use. As a result, you either responded to a prompt on every command issued or issued a profile update command to store the missing value.
 
