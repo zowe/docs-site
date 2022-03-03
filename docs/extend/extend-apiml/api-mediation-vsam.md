@@ -37,16 +37,16 @@ Configure VSAM as a storage solution through the Caching service by modifying th
 
 ### VSAM performance
 
-Due to the Java access to the VSAM, there are performance limitation to this approach. VSAM solution has been tested in a few scenarios.
+Accessing VSAM via java results in a performance limitation. The VSAM solution has been tested in a few scenarios.
 
-Test process:
-1) Load 1000 records into cache concurrently (5 threads)
-2) Update all records for 120 seconds with increasing thread count, up to `<x>` amount of threads
-3) Read all records for 120 seconds with increasing thread count, up to `<x>` amount of threads
-4) Read and update all records for 120 seconds with increasing thread count, up to `<x>` amount of threads
-5) Delete all loaded records from cache concurrently (5 threads)
+The following sequence describes the test process: 
+1. Load 1000 records into the cache concurrently (5 threads).
+2. Update all records for 120 seconds with increasing the thread count, up to `<x>` amount of threads.
+3. Read all records for 120 seconds with increasing the thread count, up to `<x>` amount of threads.
+4. Read and update all records for 120 seconds with increasing the thread count, up to `<x>` amount of threads.
+5. Delete all loaded records from the cache concurrently (5 threads).
 
-Tests are run with 3 scenarios:
+Tests were run with 3 scenarios:
 - Low load: 5 threads 
 - Medium load: 15 threads
 - High load: 50 threads
@@ -56,13 +56,13 @@ Test subjects:
 - Two Caching Services with shared VSAM storage
 
 Results:
-- The most important operation is READ.
-- Two Caching Services achieve better READ performance than a single Caching Service.
-- Based on data, the READ performance seems acceptable, ranging from 300 ms to 1000 ms.
-- With two Caching Services and high load, the READ performance is significantly better.
+- The most important operation is `READ`.
+- Two Caching Services achieve better `READ` performance than a single Caching Service.
+- Based on data, the `READ` performance appears to be acceptable, ranging from 300 ms to 1000 ms.
+- With two Caching Services and a high load, `READ` performance is significantly better.
 - Response times of other operations are also acceptable, yet error rates increase with higher concurrency.
 - Two Caching Services produce higher load on shared resource (VSAM) and have higher error rate.
-- It seems to us that for user-based workloads, the VSAM implementation will suffice. For light automation workloads it might be acceptable as well. For heavy workloads it might not be enough.
-- VSAM does not scale very well beyond 1000 RPM on a node.
+- VSAM implemetation appears to be sufficient for user-based workloads. For light automation workloads VSAM implementation appears to be acceptable as well. For heavy workloads this implementatin may not be sufficient. 
+- VSAM does not scale well beyond 1000 RPM on a node.
 
 
