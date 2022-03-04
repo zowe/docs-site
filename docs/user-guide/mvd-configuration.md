@@ -140,7 +140,7 @@ These directories dictate where the [Configuration Dataservice](https://github.c
 
 ```
 ### Old defaults
-Prior to Zowe release 2.0.0, the location of the configuration directories were initialized to be within the `<INSTANCE_DIR>` folder unless otherwise customized. 2.0.0 does have backwards compatibility for the existence of these directories, but `<INSTANCE_DIR>` folder no longer exists, so they should be migrated to new locations.
+Prior to Zowe release 2.0.0, the location of the configuration directories were initialized to be within the `<INSTANCE_DIR>` folder unless otherwise customized. 2.0.0 does have backwards compatibility for the existence of these directories, but `<INSTANCE_DIR>` folder no longer exists, so they should be migrated to match the ones specified in `zowe.yaml`.
 
 | Folder | New Location | Old Location | Note
 |--------|--------------|--------------|-----
