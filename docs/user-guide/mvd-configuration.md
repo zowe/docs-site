@@ -64,7 +64,7 @@ ZSS reads this file directly as a startup argument, while the Zowe Application S
 
 ## Environment variables
 
-In Zowe V1, environment variables were originally specified in `instance.env`. In V2, while most variables can be customized in corresponding component sections of `zowe.yaml`, additional enviornment variables can be specified in `zowe.environments` section.
+In Zowe V1, environment variables were originally specified in `instance.env`. In V2, while most variables can be customized in corresponding component sections of `zowe.yaml`, additional environment variables can be specified in `zowe.environments` section.
 
 ## Network configuration
 
