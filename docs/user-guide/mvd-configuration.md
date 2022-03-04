@@ -162,8 +162,9 @@ To include application plugins, define the location of the plugins directory in 
 ### Plugins directory example
 
 ```
-// All paths should be absolute
-//...
+zowe
+  {...}
+  # All paths should be absolute
   # Where extensions are installed
   extensionDirectory: /your-user/zowe/extensions
 ```
