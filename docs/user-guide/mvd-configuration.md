@@ -17,7 +17,7 @@ For earlier releases, you must register the Application Server with the Mediatio
 
 ### Accessing the Application Server
 
-**Note:** Before Accessing the Application Server, first [first install and configure the Zowe instance](configure-instance-directory.md).
+**Note:** Before Accessing the Application Server, first [install and configure the Zowe instance](configure-instance-directory.md).
 
 To access the Application Server through the Mediation Layer, use the Mediation Layer gateway server hostname and port. For example, when accessed directly, this is Zowe Desktop URL: `https://<appservername_port>/ZLUX/plugins/org.zowe.zlux.bootstrap/web/index.html`
 
@@ -376,16 +376,17 @@ Copy the CA certificate to the ZSS server. Then in the Zowe App Server configura
       certificate: "/your-user/keystore-v2/localhost/localhost.cer"
       certificateAuthorities: "/your-user/keystore-v2/local_ca/local_ca.cer"
 ```
-4. In the **agent.http** object add the key-value pair `"attls": true`, for example:
+3. In the **components.zss.agent.http** section add the key-value pair `attls: true`, for example:
 ```
-"agent": {
-  "host": "localhost",
-  "http": {
-    "ipAddresses": ["127.0.0.1"],
-    "port": 8542,
-    "attls": true
-  }
-}
+zss:
+    enabled: true
+    port: 8542
+    crossMemoryServerName: ZWESIS_STD
+    tls: true
+    agent:
+      http:
+        ipAddresses: ["127.0.0.1"]
+        attls: true
 ```
 
 ### Installing additional ZSS instances
