@@ -45,7 +45,9 @@ NodeJS uses `global` as its global object, so the logger is attached to:
 
 #### Web
 
-Browsers use `window` as the global object, so the logger is attached to:
+(Angular App Instance Injectible). See **Logger** in [Zowe Desktop and window management](mvd-desktopandwindowmgt.md).  
+
+(others) Browsers use `window` as the global object, so the logger is attached to:
 `window.COM_RS_COMMON_LOGGER`
 
 ### Component logger
@@ -55,11 +57,6 @@ Component loggers are created from the core logger object, but when working with
 #### App Server
 
 See **Router Dataservice Context** in the topic [Dataservices](mvd-dataservices.md).   
-
-
-#### Web
-
-(Angular App Instance Injectible). See **Logger** in [Zowe Desktop and window management](mvd-desktopandwindowmgt.md).  
 
 
 ## Logger API
