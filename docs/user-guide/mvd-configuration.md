@@ -356,7 +356,7 @@ TTLSCipherParms                   cipher~ZSS
 ```
 
 #### Configuring the Zowe App Server for HTTPS communication with ZSS
-Copy the CA certificate to the ZSS server. Then in the Zowe App Server configuration file, specify the location of the certificate, and add a parameter to specify that ZSS uses AT-TLS. Default signed certificates get generated during *zwe init* step in Zowe install.
+Copy the CA certificate to the ZSS server. Then in the Zowe App Server configuration file, specify the location of the certificate, and add a parameter to specify that ZSS uses AT-TLS. Default self signed certificates get generated during *zwe init* step in Zowe install.
 
 1. Open the `zowe.yaml` file.
 2. In the **zowe.certificates.pem** section, add the CA certificate file path in the *zowe.certificates.pem.certificateAuthorities* variable, for example:
