@@ -34,17 +34,17 @@ The following steps describe how to enable daemon mode and how to configure Zowe
    ```
    C:\Users\<user_ID>\.zowe\bin
    ```
-   **Alternative configuration**: By default, the daemon binary creates or reuses a file in the user's home directory every time a Zowe CLI command runs. In some cases, this behavior is undesirable. For example, the home directory resides on a network drive and has poor file performance. To change the location that the daemon uses, set the following environment variable for your operating system:
+   **Alternative configuration**: By default, the daemon binary creates or reuses a file in the user's home directory each time a Zowe CLI command runs. In some cases, this behavior might  c be undesirable. For example, the home directory resides on a network drive and has poor file performance. To change the location that the daemon uses, set the following environment variable for your operating system:
 
-   - **Windows:**
-
-       Specify `ZOWE_DAEMON_LOCK` as the path to the lock file that restricts access to the named pipe that the daemon uses for communication.
+   - **Windows:** `ZOWE_DAEMON_LOCK`
+       
+       Specify the path to the lock file that restricts access to the named pipe that the daemon uses for communication.
        
        **Default:**  `%HOMEPATH%\.zowe-daemon.lock`
 
-   - **Linux and macOS:**
-
-      Specify `ZOWE_DAEMON` as the path to the socket that the daemon uses for communication.
+   - **Linux and macOS:** `ZOWE_DAEMON`
+      
+      Specify the path to the socket that the daemon uses for communication.
       
       **Default:** `~/.zowe-daemon.sock`
 
