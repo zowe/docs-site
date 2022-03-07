@@ -38,13 +38,13 @@ The following steps describe how to enable daemon mode and how to configure Zowe
 
    - **Windows:** `ZOWE_DAEMON_LOCK`
        
-       Specify the path to the lock file that restricts access to the named pipe that the daemon uses for communication.
+       Specify an alternative path to the lock file that restricts access to the named pipe that the daemon uses for communication.
        
        **Default:**  `%HOMEPATH%\.zowe-daemon.lock`
 
    - **Linux and macOS:** `ZOWE_DAEMON`
       
-      Specify the path to the socket that the daemon uses for communication.
+      Specify an alternative path to the socket that the daemon uses for communication.
       
       **Default:** `~/.zowe-daemon.sock`
 
