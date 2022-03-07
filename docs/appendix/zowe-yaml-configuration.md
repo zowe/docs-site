@@ -250,8 +250,8 @@ Zowe YAML configuration uses `zowe.setup` section to instruct how Zowe should be
 ```yaml
 zowe:
   setup:
-    mvs:
-      hlq: IBMUSER.ZWE
+    dataset:
+      prefix: IBMUSER.ZWE
       parmlib: IBMUSER.ZWE.CUST.PARMLIB
       jcllib: IBMUSER.ZWE.CUST.JCLLIB
       authLoadlib: IBMUSER.ZWE.CUST.ZWESALL
@@ -282,6 +282,7 @@ zowe:
       validity: 3650
       pkcs12:
         directory: /global/zowe/keystore
+        lock: true
         name: localhost
         password: password
         caAlias: local_ca
@@ -317,11 +318,11 @@ zowe:
       storageClass:
 ```
 
-- `zowe.setup.mvs.hlq` shows where the `SZWEAUTH` data set is installed.
-- `zowe.setup.mvs.parmlib` is the user custom parameter library. Zowe server command may generate sample PARMLIB members and stores here.
-- `zowe.setup.mvs.jcllib` is the custom JCL library. Zowe server command may generate sample JCLs and put into this data set.
-- `zowe.setup.mvs.authLoadlib` is the user custom APF LOADLIB. This field is optional. If this is defined, members of `SZWEAUTH` will be copied over to this data set and it will be APF authorized. If it's not defined, `SZWEAUTH` from HLQ will be APF authorized.
-- `zowe.setup.mvs.authPluginLib` is the user custom APF PLUGINLIB. You can install Zowe ZIS plug-ins into this load library. This loadlib requires APF authorize.
+- `zowe.setup.dataset.prefix` shows where the `SZWEAUTH` data set is installed.
+- `zowe.setup.dataset.parmlib` is the user custom parameter library. Zowe server command may generate sample PARMLIB members and stores here.
+- `zowe.setup.dataset.jcllib` is the custom JCL library. Zowe server command may generate sample JCLs and put into this data set.
+- `zowe.setup.dataset.authLoadlib` is the user custom APF LOADLIB. This field is optional. If this is defined, members of `SZWEAUTH` will be copied over to this data set and it will be APF authorized. If it's not defined, `SZWEAUTH` from `zowe.setup.dataset.prefix` will be APF authorized.
+- `zowe.setup.dataset.authPluginLib` is the user custom APF PLUGINLIB. You can install Zowe ZIS plug-ins into this load library. This loadlib requires APF authorize.
 
 - `zowe.setup.security.product` is security product. Can be `RACF`, `ACF2`, or `TSS`. This configuration is optional. Default value is `RACF`.
 - `zowe.setup.security.groups.admin` is the group for Zowe administrators. This configuration is optional. Default value is `ZWEADMIN`.
@@ -342,6 +343,7 @@ zowe:
 **For `PKCS12` certificate users,**
 
 - `zowe.setup.certificate.pkcs12.directory` is the directory where you plan to store the PKCS12 keystore and truststore. This is required if `zowe.setup.certificate.type` is `PKCS12`.
+- `zowe.setup.certificate.pkcs12.lock` is a boolean configuration to tell if we should lock the PKCS12 keystore directory only for Zowe runtime user and group. Default value is true.
 - You can also define `name`, `password`, `caAlias` and `caPassword` under `zowe.setup.certificate.pkcs12` to customized keystore and truststore. These configurations are optional, but it is recommended to update them from default values.
 - Define `zowe.setup.certificate.pkcs12.import.keystore` if you already acquired certificate from other CA, stored them in PKCS12 format, and want to import into Zowe PKCS12 keystore.
 - `zowe.setup.certificate.pkcs12.import.password` is the password for keystore defined in `zowe.setup.certificate.pkcs12.import.keystore`.
@@ -432,9 +434,9 @@ These configurations can be used under the `components.gateway` section:
 - **`apiml.security.authorization.endpoint.url`**  
  Defines the URL to the authorization endpoint. This endpoint tells Gateway if a user has a particular permission on SAF profile. For example, permission to the `APIML.SERVICES` profile of `ZOWE` class.
 - **`apiml.security.ssl.verifySslCertificatesOfServices`**  
- Defines whether APIML should verify certificates of services in strict mode. Setting to `true` will enable the `strict` mode where APIML will validate if the certificate is trusted in turststore, and also if the certificate Common Name or Subject Alternate Name (SAN) matches the service hostname. This is equivalent to the `VERIFY_CERTIFICATES` variable defined in `<keystore-dir>/zowe-certificates.env`.
+ Defines whether APIML should verify certificates of services in strict mode. Setting to `true` will enable the `strict` mode where APIML will validate if the certificate is trusted in turststore, and also if the certificate Common Name or Subject Alternate Name (SAN) matches the service hostname.
 - **`apiml.security.ssl.nonStrictVerifySslCertificatesOfServices`**  
- Defines whether APIML should verify certificates of services in non-strict mode. Setting the value to `true` will enable the `non-strict` mode where APIML will validate if the certificate is trusted in turststore, but ignore the certificate Common Name or Subject Alternate Name (SAN) check. Zowe will ignore this configuration when strict mode is enabled with `apiml.security.ssl.verifySslCertificatesOfServices`. This is equivalent to the `NONSTRICT_VERIFY_CERTIFICATES` variable defined in `<keystore-dir>/zowe-certificates.env`.
+ Defines whether APIML should verify certificates of services in non-strict mode. Setting the value to `true` will enable the `non-strict` mode where APIML will validate if the certificate is trusted in turststore, but ignore the certificate Common Name or Subject Alternate Name (SAN) check. Zowe will ignore this configuration when strict mode is enabled with `apiml.security.ssl.verifySslCertificatesOfServices`.
 - **`apiml.server.maxConnectionsPerRoute`**  
  Specifies the maximum connections for each service.
 - **`apiml.server.maxTotalConnections`**  
@@ -451,9 +453,9 @@ These configurations can be used under the `components.discovery` section:
 - **`apiml.service.preferIpAddress`**  
  Set this parameter to `true`  to advertise a service IP address instead of its hostname. **Note:** This configuration is deprecated. The Zowe start script will ignore this value and always set it to `false`.
 - **`apiml.security.ssl.verifySslCertificatesOfServices`**  
- Defines whether APIML should verify certificates of services in strict mode. Setting to `true` will enable the `strict` mode where APIML will validate both if the certificate is trusted in turststore, and also if the certificate Common Name or Subject Alternate Name (SAN) matches the service hostname. This is equivalent to the `VERIFY_CERTIFICATES` variable defined in `<keystore-dir>/zowe-certificates.env`.
+ Defines whether APIML should verify certificates of services in strict mode. Setting to `true` will enable the `strict` mode where APIML will validate both if the certificate is trusted in turststore, and also if the certificate Common Name or Subject Alternate Name (SAN) matches the service hostname.
 - **`apiml.security.ssl.nonStrictVerifySslCertificatesOfServices`**  
- Defines whether APIML should verify certificates of services in non-strict mode. Setting to `true` will enable the `non-strict` mode where APIML will validate if the certificate is trusted in turststore, but ignore the certificate Common Name or Subject Alternate Name (SAN) check. Zowe will ignore this configuration if strict mode is enabled with `apiml.security.ssl.verifySslCertificatesOfServices`. This is equivalent to the `NONSTRICT_VERIFY_CERTIFICATES` variable defined in `<keystore-dir>/zowe-certificates.env`.
+ Defines whether APIML should verify certificates of services in non-strict mode. Setting to `true` will enable the `non-strict` mode where APIML will validate if the certificate is trusted in turststore, but ignore the certificate Common Name or Subject Alternate Name (SAN) check. Zowe will ignore this configuration if strict mode is enabled with `apiml.security.ssl.verifySslCertificatesOfServices`.
 - **`alternativeStaticApiDefinitionsDirectories`**  
  Specifies the alternative directories of static definitions.
 - **`apiml.server.maxTotalConnections`**  
@@ -507,9 +509,9 @@ These configurations can be used under the `components.caching-service` section:
 - **`environment.preferIpAddress`**  
  Set this parameter to `true`  to advertise a service IP address instead of its hostname. **Note:** this configuration is deprecated. Zowe start script will ignore this value and always set it to `false`.
 - **`apiml.security.ssl.verifySslCertificatesOfServices`**  
- Specifies whether APIML should verify certificates of services in strict mode. Set to `true` will enable `strict` mode that APIML will validate both if the certificate is trusted in turststore, and also if the certificate Common Name or Subject Alternate Name (SAN) match the service hostname. This is equivalent to the `VERIFY_CERTIFICATES` variable defined in `<keystore-dir>/zowe-certificates.env`.
+ Specifies whether APIML should verify certificates of services in strict mode. Set to `true` will enable `strict` mode that APIML will validate both if the certificate is trusted in turststore, and also if the certificate Common Name or Subject Alternate Name (SAN) match the service hostname.
 - **`apiml.security.ssl.nonStrictVerifySslCertificatesOfServices`**  
- Defines whether APIML should verify certificates of services in non-strict mode. Setting to `true` will enable `non-strict` mode where APIML will validate if the certificate is trusted in turststore, but ignore the certificate Common Name or Subject Alternate Name (SAN) check. Zowe will ignore this configuration if strict mode is enabled with `apiml.security.ssl.verifySslCertificatesOfServices`. This is equivalent to the `NONSTRICT_VERIFY_CERTIFICATES` variable defined in `<keystore-dir>/zowe-certificates.env`.
+ Defines whether APIML should verify certificates of services in non-strict mode. Setting to `true` will enable `non-strict` mode where APIML will validate if the certificate is trusted in turststore, but ignore the certificate Common Name or Subject Alternate Name (SAN) check. Zowe will ignore this configuration if strict mode is enabled with `apiml.security.ssl.verifySslCertificatesOfServices`.
 
 #### Configure component app-server
 
@@ -586,8 +588,8 @@ For examples:
 
 - `ZWE_zowe_runtimeDirectory`, parent directory of where `zwe` server command is located.
 - `ZWE_zowe_workspaceDirectory` is the path of user customized workspace directory.
-- `ZWE_zowe_setup_mvs_hlq` is the high-level qualifier where Zowe MVS data sets are installed.
-- `ZWE_zowe_setup_mvs_parmlib` is the data set configured to store customized version of parameter library members.
-- `ZWE_zowe_setup_mvs_authPluginLib` is the data set configured to store APF authorized ZIS plug-ins load library.
+- `ZWE_zowe_setup_dataset_prefix` is the high-level qualifier where Zowe MVS data sets are installed.
+- `ZWE_zowe_setup_dataset_parmlib` is the data set configured to store customized version of parameter library members.
+- `ZWE_zowe_setup_dataset_authPluginLib` is the data set configured to store APF authorized ZIS plug-ins load library.
 - `ZWE_zowe_setup_security_users_zowe` is the name of Zowe runtime user.
 - `ZWE_configs_port` is your component port number you can use in your start script. It points to the value of `haInstances.<current-ha-instance>.components.<your-component>.port`, or fall back to `components.<my-component>.port`, or fall back to `configs.port` defined in your component manifest.
