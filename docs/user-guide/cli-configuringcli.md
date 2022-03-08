@@ -34,4 +34,4 @@ By default, the CLI daemon mode binary creates or reuses a file in the user's ho
 | ---------------------- | ---------------------- | ---------------------- | ---------------------- | ---------------------- |
 | Windows | `ZOWE_DAEMON_LOCK` | Specifies an alternative path to the lock file that restricts access to the named pipe that the daemon uses for communication. | Any valid path on your computer | `%HOMEPATH%\.zowe-daemon.lock` |
 | Linux, macOS | `ZOWE_DAEMON` | Specifies an alternative path to the socket that the daemon uses for communication. | Any valid path on your computer | `$HOME/.zowe-daemon.sock` |
-| Windows | `ZOWE_DAEMON` | Specifies an alternative name for the named pipe that the daemon uses for communication. | Any valid Windows pipe name without the `\\.\` prefix | `%USERNAME%\ZoweDaemon` |
+| Windows | `ZOWE_DAEMON` | Specifies an alternative name for the named pipe that the daemon uses for communication. The environment variable cannot be defined as a file path thar resides on a disk. | Any valid Windows pipe name without the `\\.\` prefix | `%USERNAME%\ZoweDaemon` |
