@@ -305,7 +305,7 @@ Your file is uploaded.
 1. Navigate to the explorer tree.
 2. Open the **Unix System Services (USS)** bar.
 3. Select a file you want to remove.
-4. Select the **Delete** button and click \*Yes\*\* to confirm.
+4. Select the **Delete** button and click **Yes** to confirm.
    The file is deleted.
 
 #### Delete a directory
@@ -359,7 +359,7 @@ You can use the following functionalities when interacting with jobs:
 
 1. Right-click on your profile and search for the **Issue MVS Command** option. Select the **Zowe:Issue MVS Command** option.
 
-   Alternatively, press the **F1** key on your keyboard, then select "the **Zowe:Issue MVS Command** option.
+   Alternatively, press the **F1** key on your keyboard, then select the **Zowe:Issue MVS Command** option.
 
 2. Enter a new command or select a saved command.
 3. Press Enter to execute the command.
@@ -370,7 +370,7 @@ You can use the following functionalities when interacting with jobs:
 
 1. Right-click on your profile and search for the **Issue TSO Command** option. Select the **Zowe:Issue TSO Command** option.
 
-   Alternatively, press the **F1** key on your keyboard, then select "the **Zowe:Issue TSO Command** option.
+   Alternatively, press the **F1** key on your keyboard, then select the **Zowe:Issue TSO Command** option.
 
 2. Enter a new command or select a saved command.
 3. Press Enter to execute the command.
