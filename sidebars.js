@@ -30,7 +30,7 @@ module.exports = {
       label: "Quick start",
       items: [
         "getting-started/zowe-getting-started",
-    //    "getting-started/cli-getting-started",
+        "getting-started/cli-getting-started",
       ],
     },
     {

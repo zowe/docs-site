@@ -25,7 +25,7 @@ You can set the log level to adjust the level of detail that is written to log f
 
 
 
-## Setting CLI daemon mode environment variables
+## Setting CLI daemon mode properties
 
 By default, the CLI daemon mode binary creates or reuses a file in the user's home directory each time a Zowe CLI command runs. In some cases, this behavior might be undesirable. For example, the home directory resides on a network drive and has poor file performance. To change the location that the daemon uses, set the environment variables that are described in the following table:
 
@@ -34,3 +34,4 @@ By default, the CLI daemon mode binary creates or reuses a file in the user's ho
 | ---------------------- | ---------------------- | ---------------------- | ---------------------- | ---------------------- |
 | Windows | `ZOWE_DAEMON_LOCK` | Specifies an alternative path to the lock file that restricts access to the named pipe that the daemon uses for communication. | Any valid path on your computer | `%HOMEPATH%\.zowe-daemon.lock` |
 | Linux, macOS | `ZOWE_DAEMON` | Specifies an alternative path to the socket that the daemon uses for communication. | Any valid path on your computer | `$HOME/.zowe-daemon.sock` |
+| Windows | `ZOWE_DAEMON` | Specifies an alternative name for the named pipe that the daemon uses for communication. | Any valid Windows pipe name without the `\\.\` prefix | `%USERNAME%\ZoweDaemon` |
