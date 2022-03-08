@@ -100,10 +100,10 @@ Review the following table for a detailed mapping of Zowe v1 and v2 variables.
 | `ZWE_LAUNCH_COMPONENTS` | Combined information of `components.<component>.enabled` with value of `true` | `ZWE_ENABLED_COMPONENTS` or `ZWE_LAUNCH_COMPONENTS` | Depends on the purpose, in v2, `ZWE_ENABLED_COMPONENTS` are list of components with `enabled` status `true`. `ZWE_LAUNCH_COMPONENTS` in v2 is a subset of `ZWE_ENABLED_COMPONENTS` which components also have `commands.start` lifecycle script. |
 | `ZWE_LOG_LEVEL_ZWELS` | `zowe.launchScript.logLevel` | `ZWE_zowe_launchScript_logLevel` | |
 | `ZWEAD_EXTERNAL_STATIC_DEF_DIRECTORIES` | Removed in v2 | Removed in v2 | Use `ZWE_STATIC_DEFINITIONS_DIR` instead. |
-| `ZWES_ZIS_LOADLIB` | `zowe.setup.mvs.authLoadlib` | `ZWE_zowe_setup_mvs_authLoadlib` | |
+| `ZWES_ZIS_LOADLIB` | `zowe.setup.dataset.authLoadlib` | `ZWE_zowe_setup_dataset_authLoadlib` | |
 | `ZWES_ZIS_PARMLIB_MEMBER` | - | - | |
-| `ZWES_ZIS_PARMLIB` | `zowe.setup.mvs.parmlib` | `ZWE_setup_mvs_parmlib` | |
-| `ZWES_ZIS_PLUGINLIB` | `zowe.setup.mvs.authPluginLib` | `ZWE_zowe_setup_mvs_authPluginLib` | |
+| `ZWES_ZIS_PARMLIB` | `zowe.setup.dataset.parmlib` | `ZWE_zowe_setup_dataset_parmlib` | |
+| `ZWES_ZIS_PLUGINLIB` | `zowe.setup.dataset.authPluginLib` | `ZWE_zowe_setup_dataset_authPluginLib` | |
 
 
 ## Packaging one component deliverable for both Zowe v1 and v2

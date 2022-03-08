@@ -54,7 +54,7 @@ The manifest file contains the following properties:
 
   * **`install`**
   
-    This defines extra steps when installing this component. It will be automatically executed if you install your component with the `<RUNTIME_DIR>/bin/zowe-install-component.sh` utility tool.
+    This defines extra steps when installing this component. It will be automatically executed if you install your component with the `zwe components install` server command.
 
   * **`validate`**
   
@@ -82,7 +82,7 @@ The manifest file contains the following properties:
       
   * **`static`**
   
-    Array of objects. When the component is statically registered under the Discovery service, this tells Zowe where to find these static definitions. This information is for the Zowe runtime. When Zowe is started, the launch script will check this field and put the parse static definition file into the directory defined as `STATIC_DEF_CONFIG_DIR` in the Zowe instance.
+    Array of objects. When the component is statically registered under the Discovery service, this tells Zowe where to find these static definitions. This information is for the Zowe runtime. When Zowe is starting, the launch script will check this field and put the parse static definition file into the directory defined as `ZWE_STATIC_DEFINITIONS_DIR` in the Zowe instance.
 
     - **`file`**
   
@@ -98,7 +98,7 @@ The manifest file contains the following properties:
   
   * **`path`**
   
-    This points to the directory where App Framework `pluginDefinition.json` file is located. If you use the `<RUNTIME_DIR>/bin/zowe-configure-component.sh` utility tool to configure this component for an instance, the script will automatically execute `<INSTANCE_DIR>/bin/install-app.sh` with this path.
+    This points to the directory where App Framework `pluginDefinition.json` file is located. When Zowe is starting, the launch script will check this field and register the plug-in to Zowe App Framework Server.
 
 - **`gatewaySharedLibs`**: Array of objects. This section defines the API ML extension(s) attributes which will get installed and used by API ML.
   
