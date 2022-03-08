@@ -61,8 +61,8 @@ When the command is run a customized JCL member name in created the `CUST.JCLLIB
 >> Generate Zowe certificate in keyring
 
 >>>> Modify ZWEKRING
-    - WINCHJ.ZWEV2.CUST.JCLLIB(ZW101431) is prepared
->>>> Submit WINCHJ.ZWEV2.CUST.JCLLIB(ZW101431)
+    - IBMUSER.ZWEV2.CUST.JCLLIB(ZW101431) is prepared
+>>>> Submit IBMUSER.ZWEV2.CUST.JCLLIB(ZW101431)
     - Job ZWEKRING(JOB03054) ends with code 0 (COMPLETED).
 >> Certificate is generated in keyring successfully.
 

@@ -2,7 +2,6 @@
 
 To configure the z/OS system for Zowe a number of steps need to be performed
 
-- [stc].  Create the PROCLIB members in the JES concatenation path required to run Zowe's started tasks.  
 - [vsam].  Create the VSAM data sets used by the Zowe caching service.  This is optional and only needed if you are configuring Zowe for cross LPAR sysplex high availability.  
 
 Each phase of configuring the z/OS system is done by issuing TSO commands.  To assist with the `zwe init` command is able to construct the command symtax based on values from the `zowe.yaml` file.  
@@ -31,7 +30,7 @@ Dry-run mode, security setup is NOT performed on the system.
 Please submit IBMUSER.ZWEV2.CUST.JCLLIB(ZW134428) manually.
 >> Zowe security configurations are applied successfully.
 
-WINCHJ:/u/winchj/v2 #>
+#>
 ```
 
 ### Configuring Using `ZWESECUR`
@@ -56,13 +55,13 @@ If you run `ZWENOSEC` on a z/OS system, then you will no longer be able to run Z
 When you run the `ZWESECUR` JCL, it does not perform the following initialization steps. Therefore, you must complete these steps manually for a z/OS environment.  
 - [Perform APF authorization of Zowe load libraries that require access to make privileged calls](#apf-authorize-load-libraries)
 - [Copy the JCL members for Zowe's started tasks to a PDS on proclib concatenation path](#install-zowe-stc-proclib-members)
+- [Create VSAM data sets used by the Zowe caching service](#create-vsam-ha-caching-datasets)
 - [Grant users permission to access z/OSMF](#grant-users-permission-to-access-zosmf)
 - [Configure an ICSF cryptographic services environment](#configure-an-icsf-cryptographic-services-environment)
 - [Configure multi-user address space (for TSS only)](#configure-multi-user-address-space-for-tss-only) 
 
 The `ZWESECUR` JCL performs the following initialization steps so you do not need to perform them manually if you have successfully run the JCL.  These steps are included for reference if you prefer to manually configure the z/OS environment or want to learn more about user IDs, groups, and associated security permissions that are required to operate Zowe.  
 - [User IDs and groups for the Zowe started tasks](#user-ids-and-groups-for-the-zowe-started-tasks)
-- [Configure ZWESVSTC to run under ZWESVUSR user ID](#configure-zwesvstc-to-run-under-zwesvusr-user-ID)
 - [Configure ZWESLSTC to run high availability instances under ZWESVUSR user ID](#configure-zweslstc-to-run-under-zwesvusr-user-ID)
 - [Configure the cross memory server for SAF](#configure-the-cross-memory-server-for-saf)
 
@@ -110,7 +109,7 @@ zowe
         aux: ZWESASTC
 ```
 
-The `zwe init stc` command uses the `CUST.JCL` data sets as a staging area to contain intermediatory JCL, 
+The `zwe init stc` command uses the `CUST.JCL`LIB data sets as a staging area to contain intermediatory JCL which are transformed version of the originals that are shiped in `.SZWESAMP` with paths, PDS locations, and other runtime data updated.  If you wish to just generate the `CUST.JCLLIB` members without having them copied to  `USER.PROCLIB` specify `--security-dry-run`.  If the JCL members are already in the target PROCLIB specify `--allow-overwritten`.   
 
 ```
 #>zwe init stc -c ./zowe.yaml
@@ -121,13 +120,17 @@ Modify ZWESLSTC
 Modify ZWESISTC
 Modify ZWESASTC
 
-Copy IBMUSER.ZWEV2.CUST.JCLLIB(ZWESLSTC) to IBMUSER.ZWE200.JCLLIB(ZWESLSTC)
-Copy IBMUSER.ZWEV2.CUST.JCLLIB(ZWESISTC) to IBMUSER.ZWE200.JCLLIB(ZWESISTC)
-Copy IBMUSER.ZWEV2.CUST.JCLLIB(ZWESASTC) to IBMUSER.ZWE200.JCLLIB(ZWESASTC)
+Copy IBMUSER.ZWEV2.CUST.JCLLIB(ZWESLSTC) to USER.PROCLIB(ZWESLSTC)
+Copy IBMUSER.ZWEV2.CUST.JCLLIB(ZWESISTC) to USER.PROCLIB(ZWESISTC)
+Copy IBMUSER.ZWEV2.CUST.JCLLIB(ZWESASTC) to USER.PROCLIB(ZWESASTC)
 
 >> Zowe main started tasks are installed successfully.
 #>
 ```
+
+## Create VSAM HA caching datasets
+
+
 
 ## Grant users permission to access z/OSMF
 
@@ -369,7 +372,7 @@ For more information, see [Setting up the UNIX-related FACILITY and SURROGAT cla
 
 ## Configure multi-user address space (for TSS only)
 
-The Zowe server started task either `ZWESVSTC` or `ZWESLSTC` is multi-user address space, and therefore a TSS FACILITY needs to be defined and assigned to the started task. Then, all acids signing on to the started task will need to be authorized to the FACILITY.
+The Zowe server started task `ZWESLSTC` is multi-user address space, and therefore a TSS FACILITY needs to be defined and assigned to the started task. Then, all acids signing on to the started task will need to be authorized to the FACILITY.
 
 The following example shows how to create a new TSS FACILITY.
 
@@ -440,37 +443,6 @@ If you have not run `ZWESECUR` and are manually creating the user ID and groups 
     DATA('ZOWE XMEM CROSS MEMORY SERVER')
   ```
 
-## Configure ZWESVSTC to run under ZWESVUSR user ID
-
-When the Zowe started task `ZWESVSTC` is started, it must be associated with the user ID `ZWESVUSR` and group `ZWEADMIN`.  A different user ID and group can be used if required to conform with existing naming standards.
-
-If you have run `ZWESECUR`, you do not need to perform the steps described in this section, because they are executed during the JCL section of `ZWESECUR`.  
-```
-/* started task for ZOWE main server                   */
-...
-```
-
-If you have not run `ZWESECUR` and are configuring your z/OS environment manually, the following steps describe how to configure the started task `ZWESVSTC` to run under the correct user ID and group.  
-
-- If you use RACF, issue the following commands:
-  ```
-  RDEFINE STARTED ZWESVSTC.* UACC(NONE) STDATA(USER(ZWESVUSR) GROUP(ZWEADMIN) PRIVILEGED(NO) TRUSTED(NO) TRACE(YES))  
-  SETROPTS REFRESH RACLIST(STARTED)
-  ```
-
-- If you use ACF2, issue the following commands:
-
-  ```
-  SET CONTROL(GSO)
-  INSERT STC.ZWESVSTC LOGONID(ZWESVUSR) GROUP(ZWEADMIN) STCID(ZWESVSTC)
-  F ACF2,REFRESH(STC)
-  ```
-
-- If you use Top Secret, issue the following commands:
-
-  ```
-  TSS ADDTO(STC) PROCNAME(ZWESVSTC) ACID(ZWESVUSR)
-  ```
 
 ## Configure ZWESLSTC to run Zowe high availability instances under ZWESVUSR user ID
 
