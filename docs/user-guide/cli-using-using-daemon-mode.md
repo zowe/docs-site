@@ -31,7 +31,9 @@ The following steps describe how to enable daemon mode and how to configure Zowe
 
     Ensure that you position the path to your Zowe executables before the path into which NPM installed the Node.js script. For information about configuring environment variables, see the documentation for your computer's operating system.
 
-    **Note:** Complete Step 2 only one time.
+    **Alternative configuration:** Optionally, to improve the performances of daemon mode, you can specify an alternative directory from which the Zowe executables run. For more infomation, see [Configuring Zowe CLI Environment Variables](../user-guide/cli-configuringcli.md).
+
+    **Note:** Complete Step 2 only once.
 
 The following example illustrates running Zowe commands with the daemon mode enabled:
 
