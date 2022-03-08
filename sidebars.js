@@ -188,7 +188,7 @@ module.exports = {
       label: "Advanced Zowe configuration",
       items: [
     //    "user-guide/mvd-configuration",
-    //    "user-guide/cli-configuringcli",
+          "user-guide/cli-configuringcli",
     //    "user-guide/configure-data-sets-jobs-api",
         "user-guide/api-mediation/api-gateway-configuration",
         "user-guide/api-mediation/api-mediation-internal-configuration",
