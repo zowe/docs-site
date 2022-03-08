@@ -46,7 +46,7 @@ The following steps describe how to enable daemon mode and how to configure Zowe
       
       Specify an alternative path to the socket that the daemon uses for communication.
       
-      **Default:** `~/.zowe-daemon.sock`
+      **Default:** `$HOME/.zowe-daemon.sock`
 
    **Important!** Ensure that you position the path to your Zowe executables before the path into which NPM installed the Node.js script. For information about configuring environment variables, see the documentation for your computer's operating system.
 
