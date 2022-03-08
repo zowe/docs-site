@@ -27,7 +27,7 @@ You can set the log level to adjust the level of detail that is written to log f
 
 ## Setting CLI daemon mode environment variables
 
-By default, the CLI daemon mode binary creates or reuses a file in the user's home directory each time a Zowe CLI command runs. In some cases, this behavior might be undesirable. For example, the home directory resides on a network drive and has poor file performance. To change the location that the daemon uses, set the environment variables that are described in the following table for your operating system:
+By default, the CLI daemon mode binary creates or reuses a file in the user's home directory each time a Zowe CLI command runs. In some cases, this behavior might be undesirable. For example, the home directory resides on a network drive and has poor file performance. To change the location that the daemon uses, set the environment variables that are described in the following table:
 
 
 | Platform | Environment Variable  | Description | Values | Default |
