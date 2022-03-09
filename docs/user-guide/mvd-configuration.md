@@ -383,7 +383,7 @@ zss:
     enabled: true
     port: 8542
     crossMemoryServerName: ZWESIS_STD
-    tls: true
+    tls: false
     agent:
       http:
         ipAddresses: ["127.0.0.1"]
