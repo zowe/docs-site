@@ -190,7 +190,7 @@ module.exports = {
       items: [
     //    "user-guide/mvd-configuration",
     //    "user-guide/cli-configuringcli",
-    //    "user-guide/configure-data-sets-jobs-api",
+        "user-guide/configure-data-sets-jobs-api",
         "user-guide/api-mediation/api-gateway-configuration",
         "user-guide/api-mediation/api-mediation-internal-configuration",
       ],
@@ -206,8 +206,8 @@ module.exports = {
     //        "user-guide/mvd-editor",
     //      ],
     //    },
-      //  "user-guide/api-mediation-api-catalog",
-      //  "user-guide/api-mediation-metrics-service",
+        "user-guide/api-mediation-api-catalog",
+        "user-guide/api-mediation-metrics-service",
         {
           type: "category",
           label: "Using Zowe CLI",
@@ -288,28 +288,28 @@ module.exports = {
       items: [
         "extend/extend-apiml/onboard-overview",
         "extend/extend-apiml/onboard-plain-java-enabler",
-    //    "extend/extend-apiml/onboard-plain-java-enabler-external-configuration",
+        "extend/extend-apiml/onboard-plain-java-enabler-external-configuration",
         "extend/extend-apiml/onboard-direct-eureka-call",
-    //    "extend/extend-apiml/onboard-spring-boot-enabler",
-    //    "extend/extend-apiml/onboard-micronaut-enabler",
-    //    "extend/extend-apiml/onboard-nodejs-enabler",
+        "extend/extend-apiml/onboard-spring-boot-enabler",
+        "extend/extend-apiml/onboard-micronaut-enabler",
+        "extend/extend-apiml/onboard-nodejs-enabler",
         "extend/extend-apiml/onboard-static-definition",
-    //    "extend/extend-apiml/api-mediation-sso",
+        "extend/extend-apiml/api-mediation-sso",
         "extend/extend-apiml/service-information",
-    //    "extend/extend-apiml/api-mediation-message-service",
+        "extend/extend-apiml/api-mediation-message-service",
         "extend/extend-apiml/api-mediation-security",
         "extend/extend-apiml/api-mediation-routing",
-    //    "extend/extend-apiml/api-mediation-passtickets",
-    //    "extend/extend-apiml/custom-metadata",
-    //    {
-    //      type: "category",
-    //      label: "Caching service",
-    //      items: [
-    //        "extend/extend-apiml/api-mediation-caching-service",
-    //        "extend/extend-apiml/api-mediation-vsam",
-    //        "extend/extend-apiml/api-mediation-redis",
-    //      ],
-    //    }
+        "extend/extend-apiml/api-mediation-passtickets",
+        "extend/extend-apiml/custom-metadata",
+        {
+          type: "category",
+          label: "Caching service",
+          items: [
+            "extend/extend-apiml/api-mediation-caching-service",
+            "extend/extend-apiml/api-mediation-vsam",
+            "extend/extend-apiml/api-mediation-redis",
+          ],
+        }
       ],
     },
     //{
@@ -358,7 +358,7 @@ module.exports = {
       label: "Zowe API Mediation Layer",
       items: [
         "troubleshoot/troubleshoot-apiml",
-    //    "troubleshoot/troubleshoot-apiml-error-codes",
+        "troubleshoot/troubleshoot-apiml-error-codes",
       ],
     },
     {
@@ -428,7 +428,7 @@ module.exports = {
   ],
   reference: [
  //   "appendix/zowe-cli-command-reference",
- //   "appendix/zowe-api-reference",
+      "appendix/zowe-api-reference",
       "appendix/server-component-manifest",
       "appendix/zowe-yaml-configuration",
       "appendix/zwe_server_command_reference/zwe-server-command-reference",
