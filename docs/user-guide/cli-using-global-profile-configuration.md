@@ -166,7 +166,13 @@ You can continue to add more LPARs and more services within each LPAR. After you
 
 When you first run the `zowe config init --global-config` command, the `profiles.base.properties.user` and `profiles.base.properties.password` fields are defined to the "secure" array in your configuration file, which help to ensure that the username and password are stored securely on your computer.
 
-To store or update values for the secure fields (for example, when you want to change your username and password), issue the `zowe config secure` command.
+To store or update values for the secure fields (for example, when you want to change your username and password), issue the `zowe config secure` command. If, for example, you want to update several property values in a long list of properties, press `Enter` to skip a field.
+
+**Example:**
+
+```
+Enter profiles.base.properties.user - blank to skip:
+```
 
 To secure a specific field, issue `zowe config set --secure <property-path>`. For example, `zowe config set --secure profiles.base.properties.password`. When you issue the command for an option that is already secured, the CLI prompts you to enter a new option value.
 
@@ -176,7 +182,7 @@ You can use an editor to define options to the secure array in `zowe.config.json
 
 When you issue a command that is missing a required option value for a property (for example, host or password) the CLI prompts you to enter the option value. In the V1-LTS version of Zowe CLI, the value that was specified was not stored for future commands to use. As a result, you either responded to a prompt on every command issued or issued a profile update command to store the missing value.
 
-The `autoStore` property in the `zowe.config.json` file lets your store the option values for properties automatically. When you specify the `autoStore` property in `zowe.config.json` to `true`, the value that you enter when prompted is stored for future commands to use. The values for secure fields are stored securely in the credential vault, and the other values are written to `zowe.config.json` on disk.
+The `autoStore` property in the `zowe.config.json` file lets you store the option values for properties automatically. When you specify the `autoStore` property in `zowe.config.json` to `true`, the value that you enter when prompted is stored for future commands to use. The values for secure fields are stored securely in the credential vault, and the other values are written to `zowe.config.json` on disk.
 
 The default value of the `autoStore` property is `true`. However, if this behavior is undesirable (you do not want to store properties automatically), set the value of `autoStore` to `false`. A value of `false` uses the V1-LTS behavior, which prompts for missing values on all commands that you issue.
 
