@@ -37,6 +37,7 @@ module.exports = {
       type: "category",
       label: "Migrating from v1 to v2",
       items: [
+        "getting-started/migrate-cli",
         "getting-started/migrate-instance",
         "extend/migrate-extensions",
       ],
@@ -275,18 +276,18 @@ module.exports = {
       ],
     },
     "extend/migrate-extensions",
-    //{
-    //  type: "category",
-    //  label: "Developing for Zowe CLI",
-    //  items: [
+   {
+     type: "category",
+     label: "Developing for Zowe CLI",
+     items: [
     //    "extend/extend-cli/cli-devTutorials",
     //    "extend/extend-cli/cli-setting-up",
     //    "extend/extend-cli/cli-installing-sample-plugin",
     //    "extend/extend-cli/cli-extending-a-plugin",
-    //    "extend/extend-cli/cli-developing-a-plugin",
+        "extend/extend-cli/cli-developing-a-plugin",
     //    "extend/extend-cli/cli-implement-profiles",
-    //  ],
-    //},
+      ],
+    },
     {
       type: "category",
       label: "Developing for Zowe API Mediation Layer",

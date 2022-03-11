@@ -2,18 +2,9 @@
 
 Zowe&trade; CLI is updated continuously. You can update Zowe CLI to a more recent version using online registry method or the local package method. However, you can only update Zowe CLI using the method that you used to install Zowe CLI.
 
-- [Migrating to Long-term Support (LTS) version](#migrating-to-long-term-support-lts-version)
-- [Identify the currently installed version of Zowe CLI](#identify-the-currently-installed-version-of-zowe-cli)
-- [Identify the currently installed versions of Zowe CLI plug-ins](#identify-the-currently-installed-versions-of-zowe-cli-plug-ins)
-- [Update Zowe CLI from the online registry](#update-zowe-cli-from-the-online-registry)
-- [Update or revert Zowe CLI to a specific version](#update-or-revert-zowe-cli-to-a-specific-version)
-- [Update Zowe CLI from a local package](#update-zowe-cli-from-a-local-package)
-
 ## Migrating to Long-term Support (LTS) version
 
 If you have an `@lts-incremental` version of Zowe CLI (Zowe v1.0.x - v1.8.x), you can update to `@zowe-v2-lts` (LTS version) to leverage new functionality and plug-ins.
-
-**Follow these steps:**
 
 1. Perform *one* of the following steps:
 
@@ -49,7 +40,7 @@ Ensure that you review the [Release Notes](../getting-started/summaryofchanges.m
 
 ## Identify the currently installed version of Zowe CLI
 
-Issue the following command:
+Issue the following command (case-sensitive):
 
 ```
 zowe -V
@@ -58,6 +49,7 @@ zowe -V
 ## Identify the currently installed versions of Zowe CLI plug-ins
 
 Issue the following command:
+
 ```
 zowe plugins list
 ```
@@ -67,8 +59,6 @@ zowe plugins list
 You can update Zowe CLI to the latest version from the online registry on Windows, Mac, and Linux computers.
 
 **Note:** The following steps assume that you previously installed the CLI as described in [Installing Zowe CLI from an online registry](cli-installcli.md#installing-zowe-cli-from-an-online-registry).
-
-**Follow these steps:**
 
 1. To update Zowe CLI to the most recent `@zowe-v2-lts` version, issue the following command:
 
