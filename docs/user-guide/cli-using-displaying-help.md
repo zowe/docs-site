@@ -31,10 +31,15 @@ zowe zos-files create --help
 
 ## Launch local web help
 
-Launch an interactive form of help in a web browser. When you issue the following command, web help is custom-generated to include commands for all currently installed plug-ins:
+Launch an interactive form of help in a web browser. When you issue the following command, web help is custom-generated to include commands for all of your *currently installed* plug-ins:
 
 ```
 zowe --help-web
+
+PS C:\Users\myName> zowe --help-web
+Generating web help...............done!
+Launching web help in browser...
+PS C:\Users\myName>
 ```
 
 **Tip:** Append `--help-web` to a specific command or action to launch directly into the appropriate web help page.
