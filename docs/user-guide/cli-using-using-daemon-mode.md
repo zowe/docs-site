@@ -6,45 +6,49 @@ When you run Zowe in daemon mode, you run all Zowe commands as you normally run 
 
 **Important:** We do not recommend using daemon mode in an environment where multiple users use the same system. For example, a shared Linux server.
 
-## Installation notes
+## Preparing for installation
 
-* When you are running Zowe on a Windows operating system in a virtual environment (for example, Windows Sandbox), you might receive an error message that indicates that a library named VCRUNTIME140.dll is missing. To correct the error, install Visual C++ Redistributable for Visual Studio 2015. For more information, see [Download Visual C++ Redistributable for Visual Studio 2015](https://www.microsoft.com/en-us/download/details.aspx?id=48145).
-* When you are running Zowe CLI in daemon mode using a Git Bash terminal on a Windows operating system, special characters might display using the wrong code page. For example, the default code page 437 renders a form-feed character (\f) as an emoji (♀️). To correct the problem, issue the command `chcp.com 65001` to change the code page to UTF-8. If you want the change to be persistent, add the command to your .bashrc file.
+Review the following installation notes before you configure Zowe CLI to run in daemon mode:
+
+- Daemon mode does not function on z/OS UNIX System Services (USS) systems.
+- When you want to run Zowe CLI to run in daemon mode on **z/Linux** operating systems, you must build the daemon mode binary on the z/Linux systems. For information about how to build the binary, see [Configure daemon mode on z/Linux operating systems](cli-configure-daemon-on-zlinux-os.md). The sections [Enable daemon mode](#enable-daemon-mode) and [Disable daemon mode](#disable-daemon-mode) (in this article) **do not apply** to running Zowe CLI in daemon mode on z/Linux operating systems.
+- We do not recommend using daemon mode in an environment where multiple users use the same system. For example, a shared Linux server.
+- When you are running Zowe on a Windows operating system in a virtual environment (for example, Windows Sandbox), you might receive an error message that indicates that a library named VCRUNTIME140.dll is missing. To correct the error, install Visual C++ Redistributable for Visual Studio 2015. For more information, see [Download Visual C++ Redistributable for Visual Studio 2015](https://www.microsoft.com/en-us/download/details.aspx?id=48145).
 
 ## Enable daemon mode
 
-The following steps describe how to enable daemon mode and how to configure Zowe to run constantly in daemon mode.
+The following steps describe how to enable daemon mode and how to configure Zowe to run Zowe CLI constantly in daemon mode.
 
 1. Open a terminal window and issue the following command:
 
-    ```
-    zowe daemon enable
-    ```
+   ```
+   zowe daemon enable
+   ```
 
-    The command copies the Zowe executables for your operating system into the `$ZOWE_CLI_HOME/bin` (`.zowe/bin`) directory. The ***next command*** that you issue starts the daemon.
+   The command copies the Zowe executables for your operating system into the `$ZOWE_CLI_HOME/bin` (`.zowe/bin`) directory. The next command that you issue starts the daemon.
+2. Add the path to the Zowe executable to your PATH environment variable. For example:
 
-2. Add the path to the Zowe executables to the environment variables for your computer. For example:
+   ```
+   C:\Users\<user_ID>\.zowe\bin
+   ```
 
-    ```
-    C:\Users\<user_ID>\.zowe\bin
-    ```
+   **Important!** Ensure that you position the path to your Zowe executables before the path into which NPM installed the Node.js script. For example, `C:\Program Files\nodejs\zowe.cmd`. For information about configuring environment variables, see the documentation for your computer's operating system.
+   
+   **Alternative configuration**: By default, the daemon binary creates or reuses a file in the user's home directory each time a Zowe CLI command runs. In some cases, this behavior might be undesirable. To change the location that the daemon uses, see [Setting CLI daemon mode properties](../user-guide/cli-configuringcli.md#setting-cli-daemon-mode-properties).
 
-    Ensure that you position the path to your Zowe executables before the path into which NPM installed the Node.js script. For information about configuring environment variables, see the documentation for your computer's operating system.
+   **Note:** Complete the environment variable configuration step (Step 2) only once.
 
-    **Alternative configuration:** Optionally, to improve the performance of daemon mode, you can specify an alternative directory from which Zowe CLI daemon mode binary files run. For more infomation, see [Configuring Zowe CLI Environment Variables](../user-guide/cli-configuringcli.md).
+The following example illustrates running Zowe CLI commands with the daemon mode enabled:
 
-    **Note:** Complete Step 2 only once.
-
-The following example illustrates running Zowe commands with the daemon mode enabled:
-
-```
-zowe --version
-Starting a background process to increase performance ...
-7.0.0-next.202110211759
-
-zowe --version
-7.0.0-next.202110211759
-```
+   ```
+   zowe --version
+   Starting a background process to increase performance ...
+   7.0.0-next.202110211759
+   
+   zowe --version
+   7.0.0-next.202110211759
+   ```
+**Note:** When you are running Zowe CLI in daemon using a Git Bash terminal on a Windows operating system, special characters might display using the wrong code page. For example, the default code page 437 renders a form-feed character (\f) as an emoji (♀️). To correct the problem, issue the command `chcp.com 65001` to change the code page to UTF-8. If you want the change to be persistent, add the command to your .bashrc file.
 
 ## Disable daemon mode
 
