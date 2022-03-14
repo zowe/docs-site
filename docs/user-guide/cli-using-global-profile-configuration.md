@@ -168,12 +168,6 @@ When you first run the `zowe config init --global-config` command, the `profiles
 
 To store or update values for the secure fields (for example, when you want to change your username and password), issue the `zowe config secure` command. If, for example, you want to update several property values in a long list of properties, press `Enter` to skip a field.
 
-**Example:**
-
-```
-Enter profiles.base.properties.user - blank to skip:
-```
-
 To secure a specific field, issue `zowe config set --secure <property-path>`. For example, `zowe config set --secure profiles.base.properties.password`. When you issue the command for an option that is already secured, the CLI prompts you to enter a new option value.
 
 You can use an editor to define options to the secure array in `zowe.config.json`. Any option that you define to there becomes secure/prompted-for.
