@@ -185,7 +185,7 @@ For more information, see [Logging Utility](../extend/extend-desktop/mvd-logutil
 
 Running ZSS requires a `zowe.yaml` configuration that is similar to the one used for the Zowe Application Server. The attributes that are needed for ZSS (*components.zss*) at minimum, are: *port*, *crossMemoryServerName*.
 
-For example, *port* is the TCP port that ZSS will listen on to be contacted by the App Server. Define this in the configuration file as a value between 1024-65535. Similarly, if specified, *agent.http.ipAddresses* will be used to determine which IP addresses the server should bind to (note: Should only be used with AT-TLS and is not secure, otherwise use HTTPS). Only the first value of the array is used. It can either be a hostname or an IPv4 address.
+For example, *port* is the TCP port that ZSS will listen on to be contacted by the App Server. Define this in the configuration file as a value between 1024-65535. ZSS is HTTPS by default, so AT-TLS is optional and if you were to enable AT-TLS, you need to disable HTTPS. Similarly, if specified, *agent.http.ipAddresses* will be used to determine which IP addresses the server should bind to (note: Should only be used with AT-TLS and is not secure, otherwise use HTTPS). Only the first value of the array is used. It can either be a hostname or an IPv4 address.
 
 Example of the agent body:
 ```
@@ -208,13 +208,16 @@ When running the App Server script directly, simply specify a few flags to decla
 - *-P*: Declares the port at which ZSS is listening. Use as "-P \<port\>"
 
 ### Configuring ZSS for HTTPS
-To secure ZSS communication, you can use Application Transparent Transport Layer Security (AT-TLS) to enable Hyper Text Transfer Protocol Secure (HTTPS) communication with ZSS.
 
-Before you begin, you must have a basic knowledge of your security product, e.g. RACF, and AT-TLS, and you must have Policy Agent configured. For more information on [AT-TLS](https://www.ibm.com/support/knowledgecenter/en/SSLTBW_2.1.0/com.ibm.zos.v2r1.halx001/transtls.htm) and [Policy Agent](https://www.ibm.com/support/knowledgecenter/en/SSLTBW_2.2.0/com.ibm.zos.v2r2.halz002/pbn_pol_agnt.htm), see the [z/OS Knowledge Center](https://www.ibm.com/support/knowledgecenter/en/SSLTBW_2.2.0/com.ibm.zos.v2r2/en/homepage.html).
+By default, ZSS is enabled in HTTPS and doesn't require an advanced configuration.
+
+If you want to use RACF or AT-TLS (which requires ZSS to be in HTTP mode), you must have a basic knowledge of your security product and you must have Policy Agent configured. For more information on [AT-TLS](https://www.ibm.com/support/knowledgecenter/en/SSLTBW_2.1.0/com.ibm.zos.v2r1.halx001/transtls.htm) and [Policy Agent](https://www.ibm.com/support/knowledgecenter/en/SSLTBW_2.2.0/com.ibm.zos.v2r2.halz002/pbn_pol_agnt.htm), see the [z/OS Knowledge Center](https://www.ibm.com/support/knowledgecenter/en/SSLTBW_2.2.0/com.ibm.zos.v2r2/en/homepage.html).
 
 You must have the authority to alter security definitions related to certificate management, and you must be authorized to work with and update the Policy Agent.
 
-To configure HTTPS communication between ZSS and the Zowe App Server, you need a key ring which contains the ZSS server certificate and its Certificate Authority (CA) certificate. You can use an internal CA to create the ZSS server certificate, or you can buy the ZSS server certificate from a well-known commercial Certificate Authority. Next you define an AT-TLS rule which points to the key ring used by the ZSS server. Then you copy the CA certificate to the Zowe App Server key store and update the Zowe App Server configuration file.
+By default, HTTPS communication between ZSS and App Server is done via a server certificate, its Certificate Authority (CA) certificate, and keystore generated during the Zowe initialization step (`zwe init`). 
+
+You may also use a key ring which contains the ZSS server certificate and its Certificate Authority certificate. You can use an internal CA to create the ZSS server certificate, or you can buy the ZSS server certificate from a well-known commercial Certificate Authority. Next you define an AT-TLS rule which points to the key ring used by the ZSS server. Then you copy the CA certificate to the Zowe App Server key store and update the Zowe App Server configuration file.
 
 **Note:** Bracketed values below (including the brackets) are variables. Replace them with values relevant to your organization. Always use the same value when substituting a variable that occurs multiple times.
 
@@ -364,10 +367,10 @@ TTLSCipherParms                   cipher~ZSS
 ```
 
 #### Configuring the Zowe App Server for HTTPS communication with ZSS
-Copy the CA certificate to the ZSS server. Then in the Zowe App Server configuration file, specify the location of the certificate, and add a parameter to specify that ZSS uses AT-TLS. Default self signed certificates get generated during *zwe init* step in Zowe install.
+In the `zowe.yaml` configuration file, specify the location of the certificate. Default self signed certificates get generated during `zwe init` step in the Zowe install.
 
 1. Open the `zowe.yaml` file.
-2. In the **zowe.certificates.pem** section, add the CA certificate file path in the *zowe.certificates.pem.certificateAuthorities* variable, for example:
+2. In the **zowe.certificates.pem** section, add the certificate file path, type, and other variables as needed in the *zowe.certificates* variable, for example:
 ```
 # default certificate
   certificate:
@@ -385,7 +388,7 @@ Copy the CA certificate to the ZSS server. Then in the Zowe App Server configura
       certificate: "/your-user/keystore-v2/localhost/localhost.cer"
       certificateAuthorities: "/your-user/keystore-v2/local_ca/local_ca.cer"
 ```
-3. In the **components.zss.agent.http** section add the key-value pair `attls: true`, for example:
+3. (optional - AT-TLS with HTTP) In the **components.zss.agent.http** section add the key-value pair `attls: true` with *ipAddresses* variable, for example:
 ```
 zss:
     enabled: true
@@ -472,34 +475,6 @@ The following steps assume you have installed a Zowe runtime instance (which inc
 
    `ZIS status - Ok (name='ZWESIS_MYSRV    ', cmsRC=0, description='Ok', clientVersion=2)`
 
-### Configuring AT-TLS on Client System
-
-When connecting to a Zowe instance whose host system is configured to use AT-TLS for HTTPS, the connecting client/client system must also define an outbound AT-TLS rule. To define the AT-TLS rule, use the sample below to specify values in your AT-TLS Policy Agent Configuration file:
-
-```
-TTLSRule                     XYZClientRule
-{
-  RemotePortRange                   [gateway_or_desktop_port]
-  Direction                         Outbound
-  TTLSGroupActionRef                XYZGroup
-  TTLSEnvironmentActionRef          XYZClientEnvironment
-}
-TTLSGroupAction              XYZGroup
-{
-  TTLSEnabled                       On
-}
-TTLSEnvironmentAction        XYZClientEnvironment
-{
-  TTLSKeyRingParms
-    {
-      Keyring                       [client_key_ring]
-    }
-  HandshakeRole                     CLIENT
-  Trace                             7
-}
-```
-
-**Note:** \[client_key_ring\] is a key ring containing the client certificate. To retrieve a signed client certificate, contact the administrator of the host system.
 
 ## Controlling access to applications
 
@@ -513,7 +488,7 @@ You can also control access to the JSON files. The files are accessible directly
 
 By default, RBAC is disabled and all authenticated Zowe users can access all dataservices. To enable RBAC, follow these steps:
 
-1. To enable RBAC, set the `components.zss.dataserviceAuthentication.rbac` variable to `true`
+1. To enable RBAC, set the *components.zss.dataserviceAuthentication.rbac* variable to `true`
 
 ### Controlling application access for all users
 
@@ -553,7 +528,7 @@ By default, RBAC is disabled and all authenticated Zowe users can access all dat
         {
           "identifier": "org.zowe.appA",
           "versions": [
-            "*"
+            "1.1"
           ]
         },
         {
@@ -604,7 +579,7 @@ If you use RACF security, take the following steps define the ZOWE class to the 
     SETROPTS CLASSACT(ZOWE)
     ```
 
-For more information RACF security administration, see the IBM Knowledge Center at [https://www.ibm.com/support/knowledgecenter/](https://www.ibm.com/support/knowledgecenter/).
+For more information on RACF security administration, see the IBM Knowledge Center at [https://www.ibm.com/support/knowledgecenter/](https://www.ibm.com/support/knowledgecenter/).
 
 ### Creating authorization profiles
 For users to access endpoints after you enable RBAC, in the ZOWE class you must create System Authorization Facility (SAF) profiles for each endpoint and give users READ access to those profiles.
