@@ -35,7 +35,7 @@ Install Zowe CLI plug-ins using npm commands on Windows, Mac, and Linux. The pro
 
     **Note:** Replace `<my-plugin>` with the installation command syntax in the following table:
 
-    | Plug-in | Installation Command Syntax |
+    | Plug-in | Syntax |
     |---------|-----------------------------|
     | IBM CICS Plug-in for Zowe CLI | `@zowe/cics-for-zowe-cli@zowe-v2-lts` |
     | IBM Db2 Plug-in for Zowe CLI| `@zowe/db2-for-zowe-cli@zowe-v2-lts` |
@@ -115,7 +115,7 @@ zowe plugins validate [plugin]
     validate. If you do not specify a plug-in name, the command
     validates all installed plug-ins. The name of the plug-in is not always the same as the name of the NPM package.
 
-    | Plug-in | Installation Command Syntax |
+    | Plug-in | Syntax |
     |---------|-----------------------------|
     | IBM CICS Plug-in for Zowe CLI | `@zowe/cics-for-zowe-cli` |
     | IBM Db2 Plug-in for Zowe CLI| `@zowe/db2-for-zowe-cli` |
@@ -195,7 +195,7 @@ zowe plugins uninstall [plugin]
 The following table describes the uninstallation command syntax for each plug-in:
 
 
-| Plug-in | Installation Command Syntax |
+| Plug-in | Syntax |
 |---------|-----------------------------|
 | IBM CICS Plug-in for Zowe CLI | `@zowe/cics-for-zowe-cli` |
 | IBM Db2 Plug-in for Zowe CLI| `@zowe/db2-for-zowe-cli` |
