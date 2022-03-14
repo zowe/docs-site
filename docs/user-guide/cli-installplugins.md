@@ -122,8 +122,7 @@ zowe plugins validate [plugin]
     | IBM z/OS FTP Plug-in for Zowe CLI | `@zowe/zos-ftp-for-zowe-cli` |
     | IBM IMS Plug-in for Zowe CLI | `@zowe/ims-for-zowe-cli` |
     | IBM MQ Plug-in for Zowe CLI | `@zowe/mq-for-zowe-cli` |
-    | Secure Credential Store Plug-in for Zowe CLI | `@zowe/secure-credential-store-for-zowe-cli` |
-    |    |    |
+
 
 **Examples: Validate plug-ins**
 
