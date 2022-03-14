@@ -42,7 +42,7 @@ Install Zowe CLI plug-ins using npm commands on Windows, Mac, and Linux. The pro
     | IBM z/OS FTP Plug-in for Zowe CLI | `@zowe/zos-ftp-for-zowe-cli@zowe-v2-lts` |
     | IBM IMS Plug-in for Zowe CLI | `@zowe/ims-for-zowe-cli@zowe-v2-lts` |
     | IBM MQ Plug-in for Zowe CLI | `@zowe/mq-for-zowe-cli@zowe-v2-lts` |
-    | Secure Credential Store Plug-in for Zowe CLI | `@zowe/secure-credential-store-for-zowe-cli@zowe-v2-lts` |
+   
 
 
 3.  (Optional) Issue the following command to install two or more plug-ins using one command. Separate the `<my-plugin>` names with one space.
@@ -96,8 +96,7 @@ Install plug-ins from a local package on any computer that has limited or no acc
     | IBM z/OS FTP Plug-in for Zowe CLI | `zos-ftp-for-zowe-cli.tgz` |
     | IBM IMS Plug-in for Zowe CLI | `ims-for-zowe-cli.tgz` |
     | IBM MQ Plug-in for Zowe CLI | `mq-for-zowe-cli.tgz` |
-    | Secure Credential Store Plug-in for Zowe CLI | `secure-credential-store-for-zowe-cli.tgz` |
-    |    |    |
+   
 
 You installed Zowe CLI plug-ins.
 
