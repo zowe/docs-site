@@ -28,16 +28,30 @@ The following steps describe how to enable daemon mode and how to configure Zowe
    zowe daemon enable
    ```
 
-   The command copies the Zowe executables for your operating system into the $ZOWE_CLI_HOME/bin (.zowe/bin) directory. The next command that you issue starts the daemon.
-2. Add the path to the Zowe executables to the environment variables for your computer. For example:
+   The command copies the Zowe executables for your operating system into the `$ZOWE_CLI_HOME/bin` (`.zowe/bin`) directory. The next command that you issue starts the daemon.
+2. Add the path to the Zowe executable to your PATH environment variable. For example:
 
    ```
    C:\Users\<user_ID>\.zowe\bin
    ```
 
-   **Important!** Ensure that you position the path to your Zowe executables before the path into which NPM installed the Node.js script. For information about configuring environment variables, see the documentation for your computer's operating system.
+   **Important!** Ensure that you position the path to your Zowe executables before the path into which NPM installed the Node.js script. For example, `C:\Program Files\nodejs\zowe.cmd`. For information about configuring environment variables, see the documentation for your computer's operating system.
+   
+   **Alternative configuration**: By default, the daemon binary creates or reuses a file in the user's home directory each time a Zowe CLI command runs. In some cases, this behavior might be undesirable. For example, the home directory resides on a network drive and has poor file performance. To change the location that the daemon uses, set the following environment variable for your operating system:
 
-   **Note:** Complete the environment variable configuration step (Step 2) only one time.
+   - **Windows:** `ZOWE_DAEMON_LOCK`
+       
+       Specify an alternative path to the lock file that restricts access to the named pipe that the daemon uses for communication.
+       
+       **Default:**  `%HOMEPATH%\.zowe-daemon.lock`
+
+   - **Linux and macOS:** `ZOWE_DAEMON`
+      
+      Specify an alternative path to the socket that the daemon uses for communication.
+      
+      **Default:** `$HOME/.zowe-daemon.sock`
+
+   **Note:** Complete the environment variable configuration step (Step 2) only once.
 
 The following example illustrates running Zowe commands with the daemon mode enabled:
 
