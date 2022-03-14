@@ -202,8 +202,7 @@ The following table describes the uninstallation command syntax for each plug-in
 | IBM z/OS FTP Plug-in for Zowe CLI | `@zowe/zos-ftp-for-zowe-cli` |
 | IBM IMS Plug-in for Zowe CLI | `@zowe/ims-for-zowe-cli` |
 | IBM MQ Plug-in for Zowe CLI | `@zowe/mq-for-zowe-cli` |
-| Secure Credential Store Plug-in for Zowe CLI | `@zowe/secure-credential-store-for-zowe-cli` |
-|    |    |
+
 
 **Example:**
 
@@ -212,4 +211,3 @@ The following example illustrates the command to uninstall the CICS plug-in:
 ```
 zowe plugins uninstall @zowe/cics
 ```
-
