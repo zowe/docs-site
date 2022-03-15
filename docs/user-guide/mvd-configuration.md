@@ -10,7 +10,7 @@ When you install Zowe v1.8.0 or later, the Application Server automatically regi
 
 For earlier releases, you must register the Application Server with the Mediation Layer manually. Refer to previous release documentation for more information.
 
-You must use SSL certificates for the Zowe Application Server to communicate with the SSL-enabled Mediation Layer. These certificates are created, and used by default, during the Zowe installation process (`zwe init` step) and are located in *zowe.certificate* section in `zowe.yaml`.
+You must use SSL certificates for the Zowe Application Server to communicate with the SSL-enabled Mediation Layer. These certificates are designated by *zowe.certificate* section in `zowe.yaml` and are created, by default, during the Zowe installation process (`zwe init` step).
 
 ### Accessing the Application Server
 
@@ -25,7 +25,7 @@ Recommended: To access the Application Server (Zowe Desktop) through the Mediati
 `https://<gwshostname>:<gwsport>/zlux/ui/v1/` or
 `https://<gwshostname>:<gwsport>/zlux/ui/v1/ZLUX/plugins/org.zowe.zlux.bootstrap/web/index.html`
 
-To access the Application Server directly, use the App server hostname and port.
+(Not recommended): To access the Application Server directly, use the App server hostname and port.
 
 `https://<ashostname>:<asport>` or
 `https://<ashostname>:<asport>/ZLUX/plugins/org.zowe.zlux.bootstrap/web/index.html`
