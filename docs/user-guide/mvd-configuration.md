@@ -185,7 +185,7 @@ For more information, see [Logging Utility](../extend/extend-desktop/mvd-logutil
 
 Running ZSS requires a `zowe.yaml` configuration that is similar to the one used for the Zowe Application Server. The attributes that are needed for ZSS (*components.zss*) at minimum, are: *port*, *crossMemoryServerName*.
 
-For example, *port* is the TCP port that ZSS will listen on to be contacted by the App Server. Define this in the configuration file as a value between 1024-65535. ZSS is HTTPS by default, so AT-TLS is optional and if you were to enable AT-TLS, you need to disable HTTPS. Similarly, if specified, *agent.http.ipAddresses* will be used to determine which IP addresses the server should bind to (note: Should only be used with AT-TLS and is not secure, otherwise use HTTPS). Only the first value of the array is used. It can either be a hostname or an IPv4 address.
+For example, *port* is the TCP port that ZSS will listen on to be contacted by the App Server. Define this in the configuration file as a value between 1024-65535. ZSS is HTTPS by default, so AT-TLS is optional and if you were to enable AT-TLS, you need to disable HTTPS. Similarly, if specified, *agent.http.ipAddresses* will be used to determine which IP addresses the server should bind to (note: Should only be used with AT-TLS and is not secure). Only the first value of the array is used. It can either be a hostname or an IPv4 address.
 
 Example of the agent body:
 ```
@@ -194,10 +194,11 @@ Example of the agent body:
     tls: true
     port: 8542
     crossMemoryServerName: ZWESIS_STD
-    # Only should be used with AT-TLS and is not secure
+    # The following is not secure & should only be used with AT-TLS and tls: false
     agent:
       http:
         ipAddresses: ["127.0.0.1"]
+        attls: true
 ```
 
 ### Connecting App Server to ZSS
@@ -388,7 +389,10 @@ In the `zowe.yaml` configuration file, specify the location of the certificate. 
       certificate: "/your-user/keystore-v2/localhost/localhost.cer"
       certificateAuthorities: "/your-user/keystore-v2/local_ca/local_ca.cer"
 ```
-3. (optional - AT-TLS with HTTP) In the **components.zss.agent.http** section add the key-value pair `attls: true` with *ipAddresses* variable, for example:
+
+Note: .pem files have no encryption in them so they are a security concern. Zowe by default should use .p12 files.
+
+3. (optional - not secure) In the **components.zss.agent.http** section add the key-value pair `attls: true` with *ipAddresses* variable to enable AT-TLS, for example:
 ```
 zss:
     enabled: true
