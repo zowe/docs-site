@@ -11,7 +11,7 @@ Four workflows enable you to manage keyring setup, certificates, certificate sig
     <!-- TODO We are referring to the steps on the screenshot, right? -->
 
     <div style="width:400px; height:300px">
-    ![Workflow One](/docs/images/configure/workflow-one.png?raw=true "Workflow One" ) <br />
+    ![Workflow One](/docs/images/configure/workflow-one.png?raw=true "Workflow One" )
     </div>
 
     Based on the variable setup from the first step, the workflow can perform various certificate configurations and connect certificates to a keyring in RACF, TSS, and ACF2 security systems.
