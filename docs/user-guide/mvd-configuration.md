@@ -1,32 +1,38 @@
 # Configuring Zowe Application Framework
 
-After you install Zowe&trade;, you can optionally configure the Zowe Application Framework as a Mediation Layer client, configure connections for the terminal application plugins, or modify the Zowe Application Server and Zowe System Services (ZSS) configuration, as needed.
+After you install Zowe&trade;, the Zowe Application Framework is configured as a Mediation Layer client by default. This is simpler to administer because the framework servers are accessible externally through a single port: API ML Gateway port. It is more secure because you can implement stricter browser security policies for accessing cross-origin content. 
+
+You can modify the Zowe Application Server and Zowe System Services (ZSS) configuration, as needed, or configure connections for the Terminal application plugins.
 
 ## Configuring the framework as a Mediation Layer client
-For simpler Zowe administration and better security, you can install an instance of the Zowe Application Framework as an API Mediation Layer client.
-
-This configuration is simpler to administer because the framework servers are accessible externally through a single port: API ML Gateway port. It is more secure because you can implement stricter browser security policies for accessing cross-origin content.
-
-You must use SSL certificates to configure the Zowe Application Server to communicate with the SSL-enabled Mediation Layer. Those certificates were created during the Zowe installation process, and are located in the `$RUNTIME_DIR/components/app-server/share/zlux-app-server/defaults/serverConfig` directory.
-
-### Enabling the Application Server to register with the Mediation Layer
 
 When you install Zowe v1.8.0 or later, the Application Server automatically registers with the Mediation Layer.
 
 For earlier releases, you must register the Application Server with the Mediation Layer manually. Refer to previous release documentation for more information.
 
+You must use SSL certificates for the Zowe Application Server to communicate with the SSL-enabled Mediation Layer. These certificates are created, and used by default, during the Zowe installation process (`zwe init` step) and are located in *zowe.certificate* section in `zowe.yaml`.
+
 ### Accessing the Application Server
+
+
+TODO: Should configure-instance-directory renamed to configure Zowe runtime directory?
+
 
 **Note:** Before Accessing the Application Server, first [install and configure the Zowe instance](configure-instance-directory.md).
 
-To access the Application Server through the Mediation Layer, use the Mediation Layer gateway server hostname and port. For example, when accessed directly, this is Zowe Desktop URL: `https://<appservername_port>/ZLUX/plugins/org.zowe.zlux.bootstrap/web/index.html`
+Recommended: To access the Application Server (Zowe Desktop) through the Mediation Layer, use the Mediation Layer gateway server hostname and port.
 
-The port number for the Zowe Desktop is the value of the `components.app-server.port` variable in the `zowe.yaml` file in the instance directory, see [Creating and configuring the Zowe instance directory](configure-instance-directory.md).
+`https://<gwshostname>:<gwsport>/zlux/ui/v1/` or
+`https://<gwshostname>:<gwsport>/zlux/ui/v1/ZLUX/plugins/org.zowe.zlux.bootstrap/web/index.html`
 
-When accessed through the API Mediation Layer, this is the Zowe Desktop URL:
-`https://<gwsname_port>/zlux/ui/v1/ZLUX/plugins/org.zowe.zlux.bootstrap/web/index.html`
+To access the Application Server directly, use the App server hostname and port.
 
-The port number for the API Mediation Layer is the value of the `components.gateway.port` variable in the `zowe.yaml` file in the instance directory.
+`https://<ashostname>:<asport>` or
+`https://<ashostname>:<asport>/ZLUX/plugins/org.zowe.zlux.bootstrap/web/index.html`
+
+The port number for the Zowe Desktop is the value of the *components.app-server.port* variable in `zowe.yaml`, see [Creating and configuring the Zowe instance directory](configure-instance-directory.md).
+
+The port number for the API Mediation Layer is the value of the *components.gateway.port* variable in `zowe.yaml`.
 
 ## Setting up terminal application plugins
 
