@@ -2,7 +2,7 @@
 
 You can extend Zowe&trade; CLI by developing plug-ins and contributing code to the base Zowe CLI or existing plug-ins.
 
-## How can I contribute?
+## How to contribute
 You can contribute to Zowe CLI in the following ways:
 1. Add new commands, options, or other improvements to the base CLI.
 2. Develop a plug-in that users can install to Zowe CLI.
@@ -23,7 +23,7 @@ Follow these tutorials to get started working with the sample plug-in:
 4. **[Creating a new plug-in](cli-developing-a-plugin.md)** - Create a new CLI plug-in that uses Zowe CLI programmatic APIs and a diff package to compare two data sets.
 5. **[Implementing user profiles](cli-implement-profiles.md)** - Implement user profiles with the plug-in.
 
-### Plug-in Development Overview
+### Plug-in development overview
 At a high level, a plug-in must have `imperative-framework` configuration [(sample here)](https://github.com/zowe/zowe-cli-sample-plugin/blob/master/src/imperative.ts).  This configuration is discovered by  `imperative-framework` through the [package.json](https://github.com/zowe/zowe-cli-sample-plugin/blob/master/package.json) `imperative` key.
 
 A Zowe CLI plug-in will minimally contain the following:
@@ -33,7 +33,7 @@ A Zowe CLI plug-in will minimally contain the following:
 
 The following guidelines and documentation will assist you during development:
 
-### Imperative CLI Framework Documentation
+### Imperative CLI Framework documentation
 [Imperative CLI Framework documentation](https://github.com/zowe/imperative/wiki) is a key source of information to learn about the features of Imperative CLI Framework (the code framework that you use to build plug-ins for Zowe CLI). Refer to these supplementary documents during development to learn about specific features such as:
 
 * Auto-generated help
@@ -41,7 +41,7 @@ The following guidelines and documentation will assist you during development:
 * User profiles
 * Logging, progress bars, experimental commands, and more!
 
-### Contribution Guidelines
+### Contribution guidelines
 The Zowe CLI contribution guidelines contain standards and conventions for developing Zowe CLI plug-ins.
 
 The guidelines contain critical information about working with the code, running/writing/maintaining automated tests, developing consistent syntax in your plug-in, and ensuring that your plug-in integrates with Zowe CLI properly:
