@@ -94,10 +94,8 @@
 							<h3>Methods</h3>
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><a href="_zowe_zos_workflows_for_zowe_sdk.listworkflows.html#getresourcequery" class="tsd-kind-icon">get<wbr>Resource<wbr>Query</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><a href="_zowe_zos_workflows_for_zowe_sdk.listworkflows.html#getresourcesquery" class="tsd-kind-icon">get<wbr>Resources<wbr>Query</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><a href="_zowe_zos_workflows_for_zowe_sdk.listworkflows.html#getwfkey" class="tsd-kind-icon">get<wbr>WfKey</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><a href="_zowe_zos_workflows_for_zowe_sdk.listworkflows.html#getworkflows" class="tsd-kind-icon">get<wbr>Workflows</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><a href="_zowe_zos_workflows_for_zowe_sdk.listworkflows.html#listworkflows" class="tsd-kind-icon">list<wbr>Workflows</a></li>
 							</ul>
 						</section>
 					</div>
@@ -115,7 +113,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/next/packages/workflows/src/ListWorkflows.ts#L96">@zowe/zos-workflows-for-zowe-sdk/src/ListWorkflows.ts:96</a></li>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/next/packages/workflows/src/ListWorkflows.ts#L53">@zowe/zos-workflows-for-zowe-sdk/src/ListWorkflows.ts:53</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -143,51 +141,6 @@
 					</ul>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-static">
-					<a name="getresourcesquery" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagStatic">Static</span> get<wbr>Resources<wbr>Query</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-static">
-						<li class="tsd-signature tsd-kind-icon">get<wbr>Resources<wbr>Query<span class="tsd-signature-symbol">(</span>zOSMFVersion<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, params<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Array</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-symbol">{ </span>key<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">; </span>value<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/next/packages/workflows/src/ListWorkflows.ts#L76">@zowe/zos-workflows-for-zowe-sdk/src/ListWorkflows.ts:76</a></li>
-								</ul>
-							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>This operation Builds URI path from provided parameters.</p>
-								</div>
-								<dl class="tsd-comment-tags">
-									<dt>memberof</dt>
-									<dd><p>ListWorkflows</p>
-									</dd>
-									<dt>deprecated</dt>
-									<dd></dd>
-								</dl>
-							</div>
-							<h4 class="tsd-parameters-title">Parameters</h4>
-							<ul class="tsd-parameters">
-								<li>
-									<h5>zOSMFVersion: <span class="tsd-signature-type">string</span></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>the URI path that identifies the version of the provisioning service.</p>
-									</div>
-								</li>
-								<li>
-									<h5>params: <span class="tsd-signature-type">Array</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-symbol">{ </span>key<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">; </span>value<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol">&gt;</span></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>The array with URI path with filters for listing filtered workflows.</p>
-									</div>
-								</li>
-							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
-							<p>URI path for the REST call.</p>
-						</li>
-					</ul>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-static">
 					<a name="getwfkey" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagStatic">Static</span> get<wbr>WfKey</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-static">
@@ -197,7 +150,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/next/packages/workflows/src/ListWorkflows.ts#L120">@zowe/zos-workflows-for-zowe-sdk/src/ListWorkflows.ts:120</a></li>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/next/packages/workflows/src/ListWorkflows.ts#L77">@zowe/zos-workflows-for-zowe-sdk/src/ListWorkflows.ts:77</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -251,7 +204,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/next/packages/workflows/src/ListWorkflows.ts#L54">@zowe/zos-workflows-for-zowe-sdk/src/ListWorkflows.ts:54</a></li>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/next/packages/workflows/src/ListWorkflows.ts#L33">@zowe/zos-workflows-for-zowe-sdk/src/ListWorkflows.ts:33</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -277,88 +230,6 @@
 									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> options: <a href="../interfaces/_zowe_zos_workflows_for_zowe_sdk.igetworkflowsoptions.html" class="tsd-signature-type">IGetWorkflowsOptions</a><span class="tsd-signature-symbol"> = {}</span></h5>
 									<div class="tsd-comment tsd-typography">
 										<p>Options to filter the request</p>
-									</div>
-								</li>
-							</ul>
-							<h4 class="tsd-returns-title">Returns <a href="../interfaces/_zowe_imperative.ipromisewithprogress.html#promise" class="tsd-signature-type">Promise</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></h4>
-							<p>z/OSMF response object</p>
-						</li>
-					</ul>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-static">
-					<a name="listworkflows" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagStatic">Static</span> list<wbr>Workflows</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-static">
-						<li class="tsd-signature tsd-kind-icon">list<wbr>Workflows<span class="tsd-signature-symbol">(</span>session<span class="tsd-signature-symbol">: </span><a href="_zowe_imperative.abstractsession.html" class="tsd-signature-type">AbstractSession</a>, zOSMFVersion<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span>, workflowName<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span>, category<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span>, system<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span>, owner<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span>, vendor<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span>, statusName<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_imperative.ipromisewithprogress.html#promise" class="tsd-signature-type">Promise</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/next/packages/workflows/src/ListWorkflows.ts#L40">@zowe/zos-workflows-for-zowe-sdk/src/ListWorkflows.ts:40</a></li>
-								</ul>
-							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>This operation returns list of workflows.
-									Parameters are optional,request can include one or more parameters to filter the results.</p>
-								</div>
-								<dl class="tsd-comment-tags">
-									<dt>memberof</dt>
-									<dd><p>ListWorkflows</p>
-									</dd>
-									<dt>deprecated</dt>
-									<dd></dd>
-								</dl>
-							</div>
-							<h4 class="tsd-parameters-title">Parameters</h4>
-							<ul class="tsd-parameters">
-								<li>
-									<h5>session: <a href="_zowe_imperative.abstractsession.html" class="tsd-signature-type">AbstractSession</a></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>z/OSMF connection info</p>
-									</div>
-								</li>
-								<li>
-									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> zOSMFVersion: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = WorkflowConstants.ZOSMF_VERSION</span></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>the URI path that identifies the version of the provisioning service.</p>
-									</div>
-								</li>
-								<li>
-									<h5><span class="tsd-flag ts-flagOptional">Optional</span> workflowName: <span class="tsd-signature-type">string</span></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>the URI path with optional parameter for listing filtered workflows.</p>
-									</div>
-								</li>
-								<li>
-									<h5><span class="tsd-flag ts-flagOptional">Optional</span> category: <span class="tsd-signature-type">string</span></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>the URI path with optional parameter for listing filtered workflows.</p>
-									</div>
-								</li>
-								<li>
-									<h5><span class="tsd-flag ts-flagOptional">Optional</span> system: <span class="tsd-signature-type">string</span></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>the URI path with optional parameter for listing filtered workflows.</p>
-									</div>
-								</li>
-								<li>
-									<h5><span class="tsd-flag ts-flagOptional">Optional</span> owner: <span class="tsd-signature-type">string</span></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>the URI path with optional parameter for listing filtered workflows.</p>
-									</div>
-								</li>
-								<li>
-									<h5><span class="tsd-flag ts-flagOptional">Optional</span> vendor: <span class="tsd-signature-type">string</span></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>the URI path with optional parameter for listing filtered workflows.</p>
-									</div>
-								</li>
-								<li>
-									<h5><span class="tsd-flag ts-flagOptional">Optional</span> statusName: <span class="tsd-signature-type">string</span></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>the URI path with optional parameter for listing filtered workflows.</p>
 									</div>
 								</li>
 							</ul>
@@ -445,16 +316,10 @@
 										<a href="_zowe_zos_workflows_for_zowe_sdk.listworkflows.html#getresourcequery" class="tsd-kind-icon">get<wbr>Resource<wbr>Query</a>
 									</li>
 									<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-static">
-										<a href="_zowe_zos_workflows_for_zowe_sdk.listworkflows.html#getresourcesquery" class="tsd-kind-icon">get<wbr>Resources<wbr>Query</a>
-									</li>
-									<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-static">
 										<a href="_zowe_zos_workflows_for_zowe_sdk.listworkflows.html#getwfkey" class="tsd-kind-icon">get<wbr>WfKey</a>
 									</li>
 									<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-static">
 										<a href="_zowe_zos_workflows_for_zowe_sdk.listworkflows.html#getworkflows" class="tsd-kind-icon">get<wbr>Workflows</a>
-									</li>
-									<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-static">
-										<a href="_zowe_zos_workflows_for_zowe_sdk.listworkflows.html#listworkflows" class="tsd-kind-icon">list<wbr>Workflows</a>
 									</li>
 								</ul>
 							</li>
