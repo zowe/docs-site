@@ -15,8 +15,6 @@ Zowe CLI is supported on Windows, Linux, and Mac operating systems. Meet the fol
   
   **Tip:** npm is included with most Node.js installations. Issue the command `npm --version` to check your current version. You can reference the [Node.js release matrix](https://nodejs.org/en/download/releases/) to verify that the versions are compatible.
 
-- **(Optional) ssh2 Package:** Zowe CLI has a dependency on the ssh2 package. This package allows for more secure cryptographic ciphers to be used first on supporting hardware. See [Installing the ssh2 Package for Zowe CLI](cli-installing-ssh2-package.md).
-
 - **Plug-in client requirements:** If you plan to install plug-ins, review the [Software requirements for CLI plug-ins](./cli-swreqplugins.md). You _must_ meet the client requirements for the Secure Credential Store and IBM Db2 plug-ins prior to installing them.
 
 ## Host-side requirements

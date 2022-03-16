@@ -167,7 +167,6 @@ module.exports = {
             "user-guide/cli-installcli",
             "user-guide/cli-configure-scs-on-zlinux-os",
             "user-guide/cli-configure-cli-on-os-where-scs-unavailable",
-            "user-guide/cli-installing-ssh2-package",
             "user-guide/cli-install-cli-nodejs-windows",                          ],
         },
         "user-guide/install-cli-via-proxy",

@@ -21,6 +21,9 @@ To install CLI on **Windows**, **Mac**, and **Linux** operating systems, follow 
    1. Follow the steps in [Install Zowe CLI from npm](#install-zowe-cli-from-npm) or [Install Zowe CLI from a download](#install-zowe-cli-from-a-download).
    2. Follow the steps in [Configure Zowe CLI on operating systems where the Secure Credential Store is not available](cli-configure-cli-on-os-where-scs-unavailable).
 
+### Installation notes
+
+- As you are installing Zowe CLI, you might encounter error messages that relate to `cpu-features` and `ssh`. You can safely ignore error messages of this type. The installation will complete successfully. This behavior can occur when you installing CLI from npm and from a download. 
 ## Prerequisites
 
 - Meet the [software requirements](../user-guide/systemrequirements-cli.md) for Zowe CLI.
@@ -30,8 +33,6 @@ To install CLI on **Windows**, **Mac**, and **Linux** operating systems, follow 
 
 - If you are installing Zowe CLI on a computer that is running Node.js 16 on Windows operating system, see [Installing Zowe CLI with Node.js 16 on Windows](../user-guide/cli-install-cli-nodejs-windows.md).
 
-- If you are installing Zowe CLI on hardware where you require *secure cryptographic encryption*, install the ssh2 package for Zowe CLI. For more information, see [Installing the ssh2 Package for Zowe CLI](../user-guide/cli-installing-ssh2-package.md). 
-
 - If you are running NPM version 7 (`npm@7`) or NPM version 8 (`npm@8`) on a Windows operating system, ensure that your computer is connected to the Internet. Issue the following command before you install Zowe CLI:
 
    ```
@@ -39,6 +40,7 @@ To install CLI on **Windows**, **Mac**, and **Linux** operating systems, follow 
    ```
 
 - Linux users may need to prepend `sudo` to `npm` commands. For more information, see [Troubleshooting Zowe CLI](../troubleshoot/cli/troubleshoot-cli.md).
+
 
 ## Install Zowe CLI from npm
 
