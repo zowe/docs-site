@@ -2,11 +2,11 @@
 
 Zowe v2 uses a YAML configuration file during installation, configuration and runtime. This file is usually referred to as `zowe.yaml`. YAML is a human-friendly data serialization language for all programming languages. To learn more about YAML specifications, see [https://yaml.org/](https://yaml.org/).
 
-**Note:** In the following sections, we refer to configuration keys by using concatenation of key names and dots. For example, if you want to update the configuration key `zowe.internalCertificate.keystore.type` with value `PKCS12`, you should set value for this entry in the `zowe.yaml`:
+**Note:** In the following sections, we refer to configuration keys by using concatenation of key names and dots. For example, if you want to update the configuration key `zowe.certificate.keystore.type` with value `PKCS12`, you should set value for this entry in the `zowe.yaml`:
 
 ```yaml
 zowe:
-  internalCertificate:
+  certificate:
     keystore:
       type: PKCS12
 ```
@@ -80,9 +80,7 @@ Then in your `zowe.yaml`, you can import this certification file like this:
 
 ```yaml
 zowe:
-  externalCertificate:
-    @include: "<keystore-dir>/zowe-certificates.yaml"
-  internalCertificate:
+  certificate:
     @include: "<keystore-dir>/zowe-certificates.yaml"
 ```
 
@@ -252,8 +250,8 @@ Zowe YAML configuration uses `zowe.setup` section to instruct how Zowe should be
 ```yaml
 zowe:
   setup:
-    mvs:
-      hlq: IBMUSER.ZWE
+    dataset:
+      prefix: IBMUSER.ZWE
       parmlib: IBMUSER.ZWE.CUST.PARMLIB
       jcllib: IBMUSER.ZWE.CUST.JCLLIB
       authLoadlib: IBMUSER.ZWE.CUST.ZWESALL
@@ -284,6 +282,7 @@ zowe:
       validity: 3650
       pkcs12:
         directory: /global/zowe/keystore
+        lock: true
         name: localhost
         password: password
         caAlias: local_ca
@@ -319,11 +318,11 @@ zowe:
       storageClass:
 ```
 
-- `zowe.setup.mvs.hlq` shows where the `SZWEAUTH` data set is installed.
-- `zowe.setup.mvs.parmlib` is the user custom parameter library. Zowe server command may generate sample PARMLIB members and stores here.
-- `zowe.setup.mvs.jcllib` is the custom JCL library. Zowe server command may generate sample JCLs and put into this data set.
-- `zowe.setup.mvs.authLoadlib` is the user custom APF LOADLIB. This field is optional. If this is defined, members of `SZWEAUTH` will be copied over to this data set and it will be APF authorized. If it's not defined, `SZWEAUTH` from HLQ will be APF authorized.
-- `zowe.setup.mvs.authPluginLib` is the user custom APF PLUGINLIB. You can install Zowe ZIS plug-ins into this load library. This loadlib requires APF authorize.
+- `zowe.setup.dataset.prefix` shows where the `SZWEAUTH` data set is installed.
+- `zowe.setup.dataset.parmlib` is the user custom parameter library. Zowe server command may generate sample PARMLIB members and stores here.
+- `zowe.setup.dataset.jcllib` is the custom JCL library. Zowe server command may generate sample JCLs and put into this data set.
+- `zowe.setup.dataset.authLoadlib` is the user custom APF LOADLIB. This field is optional. If this is defined, members of `SZWEAUTH` will be copied over to this data set and it will be APF authorized. If it's not defined, `SZWEAUTH` from `zowe.setup.dataset.prefix` will be APF authorized.
+- `zowe.setup.dataset.authPluginLib` is the user custom APF PLUGINLIB. You can install Zowe ZIS plug-ins into this load library. This loadlib requires APF authorize.
 
 - `zowe.setup.security.product` is security product. Can be `RACF`, `ACF2`, or `TSS`. This configuration is optional. Default value is `RACF`.
 - `zowe.setup.security.groups.admin` is the group for Zowe administrators. This configuration is optional. Default value is `ZWEADMIN`.
@@ -344,6 +343,7 @@ zowe:
 **For `PKCS12` certificate users,**
 
 - `zowe.setup.certificate.pkcs12.directory` is the directory where you plan to store the PKCS12 keystore and truststore. This is required if `zowe.setup.certificate.type` is `PKCS12`.
+- `zowe.setup.certificate.pkcs12.lock` is a boolean configuration to tell if we should lock the PKCS12 keystore directory only for Zowe runtime user and group. Default value is true.
 - You can also define `name`, `password`, `caAlias` and `caPassword` under `zowe.setup.certificate.pkcs12` to customized keystore and truststore. These configurations are optional, but it is recommended to update them from default values.
 - Define `zowe.setup.certificate.pkcs12.import.keystore` if you already acquired certificate from other CA, stored them in PKCS12 format, and want to import into Zowe PKCS12 keystore.
 - `zowe.setup.certificate.pkcs12.import.password` is the password for keystore defined in `zowe.setup.certificate.pkcs12.import.keystore`.
@@ -414,134 +414,132 @@ In this section, `<component>` represents any Zowe components or extensions. For
 These configurations can be used under the `components.gateway` section:
 
 - **`port`**  
- Defines the port which the gateway should be started on. This is equivalent to the `GATEWAY_PORT` variable in `instance.env`. This must be a valid port number.
+ Defines the port which the gateway should be started on. This must be a valid port number.
 - **`debug`**  
- Defines whether to enable debug mode for gateway. This is equivalent to the `APIML_DEBUG_MODE_ENABLED` variable in `instance.env` but with better granular level.
+ Defines whether to enable debug mode for gateway.
 - **`apiml.service.allowEncodedSlashes`**  
- When this parameter is set to `true`, the Gateway allows encoded characters to be part of URL requests redirected through the Gateway.  This is equivalent to the `APIML_ALLOW_ENCODED_SLASHES` variable in `instance.env`.
+ When this parameter is set to `true`, the Gateway allows encoded characters to be part of URL requests redirected through the Gateway. 
 - **`apiml.service.corsEnabled`**  
- When this parameter is set to `true`, CORS are enabled in the API Gateway for Gateway routes `gateway/api/v1/**`. This is equivalent to the `APIML_CORS_ENABLED` variable in `instance.env`.
+ When this parameter is set to `true`, CORS are enabled in the API Gateway for Gateway routes `gateway/api/v1/**`.
 - **`apiml.service.preferIpAddress`**  
- Set this parameter to `true`  to advertise a service IP address instead of its hostname. **Note:** This configuration is deprecated. Zowe start script will ignore this value and always set it to `false`. This is equivalent to the `APIML_PREFER_IP_ADDRESS` variable in `instance.env`.
+ Set this parameter to `true`  to advertise a service IP address instead of its hostname. **Note:** This configuration is deprecated. Zowe start script will ignore this value and always set it to `false`.
 - **`apiml.gateway.timeoutMillis`**  
- Specifies the timeout for connection to the services in milliseconds. This is equivalent to the `APIML_GATEWAY_TIMEOUT_MILLIS` variable in `instance.env`.
+ Specifies the timeout for connection to the services in milliseconds.
 - **`apiml.security.x509.enabled`**  
- Set this parameter to `true` to enable the client certificate authentication functionality through ZSS. This is equivalent to the `APIML_SECURITY_X509_ENABLED` variable in `instance.env`.
+ Set this parameter to `true` to enable the client certificate authentication functionality through ZSS.
 - **`apiml.security.x509.externalMapperUrl`**  
- Defines the URL where Gateway can query the mapping of client certificates. This is equivalent to the `APIML_GATEWAY_EXTERNAL_MAPPER` variable in `instance.env`.
-- **`apiml.security.zosmf.applid`**  
- Defines the z/OSMF APPLID used for PassTicket. This is equivalent to the `APIML_SECURITY_ZOSMF_APPLID` variable in `instance.env`. This should have the same value of `zOSMF.applId`. This entry is kept for backward compatibility.
+ Defines the URL where Gateway can query the mapping of client certificates.
 - **`apiml.security.auth.provider`**  
- Defines the authentication provider used by the API Gateway. This is equivalent to the  `APIML_SECURITY_AUTH_PROVIDER` variable in `instance.env`.
+ Defines the authentication provider used by the API Gateway.
 - **`apiml.security.authorization.endpoint.url`**  
- Defines the URL to the authorization endpoint. This endpoint tells Gateway if a user has a particular permission on SAF profile. For example, permission to the `APIML.SERVICES` profile of `ZOWE` class. This is equivalent to the `APIML_SECURITY_AUTHORIZATION_ENDPOINT_URL` variable in `instance.env`.
+ Defines the URL to the authorization endpoint. This endpoint tells Gateway if a user has a particular permission on SAF profile. For example, permission to the `APIML.SERVICES` profile of `ZOWE` class.
 - **`apiml.security.ssl.verifySslCertificatesOfServices`**  
- Defines whether APIML should verify certificates of services in strict mode. Setting to `true` will enable the `strict` mode where APIML will validate if the certificate is trusted in turststore, and also if the certificate Common Name or Subject Alternate Name (SAN) matches the service hostname. This is equivalent to the `VERIFY_CERTIFICATES` variable defined in `<keystore-dir>/zowe-certificates.env`.
+ Defines whether APIML should verify certificates of services in strict mode. Setting to `true` will enable the `strict` mode where APIML will validate if the certificate is trusted in turststore, and also if the certificate Common Name or Subject Alternate Name (SAN) matches the service hostname.
 - **`apiml.security.ssl.nonStrictVerifySslCertificatesOfServices`**  
- Defines whether APIML should verify certificates of services in non-strict mode. Setting the value to `true` will enable the `non-strict` mode where APIML will validate if the certificate is trusted in turststore, but ignore the certificate Common Name or Subject Alternate Name (SAN) check. Zowe will ignore this configuration when strict mode is enabled with `apiml.security.ssl.verifySslCertificatesOfServices`. This is equivalent to the `NONSTRICT_VERIFY_CERTIFICATES` variable defined in `<keystore-dir>/zowe-certificates.env`.
+ Defines whether APIML should verify certificates of services in non-strict mode. Setting the value to `true` will enable the `non-strict` mode where APIML will validate if the certificate is trusted in turststore, but ignore the certificate Common Name or Subject Alternate Name (SAN) check. Zowe will ignore this configuration when strict mode is enabled with `apiml.security.ssl.verifySslCertificatesOfServices`.
 - **`apiml.server.maxConnectionsPerRoute`**  
- Specifies the maximum connections for each service. This is equivalent to the  `APIML_MAX_CONNECTIONS_PER_ROUTE` variable in `instance.env`.
+ Specifies the maximum connections for each service.
 - **`apiml.server.maxTotalConnections`**  
- Specifies the total connections for all services registered under API Mediation Layer. This is equivalent to the `APIML_MAX_TOTAL_CONNECTIONS` variable in `instance.env`.
+ Specifies the total connections for all services registered under API Mediation Layer.
 
 #### Configure component discovery
 
 These configurations can be used under the `components.discovery` section:
 
 - **`port`**  
- Defines the port which discovery should be started on. This is equivalent to the `DISCOVERY_PORT` variable in `instance.env`. This may be defined as a valid port number or as an offset from the Gateway component's port. To define an offset enter `"+{offset}"` or `"-{offset}"` as a string. The offset must start with `+` or `-`.
+ Defines the port which discovery should be started on. This may be defined as a valid port number or as an offset from the Gateway component's port. To define an offset enter `"+{offset}"` or `"-{offset}"` as a string. The offset must start with `+` or `-`.
 - **`debug`**  
- Defines whether to enable debug mode for gateway. This is equivalent to the `APIML_DEBUG_MODE_ENABLED` variable in `instance.env` but with better granular level.
+ Defines whether to enable debug mode for gateway.
 - **`apiml.service.preferIpAddress`**  
- Set this parameter to `true`  to advertise a service IP address instead of its hostname. **Note:** This configuration is deprecated. The Zowe start script will ignore this value and always set it to `false`. This is equivalent to the  `APIML_PREFER_IP_ADDRESS` variable in `instance.env`.
+ Set this parameter to `true`  to advertise a service IP address instead of its hostname. **Note:** This configuration is deprecated. The Zowe start script will ignore this value and always set it to `false`.
 - **`apiml.security.ssl.verifySslCertificatesOfServices`**  
- Defines whether APIML should verify certificates of services in strict mode. Setting to `true` will enable the `strict` mode where APIML will validate both if the certificate is trusted in turststore, and also if the certificate Common Name or Subject Alternate Name (SAN) matches the service hostname. This is equivalent to the `VERIFY_CERTIFICATES` variable defined in `<keystore-dir>/zowe-certificates.env`.
+ Defines whether APIML should verify certificates of services in strict mode. Setting to `true` will enable the `strict` mode where APIML will validate both if the certificate is trusted in turststore, and also if the certificate Common Name or Subject Alternate Name (SAN) matches the service hostname.
 - **`apiml.security.ssl.nonStrictVerifySslCertificatesOfServices`**  
- Defines whether APIML should verify certificates of services in non-strict mode. Setting to `true` will enable the `non-strict` mode where APIML will validate if the certificate is trusted in turststore, but ignore the certificate Common Name or Subject Alternate Name (SAN) check. Zowe will ignore this configuration if strict mode is enabled with `apiml.security.ssl.verifySslCertificatesOfServices`. This is equivalent to the `NONSTRICT_VERIFY_CERTIFICATES` variable defined in `<keystore-dir>/zowe-certificates.env`.
+ Defines whether APIML should verify certificates of services in non-strict mode. Setting to `true` will enable the `non-strict` mode where APIML will validate if the certificate is trusted in turststore, but ignore the certificate Common Name or Subject Alternate Name (SAN) check. Zowe will ignore this configuration if strict mode is enabled with `apiml.security.ssl.verifySslCertificatesOfServices`.
 - **`alternativeStaticApiDefinitionsDirectories`**  
- Specifies the alternative directories of static definitions. This is equivalent to the  `APIML_MAX_CONNECTIONS_PER_ROUTE` variable in `instance.env`.
+ Specifies the alternative directories of static definitions.
 - **`apiml.server.maxTotalConnections`**  
- Specifies the total connections for all services registered under API Mediation Layer. This is equivalent to the `ZWEAD_EXTERNAL_STATIC_DEF_DIRECTORIES` variable in `instance.env`.
+ Specifies the total connections for all services registered under API Mediation Layer.
 
 #### Configure component api-catalog
 
 These configurations can be used under the `components.api-catalog` section:
 
 - **`port`**  
- Defines the port which API Catalog should be started on. This is equivalent to the `CATALOG_PORT` variable in `instance.env`.
+ Defines the port which API Catalog should be started on.
 - **`debug`**  
  Defines if we want to enable debug mode for gateway. This is equivalent to the `APIML_DEBUG_MODE_ENABLED` variable but with better granular level.
 - **`environment.preferIpAddress`**  
  Set this parameter to `true`  to advertise a service IP address instead of its hostname.  
-  **Note:** This configuration is deprecated. Zowe start script will ignore this value and always set it to `false`. This is equivalent to the  `APIML_PREFER_IP_ADDRESS` variable in `instance.env`.
+  **Note:** This configuration is deprecated. Zowe start script will ignore this value and always set it to `false`.
 
 #### Configure component caching-service
 
 These configurations can be used under the `components.caching-service` section:
 
 - **`port`**  
- Defines the port which Caching Service should be started on. This is equivalent to the `ZWE_CACHING_SERVICE_PORT` variable in `instance.env`. This may be defined as a valid port number or as an offset from the Gateway component's port. To define an offset enter `"+{offset}"` or `"-{offset}"` as a string. The offset must start with `+` or `-`.
+ Defines the port which Caching Service should be started on. This may be defined as a valid port number or as an offset from the Gateway component's port. To define an offset enter `"+{offset}"` or `"-{offset}"` as a string. The offset must start with `+` or `-`.
 - **`debug`**  
- Defines if we want to enable debug mode for gateway. This is equivalent to the `APIML_DEBUG_MODE_ENABLED` variable in `instance.env` but with better granular level.
+ Defines if we want to enable debug mode for gateway.
 - **`storage.mode`**  
- Sets the storage type used to persist data in the Caching Service. This is equivalent to the `ZWE_CACHING_SERVICE_PERSISTENT` variable in `instance.env`.
+ Sets the storage type used to persist data in the Caching Service.
 - **`storage.size`**  
- Specifies amount of records before eviction strategies start evicting. This is equivalent to the `ZWE_CACHING_STORAGE_SIZE` variable in `instance.env`.
+ Specifies amount of records before eviction strategies start evicting.
 - **`storage.evictionStrategy`**  
- Specifies eviction strategy to be used when the storage size is achieved. This is equivalent to the `ZWE_CACHING_EVICTION_STRATEGY` variable in `instance.env`.
+ Specifies eviction strategy to be used when the storage size is achieved.
 - **`storage.vsam.name`**  
- Specifies the data set name of the caching service VSAM data set. This is equivalent to the `ZWE_CACHING_SERVICE_VSAM_DATASET` variable in `instance.env`.
+ Specifies the data set name of the caching service VSAM data set.
 - **`storage.redis.masterNodeUri`**  
- Specifies the URI used to connect to the Redis master instance in the form `username:password@host:port`. This is equivalent to the `CACHING_STORAGE_REDIS_MASTERNODEURI` variable in `instance.env`.
+ Specifies the URI used to connect to the Redis master instance in the form `username:password@host:port`.
 - **`storage.redis.timeout`**  
- Specifies the timeout second to Redis. Defaults to 60 seconds. This is equivalent to the `CACHING_STORAGE_REDIS_TIMEOUT` variable in `instance.env`.
-- `storage.redis.sentinel.masterInstance`: Specifies the Redis master instance ID used by the Redis Sentinel instances. This is equivalent to the `CACHING_STORAGE_REDIS_SENTINEL_MASTERINSTANCE` variable in `instance.env`.
+ Specifies the timeout second to Redis. Defaults to 60 seconds.
+- `storage.redis.sentinel.masterInstance`: Specifies the Redis master instance ID used by the Redis Sentinel instances.
 - **`storage.redis.sentinel.nodes`**  
- Specifies the array of URIs used to connect to a Redis Sentinel instances in the form `username:password@host:port`. This is equivalent to the `CACHING_STORAGE_REDIS_SENTINEL_NODES` variable in `instance.env`.
+ Specifies the array of URIs used to connect to a Redis Sentinel instances in the form `username:password@host:port`.
 - **`storage.redis.ssl.enabled`**  
- Specifies the boolean flag indicating if Redis is being used with SSL/TLS support. Defaults to `true`. This is equivalent to the `CACHING_STORAGE_REDIS_SSL_ENABLED` variable in `instance.env`.
+ Specifies the boolean flag indicating if Redis is being used with SSL/TLS support. Defaults to `true`.
 - **`storage.redis.ssl.keystore`**  
- Specifies the keystore file used to store the private key. This is equivalent to the `CACHING_STORAGE_REDIS_SSL_KEYSTORE` variable in `instance.env`.
+ Specifies the keystore file used to store the private key.
 - **`storage.redis.ssl.keystorePassword`**  
- Specifies the password used to unlock the keystore. This is equivalent to the `CACHING_STORAGE_REDIS_SSL_KEYSTOREPASSWORD` variable in `instance.env`.
+ Specifies the password used to unlock the keystore.
 - **`storage.redis.ssl.truststore`**  
- Specifies the truststore file used to keep other parties public keys and certificates. This is equivalent to the `CACHING_STORAGE_REDIS_SSL_TRUSTSTORE` variable in `instance.env`.
+ Specifies the truststore file used to keep other parties public keys and certificates.
 - **`storage.redis.ssl.truststorePassword`**  
- Specifies the password used to unlock the truststore. This is equivalent to the `CACHING_STORAGE_REDIS_SSL_TRUSTSTOREPASSWORD` variable in `instance.env`.
+ Specifies the password used to unlock the truststore.
 - **`environment.preferIpAddress`**  
- Set this parameter to `true`  to advertise a service IP address instead of its hostname. **Note:** this configuration is deprecated. Zowe start script will ignore this value and always set it to `false`. This is equivalent to the `APIML_PREFER_IP_ADDRESS` variable in `instance.env`.
+ Set this parameter to `true`  to advertise a service IP address instead of its hostname. **Note:** this configuration is deprecated. Zowe start script will ignore this value and always set it to `false`.
 - **`apiml.security.ssl.verifySslCertificatesOfServices`**  
- Specifies whether APIML should verify certificates of services in strict mode. Set to `true` will enable `strict` mode that APIML will validate both if the certificate is trusted in turststore, and also if the certificate Common Name or Subject Alternate Name (SAN) match the service hostname. This is equivalent to the `VERIFY_CERTIFICATES` variable defined in `<keystore-dir>/zowe-certificates.env`.
+ Specifies whether APIML should verify certificates of services in strict mode. Set to `true` will enable `strict` mode that APIML will validate both if the certificate is trusted in turststore, and also if the certificate Common Name or Subject Alternate Name (SAN) match the service hostname.
 - **`apiml.security.ssl.nonStrictVerifySslCertificatesOfServices`**  
- Defines whether APIML should verify certificates of services in non-strict mode. Setting to `true` will enable `non-strict` mode where APIML will validate if the certificate is trusted in turststore, but ignore the certificate Common Name or Subject Alternate Name (SAN) check. Zowe will ignore this configuration if strict mode is enabled with `apiml.security.ssl.verifySslCertificatesOfServices`. This is equivalent to the `NONSTRICT_VERIFY_CERTIFICATES` variable defined in `<keystore-dir>/zowe-certificates.env`.
+ Defines whether APIML should verify certificates of services in non-strict mode. Setting to `true` will enable `non-strict` mode where APIML will validate if the certificate is trusted in turststore, but ignore the certificate Common Name or Subject Alternate Name (SAN) check. Zowe will ignore this configuration if strict mode is enabled with `apiml.security.ssl.verifySslCertificatesOfServices`.
 
 #### Configure component app-server
 
 These configurations can be used under the `components.app-server` section:
 
 - **`port`**  
- Defines the port which App Server should be started on. This is equivalent to the `ZOWE_ZLUX_SERVER_HTTPS_PORT` variable in `instance.env`. This may be defined as a valid port number or as an offset from the Gateway component's port. To define an offset enter `"+{offset}"` or `"-{offset}"` as a string. The offset must start with `+` or `-`.
+ Defines the port which App Server should be started on. This may be defined as a valid port number or as an offset from the Gateway component's port. To define an offset enter `"+{offset}"` or `"-{offset}"` as a string. The offset must start with `+` or `-`.
 
 #### Configure component zss
 
 These configurations can be used under the `components.zss` section:
 
 - **`port`**  
- Defines the port which ZSS should be started on. This is equivalent to the `ZOWE_ZSS_SERVER_PORT` variable in `instance.env`. This may be defined as a valid port number or as an offset from the Gateway component's port. To define an offset enter `"+{offset}"` or `"-{offset}"` as a string. The offset must start with `+` or `-`.
+ Defines the port which ZSS should be started on. This may be defined as a valid port number or as an offset from the Gateway component's port. To define an offset enter `"+{offset}"` or `"-{offset}"` as a string. The offset must start with `+` or `-`.
 
 #### Configure component jobs-api
 
 These configurations can be used under the `components.jobs-api` section:
 
 - **`port`**  
- Defines the port which Jobs API should be started on. This is equivalent to the `JOBS_API_PORT` variable in `instance.env`. This may be defined as a valid port number or as an offset from the Gateway component's port. To define an offset enter `"+{offset}"` or `"-{offset}"` as a string. The offset must start with `+` or `-`.
+ Defines the port which Jobs API should be started on. This may be defined as a valid port number or as an offset from the Gateway component's port. To define an offset enter `"+{offset}"` or `"-{offset}"` as a string. The offset must start with `+` or `-`.
 
 #### Configure component files-api
 
 These configurations can be used under the `components.files-api` section:
 
 - **`port`**  
- Defines the port which Files API should be started on. This is equivalent to the `FILES_API_PORT` variable in `instance.env`. This may be defined as a valid port number or as an offset from the Gateway component's port. To define an offset enter `"+{offset}"` or `"-{offset}"` as a string. The offset must start with `+` or `-`.
+ Defines the port which Files API should be started on. This may be defined as a valid port number or as an offset from the Gateway component's port. To define an offset enter `"+{offset}"` or `"-{offset}"` as a string. The offset must start with `+` or `-`.
 
 #### Configure external extension
 
@@ -590,8 +588,8 @@ For examples:
 
 - `ZWE_zowe_runtimeDirectory`, parent directory of where `zwe` server command is located.
 - `ZWE_zowe_workspaceDirectory` is the path of user customized workspace directory.
-- `ZWE_zowe_setup_mvs_hlq` is the high-level qualifier where Zowe MVS data sets are installed.
-- `ZWE_zowe_setup_mvs_parmlib` is the data set configured to store customized version of parameter library members.
-- `ZWE_zowe_setup_mvs_authPluginLib` is the data set configured to store APF authorized ZIS plug-ins load library.
+- `ZWE_zowe_setup_dataset_prefix` is the high-level qualifier where Zowe MVS data sets are installed.
+- `ZWE_zowe_setup_dataset_parmlib` is the data set configured to store customized version of parameter library members.
+- `ZWE_zowe_setup_dataset_authPluginLib` is the data set configured to store APF authorized ZIS plug-ins load library.
 - `ZWE_zowe_setup_security_users_zowe` is the name of Zowe runtime user.
 - `ZWE_configs_port` is your component port number you can use in your start script. It points to the value of `haInstances.<current-ha-instance>.components.<your-component>.port`, or fall back to `components.<my-component>.port`, or fall back to `configs.port` defined in your component manifest.

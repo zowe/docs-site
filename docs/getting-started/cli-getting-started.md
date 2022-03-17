@@ -19,7 +19,8 @@ Before you install Zowe CLI, download and install Node.js and npm. Use an LTS ve
 Issue the following command to install the core CLI.
 
 ```
-npm install @zowe/cli@zowe-v2-lts -g
+npm install -g @zowe/cli@zowe-v2-lts
+
 ```
 
 ### Installing CLI plug-ins
@@ -123,13 +124,9 @@ You successfully installed Zowe CLI, issued your first commands, and wrote a sim
 
 - Issue the `zowe --help` command to explore the product functionality, or review the online [web help](../user-guide/cli-using-displaying-help.md).
 - Learn how to configure Zowe CLI [run Zowe CLI in daemon mode](../user-guide/cli-using-using-daemon-mode.md). **Daemon mode** significantly improves the performance of Zowe CLI commands by running Zowe CLI as a persistent background process.
-
-- Learn about [using environment variables](../user-guide/cli-using-completing-advanced-tasks.md#using-environment-variables) to store configuration options.
-
+- Learn how to configure Zowe CLI [run Zowe CLI in daemon mode](../user-guide/cli-using-using-daemon-mode.md). **Daemon mode** significantly improves the performance of Zowe CLI commands by running Zowe CLI as a persistent background process.
+- Learn about [using environment variables](../user-guide/cli-usingcli.md#using-environment-variables) to store configuration options.
 - Learn about [integrating with API Mediation Layer](../user-guide/cli-using-integrating-apiml.md).
-
 - Learn about how to [write scripts](../user-guide/cli-using-completing-advanced-tasks.md#writing-scripts) and integrate them with automation server, such as Jenkins.
-
 - See what [plug-ins are available](../user-guide/cli-extending.md) for the CLI.
-
 - Learn about [developing for the CLI](../extend/extend-cli/cli-developing-a-plugin.md) (contributing to core and developing plug-ins).
