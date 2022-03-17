@@ -37,7 +37,7 @@ module.exports = {
       type: "category",
       label: "Migrating from v1 to v2",
       items: [
-        "getting-started/migrate-cli",
+      //  "getting-started/migrate-cli",
         "getting-started/migrate-instance",
         "extend/migrate-extensions",
       ],
