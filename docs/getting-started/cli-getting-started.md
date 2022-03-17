@@ -2,7 +2,7 @@
 
 Get started with Zowe&trade; CLI quickly and easily.
 
-**Note:** This section assumes some prerequisite knowledge of command-line tools and writing scripts. If you prefer more detailed instructions, see [Installing Zowe CLI](../user-guide/cli-installcli.md).
+This article presumes that you possess some prerequisite knowledge of command-line tools and writing scripts. If you prefer more detailed instructions, see [Installing Zowe CLI](../user-guide/cli-installcli.md).
 
 ## Installing
 
@@ -16,16 +16,11 @@ Before you install Zowe CLI, download and install Node.js and npm. Use an LTS ve
 
 ### Installing Zowe CLI core from public npm
 
-Issue the following commands in sequence to install the core CLI.
-
-The "core" includes Zowe CLI and Secure Credential Store, which enhances security by encrypting your username and password.
+Issue the following command to install the core CLI.
 
 ```
-npm install @zowe/cli@zowe-v2-lts -g
-```
+npm install -g @zowe/cli@zowe-v2-lts
 
-```
-zowe plugins install @zowe/secure-credential-store-for-zowe-cli@zowe-v2-lts
 ```
 
 ### Installing CLI plug-ins
@@ -42,7 +37,7 @@ For more information, see [Installing plug-ins](../user-guide/cli-installplugins
 
 Issue `zowe --help` to display full command help. Append `--help` (alias `-h`) to any command to see available command actions and options.
 
-*Optionally*, you can view the Zowe CLI web help in a browser window. For more information, see [Viewing web help](../user-guide/cli-using-displaying-help.md#viewing-web-help). 
+*Optionally*, you can view the Zowe CLI web help in a browser window. For more information, see [Displaying help](../user-guide/cli-using-displaying-help.md). 
 
 All Zowe CLI commands start with `zowe` followed by the name of the [core command group](../user-guide/cli-using-understanding-core-command-groups.md). For example, `zowe plugins -h`. To interact with the mainframe, type `zowe` followed by a command group, action, and object. Use options to specify your connection details such as password and system name.
 
@@ -123,20 +118,15 @@ done
 
 For more information, see [Writing scripts](../user-guide/cli-usingcli.md#writing-scripts).
 
-## Next Steps
+## Next steps
 
 You successfully installed Zowe CLI, issued your first commands, and wrote a simple script! Next, you might want to:
 
-- Issue the `zowe --help` command to explore the product functionality, or review the online [web help](../user-guide/cli-usingcli.md#viewing-web-help).
-
+- Issue the `zowe --help` command to explore the product functionality, or review the online [web help](../user-guide/cli-using-displaying-help.md).
 - Learn how to configure Zowe CLI [run Zowe CLI in daemon mode](../user-guide/cli-using-using-daemon-mode.md). **Daemon mode** significantly improves the performance of Zowe CLI commands by running Zowe CLI as a persistent background process.
-
+- Learn how to configure Zowe CLI [run Zowe CLI in daemon mode](../user-guide/cli-using-using-daemon-mode.md). **Daemon mode** significantly improves the performance of Zowe CLI commands by running Zowe CLI as a persistent background process.
 - Learn about [using environment variables](../user-guide/cli-usingcli.md#using-environment-variables) to store configuration options.
-
-- Learn about [integrating with API Mediation Layer](../user-guide/cli-usingcli.md#integrating-with-api-mediation-layer).
-
-- Write scripts and integrate them with automation server, such as Jenkins.
-
+- Learn about [integrating with API Mediation Layer](../user-guide/cli-using-integrating-apiml.md).
+- Learn about how to [write scripts](../user-guide/cli-using-completing-advanced-tasks.md#writing-scripts) and integrate them with automation server, such as Jenkins.
 - See what [plug-ins are available](../user-guide/cli-extending.md) for the CLI.
-
 - Learn about [developing for the CLI](../extend/extend-cli/cli-developing-a-plugin.md) (contributing to core and developing plug-ins).

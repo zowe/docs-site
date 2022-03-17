@@ -6,8 +6,6 @@ You can uninstall Zowe&trade; CLI from the desktop if you no longer need to use 
 
 The following steps describe how to list the profiles that you created, delete the profiles, and uninstall Zowe CLI.
 
-**Follow these steps:**
-
 1. Open a command-line window.
 
     **Note:** If you do not want to delete the Zowe CLI profiles from your computer, go to Step 5.

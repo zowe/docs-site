@@ -2,17 +2,19 @@
 
 As a system programmer, profiles let you store configuration details for reuse, and for logging in to authentication servers such as API Mediation layer. Create a profile that contains your username, password, and connection details for a mainframe service, then use that profile to avoid typing the information on every command. Switch between profiles to quickly target different mainframe subsystems. There are two main types of profiles:
 
-* **Service profiles:** Store connection information for specific mainframe service, such as IBM z/OSMF. Plug-ins can introduce other service profile types, such as the `cics` profile to connect to IBM CICS.
+- **Service profiles:** [Service profiles](#service-profiles) let you store connection information for specific mainframe service, such as IBM z/OSMF. Plug-ins can introduce other service profile types, such as the `cics` profile to connect to IBM CICS.
 
-* **Base profiles:** Store connection information for use with one or more services. Your service profiles can pull information from base profiles as needed, so that you can specify a common username and password once. The base profile can optionally store tokens to connect to Zowe API Mediation Layer, which improves security by enabling Multi-Factor Authentication (MFA) and Single Sign-on (SSO).
+- **Base profiles:** [Base profiles](#base-profiles) let you store connection information for use with one or more services. Your service profiles can pull information from- base profiles as needed, so that you can specify a common username and password once. The base profile can optionally store tokens to connect to Zowe API Mediation Layer, which improves security by enabling Multi-Factor Authentication (MFA) and Single Sign-on (SSO).
+
+- **Team profiles:** [Team profiles](./cli-using-configuring-global-profiles.md) simplify profile management by letting you edit, store, and share mainframe configuration details in one location. You can use a text editor to populate global profiles with connection details for your mainframe services.
 
 **Tips:**
 
-* You can have multiple service profiles and multiple base profiles.
-* Profiles are **not** required. You can choose to specify all connection details for every command.
-* Profile values are stored on your computer in plaintext in `C:\Users\<yourUsername>\.zowe\profiles` (Windows) or `~/.zowe/profiles` (Mac/Linux).
+- You can have multiple service profiles and multiple base profiles.
+- Profiles are **not** required. You can choose to specify all connection details for every command.
+- Profile values are stored on your computer in plaintext in `C:\Users\<yourUsername>\.zowe\profiles` (Windows) or `~/.zowe/profiles` (Mac/Linux).
 
-**Important:** With the introduction of [global profiles](cli-using-configuring-global-profiles.md), the Secure Credential Store (SCS) Plug-in is deprecated. The `zowe scs` and `zowe config` command groups are obsolete. Secure credential encryption is now included in the core CLI. The CLI prompts you to enter the username and password securely by default. Commands in the `zowe config` command group now let you manage security for any option value.
+**Important:** With the introduction of [team profiles](cli-using-configuring-global-profiles.md), the Secure Credential Store (SCS) Plug-in is deprecated. The `zowe scs` and `zowe config` command groups are obsolete. Secure credential encryption is now included in the core CLI. The CLI prompts you to enter the username and password securely by default. Commands in the `zowe config` command group now let you manage security for any option value.
 
 
 ## Displaying profile help
@@ -94,7 +96,3 @@ zowe zosmf check status --zosmf-profile <profile_name>
 ```
 
 The commands return a success or failure message and display information about your z/OSMF server, such as the z/OSMF version number. Report failures to your systems administrator and use the information for diagnostic purposes.
-
-
-
-

@@ -53,6 +53,18 @@ Environment variables are available to specify logging level and the CLI home di
 | `ZOWE_APP_LOG_LEVEL`        | Zowe CLI logging level            | Log4JS log levels (OFF, TRACE, DEBUG, INFO, WARN, ERROR, FATAL) | DEBUG   |
 | `ZOWE_IMPERATIVE_LOG_LEVEL` | Imperative CLI Framework logging level | Log4JS log levels (OFF, TRACE, DEBUG, INFO, WARN, ERROR, FATAL) | DEBUG   |
 
+### CLI daemon mode
+
+By default, the CLI daemon mode binary creates or reuses a file in the user's home directory each time a Zowe CLI command runs. In some cases, this behavior might be undesirable. For example, the home directory resides on a network drive and has poor file performance. To change the location that the daemon uses, set the environment variables that are described in the following table:
+
+
+| Platform | Environment Variable  | Description | Values | Default |
+| ---------------------- | ---------------------- | ---------------------- | ---------------------- | ---------------------- |
+| Windows | `ZOWE_DAEMON_LOCK` | Specifies an alternative path to the lock file that restricts access to the named pipe that the daemon uses for communication. | Any valid path on your computer | `%HOMEPATH%\.zowe-daemon.lock` |
+| Linux, macOS | `ZOWE_DAEMON` | Specifies an alternative path to the socket that the daemon uses for communication. | Any valid path on your computer | `$HOME/.zowe-daemon.sock` |
+| Windows | `ZOWE_DAEMON` | Specifies an alternative name for the named pipe that the daemon uses for communication. The environment variable cannot be defined as a file path that resides on a disk. | Any valid Windows pipe name without the `\\.\` prefix | `%USERNAME%\ZoweDaemon` |
+
+
 ### Home directory
 
 You can set the location on your computer for the Zowe CLI home directory, which contains log files, profiles, and plug-ins for the product.

@@ -5,6 +5,33 @@ Zowe CLI contains command groups that focus on specific business processes. For 
 The commands available in the product are organized in a hierarchical structure. Command groups (for example, `zos-files`) contain actions (for example, `create`) that let you perform actions on specific objects (for example, a specific type of data set). For each action that you perform on an object, you can specify options that affect the operation of the command.
 Zowe CLI contains the following command groups:
 
+## auth
+
+The auth command group lets you connect to Zowe API Mediation Layer authentication service and obtain a token, or disconnect from the authentication service and revoke the token.
+
+**Note:** For more information about `auth` syntax, actions, and options, open Zowe CLI and issue the following command:
+
+```
+zowe auth -h
+```
+## config
+
+The config command group lets you manage JSON projects, global configuration, and convert profiles (service profiles and base profiles) to team profiles.
+
+**Note:** For more information about `config` syntax, actions, and options, open Zowe CLI and issue the following command:
+
+```
+zowe config -h
+```
+## daemon
+
+The daemon command groups let you perform operations that control the daemon-mode functionality of the Zowe CLI. Daemon-mode runs the CLI command processor as a daemon to improve performance.
+
+**Note:** For more information about `daemon` syntax, actions, and options, open Zowe CLI and issue the following command:
+
+```
+zowe daemon -h
+```
 ## plugins
 
 The plugins command group lets you install and manage third-party
@@ -50,7 +77,7 @@ tasks:
 * List summary information about the templates that you used to provision cloud instances. You can filter the information by application (for example, DB2 and CICS) and by the external name of the provisioned instances.
 * List detail information about the variables used (and their corresponding values) on named, published cloud instances.
 
-**Note:** For more information about provisioning syntax, actions, and options, open Zowe CLI and issue the following command:
+**Note:** For more information about `provisioning` syntax, actions, and options, open Zowe CLI and issue the following command:
 
 ```
 zowe provisioning -h
@@ -93,7 +120,6 @@ With the zos-files command group, you can perform the following tasks:
 ```
 zowe zos-files -h
 ```
-
 ## zos-jobs
 
 The zos-jobs command group lets you submit jobs and interact with jobs on z/OS systems.
@@ -110,19 +136,19 @@ With the zos-jobs command group, you can perform the following tasks:
 zowe zos-jobs -h
 ```
 
-## zos-uss
+## zos-ssh
 
-The zos-uss command group lets you issue Unix System Services shell commands by establishing an SSH connection to an SSH server.
+The zos-ssh command group lets you issue Unix System Services shell commands by establishing an SSH connection to an SSH server. The zos-ssh command group was previously named `zos-uss`. 
 
 With the zos-uss command group, you can perform the following task:
 
 **Important\!** Before you issue z/OS UNIX System Services commands with Zowe CLI, security administrators must provide access for your user ID to login via SSH.
 * Issue z/OS UNIX System Services shell commands over an SSH connection and stream back the response.
 
-**Note:** For more information about `zos-uss` syntax, actions, and options, open Zowe CLI and issue the following command:
+**Note:** For more information about `zos-ssh` syntax, actions, and options, open Zowe CLI and issue the following command:
 
 ```
-zowe zos-uss -h
+zowe zos-ssh -h
 ```
 
 ## zos-workflows

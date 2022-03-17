@@ -55,7 +55,7 @@ The following definition of skill levels about Zowe will help you gather most re
 
 - [**Configuring Zowe CLI**](../user-guide/cli-configuringcli.md)
 
-   This topic explains how to configure Zowe CLI, such as changing log levels and setting the home directory location.
+   Explains how to configure Zowe CLI environment variables, such as changing log levels, setting the home directory location, and daemon mode.
 
 - [**Updating Zowe CLI**](../user-guide/cli-updatingcli.md)
 
