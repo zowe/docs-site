@@ -1,4 +1,4 @@
-# Using advanced tasks
+# Completing advanced tasks
 
  This section describes how to use Zowe CLI using its advanced capabilities.
 
@@ -51,8 +51,6 @@ You can also manually enable the prompt for any option. This is helpful to mask 
 ### Enable prompt
 
 Enable one-time prompting as needed.
-
-**Follow these steps:**
 
 1. Begin typing a command.
 2. For the option(s) that you want to mask, insert the value `"PROMPT*"`. For example, prompt for your password:

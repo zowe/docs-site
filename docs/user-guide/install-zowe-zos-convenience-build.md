@@ -142,11 +142,11 @@ The high level qualifer (or HLQ) for these is specified in the `zowe.yaml` secti
 zowe:
   setup:
     # MVS data set related configurations
-    mvs:
-      hlq: IBMUSER.ZWEV2
+    dataset:
+      prefix: IBMUSER.ZWEV2
 ```
 
-You should update `zowe.setup.mvs.hlq` value to match your system.  In a USS shell execute the command `zwe init -c zowe.yaml` which creates the three data sets and copy across their content.  If the data sets already exist specify `--allow-overwritten`.  The command `zwe install -h` can be used to see the full list of parameters. 
+You should update `zowe.setup.dataset.prefix` value to match your system.  In a USS shell execute the command `zwe init -c zowe.yaml` which creates the three data sets and copy across their content.  If the data sets already exist specify `--allow-overwritten`.  The command `zwe install -h` can be used to see the full list of parameters. 
 
 A sample run of the command is shown below using default values.  
 
