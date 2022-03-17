@@ -49,7 +49,7 @@ Use the following procedure to install Zowe CLI from an npm registry:
 1. To install or update the core CLI, open a command-line window:
 
    ```
-   npm install -g @zowe/cli@next
+   npm install -g @zowe/cli@zowe-v2-lts
    ```
 
    Zowe CLI is installed.
