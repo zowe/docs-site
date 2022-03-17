@@ -65,7 +65,7 @@ zowe zos-files list data-set "ibmuser.*" --host myhost123 --port myport123
 
 According to [order of precedence](#how-command-precedence-works), base profiles are used as a fallback for service profiles. This means that after you create a base profile, you might need to update your service profiles to remove username, password, host, and port. Otherwise, commands will use the information stored in your service profile and will ignore your base profile definition.
 
-## Testing connection to z/OSMF
+## Testing connections to z/OSMF
 
 Optionally, issue a command at any time to receive diagnostic information from the server and confirm that Zowe CLI can communicate with z/OSMF or other mainframe APIs.
 

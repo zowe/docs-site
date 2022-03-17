@@ -256,14 +256,14 @@ module.exports = {
           ],
         },
         //"user-guide/ze-usage",
-         {
-          type: "category",
-          label: "Zowe Explorer extensions",
-          items: [
-            "user-guide/ze-cics",
-            "user-guide/ze-ftp",
-          ],
-        },
+        // {
+        //  type: "category",
+        //  label: "Zowe Explorer extensions",
+        //  items: [
+        //    "user-guide/ze-cics",
+        //    "user-guide/ze-ftp",
+        //  ],
+        //},
         //"user-guide/sdks-using",
   ],
   extending: [
@@ -287,7 +287,7 @@ module.exports = {
         "extend/extend-cli/cli-installing-sample-plugin",
         "extend/extend-cli/cli-extending-a-plugin",
         "extend/extend-cli/cli-developing-a-plugin",
-    //    "extend/extend-cli/cli-implement-profiles",
+        "extend/extend-cli/cli-implement-profiles",
       ],
     },
     {
