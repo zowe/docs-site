@@ -250,6 +250,7 @@ module.exports = {
           label: "Zowe Explorer extensions",
           items: [
             "user-guide/ze-cics",
+            "user-guide/ze-ftp",
           ],
         },
         "user-guide/sdks-using",
