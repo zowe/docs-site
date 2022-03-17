@@ -256,13 +256,14 @@ module.exports = {
           ],
         },
         //"user-guide/ze-usage",
-        // {
-        //  type: "category",
-        //  label: "Zowe Explorer extensions",
-        //  items: [
-        //    "user-guide/ze-cics",
-        //  ],
-        //},
+         {
+          type: "category",
+          label: "Zowe Explorer extensions",
+          items: [
+            "user-guide/ze-cics",
+            "user-guide/ze-ftp",
+          ],
+        },
         //"user-guide/sdks-using",
   ],
   extending: [
