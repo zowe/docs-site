@@ -20,8 +20,8 @@ The `zowe.yaml` section that contains the parameters for the data set names is:
 ```
 zowe:
   setup:
-    mvs:
-      hlq: IBMUSER.ZWE
+    dataset:
+      prefix: IBMUSER.ZWE
       parmlib: IBMUSER.ZWE.CUST.PARMLIB
       jcllib: IBMUSER.ZWE.CUST.JCLLIB
       authLoadlib: IBMUSER.ZWE.CUST.ZWESALL
@@ -32,9 +32,9 @@ The storage requirements for the three data sets are included here.
 
 Library DDNAME | Member Type | zowe.yaml | Target Volume | Type | Org | RECFM | LRECL | No. of 3390 Trks | No. of DIR Blks
 ---|---|---|---|---|---|---|---|---|--
-CUST.PARMLIB | PARM Library Members | zowe.setup.mvs.parmlib | ANY | U | PDSE | FB | 80 | 15 | 5
-CUST.JCLLIB | JCL Members | zowe.setup.jcllib | ANY | U | PDSE | FB | 80 | 15 | 5
-CUST.ZWESAPL | CLIST copy utilities | zowe.setup.authPluginLib | ANY | U | PDSE | U | 0 | 15 | N/A
+CUST.PARMLIB | PARM Library Members | zowe.setup.dataset.parmlib | ANY | U | PDSE | FB | 80 | 15 | 5
+CUST.JCLLIB | JCL Members | zowe.setup.dataset.jcllib | ANY | U | PDSE | FB | 80 | 15 | 5
+CUST.ZWESAPL | CLIST copy utilities | zowe.setup.dataset.authPluginLib | ANY | U | PDSE | U | 0 | 15 | N/A
 
 An example of executing `zwe init mvs` is shown below.  
 
@@ -62,4 +62,4 @@ As well as the three `CUST` data sets, the PDS `SZWEAUTH` is created.  This may 
 
 ## Verifying Data Set initialization
 
-If this step is successful there will be three data sets matching the values in `zowe.setup.mvs.parmlib`, `zowe.setup.mvs.jcllib` and `zowe.setup.mvs.authPluginLib` in the `zowe.yaml` file.  The member `ZWESIP00` will exist in the `CUST.PARMLIB` and the `JCLLIB` and `ZWESAPL` will be empty.  
+If this step is successful there will be three data sets matching the values in `zowe.setup.dataset.parmlib`, `zowe.setup.dataset.jcllib` and `zowe.setup.dataset.authPluginLib` in the `zowe.yaml` file.  The member `ZWESIP00` will exist in the `CUST.PARMLIB` and the `JCLLIB` and `ZWESAPL` will be empty.  

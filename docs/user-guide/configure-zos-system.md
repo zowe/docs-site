@@ -73,8 +73,8 @@ The following video shows how to locate the `ZWESECUR` JCL member and execute it
 
 Zowe contains load modules that require access to make privileged z/OS security manager calls.  These are held in two load libraries which must be APF authorized.  The command `zwe init apfauth` will read the PDS names for the load libraries from `zowe.yaml` and perform the APF authority commands.  
 
-- `zowe.setup.mvs.authLoadLib` specifies the user custom load library, containing the `ZWELNCH`, `ZWESIS01` and `ZWESAUX` load modules.  These are the Zowe launcher, the ZIS cross memory server and the auxiliary server.  
-- `zowe.setup.mvsauthPluginLib` which references the load library for ZIS plugins.  
+- `zowe.setup.dataset.authLoadLib` specifies the user custom load library, containing the `ZWELNCH`, `ZWESIS01` and `ZWESAUX` load modules.  These are the Zowe launcher, the ZIS cross memory server and the auxiliary server.  
+- `zowe.setup.dataset.authPluginLib` which references the load library for ZIS plugins.  
 
 ```
 #>zwe init apfauth -c ./zowe.yaml
@@ -97,7 +97,7 @@ Specify `--security-dry-run` to have the command echo the commands that need to 
 
 ## Install Zowe STC proclib members
 
-The JCL members for each of Zowe's started tasks need to be present on the JES proclib concatenation path.  The command `zwe init stc` will copy these from the install source location `.SZWESAMP` to the targted PDS specified in the `zowe.setup.mvs.proclib` which defaults to `USER.PROCLIB`.  The three proclib member names are specified in `zowe.yaml` arguments.  
+The JCL members for each of Zowe's started tasks need to be present on the JES proclib concatenation path.  The command `zwe init stc` will copy these from the install source location `.SZWESAMP` to the targted PDS specified in the `zowe.setup.dataset.proclib` value `USER.PROCLIB`.  The three proclib member names are specified in `zowe.yaml` arguments.  
 
 ```
 zowe

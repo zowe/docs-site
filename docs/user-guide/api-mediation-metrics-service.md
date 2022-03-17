@@ -3,7 +3,7 @@
 As a system administrator, use the Metrics Service to view information about the acitivty of services running in the API Mediation Layer.
 Currently, only HTTP metrics are displayed for core API Mediation Layer services.
 
-In order for the Metrics Service to run, you must set the environment variable `APIML_METRICS_ENABLED=true`. When this variable is set, the Gateway homepage displays a link to the Metrics Service dashboard. The dashboard is available at `https://{gateway_host}:{gateway_port}/metrics-service/ui/v1`.`
+In order for the Metrics Service to run, you must set `components.metrics-service.enabled` in `zowe.yaml` to `true`. Additionally, for each APIML service you want to have metrics collected for, you must set `components.<service>.apiml.metrics.enabled` set to `true` in `zowe.yaml`, or `configs.apiml.metrics.enabled` set to `true` in the service's manifest. When metrics are enabled for the API Gateway, the Gateway homepage displays a link to the Metrics Service dashboard. The dashboard is available at `https://{gateway_host}:{gateway_port}/metrics-service/ui/v1`.`
 
 ## API Mediation Layer Metrics Service Demo Video
 
@@ -27,4 +27,4 @@ Metrics are provided on a near real-time basis, so the display shows the current
 
 Service instances expose their HTTP metrics at `https://<service_host>:<service_port>/application/hystrix.stream` using the Server-Sent-Events protocol. The Metrics Service collects these streams and aggregates them across service instances before displaying.
 
-**Note:** At this time, the `/application/hystrix.stream` endpoint does not require authentication if `APIML_METRICS_ENABLED` is set to `true`. If `APIML_METRICS_ENABLED` is not set to `true`, the Metrics Service does not start, and `/application/hystrix.stream` endpoints are protected by authentication.
+**Note:** At this time, the `/application/hystrix.stream` endpoint for a service does not require authentication if metrics are enabled for that service. If metrics for that service are not enabled, `/application/hystrix.stream` is protected by authentication.

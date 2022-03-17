@@ -8,3 +8,4 @@ You can read an interactive online version, download a PDF document, or download
 - <b><a href="/stable/web_help/index.html" target="_blank">Browse online</a></b>
 - <b><a href="/stable/CLIReference_Zowe.pdf" target="_blank">Download CLI reference in PDF format</a></b>
 - <b><a href="/stable/zowe_web_help.zip" target="_blank">Download CLI reference in ZIP format</a></b>
+

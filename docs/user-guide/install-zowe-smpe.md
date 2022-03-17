@@ -214,7 +214,7 @@ Mandatory operational requisites identify products that are required for this pr
 Program Number |Product Name and Minimum VRM/Service Level
 ---|---
 5650-ZOS |  IBM z/OS Management Facility V2.2.0 or higher
-5655-SDK |	IBM SDK for Node.js - z/OS V8.16.0 or higher
+5655-SDK |	IBM SDK for Node.js - z/OS V12 or higher
 5655-DGH |	IBM 64-bit SDK for z/OS Java Technology Edition V8.0.0
 
 Conditional operational requisites identify products that are not required for Zowe to operate its basic functions but are required at run time for Zowe to operate specific functions. These products are specified as IF REQs. Zowe has no conditional operational requisites.

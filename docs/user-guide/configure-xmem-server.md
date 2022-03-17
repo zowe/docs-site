@@ -24,7 +24,7 @@ The cross memory server runtime artifacts, the JCL for the started tasks, the pa
 
 The load modules for the cross memory server and an auxiliary server it uses are found in the `SZWEAUTH` PDSE.  
 
-The location of `SZWESAMP` and `SZWEAUTH` for a convenience build depends on the value of the `zowe.setup.mvs.hlq` parameters in the `zowe.yaml` file used to configure the `zwe install` command, see [Install the MVS data sets](./install-zowe-zos-convenience-build.md#install-the-mvs-data-sets).
+The location of `SZWESAMP` and `SZWEAUTH` for a convenience build depends on the value of the `zowe.setup.dataset.prefix` parameters in the `zowe.yaml` file used to configure the `zwe install` command, see [Install the MVS data sets](./install-zowe-zos-convenience-build.md#install-the-mvs-data-sets).
 
 For an SMP/E installation, `SZWESAMP` and `SZWEAUTH` are the SMP/E target libraries whose location depends on the value of the `#thlq` placeholder in the sample member `AZWE001.F1(ZWE3ALOC)`.
 
