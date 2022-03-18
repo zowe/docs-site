@@ -110,7 +110,7 @@ Use the following procedure to install Zowe CLI from a download package:
    npm install -g zowe-cli.tgz
    ```
 
-   **Note:** If an `EACCESS` error is returned, refer to [Resolving EACCESS permissions errors when installing packages globally](https://docs.npmjs.com/resolving-eacces-permissions-errors-when-installing-packages-globally) in the npm documentation.
+   **Note:** If an `EACCESS` error displays, see [Resolving EACCESS permissions errors when installing packages globally](https://docs.npmjs.com/resolving-eacces-permissions-errors-when-installing-packages-globally) in the npm documentation.
 
    **(Optional)**
 

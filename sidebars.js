@@ -231,7 +231,7 @@ module.exports = {
               label: "Configuring team profiles",
               items: [
                 "user-guide/cli-using-configuring-global-profiles",
-                "user-guide/cli-using-initializing-global-configuration",
+                "user-guide/cli-using-initializing-team-configuration",
                 "user-guide/cli-using-creating-global-user-profiles",
                 "user-guide/cli-using-creating-global-team-profiles",
                               ],
