@@ -215,7 +215,7 @@ Add the following properties to the file for the API Gateway:
 
 You can enable the Gateway to terminate CORS requests for the Gateway itself and also for routed services. By default, Cross-Origin Resource Sharing (CORS) handling is disabled, whereby CORS headers are not provided for Gateway routes `api/v1/gateway/**` nor for individual services. After enabling the feature as described in the following prodecure, API Gateway endpoints start handling CORS requests, whereby individual services control whether the Gateway handles the service CORS through specifications in the [Custom Metadata](../../extend/extend-apiml/custom-metadata.md) parameters.
 
-When the Gateway handles CORS on behalf of the service, it sanitizes the following default defined headers from the communication (upstream and downstream): 
+When the Gateway handles CORS on behalf of the service, it sanitizes the following defined headers by default from the communication (upstream and downstream): 
 
  `Access-Control-Request-Method, Access-Control-Request-Headers, Access-Control-Allow-Origin, Access-Control-Allow-Methods, Access-Control-Allow-Headers, Access-Control-Allow-Credentials, Origin`
 
