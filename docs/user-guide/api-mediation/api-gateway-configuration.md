@@ -229,7 +229,7 @@ Additionally, the Gateway handles the preflight requests on behalf of the servic
 
 Alternatively, list the origins as configured by the service, associated with the value **customMetadata.apiml.corsAllowedOrigins** in [Custom Metadata](../../extend/extend-apiml/custom-metadata.md).
 
-If CORS is enabled for Gateway routes but not in [Custom Metadata](../../extend/extend-apiml/custom-metadata.md), the Gateway does not set any of the above CORS headers. As such, the Gateway rejects any CORS requests with an origin header for the Gateway routes.
+If CORS is enabled for Gateway routes but not in [Custom Metadata](../../extend/extend-apiml/custom-metadata.md), the Gateway does not set any of the previously listed CORS headers. As such, the Gateway rejects any CORS requests with an origin header for the Gateway routes.
 
 Use the following procedure to enable CORS handling.
 
