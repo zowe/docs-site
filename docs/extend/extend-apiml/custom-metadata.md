@@ -74,7 +74,7 @@
 
       The header name is `X-InstanceId`, and the sample value is `discoverable-client:discoverableclient:10012`. This is identical to `instanceId` property in the registration of the Discovery service.
     
-      In combination with enabling [Routed instance header](../../user-guide/api-mediation/api-gateway-configuration.md#routed-instance-header), the client can achieve sticky session functionality. (The term, 'sticky session' refers to the feature of many load balancing solutions to route the requests for a particular session to the same physical machine that serviced the first request for that session). The benefit of this approach is that there is no session on the Gateway, and the client ultimately decides whether or not to go to a specific instance. This method uses the following sequence:
+      In combination with enabling [Routed instance header](../../user-guide/api-mediation/api-gateway-configuration.md#routed-instance-header),  the client can achieve sticky session functionality. (The term, 'sticky session' refers to the feature of many load balancing solutions to route the requests for a particular session to the same physical machine that serviced the first request for that session). The benefit of this approach is that there is no session on the Gateway, and the client ultimately decides whether or not to go to a specific instance. This method uses the following sequence:
     
       1. The client calls API Gateway and gets routed to a service.
       2. The client reads the `X-InstanceId` header value from the response to understand the service was routed to.
