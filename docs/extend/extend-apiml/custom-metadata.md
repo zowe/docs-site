@@ -62,7 +62,7 @@
 
     `apiml.service.customMetadata.apiml.corsAllowedOrigins`
 
-    For more information, refer to enabling CORS with Custom Metadata on the Gateway: [Advanced Gateway features configuration](../../user-guide/api-mediation/api-gateway-configuration.md).
+    For more information, see enabling CORS with Custom Metadata on the Gateway: [Advanced Gateway features configuration](../../user-guide/api-mediation/api-gateway-configuration.md).
   
  * **customMetadata.apiml.lb.type**
    
