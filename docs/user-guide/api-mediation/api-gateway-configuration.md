@@ -13,7 +13,8 @@ Follow the procedures in the following sections to customize Gateway parameters 
 
   * [Prefer IP Address for API Layer services](#prefer-ip-address-for-api-layer-services)
   * [SAF as an Authentication provider](#saf-as-an-authentication-provider)
-  * [Enable Jwt token refresh endpoint](#enable-jwt-token-refresh-endpoint)
+  * [Enable JWT token refresh endpoint](#enable-jwt-token-refresh-endpoint)
+  * [Change password with SAF provider](#change-password-with-saf-provider)
   * [Gateway retry policy](#gateway-retry-policy)
   * [Gateway client certificate authentication](#gateway-client-certificate-authentication)
   * [Gateway timeouts](#gateway-timeouts)
@@ -53,7 +54,7 @@ the following procedure to switch to SAF.
 
 Authentication requests now utilize SAF as the authentication provider. API ML can run without z/OSMF present on the system. 
 
-## Enable Jwt token refresh endpoint
+## Enable JWT token refresh endpoint
 
 Enable the `/gateway/api/v1/auth/refresh` endpoint to exchange a valid JWT token for a new token with a new expiration date. Call the endpoint with a valid JWT token and trusted client certificate. In case of z/OSMF authentication provider, enable API Mediation Layer for passticket generation and configure z/OSMF APPLID. [Configure Passtickets](../../extend/extend-apiml/api-mediation-passtickets.md)
 
@@ -218,7 +219,7 @@ When the Gateway handles CORS on behalf of the service, it sanitizes the followi
 
  `Access-Control-Request-Method, Access-Control-Request-Headers, Access-Control-Allow-Origin, Access-Control-Allow-Methods, Access-Control-Allow-Headers, Access-Control-Allow-Credentials, Origin`
 
-The resulting request to the service is not a CORS request, and the service does not need to do anything extra. To override this list, specify a different comma-separated list in the property `APIML_SERVICE_IGNOREDHEADERSWHENCORSENABLED` in `<Zowe instance directory>/instance.env`
+The resulting request to the service is not a CORS request, and the service does not need to do anything extra. To override this list, specify a different comma-separated list in the property `APIML_SERVICE_IGNOREDHEADERSWHENCORSENABLED` in `<Zowe instance directory>/instance.env`.
 
 Additionally, the Gateway handles the preflight requests on behalf of the service when CORS is enabled in [Custom Metadata](../../extend/extend-apiml/custom-metadata.md), replying with CORS headers:
 - `Access-Control-Allow-Methods: GET,HEAD,POST,DELETE,PUT,OPTIONS`
