@@ -15,7 +15,7 @@ You can use four z/OSMF workflows that enable you to manage keyring setup, certi
 
     The workflow includes the steps that you can see on the following image:
 
-    ![Workflow One](/docs/images/configure/workflow-one.png?raw=true "Workflow One" ) <br />
+    <img src="../images/configure/workflow-one.png" alt="Workflow ZWEKRING" style="height: 300px; width:500px;"/> <br />
 
      Based on the variable setup from the first step, the workflow can perform various certificate configurations and connect certificates to a keyring in RACF, TSS, and ACF2 security systems.
 
@@ -33,7 +33,7 @@ You can use four z/OSMF workflows that enable you to manage keyring setup, certi
 
     The workflow includes the steps that you can see on the following image:
 
-    ![Workflow Two](/docs/images/configure/workflow-two.png?raw=true "Workflow Two") <br />
+    <img src="../images/configure/workflow-two.png" alt="Workflow ZWECRECR" style="height: 450px; width:500px;"/> <br />
 
    **Note:** You can find links to the specific security systems (BCM, IBM) official documentation in the instructions section of the workflow in related steps.
 
@@ -47,11 +47,11 @@ You can use four z/OSMF workflows that enable you to manage keyring setup, certi
 
     The workflow includes the steps that you can see on the following image:
 
-    ![Workflow Three](/docs/images/configure/workflow-threeB.png?raw=true "Workflow Three") <br />
+    <img src="../images/configure/workflow-threeB.png" alt="Workflow ZWESIGNC" style="height: 150px; width:500px;"/> <br />
 
     <!-- TODO Let's describe what's happening on the image below or remove the image althogether -->
 
-    ![Workflow Three](/docs/images/configure/workflow-threeA.png?raw=true "Workflow Three") <br />
+    <img src="../images/configure/workflow-threeA.png" alt="Workflow Parameters" style="height: 400px; width:500px;"/> <br />
 
 4. Load the Signed Client Authentication Certificate into ESM using ZWELOADC.xml
 
@@ -61,4 +61,4 @@ You can use four z/OSMF workflows that enable you to manage keyring setup, certi
 
    The workflow includes the steps that you can see on the following image:
 
-   ![Workflow Four](/docs/images/configure/workflow-four.png?raw=true "Workflow Four") <br />
+   <img src="../images/configure/workflow-four.png" alt="Workflow ZWELOADC" style="height: 450px; width:500px;"/> <br />
