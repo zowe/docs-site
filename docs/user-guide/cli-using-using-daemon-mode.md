@@ -13,7 +13,7 @@ Review the following installation notes before you configure Zowe CLI to run in 
 - Daemon mode does not function on z/OS UNIX System Services (USS) systems.
 - When you want to run Zowe CLI to run in daemon mode on **z/Linux** operating systems, you must build the daemon mode binary on the z/Linux systems. For information about how to build the binary, see [Configure daemon mode on z/Linux operating systems](cli-configure-daemon-on-zlinux-os.md). The sections [Enable daemon mode](#enable-daemon-mode) and [Disable daemon mode](#disable-daemon-mode) (in this article) **do not apply** to running Zowe CLI in daemon mode on z/Linux operating systems.
 - We do not recommend using daemon mode in an environment where multiple users use the same system. For example, a shared Linux server.
-- When you are running Zowe on a Windows operating system in a virtual environment (for example, Windows Sandbox), you might receive an error message that indicates that a library named VCRUNTIME140.dll is missing. To correct the error, install Visual C++ Redistributable for Visual Studio 2015. For more information, see [Download Visual C++ Redistributable for Visual Studio 2015](https://www.microsoft.com/en-us/download/details.aspx?id=48145). 
+- When you are running Zowe on a Windows operating system in a virtual environment (for example, Windows Sandbox), you might receive an error message that indicates that a library named `VCRUNTIME140.dll` is missing. To correct the error, install Visual C++ Redistributable for Visual Studio 2015. For more information, see [Download Visual C++ Redistributable for Visual Studio 2015](https://www.microsoft.com/en-us/download/details.aspx?id=48145). 
 
 ## Enable daemon mode
 
@@ -49,6 +49,27 @@ The following example illustrates running Zowe CLI commands with the daemon mode
    7.0.0-next.202110211759
    ```
 **Note:** When you are running Zowe CLI in daemon using a Git Bash terminal on a Windows operating system, special characters might display using the wrong code page. For example, the default code page 437 renders a form-feed character (\f) as an emoji (♀️). To correct the problem, issue the command `chcp.com 65001` to change the code page to UTF-8. If you want the change to be persistent, add the command to your .bashrc file.
+
+## Restart daemon mode
+
+Daemon mode is a long-running background process (waits for work) that significantly improves Zowe CLI performance. When you make changes to your work environment, daemon mode does not capture the changes. Restarting daemon mode lets the daemon capture the changes. Issue the following command to stop the currently running daemon and start a new daemon:
+
+```
+Zowe daemon restart
+```
+
+Restart the daemon under the following scenarios:
+
+- When you change the value of any of the following [Zowe CLI environment variables](../user-guide/cli-configuringcli.md):
+  - `ZOWE_CLI_HOME`
+  - `ZOWE_APP_LOG_LEVEL`
+  - `ZOWE_IMPERATIVE_LOG_LEVEL`
+- After you install, update, or uninstall a plug-in.
+- After you install a newer version of Zowe CLI and issue the `zowe daemon enable` command. (You can install a newer version of CLI and issue the command while daemon mode is running.)
+- After a Zowe command displays the following message:
+   ```
+   You may be running mismatched versions of Zowe executable and Zowe daemon.
+   ```
 
 ## Disable daemon mode
 
