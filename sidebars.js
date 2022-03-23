@@ -35,9 +35,9 @@ module.exports = {
     },
     {
       type: "category",
-      label: "Migrating from v1 to v2",
+      label: "Migrating from V1 to V2",
       items: [
-      //  "getting-started/migrate-cli",
+        "getting-started/migrate-cli",
         "getting-started/migrate-instance",
         "extend/migrate-extensions",
       ],
@@ -345,7 +345,7 @@ module.exports = {
     "extend/k8s-extend",
     //"extend/extend-ze/ze-extensions",
     //"extend/extend-sdks",
-    //"extend/zowe-conformance-program",
+    "extend/zowe-conformance-program",
   ],
   troubleshooting: [
     {
