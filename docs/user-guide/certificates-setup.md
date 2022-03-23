@@ -49,7 +49,7 @@ You can use four z/OSMF workflows that enable you to manage keyring setup, certi
 
     <img src="../images/configure/workflow-threeB.png" alt="Workflow ZWESIGNC" style="height: 150px; width:500px;"/> <br />
 
-    <!-- TODO Let's describe what's happening on the image below or remove the image althogether -->
+    <!-- TODO Let's describe what's happening on the image below or remove the image altogether -->
 
     <img src="../images/configure/workflow-threeA.png" alt="Workflow Parameters" style="height: 400px; width:500px;"/> <br />
 
