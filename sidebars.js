@@ -35,9 +35,9 @@ module.exports = {
     },
     {
       type: "category",
-      label: "Migrating from v1 to v2",
+      label: "Migrating from V1 to V2",
       items: [
-      //  "getting-started/migrate-cli",
+        "getting-started/migrate-cli",
         "getting-started/migrate-instance",
         "extend/migrate-extensions",
       ],
@@ -231,7 +231,7 @@ module.exports = {
               label: "Configuring team profiles",
               items: [
                 "user-guide/cli-using-configuring-global-profiles",
-                "user-guide/cli-using-initializing-global-configuration",
+                "user-guide/cli-using-initializing-team-configuration",
                 "user-guide/cli-using-creating-global-user-profiles",
                 "user-guide/cli-using-creating-global-team-profiles",
                               ],
@@ -256,14 +256,14 @@ module.exports = {
           ],
         },
         //"user-guide/ze-usage",
-         {
-          type: "category",
-          label: "Zowe Explorer extensions",
-          items: [
-            "user-guide/ze-cics",
-            "user-guide/ze-ftp",
-          ],
-        },
+        // {
+        //  type: "category",
+        //  label: "Zowe Explorer extensions",
+        //  items: [
+        //    "user-guide/ze-cics",
+        //    "user-guide/ze-ftp",
+        //  ],
+        //},
         //"user-guide/sdks-using",
   ],
   extending: [
@@ -287,7 +287,7 @@ module.exports = {
         "extend/extend-cli/cli-installing-sample-plugin",
         "extend/extend-cli/cli-extending-a-plugin",
         "extend/extend-cli/cli-developing-a-plugin",
-    //    "extend/extend-cli/cli-implement-profiles",
+        "extend/extend-cli/cli-implement-profiles",
       ],
     },
     {
@@ -345,7 +345,7 @@ module.exports = {
     "extend/k8s-extend",
     //"extend/extend-ze/ze-extensions",
     //"extend/extend-sdks",
-    //"extend/zowe-conformance-program",
+    "extend/zowe-conformance-program",
   ],
   troubleshooting: [
     {

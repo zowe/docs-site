@@ -90,17 +90,17 @@ Use the following procedure to install Zowe CLI from an npm registry:
 
 Use the following procedure to install Zowe CLI from a download package:
 
-1. Navigate to [Zowe Downloads](https://www.zowe.org/download.html) and click the **Zowe vNext CLI Core** button.
+1. Navigate to [Download Zowe](https://www.zowe.org/download.html) and click the **Zowe vNext CLI Core** button.
 
 2. Read the End User License Agreement for Zowe and click **I agree** to download the core package.
 
-    `zowe-cli-package-next-2021MMDD.zip` is downloaded to your computer (where MMDD indicates the month and day of the build).
+    `zowe-cli-package-next-2022MMDD.zip` is downloaded to your computer (where MMDD indicates the month and day of the build).
 
-3. **(Optional)** Navigate to [Zowe Downloads](https://www.zowe.org/download.html) and click the **Zowe vNext CLI Plugins** button to download the plugins.
+3. **(Optional)** Navigate to [Download Zowe](https://www.zowe.org/download.html) and click the **Zowe vNext CLI Plugins** button to download the plugins.
 
 4. **(Optional)** Read the End User License Agreement for Zowe plugins and click **I agree** to download the plugins package.
 
-    `zowe-cli-plugins-next-2021MMDD.zip` is downloaded to your computer (where MMDD indicates the month and day of the build).
+    `zowe-cli-plugins-next-2022MMDD.zip` is downloaded to your computer (where MMDD indicates the month and day of the build).
 
 5. Unzip the contents of `zowe-cli-package-next-2021MMDD.zip` (and optionally `zowe-cli-plugins-2021MMDD.zip`) to a working directory.
 
@@ -110,7 +110,7 @@ Use the following procedure to install Zowe CLI from a download package:
    npm install -g zowe-cli.tgz
    ```
 
-   **Note:** If an `EACCESS` error is returned, refer to [Resolving EACCESS permissions errors when installing packages globally](https://docs.npmjs.com/resolving-eacces-permissions-errors-when-installing-packages-globally) in the npm documentation.
+   **Note:** If an `EACCESS` error displays, see [Resolving EACCESS permissions errors when installing packages globally](https://docs.npmjs.com/resolving-eacces-permissions-errors-when-installing-packages-globally) in the npm documentation.
 
    **(Optional)**
 

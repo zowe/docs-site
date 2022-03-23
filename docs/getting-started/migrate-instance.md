@@ -1,3 +1,3 @@
-# Migrating Zowe instances from v1 to v2
+# Migrating Zowe instances from V1 to V2
 
 Coming soon!

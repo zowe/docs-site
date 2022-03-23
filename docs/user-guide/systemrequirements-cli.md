@@ -9,7 +9,7 @@ Zowe CLI is supported on Windows, Linux, and Mac operating systems. Meet the fol
 
   **Tip:** You might need to restart the command prompt after installing Node.js. Issue the command `node --version` to verify that Node.js is installed.
 
-  **Note:** If you are installing Zowe CLI with Node.js 16 on a Windows operating system, see Installing Zowe CLI with Node.js 16 on Windows.
+  **Note:** If you are installing Zowe CLI with Node.js 16 on a Windows operating system, see [Installing Zowe CLI with Node.js 16 on Windows](../user-guide/cli-install-cli-nodejs-windows.md).
 
 - **npm:** Install a version of Node Package Manager (npm) that is compatible with your version of Node.js.
   
