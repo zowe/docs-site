@@ -318,3 +318,13 @@ For example, to update the `Products` section, edit the variables in the followi
 },
 ```
 
+## Particular assets
+
+### ZWE command reference
+
+The ZWE command reference guide is published under References on the doc site. It's updated automatically from the zowe-install-packaging repo by using GitHub Actions ((https://github.com/zowe/zowe-install-packaging/actions/workflows/zwe-doc-generation.yml)[https://github.com/zowe/zowe-install-packaging/actions/workflows/zwe-doc-generation.yml]). 
+
+- This action runs whenever there is a change to zowe-install-packaging (which is where zwe is defined, so any change to zwe commands will trigger this action).
+- This action generates the zwe documentation and creates a PR to the Zowe docs-site repo. If there are no changes to zwe, then no PR is created. This is an example PR that was created: https://github.com/zowe/docs-site/pull/2076. Therefore, changes will get merged into staging branch on a consistent basis for the release process.
+
+For Zowe doc maintainers, ensure that you review and merge PRs titled **Update zwe server command reference** from branch **auto-update-zwe-reference** during new release preparation.
