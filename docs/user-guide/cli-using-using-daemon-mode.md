@@ -38,7 +38,7 @@ The following steps describe how to enable daemon mode and how to configure Zowe
 
    **Note:** Complete the environment variable configuration step (Step 2) only once.
 
-The following example illustrates running Zowe CLI commands with the daemon mode enabled:
+The following example illustrates running Zowe CLI commands with daemon mode enabled:
 
    ```
    zowe --version
@@ -48,25 +48,27 @@ The following example illustrates running Zowe CLI commands with the daemon mode
    zowe --version
    7.0.0-next.202110211759
    ```
-**Note:** When you are running Zowe CLI in daemon using a Git Bash terminal on a Windows operating system, special characters might display using the wrong code page. For example, the default code page 437 renders a form-feed character (\f) as an emoji (♀️). To correct the problem, issue the command `chcp.com 65001` to change the code page to UTF-8. If you want the change to be persistent, add the command to your .bashrc file.
+**Note:** When you are running Zowe CLI in daemon mode using a Git Bash terminal on a Windows operating system, special characters might display using the wrong code page. For example, the default code page 437 renders a form-feed character (\f) as an emoji (♀️). To correct the problem, issue the command `chcp.com 65001` to change the code page to UTF-8. If you want the change to be persistent, add the command to your `.bashrc` file.
 
 ## Restart daemon mode
 
 Daemon mode is a long-running background process (waits for work) that significantly improves Zowe CLI performance. When you make changes to your work environment, daemon mode does not capture the changes. Restarting daemon mode lets the daemon capture the changes. Issue the following command to stop the currently running daemon and start a new daemon:
 
 ```
-Zowe daemon restart
+zowe daemon restart
 ```
 
-Restart the daemon under the following scenarios:
+You **must** restart daemon mode under the following scenarios:
 
-- When you change the value of any of the following [Zowe CLI environment variables](../user-guide/cli-configuringcli.md):
+- You changed the value of any of the following [Zowe CLI environment variables](../user-guide/cli-configuringcli.md):
   - `ZOWE_CLI_HOME`
   - `ZOWE_APP_LOG_LEVEL`
   - `ZOWE_IMPERATIVE_LOG_LEVEL`
-- After you install, update, or uninstall a plug-in.
-- After you install a newer version of Zowe CLI and issue the `zowe daemon enable` command. (You can install a newer version of CLI and issue the command while daemon mode is running.)
-- After a Zowe command displays the following message:
+- You installed, updated, or uninstalled a plug-in.
+- You installed a newer version of Zowe CLI and daemon mode **was running** while you installed the newer version of Zowe CLI.
+
+   **Note:** If daemon mode **was not running** while you installed the newer version of Zowe CLI, you **must** enable daemon mode.
+- You issued a Zowe command and the following message appeared:
    ```
    You may be running mismatched versions of Zowe executable and Zowe daemon.
    ```
