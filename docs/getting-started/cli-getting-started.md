@@ -60,7 +60,7 @@ See [Understanding core command groups](../user-guide/cli-using-understanding-co
 
 ## Team profiles
 
-Zowe CLI V2-TLS now supports **team** profiles. The process of setting up team profiles is simple and can be rolled out easily accross your organization. We highly recommend that you configure team profiles to support your Zowe CLI implementation. For more information, see [Configuring team profiles](../user-guide/cli-using-configuring-global-profiles.md).
+Zowe CLI V2-LTS now supports **team** profiles. The process of setting up team profiles is simple and can be rolled out easily accross your organization. We highly recommend that you configure team profiles to support your Zowe CLI implementation. For more information, see [Configuring team profiles](../user-guide/cli-using-configuring-global-profiles.md).
 ## Using profiles
 
 Zowe profiles let you store configuration details such as username, password, host, and port for a mainframe system. Switch between profiles to quickly target different subsystems and avoid typing connection details on every command.
