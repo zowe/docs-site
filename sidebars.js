@@ -232,6 +232,8 @@ module.exports = {
               items: [
                 "user-guide/cli-using-configuring-global-profiles",
                 "user-guide/cli-using-initializing-team-configuration",
+                "user-guide/cli-using-global-managing-credential-security",
+                "user-guide/cli-using-global-storing-properties-automatically",
                 "user-guide/cli-using-creating-global-user-profiles",
                 "user-guide/cli-using-creating-global-team-profiles",
                               ],

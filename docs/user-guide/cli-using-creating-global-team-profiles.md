@@ -15,9 +15,9 @@ you store the profiles in an SCM, developers can pull the project to their local
 
 ## Profile scenarios
 
-The following topics describe various profile scenarios that system administrators can create to share with their teams.
+The following topics describe various profile scenarios that Dev-Ops advocates (team leaders) or application developers that function as DevOps advocates can create to share with their teams.
 
-### Access to one or more LPARs
+### Access to one or more LPARs that contain multiple services that share the same username and password
 
 The following example illustrates that the settings are using nested profiles to access multiple services directly on multiple LPARs that share the same username and password.
 
@@ -84,12 +84,128 @@ The following example illustrates that the settings are using nested profiles to
     }
 }
 ```
-The following example 
+### Access to one or more LPARs that contain multiple services where the username and password differ between LPAR services
 
+The following example: ***NEEDS WORK*** The settings are accessing multiple services directly on LPAR1 and LPAR2 where username and password varies between the LPAR1 and LPAR2 services. This example is identical to Example 1 except that LPAR1 and LPAR2 each contain a secure array, instead of just one secure array in the "base" profile.
 
+```
+{
+    "$schema": "./zowe.schema.json",
+    "profiles": {
+        "lpar1": {
+            "properties": {
+                "host": "example1.com"
+            },
+            "profiles": {
+                "zosmf": {
+                    "type": "zosmf",
+                    "properties": {
+                        "port": 443
+                    }
+                },
+                "tso": {
+                    "type": "tso",
+                    "properties": {
+                        "account": "ACCT#",
+                        "codePage": "1047",
+                        "logonProcedure": "IZUFPROC"
+                    }
+                },
+                "ssh": {
+                    "type": "ssh",
+                    "properties": {
+                        "port": 22
+                    }
+                }
+            },
+            "secure": [
+                "user",
+                "password"
+            ]
+        },
+        "lpar2": {
+            "properties": {
+                "host": "example2.com"
+            },
+            "profiles": {
+                "zosmf": {
+                    "type": "zosmf",
+                    "properties": {
+                        "port": 1443
+                    }
+                }
+            },
+            "secure": [
+                "user",
+                "password"
+            ]
+        },
+        "base": {
+            "type": "base",
+            "properties": {
+                "rejectUnauthorized": true
+            }
+        }
+    },
+    "defaults": {
+        "zosmf": "lpar2.zosmf",
+        "tso": "lpar1.tso",
+        "ssh": "lpar1.ssh",
+        "base": "base"
+    },
+    "autoStore": true
+}
+```
 
+### Access LPARs containing multiple services through API Mediation Layer with token authentication
 
+The following example illustrates that the settings access multiple services using the API ML where multi-factor authentication (MFA) or single sign-on (SSO) is achievable using token-based authorization.
 
-### two
+```
+{
+    "$schema": "./zowe.schema.json",
+    "profiles": {
+        "zosmf": {
+            "type": "zosmf",
+            "properties": {
+                "basePath": "api/v1"
+            }
+        },
+        "cics": {
+            "type": "cics",
+            "properties": {
+                "basePath": "api/v1/cics"
+            }
+        },
+        "db2": {
+            "type": "db2",
+            "properties": {
+                "basePath": "api/v1/db2"
+            }
+        },
+        "base": {
+            "type": "base",
+            "properties": {
+                "host": "example.com",
+                "port": 443,
+                "rejectUnauthorized": true,
+                "tokenType": "apimlAuthenticationToken"
+            },
+            "secure": [
+                "tokenValue"
+            ]
+        }
+    },
+    "defaults": {
+        "zosmf": "zosmf",
+        "cics": "cics",
+        "db2": "db2",
+        "base": "base"
+    },
+    "autoStore": true
+}
+```
 
-### three
+### Access LPARs containing multiple services through API Mediation Layer with certificate authentication
+
+The following example illustrates....
