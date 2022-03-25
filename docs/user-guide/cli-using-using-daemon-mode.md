@@ -67,7 +67,7 @@ You **must** restart daemon mode under the following scenarios:
 - You installed, updated, or uninstalled a plug-in.
 - You installed a newer version of Zowe CLI and daemon mode **was running** while you installed the newer version of Zowe CLI.
 
-   **Note:** If daemon mode **was not running** while you installed the newer version of Zowe CLI, you **must** enable daemon mode.
+   **Note:** When you install another version of Zowe CLI, you should always run the `zowe daemon enable` command again.
 - You issued a Zowe command and the following message appeared:
    ```
    You may be running mismatched versions of Zowe executable and Zowe daemon.
