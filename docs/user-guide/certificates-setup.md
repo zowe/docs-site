@@ -52,7 +52,7 @@ You can use four z/OSMF workflows that enable you to manage keyring setup, certi
     - A USS location path of the CSR file
     - A USS location path where a signed certificate is stored in pem format in the input.
 
-    <img src="../images/configure/workflow-threeA.png" alt="Workflow Parameters" style="height: 400px; width:500px;"/> <br />
+    <img src="../images/configure/workflow-parameters.png" alt="Workflow Parameters" style="height: 400px; width:500px;"/> <br />
 
 4. Load the Signed Client Authentication Certificate into ESM using ZWELOADC.xml
 
