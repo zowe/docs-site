@@ -29,7 +29,7 @@ You can use four z/OSMF workflows that enable you to manage keyring setup, certi
 
     - A CSR request is stored into a data set. Then the data set is automatically converted into a USS file.
 
-        You must specify the USS file path.
+      You must specify the USS file path.
 
     The workflow includes the steps that you can see on the following image:
 
