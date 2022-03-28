@@ -57,18 +57,12 @@ Use the following procedure to install Zowe CLI from an npm registry:
 2. (Optional) Check [npmjs.com](https://www.npmjs.com/) for any Zowe plug-ins that have an `@next` version available. If an `@next` version is available, you can install it:
 
     ```
-    zowe plugins install @zowe/<plugin-name>@next
+    zowe plugins install @zowe/<plugin-name>@zowe-v2-lts
     ```
 
-    If no `@next` version is available,  install the `@latest` version of the plug-in:
+    The optional plug-ins are installed.
 
-    ```
-    zowe plugins install @zowe/<plugin-name>
-    ```
-
-    Optional plug-ins are installed.
-
-3. Migrate your Zowe CLI profiles from your current installation to your @next installation. Issue the following command:
+3. Migrate your Zowe CLI profiles from your current installation to your @zowe-v2-lts installation. Issue the following command:
 
    ```
    zowe config convert-profiles
@@ -78,7 +72,8 @@ Use the following procedure to install Zowe CLI from an npm registry:
 
 4. (Optional) If you no longer require the profiles for your previous Zowe CLI installation, you can delete them.
 
-   **Important:** We do not recommend deleting the profiles for your previous Zowe CLI installation until you have tested your @next installation and are satisfied with its performance.
+   **Important:** We do not recommend deleting the profiles 
+for your previous Zowe CLI installation until you have tested your @zowe-v2-lts installation and are satisfied with its performance.
 
    Issue the following command:
 

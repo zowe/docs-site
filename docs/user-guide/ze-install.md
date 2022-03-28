@@ -1,4 +1,4 @@
-# Installing Zowe Explorer
+# Visual Studio Code (VSCode) Extension for Zowe
 
 <img src="https://codecov.io/gh/zowe/vscode-extension-for-zowe/branch/master/graph/badge.svg" alt="codecov" scope="external"/>
 <img src="https://img.shields.io/badge/chat-on%20Slack-blue" alt="slack" scope="external"/>
@@ -12,11 +12,6 @@ The Zowe Explorer extension for Visual Studio Code (VSCode) modernizes the way d
 * Lets you use the Secure Credential Store plug-in to store your credentials securely in the settings.
 
 **Note:** Zowe Explorer is a subcomponent of [Zowe](https://zowe.org/home/). The extension demonstrates the potential for plug-ins powered by Zowe.
-
-* [Software Requirements](#software-requirements)
-* [Installing](#installing)
-* [Configuration](#configuration)
-* [Relevant Information](#relevant-information)
 
 ## Software Requirements
 
