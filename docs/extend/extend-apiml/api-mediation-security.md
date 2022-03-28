@@ -159,7 +159,7 @@ The API ML TLS requires servers to provide HTTPS ports. Each API ML service has 
     - Authentication is service-dependent
     - It is recommended to use the Authentication and Authorization Service for authentication
 
-
+ 
 #### Authentication endpoints
 
 The API Gateway supports both `gateway/api/v1/auth` and `api/v1/gateway/auth` as base authentication paths for the following REST API authentication endpoints. The `api/v1/gateway/auth` base path reaches end-of-support by March 2023 for Zowe V2 LTS, in which `gateway/api/v1/auth` will be the only base path supported.
