@@ -54,32 +54,15 @@ Use the following procedure to install Zowe CLI from an npm registry:
 
    Zowe CLI is installed.
 
-2. (Optional) Check [npmjs.com](https://www.npmjs.com/) for any Zowe plug-ins that have an `@next` version available. If an `@next` version is available, you can install it:
+2. (Optional) Address the [Software requirements for CLI plug-ins](../user-guide/cli-swreqplugins.md). You can install most plug-ins without meeting the requirements. However, the plug-ins will not function until you configure the back-end APIs. The IBM Db2 plug-in requires additional configuration to install.
 
-    ```
-    zowe plugins install @zowe/<plugin-name>@zowe-v2-lts
-    ```
-
-    The optional plug-ins are installed.
-
-3. Migrate your Zowe CLI profiles from your current installation to your @zowe-v2-lts installation. Issue the following command:
-
+3. (Optional) To install all available plug-ins to Zowe CLI, issue the following command:
+   
    ```
-   zowe config convert-profiles
+   zowe plugins install @zowe/cics-for-zowe-cli@zowe-v2-lts @zowe/db2-for-zowe-cli@zowe-v2-lts @zowe/ims-for-zowe-cli@zowe-v2-lts @zowe/mq-for-zowe-cli@zowe-v2-lts @zowe/zos-ftp-for-zowe-cli@zowe-v2-lts
    ```
 
-   **Note:** Profile data is backed up in case you want to revert the profiles to your previous Zowe CLI installation.
-
-4. (Optional) If you no longer require the profiles for your previous Zowe CLI installation, you can delete them.
-
-   **Important:** We do not recommend deleting the profiles 
-for your previous Zowe CLI installation until you have tested your @zowe-v2-lts installation and are satisfied with its performance.
-
-   Issue the following command:
-
-   ```
-   zowe config convert-profiles --delete
-   ```
+Zowe CLI is installed on your computer. Issue the `zowe --help` command to view a list of available commands. For information about how to connect the CLI to the mainframe, create profiles, integrate with API ML, and more, see [Using Zowe CLI](../user-guide/cli-using-usingcli.md).
 
 ## Install Zowe CLI from a download
 
