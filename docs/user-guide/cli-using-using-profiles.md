@@ -98,10 +98,11 @@ zowe zosmf check status
 
 ### Specific profile
 
-After you [create a profile](../user-guide/cli-using-using-profiles.md), verify that you can use *a specific profile* to communicate with z/OSMF z/OSMF:
+
+After you [create a profile](../user-guide/cli-using-using-profiles.md), verify that you can use *a specific profile* to communicate with z/OSMF:
 
 ```
-zowe zosmf check status --zosmf-profile <profile_name>
+zowe zosmf check status --zosmf-profile <profile_name>z
 ```
 
 The commands return a success or failure message and display information about your z/OSMF server, such as the z/OSMF version number. Report failures to your systems administrator and use the information for diagnostic purposes.
