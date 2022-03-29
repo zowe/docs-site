@@ -162,7 +162,9 @@ The API ML TLS requires servers to provide HTTPS ports. Each API ML service has 
  
 #### Authentication endpoints
 
-The API Gateway supports both `gateway/api/v1/auth` and `api/v1/gateway/auth` as base authentication paths for the following REST API authentication endpoints. The `api/v1/gateway/auth` base path reaches end-of-support by March 2023 for Zowe V2 LTS, in which `gateway/api/v1/auth` will be the only base path supported.
+The API Gateway supports both `gateway/api/v1/auth` and `api/v1/gateway/auth` as base authentication paths for the following REST API authentication endpoints.
+
+**Note:** The `api/v1/gateway/auth` base path reaches end-of-support in March 2023 for Zowe V2 LTS. After this date, `gateway/api/v1/auth` will be the only base path supported.
 
 - `auth/login`
   
@@ -204,7 +206,7 @@ The API Gateway supports both `gateway/api/v1/auth` and `api/v1/gateway/auth` as
 
   **Notes:** 
   
-   - The endpoint is disabled by default. [Jwt token refresh endpoint   enablement](../../user-guide/api-mediation/api-gateway-configuration.  md#jwt-token-refresh-endpoint-enablement)
+   - The endpoint is disabled by default. [Jwt token refresh endpoint enablement](../../user-guide/api-mediation/api-gateway-configuration.md#jwt-token-refresh-endpoint-enablement)
    - The endpoint is protected by a client certificate.
   
   The `auth/refresh` endpoint generates a new token for the user based on valid jwt token. The full path of the `auth/refresh` endpoint appears as `https://{gatewayUrl}:{gatewayPort}/gateway/api/v1/auth/refresh` (preferred option) or `https://{gatewayUrl}:{gatewayPort}/api/v1/gateway/auth/refresh`. The new token overwrites the old cookie with a `Set-Cookie` header. As part of the process, the old token gets invalidated and is not usable anymore.
