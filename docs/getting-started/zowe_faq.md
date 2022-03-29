@@ -260,6 +260,26 @@ You can install Zowe CLI using the following methods:
 </details>
 
 
+### How can I get Zowe CLI to run faster?
+
+<details class="zowe-faq">
+
+<summary></summary>
+
+- Zowe CLI runs significantly faster when you run it in daemon mode. Daemon mode significantly improves the performance of Zowe CLI commands by running Zowe CLI as a persistent background process. For more information, see [Using daemon mode](../user-guide/cli-using-using-daemon-mode.md).
+
+</details>
+
+### How can I manage profiles for my projects and teams?
+
+<details class="zowe-faq">
+
+<summary></summary>
+
+- Zowe CLI V2 introduces **team** profiles. Using team profiles helps to improve the initial setup of Zowe CLI by making service connection details easier to share and easier to store within projects. For more information, see [Configuring team profiles](../user-guide/cli-using-configuring-global-profiles.md).
+
+</details>
+
 ### How can I get help with using Zowe CLI?
 
 <details class="zowe-faq">

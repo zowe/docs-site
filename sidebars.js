@@ -253,6 +253,7 @@ module.exports = {
             "user-guide/cli-ftpplugin",
             "user-guide/cli-imsplugin",
             "user-guide/cli-mqplugin",
+            "user-guide/ze-install",
           ],
         },
         //"user-guide/ze-usage",

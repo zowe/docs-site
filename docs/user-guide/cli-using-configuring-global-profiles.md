@@ -1,6 +1,6 @@
 # Configuring team profiles
 
-This release of Zowe CLI introduces the concept of **team** profiles.
+This version of Zowe CLI (V2) introduces the concept of **team** profiles.
 
 ## Profiles simplified
 

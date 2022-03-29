@@ -98,6 +98,7 @@ zowe zosmf check status
 
 ### Specific profile
 
+
 After you [create a profile](../user-guide/cli-using-using-profiles.md), verify that you can use *a specific profile* to communicate with z/OSMF:
 
 ```

@@ -13,7 +13,7 @@ To plan your Zowe CLI installation, review the following checklist.
 | [Address the requirements](../user-guide/systemrequirements-cli.md) | Install the client-side and host-side software, and ensure that there is sufficient free disk space | Systems programmer | #hrs | Complete, TBD, NA |
 | [(Optional) Install API Mediation Layer](../user-guide/install-zos.md) | Install the Zowe Runtime, which includes API Mediation Layer] | Systems programmer | #hrs | Complete, TBD, NA |
 | [Install z/OSMF](https://www.ibm.com/docs/en/zos/2.3.0?topic=configuration-setting-up-zosmf-first-time) | Follow the steps to install z/OSMF | Systems programmer  | #hrs | Complete, TBD, NA |
-| [Determine the profile types that you want to use](../user-guide/cli-using-configuring-global-profiles.md) | Learn about how to use team profiles | Systems programmer, DevOps architect | #hrs | Complete, TBD, NA |
+| [Determine the profile types that you want to use](../user-guide/cli-using-using-profiles.md) | Learn about how to use team profiles | Systems programmer, DevOps architect | #hrs | Complete, TBD, NA |
 
 You are now ready to install Zowe CLI!
 ## Install Zowe CLI
@@ -33,5 +33,6 @@ To configure Zowe CLI, review the following checklist.
 
 | Step        | Description | Role       | Time Estimate | Status     |
 | ----------- | ----------- | ---------- | ------------- | ---------- |
+| [Configure environment variables](../user-guide/cli-configuringcli.md) | Learn how to store configuration options that are common to your environment.  | Systems programmer, application developer, DevOps architect | #hrs | Complete, TBD, NA |
 | [Configure Zowe profiles](../user-guide/cli-using-using-profiles.md) | Learn how to configure Zowe team profiles and  user profiles. | Systems programmer, application developer, DevOps architect | #hrs | Complete, TBD, NA |
 | [Configure daemon mode](../user-guide/cli-using-daemon-mode.md) | Learn how to configure Zowe CLI to run as persistent background process (daemon). | Systems programmer, application developer | #hrs | Complete, TBD, NA |
