@@ -28,7 +28,8 @@ The following information is also useful to collect:
 
 - If you are experiencing HTTP errors, see [z/OSMF troubleshooting](zosmf-cli.md) for information to collect.
 - Is the CLI part of another Node application, such as VSCode, or is it a general installation?
-- Which operating system version are you running on?
+- What operating system and version are you running?
 - What shell/terminal are you using (bash, cmd, powershell, etc...)?
 - Which queue managers are you trying to administer, and on what systems are they located?
 - Are the relevant API endpoints online and valid?
+- Are you running in daemon mode?
