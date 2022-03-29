@@ -68,21 +68,24 @@ Zowe CLI is installed on your computer. Issue the `zowe --help` command to view 
 
 Use the following procedure to install Zowe CLI from a download package:
 
-1. Navigate to [Download Zowe](https://www.zowe.org/download.html) and click the **Zowe vNext CLI Core** button.
+1. Meet the [prerequisites](#prerequisites) for installing Zowe CLI.
 
-2. Read the End User License Agreement for Zowe and click **I agree** to download the core package.
+2. Navigate to [Download Zowe](https://www.zowe.org/download.html) and click the **Zowe vNext CLI Core** button.
+
+3. Read the End User License Agreement for Zowe and click **I agree** to download the core package.
 
     `zowe-cli-package-next-2022MMDD.zip` is downloaded to your computer (where MMDD indicates the month and day of the build).
 
-3. **(Optional)** Navigate to [Download Zowe](https://www.zowe.org/download.html) and click the **Zowe vNext CLI Plugins** button to download the plugins.
+4. **(Optional)** Meet the [prerequisites](#prerequisites) for installing Zowe CLI plug-ins.
+5. **(Optional)** Navigate to [Download Zowe](https://www.zowe.org/download.html) and click the **Zowe vNext CLI Plugins** button to download the plugins.
 
-4. **(Optional)** Read the End User License Agreement for Zowe plugins and click **I agree** to download the plugins package.
+6. **(Optional)** Read the End User License Agreement for Zowe plug-ins and click **I agree** to download the plugins package.
 
     `zowe-cli-plugins-next-2022MMDD.zip` is downloaded to your computer (where MMDD indicates the month and day of the build).
 
-5. Unzip the contents of `zowe-cli-package-next-2021MMDD.zip` (and optionally `zowe-cli-plugins-2021MMDD.zip`) to a working directory.
+7. Unzip the contents of `zowe-cli-package-next-2021MMDD.zip` (and optionally `zowe-cli-plugins-2021MMDD.zip`) to a working directory.
 
-6. Open a command-line window and issue the following commands to the working directory:
+8. To install Zowe CLI Core, open a command-line window and issue the following commands to the working directory that you used in Step 7:
 
    ```
    npm install -g zowe-cli.tgz
@@ -90,28 +93,10 @@ Use the following procedure to install Zowe CLI from a download package:
 
    **Note:** If an `EACCESS` error displays, see [Resolving EACCESS permissions errors when installing packages globally](https://docs.npmjs.com/resolving-eacces-permissions-errors-when-installing-packages-globally) in the npm documentation.
 
-   **(Optional)**
+9. **(Optional)** To install Zowe CLI plug-ins, issue the following command to the working directory that you used in Step 7: 
 
    ```
-   zowe plugins install zowe plugins install cics-for-zowe-cli.tgz db2-for-zowe-cli.tgz zos-ftp-for-zowe-cli.tgz  ims-for-zowe-cli.tgz mq-for-zowe-cli.tgz
+   zowe plugins install zowe plugins install cics-for-zowe-cli.tgz db2-for-zowe-cli.tgz zos-ftp-for-zowe-cli.tgz ims-for-zowe-cli.tgz mq-for-zowe-cli.tgz
    ```
 
-7. Migrate your Zowe CLI profiles from your current installation to your @next installation. Issue the following command:
-
-   ```
-   zowe config convert-profiles
-   ```
-
-   **Note:** Profile data is backed up in case you want to revert the profiles to your previous Zowe CLI installation.
-
-8. (Optional) If you no longer require the profiles for your previous Zowe CLI installation, you can delete them.
-
-   **Important:** We do not recommend deleting the profiles for your previous Zowe CLI installation until you have tested your @next installation and are satisfied with its performance.
-
-   Issue the following command:
-
-   ```
-   zowe config convert-profiles --delete
-   ```
-
-Zowe CLI is installed on your computer. Issue the `zowe --help` command to view a list of available commands. For information about how to connect the CLI to the mainframe, create profiles and team profiles, integrate with API ML, enable daemon mode, and more, see [Using CLI](../user-guide/cli-using-usingcli.md).
+Zowe CLI and the optional plug-ins are installed on your computer. Issue the `zowe --help` command to view a list of available commands. For information about how to connect the CLI to the mainframe, create profiles and team profiles, integrate with API ML, enable daemon mode, and more, see [Using CLI](../user-guide/cli-using-usingcli.md).

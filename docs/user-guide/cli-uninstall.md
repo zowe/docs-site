@@ -23,7 +23,7 @@ The following steps describe how to list the profiles that you created, delete t
     $
     ```
 
-3. Delete all of the configration files that are listed. Issue the following command:
+3. Delete all of the configuration files that are listed. Issue the following command:
 
     **Tip:** For this command, use the results of the `zowe config list`
     command.
