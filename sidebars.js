@@ -256,16 +256,16 @@ module.exports = {
             "user-guide/ze-install",
           ],
         },
-        //"user-guide/ze-usage",
-        // {
-        //  type: "category",
-        //  label: "Zowe Explorer extensions",
-        //  items: [
-        //    "user-guide/ze-cics",
-        //    "user-guide/ze-ftp",
-        //  ],
-        //},
-        //"user-guide/sdks-using",
+        "user-guide/ze-usage",
+         {
+          type: "category",
+          label: "Zowe Explorer extensions",
+          items: [
+            "user-guide/ze-cics",
+            "user-guide/ze-ftp",
+          ],
+        },
+        "user-guide/sdks-using",
   ],
   extending: [
     {
@@ -396,7 +396,7 @@ module.exports = {
       label: "Zowe Explorer",
       items: [
         "troubleshoot/ze/troubleshoot-ze",
-    //    "troubleshoot/ze/known-ze",
+        "troubleshoot/ze/known-ze",
         "troubleshoot/ze/ze-issues",
       ],
     },
