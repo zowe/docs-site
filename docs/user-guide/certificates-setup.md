@@ -50,7 +50,7 @@ You can use four z/OSMF workflows that enable you to manage keyring setup, certi
     Fill in the fields, that you can see on the following image, to sign a CSR request. Ensure that the workflow includes the following information:
 
     - A USS location path of the CSR file
-    - A USS location path where a signed certificate is stored in pem format in the input.
+    - A USS location path where a signed certificate is stored in pem format
 
     <img src="../images/configure/workflow-parameters.png" alt="Workflow Parameters" style="height: 400px; width:500px;"/> <br />
 
