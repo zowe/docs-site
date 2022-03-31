@@ -315,9 +315,10 @@ Data Set Name | TYPE | ORG | RECFM | LRECL | No. of 3390 Trks | No. of DIR Blks
 ---|---|---|---|---|---|---
 hlq.ZOWE.AZWE002.F1 | U | PDSE | FB | 80 | 5 | N/A
 hlq.ZOWE.AZWE002.F2 | U | PDSE | FB | 80 | 5 | N/A
-hlq.ZOWE.AZWE002.F4 | U | PDSE | VB | 6995 | 9000 | N/A
+hlq.ZOWE.AZWE002.F3 | U | PDSE | U | 0 | 30 | N/A
+hlq.ZOWE.AZWE002.F4 | U | PDSE | VB | 6995 | 9900 | N/A
 hlq.ZOWE.AZWE002.SMPMCS | U | SEQ | FB | 80 | 1 | N/A
-z/OS UNIX file system | U | zFS | N/A | N/A | 17095 | N/A
+z/OS UNIX file system | U | zFS | N/A | N/A | 28715 | N/A
 
 **Note:** These are temporary data sets, which can be removed after the SMP/E installation.
 
@@ -380,7 +381,7 @@ Follow these high-level steps to download and install Zowe Open Source Project (
 
 To download the Zowe SMP/E package, open your web browser and go to the [Zowe Download](https://www.zowe.org/download.html) website. Click the **Zowe SMP/E FMID AZWE002** button to save the file to a folder on your desktop.
 
-You will receive one ZIP package on your desktop. You can extract the following files from the package.
+You will receive one ZIP package on your desktop. Extract the following files from the package.  You may need to use the `unzip` command at a terminal rather than an unzip utility.
 
   - **AZWE002.pax.Z (binary)**
 
@@ -390,7 +391,9 @@ You will receive one ZIP package on your desktop. You can extract the following 
 
      The README file AZWE002.readme.txt is a single JCL file containing a job with the job steps you need to begin the installation, including comprehensive comments on how to tailor them. There is a sample job step that executes the z/OS UNIX System Services pax command to extract package archives. This job also executes the GIMUNZIP program to expand the package archives so that the data sets can be processed by SMP/E.
 
-     Review this file on your desktop and follow the instructions that apply to your system.
+  - **AZWE002.hml (text)**
+
+     The Program Directory for the Zowe Open Source Project.  
 
 ### Allocate file system to hold the download package
 
@@ -420,13 +423,7 @@ Copy and paste the sample JCL into a separate data set, uncomment the job, and m
 //*              - Do not include a trailing /
 //*   @zfs_dsn@
 //*              - To your file system data set name
-//*
-//*   #size
-//*              - To the amount of space to be
-//*                allocated for the mount point.
-//*                It is recommended that this is
-//*                set to at least 3300 cylinders.
-//*              
+//*            
 //* Your userid MUST be defined as a SUPERUSER to successfully
 //* run this job
 //*
@@ -437,7 +434,7 @@ Copy and paste the sample JCL into a separate data set, uncomment the job, and m
 //SYSIN    DD *
   DEFINE CLUSTER ( -
          NAME(@zfs_dsn@) -
-         CYL(#size) -
+          TRK(28485 2848) -
        /*VOLUME(volser)*/ -
          LINEAR -
          SHAREOPTIONS(3) -
