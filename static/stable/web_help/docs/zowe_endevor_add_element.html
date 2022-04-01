@@ -7,7 +7,7 @@
 <link rel="stylesheet" href="../css/docs.css">
 <article class="markdown-body">
 <h2><a href="zowe.html">zowe</a> › <a href="zowe_endevor.html">endevor</a> › <a href="zowe_endevor_add.html">add</a> › <a href="zowe_endevor_add_element.html">element</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
-<p>The add element command lets you add an Element to an Environment entry Stage in CA Endevor SCM.</p>
+<p>The add element command lets you add an Element to an Environment entry Stage in Endevor.</p>
 <h4>Usage</h4>
 <p>zowe endevor add element &lt;element&gt; [options]</p>
 <h4>Positional Arguments</h4>
@@ -15,7 +15,7 @@
 <li>
 <p><code>element</code>		 <em>(string)</em></p>
 <ul>
-<li>Name of the CA Endevor SCM element.</li>
+<li>Name of the Endevor element.</li>
 </ul>
 </li>
 </ul>
@@ -24,25 +24,25 @@
 <li>
 <p><code>--environment</code>  | <code>--env</code> <em>(string)</em></p>
 <ul>
-<li>The CA Endevor SCM environment where your project resides.</li>
+<li>The Endevor environment where your project resides.</li>
 </ul>
 </li>
 <li>
 <p><code>--system</code>  | <code>--sys</code> <em>(string)</em></p>
 <ul>
-<li>The CA Endevor SCM system where your project resides.</li>
+<li>The Endevor system where your project resides.</li>
 </ul>
 </li>
 <li>
 <p><code>--subsystem</code>  | <code>--sub</code> <em>(string)</em></p>
 <ul>
-<li>The CA Endevor SCM subsystem where your project resides.</li>
+<li>The Endevor subsystem where your project resides.</li>
 </ul>
 </li>
 <li>
 <p><code>--type</code>  | <code>--typ</code> <em>(string)</em></p>
 <ul>
-<li>Name of the CA Endevor SCM element's type.</li>
+<li>Name of the Endevor element's type.</li>
 </ul>
 </li>
 <li>
@@ -60,16 +60,13 @@
 <li>
 <p><code>--maxrc</code>  <em>(number)</em></p>
 <ul>
-<li>
-<p>The maximum value of the return code of a successful action. When the return code is greater than the maxrc value, the command fails</p>
-<p>Default value: 8</p>
-</li>
+<li>The return code of a failed action</li>
 </ul>
 </li>
 <li>
 <p><code>--instance</code>  | <code>-i</code> <em>(string)</em></p>
 <ul>
-<li>Specifies CA Endevor SCM Web Services dataSource name.</li>
+<li>Specifies Endevor Web Services dataSource name.</li>
 </ul>
 </li>
 </ul>
@@ -123,7 +120,7 @@
 <li>
 <p><code>--proc-group</code>  | <code>--pg</code> <em>(string)</em></p>
 <ul>
-<li>The CA Endevor SCM processor group you would like to use.</li>
+<li>The Endevor processor group you would like to use.</li>
 </ul>
 </li>
 <li>
@@ -148,6 +145,21 @@
 </ul>
 </li>
 </ul>
+<h4>output customization options</h4>
+<ul>
+<li>
+<p><code>--suppress-messages</code>  | <code>--sm</code> <em>(boolean)</em></p>
+<ul>
+<li>Suppress all [INFO]/[WARN] messages from terminal output.</li>
+</ul>
+</li>
+<li>
+<p><code>--file-name</code>  | <code>--fn</code> <em>(string)</em></p>
+<ul>
+<li>File name for saving output messages from Endevor locally.</li>
+</ul>
+</li>
+</ul>
 <h4>endevor session definition options</h4>
 <ul>
 <li>
@@ -166,7 +178,7 @@
 <p><code>--protocol</code>  | <code>--prot</code> <em>(string)</em></p>
 <ul>
 <li>
-<p>Specifies the protocol used for connecting to CA Endevor SCM Rest API</p>
+<p>Specifies the protocol used for connecting to Endevor Rest API</p>
 <p>Default value: https<br>
 Allowed values: http, https</p>
 </li>
@@ -193,34 +205,7 @@ Allowed values: http, https</p>
 <li>
 <p><code>--base-path</code>  | <code>--bp</code> <em>(string)</em></p>
 <ul>
-<li>Specifies the base path used for connecting to CA Endevor SCM Rest API</li>
-</ul>
-</li>
-</ul>
-<h4>output customization options</h4>
-<ul>
-<li>
-<p><code>--suppress-messages</code>  | <code>--sm</code> <em>(boolean)</em></p>
-<ul>
-<li>Suppress all [INFO]/[WARN] messages from terminal output.</li>
-</ul>
-</li>
-<li>
-<p><code>--report-file</code>  | <code>--file-name</code> <em>(string)</em></p>
-<ul>
-<li>File name for saving reports from Endevor SCM locally.</li>
-</ul>
-</li>
-<li>
-<p><code>--report-dir</code>  <em>(string)</em></p>
-<ul>
-<li>Directory for saving reports from Endevor SCM locally, if --report-file wasn't specified. Defaults to current directory.</li>
-</ul>
-</li>
-<li>
-<p><code>--write-report</code>  <em>(boolean)</em></p>
-<ul>
-<li>Write the endevor reports to a file. By default, when return code is 0, no report will be written, unless this option is specified. When return code is bigger than 0, reports will be written to a file, unless this option is specifed to be false</li>
+<li>Specifies the base path used for connecting to Endevor Rest API</li>
 </ul>
 </li>
 </ul>
