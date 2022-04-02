@@ -1,6 +1,6 @@
 # Managing credential security
 
-When you first run the `zowe config init --global-config` command, the `profiles.base.properties.user` and `profiles.base.properties.password` fields are defined to the "secure" array in your configuration file, which help to ensure that the username and password are stored securely on your computer.
+When you first run the `zowe config init --global-config` command, the `profiles.base.properties.user` and `profiles.base.properties.password` fields are defined to the "secure" array in your configuration file, which helps to ensure that the username and password are stored securely on your computer.
 
 To store or update values for the secure fields (for example, when you want to change your username and password), issue the `zowe config secure` command. If, for example, you want to update several property values in a long list of properties, press Enter to skip a field.
 
