@@ -15,6 +15,7 @@ module.exports = {
       type: "category",
       label: "Release notes",
       items: [
+        "getting-started/release-notes/v1_27_3",
         "getting-started/release-notes/v1_27",
         "getting-started/release-notes/v1_26",
         "getting-started/release-notes/v1_25",
