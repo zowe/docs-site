@@ -2,20 +2,17 @@
 
 As a Dev-Ops advocate or team leader, you can share team profiles with your team members so that they can easily access mainframe services.
 
-## Share team configurations
+## Sharing team configurations
 
-As a team leader, you might want to share a configuration globally under the following scenarios:
+As a DevOps advocate or team leader, you might want to share a team configuration *globally* in the following scenarios:
 
-- You want to share profiles with developers so that they can work with a defined set of mainframe services. The recipient of the file manually places it in their local `~/.zowe` folder before issuing CLI commands.
-- You want to add the profiles to your project directory in a software change management (SCM) tool, such as GitHub. When you store the profiles in an SCM, developers can pull the project to their local machine and use the defined configuration. Zowe CLI commands that you issue from within the project directory automatically use the project's configuration scheme.
-- You want to enable test automation and CI/CD, which lets your pipelines make use of the project configuration.
-you store the profiles in an SCM, developers can pull the project to their local machine and use the defined configuration. Zowe CLI commands that you issue from within the project directory automatically use the project's configuration scheme.
--   You want to enable test automation and CI/CD, which lets your pipelines make use of the project configuration.
-
+- You want to share profiles with application developers so that they can work with a defined set of mainframe services. The recipient of the file places it in their local `~/.zowe` folder manually before issuing CLI commands.
+- You want to add the profiles to your project directory in a software change management (SCM) tool, such as GitHub. When you store the profiles in an SCM, application developers can pull the project to their local computer and use the defined *team* or *global* configuration. Zowe CLI commands that you issue from within the project directory use the configuration scheme for the project automatically.
+- You want to enable test automation a CI/CD pipeline, which lets your pipelines make use of the project configuration.
 
 ## Profile scenarios
 
-The following topics describe various profile scenarios that Dev-Ops advocates (team leaders) or application developers that function as DevOps advocates can create to share with their teams.
+The following topics describe various profile scenarios that DevOps advocates (team leaders) can share with their teams, and application developers that function as DevOps advocates can create.
 
 ### Access to one or more LPARs that contain services that share the same credentials
 
@@ -207,7 +204,7 @@ The following example illustrates that the settings access multiple services usi
 }
 ```
 
-### Access t0 LPARs that access services through one API Mediation Layer using token authentication
+### Access to LPARs that access services through one API Mediation Layer using token authentication
 
 Access LPARs containing multiple services through API Mediation Layer with certificate authentication
 

@@ -1,12 +1,12 @@
 # Team configuration for application developers
 
-As a system programmer or Zowe CLI user, you want to manage your connection details efficiently and in one location.
+As an application developer or Zowe CLI user, you want to manage your connection details efficiently and in one location.
 
 ## Initializing user-specific configuration
 
-As a system programmer, you can optionally generate a *user-specific* configuration file that overrides the values defined in the global `zowe.config.json` file.
+As an application developer, you can optionally generate a *user-specific* configuration file that overrides the values defined in the global `zowe.config.json` file.
 
-To generate the global profile configuration file (`zowe.config.json`), issue the following command:
+To generate a profile configuration file (`zowe.config.json`) that you can use globally, issue the following command:
 
 ```
 zowe config init --global-config
@@ -18,7 +18,7 @@ To generate the global user profile configuration file (`zowe.config.user.json`)
 zowe config init --global-config --user-config
 ```
 
-In your user-specific file , observe that the "defaults" object is empty and the profiles do not have properties (see the following example). You can add your connection details as properties here to override properties in `zowe.config.json`, or add add new connections.
+In your *user-specific* file , observe that the "defaults" object is empty and the profiles do not have properties (illustrated in the following example). You can add your connection details as properties here to override properties in `zowe.config.json`, or add add new connections.
 
 ```{
     "$schema": "./zowe.schema.json",
@@ -52,10 +52,11 @@ In your user-specific file , observe that the "defaults" object is empty and the
 
 ## Editing team profiles
 
-After the initial setup, as a system programmer you can define additional mainframe services to the team (or user-specific) configuration file.
+After the initial setup, as an application developer you can define additional mainframe services to the team (or *user-specific*) configuration file.
 
+Open the `~/.zowe/zowe.config.json` file in a text editor or an IDE (such as Visual Stuide Code) on your computer. The profiles object contains connection and other frequently needed information for accessing various services. 
 
-Open the `~/.zowe/zowe.config.json` file in a text editor or IDE on your computer. The profiles object contains connection and other frequently needed information for accessing various services. For example:
+**Example:**
 
 ```
 {
