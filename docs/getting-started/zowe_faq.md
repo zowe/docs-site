@@ -361,26 +361,25 @@ You can use Zowe Explorer either in [VSCode](https://marketplace.visualstudio.co
 
 </details>
 
-### How can I use Secure Credential Store with Zowe Explorer?
+### How can I use Secure Credential Storage for Zowe Explorer?
 
 <details class="zowe-faq">
 
 <summary></summary>
 
-Activate the Secure Credential Store plug-in in Zowe Explorer.
+The Secure Credential Store Plug-in is no longer required for Zowe Explorer.
 
-**Follow these steps:**
+Secure credential storage functionality is now contained in the Zowe CLI core application.
 
-1. Open Zowe Explorer.
-2. Navigate to the VSCode settings.
-3. Open Zowe Explorer Settings.
-4. Add the **Zowe-Plugin** value to the `Zowe Security: Credential Key` entry field.
-5. Restart VSCode.
-6. Create a profile.
+</details>
 
-Your Zowe Explorer credentials are now stored securely.
+### What types of profiles can I create for Zowe Explorer?
 
-For more information, see [the Enabling Secure Credential Store page](https://docs.zowe.org/stable/user-guide/ze-profiles#enabling-secure-credential-store-with-zowe-explorer).
+<details class="zowe-faq">
+
+<summary></summary>
+
+Zowe Explorer V2 supports using Service Profiles, Base Profiles, and Team Profiles. For more information, see [Using profiles](../user-guide/cli-using-using-profiles.md) in the Using Zowe CLI section. 
 
 </details>
 
@@ -390,7 +389,7 @@ For more information, see [the Enabling Secure Credential Store page](https://do
 
 <summary></summary>
 
-Check out the GitHub article about [the FTP extension](https://github.com/zowe/zowe-explorer-ftp-extension/) with the information on how to build, install, and use FTP as your back-end service for working with Unix files.
+See the [Zowe FTP extension README](https://github.com/zowe/zowe-explorer-ftp-extension/#readme) in GitHub for information about how to build, install, and use FTP as your back-end service for working with UNIX files.
 
 </details>
 
