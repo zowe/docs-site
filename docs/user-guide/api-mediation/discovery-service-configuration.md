@@ -48,11 +48,24 @@ As an application developer who wants to run Zowe, set the following parameters 
   **Example:**
     The value of the parameter has the following format: `oldServiceIdPrefix,newServiceIdPrefix`
 
-    Set this parameter in the Zowe configuration by specifying the parameter `ZWE_components_discovery_server_prefix_replacer`.
-    The parameter value is then propagated to the Discovery Service. 
+    Set this parameter in your Zowe YAML configuration (typically `zowe.yaml`) by defining `configs.apiml.discovery.serviceIdPrefixReplacer`. For example, defining it globally:
 
-    
-    
+    ```yaml
+      configs:
+         apiml:
+            discovery:
+                serviceIdPrefixReplacer: caservice,bcmservice
+    ```
+     Or defining it only for lpar1 high availability instance:
+
+    ```yaml
+      haInstances:
+        lpar1:
+          configs:
+            apiml:
+               discovery:
+                  serviceIdPrefixReplacer: caservice,bcmservice
+    ```    
 
 ## Eureka configuration
 
