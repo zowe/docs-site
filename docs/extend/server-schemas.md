@@ -10,7 +10,7 @@ The server infrastructure will utilize each components' schema files to validate
 * Each component must state where its base schema file is located by the manifest parameter "schemas.config"
 * The schema file must use and/or extend the Zowe Component base schema by use of the "allOf" attribute.
 * The schema must have an `$id` property which is a URI that has a domain related to the entity that developed the Component.
-* The file must be encoded as ??????
+* The file should be tagged on z/OS but elsewhere must at least be encoded as ASCII-subset of UTF-8
 
 ## Additional information
 
@@ -23,6 +23,7 @@ Below is an example manifest and schema for a Component named "component1". The 
 
 ### Example manifest
 
+```
 name: component1
 id: com.abcdef.component1
 title: component1
@@ -30,6 +31,7 @@ description: An example component with a simple configuration.
 license: ABCDEF Company License
 schemas:
   - config: schema.json
+```
 
 
 ### Example schema
@@ -41,7 +43,7 @@ Below is an example of the "schema.json" file referenced above. In it, we have 1
   "$schema": "https://json-schema.org/draft/2019-09",
   "$id": "https://abcdef.com/schema/component1",
   "allOf": [
-    { "$ref": "https://zowe.org/schema/base#" },
+    { "$ref": "https://zowe.org/schema/base" },
     { "$ref": "https://zowe.org/schema/base#zoweComponent"},
     { 
       "type": "object",
