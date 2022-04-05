@@ -4,7 +4,7 @@ As a system programmer, profiles let you store configuration details for reuse, 
 
 Zowe CLI contains the following types of profiles:
 
-- **Team profiles:** [Team profiles](./cli-using-configuring-global-profiles.md) simplify profile management by letting you edit, store, and share mainframe configuration details in one location. You can use a text editor to populate global profiles with connection details for your mainframe services.
+- **Team profiles:** [Team profiles](../user-guide/cli-using-using-team-profiles.md) simplify profile management by letting you edit, store, and share mainframe configuration details in one location. You can use a text editor to populate global profiles with connection details for your mainframe services.
 
 - **Service profiles:** [Service profiles](#service-profiles) let you store connection information for specific mainframe service, such as IBM z/OSMF. Plug-ins can introduce other service profile types, such as the `cics` profile to connect to IBM CICS.
 
@@ -17,7 +17,13 @@ Zowe CLI contains the following types of profiles:
 - Profiles are **not** required. You can choose to specify all connection details for every command.
 - Profile values are stored on your computer in plaintext in `C:\Users\<yourUsername>\.zowe\profiles` (Windows) or `~/.zowe/profiles` (Mac/Linux).
 
-**Important:** With the introduction of [team profiles](cli-using-configuring-global-profiles.md), the Secure Credential Store (SCS) Plug-in is deprecated. The `zowe scs` and `zowe config` command groups are obsolete. Secure credential encryption is now included in the core CLI. The CLI prompts you to enter the username and password securely by default. Commands in the `zowe config` command group now let you manage security for any option value.
+**Important information about V2 profiles:**
+
+- With the introduction of [team profiles](../user-guide/cli-using-using-team-profiles.md), the Secure Credential Store (SCS) Plug-in is deprecated. The `zowe scs` and `zowe config` command groups were repurposed to work with team profiles.
+- Secure credential encryption is now handled by the the secure array in the `zowe.config.json` file.
+- Zowe CLI V2 prompts you to enter the username and password securely by default.
+- Commands in the `zowe config` command group now let you manage security for any option value.
+- You can continue using Zowe CLI V1 profiles with Zowe CLI V2. However, we highly recommend that you implement V2 profiles with Zowe CLI V2.
 
 
 ## Displaying profile help
