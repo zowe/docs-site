@@ -24,3 +24,8 @@ The following procedure describes how to onboard your REST service with the Wiza
    
 If you see your service in the list of API Catalog available services, you have onboarded your service successfully.
 
+### Prefilling fields
+
+After opening the wizard, you may upload a complete or partial YAML file to prefill the fields. The YAML file will be validated and the form fields will be populated.
+
+![YAML Prefill](../../images/api-mediation/wizard-yaml-prefill.png)  
