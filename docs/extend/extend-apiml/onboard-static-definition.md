@@ -493,9 +493,9 @@ After you define and validate the service in YAML format, you are ready to add y
 
     **Note:** We use the `${zoweInstanceDir}` symbol in following instructions.
 
-2. Add the fully qualified zFS path of your YAML file to `instance.env`.
+2. Add the fully qualified zFS path of your YAML file to `ZWE_STATIC_DEFINITIONS_DIR` in `zowe.yaml`.
 
-    - To hold your YAML file outside of the instance directory, append the fully qualified zFS path of the YAML file to the `ZWEAD_EXTERNAL_STATIC_DEF_DIRECTORIES` variable in the `instance.env` file.  This variable contains a semicolon separated list of static API extension YAML files.
+    - To hold your YAML file outside of the instance directory, add `ZWE_STATIC_DEFINITIONS_DIR` variable to the `zowe.environments` section of `zowe.yaml`. Append the fully qualified zFS path of the YAML file to the `ZWE_STATIC_DEFINITIONS_DIR` variable. You may specify multiple zFS paths, separating each path by a semicolon.
     
     - To place your YAML file within the instance directory, copy your YAML file to the `${zoweInstanceDir}/workspace/api-mediation/api-defs` directory. 
 

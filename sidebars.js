@@ -81,14 +81,14 @@ module.exports = {
           label: "Installing",
           items: [
             "user-guide/install-zowe-zos-convenience-build",
-        //    {
-        //    type: "category",
-        //    label: "Installing Zowe SMP/E build",
-        //    items: [
-        //      "user-guide/install-zowe-smpe",
-        //      "user-guide/install-zowe-smpe-zosmf-workflow",
-        //      ],
-        //    },
+            {
+              type: "category",
+              label: "Installing Zowe SMP/E build",
+              items: [
+                "user-guide/install-zowe-smpe",
+                "user-guide/install-zowe-smpe-zosmf-workflow",
+              ],
+            },
         //    {
         //      type: "category",
         //      label: "Installing Zowe Portable Software Instance",
