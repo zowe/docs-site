@@ -4,20 +4,6 @@
 
 If you already installed the supported version `@zowe-v1-lts`, switch versions to try this feature. Global profiles will be included in the next major Zowe release, V2.0.0-LTS. You can also [install the @next release of Zowe CLI](cli-install-cli-next.md).
 
-**Table of Contents:**
-- [Feature overview](#feature-overview)
-  - [Benefits](#benefits)
-  - [Changes to secure credential storage](#changes-to-secure-credential-storage)
-- [Initializing global configuration](#initializing-global-configuration)
-- [Initializing user-specific configuration (Optional)](#initializing-user-specific-configuration-optional)
-- [Editing global configuration](#editing-global-configuration)
-- [Managing credential security](#managing-credential-security)
-- [Tips for efficient configuration](#tips-for-efficient-configuration)
-  - [Command option order of precedence](#command-option-order-of-precedence)
-  - [Tips for using the base profile](#tips-for-using-the-base-profile)
-- [Sharing global configuration](#sharing-global-configuration)
-- [Example configurations](#example-configurations)
-
 ## Feature overview
 
 In the V1-LTS version of Zowe CLI, users issue commands from the `zowe profiles` group to create, edit, and manage user profiles. Each profile contains the host, port, username, and password for one mainframe service instance. While effective, users often need to duplicate values across profiles and spend time managing many profiles.
@@ -124,6 +110,7 @@ Open the `~/.zowe/zowe.config.json` file in a text editor or IDE on your compute
         "zosmf": "zosmf",
         "base": "base"
     },
+    "autoStore": true
 }
 ```
 
@@ -165,10 +152,11 @@ For example, to add a new instance of z/OSMF that runs on a different mainframe 
         }
     },
     "defaults": {
-        // Change to zosmf_lpar2 if you wish to change default profile
+        // Change to zosmf_lpar2 if you want to change default profile
         "zosmf": "zosmf_lpar1",
         "base": "base"
-    }
+    },
+    "autoStore": true
 }
 ```
 
@@ -176,17 +164,26 @@ You can continue to add more LPARs and more services within each LPAR. After you
 
 ## Managing credential security
 
-When you first run the `zowe config init --global-config` command, the `profiles.base.properties.user` and `profiles.base.properties.password` fields are defined to the "secure" array in your configuration file. This ensures that the username and password are stored securely on your computer.
+When you first run the `zowe config init --global-config` command, the `profiles.base.properties.user` and `profiles.base.properties.password` fields are defined to the "secure" array in your configuration file, which help to ensure that the username and password are stored securely on your computer.
 
-To update the secure fields (for example, when you want to change your username and password), issue the `zowe config secure` command.
+To store or update values for the secure fields (for example, when you want to change your username and password), issue the `zowe config secure` command. If, for example, you want to update several property values in a long list of properties, press `Enter` to skip a field.
 
-To secure a specific field, use the command `zowe config set --secure <property-path>`. For example, you can issue `zowe config set --secure profiles.base.properties.password`. If you issue the command for an option that is already secured, the CLI prompts you to enter a new option value.
+To secure a specific field, issue `zowe config set --secure <property-path>`. For example, `zowe config set --secure profiles.base.properties.password`. When you issue the command for an option that is already secured, the CLI prompts you to enter a new option value.
 
 You can use an editor to define options to the secure array in `zowe.config.json`. Any option that you define to there becomes secure/prompted-for.
+
+## Storing properties automatically
+
+When you issue a command that is missing a required option value for a property (for example, host or password) the CLI prompts you to enter the option value. In the V1-LTS version of Zowe CLI, the value that was specified was not stored for future commands to use. As a result, you either responded to a prompt on every command issued or issued a profile update command to store the missing value.
+
+The `autoStore` property in the `zowe.config.json` file lets you store the option values for properties automatically. When you specify the `autoStore` property in `zowe.config.json` to `true`, the value that you enter when prompted is stored for future commands to use. The values for secure fields are stored securely in the credential vault, and the other values are written to `zowe.config.json` on disk.
+
+The default value of the `autoStore` property is `true`. However, if this behavior is undesirable (you do not want to store properties automatically), set the value of `autoStore` to `false`. A value of `false` uses the V1-LTS behavior, which prompts for missing values on all commands that you issue.
 
 ## Tips for efficient configuration
 
 There are several methods to more efficiently update and maintain your configuration:
+
 * Leverage the command option order of precedence
 * Utilize a base profile or nested profiles
 
@@ -215,14 +212,14 @@ If you have multiple LPARs and want to share option values only between services
 ## Sharing global configuration
 
 You might want to share a configuration globally:
+
 - With developers so that they can begin working with a defined set of mainframe services. The recipient of the file manually places it in their local `~/.zowe` folder before issuing CLI commands.
 - To add to your project directory in an SCM tool such as GitHub. This lets other developers pull the project to their local machine and make use of the defined configuration. Zowe CLI commands that you issue from within the project directory automatically use the project's config scheme.
 - To enable test automation and CI/CD, letting your pipelines make use of the project configuration.
 
 ## Example configurations
 
-**Example 1:** The settings are using nested profiles to access multiple services directly on multiple LPARs that share the same username and password.
-
+**Example 1:** The settings are using nested profiles that share the same host to access multiple services directly on multiple LPARs that share the same username and password that is stored in a base profile.
 ```json
 {
     "$schema": "./zowe.schema.json",
@@ -283,9 +280,11 @@ You might want to share a configuration globally:
         "tso": "lpar1.tso",
         "ssh": "lpar1.ssh",
         "base": "base"
-    }
+    },
+    "autoStore": true
 }
 ```
+
 **Example 2:** The settings are accessing multiple services using the API ML (where MFA/SSO is achievable via token-based authorization).
 ```json
 {
@@ -327,9 +326,11 @@ You might want to share a configuration globally:
         "cics": "cics",
         "db2": "db2",
         "base": "base"
-    }
+    },
+    "autoStore": true
 }
 ```
+
 **Example 3:** The settings are accessing multiple services directly on LPAR1 and LPAR2 where username and password varies between the LPAR1 and LPAR2 services. This example is identical to Example 1 except that LPAR1 and LPAR2 each contain a secure array, instead of just one secure array in the "base" profile.
 ```json
 {
@@ -395,7 +396,8 @@ You might want to share a configuration globally:
         "tso": "lpar1.tso",
         "ssh": "lpar1.ssh",
         "base": "base"
-    }
+    },
+    "autoStore": true
 }
 ```
 
@@ -477,6 +479,7 @@ You might want to share a configuration globally:
         "tso": "dev.tso",
         "ssh": "dev.ssh",
         "base": "base"
-    }
+    },
+    "autoStore": true
 }
 ```

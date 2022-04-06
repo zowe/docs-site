@@ -16,6 +16,8 @@ module.exports = {
       label: "Release notes",
       items: [
         "getting-started/release-notes/v1_27_3",
+        "getting-started/release-notes/v1_27_2",
+        "getting-started/release-notes/v1_27_1",
         "getting-started/release-notes/v1_27",
         "getting-started/release-notes/v1_26",
         "getting-started/release-notes/v1_25",
@@ -171,12 +173,28 @@ module.exports = {
     },
     {
       type: "category",
-      label: "Installing Zowe CLI @next version",
+      label: "Installing Zowe CLI @next version (Technical Preview)",
       items: [
         "user-guide/cli-development-roadmap-next",
-        "user-guide/cli-install-cli-next",
-        "user-guide/cli-using-daemon-mode",
+        {
+          type: "category",
+          label: "Install Zowe CLI @next",
+          items: [
+            "user-guide/cli-install-cli-next",
+            "user-guide/cli-configure-scs-on-zlinux-os",
+            "user-guide/cli-configure-cli-on-os-where-scs-unavailable",
+          ],
+        },
+        {
+          type: "category",
+          label: "Using Daemon Mode (Technical Preview)",
+          items: [
+            "user-guide/cli-using-daemon-mode",
+            "user-guide/cli-configure-daemon-on-zlinux-os",
+          ],
+        },        
         "user-guide/cli-using-global-profile-configuration",
+              
       ],
     },
     {
@@ -233,6 +251,7 @@ module.exports = {
           label: "Zowe Explorer extensions",
           items: [
             "user-guide/ze-cics",
+            "user-guide/ze-ftp",
           ],
         },
         "user-guide/sdks-using",

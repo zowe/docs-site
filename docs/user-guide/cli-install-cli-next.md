@@ -4,7 +4,23 @@
 
 You can install the Zowe CLI `@next` version from the online npm registry or download it from the Zowe Downloads site.
 
-***Prerequisites***
+## Installation guidelines
+  
+To install the CLI @next version on **Windows**, **Mac**, and **Linux** operating systems, follow the steps in [Install Zowe CLI from npm](install-zowe-cli-from-npm) or [Install Zowe CLI from a download](#install-zowe-cli-from-a-download).
+
+However, to install Zowe CLI @next on **z/Linux**, **z/OS UNIX System Services (USS)**, or on an operating system where the *Secure Credential Store* is *not required* or *cannot be installed*, use the following installation guidelines:
+
+*  To install Zowe CLI @next on a z/Linux operating system and you **require** the Secure Credential Store:
+   1. Follow the steps in [Configure Secure Credential Store on z/Linux operating systems](cli-configure-scs-on-zlinux-os).
+   2. Follow the steps in [Install Zowe CLI from npm](#install-zowe-cli-from-npm) or [Install Zowe CLI from a download](#install-zowe-cli-from-a-download).
+*  To install Zowe CLI @next on a z/Linux operating system and you **do not require** the Secure Credential Store:
+   1. Follow the steps in [Install Zowe CLI from npm](#install-zowe-cli-from-npm) or [Install Zowe CLI from a download](#install-zowe-cli-from-a-download).
+   2. Follow the steps in [Configure Zowe CLI on operating systems where the Secure Credential Store is not available](cli-configure-cli-on-os-where-scs-unavailable).
+*  To install Zowe CLI @next on a USS system or on an operating system where you cannot install the Secure Credential Store:
+   1. Follow the steps in [Install Zowe CLI from npm](#install-zowe-cli-from-npm) or [Install Zowe CLI from a download](#install-zowe-cli-from-a-download).
+   2. Follow the steps in [Configure Zowe CLI on operating systems where the Secure Credential Store is not available](cli-configure-cli-on-os-where-scs-unavailable).
+
+## Prerequisites
 
 * Meet the [software requirements](https://docs.zowe.org/stable/user-guide/systemrequirements.html#zowe-cli-requirements) for Zowe CLI.
 * Meet the [software requirements](https://docs.zowe.org/stable/user-guide/cli-swreqplugins.html#software-requirements-for-zowe-cli-plug-ins) for each plug-in.
@@ -18,9 +34,8 @@ You can install the Zowe CLI `@next` version from the online npm registry or dow
    ```
    npm install -g prebuild-install
    ```
+
 * Linux users may need to prepend `sudo` to `npm` commands. For more information, see [Troubleshooting Zowe CLI](../troubleshoot/cli/troubleshoot-cli.md).
-
-
 
 ## Install Zowe CLI from npm
 
@@ -49,20 +64,23 @@ Use the following procedure to install Zowe CLI from an npm registry:
     Optional plug-ins are installed.
 
 3. Migrate your Zowe CLI profiles from your current installation to your @next installation. Issue the following command:
+
    ```
    zowe config convert-profiles
    ```
+
    **Note:** Profile data is backed up in case you want to revert the profiles to your previous Zowe CLI installation.
 
 4. (Optional) If you no longer require the profiles for your previous Zowe CLI installation, you can delete them.
- 
+
    **Important:** We do not recommend deleting the profiles for your previous Zowe CLI installation until you have tested your @next installation and are satisfied with its performance.
-   
+
    Issue the following command:
+
    ```
    zowe config convert-profiles --delete
    ```
-   
+
 You can now try out the [technical preview features](cli-development-roadmap-next.md).
 
 ## Install Zowe CLI from a download
@@ -96,17 +114,21 @@ Use the following procedure to install Zowe CLI from a download package:
    ```
    zowe plugins install zowe plugins install cics-for-zowe-cli.tgz db2-for-zowe-cli.tgz zos-ftp-for-zowe-cli.tgz  ims-for-zowe-cli.tgz mq-for-zowe-cli.tgz
    ```
+
 7. Migrate your Zowe CLI profiles from your current installation to your @next installation. Issue the following command:
+
    ```
    zowe config convert-profiles
    ```
+
    **Note:** Profile data is backed up in case you want to revert the profiles to your previous Zowe CLI installation.
 
 8. (Optional) If you no longer require the profiles for your previous Zowe CLI installation, you can delete them.
- 
+
    **Important:** We do not recommend deleting the profiles for your previous Zowe CLI installation until you have tested your @next installation and are satisfied with its performance.
-   
+
    Issue the following command:
+
    ```
    zowe config convert-profiles --delete
    ```
