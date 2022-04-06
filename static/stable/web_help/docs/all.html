@@ -2985,7 +2985,7 @@ Indicates the individual job to release. JOB is required to release a specific j
 <h4>Options</h4>
 <ul>
 <li>
-<p><code>--q</code>  <em>(string)</em></p>
+<p><code>-q</code>  <em>(string)</em></p>
 <ul>
 <li>
 <p>Q={REQ|RDY}</p>
@@ -35248,6 +35248,15 @@ Allowed values: http, https</p>
 <p>List all plug-ins installed.</p>
 <h4>Usage</h4>
 <p>zowe plugins list [options]</p>
+<h4>Options</h4>
+<ul>
+<li>
+<p><code>--short</code>  | <code>-s</code> <em>(boolean)</em></p>
+<ul>
+<li>Show output in abbreviated format</li>
+</ul>
+</li>
+</ul>
 <a class="cmd-anchor" name="zowe_plugins_uninstall"></a><h3><a href="#zowe">zowe</a> › <a href="#zowe_plugins">plugins</a> › <a href="#zowe_plugins_uninstall">uninstall</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h3>
 <p>Uninstall plug-ins.</p>
 <h4>Usage</h4>
@@ -60369,6 +60378,12 @@ The maximum number of TSO address spaces have been created. When you specify 0, 
 </ul>
 </li>
 <li>
+<p><code>--record</code>  | <code>-r</code> <em>(boolean)</em></p>
+<ul>
+<li>Download the file content in record mode, which means that no data conversion is performed and the record length is prepended to the data. The data transfer process returns each line as-is, without translation. No delimiters are added between records. Conflicts with binary.</li>
+</ul>
+</li>
+<li>
 <p><code>--volume-serial</code>  | <code>--vs</code> <em>(string)</em></p>
 <ul>
 <li>The volume serial (VOLSER) where the data set resides. You can use this option at any time. However, the VOLSER is required only when the data set is not cataloged on the system. A VOLSER is analogous to a drive name on a PC.</li>
@@ -60539,6 +60554,12 @@ Allowed values: http, https</p>
 <p>Specifies if the automatically generated directories and files use the original letter case</p>
 <p>Default value: false</p>
 </li>
+</ul>
+</li>
+<li>
+<p><code>--record</code>  | <code>-r</code> <em>(boolean)</em></p>
+<ul>
+<li>Download the file content in record mode, which means that no data conversion is performed and the record length is prepended to the data. The data transfer process returns each line as-is, without translation. No delimiters are added between records. Conflicts with binary.</li>
 </ul>
 </li>
 <li>
@@ -62659,6 +62680,12 @@ Allowed values: http, https</p>
 </ul>
 </li>
 <li>
+<p><code>--record</code>  | <code>-r</code> <em>(boolean)</em></p>
+<ul>
+<li>Data content in record mode, which means that no data conversion is performed and the record length is prepended to the data. The data transfer process returns each line as-is, without translation. No delimiters are added between records. Conflicts with binary.</li>
+</ul>
+</li>
+<li>
 <p><code>--volume-serial</code>  | <code>--vs</code> <em>(string)</em></p>
 <ul>
 <li>The volume serial (VOLSER) where the data set resides. You can use this option at any time. However, the VOLSER is required only when the data set is not cataloged on the system. A VOLSER is analogous to a drive name on a PC.</li>
@@ -63040,6 +63067,12 @@ Allowed values: http, https</p>
 </ul>
 </li>
 <li>
+<p><code>--record</code>  | <code>-r</code> <em>(boolean)</em></p>
+<ul>
+<li>Data content in record mode, which means that no data conversion is performed and the record length is prepended to the data. The data transfer process returns each line as-is, without translation. No delimiters are added between records. Conflicts with binary.</li>
+</ul>
+</li>
+<li>
 <p><code>--volume-serial</code>  | <code>--vs</code> <em>(string)</em></p>
 <ul>
 <li>The volume serial (VOLSER) where the data set resides. You can use this option at any time. However, the VOLSER is required only when the data set is not cataloged on the system. A VOLSER is analogous to a drive name on a PC.</li>
@@ -63344,6 +63377,12 @@ Allowed values: http, https</p>
 <p>The method by which migrated data set is handled. By default, a migrated data set is recalled synchronously. You can specify the following values: wait, nowait, error</p>
 <p>Default value: nowait</p>
 </li>
+</ul>
+</li>
+<li>
+<p><code>--record</code>  | <code>-r</code> <em>(boolean)</em></p>
+<ul>
+<li>Data content in record mode, which means that no data conversion is performed and the record length is prepended to the data. The data transfer process returns each line as-is, without translation. No delimiters are added between records. Conflicts with binary.</li>
 </ul>
 </li>
 <li>
@@ -67553,7 +67592,7 @@ If you don't specify this option all jobs under this owner will be listed by def
 <h4>Options</h4>
 <ul>
 <li>
-<p><code>--modifyVersion</code>  <em>(string)</em></p>
+<p><code>--modify-version</code>  <em>(string)</em></p>
 <ul>
 <li>
 <p>Using this option to set X-IBM-Job-Modify-Version to &quot;2.0&quot; will make the cancel job API synchronous. Otherwise, it will be asynchronous by default.</p>
@@ -67692,7 +67731,7 @@ Allowed values: http, https</p>
 <h4>Options</h4>
 <ul>
 <li>
-<p><code>--modifyVersion</code>  <em>(string)</em></p>
+<p><code>--modify-version</code>  <em>(string)</em></p>
 <ul>
 <li>
 <p>Using this option to set X-IBM-Job-Modify-Version to &quot;2.0&quot; will make the delete job API synchronous. Otherwise, it will be asynchronous by default.</p>
@@ -68820,6 +68859,21 @@ Allowed values: http, https</p>
 <p><code>--response-format-header</code>  | <code>--rfh</code> <em>(boolean)</em></p>
 <ul>
 <li>If &quot;--response-format-type table&quot; is specified, include the column headers in the output.</li>
+</ul>
+</li>
+</ul>
+<h4>Examples</h4>
+<ul>
+<li>
+<p>Submit the JCL in the file &quot;iefbr14.txt&quot; via standard in:</p>
+<ul>
+<li><code>zowe zos-jobs submit stdin &lt; iefbr14.txt</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe zos-jobs submit stdin &lt; iefbr14.txt">Copy</button></li>
+</ul>
+</li>
+<li>
+<p>Submit the JCL in the file &quot;iefbr14.txt&quot; via standard in from the output of another command:</p>
+<ul>
+<li><code>cat iefbr14.txt |  zowe zos-jobs submit stdin</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="cat iefbr14.txt |  zowe zos-jobs submit stdin">Copy</button></li>
 </ul>
 </li>
 </ul>

@@ -15,6 +15,7 @@ module.exports = {
       type: "category",
       label: "Release notes",
       items: [
+        "getting-started/release-notes/v1_27_3",
         "getting-started/release-notes/v1_27_2",
         "getting-started/release-notes/v1_27_1",
         "getting-started/release-notes/v1_27",
@@ -297,6 +298,7 @@ module.exports = {
         "extend/extend-apiml/api-mediation-routing",
         "extend/extend-apiml/api-mediation-passtickets",
         "extend/extend-apiml/custom-metadata",
+        "extend/extend-apiml/websocket",
         {
           type: "category",
           label: "Caching service",
