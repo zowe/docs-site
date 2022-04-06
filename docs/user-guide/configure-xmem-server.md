@@ -66,7 +66,7 @@ Issue one of the following operator commands to dynamically add the load library
   SETPROG APF,ADD,DSNAME=hlq.SZWEAUTH,SMS
   ```
 
-#### Confiruging using `zwe init apfauth` 
+#### Configuring using `zwe init apfauth` 
 
 If you are using the `zwe init` command to configure your z/OS system, the step `zwe init apfauth` can be used to generate the `SETPROG` commands and execute them directly.  This takes the input parameters `zowe.setup.mvs.authLoadLib` for the `SZWEAUTH` PDS location, and `zowe.setup.mvs.authPluginLib` for the location of the PDS that is used to contain plugins for the cross memory server.  For more information on `zwe init apfauth` see, [APF Authorize Load Libraries](./configure-zos-system.md#apf-authorize-load-libraries).
 
