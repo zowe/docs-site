@@ -23,7 +23,8 @@ To install CLI on **Windows**, **Mac**, and **Linux** operating systems, follow 
 
 ### Installation notes
 
-- As you are installing Zowe CLI, you might encounter error messages that relate to `cpu-features` and `ssh`. You can safely ignore error messages of this type. The installation will complete successfully. This behavior can occur when you installing CLI from npm and from a download. 
+- As you are installing Zowe CLI, you might encounter error messages that relate to `cpu-features` and `ssh`. You can safely ignore error messages of this type; the installation completes successfully. This behavior can occur when you install CLI from npm and from a local package.
+
 ## Prerequisites
 
 - Meet the [software requirements](../user-guide/systemrequirements-cli.md) for Zowe CLI.
@@ -31,15 +32,17 @@ To install CLI on **Windows**, **Mac**, and **Linux** operating systems, follow 
 
 ### Prerequisite notes
 
-- If you are installing Zowe CLI on a computer that is running Node.js 16 on Windows operating system, see [Installing Zowe CLI with Node.js 16 on Windows](../user-guide/cli-install-cli-nodejs-windows.md).
+- If you are installing Zowe CLI on a computer that is running Node.js 16 on a Windows operating system, see [Installing Zowe CLI with Node.js 16 on Windows](../user-guide/cli-install-cli-nodejs-windows.md).
 
-- If you are running NPM version 7 (`npm@7`) or NPM version 8 (`npm@8`) on a Windows operating system, ensure that your computer is connected to the Internet. Issue the following command before you install Zowe CLI:
+- If you are running NPM version 7 (`npm@7`) or NPM version 8 (`npm@8`) on a Windows operating system, ensure that your computer is connected to the Internet.
+
+   Issue the following command ***before*** you install Zowe CLI:
 
    ```
    npm install -g prebuild-install
    ```
 
-- Linux users may need to prepend `sudo` to `npm` commands. For more information, see [Troubleshooting Zowe CLI](../troubleshoot/cli/troubleshoot-cli.md).
+- Linux users ***might*** need to prepend `sudo` to `npm` commands. For more information, see [Troubleshooting Zowe CLI](../troubleshoot/cli/troubleshoot-cli.md).
 
 
 ## Install Zowe CLI from npm

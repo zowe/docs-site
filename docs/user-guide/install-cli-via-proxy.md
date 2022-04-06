@@ -1,6 +1,6 @@
 # Install CLI from Online Registry Via Proxy
 ​
-This topic describes how to install Zowe CLI using the NPM install command when you are working behind a proxy server. You will need to use this installation method if your site blocks access to public npm.
+This topic describes how to install Zowe CLI using the NPM install command when you are working behind a proxy server. Use this installation method when your site blocks access to public npm.
 
 You can install Zowe CLI from an online registry via proxy on Windows, macOS, or Linux operating systems:
 
@@ -19,7 +19,8 @@ You can install Zowe CLI from an online registry via proxy on Windows, macOS, or
         npm config set proxy http://proxy.[proxy_name].com:[port_number]
         ```
 
-        *where* [proxy_name] is the IP or hostname and [port_number] is the port number of the proxy server.
+        -  [proxy_name]: The IP or hostname
+        -  [port_number]: The port number of the proxy server.
 
     * If your proxy server **requires** login credentials, issue the following commands to add the proxy URL, with login credentials, to the NPM config file:
 
@@ -28,7 +29,9 @@ You can install Zowe CLI from an online registry via proxy on Windows, macOS, or
         npm config set proxy http://[username]:[password]@proxy.[proxy_name].com:[port_number]
         ```
 
-        *where* [username] and [password] are the required login credentials, [proxy_name] is the IP or hostname, and [port_number] is the port number of the proxy server.
+        - [username] and [password]: The required login credentials
+        - [proxy_name]: The IP or hostname
+        - [port_number]: The port number of the proxy server
 
 2. Ensure that you meet the [System requirements](../user-guide/systemrequirements-cli.md) for CLI.
 
@@ -42,7 +45,7 @@ You can install Zowe CLI from an online registry via proxy on Windows, macOS, or
 
     a. Ensure that your system meets the [Software requirements for Zowe CLI plug-ins](../user-guide/cli-swreqplugins.md).
         
-    b. Issue the following command to install all plug-ins:
+    b. Issue the following command to install all of the plug-ins:
         
     ```
     zowe plugins install @zowe/cics-for-zowe-cli@zowe-v2-lts @zowe/ims-for-zowe-cli@zowe-v2-lts @zowe/mq-for-zowe-cli@zowe-v2-lts @zowe/zos-ftp-for-zowe-cli@zowe-v2-lts @zowe/db2-for-zowe-cli@zowe-v2-lts
@@ -55,10 +58,11 @@ You can install Zowe CLI from an online registry via proxy on Windows, macOS, or
    ```
    zowe plugins validate [my-plugin]
    ```
-   where [my-plugin] is the syntax for the plugin such as `@zowe/cics@zowe-v2-lts`.
+
+   - [my-plugin]: The syntax for the plug-in. For example, `@zowe/cics@zowe-v2-lts`.
 ​
 6. **(Optional)** Test the connection to z/OSMF. See [Testing connections to z/OSMF](../user-guide/cli-using-using-profiles.md#testing-connections-to-zosmf) 
 
 7. **(Optional)** Access the Zowe CLI Help (`zowe --help`) or the Zowe CLI Web Help for a complete reference of Zowe CLI.
 ​
-After you install the CLI, you can connect to the mainframe directly issuing a command, by creating user profiles and making use of them on commands, or by using environment variables. For more information, see [Displaying help](cli-using-displaying-help.md).
+After you install Zowe CLI, you can connect to the mainframe directly issuing a command, by creating user profiles and making use of them on commands, or by using environment variables. For more information, see [Displaying help](cli-using-displaying-help.md).

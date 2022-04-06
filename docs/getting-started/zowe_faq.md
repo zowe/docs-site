@@ -276,7 +276,7 @@ You can install Zowe CLI using the following methods:
 
 <summary></summary>
 
-- Zowe CLI V2 introduces **team** profiles. Using team profiles helps to improve the initial setup of Zowe CLI by making service connection details easier to share and easier to store within projects. For more information, see [Configuring team profiles](../user-guide/cli-using-configuring-global-profiles.md).
+- Zowe CLI V2 introduces **team** profiles. Using team profiles helps to improve the initial setup of Zowe CLI by making service connection details easier to share and easier to store within projects. For more information, see [Using team profiles](../user-guide/cli-using-using-team-profiles.md).
 
 </details>
 
