@@ -175,14 +175,14 @@ module.exports = {
       ],
     },
     
-    //{
-    //  type: "category",
-    //  label: "Installing Zowe Explorer",
-    //  items: [
-    //    "user-guide/ze-install",
-    //    "user-guide/ze-profiles",
-    //  ],
-    //},
+    {
+      type: "category",
+      label: "Installing Zowe Explorer",
+      items: [
+        "user-guide/ze-install",
+        "user-guide/ze-profiles",
+      ],
+    },
     {
       type: "category",
       label: "Advanced Zowe configuration",
@@ -266,7 +266,6 @@ module.exports = {
           ],
         },
         "user-guide/sdks-using",
-        //"user-guide/sdks-using",
   ],
   extending: [
     {
