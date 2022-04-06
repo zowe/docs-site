@@ -188,7 +188,7 @@ module.exports = {
       label: "Advanced Zowe configuration",
       items: [
     //    "user-guide/mvd-configuration",
-    //    "user-guide/cli-configuringcli",
+        "user-guide/cli-configuringcli-ev",
         "user-guide/configure-data-sets-jobs-api",
         "user-guide/api-mediation/api-gateway-configuration",
         "user-guide/api-mediation/api-mediation-internal-configuration",
@@ -228,13 +228,13 @@ module.exports = {
               type: "category",
               label: "Configuring team profiles",
               items: [
-                "user-guide/cli-using-configuring-global-profiles",
+                "user-guide/cli-using-using-team-profiles",
                 "user-guide/cli-using-initializing-team-configuration",
-                "user-guide/cli-using-global-managing-credential-security",
+                "user-guide/cli-using-team-configuration-application-developers",
+                "user-guide/cli-using-team-configuration-team-leaders",
+                "user-guide/cli-using-team-managing-credential-security",
                 "user-guide/cli-using-global-storing-properties-automatically",
-                "user-guide/cli-using-creating-global-user-profiles",
-                "user-guide/cli-using-creating-global-team-profiles",
-                              ],
+                                              ],
             },
             "user-guide/cli-using-integrating-apiml",
             "user-guide/cli-using-working-certificates",
@@ -256,15 +256,16 @@ module.exports = {
             "user-guide/ze-install",
           ],
         },
-        //"user-guide/ze-usage",
-        // {
-        //  type: "category",
-        //  label: "Zowe Explorer extensions",
-        //  items: [
-        //    "user-guide/ze-cics",
-        //    "user-guide/ze-ftp",
-        //  ],
-        //},
+        "user-guide/ze-usage",
+         {
+          type: "category",
+          label: "Zowe Explorer extensions",
+          items: [
+            "user-guide/ze-cics",
+            "user-guide/ze-ftp",
+          ],
+        },
+        "user-guide/sdks-using",
         //"user-guide/sdks-using",
   ],
   extending: [
@@ -396,7 +397,7 @@ module.exports = {
       label: "Zowe Explorer",
       items: [
         "troubleshoot/ze/troubleshoot-ze",
-    //    "troubleshoot/ze/known-ze",
+        "troubleshoot/ze/known-ze",
         "troubleshoot/ze/ze-issues",
       ],
     },

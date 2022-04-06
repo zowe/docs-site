@@ -2,12 +2,12 @@
 
 Install Zowe&trade; CLI on your computer.
 
-If you are familiar with command-line tools and want to get started using Zowe CLI quickly, see [Zowe CLI quick start](../getting-started/cli-getting-started.md). You can learn about new CLI features in the [Release notes](../getting-started/summaryofchanges.md).
+If your role is that of a systems administrator or you are familiar with command-line tools and want to get started using Zowe CLI quickly, see [Zowe CLI quick start](../getting-started/cli-getting-started.md). You can learn about new CLI features in the [Release notes](../getting-started/summaryofchanges.md).
 
-After you install Zowe CLI using your preferred installation method, see [Using CLI](../user-guide/cli-using-usingcli.md) to learn about how to connect Zowe CLI to the mainframe, create Zowe CLI profiles and team profiles, integrate Zowe CLI with API ML, enable daemon mode, and much, much more!
+After you install Zowe CLI and Zowe CLI plug-ins using your preferred installation method, see [Using CLI](../user-guide/cli-using-usingcli.md) to learn about how to connect Zowe CLI to the mainframe, create Zowe CLI profiles and team profiles, integrate Zowe CLI with API ML, enable daemon mode, and much, much more!
 ## Installation guidelines
   
-To install CLI on **Windows**, **Mac**, and **Linux** operating systems, follow the steps in [Install Zowe CLI from npm](#install-zowe-cli-from-npm) or [Install Zowe CLI from a download](#install-zowe-cli-from-a-download).
+To install CLI on **Windows**, **Mac**, and **Linux** operating systems, follow the steps in [Install Zowe CLI from npm](#install-zowe-cli-from-npm) or [Install Zowe CLI from a local package](#install-zowe-cli-from-a-local-package).
 
 ***However***, to install Zowe CLI on **z/Linux**, **z/OS UNIX System Services (USS)**, or on an operating system where the **Secure Credential Store** is ***not required*** or ***cannot be installed***, use the following installation guidelines:
 
@@ -64,9 +64,9 @@ Use the following procedure to install Zowe CLI from an npm registry:
 
 Zowe CLI is installed on your computer. Issue the `zowe --help` command to view a list of available commands. For information about how to connect the CLI to the mainframe, create profiles, integrate with API ML, and more, see [Using Zowe CLI](../user-guide/cli-using-usingcli.md).
 
-## Install Zowe CLI from a download
+## Install Zowe CLI from a local package
 
-Use the following procedure to install Zowe CLI from a download package:
+Use the following procedure to install Zowe CLI from a local package:
 
 1. Meet the [prerequisites](#prerequisites) for installing Zowe CLI.
 
