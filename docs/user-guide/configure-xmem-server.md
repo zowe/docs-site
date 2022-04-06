@@ -24,9 +24,9 @@ The cross memory server runtime artifacts, the JCL for the started tasks, the pa
 
 The load modules for the cross memory server and an auxiliary server it uses are found in the `SZWEAUTH` PDSE.  
 
-The location of `SZWESAMP` and `SZWEAUTH` for a convenience build depends on the value of the `zowe.setup.dataset.prefix` parameters in the `zowe.yaml` file used to configure the `zwe install` command, see [Install the MVS data sets](./install-zowe-zos-convenience-build.md#install-the-mvs-data-sets).
+  - **Convenience Build** The location of `SZWESAMP` and `SZWEAUTH` for a convenience build depends on the value of the `zowe.setup.dataset.prefix` parameters in the `zowe.yaml` file used to configure the `zwe install` command, see [Install the MVS data sets](./install-zowe-zos-convenience-build.md#install-the-mvs-data-sets).
 
-For an SMP/E installation, `SZWESAMP` and `SZWEAUTH` are the SMP/E target libraries whose location depends on the value of the `#thlq` placeholder in the sample member `AZWE001.F1(ZWE3ALOC)`.
+  - **SMP/E** For an SMP/E installation, `SZWESAMP` and `SZWEAUTH` are the SMP/E target libraries whose location depends on the value of the `#thlq` placeholder in the sample member `AZWE001.F1(ZWE3ALOC)`.
 
 The cross memory server is a long running server process that, by default, runs under the started task name `ZWESISTC` with the user ID `ZWESIUSR` and group of `ZWEADMIN`.   
 
@@ -65,6 +65,12 @@ Issue one of the following operator commands to dynamically add the load library
   ```
   SETPROG APF,ADD,DSNAME=hlq.SZWEAUTH,SMS
   ```
+
+#### Confiruging using `zwe init apfauth` 
+
+If you are using the `zwe init` command to configure your z/OS system, the step `zwe init apfauth` can be used to generate the `SETPROG` commands and execute them directly.  This takes the input parameters `zowe.setup.mvs.authLoadLib` for the `SZWEAUTH` PDS location, and `zowe.setup.mvs.authPluginLib` for the location of the PDS that is used to contain plugins for the cross memory server.  For more information on `zwe init apfauth` see, [APF Authorize Load Libraries](./configure-zos-system.md#apf-authorize-load-libraries).
+
+#### Making APF auth be part of the IPL
 
 Add one of the following lines to your active `PROGxx` PARMLIB member, for example `SYS1.PARMLIB(PROG00)`, to ensure that the APF authorization is added automatically after next IPL. The value of `DSNAME` is the name of the `SZWEAUTH` data set, as created during Zowe installation:  
 
@@ -107,21 +113,23 @@ Wherever you place the `ZWESIP00` member, ensure that the data set is listed in 
 
 For the cross memory server to be started, you must move the JCL PROCLIB `ZWESISTC` member from the installation PDS SAMPLIB `SZWESAMP` into a PDS that is on the JES concatenation path.  
 
-You need to update the `ZWESISTC` member in the JES concatenation path with the location of the load library that contains the load module `ZWESI00` by editing the STEPLIB DD statement of `ZWESISTC`.  Edit the PARMLIB DD statement to point to the location of the PDS that contains the `ZWESIP00` member.  
+You need to update the `ZWESISTC` member in the JES concatenation path with the location of the load library that contains the load module `ZWESIS01` by editing the STEPLIB DD statement of `ZWESISTC`.  Edit the PARMLIB DD statement to point to the location of the PDS that contains the `ZWESIP00` member.  
 
-For example, the sample JCL below shows `ZWESVSTC` where the APF-authorized PDSE containing `ZWESI00` is `ZWESVUSR.SZWEAUTH` and the PDS PARMLIB containing `ZWESIP00` is `ZWESVUSR.SZWESAMP`.  
+For example, the sample JCL below shows `ZWESISTC` where the APF-authorized PDSE containing `ZWESIS01` is `IBMUSER.ZWEV2.SZWEAUTH(ZWESIS01)` and the PDS PARMLIB containing `ZWESIP00` is `IBMUSER.ZWEV2.SZWESAMP(ZWESIP00)`.  
 
 ```cobol
 //ZWESIS01 EXEC PGM=ZWESIS01,REGION=&RGN,
 //         PARM='NAME=&NAME,MEM=&MEM'
-//STEPLIB  DD   DSNAME=ZWESVUSR.SZWEAUTH,DISP=SHR
-//PARMLIB  DD   DSNAME=ZWESVUSR.SZWESAMP,DISP=SHR
+//STEPLIB  DD   DSNAME=IBMUSER.ZWEV2.SZWEAUTH,DISP=SHR
+//PARMLIB  DD   DSNAME=IBMUSER.ZWEV2.SZWESAMP,DISP=SHR
 //SYSPRINT DD   SYSOUT=*
 ```
 
 ## SAF configuration
 
-You must configure the z/OS system in order to correctly run the cross memory server.  The steps to perform this are included in the JCL member `ZWESECUR` that is used to configure a z/OS environment for Zowe, and documented in the section [Configure the cross memory server for SAF](configure-zos-system.md#configure-the-cross-memory-server-for-saf).
+Because the ZIS server makes z/OS security calls it restrits which clients are able to use it services, by requiring them to have `READ` access to a security profile `ZWES.IS` in the `FACILITY` class.  
+
+The Zowe launcher started task `ZWESLSTC` needs to be able to access the ZIS server, which requires that the user ID `ZWESVUSR` has access to `ZWES.IS`.  The steps to do this are desribed in [Configure the cross memory server for SAF](configure-zos-system.md#configure-the-cross-memory-server-for-saf).  
 
 ## Summary of cross memory server installation
 
