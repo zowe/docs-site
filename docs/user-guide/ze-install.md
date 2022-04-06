@@ -23,13 +23,17 @@ Ensure that you meet the following prerequisites before you use the extension:
 * Configure TSO/E address space services, z/OS data set, file REST interface, and z/OS jobs REST interface. For more information, see [z/OS Requirements](https://docs.zowe.org/stable/user-guide/systemrequirements-zosmf#z-os-requirements).
 * Create one Zowe CLI `zosmf` profile so that the extension can communicate with the mainframe.
 
-   **Notes:**
+### Profile notes:
 
-   i. You can use your existing Zowe CLI `zosmf` profiles that are created with the Zowe CLI v.2.0.0 or later.
+   - You can use your existing Zowe CLI `zosmf` profiles that are created with the Zowe CLI v.2.0.0 or later.
 
-   ii. Zowe CLI `zosmf` profiles that are created in Zowe Explorer can be interchangeably used in the Zowe CLI.
+   - Zowe CLI `zosmf` profiles that are created in Zowe Explorer can be interchangeably used in the Zowe CLI.
+
+   - *Optionally*, you can continue using Zowe CLI V1 profiles with Zowe Explorer. For more information, see ***instert link here***.
 
 ## Installing
+
+Use the following steps to install Zowe Explorer:
 
 1. Address [the software requirements](#software-requirements).
 2. Open VSCode, and navigate to the **Extensions** tab on the left-hand side of the UI.
@@ -56,7 +60,7 @@ Configure Zowe Explorer in the settings file of the extension. To access the ext
 
 * **Data set creation settings:** You can change the default creation settings for various data set types.
 
-  **Follow these steps:**
+**Follow these steps:**
 
 1. Click the **Edit in settings.json** button under the Data Set, USS or JOBS settings that you want to edit.
 2. Edit the settings as needed.
@@ -83,7 +87,7 @@ Configure Zowe Explorer in the settings file of the extension. To access the ext
 
 ## Relevant Information
 
-In this section you can find useful links and other relevant to Zowe Explorer information that can improve your experience with the extension. Check the following links:
+In this section you can find useful links and other relevant to Zowe Explorer information that can improve your experience with the extension.
 
 * For information about how to develop for Eclipse Theia, see [Theia README](https://github.com/zowe/vscode-extension-for-zowe/blob/master/docs/README-Theia.md).
 * For information about how to create a VSCode extension for Zowe Explorer, see [VSCode extensions for Zowe Explorer](https://github.com/zowe/vscode-extension-for-zowe/blob/master/docs/README-Extending.md).
