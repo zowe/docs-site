@@ -76,6 +76,8 @@
 					</a>
 					<p>The following libraries are included in this package:</p>
 					<ul>
+						<li><p><em>apiml</em> - Defines the <code>Services</code> class, which facilitates managing services hosted by the Zowe API Mediation Layer. It defines methods to load API ML config data for installed CLI plug-ins, obtain data from the API ML services endpoint, and convert this data to a config JSON file.</p>
+						</li>
 						<li><p><em>auth</em> - Contains the <code>Login</code> and <code>Logout</code> classes, which let you handle login and logout from the Zowe API Mediation Layer (or other token-based authentication services). Use the functions <code>Login.apimlLogin</code> and <code>Logout.apimlLogout</code> to store a web token in a local &quot;base profile&quot;, which enables a secure connection to the server.</p>
 						</li>
 						<li><p><em>rest</em> - Defines the <code>ZosmfRestClient</code> class, which lets you access z/OSMF REST APIs and is an extension of the Imperative CLI Framework <code>RestClient</code> class. It provides convenience methods, such as <code>appendHeaders</code> and <code>processError</code>, that can be used for any z/OSMF request.</p>

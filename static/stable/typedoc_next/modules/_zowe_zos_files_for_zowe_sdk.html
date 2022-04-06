@@ -74,28 +74,18 @@
 						<h2>API Examples</h2>
 					</a>
 					<p><strong>Create a dataset</strong></p>
-					<pre><code class="language-typescript"><span class="hljs-keyword">import</span> { IProfile, Session, Logger, LoggingConfigurer, ImperativeError,
-         CredentialManagerFactory } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@zowe/imperative&quot;</span>;
-<span class="hljs-keyword">import</span> { ZosmfSession } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@zowe/zosmf-for-zowe-sdk&quot;</span>;
-<span class="hljs-keyword">import</span> { getDefaultProfile } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@zowe/core-for-zowe-sdk&quot;</span>;
-<span class="hljs-keyword">import</span> { Create, ICreateDataSetOptions, IZosFilesResponse, CreateDataSetTypeEnum } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@zowe/zos-files-for-zowe-sdk&quot;</span>;
+					<pre><code class="language-typescript"><span class="hljs-keyword">import</span> { ProfileInfo } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@zowe/imperative&quot;</span>;
+<span class="hljs-keyword">import</span> { Create, CreateDataSetTypeEnum, ICreateDataSetOptions } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@zowe/zos-files-for-zowe-sdk&quot;</span>;
 
 (<span class="hljs-keyword">async</span> () =&gt; {
-    <span class="hljs-comment">//Initialize the Imperative Credential Manager Factory and Logger</span>
-    Logger.initLogger(LoggingConfigurer.configureLogger(<span class="hljs-string">&#x27;lib&#x27;</span>, {<span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;test&#x27;</span>}));
-    <span class="hljs-comment">// Uncommment the below line if the Secure Credential Store is in use</span>
-    <span class="hljs-comment">// await CredentialManagerFactory.initialize({service: &quot;Zowe-Plugin&quot;});</span>
+    <span class="hljs-comment">// Load connection info from default z/OSMF profile</span>
+    <span class="hljs-keyword">const</span> profInfo = <span class="hljs-keyword">new</span> ProfileInfo(<span class="hljs-string">&quot;zowe&quot;</span>);
+    <span class="hljs-keyword">await</span> profInfo.readProfilesFromDisk();
+    <span class="hljs-keyword">const</span> zosmfProfAttrs = profInfo.getDefaultProfile(<span class="hljs-string">&quot;zosmf&quot;</span>);
+    <span class="hljs-keyword">const</span> zosmfMergedArgs = profInfo.mergeArgsForProfile(zosmfProfAttrs, { <span class="hljs-attr">getSecureVals</span>: <span class="hljs-literal">true</span> });
+    <span class="hljs-keyword">const</span> session = ProfileInfo.createSession(zosmfMergedArgs.knownArgs);
 
-    <span class="hljs-comment">// Get the default z/OSMF profile and create a z/OSMF session with it</span>
-    <span class="hljs-keyword">let</span> defaultZosmfProfile: IProfile;
-    <span class="hljs-keyword">try</span> {
-        defaultZosmfProfile = <span class="hljs-keyword">await</span> getDefaultProfile(<span class="hljs-string">&quot;zosmf&quot;</span>, <span class="hljs-literal">true</span>);
-    } <span class="hljs-keyword">catch</span> (err) {
-        <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> ImperativeError({<span class="hljs-attr">msg</span>: <span class="hljs-string">&quot;Failed to get a profile.&quot;</span>});
-    }
-
-    <span class="hljs-comment">// Create Options</span>
-    <span class="hljs-keyword">const</span> dataset: <span class="hljs-built_in">string</span> = <span class="hljs-string">&quot;ZOWEUSER.PUBLIC.NEW.DATASET&quot;</span>;
+    <span class="hljs-keyword">const</span> dataset = <span class="hljs-string">&quot;ZOWEUSER.PUBLIC.NEW.DATASET&quot;</span>;
     <span class="hljs-keyword">const</span> dataSetType = CreateDataSetTypeEnum.DATA_SET_CLASSIC;
     <span class="hljs-keyword">const</span> options: ICreateDataSetOptions = {
         <span class="hljs-attr">primary</span>: <span class="hljs-number">10</span>,
@@ -103,11 +93,8 @@
         <span class="hljs-attr">alcunit</span>: <span class="hljs-string">&quot;TRK&quot;</span>,
         <span class="hljs-attr">lrecl</span>: <span class="hljs-number">80</span>
     };
-    <span class="hljs-keyword">const</span> session: Session = ZosmfSession.createBasicZosmfSession(defaultZosmfProfile);
-    <span class="hljs-keyword">let</span> response: IZosFilesResponse;
-    response = <span class="hljs-keyword">await</span> Create.dataSet(session, dataSetType, dataset, options);
+    <span class="hljs-keyword">const</span> response = <span class="hljs-keyword">await</span> Create.dataSet(session, dataSetType, dataset, options);
     <span class="hljs-built_in">console</span>.log(response);
-    process.exit(<span class="hljs-number">0</span>);
 })().catch(<span class="hljs-function">(<span class="hljs-params">err</span>) =&gt;</span> {
     <span class="hljs-built_in">console</span>.error(err);
     process.exit(<span class="hljs-number">1</span>);
@@ -117,34 +104,21 @@
 						<h1></h1>
 					</a>
 					<p><strong>Download all datasets in a partitioned dataset</strong></p>
-					<pre><code class="language-typescript"><span class="hljs-keyword">import</span> { IProfile, Session, Logger, LoggingConfigurer, ImperativeError,
-         CredentialManagerFactory } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@zowe/imperative&quot;</span>;
-<span class="hljs-keyword">import</span> { ZosmfSession } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@zowe/zosmf-for-zowe-sdk&quot;</span>;
-<span class="hljs-keyword">import</span> { getDefaultProfile } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@zowe/core-for-zowe-sdk&quot;</span>;
-<span class="hljs-keyword">import</span> { IDownloadOptions, Download, IZosFilesResponse } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@zowe/zos-files-for-zowe-sdk&quot;</span>;
+					<pre><code class="language-typescript"><span class="hljs-keyword">import</span> { ProfileInfo } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@zowe/imperative&quot;</span>;
+<span class="hljs-keyword">import</span> { Download, IDownloadOptions } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@zowe/zos-files-for-zowe-sdk&quot;</span>;
 
 (<span class="hljs-keyword">async</span> () =&gt; {
-    <span class="hljs-comment">//Initialize the Imperative Credential Manager Factory and Logger</span>
-    Logger.initLogger(LoggingConfigurer.configureLogger(<span class="hljs-string">&#x27;lib&#x27;</span>, {<span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;test&#x27;</span>}));
-    <span class="hljs-comment">// Uncommment the below line if the Secure Credential Store is in use</span>
-    <span class="hljs-comment">// await CredentialManagerFactory.initialize({service: &quot;Zowe-Plugin&quot;});</span>
+    <span class="hljs-comment">// Load connection info from default z/OSMF profile</span>
+    <span class="hljs-keyword">const</span> profInfo = <span class="hljs-keyword">new</span> ProfileInfo(<span class="hljs-string">&quot;zowe&quot;</span>);
+    <span class="hljs-keyword">await</span> profInfo.readProfilesFromDisk();
+    <span class="hljs-keyword">const</span> zosmfProfAttrs = profInfo.getDefaultProfile(<span class="hljs-string">&quot;zosmf&quot;</span>);
+    <span class="hljs-keyword">const</span> zosmfMergedArgs = profInfo.mergeArgsForProfile(zosmfProfAttrs, { <span class="hljs-attr">getSecureVals</span>: <span class="hljs-literal">true</span> });
+    <span class="hljs-keyword">const</span> session = ProfileInfo.createSession(zosmfMergedArgs.knownArgs);
 
-    <span class="hljs-comment">// Get the default z/OSMF profile and create a z/OSMF session with it</span>
-    <span class="hljs-keyword">let</span> defaultZosmfProfile: IProfile;
-    <span class="hljs-keyword">try</span> {
-        defaultZosmfProfile = <span class="hljs-keyword">await</span> getDefaultProfile(<span class="hljs-string">&quot;zosmf&quot;</span>, <span class="hljs-literal">true</span>);
-    } <span class="hljs-keyword">catch</span> (err) {
-        <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> ImperativeError({<span class="hljs-attr">msg</span>: <span class="hljs-string">&quot;Failed to get a profile.&quot;</span>});
-    }
-
-    <span class="hljs-comment">// Download Options</span>
-    <span class="hljs-keyword">const</span> dataset: <span class="hljs-built_in">string</span> = <span class="hljs-string">&quot;ZOWEUSER.PUBLIC.YOUR.DATASET.HERE&quot;</span>;
-    <span class="hljs-keyword">const</span> options: IDownloadOptions = {<span class="hljs-attr">failFast</span>: <span class="hljs-literal">false</span>};
-    <span class="hljs-keyword">const</span> session: Session = ZosmfSession.createBasicZosmfSession(defaultZosmfProfile);
-    <span class="hljs-keyword">let</span> response: IZosFilesResponse;
-    response = <span class="hljs-keyword">await</span> Download.allMembers(session, dataset, options);
+    <span class="hljs-keyword">const</span> dataset = <span class="hljs-string">&quot;ZOWEUSER.PUBLIC.YOUR.DATASET.HERE&quot;</span>;
+    <span class="hljs-keyword">const</span> options: IDownloadOptions = { <span class="hljs-attr">failFast</span>: <span class="hljs-literal">false</span> };
+    <span class="hljs-keyword">const</span> response = <span class="hljs-keyword">await</span> Download.allMembers(session, dataset, options);
     <span class="hljs-built_in">console</span>.log(response);
-    process.exit(<span class="hljs-number">0</span>);
 })().catch(<span class="hljs-function">(<span class="hljs-params">err</span>) =&gt;</span> {
     <span class="hljs-built_in">console</span>.error(err);
     process.exit(<span class="hljs-number">1</span>);
@@ -154,39 +128,23 @@
 						<h1></h1>
 					</a>
 					<p><strong>List datasets on z/OS</strong></p>
-					<pre><code class="language-typescript"><span class="hljs-keyword">import</span> { IProfile, Session, Logger, LoggingConfigurer, ImperativeError,
-         CredentialManagerFactory } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@zowe/imperative&quot;</span>;
-<span class="hljs-keyword">import</span> { ZosmfSession } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@zowe/zosmf-for-zowe-sdk&quot;</span>;
-<span class="hljs-keyword">import</span> { getDefaultProfile } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@zowe/core-for-zowe-sdk&quot;</span>;
-<span class="hljs-keyword">import</span> { List, IListOptions, IZosFilesResponse } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@zowe/zos-files-for-zowe-sdk&quot;</span>;
+					<pre><code class="language-typescript"><span class="hljs-keyword">import</span> { ProfileInfo } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@zowe/imperative&quot;</span>;
+<span class="hljs-keyword">import</span> { IListOptions, List } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@zowe/zos-files-for-zowe-sdk&quot;</span>;
 
 (<span class="hljs-keyword">async</span> () =&gt; {
-    <span class="hljs-comment">//Initialize the Imperative Credential Manager Factory and Logger</span>
-    Logger.initLogger(LoggingConfigurer.configureLogger(<span class="hljs-string">&#x27;lib&#x27;</span>, {<span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;test&#x27;</span>}));
-    <span class="hljs-comment">// Uncommment the below line if the Secure Credential Store is in use</span>
-    <span class="hljs-comment">// await CredentialManagerFactory.initialize({service: &quot;Zowe-Plugin&quot;});</span>
+    <span class="hljs-comment">// Load connection info from default z/OSMF profile</span>
+    <span class="hljs-keyword">const</span> profInfo = <span class="hljs-keyword">new</span> ProfileInfo(<span class="hljs-string">&quot;zowe&quot;</span>);
+    <span class="hljs-keyword">await</span> profInfo.readProfilesFromDisk();
+    <span class="hljs-keyword">const</span> zosmfProfAttrs = profInfo.getDefaultProfile(<span class="hljs-string">&quot;zosmf&quot;</span>);
+    <span class="hljs-keyword">const</span> zosmfMergedArgs = profInfo.mergeArgsForProfile(zosmfProfAttrs, { <span class="hljs-attr">getSecureVals</span>: <span class="hljs-literal">true</span> });
+    <span class="hljs-keyword">const</span> session = ProfileInfo.createSession(zosmfMergedArgs.knownArgs);
 
-    <span class="hljs-comment">// Get the default z/OSMF profile and create a z/OSMF session with it</span>
-    <span class="hljs-keyword">let</span> defaultZosmfProfile: IProfile;
-    <span class="hljs-keyword">try</span> {
-        defaultZosmfProfile = <span class="hljs-keyword">await</span> getDefaultProfile(<span class="hljs-string">&quot;zosmf&quot;</span>, <span class="hljs-literal">true</span>);
-    } <span class="hljs-keyword">catch</span> (err) {
-        <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> ImperativeError({<span class="hljs-attr">msg</span>: <span class="hljs-string">&quot;Failed to get a profile.&quot;</span>});
-    }
-
-    <span class="hljs-comment">// List Options</span>
-    <span class="hljs-keyword">const</span> dataset: <span class="hljs-built_in">string</span> = <span class="hljs-string">&quot;ZOWEUSER.*&quot;</span>;
+    <span class="hljs-keyword">const</span> dataset = <span class="hljs-string">&quot;ZOWEUSER.*&quot;</span>;
     <span class="hljs-keyword">const</span> options: IListOptions = {};
-    <span class="hljs-keyword">const</span> session: Session = ZosmfSession.createBasicZosmfSession(defaultZosmfProfile);
-    <span class="hljs-keyword">let</span> response: IZosFilesResponse;
-    response = <span class="hljs-keyword">await</span> List.dataSet(session, dataset, options);
-    <span class="hljs-keyword">const</span> objArray = response.apiResponse.items;
-    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">const</span> obj <span class="hljs-keyword">of</span> objArray) {
-        <span class="hljs-keyword">if</span> (obj) {
-            <span class="hljs-built_in">console</span>.log(obj.dsname.toString());
-        }
-    };
-    process.exit(<span class="hljs-number">0</span>);
+    <span class="hljs-keyword">const</span> response = <span class="hljs-keyword">await</span> List.dataSet(session, dataset, options);
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">const</span> obj <span class="hljs-keyword">of</span> response.apiResponse.items) {
+        <span class="hljs-keyword">if</span> (obj) <span class="hljs-built_in">console</span>.log(obj.dsname.toString());
+    }
 })().catch(<span class="hljs-function">(<span class="hljs-params">err</span>) =&gt;</span> {
     <span class="hljs-built_in">console</span>.error(err);
     process.exit(<span class="hljs-number">1</span>);
@@ -196,35 +154,22 @@
 						<h1></h1>
 					</a>
 					<p><strong>Upload a file to Unix System Services</strong></p>
-					<pre><code class="language-typescript"><span class="hljs-keyword">import</span> { IProfile, Session, Logger, LoggingConfigurer, ImperativeError,
-         CredentialManagerFactory } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@zowe/imperative&quot;</span>;
-<span class="hljs-keyword">import</span> { ZosmfSession } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@zowe/zosmf-for-zowe-sdk&quot;</span>;
-<span class="hljs-keyword">import</span> { getDefaultProfile } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@zowe/core-for-zowe-sdk&quot;</span>;
-<span class="hljs-keyword">import</span> { Upload, IUploadOptions, IZosFilesResponse } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@zowe/zos-files-for-zowe-sdk&quot;</span>;
+					<pre><code class="language-typescript"><span class="hljs-keyword">import</span> { ProfileInfo } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@zowe/imperative&quot;</span>;
+<span class="hljs-keyword">import</span> { IUploadOptions, Upload } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@zowe/zos-files-for-zowe-sdk&quot;</span>;
 
 (<span class="hljs-keyword">async</span> () =&gt; {
-    <span class="hljs-comment">//Initialize the Imperative Credential Manager Factory and Logger</span>
-    Logger.initLogger(LoggingConfigurer.configureLogger(<span class="hljs-string">&#x27;lib&#x27;</span>, {<span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;test&#x27;</span>}));
-    <span class="hljs-comment">// Uncommment the below line if the Secure Credential Store is in use</span>
-    <span class="hljs-comment">// await CredentialManagerFactory.initialize({service: &quot;Zowe-Plugin&quot;});</span>
+    <span class="hljs-comment">// Load connection info from default z/OSMF profile</span>
+    <span class="hljs-keyword">const</span> profInfo = <span class="hljs-keyword">new</span> ProfileInfo(<span class="hljs-string">&quot;zowe&quot;</span>);
+    <span class="hljs-keyword">await</span> profInfo.readProfilesFromDisk();
+    <span class="hljs-keyword">const</span> zosmfProfAttrs = profInfo.getDefaultProfile(<span class="hljs-string">&quot;zosmf&quot;</span>);
+    <span class="hljs-keyword">const</span> zosmfMergedArgs = profInfo.mergeArgsForProfile(zosmfProfAttrs, { <span class="hljs-attr">getSecureVals</span>: <span class="hljs-literal">true</span> });
+    <span class="hljs-keyword">const</span> session = ProfileInfo.createSession(zosmfMergedArgs.knownArgs);
 
-    <span class="hljs-comment">// Get the default z/OSMF profile and create a z/OSMF session with it</span>
-    <span class="hljs-keyword">let</span> defaultZosmfProfile: IProfile;
-    <span class="hljs-keyword">try</span> {
-        defaultZosmfProfile = <span class="hljs-keyword">await</span> getDefaultProfile(<span class="hljs-string">&quot;zosmf&quot;</span>, <span class="hljs-literal">true</span>);
-    } <span class="hljs-keyword">catch</span> (err) {
-        <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> ImperativeError({<span class="hljs-attr">msg</span>: <span class="hljs-string">&quot;Failed to get a profile.&quot;</span>});
-    }
-
-    <span class="hljs-comment">// Upload Options</span>
-    <span class="hljs-keyword">const</span> localFile: <span class="hljs-built_in">string</span> = <span class="hljs-string">&quot;C:/Users/zoweuser/Documents/testFile.txt&quot;</span>;
-    <span class="hljs-keyword">const</span> remoteLocation: <span class="hljs-built_in">string</span> = <span class="hljs-string">&quot;/u/zoweuser/file.txt&quot;</span>;
-    <span class="hljs-keyword">const</span> options: IUploadOptions = {<span class="hljs-attr">binary</span>: <span class="hljs-literal">true</span>};
-    <span class="hljs-keyword">const</span> session: Session = ZosmfSession.createBasicZosmfSession(defaultZosmfProfile);
-    <span class="hljs-keyword">let</span> response: IZosFilesResponse;
-    response = <span class="hljs-keyword">await</span> Upload.fileToUssFile(session, localFile, remoteLocation, options);
+    <span class="hljs-keyword">const</span> localFile = <span class="hljs-string">&quot;C:/Users/zoweuser/Documents/testFile.txt&quot;</span>;
+    <span class="hljs-keyword">const</span> remoteLocation = <span class="hljs-string">&quot;/u/zoweuser/file.txt&quot;</span>;
+    <span class="hljs-keyword">const</span> options: IUploadOptions = { <span class="hljs-attr">binary</span>: <span class="hljs-literal">true</span> };
+    <span class="hljs-keyword">const</span> response = <span class="hljs-keyword">await</span> Upload.fileToUssFile(session, localFile, remoteLocation, options);
     <span class="hljs-built_in">console</span>.log(response);
-    process.exit(<span class="hljs-number">0</span>);
 })().catch(<span class="hljs-function">(<span class="hljs-params">err</span>) =&gt;</span> {
     <span class="hljs-built_in">console</span>.error(err);
     process.exit(<span class="hljs-number">1</span>);

@@ -4,11 +4,12 @@ As a system programmer, profiles let you store configuration details for reuse, 
 
 Zowe CLI contains the following types of profiles:
 
+- **Team profiles:** [Team profiles](../user-guide/cli-using-using-team-profiles.md) simplify profile management by letting you edit, store, and share mainframe configuration details in one location. You can use a text editor to populate global profiles with connection details for your mainframe services.
+
 - **Service profiles:** [Service profiles](#service-profiles) let you store connection information for specific mainframe service, such as IBM z/OSMF. Plug-ins can introduce other service profile types, such as the `cics` profile to connect to IBM CICS.
 
 - **Base profiles:** [Base profiles](#base-profiles) let you store connection information for use with one or more services. Your service profiles can pull information from- base profiles as needed, so that you can specify a common username and password once. The base profile can optionally store tokens to connect to Zowe API Mediation Layer, which improves security by enabling Multi-Factor Authentication (MFA) and Single Sign-on (SSO).
 
-- **Team profiles:** [Team profiles](./cli-using-configuring-global-profiles.md) simplify profile management by letting you edit, store, and share mainframe configuration details in one location. You can use a text editor to populate global profiles with connection details for your mainframe services.
 
 **Tips:**
 
@@ -16,7 +17,13 @@ Zowe CLI contains the following types of profiles:
 - Profiles are **not** required. You can choose to specify all connection details for every command.
 - Profile values are stored on your computer in plaintext in `C:\Users\<yourUsername>\.zowe\profiles` (Windows) or `~/.zowe/profiles` (Mac/Linux).
 
-**Important:** With the introduction of [team profiles](cli-using-configuring-global-profiles.md), the Secure Credential Store (SCS) Plug-in is deprecated. The `zowe scs` and `zowe config` command groups are obsolete. Secure credential encryption is now included in the core CLI. The CLI prompts you to enter the username and password securely by default. Commands in the `zowe config` command group now let you manage security for any option value.
+**Important information about V2 profiles:**
+
+- With the introduction of [team profiles](../user-guide/cli-using-using-team-profiles.md), the Secure Credential Store (SCS) Plug-in is deprecated. The `zowe scs` and `zowe config` command groups were repurposed to work with team profiles.
+- Secure credential encryption is now handled by the the secure array in the `zowe.config.json` file.
+- Zowe CLI V2 prompts you to enter the username and password securely by default.
+- Commands in the `zowe config` command group now let you manage security for any option value.
+- You can continue using Zowe CLI V1 profiles with Zowe CLI V2. However, we highly recommend that you implement V2 profiles with Zowe CLI V2.
 
 
 ## Displaying profile help
@@ -63,6 +70,14 @@ zowe zos-files list data-set "ibmuser.*" --host myhost123 --port myport123
 
 **Note:** If you choose to log in to Zowe API Mediation Layer, a base profile is created for you to store a web token, host, and port.
 
+### Tips for using base profiles
+
+Use the base profile to share option values between services. You might share option values between services in the following situations:
+- You have multiple services that share the same username, password, or other value.
+- You want to store a web token to access all services through Zowe API Mediation Layer.
+- You want to trust a known self-signed certificate or your site does not have server certificates configured. You can define `reject-unauthorized` in the base profile with a value of false to apply to all services. Understand the security implications of accepting self-signed certificates at your site before you use this method.
+If you have multiple LPARs and want to share option values only between services that run on the same LPAR, you can use nested profiles to achieve this (see Example 1 below).
+
 ## Profile best practices
 
 According to [order of precedence](#how-command-precedence-works), base profiles are used as a fallback for service profiles. This means that after you create a base profile, you might need to update your service profiles to remove username, password, host, and port. Otherwise, commands will use the information stored in your service profile and will ignore your base profile definition.
@@ -83,7 +98,7 @@ zowe zosmf check status --host <host> --port <port> --user <username> --pass <pa
 
 ### Default profile
 
-After you [create a profile](#using-profiles), verify that you can use your *default profile* to communicate with z/OSMF:
+After you [create a profile](../user-guide/cli-using-using-profiles.md), verify that you can use your *default profile* to communicate with z/OSMF:
 
 ```
 zowe zosmf check status
@@ -91,10 +106,11 @@ zowe zosmf check status
 
 ### Specific profile
 
-After you [create a profile](#using), verify that you can use *a specific profile* to communicate with z/OSMF:
+
+After you [create a profile](../user-guide/cli-using-using-profiles.md), verify that you can use *a specific profile* to communicate with z/OSMF:
 
 ```
-zowe zosmf check status --zosmf-profile <profile_name>
+zowe zosmf check status --zosmf-profile <profile_name>z
 ```
 
 The commands return a success or failure message and display information about your z/OSMF server, such as the z/OSMF version number. Report failures to your systems administrator and use the information for diagnostic purposes.

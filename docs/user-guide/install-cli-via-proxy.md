@@ -6,7 +6,7 @@ You can install Zowe CLI from an online registry via proxy on Windows, macOS, or
 
 *  This method requires access to an internal server that will allow you to connect to the appropriate registries. For other installation methods, see Installing CLI.
 *  Your default registry must be public npm (or a mirror of public npm).
-*  If you previously installed the CLI and want to update to a current version, see [Updating Zowe CLI](../user-guide/cli-updatingcli.md
+*  If you previously installed the CLI and want to update to a current version, see [Updating Zowe CLI](../user-guide/cli-updatingcli.md)
 ​
 
 **Follow these steps:**

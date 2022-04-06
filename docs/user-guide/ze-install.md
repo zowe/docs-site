@@ -1,9 +1,9 @@
-# Installing Zowe Explorer
+# Visual Studio Code (VS Code) Extension for Zowe
 
 <img src="https://codecov.io/gh/zowe/vscode-extension-for-zowe/branch/master/graph/badge.svg" alt="codecov" scope="external"/>
 <img src="https://img.shields.io/badge/chat-on%20Slack-blue" alt="slack" scope="external"/>
 
-The Zowe Explorer extension for Visual Studio Code (VSCode) modernizes the way developers and system administrators interact with z/OS mainframes, and lets you interact with data sets, USS files and jobs. Install the extension directly to [VSCode](https://code.visualstudio.com/) to enable the extension within the GUI. Working with data sets and USS files from VSCode can be more convenient than using 3270 emulators, and complements your Zowe CLI experience. The extension provides the following benefits:
+The Zowe Explorer extension for Visual Studio Code (VS Code) modernizes the way developers and system administrators interact with z/OS mainframes, and lets you interact with data sets, USS files and jobs. Install the extension directly to [VSCode](https://code.visualstudio.com/) to enable the extension within the GUI. Working with data sets and USS files from VSCode can be more convenient than using 3270 emulators, and complements your Zowe CLI experience. The extension provides the following benefits:
 
 * Enables you to create, modify, rename, copy, and upload data sets directly to a z/OS mainframe.
 * Enables you to create, modify, rename, and upload USS files directly to a z/OS mainframe.

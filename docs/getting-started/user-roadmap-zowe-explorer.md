@@ -16,7 +16,7 @@ The following definition of skill levels about Zowe Explorer helps you find the 
 
    New to Zowe Explorer? This overview topic introduces the key features, main components, and benefits of Zowe Explorer.
 
-* [**Zowe Explorer FAQs**](freqaskques.md#zowe-explorer-faq)
+* [**Zowe Explorer FAQs**](../getting-started/zowe_faq.md#zowe-explorer-faq)
 
    If you have a question, review the FAQ, which answers the most commonly asked questions about Zowe Explorer.
 
@@ -53,13 +53,17 @@ The following definition of skill levels about Zowe Explorer helps you find the 
 
 > Zowe skill level: Advanced
 
-* [**Extend Zowe Explorer**](../user-guide/ze-extensions.md)
+* [**Extend Zowe Explorer**](https://github.com/zowe/vscode-extension-for-zowe/blob/master/docs/README-Extending.md)
 
-   This page describes how to create an extension for Zowe Explorer to introduce more functionalities.
+   Learn how to create extensions for Zowe Explorer to introduce new functionalities.
 
-* [**Zowe Explorer FTP Extension**](https://github.com/zowe/vscode-extension-for-zowe/tree/master/packages/zowe-explorer-ftp-extension)
+- [**Zowe Explorer CICS Extension**](../user-guide/ze-cics.md)
 
-   This document in Zowe Explorer repository describes how to install and use the FTP extension, which adds the FTP protocol to the Zowe Explorer VS Code extension, allowing you to use z/OS FTP Plug-in for Zowe CLI profiles to connect and interact with z/OS USS.
+   Learn how to install the CICS extension. The extension adds CICS functionality to the Visual Studio Code extension, which lets you interact with CICS regions and programs.
+
+* [**Zowe Explorer FTP Extension**](../user-guide/ze-ftp.md)
+
+   Learn how to install and use the FTP extension. The extension adds the FTP protocol to the Zowe Explorer VS Code extension, which lets use z/OS FTP Plug-in for Zowe CLI profiles to connect and interact with z/OS USS.
 
 * [**Zowe Explorer repository**](https://github.com/zowe/vscode-extension-for-zowe)
 
