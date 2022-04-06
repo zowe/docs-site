@@ -60,7 +60,7 @@ See [Understanding core command groups](../user-guide/cli-using-understanding-co
 
 ## Team profiles
 
-Zowe CLI V2-LTS now supports **team** profiles. The process of setting up team profiles is simple and can be rolled out easily accross your organization. We highly recommend that you configure team profiles to support your Zowe CLI implementation. For more information, see [Configuring team profiles](../user-guide/cli-using-configuring-global-profiles.md).
+Zowe CLI V2-LTS now supports **team** profiles. The process of setting up team profiles is simple and can be rolled out easily accross your organization. We highly recommend that you configure team profiles to support your Zowe CLI implementation. For more information, see [Using team profiles](../user-guide/cli-using-using-team-profiles.md).
 ## Using profiles
 
 Zowe profiles let you store configuration details such as username, password, host, and port for a mainframe system. Switch between profiles to quickly target different subsystems and avoid typing connection details on every command.
@@ -123,7 +123,7 @@ You successfully installed Zowe CLI, issued your first commands, and wrote a sim
 
 - Issue the `zowe --help` command to explore the product functionality, or review the online [web help](../user-guide/cli-using-displaying-help.md).
 - Learn how to configure Zowe CLI [run Zowe CLI in daemon mode](../user-guide/cli-using-using-daemon-mode.md). **Daemon mode** significantly improves the performance of Zowe CLI commands by running Zowe CLI as a persistent background process.
-- Learn about [configuring environment variables](../user-guide/cli-configuringcli.md) to store configuration options.
+- Learn about [configuring environment variables](../user-guide/cli-configuringcli-ev.md) to store configuration options.
 - Learn about [integrating with API Mediation Layer](../user-guide/cli-using-integrating-apiml.md).
 - Learn about how to [write scripts](../user-guide/cli-using-completing-advanced-tasks.md#writing-scripts) and integrate them with automation server, such as Jenkins.
 - See what [plug-ins are available](../user-guide/cli-extending.md) for the CLI.
