@@ -460,6 +460,10 @@ These configurations can be used under the `components.discovery` section:
  Specifies the alternative directories of static definitions.
 - **`apiml.server.maxTotalConnections`**  
  Specifies the total connections for all services registered under API Mediation Layer.
+- **`apiml.discovery.serviceIdPrefixReplacer`**  
+ Modifies the service ID of a service instance, before it registers to API Mediation Layer.
+ Using this parameter ensures compatibility of services that use a non-conformant organization prefix with v2, based on Zowe v2 conformance.
+
 
 #### Configure component api-catalog
 
