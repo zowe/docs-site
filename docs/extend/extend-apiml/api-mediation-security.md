@@ -164,7 +164,7 @@ The API ML TLS requires servers to provide HTTPS ports. Each API ML service has 
 
 The API Gateway supports both `gateway/api/v1/auth` and `api/v1/gateway/auth` as base authentication paths for the following REST API authentication endpoints.
 
-**Note:** The `api/v1/gateway/auth` base path reaches end-of-support in March 2023 for Zowe V2 LTS. After this date, `gateway/api/v1/auth` will be the only base path supported.
+**Note:** The `api/v1/gateway/auth` base path is supported for the duration for Zowe V2. By Zowe V3, `gateway/api/v1/auth` will be the only base path supported.
 
 - `auth/login`
   
@@ -318,13 +318,13 @@ The JWT secret that signs the JWT Token is an asymmetric private key that is gen
 
 You can find the JWT secret, alias `localhost`, in the PKCS12 keystore that is stored in `${KEYSTORE_DIRECTORY}/localhost/localhost.keystore.p12`. The public key necessary to validate the JWT signature is read from the keystore.
 
-You can also use the `/api/v1/gateway/auth/keys/public/all` endpoint to obtain all public keys that can be used to verify JWT tokens signature in standard [JWK format](https://openid.net/specs/).
+You can also use the endpoint `/gateway/api/v1/auth/keys/public/all` (preferred option) and `/api/v1/gateway/auth/keys/public/all` to obtain all public keys that can be used to verify JWT tokens signature in standard [JWK format](https://openid.net/specs/).
 
 ### z/OSMF JSON Web Tokens Support
 
 Your z/OSMF instance can be enabled to support JWT tokens as described at [Enabling JSON Web Token support](https://www.ibm.com/support/knowledgecenter/SSLTBW_2.4.0/com.ibm.zos.v2r4.izua300/izuconfig_EnableJSONWebTokens.htm).
-In this case, the Zowe API ML uses this JWT token and does not generate its own Zowe JWT token. All authentication APIs, such as `/api/v1/gateway/login` and `/api/v1/gateway/check` function in the same way as without z/OSMF JWT.
-Gateway service endpoint `/api/v1/gateway/auth/keys/public/all` serves the z/OSMF JWK that can be used for JWT signature validation.
+In this case, the Zowe API ML uses this JWT token and does not generate its own Zowe JWT token. All authentication APIs, such as `/gateway/api/v1/login`, `/gateway/api/v1/check`, `/api/v1/gateway/login`, and `/api/v1/gateway/check` function in the same way as without z/OSMF JWT.
+Gateway service endpoints `/gateway/api/v1/auth/keys/public/all` and `/api/v1/gateway/auth/keys/public/all` serve the z/OSMF JWK that can be used for JWT signature validation.
 
 ### API ML truststore and keystore
 
