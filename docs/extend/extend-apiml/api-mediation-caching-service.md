@@ -52,7 +52,7 @@ The key/value pairs are stored only in the memory of a single instance of the se
 ## How to start the service
 
 By default, the Caching service starts along with the other Zowe components. To prevent the Caching service from starting, set
-`zowe.components.caching-service.enabled` to `false` in `zowe.yaml`.
+`components.caching-service.enabled` to `false` in `zowe.yaml`.
 
 ## Methods to use the Caching service API
 
