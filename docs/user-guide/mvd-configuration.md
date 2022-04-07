@@ -6,36 +6,49 @@ When you install Zowe&trade;, the App Framework is configured as a Mediation Lay
 
 You can modify the Zowe App Server and Zowe System Services (ZSS) configuration, as needed, or configure connections for the Terminal app plugins.
 
-## Configuring the framework as a Mediation Layer client
+## Accessing the App Server
 
-When you install Zowe v1.8.0 or later, the App Server automatically registers with the Mediation Layer.
+When the server is enabled and given a port within [the configuration file](configure-instance-directory.md), the App server will print a message ZWED0031I in the log output. At that time, it is ready to accept network communication. When using the API Mediation Layer (recommended), app-server URLs should be reached from the Gateway, and you should additionally wait for the message ZWEAM000I for the Gateway to be ready.
 
-For earlier releases, you must register the App Server with the Mediation Layer manually. Refer to previous release documentation for more information.
+When Zowe is ready, the app-server can be found at `https://<externalDomain>:<components.gateway.port>/zlux/ui/v1`
 
-The App server utilizes the certificates set up for use by all of Zowe as specified in the Zowe configuration file. See [Zowe certificate configuration section](../user-guide/configure-certificates.md#configuring-zowe-certificates) for more information.
+(Not recommended): If the API Mediation Layer is not used, or you need to contact the App server directly, the ZWED0031I message states which port it is accessible from, though generally it will be the same value as specified within `components.app-server.port`. In that case, the server would be available at `https://<externalDomain>:<components.app-server.port>/`
 
-### Accessing the App Server
+### Accessing the Desktop
 
-When the server is enabled in the configuration file, the App server is accessible via the following URL. ZWED0031I message code can tell us when the App server is ready to be accessed.
+When the app-server and gateway are ready, the Desktop can be accessed from the API Mediation Layer Gateway, such as
 
-Recommended: To access the App Server (Zowe Desktop) through the Mediation Layer, use the Mediation Layer gateway server hostname and port.
+`https://<externalDomain>:<components.gateway.port>/zlux/ui/v1/`, which will redirect to `https://<externalDomain>:<components.gateway.port>/zlux/ui/v1/ZLUX/plugins/org.zowe.zlux.bootstrap/web/index.html`
 
-`https://<gwshostname>:<gwsport>/zlux/ui/v1/` or
-`https://<gwshostname>:<gwsport>/zlux/ui/v1/ZLUX/plugins/org.zowe.zlux.bootstrap/web/index.html`
+(Not recommended): If the mediation layer is not used, the Desktop will be accessible from the App server directly at `/ZLUX/plugins/org.zowe.zlux.bootstrap/web/index.html`
 
-(Not recommended): To access the App Server directly, use the App server hostname and port.
-
-`https://<ashostname>:<asport>` or
-`https://<ashostname>:<asport>/ZLUX/plugins/org.zowe.zlux.bootstrap/web/index.html`
-
-You should be accessing the App server via the Gateway port, but the App server still needs a port assigned to it which is the value of the *components.app-server.port* variable in the Zowe configuration file, see [Creating and configuring the Zowe instance directory](configure-instance-directory.md).
-
+You should be accessing the App server via the Gateway port, but the App server still needs a port assigned to it which is the value of the *components.app-server.port* variable in the Zowe configuration file, 
 
 TODO: Above linked file needs to be changed
 
+## Accessing ZSS
+
+TODO
+
+## Configuration file
+
+### app-server configuration
+
+The app-server uses the Zowe server configuration file for customizing server behavior. For a full list of parameters, requirements, and descriptions, see [the json-schema document for the app-server](https://github.com/zowe/zlux/blob/v2.x/staging/schemas/zlux-config-schema.json) which describes attributes that can be specified within the configuration file section `components.app-server`
+
+### zss configuration
+
+ZSS shares some parameters in common with the app-server, so you can consult the above json-schema document to find out which parameters are valid within `components.zss` of the Zowe configuration file. However, some parameters within the app-server schema are not used by ZSS, such as the `node` section. A ZSS-centric schema will be available soon.
+
+## Environment variables
+
+In the latest version of Zowe, `instance.env` is no longer used. However, some environment variables that could be specified within v1 can still be set within v2 in the `zowe.environments` section of the server configuration file. Environment variables starting with `ZWED_` map to values that can be specified within `components.app-server` and `components.zss` so they are redundant, but you can refer to the above json-schema document to see which values are useful or deprecated.
 
 
-The port number for the API Mediation Layer is the value of the *components.gateway.port* variable in the same file.
+## Configuring the framework as a Mediation Layer client
+
+The App Server and ZSS automatically register to the API Mediation Layer when present.
+If this is not desired, registration can disabled by setting the properties `components.app-server.mediationLayer.server.enabled=false` for app-server and `components.zss.mediationLayer.enabled=false` for ZSS.
 
 ## Setting up terminal app plugins
 
@@ -43,7 +56,8 @@ Follow these optional steps to configure the default connection to open for the 
 
 ### Setting up the TN3270 mainframe terminal app plugin
 
-`_defaultTN3270.json` is a file in `tn3270-ng2/`, which is deployed during setup. Within this file, you can specify the following parameters to configure the terminal connection:
+The file `_defaultTN3270.json` within the `tn3270-ng2` app folder `/config/storageDefaults/sessions/` is deployed to the [configuration dataservice](../extend/extend-desktop/mvd-configdataservice.md) when the app-server runs for the first time. This file is used to tell the terminal what host to connect to by default. If you'd like to customize this default, you can edit the file directly within the configuration dataservice `<components.app-server.instanceDir>/org.zowe.terminal.tn3270/sessions/_defaultTN3270.json`. Or you can open the app, customize a session within the UI, click the save icon (floppy icon) and then copy that file from `<components.app-server.usersDir>/<your user>/org.zowe.terminal.tn3270/sessions/_defaultTN3270.json` to `<components.app-server.instanceDir>/org.zowe.terminal.tn3270/sessions/_defaultTN3270.json`. Either way, you will see a file with the following properties:
+
 ```
   "host": <hostname>
   "port": <port>
@@ -51,9 +65,11 @@ Follow these optional steps to configure the default connection to open for the 
     type: <"telnet" or "tls">
   }
 ```
+
 ### Setting up the VT Terminal app plugin
 
-`_defaultVT.json` is a file in `vt-ng2/`, which is deployed during setup. Within this file, you can specify the following parameters to configure the terminal connection:
+The file `_defaultVT.json` within the `vt-ng2` app folder `/config/storageDefaults/sessions/` is deployed to the [configuration dataservice](../extend/extend-desktop/mvd-configdataservice.md) when the app-server runs for the first time. This file is used to tell the terminal what host to connect to by default. If you'd like to customize this default, you can edit the file directly within the configuration dataservice `<components.app-server.instanceDir>/org.zowe.terminal.vt/sessions/_defaultVT.json`. Or you can open the app, customize a session within the UI, click the save icon (floppy icon) and then copy that file from `<components.app-server.usersDir>/<your user>/org.zowe.terminal.vt/sessions/_defaultVT.json` to `<components.app-server.instanceDir>/org.zowe.terminal.vt/sessions/_defaultVT.json`. Either way, you will see a file with the following properties:
+
 ```
   "host":<hostname>
   "port":<port>
@@ -61,14 +77,6 @@ Follow these optional steps to configure the default connection to open for the 
     type: <"telnet" or "ssh">
   }
 ```
-
-## Configuration file
-
-For convenience, the App Server and ZSS share nearly identical configurations and read from the Zowe configuration file (via `components.app-server` and `components.zss`). Some values of configuration can be specified in the App server or ZSS sections. It is possible for each of these servers to read each others' sections to learn about their configuration.
-
-## Environment variables
-
-In Zowe V1, environment variables were originally specified in `instance.env`. In V2, while most variables can be customized in corresponding component sections of the Zowe configuration file, additional environment variables can be specified in `zowe.environments` section.
 
 ## Network configuration
 
@@ -137,19 +145,8 @@ When running, the App Server will access the server's settings and read or modif
 - Group: Multiple users can be associated into one group, so that settings are shared among them.
 - User: When authenticated, users have their own settings and storage for the Apps that they use.
 
-These directories dictate where the [Configuration Dataservice](https://github.com/zowe/zlux/wiki/Configuration-Dataservice) will store content.
+These directories dictate where the Configuration Dataservice will store content. For more information, see the [Configuration Dataservice documentation](..//extend-desktop/mvd-configdataservice.md)
 
-### Directories example
-```
-// All paths relative to zlux-app-server/lib
-// In real installations, these values will be configured during the install.
-  "productDir":"../defaults",
-  "siteDir":"/home/myuser/.zowe/workspace/app-server/site",
-  "instanceDir":"/home/myuser/.zowe/workspace/app-server",
-  "groupsDir":"/home/myuser/.zowe/workspace/app-server/groups",
-  "usersDir":"/home/myuser/.zowe/workspace/app-server/users",
-
-```
 ### Old defaults
 Prior to Zowe release 2.0.0, the location of the configuration directories were initialized to be within the `<INSTANCE_DIR>` folder unless otherwise customized. 2.0.0 does have backwards compatibility for the existence of these directories, but `<INSTANCE_DIR>` folder no longer exists, so they should be migrated to match the ones specified in the Zowe configuration file.
 
@@ -164,11 +161,61 @@ Prior to Zowe release 2.0.0, the location of the configuration directories were 
 
 ## App plugin configuration
 
-The App server will load plugins from extensions and components based upon their enabled status in Zowe configuration. The server caches knowledge of these plugins in the `<workspaceDirectory>/app-server/plugins` folder. This location can be customized with the *components.app-server.pluginsDir* variable in the Zowe configuration file.
+The App framework will load plugins from Components such as extensions based upon their enabled status in Zowe configuration. The server caches knowledge of these plugins in the `<workspaceDirectory>/app-server/plugins` folder. This location can be customized with the *components.app-server.pluginsDir* variable in the Zowe configuration file.
 
 ## Logging configuration
 
 For more information, see [Logging Utility](../extend/extend-desktop/mvd-logutility.md).
+
+### Enabling tracing
+
+To obtain more information about how a server is working, you can enable tracing within the Zowe configuration file via *components.app-server.logLevels* or *components.zss.logLevels* variable. For more information on all loggers, check out the [Extended documentation](../extend/extend-desktop/mvd-core-loggers.md).
+
+For example:
+
+```
+app-server:
+    {...}
+    logLevels:
+      _zsf.routing: 0
+      _zsf.install: 0
+```
+
+```
+zss:
+    {...}
+    logLevels:
+      _zss.traceLevel: 0
+      _zss.fileTrace: 1
+```
+
+All settings are optional.
+
+### Log files
+
+The app-server and zss will create log files containing processing messages and statistics. The log files are generated within the log directory specified within the Zowe configuration file  (`zowe.logDirectory`). The filename patterns are:
+
+- App Server: `<zowe.logDirectory>/appServer-yyyy-mm-dd-hh-mm.log`
+- ZSS: `<zowe.logDirectory>/zssServer-yyyy-mm-dd-hh-mm.log`
+
+#### Retaining logs
+
+By default, the last five log files are retained. You can change this by setting environment variables within the `zowe.environments` section of the Zowe server configuration file. To specify a different number of logs to retain, set `ZWED_NODE_LOGS_TO_KEEP` for app-server logs, or *ZWES_LOGS_TO_KEEP* for zss logs. For example, if you set `ZWED_NODE_LOGS_TO_KEEP` to 10, when the eleventh log is created, the first log is deleted.
+
+#### Controlling the logging location
+
+At minimum, the log information for both app-server and zss are written to STDOUT such that messages are visible in the terminal that starts Zowe and when on z/OS, the STC job log.
+
+By default, both servers additionally log to files and the location of these files can be changed or logging to them can be disabled.
+The following environment variables can be used to customize the app-server and zss log locations by setting the values within the `zowe.environments` section of the Zowe configuration file.
+
+* `ZWED_NODE_LOG_DIR`: Overrides the zowe configuration file value of `zowe.logDirectory` for app-server, but keeps the default filenames.
+* `ZWES_LOG_DIR`: Overrides the zowe configuration file value of `zowe.logDirectory` for zss, but keeps the default filenames.
+* `ZWED_NODE_LOG_FILE`: Specifies the full path to the file where logs will be written from app-server. This overrides both `ZWED_NODE_LOG_DIR` and `zowe.logDirectory`. If the path is `/dev/null` then no log file will be written. This option does not timestamp logs or keep multiple of them.
+* `ZWES_LOG_FILE`: Specifies the full path to the file where logs will be written from zss. This overrides both `ZWES_LOG_DIR` and `zowe.logDirectory`. If the path is `/dev/null` then no log file will be written. This option does not timestamp logs or keep multiple of them.
+
+If the directory or file specified cannot be created, the server will run (but it might not perform logging properly).
+
 
 ## ZSS configuration
 
@@ -648,59 +695,6 @@ The following is an example configuration for `zss-auth`, as seen in a default i
 }
 ```
 
-## Enabling tracing for Zowe App Server or ZSS
-
-To obtain more information about how a server is working, you can enable tracing within the Zowe configuration file via *components.app-server.logLevels* or *components.zss.logLevels* variable. For more information on all loggers, check out the [Extended documentation](../extend/extend-desktop/mvd-core-loggers.md).
-
-For example:
-
-```
-app-server:
-    {...}
-    logLevels:
-      _zsf.routing: 0
-      _zsf.install: 0
-```
-
-```
-zss:
-    {...}
-    logLevels:
-      _zss.traceLevel: 0
-      _zss.fileTrace: 1
-```
-
-All settings are optional.
-
-## Zowe App Framework logging
-
-The Zowe App Framework log files contain processing messages and statistics. The log files are generated the specified log location (*zowe.logDirectory*) in the Zowe configuration file:
-
-- Zowe App Server: `{your-location}/appServer-yyyy-mm-dd-hh-mm.log`
-- ZSS: `{your-location}/zssServer-yyyy-mm-dd-hh-mm.log`
-
-The logs are timestamped in the format yyyy-mm-dd-hh-mm and older logs (by default, last five are retained) are deleted when a new log is created at server startup.
-
-### Controlling the logging location
-
-The log information is written to a file and to the screen.
-
-#### ZLUX_NODE_LOG_DIR and ZSS_LOG_DIR environment variables
-
-To control where the information is logged, use the environment variable *ZLUX_NODE_LOG_DIR*, for the Zowe App Server, and *ZSS_LOG_DIR*, for ZSS. While these variables are intended to specify a directory, if you specify a location that is a file name, Zowe will write the logs to the specified file instead (for example: `/dev/null` to disable logging).
-
-When you specify the environment variables *ZLUX_NODE_LOG_DIR* and *ZSS_LOG_DIR* and you specify directories rather than files, Zowe will timestamp the logs and delete the older logs that exceed the *ZLUX_NODE_LOGS_TO_KEEP* threshold.
-
-#### ZLUX_NODE_LOG_FILE and ZSS_LOG_FILE environment variables
-
-If you set the log file name for the Zowe App Server by setting the *ZLUX_NODE_LOG_FILE* environment variable, or if you set the log file for ZSS by setting the *ZSS_LOG_FILE* environment variable, there will only be one log file, and it will be overwritten each time the server is launched.
-
-**Note**: When you set the *ZLUX_NODE_LOG_FILE* or *ZSS_LOG_FILE* environment variables, Zowe will not override the log names, set a timestamp, or delete the logs.
-
-If the directory or file cannot be created, the server will run (but it might not perform logging properly).
-
-### Retaining logs
-By default, the last five logs are retained. To specify a different number of logs to retain, set *ZLUX_NODE_LOGS_TO_KEEP* (Zowe App Server logs) or *ZSS_LOGS_TO_KEEP* (ZSS logs) to the number of logs that you want to keep. For example, if you set *ZLUX_NODE_LOGS_TO_KEEP* to 10, when the eleventh log is created, the first log is deleted.
 
 ## Administering the servers and plugins using an API
 You can use a REST API to retrieve and edit Zowe App Server and ZSS server configuration values, and list, add, update, and delete plugins. If an administrator has configured Zowe to [use RBAC](https://docs.zowe.org/stable/user-guide/mvd-configuration.html#applying-role-based-access-control-to-dataservices), they must authorize you to access the endpoints.
