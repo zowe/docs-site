@@ -2,7 +2,7 @@
 
 As a Dev-Ops advocate or team leader, you can share team profiles with your team members so that they can easily access mainframe services.
 
-## Sharing team configurations
+## Sharing team configuration files
 
 As a DevOps advocate or team leader, you might want to share a team configuration *globally* in the following scenarios:
 
@@ -10,6 +10,7 @@ As a DevOps advocate or team leader, you might want to share a team configuratio
 - You want to add the profiles to your project directory in a software change management (SCM) tool, such as GitHub. When you store the profiles in an SCM, application developers can pull the project to their local computer and use the defined *team* or *global* configuration. Zowe CLI commands that you issue from within the project directory use the configuration scheme for the project automatically.
 - You want to enable test automation a CI/CD pipeline, which lets your pipelines make use of the project configuration.
 
+For information about how to share team configuration files, see [Sharing team configuration files](../user-guide/cli-using-sharing-team-config-files.md).
 ## Profile scenarios
 
 The following topics describe various profile scenarios that DevOps advocates (team leaders) can share with their teams, and application developers that function as DevOps advocates can create.
