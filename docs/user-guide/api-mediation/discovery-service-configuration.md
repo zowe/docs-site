@@ -40,7 +40,7 @@ As an application developer who wants to run Zowe, set the following parameters 
 * **apiml.discovery.serviceIdPrefixReplacer**
     
     This parameter is used to modify the service ID of a service instance, before it registers to API ML.
-    Using this parameter ensures compatibility of non-conformant services with v2, based on Zowe v2 conformance.
+    Using this parameter ensures compatibility of services that use a non-conformant organization prefix with v2, based on Zowe v2 conformance.
     The value of the `*apiml.discovery.serviceIdPrefixReplacer` parameter is represented as a tuple that contains two strings, separated by a comma. The format of this parameter contains the following two elements:
     * First, the prefix that you want to replace in the service ID
     * Second, the new prefix that will be replaced
@@ -54,7 +54,7 @@ As an application developer who wants to run Zowe, set the following parameters 
       configs:
          apiml:
             discovery:
-                serviceIdPrefixReplacer: caservice,bcmservice
+                serviceIdPrefixReplacer: ca*,bcm
     ```
      Or defining it only for lpar1 high availability instance:
 
@@ -64,7 +64,7 @@ As an application developer who wants to run Zowe, set the following parameters 
           configs:
             apiml:
                discovery:
-                  serviceIdPrefixReplacer: caservice,bcmservice
+                  serviceIdPrefixReplacer: ca*,bcm
     ```    
 
 ## Eureka configuration
