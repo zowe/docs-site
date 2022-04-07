@@ -12,7 +12,7 @@ When the server is enabled and given a port within [the configuration file](conf
 
 When Zowe is ready, the app-server can be found at `https://<externalDomain>:<components.gateway.port>/zlux/ui/v1`
 
-(Not recommended): If the mediation layer is not used, or you need to contact the app-server directly, the ZWED0031I message states which port it is accessible from, though generally it will be the same value as specified within `components.app-server.port`. In that case, the server would be available at `https://<externalDomain>:<components.app-server.port>/`
+(Not recommended): If the API Mediation Layer is not used, or you need to contact the App server directly, the ZWED0031I message states which port it is accessible from, though generally it will be the same value as specified within `components.app-server.port`. In that case, the server would be available at `https://<externalDomain>:<components.app-server.port>/`
 
 ### Accessing the Desktop
 
@@ -20,7 +20,7 @@ When the app-server and gateway are ready, the Desktop can be accessed from the 
 
 `https://<externalDomain>:<components.gateway.port>/zlux/ui/v1/`, which will redirect to `https://<externalDomain>:<components.gateway.port>/zlux/ui/v1/ZLUX/plugins/org.zowe.zlux.bootstrap/web/index.html`
 
-(Not recommended): If the mediation layer is not used, the Desktop will be accessible from the app-server directly at `/ZLUX/plugins/org.zowe.zlux.bootstrap/web/index.html`
+(Not recommended): If the mediation layer is not used, the Desktop will be accessible from the App server directly at `/ZLUX/plugins/org.zowe.zlux.bootstrap/web/index.html`
 
 You should be accessing the App server via the Gateway port, but the App server still needs a port assigned to it which is the value of the *components.app-server.port* variable in the Zowe configuration file, 
 
@@ -48,7 +48,7 @@ In the latest version of Zowe, `instance.env` is no longer used. However, some e
 ## Configuring the framework as a Mediation Layer client
 
 The App Server and ZSS automatically register to the API Mediation Layer when present.
-If this is not desired, it can be disabled by setting the properties `components.app-server.mediationLayer.server.enabled=false` for app-server and `components.zss.mediationLayer.enabled=false` for ZSS.
+If this is not desired, registration can disabled by setting the properties `components.app-server.mediationLayer.server.enabled=false` for app-server and `components.zss.mediationLayer.enabled=false` for ZSS.
 
 ## Setting up terminal app plugins
 
