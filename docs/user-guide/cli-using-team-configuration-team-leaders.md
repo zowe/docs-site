@@ -186,7 +186,7 @@ The following example illustrates that the settings access multiple services usi
             "type": "base",
             "properties": {
                 "host": "example.com",
-                "port": 443,
+                "port": 7554,
                 "rejectUnauthorized": true,
                 "tokenType": "apimlAuthenticationToken"
             },
