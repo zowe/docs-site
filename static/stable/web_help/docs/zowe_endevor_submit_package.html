@@ -15,7 +15,7 @@
 <li>
 <p><code>package</code>		 <em>(string)</em></p>
 <ul>
-<li>Name of the CA Endevor SCM package.</li>
+<li>Name of the Endevor package.</li>
 </ul>
 </li>
 </ul>
@@ -92,21 +92,33 @@ It is possible to specify multiple status separated by &quot;,&quot; during list
 </ul>
 </li>
 </ul>
+<h4>output customization options</h4>
+<ul>
+<li>
+<p><code>--suppress-messages</code>  | <code>--sm</code> <em>(boolean)</em></p>
+<ul>
+<li>Suppress all [INFO]/[WARN] messages from terminal output.</li>
+</ul>
+</li>
+<li>
+<p><code>--file-name</code>  | <code>--fn</code> <em>(string)</em></p>
+<ul>
+<li>File name for saving output messages from Endevor locally.</li>
+</ul>
+</li>
+</ul>
 <h4>endevor-location definition options</h4>
 <ul>
 <li>
 <p><code>--maxrc</code>  <em>(number)</em></p>
 <ul>
-<li>
-<p>The maximum value of the return code of a successful action. When the return code is greater than the maxrc value, the command fails</p>
-<p>Default value: 8</p>
-</li>
+<li>The return code of a failed action</li>
 </ul>
 </li>
 <li>
 <p><code>--instance</code>  | <code>-i</code> <em>(string)</em></p>
 <ul>
-<li>Specifies CA Endevor SCM Web Services dataSource name.</li>
+<li>Specifies Endevor Web Services dataSource name.</li>
 </ul>
 </li>
 </ul>
@@ -128,7 +140,7 @@ It is possible to specify multiple status separated by &quot;,&quot; during list
 <p><code>--protocol</code>  | <code>--prot</code> <em>(string)</em></p>
 <ul>
 <li>
-<p>Specifies the protocol used for connecting to CA Endevor SCM Rest API</p>
+<p>Specifies the protocol used for connecting to Endevor Rest API</p>
 <p>Default value: https<br>
 Allowed values: http, https</p>
 </li>
@@ -155,34 +167,7 @@ Allowed values: http, https</p>
 <li>
 <p><code>--base-path</code>  | <code>--bp</code> <em>(string)</em></p>
 <ul>
-<li>Specifies the base path used for connecting to CA Endevor SCM Rest API</li>
-</ul>
-</li>
-</ul>
-<h4>output customization options</h4>
-<ul>
-<li>
-<p><code>--suppress-messages</code>  | <code>--sm</code> <em>(boolean)</em></p>
-<ul>
-<li>Suppress all [INFO]/[WARN] messages from terminal output.</li>
-</ul>
-</li>
-<li>
-<p><code>--report-file</code>  | <code>--file-name</code> <em>(string)</em></p>
-<ul>
-<li>File name for saving reports from Endevor SCM locally.</li>
-</ul>
-</li>
-<li>
-<p><code>--report-dir</code>  <em>(string)</em></p>
-<ul>
-<li>Directory for saving reports from Endevor SCM locally, if --report-file wasn't specified. Defaults to current directory.</li>
-</ul>
-</li>
-<li>
-<p><code>--write-report</code>  <em>(boolean)</em></p>
-<ul>
-<li>Write the endevor reports to a file. By default, when return code is 0, no report will be written, unless this option is specified. When return code is bigger than 0, reports will be written to a file, unless this option is specifed to be false</li>
+<li>Specifies the base path used for connecting to Endevor Rest API</li>
 </ul>
 </li>
 </ul>
