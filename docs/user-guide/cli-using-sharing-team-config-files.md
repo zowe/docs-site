@@ -14,17 +14,17 @@ The following topics describe how to share the team configuration files.
 2. Issue the following command:
 
     ```
-    zowe config import <DriveLetter>:\<SharedZoweConfig>\zowe.config.json
+    zowe config import <DriveLetter>:\<FolderPath>\zowe.config.json
     ```
     - DriveLetter:
 
         The drive letter of the shared network drive
 
-    - SharedZoweConfig:
+    - FolderPath:
 
         The directory path on the drive
 
-    **Note:** You can specify any path that Windows Explorer can access. For example, a UNC network path (`\\<HostName>\SharedZoweConfig\zowe.config.json`) or local file path (`C:\Users\<UserName>\Downloads\zowe.config.json`).
+    **Note:** You can specify any path that file management applications, such as Windows Explorer and Finder, can access. For example, a UNC network path (`\\<HostName>\SharedZoweConfig\zowe.config.json`) or local file path (`C:\Users\<UserName>\Downloads\zowe.config.json`).
 
 
 ## Project repository and web server
