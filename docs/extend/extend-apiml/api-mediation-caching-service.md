@@ -51,13 +51,8 @@ The InMemory storage method is a method suitable for testing and integration ver
 The key/value pairs are stored only in the memory of a single instance of the service. As such, the key/value pairs do not persist. 
 ## How to start the service
 
-By default, the Caching service starts along with the other Zowe components. To prevent the Caching service from starting, set the following parameter to `false`:
-
-`zowe_apiml_caching_service_start` 
-
-This parameter is defined in the ansible playbooks. 
-
-When this parameter is set to `false`, the parameter appends to the `instance.env` configuration file, which is used at Zowe start time.
+By default, the Caching service starts along with the other Zowe components. To prevent the Caching service from starting, set
+`components.caching-service.enabled` to `false` in `zowe.yaml`.
 
 ## Methods to use the Caching service API
 
