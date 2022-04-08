@@ -156,7 +156,7 @@ The following example illustrates that the settings are using nested profiles to
 }
 ```
 
-### Access t0 LPARs that access services through one API Mediation Layer
+### Access to LPARs that access services through one API Mediation Layer
 
 The following example illustrates that the settings access multiple services using the API ML where multi-factor authentication (MFA) or single sign-on (SSO) is achievable using token-based authorization.
 
@@ -205,10 +205,49 @@ The following example illustrates that the settings access multiple services usi
 }
 ```
 
-### Access to LPARs that access services through one API Mediation Layer using token authentication
+### Access to LPARs that access services through one API Mediation Layer using certificate authentication
 
 Access LPARs containing multiple services through API Mediation Layer with certificate authentication
 
 ```
-The following example illustrates....
+{
+    "$schema": "./zowe.schema.json",
+    "profiles": {
+        "zosmf": {
+            "type": "zosmf",
+            "properties": {
+                "basePath": "api/v1"
+            }
+        },
+        "cics": {
+            "type": "cics",
+            "properties": {
+                "basePath": "api/v1/cics"
+            }
+        },
+        "db2": {
+            "type": "db2",
+            "properties": {
+                "basePath": "api/v1/db2"
+            }
+        },
+        "base": {
+            "type": "base",
+            "properties": {
+                "certFile": "./zowe-cert.pem",
+                "certKeyFile": "./zowe-cert-key.pem",
+                "host": "example.com",
+                "port": 7554,
+                "rejectUnauthorized": true
+            }
+        }
+    },
+    "defaults": {
+        "zosmf": "zosmf",
+        "cics": "cics",
+        "db2": "db2",
+        "base": "base"
+    },
+    "autoStore": true
+}
 ```
