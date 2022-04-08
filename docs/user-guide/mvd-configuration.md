@@ -245,20 +245,50 @@ zss:
       attls: true
 ```
 
-### Configuring ZSS for AT-TLS
+### ZSS 64 or 31 bit modes
 
-By default, ZSS is enabled in HTTPS and doesn't require an advanced configuration outside the required attributes in the recommended example above.
+Two versions of ZSS are included in Zowe, a 64 bit version and a 31 bit version. It is recommended to run the 64 bit version to conserve shared system memory but you must match the ZSS version with the version your ZSS plugins support. Official Zowe distributions contain plugins that support both 64 bit and 31 bit, but extensions may only support one or the other. 
 
-If you want to use RACF or AT-TLS (which requires ZSS to be in HTTP mode), you must have a basic knowledge of your security product and you must have Policy Agent configured. For more information on [AT-TLS](https://www.ibm.com/support/knowledgecenter/en/SSLTBW_2.1.0/com.ibm.zos.v2r1.halx001/transtls.htm) and [Policy Agent](https://www.ibm.com/support/knowledgecenter/en/SSLTBW_2.2.0/com.ibm.zos.v2r2.halz002/pbn_pol_agnt.htm), see the [z/OS Knowledge Center](https://www.ibm.com/support/knowledgecenter/en/SSLTBW_2.2.0/com.ibm.zos.v2r2/en/homepage.html).
+#### Verifying which ZSS mode is in use
 
-You must have the authority to alter security definitions related to certificate management, and you must be authorized to work with and update the Policy Agent.
+You can check which version of ZSS you are running by looking at the logs. At startup, the message ZWES1013I states which mode is being used, for example:
 
-If you are going to use AT-TLS, you will need to set up TLS rule and TLS keyring. The next section will cover that information.
+`ZWES1013I ZSS Server has started. Version 2.0.0 64-bit`
+
+Or
+
+`ZWES1013I ZSS Server has started. Version 2.0.0 31-bit`
+
+#### Verifying which ZSS mode plugins support
+
+You can check if a ZSS plugin supports 64 bit or 31 bit ZSS by reading the pluginDefinition.json file of the plugin.
+In each component or extension you have, its manifest file will state if there are `appFw` plugin entries.
+In each folder referenced by the `appFw` section, you will see a pluginDefinition.json file.
+Within that file, if you see a section that says `type: 'service'`, then you can check its ZSS mode support.
+If the service has the property `libraryName64`, then it supports 64 bit. If it says `libraryName31`, then it supports 31 bit. Both may exist if it supports both. If it instead only contains `libraryName`, this is ambigious and deprecated, and most likely that plugin only supports 31 bit ZSS. A plugin only supporting 31 bit ZSS must be recompiled for 64 bit support, so you must contact the developers to accomplish that.
+
+Example: [the sample angular app supports both 31 bit and 64 bit zss](https://github.com/zowe/sample-angular-app/blob/083855582e8a82cf48abc21e15fa20bd59bfe180/pluginDefinition.json#L50-L53)
+
+#### Setting ZSS 64 bit or 31 bit mode
+
+You can switch between ZSS 64 bit and 31 bit mode by setting the value `components.zss.agent.64bit` to true or false in the Zowe configuration file. The value will not take effect until next server restart.
+
+## Using AT-TLS in the App Framework
+
+By default, both ZSS and the App server use HTTPS regardless of platform. However, some may wish to use AT-TLS on z/OS as an alternative way to provide HTTPS.
+In order to do this, the servers must run in HTTP mode instead, and utilize AT-TLS for HTTPS. **The servers should never use HTTP without AT-TLS, it would be insecure**.
+If you want to use AT-TLS, you must have a basic knowledge of your security product and you must have Policy Agent configured. For more information on [AT-TLS](https://www.ibm.com/support/knowledgecenter/en/SSLTBW_2.1.0/com.ibm.zos.v2r1.halx001/transtls.htm) and [Policy Agent](https://www.ibm.com/support/knowledgecenter/en/SSLTBW_2.2.0/com.ibm.zos.v2r2.halz002/pbn_pol_agnt.htm), see the [z/OS Knowledge Center](https://www.ibm.com/support/knowledgecenter/en/SSLTBW_2.2.0/com.ibm.zos.v2r2/en/homepage.html).
+
+There are a few requirements to working with AT-TLS:
+* You must have the authority to alter security definitions related to certificate management, and you must be authorized to work with and update the Policy Agent.
+* AT-TLS needs a TLS rule and keyring. The next section will cover that information.
 
 **Note:** Bracketed values below (including the brackets) are variables. Replace them with values relevant to your organization. Always use the same value when substituting a variable that occurs multiple times.
 
-#### Creating certificates and key ring for the ZSS server using RACF
-In this step you will create a root CA certificate and a ZSS server certificate signed by the CA certificate. Next you create a key ring owned by the ZSS server with the certificates attached.
+### Creating AT-TLS certificates and keyring using RACF
+In the following commands and examples you will create a root CA certificate and a server certificate signed by it. These will be placed within a keyring which is owned by the user that runs the Zowe server.
+**Note: These actions can be done for various Zowe servers, but in these examples we set up ZSS for AT-TLS. You can subsitute ZSS for another server if desired.**
+
 
 Key variables:
 
@@ -273,8 +303,8 @@ Key variables:
 | `[output_dataset_name]`	  |   |
 
 **Note**:
--	`[server_userid]` must be the ZSS server user ID.
-- `[server_common_name]` must be the ZSS server host name.
+-  `[server_userid]` must be the server user ID, such as the STC user.
+- `[server_common_name]` must be the z/OS hostname that runs Zowe
 
 1. Enter the following RACF command to generate a CA certificate:
   ```
@@ -335,13 +365,13 @@ Key variables:
 
 **Note**: These sample commands use the FACILTY class to manage certificate related authorizations. You can also use the RDATALIB class, which offers granular control over the authorizations.
 
-7. Enter the following RACF command to export the CA certificate to a dataset so it can be imported by the Zowe App Server:
+7. Enter the following RACF command to export the CA certificate to a dataset so it can be imported by the Zowe server:
   ```
   RACDCERT CERTAUTH EXPORT(LABEL('[ca_label]')) +
     DSN('[output_dataset_name]') FORMAT(CERTB64)
   ```
 
-#### Defining the AT-TLS rule
+### Defining the AT-TLS rule
 To define the AT-TLS rule, use the sample below to specify values in your AT-TLS Policy Agent Configuration file:
 
 ```
@@ -403,82 +433,30 @@ TTLSCipherParms                   cipher~ZSS
 ```
 
 
+## Using multiple ZIS instances
+When you install Zowe, it is ready to be used for 1 instance of each component. However, ZIS can have a one-to-many relationship with the Zowe webservers, and so you may wish to have more than one copy of ZIS for testing or to handle different groups of ZIS plugins.
 
-TODO: Below section needs to be modifed and linked configure instance directory file changed
+The following steps can be followed to point a Zowe instance at a particular ZIS server.
 
+1. [Create a copy of the ZIS server](https://docs.zowe.org/stable/user-guide/configure-xmem-server). You could run multiple copies of the same code by having different STC JCLs pointing to the same LOADLIB, or run different copies of ZIS by having JCLs pointing to different LOADLIBs.
 
-
-### Installing additional ZSS instances
-After you install Zowe, you can install and configure additional instances of ZSS on the same z/OS server. You might want to do this to test different ZSS versions.
-
-The following steps assume you have installed a Zowe runtime instance (which includes ZSS), and that you are installing a second runtime instance to install an additional ZSS.
-
-1. To stop the installed Zowe runtime, in SDSF enter the following command:
-
-   ```
-    /C ${ZOWE_PREFIX}${ZOWE_INSTANCE}SV
-    ```
-    Where ZOWE_PREFIX and ZOWE_INSTANCE are specified in your configuration (and default to ZWE and 1)
-
-2. Create a new Zowe instance directory by following steps in [Creating and configuring the Zowe instance directory](configure-instance-directory.md).
-
-   **Note:** In the Zowe configuration file, specify ports that are not used by the first Zowe runtime.
-
-3. To restart the first Zowe runtime, in SDSF enter the following command:
-
-   ```
-   /S ZWESVSTC,INSTANCE='$INSTANCE_DIR'
-   ```
-
-   Where `$INSTANCE_DIR` is the Zowe instance directory. 
-
-4. To specify a name for the new ZSS instance, follow these steps:
-
-   1. Copy the PROCLIB member JCL named ZWESISTC that was installed with the new runtime.
-
-   2. Rename the copy to uniquely identify it as the JCL that starts the new ZSS, for example ZWESIS02.
-
-   3. Edit the JCL, and in the  `NAME` parameter specify a unique name for the cross-memory server, for example:
+2. Edit the JCL of the ZIS STC. In the  `NAME` parameter specify a unique name for the ZIS server, for example:
 
       ```
       //ZWESIS02  PROC NAME='ZWESIS_MYSRV',MEM=00,RGN=0M
       ```
 
-      Where `ZWESIS_MYSRV` is the unique name of the new ZSS.
+      Where `ZWESIS_MYSRV` is the unique name of the new ZIS.
+      
+3. [Start the new ZIS](https://docs.zowe.org/stable/user-guide/configure-xmem-server#starting-and-stopping-the-cross-memory-server-on-zos) with whatever PROCLIB name was chosen.
 
-5. To start the new ZSS, in SDSF enter the following command:
+4. [Stop the Zowe instance you wish to point to the ZIS server](https://docs.zowe.org/stable/user-guide/stop-zowe-zos)
 
-   ```
-    /S ZWESIS02
-   ```
+5. Locate the zowe configuration file for the Zowe instance, and edit the parameter `components.zss.privilegedServerName` to match the name of the ZIS STC name chosen, such as `ZWESIS_MYSRV`
 
-6. Make sure that the TSO user ID that runs the first ZSS started task also runs the new ZSS started task. The default ID is ZWESVUSR.
+6. [Restart the Zowe instance](https://docs.zowe.org/stable/user-guide/configure-zowe-server#step-3-launch-the-zwesvstc-started-task)
 
-7. In the new ZSS `server.json` configuration file, add a `"privilegedServerName"` parameter and specify the new ZSS name, for example:
-
-    ```
-   "productDir":"../defaults",
-    // All paths relative to zlux-app-server/bin
-    // In real installations, these values will be configured during the install.
-   "productDir":"../defaults",
-   "siteDir":"../deploy/site",
-   "instanceDir":"../deploy/instance",
-   "groupsDir":"../deploy/instance/groups",
-   "usersDir":"../deploy/instance/users",
-   "pluginsDir":"../defaults/plugins",
-   "privilegedServerName":"ZWESIS_MYSRV",
-   "dataserviceAuthentication": { ... }
-   ```
-
-    **Note:** The instance location of `server.json` is `$INSTANCE_DIR/workspace/app-server/serverConfig/server.json`, and the defaults are stored in `$ROOT_DIR/components/app-server/share/zlux-app-server/defaults/serverConfig/server.json`
-
-8. To start the new Zowe runtime, in SDSF enter the following command:
-
-   ```
-   /S ZWESVSTC,INSTANCE='$ZOWE_INSTANCE_DIR'
-   ```
-
-9.  To verify that the new cross-memory server is being used, check for the following messages in the `ZWESVSTC` server job log:
+7.  Verify that the new ZIS server is being used by checking for the following messages in the `ZWESLSTC` server job log:
 
    `ZIS status - Ok (name='ZWESIS_MYSRV    ', cmsRC=0, description='Ok', clientVersion=2)`
 
