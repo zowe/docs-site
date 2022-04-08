@@ -1087,7 +1087,7 @@ The following error message codes may appear on logs or API responses. Use the f
 
   **Reason:**
 
-  A problem occurred while trying to make sure that there is a valid JWT producer avaliable.
+  A problem occurred while trying to make sure that there is a valid JWT producer available.
 
   **Action:**
 
@@ -1099,7 +1099,7 @@ The following error message codes may appear on logs or API responses. Use the f
 
   **Reason:**
 
-  An unknown problem occured when retrieving the used public key. This should never occur.
+  An unknown problem occurred when retrieving the used public key. This should never occur.
 
   **Action:**
 
@@ -1344,6 +1344,66 @@ The following error message codes may appear on logs or API responses. Use the f
   **Action:**
 
   Supply a valid user and application name, and check that corresponding permissions have been set up.
+
+### ZWEAG150E
+
+  SAF IDT generation failed. Reason: %s
+
+  **Reason:**
+
+  An error occurred during SAF verification. Review the reason in the error message.
+
+  **Action:**
+
+  Verify the Identity Token configuration.
+
+### ZWEAG151E
+
+  SAF IDT is not generated because authentication or authorization failed. Reason: %s
+
+  **Reason:**
+
+  The user credentials were rejected during SAF verification. Review the reason in the error message.
+
+  **Action:**
+
+  Provide a valid username and password.
+
+### ZWEAG160E
+
+  No authentication provided in the request
+
+  **Reason:**
+
+  The JWT token or client certificate was not provided with the request
+
+  **Action:**
+
+  Configure your client to provide valid authentication.
+
+### ZWEAG161E
+
+  No user was found
+
+  **Reason:**
+
+  It was not possible to map provided certificate to the mainframe identity.
+
+  **Action:**
+
+  Ask your security administrator to connect your client certificate with your mainframe user.
+
+### ZWEAG162E
+
+  Gateway service failed to obtain token.
+
+  **Reason:**
+
+  Authentication request to get token failed.
+
+  **Action:**
+
+  Contact your administrator.
 
 ## API Catalog messages
 
