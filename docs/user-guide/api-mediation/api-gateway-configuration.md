@@ -13,7 +13,8 @@ Follow the procedures in the following sections to customize Gateway parameters 
 
   * [Prefer IP Address for API Layer services](#prefer-ip-address-for-api-layer-services)
   * [SAF as an Authentication provider](#saf-as-an-authentication-provider)
-  * [Enable Jwt token refresh endpoint](#enable-jwt-token-refresh-endpoint)
+  * [Enable JWT token refresh endpoint](#enable-jwt-token-refresh-endpoint)
+  * [Change password with SAF provider](#change-password-with-saf-provider)
   * [Gateway retry policy](#gateway-retry-policy)
   * [Gateway client certificate authentication](#gateway-client-certificate-authentication)
   * [Gateway timeouts](#gateway-timeouts)
@@ -53,7 +54,7 @@ the following procedure to switch to SAF.
 
 Authentication requests now utilize SAF as the authentication provider. API ML can run without z/OSMF present on the system. 
 
-## Enable Jwt token refresh endpoint
+## Enable JWT token refresh endpoint
 
 Enable the `/gateway/api/v1/auth/refresh` endpoint to exchange a valid JWT token for a new token with a new expiration date. Call the endpoint with a valid JWT token and trusted client certificate. In case of z/OSMF authentication provider, enable API Mediation Layer for passticket generation and configure z/OSMF APPLID. [Configure Passtickets](../../extend/extend-apiml/api-mediation-passtickets.md)
 
@@ -234,15 +235,23 @@ Add the following properties to the file for the API Gateway:
     
 ## CORS handling
 
-You can enable the Gateway to terminate CORS requests for itself and also for routed services. By default, Cross-Origin Resource Sharing (CORS) handling is disabled for Gateway routes `api/v1/gateway/**` and for individual services. After enabling the feature as stated in the prodecure below, API Gateway endpoints start handling CORS requests and individual services can control whether they want the Gateway to handle CORS for them through the [Custom Metadata](../../extend/extend-apiml/custom-metadata.md) parameters.
+You can enable the Gateway to terminate CORS requests for the Gateway itself and also for routed services. By default, Cross-Origin Resource Sharing (CORS) handling is disabled, whereby CORS headers are not provided for Gateway routes `api/v1/gateway/**` nor for individual services. After enabling the feature as described in the following prodecure, API Gateway endpoints start handling CORS requests, whereby individual services control whether the Gateway handles the service CORS through specifications in the [Custom Metadata](../../extend/extend-apiml/custom-metadata.md) parameters.
 
-When the Gateway handles CORS on behalf of the service, it sanitizes defined headers from the communication (upstream and downstream). `Access-Control-Request-Method,Access-Control-Request-Headers,Access-Control-Allow-Origin,Access-Control-Allow-Methods,Access-Control-Allow-Headers,Access-Control-Allow-Credentials,Origin` The resulting request to the service is not a CORS request and the service does not need to do anything extra. The list can be overridden by specifying different comma-separated list in the property `APIML_SERVICE_IGNOREDHEADERSWHENCORSENABLED` in `<Zowe instance directory>/instance.env`
+When the Gateway handles CORS on behalf of the service, it sanitizes the following defined headers by default from the communication (upstream and downstream): 
 
-Additionally, the Gateway handles the preflight requests on behalf of the service, replying with CORS headers:
+ `Access-Control-Request-Method, Access-Control-Request-Headers, Access-Control-Allow-Origin, Access-Control-Allow-Methods, Access-Control-Allow-Headers, Access-Control-Allow-Credentials, Origin`
+
+The resulting request to the service is not a CORS request, and the service does not need to do anything extra. To override this list, specify a different comma-separated list in the property `APIML_SERVICE_IGNOREDHEADERSWHENCORSENABLED` in `<Zowe instance directory>/instance.env`.
+
+Additionally, the Gateway handles the preflight requests on behalf of the service when CORS is enabled in [Custom Metadata](../../extend/extend-apiml/custom-metadata.md), replying with CORS headers:
 - `Access-Control-Allow-Methods: GET,HEAD,POST,DELETE,PUT,OPTIONS`
 - `Access-Control-Allow-Headers: origin, x-requested-with`
 - `Access-Control-Allow-Credentials: true`
-- `Access-Control-Allow-Origin: *` or a list of origins as configured by the service.
+- `Access-Control-Allow-Origin: *` 
+
+Alternatively, list the origins as configured by the service, associated with the value **customMetadata.apiml.corsAllowedOrigins** in [Custom Metadata](../../extend/extend-apiml/custom-metadata.md).
+
+If CORS is enabled for Gateway routes but not in [Custom Metadata](../../extend/extend-apiml/custom-metadata.md), the Gateway does not set any of the previously listed CORS headers. As such, the Gateway rejects any CORS requests with an origin header for the Gateway routes.
 
 Use the following procedure to enable CORS handling.
 

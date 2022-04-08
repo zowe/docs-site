@@ -163,10 +163,12 @@ The API ML TLS requires servers to provide HTTPS ports. Each API ML service has 
     - Authentication is service-dependent
     - It is recommended to use the Authentication and Authorization Service for authentication
 
-
+ 
 #### Authentication endpoints
 
-The API Gateway contains the following REST API authentication endpoints:
+The API Gateway supports both `gateway/api/v1/auth` and `api/v1/gateway/auth` as base authentication paths for the following REST API authentication endpoints.
+
+**Note:** The `api/v1/gateway/auth` base path is supported for the duration for Zowe V2. By Zowe V3, `gateway/api/v1/auth` will be the only base path supported.
 
 - `auth/login`
   
@@ -208,7 +210,7 @@ The API Gateway contains the following REST API authentication endpoints:
 
   **Notes:** 
   
-   - The endpoint is disabled by default. [Jwt token refresh endpoint   enablement](../../user-guide/api-mediation/api-gateway-configuration.  md#jwt-token-refresh-endpoint-enablement)
+   - The endpoint is disabled by default. [Jwt token refresh endpoint enablement](../../user-guide/api-mediation/api-gateway-configuration.md#jwt-token-refresh-endpoint-enablement)
    - The endpoint is protected by a client certificate.
   
   The `auth/refresh` endpoint generates a new token for the user based on valid jwt token. The full path of the `auth/refresh` endpoint appears as `https://{gatewayUrl}:{gatewayPort}/gateway/api/v1/auth/refresh` (preferred option) or `https://{gatewayUrl}:{gatewayPort}/api/v1/gateway/auth/refresh`. The new token overwrites the old cookie with a `Set-Cookie` header. As part of the process, the old token gets invalidated and is not usable anymore.
@@ -311,13 +313,13 @@ In the API ML, authorization is performed by the z/OS security manager ([ACF2](h
 
 API Mediation layer can issue a JSON Web Token (JWT) if needed. This is useful when specified authentication provider is not providing its own token. Each token can be validated against API Mediation Layer using `query` [authentication endpoint](#authentication-endpoints).
 
-Users can also validate JWT using [JSON Web Key](https://auth0.com/docs/secure/tokens/json-web-tokens/json-web-key-sets), that is available via REST endpoint `/api/v1/gateway/auth/keys/public/all`.
+You can also use the endpoint `/gateway/api/v1/auth/keys/public/all` (preferred option) and `/api/v1/gateway/auth/keys/public/all` to obtain all public keys that can be used to verify JWT tokens signature in standard [JWK format](https://openid.net/specs/).
 
 ### z/OSMF JSON Web Tokens Support
 
 Your z/OSMF instance can be enabled to support JWT tokens as described at [Enabling JSON Web Token support](https://www.ibm.com/support/knowledgecenter/SSLTBW_2.4.0/com.ibm.zos.v2r4.izua300/izuconfig_EnableJSONWebTokens.htm).
-In this case, the Zowe API ML uses this JWT token and does not generate its own Zowe JWT token. All authentication APIs, such as `/api/v1/gateway/login` and `/api/v1/gateway/check` function in the same way as without z/OSMF JWT.
-Gateway service endpoint `/api/v1/gateway/auth/keys/public/all` serves the z/OSMF JWK that can be used for JWT signature validation.
+In this case, the Zowe API ML uses this JWT token and does not generate its own Zowe JWT token. All authentication APIs, such as `/gateway/api/v1/login`, `/gateway/api/v1/check`, `/api/v1/gateway/login`, and `/api/v1/gateway/check` function in the same way as without z/OSMF JWT.
+Gateway service endpoints `/gateway/api/v1/auth/keys/public/all` and `/api/v1/gateway/auth/keys/public/all` serve the z/OSMF JWK that can be used for JWT signature validation.
 
 ### API ML truststore and keystore
 
