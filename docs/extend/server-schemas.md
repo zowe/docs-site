@@ -7,7 +7,7 @@ The server infrastructure will utilize each components' schema files to validate
 ## Requirements
 
 * Server component json schema files must follow the json schema [spec 2019-09](https://json-schema.org/draft/2019-09/schema).
-* Each component must state where its base schema file is located by the manifest parameter "schemas.config"
+* Each component must state where its base schema file is located by the manifest parameter "schemas.configs"
 * The schema file must use and/or extend the Zowe Component base schema by use of the "allOf" attribute.
 * The schema must have an `$id` property which is a URI that has a domain related to the entity that developed the Component.
 * The file should be tagged on z/OS but elsewhere must at least be encoded as ASCII-subset of UTF-8
