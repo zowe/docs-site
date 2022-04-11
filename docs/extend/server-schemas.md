@@ -30,7 +30,7 @@ title: component1
 description: An example component with a simple configuration.
 license: ABCDEF Company License
 schemas:
-  - config: schema.json
+  configs: schema.json
 ```
 
 
@@ -40,18 +40,32 @@ Below is an example of the "schema.json" file referenced above. In it, we have 1
 
 ```
 {
-  "$schema": "https://json-schema.org/draft/2019-09",
-  "$id": "https://abcdef.com/schema/component1",
+  "$schema": "https://json-schema.org/draft/2019-09/schema",
+  "$id": "https://abcdef.com/schemas/v2/component1",
   "allOf": [
-    { "$ref": "https://zowe.org/schema/base" },
-    { "$ref": "https://zowe.org/schema/base#zoweComponent"},
-    { 
-      "type": "object",
+    { "$ref": "https://zowe.org/schemas/v2/server-base" },
+    { "type": "object",
       "properties": {
-        "my-custom-prop": {
-          "type": "boolean",
-          "default": true,
-          "description": "This is a property unique to this component, as opposed to the Zowe Component base that this schema extends"
+        "components": {
+          "type": "object",
+          "properties": {
+            "additionalProperties": true,
+            "component1": {
+              "allOf": [
+                { "$ref": "https://zowe.org/schemas/v2/server-base#zoweComponent"},
+                { 
+                  "type": "object",
+                  "properties": {
+                    "my-custom-prop": {
+                      "type": "boolean",
+                      "default": true,
+                      "description": "This is a property unique to this component, as opposed to the Zowe Component base that this schema extends"
+                    }
+                  }
+                }
+              ]
+            }
+          }
         }
       }
     }

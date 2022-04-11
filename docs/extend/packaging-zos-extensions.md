@@ -35,7 +35,7 @@ A typical component package, for example, `jobs-api-package-1.0.4.zip`, consists
    
 - `schema.json`
 
-   Refers to the [json schema](https://json-schema.org/) file that details the parameters that are valid for the component's configuration within Zowe server configuration files. See documentation on [server component schema files](server-schemas.md) for more information.
+   An example filename of the [json schema](https://json-schema.org/) file specified by the manifest property `schemas.configs` as detailed in [Server Component Manifest File Reference](../appendix/server-component-manifest.md). The file details the parameters that are valid for the component's configuration within Zowe server configuration files. See documentation on [server component schema files](server-schemas.md) for more information.
 
 - `apiml-static-registration.yaml.template`
 
