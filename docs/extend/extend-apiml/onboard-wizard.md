@@ -26,6 +26,6 @@ If you see your service in the list of API Catalog available services, you have 
 
 ### Prefilling fields
 
-After opening the wizard, you may upload a complete or partial YAML file to prefill the fields. The YAML file will be validated and the form fields will be populated.
+(Optional) Click Choose File to upload a complete or partial YAML file to prefill the fields. The YAML file is validated and the form fields are populated.
 
 ![YAML Prefill](../../images/api-mediation/wizard-yaml-prefill.png)  
