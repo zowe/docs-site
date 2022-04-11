@@ -32,5 +32,5 @@ By default, the CLI daemon mode binary creates or reuses a file in the user's ho
 
 | Platform | Environment Variable  | Description | Values | Default |
 | ---------------------- | ---------------------- | ---------------------- | ---------------------- | ---------------------- |
-| All | `ZOWE_DAEMON_DIR` | Lets you override the complete path to the directory that will hold daemon files related to this user. The directory can contain the following files: <ul><li>`daemon.lock`</li><li>`daemon.sock`</li><li>`daemon_pid.json`</li></ul> | Any valid path on your computer | `%HOMEPATH%/.zowe/daemon` |
-| Windows (only) | `ZOWE_DAEMON_PIPE` | Lets you override the last two segments of the name of the communication pipe between the daemon executable (.exe) and the daemon. | Any valid path on your computer | `\.\pipe\%USERNAME%\ZoweDaemon` |
+| All | `ZOWE_DAEMON_DIR` | Lets you override the complete path to the directory that will hold daemon files related to this user. The directory can contain the following files:<ul><li>`daemon.lock`</li><li>`daemon.sock`</li><li>`daemon_pid.json`</li></ul> | Any valid path on your computer | `<your_home_dir>/.zowe/daemon`<p>**Examples:**</p><ul><li>**Windows:** `%HOMEPATH%\.zowe\daemon`</li><li>**Linux:** `$HOME/.zowe/daemon`</li></ul> |
+| Windows (only) | `ZOWE_DAEMON_PIPE` | Lets you override the last two segments of the name of the communication pipe between the daemon executable (.exe) and the daemon. | Any valid path on your computer | `\\.\pipe\%USERNAME%\ZoweDaemon` |
