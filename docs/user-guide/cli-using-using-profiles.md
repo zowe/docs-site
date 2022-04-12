@@ -26,7 +26,7 @@ Zowe CLI contains the following types of profiles:
 - You can convert all of your Zowe CLI and Zowe CLI plug-ins V1 profiles to V2 profiles by issuing the following command:
 
     ```
-    zowe config convert profiles
+    zowe config convert-profiles
     ```
 
     **Note:** You can continue using Zowe CLI and Zowe CLI plug-ins V1 profiles with Zowe CLI V2. However, we highly recommend that you implement V2 profiles with Zowe CLI V2.
