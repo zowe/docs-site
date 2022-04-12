@@ -12,7 +12,8 @@ From a supported browser, open the Zowe Desktop at `https://<gwshostname>:<gwspo
     
 Where:
 
--   *gwshostname* is the host on which you are running the Zowe Application Server.
+-   *gwshostname* is the host on which you are running the Zowe Application Server, its the value that
+    was assigned to *zowe.externalDomains* in the zowe configuration file.
 -   *gwsport* is the value that was assigned to *components.app-server.port* in the zowe configuration
     file.
     For example, if you run the Zowe Application Server on host *gwshostname* and the value that is assigned to *components.app-server.port* in the zowe configuration file is 12345, you would specify `https://<gwshostname>:12345/zlux/ui/v1/ZLUX/plugins/org.zowe.zlux.bootstrap/web/index.html`.
