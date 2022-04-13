@@ -314,7 +314,7 @@ in any of the YAML configuration files.
 ### Authentication properties
 These parameters are not required. If a parameter is not specified, a default value will be used.
 
-Authentication parameters enables a service to accept the Zowe JWT. The API Gateway translates the token to an authentication method supported by a service.
+The authentication properties provide the API Gateway information about the authentication scheme supported by the service. At run time the API Gateway uses this information to translate the  Zowe JWT passed by the caller to credentials accepted by the service. 
 
 The following example shows the parameters that define the service authentication method:
 
