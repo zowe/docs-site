@@ -311,7 +311,7 @@ A property notation provided in the format `-Dproperty.key=PROPERTY_VALUE` can b
 **Note**: System properties provided with `-D` notation on the command line will not replace properties defined
 in any of the YAML configuration files.
 
-### Authentication parameters
+### Authentication properties
 These parameters are not required. If a parameter is not specified, a default value will be used.
 
 Authentication parameters enables a service to accept the Zowe JWT. The API Gateway translates the token to an authentication method supported by a service.
