@@ -334,7 +334,7 @@ where:
 
     * **bypass**
 
-      This value specifies the token is passed unchanged to service.
+      This value specifies the authentication token is passed unchanged to service. Also, the API GW will not validate the token. Consequently, the token validation is left to the service.
 
       **Note:** This is the default scheme when no authentication parameters are specified.
 
