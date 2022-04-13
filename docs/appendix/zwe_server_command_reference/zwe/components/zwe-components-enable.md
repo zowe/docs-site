@@ -1,36 +1,31 @@
-# zwe certificate pkcs12 import
+# zwe components enable
 
-[zwe](./../.././zwe) > [certificate](./.././zwe-certificate) > [pkcs12](././zwe-certificate-pkcs12) > [import](./zwe-certificate-pkcs12-import)
+[zwe](./.././zwe) > [components](././zwe-components) > [enable](./zwe-components-enable)
 
-	zwe certificate pkcs12 import [parameter [parameter]...]
+	zwe components enable [parameter [parameter]...]
 
 ## Description
 
-Import certificate and/or certificate authorities into PKCS12 keystore.
+Enable a Zowe component.
 
+**IMPORTANT NOTES**, this command will modify your YAML configuration.
 
-### Inherited from parent command
-
-WARNING: This command is for experimental purposes and may not fully function.
 
 ## Examples
 
 ```
-zwe certificate pkcs12 import -f /path/to/my/keystore/file -p keystore-cert-password
+    zwe components enable --component-name gateway
 
+    zwe components enable --component-name gateway --ha-instance lpar1
+    
 ```
 
 ## Parameters
 
 Full name|Alias|Type|Required|Help message
 |---|---|---|---|---
---keystore|-f|string|yes||Destination PKCS12 keystore file name.
---password|-p|string|yes||Password of the destination PKCS12 keystore.
---alias|-a|string|no||Alias in the destination PKCS12 keystore after imported.\nRequired if --source-alias is specified.
---source-keystore|-sf|string|no||Source PKCS12 keystore file name.
---source-password|-sp|string|no||Password of the source PKCS12 keystore.
---source-alias|-sa|string|no||Private keys should also be exported.
---trust-cas||string|no||PEM files of extra certificate authorities should be trusted, separated by comma.
+--component-name,--component|-o|string|yes||Component name to be enabled.
+--ha-instance|-i|string|no||Zowe high availability instance ID from zowe.yaml.
 ### Inherited from parent command
 
 Full name|Alias|Type|Required|Help message
@@ -47,7 +42,7 @@ Full name|Alias|Type|Required|Help message
 
 Error code|Exit code|Error message
 |---|---|---
-ZWEL0179E|179|Failed to import certificate (authorities) into keystore %s.
+ZWEL0152E|152|Cannot find component %s.
 ### Inherited from parent command
 
 Error code|Exit code|Error message

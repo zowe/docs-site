@@ -68,6 +68,7 @@ zwe init security -v -c /path/to/zowe.yaml
 Full name|Alias|Type|Required|Help message
 |---|---|---|---|---
 --security-dry-run||boolean|no||Whether to dry run security related setup.
+--ignore-security-failures||boolean|no||Whether to ignore security setup job failures.
 ### Inherited from parent command
 
 Full name|Alias|Type|Required|Help message
@@ -75,6 +76,7 @@ Full name|Alias|Type|Required|Help message
 --allow-overwrite,--allow-overwritten||boolean|no||Allow overwritten existing MVS data set.
 --skip-security-setup||boolean|no||Whether should skip security related setup.
 --security-dry-run||boolean|no||Whether to dry run security related setup.
+--ignore-security-failures||boolean|no||Whether to ignore security setup job failures.
 --update-config||boolean|no||Whether to update YAML configuration file with initialization result.
 --help|-h|boolean|no||Display this help.
 --debug,--verbose|-v|boolean|no||Enable verbose mode.
@@ -92,8 +94,11 @@ ZWEL0157E|157|%s (%s) is not defined in Zowe YAML configuration file.
 ZWEL0159E|159|Failed to modify %s.
 ZWEL0160E|160|Failed to write to %s. Please check if target data set is opened by others.
 ZWEL0161E|161|Failed to run JCL %s.
+ZWEL0161W||Failed to run JCL %s.
 ZWEL0162E|162|Failed to find job %s result.
+ZWEL0162W||Failed to find job %s result.
 ZWEL0163E|163|Job %s ends with code %s.
+ZWEL0163W||Job %s ends with code %s.
 ### Inherited from parent command
 
 Error code|Exit code|Error message
@@ -127,3 +132,4 @@ ZWEL0139E|139|Failed to create directory %s.
 ZWEL0140E|140|Failed to translate Zowe configuration (%s).
 ZWEL0142E|142|Failed to refresh APIML static registrations.
 ZWEL0172E||Component %s has %s defined but the file is missing.
+ZWE01235E||Test change

@@ -65,6 +65,7 @@ Full name|Alias|Type|Required|Help message
 --allow-overwrite,--allow-overwritten||boolean|no||Allow overwritten existing MVS data set.
 --skip-security-setup||boolean|no||Whether should skip security related setup.
 --security-dry-run||boolean|no||Whether to dry run security related setup.
+--ignore-security-failures||boolean|no||Whether to ignore security setup job failures.
 --update-config||boolean|no||Whether to update YAML configuration file with initialization result.
 --help|-h|boolean|no||Display this help.
 --debug,--verbose|-v|boolean|no||Enable verbose mode.
@@ -118,3 +119,4 @@ ZWEL0139E|139|Failed to create directory %s.
 ZWEL0140E|140|Failed to translate Zowe configuration (%s).
 ZWEL0142E|142|Failed to refresh APIML static registrations.
 ZWEL0172E||Component %s has %s defined but the file is missing.
+ZWE01235E||Test change
