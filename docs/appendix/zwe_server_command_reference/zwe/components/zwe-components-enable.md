@@ -1,41 +1,32 @@
-# zwe
+# zwe components enable
 
-[zwe](./zwe)
+[zwe](./.././zwe) > [components](././zwe-components) > [enable](./zwe-components-enable)
 
-	zwe [sub-command [sub-command]...] [parameter [parameter]...]
-
-## Sub-commands
-
-* [certificate](./certificate/zwe-certificate)
-* [components](./components/zwe-components)
-* [init](./init/zwe-init)
-* [install](./zwe-install)
-* [internal](./internal/zwe-internal)
-* [migrate](./migrate/zwe-migrate)
-* [sample](./sample/zwe-sample)
-* [start](./zwe-start)
-* [stop](./zwe-stop)
-* [version](./zwe-version)
+	zwe components enable [parameter [parameter]...]
 
 ## Description
 
-A command line utility helps you managing Zowe instance.
+Enable a Zowe component.
 
-You can issue --help or -h to find information for all commands it supports.
+**IMPORTANT NOTES**, this command will modify your YAML configuration.
 
 
 ## Examples
 
 ```
-zwe install -h
+    zwe components enable --component-name gateway
 
-zwe init --allow-overwrite --config /path/to/zowe.yaml
-
-zwe start -c /path/to/zowe.yaml
-
+    zwe components enable --component-name gateway --ha-instance lpar1
+    
 ```
 
 ## Parameters
+
+Full name|Alias|Type|Required|Help message
+|---|---|---|---|---
+--component-name,--component|-o|string|yes||Component name to be enabled.
+--ha-instance|-i|string|no||Zowe high availability instance ID from zowe.yaml.
+### Inherited from parent command
 
 Full name|Alias|Type|Required|Help message
 |---|---|---|---|---
@@ -48,6 +39,11 @@ Full name|Alias|Type|Required|Help message
 
 
 ## Errors
+
+Error code|Exit code|Error message
+|---|---|---
+ZWEL0152E|152|Cannot find component %s.
+### Inherited from parent command
 
 Error code|Exit code|Error message
 |---|---|---
