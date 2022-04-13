@@ -12,7 +12,8 @@ The following procedure describes how to onboard your REST service with the Wiza
    ![Onboarding](../../images/api-mediation/wizard-onboard-button.png)
 2. Choose the type of onboarding according to your preference (static or via enablers).
    ![Enablers](../../images/api-mediation/wizard-enablers.png)
-3. (Optional) Click Choose File to upload a complete or partial YAML file to prefill the fields. The YAML file is validated and the form fields are populated.
+3. (Optional) To prefill the fields, click **Choose File** to upload a complete or partial YAML file. The YAML file is validated and the form fields are populated.
+
    ![YAML Prefill](../../images/api-mediation/wizard-yaml-prefill.png)  
 4. Fill in the input fields according to your service specifications.
 5. Address each of the categories in the dialog dropdown. 
