@@ -312,9 +312,9 @@ A property notation provided in the format `-Dproperty.key=PROPERTY_VALUE` can b
 in any of the YAML configuration files.
 
 ### Authentication properties
-These parameters are not required. If a parameter is not specified, a default value will be used.
+These parameters are not required. If a parameter is not specified, a default value is be used.
 
-The authentication properties provide the API Gateway information about the authentication scheme supported by the service. At run time the API Gateway uses this information to translate the  Zowe JWT passed by the caller to credentials accepted by the service. 
+The authentication properties provide the API Gateway with information about the authentication scheme supported by the service. At run time, the API Gateway uses this information to translate the Zowe JWT passed by the caller to credentials accepted by the service. 
 
 The following example shows the parameters that define the service authentication method:
 
@@ -329,7 +329,7 @@ where:
 
 * **authentication.scheme**
 
-  specifies a service authentication scheme.
+  This value specifies a service authentication scheme.
   The following schemes are supported by the API Gateway:
 
     * **bypass**
@@ -345,22 +345,22 @@ where:
     * **httpBasicPassTicket**
 
       This value specifies that a service accepts PassTickets in the Authorization header of the HTTP requests using the basic authentication scheme.
-      It is necessary to provide a service APPLID in `authentication.applid` parameter.
+      It is necessary to provide a service APPLID in the `authentication.applid` parameter.
 
-      For more information, see [Enabling PassTicket creation for API Services that Accept PassTickets](api-mediation-passtickets.md)
+      For more information, see [Enabling PassTicket creation for API Services that Accept PassTickets](api-mediation-passtickets.md).
 
     * **zosmf**
 
       This value specifies that a service accepts z/OSMF LTPA (Lightweight Third-Party Authentication).
       This scheme should be used only for a z/OSMF service used by the API Gateway Authentication Service and other z/OSMF services that use the same LTPA key.
 
-      For more information about z/OSMF Single Sign-on, see [Establishing a single sign-on environment](https://www.ibm.com/support/knowledgecenter/SSLTBW_2.4.0/com.ibm.zosmfcore.multisysplex.help.doc/izuG00hpManageSecurityCredentials.html)
+      For more information about z/OSMF Single Sign-on, see [Establishing a single sign-on environment](https://www.ibm.com/support/knowledgecenter/SSLTBW_2.4.0/com.ibm.zosmfcore.multisysplex.help.doc/izuG00hpManageSecurityCredentials.html).
 
     * **safIdt**
 
-      This value specifies that the service accepts SAF IDT and expects the token produced by the Saf IDT provider implementation in the `X-SAF-Token` header.
+      This value specifies that the service accepts SAF IDT, and expects the token produced by the SAF IDT provider implementation is in the `X-SAF-Token` header.
       It is necessary to provide a service APPLID in `authentication.applid` parameter.
-      For more information, see [SAF IDT provider](implement-new-saf-provider.md)
+      For more information, see [SAF IDT provider](implement-new-saf-provider.md).
 
     * **x509**
 
