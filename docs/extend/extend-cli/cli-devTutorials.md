@@ -17,19 +17,19 @@ If you want to start working with the code immediately, review the Readme file i
 
 ### Tutorials
 Follow these tutorials to get started working with the sample plug-in:
-1. **[Setting up:](cli-setting-up.md)** Clone the project and prepare your local environment.
-2. **[Installing a plug-in:](cli-installing-sample-plugin.md)** Install the sample plug-in to Zowe CLI and run as-is.
-3. **[Extending a plug-in:](cli-extending-a-plugin.md)** Extend the sample plug-in with a new by creating a programmatic API, definition, and handler.
-4. **[Creating a new plug-in:](cli-developing-a-plugin.md)** Create a new CLI plug-in that uses Zowe CLI programmatic APIs and a diff package to compare two data sets.
-5. **[Implementing user profiles:](cli-implement-profiles.md)** Implement user profiles with the plug-in.
+1. [Setting up:](cli-setting-up.md) Clone the project and prepare your local environment.
+2. [Installing a plug-in:](cli-installing-sample-plugin.md) Install the sample plug-in to Zowe CLI and run as-is.
+3. [Extending a plug-in:](cli-extending-a-plugin.md) Extend the sample plug-in with a new by creating a programmatic API, definition, and handler.
+4. [Creating a new plug-in:](cli-developing-a-plugin.md) Create a new CLI plug-in that uses Zowe CLI programmatic APIs and a diff package to compare two data sets.
+5. [Implementing user profiles:](cli-implement-profiles.md) Implement user profiles with the plug-in.
 
 ### Plug-in development overview
 At a high level, a plug-in must have `imperative-framework` configuration [(sample here)](https://github.com/zowe/zowe-cli-sample-plugin/blob/master/src/imperative.ts).  This configuration is discovered by  `imperative-framework` through the [package.json](https://github.com/zowe/zowe-cli-sample-plugin/blob/master/package.json) `imperative` key.
 
 A Zowe CLI plug-in will minimally contain the following:
-1. **Programmatic API** - Node.js programmatic APIs to be called by your handler or other Node.js applications.
-2. **Command definition** - The syntax definition for your command.
-3. **Handler implementation** - To invoke your programmatic API to display information in the format that you defined in the definition.
+1. Programmatic API: Node.js programmatic APIs to be called by your handler or other Node.js applications.
+2. Command definition: The syntax definition for your command.
+3. Handler implementation: To invoke your programmatic API to display information in the format that you defined in the definition.
 
 The following guidelines and documentation will assist you during development:
 
