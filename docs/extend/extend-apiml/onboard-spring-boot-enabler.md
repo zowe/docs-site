@@ -314,7 +314,7 @@ A property notation provided in the format `-Dproperty.key=PROPERTY_VALUE` can b
 in any of the YAML configuration files.
 
 ### Authentication properties
-These parameters are not required. If a parameter is not specified, a default value is be used.
+These parameters are not required. If a parameter is not specified, a default value is used.
 
 The authentication properties provide the API Gateway with information about the authentication scheme supported by the service. At run time, the API Gateway uses this information to translate the Zowe JWT passed by the caller to credentials accepted by the service. 
 
