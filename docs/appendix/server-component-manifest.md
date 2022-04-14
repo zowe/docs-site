@@ -27,6 +27,14 @@ The manifest file contains the following properties:
 - **`license`**
 
   (Optional but recommended) Defines the license code of the component. For example, Zowe core components have `EPL-2.0` value in this field.
+  
+- **`schemas`**
+
+  Defines the location of json schema files that are compatible with certain portions of Zowe as denoted by each child property.
+  
+  * **`configs`**
+  
+    Defines the location of the json schema file which extends the Zowe Component base schema.
 
 - **`build`**
 

@@ -232,6 +232,7 @@ module.exports = {
                 "user-guide/cli-using-initializing-team-configuration",
                 "user-guide/cli-using-team-configuration-application-developers",
                 "user-guide/cli-using-team-configuration-team-leaders",
+                "user-guide/cli-using-sharing-team-config-files",
                 "user-guide/cli-using-team-managing-credential-security",
                 "user-guide/cli-using-global-storing-properties-automatically",
                                               ],
