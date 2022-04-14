@@ -1247,7 +1247,7 @@ The Gateway could not find the z/OSMF instance from the Discovery Service or it 
 
 **Action:**
 
-Ensure that the z/OSMF instance is configured correctly and that it is successfully registered to the Discovery Service and that the API Mediation Layer can communicate with the provided z/OSMF instance. The default timeout is 5 minutes. On a slower system, add the variable APIML_SECURITY_JWTINITIALIZERTIMEOUT=... and the value in minutes into Zowe's configuration to override this value.
+Ensure that the z/OSMF instance is configured correctly and that it is successfully registered to the Discovery Service and that the API Mediation Layer can communicate with the provided z/OSMF instance. The default timeout is 5 minutes. On a slower system, add the variable components.gateway.apiml.security.jwtInitializerTimeout:... and the value in minutes into Zowe's configuration to override this value.
 
 ### ZWEAG109E
 

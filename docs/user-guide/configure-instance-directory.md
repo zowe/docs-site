@@ -290,7 +290,7 @@ Refer to detailed section about [API Gateway configuration](api-mediation/api-ga
 
 ### Extensions
 
-- **`ZWEAD_EXTERNAL_STATIC_DEF_DIRECTORIES`**  
+- **`ZWE_STATIC_DEFINITIONS_DIR`**  
   Full USS path to the directory that contains static API Mediation Layer .yml definition files.  For more information, see [Onboard a REST API without code changes required](../extend/extend-apiml/onboard-static-definition.md#add-a-definition-in-the-api-mediation-layer-in-the-zowe-runtime).  Multiple paths should be semicolon separated. This value allows a Zowe instance to be configured so that the API Mediation Layer can be extended by third party REST API and web UI servers. 
 - **`EXTERNAL_COMPONENTS`**  
  For third-party extenders to add the full path to the directory that contains their component lifecycle scripts.  For more information, see [Zowe lifecycle - Zowe extensions](../extend/lifecycling-with-zwesvstc.md#zowe-extensions).

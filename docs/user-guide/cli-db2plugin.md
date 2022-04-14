@@ -36,10 +36,10 @@ Use one of the following methods to install the the Zowe CLI Plug-in for IBM Db2
 
 If you installed Zowe CLI from **online registry**, complete the following steps:
 
-1. Open a commandline window and issue the following command:
+1. Open a command line window and issue the following command:
 
     ```
-    zowe plugins install @zowe/db2-for-zowe-cli@zowe-v1-lts
+    zowe plugins install @zowe/db2-for-zowe-cli@zowe-v2-lts
     ```
 
 2. [Address the license requirements](#addressing-the-license-requirement) to begin using the plug-in.
@@ -116,12 +116,12 @@ Now that the Db2 ODBC CLI driver is downloaded, set the `IBM_DB_INSTALLER_URL` e
 
 ## Addressing the license requirement
 
-To successfully connect the Db2 CLI plug-in to a database on z/OS, a license needs to be present either on the client where the Zowe CLI is executed from, or else on z/OS. If you don't have a license configured when you execute Db2 CLI commands, you will receive an error `SQL1598N`, for example:
+To successfully connect the Db2 CLI plug-in to a database on z/OS, a license needs to be present either on the client where the Zowe CLI is executed from, or else on z/OS. If you do not have a license configured when you execute Db2 CLI commands, you will receive an error `SQL1598N`, for example:
 
 ```
 DB2 ODBC Driver Error: [node-ibm_db] SQL_ERROR
 Error Details:
-Error:    [IBM][CLI Driver] SQL1598N  An attempt to connect to the   database server failed because of a licensing problem.
+Error:    [IBM][CLI Driver] SQL1598N An attempt to connect to the database server failed because of a licensing problem.
 ```
 
 ### Server-side license

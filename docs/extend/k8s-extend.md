@@ -6,9 +6,9 @@ Zowe extensions such as services and plug-ins that use Zowe component packaging 
 
 You can add extension containers to a Zowe container environment the same way as Zowe's core components by completing the following steps. 
 
-1. Build and publish an extension image to a registry. For details, see [Build and publish an extension image to a registry](#build-and-publish-an-extension-image-to-a-registry). 
-2. Define a [deployment](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/) or [job](https://kubernetes.io/docs/concepts/workloads/controllers/job/) object. For details, see [Define Deployment or Job object](#define-deployment-or-job-object).
-3. Start the extension from the deployment or job definition. For details, see [Start your component](#start-your-component).
+1. Build and publish an extension image to a registry. For details, see [Build and publish an extension image to a registry](#1-build-and-publish-an-extension-image-to-a-registry). 
+2. Define a [deployment](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/) or [job](https://kubernetes.io/docs/concepts/workloads/controllers/job/) object. For details, see [Define Deployment or Job object](#2-define-deployment-or-job-object).
+3. Start the extension from the deployment or job definition. For details, see [Start your component](#3-start-your-component).
 
 ## 1. Build and publish an extension image to a registry
 
