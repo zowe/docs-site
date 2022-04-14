@@ -25,6 +25,8 @@ The following steps outline the overall process to onboard a REST service with t
 3. [Configuring your Spring Boot based service to onboard with API ML](#configuring-your-spring-boot-based-service-to-onboard-with-api-ml)
 
     * [Sample API ML Onboarding Configuration](#sample-api-ml-onboarding-configuration)
+    * [Authentication properties](#authentication-properties)
+    * [API ML Onboarding Configuration Sample](#api-ml-onboarding-configuration-sample)
     * [SAF Keyring configuration](#saf-keyring-configuration)
     * [Custom Metadata](#custom-metadata)
     * [Api Mediation Layer specific metadata](#api-mediation-layer-specific-metadata)
@@ -36,7 +38,7 @@ The following steps outline the overall process to onboard a REST service with t
     
 5. [Adding API documentation](#adding-api-documentation)
 
-6. (Optional) [Validating your API service discoverability](#validating-the-discoverability-of-your-api-service-by-the-discovery-service)
+6. (Optional) [Validating the discoverability of your API service by the Discovery Service](#validating-the-discoverability-of-your-api-service-by-the-discovery-service)
 
 7. (Optional) [Troubleshooting](#troubleshooting)
     * [Log messages during registration problems](#log-messages-during-registration-problems)
@@ -334,7 +336,7 @@ where:
 
     * **bypass**
 
-      This value specifies the authentication token is passed unchanged to service. Also, the API GW will not validate the token. Consequently, the token validation is left to the service.
+      This value specifies that the authentication token is passed unchanged to the service. Also, the API Gateway does not validate the token. Consequently, the token validation is left to the service.
 
       **Note:** This is the default scheme when no authentication parameters are specified.
 
@@ -358,8 +360,8 @@ where:
 
     * **safIdt**
 
-      This value specifies that the service accepts SAF IDT, and expects the token produced by the SAF IDT provider implementation is in the `X-SAF-Token` header.
-      It is necessary to provide a service APPLID in `authentication.applid` parameter.
+      This value specifies that the service accepts SAF IDT, and expects that the token produced by the SAF IDT provider implementation is in the `X-SAF-Token` header.
+      It is necessary to provide a service APPLID in the `authentication.applid` parameter.
       For more information, see [SAF IDT provider](implement-new-saf-provider.md).
 
     * **x509**
