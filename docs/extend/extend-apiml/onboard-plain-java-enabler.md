@@ -145,7 +145,7 @@ Use the following procedure if you use _Maven_ as your build automation system.
     **Tip:** If you want to use snapshot version, replace `libs-release` with `libs-snapshot` in the repository url and change snapshots->enabled to `true`.
 
 2. Add the proper dependencies:
-   ```java
+   ```xml
    <dependency>
        <groupId>org.zowe.apiml.sdk</groupId>
        <artifactId>onboarding-enabler-java</artifactId>
@@ -561,9 +561,9 @@ where:
   
     * **safIdt**
 
-       This value specifies that the application recognizes the SAF IDT scheme and fills the `X-SAF-Token` header with the token produced by the Saf IDT provider implementation.
+       This value specifies that the service accepts SAF IDT, and expects that the token produced by the SAF IDT provider implementation is in the `X-SAF-Token` header. It is necessary to provide a service APPLID in the `authentication.applid` parameter.
   
-       For more information, see [SAF IDT provider](implement-new-saf-provider.md)
+       For more information, see [SAF IDT provider].(implement-new-saf-provider.md)
 
     * **x509**
 

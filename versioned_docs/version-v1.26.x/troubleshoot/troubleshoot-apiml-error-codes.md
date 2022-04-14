@@ -1081,7 +1081,7 @@ The following error message codes may appear on logs or API responses. Use the f
 
   **Reason:**
 
-  A problem occurred while trying to make sure that there is a valid JWT producer avaliable.
+  A problem occurred while trying to make sure that there is a valid JWT producer available.
 
   **Action:**
 
