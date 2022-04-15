@@ -1,17 +1,17 @@
 # Configure Secure Credential Store on headless Linux operating systems
 
-Perform the following configurations on Headless and z/Linux operating systems.
+Perform the following configurations on headless and z/Linux operating systems.
 
 ## Headless Linux requirements
 
 - Ensure that you installed the Secure Credential Store requirements that are described in [System Requirements](../user-guide/systemrequirements-cli.md).
-- Unlock the Gnome keyring to allow you to load and store credentials on headless Linux operating systems. You can unlock keyrings manually or automatically.
+- Unlock the Gnome keyring to allow you to load and store credentials on headless Linux operating systems. You can unlock the keyring manually or automatically.
 
 **Note:** On z/Linux operating systems, complete the steps in [Configuring z/Linux](#configuring-zlinux) before you continue.  
 
-### Unlocking keyrings manually
+### Unlocking the keyring manually
 
-Issue the following commands to unlock keyrings manually. You must unlock the keyrings in each user session.
+Issue the following commands to unlock the keyrings manually. You must unlock the keyring in each user session.
 
 ```bash
 export $(dbus-launch)
@@ -20,12 +20,11 @@ gnome-keyring-daemon -r --unlock --components=secrets
 
 **Note:** The `gnome-keyring-daemon -r --unlock --components=secrets` prompts you to specify a password. Press `Ctrl+D` twice after you specify the password. 
 
-### Unlocking keyrings automatically
+### Unlocking the keyring automatically
 
-When you are using SSH ot TTY to log in to Linux, you can configure the Gnome keyring to unlock automatically when you log in.
+When you are using SSH or TTY to log in to Linux, you can configure the Gnome keyring to unlock automatically when you log in.
 
 **Note:** The following steps were tested on CentOS, SUSE, and Ubuntu operating systems. The steps do not work on WSL (Windows Subsystem for Linux) because it bypasses TTY login. Results may vary on other Linux distributions. 
-
 
 **Follow these steps:**
 
@@ -51,11 +50,11 @@ When you are using SSH ot TTY to log in to Linux, you can configure the Gnome ke
 3. Add the following statements to `~/.bashrc`. The statement lets you launch DBus, which the Gnome keyring requires. Also the statement lets the keyring daemon start so that it is ready to be used by Zowe CLI commands.
     ```bash
     if test -z "$DBUS_SESSION_BUS_ADDRESS" ; then
-            exec dbus-run-session -- $SHELL
+      exec dbus-run-session -- $SHELL
     fi
     ```
 
-4. Start the Gnome daemon:
+4. Start the Gnome keyring daemon:
     ```
     gnome-keyring-daemon --start --components=secrets
     ```
