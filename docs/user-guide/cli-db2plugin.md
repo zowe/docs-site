@@ -36,7 +36,7 @@ Use one of the following methods to install the the Zowe CLI Plug-in for IBM Db2
 
 Complete the following steps if you installed Zowe CLI from **online registry**:
 
-1. If you are installing the plug-in on an Apple computer that contains a MacOS M1 processor, complete the steps in [MacOS M1 processor installation](../user-guide/cli-db2-install-m1.md). If not, continue to Step 2.
+1. If you are installing the plug-in on an Apple computer that contains an M1 (or later architecture) processor, complete the steps in [M1 processor installation](../user-guide/cli-db2-install-m1.md). If not, continue to Step 2.
 
 2. Open a command line window and issue the following command:
 
