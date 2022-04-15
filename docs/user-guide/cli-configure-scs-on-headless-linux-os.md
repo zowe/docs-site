@@ -11,7 +11,7 @@ Perform the following configurations on headless and z/Linux operating systems.
 
 ### Unlocking the keyring manually
 
-Issue the following commands to unlock the keyrings manually. You must unlock the keyring in each user session.
+Issue the following commands to unlock the keyring manually. You must unlock the keyring in each user session.
 
 ```bash
 export $(dbus-launch)
