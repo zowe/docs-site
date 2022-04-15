@@ -1369,6 +1369,78 @@ The following error message codes may appear on logs or API responses. Use the f
 
   Provide a valid username and password.
 
+### ZWEAG160E
+
+  No authentication provided in the request
+
+  **Reason:**
+
+  The JWT token or client certificate was not provided with the request
+
+  **Action:**
+
+  Configure your client to provide valid authentication.
+
+### ZWEAG161E
+
+  No user was found
+
+  **Reason:**
+
+  It was not possible to map provided certificate to the mainframe identity.
+
+  **Action:**
+
+  Ask your security administrator to connect your client certificate with your mainframe user.
+
+### ZWEAG162E
+
+  Gateway service failed to obtain token.
+
+  **Reason:**
+
+  Authentication request to get token failed.
+
+  **Action:**
+
+  Contact your administrator.
+
+### ZWEAG163E
+
+  Error occurred while parsing X509 certificate.
+
+  **Reason:**
+
+  %s
+
+  **Action:**
+
+  Configure your client to provide valid x509 certificate.
+
+### ZWEAG164E
+
+  Error occurred while validating X509 certificate. %s
+
+  **Reason:**
+
+  X509 certificate cannot be validated or the certificate cannot be used for client authentication.
+
+  **Action:**
+
+  Configure your client to provide valid x509 certificate.
+
+### ZWEAG165E
+
+  ZOSMF authentication scheme is not supported for this API ML instance.
+
+  **Reason:**
+
+  z/OSMF is not used as security provider for API ML.
+
+  **Action:**
+
+  Contact your administrator.
+
 ## API Catalog messages
 
 ### ZWEAC100W
