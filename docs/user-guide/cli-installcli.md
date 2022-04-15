@@ -12,7 +12,7 @@ To install CLI on **Windows**, **Mac**, and **Linux** operating systems, follow 
 ***However***, to install Zowe CLI on **z/Linux**, **z/OS UNIX System Services (USS)**, or on an operating system where the **Secure Credential Store** is ***not required*** or ***cannot be installed***, use the following installation guidelines:
 
 -  To install Zowe CLI on a z/Linux operating system and you **require** the Secure Credential Store:
-   1. Follow the steps in [Configure Secure Credential Store on z/Linux operating systems](cli-configure-scs-on-zlinux-os).
+   1. Follow the steps in [Configure Secure Credential Store on headless Linux operating systems](cli-configure-scs-on-headless-linux-os).
    2. Follow the steps in [Install Zowe CLI from npm](#install-zowe-cli-from-npm) or [Install Zowe CLI from a download](#install-zowe-cli-from-a-download).
 -  To install Zowe CLI on a z/Linux operating system and you **do not require** the Secure Credential Store:
    1. Follow the steps in [Install Zowe CLI from npm](#install-zowe-cli-from-npm) or [Install Zowe CLI from a download](#install-zowe-cli-from-a-download).

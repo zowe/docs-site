@@ -165,7 +165,7 @@ module.exports = {
           label: "Install CLI",
           items: [
             "user-guide/cli-installcli",
-            "user-guide/cli-configure-scs-on-zlinux-os",
+            "user-guide/cli-configure-scs-on-headless-linux-os",
             "user-guide/cli-configure-cli-on-os-where-scs-unavailable",
             "user-guide/cli-install-cli-nodejs-windows",                          ],
         },
