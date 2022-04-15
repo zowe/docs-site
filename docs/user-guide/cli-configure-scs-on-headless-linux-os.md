@@ -1,4 +1,4 @@
-# Configure Secure Credential Store on headless Linux operating systems
+# Configuring Secure Credential Store on headless Linux operating systems
 
 Perform the following configurations on headless and z/Linux operating systems.
 
