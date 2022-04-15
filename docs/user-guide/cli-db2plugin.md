@@ -34,9 +34,11 @@ Use one of the following methods to install the the Zowe CLI Plug-in for IBM Db2
 
 ### Installing from an online registry
 
-If you installed Zowe CLI from **online registry**, complete the following steps:
+Complete the following steps if you installed Zowe CLI from **online registry**:
 
-1. Open a command line window and issue the following command:
+1. If you are installing the plug-in on an Apple computer that contains an M1 (or later architecture) processor, complete the steps in [M1 processor installation](../user-guide/cli-db2-install-m1.md). If not, continue to Step 2.
+
+2. Open a command line window and issue the following command:
 
     ```
     zowe plugins install @zowe/db2-for-zowe-cli@zowe-v2-lts
@@ -54,11 +56,13 @@ Download the ODBC driver before you install the Db2 plug-in.
 
 **Follow these steps:**
 
-1. [Download the ODBC CLI Driver](https://github.com/ibmdb/node-ibm_db#-download-clidriver-based-on-your-platform--architecture-from-the-below-ibm-hosted-url). Use the table within the download URL to select the correct CLI Driver for your platform and architecture.
+1. If you are installing the plug-in on a Apple computer that contains a MacOS M1 processor, complete the steps in [MacOS M1 processor installation](../user-guide/cli-db2-install-m1.md). If not, continue to Step 2.
 
-2. Create a new directory named `odbc_cli`  on your computer. Remember the path to the new directory. You will need to provide the full path to this directory immediately before you install the Db2 plug-in.
+2. [Download the ODBC CLI Driver](https://github.com/ibmdb/node-ibm_db#-download-clidriver-based-on-your-platform--architecture-from-the-below-ibm-hosted-url) (Darwin x64). Use the table within the download URL to select the correct CLI Driver for your platform and architecture.
 
-3. Place the ODBC driver in the `odbc_cli` folder. **Do not extract the ODBC driver**.
+3. Create a new directory named `odbc_cli`  on your computer. Remember the path to the new directory. You will need to provide the full path to this directory immediately before you install the Db2 plug-in.
+
+4. Place the ODBC driver in the `odbc_cli` folder. **Do not extract the ODBC driver**.
 
 You downloaded and prepared to use the ODBC driver successfully. Proceed to install the plug-in to Zowe CLI.
 
