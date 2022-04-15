@@ -56,7 +56,7 @@ Download the ODBC driver before you install the Db2 plug-in.
 
 **Follow these steps:**
 
-1. If you are installing the plug-in on a Apple computer that contains a MacOS M1 processor, complete the steps in [MacOS M1 processor installation](../user-guide/cli-db2-install-m1.md). If not, continue to Step 2.
+1. If you are installing the plug-in on a Apple computer that contains an M1 (or later architecture) processor, complete the steps in [M1 processor installation](../user-guide/cli-db2-install-m1.md). If not, continue to Step 2.
 
 2. [Download the ODBC CLI Driver](https://github.com/ibmdb/node-ibm_db#-download-clidriver-based-on-your-platform--architecture-from-the-below-ibm-hosted-url) (Darwin x64). Use the table within the download URL to select the correct CLI Driver for your platform and architecture.
 
@@ -183,14 +183,18 @@ In addition to the host, port and database you'll need
   - If your Db2 systems use a secure connection, you can also
     provide an SSL/TSL certificate file.
 
-To create a db2 profile in Zowe CLI, issue the following command with your connection details for the Db2 instance:
+To create a db2 team profile in Zowe CLI, open the `zowe.config.json` file and specify the properties for the `port` and `database`:
 
 ```
-zowe profiles create db2 <profileName> -H <host> -P <port> -d <database> -u <user> --pw <password>
+"db2": {
+  "type": "db2",
+  "properties": {
+    "port": 0,
+    "database": ""
+  },
+  "secure": []
+}
 ```
-
-**Note** For more information, issue the command `zowe profiles create db2-profile --help`
-
 ### SQL0805N: Database BIND
 
 To be able to run remote SQL commands against a Db2 database, you must invoke a `BIND` command against it. If the `BIND` command is not run, you will see an error that contains `SQL0805N` similar to the log below:
