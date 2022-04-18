@@ -4,7 +4,7 @@ You can use the Zowe&trade; Application Framework to create application plug-ins
 
 ## Navigating the Zowe Desktop
 
-From the Zowe Desktop, you can access Zowe applications. 
+From the Zowe Desktop, you can access Zowe applications.
 
 ### Accessing the Zowe Desktop
 
