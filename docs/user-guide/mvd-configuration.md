@@ -145,7 +145,7 @@ When running, the App Server will access the server's settings and read or modif
 - Group: Multiple users can be associated into one group, so that settings are shared among them.
 - User: When authenticated, users have their own settings and storage for the Apps that they use.
 
-These directories dictate where the Configuration Dataservice will store content. For more information, see the [Configuration Dataservice documentation](..//extend-desktop/mvd-configdataservice.md)
+These directories dictate where the Configuration Dataservice will store content. For more information, see the [Configuration Dataservice documentation](../extend-desktop/mvd-configdataservice.md)
 
 ### Old defaults
 Prior to Zowe release 2.0.0, the location of the configuration directories were initialized to be within the `<INSTANCE_DIR>` folder unless otherwise customized. 2.0.0 does have backwards compatibility for the existence of these directories, but `<INSTANCE_DIR>` folder no longer exists, so they should be migrated to match the ones specified in the Zowe configuration file.
@@ -675,7 +675,7 @@ The following is an example configuration for `zss-auth`, as seen in a default i
 
 
 ## Administering the servers and plugins using an API
-You can use a REST API to retrieve and edit Zowe App Server and ZSS server configuration values, and list, add, update, and delete plugins. If an administrator has configured Zowe to [use RBAC](https://docs.zowe.org/stable/user-guide/mvd-configuration.html#applying-role-based-access-control-to-dataservices), they must authorize you to access the endpoints.
+You can use a REST API to retrieve and edit Zowe App Server and ZSS server configuration values, and list, add, update, and delete plugins. If an administrator has configured Zowe to [use RBAC](https://docs.zowe.org/stable/user-guide/mvd-configuration.html#controlling-access-to-dataservices), they must authorize you to access the endpoints.
 
 The API returns the following information in a JSON response:
 
