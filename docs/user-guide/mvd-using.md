@@ -56,7 +56,7 @@ To log out, click the User icon in the lower right corner and click **Sign Out**
 2. Locate the application you want to open in new tab.
 3. Right-click the application icon and select **Open In New Browser Tab**.
 
-  - While opening a application in new tab you can also do the following:
+  - While opening an application in new tab you can also do the following:
    
      -  You can use url to send data to the application, for example you would specify
         `https://<gwshostname>:<gwsport>//ZLUX/plugins/org.zowe.zlux.bootstrap/web/?pluginId=org.zowe.editor:data:{"type":"openFile","name":"<path of file>"}`
@@ -93,10 +93,10 @@ Use the Languages setting in the Preferences panel to change the desktop languag
 
 ## Zowe Desktop application plug-ins
 
-Application plug-ins are applications that you can use to access the mainframe and to perform various tasks. Developers can create application plug-ins using a sample application as a guide. The following application plug-ins are installed by default:
+Application plugins are applications that you can use to access the mainframe and to perform various tasks. Developers can create application plugins using a sample application as a guide. The following application plug-ins are installed by default:
 
 ### Hello World Sample
-The Hello World sample application plug-in for developers demonstrates how to create a dataservice and how to create an application plug-in using Angular and using React.
+The Hello World sample application plugin for developers demonstrates how to create a dataservice and how to create an application plugin using Angular and using React.
 
 ### IFrame Sample
 Github Sample Repo:
@@ -111,13 +111,13 @@ Github Sample Repo:
 [sample-react-app](https://github.com/zowe/sample-react-app/blob/lab/step-1-hello-world/README.md)
 
 ### 3270 Terminal
-The 3270 Terminal plug-in provides a user interface that emulates the basic functions of IBM 3270 family terminals. On the "back end," the plug-in and the Zowe Application Server connect to any standard TN3270E server.
+The 3270 Terminal plugin provides a user interface that emulates the basic functions of IBM 3270 family terminals. On the "back end," the plugin and the Zowe Application Server connect to any standard TN3270E server.
 
 ### VT Terminal 
-The VT Terminal plug-in provides a user interface that emulates the basic functions of DEC VT family terminals. On the "back end," the plug-in and the Zowe Application Server connect to VT compatible hosts, such as z/OS UNIX System Services (USS), using standard network protocols.
+The VT Terminal plugin provides a user interface that emulates the basic functions of DEC VT family terminals. On the "back end," the plugin and the Zowe Application Server connect to VT compatible hosts, such as z/OS UNIX System Services (USS), using standard network protocols.
 
 ### API Catalog
-The API Catalog plug-in lets you view API services that have been discovered by the API Mediation Layer. For more information about the API Mediation Layer, Discovery Service, and API Catalog, see [API Mediation Layer Overview](../getting-started/overview.md).
+The API Catalog plugin lets you view API services that have been discovered by the API Mediation Layer. For more information about the API Mediation Layer, Discovery Service, and API Catalog, see [API Mediation Layer Overview](../getting-started/overview.md).
 
 ### Editor
 With the Zowe Editor you can create and edit files and view datasets on the system that Zowe serves.
