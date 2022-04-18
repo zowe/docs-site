@@ -2,25 +2,24 @@ In the Zowe Desktop, multiple Apps can coexist but such Apps are treated as inde
 
 | Library | Version |
 |---------|---------|
+| '@angular/animations' | 12.0.0 |
+| '@angular/cdk' | 12.0.0 |
 | '@angular/core' | 12.0.0 |
 | '@angular/common' | 12.0.0 |
 | '@angular/common/http' | 12.0.0 |
-| '@angular/http' | 12.0.0 |
+| '@angular/forms' | 12.0.0 |
 | '@angular/platform-browser' | 12.0.0 |
-| '@angular/platform-browser/animations' | 12.0.0 |
-| '@angular/platform-browser-dynamic' | 12.0.0 |
 | '@angular/cdk/portal' | 12.0.0 |
 | '@angular/material' | 12.0.0 |
-| '@angular/forms' | 12.0.0 |
 | '@angular/router' | 12.0.0 |
-| '@angular/animations' | 12.0.0 |
 | 'angular-l10n' | 12.0.0 |
 | 'bootstrap' | 4.3.1 |
+| 'corejs' | 3.19.2 |
 | 'jquery' | 3.6.0 |
 | 'popper.js' | 1.14.7 |
-| 'rxjs/Rx' | 6.6.0 |
+| 'rxjs' | 6.6.0 |
 
-The above list is derived from 3 source files: 
+The above list is derived from 3 source files. Please consult them for up-to-date information: 
 1) [package-lock.json](https://github.com/zowe/zlux-app-manager/blob/v2.x/master/virtual-desktop/package-lock.json) for version information
 2) [externals.ts](https://github.com/zowe/zlux-app-manager/blob/v2.x/master/virtual-desktop/src/externals.ts) which loads the libraries into the browser at page load
 3) [externals-main.ts](https://github.com/zowe/zlux-app-manager/blob/v2.x/master/virtual-desktop/src/externals-main.ts) which imports libraries that were not loadable with the technique in #2
