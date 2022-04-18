@@ -97,10 +97,17 @@
 								<li class="tsd-kind-constructor tsd-parent-kind-class tsd-is-inherited"><a href="_zowe_imperative.configsecure.html#constructor" class="tsd-kind-icon">constructor</a></li>
 							</ul>
 						</section>
-						<section class="tsd-index-section tsd-is-inherited tsd-is-private-protected">
+						<section class="tsd-index-section tsd-is-private-protected">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-protected"><a href="_zowe_imperative.configsecure.html#mconfig" class="tsd-kind-icon">m<wbr>Config</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="_zowe_imperative.configsecure.html#mloadfailed" class="tsd-kind-icon">m<wbr>Load<wbr>Failed</a></li>
+							</ul>
+						</section>
+						<section class="tsd-index-section ">
+							<h3>Accessors</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-get-signature tsd-parent-kind-class"><a href="_zowe_imperative.configsecure.html#loadfailed" class="tsd-kind-icon">load<wbr>Failed</a></li>
 							</ul>
 						</section>
 						<section class="tsd-index-section ">
@@ -111,6 +118,7 @@
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_zowe_imperative.configsecure.html#save" class="tsd-kind-icon">save</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_zowe_imperative.configsecure.html#securefields" class="tsd-kind-icon">secure<wbr>Fields</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_zowe_imperative.configsecure.html#secureinfoforprop" class="tsd-kind-icon">secure<wbr>Info<wbr>For<wbr>Prop</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_zowe_imperative.configsecure.html#securepropsforprofile" class="tsd-kind-icon">secure<wbr>Props<wbr>For<wbr>Profile</a></li>
 							</ul>
 						</section>
 					</div>
@@ -143,7 +151,7 @@
 					</ul>
 				</section>
 			</section>
-			<section class="tsd-panel-group tsd-member-group tsd-is-inherited tsd-is-private-protected">
+			<section class="tsd-panel-group tsd-member-group tsd-is-private-protected">
 				<h2>Properties</h2>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
 					<a name="mconfig" class="tsd-anchor"></a>
@@ -155,6 +163,42 @@
 							<li>Defined in <a href="https://github.com/zowe/imperative/blob/next/packages/config/src/api/ConfigApi.ts#L18">@zowe/imperative/packages/config/src/api/ConfigApi.ts:18</a></li>
 						</ul>
 					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
+					<a name="mloadfailed" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> m<wbr>Load<wbr>Failed</h3>
+					<div class="tsd-signature tsd-kind-icon">m<wbr>Load<wbr>Failed<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/zowe/imperative/blob/next/packages/config/src/api/ConfigSecure.ts#L25">@zowe/imperative/packages/config/src/api/ConfigSecure.ts:25</a></li>
+						</ul>
+					</aside>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group ">
+				<h2>Accessors</h2>
+				<section class="tsd-panel tsd-member tsd-kind-get-signature tsd-parent-kind-class">
+					<a name="loadfailed" class="tsd-anchor"></a>
+					<h3>load<wbr>Failed</h3>
+					<ul class="tsd-signatures tsd-kind-get-signature tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">get</span> loadFailed<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/next/packages/config/src/api/ConfigSecure.ts#L231">@zowe/imperative/packages/config/src/api/ConfigSecure.ts:231</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Return true if the secure load method was called and threw an error, or
+									it was never called because the CredentialManager failed to initialize.</p>
+								</div>
+							</div>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
+						</li>
+					</ul>
 				</section>
 			</section>
 			<section class="tsd-panel-group tsd-member-group ">
@@ -169,7 +213,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/imperative/blob/next/packages/config/src/api/ConfigSecure.ts#L149">@zowe/imperative/packages/config/src/api/ConfigSecure.ts:149</a></li>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/next/packages/config/src/api/ConfigSecure.ts#L177">@zowe/imperative/packages/config/src/api/ConfigSecure.ts:177</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -219,7 +263,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/imperative/blob/next/packages/config/src/api/ConfigSecure.ts#L32">@zowe/imperative/packages/config/src/api/ConfigSecure.ts:32</a></li>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/next/packages/config/src/api/ConfigSecure.ts#L35">@zowe/imperative/packages/config/src/api/ConfigSecure.ts:35</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -252,7 +296,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/imperative/blob/next/packages/config/src/api/ConfigSecure.ts#L83">@zowe/imperative/packages/config/src/api/ConfigSecure.ts:83</a></li>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/next/packages/config/src/api/ConfigSecure.ts#L91">@zowe/imperative/packages/config/src/api/ConfigSecure.ts:91</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -266,8 +310,7 @@
 								<li>
 									<h5><span class="tsd-flag ts-flagOptional">Optional</span> allLayers: <span class="tsd-signature-type">boolean</span></h5>
 									<div class="tsd-comment tsd-typography">
-										<p>Save all Config layers when true.
-										Only save the active layer when false.</p>
+										<p>Specify true to save all config layers instead of only the active one</p>
 									</div>
 								</li>
 							</ul>
@@ -285,7 +328,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/imperative/blob/next/packages/config/src/api/ConfigSecure.ts#L134">@zowe/imperative/packages/config/src/api/ConfigSecure.ts:134</a></li>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/next/packages/config/src/api/ConfigSecure.ts#L142">@zowe/imperative/packages/config/src/api/ConfigSecure.ts:142</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -321,13 +364,13 @@
 					<a name="secureinfoforprop" class="tsd-anchor"></a>
 					<h3>secure<wbr>Info<wbr>For<wbr>Prop</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">secure<wbr>Info<wbr>For<wbr>Prop<span class="tsd-signature-symbol">(</span>propertyPath<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">{ </span>path<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">; </span>prop<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> }</span></li>
+						<li class="tsd-signature tsd-kind-icon">secure<wbr>Info<wbr>For<wbr>Prop<span class="tsd-signature-symbol">(</span>propertyPath<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, findUp<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">{ </span>path<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">; </span>prop<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> }</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/imperative/blob/next/packages/config/src/api/ConfigSecure.ts#L174">@zowe/imperative/packages/config/src/api/ConfigSecure.ts:174</a></li>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/next/packages/config/src/api/ConfigSecure.ts#L203">@zowe/imperative/packages/config/src/api/ConfigSecure.ts:203</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -349,6 +392,12 @@
 										<p>The full path of the profile property</p>
 									</div>
 								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> findUp: <span class="tsd-signature-type">boolean</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Specify true to search up in the config file for higher level secure arrays</p>
+									</div>
+								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-symbol">{ </span>path<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">; </span>prop<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> }</span></h4>
 							<p>Object with the following attributes:</p>
@@ -364,6 +413,39 @@
 									<h5>prop<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></h5>
 								</li>
 							</ul>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="securepropsforprofile" class="tsd-anchor"></a>
+					<h3>secure<wbr>Props<wbr>For<wbr>Profile</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">secure<wbr>Props<wbr>For<wbr>Profile<span class="tsd-signature-symbol">(</span>profileName<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/next/packages/config/src/api/ConfigSecure.ts#L154">@zowe/imperative/packages/config/src/api/ConfigSecure.ts:154</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>List names of secure properties for a profile. They may be defined at
+									the profile&#39;s level, or at a higher level if the config is nested.</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>profileName: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Profile name to search for</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span></h4>
+							<p>Array of secure property names</p>
 						</li>
 					</ul>
 				</section>
@@ -426,6 +508,12 @@
 									<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
 										<a href="_zowe_imperative.configsecure.html#mconfig" class="tsd-kind-icon">m<wbr>Config</a>
 									</li>
+									<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
+										<a href="_zowe_imperative.configsecure.html#mloadfailed" class="tsd-kind-icon">m<wbr>Load<wbr>Failed</a>
+									</li>
+									<li class=" tsd-kind-get-signature tsd-parent-kind-class">
+										<a href="_zowe_imperative.configsecure.html#loadfailed" class="tsd-kind-icon">load<wbr>Failed</a>
+									</li>
 									<li class=" tsd-kind-method tsd-parent-kind-class">
 										<a href="_zowe_imperative.configsecure.html#findsecure" class="tsd-kind-icon">find<wbr>Secure</a>
 									</li>
@@ -440,6 +528,9 @@
 									</li>
 									<li class=" tsd-kind-method tsd-parent-kind-class">
 										<a href="_zowe_imperative.configsecure.html#secureinfoforprop" class="tsd-kind-icon">secure<wbr>Info<wbr>For<wbr>Prop</a>
+									</li>
+									<li class=" tsd-kind-method tsd-parent-kind-class">
+										<a href="_zowe_imperative.configsecure.html#securepropsforprofile" class="tsd-kind-icon">secure<wbr>Props<wbr>For<wbr>Profile</a>
 									</li>
 								</ul>
 							</li>
@@ -501,6 +592,9 @@
 			</ul>
 			<ul class="tsd-legend">
 				<li class="tsd-kind-constructor tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited constructor</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private property</span></li>
 			</ul>
 		</div>
 	</div>

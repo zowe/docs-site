@@ -101,6 +101,7 @@
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_zowe_imperative.config.html#mactive" class="tsd-kind-icon">m<wbr>Active</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="_zowe_imperative.config.html#mapi" class="tsd-kind-icon">m<wbr>Api</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_zowe_imperative.config.html#mapp" class="tsd-kind-icon">m<wbr>App</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_zowe_imperative.config.html#mhomedir" class="tsd-kind-icon">m<wbr>Home<wbr>Dir</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_zowe_imperative.config.html#mlayers" class="tsd-kind-icon">m<wbr>Layers</a></li>
@@ -119,7 +120,7 @@
 								<li class="tsd-kind-get-signature tsd-parent-kind-class"><a href="_zowe_imperative.config.html#appname" class="tsd-kind-icon">app<wbr>Name</a></li>
 								<li class="tsd-kind-get-signature tsd-parent-kind-class"><a href="_zowe_imperative.config.html#configname" class="tsd-kind-icon">config<wbr>Name</a></li>
 								<li class="tsd-kind-get-signature tsd-parent-kind-class"><a href="_zowe_imperative.config.html#exists" class="tsd-kind-icon">exists</a></li>
-								<li class="tsd-kind-get-signature tsd-parent-kind-class"><a href="_zowe_imperative.config.html#layers" class="tsd-kind-icon">layers</a></li>
+								<li class="tsd-kind-get-signature tsd-parent-kind-class"><a href="_zowe_imperative.config.html#layers-1" class="tsd-kind-icon">layers</a></li>
 								<li class="tsd-kind-get-signature tsd-parent-kind-class"><a href="_zowe_imperative.config.html#maskedproperties" class="tsd-kind-icon">masked<wbr>Properties</a></li>
 								<li class="tsd-kind-get-signature tsd-parent-kind-class"><a href="_zowe_imperative.config.html#paths" class="tsd-kind-icon">paths</a></li>
 								<li class="tsd-kind-get-signature tsd-parent-kind-class"><a href="_zowe_imperative.config.html#properties" class="tsd-kind-icon">properties</a></li>
@@ -133,10 +134,13 @@
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_zowe_imperative.config.html#delete" class="tsd-kind-icon">delete</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_zowe_imperative.config.html#findlayer" class="tsd-kind-icon">find<wbr>Layer</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_zowe_imperative.config.html#formmainconfigpathnm" class="tsd-kind-icon">form<wbr>Main<wbr>Config<wbr>Path<wbr>Nm</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_zowe_imperative.config.html#getschemainfo" class="tsd-kind-icon">get<wbr>Schema<wbr>Info</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_zowe_imperative.config.html#layeractive" class="tsd-kind-icon">layer<wbr>Active</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_zowe_imperative.config.html#layerexists" class="tsd-kind-icon">layer<wbr>Exists</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><a href="_zowe_imperative.config.html#layermerge" class="tsd-kind-icon">layer<wbr>Merge</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><a href="_zowe_imperative.config.html#layerpath" class="tsd-kind-icon">layer<wbr>Path</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_zowe_imperative.config.html#layerprofiles" class="tsd-kind-icon">layer<wbr>Profiles</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_zowe_imperative.config.html#reload" class="tsd-kind-icon">reload</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_zowe_imperative.config.html#save" class="tsd-kind-icon">save</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_zowe_imperative.config.html#set" class="tsd-kind-icon">set</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_zowe_imperative.config.html#setschema" class="tsd-kind-icon">set<wbr>Schema</a></li>
@@ -160,7 +164,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/imperative/blob/next/packages/config/src/Config.ts#L102">@zowe/imperative/packages/config/src/Config.ts:102</a></li>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/next/packages/config/src/Config.ts#L117">@zowe/imperative/packages/config/src/Config.ts:117</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -192,7 +196,7 @@
 					<div class="tsd-signature tsd-kind-icon">m<wbr>Active<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">{ </span>global<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">; </span>user<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol"> }</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/zowe/imperative/blob/next/packages/config/src/Config.ts#L87">@zowe/imperative/packages/config/src/Config.ts:87</a></li>
+							<li>Defined in <a href="https://github.com/zowe/imperative/blob/next/packages/config/src/Config.ts#L92">@zowe/imperative/packages/config/src/Config.ts:92</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -216,18 +220,51 @@
 						</ul>
 					</div>
 				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
+					<a name="mapi" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> m<wbr>Api</h3>
+					<div class="tsd-signature tsd-kind-icon">m<wbr>Api<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">{ </span>layers<span class="tsd-signature-symbol">: </span><a href="_zowe_imperative.configlayers.html" class="tsd-signature-type">ConfigLayers</a><span class="tsd-signature-symbol">; </span>plugins<span class="tsd-signature-symbol">: </span><a href="_zowe_imperative.configplugins.html" class="tsd-signature-type">ConfigPlugins</a><span class="tsd-signature-symbol">; </span>profiles<span class="tsd-signature-symbol">: </span><a href="_zowe_imperative.configprofiles.html" class="tsd-signature-type">ConfigProfiles</a><span class="tsd-signature-symbol">; </span>secure<span class="tsd-signature-symbol">: </span><a href="_zowe_imperative.configsecure.html" class="tsd-signature-type">ConfigSecure</a><span class="tsd-signature-symbol"> }</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/zowe/imperative/blob/next/packages/config/src/Config.ts#L112">@zowe/imperative/packages/config/src/Config.ts:112</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Cached version of Config APIs</p>
+						</div>
+					</div>
+					<div class="tsd-type-declaration">
+						<h4>Type declaration</h4>
+						<ul class="tsd-parameters">
+							<li class="tsd-parameter">
+								<h5>layers<span class="tsd-signature-symbol">: </span><a href="_zowe_imperative.configlayers.html" class="tsd-signature-type">ConfigLayers</a></h5>
+							</li>
+							<li class="tsd-parameter">
+								<h5>plugins<span class="tsd-signature-symbol">: </span><a href="_zowe_imperative.configplugins.html" class="tsd-signature-type">ConfigPlugins</a></h5>
+							</li>
+							<li class="tsd-parameter">
+								<h5>profiles<span class="tsd-signature-symbol">: </span><a href="_zowe_imperative.configprofiles.html" class="tsd-signature-type">ConfigProfiles</a></h5>
+							</li>
+							<li class="tsd-parameter">
+								<h5>secure<span class="tsd-signature-symbol">: </span><a href="_zowe_imperative.configsecure.html" class="tsd-signature-type">ConfigSecure</a></h5>
+							</li>
+						</ul>
+					</div>
+				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
 					<a name="mapp" class="tsd-anchor"></a>
 					<h3>m<wbr>App</h3>
 					<div class="tsd-signature tsd-kind-icon">m<wbr>App<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/zowe/imperative/blob/next/packages/config/src/Config.ts#L63">@zowe/imperative/packages/config/src/Config.ts:63</a></li>
+							<li>Defined in <a href="https://github.com/zowe/imperative/blob/next/packages/config/src/Config.ts#L68">@zowe/imperative/packages/config/src/Config.ts:68</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
-							<p>App name used in config filenames (e.g., <em>my_cli</em>.config.json)</p>
+							<p>App name used in config filenames (e.g., <em>my_cli</em>.config.json)
+							It could be an absolute path, we recommend always using the getter method</p>
 						</div>
 						<dl class="tsd-comment-tags">
 							<dt>internal</dt>
@@ -241,7 +278,7 @@
 					<div class="tsd-signature tsd-kind-icon">m<wbr>Home<wbr>Dir<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/zowe/imperative/blob/next/packages/config/src/Config.ts#L75">@zowe/imperative/packages/config/src/Config.ts:75</a></li>
+							<li>Defined in <a href="https://github.com/zowe/imperative/blob/next/packages/config/src/Config.ts#L80">@zowe/imperative/packages/config/src/Config.ts:80</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -260,7 +297,7 @@
 					<div class="tsd-signature tsd-kind-icon">m<wbr>Layers<span class="tsd-signature-symbol">:</span> <a href="../interfaces/_zowe_imperative.iconfiglayer.html" class="tsd-signature-type">IConfigLayer</a><span class="tsd-signature-symbol">[]</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/zowe/imperative/blob/next/packages/config/src/Config.ts#L69">@zowe/imperative/packages/config/src/Config.ts:69</a></li>
+							<li>Defined in <a href="https://github.com/zowe/imperative/blob/next/packages/config/src/Config.ts#L74">@zowe/imperative/packages/config/src/Config.ts:74</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -279,7 +316,7 @@
 					<div class="tsd-signature tsd-kind-icon">m<wbr>Project<wbr>Dir<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/zowe/imperative/blob/next/packages/config/src/Config.ts#L81">@zowe/imperative/packages/config/src/Config.ts:81</a></li>
+							<li>Defined in <a href="https://github.com/zowe/imperative/blob/next/packages/config/src/Config.ts#L86">@zowe/imperative/packages/config/src/Config.ts:86</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -298,7 +335,7 @@
 					<div class="tsd-signature tsd-kind-icon">m<wbr>Secure<span class="tsd-signature-symbol">:</span> <a href="../modules/_zowe_imperative.html#iconfigsecure" class="tsd-signature-type">IConfigSecure</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/zowe/imperative/blob/next/packages/config/src/Config.ts#L102">@zowe/imperative/packages/config/src/Config.ts:102</a></li>
+							<li>Defined in <a href="https://github.com/zowe/imperative/blob/next/packages/config/src/Config.ts#L107">@zowe/imperative/packages/config/src/Config.ts:107</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -317,7 +354,7 @@
 					<div class="tsd-signature tsd-kind-icon">m<wbr>Vault<span class="tsd-signature-symbol">:</span> <a href="../interfaces/_zowe_imperative.iconfigvault.html" class="tsd-signature-type">IConfigVault</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/zowe/imperative/blob/next/packages/config/src/Config.ts#L96">@zowe/imperative/packages/config/src/Config.ts:96</a></li>
+							<li>Defined in <a href="https://github.com/zowe/imperative/blob/next/packages/config/src/Config.ts#L101">@zowe/imperative/packages/config/src/Config.ts:101</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -336,7 +373,7 @@
 					<div class="tsd-signature tsd-kind-icon">opts<span class="tsd-signature-symbol">:</span> <a href="../interfaces/_zowe_imperative.iconfigopts.html" class="tsd-signature-type">IConfigOpts</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/zowe/imperative/blob/next/packages/config/src/Config.ts#L110">@zowe/imperative/packages/config/src/Config.ts:110</a></li>
+							<li>Defined in <a href="https://github.com/zowe/imperative/blob/next/packages/config/src/Config.ts#L125">@zowe/imperative/packages/config/src/Config.ts:125</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -351,7 +388,7 @@
 					<div class="tsd-signature tsd-kind-icon">END_<wbr>OF_<wbr>TEAM_<wbr>CONFIG<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">".config.json"</span><span class="tsd-signature-symbol"> = &quot;.config.json&quot;</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/zowe/imperative/blob/next/packages/config/src/Config.ts#L52">@zowe/imperative/packages/config/src/Config.ts:52</a></li>
+							<li>Defined in <a href="https://github.com/zowe/imperative/blob/next/packages/config/src/Config.ts#L56">@zowe/imperative/packages/config/src/Config.ts:56</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -366,7 +403,7 @@
 					<div class="tsd-signature tsd-kind-icon">END_<wbr>OF_<wbr>USER_<wbr>CONFIG<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">".config.user.json"</span><span class="tsd-signature-symbol"> = &quot;.config.user.json&quot;</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/zowe/imperative/blob/next/packages/config/src/Config.ts#L57">@zowe/imperative/packages/config/src/Config.ts:57</a></li>
+							<li>Defined in <a href="https://github.com/zowe/imperative/blob/next/packages/config/src/Config.ts#L61">@zowe/imperative/packages/config/src/Config.ts:61</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -388,7 +425,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/imperative/blob/next/packages/config/src/Config.ts#L245">@zowe/imperative/packages/config/src/Config.ts:245</a></li>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/next/packages/config/src/Config.ts#L272">@zowe/imperative/packages/config/src/Config.ts:272</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -424,7 +461,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/imperative/blob/next/packages/config/src/Config.ts#L294">@zowe/imperative/packages/config/src/Config.ts:294</a></li>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/next/packages/config/src/Config.ts#L324">@zowe/imperative/packages/config/src/Config.ts:324</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -446,7 +483,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/imperative/blob/next/packages/config/src/Config.ts#L302">@zowe/imperative/packages/config/src/Config.ts:302</a></li>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/next/packages/config/src/Config.ts#L332">@zowe/imperative/packages/config/src/Config.ts:332</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -468,7 +505,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/imperative/blob/next/packages/config/src/Config.ts#L258">@zowe/imperative/packages/config/src/Config.ts:258</a></li>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/next/packages/config/src/Config.ts#L288">@zowe/imperative/packages/config/src/Config.ts:288</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -481,7 +518,7 @@
 					</ul>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-get-signature tsd-parent-kind-class">
-					<a name="layers" class="tsd-anchor"></a>
+					<a name="layers-1" class="tsd-anchor"></a>
 					<h3>layers</h3>
 					<ul class="tsd-signatures tsd-kind-get-signature tsd-parent-kind-class">
 						<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">get</span> layers<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_imperative.iconfiglayer.html" class="tsd-signature-type">IConfigLayer</a><span class="tsd-signature-symbol">[]</span></li>
@@ -490,7 +527,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/imperative/blob/next/packages/config/src/Config.ts#L277">@zowe/imperative/packages/config/src/Config.ts:277</a></li>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/next/packages/config/src/Config.ts#L307">@zowe/imperative/packages/config/src/Config.ts:307</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -513,7 +550,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/imperative/blob/next/packages/config/src/Config.ts#L350">@zowe/imperative/packages/config/src/Config.ts:350</a></li>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/next/packages/config/src/Config.ts#L404">@zowe/imperative/packages/config/src/Config.ts:404</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -540,7 +577,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/imperative/blob/next/packages/config/src/Config.ts#L268">@zowe/imperative/packages/config/src/Config.ts:268</a></li>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/next/packages/config/src/Config.ts#L298">@zowe/imperative/packages/config/src/Config.ts:298</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -562,7 +599,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/imperative/blob/next/packages/config/src/Config.ts#L286">@zowe/imperative/packages/config/src/Config.ts:286</a></li>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/next/packages/config/src/Config.ts#L316">@zowe/imperative/packages/config/src/Config.ts:316</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -585,7 +622,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/imperative/blob/next/packages/config/src/Config.ts#L318">@zowe/imperative/packages/config/src/Config.ts:318</a></li>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/next/packages/config/src/Config.ts#L348">@zowe/imperative/packages/config/src/Config.ts:348</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -607,7 +644,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/imperative/blob/next/packages/config/src/Config.ts#L310">@zowe/imperative/packages/config/src/Config.ts:310</a></li>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/next/packages/config/src/Config.ts#L340">@zowe/imperative/packages/config/src/Config.ts:340</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -626,13 +663,13 @@
 					<a name="delete" class="tsd-anchor"></a>
 					<h3>delete</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">delete<span class="tsd-signature-symbol">(</span>path<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, opts<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-symbol">{ </span>secure<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+						<li class="tsd-signature tsd-kind-icon">delete<span class="tsd-signature-symbol">(</span>propertyPath<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, opts<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-symbol">{ </span>secure<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/imperative/blob/next/packages/config/src/Config.ts#L413">@zowe/imperative/packages/config/src/Config.ts:413</a></li>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/next/packages/config/src/Config.ts#L467">@zowe/imperative/packages/config/src/Config.ts:467</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -643,7 +680,7 @@
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>path: <span class="tsd-signature-type">string</span></h5>
+									<h5>propertyPath: <span class="tsd-signature-type">string</span></h5>
 									<div class="tsd-comment tsd-typography">
 										<p>Property path</p>
 									</div>
@@ -674,7 +711,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/imperative/blob/next/packages/config/src/Config.ts#L528">@zowe/imperative/packages/config/src/Config.ts:528</a></li>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/next/packages/config/src/Config.ts#L591">@zowe/imperative/packages/config/src/Config.ts:591</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -716,7 +753,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/imperative/blob/next/packages/config/src/Config.ts#L562">@zowe/imperative/packages/config/src/Config.ts:562</a></li>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/next/packages/config/src/Config.ts#L651">@zowe/imperative/packages/config/src/Config.ts:651</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -744,6 +781,28 @@
 					</ul>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="getschemainfo" class="tsd-anchor"></a>
+					<h3>get<wbr>Schema<wbr>Info</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">get<wbr>Schema<wbr>Info<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_imperative.iconfigschemainfo.html" class="tsd-signature-type">IConfigSchemaInfo</a></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/next/packages/config/src/Config.ts#L356">@zowe/imperative/packages/config/src/Config.ts:356</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Schema file path used by the active layer</p>
+								</div>
+							</div>
+							<h4 class="tsd-returns-title">Returns <a href="../interfaces/_zowe_imperative.iconfigschemainfo.html" class="tsd-signature-type">IConfigSchemaInfo</a></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
 					<a name="layeractive" class="tsd-anchor"></a>
 					<h3>layer<wbr>Active</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
@@ -753,7 +812,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/imperative/blob/next/packages/config/src/Config.ts#L543">@zowe/imperative/packages/config/src/Config.ts:543</a></li>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/next/packages/config/src/Config.ts#L606">@zowe/imperative/packages/config/src/Config.ts:606</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -770,6 +829,40 @@
 						</li>
 					</ul>
 				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="layerexists" class="tsd-anchor"></a>
+					<h3>layer<wbr>Exists</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">layer<wbr>Exists<span class="tsd-signature-symbol">(</span>inDir<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, user<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/next/packages/config/src/Config.ts#L618">@zowe/imperative/packages/config/src/Config.ts:618</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Check if a layer exists in the given path</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>inDir: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The directory to which you want to look for the layer.</p>
+									</div>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> user: <span class="tsd-signature-type">boolean</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
+						</li>
+					</ul>
+				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-private">
 					<a name="layermerge" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagPrivate">Private</span> layer<wbr>Merge</h3>
@@ -780,7 +873,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/imperative/blob/next/packages/config/src/Config.ts#L459">@zowe/imperative/packages/config/src/Config.ts:459</a></li>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/next/packages/config/src/Config.ts#L514">@zowe/imperative/packages/config/src/Config.ts:514</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -816,7 +909,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/imperative/blob/next/packages/config/src/Config.ts#L226">@zowe/imperative/packages/config/src/Config.ts:226</a></li>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/next/packages/config/src/Config.ts#L251">@zowe/imperative/packages/config/src/Config.ts:251</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -855,7 +948,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/imperative/blob/next/packages/config/src/Config.ts#L506">@zowe/imperative/packages/config/src/Config.ts:506</a></li>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/next/packages/config/src/Config.ts#L569">@zowe/imperative/packages/config/src/Config.ts:569</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -893,6 +986,42 @@
 					</ul>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="reload" class="tsd-anchor"></a>
+					<h3>reload</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">reload<span class="tsd-signature-symbol">(</span>opts<span class="tsd-signature-symbol">?: </span><a href="../interfaces/_zowe_imperative.iconfigopts.html" class="tsd-signature-type">IConfigOpts</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_imperative.ipromisewithprogress.html#promise" class="tsd-signature-type">Promise</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/next/packages/config/src/Config.ts#L166">@zowe/imperative/packages/config/src/Config.ts:166</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Reload config files from disk in the current project directory.</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>throws</dt>
+									<dd><p>An ImperativeError if the configuration does not load successfully</p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> opts: <a href="../interfaces/_zowe_imperative.iconfigopts.html" class="tsd-signature-type">IConfigOpts</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Options to control how Config class behaves</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="../interfaces/_zowe_imperative.ipromisewithprogress.html#promise" class="tsd-signature-type">Promise</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
 					<a name="save" class="tsd-anchor"></a>
 					<h3>save</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
@@ -902,7 +1031,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/imperative/blob/next/packages/config/src/Config.ts#L194">@zowe/imperative/packages/config/src/Config.ts:194</a></li>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/next/packages/config/src/Config.ts#L221">@zowe/imperative/packages/config/src/Config.ts:221</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -915,7 +1044,7 @@
 								<li>
 									<h5><span class="tsd-flag ts-flagOptional">Optional</span> allLayers: <span class="tsd-signature-type">boolean</span></h5>
 									<div class="tsd-comment tsd-typography">
-										<p>Specify false to save only the active config layer</p>
+										<p>Specify true to save all config layers instead of only the active one</p>
 									</div>
 								</li>
 							</ul>
@@ -927,13 +1056,13 @@
 					<a name="set" class="tsd-anchor"></a>
 					<h3>set</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">set<span class="tsd-signature-symbol">(</span>path<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, value<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span>, opts<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-symbol">{ </span>secure<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+						<li class="tsd-signature tsd-kind-icon">set<span class="tsd-signature-symbol">(</span>propertyPath<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, value<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span>, opts<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-symbol">{ </span>parseString<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">; </span>secure<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/imperative/blob/next/packages/config/src/Config.ts#L363">@zowe/imperative/packages/config/src/Config.ts:363</a></li>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/next/packages/config/src/Config.ts#L421">@zowe/imperative/packages/config/src/Config.ts:421</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -945,7 +1074,7 @@
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>path: <span class="tsd-signature-type">string</span></h5>
+									<h5>propertyPath: <span class="tsd-signature-type">string</span></h5>
 									<div class="tsd-comment tsd-typography">
 										<p>Property path</p>
 									</div>
@@ -957,11 +1086,22 @@
 									</div>
 								</li>
 								<li>
-									<h5><span class="tsd-flag ts-flagOptional">Optional</span> opts: <span class="tsd-signature-symbol">{ </span>secure<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol"> }</span></h5>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> opts: <span class="tsd-signature-symbol">{ </span>parseString<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">; </span>secure<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol"> }</span></h5>
 									<div class="tsd-comment tsd-typography">
-										<p>Include <code>secure: true</code> to store the property securely</p>
+										<p>Optional parameters to change behavior</p>
+										<ul>
+											<li><code>parseString</code> - If true, strings will be converted to a more specific<pre><code>            <span class="hljs-keyword">type</span> <span class="hljs-keyword">like</span> <span class="hljs-type">boolean</span> <span class="hljs-keyword">or</span> number <span class="hljs-keyword">when</span> possible
+</code></pre>
+											</li>
+											<li><code>secure</code> - If true, the property will be stored securely.<pre><code>       If <span class="hljs-literal">false</span>, <span class="hljs-keyword">the</span> <span class="hljs-keyword">property</span> will be stored <span class="hljs-keyword">in</span> plain <span class="hljs-built_in">text</span>.
+</code></pre>
+											</li>
+										</ul>
 									</div>
 									<ul class="tsd-parameters">
+										<li class="tsd-parameter">
+											<h5><span class="tsd-flag ts-flagOptional">Optional</span> parse<wbr>String<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">boolean</span></h5>
+										</li>
 										<li class="tsd-parameter">
 											<h5><span class="tsd-flag ts-flagOptional">Optional</span> secure<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">boolean</span></h5>
 										</li>
@@ -982,7 +1122,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/imperative/blob/next/packages/config/src/Config.ts#L436">@zowe/imperative/packages/config/src/Config.ts:436</a></li>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/next/packages/config/src/Config.ts#L490">@zowe/imperative/packages/config/src/Config.ts:490</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1014,7 +1154,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/imperative/blob/next/packages/config/src/Config.ts#L116">@zowe/imperative/packages/config/src/Config.ts:116</a></li>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/next/packages/config/src/Config.ts#L131">@zowe/imperative/packages/config/src/Config.ts:131</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1036,13 +1176,18 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/imperative/blob/next/packages/config/src/Config.ts#L130">@zowe/imperative/packages/config/src/Config.ts:130</a></li>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/next/packages/config/src/Config.ts#L145">@zowe/imperative/packages/config/src/Config.ts:145</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
 									<p>Load config files from disk and secure properties from vault.</p>
 								</div>
+								<dl class="tsd-comment-tags">
+									<dt>throws</dt>
+									<dd><p>An ImperativeError if the configuration does not load successfully</p>
+									</dd>
+								</dl>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
@@ -1073,7 +1218,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/imperative/blob/next/packages/config/src/Config.ts#L335">@zowe/imperative/packages/config/src/Config.ts:335</a></li>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/next/packages/config/src/Config.ts#L389">@zowe/imperative/packages/config/src/Config.ts:389</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1174,6 +1319,9 @@
 									<li class=" tsd-kind-property tsd-parent-kind-class">
 										<a href="_zowe_imperative.config.html#mactive" class="tsd-kind-icon">m<wbr>Active</a>
 									</li>
+									<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
+										<a href="_zowe_imperative.config.html#mapi" class="tsd-kind-icon">m<wbr>Api</a>
+									</li>
 									<li class=" tsd-kind-property tsd-parent-kind-class">
 										<a href="_zowe_imperative.config.html#mapp" class="tsd-kind-icon">m<wbr>App</a>
 									</li>
@@ -1214,7 +1362,7 @@
 										<a href="_zowe_imperative.config.html#exists" class="tsd-kind-icon">exists</a>
 									</li>
 									<li class=" tsd-kind-get-signature tsd-parent-kind-class">
-										<a href="_zowe_imperative.config.html#layers" class="tsd-kind-icon">layers</a>
+										<a href="_zowe_imperative.config.html#layers-1" class="tsd-kind-icon">layers</a>
 									</li>
 									<li class=" tsd-kind-get-signature tsd-parent-kind-class">
 										<a href="_zowe_imperative.config.html#maskedproperties" class="tsd-kind-icon">masked<wbr>Properties</a>
@@ -1241,7 +1389,13 @@
 										<a href="_zowe_imperative.config.html#formmainconfigpathnm" class="tsd-kind-icon">form<wbr>Main<wbr>Config<wbr>Path<wbr>Nm</a>
 									</li>
 									<li class=" tsd-kind-method tsd-parent-kind-class">
+										<a href="_zowe_imperative.config.html#getschemainfo" class="tsd-kind-icon">get<wbr>Schema<wbr>Info</a>
+									</li>
+									<li class=" tsd-kind-method tsd-parent-kind-class">
 										<a href="_zowe_imperative.config.html#layeractive" class="tsd-kind-icon">layer<wbr>Active</a>
+									</li>
+									<li class=" tsd-kind-method tsd-parent-kind-class">
+										<a href="_zowe_imperative.config.html#layerexists" class="tsd-kind-icon">layer<wbr>Exists</a>
 									</li>
 									<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private">
 										<a href="_zowe_imperative.config.html#layermerge" class="tsd-kind-icon">layer<wbr>Merge</a>
@@ -1251,6 +1405,9 @@
 									</li>
 									<li class=" tsd-kind-method tsd-parent-kind-class">
 										<a href="_zowe_imperative.config.html#layerprofiles" class="tsd-kind-icon">layer<wbr>Profiles</a>
+									</li>
+									<li class=" tsd-kind-method tsd-parent-kind-class">
+										<a href="_zowe_imperative.config.html#reload" class="tsd-kind-icon">reload</a>
 									</li>
 									<li class=" tsd-kind-method tsd-parent-kind-class">
 										<a href="_zowe_imperative.config.html#save" class="tsd-kind-icon">save</a>
@@ -1327,10 +1484,11 @@
 				<li class="tsd-kind-interface tsd-has-type-parameter"><span class="tsd-kind-icon">Interface with type parameter</span></li>
 			</ul>
 			<ul class="tsd-legend">
-				<li class="tsd-kind-enum"><span class="tsd-kind-icon">Enumeration</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private method</span></li>
 			</ul>
 			<ul class="tsd-legend">
-				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private method</span></li>
+				<li class="tsd-kind-enum"><span class="tsd-kind-icon">Enumeration</span></li>
 			</ul>
 			<ul class="tsd-legend">
 				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><span class="tsd-kind-icon">Static method</span></li>

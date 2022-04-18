@@ -14,23 +14,16 @@ Before you install Zowe&trade; on z/OS, you must install IBM SDK for Node.js on 
 
 The following Node.js versions are supported to run Zowe. See the [Hardware and software prerequisites](#hardware-and-software-prerequisites) section for the prerequisites that are required by Zowe.
 
-The corresponding [IBM Knowledge Center for Node.js - z/OS](https://www.ibm.com/support/knowledgecenter/SSWLKB/welcome_nodesdk_family.html) lists all the prerequisites for Node.js. Some software packages, which might be listed as prerequisites there, are **NOT** required by Zowe. Specifically, you do **NOT** need to install Python, Make, Perl, or C/C++ runtime or compiler.  If you can run `node --version` successfully, you have installed the prerequisites required by Zowe.
+The corresponding [IBM Knowledge Center for Node.js - z/OS](https://www.ibm.com/docs/en/sdk-nodejs-zos) lists all the prerequisites for Node.js. Some software packages, which might be listed as prerequisites there, are **NOT** required by Zowe. Specifically, you do **NOT** need to install Python, Make, Perl, or C/C++ runtime or compiler.  If you can run `node --version` successfully, you have installed the prerequisites required by Zowe.
 
-- v8.x (except v8.16.1)
-   - z/OS V2R2: PTFs UI62788, UI46658, UI62416, UI62415 (APARs [PH10606](https://www-01.ibm.com/support/docview.wss?uid=swg1PH10606), [PI79959](https://www-01.ibm.com/support/docview.wss?uid=swg1PI79959), [PH10740](https://www-01.ibm.com/support/docview.wss?uid=swg1PH10740), [PH10741](https://www-01.ibm.com/support/docview.wss?uid=swg1PH10741))
-   - z/OS V2R3: PTFs UI61308, UI61375, UI61747 (APARs [PH0710](https://www-01.ibm.com/support/docview.wss?uid=isg1PH07107), [PH08352](https://www-01.ibm.com/support/docview.wss?uid=swg1PH08352), [PH09543](https://www-01.ibm.com/support/docview.wss?uid=swg1PH09543))
-   - z/OS V2R4: PTFs UI64839, UI64940, UI64837, UI64830 (APARs [PH14559](http://www-01.ibm.com/support/docview.wss?uid=swg1PH14559), [PH16038](http://www-01.ibm.com/support/docview.wss?uid=swg1PH16038), [PH15674](http://www-01.ibm.com/support/docview.wss?uid=swg1PH15674), [PH14560](http://www-01.ibm.com/support/docview.wss?uid=swg1PH14560))
-
-   **Known issue:** There is a known issue with node.js v8.16.1 and Zowe desktop encoding. See the [GitHub issue](https://github.com/ibmruntimes/node/issues/142) for details.
-
-   **Workaround:** Use node.js v8.16.2 or later, which is available at [https://www.ibm.com/ca-en/marketplace/sdk-nodejs-compiler-zos](https://www.ibm.com/ca-en/marketplace/sdk-nodejs-compiler-zos). Download the `pax.Z` file.
+**Notice:** IBM SDK for node.js had withdrawn v8 from marketing on September 7, 2020 and ended v8 service on September 30, 2021. Zowe ended support for node v8.x in January 2022.
 
 - v12.x
    - z/OS V2R2: PTFs UI62788, UI46658, UI62416, UI62415 (APARs [PH10606](https://www-01.ibm.com/support/docview.wss?uid=swg1PH10606), [PI79959](https://www-01.ibm.com/support/docview.wss?uid=swg1PI79959), [PH10740](https://www-01.ibm.com/support/docview.wss?uid=swg1PH10740), [PH10741](https://www-01.ibm.com/support/docview.wss?uid=swg1PH10741))
    - z/OS V2R3: PTFs UI61308, UI61375, UI61747 (APARs [PH0710](https://www-01.ibm.com/support/docview.wss?uid=isg1PH07107), [PH08352](https://www-01.ibm.com/support/docview.wss?uid=swg1PH08352), [PH09543](https://www-01.ibm.com/support/docview.wss?uid=swg1PH09543))
    - z/OS V2R4: PTFs UI64839, UI64940, UI64837, UI64830 , UI65567 (APARs [PH14559](http://www-01.ibm.com/support/docview.wss?uid=swg1PH14559), [PH16038](http://www-01.ibm.com/support/docview.wss?uid=swg1PH16038), [PH15674](http://www-01.ibm.com/support/docview.wss?uid=swg1PH15674), [PH14560](http://www-01.ibm.com/support/docview.wss?uid=swg1PH14560), [PH17481](http://www-01.ibm.com/support/docview.wss?uid=swg1PH17481))
 
-- v14 (except v14.17.2)
+- v14.x (except v14.17.2)
    - z/OS V2R3: PTFs UI61308, UI61375, UI61747 (APARs [PH07107](https://www-01.ibm.com/support/docview.wss?uid=isg1PH07107), [PH08352](https://www-01.ibm.com/support/docview.wss?uid=swg1PH08352), [PH09543](https://www-01.ibm.com/support/docview.wss?uid=swg1PH09543))    
    - z/OS V2R4: PTFs UI64830, UI64837, UI64839, UI64940, UI65567 (APARs [PH14560](https://www.ibm.com/support/pages/apar/PH14560), 
    [PH15674](https://www.ibm.com/support/pages/apar/PH15674),
@@ -40,11 +33,16 @@ The corresponding [IBM Knowledge Center for Node.js - z/OS](https://www.ibm.com/
 
    **Known issue:** There is a known issue with node.js v14.17.2. It will cause the error of `ZWESLSTC not found in "<dsn-prefix>.SZWESAMP"` when you run the `zowe-install-proc.sh` utility.
 
+- v16.x
+   - z/OS V2R4: PTFs [UI64830](https://www.ibm.com/support/pages/apar/PH14560), [UI64837](https://www.ibm.com/support/pages/apar/PH14560), [UI64839](https://www.ibm.com/support/pages/apar/PH14559), [UI64940](https://www.ibm.com/support/pages/apar/PH16038), [UI65567](https://www.ibm.com/support/pages/apar/PH17481).
+   - z/OS V2R5: PTFs [UI64830](https://www.ibm.com/support/pages/apar/PH14560), [UI64837](https://www.ibm.com/support/pages/apar/PH15674),[UI64940](https://www.ibm.com/support/pages/apar/PH16038).
+
+
 ## How to obtain IBM SDK for Node.js - z/OS
 
 You can obtain IBM SDK for Node.js - z/OS for free in one of the following ways:
-- Order the SMP/E edition through your IBM representative for production use
-- Use the PAX edition for non-production deployments
+- Use the PAX edition for non-production deployments which you can download from [ibm.com/products/sdk-nodejs-compiler-zos](https://www.ibm.com/products/sdk-nodejs-compiler-zos).
+- Order the SMP/E edition through your IBM representative for production use.  
 
 For more information, see the blog ["How to obtain IBM SDK for Node.js - z/OS, at no charge"](https://developer.ibm.com/mainframe/2019/04/17/ibm-sdk-for-node-js-z-os-at-no-charge/).
 
@@ -52,7 +50,7 @@ For more information, see the blog ["How to obtain IBM SDK for Node.js - z/OS, a
 
 To install Node.js for Zowe, the following requirements must be met.
 
-The corresponding [IBM Knowledge Center for Node.js - z/OS](https://www.ibm.com/support/knowledgecenter/SSWLKB/welcome_nodesdk_family.html) lists all the prerequisites for Node.js. Some software packages, which might be listed as prerequisites there, are **NOT** required by Zowe. Specifically, you do **NOT** need to install Python, Make, Perl, or C/C++ runtime or compiler.
+The corresponding [IBM Knowledge Center for Node.js - z/OS](https://www.ibm.com/docs/en/sdk-nodejs-zos) lists all the prerequisites for Node.js. Some software packages, which might be listed as prerequisites there, are **NOT** required by Zowe. Specifically, you do **NOT** need to install Python, Make, Perl, or C/C++ runtime or compiler.
 
 If you can run `node --version` successfully, you have installed the Node.js prerequisites required by Zowe.
 
@@ -90,4 +88,4 @@ Follow these steps to install the PAX edition of Node.js - z/OS to run Zowe.
 
 ## Installing the SMP/E edition of Node.js - z/OS
 
-To install the SMP/E edition of Node.js, see the [documentation for IBM SDK for Node.js - z/OS](https://www.ibm.com/support/knowledgecenter/SSWLKB/welcome_nodesdk_family.html). Remember that the software packages Perl, Python, Make, or C/C++ runtime or compiler that the Node.js documentation might mention are **NOT** needed by Zowe.
+To install the SMP/E edition of Node.js, see the [documentation for IBM SDK for Node.js - z/OS](https://www.ibm.com/docs/en/sdk-nodejs-zos). Remember that the software packages Perl, Python, Make, or C/C++ runtime or compiler that the Node.js documentation might mention are **NOT** needed by Zowe.

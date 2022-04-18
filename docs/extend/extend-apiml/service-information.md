@@ -36,7 +36,7 @@ In IBM RACF, the access to the service information can be given by:
 PERMIT APIML.SERVICES CLASS(ZOWE) ID(user) ACCESS(READ)
 ```
 
-In CA Top Secret:
+In Top Secret:
 
 ```markup
 TSS PERMIT(user) ZOWE(APIML.SERVICES) ACCESS(READ)
@@ -58,7 +58,7 @@ API Gateway can be configured to check for SAF resource authorization in several
 
 Use the following method to get information about a specific service:
 
-`GET /gateway/api/v1/services/{serviceId}`
+`GET /gateway/{serviceId}/api/v1/services`
 
 where:
 

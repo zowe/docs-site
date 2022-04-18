@@ -20,6 +20,7 @@ A typical component package, for example, `jobs-api-package-1.0.4.zip`, consists
 ```
 +-- manifest.yaml
 |-- apiml-static-registration.yaml.template
+|-- schema.json
 |-- bin/
     |-- configure.sh
     |-- jobs-api-server-1.0.4-boot.jar
@@ -30,7 +31,12 @@ A typical component package, for example, `jobs-api-package-1.0.4.zip`, consists
 
 - `manifest.yaml`
 
-   Refers to the Zowe component manifest file. You can find detailed definition of manifest in [Zowe Component Manifest](#zowe-component-manifest).
+   Refers to the Zowe component manifest file. You can find detailed definition of manifest in [Server Component Manifest File Reference](../appendix/server-component-manifest.md).
+   
+- `schema.json`
+
+   An example filename of the [json schema](https://json-schema.org/) file specified by the manifest property `schemas.configs` as detailed in [Server Component Manifest File Reference](../appendix/server-component-manifest.md). The file details the parameters that are valid for the component's configuration within Zowe server configuration files. See documentation on [server component schema files](server-schemas.md) for more information.
+
 - `apiml-static-registration.yaml.template`
 
    Refers to a supporting file that instructs the Zowe launch script how to register this extension service to the API Mediation Layer Discovery service. In this case, this file is referred in the `manifest.yaml` `apimlServices.static[0].file` field. This file is optional depending on the function of the component and you can change and customize the file name in the manifest file.
@@ -64,135 +70,13 @@ If you decide to bundle and ship Zowe extensions within another product, you can
 
 ## Zowe component manifest
 
-Zowe extensions, as well as core components, can use a manifest file to describe itself. The manifest file defines the name and purpose of the component. It also provides information about how this component should be installed, configured, started, and tested. It can be named as `manifest.yaml`, `manifest.yml`, or `manifest.json` and should be located in the root directory of the component. Currently, only `YAML` or `JSON` format is supported.
-
-The manifest file contains the following properties:
-
-- **`name`**
-
-  (Required) Defines a short, computer-readable name of the component. This component name is used as directory name after it is installed. The allowed characters in the name are alphabets, numbers, hyphen (`-`) and underscore (`_`). For example, `explorer-jes` is a valid extension name.
-
-- **`id`**
-
-  (Optional) Defines a long, computer-readable identifier of the component. If the component is hosted as one of the projects in [Open Mainframe Project](https://www.openmainframeproject.org/), the identifier also matches the component path in the Zowe Artifactory. For example, `org.zowe.explorer-jes` is a valid identifier. You can locate the component's official releases by looking into the `libs-release-local/org/zowe/explorer-jes/` directory in the [Zowe Artifactory](https://zowe.jfrog.io/ui/repos/tree/General/libs-release-local%2Forg%2Fzowe%2Fexplorer-jes).
-- **`version`**: (Optional but recommended) This is the current version of the component without the prefix of `v`. For example, `1.0.4` is a valid `version` value.
-
-- **`title`**
-
-  (Optional) Defines a short human-readable name for this component. This value will also be used as the default title for API Catalog tile, or App Framework plug-in title. For example, `JES Explorer` is a valid `title` for the `explorer-jes` component.
-
-- **`description`**
-
-  (Optional) Defines a long human-readable description of this component. There is no restriction on what you can put in the field.
-
-- **`license`**
-
-  (Optional but recommended) Defines the license code of the component. For example, Zowe core components have `EPL-2.0` value in this field.
-
-- **`build`**
-
-  (Optional but strongly recommended) Defines the build information of the current package, including git commit hash, and so on. When Zowe core components define manifest file, these fields are left as template variables. The template will be updated when a publishable package is created. It supports the following subfields:
-  * **`branch`**
-  
-    It tells the user which branch this package is built from.
-
-  * **`number`**
-  
-    You may create multiple packages in the same branch. This is the sequential number of the current package.
-
-  * **`commitHash`**
-  
-    This is the commit hash of the package that can be used to match the exact source code in the repository. Zowe core components usually use `git rev-parse --verify HEAD` to retrieve the commit hash.
-
-  * **`timestamp`**
-  
-    This is the UNIX timestamp when the package is created.
-
-- **`commands`**
-
-  This defines actions that should be taken when the component is installed, configured, started, or tested. You must issue this command with one or more subfields as listed below. For example, `commands.install`. All subfields are optional and usually should point to a USS command or script.
-
-  * **`install`**
-  
-    This defines extra steps when installing this component. It will be automatically executed if you install your component with the `<RUNTIME_DIR>/bin/zowe-install-component.sh` utility tool.
-
-  * **`configureInstance`**
-  
-    This defines extra steps when configuring the component for a Zowe instance. It will be automatically executed if you configure your component with the `<RUNTIME_DIR>/bin/zowe-configure-component.sh` utility tool.
-
-  * **`validate`**
-  
-    This defines extra validations that the component requires other than global validations. It is for runtime purpose, and will be automatically executed each time Zowe is started.
-
-  * **`configure`**
-  
-    This defines extra configuration steps before starting the component. It is for runtime purpose, and will be automatically executed each time Zowe is started.
-
-  * **`start`**
-  
-    This tells the Zowe launch script how to start the component. It is for runtime purpose, and will be automatically executed each time Zowe is started.
-
-- **`apimlServices`**
-
-  This section defines how the component will be registered to the API Mediation Layer Discovery Service. All subfields are optional.
-
-  * **`dynamic`**
-  
-    Array of objects. This information will tell Zowe and users what services you will register under the Discovery service.
-
-  - **`serviceId`**
-    
-      This defines the service ID registered to the Discovery service
-      
-  * **`static`**
-  
-    Array of objects. When the component is statically registered under the Discovery service, this tells Zowe where to find these static definitions. This information is for the Zowe runtime. When Zowe is started, the launch script will check this field and put the parse static definition file into the directory defined as `STATIC_DEF_CONFIG_DIR` in the Zowe instance.
-
-  - **`file`**
-  
-    Defines the path to the static definition file. This file is supposed to be a template.
-- **`appfwPlugins`**
-
-  Array of objects. This section defines how the component will be registered to the App Framework plug-in. All subfields are optional.
-  * **`path`**
-  
-    This points to the directory where App Framework `pluginDefinition.json` file is located. If you use the `<RUNTIME_DIR>/bin/zowe-configure-component.sh` utility tool to configure this component for an instance, the script will automatically execute `<INSTANCE_DIR>/bin/install-app.sh` with this path.
-
-- **`gatewaySharedLibs`**: Array of objects. This section defines the API ML extension(s) attributes which will get installed and used by API ML.
-  * **`path`**
-  
-    This points to the directory where the JAR files are housed for an extension and later on copied into the API ML extensions workspace directory. If there is more than 1 extension to a single manifest (say for a product family of multiple extensions), then multiple path variables can be contained within the manifest denoted by individual folders, for example `path/to/yourextension1/`.
-    Alternatively, `path` can be the JAR file path rather than a directory path.
-
-- **`zisPlugins`**
-
-  List of ZIS plugin objects. This section defines the ZIS plugin(s) attributes necessary for ZIS plugin installation and automation.
-
-    * **`id`**
-    
-      This is the unique plugin ID of the ZIS plugin.
-
-    * **`path`**
-    
-      This points to the directory where the load modules are housed for a plugin, for example `/zisServer`. If there is more than 1 plugin to a single manifest (say for a product family of multiple plugins), then multiple path variables can be contained within the manifest denoted by individual folders, for example `yourplugin1/zisServer`. The parameters for the Zowe parmlib are assumed to be in `<PATH>/samplib`. The names of the plugin executables are assumed to be in `<PATH>/loadlib`.
-i.e.
-   ```
-   zisPlugins:
-     -
-       id: yourplugin1
-       path: /proj/yourplugin-1/zisServer
-     -
-       id: yourplugin2
-       path: /proj/yourplugin2/zisServer
-   ```
-
-**Note:** All paths of directories or files mentioned previously should be relative paths to the root directory where manifest is located.
+Zowe extensions, as well as core components, can use a manifest file to describe itself. Check [Server Component Manifest File Reference](../appendix/server-component-manifest.md) for details.
 
 ## Sample manifests
 
 For examples of manifests thoughout Zowe GitHub repositories, see the following links:  
 
-- [API Catalog manifest.yaml](https://github.com/zowe/api-layer/blob/master/api-catalog-package/src/main/resources/manifest.yaml)
-- [Jobs API manifest.yaml](https://github.com/zowe/jobs/blob/master/jobs-zowe-server-package/src/main/resources/manifest.yaml)
+- [API Catalog manifest.yaml](https://github.com/zowe/api-layer/blob/v2.x.x/api-catalog-package/src/main/resources/manifest.yaml)
+- [Jobs API manifest.yaml](https://github.com/zowe/jobs/blob/v2.x/master/jobs-zowe-server-package/src/main/resources/manifest.yaml)
 - [Sample Node API and API Catalog extension manifest.yaml](https://github.com/zowe/sample-node-api/blob/master/manifest.yaml)
 - [Sample Zowe App Framework extension manifest.yaml](https://github.com/zowe/sample-trial-app/blob/master/manifest.yaml)

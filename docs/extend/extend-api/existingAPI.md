@@ -48,7 +48,7 @@ By clicking on the tile the following information is presented. Note the swagger
 Although the most critical information, the redirection of the urls is under routed services along with the service id. 
 ```
 routedServices.gatewayUrl+serviceId will point at instanceBaseUrls+serviceRelativeUrl
-<gateway url>api/v1/jzos ==> https://host.my.com:2956/jzos
+<gateway url>/jzos/api/v1 ==> https://host.my.com:2956/jzos
 ```
 ## Getting the sample app running
 

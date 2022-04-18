@@ -24,19 +24,21 @@ The following steps outline the overall process to onboard a REST service with t
 
 3. [Configuring your Spring Boot based service to onboard with API ML](#configuring-your-spring-boot-based-service-to-onboard-with-api-ml)
 
-    * [Sample API ML Onboarding Configuration](#Sample-API-ML-Onboarding-Configuration)
-    * [SAF Keyring configuration](#SAF-Keyring-configuration)
-    * [Custom Metadata](#Custom-Metadata)
-    * [Api Mediation Layer specific metadata](#Api-Mediation-Layer-specific-metadata)
+    * [Sample API ML Onboarding Configuration](#sample-api-ml-onboarding-configuration)
+    * [Authentication properties](#authentication-properties)
+    * [API ML Onboarding Configuration Sample](#api-ml-onboarding-configuration-sample)
+    * [SAF Keyring configuration](#saf-keyring-configuration)
+    * [Custom Metadata](#custom-metadata)
+    * [Api Mediation Layer specific metadata](#api-mediation-layer-specific-metadata)
     
 4. [Registering and unregistering your service with API ML](#registering-and-unregistering-your-service-with-api-ml)
     
-    * [Unregistering your service with API ML](#Unregistering-your-service-with-API-ML)
-    * [Basic routing](#Basic-routing)
+    * [Unregistering your service with API ML](#unregistering-your-service-with-api-ml)
+    * [Basic routing](#basic-routing)
     
 5. [Adding API documentation](#adding-api-documentation)
 
-6. (Optional) [Validating your API service discoverability](#validating-the-discoverability-of-your-api-service-by-the-discovery-service)
+6. (Optional) [Validating the discoverability of your API service by the Discovery Service](#validating-the-discoverability-of-your-api-service-by-the-discovery-service)
 
 7. (Optional) [Troubleshooting](#troubleshooting)
     * [Log messages during registration problems](#log-messages-during-registration-problems)
@@ -311,6 +313,83 @@ A property notation provided in the format `-Dproperty.key=PROPERTY_VALUE` can b
 **Note**: System properties provided with `-D` notation on the command line will not replace properties defined
 in any of the YAML configuration files.
 
+### Authentication properties
+These parameters are not required. If a parameter is not specified, a default value is used.
+
+The authentication properties provide the API Gateway with information about the authentication scheme supported by the service. At run time, the API Gateway uses this information to translate the Zowe JWT passed by the caller to credentials accepted by the service. 
+
+The following example shows the parameters that define the service authentication method:
+
+**Example:**
+
+```yaml
+authentication:
+    scheme: httpBasicPassTicket
+    applid: ZOWEAPPL
+```
+where:
+
+* **authentication.scheme**
+
+  This value specifies a service authentication scheme.
+  The following schemes are supported by the API Gateway:
+
+    * **bypass**
+
+      This value specifies that the authentication token is passed unchanged to the service. Also, the API Gateway does not validate the token. Consequently, the token validation is left to the service.
+
+      **Note:** This is the default scheme when no authentication parameters are specified.
+
+    * **zoweJwt**
+
+      This value specifies that a service accepts the Zowe JWT. No additional processing is done by the API Gateway.
+
+    * **httpBasicPassTicket**
+
+      This value specifies that a service accepts PassTickets in the Authorization header of the HTTP requests using the basic authentication scheme.
+      It is necessary to provide a service APPLID in the `authentication.applid` parameter.
+
+      For more information, see [Enabling PassTicket creation for API Services that Accept PassTickets](api-mediation-passtickets.md).
+
+    * **zosmf**
+
+      This value specifies that a service accepts z/OSMF LTPA (Lightweight Third-Party Authentication).
+      This scheme should be used only for a z/OSMF service used by the API Gateway Authentication Service and other z/OSMF services that use the same LTPA key.
+
+      For more information about z/OSMF Single Sign-on, see [Establishing a single sign-on environment](https://www.ibm.com/support/knowledgecenter/SSLTBW_2.4.0/com.ibm.zosmfcore.multisysplex.help.doc/izuG00hpManageSecurityCredentials.html).
+
+    * **safIdt**
+
+      This value specifies that the service accepts SAF IDT, and expects that the token produced by the SAF IDT provider implementation is in the `X-SAF-Token` header.
+      It is necessary to provide a service APPLID in the `authentication.applid` parameter.
+      For more information, see [SAF IDT provider](implement-new-saf-provider.md).
+
+    * **x509**
+
+      This value specifies that a service accepts client certificates forwarded in the HTTP header. The Gateway service extracts information from a valid client certificate. For validation, the certificate needs to be trusted by API Mediation Layer, and needs to contain a Client Authentication (1.3.6.1.5.5.7.3.2) entry in Extended Key Usage. To use this scheme, it is also necessary to specify which headers to include. Specify these parameters in `headers`.
+
+* **authentication.headers**
+
+  When the `x509` scheme is specified, use the `headers` parameter to select which values to send to a service. Use one of the following values:
+
+    * `X-Certificate-Public`
+
+      The public part of client certificate base64 encoded
+
+    * `X-Certificate-DistinguishedName`
+
+      The distinguished name from client certificate
+
+    * `X-Certificate-CommonName`
+
+      The common name from the client certificate
+
+* **authentication.applid**
+
+  This parameter specifies a service APPLID.
+  This parameter is valid only for the `httpBasicPassTicket` authentication scheme.
+
+
 ### API ML Onboarding Configuration Sample
 
 Some parameters which are specific for your service deployment
@@ -435,7 +514,7 @@ logging:
 ### SAF Keyring configuration
 
 You can choose to use a SAF keyring instead of keystore and truststore for storing certificates.
-For information about required certificates, see [Zowe API ML TLS requirements](api-mediation-security.md#Zowe-API-ML-TLS-requirements). For information about running Java on z/OS with a keyring, see [SAF Keyring](api-mediation-security.md#API-ML-SAF-Keyring). Make sure that the enabler can access and read the keyring. Please refer to documentation of your security system for details.
+For information about required certificates, see [Zowe API ML TLS requirements](api-mediation-security.md#zowe-api-ml-tls-requirements). For information about running Java on z/OS with a keyring, see [SAF Keyring](api-mediation-security.md#API-ML-SAF-Keyring). Make sure that the enabler can access and read the keyring. Please refer to documentation of your security system for details.
 
 The following example shows enabler configuration with keyrings: 
 ```

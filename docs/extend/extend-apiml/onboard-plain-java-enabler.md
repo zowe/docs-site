@@ -145,7 +145,7 @@ Use the following procedure if you use _Maven_ as your build automation system.
     **Tip:** If you want to use snapshot version, replace `libs-release` with `libs-snapshot` in the repository url and change snapshots->enabled to `true`.
 
 2. Add the proper dependencies:
-   ```java
+   ```xml
    <dependency>
        <groupId>org.zowe.apiml.sdk</groupId>
        <artifactId>onboarding-enabler-java</artifactId>
@@ -274,7 +274,7 @@ The onboarding configuration parameters are broken down into the following group
     * If the `serviceId` is `sampleservice`, the service URL in the API ML Gateway address space appears as the following path:
 
        ```
-       https://gateway-host:gateway-port/api/v1/sampleservice/...
+       https://gateway-host:gateway-port/sampleservice/api/v1/...
        ```
 
 * **title**
@@ -445,7 +445,7 @@ routes:
 
 **Examples:** 
 * ```
-  https://gateway:10010/api/sampleservice 
+  https://gateway:10010/sampleservice/api
   ```
   is routed to: 
   ```
@@ -453,7 +453,7 @@ routes:
   ```
 * API major version 1:
     ```
-    https://gateway:10010/api/v1/sampleservice
+    https://gateway:10010/sampleservice/api/v1
     ```
     is routed to: 
     ```
@@ -461,7 +461,7 @@ routes:
     ```
 * APIs docs major version 1:
     ```
-    https://gateway:10010/api/v1/api-doc/sampleservice
+    https://gateway:10010/sampleservice/api/v1/api-doc
     ```
     is routed to:
     ```
@@ -561,9 +561,9 @@ where:
   
     * **safIdt**
 
-       This value specifies that the application recognizes the SAF IDT scheme and fills the `X-SAF-Token` header with the token produced by the Saf IDT provider implementation.
+       This value specifies that the service accepts SAF IDT, and expects that the token produced by the SAF IDT provider implementation is in the `X-SAF-Token` header. It is necessary to provide a service APPLID in the `authentication.applid` parameter.
   
-       For more information, see [SAF IDT provider](implement-new-saf-provider.md)
+       For more information, see [SAF IDT provider].(implement-new-saf-provider.md)
 
     * **x509**
 
@@ -599,7 +599,7 @@ The Zowe API ML Discovery Service communicates with its clients in secure Https 
 Client services need to configure several TLS/SSL parameters in order to communicate with the API ML Discovery service.
 When an enabler is used to onboard a service, the configuration is provided in the `ssl` section/group in the same _YAML_ file that is used to configure the Eureka parameters and the service metadata.
 
-For more information about API ML security, see [API ML security](api-mediation-security.md).
+For more information about API ML security, see [API ML security](api-mediation-security).
 
 TLS/SSL configuration consists of the following parameters:
 
@@ -625,7 +625,7 @@ TLS/SSL configuration consists of the following parameters:
 
 * **keyStore**
 
-  This parameter specifies the keystore file used to store the private key. When using keyring, the value should be set to the SAF keyring location. For information about required certificates, see [Zowe API ML TLS requirements](api-mediation-security.md#Zowe-API-ML-TLS-requirements). 
+  This parameter specifies the keystore file used to store the private key. When using keyring, the value should be set to the SAF keyring location. For information about required certificates, see [Zowe API ML TLS requirements](api-mediation-security#zowe-api-ml-tls-requirements).
 
   If you have an issue with loading the keystore file in your environment, try to provide the absolute path to the keystore file. The sample keystore file for local deployment is in [api-layer repository](https://github.com/zowe/api-layer/tree/master/keystore/localhost)
 
@@ -639,7 +639,7 @@ TLS/SSL configuration consists of the following parameters:
 
 * **trustStore**
 
-  This parameter specifies the truststore file used to keep other parties public keys and certificates. When using keyring, this value should be set to the SAF keyring location. For information about required certificates, see [Zowe API ML TLS requirements](api-mediation-security.md#Zowe-API-ML-TLS-requirements).
+  This parameter specifies the truststore file used to keep other parties public keys and certificates. When using keyring, this value should be set to the SAF keyring location. For information about required certificates, see [Zowe API ML TLS requirements](api-mediation-security#zowe-api-ml-tls-requirements).
 
   If you have an issue with loading the truststore file in your environment, try to provide the absolute path to the truststore file. The sample truststore file for local deployment is in [api-layer repository](https://github.com/zowe/api-layer/tree/master/keystore/localhost)
 
@@ -658,9 +658,9 @@ TLS/SSL configuration consists of the following parameters:
 ### SAF Keyring configuration
 
 You can choose to use SAF keyring instead of keystore and truststore for storing certificates.
-For information about required certificates, see [Zowe API ML TLS requirements](api-mediation-security.md#Zowe-API-ML-TLS-requirements). For information about running Java on z/OS with keyring, see [SAF Keyring](api-mediation-security.md#API-ML-SAF-Keyring). Make sure that the enabler can access and read the keyring. Please refer to documentation of your security system for details.
+For information about required certificates, see [Zowe API ML TLS requirements](api-mediation-security#zowe-api-ml-tls-requirements). For information about running Java on z/OS with keyring, see [SAF Keyring](api-mediation-security#api-ml-saf-keyring). Make sure that the enabler can access and read the keyring. Please refer to documentation of your security system for details.
 
-The following example shows enabler configuration with keyrings: 
+The following example shows enabler configuration with keyrings:
 ```
 ssl:
     keyAlias: localhost
@@ -695,7 +695,7 @@ where:
 
 ### Custom Metadata
 
-Custom metadata are described [here](../extend-apiml/custom-metadata.md).
+Custom metadata are described [here](../extend-apiml/custom-metadata).
     
 ##  Registering your service with API ML
 

@@ -9,7 +9,9 @@ Zowe can be extended in the following ways:
   - [Dynamic API registration](#dynamic-api-registration)
   - [Static API registration](#static-api-registration)
 - [Add a plug-in to the Zowe Desktop](#add-a-plug-in-to-the-zowe-desktop)
-- [Sample extensions](#sample-extensions)
+
+To help Zowe extenders better understand how extensions are developed and deployed,
+we provide a set of [sample extensions](#sample-extensions). These sample extensions contain the necessary boilerplate project setup, application code, and installation scripts to jumpstart the extension development and deployment to Zowe.
 
 **Note:** For more information on the architecture of Zowe, see [Zowe Architecture](../getting-started/zowe-architecture.md).
 
@@ -28,6 +30,8 @@ To register a z/OS service with the API Mediation Layer, there are two approache
 - [Static API registration](#static-api-registration)
 
 For information about how to onboard REST APIs, see the [Onboarding Overview](extend-apiml/onboard-overview.md).
+
+To streamline the process of onboarding new REST API services to the API Mediation Layer, see [Onboarding a REST API service with the YAML Wizard](./extend-apiml/onboard-wizard.md)
 
 ### Dynamic API registration
 

@@ -70,30 +70,67 @@
 						<h1>z/OS USS Package</h1>
 					</a>
 					<p>Contains APIs to interact with USS on z/OS (using the z/OS SSH service).</p>
+					<a href="#installation-instructions" id="installation-instructions" style="color: inherit; text-decoration: none;">
+						<h2>Installation Instructions</h2>
+					</a>
+					<p>The z/OS USS SDK has a dependency on the ssh2 package. This package allows for more secure cryptographic ciphers to be used first on supporting hardware. In order to do this, the dependency attempts to build some native modules at install time.</p>
+					<p>If these modules cannot be built, the dependency will continue to function, without the optimal cipher list order. However, some error messaging may be visible. These errors can be safely ignored, if desired.</p>
+					<p>To consume the optimal cipher list and build the native modules, the following software is pre-requisite:</p>
+					<a href="#windows" id="windows" style="color: inherit; text-decoration: none;">
+						<h3>Windows</h3>
+					</a>
+					<p>We recommend NodeJS be installed with Chocolatey, which includes most of the required tooling. An additional tool, <a href="https://cmake.org/download/">CMake</a>, will need to be installed in addition to Chocolatey.</p>
+					<p>Alternatively, install the following:</p>
+					<ul>
+						<li>Python 3.7 or greater</li>
+						<li><a href="https://cmake.org/download/">CMake</a></li>
+						<li>Choose one of the following:<ul>
+								<li>Visual Studio Build Tools<ul>
+										<li>&quot;Visual C++ build tools&quot; workload</li>
+									</ul>
+								</li>
+								<li>Visual Studio Community<ul>
+										<li>&quot;Desktop development with C++&quot; workload</li>
+									</ul>
+								</li>
+							</ul>
+						</li>
+					</ul>
+					<a href="#unix" id="unix" style="color: inherit; text-decoration: none;">
+						<h3>Unix</h3>
+					</a>
+					<ul>
+						<li>Python 3.7 or greater</li>
+						<li><a href="https://cmake.org/download/">CMake</a></li>
+						<li><code>make</code></li>
+						<li>A C/C++ Compiler (i.e. <code>gcc-c++</code>, <code>g++</code>)</li>
+					</ul>
+					<a href="#macos" id="macos" style="color: inherit; text-decoration: none;">
+						<h3>MacOS</h3>
+					</a>
+					<ul>
+						<li>Python 3.7 or greater</li>
+						<li><a href="https://cmake.org/download/">CMake</a></li>
+						<li>XCode<ul>
+								<li>Including <code>XCode Command Line Tools</code></li>
+							</ul>
+						</li>
+					</ul>
 					<a href="#api-examples" id="api-examples" style="color: inherit; text-decoration: none;">
 						<h2>API Examples</h2>
 					</a>
 					<p><strong>Check disk space on file system containing home directory</strong></p>
-					<pre><code class="language-typescript"><span class="hljs-keyword">import</span> { IProfile, Logger, LoggingConfigurer, ImperativeError,
-         CredentialManagerFactory } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@zowe/imperative&quot;</span>;
-<span class="hljs-keyword">import</span> { getDefaultProfile } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@zowe/core-for-zowe-sdk&quot;</span>;
+					<pre><code class="language-typescript"><span class="hljs-keyword">import</span> { ProfileInfo } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@zowe/imperative&quot;</span>;
 <span class="hljs-keyword">import</span> { Shell, SshSession } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@zowe/zos-uss-for-zowe-sdk&quot;</span>;
 
 (<span class="hljs-keyword">async</span> () =&gt; {
-    <span class="hljs-comment">//Initialize the Imperative Credential Manager Factory and Logger</span>
-    Logger.initLogger(LoggingConfigurer.configureLogger(<span class="hljs-string">&#x27;lib&#x27;</span>, {<span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;test&#x27;</span>}));
-    <span class="hljs-comment">// Uncommment the below line if the Secure Credential Store is in use</span>
-    <span class="hljs-comment">// await CredentialManagerFactory.initialize({service: &quot;Zowe-Plugin&quot;});</span>
+    <span class="hljs-comment">// Load connection info from default SSH profile</span>
+    <span class="hljs-keyword">const</span> profInfo = <span class="hljs-keyword">new</span> ProfileInfo(<span class="hljs-string">&quot;zowe&quot;</span>);
+    <span class="hljs-keyword">await</span> profInfo.readProfilesFromDisk();
+    <span class="hljs-keyword">const</span> sshProfAttrs = profInfo.getDefaultProfile(<span class="hljs-string">&quot;ssh&quot;</span>);
+    <span class="hljs-keyword">const</span> sshMergedArgs = profInfo.mergeArgsForProfile(sshProfAttrs, { <span class="hljs-attr">getSecureVals</span>: <span class="hljs-literal">true</span> });
+    <span class="hljs-keyword">const</span> session = <span class="hljs-keyword">new</span> SshSession(ProfileInfo.initSessCfg(sshMergedArgs.knownArgs));
 
-    <span class="hljs-comment">// Get the default z/OSMF profile and create a z/OSMF session with it</span>
-    <span class="hljs-keyword">let</span> defaultSshProfile: IProfile;
-    <span class="hljs-keyword">try</span> {
-        defaultSshProfile = <span class="hljs-keyword">await</span> getDefaultProfile(<span class="hljs-string">&quot;ssh&quot;</span>, <span class="hljs-literal">true</span>);
-    } <span class="hljs-keyword">catch</span> (err) {
-        <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> ImperativeError({<span class="hljs-attr">msg</span>: <span class="hljs-string">&quot;Failed to get a profile.&quot;</span>});
-    }
-
-    <span class="hljs-keyword">const</span> session: SshSession = SshSession.createBasicSshSession(defaultSshProfile);
     <span class="hljs-keyword">await</span> Shell.executeSsh(session, <span class="hljs-string">&quot;df .&quot;</span>, <span class="hljs-function">(<span class="hljs-params">data: <span class="hljs-built_in">string</span></span>) =&gt;</span> {
         <span class="hljs-keyword">if</span> (data.trim()) <span class="hljs-built_in">console</span>.log(data);
     });
@@ -106,26 +143,17 @@
 						<h1></h1>
 					</a>
 					<p><strong>Make a script executable</strong></p>
-					<pre><code class="language-typescript"><span class="hljs-keyword">import</span> { IProfile, Logger, LoggingConfigurer, ImperativeError,
-         CredentialManagerFactory } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@zowe/imperative&quot;</span>;
-<span class="hljs-keyword">import</span> { getDefaultProfile } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@zowe/core-for-zowe-sdk&quot;</span>;
+					<pre><code class="language-typescript"><span class="hljs-keyword">import</span> { ProfileInfo } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@zowe/imperative&quot;</span>;
 <span class="hljs-keyword">import</span> { Shell, SshSession } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@zowe/zos-uss-for-zowe-sdk&quot;</span>;
 
 (<span class="hljs-keyword">async</span> () =&gt; {
-    <span class="hljs-comment">//Initialize the Imperative Credential Manager Factory and Logger</span>
-    Logger.initLogger(LoggingConfigurer.configureLogger(<span class="hljs-string">&#x27;lib&#x27;</span>, {<span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;test&#x27;</span>}));
-    <span class="hljs-comment">// Uncommment the below line if the Secure Credential Store is in use</span>
-    <span class="hljs-comment">// await CredentialManagerFactory.initialize({service: &quot;Zowe-Plugin&quot;});</span>
+    <span class="hljs-comment">// Load connection info from default SSH profile</span>
+    <span class="hljs-keyword">const</span> profInfo = <span class="hljs-keyword">new</span> ProfileInfo(<span class="hljs-string">&quot;zowe&quot;</span>);
+    <span class="hljs-keyword">await</span> profInfo.readProfilesFromDisk();
+    <span class="hljs-keyword">const</span> sshProfAttrs = profInfo.getDefaultProfile(<span class="hljs-string">&quot;ssh&quot;</span>);
+    <span class="hljs-keyword">const</span> sshMergedArgs = profInfo.mergeArgsForProfile(sshProfAttrs, { <span class="hljs-attr">getSecureVals</span>: <span class="hljs-literal">true</span> });
+    <span class="hljs-keyword">const</span> session = <span class="hljs-keyword">new</span> SshSession(ProfileInfo.initSessCfg(sshMergedArgs.knownArgs));
 
-    <span class="hljs-comment">// Get the default z/OSMF profile and create a z/OSMF session with it</span>
-    <span class="hljs-keyword">let</span> defaultSshProfile: IProfile;
-    <span class="hljs-keyword">try</span> {
-        defaultSshProfile = <span class="hljs-keyword">await</span> getDefaultProfile(<span class="hljs-string">&quot;ssh&quot;</span>, <span class="hljs-literal">true</span>);
-    } <span class="hljs-keyword">catch</span> (err) {
-        <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> ImperativeError({<span class="hljs-attr">msg</span>: <span class="hljs-string">&quot;Failed to get a profile.&quot;</span>});
-    }
-
-    <span class="hljs-keyword">const</span> session: SshSession = SshSession.createBasicSshSession(defaultSshProfile);
     <span class="hljs-keyword">await</span> Shell.executeSshCwd(session, <span class="hljs-string">&quot;chmod +x test.sh&quot;</span>, <span class="hljs-string">&quot;/tmp&quot;</span>, <span class="hljs-function">(<span class="hljs-params">data: <span class="hljs-built_in">string</span></span>) =&gt;</span> {
         <span class="hljs-keyword">if</span> (data.trim()) <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Error</span>(data);
     });
@@ -177,7 +205,7 @@
 					<div class="tsd-signature tsd-kind-icon">start<wbr>Cmd<wbr>Flag<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">"@@START OF COMMAND@@"</span><span class="tsd-signature-symbol"> = &quot;@@START OF COMMAND@@&quot;</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/next/packages/zosuss/src/Shell.ts#L23">@zowe/zos-uss-for-zowe-sdk/src/Shell.ts:23</a></li>
+							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/next/packages/zosuss/src/Shell.ts#L21">@zowe/zos-uss-for-zowe-sdk/src/Shell.ts:21</a></li>
 						</ul>
 					</aside>
 				</section>

@@ -2,12 +2,6 @@
 
 The IBM® z/OS FTP Plug-in for Zowe&trade; CLI lets you extend Zowe CLI to access z/OS datasets, USS files, and submit JCL. The plug-in uses the z/OS FTP service to achieve the interaction with z/OS.
 
-  - [Use Cases](#use-cases)
-  - [Commands](#commands)
-  - [Software requirements](#software-requirements)
-  - [Installing](#installing)
-  - [Creating a user profile](#creating-a-user-profile)
-
 ## Use cases
 
 As a z/OS user, you can use the plug-in to perform the following tasks:

@@ -29,7 +29,7 @@ This method of basic routing is based on the service ID that identifies the serv
 
 The URI identifies the resource, but does not identify the instance of the service as unique when multiple instances of the same service are provided. For example, when a service is running in high-availability (HA) mode.
 
-Services of the same product that provide different resources, such as CA SYSVIEW on one system and CA SYSVIEW in a different sysplex, cannot have the same service ID (the same URI cannot have two different meanings).
+Services of the same product that provide different resources, such as SYSVIEW on one system and SYSVIEW in a different sysplex, cannot have the same service ID (the same URI cannot have two different meanings).
 
 In addition to the basic Zuul routing, the Zowe API Gateway supports versioning in which you can specify a major version. The Gateway routes a request only to an instance that provides the specified major version of the API.
 
@@ -39,7 +39,7 @@ You can implement additional routing using a Zuul pre-filter. For more informati
 
 The URL format expected by the API Gateway is:
 
-`https://{gatewayHost}:{port}/api/v{majorVersion}/{serviceId}/{resource}`
+`https://{gatewayHost}:{port}/{serviceId}/api/v{majorVersion}/{resource}`
 
 **Example:**
 
@@ -52,7 +52,7 @@ http://service:10015/enablerv1sampleapp/api/v1/samples
 The following address shows the API Gateway URL of the resource:
 
 ```
-https://gateway:10010/api/v1/enablerv1sampleapp/samples
+https://gateway:10010/enablerv1sampleapp/api/v1/samples
 ```
 
 The following diagram illustrates how basic routing works:
@@ -80,13 +80,13 @@ Service instances provide information about routing to the API Gateway via Eurek
 
 In this example, the service has a service ID of `helloworldservice` that exposes the following endpoints:
 
-* **UI** - `https://gateway/ui/v1/helloworldservice` routed to `https://hwServiceHost:port/helloworld/`
-* **API major version 1** - `https://gateway/api/v1/helloworldservice` routed to `https://hwServiceHost:port/helloworld/v1`
-* **API major version 2** - `https://gateway/api/v2/helloworldservice` routed to `https://hwServiceHost:port/helloworld/v2`
+* **UI** - `https://gateway/helloworldservice/ui/v1` routed to `https://hwServiceHost:port/helloworld/`
+* **API major version 1** - `https://gateway/helloworldservice/api/v1` routed to `https://hwServiceHost:port/helloworld/v1`
+* **API major version 2** - `https://gateway/helloworldservice/api/v2` routed to `https://hwServiceHost:port/helloworld/v2`
 
 where:
 
-* The gatewayUrl is matched against the prefix of the URL path used at the Gateway `https://gateway/urlPath`, where `urlPath` is `prefix/serviceId/resourcePath`.
+* The gatewayUrl is matched against the prefix of the URL path used at the Gateway `https://gateway/urlPath`, where `urlPath` is `serviceId/prefix/resourcePath`.
 * The service ID is used to find the service host and port.
 * The `serviceUrl` is used to prefix the `resourcePath` at the service host.
 
@@ -100,7 +100,7 @@ One example that only uses a service ID is z/OSMF.
 
 **Example:**
 
-z/OSMF URL through the Gateway: `https://gateway:10010/api/zosmf/restjobs/jobs/...`
+z/OSMF URL through the Gateway: `https://gateway:10010/zosmf/api/restjobs/jobs/...`
 
 where:
 

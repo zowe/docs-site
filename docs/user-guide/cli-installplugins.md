@@ -35,15 +35,14 @@ Install Zowe CLI plug-ins using npm commands on Windows, Mac, and Linux. The pro
 
     **Note:** Replace `<my-plugin>` with the installation command syntax in the following table:
 
-    | Plug-in | Installation Command Syntax |
+    | Plug-in | Syntax |
     |---------|-----------------------------|
-    | IBM CICS Plug-in for Zowe CLI | `@zowe/cics-for-zowe-cli@zowe-v1-lts` |
-    | IBM Db2 Plug-in for Zowe CLI| `@zowe/db2-for-zowe-cli@zowe-v1-lts` |
-    | IBM z/OS FTP Plug-in for Zowe CLI | `@zowe/zos-ftp-for-zowe-cli@zowe-v1-lts` |
-    | IBM IMS Plug-in for Zowe CLI | `@zowe/ims-for-zowe-cli@zowe-v1-lts` |
-    | IBM MQ Plug-in for Zowe CLI | `@zowe/mq-for-zowe-cli@zowe-v1-lts` |
-    | Secure Credential Store Plug-in for Zowe CLI | `@zowe/secure-credential-store-for-zowe-cli@zowe-v1-lts` |
-    |    |    |
+    | IBM CICS Plug-in for Zowe CLI | `@zowe/cics-for-zowe-cli@zowe-v2-lts` |
+    | IBM Db2 Plug-in for Zowe CLI| `@zowe/db2-for-zowe-cli@zowe-v2-lts` |
+    | IBM z/OS FTP Plug-in for Zowe CLI | `@zowe/zos-ftp-for-zowe-cli@zowe-v2-lts` |
+    | IBM IMS Plug-in for Zowe CLI | `@zowe/ims-for-zowe-cli@zowe-v2-lts` |
+    | IBM MQ Plug-in for Zowe CLI | `@zowe/mq-for-zowe-cli@zowe-v2-lts` |
+   
 
 
 3.  (Optional) Issue the following command to install two or more plug-ins using one command. Separate the `<my-plugin>` names with one space.
@@ -97,8 +96,7 @@ Install plug-ins from a local package on any computer that has limited or no acc
     | IBM z/OS FTP Plug-in for Zowe CLI | `zos-ftp-for-zowe-cli.tgz` |
     | IBM IMS Plug-in for Zowe CLI | `ims-for-zowe-cli.tgz` |
     | IBM MQ Plug-in for Zowe CLI | `mq-for-zowe-cli.tgz` |
-    | Secure Credential Store Plug-in for Zowe CLI | `secure-credential-store-for-zowe-cli.tgz` |
-    |    |    |
+   
 
 You installed Zowe CLI plug-ins.
 
@@ -117,15 +115,14 @@ zowe plugins validate [plugin]
     validate. If you do not specify a plug-in name, the command
     validates all installed plug-ins. The name of the plug-in is not always the same as the name of the NPM package.
 
-    | Plug-in | Installation Command Syntax |
+    | Plug-in | Syntax |
     |---------|-----------------------------|
     | IBM CICS Plug-in for Zowe CLI | `@zowe/cics-for-zowe-cli` |
     | IBM Db2 Plug-in for Zowe CLI| `@zowe/db2-for-zowe-cli` |
     | IBM z/OS FTP Plug-in for Zowe CLI | `@zowe/zos-ftp-for-zowe-cli` |
     | IBM IMS Plug-in for Zowe CLI | `@zowe/ims-for-zowe-cli` |
     | IBM MQ Plug-in for Zowe CLI | `@zowe/mq-for-zowe-cli` |
-    | Secure Credential Store Plug-in for Zowe CLI | `@zowe/secure-credential-store-for-zowe-cli` |
-    |    |    |
+
 
 **Examples: Validate plug-ins**
 
@@ -166,7 +163,7 @@ zowe plugins update [plugin...] [--registry <registry>]
 The following example illustrates the syntax to use to update an installed plug-in to the latest version:
 
 ```
-zowe plugins update @zowe/my-plugin@zowe-v1-lts
+zowe plugins update @zowe/my-plugin@zowe-v2-lts
 ```
 
 The following example illustrates the syntax to use to update a plug-in to a specific version:
@@ -198,15 +195,14 @@ zowe plugins uninstall [plugin]
 The following table describes the uninstallation command syntax for each plug-in:
 
 
-| Plug-in | Installation Command Syntax |
+| Plug-in | Syntax |
 |---------|-----------------------------|
 | IBM CICS Plug-in for Zowe CLI | `@zowe/cics-for-zowe-cli` |
 | IBM Db2 Plug-in for Zowe CLI| `@zowe/db2-for-zowe-cli` |
 | IBM z/OS FTP Plug-in for Zowe CLI | `@zowe/zos-ftp-for-zowe-cli` |
 | IBM IMS Plug-in for Zowe CLI | `@zowe/ims-for-zowe-cli` |
 | IBM MQ Plug-in for Zowe CLI | `@zowe/mq-for-zowe-cli` |
-| Secure Credential Store Plug-in for Zowe CLI | `@zowe/secure-credential-store-for-zowe-cli` |
-|    |    |
+
 
 **Example:**
 
@@ -215,4 +211,3 @@ The following example illustrates the command to uninstall the CICS plug-in:
 ```
 zowe plugins uninstall @zowe/cics
 ```
-

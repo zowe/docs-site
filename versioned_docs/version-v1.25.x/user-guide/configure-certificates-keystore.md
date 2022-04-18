@@ -171,7 +171,7 @@ To customize the `ZWESSOTK` JCL, edit the JCL variables at the beginning of the 
 
 #### `PRODUCT` variable
 
-The `PRODUCT` variable specifies the z/OS security manager. The default value is `RACF`. Change the value to `ACF2` or `TSS` if you are using Access Control Facility CA-ACF2 or CA Top Secret for z/OS as your z/OS security manager.
+The `PRODUCT` variable specifies the z/OS security manager. The default value is `RACF`. Change the value to `ACF2` or `TSS` if you are using ACF2 or Top Secret for z/OS as your z/OS security manager.
 
 ```
 //         SET  PRODUCT=RACF         * RACF, ACF2, or TSS
