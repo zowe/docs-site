@@ -1,7 +1,7 @@
 # Installing Plugins
 Plugins can be added or removed from the Zowe App Server, as well as upgraded. There are two ways to do these actions: By REST API or by filesystem. The instructions below assume you have administrative permissions either to access the correct REST APIs or to have the necessary permissions to update server directories & files.
 
-**NOTE: Plugins must be [pre-built](mvd-buildingplugins.md), and follow the [directory structure](mvd-plugindefandstruct.md), and have all dependencies met to be successfully installed. Read the server log in `<logDirectory>/install-app.log`, (ex `~/.zowe/log/install-app.log`) if a plugin does not show in the Zowe desktop, but has been installed successfully.**
+**NOTE: Plugins must be [pre-built](mvd-buildingplugins.md), and follow the [directory structure](mvd-plugindefandstruct.md), and have all dependencies met to be successfully installed. Read the appServer or install-app log files within the Zowe instance's `<logDirectory>` directory, (ex `~/.zowe/log/install-app.log`) if a plugin does not show in the Zowe desktop, but has been installed successfully.**
 
 ## By filesystem
 The App server uses directories of JSON files, described in the [server configuration document](mvd-server-config.md#deploy-configuration). Defaults are located in the folder `zlux-app-server/defaults/plugins`, but the server reads the list of plugins instead from the instance directory, at `<workspaceDirectory>/app-server/plugins` (for example, `~/.zowe/workspace/app-server/plugins` which includes JSON files describing where to find a plugin. Adding or removing JSONs from this folder will add or remove plugins upon server restart, or you can use REST APIs and cluster mode to add or remove plugins without restarting).
@@ -26,7 +26,7 @@ The server REST APIs allow plugin management without restarting the server - you
 The API only works when RBAC is configured, and an RBAC-compatible security plugin is being used. An example of this is [zss-auth](https://github.com/zowe/zlux-server-framework/tree/v2.x/staging/plugins/sso-auth), and [use of RBAC](https://docs.zowe.org/stable/user-guide/mvd-configuration#enabling-rbac) is described in this documentation and in the [wiki](https://github.com/zowe/zlux/wiki/Auth-Plugin-Configuration).
 
 
-*NOTE:* If you do not see your plugin in the Zowe desktop check the server log in the `<logDirectory>/install-app.log` directory to troubleshoot the problem.  If you are building your own desktop extension then you need to [pre-build](mvd-buildingplugins.md) your plugin with the correct [directory structure](mvd-plugindefandstruct.md), and meet all dependencies. 
+*NOTE:* If you do not see your plugin in the Zowe desktop check the appServer and install-app log files within the Zowe instance's `<logDirectory>` directory to troubleshoot the problem.  If you are building your own desktop extension then you need to [pre-build](mvd-buildingplugins.md) your plugin with the correct [directory structure](mvd-plugindefandstruct.md), and meet all dependencies. 
 
 
 ### Plugin management during development
