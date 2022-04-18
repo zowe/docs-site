@@ -13,10 +13,10 @@ From a supported browser, open the Zowe Desktop at `https://<gwshostname>:<gwspo
 Where:
 
 -   *gwshostname* is the host on which you are running the Zowe Application Server, its the value that
-    was assigned to *zowe.externalDomains* in the zowe configuration file.
--   *gwsport* is the value that was assigned to *components.app-server.port* in the zowe configuration
+    was assigned to *zowe.externalDomains[0]* in the zowe configuration file.
+-   *gwsport* is the value that was assigned to *zowe.externalPort* in the zowe configuration
     file.
-    For example, if you run the Zowe Application Server on host *gwshostname* and the value that is assigned to *components.app-server.port* in the zowe configuration file is 12345, you would specify `https://<gwshostname>:12345/zlux/ui/v1/ZLUX/plugins/org.zowe.zlux.bootstrap/web/index.html`.
+    For example, if you run the Zowe Application Server on host *gwshostname* and the value that is assigned to *zowe.externalPort* in the zowe configuration file is 12345, you would specify `https://<gwshostname>:12345/zlux/ui/v1/ZLUX/plugins/org.zowe.zlux.bootstrap/web/index.html`.
 
 
 ### Logging in and out of the Zowe Desktop
@@ -62,7 +62,7 @@ To log out, click the User icon in the lower right corner and click **Sign Out**
         `https://<gwshostname>:<gwsport>//ZLUX/plugins/org.zowe.zlux.bootstrap/web/?pluginId=org.zowe.editor:data:{"type":"openFile","name":"<path of file>"}`
      -  You can use url to open application directly on browser with and without credentials using
          `showLogin` in url.
-            1. If `showLogin = true` then you need to login with your credntials before using an 
+            1. If `showLogin = true` then you need to login with your credentials before using an 
                application for example.
               `https://<gwshostname>:<gwsport>/ZLUX/plugins/org.zowe.zlux.bootstrap/web/?pluginId=org.zowe.terminal.tn3270&showLogin=true`.
             2. If `showLogin = false` then you can access application directly without login.
@@ -97,6 +97,18 @@ Application plug-ins are applications that you can use to access the mainframe a
 
 ### Hello World Sample
 The Hello World sample application plug-in for developers demonstrates how to create a dataservice and how to create an application plug-in using Angular and using React.
+
+### IFrame Sample
+Github Sample Repo:
+[sample-iframe-app](https://github.com/zowe/sample-iframe-app)
+
+### Sample Angular App
+Github Sample Repo:
+[sample-angular-app](https://github.com/zowe/sample-angular-app/blob/lab/step-1-hello-world/README.md)
+
+### Sample React App
+Github Sample Repo:
+[sample-react-app](https://github.com/zowe/sample-react-app/blob/lab/step-1-hello-world/README.md)
 
 ### 3270 Terminal
 The 3270 Terminal plug-in provides a user interface that emulates the basic functions of IBM 3270 family terminals. On the "back end," the plug-in and the Zowe Application Server connect to any standard TN3270E server.
