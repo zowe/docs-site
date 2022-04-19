@@ -8,13 +8,13 @@ The official date is TBD, the target is April 25, 2022; look for the official an
 
 The Zowe Squads have prepared XLS spreadsheets with conformance criteria for all Zowe extensions including: CLI, APIs, App Framework, and Explorerfor VS Code. The spreadsheets clearly show the prior / V1 criteria alongside the new / V2 criteria. Please be aware, there are additions, deletions, and CHANGES to the criteria. In some cases the change is simply that a BEST PRACTICE has been deemed REQUIRED. Use the light-GREEN highlights to easily identify the changes. See the Changes to the [Conformance Criteria](https://www.zowe.org/vnext#conformance-changes) section at Zowe.org/vNext.
 
-## Whats the difference between "server.json" and "zowe.yaml"?
+## Whats the difference between "server.json" and "example-zowe.yaml"?
 
-The previous Zowe V1.x config, "server.json", has been removed from V2 and has been replaced with a file named "zowe.yaml". The app server will no longer support instances/workspaces which only contain a "server.json" config file and will fallback to a default configuration. In addition to the app server, ZSS will no longer support "server.json".
+The previous Zowe V1.x config, "server.json", has been removed from V2 and has been replaced with a new yaml configuration file. The app server will no longer support instances/workspaces which only contain a "server.json" config file and will fallback to a default configuration. In addition to the app server, ZSS will no longer support "server.json".
 
-zowe.yaml contains configurations for the setup, install, and initialization of Zowe as well as for individual components. zowe.yaml allows users to customize dataset names, security related configs, certificate setup/config, job name & job prefix, various runtime configs, high availability config, as well as individual component configurations.
+The yaml Zowe configuration file contains configurations for the setup, install, and initialization of Zowe as well as for individual components. This file allows users to customize dataset names, security related configs, certificate setup/config, job name & job prefix, various runtime configs, high availability config, as well as individual component configurations.
 
-For more information on Zowe setup with zowe.yaml, run the following command in the command line:
+For more information on Zowe setup and the yaml configuration, run the following command in the command line:
 
   zwe init --help
 
