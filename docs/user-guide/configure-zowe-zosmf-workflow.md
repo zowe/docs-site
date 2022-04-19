@@ -5,7 +5,7 @@ As a system programmer, after you install Zowe, you can register and execute the
 Ensure that you meet the following requirements before you start the Zowe configuration:
 
 - Install and configure z/OSMF
-- Install Zowe with either an SMP/E build or a convenience build
+- Install Zowe with an SMP/E build, PSWI, or a convenience build
 
 You can complete the following tasks with the z/OSMF workflow:
 
