@@ -6,15 +6,16 @@
 
 ## Sub-commands
 
-* [certificate](./zwe-certificate)
-* [components](./zwe-components)
-* [init](./zwe-init)
+* [certificate](./certificate/zwe-certificate)
+* [components](./components/zwe-components)
+* [init](./init/zwe-init)
 * [install](./zwe-install)
-* [internal](./zwe-internal)
-* [migrate](./zwe-migrate)
-* [sample](./zwe-sample)
+* [internal](./internal/zwe-internal)
+* [migrate](./migrate/zwe-migrate)
+* [sample](./sample/zwe-sample)
 * [start](./zwe-start)
 * [stop](./zwe-stop)
+* [support](./support/zwe-support)
 * [version](./zwe-version)
 
 ## Description

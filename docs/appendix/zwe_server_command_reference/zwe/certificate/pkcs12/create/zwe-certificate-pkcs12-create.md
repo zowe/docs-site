@@ -1,6 +1,6 @@
 # zwe certificate pkcs12 create
 
-[zwe](./zwe) > [certificate](./zwe-certificate) > [pkcs12](./zwe-certificate-pkcs12) > [create](./zwe-certificate-pkcs12-create)
+[zwe](../../.././zwe) > [certificate](../.././zwe-certificate) > [pkcs12](.././zwe-certificate-pkcs12) > [create](./zwe-certificate-pkcs12-create)
 
 	zwe certificate pkcs12 create [sub-command [sub-command]...] [parameter [parameter]...]
 

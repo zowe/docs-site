@@ -1,6 +1,6 @@
 # zwe certificate keyring-jcl import-ds
 
-[zwe](./zwe) > [certificate](./zwe-certificate) > [keyring-jcl](./zwe-certificate-keyring-jcl) > [import-ds](./zwe-certificate-keyring-jcl-import-ds)
+[zwe](./../.././zwe) > [certificate](./.././zwe-certificate) > [keyring-jcl](././zwe-certificate-keyring-jcl) > [import-ds](./zwe-certificate-keyring-jcl-import-ds)
 
 	zwe certificate keyring-jcl import-ds [parameter [parameter]...]
 

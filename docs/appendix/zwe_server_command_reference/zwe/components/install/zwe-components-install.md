@@ -1,6 +1,6 @@
 # zwe components install
 
-[zwe](./zwe) > [components](./zwe-components) > [install](./zwe-components-install)
+[zwe](../.././zwe) > [components](.././zwe-components) > [install](./zwe-components-install)
 
 	zwe components install [sub-command [sub-command]...] [parameter [parameter]...]
 
@@ -12,6 +12,10 @@
 ## Description
 
 Install a Zowe module.
+
+**IMPORTANT NOTES**, by default, this command will enable the component globally
+                     by modifying your YAML configuration. You can pass
+                     `--skip-enable` to disable this behavior.
 
 
 ## Examples
@@ -29,7 +33,7 @@ Full name|Alias|Type|Required|Help message
 |---|---|---|---|---
 --component-file,--component|-o|string|yes||Path to the component package or directory.
 --auto-encoding|-e|string|no||If we want to automatically tagging the module files.
-
+--skip-enable||boolean|no||Install component without enabling it for use.
 
 ## Parameters
 

@@ -1,25 +1,22 @@
-# zwe certificate pkcs12 trust-service
+# zwe components disable
 
-[zwe](./../.././zwe) > [certificate](./.././zwe-certificate) > [pkcs12](././zwe-certificate-pkcs12) > [trust-service](./zwe-certificate-pkcs12-trust-service)
+[zwe](./.././zwe) > [components](././zwe-components) > [disable](./zwe-components-disable)
 
-	zwe certificate pkcs12 trust-service [parameter [parameter]...]
+	zwe components disable [parameter [parameter]...]
 
 ## Description
 
-This command can detect and trust any service by importing the certificate
-into truststore.
+Disable a Zowe component.
 
-NOTE: the service must be online and accessible.
+**IMPORTANT NOTES**, this command will modify your YAML configuration.
 
-
-### Inherited from parent command
-
-WARNING: This command is for experimental purposes and may not fully function.
 
 ## Examples
 
 ```
-zwe certificate pkcs12 trust-service -s service-name -d /path/to/my/keystore/dir -k keystore-name -p keystore-cert-password --host service-hostname --port service-port -a cert-alias
+zwe components disable --component-name gateway
+
+zwe components disable --component-name gateway --ha-instance lpar1
 
 ```
 
@@ -27,13 +24,8 @@ zwe certificate pkcs12 trust-service -s service-name -d /path/to/my/keystore/dir
 
 Full name|Alias|Type|Required|Help message
 |---|---|---|---|---
---service-name|-n|string|yes||Service name.
---keystore-dir|-d|string|yes||Keystore directory.
---keystore|-k|string|yes||PKCS12 keystore name.
---password|-p|string|yes||Password of the certificate keystore.
---host||string|yes||Host name of the service.
---port||string|yes||Port of the service.
---alias|-a|string|yes||Certificate alias name for the imported the certificate.
+--component-name,--component|-o|string|yes||Component name to be disabled.
+--ha-instance|-i|string|no||Zowe high availability instance ID from zowe.yaml.
 ### Inherited from parent command
 
 Full name|Alias|Type|Required|Help message
@@ -50,8 +42,7 @@ Full name|Alias|Type|Required|Help message
 
 Error code|Exit code|Error message
 |---|---|---
-ZWEL0300W||%s already exists. This %s will be overwritten during configuration.
-ZWEL0170E|170|Failed to trust service "%s".
+ZWEL0152E|152|Cannot find component %s.
 ### Inherited from parent command
 
 Error code|Exit code|Error message

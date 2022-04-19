@@ -1,6 +1,6 @@
 # zwe init certificate
 
-[zwe](./zwe) > [init](./zwe-init) > [certificate](./zwe-init-certificate)
+[zwe](./.././zwe) > [init](././zwe-init) > [certificate](./zwe-init-certificate)
 
 	zwe init certificate [parameter [parameter]...]
 
@@ -183,6 +183,7 @@ Full name|Alias|Type|Required|Help message
 --allow-overwrite,--allow-overwritten||boolean|no||Allow overwritten existing MVS data set.
 --skip-security-setup||boolean|no||Whether should skip security related setup.
 --security-dry-run||boolean|no||Whether to dry run security related setup.
+--ignore-security-failures||boolean|no||Whether to ignore security setup job failures.
 --update-config||boolean|no||Whether to update YAML configuration file with initialization result.
 --help|-h|boolean|no||Display this help.
 --debug,--verbose|-v|boolean|no||Enable verbose mode.

@@ -1,12 +1,12 @@
 # zwe migrate
 
-[zwe](./zwe) > [migrate](./zwe-migrate)
+[zwe](.././zwe) > [migrate](./zwe-migrate)
 
 	zwe migrate [sub-command [sub-command]...] [parameter [parameter]...]
 
 ## Sub-commands
 
-* [for](./zwe-migrate-for)
+* [for](./for/zwe-migrate-for)
 
 ## Parameters
 

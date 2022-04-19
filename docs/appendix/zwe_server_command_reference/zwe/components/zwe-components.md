@@ -1,12 +1,14 @@
 # zwe components
 
-[zwe](./zwe) > [components](./zwe-components)
+[zwe](.././zwe) > [components](./zwe-components)
 
 	zwe components [sub-command [sub-command]...] [parameter [parameter]...]
 
 ## Sub-commands
 
-* [install](./zwe-components-install)
+* [disable](./zwe-components-disable)
+* [enable](./zwe-components-enable)
+* [install](./install/zwe-components-install)
 
 ## Examples
 

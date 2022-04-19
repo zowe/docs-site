@@ -1,6 +1,6 @@
 # zwe init
 
-[zwe](./zwe) > [init](./zwe-init)
+[zwe](.././zwe) > [init](./zwe-init)
 
 	zwe init [sub-command [sub-command]...] [parameter [parameter]...]
 
@@ -275,6 +275,7 @@ Full name|Alias|Type|Required|Help message
 --allow-overwrite,--allow-overwritten||boolean|no||Allow overwritten existing MVS data set.
 --skip-security-setup||boolean|no||Whether should skip security related setup.
 --security-dry-run||boolean|no||Whether to dry run security related setup.
+--ignore-security-failures||boolean|no||Whether to ignore security setup job failures.
 --update-config||boolean|no||Whether to update YAML configuration file with initialization result.
 ### Inherited from parent command
 

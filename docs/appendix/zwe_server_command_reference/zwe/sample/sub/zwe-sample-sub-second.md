@@ -1,6 +1,6 @@
 # zwe sample sub second
 
-[zwe](./zwe) > [sample](./zwe-sample) > [sub](./zwe-sample-sub) > [second](./zwe-sample-sub-second)
+[zwe](./../.././zwe) > [sample](./.././zwe-sample) > [sub](././zwe-sample-sub) > [second](./zwe-sample-sub-second)
 
 	zwe sample sub second [parameter [parameter]...]
 

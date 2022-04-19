@@ -1,6 +1,6 @@
 # zwe internal get-launch-components
 
-[zwe](./zwe) > [internal](./zwe-internal) > [get-launch-components](./zwe-internal-get-launch-components)
+[zwe](./.././zwe) > [internal](././zwe-internal) > [get-launch-components](./zwe-internal-get-launch-components)
 
 	zwe internal get-launch-components [parameter [parameter]...]
 

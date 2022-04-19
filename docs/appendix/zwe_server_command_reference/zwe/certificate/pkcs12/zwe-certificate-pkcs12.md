@@ -1,12 +1,12 @@
 # zwe certificate pkcs12
 
-[zwe](./zwe) > [certificate](./zwe-certificate) > [pkcs12](./zwe-certificate-pkcs12)
+[zwe](../.././zwe) > [certificate](.././zwe-certificate) > [pkcs12](./zwe-certificate-pkcs12)
 
 	zwe certificate pkcs12 [sub-command [sub-command]...] [parameter [parameter]...]
 
 ## Sub-commands
 
-* [create](./zwe-certificate-pkcs12-create)
+* [create](./create/zwe-certificate-pkcs12-create)
 * [export](./zwe-certificate-pkcs12-export)
 * [import](./zwe-certificate-pkcs12-import)
 * [lock](./zwe-certificate-pkcs12-lock)

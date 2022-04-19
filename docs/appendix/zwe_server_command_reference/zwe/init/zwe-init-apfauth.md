@@ -1,6 +1,6 @@
 # zwe init apfauth
 
-[zwe](./zwe) > [init](./zwe-init) > [apfauth](./zwe-init-apfauth)
+[zwe](./.././zwe) > [init](././zwe-init) > [apfauth](./zwe-init-apfauth)
 
 	zwe init apfauth [parameter [parameter]...]
 
@@ -41,6 +41,7 @@ zwe init apfauth --security-dry-run -c /path/to/zowe.yaml
 Full name|Alias|Type|Required|Help message
 |---|---|---|---|---
 --security-dry-run||boolean|no||Whether to dry run security related setup.
+--ignore-security-failures||boolean|no||Whether to ignore security setup job failures.
 ### Inherited from parent command
 
 Full name|Alias|Type|Required|Help message
@@ -48,6 +49,7 @@ Full name|Alias|Type|Required|Help message
 --allow-overwrite,--allow-overwritten||boolean|no||Allow overwritten existing MVS data set.
 --skip-security-setup||boolean|no||Whether should skip security related setup.
 --security-dry-run||boolean|no||Whether to dry run security related setup.
+--ignore-security-failures||boolean|no||Whether to ignore security setup job failures.
 --update-config||boolean|no||Whether to update YAML configuration file with initialization result.
 --help|-h|boolean|no||Display this help.
 --debug,--verbose|-v|boolean|no||Enable verbose mode.

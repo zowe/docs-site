@@ -1,6 +1,6 @@
 # zwe migrate for kubernetes
 
-[zwe](./zwe) > [migrate](./zwe-migrate) > [for](./zwe-migrate-for) > [kubernetes](./zwe-migrate-for-kubernetes)
+[zwe](./../.././zwe) > [migrate](./.././zwe-migrate) > [for](././zwe-migrate-for) > [kubernetes](./zwe-migrate-for-kubernetes)
 
 	zwe migrate for kubernetes [parameter [parameter]...]
 

@@ -1,15 +1,15 @@
 # zwe internal
 
-[zwe](./zwe) > [internal](./zwe-internal)
+[zwe](.././zwe) > [internal](./zwe-internal)
 
 	zwe internal [sub-command [sub-command]...] [parameter [parameter]...]
 
 ## Sub-commands
 
-* [config](./zwe-internal-config)
-* [container](./zwe-internal-container)
+* [config](./config/zwe-internal-config)
+* [container](./container/zwe-internal-container)
 * [get-launch-components](./zwe-internal-get-launch-components)
-* [start](./zwe-internal-start)
+* [start](./start/zwe-internal-start)
 
 ## Description
 

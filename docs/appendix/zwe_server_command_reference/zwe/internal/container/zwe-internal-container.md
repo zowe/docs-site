@@ -1,6 +1,6 @@
 # zwe internal container
 
-[zwe](./zwe) > [internal](./zwe-internal) > [container](./zwe-internal-container)
+[zwe](../.././zwe) > [internal](.././zwe-internal) > [container](./zwe-internal-container)
 
 	zwe internal container [sub-command [sub-command]...] [parameter [parameter]...]
 

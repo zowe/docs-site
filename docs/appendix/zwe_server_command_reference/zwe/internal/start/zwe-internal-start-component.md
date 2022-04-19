@@ -1,6 +1,6 @@
 # zwe internal start component
 
-[zwe](./zwe) > [internal](./zwe-internal) > [start](./zwe-internal-start) > [component](./zwe-internal-start-component)
+[zwe](./../.././zwe) > [internal](./.././zwe-internal) > [start](././zwe-internal-start) > [component](./zwe-internal-start-component)
 
 	zwe internal start component [parameter [parameter]...]
 

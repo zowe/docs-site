@@ -1,6 +1,6 @@
 # zwe internal container cleanup
 
-[zwe](./zwe) > [internal](./zwe-internal) > [container](./zwe-internal-container) > [cleanup](./zwe-internal-container-cleanup)
+[zwe](./../.././zwe) > [internal](./.././zwe-internal) > [container](././zwe-internal-container) > [cleanup](./zwe-internal-container-cleanup)
 
 	zwe internal container cleanup [parameter [parameter]...]
 
