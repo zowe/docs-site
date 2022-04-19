@@ -29,7 +29,7 @@ zwe init --c /path/to/zowe.yaml
 
 The `zwe init` command runs the sub-commands in sequence automatically. You can still choose to run the sub-commands one by one to define each step based on your need. 
 
-1. [Prepare custom MVS data sets](initialize-vsam-dataset.md). Copy the data sets provided with Zowe to custom data sets.
+1. [Prepare custom MVS data sets](initialize-mvs-dataset.md). Copy the data sets provided with Zowe to custom data sets.
 1. [Initialize Zowe security configurations](initialize-security-configuration.md). Create the user IDs and security manager settings.
 
    If Zowe has already been launched on a z/OS system from a previous release of Zowe v2 you can skip this security configuration step unless told otherwise in the release documentation.
