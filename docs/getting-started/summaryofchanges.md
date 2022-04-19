@@ -174,7 +174,7 @@ Check out [this blog](https://www.openmainframeproject.org/blog/2021/05/06/zowe-
 - app-server now supports reaching ZSS through TLS without the need for AT-TLS, by reading new properties within the "agent" config [#151](https://github.com/zowe/zlux-app-server/pull/151)
 - Synchronize user preference setting for TLS verification so that app-server matches the value used by APIML; VERIFY_CERTIFICATES [#165](https://github.com/zowe/zlux-app-server/pull/165)
 - ZSS cookie is now sent to the browser, rather than having the app-server mediate the ZSS connection, so that ZSS can be used through APIML in the case that SSO is not enabled. [#274](https://github.com/zowe/zlux-server-framework/pull/274)
-- ZSS now uses HTTPS by default, rather than relying upon AT-TLS for the purpose. AT-TLS is still available, but now unless ZWES_SERVER_TLS=false is set, ZSS will use the keystore data for its HTTPS configuration, and when HTTPS is enabled will bind to ZOWE_EXPLORER_HOST value, as the other servers do, instead of 127.0.0.1 by default as ZSS would for HTTP.
+- ZSS now uses HTTPS by default, rather than relying upon AT-TLS for the purpose. AT-TLS is still available, but now unless ZOWE_ZSS_SERVER_TLS=false is set, ZSS will use the keystore data for its HTTPS configuration, and when HTTPS is enabled will bind to ZOWE_EXPLORER_HOST value, as the other servers do, instead of 127.0.0.1 by default as ZSS would for HTTP.
 - Added function to toggle the file explorer
 - Added calls to the function in open file and open dataset so that when the user inputs the string with a true in the url it will hide the file explorer
 - Added a global "environment" object in Zowe ZLUX which allows for retrieving select environment properties from the zowe instance for conditional decision-making
@@ -686,12 +686,12 @@ The following features and enhancements were added.
 - ZSS is now automatically registered to the API Mediation Layer when both are present, using a static registration file. [#208](https://github.com/zowe/zss/pull/208)
 - Additional environment variables are now supported, which provides more options for TN3270 for the `instance.env` configuration file [#1176](https://github.com/zowe/zowe-install-packaging/issues/1176) while also allowing TN3270 host to be specified during installation configuration. [#1125](https://github.com/zowe/zowe-install-packaging/issues/1125). The following new environment variables are now supported in `instance.env` [#108](https://github.com/zowe/zlux-app-server/pull/108):
 
-  - `ZWED_TN3270_HOST = string`
-  - `ZWED_SSH_HOST = string`
-  - `ZWED_TN3270_ROW = number`
-  - `ZWED_TN3270_COL = number`
-  - `ZWED_TN3270_MOD = numbers 2-5 as well as "dynamic" or other variations of the word`
-  - `ZWED_TN3270_CODEPAGE = ccsid number or string as seen in the ui`
+  - `ZOWE_ZLUX_TELNET_HOST = string`
+  - `ZOWE_ZLUX_SSH_HOST = string`
+  - `ZOWE_ZLUX_TN3270_ROW = number`
+  - `ZOWE_ZLUX_TN3270_COL = number`
+  - `ZOWE_ZLUX_TN3270_MOD = numbers 2-5 as well as "dynamic" or other variations of the word`
+  - `ZOWE_ZLUX_TN3270_CODEPAGE = ccsid number or string as seen in the ui`
 - The Agent API now provides limited information without the need for authentication. Non-admins are able to view a subset of the information available to admins, specifically regarding the functionality of Zowe.  Examples of the information available to non-admins are: OS architecture and environment variables for Zowe configuration such as the components used and the ports they are accessible on. [#211](https://github.com/zowe/zss/pull/211)
   - `/server/agent/environment (limited info)`
   - `/server/agent/services`
