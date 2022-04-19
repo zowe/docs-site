@@ -291,6 +291,7 @@ module.exports = {
         "extend/extend-apiml/onboard-micronaut-enabler",
         "extend/extend-apiml/onboard-nodejs-enabler",
         "extend/extend-apiml/onboard-static-definition",
+        "extend/extend-apiml/onboard-wizard",
         "extend/extend-apiml/api-mediation-sso",
         "extend/extend-apiml/service-information",
         "extend/extend-apiml/api-mediation-message-service",
@@ -298,6 +299,8 @@ module.exports = {
         "extend/extend-apiml/api-mediation-routing",
         "extend/extend-apiml/api-mediation-passtickets",
         "extend/extend-apiml/custom-metadata",
+        "extend/extend-apiml/api-mediation-versioning",
+        "extend/extend-apiml/implement-new-saf-provider",
         "extend/extend-apiml/websocket",
         {
           type: "category",
