@@ -1,164 +1,19 @@
 # Configuring the z/OS system for Zowe
 
-To configure the z/OS system for Zowe a number of steps need to be performed
+Learn how to configure the z/OS system for Zowe. Before you begin, check the following table to understand which steps you need to perform based on your settings. 
 
-- [vsam].  Create the VSAM data sets used by the Zowe caching service.  This is optional and only needed if you are configuring Zowe for cross LPAR sysplex high availability.  
+Configuration step | Purpose |
+---| ---|
+[Configure an ICSF cryptographic services environment](#configure-an-icsf-cryptographic-services-environment) | Required if you want to use Zowe desktop. This step will generate random numbers for zssServer that the Zowe desktop uses. | 
+[Configure security environment switching](#configure-security-environment-switching) | Required if you want to allow users to log on to the Zowe desktop through impersonation. | 
+[Configure address space job naming](#configure-address-space-job-naming)| Required if you want to set the names for the different z/OS UNIX address spaces for the Zowe runtime components. |
+[Configure multi-user address space for TSS only](#configure-multi-user-address-space-for-tss-only) |Required for TSS only. A TSS FACILITY needs to be defined and assigned to the `ZWESLSTC` started task. |
+[Configure user IDs and groups for the Zowe started tasks](#configure-user-ids-and-groups-for-the-zowe-started-tasks) | Required if you have not run `ZWESECUR` and are manually creating the user ID and groups in your z/OS environment. |
+[Configure ZWESLSTC to run Zowe high availability instances under ZWESVUSR user ID](#configure-zweslstc-to-run-zowe-high-availability-instances-under-zwesvusr-user-id) | Required if you have not run `ZWESECUR` and are configuring your z/OS environment manually. This step describes how to configure the started task ZWESLSTC to run under the correct user ID and group.| 
+[Configure the cross memory server for SAF](#configure-the-cross-memory-server-for-saf) | Required if you have not run `ZWESECUR` and are configuring your z/OS environment manually. This step describes how to configure the cross memory server for SAF to guard against access by non-priviledged clients.|
+[Configure main Zowe server to use identity mapping](#configure-main-zowe-server-to-use-identity-mapping) | Required for API Mediation Layer to map client certificate to a z/OS identity. | 
+[Configure signed SAF Identity tokens IDT](#configure-signed-saf-identity-tokens-idt) | Required to configure SAF Identity tokens on z/OS so that they can be used by Zowe components like zss or API Mediation Layer. | 
 
-Each phase of configuring the z/OS system is done by issuing TSO commands.  To assist with the `zwe init` command is able to construct the command symtax based on values from the `zowe.yaml` file.  
-
-The JCL member `.SZWESAMP(ZWESECUR)` is provided to assist with the security configuration.  Before submitting the `ZWESECUR` JCL member you should customize it to match site security rules.  For script driven scenarios, the command `zwe init security` can be executed which uses `ZWESECUR` as a template to create a customized member in `.CUST.JCLLIB` which contains the commands needed to perform the configuration.  
-
-## Initialize Zowe user IDs and security permissions
-
-If Zowe has already been launched on a z/OS system from a previous release of Zowe v2 you can skip this security configuration step unless told otherwise in the release documentation.
-
-### Configuring using `zwe init security`
-
-The command `zwe init security` reads data from `zowe.yaml` and will construct a JCL member using `ZWESECUR` as a template which is then submitted.  This is a convenience step to assist with driving Zowe configuration through a pipeline or for users who prefer to use USS commands rather than directly edit and customize JCL members.
-
-Specify the parameter `--security-dry-run` to construct a JCL member containing the security commmands without running it.  This is useful for previewing commands and can also be used to copy and paste commands into a TSO command prompt for step by step manual execution.  
-
-```
-#>zwe init security -c ./zowe.yaml --security-dry-run
--------------------------------------------------------------------------------
->> Run Zowe security configurations
-
-Modify ZWESECUR
-- IBMUSER.ZWEV2.CUST.JCLLIB(ZW134428) is prepared
-
-Dry-run mode, security setup is NOT performed on the system.
-Please submit IBMUSER.ZWEV2.CUST.JCLLIB(ZW134428) manually.
->> Zowe security configurations are applied successfully.
-
-#>
-```
-
-### Configuring Using `ZWESECUR`
-
-You may skip using `zwe init security` to prepare a JCL member to configure the z/OS system, and edit `ZWESECUR` directly to make changes.  
-
-The JCL allows you to vary which security manager you use by setting the _PRODUCT_ variable to be one of `RACF`, `ACF2`, or `TSS`.  
-
-```
-//         SET PRODUCT=RACF          * RACF, ACF2, or TSS
-```
-If `ZWESECUR` encounters an error or a step that has already been performed, it will continue to the end, so it can be run repeatedly in a scenario such as a pipeline automating the configuration of a z/OS environment for Zowe installation.  
-
-It is expected that the security administrator at a site will want to review, edit where necessary, and either execute `ZWESECUR` as a single job or else execute individual TSO commands one by one to complete the security configuration of a z/OS system in preparation for installing and running Zowe.
-
-If you want to undo all of the z/OS security configuration steps performed by the JCL member `ZWESECUR`, Zowe provides a reverse member `ZWENOSEC` that contains the inverse steps that `ZWESECUR` performs.  This is useful in the following situations: 
-- You are configuring z/OS systems as part of a build pipeline that you want to undo and redo configuration and installation of Zowe using automation.
-- You have configured a z/OS system for Zowe that you no longer want to use and you prefer to delete the Zowe user IDs and undo the security configuration settings rather than leave them enabled.  
-
-If you run `ZWENOSEC` on a z/OS system, then you will no longer be able to run Zowe until you rerun `ZWESECUR` to reinitialize the z/OS security configuration.
-
-When you run the `ZWESECUR` JCL, it does not perform the following initialization steps. Therefore, you must complete these steps manually for a z/OS environment.  
-- [Perform APF authorization of Zowe load libraries that require access to make privileged calls](#apf-authorize-load-libraries)
-- [Copy the JCL members for Zowe's started tasks to a PDS on proclib concatenation path](#install-zowe-stc-proclib-members)
-- [Create VSAM data sets used by the Zowe caching service](#create-vsam-ha-caching-datasets)
-- [Grant users permission to access z/OSMF](#grant-users-permission-to-access-zosmf)
-- [Configure an ICSF cryptographic services environment](#configure-an-icsf-cryptographic-services-environment)
-- [Configure multi-user address space (for TSS only)](#configure-multi-user-address-space-for-tss-only) 
-
-The `ZWESECUR` JCL performs the following initialization steps so you do not need to perform them manually if you have successfully run the JCL.  These steps are included for reference if you prefer to manually configure the z/OS environment or want to learn more about user IDs, groups, and associated security permissions that are required to operate Zowe.  
-- [User IDs and groups for the Zowe started tasks](#user-ids-and-groups-for-the-zowe-started-tasks)
-- [Configure ZWESLSTC to run high availability instances under ZWESVUSR user ID](#configure-zweslstc-to-run-under-zwesvusr-user-ID)
-- [Configure the cross memory server for SAF](#configure-the-cross-memory-server-for-saf)
-
-The following video shows how to locate the `ZWESECUR` JCL member and execute it.
-
-<iframe class="embed-responsive-item" id="youtubeplayer" title="Zowe ZWESECUR configure system for security (one-time)" type="text/html" width="640" height="390" src="https://www.youtube.com/embed/-7PZFVESitI" frameborder="0" webkitallowfullscreen="true" mozallowfullscreen="true" allowfullscreen="true"> </iframe>
-
-## APF Authorize Load Libraries
-
-Zowe contains load modules that require access to make privileged z/OS security manager calls.  These are held in two load libraries which must be APF authorized.  The command `zwe init apfauth` will read the PDS names for the load libraries from `zowe.yaml` and perform the APF authority commands.  
-
-- `zowe.setup.dataset.authLoadLib` specifies the user custom load library, containing the `ZWELNCH`, `ZWESIS01` and `ZWESAUX` load modules.  These are the Zowe launcher, the ZIS cross memory server and the auxiliary server.  
-- `zowe.setup.dataset.authPluginLib` which references the load library for ZIS plugins.  
-
-```
-#>zwe init apfauth -c ./zowe.yaml
--------------------------------------------------------------------------------
->> APF authorize load libraries
-
-APF authorize IBMUSER.ZWEV2.SZWEAUTH
-APF authorize IBMUSER.ZWEV2.CUST.ZWESAPL
-
->> Zowe load libraries are APF authorized successfully.
-#>
-```
-
-Specify `--security-dry-run` to have the command echo the commands that need to be run without them being executed.  
-
-  ```
-  SETPROG APF,ADD,DSNAME=IBMUSER.ZWEV2.SZWEAUTH,SMS
-  SETPROG APF,ADD,DSNAME=IBMUISER.ZWEV2.CUST.ZWESAPL,SMS
-  ```
-
-## Install Zowe STC proclib members
-
-The JCL members for each of Zowe's started tasks need to be present on the JES proclib concatenation path.  The command `zwe init stc` will copy these from the install source location `.SZWESAMP` to the targted PDS specified in the `zowe.setup.dataset.proclib` value `USER.PROCLIB`.  The three proclib member names are specified in `zowe.yaml` arguments.  
-
-```
-zowe
-  setup
-    security
-      stcs
-        zowe: ZWESLSTC
-        xmem: ZWESISTC
-        aux: ZWESASTC
-```
-
-The `zwe init stc` command uses the `CUST.JCL`LIB data sets as a staging area to contain intermediatory JCL which are transformed version of the originals that are shiped in `.SZWESAMP` with paths, PDS locations, and other runtime data updated.  If you wish to just generate the `CUST.JCLLIB` members without having them copied to  `USER.PROCLIB` specify `--security-dry-run`.  If the JCL members are already in the target PROCLIB specify `--allow-overwritten`.   
-
-```
-#>zwe init stc -c ./zowe.yaml
--------------------------------------------------------------------------------
->> Install Zowe main started task
-
-Modify ZWESLSTC
-Modify ZWESISTC
-Modify ZWESASTC
-
-Copy IBMUSER.ZWEV2.CUST.JCLLIB(ZWESLSTC) to USER.PROCLIB(ZWESLSTC)
-Copy IBMUSER.ZWEV2.CUST.JCLLIB(ZWESISTC) to USER.PROCLIB(ZWESISTC)
-Copy IBMUSER.ZWEV2.CUST.JCLLIB(ZWESASTC) to USER.PROCLIB(ZWESASTC)
-
->> Zowe main started tasks are installed successfully.
-#>
-```
-
-## Create VSAM HA caching datasets
-
-
-
-## Grant users permission to access z/OSMF
-
-TSO user IDs using Zowe must have permission to access the z/OSMF services that are used by Zowe. They should be added to the group with appropriate z/OSMF privileges, `IZUUSER` or `IZUADMIN` by default.  This step is not included in `ZWESECUR` because it must be done for every TSO user ID who wants to access Zowe's z/OS services.  The list of those user IDs is not known by `ZWESECUR` and will typically be the operators, administrators, developers, or anyone else in the z/OS environment who is logging in to Zowe.
-
-**Note:** You can skip this section if you use Zowe without z/OSMF.  Zowe can operate without z/OSMF but services that use z/OSMF REST APIs will not be available, specifically the USS, MVS, and JES Explorers and the Zowe Command Line Interface files, jobs, workflows, tso, and console groups.
-
-For every TSO user ID that is going to log on to Zowe and use services that require z/OSMF,
-
-- If you use RACF, issue the following command:
-
-  ```
-  CONNECT (userid) GROUP(IZUUSER)
-  ```
-
-- If you use ACF2, issue the following commands:
-
-  ```
-  ACFNRULE TYPE(TGR) KEY(IZUUSER) ADD(UID(<uid string of user>) ALLOW)
-  F ACF2,REBUILD(TGR)
-  ```
-
-- If you use Top Secret, issue the following commands:
-
-  ```
-  TSS ADD(userid)  PROFILE(IZUUSER)
-  TSS ADD(userid)  GROUP(IZUUSRGP) 
-  ```
 
 ## Configure an ICSF cryptographic services environment
 
@@ -354,7 +209,7 @@ If the user `ZWESVUSR` who runs the Zowe server started task does not have UPDAT
 
 ## Configure address space job naming
 
-The user ID `ZWESVUSR` that is associated with the Zowe started task must have `READ` permission for the `BPX.JOBNAME` profile in the `FACILITY` class. This is to allow setting of the names for the different z/OS UNIX address spaces for the Zowe runtime components. See [Address space names](configure-instance-directory.md#address-space-names).
+The user ID `ZWESVUSR` that is associated with the Zowe started task must have `READ` permission for the `BPX.JOBNAME` profile in the `FACILITY` class. This is to allow setting of the names for the different z/OS UNIX address spaces for the Zowe runtime components.
 
 To display who is authorized to the profile, issue the following command:
 ```
@@ -384,6 +239,7 @@ FACILITY(USER11=NAME=ZOWE)
 FACILITY(ZOWE=MODE=FAIL)
 FACILITY(ZOWE=RES) 
 ```
+
 For more information about how to administer Facility Matrix Table, see [How to Perform Facility Matrix Table Administration](https://techdocs.broadcom.com/content/broadcom/techdocs/us/en/ca-mainframe-software/security/ca-top-secret-for-z-os/16-0/using/protecting-facilities/how-to-perform-facility-matrix-table-administration.html).
 
 To assign the FACILITY to the started task, issue the following command:                                                  
@@ -396,7 +252,7 @@ To authorize a user to sign on to the FACILITY, issues the following command:
 TSS ADD(user_acid) FAC(ZOWE)
 ```
 
-## User IDs and groups for the Zowe started tasks
+## Configure user IDs and groups for the Zowe started tasks
 
 Zowe requires a user ID `ZWESVUSR` to execute its main z/OS runtime started task. This user ID must have a valid OMVS segment.
 
@@ -575,6 +431,7 @@ If you use RACF, verify and update permission in the `FACILITY` class.
     ```
     SETROPTS RACLIST(FACILITY) REFRESH
     ```
+
 ### Using ACF2
 
 If you use ACF2, verify and update permission in the `FACILITY` class.
@@ -608,8 +465,7 @@ If you use TSS, verify and update permission in `FACILITY` class.
 
 ## Configure signed SAF Identity tokens (IDT)
 
-This section provides a brief description of how to configure SAF Identity tokens on z/OS so that they can be used by Zowe components 
-like zss or API Mediation layer ([Implement a new SAF IDT provider](../extend/extend-apiml/implement-new-saf-provider.md))
+This section provides a brief description of how to configure SAF Identity tokens on z/OS so that they can be used by Zowe components like zss or API Mediation layer ([Implement a new SAF IDT provider](../extend/extend-apiml/implement-new-saf-provider.md))
 
 General steps are:
 1. Create PKCS#11 token 
@@ -617,11 +473,8 @@ General steps are:
 3. Define a SAF resource profile under the IDTDATA SAF resource class
 
 Details with examples can be found in documentation of external security products:
-* **RACF** - **_Signed and Unsigned Identity Tokens_** and **_IDT Configuration_** subsections in _z/OS Security Server RACROUTE Macro Reference_ book, [link](https://www.ibm.com/docs/en/zos/2.4.0?topic=reference-activating-using-idta-parameter-in-racroute-requestverify)
-* **Top Secret** - _**Maintain Identity Token (IDT) Records**_ subsection in _Administrating_ chapter, [link](https://techdocs.broadcom.com/us/en/ca-mainframe-software/security/ca-top-secret-for-z-os/16-0/administrating/maintaining-special-security-records/maintain-identity-token-(idt)-records.html)
-* **ACF2** - _**IDTDATA Profile Records**_ subsection in _Administrating_ chapter, [link](https://techdocs.broadcom.com/us/en/ca-mainframe-software/security/ca-acf2-for-z-os/16-0/administrating/administer-records/profile-records/idtdata-profile-records.html)
+* **RACF** - **_Signed and Unsigned Identity Tokens_** and **_IDT Configuration_** subsections in _z/OS Security Server RACROUTE Macro Reference_ book, [link](https://www.ibm.com/docs/en/zos/2.4.0?topic=reference-activating-using-idta-parameter-in-racroute-requestverify).
+* **Top Secret** - _**Maintain Identity Token (IDT) Records**_ subsection in _Administrating_ chapter, [link](https://techdocs.broadcom.com/us/en/ca-mainframe-software/security/ca-top-secret-for-z-os/16-0/administrating/maintaining-special-security-records/maintain-identity-token-(idt)-records.html).
+* **ACF2** - _**IDTDATA Profile Records**_ subsection in _Administrating_ chapter, [link](https://techdocs.broadcom.com/us/en/ca-mainframe-software/security/ca-acf2-for-z-os/16-0/administrating/administer-records/profile-records/idtdata-profile-records.html).
 
-A part of the Signed SAF Identity token configuration is a nontrivial step that has to generate 
-a secret key for the PKCS#11 token. The secret key is generated in ICSF by calling the PKCS#11 
-Generate Secret Key (CSFPGSK) or Token Record Create (CSFPTRC) callable services. An example of the 
-CSFPGSK callable service can be found in the SZWESAMP dataset as the ZWESECKG job.
+A part of the Signed SAF Identity token configuration is a nontrivial step that has to generate a secret key for the PKCS#11 token. The secret key is generated in ICSF by calling the PKCS#11 Generate Secret Key (CSFPGSK) or Token Record Create (CSFPTRC) callable services. An example of the CSFPGSK callable service can be found in the SZWESAMP dataset as the ZWESECKG job.

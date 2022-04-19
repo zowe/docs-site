@@ -64,11 +64,17 @@ module.exports = {
       label: "Installing Zowe z/OS components",
       items: [
         "user-guide/install-zos",
-        "user-guide/installandconfig", 
-        "user-guide/configure-uss",
         {
           type: "category",
-          label: "System requirements",
+          label: "Planning", //link to "user-guide/installandconfig", 
+          items: [
+            "user-guide/installandconfig", 
+            "user-guide/configure-uss",
+          ],
+        },
+        {
+          type: "category",
+          label: "System requirements", //link to "user-guide/systemrequirements-zos",
           items: [
             "user-guide/systemrequirements-zos",
             "user-guide/install-nodejs-zos",
@@ -80,10 +86,10 @@ module.exports = {
           type: "category",
           label: "Installing",
           items: [
-            "user-guide/install-zowe-zos-convenience-build",
+            "user-guide/install-zowe-zos-convenience-build", //only for PAX
             {
               type: "category",
-              label: "Installing Zowe SMP/E build",
+              label: "Installing Zowe SMP/E build", //only for SMP/E
               items: [
                 "user-guide/install-zowe-smpe",
                 "user-guide/install-zowe-smpe-zosmf-workflow",
@@ -105,25 +111,25 @@ module.exports = {
           type: "category",
           label: "Configuring",
           items: [
+            "user-guide/initialize-zos-system", //common for both PAX and SMPE, ONLY command can be used
+            "user-guide/initialize-mvs-datasets", //common for both PAX and SMPE, ONLY command can be used
+            "user-guide/initialize-security-configuration", //common for both PAX and SMPE, BOTH command & jcl can be used
+            "user-guide/configure-zos-system", //common for both PAX and SMPE
+            "user-guide/grant-user-permission-zosmf", //common for both PAX and SMPE
+            "user-guide/apf-authorize-load-library", //common for both PAX and SMPE, ??
             {
               type: "category",
-              label: "Configuring and starting Zowe with script",
+              label: "Configuring certificates",// link to configure-zowe-certificates.md
               items: [
-                "user-guide/initialize-zos-system",
-                "user-guide/configure-zos-system",
-                {
-                  type: "category",
-                  label: "Configuring certificates",
-                  items: [
-                    "user-guide/configure-certificates-keystore",
-                    "user-guide/configure-certificates-keyring",
-                  ],
-                },
-                "user-guide/configure-xmem-server",
-                "user-guide/configure-zowe-server",
-                "user-guide/configure-auxiliary-address-space",
+                "user-guide/configure-certificates-keystore",
+                "user-guide/configure-certificates-keyring",
               ],
             },
+            "user-guide/initialize-vsam-dataset", //common for both PAX and SMPE, BOTH command & jcl can be used
+            "user-guide/install-stc-members",
+            "user-guide/configure-xmem-server",
+        //    "user-guide/configure-zowe-server", //out of date, v1 info included
+            "user-guide/configure-auxiliary-address-space",
         //    "user-guide/configure-zowe-zosmf-workflow",
           ],
         },
@@ -138,6 +144,7 @@ module.exports = {
           // "user-guide/configure-zowe-zosmf-workflow",
          ],
        }, 
+        "user-guide/start-zowe-zos",
         "user-guide/verify-zowe-runtime-install",
     //    "user-guide/upgrade-zos-system",
     //    "user-guide/zowe-zos-uninstall",       
@@ -187,7 +194,7 @@ module.exports = {
       type: "category",
       label: "Advanced Zowe configuration",
       items: [
-    //    "user-guide/mvd-configuration",
+        // "user-guide/mvd-configuration",
         "user-guide/cli-configuringcli-ev",
         "user-guide/configure-data-sets-jobs-api",
         "user-guide/api-mediation/api-gateway-configuration",

@@ -1,14 +1,14 @@
 # Planning the installation
 
-The following information is required during the installation process. Software and hardware prerequisites are covered in the next section.
+The following information is required during the Zowe installation process. Software and hardware prerequisites are covered in the next section.
 
 - The zFS directory where you will install the Zowe runtime files and folders. For more details of setting up and configuring the UNIX Systems Services (USS) environment, see [UNIX System Services considerations for Zowe](configure-uss.md).
 
 - A HLQ that the installation can create a load library and samplib containing load modules and JCL samples required to run Zowe.
 
-- Multiple instances of Zowe can be started from the same Zowe z/OS runtime. Each launch of Zowe has its own zFS directory that is known as an instance directory.
-
-- For Zowe in a high availability configuration, there will be only one instance directory which must be created on a shared file system (zFS directory) where all LPARs in a Sysplex can access. To install Zowe in a Parallel Sysplex environment, a YAML configuration file is used to customize the Zowe high availability instances.
+<!--(FIXME)
+- For Zowe in a high availability configuration, there will be only one instance directory  which must be created on a shared file system (zFS directory) where all LPARs in a Sysplex can access. To install Zowe in a Parallel Sysplex environment, a YAML configuration file is used to customize the Zowe high availability instances.
+-->
 
 - (If not using Docker) Zowe uses a zFS directory to contain its northbound certificate keys as well as a truststore for its southbound keys. Northbound keys are one presented to clients of the Zowe desktop or Zowe API Gateway, and southbound keys are for servers that the Zowe API gateway connects to.  The certificate directory is not part of the Zowe runtime so that it can be shared between multiple Zowe runtimes and have its permissions secured independently. 
 
@@ -27,6 +27,8 @@ The following information is required during the installation process. Software 
   - If you plan to use API ML with basic authentication and JSON web token authentication, you need to run only `ZWESVSTC`. No need to run `ZWESISTC` and `ZWESASTC`.
   
   - If you plan to use API ML with x509 client-side certificate authentication, you need to run `ZWESISTC` and `ZWESVSTC`.
+
+<!--(FIXME) --The graphic is out of date as well as instructions. Remove this section first if no longer valid.
 
 ## Topology of the Zowe z/OS launch process
 
@@ -59,3 +61,5 @@ The `instance.env` file sets the location of the `<RUNTIME_DIRECTORY>` as well a
 ### KEYSTORE_DIRECTORY
 
 Zowe uses certificates to encrypt data as well as a truststore.  The keystore directory `<KEYSTORE_DIRECTORY>` controls where the certificates are located, either in a JavaKeystore or a z/OS keyring.  A `<KEYSTORE_DIRECTORY>` is created by using the script `<RUNTIME_DIR>/bin/zowe-setup-certificates.sh`.
+
+-->

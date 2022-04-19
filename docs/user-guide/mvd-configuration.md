@@ -152,11 +152,11 @@ Prior to Zowe release 2.0.0, the location of the configuration directories were 
 
 | Folder | New Location | Old Location | Note
 |--------|--------------|--------------|-----
-| siteDir | <workspaceDirectory>/app-server/site | <INSTANCE_DIR>/workspace/app-server/site |
-| instanceDir | <workspaceDirectory>/app-server | <INSTANCE_DIR>/workspace/app-server | instanceDir term isn't used anymore. workspaceDirectory is used
-| groupsDir | <workspaceDirectory>/app-server/groups | <INSTANCE_DIR>/workspace/app-server/groups |
-| usersDir | <workspaceDirectory>/app-server/users | <INSTANCE_DIR>/workspace/app-server/users |
-| pluginsDir | <workspaceDirectory>/app-server/plugins | <INSTANCE_DIR>/workspace/app-server/plugins |
+| siteDir | `<workspaceDirectory>/app-server/site` | `<INSTANCE_DIR>/workspace/app-server/site` |
+| instanceDir | `<workspaceDirectory>/app-server` | `<INSTANCE_DIR>/workspace/app-server` | instanceDir term isn't used anymore. workspaceDirectory is used
+| groupsDir | `<workspaceDirectory>/app-server/groups` | `<INSTANCE_DIR>/workspace/app-server/groups` |
+| usersDir | `<workspaceDirectory>/app-server/users` | `<INSTANCE_DIR>/workspace/app-server/users` |
+| pluginsDir | `<workspaceDirectory>/app-server/plugins` | `<INSTANCE_DIR>/workspace/app-server/plugins` |
 
 
 ## App plugin configuration
@@ -478,7 +478,7 @@ By default, RBAC is disabled and all authenticated Zowe users can access all dat
 ### Controlling app access for all users
 
 **Note:**
-- <runtimeDirectory> variable comes from Zowe configuration file.
+- `<runtimeDirectory>` variable comes from Zowe configuration file.
 
 1. Enable RBAC.
 
