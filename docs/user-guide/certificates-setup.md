@@ -1,4 +1,4 @@
-# Setting up Zowe certificates using workflows
+# Set up Zowe Certificates using Workflows
 
 Zowe uses certificates that are held in z/OS Keyring.
 
