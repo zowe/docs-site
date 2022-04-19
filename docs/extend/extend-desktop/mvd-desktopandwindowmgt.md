@@ -51,7 +51,7 @@ When the Window is created, the application plug-in's web content is encapsulate
 
 * *"angular2"*: The web content is written in Angular, and packaged with Webpack. Application plug-in framework objects are given through @injectables and imports.
 * *"iframe"*: The web content can be written using any framework, but is included through an iframe tag. Application plug-ins within an iframe can access framework objects through *parent.RocketMVD* and callbacks.
-* *"react"*: The web content is written in React, Typescript, and packaged with Webpack. App framework objects are provided via the [ReactMVDResources object](https://github.com/zowe/zlux-app-manager/blob/master/virtual-desktop/src/pluginlib/react-inject-resources.ts)
+* *"react"*: The web content is written in React, Typescript, and packaged with Webpack. App framework objects are provided via the [ReactMVDResources object](https://github.com/zowe/zlux-app-manager/blob/v2.x/master/virtual-desktop/src/pluginlib/react-inject-resources.ts)
 
 In the case of the Zowe Desktop, this framework-specific wrapping is handled by the Plugin Manager.
 

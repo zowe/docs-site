@@ -182,4 +182,4 @@ To use log message IDs, take the following steps:
    
 ### Message ID logging examples
 
-Server core: https://github.com/zowe/zlux-server-framework/blob/master/plugins/config/lib/assets/i18n/log/messages_en.json
+Server core: https://github.com/zowe/zlux-server-framework/blob/v2.x/master/plugins/config/lib/assets/i18n/log/messages_en.json
