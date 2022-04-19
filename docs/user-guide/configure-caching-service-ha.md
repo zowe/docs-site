@@ -77,3 +77,16 @@ For users
                trustStorePassword
    ```
 
+- `#storclas` variable
+
+   If you use the `RLS` mode, a storage class is required. Replace `#storclas` with your desired storage class name.
+
+- `#volume` variable
+
+   If you set to use the `NONRLS` mode, a storage volume is required. Replace `#volume` with you desired storage volume.
+
+**Procedure** 
+
+1. Customize the `ZWECSVSM` JCL. Edit the variables at the beginning and in the middle of the JCL.
+
+2. Submit the `ZWECSVSM` JCL to create a VSAM data set
