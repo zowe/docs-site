@@ -1,13 +1,13 @@
 # zwe certificate
 
-[zwe](.././zwe) > [certificate](./zwe-certificate)
+[zwe](./zwe) > [certificate](./zwe-certificate)
 
 	zwe certificate [sub-command [sub-command]...] [parameter [parameter]...]
 
 ## Sub-commands
 
-* [keyring-jcl](./keyring-jcl/zwe-certificate-keyring-jcl)
-* [pkcs12](./pkcs12/zwe-certificate-pkcs12)
+* [keyring-jcl](./zwe-certificate-keyring-jcl)
+* [pkcs12](./zwe-certificate-pkcs12)
 * [verify-service](./zwe-certificate-verify-service)
 
 ## Description

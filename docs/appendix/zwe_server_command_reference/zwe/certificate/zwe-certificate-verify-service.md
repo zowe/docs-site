@@ -1,6 +1,6 @@
 # zwe certificate verify-service
 
-[zwe](./.././zwe) > [certificate](././zwe-certificate) > [verify-service](./zwe-certificate-verify-service)
+[zwe](./zwe) > [certificate](./zwe-certificate) > [verify-service](./zwe-certificate-verify-service)
 
 	zwe certificate verify-service [parameter [parameter]...]
 

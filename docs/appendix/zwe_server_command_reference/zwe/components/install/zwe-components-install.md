@@ -1,6 +1,6 @@
 # zwe components install
 
-[zwe](../.././zwe) > [components](.././zwe-components) > [install](./zwe-components-install)
+[zwe](./zwe) > [components](./zwe-components) > [install](./zwe-components-install)
 
 	zwe components install [sub-command [sub-command]...] [parameter [parameter]...]
 

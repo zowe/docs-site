@@ -1,4 +1,4 @@
-# Creating user profiles
+# Creating team user profiles
 
 As a system programmer or Zowe CLI user, you want to manage your connection details efficiently and in one location.
 

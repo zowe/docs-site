@@ -1,6 +1,6 @@
 # zwe init security
 
-[zwe](./.././zwe) > [init](././zwe-init) > [security](./zwe-init-security)
+[zwe](./zwe) > [init](./zwe-init) > [security](./zwe-init-security)
 
 	zwe init security [parameter [parameter]...]
 

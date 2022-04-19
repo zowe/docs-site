@@ -32,9 +32,6 @@ The daemon command groups let you perform operations that control the daemon-mod
 ```
 zowe daemon -h
 ```
-
-**Important!** Using daemon mode contains various limitations and configuration requirements, depending on the operating system where the daemon is running. For more information, see **Preparing for installation** in [Using daemon mode](../user-guide/cli-using-using-daemon-mode.md).
-
 ## plugins
 
 The plugins command group lets you install and manage third-party

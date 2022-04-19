@@ -1,12 +1,12 @@
 # zwe sample
 
-[zwe](.././zwe) > [sample](./zwe-sample)
+[zwe](./zwe) > [sample](./zwe-sample)
 
 	zwe sample [sub-command [sub-command]...] [parameter [parameter]...]
 
 ## Sub-commands
 
-* [sub](./sub/zwe-sample-sub)
+* [sub](./zwe-sample-sub)
 * [test](./zwe-sample-test)
 
 ## Description

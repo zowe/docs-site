@@ -9,7 +9,7 @@ You might want to assign a variable in the following scenarios:
 
 * **Store a value that is commonly used.**
 
-    For example, you might want to specify your mainframe username as an environment variable. Now you can issue commands and omit the `--user` option, and Zowe CLI automatically uses the value that you defined in the environment variable.
+    For example, you might want to specify your mainframe username as an environment variable. Now you can issue commands and omit the `--username` option, and Zowe CLI automatically uses the value that you defined in the environment variable.
 * **Override a value in existing profiles.**
 
     For example, you might want to override a value that you previously defined in multiple profiles to avoid recreating each profile. Specify the new value as a variable to override the value in profiles.

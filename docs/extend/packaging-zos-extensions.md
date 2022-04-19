@@ -20,7 +20,6 @@ A typical component package, for example, `jobs-api-package-1.0.4.zip`, consists
 ```
 +-- manifest.yaml
 |-- apiml-static-registration.yaml.template
-|-- schema.json
 |-- bin/
     |-- configure.sh
     |-- jobs-api-server-1.0.4-boot.jar
@@ -32,10 +31,6 @@ A typical component package, for example, `jobs-api-package-1.0.4.zip`, consists
 - `manifest.yaml`
 
    Refers to the Zowe component manifest file. You can find detailed definition of manifest in [Server Component Manifest File Reference](../appendix/server-component-manifest.md).
-   
-- `schema.json`
-
-   An example filename of the [json schema](https://json-schema.org/) file specified by the manifest property `schemas.configs` as detailed in [Server Component Manifest File Reference](../appendix/server-component-manifest.md). The file details the parameters that are valid for the component's configuration within Zowe server configuration files. See documentation on [server component schema files](server-schemas.md) for more information.
 
 - `apiml-static-registration.yaml.template`
 
@@ -70,7 +65,7 @@ If you decide to bundle and ship Zowe extensions within another product, you can
 
 ## Zowe component manifest
 
-Zowe extensions, as well as core components, can use a manifest file to describe itself. Check [Server Component Manifest File Reference](../appendix/server-component-manifest.md) for details.
+Zowe extensions, as well as core components, can use a manifest file to describe itself. Check [Server Component Manifest File Reference](../appendix/component-manifest.md) for details.
 
 ## Sample manifests
 

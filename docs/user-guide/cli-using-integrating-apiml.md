@@ -4,7 +4,7 @@ Zowe API ML provides a single point of access to a defined set of mainframe serv
 
 You can access services through API ML without reauthenticating every time you issue a command. Tokens allow for a secure interaction between the client and server. When you issue commands to API ML, the layer routes requests to an appropriate API instance based on system load and available API instances.
 
-## How token management works
+# How token management works
 
 When you log in with the CLI, an API ML token is supplied and stored on your computer in place of username and password. The token allows for a secure handshake with API ML when you issue each command, such that you do not need to reauthenticate until the token expires.
 

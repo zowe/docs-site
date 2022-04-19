@@ -1,6 +1,6 @@
 # zwe stop
 
-[zwe](././zwe) > [stop](./zwe-stop)
+[zwe](./zwe) > [stop](./zwe-stop)
 
 	zwe stop [parameter [parameter]...]
 

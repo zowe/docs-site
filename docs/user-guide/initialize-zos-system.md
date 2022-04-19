@@ -4,12 +4,12 @@ Before Zowe can be started a number of steps need to occur to prepare the z/OS E
 
 Whether you have obtained Zowe from a `.pax` convenience build, or an SMP/E distribution, the steps to initialize the system are the same.
 
-- **security**.   Create the user IDs and security manager settings.  
-- **[mvs](#initialize-the-mvs-data-sets-using-zwe-init-mvs)**.  Copy the data sets provided with Zowe to cust data sets.
-- **stc**. Configure the system to launch the Zowe started task.
-- **apfauth**.  APF authorize the LOADLIB containing the modules that need to perform z/OS priviledged security calls.  
-- **certificate**.  Configure Zowe to use TLS certificates.
-- **vsam**.  Configure the VSAM files needed to run the Zowe caching service used for high availability (HA)
+- security.   Create the user IDs and security manager settings.  
+- [mvs](#initialize-the-mvs-data-sets-using-zwe-init-mvs).  Copy the data sets provided with Zowe to cust data sets.
+- stc. Configure the system to launch the Zowe started task.
+- apfauth.  APF authorize the LOADLIB containing the modules that need to perform z/OS priviledged security calls.  
+- certificate.  Configure Zowe to use TLS certificates.
+- vsam.  Configure the VSAM files needed to run the Zowe caching service used for high availability (HA)
 
 ## Initialize the MVS Data sets using `zwe init mvs`
 

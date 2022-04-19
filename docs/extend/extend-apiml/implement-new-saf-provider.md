@@ -21,21 +21,17 @@ public interface SafIdtProvider {
     /**
      * If the current user has the proper rights generate the SAF token on its behalf and return it back.
      *
-     * @param username userId
-     * @param password or passticket.
-     * @param applId   of service requesting the token.
      * @return Either empty answer meaning the user is either unauthenticated or doesn't have the proper rights.
      */
-    String generate(String username, char[] password, String applId);
+    Optional<String> generate(String username);
 
     /**
      * Verify that the provided saf token is valid.
      *
      * @param safToken Token to validate.
-     * @param applid   of service validating the token.
      * @return true if the token is valid, false if it is invalid
      */
-    boolean verify(String safToken, String applid);
+    boolean verify(String safToken);
 }
 ```
 
@@ -97,10 +93,10 @@ You can generate and verify an existing SAF token by using an implementation of 
 [SafRestAuthenticationService](https://github.com/zowe/api-layer/blob/master/gateway-service/src/main/java/org/zowe/apiml/gateway/security/service/saf/SafRestAuthenticationService.java) is an example of the SAF IDT provider implementation which uses REST as a method of communication.
 
 To use `SafRestAuthenticationService` ensure that `apiml.security.saf.provider` is set to `rest`. (This is the default value)
-Set the following environment parameters in `zowe.yaml`:
+Set the following environment parameters in the `instance.env`:
 
-* `ZWE_configs_apiml_security_authorization_endpoint_url=https://${ZWE_haInstance_hostname}:${GATEWAY_PORT}/zss/api/v1/saf/authenticate`
-* `ZWE_configs_apiml_security_authorization_endpoint_url=https://${ZWE_haInstance_hostname}:${GATEWAY_PORT}/zss/api/v1/saf/verify`
+* `APIML_SECURITY_SAF_URLS_AUTHENTICATE=https://${ZWE_haInstance_hostname}:${GATEWAY_PORT}/zss/api/v1/saf/authenticate`
+* `APIML_SECURITY_SAF_URLS_VERIFY=https://${ZWE_haInstance_hostname}:${GATEWAY_PORT}/zss/api/v1/saf/verify`
 
 These ZSS endpoints are used by the `SafRestAuthenticationService` to generate and validate the SAF token.
 

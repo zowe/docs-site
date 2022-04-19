@@ -1,6 +1,6 @@
 # zwe internal start
 
-[zwe](../.././zwe) > [internal](.././zwe-internal) > [start](./zwe-internal-start)
+[zwe](./zwe) > [internal](./zwe-internal) > [start](./zwe-internal-start)
 
 	zwe internal start [sub-command [sub-command]...] [parameter [parameter]...]
 

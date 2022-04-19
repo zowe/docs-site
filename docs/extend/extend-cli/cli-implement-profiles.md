@@ -3,11 +3,12 @@ You can use this profile template to create a profile for your product.
 
 The profile definition is placed in the `imperative.ts` file.
 
-The `type: "someproduct"` property represents the profile name that you might require on various commands to have credentials loaded 
-from a secure credential manager and retain the host/port information, so that you can easily swap to different servers from the CLI.
+`someproduct` will be the profile name that you might require on various commands to have credentials loaded 
+from a secure credential manager and retain host/port information (so that you can easily swap to different servers)
+from the CLI).
 
- By default, if your plug-in that is installed into Zowe™ CLI contains a profile definition that is similar to the following example, a profile template is added automatically to team config JSON when you run the `zowe config init` command. Any properties for which `includeInTemplate` is true are included in the template. Additionally, commands that manage V1 profiles are created automatically under `zowe profiles`. For example, `create`, `validate`, `set-default`, `list`, and so on.
-
+By default, if your plug-in is installed into Zowe&trade; CLI that contains a profile definition like this, commands will automatically 
+be created under `zowe profiles ...` to create, validate, set default, list, etc... for your profile.
 
 ```typescript
 profiles: [
@@ -24,6 +25,7 @@ profiles: [
               type: "string",
               name: "host",
               alias:["H"],
+              required: true,
               description: "Host name of your SOME PRODUCT REST API server"
             }
           },
@@ -33,7 +35,7 @@ profiles: [
               type: "number",
               name: "port",
                alias:["P"],         
-              includeInTemplate: true,
+              required: true,
               description: "Port number of your SOME PRODUCT REST API server"
             }
           },
@@ -43,6 +45,7 @@ profiles: [
               type: "string",
               name: "user",
               alias:["u"],          
+              required: true,
               description: "User name to authenticate to your SOME PRODUCT REST API server"
             },
             secure: true
@@ -53,11 +56,13 @@ profiles: [
               type: "string",
               name: "password",
               alias:["p"],          
+              required: true,
               description: "Password to authenticate to your SOME PRODUCT REST API server"
             },
             secure: true
           },
         },
+        required: ["host", "port", "user", "password"],
       },
       createProfileExamples: [
         {

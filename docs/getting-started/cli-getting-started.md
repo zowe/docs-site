@@ -2,7 +2,7 @@
 
 Get started with Zowe&trade; CLI quickly and easily.
 
-This article presumes that your role is that of a systems administrator or you possess prerequisite knowledge of command-line tools and writing scripts. If you prefer more detailed instructions, see [Installing Zowe CLI](../user-guide/cli-installcli.md).
+This article presumes that you possess some prerequisite knowledge of command-line tools and writing scripts. If you prefer more detailed instructions, see [Installing Zowe CLI](../user-guide/cli-installcli.md).
 
 ## Installing
 
@@ -20,6 +20,7 @@ Issue the following command to install the core CLI.
 
 ```
 npm install -g @zowe/cli@zowe-v2-lts
+
 ```
 
 ### Installing CLI plug-ins
@@ -60,7 +61,7 @@ See [Understanding core command groups](../user-guide/cli-using-understanding-co
 
 ## Team profiles
 
-Zowe CLI V2-LTS now supports **team** profiles. The process of setting up team profiles is simple and can be rolled out easily accross your organization. We highly recommend that you configure team profiles to support your Zowe CLI implementation. For more information, see [Using team profiles](../user-guide/cli-using-using-team-profiles.md).
+Zowe CLI V2-TLS now supports **team** profiles. The process of setting up team profiles is simple and can be rolled out easily accross your organization. We highly recommend that you configure team profiles to support your Zowe CLI implementation. For more information, see [Configuring team profiles](../user-guide/cli-using-configuring-global-profiles.md).
 ## Using profiles
 
 Zowe profiles let you store configuration details such as username, password, host, and port for a mainframe system. Switch between profiles to quickly target different subsystems and avoid typing connection details on every command.
@@ -88,7 +89,7 @@ zowe profiles create zosmf-profile myprofile123 --host my.company.com --port 123
 zowe zos-files download data-set "MY.DATA.SET(member)" -f "mylocalfile.txt" --zosmf-profile myprofile123
 ```
 
-For detailed information about issuing commands, using profiles, and more, see [Using CLI](../user-guide/cli-using-usingcli.md).
+For detailed information about issuing commands, using profiles, and more, see [Using CLI](../user-guide/cli-usingcli.md).
 
 ## Writing scripts
 
@@ -115,16 +116,17 @@ do
 done
 ```
 
-For more information, see [Writing scripts](../user-guide/cli-using-completing-advanced-tasks.md#writing-scripts).
+For more information, see [Writing scripts](../user-guide/cli-usingcli.md#writing-scripts).
 
 ## Next steps
 
-You successfully installed Zowe CLI, issued your first commands, and wrote a simple script! Next, you might want to perform the following tasks:
+You successfully installed Zowe CLI, issued your first commands, and wrote a simple script! Next, you might want to:
 
 - Issue the `zowe --help` command to explore the product functionality, or review the online [web help](../user-guide/cli-using-displaying-help.md).
 - Learn how to configure Zowe CLI [run Zowe CLI in daemon mode](../user-guide/cli-using-using-daemon-mode.md). **Daemon mode** significantly improves the performance of Zowe CLI commands by running Zowe CLI as a persistent background process.
-- Learn about [configuring environment variables](../user-guide/cli-configuringcli-ev.md) to store configuration options.
+- Learn how to configure Zowe CLI [run Zowe CLI in daemon mode](../user-guide/cli-using-using-daemon-mode.md). **Daemon mode** significantly improves the performance of Zowe CLI commands by running Zowe CLI as a persistent background process.
+- Learn about [using environment variables](../user-guide/cli-usingcli.md#using-environment-variables) to store configuration options.
 - Learn about [integrating with API Mediation Layer](../user-guide/cli-using-integrating-apiml.md).
 - Learn about how to [write scripts](../user-guide/cli-using-completing-advanced-tasks.md#writing-scripts) and integrate them with automation server, such as Jenkins.
 - See what [plug-ins are available](../user-guide/cli-extending.md) for the CLI.
-- Learn about [developing for the CLI](../extend/extend-cli/cli-devTutorials.md) (contributing to core and developing plug-ins).
+- Learn about [developing for the CLI](../extend/extend-cli/cli-developing-a-plugin.md) (contributing to core and developing plug-ins).

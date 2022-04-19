@@ -1,6 +1,6 @@
 # zwe init apfauth
 
-[zwe](./.././zwe) > [init](././zwe-init) > [apfauth](./zwe-init-apfauth)
+[zwe](./zwe) > [init](./zwe-init) > [apfauth](./zwe-init-apfauth)
 
 	zwe init apfauth [parameter [parameter]...]
 

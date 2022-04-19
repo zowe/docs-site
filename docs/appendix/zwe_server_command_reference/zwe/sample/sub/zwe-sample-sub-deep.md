@@ -1,6 +1,6 @@
 # zwe sample sub deep
 
-[zwe](./../.././zwe) > [sample](./.././zwe-sample) > [sub](././zwe-sample-sub) > [deep](./zwe-sample-sub-deep)
+[zwe](./zwe) > [sample](./zwe-sample) > [sub](./zwe-sample-sub) > [deep](./zwe-sample-sub-deep)
 
 	zwe sample sub deep [parameter [parameter]...]
 

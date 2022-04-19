@@ -4,7 +4,7 @@ You can install plug-ins to extend the capabilities of Zowe&trade; CLI. Plug-ins
 
 **Important!** Plug-ins can gain control of your CLI application legitimately during the execution of every command. Install third-party plug-ins at your own risk. We make no warranties regarding the use of third-party plug-ins.
 
-- [Install Zowe CLI plug-ins](cli-installplugins.md)
+- [Install plug-ins](cli-installplugins.md)
 - [IBM® CICS Plug-in for Zowe CLI](cli-cicsplugin.md)
 - [IBM® Db2® Database Plug-in for Zowe CLI](cli-db2plugin.md)
 - [IBM® z/OS FTP Plug-in for Zowe CLI](cli-ftpplugin.md)

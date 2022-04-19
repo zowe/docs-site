@@ -163,7 +163,7 @@ zowe plugins update [plugin...] [--registry <registry>]
 The following example illustrates the syntax to use to update an installed plug-in to the latest version:
 
 ```
-zowe plugins update @zowe/my-plugin@zowe-v2-lts
+zowe plugins update @zowe/my-plugin@zowe-v1-lts
 ```
 
 The following example illustrates the syntax to use to update a plug-in to a specific version:

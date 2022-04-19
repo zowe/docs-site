@@ -1,6 +1,6 @@
 # zwe start
 
-[zwe](././zwe) > [start](./zwe-start)
+[zwe](./zwe) > [start](./zwe-start)
 
 	zwe start [parameter [parameter]...]
 

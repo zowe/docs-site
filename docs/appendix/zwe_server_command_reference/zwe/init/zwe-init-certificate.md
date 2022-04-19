@@ -1,6 +1,6 @@
 # zwe init certificate
 
-[zwe](./.././zwe) > [init](././zwe-init) > [certificate](./zwe-init-certificate)
+[zwe](./zwe) > [init](./zwe-init) > [certificate](./zwe-init-certificate)
 
 	zwe init certificate [parameter [parameter]...]
 

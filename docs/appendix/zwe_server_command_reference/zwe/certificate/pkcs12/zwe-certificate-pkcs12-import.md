@@ -1,6 +1,6 @@
 # zwe certificate pkcs12 import
 
-[zwe](./../.././zwe) > [certificate](./.././zwe-certificate) > [pkcs12](././zwe-certificate-pkcs12) > [import](./zwe-certificate-pkcs12-import)
+[zwe](./zwe) > [certificate](./zwe-certificate) > [pkcs12](./zwe-certificate-pkcs12) > [import](./zwe-certificate-pkcs12-import)
 
 	zwe certificate pkcs12 import [parameter [parameter]...]
 

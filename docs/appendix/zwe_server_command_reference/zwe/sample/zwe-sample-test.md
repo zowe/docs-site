@@ -1,6 +1,6 @@
 # zwe sample test
 
-[zwe](./.././zwe) > [sample](././zwe-sample) > [test](./zwe-sample-test)
+[zwe](./zwe) > [sample](./zwe-sample) > [test](./zwe-sample-test)
 
 	zwe sample test [parameter [parameter]...]
 

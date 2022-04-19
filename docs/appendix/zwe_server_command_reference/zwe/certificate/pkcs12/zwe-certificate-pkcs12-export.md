@@ -1,6 +1,6 @@
 # zwe certificate pkcs12 export
 
-[zwe](./../.././zwe) > [certificate](./.././zwe-certificate) > [pkcs12](././zwe-certificate-pkcs12) > [export](./zwe-certificate-pkcs12-export)
+[zwe](./zwe) > [certificate](./zwe-certificate) > [pkcs12](./zwe-certificate-pkcs12) > [export](./zwe-certificate-pkcs12-export)
 
 	zwe certificate pkcs12 export [parameter [parameter]...]
 

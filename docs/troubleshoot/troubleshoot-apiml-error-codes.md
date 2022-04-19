@@ -1099,7 +1099,7 @@ Configuration error when trying to establish JWT producer. Events: %s
 
 **Reason:**
 
-A problem occurred while trying to make sure that there is a valid JWT producer available.
+A problem occurred while trying to make sure that there is a valid JWT producer avaliable.
 
 **Action:**
 
@@ -1247,7 +1247,7 @@ The Gateway could not find the z/OSMF instance from the Discovery Service or it 
 
 **Action:**
 
-Ensure that the z/OSMF instance is configured correctly and that it is successfully registered to the Discovery Service and that the API Mediation Layer can communicate with the provided z/OSMF instance. The default timeout is 5 minutes. On a slower system, add the variable components.gateway.apiml.security.jwtInitializerTimeout:... and the value in minutes into Zowe's configuration to override this value.
+Ensure that the z/OSMF instance is configured correctly and that it is successfully registered to the Discovery Service and that the API Mediation Layer can communicate with the provided z/OSMF instance. The default timeout is 5 minutes. On a slower system, add the variable APIML_SECURITY_JWTINITIALIZERTIMEOUT=... and the value in minutes into Zowe's configuration to override this value.
 
 ### ZWEAG109E
 
@@ -1356,30 +1356,6 @@ An error occurred in the SAF Auth Service. Review the reason in the error messag
 **Action:**
 
 Supply a valid user and application name, and check that corresponding permissions have been set up.
-
-### ZWEAG150E
-
-  SAF IDT generation failed. Reason: %s
-
-  **Reason:**
-
-  An error occurred during SAF verification. Review the reason in the error message.
-
-  **Action:**
-
-  Verify the Identity Token configuration.
-
-### ZWEAG151E
-
-  SAF IDT is not generated because authentication or authorization failed. Reason: %s
-
-  **Reason:**
-
-  The user credentials were rejected during SAF verification. Review the reason in the error message.
-
-  **Action:**
-
-  Provide a valid username and password.
 
 ## API Catalog messages
 
