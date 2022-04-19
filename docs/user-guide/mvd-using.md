@@ -8,15 +8,14 @@ From the Zowe Desktop, you can access Zowe applications.
 
 ### Accessing the Zowe Desktop
 
-From a supported browser, open the Zowe Desktop at `https://<gwshostname>:<gwsport>/zlux/ui/v1/` or you can navigate to the direct Desktop URI at `https://<gwshostname>:<gwsport>/zlux/ui/v1/ZLUX/plugins/org.zowe.zlux.bootstrap/web/index.html`
+From a supported browser, open the Zowe Desktop at `https://zowe.externalDomains[0]:zowe.externalPort/zlux/ui/v1/` or you can navigate to the direct Desktop URI at `https://zowe.externalDomains[0]:zowe.externalPort/zlux/ui/v1/ZLUX/plugins/org.zowe.zlux.bootstrap/web/index.html`
     
 Where:
 
--   *gwshostname* is the host on which you are running the Zowe Application Server, its the value that
-    was assigned to *zowe.externalDomains[0]* in the zowe configuration file.
--   *gwsport* is the value that was assigned to *zowe.externalPort* in the zowe configuration
-    file.
-    For example, if you run the Zowe Application Server on host *gwshostname* and the value that is assigned to *zowe.externalPort* in the zowe configuration file is 12345, you would specify `https://<gwshostname>:12345/zlux/ui/v1/ZLUX/plugins/org.zowe.zlux.bootstrap/web/index.html`.
+-   *zowe.externalDomains[0]* is the host on which you are running the Zowe Application Server, its the 
+    value that was assigned in the zowe configuration file.
+-   *zowe.externalPort*  is the value that was assigned in the zowe configuration file.
+    For example, if you run the Zowe Application Server on host *zowe.externalDomains[0]* and the value that is assigned to *zowe.externalPort* in the zowe configuration file is 12345, you would specify `https://zowe.externalDomains[0]:12345/zlux/ui/v1/ZLUX/plugins/org.zowe.zlux.bootstrap/web/index.html`.
 
 
 ### Logging in and out of the Zowe Desktop
