@@ -1,4 +1,69 @@
-# Configure Secure Credential Store on z/Linux operating systems
+# Configuring Secure Credential Store on headless Linux operating systems
+
+Perform the following configurations on headless and z/Linux operating systems.
+
+## Headless Linux requirements
+
+- Ensure that you installed the Secure Credential Store requirements that are described in [System Requirements](../user-guide/systemrequirements-cli.md).
+- Unlock the Gnome keyring to allow you to load and store credentials on headless Linux operating systems. You can unlock the keyring manually or automatically.
+
+**Note:** On z/Linux operating systems, complete the steps in [Configuring z/Linux](#configuring-zlinux) before you continue.  
+
+### Unlocking the keyring manually
+
+Issue the following commands to unlock the keyring manually. You must unlock the keyring in each user session.
+
+```bash
+export $(dbus-launch)
+gnome-keyring-daemon -r --unlock --components=secrets
+```
+
+**Note:** The `gnome-keyring-daemon -r --unlock --components=secrets` prompts you to specify a password. Press `Ctrl+D` twice after you specify the password. 
+
+### Unlocking the keyring automatically
+
+When you are using SSH or TTY to log in to Linux, you can configure the Gnome keyring to unlock automatically when you log in.
+
+**Note:** The following steps were tested on CentOS, SUSE, and Ubuntu operating systems. The steps do not work on WSL (Windows Subsystem for Linux) because it bypasses TTY login. Results may vary on other Linux distributions. 
+
+**Follow these steps:**
+
+1. Install the PAM module for Gnome keyring. The package name depends on your distribution:
+
+    - `gnome-keyring-pam`: CentOS, Fedora, SUSE
+    - `libpam-gnome-keyring`: Debian, Ubuntu
+
+2. Apply the following edits to the files `/etc/pam.d/login` (for TTY login), and `/etc/pam.d/sshd` if it exists (for SSH login).
+
+    - Add the following statement to the end of the `auth` section:
+    
+        ```
+        auth optional pam_gnome_keyring.so
+        ```
+
+    - Add the following statement to end of the `session` section:
+    
+        ```
+        session optional pam_gnome_keyring.so auto_start
+        ```
+
+3. Add the following statements to `~/.bashrc`. The statement lets you launch DBus, which the Gnome keyring requires. Also the statement lets the keyring daemon start so that it is ready to be used by Zowe CLI commands.
+    ```bash
+    if test -z "$DBUS_SESSION_BUS_ADDRESS" ; then
+      exec dbus-run-session -- $SHELL
+    fi
+    ```
+
+4. Start the Gnome keyring daemon:
+    ```
+    gnome-keyring-daemon --start --components=secrets
+    ```
+
+5. Restart your computer.
+
+    Issue a Zowe CLI command that uses secure credentials to test that automatic unlock of the keyring works.
+
+## Configuring z/Linux
 
 The Secure Credential Store (SCS) does not contain the  native, pre-built binaries that are required to access the credential vault on z/Linux operating systems.
 

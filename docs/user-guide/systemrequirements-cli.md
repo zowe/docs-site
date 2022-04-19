@@ -7,7 +7,7 @@ Zowe CLI is supported on Windows, Linux, and Mac operating systems. Meet the fol
 
 - **Node.js:** Install a currently supported version of [Node.js LTS](https://nodejs.org/en/). For a complete list of supported LTS versions, see [Nodejs Releases](https://nodejs.org/en/about/releases/).
 
-  **Note:** You might need to restart the command prompt after installing Node.js. Issue the following command   to verify that Node.js is installed.
+  **Note:** You might need to restart the command prompt after installing Node.js. Issue the following command to verify that Node.js is installed.
 
   ```
   node --version
@@ -24,6 +24,10 @@ Zowe CLI is supported on Windows, Linux, and Mac operating systems. Meet the fol
   ```
   
   See [Node.js release matrix](https://nodejs.org/en/download/releases/) to verify that the versions are compatible.
+
+- **Secure Credential Store:** On Linux systems, you must install the packages `gnome-keyring` and `libsecret` (or `libsecret-1-0` on Debian and Ubuntu).
+
+  **Note:** For information about how to configure Secure Credential Store on headless Linux and z/Linux, see [Configure Secure Credential Store on headless Linux operating systems](../user-guide/cli-configure-scs-on-headless-linux-os.md). 
 
 - **Plug-in client requirements:** If you plan to install plug-ins, review the [Software requirements for CLI plug-ins](./cli-swreqplugins.md).
 
