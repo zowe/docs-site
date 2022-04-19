@@ -16,7 +16,7 @@ You can use methods that are described in this article to initialize team config
 
     The `zowe config init` command ensures that your credentials are stored securely on your computer by default.
 
-    After you respond, the `zowe.config.json` team configuration file is added to your local `.zowe` directory. This location is the primary location where your mainframe service connection details are defined, such as host and port. You use Use this configuration file for the following procedures.
+    After you respond, the `zowe.config.json` team configuration file is added to your local `.zowe` directory. This location is the primary location where your mainframe service connection details are defined, such as host and port. You use this configuration file for the following procedures.
 
 After you create the configuration files, you can use a text editor or IDE, such as *Visual Studio Code*, to populate global profiles with connection details for your mainframe services.
 ## Creating team profiles by defining a connection to z/OSMF
@@ -48,3 +48,25 @@ The following steps describe how to interactively initialize team profile config
 
 **Important:** After the configuration files are in place (either via the zowe config init command or by manually creating the files), the now-deprecated zowe profiles commands will no longer function. Zowe CLI will return errors if you attempt to use deprecated profile commands.
 
+## Connecting profiles to API Mediation Layer
+
+To configure your profile to connect to API ML, issue the following command to set up your initial `zowe.config.json` file:
+
+```
+zowe-config-auto-init
+```
+
+After you issue the command, Zowe CLI prompts you to specify the following information:
+
+- The host name and port to your API ML instance
+- Your username and password
+
+If you are using certificates to authenticate, you can specify the details for the certificates by issuing the following commands:
+
+```
+zowe auth login apiml --cert-file
+```
+
+```
+zowe auth login apiml --cert-key-file
+```

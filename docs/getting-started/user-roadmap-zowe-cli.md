@@ -53,7 +53,7 @@ The following definition of skill levels about Zowe will help you gather most re
 
 > Zowe skill level: Intermediate
 
-- [**Configuring Zowe CLI environment variables**](../user-guide/cli-configuringcli.md)
+- [**Configuring Zowe CLI environment variables**](../user-guide/cli-configuringcli-ev.md)
 
    Explains how to configure Zowe CLI environment variables, such as changing log levels, setting the home directory location, and daemon mode.
 
