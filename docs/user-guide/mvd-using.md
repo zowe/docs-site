@@ -120,7 +120,7 @@ The VT Terminal plugin provides a user interface that emulates the basic functio
 The API Catalog plugin lets you view API services that have been discovered by the API Mediation Layer. For more information about the API Mediation Layer, Discovery Service, and API Catalog, see [API Mediation Layer Overview](../getting-started/overview.md).
 
 ### Editor
-With the Zowe Editor you can create and edit files and view datasets on the system that Zowe serves.
+With the Zowe Editor you can create, edit, and modify the properties of files such as ownership and permissions. You can also view and edit datasets. Navigation is controlled by the File Tree https://github.com/zowe/zlux-file-explorer. Other actions are available using the top left menu, a toolbar above the tree, or hotkeys.
 
 ### JES Explorer
 Use this application to query JES jobs with filters, and view the related steps, files, and status. You can also purge jobs from this view.
