@@ -322,7 +322,7 @@ module.exports = {
         "extend/extend-apiml/api-mediation-passtickets",
         "extend/extend-apiml/custom-metadata",
         "extend/extend-apiml/api-mediation-versioning",
-        "extend/extend-apiml/implement-new-saf-provider",
+        "extend/extend-apiml/implement-new-saf-provider", 
         {
           type: "category",
           label: "Caching service",
