@@ -17,9 +17,9 @@ From a supported browser, open the Zowe Desktop at `https://myhost:httpsPort`
 where,
 
 - _myHost_ is the host on which you installed the Zowe Application Server.
-- _httpsPort_ is the port number value `ZOWE_ZLUX_SERVER_HTTPS_PORT` in `instance.env`. For more information, see [Creating and configuring the Zowe instance directory](configure-instance-directory.md#ports).
+- _httpsPort_ is the port number value `ZWED_SERVER_HTTPS_PORT` in `instance.env`. For more information, see [Creating and configuring the Zowe instance directory](configure-instance-directory.md#ports).
 
-  For example, if the Zowe Application Server runs on host _myhost_ and the port number that is assigned to `ZOWE_ZLUX_SERVER_HTTPS_PORT` is 12345, you specify `https://myhost:12345`.  The web desktop uses page direct to the actual initial page which is `https://myhost:12345/ZLUX/plugins/org.zowe.zlux.bootstrap/web/index.html`. If the redirect fails, try the full URL.  
+  For example, if the Zowe Application Server runs on host _myhost_ and the port number that is assigned to `ZWED_SERVER_HTTPS_PORT` is 12345, you specify `https://myhost:12345`.  The web desktop uses page direct to the actual initial page which is `https://myhost:12345/ZLUX/plugins/org.zowe.zlux.bootstrap/web/index.html`. If the redirect fails, try the full URL.  
 
 If the desktop appears but you are unable to log on, check [Cannot log into the Zowe desktop](../troubleshoot/app-framework/app-troubleshoot.md#cannot-log-in-to-the-zowe-desktop) for troubleshooting tips.
 
