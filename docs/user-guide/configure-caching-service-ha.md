@@ -9,8 +9,8 @@ Zowe uses the Caching Service to centralize the state data persistent in high av
    To use this method, leave the `ZWE_CACHING_SERVICE_PERSISTENT` configuration blank in the `instance.env` configuration file. When this method is enabled, the Caching Service will not persist any data. Also, if you have multiple instances of Caching Service, the data will not be shared across these instances.
 
 - **VSAM**
-   
-   **Note:** Performance issues related to the VSAM data set have been observed, so it is recommended that you use this storage method for light workload. If heavy workload is expected on Zowe components, it is recommended that you use the `redis` storage method instead.
+
+  **Note:** Performance issues related to the VSAM data set have been observed, so it is recommended that you use this storage method for light workload. If heavy workload is expected on Zowe components, it is recommended that you use either `redis` or `infinispan` storage method instead.
 
    To use this method, 
    1. Set the value of `ZWE_CACHING_SERVICE_PERSISTENT` to `VSAM` in the `instance.env` configuration file.
@@ -20,6 +20,10 @@ Zowe uses the Caching Service to centralize the state data persistent in high av
 - **redis**
 
    To enable this method, set the value of `ZWE_CACHING_SERVICE_PERSISTENT` to `redis` in the `instance.env` configuration file. See [Redis configuration](../extend/extend-apiml/api-mediation-redis.md#redis-configuration) for more information. To learn more about Caching Service, see [Using the Caching Service](../extend/extend-apiml/api-mediation-caching-service.md).
+
+- **infinispan**
+
+  To enable this method, set the value of `ZWE_CACHING_SERVICE_PERSISTENT` to `infinispan` in the `instance.env` configuration file. See [Infinispan configuration](../extend/extend-apiml/api-mediation-infinispan.md#infinispan-configuration) for more information. To learn more about Caching Service, see [Using the Caching Service](../extend/extend-apiml/api-mediation-caching-service.md).
 
 If you are using `zowe.yaml` configuration other than `instance.env`, please check [Configure component caching-service](configure-instance-directory.md#configure-component-caching-service) for configuration details.
 
