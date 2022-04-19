@@ -70,7 +70,7 @@ If you decide to bundle and ship Zowe extensions within another product, you can
 
 ## Zowe component manifest
 
-Zowe extensions, as well as core components, can use a manifest file to describe itself. Check [Server Component Manifest File Reference](../appendix/server-component-manifest.md) for details.
+Zowe extensions, as well as core components, can use a manifest file to describe itself. Check [Server Component Manifest File Reference](../appendix/component-manifest.md) for details.
 
 ## Sample manifests
 

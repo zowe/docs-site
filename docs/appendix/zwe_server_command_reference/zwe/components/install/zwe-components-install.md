@@ -13,6 +13,10 @@
 
 Install a Zowe module.
 
+**IMPORTANT NOTES**, by default, this command will enable the component globally
+                     by modifying your YAML configuration. You can pass
+                     `--skip-enable` to disable this behavior.
+
 
 ## Examples
 
@@ -29,7 +33,7 @@ Full name|Alias|Type|Required|Help message
 |---|---|---|---|---
 --component-file,--component|-o|string|yes||Path to the component package or directory.
 --auto-encoding|-e|string|no||If we want to automatically tagging the module files.
-
+--skip-enable||boolean|no||Install component without enabling it for use.
 
 ## Parameters
 
@@ -84,3 +88,4 @@ ZWEL0139E|139|Failed to create directory %s.
 ZWEL0140E|140|Failed to translate Zowe configuration (%s).
 ZWEL0142E|142|Failed to refresh APIML static registrations.
 ZWEL0172E||Component %s has %s defined but the file is missing.
+ZWE01235E||Test change another another

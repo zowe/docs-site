@@ -182,7 +182,9 @@ The STC name of the main started task is: `ZOWE_PREFIX`+`ZOWE_INSTANCE`+`SV`.
 
 When Zowe starts, a number of its microservices need to be given port numbers that these microservices use to provide access to their services.  You can leave default values for components that are not in use. The two most important port numbers are the `GATEWAY_PORT`, and `ZOWE_ZLUX_SERVER_HTTPS_PORT`. 
 - **`GATEWAY_PORT`**  
-Specifies the access to the API Gateway through which REST APIs can be viewed and accessed.  All of the other ports are not typically used by clients when the gateway is enabled and are then only used for intra-service communication by Zowe.  
+Specifies the access to the API Gateway through which REST APIs can be viewed and accessed.
+- **`ZOWE_ZLUX_SERVER_HTTPS_PORT`**  
+Specifies the port used to deliver content to client web browsers logging in to the Zowe desktop.  All of the other ports are not typically used by clients and used for intra-service communication by Zowe.  
 - **`CATALOG_PORT`**  
  The port the API Catalog service uses. Used when `LAUNCH_COMPONENT_GROUPS` includes `GATEWAY`.
 - **`DISCOVERY_PORT`**  
@@ -199,9 +201,9 @@ The port the jes-explorer UI service use. Used when `LAUNCH_COMPONENT_GROUPS` in
  The port the mvs-explorer UI service use. Used when `LAUNCH_COMPONENT_GROUPS`` includes GATEWAY`.
 - **`USS_EXPLORER_UI_PORT`**  
  The port the uss-explorer UI service use. Used when `LAUNCH_COMPONENT_GROUPS` includes `GATEWAY`.
-- **`ZWED_SERVER_HTTPS_PORT`**  
+- **`ZOWE_ZLUX_SERVER_HTTPS_PORT`**  
  The port used by the Zowe desktop.  Used when `LAUNCH_COMPONENT_GROUPS` includes `DESKTOP`. It should be accessible to client machines with browsers wanting to log on to the Zowe desktop.  
-- **`ZWES_SERVER_PORT`**  
+- **`ZOWE_ZSS_SERVER_PORT`**  
  This port is used by the ZSS server. Used when `LAUNCH_COMPONENT_GROUPS` includes `DESKTOP` or `ZSS`.
 
 **Note:** If all of the default port values are acceptable, the ports do not need to be changed. To allocate ports for the Zowe runtime servers, ensure that the ports are not in use.
@@ -224,11 +226,11 @@ To determine which ports are not available, follow these steps:
 
 **Note:** Unlike the ports needed by the Zowe runtime for its Zowe Application Framework and z/OS Services which must be unused, the terminal ports are expected to be in use.  
 
-- **`ZWED_SSH_PORT`**  
+- **`ZOWE_ZLUX_SSH_PORT`**  
  The Zowe desktop contains an application *VT Terminal* which opens a terminal to z/OS inside the Zowe desktop web page.  This port is the number used by the z/OS SSH service and defaults to 22.  The USS command `netstat -b | grep SSHD1` can be used to display the SSH port used on a z/OS system.  
-- **`ZWED_TN3270_PORT`**  
+- **`ZOWE_ZLUX_TELNET_PORT`**  
  The Zowe desktop contains an application *3270 Terminal* which opens a 3270 emulator inside the Zowe desktop web page.  This port is the number used by the z/OS telnet service and defaults to 23. The USS command `netstat -b | grep TN3270` can be used to display the telnet port used on a z/OS system.
-- **`ZWED_TN3270_SECURITY`**  
+- **`ZOWE_ZLUX_SECURITY_TYPE`**  
  The *3270 Terminal* application needs to know whether the telnet service is using `tls` or `telnet` for security.  The default value is blank for `telnet`.
 
 ### API Mediation Layer configuration
@@ -271,7 +273,7 @@ Refer to detailed section about [API Gateway configuration](api-mediation/api-ga
 
 ### Cross memory server
 
-- **`ZWES_XMEM_SERVER_NAME`**  
+- **`ZOWE_ZSS_XMEM_SERVER_NAME`**  
  For the Zowe Desktop to operate communication with the Zowe cross memory server. The default procedure name `ZWESIS_STD` is used for the cross memory server. However, this can be changed in the `ZWESISTC` PROBLIC member. This might occur to match local naming standards, or to allow isolated testing of a new version of the cross memory server while an older version is running concurrently.  The Zowe desktop that runs under the `ZWESVSTC` started task locates the appropriate cross memory server running under its started task `ZWESISTC` using the `ZOWE_ZSS_XMEM_SERVER_NAME` value. If this handshake cannot occur, users are be unable to log in to the Zowe desktop. For more information, see [Troubleshooting: ZSS server unable to communicate with X-MEM](../troubleshoot/app-framework/app-troubleshoot.md#zss-server-unable-to-communicate-with-x-mem).
 
    ```

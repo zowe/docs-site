@@ -1,22 +1,22 @@
-# zwe certificate keyring-jcl connect
+# zwe components disable
 
-[zwe](./../.././zwe) > [certificate](./.././zwe-certificate) > [keyring-jcl](././zwe-certificate-keyring-jcl) > [connect](./zwe-certificate-keyring-jcl-connect)
+[zwe](./.././zwe) > [components](././zwe-components) > [disable](./zwe-components-disable)
 
-	zwe certificate keyring-jcl connect [parameter [parameter]...]
+	zwe components disable [parameter [parameter]...]
 
 ## Description
 
-Connect existing certificate to Zowe keyring.
+Disable a Zowe component.
 
+**IMPORTANT NOTES**, this command will modify your YAML configuration.
 
-### Inherited from parent command
-
-WARNING: This command is for experimental purposes and may not fully function.
 
 ## Examples
 
 ```
-zwe certificate keyring-jcl connect --dataset-prefix my-dataset-prefix --jcllib my-jcllib --security-dry-run --keyring-owner my-keyring-owner --keyring-name my-keyring-name --connect-user cert-owner --connect-label cert-label
+zwe components disable --component-name gateway
+
+zwe components disable --component-name gateway --ha-instance lpar1
 
 ```
 
@@ -24,18 +24,8 @@ zwe certificate keyring-jcl connect --dataset-prefix my-dataset-prefix --jcllib 
 
 Full name|Alias|Type|Required|Help message
 |---|---|---|---|---
---dataset-prefix,--ds-prefix||string|yes||Dataset prefix where Zowe is installed.
---jcllib||string|yes||JCLLIB data set name where the JCL will be placed.
---security-dry-run||boolean|no||Whether to dry run security related setup.
---security-product||string|no||Security product. Can be a value of RACF, ACF2 or TSS.
---keyring-owner||string|yes||Owner of the keyring.
---keyring-name||string|yes||Name of the keyring.
---trust-cas||string|no||Labels of extra certificate authorities should be trusted, separated by comma (Maximum 2).
---connect-user||string|yes||Certificate owner. Can be `SITE` or a user ID.
---connect-label||string|yes||Certificate label to connect.
---trust-zosmf||boolean|no||Whether to trust z/OSMF CA.
---zosmf-ca||string|no||Labels of z/OSMF root certificate authorities. Specify "_auto_" to let Zowe to detect automatically. This only works for RACF.
---zosmf-user||string|no||z/OSMF user name. This is used to automatically detect z/OSMF root certificate authorities.
+--component-name,--component|-o|string|yes||Component name to be disabled.
+--ha-instance|-i|string|no||Zowe high availability instance ID from zowe.yaml.
 ### Inherited from parent command
 
 Full name|Alias|Type|Required|Help message
@@ -52,7 +42,7 @@ Full name|Alias|Type|Required|Help message
 
 Error code|Exit code|Error message
 |---|---|---
-ZWEL0175E|175|Failed to connect existing certificate to Zowe keyring "%s".
+ZWEL0152E|152|Cannot find component %s.
 ### Inherited from parent command
 
 Error code|Exit code|Error message
