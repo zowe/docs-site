@@ -34,7 +34,7 @@ Full name|Alias|Type|Required|Help message
 
 Error code|Exit code|Error message
 |---|---|---
-ZWEL0150E|150|Failed to find Zowe manifest.json. Zowe runtimeDirectory is invalid.
+ZWEL0150E|150|Failed to find file %s. Zowe runtimeDirectory is invalid.
 ### Inherited from parent command
 
 Error code|Exit code|Error message
@@ -68,4 +68,3 @@ ZWEL0139E|139|Failed to create directory %s.
 ZWEL0140E|140|Failed to translate Zowe configuration (%s).
 ZWEL0142E|142|Failed to refresh APIML static registrations.
 ZWEL0172E||Component %s has %s defined but the file is missing.
-ZWE01235E||Test change another another

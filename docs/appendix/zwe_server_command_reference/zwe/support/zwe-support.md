@@ -1,39 +1,41 @@
-# zwe certificate pkcs12 trust-service
+# zwe support
 
-[zwe](./../.././zwe) > [certificate](./.././zwe-certificate) > [pkcs12](././zwe-certificate-pkcs12) > [trust-service](./zwe-certificate-pkcs12-trust-service)
+[zwe](.././zwe) > [support](./zwe-support)
 
-	zwe certificate pkcs12 trust-service [parameter [parameter]...]
+	zwe support [sub-command [sub-command]...] [parameter [parameter]...]
+
+## Sub-commands
+
+* [verify-fingerprints](./zwe-support-verify-fingerprints)
 
 ## Description
 
-This command can detect and trust any service by importing the certificate
-into truststore.
+Collect and package Zowe runtime information for support purpose.
 
-NOTE: the service must be online and accessible.
+This command will collect these information:
 
+- Environment
+  * z/OS version
+  * Java version
+  * Node.js version
+- Zowe configurations
+  * Zowe manifest.json
+  * Zowe configuration file
+  * Zowe installation logs
+  * Zowe PKCS#12 keystore if used
+  * Zowe temporary configuration files under `<workspace>/.env`
+  * Zowe APIML static registration files under `<workspace>/api-mediation/api-defs`
+- Zowe runtime
+  * Active running Zowe processes
+  * Zowe job log
+- Zowe fingerprints and validation result
 
-### Inherited from parent command
-
-WARNING: This command is for experimental purposes and may not fully function.
-
-## Examples
-
-```
-zwe certificate pkcs12 trust-service -s service-name -d /path/to/my/keystore/dir -k keystore-name -p keystore-cert-password --host service-hostname --port service-port -a cert-alias
-
-```
 
 ## Parameters
 
 Full name|Alias|Type|Required|Help message
 |---|---|---|---|---
---service-name|-n|string|yes||Service name.
---keystore-dir|-d|string|yes||Keystore directory.
---keystore|-k|string|yes||PKCS12 keystore name.
---password|-p|string|yes||Password of the certificate keystore.
---host||string|yes||Host name of the service.
---port||string|yes||Port of the service.
---alias|-a|string|yes||Certificate alias name for the imported the certificate.
+--target-dir||string|no||Target directory where the support package will be created.\nIf it is not specified, system temporary directory will be used.
 ### Inherited from parent command
 
 Full name|Alias|Type|Required|Help message
@@ -48,10 +50,6 @@ Full name|Alias|Type|Required|Help message
 
 ## Errors
 
-Error code|Exit code|Error message
-|---|---|---
-ZWEL0300W||%s already exists. This %s will be overwritten during configuration.
-ZWEL0170E|170|Failed to trust service "%s".
 ### Inherited from parent command
 
 Error code|Exit code|Error message
