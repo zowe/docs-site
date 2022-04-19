@@ -1,39 +1,8 @@
-# zwe components install
+# zwe support verify-fingerprints
 
-[zwe](../.././zwe) > [components](.././zwe-components) > [install](./zwe-components-install)
+[zwe](./.././zwe) > [support](././zwe-support) > [verify-fingerprints](./zwe-support-verify-fingerprints)
 
-	zwe components install [sub-command [sub-command]...] [parameter [parameter]...]
-
-## Sub-commands
-
-* [extract](./zwe-components-install-extract)
-* [process-hook](./zwe-components-install-process-hook)
-
-## Description
-
-Install a Zowe module.
-
-**IMPORTANT NOTES**, by default, this command will enable the component globally
-                     by modifying your YAML configuration. You can pass
-                     `--skip-enable` to disable this behavior.
-
-
-## Examples
-
-```
-zwe components install -c /path/to/zowe.yaml -o /path/to/component/package
-
-zwe components install extract -c /path/to/zowe.yaml -o /path/to/component/package
-
-```
-
-## Parameters only for this command
-
-Full name|Alias|Type|Required|Help message
-|---|---|---|---|---
---component-file,--component|-o|string|yes||Path to the component package or directory.
---auto-encoding|-e|string|no||If we want to automatically tagging the module files.
---skip-enable||boolean|no||Install component without enabling it for use.
+	zwe support verify-fingerprints [parameter [parameter]...]
 
 ## Parameters
 
@@ -41,6 +10,7 @@ Full name|Alias|Type|Required|Help message
 
 Full name|Alias|Type|Required|Help message
 |---|---|---|---|---
+--target-dir||string|no||Target directory where the support package will be created.\nIf it is not specified, system temporary directory will be used.
 --help|-h|boolean|no||Display this help.
 --debug,--verbose|-v|boolean|no||Enable verbose mode.
 --trace|-vv|boolean|no||Enable trace level debug mode.
@@ -53,8 +23,10 @@ Full name|Alias|Type|Required|Help message
 
 Error code|Exit code|Error message
 |---|---|---
-ZWEL0156E|156|Component name is not initialized after extract step.
-ZWEL0180E|180|Zowe extension directory (zowe.extensionDirectory) is not defined in Zowe YAML configuration file.
+ZWEL0113E|113|Failed to find Zowe version. Please validate your Zowe directory.
+ZWEL0150E|150|Failed to find file %s. Zowe runtimeDirectory is invalid.
+ZWEL0151E|151|Failed to create temporary file %s. Please check permission or volume free space.
+ZWEL0181E|181|Failed to verify Zowe file fingerprints.
 ### Inherited from parent command
 
 Error code|Exit code|Error message
