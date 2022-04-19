@@ -29,11 +29,11 @@ Zowe CLI contains the following types of profiles:
     zowe config convert-profiles
     ```
 
-    **Note:** You can continue using Zowe CLI and Zowe CLI plug-ins V1 profiles with Zowe CLI team profiles. However, we highly recommend that you implement team profiles with Zowe CLI V2.
+    **Note:** You can continue using Zowe CLI and Zowe CLI plug-ins V1 profiles with Zowe CLI V2. However, we highly recommend that you implement V2 profiles with Zowe CLI V2.
 
 - Commands in the `zowe config` [command group](../user-guide/cli-using-understanding-core-command-groups.md#config) now let you manage security for any option value.
 - The `zowe scs` and `zowe config` command groups were repurposed to work with team profiles.
-- Zowe CLI team profiles prompt you to enter the username and password securely by default.
+- Zowe CLI V2 prompts you to enter the username and password securely by default.
 
 ## Displaying profile help
 
