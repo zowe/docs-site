@@ -4,7 +4,7 @@ You install the Zowe&trade; convenience build by obtaining a PAX file and using 
 
 ## Introduction
 
-The Zowe installation file for Zowe z/OS components is distributed as a PAX file that contains the runtimes and the scripts to install and launch the z/OS runtime. You must obtain the PAX file and transfer it to z/OS first. Then, to install, configure and start Zowe, you use the `zwe` command. This command defines help messages, logging options, and more. For details about how to use this command, see the [ZWE Server Command Reference](appendix/zwe_server_command_reference).  
+The Zowe installation file for Zowe z/OS components is distributed as a PAX file that contains the runtimes and the scripts to install and launch the z/OS runtime. You must obtain the PAX file and transfer it to z/OS first. Then, to install, configure and start Zowe, you use the `zwe` command. This command defines help messages, logging options, and more. For details about how to use this command, see the [ZWE Server Command Reference](../appendix/zwe_server_command_reference/zwe/zwe.md).  
 
 The configuration data that is read by the `zwe` command are stored in a YAML configuration file named `zowe.yaml`. You modify the `zowe.yaml` file based on your environment. 
 
@@ -77,15 +77,15 @@ After you download the PAX file, you can transfer it to z/OS and expand its cont
 
    **Note:** Zowe version 1 had a script `zowe-install.sh` that created a separate Zowe runtime directory from the expanded contents of the Zowe PAX file. Zowe v2 no longer has this step. **In Zowe v2, the contents of the expanded Zowe PAX file are the Zowe runtime directory.**
 
-## Step 3: Add the `zwe` command to your PATH
+## Step 3: (Optional) Add the `zwe` command to your PATH
 
-The `zwe` command is provided in the `<RUNTIME_DIR>/bin` directory. You can add this Zowe bin directory to your `PATH` environment variable so you can execute the `zwe` command without having to fully qualify its location. To update your PATH, run the following command:
+The `zwe` command is provided in the `<RUNTIME_DIR>/bin` directory. You can optionally add this Zowe bin directory to your `PATH` environment variable so you can execute the `zwe` command without having to fully qualify its location. To update your `PATH`, run the following command:
 
 ```
 export PATH=${PATH}:<RUNTIME_DIR>/bin
 ```
 
-This will update the `PATH` for the current shell. To make this update persistent, you can add the line to your `~/.profile` file, or the `~/.bashProfile` file if you are using a bash shell. To make this update system wide, you can update the `/etc/.profile` file. Once the PATH is updated, you can execute the `zwe` command from any USS directory. For the remainder of the documentation when `zwe` command is referenced, it is assumed that it has been added to your `PATH`. 
+`<RUNTIME_DIR>` should be replaced with your real Zowe runtime directory path. This will update the `PATH` for the current shell. To make this update persistent, you can add the line to your `~/.profile` file, or the `~/.bashProfile` file if you are using a bash shell. To make this update system wide, you can update the `/etc/.profile` file. Once the PATH is updated, you can execute the `zwe` command from any USS directory. For the remainder of the documentation when `zwe` command is referenced, it is assumed that it has been added to your `PATH`. 
 
 The `zwe` command has built in help that can be retrieved with the `-h` suffix. For example, type `zwe -h` to display all of the supported commands. These are broken down into a number of sub-commands.  
 
@@ -106,13 +106,25 @@ Available sub-command(s):
 
 ## Step 4: Copy the zowe.yaml configuration file to preferred location
 
-Copy the template file `<RUNTIME_DIR>\example-zowe.yaml` file to a new location, such as `/var/lpp/zowe/zowe.yaml` or your home directory `~/.zowe.yaml`. This will become your configuration file that contains data used by the `zwe` command at a number of parts of the lifecycle of configuring and starting Zowe. You will need to modify the `zowe.yaml` file based on your environment. 
+Copy the template file `<RUNTIME_DIR>/example-zowe.yaml` file to a new location, such as `/var/lpp/zowe/zowe.yaml` or your home directory `~/.zowe.yaml`. This will become your configuration file that contains data used by the `zwe` command at a number of parts of the lifecycle of configuring and starting Zowe. You will need to modify the `zowe.yaml` file based on your environment. 
 
 When you execute the `zwe` command, the `-c` argument is used to pass the location of a `zowe.yaml` file.  
 
+:::tip
+To avoid passing `--config` or `-c` to every `zwe` commands, you can define `ZWE_CLI_PARAMETER_CONFIG` environment variable points to location of zowe.yaml.
+
+For example, after defining
+
+```
+export ZWE_CLI_PARAMETER_CONFIG=/path/to/my/zowe.yaml
+```
+
+, you can simply type `zwe install` instead of full command `zwe install -c /path/to/my/zowe.yaml`.
+:::
+
 ## Step 5: Install the MVS data sets
 
-After you extract the Zowe convenience build, you can run the `zwe install` command to install MVS data sets.
+After you extract the Zowe convenience build, you can run the [`zwe install` command](../appendix/zwe_server_command_reference/zwe/zwe-install.md) to install MVS data sets.
 
 ### About the MVS data sets
 

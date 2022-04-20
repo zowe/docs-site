@@ -376,7 +376,7 @@ module.exports = {
         "troubleshoot/troubleshooting",
         "troubleshoot/troubleshoot-zowe-release",
     //    "troubleshoot/troubleshoot-diagnostics",
-    //    "troubleshoot/verify-fingerprint",
+        "troubleshoot/verify-fingerprint",
       ],
     },
     //"troubleshoot/troubleshoot-zos",

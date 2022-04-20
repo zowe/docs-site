@@ -95,7 +95,7 @@ Other useful global parameters are:
 - `--trace` or `-vv` to enable trace mode for current command.
 - `--log-dir` or `-l` to also write output to log files.
 
-## Add the `zwe` command to your PATH
+#### Add the `zwe` command to your PATH
 
 You can add this Zowe bin directory to your `PATH` environment variable so you can execute the `zwe` command without having to fully qualify its location. To update your PATH, run the following command:
 
@@ -190,3 +190,13 @@ A typical PKCS#12 keystore directory looks like:
 ```
 
 To generate keystore directory, you need proper `zowe.setup.certificate` configuration defined in Zowe configuration file and then execute server command `zwe init certificate`. To learn more about this command, check [Reference of zwe init certificate](../appendix/zwe_server_command_reference/zwe/init/zwe-init-certificate.md).
+
+### Extension directory
+
+Zowe allows server extensions to expand its core functionalities. The extensions are required to be installed in a central location so Zowe runtime can find and recognize them.
+
+Similar to Zowe runtime directory, this extension directory should be created by the administrators perform Zowe installation and configuration task. Zowe runtime user, typically `ZWESVUSR` requires read-only permission to this directory.
+
+The extension directory should be created by system administrator and defined in your Zowe configuration file as `zowe.extensionDirectory`.
+
+Zowe uses [`zwe components install` command](../appendix/zwe_server_command_reference/zwe/components/install/zwe-components-install.md) to install Zowe server extensions. This command will create sub-directories or symbolic links under the extension directory.

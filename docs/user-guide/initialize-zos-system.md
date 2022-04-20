@@ -27,15 +27,17 @@ zwe init --c /path/to/zowe.yaml
 
 ## Next steps
 
-The `zwe init` command runs the sub-commands in sequence automatically. You can still choose to run the sub-commands one by one to define each step based on your need. 
+The `zwe init` command runs the sub-commands in sequence automatically. If you have successfully ran the above command, you can move on to [start Zowe](./start-zowe-zos.md).
+
+You can choose to run the sub-commands one by one to define each step based on your need, or if you encounter some failures with `zwe init` command, you can pick up the failed sub-commands step specifically and re-run it.
 
 1. [Prepare custom MVS data sets](initialize-mvs-dataset.md). Copy the data sets provided with Zowe to custom data sets.
 1. [Initialize Zowe security configurations](initialize-security-configuration.md). Create the user IDs and security manager settings.
 
    If Zowe has already been launched on a z/OS system from a previous release of Zowe v2 you can skip this security configuration step unless told otherwise in the release documentation.
 
-1. [APF authorize load libraries containing the modules that need to perform z/OS priviledged security calls.](apf-authorize-load-library.md).
-1. Configure Zowe to use TLS certificates.
+1. [APF authorize load libraries containing the modules that need to perform z/OS privileged security calls.](apf-authorize-load-library.md).
+1. [Configure Zowe to use TLS certificates](configure-certificates-keystore.md).
 1. (Required only if you are configuring Zowe for cross LPAR sysplex high availability): [Create the VSAM data sets used by the Zowe API Mediation Layer caching service](initialize-vsam-dataset.md). 
 1. [Install Zowe main started tassks](install-stc-members.md).
 

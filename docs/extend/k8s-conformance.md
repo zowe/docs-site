@@ -153,7 +153,7 @@ The below sections are mainly targeting Kubernetes or OpenShift environments. St
 - listen to only ONE port in the container except for API Mediation Layer Gateway.
 - be cloud-vendor neutral and must NOT rely on features provided by a specific cloud vendor.
 - NOT rely on host information such as `hostIP`, `hostPort`, `hostPath`, `hostNetwork`, `hostPID` and `hostIPC`.
-- MUST accept `zowe.yaml` as a configuration file, the same as when running on z/OS.
+- accept `zowe.yaml` as a configuration file, the same as when running on z/OS.
 
 ### Persistent Volume(s)
 
