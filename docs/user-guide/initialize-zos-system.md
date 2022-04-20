@@ -13,7 +13,9 @@ The `zwe init` command is a combination of the following sub-commands. Each sub-
 - **`vsam`**: Configure the VSAM files needed to run the Zowe caching service used for high availability (HA)
 - **`stc`**: Configure the system to launch the Zowe started task.
 
-You can type `zwe init --help` to learn more about the command or see the [`mvs init` command reference](../appendix/zwe_server_command_reference/zwe/init/zwe-init) for detailed explanation, examples, and parameters. 
+You can type `zwe init --help` to learn more about the command or see the [`zwe init` command reference](../appendix/zwe_server_command_reference/zwe/init/zwe-init) for detailed explanation, examples, and parameters. 
+
+`zwe init` command requires a [Zowe configuration file](installandconfig#zowe-configuration-file) to proceed. This configuration file instructs how Zowe should be initialized. Please create and review this file before proceeding.
 
 ## Procedure
 

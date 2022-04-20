@@ -283,17 +283,18 @@ module.exports = {
         "user-guide/sdks-using",
   ],
   extending: [
+    "extend/extend-zowe-overview",
     {
       type: "category",
-      label: "Overview",
+      label: "Developing server components",
       items: [
-        "extend/extend-zowe-overview",
         "extend/packaging-zos-extensions",
         "extend/install-configure-zos-extensions",
         "extend/lifecycling-with-zwesvstc",
+        "extend/k8s-extend",
+        "extend/k8s-conformance",
       ],
     },
-    "extend/migrate-extensions",
    {
      type: "category",
      label: "Developing for Zowe CLI",
@@ -358,7 +359,6 @@ module.exports = {
     //    "extend/extend-desktop/mvd-conda",
     //  ],
     //},
-    "extend/k8s-extend",
     //"extend/extend-ze/ze-extensions",
     //"extend/extend-sdks",
     "extend/zowe-conformance-program",

@@ -9,9 +9,9 @@ When you install Zowe&trade; on z/OS, you install the following two parts:
 
 2. The Zowe Cross Memory Server, also known as ZIS, which is an APF authorized server application that provides privileged services to Zowe in a secure manner.
 
-Zowe provides the ability for some of its unix components to be run not under USS, but as a Linux Docker container, see [Installing Zowe Server Components using Docker](install-docker.md). <Badge text="Technical Preview"/> 
+Zowe provides the ability for some of its unix components to be run not under USS, but as a container, see [Installing Zowe Containers](k8s-introduction.md).
 
-If you want to configure Zowe for high availability, see [Installing Zowe Server Components in Sysplex](install-ha-sysplex.md) for instructions.
+If you want to configure Zowe for high availability, see [Installing Zowe z/OS Components with High Availability](install-ha-overview.md) for instructions.
 
 ## Stage 1: Plan and prepare
 
@@ -49,9 +49,7 @@ Before you start the installation, review the information on hardware and softwa
    - For how to obtain the SMP/E build and install it, see [Installing Zowe SMP/E](install-zowe-smpe.md).
    <!-- Not ready yet - For how to obtain the PSWI and install it, see [Installing Zowe from a Portable Software Instance](install-zowe-pswi.md). -->
 
-<!--(FIXME)  
-After successful installation of either a convenience build or an SMP/E build, there will be a zFS folder that contains the unconfigured Zowe runtime `<RUNTIME_DIR>`, a SAMPLIB library `SZWESAMP` that contains sample members, and a load library `SZWEAUTH` that contains load modules. The steps to prepare the z/OS environment to launch Zowe are the same irrespective of the installation method.
--->
+After successful installation of either a convenience build or an SMP/E build, there will be a zFS folder that contains the unconfigured Zowe runtime directory, a utility library `SZWEEXEC` that contains utilities, a SAMPLIB library `SZWESAMP` that contains sample members, and a load library `SZWEAUTH` that contains load modules. The steps to prepare the z/OS environment to launch Zowe are the same irrespective of the installation method.
 
 ## Stage 3: Configure the Zowe z/OS runtime
 
@@ -64,16 +62,14 @@ You can configure the Zowe runtime with one of the following methods depending o
 
 Whether you have obtained Zowe from a .pax convenience build, or an SMP/E distribution, the steps to initialize the system are the same.
 
-<!--(FIXME) --what is the expected sequence? -->
-
 1. [Prepare custom MVS data sets](initialize-vsam-dataset.md). Copy the data sets provided with Zowe to custom data sets.
+1. (Required only if you are configuring Zowe for cross LPAR sysplex high availability): [Create the VSAM data sets used by the Zowe API Mediation Layer caching service](initialize-vsam-dataset.md). 
+1. [APF authorize load libraries containing the modules that need to perform z/OS priviledged security calls.](apf-authorize-load-library.md).
 1. [Initialize Zowe security configurations](initialize-security-configuration.md). Create the user IDs and security manager settings.
 
    If Zowe has already been launched on a z/OS system from a previous release of Zowe v2 you can skip this security configuration step unless told otherwise in the release documentation.
 
-1. [APF authorize load libraries containing the modules that need to perform z/OS priviledged security calls.](apf-authorize-load-library.md).
 1. Configure Zowe to use TLS certificates.
-1. (Required only if you are configuring Zowe for cross LPAR sysplex high availability): [Create the VSAM data sets used by the Zowe API Mediation Layer caching service](initialize-vsam-dataset.md). 
 1. [Install Zowe main started tassks](install-stc-members.md).
 
 ## Looking for troubleshooting help?
