@@ -97,7 +97,7 @@ There are three known problems that might cause this error.  The [Zowe architect
      ```
      The line in the `instance.env` that specifies the cross memory procedure that the zssServer will try to attach to is
      ```
-     ZOWE_ZSS_XMEM_SERVER_NAME=ZWESIS_STD
+     ZWES_XMEM_SERVER_NAME=ZWESIS_STD
      ```
    
    - If this is the first time you set up Zowe, it is possible that the cross memory server configuration did not complete successfully. To set up and configure the cross memory server, follow steps as described in the topic [Installing and configuring the Zowe cross memory server (ZWESISTC)](../../user-guide/configure-xmem-server.md).  Once `ZWESISTC` is started, if problems persist, check its log to ensure it has been able to correctly locate its load module ZWESIS01 as well as the parmlib ZWESIP00.  

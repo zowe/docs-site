@@ -5,15 +5,15 @@ Before you follow the development tutorials for creating a Zowe&trade; CLI plug-
 [Install Zowe CLI](../../user-guide/cli-installcli#methods-to-install-zowe-cli).
 
 ## Initial setup
-To create your development space, you will clone and build [zowe-cli-sample-plugin](https://github.com/zowe/zowe-cli-sample-plugin) from source.
+To create your development space, clone and build [zowe-cli-sample-plugin](https://github.com/zowe/zowe-cli-sample-plugin/#zowe-cli-sample-plug-in) from source.
 
 Before you clone the repository, create a local development folder named `zowe-tutorial`. You will clone and build all projects in this folder.
 
 ## Branches
 
-There are two branches in the repository that correspond to different Zowe CLI versions. You can develop two branches of your plug-in so that users can install your plug-in into `@latest` or `@zowe-v1-lts` CLI. Developing for both versions will let you take advantage of new core features quickly and expose your plug-in to a wider range of users.
+There are two branches in the repository that correspond to different Zowe CLI versions. You can develop two branches of your plug-in so that users can install your plug-in into `@latest` or `@zowe-v2-lts` CLI. Developing for both versions will let you take advantage of new core features quickly and expose your plug-in to a wider range of users.
 
-The `master` branch of Sample Plug-in is compatible with the `@zowe-v1-lts` version of core CLI (Zowe LTS release).
+The `master` branch of Sample Plug-in is compatible with the `@zowe-v2-lts` version of core CLI (Zowe LTS release).
 
 The `master` branch of Sample Plug-in is also compatible with the `@latest` version of core CLI (Zowe Active Development release) at this time.
 
@@ -25,7 +25,8 @@ Clone the repository into your development folder to match the following structu
 zowe-tutorial
 └── zowe-cli-sample-plugin
 ```
-Follow these steps:
+**Follow these steps:**
+
 1. `cd` to your `zowe-tutorial` folder.
 2. `git clone https://github.com/zowe/zowe-cli-sample-plugin`
 3. `cd` to your `zowe-cli-sample-plugin` folder.

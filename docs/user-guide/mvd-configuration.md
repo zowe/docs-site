@@ -1,41 +1,67 @@
 # Configuring Zowe Application Framework
 
-After you install Zowe&trade;, you can optionally configure the Zowe Application Framework as a Mediation Layer client, configure connections for the terminal application plug-ins, or modify the Zowe Application Server and Zowe System Services (ZSS) configuration, as needed.
+The Zowe Application ("App") Framework is configured in the Zowe configuration file. Configuration can be used to change things such as verbosity of logs, the way in which the App server communicates with the Mediation Layer, how ZSS operates, whether to use HTTPS or AT-TLS, what language the logs should be set, and many more attributes.
+
+When you install Zowe&trade;, the App Framework is configured as a Mediation Layer client by default. This is simpler to administer because the App framework servers are accessible externally through a single port: API ML Gateway port. It is more secure because you can implement stricter browser security policies for accessing cross-origin content. 
+
+You can modify the Zowe App Server and Zowe System Services (ZSS) configuration, as needed, or configure connections for the Terminal app plugins.
+
+## Accessing the App Server
+
+When the server is enabled and given a port within [the configuration file](configure-instance-directory.md), the App server will print a message ZWED0031I in the log output. At that time, it is ready to accept network communication. When using the API Mediation Layer (recommended), app-server URLs should be reached from the Gateway, and you should additionally wait for the message ZWEAM000I for the Gateway to be ready.
+
+When Zowe is ready, the app-server can be found at `https://<externalDomain>:<components.gateway.port>/zlux/ui/v1`
+
+(Not recommended): If the API Mediation Layer is not used, or you need to contact the App server directly, the ZWED0031I message states which port it is accessible from, though generally it will be the same value as specified within `components.app-server.port`. In that case, the server would be available at `https://<externalDomain>:<components.app-server.port>/`
+
+### Accessing the Desktop
+
+The `app-server` should be accessed through the `gateway` when both are present. When both are ready, the Desktop can be accessed from the API Mediation Layer Gateway, such as
+
+`https://<zowe.externalDomain>:<components.gateway.port>/zlux/ui/v1/`, which will redirect to `https://<zowe.externalDomain>:<components.gateway.port>/zlux/ui/v1/ZLUX/plugins/org.zowe.zlux.bootstrap/web/index.html`
+
+Although you access the App server via the Gateway port, the App server still needs a port assigned to it which is the value of the *components.app-server.port* variable in the Zowe configuration file.
+
+(Not recommended): If the mediation layer is not used, the Desktop will be accessible from the App server directly at `/ZLUX/plugins/org.zowe.zlux.bootstrap/web/index.html`
+
+## Accessing ZSS
+
+The `zss` server should be accessed  through the `gateway` when both are present. When both are ready, ZSS can be accessed from the API Mediation Layer Gateway, such as
+
+`https://<zowe.externalDomain>:<components.gateway.port>/zss/api/v1/`
+
+Although you access the ZSS server via the Gateway port, the ZSS server still needs a port assigned to it which is the value of the *components.zss.port* variable in the Zowe configuration file.
+
+If the mediation layer is not used, ZSS directly at `https://<zowe.externalDomain>:<components.zss.port>/`
+
+## Configuration file
+
+### app-server configuration
+
+The app-server uses the Zowe server configuration file for customizing server behavior. For a full list of parameters, requirements, and descriptions, see [the json-schema document for the app-server](https://github.com/zowe/zlux/blob/v2.x/staging/schemas/zlux-config-schema.json) which describes attributes that can be specified within the configuration file section `components.app-server`
+
+### zss configuration
+
+ZSS shares some parameters in common with the app-server, so you can consult the above json-schema document to find out which parameters are valid within `components.zss` of the Zowe configuration file. However, some parameters within the app-server schema are not used by ZSS, such as the `node` section. A ZSS-centric schema will be available soon.
+
+## Environment variables
+
+In the latest version of Zowe, `instance.env` is no longer used. However, some environment variables that could be specified within v1 can still be set within v2 in the `zowe.environments` section of the server configuration file. Environment variables starting with `ZWED_` map to values that can be specified within `components.app-server` and `components.zss` so they are redundant, but you can refer to the above json-schema document to see which values are useful or deprecated.
+
 
 ## Configuring the framework as a Mediation Layer client
-For simpler Zowe administration and better security, you can install an instance of the Zowe Application Framework as an API Mediation Layer client.
 
-This configuration is simpler to administer because the framework servers are accessible externally through a single port. It is more secure because you can implement stricter browser security policies for accessing cross-origin content.
+The App Server and ZSS automatically register to the API Mediation Layer when present.
+If this is not desired, registration can disabled by setting the properties `components.app-server.mediationLayer.server.enabled=false` for app-server and `components.zss.mediationLayer.enabled=false` for ZSS.
 
-You must use SSL certificates to configure the Zowe Application Server to communicate with the SSL-enabled Mediation Layer. Those certificates were created during the Zowe installation process, and are located in the `$RUNTIME_DIR/components/app-server/share/zlux-app-server/defaults/serverConfig` directory.
+## Setting up terminal app plugins
 
-### Enabling the Application Server to register with the Mediation Layer
+Follow these optional steps to configure the default connection to open for the terminal app plugins.
 
-When you install Zowe v1.8.0 or later, the Application Server automatically registers with the Mediation Layer.
+### Setting up the TN3270 mainframe terminal app plugin
 
-For earlier releases, you must register the Application Server with the Mediation Layer manually. Refer to previous release documentation for more information.
+The file `_defaultTN3270.json` within the `tn3270-ng2` app folder `/config/storageDefaults/sessions/` is deployed to the [configuration dataservice](../extend/extend-desktop/mvd-configdataservice.md) when the app-server runs for the first time. This file is used to tell the terminal what host to connect to by default. If you'd like to customize this default, you can edit the file directly within the configuration dataservice `<components.app-server.instanceDir>/org.zowe.terminal.tn3270/sessions/_defaultTN3270.json`. Or you can open the app, customize a session within the UI, click the save icon (floppy icon) and then copy that file from `<components.app-server.usersDir>/<your user>/org.zowe.terminal.tn3270/sessions/_defaultTN3270.json` to `<components.app-server.instanceDir>/org.zowe.terminal.tn3270/sessions/_defaultTN3270.json`. Either way, you will see a file with the following properties:
 
-### Accessing the Application Server
-
-**Note:** Before Accessing the Application Server, first [create and configure the Zowe instance directory](configure-instance-directory.md).
-
-To access the Application Server through the Mediation Layer, use the Mediation Layer gateway server hostname and port. For example, when accessed directly, this is Zowe Desktop URL: `https://<appservername_port>/ZLUX/plugins/org.zowe.zlux.bootstrap/web/index.html`
-
-The port number for the Zowe Desktop is the value of the `ZOWE_ZLUX_SERVER_HTTPS_PORT` variable in the `instance.env` file in the instance directory, see [Creating and configuring the Zowe instance directory](configure-instance-directory.md).
-
-When accessed through the API Mediation Layer, this is the Zowe Desktop URL:
-`https://<gwsname_port>/ui/v1/zlux/ZLUX/plugins/org.zowe.zlux.bootstrap/web/index.html`
-
-The port number for the API Mediation Layer is the value of the `GATEWAY_PORT` variable in the `instance.env` file in the instance directory.
-
-
-## Setting up terminal application plug-ins
-
-Follow these optional steps to configure the default connection to open for the terminal application plug-ins.
-
-### Setting up the TN3270 mainframe terminal application plug-in
-
-`_defaultTN3270.json` is a file in `tn3270-ng2/`, which is deployed during setup. Within this file, you can specify the following parameters to configure the terminal connection:
 ```
   "host": <hostname>
   "port": <port>
@@ -43,9 +69,11 @@ Follow these optional steps to configure the default connection to open for the 
     type: <"telnet" or "tls">
   }
 ```
-### Setting up the VT Terminal application plug-in
 
-`_defaultVT.json` is a file in `vt-ng2/`, which is deployed during setup. Within this file, you can specify the following parameters to configure the terminal connection:
+### Setting up the VT Terminal app plugin
+
+The file `_defaultVT.json` within the `vt-ng2` app folder `/config/storageDefaults/sessions/` is deployed to the [configuration dataservice](../extend/extend-desktop/mvd-configdataservice.md) when the app-server runs for the first time. This file is used to tell the terminal what host to connect to by default. If you'd like to customize this default, you can edit the file directly within the configuration dataservice `<components.app-server.instanceDir>/org.zowe.terminal.vt/sessions/_defaultVT.json`. Or you can open the app, customize a session within the UI, click the save icon (floppy icon) and then copy that file from `<components.app-server.usersDir>/<your user>/org.zowe.terminal.vt/sessions/_defaultVT.json` to `<components.app-server.instanceDir>/org.zowe.terminal.vt/sessions/_defaultVT.json`. Either way, you will see a file with the following properties:
+
 ```
   "host":<hostname>
   "port":<port>
@@ -54,66 +82,29 @@ Follow these optional steps to configure the default connection to open for the 
   }
 ```
 
-## Configuration file
-
-The Zowe App Server and ZSS rely on many required or optional parameters to run, which includes setting up networking, deployment directories, plugin locations, and more.
-
-For convenience, the Zowe Application Server and ZSS read from a JSON file with a common structure. ZSS reads this file directly as a startup argument, while the Zowe Application Server (as defined in the `zlux-server-framework` repository) accepts several parameters. The parameters are intended to be read from a JSON file through an implementer of the server, such as the example in the `zlux-app-server` repository (the `lib/zluxServer.js` file). The file accepts a JSON file that specifies most, if not all, of the parameters needed. Other parameters can be provided through flags, if needed.
-
-For an instance, the configuration file is located at and can be edited at `$INSTANCE_DIR/workspace/app-server/serverConfig/server.json`. The defaults from which that file is generated are located at `$RUNTIME_DIR/components/app-server/share/zlux-app-server/defaults/serverConfig/server.json`
-
-**Note:** All examples are based on the *zlux-app-server* repository defaults.
-
 ## Network configuration
 
-**Note:** The following attributes are to be defined in the server's JSON configuration file.
+**Note:** The following attributes are to be defined in the Zowe configuration file.
 
-The App Server can be accessed over HTTP and/or HTTPS, provided it has been configured for either.
-
-### HTTP
-
-To configure the server for HTTP, complete these steps:
-
-1. Define an attribute *http* within the top-level *node* attribute.
-
-2. Define *port* within *http*. Where *port* is an integer parameter for the TCP port on which the server will listen. Specify 80 or a value between 1024-65535.
+The App Server can be accessed over HTTP and/or HTTPS, provided it has been configured for either. HTTPS should be used, as HTTP is not secure unless AT-TLS is used.
+When AT-TLS is used by ZSS, `components.zss.agent.http.attls` must be set to true.
 
 ### HTTPS
 
-For HTTPS, specify the following parameters:
+Both `app-server` and `zss` server components use HTTPS by default, and the `port` parameters `components.app-server.port` and `components.zss.port` control which port they are accessible from. However, each have advanced configuration options to control their HTTPS behavior.
 
-1. Define an attribute *https* within the top-level *node* attribute.
+The `app-server` component configuration can be used to customize its HTTPS connection such as which certificate and ciphers to use, and these parameters are to be set within `components.app-server.node.https` as defined within the [json-schema file](https://github.com/zowe/zlux-app-server/blob/v2.x/staging/schemas/app-server-config.json#L15)
 
-2. Define the following within *https*:
+The `zss` component configuration can be used to customize its HTTPS connection such as which certificate and ciphers to use, and these parameters are to be set within `components.zss.agent.https` as defined within the [json-schema file](https://github.com/zowe/zss/blob/v2.x/staging/schemas/zss-config.json#L81)
 
-- *port*: An integer parameter for the TCP port on which the server will listen. Specify 443 or a value between 1024-65535.
-- *certificates*: An array of strings, which are paths to PEM format HTTPS certificate files.
-- *keys*: An array of strings, which are paths to PEM format HTTPS key files.
-- *pfx*: A string, which is a path to a PFX file which must contain certificates, keys, and optionally Certificate Authorities.
-- *certificateAuthorities* (Optional): An array of strings, which are paths to certificate authorities files.
-- *certificateRevocationLists* (Optional): An array of strings, which are paths to certificate revocation list (CRL) files.
 
-**Note:** When using HTTPS, you must specify *pfx*, or both *certificates* and *keys*.
+### HTTP
 
-### Network example
+The `app-server` can be configured for HTTP via the `components.app-server.node.http` section of the Zowe configuration file, as specified within the `app-server` [json-schema file](https://github.com/zowe/zlux-app-server/blob/v2.x/staging/schemas/app-server-config.json#L73).
 
-In the example configuration, both HTTP and HTTPS are specified:
+The `zss` server can be configured for HTTP via the `components.zss.agent.http` section of the Zowe configuration file, as specified within the `zss` [json-schema file](https://github.com/zowe/zss/blob/v2.x/staging/schemas/zss-config.json#L99). Note that `components.zss.tls` must be set to false for HTTP to take effect, and that `components.zss.agent.http.attls` must be set to true for AT-TLS to be recognized correctly.
 
-```
-  "node": {
-    "https": {
-      "ipAddresses": ["0.0.0.0"],
-      "port": 8544,
-      //pfx (string), keys, certificates, certificateAuthorities, and certificateRevocationLists are all valid here.
-      "keys": ["../defaults/serverConfig/server.key"],
-      "certificates": ["../defaults/serverConfig/server.cert"]
-    },
-    "http": {
-      "ipAddresses": ["0.0.0.0"],
-      "port": 8543
-    }
-  }
-```
+
 
 ## Configuration Directories
 When running, the App Server will access the server's settings and read or modify the contents of its resource storage. All of this data is stored within a hierarchy of folders which correspond to scopes:
@@ -124,92 +115,150 @@ When running, the App Server will access the server's settings and read or modif
 - Group: Multiple users can be associated into one group, so that settings are shared among them.
 - User: When authenticated, users have their own settings and storage for the Apps that they use.
 
-These directories dictate where the [Configuration Dataservice](https://github.com/zowe/zlux/wiki/Configuration-Dataservice) will store content.
+These directories dictate where the Configuration Dataservice will store content. For more information, see the [Configuration Dataservice documentation](../extend-desktop/mvd-configdataservice.md)
 
-### Directories example
-```
-// All paths relative to zlux-app-server/lib
-// In real installations, these values will be configured during the install.
-  "productDir":"../defaults",
-  "siteDir":"/home/myuser/.zowe/workspace/app-server/site",
-  "instanceDir":"/home/myuser/.zowe/workspace/app-server",
-  "groupsDir":"/home/myuser/.zowe/workspace/app-server/groups",
-  "usersDir":"/home/myuser/.zowe/workspace/app-server/users",
-
-```
 ### Old defaults
-Prior to Zowe release 1.8.0, the location of the configuration directories were initialized to be within the `zlux-app-server` folder unless otherwise customized. 1.8.0 has backwards compatibility for the existence of these directories, but they can and should be migrated to take advantage of future enhancements.
+Prior to Zowe release 2.0.0, the location of the configuration directories were initialized to be within the `<INSTANCE_DIR>` folder unless otherwise customized. 2.0.0 does have backwards compatibility for the existence of these directories, but `<INSTANCE_DIR>` folder no longer exists, so they should be migrated to match the ones specified in the Zowe configuration file.
 
 | Folder | New Location | Old Location | Note
 |--------|--------------|--------------|-----
-| productDir | zlux-app-server/defaults | zlux-app-server/deploy/product | Official installs place zlux-app-server within <RUNTIME_DIR>/components/app-server/share
-| siteDir | <INSTANCE_DIR>/workspace/app-server/site | zlux-app-server/deploy/site | INSTANCE_DIR is ~/.zowe if not otherwise defined. Site is placed within instance due to lack of SITE_DIR as of 1.8
-| instanceDir | <INSTANCE_DIR>/workspace/app-server | zlux-app-server/deploy/instance |
-| groupsDir | <INSTANCE_DIR>/workspace/app-server/groups | zlux-app-server/deploy/instance/groups |
-| usersDir | <INSTANCE_DIR>/workspace/app-server/users | zlux-app-server/deploy/instance/users |
-| pluginsDir | <INSTANCE_DIR>/workspace/app-server/plugins | zlux-app-server/deploy/instance/ZLUX/plugins | Defaults located at zlux-app-server/defaults/plugins, previously at zlux-app-server/plugins
+| siteDir | `<workspaceDirectory>/app-server/site` | `<INSTANCE_DIR>/workspace/app-server/site` |
+| instanceDir | `<workspaceDirectory>/app-server` | `<INSTANCE_DIR>/workspace/app-server` | instanceDir term isn't used anymore. workspaceDirectory is used
+| groupsDir | `<workspaceDirectory>/app-server/groups` | `<INSTANCE_DIR>/workspace/app-server/groups` |
+| usersDir | `<workspaceDirectory>/app-server/users` | `<INSTANCE_DIR>/workspace/app-server/users` |
+| pluginsDir | `<workspaceDirectory>/app-server/plugins` | `<INSTANCE_DIR>/workspace/app-server/plugins` |
 
 
-## Application plug-in configuration
+## App plugin configuration
 
-This topic describes application plug-ins that are defined in advance.
-
-In the configuration file, you can specify a directory that contains JSON files, which tell the server what application plug-in to include and where to find it on disk. The backend of these application plug-ins use the server's plug-in structure, so much of the server-side references to application plug-ins use the term *plug-in*.
-
-To include application plug-ins, define the location of the plug-ins directory in the configuration file, through the top-level attribute **pluginsDir**.
-
-**Note:** In this example, the directory for these JSON files is the Application Server defaults. However, in an instance of Zowe it is best to provide a folder unique to that instance - usually `$INSTANCE_DIR/workspace/app-server/plugins`.
-
-### Plug-ins directory example
-
-```
-// All paths relative to zlux-app-server/lib
-// In real installations, these values will be configured during the install process.
-//...
-  "pluginsDir":"../defaults/plugins",
-```
+The App framework will load plugins from Components such as extensions based upon their enabled status in Zowe configuration. The server caches knowledge of these plugins in the `<workspaceDirectory>/app-server/plugins` folder. This location can be customized with the *components.app-server.pluginsDir* variable in the Zowe configuration file.
 
 ## Logging configuration
 
 For more information, see [Logging Utility](../extend/extend-desktop/mvd-logutility.md).
 
+### Enabling tracing
+
+To obtain more information about how a server is working, you can enable tracing within the Zowe configuration file via *components.app-server.logLevels* or *components.zss.logLevels* variable. For more information on all loggers, check out the [Extended documentation](../extend/extend-desktop/mvd-core-loggers.md).
+
+For example:
+
+```
+app-server:
+    {...}
+    logLevels:
+      _zsf.routing: 0
+      _zsf.install: 0
+```
+
+```
+zss:
+    {...}
+    logLevels:
+      _zss.traceLevel: 0
+      _zss.fileTrace: 1
+```
+
+All settings are optional.
+
+### Log files
+
+The app-server and zss will create log files containing processing messages and statistics. The log files are generated within the log directory specified within the Zowe configuration file  (`zowe.logDirectory`). The filename patterns are:
+
+- App Server: `<zowe.logDirectory>/appServer-yyyy-mm-dd-hh-mm.log`
+- ZSS: `<zowe.logDirectory>/zssServer-yyyy-mm-dd-hh-mm.log`
+
+#### Retaining logs
+
+By default, the last five log files are retained. You can change this by setting environment variables within the `zowe.environments` section of the Zowe server configuration file. To specify a different number of logs to retain, set `ZWED_NODE_LOGS_TO_KEEP` for app-server logs, or *ZWES_LOGS_TO_KEEP* for zss logs. For example, if you set `ZWED_NODE_LOGS_TO_KEEP` to 10, when the eleventh log is created, the first log is deleted.
+
+#### Controlling the logging location
+
+At minimum, the log information for both app-server and zss are written to STDOUT such that messages are visible in the terminal that starts Zowe and when on z/OS, the STC job log.
+
+By default, both servers additionally log to files and the location of these files can be changed or logging to them can be disabled.
+The following environment variables can be used to customize the app-server and zss log locations by setting the values within the `zowe.environments` section of the Zowe configuration file.
+
+* `ZWED_NODE_LOG_DIR`: Overrides the zowe configuration file value of `zowe.logDirectory` for app-server, but keeps the default filenames.
+* `ZWES_LOG_DIR`: Overrides the zowe configuration file value of `zowe.logDirectory` for zss, but keeps the default filenames.
+* `ZWED_NODE_LOG_FILE`: Specifies the full path to the file where logs will be written from app-server. This overrides both `ZWED_NODE_LOG_DIR` and `zowe.logDirectory`. If the path is `/dev/null` then no log file will be written. This option does not timestamp logs or keep multiple of them.
+* `ZWES_LOG_FILE`: Specifies the full path to the file where logs will be written from zss. This overrides both `ZWES_LOG_DIR` and `zowe.logDirectory`. If the path is `/dev/null` then no log file will be written. This option does not timestamp logs or keep multiple of them.
+
+If the directory or file specified cannot be created, the server will run (but it might not perform logging properly).
+
+
 ## ZSS configuration
 
-Running ZSS requires a JSON configuration file that is similar or the same as the one used for the Zowe Application Server. The attributes that are needed for ZSS, at minimum, are:*productDir*, *siteDir*, *instanceDir*, *groupsDir*, *usersDir*, *pluginsDir* and *agent.http.port*. All of these attributes have the same meaning as described above for the server, but if the Zowe Application Server and ZSS are not run from the same location, then these directories can be different.
+Running ZSS requires a Zowe configuration file configuration that is similar to the one used for the Zowe App Server (by structure and property names). The attributes that are needed for ZSS (*components.zss*) at minimum, are: *port*, *crossMemoryServerName*.
 
-Attributes that control ZSS are in the agent object. For example, *agent.http.port* is the TCP port that ZSS will listen on to be contacted by the App Server. Define this in the configuration file as a value between 1024-65535. Similarly, if specified, *agent.http.ipAddresses* will be used to determine which IP addresses the server should bind to. Only the first value of the array is used. It can either be a hostname or an ipv4 address.
+By default, ZSS is configured to use HTTPS with the same certificate information and port specification as the other Zowe services. If you are looking to use AT-TLS instead, then you must set *component.zss.tls* variable to false and define `component.zss.agent.http` section with port, ipAddresses, and attls: true as shown below
 
-Example of the agent body:
+(Recommended) Example of the agent body:
 ```
-  "agent": {
-    "host": "localhost",
-    "http": {
-      "ipAddresses": ["127.0.0.1"],
-      "port": 8542
-    }
-  }
+zss:
+  enabled: true
+  tls: true
+  port: 8542
+  crossMemoryServerName: ZWESIS_STD
 ```
 
-### Connecting App Server to ZSS
+(Not recommended) Unsecure, HTTP example with AT-TLS:
+```
+zss:
+  enabled: true
+  port: 8542
+  crossMemoryServerName: ZWESIS_STD
+  tls: false
+  agent:
+    http:
+      ipAddresses: ["127.0.0.1"]
+      attls: true
+```
 
-When running the App Server, simply specify a few flags to declare which ZSS instance the App Server will proxy ZSS requests to:
+### ZSS 64 or 31 bit modes
 
-- *-h*: Declares the host where ZSS can be found. Use as "-h \<hostname\>"
-- *-P*: Declares the port at which ZSS is listening. Use as "-P \<port\>"
+Two versions of ZSS are included in Zowe, a 64 bit version and a 31 bit version. It is recommended to run the 64 bit version to conserve shared system memory but you must match the ZSS version with the version your ZSS plugins support. Official Zowe distributions contain plugins that support both 64 bit and 31 bit, but extensions may only support one or the other. 
 
-### Configuring ZSS for HTTPS
-To secure ZSS communication, you can use Application Transparent Transport Layer Security (AT-TLS) to enable Hyper Text Transfer Protocol Secure (HTTPS) communication with ZSS.
+#### Verifying which ZSS mode is in use
 
-Before you begin, you must have a basic knowledge of your security product, e.g. RACF, and AT-TLS, and you must have Policy Agent configured. For more information on [AT-TLS](https://www.ibm.com/support/knowledgecenter/en/SSLTBW_2.1.0/com.ibm.zos.v2r1.halx001/transtls.htm) and [Policy Agent](https://www.ibm.com/support/knowledgecenter/en/SSLTBW_2.2.0/com.ibm.zos.v2r2.halz002/pbn_pol_agnt.htm), see the [z/OS Knowledge Center](https://www.ibm.com/support/knowledgecenter/en/SSLTBW_2.2.0/com.ibm.zos.v2r2/en/homepage.html).
+You can check which version of ZSS you are running by looking at the logs. At startup, the message ZWES1013I states which mode is being used, for example:
 
-You must have the authority to alter security definitions related to certificate management, and you must be authorized to work with and update the Policy Agent.
+`ZWES1013I ZSS Server has started. Version 2.0.0 64-bit`
 
-To configure HTTPS communication between ZSS and the Zowe App Server, you need a key ring which contains the ZSS server certificate and its Certificate Authority (CA) certificate. You can use an internal CA to create the ZSS server certificate, or you can buy the ZSS server certificate from a well-known commercial Certificate Authority. Next you define an AT-TLS rule which points to the key ring used by the ZSS server. Then you copy the CA certificate to the Zowe App Server key store and update the Zowe App Server configuration file.
+Or
+
+`ZWES1013I ZSS Server has started. Version 2.0.0 31-bit`
+
+#### Verifying which ZSS mode plugins support
+
+You can check if a ZSS plugin supports 64 bit or 31 bit ZSS by reading the pluginDefinition.json file of the plugin.
+In each component or extension you have, its manifest file will state if there are `appFw` plugin entries.
+In each folder referenced by the `appFw` section, you will see a pluginDefinition.json file.
+Within that file, if you see a section that says `type: 'service'`, then you can check its ZSS mode support.
+If the service has the property `libraryName64`, then it supports 64 bit. If it says `libraryName31`, then it supports 31 bit. Both may exist if it supports both. If it instead only contains `libraryName`, this is ambigious and deprecated, and most likely that plugin only supports 31 bit ZSS. A plugin only supporting 31 bit ZSS must be recompiled for 64 bit support, so you must contact the developers to accomplish that.
+
+Example: [the sample angular app supports both 31 bit and 64 bit zss](https://github.com/zowe/sample-angular-app/blob/083855582e8a82cf48abc21e15fa20bd59bfe180/pluginDefinition.json#L50-L53)
+
+#### Setting ZSS 64 bit or 31 bit mode
+
+You can switch between ZSS 64 bit and 31 bit mode by setting the value `components.zss.agent.64bit` to true or false in the Zowe configuration file. The value will not take effect until next server restart.
+
+## Using AT-TLS in the App Framework
+
+By default, both ZSS and the App server use HTTPS regardless of platform. However, some may wish to use AT-TLS on z/OS as an alternative way to provide HTTPS.
+In order to do this, the servers must run in HTTP mode instead, and utilize AT-TLS for HTTPS. **The servers should never use HTTP without AT-TLS, it would be insecure**.
+If you want to use AT-TLS, you must have a basic knowledge of your security product and you must have Policy Agent configured. For more information on [AT-TLS](https://www.ibm.com/support/knowledgecenter/en/SSLTBW_2.1.0/com.ibm.zos.v2r1.halx001/transtls.htm) and [Policy Agent](https://www.ibm.com/support/knowledgecenter/en/SSLTBW_2.2.0/com.ibm.zos.v2r2.halz002/pbn_pol_agnt.htm), see the [z/OS Knowledge Center](https://www.ibm.com/support/knowledgecenter/en/SSLTBW_2.2.0/com.ibm.zos.v2r2/en/homepage.html).
+
+There are a few requirements to working with AT-TLS:
+* You must have the authority to alter security definitions related to certificate management, and you must be authorized to work with and update the Policy Agent.
+* AT-TLS needs a TLS rule and keyring. The next section will cover that information.
 
 **Note:** Bracketed values below (including the brackets) are variables. Replace them with values relevant to your organization. Always use the same value when substituting a variable that occurs multiple times.
 
-#### Creating certificates and key ring for the ZSS server using RACF
-In this step you will create a root CA certificate and a ZSS server certificate signed by the CA certificate. Next you create a key ring owned by the ZSS server with the certificates attached.
+### Creating AT-TLS certificates and keyring using RACF
+In the following commands and examples you will create a root CA certificate and a server certificate signed by it. These will be placed within a keyring which is owned by the user that runs the Zowe server.
+**Note: These actions can be done for various Zowe servers, but in these examples we set up ZSS for AT-TLS. You can subsitute ZSS for another server if desired.**
+
 
 Key variables:
 
@@ -224,8 +273,8 @@ Key variables:
 | `[output_dataset_name]`	  |   |
 
 **Note**:
--	`[server_userid]` must be the ZSS server user ID.
-- `[server_common_name]` must be the ZSS server host name.
+-  `[server_userid]` must be the server user ID, such as the STC user.
+- `[server_common_name]` must be the z/OS hostname that runs Zowe
 
 1. Enter the following RACF command to generate a CA certificate:
   ```
@@ -286,13 +335,13 @@ Key variables:
 
 **Note**: These sample commands use the FACILTY class to manage certificate related authorizations. You can also use the RDATALIB class, which offers granular control over the authorizations.
 
-7. Enter the following RACF command to export the CA certificate to a dataset so it can be imported by the Zowe App Server:
+7. Enter the following RACF command to export the CA certificate to a dataset so it can be imported by the Zowe server:
   ```
   RACDCERT CERTAUTH EXPORT(LABEL('[ca_label]')) +
     DSN('[output_dataset_name]') FORMAT(CERTB64)
   ```
 
-#### Defining the AT-TLS rule
+### Defining the AT-TLS rule
 To define the AT-TLS rule, use the sample below to specify values in your AT-TLS Policy Agent Configuration file:
 
 ```
@@ -353,190 +402,91 @@ TTLSCipherParms                   cipher~ZSS
 }
 ```
 
-#### Configuring the Zowe App Server for HTTPS communication with ZSS
-Copy the CA certificate to the ZSS server. Then in the Zowe App Server configuration file, specify the location of the certificate, and add a parameter to specify that ZSS uses AT-TLS.
 
-1. Enter the following command to copy the CA certificate to the correct location in UNIX System Services (USS):
+## Using multiple ZIS instances
+When you install Zowe, it is ready to be used for 1 instance of each component. However, ZIS can have a one-to-many relationship with the Zowe webservers, and so you may wish to have more than one copy of ZIS for testing or to handle different groups of ZIS plugins.
 
-```
-cp "//'[output_dataset_name]'" '[INSTANCE_DIR]/workspace/app-server/serverConfig/[ca_cert]'
-```
-2. In the `[INSTANCE_DIR]/workspace/app-server/serverConfig` directory, open the `server.json` file.
-3. In the **node.https.certificateAuthorities** object, add the CA certificate file path, for example:
-```
-"certificateAuthorities": ["[INSTANCE_DIR]/workspace/app-server/serverConfig/[ca_cert]"]
-```
-4. In the **agent.http** object add the key-value pair `"attls": true`, for example:
-```
-"agent": {
-  "host": "localhost",
-  "http": {
-    "ipAddresses": ["127.0.0.1"],
-    "port": 8542,
-    "attls": true
-  }
-}
-```
+The following steps can be followed to point a Zowe instance at a particular ZIS server.
 
-### Installing additional ZSS instances
-After you install Zowe, you can install and configure additional instances of ZSS on the same z/OS server. You might want to do this to test different ZSS versions.
+1. [Create a copy of the ZIS server](https://docs.zowe.org/stable/user-guide/configure-xmem-server). You could run multiple copies of the same code by having different STC JCLs pointing to the same LOADLIB, or run different copies of ZIS by having JCLs pointing to different LOADLIBs.
 
-The following steps assume you have installed a Zowe runtime instance (which includes ZSS), and that you are installing a second runtime instance to install an additional ZSS.
-
-1. To stop the installed Zowe runtime, in SDSF enter the following command:
-
-   ```
-    /C ${ZOWE_PREFIX}${ZOWE_INSTANCE}SV
-    ```
-    Where ZOWE_PREFIX and ZOWE_INSTANCE are specified in your configuration (and default to ZWE and 1)
-
-2. Create a new Zowe instance directory by following steps in [Creating and configuring the Zowe instance directory](configure-instance-directory.md).
-
-   **Note:** In the `instance.env` configuration file, specify ports that are not used by the first Zowe runtime.
-
-3. To restart the first Zowe runtime, in SDSF enter the following command:
-
-   ```
-   /S ZWESVSTC,INSTANCE='$INSTANCE_DIR'
-   ```
-
-   Where `$INSTANCE_DIR` is the Zowe instance directory. 
-
-4. To specify a name for the new ZSS instance, follow these steps:
-
-   1. Copy the PROCLIB member JCL named ZWESISTC that was installed with the new runtime.
-
-   2. Rename the copy to uniquely identify it as the JCL that starts the new ZSS, for example ZWESIS02.
-
-   3. Edit the JCL, and in the  `NAME` parameter specify a unique name for the cross-memory server, for example:
+2. Edit the JCL of the ZIS STC. In the  `NAME` parameter specify a unique name for the ZIS server, for example:
 
       ```
       //ZWESIS02  PROC NAME='ZWESIS_MYSRV',MEM=00,RGN=0M
       ```
 
-      Where `ZWESIS_MYSRV` is the unique name of the new ZSS.
+      Where `ZWESIS_MYSRV` is the unique name of the new ZIS.
+      
+3. [Start the new ZIS](https://docs.zowe.org/stable/user-guide/configure-xmem-server#starting-and-stopping-the-cross-memory-server-on-zos) with whatever PROCLIB name was chosen.
 
-5. To start the new ZSS, in SDSF enter the following command:
+4. [Stop the Zowe instance you wish to point to the ZIS server](https://docs.zowe.org/stable/user-guide/stop-zowe-zos)
 
-   ```
-    /S ZWESIS02
-   ```
+5. Locate the zowe configuration file for the Zowe instance, and edit the parameter `components.zss.privilegedServerName` to match the name of the ZIS STC name chosen, such as `ZWESIS_MYSRV`
 
-6. Make sure that the TSO user ID that runs the first ZSS started task also runs the new ZSS started task. The default ID is ZWESVUSR.
+6. [Restart the Zowe instance](https://docs.zowe.org/stable/user-guide/configure-zowe-server#step-3-launch-the-zwesvstc-started-task)
 
-7. In the new ZSS `server.json` configuration file, add a `"privilegedServerName"` parameter and specify the new ZSS name, for example:
-
-    ```
-   "productDir":"../defaults",
-    // All paths relative to zlux-app-server/bin
-    // In real installations, these values will be configured during the install.
-   "productDir":"../defaults",
-   "siteDir":"../deploy/site",
-   "instanceDir":"../deploy/instance",
-   "groupsDir":"../deploy/instance/groups",
-   "usersDir":"../deploy/instance/users",
-   "pluginsDir":"../defaults/plugins",
-   "privilegedServerName":"ZWESIS_MYSRV",
-   "dataserviceAuthentication": { ... }
-   ```
-
-    **Note:** The instance location of `server.json` is `$INSTANCE_DIR/workspace/app-server/serverConfig/server.json`, and the defaults are stored in `$ROOT_DIR/components/app-server/share/zlux-app-server/defaults/serverConfig/server.json`
-
-8. To start the new Zowe runtime, in SDSF enter the following command:
-
-   ```
-   /S ZWESVSTC,INSTANCE='$ZOWE_INSTANCE_DIR'
-   ```
-
-9.  To verify that the new cross-memory server is being used, check for the following messages in the `ZWESVSTC` server job log:
+7.  Verify that the new ZIS server is being used by checking for the following messages in the `ZWESLSTC` server job log:
 
    `ZIS status - Ok (name='ZWESIS_MYSRV    ', cmsRC=0, description='Ok', clientVersion=2)`
 
-### Configuring AT-TLS on Client System
 
-When connecting to a Zowe instance whose host system is configured to use AT-TLS for HTTPS, the connecting client/client system must also define an outbound AT-TLS rule. To define the AT-TLS rule, use the sample below to specify values in your AT-TLS Policy Agent Configuration file:
+## Controlling access to apps
 
-```
-TTLSRule                     XYZClientRule
-{
-  RemotePortRange                   [gateway_or_desktop_port]
-  Direction                         Outbound
-  TTLSGroupActionRef                XYZGroup
-  TTLSEnvironmentActionRef          XYZClientEnvironment
-}
-TTLSGroupAction              XYZGroup
-{
-  TTLSEnabled                       On
-}
-TTLSEnvironmentAction        XYZClientEnvironment
-{
-  TTLSKeyRingParms
-    {
-      Keyring                       [client_key_ring]
-    }
-  HandshakeRole                     CLIENT
-  Trace                             7
-}
-```
-
-**Note:** \[client_key_ring\] is a key ring containing the client certificate. To retrieve a signed client certificate, contact the administrator of the host system.
-
-## Controlling access to applications
-
-You can control which applications are accessible (visible) to all Zowe desktop users, and which are accessible only to individual users. For example, you can make an application that is under development only visible to the team working on it.
+You can control which apps are accessible (visible) to all Zowe desktop users, and which are accessible only to individual users. For example, you can make an app that is under development only visible to the team working on it.
 
 You control access by editing JSON files that list the apps. One file lists the apps all users can see, and you can create a file for each user. When a user logs into the desktop, Zowe determines the apps that user can see by concatenating their list with the all users list.
 
 You can also control access to the JSON files. The files are accessible directly on the file system, and since they are within the configuration dataservice directories, they are also accessible via REST API. We recommend that only Zowe administrators be allowed to access the file system locations, and you control that by setting the directories and their contents to have file permissions on z/OS that only allow the Zowe admin group read & write access. You control who can read and edit the JSON files through the REST API by controlling who can [access the configuration dataservice objects](mvd-configuration.md#creating-authorization-profiles) URLs that serve the JSON files.
 
-### Controlling application access for all users
+### Enabling RBAC
 
-1. Open the Zowe Application Server configuration JSON file. By default, the file is in the following location:
-    ```
-    $ROOT_DIR/components/app-server/share/zlux-app-server/defaults/serverConfig/server.json
-    ```
+By default, RBAC is disabled and all authenticated Zowe users can access all dataservices. To enable RBAC, follow these steps:
 
-2. To enable RBAC, in the `dataserviceAuthentication` object add the object: `"rbac": true`
+1. To enable RBAC, set the *components.zss.dataserviceAuthentication.rbac* and *components.app-server.dataserviceAuthentication.rbac* variables to `true` in the Zowe configuration file.
 
-3. Navigate to the following location:
+### Controlling app access for all users
+
+**Note:**
+- `<runtimeDirectory>` variable comes from Zowe configuration file.
+
+1. Enable RBAC.
+
+2. Navigate to the following location:
    ```
-   $ROOT_DIR/components/app-server/share/zlux-app-server/defaults/ZLUX/pluginStorage/org.zowe.zlux.bootstrap/plugins
+   <runtimeDirectory>/components/app-server/share/zlux-app-server/defaults/ZLUX/pluginStorage/org.zowe.zlux.bootstrap/plugins
    ```
-4. Copy the `allowedPlugins.json` file and paste it in the following location:
+3. Copy the `allowedPlugins.json` file and paste it in the following location:
    ```
-   .zowe/workspace/app-server/ZLUX/pluginStorage/org.zowe.zlux.bootstrap
+   <runtimeDirectory>/components/app-server/share/zlux-app-server/deploy/instance/ZLUX/pluginStorage
    ```
-5. Open the copied `allowedPlugins.json` file and perform either of the following steps:
-    - To an application unavailable, delete it from the list of objects.
-    - To make an application available, copy an existing plugin object and specify the application's values in the new object. Identifier and version attributes are required.
+4. Open the copied `allowedPlugins.json` file and perform either of the following steps:
+    - To make an app unavailable, delete it from the list of objects.
+    - To make an app available, copy an existing plugin object and specify the app's values in the new object. Identifier and version attributes are required.
 
-6. [Restart the app server](configure-zowe-server.md#stopping-the-zwesvstc-proc).
+5. [Restart the app server](configure-zowe-server.md#stopping-the-zwesvstc-proc).
 
-### Controlling application access for individual users
+### Controlling app access for individual users
 
-1. Open the Zowe Application Server configuration JSON file. By default, the file is in the following location:
+1. Enable RBAC.
+
+2. In the user's ID directory path, in the `\pluginStorage` directory, create `\org.zowe.zlux.bootstrap\plugins` directories. For example:
     ```
-    $ROOT_DIR/components/app-server/share/zlux-app-server/defaults/serverConfig/server.json
-    ```
-2. To enable RBAC, in the `dataserviceAuthentication` object add the object: `"rbac": true`
-
-3. In the user's ID directory path, in the `\pluginStorage` directory, create `\org.zowe.zlux.bootstrap\plugins` directories. For example:
-    ```
-    .zowe\workspace\app-server\users\TS6320\ZLUX\pluginStorage\org.zowe.zlux.bootstrap\plugins
+    <runtimeDirectory>/components/app-server/share/zlux-app-server/deploy/instance/ZLUX/pluginStorage/org.zowe.zlux.bootstrap/plugins
     ```
 
-4. In the `/plugins` directory, create an `allowedPlugins.json` file. You can use the default `allowedPlugins.json` file as a template by copying it from the following location:
+3. In the `/plugins` directory, create an `allowedPlugins.json` file. You can use the default `allowedPlugins.json` file as a template by copying it from the following location:
    ```
-   $ROOT_DIR/components/app-server/share/zlux-app-server/defaults/ZLUX/pluginStorage/org.zowe.zlux.bootstrap/plugins
+   <runtimeDirectory>/components/app-server/share/zlux-app-server/defaults/ZLUX/pluginStorage/org.zowe.zlux.bootstrap/plugins
    ```
-6. Open the `allowedPlugins.json` file and specify applications that user can access. For example:
+6. Open the `allowedPlugins.json` file and specify apps that user can access. For example:
     ```json
     {
       "allowedPlugins": [
         {
           "identifier": "org.zowe.appA",
           "versions": [
-            "*"
+            "1.1"
           ]
         },
         {
@@ -558,7 +508,7 @@ You can also control access to the JSON files. The files are accessible directly
 ## Controlling access to dataservices
 To apply role-based access control (RBAC) to dataservice endpoints, you must enable RBAC for Zowe, and then use a z/OS security product such as RACF to map roles and authorities to the endpoints. After you apply RBAC, Zowe checks authorities before allowing access to the endpoints.
 
-You can apply access control to Zowe endpoints and to your application endpoints. Zowe provides endpoints for a set of configuration dataservices and a set of core dataservices. Applications can use [configuration endpoints](../extend/extend-desktop/mvd-configdataservice.md#configuration-dataservice) to store and their own configuration and other data. Administrators can use core endpoints to [get status information](mvd-configuration.md#Administering-the-servers-and-plugins-using-an-API) from the Application Framework and ZSS servers. Any dataservice added as part of an application plugin is a service dataservice.
+You can apply access control to Zowe endpoints and to your app endpoints. Zowe provides endpoints for a set of configuration dataservices and a set of core dataservices. Apps can use [configuration endpoints](../extend/extend-desktop/mvd-configdataservice.md#configuration-dataservice) to store and their own configuration and other data. Administrators can use core endpoints to [get status information](mvd-configuration.md#Administering-the-servers-and-plugins-using-an-API) from the App Framework and ZSS servers. Any dataservice added as part of an app plugin is a service dataservice.
 
 ### Defining the RACF ZOWE class
 If you use RACF security, take the following steps define the ZOWE class to the CDT class:
@@ -587,15 +537,7 @@ If you use RACF security, take the following steps define the ZOWE class to the 
     SETROPTS CLASSACT(ZOWE)
     ```
 
-For more information RACF security administration, see the IBM Knowledge Center at [https://www.ibm.com/support/knowledgecenter/](https://www.ibm.com/support/knowledgecenter/).
-
-### Enabling RBAC
-
-By default, RBAC is disabled and all authenticated Zowe users can access all dataservices. To enable RBAC, follow these steps:
-
-1. Open the Zowe Application Server configuration JSON file. In the a server instance, the configuration file is `$INSTANCE_DIR/workspace/app-server/serverConfig/server.json`.
-
-2. In the `dataserviceAuthentication` object, add `"rbac": true`.
+For more information on RACF security administration, see the IBM Knowledge Center at [https://www.ibm.com/support/knowledgecenter/](https://www.ibm.com/support/knowledgecenter/).
 
 ### Creating authorization profiles
 For users to access endpoints after you enable RBAC, in the ZOWE class you must create System Authorization Facility (SAF) profiles for each endpoint and give users READ access to those profiles.
@@ -670,7 +612,7 @@ In the Desktop, Apps that you opened prior to expiration will remain open so tha
 
 ### Configuration
 
-When you use the default Zowe SMP/E or convenience build configuration, you do not need to change Zowe to get started with MFA.
+When you use the default Zowe SMP/E or convenience build configuration, you do not need to change Zowe to get started with MFA.
 
 To configure Zowe for MFA with a configuration other than the default, take the following steps:
 
@@ -701,158 +643,20 @@ The following is an example configuration for `zss-auth`, as seen in a default i
 }
 ```
 
-## Enabling tracing
-
-To obtain more information about how a server is working, you can enable tracing within the `server.json` file.
-
-For example:
-
-```
-"logLevels": {
-  "_zsf.routing": 0,
-  "_zsf.install": 0,
-  "_zss.traceLevel": 0,
-  "_zss.fileTrace": 1
-}
-```
-
-Specify the following settings inside the **logLevels** object.
-
-All settings are optional.
-
-### Zowe Application Server tracing
-
-To determine how the Zowe Application Server (`zlux-app-server`) is working, you can assign a logging level to one or more of the pre-defined logger names in the `server.json` file.
-
-The log prefix for the Zowe Application Server is **_zsf**, which is used by the server framework. (Applications and plug-ins that are attached to the server do not use the **_zsf** prefix.)
-
-The following are the logger names that you can specify:
-
-**_zsf.bootstrap**
-Logging that pertains to the startup of the server.
-
-**_zsf.auth**
-Logging for network calls that must be checked for authentication and authorization purposes.
-
-**_zsf.static**
-Logging of the serving of static files (such as images) from an application's `/web` folder.
-
-**_zsf.child**
-Logging of child processes, if any.
-
-**_zsf.utils**
-Logging for miscellaneous utilities that the server relies upon.
-
-**_zsf.proxy**
-Logging for proxies that are set up in the server.
-
-**_zsf.install**
-Logging for the installation of plug-ins.
-
-**_zsf.apiml**
-Logging for communication with the api mediation layer.
-
-**_zsf.routing**
-Logging for dispatching network requests to plug-in dataservices.
-
-**_zsf.network**
-Logging for the HTTPS server status (connection, ports, IP, and so on)
-
-### Log levels
-
-The log levels are:
-
- -  SEVERE = 0,
- -  WARNING = 1,
- -  INFO = 2,
- -  FINE = 3,
- -  FINER = 4,
- -  FINEST = 5
-
-FINE, FINER, and FINEST are log levels for debugging, with increasing verbosity.
-
-### Enabling tracing for ZSS
-
-To increase logging for ZSS, you can assign a logging level (an integer value greater than zero) to one or more of the pre-defined logger names in the `server.json` file.
-
-A higher value specifies greater verbosity.
-
-The log prefix for ZSS is **_zss**. The following are the logger names that you can specify:
-
-**_zss.traceLevel:**
-Controls general server logging verbosity.
-
-**_zss.fileTrace:**
-Logs file serving behavior (if file serving is enabled).
-
-**_zss.socketTrace:**
-Logs general TCP Socket behavior.
-
-**_zss.httpParseTrace:**
-Logs parsing of HTTP messages.
-
-**_zss.httpDispatchTrace:**
-Logs dispatching of HTTP messages to dataservices.
-
-**_zss.httpHeadersTrace:**
-Logs parsing and setting of HTTP headers.
-
-**_zss.httpSocketTrace:**
-Logs TCP socket behavior for HTTP.
-
-**_zss.httpCloseConversationTrace:**
-Logs HTTP behavior for when an HTTP conversation ends.
-
-**_zss.httpAuthTrace:**
-Logs behavior for session security.
-
-When you are finished specifying the settings, save the `server.json` file.
-
-
-## Zowe Application Framework logging
-
-The Zowe Application Framework log files contain processing messages and statistics. The log files are generated in the following default locations:
-
-- Zowe Application Server: `$INSTANCE_DIR/logs/appServer-yyyy-mm-dd-hh-mm.log`
-- ZSS: `$INSTANCE_DIR/logs/zssServer-yyyy-mm-dd-hh-mm.log`
-
-The logs are timestamped in the format yyyy-mm-dd-hh-mm and older logs are deleted when a new log is created at server startup.
-
-
-### Controlling the logging location
-
-The log information is written to a file and to the screen. (On Windows, logs are written to a file only.)
-
-#### ZLUX_NODE_LOG_DIR and ZSS_LOG_DIR environment variables
-
-To control where the information is logged, use the environment variable *ZLUX_NODE_LOG_DIR*, for the Zowe Application Server, and *ZSS_LOG_DIR*, for ZSS. While these variables are intended to specify a directory, if you specify a location that is a file name, Zowe will write the logs to the specified file instead (for example: `/dev/null` to disable logging).
-
-When you specify the environment variables *ZLUX_NODE_LOG_DIR* and *ZSS_LOG_DIR* and you specify directories rather than files, Zowe will timestamp the logs and delete the older logs that exceed the *ZLUX_NODE_LOGS_TO_KEEP* threshold.
-
-#### ZLUX_NODE_LOG_FILE and ZSS_LOG_FILE environment variables
-
-If you set the log file name for the Zowe Application Server by setting the *ZLUX_NODE_LOG_FILE* environment variable, or if you set the log file for ZSS by setting the *ZSS_LOG_FILE* environment variable, there will only be one log file, and it will be overwritten each time the server is launched.
-
-**Note**: When you set the *ZLUX_NODE_LOG_FILE* or *ZSS_LOG_FILE* environment variables, Zowe will not override the log names, set a timestamp, or delete the logs.
-
-If the directory or file cannot be created, the server will run (but it might not perform logging properly).
-
-### Retaining logs
-By default, the last five logs are retained. To specify a different number of logs to retain, set *ZLUX_NODE_LOGS_TO_KEEP* (Zowe Application Server logs) or *ZSS_LOGS_TO_KEEP* (ZSS logs) to the number of logs that you want to keep. For example, if you set *ZLUX_NODE_LOGS_TO_KEEP* to 10, when the eleventh log is created, the first log is deleted.
 
 ## Administering the servers and plugins using an API
-You can use a REST API to retrieve and edit Zowe Application Server and ZSS server configuration values, and list, add, update, and delete plugins. If an administrator has configured Zowe to [use RBAC](https://docs.zowe.org/stable/user-guide/mvd-configuration.html#applying-role-based-access-control-to-dataservices), they must authorize you to access the endpoints.
+You can use a REST API to retrieve and edit Zowe App Server and ZSS server configuration values, and list, add, update, and delete plugins. If an administrator has configured Zowe to [use RBAC](https://docs.zowe.org/stable/user-guide/mvd-configuration.html#controlling-access-to-dataservices), they must authorize you to access the endpoints.
 
 The API returns the following information in a JSON response:
 
 | API                                                       | Description                                                  |
 | --------------------------------------------------------- | ------------------------------------------------------------ |
-| /server (GET)                                             | Returns a list of accessible server endpoints for the Zowe Application Server. |
-| /server/config (GET)                                      | Returns the Zowe Application Server configuration from the `zluxserver.json` file. |
-| /server/log (GET)                                         | Returns the contents of the Zowe Application Server log file. |
-| /server/loglevels (GET)                                   | Returns the verbosity levels set in the Zowe Application Server logger. |
-| /server/environment (GET)                                 | Returns Zowe Application Server environment information, such as the operating system version, node server version, and process ID. |
-| /server/reload (GET)                                      | Reloads the Zowe Application Server. Only available in cluster mode. |
+| /server (GET)                                             | Returns a list of accessible server endpoints for the Zowe App Server. |
+| /server/config (GET)                                      | Returns the Zowe App Server configuration from the `zluxserver.json` file. |
+| /server/log (GET)                                         | Returns the contents of the Zowe App Server log file. |
+| /server/loglevels (GET)                                   | Returns the verbosity levels set in the Zowe App Server logger. |
+| /server/environment (GET)                                 | Returns Zowe App Server environment information, such as the operating system version, node server version, and process ID. |
+| /server/reload (GET)                                      | Reloads the Zowe App Server. Only available in cluster mode. |
 | /server/agent (GET)                                       | Returns a list of accessible server endpoints for the ZSS server. |
 | /server/agent/config (GET)                                | Returns the ZSS server configuration from the `zluxserver.json` file. |
 | /server/agent/log (GET)                                   | Returns the contents of the ZSS log file.                    |

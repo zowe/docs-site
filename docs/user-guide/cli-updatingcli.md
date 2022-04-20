@@ -1,55 +1,53 @@
 # Updating Zowe CLI
 
-Zowe&trade; CLI is updated continuously. You can update Zowe CLI to a more recent version using online registry method or the local package method. However, you can only update Zowe CLI using the method that you used to install Zowe CLI.
+Zowe&trade; CLI is updated continuously. You can update Zowe CLI to a more recent version using online registry method or the local package method. 
 
-- [Migrating to Long-term Support (LTS) version](#migrating-to-long-term-support-lts-version)
-- [Identify the currently installed version of Zowe CLI](#identify-the-currently-installed-version-of-zowe-cli)
-- [Identify the currently installed versions of Zowe CLI plug-ins](#identify-the-currently-installed-versions-of-zowe-cli-plug-ins)
-- [Update Zowe CLI from the online registry](#update-zowe-cli-from-the-online-registry)
-- [Update or revert Zowe CLI to a specific version](#update-or-revert-zowe-cli-to-a-specific-version)
-- [Update Zowe CLI from a local package](#update-zowe-cli-from-a-local-package)
+You must update Zowe CLI using the method that you used to install Zowe CLI.
 
-## Migrating to Long-term Support (LTS) version
+## Updating to the Zowe CLI V2 Long-term Support (v2-lts) version
 
-If you have an `@lts-incremental` version of Zowe CLI (Zowe v1.0.x - v1.8.x), you can update to `@zowe-v1-lts` (LTS version) to leverage new functionality and plug-ins.
+If you are running Zowe CLI version v1.8.x to v1.27.x, you can update to `@zowe-v2-lts` (LTS version) to leverage the latest Zowe CLI and plug-ins functionality.
 
-**Follow these steps:**
+1. Update Zowe CLI. Open a command line window and issue the following command:
 
-1. Perform *one* of the following steps:
+   ```
+   npm install -g @zowe/cli@zowe-v2-lts
+   ```
+2. Update Zowe plug-ins. Issue the following command to install all Zowe plug-ins:
 
-   **a.** Delete the `~/.zowe/profiles` directory from your computer. You can recreate the profiles manually after you update the CLI.
+   ```
+   zowe plugins install @zowe/cics-for-zowe-cli@zowe-v2-lts @zowe/db2-for-zowe-cli@zowe-v2-lts @zowe/ims-for-zowe-cli@zowe-v2-lts @zowe/mq-for-zowe-cli@zowe-v2-lts @zowe/zos-ftp-for-zowe-cli@zowe-v2-lts
+   ```
+   **Note:** To install a subset of the plug-ins, remove the syntax for the plug-ins that you do not want to update. For example:
 
-   **b.** If you want to preserve your existing profiles, copy the contents of `~/.zowe/profiles` or `%homepath%\.zowe\profiles` to another directory on your computer.
+   ```
+   zowe plugins install @zowe/cics-for-zowe-cli@zowe-v2-lts @zowe/db2-for-zowe-cli@zowe-v2-lts
+   ```
 
-2. Delete the `~/.zowe/plugins` or `%homepath%\.zowe\plugins` directory to uninstall all plug-ins.
+3. (Optional) Migrate your Zowe CLI profiles from your current installation to your V2 installation. Issue the following command:
 
-3. Issue the following command to uninstall the pre-LTS version of core CLI
+   ```
+   zowe config convert-profiles
+   ```
+   Although you can run Zowe CLI V2 successfully using CLI V1 profiles, we strongly recommend using CLI V2 profiles.
 
-    ```
-    npm uninstall -g @brightside/core
-    ```
+   **Note:** Profile data is backed up in case you want to revert the profiles to your previous Zowe CLI installation.
 
-    **Note:** You might receive an `ENOENT` error when issuing this command if you installed Zowe CLI from a local package (.tgz) and the package was moved from its original location. In the event    that you receive the error, open an issue in the   Zowe CLI GitHub repository.
+4. (Optional) If you no longer require the profiles for your previous Zowe CLI installation, you can delete them. Issue the following command:
 
-4. Install the most recent `@zowe-v1-lts` version CLI and optional plug-ins. For more information, see [Installing CLI](./cli-installcli.md).
+   ```
+   zowe config convert-profiles --delete
+   ```
 
-5. **(Optional)** If you deleted your profiles in Step 1, recreate the profiles that you need manually.
+   **Important:** We do not recommend deleting the profiles from your previous Zowe CLI installation until you have tested your V2 installation and are satisfied with its performance.
 
-6. **(Optional)** If you copied your profiles to a local directory in Step 1, follow these steps:
-
-   **a.**  Move the profile configuration files that you saved in Step 1 back to the `~/.zowe/profiles` or `%homepath%\.zowe\profiles` folder on your computer.
-
-   **b.** Issue the `zowe scs update` command to update profiles that are secured with the Secure Credential Store Plug-in.
-
-   **c.** Issue the command `zowe profiles update zosmf <my-profile-name> --user <my-username> --password <my-password>` to update z/osmf profiles to use the current option names.
-
-You updated to the Zowe CLI LTS version!
+You updated to the Zowe CLI V2-LTS version!
 
 Ensure that you review the [Release Notes](../getting-started/summaryofchanges.md), which describes **Notable Changes** in this version. We recommend issuing familiar commands and running scripts to ensure that your profiles/scripts are compatible. You might need to take corrective action to address the breaking changes.
 
 ## Identify the currently installed version of Zowe CLI
 
-Issue the following command:
+Issue the following command (case-sensitive):
 
 ```
 zowe -V
@@ -58,6 +56,7 @@ zowe -V
 ## Identify the currently installed versions of Zowe CLI plug-ins
 
 Issue the following command:
+
 ```
 zowe plugins list
 ```
@@ -68,32 +67,32 @@ You can update Zowe CLI to the latest version from the online registry on Window
 
 **Note:** The following steps assume that you previously installed the CLI as described in [Installing Zowe CLI from an online registry](cli-installcli.md#installing-zowe-cli-from-an-online-registry).
 
-**Follow these steps:**
-
-1. To update Zowe CLI to the most recent `@zowe-v1-lts` version, issue the following command:
+1. Update Zowe CLI. Open a command line window and issue the following command:
 
    ```
-   npm install -g @zowe/cli@zowe-v1-lts
+   npm install -g @zowe/cli@zowe-v2-lts
    ```
 
-2. To update existing plug-ins and install new plug-ins, issue the following command:
+2. Update Zowe plug-ins. Issue the following command to install all Zowe plug-ins:
+
+   **Note:** To install a subset of the plug-ins, remove the syntax for the plug-ins that you do not want to update. For example:
 
    ```
-   zowe plugins install @zowe/cics-for-zowe-cli@zowe-v1-lts @zowe/db2-for-zowe-cli@zowe-v1-lts @zowe/ims-for-zowe-cli@zowe-v1-lts @zowe/mq-for-zowe-cli@zowe-v1-lts @zowe/zos-ftp-for-zowe-cli@zowe-v1-lts @zowe/secure-credential-store-for-zowe-cli@zowe-v1-lts
+   zowe plugins install @zowe/cics-for-zowe-cli@zowe-v2-lts @zowe/db2-for-zowe-cli@zowe-v2-lts @zowe/zos-ftp-for-zowe-cli@zowe-v2-lts
    ```
 
 3. Recreate any user profiles that you created before you updated to the latest version of Zowe CLI.
 
 ## Update or revert Zowe CLI to a specific version
 
-Optionally, you can update Zowe CLI (or revert) to a known version. The following example illustrates the syntax to update Zowe CLI to version 6.1.2:
+Optionally, you can update Zowe CLI (or revert) to a known version. The following example illustrates the syntax to update Zowe CLI to version 7.0.0:
 
 ```
-npm install -g @zowe/cli@6.1.2
+npm install -g @zowe/cli@7.0.0
 ```
 
 ## Update Zowe CLI from a local package
 
-To update Zowe CLI from an offline (`.tgz`), local package, uninstall your current package then reinstall from a new package using the Install from a Local package instructions. For more information, see [Uninstalling Zowe CLI from the desktop](cli-uninstall.md) and [Installing Zowe CLI from a local package](cli-installcli.md#installing-zowe-cli-from-a-local-package).
+To update Zowe CLI from an offline (`.tgz`), local package, uninstall your current package then reinstall from a new package using the Install from a Local package instructions. For more information, see [Uninstalling Zowe CLI](cli-uninstall.md) and [Installing Zowe CLI from a local package](cli-installcli.md#installing-zowe-cli-from-a-local-package).
 
 **Important!** Recreate any user profiles that you created before the update.

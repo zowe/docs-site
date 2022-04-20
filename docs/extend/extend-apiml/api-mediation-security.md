@@ -8,16 +8,12 @@
     + [Zowe API ML TLS requirements](#zowe-api-ml-tls-requirements)
     + [Authentication for API ML services](#authentication-for-api-ml-services)
       - [Authentication endpoints](#authentication-endpoints)
-      - [Supported authentication methods](#supported-authentication-methods)
-        * [Username/Password](#usernamepassword)
-        * [Client certificate](#client-certificate)
       - [Authentication providers](#authentication-providers)
-        * [z/OSMF Authentication Provider](#zosmf-authentication-provider)
-        * [SAF Authentication Provider](#saf-authentication-provider)
+        * [z/OSMF Authentication Provider](#z-osmf-authentication-provider)
         * [Dummy Authentication Provider](#dummy-authentication-provider)
     + [Authorization](#authorization)
-    + [JWT or JSON Web Token](#jwt-or-json-web-token)
-    + [z/OSMF JSON Web Tokens Support](#zosmf-json-web-tokens-support)
+    + [JWT Token](#jwt-token)
+    + [z/OSMF JSON Web Tokens Support](#z-osmf-json-web-tokens-support)
     + [API ML truststore and keystore](#api-ml-truststore-and-keystore)
     + [API ML SAF Keyring](#api-ml-saf-keyring)
     + [Discovery Service authentication](#discovery-service-authentication)
@@ -25,11 +21,11 @@
   * [ZAAS Client](#zaas-client)
     + [Pre-requisites](#pre-requisites)
     + [API Documentation](#api-documentation)
-      - [Obtain a JWT token (`login`)](#obtain-a-jwt-token-login))
-      - [Validate and get details from the token (`query`)](#validate-and-get-details-from-the-token-query)
-      - [Invalidate a JWT token (`logout`)](#invalidate-a-jwt-token-logout)
-      - [Obtain a PassTicket (`passTicket`)](#obtain-a-passticket-passticket)
-    + [Getting Started (Step by Step Instructions)](#getting-started-step-by-step-instructions)
+      - [Obtain a JWT token (`login`)](#obtain-a-jwt-token---login--)
+      - [Validate and get details from the token (`query`)](#validate-and-get-details-from-the-token---query--)
+      - [Invalidate a JWT token (`logout`)](#invalidate-a-jwt-token---logout--)
+      - [Obtain a PassTicket (`passTicket`)](#obtain-a-passticket---passticket--)
+    + [Getting Started (Step by Step Instructions)](#getting-started--step-by-step-instructions-)
   * [Certificate management in Zowe API Mediation Layer](#certificate-management-in-zowe-api-mediation-layer)
     + [Running on localhost](#running-on-localhost)
       - [How to start API ML on localhost with full HTTPS](#how-to-start-api-ml-on-localhost-with-full-https)
@@ -40,8 +36,8 @@
       - [Service registration to Discovery Service on localhost](#service-registration-to-discovery-service-on-localhost)
     + [Zowe runtime on z/OS](#zowe-runtime-on-zos)
       - [Import the local CA certificate to your browser](#import-the-local-ca-certificate-to-your-browser)
-      - [Generate a keystore and truststore for a new service on z/OS](#generate-a-keystore-and-truststore-for-a-new-service-on-zos)
-      - [Add a service with an existing certificate to API ML on z/OS](#add-a-service-with-an-existing-certificate-to-api-ml-on-zos)
+      - [Generate a keystore and truststore for a new service on z/OS](#generate-a-keystore-and-truststore-for-a-new-service-on-z-os)
+      - [Add a service with an existing certificate to API ML on z/OS](#add-a-service-with-an-existing-certificate-to-api-ml-on-z-os)
       - [Procedure if the service is not trusted](#procedure-if-the-service-is-not-trusted)
 
 ## How API ML transport security works
@@ -163,16 +159,14 @@ The API ML TLS requires servers to provide HTTPS ports. Each API ML service has 
     - Authentication is service-dependent
     - It is recommended to use the Authentication and Authorization Service for authentication
 
- 
+
 #### Authentication endpoints
 
-The API Gateway supports both `gateway/api/v1/auth` and `api/v1/gateway/auth` as base authentication paths for the following REST API authentication endpoints.
-
-**Note:** The `api/v1/gateway/auth` base path is supported for the duration for Zowe V2. By Zowe V3, `gateway/api/v1/auth` will be the only base path supported.
+The API Gateway contains the following REST API authentication endpoints:
 
 - `auth/login`
   
-  The full path of the `auth/login` endpoint appears as `https://{gatewayUrl}  :{gatewayPort}/gateway/api/v1/auth/login` (preferred option) or `https://  {gatewayUrl}:{gatewayPort}/api/v1/gateway/auth/login`.
+  The full path of the `auth/login` endpoint appears as `https://{gatewayUrl}  :{gatewayPort}/gateway/api/v1/auth/login`.
 
   The `auth/login` endpoint authenticates mainframe user credentials and   returns an authentication token. The login request requires user   credentials though one of the following methods:
     * Basic access authentication
@@ -183,7 +177,7 @@ The API Gateway supports both `gateway/api/v1/auth` and `api/v1/gateway/auth` as
 
 - `auth/query`
 
-   The full path of the `auth/query` endpoint appear as `https://{gatewayUrl}:   {gatewayPort}/gateway/api/v1/auth/query` (preferred option) or `https://   {gatewayUrl}:{gatewayPort}/api/v1/gateway/auth/query`.
+   The full path of the `auth/query` endpoint appear as `https://{gatewayUrl}:   {gatewayPort}/gateway/api/v1/auth/query`.
 
    The `auth/query` endpoint validates the token and retrieves the    information associated with the token.
    The query request requires the token through one of the following methods:
@@ -194,7 +188,7 @@ The API Gateway supports both `gateway/api/v1/auth` and `api/v1/gateway/auth` as
 
 - `auth/ticket`
 
-  The `auth/ticket` endpoint generates a PassTicket for the user associated with a token. The full path of the `auth/ticket` endpoint appears as `https://{gatewayUrl}:{gatewayPort}/gateway/api/v1/auth/ticket` (preferred    option) or `https://{gatewayUrl}:{gatewayPort}/api/v1/gateway/auth/ticket`.
+  The `auth/ticket` endpoint generates a PassTicket for the user associated with a token. The full path of the `auth/ticket` endpoint appears as `https://{gatewayUrl}:{gatewayPort}/gateway/api/v1/auth/ticket`.
 
   This endpoint is protected by a client certificate.
   The ticket request requires the token in one of the following formats:
@@ -210,10 +204,10 @@ The API Gateway supports both `gateway/api/v1/auth` and `api/v1/gateway/auth` as
 
   **Notes:** 
   
-   - The endpoint is disabled by default. [Jwt token refresh endpoint enablement](../../user-guide/api-mediation/api-gateway-configuration.md#jwt-token-refresh-endpoint-enablement)
+   - The endpoint is disabled by default. [Jwt token refresh endpoint   enablement](../../user-guide/api-mediation/api-gateway-configuration.  md#jwt-token-refresh-endpoint-enablement)
    - The endpoint is protected by a client certificate.
   
-  The `auth/refresh` endpoint generates a new token for the user based on valid jwt token. The full path of the `auth/refresh` endpoint appears as `https://{gatewayUrl}:{gatewayPort}/gateway/api/v1/auth/refresh` (preferred option) or `https://{gatewayUrl}:{gatewayPort}/api/v1/gateway/auth/refresh`. The new token overwrites the old cookie with a `Set-Cookie` header. As part of the process, the old token gets invalidated and is not usable anymore.
+  The `auth/refresh` endpoint generates a new token for the user based on valid jwt token. The full path of the `auth/refresh` endpoint appears as `https://{gatewayUrl}:{gatewayPort}/gateway/api/v1/auth/refresh`. The new token overwrites the old cookie with a `Set-Cookie` header. As part of the process, the old token gets invalidated and is not usable anymore.
 
   The refresh request requires the token in one of the following formats:
   
@@ -230,7 +224,8 @@ with each authentication provider.
 
 ##### Username/Password
 
-The client can authenticate via Username and password. There are multiple methods which can be used to deliver credentials. For more details, see the ZAAS Client documentation. 
+The client can authenticate via Username and password. There are multiple methods which can be used to deliver  
+credentials. For more details, see the ZAAS Client documentation. 
 
 ##### Client certificate
 
@@ -246,7 +241,7 @@ When providing credentials in any form together with client certificate on the s
 * The client calls the API ML Gateway login endpoint with the client certificate.
 * The client certificate and private key are checked as a valid TLS client certificate against the Gateway's trusted CAs.
 * The public part of the provided client certificate is checked against SAF, and SAF subsequently returns a user ID that owns this certificate. ZSS  provides this API for the Mediation Layer.
-*  Information about the user is extracted from the received certificate and then passed in specific headers to the southbound service. The Gateway authenticates itself to the service via the certificate to guarantee validity of the information.
+* The Gateway performs the login of the mapped user and returns a valid JWT token.
 
 ![Zowe client certificate authentication diagram](../../images/api-mediation/zowe-client-cert-auth.png)
 
@@ -266,6 +261,12 @@ When providing credentials in any form together with client certificate on the s
 * PassTicket generation must be enabled for the Zowe runtime user. The user has to be able to generate PassTicket for itself and for the APPLID of z/OSMF. For more information, see [Configure Passticket](api-mediation-passtickets.md).
 * The Zowe runtime user has to be enabled to perform identity mapping in SAF. For more information, see [Additional security rights that need to be granted](../../user-guide/configure-zos-system.md#configure-main-Zowe-server-use-identity-mapping).
 * ZSS has to be configured to participate in Zowe SSO. For more information, see [Using web tokens for sso on Zlux and ZSS](../../user-guide/configure-certificates-keystore.md#using-web-tokens-for-sso-on-zlux-and-zss).
+* 
+##### JWT Token
+
+When the client authenticates with the API ML, the client receives the JWT token in exchange. This token can be used for further 
+authentication. If z/OSMF is configured as the authentication provider and the client already received a JWT token produced
+by z/OSMF, it is possible to reuse this token within API ML for authentication.  
 
 #### Authentication providers
 
@@ -309,17 +310,19 @@ Authorization is a method used to determine access rights of an entity.
 
 In the API ML, authorization is performed by the z/OS security manager ([ACF2](https://www.broadcom.com/products/mainframe/identity-access/acf2), [IBM RACF](https://www.ibm.com/support/knowledgecenter/zosbasics/com.ibm.zos.zsecurity/zsecc_042.htm), [Top Secret](https://www.broadcom.com/products/mainframe/identity-access/top-secret)). An authentication token is used as proof of valid authentication. The authorization checks, however, are always performed by the z/OS security manager.
 
-### JWT or JSON Web Token
+### JWT Token
 
-API Mediation layer can issue a JSON Web Token (JWT) if needed. This is useful when specified authentication provider is not providing its own token. Each token can be validated against API Mediation Layer using `query` [authentication endpoint](#authentication-endpoints).
+The JWT secret that signs the JWT Token is an asymmetric private key that is generated during Zowe keystore configuration. The JWT token is signed with the RS256 signature algorithm.
 
-You can also use the endpoint `/gateway/api/v1/auth/keys/public/all` (preferred option) and `/api/v1/gateway/auth/keys/public/all` to obtain all public keys that can be used to verify JWT tokens signature in standard [JWK format](https://openid.net/specs/).
+You can find the JWT secret, alias `localhost`, in the PKCS12 keystore that is stored in `${KEYSTORE_DIRECTORY}/localhost/localhost.keystore.p12`. The public key necessary to validate the JWT signature is read from the keystore.
+
+You can also use the `/gateway/api/v1/auth/keys/public/all` endpoint to obtain all public keys that can be used to verify JWT tokens signature in standard [JWK format](https://openid.net/specs/).
 
 ### z/OSMF JSON Web Tokens Support
 
 Your z/OSMF instance can be enabled to support JWT tokens as described at [Enabling JSON Web Token support](https://www.ibm.com/support/knowledgecenter/SSLTBW_2.4.0/com.ibm.zos.v2r4.izua300/izuconfig_EnableJSONWebTokens.htm).
-In this case, the Zowe API ML uses this JWT token and does not generate its own Zowe JWT token. All authentication APIs, such as `/gateway/api/v1/login`, `/gateway/api/v1/check`, `/api/v1/gateway/login`, and `/api/v1/gateway/check` function in the same way as without z/OSMF JWT.
-Gateway service endpoints `/gateway/api/v1/auth/keys/public/all` and `/api/v1/gateway/auth/keys/public/all` serve the z/OSMF JWK that can be used for JWT signature validation.
+In this case, the Zowe API ML uses this JWT token and does not generate its own Zowe JWT token. All authentication APIs, such as `/gateway/api/v1/login` and `/gateway/api/v1/check` function in the same way as without z/OSMF JWT.
+Gateway service endpoint `/gateway/api/v1/auth/keys/public/all` serves the z/OSMF JWK that can be used for JWT signature validation.
 
 ### API ML truststore and keystore
 
@@ -436,7 +439,6 @@ for detailed knowledge of the REST API calls presented in this section. The Clie
 - To validate and get details from a JWT token
 - To invalidate the JWT token
 - To obtain a PassTicket
-- To change a password
 
 ### Pre-requisites
 
@@ -451,7 +453,6 @@ The plain java library provides the `ZaasClient` interface with following public
 ```java
 public interface ZaasClient {
     String login(String userId, String password) throws ZaasClientException;
-    String login(String userId, String password, String newPassword) throws ZaasClientException;
     String login(String authorizationHeader) throws ZaasClientException;
     ZaasToken query(String token) throws ZaasClientException;
     ZaasToken query(HttpServletRequest request) throws ZaasClientException;
@@ -479,17 +480,13 @@ To integrate login, call one of the following methods for login in the `ZaasClie
 
 - If the user provides credentials as Basic Auth, use the following method:
 
-  ```java
-  String login(String authorizationHeader) throws ZaasClientException;
-  ```
-- If the user provides credentials in the request body, there is also the option to change the password. Call the login method adding another String variable for the new password, call the following method from your API:
+    ```java
+    String login(String authorizationHeader) throws ZaasClientException;
+    ```
 
-  ```java
-  String login(String userId, String password, String newPassword) throws ZaasClientException;
-  ```
 These methods return the JWT token as a String. This token can then be used to authenticate the user in subsequent APIs.
 
-**Note:** Each of these methods automatically use the truststore file to add a security layer, which requires configuration in the `ConfigProperties` class.
+**Note:** Both methods automatically use the truststore file to add a security layer, which requires configuration in the `ConfigProperties` class.
 
 #### Validate and get details from the token (`query`)
 
@@ -890,7 +887,7 @@ If your service is not trusted, you may receive a response with the HTTP status 
 
 **Example:**
 
-```http --verify=$KEYSTORE_DIRECTORY/local_ca/localca.cer GET https://<gatewayHost>:<port></port>/api/v1/<untrustedService>/greeting```
+```http --verify=$KEYSTORE_DIRECTORY/local_ca/localca.cer GET https://<gatewayHost>:<port>/<untrustedService>/api/v1/greeting```
 
 In this example, you receive a similar response:
 
@@ -901,7 +898,7 @@ In this example, you receive a similar response:
     {
         "messages": [
             {
-                "messageContent": "The certificate of the service accessed by HTTPS using URI '/api/v1/<untrustedService>/greeting' is not trusted by the API Gateway: sun.security.validator.ValidatorException: PKIX path building failed: sun.security.provider.certpath.SunCertPathBuilderException: unable to find valid certification path to requested target",
+                "messageContent": "The certificate of the service accessed by HTTPS using URI '/<untrustedService>/api/v1/greeting' is not trusted by the API Gateway: sun.security.validator.ValidatorException: PKIX path building failed: sun.security.provider.certpath.SunCertPathBuilderException: unable to find valid certification path to requested target",
                 "messageKey": "apiml.common.tlsError",
                 "messageNumber": "AML0105",
                 "messageType": "ERROR"

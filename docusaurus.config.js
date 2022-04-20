@@ -76,19 +76,19 @@ module.exports = {
         {
           type: "doc",
           label: "Reference",
-          docId: "appendix/zowe-cli-command-reference",
+          docId: "appendix/server-component-manifest",
           position: "left",
         },
          {
            type: "docsVersionDropdown",
            position: "right",
            dropdownActiveClassDisabled: true,
-           dropdownItemsAfter: [
-             {
-               to: "/versions",
-               label: "All versions",
-             },
-           ],
+        //   dropdownItemsAfter: [
+        //     {
+        //       to: "/versions",
+        //       label: "All versions",
+        //     },
+        //   ],
          },
         {
           href: "https://github.com/zowe/docs-site",
@@ -163,14 +163,14 @@ module.exports = {
       ],
       copyright: `© Open Mainframe Project. a Linux Foundation Project. All Rights Reserved. The Linux Foundation has registered trademarks and uses trademarks. For a list of trademarks of The Linux Foundation, please see our Trademark Usage page. Please refer to Marketing and Branding Guidelines for name usage guidelines. Linux is a registered trademark of Linus Torvalds. Privacy Policy and Terms of Use`,
     },
-    //announcementBar: {
-    //id: "v1_27_GA",
-    //content:
-    //"Zowe Version 1.27 is now available! Read about the new features and fixes in this release.",
-    //backgroundColor: "#333333",
-    //textColor: "#FFFFFF",
-    //isCloseable: true,
-    //},
+    announcementBar: {
+    id: "zowe_v2",
+    content:
+    "Zowe Version 2.0 is now available! Read about the new features and fixes in this release.",
+    backgroundColor: "#333333",
+    textColor: "#FFFFFF",
+    isCloseable: true,
+    },
     algolia: {
       apiKey: "59ff39ed48d0820010c7e09fc4b677bf",
       indexName: "zowe",

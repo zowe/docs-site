@@ -15,7 +15,7 @@ The service can define what WebSocket services are exposed using Eureka metadata
                             gatewayUrl: "ws/v1"
                             serviceUrl: /discoverableclient/ws
 
-These metadata make it possible for requests from `wss://gatewayHost:port/ws/v1/serviceId/path` to map to `ws://serviceHost:port/discoverableclient/ws/path`,
+These metadata make it possible for requests from `wss://gatewayHost:port/serviceId/ws/v1/path` to map to `ws://serviceHost:port/discoverableclient/ws/path`,
 where:
 
 * **`serviceId`**  

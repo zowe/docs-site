@@ -1,6 +1,6 @@
-# Installing and starting the Zowe started task (ZWESVSTC)
+# Installing and starting the Zowe started task (ZWESLSTC)
 
-Zowe has a number of runtimes on z/OS: the z/OS Service microservice server, the Zowe Application Server, and the Zowe API Mediation Layer microservices. A single PROCLIB member `ZWESVSTC` is used to start all of these microservices.  This member is installed by Zowe into the SAMPLIB data set `SZWESAMP` during the installation either a convenience build or SMP/E.  
+The PROCLIB member `ZWESLSTC` is used to start Zowe's core microservices.  This member is installed by Zowe into the SAMPLIB data set `SZWESAMP` during the installation.
 
 This topic describes how to configure the z/OS runtime in order to launch Zowe. You can do these manually (as described in this topic) or use script to install and configure the Zowe main server. see [Installing and Configuring Zowe z/OS components using scripts](scripted-configure-server.md#zowe-z-os-components).
 

@@ -1,8 +1,8 @@
 # Configure Zowe CLI on operating systems where the Secure Credential Store is not available
 
-By default, Zowe CLI attempts to store sensitive information and credentials in the operating system’s credential manager. When the information cannot be stored securely, Zowe CLI displays an error when user attempt to create V1 style profiles or a V2 configuration. The actions that are required to disable secure credential management differ depending on the type of configuration being used.
+By default, Zowe CLI attempts to store sensitive information and credentials in the operating system’s credential manager. When the information cannot be stored securely, Zowe CLI displays an error when you attempt to create V1 style profiles or a V2 configuration. The actions that are required to disable secure credential management differ depending on the type of configuration being used.
 
-## V1 Profiles (Current Profiles)
+## V1 profiles
 
 Existing V1 profiles will continue to function properly. However, it will not be possible to create new profiles without disabling secure credential management. To disable secure credential management for V1 profiles:
 
@@ -13,7 +13,7 @@ Existing V1 profiles will continue to function properly. However, it will not be
     ```
 3. Save the changes.
 
-## Team Configuration
+## Team configuration
 
 Team configuration is stored in `zowe.config.json`.
 
