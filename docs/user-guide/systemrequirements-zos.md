@@ -172,11 +172,13 @@ Multi-factor authentication is provided by third-party products which Zowe is co
 
 For information on using MFA in Zowe, see [Multi-Factor Authentication](mvd-configuration.md#multi-factor-authentication-configuration).
 
+**Note:** MFA must work with Single sign-on (SSO). Make sure that [SSO](#single-sign-on-sso) is configured before you use MFA in Zowe.
+
 ### Single Sign-On (SSO)
 
-Zowe has an SSO scheme with the goal that each time you use use multiple Zowe components you should only be prompted to login once.
+Zowe has an SSO scheme with the goal that each time you use multiple Zowe components you should only be prompted to login once.
 
-Requirements: 
+Requirements:
 
 - IBM z/OS Management Facility (z/OSMF)
 
@@ -191,3 +193,5 @@ Discovery service | 256MB
 API Catalog | 512MB
 Metrics service | 512MB
 Caching service | 512MB
+
+- (Optional, recommended) PKCS#11 token setup is required when using ZSS, the Desktop, and Application Framework with SSO. See [Creating a PKCS#11 Token](configure-certificates-keystore.md#using-web-tokens-for-sso-on-zlux-and-zss) for more information.
