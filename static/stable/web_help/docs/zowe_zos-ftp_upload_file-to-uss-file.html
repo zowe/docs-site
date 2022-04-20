@@ -9,7 +9,7 @@
 <h2><a href="zowe.html">zowe</a> › <a href="zowe_zos-ftp.html">zos-ftp</a> › <a href="zowe_zos-ftp_upload.html">upload</a> › <a href="zowe_zos-ftp_upload_file-to-uss-file.html">file-to-uss-file</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
 <p>Upload contents of a local to a Unix System Services file.</p>
 <h4>Usage</h4>
-<p>zowe  zos-ftp upload file-to-uss-file &lt;file&gt; &lt;ussFile&gt; [options]</p>
+<p>zowe zos-ftp upload file-to-uss-file &lt;file&gt; &lt;ussFile&gt; [options]</p>
 <h4>Positional Arguments</h4>
 <ul>
 <li>
@@ -37,11 +37,7 @@
 <p><code>--secure-ftp</code>  <em>(boolean)</em></p>
 <ul>
 <li>
-<p>Set to true for both control and data connection encryption, 'control' for
-control connection encryption only, or 'implicit' for implicitly encrypted
-control connection (this mode is deprecated in modern times, but usually uses
-port 990). Note: Unfortunately, this plugin's functionality only works with FTP
-and FTPS, not 'SFTP' which is FTP over SSH.</p>
+<p>Set to true for both control and data connection encryption, 'control' for control connection encryption only, or 'implicit' for implicitly encrypted control connection (this mode is deprecated in modern times, but usually uses port 990). Note: Unfortunately, this plugin's functionality only works with FTP and FTPS, not 'SFTP' which is FTP over SSH.</p>
 <p>Default value: true</p>
 </li>
 </ul>
@@ -50,8 +46,7 @@ and FTPS, not 'SFTP' which is FTP over SSH.</p>
 <p><code>--connection-timeout</code>  | <code>--ct</code> <em>(number)</em></p>
 <ul>
 <li>
-<p>How long (in milliseconds) to wait for the control connection to be
-established.</p>
+<p>How long (in milliseconds) to wait for the control connection to be established.</p>
 <p>Default value: 10000</p>
 </li>
 </ul>
@@ -92,15 +87,13 @@ established.</p>
 <li>
 <p><code>--reject-unauthorized</code>  | <code>--ru</code> <em>(boolean)</em></p>
 <ul>
-<li>Reject self-signed certificates. Only specify this if you are connecting to a
-secure FTP instance.</li>
+<li>Reject self-signed certificates. Only specify this if you are connecting to a secure FTP instance.</li>
 </ul>
 </li>
 <li>
 <p><code>--server-name</code>  | <code>--sn</code> <em>(string)</em></p>
 <ul>
-<li>Server name for the SNI (Server Name Indication) TLS extension. Only specify if
-you are connecting securely</li>
+<li>Server name for the SNI (Server Name Indication) TLS extension. Only specify if you are connecting securely</li>
 </ul>
 </li>
 </ul>
@@ -124,8 +117,7 @@ you are connecting securely</li>
 <li>
 <p><code>--token-type</code>  | <code>--tt</code> <em>(string)</em></p>
 <ul>
-<li>The type of token to get and use for the API. Omit this option to use the
-default token type, which is provided by 'zowe auth login'.</li>
+<li>The type of token to get and use for the API. Omit this option to use the default token type, which is provided by 'zowe auth login'.</li>
 </ul>
 </li>
 <li>
@@ -150,10 +142,9 @@ default token type, which is provided by 'zowe auth login'.</li>
 <h4>Examples</h4>
 <ul>
 <li>
-<p>Upload to &quot;/u/users/ibmuser/iefbr14.txt&quot; from the file
-iefbr14.txt:</p>
+<p>Upload to &quot;/u/users/ibmuser/iefbr14.txt&quot; from the file iefbr14.txt:</p>
 <ul>
-<li><code>zowe  zos-ftp upload file-to-uss-file iefbr14.txt &quot;/u/users/ibmuser/iefbr14.txt&quot;</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  zos-ftp upload file-to-uss-file iefbr14.txt &quot;/u/users/ibmuser/iefbr14.txt&quot;">Copy</button></li>
+<li><code>zowe zos-ftp upload file-to-uss-file iefbr14.txt &quot;/u/users/ibmuser/iefbr14.txt&quot;</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe zos-ftp upload file-to-uss-file iefbr14.txt &quot;/u/users/ibmuser/iefbr14.txt&quot;">Copy</button></li>
 </ul>
 </li>
 </ul>

@@ -9,7 +9,7 @@
 <h2><a href="zowe.html">zowe</a> › <a href="zowe_zos-files.html">zos-files</a> › <a href="zowe_zos-files_create.html">create</a> › <a href="zowe_zos-files_create_data-set-sequential.html">data-set-sequential</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
 <p>Create physical sequential data sets (PS)</p>
 <h4>Usage</h4>
-<p>zowe  zos-files create data-set-sequential &lt;dataSetName&gt; [options]</p>
+<p>zowe zos-files create data-set-sequential &lt;dataSetName&gt; [options]</p>
 <h4>Positional Arguments</h4>
 <ul>
 <li>
@@ -96,9 +96,7 @@
 <li>
 <p><code>--size</code>  | <code>--sz</code> <em>(string)</em></p>
 <ul>
-<li>The size of the data set (specified as nCYL or nTRK - where n is the number of
-cylinders or tracks). Sets the primary allocation (the secondary allocation
-becomes ~10% of the primary).</li>
+<li>The size of the data set (specified as nCYL or nTRK - where n is the number of cylinders or tracks). Sets the primary allocation (the secondary allocation becomes ~10% of the primary).</li>
 </ul>
 </li>
 <li>
@@ -110,16 +108,13 @@ becomes ~10% of the primary).</li>
 <li>
 <p><code>--volume-serial</code>  | <code>--vs</code> | <code>--volser</code> <em>(string)</em></p>
 <ul>
-<li>The volume serial (VOLSER) on which you want the data set to be placed. A
-VOLSER is analogous to a drive name on a PC.</li>
+<li>The volume serial (VOLSER) on which you want the data set to be placed. A VOLSER is analogous to a drive name on a PC.</li>
 </ul>
 </li>
 <li>
 <p><code>--response-timeout</code>  | <code>--rto</code> <em>(number)</em></p>
 <ul>
-<li>The maximum amount of time in seconds the z/OSMF Files TSO servlet should run
-before returning a response. Any request exceeding this amount of time will be
-terminated and return an error. Allowed values: 5 - 600</li>
+<li>The maximum amount of time in seconds the z/OSMF Files TSO servlet should run before returning a response. Any request exceeding this amount of time will be terminated and return an error. Allowed values: 5 - 600</li>
 </ul>
 </li>
 </ul>
@@ -164,9 +159,7 @@ terminated and return an error. Allowed values: 5 - 600</li>
 <li>
 <p><code>--base-path</code>  | <code>--bp</code> <em>(string)</em></p>
 <ul>
-<li>The base path for your API mediation layer instance. Specify this option to
-prepend the base path to all z/OSMF resources when making REST requests. Do not
-specify this option if you are not using an API mediation layer.</li>
+<li>The base path for your API mediation layer instance. Specify this option to prepend the base path to all z/OSMF resources when making REST requests. Do not specify this option if you are not using an API mediation layer.</li>
 </ul>
 </li>
 <li>
@@ -174,8 +167,8 @@ specify this option if you are not using an API mediation layer.</li>
 <ul>
 <li>
 <p>The protocol used (HTTP or HTTPS)</p>
-<p>Default value: https</p>
-<p>Allowed values: http, https</p>
+<p>Default value: https<br>
+Allowed values: http, https</p>
 </li>
 </ul>
 </li>
@@ -212,8 +205,7 @@ specify this option if you are not using an API mediation layer.</li>
 <li>
 <p><code>--token-type</code>  | <code>--tt</code> <em>(string)</em></p>
 <ul>
-<li>The type of token to get and use for the API. Omit this option to use the
-default token type, which is provided by 'zowe auth login'.</li>
+<li>The type of token to get and use for the API. Omit this option to use the default token type, which is provided by 'zowe auth login'.</li>
 </ul>
 </li>
 <li>
@@ -226,10 +218,9 @@ default token type, which is provided by 'zowe auth login'.</li>
 <h4>Examples</h4>
 <ul>
 <li>
-<p>Create an empty physical sequential data set with default
-parameters:</p>
+<p>Create an empty physical sequential data set with default parameters:</p>
 <ul>
-<li><code>zowe  zos-files create data-set-sequential NEW.PS.DATASET</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  zos-files create data-set-sequential NEW.PS.DATASET">Copy</button></li>
+<li><code>zowe zos-files create data-set-sequential NEW.PS.DATASET</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe zos-files create data-set-sequential NEW.PS.DATASET">Copy</button></li>
 </ul>
 </li>
 </ul>

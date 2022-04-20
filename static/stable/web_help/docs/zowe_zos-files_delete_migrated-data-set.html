@@ -9,7 +9,7 @@
 <h2><a href="zowe.html">zowe</a> › <a href="zowe_zos-files.html">zos-files</a> › <a href="zowe_zos-files_delete.html">delete</a> › <a href="zowe_zos-files_delete_migrated-data-set.html">migrated-data-set</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
 <p>Delete migrated data sets.</p>
 <h4>Usage</h4>
-<p>zowe  zos-files delete migrated-data-set &lt;dataSetName&gt; [options]</p>
+<p>zowe zos-files delete migrated-data-set &lt;dataSetName&gt; [options]</p>
 <h4>Positional Arguments</h4>
 <ul>
 <li>
@@ -25,8 +25,7 @@
 <p><code>--wait</code>  | <code>-w</code> <em>(boolean)</em></p>
 <ul>
 <li>
-<p>If true then the function waits for completion of the request. If false
-(default) the request is queued.</p>
+<p>If true then the function waits for completion of the request. If false (default) the request is queued.</p>
 <p>Default value: false</p>
 </li>
 </ul>
@@ -35,8 +34,7 @@
 <p><code>--purge</code>  | <code>-p</code> <em>(boolean)</em></p>
 <ul>
 <li>
-<p>If true then the function uses the PURGE=YES on ARCHDEL request. If false
-(default) the function uses the PURGE=NO on ARCHDEL request.</p>
+<p>If true then the function uses the PURGE=YES on ARCHDEL request. If false (default) the function uses the PURGE=NO on ARCHDEL request.</p>
 <p>Default value: false</p>
 </li>
 </ul>
@@ -44,9 +42,7 @@
 <li>
 <p><code>--response-timeout</code>  | <code>--rto</code> <em>(number)</em></p>
 <ul>
-<li>The maximum amount of time in seconds the z/OSMF Files TSO servlet should run
-before returning a response. Any request exceeding this amount of time will be
-terminated and return an error. Allowed values: 5 - 600</li>
+<li>The maximum amount of time in seconds the z/OSMF Files TSO servlet should run before returning a response. Any request exceeding this amount of time will be terminated and return an error. Allowed values: 5 - 600</li>
 </ul>
 </li>
 </ul>
@@ -91,9 +87,7 @@ terminated and return an error. Allowed values: 5 - 600</li>
 <li>
 <p><code>--base-path</code>  | <code>--bp</code> <em>(string)</em></p>
 <ul>
-<li>The base path for your API mediation layer instance. Specify this option to
-prepend the base path to all z/OSMF resources when making REST requests. Do not
-specify this option if you are not using an API mediation layer.</li>
+<li>The base path for your API mediation layer instance. Specify this option to prepend the base path to all z/OSMF resources when making REST requests. Do not specify this option if you are not using an API mediation layer.</li>
 </ul>
 </li>
 <li>
@@ -101,8 +95,8 @@ specify this option if you are not using an API mediation layer.</li>
 <ul>
 <li>
 <p>The protocol used (HTTP or HTTPS)</p>
-<p>Default value: https</p>
-<p>Allowed values: http, https</p>
+<p>Default value: https<br>
+Allowed values: http, https</p>
 </li>
 </ul>
 </li>
@@ -139,8 +133,7 @@ specify this option if you are not using an API mediation layer.</li>
 <li>
 <p><code>--token-type</code>  | <code>--tt</code> <em>(string)</em></p>
 <ul>
-<li>The type of token to get and use for the API. Omit this option to use the
-default token type, which is provided by 'zowe auth login'.</li>
+<li>The type of token to get and use for the API. Omit this option to use the default token type, which is provided by 'zowe auth login'.</li>
 </ul>
 </li>
 <li>
@@ -155,7 +148,7 @@ default token type, which is provided by 'zowe auth login'.</li>
 <li>
 <p>Delete a migrated data set using default options:</p>
 <ul>
-<li><code>zowe  zos-files delete migrated-data-set &quot;USER.DATA.SET&quot;</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  zos-files delete migrated-data-set &quot;USER.DATA.SET&quot;">Copy</button></li>
+<li><code>zowe zos-files delete migrated-data-set &quot;USER.DATA.SET&quot;</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe zos-files delete migrated-data-set &quot;USER.DATA.SET&quot;">Copy</button></li>
 </ul>
 </li>
 </ul>

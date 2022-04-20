@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>cics-deploy generate bundle</title>
+<link rel="stylesheet" href="../css/bundle-docs.css">
+<link rel="stylesheet" href="../css/docs.css">
+<article class="markdown-body">
+<h2><a href="zowe.html">zowe</a> › <a href="zowe_cics-deploy.html">cics-deploy</a> › <a href="zowe_cics-deploy_generate.html">generate</a> › <a href="zowe_cics-deploy_generate_bundle.html">bundle</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
+<p>Generate a CICS bundle in the working directory. The associated data is constructed from a combination of the command-line options and the contents of package.json. If package.json exists, no options are required. If package.json does not exist, both --start-script and --nodejsapp are required.</p>
+<h4>Usage</h4>
+<p>zowe cics-deploy generate bundle [options]</p>
+<h4>cics-deploy Options</h4>
+<ul>
+<li>
+<p><code>--bundle-id</code>  | <code>-b</code> | <code>--id</code> | <code>--bundleid</code> <em>(string)</em></p>
+<ul>
+<li>The ID for the generated CICS bundle, up to 64 characters. If no value is specified, a default value is created from the 'name' property in the package.json file in the current working directory. If the value is too long, it is truncated. If it contains characters that are not supported by CICS, each character is replaced by an X.</li>
+</ul>
+</li>
+<li>
+<p><code>--bundle-version</code>  | <code>--bv</code> | <code>--bundleversion</code> <em>(string)</em></p>
+<ul>
+<li>The major.minor.micro version number for the generated CICS bundle. If no value is specified, a default value of 1.0.0 is used.</li>
+</ul>
+</li>
+<li>
+<p><code>--nodejsapp</code>  | <code>-n</code> | <code>--nj</code> | <code>--nja</code> <em>(string)</em></p>
+<ul>
+<li>The ID of the generated CICS NODEJSAPP resource, up to 32 characters.  If no value is specified, a default value is created from the 'name' property in package.json, or the bundleid option if specified. If the value is too long it is truncated. If it contains characters that are not supported by CICS, each character is replaced by an X.</li>
+</ul>
+</li>
+<li>
+<p><code>--start-script</code>  | <code>-s</code> | <code>--ss</code> | <code>--startscript</code> <em>(string)</em></p>
+<ul>
+<li>Up to 255 character path to the Node.js start script that runs when the associated bundle is enabled in CICS. If a value is not specified, a default value is created from either the 'scripts.start' property of the package.json file in the current working directory, or from the 'main' property.</li>
+</ul>
+</li>
+<li>
+<p><code>--port</code>  | <code>-p</code> <em>(string)</em></p>
+<ul>
+<li>The TCP/IP port number the Node.js application should use for clients to connect to. If a value is specified, it is set within the generated NODEJSAPP's profile. The Node.js application can reference this value by accessing the PORT environment variable, for example using process.env.PORT. Additional environment variables can be set by manually editing the profile.</li>
+</ul>
+</li>
+<li>
+<p><code>--overwrite</code>  | <code>--ow</code> <em>(boolean)</em></p>
+<ul>
+<li>
+<p>Enable or disable the ability to replace existing files within a CICS bundle.</p>
+<p>Default value: false</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--merge</code>  | <code>--me</code> <em>(boolean)</em></p>
+<ul>
+<li>
+<p>Enable or disable the ability to merge new resources into an existing CICS bundle manifest. Requires --overwrite to be specified.</p>
+<p>Default value: false</p>
+</li>
+</ul>
+</li>
+</ul>
+<h4>Examples</h4>
+<ul>
+<li>
+<p>Generate a CICS bundle in the working directory, taking information from package.json:</p>
+<ul>
+<li><code>zowe cics-deploy generate bundle</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe cics-deploy generate bundle">Copy</button></li>
+</ul>
+</li>
+<li>
+<p>Generate a CICS bundle in the working directory, based on package.json but using a bundle ID of &quot;mybundle&quot;:</p>
+<ul>
+<li><code>zowe cics-deploy generate bundle --bundle-id mybundle</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe cics-deploy generate bundle --bundle-id mybundle">Copy</button></li>
+</ul>
+</li>
+<li>
+<p>Generate a CICS bundle in the working directory in which a package.json does not exist:</p>
+<ul>
+<li><code>zowe cics-deploy generate bundle --bundle-id mybundle --nodejsapp myapp --start-script server.js</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe cics-deploy generate bundle --bundle-id mybundle --nodejsapp myapp --start-script server.js">Copy</button></li>
+</ul>
+</li>
+</ul>
+</article>
+<script src="../js/bundle-docs.js"></script>
+<script src="../js/docs.js"></script>

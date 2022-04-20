@@ -9,14 +9,13 @@
 <h2><a href="zowe.html">zowe</a> › <a href="zowe_cics.html">cics</a> › <a href="zowe_cics_refresh.html">refresh</a> › <a href="zowe_cics_refresh_program.html">program</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
 <p>Refresh a program on CICS.</p>
 <h4>Usage</h4>
-<p>zowe  cics refresh program &lt;programName&gt; [options]</p>
+<p>zowe cics refresh program &lt;programName&gt; [options]</p>
 <h4>Positional Arguments</h4>
 <ul>
 <li>
 <p><code>programName</code>		 <em>(string)</em></p>
 <ul>
-<li>The name of the program to refresh. The maximum length of the program name is
-eight characters.</li>
+<li>The name of the program to refresh. The maximum length of the program name is eight characters.</li>
 </ul>
 </li>
 </ul>
@@ -78,8 +77,8 @@ eight characters.</li>
 <ul>
 <li>
 <p>Specifies CMCI protocol (http or https).</p>
-<p>Default value: https</p>
-<p>Allowed values: http, https</p>
+<p>Default value: https<br>
+Allowed values: http, https</p>
 </li>
 </ul>
 </li>
@@ -104,8 +103,7 @@ eight characters.</li>
 <li>
 <p><code>--token-type</code>  | <code>--tt</code> <em>(string)</em></p>
 <ul>
-<li>The type of token to get and use for the API. Omit this option to use the
-default token type, which is provided by 'zowe auth login'.</li>
+<li>The type of token to get and use for the API. Omit this option to use the default token type, which is provided by 'zowe auth login'.</li>
 </ul>
 </li>
 <li>
@@ -130,10 +128,9 @@ default token type, which is provided by 'zowe auth login'.</li>
 <h4>Examples</h4>
 <ul>
 <li>
-<p>Refresh a program named PGM123 from the region named
-MYREGION:</p>
+<p>Refresh a program named PGM123 from the region named MYREGION:</p>
 <ul>
-<li><code>zowe  cics refresh program PGM123 --region-name MYREGION</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  cics refresh program PGM123 --region-name MYREGION">Copy</button></li>
+<li><code>zowe cics refresh program PGM123 --region-name MYREGION</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe cics refresh program PGM123 --region-name MYREGION">Copy</button></li>
 </ul>
 </li>
 </ul>

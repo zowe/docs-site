@@ -7,11 +7,10 @@
 <link rel="stylesheet" href="../css/docs.css">
 <article class="markdown-body">
 <h2><a href="zowe.html">zowe</a> › <a href="zowe_provisioning.html">provisioning</a> › <a href="zowe_provisioning_provision.html">provision</a> › <a href="zowe_provisioning_provision_template.html">template</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
-<p>Using z/OSMF cloud provisioning services, provision available templates.
-You can view available templates using the zowe provisioning list
-catalog-templates command.</p>
+<p>Using z/OSMF cloud provisioning services, provision available templates.<br>
+You can view available templates using the zowe provisioning list catalog-templates command.</p>
 <h4>Usage</h4>
-<p>zowe  provisioning provision template &lt;name&gt; [options]</p>
+<p>zowe provisioning provision template &lt;name&gt; [options]</p>
 <h4>Positional Arguments</h4>
 <ul>
 <li>
@@ -26,7 +25,7 @@ catalog-templates command.</p>
 <li>
 <p><code>--properties</code>  | <code>-p</code> <em>(string)</em></p>
 <ul>
-<li>A sequence of string enclosed &quot;name=value&quot; pairs of prompt variables.
+<li>A sequence of string enclosed &quot;name=value&quot; pairs of prompt variables.<br>
 e.g: &quot;CSQ_MQ_SSID=ZCT1,CSQ_CMD_PFX=!ZCT1&quot;.</li>
 </ul>
 </li>
@@ -39,46 +38,37 @@ e.g: &quot;CSQ_MQ_SSID=ZCT1,CSQ_CMD_PFX=!ZCT1&quot;.</li>
 <li>
 <p><code>--domain-name</code>  | <code>--dn</code> <em>(string)</em></p>
 <ul>
-<li>Required if the user has consumer authorization to more than one domain with
-this template name.</li>
+<li>Required if the user has consumer authorization to more than one domain with this template name.</li>
 </ul>
 </li>
 <li>
 <p><code>--tenant-name</code>  | <code>--tn</code> <em>(string)</em></p>
 <ul>
-<li>Required if the user has consumer authorization to more than one tenant in the
-same domain that contains this template name.</li>
+<li>Required if the user has consumer authorization to more than one tenant in the same domain that contains this template name.</li>
 </ul>
 </li>
 <li>
 <p><code>--user-data-id</code>  | <code>--udi</code> <em>(string)</em></p>
 <ul>
-<li>ID for the user data specified with user-data. Passed into the software
-services registry.</li>
+<li>ID for the user data specified with user-data. Passed into the software services registry.</li>
 </ul>
 </li>
 <li>
 <p><code>--user-data</code>  | <code>--ud</code> <em>(string)</em></p>
 <ul>
-<li>User data that is passed into the software services registry. Can be specified
-only if user-data-id is provided.</li>
+<li>User data that is passed into the software services registry. Can be specified only if user-data-id is provided.</li>
 </ul>
 </li>
 <li>
 <p><code>--account-info</code>  | <code>--ai</code> <em>(string)</em></p>
 <ul>
-<li>Account information to use in the JCL JOB statement. The default is the account
-information that is associated with the resource pool for the tenant.</li>
+<li>Account information to use in the JCL JOB statement. The default is the account information that is associated with the resource pool for the tenant.</li>
 </ul>
 </li>
 <li>
 <p><code>--system-nick-names</code>  | <code>--snn</code> <em>(string)</em></p>
 <ul>
-<li>Each string is the nickname of the system upon which to provision the software
-service defined by the template. The field is required if the resource pool
-associated with the tenant used for this operation is not set up to
-automatically select a system. Only one nickname is allowed.If the field is
-provided it is validated.
+<li>Each string is the nickname of the system upon which to provision the software service defined by the template. The field is required if the resource pool associated with the tenant used for this operation is not set up to automatically select a system. Only one nickname is allowed.If the field is provided it is validated.<br>
 e.g: &quot;SYSNAME1,SYSNAME2&quot;.</li>
 </ul>
 </li>
@@ -124,9 +114,7 @@ e.g: &quot;SYSNAME1,SYSNAME2&quot;.</li>
 <li>
 <p><code>--base-path</code>  | <code>--bp</code> <em>(string)</em></p>
 <ul>
-<li>The base path for your API mediation layer instance. Specify this option to
-prepend the base path to all z/OSMF resources when making REST requests. Do not
-specify this option if you are not using an API mediation layer.</li>
+<li>The base path for your API mediation layer instance. Specify this option to prepend the base path to all z/OSMF resources when making REST requests. Do not specify this option if you are not using an API mediation layer.</li>
 </ul>
 </li>
 <li>
@@ -134,8 +122,8 @@ specify this option if you are not using an API mediation layer.</li>
 <ul>
 <li>
 <p>The protocol used (HTTP or HTTPS)</p>
-<p>Default value: https</p>
-<p>Allowed values: http, https</p>
+<p>Default value: https<br>
+Allowed values: http, https</p>
 </li>
 </ul>
 </li>
@@ -172,8 +160,7 @@ specify this option if you are not using an API mediation layer.</li>
 <li>
 <p><code>--token-type</code>  | <code>--tt</code> <em>(string)</em></p>
 <ul>
-<li>The type of token to get and use for the API. Omit this option to use the
-default token type, which is provided by 'zowe auth login'.</li>
+<li>The type of token to get and use for the API. Omit this option to use the default token type, which is provided by 'zowe auth login'.</li>
 </ul>
 </li>
 <li>
@@ -188,7 +175,7 @@ default token type, which is provided by 'zowe auth login'.</li>
 <li>
 <p>Provision a published software service template.:</p>
 <ul>
-<li><code>zowe  provisioning provision template template1</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  provisioning provision template template1">Copy</button></li>
+<li><code>zowe provisioning provision template template1</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe provisioning provision template template1">Copy</button></li>
 </ul>
 </li>
 </ul>

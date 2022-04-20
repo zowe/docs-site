@@ -7,24 +7,21 @@
 <link rel="stylesheet" href="../css/docs.css">
 <article class="markdown-body">
 <h2><a href="zowe.html">zowe</a> › <a href="zowe_cics.html">cics</a> › <a href="zowe_cics_define.html">define</a> › <a href="zowe_cics_define_urimap-pipeline.html">urimap-pipeline</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
-<p>Define a new URIMAP of type pipeline to CICS. This processes incoming HTTP(S)
-requests</p>
+<p>Define a new URIMAP of type pipeline to CICS. This processes incoming HTTP(S) requests</p>
 <h4>Usage</h4>
-<p>zowe  cics define urimap-pipeline &lt;urimapName&gt; &lt;csdGroup&gt; [options]</p>
+<p>zowe cics define urimap-pipeline &lt;urimapName&gt; &lt;csdGroup&gt; [options]</p>
 <h4>Positional Arguments</h4>
 <ul>
 <li>
 <p><code>urimapName</code>		 <em>(string)</em></p>
 <ul>
-<li>The name of the URIMAP to create. The maximum length of the urimap name is
-eight characters.</li>
+<li>The name of the URIMAP to create. The maximum length of the urimap name is eight characters.</li>
 </ul>
 </li>
 <li>
 <p><code>csdGroup</code>		 <em>(string)</em></p>
 <ul>
-<li>The CICS system definition (CSD) Group for the new urimap that you want to
-define. The maximum length of the group name is eight characters.</li>
+<li>The CICS system definition (CSD) Group for the new urimap that you want to define. The maximum length of the group name is eight characters.</li>
 </ul>
 </li>
 </ul>
@@ -45,8 +42,7 @@ define. The maximum length of the group name is eight characters.</li>
 <li>
 <p><code>--pipeline-name</code>  | <code>--pn</code> <em>(string)</em></p>
 <ul>
-<li>The name of the PIPELINE resource definition for the URIMAP. The maximum length
-of the pipeline name is eight characters.</li>
+<li>The name of the PIPELINE resource definition for the URIMAP. The maximum length of the pipeline name is eight characters.</li>
 </ul>
 </li>
 </ul>
@@ -57,8 +53,8 @@ of the pipeline name is eight characters.</li>
 <ul>
 <li>
 <p>The scheme component to be used with the request (http or https).</p>
-<p>Default value: https</p>
-<p>Allowed values: http, https</p>
+<p>Default value: https<br>
+Allowed values: http, https</p>
 </li>
 </ul>
 </li>
@@ -71,15 +67,13 @@ of the pipeline name is eight characters.</li>
 <li>
 <p><code>--transaction-name</code>  | <code>--tn</code> <em>(string)</em></p>
 <ul>
-<li>The name of the TRANSACTION resource definition for the URIMAP. The maximum
-length of the transaction name is four characters.</li>
+<li>The name of the TRANSACTION resource definition for the URIMAP. The maximum length of the transaction name is four characters.</li>
 </ul>
 </li>
 <li>
 <p><code>--webservice-name</code>  | <code>--wn</code> <em>(string)</em></p>
 <ul>
-<li>The name of the WEBSERVICE resource definition for the URIMAP. The maximum
-length of the transaction name is 32 characters.</li>
+<li>The name of the WEBSERVICE resource definition for the URIMAP. The maximum length of the transaction name is 32 characters.</li>
 </ul>
 </li>
 <li>
@@ -153,8 +147,8 @@ length of the transaction name is 32 characters.</li>
 <ul>
 <li>
 <p>Specifies CMCI protocol (http or https).</p>
-<p>Default value: https</p>
-<p>Allowed values: http, https</p>
+<p>Default value: https<br>
+Allowed values: http, https</p>
 </li>
 </ul>
 </li>
@@ -179,8 +173,7 @@ length of the transaction name is 32 characters.</li>
 <li>
 <p><code>--token-type</code>  | <code>--tt</code> <em>(string)</em></p>
 <ul>
-<li>The type of token to get and use for the API. Omit this option to use the
-default token type, which is provided by 'zowe auth login'.</li>
+<li>The type of token to get and use for the API. Omit this option to use the default token type, which is provided by 'zowe auth login'.</li>
 </ul>
 </li>
 <li>
@@ -205,11 +198,9 @@ default token type, which is provided by 'zowe auth login'.</li>
 <h4>Examples</h4>
 <ul>
 <li>
-<p>Define a URIMAP named URIMAPA for the pipeline named PIPE123
-to the region named MYREGION in the CSD group MYGRP where the host is
-<a href="http://www.example.com">www.example.com</a> and the path is /example/index.html:</p>
+<p>Define a URIMAP named URIMAPA for the pipeline named PIPE123 to the region named MYREGION in the CSD group MYGRP where the host is <a href="http://www.example.com">www.example.com</a> and the path is /example/index.html:</p>
 <ul>
-<li><code>zowe  cics define urimap-pipeline URIMAPA MYGRP --urimap-path /example/index.html --urimap-host www.example.com --pipeline-name PIPE123 --region-name MYREGION</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  cics define urimap-pipeline URIMAPA MYGRP --urimap-path /example/index.html --urimap-host www.example.com --pipeline-name PIPE123 --region-name MYREGION">Copy</button></li>
+<li><code>zowe cics define urimap-pipeline URIMAPA MYGRP --urimap-path /example/index.html --urimap-host www.example.com --pipeline-name PIPE123 --region-name MYREGION</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe cics define urimap-pipeline URIMAPA MYGRP --urimap-path /example/index.html --urimap-host www.example.com --pipeline-name PIPE123 --region-name MYREGION">Copy</button></li>
 </ul>
 </li>
 </ul>

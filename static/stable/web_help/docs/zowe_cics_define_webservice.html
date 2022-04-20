@@ -9,21 +9,19 @@
 <h2><a href="zowe.html">zowe</a> › <a href="zowe_cics.html">cics</a> › <a href="zowe_cics_define.html">define</a> › <a href="zowe_cics_define_webservice.html">webservice</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
 <p>Define a new web service to CICS.</p>
 <h4>Usage</h4>
-<p>zowe  cics define webservice &lt;webserviceName&gt; &lt;csdGroup&gt; [options]</p>
+<p>zowe cics define webservice &lt;webserviceName&gt; &lt;csdGroup&gt; [options]</p>
 <h4>Positional Arguments</h4>
 <ul>
 <li>
 <p><code>webserviceName</code>		 <em>(string)</em></p>
 <ul>
-<li>The name of the WEBSERVICE to create. The maximum length of the web service
-name is eight characters.</li>
+<li>The name of the WEBSERVICE to create. The maximum length of the web service name is eight characters.</li>
 </ul>
 </li>
 <li>
 <p><code>csdGroup</code>		 <em>(string)</em></p>
 <ul>
-<li>The CICS system definition (CSD) Group for the new web service that you want to
-define. The maximum length of the group name is eight characters.</li>
+<li>The CICS system definition (CSD) Group for the new web service that you want to define. The maximum length of the group name is eight characters.</li>
 </ul>
 </li>
 </ul>
@@ -32,8 +30,7 @@ define. The maximum length of the group name is eight characters.</li>
 <li>
 <p><code>--pipeline-name</code>  | <code>--pn</code> <em>(string)</em></p>
 <ul>
-<li>The name of the PIPELINE resource definition for the web service. The maximum
-length of the pipeline name is eight characters</li>
+<li>The name of the PIPELINE resource definition for the web service. The maximum length of the pipeline name is eight characters</li>
 </ul>
 </li>
 <li>
@@ -55,8 +52,7 @@ length of the pipeline name is eight characters</li>
 <p><code>--validation</code>  <em>(boolean)</em></p>
 <ul>
 <li>
-<p>Specifies whether full validation of SOAP messages against the corresponding
-schema in the web service description should be performed at run time.</p>
+<p>Specifies whether full validation of SOAP messages against the corresponding schema in the web service description should be performed at run time.</p>
 <p>Default value: false</p>
 </li>
 </ul>
@@ -123,8 +119,8 @@ schema in the web service description should be performed at run time.</p>
 <ul>
 <li>
 <p>Specifies CMCI protocol (http or https).</p>
-<p>Default value: https</p>
-<p>Allowed values: http, https</p>
+<p>Default value: https<br>
+Allowed values: http, https</p>
 </li>
 </ul>
 </li>
@@ -149,8 +145,7 @@ schema in the web service description should be performed at run time.</p>
 <li>
 <p><code>--token-type</code>  | <code>--tt</code> <em>(string)</em></p>
 <ul>
-<li>The type of token to get and use for the API. Omit this option to use the
-default token type, which is provided by 'zowe auth login'.</li>
+<li>The type of token to get and use for the API. Omit this option to use the default token type, which is provided by 'zowe auth login'.</li>
 </ul>
 </li>
 <li>
@@ -175,11 +170,9 @@ default token type, which is provided by 'zowe auth login'.</li>
 <h4>Examples</h4>
 <ul>
 <li>
-<p>Define a webservice named WEBSVCA for the pipeline named
-PIPE123 to the region named MYREGION in the CSD group MYGRP where the binding
-file is /u/exampleapp/wsbind/example.log:</p>
+<p>Define a webservice named WEBSVCA for the pipeline named PIPE123 to the region named MYREGION in the CSD group MYGRP where the binding file is /u/exampleapp/wsbind/example.log:</p>
 <ul>
-<li><code>zowe  cics define webservice WEBSVCA MYGRP --pipeline-name PIPELINE --wsbind /u/exampleapp/wsbind/example.log --region-name MYREGION</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  cics define webservice WEBSVCA MYGRP --pipeline-name PIPELINE --wsbind /u/exampleapp/wsbind/example.log --region-name MYREGION">Copy</button></li>
+<li><code>zowe cics define webservice WEBSVCA MYGRP --pipeline-name PIPELINE --wsbind /u/exampleapp/wsbind/example.log --region-name MYREGION</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe cics define webservice WEBSVCA MYGRP --pipeline-name PIPELINE --wsbind /u/exampleapp/wsbind/example.log --region-name MYREGION">Copy</button></li>
 </ul>
 </li>
 </ul>
