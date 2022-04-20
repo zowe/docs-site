@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>workload-automation update resourceinplan</title>
+<link rel="stylesheet" href="../css/bundle-docs.css">
+<link rel="stylesheet" href="../css/docs.css">
+<article class="markdown-body">
+<h2><a href="zowe.html">zowe</a> › <a href="zowe_workload-automation.html">workload-automation</a> › <a href="zowe_workload-automation_update.html">update</a> › <a href="zowe_workload-automation_update_resourceinplan.html">resourceinplan</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
+<p>Update the resource in plan.</p>
+<h4>Usage</h4>
+<p>zowe workload-automation update resourceinplan [options]</p>
+<h4>Required Options</h4>
+<ul>
+<li>
+<p><code>--id</code>  <em>(string)</em></p>
+<ul>
+<li>Id of the resource to update. Take id from get response body</li>
+</ul>
+</li>
+<li>
+<p><code>--file</code>  | <code>-f</code> <em>(string)</em></p>
+<ul>
+<li>A local file containing resource JSON body to be updated.</li>
+</ul>
+</li>
+</ul>
+<h4>workload-automation Connection Options</h4>
+<ul>
+<li>
+<p><code>--host</code>  | <code>-H</code> <em>(string)</em></p>
+<ul>
+<li>The Z connector server host name or API ML server host name</li>
+</ul>
+</li>
+<li>
+<p><code>--port</code>  | <code>-P</code> <em>(number)</em></p>
+<ul>
+<li>The Z connector server port or API ML server port</li>
+</ul>
+</li>
+<li>
+<p><code>--user</code>  | <code>-u</code> <em>(string)</em></p>
+<ul>
+<li>The Z connector user ID</li>
+</ul>
+</li>
+<li>
+<p><code>--password</code>  | <code>--pwd</code> <em>(string)</em></p>
+<ul>
+<li>The Z connector password</li>
+</ul>
+</li>
+<li>
+<p><code>--engine</code>  | <code>--eng</code> <em>(string)</em></p>
+<ul>
+<li>Name of the engine, as defined on the Z connector</li>
+</ul>
+</li>
+<li>
+<p><code>--base-path</code>  | <code>--bp</code> <em>(string)</em></p>
+<ul>
+<li>Base path of your API mediation layer instance. If a base path is specified, the plug-in connects to API ML. Specify this value according to the yaml static file added to API ML</li>
+</ul>
+</li>
+<li>
+<p><code>--reject-unauthorized</code>  | <code>--ru</code> <em>(boolean)</em></p>
+<ul>
+<li>
+<p>Reject self-signed certificates</p>
+<p>Default value: true</p>
+</li>
+</ul>
+</li>
+</ul>
+<h4>Profile Options</h4>
+<ul>
+<li>
+<p><code>--wa-profile</code>  | <code>--wa-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (wa) profile to load for this command execution.</li>
+</ul>
+</li>
+<li>
+<p><code>--base-profile</code>  | <code>--base-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (base) profile to load for this command execution.</li>
+</ul>
+</li>
+</ul>
+<h4>Base Connection Options</h4>
+<ul>
+<li>
+<p><code>--token-type</code>  | <code>--tt</code> <em>(string)</em></p>
+<ul>
+<li>The type of token to get and use for the API. Omit this option to use the default token type, which is provided by 'zowe auth login'.</li>
+</ul>
+</li>
+<li>
+<p><code>--token-value</code>  | <code>--tv</code> <em>(string)</em></p>
+<ul>
+<li>The value of the token to pass to the API.</li>
+</ul>
+</li>
+<li>
+<p><code>--cert-file</code>  <em>(local file path)</em></p>
+<ul>
+<li>The file path to a certificate file to use for authentication</li>
+</ul>
+</li>
+<li>
+<p><code>--cert-key-file</code>  <em>(local file path)</em></p>
+<ul>
+<li>The file path to a certificate key file to use for authentication</li>
+</ul>
+</li>
+</ul>
+<h4>Response Format Options</h4>
+<ul>
+<li>
+<p><code>--response-format-filter</code>  | <code>--rff</code> <em>(array)</em></p>
+<ul>
+<li>Filter (include) fields in the response. Accepts an array of field/property names to include in the output response. You can filter JSON objects properties OR table columns/fields. In addition, you can use this option in conjunction with '--response-format-type' to reduce the output of a command to a single field/property or a list of a single field/property.</li>
+</ul>
+</li>
+<li>
+<p><code>--response-format-type</code>  | <code>--rft</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>The command response output format type. Must be one of the following:</p>
+<p>table: Formats output data as a table. Use this option when the output data is an array of homogeneous JSON objects. Each property of the object will become a column in the table.</p>
+<p>list: Formats output data as a list of strings. Can be used on any data type (JSON objects/arrays) are stringified and a new line is added after each entry in an array.</p>
+<p>object: Formats output data as a list of prettified objects (or single object). Can be used in place of &quot;table&quot; to change from tabular output to a list of prettified objects.</p>
+<p>string: Formats output data as a string. JSON objects/arrays are stringified.</p>
+<p>Allowed values: table, list, object, string</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--response-format-header</code>  | <code>--rfh</code> <em>(boolean)</em></p>
+<ul>
+<li>If &quot;--response-format-type table&quot; is specified, include the column headers in the output.</li>
+</ul>
+</li>
+</ul>
+<h4>Examples</h4>
+<ul>
+<li>
+<p>Update the specified resource with JSON body provided in the file. You can take the JSON body from data field of the response of the get command using --rfj option:</p>
+<ul>
+<li><code>zowe workload-automation update resourceinplan --id resourceId --file resource.txt</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe workload-automation update resourceinplan --id resourceId --file resource.txt">Copy</button></li>
+</ul>
+</li>
+</ul>
+</article>
+<script src="../js/bundle-docs.js"></script>
+<script src="../js/docs.js"></script>
