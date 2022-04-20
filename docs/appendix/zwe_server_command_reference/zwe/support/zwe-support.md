@@ -1,42 +1,41 @@
-# zwe components install
+# zwe support
 
-[zwe](../.././zwe) > [components](.././zwe-components) > [install](./zwe-components-install)
+[zwe](.././zwe) > [support](./zwe-support)
 
-	zwe components install [sub-command [sub-command]...] [parameter [parameter]...]
+	zwe support [sub-command [sub-command]...] [parameter [parameter]...]
 
 ## Sub-commands
 
-* [extract](./zwe-components-install-extract)
-* [process-hook](./zwe-components-install-process-hook)
+* [verify-fingerprints](./zwe-support-verify-fingerprints)
 
 ## Description
 
-Install a Zowe module.
+Collect and package Zowe runtime information for support purpose.
 
-**IMPORTANT NOTES**, by default, this command will enable the component globally
-                     by modifying your YAML configuration. You can pass
-                     `--skip-enable` to disable this behavior.
+This command will collect these information:
 
+- Environment
+  * z/OS version
+  * Java version
+  * Node.js version
+- Zowe configurations
+  * Zowe manifest.json
+  * Zowe configuration file
+  * Zowe installation logs
+  * Zowe PKCS#12 keystore if used
+  * Zowe temporary configuration files under `<workspace>/.env`
+  * Zowe APIML static registration files under `<workspace>/api-mediation/api-defs`
+- Zowe runtime
+  * Active running Zowe processes
+  * Zowe job log
+- Zowe fingerprints and validation result
 
-## Examples
-
-```
-zwe components install -c /path/to/zowe.yaml -o /path/to/component/package
-
-zwe components install extract -c /path/to/zowe.yaml -o /path/to/component/package
-
-```
-
-## Parameters only for this command
-
-Full name|Alias|Type|Required|Help message
-|---|---|---|---|---
---component-file,--component|-o|string|yes||Path to the component package or directory.
---auto-encoding|-e|string|no||If we want to automatically tagging the module files.
---skip-enable||boolean|no||Install component without enabling it for use.
 
 ## Parameters
 
+Full name|Alias|Type|Required|Help message
+|---|---|---|---|---
+--target-dir||string|no||Target directory where the support package will be created.\nIf it is not specified, system temporary directory will be used.
 ### Inherited from parent command
 
 Full name|Alias|Type|Required|Help message
@@ -51,10 +50,6 @@ Full name|Alias|Type|Required|Help message
 
 ## Errors
 
-Error code|Exit code|Error message
-|---|---|---
-ZWEL0156E|156|Component name is not initialized after extract step.
-ZWEL0180E|180|Zowe extension directory (zowe.extensionDirectory) is not defined in Zowe YAML configuration file.
 ### Inherited from parent command
 
 Error code|Exit code|Error message
