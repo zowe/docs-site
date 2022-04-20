@@ -117,6 +117,7 @@ module.exports = {
                   items: [
                     "user-guide/configure-certificates-keystore",
                     "user-guide/configure-certificates-keyring",
+                    "user-guide/certificates-setup",
                   ],
                 },
                 "user-guide/configure-xmem-server",
