@@ -1,11 +1,11 @@
 # Zowe Explorer Profiles
 
-After you install Zowe Explorer, you need to have a Zowe Explorer profile to use all functions of the extension. You can optionally activate the Secure Credential Store plug-in to securely store your credentials.
+After you install Zowe Explorer, you need to have a Zowe Explorer profile to use all functions of the extension.
 
 **Note:** You can continue using Zowe V1 profiles with Zowe Explorer V2. 
 ## Configuring team profiles
 
-Zowe CLI team profiles simplify profile management by letting you to edit, store, and share mainframe configuration details in one location. You can use a text editor or an IDE to populate configuration files with connection details for your mainframe services. By default, your team configuration file is located in the `.zowe home` folder, whereas the project-level configuration file is located in the main directory of your project.
+Zowe CLI team profiles simplify profile management by letting you to edit, store, and share mainframe configuration details in one location. You can use a text editor or an IDE to populate configuration files with connection details for your mainframe services. By default, your team configuration file is located in the `.zowe home` folder, whereas the project-level configuration file is located in the main directory of your project. You can create profiles that you use globally, given that the names of the globally-used profiles are different from your other profile names.
 
 **Note**: A project context takes precedence over global configuration.
 ### Creating team configuration files
@@ -17,7 +17,7 @@ Create a team configuration file.
 3. Click the **+** icon.
 4. Select **Create a New Team Configuration File**.
 5. Chose either a global configuration file or a project-level configuration file.
-6. Edit the config file to include the host information.
+6. Edit the config file to include the host information and save the file.
 7. Refresh Zowe Explorer by either clicking the button in the notification message shown after creation, `alt+z`, or the `Zowe Explorer: Refresh Zowe Explorer` command palette option.
 
 Your team configuration file appears either in your `.zowe` folder if you choose the global configuration file option, or in your workspace directory if you choose the project-level configuration file option. The notification message that shows in VS Code after config file creation will include the path of the file created.
@@ -31,9 +31,11 @@ You can edit your project-level or global configuration files.
 1. Right-click on your profile.
 2. Select the **Add**, **Update**, or **Delete Profile** options to edit the zowe config file in place.
 
-   **Tip:** Use the Intellisense prompts if you need assistance with filling parameters in the .json file.
+   **Tip:** Use the Intellisense prompts if you need assistance with filling parameters in the file.
 
-3. Refresh the view by clicking the refresh icon in the Data Sets, USS, or Jobs view.
+3. Save the config file.
+
+4. Refresh the view by clicking the refresh icon in the Data Sets, USS, or Jobs view.
 
    Alternatively, press F1 to open the command palette, type and execute the **Zowe Explorer: Refresh Zowe Explorer** option.
 
@@ -105,12 +107,6 @@ You can use the sample to customize your profile configuration file. Ensure that
 }
 ```
 
-
-
-
-
-
-
 ## Working with Zowe Explorer profiles
 
 **Important!** The information in this section applies to only Zowe CLI V1 profiles unless otherwise noted. Zowe CLI V1 profiles are defined by having one yaml file for each user profile.
@@ -165,13 +161,13 @@ Connect your service profile with a base profile and token.
 
 **Follow these steps:**
 
-1. Open Zowe CLI and run the following command:
+1. Open Zowe CLI and issue the following command:
 
    ```
    zowe auth login apiml
    ```
 
-2. Follow the on screen instructions to complete the login process.
+2. Follow the onscreen instructions to complete the login process.
 
    A local base profile is created that contains your token. For more information about the process, see [Token Management](../user-guide/cli-using-integrating-apiml.md#how-token-management-works).
   
@@ -200,7 +196,7 @@ If the token for your base profile is no longer valid, you can log in again to g
 
    You will be prompted to enter your username and password beforehand.
 
-The token is stored in the default base profile .yaml file.
+The token is stored in the corresponding base profile.
 
 If you do not want to store your token, request from the server to end the session of your token. Use the **Log out from Authentication Service** feature to invalidate the token.
 
