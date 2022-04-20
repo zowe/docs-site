@@ -29,7 +29,7 @@ module.exports = {
       type: "category",
       label: "Quick start",
       items: [
-        "getting-started/zowe-getting-started",
+    //    "getting-started/zowe-getting-started", //Need to write post 2.0
         "getting-started/cli-getting-started",
       ],
     },
@@ -38,22 +38,22 @@ module.exports = {
       label: "Migrating from V1 to V2",
       items: [
         "getting-started/migrate-cli",
-        "getting-started/migrate-instance",
+    //    "getting-started/migrate-instance",  //Not ready yet, need to check
         "extend/migrate-extensions",
       ],
     },
-    {
-      type: "category",
-      label: "Learning paths",
-      items: [
-        "getting-started/user-roadmap-apiml",
-        "getting-started/user-roadmap-app-framework",
-        "getting-started/user-roadmap-zowe-cli",
-        "getting-started/user-roadmap-zowe-explorer",
-        "getting-started/user-roadmap-client-sdk",
-        "getting-started/user-roadmap-zowe-mobile",
-      ],
-    },
+  //  {
+  //    type: "category",
+  //    label: "Learning paths",  //Need to revisit these topics post 2.0
+  //    items: [
+  //      "getting-started/user-roadmap-apiml",
+  //      "getting-started/user-roadmap-app-framework",
+  //      "getting-started/user-roadmap-zowe-cli",
+  //      "getting-started/user-roadmap-zowe-explorer",
+  //      "getting-started/user-roadmap-client-sdk",
+  //      "getting-started/user-roadmap-zowe-mobile",
+  //    ],
+  //  },
     "getting-started/zowe-resources",
   ],
 
@@ -125,7 +125,7 @@ module.exports = {
                 "user-guide/configure-auxiliary-address-space",
               ],
             },
-        //    "user-guide/configure-zowe-zosmf-workflow",
+            "user-guide/configure-zowe-zosmf-workflow",
           ],
         },
        {
@@ -136,7 +136,6 @@ module.exports = {
           "user-guide/configure-sysplex",
           "user-guide/systemrequirements-zosmf-ha",
           "user-guide/configure-caching-service-ha",
-          // "user-guide/configure-zowe-zosmf-workflow",
          ],
        }, 
         "user-guide/verify-zowe-runtime-install",
@@ -161,14 +160,15 @@ module.exports = {
       items: [
         "user-guide/cli-install-cli-checklist",
         "user-guide/systemrequirements-cli",
-                {
+        {
           type: "category",
           label: "Install CLI",
           items: [
             "user-guide/cli-installcli",
             "user-guide/cli-configure-scs-on-headless-linux-os",
             "user-guide/cli-configure-cli-on-os-where-scs-unavailable",
-            "user-guide/cli-install-cli-nodejs-windows",                          ],
+            "user-guide/cli-install-cli-nodejs-windows",                          
+          ],
         },
         "user-guide/install-cli-via-proxy",
         "user-guide/cli-updatingcli",
@@ -188,7 +188,7 @@ module.exports = {
       type: "category",
       label: "Advanced Zowe configuration",
       items: [
-    //    "user-guide/mvd-configuration",
+        "user-guide/mvd-configuration",
         "user-guide/cli-configuringcli-ev",
         "user-guide/configure-data-sets-jobs-api",
         "user-guide/api-mediation/api-gateway-configuration",
@@ -197,15 +197,15 @@ module.exports = {
     },
   ],
   "use": [
-        "user-guide/zowe-getting-started-tutorial",
-    //    {
-    //      type: "category",
-    //      label: "Using Zowe Desktop",
-    //      items: [
-    //        "user-guide/mvd-using",
-    //        "user-guide/mvd-editor",
-    //      ],
-    //    },
+        "user-guide/zowe-getting-started-tutorial", // Need to confirm
+        {
+          type: "category",
+          label: "Using Zowe Desktop",
+          items: [
+            "user-guide/mvd-using",
+            "user-guide/mvd-editor",
+          ],
+        },
         "user-guide/api-mediation-api-catalog",
         "user-guide/api-mediation-metrics-service",
         {
@@ -335,31 +335,31 @@ module.exports = {
         }
       ],
     },
-    //{
-    //  type: "category",
-    //  label: "Developing for Zowe Application Framework",
-    //  items: [
-    //    "extend/extend-desktop/mvd-extendingzlux",
-    //    "extend/extend-desktop/mvd-plugindefandstruct",
-    //    "extend/extend-desktop/mvd-buildingplugins",
-    //    "extend/extend-desktop/mvd-installplugins",
-    //    "extend/extend-desktop/mvd-embeddingplugins",
-    //    "extend/extend-desktop/mvd-dataservices",
-    //    "extend/extend-desktop/mvd-authentication-api",
-    //    "extend/extend-desktop/mvd-internationalization",
-    //    "extend/extend-desktop/mvd-desktopandwindowmgt",
-    //    "extend/extend-desktop/mvd-configdataservice",
-    //    "extend/extend-desktop/mvd-uribroker",
-    //    "extend/extend-desktop/mvd-apptoappcommunication",
-    //    "extend/extend-desktop/mvd-iframecomm",
-    //    "extend/extend-desktop/mvd-errorreportingui",
-    //    "extend/extend-desktop/mvd-logutility",
-    //    "extend/extend-desktop/mvd-conda",
-    //  ],
-    //},
+    {
+      type: "category",
+      label: "Developing for Zowe Application Framework",
+      items: [
+        "extend/extend-desktop/mvd-extendingzlux",
+        "extend/extend-desktop/mvd-plugindefandstruct",
+        "extend/extend-desktop/mvd-buildingplugins",
+        "extend/extend-desktop/mvd-installplugins",
+        "extend/extend-desktop/mvd-embeddingplugins",
+        "extend/extend-desktop/mvd-dataservices",
+        "extend/extend-desktop/mvd-authentication-api",
+        "extend/extend-desktop/mvd-internationalization",
+        "extend/extend-desktop/mvd-desktopandwindowmgt",
+        "extend/extend-desktop/mvd-configdataservice",
+        "extend/extend-desktop/mvd-uribroker",
+        "extend/extend-desktop/mvd-apptoappcommunication",
+        "extend/extend-desktop/mvd-iframecomm",
+        "extend/extend-desktop/mvd-errorreportingui",
+        "extend/extend-desktop/mvd-logutility",
+        "extend/extend-desktop/mvd-conda",
+      ],
+    },
     "extend/k8s-extend",
-    //"extend/extend-ze/ze-extensions",
-    //"extend/extend-sdks",
+    "extend/extend-ze/ze-extensions",
+    "extend/extend-sdks",
     "extend/zowe-conformance-program",
   ],
   troubleshooting: [
