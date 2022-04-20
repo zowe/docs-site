@@ -1,6 +1,6 @@
 # Using the Zowe Desktop
 
-You can use the Zowe&trade; Application Framework to create application plug-ins for the Zowe Desktop. For more information, see [Extending the Zowe Application Framework](../extend/extend-desktop/mvd-extendingzlux.md). 
+You can use the Zowe&trade; Application Framework to create application plugins for the Zowe Desktop. For more information, see [Extending the Zowe Application Framework](../extend/extend-desktop/mvd-extendingzlux.md). 
 
 ## Navigating the Zowe Desktop
 
@@ -89,9 +89,9 @@ Use the Languages setting in the Preferences panel to change the desktop languag
 3. In the **Languages** dialog, click a language, and then click **Apply**.
 4. When you are prompted, restart Zowe.
 
-## Zowe Desktop application plug-ins
+## Zowe Desktop application plugins
 
-Application plugins are applications that you can use to access the mainframe and to perform various tasks. Developers can create application plugins using a sample application as a guide. The following application plug-ins are installed by default:
+Application plugins are applications that you can use to access the mainframe and to perform various tasks. Developers can create application plugins using a sample application as a guide. The following application plugins are installed by default:
 
 ### Hello World Sample
 The Hello World sample application plugin for developers demonstrates how to create a dataservice and how to create an application plugin using Angular and using React.
@@ -118,7 +118,7 @@ The VT Terminal plugin provides a user interface that emulates the basic functio
 The API Catalog plugin lets you view API services that have been discovered by the API Mediation Layer. For more information about the API Mediation Layer, Discovery Service, and API Catalog, see [API Mediation Layer Overview](../getting-started/overview.md).
 
 ### Editor
-With the Zowe Editor you can create, edit, and modify the properties of files such as ownership and permissions. You can also view and edit datasets. Navigation is controlled by the File Tree https://github.com/zowe/zlux-file-explorer. Other actions are available using the top left menu, a toolbar above the tree, or hotkeys.
+With the Zowe Editor you can create, edit, and modify the properties of files such as ownership and permissions. You can also view and edit datasets. Navigation is controlled by the [File Tree.](https://github.com/zowe/zlux-file-explorer) Other actions are available using the top left menu, a toolbar above the tree, or hotkeys.
 
 ### JES Explorer
 Use this application to query JES jobs with filters, and view the related steps, files, and status. You can also purge jobs from this view.
