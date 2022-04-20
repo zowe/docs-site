@@ -58,8 +58,8 @@ There are two major components of Zowe application server:  `ZLUX` and `ZSS`.  T
 The default location for logs for both zlux and zss is folder `$INSTANCE_DIR/logs`, but can customize the log locations by using environment variables in $INSTANCE_DIR/instance.env
 
 ```
-cat $INSTANCE_DIR/instance.env | grep ZLUX_NODE_LOG_DIR 
-cat $INSTANCE_DIR/instance.env | grep ZSS_LOG_DIR  
+cat $INSTANCE_DIR/instance.env | grep ZWED_NODE_LOG_DIR 
+cat $INSTANCE_DIR/instance.env | grep ZWES_LOG_DIR  
 ```
 
 Read more about controlling the log location [here](../../user-guide/mvd-configuration#controlling-the-logging-location).
@@ -69,7 +69,7 @@ Read more about controlling the log location [here](../../user-guide/mvd-configu
 cd <zowe-instance-folder>/logs
 
 # or if customized, navigate to the environment variable path
-cd $ZLUX_NODE_LOG_DIR
+cd $ZWED_NODE_LOG_DIR
 
 # list file by most recent first
 ls -lt

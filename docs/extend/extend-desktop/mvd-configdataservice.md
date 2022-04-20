@@ -306,5 +306,5 @@ The following policies are currently implemented:
 
 ## Examples
 
-  [zlux-app-manager](https://github.com/zowe/zlux-app-manager/tree/master/bootstrap/src/uri/mvd-uri.ts)
-  [VT Terminal App](https://github.com/zowe/vt-ng2/blob/master/webClient/src/app/app.component.ts)
+  [zlux-app-manager](https://github.com/zowe/zlux-app-manager/tree/v2.x/master/bootstrap/src/uri/mvd-uri.ts)
+  [VT Terminal App](https://github.com/zowe/vt-ng2/blob/v2.x/master/webClient/src/app/app.component.ts)

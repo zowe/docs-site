@@ -1,5 +1,5 @@
 # Configuring IFrame communication
-The Zowe Application Framework provides the following shared resource functions through a [ZoweZLUX object](https://github.com/zowe/zlux-platform/blob/master/interface/src/index.d.ts#L720): `pluginManager`, `uriBroker`, `dispatcher`, `logger`, `registry`, `notificationManager`, and `globalization`
+The Zowe Application Framework provides the following shared resource functions through a [ZoweZLUX object](https://github.com/zowe/zlux-platform/blob/v2.x/master/interface/src/index.d.ts#L720): `pluginManager`, `uriBroker`, `dispatcher`, `logger`, `registry`, `notificationManager`, and `globalization`
 
 Like REACT and Angular apps, IFrame apps can use the ZoweZLUX object to communicate with the framework and other apps. To enable communication in an IFrame app, you must add the following javascript to your app, for example in your `index.html` file:
 

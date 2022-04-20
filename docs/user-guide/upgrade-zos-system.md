@@ -33,21 +33,6 @@ The `zowe-configure-instance.sh` script will echo any values that are added to t
 Missing properties that will be appended to /u/winchj/zowe-instance/instance.env:
 ```
 
-### Important note for users upgrading to v1.14
-
-If you are upgrading to Zowe v1.14 (or higher) from a previous release, and the value of `ZOWE_EXPLORER_HOST` does not match the host and domain that you put into your browser to access Zowe, you must update your configuration due to updated referrer-based security.
-
-To configure your system for the version 1.14 update, perform **one** of the following tasks to update the `instance.env` configuration file:
-- Define `ZWE_EXTERNAL_HOSTS` as a comma-separated list of hosts from which you would access Zowe from your browser.
-  - `ZWE_EXTERNAL_HOSTS=host1,host2,...`
-
-- Define `ZWE_REFERRER_HOSTS` as a comma-separated list for the value to be applied specifically for referrer purposes.
-  - `ZWE_REFERRER_HOSTS=host1,host2,...`
-
-See [Updating the instance.env configuration file](../user-guide/configure-instance-directory.md#updating-the-instance-env-configuration-file) for additional information on the use of `instance.env` files.
-
-See [Configuring a Zowe instance via instance.env file](../user-guide/configure-instance-directory.md#configuring-a-Zowe-instance-via-instanceenv-file) for additional information on configuring `instance.env` files.
-
 ## Updating the PROCLIB members
 
 Zowe releases contain two proclib members, `ZWESISTC` and `ZWESVSTC` in the PDS `SZWESAMP`.  When the previous release of Zowe was installed, these would have been copied to a PDS in the proclib concatenation path and defined to run under their respective user IDs of `ZWESVUSR` and `ZWESIUSR`. See [Installing the Zowe started task (ZWESVSTC)](./configure-zowe-server.md) and [Installing the Zowe cross memory server (ZWESISTC)](./configure-xmem-server.md).

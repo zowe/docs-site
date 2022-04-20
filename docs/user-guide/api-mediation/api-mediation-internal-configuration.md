@@ -55,9 +55,9 @@ This section describes runtime configuration properties.
     This parameter lets you view the Zowe version by using the `/version` endpoint. To view the version requires setting up the launch parameter of the API Gateway - `apiml.zoweManifest` with a path to the Zowe build `manifest.json` file. This file is usually located in the root folder of Zowe build. 
     If the encoding of `manifest.json` file is different from UTF-8 and IBM1047, ensure that you set up the launch parameter of API Gateway - `apiml.zoweManifestEncoding` with correct encoding.
     
-    **Note:** It is also possible to know the version of API ML and Zowe (if API ML used as part of Zowe), using the `/api/v1/gateway/version` endpoint in the API Gateway service in the following format: 
+    **Note:** It is also possible to know the version of API ML and Zowe (if API ML used as part of Zowe), using the `/gateway/api/v1/version` endpoint in the API Gateway service in the following format: 
     ```   
-    https://localhost:10010/api/v1/gateway/version    
+    https://localhost:10010/gateway/api/v1/version    
     ```
 
 * **apiml.security.auth.tokenProperties.expirationInSeconds**
@@ -188,16 +188,17 @@ services and third-party libraries, stop cascading failure, and enable resilienc
 
 ## AT-TLS 
 
-The communication server on z/OS provides a functionality to encrypt HTTP communication for on-platform running jobs. This functionality is refered to as Application Transparent Transport Layer Security (AT-TLS). Starting with Zowe version 1.24, it is possible to leverage AT-TLS within the API Mediation Layer. Each API ML component can run with AT-TLS rules applied. Some components, such as the Discovery service, can be made AT-TLS aware by enabling the AT-TLS profile, whereby TLS information can be utilized. Such information could be a client certificate. To enable the AT-TLS profile and disable the TLS application in API ML, update `instance.env` with the following environment variables:
+The communication server on z/OS provides a functionality to encrypt HTTP communication for on-platform running jobs. This functionality is refered to as Application Transparent Transport Layer Security (AT-TLS). Starting with Zowe version 1.24, it is possible to leverage AT-TLS within the API Mediation Layer. Each API ML component can run with AT-TLS rules applied. Some components, such as the Discovery service, can be made AT-TLS aware by enabling the AT-TLS profile, whereby TLS information can be utilized. Such information could be a client certificate. To enable the AT-TLS profile and disable the TLS application in API ML, update `zowe.yaml` with following values under the respective component in the `components` section:
 ```
-SPRING_PROFILES_ACTIVE=attls
-APIML_SSL_ENABLED=false 
+components.*.spring.profiles.active=attls
+components.*.server.ssl.enabled=false
+components.*.server.internal.ssl.enabled=false
 ```
-While API ML can not handle TLS on its own, the Mediation Layer needs information about the server certificate that is defined in the AT-TLS rule. Update the `instance.env` file with the path to the SAF Key ring from the AT-TLS rule and specify the alias that is used for Inbound communication:
+While API ML can not handle TLS on its own, the Mediation Layer needs information about the server certificate that is defined in the AT-TLS rule. Update the `zowe.yaml` file for each respective APIML component in the `components` sections with the path to the SAF Key ring from the AT-TLS rule and specify the alias that is used for Inbound communication:
 ```
-KEYSTORE=<SAF-key-ring-from-AT-TLS-rule>
-KEYSTORE_TYPE=JCERACFKS
-KEYSTORE_PASSWORD=<keyring-password>
-KEY_ALIAS=<certificate-alias-from-AT-TLS-rule>
+components.*.certificate.keystore.file=<SAF-key-ring-from-AT-TLS-rule>
+components.*.certificate.keystore.type=JCERACFKS
+components.*.certificate.keystore.password=<keyring-password>
+components.*.certificate.keystore.alias=<certificate-alias-from-AT-TLS-rule>
 ```
 **Note:** This procedure does not configure AT-TLS on z/OS, but rather enables API ML to work with AT-TLS in place.

@@ -23,7 +23,7 @@ _BPX_JOBNAME=${ZOWE_PREFIX}${COMPONENT_CODE} java -Xms16m -Xmx512m -Dibm.servers
     -Dserver.compression.enabled=true \
     -Dserver.connection-timeout=8000 \
     -Dconnection.httpsPort=${GATEWAY_PORT} \
-    -Dconnection.ipAddress=${ZOWE_EXPLORER_HOST} \
+    -Dconnection.ipAddress=${ZWE_haInstance_hostname} \
     -Dspring.main.banner-mode=off \
     -Djava.protocol.handler.pkgs=com.ibm.crypto.provider \
     -jar ${ROOT_DIR}/components/jobs-api/bin/jobs-api-server-1.0.0-boot.jar &

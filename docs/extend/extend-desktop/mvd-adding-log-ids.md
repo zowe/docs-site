@@ -39,13 +39,13 @@ Router (javascript) dataservices can have their message files at
 `PLUGIN/lib/assets/i18n/log/messages_LANG.json`
 
 Such as: 
-https://github.com/zowe/zlux-server-framework/blob/master/plugins/config/lib/assets/i18n/log/messages_en.json
+https://github.com/zowe/zlux-server-framework/blob/v2.x/master/plugins/config/lib/assets/i18n/log/messages_en.json
 
 ## Adding messages to the app server
 Since the app server is not a plugin, it has its logs in a specific place.
 The message file is located here: 
 
-https://github.com/zowe/zlux-server-framework/blob/master/lib/assets/i18n/log/messages_en.json
+https://github.com/zowe/zlux-server-framework/blob/v2.x/master/lib/assets/i18n/log/messages_en.json
 
 ## Adding messages to the app manager
 The app manager also has parts that are not plugins, such as the dispatcher code found in zlux-platform, or the bootstrap code. For these, we use the bootstrap plugin's web JSON files, such as the English one at

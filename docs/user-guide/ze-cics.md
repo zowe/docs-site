@@ -2,32 +2,6 @@
 
 The CICS Extension for Zowe Explorer adds additional functionality to the popular Visual Studio Code extension, [Zowe Explorer](https://github.com/zowe/vscode-extension-for-zowe). This extension allows you to interact with CICS regions and programs, and run commands against them.
 
-## Contents
-
-- [Features](#features)
-- [System requirements](#system-requirements)
-- [Installing](#installing)
-    - [Installing from Visual Studio Code Extensions](#installing-from-visual-studio-code-extensions)
-    - [Installing from a VSIX file](#installing-from-a-vsix-file)
-- [Getting started](#getting-started)
-    - [Creating profile](#creating-profile)
-    - [Updating profile](#updating-profile)
-    - [Hiding profiles](#hiding-profiles)
-    - [Deleting profiles](#deleting-profiles)
-- [CICS resources](#cics-resources)
-    - [Showing and filtering resources in a region](#showing-and-filtering-resources-in-a-region)
-    - [Showing and filtering resources in a plex](#showing-and-filtering-resources-in-a-plex)
-    - [Showing and filtering resources in an 'All' resource tree](#showing-and-filtering-resources-in-an-all-resource-tree)
-    - [Showing attributes](#showing-attributes)
-    - [Enabling and disabling](#enabling-and-disabling)
-    - [New copy and phase in](#new-copy-and-phase-in)
-    - [Opening and closing local files](#opening-and-closing-local-files)
-- [Untrusted TLS certificates](#untrusted-tls-certificates)
-- [Usage tips](#usage-tips)
-- [Providing feedback or contributing](#providing-feedback-or-contributing)
-    - [Checking the source of an error](#checking-the-source-of-an-error)
-    - [Filing an issue](#filing-an-issue)
-- [Uninstalling](#uninstalling)
 
 ## Features
 
