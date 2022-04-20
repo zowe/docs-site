@@ -2,11 +2,10 @@
 
 The API ML Message Service component unifies and stores REST API error messages and log messages in a single file. The Message Service component enables users to mitigate the problem of message definition redundancy which helps to optimize the development process.
 
-- [API Mediation Layer Message Service Component](#api-mediation-layer-message-service-component)
-  - [Message Definition](#message-definition)
-  - [Creating a message](#creating-a-message)
-  - [Mapping a message](#mapping-a-message)
-    - [API ML Logger](#api-ml-logger)
+- [Message Definition](#message-definition)
+- [Creating a message](#creating-a-message)
+- [Mapping a message](#mapping-a-message)
+- [API ML Logger](#api-ml-logger)
 
 ## Message Definition
 
@@ -27,8 +26,6 @@ API ML uses a customizable infrastructure to format both REST API error messages
     - Log messages: `ERROR`, `WARNING`, `INFO`, `DEBUG`, or `TRACE`
 
 - Message `text` - a description of the issue
-- Message `reason` - A reason for why this issue occured
-- Message `action` - What should I as a user do to correct the problem
 
 The following example shows the message definition.
 
@@ -40,8 +37,6 @@ messages:
       number: ZWEASA001
       type: ERROR
       text: "The provided '%s' name is empty."
-      reason: "There is no value in the name"
-      action: "Please fill the name with value"
 ```
 
 ## Creating a message
@@ -93,9 +88,7 @@ The following example is a result of using the `mapToView` method.
     "messageKey": "org.zowe.sample.apiservice.{TYPE}.greeting.empty",
     "messageType": "ERROR",
     "messageNumber": "ZWEASA001",
-    "messageContent": "The provided 'test' name is empty.",
-    "messageReason": "There is no value in the name",
-    "messageAction": "Please fill the name with value"
+    "messageContent": "The provided 'test' name is empty."
   }
   ]
 }
@@ -109,9 +102,7 @@ The following example is the result of using the `mapToApiMessage` method.
   "messageKey": "org.zowe.sample.apiservice.{TYPE}.greeting.empty",
   "messageType": "ERROR",
   "messageNumber": "ZWEASA001",
-  "messageContent": "The provided 'test' name is empty.",
-  "messageReason": "There is no value in the name",
-  "messageAction": "Please fill the name with value"
+  "messageContent": "The provided 'test' name is empty."
 }
 ```
 
@@ -129,8 +120,6 @@ messages:
       number: ZWEASA001
       type: DEBUG
       text: "The provided '%s' name is empty."
-      reason: "There is no value in the name"
-      action: "Please fill the name with value"
 ```
 
 When you map a log message, use `mapToLogMessage` to return a log message as text.

@@ -8,52 +8,44 @@ module.exports = {
       items: [
         "getting-started/overview", //folder_name/file_name
         "getting-started/zowe-architecture",
+        "getting-started/freqaskques",
       ],
     },
     {
       type: "category",
-      label: "FAQ",
+      label: "Release notes",
       items: [
-        "getting-started/zowe_faq",
-    //    "getting-started/zowe_v2_faq",
+        "getting-started/release-notes/v1_27_3",
+        "getting-started/release-notes/v1_27_2",
+        "getting-started/release-notes/v1_27_1",
+        "getting-started/release-notes/v1_27",
+        "getting-started/release-notes/v1_26",
+        "getting-started/release-notes/v1_25",
+        "getting-started/release-notes/v1_24",
+        "getting-started/release-notes/v1_23",
+        "getting-started/summaryofchanges",
       ],
     },
-    //{
-    //  type: "category",
-    //  label: "Release notes",
-    //  items: [
-    //    "getting-started/release-notes/v2_0",
-    //  ],
-    //},
     {
       type: "category",
-      label: "Quick start",
+      label: "Zowe quick start",
       items: [
-    //    "getting-started/zowe-getting-started", //Need to write post 2.0
+        "getting-started/zowe-getting-started",
         "getting-started/cli-getting-started",
       ],
     },
     {
       type: "category",
-      label: "Migrating from V1 to V2",
+      label: "Learning paths",
       items: [
-        "getting-started/migrate-cli",
-    //    "getting-started/migrate-instance",  //Not ready yet, need to check
-        "extend/migrate-extensions",
+        "getting-started/user-roadmap-apiml",
+        "getting-started/user-roadmap-app-framework",
+        "getting-started/user-roadmap-zowe-cli",
+        "getting-started/user-roadmap-zowe-explorer",
+        "getting-started/user-roadmap-client-sdk",
+        "getting-started/user-roadmap-zowe-mobile",
       ],
     },
-  //  {
-  //    type: "category",
-  //    label: "Learning paths",  //Need to revisit these topics post 2.0
-  //    items: [
-  //      "getting-started/user-roadmap-apiml",
-  //      "getting-started/user-roadmap-app-framework",
-  //      "getting-started/user-roadmap-zowe-cli",
-  //      "getting-started/user-roadmap-zowe-explorer",
-  //      "getting-started/user-roadmap-client-sdk",
-  //      "getting-started/user-roadmap-zowe-mobile",
-  //    ],
-  //  },
     "getting-started/zowe-resources",
   ],
 
@@ -82,23 +74,32 @@ module.exports = {
           items: [
             "user-guide/install-zowe-zos-convenience-build",
             {
-              type: "category",
-              label: "Installing Zowe SMP/E build",
-              items: [
-                "user-guide/install-zowe-smpe",
-                "user-guide/install-zowe-smpe-zosmf-workflow",
+            type: "category",
+            label: "Installing Zowe SMP/E build",
+            items: [
+              "user-guide/install-zowe-smpe",
+              "user-guide/install-zowe-smpe-zosmf-workflow",
               ],
             },
-        //    {
-        //      type: "category",
-        //      label: "Installing Zowe Portable Software Instance",
-        //      items: [
-        //        "user-guide/install-zowe-pswi",
-        //        "user-guide/install-zowe-pswi-address-requirements",
-        //        "user-guide/install-zowe-pswi-acquire",
-        //        "user-guide/install-zowe-pswi-deployment",
-        //      ],
-        //    },
+            {
+              type: "category",
+              label: "Installing Zowe Docker Bundle",
+              items: [
+                "user-guide/install-docker",
+                "user-guide/install-docker-image",
+                "user-guide/configuring-docker",
+              ],
+            },
+            {
+              type: "category",
+              label: "Installing Zowe Portable Software Instance",
+              items: [
+                "user-guide/install-zowe-pswi",
+                "user-guide/install-zowe-pswi-address-requirements",
+                "user-guide/install-zowe-pswi-acquire",
+                "user-guide/install-zowe-pswi-deployment",
+              ],
+            },
           ],
         }, 
         {
@@ -109,38 +110,41 @@ module.exports = {
               type: "category",
               label: "Configuring and starting Zowe with script",
               items: [
-                "user-guide/initialize-zos-system",
                 "user-guide/configure-zos-system",
                 {
                   type: "category",
                   label: "Configuring certificates",
                   items: [
+                    "user-guide/configure-certificates",
                     "user-guide/configure-certificates-keystore",
                     "user-guide/configure-certificates-keyring",
-                    "user-guide/certificates-setup",
                   ],
                 },
                 "user-guide/configure-xmem-server",
+                "user-guide/configure-instance-directory",
                 "user-guide/configure-zowe-server",
+                "user-guide/api-mediation-standalone",
                 "user-guide/configure-auxiliary-address-space",
               ],
             },
             "user-guide/configure-zowe-zosmf-workflow",
           ],
         },
-       {
-         type: "category",
-         label: "High Availability",
-         items: [
-          "user-guide/zowe-ha-overview",
-          "user-guide/configure-sysplex",
-          "user-guide/systemrequirements-zosmf-ha",
-          "user-guide/configure-caching-service-ha",
-         ],
-       }, 
+        {
+          type: "category",
+          label: "High Availability",
+          items: [
+            "user-guide/install-ha-sysplex",
+            "user-guide/configure-sysplex",
+            "user-guide/systemrequirements-zosmf-ha",
+            "user-guide/configure-caching-service-ha",
+            "user-guide/configure-zowe-ha-server",
+          ],
+        }, 
         "user-guide/verify-zowe-runtime-install",
-    //    "user-guide/upgrade-zos-system",
-    //    "user-guide/zowe-zos-uninstall",       
+        "user-guide/stop-zowe-zos",
+        "user-guide/upgrade-zos-system",
+        "user-guide/zowe-zos-uninstall",       
       ],
     },
     {
@@ -158,24 +162,41 @@ module.exports = {
       type: "category",
       label: "Installing Zowe CLI",
       items: [
-        "user-guide/cli-install-cli-checklist",
         "user-guide/systemrequirements-cli",
-        {
-          type: "category",
-          label: "Install CLI",
-          items: [
-            "user-guide/cli-installcli",
-            "user-guide/cli-configure-scs-on-headless-linux-os",
-            "user-guide/cli-configure-cli-on-os-where-scs-unavailable",
-            "user-guide/cli-install-cli-nodejs-windows",                          
-          ],
-        },
+        "user-guide/cli-installing-ssh2-package",
+        "user-guide/cli-install-cli-nodejs-windows",
+        "user-guide/cli-installcli",
         "user-guide/install-cli-via-proxy",
         "user-guide/cli-updatingcli",
         "user-guide/cli-uninstall",
       ],
     },
-    
+    {
+      type: "category",
+      label: "Installing Zowe CLI @next version (Technical Preview)",
+      items: [
+        "user-guide/cli-development-roadmap-next",
+        {
+          type: "category",
+          label: "Install Zowe CLI @next",
+          items: [
+            "user-guide/cli-install-cli-next",
+            "user-guide/cli-configure-scs-on-zlinux-os",
+            "user-guide/cli-configure-cli-on-os-where-scs-unavailable",
+          ],
+        },
+        {
+          type: "category",
+          label: "Using Daemon Mode (Technical Preview)",
+          items: [
+            "user-guide/cli-using-daemon-mode",
+            "user-guide/cli-configure-daemon-on-zlinux-os",
+          ],
+        },        
+        "user-guide/cli-using-global-profile-configuration",
+              
+      ],
+    },
     {
       type: "category",
       label: "Installing Zowe Explorer",
@@ -189,7 +210,7 @@ module.exports = {
       label: "Advanced Zowe configuration",
       items: [
         "user-guide/mvd-configuration",
-        "user-guide/cli-configuringcli-ev",
+        "user-guide/cli-configuringcli",
         "user-guide/configure-data-sets-jobs-api",
         "user-guide/api-mediation/api-gateway-configuration",
         "user-guide/api-mediation/api-mediation-internal-configuration",
@@ -197,7 +218,7 @@ module.exports = {
     },
   ],
   "use": [
-        "user-guide/zowe-getting-started-tutorial", // Need to confirm
+        "user-guide/zowe-getting-started-tutorial",
         {
           type: "category",
           label: "Using Zowe Desktop",
@@ -208,41 +229,7 @@ module.exports = {
         },
         "user-guide/api-mediation-api-catalog",
         "user-guide/api-mediation-metrics-service",
-        {
-          type: "category",
-          label: "Using Zowe CLI",
-          items: [
-            "user-guide/cli-using-usingcli",
-            "user-guide/cli-using-displaying-help",
-            "user-guide/cli-using-understanding-core-command-groups",
-            "user-guide/cli-using-issuing-first-command",
-            {
-              type: "category",
-              label: "Configuring daemon mode",
-              items: [
-                "user-guide/cli-using-using-daemon-mode",
-                "user-guide/cli-configure-daemon-on-zlinux-os",
-                              ],
-            },
-            "user-guide/cli-using-using-profiles",
-            {
-              type: "category",
-              label: "Configuring team profiles",
-              items: [
-                "user-guide/cli-using-using-team-profiles",
-                "user-guide/cli-using-initializing-team-configuration",
-                "user-guide/cli-using-team-configuration-application-developers",
-                "user-guide/cli-using-team-configuration-team-leaders",
-                "user-guide/cli-using-sharing-team-config-files",
-                "user-guide/cli-using-team-managing-credential-security",
-                "user-guide/cli-using-global-storing-properties-automatically",
-                                              ],
-            },
-            "user-guide/cli-using-integrating-apiml",
-            "user-guide/cli-using-working-certificates",
-            "user-guide/cli-using-completing-advanced-tasks",
-          ],
-        },
+        "user-guide/cli-usingcli",
         {
           type: "category",
           label: "Zowe CLI plug-ins",
@@ -251,22 +238,15 @@ module.exports = {
             "user-guide/cli-swreqplugins",
             "user-guide/cli-installplugins",
             "user-guide/cli-cicsplugin",
-            {
-              type: "category",
-              label: "IBM® Db2® Database Plug-in for Zowe CLI",
-              items: [
-                "user-guide/cli-db2plugin",
-                "user-guide/cli-db2-install-m1",
-                              ],
-            },
+            "user-guide/cli-db2plugin",
             "user-guide/cli-ftpplugin",
             "user-guide/cli-imsplugin",
             "user-guide/cli-mqplugin",
-            "user-guide/ze-install",
+            "user-guide/cli-scsplugin",
           ],
         },
         "user-guide/ze-usage",
-         {
+        {
           type: "category",
           label: "Zowe Explorer extensions",
           items: [
@@ -287,11 +267,10 @@ module.exports = {
         "extend/lifecycling-with-zwesvstc",
       ],
     },
-    "extend/migrate-extensions",
-   {
-     type: "category",
-     label: "Developing for Zowe CLI",
-     items: [
+    {
+      type: "category",
+      label: "Developing for Zowe CLI",
+      items: [
         "extend/extend-cli/cli-devTutorials",
         "extend/extend-cli/cli-setting-up",
         "extend/extend-cli/cli-installing-sample-plugin",
@@ -312,18 +291,14 @@ module.exports = {
         "extend/extend-apiml/onboard-micronaut-enabler",
         "extend/extend-apiml/onboard-nodejs-enabler",
         "extend/extend-apiml/onboard-static-definition",
-        "extend/extend-apiml/onboard-wizard",
         "extend/extend-apiml/api-mediation-sso",
         "extend/extend-apiml/service-information",
-        "extend/extend-apiml/websocket",
-        "extend/extend-apiml/create-apiml-extension",
         "extend/extend-apiml/api-mediation-message-service",
         "extend/extend-apiml/api-mediation-security",
         "extend/extend-apiml/api-mediation-routing",
         "extend/extend-apiml/api-mediation-passtickets",
         "extend/extend-apiml/custom-metadata",
-        "extend/extend-apiml/api-mediation-versioning",
-        "extend/extend-apiml/implement-new-saf-provider", 
+        "extend/extend-apiml/websocket",
         {
           type: "category",
           label: "Caching service",
@@ -369,12 +344,12 @@ module.exports = {
       items: [
         "troubleshoot/troubleshooting",
         "troubleshoot/troubleshoot-zowe-release",
-    //    "troubleshoot/troubleshoot-diagnostics",
-    //    "troubleshoot/verify-fingerprint",
+        "troubleshoot/troubleshoot-diagnostics",
+        "troubleshoot/verify-fingerprint",
       ],
     },
-    //"troubleshoot/troubleshoot-zos",
-    //"troubleshoot/troubleshoot-zos-certificate",
+    "troubleshoot/troubleshoot-zos",
+    "troubleshoot/troubleshoot-zos-certificate",
     "troubleshoot/k8s-troubleshoot",
     {
       type: "category",
@@ -388,13 +363,12 @@ module.exports = {
       type: "category",
       label: "Zowe Application Framework",
       items: [
-    //    "troubleshoot/app-framework/app-troubleshoot",
+        "troubleshoot/app-framework/app-troubleshoot",
         "troubleshoot/app-framework/app-mustgather",
-    //    "troubleshoot/app-framework/app-issue",
-        "troubleshoot/app-framework/zss-error-codes",
+        "troubleshoot/app-framework/app-issue",
       ],
     },
-    //"troubleshoot/troubleshoot-zos-services",
+    "troubleshoot/troubleshoot-zos-services",
     {
       type: "category",
       label: "Zowe CLI",
@@ -420,7 +394,7 @@ module.exports = {
       label: "Zowe Launcher",
       items: [
         "troubleshoot/launcher/launcher-troubleshoot",
-    //    "troubleshoot/launcher/launcher-error-codes"
+        "troubleshoot/launcher/launcher-error-codes"
       ],
     },
   ],
@@ -452,25 +426,13 @@ module.exports = {
   ],
   reference: [
     "appendix/zowe-cli-command-reference",
-    {
-      type: "category",
-      label: "ZWE Server Command Reference",
-      items: [
-        {
-          type: "autogenerated",
-          dirName: "appendix/zwe_server_command_reference"
-        }
-      ]
-    },
     "appendix/zowe-api-reference",
-    "appendix/server-component-manifest",
-    "appendix/zowe-yaml-configuration",      
-  //  "appendix/bill-of-materials",
-  //  {
-  //    type: "link",
-  //    label: "Third Party Software Requirements",
-  //    href: "https://github.com/zowe/docs-site/tree/master/tpsr/tpsr-v2.0.x.md",
-  //  },
+    "appendix/bill-of-materials",
+    {
+      type: "link",
+      label: "Third Party Software Requirements",
+      href: "https://github.com/zowe/docs-site/tree/master/tpsr/tpsr-v1.27.x.md",
+    },
   ],
 };
 

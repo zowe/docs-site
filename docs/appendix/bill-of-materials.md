@@ -30,10 +30,14 @@ The following materials are distributed with Zowe&trade; binaries:
 | files/zlux/sample-react-app.pax | Sample React ZAF App | [sample-react-app](https://github.com/zowe/sample-react-app) | N/A |
 | files/zlux/tn3270-ng2.pax | TN3270 ZAF App | [tn3270-ng2](https://github.com/zowe/tn3270-ng2) | N/A |
 | files/zlux/vt-ng2.pax | USS/VT Terminal Emulator ZAF App | [vt-ng2](https://github.com/zowe/vt-ng2) | N/A |
+| files/zlux/config/zluxserver.json | Zowe Application Framework Config JSON | [zowe-install-packaging](https://github.com/zowe/zowe-install-packaging/blob/master/files/zlux/config/zluxserver.json) | [Zowe Install/Packaging Pipeline](https://github.com/zowe/zowe-install-packaging/blob/master/Jenkinsfile) |
 | files/zlux/config/plugins/*.json | Zowe Application Framework JSON Configuration Files | [zowe-install-packaging](https://github.com/zowe/zowe-install-packaging/blob/master/files/zlux/config/plugins/)| [Zowe Install/Packaging Pipeline](https://github.com/zowe/zowe-install-packaging/blob/master/Jenkinsfile) |
+| files/zlux/zlux-workflow.pax | Workflow ZAF App | [zlux-workflow](https://github.com/zowe/zlux-workflow) | N/A |
 | files/zlux/zlux-editor.pax | Editor ZAF App | [zlux-editor](https://github.com/zowe/zlux-editor) | N/A |
 | files/zlux/zlux-core.pax | Zowe Application Framework Core Components | [zlux](https://github.com/zowe/zlux)| N/A |
 | files/zlux/sample-angular-app.pax | Sample Angular ZAF App | [sample-angular-app](https://github.com/zowe/sample-angular-app) | N/A |
+| files/zlux/zosmf-auth.pax | z/OSMF Authentication ZAF App | [zosmf-auth](https://github.com/zowe/zosmf-auth)| N/A |
+| files/zlux/zss-auth.pax | zSS Authentication ZAF App | [zss-auth](https://github.com/zowe/zss-auth)| N/A |
 | files/jcl/ZWESECUR.jcl | JCL to define Zowe z/OS security definitions | [zowe-install-packaging](https://github.com/zowe/zowe-install-packaging/blob/master/files/jcl/ZWESECUR.jcl)| [Zowe Install/Packaging Pipeline](https://github.com/zowe/zowe-install-packaging/blob/master/Jenkinsfile) |
 | files/jcl/ZWENOSEC.jcl | JCL to remove Zowe z/OS Security definitions| [zowe-install-packaging](https://github.com/zowe/zowe-install-packaging/blob/master/files/jcl/ZWENOSEC.jcl)| [Zowe Install/Packaging Pipeline](https://github.com/zowe/zowe-install-packaging/blob/master/Jenkinsfile) |
 | files/jcl/ZWESVSTC.jcl | JCL to start Zowe (Zowe STC) | [zowe-install-packaging](https://github.com/zowe/zowe-install-packaging/blob/master/files/jcl/ZWESVSTC.jcl)| [Zowe Install/Packaging Pipeline](https://github.com/zowe/zowe-install-packaging/blob/master/Jenkinsfile) |

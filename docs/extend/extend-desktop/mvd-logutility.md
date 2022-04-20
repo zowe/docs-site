@@ -45,9 +45,7 @@ NodeJS uses `global` as its global object, so the logger is attached to:
 
 #### Web
 
-(Angular App Instance Injectible). See **Logger** in [Zowe Desktop and window management](mvd-desktopandwindowmgt.md).  
-
-(others) Browsers use `window` as the global object, so the logger is attached to:
+Browsers use `window` as the global object, so the logger is attached to:
 `window.COM_RS_COMMON_LOGGER`
 
 ### Component logger
@@ -57,6 +55,11 @@ Component loggers are created from the core logger object, but when working with
 #### App Server
 
 See **Router Dataservice Context** in the topic [Dataservices](mvd-dataservices.md).   
+
+
+#### Web
+
+(Angular App Instance Injectible). See **Logger** in [Zowe Desktop and window management](mvd-desktopandwindowmgt.md).  
 
 
 ## Logger API
@@ -182,4 +185,4 @@ To use log message IDs, take the following steps:
    
 ### Message ID logging examples
 
-Server core: https://github.com/zowe/zlux-server-framework/blob/v2.x/master/plugins/config/lib/assets/i18n/log/messages_en.json
+Server core: https://github.com/zowe/zlux-server-framework/blob/master/plugins/config/lib/assets/i18n/log/messages_en.json

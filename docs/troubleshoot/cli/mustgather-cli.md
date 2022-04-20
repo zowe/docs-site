@@ -2,6 +2,8 @@
 
 Follow these instructions to gather specific pieces of information to help troubleshoot Zowe&trade; CLI issues.
 
+[[toc]]
+
 ## Identify the currently installed CLI version
 
 Issue the following command:
@@ -46,20 +48,20 @@ Environment variables are available to specify logging level and the CLI home di
 
 **Important\!** Setting the log level to TRACE or ALL might result in "sensitive" data being logged. For example, command line arguments will be logged when TRACE is set.
 
-For more information about logging and environment variables, see [Setting CLI log levels](../../user-guide/cli-configuringcli-ev#setting-cli-log-levels). 
-
-### CLI daemon mode
-
-By default, the CLI daemon mode binary creates or reuses a file in the user's home directory each time a Zowe CLI command runs. In some cases, this behavior might be undesirable. For example, the home directory resides on a network drive and has poor file performance. For information about how to change the location that the daemon uses, see [Setting CLI daemon mode properties](../../user-guide/cli-configuringcli-ev#setting-cli-daemon-mode-properties).
-
+| Environment Variable | Description | Values | Default |
+| ---------------------- | ----------- |------- | ------- |
+| `ZOWE_APP_LOG_LEVEL`        | Zowe CLI logging level            | Log4JS log levels (OFF, TRACE, DEBUG, INFO, WARN, ERROR, FATAL) | DEBUG   |
+| `ZOWE_IMPERATIVE_LOG_LEVEL` | Imperative CLI Framework logging level | Log4JS log levels (OFF, TRACE, DEBUG, INFO, WARN, ERROR, FATAL) | DEBUG   |
 
 ### Home directory
 
 You can set the location on your computer for the Zowe CLI home directory, which contains log files, profiles, and plug-ins for the product.
 
-The default `.zowe` folder is created when you issue your first Zowe CLI command. If you change the location of the folder, you must reinstall plug-ins and recreate or move profiles and log files that you want to retain. In some cases, you might want to maintain a different set of profiles in multiple folders, then switch between them using the environment variable.
+**Tip!** The default `.zowe` folder is created when you issue your first Zowe CLI command. If you change the location of the folder, you must reinstall plug-ins and recreate or move profiles and log files that you want to retain. In some cases, you might want to maintain a different set of profiles in multiple folders, then switch between them using the environment variable.
 
-For information about setting an environment variable for the Zowe CLI home directory, see [Setting the CLI home directory](../../user-guide/cli-configuringcli-ev#setting-the-cli-home-directory).
+| Environment Variable | Description | Values | Default |
+| ---------------------- | ----------- | ------ | ------- |
+| `ZOWE_CLI_HOME`  | Zowe CLI home directory location | Any valid path on your computer | C:\Users\\<username\>\\.zowe
 
 The values for these variables can be **echo**ed.
 
@@ -115,7 +117,7 @@ npm config set logs-max 50
 
 This command increases the log count to 50, so that more log files will be stored on the system. Now you can run tests multiple times and not lose the log files. The logs can be passed to Support for analysis.
 
-As the log files are created only when an npm command fails, but you are interested to see what is executed, you can increase the log level of npm. Issue the following command:
+As the log files are created only when an npm conmmand fails, but you are interested to see what is executed, you can increase the log level of npm. Issue the following command:
 
 ```
 npm config set loglevel verbose

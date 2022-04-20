@@ -23,7 +23,7 @@ const downloadableFiles = [
     description: (
       <>
         View documentation on commands, actions, and options in Zowe CLI. The
-        reference document is based on the <code>@zowe-v2-lts</code> version of
+        reference document is based on the <code>@zowe-v1-lts</code> version of
         the CLI. It contains the web help for all Zowe ecosystem-conformant 
         plug-ins that contributed to this website.
       </>

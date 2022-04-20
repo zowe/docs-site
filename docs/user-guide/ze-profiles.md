@@ -2,8 +2,6 @@
 
 After you install Zowe Explorer, you need to have a Zowe Explorer profile to use all functions of the extension. You can optionally activate the Secure Credential Store plug-in to securely store your credentials.
 
-**Note:** You can continue using Zowe V1 profiles with the Zowe Explorer V2. For more information, see ***insert link here***.
-
 ## Working with Zowe Explorer profiles
 
 You must have a `zosmf` compatible profile before you can use Zowe Explorer. You can set up a profile to retain your credentials, host, and port name. In addition, you can create multiple profiles and use them simultaneously.

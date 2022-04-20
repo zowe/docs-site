@@ -68,11 +68,11 @@ Services that belong to the same product family are displayed on the same tile.
 
    **Example:**
 
-    `/{yourServiceId}/api/v1/{endpointName}`
+    `/api/v1/{yourServiceId}/{endpointName}`
 
     The path of the full URL that includes the base URL is also displayed in the following format:
 
-    `https://hostName:basePort/{yourServiceId}/api/v1/{endpointName}`
+    `https://hostName:basePort/api/v1/{yourServiceId}/{endpointName}`
 
     Both links target the same endpoint location.
 
@@ -161,5 +161,5 @@ Successful requests return a pop-up notification that displays the message, `The
 
 ## Change password via API Catalog
 
-In case expiration of a mainframe password, the API Catalog offers the possibility to set a new password, using either the SAF or the z/OSMF provider.
+In case of expiration of the mainframe password, API Catalog offers the possibility to set a new password, using either the SAF or the z/OSMF provider.
 For more information about the password change functionality, see [Advanced Gateway features configuration](../user-guide/api-mediation/api-gateway-configuration.md).
