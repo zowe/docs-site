@@ -74,27 +74,17 @@
 						<h2>API Examples</h2>
 					</a>
 					<p><strong>List Active Workflow Instance(s) in z/OSMF</strong></p>
-					<pre><code class="language-typescript"><span class="hljs-keyword">import</span> { IProfile, Session, Logger, LoggingConfigurer, TextUtils, ImperativeError,
-         CredentialManagerFactory } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@zowe/imperative&quot;</span>;
-<span class="hljs-keyword">import</span> { ZosmfSession } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@zowe/zosmf-for-zowe-sdk&quot;</span>;
-<span class="hljs-keyword">import</span> { getDefaultProfile } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@zowe/core-for-zowe-sdk&quot;</span>;
+					<pre><code class="language-typescript"><span class="hljs-keyword">import</span> { ProfileInfo } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@zowe/imperative&quot;</span>;
 <span class="hljs-keyword">import</span> { IActiveWorkflows, ListWorkflows } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@zowe/zos-workflows-for-zowe-sdk&quot;</span>;
 
 (<span class="hljs-keyword">async</span> () =&gt; {
-    <span class="hljs-comment">//Initialize the Imperative Credential Manager Factory and Logger</span>
-    Logger.initLogger(LoggingConfigurer.configureLogger(<span class="hljs-string">&#x27;lib&#x27;</span>, {<span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;test&#x27;</span>}));
-    <span class="hljs-comment">// Uncommment the below line if the Secure Credential Store is in use</span>
-    <span class="hljs-comment">// await CredentialManagerFactory.initialize({service: &quot;Zowe-Plugin&quot;});</span>
+    <span class="hljs-comment">// Load connection info from default z/OSMF profile</span>
+    <span class="hljs-keyword">const</span> profInfo = <span class="hljs-keyword">new</span> ProfileInfo(<span class="hljs-string">&quot;zowe&quot;</span>);
+    <span class="hljs-keyword">await</span> profInfo.readProfilesFromDisk();
+    <span class="hljs-keyword">const</span> zosmfProfAttrs = profInfo.getDefaultProfile(<span class="hljs-string">&quot;zosmf&quot;</span>);
+    <span class="hljs-keyword">const</span> zosmfMergedArgs = profInfo.mergeArgsForProfile(zosmfProfAttrs, { <span class="hljs-attr">getSecureVals</span>: <span class="hljs-literal">true</span> });
+    <span class="hljs-keyword">const</span> session = ProfileInfo.createSession(zosmfMergedArgs.knownArgs);
 
-    <span class="hljs-comment">// Get the default z/OSMF profile and create a z/OSMF session with it</span>
-    <span class="hljs-keyword">let</span> defaultZosmfProfile: IProfile;
-    <span class="hljs-keyword">try</span> {
-        defaultZosmfProfile = <span class="hljs-keyword">await</span> getDefaultProfile(<span class="hljs-string">&quot;zosmf&quot;</span>, <span class="hljs-literal">true</span>);
-    } <span class="hljs-keyword">catch</span> (err) {
-        <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> ImperativeError({<span class="hljs-attr">msg</span>: <span class="hljs-string">&quot;Failed to get a profile.&quot;</span>});
-    }
-
-    <span class="hljs-keyword">const</span> session: Session = ZosmfSession.createBasicZosmfSession(defaultZosmfProfile);
     <span class="hljs-keyword">const</span> response: IActiveWorkflows = <span class="hljs-keyword">await</span> ListWorkflows.getWorkflows(session);
     <span class="hljs-built_in">console</span>.log(response.workflows);
 })().catch(<span class="hljs-function">(<span class="hljs-params">err</span>) =&gt;</span> {

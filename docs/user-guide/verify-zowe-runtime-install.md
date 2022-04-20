@@ -42,7 +42,7 @@ where,
 The following example illustrates how to use the **curl** utility to invoke API Mediation Layer endpoint and the **grep** utility to parse out the response status variable value
 
 ```
-$ curl -v -k --silent https://myhost:httpsPort/api/v1/apicatalog/application/health 2>&1 | grep -Po '(?<=\"status\"\:\")[^\"]+'
+$ curl -v -k --silent https://myhost:httpsPort/api/v1/apicatalog/application/health 2>&1 | awk '/"status":"UP"/' | awk -F\" '{print$4;}'
 UP
 ```
 
