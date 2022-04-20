@@ -19,6 +19,8 @@ The CICS Extension for Zowe Explorer adds additional functionality to the popula
 
 Install [Visual Studio Code](https://code.visualstudio.com/download) on your PC.
 
+Install Zowe Explorer v2.
+
 ## Installing
 
 You can install or update the extension from Visual Studio Code Extensions or from a VSIX file.
@@ -46,7 +48,7 @@ If your Zowe Explorer is installed, please follow the steps below to install Zow
 
    ![Download Zowe CICS Explorer](../images/ze-cics/cics-latest-vsix.png)
 
-2. Open the Extensions icon in the side bar, navigate to the **...** menu, press **Install from VSIX ...** and select the downloaded `cics-extension-for-zowe-1.x.x.vsix` file.
+2. Open the Extensions icon in the side bar, navigate to the **...** menu, press **Install from VSIX ...** and select the downloaded `Zowe.cics-extension-for-zowe-2.x.x.vsix` file.
 
    ![Installing Zowe CICS Explorer](../images/ze-cics/zowe-cics-explorer-install.gif)
 
@@ -65,8 +67,24 @@ The Zowe Explorer pane will show tree views for **Data Sets**, **Unit System Ser
 If you already have a Zowe CICS CLI profile, the CICS tree will load the default profile on startup.  
 
 If you don't have an existing Zowe CICS CLI profile, follow these steps to create one:
+#### Using Zowe Team Configuration
 
 1. Select the **+** button in the CICS tree.
+
+2. Select the **Create New CICS profile** option to open your config file.
+
+3. Edit the config file to add a CICS profile.
+
+4. Refresh the Zowe Explorer for IBM CICS extension by either clicking the button at the top level of the CICS view, or the `Zowe Explorer for IBM CICS: Refresh` command palette option.
+
+5. Select the **+** button in the CICS tree and click the newly created profile to load it into view.
+
+![Zowe CICS Explorer profiles from config](../images/ze-cics/create-profile-from-config.gif)
+
+#### Using Zowe v1 profiles
+
+1. Select the **+** button in the CICS tree.
+
 2. Select the **Create a CICS profile** option to open a panel that defines connection details.
 
 **Note**: The connection must point to a CICS region's CICS Management Client Interface (CMCI) TCP/IP host name and port number. The region can be a WUI server in a CICSPlex, or else a stand-alone Single Management Application Programming (SMSS) region.  
@@ -75,9 +93,23 @@ Configuring a CICS region to have a connection is a system programmer task and m
 
 ![Zowe CICS Explorer profiles](../images/ze-cics/create-profile.gif)
 
-To show more than one CICS profiles in the tree, select the **+** button and choose from the list of profiles. Only profiles that not already included in the CICS tree will be shown. To view all Zowe CICS CLI profiles, issue the command `zowe profiles list cics` from a terminal.  
+To show more than one CICS profiles in the tree, select the **+** button and choose from the list of profiles. Only profiles that not already included in the CICS tree will be shown.
 
 ### Updating profile
+
+#### Using Zowe Team Configuration
+
+1. Right-click a profile to open up the profile menu actions.
+
+2. Select the **Update Profile** button to open the config file.
+
+3. Edit the config file to update the profile(s).
+
+4. Refresh the Zowe Explorer for IBM CICS extension by either clicking the button at the top level of the CICS view, or the `Zowe Explorer for IBM CICS: Refresh` command palette option.
+
+![Zowe CICS Explorer update profiles from config](../images/ze-cics/update-profile-from-config.gif)
+
+#### Using Zowe v1 profiles
 
 1. Right-click a profile to open up the profile menu actions.
 
@@ -100,6 +132,20 @@ To show more than one CICS profiles in the tree, select the **+** button and cho
    ![Zowe CICS Explorer hide profiles](../images/ze-cics/hide-profile.gif)
 
 ### Deleting profiles
+
+#### Using Zowe Team Configuration
+
+1. Right-click a chosen profile.
+
+2. Select **Delete Profile** which opens the config file.
+
+3. Edit the config file to remove the cics profile entry.
+
+4. Refresh the Zowe Explorer for IBM CICS extension by either clicking the button at the top level of the CICS view, or the `Zowe Explorer for IBM CICS: Refresh` command palette option.
+
+![Zowe CICS Explorer delete profiles from config](../images/ze-cics/delete-profile-from-config.gif)
+
+#### Using Zowe v1 profiles
 
 1. Right-click a chosen profile.
 
