@@ -15,7 +15,7 @@ module.exports = {
       label: "FAQ",
       items: [
         "getting-started/zowe_faq",
-    //    "getting-started/zowe_v2_faq",
+        "getting-started/zowe_v2_faq",
       ],
     },
     {
@@ -36,9 +36,10 @@ module.exports = {
       type: "category",
       label: "Migrating from V1 to V2",
       items: [
-        "getting-started/migrate-cli",
     //    "getting-started/migrate-instance",  //Not ready yet, need to check
         "extend/migrate-extensions",
+        "getting-started/migrate-cli",
+        "getting-started/zowe-office-hours"
       ],
     },
     "getting-started/zowe-resources",
@@ -446,6 +447,7 @@ module.exports = {
   ],
   reference: [
     "appendix/zowe-cli-command-reference",
+    "appendix/zowe-api-reference",
     {
       type: "category",
       label: "ZWE Server Command Reference",
@@ -455,10 +457,9 @@ module.exports = {
           dirName: "appendix/zwe_server_command_reference"
         }
       ]
-    },
-    "appendix/zowe-api-reference",
-    "appendix/server-component-manifest",
-    "appendix/zowe-yaml-configuration",      
+    },  
+    "appendix/zowe-yaml-configuration", 
+    "appendix/server-component-manifest",     
   //  "appendix/bill-of-materials",
   //  {
   //    type: "link",

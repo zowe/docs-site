@@ -1,11 +1,11 @@
-# Start and stop Zowe
+# Starting and stopping Zowe
 
-
-Zowe consists 3 main started tasks,
+Zowe consists 3 main started tasks:
 
 - `ZWESLSTC` as Zowe main started task,
 - `ZWESISTC` as Zowe cross memory server
 - and `ZWESASTC` as Zowe cross memory auxiliary server.
+
 ## Starting and stopping the cross memory server `ZWESISTC` on z/OS
 
 The cross memory server is run as a started task from the JCL in the PROCLIB member `ZWESISTC`. It supports reusable address spaces and can be started through SDSF with the operator start command with the `REUSASID=YES` keyword:

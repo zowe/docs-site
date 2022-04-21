@@ -14,8 +14,10 @@ Because Zowe is a set of components, before installing Zowe, use this guide to d
 Consider the following scenarios:
 
 - If you plan to use Zowe CLI on PC only, you may not need to install the Zowe server components.
-**Note**: Some CLI plug-ins require the installation of components on z/OS.
+
+   **Note**: Some CLI plug-ins require the installation of components on z/OS.
 If you plan to use core Zowe CLI groups from your PC, the z/OS you connect to does not require any components of Zowe to be installed on z/OS, unless you want to take advantage of advanced authentication methods such as single sign-on or multi-factor authentication.
+
 - If you use the Docker technical preview to run the Linux parts of Zowe in a container, you only need to configure the Zowe z/OS component to start the ZSS server.
 
 

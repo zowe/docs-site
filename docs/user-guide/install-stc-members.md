@@ -1,4 +1,4 @@
-# Install Zowe main started tasks
+# Installing Zowe main started tasks
 
 The JCL members for each of Zowe's started tasks need to be present on the JES proclib concatenation path.  The command `zwe init stc` will copy these from the install source location `.SZWESAMP` to the targted PDS specified in the `zowe.setup.dataset.proclib` value `USER.PROCLIB`.  The three proclib member names are specified in `zowe.yaml` arguments.  
 
