@@ -2,6 +2,8 @@
 
 Zowe uses the Caching Service to centralize the state data persistent in high availability (HA) mode. If you are runnning the caching service on z/OS there are two storage methods: `inMemory` or `VSAM`.  If you are running the caching service off platform, such as a linux or windows container image, it is also possible to specify `redis`.  
 
+To learn more about Caching Service, see [Using the Caching Service](../extend/extend-apiml/api-mediation-caching-service.md).  
+
 For users 
 
 - **inMemory** 
@@ -11,13 +13,15 @@ For users
    To use this method, set the `zowe.components.caching-service.storage.mode` value to `inMemory` in the `zowe.yanl` configuration file. When this method is enabled, the Caching Service will not persist any data.  
 
    ```
-    caching-service:
-    enabled: true
-    port: 7555
-      storage:
-        evictionStrategy: reject
-        mode: imMemory
-        size: 10000
+   zowe
+     components
+       caching-service:
+         enabled: true
+         port: 7555
+           storage:
+             evictionStrategy: reject
+             mode: imMemory
+             size: 10000
    ```
 
 - **VSAM**
@@ -28,22 +32,46 @@ For users
    3. In `zowe.yaml`, configure `zowe.components.caching-sevice.storage.vsam.name` with the VSAM data set name.  If in step 2 you used `zwe init vsam` to create the VSAM data set then the values will already be set.  
 
    ```
-    caching-service:
-    enabled: true
-    port: 7555
-      storage:
-        size: 10000
-        evictionStrategy: reject
-        mode: VSAM
-        vsam:
-          name: IBMUSER.ZWE.CUST.APICACHE
+   zowe
+     components
+       caching-service:
+       enabled: true
+         port: 7555
+           storage:
+             size: 10000
+             evictionStrategy: reject
+             mode: VSAM
+             vsam:
+               name: IBMUSER.ZWE.CUST.APICACHE
    ```
 
 - **redis**
 
    Redis is not available if you are running the API Mediation Layer on z/OS under unix system services.  Its usage is for when the APIML is running off platform, such as in a linux or windows container as part of a hybrid cloud deployment.
 
-   To enable this method, set the value of `zowe.components.caching-service.storage.mode` to `redis` in the `zowe.yaml` configuration file. See [Redis configuration](../extend/extend-apiml/api-mediation-redis.md#redis-configuration) for more information. To learn more about Caching Service, see [Using the Caching Service](../extend/extend-apiml/api-mediation-caching-service.md).
+   To enable this method, set the value of `zowe.components.caching-service.storage.mode` to `redis` in the `zowe.yaml` configuration file.  There are a number of values to control the redis nodes, sentinel and ssl properties that will need to be set in the `zowe.yaml` file.  For more information on these properties and their values see [Redis configuration](../extend/extend-apiml/api-mediation-redis.md#redis-configuration).  
+   
 
-
-
+   ```
+   zowe
+     components
+       caching-service:
+       enabled: true
+         port: 7555
+           storage:
+             size: 10000
+             evictionStrategy: reject
+             mode: redis
+             redis
+               masterNodeUri: 
+               timeout: 60
+             sentinel
+               masterInstance
+               nodes
+             ssl
+               enabled: true
+               keystore:
+               keystorePassword:
+               trustStore:
+               trustStorePassword
+   ```
