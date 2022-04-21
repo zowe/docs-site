@@ -10,7 +10,7 @@ For users
    
    This storage method is designed for quick start of the service and should be used only for single instance scenario and development or test purpose. Do not use it in production or high availability scenario.
   
-   To use this method, set the `zowe.components.caching-service.storage.mode` value to `inMemory` in the `zowe.yanl` configuration file. When this method is enabled, the Caching Service will not persist any data.  
+   To use this method, set the `zowe.components.caching-service.storage.mode` value to `inMemory` in the `zowe.yaml` configuration file. When this method is enabled, the Caching Service will not persist any data.  
 
    ```
    zowe
@@ -28,9 +28,10 @@ For users
    
    To use this method, 
    1. Set the value of `zowe.components.caching-service.storage.mode` value to `VSAM` in the `zowe.yaml` configuration file.
-   2. Create a VSAM data set. See [Creating a VSAM data set](#creating-a-vsam-data-set) for instructions.  There are two ways to create the data set, either using the JCL member `SZWESAMP(ZWECVSEM)` where the data set name is defined in the `#dsname` variable.  
+   2. Create a VSAM data set. See [Initialize VSAM data set](../user-guide/initialize-vsam-dataset.md) for instructions.  There are two ways to create the data set, either using the JCL member `SZWESAMP(ZWECVSEM)` where the data set name is defined in the `#dsname` variable.  
    3. In `zowe.yaml`, configure `zowe.components.caching-sevice.storage.vsam.name` with the VSAM data set name.  If in step 2 you used `zwe init vsam` to create the VSAM data set then the values will already be set.  
 
+   
    ```
    zowe
      components
@@ -51,7 +52,7 @@ For users
 
    To enable this method, set the value of `zowe.components.caching-service.storage.mode` to `redis` in the `zowe.yaml` configuration file.  There are a number of values to control the redis nodes, sentinel and ssl properties that will need to be set in the `zowe.yaml` file.  For more information on these properties and their values see [Redis configuration](../extend/extend-apiml/api-mediation-redis.md#redis-configuration).  
    
-
+   
    ```
    zowe
      components
@@ -75,3 +76,4 @@ For users
                trustStore:
                trustStorePassword
    ```
+
