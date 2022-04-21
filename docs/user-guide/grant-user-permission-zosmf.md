@@ -1,4 +1,4 @@
-# Grant users permission to access z/OSMF
+# Granting users permission to access z/OSMF
 
 For every TSO user ID that is going to log on to Zowe and use services that require z/OSMF, it must have permission to access the z/OSMF services that are used by Zowe. They should be added to the group with appropriate z/OSMF privileges, `IZUUSER` or `IZUADMIN` by default. 
 

@@ -6,7 +6,7 @@ The following diagram illustrates the high-level Zowe architecture.
 
 ![Zowe Architecture Diagram](../images/common/zowe-architecture.png)
 
-The diagram shows the default port numbers that are used by Zowe.  These are dependent on each instance of Zowe and are held in the Zowe YAML configuration file. For more information, see [Creating and configuring the Zowe instance directory](../user-guide/configure-instance-directory.md).
+The diagram shows the default port numbers that are used by Zowe. These are dependent on each instance of Zowe and are held in the Zowe YAML configuration file.
 
 Zowe components can be categorized by location: server or client. While the client is always an end-user tool such as a PC, browser, or mobile device, the server components can be further categorized by what machine they run on.
 
