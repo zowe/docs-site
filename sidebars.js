@@ -18,13 +18,13 @@ module.exports = {
     //    "getting-started/zowe_v2_faq",
       ],
     },
-    //{
-    //  type: "category",
-    //  label: "Release notes",
-    //  items: [
-    //    "getting-started/release-notes/v2_0",
-    //  ],
-    //},
+    {
+      type: "category",
+      label: "Release notes",
+      items: [
+        "getting-started/release-notes/v2_0",
+      ],
+    },
     {
       type: "category",
       label: "Quick start",
