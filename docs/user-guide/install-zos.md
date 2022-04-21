@@ -3,15 +3,15 @@
 When you install Zowe&trade; on z/OS, you install the following two parts: 
 
 1. The Zowe runtime, which consists of a number of components including: 
-   - The Zowe Desktop, also known as the Zowe Application Framework (ZLUX)
+   - Zowe Application Framework
    - Zowe API Mediation Layer
    - Z Secure Services (ZSS)
 
 2. The Zowe Cross Memory Server, also known as ZIS, which is an APF authorized server application that provides privileged services to Zowe in a secure manner.
 
-Zowe provides the ability for some of its unix components to be run not under USS, but as a Linux Docker container, see [Installing Zowe Server Components using Docker](install-docker.md). <Badge text="Technical Preview"/> 
+Zowe provides the ability for some of its unix components to be run not under USS, but as a container, see [Installing Zowe Containers](k8s-introduction.md).
 
-If you want to configure Zowe for high availability, see [Installing Zowe Server Components in Sysplex](install-ha-sysplex.md) for instructions.
+If you want to configure Zowe for high availability, see [Installing Zowe z/OS Components with High Availability](install-ha-overview.md) for instructions.
 
 ## Stage 1: Plan and prepare
 
@@ -27,7 +27,7 @@ Before you start the installation, review the information on hardware and softwa
 
    - **Convenience build**
 
-     The Zowe z/OS binaries are packaged as a PAX file which is a full product install.  Transfer this to a USS directory and expand its contents.  The command `zwe install` will extract a number of PDS members contain load modules, JCL scripts, and PARMLIB entries, see [Install the MVS Data Sets](./install-zowe-zos-convenience-build.md#install-the-mvs-data-sets).
+     The Zowe z/OS binaries are packaged as a PAX file which is a full product install.  Transfer this to a USS directory and expand its contents.  The command `zwe install` will extract a number of PDS members contain load modules, JCL scripts, and PARMLIB entries. 
 
    - **SMP/E build**
 
@@ -35,19 +35,21 @@ Before you start the installation, review the information on hardware and softwa
      - A pax.Z file, which contains an archive (compressed copy) of the FMIDs to be installed.
      - A readme file, which contains a sample job to decompress the pax.Z file, transform it into a format that SMP/E can process, and invoke SMP/E to extract and expand the compressed SMP/E input data sets.
 
+   <!-- Not ready yet 
    - **Portable Software Instance (PSWI)**
 
      You can acquire and install the Zowe z/OS PAX file as a portable software instance (PSWI) using z/OSMF.
 
    While the procedures to obtain and install the convenience build, SMP/E build or PSWI are different, the procedure to configure a Zowe runtime is the same irrespective of how the build is obtained and installed.
+   -->
 
 1. Obtain and install the Zowe build.
 
    - For how to obtain the convenience build and install it, see [Installing Zowe runtime from a convenience build](install-zowe-zos-convenience-build.md).
    - For how to obtain the SMP/E build and install it, see [Installing Zowe SMP/E](install-zowe-smpe.md).
-   - For how to obtain the PSWI and install it, see [Installing Zowe from a Portable Software Instance](install-zowe-pswi.md).
-   
-After successful installation of either a convenience build or an SMP/E build, there will be a zFS folder that contains the unconfigured Zowe runtime `<RUNTIME_DIR>`, a SAMPLIB library `SZWESAMP` that contains sample members, and a load library `SZWEAUTH` that contains load modules. The steps to prepare the z/OS environment to launch Zowe are the same irrespective of the installation method.
+   <!-- Not ready yet - For how to obtain the PSWI and install it, see [Installing Zowe from a Portable Software Instance](install-zowe-pswi.md). -->
+
+After successful installation of either a convenience build or an SMP/E build, there will be a zFS folder that contains the unconfigured Zowe runtime directory, a utility library `SZWEEXEC` that contains utilities, a SAMPLIB library `SZWESAMP` that contains sample members, and a load library `SZWEAUTH` that contains load modules. The steps to prepare the z/OS environment to launch Zowe are the same irrespective of the installation method.
 
 ## Stage 3: Configure the Zowe z/OS runtime
 
@@ -58,16 +60,17 @@ You can configure the Zowe runtime with one of the following methods depending o
 
 **Tip:** We recommend you open the links to this configuration procedure in new tabs.
 
-1. Using JCL together with the `zwe init`command
-
 Whether you have obtained Zowe from a .pax convenience build, or an SMP/E distribution, the steps to initialize the system are the same.
 
- - [mvs](./initialize-zos-system.md#initialize-the-mvs-data-sets-using-zwe-init-mvs). Copy the data sets provided with Zowe to cust data sets.
- - Security. Create the user IDs and security manager settings.
- - stc. Configure the system to launch the Zowe started task.
- - apfauth. APF authorize the LOADLIB containing the modules that need to perform z/OS priviledged security calls.
- - certificate. Configure Zowe to use TLS certificates.
- - vsam. Configure the VSAM files needed to run the Zowe caching service used for high availability (HA)
+1. [Prepare custom MVS data sets](initialize-vsam-dataset.md). Copy the data sets provided with Zowe to custom data sets.
+1. (Required only if you are configuring Zowe for cross LPAR sysplex high availability): [Create the VSAM data sets used by the Zowe API Mediation Layer caching service](initialize-vsam-dataset.md). 
+1. [APF authorize load libraries containing the modules that need to perform z/OS priviledged security calls.](apf-authorize-load-library.md).
+1. [Initialize Zowe security configurations](initialize-security-configuration.md). Create the user IDs and security manager settings.
+
+   If Zowe has already been launched on a z/OS system from a previous release of Zowe v2 you can skip this security configuration step unless told otherwise in the release documentation.
+
+1. Configure Zowe to use TLS certificates.
+1. [Install Zowe main started tassks](install-stc-members.md).
 
 ## Looking for troubleshooting help?
 

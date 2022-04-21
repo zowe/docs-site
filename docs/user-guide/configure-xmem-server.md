@@ -1,7 +1,7 @@
 # Installing and configuring the Zowe cross memory server (ZWESISTC)
 
 The Zowe cross memory server, also known as ZIS, provides privileged cross-memory services to the Zowe Desktop and runs as an
-APF-authorized program. The same cross memory server can be used by multiple Zowe desktops. If you wish to start Zowe without the desktop (for example bring up just the API Mediation Layer), you do not need to install and configure a cross memory server and can skip this step. The cross memory server is needed to be able to log on to the Zowe desktop and operate its apps such as the File Editor.  
+APF-authorized program. The same cross memory server can be used by multiple Zowe desktops. The cross memory server is needed to be able to log on to the Zowe desktop and operate its apps such as the File Editor.  If you wish to start Zowe without the desktop (for example bring up just the API Mediation Layer), you do not need to install and configure a cross memory server and can skip this step. 
 
 To install and configure the cross memory server, you must define APF-authorized load libraries, program properties table (PPT) entries, and a parmlib. This requires familiarity with z/OS.
 
@@ -24,7 +24,7 @@ The cross memory server runtime artifacts, the JCL for the started tasks, the pa
 
 The load modules for the cross memory server and an auxiliary server it uses are found in the `SZWEAUTH` PDSE.  
 
-  - **Convenience Build** The location of `SZWESAMP` and `SZWEAUTH` for a convenience build depends on the value of the `zowe.setup.dataset.prefix` parameters in the `zowe.yaml` file used to configure the `zwe install` command, see [Install the MVS data sets](./install-zowe-zos-convenience-build.md#install-the-mvs-data-sets).
+  - **Convenience Build** The location of `SZWESAMP` and `SZWEAUTH` for a convenience build depends on the value of the `zowe.setup.dataset.prefix` parameters in the `zowe.yaml` file used to configure the `zwe install` command, see [Install the MVS data sets](./install-zowe-zos-convenience-build.md#step-5-install-the-mvs-data-sets).
 
   - **SMP/E** For an SMP/E installation, `SZWESAMP` and `SZWEAUTH` are the SMP/E target libraries whose location depends on the value of the `#thlq` placeholder in the sample member `AZWE001.F1(ZWE3ALOC)`.
 
@@ -68,7 +68,7 @@ Issue one of the following operator commands to dynamically add the load library
 
 #### Configuring using `zwe init apfauth` 
 
-If you are using the `zwe init` command to configure your z/OS system, the step `zwe init apfauth` can be used to generate the `SETPROG` commands and execute them directly.  This takes the input parameters `zowe.setup.mvs.authLoadLib` for the `SZWEAUTH` PDS location, and `zowe.setup.mvs.authPluginLib` for the location of the PDS that is used to contain plugins for the cross memory server.  For more information on `zwe init apfauth` see, [APF Authorize Load Libraries](./configure-zos-system.md#apf-authorize-load-libraries).
+If you are using the `zwe init` command to configure your z/OS system, the step `zwe init apfauth` can be used to generate the `SETPROG` commands and execute them directly.  This takes the input parameters `zowe.setup.mvs.authLoadLib` for the `SZWEAUTH` PDS location, and `zowe.setup.mvs.authPluginLib` for the location of the PDS that is used to contain plugins for the cross memory server.  For more information on `zwe init apfauth` see, [APF Authorize Load Libraries](apf-authorize-load-library.md).
 
 #### Making APF auth be part of the IPL
 

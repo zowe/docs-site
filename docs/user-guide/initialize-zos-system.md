@@ -1,65 +1,45 @@
-# Extract the installation data sets
+# Initializing the z/OS system
 
-Before Zowe can be started a number of steps need to occur to prepare the z/OS Environmemnt and to configure all of the required artefacts to successfully start the Zowe started task.
+After you install the Zowe runtime, you must initialize Zowe with proper security configurations, certificates, and so on before you can start it. To do this, you run the `zwe init` command. This step is common for installing and configuring Zowe from either a convenience build or from an SMP/E build.
 
-Whether you have obtained Zowe from a `.pax` convenience build, or an SMP/E distribution, the steps to initialize the system are the same.
+## About the `zwe init` command
 
-- **security**.   Create the user IDs and security manager settings.  
-- **[mvs](#initialize-the-mvs-data-sets-using-zwe-init-mvs)**.  Copy the data sets provided with Zowe to cust data sets.
-- **stc**. Configure the system to launch the Zowe started task.
-- **apfauth**.  APF authorize the LOADLIB containing the modules that need to perform z/OS priviledged security calls.  
-- **certificate**.  Configure Zowe to use TLS certificates.
-- **vsam**.  Configure the VSAM files needed to run the Zowe caching service used for high availability (HA)
+The `zwe init` command is a combination of the following sub-commands. Each sub-command defines a configuration. 
 
-## Initialize the MVS Data sets using `zwe init mvs`
+- **`mvs`**: Copy the data sets provided with Zowe to custom data sets.
+- **`security`**: Create the user IDs and security manager settings.
+- **`apfauth`**: APF authorize the LOADLIB containing the modules that need to perform z/OS priviledged security calls. 
+- **`certificate`**: Configure Zowe to use TLS certificates.
+- **`vsam`**: Configure the VSAM files needed to run the Zowe caching service used for high availability (HA)
+- **`stc`**: Configure the system to launch the Zowe started task.
 
-During the installation of Zowe three data sets `SZWEAUTH`, `SZWESAMP` and `SZWEEXEC` were created as part of the `zwe install` step and populated with members copied across from the Zowe installation files.  The contents of these represent the original files that were provided as part of the Zowe installation and are not meant to be modified, as they will be replaced during subsequent upgrades of Zowe version 2.  For modification and execution three custom data sets are used instead which are created by the command `zwe init mvs`.
+You can type `zwe init --help` to learn more about the command or see the [`zwe init` command reference](../appendix/zwe_server_command_reference/zwe/init/zwe-init) for detailed explanation, examples, and parameters. 
 
-The `zowe.yaml` section that contains the parameters for the data set names is:
+`zwe init` command requires a [Zowe configuration file](installandconfig#zowe-configuration-file) to proceed. This configuration file instructs how Zowe should be initialized. Please create and review this file before proceeding.
 
-```
-zowe:
-  setup:
-    dataset:
-      prefix: IBMUSER.ZWE
-      parmlib: IBMUSER.ZWE.CUST.PARMLIB
-      jcllib: IBMUSER.ZWE.CUST.JCLLIB
-      authLoadlib: IBMUSER.ZWE.CUST.ZWESALL
-      authPluginLib: IBMUSER.ZWE.CUST.ZWESAPL
-```
+## Procedure
 
-The storage requirements for the three data sets are included here.
-
-Library DDNAME | Member Type | zowe.yaml | Target Volume | Type | Org | RECFM | LRECL | No. of 3390 Trks | No. of DIR Blks
----|---|---|---|---|---|---|---|---|--
-CUST.PARMLIB | PARM Library Members | zowe.setup.dataset.parmlib | ANY | U | PDSE | FB | 80 | 15 | 5
-CUST.JCLLIB | JCL Members | zowe.setup.dataset.jcllib | ANY | U | PDSE | FB | 80 | 15 | 5
-CUST.ZWESAPL | CLIST copy utilities | zowe.setup.dataset.authPluginLib | ANY | U | PDSE | U | 0 | 15 | N/A
-
-An example of executing `zwe init mvs` is shown below.  
+To initialize the z/OS system and permissions that Zowe requires, run the following command. 
 
 ```
-#>zwe init mvs -c ./zowe.yaml
--------------------------------------------------------------------------------
->> Initialize Zowe custom data sets
-
-Create data sets if they are not exist
-Creating IBMUSER.ZWEV2.CUST.PARMLIB
-Creating IBMUSER.ZWEV2.CUST.JCLLIB
-Creating IBMUSER.ZWEV2.SZWEAUTH
-Creating IBMUSER.ZWEV2.CUST.ZWESAPL
-
-Copy IBMUSER.ZWEV2.SZWESAMP(ZWESIP00) to WINCHJ.ZWEV2.CUST.PARMLIB(ZWESIP00)
-Copy components/zss/LOADLIB/ZWESIS01 to WINCHJ.ZWEV2.SZWEAUTH(ZWESIS01)
-Copy components/zss/LOADLIB/ZWESAUX to WINCHJ.ZWEV2.SZWEAUTH(ZWESAUX)
-Copy components/launcher/bin/zowe_launcher to WINCHJ.ZWEV2.SZWEAUTH(ZWELNCH)
-
->> Zowe custom data sets are initialized successfully.
-#>
+zwe init --c /path/to/zowe.yaml
 ```
 
-As well as the three `CUST` data sets, the PDS `SZWEAUTH` is created.  This may already exist (as it is created by the `zwe init mvs` command, in which case you may receive the error message `Error ZWEL0158E: IBMUSER.ZWEV2.SZWEAUTH already exists`.  You may ignore this message, or you may use the `--allow-overwritten` option on the command, for example `zwe init mvs -c zowe.yaml --allow-overwritten`.
+## Next steps
 
-## Verifying Data Set initialization
+The `zwe init` command runs the sub-commands in sequence automatically. If you have successfully ran the above command, you can move on to [start Zowe](./start-zowe-zos.md).
 
-If this step is successful there will be three data sets matching the values in `zowe.setup.dataset.parmlib`, `zowe.setup.dataset.jcllib` and `zowe.setup.dataset.authPluginLib` in the `zowe.yaml` file.  The member `ZWESIP00` will exist in the `CUST.PARMLIB` and the `JCLLIB` and `ZWESAPL` will be empty.  
+You can choose to run the sub-commands one by one to define each step based on your need, or if you encounter some failures with `zwe init` command, you can pick up the failed sub-commands step specifically and re-run it.
+
+1. [Prepare custom MVS data sets](initialize-mvs-dataset.md). Copy the data sets provided with Zowe to custom data sets.
+1. [Initialize Zowe security configurations](initialize-security-configuration.md). Create the user IDs and security manager settings.
+
+   If Zowe has already been launched on a z/OS system from a previous release of Zowe v2 you can skip this security configuration step unless told otherwise in the release documentation.
+
+1. [APF authorize load libraries containing the modules that need to perform z/OS privileged security calls.](apf-authorize-load-library.md).
+1. [Configure Zowe to use TLS certificates](configure-certificates-keystore.md).
+1. (Required only if you are configuring Zowe for cross LPAR sysplex high availability): [Create the VSAM data sets used by the Zowe API Mediation Layer caching service](initialize-vsam-dataset.md). 
+1. [Install Zowe main started tassks](install-stc-members.md).
+
+To learn how to run the `zwe init` command step by step, type `zwe init <sub-command> --help`. For example, `zwe init stc --help`.
+

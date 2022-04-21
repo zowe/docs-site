@@ -1,6 +1,6 @@
 # Creating and adding Zowe extension containers
 
-Zowe extensions such as services and plug-ins that use Zowe component packaging can be used within a Zowe container environment. To do this, you must deliver the extension as a container image that is compatible with Zowe containers. You can follow Zowe's [container conformance criteria](https://github.com/zowe/zowe-install-packaging/blob/v2.x/staging/containers/conformance.md) to understand and achieve compatibility.
+Zowe extensions such as services and plug-ins that use Zowe component packaging can be used within a Zowe container environment. To do this, you must deliver the extension as a container image that is compatible with Zowe containers. You can follow Zowe's [container conformance criteria](k8s-conformance.md) to understand and achieve compatibility.
 
 **Note**: Missing z/OS dependencies must be checked before creating and adding Zowe extension containers. 
 
