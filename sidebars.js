@@ -38,7 +38,6 @@ module.exports = {
       items: [
     //    "getting-started/migrate-instance",  //Not ready yet, need to check
         "extend/migrate-extensions",
-        "getting-started/migrate-cli",
         "getting-started/zowe-office-hours"
       ],
     },
