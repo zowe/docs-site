@@ -20,9 +20,10 @@ module.exports = {
     },
     {
       type: "category",
-      label: "Release notes",
+      label: "What's new",
       items: [
         "getting-started/release-notes/v2_0",
+        "getting-started/zowe-office-hours"
       ],
     },
     {
@@ -38,7 +39,11 @@ module.exports = {
       items: [
     //    "getting-started/migrate-instance",  //Not ready yet, need to check
         "extend/migrate-extensions",
-        "getting-started/zowe-office-hours"
+        {
+          type: "link",
+          label: "Migrating Zowe CLI from V1 to V2",
+          href: "../user-guide/cli-updatingcli#updating-to-the-zowe-cli-v2-long-term-support-v2-lts-version",
+        },
       ],
     },
     "getting-started/zowe-resources",
@@ -82,16 +87,16 @@ module.exports = {
                 "user-guide/install-zowe-smpe-zosmf-workflow",
               ],
             },
-        //    {
-        //      type: "category",
-        //      label: "Installing Zowe Portable Software Instance",
-        //      items: [
-        //        "user-guide/install-zowe-pswi",
-        //        "user-guide/install-zowe-pswi-address-requirements",
-        //        "user-guide/install-zowe-pswi-acquire",
-        //        "user-guide/install-zowe-pswi-deployment",
-        //      ],
-        //    },
+            {
+              type: "category",
+              label: "Installing Zowe Portable Software Instance",
+              items: [
+                "user-guide/install-zowe-pswi",
+                "user-guide/install-zowe-pswi-address-requirements",
+                "user-guide/install-zowe-pswi-acquire",
+                "user-guide/install-zowe-pswi-deployment",
+              ],
+            },
           ],
         }, 
         {
@@ -191,7 +196,7 @@ module.exports = {
     },
   ],
   "use": [
-        "user-guide/zowe-getting-started-tutorial", // Need to confirm
+        "user-guide/zowe-getting-started-tutorial", 
         {
           type: "category",
           label: "Using Zowe Desktop",
@@ -200,8 +205,14 @@ module.exports = {
             "user-guide/mvd-editor",
           ],
         },
-        "user-guide/api-mediation-api-catalog",
-        "user-guide/api-mediation-metrics-service",
+        {
+          type: "category",
+          label: "Using Zowe API Mediation Layer",
+          items: [
+            "user-guide/api-mediation-api-catalog",
+            "user-guide/api-mediation-metrics-service",
+          ],
+        },
         {
           type: "category",
           label: "Using Zowe CLI",
@@ -382,13 +393,13 @@ module.exports = {
       type: "category",
       label: "Zowe Application Framework",
       items: [
-    //    "troubleshoot/app-framework/app-troubleshoot",
-        "troubleshoot/app-framework/app-mustgather",
-    //    "troubleshoot/app-framework/app-issue",
+    //    "troubleshoot/app-framework/app-troubleshoot", //still refers to instance.env
+    //    "troubleshoot/app-framework/app-mustgather", //still refers to instance.env
+        "troubleshoot/app-framework/app-issue", 
         "troubleshoot/app-framework/zss-error-codes",
       ],
     },
-    //"troubleshoot/troubleshoot-zos-services",
+    //"troubleshoot/troubleshoot-zos-services", //still refers to old STC names
     {
       type: "category",
       label: "Zowe CLI",
@@ -414,7 +425,7 @@ module.exports = {
       label: "Zowe Launcher",
       items: [
         "troubleshoot/launcher/launcher-troubleshoot",
-    //    "troubleshoot/launcher/launcher-error-codes"
+        "troubleshoot/launcher/launcher-error-codes"
       ],
     },
   ],
@@ -459,12 +470,12 @@ module.exports = {
     },  
     "appendix/zowe-yaml-configuration", 
     "appendix/server-component-manifest",     
-  //  "appendix/bill-of-materials",
-  //  {
-  //    type: "link",
-  //    label: "Third Party Software Requirements",
-  //    href: "https://github.com/zowe/docs-site/tree/master/tpsr/tpsr-v2.0.x.md",
-  //  },
+    "appendix/bill-of-materials",
+    {
+      type: "link",
+      label: "Third Party Software Requirements",
+      href: "https://github.com/zowe/docs-site/tree/master/tpsr/tpsr-v2.0.x.md",
+    },
   ],
 };
 

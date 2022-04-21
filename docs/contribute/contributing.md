@@ -1,68 +1,58 @@
 # Contributing to Zowe Documentation
 
-- [Contributing to Zowe Documentation](#contributing-to-zowe-documentation)
-  - [Before You Get Started<a name="start"></a>](#before-you-get-started)
-  - [Getting Started Checklist](#getting-started-checklist)
-  - [The Zowe Documentation Repository](#the-zowe-documentation-repository)
-  - [Sending a GitHub Pull Request](#sending-a-github-pull-request)
-  - [Opening An Issue for Zowe Documentation](#opening-an-issue-for-zowe-documentation)
-  - [Documentation Style guide <a name="style"></a>](#documentation-style-guide-)
-    - [Headings and titles<a name="headings"></a>](#headings-and-titles)
-    - [Technical elements<a name="ui"></a>](#technical-elements)
-    - [Tone<a name="tone"></a>](#tone)
-    - [Word usage<a name="word"></a>](#word-usage)
-    - [Graphics<a name="graphics"></a>](#graphics)
-    - [Abbreviations<a name="abbreviations"></a>](#abbreviations)
-    - [Structure and format<a name="Structure"></a>](#structure-and-format)
-    - [Word usage<a name="usage"></a>](#word-usage-1)
-   
+You are welcome to contribute to the Zowe&trade; documentation repository. Anyone can open an issue about documentation, or contribute a change with a pull request (PR) to the [zowe/docs-site GitHub repository](https://github.com/zowe/docs-site/). 
 
 ## Before You Get Started<a name="start"></a>
-You are welcome to contribute to the Zowe&trade; documentation repository. Anyone can open an issue about documentation, or contribute a change with a pull request (PR) to the zowe/docs-site GitHub repository. However, before contributing a documentation change to the repository, you should be familiar with:
-* Git and Github: To learn about git and GitHub, refer to the [Github Guides](https://guides.github.com/).
-* Slack: The Zowe Documentation team communicates using the Slack application. To learn about Slack, refer to the [Slack Help Center](https://slack.com/help). The Zowe team is part of the [Open Mainframe Project](https://openmainframeproject.slack.com
-) channel.
-* Markdown Language: The Zowe documentation is written in Markdown language. To learn about Markdown, refer to  [The Markdown Guide](https://www.markdownguide.org/)
+
+Before contributing a documentation change to the repository, you should be familiar with:
+
+* Git and GitHub: To learn about git and GitHub, refer to the [Github Guides](https://guides.github.com/).
+* Slack: The Zowe Documentation team communicates using the Slack application. To learn about Slack, refer to the [Slack Help Center](https://slack.com/help). The Zowe team is part of the [Open Mainframe Project](https://openmainframeproject.slack.com) channel.
+* Markdown Language: The Zowe documentation is written in Markdown language. To learn about Markdown, refer to  [The Markdown Guide](https://www.markdownguide.org/).
 
 In addition to being familiar with the Zowe community and how we work together, you will need to sign the CNCF Contributor License Agreement. The Contributor License Agreement defines the terms under which you contribute to Zowe documentation. Contributions to Zowe documentation are reviewed before being committed to the repository. Committing changes to the Zowe repository requires additional access rights. See https://github.com/zowe/community/blob/master/COMMITTERS.md. Also see Participating in Zowe Documentation for more details about roles and permissions.
 
-## Getting Started Checklist
-If you are ready to get started contributing to the Zowe Documentation repository:
-* Verify that you are familiar with the concepts in [Before You Get Started<a name="start"></a>](#before-you-get-started).
-* Familiarize yourself with the [Zowe documentation repository](#the-zowe-documentation-repository)
-* Verify that you can open a [pull request and review changes](#sending-a-github-pull-request)
-* [Open an issue for Zowe documentation](#opening-an-issue-for-zowe-documentation) if you find a problem
-* Read the [documentation style guide](#documentation-style-guide-)
+## Getting started checklist
 
-## The Zowe Documentation Repository
+If you are ready to get started contributing to the Zowe Documentation repository:
+
+* Verify that you are familiar with the concepts in [Before You Get Started<a name="start"></a>](#before-you-get-started).
+* Familiarize yourself with the [Zowe documentation repository](#the-zowe-documentation-repository).
+* Verify that you can open a [pull request and review changes](#sending-a-github-pull-request).
+* [Open an issue for Zowe documentation](#opening-an-issue-for-zowe-documentation) if you find a problem.
+* Read the [documentation style guide](#documentation-style-guide).
+
+## The Zowe documentation repository
+
 The Zowe documentation is managed in a [GitHub repository](https://github.com/zowe/docs-site).
+
 * Review the site's overall organization and structure
 * Review the help files related to your planned changes or addition
 
 ## Sending a GitHub Pull Request
-You can provide suggested edit to any documentation page by using the **Propose content change in GitHub** link on each page. After you make the changes, you submit updates in a pull request for the Zowe content team to review and merge.
+
+You can provide suggested edit to any documentation page by using the **Edit this page** link on top of each page. After you make the changes, you submit updates in a pull request for the Zowe documentation team to review and merge.
 
 Follow these steps:
 
-1. Click **Propose content change in GitHub** on the page that you want to update.
+1. Click **Edit this page** on the page that you want to update.
 3. Make the changes to the file.
 4. Scroll to the end of the page and enter a brief description about your change.
 5. Optional: Enter an extended description.
 6. Select **Propose file change**.
 7. Select **Create pull request**.
 
-## Opening An Issue for Zowe Documentation
-You can request the documentation to be improved or clarified, report an error, or submit suggestions and ideas by opening an issue in GitHub for the Zowe content team to address. The content team tracks the issues and works to address your feedback.
+## Opening an issue for Zowe documentation
+
+You can request the documentation to be improved or clarified, report an error, or submit suggestions and ideas by opening an issue in GitHub for the Zowe documentation team to address. The team tracks the issues and works to address your feedback.
 
 Follow these steps:
 
-1. Click the **GitHub** link at the top of the page.
-2. Select **Issues**.
-3. Click **New issue**.
-4. Enter a title and description for the issue.
-5. Click **Submit new issue**.
+1. Click the **Open doc issue** link at the top of the page. 
+1. Enter the details of the issue.
+1. Click **Submit new issue**.
 
-## Documentation Style guide <a name="style"></a>
+## Documentation style guide <a name="style"></a>
 
 This section gives writing style guidelines for the Zowe documentation.
 
@@ -83,12 +73,14 @@ Capitalize only the initial letter of the first word in the text and other words
 Example: Verifying that your system meets the software requirements.
 
 #### For tasks and procedures, use gerunds for headings.
+
 Example:
 
 - Building an API response
 - Setting the active build configuration
 
 #### For conceptual and reference information, use noun phrases for headings.
+
 Example:
 
 - Query language
@@ -96,22 +88,19 @@ Example:
 
 #### Use headline-style capitalization for only these items:
 
-Titles of books, CDs,  videos, and stand-alone information units.
+Titles of books, CDs, videos, and stand-alone information units.
 
 Example:
 
 - Installation and User's Guide
 - Quick Start Guides or discrete sets of product documentation
 
-#### Make headings brief, descriptive, grammatically parallel, and, if possible, task oriented.
-
-If the subject is a functional overview, begin a heading with words such as Introduction or Overview rather than contriving a pseudo-task-oriented heading that begins with Understanding, Using, Introducing, or Learning.
-
 ### Technical elements<a name="ui"></a>
 
 #### Variables
 
 Style:
+
 - Italic when used outside of code examples,
 
     Example: _myHost_
@@ -136,11 +125,13 @@ Style: Monospace
 Example: `java -version`
 
 #### Command names, and names of macros, programs, and utilities that you can type as commands
+
 Style: Monospace
 
 Example: Use the `BROWSE` command.
 
 #### Interface controls
+
 Categories: check boxes, containers, fields, folders, icons, items inside list boxes, labels (such as **Note:**), links, list boxes, menu choices, menu names, multicolumn lists, property sheets, push buttons, radio buttons, spin buttons, and Tabs
 
 Style: Bold
@@ -148,16 +139,19 @@ Style: Bold
 Example: From the **Language** menu, click the language that you want to use. The default selection is **English**.
 
 #### Directory names
+
 Style: Monospace
 
 Example: Move the `install.exe` file into the `newuser` directory.
 
 #### File names, file extensions, and script names
+
 Style: Monospace
 
 Example:
- - Run the `install.exe` file.
- - Extract all the data from the `.zip` file.
+
+- Run the `install.exe` file.
+- Extract all the data from the `.zip` file.
 
 #### Search or query terms
 
@@ -172,12 +166,10 @@ Categories: Chapter titles and section titles, entries within a blog, references
 Style: Double quotation marks
 
 Example:
-- See the "Measuring the true performance of a cloud" entry in the Thoughts on Cloud blog.
-- See "XML Encryption Syntax and Processing" on the W3C website.
-- For installation information, see "Installing the product" in IBM Knowledge Center.
+- See the "Measuring the true performance of a cloud" entry in the blog.
+- For installation information, see "Installing the product".
 
 ### Tone<a name="tone"></a>
-
 
 #### Use simple present tense rather than future or past tense, as much as possible.
 
@@ -229,15 +221,8 @@ Example:
 :heavy_check_mark: Click the item that you want to search for.
 
 :x: Click the item for which you want to search.
-#### Avoid using "Please", "thank you"
 
-In technical information, avoid terms of politeness such as "please" and "thank you".
-"Please" is allowed in UI only when the user is being inconvenienced.
-
-Example: Indexing might take a few minutes. Please wait.
-
-
-#### Avoid anthropomorphism.
+#### Avoid anthropomorphism
 
 Focus technical information on users and their actions, not on a product and its actions.
 
@@ -246,6 +231,7 @@ Example:
 :heavy_check_mark: User focus: On the Replicator page, you can synchronize your local database with replica databases.
 
 :x: Product focus: The Replicator page lets you synchronize your local database with replica databases.
+
 #### Avoid complex sentences that overuse punctuation such as commas and semicolons.
 
 ### Word usage<a name="word"></a>
@@ -309,14 +295,7 @@ Example:
 
 #### Use "issue" when you want to say "run/enter" a command.
 
-Example: At a command prompt, type the following command:
-
-### Graphics<a name="graphics"></a>
-- Use graphics sparingly.
-
-    Use graphics only when text cannot adequately convey information or when the graphic enhances the meaning of the text.
-
-- When the graphic contains translatable text, ensure you include the source file for the graphic to the doc repository for future translation considerations.
+Example: At a command prompt, issue the following command:
 
 ### Abbreviations<a name="abbreviations"></a>
 
@@ -337,12 +316,13 @@ Example:
 :heavy_check_mark: You can use the FTP command to send the files to the server.
 
 #### Do not use Latin abbreviations.
+
 Use their English equivalents instead. Latin abbreviations are sometimes misunderstood.
 
 Latin  | English equivalent
 ---|---
 e.g.  | for example
-  etc. | and so on. <br/> When you list a clear sequence of elements such as "1, 2, 3, and so on" and "Monday, Tuesday, Wednesday, and so on." Otherwise, rewrite the sentence to replace "etc." with something more descriptive such as "and other output."
+etc. | and so on. <br/> When you list a clear sequence of elements such as "1, 2, 3, and so on" and "Monday, Tuesday, Wednesday, and so on." Otherwise, rewrite the sentence to replace "etc." with something more descriptive such as "and other output."
 i.e.  | that is
 
 #### Spell out the full name and its abbreviation when the word appears for the first time. Use abbreviations in the texts that follow.
@@ -350,6 +330,7 @@ i.e.  | that is
 Example: Mainframe Virtual Desktop (MVD)
 
 ### Structure and format<a name="Structure"></a>
+
 Add "More information" to link to useful resources or related topics at the end of topics where necessary.
 
 ### Word usage<a name="usage"></a>
@@ -358,10 +339,8 @@ The following table alphabetically lists the common used words and their usage g
 
 Do  | Don't
 ---|---
-API Mediation Layer|
 application  | app
 Capitalize "Server" when it's part of the product name |
-data set| dataset
 Java  |  java
 IBM z/OS Management Facility (z/OSMF) <br/> z/OSMF   | zosmf (unless used in syntax)
 ID| id
@@ -374,4 +353,3 @@ plug-in| plugin
 REXX  | Rexx
 UNIX System Services <br/> z/OS UNIX System Services  | USS
 zLUX  | ZLUX <br/> zLux
-Zowe CLI|
