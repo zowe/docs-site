@@ -9,14 +9,13 @@
 <h2><a href="zowe.html">zowe</a> › <a href="zowe_zos-workflows.html">zos-workflows</a> › <a href="zowe_zos-workflows_list.html">list</a> › <a href="zowe_zos-workflows_list_definition-file-details.html">definition-file-details</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
 <p>Retrieve the contents of a z/OSMF workflow definition from a z/OS system.</p>
 <h4>Usage</h4>
-<p>zowe  zos-workflows list definition-file-details &lt;definitionFilePath&gt; [options]</p>
+<p>zowe zos-workflows list definition-file-details &lt;definitionFilePath&gt; [options]</p>
 <h4>Positional Arguments</h4>
 <ul>
 <li>
 <p><code>definitionFilePath</code>		 <em>(string)</em></p>
 <ul>
-<li>Specifies the location of the workflow definition file, which is either a UNIX
-path name or a fully qualified z/OS data set name.</li>
+<li>Specifies the location of the workflow definition file, which is either a UNIX path name or a fully qualified z/OS data set name.</li>
 </ul>
 </li>
 </ul>
@@ -76,9 +75,7 @@ path name or a fully qualified z/OS data set name.</li>
 <li>
 <p><code>--base-path</code>  | <code>--bp</code> <em>(string)</em></p>
 <ul>
-<li>The base path for your API mediation layer instance. Specify this option to
-prepend the base path to all z/OSMF resources when making REST requests. Do not
-specify this option if you are not using an API mediation layer.</li>
+<li>The base path for your API mediation layer instance. Specify this option to prepend the base path to all z/OSMF resources when making REST requests. Do not specify this option if you are not using an API mediation layer.</li>
 </ul>
 </li>
 <li>
@@ -86,8 +83,8 @@ specify this option if you are not using an API mediation layer.</li>
 <ul>
 <li>
 <p>The protocol used (HTTP or HTTPS)</p>
-<p>Default value: https</p>
-<p>Allowed values: http, https</p>
+<p>Default value: https<br>
+Allowed values: http, https</p>
 </li>
 </ul>
 </li>
@@ -124,8 +121,7 @@ specify this option if you are not using an API mediation layer.</li>
 <li>
 <p><code>--token-type</code>  | <code>--tt</code> <em>(string)</em></p>
 <ul>
-<li>The type of token to get and use for the API. Omit this option to use the
-default token type, which is provided by 'zowe auth login'.</li>
+<li>The type of token to get and use for the API. Omit this option to use the default token type, which is provided by 'zowe auth login'.</li>
 </ul>
 </li>
 <li>
@@ -138,17 +134,15 @@ default token type, which is provided by 'zowe auth login'.</li>
 <h4>Examples</h4>
 <ul>
 <li>
-<p>To list the contents of a workflow definition stored in the
-UNIX file &quot;/user/dir/workflow.xml&quot; including its steps and variables:</p>
+<p>To list the contents of a workflow definition stored in the UNIX file &quot;/user/dir/workflow.xml&quot; including its steps and variables:</p>
 <ul>
-<li><code>zowe  zos-workflows list definition-file-details &quot;/user/dir/workflow.xml&quot; --list-steps --list-variables</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  zos-workflows list definition-file-details &quot;/user/dir/workflow.xml&quot; --list-steps --list-variables">Copy</button></li>
+<li><code>zowe zos-workflows list definition-file-details &quot;/user/dir/workflow.xml&quot; --list-steps --list-variables</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe zos-workflows list definition-file-details &quot;/user/dir/workflow.xml&quot; --list-steps --list-variables">Copy</button></li>
 </ul>
 </li>
 <li>
-<p>To list the contents of a workflow definition stored in the
-z/OS data set &quot;USER.DATA.SET.XML&quot; including its steps and variables:</p>
+<p>To list the contents of a workflow definition stored in the z/OS data set &quot;USER.DATA.SET.XML&quot; including its steps and variables:</p>
 <ul>
-<li><code>zowe  zos-workflows list definition-file-details &quot;USER.DATA.SET.XML&quot; --list-steps --list-variables</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  zos-workflows list definition-file-details &quot;USER.DATA.SET.XML&quot; --list-steps --list-variables">Copy</button></li>
+<li><code>zowe zos-workflows list definition-file-details &quot;USER.DATA.SET.XML&quot; --list-steps --list-variables</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe zos-workflows list definition-file-details &quot;USER.DATA.SET.XML&quot; --list-steps --list-variables">Copy</button></li>
 </ul>
 </li>
 </ul>

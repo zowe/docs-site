@@ -7,17 +7,15 @@
 <link rel="stylesheet" href="../css/docs.css">
 <article class="markdown-body">
 <h2><a href="zowe.html">zowe</a> › <a href="zowe_zos-ftp.html">zos-ftp</a> › <a href="zowe_zos-ftp_list.html">list</a> › <a href="zowe_zos-ftp_list_spool-files-by-jobid.html">spool-files-by-jobid</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
-<p>Given a z/OS job JOBID, list the spool files (DDs) for a z/OS job on the
-JES/spool queues. The command does not pre-validate the JOBID.</p>
+<p>Given a z/OS job JOBID, list the spool files (DDs) for a z/OS job on the JES/spool queues. The command does not pre-validate the JOBID.</p>
 <h4>Usage</h4>
-<p>zowe  zos-ftp list spool-files-by-jobid &lt;jobid&gt; [options]</p>
+<p>zowe zos-ftp list spool-files-by-jobid &lt;jobid&gt; [options]</p>
 <h4>Positional Arguments</h4>
 <ul>
 <li>
 <p><code>jobid</code>		 <em>(string)</em></p>
 <ul>
-<li>The z/OS JOBID of the job with the spool files you want to list. No
-pre-validation of the JOBID is performed.</li>
+<li>The z/OS JOBID of the job with the spool files you want to list. No pre-validation of the JOBID is performed.</li>
 </ul>
 </li>
 </ul>
@@ -57,11 +55,7 @@ pre-validation of the JOBID is performed.</li>
 <p><code>--secure-ftp</code>  <em>(boolean)</em></p>
 <ul>
 <li>
-<p>Set to true for both control and data connection encryption, 'control' for
-control connection encryption only, or 'implicit' for implicitly encrypted
-control connection (this mode is deprecated in modern times, but usually uses
-port 990). Note: Unfortunately, this plugin's functionality only works with FTP
-and FTPS, not 'SFTP' which is FTP over SSH.</p>
+<p>Set to true for both control and data connection encryption, 'control' for control connection encryption only, or 'implicit' for implicitly encrypted control connection (this mode is deprecated in modern times, but usually uses port 990). Note: Unfortunately, this plugin's functionality only works with FTP and FTPS, not 'SFTP' which is FTP over SSH.</p>
 <p>Default value: true</p>
 </li>
 </ul>
@@ -70,8 +64,7 @@ and FTPS, not 'SFTP' which is FTP over SSH.</p>
 <p><code>--connection-timeout</code>  | <code>--ct</code> <em>(number)</em></p>
 <ul>
 <li>
-<p>How long (in milliseconds) to wait for the control connection to be
-established.</p>
+<p>How long (in milliseconds) to wait for the control connection to be established.</p>
 <p>Default value: 10000</p>
 </li>
 </ul>
@@ -82,15 +75,13 @@ established.</p>
 <li>
 <p><code>--reject-unauthorized</code>  | <code>--ru</code> <em>(boolean)</em></p>
 <ul>
-<li>Reject self-signed certificates. Only specify this if you are connecting to a
-secure FTP instance.</li>
+<li>Reject self-signed certificates. Only specify this if you are connecting to a secure FTP instance.</li>
 </ul>
 </li>
 <li>
 <p><code>--server-name</code>  | <code>--sn</code> <em>(string)</em></p>
 <ul>
-<li>Server name for the SNI (Server Name Indication) TLS extension. Only specify if
-you are connecting securely</li>
+<li>Server name for the SNI (Server Name Indication) TLS extension. Only specify if you are connecting securely</li>
 </ul>
 </li>
 </ul>
@@ -114,8 +105,7 @@ you are connecting securely</li>
 <li>
 <p><code>--token-type</code>  | <code>--tt</code> <em>(string)</em></p>
 <ul>
-<li>The type of token to get and use for the API. Omit this option to use the
-default token type, which is provided by 'zowe auth login'.</li>
+<li>The type of token to get and use for the API. Omit this option to use the default token type, which is provided by 'zowe auth login'.</li>
 </ul>
 </li>
 <li>
@@ -142,11 +132,7 @@ default token type, which is provided by 'zowe auth login'.</li>
 <li>
 <p><code>--response-format-filter</code>  | <code>--rff</code> <em>(array)</em></p>
 <ul>
-<li>Filter (include) fields in the response. Accepts an array of field/property
-names to include in the output response. You can filter JSON objects properties
-OR table columns/fields. In addition, you can use this option in conjunction
-with '--response-format-type' to reduce the output of a command to a single
-field/property or a list of a single field/property.</li>
+<li>Filter (include) fields in the response. Accepts an array of field/property names to include in the output response. You can filter JSON objects properties OR table columns/fields. In addition, you can use this option in conjunction with '--response-format-type' to reduce the output of a command to a single field/property or a list of a single field/property.</li>
 </ul>
 </li>
 <li>
@@ -154,15 +140,9 @@ field/property or a list of a single field/property.</li>
 <ul>
 <li>
 <p>The command response output format type. Must be one of the following:</p>
-<p>table: Formats output data as a table. Use this option when the output data is
-an array of homogeneous JSON objects. Each property of the object will become a
-column in the table.</p>
-<p>list: Formats output data as a list of strings. Can be used on any data type
-(JSON objects/arrays) are stringified and a new line is added after each entry
-in an array.</p>
-<p>object: Formats output data as a list of prettified objects (or single object).
-Can be used in place of &quot;table&quot; to change from tabular output to a list of
-prettified objects.</p>
+<p>table: Formats output data as a table. Use this option when the output data is an array of homogeneous JSON objects. Each property of the object will become a column in the table.</p>
+<p>list: Formats output data as a list of strings. Can be used on any data type (JSON objects/arrays) are stringified and a new line is added after each entry in an array.</p>
+<p>object: Formats output data as a list of prettified objects (or single object). Can be used in place of &quot;table&quot; to change from tabular output to a list of prettified objects.</p>
 <p>string: Formats output data as a string. JSON objects/arrays are stringified.</p>
 <p>Allowed values: table, list, object, string</p>
 </li>
@@ -171,8 +151,7 @@ prettified objects.</p>
 <li>
 <p><code>--response-format-header</code>  | <code>--rfh</code> <em>(boolean)</em></p>
 <ul>
-<li>If &quot;--response-format-type table&quot; is specified, include the column headers
-in the output.</li>
+<li>If &quot;--response-format-type table&quot; is specified, include the column headers in the output.</li>
 </ul>
 </li>
 </ul>
@@ -181,7 +160,7 @@ in the output.</li>
 <li>
 <p>List the spool files of the job with JOBID JOB00123:</p>
 <ul>
-<li><code>zowe  zos-ftp list spool-files-by-jobid job00123</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  zos-ftp list spool-files-by-jobid job00123">Copy</button></li>
+<li><code>zowe zos-ftp list spool-files-by-jobid job00123</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe zos-ftp list spool-files-by-jobid job00123">Copy</button></li>
 </ul>
 </li>
 </ul>

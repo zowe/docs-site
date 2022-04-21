@@ -9,14 +9,13 @@
 <h2><a href="zowe.html">zowe</a> › <a href="zowe_profiles.html">profiles</a> › <a href="zowe_profiles_update.html">update</a> › <a href="zowe_profiles_update_zosmf-profile.html">zosmf-profile</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
 <p>z/OSMF Profile</p>
 <h4>Usage</h4>
-<p>zowe  profiles update zosmf-profile &lt;profileName&gt; [options]</p>
+<p>zowe profiles update zosmf-profile &lt;profileName&gt; [options]</p>
 <h4>Positional Arguments</h4>
 <ul>
 <li>
 <p><code>profileName</code>		 <em>(string)</em></p>
 <ul>
-<li>Specifies the name of the new zosmf profile. You can load this profile by using
-the name on commands that support the &quot;--zosmf-profile&quot; option.</li>
+<li>Specifies the name of the new zosmf profile. You can load this profile by using the name on commands that support the &quot;--zosmf-profile&quot; option.</li>
 </ul>
 </li>
 </ul>
@@ -67,9 +66,7 @@ the name on commands that support the &quot;--zosmf-profile&quot; option.</li>
 <li>
 <p><code>--base-path</code>  | <code>--bp</code> <em>(string)</em></p>
 <ul>
-<li>The base path for your API mediation layer instance. Specify this option to
-prepend the base path to all z/OSMF resources when making REST requests. Do not
-specify this option if you are not using an API mediation layer.</li>
+<li>The base path for your API mediation layer instance. Specify this option to prepend the base path to all z/OSMF resources when making REST requests. Do not specify this option if you are not using an API mediation layer.</li>
 </ul>
 </li>
 <li>
@@ -87,26 +84,22 @@ specify this option if you are not using an API mediation layer.</li>
 <li>
 <p><code>--encoding</code>  | <code>--ec</code> <em>(number)</em></p>
 <ul>
-<li>The encoding for download and upload of z/OS data set and USS files. The
-default encoding if not specified is 1047.</li>
+<li>The encoding for download and upload of z/OS data set and USS files. The default encoding if not specified is 1047.</li>
 </ul>
 </li>
 <li>
 <p><code>--response-timeout</code>  | <code>--rto</code> <em>(number)</em></p>
 <ul>
-<li>The maximum amount of time in seconds the z/OSMF Files TSO servlet should run
-before returning a response. Any request exceeding this amount of time will be
-terminated and return an error. Allowed values: 5 - 600</li>
+<li>The maximum amount of time in seconds the z/OSMF Files TSO servlet should run before returning a response. Any request exceeding this amount of time will be terminated and return an error. Allowed values: 5 - 600</li>
 </ul>
 </li>
 </ul>
 <h4>Examples</h4>
 <ul>
 <li>
-<p>Update a zosmf profile named 'zos123' with a new username
-and password:</p>
+<p>Update a zosmf profile named 'zos123' with a new username and password:</p>
 <ul>
-<li><code>zowe  profiles update zosmf-profile zos123 --user newuser --password newp4ss</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  profiles update zosmf-profile zos123 --user newuser --password newp4ss">Copy</button></li>
+<li><code>zowe profiles update zosmf-profile zos123 --user newuser --password newp4ss</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe profiles update zosmf-profile zos123 --user newuser --password newp4ss">Copy</button></li>
 </ul>
 </li>
 </ul>

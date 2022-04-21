@@ -16,19 +16,23 @@ When Zowe is ready, the app-server can be found at `https://<externalDomain>:<co
 
 ### Accessing the Desktop
 
-When the app-server and gateway are ready, the Desktop can be accessed from the API Mediation Layer Gateway, such as
+The `app-server` should be accessed through the `gateway` when both are present. When both are ready, the Desktop can be accessed from the API Mediation Layer Gateway, such as
 
-`https://<externalDomain>:<components.gateway.port>/zlux/ui/v1/`, which will redirect to `https://<externalDomain>:<components.gateway.port>/zlux/ui/v1/ZLUX/plugins/org.zowe.zlux.bootstrap/web/index.html`
+`https://<zowe.externalDomain>:<components.gateway.port>/zlux/ui/v1/`, which will redirect to `https://<zowe.externalDomain>:<components.gateway.port>/zlux/ui/v1/ZLUX/plugins/org.zowe.zlux.bootstrap/web/index.html`
+
+Although you access the App server via the Gateway port, the App server still needs a port assigned to it which is the value of the *components.app-server.port* variable in the Zowe configuration file.
 
 (Not recommended): If the mediation layer is not used, the Desktop will be accessible from the App server directly at `/ZLUX/plugins/org.zowe.zlux.bootstrap/web/index.html`
 
-You should be accessing the App server via the Gateway port, but the App server still needs a port assigned to it which is the value of the *components.app-server.port* variable in the Zowe configuration file, 
-
-TODO: Above linked file needs to be changed
-
 ## Accessing ZSS
 
-TODO
+The `zss` server should be accessed  through the `gateway` when both are present. When both are ready, ZSS can be accessed from the API Mediation Layer Gateway, such as
+
+`https://<zowe.externalDomain>:<components.gateway.port>/zss/api/v1/`
+
+Although you access the ZSS server via the Gateway port, the ZSS server still needs a port assigned to it which is the value of the *components.zss.port* variable in the Zowe configuration file.
+
+If the mediation layer is not used, ZSS directly at `https://<zowe.externalDomain>:<components.zss.port>/`
 
 ## Configuration file
 
@@ -82,59 +86,25 @@ The file `_defaultVT.json` within the `vt-ng2` app folder `/config/storageDefaul
 
 **Note:** The following attributes are to be defined in the Zowe configuration file.
 
-The App Server can be accessed over HTTP and/or HTTPS, provided it has been configured for either. HTTPS should be used, as HTTP is not secure unless AT-TLS is used. `components.zss.tls` variable must be set to false in Zowe configuration file to use HTTP and AT-TLS.
+The App Server can be accessed over HTTP and/or HTTPS, provided it has been configured for either. HTTPS should be used, as HTTP is not secure unless AT-TLS is used.
+When AT-TLS is used by ZSS, `components.zss.agent.http.attls` must be set to true.
 
+### HTTPS
 
+Both `app-server` and `zss` server components use HTTPS by default, and the `port` parameters `components.app-server.port` and `components.zss.port` control which port they are accessible from. However, each have advanced configuration options to control their HTTPS behavior.
 
-TODO: Trim this section below
+The `app-server` component configuration can be used to customize its HTTPS connection such as which certificate and ciphers to use, and these parameters are to be set within `components.app-server.node.https` as defined within the [json-schema file](https://github.com/zowe/zlux-app-server/blob/v2.x/staging/schemas/app-server-config.json#L15)
 
-
+The `zss` component configuration can be used to customize its HTTPS connection such as which certificate and ciphers to use, and these parameters are to be set within `components.zss.agent.https` as defined within the [json-schema file](https://github.com/zowe/zss/blob/v2.x/staging/schemas/zss-config.json#L81)
 
 
 ### HTTP
 
-To configure the server for HTTP, complete these steps:
+The `app-server` can be configured for HTTP via the `components.app-server.node.http` section of the Zowe configuration file, as specified within the `app-server` [json-schema file](https://github.com/zowe/zlux-app-server/blob/v2.x/staging/schemas/app-server-config.json#L73).
 
-1. Define an attribute *http* within the top-level *node* attribute.
+The `zss` server can be configured for HTTP via the `components.zss.agent.http` section of the Zowe configuration file, as specified within the `zss` [json-schema file](https://github.com/zowe/zss/blob/v2.x/staging/schemas/zss-config.json#L99). Note that `components.zss.tls` must be set to false for HTTP to take effect, and that `components.zss.agent.http.attls` must be set to true for AT-TLS to be recognized correctly.
 
-2. Define *port* within *http*. Where *port* is an integer parameter for the TCP port on which the server will listen. Specify 80 or a value between 1024-65535.
 
-### HTTPS
-
-For HTTPS, specify the following parameters:
-
-1. Define an attribute *https* within the top-level *node* attribute.
-
-2. Define the following within *https*:
-
-- *port*: An integer parameter for the TCP port on which the server will listen. Specify 443 or a value between 1024-65535.
-- *certificates*: An array of strings, which are paths to PEM format HTTPS certificate files.
-- *keys*: An array of strings, which are paths to PEM format HTTPS key files.
-- *pfx*: A string, which is a path to a PFX file which must contain certificates, keys, and optionally Certificate Authorities.
-- *certificateAuthorities* (Optional): An array of strings, which are paths to certificate authorities files.
-- *certificateRevocationLists* (Optional): An array of strings, which are paths to certificate revocation list (CRL) files.
-
-**Note:** When using HTTPS, you must specify *pfx*, or both *certificates* and *keys*.
-
-### Network example
-
-In the example configuration, both HTTP and HTTPS are specified:
-
-```
-  "node": {
-    "https": {
-      "ipAddresses": ["0.0.0.0"],
-      "port": 8544,
-      //pfx (string), keys, certificates, certificateAuthorities, and certificateRevocationLists are all valid here.
-      "keys": ["../defaults/serverConfig/server.key"],
-      "certificates": ["../defaults/serverConfig/server.cert"]
-    },
-    "http": {
-      "ipAddresses": ["0.0.0.0"],
-      "port": 8543
-    }
-  }
-```
 
 ## Configuration Directories
 When running, the App Server will access the server's settings and read or modify the contents of its resource storage. All of this data is stored within a hierarchy of folders which correspond to scopes:

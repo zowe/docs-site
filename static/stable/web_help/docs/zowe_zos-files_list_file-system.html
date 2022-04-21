@@ -7,40 +7,33 @@
 <link rel="stylesheet" href="../css/docs.css">
 <article class="markdown-body">
 <h2><a href="zowe.html">zowe</a> › <a href="zowe_zos-files.html">zos-files</a> › <a href="zowe_zos-files_list.html">list</a> › <a href="zowe_zos-files_list_file-system.html">file-system</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
-<p>List all mounted filesystems, or the specific filesystem mounted at a given
-path, or the filesystem with a given filesystem name.</p>
+<p>List all mounted filesystems, or the specific filesystem mounted at a given path, or the filesystem with a given filesystem name.</p>
 <h4>Usage</h4>
-<p>zowe  zos-files list file-system [options]</p>
+<p>zowe zos-files list file-system [options]</p>
 <h4>Options</h4>
 <ul>
 <li>
 <p><code>--max-length</code>  | <code>--max</code> <em>(number)</em></p>
 <ul>
-<li>The option --max-length specifies the maximum number of items to return.
-Skip this parameter to return all items. If you specify an incorrect value, the
-parameter returns up to 1000 items.</li>
+<li>The option --max-length specifies the maximum number of items to return. Skip this parameter to return all items. If you specify an incorrect value, the parameter returns up to 1000 items.</li>
 </ul>
 </li>
 <li>
 <p><code>--fsname</code>  | <code>-f</code> <em>(string)</em></p>
 <ul>
-<li>Specifies the name of the mounted file system. This option and --path are
-mutually exclusive.</li>
+<li>Specifies the name of the mounted file system. This option and --path are mutually exclusive.</li>
 </ul>
 </li>
 <li>
 <p><code>--path</code>  | <code>-p</code> <em>(string)</em></p>
 <ul>
-<li>Specifies the path where the file system is mounted. This option and --fsname
-are mutually exclusive.</li>
+<li>Specifies the path where the file system is mounted. This option and --fsname are mutually exclusive.</li>
 </ul>
 </li>
 <li>
 <p><code>--response-timeout</code>  | <code>--rto</code> <em>(number)</em></p>
 <ul>
-<li>The maximum amount of time in seconds the z/OSMF Files TSO servlet should run
-before returning a response. Any request exceeding this amount of time will be
-terminated and return an error. Allowed values: 5 - 600</li>
+<li>The maximum amount of time in seconds the z/OSMF Files TSO servlet should run before returning a response. Any request exceeding this amount of time will be terminated and return an error. Allowed values: 5 - 600</li>
 </ul>
 </li>
 </ul>
@@ -85,9 +78,7 @@ terminated and return an error. Allowed values: 5 - 600</li>
 <li>
 <p><code>--base-path</code>  | <code>--bp</code> <em>(string)</em></p>
 <ul>
-<li>The base path for your API mediation layer instance. Specify this option to
-prepend the base path to all z/OSMF resources when making REST requests. Do not
-specify this option if you are not using an API mediation layer.</li>
+<li>The base path for your API mediation layer instance. Specify this option to prepend the base path to all z/OSMF resources when making REST requests. Do not specify this option if you are not using an API mediation layer.</li>
 </ul>
 </li>
 <li>
@@ -95,8 +86,8 @@ specify this option if you are not using an API mediation layer.</li>
 <ul>
 <li>
 <p>The protocol used (HTTP or HTTPS)</p>
-<p>Default value: https</p>
-<p>Allowed values: http, https</p>
+<p>Default value: https<br>
+Allowed values: http, https</p>
 </li>
 </ul>
 </li>
@@ -133,8 +124,7 @@ specify this option if you are not using an API mediation layer.</li>
 <li>
 <p><code>--token-type</code>  | <code>--tt</code> <em>(string)</em></p>
 <ul>
-<li>The type of token to get and use for the API. Omit this option to use the
-default token type, which is provided by 'zowe auth login'.</li>
+<li>The type of token to get and use for the API. Omit this option to use the default token type, which is provided by 'zowe auth login'.</li>
 </ul>
 </li>
 <li>
@@ -149,11 +139,7 @@ default token type, which is provided by 'zowe auth login'.</li>
 <li>
 <p><code>--response-format-filter</code>  | <code>--rff</code> <em>(array)</em></p>
 <ul>
-<li>Filter (include) fields in the response. Accepts an array of field/property
-names to include in the output response. You can filter JSON objects properties
-OR table columns/fields. In addition, you can use this option in conjunction
-with '--response-format-type' to reduce the output of a command to a single
-field/property or a list of a single field/property.</li>
+<li>Filter (include) fields in the response. Accepts an array of field/property names to include in the output response. You can filter JSON objects properties OR table columns/fields. In addition, you can use this option in conjunction with '--response-format-type' to reduce the output of a command to a single field/property or a list of a single field/property.</li>
 </ul>
 </li>
 <li>
@@ -161,15 +147,9 @@ field/property or a list of a single field/property.</li>
 <ul>
 <li>
 <p>The command response output format type. Must be one of the following:</p>
-<p>table: Formats output data as a table. Use this option when the output data is
-an array of homogeneous JSON objects. Each property of the object will become a
-column in the table.</p>
-<p>list: Formats output data as a list of strings. Can be used on any data type
-(JSON objects/arrays) are stringified and a new line is added after each entry
-in an array.</p>
-<p>object: Formats output data as a list of prettified objects (or single object).
-Can be used in place of &quot;table&quot; to change from tabular output to a list of
-prettified objects.</p>
+<p>table: Formats output data as a table. Use this option when the output data is an array of homogeneous JSON objects. Each property of the object will become a column in the table.</p>
+<p>list: Formats output data as a list of strings. Can be used on any data type (JSON objects/arrays) are stringified and a new line is added after each entry in an array.</p>
+<p>object: Formats output data as a list of prettified objects (or single object). Can be used in place of &quot;table&quot; to change from tabular output to a list of prettified objects.</p>
 <p>string: Formats output data as a string. JSON objects/arrays are stringified.</p>
 <p>Allowed values: table, list, object, string</p>
 </li>
@@ -178,8 +158,7 @@ prettified objects.</p>
 <li>
 <p><code>--response-format-header</code>  | <code>--rfh</code> <em>(boolean)</em></p>
 <ul>
-<li>If &quot;--response-format-type table&quot; is specified, include the column headers
-in the output.</li>
+<li>If &quot;--response-format-type table&quot; is specified, include the column headers in the output.</li>
 </ul>
 </li>
 </ul>
@@ -188,19 +167,19 @@ in the output.</li>
 <li>
 <p>To list all mounted filesystems:</p>
 <ul>
-<li><code>zowe  zos-files list file-system</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  zos-files list file-system">Copy</button></li>
+<li><code>zowe zos-files list file-system</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe zos-files list file-system">Copy</button></li>
 </ul>
 </li>
 <li>
 <p>To list filesystems mounted to a specific path:</p>
 <ul>
-<li><code>zowe  zos-files list file-system -p /a/ibmuser</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  zos-files list file-system -p /a/ibmuser">Copy</button></li>
+<li><code>zowe zos-files list file-system -p /a/ibmuser</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe zos-files list file-system -p /a/ibmuser">Copy</button></li>
 </ul>
 </li>
 <li>
 <p>To list filesystems mounted with a specific name:</p>
 <ul>
-<li><code>zowe  zos-files list file-system -f MY.ZFS</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  zos-files list file-system -f MY.ZFS">Copy</button></li>
+<li><code>zowe zos-files list file-system -f MY.ZFS</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe zos-files list file-system -f MY.ZFS">Copy</button></li>
 </ul>
 </li>
 </ul>
