@@ -7,12 +7,9 @@
 <link rel="stylesheet" href="../css/docs.css">
 <article class="markdown-body">
 <h2><a href="zowe.html">zowe</a> › <a href="zowe_zos-tso.html">zos-tso</a> › <a href="zowe_zos-tso_issue.html">issue</a> › <a href="zowe_zos-tso_issue_command.html">command</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
-<p>Creates a TSO address space, issues a TSO command through the newly created
-address space, waits for the READY prompt to print the response, and terminates
-the TSO address space. All response data are returned to the user up to (but
-not including) the TSO 'READY' prompt.</p>
+<p>Creates a TSO address space, issues a TSO command through the newly created address space, waits for the READY prompt to print the response, and terminates the TSO address space. All response data are returned to the user up to (but not including) the TSO 'READY' prompt.</p>
 <h4>Usage</h4>
-<p>zowe  zos-tso issue command &lt;commandText&gt; [options]</p>
+<p>zowe zos-tso issue command &lt;commandText&gt; [options]</p>
 <h4>Positional Arguments</h4>
 <ul>
 <li>
@@ -43,8 +40,7 @@ not including) the TSO 'READY' prompt.</p>
 <p><code>--character-set</code>  | <code>--cs</code> <em>(string)</em></p>
 <ul>
 <li>
-<p>Character set for address space to convert messages and responses from UTF-8 to
-EBCDIC.</p>
+<p>Character set for address space to convert messages and responses from UTF-8 to EBCDIC.</p>
 <p>Default value: 697</p>
 </li>
 </ul>
@@ -53,8 +49,7 @@ EBCDIC.</p>
 <p><code>--code-page</code>  | <code>--cp</code> <em>(string)</em></p>
 <ul>
 <li>
-<p>Codepage value for TSO/E address space to convert messages and responses from
-UTF-8 to EBCDIC.</p>
+<p>Codepage value for TSO/E address space to convert messages and responses from UTF-8 to EBCDIC.</p>
 <p>Default value: 1047</p>
 </li>
 </ul>
@@ -137,9 +132,7 @@ UTF-8 to EBCDIC.</p>
 <li>
 <p><code>--base-path</code>  | <code>--bp</code> <em>(string)</em></p>
 <ul>
-<li>The base path for your API mediation layer instance. Specify this option to
-prepend the base path to all z/OSMF resources when making REST requests. Do not
-specify this option if you are not using an API mediation layer.</li>
+<li>The base path for your API mediation layer instance. Specify this option to prepend the base path to all z/OSMF resources when making REST requests. Do not specify this option if you are not using an API mediation layer.</li>
 </ul>
 </li>
 <li>
@@ -147,8 +140,8 @@ specify this option if you are not using an API mediation layer.</li>
 <ul>
 <li>
 <p>The protocol used (HTTP or HTTPS)</p>
-<p>Default value: https</p>
-<p>Allowed values: http, https</p>
+<p>Default value: https<br>
+Allowed values: http, https</p>
 </li>
 </ul>
 </li>
@@ -191,8 +184,7 @@ specify this option if you are not using an API mediation layer.</li>
 <li>
 <p><code>--token-type</code>  | <code>--tt</code> <em>(string)</em></p>
 <ul>
-<li>The type of token to get and use for the API. Omit this option to use the
-default token type, which is provided by 'zowe auth login'.</li>
+<li>The type of token to get and use for the API. Omit this option to use the default token type, which is provided by 'zowe auth login'.</li>
 </ul>
 </li>
 <li>
@@ -205,10 +197,9 @@ default token type, which is provided by 'zowe auth login'.</li>
 <h4>Examples</h4>
 <ul>
 <li>
-<p>Issue the TSO command &quot;status&quot; to display information about
-jobs for your user ID.:</p>
+<p>Issue the TSO command &quot;status&quot; to display information about jobs for your user ID.:</p>
 <ul>
-<li><code>zowe  zos-tso issue command &quot;status&quot;</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  zos-tso issue command &quot;status&quot;">Copy</button></li>
+<li><code>zowe zos-tso issue command &quot;status&quot;</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe zos-tso issue command &quot;status&quot;">Copy</button></li>
 </ul>
 </li>
 </ul>

@@ -4,7 +4,7 @@ Learn how to install Zowe server components or extensions by using `zwe componen
  
 ## Install component
 
-Zowe ships `zwe components install` command to help end-user to install any Zowe server components (extensions). Zowe core components are also installed with this command. In order to be compatible with the command, components must follow [Zowe server component package format standard](packaging-zos-extensions.md#zowe-server-component-package-format).
+Zowe ships [`zwe components install` command](../appendix/zwe_server_command_reference/zwe/components/install/zwe-components-install.md) to help end-user to install any Zowe server components (extensions). Zowe core components are also installed with this command. In order to be compatible with the command, components must follow [Zowe server component package format standard](packaging-zos-extensions.md#zowe-server-component-package-format).
 
 **Important** this command will also enable the component globally by updating your `zowe.yaml` configuration file. You can pass `--skip-enable` to disable this behavior.
 
@@ -60,7 +60,7 @@ $ zwe components install -o /path/to/my-zowe-component-1.2.3.pax -c /path/to/my/
 
 ## Enable and disable component
 
-Zowe ships `zwe components enable` and `zwe components disable` commands to help you enable and disable Zowe server component (extension). In order to be compatible with these commands, components must follow [Zowe server component package format standard](packaging-zos-extensions.md#zowe-server-component-package-format).
+Zowe ships [`zwe components enable`](../appendix/zwe_server_command_reference/zwe/components/zwe-components-enable.md) and [`zwe components disable`](docs/appendix/zwe_server_command_reference/zwe/components/zwe-components-disable.md) commands to help you enable and disable Zowe server component (extension). In order to be compatible with these commands, components must follow [Zowe server component package format standard](packaging-zos-extensions.md#zowe-server-component-package-format).
 
 **Important** these commands will update your `zowe.yaml` configuration file.
 
@@ -132,9 +132,9 @@ The Zowe runtime directory delivers its core components in the `<RUNTIME_DIR>/co
 
 Same as all Zowe server components, Zowe core components can be enabled or disabled by setting `components.<component>.enabled` to `true` or `false`.
 
-### Zowe extensions
+### Zowe z/OS extensions
 
-All Zowe extension runtime programs into a single location which is defined as `zowe.extensionDirectory` in `zowe.yaml`. Each extension should be represented with the extension name in this directory, and use either a directory or a symbolic link. This location should be defined as `zowe.extensionDirectory` in `zowe.yaml`.
+All Zowe z/OS extension runtime programs are installed into a single location which is defined as `zowe.extensionDirectory` in `zowe.yaml`. Each extension should be represented with the extension name in this directory, and use either a directory or a symbolic link.
 
 The Zowe launch script reads `components.<component>.enabled` and `haInstances.<ha-instance>.components.<component>.enabled` defined in `zowe.yaml` to determine whether to start an extension in current HA instance. The value of this `enabled` is boolean either `true` or `false`.
 

@@ -8,7 +8,7 @@ import styles from "./styles.module.css";
 //Components
 import PopularResources from "../components/PopularResources/PopularResources";
 import ExploreContent from "../components/ExploreContent/ExploreContent";
-import DiscoverYourPath from "../components/DiscoverYourPath/DiscoverYourPath";
+//import DiscoverYourPath from "../components/DiscoverYourPath/DiscoverYourPath";
 import FeaturedTopics from "../components/FeaturedTopics/FeaturedTopics";
 import DownloadableFiles from "../components/DownloadableFiles/DownloadableFiles";
 import SearchHeader from "../components/SearchHeader/SearchHeader";
@@ -35,8 +35,6 @@ function Home() {
       <PopularResources />
       <hr></hr>
       <ExploreContent />
-      <hr></hr>
-      <DiscoverYourPath />
       <hr></hr>
       <FeaturedTopics />
       <hr></hr>

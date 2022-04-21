@@ -6,6 +6,8 @@
 
 ## Sub-commands
 
+* [disable](./zwe-components-disable)
+* [enable](./zwe-components-enable)
 * [install](./install/zwe-components-install)
 
 ## Examples

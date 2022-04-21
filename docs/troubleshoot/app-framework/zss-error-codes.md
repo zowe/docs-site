@@ -132,7 +132,7 @@ The following error message codes may appear on ZSS log. Use the following messa
 
   **Reason:**
 
-  JWT will be configured using JSON Web Key(JWK) at URL <url>.
+  JWT will be configured using JSON Web Key(JWK) at URL `<url>`.
 
   **Action:**
 

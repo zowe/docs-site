@@ -9,28 +9,25 @@
 <h2><a href="zowe.html">zowe</a> › <a href="zowe_cics.html">cics</a> › <a href="zowe_cics_define.html">define</a> › <a href="zowe_cics_define_transaction.html">transaction</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
 <p>Define a new transaction to CICS.</p>
 <h4>Usage</h4>
-<p>zowe  cics define transaction &lt;transactionName&gt; &lt;programName&gt; &lt;csdGroup&gt; [options]</p>
+<p>zowe cics define transaction &lt;transactionName&gt; &lt;programName&gt; &lt;csdGroup&gt; [options]</p>
 <h4>Positional Arguments</h4>
 <ul>
 <li>
 <p><code>transactionName</code>		 <em>(string)</em></p>
 <ul>
-<li>The name of the new transaction to define. The maximum length of the
-transaction name is four characters.</li>
+<li>The name of the new transaction to define. The maximum length of the transaction name is four characters.</li>
 </ul>
 </li>
 <li>
 <p><code>programName</code>		 <em>(string)</em></p>
 <ul>
-<li>The name of the program that the transaction uses. The maximum length of the
-program name is eight characters.</li>
+<li>The name of the program that the transaction uses. The maximum length of the program name is eight characters.</li>
 </ul>
 </li>
 <li>
 <p><code>csdGroup</code>		 <em>(string)</em></p>
 <ul>
-<li>The CICS system definition (CSD) Group for the new transaction that you want to
-define. The maximum length of the group name is eight characters.</li>
+<li>The CICS system definition (CSD) Group for the new transaction that you want to define. The maximum length of the group name is eight characters.</li>
 </ul>
 </li>
 </ul>
@@ -92,8 +89,8 @@ define. The maximum length of the group name is eight characters.</li>
 <ul>
 <li>
 <p>Specifies CMCI protocol (http or https).</p>
-<p>Default value: https</p>
-<p>Allowed values: http, https</p>
+<p>Default value: https<br>
+Allowed values: http, https</p>
 </li>
 </ul>
 </li>
@@ -118,8 +115,7 @@ define. The maximum length of the group name is eight characters.</li>
 <li>
 <p><code>--token-type</code>  | <code>--tt</code> <em>(string)</em></p>
 <ul>
-<li>The type of token to get and use for the API. Omit this option to use the
-default token type, which is provided by 'zowe auth login'.</li>
+<li>The type of token to get and use for the API. Omit this option to use the default token type, which is provided by 'zowe auth login'.</li>
 </ul>
 </li>
 <li>
@@ -144,10 +140,9 @@ default token type, which is provided by 'zowe auth login'.</li>
 <h4>Examples</h4>
 <ul>
 <li>
-<p>Define a transaction named TRN1 for the program named PGM123
-to the region named MYREGION in the CSD group MYGRP:</p>
+<p>Define a transaction named TRN1 for the program named PGM123 to the region named MYREGION in the CSD group MYGRP:</p>
 <ul>
-<li><code>zowe  cics define transaction TRN1 PGM123 MYGRP --region-name MYREGION</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  cics define transaction TRN1 PGM123 MYGRP --region-name MYREGION">Copy</button></li>
+<li><code>zowe cics define transaction TRN1 PGM123 MYGRP --region-name MYREGION</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe cics define transaction TRN1 PGM123 MYGRP --region-name MYREGION">Copy</button></li>
 </ul>
 </li>
 </ul>

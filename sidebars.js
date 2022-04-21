@@ -15,21 +15,20 @@ module.exports = {
       label: "FAQ",
       items: [
         "getting-started/zowe_faq",
-    //    "getting-started/zowe_v2_faq",
+        "getting-started/zowe_v2_faq",
       ],
     },
-    //{
-    //  type: "category",
-    //  label: "Release notes",
-    //  items: [
-    //    "getting-started/release-notes/v2_0",
-    //  ],
-    //},
+    {
+      type: "category",
+      label: "Release notes",
+      items: [
+        "getting-started/release-notes/v2_0",
+      ],
+    },
     {
       type: "category",
       label: "Quick start",
       items: [
-        "getting-started/zowe-getting-started",
         "getting-started/cli-getting-started",
       ],
     },
@@ -37,20 +36,10 @@ module.exports = {
       type: "category",
       label: "Migrating from V1 to V2",
       items: [
-        "getting-started/migrate-instance",
+    //    "getting-started/migrate-instance",  //Not ready yet, need to check
         "extend/migrate-extensions",
-      ],
-    },
-    {
-      type: "category",
-      label: "Learning paths",
-      items: [
-        "getting-started/user-roadmap-apiml",
-        "getting-started/user-roadmap-app-framework",
-        "getting-started/user-roadmap-zowe-cli",
-        "getting-started/user-roadmap-zowe-explorer",
-        "getting-started/user-roadmap-client-sdk",
-        "getting-started/user-roadmap-zowe-mobile",
+        "getting-started/migrate-cli",
+        "getting-started/zowe-office-hours"
       ],
     },
     "getting-started/zowe-resources",
@@ -63,8 +52,14 @@ module.exports = {
       label: "Installing Zowe z/OS components",
       items: [
         "user-guide/install-zos",
-        "user-guide/installandconfig", 
-        "user-guide/configure-uss",
+        {
+          type: "category",
+          label: "Planning",
+          items: [
+            "user-guide/installandconfig", 
+            "user-guide/configure-uss",
+          ],
+        },
         {
           type: "category",
           label: "System requirements",
@@ -79,10 +74,10 @@ module.exports = {
           type: "category",
           label: "Installing",
           items: [
-            "user-guide/install-zowe-zos-convenience-build",
+            "user-guide/install-zowe-zos-convenience-build", 
             {
               type: "category",
-              label: "Installing Zowe SMP/E build",
+              label: "Installing Zowe SMP/E build", 
               items: [
                 "user-guide/install-zowe-smpe",
                 "user-guide/install-zowe-smpe-zosmf-workflow",
@@ -104,26 +99,27 @@ module.exports = {
           type: "category",
           label: "Configuring",
           items: [
+            "user-guide/initialize-zos-system", 
+            "user-guide/initialize-mvs-datasets", 
+            "user-guide/initialize-security-configuration", 
+            "user-guide/configure-zos-system", 
+            "user-guide/grant-user-permission-zosmf", 
+            "user-guide/apf-authorize-load-library", 
             {
-              type: "category",
-              label: "Configuring and starting Zowe with script",
-              items: [
-                "user-guide/initialize-zos-system",
-                "user-guide/configure-zos-system",
-                {
                   type: "category",
                   label: "Configuring certificates",
                   items: [
                     "user-guide/configure-certificates-keystore",
                     "user-guide/configure-certificates-keyring",
+                    "user-guide/certificates-setup",
                   ],
-                },
-                "user-guide/configure-xmem-server",
-                "user-guide/configure-zowe-server",
-                "user-guide/configure-auxiliary-address-space",
-              ],
-            },
-        //    "user-guide/configure-zowe-zosmf-workflow",
+             },
+            "user-guide/initialize-vsam-dataset", 
+            "user-guide/install-stc-members",
+            "user-guide/configure-xmem-server",
+        //    "user-guide/configure-zowe-server", //out of date, v1 info included
+            "user-guide/configure-auxiliary-address-space",
+            "user-guide/configure-zowe-zosmf-workflow",
           ],
         },
        {
@@ -134,9 +130,9 @@ module.exports = {
           "user-guide/configure-sysplex",
           "user-guide/systemrequirements-zosmf-ha",
           "user-guide/configure-caching-service-ha",
-          // "user-guide/configure-zowe-zosmf-workflow",
          ],
        }, 
+        "user-guide/start-zowe-zos",
         "user-guide/verify-zowe-runtime-install",
     //    "user-guide/upgrade-zos-system",
     //    "user-guide/zowe-zos-uninstall",       
@@ -159,14 +155,15 @@ module.exports = {
       items: [
         "user-guide/cli-install-cli-checklist",
         "user-guide/systemrequirements-cli",
-                {
+        {
           type: "category",
           label: "Install CLI",
           items: [
             "user-guide/cli-installcli",
             "user-guide/cli-configure-scs-on-headless-linux-os",
             "user-guide/cli-configure-cli-on-os-where-scs-unavailable",
-            "user-guide/cli-install-cli-nodejs-windows",                          ],
+            "user-guide/cli-install-cli-nodejs-windows",                          
+          ],
         },
         "user-guide/install-cli-via-proxy",
         "user-guide/cli-updatingcli",
@@ -186,7 +183,7 @@ module.exports = {
       type: "category",
       label: "Advanced Zowe configuration",
       items: [
-    //    "user-guide/mvd-configuration",
+        "user-guide/mvd-configuration",
         "user-guide/cli-configuringcli-ev",
         "user-guide/configure-data-sets-jobs-api",
         "user-guide/api-mediation/api-gateway-configuration",
@@ -195,15 +192,15 @@ module.exports = {
     },
   ],
   "use": [
-        "user-guide/zowe-getting-started-tutorial",
-    //    {
-    //      type: "category",
-    //      label: "Using Zowe Desktop",
-    //      items: [
-    //        "user-guide/mvd-using",
-    //        "user-guide/mvd-editor",
-    //      ],
-    //    },
+        "user-guide/zowe-getting-started-tutorial", // Need to confirm
+        {
+          type: "category",
+          label: "Using Zowe Desktop",
+          items: [
+            "user-guide/mvd-using",
+            "user-guide/mvd-editor",
+          ],
+        },
         "user-guide/api-mediation-api-catalog",
         "user-guide/api-mediation-metrics-service",
         {
@@ -275,17 +272,18 @@ module.exports = {
         "user-guide/sdks-using",
   ],
   extending: [
+    "extend/extend-zowe-overview",
     {
       type: "category",
-      label: "Overview",
+      label: "Developing server components",
       items: [
-        "extend/extend-zowe-overview",
         "extend/packaging-zos-extensions",
         "extend/install-configure-zos-extensions",
         "extend/lifecycling-with-zwesvstc",
+        "extend/k8s-extend",
+        "extend/k8s-conformance",
       ],
     },
-    "extend/migrate-extensions",
    {
      type: "category",
      label: "Developing for Zowe CLI",
@@ -310,13 +308,18 @@ module.exports = {
         "extend/extend-apiml/onboard-micronaut-enabler",
         "extend/extend-apiml/onboard-nodejs-enabler",
         "extend/extend-apiml/onboard-static-definition",
+        "extend/extend-apiml/onboard-wizard",
         "extend/extend-apiml/api-mediation-sso",
         "extend/extend-apiml/service-information",
+        "extend/extend-apiml/websocket",
+        "extend/extend-apiml/create-apiml-extension",
         "extend/extend-apiml/api-mediation-message-service",
         "extend/extend-apiml/api-mediation-security",
         "extend/extend-apiml/api-mediation-routing",
         "extend/extend-apiml/api-mediation-passtickets",
         "extend/extend-apiml/custom-metadata",
+        "extend/extend-apiml/api-mediation-versioning",
+        "extend/extend-apiml/implement-new-saf-provider", 
         {
           type: "category",
           label: "Caching service",
@@ -328,31 +331,30 @@ module.exports = {
         }
       ],
     },
-    //{
-    //  type: "category",
-    //  label: "Developing for Zowe Application Framework",
-    //  items: [
-    //    "extend/extend-desktop/mvd-extendingzlux",
-    //    "extend/extend-desktop/mvd-plugindefandstruct",
-    //    "extend/extend-desktop/mvd-buildingplugins",
-    //    "extend/extend-desktop/mvd-installplugins",
-    //    "extend/extend-desktop/mvd-embeddingplugins",
-    //    "extend/extend-desktop/mvd-dataservices",
-    //    "extend/extend-desktop/mvd-authentication-api",
-    //    "extend/extend-desktop/mvd-internationalization",
-    //    "extend/extend-desktop/mvd-desktopandwindowmgt",
-    //    "extend/extend-desktop/mvd-configdataservice",
-    //    "extend/extend-desktop/mvd-uribroker",
-    //    "extend/extend-desktop/mvd-apptoappcommunication",
-    //    "extend/extend-desktop/mvd-iframecomm",
-    //    "extend/extend-desktop/mvd-errorreportingui",
-    //    "extend/extend-desktop/mvd-logutility",
-    //    "extend/extend-desktop/mvd-conda",
-    //  ],
-    //},
-    "extend/k8s-extend",
-    //"extend/extend-ze/ze-extensions",
-    //"extend/extend-sdks",
+    {
+      type: "category",
+      label: "Developing for Zowe Application Framework",
+      items: [
+        "extend/extend-desktop/mvd-extendingzlux",
+        "extend/extend-desktop/mvd-plugindefandstruct",
+        "extend/extend-desktop/mvd-buildingplugins",
+        "extend/extend-desktop/mvd-installplugins",
+        "extend/extend-desktop/mvd-embeddingplugins",
+        "extend/extend-desktop/mvd-dataservices",
+        "extend/extend-desktop/mvd-authentication-api",
+        "extend/extend-desktop/mvd-internationalization",
+        "extend/extend-desktop/mvd-desktopandwindowmgt",
+        "extend/extend-desktop/mvd-configdataservice",
+        "extend/extend-desktop/mvd-uribroker",
+        "extend/extend-desktop/mvd-apptoappcommunication",
+        "extend/extend-desktop/mvd-iframecomm",
+        "extend/extend-desktop/mvd-errorreportingui",
+        "extend/extend-desktop/mvd-logutility",
+        "extend/extend-desktop/mvd-conda",
+      ],
+    },
+    "extend/extend-ze/ze-extensions",
+    "extend/extend-sdks",
     "extend/zowe-conformance-program",
   ],
   troubleshooting: [
@@ -363,7 +365,7 @@ module.exports = {
         "troubleshoot/troubleshooting",
         "troubleshoot/troubleshoot-zowe-release",
     //    "troubleshoot/troubleshoot-diagnostics",
-    //    "troubleshoot/verify-fingerprint",
+        "troubleshoot/verify-fingerprint",
       ],
     },
     //"troubleshoot/troubleshoot-zos",
@@ -445,6 +447,7 @@ module.exports = {
   ],
   reference: [
     "appendix/zowe-cli-command-reference",
+    "appendix/zowe-api-reference",
     {
       type: "category",
       label: "ZWE Server Command Reference",
@@ -454,10 +457,9 @@ module.exports = {
           dirName: "appendix/zwe_server_command_reference"
         }
       ]
-    },
-    "appendix/zowe-api-reference",
-    "appendix/server-component-manifest",
-    "appendix/zowe-yaml-configuration",      
+    },  
+    "appendix/zowe-yaml-configuration", 
+    "appendix/server-component-manifest",     
   //  "appendix/bill-of-materials",
   //  {
   //    type: "link",
