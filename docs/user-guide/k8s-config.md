@@ -86,7 +86,7 @@ spec:
 
 ## 3. Create and modify ConfigMaps and Secrets
 
-Similarly, to running Zowe services on z/OS, you can use `zowe.yaml` to customize Zowe in Kubernetes.
+Similarly, to running Zowe services on z/OS, you can use Zowe configuration file (`zowe.yaml`) to customize Zowe in Kubernetes.
 
 You can modify `samples/config-cm.yaml`,  , and `samples/certificates-secret.yaml` directly. Or more conveniently, if you have Zowe ZSS/ZIS running on z/OS, the Kubernetes environment can reuse instance and keystore configuration from that installation.
 
@@ -98,18 +98,20 @@ a. On z/OS, run the following command:
 
 ```
 cd <runtime-dir> 
-./bin/zwe migrate for kubernetes --domains "my-k8s-cluster.company.com,9.10.11.12"
+./bin/zwe migrate for kubernetes --config /path/to/my/zowe.yaml --domains "my-k8s-cluster.company.com,9.10.11.12"
 ``` 
 
 This migration script supports these parameters:
 
-- `domains`: Defines the domain list will be put into certificate Subject Alternative Name (SAN). This is optional, default value is `localhost`.
-- `external-port`: Defines the external port number to access APIML Gateway running in Kubernetes. This is optional, default value is `7554`.
-- `k8s-namespace`: Defines the Kubernetes namespace. This is optional, default value is `zowe`.
-- `k8s-cluster-name`: Defines the Kubernetes cluster name. This is optional, default value is `cluster.local`.
-- `password`: Defines password of the certificate keystore. This is optional, default value is `password`.
-- `ca-alias`: Defines the alias name of the certificate authority which is used to sign CSR. This is optional, default value is `local_ca`. This argument is only used to sign a new certificate if the migration script will re-generate new certificates for Kubernetes.
-- `ca-password`: Defines the password of the certificate authority keystore which is used to sign CSR. This is optional, default value is `local_ca_password`. This argument is only used if the migration script will re-generate new certificates for Kubernetes.
+- `--config` or `-c`: Defines the path to your configuration file, usually referred as `zowe.yaml`.
+- `--domains`: Defines the domain list will be put into certificate Subject Alternative Name (SAN). This is optional, default value is `localhost`.
+- `--external-port`: Defines the external port number to access APIML Gateway running in Kubernetes. This is optional, default value is `7554`.
+- `--k8s-namespace`: Defines the Kubernetes namespace. This is optional, default value is `zowe`.
+- `--k8s-cluster-name`: Defines the Kubernetes cluster name. This is optional, default value is `cluster.local`.
+- `--password`: Defines password of the certificate keystore. This is optional, default value is `password`.
+- `--ca-alias`: Defines the alias name of the certificate authority which is used to sign CSR. This is optional, default value is `local_ca`. This argument is only used to sign a new certificate if the migration script will re-generate new certificates for Kubernetes.
+- `--ca-password`: Defines the password of the certificate authority keystore which is used to sign CSR. This is optional, default value is `local_ca_password`. This argument is only used if the migration script will re-generate new certificates for Kubernetes.
+- `--silent` or `-s` is an optional parameter can help you suppress all standard output except for the Kubernetes manifests will be generated.
 
 As a result, it displays ConfigMaps `zowe-config` and Secrets (`zowe-certificates-secret`) Kubernetes objects which are based on the Zowe instance and keystore used. The content looks similar to `samples/config-cm.yaml`, `samples/certificates-cm.yaml` and `samples/certificates-secret.yaml` but with real values.
 
