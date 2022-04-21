@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>znetview-network list ddvipa-health</title>
+<link rel="stylesheet" href="../css/bundle-docs.css">
+<link rel="stylesheet" href="../css/docs.css">
+<article class="markdown-body">
+<h2><a href="zowe.html">zowe</a> › <a href="zowe_znetview-network.html">znetview-network</a> › <a href="zowe_znetview-network_list.html">list</a> › <a href="zowe_znetview-network_list_ddvipa-health.html">ddvipa-health</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
+<p>List health information for distributed Dynamic Virtual IP Addresses (DDVIPAs).</p>
+<h4>Usage</h4>
+<p>zowe znetview-network list ddvipa-health [options]</p>
+<h4>Options</h4>
+<ul>
+<li>
+<p><code>--domain</code>  | <code>-D</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>The NetView domain to which the request will be sent.</p>
+<p>The default is the NetView domain to which the NetView REST Server is connected.</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--dvipa</code>  | <code>--dv</code> <em>(string)</em></p>
+<ul>
+<li>The IP address for the requested DVIPA.</li>
+</ul>
+</li>
+<li>
+<p><code>--dvipa-port</code>  | <code>--dp</code> <em>(number)</em></p>
+<ul>
+<li>The port number for the DVIPA.</li>
+</ul>
+</li>
+</ul>
+<h4>NetView Connection Options</h4>
+<ul>
+<li>
+<p><code>--host</code>  | <code>-H</code> <em>(string)</em></p>
+<ul>
+<li>The host name of your NetView REST Server.</li>
+</ul>
+</li>
+<li>
+<p><code>--port</code>  | <code>-P</code> <em>(number)</em></p>
+<ul>
+<li>
+<p>The port number of your NetView REST Server.</p>
+<p>Default value: 3275</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--user</code>  | <code>-u</code> <em>(string)</em></p>
+<ul>
+<li>The user name to authenticate to your NetView REST Server.</li>
+</ul>
+</li>
+<li>
+<p><code>--password</code>  | <code>--pw</code> <em>(string)</em></p>
+<ul>
+<li>The password to authenticate to your NetView REST Server.</li>
+</ul>
+</li>
+<li>
+<p><code>--token-type</code>  | <code>--tt</code> <em>(string)</em></p>
+<ul>
+<li>The type of the token to authenticate to your NetView REST Server.</li>
+</ul>
+</li>
+<li>
+<p><code>--token-value</code>  | <code>--tv</code> <em>(string)</em></p>
+<ul>
+<li>The value of the token to authenticate to your NetView REST Server.</li>
+</ul>
+</li>
+<li>
+<p><code>--base-path</code>  | <code>--bp</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>The base path for your Zowe API Mediation Layer instance. Specify this option to prepend the base path to NetView REST service when making REST requests to the Zowe API Mediation Layer.</p>
+<p>Note: Do not specify this option if you are not using the Zowe API Mediation Layer.</p>
+</li>
+</ul>
+</li>
+</ul>
+<h4>Profile Options</h4>
+<ul>
+<li>
+<p><code>--znetview-profile</code>  | <code>--znetview-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (znetview) profile to load for this command execution.</li>
+</ul>
+</li>
+<li>
+<p><code>--base-profile</code>  | <code>--base-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (base) profile to load for this command execution.</li>
+</ul>
+</li>
+</ul>
+<h4>Base Connection Options</h4>
+<ul>
+<li>
+<p><code>--reject-unauthorized</code>  | <code>--ru</code> <em>(boolean)</em></p>
+<ul>
+<li>
+<p>Reject self-signed certificates.</p>
+<p>Default value: true</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--cert-file</code>  <em>(local file path)</em></p>
+<ul>
+<li>The file path to a certificate file to use for authentication</li>
+</ul>
+</li>
+<li>
+<p><code>--cert-key-file</code>  <em>(local file path)</em></p>
+<ul>
+<li>The file path to a certificate key file to use for authentication</li>
+</ul>
+</li>
+</ul>
+<h4>Examples</h4>
+<ul>
+<li>
+<p>List the DDVIPA health data from domain CNM01 and filter the data by DVIPA IP 201.2.10.20, and port 623.:</p>
+<ul>
+<li><code>zowe znetview-network list ddvipa-health --dvipa 201.2.10.20 --dvipa-port 623 --domain CNM01</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe znetview-network list ddvipa-health --dvipa 201.2.10.20 --dvipa-port 623 --domain CNM01">Copy</button></li>
+</ul>
+</li>
+</ul>
+</article>
+<script src="../js/bundle-docs.js"></script>
+<script src="../js/docs.js"></script>

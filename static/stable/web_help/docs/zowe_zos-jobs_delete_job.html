@@ -9,27 +9,23 @@
 <h2><a href="zowe.html">zowe</a> › <a href="zowe_zos-jobs.html">zos-jobs</a> › <a href="zowe_zos-jobs_delete.html">delete</a> › <a href="zowe_zos-jobs_delete_job.html">job</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
 <p>Delete a single job by job ID</p>
 <h4>Usage</h4>
-<p>zowe  zos-jobs delete job &lt;jobid&gt; [options]</p>
+<p>zowe zos-jobs delete job &lt;jobid&gt; [options]</p>
 <h4>Positional Arguments</h4>
 <ul>
 <li>
 <p><code>jobid</code>		 <em>(string)</em></p>
 <ul>
-<li>The job ID (e.g. JOB00123) of the job. Job ID is a unique identifier for z/OS
-batch jobs -- no two jobs on one system can have the same ID. Note: z/OS
-allows you to abbreviate the job ID if desired. You can use, for example
-&quot;J123&quot;.</li>
+<li>The job ID (e.g. JOB00123) of the job. Job ID is a unique identifier for z/OS batch jobs -- no two jobs on one system can have the same ID. Note: z/OS allows you to abbreviate the job ID if desired. You can use, for example &quot;J123&quot;.</li>
 </ul>
 </li>
 </ul>
 <h4>Options</h4>
 <ul>
 <li>
-<p><code>--modifyVersion</code>  <em>(string)</em></p>
+<p><code>--modify-version</code>  <em>(string)</em></p>
 <ul>
 <li>
-<p>Using this option to set X-IBM-Job-Modify-Version to &quot;2.0&quot; will make the
-delete job API synchronous. Otherwise, it will be asynchronous by default.</p>
+<p>Using this option to set X-IBM-Job-Modify-Version to &quot;2.0&quot; will make the delete job API synchronous. Otherwise, it will be asynchronous by default.</p>
 <p>Default value: 1.0</p>
 </li>
 </ul>
@@ -76,9 +72,7 @@ delete job API synchronous. Otherwise, it will be asynchronous by default.</p>
 <li>
 <p><code>--base-path</code>  | <code>--bp</code> <em>(string)</em></p>
 <ul>
-<li>The base path for your API mediation layer instance. Specify this option to
-prepend the base path to all z/OSMF resources when making REST requests. Do not
-specify this option if you are not using an API mediation layer.</li>
+<li>The base path for your API mediation layer instance. Specify this option to prepend the base path to all z/OSMF resources when making REST requests. Do not specify this option if you are not using an API mediation layer.</li>
 </ul>
 </li>
 <li>
@@ -86,8 +80,8 @@ specify this option if you are not using an API mediation layer.</li>
 <ul>
 <li>
 <p>The protocol used (HTTP or HTTPS)</p>
-<p>Default value: https</p>
-<p>Allowed values: http, https</p>
+<p>Default value: https<br>
+Allowed values: http, https</p>
 </li>
 </ul>
 </li>
@@ -124,8 +118,7 @@ specify this option if you are not using an API mediation layer.</li>
 <li>
 <p><code>--token-type</code>  | <code>--tt</code> <em>(string)</em></p>
 <ul>
-<li>The type of token to get and use for the API. Omit this option to use the
-default token type, which is provided by 'zowe auth login'.</li>
+<li>The type of token to get and use for the API. Omit this option to use the default token type, which is provided by 'zowe auth login'.</li>
 </ul>
 </li>
 <li>
@@ -140,13 +133,13 @@ default token type, which is provided by 'zowe auth login'.</li>
 <li>
 <p>Delete job with job ID JOB03456:</p>
 <ul>
-<li><code>zowe  zos-jobs delete job JOB03456</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  zos-jobs delete job JOB03456">Copy</button></li>
+<li><code>zowe zos-jobs delete job JOB03456</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe zos-jobs delete job JOB03456">Copy</button></li>
 </ul>
 </li>
 <li>
 <p>Delete job with job ID JOB03456 synchronously:</p>
 <ul>
-<li><code>zowe  zos-jobs delete job JOB03456 --modify-version &quot;2.0&quot;</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe  zos-jobs delete job JOB03456 --modify-version &quot;2.0&quot;">Copy</button></li>
+<li><code>zowe zos-jobs delete job JOB03456 --modify-version &quot;2.0&quot;</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe zos-jobs delete job JOB03456 --modify-version &quot;2.0&quot;">Copy</button></li>
 </ul>
 </li>
 </ul>

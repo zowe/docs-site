@@ -15,6 +15,7 @@
 * [sample](./sample/zwe-sample)
 * [start](./zwe-start)
 * [stop](./zwe-stop)
+* [support](./support/zwe-support)
 * [version](./zwe-version)
 
 ## Description
