@@ -25,7 +25,7 @@ zowe:
       storage:
         mode: VSAM
         vsam:
-          name: IBMUSER.ZWE.CUST.CACHE2
+          name: IBMUSER.ZWE.CUST.CACHE
 ```
 
 - `zowe.components.caching-service.storage.vsam.name` variable
@@ -46,13 +46,16 @@ zowe:
    If you set to use the `NONRLS` mode, a storage volume is required.
 
 
-If you want to preview the member before submitting it use the value `--security-dry-run`. 
+If you want to preview the member before submitting it use the value `--security-dry-run`, otherwise the command will submit the JCL and wait for its completion.
 
 ```
->zwe init vsam -c ./zowe.yaml --security-dry-run
+>zwe init vsam -c ./zowe.yaml
 -------------------------------------------------------------------------------
 >> Create VSAM storage for Zowe Caching Service
 Modify ZWECSVSM
 - IBMUSER.ZWE.CUST.JCLLIB(ZWECSVSM) is prepared
+Submit WINCHJ.ZWEV2.CUST.JCLLIB(ZWECSVSM)
+- Job ZWECSVSM(JOB05407) ends with code 0 (COMPLETED).
+>> Zowe Caching Service VSAM storage is created successfully.
 >
 ```
