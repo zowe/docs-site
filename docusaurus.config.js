@@ -45,7 +45,7 @@ module.exports = {
         {
           type: "doc",
           label: "Setup",
-          docId: "user-guide/install-zos",
+          docId: "user-guide/install-overview",
           position: "left",
         },
         {
@@ -76,7 +76,7 @@ module.exports = {
         {
           type: "doc",
           label: "Reference",
-          docId: "appendix/server-component-manifest",
+          docId: "appendix/zowe-cli-command-reference",
           position: "left",
         },
          {
