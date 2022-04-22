@@ -34,7 +34,7 @@ The following steps describe how to enable daemon mode and how to configure Zowe
 
    **Important!** Ensure that you position the path to your Zowe executables before the path into which NPM installed the Node.js script. For example, `C:\Program Files\nodejs\zowe.cmd`. For information about configuring environment variables, see the documentation for your computer's operating system.
    
-   **Alternative configuration**: By default, the daemon binary creates or reuses a file in the user's home directory each time a Zowe CLI command runs. In some cases, this behavior might be undesirable. To change the location that the daemon uses, see [Setting CLI daemon mode properties](../user-guide/cli-configuringcli.md#setting-cli-daemon-mode-properties).
+   **Alternative configuration**: By default, the daemon binary creates or reuses a file in the user's home directory each time a Zowe CLI command runs. In some cases, this behavior might be undesirable. To change the location that the daemon uses, see [Setting CLI daemon mode properties](../user-guide/cli-configuringcli-ev.md#setting-cli-daemon-mode-properties).
 
    **Note:** Complete the environment variable configuration step (Step 2) only once.
 
