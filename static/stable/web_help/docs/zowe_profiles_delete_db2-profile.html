@@ -8,6 +8,8 @@
 <article class="markdown-body">
 <h2><a href="zowe.html">zowe</a> › <a href="zowe_profiles.html">profiles</a> › <a href="zowe_profiles_delete.html">delete</a> › <a href="zowe_profiles_delete_db2-profile.html">db2-profile</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
 <p>Delete a db2 profile. You must specify a profile name to be deleted. To find a list of available profiles for deletion, issue the profiles list command. By default, you will be prompted to confirm the profile removal.</p>
+<p>Warning: This command has been deprecated.<br>
+Recommended replacement: Edit your Zowe V2 configuration     zowe.config.json</p>
 <h4>Usage</h4>
 <p>zowe profiles delete db2-profile &lt;profileName&gt; [options]</p>
 <h4>Positional Arguments</h4>
@@ -22,7 +24,7 @@
 <h4>Options</h4>
 <ul>
 <li>
-<p><code>--force</code>  <em>(boolean)</em></p>
+<p><code>--force</code> <em>(boolean)</em></p>
 <ul>
 <li>Force deletion of profile, and dependent profiles if specified. No prompt will be displayed before  deletion occurs.</li>
 </ul>
