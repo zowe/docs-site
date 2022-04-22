@@ -3,8 +3,8 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>LoggerConfigBuilder | Zowe Node.js SDK - v1.27.2</title>
-	<meta name="description" content="Documentation for Zowe Node.js SDK - v1.27.2">
+	<title>LoggerConfigBuilder | Zowe Node.js SDK - v2.0.0</title>
+	<meta name="description" content="Documentation for Zowe Node.js SDK - v2.0.0">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
 </head>
@@ -22,7 +22,7 @@
 						<li class="state loading">Preparing search index...</li>
 						<li class="state failure">The search index is not available</li>
 					</ul>
-					<a href="../index.html" class="title">Zowe Node.js SDK - v1.27.2</a>
+					<a href="../index.html" class="title">Zowe Node.js SDK - v2.0.0</a>
 				</div>
 				<div class="table-cell" id="tsd-widgets">
 					<div id="tsd-filter">
@@ -92,7 +92,6 @@
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-static"><a href="_zowe_imperative.loggerconfigbuilder.html#default_log_file_ext" class="tsd-kind-icon">DEFAULT_<wbr>LOG_<wbr>FILE_<wbr>EXT</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-static"><a href="_zowe_imperative.loggerconfigbuilder.html#default_log_file_max_size" class="tsd-kind-icon">DEFAULT_<wbr>LOG_<wbr>FILE_<wbr>MAX_<wbr>SIZE</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-static"><a href="_zowe_imperative.loggerconfigbuilder.html#default_log_layout" class="tsd-kind-icon">DEFAULT_<wbr>LOG_<wbr>LAYOUT</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-static"><a href="_zowe_imperative.loggerconfigbuilder.html#default_log_level" class="tsd-kind-icon">DEFAULT_<wbr>LOG_<wbr>LEVEL</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-static"><a href="_zowe_imperative.loggerconfigbuilder.html#default_log_type_console" class="tsd-kind-icon">DEFAULT_<wbr>LOG_<wbr>TYPE_<wbr>CONSOLE</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-static"><a href="_zowe_imperative.loggerconfigbuilder.html#default_log_type_file_sync" class="tsd-kind-icon">DEFAULT_<wbr>LOG_<wbr>TYPE_<wbr>FILE_<wbr>SYNC</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-static"><a href="_zowe_imperative.loggerconfigbuilder.html#default_log_type_pat" class="tsd-kind-icon">DEFAULT_<wbr>LOG_<wbr>TYPE_<wbr>PAT</a></li>
@@ -106,6 +105,7 @@
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><a href="_zowe_imperative.loggerconfigbuilder.html#buildfulllogfile" class="tsd-kind-icon">build<wbr>Full<wbr>Log<wbr>File</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><a href="_zowe_imperative.loggerconfigbuilder.html#getdefaultfilename" class="tsd-kind-icon">get<wbr>Default<wbr>File<wbr>Name</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><a href="_zowe_imperative.loggerconfigbuilder.html#getdefaulticonfiglogging" class="tsd-kind-icon">get<wbr>DefaultIConfig<wbr>Logging</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><a href="_zowe_imperative.loggerconfigbuilder.html#getdefaultloglevel" class="tsd-kind-icon">get<wbr>Default<wbr>Log<wbr>Level</a></li>
 							</ul>
 						</section>
 					</div>
@@ -119,7 +119,7 @@
 					<div class="tsd-signature tsd-kind-icon">DEFAULT<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">"default"</span><span class="tsd-signature-symbol"> = &quot;default&quot;</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/zowe/imperative/blob/v4.17.6/packages/logger/src/LoggerConfigBuilder.ts#L29">@zowe/imperative/packages/logger/src/LoggerConfigBuilder.ts:29</a></li>
+							<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.0.2/packages/logger/src/LoggerConfigBuilder.ts#L27">@zowe/imperative/packages/logger/src/LoggerConfigBuilder.ts:27</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -129,7 +129,7 @@
 					<div class="tsd-signature tsd-kind-icon">DEFAULT_<wbr>BACKEND<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">"NONE"</span><span class="tsd-signature-symbol"> = &quot;NONE&quot;</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/zowe/imperative/blob/v4.17.6/packages/logger/src/LoggerConfigBuilder.ts#L27">@zowe/imperative/packages/logger/src/LoggerConfigBuilder.ts:27</a></li>
+							<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.0.2/packages/logger/src/LoggerConfigBuilder.ts#L25">@zowe/imperative/packages/logger/src/LoggerConfigBuilder.ts:25</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -139,7 +139,7 @@
 					<div class="tsd-signature tsd-kind-icon">DEFAULT_<wbr>COLOR_<wbr>LAYOUT<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &quot;%[&quot; + LoggerConfigBuilder.DEFAULT_LOG_LAYOUT + &quot;%]&quot;</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/zowe/imperative/blob/v4.17.6/packages/logger/src/LoggerConfigBuilder.ts#L25">@zowe/imperative/packages/logger/src/LoggerConfigBuilder.ts:25</a></li>
+							<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.0.2/packages/logger/src/LoggerConfigBuilder.ts#L23">@zowe/imperative/packages/logger/src/LoggerConfigBuilder.ts:23</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -149,7 +149,7 @@
 					<div class="tsd-signature tsd-kind-icon">DEFAULT_<wbr>LANG<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">"en"</span><span class="tsd-signature-symbol"> = &quot;en&quot;</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/zowe/imperative/blob/v4.17.6/packages/logger/src/LoggerConfigBuilder.ts#L19">@zowe/imperative/packages/logger/src/LoggerConfigBuilder.ts:19</a></li>
+							<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.0.2/packages/logger/src/LoggerConfigBuilder.ts#L19">@zowe/imperative/packages/logger/src/LoggerConfigBuilder.ts:19</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -159,7 +159,7 @@
 					<div class="tsd-signature tsd-kind-icon">DEFAULT_<wbr>LOG_<wbr>DIR<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = IO.FILE_DELIM</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/zowe/imperative/blob/v4.17.6/packages/logger/src/LoggerConfigBuilder.ts#L30">@zowe/imperative/packages/logger/src/LoggerConfigBuilder.ts:30</a></li>
+							<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.0.2/packages/logger/src/LoggerConfigBuilder.ts#L28">@zowe/imperative/packages/logger/src/LoggerConfigBuilder.ts:28</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -169,7 +169,7 @@
 					<div class="tsd-signature tsd-kind-icon">DEFAULT_<wbr>LOG_<wbr>FILE_<wbr>BACKUPS<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">5</span><span class="tsd-signature-symbol"> = 5</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/zowe/imperative/blob/v4.17.6/packages/logger/src/LoggerConfigBuilder.ts#L34">@zowe/imperative/packages/logger/src/LoggerConfigBuilder.ts:34</a></li>
+							<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.0.2/packages/logger/src/LoggerConfigBuilder.ts#L32">@zowe/imperative/packages/logger/src/LoggerConfigBuilder.ts:32</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -179,7 +179,7 @@
 					<div class="tsd-signature tsd-kind-icon">DEFAULT_<wbr>LOG_<wbr>FILE_<wbr>DIR<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &quot;logs&quot; + IO.FILE_DELIM</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/zowe/imperative/blob/v4.17.6/packages/logger/src/LoggerConfigBuilder.ts#L31">@zowe/imperative/packages/logger/src/LoggerConfigBuilder.ts:31</a></li>
+							<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.0.2/packages/logger/src/LoggerConfigBuilder.ts#L29">@zowe/imperative/packages/logger/src/LoggerConfigBuilder.ts:29</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -189,7 +189,7 @@
 					<div class="tsd-signature tsd-kind-icon">DEFAULT_<wbr>LOG_<wbr>FILE_<wbr>EXT<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">".log"</span><span class="tsd-signature-symbol"> = &quot;.log&quot;</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/zowe/imperative/blob/v4.17.6/packages/logger/src/LoggerConfigBuilder.ts#L32">@zowe/imperative/packages/logger/src/LoggerConfigBuilder.ts:32</a></li>
+							<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.0.2/packages/logger/src/LoggerConfigBuilder.ts#L30">@zowe/imperative/packages/logger/src/LoggerConfigBuilder.ts:30</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -199,7 +199,7 @@
 					<div class="tsd-signature tsd-kind-icon">DEFAULT_<wbr>LOG_<wbr>FILE_<wbr>MAX_<wbr>SIZE<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">10000000</span><span class="tsd-signature-symbol"> = 10000000</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/zowe/imperative/blob/v4.17.6/packages/logger/src/LoggerConfigBuilder.ts#L33">@zowe/imperative/packages/logger/src/LoggerConfigBuilder.ts:33</a></li>
+							<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.0.2/packages/logger/src/LoggerConfigBuilder.ts#L31">@zowe/imperative/packages/logger/src/LoggerConfigBuilder.ts:31</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -209,17 +209,7 @@
 					<div class="tsd-signature tsd-kind-icon">DEFAULT_<wbr>LOG_<wbr>LAYOUT<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">"[%d{yyyy/MM/dd} %d{hh:mm:ss.SSS}] [%p] %m"</span><span class="tsd-signature-symbol"> = &quot;[%d{yyyy/MM/dd} %d{hh:mm:ss.SSS}] [%p] %m&quot;</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/zowe/imperative/blob/v4.17.6/packages/logger/src/LoggerConfigBuilder.ts#L24">@zowe/imperative/packages/logger/src/LoggerConfigBuilder.ts:24</a></li>
-						</ul>
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-static">
-					<a name="default_log_level" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagStatic">Static</span> <span class="tsd-flag ts-flagReadonly">Readonly</span> DEFAULT_<wbr>LOG_<wbr>LEVEL</h3>
-					<div class="tsd-signature tsd-kind-icon">DEFAULT_<wbr>LOG_<wbr>LEVEL<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">"DEBUG"</span><span class="tsd-signature-symbol"> = &quot;DEBUG&quot;</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/zowe/imperative/blob/v4.17.6/packages/logger/src/LoggerConfigBuilder.ts#L21">@zowe/imperative/packages/logger/src/LoggerConfigBuilder.ts:21</a></li>
+							<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.0.2/packages/logger/src/LoggerConfigBuilder.ts#L22">@zowe/imperative/packages/logger/src/LoggerConfigBuilder.ts:22</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -229,7 +219,7 @@
 					<div class="tsd-signature tsd-kind-icon">DEFAULT_<wbr>LOG_<wbr>TYPE_<wbr>CONSOLE<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">"console"</span><span class="tsd-signature-symbol"> = &quot;console&quot;</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/zowe/imperative/blob/v4.17.6/packages/logger/src/LoggerConfigBuilder.ts#L22">@zowe/imperative/packages/logger/src/LoggerConfigBuilder.ts:22</a></li>
+							<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.0.2/packages/logger/src/LoggerConfigBuilder.ts#L20">@zowe/imperative/packages/logger/src/LoggerConfigBuilder.ts:20</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -239,7 +229,7 @@
 					<div class="tsd-signature tsd-kind-icon">DEFAULT_<wbr>LOG_<wbr>TYPE_<wbr>FILE_<wbr>SYNC<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">"fileSync"</span><span class="tsd-signature-symbol"> = &quot;fileSync&quot;</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/zowe/imperative/blob/v4.17.6/packages/logger/src/LoggerConfigBuilder.ts#L26">@zowe/imperative/packages/logger/src/LoggerConfigBuilder.ts:26</a></li>
+							<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.0.2/packages/logger/src/LoggerConfigBuilder.ts#L24">@zowe/imperative/packages/logger/src/LoggerConfigBuilder.ts:24</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -249,7 +239,7 @@
 					<div class="tsd-signature tsd-kind-icon">DEFAULT_<wbr>LOG_<wbr>TYPE_<wbr>PAT<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">"pattern"</span><span class="tsd-signature-symbol"> = &quot;pattern&quot;</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/zowe/imperative/blob/v4.17.6/packages/logger/src/LoggerConfigBuilder.ts#L23">@zowe/imperative/packages/logger/src/LoggerConfigBuilder.ts:23</a></li>
+							<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.0.2/packages/logger/src/LoggerConfigBuilder.ts#L21">@zowe/imperative/packages/logger/src/LoggerConfigBuilder.ts:21</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -266,7 +256,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v4.17.6/packages/logger/src/LoggerConfigBuilder.ts#L66">@zowe/imperative/packages/logger/src/LoggerConfigBuilder.ts:66</a></li>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.0.2/packages/logger/src/LoggerConfigBuilder.ts#L64">@zowe/imperative/packages/logger/src/LoggerConfigBuilder.ts:64</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -306,7 +296,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v4.17.6/packages/logger/src/LoggerConfigBuilder.ts#L85">@zowe/imperative/packages/logger/src/LoggerConfigBuilder.ts:85</a></li>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.0.2/packages/logger/src/LoggerConfigBuilder.ts#L83">@zowe/imperative/packages/logger/src/LoggerConfigBuilder.ts:83</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -349,7 +339,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v4.17.6/packages/logger/src/LoggerConfigBuilder.ts#L42">@zowe/imperative/packages/logger/src/LoggerConfigBuilder.ts:42</a></li>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.0.2/packages/logger/src/LoggerConfigBuilder.ts#L40">@zowe/imperative/packages/logger/src/LoggerConfigBuilder.ts:40</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -381,7 +371,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v4.17.6/packages/logger/src/LoggerConfigBuilder.ts#L109">@zowe/imperative/packages/logger/src/LoggerConfigBuilder.ts:109</a></li>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.0.2/packages/logger/src/LoggerConfigBuilder.ts#L107">@zowe/imperative/packages/logger/src/LoggerConfigBuilder.ts:107</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -412,7 +402,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v4.17.6/packages/logger/src/LoggerConfigBuilder.ts#L50">@zowe/imperative/packages/logger/src/LoggerConfigBuilder.ts:50</a></li>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.0.2/packages/logger/src/LoggerConfigBuilder.ts#L48">@zowe/imperative/packages/logger/src/LoggerConfigBuilder.ts:48</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -423,6 +413,31 @@
 							<h4 class="tsd-returns-title">Returns <a href="../interfaces/_zowe_imperative.iconfiglogging.html" class="tsd-signature-type">IConfigLogging</a></h4>
 							<ul>
 								<li>default object built</li>
+							</ul>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-static">
+					<a name="getdefaultloglevel" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> get<wbr>Default<wbr>Log<wbr>Level</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-static">
+						<li class="tsd-signature tsd-kind-icon">get<wbr>Default<wbr>Log<wbr>Level<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.0.2/packages/logger/src/LoggerConfigBuilder.ts#L116">@zowe/imperative/packages/logger/src/LoggerConfigBuilder.ts:116</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Returns the log level that will be used if not overridden</p>
+								</div>
+							</div>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
+							<ul>
+								<li>the default log level</li>
 							</ul>
 						</li>
 					</ul>
@@ -452,6 +467,9 @@
 					</li>
 					<li class=" tsd-kind-module">
 						<a href="../modules/_zowe_zos_jobs_for_zowe_sdk.html">@zowe/zos-<wbr>jobs-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_zos_logs_for_zowe_sdk.html">@zowe/zos-<wbr>logs-<wbr>for-<wbr>zowe-<wbr>sdk</a>
 					</li>
 					<li class=" tsd-kind-module">
 						<a href="../modules/_zowe_zos_tso_for_zowe_sdk.html">@zowe/zos-<wbr>tso-<wbr>for-<wbr>zowe-<wbr>sdk</a>
@@ -511,9 +529,6 @@
 										<a href="_zowe_imperative.loggerconfigbuilder.html#default_log_layout" class="tsd-kind-icon">DEFAULT_<wbr>LOG_<wbr>LAYOUT</a>
 									</li>
 									<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-static">
-										<a href="_zowe_imperative.loggerconfigbuilder.html#default_log_level" class="tsd-kind-icon">DEFAULT_<wbr>LOG_<wbr>LEVEL</a>
-									</li>
-									<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-static">
 										<a href="_zowe_imperative.loggerconfigbuilder.html#default_log_type_console" class="tsd-kind-icon">DEFAULT_<wbr>LOG_<wbr>TYPE_<wbr>CONSOLE</a>
 									</li>
 									<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-static">
@@ -537,6 +552,9 @@
 									<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-static">
 										<a href="_zowe_imperative.loggerconfigbuilder.html#getdefaulticonfiglogging" class="tsd-kind-icon">get<wbr>DefaultIConfig<wbr>Logging</a>
 									</li>
+									<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-static">
+										<a href="_zowe_imperative.loggerconfigbuilder.html#getdefaultloglevel" class="tsd-kind-icon">get<wbr>Default<wbr>Log<wbr>Level</a>
+									</li>
 								</ul>
 							</li>
 						</ul>
@@ -554,6 +572,9 @@
 					</li>
 					<li class=" tsd-kind-module">
 						<a href="../modules/_zowe_zos_jobs_for_zowe_sdk.html" class="tsd-kind-icon">@zowe/zos-<wbr>jobs-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_zos_logs_for_zowe_sdk.html" class="tsd-kind-icon">@zowe/zos-<wbr>logs-<wbr>for-<wbr>zowe-<wbr>sdk</a>
 					</li>
 					<li class=" tsd-kind-module">
 						<a href="../modules/_zowe_zos_tso_for_zowe_sdk.html" class="tsd-kind-icon">@zowe/zos-<wbr>tso-<wbr>for-<wbr>zowe-<wbr>sdk</a>

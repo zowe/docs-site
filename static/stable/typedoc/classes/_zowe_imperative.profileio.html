@@ -3,8 +3,8 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>ProfileIO | Zowe Node.js SDK - v1.27.2</title>
-	<meta name="description" content="Documentation for Zowe Node.js SDK - v1.27.2">
+	<title>ProfileIO | Zowe Node.js SDK - v2.0.0</title>
+	<meta name="description" content="Documentation for Zowe Node.js SDK - v2.0.0">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
 </head>
@@ -22,7 +22,7 @@
 						<li class="state loading">Preparing search index...</li>
 						<li class="state failure">The search index is not available</li>
 					</ul>
-					<a href="../index.html" class="title">Zowe Node.js SDK - v1.27.2</a>
+					<a href="../index.html" class="title">Zowe Node.js SDK - v2.0.0</a>
 				</div>
 				<div class="table-cell" id="tsd-widgets">
 					<div id="tsd-filter">
@@ -102,6 +102,7 @@
 						<section class="tsd-index-section ">
 							<h3>Methods</h3>
 							<ul class="tsd-index-list">
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-static"><a href="_zowe_imperative.profileio.html#crashinteamconfigmode" class="tsd-kind-icon">crash<wbr>InTeam<wbr>Config<wbr>Mode</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><a href="_zowe_imperative.profileio.html#createprofiledirs" class="tsd-kind-icon">create<wbr>Profile<wbr>Dirs</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><a href="_zowe_imperative.profileio.html#deleteprofile" class="tsd-kind-icon">delete<wbr>Profile</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><a href="_zowe_imperative.profileio.html#exists" class="tsd-kind-icon">exists</a></li>
@@ -125,7 +126,7 @@
 					<div class="tsd-signature tsd-kind-icon">ERROR_<wbr>ID<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &quot;Profile IO Error&quot;</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/zowe/imperative/blob/v4.17.6/packages/profiles/src/utils/ProfileIO.ts#L293">@zowe/imperative/packages/profiles/src/utils/ProfileIO.ts:293</a></li>
+							<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.0.2/packages/profiles/src/utils/ProfileIO.ts#L332">@zowe/imperative/packages/profiles/src/utils/ProfileIO.ts:332</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -147,7 +148,7 @@
 					<div class="tsd-signature tsd-kind-icon">MAX_<wbr>YAML_<wbr>DEPTH<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> = 9999</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/zowe/imperative/blob/v4.17.6/packages/profiles/src/utils/ProfileIO.ts#L38">@zowe/imperative/packages/profiles/src/utils/ProfileIO.ts:38</a></li>
+							<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.0.2/packages/profiles/src/utils/ProfileIO.ts#L39">@zowe/imperative/packages/profiles/src/utils/ProfileIO.ts:39</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -166,6 +167,31 @@
 			</section>
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Methods</h2>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-static">
+					<a name="crashinteamconfigmode" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> <span class="tsd-flag ts-flagPrivate">Private</span> crash<wbr>InTeam<wbr>Config<wbr>Mode</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-static">
+						<li class="tsd-signature tsd-kind-icon">crash<wbr>InTeam<wbr>Config<wbr>Mode<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.0.2/packages/profiles/src/utils/ProfileIO.ts#L312">@zowe/imperative/packages/profiles/src/utils/ProfileIO.ts:312</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Crash if we detect that we are running in team-config mode.
+										You should not be able to operate on old-school profiles
+										when you are in team-config mode. Give a meaningful
+									message as part of our crash.</p>
+								</div>
+							</div>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-static">
 					<a name="createprofiledirs" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagStatic">Static</span> create<wbr>Profile<wbr>Dirs</h3>
@@ -176,7 +202,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v4.17.6/packages/profiles/src/utils/ProfileIO.ts#L47">@zowe/imperative/packages/profiles/src/utils/ProfileIO.ts:47</a></li>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.0.2/packages/profiles/src/utils/ProfileIO.ts#L48">@zowe/imperative/packages/profiles/src/utils/ProfileIO.ts:48</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -215,7 +241,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v4.17.6/packages/profiles/src/utils/ProfileIO.ts#L122">@zowe/imperative/packages/profiles/src/utils/ProfileIO.ts:122</a></li>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.0.2/packages/profiles/src/utils/ProfileIO.ts#L128">@zowe/imperative/packages/profiles/src/utils/ProfileIO.ts:128</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -259,7 +285,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v4.17.6/packages/profiles/src/utils/ProfileIO.ts#L158">@zowe/imperative/packages/profiles/src/utils/ProfileIO.ts:158</a></li>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.0.2/packages/profiles/src/utils/ProfileIO.ts#L166">@zowe/imperative/packages/profiles/src/utils/ProfileIO.ts:166</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -300,7 +326,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v4.17.6/packages/profiles/src/utils/ProfileIO.ts#L199">@zowe/imperative/packages/profiles/src/utils/ProfileIO.ts:199</a></li>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.0.2/packages/profiles/src/utils/ProfileIO.ts#L211">@zowe/imperative/packages/profiles/src/utils/ProfileIO.ts:211</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -347,7 +373,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v4.17.6/packages/profiles/src/utils/ProfileIO.ts#L213">@zowe/imperative/packages/profiles/src/utils/ProfileIO.ts:213</a></li>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.0.2/packages/profiles/src/utils/ProfileIO.ts#L227">@zowe/imperative/packages/profiles/src/utils/ProfileIO.ts:227</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -390,7 +416,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v4.17.6/packages/profiles/src/utils/ProfileIO.ts#L242">@zowe/imperative/packages/profiles/src/utils/ProfileIO.ts:242</a></li>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.0.2/packages/profiles/src/utils/ProfileIO.ts#L258">@zowe/imperative/packages/profiles/src/utils/ProfileIO.ts:258</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -444,7 +470,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v4.17.6/packages/profiles/src/utils/ProfileIO.ts#L68">@zowe/imperative/packages/profiles/src/utils/ProfileIO.ts:68</a></li>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.0.2/packages/profiles/src/utils/ProfileIO.ts#L70">@zowe/imperative/packages/profiles/src/utils/ProfileIO.ts:70</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -493,7 +519,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v4.17.6/packages/profiles/src/utils/ProfileIO.ts#L273">@zowe/imperative/packages/profiles/src/utils/ProfileIO.ts:273</a></li>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.0.2/packages/profiles/src/utils/ProfileIO.ts#L291">@zowe/imperative/packages/profiles/src/utils/ProfileIO.ts:291</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -540,7 +566,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v4.17.6/packages/profiles/src/utils/ProfileIO.ts#L178">@zowe/imperative/packages/profiles/src/utils/ProfileIO.ts:178</a></li>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.0.2/packages/profiles/src/utils/ProfileIO.ts#L188">@zowe/imperative/packages/profiles/src/utils/ProfileIO.ts:188</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -584,7 +610,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v4.17.6/packages/profiles/src/utils/ProfileIO.ts#L89">@zowe/imperative/packages/profiles/src/utils/ProfileIO.ts:89</a></li>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.0.2/packages/profiles/src/utils/ProfileIO.ts#L93">@zowe/imperative/packages/profiles/src/utils/ProfileIO.ts:93</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -646,6 +672,9 @@
 						<a href="../modules/_zowe_zos_jobs_for_zowe_sdk.html">@zowe/zos-<wbr>jobs-<wbr>for-<wbr>zowe-<wbr>sdk</a>
 					</li>
 					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_zos_logs_for_zowe_sdk.html">@zowe/zos-<wbr>logs-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
 						<a href="../modules/_zowe_zos_tso_for_zowe_sdk.html">@zowe/zos-<wbr>tso-<wbr>for-<wbr>zowe-<wbr>sdk</a>
 					</li>
 					<li class=" tsd-kind-module">
@@ -677,6 +706,9 @@
 									</li>
 									<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-static">
 										<a href="_zowe_imperative.profileio.html#max_yaml_depth" class="tsd-kind-icon">MAX_<wbr>YAML_<wbr>DEPTH</a>
+									</li>
+									<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-static">
+										<a href="_zowe_imperative.profileio.html#crashinteamconfigmode" class="tsd-kind-icon">crash<wbr>InTeam<wbr>Config<wbr>Mode</a>
 									</li>
 									<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-static">
 										<a href="_zowe_imperative.profileio.html#createprofiledirs" class="tsd-kind-icon">create<wbr>Profile<wbr>Dirs</a>
@@ -725,6 +757,9 @@
 					</li>
 					<li class=" tsd-kind-module">
 						<a href="../modules/_zowe_zos_jobs_for_zowe_sdk.html" class="tsd-kind-icon">@zowe/zos-<wbr>jobs-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_zos_logs_for_zowe_sdk.html" class="tsd-kind-icon">@zowe/zos-<wbr>logs-<wbr>for-<wbr>zowe-<wbr>sdk</a>
 					</li>
 					<li class=" tsd-kind-module">
 						<a href="../modules/_zowe_zos_tso_for_zowe_sdk.html" class="tsd-kind-icon">@zowe/zos-<wbr>tso-<wbr>for-<wbr>zowe-<wbr>sdk</a>

@@ -3,8 +3,8 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>CommandProcessor | Zowe Node.js SDK - v1.27.2</title>
-	<meta name="description" content="Documentation for Zowe Node.js SDK - v1.27.2">
+	<title>CommandProcessor | Zowe Node.js SDK - v2.0.0</title>
+	<meta name="description" content="Documentation for Zowe Node.js SDK - v2.0.0">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
 </head>
@@ -22,7 +22,7 @@
 						<li class="state loading">Preparing search index...</li>
 						<li class="state failure">The search index is not available</li>
 					</ul>
-					<a href="../index.html" class="title">Zowe Node.js SDK - v1.27.2</a>
+					<a href="../index.html" class="title">Zowe Node.js SDK - v2.0.0</a>
 				</div>
 				<div class="table-cell" id="tsd-widgets">
 					<div id="tsd-filter">
@@ -102,6 +102,8 @@
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="_zowe_imperative.commandprocessor.html#mcommandline" class="tsd-kind-icon">m<wbr>Command<wbr>Line</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="_zowe_imperative.commandprocessor.html#mcommandrootname" class="tsd-kind-icon">m<wbr>Command<wbr>Root<wbr>Name</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="_zowe_imperative.commandprocessor.html#mconfig" class="tsd-kind-icon">m<wbr>Config</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="_zowe_imperative.commandprocessor.html#mdaemoncontext" class="tsd-kind-icon">m<wbr>Daemon<wbr>Context</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="_zowe_imperative.commandprocessor.html#mdefinition" class="tsd-kind-icon">m<wbr>Definition</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="_zowe_imperative.commandprocessor.html#menvvariableprefix" class="tsd-kind-icon">m<wbr>Env<wbr>Variable<wbr>Prefix</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="_zowe_imperative.commandprocessor.html#mfulldefinition" class="tsd-kind-icon">m<wbr>Full<wbr>Definition</a></li>
@@ -116,6 +118,7 @@
 							<h3>Accessors</h3>
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-get-signature tsd-parent-kind-class"><a href="_zowe_imperative.commandprocessor.html#commandline" class="tsd-kind-icon">command<wbr>Line</a></li>
+								<li class="tsd-kind-get-signature tsd-parent-kind-class"><a href="_zowe_imperative.commandprocessor.html#config" class="tsd-kind-icon">config</a></li>
 								<li class="tsd-kind-get-signature tsd-parent-kind-class"><a href="_zowe_imperative.commandprocessor.html#definition" class="tsd-kind-icon">definition</a></li>
 								<li class="tsd-kind-get-signature tsd-parent-kind-class"><a href="_zowe_imperative.commandprocessor.html#envvariableprefix" class="tsd-kind-icon">env<wbr>Variable<wbr>Prefix</a></li>
 								<li class="tsd-kind-get-signature tsd-parent-kind-class"><a href="_zowe_imperative.commandprocessor.html#fulldefinition" class="tsd-kind-icon">full<wbr>Definition</a></li>
@@ -132,6 +135,7 @@
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><a href="_zowe_imperative.commandprocessor.html#attempthandlerload" class="tsd-kind-icon">attempt<wbr>Handler<wbr>Load</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><a href="_zowe_imperative.commandprocessor.html#constructresponseobject" class="tsd-kind-icon">construct<wbr>Response<wbr>Object</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><a href="_zowe_imperative.commandprocessor.html#finishresponse" class="tsd-kind-icon">finish<wbr>Response</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><a href="_zowe_imperative.commandprocessor.html#getstdinstream" class="tsd-kind-icon">get<wbr>Stdin<wbr>Stream</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><a href="_zowe_imperative.commandprocessor.html#handlehandlererror" class="tsd-kind-icon">handle<wbr>Handler<wbr>Error</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_zowe_imperative.commandprocessor.html#help" class="tsd-kind-icon">help</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><a href="_zowe_imperative.commandprocessor.html#invalidsyntaxnotification" class="tsd-kind-icon">invalid<wbr>Syntax<wbr>Notification</a></li>
@@ -156,7 +160,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v4.17.6/packages/cmd/src/CommandProcessor.ts#L121">@zowe/imperative/packages/cmd/src/CommandProcessor.ts:121</a></li>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.0.2/packages/cmd/src/CommandProcessor.ts#L141">@zowe/imperative/packages/cmd/src/CommandProcessor.ts:141</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -193,7 +197,7 @@
 					<div class="tsd-signature tsd-kind-icon">m<wbr>Command<wbr>Line<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/zowe/imperative/blob/v4.17.6/packages/cmd/src/CommandProcessor.ts#L71">@zowe/imperative/packages/cmd/src/CommandProcessor.ts:71</a></li>
+							<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.0.2/packages/cmd/src/CommandProcessor.ts#L77">@zowe/imperative/packages/cmd/src/CommandProcessor.ts:77</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -213,7 +217,7 @@
 					<div class="tsd-signature tsd-kind-icon">m<wbr>Command<wbr>Root<wbr>Name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/zowe/imperative/blob/v4.17.6/packages/cmd/src/CommandProcessor.ts#L64">@zowe/imperative/packages/cmd/src/CommandProcessor.ts:64</a></li>
+							<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.0.2/packages/cmd/src/CommandProcessor.ts#L70">@zowe/imperative/packages/cmd/src/CommandProcessor.ts:70</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -228,12 +232,52 @@
 					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
+					<a name="mconfig" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> m<wbr>Config</h3>
+					<div class="tsd-signature tsd-kind-icon">m<wbr>Config<span class="tsd-signature-symbol">:</span> <a href="_zowe_imperative.config.html" class="tsd-signature-type">Config</a></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.0.2/packages/cmd/src/CommandProcessor.ts#L134">@zowe/imperative/packages/cmd/src/CommandProcessor.ts:134</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Config object used to load profiles from active config layers.</p>
+						</div>
+						<dl class="tsd-comment-tags">
+							<dt>memberof</dt>
+							<dd><p>CommandProcessor</p>
+							</dd>
+						</dl>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
+					<a name="mdaemoncontext" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> <span class="tsd-flag ts-flagOptional">Optional</span> m<wbr>Daemon<wbr>Context</h3>
+					<div class="tsd-signature tsd-kind-icon">m<wbr>Daemon<wbr>Context<span class="tsd-signature-symbol">:</span> <a href="../interfaces/_zowe_imperative.idaemoncontext.html" class="tsd-signature-type">IDaemonContext</a></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.0.2/packages/cmd/src/CommandProcessor.ts#L141">@zowe/imperative/packages/cmd/src/CommandProcessor.ts:141</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>The context object defined when in daemon mode.</p>
+						</div>
+						<dl class="tsd-comment-tags">
+							<dt>memberof</dt>
+							<dd><p>CommandProcessor</p>
+							</dd>
+						</dl>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
 					<a name="mdefinition" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagPrivate">Private</span> m<wbr>Definition</h3>
 					<div class="tsd-signature tsd-kind-icon">m<wbr>Definition<span class="tsd-signature-symbol">:</span> <a href="../interfaces/_zowe_imperative.icommanddefinition.html" class="tsd-signature-type">ICommandDefinition</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/zowe/imperative/blob/v4.17.6/packages/cmd/src/CommandProcessor.ts#L93">@zowe/imperative/packages/cmd/src/CommandProcessor.ts:93</a></li>
+							<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.0.2/packages/cmd/src/CommandProcessor.ts#L99">@zowe/imperative/packages/cmd/src/CommandProcessor.ts:99</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -253,7 +297,7 @@
 					<div class="tsd-signature tsd-kind-icon">m<wbr>Env<wbr>Variable<wbr>Prefix<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/zowe/imperative/blob/v4.17.6/packages/cmd/src/CommandProcessor.ts#L78">@zowe/imperative/packages/cmd/src/CommandProcessor.ts:78</a></li>
+							<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.0.2/packages/cmd/src/CommandProcessor.ts#L84">@zowe/imperative/packages/cmd/src/CommandProcessor.ts:84</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -273,7 +317,7 @@
 					<div class="tsd-signature tsd-kind-icon">m<wbr>Full<wbr>Definition<span class="tsd-signature-symbol">:</span> <a href="../interfaces/_zowe_imperative.icommanddefinition.html" class="tsd-signature-type">ICommandDefinition</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/zowe/imperative/blob/v4.17.6/packages/cmd/src/CommandProcessor.ts#L100">@zowe/imperative/packages/cmd/src/CommandProcessor.ts:100</a></li>
+							<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.0.2/packages/cmd/src/CommandProcessor.ts#L106">@zowe/imperative/packages/cmd/src/CommandProcessor.ts:106</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -293,7 +337,7 @@
 					<div class="tsd-signature tsd-kind-icon">m<wbr>Help<wbr>Generator<span class="tsd-signature-symbol">:</span> <a href="../interfaces/_zowe_imperative.ihelpgenerator.html" class="tsd-signature-type">IHelpGenerator</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/zowe/imperative/blob/v4.17.6/packages/cmd/src/CommandProcessor.ts#L107">@zowe/imperative/packages/cmd/src/CommandProcessor.ts:107</a></li>
+							<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.0.2/packages/cmd/src/CommandProcessor.ts#L113">@zowe/imperative/packages/cmd/src/CommandProcessor.ts:113</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -313,7 +357,7 @@
 					<div class="tsd-signature tsd-kind-icon">m<wbr>Logger<span class="tsd-signature-symbol">:</span> <a href="_zowe_imperative.logger.html" class="tsd-signature-type">Logger</a><span class="tsd-signature-symbol"> = Logger.getImperativeLogger()</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/zowe/imperative/blob/v4.17.6/packages/cmd/src/CommandProcessor.ts#L121">@zowe/imperative/packages/cmd/src/CommandProcessor.ts:121</a></li>
+							<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.0.2/packages/cmd/src/CommandProcessor.ts#L127">@zowe/imperative/packages/cmd/src/CommandProcessor.ts:127</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -333,7 +377,7 @@
 					<div class="tsd-signature tsd-kind-icon">m<wbr>Profile<wbr>Manager<wbr>Factory<span class="tsd-signature-symbol">:</span> <a href="../interfaces/_zowe_imperative.iprofilemanagerfactory.html" class="tsd-signature-type">IProfileManagerFactory</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_zowe_imperative.icommandprofiletypeconfiguration.html" class="tsd-signature-type">ICommandProfileTypeConfiguration</a><span class="tsd-signature-symbol">&gt;</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/zowe/imperative/blob/v4.17.6/packages/cmd/src/CommandProcessor.ts#L114">@zowe/imperative/packages/cmd/src/CommandProcessor.ts:114</a></li>
+							<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.0.2/packages/cmd/src/CommandProcessor.ts#L120">@zowe/imperative/packages/cmd/src/CommandProcessor.ts:120</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -353,7 +397,7 @@
 					<div class="tsd-signature tsd-kind-icon">m<wbr>Prompt<wbr>Phrase<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/zowe/imperative/blob/v4.17.6/packages/cmd/src/CommandProcessor.ts#L86">@zowe/imperative/packages/cmd/src/CommandProcessor.ts:86</a></li>
+							<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.0.2/packages/cmd/src/CommandProcessor.ts#L92">@zowe/imperative/packages/cmd/src/CommandProcessor.ts:92</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -373,7 +417,7 @@
 					<div class="tsd-signature tsd-kind-icon">ERROR_<wbr>TAG<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &quot;Command Processor Error:&quot;</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/zowe/imperative/blob/v4.17.6/packages/cmd/src/CommandProcessor.ts#L57">@zowe/imperative/packages/cmd/src/CommandProcessor.ts:57</a></li>
+							<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.0.2/packages/cmd/src/CommandProcessor.ts#L63">@zowe/imperative/packages/cmd/src/CommandProcessor.ts:63</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -402,7 +446,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v4.17.6/packages/cmd/src/CommandProcessor.ts#L168">@zowe/imperative/packages/cmd/src/CommandProcessor.ts:168</a></li>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.0.2/packages/cmd/src/CommandProcessor.ts#L190">@zowe/imperative/packages/cmd/src/CommandProcessor.ts:190</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -422,6 +466,35 @@
 					</ul>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-get-signature tsd-parent-kind-class">
+					<a name="config" class="tsd-anchor"></a>
+					<h3>config</h3>
+					<ul class="tsd-signatures tsd-kind-get-signature tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">get</span> config<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_zowe_imperative.config.html" class="tsd-signature-type">Config</a></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.0.2/packages/cmd/src/CommandProcessor.ts#L230">@zowe/imperative/packages/cmd/src/CommandProcessor.ts:230</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Accessor for the app config</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>readonly</dt>
+									<dd></dd>
+									<dt>memberof</dt>
+									<dd><p>CommandProcessor</p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-returns-title">Returns <a href="_zowe_imperative.config.html" class="tsd-signature-type">Config</a></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-get-signature tsd-parent-kind-class">
 					<a name="definition" class="tsd-anchor"></a>
 					<h3>definition</h3>
 					<ul class="tsd-signatures tsd-kind-get-signature tsd-parent-kind-class">
@@ -431,7 +504,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v4.17.6/packages/cmd/src/CommandProcessor.ts#L221">@zowe/imperative/packages/cmd/src/CommandProcessor.ts:221</a></li>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.0.2/packages/cmd/src/CommandProcessor.ts#L248">@zowe/imperative/packages/cmd/src/CommandProcessor.ts:248</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -454,7 +527,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v4.17.6/packages/cmd/src/CommandProcessor.ts#L182">@zowe/imperative/packages/cmd/src/CommandProcessor.ts:182</a></li>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.0.2/packages/cmd/src/CommandProcessor.ts#L200">@zowe/imperative/packages/cmd/src/CommandProcessor.ts:200</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -483,7 +556,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v4.17.6/packages/cmd/src/CommandProcessor.ts#L229">@zowe/imperative/packages/cmd/src/CommandProcessor.ts:229</a></li>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.0.2/packages/cmd/src/CommandProcessor.ts#L256">@zowe/imperative/packages/cmd/src/CommandProcessor.ts:256</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -506,7 +579,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v4.17.6/packages/cmd/src/CommandProcessor.ts#L203">@zowe/imperative/packages/cmd/src/CommandProcessor.ts:203</a></li>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.0.2/packages/cmd/src/CommandProcessor.ts#L220">@zowe/imperative/packages/cmd/src/CommandProcessor.ts:220</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -535,7 +608,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v4.17.6/packages/cmd/src/CommandProcessor.ts#L770">@zowe/imperative/packages/cmd/src/CommandProcessor.ts:770</a></li>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.0.2/packages/cmd/src/CommandProcessor.ts#L913">@zowe/imperative/packages/cmd/src/CommandProcessor.ts:913</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -564,7 +637,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v4.17.6/packages/cmd/src/CommandProcessor.ts#L213">@zowe/imperative/packages/cmd/src/CommandProcessor.ts:213</a></li>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.0.2/packages/cmd/src/CommandProcessor.ts#L240">@zowe/imperative/packages/cmd/src/CommandProcessor.ts:240</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -593,7 +666,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v4.17.6/packages/cmd/src/CommandProcessor.ts#L192">@zowe/imperative/packages/cmd/src/CommandProcessor.ts:192</a></li>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.0.2/packages/cmd/src/CommandProcessor.ts#L210">@zowe/imperative/packages/cmd/src/CommandProcessor.ts:210</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -622,7 +695,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v4.17.6/packages/cmd/src/CommandProcessor.ts#L158">@zowe/imperative/packages/cmd/src/CommandProcessor.ts:158</a></li>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.0.2/packages/cmd/src/CommandProcessor.ts#L180">@zowe/imperative/packages/cmd/src/CommandProcessor.ts:180</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -654,7 +727,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v4.17.6/packages/cmd/src/CommandProcessor.ts#L798">@zowe/imperative/packages/cmd/src/CommandProcessor.ts:798</a></li>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.0.2/packages/cmd/src/CommandProcessor.ts#L952">@zowe/imperative/packages/cmd/src/CommandProcessor.ts:952</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -691,7 +764,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v4.17.6/packages/cmd/src/CommandProcessor.ts#L782">@zowe/imperative/packages/cmd/src/CommandProcessor.ts:782</a></li>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.0.2/packages/cmd/src/CommandProcessor.ts#L925">@zowe/imperative/packages/cmd/src/CommandProcessor.ts:925</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -725,7 +798,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v4.17.6/packages/cmd/src/CommandProcessor.ts#L840">@zowe/imperative/packages/cmd/src/CommandProcessor.ts:840</a></li>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.0.2/packages/cmd/src/CommandProcessor.ts#L993">@zowe/imperative/packages/cmd/src/CommandProcessor.ts:993</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -750,6 +823,31 @@
 					</ul>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-private">
+					<a name="getstdinstream" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> get<wbr>Stdin<wbr>Stream</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-private">
+						<li class="tsd-signature tsd-kind-icon">get<wbr>Stdin<wbr>Stream<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">stream.Readable</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.0.2/packages/cmd/src/CommandProcessor.ts#L942">@zowe/imperative/packages/cmd/src/CommandProcessor.ts:942</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Get stdin stream for the command handler to use. In daemon mode this is
+										a stream of data received from the daemon client. Otherwise it defaults
+									to <code>process.stdin</code>.</p>
+								</div>
+							</div>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">stream.Readable</span></h4>
+							<p>Readable stream containing stdin data</p>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-private">
 					<a name="handlehandlererror" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagPrivate">Private</span> handle<wbr>Handler<wbr>Error</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-private">
@@ -759,7 +857,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v4.17.6/packages/cmd/src/CommandProcessor.ts#L868">@zowe/imperative/packages/cmd/src/CommandProcessor.ts:868</a></li>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.0.2/packages/cmd/src/CommandProcessor.ts#L1022">@zowe/imperative/packages/cmd/src/CommandProcessor.ts:1022</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -802,7 +900,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v4.17.6/packages/cmd/src/CommandProcessor.ts#L238">@zowe/imperative/packages/cmd/src/CommandProcessor.ts:238</a></li>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.0.2/packages/cmd/src/CommandProcessor.ts#L265">@zowe/imperative/packages/cmd/src/CommandProcessor.ts:265</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -838,7 +936,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v4.17.6/packages/cmd/src/CommandProcessor.ts#L667">@zowe/imperative/packages/cmd/src/CommandProcessor.ts:667</a></li>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.0.2/packages/cmd/src/CommandProcessor.ts#L731">@zowe/imperative/packages/cmd/src/CommandProcessor.ts:731</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -876,7 +974,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v4.17.6/packages/cmd/src/CommandProcessor.ts#L291">@zowe/imperative/packages/cmd/src/CommandProcessor.ts:291</a></li>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.0.2/packages/cmd/src/CommandProcessor.ts#L318">@zowe/imperative/packages/cmd/src/CommandProcessor.ts:318</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -913,7 +1011,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v4.17.6/packages/cmd/src/CommandProcessor.ts#L702">@zowe/imperative/packages/cmd/src/CommandProcessor.ts:702</a></li>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.0.2/packages/cmd/src/CommandProcessor.ts#L766">@zowe/imperative/packages/cmd/src/CommandProcessor.ts:766</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -946,7 +1044,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v4.17.6/packages/cmd/src/CommandProcessor.ts#L276">@zowe/imperative/packages/cmd/src/CommandProcessor.ts:276</a></li>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.0.2/packages/cmd/src/CommandProcessor.ts#L303">@zowe/imperative/packages/cmd/src/CommandProcessor.ts:303</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -979,7 +1077,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v4.17.6/packages/cmd/src/CommandProcessor.ts#L254">@zowe/imperative/packages/cmd/src/CommandProcessor.ts:254</a></li>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.0.2/packages/cmd/src/CommandProcessor.ts#L281">@zowe/imperative/packages/cmd/src/CommandProcessor.ts:281</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1038,6 +1136,9 @@
 						<a href="../modules/_zowe_zos_jobs_for_zowe_sdk.html">@zowe/zos-<wbr>jobs-<wbr>for-<wbr>zowe-<wbr>sdk</a>
 					</li>
 					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_zos_logs_for_zowe_sdk.html">@zowe/zos-<wbr>logs-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
 						<a href="../modules/_zowe_zos_tso_for_zowe_sdk.html">@zowe/zos-<wbr>tso-<wbr>for-<wbr>zowe-<wbr>sdk</a>
 					</li>
 					<li class=" tsd-kind-module">
@@ -1074,6 +1175,12 @@
 										<a href="_zowe_imperative.commandprocessor.html#mcommandrootname" class="tsd-kind-icon">m<wbr>Command<wbr>Root<wbr>Name</a>
 									</li>
 									<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
+										<a href="_zowe_imperative.commandprocessor.html#mconfig" class="tsd-kind-icon">m<wbr>Config</a>
+									</li>
+									<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
+										<a href="_zowe_imperative.commandprocessor.html#mdaemoncontext" class="tsd-kind-icon">m<wbr>Daemon<wbr>Context</a>
+									</li>
+									<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
 										<a href="_zowe_imperative.commandprocessor.html#mdefinition" class="tsd-kind-icon">m<wbr>Definition</a>
 									</li>
 									<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
@@ -1099,6 +1206,9 @@
 									</li>
 									<li class=" tsd-kind-get-signature tsd-parent-kind-class">
 										<a href="_zowe_imperative.commandprocessor.html#commandline" class="tsd-kind-icon">command<wbr>Line</a>
+									</li>
+									<li class=" tsd-kind-get-signature tsd-parent-kind-class">
+										<a href="_zowe_imperative.commandprocessor.html#config" class="tsd-kind-icon">config</a>
 									</li>
 									<li class=" tsd-kind-get-signature tsd-parent-kind-class">
 										<a href="_zowe_imperative.commandprocessor.html#definition" class="tsd-kind-icon">definition</a>
@@ -1132,6 +1242,9 @@
 									</li>
 									<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private">
 										<a href="_zowe_imperative.commandprocessor.html#finishresponse" class="tsd-kind-icon">finish<wbr>Response</a>
+									</li>
+									<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private">
+										<a href="_zowe_imperative.commandprocessor.html#getstdinstream" class="tsd-kind-icon">get<wbr>Stdin<wbr>Stream</a>
 									</li>
 									<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private">
 										<a href="_zowe_imperative.commandprocessor.html#handlehandlererror" class="tsd-kind-icon">handle<wbr>Handler<wbr>Error</a>
@@ -1171,6 +1284,9 @@
 					</li>
 					<li class=" tsd-kind-module">
 						<a href="../modules/_zowe_zos_jobs_for_zowe_sdk.html" class="tsd-kind-icon">@zowe/zos-<wbr>jobs-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_zos_logs_for_zowe_sdk.html" class="tsd-kind-icon">@zowe/zos-<wbr>logs-<wbr>for-<wbr>zowe-<wbr>sdk</a>
 					</li>
 					<li class=" tsd-kind-module">
 						<a href="../modules/_zowe_zos_tso_for_zowe_sdk.html" class="tsd-kind-icon">@zowe/zos-<wbr>tso-<wbr>for-<wbr>zowe-<wbr>sdk</a>
