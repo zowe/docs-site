@@ -46,6 +46,7 @@ module.exports = {
       ],
     },
     "getting-started/zowe-resources",
+    "getting-started/zowe-videos"
   ],
 
   "setup": [
