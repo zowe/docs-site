@@ -99,7 +99,7 @@ Use the following procedure to install Zowe CLI from a local package:
 9. **(Optional)** To install Zowe CLI plug-ins, issue the following command to the working directory that you used in Step 7: 
 
    ```
-   zowe plugins install zowe plugins install cics-for-zowe-cli.tgz db2-for-zowe-cli.tgz zos-ftp-for-zowe-cli.tgz ims-for-zowe-cli.tgz mq-for-zowe-cli.tgz
+   zowe plugins install cics-for-zowe-cli.tgz db2-for-zowe-cli.tgz zos-ftp-for-zowe-cli.tgz ims-for-zowe-cli.tgz mq-for-zowe-cli.tgz
    ```
 
 Zowe CLI and the optional plug-ins are installed on your computer. Issue the `zowe --help` command to view a list of available commands. For information about how to connect the CLI to the mainframe, create profiles and team profiles, integrate with API ML, enable daemon mode, and more, see [Using CLI](../user-guide/cli-using-usingcli.md).

@@ -35,19 +35,17 @@ Before you start the installation, review the information on hardware and softwa
      - A pax.Z file, which contains an archive (compressed copy) of the FMIDs to be installed.
      - A readme file, which contains a sample job to decompress the pax.Z file, transform it into a format that SMP/E can process, and invoke SMP/E to extract and expand the compressed SMP/E input data sets.
 
-   <!-- Not ready yet 
    - **Portable Software Instance (PSWI)**
 
      You can acquire and install the Zowe z/OS PAX file as a portable software instance (PSWI) using z/OSMF.
 
    While the procedures to obtain and install the convenience build, SMP/E build or PSWI are different, the procedure to configure a Zowe runtime is the same irrespective of how the build is obtained and installed.
-   -->
 
 1. Obtain and install the Zowe build.
 
    - For how to obtain the convenience build and install it, see [Installing Zowe runtime from a convenience build](install-zowe-zos-convenience-build.md).
    - For how to obtain the SMP/E build and install it, see [Installing Zowe SMP/E](install-zowe-smpe.md).
-   <!-- Not ready yet - For how to obtain the PSWI and install it, see [Installing Zowe from a Portable Software Instance](install-zowe-pswi.md). -->
+   - For how to obtain the PSWI and install it, see [Installing Zowe from a Portable Software Instance](install-zowe-pswi.md).
 
 After successful installation of either a convenience build or an SMP/E build, there will be a zFS folder that contains the unconfigured Zowe runtime directory, a utility library `SZWEEXEC` that contains utilities, a SAMPLIB library `SZWESAMP` that contains sample members, and a load library `SZWEAUTH` that contains load modules. The steps to prepare the z/OS environment to launch Zowe are the same irrespective of the installation method.
 
