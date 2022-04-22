@@ -3,8 +3,8 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Utilities | Zowe Node.js SDK - v1.27.2</title>
-	<meta name="description" content="Documentation for Zowe Node.js SDK - v1.27.2">
+	<title>Utilities | Zowe Node.js SDK - v2.0.0</title>
+	<meta name="description" content="Documentation for Zowe Node.js SDK - v2.0.0">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
 </head>
@@ -22,7 +22,7 @@
 						<li class="state loading">Preparing search index...</li>
 						<li class="state failure">The search index is not available</li>
 					</ul>
-					<a href="../index.html" class="title">Zowe Node.js SDK - v1.27.2</a>
+					<a href="../index.html" class="title">Zowe Node.js SDK - v2.0.0</a>
 				</div>
 				<div class="table-cell" id="tsd-widgets">
 					<div id="tsd-filter">
@@ -82,6 +82,7 @@
 						<section class="tsd-index-section ">
 							<h3>Methods</h3>
 							<ul class="tsd-index-list">
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><a href="_zowe_zos_files_for_zowe_sdk.utilities.html#applytaggedencoding" class="tsd-kind-icon">apply<wbr>Tagged<wbr>Encoding</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><a href="_zowe_zos_files_for_zowe_sdk.utilities.html#chtag" class="tsd-kind-icon">chtag</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><a href="_zowe_zos_files_for_zowe_sdk.utilities.html#isfiletagbinorascii" class="tsd-kind-icon">is<wbr>File<wbr>Tag<wbr>Bin<wbr>OrAscii</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><a href="_zowe_zos_files_for_zowe_sdk.utilities.html#putusspayload" class="tsd-kind-icon">putUSSPayload</a></li>
@@ -94,6 +95,50 @@
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Methods</h2>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-static">
+					<a name="applytaggedencoding" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> apply<wbr>Tagged<wbr>Encoding</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-static">
+						<li class="tsd-signature tsd-kind-icon">apply<wbr>Tagged<wbr>Encoding<span class="tsd-signature-symbol">(</span>session<span class="tsd-signature-symbol">: </span><a href="_zowe_imperative.abstractsession.html" class="tsd-signature-type">AbstractSession</a>, USSFileName<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, options<span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_zos_files_for_zowe_sdk.ioptions.html" class="tsd-signature-type">IOptions</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_imperative.ipromisewithprogress.html#promise" class="tsd-signature-type">Promise</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.0.2/packages/zosfiles/src/methods/utilities/Utilities.ts#L126">@zowe/zos-files-for-zowe-sdk/src/methods/utilities/Utilities.ts:126</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Check the tags on an existing USS file and update binary and encoding
+									properties on the options object.</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>session: <a href="_zowe_imperative.abstractsession.html" class="tsd-signature-type">AbstractSession</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>z/OSMF connection info</p>
+									</div>
+								</li>
+								<li>
+									<h5>USSFileName: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Path to USS file</p>
+									</div>
+								</li>
+								<li>
+									<h5>options: <a href="../interfaces/_zowe_zos_files_for_zowe_sdk.ioptions.html" class="tsd-signature-type">IOptions</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Options for downloading a USS file</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="../interfaces/_zowe_imperative.ipromisewithprogress.html#promise" class="tsd-signature-type">Promise</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-static">
 					<a name="chtag" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagStatic">Static</span> chtag</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-static">
@@ -103,7 +148,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v6.37.7/packages/zosfiles/src/methods/utilities/Utilities.ts#L70">@zowe/zos-files-for-zowe-sdk/src/methods/utilities/Utilities.ts:70</a></li>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.0.2/packages/zosfiles/src/methods/utilities/Utilities.ts#L71">@zowe/zos-files-for-zowe-sdk/src/methods/utilities/Utilities.ts:71</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -156,7 +201,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v6.37.7/packages/zosfiles/src/methods/utilities/Utilities.ts#L105">@zowe/zos-files-for-zowe-sdk/src/methods/utilities/Utilities.ts:105</a></li>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.0.2/packages/zosfiles/src/methods/utilities/Utilities.ts#L106">@zowe/zos-files-for-zowe-sdk/src/methods/utilities/Utilities.ts:106</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -203,7 +248,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v6.37.7/packages/zosfiles/src/methods/utilities/Utilities.ts#L34">@zowe/zos-files-for-zowe-sdk/src/methods/utilities/Utilities.ts:34</a></li>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.0.2/packages/zosfiles/src/methods/utilities/Utilities.ts#L35">@zowe/zos-files-for-zowe-sdk/src/methods/utilities/Utilities.ts:35</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -253,7 +298,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v6.37.7/packages/zosfiles/src/methods/utilities/Utilities.ts#L129">@zowe/zos-files-for-zowe-sdk/src/methods/utilities/Utilities.ts:129</a></li>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.0.2/packages/zosfiles/src/methods/utilities/Utilities.ts#L152">@zowe/zos-files-for-zowe-sdk/src/methods/utilities/Utilities.ts:152</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -319,6 +364,9 @@
 						<a href="../modules/_zowe_zos_jobs_for_zowe_sdk.html">@zowe/zos-<wbr>jobs-<wbr>for-<wbr>zowe-<wbr>sdk</a>
 					</li>
 					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_zos_logs_for_zowe_sdk.html">@zowe/zos-<wbr>logs-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
 						<a href="../modules/_zowe_zos_tso_for_zowe_sdk.html">@zowe/zos-<wbr>tso-<wbr>for-<wbr>zowe-<wbr>sdk</a>
 					</li>
 					<li class=" tsd-kind-module">
@@ -355,6 +403,9 @@
 								<a href="_zowe_zos_files_for_zowe_sdk.utilities.html" class="tsd-kind-icon">Utilities</a>
 								<ul>
 									<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-static">
+										<a href="_zowe_zos_files_for_zowe_sdk.utilities.html#applytaggedencoding" class="tsd-kind-icon">apply<wbr>Tagged<wbr>Encoding</a>
+									</li>
+									<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-static">
 										<a href="_zowe_zos_files_for_zowe_sdk.utilities.html#chtag" class="tsd-kind-icon">chtag</a>
 									</li>
 									<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-static">
@@ -374,6 +425,9 @@
 				<ul class="after-current">
 					<li class=" tsd-kind-module">
 						<a href="../modules/_zowe_zos_jobs_for_zowe_sdk.html" class="tsd-kind-icon">@zowe/zos-<wbr>jobs-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_zos_logs_for_zowe_sdk.html" class="tsd-kind-icon">@zowe/zos-<wbr>logs-<wbr>for-<wbr>zowe-<wbr>sdk</a>
 					</li>
 					<li class=" tsd-kind-module">
 						<a href="../modules/_zowe_zos_tso_for_zowe_sdk.html" class="tsd-kind-icon">@zowe/zos-<wbr>tso-<wbr>for-<wbr>zowe-<wbr>sdk</a>

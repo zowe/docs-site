@@ -3,8 +3,8 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>ConnectionPropsForSessCfg | Zowe Node.js SDK - v1.27.2</title>
-	<meta name="description" content="Documentation for Zowe Node.js SDK - v1.27.2">
+	<title>ConnectionPropsForSessCfg | Zowe Node.js SDK - v2.0.0</title>
+	<meta name="description" content="Documentation for Zowe Node.js SDK - v2.0.0">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
 </head>
@@ -22,7 +22,7 @@
 						<li class="state loading">Preparing search index...</li>
 						<li class="state failure">The search index is not available</li>
 					</ul>
-					<a href="../index.html" class="title">Zowe Node.js SDK - v1.27.2</a>
+					<a href="../index.html" class="title">Zowe Node.js SDK - v2.0.0</a>
 				</div>
 				<div class="table-cell" id="tsd-widgets">
 					<div id="tsd-filter">
@@ -97,9 +97,20 @@
 							<h3>Methods</h3>
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-static"><a href="_zowe_imperative.connectionpropsforsesscfg.html#addpropsorprompt" class="tsd-kind-icon">add<wbr>Props<wbr>OrPrompt</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-static"><a href="_zowe_imperative.connectionpropsforsesscfg.html#clientprompt" class="tsd-kind-icon">client<wbr>Prompt</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-static"><a href="_zowe_imperative.connectionpropsforsesscfg.html#getvaluesback" class="tsd-kind-icon">get<wbr>Values<wbr>Back</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-static"><a href="_zowe_imperative.connectionpropsforsesscfg.html#loadschemaforsesscfgprops" class="tsd-kind-icon">load<wbr>Schema<wbr>For<wbr>Sess<wbr>Cfg<wbr>Props</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-static"><a href="_zowe_imperative.connectionpropsforsesscfg.html#loadsecuresesscfgprops" class="tsd-kind-icon">load<wbr>Secure<wbr>Sess<wbr>Cfg<wbr>Props</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-static"><a href="_zowe_imperative.connectionpropsforsesscfg.html#logsesscfg" class="tsd-kind-icon">log<wbr>Sess<wbr>Cfg</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-static"><a href="_zowe_imperative.connectionpropsforsesscfg.html#prophasvalue" class="tsd-kind-icon">prop<wbr>Has<wbr>Value</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-static"><a href="_zowe_imperative.connectionpropsforsesscfg.html#settypeforbasiccreds" class="tsd-kind-icon">set<wbr>Type<wbr>For<wbr>Basic<wbr>Creds</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-static"><a href="_zowe_imperative.connectionpropsforsesscfg.html#resolvesesscfgprops" class="tsd-kind-icon">resolve<wbr>Sess<wbr>Cfg<wbr>Props</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-static"><a href="_zowe_imperative.connectionpropsforsesscfg.html#settypefortokenrequest" class="tsd-kind-icon">set<wbr>Type<wbr>For<wbr>Token<wbr>Request</a></li>
+							</ul>
+						</section>
+						<section class="tsd-index-section tsd-is-private tsd-is-private-protected">
+							<h3>Object literals</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-object-literal tsd-parent-kind-class tsd-is-private tsd-is-static"><a href="_zowe_imperative.connectionpropsforsesscfg.html#prompttextforvalues" class="tsd-kind-icon">prompt<wbr>Text<wbr>For<wbr>Values</a></li>
 							</ul>
 						</section>
 					</div>
@@ -109,11 +120,11 @@
 				<h2>Properties</h2>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private tsd-is-static">
 					<a name="securesesscfgprops" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagStatic">Static</span> <span class="tsd-flag ts-flagPrivate">Private</span> <span class="tsd-flag ts-flagReadonly">Readonly</span> secure<wbr>Sess<wbr>Cfg<wbr>Props</h3>
-					<div class="tsd-signature tsd-kind-icon">secure<wbr>Sess<wbr>Cfg<wbr>Props<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol"> = [&quot;user&quot;, &quot;password&quot;, &quot;tokenValue&quot;, &quot;passphrase&quot;]</span></div>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> <span class="tsd-flag ts-flagPrivate">Private</span> secure<wbr>Sess<wbr>Cfg<wbr>Props</h3>
+					<div class="tsd-signature tsd-kind-icon">secure<wbr>Sess<wbr>Cfg<wbr>Props<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Set</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> = new Set([&quot;user&quot;, &quot;password&quot;, &quot;tokenValue&quot;, &quot;passphrase&quot;])</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/zowe/imperative/blob/v4.17.6/packages/rest/src/session/ConnectionPropsForSessCfg.ts#L294">@zowe/imperative/packages/rest/src/session/ConnectionPropsForSessCfg.ts:294</a></li>
+							<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.0.2/packages/rest/src/session/ConnectionPropsForSessCfg.ts#L291">@zowe/imperative/packages/rest/src/session/ConnectionPropsForSessCfg.ts:291</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -130,13 +141,13 @@
 					<a name="addpropsorprompt" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagStatic">Static</span> add<wbr>Props<wbr>OrPrompt</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-static">
-						<li class="tsd-signature tsd-kind-icon">add<wbr>Props<wbr>OrPrompt&lt;T&gt;<span class="tsd-signature-symbol">(</span>initialSessCfg<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">T</span>, cmdArgs<span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_imperative.icommandarguments.html" class="tsd-signature-type">ICommandArguments</a>, options<span class="tsd-signature-symbol">?: </span><a href="../interfaces/_zowe_imperative.ioptionsforaddconnprops.html" class="tsd-signature-type">IOptionsForAddConnProps</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_imperative.ipromisewithprogress.html#promise" class="tsd-signature-type">Promise</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">add<wbr>Props<wbr>OrPrompt&lt;SessCfgType&gt;<span class="tsd-signature-symbol">(</span>initialSessCfg<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">SessCfgType</span>, cmdArgs<span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_imperative.icommandarguments.html" class="tsd-signature-type">ICommandArguments</a>, connOpts<span class="tsd-signature-symbol">?: </span><a href="../interfaces/_zowe_imperative.ioptionsforaddconnprops.html" class="tsd-signature-type">IOptionsForAddConnProps</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_imperative.ipromisewithprogress.html#promise" class="tsd-signature-type">Promise</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">SessCfgType</span><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v4.17.6/packages/rest/src/session/ConnectionPropsForSessCfg.ts#L76">@zowe/imperative/packages/rest/src/session/ConnectionPropsForSessCfg.ts:76</a></li>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.0.2/packages/rest/src/session/ConnectionPropsForSessCfg.ts#L97">@zowe/imperative/packages/rest/src/session/ConnectionPropsForSessCfg.ts:97</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -178,13 +189,13 @@
 							<h4 class="tsd-type-parameters-title">Type parameters</h4>
 							<ul class="tsd-type-parameters">
 								<li>
-									<h4>T</h4>
+									<h4>SessCfgType<span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_imperative.isession.html" class="tsd-signature-type">ISession</a></h4>
 								</li>
 							</ul>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>initialSessCfg: <span class="tsd-signature-type">T</span></h5>
+									<h5>initialSessCfg: <span class="tsd-signature-type">SessCfgType</span></h5>
 									<div class="tsd-comment tsd-typography">
 										<pre><code>   An initial <span class="hljs-keyword">session</span> <span class="hljs-keyword">configuration</span> (<span class="hljs-keyword">like</span> ISession, <span class="hljs-keyword">or</span> other
    specially defined <span class="hljs-keyword">configuration</span>) that contains your desired
@@ -195,24 +206,196 @@
 								<li>
 									<h5>cmdArgs: <a href="../interfaces/_zowe_imperative.icommandarguments.html" class="tsd-signature-type">ICommandArguments</a></h5>
 									<div class="tsd-comment tsd-typography">
-										<pre><code>   The arguments specified <span class="hljs-keyword">by</span> the <span class="hljs-keyword">user</span> <span class="hljs-keyword">on</span> the command line
-   (<span class="hljs-keyword">or</span> <span class="hljs-keyword">in</span> environment, <span class="hljs-keyword">or</span> <span class="hljs-keyword">in</span> profile)
+										<pre><code>   The arguments specified by the user <span class="hljs-keyword">on</span> the <span class="hljs-keyword">command</span> <span class="hljs-built_in">line</span>
+   (<span class="hljs-built_in">or</span> in environment, <span class="hljs-built_in">or</span> in <span class="hljs-keyword">profile</span>). The contents of the
+   supplied cmdArgs will <span class="hljs-keyword">be</span> modified.
 </code></pre>
 									</div>
 								</li>
 								<li>
-									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> options: <a href="../interfaces/_zowe_imperative.ioptionsforaddconnprops.html" class="tsd-signature-type">IOptionsForAddConnProps</a><span class="tsd-signature-symbol"> = {}</span></h5>
+									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> connOpts: <a href="../interfaces/_zowe_imperative.ioptionsforaddconnprops.html" class="tsd-signature-type">IOptionsForAddConnProps</a><span class="tsd-signature-symbol"> = {}</span></h5>
 									<div class="tsd-comment tsd-typography">
-										<pre><code>   <span class="hljs-keyword">Options</span> that alter our actions. See IOptionsForAddConnProps.
-   The <span class="hljs-keyword">options</span> <span class="hljs-keyword">parameter</span> need <span class="hljs-comment">not be supplied.</span>
+										<pre><code>   <span class="hljs-keyword">Options</span> that alter our connection actions. See IOptionsForAddConnProps.
+   The connOpts <span class="hljs-keyword">parameter</span> need <span class="hljs-comment">not be supplied.</span>
 </code></pre>
 									</div>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <a href="../interfaces/_zowe_imperative.ipromisewithprogress.html#promise" class="tsd-signature-type">Promise</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></h4>
+							<h4 class="tsd-returns-title">Returns <a href="../interfaces/_zowe_imperative.ipromisewithprogress.html#promise" class="tsd-signature-type">Promise</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">SessCfgType</span><span class="tsd-signature-symbol">&gt;</span></h4>
 							<p>A session configuration object with connection information
 								added to the initialSessCfg. Its intended use is for our
 							caller to create a session for a REST Client.</p>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-static">
+					<a name="clientprompt" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> <span class="tsd-flag ts-flagPrivate">Private</span> client<wbr>Prompt</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-static">
+						<li class="tsd-signature tsd-kind-icon">client<wbr>Prompt<span class="tsd-signature-symbol">(</span>promptText<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, opts<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">IHandlePromptOptions</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_imperative.ipromisewithprogress.html#promise" class="tsd-signature-type">Promise</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.0.2/packages/rest/src/session/ConnectionPropsForSessCfg.ts#L353">@zowe/imperative/packages/rest/src/session/ConnectionPropsForSessCfg.ts:353</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Handle prompting for clients.  If in a CLI environment, use the IHandlerParameters.response
+									object prompt method.</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>static</dt>
+									<dd></dd>
+									<dt>memberof</dt>
+									<dd><p>ConnectionPropsForSessCfg</p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>promptText: <span class="tsd-signature-type">string</span></h5>
+								</li>
+								<li>
+									<h5>opts: <span class="tsd-signature-type">IHandlePromptOptions</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="../interfaces/_zowe_imperative.ipromisewithprogress.html#promise" class="tsd-signature-type">Promise</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-static">
+					<a name="getvaluesback" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> <span class="tsd-flag ts-flagPrivate">Private</span> get<wbr>Values<wbr>Back</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-static">
+						<li class="tsd-signature tsd-kind-icon">get<wbr>Values<wbr>Back<span class="tsd-signature-symbol">(</span>connOpts<span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_imperative.ioptionsforaddconnprops.html" class="tsd-signature-type">IOptionsForAddConnProps</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">(</span>properties<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><a href="../interfaces/_zowe_imperative.ipromisewithprogress.html#promise" class="tsd-signature-type">Promise</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-symbol">{}</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.0.2/packages/rest/src/session/ConnectionPropsForSessCfg.ts#L311">@zowe/imperative/packages/rest/src/session/ConnectionPropsForSessCfg.ts:311</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Prompts the user to input session config values in a CLI environment.
+										This is the default implementation of the <code>getValuesBack</code> callback when
+									<code>connOpts.doPrompting</code> is true.</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>connOpts: <a href="../interfaces/_zowe_imperative.ioptionsforaddconnprops.html" class="tsd-signature-type">IOptionsForAddConnProps</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Options for adding connection properties</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-symbol">(</span>properties<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><a href="../interfaces/_zowe_imperative.ipromisewithprogress.html#promise" class="tsd-signature-type">Promise</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-symbol">{}</span><span class="tsd-signature-symbol">&gt;</span></h4>
+							<p>Name-value pairs of connection properties</p>
+							<ul class="tsd-parameters">
+								<li class="tsd-parameter-signature">
+									<ul class="tsd-signatures tsd-kind-type-literal">
+										<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>properties<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_imperative.ipromisewithprogress.html#promise" class="tsd-signature-type">Promise</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-symbol">{}</span><span class="tsd-signature-symbol">&gt;</span></li>
+									</ul>
+									<ul class="tsd-descriptions">
+										<li class="tsd-description">
+											<h4 class="tsd-parameters-title">Parameters</h4>
+											<ul class="tsd-parameters">
+												<li>
+													<h5>properties: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span></h5>
+												</li>
+											</ul>
+											<h4 class="tsd-returns-title">Returns <a href="../interfaces/_zowe_imperative.ipromisewithprogress.html#promise" class="tsd-signature-type">Promise</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-symbol">{}</span><span class="tsd-signature-symbol">&gt;</span></h4>
+										</li>
+									</ul>
+								</li>
+							</ul>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-static">
+					<a name="loadschemaforsesscfgprops" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> <span class="tsd-flag ts-flagPrivate">Private</span> load<wbr>Schema<wbr>For<wbr>Sess<wbr>Cfg<wbr>Props</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-static">
+						<li class="tsd-signature tsd-kind-icon">load<wbr>Schema<wbr>For<wbr>Sess<wbr>Cfg<wbr>Props<span class="tsd-signature-symbol">(</span>params<span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_imperative.ihandlerparameters.html" class="tsd-signature-type">IHandlerParameters</a><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">undefined</span>, promptForValues<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">{}</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.0.2/packages/rest/src/session/ConnectionPropsForSessCfg.ts#L433">@zowe/imperative/packages/rest/src/session/ConnectionPropsForSessCfg.ts:433</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Load base profile property schema for connection properties.</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>params: <a href="../interfaces/_zowe_imperative.ihandlerparameters.html" class="tsd-signature-type">IHandlerParameters</a><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">undefined</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>CLI handler parameters object</p>
+									</div>
+								</li>
+								<li>
+									<h5>promptForValues: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>List of ISessCfg properties to prompt for</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-symbol">{}</span></h4>
+							<p>Key-value pairs of ISessCfg property name and profile property schema</p>
+							<ul class="tsd-parameters">
+								<li class="tsd-parameter-index-signature">
+									<h5><span class="tsd-signature-symbol">[</span>key: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">]: </span><a href="../interfaces/_zowe_imperative.iprofileproperty.html" class="tsd-signature-type">IProfileProperty</a></h5>
+								</li>
+							</ul>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-static">
+					<a name="loadsecuresesscfgprops" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> <span class="tsd-flag ts-flagPrivate">Private</span> load<wbr>Secure<wbr>Sess<wbr>Cfg<wbr>Props</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-static">
+						<li class="tsd-signature tsd-kind-icon">load<wbr>Secure<wbr>Sess<wbr>Cfg<wbr>Props<span class="tsd-signature-symbol">(</span>params<span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_imperative.ihandlerparameters.html" class="tsd-signature-type">IHandlerParameters</a><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">undefined</span>, promptForValues<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.0.2/packages/rest/src/session/ConnectionPropsForSessCfg.ts#L451">@zowe/imperative/packages/rest/src/session/ConnectionPropsForSessCfg.ts:451</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Load list of secure property names defined in team config.</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>params: <a href="../interfaces/_zowe_imperative.ihandlerparameters.html" class="tsd-signature-type">IHandlerParameters</a><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">undefined</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>CLI handler parameters object</p>
+									</div>
+								</li>
+								<li>
+									<h5>promptForValues: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>List of ISessCfg properties to prompt for</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -226,7 +409,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v4.17.6/packages/rest/src/session/ConnectionPropsForSessCfg.ts#L350">@zowe/imperative/packages/rest/src/session/ConnectionPropsForSessCfg.ts:350</a></li>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.0.2/packages/rest/src/session/ConnectionPropsForSessCfg.ts#L399">@zowe/imperative/packages/rest/src/session/ConnectionPropsForSessCfg.ts:399</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -253,13 +436,13 @@
 					<a name="prophasvalue" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagStatic">Static</span> <span class="tsd-flag ts-flagPrivate">Private</span> prop<wbr>Has<wbr>Value</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-static">
-						<li class="tsd-signature tsd-kind-icon">prop<wbr>Has<wbr>Value<span class="tsd-signature-symbol">(</span>propToTest<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
+						<li class="tsd-signature tsd-kind-icon">prop<wbr>Has<wbr>Value<span class="tsd-signature-symbol">(</span>propToTest<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v4.17.6/packages/rest/src/session/ConnectionPropsForSessCfg.ts#L374">@zowe/imperative/packages/rest/src/session/ConnectionPropsForSessCfg.ts:374</a></li>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.0.2/packages/rest/src/session/ConnectionPropsForSessCfg.ts#L423">@zowe/imperative/packages/rest/src/session/ConnectionPropsForSessCfg.ts:423</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -270,7 +453,7 @@
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>propToTest: <span class="tsd-signature-type">string</span></h5>
+									<h5>propToTest: <span class="tsd-signature-type">any</span></h5>
 									<div class="tsd-comment tsd-typography">
 										<pre><code>  the <span class="hljs-keyword">property</span> <span class="hljs-keyword">key</span> <span class="hljs-keyword">to</span> be confirmed.
 </code></pre>
@@ -282,23 +465,93 @@
 						</li>
 					</ul>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-static">
-					<a name="settypeforbasiccreds" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagStatic">Static</span> <span class="tsd-flag ts-flagPrivate">Private</span> set<wbr>Type<wbr>For<wbr>Basic<wbr>Creds</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-static">
-						<li class="tsd-signature tsd-kind-icon">set<wbr>Type<wbr>For<wbr>Basic<wbr>Creds<span class="tsd-signature-symbol">(</span>sessCfg<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span>, options<span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_imperative.ioptionsforaddconnprops.html" class="tsd-signature-type">IOptionsForAddConnProps</a>, tokenType<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">SessConstants.TOKEN_TYPE_CHOICES</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-static">
+					<a name="resolvesesscfgprops" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> resolve<wbr>Sess<wbr>Cfg<wbr>Props</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-static">
+						<li class="tsd-signature tsd-kind-icon">resolve<wbr>Sess<wbr>Cfg<wbr>Props&lt;SessCfgType&gt;<span class="tsd-signature-symbol">(</span>sessCfg<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">SessCfgType</span>, cmdArgs<span class="tsd-signature-symbol">?: </span><a href="../interfaces/_zowe_imperative.icommandarguments.html" class="tsd-signature-type">ICommandArguments</a>, connOpts<span class="tsd-signature-symbol">?: </span><a href="../interfaces/_zowe_imperative.ioptionsforaddconnprops.html" class="tsd-signature-type">IOptionsForAddConnProps</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v4.17.6/packages/rest/src/session/ConnectionPropsForSessCfg.ts#L310">@zowe/imperative/packages/rest/src/session/ConnectionPropsForSessCfg.ts:310</a></li>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.0.2/packages/rest/src/session/ConnectionPropsForSessCfg.ts#L193">@zowe/imperative/packages/rest/src/session/ConnectionPropsForSessCfg.ts:193</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Determine if we want to use a basic authentication to acquire a token.
-									Set the session configuration accordingly.</p>
+									<p>Resolve the overlapping or mutually exclusive properties that can
+										occur. Ensure that the resulting session configuration object contains
+										only the applicable properties. The contents of the supplied sessCfg,
+									cmdArgs, and connOpts will be modified.</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>example</dt>
+									<dd><pre><code> <span class="hljs-keyword">let</span> sessCfg = <span class="hljs-constructor">YouCollectAllProfilePropertiesRelatedToSession()</span>;
+ <span class="hljs-keyword">let</span> cmdArgs = <span class="hljs-constructor">YouSetPropertiesRequiredInCmdArgs()</span>;
+ <span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">ConnectionPropsForSessCfg</span>.</span></span>resolve<span class="hljs-constructor">SessCfgProps(<span class="hljs-params">sessCfg</span>, <span class="hljs-params">cmdArgs</span>)</span>;
+ sessionToUse = <span class="hljs-keyword">new</span> <span class="hljs-constructor">Session(<span class="hljs-params">sessCfg</span>)</span>;
+</code></pre>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-type-parameters-title">Type parameters</h4>
+							<ul class="tsd-type-parameters">
+								<li>
+									<h4>SessCfgType<span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_imperative.isession.html" class="tsd-signature-type">ISession</a></h4>
+								</li>
+							</ul>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>sessCfg: <span class="tsd-signature-type">SessCfgType</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<pre><code> An initial <span class="hljs-keyword">session</span> <span class="hljs-keyword">configuration</span> that contains your desired
+ <span class="hljs-keyword">session</span> <span class="hljs-keyword">configuration</span> properties.
+</code></pre>
+									</div>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> cmdArgs: <a href="../interfaces/_zowe_imperative.icommandarguments.html" class="tsd-signature-type">ICommandArguments</a><span class="tsd-signature-symbol"> = { $0: &quot;&quot;, _: [] }</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<pre><code> The arguments specified <span class="hljs-keyword">by</span> the <span class="hljs-keyword">user</span> <span class="hljs-keyword">on</span> the command line
+ (<span class="hljs-keyword">or</span> <span class="hljs-keyword">in</span> environment, <span class="hljs-keyword">or</span> <span class="hljs-keyword">in</span> profile)
+</code></pre>
+									</div>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> connOpts: <a href="../interfaces/_zowe_imperative.ioptionsforaddconnprops.html" class="tsd-signature-type">IOptionsForAddConnProps</a><span class="tsd-signature-symbol"> = {}</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<pre><code> Options that <span class="hljs-keyword">alter</span> our actions. See IOptionsForAddConnProps.
+ The connOpts <span class="hljs-keyword">parameter</span> need <span class="hljs-keyword">not</span> be supplied.
+ The <span class="hljs-keyword">only</span> option <span class="hljs-keyword">values</span> used <span class="hljs-keyword">by</span> this <span class="hljs-keyword">function</span> <span class="hljs-keyword">are</span>:
+     connOpts.requestToken
+     connOpts.defaultTokenType
+</code></pre>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-static">
+					<a name="settypefortokenrequest" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> <span class="tsd-flag ts-flagPrivate">Private</span> set<wbr>Type<wbr>For<wbr>Token<wbr>Request</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-static">
+						<li class="tsd-signature tsd-kind-icon">set<wbr>Type<wbr>For<wbr>Token<wbr>Request<span class="tsd-signature-symbol">(</span>sessCfg<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span>, options<span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_imperative.ioptionsforaddconnprops.html" class="tsd-signature-type">IOptionsForAddConnProps</a>, tokenType<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">SessConstants.TOKEN_TYPE_CHOICES</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.0.2/packages/rest/src/session/ConnectionPropsForSessCfg.ts#L375">@zowe/imperative/packages/rest/src/session/ConnectionPropsForSessCfg.ts:375</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Determine if we want to request a token.
+									Set the session&#39;s type and tokenType accordingly.</p>
 								</div>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -330,6 +583,65 @@
 					</ul>
 				</section>
 			</section>
+			<section class="tsd-panel-group tsd-member-group tsd-is-private tsd-is-private-protected">
+				<h2>Object literals</h2>
+				<section class="tsd-panel tsd-member tsd-kind-object-literal tsd-parent-kind-class tsd-is-private tsd-is-static">
+					<a name="prompttextforvalues" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> <span class="tsd-flag ts-flagPrivate">Private</span> <span class="tsd-flag ts-flagReadonly">Readonly</span> prompt<wbr>Text<wbr>For<wbr>Values</h3>
+					<div class="tsd-signature tsd-kind-icon">prompt<wbr>Text<wbr>For<wbr>Values<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.0.2/packages/rest/src/session/ConnectionPropsForSessCfg.ts#L297">@zowe/imperative/packages/rest/src/session/ConnectionPropsForSessCfg.ts:297</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>List of prompt messages that is used when the CLI prompts for session
+							config values.</p>
+						</div>
+					</div>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+						<a name="prompttextforvalues.hostname" class="tsd-anchor"></a>
+						<h3>hostname</h3>
+						<div class="tsd-signature tsd-kind-icon">hostname<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &quot;Enter the host name of&quot;</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.0.2/packages/rest/src/session/ConnectionPropsForSessCfg.ts#L298">@zowe/imperative/packages/rest/src/session/ConnectionPropsForSessCfg.ts:298</a></li>
+							</ul>
+						</aside>
+					</section>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+						<a name="prompttextforvalues.password" class="tsd-anchor"></a>
+						<h3>password</h3>
+						<div class="tsd-signature tsd-kind-icon">password<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &quot;Enter the password for&quot;</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.0.2/packages/rest/src/session/ConnectionPropsForSessCfg.ts#L301">@zowe/imperative/packages/rest/src/session/ConnectionPropsForSessCfg.ts:301</a></li>
+							</ul>
+						</aside>
+					</section>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+						<a name="prompttextforvalues.port" class="tsd-anchor"></a>
+						<h3>port</h3>
+						<div class="tsd-signature tsd-kind-icon">port<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &quot;Enter the port number of&quot;</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.0.2/packages/rest/src/session/ConnectionPropsForSessCfg.ts#L299">@zowe/imperative/packages/rest/src/session/ConnectionPropsForSessCfg.ts:299</a></li>
+							</ul>
+						</aside>
+					</section>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+						<a name="prompttextforvalues.user" class="tsd-anchor"></a>
+						<h3>user</h3>
+						<div class="tsd-signature tsd-kind-icon">user<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &quot;Enter the user name for&quot;</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.0.2/packages/rest/src/session/ConnectionPropsForSessCfg.ts#L300">@zowe/imperative/packages/rest/src/session/ConnectionPropsForSessCfg.ts:300</a></li>
+							</ul>
+						</aside>
+					</section>
+				</section>
+			</section>
 		</div>
 		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
 			<nav class="tsd-navigation primary">
@@ -354,6 +666,9 @@
 					</li>
 					<li class=" tsd-kind-module">
 						<a href="../modules/_zowe_zos_jobs_for_zowe_sdk.html">@zowe/zos-<wbr>jobs-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_zos_logs_for_zowe_sdk.html">@zowe/zos-<wbr>logs-<wbr>for-<wbr>zowe-<wbr>sdk</a>
 					</li>
 					<li class=" tsd-kind-module">
 						<a href="../modules/_zowe_zos_tso_for_zowe_sdk.html">@zowe/zos-<wbr>tso-<wbr>for-<wbr>zowe-<wbr>sdk</a>
@@ -389,13 +704,31 @@
 										<a href="_zowe_imperative.connectionpropsforsesscfg.html#addpropsorprompt" class="tsd-kind-icon">add<wbr>Props<wbr>OrPrompt</a>
 									</li>
 									<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-static">
+										<a href="_zowe_imperative.connectionpropsforsesscfg.html#clientprompt" class="tsd-kind-icon">client<wbr>Prompt</a>
+									</li>
+									<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-static">
+										<a href="_zowe_imperative.connectionpropsforsesscfg.html#getvaluesback" class="tsd-kind-icon">get<wbr>Values<wbr>Back</a>
+									</li>
+									<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-static">
+										<a href="_zowe_imperative.connectionpropsforsesscfg.html#loadschemaforsesscfgprops" class="tsd-kind-icon">load<wbr>Schema<wbr>For<wbr>Sess<wbr>Cfg<wbr>Props</a>
+									</li>
+									<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-static">
+										<a href="_zowe_imperative.connectionpropsforsesscfg.html#loadsecuresesscfgprops" class="tsd-kind-icon">load<wbr>Secure<wbr>Sess<wbr>Cfg<wbr>Props</a>
+									</li>
+									<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-static">
 										<a href="_zowe_imperative.connectionpropsforsesscfg.html#logsesscfg" class="tsd-kind-icon">log<wbr>Sess<wbr>Cfg</a>
 									</li>
 									<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-static">
 										<a href="_zowe_imperative.connectionpropsforsesscfg.html#prophasvalue" class="tsd-kind-icon">prop<wbr>Has<wbr>Value</a>
 									</li>
+									<li class=" tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-static">
+										<a href="_zowe_imperative.connectionpropsforsesscfg.html#resolvesesscfgprops" class="tsd-kind-icon">resolve<wbr>Sess<wbr>Cfg<wbr>Props</a>
+									</li>
 									<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-static">
-										<a href="_zowe_imperative.connectionpropsforsesscfg.html#settypeforbasiccreds" class="tsd-kind-icon">set<wbr>Type<wbr>For<wbr>Basic<wbr>Creds</a>
+										<a href="_zowe_imperative.connectionpropsforsesscfg.html#settypefortokenrequest" class="tsd-kind-icon">set<wbr>Type<wbr>For<wbr>Token<wbr>Request</a>
+									</li>
+									<li class=" tsd-kind-object-literal tsd-parent-kind-class tsd-is-private tsd-is-static">
+										<a href="_zowe_imperative.connectionpropsforsesscfg.html#prompttextforvalues" class="tsd-kind-icon">prompt<wbr>Text<wbr>For<wbr>Values</a>
 									</li>
 								</ul>
 							</li>
@@ -414,6 +747,9 @@
 					</li>
 					<li class=" tsd-kind-module">
 						<a href="../modules/_zowe_zos_jobs_for_zowe_sdk.html" class="tsd-kind-icon">@zowe/zos-<wbr>jobs-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_zos_logs_for_zowe_sdk.html" class="tsd-kind-icon">@zowe/zos-<wbr>logs-<wbr>for-<wbr>zowe-<wbr>sdk</a>
 					</li>
 					<li class=" tsd-kind-module">
 						<a href="../modules/_zowe_zos_tso_for_zowe_sdk.html" class="tsd-kind-icon">@zowe/zos-<wbr>tso-<wbr>for-<wbr>zowe-<wbr>sdk</a>

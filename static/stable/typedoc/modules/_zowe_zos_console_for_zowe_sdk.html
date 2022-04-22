@@ -3,8 +3,8 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>@zowe/zos-console-for-zowe-sdk | Zowe Node.js SDK - v1.27.2</title>
-	<meta name="description" content="Documentation for Zowe Node.js SDK - v1.27.2">
+	<title>@zowe/zos-console-for-zowe-sdk | Zowe Node.js SDK - v2.0.0</title>
+	<meta name="description" content="Documentation for Zowe Node.js SDK - v2.0.0">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
 </head>
@@ -22,7 +22,7 @@
 						<li class="state loading">Preparing search index...</li>
 						<li class="state failure">The search index is not available</li>
 					</ul>
-					<a href="../index.html" class="title">Zowe Node.js SDK - v1.27.2</a>
+					<a href="../index.html" class="title">Zowe Node.js SDK - v2.0.0</a>
 				</div>
 				<div class="table-cell" id="tsd-widgets">
 					<div id="tsd-filter">
@@ -74,39 +74,25 @@
 						<h2>API Examples</h2>
 					</a>
 					<p><strong>Submit a command to the z/OS console</strong></p>
-					<pre><code class="language-typescript"><span class="hljs-keyword">import</span> { IProfile, Session, Logger, LoggingConfigurer, ImperativeError,
-         CredentialManagerFactory } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@zowe/imperative&quot;</span>;
-<span class="hljs-keyword">import</span> { ZosmfSession } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@zowe/zosmf-for-zowe-sdk&quot;</span>;
-<span class="hljs-keyword">import</span> { getDefaultProfile } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@zowe/core-for-zowe-sdk&quot;</span>;
-<span class="hljs-keyword">import</span> { IssueCommand, IIssueParms, IConsoleResponse } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@zowe/zos-console-for-zowe-sdk&quot;</span>;
+					<pre><code class="language-typescript"><span class="hljs-keyword">import</span> { ProfileInfo } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@zowe/imperative&quot;</span>;
+<span class="hljs-keyword">import</span> { IIssueParms, IssueCommand } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@zowe/zos-console-for-zowe-sdk&quot;</span>;
 
 (<span class="hljs-keyword">async</span> () =&gt; {
-    <span class="hljs-comment">//Initialize the Imperative Credential Manager Factory and Logger</span>
-    Logger.initLogger(LoggingConfigurer.configureLogger(<span class="hljs-string">&#x27;lib&#x27;</span>, {<span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;test&#x27;</span>}));
-    <span class="hljs-comment">// Uncommment the below line if the Secure Credential Store is in use</span>
-    <span class="hljs-comment">// await CredentialManagerFactory.initialize({service: &quot;Zowe-Plugin&quot;});</span>
+    <span class="hljs-comment">// Load connection info from default z/OSMF profile</span>
+    <span class="hljs-keyword">const</span> profInfo = <span class="hljs-keyword">new</span> ProfileInfo(<span class="hljs-string">&quot;zowe&quot;</span>);
+    <span class="hljs-keyword">await</span> profInfo.readProfilesFromDisk();
+    <span class="hljs-keyword">const</span> zosmfProfAttrs = profInfo.getDefaultProfile(<span class="hljs-string">&quot;zosmf&quot;</span>);
+    <span class="hljs-keyword">const</span> zosmfMergedArgs = profInfo.mergeArgsForProfile(zosmfProfAttrs, { <span class="hljs-attr">getSecureVals</span>: <span class="hljs-literal">true</span> });
+    <span class="hljs-keyword">const</span> session = ProfileInfo.createSession(zosmfMergedArgs.knownArgs);
 
-    <span class="hljs-comment">// Get the default z/OSMF profile and create a z/OSMF session with it</span>
-    <span class="hljs-keyword">let</span> defaultZosmfProfile: IProfile;
-    <span class="hljs-keyword">try</span> {
-        defaultZosmfProfile = <span class="hljs-keyword">await</span> getDefaultProfile(<span class="hljs-string">&quot;zosmf&quot;</span>, <span class="hljs-literal">true</span>);
-    } <span class="hljs-keyword">catch</span> (err) {
-        <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> ImperativeError({<span class="hljs-attr">msg</span>: <span class="hljs-string">&quot;Failed to get a profile.&quot;</span>});
-    }
-
-    <span class="hljs-comment">// Console Options</span>
     <span class="hljs-keyword">const</span> parms: IIssueParms = {
         <span class="hljs-attr">command</span>: <span class="hljs-string">&quot;D IPLINFO&quot;</span>,
         <span class="hljs-attr">sysplexSystem</span>: <span class="hljs-literal">undefined</span>,
         <span class="hljs-attr">solicitedKeyword</span>: <span class="hljs-literal">undefined</span>,
         <span class="hljs-attr">async</span>: <span class="hljs-string">&quot;N&quot;</span>
-    }
-
-    <span class="hljs-keyword">const</span> session: Session = ZosmfSession.createBasicZosmfSession(defaultZosmfProfile);
-    <span class="hljs-keyword">let</span> response: IConsoleResponse;
-    response = <span class="hljs-keyword">await</span> IssueCommand.issue(session, parms);
+    };
+    <span class="hljs-keyword">const</span> response = <span class="hljs-keyword">await</span> IssueCommand.issue(session, parms);
     <span class="hljs-built_in">console</span>.log(response);
-    process.exit(<span class="hljs-number">0</span>);
 })().catch(<span class="hljs-function">(<span class="hljs-params">err</span>) =&gt;</span> {
     <span class="hljs-built_in">console</span>.error(err);
     process.exit(<span class="hljs-number">1</span>);
@@ -116,37 +102,24 @@
 						<h1></h1>
 					</a>
 					<p><strong>Get the response from a command sent to the z/OS console</strong></p>
-					<pre><code class="language-typescript"><span class="hljs-keyword">import</span> { IProfile, Session, Logger, LoggingConfigurer, ImperativeError,
-         CredentialManagerFactory } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@zowe/imperative&quot;</span>;
-<span class="hljs-keyword">import</span> { ZosmfSession } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@zowe/zosmf-for-zowe-sdk&quot;</span>;
-<span class="hljs-keyword">import</span> { getDefaultProfile } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@zowe/core-for-zowe-sdk&quot;</span>;
-<span class="hljs-keyword">import</span> { CollectCommand, ICollectParms, IConsoleResponse } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@zowe/zos-console-for-zowe-sdk&quot;</span>;
+					<pre><code class="language-typescript"><span class="hljs-keyword">import</span> { ProfileInfo } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@zowe/imperative&quot;</span>;
+<span class="hljs-keyword">import</span> { CollectCommand, ICollectParms } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@zowe/zos-console-for-zowe-sdk&quot;</span>;
 
 (<span class="hljs-keyword">async</span> () =&gt; {
-    <span class="hljs-comment">//Initialize the Imperative Credential Manager Factory and Logger</span>
-    Logger.initLogger(LoggingConfigurer.configureLogger(<span class="hljs-string">&#x27;lib&#x27;</span>, {<span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;test&#x27;</span>}));
-    <span class="hljs-comment">// Uncommment the below line if the Secure Credential Store is in use</span>
-    <span class="hljs-comment">// await CredentialManagerFactory.initialize({service: &quot;Zowe-Plugin&quot;});</span>
-
-    <span class="hljs-comment">// Get the default z/OSMF profile and create a z/OSMF session with it</span>
-    <span class="hljs-keyword">let</span> defaultZosmfProfile: IProfile;
-    <span class="hljs-keyword">try</span> {
-        defaultZosmfProfile = <span class="hljs-keyword">await</span> getDefaultProfile(<span class="hljs-string">&quot;zosmf&quot;</span>, <span class="hljs-literal">true</span>);
-    } <span class="hljs-keyword">catch</span> (err) {
-        <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> ImperativeError({<span class="hljs-attr">msg</span>: <span class="hljs-string">&quot;Failed to get a profile.&quot;</span>});
-    }
+    <span class="hljs-comment">// Load connection info from default z/OSMF profile</span>
+    <span class="hljs-keyword">const</span> profInfo = <span class="hljs-keyword">new</span> ProfileInfo(<span class="hljs-string">&quot;zowe&quot;</span>);
+    <span class="hljs-keyword">await</span> profInfo.readProfilesFromDisk();
+    <span class="hljs-keyword">const</span> zosmfProfAttrs = profInfo.getDefaultProfile(<span class="hljs-string">&quot;zosmf&quot;</span>);
+    <span class="hljs-keyword">const</span> zosmfMergedArgs = profInfo.mergeArgsForProfile(zosmfProfAttrs, { <span class="hljs-attr">getSecureVals</span>: <span class="hljs-literal">true</span> });
+    <span class="hljs-keyword">const</span> session = ProfileInfo.createSession(zosmfMergedArgs.knownArgs);
 
     <span class="hljs-keyword">const</span> parms: ICollectParms = {
         <span class="hljs-attr">commandResponseKey</span>: <span class="hljs-string">&quot;KEY&quot;</span>,
         <span class="hljs-attr">waitToCollect</span>: <span class="hljs-literal">undefined</span>,
         <span class="hljs-attr">followUpAttempts</span>: <span class="hljs-literal">undefined</span>
-    }
-
-    <span class="hljs-keyword">const</span> session: Session = ZosmfSession.createBasicZosmfSession(defaultZosmfProfile);
-    <span class="hljs-keyword">let</span> response: IConsoleResponse;
-    response = <span class="hljs-keyword">await</span> CollectCommand.collect(session, parms);
+    };
+    <span class="hljs-keyword">const</span> response = <span class="hljs-keyword">await</span> CollectCommand.collect(session, parms);
     <span class="hljs-built_in">console</span>.log(response);
-    process.exit(<span class="hljs-number">0</span>);
 })().catch(<span class="hljs-function">(<span class="hljs-params">err</span>) =&gt;</span> {
     <span class="hljs-built_in">console</span>.error(err);
     process.exit(<span class="hljs-number">1</span>);
@@ -214,7 +187,7 @@
 					<div class="tsd-signature tsd-kind-icon">Console<wbr>Response<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">(</span>response<span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_zos_console_for_zowe_sdk.iconsoleresponse.html" class="tsd-signature-type">IConsoleResponse</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">void</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v6.37.7/packages/zosconsole/src/types/ConsoleResponse.ts#L14">@zowe/zos-console-for-zowe-sdk/src/types/ConsoleResponse.ts:14</a></li>
+							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.0.2/packages/zosconsole/src/types/ConsoleResponse.ts#L14">@zowe/zos-console-for-zowe-sdk/src/types/ConsoleResponse.ts:14</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -248,7 +221,7 @@
 					<div class="tsd-signature tsd-kind-icon">collect<wbr>Processing<wbr>Details<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v6.37.7/packages/zosconsole/src/ConsoleConstants.ts#L57">@zowe/zos-console-for-zowe-sdk/src/ConsoleConstants.ts:57</a></li>
+							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.0.2/packages/zosconsole/src/ConsoleConstants.ts#L57">@zowe/zos-console-for-zowe-sdk/src/ConsoleConstants.ts:57</a></li>
 						</ul>
 					</aside>
 					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
@@ -257,7 +230,7 @@
 						<div class="tsd-signature tsd-kind-icon">message<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &#x60;Collect processing - timeout: {{timer}}, followUpCounter: {{counter}}&#x60;</span></div>
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v6.37.7/packages/zosconsole/src/ConsoleConstants.ts#L58">@zowe/zos-console-for-zowe-sdk/src/ConsoleConstants.ts:58</a></li>
+								<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.0.2/packages/zosconsole/src/ConsoleConstants.ts#L58">@zowe/zos-console-for-zowe-sdk/src/ConsoleConstants.ts:58</a></li>
 							</ul>
 						</aside>
 					</section>
@@ -268,7 +241,7 @@
 					<div class="tsd-signature tsd-kind-icon">decrease<wbr>Counter<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v6.37.7/packages/zosconsole/src/ConsoleConstants.ts#L36">@zowe/zos-console-for-zowe-sdk/src/ConsoleConstants.ts:36</a></li>
+							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.0.2/packages/zosconsole/src/ConsoleConstants.ts#L36">@zowe/zos-console-for-zowe-sdk/src/ConsoleConstants.ts:36</a></li>
 						</ul>
 					</aside>
 					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
@@ -277,7 +250,7 @@
 						<div class="tsd-signature tsd-kind-icon">message<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &#x60;Decreasing follow up counter&#x60;</span></div>
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v6.37.7/packages/zosconsole/src/ConsoleConstants.ts#L37">@zowe/zos-console-for-zowe-sdk/src/ConsoleConstants.ts:37</a></li>
+								<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.0.2/packages/zosconsole/src/ConsoleConstants.ts#L37">@zowe/zos-console-for-zowe-sdk/src/ConsoleConstants.ts:37</a></li>
 							</ul>
 						</aside>
 					</section>
@@ -288,7 +261,7 @@
 					<div class="tsd-signature tsd-kind-icon">display<wbr>Collect<wbr>Error<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v6.37.7/packages/zosconsole/src/ConsoleConstants.ts#L33">@zowe/zos-console-for-zowe-sdk/src/ConsoleConstants.ts:33</a></li>
+							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.0.2/packages/zosconsole/src/ConsoleConstants.ts#L33">@zowe/zos-console-for-zowe-sdk/src/ConsoleConstants.ts:33</a></li>
 						</ul>
 					</aside>
 					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
@@ -297,7 +270,7 @@
 						<div class="tsd-signature tsd-kind-icon">message<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = apiErrorHeader.message + &#x60; Collect error: {{data}}&#x60;</span></div>
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v6.37.7/packages/zosconsole/src/ConsoleConstants.ts#L34">@zowe/zos-console-for-zowe-sdk/src/ConsoleConstants.ts:34</a></li>
+								<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.0.2/packages/zosconsole/src/ConsoleConstants.ts#L34">@zowe/zos-console-for-zowe-sdk/src/ConsoleConstants.ts:34</a></li>
 							</ul>
 						</aside>
 					</section>
@@ -308,7 +281,7 @@
 					<div class="tsd-signature tsd-kind-icon">display<wbr>Collect<wbr>Response<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v6.37.7/packages/zosconsole/src/ConsoleConstants.ts#L30">@zowe/zos-console-for-zowe-sdk/src/ConsoleConstants.ts:30</a></li>
+							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.0.2/packages/zosconsole/src/ConsoleConstants.ts#L30">@zowe/zos-console-for-zowe-sdk/src/ConsoleConstants.ts:30</a></li>
 						</ul>
 					</aside>
 					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
@@ -317,7 +290,7 @@
 						<div class="tsd-signature tsd-kind-icon">message<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &#x60;Collect response: {{data}}&#x60;</span></div>
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v6.37.7/packages/zosconsole/src/ConsoleConstants.ts#L31">@zowe/zos-console-for-zowe-sdk/src/ConsoleConstants.ts:31</a></li>
+								<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.0.2/packages/zosconsole/src/ConsoleConstants.ts#L31">@zowe/zos-console-for-zowe-sdk/src/ConsoleConstants.ts:31</a></li>
 							</ul>
 						</aside>
 					</section>
@@ -328,7 +301,7 @@
 					<div class="tsd-signature tsd-kind-icon">display<wbr>Error<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v6.37.7/packages/zosconsole/src/ConsoleConstants.ts#L27">@zowe/zos-console-for-zowe-sdk/src/ConsoleConstants.ts:27</a></li>
+							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.0.2/packages/zosconsole/src/ConsoleConstants.ts#L27">@zowe/zos-console-for-zowe-sdk/src/ConsoleConstants.ts:27</a></li>
 						</ul>
 					</aside>
 					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
@@ -337,7 +310,7 @@
 						<div class="tsd-signature tsd-kind-icon">message<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = apiErrorHeader.message + &#x60; Populating console error: {{data}}&#x60;</span></div>
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v6.37.7/packages/zosconsole/src/ConsoleConstants.ts#L28">@zowe/zos-console-for-zowe-sdk/src/ConsoleConstants.ts:28</a></li>
+								<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.0.2/packages/zosconsole/src/ConsoleConstants.ts#L28">@zowe/zos-console-for-zowe-sdk/src/ConsoleConstants.ts:28</a></li>
 							</ul>
 						</aside>
 					</section>
@@ -348,7 +321,7 @@
 					<div class="tsd-signature tsd-kind-icon">display<wbr>Response<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v6.37.7/packages/zosconsole/src/ConsoleConstants.ts#L24">@zowe/zos-console-for-zowe-sdk/src/ConsoleConstants.ts:24</a></li>
+							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.0.2/packages/zosconsole/src/ConsoleConstants.ts#L24">@zowe/zos-console-for-zowe-sdk/src/ConsoleConstants.ts:24</a></li>
 						</ul>
 					</aside>
 					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
@@ -357,7 +330,7 @@
 						<div class="tsd-signature tsd-kind-icon">message<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &#x60;Populating console response: {{data}}&#x60;</span></div>
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v6.37.7/packages/zosconsole/src/ConsoleConstants.ts#L25">@zowe/zos-console-for-zowe-sdk/src/ConsoleConstants.ts:25</a></li>
+								<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.0.2/packages/zosconsole/src/ConsoleConstants.ts#L25">@zowe/zos-console-for-zowe-sdk/src/ConsoleConstants.ts:25</a></li>
 							</ul>
 						</aside>
 					</section>
@@ -368,7 +341,7 @@
 					<div class="tsd-signature tsd-kind-icon">no<wbr>Collect<wbr>Parameters<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v6.37.7/packages/zosconsole/src/ConsoleConstants.ts#L54">@zowe/zos-console-for-zowe-sdk/src/ConsoleConstants.ts:54</a></li>
+							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.0.2/packages/zosconsole/src/ConsoleConstants.ts#L54">@zowe/zos-console-for-zowe-sdk/src/ConsoleConstants.ts:54</a></li>
 						</ul>
 					</aside>
 					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
@@ -377,7 +350,7 @@
 						<div class="tsd-signature tsd-kind-icon">message<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = apiErrorHeader.message + &#x60; No console collect parameters were supplied.&#x60;</span></div>
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v6.37.7/packages/zosconsole/src/ConsoleConstants.ts#L55">@zowe/zos-console-for-zowe-sdk/src/ConsoleConstants.ts:55</a></li>
+								<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.0.2/packages/zosconsole/src/ConsoleConstants.ts#L55">@zowe/zos-console-for-zowe-sdk/src/ConsoleConstants.ts:55</a></li>
 							</ul>
 						</aside>
 					</section>
@@ -388,7 +361,7 @@
 					<div class="tsd-signature tsd-kind-icon">no<wbr>Command<wbr>Key<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v6.37.7/packages/zosconsole/src/ConsoleConstants.ts#L51">@zowe/zos-console-for-zowe-sdk/src/ConsoleConstants.ts:51</a></li>
+							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.0.2/packages/zosconsole/src/ConsoleConstants.ts#L51">@zowe/zos-console-for-zowe-sdk/src/ConsoleConstants.ts:51</a></li>
 						</ul>
 					</aside>
 					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
@@ -397,7 +370,7 @@
 						<div class="tsd-signature tsd-kind-icon">message<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = apiErrorHeader.message + &#x60; No command response key was supplied.&#x60;</span></div>
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v6.37.7/packages/zosconsole/src/ConsoleConstants.ts#L52">@zowe/zos-console-for-zowe-sdk/src/ConsoleConstants.ts:52</a></li>
+								<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.0.2/packages/zosconsole/src/ConsoleConstants.ts#L52">@zowe/zos-console-for-zowe-sdk/src/ConsoleConstants.ts:52</a></li>
 							</ul>
 						</aside>
 					</section>
@@ -408,7 +381,7 @@
 					<div class="tsd-signature tsd-kind-icon">no<wbr>Console<wbr>Input<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v6.37.7/packages/zosconsole/src/ConsoleConstants.ts#L45">@zowe/zos-console-for-zowe-sdk/src/ConsoleConstants.ts:45</a></li>
+							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.0.2/packages/zosconsole/src/ConsoleConstants.ts#L45">@zowe/zos-console-for-zowe-sdk/src/ConsoleConstants.ts:45</a></li>
 						</ul>
 					</aside>
 					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
@@ -417,7 +390,7 @@
 						<div class="tsd-signature tsd-kind-icon">message<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = apiErrorHeader.message + &#x60; No console issue parameters were supplied.&#x60;</span></div>
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v6.37.7/packages/zosconsole/src/ConsoleConstants.ts#L46">@zowe/zos-console-for-zowe-sdk/src/ConsoleConstants.ts:46</a></li>
+								<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.0.2/packages/zosconsole/src/ConsoleConstants.ts#L46">@zowe/zos-console-for-zowe-sdk/src/ConsoleConstants.ts:46</a></li>
 							</ul>
 						</aside>
 					</section>
@@ -428,7 +401,7 @@
 					<div class="tsd-signature tsd-kind-icon">no<wbr>Console<wbr>Name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v6.37.7/packages/zosconsole/src/ConsoleConstants.ts#L48">@zowe/zos-console-for-zowe-sdk/src/ConsoleConstants.ts:48</a></li>
+							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.0.2/packages/zosconsole/src/ConsoleConstants.ts#L48">@zowe/zos-console-for-zowe-sdk/src/ConsoleConstants.ts:48</a></li>
 						</ul>
 					</aside>
 					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
@@ -437,7 +410,7 @@
 						<div class="tsd-signature tsd-kind-icon">message<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = apiErrorHeader.message + &#x60; No console name was supplied.&#x60;</span></div>
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v6.37.7/packages/zosconsole/src/ConsoleConstants.ts#L49">@zowe/zos-console-for-zowe-sdk/src/ConsoleConstants.ts:49</a></li>
+								<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.0.2/packages/zosconsole/src/ConsoleConstants.ts#L49">@zowe/zos-console-for-zowe-sdk/src/ConsoleConstants.ts:49</a></li>
 							</ul>
 						</aside>
 					</section>
@@ -448,7 +421,7 @@
 					<div class="tsd-signature tsd-kind-icon">no<wbr>Zosmf<wbr>Input<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v6.37.7/packages/zosconsole/src/ConsoleConstants.ts#L42">@zowe/zos-console-for-zowe-sdk/src/ConsoleConstants.ts:42</a></li>
+							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.0.2/packages/zosconsole/src/ConsoleConstants.ts#L42">@zowe/zos-console-for-zowe-sdk/src/ConsoleConstants.ts:42</a></li>
 						</ul>
 					</aside>
 					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
@@ -457,7 +430,7 @@
 						<div class="tsd-signature tsd-kind-icon">message<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = apiErrorHeader.message + &#x60; No zosmf console input parameters were supplied.&#x60;</span></div>
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v6.37.7/packages/zosconsole/src/ConsoleConstants.ts#L43">@zowe/zos-console-for-zowe-sdk/src/ConsoleConstants.ts:43</a></li>
+								<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.0.2/packages/zosconsole/src/ConsoleConstants.ts#L43">@zowe/zos-console-for-zowe-sdk/src/ConsoleConstants.ts:43</a></li>
 							</ul>
 						</aside>
 					</section>
@@ -468,7 +441,7 @@
 					<div class="tsd-signature tsd-kind-icon">reset<wbr>Counter<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v6.37.7/packages/zosconsole/src/ConsoleConstants.ts#L39">@zowe/zos-console-for-zowe-sdk/src/ConsoleConstants.ts:39</a></li>
+							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.0.2/packages/zosconsole/src/ConsoleConstants.ts#L39">@zowe/zos-console-for-zowe-sdk/src/ConsoleConstants.ts:39</a></li>
 						</ul>
 					</aside>
 					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
@@ -477,7 +450,7 @@
 						<div class="tsd-signature tsd-kind-icon">message<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &#x60;Reset follow up counter&#x60;</span></div>
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v6.37.7/packages/zosconsole/src/ConsoleConstants.ts#L40">@zowe/zos-console-for-zowe-sdk/src/ConsoleConstants.ts:40</a></li>
+								<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.0.2/packages/zosconsole/src/ConsoleConstants.ts#L40">@zowe/zos-console-for-zowe-sdk/src/ConsoleConstants.ts:40</a></li>
 							</ul>
 						</aside>
 					</section>
@@ -507,6 +480,9 @@
 					</li>
 					<li class=" tsd-kind-module">
 						<a href="_zowe_zos_jobs_for_zowe_sdk.html">@zowe/zos-<wbr>jobs-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="_zowe_zos_logs_for_zowe_sdk.html">@zowe/zos-<wbr>logs-<wbr>for-<wbr>zowe-<wbr>sdk</a>
 					</li>
 					<li class=" tsd-kind-module">
 						<a href="_zowe_zos_tso_for_zowe_sdk.html">@zowe/zos-<wbr>tso-<wbr>for-<wbr>zowe-<wbr>sdk</a>
@@ -622,6 +598,9 @@
 					</li>
 					<li class=" tsd-kind-module">
 						<a href="_zowe_zos_jobs_for_zowe_sdk.html" class="tsd-kind-icon">@zowe/zos-<wbr>jobs-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="_zowe_zos_logs_for_zowe_sdk.html" class="tsd-kind-icon">@zowe/zos-<wbr>logs-<wbr>for-<wbr>zowe-<wbr>sdk</a>
 					</li>
 					<li class=" tsd-kind-module">
 						<a href="_zowe_zos_tso_for_zowe_sdk.html" class="tsd-kind-icon">@zowe/zos-<wbr>tso-<wbr>for-<wbr>zowe-<wbr>sdk</a>
