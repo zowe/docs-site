@@ -15,26 +15,26 @@
 <li>
 <p><code>memberName</code>		 <em>(string)</em></p>
 <ul>
-<li>The name of the member that contains JCL for the region to start.  The maximum length of the member name is eight characters.  If no member name is specified, the default member name is used</li>
+<li>The name of the member that contains JCL for the region to start. The maximum length of the member name is eight characters. If no member name is specified, the default member name is used</li>
 </ul>
 </li>
 </ul>
 <h4>Options</h4>
 <ul>
 <li>
-<p><code>--route</code>  | <code>--rte</code> <em>(array)</em></p>
+<p><code>--route</code> | <code>--rte</code> <em>(array)</em></p>
 <ul>
 <li>The region(s) to route the command to</li>
 </ul>
 </li>
 <li>
-<p><code>--local</code>  | <code>-l</code> <em>(boolean)</em></p>
+<p><code>--local</code> | <code>-l</code> <em>(boolean)</em></p>
 <ul>
 <li>If you specify the --local option, IMS overrides the symbolic IMSID parameter in the JCL of the default or specified member. --local is the default if you specify the --job-name option.</li>
 </ul>
 </li>
 <li>
-<p><code>--job-name</code>  | <code>--jn</code> <em>(string)</em></p>
+<p><code>--job-name</code> | <code>--jn</code> <em>(string)</em></p>
 <ul>
 <li>Use this option to override the job name on the JOB statement of the default or specified JCL member for a dependent region.</li>
 </ul>
@@ -43,64 +43,83 @@
 <h4>IMS Connection Options</h4>
 <ul>
 <li>
-<p><code>--host</code>  | <code>-H</code> <em>(string)</em></p>
+<p><code>--host</code> | <code>-H</code> <em>(string)</em></p>
 <ul>
 <li>The IMS Operations API server host name.</li>
 </ul>
 </li>
 <li>
-<p><code>--port</code>  | <code>-P</code> <em>(number)</em></p>
+<p><code>--port</code> | <code>-P</code> <em>(number)</em></p>
 <ul>
 <li>The IMS Operations API server port.</li>
 </ul>
 </li>
 <li>
-<p><code>--ims-connect-host</code>  | <code>--ich</code> <em>(string)</em></p>
+<p><code>--ims-connect-host</code> | <code>--ich</code> <em>(string)</em></p>
 <ul>
 <li>The hostname of your instance of IMS Connect. This is typically the hostname of the mainframe LPAR where IMS Connect is running.</li>
 </ul>
 </li>
 <li>
-<p><code>--ims-connect-port</code>  | <code>--icp</code> <em>(number)</em></p>
+<p><code>--ims-connect-port</code> | <code>--icp</code> <em>(number)</em></p>
 <ul>
 <li>The port of your instance of IMS Connect. This port can be found in your IMS Connect configuration file on the mainframe.</li>
 </ul>
 </li>
 <li>
-<p><code>--plex</code>  | <code>-x</code> <em>(string)</em></p>
+<p><code>--plex</code> | <code>-x</code> <em>(string)</em></p>
 <ul>
 <li>The name of the IMS plex.</li>
 </ul>
 </li>
 <li>
-<p><code>--user</code>  | <code>-u</code> <em>(string)</em></p>
+<p><code>--user</code> | <code>-u</code> <em>(string)</em></p>
 <ul>
 <li>The web server user name where the IMS Operations API resides.</li>
 </ul>
 </li>
 <li>
-<p><code>--password</code>  | <code>--pass</code> <em>(string)</em></p>
+<p><code>--password</code> | <code>--pass</code> <em>(string)</em></p>
 <ul>
 <li>The web server user password where the IMS Operations API resides.</li>
 </ul>
 </li>
 <li>
-<p><code>--base-path</code>  | <code>--bp</code> <em>(string)</em></p>
+<p><code>--base-path</code> | <code>--bp</code> <em>(string)</em></p>
 <ul>
 <li>The base path for your API mediation layer instance. Specify this option to prepend the base path to all z/OSMF resources when making REST requests. Do not specify this option if you are not using an API mediation layer.</li>
+</ul>
+</li>
+<li>
+<p><code>--protocol</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>Specifies protocol (http or https).</p>
+<p>Default value: https<br>
+Allowed values: http, https</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--reject-unauthorized</code> | <code>--ru</code> <em>(boolean)</em></p>
+<ul>
+<li>
+<p>Reject self-signed certificates.</p>
+<p>Default value: true</p>
+</li>
 </ul>
 </li>
 </ul>
 <h4>Profile Options</h4>
 <ul>
 <li>
-<p><code>--ims-profile</code>  | <code>--ims-p</code> <em>(string)</em></p>
+<p><code>--ims-profile</code> | <code>--ims-p</code> <em>(string)</em></p>
 <ul>
 <li>The name of a (ims) profile to load for this command execution.</li>
 </ul>
 </li>
 <li>
-<p><code>--base-profile</code>  | <code>--base-p</code> <em>(string)</em></p>
+<p><code>--base-profile</code> | <code>--base-p</code> <em>(string)</em></p>
 <ul>
 <li>The name of a (base) profile to load for this command execution.</li>
 </ul>
@@ -109,34 +128,25 @@
 <h4>Base Connection Options</h4>
 <ul>
 <li>
-<p><code>--reject-unauthorized</code>  | <code>--ru</code> <em>(boolean)</em></p>
-<ul>
-<li>
-<p>Reject self-signed certificates.</p>
-<p>Default value: true</p>
-</li>
-</ul>
-</li>
-<li>
-<p><code>--token-type</code>  | <code>--tt</code> <em>(string)</em></p>
+<p><code>--token-type</code> | <code>--tt</code> <em>(string)</em></p>
 <ul>
 <li>The type of token to get and use for the API. Omit this option to use the default token type, which is provided by 'zowe auth login'.</li>
 </ul>
 </li>
 <li>
-<p><code>--token-value</code>  | <code>--tv</code> <em>(string)</em></p>
+<p><code>--token-value</code> | <code>--tv</code> <em>(string)</em></p>
 <ul>
 <li>The value of the token to pass to the API.</li>
 </ul>
 </li>
 <li>
-<p><code>--cert-file</code>  <em>(local file path)</em></p>
+<p><code>--cert-file</code> <em>(local file path)</em></p>
 <ul>
 <li>The file path to a certificate file to use for authentication</li>
 </ul>
 </li>
 <li>
-<p><code>--cert-key-file</code>  <em>(local file path)</em></p>
+<p><code>--cert-key-file</code> <em>(local file path)</em></p>
 <ul>
 <li>The file path to a certificate key file to use for authentication</li>
 </ul>
@@ -145,13 +155,13 @@
 <h4>Response Format Options</h4>
 <ul>
 <li>
-<p><code>--response-format-filter</code>  | <code>--rff</code> <em>(array)</em></p>
+<p><code>--response-format-filter</code> | <code>--rff</code> <em>(array)</em></p>
 <ul>
 <li>Filter (include) fields in the response. Accepts an array of field/property names to include in the output response. You can filter JSON objects properties OR table columns/fields. In addition, you can use this option in conjunction with '--response-format-type' to reduce the output of a command to a single field/property or a list of a single field/property.</li>
 </ul>
 </li>
 <li>
-<p><code>--response-format-type</code>  | <code>--rft</code> <em>(string)</em></p>
+<p><code>--response-format-type</code> | <code>--rft</code> <em>(string)</em></p>
 <ul>
 <li>
 <p>The command response output format type. Must be one of the following:</p>
@@ -164,7 +174,7 @@
 </ul>
 </li>
 <li>
-<p><code>--response-format-header</code>  | <code>--rfh</code> <em>(boolean)</em></p>
+<p><code>--response-format-header</code> | <code>--rfh</code> <em>(boolean)</em></p>
 <ul>
 <li>If &quot;--response-format-type table&quot; is specified, include the column headers in the output.</li>
 </ul>

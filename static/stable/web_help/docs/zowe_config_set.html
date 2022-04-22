@@ -7,31 +7,84 @@
 <link rel="stylesheet" href="../css/docs.css">
 <article class="markdown-body">
 <h2><a href="zowe.html">zowe</a> › <a href="zowe_config.html">config</a> › <a href="zowe_config_set.html">set</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
-<p>Set a configuration setting.</p>
+<p>create or update a configuration property</p>
 <h4>Usage</h4>
-<p>zowe config set &lt;configName&gt; &lt;configValue&gt; [options]</p>
+<p>zowe config set &lt;property&gt; [value] [options]</p>
 <h4>Positional Arguments</h4>
 <ul>
 <li>
-<p><code>configName</code>		 <em>(string)</em></p>
+<p><code>property</code>		 <em>(string)</em></p>
 <ul>
-<li>Setting name. Possible values:<br>
-CredentialManager - The package name of a plugin that will override the default credential manager to allow for different credential storage methods.</li>
+<li>The property to set. You may specify a path using dot notation (e.g. profiles.host1.profiles.service1.properties.setting)</li>
 </ul>
 </li>
 <li>
-<p><code>configValue</code>		 <em>(string)</em></p>
+<p><code>value</code>		 <em>(string)</em></p>
 <ul>
-<li>Value to set</li>
+<li>The property value to set. The value may be JSON. Use '--json' to indicate.</li>
+</ul>
+</li>
+</ul>
+<h4>Options</h4>
+<ul>
+<li>
+<p><code>--global-config</code> | <code>--gc</code> <em>(boolean)</em></p>
+<ul>
+<li>
+<p>Set the property in global config.</p>
+<p>Default value: false</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--user-config</code> | <code>--uc</code> <em>(boolean)</em></p>
+<ul>
+<li>
+<p>Set the property in user config.</p>
+<p>Default value: false</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--json</code> <em>(boolean)</em></p>
+<ul>
+<li>
+<p>The property value is JSON.</p>
+<p>Default value: false</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--secure</code> <em>(boolean)</em></p>
+<ul>
+<li>Store the property value securely. If omitted, any property named in the secure array of the config file will be saved securely.</li>
 </ul>
 </li>
 </ul>
 <h4>Examples</h4>
 <ul>
 <li>
-<p>Set the default credential manager to my-credential-manager:</p>
+<p>Set the property in global config.:</p>
 <ul>
-<li><code>zowe config set CredentialManager my-credential-manager</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe config set CredentialManager my-credential-manager">Copy</button></li>
+<li><code>zowe config set &quot;profiles.host1.profiles.service1.properties.setting&quot; &quot;value&quot; --global-config</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe config set &quot;profiles.host1.profiles.service1.properties.setting&quot; &quot;value&quot; --global-config">Copy</button></li>
+</ul>
+</li>
+<li>
+<p>Set the property in user config.:</p>
+<ul>
+<li><code>zowe config set &quot;profiles.host1.profiles.service2.properties.setting&quot; &quot;value&quot; --user-config</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe config set &quot;profiles.host1.profiles.service2.properties.setting&quot; &quot;value&quot; --user-config">Copy</button></li>
+</ul>
+</li>
+<li>
+<p>Set property value to JSON.:</p>
+<ul>
+<li><code>zowe config set &quot;profiles.host1.profiles.service3.properties.setting&quot; &quot;{&quot;property&quot;:&quot;value&quot;}&quot; --json</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe config set &quot;profiles.host1.profiles.service3.properties.setting&quot; &quot;{&quot;property&quot;:&quot;value&quot;}&quot; --json">Copy</button></li>
+</ul>
+</li>
+<li>
+<p>Store the property value:</p>
+<ul>
+<li><code>zowe config set &quot;profiles.host1.profiles.service1.properties.setting&quot; &quot;value&quot; --secure</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe config set &quot;profiles.host1.profiles.service1.properties.setting&quot; &quot;value&quot; --secure">Copy</button></li>
 </ul>
 </li>
 </ul>
