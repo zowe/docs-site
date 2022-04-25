@@ -36,6 +36,7 @@ Full name|Alias|Type|Required|Help message
 --trust-zosmf||boolean|no||Whether to trust z/OSMF CA.
 --zosmf-ca||string|no||Labels of z/OSMF root certificate authorities. Specify "_auto_" to let Zowe to detect automatically. This only works for RACF.
 --zosmf-user||string|no||z/OSMF user name. This is used to automatically detect z/OSMF root certificate authorities.
+--ignore-security-failures||boolean|no||Whether to ignore security setup job failures.
 ### Inherited from parent command
 
 Full name|Alias|Type|Required|Help message

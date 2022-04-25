@@ -24,16 +24,16 @@ However, the pattern cannot begin with any of these sequences.</li>
 </ul>
 </li>
 </ul>
-<h4>Required Options</h4>
+<h4>FTP Connection options</h4>
 <ul>
 <li>
-<p><code>--host</code>  | <code>-H</code> <em>(string)</em></p>
+<p><code>--host</code> | <code>-H</code> <em>(string)</em></p>
 <ul>
 <li>The hostname or IP address of the z/OS server to connect to.</li>
 </ul>
 </li>
 <li>
-<p><code>--port</code>  | <code>-P</code> <em>(number)</em></p>
+<p><code>--port</code> | <code>-P</code> <em>(number)</em></p>
 <ul>
 <li>
 <p>The port of the z/OS FTP server.</p>
@@ -42,22 +42,19 @@ However, the pattern cannot begin with any of these sequences.</li>
 </ul>
 </li>
 <li>
-<p><code>--user</code>  | <code>-u</code> <em>(string)</em></p>
+<p><code>--user</code> | <code>-u</code> <em>(string)</em></p>
 <ul>
 <li>Username for authentication on z/OS</li>
 </ul>
 </li>
 <li>
-<p><code>--password</code>  | <code>-p</code> | <code>--pass</code> | <code>--pw</code> <em>(string)</em></p>
+<p><code>--password</code> | <code>-p</code> | <code>--pass</code> | <code>--pw</code> <em>(string)</em></p>
 <ul>
 <li>Password to authenticate to FTP.</li>
 </ul>
 </li>
-</ul>
-<h4>Options</h4>
-<ul>
 <li>
-<p><code>--secure-ftp</code>  <em>(boolean)</em></p>
+<p><code>--secure-ftp</code> <em>(boolean)</em></p>
 <ul>
 <li>
 <p>Set to true for both control and data connection encryption, 'control' for control connection encryption only, or 'implicit' for implicitly encrypted control connection (this mode is deprecated in modern times, but usually uses port 990). Note: Unfortunately, this plugin's functionality only works with FTP and FTPS, not 'SFTP' which is FTP over SSH.</p>
@@ -66,7 +63,7 @@ However, the pattern cannot begin with any of these sequences.</li>
 </ul>
 </li>
 <li>
-<p><code>--connection-timeout</code>  | <code>--ct</code> <em>(number)</em></p>
+<p><code>--connection-timeout</code> | <code>--ct</code> <em>(number)</em></p>
 <ul>
 <li>
 <p>How long (in milliseconds) to wait for the control connection to be established.</p>
@@ -78,13 +75,13 @@ However, the pattern cannot begin with any of these sequences.</li>
 <h4>TLS / Secure Connection options</h4>
 <ul>
 <li>
-<p><code>--reject-unauthorized</code>  | <code>--ru</code> <em>(boolean)</em></p>
+<p><code>--reject-unauthorized</code> | <code>--ru</code> <em>(boolean)</em></p>
 <ul>
 <li>Reject self-signed certificates. Only specify this if you are connecting to a secure FTP instance.</li>
 </ul>
 </li>
 <li>
-<p><code>--server-name</code>  | <code>--sn</code> <em>(string)</em></p>
+<p><code>--server-name</code> | <code>--sn</code> <em>(string)</em></p>
 <ul>
 <li>Server name for the SNI (Server Name Indication) TLS extension. Only specify if you are connecting securely</li>
 </ul>
@@ -93,13 +90,13 @@ However, the pattern cannot begin with any of these sequences.</li>
 <h4>Profile Options</h4>
 <ul>
 <li>
-<p><code>--zftp-profile</code>  | <code>--zftp-p</code> <em>(string)</em></p>
+<p><code>--zftp-profile</code> | <code>--zftp-p</code> <em>(string)</em></p>
 <ul>
 <li>The name of a (zftp) profile to load for this command execution.</li>
 </ul>
 </li>
 <li>
-<p><code>--base-profile</code>  | <code>--base-p</code> <em>(string)</em></p>
+<p><code>--base-profile</code> | <code>--base-p</code> <em>(string)</em></p>
 <ul>
 <li>The name of a (base) profile to load for this command execution.</li>
 </ul>
@@ -108,25 +105,25 @@ However, the pattern cannot begin with any of these sequences.</li>
 <h4>Base Connection Options</h4>
 <ul>
 <li>
-<p><code>--token-type</code>  | <code>--tt</code> <em>(string)</em></p>
+<p><code>--token-type</code> | <code>--tt</code> <em>(string)</em></p>
 <ul>
 <li>The type of token to get and use for the API. Omit this option to use the default token type, which is provided by 'zowe auth login'.</li>
 </ul>
 </li>
 <li>
-<p><code>--token-value</code>  | <code>--tv</code> <em>(string)</em></p>
+<p><code>--token-value</code> | <code>--tv</code> <em>(string)</em></p>
 <ul>
 <li>The value of the token to pass to the API.</li>
 </ul>
 </li>
 <li>
-<p><code>--cert-file</code>  <em>(local file path)</em></p>
+<p><code>--cert-file</code> <em>(local file path)</em></p>
 <ul>
 <li>The file path to a certificate file to use for authentication</li>
 </ul>
 </li>
 <li>
-<p><code>--cert-key-file</code>  <em>(local file path)</em></p>
+<p><code>--cert-key-file</code> <em>(local file path)</em></p>
 <ul>
 <li>The file path to a certificate key file to use for authentication</li>
 </ul>
@@ -135,13 +132,13 @@ However, the pattern cannot begin with any of these sequences.</li>
 <h4>Response Format Options</h4>
 <ul>
 <li>
-<p><code>--response-format-filter</code>  | <code>--rff</code> <em>(array)</em></p>
+<p><code>--response-format-filter</code> | <code>--rff</code> <em>(array)</em></p>
 <ul>
 <li>Filter (include) fields in the response. Accepts an array of field/property names to include in the output response. You can filter JSON objects properties OR table columns/fields. In addition, you can use this option in conjunction with '--response-format-type' to reduce the output of a command to a single field/property or a list of a single field/property.</li>
 </ul>
 </li>
 <li>
-<p><code>--response-format-type</code>  | <code>--rft</code> <em>(string)</em></p>
+<p><code>--response-format-type</code> | <code>--rft</code> <em>(string)</em></p>
 <ul>
 <li>
 <p>The command response output format type. Must be one of the following:</p>
@@ -154,7 +151,7 @@ However, the pattern cannot begin with any of these sequences.</li>
 </ul>
 </li>
 <li>
-<p><code>--response-format-header</code>  | <code>--rfh</code> <em>(boolean)</em></p>
+<p><code>--response-format-header</code> | <code>--rfh</code> <em>(boolean)</em></p>
 <ul>
 <li>If &quot;--response-format-type table&quot; is specified, include the column headers in the output.</li>
 </ul>

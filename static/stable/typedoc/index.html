@@ -3,8 +3,8 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Zowe Node.js SDK - v1.27.2</title>
-	<meta name="description" content="Documentation for Zowe Node.js SDK - v1.27.2">
+	<title>Zowe Node.js SDK - v2.0.0</title>
+	<meta name="description" content="Documentation for Zowe Node.js SDK - v2.0.0">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="assets/css/main.css">
 </head>
@@ -22,7 +22,7 @@
 						<li class="state loading">Preparing search index...</li>
 						<li class="state failure">The search index is not available</li>
 					</ul>
-					<a href="index.html" class="title">Zowe Node.js SDK - v1.27.2</a>
+					<a href="index.html" class="title">Zowe Node.js SDK - v2.0.0</a>
 				</div>
 				<div class="table-cell" id="tsd-widgets">
 					<div id="tsd-filter">
@@ -54,7 +54,7 @@
 					<a href="globals.html">Globals</a>
 				</li>
 			</ul>
-			<h1>Zowe Node.js SDK - v1.27.2</h1>
+			<h1>Zowe Node.js SDK - v2.0.0</h1>
 		</div>
 	</div>
 </header>
@@ -67,7 +67,7 @@
 				</a>
 				<p><a href="https://codecov.io/gh/zowe/zowe-cli"><img src="https://codecov.io/gh/zowe/zowe-cli/branch/master/graph/badge.svg" alt="codecov"></a></p>
 				<p>Zowe CLI is a command-line interface that lets you interact with the mainframe in a familiar format. Zowe CLI helps to increase overall productivity, reduce the learning curve for developing mainframe applications, and exploit the ease-of-use of off-platform tools. Zowe CLI lets you use common tools such as Integrated Development Environments (IDEs), shell commands, bash scripts, and build tools for mainframe development. Through its ecosystem of plug-ins, you can automate actions on systems such as IBM Db2, IBM CICS, and more. It provides a set of utilities and services that help developers, DevOps engineers, and more become efficient in supporting and building z/OS applications quickly.</p>
-				<p>This repository also contains the Zowe Node Client SDK. The SDK lets you leverage the underlying APIs to build applications that interface with the mainframe. </p>
+				<p>This repository also contains the Zowe Node Client SDK. The SDK lets you leverage the underlying APIs to build applications that interface with the mainframe.</p>
 				<a href="#contents--" id="contents--" style="color: inherit; text-decoration: none;">
 					<h2>Contents  <!-- omit in toc --></h2>
 				</a>
@@ -90,7 +90,7 @@
 				<p>For documentation about these features, see these files:</p>
 				<ul>
 					<li><a href="https://github.com/zowe/zowe-cli/blob/next/docs/Early%20Access%20-%20Using%20Global%20Profile%20Configuration.md">Using Global Profile Configuration</a></li>
-					<li><a href="https://github.com/zowe/zowe-cli/blob/next/zowex/design.md">Using Daemon Mode with &quot;zowex&quot;</a></li>
+					<li><a href="https://github.com/zowe/zowe-cli/blob/next/zowex/design.md">Daemon Mode Design Overview</a></li>
 				</ul>
 				<a href="#documentation" id="documentation" style="color: inherit; text-decoration: none;">
 					<h2>Documentation</h2>
@@ -111,23 +111,23 @@
 					</thead>
 					<tbody><tr>
 							<td>General guidelines that apply to contributing to Zowe CLI and Plug-ins</td>
-							<td><a href="https://github.com/zowe/zowe-cli/blob/v6.37.7/CONTRIBUTING.md">Contribution Guidelines</a></td>
+							<td><a href="https://github.com/zowe/zowe-cli/blob/v7.0.2/CONTRIBUTING.md">Contribution Guidelines</a></td>
 						</tr>
 						<tr>
 							<td>Conventions and best practices for creating packages and plug-ins for Zowe CLI</td>
-							<td><a href="https://github.com/zowe/zowe-cli/blob/v6.37.7/docs/PackagesAndPluginGuidelines.md">Package and Plug-in Guidelines</a></td>
+							<td><a href="https://github.com/zowe/zowe-cli/blob/v7.0.2/docs/PackagesAndPluginGuidelines.md">Package and Plug-in Guidelines</a></td>
 						</tr>
 						<tr>
 							<td>Guidelines for contributing to Zowe SDKs</td>
-							<td><a href="https://github.com/zowe/zowe-cli/blob/v6.37.7/docs/SDKGuidelines.md">SDK Guidelines</a></td>
+							<td><a href="https://github.com/zowe/zowe-cli/blob/v7.0.2/docs/SDKGuidelines.md">SDK Guidelines</a></td>
 						</tr>
 						<tr>
 							<td>Guidelines for running tests on Zowe CLI</td>
-							<td><a href="https://github.com/zowe/zowe-cli/blob/v6.37.7/docs/TESTING.md">Testing Guidelines</a></td>
+							<td><a href="https://github.com/zowe/zowe-cli/blob/v7.0.2/docs/TESTING.md">Testing Guidelines</a></td>
 						</tr>
 						<tr>
 							<td>Guidelines for running tests on the plug-ins that you build</td>
-							<td><a href="https://github.com/zowe/zowe-cli/blob/v6.37.7/docs/PluginTESTINGGuidelines.md">Plug-in Testing Guidelines</a></td>
+							<td><a href="https://github.com/zowe/zowe-cli/blob/v7.0.2/docs/PluginTESTINGGuidelines.md">Plug-in Testing Guidelines</a></td>
 						</tr>
 						<tr>
 							<td>Documentation that describes the features of the Imperative CLI Framework</td>
@@ -135,7 +135,7 @@
 						</tr>
 						<tr>
 							<td>Naming CLI commands and developing syntax</td>
-							<td><a href="https://github.com/zowe/zowe-cli/blob/v6.37.7/docs/CommandFormatStandards.md">Command Format Standards</a></td>
+							<td><a href="https://github.com/zowe/zowe-cli/blob/v7.0.2/docs/CommandFormatStandards.md">Command Format Standards</a></td>
 						</tr>
 						<tr>
 							<td>Documentation that describes the features of the Imperative CLI Framework</td>
@@ -143,7 +143,11 @@
 						</tr>
 						<tr>
 							<td>Versioning conventions for Zowe CLI and Plug-ins</td>
-							<td><a href="https://github.com/zowe/zowe-cli/blob/v6.37.7/docs/MaintainerVersioning.md">Versioning Guidelines</a></td>
+							<td><a href="https://github.com/zowe/zowe-cli/blob/v7.0.2/docs/MaintainerVersioning.md">Versioning Guidelines</a></td>
+						</tr>
+						<tr>
+							<td>Miscellaneous tips for development</td>
+							<td><a href="https://github.com/zowe/zowe-cli/blob/v7.0.2/docs/DevelopmentTips.md">Development Tips</a></td>
 						</tr>
 				</tbody></table>
 				<p><strong>Tip:</strong> Visit our <a href="https://github.com/zowe/zowe-cli-sample-plugin">Sample Plug-in repository</a> for example plug-in code. You can follow developer tutorials <a href="https://docs.zowe.org/stable/extend/extend-cli/cli-devTutorials.html">here</a>.</p>
@@ -265,6 +269,9 @@
 						<a href="modules/_zowe_zos_jobs_for_zowe_sdk.html">@zowe/zos-<wbr>jobs-<wbr>for-<wbr>zowe-<wbr>sdk</a>
 					</li>
 					<li class=" tsd-kind-module">
+						<a href="modules/_zowe_zos_logs_for_zowe_sdk.html">@zowe/zos-<wbr>logs-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
 						<a href="modules/_zowe_zos_tso_for_zowe_sdk.html">@zowe/zos-<wbr>tso-<wbr>for-<wbr>zowe-<wbr>sdk</a>
 					</li>
 					<li class=" tsd-kind-module">
@@ -297,6 +304,9 @@
 					</li>
 					<li class=" tsd-kind-module">
 						<a href="modules/_zowe_zos_jobs_for_zowe_sdk.html" class="tsd-kind-icon">@zowe/zos-<wbr>jobs-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/_zowe_zos_logs_for_zowe_sdk.html" class="tsd-kind-icon">@zowe/zos-<wbr>logs-<wbr>for-<wbr>zowe-<wbr>sdk</a>
 					</li>
 					<li class=" tsd-kind-module">
 						<a href="modules/_zowe_zos_tso_for_zowe_sdk.html" class="tsd-kind-icon">@zowe/zos-<wbr>tso-<wbr>for-<wbr>zowe-<wbr>sdk</a>

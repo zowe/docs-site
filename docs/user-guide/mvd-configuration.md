@@ -8,7 +8,7 @@ You can modify the Zowe App Server and Zowe System Services (ZSS) configuration,
 
 ## Accessing the App Server
 
-When the server is enabled and given a port within [the configuration file](configure-instance-directory.md), the App server will print a message ZWED0031I in the log output. At that time, it is ready to accept network communication. When using the API Mediation Layer (recommended), app-server URLs should be reached from the Gateway, and you should additionally wait for the message ZWEAM000I for the Gateway to be ready.
+When the server is enabled and given a port within [the configuration file](#configuration-file), the App server will print a message ZWED0031I in the log output. At that time, it is ready to accept network communication. When using the API Mediation Layer (recommended), app-server URLs should be reached from the Gateway, and you should additionally wait for the message ZWEAM000I for the Gateway to be ready.
 
 When Zowe is ready, the app-server can be found at `https://<externalDomain>:<components.gateway.port>/zlux/ui/v1`
 
@@ -617,8 +617,8 @@ When you use the default Zowe SMP/E or convenience build configuration, you do n
 To configure Zowe for MFA with a configuration other than the default, take the following steps:
 
 1. Choose an App Server security plugin that is compatible with MFA. The [apiml-auth, zss-auth, and zosmf-auth](#session-duration-and-expiration) plugins are all compatible.
-2. Locate the App Server's configuration file in `$INSTANCE_DIR/workspace/app-server/serverConfig/server.json`
-3. Edit the configuration file to modify the section `dataserviceAuthentication`.
+2. Locate the App Server's configuration file in `zowe.yaml`.
+3. Edit the configuration file to modify the section `components.app-server.dataserviceAuthentication`.
 
 4. Set `defaultAuthentication` to the same category as the plugin of choice, for example:
     * **apiml-auth**: "apiml"
@@ -630,17 +630,14 @@ To configure Zowe for MFA with a configuration other than the default, take the 
     * **zss-auth**: "org.zowe.zlux.auth.zss"
 
 The following is an example configuration for `zss-auth`, as seen in a default installation of Zowe:
-```json
-"dataserviceAuthentication": {
-  "defaultAuthentication": "zss",
-  "implementationDefaults": {
-    "zss": {
-      "plugins": [
+```
+dataserviceAuthentication: 
+  defaultAuthentication: zss
+  implementationDefaults: 
+    zss: 
+      plugins: 
         "org.zowe.zlux.auth.zss"
-      ]
-    }
-  }
-}
+      
 ```
 
 
@@ -670,4 +667,4 @@ The API returns the following information in a JSON response:
 
 Swagger API documentation is provided in the `<RUNTIME_DIR>/components/app-server/share/zlux-app-server/doc/swagger/server-plugins-api.yaml` file. To see it in HTML format, you can paste the contents into the Swagger editor at https://editor.swagger.io/.
 
-**Note:** The "agent" end points interact with the agent specified in the `server.json` file. By default this is ZSS.
+**Note:** The "agent" end points interact with the agent specified in the zowe configuration file. By default this is ZSS.

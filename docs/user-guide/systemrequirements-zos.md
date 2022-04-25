@@ -103,7 +103,7 @@ If z/OSMF is used for authentication and serving REST APIs for Zowe CLI and Zowe
 
 ## Network requirements
 
-The following ports are required for Zowe. These are default values. You can change the values by updating variable values in the `zowe.yaml` file. For more information, see [Configuring the Zowe instance directory](configure-instance-directory.md#updating-the-instance-env-configuration-file).
+The following ports are required for Zowe. These are default values. You can change the values by updating variable values in the `zowe.yaml` file. 
 
 | Port number | zowe.yaml variable name | Purpose |
 |------|------|------|
