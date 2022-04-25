@@ -191,6 +191,7 @@ module.exports = {
         "user-guide/cli-configuringcli-ev",
         "user-guide/configure-data-sets-jobs-api",
         "user-guide/api-mediation/api-gateway-configuration",
+        "user-guide/api-mediation/discovery-service-configuration",
         "user-guide/api-mediation/api-mediation-internal-configuration",
       ],
     },
