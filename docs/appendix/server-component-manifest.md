@@ -30,11 +30,11 @@ The manifest file contains the following properties:
   
 - **`schemas`**
 
-  Defines the location of json schema files that are compatible with certain portions of Zowe as denoted by each child property.
+  (Required) Defines the location of json schema files that are compatible with certain portions of Zowe as denoted by each child property.
   
   * **`configs`**
   
-    Defines the location of the json schema file which extends the Zowe Component base schema.
+    (Required) Defines the location of the json schema file which extends the Zowe Component base schema.
 
 - **`build`**
 
