@@ -20,11 +20,11 @@ For more information on Zowe setup and the yaml configuration, run the following
 
 ## What are the new default ports?
 
-Four of the default Zowe ports have changed: the app server, zss, the jobs API, and the files API. The new default app server port is 7556 (previously 8544) and the new zss port is 7557 (previously 8542). THe new jobs API port is 7558 (previously 8545) and the new files API is 7559 (previously 8547). The JES/USS/MVS Explorer UI servers have been removed and thus no longer require port configurations.
+Four of the default Zowe ports have changed: the app server, zss, the jobs API, and the files API. The new default app server port is 7556 (previously 8544) and the new zss port is 7557 (previously 8542). The new jobs API port is 7558 (previously 8545) and the new files API is 7559 (previously 8547). The JES/USS/MVS Explorer UI servers have been removed and thus no longer require port configurations.
 
 ## How do I access Zowe through the API Mediation Layer in V2?
 
-In pervious V1.X versions of Zowe, the desktop could be accessed via the API Medation Layer by navigating to https:/${gateway_host}:{gateway_port}/ui/v1/zlux. In Zowe V2, the route to access the desktop has changed to https:/${gateway_host}:{gateway_port}/zlux/ui/v1. Such routing structure is applicable to other clients connected to the API Gateway. For example, the API Catalog may be accessed via https:/${gateway_host}:{gateway_port}/apicatalog/ui/v1.
+In pervious V1.X versions of Zowe, the desktop could be accessed via the API Medation Layer by navigating to https:/${gateway_host}:{gateway_port}/ui/v1/zlux. In Zowe V2, the route to access the desktop has changed to https:/${zowe.externalDomains[0]}:{zowe.externalPort}/zlux/ui/v1. Such routing structure is applicable to other clients connected to the API Gateway. For example, the API Catalog may be accessed via https:/${gateway_host}:{gateway_port}/apicatalog/ui/v1.
 
 ## What new frameworks are supported in V2?
 
