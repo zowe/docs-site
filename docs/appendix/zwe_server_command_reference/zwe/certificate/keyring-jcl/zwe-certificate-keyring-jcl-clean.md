@@ -32,6 +32,7 @@ Full name|Alias|Type|Required|Help message
 --keyring-name||string|yes||Name of the keyring.
 --alias|-a|string|yes||Certificate alias name.
 --ca-alias|-ca|string|yes||Certificate authority alias name.
+--ignore-security-failures||boolean|no||Whether to ignore security setup job failures.
 ### Inherited from parent command
 
 Full name|Alias|Type|Required|Help message

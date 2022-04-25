@@ -37,6 +37,7 @@ Full name|Alias|Type|Required|Help message
 --zosmf-user||string|no||z/OSMF user name. This is used to automatically detect z/OSMF root certificate authorities.
 --import-ds-name||string|yes||Name of the data set holds certificate to import into keyring.
 --import-ds-password||string|yes||Password of the data set holds certificate to import.
+--ignore-security-failures||boolean|no||Whether to ignore security setup job failures.
 ### Inherited from parent command
 
 Full name|Alias|Type|Required|Help message
