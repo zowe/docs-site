@@ -48,7 +48,7 @@ For the Zowe Desktop to work, the node server that runs under the ZWESVSTC start
 There are three known problems that might cause this error.  The [Zowe architecture diagram](../../getting-started/zowe-architecture.md) shows the following connections. One of these three connections likely failed. 
 
 1. The zssServer connection to the `ZWESISTC` started task using cross memory communication. If this fails, see [zssServer unable to communicate with X-MEM](#zss-server-unable-to-communicate-with-x-mem).  The architecture diagram below has been annotated with a (1) to show this connection.
-2. The Zowe Desktop ZLUX server connection to the zssServer across the default port 8542. If this fails, see [ZLUX unable to communicate with zssServer](#zlux-unable-to-communicate-with-zssserver).  The architecture diagram below has been annotated with a (2) to show this connection.  
+2. The Zowe Desktop ZLUX server connection to the zssServer across the default port 7557. If this fails, see [ZLUX unable to communicate with zssServer](#zlux-unable-to-communicate-with-zssserver).  The architecture diagram below has been annotated with a (2) to show this connection.  
 3. The Zowe Desktop ZLUX server cannot connect to API Mediation Layer for authentication. If this fails, see [ZLUX unable to communicate with API Mediation Layer](#zlux-unable-to-communicate-with-api-mediation-layer).
 
 <img src={require("../../images/common/zowe-desktop-unable-to-logon.png").default} alt="Zowe Desktop Unable to logon.png" width="700px"/> 
@@ -190,7 +190,7 @@ An application plug-in is not appearing in the Zowe Desktop.
 **Solution:**   
 To check whether the plug-in loaded successfully, enter the following URL in a browser to display all successfully loaded Zowe plug-ins:
 
-`https://my.mainframe.com:8544/plugins?type=application`
+`https://my.mainframe.com:7556/plugins?type=application`
 
 You can also search the [node server logs](app-mustgather.md) for the plug-in identifier, for example `org.zowe.sample.app`. If the plug-in loaded successfully, you will find the following message:
 ```

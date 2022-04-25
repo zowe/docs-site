@@ -324,9 +324,9 @@ To manually create the [ConfigMaps](https://kubernetes.io/docs/concepts/configur
      * `components.discovery.port` is `7553`,
      * `components.gateway.port` is `7554`,
      * `components.caching-service.port` is `7555`,
-     * `components.jobs-api.port` is `8545`,
-     * `components.files-api.port` is `8547`,
-     * `components.app-server.port` is `8544`.
+     * `components.jobs-api.port` is `7600`,
+     * `components.files-api.port` is `7559`,
+     * `components.app-server.port` is `7556`.
    * `components.caching-service.storage.mode` should NOT be set to `VSAM`. `redis` is suggested. Follow [Redis configuration](https://docs.zowe.org/stable/extend/extend-apiml/api-mediation-redis/#redis-configuration) documentation to customize other Redis related variables. Leave the value to empty for debugging purposes.
    * Must append and customize these 2 values into `zowe.environments` section:
      * `ZWED_agent_host=<ZOWE_ZOS_HOST>`

@@ -54,7 +54,7 @@ When deploying other server components into container orchestration software lik
 - Only necessary components ports are exposed outside of Kubernetes with `Service`.
 ## App Server
 
-The App Server is a node.js server that is responsible for the Zowe Application Framework. This server provides the Zowe desktop, which is accessible through a web browser via port 8544. The Zowe desktop includes a number of applications that run inside the Application Framework such as a 3270 emulator and a File Editor.
+The App Server is a node.js server that is responsible for the Zowe Application Framework. This server provides the Zowe desktop, which is accessible through a web browser via port 7556. The Zowe desktop includes a number of applications that run inside the Application Framework such as a 3270 emulator and a File Editor.
 
 ![Zowe Desktop Diagram](../images/mvd/zowe-desktop.png)
 
@@ -62,7 +62,7 @@ The App Server server logs write to `<zowe.logDirectory>/appServer-yyyy-mm-dd-hh
 
 ## ZSS
 
-The Zowe desktop delegates a number of its services to the ZSS server which it accesses through the http port 8542. ZSS is written in C and has native calls to z/OS to provide its services. ZSS logs write to `STDOUT` and `STDERR` for capture into job logs, but also as a file into `<zowe.logDirectory>/zssServer-yyyy-mm-dd-hh-mm.log`.  
+The Zowe desktop delegates a number of its services to the ZSS server which it accesses through the http port 7557. ZSS is written in C and has native calls to z/OS to provide its services. ZSS logs write to `STDOUT` and `STDERR` for capture into job logs, but also as a file into `<zowe.logDirectory>/zssServer-yyyy-mm-dd-hh-mm.log`.  
 
 ## API Gateway
 
