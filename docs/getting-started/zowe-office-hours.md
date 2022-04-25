@@ -90,5 +90,3 @@ The following office hours walk you through Zowe V2 updates from a consumer's pe
 - [V2 Office Hours: Zowe API Mediation Layer for Consumers](https://zoom.us/rec/share/20SzIK38fhPD7RdNVRG0kFtaM5cC7bYsSbPCOQs2v-pJsJn-0GqvlAj-HGanAWuD.wSTgajcTaccDfYkT?startTime=1649260398000)
 - [V2 Office Hours: Zowe CLI for Consumers](https://zoom.us/j/94312528890)
 - [V2 Office Hours: Zowe Explorers for Consumers](https://zoom.us/rec/share/_obkOAHY6aI2oeQIjSZiNh3zouWtN8WyYmqOLbXN9GSV-W-qqa-nxGK1-276D8ln.kP--nSkSX3qkdBhL?startTime=1650469958000)
-
-
