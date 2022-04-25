@@ -2,6 +2,8 @@
 
 You can use one of the following methods to initialize team configuration.
 
+**Tip:** If API Mediation Layer is running on your site, *Connecting profiles to API Mediation Layer* is the recommended method to use to initialize team configuration.
+
 ## Create team profile configuration files
 
 1. Issue the following command:
