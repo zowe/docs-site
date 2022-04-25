@@ -19,7 +19,7 @@ NOTE: This command is to demonstrate how `zwe` command works. There are no real
 
 ### Inherited from parent command
 
-WARNING: This command is for experimental purposes and may not fully function.
+WARNING: This command is for experimental purposes and could be changed in the future releases.
 
 ## Examples
 

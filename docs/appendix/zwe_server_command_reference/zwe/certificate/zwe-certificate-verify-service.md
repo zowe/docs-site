@@ -14,7 +14,7 @@ NOTE: the service must be online and accessible.
 
 ### Inherited from parent command
 
-WARNING: This command is for experimental purposes and may not fully function.
+WARNING: This command is for experimental purposes and could be changed in the future releases.
 
 ## Examples
 
