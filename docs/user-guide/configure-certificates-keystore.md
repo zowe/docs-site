@@ -110,6 +110,8 @@ To avoid the browser untrusted CA challenge, you can import Zowe's certificates 
 
 To avoid requiring each browser to trust the CA that signed the Zowe certificate, you can use a public certificate authority such as _Symantec_, _Comodo_, _Let's Encrypt_, or _GoDaddy_to create a certificate. These certificates are trusted by all browsers and most REST API clients. This option, however, requires a manual process to request a certificate and may incur a cost payable to the publicly trusted CA.
 
+<!--
+
 ## Import an existing self signed PKCS12 certificate
 
 **TODO**
@@ -117,3 +119,4 @@ To avoid requiring each browser to trust the CA that signed the Zowe certificate
 ## SSO
 
 **TODO**
+-->

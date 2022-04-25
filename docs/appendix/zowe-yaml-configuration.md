@@ -202,7 +202,7 @@ The high-level configuration `zowe` supports these definitions:
  In Kubernetes deployment, this is the domain name you will use to access your Zowe running in Kubernetes cluster.
 - **`zowe.externalPort`**  
  Defines the port that will be exposed to external Zowe users. By default, this value is set based on Zowe APIML Gateway port.
- In Sysplex deployment, this is the DVIPA port defined in Sysplex Distributor. See [Configure Sysplex Distributor](configure-sysplex.md#configure-sysplex-distributor) for more information.
+ In Sysplex deployment, this is the DVIPA port defined in Sysplex Distributor. See [Configure Sysplex Distributor](../user-guide/configure-sysplex.md#configuring-sysplex-distributor) for more information.
  In Kubernetes deployment, this is the gateway Service port will be exposed to external.
 
 #### Extra environment variables
@@ -221,7 +221,7 @@ The high-level configuration `zowe` supports these definitions:
 #### Certificate
 
 - **`zowe.certificate`**  
- Defines the [northbound certificate](configure-certificates.md#northbound-certificate) facing Zowe users.
+ Defines the northbound certificate facing Zowe users.
 - **`zowe.verifyCertificates`**
   Defines how Zowe should validate the certificates used by components or external service(s) like z/OSMF. It can be a value of:
   * `STRICT`: This is the default value. Zowe will validate if the certificate is trusted in our trust store and if the certificate Command Name and Subject Alternative Name (SAN)is validated. This is recommended for the best security.

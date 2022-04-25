@@ -150,7 +150,7 @@ You can set up either a `LoadBalancer` or `NodePort` type [Service](https://kube
 
 **Note:** Because `NodePort` cannot be used together with `NetworkPolicies`, `LoadBalancer` and `Ingress` is preferred configuration option.
 
-Review the following table for steps you may take depending on the Kubernetes provider you use. If you don't need additional setups, you can skip steps 4b, 4c and jump directly to the [Apply zowe](k8s-using.md) section.
+Review the following table for steps you may take depending on the Kubernetes provider you use. If you don't need additional setups, you can skip steps 4b, 4c and jump directly to the [Apply zowe](./k8s-using.md) section.
 
 | Kubernetes provider       | Service                  | Additional setups required                                 |
 | :------------------------ | :----------------------  | :--------------------------------------------------------- |

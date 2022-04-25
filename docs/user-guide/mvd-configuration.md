@@ -8,7 +8,7 @@ You can modify the Zowe App Server and Zowe System Services (ZSS) configuration,
 
 ## Accessing the App Server
 
-When the server is enabled and given a port within [the configuration file](configure-instance-directory.md), the App server will print a message ZWED0031I in the log output. At that time, it is ready to accept network communication. When using the API Mediation Layer (recommended), app-server URLs should be reached from the Gateway, and you should additionally wait for the message ZWEAM000I for the Gateway to be ready.
+When the server is enabled and given a port within [the configuration file](#configuration-file), the App server will print a message ZWED0031I in the log output. At that time, it is ready to accept network communication. When using the API Mediation Layer (recommended), app-server URLs should be reached from the Gateway, and you should additionally wait for the message ZWEAM000I for the Gateway to be ready.
 
 When Zowe is ready, the app-server can be found at `https://<externalDomain>:<components.gateway.port>/zlux/ui/v1`
 

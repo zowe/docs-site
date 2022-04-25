@@ -15,7 +15,7 @@ module.exports = {
       label: "FAQ",
       items: [
         "getting-started/zowe_faq",
-        "getting-started/zowe_v2_faq",
+    //    "getting-started/zowe_v2_faq",
       ],
     },
     {
