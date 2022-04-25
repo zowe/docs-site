@@ -15,7 +15,7 @@ For example:
 node: 
     https: 
       ipAddresses: 0.0.0.0
-      port: 8544
+      port: 7556
       //pfx (string), keys, certificates, certificateAuthorities, and certificateRevocationLists are all valid here.
       keys: "../defaults/serverConfig/server.key"
       certificates: "../defaults/serverConfig/server.cert"
@@ -70,7 +70,7 @@ For example:
 node: 
     https: 
       ipAddresses: 0.0.0.0
-      port: 8544
+      port: 7556
       //pfx (string), keys, certificates, certificateAuthorities, and certificateRevocationLists are all valid here.
       keys: "../defaults/serverConfig/server.key"
       certificates: "../defaults/serverConfig/server.cert"
@@ -153,6 +153,6 @@ Example of the agent body:
     host: localhost
     https: 
       ipAddresses: 0.0.0.0
-      port: 8542
+      port: 7557
     
 ```
