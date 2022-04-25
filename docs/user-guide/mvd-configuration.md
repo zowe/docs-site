@@ -198,7 +198,7 @@ By default, ZSS is configured to use HTTPS with the same certificate information
 zss:
   enabled: true
   tls: true
-  port: 8542
+  port: 7557
   crossMemoryServerName: ZWESIS_STD
 ```
 
@@ -206,7 +206,7 @@ zss:
 ```
 zss:
   enabled: true
-  port: 8542
+  port: 7557
   crossMemoryServerName: ZWESIS_STD
   tls: false
   agent:

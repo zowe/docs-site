@@ -84,7 +84,7 @@ In the `zlux-app-server/zluxserver.json` file, use the example below to specify 
           }
         }
       },
-      "portRange": [8545,8600]
+      "portRange": [7600,7650]
     }
   }
 
