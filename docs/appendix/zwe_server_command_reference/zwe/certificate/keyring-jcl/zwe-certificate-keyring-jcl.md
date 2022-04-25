@@ -18,7 +18,7 @@ Manage z/OS Keyring with JCL.
 
 ### Inherited from parent command
 
-WARNING: This command is for experimental purposes and may not fully function.
+WARNING: This command is for experimental purposes and could be changed in the future releases.
 
 ## Examples
 

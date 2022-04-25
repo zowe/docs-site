@@ -13,7 +13,7 @@ NOTE: This command only returns a list of enabled components with start command.
 
 ### Inherited from parent command
 
-WARNING: This command is for experimental purposes and may not fully function.
+WARNING: This command is for experimental purposes and could be changed in the future releases.
 
 ## Examples
 

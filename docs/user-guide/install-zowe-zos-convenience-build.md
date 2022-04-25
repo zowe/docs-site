@@ -175,7 +175,7 @@ zowe:
 ```
 
 To create and install the MVS data sets, use the command `zwe install`.
-1. In a USS shell, execute the command `zwe install --c /path/to/zowe.yaml`. This creates the three data sets and copy across their content.
+1. In a USS shell, execute the command `zwe install -c /path/to/zowe.yaml`. This creates the three data sets and copy across their content.
 2. If the data sets already exist, specify `--allow-overwritten`.  
 3. To see the full list of parameters, execute the command `zwe install -h`. 
 
