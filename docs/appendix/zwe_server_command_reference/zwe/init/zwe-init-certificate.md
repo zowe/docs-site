@@ -176,6 +176,7 @@ Full name|Alias|Type|Required|Help message
 |---|---|---|---|---
 --allow-overwrite,--allow-overwritten||boolean|no||Allow overwritten existing MVS data set.
 --update-config||boolean|no||Whether to update YAML configuration file with initialization result.
+--ignore-security-failures||boolean|no||Whether to ignore security setup job failures.
 ### Inherited from parent command
 
 Full name|Alias|Type|Required|Help message

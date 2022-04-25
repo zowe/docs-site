@@ -60,7 +60,7 @@ $ zwe components install -o /path/to/my-zowe-component-1.2.3.pax -c /path/to/my/
 
 ## Enable and disable component
 
-Zowe ships [`zwe components enable`](../appendix/zwe_server_command_reference/zwe/components/zwe-components-enable.md) and [`zwe components disable`](docs/appendix/zwe_server_command_reference/zwe/components/zwe-components-disable.md) commands to help you enable and disable Zowe server component (extension). In order to be compatible with these commands, components must follow [Zowe server component package format standard](packaging-zos-extensions.md#zowe-server-component-package-format).
+Zowe ships [`zwe components enable`](../appendix/zwe_server_command_reference/zwe/components/zwe-components-enable.md) and [`zwe components disable`](../appendix/zwe_server_command_reference/zwe/components/zwe-components-disable.md) commands to help you enable and disable Zowe server component (extension). In order to be compatible with these commands, components must follow [Zowe server component package format standard](packaging-zos-extensions.md#zowe-server-component-package-format).
 
 **Important** these commands will update your `zowe.yaml` configuration file.
 
