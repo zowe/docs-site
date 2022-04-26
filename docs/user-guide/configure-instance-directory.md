@@ -1,8 +1,8 @@
 # Creating and configuring the Zowe instance directory
 
-The Zowe instance directory or `<INSTANCE_DIRECTORY>` contains configuration data required to launch a Zowe runtime.  This includes port numbers, location of dependent runtimes such as Java, Node, z/OSMF, as well as log files. When Zowe is started, configuration data will be read from files in the instance directory and logs will be written to files in the instance directory.
+The Zowe instance directory or `<INSTANCE_DIRECTORY>` contains configuration data required to launch a Zowe runtime.  This directory includes port numbers, the location of dependent runtimes such as Java, Node, z/OSMF, as well as log files. When Zowe is started, configuration data is read from files in the instance directory and logs are written to files in the instance directory.
 
-**Note: The creation of an instance directory will set default values for users who want to run all Zowe z/OS components. If you are using Docker, you must make a small configuration change to disable the components on z/OS that will instead run in Docker.**
+**Note:** The creation of an instance directory sets default values for users who want to run all Zowe z/OS components. If you are using Docker, you must make a small configuration change to disable the components on z/OS that will instead run in Docker.
 
 ## Introduction  
 
@@ -14,12 +14,16 @@ The Zowe instance directory contains a file `instance.env` that stores the Zowe 
 
 Alternatively, from v1.22.0 release, you can use a YAML format configuration file `zowe.yaml` instead of `instance.env` to configure the Zowe runtime. See [Updating the zowe.yaml configuration file](#updating-the-zowe-yaml-configuration-file) for more information.
 
-The instance directory `<INSTANCE_DIRECTORY>/bin` contains other key scripts as follows:
-- `zowe-start.sh` is used to start the Zowe runtime by launching the `ZWESVSTC` started task.
-- `zowe-stop.sh` is used to stop the Zowe runtime by terminating the `ZWESVSTC` started task.  
-- `zowe-support.sh` can be used to capture diagnostics around the Zowe runtime for troubleshooting and off-line problem determination, see [Capturing diagnostics to assist problem determination](../troubleshoot/troubleshoot-diagnostics.md).
+The instance directory `<INSTANCE_DIRECTORY>/bin` contains the following key scripts:
 
-**High availability considerations:** 
+- `zowe-start.sh`  
+This script is used to start the Zowe runtime by launching the `ZWESVSTC` started task.
+- `zowe-stop.sh`  
+ This script is used to stop the Zowe runtime by terminating the `ZWESVSTC` started task.  
+- `zowe-support.sh`  
+ This script can be used to capture diagnostics around Zowe runtime for troubleshooting and off-line problem determination. For more information, see [Capturing diagnostics to assist problem determination](../troubleshoot/troubleshoot-diagnostics.md).
+
+**Note:** High availability considerations 
 
 - If you plan to run Zowe in a Sysplex for high availability, the instance directory should be placed in a shared USS file system. This way, all Zowe instances within the Sysplex can read and write to the same instance directory.
 - `zowe.yaml` is required if you want to start Zowe in high availability mode. 
@@ -38,9 +42,11 @@ Navigate to the Zowe runtime directory `<RUNTIME_DIR>` and execute the following
 <RUNTIME_DIR>/bin/zowe-configure-instance.sh -c <PATH_TO_INSTANCE_DIR>
 ```
 
-If you have an instance directory that is created from a previous release of Zowe 1.8 or later and are installing a newer release of Zowe, then you should run `zowe-configure-instance.sh -c <PATH_TO_INSTANCE_DIR>` pointing to the existing instance directory to have it updated with any new values.  The release documentation for each new release will specify when this is required, and the file `manifest.json` within each instance directory contains information for which Zowe release it was created from.
+If you have an instance directory that is created from a previous release of Zowe 1.8 or later and are installing a newer release of Zowe, then you should run `zowe-configure-instance.sh -c <PATH_TO_INSTANCE_DIR>` pointing to the existing instance directory to have it updated with any new values.  The release documentation for each new release specifies when this is required. The file `manifest.json` within each instance directory contains information about which Zowe release was used to create teh file. 
 
-In order to allow the `ZWESVSTC` started task to have permission to access the contents of the `<INSTANCE_DIR>` the `zowe-configure-instance.sh` script sets the group ownership of the top level directory and its child to be `ZWEADMIN`.  If a different group is used for the `ZWESVSTC` started task you can specify this with the optional `-g` argument, for example.
+In order to allow the `ZWESVSTC` started task to have permission to access the contents of the `<INSTANCE_DIR>`, the `zowe-configure-instance.sh` script sets the group ownership of the top level directory and its child to be `ZWEADMIN`.  If a different group is used for the `ZWESVSTC` started task you can specify this with the optional `-g` argument.
+
+**Example:**
 
 ```shell
 <RUNTIME_DIR>/bin/zowe-configure-instance.sh -c <PATH_TO_INSTANCE_DIR> -g <GROUP>

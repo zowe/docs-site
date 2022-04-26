@@ -26,9 +26,9 @@ Infinispan supports SSL/TLS. For information on enabled SSL/TLS with Infinispan,
 
 ### Infinispan and JGroups
 
-Infinispan uses [JGroups](http://www.jgroups.org/) as its underlying clustering layer. In order to configure the finer details of clustering (discovery, flow control, cross-site, etc) you have to provide a separate XML file with the desired configuration and reference it from your Infinispan XML file as follows:
+Infinispan uses [JGroups](http://www.jgroups.org/) as its underlying clustering layer. In order to configure the finer details of clustering (discovery, flow control, cross-site, etc) you have to provide a separate XML file with the desired configuration and reference this XML file from your Infinispan XML file as follows:
 
-For simple configurations this is usually fine, but configuring complex setups, such as cross-site replication, means juggling multiple files (one for the local stack, one for the cross-site stack and one for the relay configuration).
+For simple configurations this procedure is usually fine. However, configuring complex setups, such as cross-site replication, means juggling multiple files (one for the local stack, one for the cross-site stack, and one for the relay configuration).
 
 ## Infinispan configuration
 
@@ -42,14 +42,14 @@ Configure Infinispan as a storage solution through the Caching service by settin
 * **`CACHING_STORAGE_INFINISPAN_PERSISTENCE_DATALOCATION`**
 
   The path where the Soft-Index store will keep its data files for the Infinispan Soft-Index Cache Store. 
-  In case of standalone instance, the value can be set to `data`. For more information, check [Soft-Index File Store](https://infinispan.org/blog/2014/10/31/soft-index-file-store).
+  In case of a standalone instance, the value can be set to `data`. For more information, see [Soft-Index File Store](https://infinispan.org/blog/2014/10/31/soft-index-file-store).
 
 * **`JGROUPS_BIND_PORT`**
 
-  The Jgroups port for used by Infinispan.
+  The Jgroups port used by Infinispan.
 
 * **`JGROUPS_BIND_ADDRESS`**
 
-  The Jgroups address for used by Infinispan.
+  The Jgroups address used by Infinispan.
 
   
