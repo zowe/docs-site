@@ -50,7 +50,7 @@ For more information about the Redis storage access method, see [Using Redis as 
 
 Infinispan is a storage solution that can also run on the z/OS platform. It can store data structures in key-value pairs, has high-availability support, and is highly performant.
 
-For more information about the Redis storage access method, see [Using Infinispan as a storage solution through the Caching service](./api-mediation-infinispan.md).
+For more information about the Infinispan storage access method, see [Using Infinispan as a storage solution through the Caching service](./api-mediation-infinispan.md).
 ### InMemory
 TODO (add in memory procedure)
 The InMemory storage method is a method suitable for testing and integration verification. Be sure not to use InMemory storage in production. 

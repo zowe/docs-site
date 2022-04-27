@@ -36,7 +36,7 @@ Configure Infinispan as a storage solution through the Caching service by settin
  
 * **`CACHING_STORAGE_INFINISPAN_INITIALHOSTS`**
 
-  Infinispan/Jgroups TCPPING property that specifies the list of cluster nodes (members). In case of multiple instances, the value for each Caching Service instance can be 
+  This property specifies the list of cluster nodes (members). In case of multiple instances, the value for each Caching Service instance can be 
   either a list of all the members, separated by a comma, or just the replica. The format is `${JGROUPS_BIND_ADDRESS}[${JGROUPS_BIND_PORT}]`.
 
 * **`CACHING_STORAGE_INFINISPAN_PERSISTENCE_DATALOCATION`**
