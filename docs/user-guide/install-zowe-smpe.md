@@ -270,8 +270,8 @@ Web Download | 38666 Tracks | These are temporary data sets, which can be remove
 
 Library DDNAME | TYPE | ORG | RECFM | LRECL | No. of 3390 Trks | No. of DIR Blks
 ---|---|---|---|---|---|---
-SMPWRK6 |	S	| PDS |	FB |80 | (20,200) |	50
-SYSUT1 |U	| SEQ	| -- | --	| (20,200) | 0
+SMPWRK6 |	S	| PDS |	FB |80 | (300,3000) |	50
+SYSUT1 |U	| SEQ	| -- | --	| (300,3000) | 0
 
 In the table above, (20,200) specifies a primary allocation of 20 tracks, and a secondary allocation of 200 tracks.  
 

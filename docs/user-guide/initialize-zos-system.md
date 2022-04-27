@@ -22,7 +22,7 @@ You can type `zwe init --help` to learn more about the command or see the [`zwe 
 To initialize the z/OS system and permissions that Zowe requires, run the following command. 
 
 ```
-zwe init --c /path/to/zowe.yaml
+zwe init --config /path/to/zowe.yaml
 ```
 
 ## Next steps
