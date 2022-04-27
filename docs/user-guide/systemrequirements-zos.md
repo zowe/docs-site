@@ -51,7 +51,7 @@ Be sure your z/OS system meets the following prerequisites.
 
 ### Java 
 
-- IBM SDK for Java Technology Edition V8 or later
+- IBM SDK for Java Technology Edition V8
 
 ### z/OSMF (Optional) 
 
