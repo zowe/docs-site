@@ -69,7 +69,7 @@ Zowe&trade; is an open source project created to host technologies that benefit 
 
 Zowe consists of the following FMIDs:
 
-  * AZWE001
+  * AZWE002
 
 ## Program materials
 
@@ -120,32 +120,16 @@ All issues of previous releases of Zowe that were resolved before August 2019 ha
 
 ### Service level information
 
-The Zowe SMP/E package is a distribution of Zowe version 1.9.0 with an FMID of AZWE001.
+The Zowe SMP/E package is a distribution of Zowe version 2.0.0 with an FMID of AZWE002.
 
-Subsequent releases of the Zowe z/OS components are delivered as rollup PTFs on [zowe.org](https://www.zowe.org/download.html). 
-- For Zowe v1.19.1 - v1.21.0, the Zowe release is packaged as one single PTF.
-- For other versions, the Zowe release is packaged as two co-requisite PTFs, which are made available in a single .zip file.
-
+Subsequent releases of the Zowe z/OS components are delivered as rollup PTFs on [zowe.org](https://www.zowe.org/download.html).
+<!-- packaged as two co-requisite PTFs, which are made available in a single .zip file.
 
 Zowe release | PTF 1 | PTF 2 
 ---|---|---
-[1.10.0](https://www.zowe.org/legal.html?type=smpe&version=1.10.0) | UO01939 | UO01940
-[1.11.0](https://www.zowe.org/legal.html?type=smpe&version=1.11.0) | UO01942 | UO01943
-[1.12.0](https://www.zowe.org/legal.html?type=smpe&version=1.12.0) | UO01945 | UO01946
-[1.13.0](https://www.zowe.org/legal.html?type=smpe&version=1.13.0) | UO01948 | UO01949
-[1.14.0](https://www.zowe.org/legal.html?type=smpe&version=1.14.0) | UO01951 | UO01952  
-[1.15.0](https://www.zowe.org/legal.html?type=smpe&version=1.15.0) | UO01953 | UO01954
-1.16.0 | UO01955 | UO01956
-1.17.0 | UO01958 | UO01959
-1.18.0 | UO01965 | UO01966
-[1.19.0](https://www.zowe.org/legal.html?type=smpe&version=1.19.0) | UO01967 | UO01968
-[1.19.1](https://www.zowe.org/legal.html?type=smpe&version=1.19.1) | UO01969 | 
-[1.20.0](https://www.zowe.org/legal.html?type=smpe&version=1.20.0) | UO01970 |
-[1.20.1](https://www.zowe.org/legal.html?type=smpe&version=1.20.1) | UO01980 |
-[1.21.0](https://www.zowe.org/legal.html?type=smpe&version=1.21.0) | UO01981 |
-[1.22.0](https://www.zowe.org/legal.html?type=smpe&version=1.22.0) | UO01982 | UO01983
-[1.23.0](https://www.zowe.org/legal.html?type=smpe&version=1.23.0) | UO01984 | UO01991
-
+[2.0.1](https://www.zowe.org/legal.html?type=smpe&version=1.10.0) | TBD | TBD
+[2.0.2](https://www.zowe.org/legal.html?type=smpe&version=1.11.0) | TBD | TBD
+-->
 
 ## Installation requirements and considerations
 
@@ -286,8 +270,8 @@ Web Download | 38666 Tracks | These are temporary data sets, which can be remove
 
 Library DDNAME | TYPE | ORG | RECFM | LRECL | No. of 3390 Trks | No. of DIR Blks
 ---|---|---|---|---|---|---
-SMPWRK6 |	S	| PDS |	FB |80 | (20,200) |	50
-SYSUT1 |U	| SEQ	| -- | --	| (20,200) | 0
+SMPWRK6 |	S	| PDS |	FB |80 | (300,3000) |	50
+SYSUT1 |U	| SEQ	| -- | --	| (300,3000) | 0
 
 In the table above, (20,200) specifies a primary allocation of 20 tracks, and a secondary allocation of 200 tracks.  
 
@@ -330,11 +314,12 @@ The following figures list data sets that are not used by Zowe, but are required
 
 Data Set Name | TYPE | ORG | RECFM | LRECL | No. of 3390 Trks | No. of DIR Blks
 ---|---|---|---|---|---|---
-hlq.ZOWE.AZWE001.F1 | U | PDSE | FB | 80 | 5 | N/A
-hlq.ZOWE.AZWE001.F2 | U | PDSE | FB | 80 | 5 | N/A
-hlq.ZOWE.AZWE001.F4 | U | PDSE | VB | 6995 | 9000 | N/A
-hlq.ZOWE.AZWE001.SMPMCS | U | SEQ | FB | 80 | 1 | N/A
-z/OS UNIX file system | U | zFS | N/A | N/A | 17095 | N/A
+hlq.ZOWE.AZWE002.F1 | U | PDSE | FB | 80 | 5 | N/A
+hlq.ZOWE.AZWE002.F2 | U | PDSE | FB | 80 | 5 | N/A
+hlq.ZOWE.AZWE002.F3 | U | PDSE | U | 0 | 30 | N/A
+hlq.ZOWE.AZWE002.F4 | U | PDSE | VB | 6995 | 9900 | N/A
+hlq.ZOWE.AZWE002.SMPMCS | U | SEQ | FB | 80 | 1 | N/A
+z/OS UNIX file system | U | zFS | N/A | N/A | 28715 | N/A
 
 **Note:** These are temporary data sets, which can be removed after the SMP/E installation.
 
@@ -393,25 +378,27 @@ Follow these high-level steps to download and install Zowe Open Source Project (
   14. [Run REPORT CROSSZONE](#run-report-crosszone)
   15. [Cleaning up obsolete data sets, paths, and DDDEFs](#cleaning-up-obsolete-data-sets-paths-and-dddefs)
 
-### Download the Zowe SMP/E package
+### Download the Zowe SMP/E package>P>
 
-To download the Zowe SMP/E package, open your web browser and go to the [Zowe Download](https://www.zowe.org/download.html) website. Click the **Zowe SMP/E FMID AZWE001** button to save the file to a folder on your desktop.
+To download the Zowe SMP/E package, open your web browser and go to the [Zowe Download](https://www.zowe.org/download.html) website. Click the **Zowe SMP/E FMID AZWE002** button to save the file to a folder on your desktop.
 
-You will receive one ZIP package on your desktop. You can extract the following files from the package.
+You will receive one ZIP package on your desktop. Extract the following files from the package.  You may need to use the `unzip` command at a terminal rather than an unzip utility.
 
-  - **AZWE001.pax.Z (binary)**
+  - **AZWE002.pax.Z (binary)**
 
-     The SMP/E input data sets to install Zowe are provided as compressed files in AZWE001.pax.Z. This pax archive file holds the SMP/E MCS and RELFILEs.
+     The SMP/E input data sets to install Zowe are provided as compressed files in AZWE002.pax.Z. This pax archive file holds the SMP/E MCS and RELFILEs.
 
-  - **AZWE001.readme.txt (text)**
+  - **AZWE002.readme.txt (text)**
 
-     The README file AZWE001.readme.txt is a single JCL file containing a job with the job steps you need to begin the installation, including comprehensive comments on how to tailor them. There is a sample job step that executes the z/OS UNIX System Services pax command to extract package archives. This job also executes the GIMUNZIP program to expand the package archives so that the data sets can be processed by SMP/E.
+     The README file AZWE002.readme.txt is a single JCL file containing a job with the job steps you need to begin the installation, including comprehensive comments on how to tailor them. There is a sample job step that executes the z/OS UNIX System Services pax command to extract package archives. This job also executes the GIMUNZIP program to expand the package archives so that the data sets can be processed by SMP/E.
 
-     Review this file on your desktop and follow the instructions that apply to your system.
+  - **AZWE002.hml (text)**
+
+     The Program Directory for the Zowe Open Source Project.  
 
 ### Allocate file system to hold the download package
 
-You can either create a new z/OS UNIX file system (zFS) or create a new directory in an existing file system to place AZWE001.pax.Z. The directory that will contain the download package must reside on the z/OS system where the function will be installed.
+You can either create a new z/OS UNIX file system (zFS) or create a new directory in an existing file system to place AZWE002.pax.Z. The directory that will contain the download package must reside on the z/OS system where the function will be installed.
 
 To create a new file system, and directory, for the download package, you can use the following sample JCL (FILESYS).
 
@@ -437,13 +424,7 @@ Copy and paste the sample JCL into a separate data set, uncomment the job, and m
 //*              - Do not include a trailing /
 //*   @zfs_dsn@
 //*              - To your file system data set name
-//*
-//*   #size
-//*              - To the amount of space to be
-//*                allocated for the mount point.
-//*                It is recommended that this is
-//*                set to at least 3300 cylinders.
-//*              
+//*            
 //* Your userid MUST be defined as a SUPERUSER to successfully
 //* run this job
 //*
@@ -454,7 +435,7 @@ Copy and paste the sample JCL into a separate data set, uncomment the job, and m
 //SYSIN    DD *
   DEFINE CLUSTER ( -
          NAME(@zfs_dsn@) -
-         CYL(#size) -
+          TRK(28485 2848) -
        /*VOLUME(volser)*/ -
          LINEAR -
          SHAREOPTIONS(3) -
@@ -484,7 +465,7 @@ __Expected Return Codes and Messages:__ You will receive a return code of 0 if t
 
 ### Upload the download package to the host
 
-Upload the AZWE001.readme.txt file in text format and the AZWE001.pax.Z file in binary format from your workstation to the z/OS UNIX file system. The instructions in this section are also in the AZWE001.readme.txt file that you downloaded.
+Upload the AZWE002.readme.txt file in text format and the AZWE002.pax.Z file in binary format from your workstation to the z/OS UNIX file system. The instructions in this section are also in the AZWE002.readme.txt file that you downloaded.
 
 **Note:** Ensure you download the pax file in a different file system than where you put Zowe runtime. 
 
@@ -500,7 +481,7 @@ tsopw | Your TSO password
 d: | Location of the downloaded files
 @zfs_path@ | z/OS UNIX path where to store the files. This matches the @zfs_path@ variable you specified in the previous step.
 
-**Important!**  The AZWE001.pax.Z file must be uploaded to the z/OS driving system in binary format, or the subsequent UNPAX step will fail.
+**Important!**  The AZWE002.pax.Z file must be uploaded to the z/OS driving system in binary format, or the subsequent UNPAX step will fail.
 
 This step of tranferring the files can take a long time to run, depending on the capacity of your system, and on what other jobs are running.
 
@@ -519,16 +500,16 @@ ftp> cd @zfs_path@
 250 HFS directory @zfs_path@ is the current working directory  
 ftp> ascii  
 200 Representation type is Ascii NonPrint  
-ftp> put c:/AZWE001.readme.txt  
+ftp> put c:/AZWE002.readme.txt  
 200 Port request OK.  
-150 Storing data set @zfs_path@/AZWE001.readme.txt  
+150 Storing data set @zfs_path@/AZWE002.readme.txt  
 250 Transfer completed successfully.  
 ftp: 0344 bytes sent in 0.01 sec. (1366.67 Kbs)  
 ftp binary  
 200 Representation type is Image  
-ftp> put c:\AZWE001.pax.Z  
+ftp> put c:\AZWE002.pax.Z  
 200 Port request OK.  
-145 Storing data set @zfs_path@/AZWE001.pax.Z  
+145 Storing data set @zfs_path@/AZWE002.pax.Z  
 250 Transfer completed successfully.  
 ftp: 524192256 bytes sent in 1.26 sec. (1040.52 Kbs)  
 ftp: quit  
@@ -536,22 +517,22 @@ ftp: quit
 ```
 
 **If you are unable to connect with ftp and only able to use sftp**,
-the commands above are the same except that you will use _sftp_ at the command prompt instead of _ftp_. Also, because _sftp_ only supports binary file transfer, the ___ascii___ and ___binary___ commands should be omitted. After you transfer the AZWE001.readme.txt file, it will be in an ASCII codepage so you need to convert it to EBCDIC before it can be used. To convert AZWE001.readme.txt to EBCDIC, log in to the distribution system using ssh and run an ICONV command.
+the commands above are the same except that you will use _sftp_ at the command prompt instead of _ftp_. Also, because _sftp_ only supports binary file transfer, the ___ascii___ and ___binary___ commands should be omitted. After you transfer the AZWE002.readme.txt file, it will be in an ASCII codepage so you need to convert it to EBCDIC before it can be used. To convert AZWE002.readme.txt to EBCDIC, log in to the distribution system using ssh and run an ICONV command.
 
 _C:>/__ssh tsouid@mvsaddr___   
 _tsouid@mvsaddr's password: __tsopw___  
 _/u/tsouid:>_  
 _cd:@zfs_path@_  
 _@zfs_path:>_  
-_@zfs_path:>iconv -f ISO8859-1 -t IBM-1047 AZWE001.readme.txt > AZWE001.readme.EBCDIC_  
-_@zfs_path:>rm AZWE001.readme.txt_  
-_@zfs_path:>mv AZWE001.readme.EBCDIC AZWE001.readme.txt_  
+_@zfs_path:>iconv -f ISO8859-1 -t IBM-1047 AZWE002.readme.txt > AZWE002.readme.EBCDIC_  
+_@zfs_path:>rm AZWE002.readme.txt_  
+_@zfs_path:>mv AZWE002.readme.EBCDIC AZWE002.readme.txt_  
 _@zfs_path:>exit_  
 _C:>/_  
 
 ### Extract and expand the compressed SMPMCS and RELFILEs
 
-The AZWE001.readme.txt file uploaded in the previous step holds a sample JCL to expand the compressed SMPMCS and RELFILEs from the uploaded AZWE001.pax.Z file into data sets for use by the SMP/E RECEIVE job. The JCL is repeated here for your convenience.
+The AZWE002.readme.txt file uploaded in the previous step holds a sample JCL to expand the compressed SMPMCS and RELFILEs from the uploaded AZWE002.pax.Z file into data sets for use by the SMP/E RECEIVE job. The JCL is repeated here for your convenience.
 
 * _@zfs_path@_ matches the variable that you specified in the previous step.
 * If the `oshell` command gets a RC=256 and message "pax: checksum error on tape (got ee2e, expected 0)", then the archive file was not uploaded to the host in binary format.
@@ -583,7 +564,7 @@ The AZWE001.readme.txt file uploaded in the previous step holds a sample JCL to 
   //SYSTSPRT DD SYSOUT=*
   //SYSTSIN  DD *
     oshell cd @zfs_path@/ ; +
-      pax -rvf AZWE001.pax.Z
+      pax -rvf AZWE002.pax.Z
   //*
   //GIMUNZIP EXEC PGM=GIMUNZIP,REGION=0M,COND=(0,LT)
   //*STEPLIB  DD DISP=SHR,DSN=SYS1.MIGLIB
@@ -595,16 +576,16 @@ The AZWE001.readme.txt file uploaded in the previous step holds a sample JCL to 
   // PATH='@zfs_path@/'
   //SYSIN    DD *
   <GIMUNZIP>
-  <ARCHDEF archid="AZWE001.SMPMCS"
-  newname="@PREFIX@.ZOWE.AZWE001.SMPMCS"/>
-  <ARCHDEF archid="AZWE001.F1"
-  newname="@PREFIX@.ZOWE.AZWE001.F1"/>
-  <ARCHDEF archid="AZWE001.F2"
-  newname="@PREFIX@.ZOWE.AZWE001.F2"/>
-  <ARCHDEF archid="AZWE001.F3"
-  newname="@PREFIX@.ZOWE.AZWE001.F3"/>
-  <ARCHDEF archid="AZWE001.F4"
-  newname="@PREFIX@.ZOWE.AZWE001.F4"/>
+  <ARCHDEF archid="AZWE002.SMPMCS"
+  newname="@PREFIX@.ZOWE.AZWE002.SMPMCS"/>
+  <ARCHDEF archid="AZWE002.F1"
+  newname="@PREFIX@.ZOWE.AZWE002.F1"/>
+  <ARCHDEF archid="AZWE002.F2"
+  newname="@PREFIX@.ZOWE.AZWE002.F2"/>
+  <ARCHDEF archid="AZWE002.F3"
+  newname="@PREFIX@.ZOWE.AZWE002.F3"/>
+  <ARCHDEF archid="AZWE002.F4"
+  newname="@PREFIX@.ZOWE.AZWE002.F4"/>
   </GIMUNZIP>
   //*
   ```
@@ -658,21 +639,21 @@ where, `&VOLSER` is a DISK volume with sufficient free space to hold temporary c
 
 ### Sample installation jobs
 
-The following sample installation jobs are provided in `hlq.ZOWE.AZWE001.F1`, or equivalent, as part of the project to help you install Zowe:
+The following sample installation jobs are provided in `hlq.ZOWE.AZWE002.F1`, or equivalent, as part of the project to help you install Zowe:
 
 <!--Observer notes 1: If you do not create a new filesystem for the runtime USS components of API ML separate to the install USS subdirectory (an optional step), you need to create the subdirectories in PuTTY for the runtime directory.
 Suggestions: ZWE4ZFS is optional and it should be indicated in the doc and if you don't run it, you need to run the following Unix commands in USS cd [installdir] mkdir -p usr/lpp/zowe in order to create the required directory. -->
 
 Job Name | Job Type | Description | RELFILE
 ---|---|---|---
-ZWE1SMPE | SMP/E | (Optional) Sample job to create an SMP/E environment | ZOWE.AZWE001.F1
-ZWE2RCVE | RECEIVE | Sample SMP/E RECEIVE job  | ZOWE.AZWE001.F1
-ZWE3ALOC | ALLOCATE | Sample job to allocate target and distribution libraries | ZOWE.AZWE001.F1
-ZWE4ZFS | ALLOMZFS | (Optional) Sample job to allocate, create mountpoint, and mount zFS data sets | ZOWE.AZWE001.F1
-ZWE5MKD | MKDIR | Sample job to invoke the supplied ZWEMKDIR EXEC to allocate file system paths | ZOWE.AZWE001.F1
-ZWE6DDEF | DDDEF | Sample job to  define SMP/E DDDEFs | ZOWE.AZWE001.F1
-ZWE7APLY | APPLY | Sample SMP/E APPLY job | ZOWE.AZWE001.F1
-ZWE8ACPT | ACCEPT | Sample SMP/E ACCEPT job | ZOWE.AZWE001.F1
+ZWE1SMPE | SMP/E | (Optional) Sample job to create an SMP/E environment | ZOWE.AZWE002.F1
+ZWE2RCVE | RECEIVE | Sample SMP/E RECEIVE job  | ZOWE.AZWE002.F1
+ZWE3ALOC | ALLOCATE | Sample job to allocate target and distribution libraries | ZOWE.AZWE002.F1
+ZWE4ZFS | ALLOMZFS | (Optional) Sample job to allocate, create mountpoint, and mount zFS data sets | ZOWE.AZWE002.F1
+ZWE5MKD | MKDIR | Sample job to invoke the supplied ZWEMKDIR EXEC to allocate file system paths | ZOWE.AZWE002.F1
+ZWE6DDEF | DDDEF | Sample job to  define SMP/E DDDEFs | ZOWE.AZWE002.F1
+ZWE7APLY | APPLY | Sample SMP/E APPLY job | ZOWE.AZWE002.F1
+ZWE8ACPT | ACCEPT | Sample SMP/E ACCEPT job | ZOWE.AZWE002.F1
 
 **Note:** When Zowe is downloaded from the web, the RELFILE data set name will be prefixed by your chosen high-level qualifier, as documented in the [Extract and expand the compressed SMPMCS and RELFILEs](#extract-and-expand-the-compressed-smpmcs-and-relfiles) section.
 
@@ -683,7 +664,7 @@ You can also copy the sample installation jobs from the product files by submitt
 ```
 //STEP1    EXEC PGM=IEBCOPY
 //SYSPRINT DD SYSOUT=*
-//IN       DD DSN=ZOWE.AZWE001.F1,
+//IN       DD DSN=ZOWE.AZWE002.F1,
 //            DISP=SHR,
 //*           VOL=SER=filevol,
 //            UNIT=SYSALLDA
@@ -716,7 +697,7 @@ The following supplied jobs might fail due to disk space allocation errors, as m
 
 ```
 IEC032I E37-04,IGC0005E,ZWE2RCVE,RECEIVE,SMPTLIB,0AC0,USER10,  
-ZOWE.SMPE.AZWE001.F4                                            
+ZOWE.SMPE.AZWE002.F4                                            
 ```
 Add space and directory allocations to this SMPCNTL statement in the preceding ZWE1SMPE job:
 

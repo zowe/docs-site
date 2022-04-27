@@ -20,7 +20,7 @@ The following definition of skill levels about Zowe will help you gather most re
 
    Review the Zowe architecture to understand how Zowe CLI works in the Zowe framework. 
 
-- [**Zowe CLI FAQs**](freqaskques.md#zowe-cli-faq)
+- [**Zowe CLI FAQs**](../getting-started/zowe_faq.md#zowe-cli-faq)
    
    If you have a question, it's a good idea to try the FAQ, which answers the most commonly asked questions about Zowe CLI.
    
@@ -53,9 +53,9 @@ The following definition of skill levels about Zowe will help you gather most re
 
 > Zowe skill level: Intermediate
 
-- [**Configuring Zowe CLI**](../user-guide/cli-configuringcli.md)
+- [**Configuring Zowe CLI environment variables**](../user-guide/cli-configuringcli-ev.md)
 
-   This topic explains how to configure Zowe CLI, such as changing log levels and setting the home directory location.
+   Explains how to configure Zowe CLI environment variables, such as changing log levels, setting the home directory location, and daemon mode.
 
 - [**Updating Zowe CLI**](../user-guide/cli-updatingcli.md)
 
@@ -75,7 +75,11 @@ The following definition of skill levels about Zowe will help you gather most re
 
 - **Docs: Zowe CLI command reference guide**
 
-   View detailed documentation on commands, actions, and options in Zowe CLI. The reference document is based on the @zowe-v1-lts version of the CLI. You can read an interactive online version, download a PDF document, or download a ZIP file containing the HTML for the online version:
+   View detailed documentation on commands, actions, and options in Zowe CLI. The reference document is based on the `@zowe-v2-lts` version of the CLI.
+
+   The content also contains the web help for all Zowe ecosystem-conformant plug-ins that contributed to this website.
+   
+   You can read an interactive online version, download a PDF document, or download a ZIP file containing the HTML for the online version:
    - <b><a href="/stable/web_help/index.html" target="_blank">Browse online</a></b>
    - <b><a href="/stable/CLIReference_Zowe.pdf" target="_blank">Download CLI reference in PDF format</a></b>
    - <b><a href="/stable/zowe_web_help.zip" target="_blank">Download CLI reference in ZIP format</a></b>
@@ -114,7 +118,7 @@ Zowe CLI extenders can build plug-ins that provide new commands.
 
 - [**Contributing guidelines**](https://github.com/zowe/zowe-cli/blob/master/CONTRIBUTING.md)
 
-   This document is a summary of conventions and best practices for development within Zowe CLI or development of Zowe CLI plug-ins. The guidelines contain critical information about working with the code, running/writing/maintaining automated tests, developing consistent syntax in your plug-in, and ensuring that your plug-in integrates with Zowe CLI properly.
+   This document is a summary of conventions and best practices for development within Zowe CLI or development of Zowe CLI plug-ins. The guidelines contain critical information about working with the code, running, writing, and maintaining automated tests, developing consistent syntax in your plug-in, and ensuring that your plug-in integrates with Zowe CLI properly.
 
 - [**Conformance Program**](../extend/zowe-conformance-program.md)
    
@@ -130,9 +134,9 @@ Zowe CLI extenders can build plug-ins that provide new commands.
 
    Learn about the tools and techniques that are available to help you troubleshoot and resolve problems. You can also find a list of common issues about Zowe CLI. 
 
-- [**Sumit an issue**](https://github.com/zowe/zowe-cli/issues/new)
+- [**Submit an issue**](https://github.com/zowe/zowe-cli/issues/new)
 
-   If you have an issue that is specific to Zowe CLI, you can submit an issue against the zowe-cli repo.
+   If you have an issue that is specific to Zowe CLI, you can submit an issue against the `zowe-cli` repository on GitHub.
 
 ## Community resources 
 
@@ -142,7 +146,7 @@ Zowe CLI extenders can build plug-ins that provide new commands.
 
 - [**Zowe CLI squad meetings**](https://lists.openmainframeproject.org/g/zowe-dev/calendar)
 
-   You can join one of the Zowe CLI squad meetings to get involved.
+   Join Zowe CLI squad meetings to get involved.
 
 - [**Zowe CLI Blogs on Medium**](https://medium.com/zowe/search?q=Zowe%20CLI) 
 
@@ -151,9 +155,4 @@ Zowe CLI extenders can build plug-ins that provide new commands.
 - **Community Forums**
 
    Look for discussion on Zowe topics on the [Open Mainframe Project Community Forums](https://community.openmainframeproject.org/c/zowe).
-
-
-
-
-
 

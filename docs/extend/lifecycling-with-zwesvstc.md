@@ -4,33 +4,37 @@
 
 This topic describes the runtime lifecycle of Zowe core components and how an offering that provides a Zowe extension can set up runtime lifecycle for their component.  
 
-The Zowe UNIX System Services (USS) components are run as part of the started task `ZWESVSTC`. For more information, see [Starting Zowe from a USS shell](../user-guide/configure-zowe-server.md#option-1-starting-zowe-from-a-uss-shell). There are two key USS directories that play different roles when launching Zowe.  
+The Zowe UNIX System Services (USS) components are run as part of the started task `ZWESLSTC`. For more information, see [Starting Zowe from a USS shell](../user-guide/configure-zowe-server.md#option-1-starting-zowe-from-a-uss-shell). There are two key USS directories that play different roles when launching Zowe.  
 
-- The Zowe runtime directory `<RUNTIME_DIR>` that contains the executable files is an immutable set of directories and files that are replaced each time a new release is applied.  The initial release or an upgrade is installed either with UNIX shell scripts (see [Installing Zowe runtime from a convenience build](../user-guide/install-zowe-zos-convenience-build.md)), or SMP/E where the runtime directory is laid down initially as FMID AZWE001 and then upgraded through rollup PTF builds (see [Installing Zowe SMP/E](../user-guide/install-zowe-smpe.md)).  The Zowe runtime directory is not altered during operation of Zowe, so no data is written to it and no customization is performed on its contents.  
+- The Zowe runtime directory `<RUNTIME_DIR>` that contains the executable files is an immutable set of directories and files that are replaced each time a new release is applied.  The initial release or an upgrade is installed either with UNIX shell scripts (see [Installing Zowe runtime from a convenience build](../user-guide/install-zowe-zos-convenience-build.md)), or SMP/E where the runtime directory is laid down initially as FMID AZWE002 and then upgraded through rollup PTF builds (see [Installing Zowe SMP/E](../user-guide/install-zowe-smpe.md)).  The Zowe runtime directory is not altered during operation of Zowe, so no data is written to it and no customization is performed on its contents.  **Important**, any customizations to the original Zowe runtime directory are not recommended. This may include installing extensions to this directory, putting your `zowe.yaml` or Zowe workspace into this directory, or changing any of the files in it, etc.
 
-- The Zowe instance directory `<INSTANCE_DIR>` contains information that is specific to a launch of Zowe.  It contains configuration settings that determine how an instance of the Zowe server is started, such as ports that are used or paths to dependent Java and Node.js runtimes.  The instance directory also contains log directory where different 'microservices' write trace data for diagnosis, as well as a workspace and shell scripts to start and stop Zowe.  More than one Zowe instance directory can be created to allow multiple launches of a Zowe runtime, each one isolated from each other and starting Zowe depending on how the instance directory has been configured. For more information, see [Creating and configuring the Zowe instance directory](../user-guide/configure-instance-directory.md).
+- The Zowe workspace directory `<WORKSPACE_DIR>` contains information that is specific to a launch of Zowe.  It contains temporary configuration settings that helps an instance of the Zowe server to be started, such as ports that are used or paths to dependent Java and Node.js runtimes. Zowe runtime user should have write permission to this directory. More than one Zowe workspace directories can be created to allow multiple launches of a Zowe runtime, each one isolated from each other and starting Zowe depending on how Zowe YAML configuration is configured.
 
-To start Zowe, the script `<INSTANCE_DIR>/bin/zowe-start.sh` is run from a USS shell.  This uses a REXX program to launch the started task `ZWESVSTC`, passing the instance directory path as a parameter.  It is the equivalent of using the TSO command `/S ZWESVSTC,INSTANCE='<INSTANCE_DIR>',JOBNAME='<JOBNAME>'`.  The `ZWESVSTC` PROCLIB uses the program that creates a USS process and starts the script `<INSTANCE_DIR>/bin/internal/run-zowe.sh`.  By using `BPXATSL` to start the USS process, all of the address spaces started under this shell are managed by SDSF.  If the `zowe-start.sh` run `run-zowe.sh` directly, the USS processes will not run as a started task and will run under the user ID of whoever ran the `run-zowe.sh` script rather than the Zowe user ID of `ZWESVUSR`, likely leading to permission errors accessing the contents of the `<RUNTIME_DIR>` as well as the Zowe certificate. For these reasons, the `zowe-start.sh` script launches Zowe's USS process beneath the started task `ZWESVSTC`.  
+- The Zowe logs directory `<LOGS_DIR>` contains USS file logs when running Zowe. Some components like app-server and zss will always write USS log files. Some components like APIML Gateway will write log files to this directory if you enabled debug mode. Zowe runtime user should have write permission to this directory.
 
-When `run-zowe.sh` is run in the USS shell that `BPXBATSL` creates, it executes the file `<INSTANCE_DIR>/instance.env`.  This file sets a number of shell variables, such as `ROOT_DIR` that points to the directory with the `<RUNTIME_DIR>`, variables for all of the ports used by the Zowe components, and other configuration data. For more information, see [Updating the instance.env configuration file](../user-guide/configure-instance-directory.md#updating-the-instance-env-configuration-file).
+To start Zowe, the command `zwe start` is run from a USS shell.  This uses a program `ZWELNCH` to launch the started task `ZWESLSTC`, passing an optional `HAINST` parameter to define which Zowe HA instance will be started.  It is the equivalent of using the TSO command `/S ZWESLSTC,HAINST='<HA_INSTANCE>',JOBNAME='<JOBNAME>'`.  The `ZWELNCH` program understands your Zowe YAML configuration and will start components enabled in the `<HA_INSTANCE>` by executing `zwe internal start component` command. If you execute `zwe internal start` directly, the USS processes will not run as a started task and will run under the user ID of whoever ran the `zwe internal start` command rather than the Zowe user ID of `ZWESVUSR`, likely leading to permission errors accessing the contents of the `<RUNTIME_DIR>` as well as the Zowe certificate. For these reasons, the `zwe start` script launches Zowe's USS process beneath the started task `ZWESLSTC`.  
+
+Zowe relies on `zowe.yaml` configuration file to know your customization for the instance. For more information, see [Zowe YAML Configuration File Reference](../appendix/zowe-yaml-configuration.md).
 
 **Note:**
 
-The scripts of core Zowe components and some extensions use the helper library `<RUNTIME_DIR>/bin/utils`.  Currently, these are not publicly supported. Future releases of Zowe might provide these as supported system programming interfaces (SPIs) and include their usage in the Zowe documentation.  
+The scripts of core Zowe components and some extensions use the helper library `<RUNTIME_DIR>/bin/libs`. You can also use those functions but please keep away from functions marked as `internal` or `experimental`.
 
 ## Zowe component runtime lifecycle
 
-Each Zowe component will be installed with its own USS directory, which contains its executable files. Within each component's USS directory, a `bin` directory is recommended to contain scripts that are used for the lifecycle of the component.  When Zowe is started, it identifies the components that are configured to launch and then execute the scripts of those components in the cycle of [validate](#validate), [configure](#configure), and [start](#start).  All components are validated, then all are configured, and finally all are started. This technique is used as follows: 
+Each Zowe component will be installed with its own USS directory, which contains its executable files. Within each component's USS directory, a manifest file is required to describe itself and a `bin` directory is recommended to contain scripts that are used for the lifecycle of the component.  When Zowe is started, by reading components manifest `commands` definition, it identifies the components that are configured to launch and then execute the scripts of those components in the cycle of [validate](#validate), [configure](#configure), and [start](#start).  All components are validated, then all are configured, and finally all are started. This technique is used as follows: 
 - Used for the base Zowe components that are included with the core Zowe runtime.
-- Applies to extensions to allow vendor offerings to be able to have the lifecycle of their 'microservices' within the Zowe USS shell and be included as address spaces under the `ZWESVSTC` started task.
+- Applies to extensions to allow vendor offerings to be able to have the lifecycle of their 'microservices' within the Zowe USS shell and be included as address spaces under the `ZWESLSTC` started task.
 
 **Note:**
 
-All lifecycle scripts are executed from the root directory of the component. This directory is usually the parent directory of your `/bin` directory.
+All lifecycle scripts are executed from the root directory of the component. This directory is usually where the component manifest is located.
+
+Check [Server Component Manifest File Reference](../appendix/server-component-manifest.md) to learn how to define lifecycle `commands` in component manifest file.
 
 ### Validate
 
-Each component can optionally instruct Zowe runtime to validate itself with a USS command defined in manifest `commands.validate`. If this is not defined, for backward compatible purpose, a call to its `/bin/validate.sh` script will be executed if it exists.
+Each component can optionally instruct Zowe runtime to validate itself with a USS command defined in manifest `commands.validate`.
 
 If present, the `validate` script performs tasks such as:
 - Check that the shell has the correct prerequisites.
@@ -41,15 +45,14 @@ During execution of the `validate` script, if an error is detected, then a compo
 
 ### Configure
 
-Each component can optionally instruct Zowe runtime to configure itself with a USS command defined in manifest `commands.configure`. If this is not defined, for backward compatible purpose, a call to its `/bin/configure.sh` script will be executed if it exists.
+Each component can optionally instruct Zowe runtime to configure itself with a USS command defined in manifest `commands.configure`.
 
 If the component has manifest defined, some configure actions will be performed automatically based on manifest definition:
 
 - `apimlServices.static`: Zowe runtime will automatically parse and add your static definition to API Mediation Layer.
+- `appfwPlugins.[].path`: Zowe runtime will automatically parse and install/configure the component to Zowe App Framework.
 
-For backward compatible purpose, you can choose to configure component by yourself with `/bin/configure.sh`. An example configuration step is if a component wants to install applications into the Zowe desktop as iframes, or add API endpoints statically into the API Mediation Layer.  Because a component's `configure.sh` script is run inside the USS shell that the `instance.env` has initialized, it will have all of the shell variables for prerequisites set, so the configure step can be used to query these in order to prepare the component ready for launch.
-
-From v1.20.0 or later, you can export configuration variables from the `configure` step to the `start` step. Each component runs in separated shell space, which means that the variable of one component does not affect the same variable of another component. For example, when you run `export MY_VAR=val` in `/bin/configure.sh`, then the variable `${MY_VAR}` will be available in your `/bin/start.sh` script. However, `${MY_VAR}` will not be available in other components.
+It's possible to export configuration variables from the `configure` step to the `start` step. Each component runs in separated shell space, which means that the variable of one component does not affect the same variable of another component. For example, when you run `export MY_VAR=val` in `/bin/configure.sh`, then the variable `${MY_VAR}` will be available in your `/bin/start.sh` script. However, `${MY_VAR}` will not be available in other components.
 
 ### Start
 

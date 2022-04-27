@@ -270,7 +270,7 @@ To display the translated application name and description in the Desktop, take 
    }
    ```
 
-5. Create logic to copy the translation files to the `web/assets` directory during the webpack process. For example, in the [Sample Angular Application](https://github.com/zowe/sample-angular-app/blob/master/webClient/webpack.config.js) the following JavaScript in the `webClient/webpack.config.js` file copies files to the `web/assets` directory:
+5. Create logic to copy the translation files to the `web/assets` directory during the webpack process. For example, in the [Sample Angular Application](https://github.com/zowe/sample-angular-app/blob/v2.x/master/webClient/webpack.config.js) the following JavaScript in the `webClient/webpack.config.js` file copies files to the `web/assets` directory:
 
     ```javascript
     var config = {

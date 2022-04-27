@@ -38,17 +38,38 @@ As you complete the deployment checklist, be sure to make the following selectio
     7. Submit the deployment jobs in sequential order, wait for each job to complete, and then select **Refresh** to register job completion in z/OSMF.  
     A return code of zero is expected.  
     When all deployment jobs are executed successfully, you have unzipped, renamed and copied the product data sets, updated the CSI data set, and specified the properties for the target software instance.
-    8. Execute the following workflows:
-        - **Zowe Mount Workflow (ZWE9MNT)**  
-        Mounts the Zowe zFS.
-        - **Zowe Security Workflow (ZWESECUR)**  
-        Configures Zowe Security Manager.
-        - **Zowe Certificates Workflow (ZWEWRF05)**  
-        Configures Zowe Security certificates.
-        - **Zowe Cross-Memory Workflow (ZWEWRF06)**  
-        Configures the cross-memory server.
-        - **Zowe Instance and STC Workflow (ZWEWRF03)**  
-        Creates an instance of Zowe and STC.
-    9. Specify a name and description for the new target software instance.
+    8. Execute the `ZWE9MNT` Zowe mount workflow.
+
+          Mounts the Zowe zFS.
+
+    9. (Optional) Execute the `ZWECONF` configuration workflow.
+
+       Sets up the created Zowe instance version 2.0 or higher.
+
+    10. (Optional) Execute security certification configuration workflows:
+
+        - **Workflow to set up a Zowe certificate and keyring (`ZWEKRING`)**
+
+            <!-- TODO should we rename the workflow so that it matches the titles style of the bottom ones -->
+
+          Sets up a Zowe certificate and keyring.
+
+        - **Workflow to create CSR request (`ZWECRECR`)**
+
+          Creates a certificate sign request.
+
+        - **Workflow to sign a CSR request (`ZWESIGNC`)**
+
+          Signs the CSR request by a local CA.
+
+        - **Workflow to load authentication certificate into ESM (`ZWELOADC`)**
+
+          Loads a signed client authentication certificate to the ESM under the user ACID.
+
+    11. Specify the name and description of a new target software instance.
+
+        - All workflows that are mentioned in the previous steps are part of the PSWI and software instance.
+
+          **Note:** You do not have to execute all workflows during PSWI provisioning in z/OSMF immediately.
 
 The deployment process is complete. The new software instance is defined to z/OSMF. You are now ready to Import Product Information into z/OSMF before you install product maintenance.

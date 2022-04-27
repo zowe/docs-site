@@ -3,8 +3,8 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>@zowe/zos-uss-for-zowe-sdk | Zowe Node.js SDK - v1.27.2</title>
-	<meta name="description" content="Documentation for Zowe Node.js SDK - v1.27.2">
+	<title>@zowe/zos-uss-for-zowe-sdk | Zowe Node.js SDK - v2.0.0</title>
+	<meta name="description" content="Documentation for Zowe Node.js SDK - v2.0.0">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
 </head>
@@ -22,7 +22,7 @@
 						<li class="state loading">Preparing search index...</li>
 						<li class="state failure">The search index is not available</li>
 					</ul>
-					<a href="../index.html" class="title">Zowe Node.js SDK - v1.27.2</a>
+					<a href="../index.html" class="title">Zowe Node.js SDK - v2.0.0</a>
 				</div>
 				<div class="table-cell" id="tsd-widgets">
 					<div id="tsd-filter">
@@ -120,26 +120,17 @@
 						<h2>API Examples</h2>
 					</a>
 					<p><strong>Check disk space on file system containing home directory</strong></p>
-					<pre><code class="language-typescript"><span class="hljs-keyword">import</span> { IProfile, Logger, LoggingConfigurer, ImperativeError,
-         CredentialManagerFactory } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@zowe/imperative&quot;</span>;
-<span class="hljs-keyword">import</span> { getDefaultProfile } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@zowe/core-for-zowe-sdk&quot;</span>;
+					<pre><code class="language-typescript"><span class="hljs-keyword">import</span> { ProfileInfo } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@zowe/imperative&quot;</span>;
 <span class="hljs-keyword">import</span> { Shell, SshSession } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@zowe/zos-uss-for-zowe-sdk&quot;</span>;
 
 (<span class="hljs-keyword">async</span> () =&gt; {
-    <span class="hljs-comment">//Initialize the Imperative Credential Manager Factory and Logger</span>
-    Logger.initLogger(LoggingConfigurer.configureLogger(<span class="hljs-string">&#x27;lib&#x27;</span>, {<span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;test&#x27;</span>}));
-    <span class="hljs-comment">// Uncommment the below line if the Secure Credential Store is in use</span>
-    <span class="hljs-comment">// await CredentialManagerFactory.initialize({service: &quot;Zowe-Plugin&quot;});</span>
+    <span class="hljs-comment">// Load connection info from default SSH profile</span>
+    <span class="hljs-keyword">const</span> profInfo = <span class="hljs-keyword">new</span> ProfileInfo(<span class="hljs-string">&quot;zowe&quot;</span>);
+    <span class="hljs-keyword">await</span> profInfo.readProfilesFromDisk();
+    <span class="hljs-keyword">const</span> sshProfAttrs = profInfo.getDefaultProfile(<span class="hljs-string">&quot;ssh&quot;</span>);
+    <span class="hljs-keyword">const</span> sshMergedArgs = profInfo.mergeArgsForProfile(sshProfAttrs, { <span class="hljs-attr">getSecureVals</span>: <span class="hljs-literal">true</span> });
+    <span class="hljs-keyword">const</span> session = <span class="hljs-keyword">new</span> SshSession(ProfileInfo.initSessCfg(sshMergedArgs.knownArgs));
 
-    <span class="hljs-comment">// Get the default z/OSMF profile and create a z/OSMF session with it</span>
-    <span class="hljs-keyword">let</span> defaultSshProfile: IProfile;
-    <span class="hljs-keyword">try</span> {
-        defaultSshProfile = <span class="hljs-keyword">await</span> getDefaultProfile(<span class="hljs-string">&quot;ssh&quot;</span>, <span class="hljs-literal">true</span>);
-    } <span class="hljs-keyword">catch</span> (err) {
-        <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> ImperativeError({<span class="hljs-attr">msg</span>: <span class="hljs-string">&quot;Failed to get a profile.&quot;</span>});
-    }
-
-    <span class="hljs-keyword">const</span> session: SshSession = SshSession.createBasicSshSession(defaultSshProfile);
     <span class="hljs-keyword">await</span> Shell.executeSsh(session, <span class="hljs-string">&quot;df .&quot;</span>, <span class="hljs-function">(<span class="hljs-params">data: <span class="hljs-built_in">string</span></span>) =&gt;</span> {
         <span class="hljs-keyword">if</span> (data.trim()) <span class="hljs-built_in">console</span>.log(data);
     });
@@ -152,26 +143,17 @@
 						<h1></h1>
 					</a>
 					<p><strong>Make a script executable</strong></p>
-					<pre><code class="language-typescript"><span class="hljs-keyword">import</span> { IProfile, Logger, LoggingConfigurer, ImperativeError,
-         CredentialManagerFactory } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@zowe/imperative&quot;</span>;
-<span class="hljs-keyword">import</span> { getDefaultProfile } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@zowe/core-for-zowe-sdk&quot;</span>;
+					<pre><code class="language-typescript"><span class="hljs-keyword">import</span> { ProfileInfo } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@zowe/imperative&quot;</span>;
 <span class="hljs-keyword">import</span> { Shell, SshSession } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@zowe/zos-uss-for-zowe-sdk&quot;</span>;
 
 (<span class="hljs-keyword">async</span> () =&gt; {
-    <span class="hljs-comment">//Initialize the Imperative Credential Manager Factory and Logger</span>
-    Logger.initLogger(LoggingConfigurer.configureLogger(<span class="hljs-string">&#x27;lib&#x27;</span>, {<span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;test&#x27;</span>}));
-    <span class="hljs-comment">// Uncommment the below line if the Secure Credential Store is in use</span>
-    <span class="hljs-comment">// await CredentialManagerFactory.initialize({service: &quot;Zowe-Plugin&quot;});</span>
+    <span class="hljs-comment">// Load connection info from default SSH profile</span>
+    <span class="hljs-keyword">const</span> profInfo = <span class="hljs-keyword">new</span> ProfileInfo(<span class="hljs-string">&quot;zowe&quot;</span>);
+    <span class="hljs-keyword">await</span> profInfo.readProfilesFromDisk();
+    <span class="hljs-keyword">const</span> sshProfAttrs = profInfo.getDefaultProfile(<span class="hljs-string">&quot;ssh&quot;</span>);
+    <span class="hljs-keyword">const</span> sshMergedArgs = profInfo.mergeArgsForProfile(sshProfAttrs, { <span class="hljs-attr">getSecureVals</span>: <span class="hljs-literal">true</span> });
+    <span class="hljs-keyword">const</span> session = <span class="hljs-keyword">new</span> SshSession(ProfileInfo.initSessCfg(sshMergedArgs.knownArgs));
 
-    <span class="hljs-comment">// Get the default z/OSMF profile and create a z/OSMF session with it</span>
-    <span class="hljs-keyword">let</span> defaultSshProfile: IProfile;
-    <span class="hljs-keyword">try</span> {
-        defaultSshProfile = <span class="hljs-keyword">await</span> getDefaultProfile(<span class="hljs-string">&quot;ssh&quot;</span>, <span class="hljs-literal">true</span>);
-    } <span class="hljs-keyword">catch</span> (err) {
-        <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> ImperativeError({<span class="hljs-attr">msg</span>: <span class="hljs-string">&quot;Failed to get a profile.&quot;</span>});
-    }
-
-    <span class="hljs-keyword">const</span> session: SshSession = SshSession.createBasicSshSession(defaultSshProfile);
     <span class="hljs-keyword">await</span> Shell.executeSshCwd(session, <span class="hljs-string">&quot;chmod +x test.sh&quot;</span>, <span class="hljs-string">&quot;/tmp&quot;</span>, <span class="hljs-function">(<span class="hljs-params">data: <span class="hljs-built_in">string</span></span>) =&gt;</span> {
         <span class="hljs-keyword">if</span> (data.trim()) <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Error</span>(data);
     });
@@ -223,7 +205,7 @@
 					<div class="tsd-signature tsd-kind-icon">start<wbr>Cmd<wbr>Flag<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">"@@START OF COMMAND@@"</span><span class="tsd-signature-symbol"> = &quot;@@START OF COMMAND@@&quot;</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v6.37.7/packages/zosuss/src/Shell.ts#L21">@zowe/zos-uss-for-zowe-sdk/src/Shell.ts:21</a></li>
+							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.0.2/packages/zosuss/src/Shell.ts#L21">@zowe/zos-uss-for-zowe-sdk/src/Shell.ts:21</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -236,7 +218,7 @@
 					<div class="tsd-signature tsd-kind-icon">Zos<wbr>Uss<wbr>Messages<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v6.37.7/packages/zosuss/src/constants/ZosUss.messages.ts#L19">@zowe/zos-uss-for-zowe-sdk/src/constants/ZosUss.messages.ts:19</a></li>
+							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.0.2/packages/zosuss/src/constants/ZosUss.messages.ts#L19">@zowe/zos-uss-for-zowe-sdk/src/constants/ZosUss.messages.ts:19</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -255,7 +237,7 @@
 						<div class="tsd-signature tsd-kind-icon">all<wbr>Auth<wbr>Methods<wbr>Failed<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v6.37.7/packages/zosuss/src/constants/ZosUss.messages.ts#L24">@zowe/zos-uss-for-zowe-sdk/src/constants/ZosUss.messages.ts:24</a></li>
+								<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.0.2/packages/zosuss/src/constants/ZosUss.messages.ts#L24">@zowe/zos-uss-for-zowe-sdk/src/constants/ZosUss.messages.ts:24</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -269,7 +251,7 @@
 							<div class="tsd-signature tsd-kind-icon">message<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &quot;All configured authentication methods failed&quot;</span></div>
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v6.37.7/packages/zosuss/src/constants/ZosUss.messages.ts#L25">@zowe/zos-uss-for-zowe-sdk/src/constants/ZosUss.messages.ts:25</a></li>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.0.2/packages/zosuss/src/constants/ZosUss.messages.ts#L25">@zowe/zos-uss-for-zowe-sdk/src/constants/ZosUss.messages.ts:25</a></li>
 								</ul>
 							</aside>
 						</section>
@@ -280,7 +262,7 @@
 						<div class="tsd-signature tsd-kind-icon">connection<wbr>Refused<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v6.37.7/packages/zosuss/src/constants/ZosUss.messages.ts#L27">@zowe/zos-uss-for-zowe-sdk/src/constants/ZosUss.messages.ts:27</a></li>
+								<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.0.2/packages/zosuss/src/constants/ZosUss.messages.ts#L27">@zowe/zos-uss-for-zowe-sdk/src/constants/ZosUss.messages.ts:27</a></li>
 							</ul>
 						</aside>
 						<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
@@ -289,7 +271,7 @@
 							<div class="tsd-signature tsd-kind-icon">message<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &quot;Connection was refused&quot;</span></div>
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v6.37.7/packages/zosuss/src/constants/ZosUss.messages.ts#L28">@zowe/zos-uss-for-zowe-sdk/src/constants/ZosUss.messages.ts:28</a></li>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.0.2/packages/zosuss/src/constants/ZosUss.messages.ts#L28">@zowe/zos-uss-for-zowe-sdk/src/constants/ZosUss.messages.ts:28</a></li>
 								</ul>
 							</aside>
 						</section>
@@ -300,7 +282,7 @@
 						<div class="tsd-signature tsd-kind-icon">handshake<wbr>Timeout<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v6.37.7/packages/zosuss/src/constants/ZosUss.messages.ts#L30">@zowe/zos-uss-for-zowe-sdk/src/constants/ZosUss.messages.ts:30</a></li>
+								<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.0.2/packages/zosuss/src/constants/ZosUss.messages.ts#L30">@zowe/zos-uss-for-zowe-sdk/src/constants/ZosUss.messages.ts:30</a></li>
 							</ul>
 						</aside>
 						<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
@@ -309,7 +291,7 @@
 							<div class="tsd-signature tsd-kind-icon">message<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &quot;Timed out while waiting for handshake&quot;</span></div>
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v6.37.7/packages/zosuss/src/constants/ZosUss.messages.ts#L31">@zowe/zos-uss-for-zowe-sdk/src/constants/ZosUss.messages.ts:31</a></li>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.0.2/packages/zosuss/src/constants/ZosUss.messages.ts#L31">@zowe/zos-uss-for-zowe-sdk/src/constants/ZosUss.messages.ts:31</a></li>
 								</ul>
 							</aside>
 						</section>
@@ -320,7 +302,7 @@
 						<div class="tsd-signature tsd-kind-icon">unexpected<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v6.37.7/packages/zosuss/src/constants/ZosUss.messages.ts#L33">@zowe/zos-uss-for-zowe-sdk/src/constants/ZosUss.messages.ts:33</a></li>
+								<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.0.2/packages/zosuss/src/constants/ZosUss.messages.ts#L33">@zowe/zos-uss-for-zowe-sdk/src/constants/ZosUss.messages.ts:33</a></li>
 							</ul>
 						</aside>
 						<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
@@ -329,7 +311,7 @@
 							<div class="tsd-signature tsd-kind-icon">message<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &quot;Connection failed because of an unexpected error&quot;</span></div>
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v6.37.7/packages/zosuss/src/constants/ZosUss.messages.ts#L34">@zowe/zos-uss-for-zowe-sdk/src/constants/ZosUss.messages.ts:34</a></li>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.0.2/packages/zosuss/src/constants/ZosUss.messages.ts#L34">@zowe/zos-uss-for-zowe-sdk/src/constants/ZosUss.messages.ts:34</a></li>
 								</ul>
 							</aside>
 						</section>
@@ -360,6 +342,9 @@
 					</li>
 					<li class=" tsd-kind-module">
 						<a href="_zowe_zos_jobs_for_zowe_sdk.html">@zowe/zos-<wbr>jobs-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="_zowe_zos_logs_for_zowe_sdk.html">@zowe/zos-<wbr>logs-<wbr>for-<wbr>zowe-<wbr>sdk</a>
 					</li>
 					<li class=" tsd-kind-module">
 						<a href="_zowe_zos_tso_for_zowe_sdk.html">@zowe/zos-<wbr>tso-<wbr>for-<wbr>zowe-<wbr>sdk</a>
@@ -394,6 +379,9 @@
 					</li>
 					<li class=" tsd-kind-module">
 						<a href="_zowe_zos_jobs_for_zowe_sdk.html" class="tsd-kind-icon">@zowe/zos-<wbr>jobs-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="_zowe_zos_logs_for_zowe_sdk.html" class="tsd-kind-icon">@zowe/zos-<wbr>logs-<wbr>for-<wbr>zowe-<wbr>sdk</a>
 					</li>
 					<li class=" tsd-kind-module">
 						<a href="_zowe_zos_tso_for_zowe_sdk.html" class="tsd-kind-icon">@zowe/zos-<wbr>tso-<wbr>for-<wbr>zowe-<wbr>sdk</a>

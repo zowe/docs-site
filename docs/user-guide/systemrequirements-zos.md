@@ -75,7 +75,7 @@ Specific user IDs with sufficient permissions are required to run or access Zowe
 
 ### ZWESVUSR
 
-This is a started task ID used to run the PROCLIB `ZWESVSTC`.  
+This is a started task ID for `ZWESLSTC`.  
 
 The task starts a USS environment using `BPXBATSL` that executes the core Zowe Desktop (ZLUX) node.js server, the Java API Mediation Layer, and the Z Secure Services C component.  To work with USS, the user ID `ZWESVUSR` must have a valid OMVS segment.  
 
@@ -103,21 +103,23 @@ If z/OSMF is used for authentication and serving REST APIs for Zowe CLI and Zowe
 
 ## Network requirements
 
-The following ports are required for Zowe. These are default values. You can change the values by updating variable values in the `instance.env` file. For more information, see [Configuring the Zowe instance directory](configure-instance-directory.md#updating-the-instance-env-configuration-file).
+The following ports are required for Zowe. These are default values. You can change the values by updating variable values in the `zowe.yaml` file. 
 
-| Port number | Variable name | Purpose |
+| Port number | zowe.yaml variable name | Purpose |
 |------|------|------|
-| 7552 | _CATALOG_PORT_ | Used to view API swagger / openAPI specifications for registered API services in the API Catalog. 
-| 7553 | _DISCOVERY_PORT_ | Discovery server port which dynamic API services can issue APIs to register or unregister themselves.
-| 7554 | _GATEWAY_PORT_ | The northbound edge of the API Gateway used to accept client requests before routing them to registered API services.  This port must be exposed outside the z/OS network so clients (web browsers, VS Code, processes running the Zowe CLI) can reach the gateway.
-| 7555 | _ZWE_CACHING_SERVICE_PORT_ | Port of the caching service that is used to share state between different Zowe instances in a high availability topology.
-| 8545 | _JOBS_API_PORT_ | Port of the service that provides REST APIs to z/OS jobs used by the JES Explorer.
-| 8546 | _JES_EXPLORER_UI_PORT_ | Port of the JES Explorer GUI for viewing and working with jobs in the Zowe Desktop.
-| 8547 | _FILES_API_PORT_ | Port of the service that provides REST APIs to MVS and USS file systems.
-| 8548 | _MVS_EXPLORER_UI_PORT_ | Port of the MVS Explorer GUI for working with data sets in the Zowe Desktop.
-| 8550 | _USS_EXPLORER_UI_PORT_ | Port of the USS Explorer GUI for working with USS in the Zowe Desktop.
-| 8544 | _ZOWE_ZLUX_SERVER_HTTPS_PORT_ | The Zowe Desktop (also known as ZLUX) port used to log in through web browsers.
-| 8542 | _ZOWE_ZSS_SERVER_PORT_ | Z Secure Services (ZSS) provides REST API services to ZLUX, used by the File Editor application and other ZLUX applications in the Zowe Desktop.
+| 7552 | zowe.components.api-catalog.port | Used to view API swagger / openAPI specifications for registered API services in the API Catalog. 
+| 7553 | zowe.components.api-catalog.port | Discovery server port which dynamic API services can issue APIs to register or unregister themselves.
+| 7554 | zowe.components.gateway.port | The northbound edge of the API Gateway used to accept client requests before routing them to registered API services.  This port must be exposed outside the z/OS network so clients (web browsers, VS Code, processes running the Zowe CLI) can reach the gateway.
+| 7555 | zowe.components.caching-service.port | Port of the caching service that is used to share state between different Zowe instances in a high availability topology.
+| 7556 | zowe.components.app-server.port | The Zowe Desktop (also known as ZLUX) port used to log in through web browsers.
+| 7557 | zowe.components.zss.port | Z Secure Services (ZSS) provides REST API services to ZLUX, used by the File Editor application and other ZLUX applications in the Zowe Desktop.
+| 7558 | zowe.components.jobs-api.port | Port of the service that provides REST APIs to z/OS jobs used by the JES Explorer.
+| 7559 | zowe.components.files-api.port | Port of the service that provides REST APIs to MVS and USS file systems.
+|  | zowe.components.explorer-jes | Port of the JES Explorer GUI for viewing and working with jobs in the Zowe Desktop.
+|  | zowe.components.explorer-mvs | Port of the MVS Explorer GUI for working with data sets in the Zowe Desktop.
+|  | zowe.components.explorer-uss | Port of the USS Explorer GUI for working with USS in the Zowe Desktop.
+
+
 
 ## Zowe Docker requirements
 

@@ -145,7 +145,7 @@ Use the following procedure if you use _Maven_ as your build automation system.
     **Tip:** If you want to use snapshot version, replace `libs-release` with `libs-snapshot` in the repository url and change snapshots->enabled to `true`.
 
 2. Add the proper dependencies:
-   ```java
+   ```xml
    <dependency>
        <groupId>org.zowe.apiml.sdk</groupId>
        <artifactId>onboarding-enabler-java</artifactId>
@@ -274,7 +274,7 @@ The onboarding configuration parameters are broken down into the following group
     * If the `serviceId` is `sampleservice`, the service URL in the API ML Gateway address space appears as the following path:
 
        ```
-       https://gateway-host:gateway-port/api/v1/sampleservice/...
+       https://gateway-host:gateway-port/sampleservice/api/v1/...
        ```
 
 * **title**
@@ -445,7 +445,7 @@ routes:
 
 **Examples:** 
 * ```
-  https://gateway:10010/api/sampleservice 
+  https://gateway:10010/sampleservice/api
   ```
   is routed to: 
   ```
@@ -453,7 +453,7 @@ routes:
   ```
 * API major version 1:
     ```
-    https://gateway:10010/api/v1/sampleservice
+    https://gateway:10010/sampleservice/api/v1
     ```
     is routed to: 
     ```
@@ -461,7 +461,7 @@ routes:
     ```
 * APIs docs major version 1:
     ```
-    https://gateway:10010/api/v1/api-doc/sampleservice
+    https://gateway:10010/sampleservice/api/v1/api-doc
     ```
     is routed to:
     ```
@@ -561,9 +561,9 @@ where:
   
     * **safIdt**
 
-       This value specifies that the application recognizes the SAF IDT scheme and fills the `X-SAF-Token` header with the token produced by the Saf IDT provider implementation.
+       This value specifies that the service accepts SAF IDT, and expects that the token produced by the SAF IDT provider implementation is in the `X-SAF-Token` header. It is necessary to provide a service APPLID in the `authentication.applid` parameter.
   
-       For more information, see [SAF IDT provider](implement-new-saf-provider.md)
+       For more information, see [SAF IDT provider].(implement-new-saf-provider.md)
 
     * **x509**
 

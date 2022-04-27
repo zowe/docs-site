@@ -192,11 +192,11 @@ Check that /bin is part on your PATH. Do `echo $PATH` to check. If it is missing
 
 **Symptoms:**
 
-When you configure the Zowe environment variable `ZOWE_EXPLORER_HOST` in `instance.env` with a domain (for example, `domain-a.com`), and access Zowe with another domain (for example, `domain-b.com`), you may see the following errors:
+When you configure the Zowe environment variable `ZWE_haInstance_hostname` in `instance.env` with a domain (for example, `domain-a.com`), and access Zowe with another domain (for example, `domain-b.com`), you may see the following errors:
 
 - Certificate warnings similar to the following one:
   ```
-  domain-b.com:8544 uses an invalid security certificate.
+  domain-b.com:7556 uses an invalid security certificate.
 
   The certificate is only valid for the following names: domain-a.com, <ip-of-domain-a>, localhost.localdomain, localhost, 127.0.0.1
   ```
@@ -228,8 +228,8 @@ You can take the following steps:
 - After you run the `bin/zowe-configure-instance.sh` script, modify the `instance.env` file located in the instance directory in the following ways to reflect the multiple domains you plan to use.
   * Add a line of `ZWE_EXTERNAL_HOSTS`. For example, `ZWE_EXTERNAL_HOSTS=domain-a.com,domain-b.com`.
   * Add a line of `ZWE_REFERRER_HOSTS`. For example, `ZWE_REFERRER_HOSTS=domain-a.com,domain-b.com`.
-  * Find the line that starts with `ZOWE_EXPLORER_FRAME_ANCESTORS` and modify its values to `ZOWE_EXPLORER_FRAME_ANCESTORS="${ZOWE_EXPLORER_HOST}:*,domain-a.com:*,domain-b.com:*,${ZOWE_IP_ADDRESS}:*"`.
+  * Find the line that starts with `ZOWE_EXPLORER_FRAME_ANCESTORS` and modify its values to `ZOWE_EXPLORER_FRAME_ANCESTORS="${ZWE_haInstance_hostname}:*,domain-a.com:*,domain-b.com:*,${ZOWE_IP_ADDRESS}:*"`.
 
 **Drawback:**
 
-With this change, you must use the API Mediation Layer Gateway port (default is 7554) to access Zowe Desktop, for example, `https://domain-a.com:7554/ui/v1/zlux` or `https://domain-b.com:7554/ui/v1/zlux`. Using Desktop port (default is 8544) like `https://domain-b.com:8544/` is not supported.
+With this change, you must use the API Mediation Layer Gateway port (default is 7554) to access Zowe Desktop, for example, `https://domain-a.com:7554/zlux/ui/v1` or `https://domain-b.com:7554/zlux/ui/v1`. Using Desktop port (default is 7556) like `https://domain-b.com:7556/` is not supported.

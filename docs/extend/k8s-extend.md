@@ -1,14 +1,14 @@
 # Creating and adding Zowe extension containers
 
-Zowe extensions such as services and plug-ins that use Zowe component packaging can be used within a Zowe container environment. To do this, you must deliver the extension as a container image that is compatible with Zowe containers. You can follow Zowe's [container conformance criteria](https://github.com/zowe/zowe-install-packaging/blob/master/containers/conformance.md) to understand and achieve compatibility.
+Zowe extensions such as services and plug-ins that use Zowe component packaging can be used within a Zowe container environment. To do this, you must deliver the extension as a container image that is compatible with Zowe containers. You can follow Zowe's [container conformance criteria](k8s-conformance.md) to understand and achieve compatibility.
 
 **Note**: Missing z/OS dependencies must be checked before creating and adding Zowe extension containers. 
 
 You can add extension containers to a Zowe container environment the same way as Zowe's core components by completing the following steps. 
 
-1. Build and publish an extension image to a registry. For details, see [Build and publish an extension image to a registry](#build-and-publish-an-extension-image-to-a-registry). 
-2. Define a [deployment](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/) or [job](https://kubernetes.io/docs/concepts/workloads/controllers/job/) object. For details, see [Define Deployment or Job object](#define-deployment-or-job-object).
-3. Start the extension from the deployment or job definition. For details, see [Start your component](#start-your-component).
+1. Build and publish an extension image to a registry. For details, see [Build and publish an extension image to a registry](#1-build-and-publish-an-extension-image-to-a-registry). 
+2. Define a [deployment](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/) or [job](https://kubernetes.io/docs/concepts/workloads/controllers/job/) object. For details, see [Define Deployment or Job object](#2-define-deployment-or-job-object).
+3. Start the extension from the deployment or job definition. For details, see [Start your component](#3-start-your-component).
 
 ## 1. Build and publish an extension image to a registry
 
@@ -18,8 +18,8 @@ An extension must have a container image to run in a Zowe container environment.
 
 The core components define component Dockerfiles and use GitHub Actions to build images. For example,
 
-- `explorer-jes` is a component which has built-in web service. To build the images, this component defines a Dockerfile at <https://github.com/zowe/explorer-jes/blob/master/container/Dockerfile> and defines a GitHub Actions workflow at <https://github.com/zowe/explorer-jes/blob/master/.github/workflows/build_test.yml>.
-- `explorer-ip` is a Zowe App Server Framework plug-in but does not have a built-in web service. It follows Zowe's [container conformance criteria](https://github.com/zowe/zowe-install-packaging/blob/master/containers/conformance.md). It defines a Dockerfile at <https://github.com/zowe/explorer-ip/blob/master/container/Dockerfile>. Similar to `explorer-jes`, it also defines a GitHub Actions workflow at <https://github.com/zowe/explorer-ip/blob/master/.github/workflows/explorer-ip-images.yml> to build the images.
+- `jobs-api` is a component which has built-in web service. To build the images, this component defines a Dockerfile at <https://github.com/zowe/jobs/blob/v2.x/master/container/Dockerfile> and defines a GitHub Actions workflow at <https://github.com/zowe/jobs/blob/v2.x/master/.github/workflows/jobs-api-images.yml>.
+- `explorer-jes` is a Zowe App Server Framework plug-in but does not have a built-in web service. It follows Zowe's [container conformance criteria](https://github.com/zowe/zowe-install-packaging/blob/v2.x/staging/containers/conformance.md). It defines a Dockerfile at <https://github.com/zowe/explorer-jes/blob/v2.x/master/container/Dockerfile>. Similar to `jobs-api`, it also defines a GitHub Actions workflow at <https://github.com/zowe/explorer-jes/blob/v2.x/master/.github/workflows/build_test.yml> to build the images.
 
 The following GitHub Actions are used by the core components to build conformant images. They might not be completely reusable for you, but are provided as an example.
 

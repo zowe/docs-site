@@ -1,8 +1,115 @@
 # Zowe Explorer Profiles
 
-After you install Zowe Explorer, you need to have a Zowe Explorer profile to use all functions of the extension. You can optionally activate the Secure Credential Store plug-in to securely store your credentials.
+After you install Zowe Explorer, you need to have a Zowe Explorer profile to use all functions of the extension.
+
+**Note:** You can continue using Zowe V1 profiles with Zowe Explorer V2. 
+## Configuring team profiles
+
+Zowe CLI team profiles simplify profile management by letting you to edit, store, and share mainframe configuration details in one location. You can use a text editor or an IDE to populate configuration files with connection details for your mainframe services. By default, your team configuration file is located in the `.zowe home` folder, whereas the project-level configuration file is located in the main directory of your project. You can create profiles that you use globally, given that the names of the globally-used profiles are different from your other profile names.
+
+**Note**: A project context takes precedence over global configuration.
+### Creating team configuration files
+
+Create a team configuration file.
+
+1. Navigate to the explorer tree.
+2. Hover over **DATA SETS**, **USS**, or **JOBS**.
+3. Click the **+** icon.
+4. Select **Create a New Team Configuration File**.
+5. Chose either a global configuration file or a project-level configuration file.
+6. Edit the config file to include the host information and save the file.
+7. Refresh Zowe Explorer by either clicking the button in the notification message shown after creation, `alt+z`, or the `Zowe Explorer: Refresh Zowe Explorer` command palette option.
+
+Your team configuration file appears either in your `.zowe` folder if you choose the global configuration file option, or in your workspace directory if you choose the project-level configuration file option. The notification message that shows in VS Code after config file creation will include the path of the file created.
+
+### Managing profiles
+
+You can edit your project-level or global configuration files.
+
+**Follow these steps**:
+
+1. Right-click on your profile.
+2. Select the **Add**, **Update**, or **Delete Profile** options to edit the zowe config file in place.
+
+   **Tip:** Use the Intellisense prompts if you need assistance with filling parameters in the file.
+
+3. Save the config file.
+
+4. Refresh the view by clicking the refresh icon in the Data Sets, USS, or Jobs view.
+
+   Alternatively, press F1 to open the command palette, type and execute the **Zowe Explorer: Refresh Zowe Explorer** option.
+
+You successfully edited your configuration file.
+
+### Sample profile configuration
+
+View the profile configuration sample. In the sample, the default `lpar1.zosmf` profile will be loaded upon activation.
+
+You can use the sample to customize your profile configuration file. Ensure that you edit the `host` and `port` values before you work in your environment.
+
+```json
+{
+  "$schema": "./zowe.schema.json",
+  "profiles": {
+    "lpar1": {
+      "properties": {
+        "host": "192.86.32.67"
+      },
+      "profiles": {
+        "zosmf": {
+          "type": "zosmf",
+          "properties": {
+            "port": 10443
+          },
+          "secure": []
+        },
+        "tso": {
+          "type": "tso",
+          "properties": {
+            "account": "",
+            "codePage": "1047",
+            "logonProcedure": "IZUFPROC"
+          },
+          "secure": []
+        },
+        "ssh": {
+          "type": "ssh",
+          "properties": {
+            "port": 22
+          },
+          "secure": []
+        },
+        "zftp": {
+          "type": "zftp",
+          "properties": {
+            "port": 21
+          },
+          "secure": []
+        }
+      }
+    },
+    "my_base": {
+      "type": "base",
+      "properties": {
+        "rejectUnauthorized": false
+      },
+      "secure": ["user", "password"]
+    }
+  },
+  "defaults": {
+    "zosmf": "lpar1.zosmf",
+    "tso": "lpar1.tso",
+    "ssh": "lpar1.ssh",
+    "zftp": "lpar1.zftp",
+    "base": "my_base"
+  },
+  "plugins": []
+}
+```
 
 ## Working with Zowe Explorer profiles
+
+**Important!** The information in this section applies to only Zowe CLI V1 profiles unless otherwise noted. Zowe CLI V1 profiles are defined by having one yaml file for each user profile.
 
 You must have a `zosmf` compatible profile before you can use Zowe Explorer. You can set up a profile to retain your credentials, host, and port name. In addition, you can create multiple profiles and use them simultaneously.
 
@@ -29,7 +136,9 @@ If you need to edit a profile, right-click the profile and select **Update Profi
 
 In addition, you can hide a profile from the explorer tree, and permanently delete a profile. When you delete your profile permanently, the extension erases the profile from the `.zowe` folder. To hide or delete a profile, right-click the profile and choose one of the respective options from the list.
 
-#### Profile Validation
+### Validating profiles
+
+**Note:** The following information applies to Zowe CLI V1 profiles (one yaml file for each user profile) and Zowe CLI team profiles (Zowe CLI V2).
 
 Zowe Explorer includes the profile validation feature that helps to ensure that z/OSMF is accessible and ready for use. If a profile is valid, the profile is active and can be used. By default, the feature is automatically enabled. You can disable the feature by right-clicking on your profile and selecting the **Disable Validation for Profile** option. Alternatively, you can enable or disable the feature for all profiles in the VS Code settings.
 
@@ -40,84 +149,27 @@ Follow these steps:
 3. Enable or disable the automatic validation of profiles option.
 4. Restart VS Code.
 
-### Associate Profile
+## Using base profiles and tokens with existing profiles
 
- > **Note**: The Associate Profile functionality is deprecated and will be removed in Zowe Explorer V2 that is slated for February 2022. For more information, see the Release Timeline section on the [Download Zowe](https://www.zowe.org/download.html#timeline) page on the Zowe site.
+As a Zowe user, you can leverage the base profile functionality to access multiple services through Single Sign-on. Base profiles enable you to authenticate using Zowe API Mediation Layer (API ML). You can use base profiles with more than one service profile. For more information, see [Base Profiles](../user-guide/cli-using-using-profiles.md#base-profiles).
 
-Extensions built on Zowe Explorer provide users with additional functionality through unique profile types, such as RSE or FTP. The "associate profiles" function allows users to link, or associate, these extension profile types with an existing zOSMF profile. Every Zowe Explorer profile has two types of association: primary and secondary. While the primary association is `zosmf`, the secondary association includes Zowe CLI plug-ins or other services you might have. Within the scope of their own extender package, associated profiles can be used to access a relevant REST API that is available to the extender.
+Before you log in and connect your service profile, ensure that you have [Zowe CLI](../user-guide/cli-install-cli-checklist.md) v6.16 or higher installed.
 
-Create a secondary association for your Zowe Explorer profiles.
-
-**Follow these steps:**
-
-1. Navigate to the explorer tree.
-2. Right-click your profile
-3. Select the **Associate profiles** option.
-4. Select a secondary profile type.
-5. Select a file name you want to create an association for.
-
-<img src={require("../images/ze/ZE-associate.gif").default} width="600" height="300" alt="Edit a Profile"/>
-
-You have successfully created the secondary association for your Zowe Explorer profile.
-
-For more information, see [Associating Zowe CLI Profiles](https://github.com/zowe/vscode-extension-for-zowe/blob/master/docs/README-Extending.md#associating-zowe-cli-profiles).
-
-## Enabling Secure Credential Store with Zowe Explorer
-
-Store your credentials securely by using the Secure Credential Store (SCS) plug-in in Zowe Explorer. By default, your credentials are stored in plain text.
-
-Activate the SCS plug-in in Zowe Explorer.
-
-**Follow these steps:**
-
-1. Open Zowe Explorer.
-2. Navigate to the VSCode settings.
-3. Open Zowe Explorer Settings.
-4. Add the **Zowe-Plugin** value to the `Zowe Security: Credential Key` entry field.
-5. Restart VSCode.
-6. Create a profile.
-
-Your Zowe Explorer credentials are now stored securely.
-
-### For Zowe CLI users
-
-Ensure that you install the SCS plug-in for Zowe CLI before activating SCS in Zowe Explorer. For more information about the SCS plug-in for Zowe CLI, see [Secure Credential Store plug-in for Zowe Explorer](cli-scsplugin.md).
-
-**Important:** If you did not install the SCS plug-in for Zowe CLI and try to activate SCS in the extension, you will not be able to use your existing profiles, and will have to recreate them.
-
-Activate the SCS plug-in in Zowe Explorer.
-
-1. Open Zowe CLI and issue the following command:
-
-   ```shell
-   zowe scs u
-   ```
-
-2. Open Zowe Explorer.
-3. Navigate to the VSCode settings.
-4. Open Zowe Explorer Settings.
-5. Add the **Zowe-Plugin** value to the `Zowe Security: Credential Key` entry field.
-6. Restart VSCode.
-
-The credentials of your newly created or existing profiles are now stored securely.
-
-## Use Base Profile and Token with Existing Profiles
-
-As a Zowe user, you can leverage the base profile functionality to access multiple services through Single Sign-on. Base profiles enable you to authenticate via Zowe API Mediation Layer. You can use base profiles with more than one service profile. For more information, see [Base Profiles](https://docs.zowe.org/stable/user-guide/cli-usingcli#base-profiles).
-
-Before you log in and connect your service profile, ensure that you have [Zowe CLI](https://docs.zowe.org/stable/user-guide/cli-installcli.html) v6.16 or higher installed.
-
-### Access services through API ML with SSO
+### Accessing services through API ML using SSO
 
 Connect your service profile with a base profile and token.
 
 **Follow these steps:**
 
-1. Open Zowe CLI and run the following command: `zowe auth login apiml`.
+1. Open Zowe CLI and issue the following command:
 
-2. Follow the instructions to complete the login process.
+   ```
+   zowe auth login apiml
+   ```
 
-   A local base profile is created that contains your token. For more information about the process, see [Token Management](https://docs.zowe.org/stable/user-guide/cli-usingcli#how-token-management-works).
+2. Follow the onscreen instructions to complete the login process.
+
+   A local base profile is created that contains your token. For more information about the process, see [Token Management](../user-guide/cli-using-integrating-apiml.md#how-token-management-works).
   
 3. Run Zowe Explorer and click the **+** icon.  
 
@@ -125,9 +177,9 @@ Connect your service profile with a base profile and token.
 
    The profile appears in the tree and you can now use this profile to access z/OSMF via the API Mediation Layer.
 
-For more information, see [Integrating with API Mediation Layer](https://docs.zowe.org/stable/user-guide/cli-usingcli#integrating-with-api-mediation-layer).
+For more information, see [Integrating with API Mediation Layer](../user-guide/cli-using-integrating-apiml.md).
 
-### Log in to the Authentication Service
+### Logging in to the Authentication Service
 
 If the token for your base profile is no longer valid, you can log in again to get a new token with the **Log in to Authentication Service** feature.
 
@@ -144,7 +196,7 @@ If the token for your base profile is no longer valid, you can log in again to g
 
    You will be prompted to enter your username and password beforehand.
 
-The token is stored in the default base profile .yaml file.
+The token is stored in the corresponding base profile.
 
 If you do not want to store your token, request from the server to end the session of your token. Use the **Log out from Authentication Service** feature to invalidate the token.
 

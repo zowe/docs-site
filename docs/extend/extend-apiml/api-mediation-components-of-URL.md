@@ -22,18 +22,18 @@ When a service is accessed without the API Gateway then the format the `basePath
 
 When a service is accessed via the API Gateway then the format of the URL is standardized in one of the following formats:
 
-- Using service type (`t`), major version (`v`), and `serviceId`
-- Using service type (`t`) and `serviceId`
+- Using `serviceId`, service type (`t`) and major version (`v`)
+- Using `serviceId` and service type (`t`)
 
 where:
+
+- **`serviceId`** is a unique name of the service that is set during the installation of the service.
 
 - **`t`** is the type of the service. It can be `api`, `ui`, or `ws`
 
 - **`v`** is the major version the REST API.
 
   **Example:** `v1`, `v2`. It is optional since some existing services can have versioning in the endpoint path.
-
-- **`serviceId`** is a unique name of the service that is set during the installation of the service.
 
 The fundamental principle is that by changing the base URL you can access different services with the same API because the structure after the base URL is the same.
 
@@ -64,20 +64,6 @@ scheme       host        endpointPath
 ### URL to a service endpoint via API gateway
 
 ```markup
-https://ca3x.ca.com:10310/api/v1/cafilemasterplus/mvs/dataSets/test/ping
-\______/\_______________/\______________________/\_____________________/
-scheme       host             basePath                  endpointPath
-                          \_/ \/\______________/
-                           t  v    serviceId
-
-\_______________________________________________/
-                 baseUrl
-
-```
-
-Or, alternatively:
-
-```markup
 https://ca3x.ca.com:10310/cafilemasterplus/api/v1/mvs/dataSets/test/ping
 \______/\_______________/\______________________/\_____________________/
 scheme       host             basePath                  endpointPath
@@ -90,19 +76,6 @@ scheme       host             basePath                  endpointPath
 ```
 
 ### URL to a service endpoint via API gateway without version
-
-```markup
-https://ca3x.ca.com:10310/api/zosmfca32/zosmf/info
-\_____/\________________/\____________/\_________/
-scheme        host          basePath    endpointPath
-                          \_/\________/
-                           t  serviceId
-
-\______________________/
-        baseUrl
-```
-
-Or, alternatively:
 
 ```markup
 https://ca3x.ca.com:10310/zosmfca32/api/zosmf/info

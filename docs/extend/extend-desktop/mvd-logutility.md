@@ -45,7 +45,9 @@ NodeJS uses `global` as its global object, so the logger is attached to:
 
 #### Web
 
-Browsers use `window` as the global object, so the logger is attached to:
+(Angular App Instance Injectible). See **Logger** in [Zowe Desktop and window management](mvd-desktopandwindowmgt.md).  
+
+(others) Browsers use `window` as the global object, so the logger is attached to:
 `window.COM_RS_COMMON_LOGGER`
 
 ### Component logger
@@ -55,11 +57,6 @@ Component loggers are created from the core logger object, but when working with
 #### App Server
 
 See **Router Dataservice Context** in the topic [Dataservices](mvd-dataservices.md).   
-
-
-#### Web
-
-(Angular App Instance Injectible). See **Logger** in [Zowe Desktop and window management](mvd-desktopandwindowmgt.md).  
 
 
 ## Logger API
@@ -142,7 +139,7 @@ For example:
     //"_unp.dsauth": 2
   },
 ```
-For more information about the server configuration file, see [Zowe Application Framework (zLUX) configuration](../../user-guide/mvd-configuration.html#zowe-application-framework-configuration).
+For more information about the server configuration file, see [Zowe Application Framework (zLUX) configuration](../../user-guide/mvd-configuration#configuration-file).
 
 ## Using log message IDs
 To make technical support for your application easier, create IDs for common log messages and use substitution to generate them. When you use IDs, people fielding support calls can identify and solve problems more quickly. IDs are particularly helpful if your application is translated, because it avoids users having to explain problems using language that the tech support person might not understand.
@@ -185,4 +182,4 @@ To use log message IDs, take the following steps:
    
 ### Message ID logging examples
 
-Server core: https://github.com/zowe/zlux-server-framework/blob/master/plugins/config/lib/assets/i18n/log/messages_en.json
+Server core: https://github.com/zowe/zlux-server-framework/blob/v2.x/master/plugins/config/lib/assets/i18n/log/messages_en.json

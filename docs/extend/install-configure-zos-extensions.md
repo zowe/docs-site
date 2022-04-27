@@ -1,42 +1,30 @@
-# Install, upgrade, and configure Zowe server component
+# Install Zowe server component
 
-Learn how to install, upgrade, and configure the Zowe server components or extensions manually or by using the following scripts: 
-* `zowe-install-component.sh`
-* `zowe-upgrade-component.sh` (optional)
-* `zowe-configure-component.sh`. 
-
-**Note:** The `zowe-upgrade-component.sh` script is currently an alpha release feature. As such, this script could present compatibility issues between the upgraded components and other Zowe components.
+Learn how to install Zowe server components or extensions by using `zwe components install` commands or manually.
  
-## Install with `zowe-install-component.sh` (Technical Preview)
+## Install component
 
-<Badge text="Technical Preview"/>
+Zowe ships [`zwe components install` command](../appendix/zwe_server_command_reference/zwe/components/install/zwe-components-install.md) to help end-user to install any Zowe server components (extensions). Zowe core components are also installed with this command. In order to be compatible with the command, components must follow [Zowe server component package format standard](packaging-zos-extensions.md#zowe-server-component-package-format).
 
-**Notes:** 
-* This section is for technical preview. As such, we welcome  feedback. Content in this section may be changed or improved in the future.
+**Important** this command will also enable the component globally by updating your `zowe.yaml` configuration file. You can pass `--skip-enable` to disable this behavior.
 
-* This feature is added with Zowe v1.19.0 release.
+Execute the command from z/OS USS. Use the following command line parameters:
 
-From Zowe v1.19.0, Zowe ships a `bin/zowe-install-component.sh` tool to help you install any Zowe server component (extension). Zowe core components are also installed with this utility. In order to be compatible with the utility, we recommend components follow [Zowe server component package format standard](packaging-zos-extensions.md#zowe-server-component-package-format).
+- **`--component-file|--component|-o`**
 
-Execute the utility from z/OS USS. Use the following command line parameters:
+  (String, Required) Defines the path to the component package or directory.
 
-- **`-o|--component-file`**
+- **`--config|-c`**
 
-  (Required) Defines the path to the component package or directory.
-- **`-c|--component-name`**
+  (String, Required) Defines the path to the Zowe YAML configuration. `zwe components install` relies on the `zowe.extensionDirectory` definition to know where the component will be installed.
 
-  Specifies the name of the component. This parameter is optional if `NODE_HOME` is defined and the component has the manifest file, otherwise, this parameter is required.
-- **`-i|--instance-dir`**
+-- **`--skip-enable`**
 
-  (Optional) Defines the path to the Zowe instance directory. When a value is defined, the script also executes `bin/zowe-configure-component.sh` following installation.
+  (Boolean, Optional) Tells the command do not enable the component by updating `zowe.yaml` configuration file.
 
-- **`-d|--target-dir`**
+- **`--auto-encoding|-e`**
 
-  (Optional) Defines the path to the installation target directory. For native components, the default value is `${ZOWE_ROOT_DIR}/components`. For non-native components, the script checks the value of the `ZWE_EXTENSION_DIR` variable. If the value is also empty, the script falls back to the default target directory `/global/zowe/extensions`.
-
-- **`-e|--auto-encoding`**
-
-  (Optional) Defines whether to automatically tag the encoding of the files that are shipped with the component. The default value is `auto`, which indicates that the script determines whether the automatic tagging is needed or not.
+  (String, Optional) Defines whether to automatically tag the encoding of the files that are shipped with the component. The default value is `auto`, which indicates that the script determines whether the automatic tagging is needed or not.
   
   **Note:** The automatic tagging process is opinionated about which file extensions should be in which encoding. If this does not fit in your needs, a `pax` format is recommended to include the tagging information into your package. This option is only applicable for z/OS. The following list presents the allowed values:
   * `yes`
@@ -50,132 +38,78 @@ Execute the utility from z/OS USS. Use the following command line parameters:
   
     Tag only when manifest is in `ISO8859-1` encoding.
 
- - **`-k|--core`**
+- **`--log-dir|--log|-l`**
 
-   This is an optional boolean. This parameter defines whether this component is bundled into the Zowe package as a core component.
-- **`-l|--logs-dir`**
+  (String, Optional) Specifies the path to the log directory.
 
-  (Optional) Specifies the path to the log directory.
-- **`-f|--log-file`**
+- **`--debug|--verbose|-v`**
 
-  (Optional) Instead of writing an independent log to a directory, you have the option to append log to this log file specified.
+  (Boolean, Optional) Enable debug level logging. This will help on troubleshooting issues.
 
-**Examples:**
+- **`--trace|-vv`**
 
-The following command installs the `my-zowe-component-1.2.3.pax` into `/global/zowe/extensions`.
-
-```
-$ zowe-install-component.sh -o /path/to/my-zowe-component-1.2.3.pax
-```
-
-The following command installs `my-zowe-component-1.2.3.zip` into `/var/zowe/my-extensions` and also configures this component for the Zowe instance located at `/var/zowe/instance`. The installation and configuration logs writes to `/var/zowe/instance/logs`.
-
-```
-$ zowe-install-component.sh \
-    -o /path/to/my-zowe-component-1.2.3.zip \
-    -d /var/zowe/my-extensions \
-    -i /var/zowe/instance \
-    -l /var/zowe/instance/logs
-```
-
-## Upgrade with `zowe-upgrade-component.sh` (Technical Preview)
-
-<Badge text="Technical Preview"/>
-
-**Notes:** 
-* This section is for technical preview. As such, we welcome any feedback. Content in this section may be changed or improved in the future.
-
-* _This feature is to be added with the Zowe v1.22.0 release._
-
-From Zowe v1.22.0, Zowe ships a `bin/zowe-upgrade-component.sh` utility to help you upgrade any Zowe core component to the latest version available into the Zowe Artifactory.  
-By default, Zowe core components are not updated with this utility. To enable the upgrade functionality, set the optional boolean value `ZOWE_COMPONENTS_UPGRADE` to `true` as part of the installation configuration. Once the user has enabled this parameter, the `zowe-install.sh` 
-install script calls the `zowe-upgrade-component.sh` script.
-The Zowe components get updated and then installed and configured using the `zowe-install-component.sh` and `zowe-configure-component.sh` scripts.
-In order to be compatible with this utility, we recommend components follow the [Zowe server component package format standard](packaging-zos-extensions.md#zowe-server-component-package-format).
-
-The Zowe upgrade component utility can be executed from z/OS USS. You can use the following command line parameters:
-
-- **`-o|--component-file`**
-
-  (Required) Defines the path to the component package or directory.
-
-- **`-l|--logs-dir`**
-
-  (Optional) Specifies the path to the log directory.
-- **`-f|--log-file`**
-
-  (Optional) Instead of writing independent log to a directory, you have option to append log to this log file specified.
+  (Boolean, Optional) Enable the most detail trace level logging. This will help on troubleshooting issues.
 
 **Examples:**
 
-```
-$ zowe-upgrade-component.sh -o /path/to/my-zowe-component-1.2.3.pax
-```
-
-This command upgrades `my-zowe-component-1.2.3.zip` to its latest version. The upgrade logs write to `/var/zowe/instance/logs`.
+The following command installs the `my-zowe-component-1.2.3.pax` into `/global/zowe/extensions` which is defined as `zowe.extensionDirectory` in `/path/to/my/zowe.yaml`.
 
 ```
-$ zowe-upgrade-component.sh \
-    -o /path/to/my-zowe-component-1.2.3.zip \
-    -l /var/zowe/instance/logs
+$ zwe components install -o /path/to/my-zowe-component-1.2.3.pax -c /path/to/my/zowe.yaml
 ```
 
-## Configure with `zowe-configure-component.sh` (Technical Preview)
+## Enable and disable component
 
-<Badge text="Technical Preview"/>
+Zowe ships [`zwe components enable`](../appendix/zwe_server_command_reference/zwe/components/zwe-components-enable.md) and [`zwe components disable`](../appendix/zwe_server_command_reference/zwe/components/zwe-components-disable.md) commands to help you enable and disable Zowe server component (extension). In order to be compatible with these commands, components must follow [Zowe server component package format standard](packaging-zos-extensions.md#zowe-server-component-package-format).
 
-_Note: This section is for technical preview and we are happy to hear any feedback. Content in this section may be changed or improved in the future._
+**Important** these commands will update your `zowe.yaml` configuration file.
 
-**Note:** This feature is made available with the Zowe v1.19.0 release.
+**Note** `zwe components install` command will enable the component globally if `--skip-enable` is not passed.
 
-From Zowe v1.19.0, Zowe ships a `bin/zowe-configure-components.sh` utility to help you configure an installed Zowe server component (extension) for a Zowe instance. Zowe core components are also configured with this utility. In order to be compatible with the utility, we recommend components follow [Zowe server component package format standard](packaging-zos-extensions.md#zowe-server-component-package-format).
+Execute these commands from z/OS USS. Use the following command line parameters:
 
-You may not need to run this script directly if you have supplied `-i|--instance-dir` when you run `zowe-install-component.sh`.
+- **`--component|-o`**
 
-Execute this utility from z/OS USS. Use the following command line parameters:
+  (String, Required) Defines the component name should be enabled or disabled.
 
-- **`-c|--component-name`**
+- **`--config|-c`**
 
-  (Required) Specifies the name of the component.
+  (String, Required) Defines the path to the Zowe YAML configuration. `zwe components install` relies on the `zowe.extensionDirectory` definition to know where the component will be installed.
 
-- **`-i|--instance-dir`**
+- **`--ha-instance|-i`**
 
-  (Required) Defines the path to the Zowe instance directory.
+  (String, Optional) Defines the Zowe high availability instance ID of where the component will be enabled or disabled. If this argument is not passed, the component will be enabled/disabled globally from `components.<component>.enabled`. If this argument has a value, only specified HA instance will be changed, which is `haInstances.<ha-instance>.components.<component>.enabled`.
 
-- **`-d|--target-dir`**
+- **`--log-dir|--log|-l`**
 
-  (Optional) Defines the directory where the component is installed. For native components, the default value is `${ZOWE_ROOT_DIR}/components`. For non-native components, the script will check `ZWE_EXTENSION_DIR` if possible. Otherwise, it will fall back to the default target directory `/global/zowe/extensions`.
+  (String, Optional) Specifies the path to the log directory.
 
-- **`-k|--core`**
+- **`--debug|--verbose|-v`**
 
-  This is an optional Boolean. It defines whether this component is bundled into the Zowe package as a core component.
+  (Boolean, Optional) Enable debug level logging. This will help on troubleshooting issues.
 
-- **`-l|--logs-dir`**
+- **`--trace|-vv`**
 
-  (Optional) Defines the path to the log directory.
-
-- **`-f|--log-file`**
-
-  (Optional) Instead of writing independent log to a directory, you have option to append log to this log file specified.
+  (Boolean, Optional) Enable the most detail trace level logging. This will help on troubleshooting issues.
 
 **Examples:**
 
-The following command configures `my-zowe-component` installed in `/global/zowe/extensions` for the Zowe instance located at `/var/zowe/instance`.
+The following command enables `my-zowe-component`.
 
 ```
-$ zowe-configure-component.sh \
-    -c my-zowe-component \
-    -i /var/zowe/instance
+$ zwe components enable \
+    -o my-zowe-component \
+    -c /path/to/my/zowe.yaml
 ```
 
-The following command configures `my-zowe-component` installed in `/var/zowe/my-extensions` for the Zowe instance located at `/var/zowe/instance`. The configuration logs write to `/var/zowe/instance/logs`.
+The following command will disable `my-zowe-component` on HA instance `lpar1`. The configuration logs write to `/var/zowe/logs`.
 
 ```
-$ zowe-configure-component.sh \
-    -c my-zowe-component \
-    -i /var/zowe/instance \
-    -d /var/zowe/my-extensions \
-    -l /var/zowe/instance/logs
+$ zwe components disable \
+    -o my-zowe-component \
+    -c /path/to/my/zowe.yaml \
+    -i lpar1 \
+    -l /var/zowe/logs
 ```
 
 ## Install and configure manually
@@ -196,21 +130,17 @@ The Zowe runtime directory delivers its core components in the `<RUNTIME_DIR>/co
   /...
 ```
 
-You can configure whether to start the Zowe core component or not with the `LAUNCH_COMPONENTS` variable defined in `<INSTANCE_DIR>/instance.env`. The value of this variable can be a comma-separated list of core component names.
+Same as all Zowe server components, Zowe core components can be enabled or disabled by setting `components.<component>.enabled` to `true` or `false`.
 
-**Note:** You can also use the full USS path to the component `bin` directory which contains lifecycle scripts, but this behavior will be deprecated in next major release.
+### Zowe z/OS extensions
 
-### Zowe extensions
+All Zowe z/OS extension runtime programs are installed into a single location which is defined as `zowe.extensionDirectory` in `zowe.yaml`. Each extension should be represented with the extension name in this directory, and use either a directory or a symbolic link.
 
-We recommend that you install all Zowe extension runtime programs into a single location. The suggested default extension directory is `/global/zowe/extensions`. Each extension should be represented with the extension name in this directory, and use either a directory or a symbolic link. This location should be defined as `ZWE_EXTENSION_DIR` in `<INSTANCE_DIR>/instance.env`.
-
-The Zowe launch script reads `EXTERNAL_COMPONENTS` defined in `<INSTANCE_DIR>/instance.env` to determine whether to start an extension. The value of `EXTERNAL_COMPONENTS` is a comma-separated list of extension names.
-
-**Note:** You can also use the full USS path to the extension `bin` directory which contains lifecycle scripts. This behavior, however, is to be deprecated in next major release.
+The Zowe launch script reads `components.<component>.enabled` and `haInstances.<ha-instance>.components.<component>.enabled` defined in `zowe.yaml` to determine whether to start an extension in current HA instance. The value of this `enabled` is boolean either `true` or `false`.
 
 **Example:**
 
-The vendor MYVENDOR has a product named MYAPP that installs into `/usr/lpp/myvendor/myapp`. There is one Zowe extension shipped within the product in the directory `/usr/lpp/myvendor/myapp/zowe-ext`. This subdirectory is a Zowe extension so that the product can be started and stopped with Zowe and run as an address space under the `ZWESVSTC` started task in the Zowe USS shell.
+The vendor MYVENDOR has a product named MYAPP that installs into `/usr/lpp/myvendor/myapp`. There is one Zowe extension shipped within the product in the directory `/usr/lpp/myvendor/myapp/zowe-ext`. This subdirectory is a Zowe extension so that the product can be started and stopped with Zowe and run as an address space under the `ZWESLSTC` started task in the Zowe USS shell.
 
 The directory `/usr/lpp/myvendor/myapp/zowe-ext` should include a `manifest.yaml` file to describe the extension. The script `/usr/lpp/myvendor/myapp/zowe-ext/bin/validate.sh` checks that the environment is configured correctly and the script `/usr/lpp/myvendor/myapp/zowe-ext/bin/start.sh` starts the vendor application. The `/usr/lpp/myvendor/myapp/zowe-ext/manifest.yaml` should look like this:
 
@@ -223,7 +153,7 @@ commands:
   start: bin/start.sh
 ```
 
-Because MYAPP is shipped within another product, the installation should create a symbolic link in `ZWE_EXTENSION_DIR` directory.
+Because MYAPP is shipped within another product, the installation should create a symbolic link in `zowe.extensionDirectory` directory.
 
 ```
 $ ls -l /global/zowe/extensions
@@ -231,57 +161,12 @@ total 16
 lrwxrwxrwx   1 <USER> <GROUP>       23 Nov 11  2019 myapp -> /usr/lpp/myvendor/myapp/zowe-ext
 ```
 
-Also, `myapp` is added into the value of the `EXTERNAL_COMPONENTS` variable in `<INSTANCE_DIR>/instance.env`.
+Also, `myapp` is enabled in `zowe.yaml` like this.
 
 ```
-ZWE_EXTENSION_DIR=/global/zowe/extension
-EXTERNAL_COMPONENTS=some-other-extensions,myapp
+components:
+  myapp:
+    enabled: true
 ```
 
-You might need to manually run the script `<INSTANCE_DIR>/bin/install-app.sh` if your component is a Desktop plug-in. Alternatively, you can choose to add this step to [Zowe component Configure lifecycle stage](lifecycling-with-zwesvstc.md#configure).
-
-When the Zowe instance is launched by running `<INSTANCE_DIR>/bin/zowe-start.sh`, it will read manifest `commands` instructions and call the `/usr/lpp/myvendor/myapp/zowe-ext/bin/start.sh` script. The started task will create an address space under `ZWESVSTC` for the vendor component.  When the Zowe instance is stopped, the address space is terminated.
-
-
-## Verify with `zowe-verify-component.sh` (Technical Preview)
-
-<Badge text="Technical Preview"/>
-
-_Note: This section is for technical preview and we are happy to hear any feedback. Content in this section may be changed or improved in the future._
-
-_Note: This feature is added with Zowe v1.22.0 release._
-
-From Zowe v1.22.0, Zowe ships a `bin/zowe-verify-component.sh` tool to help you verify an installed Zowe server component (extension) for a Zowe instance. In order to be compatible with the tool, we recommend components follow [Zowe server component package format standard](packaging-zos-extensions.md#zowe-server-component-package-format) and define [Zowe component manifest](packaging-zos-extensions.md#zowe-component-manifest).
-
-The `zowe-verify-component.sh` script checks and verifies whether a specified component is up and running. You can use it to verify both core and external Zowe components.
-
-_IMPORTANT: To successfully verify whether a component service is registered on Zowe API Mediation Layer, this utility script requires authentication with a valid system user who has proper permission granted. For more information on the required user permission, please check [Protection of Service Information](../extend/extend-apiml/service-information.md#protection-of-service-information)._
-
-The tool can be executed from z/OS USS, and it takes these command line parameters:
-
-- **`-c|--component-id`**: (Required) Specifies the name of the Zowe component that you want to verify.
-- **`-i|--instance-dir`**: (Required) Specifies the path to the Zowe instance directory.
-- **`-u|--username`**: (Required) Username of a specified user for the current system.
-- **`-p|--password`**: (Required) Password of the specified user.
-
-**Examples**
-
-This command will verify the `external-zowe-component` installed in `/global/zowe/extensions` for the Zowe instance installed at `/var/zowe/instance`.
-
-```
-$ zowe-verify-component.sh \
-    -c external-zowe-component \
-    -i /var/zowe/instance \
-    -u user \
-    -p pass
-```
-
-You can also run the following commands to get the same results but instead of passing in values for the -u and -p parameters, you can use the export command.
-
-```
-$ export VERIFY_USER_NAME=user
-$ export VERIFY_PASSWORD=pass
-$ zowe-verify-component.sh \
-    -c external-zowe-component \
-    -i /var/zowe/instance
-```
+When the Zowe instance is launched by running `zwe start` command, it will read manifest `commands` instructions and call the `/usr/lpp/myvendor/myapp/zowe-ext/bin/start.sh` script. The started task will create an address space under `ZWESLSTC` for the vendor component.  When the Zowe instance is stopped, the address space is terminated.

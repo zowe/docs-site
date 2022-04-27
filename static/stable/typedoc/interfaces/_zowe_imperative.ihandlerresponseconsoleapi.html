@@ -3,8 +3,8 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>IHandlerResponseConsoleApi | Zowe Node.js SDK - v1.27.2</title>
-	<meta name="description" content="Documentation for Zowe Node.js SDK - v1.27.2">
+	<title>IHandlerResponseConsoleApi | Zowe Node.js SDK - v2.0.0</title>
+	<meta name="description" content="Documentation for Zowe Node.js SDK - v2.0.0">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
 </head>
@@ -22,7 +22,7 @@
 						<li class="state loading">Preparing search index...</li>
 						<li class="state failure">The search index is not available</li>
 					</ul>
-					<a href="../index.html" class="title">Zowe Node.js SDK - v1.27.2</a>
+					<a href="../index.html" class="title">Zowe Node.js SDK - v2.0.0</a>
 				</div>
 				<div class="table-cell" id="tsd-widgets">
 					<div id="tsd-filter">
@@ -99,6 +99,7 @@
 								<li class="tsd-kind-method tsd-parent-kind-interface"><a href="_zowe_imperative.ihandlerresponseconsoleapi.html#error" class="tsd-kind-icon">error</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-interface"><a href="_zowe_imperative.ihandlerresponseconsoleapi.html#errorheader" class="tsd-kind-icon">error<wbr>Header</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-interface"><a href="_zowe_imperative.ihandlerresponseconsoleapi.html#log" class="tsd-kind-icon">log</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-interface"><a href="_zowe_imperative.ihandlerresponseconsoleapi.html#prompt" class="tsd-kind-icon">prompt</a></li>
 							</ul>
 						</section>
 					</div>
@@ -116,7 +117,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v4.17.6/packages/cmd/src/doc/response/api/handler/IHandlerResponseConsoleApi.ts#L33">@zowe/imperative/packages/cmd/src/doc/response/api/handler/IHandlerResponseConsoleApi.ts:33</a></li>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.0.2/packages/cmd/src/doc/response/api/handler/IHandlerResponseConsoleApi.ts#L35">@zowe/imperative/packages/cmd/src/doc/response/api/handler/IHandlerResponseConsoleApi.ts:35</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -161,7 +162,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v4.17.6/packages/cmd/src/doc/response/api/handler/IHandlerResponseConsoleApi.ts#L42">@zowe/imperative/packages/cmd/src/doc/response/api/handler/IHandlerResponseConsoleApi.ts:42</a></li>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.0.2/packages/cmd/src/doc/response/api/handler/IHandlerResponseConsoleApi.ts#L44">@zowe/imperative/packages/cmd/src/doc/response/api/handler/IHandlerResponseConsoleApi.ts:44</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -201,7 +202,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v4.17.6/packages/cmd/src/doc/response/api/handler/IHandlerResponseConsoleApi.ts#L25">@zowe/imperative/packages/cmd/src/doc/response/api/handler/IHandlerResponseConsoleApi.ts:25</a></li>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.0.2/packages/cmd/src/doc/response/api/handler/IHandlerResponseConsoleApi.ts#L27">@zowe/imperative/packages/cmd/src/doc/response/api/handler/IHandlerResponseConsoleApi.ts:27</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -236,6 +237,42 @@
 						</li>
 					</ul>
 				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface">
+					<a name="prompt" class="tsd-anchor"></a>
+					<h3>prompt</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface">
+						<li class="tsd-signature tsd-kind-icon">prompt<span class="tsd-signature-symbol">(</span>questionText<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, opts<span class="tsd-signature-symbol">?: </span><a href="_zowe_imperative.ipromptoptions.html" class="tsd-signature-type">IPromptOptions</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_zowe_imperative.ipromisewithprogress.html#promise" class="tsd-signature-type">Promise</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.0.2/packages/cmd/src/doc/response/api/handler/IHandlerResponseConsoleApi.ts#L52">@zowe/imperative/packages/cmd/src/doc/response/api/handler/IHandlerResponseConsoleApi.ts:52</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Handles prompting for CLI handlers</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>memberof</dt>
+									<dd><p>IHandlerResponseConsoleApi</p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>questionText: <span class="tsd-signature-type">string</span></h5>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> opts: <a href="_zowe_imperative.ipromptoptions.html" class="tsd-signature-type">IPromptOptions</a></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="_zowe_imperative.ipromisewithprogress.html#promise" class="tsd-signature-type">Promise</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
 			</section>
 		</div>
 		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
@@ -261,6 +298,9 @@
 					</li>
 					<li class=" tsd-kind-module">
 						<a href="../modules/_zowe_zos_jobs_for_zowe_sdk.html">@zowe/zos-<wbr>jobs-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_zos_logs_for_zowe_sdk.html">@zowe/zos-<wbr>logs-<wbr>for-<wbr>zowe-<wbr>sdk</a>
 					</li>
 					<li class=" tsd-kind-module">
 						<a href="../modules/_zowe_zos_tso_for_zowe_sdk.html">@zowe/zos-<wbr>tso-<wbr>for-<wbr>zowe-<wbr>sdk</a>
@@ -298,6 +338,9 @@
 									<li class=" tsd-kind-method tsd-parent-kind-interface">
 										<a href="_zowe_imperative.ihandlerresponseconsoleapi.html#log" class="tsd-kind-icon">log</a>
 									</li>
+									<li class=" tsd-kind-method tsd-parent-kind-interface">
+										<a href="_zowe_imperative.ihandlerresponseconsoleapi.html#prompt" class="tsd-kind-icon">prompt</a>
+									</li>
 								</ul>
 							</li>
 						</ul>
@@ -315,6 +358,9 @@
 					</li>
 					<li class=" tsd-kind-module">
 						<a href="../modules/_zowe_zos_jobs_for_zowe_sdk.html" class="tsd-kind-icon">@zowe/zos-<wbr>jobs-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_zos_logs_for_zowe_sdk.html" class="tsd-kind-icon">@zowe/zos-<wbr>logs-<wbr>for-<wbr>zowe-<wbr>sdk</a>
 					</li>
 					<li class=" tsd-kind-module">
 						<a href="../modules/_zowe_zos_tso_for_zowe_sdk.html" class="tsd-kind-icon">@zowe/zos-<wbr>tso-<wbr>for-<wbr>zowe-<wbr>sdk</a>

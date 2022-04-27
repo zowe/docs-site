@@ -20,78 +20,11 @@ In the definition file is a top level attribute called `dataServices`, for examp
   ]
 ```
 
-To define your dataservice, create a set of keys and values for your dataservice in the `dataservices` array. The following values are valid:
+To define your dataservice, create a set of keys and values for your dataservice in the `dataservices` array.
 
- **type**
+## Schema
 
- Specify one of the following values:
-
-  - **router**: Router dataservices run under the proxy server and use ExpressJS Routers for attaching actions to URLs and methods.
-
-  - **service**: Service dataservices run under ZSS and utilize the API of ZSS dataservices for attaching actions to URLs and methods.
-
-  - **java-war**: See the topic _Defining Java dataservices_ below.
-
-  - **external**: Used to set up an endpoint in your plugin's namespace as a proxy for an endpoint on another server. External services have the following values to state how to proxy.
-
-**name**
-
- The name of the service. Names must be unique within each `pluginDefinition.json` file. The name is used to reference the dataservice during logging and to construct the URL space that the dataservice occupies.
-
-**version**
-
- A semver version string. More than one version of the same service can be present within a plugin, but versions must be declared to track dependencies.
-
-**initializerLookupMethod**
-
- Specify `external` unless otherwise instructed.
-
-**fileName**
-
-The name of the file that is the entry point for construction of the dataservice, relative to the application's `/lib` directory. For example, for the `sample-app` the `fileName` value is `"helloWorld.js"` - without a path. So its typescript code is transpiled to JavaScript files that are placed directly into the `/lib` directory.
-
-**dependenciesIncluded**
-
- Specify `true` for anything in the `pluginDefinition.json` file. Only specify `false` when you are adding dataservices to the server dynamically.
-
-### Router-type specific attributes
-
-**routerFactory (Optional)**
-
- When you use a router dataservice, the dataservice is included in the proxy server through a `require()` statement. If the dataservice's exports are defined such that the router is provided through a factory of a specific name, you must state the name of the exported factory using this attribute.
-
-### Import-type specific attributes
-
-**sourcePlugin**
-
- The ID of the plugin where the service can be found for an **import** type dataservice.
-
-**sourceName**
-
- The name of the dataservice to be found in the source plugin when using an **import** type dataservice.
-
-**localName**
-
- The name of the dataservice within your plugin's namespace when using an **import** type dataservice.
-
-**versionRange**
-
- A semver string plus range modifiers such as "^" to denote what range of versions would satisfy the import.
-
-
-**Note: Import-type dataservices cannot at this time override the attributes of the imported dataservice. For example, if the original dataservice had `httpCaching:false`, and the import used `httpCaching:true`, the import's value is ignored and the original value used instead.**
-
-### External-type specific attributes
-
-**urlPrefix**
-
- The prefix to be prepended when making the proxy connection to the external source. For example, if the user tried to access `<your external service>/foo`, but your urlPrefix was `/bar`, then the proxy would make a connection to `<your external destination>/bar/foo`.
-
-**isHttps**
-
- Boolean used to tell the server whether to proxy to a destination that is or is not using https instead of http.
-
-**Note: External-type dataservices also require specification of the proxied host & port. This is accomplished via making a JSON file, `remote.json`, with attributes `host` and `port`, and placing it within the internal configuration storage for that dataservice. See more about that storage here: https://github.com/zowe/zlux/wiki/Configuration-Dataservice#internal--bootstrapping-use**
+The documentation on dataservice types and parameters for each are specified within the [pluginDefinition.json json-schema document](https://github.com/zowe/zlux/blob/v2.x/staging/schemas/plugindefinition-schema.json)
 
 ## Defining Java dataservices
 In addition to other types of dataservice, you can use Java (also called java-war) dataservices in your applications. Java dataservices are powered by Java Servlets.
@@ -151,7 +84,7 @@ In the `zlux-app-server/zluxserver.json` file, use the example below to specify 
           }
         }
       },
-      "portRange": [8545,8600]
+      "portRange": [7600,7650]
     }
   }
 
@@ -377,19 +310,19 @@ static int serveHelloWorldDataService(HttpService *service, HttpResponse *respon
 #### ZSS dataservice context and structs
 
 Headers to important dataservice structs include
-* [HttpResponse](https://github.com/zowe/zowe-common-c/blob/zss-v1.23.0-RC1/h/httpserver.h#L117)
-* [HttpRequest](https://github.com/zowe/zowe-common-c/blob/zss-v1.23.0-RC1/h/http.h#L124)
-* [HttpService](https://github.com/zowe/zowe-common-c/blob/zss-v1.23.0-RC1/h/httpserver.h#L173)
-* [HttpServer](https://github.com/zowe/zowe-common-c/blob/zss-v1.23.0-RC1/h/httpserver.h#L223)
-* [Json handling](https://github.com/zowe/zowe-common-c/blob/zss-v1.23.0-RC1/h/json.h)
-* [DataService context](https://github.com/zowe/zowe-common-c/blob/zss-v1.23.0-RC1/h/dataservice.h#L57)
-* [Utilities](https://github.com/zowe/zowe-common-c/blob/zss-v1.23.0-RC1/h/utils.h)
-* [Data structures](https://github.com/zowe/zowe-common-c/blob/zss-v1.23.0-RC1/h/collections.h)
+* [HttpResponse](https://github.com/zowe/zowe-common-c/blob/zss-v1.27.0/h/httpserver.h#L117)
+* [HttpRequest](https://github.com/zowe/zowe-common-c/blob/zss-v1.27.0/h/http.h#L124)
+* [HttpService](https://github.com/zowe/zowe-common-c/blob/zss-v1.27.0/h/httpserver.h#L173)
+* [HttpServer](https://github.com/zowe/zowe-common-c/blob/zss-v1.27.0/h/httpserver.h#L223)
+* [Json handling](https://github.com/zowe/zowe-common-c/blob/zss-v1.27.0/h/json.h)
+* [DataService context](https://github.com/zowe/zowe-common-c/blob/zss-v1.27.0/h/dataservice.h#L57)
+* [Utilities](https://github.com/zowe/zowe-common-c/blob/zss-v1.27.0/h/utils.h)
+* [Data structures](https://github.com/zowe/zowe-common-c/blob/zss-v1.27.0/h/collections.h)
 
 
 #### ZSS storage API
 
-The [DataService](https://github.com/zowe/zowe-common-c/blob/zss-v1.23.0-RC1/h/dataservice.h#L57) struct contains two [Storage structs](https://github.com/zowe/zowe-common-c/blob/zss-v1.23.0-RC1/h/storage.h#L22), `localStorage` and `remoteStorage`. They implement the same API for getting, setting, and removing data, but manage the data in different locations. `localStorage` stores data within the ZSS server, for high speed access. `remoteStorage` stores data in the Caching Service, for high availability state storage.
+The [DataService](https://github.com/zowe/zowe-common-c/blob/zss-v1.27.0/h/dataservice.h#L57) struct contains two [Storage structs](https://github.com/zowe/zowe-common-c/blob/zss-v1.27.0/h/storage.h#L22), `localStorage` and `remoteStorage`. They implement the same API for getting, setting, and removing data, but manage the data in different locations. `localStorage` stores data within the ZSS server, for high speed access. `remoteStorage` stores data in the Caching Service, for high availability state storage.
 
 Usage example:
 Sample angular app storage test api: https://github.com/zowe/sample-angular-app/blob/v1.23.0-RC1/zssServer/src/storage.c

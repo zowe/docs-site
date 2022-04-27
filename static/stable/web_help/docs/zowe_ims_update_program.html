@@ -22,7 +22,7 @@
 <h4>Options</h4>
 <ul>
 <li>
-<p><code>--bmp-type</code>  | <code>--bmptype</code> <em>(string)</em></p>
+<p><code>--bmp-type</code> | <code>--bmptype</code> <em>(string)</em></p>
 <ul>
 <li>
 <p>Specifies whether the program runs in a BMP type region or not. (N or Y).</p>
@@ -31,7 +31,7 @@
 </ul>
 </li>
 <li>
-<p><code>--dynamic</code>  | <code>--dopt</code> <em>(string)</em></p>
+<p><code>--dynamic</code> | <code>--dopt</code> <em>(string)</em></p>
 <ul>
 <li>
 <p>Specifies the dynamic option (N or Y).</p>
@@ -40,7 +40,7 @@
 </ul>
 </li>
 <li>
-<p><code>--fast-path</code>  | <code>--fp</code> <em>(string)</em></p>
+<p><code>--fast-path</code> | <code>--fp</code> <em>(string)</em></p>
 <ul>
 <li>
 <p>Specifies the Fast Path option (E or N).</p>
@@ -49,7 +49,7 @@
 </ul>
 </li>
 <li>
-<p><code>--generated-psb</code>  | <code>--gpsb</code> <em>(string)</em></p>
+<p><code>--generated-psb</code> | <code>--gpsb</code> <em>(string)</em></p>
 <ul>
 <li>
 <p>Specifies the generated PSB option (N or Y).</p>
@@ -58,7 +58,7 @@
 </ul>
 </li>
 <li>
-<p><code>--language</code>  | <code>--lang</code> <em>(string)</em></p>
+<p><code>--language</code> | <code>--lang</code> <em>(string)</em></p>
 <ul>
 <li>
 <p>Specifies the language interface of the program or a GPSB or defined a DOPT(Y) program as using the JAVA language (ASSEM, COBOL, JAVA, PASCAL, PLI).</p>
@@ -67,7 +67,7 @@
 </ul>
 </li>
 <li>
-<p><code>--lock</code>  | <code>-l</code> <em>(string)</em></p>
+<p><code>--lock</code> | <code>-l</code> <em>(string)</em></p>
 <ul>
 <li>
 <p>Specifies the LOCK status is to be set (ON or OFF).</p>
@@ -76,7 +76,7 @@
 </ul>
 </li>
 <li>
-<p><code>--option</code>  | <code>-o</code> <em>(string)</em></p>
+<p><code>--option</code> | <code>-o</code> <em>(string)</em></p>
 <ul>
 <li>
 <p>Specifies to return response lines for all resources that are processed.  It is only valid with --name * (ALLRSP).</p>
@@ -85,7 +85,7 @@
 </ul>
 </li>
 <li>
-<p><code>--resident</code>  | <code>-r</code> <em>(string)</em></p>
+<p><code>--resident</code> | <code>-r</code> <em>(string)</em></p>
 <ul>
 <li>
 <p>Specifies the resident option (N or Y).</p>
@@ -94,13 +94,13 @@
 </ul>
 </li>
 <li>
-<p><code>--route</code>  | <code>--rte</code> <em>(array)</em></p>
+<p><code>--route</code> | <code>--rte</code> <em>(array)</em></p>
 <ul>
 <li>Specifies the region(s) to route the command.</li>
 </ul>
 </li>
 <li>
-<p><code>--schedule-type</code>  | <code>--schdtype</code> <em>(string)</em></p>
+<p><code>--schedule-type</code> | <code>--schdtype</code> <em>(string)</em></p>
 <ul>
 <li>
 <p>Specifies whether this application program can be scheduled into more than one message region or batch message region simultaneously (PARALLEL or SERIAL).</p>
@@ -109,7 +109,7 @@
 </ul>
 </li>
 <li>
-<p><code>--transaction-level-stat</code>  | <code>--transtat</code> <em>(string)</em></p>
+<p><code>--transaction-level-stat</code> | <code>--transtat</code> <em>(string)</em></p>
 <ul>
 <li>
 <p>Specifies whether transaction level statistics should be logged (N or Y).</p>
@@ -121,64 +121,83 @@
 <h4>IMS Connection Options</h4>
 <ul>
 <li>
-<p><code>--host</code>  | <code>-H</code> <em>(string)</em></p>
+<p><code>--host</code> | <code>-H</code> <em>(string)</em></p>
 <ul>
 <li>The IMS Operations API server host name.</li>
 </ul>
 </li>
 <li>
-<p><code>--port</code>  | <code>-P</code> <em>(number)</em></p>
+<p><code>--port</code> | <code>-P</code> <em>(number)</em></p>
 <ul>
 <li>The IMS Operations API server port.</li>
 </ul>
 </li>
 <li>
-<p><code>--ims-connect-host</code>  | <code>--ich</code> <em>(string)</em></p>
+<p><code>--ims-connect-host</code> | <code>--ich</code> <em>(string)</em></p>
 <ul>
 <li>The hostname of your instance of IMS Connect. This is typically the hostname of the mainframe LPAR where IMS Connect is running.</li>
 </ul>
 </li>
 <li>
-<p><code>--ims-connect-port</code>  | <code>--icp</code> <em>(number)</em></p>
+<p><code>--ims-connect-port</code> | <code>--icp</code> <em>(number)</em></p>
 <ul>
 <li>The port of your instance of IMS Connect. This port can be found in your IMS Connect configuration file on the mainframe.</li>
 </ul>
 </li>
 <li>
-<p><code>--plex</code>  | <code>-x</code> <em>(string)</em></p>
+<p><code>--plex</code> | <code>-x</code> <em>(string)</em></p>
 <ul>
 <li>The name of the IMS plex.</li>
 </ul>
 </li>
 <li>
-<p><code>--user</code>  | <code>-u</code> <em>(string)</em></p>
+<p><code>--user</code> | <code>-u</code> <em>(string)</em></p>
 <ul>
 <li>The web server user name where the IMS Operations API resides.</li>
 </ul>
 </li>
 <li>
-<p><code>--password</code>  | <code>--pass</code> <em>(string)</em></p>
+<p><code>--password</code> | <code>--pass</code> <em>(string)</em></p>
 <ul>
 <li>The web server user password where the IMS Operations API resides.</li>
 </ul>
 </li>
 <li>
-<p><code>--base-path</code>  | <code>--bp</code> <em>(string)</em></p>
+<p><code>--base-path</code> | <code>--bp</code> <em>(string)</em></p>
 <ul>
 <li>The base path for your API mediation layer instance. Specify this option to prepend the base path to all z/OSMF resources when making REST requests. Do not specify this option if you are not using an API mediation layer.</li>
+</ul>
+</li>
+<li>
+<p><code>--protocol</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>Specifies protocol (http or https).</p>
+<p>Default value: https<br>
+Allowed values: http, https</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--reject-unauthorized</code> | <code>--ru</code> <em>(boolean)</em></p>
+<ul>
+<li>
+<p>Reject self-signed certificates.</p>
+<p>Default value: true</p>
+</li>
 </ul>
 </li>
 </ul>
 <h4>Profile Options</h4>
 <ul>
 <li>
-<p><code>--ims-profile</code>  | <code>--ims-p</code> <em>(string)</em></p>
+<p><code>--ims-profile</code> | <code>--ims-p</code> <em>(string)</em></p>
 <ul>
 <li>The name of a (ims) profile to load for this command execution.</li>
 </ul>
 </li>
 <li>
-<p><code>--base-profile</code>  | <code>--base-p</code> <em>(string)</em></p>
+<p><code>--base-profile</code> | <code>--base-p</code> <em>(string)</em></p>
 <ul>
 <li>The name of a (base) profile to load for this command execution.</li>
 </ul>
@@ -187,34 +206,25 @@
 <h4>Base Connection Options</h4>
 <ul>
 <li>
-<p><code>--reject-unauthorized</code>  | <code>--ru</code> <em>(boolean)</em></p>
-<ul>
-<li>
-<p>Reject self-signed certificates.</p>
-<p>Default value: true</p>
-</li>
-</ul>
-</li>
-<li>
-<p><code>--token-type</code>  | <code>--tt</code> <em>(string)</em></p>
+<p><code>--token-type</code> | <code>--tt</code> <em>(string)</em></p>
 <ul>
 <li>The type of token to get and use for the API. Omit this option to use the default token type, which is provided by 'zowe auth login'.</li>
 </ul>
 </li>
 <li>
-<p><code>--token-value</code>  | <code>--tv</code> <em>(string)</em></p>
+<p><code>--token-value</code> | <code>--tv</code> <em>(string)</em></p>
 <ul>
 <li>The value of the token to pass to the API.</li>
 </ul>
 </li>
 <li>
-<p><code>--cert-file</code>  <em>(local file path)</em></p>
+<p><code>--cert-file</code> <em>(local file path)</em></p>
 <ul>
 <li>The file path to a certificate file to use for authentication</li>
 </ul>
 </li>
 <li>
-<p><code>--cert-key-file</code>  <em>(local file path)</em></p>
+<p><code>--cert-key-file</code> <em>(local file path)</em></p>
 <ul>
 <li>The file path to a certificate key file to use for authentication</li>
 </ul>
@@ -223,13 +233,13 @@
 <h4>Response Format Options</h4>
 <ul>
 <li>
-<p><code>--response-format-filter</code>  | <code>--rff</code> <em>(array)</em></p>
+<p><code>--response-format-filter</code> | <code>--rff</code> <em>(array)</em></p>
 <ul>
 <li>Filter (include) fields in the response. Accepts an array of field/property names to include in the output response. You can filter JSON objects properties OR table columns/fields. In addition, you can use this option in conjunction with '--response-format-type' to reduce the output of a command to a single field/property or a list of a single field/property.</li>
 </ul>
 </li>
 <li>
-<p><code>--response-format-type</code>  | <code>--rft</code> <em>(string)</em></p>
+<p><code>--response-format-type</code> | <code>--rft</code> <em>(string)</em></p>
 <ul>
 <li>
 <p>The command response output format type. Must be one of the following:</p>
@@ -242,7 +252,7 @@
 </ul>
 </li>
 <li>
-<p><code>--response-format-header</code>  | <code>--rfh</code> <em>(boolean)</em></p>
+<p><code>--response-format-header</code> | <code>--rfh</code> <em>(boolean)</em></p>
 <ul>
 <li>If &quot;--response-format-type table&quot; is specified, include the column headers in the output.</li>
 </ul>

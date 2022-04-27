@@ -1,4 +1,4 @@
-This is a list of core loggers (and descriptions of each) that you can enable and increase verbosity on within the logging framework. See [the logging wiki](https://github.com/zowe/zlux/wiki/Logging) for more info.
+This is a list of core loggers (and descriptions of each) that you can enable and increase verbosity on within the logging framework. See [the logging utility](mvd-logutility.md) for more info.
 
 # Loggers for Zowe Application Server Core
 The log prefix for the Zowe Application Server is _zsf, which is used by the server framework. (Applications and plug-ins that are attached to the server do not use the _zsf prefix.)

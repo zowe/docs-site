@@ -40,9 +40,9 @@ in separate Docker containers, the replica container's IP address needs to be ac
 
 ## Redis configuration
 
-Configure Redis as a storage solution through the Caching service by setting the following environment variables. Environment variables can be set by adding them to `instance.env`.
+Configure Redis as a storage solution through the Caching service by setting the following environment variables. Environment variables can be set by adding them to the `zowe.components.caching-service` section of the `zowe.yaml` configuration file.
 
-* **`CACHING_STORAGE_REDIS_MASTERNODEURI`**
+* **`storage.redis.masterNodeUri`**
 
     The URI used to connect to the Redis master instance in the form `username:password@host:port`.
 
@@ -51,15 +51,15 @@ Configure Redis as a storage solution through the Caching service by setting the
     * The username section is optional and if not included defaults to the Redis default username `default`.
     * The password section is optional, but must be included if a username is included. If the password is not set a username cannot be set.
 
-* **`CACHING_STORAGE_REDIS_TIMEOUT`** 
+* **`storage.redis.timeout`** 
 
     The timeout duration in seconds for the Caching service when first connecting to Redis. Defaults to 60 seconds.
 
-* **`CACHING_STORAGE_REDIS_SENTINEL_MASTERINSTANCE`** 
+* **`storage.redis.sentinel.masterInstance`** 
 
     The Redis master instance ID used by the Redis Sentinel instances. Required if Redis Sentinel is being used.
 
-* **`CACHING_STORAGE_REDIS_SENTINEL_NODES`** 
+* **`storage.redix.sentinel.nodes`** 
 
     The URI used to connect to a Redis Sentinel instance in the form `username:password@host:port`.
 
@@ -69,22 +69,22 @@ Configure Redis as a storage solution through the Caching service by setting the
 
     To supply multiple Redis Sentinel URIs, concatenate the URIs with a comma `,`.
 
-* **`CACHING_STORAGE_REDIS_SSL_ENABLED`** 
+* **`storage.redix.ssl.enabled`** 
 
     A flag indicating if Redis is being used with SSL/TLS support. Defaults to `true`.
 
-* **`CACHING_STORAGE_REDIS_SSL_KEYSTORE`** 
+* **`storage.redis.ssl.keystore`** 
 
     The keystore file used to store the private key. Defaults to the Caching Service's keystore.
 
-* **`CACHING_STORAGE_REDIS_SSL_KEYSTOREPASSWORD`** 
+* **`storage.redis.ssl.keystorePassword`** 
 
     The password used to unlock the keystore. Defaults to the Caching Service's keystore password.
 
-* **`CACHING_STORAGE_REDIS_SSL_TRUSTSTORE`** 
+* **`storage.redis.ssl.truststore`** 
 
     The truststore file used to keep other parties public keys and certificates. Defaults to the Caching Service's truststore.
 
-* **`CACHING_STORAGE_REDIS_SSL_TRUSTSTOREPASSWORD`** 
+* **`storage.redix.ssl.truststorePassword`** 
 
     The password used to unlock the truststore. Defaults to the Caching Service's truststore password.

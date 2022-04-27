@@ -29,7 +29,10 @@ To use the plug-in functionality, issue: `zowe zowe-cli-sample list directory-co
 To run automated tests against the plug-in, `cd` into your `zowe-tutorial/zowe-cli-sample-plugin` folder.
 
 Issue the following command:
-* `npm run test`
+
+```
+npm run test
+```
 
 ## Next steps
 You successfully installed a plug-in to Zowe CLI! Next, try the [Extending a plug-in](cli-extending-a-plugin.md) tutorial to learn about developing new commands for this plug-in. 

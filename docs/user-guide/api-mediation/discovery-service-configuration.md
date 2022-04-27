@@ -37,6 +37,36 @@ As an application developer who wants to run Zowe, set the following parameters 
             discovery:
                 staticApiDefinitionsDirectories: config/local/api-defs;config/local2/api-defs
 
+* **apiml.discovery.serviceIdPrefixReplacer**
+    
+    This parameter is used to modify the service ID of a service instance, before it registers to API ML.
+    Using this parameter ensures compatibility of services that use a non-conformant organization prefix with v2, based on Zowe v2 conformance.
+    The value of the `*apiml.discovery.serviceIdPrefixReplacer` parameter is represented as a tuple that contains two strings, separated by a comma. The format of this parameter contains the following two elements:
+    * First, the prefix that you want to replace in the service ID
+    * Second, the new prefix that will be replaced
+    
+  **Example:**
+    The value of the parameter has the following format: `oldServiceIdPrefix,newServiceIdPrefix`
+
+    Set this parameter in your Zowe YAML configuration (typically `zowe.yaml`) by defining `configs.apiml.discovery.serviceIdPrefixReplacer`. For example, defining it globally:
+
+    ```yaml
+      configs:
+         apiml:
+            discovery:
+                serviceIdPrefixReplacer: ca*,bcm
+    ```
+     Or defining it only for lpar1 high availability instance:
+
+    ```yaml
+      haInstances:
+        lpar1:
+          configs:
+            apiml:
+               discovery:
+                  serviceIdPrefixReplacer: ca*,bcm
+    ```    
+
 ## Eureka configuration
 
 The Discovery Service contains a configuration for implementing the client-side service discovery and for defining a Eureka Server for service registry. Such configuration is shown below:

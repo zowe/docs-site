@@ -60,7 +60,7 @@ To verify, run the following commands and check if the `STATUS` of line item `zo
 kubectl get pvc --namespace zowe
 ```
 
-Note that `zowe-workspace-pvc` `PersistentVolumeClaim` must be declared in access mode `ReadWriteMany`.
+**IMPORTANT**, `zowe-workspace-pvc` `PersistentVolumeClaim` must be declared in access mode `ReadWriteMany` to allow the workspace be shared by all Zowe components.
 
 In some Kubernetes environment, you may need to define `PeristentVolume` and define `volumeName` in `PersistentVolumeClaim` instead of defining `storageClassName`. Please consult your Kubernetes administrator to confirm the appropriate way for your environment. This is an example to configure `PersistentVolumeClaim` with pre-configured `zowe-workspace-pv` `PeristentVolume`.
 
@@ -86,9 +86,9 @@ spec:
 
 ## 3. Create and modify ConfigMaps and Secrets
 
-Similarly, to running Zowe services on z/OS, you can use either `instance.env` or `zowe.yaml` to customize Zowe.
+Similarly, to running Zowe services on z/OS, you can use Zowe configuration file (`zowe.yaml`) to customize Zowe in Kubernetes.
 
-You can modify `samples/config-cm.yaml`,  , and `samples/certificates-secret.yaml` directly. Or more conveniently, if you have Zowe ZSS/ZIS running on z/OS, the Kubernetes environment can reuse instance and keystore configuration from that installation (supported in v1.25 and later).
+You can modify `samples/config-cm.yaml`,  , and `samples/certificates-secret.yaml` directly. Or more conveniently, if you have Zowe ZSS/ZIS running on z/OS, the Kubernetes environment can reuse instance and keystore configuration from that installation.
 
 If you want to manually create, or later customize the ConfigMaps and Secrets, see [Customizing or manually creating ConfigMaps and Secrets](#customizing-or-manually-creating-configmaps-and-secrets) for details.
 
@@ -97,20 +97,23 @@ To create and modify [ConfigMaps](https://kubernetes.io/docs/concepts/configurat
 a. On z/OS, run the following command:
 
 ```
-cd <instance-dir> 
-./bin/utils/convert-for-k8s.sh -x "my-k8s-cluster.company.com,9.10.11.12"
+cd <runtime-dir> 
+./bin/zwe migrate for kubernetes --config /path/to/my/zowe.yaml --domains "my-k8s-cluster.company.com,9.10.11.12"
 ``` 
 
 This migration script supports these parameters:
 
-- `-x`: is a comma-separated list of domains you will use to visit the Zowe Kubernetes cluster. These domains and IP addresses will be added to your new certificate if needed. This is optional. The default value is `localhost`.
-- `-n`: is the Zowe Kubernetes cluster namespace. This is optional. The default value is `zowe`.
-- `-u`: is the Kubernetes cluster name. This is optional. The default value is `cluster.local`.
-- `-p`: is the password of the local certificate authority PKCS#12 file. This is optional. The default value is `local_ca_password`.
-- `-a`: is the certificate alias of the local certificate authority. This is optional. The default value is `localca`.
-- `-v`: is a switch to enable verbose mode which will display more debugging information.
+- `--config` or `-c`: Defines the path to your configuration file, usually referred as `zowe.yaml`.
+- `--domains`: Defines the domain list will be put into certificate Subject Alternative Name (SAN). This is optional, default value is `localhost`.
+- `--external-port`: Defines the external port number to access APIML Gateway running in Kubernetes. This is optional, default value is `7554`.
+- `--k8s-namespace`: Defines the Kubernetes namespace. This is optional, default value is `zowe`.
+- `--k8s-cluster-name`: Defines the Kubernetes cluster name. This is optional, default value is `cluster.local`.
+- `--password`: Defines password of the certificate keystore. This is optional, default value is `password`.
+- `--ca-alias`: Defines the alias name of the certificate authority which is used to sign CSR. This is optional, default value is `local_ca`. This argument is only used to sign a new certificate if the migration script will re-generate new certificates for Kubernetes.
+- `--ca-password`: Defines the password of the certificate authority keystore which is used to sign CSR. This is optional, default value is `local_ca_password`. This argument is only used if the migration script will re-generate new certificates for Kubernetes.
+- `--silent` or `-s` is an optional parameter can help you suppress all standard output except for the Kubernetes manifests will be generated.
 
-As a result, it displays ConfigMaps (`zowe-config`, `zowe-certificates-cm`) and Secrets (`zowe-certificates-secret`) Kubernetes objects which are based on the Zowe instance and keystore used. The content looks similar to `samples/config-cm.yaml`, `samples/certificates-cm.yaml` and `samples/certificates-secret.yaml` but with real values.
+As a result, it displays ConfigMaps `zowe-config` and Secrets (`zowe-certificates-secret`) Kubernetes objects which are based on the Zowe instance and keystore used. The content looks similar to `samples/config-cm.yaml`, `samples/certificates-cm.yaml` and `samples/certificates-secret.yaml` but with real values.
 
 b. Follow the instructions in the script output to copy the output and save it as a YAML file `configs.yaml` on your computer where you manage Kubernetes.
 
@@ -147,7 +150,7 @@ You can set up either a `LoadBalancer` or `NodePort` type [Service](https://kube
 
 **Note:** Because `NodePort` cannot be used together with `NetworkPolicies`, `LoadBalancer` and `Ingress` is preferred configuration option.
 
-Review the following table for steps you may take depending on the Kubernetes provider you use. If you don't need additional setups, you can skip steps 4b, 4c and jump directly to the [Apply zowe](k8s-using.md) section.
+Review the following table for steps you may take depending on the Kubernetes provider you use. If you don't need additional setups, you can skip steps 4b, 4c and jump directly to the [Apply zowe](./k8s-using.md) section.
 
 | Kubernetes provider       | Service                  | Additional setups required                                 |
 | :------------------------ | :----------------------  | :--------------------------------------------------------- |
@@ -276,47 +279,71 @@ Upon completion, you can finish the setup by [applying zowe and starting it](k8s
 
 [The z/OS to k8s convert tool](#3-create-and-modify-configmaps-and-secrets) can automatically create a config map and secret. However, if you want to customize or create your own, review the instructions in this section.
 
+To make certificates work in Kubernetes, make sure the certificate you are using have defined the following domains in certificate Subject Alt Name (SAN):
+
+- your external domains to access Zowe APIML Gateway Service running in Kubernetes cluster
+- `*.<k8s-namespace>.svc.<k8s-cluster-name>`
+- `*.discovery-service.<k8s-namespace>.svc.<k8s-cluster-name>`
+- `*.gateway-service.<k8s-namespace>.svc.<k8s-cluster-name>`
+- `*.<k8s-namespace>.pod.<k8s-cluster-name>`
+
+`<k8s-namespace>` is the Kubernetes Namespace you installed Zowe into. And `<k8s-cluster-name>` is the Kubernetes cluster name, which usually should be `cluster.local`.
+
+Without the additional domains in SAN, you may see warnings/errors related to certificate validation.
+
+If you cannot add those domains into certificate Subject Alt Name (SAN), you can change `zowe.verifyCertificates` to `NONSTRICT` mode. Zowe components will not validate domain names but will continue to validate certificate chain, validity and whether it's trusted in Zowe truststore.
+
+:::caution
+
+It's not recommended to disable `zowe.verifyCertificates`.
+
+:::
+
+**Notes**: When the following conditions are true, this migration script will regenerate a new set of certificates for you with proper domain names listed above.
+
+- You use `zwe init` command to initialize Zowe
+- You use `PKCS#12` format keystore by defining `zowe.setup.certificate.type: PKCS12`
+- You did not define `zowe.setup.certificate.pkcs12.import.keystore` and let `zwe` command to generate PKCS12 keystore for you
+- You enabled `STRICT` mode `zowe.verifyCertificates`
+
 To manually create the [ConfigMaps](https://kubernetes.io/docs/concepts/configuration/configmap/) and [Secrets](https://kubernetes.io/docs/concepts/configuration/secret/) used by Zowe containers, you must create the following objects:
 
-1. A ConfigMap, with values based upon a Zowe instance's `instance.env` and similar to the example `samples/config-cm.yaml` with the following differences to the values seen on a z/OS install:
+1. A ConfigMap, with values based upon a Zowe configuration `zowe.yaml` and similar to the example `samples/config-cm.yaml` with the following differences to the values seen on a z/OS installation:
 
-   * `ZOWE_EXPLORER_HOST`, `ZOWE_IP_ADDRESS`, `ZWE_LAUNCH_COMPONENTS`, `ZWE_DISCOVERY_SERVICES_LIST` and `SKIP_NODE` are not needed for Zowe running in Kubernetes and will be ignored. You can remove them.
-   * `JAVA_HOME` and `NODE_HOME` are not usually needed if you are using Zowe base images.
-   * `ROOT_DIR` must be set to `/home/zowe/runtime`.
-   * `KEYSTORE_DIRECTORY` must be set to `/home/zowe/keystore`.
-   * `ZWE_EXTERNAL_HOSTS` is suggested to define as a list of domains you are using to access your Kubernetes cluster.
-   * `ZOWE_EXTERNAL_HOST=$(echo "${ZWE_EXTERNAL_HOSTS}" | awk -F, '{print $1}' | tr -d '[[:space:]]')` is needed to define after `ZWE_EXTERNAL_HOSTS`. It's the primary external domain.
-   * `ZWE_EXTERNAL_PORT` (or `zowe.externalPort` if you are using `zowe.yaml`) must be the port you expose to end-user. This value is optional if it's same as default `GATEWAY_PORT` `7554`. With default settings,
+   * `zowe.setup` and `haInstances` are not needed for Zowe running in Kubernetes and will be ignored. You can remove them.
+   * `java.home` and `node.home` are not usually needed if you are using Zowe base images.
+   * `zowe.runtimeDirectory` must be set to `/home/zowe/runtime`.
+   * `zowe.externalDomains` is suggested to define as a list of domains you are using to access your Kubernetes cluster.
+   * `zowe.externalPort` must be the port you expose to end-user. This value is optional if it's same as default APIML Gateway service port `7554`. With default settings,
      * if you choose `LoadBalancer` `gateway-service`, this value is optional, or set to `7554`,
      * if you choose `NodePort` `gateway-service` and access the service directly, this value should be same as `spec.ports[0].nodePort` with default value `32554`,
      * if you choose `NodePort` `gateway-service` and access the service through port forwarding, the value should be the forwarded port you set.
-   * `ZOWE_ZOS_HOST` is recommended to be set to where the z/OS system where your Zowe ZSS/ZIS is running.
-   * `ZWE_DISCOVERY_SERVICES_REPLICAS` should be set to same value of `spec.replicas` defined in `workloads/discovery-statefulset.yaml`.
+   * `components.discovery.replicas` should be set to same value of `spec.replicas` defined in `workloads/discovery-statefulset.yaml`.
    * All components running in Kubernetes should use default ports:
-     * `CATALOG_PORT` is `7552`,
-     * `DISCOVERY_PORT` is `7553`,
-     * `GATEWAY_PORT` is `7554`,
-     * `ZWE_CACHING_SERVICE_PORT` is `7555`,
-     * `JOBS_API_PORT` is `8545`,
-     * `FILES_API_PORT` is `8547`,
-     * `JES_EXPLORER_UI_PORT` is `8546`,
-     * `MVS_EXPLORER_UI_PORT` is `8548`,
-     * `USS_EXPLORER_UI_PORT` is `8550`,
-     * `ZOWE_ZLUX_SERVER_HTTPS_PORT` is `8544`.
-   * `ZOWE_ZSS_SERVER_PORT` should be set to the port where your Zowe ZSS is running on `ZOWE_ZOS_HOST`.
-   * `APIML_GATEWAY_EXTERNAL_MAPPER` should be set to `https://${GATEWAY_HOST}:${GATEWAY_PORT}/zss/api/v1/certificate/x509/map`.
-   * `APIML_SECURITY_AUTHORIZATION_ENDPOINT_URL` should be set to `https://${GATEWAY_HOST}:${GATEWAY_PORT}/zss/api/v1/saf-auth`.
-   * `ZOWE_EXPLORER_FRAME_ANCESTORS` should be set to `${ZOWE_EXTERNAL_HOST}:*`
-   * `ZWE_CACHING_SERVICE_PERSISTENT` should NOT be set to `VSAM`. `redis` is suggested. Follow [Redis configuration](https://docs.zowe.org/stable/extend/extend-apiml/api-mediation-redis/#redis-configuration) documentation to customize other Redis related variables. Leave the value to empty for debugging purposes.
-   * Must append and customize these 2 values:
-     * `ZWED_agent_host=${ZOWE_ZOS_HOST}`
-     * `ZWED_agent_https_port=${ZOWE_ZSS_SERVER_PORT}`
+     * `components.api-catalog.port` is `7552`,
+     * `components.discovery.port` is `7553`,
+     * `components.gateway.port` is `7554`,
+     * `components.caching-service.port` is `7555`,
+     * `components.jobs-api.port` is `7600`,
+     * `components.files-api.port` is `7559`,
+     * `components.app-server.port` is `7556`.
+   * `components.caching-service.storage.mode` should NOT be set to `VSAM`. `redis` is suggested. Follow [Redis configuration](https://docs.zowe.org/stable/extend/extend-apiml/api-mediation-redis/#redis-configuration) documentation to customize other Redis related variables. Leave the value to empty for debugging purposes.
+   * Must append and customize these 2 values into `zowe.environments` section:
+     * `ZWED_agent_host=<ZOWE_ZOS_HOST>`
+     * `ZWED_agent_https_port=<ZOWE_ZSS_SERVER_PORT>`
 
-   If you are using `zowe.yaml`, the above configuration items are still valid but should use the matching `zowe.yaml` configuration entries. Check [Updating the zowe.yaml configuration file](configure-instance-directory#updating-the-zoweyaml-configuration-file) for more details.
+2. A Secret, with values based upon a Zowe keystore's files, and similar to the example `samples/certificates-secret.yaml`.
 
-2. A ConfigMap, with values based upon a Zowe keystore's `zowe-certificates.env` and similar to the example `samples/certificates-cm.yaml`.
+    You need 2 entries under the `data` section:
 
-3. A Secret, with values based upon a Zowe keystore's files, and similar to the example `samples/certificates-secret.yaml`.
+    - `keystore.p12`: which is base64 encoded PKCS#12 keystore,
+    - `truststore.p12`: which is base64 encoded PKCS#12 truststore.
+
+    And 3 entries under `stringData` section:
+
+    - `keystore.key`: is the PEM format of certificate private key,
+    - `keystore.cer`: is the PEM format of the certificate,
+    - `ca.cer`: is the PEM format of the certificate authority.
 
 ## `PodDisruptionBudget`
 

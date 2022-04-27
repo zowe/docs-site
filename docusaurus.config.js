@@ -1,4 +1,4 @@
-const LATEST_VERSION = "v1.27.x";
+const LATEST_VERSION = "v2.0.x";
 const versionsArray = require("./versions.json");
 
 module.exports = {
@@ -45,7 +45,7 @@ module.exports = {
         {
           type: "doc",
           label: "Setup",
-          docId: "user-guide/install-zos",
+          docId: "user-guide/install-overview",
           position: "left",
         },
         {
@@ -83,12 +83,12 @@ module.exports = {
            type: "docsVersionDropdown",
            position: "right",
            dropdownActiveClassDisabled: true,
-           dropdownItemsAfter: [
-             {
-               to: "/versions",
-               label: "All versions",
-             },
-           ],
+        //   dropdownItemsAfter: [
+        //     {
+        //       to: "/versions",
+        //       label: "All versions",
+        //     },
+        //   ],
          },
         {
           href: "https://github.com/zowe/docs-site",
@@ -163,14 +163,14 @@ module.exports = {
       ],
       copyright: `© Open Mainframe Project. a Linux Foundation Project. All Rights Reserved. The Linux Foundation has registered trademarks and uses trademarks. For a list of trademarks of The Linux Foundation, please see our Trademark Usage page. Please refer to Marketing and Branding Guidelines for name usage guidelines. Linux is a registered trademark of Linus Torvalds. Privacy Policy and Terms of Use`,
     },
-    //announcementBar: {
-    //id: "v1_27_GA",
-    //content:
-    //"Zowe Version 1.27 is now available! Read about the new features and fixes in this release.",
-    //backgroundColor: "#333333",
-    //textColor: "#FFFFFF",
-    //isCloseable: true,
-    //},
+    announcementBar: {
+    id: "zowe_v2",
+    content:
+    'Zowe Version 2.0 is now available! Read about the <a target="_blank" rel="noopener noreferrer" href="../stable/getting-started/release-notes/v2_0_0">new features and fixes</a> in this release.',
+    backgroundColor: "#333333",
+    textColor: "#FFFFFF",
+    isCloseable: true,
+    },
     algolia: {
       apiKey: "59ff39ed48d0820010c7e09fc4b677bf",
       indexName: "zowe",
@@ -208,6 +208,9 @@ module.exports = {
               path: "stable",
               label: `${LATEST_VERSION}` + " LTS",
             },
+            "v1.27.x": {
+              label: "v1.27.x LTS",
+            },
             "v1.26.x": {
               label: "v1.26.x LTS",
             },
@@ -219,12 +222,6 @@ module.exports = {
             },
             "v1.23.x": {
               label: "v1.23.x LTS",
-            },
-            "v1.22.x": {
-              label: "v1.22.x LTS",
-            },
-            "v1.21.x": {
-              label: "v1.21.x LTS",
             },
           },
         },

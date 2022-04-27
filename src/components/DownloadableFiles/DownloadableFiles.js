@@ -23,16 +23,16 @@ const downloadableFiles = [
     description: (
       <>
         View documentation on commands, actions, and options in Zowe CLI. The
-        reference document is based on the <code>@zowe-v1-lts</code> version of
+        reference document is based on the <code>@zowe-v2-lts</code> version of
         the CLI. It contains the web help for all Zowe ecosystem-conformant 
         plug-ins that contributed to this website.
       </>
     ),
     firstSubDescription: <>Online interactive version</>,
     firstViewOnlineLink: "./stable/web_help/index.html",
-    firstDownloadLink: "./stable/zowe_web_help.zip",
-    secondSubDescription: <>PDF format</>,
-    secondDownloadLink: "./stable/CLIReference_Zowe.pdf",
+    firstDownloadLink: "./stable/CLIReference_Zowe.pdf",
+    secondSubDescription: <>ZIP format</>,
+    secondDownloadLink: "./stable/zowe_web_help.zip",
   },
   {
     title: "Zowe Client SDK reference guides",

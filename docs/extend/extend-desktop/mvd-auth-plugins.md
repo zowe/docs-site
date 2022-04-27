@@ -13,12 +13,14 @@ ZLUX will not run without a security plugin being configured. Within the server 
 
 ## Example
 
-The following configuration for the server security is as would be seen in server.json:
+The following configuration for the server security can be added in zowe configuration file under `components.app-server`:
 
-```json
-  "dataserviceAuthentication": {
-    "defaultAuthentication": "zss",
-    "rbac": false
+```
+components:
+  app-server:
+    dataserviceAuthentication:
+      rbac: false
+      defaultAuthentication: zss   
 ```
 
 

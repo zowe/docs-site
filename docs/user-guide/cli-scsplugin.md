@@ -2,12 +2,6 @@
 
 The Secure Credential Store (SCS) Plug-in for Zowe CLI lets you store your credentials securely in the credential manager of your operating system. The plug-in invokes a native Node module, [keytar](https://github.com/atom/node-keytar), that manages user IDs and passwords in a credential manager.
 
-  - [Use Cases](#use-cases)
-  - [Commands](#commands)
-  - [Software requirements](#software-requirements)
-  - [Installing](#installing)
-  - [Using](#using)
-
 ## Use Cases
 
 Zowe CLI stores credentials (mainframe username and password) in plaintext on your computer by default. You can use the SCS plug-in to store credentials more securely and prevent your credentials from being compromised as a result of a malware attack or unlawful actions by others.
