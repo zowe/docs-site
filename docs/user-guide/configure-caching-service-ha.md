@@ -1,6 +1,6 @@
 # Configuring the Caching Service for HA
 
-Zowe uses the Caching Service to centralize the state data persistent in high availability (HA) mode. If you are runnning the caching service on z/OS there are two storage methods: `inMemory` or `VSAM`.  If you are running the caching service off platform, such as a linux or windows container image, it is also possible to specify `redis`.  
+Zowe uses the Caching Service to centralize the state data persistent in high availability (HA) mode. If you are runnning the caching service on z/OS there are three storage methods: `inMemory`, `infinispan` or `VSAM`.  If you are running the caching service off platform, such as a linux or windows container image, it is also possible to specify `redis` or `infinispan`.  
 
 To learn more about Caching Service, see [Using the Caching Service](../extend/extend-apiml/api-mediation-caching-service.md).  
 
@@ -77,16 +77,26 @@ For users
                trustStorePassword
    ```
 
-- `#storclas` variable
+- **infinispan**
 
-   If you use the `RLS` mode, a storage class is required. Replace `#storclas` with your desired storage class name.
+  Infinispan is designed to be run mainly on z/OS since it offers good performance. To enable this method, set the value of `zowe.components.caching-service.storage.mode` to `infinispan` in the `zowe.yaml` configuration file.  There are a number of values to control the redis nodes, sentinel and ssl properties that will need to be set in the `zowe.yaml` file.  For more information on these properties and their values see [Infinispan configuration](../extend/extend-apiml/api-mediation-infinispan.md#infinispan-configuration).
 
-- `#volume` variable
 
-   If you set to use the `NONRLS` mode, a storage volume is required. Replace `#volume` with you desired storage volume.
-
-**Procedure** 
-
-1. Customize the `ZWECSVSM` JCL. Edit the variables at the beginning and in the middle of the JCL.
-
-2. Submit the `ZWECSVSM` JCL to create a VSAM data set
+    ```
+    zowe
+      components
+        caching-service:
+        enabled: true
+          port: 7555
+            jgroups:
+              bind:
+                port:
+                address:
+            storage:
+              mode: infinispan
+              infinispan:
+                initialHosts:
+                persistence:
+                  dataLocation:
+                
+    ```
