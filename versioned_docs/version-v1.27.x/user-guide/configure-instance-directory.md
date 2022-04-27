@@ -1,8 +1,8 @@
 # Creating and configuring the Zowe instance directory
 
-The Zowe instance directory or `<INSTANCE_DIRECTORY>` contains configuration data required to launch a Zowe runtime.  This directory includes port numbers, the location of dependent runtimes such as Java, Node, z/OSMF, as well as log files. When Zowe is started, configuration data is read from files in the instance directory and logs are written to files in the instance directory.
+The Zowe instance directory or `<INSTANCE_DIRECTORY>` contains configuration data required to launch a Zowe runtime.  This includes port numbers, location of dependent runtimes such as Java, Node, z/OSMF, as well as log files. When Zowe is started, configuration data will be read from files in the instance directory and logs will be written to files in the instance directory.
 
-**Note:** The creation of an instance directory sets default values for users who want to run all Zowe z/OS components. If you are using Docker, you must make a small configuration change to disable the components on z/OS that will instead run in Docker.
+**Note: The creation of an instance directory will set default values for users who want to run all Zowe z/OS components. If you are using Docker, you must make a small configuration change to disable the components on z/OS that will instead run in Docker.**
 
 ## Introduction  
 
@@ -14,16 +14,12 @@ The Zowe instance directory contains a file `instance.env` that stores the Zowe 
 
 Alternatively, from v1.22.0 release, you can use a YAML format configuration file `zowe.yaml` instead of `instance.env` to configure the Zowe runtime. See [Updating the zowe.yaml configuration file](#updating-the-zowe-yaml-configuration-file) for more information.
 
-The instance directory `<INSTANCE_DIRECTORY>/bin` contains the following key scripts:
+The instance directory `<INSTANCE_DIRECTORY>/bin` contains other key scripts as follows:
+- `zowe-start.sh` is used to start the Zowe runtime by launching the `ZWESVSTC` started task.
+- `zowe-stop.sh` is used to stop the Zowe runtime by terminating the `ZWESVSTC` started task.  
+- `zowe-support.sh` can be used to capture diagnostics around the Zowe runtime for troubleshooting and off-line problem determination, see [Capturing diagnostics to assist problem determination](../troubleshoot/troubleshoot-diagnostics.md).
 
-- `zowe-start.sh`  
-This script is used to start the Zowe runtime by launching the `ZWESVSTC` started task.
-- `zowe-stop.sh`  
- This script is used to stop the Zowe runtime by terminating the `ZWESVSTC` started task.  
-- `zowe-support.sh`  
- This script can be used to capture diagnostics around Zowe runtime for troubleshooting and off-line problem determination. For more information, see [Capturing diagnostics to assist problem determination](../troubleshoot/troubleshoot-diagnostics.md).
-
-**Note:** High availability considerations 
+**High availability considerations:** 
 
 - If you plan to run Zowe in a Sysplex for high availability, the instance directory should be placed in a shared USS file system. This way, all Zowe instances within the Sysplex can read and write to the same instance directory.
 - `zowe.yaml` is required if you want to start Zowe in high availability mode. 
@@ -42,11 +38,9 @@ Navigate to the Zowe runtime directory `<RUNTIME_DIR>` and execute the following
 <RUNTIME_DIR>/bin/zowe-configure-instance.sh -c <PATH_TO_INSTANCE_DIR>
 ```
 
-If you have an instance directory that is created from a previous release of Zowe 1.8 or later and are installing a newer release of Zowe, then you should run `zowe-configure-instance.sh -c <PATH_TO_INSTANCE_DIR>` pointing to the existing instance directory to have it updated with any new values.  The release documentation for each new release specifies when this is required. The file `manifest.json` within each instance directory contains information about which Zowe release was used to create teh file. 
+If you have an instance directory that is created from a previous release of Zowe 1.8 or later and are installing a newer release of Zowe, then you should run `zowe-configure-instance.sh -c <PATH_TO_INSTANCE_DIR>` pointing to the existing instance directory to have it updated with any new values.  The release documentation for each new release will specify when this is required, and the file `manifest.json` within each instance directory contains information for which Zowe release it was created from.
 
-In order to allow the `ZWESVSTC` started task to have permission to access the contents of the `<INSTANCE_DIR>`, the `zowe-configure-instance.sh` script sets the group ownership of the top level directory and its child to be `ZWEADMIN`.  If a different group is used for the `ZWESVSTC` started task you can specify this with the optional `-g` argument.
-
-**Example:**
+In order to allow the `ZWESVSTC` started task to have permission to access the contents of the `<INSTANCE_DIR>` the `zowe-configure-instance.sh` script sets the group ownership of the top level directory and its child to be `ZWEADMIN`.  If a different group is used for the `ZWESVSTC` started task you can specify this with the optional `-g` argument, for example.
 
 ```shell
 <RUNTIME_DIR>/bin/zowe-configure-instance.sh -c <PATH_TO_INSTANCE_DIR> -g <GROUP>
@@ -216,7 +210,7 @@ The following parameters can be set to customize the configuration of the Gatewa
 The following values are used to customize the configuration of Caching Service.
 
 - `ZWE_CACHING_SERVICE_PORT=7555`: The port the Caching Service will use.
-- `ZWE_CACHING_SERVICE_PERSISTENT=`: This field sets the storage type used to persist data in the Caching Service. Valid options are `REDIS`, `INFINISPAN` or `VSAM`. `REDIS` is currently only supported as an off-Z storage solution. `VSAM` is only supported on Z.
+- `ZWE_CACHING_SERVICE_PERSISTENT=`: This field sets the storage type used to persist data in the Caching Service. Valid options are `REDIS` or `VSAM`. `REDIS` is currently only supported as an off-Z storage solution. `VSAM` is only supported on Z.
 - `ZWE_CACHING_SERVICE_VSAM_DATASET`: This field sets the `VSAM` dataset name to be used to store Caching Service data. This field is required if `ZWE_CACHING_SERVICE_PERSISTENT` is set to `VSAM`, otherwise this field is not needed.
 
 Refer to detailed section about [API Gateway configuration](api-mediation/api-gateway-configuration.md)
@@ -540,10 +534,6 @@ These configurations can be used under the `components.caching-service` section:
 - `storage.redis.ssl.keystorePassword`: Specifies the password used to unlock the keystore. This is equivalent to the `CACHING_STORAGE_REDIS_SSL_KEYSTOREPASSWORD` variable in `instance.env`.
 - `storage.redis.ssl.truststore`: Specifies the truststore file used to keep other parties public keys and certificates. This is equivalent to the `CACHING_STORAGE_REDIS_SSL_TRUSTSTORE` variable in `instance.env`.
 - `storage.redis.ssl.truststorePassword`: Specifies the password used to unlock the truststore. This is equivalent to the `CACHING_STORAGE_REDIS_SSL_TRUSTSTOREPASSWORD` variable in `instance.env`.
-- `storage.infinispan.initialHosts`: Specifies the list of cluster nodes (members) used in Cross-Site Replication. This is equivalent to the `CACHING_STORAGE_INFINISPAN_INITIALHOSTS` variable in `instance.env`.
-- `storage.infinispan.persistence.dataLocation`: Specifies he path where the Soft-Index store will keep its data files for the Infinispan Soft-Index Cache Store. This is equivalent to the `CACHING_STORAGE_INFINISPAN_PERSISTENCE_DATALOCATION` variable in `instance.env`.
-- `jgroups.bind.port`: Specifies the Jgroups port for used by Infinispan. This is equivalent to the `JGROUPS_BIND_PORT` variable in `instance.env`.
-- `jgroups.bind.address`: Specifies the Jgroups address for used by Infinispan. This is equivalent to the `JGROUPS_BIND_ADDRESS` variable in `instance.env`.
 - `environment.preferIpAddress`: Set this parameter to `true`  to advertise a service IP address instead of its hostname. **Note:** this configuration is deprecated. Zowe start script will ignore this value and always set it to `false`. This is equivalent to the `APIML_PREFER_IP_ADDRESS` variable in `instance.env`.
 - `apiml.security.ssl.verifySslCertificatesOfServices`: Specifies whether APIML should verify certificates of services in strict mode. Set to `true` will enable `strict` mode that APIML will validate both if the certificate is trusted in turststore, and also if the certificate Common Name or Subject Alternate Name (SAN) match the service hostname. This is equivalent to the `VERIFY_CERTIFICATES` variable defined in `<keystore-dir>/zowe-certificates.env`.
 - `apiml.security.ssl.nonStrictVerifySslCertificatesOfServices`: Defines whether APIML should verify certificates of services in non-strict mode. Setting to `true` will enable `non-strict` mode where APIML will validate if the certificate is trusted in turststore, but ignore the certificate Common Name or Subject Alternate Name (SAN) check. Zowe will ignore this configuration if strict mode is enabled with `apiml.security.ssl.verifySslCertificatesOfServices`. This is equivalent to the `NONSTRICT_VERIFY_CERTIFICATES` variable defined in `<keystore-dir>/zowe-certificates.env`.
