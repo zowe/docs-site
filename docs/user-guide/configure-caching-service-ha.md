@@ -63,13 +63,13 @@ For users
              size: 10000
              evictionStrategy: reject
              mode: redis
-             redis
+             redis:
                masterNodeUri: 
                timeout: 60
-             sentinel
+             sentinel:
                masterInstance
                nodes
-             ssl
+             ssl:
                enabled: true
                keystore:
                keystorePassword:
