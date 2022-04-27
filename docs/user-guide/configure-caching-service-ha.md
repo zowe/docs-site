@@ -1,62 +1,102 @@
 # Configuring the Caching Service for HA
 
-Zowe uses the Caching Service to centralize the state data persistent in high availability (HA) mode. The Caching Service supports three storage methods: `inMemory`, `VSAM` and `redis`.
+Zowe uses the Caching Service to centralize the state data persistent in high availability (HA) mode. If you are runnning the caching service on z/OS there are two storage methods: `inMemory` or `VSAM`.  If you are running the caching service off platform, such as a linux or windows container image, it is also possible to specify `redis`.  
+
+To learn more about Caching Service, see [Using the Caching Service](../extend/extend-apiml/api-mediation-caching-service.md).  
+
+For users 
 
 - **inMemory** 
    
-   This storage method is designed for quick start of the service and should be used only when a for single instance is used or for development or test purpose. Do not use this method in production or high availability scenario.
+   This storage method is designed for quick start of the service and should be used only for single instance scenario and development or test purpose. Do not use it in production or high availability scenario.
   
-   To use the `inMemory` method, leave the `ZWE_CACHING_SERVICE_PERSISTENT` configuration blank in the `instance.env` configuration file. When this method is enabled, the Caching Service does not persist any data. Also, if you have multiple instances of Caching Service, the data is not shared across these instances.
+   To use this method, set the `zowe.components.caching-service.storage.mode` value to `inMemory` in the `zowe.yaml` configuration file. When this method is enabled, the Caching Service will not persist any data.  
+
+   ```
+   zowe
+     components
+       caching-service:
+         enabled: true
+         port: 7555
+           storage:
+             evictionStrategy: reject
+             mode: imMemory
+             size: 10000
+   ```
 
 - **VSAM**
+   
+   To use this method, 
+   1. Set the value of `zowe.components.caching-service.storage.mode` value to `VSAM` in the `zowe.yaml` configuration file.
+   2. Create a VSAM data set. See [Initialize VSAM data set](../user-guide/initialize-vsam-dataset.md) for instructions.  There are two ways to create the data set, either using the JCL member `SZWESAMP(ZWECVSEM)` where the data set name is defined in the `#dsname` variable.  
+   3. In `zowe.yaml`, configure `zowe.components.caching-sevice.storage.vsam.name` with the VSAM data set name.  If in step 2 you used `zwe init vsam` to create the VSAM data set then the values will already be set.  
 
-  **Note:** Performance issues related to the VSAM data set have been observed. It is recommended that you use this storage method for a light workload. If a heavy workload is expected on Zowe components, it is recommended that you use either the `redis` or `infinispan` storage methods instead.
-
-   Follow these steps to use the VSAM method:  
-   1. Set the value of `ZWE_CACHING_SERVICE_PERSISTENT` to `VSAM` in the `instance.env` configuration file.
-   2. Create a VSAM data set. See [Creating a VSAM data set](#creating-a-vsam-data-set) for instructions. 
-   3. In `instance.env`, configure `ZWE_CACHING_SERVICE_VSAM_DATASET` with the VSAM data set you created.  
+   
+   ```
+   zowe
+     components
+       caching-service:
+       enabled: true
+         port: 7555
+           storage:
+             size: 10000
+             evictionStrategy: reject
+             mode: VSAM
+             vsam:
+               name: IBMUSER.ZWE.CUST.APICACHE
+   ```
 
 - **redis**
 
-   To enable this method, set the value of `ZWE_CACHING_SERVICE_PERSISTENT` to `redis` in the `instance.env` configuration file. See [Redis configuration](../extend/extend-apiml/api-mediation-redis.md#redis-configuration) for more information. To learn more about Caching Service, see [Using the Caching Service](../extend/extend-apiml/api-mediation-caching-service.md).
+   Redis is not available if you are running the API Mediation Layer on z/OS under unix system services.  Its usage is for when the APIML is running off platform, such as in a linux or windows container as part of a hybrid cloud deployment.
+
+   To enable this method, set the value of `zowe.components.caching-service.storage.mode` to `redis` in the `zowe.yaml` configuration file.  There are a number of values to control the redis nodes, sentinel and ssl properties that will need to be set in the `zowe.yaml` file.  For more information on these properties and their values see [Redis configuration](../extend/extend-apiml/api-mediation-redis.md#redis-configuration).  
+   
+   
+   ```
+   zowe
+     components
+       caching-service:
+       enabled: true
+         port: 7555
+           storage:
+             size: 10000
+             evictionStrategy: reject
+             mode: redis
+             redis:
+               masterNodeUri: 
+               timeout: 60
+             sentinel:
+               masterInstance
+               nodes
+             ssl:
+               enabled: true
+               keystore:
+               keystorePassword:
+               trustStore:
+               trustStorePassword
+   ```
 
 - **infinispan**
 
-  To enable this method, set the value of `ZWE_CACHING_SERVICE_PERSISTENT` to `infinispan` in the `instance.env` configuration file. For more information, see [Infinispan configuration](../extend/extend-apiml/api-mediation-infinispan.md#infinispan-configuration). To learn more about Caching Service, see [Using the Caching Service](../extend/extend-apiml/api-mediation-caching-service.md).
+  Infinispan is designed to be run mainly on z/OS. To enable this method, set the value of `zowe.components.caching-service.storage.mode` to `infinispan` in the `zowe.yaml` configuration file.  There are a number of values to control the redis nodes, sentinel and ssl properties that will need to be set in the `zowe.yaml` file.  For more information on these properties and their values see [Infinispan configuration](../extend/extend-apiml/api-mediation-infinispan.md#infinispan-configuration).
 
-If you are using `zowe.yaml` configuration other than `instance.env`, see [Configure component caching-service](configure-instance-directory.md#configure-component-caching-service) for configuration details.
-
-## Creating a VSAM data set
-
-You can use the `ZWECSVSM` JCL to create a VSAM data set and define required security configurations. The `ZWECSVSM` JCL is provided as part of the PDS sample library `SZWESAMP` that is delivered with Zowe. 
-
-Before you submit the `ZWECSVSM` JCL, you must customize it and review it with a system programmer who is familiar with z/OS VSAM data set and storage. 
-
-The following variables are available in the JCL:
-
-- **`#dsname`** 
-
-   This variable is the data set name that the `ZWECSVSM` JCL will create. Replace all occurrences of `#dsname` with the data set name that you want to specify. This data set name is the value for `ZWE_CACHING_SERVICE_VSAM_DATASET` in `instance.env`.
-
-- **`MODE`** 
-
-   This specifies whether you would like to use [Record Level Sharing (RLS)](https://www.ibm.com/support/pages/vsam-record-level-sharing-rls-overview) for your VSAM data set. `RLS` is recommended for Sysplex deployment.
 
    ```
-   //         SET MODE=NONRLS                       RLS or NONRLS                  
+   zowe
+     components
+       caching-service:
+       enabled: true
+         port: 7555
+           jgroups:
+             bind:
+               port:
+               address:
+           storage:
+             mode: infinispan
+             infinispan:
+               initialHosts:
+               persistence:
+                 dataLocation:
+               
    ```
-
-- **`#storclas`** 
-
-   If you use the `RLS` mode, a storage class is required. Replace `#storclas` with your desired storage class name.
-
-- **`#volume`** 
-
-   If you set to use the `NONRLS` mode, a storage volume is required. Replace `#volume` with you desired storage volume.
-
-**Follow these steps:**
-
-1. Customize the `ZWECSVSM` JCL. Edit the variables at the beginning and in the middle of the JCL.
-
-2. Submit the `ZWECSVSM` JCL to create a VSAM data set.
