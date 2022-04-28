@@ -15,20 +15,10 @@ For more information on Infinispan, see the [official Infinispan documentation](
 
 ### Infinispan replica instances
 
-Infinispan can be used with one standalone instance. For data durability, however, a Cross-Site Replication configuration is recommended.
-Cross-site replication guarantees service continuity in the event of outages or disasters and presents client applications with a single point of access to data in globally distributed caches.
+Infinispan can be used with both on standalone instance and High Availability mode. In case of multiple Caching Service instances, 
+you will have to specify all the cluster nodes (members). Each Infinispan node is bound to specific Caching Service instance and runs on a different port and host, which can be configured. See the [nfinispan configuration](#infinispan-configuration) to know how to configure multiple Infinispan nodes.
 
 For more information on Infinispan replication and how to configure a replica instance, see the [official Infinispan Cross-site Replication documentation](https://infinispan.org/docs/stable/titles/xsite/xsite.html).
-
-### Infinispan SSL/TLS
-
-Infinispan supports SSL/TLS. For information on enabled SSL/TLS with Infinispan, see the [official Infinispan Security documentation](https://infinispan.org/docs/stable/titles/security/security.html#secure-cluster-transport).
-
-### Infinispan and JGroups
-
-Infinispan uses [JGroups](http://www.jgroups.org/) as its underlying clustering layer. In order to configure the finer details of clustering (discovery, flow control, cross-site, etc) you have to provide a separate XML file with the desired configuration and reference this XML file from your Infinispan XML file as follows:
-
-For simple configurations this procedure is usually fine. However, configuring complex setups, such as cross-site replication, means juggling multiple files (one for the local stack, one for the cross-site stack, and one for the relay configuration).
 
 ## Infinispan configuration
 
@@ -39,14 +29,22 @@ Configure Infinispan as a storage solution through the Caching service by settin
   This property specifies the list of cluster nodes (members). In case of multiple instances, the value for each Caching Service instance can be 
   either a list of all the members, separated by a comma, or just the replica. The format is `${JGROUPS_BIND_ADDRESS}[${JGROUPS_BIND_PORT}]`.
 
+  **Example:**
+  `CACHING_STORAGE_INFINISPAN_INITIALHOST=caching-service[7600]`
+
+
 * **`CACHING_STORAGE_INFINISPAN_PERSISTENCE_DATALOCATION`**
 
   The path where the Soft-Index store will keep its data files for the Infinispan Soft-Index Cache Store. 
-  In case of a standalone instance, the value can be set to `data`. For more information, see [Soft-Index File Store](https://infinispan.org/blog/2014/10/31/soft-index-file-store).
+  The default value is `data`. If you run the Caching Service in HA and the instances use the same filesystem,
+  you have to specify a different value of the `CACHING_STORAGE_INFINISPAN_PERSISTENCE_DATALOCATION` property for each
+  instance. For more information, see [Soft-Index File Store](https://infinispan.org/blog/2014/10/31/soft-index-file-store).
+
 
 * **`JGROUPS_BIND_PORT`**
 
   The Jgroups port used by Infinispan.
+
 
 * **`JGROUPS_BIND_ADDRESS`**
 
