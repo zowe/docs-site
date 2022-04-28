@@ -14,7 +14,7 @@ For users
 
    ```
    zowe
-     components
+     components:
        caching-service:
          enabled: true
          port: 7555
@@ -34,7 +34,7 @@ For users
    
    ```
    zowe
-     components
+     components:
        caching-service:
        enabled: true
          port: 7555
@@ -54,8 +54,8 @@ For users
    
    
    ```
-   zowe
-     components
+   zowe:
+     components:
        caching-service:
        enabled: true
          port: 7555
@@ -79,24 +79,15 @@ For users
 
 - **infinispan**
 
-  Infinispan is designed to be run mainly on z/OS since it offers good performance. To enable this method, set the value of `zowe.components.caching-service.storage.mode` to `infinispan` in the `zowe.yaml` configuration file.  There are a number of values to control the redis nodes, sentinel and ssl properties that will need to be set in the `zowe.yaml` file.  For more information on these properties and their values see [Infinispan configuration](../extend/extend-apiml/api-mediation-infinispan.md#infinispan-configuration).
+  Infinispan is designed to be run mainly on z/OS since it offers good performance. To enable this method, set the value of `zowe.components.caching-service.storage.mode` to `infinispan` in the `zowe.yaml` configuration file.
+  Infinispan environment variables are not currently following the v2 naming convention, so they must be defined into `zowe.environments` section.  For more information on these properties and their values see [Infinispan configuration](../extend/extend-apiml/api-mediation-infinispan.md#infinispan-configuration).
 
 
     ```
     zowe
-      components
-        caching-service:
-        enabled: true
-          port: 7555
-            jgroups:
-              bind:
-                port:
-                address:
-            storage:
-              mode: infinispan
-              infinispan:
-                initialHosts:
-                persistence:
-                  dataLocation:
-                
+      environments:
+            JGROUPS_BIND_PORT:
+            JGROUPS_BIND_ADDRESS:
+            CACHING_STORAGE_INFINISPAN_INITIALHOSTS:
+            CACHING_STORAGE_INFINISPAN_PERSISTENCE_DATALOCATION:
     ```
