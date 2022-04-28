@@ -60,7 +60,7 @@ You can configure the Zowe runtime with one of the following methods depending o
 
 Whether you have obtained Zowe from a .pax convenience build, or an SMP/E distribution, the steps to initialize the system are the same.
 
-1. [Prepare custom MVS data sets](initialize-vsam-dataset.md). Copy the data sets provided with Zowe to custom data sets.
+1. [Prepare custom MVS data sets](initialize-mvs-datasets.md). Copy the data sets provided with Zowe to custom data sets.
 1. (Required only if you are configuring Zowe for cross LPAR sysplex high availability): [Create the VSAM data sets used by the Zowe API Mediation Layer caching service](initialize-vsam-dataset.md). 
 1. [APF authorize load libraries containing the modules that need to perform z/OS priviledged security calls.](apf-authorize-load-library.md).
 1. [Initialize Zowe security configurations](initialize-security-configuration.md). Create the user IDs and security manager settings.

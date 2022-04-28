@@ -15,14 +15,14 @@ module.exports = {
       label: "FAQ",
       items: [
         "getting-started/zowe_faq",
-    //    "getting-started/zowe_v2_faq",
+        "getting-started/zowe_v2_faq",
       ],
     },
     {
       type: "category",
       label: "What's new",
       items: [
-        "getting-started/release-notes/v2_0",
+        "getting-started/release-notes/v2_0_0",
         "getting-started/zowe-office-hours"
       ],
     },

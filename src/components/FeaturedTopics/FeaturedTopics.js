@@ -5,7 +5,7 @@ import styles from "./styles.module.css";
 const firstSection = [
   {
     item: "What's new",
-    link: "stable/getting-started/release-notes/v2_0",
+    link: "stable/getting-started/release-notes/v2_0_0",
   },
   {
     item: "Zowe overview",
