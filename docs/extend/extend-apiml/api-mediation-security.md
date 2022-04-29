@@ -140,7 +140,7 @@ The API ML TLS requires servers to provide HTTPS ports. Each API ML service has 
 
     - The API Gateway handles authentication
     - There are two authentication endpoints that allow authentication of the resource by providers
-    - Diagnostic endpoints `https://{gatewayUrl}:{gatewayPort}/application/**` in API Gateway are protected by basic authentication or a Zowe JWT token
+    - Diagnostic endpoints `https://{gatewayUrl}:{gatewayPort}/application/**` in API Gateway are protected by basic authentication, Zowe JWT token, or a client certificate
 
 - **API Catalog**
 
@@ -152,7 +152,7 @@ The API ML TLS requires servers to provide HTTPS ports. Each API ML service has 
     - Discovery Service is accessed by API Services
     - This access (reading information and registration) requires protection by means of a client certificate
     - (Optional) Access can be granted to users (administrators)
-    - Diagnostic endpoints `https://{gatewayUrl}:{gatewayPort}/application/**` in Discovery Service are protected by basic authentication or Zowe JWT token
+    - Diagnostic endpoints `https://{gatewayUrl}:{gatewayPort}/application/**` in Discovery Service are protected by basic authentication, Zowe JWT token, or a client certificate
 
 - **API Services**
 
@@ -244,6 +244,90 @@ When providing credentials in any form together with client certificate on the s
 * The Gateway performs the login of the mapped user and returns a valid JWT token.
 
 ![Zowe client certificate authentication diagram](../../images/api-mediation/zowe-client-cert-auth.png)
+
+### Authentication parameters
+Parameters are specified in the onboarding enablers.
+
+Authentication parameters enables a service to accept the Zowe JWT or client certificate. The API Gateway translates the authentication token to an authentication method supported by a service.
+
+The following example shows the parameters that define the service authentication method:
+
+**Example:**
+
+```yaml
+authentication:
+    scheme: httpBasicPassTicket
+    applid: ZOWEAPPL
+```
+where:
+
+* **authentication.scheme**
+
+  specifies a service authentication scheme. Any authorization or `X-Zowe-Auth-Failure` error headers will be set and passed to southbound services.
+  The following schemes are supported by the API Gateway:
+
+    * **bypass**
+
+      This value specifies the token is passed unchanged to service.
+
+      **Note:** This is the default scheme when no authentication parameters are specified.
+
+    * **zoweJwt**
+
+      * When a Zowe JWT is provided, this scheme value specifies that the service accepts the Zowe JWT. No additional processing is done by the API Gateway.
+      * When a X509 certificate is provided, it is transformed into a Zowe JWT and authentication is performed for the southbound service.
+
+    * **httpBasicPassTicket**
+
+      This value specifies that a service accepts PassTickets in the Authorization header of the HTTP requests using the basic authentication scheme.
+      It is necessary to provide a service APPLID in `authentication.applid` parameter to prevent passticket generation errors.
+  
+      * When a JWT is provided, the service validates the Zowe JWT for passticket generation.
+      * When a X509 certificate is provided, the service validates by mapping to a mainframe user. This user generates a passticket if no errors occur.
+
+      For more information, see [Enabling PassTicket creation for API Services that Accept PassTickets](api-mediation-passtickets.md)
+
+    * **zosmf**
+
+      This value specifies that a service accepts z/OSMF LTPA (Lightweight Third-Party Authentication).
+      This scheme should be used only for a z/OSMF service used by the API Gateway Authentication Service and other z/OSMF services that use the same LTPA key.
+  
+      * When a JWT is provided, the token extracts the LTPA and forwards it to the service.
+      * When a X509 certificate is provided, the certificate translates into a z/OSMF token and also extracts the LTPA for the service.
+
+      For more information about z/OSMF Single Sign-on, see [Establishing a single sign-on environment](https://www.ibm.com/support/knowledgecenter/SSLTBW_2.4.0/com.ibm.zosmfcore.multisysplex.help.doc/izuG00hpManageSecurityCredentials.html)
+
+    * **safIdt**
+
+      This value specifies that the service accepts SAF IDT, and expects that the token produced by the SAF IDT provider implementation is in the `X-SAF-Token` header. It is necessary to provide a service APPLID in the `authentication.applid` parameter.
+
+      For more information, see [SAF IDT provider].(implement-new-saf-provider.md)
+
+    * **x509**
+
+      This value specifies that a service accepts client certificates forwarded in the HTTP header. The Gateway service extracts information from a valid client certificate. For validation, the certificate needs to be trusted by API Mediation Layer, and needs to contain a Client Authentication (1.3.6.1.5.5.7.3.2) entry in Extended Key Usage. To use this scheme, it is also necessary to specify which headers to include. Specify these parameters in `headers`.
+
+* **authentication.headers**
+
+  When the `x509` scheme is specified, use the `headers` parameter to select which values to send to a service. Use one of the following values:
+
+    * `X-Certificate-Public`
+
+      The public part of client certificate base64 encoded
+
+    * `X-Certificate-DistinguishedName`
+
+      The distinguished name from client certificate
+
+    * `X-Certificate-CommonName`
+
+      The common name from the client certificate
+
+* **authentication.applid**
+
+  This parameter specifies a service APPLID.
+  This parameter is valid only for the `httpBasicPassTicket` authentication scheme.
+
 
 **Prerequisites:**
 
