@@ -286,7 +286,7 @@ where:
 
 * **authentication.scheme**
 
-  specifies a service authentication scheme. The authorization header or `X-Zowe-Auth-Failure` error header will be set and passed to southbound services. In addition, any `X-Zowe-Auth-Failure` error headers coming from the northbound service will also be passed to the southbound services without setting the authorization header.
+  specifies a service authentication scheme. Any valid headers or `X-Zowe-Auth-Failure` error headers will be set and passed to southbound services. In addition, any `X-Zowe-Auth-Failure` error headers coming from the northbound service will also be passed to the southbound services without setting the valid headers. The `X-Zowe-Auth-Failure` error header contains details about the error and suggest potential actions.
   The following schemes are supported by the API Gateway:
 
     * **bypass**
@@ -298,7 +298,7 @@ where:
     * **zoweJwt**
 
         * When a Zowe JWT is provided, this scheme value specifies that the service accepts the Zowe JWT. No additional processing is done by the API Gateway.
-        * When a X509 certificate is provided, it is transformed into a Zowe JWT and the southbound service performs authentication.
+        * When a client certificate is provided, it is transformed into a Zowe JWT and the southbound service performs authentication.
 
     * **httpBasicPassTicket**
 
@@ -306,7 +306,7 @@ where:
       It is necessary to provide a service APPLID in `authentication.applid` parameter to prevent passticket generation errors.
 
         * When a JWT is provided, the service validates the Zowe JWT to use for passticket generation.
-        * When a X509 certificate is provided, the service validates by mapping to a mainframe user. This user generates a passticket if no errors occur.
+        * When a client certificate is provided, the service validates it by mapping it to a mainframe user to use for passticket generation.
 
       For more information, see [Enabling PassTicket creation for API Services that Accept PassTickets](api-mediation-passtickets.md)
 
@@ -316,7 +316,7 @@ where:
       This scheme should be used only for a z/OSMF service used by the API Gateway Authentication Service and other z/OSMF services that use the same LTPA key.
 
         * When a JWT is provided, the token extracts the LTPA and forwards it to the service.
-        * When a X509 certificate is provided, the certificate translates into a z/OSMF token and also extracts the LTPA for the service.
+        * When a client certificate is provided, the certificate translates into a z/OSMF token and also extracts the LTPA for the service to use.
 
       For more information about z/OSMF Single Sign-on, see [Establishing a single sign-on environment](https://www.ibm.com/support/knowledgecenter/SSLTBW_2.4.0/com.ibm.zosmfcore.multisysplex.help.doc/izuG00hpManageSecurityCredentials.html)
 
