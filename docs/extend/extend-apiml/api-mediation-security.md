@@ -286,7 +286,7 @@ where:
 
 * **authentication.scheme**
 
-  specifies a service authentication scheme. Any valid headers or `X-Zowe-Auth-Failure` error headers will be set and passed to southbound services. In addition, any `X-Zowe-Auth-Failure` error headers coming from the northbound service will also be passed to the southbound services without setting the valid headers. The `X-Zowe-Auth-Failure` error header contains details about the error and suggest potential actions.
+  This value above specifies a service authentication scheme. Any valid headers or `X-Zowe-Auth-Failure` error headers will be set and passed to southbound services. In addition, any `X-Zowe-Auth-Failure` error headers coming from the northbound service will also be passed to the southbound services without setting the valid headers. The `X-Zowe-Auth-Failure` error header contains details about the error and suggest potential actions.
   The following schemes are supported by the API Gateway:
 
     * **bypass**
