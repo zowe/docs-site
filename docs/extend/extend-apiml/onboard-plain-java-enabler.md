@@ -515,7 +515,7 @@ where:
     **Note:** Ensure that you increase the version number when you introduce changes to the API service product family details.
 
 ### Authentication parameters
-These parameters are not required. Parameters that are not specified results in the use of the default values. See [Authentication Parameters for Onboarding REST API Services](https://docs.zowe.org/stable/extend/extend-apiml/api-mediation-security#Authentication-parameters) for more details.
+These parameters are not required. Default values are used when parameters are not specified. For more inforamtion, see [Authentication Parameters for Onboarding REST API Services](https://docs.zowe.org/stable/extend/extend-apiml/api-mediation-security#Authentication-parameters).
     
 ### API Security
 
@@ -578,16 +578,17 @@ TLS/SSL configuration consists of the following parameters:
 
   This parameter specifies the truststore type. The default for this parameter is PKCS12.
 
-**Notes:**
-
-* Ensure that you define both the key store and the trust store even if your server is not using an Https port.
+**Note:** Ensure that you define both the keystore and the truststore even if your server is not using an Https port.
 
 ### SAF Keyring configuration
 
 You can choose to use SAF keyring instead of keystore and truststore for storing certificates.
 For information about required certificates, see [Zowe API ML TLS requirements](api-mediation-security#zowe-api-ml-tls-requirements). For information about running Java on z/OS with keyring, see [SAF Keyring](api-mediation-security#api-ml-saf-keyring). Make sure that the enabler can access and read the keyring. Please refer to documentation of your security system for details.
 
-The following example shows enabler configuration with keyrings:
+The following example shows enabler configuration with keyrings.
+
+**Example:**
+
 ```
 ssl:
     keyAlias: localhost
@@ -622,7 +623,7 @@ where:
 
 ### Custom Metadata
 
-Custom metadata are described [here](../extend-apiml/custom-metadata).
+For inforation about custom metadata, see the topic [Custom Metadata](../extend-apiml/custom-metadata).
     
 ##  Registering your service with API ML
 
@@ -636,7 +637,7 @@ The following steps outline the process of registering your service with API ML.
 
 **Follow these steps:**
 
-1. Implement and add a web application context listener class 
+1. Implement and add a web application context listener class: 
 
     ```implements javax.servlet.ServletContextListener```
 
