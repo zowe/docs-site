@@ -515,7 +515,7 @@ where:
     **Note:** Ensure that you increase the version number when you introduce changes to the API service product family details.
 
 ### Authentication parameters
-These parameters are not required. Default values are used when parameters are not specified. For more inforamtion, see [Authentication Parameters for Onboarding REST API Services](https://docs.zowe.org/stable/extend/extend-apiml/api-mediation-security#Authentication-parameters).
+These parameters are not required. Default values are used when parameters are not specified. For more information, see [Authentication Parameters for Onboarding REST API Services](https://docs.zowe.org/stable/extend/extend-apiml/api-mediation-security#Authentication-parameters).
     
 ### API Security
 
@@ -623,7 +623,7 @@ where:
 
 ### Custom Metadata
 
-For inforation about custom metadata, see the topic [Custom Metadata](../extend-apiml/custom-metadata).
+For information about custom metadata, see the topic [Custom Metadata](../extend-apiml/custom-metadata).
     
 ##  Registering your service with API ML
 
