@@ -1,6 +1,6 @@
 # Configuring the Caching Service for HA
 
-Zowe uses the Caching Service to centralize the state data persistent in high availability (HA) mode. If you are runnning the caching service on z/OS there are two storage methods: `inMemory` or `VSAM`.  If you are running the caching service off platform, such as a linux or windows container image, it is also possible to specify `redis`.  
+Zowe uses the Caching Service to centralize the state data persistent in high availability (HA) mode. If you are runnning the caching service on z/OS there are three storage methods: `inMemory`, `infinispan` or `VSAM`.  If you are running the caching service off platform, such as a linux or windows container image, it is also possible to specify `redis` or `infinispan`.  
 
 To learn more about Caching Service, see [Using the Caching Service](../extend/extend-apiml/api-mediation-caching-service.md).  
 
@@ -14,7 +14,7 @@ For users
 
    ```
    zowe
-     components
+     components:
        caching-service:
          enabled: true
          port: 7555
@@ -34,7 +34,7 @@ For users
    
    ```
    zowe
-     components
+     components:
        caching-service:
        enabled: true
          port: 7555
@@ -54,8 +54,8 @@ For users
    
    
    ```
-   zowe
-     components
+   zowe:
+     components:
        caching-service:
        enabled: true
          port: 7555
@@ -63,13 +63,13 @@ For users
              size: 10000
              evictionStrategy: reject
              mode: redis
-             redis
+             redis:
                masterNodeUri: 
                timeout: 60
-             sentinel
+             sentinel:
                masterInstance
                nodes
-             ssl
+             ssl:
                enabled: true
                keystore:
                keystorePassword:
@@ -77,3 +77,17 @@ For users
                trustStorePassword
    ```
 
+- **infinispan**
+
+  Infinispan is designed to be run mainly on z/OS since it offers good performance. To enable this method, set the value of `zowe.components.caching-service.storage.mode` to `infinispan` in the `zowe.yaml` configuration file.
+  Infinispan environment variables are not currently following the v2 naming convention, so they must be defined into `zowe.environments` section.  For more information on these properties and their values see [Infinispan configuration](../extend/extend-apiml/api-mediation-infinispan.md#infinispan-configuration).
+
+
+    ```
+    zowe
+      environments:
+            JGROUPS_BIND_PORT:
+            JGROUPS_BIND_ADDRESS:
+            CACHING_STORAGE_INFINISPAN_INITIALHOSTS:
+            CACHING_STORAGE_INFINISPAN_PERSISTENCE_DATALOCATION:
+    ```
