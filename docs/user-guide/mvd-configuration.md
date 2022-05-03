@@ -10,9 +10,9 @@ You can modify the Zowe App Server and Zowe System Services (ZSS) configuration,
 
 When the server is enabled and given a port within [the configuration file](#configuration-file), the App server will print a message ZWED0031I in the log output. At that time, it is ready to accept network communication. When using the API Mediation Layer (recommended), app-server URLs should be reached from the Gateway, and you should additionally wait for the message ZWEAM000I for the Gateway to be ready.
 
-When Zowe is ready, the app-server can be found at `https://<externalDomain>:<components.gateway.port>/zlux/ui/v1`
+When Zowe is ready, the app-server can be found at `https://<zowe.externalDomain>:<components.gateway.port>/zlux/ui/v1`
 
-(Not recommended): If the API Mediation Layer is not used, or you need to contact the App server directly, the ZWED0031I message states which port it is accessible from, though generally it will be the same value as specified within `components.app-server.port`. In that case, the server would be available at `https://<externalDomain>:<components.app-server.port>/`
+(Not recommended): If the API Mediation Layer is not used, or you need to contact the App server directly, the ZWED0031I message states which port it is accessible from, though generally it will be the same value as specified within `components.app-server.port`. In that case, the server would be available at `https://<zowe.externalDomain>:<components.app-server.port>/`
 
 ### Accessing the Desktop
 
@@ -122,11 +122,11 @@ Prior to Zowe release 2.0.0, the location of the configuration directories were 
 
 | Folder | New Location | Old Location | Note
 |--------|--------------|--------------|-----
-| siteDir | `<workspaceDirectory>/app-server/site` | `<INSTANCE_DIR>/workspace/app-server/site` |
-| instanceDir | `<workspaceDirectory>/app-server` | `<INSTANCE_DIR>/workspace/app-server` | instanceDir term isn't used anymore. workspaceDirectory is used
-| groupsDir | `<workspaceDirectory>/app-server/groups` | `<INSTANCE_DIR>/workspace/app-server/groups` |
-| usersDir | `<workspaceDirectory>/app-server/users` | `<INSTANCE_DIR>/workspace/app-server/users` |
-| pluginsDir | `<workspaceDirectory>/app-server/plugins` | `<INSTANCE_DIR>/workspace/app-server/plugins` |
+| siteDir | `<zowe.workspaceDirectory>/app-server/site` | `<INSTANCE_DIR>/workspace/app-server/site` |
+| instanceDir | `<zowe.workspaceDirectory>/app-server` | `<INSTANCE_DIR>/workspace/app-server` | instanceDir term isn't used anymore. workspaceDirectory is used
+| groupsDir | `<zowe.workspaceDirectory>/app-server/groups` | `<INSTANCE_DIR>/workspace/app-server/groups` |
+| usersDir | `<zowe.workspaceDirectory>/app-server/users` | `<INSTANCE_DIR>/workspace/app-server/users` |
+| pluginsDir | `<zowe.workspaceDirectory>/app-server/plugins` | `<INSTANCE_DIR>/workspace/app-server/plugins` |
 
 
 ## App plugin configuration
@@ -448,17 +448,17 @@ By default, RBAC is disabled and all authenticated Zowe users can access all dat
 ### Controlling app access for all users
 
 **Note:**
-- `<runtimeDirectory>` variable comes from Zowe configuration file.
+- `<zowe.runtimeDirectory>` variable comes from the Zowe configuration file.
 
 1. Enable RBAC.
 
 2. Navigate to the following location:
    ```
-   <runtimeDirectory>/components/app-server/share/zlux-app-server/defaults/ZLUX/pluginStorage/org.zowe.zlux.bootstrap/plugins
+   <zowe.runtimeDirectory>/components/app-server/share/zlux-app-server/defaults/ZLUX/pluginStorage/org.zowe.zlux.bootstrap/plugins
    ```
 3. Copy the `allowedPlugins.json` file and paste it in the following location:
    ```
-   <runtimeDirectory>/components/app-server/share/zlux-app-server/deploy/instance/ZLUX/pluginStorage
+   <zowe.runtimeDirectory>/components/app-server/share/zlux-app-server/deploy/instance/ZLUX/pluginStorage
    ```
 4. Open the copied `allowedPlugins.json` file and perform either of the following steps:
     - To make an app unavailable, delete it from the list of objects.
@@ -472,12 +472,12 @@ By default, RBAC is disabled and all authenticated Zowe users can access all dat
 
 2. In the user's ID directory path, in the `\pluginStorage` directory, create `\org.zowe.zlux.bootstrap\plugins` directories. For example:
     ```
-    <runtimeDirectory>/components/app-server/share/zlux-app-server/deploy/instance/ZLUX/pluginStorage/org.zowe.zlux.bootstrap/plugins
+    <zowe.runtimeDirectory>/components/app-server/share/zlux-app-server/deploy/instance/ZLUX/pluginStorage/org.zowe.zlux.bootstrap/plugins
     ```
 
 3. In the `/plugins` directory, create an `allowedPlugins.json` file. You can use the default `allowedPlugins.json` file as a template by copying it from the following location:
    ```
-   <runtimeDirectory>/components/app-server/share/zlux-app-server/defaults/ZLUX/pluginStorage/org.zowe.zlux.bootstrap/plugins
+   <zpwe.runtimeDirectory>/components/app-server/share/zlux-app-server/defaults/ZLUX/pluginStorage/org.zowe.zlux.bootstrap/plugins
    ```
 6. Open the `allowedPlugins.json` file and specify apps that user can access. For example:
     ```json
@@ -544,7 +544,7 @@ For users to access endpoints after you enable RBAC, in the ZOWE class you must 
 
 Endpoints are identified by URIs in the following format:
 
-`/<product>/plugins/<plugin_id>/services/<service>/<version>/<path>`
+`/ZLUX/plugins/<plugin_id>/services/<service>/<version>/<path>`
 
 For example:
 
@@ -554,18 +554,18 @@ Where the path is `/users/fred`.
 
 SAF profiles have the following format:
 
-`<product>.<instance_id>.<service>.<pluginid_with_underscores>.<service>.<HTTP_method>.<url_with_forward_slashes_replaced_by_periods>`
+`ZLUX.<zowe.rbacProfileIdentifier>.<servicename>.<pluginid_with_underscores>.<service>.<HTTP_method>.<url_with_forward_slashes_replaced_by_periods>`
 
 For example, to issue a POST request to the dataservice endpoint documented above, users must have READ access to the following profile:
 
-`ZLUX.DEFAULT.SVC.ORG_ZOWE_FOO.BAZ.POST.USERS.FRED`
+`ZLUX.1.SVC.ORG_ZOWE_FOO.BAZ.POST.USERS.FRED`
 
 For configuration dataservice endpoint profiles use the service code `CFG`. For core dataservice endpoints use `COR`. For all other dataservice endpoints use `SVC`.
 
 ### Creating generic authorization profiles
 Some endpoints can generate an unlimited number of URIs. For example, an endpoint that performs a DELETE action on any file would generate a different URI for each file, and users can create an unlimited number of files. To apply RBAC to this type of endpoint you must create a generic profile, for example:
 
-`ZLUX.DEFAULT.COR.ORG_ZOWE_FOO.BAZ.DELETE.**`
+`ZLUX.1.COR.ORG_ZOWE_FOO.BAZ.DELETE.**`
 
 You can create generic profile names using wildcards, such as asterisks (*). For information on generic profile naming, see [IBM documentation](https://www.ibm.com/support/knowledgecenter/en/SSLTBW_2.1.0/com.ibm.zos.v2r1.icha100/egnoff.htm).
 
@@ -575,8 +575,8 @@ The following are recommended for basic authorization:
 
 - To give administrators access to everything in Zowe, create the following profile and give them UPDATE access to it: `ZLUX.**`
 - To give non-administrators basic access to the site and product, create the following profile and give them READ access to it: `ZLUX.*.ORG_ZOWE_*`
-- To prevent non-administrators from configuring endpoints at the product and instance levels, create the following profile and do not give them access to it: `ZLUX.DEFAULT.CFG.**`
-- To give non-administrators all access to user, create the following profile and give them UPDATE access to it: `ZLUX.DEFAULT.CFG.*.*.USER.**`
+- To prevent non-administrators from configuring endpoints at the product and instance levels, create the following profile and do not give them access to it: `ZLUX.1.CFG.**`
+- To give non-administrators all access to user, create the following profile and give them UPDATE access to it: `ZLUX.1.CFG.*.*.USER.**`
 
 
 ### Endpoint URL length limitations
@@ -600,11 +600,9 @@ The duration of the session is determined by the plugin used. Some plugins are c
 
 Zowe is bundled with a few of these plugins:
 
-* **apiml-auth**: Calls the Zowe API Mediation Layer from the app-server for authentication. By default, the Mediation Layer calls z/OSMF to answer the authentication request. The session created mirrors the z/OSMF session.
+* **sso-auth**: Uses either ZSS or the API Mediation Layer for authentication, and ZSS for RBAC authorization. This plugin also supports resetting or changing your password via a ZSS API. Whether ZSS or API Mediation Layer or both are used for authentication depends upon SSO settings. Starting with Zowe 1.28.0, SSO is enabled by default such that only API Mediation Layer is called at authentication time. By default, the Mediation Layer calls z/OSMF to answer the authentication request. The session created mirrors the z/OSMF session.
 
-* **zosmf-auth**: Calls z/OSMF auth from the app-server to answer the authentication request. The created z/OSMF session is valid for about 8 hours.
-
-* **zss-auth**: Calls Zowe ZSS from the app-server to answer the authentication request. The created ZSS session is valid for 1 hour, but is renewable on request prior to expiration. In the Desktop, the session is automatically renewed if the user is detected as active. If the user is detected as idle, the session will expire.
+* **trivial-auth**: This plugin is used for development and testing, as it always returns true for any function. It could be used if there were specific services you did not need authentication for, while you wanted authentication elsewhere.
 
 When a session expires, the credentials used for the initial login are likely to be invalid for re-use, since MFA credentials are often one-time-use or time-based.
 
@@ -616,55 +614,46 @@ When you use the default Zowe SMP/E or convenience build configuration, you do n
 
 To configure Zowe for MFA with a configuration other than the default, take the following steps:
 
-1. Choose an App Server security plugin that is compatible with MFA. The [apiml-auth, zss-auth, and zosmf-auth](#session-duration-and-expiration) plugins are all compatible.
+1. Choose an App Server security plugin that is compatible with MFA. The [sso-auth](#session-duration-and-expiration) plugin is compatible.
 2. Locate the App Server's configuration file in `zowe.yaml`.
 3. Edit the configuration file to modify the section `components.app-server.dataserviceAuthentication`.
 
-4. Set `defaultAuthentication` to the same category as the plugin of choice, for example:
-    * **apiml-auth**: "apiml"
-    * **zosmf-auth**: "zosmf"
-    * **zss-auth**: "zss"
-5. Define the plugins to use in the configuration file by adding a section for the chosen category within `dataserviceAuthentication.implementationDefaults` as an object with the attribute `plugins`, which is an array of plugin ID strings, where the plugins each have the following IDs:
-    * **apiml-auth**: "org.zowe.zlux.auth.apiml"
-    * **zosmf-auth**: "org.zowe.zlux.auth.zosmf"
-    * **zss-auth**: "org.zowe.zlux.auth.zss"
+4. Set `defaultAuthentication` to the same category as the plugin of choice, as seen in its pluginDefinition.json file. For example:
+    * **sso-auth**: "saf"
+    * **trivial-auth**: "fallback"
 
-The following is an example configuration for `zss-auth`, as seen in a default installation of Zowe:
+The following is an example configuration for `sso-auth`, as seen in a default installation of Zowe:
 ```
-dataserviceAuthentication: 
-  defaultAuthentication: zss
-  implementationDefaults: 
-    zss: 
-      plugins: 
-        "org.zowe.zlux.auth.zss"
-      
+components:
+  app-server:
+    dataserviceAuthentication: 
+      defaultAuthentication: saf
 ```
 
 
 ## Administering the servers and plugins using an API
-You can use a REST API to retrieve and edit Zowe App Server and ZSS server configuration values, and list, add, update, and delete plugins. If an administrator has configured Zowe to [use RBAC](https://docs.zowe.org/stable/user-guide/mvd-configuration.html#controlling-access-to-dataservices), they must authorize you to access the endpoints.
+The App Server has a REST API to retrieve and edit both the App Server and ZSS server configuration values, and list, add, update, and delete plugins. Most of the features require RBAC to be enabled and for your user to have RBAC access to utilize these endpoints. For more information see documentation on how to  [use RBAC](https://docs.zowe.org/stable/user-guide/mvd-configuration.html#controlling-access-to-dataservices)
 
 The API returns the following information in a JSON response:
 
 | API                                                       | Description                                                  |
 | --------------------------------------------------------- | ------------------------------------------------------------ |
 | /server (GET)                                             | Returns a list of accessible server endpoints for the Zowe App Server. |
-| /server/config (GET)                                      | Returns the Zowe App Server configuration from the `zluxserver.json` file. |
+| /server/config (GET)                                      | Returns the Zowe App Server configuration which follows [this specification](https://github.com/zowe/zlux-app-server/blob/v2.x/master/schemas/app-server-config.json). |
 | /server/log (GET)                                         | Returns the contents of the Zowe App Server log file. |
 | /server/loglevels (GET)                                   | Returns the verbosity levels set in the Zowe App Server logger. |
 | /server/environment (GET)                                 | Returns Zowe App Server environment information, such as the operating system version, node server version, and process ID. |
 | /server/reload (GET)                                      | Reloads the Zowe App Server. Only available in cluster mode. |
 | /server/agent (GET)                                       | Returns a list of accessible server endpoints for the ZSS server. |
-| /server/agent/config (GET)                                | Returns the ZSS server configuration from the `zluxserver.json` file. |
+| /server/agent/config (GET)                                | Returns the ZSS server configuration which follows [this specification](https://github.com/zowe/zss/blob/v2.x/staging/schemas/zss-config.json). |
 | /server/agent/log (GET)                                   | Returns the contents of the ZSS log file.                    |
 | /server/agent/loglevels (GET)                             | Returns the verbosity levels of the ZSS logger.              |
 | /server/agent/environment (GET)                           | Returns ZSS environment information.                         |
-| /server/config/:attrib (POST)                             | Specify values for server configuration attributes in the `zluxserver.json` file. You can change a subset of configuration values. |
 | /server/logLevels/name/:componentName/level/:level (POST) | Specify the logger that you are using and a verbosity level. |
 | /plugins (GET)                                            | Returns a list of all plugins and their dataservices.        |
-| /plugins (PUT)                                            | Adds a new plugin or upgrades an existing plugin. Only available in cluster mode. |
-| /plugins/:id (DELETE)                                     | Deletes a plugin. Only available in cluster mode.            |
+| /plugins (PUT)                                            | Adds a new plugin or upgrades an existing plugin. Only available in cluster mode (default). |
+| /plugins/:id (DELETE)                                     | Deletes a plugin. Only available in cluster mode (default).  |
 
-Swagger API documentation is provided in the `<RUNTIME_DIR>/components/app-server/share/zlux-app-server/doc/swagger/server-plugins-api.yaml` file. To see it in HTML format, you can paste the contents into the Swagger editor at https://editor.swagger.io/.
+Swagger API documentation is provided in the `<zowe.runtimeDirectory>/components/app-server/share/zlux-app-server/doc/swagger/server-plugins-api.yaml` file. To see it in HTML format, you can paste the contents into the Swagger editor at https://editor.swagger.io/.
 
 **Note:** The "agent" end points interact with the agent specified in the zowe configuration file. By default this is ZSS.
