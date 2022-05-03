@@ -14,6 +14,7 @@ The Caching service is available only for internal Zowe applications, and is not
 - [Storage methods](#storage-methods)
   - [VSAM](#vsam)
   - [Redis](#redis)
+  - [Infinispan](#infinispan)
   - [InMemory](#inmemory)
 - [How to start the service](#how-to-start-the-service)
 - [Methods to use the Caching service API](#methods-to-use-the-caching-service-api)
@@ -45,6 +46,11 @@ For more information about the VSAM storage access method, see [Using VSAM as a 
 Redis is a common storage solution that runs outside of the z/OS platform. It can store data structures in key-value pairs, has high-availability support, and is highly performant.
 
 For more information about the Redis storage access method, see [Using Redis as a storage solution through the Caching service](./api-mediation-redis.md).
+### Infinispan
+
+Infinispan is a storage solution that can also run on the z/OS platform. It can store data structures in key-value pairs, has high-availability support, and is highly performant.
+
+For more information about the Infinispan storage access method, see [Using Infinispan as a storage solution through the Caching service](./api-mediation-infinispan.md).
 ### InMemory
 TODO (add in memory procedure)
 The InMemory storage method is a method suitable for testing and integration verification. Be sure not to use InMemory storage in production. 
