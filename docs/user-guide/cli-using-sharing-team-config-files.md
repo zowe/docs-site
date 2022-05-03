@@ -72,7 +72,7 @@ Team leaders can import configuration files from a web URL that is in raw json f
         ```
 
         - user
-        
+ 
             Specifies the user ID
         - password
 
@@ -82,7 +82,8 @@ Team leaders can import configuration files from a web URL that is in raw json f
             Specifies the host name of the system
         - folderPath
 
-            Specifies the path to the configuration file
+        
+        Specifies the path to the team configuration file
 
         **Note:** You can host team configuration files on **private** and **public** web servers. The user name and password are required for **only private URLs**. However, to maintain the highest level of security, you **should not store** team configuration files on public URLs.
 

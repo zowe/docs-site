@@ -8,7 +8,7 @@ If you encounter HTTP 500 errors with the CLI, consider gathering the following 
 If you encounter HTTP 401 errors with the CLI, consider gathering the following information:
 1. Any security violations for the TSO user in SYSLOG
 
-## Alternate methods
+## Alternative methods
 At times, it may be beneficial to test z/OSMF outside of the CLI. You can use the CLI tool `curl` or a REST tool such as "Postman" to isolate areas where the problem might be occurring (CLI configuration, server-side, etc.).
 
 Example `curl` command to `GET /zosmf/info`:
