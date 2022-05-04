@@ -25,11 +25,11 @@ Configure VSAM as a storage solution through the Caching service by modifying th
 
 * **`caching.storage.vsam.keyLength`**
 
-  The VsamKey length. The default value is 32 bytes.
+  The VsamKey length. The default value is 128 bytes.
 
 * **`caching.storage.vsam.recordLength`**
 
-  The record length. The default value is 512 bytes.
+  The record length. The default value is 4096 bytes.
 
 * **`caching.storage.vsam.encoding`**
 
