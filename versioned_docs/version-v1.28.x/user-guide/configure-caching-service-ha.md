@@ -29,7 +29,7 @@ You can use the `ZWECSVSM` JCL to create a VSAM data set and define required sec
 
 Before you submit the `ZWECSVSM` JCL, you must customize it and review it with a system programmer who is familiar with z/OS VSAM data set and storage. 
 
-The following variables are available in the JCL.
+The following variables are available in the JCL:
 
 - `#dsname` variable
 
@@ -50,6 +50,9 @@ The following variables are available in the JCL.
 - `#volume` variable
 
    If you set to use the `NONRLS` mode, a storage volume is required. Replace `#volume` with you desired storage volume.
+
+Note: The `ZWECSVSM` JCL defines the key length and record length of the VSAM instance. If the key length and record length of this JCL is changed,
+`CACHING_STORAGE_VSAM_KEYLENGTH` and `CACHING_STORAGE_VSAM_RECORDLENGTH` must be set in `instance.env` to the new values.
 
 **Procedure** 
 
