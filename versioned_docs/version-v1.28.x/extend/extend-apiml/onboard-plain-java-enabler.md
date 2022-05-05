@@ -526,7 +526,7 @@ The Zowe API ML Discovery Service communicates with its clients in secure Https 
 Client services need to configure several TLS/SSL parameters in order to communicate with the API ML Discovery service.
 When an enabler is used to onboard a service, the configuration is provided in the `ssl` section/group in the same _YAML_ file that is used to configure the Eureka parameters and the service metadata.
 
-For more information about API ML security, see [API ML security](api-mediation-security).
+For more information about API ML security, see [API ML security](api-mediation-security.md).
 
 TLS/SSL configuration consists of the following parameters:
 
@@ -583,7 +583,7 @@ TLS/SSL configuration consists of the following parameters:
 ### SAF Keyring configuration
 
 You can choose to use SAF keyring instead of keystore and truststore for storing certificates.
-For information about required certificates, see [Zowe API ML TLS requirements](api-mediation-security#zowe-api-ml-tls-requirements). For information about running Java on z/OS with keyring, see [SAF Keyring](api-mediation-security#api-ml-saf-keyring). Make sure that the enabler can access and read the keyring. Please refer to documentation of your security system for details.
+For information about required certificates, see [Zowe API ML TLS requirements](../extend-apiml/api-mediation-security.md#zowe-api-ml-tls-requirements). For information about running Java on z/OS with keyring, see [SAF Keyring](api-mediation-security#api-ml-saf-keyring). Make sure that the enabler can access and read the keyring. Please refer to documentation of your security system for details.
 
 
 The following example shows enabler configuration with keyrings.
@@ -625,7 +625,7 @@ where:
 ### Custom Metadata
 
 
-For information about custom metadata, see the topic [Custom Metadata](../extend-apiml/custom-metadata).
+For information about custom metadata, see the topic [Custom Metadata](../extend-apiml/custom-metadata.md).
     
 ##  Registering your service with API ML
 
