@@ -314,7 +314,7 @@ A property notation provided in the format `-Dproperty.key=PROPERTY_VALUE` can b
 in any of the YAML configuration files.
 
 ### Authentication properties
-These parameters are not required. If a parameter is not specified, a default value is used. See [Authentication Parameters for Onboarding REST API Services](https://docs.zowe.org/stable/extend/extend-apiml/api-mediation-security#Authentication-parameters) for more details.
+These parameters are not required. If a parameter is not specified, a default value is used. See [Authentication Parameters for Onboarding REST API Services](https://docs.zowe.org/stable/extend/extend-apiml/api-mediation-security#authentication-parameters) for more details.
 
 ### API ML Onboarding Configuration Sample
 
