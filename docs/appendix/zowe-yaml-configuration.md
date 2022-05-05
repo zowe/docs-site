@@ -416,7 +416,7 @@ These configurations can be used under the `components.gateway` section:
 - **`port`**  
  Defines the port which the gateway should be started on. This must be a valid port number.
 - **`debug`**  
- Defines whether to enable debug mode for gateway.
+ Defines whether to enable debug mode for the Gateway.
 - **`apiml.service.allowEncodedSlashes`**  
  When this parameter is set to `true`, the Gateway allows encoded characters to be part of URL requests redirected through the Gateway. 
 - **`apiml.service.corsEnabled`**  
@@ -449,7 +449,7 @@ These configurations can be used under the `components.discovery` section:
 - **`port`**  
  Defines the port which discovery should be started on. This may be defined as a valid port number or as an offset from the Gateway component's port. To define an offset enter `"+{offset}"` or `"-{offset}"` as a string. The offset must start with `+` or `-`.
 - **`debug`**  
- Defines whether to enable debug mode for gateway.
+ Defines whether to enable debug mode for the Discovery Service.
 - **`apiml.service.preferIpAddress`**  
  Set this parameter to `true`  to advertise a service IP address instead of its hostname. **Note:** This configuration is deprecated. The Zowe start script will ignore this value and always set it to `false`.
 - **`apiml.security.ssl.verifySslCertificatesOfServices`**  
@@ -472,7 +472,7 @@ These configurations can be used under the `components.api-catalog` section:
 - **`port`**  
  Defines the port which API Catalog should be started on.
 - **`debug`**  
- Defines if we want to enable debug mode for gateway. This is equivalent to the `APIML_DEBUG_MODE_ENABLED` variable but with better granular level.
+ Defines if we want to enable debug mode for the API Catalog. This is equivalent to the `APIML_DEBUG_MODE_ENABLED` variable but with better granular level.
 - **`environment.preferIpAddress`**  
  Set this parameter to `true`  to advertise a service IP address instead of its hostname.  
   **Note:** This configuration is deprecated. Zowe start script will ignore this value and always set it to `false`.
@@ -484,7 +484,7 @@ These configurations can be used under the `components.caching-service` section:
 - **`port`**  
  Defines the port which Caching Service should be started on. This may be defined as a valid port number or as an offset from the Gateway component's port. To define an offset enter `"+{offset}"` or `"-{offset}"` as a string. The offset must start with `+` or `-`.
 - **`debug`**  
- Defines if we want to enable debug mode for gateway.
+ Defines if we want to enable debug mode for the Caching Service.
 - **`storage.mode`**  
  Sets the storage type used to persist data in the Caching Service.
 - **`storage.size`**  
@@ -538,12 +538,18 @@ These configurations can be used under the `components.jobs-api` section:
 - **`port`**  
  Defines the port which Jobs API should be started on. This may be defined as a valid port number or as an offset from the Gateway component's port. To define an offset enter `"+{offset}"` or `"-{offset}"` as a string. The offset must start with `+` or `-`.
 
+ - **`debug`**  
+ Defines whether to enable debug logging for the Jobs API.
+
 #### Configure component files-api
 
 These configurations can be used under the `components.files-api` section:
 
 - **`port`**  
  Defines the port which Files API should be started on. This may be defined as a valid port number or as an offset from the Gateway component's port. To define an offset enter `"+{offset}"` or `"-{offset}"` as a string. The offset must start with `+` or `-`.
+
+ - **`debug`**  
+ Defines whether to enable debug logging for the Files API.
 
 #### Configure external extension
 
