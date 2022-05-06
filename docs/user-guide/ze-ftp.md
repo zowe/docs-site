@@ -68,12 +68,12 @@ The following list describes functionalities that the FTP extension does not sup
 
 **Migrated data sets:**
 
-- Show data set attribute
+- Show data set attributes
 - Add to favorites
 
 **Sequential data sets:**
 
-- Show data set attribute
+- Show data set attributes
 - Pull from mainframe
 - Edit data set
 - Rename data set
@@ -81,7 +81,7 @@ The following list describes functionalities that the FTP extension does not sup
 
 **Partitioned data sets:**
 
-- Show data set attribute
+- Show data set attributes
 - Create new member
 - Edit member
 - Upload member
