@@ -68,23 +68,32 @@ The following list describes functionalities that the FTP extension does not sup
 
 **Migrated data sets:**
 
-- 
-- 
+- Show data set attribute
+- Add to favorites
 
 **Sequential data sets:**
 
-- 
-- 
+- Show data set attribute
+- Pull from mainframe
+- Edit data set
+- Rename data set
+- Delete data set
 
 **Partitioned data sets:**
 
-- 
-- 
+- Show data set attribute
+- Create new member
+- Edit member
+- Upload member
+- Rename data set
+- Delete data set
 
 **Partitioned data set members:**
 
-- 
-- 
+- Pull from mainframe
+- Edit member
+- Rename member
+- Delete member
 
 ## Providing feedback or help contributing
 
