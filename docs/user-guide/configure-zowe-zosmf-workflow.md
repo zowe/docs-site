@@ -45,10 +45,7 @@ After you register the workflow definition file, perform the following steps to 
 
    Execute the `zwe install` command with the previously stored zowe.yaml file as a parameter.
 
-   If you receive an error message (such as RC higher than 0), ensure that you edit incorrect input values or TODO1 system setup before you re-run the `zwe install` command. To TODO2 write changed output, edit the step by adding the `--allow-overwritten` tag to the install command.
-
-   <!-- TODO1 I'm not sure about the `system setup` part. What exactly needs to be done?
-   TODO2  What does `write changed output` mean? Did you mean `to overwrite changed output`? -->
+   If you receive an error message (such as RC higher than 0), ensure that you edit incorrect input values or system setup before you re-run the `zwe install` command. To overwrite changed output, edit the step by adding the `--allow-overwritten` tag to the install command.
 
    **Example: Command that re-runs the installation**
 
