@@ -15,7 +15,7 @@ All Zowe server components can be installed on a z/OS environment, while some ca
   - [ZWEADMIN](#zweadmin)
   - [zowe_user](#zowe_user)
 - [Network requirements](#network-requirements)
-- [Zowe Docker requirements](#zowe-docker-requirements)
+- [Zowe Containers requirements](#zowe-containers-requirements)
 - [Zowe Desktop requirements (client PC)](#zowe-desktop-requirements-client-pc)
 - [Feature requirements](#feature-requirements)
   - [Multi-Factor Authentication MFA](#multi-factor-authentication-mfa)
@@ -121,24 +121,9 @@ The following ports are required for Zowe. These are default values. You can cha
 
 
 
-## Zowe Docker requirements
+## Zowe Containers requirements
 
-<Badge text="Technical Preview"/> The Zowe Docker build is a technical preview.
-
-Docker is a technology for delivering a set of software and all its prerequisites and run them in an isolated manner to reduce installation steps and to eliminate troubleshooting environmental differences.
-Docker can run on many operating systems, but currently the Zowe Docker image is for x86 Linux (Intel, AMD) and zLinux ("s390x"). Support for platforms such as zCX, Windows, and more will be added over time.
-
-To get Docker for Linux, you should check your Linux software repository. Whether using Ubuntu, Red Hat, SuSE, and many other types of Linux, you can install Docker the same way you install other software on Linux through the package manager.
-
-Once you have Docker, the Zowe Docker image has the following requirements
-
-- 4 GB free RAM, 8 GB recommended
-- 4 GB free disk space
-- Network access to the z/OS host. The Linux host must be able to communicate with the z/OS host.
-
-When using Docker the USS components of Zowe will run off z/OS in the Linux container, however a z/OS installation of Zowe is still required for the ZSS and cross memory server.  
-
-**Note:** The subsections of z/OS requirements such as for API Mediation Layer, Web Explorers, and Application Framework are not required because they are included in the Docker install.
+Zowe (server) containers are available for download as an alternative to running Zowe servers on z/OS through the Zowe convenience and SMP/E builds Check [Zowe Containers Prerequisites](./k8s-prereqs.md) page for more details.
 
 ## Zowe Desktop requirements (client PC)
 
