@@ -10,7 +10,9 @@ The following SDKs are available.
 
 ## API documentation
 
-For details about the available API endpoints, browse or download the [API Reference documentation](https://docs.zowe.org/stable/#zowe-client-sdk-reference-guides).
+For information about the available API endpoints, see the following SDK documentation:
+- [Zowe Node.js SDK](https://docs.zowe.org/stable/typedoc/index.html)
+- [Zowe Client Python SDK](https://zowe-client-python-sdk.readthedocs.io/en/latest/)
 
 ## Software requirements
 
