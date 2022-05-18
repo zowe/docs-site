@@ -62,29 +62,62 @@ The following steps are not required, as the Zowe Explorer FTP extension include
 
 Now you can run `zowe zos-ftp` commands as documented in the plug-in documentation. This profile can then be selected in Zowe Explorer's Add Profile dialogs after this Zowe Explorer FTP VS Code extension is installed.
 
-## Unsupported data set functionalities
+## List of Supported Data Set Functionalities
 
-The following list describes functionalities that the FTP extension does not support for the different types of data sets:
+See the list of the supported functionalities for different types of data sets:
 
-**Migrated data sets:**
+**Migrated Dataset:**
 
-- 
-- 
+- Show Data Set Attribute
+- Add to Favorites
 
-**Sequential data sets:**
+**Sequential Dataset:**
 
-- 
-- 
+- Show Data Set Attribute
+- Pull from Mainframe
+- Edit Data Set
+- Rename Data Set
+- Delete Data Set
 
-**Partitioned data sets:**
+**Partitioned Dataset:**
 
-- 
-- 
+- Show Data Set Attribute
+- Create New Member
+- Edit Member
+- Upload Member
+- Rename Data Set
+- Delete Data Set
 
-**Partitioned data set members:**
+**Partitioned Dataset Member:**
 
-- 
-- 
+- Pull from Mainframe
+- Edit Member
+- Rename Member
+- Delete Member
+
+## List of Supported USS Functionalities
+
+- List uss files and directories
+- view file in text/binary mode
+- Edit file
+- Save file
+- Create a new directory/new file
+- Upload file
+- Rename file/directory
+- Delete file/directory
+- Pull from mainframe
+- Add to Favorites
+
+## List of Supported Jobs Functionalities
+
+- List Jobs with prefix and owner
+- List job by jobid
+- List spool files
+- View spool files content
+- Download spool files
+- Submit job from dataset/member
+- Delete job
+- Add to favorites
 
 ## Providing feedback or help contributing
 
