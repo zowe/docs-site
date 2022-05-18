@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>workload-automation update jobinplan</title>
+<link rel="stylesheet" href="../css/bundle-docs.css">
+<link rel="stylesheet" href="../css/docs.css">
+<article class="markdown-body">
+<h2><a href="zowe.html">zowe</a> › <a href="zowe_workload-automation.html">workload-automation</a> › <a href="zowe_workload-automation_update.html">update</a> › <a href="zowe_workload-automation_update_jobinplan.html">jobinplan</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
+<p>Update the job in plan.</p>
+<h4>Usage</h4>
+<p>zowe workload-automation update jobinplan [options]</p>
+<h4>Required Options</h4>
+<ul>
+<li>
+<p><code>--id</code>  <em>(string)</em></p>
+<ul>
+<li>ID of the job to update. Take the ID from get response body.</li>
+</ul>
+</li>
+</ul>
+<h4>Options</h4>
+<ul>
+<li>
+<p><code>--jobname</code>  | <code>--jn</code> <em>(string)</em></p>
+<ul>
+<li>Name of the job</li>
+</ul>
+</li>
+<li>
+<p><code>--description</code>  | <code>--des</code> <em>(string)</em></p>
+<ul>
+<li>Description of the job</li>
+</ul>
+</li>
+<li>
+<p><code>--workstation</code>  | <code>--ws</code> <em>(string)</em></p>
+<ul>
+<li>Name of the workstation</li>
+</ul>
+</li>
+<li>
+<p><code>--parallel-servers</code>  | <code>--ps</code> <em>(number)</em></p>
+<ul>
+<li>Number of parallel servers that can concurrently run the operation at the workstation</li>
+</ul>
+</li>
+<li>
+<p><code>--r1-resources</code>  | <code>--r1</code> <em>(number)</em></p>
+<ul>
+<li>Maximum capacity of workstation resource 1</li>
+</ul>
+</li>
+<li>
+<p><code>--r2-resources</code>  | <code>--r2</code> <em>(number)</em></p>
+<ul>
+<li>Maximum capacity of workstation resource 2</li>
+</ul>
+</li>
+<li>
+<p><code>--form-number</code>  | <code>--fn</code> <em>(string)</em></p>
+<ul>
+<li>Form number or Sysout forms name of the job</li>
+</ul>
+</li>
+<li>
+<p><code>--extended-name</code>  | <code>--en</code> <em>(string)</em></p>
+<ul>
+<li>Extended name of the job</li>
+</ul>
+</li>
+<li>
+<p><code>--job-class</code>  | <code>--jclass</code> <em>(string)</em></p>
+<ul>
+<li>Job or sysout class of the job</li>
+</ul>
+</li>
+<li>
+<p><code>--scheduling-environment</code>  | <code>--env</code> <em>(string)</em></p>
+<ul>
+<li>Scheduling environmnent name of the job</li>
+</ul>
+</li>
+<li>
+<p><code>--time-dependent</code>  | <code>--td</code> <em>(boolean)</em></p>
+<ul>
+<li>
+<p>Jobs are to be submitted at a specific time or as soon as possible.</p>
+<p>True: job must NOT start before the input arrival time is reached.</p>
+<p>False: job can start as soon as predecessors are completed and resources are available.</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--follow-job-stream-input-arrival</code>  | <code>--fjs-ia</code> | <code>--fjs</code> <em>(boolean)</em></p>
+<ul>
+<li>Follow jobstream input arrival time. If not specified, current value is used.</li>
+</ul>
+</li>
+<li>
+<p><code>--start-time</code>  | <code>--st</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>Start time date and time of the job, in the format YYYY-MM-DDTHH:MM:SS</p>
+<p>The date and time cannot be earlier than the application input arrival, nor later than the application deadline.</p>
+<p>Use it in combination with the follow-job-stream-input-arrival option set to false.</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--deadline</code>  | <code>--dl</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>Deadline date and time of the job, in the format YYYY-MM-DDTHH:MM:SS</p>
+<p>The date and time cannot be earlier than the application input arrival, nor later than the application deadline.</p>
+<p>To clear existent deadline-time pass an empty &quot;&quot; value. Note that any correlated actions will be cleared.</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--deadline-action</code>  | <code>--dla</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>Action to be taken if the operation is still not completed when deadline day and time are reached. If you specify an action, an alert message is issued. Optional.</p>
+<p>ALERT: Alert only.</p>
+<p>COMPLETE: Operation is completed if its status allows this kind of change, otherwise is NOPed.</p>
+<p>NOP: Operation and all its internal successors are NOPed.</p>
+<p>ERROR: Operation is set to error with error code ODEA if its status allows this kind of change.</p>
+<p>BLANK: No action.</p>
+<p>Allowed values: ALERT, COMPLETE, NOP, ERROR, BLANK</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--not-started-alert-date</code>  | <code>--nsald</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>Date and time, in the format YYYY-MM-DDTHH:MM:SS, to check if the operation has not yet started. If so, an alert is issued.</p>
+<p>To clear existent not-started-alert-date pass an empty &quot;&quot; value.</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--not-started-action-date</code>  | <code>--nsacd</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>Date and time, in the format YYYY-MM-DDTHH:MM:SS, to check if the operation has not yet started.This check is applied only to ready operations. If you specify date and time, an action is required.</p>
+<p>To clear existent not-started-action-date pass an empty &quot;&quot; value. Note that any correlated actions will be cleared.</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--not-started-action</code>  | <code>--nsa</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>Action to be taken if the operation has not yet started when the specified time is reached. If you specify an action, day and time are required.</p>
+<p>ALERT: Alert only.</p>
+<p>COMPLETE: Operation is completed if its status allows this kind of change, otherwise is NOPed.</p>
+<p>NOP: Operation and all its internal successors are NOPed.</p>
+<p>ERROR: Operation is set to error with error code OLAT if its status allows this kind of change.</p>
+<p>Allowed values: ALERT, COMPLETE, NOP, ERROR</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--duration</code>  | <code>--dur</code> <em>(number)</em></p>
+<ul>
+<li>Estimated duration of the job, expressed in milliseconds.</li>
+</ul>
+</li>
+<li>
+<p><code>--critical</code>  | <code>--crit</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>If the job is to be considered a Critical Path target, eligible for WLM assistance, or Not eligible for WLM assistance.</p>
+<p>Allowed values: NO, PATH, WLM</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--wlm-policy</code>  | <code>--wpol</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>Policy to be used for WLM assistance, if the job has been defined as critical.</p>
+<p>LONGDURATION: job is assisted if it runs beyond its estimated duration</p>
+<p>DEADLINE: job is assisted if it has not finished when its deadline time is reached</p>
+<p>LATESTSTART: job is assisted if it is submitted after its latest start time</p>
+<p>CONDITIONAL: an algorithm calculates whether to apply the Deadline or Latest start policy</p>
+<p>DEFAULT: the policy specified in OPCOPTS is applied</p>
+<p>Allowed values: CONDITIONAL, DEADLINE, LATESTSTART, LONGDURATION, DEFAULT</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--wlm-class</code>  | <code>--wcla</code> <em>(string)</em></p>
+<ul>
+<li>WLM Service Class</li>
+</ul>
+</li>
+<li>
+<p><code>--monitored</code>  | <code>--mon</code> <em>(boolean)</em></p>
+<ul>
+<li>
+<p>Job or operation must be monitored by an external product.</p>
+<p>True: monitored</p>
+<p>False: not monitored</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--auto-release</code>  | <code>--ar</code> <em>(boolean)</em></p>
+<ul>
+<li>
+<p>Jobs submitted by other than the product must be automatically released at their appropriate time, if placed in HOLD status at job submission time.</p>
+<p>True: release jobs at their appropriate time.</p>
+<p>False: release jobs immediately.</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--cancel-if-late</code>  | <code>--clate</code> <em>(boolean)</em></p>
+<ul>
+<li>
+<p>Job must be submitted, regardless of the fact that its assigned start time has passed.</p>
+<p>True: suppress the submit or release of a time-dependent job, if it is late.</p>
+<p>False: submit or release a job when ready, even if the specified time has passed.</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--auto-submit</code>  | <code>--asub</code> <em>(boolean)</em></p>
+<ul>
+<li>
+<p>Job is to be automatically started.</p>
+<p>True: job is automatically started.</p>
+<p>False: job is NOT automatically started.</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--auto-error-completion</code>  | <code>--aerc</code> <em>(boolean)</em></p>
+<ul>
+<li>
+<p>How error conditions are to be managed for the job.</p>
+<p>True: error conditions are automatically tracked and the job is assigned an ended-in-error status if it fails.</p>
+<p>False: ignore error conditions and give the job a completed status when it ends.</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--highest-return-code</code>  | <code>--hrc</code> <em>(number)</em></p>
+<ul>
+<li>Highest accepted return code for a job  NOT to be reported as ended-in-error. For FT workstations, this value can be only 0.</li>
+</ul>
+</li>
+<li>
+<p><code>--user-data</code>  | <code>--udata</code> <em>(string)</em></p>
+<ul>
+<li>User descriptive text to be associated with the job or operation.</li>
+</ul>
+</li>
+<li>
+<p><code>--cleanup-option</code>  | <code>--clean</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>Cleanup action to be taken on computer workstations for operations that end in error or are rerun.</p>
+<p>Allowed values: AUTOMATIC, IMMEDIATE, MANUAL, NONE</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--user-sysout</code>  | <code>--usys</code> <em>(boolean)</em></p>
+<ul>
+<li>
+<p>If User sysout support is needed.</p>
+<p>True: data store logs User sysout.</p>
+<p>False: data store does not log User sysout.</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--restartable</code>  | <code>--rest</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>The operation can be restarted when its primary workstation becomes inactive. Ignored for Fault-Tolerant workstations. Use installation default action.</p>
+<p>YES: the operation can be restarted.</p>
+<p>NO: the operation CANNOT be restarted.</p>
+<p>DEFAULT: use installation default action.</p>
+<p>Allowed values: YES, NO, DEFAULT</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--reroutable</code>  | <code>--rero</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>The operation can be rerouted if its primary workstation is rerouted. Ignored for Fault Tolerance Workstation.</p>
+<p>YES: operation can be rerouted.</p>
+<p>NO: operation CANNOT be rerouted.</p>
+<p>DEFAULT: use installation default action.</p>
+<p>Allowed values: YES, NO, DEFAULT</p>
+</li>
+</ul>
+</li>
+</ul>
+<h4>workload-automation Connection Options</h4>
+<ul>
+<li>
+<p><code>--host</code>  | <code>-H</code> <em>(string)</em></p>
+<ul>
+<li>The Z connector server host name or API ML server host name</li>
+</ul>
+</li>
+<li>
+<p><code>--port</code>  | <code>-P</code> <em>(number)</em></p>
+<ul>
+<li>The Z connector server port or API ML server port</li>
+</ul>
+</li>
+<li>
+<p><code>--user</code>  | <code>-u</code> <em>(string)</em></p>
+<ul>
+<li>The Z connector user ID</li>
+</ul>
+</li>
+<li>
+<p><code>--password</code>  | <code>--pwd</code> <em>(string)</em></p>
+<ul>
+<li>The Z connector password</li>
+</ul>
+</li>
+<li>
+<p><code>--engine</code>  | <code>--eng</code> <em>(string)</em></p>
+<ul>
+<li>Name of the engine, as defined on the Z connector</li>
+</ul>
+</li>
+<li>
+<p><code>--base-path</code>  | <code>--bp</code> <em>(string)</em></p>
+<ul>
+<li>Base path of your API mediation layer instance. If a base path is specified, the plug-in connects to API ML. Specify this value according to the yaml static file added to API ML</li>
+</ul>
+</li>
+<li>
+<p><code>--reject-unauthorized</code>  | <code>--ru</code> <em>(boolean)</em></p>
+<ul>
+<li>
+<p>Reject self-signed certificates</p>
+<p>Default value: true</p>
+</li>
+</ul>
+</li>
+</ul>
+<h4>Profile Options</h4>
+<ul>
+<li>
+<p><code>--wa-profile</code>  | <code>--wa-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (wa) profile to load for this command execution.</li>
+</ul>
+</li>
+<li>
+<p><code>--base-profile</code>  | <code>--base-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (base) profile to load for this command execution.</li>
+</ul>
+</li>
+</ul>
+<h4>Base Connection Options</h4>
+<ul>
+<li>
+<p><code>--token-type</code>  | <code>--tt</code> <em>(string)</em></p>
+<ul>
+<li>The type of token to get and use for the API. Omit this option to use the default token type, which is provided by 'zowe auth login'.</li>
+</ul>
+</li>
+<li>
+<p><code>--token-value</code>  | <code>--tv</code> <em>(string)</em></p>
+<ul>
+<li>The value of the token to pass to the API.</li>
+</ul>
+</li>
+<li>
+<p><code>--cert-file</code>  <em>(local file path)</em></p>
+<ul>
+<li>The file path to a certificate file to use for authentication</li>
+</ul>
+</li>
+<li>
+<p><code>--cert-key-file</code>  <em>(local file path)</em></p>
+<ul>
+<li>The file path to a certificate key file to use for authentication</li>
+</ul>
+</li>
+</ul>
+<h4>Response Format Options</h4>
+<ul>
+<li>
+<p><code>--response-format-filter</code>  | <code>--rff</code> <em>(array)</em></p>
+<ul>
+<li>Filter (include) fields in the response. Accepts an array of field/property names to include in the output response. You can filter JSON objects properties OR table columns/fields. In addition, you can use this option in conjunction with '--response-format-type' to reduce the output of a command to a single field/property or a list of a single field/property.</li>
+</ul>
+</li>
+<li>
+<p><code>--response-format-type</code>  | <code>--rft</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>The command response output format type. Must be one of the following:</p>
+<p>table: Formats output data as a table. Use this option when the output data is an array of homogeneous JSON objects. Each property of the object will become a column in the table.</p>
+<p>list: Formats output data as a list of strings. Can be used on any data type (JSON objects/arrays) are stringified and a new line is added after each entry in an array.</p>
+<p>object: Formats output data as a list of prettified objects (or single object). Can be used in place of &quot;table&quot; to change from tabular output to a list of prettified objects.</p>
+<p>string: Formats output data as a string. JSON objects/arrays are stringified.</p>
+<p>Allowed values: table, list, object, string</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--response-format-header</code>  | <code>--rfh</code> <em>(boolean)</em></p>
+<ul>
+<li>If &quot;--response-format-type table&quot; is specified, include the column headers in the output.</li>
+</ul>
+</li>
+</ul>
+<h4>Examples</h4>
+<ul>
+<li>
+<p>Update the jobname and workstation of the specified job:</p>
+<ul>
+<li><code>zowe workload-automation update jobinplan --jobname myjclname --workstation myws</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe workload-automation update jobinplan --jobname myjclname --workstation myws">Copy</button></li>
+</ul>
+</li>
+<li>
+<p>Update options start-time, monitored, and duration of the specified job:</p>
+<ul>
+<li><code>zowe workload-automation update jobinplan --start-time 2020-10-26T10:00:00 --monitored false --duration 180000</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe workload-automation update jobinplan --start-time 2020-10-26T10:00:00 --monitored false --duration 180000">Copy</button></li>
+</ul>
+</li>
+</ul>
+</article>
+<script src="../js/bundle-docs.js"></script>
+<script src="../js/docs.js"></script>
