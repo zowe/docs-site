@@ -6,16 +6,10 @@ After Zowe's containers are installed and configured, you can refer to the follo
 
 The Kubernetes cluster will automatically start as many containers as needed per service according to the Deployment configuration.
 
-To apply the deployment files, run the command if you are using `instance.env`:
+To apply the deployment files, run this command:
 
 ```
-kubectl apply -f workloads/instance-env/
-```
-
-Or run this command if you are using `zowe.yaml`:
-
-```
-kubectl apply -f workloads/zowe-yaml/
+kubectl apply -f workloads/
 ```
 
 ### Port forwarding (for minikube only)
