@@ -46,7 +46,7 @@ Environment variables are available to specify logging level and the CLI home di
 
 **Important\!** Setting the log level to TRACE or ALL might result in "sensitive" data being logged. For example, command line arguments will be logged when TRACE is set.
 
-For more information about logging and environment variables, see [Setting CLI log levels](../../user-guide/cli-configuringcli-ev#setting-cli-log-levels). 
+For more information about logging and environment variables, see [Setting CLI log levels](../../user-guide/cli-configuringcli-ev.md#setting-cli-log-levels). 
 
 ### CLI daemon mode
 
