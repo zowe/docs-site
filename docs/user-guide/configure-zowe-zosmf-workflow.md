@@ -45,9 +45,29 @@ After you register the workflow definition file, perform the following steps to 
 
    Execute the `zwe install` command with the previously stored zowe.yaml file as a parameter.
 
+   If you receive an error message (such as RC higher than 0), ensure that you edit incorrect input values or system setup before you re-run the `zwe install` command. To overwrite changed output, edit the step by adding the `--allow-overwritten` tag to the install command.
+
+   **Example: Command that re-runs the installation**
+
+   ```
+   zwe install -c '/path/zowe.yaml' --allow-overwritten
+   ```
+
 4. **Run Zowe init**
 
     Execute the `zwe init` command with the previously stored zowe.yaml file as a parameter.
+
+    **Note**: Messages and error codes from the subsequent JOBS command are not forwarded back to z/OSMF.
+
+    If you receive an error message (such as RC higher than 0) and want to find out the error cause, enter ISPF and find corresponding subsequent JOBLOG.
+
+    If you execute the init step again, either manually delete failed artifacts that are created from previous init steps, or edit the step by adding `--allow-overwritten` tag to the init command.
+
+    **Example: Command that re-runs init**
+
+    ```
+    zwe init -c '/path/zowe.yaml' --allow-overwritten
+    ```
 
 After you execute each step, the step is marked as Complete. After completing the workflow execution, you can view the Zowe started task.
 
