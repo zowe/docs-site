@@ -86,5 +86,5 @@ The following videos walk you through Zowe V2 updates from an extender's perspec
 The following office hours walk you through Zowe V2 updates from a consumer's perspective. Listen to the recordings to learn more about the enhancements that are introduced to each core component. The videos will be ready later.
 
 - [V2 Office Hours: Zowe API Mediation Layer for Consumers](https://zoom.us/rec/share/20SzIK38fhPD7RdNVRG0kFtaM5cC7bYsSbPCOQs2v-pJsJn-0GqvlAj-HGanAWuD.wSTgajcTaccDfYkT?startTime=1649260398000)
-- [V2 Office Hours: Zowe CLI for Consumers](https://zoom.us/j/94312528890)
+- [V2 Office Hours: Zowe CLI for Consumers](https://zoom.us/rec/share/RdrLjSLouMku0AVu0EAvsc7xR_3dJAS8DWddkb7FuErz1Je-JpEW2bvfiFfOMOc.aH9QT4sJjPZhGI5q?startTime=1649865177000)
 - [V2 Office Hours: Zowe Explorers for Consumers](https://zoom.us/rec/share/_obkOAHY6aI2oeQIjSZiNh3zouWtN8WyYmqOLbXN9GSV-W-qqa-nxGK1-276D8ln.kP--nSkSX3qkdBhL?startTime=1650469958000)
