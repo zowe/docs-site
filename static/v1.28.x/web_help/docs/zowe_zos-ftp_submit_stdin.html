@@ -31,27 +31,6 @@
 </ul>
 </li>
 <li>
-<p><code>--secure-ftp</code>  <em>(boolean)</em></p>
-<ul>
-<li>
-<p>Set to true for both control and data connection encryption, 'control' for control connection encryption only, or 'implicit' for implicitly encrypted control connection (this mode is deprecated in modern times, but usually uses port 990). Note: Unfortunately, this plugin's functionality only works with FTP and FTPS, not 'SFTP' which is FTP over SSH.</p>
-<p>Default value: true</p>
-</li>
-</ul>
-</li>
-<li>
-<p><code>--connection-timeout</code>  | <code>--ct</code> <em>(number)</em></p>
-<ul>
-<li>
-<p>How long (in milliseconds) to wait for the control connection to be established.</p>
-<p>Default value: 10000</p>
-</li>
-</ul>
-</li>
-</ul>
-<h4>Required Options</h4>
-<ul>
-<li>
 <p><code>--host</code>  | <code>-H</code> <em>(string)</em></p>
 <ul>
 <li>The hostname or IP address of the z/OS server to connect to.</li>
@@ -76,6 +55,24 @@
 <p><code>--password</code>  | <code>-p</code> | <code>--pass</code> | <code>--pw</code> <em>(string)</em></p>
 <ul>
 <li>Password to authenticate to FTP.</li>
+</ul>
+</li>
+<li>
+<p><code>--secure-ftp</code>  <em>(boolean)</em></p>
+<ul>
+<li>
+<p>Set to true for both control and data connection encryption, 'control' for control connection encryption only, or 'implicit' for implicitly encrypted control connection (this mode is deprecated in modern times, but usually uses port 990). Note: Unfortunately, this plugin's functionality only works with FTP and FTPS, not 'SFTP' which is FTP over SSH.</p>
+<p>Default value: true</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--connection-timeout</code>  | <code>--ct</code> <em>(number)</em></p>
+<ul>
+<li>
+<p>How long (in milliseconds) to wait for the control connection to be established.</p>
+<p>Default value: 10000</p>
+</li>
 </ul>
 </li>
 </ul>
