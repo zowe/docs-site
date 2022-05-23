@@ -6,6 +6,6 @@ This reference document is based on the `@zowe-v1-lts` version of Zowe CLI. The 
 
 You can read an interactive online version, download a PDF document, or download a ZIP file containing the HTML for the online version:
 
-- <a href="/v1.27.x/web_help/index.html" target="_blank">Browse online</a>
-- <a href="/v1.27.x/CLIReference_Zowe.pdf" target="_blank">Download CLI reference in PDF format</a>
-- <a href="/v1.27.x/zowe_web_help.zip" target="_blank">Download CLI reference in ZIP format</a>
+- <a href="/v1.28.x/web_help/index.html" target="_blank">Browse online</a>
+- <a href="/v1.28.x/CLIReference_Zowe.pdf" target="_blank">Download CLI reference in PDF format</a>
+- <a href="/v1.28.x/zowe_web_help.zip" target="_blank">Download CLI reference in ZIP format</a>
