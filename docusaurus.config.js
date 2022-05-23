@@ -83,12 +83,12 @@ module.exports = {
            type: "docsVersionDropdown",
            position: "right",
            dropdownActiveClassDisabled: true,
-        //   dropdownItemsAfter: [
-        //     {
-        //       to: "/versions",
-        //       label: "All versions",
-        //     },
-        //   ],
+           dropdownItemsAfter: [
+             {
+               to: "/versions",
+               label: "All versions",
+             },
+           ],
          },
         {
           href: "https://github.com/zowe/docs-site",
