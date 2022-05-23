@@ -24,6 +24,12 @@
 <li>Specify the job name prefix of the jobs you want to list. The command does not prevalidate the owner. You can specify a wildcard according to the z/OSMF Jobs REST endpoint documentation, which is usually in the form &quot;JOB*&quot;.</li>
 </ul>
 </li>
+<li>
+<p><code>--exec-data</code>  | <code>--ed</code> <em>(boolean)</em></p>
+<ul>
+<li>Use this option to retrieve execution data for jobs via the z/OSMF REST API.</li>
+</ul>
+</li>
 </ul>
 <h4>Zosmf Connection Options</h4>
 <ul>
@@ -168,6 +174,24 @@ Allowed values: http, https</p>
 <p>List all jobs with default owner and prefix settings, displaying only the job ID of each job:</p>
 <ul>
 <li><code>zowe zos-jobs list jobs --rff jobid --rft table</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe zos-jobs list jobs --rff jobid --rft table">Copy</button></li>
+</ul>
+</li>
+<li>
+<p>List all jobs and return job execution data along with the default information:</p>
+<ul>
+<li><code>zowe zos-jobs list jobs --exec-data</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe zos-jobs list jobs --exec-data">Copy</button></li>
+</ul>
+</li>
+<li>
+<p>List all jobs owned by user IDs starting with 'ibmu' and return job execution data along with the default information:</p>
+<ul>
+<li><code>zowe zos-jobs list jobs -o &quot;ibmu*&quot; --exec-data</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe zos-jobs list jobs -o &quot;ibmu*&quot; --exec-data">Copy</button></li>
+</ul>
+</li>
+<li>
+<p>List all jobs owned by user IDs starting with 'ibmu' and job names starting with 'myjo' and                             return job execution data along with the default information:</p>
+<ul>
+<li><code>zowe zos-jobs list jobs -o &quot;ibmu*&quot; -p &quot;myjo*&quot; --exec-data</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe zos-jobs list jobs -o &quot;ibmu*&quot; -p &quot;myjo*&quot; --exec-data">Copy</button></li>
 </ul>
 </li>
 </ul>
