@@ -71,6 +71,52 @@ After you register the workflow definition file, perform the following steps to 
 
 After you execute each step, the step is marked as Complete. After completing the workflow execution, you can view the Zowe started task.
 
+## Execute the configuration workflow
+
+You can use the following methods to execute the configuration workflow:
+
+- Directly from a PSWI during deployment
+- From a deployed software instance (SI)
+- From the Workflows tab in the z/OSMF web UI
+
+### TODO Execute workflow from PSWI
+
+<!-- TODO `Workflow load` - what you had there before the change. It was unclear what exactly ""Workflow load"" means. I changed it to `Execute workflow` and also modified the heading a bit -->
+
+In the PSWI deployment phase, you are presented with the checklist that helps guide you during the deployment process.
+
+<img src="../images/zosmf/perform-workflows.png" alt="Workflow ZWECRECR" style="height: 300px; width:500px;"/> <br />
+
+The **perform workflows** step enables you to run either all attached workflows or just the mandatory one — the post-deployment workflow for mounting.
+
+### TODO Execute workflow from software instance
+
+<!-- TODO Same as above -->
+
+Software instance is created after PSWI deployment is complete. Execute a workflow from an SI.
+
+**Follow these steps**:
+
+1. Log in to z/OSMF.
+2. Select the **Software Management** panel.
+3. In the displayed table, select **Software Instances**.
+4. Select the checkbox next to the **Software Instance Name** column for the instance you want to execute the workflow against.
+5. Select the **Perform Workflows** option from the **Actions** menu.
+
+   The **Software Management Software Instances Perform Workflows** dialog opens.
+
+6. Select the **Create Workflow** option from the **Actions** menu.
+7. In the displayed table, click on the name of the workflow you want to execute.
+8. Click **OK**.
+
+    The **Workflows** tab with the previously selected workflow opens.
+
+9. TODO Continue with displayed steps same way as you would do from manual workflow registration.
+
+<!-- TODO I'm not sure this adds any value to the reader. We should either be more specific or discard this step. -->
+
+You have successfully executed a workflow from a software instance.
+
 ## Register and execute workflow in the z/OSMF web interface
 
 z/OSMF workflow simplifies the procedure to configure and start Zowe. Execute the following steps to register and execute the workflow in the z/OSMF web interface:
