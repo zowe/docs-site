@@ -8,9 +8,11 @@ The following SDKs are available.
 - Zowe Node.js Client SDK
 - Zowe Python Client SDK
 
-## API documentation
+## SDK documentation
 
-For details about the available API endpoints, browse or download the [API Reference documentation](https://docs.zowe.org/stable/#zowe-client-sdk-reference-guides).
+For detailed SDK documentation, see the following:
+- [Zowe Node.js SDK](https://docs.zowe.org/stable/typedoc/index.html)
+- [Zowe Client Python SDK](https://zowe-client-python-sdk.readthedocs.io/en/latest/)
 
 ## Software requirements
 
