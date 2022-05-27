@@ -52,10 +52,6 @@ Review the installation diagram and the introduction in this topic to see the ge
   <area href="https://docs.zowe.org/stable/user-guide/verify-zowe-runtime-install" target="_blank" alt="Verify Zowe installation on z/OS" title="Verify Zowe installation on z/OS" shape="rect" coords="191, 1232, 602, 1269" />
 </map>
 
-<!-->
-  <area href="https://docs.zowe.org/stable/user-guide/install-zowe-smpe-zosmf-workflow" target="_blank" alt="Install the Zowe SMP/E build with z/OSMF workflow" title="Install the Zowe SMP/E build with z/OSMF workflow" shape="rect" coords="250, 498, 391, 555" />
--->
-
 ## Stage 1: Plan and prepare
 
 Before you start the installation, review the information on hardware and software requirements and other considerations. See [Planning the installation](installandconfig.md) for details.
