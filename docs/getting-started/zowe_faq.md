@@ -287,7 +287,7 @@ You can install Zowe CLI using the following methods:
 <summary></summary>
 
 - You can get help for any command, action, or option in Zowe CLI by issuing the command 'zowe --help'.
-- For information about the available commands in Zowe CLI, see [Command Groups](../user-guide/cli-usingcli.md#understanding-core-command-groups).
+- For information about the available commands in Zowe CLI, see [Command Groups](../user-guide/cli-using-understanding-core-command-groups).
 - If you have questions, the [Zowe Slack space](https://openmainframeproject.slack.com/) is the place to ask our community!
 
 </details>

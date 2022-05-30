@@ -18,9 +18,9 @@ As an application developer or DevOps administrator, you can use IBM IMS Plug-in
 
 For detailed documentation on commands, actions, and options available in this plug-in, see our Web Help. It is available for download in three formats: a PDF document, an interactive online version, and a ZIP file containing the HTML for the online version.
 
-- <a href="/v1.27.x/web_help/index.html" target="_blank">Browse Online</a>
-- <a href="/v1.27.x/zowe_web_help.zip" target="_blank">Download (ZIP)</a>
-- <a href="/v1.27.x/CLIReference_Zowe.pdf" target="_blank">Download (PDF)</a>
+- <a href="/v1.28.x/web_help/index.html" target="_blank">Browse Online</a>
+- <a href="/v1.28.x/zowe_web_help.zip" target="_blank">Download (ZIP)</a>
+- <a href="/v1.28.x/CLIReference_Zowe.pdf" target="_blank">Download (PDF)</a>
 
 ## Software requirements
 

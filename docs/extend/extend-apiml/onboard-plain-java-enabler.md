@@ -515,80 +515,7 @@ where:
     **Note:** Ensure that you increase the version number when you introduce changes to the API service product family details.
 
 ### Authentication parameters
-These parameters are not required. Parameters that are not specified results in the use of the default values. 
-
-Authentication parameters enables a service to accept the Zowe JWT. The API Gateway translates the token to an authentication method supported by a service.
-
-The following example shows the parameters that define the service authentication method:
-
-**Example:**
-
-```yaml
-authentication:
-    scheme: httpBasicPassTicket
-    applid: ZOWEAPPL
-```
-where:
-
-* **authentication.scheme**
-
-    specifies a service authentication scheme. 
-    The following schemes are supported by the API Gateway:
-    
-    * **bypass**
-    
-        This value specifies the token is passed unchanged to service.
-          
-        **Note:** This is the default scheme when no authentication parameters are specified. 
-        
-    * **zoweJwt**   
-     
-       This value specifies that a service accepts the Zowe JWT. No additional processing is done by the API Gateway.
-     
-    * **httpBasicPassTicket**
-     
-       This value specifies that a service accepts PassTickets in the Authorization header of the HTTP requests using the basic authentication scheme.
-       It is necessary to provide a service APPLID in `authentication.applid` parameter.
-        
-       For more information, see [Enabling PassTicket creation for API Services that Accept PassTickets](api-mediation-passtickets.md)
-     
-    * **zosmf**
-     
-       This value specifies that a service accepts z/OSMF LTPA (Lightweight Third-Party Authentication).
-       This scheme should be used only for a z/OSMF service used by the API Gateway Authentication Service and other z/OSMF services that use the same LTPA key.
-        
-       For more information about z/OSMF Single Sign-on, see [Establishing a single sign-on environment](https://www.ibm.com/support/knowledgecenter/SSLTBW_2.4.0/com.ibm.zosmfcore.multisysplex.help.doc/izuG00hpManageSecurityCredentials.html)
-  
-    * **safIdt**
-
-       This value specifies that the service accepts SAF IDT, and expects that the token produced by the SAF IDT provider implementation is in the `X-SAF-Token` header. It is necessary to provide a service APPLID in the `authentication.applid` parameter.
-  
-       For more information, see [SAF IDT provider].(implement-new-saf-provider.md)
-
-    * **x509**
-
-        This value specifies that a service accepts client certificates forwarded in the HTTP header. The Gateway service extracts information from a valid client certificate. For validation, the certificate needs to be trusted by API Mediation Layer, and needs to contain a Client Authentication (1.3.6.1.5.5.7.3.2) entry in Extended Key Usage. To use this scheme, it is also necessary to specify which headers to include. Specify these parameters in `headers`.
-
-* **authentication.headers**
-        
-    When the `x509` scheme is specified, use the `headers` parameter to select which values to send to a service. Use one of the following values:
-    
-    * `X-Certificate-Public`
-    
-        The public part of client certificate base64 encoded 
-
-    * `X-Certificate-DistinguishedName`
-    
-        The distinguished name from client certificate
-
-    * `X-Certificate-CommonName` 
-    
-        The common name from the client certificate
-
-* **authentication.applid**
-
-    This parameter specifies a service APPLID.
-    This parameter is valid only for the `httpBasicPassTicket` authentication scheme.
+These parameters are not required. Default values are used when parameters are not specified. For more information, see [Authentication Parameters for Onboarding REST API Services](../extend-apiml/api-mediation-security.md#authentication-parameters).
     
 ### API Security
 
@@ -599,7 +526,7 @@ The Zowe API ML Discovery Service communicates with its clients in secure Https 
 Client services need to configure several TLS/SSL parameters in order to communicate with the API ML Discovery service.
 When an enabler is used to onboard a service, the configuration is provided in the `ssl` section/group in the same _YAML_ file that is used to configure the Eureka parameters and the service metadata.
 
-For more information about API ML security, see [API ML security](api-mediation-security).
+For more information about API ML security, see [API ML security](api-mediation-security.md).
 
 TLS/SSL configuration consists of the following parameters:
 
@@ -625,7 +552,7 @@ TLS/SSL configuration consists of the following parameters:
 
 * **keyStore**
 
-  This parameter specifies the keystore file used to store the private key. When using keyring, the value should be set to the SAF keyring location. For information about required certificates, see [Zowe API ML TLS requirements](api-mediation-security#zowe-api-ml-tls-requirements).
+  This parameter specifies the keystore file used to store the private key. When using keyring, the value should be set to the SAF keyring location. For information about required certificates, see [Zowe API ML TLS requirements](../extend-apiml/api-mediation-security.md#zowe-api-ml-tls-requirements).
 
   If you have an issue with loading the keystore file in your environment, try to provide the absolute path to the keystore file. The sample keystore file for local deployment is in [api-layer repository](https://github.com/zowe/api-layer/tree/master/keystore/localhost)
 
@@ -639,7 +566,7 @@ TLS/SSL configuration consists of the following parameters:
 
 * **trustStore**
 
-  This parameter specifies the truststore file used to keep other parties public keys and certificates. When using keyring, this value should be set to the SAF keyring location. For information about required certificates, see [Zowe API ML TLS requirements](api-mediation-security#zowe-api-ml-tls-requirements).
+  This parameter specifies the truststore file used to keep other parties public keys and certificates. When using keyring, this value should be set to the SAF keyring location. For information about required certificates, see [Zowe API ML TLS requirements](../extend-apiml/api-mediation-security.md#zowe-api-ml-tls-requirements).
 
   If you have an issue with loading the truststore file in your environment, try to provide the absolute path to the truststore file. The sample truststore file for local deployment is in [api-layer repository](https://github.com/zowe/api-layer/tree/master/keystore/localhost)
 
@@ -651,16 +578,17 @@ TLS/SSL configuration consists of the following parameters:
 
   This parameter specifies the truststore type. The default for this parameter is PKCS12.
 
-**Notes:**
-
-* Ensure that you define both the key store and the trust store even if your server is not using an Https port.
+**Note:** Ensure that you define both the keystore and the truststore even if your server is not using an Https port.
 
 ### SAF Keyring configuration
 
 You can choose to use SAF keyring instead of keystore and truststore for storing certificates.
-For information about required certificates, see [Zowe API ML TLS requirements](api-mediation-security#zowe-api-ml-tls-requirements). For information about running Java on z/OS with keyring, see [SAF Keyring](api-mediation-security#api-ml-saf-keyring). Make sure that the enabler can access and read the keyring. Please refer to documentation of your security system for details.
+For information about required certificates, see [Zowe API ML TLS requirements](../extend-apiml/api-mediation-security.md#zowe-api-ml-tls-requirements). For information about running Java on z/OS with keyring, see [SAF Keyring](../extend-apiml/api-mediation-security.md#api-ml-saf-keyring). Make sure that the enabler can access and read the keyring. Please refer to documentation of your security system for details.
 
-The following example shows enabler configuration with keyrings:
+The following example shows enabler configuration with keyrings.
+
+**Example:**
+
 ```
 ssl:
     keyAlias: localhost
@@ -695,7 +623,7 @@ where:
 
 ### Custom Metadata
 
-Custom metadata are described [here](../extend-apiml/custom-metadata).
+For information about custom metadata, see the topic [Custom Metadata](../extend-apiml/custom-metadata.md).
     
 ##  Registering your service with API ML
 
@@ -709,7 +637,7 @@ The following steps outline the process of registering your service with API ML.
 
 **Follow these steps:**
 
-1. Implement and add a web application context listener class 
+1. Implement and add a web application context listener class: 
 
     ```implements javax.servlet.ServletContextListener```
 
