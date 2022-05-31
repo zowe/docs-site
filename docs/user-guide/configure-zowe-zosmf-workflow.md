@@ -59,9 +59,16 @@ After you register the workflow definition file, perform the following steps to 
 
     **Note**: Messages and error codes from the subsequent JOBS command are not forwarded back to z/OSMF.
 
-    If you receive an error message (such as RC higher than 0) and want to find out the error cause, enter ISPF and find corresponding subsequent JOBLOG.
+    The `zwe init` command is a combination of the following sub-commands that define configuration:
 
-    If you execute the init step again, either manually delete failed artifacts that are created from previous init steps, or edit the step by adding `--allow-overwritten` tag to the init command.
+    - **mvs**: Copies the data sets that are provided with Zowe to custom data sets.
+    - **security**: Creates user IDs and security manager settings.
+    - **apfauth**: APF authorizes the LOADLIB that contains the modules that perform priviledged security calls on z/OS.
+    - **certificate**: Configures Zowe to use TLS certificates.
+    - **vsam**: Configures the VSAM files that help run the Zowe caching service for high availability (HA)
+    - **stc**: Configures the system to launch the Zowe started task.
+
+    If you execute the init step again, either manually delete failed artifacts that are created from previous init steps or edit the step by adding the `--allow-overwritten` tag to the init command.
 
     **Example: Command that re-runs init**
 
@@ -69,7 +76,7 @@ After you register the workflow definition file, perform the following steps to 
     zwe init -c '/path/zowe.yaml' --allow-overwritten
     ```
 
-After you execute each step, the step is marked as Complete. After completing the workflow execution, you can view the Zowe started task.
+After you execute each step, the step is marked as complete. After completing the workflow execution, you can view the Zowe started task.
 
 ## Execute the configuration workflow
 
