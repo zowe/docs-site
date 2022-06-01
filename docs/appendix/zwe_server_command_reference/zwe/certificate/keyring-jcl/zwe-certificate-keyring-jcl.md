@@ -6,10 +6,10 @@
 
 ## Sub-commands
 
-* [clean](./zwe-certificate-keyring-jcl-clean)
-* [connect](./zwe-certificate-keyring-jcl-connect)
-* [generate](./zwe-certificate-keyring-jcl-generate)
-* [import-ds](./zwe-certificate-keyring-jcl-import-ds)
+* [clean](./zwe-certificate-keyring-jcl-clean.md)
+* [connect](./zwe-certificate-keyring-jcl-connect.md)
+* [generate](./zwe-certificate-keyring-jcl-generate.md)
+* [import-ds](./zwe-certificate-keyring-jcl-import-ds.md)
 
 ## Description
 
@@ -62,6 +62,7 @@ ZWEL0109E|109|The Zowe YAML config file specified does not exist.
 ZWEL0110E|110|Doesn't have write permission on %s directory.
 ZWEL0111E|111|Command aborts with error.
 ZWEL0112E|112|Zowe runtime environment must be prepared first with "zwe internal start prepare" command.
+ZWEL0114E|114|Reached max retries on allocating random number.
 ZWEL0120E|120|This command must run on a z/OS system.
 ZWEL0121E|121|Cannot find node. Please define NODE_HOME environment variable.
 ZWEL0122E|122|Cannot find java. Please define JAVA_HOME environment variable.
