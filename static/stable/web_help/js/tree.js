@@ -42,6 +42,16 @@ function flattenNodes(nestedNodes) {
     return flattenedNodes;
 }
 /**
+ * Get the preferred theme name for JSTree (light or dark).
+ * @returns Theme name
+ */
+function getJstreeThemeName() {
+    if (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches) {
+        return "default-dark";
+    }
+    return "default";
+}
+/**
  * Find all possible combinations of a search string that exist with different aliases
  * @param searchStr - Search string input by user
  * @returns NUL-delimited list of search strings with all combinations of aliases
@@ -229,7 +239,8 @@ function onDocsPageChanged(e) {
 function loadTree() {
     // Set header and footer strings
     $("#header-text").text(headerStr);
-    $("#footer").text(footerStr);
+    var _a = footerStr.split("\n", 2), footerText = _a[0], footerTitle = _a[1];
+    $("#footer").text(footerText).attr("title", footerTitle);
     // Change active tab if not loading default view
     if (currentView === 1) {
         $("#tree-view-link").toggleClass("active");
@@ -240,7 +251,7 @@ function loadTree() {
         core: {
             animation: 0,
             multiple: false,
-            themes: { icons: false },
+            themes: { name: getJstreeThemeName(), icons: false },
             data: (currentView === 0) ? treeNodes : flattenNodes(treeNodes)
         },
         plugins: ["contextmenu", "search", "wholerow"],
@@ -258,6 +269,10 @@ function loadTree() {
     // Connect events to search box and iframe
     $("#tree-search").on("change keyup mouseup paste", function () { return onSearchTextChanged(); });
     window.addEventListener("message", onDocsPageChanged, false);
+    if (window.matchMedia) {
+        window.matchMedia("(prefers-color-scheme: dark)")
+            .addEventListener("change", function () { return $("#cmd-tree").jstree(true).set_theme(getJstreeThemeName()); });
+    }
 }
 /**
  * Toggle visibility of command tree
