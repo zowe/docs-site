@@ -86,9 +86,7 @@ You can use the following methods to execute the configuration workflow:
 - From a deployed software instance (SI)
 - From the Workflows tab in the z/OSMF web UI
 
-### TODO Execute workflow from PSWI
-
-<!-- TODO `Workflow load` - what you had there before the change. It was unclear what exactly ""Workflow load"" means. I changed it to `Execute workflow` and also modified the heading a bit -->
+### Execute workflow from PSWI
 
 In the PSWI deployment phase, you are presented with the checklist that helps guide you during the deployment process.
 
@@ -96,9 +94,7 @@ In the PSWI deployment phase, you are presented with the checklist that helps gu
 
 The **perform workflows** step enables you to run either all attached workflows or just the mandatory one — the post-deployment workflow for mounting.
 
-### TODO Execute workflow from software instance
-
-<!-- TODO Same as above -->
+### Execute workflow from software instance
 
 Software instance is created after PSWI deployment is complete. Execute a workflow from an SI.
 
@@ -118,9 +114,7 @@ Software instance is created after PSWI deployment is complete. Execute a workfl
 
     The **Workflows** tab with the previously selected workflow opens.
 
-9. TODO Continue with displayed steps same way as you would do from manual workflow registration.
-
-<!-- TODO I'm not sure this adds any value to the reader. We should either be more specific or discard this step. -->
+9. Follow the instructions on the page to execute the workflow steps.
 
 You have successfully executed a workflow from a software instance.
 
@@ -154,7 +148,7 @@ z/OSMF workflow simplifies the procedure to configure and start Zowe. Execute th
 
 8. Select or enter an Owner user ID, and select **Assign all steps to owner user ID**.
 
-9. Select Finish.
+9. Select **Finish**.
 
     The **workflow** is registered in z/OSMF. The workflow is available for execution to deploy and configure the Zowe instance.
 
