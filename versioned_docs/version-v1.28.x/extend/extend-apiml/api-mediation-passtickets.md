@@ -3,11 +3,10 @@
 As system programmer, you can configure Zowe to use PassTickets for API services that are compatible to accept them to authenticate your service with the API Mediation Layer.
 
 ## Overview
+API clients can use either a Zowe JWT token or client certificate to access an API service even if the API service itself does not support the JWT token or client certificate.
+The Zowe JWT token is available through the API Gateway [authentication endpoint](../extend-apiml/api-mediation-security.md#authentication-for-api-ml-services).
 
-API clients can use a Zowe JWT token to access an API service even if the API service itself does not support the JWT token.
-The Zowe JWT token is available through the API Gateway [authentication endpoint](https://docs.zowe.org/stable/extend/extend-apiml/api-mediation-security#authentication-for-api-ml-services).
-
-When an API client provides a valid Zowe JWT token to the API ML, the API Gateway then generates a valid PassTicket for any API service that supports PassTickets.
+When an API client provides a valid Zowe JWT token or client certificate to the API ML, the API Gateway then generates a valid PassTicket for any API service that supports PassTickets.
 The API Gateway then uses the PassTicket to access that API service.
 The API Gateway provides the user ID and password in the Authorization header of the HTTP requests using the
 [Basic authentication scheme](https://developer.mozilla.org/en-US/docs/Web/HTTP/Authentication#Basic_authentication_scheme).

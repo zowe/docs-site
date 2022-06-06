@@ -16,9 +16,9 @@ Zowe CLI stores credentials (mainframe username and password) in plaintext on yo
 
 For detailed command, actions, and option documentation for this plug-in, see our Web Help (available online or as PDF or ZIP):
 
-- <a href="/v1.27.x/web_help/index.html" target="_blank">Browse Online</a>
-- <a href="/v1.27.x/zowe_web_help.zip" target="_blank">Download (ZIP)</a>
-- <a href="/v1.27.x/CLIReference_Zowe.pdf" target="_blank">Download (PDF)</a>
+- <a href="/v1.28.x/web_help/index.html" target="_blank">Browse Online</a>
+- <a href="/v1.28.x/zowe_web_help.zip" target="_blank">Download (ZIP)</a>
+- <a href="/v1.28.x/CLIReference_Zowe.pdf" target="_blank">Download (PDF)</a>
 
 ## Software requirements
 
