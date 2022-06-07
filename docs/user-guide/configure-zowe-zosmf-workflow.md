@@ -114,7 +114,7 @@ Software instance is created after PSWI deployment is complete. Execute a workfl
 
     The **Workflows** tab with the previously selected workflow opens.
 
-9. Follow the instructions on the page to execute the workflow steps.
+9. Execute the workflow steps.
 
 You have successfully executed a workflow from a software instance.
 
@@ -152,18 +152,17 @@ z/OSMF workflow simplifies the procedure to configure and start Zowe. Execute th
 
     The **workflow** is registered in z/OSMF. The workflow is available for execution to deploy and configure the Zowe instance.
 
-10. Execute the steps in order. Perform the following steps to execute each step individually:
+10. Perform the following steps to execute each step individually:
 
     a. Double-click the title of the step.
 
     b. Select the **Perform** tab.
 
-    c. Review the step contents and update the input values as
-        required.
+    c. Review the step contents and update the input values.
 
     d. Select **Next**.
 
-    Repeat the previous two steps to complete all items until the option Finish is available.
+    Repeat the previous two steps to complete all items until the **Finish** option is available.
 
 11. Select **Finish**.
 
