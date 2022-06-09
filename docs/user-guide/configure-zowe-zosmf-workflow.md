@@ -92,7 +92,7 @@ In the PSWI deployment phase, you are presented with the checklist that helps gu
 
 ![Workflow ZWECRECR](../images/zosmf/perform-workflows.png)
 
-The **perform workflows** step enables you to run either all attached workflows or just the mandatory one — the post-deployment workflow for mounting.
+The **perform workflows** step enables you to run either all attached workflows or just the mandatory one — the post-deployment workflow for mounting. 
 
 ### Execute workflow from software instance
 
