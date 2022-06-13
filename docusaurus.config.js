@@ -1,4 +1,4 @@
-const LATEST_VERSION = "v2.0.x";
+const LATEST_VERSION = "v2.1.x";
 const versionsArray = require("./versions.json");
 
 module.exports = {
@@ -7,8 +7,8 @@ module.exports = {
     "Combining the past and the present to build the future of Mainframe",
   url: "https://docs.zowe.org/",
   baseUrl: "/",
-  onBrokenLinks: "ignore",
-  onBrokenMarkdownLinks: "ignore",
+  onBrokenLinks: "warn",
+  onBrokenMarkdownLinks: "warn",
   onDuplicateRoutes: "ignore",
   favicon: "img/zowe-icon.png",
   organizationName: "zowe",
@@ -200,6 +200,9 @@ module.exports = {
               path: "stable",
               label: `${LATEST_VERSION}` + " LTS",
             },
+            "v2.0.x": {
+              label: "v2.0.x LTS",
+            },
             "v1.28.x": {
               label: "v1.28.x LTS",
             },
@@ -211,9 +214,6 @@ module.exports = {
             },
             "v1.25.x": {
               label: "v1.25.x LTS",
-            },
-            "v1.24.x": {
-              label: "v1.24.x LTS",
             },
           },
         },
