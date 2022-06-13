@@ -3,8 +3,8 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>IUploadOptions | Zowe Node.js SDK - v1.27.2</title>
-	<meta name="description" content="Documentation for Zowe Node.js SDK - v1.27.2">
+	<title>IUploadOptions | Zowe Node.js SDK - v1.28.0</title>
+	<meta name="description" content="Documentation for Zowe Node.js SDK - v1.28.0">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
 </head>
@@ -22,7 +22,7 @@
 						<li class="state loading">Preparing search index...</li>
 						<li class="state failure">The search index is not available</li>
 					</ul>
-					<a href="../index.html" class="title">Zowe Node.js SDK - v1.27.2</a>
+					<a href="../index.html" class="title">Zowe Node.js SDK - v1.28.0</a>
 				</div>
 				<div class="table-cell" id="tsd-widgets">
 					<div id="tsd-filter">
@@ -104,6 +104,7 @@
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_zowe_zos_files_for_zowe_sdk.iuploadoptions.html#localencoding" class="tsd-kind-icon">local<wbr>Encoding</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_zowe_zos_files_for_zowe_sdk.iuploadoptions.html#maxconcurrentrequests" class="tsd-kind-icon">max<wbr>Concurrent<wbr>Requests</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_zowe_zos_files_for_zowe_sdk.iuploadoptions.html#recall" class="tsd-kind-icon">recall</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="_zowe_zos_files_for_zowe_sdk.iuploadoptions.html#record" class="tsd-kind-icon">record</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_zowe_zos_files_for_zowe_sdk.iuploadoptions.html#recursive" class="tsd-kind-icon">recursive</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="_zowe_zos_files_for_zowe_sdk.iuploadoptions.html#responsetimeout" class="tsd-kind-icon">response<wbr>Timeout</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_zowe_zos_files_for_zowe_sdk.iuploadoptions.html#returnetag" class="tsd-kind-icon">return<wbr>Etag</a></li>
@@ -122,7 +123,7 @@
 					<div class="tsd-signature tsd-kind-icon">ascii_<wbr>files<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v6.37.7/packages/zosfiles/src/methods/upload/doc/IUploadOptions.ts#L40">@zowe/zos-files-for-zowe-sdk/src/methods/upload/doc/IUploadOptions.ts:40</a></li>
+							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v6.40.4/packages/zosfiles/src/methods/upload/doc/IUploadOptions.ts#L40">@zowe/zos-files-for-zowe-sdk/src/methods/upload/doc/IUploadOptions.ts:40</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -137,7 +138,7 @@
 					<div class="tsd-signature tsd-kind-icon">attributes<span class="tsd-signature-symbol">:</span> <a href="../classes/_zowe_zos_files_for_zowe_sdk.zosfilesattributes.html" class="tsd-signature-type">ZosFilesAttributes</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v6.37.7/packages/zosfiles/src/methods/upload/doc/IUploadOptions.ts#L50">@zowe/zos-files-for-zowe-sdk/src/methods/upload/doc/IUploadOptions.ts:50</a></li>
+							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v6.40.4/packages/zosfiles/src/methods/upload/doc/IUploadOptions.ts#L50">@zowe/zos-files-for-zowe-sdk/src/methods/upload/doc/IUploadOptions.ts:50</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -153,12 +154,14 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="_zowe_zos_files_for_zowe_sdk.ioptions.html">IOptions</a>.<a href="_zowe_zos_files_for_zowe_sdk.ioptions.html#binary">binary</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v6.37.7/packages/zosfiles/src/doc/IOptions.ts#L25">@zowe/zos-files-for-zowe-sdk/src/doc/IOptions.ts:25</a></li>
+							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v6.40.4/packages/zosfiles/src/doc/IOptions.ts#L27">@zowe/zos-files-for-zowe-sdk/src/doc/IOptions.ts:27</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
-							<p>The indicator to view the data set or USS file in binary mode</p>
+							<p>The indicator to view the data set or USS file in binary mode
+								Has priority over record for datasets
+							If binary and record are both specified, binary is used</p>
 						</div>
 					</div>
 				</section>
@@ -168,7 +171,7 @@
 					<div class="tsd-signature tsd-kind-icon">binary_<wbr>files<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v6.37.7/packages/zosfiles/src/methods/upload/doc/IUploadOptions.ts#L35">@zowe/zos-files-for-zowe-sdk/src/methods/upload/doc/IUploadOptions.ts:35</a></li>
+							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v6.40.4/packages/zosfiles/src/methods/upload/doc/IUploadOptions.ts#L35">@zowe/zos-files-for-zowe-sdk/src/methods/upload/doc/IUploadOptions.ts:35</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -184,7 +187,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="_zowe_zos_files_for_zowe_sdk.ioptions.html">IOptions</a>.<a href="_zowe_zos_files_for_zowe_sdk.ioptions.html#encoding">encoding</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v6.37.7/packages/zosfiles/src/doc/IOptions.ts#L31">@zowe/zos-files-for-zowe-sdk/src/doc/IOptions.ts:31</a></li>
+							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v6.40.4/packages/zosfiles/src/doc/IOptions.ts#L41">@zowe/zos-files-for-zowe-sdk/src/doc/IOptions.ts:41</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -199,7 +202,7 @@
 					<div class="tsd-signature tsd-kind-icon">etag<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v6.37.7/packages/zosfiles/src/methods/upload/doc/IUploadOptions.ts#L65">@zowe/zos-files-for-zowe-sdk/src/methods/upload/doc/IUploadOptions.ts:65</a></li>
+							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v6.40.4/packages/zosfiles/src/methods/upload/doc/IUploadOptions.ts#L65">@zowe/zos-files-for-zowe-sdk/src/methods/upload/doc/IUploadOptions.ts:65</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -215,7 +218,7 @@
 					<div class="tsd-signature tsd-kind-icon">files<wbr>Map<span class="tsd-signature-symbol">:</span> <a href="_zowe_zos_files_for_zowe_sdk.iuploadmap.html" class="tsd-signature-type">IUploadMap</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v6.37.7/packages/zosfiles/src/methods/upload/doc/IUploadOptions.ts#L45">@zowe/zos-files-for-zowe-sdk/src/methods/upload/doc/IUploadOptions.ts:45</a></li>
+							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v6.40.4/packages/zosfiles/src/methods/upload/doc/IUploadOptions.ts#L45">@zowe/zos-files-for-zowe-sdk/src/methods/upload/doc/IUploadOptions.ts:45</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -230,7 +233,7 @@
 					<div class="tsd-signature tsd-kind-icon">local<wbr>Encoding<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v6.37.7/packages/zosfiles/src/methods/upload/doc/IUploadOptions.ts#L70">@zowe/zos-files-for-zowe-sdk/src/methods/upload/doc/IUploadOptions.ts:70</a></li>
+							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v6.40.4/packages/zosfiles/src/methods/upload/doc/IUploadOptions.ts#L70">@zowe/zos-files-for-zowe-sdk/src/methods/upload/doc/IUploadOptions.ts:70</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -245,7 +248,7 @@
 					<div class="tsd-signature tsd-kind-icon">max<wbr>Concurrent<wbr>Requests<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v6.37.7/packages/zosfiles/src/methods/upload/doc/IUploadOptions.ts#L59">@zowe/zos-files-for-zowe-sdk/src/methods/upload/doc/IUploadOptions.ts:59</a></li>
+							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v6.40.4/packages/zosfiles/src/methods/upload/doc/IUploadOptions.ts#L59">@zowe/zos-files-for-zowe-sdk/src/methods/upload/doc/IUploadOptions.ts:59</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -264,7 +267,7 @@
 					<div class="tsd-signature tsd-kind-icon">recall<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v6.37.7/packages/zosfiles/src/methods/upload/doc/IUploadOptions.ts#L25">@zowe/zos-files-for-zowe-sdk/src/methods/upload/doc/IUploadOptions.ts:25</a></li>
+							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v6.40.4/packages/zosfiles/src/methods/upload/doc/IUploadOptions.ts#L25">@zowe/zos-files-for-zowe-sdk/src/methods/upload/doc/IUploadOptions.ts:25</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -278,13 +281,31 @@
 						</dl>
 					</div>
 				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
+					<a name="record" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> record</h3>
+					<div class="tsd-signature tsd-kind-icon">record<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
+					<aside class="tsd-sources">
+						<p>Inherited from <a href="_zowe_zos_files_for_zowe_sdk.ioptions.html">IOptions</a>.<a href="_zowe_zos_files_for_zowe_sdk.ioptions.html#record">record</a></p>
+						<ul>
+							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v6.40.4/packages/zosfiles/src/doc/IOptions.ts#L35">@zowe/zos-files-for-zowe-sdk/src/doc/IOptions.ts:35</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>The indicator to view the data set in record mode
+								Should not be specified for USS files
+							If binary and record are both specified, binary is used</p>
+						</div>
+					</div>
+				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
 					<a name="recursive" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagOptional">Optional</span> recursive</h3>
 					<div class="tsd-signature tsd-kind-icon">recursive<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v6.37.7/packages/zosfiles/src/methods/upload/doc/IUploadOptions.ts#L30">@zowe/zos-files-for-zowe-sdk/src/methods/upload/doc/IUploadOptions.ts:30</a></li>
+							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v6.40.4/packages/zosfiles/src/methods/upload/doc/IUploadOptions.ts#L30">@zowe/zos-files-for-zowe-sdk/src/methods/upload/doc/IUploadOptions.ts:30</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -300,7 +321,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="_zowe_zos_files_for_zowe_sdk.izosfilesoptions.html">IZosFilesOptions</a>.<a href="_zowe_zos_files_for_zowe_sdk.izosfilesoptions.html#responsetimeout">responseTimeout</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v6.37.7/packages/zosfiles/src/doc/IZosFilesOptions.ts#L22">@zowe/zos-files-for-zowe-sdk/src/doc/IZosFilesOptions.ts:22</a></li>
+							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v6.40.4/packages/zosfiles/src/doc/IZosFilesOptions.ts#L22">@zowe/zos-files-for-zowe-sdk/src/doc/IZosFilesOptions.ts:22</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -315,7 +336,7 @@
 					<div class="tsd-signature tsd-kind-icon">return<wbr>Etag<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v6.37.7/packages/zosfiles/src/methods/upload/doc/IUploadOptions.ts#L78">@zowe/zos-files-for-zowe-sdk/src/methods/upload/doc/IUploadOptions.ts:78</a></li>
+							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v6.40.4/packages/zosfiles/src/methods/upload/doc/IUploadOptions.ts#L78">@zowe/zos-files-for-zowe-sdk/src/methods/upload/doc/IUploadOptions.ts:78</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -334,7 +355,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="_zowe_zos_files_for_zowe_sdk.ioptions.html">IOptions</a>.<a href="_zowe_zos_files_for_zowe_sdk.ioptions.html#task">task</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v6.37.7/packages/zosfiles/src/doc/IOptions.ts#L44">@zowe/zos-files-for-zowe-sdk/src/doc/IOptions.ts:44</a></li>
+							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v6.40.4/packages/zosfiles/src/doc/IOptions.ts#L54">@zowe/zos-files-for-zowe-sdk/src/doc/IOptions.ts:54</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -351,7 +372,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="_zowe_zos_files_for_zowe_sdk.ioptions.html">IOptions</a>.<a href="_zowe_zos_files_for_zowe_sdk.ioptions.html#volume">volume</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v6.37.7/packages/zosfiles/src/doc/IOptions.ts#L37">@zowe/zos-files-for-zowe-sdk/src/doc/IOptions.ts:37</a></li>
+							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v6.40.4/packages/zosfiles/src/doc/IOptions.ts#L47">@zowe/zos-files-for-zowe-sdk/src/doc/IOptions.ts:47</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -385,6 +406,9 @@
 					</li>
 					<li class=" tsd-kind-module">
 						<a href="../modules/_zowe_zos_jobs_for_zowe_sdk.html">@zowe/zos-<wbr>jobs-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_zos_logs_for_zowe_sdk.html">@zowe/zos-<wbr>logs-<wbr>for-<wbr>zowe-<wbr>sdk</a>
 					</li>
 					<li class=" tsd-kind-module">
 						<a href="../modules/_zowe_zos_tso_for_zowe_sdk.html">@zowe/zos-<wbr>tso-<wbr>for-<wbr>zowe-<wbr>sdk</a>
@@ -452,6 +476,9 @@
 									<li class=" tsd-kind-property tsd-parent-kind-interface">
 										<a href="_zowe_zos_files_for_zowe_sdk.iuploadoptions.html#recall" class="tsd-kind-icon">recall</a>
 									</li>
+									<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
+										<a href="_zowe_zos_files_for_zowe_sdk.iuploadoptions.html#record" class="tsd-kind-icon">record</a>
+									</li>
 									<li class=" tsd-kind-property tsd-parent-kind-interface">
 										<a href="_zowe_zos_files_for_zowe_sdk.iuploadoptions.html#recursive" class="tsd-kind-icon">recursive</a>
 									</li>
@@ -475,6 +502,9 @@
 				<ul class="after-current">
 					<li class=" tsd-kind-module">
 						<a href="../modules/_zowe_zos_jobs_for_zowe_sdk.html" class="tsd-kind-icon">@zowe/zos-<wbr>jobs-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_zos_logs_for_zowe_sdk.html" class="tsd-kind-icon">@zowe/zos-<wbr>logs-<wbr>for-<wbr>zowe-<wbr>sdk</a>
 					</li>
 					<li class=" tsd-kind-module">
 						<a href="../modules/_zowe_zos_tso_for_zowe_sdk.html" class="tsd-kind-icon">@zowe/zos-<wbr>tso-<wbr>for-<wbr>zowe-<wbr>sdk</a>

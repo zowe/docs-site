@@ -20,8 +20,9 @@ module.exports = {
     },
     {
       type: "category",
-      label: "What's new",
+      label: "Release notes",
       items: [
+        "getting-started/release-notes/v2_1_0",
         "getting-started/release-notes/v2_0_0",
         "getting-started/zowe-office-hours"
       ],
