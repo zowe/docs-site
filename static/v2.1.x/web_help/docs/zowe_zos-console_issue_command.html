@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>zos-console issue command</title>
+<link rel="stylesheet" href="../css/bundle-docs.css">
+<link rel="stylesheet" href="../css/docs.css">
+<article class="markdown-body">
+<h2><a href="zowe.html">zowe</a> › <a href="zowe_zos-console.html">zos-console</a> › <a href="zowe_zos-console_issue.html">issue</a> › <a href="zowe_zos-console_issue_command.html">command</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
+<p>Issue a z/OS console command and print command responses (known as &quot;solicited command responses&quot;).</p>
+<p>In general, when issuing a z/OS console command, z/OS applications route responses to the originating console. The command response messages are referred to as &quot;solicited command responses&quot; (i.e. direct responses to the command issued). When issuing a z/OS console command using Zowe CLI, collection of all solicited command responses is attempted by default. However, there is no z/OS mechanism that indicates the total number of response messages that may be produced from a given command. Therefore, the Zowe CLI console APIs return a &quot;solicited response key&quot; that can be used to &quot;follow-up&quot; and collect any additional solicited command responses.</p>
+<p>Zowe CLI will issue &quot;follow-up&quot; API requests by default to collect any additional outstanding solicited command responses until a request returns no additional responses. At that time, Zowe CLI will attempt a final collection attempt. If no messages are present, the command is complete. If additional messages are present, the process is repeated. However, this does not guarantee that all messages produced in direct response (i.e. solicited) have been collected. The z/OS application may produce additional messages in direct response to your command at some point in the future. You can manually collect additional responses using the &quot;command response key&quot; OR specify additional processing options to, for example, delay collection attempts by a specified interval.</p>
+<h4>Usage</h4>
+<p>zowe zos-console issue command &lt;commandtext&gt; [options]</p>
+<h4>Positional Arguments</h4>
+<ul>
+<li>
+<p><code>commandtext</code>		 <em>(string)</em></p>
+<ul>
+<li>The z/OS console command to issue.</li>
+</ul>
+</li>
+</ul>
+<h4>Options</h4>
+<ul>
+<li>
+<p><code>--console-name</code> | <code>--cn</code> | <code>-c</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>The name of the z/OS extended MCS console to direct the command. You must have the required authority to access the console specified. You may also specify an arbitrary name, if your installation allows dynamic creation of consoles with arbitrary names.</p>
+<p>Allowed values: ^[a-zA-Z0-9]+$</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--include-details</code> | <code>--id</code> | <code>-i</code> <em>(boolean)</em></p>
+<ul>
+<li>Include additional details at the end of the Zowe CLI command response, such as the &quot;command response key&quot; and the z/OSMF command response URL.</li>
+</ul>
+</li>
+<li>
+<p><code>--key-only</code> | <code>--ko</code> | <code>-k</code> <em>(boolean)</em></p>
+<ul>
+<li>Displays only the &quot;command response key&quot; returned from the z/OSMF console API. You can collect additional messages using the command key with 'zowe zos-console collect sync-responses &lt;key&gt;'. Note that when using this option, you will not be presented with the &quot;first set&quot; of command response messages (if present in the API response). However, you can view them by using the --response-format-json option.</li>
+</ul>
+</li>
+<li>
+<p><code>--return-first</code> | <code>--rf</code> | <code>-r</code> <em>(boolean)</em></p>
+<ul>
+<li>Indicates that Zowe CLI should return immediately with the response message set returned in the first z/OSMF API request (even if no responses are present). Using this option may result in partial or no response, but quicker Zowe CLI command response time. The z/OSMF console API has an implicit wait when collecting the first set of console command responses, i.e you will normally receive at least one set of response messages.</li>
+</ul>
+</li>
+<li>
+<p><code>--solicited-keyword</code> | <code>--sk</code> | <code>-s</code> <em>(string)</em></p>
+<ul>
+<li>For solicited responses (direct command responses) the response is considered complete if the keyword specified is present. If the keyword is detected, the command will immediately return, meaning the full command response may not be provided. The key only applies to the first request issued, follow up requests do not support searching for the keyword.</li>
+</ul>
+</li>
+<li>
+<p><code>--sysplex-system</code> | <code>--ss</code> | <code>--sys</code> <em>(string)</em></p>
+<ul>
+<li>Specifies the z/OS system (LPAR) in the current SYSPLEX (where your target z/OSMF resides) to route the z/OS console command.</li>
+</ul>
+</li>
+<li>
+<p><code>--wait-to-collect</code> | <code>--wtc</code> | <code>-w</code> <em>(number)</em></p>
+<ul>
+<li>Indicates that Zowe CLI wait at least the specified number of seconds before attempting to collect additional solicited response messages. If additional messages are collected on &quot;follow-up&quot; requests, the timer is reset until an attempt is made that results in no additional response messages.</li>
+</ul>
+</li>
+<li>
+<p><code>--follow-up-attempts</code> | <code>--fua</code> | <code>-a</code> <em>(number)</em></p>
+<ul>
+<li>
+<p>Number of request attempts if no response returned.</p>
+<p>Default value: 1</p>
+</li>
+</ul>
+</li>
+</ul>
+<h4>Zosmf Connection Options</h4>
+<ul>
+<li>
+<p><code>--host</code> | <code>-H</code> <em>(string)</em></p>
+<ul>
+<li>The z/OSMF server host name.</li>
+</ul>
+</li>
+<li>
+<p><code>--port</code> | <code>-P</code> <em>(number)</em></p>
+<ul>
+<li>
+<p>The z/OSMF server port.</p>
+<p>Default value: 443</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--user</code> | <code>-u</code> <em>(string)</em></p>
+<ul>
+<li>Mainframe (z/OSMF) user name, which can be the same as your TSO login.</li>
+</ul>
+</li>
+<li>
+<p><code>--password</code> | <code>--pass</code> | <code>--pw</code> <em>(string)</em></p>
+<ul>
+<li>Mainframe (z/OSMF) password, which can be the same as your TSO password.</li>
+</ul>
+</li>
+<li>
+<p><code>--reject-unauthorized</code> | <code>--ru</code> <em>(boolean)</em></p>
+<ul>
+<li>
+<p>Reject self-signed certificates.</p>
+<p>Default value: true</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--base-path</code> | <code>--bp</code> <em>(string)</em></p>
+<ul>
+<li>The base path for your API mediation layer instance. Specify this option to prepend the base path to all z/OSMF resources when making REST requests. Do not specify this option if you are not using an API mediation layer.</li>
+</ul>
+</li>
+<li>
+<p><code>--protocol</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>The protocol used (HTTP or HTTPS)</p>
+<p>Default value: https<br>
+Allowed values: http, https</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--cert-file</code> <em>(local file path)</em></p>
+<ul>
+<li>The file path to a certificate file to use for authentication</li>
+</ul>
+</li>
+<li>
+<p><code>--cert-key-file</code> <em>(local file path)</em></p>
+<ul>
+<li>The file path to a certificate key file to use for authentication</li>
+</ul>
+</li>
+</ul>
+<h4>Profile Options</h4>
+<ul>
+<li>
+<p><code>--zosmf-profile</code> | <code>--zosmf-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (zosmf) profile to load for this command execution.</li>
+</ul>
+</li>
+<li>
+<p><code>--base-profile</code> | <code>--base-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (base) profile to load for this command execution.</li>
+</ul>
+</li>
+</ul>
+<h4>Base Connection Options</h4>
+<ul>
+<li>
+<p><code>--token-type</code> | <code>--tt</code> <em>(string)</em></p>
+<ul>
+<li>The type of token to get and use for the API. Omit this option to use the default token type, which is provided by 'zowe auth login'.</li>
+</ul>
+</li>
+<li>
+<p><code>--token-value</code> | <code>--tv</code> <em>(string)</em></p>
+<ul>
+<li>The value of the token to pass to the API.</li>
+</ul>
+</li>
+</ul>
+<h4>Examples</h4>
+<ul>
+<li>
+<p>Issue a z/OS console command to display the IPL information for the system:</p>
+<ul>
+<li><code>zowe zos-console issue command &quot;D IPLINFO&quot;</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe zos-console issue command &quot;D IPLINFO&quot;">Copy</button></li>
+</ul>
+</li>
+<li>
+<p>Issue a z/OS console command to display the local and coordinated universal time and date:</p>
+<ul>
+<li><code>zowe zos-console issue command &quot;D T&quot;</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe zos-console issue command &quot;D T&quot;">Copy</button></li>
+</ul>
+</li>
+<li>
+<p>Issue a Db2 command to display information about the status and configuration of DDF:</p>
+<ul>
+<li><code>zowe zos-console issue command &quot;\-DB1G DISPLAY DDF&quot;</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe zos-console issue command &quot;\-DB1G DISPLAY DDF&quot;">Copy</button></li>
+</ul>
+</li>
+</ul>
+</article>
+<script src="../js/bundle-docs.js"></script>
+<script src="../js/docs.js"></script>
