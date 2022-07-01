@@ -1,0 +1,4681 @@
+# App-server Error Message Codes
+
+The following error message codes may appear on the app-server log. Use the following message code references and the corresponding reasons and actions to help troubleshoot issues.
+
+## App-server informational messages
+
+### ZWED0020I
+
+  Registering at _discoveryUrl_
+
+  **Reason:**
+
+  The app-server is registering its existence to the API ML discovery server, because `components.app-server.node.mediationLayer.enabled=true` is set in the zowe configuration.
+
+  **Action:**
+
+  No action required.
+
+
+
+### ZWED0021I
+
+  Eureka Client Registered from _ipAddress_. Available at _discoveryUrl_
+
+  **Reason:**
+
+  The registration attempt from ZWED0020I has succeeded. The server is known to the API ML discovery server from the address _ipAddress_
+
+  **Action:**
+
+  No action required.
+
+
+
+### ZWED0022I
+
+  Fork worker _workerId_
+
+  **Reason:**
+
+  A new app-server worker process is starting. Workers are started and stopped according to current server load and the minimum and maximum worker limits defined in environment variables ZLUX_MIN_WORKERS and ZLUX_MAX_WORKERS.
+
+  **Action:**
+
+  No action required.
+
+
+
+### ZWED0023I
+
+  Restart worker _workerId_
+
+  **Reason:**
+
+  An existing app-server worker process has exited with a status code that indicates it should be restarted rather than permenantly stopped.
+
+  **Action:**
+
+  Review the preceeding log messages as worker restart may be due to a caught error.
+
+
+
+### ZWED0024I
+
+  Keys=%s
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0025I
+
+  Killing worker pid=%s
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0026I
+
+  Fork %s workers.
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0027I
+
+  Close worker %s
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0028I
+
+  Master %s is running.
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0029I
+
+  Worker %s pid %s
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0030I
+
+  Installed plugin: %s Successful: (%s/%s) Attempted: (%s/%s)
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0031I
+
+  Server is ready at %s, Plugins successfully loaded: %s% (%s/%s)
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0032I
+
+  Server is ready at %s, Plugins successfully loaded: %s% (%s/%s)
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0033I
+
+  The http port given to the APIML is: %s\nThe https port given to the APIML is: %s\nThe zlux-apiml config are: %s
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0036I
+
+  Plugin %s will serve static files from %s
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0037I
+
+  %s: found proxied service %s
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0038I
+
+  %s: importing service %s from %s as %s
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0039I
+
+  %s: found router %s
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0040I
+
+  %s: found legacy node service %s
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0041I
+
+  %s: found external service %s
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0042I
+
+  %s: found %s service %s
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0043I
+
+  Plugin %s is not requested skipping without error
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0044I
+
+  Processing plugin reference %s...
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0045I
+
+  Reading plugins dir %s
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0046I
+
+  Adding dynamic plugin %s
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0047I
+
+  [Path= %s stdout]: %s
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0048I
+
+  [Path= %s] exited, code: %s
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0049I
+
+  Stopping managers
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0050I
+
+  Server shutting down, received signal=%s
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0051I
+
+  Resolved path: %s -> %s
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0052I
+
+  Deleting plugin due to request, id %s, path %s
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0053I
+
+  Setting up %s proxy (%s) to destination=%s
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0054I
+
+  Installing root service at %s
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0055I
+
+  Installing root service proxy at %s
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0056I
+
+  %s: installing websocket service
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0057I
+
+  Loaded Router for plugin=%s, service=%s. Router=%s
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0058I
+
+  Loaded Router from factory for plugin=%s, service=%s. Factory=%s
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0059I
+
+  Found connection info for %s=%s
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0060I
+
+  %s: installing data services
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0061I
+
+  %s: installing service %s
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0062I
+
+  %s: installing router at %s
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0063I
+
+  %s: importing service %s
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0064I
+
+  %s: installing import %s:%s at %s
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0065I
+
+  %s: installing static file handlers...
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0066I
+
+  %s: serving static files at %s
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0067I
+
+  %s: serving library files at %s
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0068I
+
+  Creating composite swagger endpoint for %s
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0069I
+
+  Creating swagger endpoint for %s:%s
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0070I
+
+  User=%s (%s): Session %s successful. Plugin response: %s
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0071I
+
+  Using PFX: %s
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0072I
+
+  Using Certificate: %s
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0073I
+
+  HTTP config valid, will listen on: %s
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0074I
+
+  HTTPS config valid, will listen on: %s
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0075I
+
+  HTTPS config valid, will listen on: %s
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0076I
+
+  (HTTP) Closing server %s
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0077I
+
+  (HTTPS) Closing server %s
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0078I
+
+  Tomcat Manager ID=%s found service=%s, war=%s
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0079I
+
+  Starting tomcat with parameters:\n Catalina: %s\n Args: %s\n Env: %s
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0080I
+
+  Starting tomcat with params:\n Java=%s\n Options=%s\n Env=%s\n cwd=%s
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0081I
+
+  Tomcat Manager with id=%s invoked to startup with config=%s
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0082I
+
+  Service=%s has Servlet name=%s
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0083I
+
+  Skipping linking for extracted war at dest=%s
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0084I
+
+  About to tomcat, ID=%s, URL=%s
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0085I
+
+  %s stdout=%s
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0086I
+
+  %s closed, code=%s
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0087I
+
+  %s exited, code=%s
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0088I
+
+  %s Manager issuing sigterm
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0089I
+
+  %s stdout=%s
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0090I
+
+  %s closed, code=%s
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0091I
+
+  %s exited, code=%s
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0092I
+
+  Tomcat Manager ID=%s stopping
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0093I
+
+  Tomcat Manager ID=%s cleanup successful
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0094I
+
+  Extracted war to %s
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0095I
+
+  Making junction from %s to %s
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0096I
+
+  Making symlink from %s to %s
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0109I
+
+  Registering App (ID=%s) with App Server
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0110I
+
+  App %s installed to %s and registered with App Server
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0111I
+
+  Authentication plugin %s added to category %s
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0112I
+
+  Auth enabled=false. Auth passthrough.
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0113I
+
+  %s
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0114I
+
+  Adding plugin remotely 
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0115I
+
+  Skip child process spawning on worker %s %s
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0116I
+
+  The LOCATIONS are %s and %s
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0117I
+
+  The fileLocation is %s
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0118I
+
+  The NODE_PATH is %s
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0119I
+
+  Plugin %s will serve library data from directory %s
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0120I
+
+  Auth plugin %s: loading auth handler module %s
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0121I
+
+  %s
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0122I
+
+  %s
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0123I
+
+  %s
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0124I
+
+  Plugin %s at path=%s loaded.
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0125I
+
+  Plugin %s not loaded
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0126I
+
+  SessionStore.sessions.size=%d
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0127I
+
+  Timeout cleaner dead session= %s key= %s map.size=%s
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0128I
+
+  Echo\n%s
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0129I
+
+  (%s) Listening on %s
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0130I
+
+  (%s) About to start listening on %s
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0141I
+
+  Protocol:%s Port:%s
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0142I
+
+  %s
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0143I
+
+  API ML registration settings: %s
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0144I
+
+  zluxProxyServerInstanceConfig: %s
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0145I
+
+  zluxProxyServerInstanceConfig %s
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0146I
+
+  Adding plugin %s
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0147I
+
+  Processing plugin 
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0148I
+
+  Found dependency: 
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0149I
+
+  Resolved actual version for import 
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0150I
+
+  Found dependency: 
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0151I
+
+  Resolved actual version for import 
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0152I
+
+  Graph: 
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0153I
+
+  Visiting broken node 
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0154I
+
+  Following link: %s: %s
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0155I
+
+  Graph: 
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0156I
+
+  Visiting node 
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0157I
+
+  %s: %s/%s
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0158I
+
+  *** pluginsSorted: 
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0159I
+
+  *** rejects: 
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0160I
+
+  Dep.valid: 
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0161I
+
+  %s
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0162I
+
+  Adding plugin 
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0163I
+
+  %s::%s: found %s
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0164I
+
+   Content:\n%s
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0165I
+
+  For plugin with id=%s, internal config found=\n%s
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0166I
+
+  Request host %s
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0167I
+
+  Header[%s]=%s
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0168I
+
+  Proxied options %s
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0169I
+
+  Request: %s://%s%s
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0170I
+
+  Proxy request to %s:%s%s
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0171I
+
+  Callservice: given auth helper
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0172I
+
+  Callservice: no auth helper
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0173I
+
+  Status code %s
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0174I
+
+  Redirecting to: %s
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0175I
+
+  Callservice: Forwarding request body to service
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0176I
+
+  Callservice: Issuing request to service
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0177I
+
+  %s WS proxy request to: %s
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0178I
+
+  t:%s
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0179I
+
+  s:%s
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0180I
+
+  ws Seen close with code=%s
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0181I
+
+  roxyws Seen close with code=%s
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0182I
+
+  Reading swagger for %s:%s
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0183I
+
+  Reading swagger at path=%s
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0184I
+
+  uniqueIps: no addresses specified, returning 0.0.0.0
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0185I
+
+  uniqueIps: %s
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0186I
+
+  getLoopbackAddress: no addresses specified, loopback address is 127.0.0.1
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0187I
+
+  Found loopback address %s
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0188I
+
+  getLoopbackAddress: will listen on 0.0.0.0, loopback address is 127.0.0.1
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0189I
+
+  404: %s, url=%s
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0190I
+
+  Type requested = %s
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0191I
+
+  Returning true if type matches, type=%s
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0192I
+
+  Returning true because type is application
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0193I
+
+  Returning false because type did not match
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0194I
+
+  Callservice: Data received
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0195I
+
+  Callservice: Service call completed.
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0196I
+
+  Callservice: Issuing request to service: %s
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0197I
+
+  User=%s: %s service called: %s, %s %s
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0198I
+
+  User=%s: Service called: %s::%s, %s %s
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0199I
+
+  %s: service %s
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0200I
+
+  %s: %s %s handled by %s
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0201I
+
+  About to call myProxy
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0202I
+
+  After myProxy call
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0203I
+
+  Referrer proxying miss. Resource not found, sending 404 because referrer (%s) didn't match an existing proxy service
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0204I
+
+  Referrer proxying miss. Resource not found, sending 404 because referrer (%s) didn't match a plugin pattern
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0205I
+
+  User=%s (%s): User logout
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0206I
+
+  Writing: %s, Size=%s
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0207I
+
+  Wrote: %s
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0211I
+
+  The number of processors is: %d
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0212I
+
+  Environmental variable ZLUX_MIN_WORKERS was not a valid number therefore %s will be used as the minimum workers
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0213I
+
+  Environmental variable ZLUX_MAX_WORKERS was not a valid number therefore %s will be used as the maximum workers
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0214I
+
+  Read %s: found plugin id = %s, type = %s
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0286I
+
+  Writing plugin locator file to %s, contents=\n%s
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0287I
+
+  JarMgr with id=%s invoked to startup with config=%s
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0289I
+
+  JarMgr with id=%s invoked to startup with config=%s
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0290I
+
+  Plugin (%s) loaded. Version: %s. Successful: %s% (%s/%s) Attempted: %s% (%s/%s)
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0291I
+
+  Server is ready at %s Plugins successfully loaded: %s% (%s/%s)
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0292I
+
+  Plugin (%s) loaded. Version: %s.
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0293I
+
+  Handling scan plugin request from worker=%d
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0294I
+
+  Successfully loaded %d recognizers for '%s' into config
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0295I
+
+  Successfully loaded %d actions for '%s' into config
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0296I": "(%s) is a supported platform for %s to install (%s).
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0297I": "(%s) is a supported architecture for %s to install (%s).
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0298I": "(%s) is a supported endpoint for %s to install (%s).
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0299I": "Loading remote iframe app %s located at %s
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0300I": "APIML Storage configured
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0301I": "Found %s in config for '%s'
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0302I": "HA mode is %s
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0003W":"User=%s (%s): Session %s failed. Plugin response: %s
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0004W":"Tomcat for ID=%s not starting, no services succeeded loading
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0006W":"RBAC is disabled in the configuration. All authenticated users will have access to all services. Enable RBAC in the configuration to control users' access to individual services.
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0007W":"Dataservice authentication definition is not present in server configuration file, or malformed.\nCorrect the configuration file before restarting the server.
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0008W":"Error loading auth plugin %s: 
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0012W":"Implementation defaults for %s was not an object, or did not contain a plugins attribute. Other criteria for selecting authentication implementations is not yet implemented.
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0013W":"Initializing was not complete for worker %s
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0014W":"Error adding plugin: %s
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0015W":"Error reloading workers: %s
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0016W":"Error setting override: %s
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0017W":"Duplicate plugin identifier %s found.
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0018W":"Could not initialize Java manager. Java services from Apps will not be able to load\n%s
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0019W":"Exception when setting log level for ID=%s. E:\n%s
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0020W":"Could not spawn %s: %s
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0021W":"Missing one or more parameters required to run.\nThe server requires either HTTP or HTTPS. HTTP Port given: %s. HTTPS Port given: %s\nHTTPS requires either a PFX file or Key & Certificate files.\nGiven PFX: %s\nGiven Key: %s\nGiven Certificate: %s\nconfig was: %s\nAll but host server and config file parameters should be defined within the config file in JSON format.
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0027W":"Plugin (%s) loading failed. Version: %s. Message: "%s" Successful: %s% (%s/%s) Attempted: %s% (%s/%s)
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0028W":"Encountered parse exception while reading %s
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0029W":"Authentication plugin was found which was not requested in the server configuration file's dataserviceAuthentication object. Skipping load of this plugin
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0030W":"%s points to an invalid plugin definition, skipping
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0032W":"Failed to load %s
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0033W":"Could not initialize plugin %s: %s
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0034W":"Skipping install of plugin due to existing plugin with same id=
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0035W":"Error thrown when installing plugin=%s: 
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0036W":"Uncaught exception found. Error:\n%s
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0037W":"Ending server process due to uncaught exception.
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0038W":"[Path=%s stderr]: %s
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0039W":"Exception at server cleanup function:\n%s
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0040W":"Callservice: Service call to %s:%s%s failed. 
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0041W":"%s Exception caught. Message=%s
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0042W":"Stack trace follows\n%s
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0043W":"%s proxyWS error:%s
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0044W":"%s WS error:%s
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0045W":"Failed to reach the auth services host for address %s:%s
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0046W":"The auth services host system was not specified at startup, and defaulted to 127.0.0.1.\nVerify that the auth services server is running, or specify at startup the remote host and port to connect to. See documentation for details.
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0047W":"Swagger file for service (%s:%s) not found
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0048W":"Invalid Swagger from file for service (%s:%s)
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0049W":"%s %s
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0050W":"Could not read swagger doc folder %s
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0051W":"Failed to parse translation file %s. File skipped
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0052W":"Error when reading file=%s. Error=%s
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0053W":"Event handler failed: 
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0054W":"Skipping invalid listener address=%s
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0055W":"Skipping invalid listener address=%s
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0056W":"Couldn't process %s as IP
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0057W":"Loopback calls: localhost equivalent address not found in list %s. Using first address (%s); Verify firewall will allow this.
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0058W":"Log location for logger '%s:%s' is undefined
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0059W":"Failed to add the plugin: 
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0061W":"Callservice: Service call failed.
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0062W":"%s Exception caught. Message=%s
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0063W":"Stack trace follows\n%s
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0064W":"%s: invalid method %s
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0065W":"Library %s is missing libraryVersion attribute for hosting files. Skipping file hosting.
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0066W":"%s: getCapabilities() is not a function
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0068W":"Failed to set proxy authorizations. Error=
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0069W":"Returning null for cipher array because input had non-string: 
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0070W":"Error when reading PFX. Server cannot continue. Error=%s
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0071W":"Unexpected error on server %s:%s. E=%s. Stack trace follows.\n%s
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0072W":"Could not stop manager, error=
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0073W":"No server returned for group=
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0074W":"Unknown default behavior=%s
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0075W":"Services in plugin=%s war grouping skipped. Plugin missing or already grouped
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0076W":"Skipping invalid plugin group=
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0077W":"Could not extract war for service=%s, error=
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0078W":"Could not access files to determine status for service=%s, error=
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0079W":"Cannot add servlet for service=%s, error=
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0080W":"Cannot add servlet for service=%s
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0081W":"Could not start tomcat, error=
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0082W":"%s stderr=%s
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0083W":"Tomcat could not start. Closing. code=%s
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0084W":"Tomcat could not start. Exiting. code=%s
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0085W":"%s Error when stopping, error=
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0086W":"Could not stop tomcat, error=
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0087W":"%s stderr=%s
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0146W":"Could not stat destination or temp folder %s. Error=%s
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0147W":"Cleanup not yet implemented
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0148W":"App extracted but not registered to App Server due to write fail. Error=%s
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0149W":"Could not find pluginDefinition.json file in App (dir=%s). Error=%s
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0150W":"%s library path %s does not exist
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0151W":"unhandledRejection 
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0152W":"Error at call sessionStore. %s: %s
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0153W":"WARNING: CLI Argument missing name or has unsupported type%s
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0154W":"WARNING: Unrecognized command: %s
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0155W":"%s
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0156W":"1 function initLoggerMessages - ERROR - %s
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0157W":"2 function initLoggerMessages - ERROR - %s
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0158W":"%s
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0159W":"Plugin (%s) loading failed. Message: "%s" Successful: %s% (%s/%s) Attempted: %s% (%s/%s)
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0160W":"Master cluster not found to save storage for id: %s, value: %s
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0161W":"Master cluster not found to save storage
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0162W":"Master cluster not found to add storage
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0163W":"Master cluster was not found to delete storage for id: %s
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0165W":"Unable to retrieve storage data from cluster promise %s
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0166W":"Error updating the storage: %s
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0167W":"Error adding to the storage: %s
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0168W":"Unable to retrieve storage value from cluster %s
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0169W":"Error deleting the storage with id: %s %s
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0170W":"Plugin (%s) loading failed. Version: %s. Message: "%s"
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0171W":"Rejected undefined referrer for url=%s, ip=%s
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0172W":"Rejected bad referrer=%s for url=%s, ip=%s
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0173W":"Unable to decode P12 certificate (different password than keystore?). Attempting to use empty string as password. Decode error: %s.
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0174W":"%s could not verify (%s) as a supported platform to install (%s). Proceeding anyway...
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0175W":"%s could not verify (%s) as a supported architecture to install (%s). Proceeding anyway...
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0176W":"Failed to load client cert/key pair for Caching Service
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0177W":"Unable to load %s for '%s' into config
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0178W":"Skipping authentication plugin %s because it's not HA compatible
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0179W":"Unable to retrieve the list of certificate authorities from the keyring=%s owner=%s Error: %s
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0001E":"Error: %s
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0002E":"Could not stop language manager for types=%s
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0003E":"Loopback configuration not valid,%s\nLoopback calls will fail!
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0004E":"Could not listen on address %s:%s. It is already in use by another process.
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0005E":"Could not listen on address %s:%s. Invalid IP for this system.
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0006E":"Usage: --inputApp | -i INPUTAPP --pluginsDir | -p PLUGINSDIR --zluxConfig | -c ZLUXCONFIGPATH [--verbose | -v]
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0007E":"%s invalid version %s
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0008E":"%s: invalid version range %s: %s
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0009E":"${this.localName}: invalid version range %s
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0010E":"No file name for data service
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0011E":"Plugin %s has web content but no web directory under %s
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0012E":"%s::%s Required local service missing: serviceName
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0013E":"%s::%s Could not find a version to satisfy local dependency %s@%s
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0014E":"Plugin %s invalid
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0015E":"%s: No plugin directory found at %s
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0016E":"%s: No pluginDefinition.json found at %s
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0017E":"Identifier doesn't match one found in pluginDefinition: %s
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0018E":"No plugin type found, skipping
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0019E":"Plugin already registered
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0020E":"%s: pluginType %s is unknown
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0021E":"%s is missing
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0022E":"Module not found %s
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0023E":"Method not implemented %s
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0024E":"Object not exported %s
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0025E":".authenticate() missing
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0026E":"Circular dependency: %s
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0027E":"Circular dependency: %s
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0028E":"Config invalid
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0029E":"JavaManager given port range beyond limits
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0030E":"JavaManager not given any ports with which to run servers
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0031E":"Unknown java war grouping default=%s
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0032E":"Could not find port to use for configuration, at config position=%s
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0033E":"Could not find runtime to satisfy group: %s
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0034E":"Unknown java app server type=%s specified in config. Cannot continue with java loading
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0035E":"Java runtimes not specified, and no JAVA_HOME set
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0036E":"Java app server not defined in config
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0037E":"JavaManager not given either war or jar configuration options, nothing to do
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0038E":"JavaManager given port range beyond limits
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0039E":"JavaManager not given any ports with which to run servers
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0040E":"Unknown java war grouping default=%s
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0041E":"Could not find port to use for configuration, at config position=%s
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0042E":"Could not find runtime to satisfy group: %s
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0043E":"Unknown java app server type=%s specified in config. Cannot continue with java loading
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0044E":"Java runtimes not specified, and no JAVA_HOME set
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0045E":"Java app server not defined in config
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0046E":"JavaManager not given either war or jar configuration options, nothing to do
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0047E":"Proxy (%s:%s) setup failed.\nHost & Port for proxy destination are required but were missing.\nFor information on how to configure a proxy service, see the Zowe wiki on dataservices (https://github.com/zowe/zlux/wiki/ZLUX-Dataservices)
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0049E":"Can't specify error metadata
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0050E":"Root service %s not found
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0051E":"Could not resolve service URL. Plugin=%s, service=%s
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0052E":"Could not load service %s:%s due to unknown type=%s
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0053E":"Import %s:%s can't be satisfied
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0111E":"SEVERE: Exception occurred trying to generate object from input:%s
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0112E":"The server found no plugin implementing the specified default authentication type of %s.
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0113E":"The server found no authentication types. Verify that the server configuration file defines server authentication.
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0114E":"The server found no plugin implementing the specified default authentication type of %s.
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0115E":"Unable to retrieve storage object from cluster. This is probably due to a timeout.\nYou may change the default of '%s' ms by setting 'node.cluster.storageTimeout' within the config. %s
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0145E":"Cannot load SAF keyring content outside of z/OS
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0146E":"SAF keyring data had no attribute "%s". Attributes=
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0147E":"SAF keyring data was not found for "%s"
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0148E":"Exception thrown when reading SAF keyring, e=
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0149E":"SAF keyring reference missing userId "%s", keyringName "%s", or label "%s"
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0150E":"Cannot load SAF keyring due to missing keyring_js library
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0151E":"Env var %s not found
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0152E":"Unable to locate server config instance location and INSTANCE_DIR environment variable does not exist.
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0153E":"(%s) is not a supported platform for %s. Skipping (%s)... Supported: %s
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0154E":"(%s) is not a supported architecture for %s. Skipping (%s)... Supported: %s
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0155E":"(%s) is not a supported endpoint for %s. Skipping (%s)... Supported: %s
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0156E":"Could not register default plugins into app-server
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0157E":"Could not register default plugin %s into app-server
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
+
+
+
+### ZWED0158E":"Could not listen on address %s:%s. Insufficient permissions to perform port bind."
