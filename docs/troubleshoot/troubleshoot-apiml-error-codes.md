@@ -529,6 +529,42 @@ The following error message codes may appear on logs or API responses. Use the f
 
   Verify the state of ZSS and IZS, then check if parameters `apiml.security.authorization.endpoint.*` are matching.
 
+### ZWEAT604E
+
+  Passwords do not match
+
+  **Reason:**
+
+  Re-entered password does not match for password update.
+
+  **Action:**
+
+  Enter the same value as the one entered for new password.
+
+### ZWEAT605E
+
+  Invalid body provided in request to create personal access token
+
+  **Reason:**
+
+  The request body is not valid
+
+  **Action:**
+
+  Use a valid body in the request. Format of a message: {validity: int , scopes: [string]}.
+
+### ZWEAT606E
+
+  Body in the HTTP request for Personal Access Token does not contain scopes
+
+  **Reason:**
+
+  The request body is not valid
+
+  **Action:**
+
+  Provide a list of services for which this token will be valid
+
 ## Security client messages
 
 ### ZWEAS100E
@@ -1129,6 +1165,18 @@ The following error message codes may appear on logs or API responses. Use the f
 
   Verify that z/OSMF is available, accessible by the Gateway service, and online.
 
+### ZWEAG717E
+
+  The service id provided is invalid: '%s'
+
+  **Reason:**
+
+  The provided id is not valid under conformance criteria.
+
+  **Action:**
+
+  Verify that conformance criteria, provide valid service id.
+
 ### ZWEAG100E
 
   Authentication exception: '%s' for URL '%s'
@@ -1235,7 +1283,7 @@ The following error message codes may appear on logs or API responses. Use the f
 
   **Action:**
 
-  Ensure that the z/OSMF instance is configured correctly and that it is successfully registered to the Discovery Service and that the API Mediation Layer can communicate with the provided z/OSMF instance. The default timeout is 5 minutes. On a slower system, add the variable APIML_SECURITY_JWTINITIALIZERTIMEOUT=... and the value in minutes into Zowe's configuration to override this value.
+  Ensure that the z/OSMF instance is configured correctly and that it is successfully registered to the Discovery Service and that the API Mediation Layer can communicate with the provided z/OSMF instance. The default timeout is 5 minutes. On a slower system, add the variable components.gateway.apiml.security.jwtInitializerTimeout:... and the value in minutes into Zowe's configuration to override this value.
 
 ### ZWEAG109E
 
@@ -1476,18 +1524,6 @@ The following error message codes may appear on logs or API responses. Use the f
   **Action:**
 
   Configure your client to provide valid authentication.
-
-### ZWEAG169E
-
-  The 'apiml.authentication.applid' parameter is not specified for a service.
-
-  **Reason:**
-
-  The applid parameter is required for the calling service.
-
-  **Action:**
-
-  Provide the 'apiml.authentication.applid' parameter.
 
 ## API Catalog messages
 
