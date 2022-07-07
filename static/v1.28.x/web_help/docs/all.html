@@ -37689,7 +37689,7 @@ Allowed values: http, https</p>
 </ul>
 </li>
 </ul>
-<h4>Required Options</h4>
+<h4>Options</h4>
 <ul>
 <li>
 <p><code>--host</code>  | <code>-H</code> <em>(string)</em></p>
@@ -37718,9 +37718,6 @@ Allowed values: http, https</p>
 <li>Password to authenticate to FTP.</li>
 </ul>
 </li>
-</ul>
-<h4>Options</h4>
-<ul>
 <li>
 <p><code>--secure-ftp</code>  <em>(boolean)</em></p>
 <ul>
@@ -63544,27 +63541,6 @@ If you find this functionality useful, please consider setting up z/OSMF on your
 </ul>
 </li>
 <li>
-<p><code>--secure-ftp</code>  <em>(boolean)</em></p>
-<ul>
-<li>
-<p>Set to true for both control and data connection encryption, 'control' for control connection encryption only, or 'implicit' for implicitly encrypted control connection (this mode is deprecated in modern times, but usually uses port 990). Note: Unfortunately, this plugin's functionality only works with FTP and FTPS, not 'SFTP' which is FTP over SSH.</p>
-<p>Default value: true</p>
-</li>
-</ul>
-</li>
-<li>
-<p><code>--connection-timeout</code>  | <code>--ct</code> <em>(number)</em></p>
-<ul>
-<li>
-<p>How long (in milliseconds) to wait for the control connection to be established.</p>
-<p>Default value: 10000</p>
-</li>
-</ul>
-</li>
-</ul>
-<h4>Required Options</h4>
-<ul>
-<li>
 <p><code>--host</code>  | <code>-H</code> <em>(string)</em></p>
 <ul>
 <li>The hostname or IP address of the z/OS server to connect to.</li>
@@ -63589,6 +63565,24 @@ If you find this functionality useful, please consider setting up z/OSMF on your
 <p><code>--password</code>  | <code>-p</code> | <code>--pass</code> | <code>--pw</code> <em>(string)</em></p>
 <ul>
 <li>Password to authenticate to FTP.</li>
+</ul>
+</li>
+<li>
+<p><code>--secure-ftp</code>  <em>(boolean)</em></p>
+<ul>
+<li>
+<p>Set to true for both control and data connection encryption, 'control' for control connection encryption only, or 'implicit' for implicitly encrypted control connection (this mode is deprecated in modern times, but usually uses port 990). Note: Unfortunately, this plugin's functionality only works with FTP and FTPS, not 'SFTP' which is FTP over SSH.</p>
+<p>Default value: true</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--connection-timeout</code>  | <code>--ct</code> <em>(number)</em></p>
+<ul>
+<li>
+<p>How long (in milliseconds) to wait for the control connection to be established.</p>
+<p>Default value: 10000</p>
+</li>
 </ul>
 </li>
 </ul>
@@ -63681,6 +63675,9 @@ If you find this functionality useful, please consider setting up z/OSMF on your
 <li>Specify this option to confirm that you want to delete the data set permanently.</li>
 </ul>
 </li>
+</ul>
+<h4>Options</h4>
+<ul>
 <li>
 <p><code>--host</code>  | <code>-H</code> <em>(string)</em></p>
 <ul>
@@ -63708,9 +63705,6 @@ If you find this functionality useful, please consider setting up z/OSMF on your
 <li>Password to authenticate to FTP.</li>
 </ul>
 </li>
-</ul>
-<h4>Options</h4>
-<ul>
 <li>
 <p><code>--secure-ftp</code>  <em>(boolean)</em></p>
 <ul>
@@ -63809,7 +63803,7 @@ If you find this functionality useful, please consider setting up z/OSMF on your
 </ul>
 </li>
 </ul>
-<h4>Required Options</h4>
+<h4>Options</h4>
 <ul>
 <li>
 <p><code>--host</code>  | <code>-H</code> <em>(string)</em></p>
@@ -63838,9 +63832,6 @@ If you find this functionality useful, please consider setting up z/OSMF on your
 <li>Password to authenticate to FTP.</li>
 </ul>
 </li>
-</ul>
-<h4>Options</h4>
-<ul>
 <li>
 <p><code>--secure-ftp</code>  <em>(boolean)</em></p>
 <ul>
@@ -63947,6 +63938,15 @@ If you find this functionality useful, please consider setting up z/OSMF on your
 <li>Specify this option to confirm that you want to delete the data set permanently.</li>
 </ul>
 </li>
+</ul>
+<h4>Options</h4>
+<ul>
+<li>
+<p><code>--recursive</code>  <em>(boolean)</em></p>
+<ul>
+<li>Delete the directory and all files/directories under it.</li>
+</ul>
+</li>
 <li>
 <p><code>--host</code>  | <code>-H</code> <em>(string)</em></p>
 <ul>
@@ -63972,15 +63972,6 @@ If you find this functionality useful, please consider setting up z/OSMF on your
 <p><code>--password</code>  | <code>-p</code> | <code>--pass</code> | <code>--pw</code> <em>(string)</em></p>
 <ul>
 <li>Password to authenticate to FTP.</li>
-</ul>
-</li>
-</ul>
-<h4>Options</h4>
-<ul>
-<li>
-<p><code>--recursive</code>  <em>(boolean)</em></p>
-<ul>
-<li>Delete the directory and all files/directories under it.</li>
 </ul>
 </li>
 <li>
@@ -64098,27 +64089,6 @@ If you find this functionality useful, please consider setting up z/OSMF on your
 </ul>
 </li>
 <li>
-<p><code>--secure-ftp</code>  <em>(boolean)</em></p>
-<ul>
-<li>
-<p>Set to true for both control and data connection encryption, 'control' for control connection encryption only, or 'implicit' for implicitly encrypted control connection (this mode is deprecated in modern times, but usually uses port 990). Note: Unfortunately, this plugin's functionality only works with FTP and FTPS, not 'SFTP' which is FTP over SSH.</p>
-<p>Default value: true</p>
-</li>
-</ul>
-</li>
-<li>
-<p><code>--connection-timeout</code>  | <code>--ct</code> <em>(number)</em></p>
-<ul>
-<li>
-<p>How long (in milliseconds) to wait for the control connection to be established.</p>
-<p>Default value: 10000</p>
-</li>
-</ul>
-</li>
-</ul>
-<h4>Required Options</h4>
-<ul>
-<li>
 <p><code>--host</code>  | <code>-H</code> <em>(string)</em></p>
 <ul>
 <li>The hostname or IP address of the z/OS server to connect to.</li>
@@ -64143,6 +64113,24 @@ If you find this functionality useful, please consider setting up z/OSMF on your
 <p><code>--password</code>  | <code>-p</code> | <code>--pass</code> | <code>--pw</code> <em>(string)</em></p>
 <ul>
 <li>Password to authenticate to FTP.</li>
+</ul>
+</li>
+<li>
+<p><code>--secure-ftp</code>  <em>(boolean)</em></p>
+<ul>
+<li>
+<p>Set to true for both control and data connection encryption, 'control' for control connection encryption only, or 'implicit' for implicitly encrypted control connection (this mode is deprecated in modern times, but usually uses port 990). Note: Unfortunately, this plugin's functionality only works with FTP and FTPS, not 'SFTP' which is FTP over SSH.</p>
+<p>Default value: true</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--connection-timeout</code>  | <code>--ct</code> <em>(number)</em></p>
+<ul>
+<li>
+<p>How long (in milliseconds) to wait for the control connection to be established.</p>
+<p>Default value: 10000</p>
+</li>
 </ul>
 </li>
 </ul>
@@ -64252,27 +64240,6 @@ If you find this functionality useful, please consider setting up z/OSMF on your
 </ul>
 </li>
 <li>
-<p><code>--secure-ftp</code>  <em>(boolean)</em></p>
-<ul>
-<li>
-<p>Set to true for both control and data connection encryption, 'control' for control connection encryption only, or 'implicit' for implicitly encrypted control connection (this mode is deprecated in modern times, but usually uses port 990). Note: Unfortunately, this plugin's functionality only works with FTP and FTPS, not 'SFTP' which is FTP over SSH.</p>
-<p>Default value: true</p>
-</li>
-</ul>
-</li>
-<li>
-<p><code>--connection-timeout</code>  | <code>--ct</code> <em>(number)</em></p>
-<ul>
-<li>
-<p>How long (in milliseconds) to wait for the control connection to be established.</p>
-<p>Default value: 10000</p>
-</li>
-</ul>
-</li>
-</ul>
-<h4>Required Options</h4>
-<ul>
-<li>
 <p><code>--host</code>  | <code>-H</code> <em>(string)</em></p>
 <ul>
 <li>The hostname or IP address of the z/OS server to connect to.</li>
@@ -64297,6 +64264,24 @@ If you find this functionality useful, please consider setting up z/OSMF on your
 <p><code>--password</code>  | <code>-p</code> | <code>--pass</code> | <code>--pw</code> <em>(string)</em></p>
 <ul>
 <li>Password to authenticate to FTP.</li>
+</ul>
+</li>
+<li>
+<p><code>--secure-ftp</code>  <em>(boolean)</em></p>
+<ul>
+<li>
+<p>Set to true for both control and data connection encryption, 'control' for control connection encryption only, or 'implicit' for implicitly encrypted control connection (this mode is deprecated in modern times, but usually uses port 990). Note: Unfortunately, this plugin's functionality only works with FTP and FTPS, not 'SFTP' which is FTP over SSH.</p>
+<p>Default value: true</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--connection-timeout</code>  | <code>--ct</code> <em>(number)</em></p>
+<ul>
+<li>
+<p>How long (in milliseconds) to wait for the control connection to be established.</p>
+<p>Default value: 10000</p>
+</li>
 </ul>
 </li>
 </ul>
@@ -64394,27 +64379,6 @@ If you find this functionality useful, please consider setting up z/OSMF on your
 </ul>
 </li>
 <li>
-<p><code>--secure-ftp</code>  <em>(boolean)</em></p>
-<ul>
-<li>
-<p>Set to true for both control and data connection encryption, 'control' for control connection encryption only, or 'implicit' for implicitly encrypted control connection (this mode is deprecated in modern times, but usually uses port 990). Note: Unfortunately, this plugin's functionality only works with FTP and FTPS, not 'SFTP' which is FTP over SSH.</p>
-<p>Default value: true</p>
-</li>
-</ul>
-</li>
-<li>
-<p><code>--connection-timeout</code>  | <code>--ct</code> <em>(number)</em></p>
-<ul>
-<li>
-<p>How long (in milliseconds) to wait for the control connection to be established.</p>
-<p>Default value: 10000</p>
-</li>
-</ul>
-</li>
-</ul>
-<h4>Required Options</h4>
-<ul>
-<li>
 <p><code>--host</code>  | <code>-H</code> <em>(string)</em></p>
 <ul>
 <li>The hostname or IP address of the z/OS server to connect to.</li>
@@ -64439,6 +64403,24 @@ If you find this functionality useful, please consider setting up z/OSMF on your
 <p><code>--password</code>  | <code>-p</code> | <code>--pass</code> | <code>--pw</code> <em>(string)</em></p>
 <ul>
 <li>Password to authenticate to FTP.</li>
+</ul>
+</li>
+<li>
+<p><code>--secure-ftp</code>  <em>(boolean)</em></p>
+<ul>
+<li>
+<p>Set to true for both control and data connection encryption, 'control' for control connection encryption only, or 'implicit' for implicitly encrypted control connection (this mode is deprecated in modern times, but usually uses port 990). Note: Unfortunately, this plugin's functionality only works with FTP and FTPS, not 'SFTP' which is FTP over SSH.</p>
+<p>Default value: true</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--connection-timeout</code>  | <code>--ct</code> <em>(number)</em></p>
+<ul>
+<li>
+<p>How long (in milliseconds) to wait for the control connection to be established.</p>
+<p>Default value: 10000</p>
+</li>
 </ul>
 </li>
 </ul>
@@ -64528,7 +64510,7 @@ However, the pattern cannot begin with any of these sequences.</li>
 </ul>
 </li>
 </ul>
-<h4>Required Options</h4>
+<h4>Options</h4>
 <ul>
 <li>
 <p><code>--host</code>  | <code>-H</code> <em>(string)</em></p>
@@ -64557,9 +64539,6 @@ However, the pattern cannot begin with any of these sequences.</li>
 <li>Password to authenticate to FTP.</li>
 </ul>
 </li>
-</ul>
-<h4>Options</h4>
-<ul>
 <li>
 <p><code>--secure-ftp</code>  <em>(boolean)</em></p>
 <ul>
@@ -64686,7 +64665,7 @@ However, the pattern cannot begin with any of these sequences.</li>
 </ul>
 </li>
 </ul>
-<h4>Required Options</h4>
+<h4>Options</h4>
 <ul>
 <li>
 <p><code>--host</code>  | <code>-H</code> <em>(string)</em></p>
@@ -64715,9 +64694,6 @@ However, the pattern cannot begin with any of these sequences.</li>
 <li>Password to authenticate to FTP.</li>
 </ul>
 </li>
-</ul>
-<h4>Options</h4>
-<ul>
 <li>
 <p><code>--secure-ftp</code>  <em>(boolean)</em></p>
 <ul>
@@ -64851,27 +64827,6 @@ If you don't specify this option all jobs under this owner will be listed by def
 </ul>
 </li>
 <li>
-<p><code>--secure-ftp</code>  <em>(boolean)</em></p>
-<ul>
-<li>
-<p>Set to true for both control and data connection encryption, 'control' for control connection encryption only, or 'implicit' for implicitly encrypted control connection (this mode is deprecated in modern times, but usually uses port 990). Note: Unfortunately, this plugin's functionality only works with FTP and FTPS, not 'SFTP' which is FTP over SSH.</p>
-<p>Default value: true</p>
-</li>
-</ul>
-</li>
-<li>
-<p><code>--connection-timeout</code>  | <code>--ct</code> <em>(number)</em></p>
-<ul>
-<li>
-<p>How long (in milliseconds) to wait for the control connection to be established.</p>
-<p>Default value: 10000</p>
-</li>
-</ul>
-</li>
-</ul>
-<h4>Required Options</h4>
-<ul>
-<li>
 <p><code>--host</code>  | <code>-H</code> <em>(string)</em></p>
 <ul>
 <li>The hostname or IP address of the z/OS server to connect to.</li>
@@ -64896,6 +64851,24 @@ If you don't specify this option all jobs under this owner will be listed by def
 <p><code>--password</code>  | <code>-p</code> | <code>--pass</code> | <code>--pw</code> <em>(string)</em></p>
 <ul>
 <li>Password to authenticate to FTP.</li>
+</ul>
+</li>
+<li>
+<p><code>--secure-ftp</code>  <em>(boolean)</em></p>
+<ul>
+<li>
+<p>Set to true for both control and data connection encryption, 'control' for control connection encryption only, or 'implicit' for implicitly encrypted control connection (this mode is deprecated in modern times, but usually uses port 990). Note: Unfortunately, this plugin's functionality only works with FTP and FTPS, not 'SFTP' which is FTP over SSH.</p>
+<p>Default value: true</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--connection-timeout</code>  | <code>--ct</code> <em>(number)</em></p>
+<ul>
+<li>
+<p>How long (in milliseconds) to wait for the control connection to be established.</p>
+<p>Default value: 10000</p>
+</li>
 </ul>
 </li>
 </ul>
@@ -65012,7 +64985,7 @@ If you don't specify this option all jobs under this owner will be listed by def
 </ul>
 </li>
 </ul>
-<h4>Required Options</h4>
+<h4>Options</h4>
 <ul>
 <li>
 <p><code>--host</code>  | <code>-H</code> <em>(string)</em></p>
@@ -65041,9 +65014,6 @@ If you don't specify this option all jobs under this owner will be listed by def
 <li>Password to authenticate to FTP.</li>
 </ul>
 </li>
-</ul>
-<h4>Options</h4>
-<ul>
 <li>
 <p><code>--secure-ftp</code>  <em>(boolean)</em></p>
 <ul>
@@ -65171,7 +65141,7 @@ If you don't specify this option all jobs under this owner will be listed by def
 </ul>
 </li>
 </ul>
-<h4>Required Options</h4>
+<h4>Options</h4>
 <ul>
 <li>
 <p><code>--host</code>  | <code>-H</code> <em>(string)</em></p>
@@ -65200,9 +65170,6 @@ If you don't specify this option all jobs under this owner will be listed by def
 <li>Password to authenticate to FTP.</li>
 </ul>
 </li>
-</ul>
-<h4>Options</h4>
-<ul>
 <li>
 <p><code>--secure-ftp</code>  <em>(boolean)</em></p>
 <ul>
@@ -65343,7 +65310,7 @@ If you don't specify this option all jobs under this owner will be listed by def
 </ul>
 </li>
 </ul>
-<h4>Required Options</h4>
+<h4>Options</h4>
 <ul>
 <li>
 <p><code>--host</code>  | <code>-H</code> <em>(string)</em></p>
@@ -65372,9 +65339,6 @@ If you don't specify this option all jobs under this owner will be listed by def
 <li>Password to authenticate to FTP.</li>
 </ul>
 </li>
-</ul>
-<h4>Options</h4>
-<ul>
 <li>
 <p><code>--secure-ftp</code>  <em>(boolean)</em></p>
 <ul>
@@ -65481,7 +65445,7 @@ If you don't specify this option all jobs under this owner will be listed by def
 </ul>
 </li>
 </ul>
-<h4>Required Options</h4>
+<h4>Options</h4>
 <ul>
 <li>
 <p><code>--host</code>  | <code>-H</code> <em>(string)</em></p>
@@ -65510,9 +65474,6 @@ If you don't specify this option all jobs under this owner will be listed by def
 <li>Password to authenticate to FTP.</li>
 </ul>
 </li>
-</ul>
-<h4>Options</h4>
-<ul>
 <li>
 <p><code>--secure-ftp</code>  <em>(boolean)</em></p>
 <ul>
@@ -65623,7 +65584,7 @@ If you don't specify this option all jobs under this owner will be listed by def
 </ul>
 </li>
 </ul>
-<h4>Required Options</h4>
+<h4>Options</h4>
 <ul>
 <li>
 <p><code>--host</code>  | <code>-H</code> <em>(string)</em></p>
@@ -65652,9 +65613,6 @@ If you don't specify this option all jobs under this owner will be listed by def
 <li>Password to authenticate to FTP.</li>
 </ul>
 </li>
-</ul>
-<h4>Options</h4>
-<ul>
 <li>
 <p><code>--secure-ftp</code>  <em>(boolean)</em></p>
 <ul>
@@ -65776,27 +65734,6 @@ If you don't specify this option all jobs under this owner will be listed by def
 </ul>
 </li>
 <li>
-<p><code>--secure-ftp</code>  <em>(boolean)</em></p>
-<ul>
-<li>
-<p>Set to true for both control and data connection encryption, 'control' for control connection encryption only, or 'implicit' for implicitly encrypted control connection (this mode is deprecated in modern times, but usually uses port 990). Note: Unfortunately, this plugin's functionality only works with FTP and FTPS, not 'SFTP' which is FTP over SSH.</p>
-<p>Default value: true</p>
-</li>
-</ul>
-</li>
-<li>
-<p><code>--connection-timeout</code>  | <code>--ct</code> <em>(number)</em></p>
-<ul>
-<li>
-<p>How long (in milliseconds) to wait for the control connection to be established.</p>
-<p>Default value: 10000</p>
-</li>
-</ul>
-</li>
-</ul>
-<h4>Required Options</h4>
-<ul>
-<li>
 <p><code>--host</code>  | <code>-H</code> <em>(string)</em></p>
 <ul>
 <li>The hostname or IP address of the z/OS server to connect to.</li>
@@ -65821,6 +65758,24 @@ If you don't specify this option all jobs under this owner will be listed by def
 <p><code>--password</code>  | <code>-p</code> | <code>--pass</code> | <code>--pw</code> <em>(string)</em></p>
 <ul>
 <li>Password to authenticate to FTP.</li>
+</ul>
+</li>
+<li>
+<p><code>--secure-ftp</code>  <em>(boolean)</em></p>
+<ul>
+<li>
+<p>Set to true for both control and data connection encryption, 'control' for control connection encryption only, or 'implicit' for implicitly encrypted control connection (this mode is deprecated in modern times, but usually uses port 990). Note: Unfortunately, this plugin's functionality only works with FTP and FTPS, not 'SFTP' which is FTP over SSH.</p>
+<p>Default value: true</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--connection-timeout</code>  | <code>--ct</code> <em>(number)</em></p>
+<ul>
+<li>
+<p>How long (in milliseconds) to wait for the control connection to be established.</p>
+<p>Default value: 10000</p>
+</li>
 </ul>
 </li>
 </ul>
@@ -65964,27 +65919,6 @@ If you don't specify this option all jobs under this owner will be listed by def
 </ul>
 </li>
 <li>
-<p><code>--secure-ftp</code>  <em>(boolean)</em></p>
-<ul>
-<li>
-<p>Set to true for both control and data connection encryption, 'control' for control connection encryption only, or 'implicit' for implicitly encrypted control connection (this mode is deprecated in modern times, but usually uses port 990). Note: Unfortunately, this plugin's functionality only works with FTP and FTPS, not 'SFTP' which is FTP over SSH.</p>
-<p>Default value: true</p>
-</li>
-</ul>
-</li>
-<li>
-<p><code>--connection-timeout</code>  | <code>--ct</code> <em>(number)</em></p>
-<ul>
-<li>
-<p>How long (in milliseconds) to wait for the control connection to be established.</p>
-<p>Default value: 10000</p>
-</li>
-</ul>
-</li>
-</ul>
-<h4>Required Options</h4>
-<ul>
-<li>
 <p><code>--host</code>  | <code>-H</code> <em>(string)</em></p>
 <ul>
 <li>The hostname or IP address of the z/OS server to connect to.</li>
@@ -66009,6 +65943,24 @@ If you don't specify this option all jobs under this owner will be listed by def
 <p><code>--password</code>  | <code>-p</code> | <code>--pass</code> | <code>--pw</code> <em>(string)</em></p>
 <ul>
 <li>Password to authenticate to FTP.</li>
+</ul>
+</li>
+<li>
+<p><code>--secure-ftp</code>  <em>(boolean)</em></p>
+<ul>
+<li>
+<p>Set to true for both control and data connection encryption, 'control' for control connection encryption only, or 'implicit' for implicitly encrypted control connection (this mode is deprecated in modern times, but usually uses port 990). Note: Unfortunately, this plugin's functionality only works with FTP and FTPS, not 'SFTP' which is FTP over SSH.</p>
+<p>Default value: true</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--connection-timeout</code>  | <code>--ct</code> <em>(number)</em></p>
+<ul>
+<li>
+<p>How long (in milliseconds) to wait for the control connection to be established.</p>
+<p>Default value: 10000</p>
+</li>
 </ul>
 </li>
 </ul>
@@ -66143,27 +66095,6 @@ If you don't specify this option all jobs under this owner will be listed by def
 </ul>
 </li>
 <li>
-<p><code>--secure-ftp</code>  <em>(boolean)</em></p>
-<ul>
-<li>
-<p>Set to true for both control and data connection encryption, 'control' for control connection encryption only, or 'implicit' for implicitly encrypted control connection (this mode is deprecated in modern times, but usually uses port 990). Note: Unfortunately, this plugin's functionality only works with FTP and FTPS, not 'SFTP' which is FTP over SSH.</p>
-<p>Default value: true</p>
-</li>
-</ul>
-</li>
-<li>
-<p><code>--connection-timeout</code>  | <code>--ct</code> <em>(number)</em></p>
-<ul>
-<li>
-<p>How long (in milliseconds) to wait for the control connection to be established.</p>
-<p>Default value: 10000</p>
-</li>
-</ul>
-</li>
-</ul>
-<h4>Required Options</h4>
-<ul>
-<li>
 <p><code>--host</code>  | <code>-H</code> <em>(string)</em></p>
 <ul>
 <li>The hostname or IP address of the z/OS server to connect to.</li>
@@ -66188,6 +66119,24 @@ If you don't specify this option all jobs under this owner will be listed by def
 <p><code>--password</code>  | <code>-p</code> | <code>--pass</code> | <code>--pw</code> <em>(string)</em></p>
 <ul>
 <li>Password to authenticate to FTP.</li>
+</ul>
+</li>
+<li>
+<p><code>--secure-ftp</code>  <em>(boolean)</em></p>
+<ul>
+<li>
+<p>Set to true for both control and data connection encryption, 'control' for control connection encryption only, or 'implicit' for implicitly encrypted control connection (this mode is deprecated in modern times, but usually uses port 990). Note: Unfortunately, this plugin's functionality only works with FTP and FTPS, not 'SFTP' which is FTP over SSH.</p>
+<p>Default value: true</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--connection-timeout</code>  | <code>--ct</code> <em>(number)</em></p>
+<ul>
+<li>
+<p>How long (in milliseconds) to wait for the control connection to be established.</p>
+<p>Default value: 10000</p>
+</li>
 </ul>
 </li>
 </ul>
@@ -66323,30 +66272,9 @@ If you don't specify this option all jobs under this owner will be listed by def
 <li>
 <p><code>--dcb</code>  <em>(string)</em></p>
 <ul>
-<li>DCB parameters for dataset allocation if not existing. It's space separated like RECFM=FB LRECL=326 BLKSIZE=23472</li>
+<li>DCB parameters for sequential dataset(PS dataset) allocation if not existing. It's space separated like RECFM=FB LRECL=326 BLKSIZE=23472</li>
 </ul>
 </li>
-<li>
-<p><code>--secure-ftp</code>  <em>(boolean)</em></p>
-<ul>
-<li>
-<p>Set to true for both control and data connection encryption, 'control' for control connection encryption only, or 'implicit' for implicitly encrypted control connection (this mode is deprecated in modern times, but usually uses port 990). Note: Unfortunately, this plugin's functionality only works with FTP and FTPS, not 'SFTP' which is FTP over SSH.</p>
-<p>Default value: true</p>
-</li>
-</ul>
-</li>
-<li>
-<p><code>--connection-timeout</code>  | <code>--ct</code> <em>(number)</em></p>
-<ul>
-<li>
-<p>How long (in milliseconds) to wait for the control connection to be established.</p>
-<p>Default value: 10000</p>
-</li>
-</ul>
-</li>
-</ul>
-<h4>Required Options</h4>
-<ul>
 <li>
 <p><code>--host</code>  | <code>-H</code> <em>(string)</em></p>
 <ul>
@@ -66372,6 +66300,24 @@ If you don't specify this option all jobs under this owner will be listed by def
 <p><code>--password</code>  | <code>-p</code> | <code>--pass</code> | <code>--pw</code> <em>(string)</em></p>
 <ul>
 <li>Password to authenticate to FTP.</li>
+</ul>
+</li>
+<li>
+<p><code>--secure-ftp</code>  <em>(boolean)</em></p>
+<ul>
+<li>
+<p>Set to true for both control and data connection encryption, 'control' for control connection encryption only, or 'implicit' for implicitly encrypted control connection (this mode is deprecated in modern times, but usually uses port 990). Note: Unfortunately, this plugin's functionality only works with FTP and FTPS, not 'SFTP' which is FTP over SSH.</p>
+<p>Default value: true</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--connection-timeout</code>  | <code>--ct</code> <em>(number)</em></p>
+<ul>
+<li>
+<p>How long (in milliseconds) to wait for the control connection to be established.</p>
+<p>Default value: 10000</p>
+</li>
 </ul>
 </li>
 </ul>
@@ -66475,27 +66421,6 @@ If you don't specify this option all jobs under this owner will be listed by def
 </ul>
 </li>
 <li>
-<p><code>--secure-ftp</code>  <em>(boolean)</em></p>
-<ul>
-<li>
-<p>Set to true for both control and data connection encryption, 'control' for control connection encryption only, or 'implicit' for implicitly encrypted control connection (this mode is deprecated in modern times, but usually uses port 990). Note: Unfortunately, this plugin's functionality only works with FTP and FTPS, not 'SFTP' which is FTP over SSH.</p>
-<p>Default value: true</p>
-</li>
-</ul>
-</li>
-<li>
-<p><code>--connection-timeout</code>  | <code>--ct</code> <em>(number)</em></p>
-<ul>
-<li>
-<p>How long (in milliseconds) to wait for the control connection to be established.</p>
-<p>Default value: 10000</p>
-</li>
-</ul>
-</li>
-</ul>
-<h4>Required Options</h4>
-<ul>
-<li>
 <p><code>--host</code>  | <code>-H</code> <em>(string)</em></p>
 <ul>
 <li>The hostname or IP address of the z/OS server to connect to.</li>
@@ -66520,6 +66445,24 @@ If you don't specify this option all jobs under this owner will be listed by def
 <p><code>--password</code>  | <code>-p</code> | <code>--pass</code> | <code>--pw</code> <em>(string)</em></p>
 <ul>
 <li>Password to authenticate to FTP.</li>
+</ul>
+</li>
+<li>
+<p><code>--secure-ftp</code>  <em>(boolean)</em></p>
+<ul>
+<li>
+<p>Set to true for both control and data connection encryption, 'control' for control connection encryption only, or 'implicit' for implicitly encrypted control connection (this mode is deprecated in modern times, but usually uses port 990). Note: Unfortunately, this plugin's functionality only works with FTP and FTPS, not 'SFTP' which is FTP over SSH.</p>
+<p>Default value: true</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--connection-timeout</code>  | <code>--ct</code> <em>(number)</em></p>
+<ul>
+<li>
+<p>How long (in milliseconds) to wait for the control connection to be established.</p>
+<p>Default value: 10000</p>
+</li>
 </ul>
 </li>
 </ul>
@@ -66611,27 +66554,6 @@ If you don't specify this option all jobs under this owner will be listed by def
 </ul>
 </li>
 <li>
-<p><code>--secure-ftp</code>  <em>(boolean)</em></p>
-<ul>
-<li>
-<p>Set to true for both control and data connection encryption, 'control' for control connection encryption only, or 'implicit' for implicitly encrypted control connection (this mode is deprecated in modern times, but usually uses port 990). Note: Unfortunately, this plugin's functionality only works with FTP and FTPS, not 'SFTP' which is FTP over SSH.</p>
-<p>Default value: true</p>
-</li>
-</ul>
-</li>
-<li>
-<p><code>--connection-timeout</code>  | <code>--ct</code> <em>(number)</em></p>
-<ul>
-<li>
-<p>How long (in milliseconds) to wait for the control connection to be established.</p>
-<p>Default value: 10000</p>
-</li>
-</ul>
-</li>
-</ul>
-<h4>Required Options</h4>
-<ul>
-<li>
 <p><code>--host</code>  | <code>-H</code> <em>(string)</em></p>
 <ul>
 <li>The hostname or IP address of the z/OS server to connect to.</li>
@@ -66656,6 +66578,24 @@ If you don't specify this option all jobs under this owner will be listed by def
 <p><code>--password</code>  | <code>-p</code> | <code>--pass</code> | <code>--pw</code> <em>(string)</em></p>
 <ul>
 <li>Password to authenticate to FTP.</li>
+</ul>
+</li>
+<li>
+<p><code>--secure-ftp</code>  <em>(boolean)</em></p>
+<ul>
+<li>
+<p>Set to true for both control and data connection encryption, 'control' for control connection encryption only, or 'implicit' for implicitly encrypted control connection (this mode is deprecated in modern times, but usually uses port 990). Note: Unfortunately, this plugin's functionality only works with FTP and FTPS, not 'SFTP' which is FTP over SSH.</p>
+<p>Default value: true</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--connection-timeout</code>  | <code>--ct</code> <em>(number)</em></p>
+<ul>
+<li>
+<p>How long (in milliseconds) to wait for the control connection to be established.</p>
+<p>Default value: 10000</p>
+</li>
 </ul>
 </li>
 </ul>
@@ -66747,27 +66687,6 @@ If you don't specify this option all jobs under this owner will be listed by def
 </ul>
 </li>
 <li>
-<p><code>--secure-ftp</code>  <em>(boolean)</em></p>
-<ul>
-<li>
-<p>Set to true for both control and data connection encryption, 'control' for control connection encryption only, or 'implicit' for implicitly encrypted control connection (this mode is deprecated in modern times, but usually uses port 990). Note: Unfortunately, this plugin's functionality only works with FTP and FTPS, not 'SFTP' which is FTP over SSH.</p>
-<p>Default value: true</p>
-</li>
-</ul>
-</li>
-<li>
-<p><code>--connection-timeout</code>  | <code>--ct</code> <em>(number)</em></p>
-<ul>
-<li>
-<p>How long (in milliseconds) to wait for the control connection to be established.</p>
-<p>Default value: 10000</p>
-</li>
-</ul>
-</li>
-</ul>
-<h4>Required Options</h4>
-<ul>
-<li>
 <p><code>--host</code>  | <code>-H</code> <em>(string)</em></p>
 <ul>
 <li>The hostname or IP address of the z/OS server to connect to.</li>
@@ -66792,6 +66711,24 @@ If you don't specify this option all jobs under this owner will be listed by def
 <p><code>--password</code>  | <code>-p</code> | <code>--pass</code> | <code>--pw</code> <em>(string)</em></p>
 <ul>
 <li>Password to authenticate to FTP.</li>
+</ul>
+</li>
+<li>
+<p><code>--secure-ftp</code>  <em>(boolean)</em></p>
+<ul>
+<li>
+<p>Set to true for both control and data connection encryption, 'control' for control connection encryption only, or 'implicit' for implicitly encrypted control connection (this mode is deprecated in modern times, but usually uses port 990). Note: Unfortunately, this plugin's functionality only works with FTP and FTPS, not 'SFTP' which is FTP over SSH.</p>
+<p>Default value: true</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--connection-timeout</code>  | <code>--ct</code> <em>(number)</em></p>
+<ul>
+<li>
+<p>How long (in milliseconds) to wait for the control connection to be established.</p>
+<p>Default value: 10000</p>
+</li>
 </ul>
 </li>
 </ul>
@@ -66876,7 +66813,7 @@ If you don't specify this option all jobs under this owner will be listed by def
 </ul>
 </li>
 </ul>
-<h4>Required Options</h4>
+<h4>Options</h4>
 <ul>
 <li>
 <p><code>--host</code>  | <code>-H</code> <em>(string)</em></p>
@@ -66905,9 +66842,6 @@ If you don't specify this option all jobs under this owner will be listed by def
 <li>Password to authenticate to FTP.</li>
 </ul>
 </li>
-</ul>
-<h4>Options</h4>
-<ul>
 <li>
 <p><code>--secure-ftp</code>  <em>(boolean)</em></p>
 <ul>
@@ -67015,27 +66949,6 @@ If you don't specify this option all jobs under this owner will be listed by def
 </ul>
 </li>
 <li>
-<p><code>--secure-ftp</code>  <em>(boolean)</em></p>
-<ul>
-<li>
-<p>Set to true for both control and data connection encryption, 'control' for control connection encryption only, or 'implicit' for implicitly encrypted control connection (this mode is deprecated in modern times, but usually uses port 990). Note: Unfortunately, this plugin's functionality only works with FTP and FTPS, not 'SFTP' which is FTP over SSH.</p>
-<p>Default value: true</p>
-</li>
-</ul>
-</li>
-<li>
-<p><code>--connection-timeout</code>  | <code>--ct</code> <em>(number)</em></p>
-<ul>
-<li>
-<p>How long (in milliseconds) to wait for the control connection to be established.</p>
-<p>Default value: 10000</p>
-</li>
-</ul>
-</li>
-</ul>
-<h4>Required Options</h4>
-<ul>
-<li>
 <p><code>--host</code>  | <code>-H</code> <em>(string)</em></p>
 <ul>
 <li>The hostname or IP address of the z/OS server to connect to.</li>
@@ -67060,6 +66973,24 @@ If you don't specify this option all jobs under this owner will be listed by def
 <p><code>--password</code>  | <code>-p</code> | <code>--pass</code> | <code>--pw</code> <em>(string)</em></p>
 <ul>
 <li>Password to authenticate to FTP.</li>
+</ul>
+</li>
+<li>
+<p><code>--secure-ftp</code>  <em>(boolean)</em></p>
+<ul>
+<li>
+<p>Set to true for both control and data connection encryption, 'control' for control connection encryption only, or 'implicit' for implicitly encrypted control connection (this mode is deprecated in modern times, but usually uses port 990). Note: Unfortunately, this plugin's functionality only works with FTP and FTPS, not 'SFTP' which is FTP over SSH.</p>
+<p>Default value: true</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--connection-timeout</code>  | <code>--ct</code> <em>(number)</em></p>
+<ul>
+<li>
+<p>How long (in milliseconds) to wait for the control connection to be established.</p>
+<p>Default value: 10000</p>
+</li>
 </ul>
 </li>
 </ul>
@@ -67148,7 +67079,7 @@ If you don't specify this option all jobs under this owner will be listed by def
 </ul>
 </li>
 </ul>
-<h4>Required Options</h4>
+<h4>Options</h4>
 <ul>
 <li>
 <p><code>--host</code>  | <code>-H</code> <em>(string)</em></p>
@@ -67177,9 +67108,6 @@ If you don't specify this option all jobs under this owner will be listed by def
 <li>Password to authenticate to FTP.</li>
 </ul>
 </li>
-</ul>
-<h4>Options</h4>
-<ul>
 <li>
 <p><code>--secure-ftp</code>  <em>(boolean)</em></p>
 <ul>
@@ -67312,7 +67240,7 @@ If you don't specify this option all jobs under this owner will be listed by def
 </ul>
 </li>
 </ul>
-<h4>Required Options</h4>
+<h4>Options</h4>
 <ul>
 <li>
 <p><code>--host</code>  | <code>-H</code> <em>(string)</em></p>
@@ -67341,9 +67269,6 @@ If you don't specify this option all jobs under this owner will be listed by def
 <li>Password to authenticate to FTP.</li>
 </ul>
 </li>
-</ul>
-<h4>Options</h4>
-<ul>
 <li>
 <p><code>--secure-ftp</code>  <em>(boolean)</em></p>
 <ul>
@@ -67451,27 +67376,6 @@ If you don't specify this option all jobs under this owner will be listed by def
 </ul>
 </li>
 <li>
-<p><code>--secure-ftp</code>  <em>(boolean)</em></p>
-<ul>
-<li>
-<p>Set to true for both control and data connection encryption, 'control' for control connection encryption only, or 'implicit' for implicitly encrypted control connection (this mode is deprecated in modern times, but usually uses port 990). Note: Unfortunately, this plugin's functionality only works with FTP and FTPS, not 'SFTP' which is FTP over SSH.</p>
-<p>Default value: true</p>
-</li>
-</ul>
-</li>
-<li>
-<p><code>--connection-timeout</code>  | <code>--ct</code> <em>(number)</em></p>
-<ul>
-<li>
-<p>How long (in milliseconds) to wait for the control connection to be established.</p>
-<p>Default value: 10000</p>
-</li>
-</ul>
-</li>
-</ul>
-<h4>Required Options</h4>
-<ul>
-<li>
 <p><code>--host</code>  | <code>-H</code> <em>(string)</em></p>
 <ul>
 <li>The hostname or IP address of the z/OS server to connect to.</li>
@@ -67496,6 +67400,24 @@ If you don't specify this option all jobs under this owner will be listed by def
 <p><code>--password</code>  | <code>-p</code> | <code>--pass</code> | <code>--pw</code> <em>(string)</em></p>
 <ul>
 <li>Password to authenticate to FTP.</li>
+</ul>
+</li>
+<li>
+<p><code>--secure-ftp</code>  <em>(boolean)</em></p>
+<ul>
+<li>
+<p>Set to true for both control and data connection encryption, 'control' for control connection encryption only, or 'implicit' for implicitly encrypted control connection (this mode is deprecated in modern times, but usually uses port 990). Note: Unfortunately, this plugin's functionality only works with FTP and FTPS, not 'SFTP' which is FTP over SSH.</p>
+<p>Default value: true</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--connection-timeout</code>  | <code>--ct</code> <em>(number)</em></p>
+<ul>
+<li>
+<p>How long (in milliseconds) to wait for the control connection to be established.</p>
+<p>Default value: 10000</p>
+</li>
 </ul>
 </li>
 </ul>
@@ -68014,6 +67936,12 @@ Allowed values: http, https</p>
 <li>Specify the job name prefix of the jobs you want to list. The command does not prevalidate the owner. You can specify a wildcard according to the z/OSMF Jobs REST endpoint documentation, which is usually in the form &quot;JOB*&quot;.</li>
 </ul>
 </li>
+<li>
+<p><code>--exec-data</code>  | <code>--ed</code> <em>(boolean)</em></p>
+<ul>
+<li>Use this option to retrieve execution data for jobs via the z/OSMF REST API.</li>
+</ul>
+</li>
 </ul>
 <h4>Zosmf Connection Options</h4>
 <ul>
@@ -68158,6 +68086,24 @@ Allowed values: http, https</p>
 <p>List all jobs with default owner and prefix settings, displaying only the job ID of each job:</p>
 <ul>
 <li><code>zowe zos-jobs list jobs --rff jobid --rft table</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe zos-jobs list jobs --rff jobid --rft table">Copy</button></li>
+</ul>
+</li>
+<li>
+<p>List all jobs and return job execution data along with the default information:</p>
+<ul>
+<li><code>zowe zos-jobs list jobs --exec-data</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe zos-jobs list jobs --exec-data">Copy</button></li>
+</ul>
+</li>
+<li>
+<p>List all jobs owned by user IDs starting with 'ibmu' and return job execution data along with the default information:</p>
+<ul>
+<li><code>zowe zos-jobs list jobs -o &quot;ibmu*&quot; --exec-data</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe zos-jobs list jobs -o &quot;ibmu*&quot; --exec-data">Copy</button></li>
+</ul>
+</li>
+<li>
+<p>List all jobs owned by user IDs starting with 'ibmu' and job names starting with 'myjo' and                             return job execution data along with the default information:</p>
+<ul>
+<li><code>zowe zos-jobs list jobs -o &quot;ibmu*&quot; -p &quot;myjo*&quot; --exec-data</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe zos-jobs list jobs -o &quot;ibmu*&quot; -p &quot;myjo*&quot; --exec-data">Copy</button></li>
 </ul>
 </li>
 </ul>

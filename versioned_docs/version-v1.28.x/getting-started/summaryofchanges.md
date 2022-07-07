@@ -1894,7 +1894,7 @@ Add OMVS information API to uribroker ([#116](https://github.com/zowe/zlux-app-m
 
 ### What's new in Zowe CLI and Plug-ins
 
-You can now explore the Zowe CLI command help in an interactive online format. See <a href="/v1.27.x/web_help/index.html" target="_blank">Zowe CLI Web Help</a>.
+You can now explore the Zowe CLI command help in an interactive online format. See <a href="/v1.28.x/web_help/index.html" target="_blank">Zowe CLI Web Help</a>.
 
 The following new commands and enhancements are added:
 
@@ -2044,7 +2044,7 @@ The Zowe CLI core component contains the following improvements and fixes:
 
 - Updated and clarified the description the `-- overwrite` option for the `zowe zos-workflows create workflow-from-data-set` command and the `Zowe zos-workflows create workflow-from-uss-file` command.
 
-- The <a href="/v1.27.x/CLIReference_Zowe.pdf" target="_blank">CLI Reference Guide</a> is featured on the Zowe Docs home page. The document is a comprehensive guide to commands and options in Zowe CLI.
+- The <a href="/v1.28.x/CLIReference_Zowe.pdf" target="_blank">CLI Reference Guide</a> is featured on the Zowe Docs home page. The document is a comprehensive guide to commands and options in Zowe CLI.
 
 - You can now click the links on the Welcome to Zowe help section and open the URL in a browser window. Note that the shell application must support the capability to display and click hyperlinks.
 
