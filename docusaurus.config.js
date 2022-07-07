@@ -232,10 +232,6 @@ module.exports = {
             to: "/",
             from: ["/stable"],
           },
-          {
-            to: "/",
-            from: [".md"],
-          },
         ],
         fromExtensions: ["html"],
         //Redirects Vuepress links like "v1-22-x" to "v1.22.x";
