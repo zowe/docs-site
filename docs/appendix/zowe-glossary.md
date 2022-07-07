@@ -8,7 +8,7 @@ This glossary is a comprehensive list of Zowe terminology. It includes technical
  
   Zowe is a collection of both client and server code. You can install just some of Zowe, or all of it, depending on your needs. Zowe splits the major sections of the code into "Components" which each serve an important purpose. Server Components are packaged in a standardized way to include all services and plugins in one deliverable. Extensions to Zowe can also be delivered as third party Server Components. See: https://docs.zowe.org/stable/extend/packaging-zos-extensions/#zowe-component-manifest
 
-* **Zowe server components** 
+* **Zowe server components**
 
   Also known as "Zowe z/OS components" or "Zowe server-side components". Include all the Zowe components that are installed on the z/OS server. 
 
@@ -25,9 +25,11 @@ This glossary is a comprehensive list of Zowe terminology. It includes technical
   The Zowe Application Framework modernizes and simplifies working on the mainframe. With the Zowe Application Framework, you can create applications to suit your specific needs. It is a web user interface (UI) that provides a virtual desktop containing a number of apps allowing access to z/OS function. 
 
 * **Zowe CLI**
-* **Zowe Mobile**
+
 * **Zowe Explorer** 
+
 * **Zowe Client SDKs** 
+
 * **Zowe Embedded Browser for RMF/SMF and APIs (ZEBRA)** 
 
   Provides re-usable and industry compliant JSON formatted RMF/SMF data records, so that many other ISV SW and users can exploit them using open-source SW for many ways. For more information, see the ZEBRA documentation or visit the ZEBRA test/trial site. 
@@ -35,6 +37,8 @@ This glossary is a comprehensive list of Zowe terminology. It includes technical
 * **Zowe Workflow WiZard**
 
 * **Zowe Launcher**
+
+  A server-side program necessary for high availability / fault tolerance (HA/FT). It starts the Zowe server components and monitors their processes so that if a component fails to start or crashes, the launcher will restart it. The restarting of a component has limits to prevent loops in case of a component that has uncorrectable problems.
 
 ## Architecture
 
@@ -52,7 +56,7 @@ This glossary is a comprehensive list of Zowe terminology. It includes technical
 
 * **ZLUX**  
 
-  This is a codename for the Zowe Application Framework, consisting of the Zowe desktop and App server. We should replace as many occurrences of "ZLUX" in our documentation with "desktop", "app framework" and "app-server" according to which part we are talking about. More mentions of ZLUX lead to more confusion. 
+  This is a codename for the Zowe Application Framework, consisting of the Zowe desktop and App server.
 
 * **API Gateway**  
 
@@ -68,29 +72,25 @@ This glossary is a comprehensive list of Zowe terminology. It includes technical
 
 * **App Server** 
 
-  The App Server is a node.js server that is responsible for the Zowe Application Framework. This server provides the Zowe desktop, which is accessible through a web browser. The Zowe desktop includes a number of applications that run inside the Application Framework such as a 3270 emulator and a File Editor.     
+  The App Server is a node.js server which is the server side of the Zowe Application framework and hosts the web content of the framework too. This server provides the Zowe desktop, which is accessible through a web browser. The Zowe desktop includes a number of applications that run inside the Application Framework such as a 3270 emulator and a File Editor.     
 
 * **Caching Service** 
 
   This feature is designed for Zowe components in a high availability configuration. It supports the High Availability of all components within Zowe, allowing components to be stateless by providing a mechanism to offload their state to a location accessible by all instances of the service, including those which just started 
        
-* **Zowe Cross Memory Server (X-MEM)** - V1: 
-  
-  is an APF authorized server application that provides privileged services to Zowe in a secure manner. The Cross Memory server is a low-level privileged server for managing mainframe data securely. For security reasons, it is not an HTTP server. Instead, this server has a trust relationship with ZSS. Other Zowe components can work through ZSS in order to handle z/OS data that would otherwise be unavailable or insecure to access from higher-level languages and software.    
-
 * **z/OS Explorer Services**
   
 * **Zowe Systems Services Server (ZSS)** 
 
   The Zowe desktop delegates a number of its services to the ZSS server which it accesses through the http port 8542. ZSS is written in C and has native calls to z/OS to provide its services. For more information, see Zowe architecture | Zowe Docs
       
-* **ZIS (Zowe Interprocess Services)**  - V2: 
+* **ZIS (Zowe Interprocess Services)**
 
-  it is a server but not a webserver.    
+  An APF authorized server application that provides privileged services to Zowe in a secure manner. For security reasons, it is not an HTTP server. Instead, this server has a trust relationship with ZSS. Other Zowe components can work through ZSS in order to handle z/OS data that would otherwise be unavailable or insecure to access from higher-level languages and software. 
 
 * **Zowe server infrastructure**  
 
-  The glue that binds the servers together (zowe-install-packaging)       
+  The set of programs (ex "zwe") and utilities (ex JCL, scripts) which manage the Zowe server configuration and components. The infrastructure standardizes the packaging of components and controls how they are started, stopped, and how configuration is provided to them. 
 
 ##  Installation & Configuration
 
@@ -113,6 +113,8 @@ This glossary is a comprehensive list of Zowe terminology. It includes technical
 
 * **workspace directory**
 
+  The standard directory where Zowe server component and extension configuration is stored. In v1, this was located within the instance directory, but in v2 it can be any directory specified by the zowe configuration file. Refered to in code as `WORKSPACE_DIRECTORY` (v1) and `zowe.workspaceDirectory` (v2).
+
 * **Zowe configuration file**
 
   Zowe.yaml: It is a YAML file that is required to configure Zowe runtime. It can be used as an alternative to instance.env if you have to configure Zowe in more granular level. It is also required to start Zowe in high availability mode. See https://docs.zowe.org/stable/user-guide/configure-instance-directory/#creating-the-zoweyaml-file 
@@ -129,17 +131,23 @@ This glossary is a comprehensive list of Zowe terminology. It includes technical
 
 * **ZWESVUSR** 
 
-  This is a started task ID used to run the PROCLIB ZWESVSTC. The task starts a USS environment using BPXBATSL that executes the core Zowe Desktop (ZLUX) node.js server, the Java API Mediation Layer, and the Z Secure Services C component. To work with USS, the user ID ZWESVUSR must have a valid OMVS segment. For more information, see System requirements | Zowe Docs
+  This is a started task ID used to run the PROCLIB ZWESVSTC. The task starts a USS environment using BPXBATSL that executes server components such as the Application Framework, API Mediation Layer, and Z Secure Services servers. To work with USS, the user ID ZWESVUSR must have a valid OMVS segment. For more information, see [System requirements](systemrequirements-zos#zwesvusr).
 
 * **Zowe runtime directory**
 
-  referred to as `<RUNTIME_DIR>`. Also known as ROOT DIR is the directory where the Zowe runtime is located, also referred to as the <RUNTIME_DIR>. Defaults to the location of where zowe-configure-instance was executed. See Creating and configuring the Zowe instance directory | Zowe Docs 
+  The USS directory where the Zowe server runtime is located. In v1, this is referred to as `<RUNTIME_DIR>` and is the location where `zowe-configure-instance` was used at install. In v2, this is referred to as `zowe.runtimeDirectory` and is the parent directory of the `zwe` command.
 
 ## Operation
 
+### Zowe Application Framework
+
 * **App2App**
 
-  It is a unique feature to Zowe environment where one application plug-in can communicate with another and it is applicable to multiple application plug-ins. The application framework provides constructs that facilitate this ability. See Application-to-application communication | Zowe DocsConfig Service: 
+  It is a unique feature to Zowe environment where one application plug-in can communicate with another and it is applicable to multiple application plug-ins. The application framework provides constructs that facilitate this ability. See [Application-to-application communication](../extend/extend-desktop/mvd-apptoappcommunication) for more information.
+
+* **Config Service**
+
+  The Config(uration) Service is a part of the Application Framework which allows plugins and the framework itself to store user configuration as JSON or binary formats. The configuration is stored in a hierarchy in which company-wide and system-wide defaults can exist for all users, and users may override the defaults if policy allows it. What can be stored and what can be overridden is according to plugin definition and administrative configuration.
 
 * **MVS (multiple virtual storage) Explorer** 
 
@@ -154,6 +162,10 @@ This glossary is a comprehensive list of Zowe terminology. It includes technical
   a plug-in provided with Zowe to allow users to view z/OS files and data sets using a RESTful interface. Also used by the MVS Explorer UI and USS Explorer UI
 
 * **JES Explorer** 
+
+### Zowe API Mediation Layer
+
+### Zowe CLI
 
 
 ## Tools & Plug-ins
@@ -175,14 +187,12 @@ This glossary is a comprehensive list of Zowe terminology. It includes technical
 
 ## Community
 
-* **OMP/Open Mainframe Project**
+* **Open Mainframe Project (OMP)**
   
-  The organization the Zowe project is a member of
-
-* **LF/Linux Foundation**
-
-  The organization the OMP is a member of it.
+  It is an organization which hosts and promotes development of open source software for the benefit of the IBM z mainframe community, including but not limited to z/OS. Zowe is one of several programs in this project. See [Open Mainframe Project website](https://www.openmainframeproject.org/) for more information.
 
 * **Zowe Conformance Program** 
  
 * **Squad** 
+  
+  A squad is a group of people contributing and participating in the Zowe project. Such a group owns one or more projects. Every squad is required to have a representative on the Technical Steering Committee (TSC), and participate in relevant working groups. See [Squads](https://github.com/zowe/community/blob/master/Technical-Steering-Committee/squads.md) for more information.
