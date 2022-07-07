@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>profiles create zosmf-profile</title>
+<link rel="stylesheet" href="../css/bundle-docs.css">
+<link rel="stylesheet" href="../css/docs.css">
+<article class="markdown-body">
+<h2><a href="zowe.html">zowe</a> › <a href="zowe_profiles.html">profiles</a> › <a href="zowe_profiles_create.html">create</a> › <a href="zowe_profiles_create_zosmf-profile.html">zosmf-profile</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
+<p>z/OSMF Profile</p>
+<p>Warning: This command has been deprecated.<br>
+Recommended replacement: The 'config init' command</p>
+<h4>Usage</h4>
+<p>zowe profiles create zosmf-profile &lt;profileName&gt; [options]</p>
+<h4>Positional Arguments</h4>
+<ul>
+<li>
+<p><code>profileName</code>		 <em>(string)</em></p>
+<ul>
+<li>Specifies the name of the new zosmf profile. You can load this profile by using the name on commands that support the &quot;--zosmf-profile&quot; option.</li>
+</ul>
+</li>
+</ul>
+<h4>Zosmf Connection Options</h4>
+<ul>
+<li>
+<p><code>--host</code> | <code>-H</code> <em>(string)</em></p>
+<ul>
+<li>The z/OSMF server host name.</li>
+</ul>
+</li>
+<li>
+<p><code>--port</code> | <code>-P</code> <em>(number)</em></p>
+<ul>
+<li>
+<p>The z/OSMF server port.</p>
+<p>Default value: 443</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--user</code> | <code>-u</code> <em>(string)</em></p>
+<ul>
+<li>Mainframe (z/OSMF) user name, which can be the same as your TSO login.</li>
+</ul>
+</li>
+<li>
+<p><code>--password</code> | <code>--pass</code> | <code>--pw</code> <em>(string)</em></p>
+<ul>
+<li>Mainframe (z/OSMF) password, which can be the same as your TSO password.</li>
+</ul>
+</li>
+<li>
+<p><code>--reject-unauthorized</code> | <code>--ru</code> <em>(boolean)</em></p>
+<ul>
+<li>
+<p>Reject self-signed certificates.</p>
+<p>Default value: true</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--cert-file</code> <em>(local file path)</em></p>
+<ul>
+<li>The file path to a certificate file to use for authentication</li>
+</ul>
+</li>
+<li>
+<p><code>--cert-key-file</code> <em>(local file path)</em></p>
+<ul>
+<li>The file path to a certificate key file to use for authentication</li>
+</ul>
+</li>
+<li>
+<p><code>--base-path</code> | <code>--bp</code> <em>(string)</em></p>
+<ul>
+<li>The base path for your API mediation layer instance. Specify this option to prepend the base path to all z/OSMF resources when making REST requests. Do not specify this option if you are not using an API mediation layer.</li>
+</ul>
+</li>
+<li>
+<p><code>--protocol</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>The protocol used (HTTP or HTTPS)</p>
+<p>Default value: https<br>
+Allowed values: http, https</p>
+</li>
+</ul>
+</li>
+</ul>
+<h4>Options</h4>
+<ul>
+<li>
+<p><code>--encoding</code> | <code>--ec</code> <em>(string)</em></p>
+<ul>
+<li>The encoding for download and upload of z/OS data set and USS files. The default encoding if not specified is IBM-1047.</li>
+</ul>
+</li>
+<li>
+<p><code>--response-timeout</code> | <code>--rto</code> <em>(number)</em></p>
+<ul>
+<li>The maximum amount of time in seconds the z/OSMF Files TSO servlet should run before returning a response. Any request exceeding this amount of time will be terminated and return an error. Allowed values: 5 - 600</li>
+</ul>
+</li>
+<li>
+<p><code>--overwrite</code> | <code>--ow</code> <em>(boolean)</em></p>
+<ul>
+<li>Overwrite the zosmf profile when a profile of the same name exists.</li>
+</ul>
+</li>
+<li>
+<p><code>--disable-defaults</code> | <code>--dd</code> <em>(boolean)</em></p>
+<ul>
+<li>Disable populating profile values of undefined properties with default values.</li>
+</ul>
+</li>
+</ul>
+<h4>Examples</h4>
+<ul>
+<li>
+<p>Create a zosmf profile called 'zos123' to connect to z/OSMF at host zos123 and port 1443:</p>
+<ul>
+<li><code>zowe profiles create zosmf-profile zos123 --host zos123 --port 1443 --user ibmuser --password myp4ss</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe profiles create zosmf-profile zos123 --host zos123 --port 1443 --user ibmuser --password myp4ss">Copy</button></li>
+</ul>
+</li>
+<li>
+<p>Create a zosmf profile called 'zos124' to connect to z/OSMF at the host zos124 (default port - 443) and allow self-signed certificates:</p>
+<ul>
+<li><code>zowe profiles create zosmf-profile zos124 --host zos124 --user ibmuser --password myp4ss --reject-unauthorized false</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe profiles create zosmf-profile zos124 --host zos124 --user ibmuser --password myp4ss --reject-unauthorized false">Copy</button></li>
+</ul>
+</li>
+<li>
+<p>Create a zosmf profile called 'zos125' to connect to z/OSMF at the host zos125 and port 1443,  not specifying a username or password so they are not stored on disk; these will need to be specified on every command:</p>
+<ul>
+<li><code>zowe profiles create zosmf-profile zos125 --host zos125 --port 1443</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe profiles create zosmf-profile zos125 --host zos125 --port 1443">Copy</button></li>
+</ul>
+</li>
+<li>
+<p>Create a zosmf profile called 'zos126' to connect to z/OSMF on the default port 443 and allow self-signed certificates, not specifying a username, password, or host so they are not stored on disk; these will need to be specified on every command:</p>
+<ul>
+<li><code>zowe profiles create zosmf-profile zos126 --reject-unauthorized false</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe profiles create zosmf-profile zos126 --reject-unauthorized false">Copy</button></li>
+</ul>
+</li>
+<li>
+<p>Create a zosmf profile called 'zos124' to connect to z/OSMF at the host zos124 (default port - 443) and allow self-signed certificates:</p>
+<ul>
+<li><code>zowe profiles create zosmf-profile zosAPIML --host zosAPIML --port 2020 --user ibmuser --password myp4ss --reject-unauthorized false --base-path basePath</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe profiles create zosmf-profile zosAPIML --host zosAPIML --port 2020 --user ibmuser --password myp4ss --reject-unauthorized false --base-path basePath">Copy</button></li>
+</ul>
+</li>
+</ul>
+</article>
+<script src="../js/bundle-docs.js"></script>
+<script src="../js/docs.js"></script>

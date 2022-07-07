@@ -1,0 +1,556 @@
+<!doctype html>
+<html class="default no-js">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>CommandUtils | Zowe Node.js SDK - v2.1.0</title>
+	<meta name="description" content="Documentation for Zowe Node.js SDK - v2.1.0">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="../assets/css/main.css">
+</head>
+<body>
+<header>
+	<div class="tsd-page-toolbar">
+		<div class="container">
+			<div class="table-wrap">
+				<div class="table-cell" id="tsd-search" data-index="../assets/js/search.json" data-base="..">
+					<div class="field">
+						<label for="tsd-search-field" class="tsd-widget search no-caption">Search</label>
+						<input id="tsd-search-field" type="text" />
+					</div>
+					<ul class="results">
+						<li class="state loading">Preparing search index...</li>
+						<li class="state failure">The search index is not available</li>
+					</ul>
+					<a href="../index.html" class="title">Zowe Node.js SDK - v2.1.0</a>
+				</div>
+				<div class="table-cell" id="tsd-widgets">
+					<div id="tsd-filter">
+						<a href="#" class="tsd-widget options no-caption" data-toggle="options">Options</a>
+						<div class="tsd-filter-group">
+							<div class="tsd-select" id="tsd-filter-visibility">
+								<span class="tsd-select-label">All</span>
+								<ul class="tsd-select-list">
+									<li data-value="public">Public</li>
+									<li data-value="protected">Public/Protected</li>
+									<li data-value="private" class="selected">All</li>
+								</ul>
+							</div>
+							<input type="checkbox" id="tsd-filter-inherited" checked />
+							<label class="tsd-widget" for="tsd-filter-inherited">Inherited</label>
+							<input type="checkbox" id="tsd-filter-externals" checked />
+							<label class="tsd-widget" for="tsd-filter-externals">Externals</label>
+						</div>
+					</div>
+					<a href="#" class="tsd-widget menu no-caption" data-toggle="menu">Menu</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="tsd-page-title">
+		<div class="container">
+			<ul class="tsd-breadcrumb">
+				<li>
+					<a href="../globals.html">Globals</a>
+				</li>
+				<li>
+					<a href="../modules/_zowe_imperative.html">@zowe/imperative</a>
+				</li>
+				<li>
+					<a href="_zowe_imperative.commandutils.html">CommandUtils</a>
+				</li>
+			</ul>
+			<h1>Class CommandUtils</h1>
+		</div>
+	</div>
+</header>
+<div class="container container-main">
+	<div class="row">
+		<div class="col-8 col-content">
+			<section class="tsd-panel tsd-comment">
+				<div class="tsd-comment tsd-typography">
+					<div class="lead">
+						<p>Command utility class. Place static utils for command processing here.</p>
+					</div>
+				</div>
+			</section>
+			<section class="tsd-panel tsd-hierarchy">
+				<h3>Hierarchy</h3>
+				<ul class="tsd-hierarchy">
+					<li>
+						<span class="target">CommandUtils</span>
+					</li>
+				</ul>
+			</section>
+			<section class="tsd-panel-group tsd-index-group">
+				<h2>Index</h2>
+				<section class="tsd-panel tsd-index-panel">
+					<div class="tsd-index-content">
+						<section class="tsd-index-section ">
+							<h3>Methods</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-static"><a href="_zowe_imperative.commandutils.html#addchildanddescendantstosearch" class="tsd-kind-icon">add<wbr>Child<wbr>And<wbr>Descendants<wbr>ToSearch</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><a href="_zowe_imperative.commandutils.html#flattencommandtree" class="tsd-kind-icon">flatten<wbr>Command<wbr>Tree</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><a href="_zowe_imperative.commandutils.html#flattencommandtreewithaliases" class="tsd-kind-icon">flatten<wbr>Command<wbr>Tree<wbr>With<wbr>Aliases</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><a href="_zowe_imperative.commandutils.html#getfullcommandname" class="tsd-kind-icon">get<wbr>Full<wbr>Command<wbr>Name</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><a href="_zowe_imperative.commandutils.html#getoptiondefinitionfromname" class="tsd-kind-icon">get<wbr>Option<wbr>Definition<wbr>From<wbr>Name</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><a href="_zowe_imperative.commandutils.html#optionwasspecified" class="tsd-kind-icon">option<wbr>Was<wbr>Specified</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><a href="_zowe_imperative.commandutils.html#reconstructcommand" class="tsd-kind-icon">reconstruct<wbr>Command</a></li>
+							</ul>
+						</section>
+					</div>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group ">
+				<h2>Methods</h2>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-static">
+					<a name="addchildanddescendantstosearch" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> <span class="tsd-flag ts-flagPrivate">Private</span> add<wbr>Child<wbr>And<wbr>Descendants<wbr>ToSearch</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-static">
+						<li class="tsd-signature tsd-kind-icon">add<wbr>Child<wbr>And<wbr>Descendants<wbr>ToSearch<span class="tsd-signature-symbol">(</span>prefix<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, child<span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_imperative.icommanddefinition.html" class="tsd-signature-type">ICommandDefinition</a>, includeAliases<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">boolean</span>, _result<span class="tsd-signature-symbol">?: </span><a href="../interfaces/_zowe_imperative.icommandtreeentry.html" class="tsd-signature-type">ICommandTreeEntry</a><span class="tsd-signature-symbol">[]</span>, _tree<span class="tsd-signature-symbol">?: </span><a href="../interfaces/_zowe_imperative.icommanddefinition.html" class="tsd-signature-type">ICommandDefinition</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_imperative.icommandtreeentry.html" class="tsd-signature-type">ICommandTreeEntry</a><span class="tsd-signature-symbol">[]</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.3.2/packages/cmd/src/utils/CommandUtils.ts#L129">@zowe/imperative/packages/cmd/src/utils/CommandUtils.ts:129</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Helper recursive function for flattening a given tree definition</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>prefix: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Previous command objects to prepend to the given child name</p>
+									</div>
+								</li>
+								<li>
+									<h5>child: <a href="../interfaces/_zowe_imperative.icommanddefinition.html" class="tsd-signature-type">ICommandDefinition</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Tree definition to use when searching for descendants</p>
+									</div>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> includeAliases: <span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol"> = false</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Indicates whether or not we should include aliases in the recursion</p>
+									</div>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> _result: <a href="../interfaces/_zowe_imperative.icommandtreeentry.html" class="tsd-signature-type">ICommandTreeEntry</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol"> = []</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>(recursion) resulting list of flattened descendants</p>
+									</div>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> _tree: <a href="../interfaces/_zowe_imperative.icommanddefinition.html" class="tsd-signature-type">ICommandDefinition</a><span class="tsd-signature-symbol"> = child</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>(recursion) Initial tree definition</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="../interfaces/_zowe_imperative.icommandtreeentry.html" class="tsd-signature-type">ICommandTreeEntry</a><span class="tsd-signature-symbol">[]</span></h4>
+							<p>Concatenated list of flattened descendants</p>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-static">
+					<a name="flattencommandtree" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> flatten<wbr>Command<wbr>Tree</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-static">
+						<li class="tsd-signature tsd-kind-icon">flatten<wbr>Command<wbr>Tree<span class="tsd-signature-symbol">(</span>tree<span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_imperative.icommanddefinition.html" class="tsd-signature-type">ICommandDefinition</a>, includeAliases<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_imperative.icommandtreeentry.html" class="tsd-signature-type">ICommandTreeEntry</a><span class="tsd-signature-symbol">[]</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.3.2/packages/cmd/src/utils/CommandUtils.ts#L163">@zowe/imperative/packages/cmd/src/utils/CommandUtils.ts:163</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Accepts the command definition document tree and flattens to a single level. This is used to make searching
+									commands and others easily.</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>tree: <a href="../interfaces/_zowe_imperative.icommanddefinition.html" class="tsd-signature-type">ICommandDefinition</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The command document tree</p>
+									</div>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> includeAliases: <span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol"> = false</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Indicates whether or not we should include aliases in the flattened command tree</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="../interfaces/_zowe_imperative.icommandtreeentry.html" class="tsd-signature-type">ICommandTreeEntry</a><span class="tsd-signature-symbol">[]</span></h4>
+							<ul>
+								<li>The flattened document tree</li>
+							</ul>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-static">
+					<a name="flattencommandtreewithaliases" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> flatten<wbr>Command<wbr>Tree<wbr>With<wbr>Aliases</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-static">
+						<li class="tsd-signature tsd-kind-icon">flatten<wbr>Command<wbr>Tree<wbr>With<wbr>Aliases<span class="tsd-signature-symbol">(</span>tree<span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_imperative.icommanddefinition.html" class="tsd-signature-type">ICommandDefinition</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_imperative.icommandtreeentry.html" class="tsd-signature-type">ICommandTreeEntry</a><span class="tsd-signature-symbol">[]</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.3.2/packages/cmd/src/utils/CommandUtils.ts#L176">@zowe/imperative/packages/cmd/src/utils/CommandUtils.ts:176</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Accepts the command definition document tree and flattens to a single level, including aliases. This is used to make searching
+									commands and others easily.</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>deprecated</dt>
+									<dd><p>Use CommandUtils.flattenCommandTree instead</p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>tree: <a href="../interfaces/_zowe_imperative.icommanddefinition.html" class="tsd-signature-type">ICommandDefinition</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The command document tree</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="../interfaces/_zowe_imperative.icommandtreeentry.html" class="tsd-signature-type">ICommandTreeEntry</a><span class="tsd-signature-symbol">[]</span></h4>
+							<ul>
+								<li>The flattened document tree</li>
+							</ul>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-static">
+					<a name="getfullcommandname" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> get<wbr>Full<wbr>Command<wbr>Name</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-static">
+						<li class="tsd-signature tsd-kind-icon">get<wbr>Full<wbr>Command<wbr>Name<span class="tsd-signature-symbol">(</span>commandDef<span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_imperative.icommanddefinition.html" class="tsd-signature-type">ICommandDefinition</a>, commandTree<span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_imperative.icommanddefinition.html" class="tsd-signature-type">ICommandDefinition</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.3.2/packages/cmd/src/utils/CommandUtils.ts#L190">@zowe/imperative/packages/cmd/src/utils/CommandUtils.ts:190</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>TODO - This needs to be well tested
+										TODO - There is a situation where two groups could have the same child command
+									TODO - It appears to choose the last in the list</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>static</dt>
+									<dd></dd>
+									<dt>memberof</dt>
+									<dd><p>CommandUtils</p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>commandDef: <a href="../interfaces/_zowe_imperative.icommanddefinition.html" class="tsd-signature-type">ICommandDefinition</a></h5>
+								</li>
+								<li>
+									<h5>commandTree: <a href="../interfaces/_zowe_imperative.icommanddefinition.html" class="tsd-signature-type">ICommandDefinition</a></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-static">
+					<a name="getoptiondefinitionfromname" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> get<wbr>Option<wbr>Definition<wbr>From<wbr>Name</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-static">
+						<li class="tsd-signature tsd-kind-icon">get<wbr>Option<wbr>Definition<wbr>From<wbr>Name<span class="tsd-signature-symbol">(</span>optionName<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, commandDefinition<span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_imperative.icommanddefinition.html" class="tsd-signature-type">ICommandDefinition</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_imperative.icommandoptiondefinition.html" class="tsd-signature-type">ICommandOptionDefinition</a></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.3.2/packages/cmd/src/utils/CommandUtils.ts#L106">@zowe/imperative/packages/cmd/src/utils/CommandUtils.ts:106</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Find the option definition from the .options field of the command definition</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>optionName: <span class="tsd-signature-type">string</span></h5>
+								</li>
+								<li>
+									<h5>commandDefinition: <a href="../interfaces/_zowe_imperative.icommanddefinition.html" class="tsd-signature-type">ICommandDefinition</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>the definition for the command</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="../interfaces/_zowe_imperative.icommandoptiondefinition.html" class="tsd-signature-type">ICommandOptionDefinition</a></h4>
+							<ul>
+								<li>if the optionName is an option,<pre><code>                                      the <span class="hljs-keyword">definition</span> <span class="hljs-keyword">of</span> the option, <span class="hljs-keyword">otherwise</span> undefined
+</code></pre>
+								</li>
+							</ul>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-static">
+					<a name="optionwasspecified" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> option<wbr>Was<wbr>Specified</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-static">
+						<li class="tsd-signature tsd-kind-icon">option<wbr>Was<wbr>Specified<span class="tsd-signature-symbol">(</span>optionName<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, commandDefinition<span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_imperative.icommanddefinition.html" class="tsd-signature-type">ICommandDefinition</a>, args<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">ICommandArguments</span><span class="tsd-signature-symbol">[</span><span class="tsd-signature-type">"args"</span><span class="tsd-signature-symbol">]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.3.2/packages/cmd/src/utils/CommandUtils.ts#L85">@zowe/imperative/packages/cmd/src/utils/CommandUtils.ts:85</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Check if an option was specified by the user.</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>optionName: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>the option to check for.</p>
+									</div>
+								</li>
+								<li>
+									<h5>commandDefinition: <a href="../interfaces/_zowe_imperative.icommanddefinition.html" class="tsd-signature-type">ICommandDefinition</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>the definition for the command</p>
+									</div>
+								</li>
+								<li>
+									<h5>args: <span class="tsd-signature-type">ICommandArguments</span><span class="tsd-signature-symbol">[</span><span class="tsd-signature-type">"args"</span><span class="tsd-signature-symbol">]</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
+							<p>true: the option was specified by the user.
+							false: the option was omitted/set to false</p>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-static">
+					<a name="reconstructcommand" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> reconstruct<wbr>Command</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-static">
+						<li class="tsd-signature tsd-kind-icon">reconstruct<wbr>Command<span class="tsd-signature-symbol">(</span>commandArguments<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Arguments</span>, commandDefinition<span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_imperative.icommanddefinition.html" class="tsd-signature-type">ICommandDefinition</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.3.2/packages/cmd/src/utils/CommandUtils.ts#L48">@zowe/imperative/packages/cmd/src/utils/CommandUtils.ts:48</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Get a representation of the original command as issued by the user .with all canonical forms of options specified.
+										You only need to supply the &quot;command&quot; segement of your command. The &quot;full command&quot; (including previous groups, etc.)
+										is extracted from the yargs arguments object &quot;_&quot; property.
+									TODO: Replace &quot;maincommand&quot; below with the name of the bin - This is new to Imperative.</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>commandArguments: <span class="tsd-signature-type">Arguments</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The Yargs style argument object. Requires the &quot;_&quot; (input argv)</p>
+									</div>
+								</li>
+								<li>
+									<h5>commandDefinition: <a href="../interfaces/_zowe_imperative.icommanddefinition.html" class="tsd-signature-type">ICommandDefinition</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The command definition document</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
+							<ul>
+								<li>The reconstructed command (as would have been issued on the console).</li>
+							</ul>
+						</li>
+					</ul>
+				</section>
+			</section>
+		</div>
+		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
+			<nav class="tsd-navigation primary">
+				<ul>
+					<li class="globals  ">
+						<a href="../globals.html"><em>Globals</em></a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_core_for_zowe_sdk.html">@zowe/core-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class="current tsd-kind-module">
+						<a href="../modules/_zowe_imperative.html">@zowe/imperative</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_provisioning_for_zowe_sdk.html">@zowe/provisioning-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_zos_console_for_zowe_sdk.html">@zowe/zos-<wbr>console-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_zos_files_for_zowe_sdk.html">@zowe/zos-<wbr>files-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_zos_jobs_for_zowe_sdk.html">@zowe/zos-<wbr>jobs-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_zos_logs_for_zowe_sdk.html">@zowe/zos-<wbr>logs-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_zos_tso_for_zowe_sdk.html">@zowe/zos-<wbr>tso-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_zos_uss_for_zowe_sdk.html">@zowe/zos-<wbr>uss-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_zos_workflows_for_zowe_sdk.html">@zowe/zos-<wbr>workflows-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_zosmf_for_zowe_sdk.html">@zowe/zosmf-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+				</ul>
+			</nav>
+			<nav class="tsd-navigation secondary menu-sticky">
+				<ul class="before-current">
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_core_for_zowe_sdk.html" class="tsd-kind-icon">@zowe/core-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+				</ul>
+				<ul class="current">
+					<li class="current tsd-kind-module">
+						<a href="../modules/_zowe_imperative.html" class="tsd-kind-icon">@zowe/imperative</a>
+						<ul>
+							<li class="current tsd-kind-class tsd-parent-kind-module">
+								<a href="_zowe_imperative.commandutils.html" class="tsd-kind-icon">Command<wbr>Utils</a>
+								<ul>
+									<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-static">
+										<a href="_zowe_imperative.commandutils.html#addchildanddescendantstosearch" class="tsd-kind-icon">add<wbr>Child<wbr>And<wbr>Descendants<wbr>ToSearch</a>
+									</li>
+									<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-static">
+										<a href="_zowe_imperative.commandutils.html#flattencommandtree" class="tsd-kind-icon">flatten<wbr>Command<wbr>Tree</a>
+									</li>
+									<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-static">
+										<a href="_zowe_imperative.commandutils.html#flattencommandtreewithaliases" class="tsd-kind-icon">flatten<wbr>Command<wbr>Tree<wbr>With<wbr>Aliases</a>
+									</li>
+									<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-static">
+										<a href="_zowe_imperative.commandutils.html#getfullcommandname" class="tsd-kind-icon">get<wbr>Full<wbr>Command<wbr>Name</a>
+									</li>
+									<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-static">
+										<a href="_zowe_imperative.commandutils.html#getoptiondefinitionfromname" class="tsd-kind-icon">get<wbr>Option<wbr>Definition<wbr>From<wbr>Name</a>
+									</li>
+									<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-static">
+										<a href="_zowe_imperative.commandutils.html#optionwasspecified" class="tsd-kind-icon">option<wbr>Was<wbr>Specified</a>
+									</li>
+									<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-static">
+										<a href="_zowe_imperative.commandutils.html#reconstructcommand" class="tsd-kind-icon">reconstruct<wbr>Command</a>
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</li>
+				</ul>
+				<ul class="after-current">
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_provisioning_for_zowe_sdk.html" class="tsd-kind-icon">@zowe/provisioning-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_zos_console_for_zowe_sdk.html" class="tsd-kind-icon">@zowe/zos-<wbr>console-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_zos_files_for_zowe_sdk.html" class="tsd-kind-icon">@zowe/zos-<wbr>files-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_zos_jobs_for_zowe_sdk.html" class="tsd-kind-icon">@zowe/zos-<wbr>jobs-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_zos_logs_for_zowe_sdk.html" class="tsd-kind-icon">@zowe/zos-<wbr>logs-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_zos_tso_for_zowe_sdk.html" class="tsd-kind-icon">@zowe/zos-<wbr>tso-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_zos_uss_for_zowe_sdk.html" class="tsd-kind-icon">@zowe/zos-<wbr>uss-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_zos_workflows_for_zowe_sdk.html" class="tsd-kind-icon">@zowe/zos-<wbr>workflows-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_zosmf_for_zowe_sdk.html" class="tsd-kind-icon">@zowe/zosmf-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</div>
+</div>
+<footer class="with-border-bottom">
+	<div class="container">
+		<h2>Legend</h2>
+		<div class="tsd-legend-group">
+			<ul class="tsd-legend">
+				<li class="tsd-kind-object-literal"><span class="tsd-kind-icon">Object literal</span></li>
+				<li class="tsd-kind-variable"><span class="tsd-kind-icon">Variable</span></li>
+				<li class="tsd-kind-function"><span class="tsd-kind-icon">Function</span></li>
+				<li class="tsd-kind-type-alias"><span class="tsd-kind-icon">Type alias</span></li>
+				<li class="tsd-kind-type-alias tsd-has-type-parameter"><span class="tsd-kind-icon">Type alias with type parameter</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-interface"><span class="tsd-kind-icon">Interface</span></li>
+				<li class="tsd-kind-interface tsd-has-type-parameter"><span class="tsd-kind-icon">Interface with type parameter</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-class"><span class="tsd-kind-icon">Class</span></li>
+				<li class="tsd-kind-class tsd-has-type-parameter"><span class="tsd-kind-icon">Class with type parameter</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-enum"><span class="tsd-kind-icon">Enumeration</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><span class="tsd-kind-icon">Static method</span></li>
+			</ul>
+		</div>
+	</div>
+</footer>
+<div class="container tsd-generator">
+	<p>Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p>
+</div>
+<div class="overlay"></div>
+<script src="../assets/js/main.js"></script>
+</body>
+</html>

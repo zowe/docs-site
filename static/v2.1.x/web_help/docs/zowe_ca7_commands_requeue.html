@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>ca7 commands requeue</title>
+<link rel="stylesheet" href="../css/bundle-docs.css">
+<link rel="stylesheet" href="../css/docs.css">
+<article class="markdown-body">
+<h2><a href="zowe.html">zowe</a> › <a href="zowe_ca7.html">ca7</a> › <a href="zowe_ca7_commands.html">commands</a> › <a href="zowe_ca7_commands_requeue.html">requeue</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
+<p>Re-queues jobs from the ready or active queues back to the request queue.</p>
+<h4>Usage</h4>
+<p>zowe ca7 commands requeue [options]</p>
+<h4>Options</h4>
+<ul>
+<li>
+<p><code>--agent</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>example: UXAGENT<br>
+(Optional) Indicates the agent name or mask that an agent name must match for an agent job</p>
+<p>before it is moved back to the request queue, is given a restart requirement, and is flagged as having been requeued.<br>
+AGENT cannot be used with CPU, MAINID, or NODE.<br>
+For any agent job that is requeued, a cancel request is sent to the agent running the job.<br>
+The status of the agent or the computer on which the agent is running determines whether the request is honored.<br>
+Limits: 1 to 16 alphanumeric charactersDefault: * (all agent names)</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--cpu</code> <em>(string)</em></p>
+<ul>
+<li>example: 34<br>
+(Optional) Used with JOB to specify the CPU ID of active queue jobs that are to be requeued.<br>
+The value identifies the CPU and corresponds to the CPU field displayed on the LQ command (the SMF identifier).<br>
+CPU cannot be used with MAINID, NODE, or AGENT.<br>
+The CPU parameter is ignored if used with a JOB parameter that references a specific job name or job number, but not if a job mask is specified.<br>
+Limits:<br>
+1 to 4 numeric characters</li>
+</ul>
+</li>
+<li>
+<p><code>--force</code> <em>(string)</em></p>
+<ul>
+<li>example: CMP<br>
+(Optional) Resumes job completion for stranded jobs.<br>
+When a job finishes executing, it must move to the request queue so that CA WA CA 7 Edition<br>
+can process the database and queue updates that are required for job completion.<br>
+But, if a job cannot be moved because of an I/O error or an out-of-space condition on the request queue,<br>
+the job may be stranded in the ready or active queue, unable to complete<br>
+Once the request queue error is corrected, you can use REQUEUE with FORCE=CMP to resume job completion for these jobs.<br>
+Limits: CMP is the only value</li>
+</ul>
+</li>
+<li>
+<p><code>--ca7num</code> <em>(string)</em></p>
+<ul>
+<li>example: 0029<br>
+(Optional) Indicates the job number<br>
+must match before it is moved back to the request queue, is given a restart requirement, and is flagged as having been requeued.<br>
+If JOB is used alone, both the active and ready queues are searched for the specified job number.<br>
+If JOB is used with Q, the search is restricted to the indicated queue. jobname,jobnumber and longjobname are mutually exclusive<br>
+Default:<br>
+* (all jobs)Limits:<br>
+1 to 8 alphanumeric characters</li>
+</ul>
+</li>
+<li>
+<p><code>--jobname</code> | <code>--jn</code> <em>(string)</em></p>
+<ul>
+<li>example: PAYROLL<br>
+(Optional) Indicates the job name, or mask that a job name<br>
+must match before it is moved back to the request queue, is given a restart requirement, and is flagged as having been requeued.<br>
+If JOB is used alone, both the active and ready queues are searched for the specified job.<br>
+If JOB is used with Q, the search is restricted to the indicated queue. jobname,jobnumber and longjobname are mutually exclusive.<br>
+Default:<br>
+* (all jobs)Limits:<br>
+1 to 8 alphanumeric characters</li>
+</ul>
+</li>
+<li>
+<p><code>--longjobname</code> | <code>--ljn</code> <em>(string)</em></p>
+<ul>
+<li>example: ALONGJOBNAME<br>
+(Optional) Indicates the long job name or mask that a long job name must match before<br>
+it is moved back to the request queue, is given a restart requirement, and is flagged as having been requeued.<br>
+If JOBL is used alone, both the active and ready queues are searched for the specified long job name.<br>
+If JOBL is used with Q, the search is restricted to the indicated queue.jobname,jobnumber and longjobname are mutually exclusive<br>
+Limits: 1 to 64 alphanumeric characters</li>
+</ul>
+</li>
+<li>
+<p><code>--mainid</code> <em>(string)</em></p>
+<ul>
+<li>example: ALL|SY2|/SY3<br>
+(Optional) Used with JOB to indicate that only those jobs in the ready queue with this MAINID are to be requeued.<br>
+Value must be specified as a single MAINID name.<br>
+MAINID cannot be used with CPU, NODE, or AGENT.<br>
+The MAINID parameter is ignored if used with a JOB parameter that references a specific job name or job number, but not if a job mask is specifie_<br>
+The name must be one of the following values:<br>
+ALL Indicates that all MAINIDs are considered.<br>
+SYn Where n indicates a CPU assigned number as defined in the initialization file CPU statement.<br>
+The value of n can range from 1 to 7.<br>
+/SYn<br>
+Where n indicates a CPU assigned number. The / indicates “not this MAINID.<br>
+The value of n can range from 1 to 7.<br>
+Limits: 1 to 4 alphanumeric characters</li>
+</ul>
+</li>
+<li>
+<p><code>--node</code> <em>(string)</em></p>
+<ul>
+<li>example: NODEXP<br>
+(Optional) Indicates the node name or mask that a node name must match for an XPJOB job,<br>
+before it is moved back to the request queue, is given a restart requirement, and is flagged as having been requeued.<br>
+NODE cannot be used with CPU, MAINID, or AGENT.<br>
+For any XPJOB that is requeued, a cancel request is sent to the node where the job is running<br>
+(assuming the initialization file XPDEF statement parameter XPKILL=NO is not set).<br>
+The status of the node or the computer that the node points to, determines whether the request is honored.<br>
+Limits:<br>
+1 to 8 alphanumeric characters</li>
+</ul>
+</li>
+<li>
+<p><code>-q</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>q=RDY</p>
+<p>Used with JOB to indicate in which queue the job search is to occur<br>
+ACT The active queue. RDY The ready queue.</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--type</code> <em>(string)</em></p>
+<ul>
+<li>(Optional) Flags the job after it returns to the request queue with a status of JCLERR instead of REQUE.<br>
+If not coded, the status reflects REQUE.</li>
+</ul>
+</li>
+</ul>
+<h4>CA7 Connection Options</h4>
+<ul>
+<li>
+<p><code>--host</code> | <code>-H</code> <em>(string)</em></p>
+<ul>
+<li>Host name of the CA7 API service that is running on the mainframe system.</li>
+</ul>
+</li>
+<li>
+<p><code>--port</code> | <code>-P</code> <em>(number)</em></p>
+<ul>
+<li>Port for the CA7 API service that is running on the mainframe system.</li>
+</ul>
+</li>
+<li>
+<p><code>--user</code> | <code>-u</code> <em>(string)</em></p>
+<ul>
+<li>User name for authenticating connections to the CA7 API service that is running on the mainframe system.</li>
+</ul>
+</li>
+<li>
+<p><code>--password</code> | <code>--pass</code> | <code>--pw</code> <em>(string)</em></p>
+<ul>
+<li>Password for authenticating connections to the CA7 API service that is running on the mainframe system.</li>
+</ul>
+</li>
+<li>
+<p><code>--base-path</code> | <code>--bp</code> <em>(string)</em></p>
+<ul>
+<li>The base path for your API mediation layer instance. Specify this option to prepend the base path to all resources when making REST requests. Do not specify this option if you are not using an API mediation layer.</li>
+</ul>
+</li>
+<li>
+<p><code>--protocol</code> | <code>-o</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>Specifies protocol to use for CA7 connection (http or https).</p>
+<p>Allowed values: http, https</p>
+</li>
+</ul>
+</li>
+</ul>
+<h4>Profile Options</h4>
+<ul>
+<li>
+<p><code>--ca7-profile</code> | <code>--ca7-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (ca7) profile to load for this command execution.</li>
+</ul>
+</li>
+<li>
+<p><code>--base-profile</code> | <code>--base-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (base) profile to load for this command execution.</li>
+</ul>
+</li>
+</ul>
+<h4>Base Connection Options</h4>
+<ul>
+<li>
+<p><code>--reject-unauthorized</code> | <code>--ru</code> <em>(boolean)</em></p>
+<ul>
+<li>
+<p>Reject self-signed certificates.</p>
+<p>Default value: true</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--token-type</code> | <code>--tt</code> <em>(string)</em></p>
+<ul>
+<li>The type of token to get and use for the API. Omit this option to use the default token type, which is provided by 'zowe auth login'.</li>
+</ul>
+</li>
+<li>
+<p><code>--token-value</code> | <code>--tv</code> <em>(string)</em></p>
+<ul>
+<li>The value of the token to pass to the API.</li>
+</ul>
+</li>
+<li>
+<p><code>--cert-file</code> <em>(local file path)</em></p>
+<ul>
+<li>The file path to a certificate file to use for authentication</li>
+</ul>
+</li>
+<li>
+<p><code>--cert-key-file</code> <em>(local file path)</em></p>
+<ul>
+<li>The file path to a certificate key file to use for authentication</li>
+</ul>
+</li>
+</ul>
+<h4>Examples</h4>
+<ul>
+<li>
+<p>Requeues jobs in the ready queue back to the request queue:</p>
+<ul>
+<li><code>zowe ca7 commands requeue --q RDY</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe ca7 commands requeue --q RDY">Copy</button></li>
+</ul>
+</li>
+</ul>
+</article>
+<script src="../js/bundle-docs.js"></script>
+<script src="../js/docs.js"></script>
