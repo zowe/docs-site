@@ -1,0 +1,1519 @@
+<!doctype html>
+<html class="default no-js">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>DefaultHelpGenerator | Zowe Node.js SDK - v2.1.0</title>
+	<meta name="description" content="Documentation for Zowe Node.js SDK - v2.1.0">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="../assets/css/main.css">
+</head>
+<body>
+<header>
+	<div class="tsd-page-toolbar">
+		<div class="container">
+			<div class="table-wrap">
+				<div class="table-cell" id="tsd-search" data-index="../assets/js/search.json" data-base="..">
+					<div class="field">
+						<label for="tsd-search-field" class="tsd-widget search no-caption">Search</label>
+						<input id="tsd-search-field" type="text" />
+					</div>
+					<ul class="results">
+						<li class="state loading">Preparing search index...</li>
+						<li class="state failure">The search index is not available</li>
+					</ul>
+					<a href="../index.html" class="title">Zowe Node.js SDK - v2.1.0</a>
+				</div>
+				<div class="table-cell" id="tsd-widgets">
+					<div id="tsd-filter">
+						<a href="#" class="tsd-widget options no-caption" data-toggle="options">Options</a>
+						<div class="tsd-filter-group">
+							<div class="tsd-select" id="tsd-filter-visibility">
+								<span class="tsd-select-label">All</span>
+								<ul class="tsd-select-list">
+									<li data-value="public">Public</li>
+									<li data-value="protected">Public/Protected</li>
+									<li data-value="private" class="selected">All</li>
+								</ul>
+							</div>
+							<input type="checkbox" id="tsd-filter-inherited" checked />
+							<label class="tsd-widget" for="tsd-filter-inherited">Inherited</label>
+							<input type="checkbox" id="tsd-filter-externals" checked />
+							<label class="tsd-widget" for="tsd-filter-externals">Externals</label>
+						</div>
+					</div>
+					<a href="#" class="tsd-widget menu no-caption" data-toggle="menu">Menu</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="tsd-page-title">
+		<div class="container">
+			<ul class="tsd-breadcrumb">
+				<li>
+					<a href="../globals.html">Globals</a>
+				</li>
+				<li>
+					<a href="../modules/_zowe_imperative.html">@zowe/imperative</a>
+				</li>
+				<li>
+					<a href="_zowe_imperative.defaulthelpgenerator.html">DefaultHelpGenerator</a>
+				</li>
+			</ul>
+			<h1>Class DefaultHelpGenerator</h1>
+		</div>
+	</div>
+</header>
+<div class="container container-main">
+	<div class="row">
+		<div class="col-8 col-content">
+			<section class="tsd-panel tsd-comment">
+				<div class="tsd-comment tsd-typography">
+					<div class="lead">
+						<p>Imperative default help generator. Accepts the command definitions and constructs
+						the full help text for the command node.</p>
+					</div>
+					<p>TODO - Consider removing word wrap on a fixed with and apply dynamically based on terminal sizes</p>
+					<dl class="tsd-comment-tags">
+						<dt>export</dt>
+						<dd></dd>
+					</dl>
+				</div>
+			</section>
+			<section class="tsd-panel tsd-hierarchy">
+				<h3>Hierarchy</h3>
+				<ul class="tsd-hierarchy">
+					<li>
+						<a href="_zowe_imperative.abstracthelpgenerator.html" class="tsd-signature-type">AbstractHelpGenerator</a>
+						<ul class="tsd-hierarchy">
+							<li>
+								<span class="target">DefaultHelpGenerator</span>
+							</li>
+						</ul>
+					</li>
+				</ul>
+			</section>
+			<section class="tsd-panel">
+				<h3>Implements</h3>
+				<ul class="tsd-hierarchy">
+					<li><a href="../interfaces/_zowe_imperative.ihelpgenerator.html" class="tsd-signature-type">IHelpGenerator</a></li>
+				</ul>
+			</section>
+			<section class="tsd-panel-group tsd-index-group">
+				<h2>Index</h2>
+				<section class="tsd-panel tsd-index-panel">
+					<div class="tsd-index-content">
+						<section class="tsd-index-section ">
+							<h3>Constructors</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-constructor tsd-parent-kind-class tsd-is-overwrite"><a href="_zowe_imperative.defaulthelpgenerator.html#constructor" class="tsd-kind-icon">constructor</a></li>
+							</ul>
+						</section>
+						<section class="tsd-index-section ">
+							<h3>Properties</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-protected"><a href="_zowe_imperative.defaulthelpgenerator.html#grouptooption" class="tsd-kind-icon">group<wbr>ToOption</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-protected"><a href="_zowe_imperative.defaulthelpgenerator.html#mcommanddefinition" class="tsd-kind-icon">m<wbr>Command<wbr>Definition</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-protected"><a href="_zowe_imperative.defaulthelpgenerator.html#mdefinitiontree" class="tsd-kind-icon">m<wbr>Definition<wbr>Tree</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-protected"><a href="_zowe_imperative.defaulthelpgenerator.html#mexperimentalcommanddescription" class="tsd-kind-icon">m<wbr>Experimental<wbr>Command<wbr>Description</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-protected"><a href="_zowe_imperative.defaulthelpgenerator.html#mlog" class="tsd-kind-icon">m<wbr>Log</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-protected"><a href="_zowe_imperative.defaulthelpgenerator.html#mprimaryhighlightcolor" class="tsd-kind-icon">m<wbr>Primary<wbr>Highlight<wbr>Color</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-protected"><a href="_zowe_imperative.defaulthelpgenerator.html#mproducemarkdown" class="tsd-kind-icon">m<wbr>Produce<wbr>Markdown</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-protected"><a href="_zowe_imperative.defaulthelpgenerator.html#mrootcommandname" class="tsd-kind-icon">m<wbr>Root<wbr>Command<wbr>Name</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-protected"><a href="_zowe_imperative.defaulthelpgenerator.html#optiontodescription" class="tsd-kind-icon">option<wbr>ToDescription</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="_zowe_imperative.defaulthelpgenerator.html#skiptextwrap" class="tsd-kind-icon">skip<wbr>Text<wbr>Wrap</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private tsd-is-static"><a href="_zowe_imperative.defaulthelpgenerator.html#error_tag" class="tsd-kind-icon">ERROR_<wbr>TAG</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-static"><a href="_zowe_imperative.defaulthelpgenerator.html#help_indent" class="tsd-kind-icon">HELP_<wbr>INDENT</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-static"><a href="_zowe_imperative.defaulthelpgenerator.html#long_dash" class="tsd-kind-icon">LONG_<wbr>DASH</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-static"><a href="_zowe_imperative.defaulthelpgenerator.html#short_dash" class="tsd-kind-icon">SHORT_<wbr>DASH</a></li>
+							</ul>
+						</section>
+						<section class="tsd-index-section tsd-is-inherited tsd-is-private-protected">
+							<h3>Accessors</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-get-signature tsd-parent-kind-class tsd-is-inherited tsd-is-protected"><a href="_zowe_imperative.defaulthelpgenerator.html#log" class="tsd-kind-icon">log</a></li>
+							</ul>
+						</section>
+						<section class="tsd-index-section ">
+							<h3>Methods</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_zowe_imperative.defaulthelpgenerator.html#buildchildrensummarytables" class="tsd-kind-icon">build<wbr>Children<wbr>Summary<wbr>Tables</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_zowe_imperative.defaulthelpgenerator.html#buildcommandandaliases" class="tsd-kind-icon">build<wbr>Command<wbr>And<wbr>Aliases</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_zowe_imperative.defaulthelpgenerator.html#buildcommandoptionssection" class="tsd-kind-icon">build<wbr>Command<wbr>Options<wbr>Section</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_zowe_imperative.defaulthelpgenerator.html#builddescriptionsection" class="tsd-kind-icon">build<wbr>Description<wbr>Section</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_zowe_imperative.defaulthelpgenerator.html#buildexamplessection" class="tsd-kind-icon">build<wbr>Examples<wbr>Section</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-overwrite"><a href="_zowe_imperative.defaulthelpgenerator.html#buildfullcommandhelptext" class="tsd-kind-icon">build<wbr>Full<wbr>Command<wbr>Help<wbr>Text</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_zowe_imperative.defaulthelpgenerator.html#buildfullgrouphelptext" class="tsd-kind-icon">build<wbr>Full<wbr>Group<wbr>Help<wbr>Text</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_zowe_imperative.defaulthelpgenerator.html#buildglobaloptionssection" class="tsd-kind-icon">build<wbr>Global<wbr>Options<wbr>Section</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_zowe_imperative.defaulthelpgenerator.html#buildheader" class="tsd-kind-icon">build<wbr>Header</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-overwrite"><a href="_zowe_imperative.defaulthelpgenerator.html#buildhelp" class="tsd-kind-icon">build<wbr>Help</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected"><a href="_zowe_imperative.defaulthelpgenerator.html#buildoptionmaps" class="tsd-kind-icon">build<wbr>Option<wbr>Maps</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_zowe_imperative.defaulthelpgenerator.html#buildoptiontext" class="tsd-kind-icon">build<wbr>Option<wbr>Text</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_zowe_imperative.defaulthelpgenerator.html#buildpositionalargumentssection" class="tsd-kind-icon">build<wbr>Positional<wbr>Arguments<wbr>Section</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_zowe_imperative.defaulthelpgenerator.html#buildusagediagram" class="tsd-kind-icon">build<wbr>Usage<wbr>Diagram</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_zowe_imperative.defaulthelpgenerator.html#buildusagesection" class="tsd-kind-icon">build<wbr>Usage<wbr>Section</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected"><a href="_zowe_imperative.defaulthelpgenerator.html#dimgrey" class="tsd-kind-icon">dim<wbr>Grey</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><a href="_zowe_imperative.defaulthelpgenerator.html#escapemarkdown" class="tsd-kind-icon">escape<wbr>Markdown</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected"><a href="_zowe_imperative.defaulthelpgenerator.html#explaintype" class="tsd-kind-icon">explain<wbr>Type</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected"><a href="_zowe_imperative.defaulthelpgenerator.html#getcasesensitiveflagbyoptionname" class="tsd-kind-icon">get<wbr>Case<wbr>Sensitive<wbr>Flag<wbr>ByOption<wbr>Name</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_zowe_imperative.defaulthelpgenerator.html#getexperimentalcommandsection" class="tsd-kind-icon">get<wbr>Experimental<wbr>Command<wbr>Section</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="_zowe_imperative.defaulthelpgenerator.html#getoptionandaliasesstring" class="tsd-kind-icon">get<wbr>Option<wbr>And<wbr>Aliases<wbr>String</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected"><a href="_zowe_imperative.defaulthelpgenerator.html#grey" class="tsd-kind-icon">grey</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected"><a href="_zowe_imperative.defaulthelpgenerator.html#renderhelp" class="tsd-kind-icon">render<wbr>Help</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-static"><a href="_zowe_imperative.defaulthelpgenerator.html#formathelpheader" class="tsd-kind-icon">format<wbr>Help<wbr>Header</a></li>
+							</ul>
+						</section>
+					</div>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group ">
+				<h2>Constructors</h2>
+				<section class="tsd-panel tsd-member tsd-kind-constructor tsd-parent-kind-class tsd-is-overwrite">
+					<a name="constructor" class="tsd-anchor"></a>
+					<h3>constructor</h3>
+					<ul class="tsd-signatures tsd-kind-constructor tsd-parent-kind-class tsd-is-overwrite">
+						<li class="tsd-signature tsd-kind-icon">new <wbr>Default<wbr>Help<wbr>Generator<span class="tsd-signature-symbol">(</span>defaultParms<span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_imperative.ihelpgeneratorfactoryparms.html" class="tsd-signature-type">IHelpGeneratorFactoryParms</a>, commandParms<span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_imperative.ihelpgeneratorparms.html" class="tsd-signature-type">IHelpGeneratorParms</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_zowe_imperative.defaulthelpgenerator.html" class="tsd-signature-type">DefaultHelpGenerator</a></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Overrides <a href="_zowe_imperative.abstracthelpgenerator.html">AbstractHelpGenerator</a>.<a href="_zowe_imperative.abstracthelpgenerator.html#constructor">constructor</a></p>
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.3.2/packages/cmd/src/help/DefaultHelpGenerator.ts#L53">@zowe/imperative/packages/cmd/src/help/DefaultHelpGenerator.ts:53</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Creates an instance of DefaultHelpGenerator.</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>memberof</dt>
+									<dd><p>DefaultHelpGenerator</p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>defaultParms: <a href="../interfaces/_zowe_imperative.ihelpgeneratorfactoryparms.html" class="tsd-signature-type">IHelpGeneratorFactoryParms</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<div class="lead">
+											<p>Imperative config parameters for help generation - See interface for details</p>
+										</div>
+									</div>
+								</li>
+								<li>
+									<h5>commandParms: <a href="../interfaces/_zowe_imperative.ihelpgeneratorparms.html" class="tsd-signature-type">IHelpGeneratorParms</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<div class="lead">
+											<p>The command definitions for generating help - See interface for details</p>
+										</div>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="_zowe_imperative.defaulthelpgenerator.html" class="tsd-signature-type">DefaultHelpGenerator</a></h4>
+						</li>
+					</ul>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group ">
+				<h2>Properties</h2>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+					<a name="grouptooption" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagProtected">Protected</span> group<wbr>ToOption</h3>
+					<div class="tsd-signature tsd-kind-icon">group<wbr>ToOption<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">{}</span></div>
+					<aside class="tsd-sources">
+						<p>Inherited from <a href="_zowe_imperative.abstracthelpgenerator.html">AbstractHelpGenerator</a>.<a href="_zowe_imperative.abstracthelpgenerator.html#grouptooption">groupToOption</a></p>
+						<ul>
+							<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.3.2/packages/cmd/src/help/abstract/AbstractHelpGenerator.ts#L85">@zowe/imperative/packages/cmd/src/help/abstract/AbstractHelpGenerator.ts:85</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>A map of group names to option names and aliases - useful in help text/doc generation
+							e.g. this.grouptoOption[&quot;job options&quot;] -&gt; [ &quot;--async | -a &quot;, &quot;--activate | -A&quot;]</p>
+						</div>
+					</div>
+					<div class="tsd-type-declaration">
+						<h4>Type declaration</h4>
+						<ul class="tsd-parameters">
+							<li class="tsd-parameter-index-signature">
+								<h5><span class="tsd-signature-symbol">[</span>key: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">]: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span></h5>
+							</li>
+						</ul>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+					<a name="mcommanddefinition" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagProtected">Protected</span> m<wbr>Command<wbr>Definition</h3>
+					<div class="tsd-signature tsd-kind-icon">m<wbr>Command<wbr>Definition<span class="tsd-signature-symbol">:</span> <a href="../interfaces/_zowe_imperative.icommanddefinition.html" class="tsd-signature-type">ICommandDefinition</a></div>
+					<aside class="tsd-sources">
+						<p>Inherited from <a href="_zowe_imperative.abstracthelpgenerator.html">AbstractHelpGenerator</a>.<a href="_zowe_imperative.abstracthelpgenerator.html#mcommanddefinition">mCommandDefinition</a></p>
+						<ul>
+							<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.3.2/packages/cmd/src/help/abstract/AbstractHelpGenerator.ts#L56">@zowe/imperative/packages/cmd/src/help/abstract/AbstractHelpGenerator.ts:56</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>The command definition for which we are building help</p>
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+					<a name="mdefinitiontree" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagProtected">Protected</span> m<wbr>Definition<wbr>Tree</h3>
+					<div class="tsd-signature tsd-kind-icon">m<wbr>Definition<wbr>Tree<span class="tsd-signature-symbol">:</span> <a href="../interfaces/_zowe_imperative.icommanddefinition.html" class="tsd-signature-type">ICommandDefinition</a></div>
+					<aside class="tsd-sources">
+						<p>Inherited from <a href="_zowe_imperative.abstracthelpgenerator.html">AbstractHelpGenerator</a>.<a href="_zowe_imperative.abstracthelpgenerator.html#mdefinitiontree">mDefinitionTree</a></p>
+						<ul>
+							<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.3.2/packages/cmd/src/help/abstract/AbstractHelpGenerator.ts#L60">@zowe/imperative/packages/cmd/src/help/abstract/AbstractHelpGenerator.ts:60</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>The full command definition - which includes the parents of the command.</p>
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+					<a name="mexperimentalcommanddescription" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagProtected">Protected</span> m<wbr>Experimental<wbr>Command<wbr>Description</h3>
+					<div class="tsd-signature tsd-kind-icon">m<wbr>Experimental<wbr>Command<wbr>Description<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = Constants.DEFAULT_EXPERIMENTAL_COMMAND_EXPLANATION</span></div>
+					<aside class="tsd-sources">
+						<p>Inherited from <a href="_zowe_imperative.abstracthelpgenerator.html">AbstractHelpGenerator</a>.<a href="_zowe_imperative.abstracthelpgenerator.html#mexperimentalcommanddescription">mExperimentalCommandDescription</a></p>
+						<ul>
+							<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.3.2/packages/cmd/src/help/abstract/AbstractHelpGenerator.ts#L80">@zowe/imperative/packages/cmd/src/help/abstract/AbstractHelpGenerator.ts:80</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>The configured experimental command description.
+								Has a default, generic description which can be overridden through parameters
+							to the constructor</p>
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+					<a name="mlog" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagProtected">Protected</span> m<wbr>Log</h3>
+					<div class="tsd-signature tsd-kind-icon">m<wbr>Log<span class="tsd-signature-symbol">:</span> <a href="_zowe_imperative.logger.html" class="tsd-signature-type">Logger</a></div>
+					<aside class="tsd-sources">
+						<p>Inherited from <a href="_zowe_imperative.abstracthelpgenerator.html">AbstractHelpGenerator</a>.<a href="_zowe_imperative.abstracthelpgenerator.html#mlog">mLog</a></p>
+						<ul>
+							<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.3.2/packages/cmd/src/help/abstract/AbstractHelpGenerator.ts#L70">@zowe/imperative/packages/cmd/src/help/abstract/AbstractHelpGenerator.ts:70</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Logger</p>
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+					<a name="mprimaryhighlightcolor" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagProtected">Protected</span> m<wbr>Primary<wbr>Highlight<wbr>Color</h3>
+					<div class="tsd-signature tsd-kind-icon">m<wbr>Primary<wbr>Highlight<wbr>Color<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<p>Inherited from <a href="_zowe_imperative.abstracthelpgenerator.html">AbstractHelpGenerator</a>.<a href="_zowe_imperative.abstracthelpgenerator.html#mprimaryhighlightcolor">mPrimaryHighlightColor</a></p>
+						<ul>
+							<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.3.2/packages/cmd/src/help/abstract/AbstractHelpGenerator.ts#L72">@zowe/imperative/packages/cmd/src/help/abstract/AbstractHelpGenerator.ts:72</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+					<a name="mproducemarkdown" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagProtected">Protected</span> m<wbr>Produce<wbr>Markdown</h3>
+					<div class="tsd-signature tsd-kind-icon">m<wbr>Produce<wbr>Markdown<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol"> = false</span></div>
+					<aside class="tsd-sources">
+						<p>Inherited from <a href="_zowe_imperative.abstracthelpgenerator.html">AbstractHelpGenerator</a>.<a href="_zowe_imperative.abstracthelpgenerator.html#mproducemarkdown">mProduceMarkdown</a></p>
+						<ul>
+							<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.3.2/packages/cmd/src/help/abstract/AbstractHelpGenerator.ts#L65">@zowe/imperative/packages/cmd/src/help/abstract/AbstractHelpGenerator.ts:65</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Produce markdown - not help text.</p>
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+					<a name="mrootcommandname" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagProtected">Protected</span> m<wbr>Root<wbr>Command<wbr>Name</h3>
+					<div class="tsd-signature tsd-kind-icon">m<wbr>Root<wbr>Command<wbr>Name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<p>Inherited from <a href="_zowe_imperative.abstracthelpgenerator.html">AbstractHelpGenerator</a>.<a href="_zowe_imperative.abstracthelpgenerator.html#mrootcommandname">mRootCommandName</a></p>
+						<ul>
+							<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.3.2/packages/cmd/src/help/abstract/AbstractHelpGenerator.ts#L51">@zowe/imperative/packages/cmd/src/help/abstract/AbstractHelpGenerator.ts:51</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>The command name being invoked by the user.
+							For example, when using &quot;banana --help&quot;, banana is the command name.</p>
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+					<a name="optiontodescription" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagProtected">Protected</span> option<wbr>ToDescription</h3>
+					<div class="tsd-signature tsd-kind-icon">option<wbr>ToDescription<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">{}</span></div>
+					<aside class="tsd-sources">
+						<p>Inherited from <a href="_zowe_imperative.abstracthelpgenerator.html">AbstractHelpGenerator</a>.<a href="_zowe_imperative.abstracthelpgenerator.html#optiontodescription">optionToDescription</a></p>
+						<ul>
+							<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.3.2/packages/cmd/src/help/abstract/AbstractHelpGenerator.ts#L92">@zowe/imperative/packages/cmd/src/help/abstract/AbstractHelpGenerator.ts:92</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>A map of option names and aliases to their descriptions - useful in help text/doc generation
+							e.g. this.optionToDescription[&quot;--async | a&quot;] -&gt; &quot;Don&#39;t wait for this job to complete before returning&quot;</p>
+						</div>
+					</div>
+					<div class="tsd-type-declaration">
+						<h4>Type declaration</h4>
+						<ul class="tsd-parameters">
+							<li class="tsd-parameter-index-signature">
+								<h5><span class="tsd-signature-symbol">[</span>key: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">]: </span><span class="tsd-signature-type">string</span></h5>
+							</li>
+						</ul>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
+					<a name="skiptextwrap" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> skip<wbr>Text<wbr>Wrap</h3>
+					<div class="tsd-signature tsd-kind-icon">skip<wbr>Text<wbr>Wrap<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol"> = false</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.3.2/packages/cmd/src/help/DefaultHelpGenerator.ts#L53">@zowe/imperative/packages/cmd/src/help/DefaultHelpGenerator.ts:53</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Indicates that the help generator should skip introducing breaks based on terminal width</p>
+						</div>
+						<dl class="tsd-comment-tags">
+							<dt>memberof</dt>
+							<dd><p>IHelpGeneratorParms</p>
+							</dd>
+						</dl>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private tsd-is-static">
+					<a name="error_tag" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> <span class="tsd-flag ts-flagPrivate">Private</span> <span class="tsd-flag ts-flagReadonly">Readonly</span> ERROR_<wbr>TAG</h3>
+					<div class="tsd-signature tsd-kind-icon">ERROR_<wbr>TAG<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &quot;Help Generator Error:&quot;</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.3.2/packages/cmd/src/help/DefaultHelpGenerator.ts#L46">@zowe/imperative/packages/cmd/src/help/DefaultHelpGenerator.ts:46</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Standard imperative error message tag for errors thrown by the help generator</p>
+						</div>
+						<dl class="tsd-comment-tags">
+							<dt>static</dt>
+							<dd></dd>
+							<dt>memberof</dt>
+							<dd><p>DefaultHelpGenerator</p>
+							</dd>
+						</dl>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-static">
+					<a name="help_indent" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> <span class="tsd-flag ts-flagReadonly">Readonly</span> HELP_<wbr>INDENT</h3>
+					<div class="tsd-signature tsd-kind-icon">HELP_<wbr>INDENT<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">"   "</span><span class="tsd-signature-symbol"> = &quot;   &quot;</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.3.2/packages/cmd/src/help/DefaultHelpGenerator.ts#L37">@zowe/imperative/packages/cmd/src/help/DefaultHelpGenerator.ts:37</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>The help indent for spacing/alignment</p>
+						</div>
+						<dl class="tsd-comment-tags">
+							<dt>static</dt>
+							<dd></dd>
+							<dt>memberof</dt>
+							<dd><p>DefaultHelpGenerator</p>
+							</dd>
+						</dl>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-static">
+					<a name="long_dash" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> LONG_<wbr>DASH</h3>
+					<div class="tsd-signature tsd-kind-icon">LONG_<wbr>DASH<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &quot;--&quot;</span></div>
+					<aside class="tsd-sources">
+						<p>Inherited from <a href="_zowe_imperative.abstracthelpgenerator.html">AbstractHelpGenerator</a>.<a href="_zowe_imperative.abstracthelpgenerator.html#long_dash">LONG_DASH</a></p>
+						<ul>
+							<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.3.2/packages/cmd/src/help/abstract/AbstractHelpGenerator.ts#L26">@zowe/imperative/packages/cmd/src/help/abstract/AbstractHelpGenerator.ts:26</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-static">
+					<a name="short_dash" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> SHORT_<wbr>DASH</h3>
+					<div class="tsd-signature tsd-kind-icon">SHORT_<wbr>DASH<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &quot;-&quot;</span></div>
+					<aside class="tsd-sources">
+						<p>Inherited from <a href="_zowe_imperative.abstracthelpgenerator.html">AbstractHelpGenerator</a>.<a href="_zowe_imperative.abstracthelpgenerator.html#short_dash">SHORT_DASH</a></p>
+						<ul>
+							<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.3.2/packages/cmd/src/help/abstract/AbstractHelpGenerator.ts#L25">@zowe/imperative/packages/cmd/src/help/abstract/AbstractHelpGenerator.ts:25</a></li>
+						</ul>
+					</aside>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group tsd-is-inherited tsd-is-private-protected">
+				<h2>Accessors</h2>
+				<section class="tsd-panel tsd-member tsd-kind-get-signature tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+					<a name="log" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagProtected">Protected</span> log</h3>
+					<ul class="tsd-signatures tsd-kind-get-signature tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+						<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">get</span> log<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_zowe_imperative.logger.html" class="tsd-signature-type">Logger</a></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Inherited from <a href="_zowe_imperative.abstracthelpgenerator.html">AbstractHelpGenerator</a>.<a href="_zowe_imperative.abstracthelpgenerator.html#log">log</a></p>
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.3.2/packages/cmd/src/help/abstract/AbstractHelpGenerator.ts#L99">@zowe/imperative/packages/cmd/src/help/abstract/AbstractHelpGenerator.ts:99</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Get log instance</p>
+								</div>
+							</div>
+							<h4 class="tsd-returns-title">Returns <a href="_zowe_imperative.logger.html" class="tsd-signature-type">Logger</a></h4>
+						</li>
+					</ul>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group ">
+				<h2>Methods</h2>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="buildchildrensummarytables" class="tsd-anchor"></a>
+					<h3>build<wbr>Children<wbr>Summary<wbr>Tables</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">build<wbr>Children<wbr>Summary<wbr>Tables<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.3.2/packages/cmd/src/help/DefaultHelpGenerator.ts#L200">@zowe/imperative/packages/cmd/src/help/DefaultHelpGenerator.ts:200</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Builds a table of commands/groups for display in the help:</p>
+								</div>
+								<a href="#groups" id="groups" style="color: inherit; text-decoration: none;">
+									<h2>GROUPS</h2>
+								</a>
+								<p>group1  hello this is group1
+								group2  hello this is group2</p>
+							</div>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
+							<p>: Returns the table for display.</p>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="buildcommandandaliases" class="tsd-anchor"></a>
+					<h3>build<wbr>Command<wbr>And<wbr>Aliases</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">build<wbr>Command<wbr>And<wbr>Aliases<span class="tsd-signature-symbol">(</span>commandDefinition<span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_imperative.icommanddefinition.html" class="tsd-signature-type">ICommandDefinition</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.3.2/packages/cmd/src/help/DefaultHelpGenerator.ts#L179">@zowe/imperative/packages/cmd/src/help/DefaultHelpGenerator.ts:179</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Build a string containing the command name and aliases separated by the vertical bar:
+									command | c</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>memberof</dt>
+									<dd><p>DefaultHelpGenerator</p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>commandDefinition: <a href="../interfaces/_zowe_imperative.icommanddefinition.html" class="tsd-signature-type">ICommandDefinition</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The definition for the command</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
+							<ul>
+								<li>Contains the command name followed by the aliases (e.g. command | c)</li>
+							</ul>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="buildcommandoptionssection" class="tsd-anchor"></a>
+					<h3>build<wbr>Command<wbr>Options<wbr>Section</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">build<wbr>Command<wbr>Options<wbr>Section<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.3.2/packages/cmd/src/help/DefaultHelpGenerator.ts#L425">@zowe/imperative/packages/cmd/src/help/DefaultHelpGenerator.ts:425</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>From the map of options (group to option), formulate the group and options in the form of:</p>
+								</div>
+								<a href="#option-group" id="option-group" style="color: inherit; text-decoration: none;">
+									<h2>OPTION GROUP</h2>
+								</a>
+								<p>  option1</p>
+								<pre><code> <span class="hljs-attribute">Description</span> of option<span class="hljs-number">1</span>
+</code></pre>
+								<p>  option2</p>
+								<pre><code> <span class="hljs-attribute">Description</span> of option<span class="hljs-number">2</span>
+</code></pre>
+							</div>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="builddescriptionsection" class="tsd-anchor"></a>
+					<h3>build<wbr>Description<wbr>Section</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">build<wbr>Description<wbr>Section<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.3.2/packages/cmd/src/help/DefaultHelpGenerator.ts#L352">@zowe/imperative/packages/cmd/src/help/DefaultHelpGenerator.ts:352</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Build the command description section of the help text:</p>
+								</div>
+								<a href="#description" id="description" style="color: inherit; text-decoration: none;">
+									<h2>DESCRIPTION</h2>
+								</a>
+								<p>This command is great.</p>
+								<dl class="tsd-comment-tags">
+									<dt>memberof</dt>
+									<dd><p>DefaultHelpGenerator</p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
+							<ul>
+								<li>The command description text</li>
+							</ul>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="buildexamplessection" class="tsd-anchor"></a>
+					<h3>build<wbr>Examples<wbr>Section</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">build<wbr>Examples<wbr>Section<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.3.2/packages/cmd/src/help/DefaultHelpGenerator.ts#L497">@zowe/imperative/packages/cmd/src/help/DefaultHelpGenerator.ts:497</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Build the examples text for the command. Examples include the command example (which normally is able to
+										be copy/pasted verbatim) and the description for the example.
+									TODO - we should remove wordwrap from this</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>memberof</dt>
+									<dd><p>DefaultHelpGenerator</p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
+							<ul>
+								<li>The example text</li>
+							</ul>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-overwrite">
+					<a name="buildfullcommandhelptext" class="tsd-anchor"></a>
+					<h3>build<wbr>Full<wbr>Command<wbr>Help<wbr>Text</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-overwrite">
+						<li class="tsd-signature tsd-kind-icon">build<wbr>Full<wbr>Command<wbr>Help<wbr>Text<span class="tsd-signature-symbol">(</span>includeGlobalOptions<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Overrides <a href="_zowe_imperative.abstracthelpgenerator.html">AbstractHelpGenerator</a>.<a href="_zowe_imperative.abstracthelpgenerator.html#buildfullcommandhelptext">buildFullCommandHelpText</a></p>
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.3.2/packages/cmd/src/help/DefaultHelpGenerator.ts#L128">@zowe/imperative/packages/cmd/src/help/DefaultHelpGenerator.ts:128</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Returns the help text for the command definition - the help text contains the standard items such as
+									description/usage/etc. and also contains the full option descriptions for the command.</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> includeGlobalOptions: <span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol"> = true</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
+							<ul>
+								<li>The help text for --help or markdown.</li>
+							</ul>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="buildfullgrouphelptext" class="tsd-anchor"></a>
+					<h3>build<wbr>Full<wbr>Group<wbr>Help<wbr>Text</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">build<wbr>Full<wbr>Group<wbr>Help<wbr>Text<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.3.2/packages/cmd/src/help/DefaultHelpGenerator.ts#L96">@zowe/imperative/packages/cmd/src/help/DefaultHelpGenerator.ts:96</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Build the help text for a &quot;group&quot; - a group has a set of children  The help text contains the standard
+										description/usage/etc., but unlike a command only displays the next set of &quot;commands&quot; or &quot;groups&quot; that can
+									be issued after the current node.</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>memberof</dt>
+									<dd><p>DefaultHelpGenerator</p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
+							<ul>
+								<li>the full group help text</li>
+							</ul>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="buildglobaloptionssection" class="tsd-anchor"></a>
+					<h3>build<wbr>Global<wbr>Options<wbr>Section</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">build<wbr>Global<wbr>Options<wbr>Section<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.3.2/packages/cmd/src/help/DefaultHelpGenerator.ts#L332">@zowe/imperative/packages/cmd/src/help/DefaultHelpGenerator.ts:332</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Build the global options section of the command help text.</p>
+								</div>
+								<a href="#global-options" id="global-options" style="color: inherit; text-decoration: none;">
+									<h2>GLOBAL OPTIONS</h2>
+								</a>
+								<p>...</p>
+								<dl class="tsd-comment-tags">
+									<dt>memberof</dt>
+									<dd><p>DefaultHelpGenerator</p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
+							<ul>
+								<li>The global options help text section</li>
+							</ul>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="buildheader" class="tsd-anchor"></a>
+					<h3>build<wbr>Header</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">build<wbr>Header<span class="tsd-signature-symbol">(</span>header<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.3.2/packages/cmd/src/help/DefaultHelpGenerator.ts#L484">@zowe/imperative/packages/cmd/src/help/DefaultHelpGenerator.ts:484</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Produces a header for the current section in help:</p>
+								</div>
+								<a href="#commands" id="commands" style="color: inherit; text-decoration: none;">
+									<h2>COMMANDS</h2>
+								</a>
+								<dl class="tsd-comment-tags">
+									<dt>memberof</dt>
+									<dd><p>DefaultHelpGenerator</p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>header: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>the header text (e.g. COMMANDS)</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
+							<ul>
+								<li>The header</li>
+							</ul>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-overwrite">
+					<a name="buildhelp" class="tsd-anchor"></a>
+					<h3>build<wbr>Help</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-overwrite">
+						<li class="tsd-signature tsd-kind-icon">build<wbr>Help<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Implementation of <a href="../interfaces/_zowe_imperative.ihelpgenerator.html">IHelpGenerator</a>.<a href="../interfaces/_zowe_imperative.ihelpgenerator.html#buildhelp">buildHelp</a></p>
+								<p>Overrides <a href="_zowe_imperative.abstracthelpgenerator.html">AbstractHelpGenerator</a>.<a href="_zowe_imperative.abstracthelpgenerator.html#buildhelp">buildHelp</a></p>
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.3.2/packages/cmd/src/help/DefaultHelpGenerator.ts#L72">@zowe/imperative/packages/cmd/src/help/DefaultHelpGenerator.ts:72</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Construct the full help text for display.</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>memberof</dt>
+									<dd><p>DefaultHelpGenerator</p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
+							<ul>
+								<li>The full help text</li>
+							</ul>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+					<a name="buildoptionmaps" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagProtected">Protected</span> build<wbr>Option<wbr>Maps</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+						<li class="tsd-signature tsd-kind-icon">build<wbr>Option<wbr>Maps<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Inherited from <a href="_zowe_imperative.abstracthelpgenerator.html">AbstractHelpGenerator</a>.<a href="_zowe_imperative.abstracthelpgenerator.html#buildoptionmaps">buildOptionMaps</a></p>
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.3.2/packages/cmd/src/help/abstract/AbstractHelpGenerator.ts#L159">@zowe/imperative/packages/cmd/src/help/abstract/AbstractHelpGenerator.ts:159</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="buildoptiontext" class="tsd-anchor"></a>
+					<h3>build<wbr>Option<wbr>Text</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">build<wbr>Option<wbr>Text<span class="tsd-signature-symbol">(</span>optionString<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, description<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.3.2/packages/cmd/src/help/DefaultHelpGenerator.ts#L451">@zowe/imperative/packages/cmd/src/help/DefaultHelpGenerator.ts:451</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Build the text for option:</p>
+								</div>
+								<p>--option</p>
+								<p>   The description for this option</p>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>optionString: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The option string (-- form or positional, etc.)</p>
+									</div>
+								</li>
+								<li>
+									<h5>description: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The description for the option</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
+							<ul>
+								<li>The option text</li>
+							</ul>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="buildpositionalargumentssection" class="tsd-anchor"></a>
+					<h3>build<wbr>Positional<wbr>Arguments<wbr>Section</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">build<wbr>Positional<wbr>Arguments<wbr>Section<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.3.2/packages/cmd/src/help/DefaultHelpGenerator.ts#L386">@zowe/imperative/packages/cmd/src/help/DefaultHelpGenerator.ts:386</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Return the help text format for positional parameters - includes the parameter itself, the optional regex,
+									and the full description.</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>memberof</dt>
+									<dd><p>DefaultHelpGenerator</p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
+							<ul>
+								<li>The help text for each positional parameter.</li>
+							</ul>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="buildusagediagram" class="tsd-anchor"></a>
+					<h3>build<wbr>Usage<wbr>Diagram</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">build<wbr>Usage<wbr>Diagram<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.3.2/packages/cmd/src/help/DefaultHelpGenerator.ts#L264">@zowe/imperative/packages/cmd/src/help/DefaultHelpGenerator.ts:264</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Build the usage diagram for the command.
+									TODO - very simple at the moment, should be enhanced with a &quot;better&quot; diagram</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>memberof</dt>
+									<dd><p>DefaultHelpGenerator</p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="buildusagesection" class="tsd-anchor"></a>
+					<h3>build<wbr>Usage<wbr>Section</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">build<wbr>Usage<wbr>Section<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.3.2/packages/cmd/src/help/DefaultHelpGenerator.ts#L317">@zowe/imperative/packages/cmd/src/help/DefaultHelpGenerator.ts:317</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Build the usage section of the help text:</p>
+								</div>
+								<a href="#usage" id="usage" style="color: inherit; text-decoration: none;">
+									<h2>USAGE</h2>
+								</a>
+								<p>command blah [options]</p>
+								<dl class="tsd-comment-tags">
+									<dt>memberof</dt>
+									<dd><p>DefaultHelpGenerator</p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
+							<ul>
+								<li>The usage help text section</li>
+							</ul>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+					<a name="dimgrey" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagProtected">Protected</span> dim<wbr>Grey</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+						<li class="tsd-signature tsd-kind-icon">dim<wbr>Grey<span class="tsd-signature-symbol">(</span>text<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Inherited from <a href="_zowe_imperative.abstracthelpgenerator.html">AbstractHelpGenerator</a>.<a href="_zowe_imperative.abstracthelpgenerator.html#dimgrey">dimGrey</a></p>
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.3.2/packages/cmd/src/help/abstract/AbstractHelpGenerator.ts#L261">@zowe/imperative/packages/cmd/src/help/abstract/AbstractHelpGenerator.ts:261</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Highlight text in dim grey (disabled if producing markdown)</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>text: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>the text you would like to highlight</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">any</span></h4>
+							<p>the highlighted text</p>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-private">
+					<a name="escapemarkdown" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> escape<wbr>Markdown</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-private">
+						<li class="tsd-signature tsd-kind-icon">escape<wbr>Markdown<span class="tsd-signature-symbol">(</span>text<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.3.2/packages/cmd/src/help/DefaultHelpGenerator.ts#L554">@zowe/imperative/packages/cmd/src/help/DefaultHelpGenerator.ts:554</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Utility function to escape Markdown special characters.
+									Note: This should only be called once to avoid double escaping.</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>text: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The text to escape</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
+							<ul>
+								<li>The escaped string</li>
+							</ul>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+					<a name="explaintype" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagProtected">Protected</span> explain<wbr>Type</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+						<li class="tsd-signature tsd-kind-icon">explain<wbr>Type<span class="tsd-signature-symbol">(</span>type<span class="tsd-signature-symbol">: </span><a href="../modules/_zowe_imperative.html#commandoptiontype" class="tsd-signature-type">CommandOptionType</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Inherited from <a href="_zowe_imperative.abstracthelpgenerator.html">AbstractHelpGenerator</a>.<a href="_zowe_imperative.abstracthelpgenerator.html#explaintype">explainType</a></p>
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.3.2/packages/cmd/src/help/abstract/AbstractHelpGenerator.ts#L246">@zowe/imperative/packages/cmd/src/help/abstract/AbstractHelpGenerator.ts:246</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>type: <a href="../modules/_zowe_imperative.html#commandoptiontype" class="tsd-signature-type">CommandOptionType</a></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+					<a name="getcasesensitiveflagbyoptionname" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagProtected">Protected</span> get<wbr>Case<wbr>Sensitive<wbr>Flag<wbr>ByOption<wbr>Name</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+						<li class="tsd-signature tsd-kind-icon">get<wbr>Case<wbr>Sensitive<wbr>Flag<wbr>ByOption<wbr>Name<span class="tsd-signature-symbol">(</span>optionName<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Inherited from <a href="_zowe_imperative.abstracthelpgenerator.html">AbstractHelpGenerator</a>.<a href="_zowe_imperative.abstracthelpgenerator.html#getcasesensitiveflagbyoptionname">getCaseSensitiveFlagByOptionName</a></p>
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.3.2/packages/cmd/src/help/abstract/AbstractHelpGenerator.ts#L190">@zowe/imperative/packages/cmd/src/help/abstract/AbstractHelpGenerator.ts:190</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>optionName: <span class="tsd-signature-type">string</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="getexperimentalcommandsection" class="tsd-anchor"></a>
+					<h3>get<wbr>Experimental<wbr>Command<wbr>Section</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">get<wbr>Experimental<wbr>Command<wbr>Section<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.3.2/packages/cmd/src/help/DefaultHelpGenerator.ts#L532">@zowe/imperative/packages/cmd/src/help/DefaultHelpGenerator.ts:532</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Get a blurb explaining experimental commands if this command is experimental</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>memberof</dt>
+									<dd><p>DefaultHelpGenerator</p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
+							<ul>
+								<li>If this command is experimental, returns the experimental command explanation block</li>
+							</ul>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+					<a name="getoptionandaliasesstring" class="tsd-anchor"></a>
+					<h3>get<wbr>Option<wbr>And<wbr>Aliases<wbr>String</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+						<li class="tsd-signature tsd-kind-icon">get<wbr>Option<wbr>And<wbr>Aliases<wbr>String<span class="tsd-signature-symbol">(</span>option<span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_imperative.icommandoptiondefinition.html" class="tsd-signature-type">ICommandOptionDefinition</a>, caseSensitive<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Inherited from <a href="_zowe_imperative.abstracthelpgenerator.html">AbstractHelpGenerator</a>.<a href="_zowe_imperative.abstracthelpgenerator.html#getoptionandaliasesstring">getOptionAndAliasesString</a></p>
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.3.2/packages/cmd/src/help/abstract/AbstractHelpGenerator.ts#L125">@zowe/imperative/packages/cmd/src/help/abstract/AbstractHelpGenerator.ts:125</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>option: <a href="../interfaces/_zowe_imperative.icommandoptiondefinition.html" class="tsd-signature-type">ICommandOptionDefinition</a></h5>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> caseSensitive: <span class="tsd-signature-type">boolean</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+					<a name="grey" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagProtected">Protected</span> grey</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+						<li class="tsd-signature tsd-kind-icon">grey<span class="tsd-signature-symbol">(</span>text<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Inherited from <a href="_zowe_imperative.abstracthelpgenerator.html">AbstractHelpGenerator</a>.<a href="_zowe_imperative.abstracthelpgenerator.html#grey">grey</a></p>
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.3.2/packages/cmd/src/help/abstract/AbstractHelpGenerator.ts#L273">@zowe/imperative/packages/cmd/src/help/abstract/AbstractHelpGenerator.ts:273</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Highlight text in grey (disabled if producing markdown)</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>text: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>the text you would like to highlight</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">any</span></h4>
+							<p>the highlighted text</p>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+					<a name="renderhelp" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagProtected">Protected</span> render<wbr>Help</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+						<li class="tsd-signature tsd-kind-icon">render<wbr>Help<span class="tsd-signature-symbol">(</span>help<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Inherited from <a href="_zowe_imperative.abstracthelpgenerator.html">AbstractHelpGenerator</a>.<a href="_zowe_imperative.abstracthelpgenerator.html#renderhelp">renderHelp</a></p>
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.3.2/packages/cmd/src/help/abstract/AbstractHelpGenerator.ts#L203">@zowe/imperative/packages/cmd/src/help/abstract/AbstractHelpGenerator.ts:203</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>help: <span class="tsd-signature-type">string</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-static">
+					<a name="formathelpheader" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> format<wbr>Help<wbr>Header</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-static">
+						<li class="tsd-signature tsd-kind-icon">format<wbr>Help<wbr>Header<span class="tsd-signature-symbol">(</span>header<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, indent<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span>, color<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Inherited from <a href="_zowe_imperative.abstracthelpgenerator.html">AbstractHelpGenerator</a>.<a href="_zowe_imperative.abstracthelpgenerator.html#formathelpheader">formatHelpHeader</a></p>
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.3.2/packages/cmd/src/help/abstract/AbstractHelpGenerator.ts#L35">@zowe/imperative/packages/cmd/src/help/abstract/AbstractHelpGenerator.ts:35</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Get a heading for the CLI / help</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>header: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The text you want to display in the header</p>
+									</div>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> indent: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &quot; &quot;</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>prefix the the heading and dashes with this string (defaults to one space)</p>
+									</div>
+								</li>
+								<li>
+									<h5>color: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>the color to highlight the header in</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
+							<p>the formatted/colored header</p>
+						</li>
+					</ul>
+				</section>
+			</section>
+		</div>
+		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
+			<nav class="tsd-navigation primary">
+				<ul>
+					<li class="globals  ">
+						<a href="../globals.html"><em>Globals</em></a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_core_for_zowe_sdk.html">@zowe/core-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class="current tsd-kind-module">
+						<a href="../modules/_zowe_imperative.html">@zowe/imperative</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_provisioning_for_zowe_sdk.html">@zowe/provisioning-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_zos_console_for_zowe_sdk.html">@zowe/zos-<wbr>console-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_zos_files_for_zowe_sdk.html">@zowe/zos-<wbr>files-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_zos_jobs_for_zowe_sdk.html">@zowe/zos-<wbr>jobs-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_zos_logs_for_zowe_sdk.html">@zowe/zos-<wbr>logs-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_zos_tso_for_zowe_sdk.html">@zowe/zos-<wbr>tso-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_zos_uss_for_zowe_sdk.html">@zowe/zos-<wbr>uss-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_zos_workflows_for_zowe_sdk.html">@zowe/zos-<wbr>workflows-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_zosmf_for_zowe_sdk.html">@zowe/zosmf-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+				</ul>
+			</nav>
+			<nav class="tsd-navigation secondary menu-sticky">
+				<ul class="before-current">
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_core_for_zowe_sdk.html" class="tsd-kind-icon">@zowe/core-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+				</ul>
+				<ul class="current">
+					<li class="current tsd-kind-module">
+						<a href="../modules/_zowe_imperative.html" class="tsd-kind-icon">@zowe/imperative</a>
+						<ul>
+							<li class="current tsd-kind-class tsd-parent-kind-module">
+								<a href="_zowe_imperative.defaulthelpgenerator.html" class="tsd-kind-icon">Default<wbr>Help<wbr>Generator</a>
+								<ul>
+									<li class=" tsd-kind-constructor tsd-parent-kind-class tsd-is-overwrite">
+										<a href="_zowe_imperative.defaulthelpgenerator.html#constructor" class="tsd-kind-icon">constructor</a>
+									</li>
+									<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+										<a href="_zowe_imperative.defaulthelpgenerator.html#grouptooption" class="tsd-kind-icon">group<wbr>ToOption</a>
+									</li>
+									<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+										<a href="_zowe_imperative.defaulthelpgenerator.html#mcommanddefinition" class="tsd-kind-icon">m<wbr>Command<wbr>Definition</a>
+									</li>
+									<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+										<a href="_zowe_imperative.defaulthelpgenerator.html#mdefinitiontree" class="tsd-kind-icon">m<wbr>Definition<wbr>Tree</a>
+									</li>
+									<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+										<a href="_zowe_imperative.defaulthelpgenerator.html#mexperimentalcommanddescription" class="tsd-kind-icon">m<wbr>Experimental<wbr>Command<wbr>Description</a>
+									</li>
+									<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+										<a href="_zowe_imperative.defaulthelpgenerator.html#mlog" class="tsd-kind-icon">m<wbr>Log</a>
+									</li>
+									<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+										<a href="_zowe_imperative.defaulthelpgenerator.html#mprimaryhighlightcolor" class="tsd-kind-icon">m<wbr>Primary<wbr>Highlight<wbr>Color</a>
+									</li>
+									<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+										<a href="_zowe_imperative.defaulthelpgenerator.html#mproducemarkdown" class="tsd-kind-icon">m<wbr>Produce<wbr>Markdown</a>
+									</li>
+									<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+										<a href="_zowe_imperative.defaulthelpgenerator.html#mrootcommandname" class="tsd-kind-icon">m<wbr>Root<wbr>Command<wbr>Name</a>
+									</li>
+									<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+										<a href="_zowe_imperative.defaulthelpgenerator.html#optiontodescription" class="tsd-kind-icon">option<wbr>ToDescription</a>
+									</li>
+									<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
+										<a href="_zowe_imperative.defaulthelpgenerator.html#skiptextwrap" class="tsd-kind-icon">skip<wbr>Text<wbr>Wrap</a>
+									</li>
+									<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private tsd-is-static">
+										<a href="_zowe_imperative.defaulthelpgenerator.html#error_tag" class="tsd-kind-icon">ERROR_<wbr>TAG</a>
+									</li>
+									<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-static">
+										<a href="_zowe_imperative.defaulthelpgenerator.html#help_indent" class="tsd-kind-icon">HELP_<wbr>INDENT</a>
+									</li>
+									<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-static">
+										<a href="_zowe_imperative.defaulthelpgenerator.html#long_dash" class="tsd-kind-icon">LONG_<wbr>DASH</a>
+									</li>
+									<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-static">
+										<a href="_zowe_imperative.defaulthelpgenerator.html#short_dash" class="tsd-kind-icon">SHORT_<wbr>DASH</a>
+									</li>
+									<li class=" tsd-kind-get-signature tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+										<a href="_zowe_imperative.defaulthelpgenerator.html#log" class="tsd-kind-icon">log</a>
+									</li>
+									<li class=" tsd-kind-method tsd-parent-kind-class">
+										<a href="_zowe_imperative.defaulthelpgenerator.html#buildchildrensummarytables" class="tsd-kind-icon">build<wbr>Children<wbr>Summary<wbr>Tables</a>
+									</li>
+									<li class=" tsd-kind-method tsd-parent-kind-class">
+										<a href="_zowe_imperative.defaulthelpgenerator.html#buildcommandandaliases" class="tsd-kind-icon">build<wbr>Command<wbr>And<wbr>Aliases</a>
+									</li>
+									<li class=" tsd-kind-method tsd-parent-kind-class">
+										<a href="_zowe_imperative.defaulthelpgenerator.html#buildcommandoptionssection" class="tsd-kind-icon">build<wbr>Command<wbr>Options<wbr>Section</a>
+									</li>
+									<li class=" tsd-kind-method tsd-parent-kind-class">
+										<a href="_zowe_imperative.defaulthelpgenerator.html#builddescriptionsection" class="tsd-kind-icon">build<wbr>Description<wbr>Section</a>
+									</li>
+									<li class=" tsd-kind-method tsd-parent-kind-class">
+										<a href="_zowe_imperative.defaulthelpgenerator.html#buildexamplessection" class="tsd-kind-icon">build<wbr>Examples<wbr>Section</a>
+									</li>
+									<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-overwrite">
+										<a href="_zowe_imperative.defaulthelpgenerator.html#buildfullcommandhelptext" class="tsd-kind-icon">build<wbr>Full<wbr>Command<wbr>Help<wbr>Text</a>
+									</li>
+									<li class=" tsd-kind-method tsd-parent-kind-class">
+										<a href="_zowe_imperative.defaulthelpgenerator.html#buildfullgrouphelptext" class="tsd-kind-icon">build<wbr>Full<wbr>Group<wbr>Help<wbr>Text</a>
+									</li>
+									<li class=" tsd-kind-method tsd-parent-kind-class">
+										<a href="_zowe_imperative.defaulthelpgenerator.html#buildglobaloptionssection" class="tsd-kind-icon">build<wbr>Global<wbr>Options<wbr>Section</a>
+									</li>
+									<li class=" tsd-kind-method tsd-parent-kind-class">
+										<a href="_zowe_imperative.defaulthelpgenerator.html#buildheader" class="tsd-kind-icon">build<wbr>Header</a>
+									</li>
+									<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-overwrite">
+										<a href="_zowe_imperative.defaulthelpgenerator.html#buildhelp" class="tsd-kind-icon">build<wbr>Help</a>
+									</li>
+									<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+										<a href="_zowe_imperative.defaulthelpgenerator.html#buildoptionmaps" class="tsd-kind-icon">build<wbr>Option<wbr>Maps</a>
+									</li>
+									<li class=" tsd-kind-method tsd-parent-kind-class">
+										<a href="_zowe_imperative.defaulthelpgenerator.html#buildoptiontext" class="tsd-kind-icon">build<wbr>Option<wbr>Text</a>
+									</li>
+									<li class=" tsd-kind-method tsd-parent-kind-class">
+										<a href="_zowe_imperative.defaulthelpgenerator.html#buildpositionalargumentssection" class="tsd-kind-icon">build<wbr>Positional<wbr>Arguments<wbr>Section</a>
+									</li>
+									<li class=" tsd-kind-method tsd-parent-kind-class">
+										<a href="_zowe_imperative.defaulthelpgenerator.html#buildusagediagram" class="tsd-kind-icon">build<wbr>Usage<wbr>Diagram</a>
+									</li>
+									<li class=" tsd-kind-method tsd-parent-kind-class">
+										<a href="_zowe_imperative.defaulthelpgenerator.html#buildusagesection" class="tsd-kind-icon">build<wbr>Usage<wbr>Section</a>
+									</li>
+									<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+										<a href="_zowe_imperative.defaulthelpgenerator.html#dimgrey" class="tsd-kind-icon">dim<wbr>Grey</a>
+									</li>
+									<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private">
+										<a href="_zowe_imperative.defaulthelpgenerator.html#escapemarkdown" class="tsd-kind-icon">escape<wbr>Markdown</a>
+									</li>
+									<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+										<a href="_zowe_imperative.defaulthelpgenerator.html#explaintype" class="tsd-kind-icon">explain<wbr>Type</a>
+									</li>
+									<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+										<a href="_zowe_imperative.defaulthelpgenerator.html#getcasesensitiveflagbyoptionname" class="tsd-kind-icon">get<wbr>Case<wbr>Sensitive<wbr>Flag<wbr>ByOption<wbr>Name</a>
+									</li>
+									<li class=" tsd-kind-method tsd-parent-kind-class">
+										<a href="_zowe_imperative.defaulthelpgenerator.html#getexperimentalcommandsection" class="tsd-kind-icon">get<wbr>Experimental<wbr>Command<wbr>Section</a>
+									</li>
+									<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+										<a href="_zowe_imperative.defaulthelpgenerator.html#getoptionandaliasesstring" class="tsd-kind-icon">get<wbr>Option<wbr>And<wbr>Aliases<wbr>String</a>
+									</li>
+									<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+										<a href="_zowe_imperative.defaulthelpgenerator.html#grey" class="tsd-kind-icon">grey</a>
+									</li>
+									<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+										<a href="_zowe_imperative.defaulthelpgenerator.html#renderhelp" class="tsd-kind-icon">render<wbr>Help</a>
+									</li>
+									<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-static">
+										<a href="_zowe_imperative.defaulthelpgenerator.html#formathelpheader" class="tsd-kind-icon">format<wbr>Help<wbr>Header</a>
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</li>
+				</ul>
+				<ul class="after-current">
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_provisioning_for_zowe_sdk.html" class="tsd-kind-icon">@zowe/provisioning-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_zos_console_for_zowe_sdk.html" class="tsd-kind-icon">@zowe/zos-<wbr>console-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_zos_files_for_zowe_sdk.html" class="tsd-kind-icon">@zowe/zos-<wbr>files-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_zos_jobs_for_zowe_sdk.html" class="tsd-kind-icon">@zowe/zos-<wbr>jobs-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_zos_logs_for_zowe_sdk.html" class="tsd-kind-icon">@zowe/zos-<wbr>logs-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_zos_tso_for_zowe_sdk.html" class="tsd-kind-icon">@zowe/zos-<wbr>tso-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_zos_uss_for_zowe_sdk.html" class="tsd-kind-icon">@zowe/zos-<wbr>uss-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_zos_workflows_for_zowe_sdk.html" class="tsd-kind-icon">@zowe/zos-<wbr>workflows-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_zosmf_for_zowe_sdk.html" class="tsd-kind-icon">@zowe/zosmf-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</div>
+</div>
+<footer class="with-border-bottom">
+	<div class="container">
+		<h2>Legend</h2>
+		<div class="tsd-legend-group">
+			<ul class="tsd-legend">
+				<li class="tsd-kind-object-literal"><span class="tsd-kind-icon">Object literal</span></li>
+				<li class="tsd-kind-variable"><span class="tsd-kind-icon">Variable</span></li>
+				<li class="tsd-kind-function"><span class="tsd-kind-icon">Function</span></li>
+				<li class="tsd-kind-type-alias"><span class="tsd-kind-icon">Type alias</span></li>
+				<li class="tsd-kind-type-alias tsd-has-type-parameter"><span class="tsd-kind-icon">Type alias with type parameter</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-class"><span class="tsd-kind-icon">Class</span></li>
+				<li class="tsd-kind-class tsd-has-type-parameter"><span class="tsd-kind-icon">Class with type parameter</span></li>
+				<li class="tsd-kind-constructor tsd-parent-kind-class"><span class="tsd-kind-icon">Constructor</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class"><span class="tsd-kind-icon">Method</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-interface"><span class="tsd-kind-icon">Interface</span></li>
+				<li class="tsd-kind-interface tsd-has-type-parameter"><span class="tsd-kind-icon">Interface with type parameter</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private method</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-enum"><span class="tsd-kind-icon">Enumeration</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited method</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-static"><span class="tsd-kind-icon">Static property</span></li>
+			</ul>
+		</div>
+	</div>
+</footer>
+<div class="container tsd-generator">
+	<p>Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p>
+</div>
+<div class="overlay"></div>
+<script src="../assets/js/main.js"></script>
+</body>
+</html>
