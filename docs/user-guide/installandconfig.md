@@ -150,6 +150,9 @@ export ZWE_CLI_PARAMETER_CONFIG=/path/to/my/zowe.yaml
 , you can simply type `zwe start` instead of full command `zwe start -c /path/to/my/zowe.yaml`.
 :::
 
+:::tip
+In `example-zowe.yaml`, there are many configuration entries marked with `COMMONLY_CUSTOMIZED`. If you are new to this configuration file, these entries can be a good starting point. It highlights most of the common configurations like directories, host/domain name, service ports, certificate setup, z/OSMF, etc which are critical for you to stand a new Zowe instance.
+:::
 
 ### Workspace directory
 

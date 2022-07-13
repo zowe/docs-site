@@ -15,7 +15,16 @@ The `zwe init` command is a combination of the following sub-commands. Each sub-
 
 You can type `zwe init --help` to learn more about the command or see the [`zwe init` command reference](../appendix/zwe_server_command_reference/zwe/init/zwe-init) for detailed explanation, examples, and parameters. 
 
-`zwe init` command requires a [Zowe configuration file](installandconfig#zowe-configuration-file) to proceed. This configuration file instructs how Zowe should be initialized. Please create and review this file before proceeding.
+`zwe init` command requires a [Zowe configuration file](installandconfig#zowe-configuration-file) to proceed. This configuration file instructs how Zowe should be initialized. Please create and review this file before proceeding. If you don't have the file already, you can copy from `example-zowe.yaml` located in Zowe runtime directory.
+
+:::tip
+These `zwe init` arguments could be useful:
+
+- `--update-config` argument allows the init process update your configuration file based on automatic detection and your `zowe.setup`. For example, if `java.home` and `node.home` are not defined, they could be updated based on the information we collect on the system. Another example is `zowe.certificate` section can be updated automatically based on your `zowe.setup.certificate` settings.
+- `--allow-overwrite` argument allows you to re-run `zwe init` command repeatedly, even though some data sets are already created.
+- `-v` or `--verbose` will provide you more information on `zwe` command execution details. This is for troubleshooting purpose if the error message is not clear enough.
+- `-vv` or `--trace` will provide you EVEN more information than `--verbose` mode on `zwe` command execution details. This is for troubleshooting purpose if the error message is not clear enough.
+:::
 
 ## Procedure
 
