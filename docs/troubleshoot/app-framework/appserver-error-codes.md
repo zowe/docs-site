@@ -38,7 +38,7 @@ The following error message codes may appear on the app-server log. Use the foll
 
   **Reason:**
 
-  A new app-server worker process is starting. Workers are started and stopped according to current server load and the minimum and maximum worker limits defined in environment variables ZLUX_MIN_WORKERS and ZLUX_MAX_WORKERS.
+  A new app-server worker process is starting. Workers are redundant execution contexts of the server and increase throughput and latency of requests when the server has a lot of concurrent client requests. Workers are started and stopped according to current server load and the minimum and maximum worker limits defined in environment variables ZLUX_MIN_WORKERS and ZLUX_MAX_WORKERS.
 
   **Action:**
 
@@ -62,281 +62,255 @@ The following error message codes may appear on the app-server log. Use the foll
 
 ### ZWED0024I
 
-  Keys=%s
+  Keys=_workerIds_
 
   **Reason:**
 
-  TODO
+  The server lists the worker IDs right before all workers are about to be reloaded.
 
   **Action:**
 
-  TODO
+  No action required.
 
 
 
 ### ZWED0025I
 
-  Killing worker pid=%s
+  Killing worker pid=_processId_
 
   **Reason:**
 
-  TODO
+  The server just issued the SIGTERM unix signal to the worker with the process ID listed. This is an expected action when reloading all workers of the server.
 
   **Action:**
 
-  TODO
+  No action required.
 
 
 
 ### ZWED0026I
 
-  Fork %s workers.
+  Fork _quantity_ workers.
 
   **Reason:**
 
-  TODO
+  The server is starting up _quantity_ new workers. Workers are redundant execution contexts of the server and increase throughput and latency of requests when the server has a lot of concurrent client requests. This message happens at startup and the _quantity_ is determined by the environment variables ZLUX_MIN_WORKERS and ZLUX_MAX_WORKERS.
 
   **Action:**
 
-  TODO
+  No action required.
 
 
 
 ### ZWED0027I
 
-  Close worker %s
+  Close worker _workerId_
 
   **Reason:**
 
-  TODO
+  The server is removing an existing worker due to lack of recent client activity. Workers are added and removed according to average load of the server. Workers are redundant execution contexts of the server and increase throughput and latency of requests when the server has a lot of concurrent client requests. Workers may be removed down to the minimum count as defined by the environment variable ZLUX_MIN_WORKERS.
 
   **Action:**
 
-  TODO
+  No action required.
 
 
 
 ### ZWED0028I
 
-  Master %s is running.
+  Master _processId_ is running.
 
   **Reason:**
 
-  TODO
+  The server has started up and is printing its unix process ID in case the user needs to know for analysis or troubleshooting.
 
   **Action:**
 
-  TODO
+  No action required.
 
 
 
 ### ZWED0029I
 
-  Worker %s pid %s
+  Worker _workerId_ pid _processId_
 
   **Reason:**
 
-  TODO
+  A worker has started and is listing its ID and unix process ID in case the user needs to know for analysis or troubleshooting. 
 
   **Action:**
 
-  TODO
-
-
-
-### ZWED0030I
-
-  Installed plugin: %s Successful: (%s/%s) Attempted: (%s/%s)
-
-  **Reason:**
-
-  TODO
-
-  **Action:**
-
-  TODO
+  No action required.
 
 
 
 ### ZWED0031I
 
-  Server is ready at %s, Plugins successfully loaded: %s% (%s/%s)
+  Server is ready at _ipAddress_, Plugins successfully loaded: _percentage_% (_successful_/_total_)
 
   **Reason:**
 
-  TODO
+  The server is ready to accept client requests. It can be found at the _ipAddress_ listed, and you can tell if it has loaded all plugins successfully by the _percentage_ listed
 
   **Action:**
 
-  TODO
-
-
-
-### ZWED0032I
-
-  Server is ready at %s, Plugins successfully loaded: %s% (%s/%s)
-
-  **Reason:**
-
-  TODO
-
-  **Action:**
-
-  TODO
+  If the percentage is less than expected, review the log for messages with IDs ZWED0159W or ZWED0027W. Those messages will tell you which plugins failed, and you can search for their plugin ID within the log to find out the reason they failed to load.
 
 
 
 ### ZWED0033I
 
-  The http port given to the APIML is: %s\nThe https port given to the APIML is: %s\nThe zlux-apiml config are: %s
+  The http port given to the APIML is: _tcpPort_
+  The https port given to the APIML is: _tcpPort_
+  The zlux-apiml config are: _jsonConfig_
 
   **Reason:**
 
-  TODO
+  The server lists the properties that will be used to connect to the APIML Discovery server to help with troubleshooting.
 
   **Action:**
 
-  TODO
+  No action required.
 
 
 
 ### ZWED0036I
 
-  Plugin %s will serve static files from %s
+  Plugin _pluginId_ will serve static files from _filePath_
 
   **Reason:**
 
-  TODO
+  The plugin _pluginId_ was loaded which has a webContent section defined in its pluginDefinition.json file. The server will serve the read-only content from the _filePath_
 
   **Action:**
 
-  TODO
+  No action required.
 
 
 
 ### ZWED0037I
 
-  %s: found proxied service %s
+  _pluginId_: found proxied service _serviceName_
 
   **Reason:**
 
-  TODO
+  When the server was loading the plugin _pluginId_, it found that the plugin contains a service named _serviceName_ of type "service".
 
   **Action:**
 
-  TODO
+  No action required.
 
 
 
 ### ZWED0038I
 
-  %s: importing service %s from %s as %s
+  _pluginId_: importing service _sourceServiceName_ from _sourcePluginId_ as _serviceName_
 
   **Reason:**
 
-  TODO
+  When the server was loading the plugin _pluginId_, it found that the plugin contains a service named _serviceName_ of type "import". It then resolved the import to the service _sourceServiceName_ from plugin _sourcePluginId_.
 
   **Action:**
 
-  TODO
+  No action required.
 
 
 
 ### ZWED0039I
 
-  %s: found router %s
+  _pluginId_: found router _serviceName_
 
   **Reason:**
 
-  TODO
+  When the server was loading the plugin _pluginId_, it found that the plugin contains a service named _serviceName_ of type "router".
 
   **Action:**
 
-  TODO
+  No action required.
 
 
 
 ### ZWED0040I
 
-  %s: found legacy node service %s
+  _pluginId_: found legacy node service _serviceName_
 
   **Reason:**
 
-  TODO
+  When the server was loading the plugin _pluginId_, it found that the plugin contains a service named _serviceName_ of type "nodeService".
 
   **Action:**
 
-  TODO
+  This type of service is deprecated and may not work on a future version of Zowe, so you should consider getting an upgraded version of the plugin that instead uses a service of an undeprecated type.
 
 
 
 ### ZWED0041I
 
-  %s: found external service %s
+  _pluginId_: found external service _serviceName_
 
   **Reason:**
 
-  TODO
+  When the server was loading the plugin _pluginId_, it found that the plugin contains a service named _serviceName_ of type "external".
 
   **Action:**
 
-  TODO
+  No action required.
 
 
 
 ### ZWED0042I
 
-  %s: found %s service %s
+  _pluginId_: found _serviceType_ service _serviceName_
 
   **Reason:**
 
-  TODO
+  When the server was loading the plugin _pluginId_, it found that the plugin contains a service named _serviceName_ of type "_serviceType_".
 
   **Action:**
 
-  TODO
+  No action required.
 
 
 
 ### ZWED0043I
 
-  Plugin %s is not requested skipping without error
+  Plugin _pluginId_ is not requested skipping without error
 
   **Reason:**
 
-  TODO
+  When the server was loading the "nodeAuthentication" type plugin _pluginId_, it determined that the plugin only handles security actions for a category that was not requested by the server configuration or any plugins. Because nothing needed it, the plugin was skipped instead of loaded.
 
   **Action:**
 
-  TODO
+  No action required unless you need the plugin to be used. If you need the plugin, you can set an authentication category it implements as the default by configuration property `components.app-server.dataserviceAuthentication.defaultAuthentication`, or within a plugin's security configuration.
 
 
 
 ### ZWED0044I
 
-  Processing plugin reference %s...
+  Processing plugin reference _filePath_...
 
   **Reason:**
 
-  TODO
+  The server is checking if the plugin definition file _filePath_ exists and will attempt to load it.
 
   **Action:**
 
-  TODO
+  No action required.
 
 
 
 ### ZWED0045I
 
-  Reading plugins dir %s
+  Reading plugins dir _pluginsDirectory_
 
   **Reason:**
 
-  TODO
+  The server is scanning the directory _pluginsDirectory_ as specified by the server configuration property `components.app-server.pluginsDir` so that it can locate each plugin in the instance.
 
   **Action:**
 
-  TODO
+  No action required.
 
 
 
