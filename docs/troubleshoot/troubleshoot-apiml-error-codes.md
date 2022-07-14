@@ -511,11 +511,11 @@ The following error message codes may appear on logs or API responses. Use the f
 
   **Reason:**
 
-  The parameter `apiml.security.authorization.provider` is set to `endpoint`
+  The parameter `apiml.security.authorization.provider` is set to `endpoint`.
 
   **Action:**
 
-  Change the SAF provider to another one to use this endpoint
+  Change the SAF provider to another one to use this endpoint.
 
 ### ZWEAT603E
 
@@ -523,7 +523,7 @@ The following error message codes may appear on logs or API responses. Use the f
 
   **Reason:**
 
-  The application cannot call the endpoint to check the SAF resource of the user
+  The application cannot call the endpoint to check the SAF resource of the user.
 
   **Action:**
 
@@ -547,7 +547,7 @@ The following error message codes may appear on logs or API responses. Use the f
 
   **Reason:**
 
-  The request body is not valid
+  The request body is not valid.
 
   **Action:**
 
@@ -559,11 +559,11 @@ The following error message codes may appear on logs or API responses. Use the f
 
   **Reason:**
 
-  The request body is not valid
+  The request body is not valid.
 
   **Action:**
 
-  Provide a list of services for which this token will be valid
+  Provide a list of services for which this token will be valid.
 
 ## Security client messages
 
@@ -695,7 +695,7 @@ The following error message codes may appear on logs or API responses. Use the f
 
   **Reason:**
 
-  The application using the token kept it for longer than the expiration time
+  The application using the token kept it for longer than the expiration time.
 
   **Action:**
 
@@ -707,11 +707,11 @@ The following error message codes may appear on logs or API responses. Use the f
 
   **Reason:**
 
-  Provided credentials weren't recognized
+  Provided credentials were not recognized.
 
   **Action:**
 
-  Try with different credentials
+  Try with different credentials.
 
 ### ZWEAS121E
 
@@ -719,11 +719,11 @@ The following error message codes may appear on logs or API responses. Use the f
 
   **Reason:**
 
-  One of the credentials was null or empty
+  One of the credentials was null or empty.
 
   **Action:**
 
-  Try with full set of credentials
+  Try with a full set of credentials.
 
 ### ZWEAS122E
 
@@ -731,11 +731,11 @@ The following error message codes may appear on logs or API responses. Use the f
 
   **Reason:**
 
-  The authorization header was empty or null
+  The authorization header was empty or null.
 
   **Action:**
 
-  Try again with a valid authorization header
+  Try again with a valid authorization header.
 
 ### ZWEAS170E
 
@@ -743,7 +743,7 @@ The following error message codes may appear on logs or API responses. Use the f
 
   **Reason:**
 
-  General exception. There are more pieces of information in the message
+  General exception. There are more pieces of information in the message.
 
   **Action:**
 
@@ -759,7 +759,7 @@ The following error message codes may appear on logs or API responses. Use the f
 
   **Action:**
 
-  Verify that the secured signon (PassTicket) function and application ID is configured properly by referring to Using PassTickets in the guide for your security provider
+  Verify that the secured signon (PassTicket) function and application ID is configured properly by referring to Using PassTickets in the guide for your security provider.
 
 ### ZWEAS401E
 
@@ -767,11 +767,11 @@ The following error message codes may appear on logs or API responses. Use the f
 
   **Reason:**
 
-  There was no JWT token provided for the generation of the PassTicket
+  There was no JWT token provided for the generation of the PassTicket.
 
   **Action:**
 
-  Ensure that you are passing JWT token for PassTicker generation
+  Ensure that you are passing JWT token for PassTicker generation.
 
 ### ZWEAS404E
 
@@ -791,7 +791,7 @@ The following error message codes may appear on logs or API responses. Use the f
 
   **Reason:**
 
-  The application id provided for the generation of the PassTicket was not recognized by the security provider
+  The application id provided for the generation of the PassTicket was not recognized by the security provider.
 
   **Action:**
 
@@ -803,7 +803,7 @@ The following error message codes may appear on logs or API responses. Use the f
 
   **Reason:**
 
-  The JWT token is not valid
+  The JWT token is not valid.
 
   **Action:**
 
@@ -811,11 +811,11 @@ The following error message codes may appear on logs or API responses. Use the f
 
 ### ZWEAS500E
 
-  There was no path to the trust store.
+  There was no path to the trust store
 
   **Reason:**
 
-  The Zaas Client configuration does not contain the path to the trust store
+  The Zaas Client configuration does not contain the path to the trust store.
 
   **Action:**
 
@@ -823,11 +823,11 @@ The following error message codes may appear on logs or API responses. Use the f
 
 ### ZWEAS501E
 
-  There was no path to the key store.
+  There was no path to the key store
 
   **Reason:**
 
-  The Zaas Client configuration does not contain the path to the key store
+  The Zaas Client configuration does not contain the path to the key store.
 
   **Action:**
 
@@ -835,11 +835,11 @@ The following error message codes may appear on logs or API responses. Use the f
 
 ### ZWEAS502E
 
-  The configuration provided for SSL is invalid.
+  The configuration provided for SSL is invalid
 
   **Reason:**
 
-  The type of the keystore, truststore or the included keys/certs aren't considered valid
+  The type of the keystore, truststore or the included keys/certs aren't considered valid.
 
   **Action:**
 
@@ -847,15 +847,15 @@ The following error message codes may appear on logs or API responses. Use the f
 
 ### ZWEAS503E
 
-  The SSL configuration contained invalid path.
+  The SSL configuration contained an invalid path
 
   **Reason:**
 
-  There was an invalid path to either trust store or keystore
+  There was an invalid path to either trust store or keystore.
 
   **Action:**
 
-  Ensure that both provided paths are resolved to valid trust store and valid key store
+  Ensure that both provided paths are resolved to a valid trust store and a valid key store.
 
 ## Discovery service messages
 
@@ -893,7 +893,7 @@ The following error message codes may appear on logs or API responses. Use the f
 
   **Action:**
 
-  Review the static API definition directories and their setup. The static definition directories are specified as a launch parameter to a Discovery service jar. The property key is: `apiml.discovery.staticApiDefinitionsDirectories`
+  Review the static API definition directories and their setup. The static definition directories are specified as a launch parameter to a Discovery service jar. The property key is: `apiml.discovery.staticApiDefinitionsDirectories`.
 
 ### ZWEAD701E
 
@@ -953,7 +953,7 @@ The following error message codes may appear on logs or API responses. Use the f
 
   **Reason:**
 
-  Gateway Service is probably mis-configured or failed to start from another reason.
+  Gateway Service is probably mis-configured or failed to start for another reason.
 
   **Action:**
 
@@ -963,7 +963,7 @@ The following error message codes may appear on logs or API responses. Use the f
 
 ### ZWEAG500E
 
-  Client certificate is missing in request.
+  Client certificate is missing in request
 
   **Reason:**
 
@@ -1335,7 +1335,7 @@ The following error message codes may appear on logs or API responses. Use the f
 
 ### ZWEAS123E
 
-  Invalid token type in response from Authentication service.
+  Invalid token type in response from Authentication service
 
   **Reason:**
 
@@ -1371,7 +1371,7 @@ The following error message codes may appear on logs or API responses. Use the f
 
 ### ZWEAG140E
 
-  The 'applicationName' parameter name is missing.
+  The 'applicationName' parameter name is missing
 
   **Reason:**
 
@@ -1423,7 +1423,7 @@ The following error message codes may appear on logs or API responses. Use the f
 
   **Reason:**
 
-  The JWT token or client certificate was not provided with the request
+  The JWT token or client certificate was not provided with the request.
 
   **Action:**
 
@@ -1443,7 +1443,7 @@ The following error message codes may appear on logs or API responses. Use the f
 
 ### ZWEAG162E
 
-  Gateway service failed to obtain token.
+  Gateway service failed to obtain token
 
   **Reason:**
 
@@ -1455,7 +1455,7 @@ The following error message codes may appear on logs or API responses. Use the f
 
 ### ZWEAG163E
 
-  Error occurred while parsing X509 certificate.
+  Error occurred while parsing X509 certificate
 
   **Reason:**
 
@@ -1491,7 +1491,7 @@ The following error message codes may appear on logs or API responses. Use the f
 
 ### ZWEAG166E
 
-  ZOSMF authentication scheme is not supported for this API ML instance.
+  ZOSMF authentication scheme is not supported for this API ML instance
 
   **Reason:**
 
@@ -1507,7 +1507,7 @@ The following error message codes may appear on logs or API responses. Use the f
 
   **Reason:**
 
-  The X509 client certificate was not provided with the request
+  The X509 client certificate was not provided with the request.
 
   **Action:**
 
@@ -1519,7 +1519,7 @@ The following error message codes may appear on logs or API responses. Use the f
 
   **Reason:**
 
-  The JWT token or client certificate is not valid
+  The JWT token or client certificate is not valid.
 
   **Action:**
 
