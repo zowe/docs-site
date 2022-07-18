@@ -10,21 +10,22 @@ const downloadableFiles = [
     title: "Zowe documentation",
     description: (
       <>
-        Download the Zowe documentation in PDF format
-        from the links below. The latest version on this website is
+        Download the Zowe documentation in PDF format. The latest version 
+        on this website is 
       </>
     ),
-    firstSubDescription: <>Select the version to download</>,
+    firstSubDescription: <>Zowe Docs PDF</>,
     downloadDocsPDF: true,
   },
   {
     title: "Zowe CLI command reference guides",
     description: (
       <>
-        View documentation on commands, actions, and options in Zowe CLI. The
-        reference document is based on the <code>@zowe-v2-lts</code> version of
-        the CLI. It contains the web help for all Zowe ecosystem-conformant 
-        plug-ins that contributed to this website.
+        View or download Zowe CLI web help. The web help contains information about
+        commands, actions, and options for Zowe CLI and all Zowe ecosystem-conformant 
+        plug-ins that contributed to this website. The web help is based on the 
+        <code>@zowe-v2-lts</code> version of the CLI. To view or download a previous version, select 
+        a version from the drop-down list.
       </>
     ),
     firstSubDescription: <>Online interactive version</>,
@@ -37,14 +38,15 @@ const downloadableFiles = [
     title: "Zowe Client SDK reference guides",
     description: (
       <>
-        Refer to the following Zowe Client SDK reference guides for information
-        about the API endpoints.
+        View or download Zowe Client SDK reference guides. The guides contain 
+        information about the API endpoints. To view or download a previous 
+        version, select a version from the drop-down list.
       </>
     ),
     firstSubDescription: <>Node SDK Reference</>,
     firstViewOnlineLink: "typedoc/index.html",
     firstDownloadLink: "zowe-nodejs-sdk-typedoc.zip",
-    secondSubDescription: <>Python SDK Reference</>,
+    secondSubDescription: <>Python SDK Reference (Latest version only)</>,
     secondViewOnlineLink:
       "https://zowe-client-python-sdk.readthedocs.io/en/latest/index.html",
     secondDownloadLink:
