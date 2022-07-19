@@ -48,8 +48,8 @@ Below is an example of the "schema.json" file referenced above. In it, we have 1
       "properties": {
         "components": {
           "type": "object",
+          "additionalProperties": true,
           "properties": {
-            "additionalProperties": true,
             "component1": {
               "allOf": [
                 { "$ref": "https://zowe.org/schemas/v2/server-base#zoweComponent"},
