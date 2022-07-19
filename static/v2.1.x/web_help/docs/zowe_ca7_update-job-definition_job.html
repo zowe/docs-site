@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>ca7 update-job-definition job</title>
+<link rel="stylesheet" href="../css/bundle-docs.css">
+<link rel="stylesheet" href="../css/docs.css">
+<article class="markdown-body">
+<h2><a href="zowe.html">zowe</a> › <a href="zowe_ca7.html">ca7</a> › <a href="zowe_ca7_update-job-definition.html">update-job-definition</a> › <a href="zowe_ca7_update-job-definition_job.html">job</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
+<p>Update requirement definition for a job</p>
+<h4>Usage</h4>
+<p>zowe ca7 update-job-definition job [options]</p>
+<h4>Required Options</h4>
+<ul>
+<li>
+<p><code>--job</code> <em>(string)</em></p>
+<ul>
+<li>The name of the job to update</li>
+</ul>
+</li>
+<li>
+<p><code>--job-type</code> | <code>--jt</code> <em>(string)</em></p>
+<ul>
+<li>The type of job. Valid values are:  CPU|XPJOB|AGENT</li>
+</ul>
+</li>
+</ul>
+<h4>Options</h4>
+<ul>
+<li>
+<p><code>--execute</code> <em>(string)</em></p>
+<ul>
+<li>Indicates whether to execute this job.<br>
+Valid values are: Y/N</li>
+</ul>
+</li>
+<li>
+<p><code>--use-jcl-override-library</code> | <code>--ujol</code> <em>(string)</em></p>
+<ul>
+<li>Specifies whether to retrieve the JCL from the JCL Override library (JCLID=254) for the next run only (Y or N).<br>
+This field is automatically set back to N the next time the job comes into the request queue</li>
+</ul>
+</li>
+<li>
+<p><code>--do-not-schedule-before-date</code> | <code>--dnsbd</code> <em>(string)</em></p>
+<ul>
+<li>Specifies not to schedule this job before this date (in YYDDD format, or 00000)</li>
+</ul>
+</li>
+<li>
+<p><code>--do-not-schedule-before-time</code> | <code>--dnsbt</code> <em>(string)</em></p>
+<ul>
+<li>Specifies not to schedule this job before this time (in HHMM format)</li>
+</ul>
+</li>
+<li>
+<p><code>--do-not-schedule-after-date</code> | <code>--dnsad</code> <em>(string)</em></p>
+<ul>
+<li>Specifies not to schedule this job after this date (in YYDDD format, or 99999)</li>
+</ul>
+</li>
+<li>
+<p><code>--do-not-schedule-after-time</code> | <code>--dnsat</code> <em>(string)</em></p>
+<ul>
+<li>Specifies not to schedule this job after this time (in HHMM format)</li>
+</ul>
+</li>
+</ul>
+<h4>CA7 Connection Options</h4>
+<ul>
+<li>
+<p><code>--host</code> | <code>-H</code> <em>(string)</em></p>
+<ul>
+<li>Host name of the CA7 API service that is running on the mainframe system.</li>
+</ul>
+</li>
+<li>
+<p><code>--port</code> | <code>-P</code> <em>(number)</em></p>
+<ul>
+<li>Port for the CA7 API service that is running on the mainframe system.</li>
+</ul>
+</li>
+<li>
+<p><code>--user</code> | <code>-u</code> <em>(string)</em></p>
+<ul>
+<li>User name for authenticating connections to the CA7 API service that is running on the mainframe system.</li>
+</ul>
+</li>
+<li>
+<p><code>--password</code> | <code>--pass</code> | <code>--pw</code> <em>(string)</em></p>
+<ul>
+<li>Password for authenticating connections to the CA7 API service that is running on the mainframe system.</li>
+</ul>
+</li>
+<li>
+<p><code>--base-path</code> | <code>--bp</code> <em>(string)</em></p>
+<ul>
+<li>The base path for your API mediation layer instance. Specify this option to prepend the base path to all resources when making REST requests. Do not specify this option if you are not using an API mediation layer.</li>
+</ul>
+</li>
+<li>
+<p><code>--protocol</code> | <code>-o</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>Specifies protocol to use for CA7 connection (http or https).</p>
+<p>Allowed values: http, https</p>
+</li>
+</ul>
+</li>
+</ul>
+<h4>Profile Options</h4>
+<ul>
+<li>
+<p><code>--ca7-profile</code> | <code>--ca7-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (ca7) profile to load for this command execution.</li>
+</ul>
+</li>
+<li>
+<p><code>--base-profile</code> | <code>--base-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (base) profile to load for this command execution.</li>
+</ul>
+</li>
+</ul>
+<h4>Base Connection Options</h4>
+<ul>
+<li>
+<p><code>--reject-unauthorized</code> | <code>--ru</code> <em>(boolean)</em></p>
+<ul>
+<li>
+<p>Reject self-signed certificates.</p>
+<p>Default value: true</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--token-type</code> | <code>--tt</code> <em>(string)</em></p>
+<ul>
+<li>The type of token to get and use for the API. Omit this option to use the default token type, which is provided by 'zowe auth login'.</li>
+</ul>
+</li>
+<li>
+<p><code>--token-value</code> | <code>--tv</code> <em>(string)</em></p>
+<ul>
+<li>The value of the token to pass to the API.</li>
+</ul>
+</li>
+<li>
+<p><code>--cert-file</code> <em>(local file path)</em></p>
+<ul>
+<li>The file path to a certificate file to use for authentication</li>
+</ul>
+</li>
+<li>
+<p><code>--cert-key-file</code> <em>(local file path)</em></p>
+<ul>
+<li>The file path to a certificate key file to use for authentication</li>
+</ul>
+</li>
+</ul>
+<h4>Examples</h4>
+<ul>
+<li>
+<p>Update a CPU type job, TESTJOB1 to be executable:</p>
+<ul>
+<li><code>zowe ca7 update-job-definition job --job TESTJOB1 --job-type CPU --execute Y</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe ca7 update-job-definition job --job TESTJOB1 --job-type CPU --execute Y">Copy</button></li>
+</ul>
+</li>
+</ul>
+</article>
+<script src="../js/bundle-docs.js"></script>
+<script src="../js/docs.js"></script>
