@@ -2,6 +2,39 @@
 
 The following topics contain information that can help you troubleshoot problems when you encounter unexpected behavior installing and using Zowe&trade; CLI.
 
+## Zowe Commands Fail with Secure Credential Errors
+
+**Valid on Windows, macOS, and Linux**
+
+**Symptoms:**
+
+After you install Zowe CLI, and the installation appears to complete successfully, Zowe commands that load the secure credential store return error messages. For example, the following commands return error messages:
+
+- `zowe config init`
+- `zowe config secure`
+- `zowe profiles create`
+- Most Zowe commands that access your mainframe environment
+
+This behavior occurs under the following conditions:
+
+- npm version 8.11.0 or 8.12.0 is running on your computer.
+- The computer on which you installed Zowe CLI cannot access the Internet or it has limited access to the Internet. Your site does not allow connections to https://github.com/.
+- You installed Zowe CLI from a local package or from an NPM public online registry
+
+**Solution:**
+
+1. Define the `npm_config_global` environment variable. Issue the command that corresponds with your operating system:
+
+    - **Windows Command Prompt:** `set npm_config_global=true`
+    - **Windows PowerShell:** `$env:npm_config_global="true"`
+    - **macOS/Linux Bash:** `export npm_config_global=true`
+2. Install or reinstall Zowe CLI using your preferred installation method.
+3. After the Zowe CLI installation completes, reset the `npm_config_global` environment variable. Issue the command that corresponds with your operating system:
+    - **Windows Command Prompt:** `set npm_config_global=`
+    - **Windows PowerShell:** `$env:npm_config_global=""`
+    - **macOS/Linux Bash:** `export npm_config_global=`
+4. Continue configuring Zowe CLI. Or, reissue a Zowe command that returned an error message. You should no longer get an error message.
+
 ## EACCESS error when issing `npm install` command
 
 **Valid on Windows, Mac, or Linux**
