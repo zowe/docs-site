@@ -561,9 +561,7 @@ where:
   
     * **safIdt**
 
-       This value specifies that the service accepts SAF IDT, and expects that the token produced by the SAF IDT provider implementation is in the `X-SAF-Token` header. It is necessary to provide a service APPLID in the `authentication.applid` parameter.
-  
-       For more information, see [SAF IDT provider].(implement-new-saf-provider.md)
+       This value specifies that the service accepts SAF IDT, and expects that the token produced by the SAF IDT provider implementation is in the `X-SAF-Token` header. It is necessary to provide a service APPLID in the `authentication.applid` parameter. For more information, see [SAF IDT provider](./implement-new-saf-provider).
 
     * **x509**
 
