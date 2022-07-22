@@ -20,8 +20,10 @@ module.exports = {
     },
     {
       type: "category",
-      label: "What's new",
+      label: "Release notes",
       items: [
+        "getting-started/release-notes/v2_2_0",
+        "getting-started/release-notes/v2_1_0",
         "getting-started/release-notes/v2_0_0",
         "getting-started/zowe-office-hours"
       ],
@@ -37,13 +39,7 @@ module.exports = {
       type: "category",
       label: "Migrating from V1 to V2",
       items: [
-    //    "getting-started/migrate-instance",  //Not ready yet, need to check
         "extend/migrate-extensions",
-        {
-          type: "link",
-          label: "Migrating Zowe CLI from V1 to V2",
-          href: "../user-guide/cli-updatingcli#updating-to-the-zowe-cli-v2-long-term-support-v2-lts-version",
-        },
       ],
     },
     "getting-started/zowe-resources",
@@ -475,7 +471,7 @@ module.exports = {
     {
       type: "link",
       label: "Third Party Software Requirements",
-      href: "https://github.com/zowe/docs-site/tree/master/tpsr/tpsr-v2.0.x.md",
+      href: "https://github.com/zowe/docs-site/tree/master/tpsr/tpsr-v2.1.x.md",
     },
   ],
 };

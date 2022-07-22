@@ -9,7 +9,7 @@ You can use one of the following methods to initialize team configuration.
 1. Issue the following command:
 
     ```
-    zowe config init
+    zowe config init --global-config
     ```
 
     Zowe CLI responds with prompts for a username and password.

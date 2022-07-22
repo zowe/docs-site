@@ -23,6 +23,8 @@ its performance and create large log files that consume a large volume of disk s
     APIML_DEBUG_MODE_ENABLED=true
    ```
    By default debug mode is disabled, so the `APIML_DEBUG_MODE_ENABLED` is set to `false`.
+
+   Additionally, debug logging can be enabled for the Jobs API Service and Datasets and Unix Files API Service by adding `EXPLORER_API_LOG_LEVEL=debug` to `instance.env`.
    
 3. Restart Zowe&trade;.
 

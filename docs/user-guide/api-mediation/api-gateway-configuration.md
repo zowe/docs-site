@@ -141,8 +141,6 @@ To change this default configuration, include the following parameters:
     
 ## Gateway client certificate authentication
 
-Beginning with release 1.19 LTS, it is possible to authenticate using client certificates. The feature is functional and tested, but automated testing on various security systems is not complete. As such, the feature is provided as a beta release for early preview. If you would like to offer feedback using client certificate authentication, please create an issue against the api-layer repository. Client Certificate authentication will move out of Beta once test automation is fully implemented across different security systems.
-
 Use the following procedure to enable the feature to use a client certificate as the method of authentication for the API Mediation Layer Gateway.
 
 **Follow these steps:**
@@ -356,8 +354,6 @@ Once Zowe is installed, use the following procedure to limit which components st
 1. Open the file `zowe.yaml`.
 2. Find or add the property `components.*.enabled` and set this property to `false` for all components that should not be started.
 3. Restart `Zowe&trade`.   
-
-To learn more about the related section of the environment file, see [Creating and configuring the Zowe instance directory](../configure-instance-directory.md#component-groups). We recommend you open this page in a new tab.
 
 ## SAF Resource Checking
 

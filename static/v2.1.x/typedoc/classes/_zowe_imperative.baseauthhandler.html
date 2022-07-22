@@ -1,0 +1,781 @@
+<!doctype html>
+<html class="default no-js">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>BaseAuthHandler | Zowe Node.js SDK - v2.1.0</title>
+	<meta name="description" content="Documentation for Zowe Node.js SDK - v2.1.0">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="../assets/css/main.css">
+</head>
+<body>
+<header>
+	<div class="tsd-page-toolbar">
+		<div class="container">
+			<div class="table-wrap">
+				<div class="table-cell" id="tsd-search" data-index="../assets/js/search.json" data-base="..">
+					<div class="field">
+						<label for="tsd-search-field" class="tsd-widget search no-caption">Search</label>
+						<input id="tsd-search-field" type="text" />
+					</div>
+					<ul class="results">
+						<li class="state loading">Preparing search index...</li>
+						<li class="state failure">The search index is not available</li>
+					</ul>
+					<a href="../index.html" class="title">Zowe Node.js SDK - v2.1.0</a>
+				</div>
+				<div class="table-cell" id="tsd-widgets">
+					<div id="tsd-filter">
+						<a href="#" class="tsd-widget options no-caption" data-toggle="options">Options</a>
+						<div class="tsd-filter-group">
+							<div class="tsd-select" id="tsd-filter-visibility">
+								<span class="tsd-select-label">All</span>
+								<ul class="tsd-select-list">
+									<li data-value="public">Public</li>
+									<li data-value="protected">Public/Protected</li>
+									<li data-value="private" class="selected">All</li>
+								</ul>
+							</div>
+							<input type="checkbox" id="tsd-filter-inherited" checked />
+							<label class="tsd-widget" for="tsd-filter-inherited">Inherited</label>
+							<input type="checkbox" id="tsd-filter-externals" checked />
+							<label class="tsd-widget" for="tsd-filter-externals">Externals</label>
+						</div>
+					</div>
+					<a href="#" class="tsd-widget menu no-caption" data-toggle="menu">Menu</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="tsd-page-title">
+		<div class="container">
+			<ul class="tsd-breadcrumb">
+				<li>
+					<a href="../globals.html">Globals</a>
+				</li>
+				<li>
+					<a href="../modules/_zowe_imperative.html">@zowe/imperative</a>
+				</li>
+				<li>
+					<a href="_zowe_imperative.baseauthhandler.html">BaseAuthHandler</a>
+				</li>
+			</ul>
+			<h1>Class BaseAuthHandler</h1>
+		</div>
+	</div>
+</header>
+<div class="container container-main">
+	<div class="row">
+		<div class="col-8 col-content">
+			<section class="tsd-panel tsd-comment">
+				<div class="tsd-comment tsd-typography">
+					<div class="lead">
+						<p>This class is used by the auth command handlers as the base class for their implementation.</p>
+					</div>
+				</div>
+			</section>
+			<section class="tsd-panel tsd-hierarchy">
+				<h3>Hierarchy</h3>
+				<ul class="tsd-hierarchy">
+					<li>
+						<a href="_zowe_imperative.abstractauthhandler.html" class="tsd-signature-type">AbstractAuthHandler</a>
+						<ul class="tsd-hierarchy">
+							<li>
+								<span class="target">BaseAuthHandler</span>
+							</li>
+						</ul>
+					</li>
+				</ul>
+			</section>
+			<section class="tsd-panel">
+				<h3>Implements</h3>
+				<ul class="tsd-hierarchy">
+					<li><a href="../interfaces/_zowe_imperative.icommandhandler.html" class="tsd-signature-type">ICommandHandler</a></li>
+				</ul>
+			</section>
+			<section class="tsd-panel-group tsd-index-group">
+				<h2>Index</h2>
+				<section class="tsd-panel tsd-index-panel">
+					<div class="tsd-index-content">
+						<section class="tsd-index-section tsd-is-private-protected">
+							<h3>Properties</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-protected"><a href="_zowe_imperative.baseauthhandler.html#mdefaulttokentype" class="tsd-kind-icon">m<wbr>Default<wbr>Token<wbr>Type</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-protected"><a href="_zowe_imperative.baseauthhandler.html#mprofiletype" class="tsd-kind-icon">m<wbr>Profile<wbr>Type</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-protected"><a href="_zowe_imperative.baseauthhandler.html#mservicedescription" class="tsd-kind-icon">m<wbr>Service<wbr>Description</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-protected"><a href="_zowe_imperative.baseauthhandler.html#msession" class="tsd-kind-icon">m<wbr>Session</a></li>
+							</ul>
+						</section>
+						<section class="tsd-index-section ">
+							<h3>Methods</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected"><a href="_zowe_imperative.baseauthhandler.html#createsesscfgfromargs" class="tsd-kind-icon">create<wbr>Sess<wbr>Cfg<wbr>From<wbr>Args</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-protected"><a href="_zowe_imperative.baseauthhandler.html#dologin" class="tsd-kind-icon">do<wbr>Login</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-protected"><a href="_zowe_imperative.baseauthhandler.html#dologout" class="tsd-kind-icon">do<wbr>Logout</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-overwrite"><a href="_zowe_imperative.baseauthhandler.html#getauthhandlerapi" class="tsd-kind-icon">get<wbr>Auth<wbr>Handler<wbr>Api</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><a href="_zowe_imperative.baseauthhandler.html#getbaseprofilename" class="tsd-kind-icon">get<wbr>Base<wbr>Profile<wbr>Name</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-overwrite"><a href="_zowe_imperative.baseauthhandler.html#getpromptparams" class="tsd-kind-icon">get<wbr>Prompt<wbr>Params</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="_zowe_imperative.baseauthhandler.html#process" class="tsd-kind-icon">process</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-overwrite tsd-is-protected"><a href="_zowe_imperative.baseauthhandler.html#processlogin" class="tsd-kind-icon">process<wbr>Login</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><a href="_zowe_imperative.baseauthhandler.html#processloginold" class="tsd-kind-icon">process<wbr>Login<wbr>Old</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-overwrite tsd-is-protected"><a href="_zowe_imperative.baseauthhandler.html#processlogout" class="tsd-kind-icon">process<wbr>Logout</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><a href="_zowe_imperative.baseauthhandler.html#processlogoutold" class="tsd-kind-icon">process<wbr>Logout<wbr>Old</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><a href="_zowe_imperative.baseauthhandler.html#promptforbaseprofile" class="tsd-kind-icon">prompt<wbr>For<wbr>Base<wbr>Profile</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><a href="_zowe_imperative.baseauthhandler.html#showtoken" class="tsd-kind-icon">show<wbr>Token</a></li>
+							</ul>
+						</section>
+					</div>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group tsd-is-private-protected">
+				<h2>Properties</h2>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+					<a name="mdefaulttokentype" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagProtected">Protected</span> <span class="tsd-flag ts-flagAbstract">Abstract</span> m<wbr>Default<wbr>Token<wbr>Type</h3>
+					<div class="tsd-signature tsd-kind-icon">m<wbr>Default<wbr>Token<wbr>Type<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">SessConstants.TOKEN_TYPE_CHOICES</span></div>
+					<aside class="tsd-sources">
+						<p>Inherited from <a href="_zowe_imperative.abstractauthhandler.html">AbstractAuthHandler</a>.<a href="_zowe_imperative.abstractauthhandler.html#mdefaulttokentype">mDefaultTokenType</a></p>
+						<ul>
+							<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.3.2/packages/imperative/src/auth/handlers/AbstractAuthHandler.ts#L30">@zowe/imperative/packages/imperative/src/auth/handlers/AbstractAuthHandler.ts:30</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>The default token type to use if not specified as a command line option</p>
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+					<a name="mprofiletype" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagProtected">Protected</span> <span class="tsd-flag ts-flagAbstract">Abstract</span> m<wbr>Profile<wbr>Type</h3>
+					<div class="tsd-signature tsd-kind-icon">m<wbr>Profile<wbr>Type<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<p>Inherited from <a href="_zowe_imperative.abstractauthhandler.html">AbstractAuthHandler</a>.<a href="_zowe_imperative.abstractauthhandler.html#mprofiletype">mProfileType</a></p>
+						<ul>
+							<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.3.2/packages/imperative/src/auth/handlers/AbstractAuthHandler.ts#L25">@zowe/imperative/packages/imperative/src/auth/handlers/AbstractAuthHandler.ts:25</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>The profile type where token type and value should be stored</p>
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+					<a name="mservicedescription" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagProtected">Protected</span> <span class="tsd-flag ts-flagOptional">Optional</span> m<wbr>Service<wbr>Description</h3>
+					<div class="tsd-signature tsd-kind-icon">m<wbr>Service<wbr>Description<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<p>Inherited from <a href="_zowe_imperative.abstractauthhandler.html">AbstractAuthHandler</a>.<a href="_zowe_imperative.abstractauthhandler.html#mservicedescription">mServiceDescription</a></p>
+						<ul>
+							<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.3.2/packages/imperative/src/auth/handlers/AbstractAuthHandler.ts#L35">@zowe/imperative/packages/imperative/src/auth/handlers/AbstractAuthHandler.ts:35</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>The description of your service to be used in CLI prompt messages</p>
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-protected">
+					<a name="msession" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagProtected">Protected</span> m<wbr>Session</h3>
+					<div class="tsd-signature tsd-kind-icon">m<wbr>Session<span class="tsd-signature-symbol">:</span> <a href="_zowe_imperative.abstractsession.html" class="tsd-signature-type">AbstractSession</a></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.3.2/packages/imperative/src/auth/handlers/BaseAuthHandler.ts#L30">@zowe/imperative/packages/imperative/src/auth/handlers/BaseAuthHandler.ts:30</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>The session being created from the command line arguments / profile</p>
+						</div>
+					</div>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group ">
+				<h2>Methods</h2>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+					<a name="createsesscfgfromargs" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagProtected">Protected</span> <span class="tsd-flag ts-flagAbstract">Abstract</span> create<wbr>Sess<wbr>Cfg<wbr>From<wbr>Args</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+						<li class="tsd-signature tsd-kind-icon">create<wbr>Sess<wbr>Cfg<wbr>From<wbr>Args<span class="tsd-signature-symbol">(</span>args<span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_imperative.icommandarguments.html" class="tsd-signature-type">ICommandArguments</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_imperative.isession.html" class="tsd-signature-type">ISession</a></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Inherited from <a href="_zowe_imperative.abstractauthhandler.html">AbstractAuthHandler</a>.<a href="_zowe_imperative.abstractauthhandler.html#createsesscfgfromargs">createSessCfgFromArgs</a></p>
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.3.2/packages/imperative/src/auth/handlers/AbstractAuthHandler.ts#L85">@zowe/imperative/packages/imperative/src/auth/handlers/AbstractAuthHandler.ts:85</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>This is called by the {@link AbstractAuthHandler#process} when it needs a
+										session. Should be used to create a session to connect to the auth
+									service.</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>abstract</dt>
+									<dd></dd>
+								</dl>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>args: <a href="../interfaces/_zowe_imperative.icommandarguments.html" class="tsd-signature-type">ICommandArguments</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The command line arguments to use for building the session</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="../interfaces/_zowe_imperative.isession.html" class="tsd-signature-type">ISession</a></h4>
+							<p>The session object built from the command line arguments.</p>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-protected">
+					<a name="dologin" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagProtected">Protected</span> <span class="tsd-flag ts-flagAbstract">Abstract</span> do<wbr>Login</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-protected">
+						<li class="tsd-signature tsd-kind-icon">do<wbr>Login<span class="tsd-signature-symbol">(</span>session<span class="tsd-signature-symbol">: </span><a href="_zowe_imperative.abstractsession.html" class="tsd-signature-type">AbstractSession</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_imperative.ipromisewithprogress.html#promise" class="tsd-signature-type">Promise</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.3.2/packages/imperative/src/auth/handlers/BaseAuthHandler.ts#L39">@zowe/imperative/packages/imperative/src/auth/handlers/BaseAuthHandler.ts:39</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>This is called by the &quot;auth login&quot; command after it creates a session, to
+									obtain a token that can be stored in a profile.</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>abstract</dt>
+									<dd></dd>
+								</dl>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>session: <a href="_zowe_imperative.abstractsession.html" class="tsd-signature-type">AbstractSession</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The session object to use to connect to the auth service</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="../interfaces/_zowe_imperative.ipromisewithprogress.html#promise" class="tsd-signature-type">Promise</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span></h4>
+							<p>The response from the auth service containing a token</p>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-protected">
+					<a name="dologout" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagProtected">Protected</span> <span class="tsd-flag ts-flagAbstract">Abstract</span> do<wbr>Logout</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-protected">
+						<li class="tsd-signature tsd-kind-icon">do<wbr>Logout<span class="tsd-signature-symbol">(</span>session<span class="tsd-signature-symbol">: </span><a href="_zowe_imperative.abstractsession.html" class="tsd-signature-type">AbstractSession</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_imperative.ipromisewithprogress.html#promise" class="tsd-signature-type">Promise</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.3.2/packages/imperative/src/auth/handlers/BaseAuthHandler.ts#L47">@zowe/imperative/packages/imperative/src/auth/handlers/BaseAuthHandler.ts:47</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>This is called by the &quot;auth logout&quot; command after it creates a session, to
+									revoke a token before removing it from a profile.</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>abstract</dt>
+									<dd></dd>
+								</dl>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>session: <a href="_zowe_imperative.abstractsession.html" class="tsd-signature-type">AbstractSession</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The session object to use to connect to the auth service</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="../interfaces/_zowe_imperative.ipromisewithprogress.html#promise" class="tsd-signature-type">Promise</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-overwrite">
+					<a name="getauthhandlerapi" class="tsd-anchor"></a>
+					<h3>get<wbr>Auth<wbr>Handler<wbr>Api</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-overwrite">
+						<li class="tsd-signature tsd-kind-icon">get<wbr>Auth<wbr>Handler<wbr>Api<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_imperative.iauthhandlerapi.html" class="tsd-signature-type">IAuthHandlerApi</a></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Overrides <a href="_zowe_imperative.abstractauthhandler.html">AbstractAuthHandler</a>.<a href="_zowe_imperative.abstractauthhandler.html#getauthhandlerapi">getAuthHandlerApi</a></p>
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.3.2/packages/imperative/src/auth/handlers/BaseAuthHandler.ts#L68">@zowe/imperative/packages/imperative/src/auth/handlers/BaseAuthHandler.ts:68</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Returns auth handler API that provides convenient functions to create a
+									session from args, and use it to login or logout of an auth service.</p>
+								</div>
+							</div>
+							<h4 class="tsd-returns-title">Returns <a href="../interfaces/_zowe_imperative.iauthhandlerapi.html" class="tsd-signature-type">IAuthHandlerApi</a></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-private">
+					<a name="getbaseprofilename" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> get<wbr>Base<wbr>Profile<wbr>Name</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-private">
+						<li class="tsd-signature tsd-kind-icon">get<wbr>Base<wbr>Profile<wbr>Name<span class="tsd-signature-symbol">(</span>params<span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_imperative.ihandlerparameters.html" class="tsd-signature-type">IHandlerParameters</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.3.2/packages/imperative/src/auth/handlers/BaseAuthHandler.ts#L169">@zowe/imperative/packages/imperative/src/auth/handlers/BaseAuthHandler.ts:169</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>params: <a href="../interfaces/_zowe_imperative.ihandlerparameters.html" class="tsd-signature-type">IHandlerParameters</a></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-overwrite">
+					<a name="getpromptparams" class="tsd-anchor"></a>
+					<h3>get<wbr>Prompt<wbr>Params</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-overwrite">
+						<li class="tsd-signature tsd-kind-icon">get<wbr>Prompt<wbr>Params<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">[</span><a href="../interfaces/_zowe_imperative.ioptionsforaddconnprops.html" class="tsd-signature-type">IOptionsForAddConnProps</a><span class="tsd-signature-symbol">, </span><span class="tsd-signature-symbol">(</span>session<span class="tsd-signature-symbol">: </span><a href="_zowe_imperative.abstractsession.html" class="tsd-signature-type">AbstractSession</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><a href="../interfaces/_zowe_imperative.ipromisewithprogress.html#promise" class="tsd-signature-type">Promise</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">]</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Overrides <a href="_zowe_imperative.abstractauthhandler.html">AbstractAuthHandler</a>.<a href="_zowe_imperative.abstractauthhandler.html#getpromptparams">getPromptParams</a></p>
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.3.2/packages/imperative/src/auth/handlers/BaseAuthHandler.ts#L57">@zowe/imperative/packages/imperative/src/auth/handlers/BaseAuthHandler.ts:57</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>This is called by the &quot;config secure&quot; handler when it needs to prompt
+									for connection info to obtain an auth token.</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>deprecated</dt>
+									<dd><p>Use <code>getAuthHandlerApi</code> instead</p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-symbol">[</span><a href="../interfaces/_zowe_imperative.ioptionsforaddconnprops.html" class="tsd-signature-type">IOptionsForAddConnProps</a><span class="tsd-signature-symbol">, </span><span class="tsd-signature-symbol">(</span>session<span class="tsd-signature-symbol">: </span><a href="_zowe_imperative.abstractsession.html" class="tsd-signature-type">AbstractSession</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><a href="../interfaces/_zowe_imperative.ipromisewithprogress.html#promise" class="tsd-signature-type">Promise</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">]</span></h4>
+							<p>A tuple containing:</p>
+							<ul>
+								<li>Options for adding connection properties</li>
+								<li>The login handler</li>
+							</ul>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+					<a name="process" class="tsd-anchor"></a>
+					<h3>process</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+						<li class="tsd-signature tsd-kind-icon">process<span class="tsd-signature-symbol">(</span>commandParameters<span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_imperative.ihandlerparameters.html" class="tsd-signature-type">IHandlerParameters</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_imperative.ipromisewithprogress.html#promise" class="tsd-signature-type">Promise</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Implementation of <a href="../interfaces/_zowe_imperative.icommandhandler.html">ICommandHandler</a>.<a href="../interfaces/_zowe_imperative.icommandhandler.html#process">process</a></p>
+								<p>Inherited from <a href="_zowe_imperative.abstractauthhandler.html">AbstractAuthHandler</a>.<a href="_zowe_imperative.abstractauthhandler.html#process">process</a></p>
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.3.2/packages/imperative/src/auth/handlers/AbstractAuthHandler.ts#L46">@zowe/imperative/packages/imperative/src/auth/handlers/AbstractAuthHandler.ts:46</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>This handler is used for both &quot;auth login&quot; and &quot;auth logout&quot; commands.
+										It determines the correct action to take and calls either <code>processLogin</code>
+									or <code>processLogout</code> accordingly.</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>commandParameters: <a href="../interfaces/_zowe_imperative.ihandlerparameters.html" class="tsd-signature-type">IHandlerParameters</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Command parameters sent by imperative.</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="../interfaces/_zowe_imperative.ipromisewithprogress.html#promise" class="tsd-signature-type">Promise</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-overwrite tsd-is-protected">
+					<a name="processlogin" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagProtected">Protected</span> process<wbr>Login</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-overwrite tsd-is-protected">
+						<li class="tsd-signature tsd-kind-icon">process<wbr>Login<span class="tsd-signature-symbol">(</span>params<span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_imperative.ihandlerparameters.html" class="tsd-signature-type">IHandlerParameters</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_imperative.ipromisewithprogress.html#promise" class="tsd-signature-type">Promise</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Overrides <a href="_zowe_imperative.abstractauthhandler.html">AbstractAuthHandler</a>.<a href="_zowe_imperative.abstractauthhandler.html#processlogin">processLogin</a></p>
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.3.2/packages/imperative/src/auth/handlers/BaseAuthHandler.ts#L86">@zowe/imperative/packages/imperative/src/auth/handlers/BaseAuthHandler.ts:86</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Performs the login operation. Builds a session to connect to the auth
+										service, sends a login request to it to obtain a token, and stores the
+									resulting token in the profile of type <code>mProfileType</code>.</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>params: <a href="../interfaces/_zowe_imperative.ihandlerparameters.html" class="tsd-signature-type">IHandlerParameters</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Command parameters sent by imperative.</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="../interfaces/_zowe_imperative.ipromisewithprogress.html#promise" class="tsd-signature-type">Promise</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-private">
+					<a name="processloginold" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> process<wbr>Login<wbr>Old</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-private">
+						<li class="tsd-signature tsd-kind-icon">process<wbr>Login<wbr>Old<span class="tsd-signature-symbol">(</span>params<span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_imperative.ihandlerparameters.html" class="tsd-signature-type">IHandlerParameters</a>, tokenValue<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_imperative.ipromisewithprogress.html#promise" class="tsd-signature-type">Promise</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.3.2/packages/imperative/src/auth/handlers/BaseAuthHandler.ts#L245">@zowe/imperative/packages/imperative/src/auth/handlers/BaseAuthHandler.ts:245</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>params: <a href="../interfaces/_zowe_imperative.ihandlerparameters.html" class="tsd-signature-type">IHandlerParameters</a></h5>
+								</li>
+								<li>
+									<h5>tokenValue: <span class="tsd-signature-type">string</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="../interfaces/_zowe_imperative.ipromisewithprogress.html#promise" class="tsd-signature-type">Promise</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-overwrite tsd-is-protected">
+					<a name="processlogout" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagProtected">Protected</span> process<wbr>Logout</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-overwrite tsd-is-protected">
+						<li class="tsd-signature tsd-kind-icon">process<wbr>Logout<span class="tsd-signature-symbol">(</span>params<span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_imperative.ihandlerparameters.html" class="tsd-signature-type">IHandlerParameters</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_imperative.ipromisewithprogress.html#promise" class="tsd-signature-type">Promise</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Overrides <a href="_zowe_imperative.abstractauthhandler.html">AbstractAuthHandler</a>.<a href="_zowe_imperative.abstractauthhandler.html#processlogout">processLogout</a></p>
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.3.2/packages/imperative/src/auth/handlers/BaseAuthHandler.ts#L196">@zowe/imperative/packages/imperative/src/auth/handlers/BaseAuthHandler.ts:196</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Performs the logout operation. Deletes the token and token type from the profile,
+									and rebuilds the session.</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>params: <a href="../interfaces/_zowe_imperative.ihandlerparameters.html" class="tsd-signature-type">IHandlerParameters</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Command parameters sent by imperative.</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="../interfaces/_zowe_imperative.ipromisewithprogress.html#promise" class="tsd-signature-type">Promise</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-private">
+					<a name="processlogoutold" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> process<wbr>Logout<wbr>Old</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-private">
+						<li class="tsd-signature tsd-kind-icon">process<wbr>Logout<wbr>Old<span class="tsd-signature-symbol">(</span>params<span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_imperative.ihandlerparameters.html" class="tsd-signature-type">IHandlerParameters</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_imperative.ipromisewithprogress.html#promise" class="tsd-signature-type">Promise</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.3.2/packages/imperative/src/auth/handlers/BaseAuthHandler.ts#L302">@zowe/imperative/packages/imperative/src/auth/handlers/BaseAuthHandler.ts:302</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>params: <a href="../interfaces/_zowe_imperative.ihandlerparameters.html" class="tsd-signature-type">IHandlerParameters</a></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="../interfaces/_zowe_imperative.ipromisewithprogress.html#promise" class="tsd-signature-type">Promise</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-private">
+					<a name="promptforbaseprofile" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> prompt<wbr>For<wbr>Base<wbr>Profile</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-private">
+						<li class="tsd-signature tsd-kind-icon">prompt<wbr>For<wbr>Base<wbr>Profile<span class="tsd-signature-symbol">(</span>params<span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_imperative.ihandlerparameters.html" class="tsd-signature-type">IHandlerParameters</a>, profileName<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_imperative.ipromisewithprogress.html#promise" class="tsd-signature-type">Promise</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.3.2/packages/imperative/src/auth/handlers/BaseAuthHandler.ts#L173">@zowe/imperative/packages/imperative/src/auth/handlers/BaseAuthHandler.ts:173</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>params: <a href="../interfaces/_zowe_imperative.ihandlerparameters.html" class="tsd-signature-type">IHandlerParameters</a></h5>
+								</li>
+								<li>
+									<h5>profileName: <span class="tsd-signature-type">string</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="../interfaces/_zowe_imperative.ipromisewithprogress.html#promise" class="tsd-signature-type">Promise</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-private">
+					<a name="showtoken" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> show<wbr>Token</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-private">
+						<li class="tsd-signature tsd-kind-icon">show<wbr>Token<span class="tsd-signature-symbol">(</span>response<span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_imperative.ihandlerresponseapi.html" class="tsd-signature-type">IHandlerResponseApi</a>, tokenValue<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.3.2/packages/imperative/src/auth/handlers/BaseAuthHandler.ts#L181">@zowe/imperative/packages/imperative/src/auth/handlers/BaseAuthHandler.ts:181</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>response: <a href="../interfaces/_zowe_imperative.ihandlerresponseapi.html" class="tsd-signature-type">IHandlerResponseApi</a></h5>
+								</li>
+								<li>
+									<h5>tokenValue: <span class="tsd-signature-type">string</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+			</section>
+		</div>
+		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
+			<nav class="tsd-navigation primary">
+				<ul>
+					<li class="globals  ">
+						<a href="../globals.html"><em>Globals</em></a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_core_for_zowe_sdk.html">@zowe/core-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class="current tsd-kind-module">
+						<a href="../modules/_zowe_imperative.html">@zowe/imperative</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_provisioning_for_zowe_sdk.html">@zowe/provisioning-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_zos_console_for_zowe_sdk.html">@zowe/zos-<wbr>console-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_zos_files_for_zowe_sdk.html">@zowe/zos-<wbr>files-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_zos_jobs_for_zowe_sdk.html">@zowe/zos-<wbr>jobs-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_zos_logs_for_zowe_sdk.html">@zowe/zos-<wbr>logs-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_zos_tso_for_zowe_sdk.html">@zowe/zos-<wbr>tso-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_zos_uss_for_zowe_sdk.html">@zowe/zos-<wbr>uss-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_zos_workflows_for_zowe_sdk.html">@zowe/zos-<wbr>workflows-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_zosmf_for_zowe_sdk.html">@zowe/zosmf-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+				</ul>
+			</nav>
+			<nav class="tsd-navigation secondary menu-sticky">
+				<ul class="before-current">
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_core_for_zowe_sdk.html" class="tsd-kind-icon">@zowe/core-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+				</ul>
+				<ul class="current">
+					<li class="current tsd-kind-module">
+						<a href="../modules/_zowe_imperative.html" class="tsd-kind-icon">@zowe/imperative</a>
+						<ul>
+							<li class="current tsd-kind-class tsd-parent-kind-module">
+								<a href="_zowe_imperative.baseauthhandler.html" class="tsd-kind-icon">Base<wbr>Auth<wbr>Handler</a>
+								<ul>
+									<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+										<a href="_zowe_imperative.baseauthhandler.html#mdefaulttokentype" class="tsd-kind-icon">m<wbr>Default<wbr>Token<wbr>Type</a>
+									</li>
+									<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+										<a href="_zowe_imperative.baseauthhandler.html#mprofiletype" class="tsd-kind-icon">m<wbr>Profile<wbr>Type</a>
+									</li>
+									<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+										<a href="_zowe_imperative.baseauthhandler.html#mservicedescription" class="tsd-kind-icon">m<wbr>Service<wbr>Description</a>
+									</li>
+									<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-protected">
+										<a href="_zowe_imperative.baseauthhandler.html#msession" class="tsd-kind-icon">m<wbr>Session</a>
+									</li>
+									<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+										<a href="_zowe_imperative.baseauthhandler.html#createsesscfgfromargs" class="tsd-kind-icon">create<wbr>Sess<wbr>Cfg<wbr>From<wbr>Args</a>
+									</li>
+									<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-protected">
+										<a href="_zowe_imperative.baseauthhandler.html#dologin" class="tsd-kind-icon">do<wbr>Login</a>
+									</li>
+									<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-protected">
+										<a href="_zowe_imperative.baseauthhandler.html#dologout" class="tsd-kind-icon">do<wbr>Logout</a>
+									</li>
+									<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-overwrite">
+										<a href="_zowe_imperative.baseauthhandler.html#getauthhandlerapi" class="tsd-kind-icon">get<wbr>Auth<wbr>Handler<wbr>Api</a>
+									</li>
+									<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private">
+										<a href="_zowe_imperative.baseauthhandler.html#getbaseprofilename" class="tsd-kind-icon">get<wbr>Base<wbr>Profile<wbr>Name</a>
+									</li>
+									<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-overwrite">
+										<a href="_zowe_imperative.baseauthhandler.html#getpromptparams" class="tsd-kind-icon">get<wbr>Prompt<wbr>Params</a>
+									</li>
+									<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+										<a href="_zowe_imperative.baseauthhandler.html#process" class="tsd-kind-icon">process</a>
+									</li>
+									<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-overwrite tsd-is-protected">
+										<a href="_zowe_imperative.baseauthhandler.html#processlogin" class="tsd-kind-icon">process<wbr>Login</a>
+									</li>
+									<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private">
+										<a href="_zowe_imperative.baseauthhandler.html#processloginold" class="tsd-kind-icon">process<wbr>Login<wbr>Old</a>
+									</li>
+									<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-overwrite tsd-is-protected">
+										<a href="_zowe_imperative.baseauthhandler.html#processlogout" class="tsd-kind-icon">process<wbr>Logout</a>
+									</li>
+									<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private">
+										<a href="_zowe_imperative.baseauthhandler.html#processlogoutold" class="tsd-kind-icon">process<wbr>Logout<wbr>Old</a>
+									</li>
+									<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private">
+										<a href="_zowe_imperative.baseauthhandler.html#promptforbaseprofile" class="tsd-kind-icon">prompt<wbr>For<wbr>Base<wbr>Profile</a>
+									</li>
+									<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private">
+										<a href="_zowe_imperative.baseauthhandler.html#showtoken" class="tsd-kind-icon">show<wbr>Token</a>
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</li>
+				</ul>
+				<ul class="after-current">
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_provisioning_for_zowe_sdk.html" class="tsd-kind-icon">@zowe/provisioning-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_zos_console_for_zowe_sdk.html" class="tsd-kind-icon">@zowe/zos-<wbr>console-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_zos_files_for_zowe_sdk.html" class="tsd-kind-icon">@zowe/zos-<wbr>files-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_zos_jobs_for_zowe_sdk.html" class="tsd-kind-icon">@zowe/zos-<wbr>jobs-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_zos_logs_for_zowe_sdk.html" class="tsd-kind-icon">@zowe/zos-<wbr>logs-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_zos_tso_for_zowe_sdk.html" class="tsd-kind-icon">@zowe/zos-<wbr>tso-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_zos_uss_for_zowe_sdk.html" class="tsd-kind-icon">@zowe/zos-<wbr>uss-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_zos_workflows_for_zowe_sdk.html" class="tsd-kind-icon">@zowe/zos-<wbr>workflows-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_zosmf_for_zowe_sdk.html" class="tsd-kind-icon">@zowe/zosmf-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</div>
+</div>
+<footer class="with-border-bottom">
+	<div class="container">
+		<h2>Legend</h2>
+		<div class="tsd-legend-group">
+			<ul class="tsd-legend">
+				<li class="tsd-kind-object-literal"><span class="tsd-kind-icon">Object literal</span></li>
+				<li class="tsd-kind-variable"><span class="tsd-kind-icon">Variable</span></li>
+				<li class="tsd-kind-function"><span class="tsd-kind-icon">Function</span></li>
+				<li class="tsd-kind-type-alias"><span class="tsd-kind-icon">Type alias</span></li>
+				<li class="tsd-kind-type-alias tsd-has-type-parameter"><span class="tsd-kind-icon">Type alias with type parameter</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-class"><span class="tsd-kind-icon">Class</span></li>
+				<li class="tsd-kind-class tsd-has-type-parameter"><span class="tsd-kind-icon">Class with type parameter</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class"><span class="tsd-kind-icon">Method</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-interface"><span class="tsd-kind-icon">Interface</span></li>
+				<li class="tsd-kind-interface tsd-has-type-parameter"><span class="tsd-kind-icon">Interface with type parameter</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-protected"><span class="tsd-kind-icon">Protected property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-protected"><span class="tsd-kind-icon">Protected method</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-enum"><span class="tsd-kind-icon">Enumeration</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited method</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private method</span></li>
+			</ul>
+		</div>
+	</div>
+</footer>
+<div class="container tsd-generator">
+	<p>Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p>
+</div>
+<div class="overlay"></div>
+<script src="../assets/js/main.js"></script>
+</body>
+</html>

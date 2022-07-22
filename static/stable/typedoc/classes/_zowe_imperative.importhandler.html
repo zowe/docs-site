@@ -3,8 +3,8 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>ImportHandler | Zowe Node.js SDK - v2.0.0</title>
-	<meta name="description" content="Documentation for Zowe Node.js SDK - v2.0.0">
+	<title>ImportHandler | Zowe Node.js SDK - v2.2.0</title>
+	<meta name="description" content="Documentation for Zowe Node.js SDK - v2.2.0">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
 </head>
@@ -22,7 +22,7 @@
 						<li class="state loading">Preparing search index...</li>
 						<li class="state failure">The search index is not available</li>
 					</ul>
-					<a href="../index.html" class="title">Zowe Node.js SDK - v2.0.0</a>
+					<a href="../index.html" class="title">Zowe Node.js SDK - v2.2.0</a>
 				</div>
 				<div class="table-cell" id="tsd-widgets">
 					<div id="tsd-filter">
@@ -92,9 +92,16 @@
 				<h2>Index</h2>
 				<section class="tsd-panel tsd-index-panel">
 					<div class="tsd-index-content">
+						<section class="tsd-index-section tsd-is-private tsd-is-private-protected">
+							<h3>Properties</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="_zowe_imperative.importhandler.html#params" class="tsd-kind-icon">params</a></li>
+							</ul>
+						</section>
 						<section class="tsd-index-section ">
 							<h3>Methods</h3>
 							<ul class="tsd-index-list">
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><a href="_zowe_imperative.importhandler.html#buildsession" class="tsd-kind-icon">build<wbr>Session</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><a href="_zowe_imperative.importhandler.html#downloadschema" class="tsd-kind-icon">download<wbr>Schema</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><a href="_zowe_imperative.importhandler.html#fetchconfig" class="tsd-kind-icon">fetch<wbr>Config</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_zowe_imperative.importhandler.html#process" class="tsd-kind-icon">process</a></li>
@@ -103,8 +110,53 @@
 					</div>
 				</section>
 			</section>
+			<section class="tsd-panel-group tsd-member-group tsd-is-private tsd-is-private-protected">
+				<h2>Properties</h2>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
+					<a name="params" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> params</h3>
+					<div class="tsd-signature tsd-kind-icon">params<span class="tsd-signature-symbol">:</span> <a href="../interfaces/_zowe_imperative.ihandlerparameters.html" class="tsd-signature-type">IHandlerParameters</a></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.3.5/packages/imperative/src/config/cmd/import/import.handler.ts#L26">@zowe/imperative/packages/imperative/src/config/cmd/import/import.handler.ts:26</a></li>
+						</ul>
+					</aside>
+				</section>
+			</section>
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Methods</h2>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-private">
+					<a name="buildsession" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> build<wbr>Session</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-private">
+						<li class="tsd-signature tsd-kind-icon">build<wbr>Session<span class="tsd-signature-symbol">(</span>url<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">URL</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_zowe_imperative.session.html" class="tsd-signature-type">Session</a></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.3.5/packages/imperative/src/config/cmd/import/import.handler.ts#L82">@zowe/imperative/packages/imperative/src/config/cmd/import/import.handler.ts:82</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Build a session from a URL and command line arguments.</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>url: <span class="tsd-signature-type">URL</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Web URL of the config JSON file</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="_zowe_imperative.session.html" class="tsd-signature-type">Session</a></h4>
+							<p>Populated session object</p>
+						</li>
+					</ul>
+				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-private">
 					<a name="downloadschema" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagPrivate">Private</span> download<wbr>Schema</h3>
@@ -115,7 +167,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.0.2/packages/imperative/src/config/cmd/import/import.handler.ts#L87">@zowe/imperative/packages/imperative/src/config/cmd/import/import.handler.ts:87</a></li>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.3.5/packages/imperative/src/config/cmd/import/import.handler.ts#L119">@zowe/imperative/packages/imperative/src/config/cmd/import/import.handler.ts:119</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -152,7 +204,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.0.2/packages/imperative/src/config/cmd/import/import.handler.ts#L76">@zowe/imperative/packages/imperative/src/config/cmd/import/import.handler.ts:76</a></li>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.3.5/packages/imperative/src/config/cmd/import/import.handler.ts#L102">@zowe/imperative/packages/imperative/src/config/cmd/import/import.handler.ts:102</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -185,7 +237,7 @@
 							<aside class="tsd-sources">
 								<p>Implementation of <a href="../interfaces/_zowe_imperative.icommandhandler.html">ICommandHandler</a>.<a href="../interfaces/_zowe_imperative.icommandhandler.html#process">process</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.0.2/packages/imperative/src/config/cmd/import/import.handler.ts#L32">@zowe/imperative/packages/imperative/src/config/cmd/import/import.handler.ts:32</a></li>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.3.5/packages/imperative/src/config/cmd/import/import.handler.ts#L35">@zowe/imperative/packages/imperative/src/config/cmd/import/import.handler.ts:35</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -267,6 +319,12 @@
 							<li class="current tsd-kind-class tsd-parent-kind-module">
 								<a href="_zowe_imperative.importhandler.html" class="tsd-kind-icon">Import<wbr>Handler</a>
 								<ul>
+									<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
+										<a href="_zowe_imperative.importhandler.html#params" class="tsd-kind-icon">params</a>
+									</li>
+									<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private">
+										<a href="_zowe_imperative.importhandler.html#buildsession" class="tsd-kind-icon">build<wbr>Session</a>
+									</li>
 									<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private">
 										<a href="_zowe_imperative.importhandler.html#downloadschema" class="tsd-kind-icon">download<wbr>Schema</a>
 									</li>
@@ -335,10 +393,11 @@
 				<li class="tsd-kind-interface tsd-has-type-parameter"><span class="tsd-kind-icon">Interface with type parameter</span></li>
 			</ul>
 			<ul class="tsd-legend">
-				<li class="tsd-kind-enum"><span class="tsd-kind-icon">Enumeration</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private method</span></li>
 			</ul>
 			<ul class="tsd-legend">
-				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private method</span></li>
+				<li class="tsd-kind-enum"><span class="tsd-kind-icon">Enumeration</span></li>
 			</ul>
 		</div>
 	</div>
