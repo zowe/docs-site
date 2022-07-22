@@ -320,11 +320,11 @@ The following error message codes may appear on the app-server log. Use the foll
 
   **Reason:**
 
-  TODO
+  The server has added the plugin with plugin identifier %s to its bootstrapped list of plugins. It also emits a `pluginAdded` event.
 
   **Action:**
 
-  TODO
+  No action required. If the user desires, they may check their list of plugins on the Desktop to see if the plugin was added successfully. 
 
 
 
@@ -334,11 +334,11 @@ The following error message codes may appear on the app-server log. Use the foll
 
   **Reason:**
 
-  TODO
+  A child process with the path %s has received data %s to it - usually done interally by ProcessManager.
 
   **Action:**
 
-  TODO
+  No action required.
 
 
 
@@ -348,11 +348,11 @@ The following error message codes may appear on the app-server log. Use the foll
 
   **Reason:**
 
-  TODO
+  A process with the path has exited %s with a return code of %s.
 
   **Action:**
 
-  TODO
+  No action required.
 
 
 
@@ -362,11 +362,11 @@ The following error message codes may appear on the app-server log. Use the foll
 
   **Reason:**
 
-  TODO
+  Begins ending all child processes.
 
   **Action:**
 
-  TODO
+  No action required.
 
 
 
@@ -376,11 +376,11 @@ The following error message codes may appear on the app-server log. Use the foll
 
   **Reason:**
 
-  TODO
+  Tells server to shutdown by ending all child processes and then perform cleanup.
 
   **Action:**
 
-  TODO
+  No action required.
 
 
 
