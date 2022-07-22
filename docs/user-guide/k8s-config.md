@@ -88,32 +88,37 @@ spec:
 
 Similarly, to running Zowe services on z/OS, you can use Zowe configuration file (`zowe.yaml`) to customize Zowe in Kubernetes.
 
-You can modify `samples/config-cm.yaml`,  , and `samples/certificates-secret.yaml` directly. Or more conveniently, if you have Zowe ZSS/ZIS running on z/OS, the Kubernetes environment can reuse instance and keystore configuration from that installation.
+You can modify `samples/config-cm.yaml` and `samples/certificates-secret.yaml` directly. Or more conveniently, if you have Zowe ZSS/ZIS running on z/OS, the Kubernetes environment can reuse instance and keystore configuration from that installation. However note that if your existing keystore configuration does not have verify certificate set to `STRICT` mode, you need to make some changes to your `zowe.yaml` configuration to ensure verify certificate is using `STRICT` mode and generate a new set of certificates. Contiune reading below...
 
 If you want to manually create, or later customize the ConfigMaps and Secrets, see [Customizing or manually creating ConfigMaps and Secrets](#customizing-or-manually-creating-configmaps-and-secrets) for details.
 
 To create and modify [ConfigMaps](https://kubernetes.io/docs/concepts/configuration/configmap/) and [Secrets](https://kubernetes.io/docs/concepts/configuration/secret/) by using the migrate configuration script, complete the following steps:
 
-a. On z/OS, run the following command:
+a. To make Zowe v2 certificates work in Kubernetes, in your zowe.yaml (in runtime directory), you need to:
+
+- set `zowe.verifyCertificate` to `STRICT` mode
+- set `zowe.setup.certificate.pkcs12.caAlias`. Default alias is `local_ca`
+- set `zowe.setup.certificate.pkcs12.caPassword`. Default CA password is `local_ca_password`
+- make sure the certificate you are using have defined the following domains in certificate Subject Alt Name (SAN):
+
+    - your external domains to access Zowe APIML Gateway Service running in Kubernetes cluster
+    - `*.<k8s-namespace>.svc.<k8s-cluster-name>`
+    - `*.discovery-service.<k8s-namespace>.svc.<k8s-cluster-name>`
+    - `*.gateway-service.<k8s-namespace>.svc.<k8s-cluster-name>`
+    - `*.<k8s-namespace>.pod.<k8s-cluster-name>`
+
+    `<k8s-namespace>` is the Kubernetes Namespace you installed Zowe into. And `<k8s-cluster-name>` is the Kubernetes cluster name, which usually should be `cluster.local`. Note that the below command will automatically add above k8s internal domain into SAN.
+
+Next, on z/OS, run the following command:
 
 ```
 cd <runtime-dir> 
-./bin/zwe migrate for kubernetes --config /path/to/my/zowe.yaml --domains "my-k8s-cluster.company.com,9.10.11.12"
+./bin/zwe migrate for kubernetes --config /path/to/my/zowe.yaml --domains "my-k8s-cluster.company.com"
 ``` 
 
-This migration script supports these parameters:
+For more detailed explaination of zwe migrate command parameters, please refer to [zwe migrate for kubernetes](../appendix/zwe_server_command_reference/zwe/migrate/for/zwe-migrate-for-kubernetes.md).
 
-- `--config` or `-c`: Defines the path to your configuration file, usually referred as `zowe.yaml`.
-- `--domains`: Defines the domain list will be put into certificate Subject Alternative Name (SAN). This is optional, default value is `localhost`.
-- `--external-port`: Defines the external port number to access APIML Gateway running in Kubernetes. This is optional, default value is `7554`.
-- `--k8s-namespace`: Defines the Kubernetes namespace. This is optional, default value is `zowe`.
-- `--k8s-cluster-name`: Defines the Kubernetes cluster name. This is optional, default value is `cluster.local`.
-- `--password`: Defines password of the certificate keystore. This is optional, default value is `password`.
-- `--ca-alias`: Defines the alias name of the certificate authority which is used to sign CSR. This is optional, default value is `local_ca`. This argument is only used to sign a new certificate if the migration script will re-generate new certificates for Kubernetes.
-- `--ca-password`: Defines the password of the certificate authority keystore which is used to sign CSR. This is optional, default value is `local_ca_password`. This argument is only used if the migration script will re-generate new certificates for Kubernetes.
-- `--silent` or `-s` is an optional parameter can help you suppress all standard output except for the Kubernetes manifests will be generated.
-
-As a result, it displays ConfigMaps `zowe-config` and Secrets (`zowe-certificates-secret`) Kubernetes objects which are based on the Zowe instance and keystore used. The content looks similar to `samples/config-cm.yaml`, `samples/certificates-cm.yaml` and `samples/certificates-secret.yaml` but with real values.
+As a result, it displays ConfigMaps `zowe-config` and Secrets (`zowe-certificates-secret`) Kubernetes objects which are based on the Zowe instance and keystore used. The content looks similar to `samples/config-cm.yaml` and `samples/certificates-secret.yaml` but with real values.
 
 b. Follow the instructions in the script output to copy the output and save it as a YAML file `configs.yaml` on your computer where you manage Kubernetes.
 
@@ -290,8 +295,6 @@ To make certificates work in Kubernetes, make sure the certificate you are using
 `<k8s-namespace>` is the Kubernetes Namespace you installed Zowe into. And `<k8s-cluster-name>` is the Kubernetes cluster name, which usually should be `cluster.local`.
 
 Without the additional domains in SAN, you may see warnings/errors related to certificate validation.
-
-If you cannot add those domains into certificate Subject Alt Name (SAN), you can change `zowe.verifyCertificates` to `NONSTRICT` mode. Zowe components will not validate domain names but will continue to validate certificate chain, validity and whether it's trusted in Zowe truststore.
 
 :::caution
 
