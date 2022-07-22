@@ -272,6 +272,7 @@ Authentication is performed in the following ways:
 When the client authenticates with the API ML, the client receives the JWT token in exchange. This token can be used for further authentication. If z/OSMF is configured as the authentication provider and the client already received a JWT token produced by z/OSMF, it is possible to reuse this token within API ML for authentication.  
 
 ### Authentication parameters
+
 Parameters are specified in the onboarding enablers.
 
 Authentication parameters enable a service to accept a Zowe JWT or client certificate. The API Gateway translates the authentication token to an authentication method supported by a service.
@@ -827,7 +828,7 @@ There are two ways to set up certificates on a z/OS machine:
 - Certificates in SAF keyring
 - Certificates in UNIX files (keystore and truststore)
  
-The [Configuring Zowe certificates](../../user-guide/configure-certificates.md#configuring-zowe-certificates) contains instructions about how to set up certificates during installation. Follow the procedure in the applicable section described in this article during installation.
+The [Configuring PKCS12 certificates](../../user-guide/configure-certificates-keystore) and [Configuring JCERACFS certificates in a key ring](../../user-guide/configure-certificates-keyring) contain instructions about how to set up certificates during installation. Follow the procedure in the applicable section described in this article during installation.
 
 
 #### Import the local CA certificate to your browser
