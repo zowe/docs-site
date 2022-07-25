@@ -16,14 +16,16 @@ Zowe CLI is supported on Windows, Linux, and Mac operating systems. Meet the fol
   **Important!** If you are installing Zowe CLI with Node.js 16 on a Windows operating system, see [Installing Zowe CLI with Node.js 16 on Windows](../user-guide/cli-install-cli-nodejs-windows.md).
 
 - **npm:** Install a version of Node Package Manager (npm) that is compatible with your version of Node.js.
-  
-  **Note:** npm is included with *most* Node.js installations. Issue the following command to determine your currently installed version of npm.
+
+  npm is included with *most* Node.js installations. Issue the following command to determine your currently installed version of npm.
   
   ```
   npm --version
   ```
   
   See [Node.js release matrix](https://nodejs.org/en/download/releases/) to verify that the versions are compatible.
+
+  **Important!** If you are running npm version 8.11.0 or 8.12.0 and you are installing Zowe CLI on a computer that cannot access the Internet or has restricted Internet access, your Zowe CLI installation appears to complete successfully. However, when you issue Zowe commands that access the secure credential store, the commands return error messages. To circumvent this problem, install npm 8.12.1 or later on your computer. If you cannot upgrade to 8.12.1 or later, see *Zowe Commands Fail with Secure Credential Errors* in [Known Zowe CLI issues](../troubleshoot/cli/known-cli.md).
 
 - **Secure Credential Store:** On Linux systems, you must install the packages `gnome-keyring` and `libsecret` (or `libsecret-1-0` on Debian and Ubuntu).
 

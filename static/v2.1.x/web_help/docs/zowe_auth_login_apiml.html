@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>auth login apiml</title>
+<link rel="stylesheet" href="../css/bundle-docs.css">
+<link rel="stylesheet" href="../css/docs.css">
+<article class="markdown-body">
+<h2><a href="zowe.html">zowe</a> › <a href="zowe_auth.html">auth</a> › <a href="zowe_auth_login.html">login</a> › <a href="zowe_auth_login_apiml.html">apiml</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
+<p>Log in to Zowe API Mediation Layer authentication service and obtain or update a token.</p>
+<p>The token provides authentication to services that support the API ML SSO (Single Sign-On) capability. When you log in, the token is stored in your default base profile until it expires. Base profiles store connection information shared by multiple services (e.g., z/OSMF), and are used if you do not supply connection information in a service profile. To take advantage of the API ML SSO capability, you should omit username and password in service profiles so that the token in the base profile is used.</p>
+<h4>Usage</h4>
+<p>zowe auth login apiml [options]</p>
+<h4>Options</h4>
+<ul>
+<li>
+<p><code>--show-token</code> | <code>--st</code> <em>(boolean)</em></p>
+<ul>
+<li>Show the token when login is successful. If specified, does not save the token to a profile.</li>
+</ul>
+</li>
+</ul>
+<h4>Base Connection Options</h4>
+<ul>
+<li>
+<p><code>--host</code> | <code>-H</code> <em>(string)</em></p>
+<ul>
+<li>Host name of service on the mainframe.</li>
+</ul>
+</li>
+<li>
+<p><code>--port</code> | <code>-P</code> <em>(number)</em></p>
+<ul>
+<li>Port number of service on the mainframe.</li>
+</ul>
+</li>
+<li>
+<p><code>--user</code> | <code>-u</code> <em>(string)</em></p>
+<ul>
+<li>User name to authenticate to service on the mainframe.</li>
+</ul>
+</li>
+<li>
+<p><code>--password</code> | <code>--pass</code> | <code>--pw</code> <em>(string)</em></p>
+<ul>
+<li>Password to authenticate to service on the mainframe.</li>
+</ul>
+</li>
+<li>
+<p><code>--reject-unauthorized</code> | <code>--ru</code> <em>(boolean)</em></p>
+<ul>
+<li>
+<p>Reject self-signed certificates.</p>
+<p>Default value: true</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--cert-file</code> <em>(local file path)</em></p>
+<ul>
+<li>The file path to a certificate file to use for authentication</li>
+</ul>
+</li>
+<li>
+<p><code>--cert-key-file</code> <em>(local file path)</em></p>
+<ul>
+<li>The file path to a certificate key file to use for authentication</li>
+</ul>
+</li>
+</ul>
+<h4>Profile Options</h4>
+<ul>
+<li>
+<p><code>--base-profile</code> | <code>--base-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (base) profile to load for this command execution.</li>
+</ul>
+</li>
+</ul>
+<h4>Examples</h4>
+<ul>
+<li>
+<p>Log in to an API ML instance to obtain or update the token stored in your base profile:</p>
+<ul>
+<li><code>zowe auth login apiml</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe auth login apiml">Copy</button></li>
+</ul>
+</li>
+<li>
+<p>Log in to an API ML instance to obtain a token without storing it in a profile:</p>
+<ul>
+<li><code>zowe auth login apiml --show-token</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe auth login apiml --show-token">Copy</button></li>
+</ul>
+</li>
+</ul>
+</article>
+<script src="../js/bundle-docs.js"></script>
+<script src="../js/docs.js"></script>

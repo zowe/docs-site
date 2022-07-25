@@ -515,8 +515,6 @@ After you define and validate the service in YAML format, you are ready to add y
 
 1. Locate the Zowe instance directory. The Zowe instance directory is the directory from which Zowe was launched, or else was passed as an argument to the SDSF command used to start Zowe.  If you are unsure which instance directory a particular Zowe job is using, open the `JESJCL` spool file and navigate to the line that contains `STARTING EXEC ZWESVSTC,INSTANCE=`. This is the fully qualified path to the instance directory.
 
-    **Tip:**  For more information, see [Creating and configuring the Zowe instance directory](../../user-guide/configure-instance-directory.md#extensions).
-
     **Note:** We use the `${zoweInstanceDir}` symbol in following instructions.
 
 2. Add the fully qualified zFS path of your YAML file to `ZWE_STATIC_DEFINITIONS_DIR` in `zowe.yaml`.

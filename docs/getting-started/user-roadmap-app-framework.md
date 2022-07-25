@@ -38,11 +38,7 @@ The following definition of skill levels about Zowe will help you gather most re
 
 - [**Installing Zowe Application Framework**](../user-guide/install-zos.md#z-os-installation-roadmap)
 
-   This article provides an overview of the essential steps involved in installing Zowe Application Framework. If you want to use Docker for the installation, instead follow the link below. 
-
-- [**Installing Zowe Application Framework using Docker**](../user-guide/install-docker.md)
-
-   Learn how to use Docker to install Zowe. 
+   This article provides an overview of the essential steps involved in installing Zowe Application Framework. If you want to use Docker for the installation, instead follow the link below.
 
 ## Configuring and updating
 
@@ -51,10 +47,6 @@ The following definition of skill levels about Zowe will help you gather most re
 - [Configuring Zowe Application Framework](../user-guide/mvd-configuration.md)
      
    This information describes how to configure the Zowe Application Framework as a Mediation Layer client, configure connections for the terminal application plug-ins, modify the Zowe Application Server and Zowe System Services (ZSS) configuration, and so on.
-
-- [**Upgrading the z/OS system for Zowe**](../user-guide/upgrade-zos-system.md)
-
-   Learn how to upgrade Zowe API Mediation Layer to a more recent version.
 
 ## Using Zowe Application Framework
 
