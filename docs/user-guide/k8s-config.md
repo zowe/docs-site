@@ -86,28 +86,30 @@ spec:
 
 ## 3. Create and modify ConfigMaps and Secrets
 
-Similarly, to running Zowe services on z/OS, you can use Zowe configuration file (`zowe.yaml`) to customize Zowe in Kubernetes.
+Similarly, to run Zowe services on z/OS, you can use the Zowe `zowe.yaml` configuration file to customize Zowe in Kubernetes.
 
-You can modify `samples/config-cm.yaml` and `samples/certificates-secret.yaml` directly. Or more conveniently, if you have Zowe ZSS/ZIS running on z/OS, the Kubernetes environment can reuse instance and keystore configuration from that installation. However note that if your existing keystore configuration does not have verify certificate set to `STRICT` mode, you need to make some changes to your `zowe.yaml` configuration to ensure verify certificate is using `STRICT` mode and generate a new set of certificates. Contiune reading below...
+You can modify `samples/config-cm.yaml` and `samples/certificates-secret.yaml` directly. Or more conveniently, if you have Zowe ZSS/ZIS running on z/OS, the Kubernetes environment can reuse instance and keystore configuration from that installation. Ensure that the verify certificate setting of your existing keystore configuration is set to `STRICT` mode. Otherwise, update your `zowe.yaml` configuration file to change the setting to `STRICT` mode and generate a new set of certificates. 
 
 If you want to manually create, or later customize the ConfigMaps and Secrets, see [Customizing or manually creating ConfigMaps and Secrets](#customizing-or-manually-creating-configmaps-and-secrets) for details.
 
 To create and modify [ConfigMaps](https://kubernetes.io/docs/concepts/configuration/configmap/) and [Secrets](https://kubernetes.io/docs/concepts/configuration/secret/) by using the migrate configuration script, complete the following steps:
 
-a. To make Zowe v2 certificates work in Kubernetes, in your zowe.yaml (in runtime directory), you need to:
+a. To make Zowe v2 certificates work in Kubernetes, in your `zowe.yaml` (in runtime directory), you need to:
 
-- set `zowe.verifyCertificate` to `STRICT` mode
-- set `zowe.setup.certificate.pkcs12.caAlias`. Default alias is `local_ca`
-- set `zowe.setup.certificate.pkcs12.caPassword`. Default CA password is `local_ca_password`
-- make sure the certificate you are using have defined the following domains in certificate Subject Alt Name (SAN):
+- set `zowe.verifyCertificate` to `STRICT` mode.
+- set `zowe.setup.certificate.pkcs12.caAlias`. Default alias is `local_ca`.
+- set `zowe.setup.certificate.pkcs12.caPassword`. Default CA password is `local_ca_password`.
+- make sure the certificate that you are using have defined the following domains in certificate Subject Alt Name (SAN):
 
-    - your external domains to access Zowe APIML Gateway Service running in Kubernetes cluster
-    - `*.<k8s-namespace>.svc.<k8s-cluster-name>`
-    - `*.discovery-service.<k8s-namespace>.svc.<k8s-cluster-name>`
-    - `*.gateway-service.<k8s-namespace>.svc.<k8s-cluster-name>`
-    - `*.<k8s-namespace>.pod.<k8s-cluster-name>`
+  - your external domains to access Zowe APIML Gateway Service running in Kubernetes cluster
+  - `*.<k8s-namespace>.svc.<k8s-cluster-name>`
+  - `*.discovery-service.<k8s-namespace>.svc.<k8s-cluster-name>`
+  - `*.gateway-service.<k8s-namespace>.svc.<k8s-cluster-name>`
+  - `*.<k8s-namespace>.pod.<k8s-cluster-name>`
 
-    `<k8s-namespace>` is the Kubernetes Namespace you installed Zowe into. And `<k8s-cluster-name>` is the Kubernetes cluster name, which usually should be `cluster.local`. Note that the below command will automatically add above k8s internal domain into SAN.
+  where, 
+  - `<k8s-namespace>` is the Kubernetes Namespace you installed Zowe into
+  - `<k8s-cluster-name>` is the Kubernetes cluster name, which usually should be `cluster.local`. Note that the following command will automatically add the k8s internal domain into SAN.
 
 Next, on z/OS, run the following command:
 
@@ -116,7 +118,7 @@ cd <runtime-dir>
 ./bin/zwe migrate for kubernetes --config /path/to/my/zowe.yaml --domains "my-k8s-cluster.company.com"
 ``` 
 
-For more detailed explaination of zwe migrate command parameters, please refer to [zwe migrate for kubernetes](../appendix/zwe_server_command_reference/zwe/migrate/for/zwe-migrate-for-kubernetes.md).
+For more detailed explaination of zwe migrate command parameters, see [zwe migrate for kubernetes](../appendix/zwe_server_command_reference/zwe/migrate/for/zwe-migrate-for-kubernetes.md).
 
 As a result, it displays ConfigMaps `zowe-config` and Secrets (`zowe-certificates-secret`) Kubernetes objects which are based on the Zowe instance and keystore used. The content looks similar to `samples/config-cm.yaml` and `samples/certificates-secret.yaml` but with real values.
 
@@ -208,7 +210,7 @@ kubectl get services --namespace zowe
 
 Exposing the Discovery service is only required when there is a Zowe service or extension which needs to be registered to the API Mediation Layer but is running outside of Kubernetes, such as on z/OS. Otherwise, the discovery service can remain accessible only within the Kubernetes environment.
 
-**Optional:** To setup the discovery service without exposing it externally, edit `samples/discovery-service-lb.yaml` if using `LoadBalancer` type services, or `samples/discovery-service-np.yaml` if using `NodePort` type services. In either file, specify `ClusterIP` as the type, replacing the `NodePort` or `LoadBalancer` value.
+**Optional:** To set up the discovery service without exposing it externally, edit `samples/discovery-service-lb.yaml` if using `LoadBalancer` type services, or `samples/discovery-service-np.yaml` if using `NodePort` type services. In either file, specify `ClusterIP` as the type, replacing the `NodePort` or `LoadBalancer` value.
 
 To enable the service externally when using `LoadBalancer` services, run the command:
 
@@ -259,7 +261,7 @@ If you are using OpenShift and choose to use `LoadBalancer` services, you may al
 oc get svc -n zowe
 ```
 
-If you see an IP in the `EXTERNAL-IP` column, that means your OpenShift is properly configured and can provision external IP for you. If you see `<pending>` and it does not change after waiting for a while, that means you may not be able to use `LoadBalancer` services with your current configuration. Try `ClusterIP` services and define `Route`. A [Route](https://docs.openshift.com/enterprise/3.0/architecture/core_concepts/routes.html) is a way to expose a service by giving it an externally-reachable hostname. 
+If you see an IP in the `EXTERNAL-IP` column, that means your OpenShift is properly configured and can provision external IP for you. If you see `<pending>` and it does not change after waiting for a while, that means you may not be able to use `LoadBalancer` services with your current configuration. Try `ClusterIP` services and define `Route`. A [Route](https://docs.openshift.com/enterprise/3.0/architecture/core_concepts/routes.html) is a way to expose a service by giving it an externally reachable hostname. 
 
 To create a route, perform the following steps:
 
