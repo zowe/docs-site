@@ -1,7 +1,7 @@
 # Installing and configuring Zowe z/OS components using scripts
 
 A Zowe installation creates two PDS sample libraries, `SZWEAUTH` and `SZWESAMP`. Before starting the two Zowe started tasks for the main Zowe z/OS components and the cross memory server, you must complete additional configuration steps as described in
-  - [Installing and starting the Zowe started task (ZWESVSTC)](configure-zowe-server.md) or [Installing and starting the Zowe high availability started task (ZWESLSTC)](configure-zowe-ha-server.md)
+  - [Installing and starting the Zowe started task (ZWESVSTC)](configure-zowe-server.md) 
   - [Installing and configuring the Zowe cross memory server (ZWESISTC)](configure-xmem-server.md)
 
 Zowe provides UNIX shell scripts to assist with installation and configuration for scenarios where you wish to automate this process, for example if you have a DevOps pipeline or other repeatable scenario where you are installing and starting a Zowe runtime. These are the same scripts used by the Zowe community themselves for the automated Zowe continuous integration continuous delivery (CICD) pipeline which creates Zowe releases.

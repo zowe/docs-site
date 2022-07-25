@@ -255,7 +255,7 @@ Request a new certificate that contains a valid z/OSMF host name in the subject 
 
 #### Re-create the Zowe keystore
 
-Re-create the Zowe keystore by deleting it and re-creating it. For more information, see [Configuring Zowe certificates](../user-guide/configure-certificates.md).  The Zowe keystore directory is the value of the `KEYSTORE_DIRECTORY` variable in the `zowe.yaml` file that is used to launch Zowe. See [Creating and configuring the Zowe instance directory](../user-guide/configure-instance-directory.md#keystore-configuration).
+Re-create the Zowe keystore by deleting it and re-creating it. For more information, see [Configuring PKCS12 certificates](../user-guide/configure-certificates-keystore.md).  The Zowe keystore directory is the value of the `KEYSTORE_DIRECTORY` variable in the `zowe.yaml` file that is used to launch Zowe.
 
 ### API ML throws I/O error on GET request and cannot connect to other services
 
@@ -402,7 +402,7 @@ The Zowe desktop is able to be displayed in a browser but fails to logon.
  
 **Solution:**
 
-Check that the Zowe certificate has been configured as a client certificate, and not just as a server certificate. More detail can be found in [Configuring certificates](../user-guide/configure-certificates.md).
+Check that the Zowe certificate has been configured as a client certificate, and not just as a server certificate. More detail can be found in [Configuring PKCS12 certificates](../user-guide/configure-certificates-keystore) and [Configuring JCERACFS certificates in a key ring](../user-guide/configure-certificates-keyring).
 
 ### Java z/OS components of Zowe unable to read certificates from keyring
 

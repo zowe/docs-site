@@ -515,7 +515,7 @@ where:
     **Note:** Ensure that you increase the version number when you introduce changes to the API service product family details.
 
 ### Authentication parameters
-These parameters are not required. Default values are used when parameters are not specified. For more information, see [Authentication Parameters for Onboarding REST API Services](../extend-apiml/api-mediation-security.md#authentication-parameters).
+These parameters are not required. Default values are used when parameters are not specified. For more information, see [Authentication Parameters for Onboarding REST API Services](../extend-apiml/api-mediation-security#authentication-parameters).
     
 ### API Security
 
@@ -526,7 +526,7 @@ The Zowe API ML Discovery Service communicates with its clients in secure Https 
 Client services need to configure several TLS/SSL parameters in order to communicate with the API ML Discovery service.
 When an enabler is used to onboard a service, the configuration is provided in the `ssl` section/group in the same _YAML_ file that is used to configure the Eureka parameters and the service metadata.
 
-For more information about API ML security, see [API ML security](api-mediation-security.md).
+For more information about API ML security, see [API ML security](./api-mediation-security).
 
 TLS/SSL configuration consists of the following parameters:
 
@@ -552,7 +552,7 @@ TLS/SSL configuration consists of the following parameters:
 
 * **keyStore**
 
-  This parameter specifies the keystore file used to store the private key. When using keyring, the value should be set to the SAF keyring location. For information about required certificates, see [Zowe API ML TLS requirements](../extend-apiml/api-mediation-security.md#zowe-api-ml-tls-requirements).
+  This parameter specifies the keystore file used to store the private key. When using keyring, the value should be set to the SAF keyring location. For information about required certificates, see [Zowe API ML TLS requirements](./api-mediation-security#zowe-api-ml-tls-requirements).
 
   If you have an issue with loading the keystore file in your environment, try to provide the absolute path to the keystore file. The sample keystore file for local deployment is in [api-layer repository](https://github.com/zowe/api-layer/tree/master/keystore/localhost)
 
@@ -566,7 +566,7 @@ TLS/SSL configuration consists of the following parameters:
 
 * **trustStore**
 
-  This parameter specifies the truststore file used to keep other parties public keys and certificates. When using keyring, this value should be set to the SAF keyring location. For information about required certificates, see [Zowe API ML TLS requirements](../extend-apiml/api-mediation-security.md#zowe-api-ml-tls-requirements).
+  This parameter specifies the truststore file used to keep other parties public keys and certificates. When using keyring, this value should be set to the SAF keyring location. For information about required certificates, see [Zowe API ML TLS requirements](./api-mediation-security#zowe-api-ml-tls-requirements).
 
   If you have an issue with loading the truststore file in your environment, try to provide the absolute path to the truststore file. The sample truststore file for local deployment is in [api-layer repository](https://github.com/zowe/api-layer/tree/master/keystore/localhost)
 
@@ -583,7 +583,7 @@ TLS/SSL configuration consists of the following parameters:
 ### SAF Keyring configuration
 
 You can choose to use SAF keyring instead of keystore and truststore for storing certificates.
-For information about required certificates, see [Zowe API ML TLS requirements](../extend-apiml/api-mediation-security.md#zowe-api-ml-tls-requirements). For information about running Java on z/OS with keyring, see [SAF Keyring](../extend-apiml/api-mediation-security.md#api-ml-saf-keyring). Make sure that the enabler can access and read the keyring. Please refer to documentation of your security system for details.
+For information about required certificates, see [Zowe API ML TLS requirements](./api-mediation-security#zowe-api-ml-tls-requirements). For information about running Java on z/OS with keyring, see [SAF Keyring](./api-mediation-security#api-ml-saf-keyring). Make sure that the enabler can access and read the keyring. Please refer to documentation of your security system for details.
 
 
 The following example shows enabler configuration with keyrings.
@@ -625,7 +625,7 @@ where:
 ### Custom Metadata
 
 
-For information about custom metadata, see the topic [Custom Metadata](../extend-apiml/custom-metadata.md).
+For information about custom metadata, see the topic [Custom Metadata](./custom-metadata).
     
 ##  Registering your service with API ML
 

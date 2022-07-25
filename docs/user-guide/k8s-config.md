@@ -251,7 +251,7 @@ To verify, run the following commands:
 
 This command must display two Ingresses `gateway-ingress` and `discovery-ingress`.
 
-Upon completion, you can finish the setup by [applying zowe and starting it](k8s-using.md).
+Upon completion, you can finish the setup by [applying zowe and starting it](./k8s-using).
 
 ### 4c. Create Route (OpenShift)
 
@@ -280,7 +280,7 @@ To verify, run the following commands:
 
 This command must display the two Services `gateway` and `discovery`.
 
-Upon completion, you can finish the setup by [applying zowe and starting it](k8s-using.md).
+Upon completion, you can finish the setup by [applying zowe and starting it](./k8s-using).
 
 ## Customizing or manually creating ConfigMaps and Secrets
 
