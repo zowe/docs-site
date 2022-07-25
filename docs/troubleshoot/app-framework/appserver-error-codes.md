@@ -964,11 +964,11 @@ The following error message codes may appear on the app-server log. Use the foll
 
   **Reason:**
 
-  TODO
+  It specifies that Apache Tomcat Host Manager stopping ID.
 
   **Action:**
 
-  TODO
+  No action required.
 
 
 
@@ -978,11 +978,11 @@ The following error message codes may appear on the app-server log. Use the foll
 
   **Reason:**
 
-  TODO
+  It specifies that Apache Tomcat Host Manager successfully cleanup the ID.
 
   **Action:**
 
-  TODO
+  No action required.
 
 
 
@@ -992,11 +992,11 @@ The following error message codes may appear on the app-server log. Use the foll
 
   **Reason:**
 
-  TODO
+  It specifies that it extracted the war directory successfully to the destination path.
 
   **Action:**
 
-  TODO
+  No action required.
 
 
 
@@ -1006,11 +1006,12 @@ The following error message codes may appear on the app-server log. Use the foll
 
   **Reason:**
 
-  TODO
+  A junction link is a sort of subset or a variation of a symbolic link.
+  It creates a junction link between extracted war directory to appbase directory.
 
   **Action:**
 
-  TODO
+  No action required.
 
 
 
@@ -1020,11 +1021,12 @@ The following error message codes may appear on the app-server log. Use the foll
 
   **Reason:**
 
-  TODO
+  It creates a symlink  between extracted war directory to appbase directory.
+
 
   **Action:**
 
-  TODO
+  No action required.
 
 
 
@@ -1033,13 +1035,12 @@ The following error message codes may appear on the app-server log. Use the foll
   Registering App (ID=%s) with App Server
 
   **Reason:**
-
-  TODO
+  The registration attempt from ZWED0109I has succeeded.
+  Before the server starts it registers all the app with the App server and installed them.
 
   **Action:**
 
-  TODO
-
+  No action required.
 
 
 ### ZWED0110I
@@ -1048,11 +1049,11 @@ The following error message codes may appear on the app-server log. Use the foll
 
   **Reason:**
 
-  TODO
+  All app installed to *components* directory and registered with App Server successfully.
 
   **Action:**
 
-  TODO
+  No action required.
 
 
 
@@ -1062,11 +1063,11 @@ The following error message codes may appear on the app-server log. Use the foll
 
   **Reason:**
 
-  TODO
+  We are effectively registering auth plugin as a part of authentication category.
 
   **Action:**
 
-  TODO
+  No action required.
 
 
 
@@ -1104,11 +1105,11 @@ The following error message codes may appear on the app-server log. Use the foll
 
   **Reason:**
 
-  TODO
+  A new plugin is detected and is being added.
 
   **Action:**
 
-  TODO
+  No action required.
 
 
 
@@ -1118,11 +1119,17 @@ The following error message codes may appear on the app-server log. Use the foll
 
   **Reason:**
 
-  TODO
+  The process listed as childProcessPath was not spawned under the specified worker
+  because it was listed as being a process that should only be started once. 
+  Some child processes should be started per-worker for redundancy, 
+  while others that need exclusive access to a resource such as
+  a network port are specified with the property *childProcess.once*,
+  and are skipped on all but one worker. The other workers print 
+  this message to indicate this behavior.
 
   **Action:**
 
-  TODO
+  No action required.
 
 
 
@@ -1132,11 +1139,11 @@ The following error message codes may appear on the app-server log. Use the foll
 
   **Reason:**
 
-  TODO
+  It set the location for serverModuleLocation and clientModuleLocation.
 
   **Action:**
 
-  TODO
+  No action required.
 
 
 
@@ -1146,11 +1153,11 @@ The following error message codes may appear on the app-server log. Use the foll
 
   **Reason:**
 
-  TODO
+  Location of files will be in *lib* directory.
 
   **Action:**
 
-  TODO
+  No action required.
 
 
 
@@ -1160,11 +1167,11 @@ The following error message codes may appear on the app-server log. Use the foll
 
   **Reason:**
 
-  TODO
+  NODE_PATH is set to environment.
 
   **Action:**
 
-  TODO
+  No action required.
 
 
 
@@ -1174,11 +1181,11 @@ The following error message codes may appear on the app-server log. Use the foll
 
   **Reason:**
 
-  TODO
+   For plugins with type 'library', plugin %s has been registered and will be serving library data from location %s
 
   **Action:**
 
-  TODO
+  No action required.
 
 
 
@@ -1188,11 +1195,11 @@ The following error message codes may appear on the app-server log. Use the foll
 
   **Reason:**
 
-  TODO
+  An auth category was requested as the default in the server configuration, or requested by a particular plugin, and because the auth plugin pluginId handles this category, it is being loaded by the app-server.
 
   **Action:**
 
-  TODO
+  No action required.
 
 
 
@@ -1244,11 +1251,11 @@ The following error message codes may appear on the app-server log. Use the foll
 
   **Reason:**
 
-  TODO
+  All the plugins will be loaded at plugins directory at path *workspace/app-server/plugins*. Plugins will be available in app server.
 
   **Action:**
 
-  TODO
+  No action required.
 
 
 
@@ -1258,39 +1265,11 @@ The following error message codes may appear on the app-server log. Use the foll
 
   **Reason:**
 
-  TODO
+ A plugin object was not returned in the *makePlugin()* call of the app-server, and therefore the app-server did not load this plugin. The plugin will not be available in the server.
 
   **Action:**
 
-  TODO
-
-
-
-### ZWED0126I
-
-  SessionStore.sessions.size=%d
-
-  **Reason:**
-
-  TODO
-
-  **Action:**
-
-  TODO
-
-
-
-### ZWED0127I
-
-  Timeout cleaner dead session= %s key= %s map.size=%s
-
-  **Reason:**
-
-  TODO
-
-  **Action:**
-
-  TODO
+  Check the log for references to *pluginId* to see other messages that indicate the cause
 
 
 
@@ -1314,11 +1293,15 @@ The following error message codes may appear on the app-server log. Use the foll
 
   **Reason:**
 
-  TODO
+  *app-server*  components use HTTPS by default, and the port parameters components.app-server.port  
+  control which port they are accessible from. However, each have advanced configuration options 
+  to control their HTTPS behavior.
+  app-server ports start listening on the port number that is assigned in zowe configuration file 
+  and can be accessible.
 
   **Action:**
 
-  TODO
+  No action requied.
 
 
 
