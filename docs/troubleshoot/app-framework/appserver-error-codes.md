@@ -320,7 +320,7 @@ The following error message codes may appear on the app-server log. Use the foll
 
   **Reason:**
 
-  The server has added the plugin with plugin identifier %s to its bootstrapped list of plugins. It also emits a `pluginAdded` event.
+  The server has added the plugin with _plugin identifier_ to its bootstrapped list of plugins. It also emits a `pluginAdded` event.
 
   **Action:**
 
@@ -334,7 +334,7 @@ The following error message codes may appear on the app-server log. Use the foll
 
   **Reason:**
 
-  A child process with the path %s has received data %s to it - usually done interally by ProcessManager.
+  A child process from _path_ has received data of _data_ - usually done interally by ProcessManager.
 
   **Action:**
 
@@ -348,7 +348,7 @@ The following error message codes may appear on the app-server log. Use the foll
 
   **Reason:**
 
-  A process with the path has exited %s with a return code of %s.
+  A process from _path_ has exited with a return _code_.
 
   **Action:**
 
@@ -376,25 +376,11 @@ The following error message codes may appear on the app-server log. Use the foll
 
   **Reason:**
 
-  Tells server to shutdown by ending all child processes and then perform cleanup.
+  Tells server to shutdown after receiving _signal_ by ending all child processes and then performing cleanup.
 
   **Action:**
 
   No action required.
-
-
-
-### ZWED0051I
-
-  Resolved path: %s -> %s
-
-  **Reason:**
-
-  TODO
-
-  **Action:**
-
-  TODO
 
 
 
@@ -404,11 +390,11 @@ The following error message codes may appear on the app-server log. Use the foll
 
   **Reason:**
 
-  TODO
+  Notifies that the server is removing a plugin with _plugin identifier_ located in _path_.
 
   **Action:**
 
-  TODO
+  No action required. Optionally, you could verify the deletion of the plugin in the Desktop, doing a GET call to the list of the plugins, or by viewing the status code of the REST request if plugin was deleted by network request.
 
 
 
@@ -418,11 +404,11 @@ The following error message codes may appear on the app-server log. Use the foll
 
   **Reason:**
 
-  TODO
+  Making an external proxy of _type_ (HTTP or HTTPS) for _plugin identifier_:_service name_ at the _destination_.
 
   **Action:**
 
-  TODO
+  No action required.
 
 
 
@@ -432,11 +418,11 @@ The following error message codes may appear on the app-server log. Use the foll
 
   **Reason:**
 
-  TODO
+  Attempting to install new root service at _url_.
 
   **Action:**
 
-  TODO
+  No action required.
 
 
 
@@ -446,11 +432,11 @@ The following error message codes may appear on the app-server log. Use the foll
 
   **Reason:**
 
-  TODO
+  Attempting to install new root service proxy at _url_.
 
   **Action:**
 
-  TODO
+  No action required.
 
 
 
@@ -460,39 +446,11 @@ The following error message codes may appear on the app-server log. Use the foll
 
   **Reason:**
 
-  TODO
+  Attempting to install new websocket service for _plugin identifier_.
 
   **Action:**
 
-  TODO
-
-
-
-### ZWED0057I
-
-  Loaded Router for plugin=%s, service=%s. Router=%s
-
-  **Reason:**
-
-  TODO
-
-  **Action:**
-
-  TODO
-
-
-
-### ZWED0058I
-
-  Loaded Router from factory for plugin=%s, service=%s. Factory=%s
-
-  **Reason:**
-
-  TODO
-
-  **Action:**
-
-  TODO
+  No action required.
 
 
 
@@ -502,39 +460,11 @@ The following error message codes may appear on the app-server log. Use the foll
 
   **Reason:**
 
-  TODO
+  Connection info for _plugin identifier_:_service_ was found as _info_.
 
   **Action:**
 
-  TODO
-
-
-
-### ZWED0060I
-
-  %s: installing data services
-
-  **Reason:**
-
-  TODO
-
-  **Action:**
-
-  TODO
-
-
-
-### ZWED0061I
-
-  %s: installing service %s
-
-  **Reason:**
-
-  TODO
-
-  **Action:**
-
-  TODO
+  No action required.
 
 
 
@@ -544,25 +474,11 @@ The following error message codes may appear on the app-server log. Use the foll
 
   **Reason:**
 
-  TODO
+  For _plugin identifier_, the server is installing new router at _url_.
 
   **Action:**
 
-  TODO
-
-
-
-### ZWED0063I
-
-  %s: importing service %s
-
-  **Reason:**
-
-  TODO
-
-  **Action:**
-
-  TODO
+  No action required.
 
 
 
@@ -572,25 +488,11 @@ The following error message codes may appear on the app-server log. Use the foll
 
   **Reason:**
 
-  TODO
+  For _plugin identifier_, the server is instaling import from _sourcePlugin_ with _name_ at _url_.
 
   **Action:**
 
-  TODO
-
-
-
-### ZWED0065I
-
-  %s: installing static file handlers...
-
-  **Reason:**
-
-  TODO
-
-  **Action:**
-
-  TODO
+  No action required.
 
 
 
@@ -600,11 +502,11 @@ The following error message codes may appear on the app-server log. Use the foll
 
   **Reason:**
 
-  TODO
+  For _plugin identifier_, the server is serving static files and assets at _url_.
 
   **Action:**
 
-  TODO
+  No action required.
 
 
 
@@ -614,11 +516,11 @@ The following error message codes may appear on the app-server log. Use the foll
 
   **Reason:**
 
-  TODO
+  For _plugin identifier_, the server is serving libary files at _url_.
 
   **Action:**
 
-  TODO
+  No action required.
 
 
 
