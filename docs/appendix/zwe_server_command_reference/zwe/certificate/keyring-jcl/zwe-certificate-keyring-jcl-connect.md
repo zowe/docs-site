@@ -24,29 +24,30 @@ zwe certificate keyring-jcl connect --dataset-prefix my-dataset-prefix --jcllib 
 
 Full name|Alias|Type|Required|Help message
 |---|---|---|---|---
---dataset-prefix,--ds-prefix||string|yes||Dataset prefix where Zowe is installed.
---jcllib||string|yes||JCLLIB data set name where the JCL will be placed.
---security-dry-run||boolean|no||Whether to dry run security related setup.
---security-product||string|no||Security product. Can be a value of RACF, ACF2 or TSS.
---keyring-owner||string|yes||Owner of the keyring.
---keyring-name||string|yes||Name of the keyring.
---trust-cas||string|no||Labels of extra certificate authorities should be trusted, separated by comma (Maximum 2).
---connect-user||string|yes||Certificate owner. Can be `SITE` or a user ID.
---connect-label||string|yes||Certificate label to connect.
---trust-zosmf||boolean|no||Whether to trust z/OSMF CA.
---zosmf-ca||string|no||Labels of z/OSMF root certificate authorities. Specify "_auto_" to let Zowe to detect automatically. This only works for RACF.
---zosmf-user||string|no||z/OSMF user name. This is used to automatically detect z/OSMF root certificate authorities.
---ignore-security-failures||boolean|no||Whether to ignore security setup job failures.
+--dataset-prefix,--ds-prefix||string|yes|Dataset prefix where Zowe is installed.
+--jcllib||string|yes|JCLLIB data set name where the JCL will be placed.
+--security-dry-run||boolean|no|Whether to dry run security related setup.
+--security-product||string|no|Security product. Can be a value of RACF, ACF2 or TSS.
+--keyring-owner||string|yes|Owner of the keyring.
+--keyring-name||string|yes|Name of the keyring.
+--trust-cas||string|no|Labels of extra certificate authorities should be trusted, separated by comma (Maximum 2).
+--connect-user||string|yes|Certificate owner. Can be `SITE` or a user ID.
+--connect-label||string|yes|Certificate label to connect.
+--trust-zosmf||boolean|no|Whether to trust z/OSMF CA.
+--zosmf-ca||string|no|Labels of z/OSMF root certificate authorities. Specify "_auto_" to let Zowe to detect automatically. This only works for RACF.
+--zosmf-user||string|no|z/OSMF user name. This is used to automatically detect z/OSMF root certificate authorities.
+--ignore-security-failures||boolean|no|Whether to ignore security setup job failures.
 ### Inherited from parent command
 
 Full name|Alias|Type|Required|Help message
 |---|---|---|---|---
---help|-h|boolean|no||Display this help.
---debug,--verbose|-v|boolean|no||Enable verbose mode.
---trace|-vv|boolean|no||Enable trace level debug mode.
---silent|-s|boolean|no||Do not display messages to standard output.
---log-dir,--log|-l|string|no||Write logs to this directory.
---config|-c|string|no||Path to Zowe configuration zowe.yaml file.
+--help|-h|boolean|no|Display this help.
+--debug,--verbose|-v|boolean|no|Enable verbose mode.
+--trace|-vv|boolean|no|Enable trace level debug mode.
+--silent|-s|boolean|no|Do not display messages to standard output.
+--log-dir,--log|-l|string|no|Write logs to this directory.
+--config|-c|string|no|Path to Zowe configuration zowe.yaml file.
+--configmgr||boolean|no|(Experimental, WIP)Enable use of configmgr capabilities.
 
 
 ## Errors
@@ -71,6 +72,7 @@ ZWEL0109E|109|The Zowe YAML config file specified does not exist.
 ZWEL0110E|110|Doesn't have write permission on %s directory.
 ZWEL0111E|111|Command aborts with error.
 ZWEL0112E|112|Zowe runtime environment must be prepared first with "zwe internal start prepare" command.
+ZWEL0114E|114|Reached max retries on allocating random number.
 ZWEL0120E|120|This command must run on a z/OS system.
 ZWEL0121E|121|Cannot find node. Please define NODE_HOME environment variable.
 ZWEL0122E|122|Cannot find java. Please define JAVA_HOME environment variable.
@@ -87,3 +89,7 @@ ZWEL0139E|139|Failed to create directory %s.
 ZWEL0140E|140|Failed to translate Zowe configuration (%s).
 ZWEL0142E|142|Failed to refresh APIML static registrations.
 ZWEL0172E||Component %s has %s defined but the file is missing.
+ZWEL0200E||Failed to copy USS file %s to MVS data set %s.
+ZWEL0201E||File %s does not exist.
+ZWEL0202E||Unable to find samplib key for %s.
+ZWEL0203E||Env value in key-value pair %s has not been defined.

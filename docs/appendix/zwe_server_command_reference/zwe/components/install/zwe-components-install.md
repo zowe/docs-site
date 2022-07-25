@@ -6,8 +6,8 @@
 
 ## Sub-commands
 
-* [extract](./zwe-components-install-extract)
-* [process-hook](./zwe-components-install-process-hook)
+* [extract](./zwe-components-install-extract.md)
+* [process-hook](./zwe-components-install-process-hook.md)
 
 ## Description
 
@@ -31,9 +31,9 @@ zwe components install extract -c /path/to/zowe.yaml -o /path/to/component/packa
 
 Full name|Alias|Type|Required|Help message
 |---|---|---|---|---
---component-file,--component|-o|string|yes||Path to the component package or directory.
---auto-encoding|-e|string|no||If we want to automatically tagging the module files.
---skip-enable||boolean|no||Install component without enabling it for use.
+--component-file,--component|-o|string|yes|Path to the component package or directory.
+--auto-encoding|-e|string|no|If we want to automatically tagging the module files.
+--skip-enable||boolean|no|Install component without enabling it for use.
 
 ## Parameters
 
@@ -41,12 +41,13 @@ Full name|Alias|Type|Required|Help message
 
 Full name|Alias|Type|Required|Help message
 |---|---|---|---|---
---help|-h|boolean|no||Display this help.
---debug,--verbose|-v|boolean|no||Enable verbose mode.
---trace|-vv|boolean|no||Enable trace level debug mode.
---silent|-s|boolean|no||Do not display messages to standard output.
---log-dir,--log|-l|string|no||Write logs to this directory.
---config|-c|string|no||Path to Zowe configuration zowe.yaml file.
+--help|-h|boolean|no|Display this help.
+--debug,--verbose|-v|boolean|no|Enable verbose mode.
+--trace|-vv|boolean|no|Enable trace level debug mode.
+--silent|-s|boolean|no|Do not display messages to standard output.
+--log-dir,--log|-l|string|no|Write logs to this directory.
+--config|-c|string|no|Path to Zowe configuration zowe.yaml file.
+--configmgr||boolean|no|(Experimental, WIP)Enable use of configmgr capabilities.
 
 
 ## Errors
@@ -72,6 +73,7 @@ ZWEL0109E|109|The Zowe YAML config file specified does not exist.
 ZWEL0110E|110|Doesn't have write permission on %s directory.
 ZWEL0111E|111|Command aborts with error.
 ZWEL0112E|112|Zowe runtime environment must be prepared first with "zwe internal start prepare" command.
+ZWEL0114E|114|Reached max retries on allocating random number.
 ZWEL0120E|120|This command must run on a z/OS system.
 ZWEL0121E|121|Cannot find node. Please define NODE_HOME environment variable.
 ZWEL0122E|122|Cannot find java. Please define JAVA_HOME environment variable.
@@ -88,3 +90,7 @@ ZWEL0139E|139|Failed to create directory %s.
 ZWEL0140E|140|Failed to translate Zowe configuration (%s).
 ZWEL0142E|142|Failed to refresh APIML static registrations.
 ZWEL0172E||Component %s has %s defined but the file is missing.
+ZWEL0200E||Failed to copy USS file %s to MVS data set %s.
+ZWEL0201E||File %s does not exist.
+ZWEL0202E||Unable to find samplib key for %s.
+ZWEL0203E||Env value in key-value pair %s has not been defined.
