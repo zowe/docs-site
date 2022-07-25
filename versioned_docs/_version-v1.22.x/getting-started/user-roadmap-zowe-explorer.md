@@ -53,10 +53,6 @@ The following definition of skill levels about Zowe Explorer helps you find the 
 
 > Zowe skill level: Advanced
 
-* [**Extend Zowe Explorer**](../user-guide/ze-extensions.md)
-
-   This page describes how to create an extension for Zowe Explorer to introduce more functionalities.
-
 * [**Zowe Explorer FTP Extension**](https://github.com/zowe/vscode-extension-for-zowe/tree/master/packages/zowe-explorer-ftp-extension)
 
    This document in Zowe Explorer repository describes how to install and use the FTP extension, which adds the FTP protocol to the Zowe Explorer VS Code extension, allowing you to use z/OS FTP Plug-in for Zowe CLI profiles to connect and interact with z/OS USS.

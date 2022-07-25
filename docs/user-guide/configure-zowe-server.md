@@ -2,7 +2,7 @@
 
 The PROCLIB member `ZWESLSTC` is used to start Zowe's core microservices.  This member is installed by Zowe into the SAMPLIB data set `SZWESAMP` during the installation.
 
-This topic describes how to configure the z/OS runtime in order to launch Zowe. You can do these manually (as described in this topic) or use script to install and configure the Zowe main server. see [Installing and Configuring Zowe z/OS components using scripts](scripted-configure-server.md#zowe-z-os-components).
+This topic describes how to configure the z/OS runtime in order to launch Zowe. You can do these manually (as described in this topic) or use script to install and configure the Zowe main server. 
 
 ## Step 1: Copy the PROCLIB member ZWESVSTC
 
