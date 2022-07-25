@@ -1085,20 +1085,6 @@ The following error message codes may appear on the app-server log. Use the foll
 
 
 
-### ZWED0113I
-
-  %s
-
-  **Reason:**
-
-  TODO
-
-  **Action:**
-
-  TODO
-
-
-
 ### ZWED0114I
 
   Adding plugin remotely 
@@ -1203,48 +1189,6 @@ The following error message codes may appear on the app-server log. Use the foll
 
 
 
-### ZWED0121I
-
-  %s
-
-  **Reason:**
-
-  TODO
-
-  **Action:**
-
-  TODO
-
-
-
-### ZWED0122I
-
-  %s
-
-  **Reason:**
-
-  TODO
-
-  **Action:**
-
-  TODO
-
-
-
-### ZWED0123I
-
-  %s
-
-  **Reason:**
-
-  TODO
-
-  **Action:**
-
-  TODO
-
-
-
 ### ZWED0124I
 
   Plugin %s at path=%s loaded.
@@ -1270,20 +1214,6 @@ The following error message codes may appear on the app-server log. Use the foll
   **Action:**
 
   Check the log for references to *pluginId* to see other messages that indicate the cause
-
-
-
-### ZWED0128I
-
-  Echo\n%s
-
-  **Reason:**
-
-  TODO
-
-  **Action:**
-
-  TODO
 
 
 
