@@ -124,7 +124,7 @@ You can set up either a `LoadBalancer` or `NodePort` type [Service](https://kube
 
 **Note:** Because `NodePort` cannot be used together with `NetworkPolicies`, `LoadBalancer` and `Ingress` is a preferred configuration option.
 
-Review the following table for steps you may take depending on the Kubernetes provider you use. If you don't need additional setups, you can skip steps 4b, 4c, 4d and jump directly to the [Apply zowe](k8s-using.md) section.
+Review the following table for steps you may take depending on the Kubernetes provider you use. If you don't need additional setups, you can skip steps 4b, 4c, 4d and jump directly to the [Apply zowe](./k8s-using) section.
 
 | Kubernetes provider       | Service                  | Additional setups required                                 |
 | :------------------------ | :----------------------  | :--------------------------------------------------------- |
@@ -210,7 +210,7 @@ kubectl port-forward -n zowe svc/discovery-service --address=<your-ip> <external
 
 The `&` at the command will run the command as a background process, as otherwise it will occupy the terminal indefinitely until canceled as a foreground service.
 
-Upon completion, you can finish the setup by [applying zowe and starting it](k8s-using.md).
+Upon completion, you can finish the setup by [applying zowe and starting it](./k8s-using).
 
 ### 4c. Create Ingress (Bare-metal)
 
@@ -233,7 +233,7 @@ To verify, run the following commands:
 
 This command must display two Ingresses `gateway-ingress` and `discovery-ingress`.
 
-Upon completion, you can finish the setup by [applying zowe and starting it](k8s-using.md).
+Upon completion, you can finish the setup by [applying zowe and starting it](./k8s-using).
 
 ### 4d. Create Route (OpenShift)
 
@@ -258,7 +258,7 @@ To verify, run the following commands:
 
 This command must displays the two Services `gateway` and `discovery`.
 
-Upon completion, you can finish the setup by [applying zowe and starting it](k8s-using.md).
+Upon completion, you can finish the setup by [applying zowe and starting it](./k8s-using).
 
 ## Customizing or manually creating ConfigMaps and Secrets
 

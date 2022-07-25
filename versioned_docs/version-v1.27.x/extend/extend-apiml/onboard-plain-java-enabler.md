@@ -550,7 +550,7 @@ where:
        This value specifies that a service accepts PassTickets in the Authorization header of the HTTP requests using the basic authentication scheme.
        It is necessary to provide a service APPLID in `authentication.applid` parameter.
         
-       For more information, see [Enabling PassTicket creation for API Services that Accept PassTickets](api-mediation-passtickets.md)
+       For more information, see [Enabling PassTicket creation for API Services that Accept PassTickets](./api-mediation-passtickets)
      
     * **zosmf**
      

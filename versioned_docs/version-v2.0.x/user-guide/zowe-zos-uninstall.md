@@ -4,7 +4,7 @@ You can uninstall Zowe&trade; from z/OS if you no longer need to use it.
 
 **Follow these steps:**
 
-1.  Stop the Zowe started task which stops all of its microservices. See [Stopping Zowe Server started task](stop-zowe-zos.md)
+1.  Stop the Zowe started task which stops all of its microservices. See [Stopping Zowe Server started task](start-zowe-zos.md)
 
     After Zowe has been stopped, its subcomponents will end which include API Mediation Layer and the Zowe desktop.
     

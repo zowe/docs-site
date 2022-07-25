@@ -14,15 +14,15 @@ The `ZWESVSTC` started task on z/OS brings up a number of address spaces.  There
     
 To check that Zowe has started successfully, the most complete way is to check that each component successfully completed its initialization. Each component writes messages to the JES `STDOUT` and writes severe errors to the `STDERR` job spool file.  
 
-To learn more about the Zowe components and their role, see [Zowe Architecture](../getting-started/zowe-architecture.md). It is possible to configure Zowe to bring up only a subset of its components by using the `LAUNCH_COMPONENT_GROUPS` variable in the `instance.env` file. See [Component Groups](../user-guide/configure-instance-directory.md#component-groups) for more information.  
+To learn more about the Zowe components and their role, see [Zowe Architecture](../getting-started/zowe-architecture.md). It is possible to configure Zowe to bring up only a subset of its components by using the `LAUNCH_COMPONENT_GROUPS` variable in the `instance.env` file.   
 
 To monitor `ZWESVSTC` to check whether each component has launched successfully, you can use one of the following ways: 
-- A good approach is to look at the active address spaces by using a command such as `DA` in SDSF. Each address space is named to identify its component, see [Address space names](../user-guide/configure-instance-directory.md#address-space-names).
+- A good approach is to look at the active address spaces by using a command such as `DA` in SDSF. Each address space is named to identify its component.
 - You can also look for particular messages in the `STDOUT` Job spool file.
 
 ### Check the startup of API Mediation Layer 
 
-The API Mediation Layer has three address spaces: API Catalog `ZWE1AC`, API Gateway `ZWE1AG`, and API Discovery `ZWE1AD`.  These might have been changed from their defaults. For more information, see [Address space names](../user-guide/configure-instance-directory.md#address-space-names). 
+The API Mediation Layer has three address spaces: API Catalog `ZWE1AC`, API Gateway `ZWE1AG`, and API Discovery `ZWE1AD`.  These might have been changed from their defaults. 
 
 To check whether the API mediation layer is fully initialized, you can look for the `ZWEAM000I` message. Each component writes a successful startup message `ZWEAM000I` to the JES as shown below. The message also indicates the CPU of seconds spent. Check that each address space has written this message.
 
@@ -138,7 +138,7 @@ You will also encounter the following messages in the SYSLOG:
 
 This problem occurs when the maximum number of `BPXAS` instances have been reached.  
 
-This may be because when the Zowe instance directory was created, it was generated in the same location as the Zowe root directory.  The Zowe instance directory is created by using the script `<RUNTIME_DIR>/bin/zowe-configure-instance.sh -c <PATH_TO_INSTANCE_DIR>`. See [Creating an instance directory](../user-guide/configure-instance-directory#creating-an-instance-directory). The Zowe runtime directory is replaced when new PTFs are applied and should be considered as a read-only set of files. Zowe instance directories are designed to live outside the directory structure and are used to start a Zowe runtime.  
+This may be because when the Zowe instance directory was created, it was generated in the same location as the Zowe root directory.  The Zowe instance directory is created by using the script `<RUNTIME_DIR>/bin/zowe-configure-instance.sh -c <PATH_TO_INSTANCE_DIR>`. The Zowe runtime directory is replaced when new PTFs are applied and should be considered as a read-only set of files. Zowe instance directories are designed to live outside the directory structure and are used to start a Zowe runtime.  
 
 This problem will only occur with Zowe drivers prior to v1.10 and has been resolved in v1.10 where the `zowe-configure-instance.sh` script will report error if it detects the `-c` argument because the installation directory location is an existing Zowe runtime directory.  
 

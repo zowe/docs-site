@@ -40,10 +40,6 @@ The following definition of skill levels about Zowe will help you gather most re
 
    This article provides an overview of the essential steps involved in installing Zowe Application Framework. If you want to use Docker for the installation, instead follow the link below. 
 
-- [**Installing Zowe Application Framework using Docker**](../user-guide/install-docker.md)
-
-   Learn how to use Docker to install Zowe. 
-
 ## Configuring and updating
 
 > Zowe skill level: Intermediate
