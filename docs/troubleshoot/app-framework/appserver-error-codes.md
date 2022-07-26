@@ -964,7 +964,7 @@ The following error message codes may appear on the app-server log. Use the foll
 
   **Reason:**
 
-  It specifies that Apache Tomcat Host Manager stopping ID.
+  It specifies that Apache Tomcat Host Manager stopping *_manager id_*.
 
   **Action:**
 
@@ -978,7 +978,7 @@ The following error message codes may appear on the app-server log. Use the foll
 
   **Reason:**
 
-  It specifies that Apache Tomcat Host Manager successfully cleanup the ID.
+  It specifies that Apache Tomcat Host Manager successfully cleanup the *_manager id_*.
 
   **Action:**
 
@@ -992,7 +992,7 @@ The following error message codes may appear on the app-server log. Use the foll
 
   **Reason:**
 
-  It specifies that it extracted the war directory successfully to the destination path.
+  It specifies that it extracted the war directory successfully to the *_destination path_*.
 
   **Action:**
 
@@ -1007,7 +1007,7 @@ The following error message codes may appear on the app-server log. Use the foll
   **Reason:**
 
   A junction link is a sort of subset or a variation of a symbolic link.
-  It creates a junction link between extracted war directory to appbase directory.
+  It creates a junction link between *_extracted war_* directory to *_appbase_* directory.
 
   **Action:**
 
@@ -1021,7 +1021,7 @@ The following error message codes may appear on the app-server log. Use the foll
 
   **Reason:**
 
-  It creates a symlink  between extracted war directory to appbase directory.
+  It creates a symlink  between *_extracted war_* directory to *_appbase_* directory.
 
 
   **Action:**
@@ -1036,7 +1036,7 @@ The following error message codes may appear on the app-server log. Use the foll
 
   **Reason:**
   The registration attempt from ZWED0109I has succeeded.
-  Before the server starts it registers all the app with the App server and installed them.
+  Before the server starts it registers all the *_plugin identifier_* with the App server and installed them.
 
   **Action:**
 
@@ -1049,7 +1049,7 @@ The following error message codes may appear on the app-server log. Use the foll
 
   **Reason:**
 
-  All app installed to *components* directory and registered with App Server successfully.
+  App *_plugin identifier_* installed to *_appdir_*  and registered with App Server successfully.
 
   **Action:**
 
@@ -1063,7 +1063,7 @@ The following error message codes may appear on the app-server log. Use the foll
 
   **Reason:**
 
-  We are effectively registering auth plugin as a part of authentication category.
+  We are effectively registering auth plugin *_plugin identifier_* as a part of *_authentication category_*.
 
   **Action:**
 
@@ -1104,6 +1104,7 @@ The following error message codes may appear on the app-server log. Use the foll
   Skip child process spawning on worker %s %s
 
   **Reason:**
+  Skip child processes spawning on worker *_workerId_* *_childProcessPath_*.
 
   The process listed as childProcessPath was not spawned under the specified worker
   because it was listed as being a process that should only be started once. 
@@ -1125,7 +1126,7 @@ The following error message codes may appear on the app-server log. Use the foll
 
   **Reason:**
 
-  It set the location for serverModuleLocation and clientModuleLocation.
+  It set the location for *_serverModuleLocation_* and *_clientModuleLocation_*.
 
   **Action:**
 
@@ -1139,7 +1140,7 @@ The following error message codes may appear on the app-server log. Use the foll
 
   **Reason:**
 
-  Location of files will be in *lib* directory.
+  Location of files will be in *_lib_* directory.
 
   **Action:**
 
@@ -1152,7 +1153,7 @@ The following error message codes may appear on the app-server log. Use the foll
   The NODE_PATH is %s
 
   **Reason:**
-
+  The NODE_PATH is *_process.env.NODEPATH_*.
   NODE_PATH is set to environment.
 
   **Action:**
@@ -1167,7 +1168,7 @@ The following error message codes may appear on the app-server log. Use the foll
 
   **Reason:**
 
-   For plugins with type 'library', plugin %s has been registered and will be serving library data from location %s
+   For plugins with type 'library', plugin *_plugin identifier_* has been registered and will be serving library data from *_dir location_*
 
   **Action:**
 
@@ -1180,7 +1181,7 @@ The following error message codes may appear on the app-server log. Use the foll
   Auth plugin %s: loading auth handler module %s
 
   **Reason:**
-
+  Auth plugin *_plugin identifier_*: loading auth handler module *_app server_*.
   An auth category was requested as the default in the server configuration, or requested by a particular plugin, and because the auth plugin pluginId handles this category, it is being loaded by the app-server.
 
   **Action:**
@@ -1194,8 +1195,7 @@ The following error message codes may appear on the app-server log. Use the foll
   Plugin %s at path=%s loaded.
 
   **Reason:**
-
-  All the plugins will be loaded at plugins directory at path *workspace/app-server/plugins*. Plugins will be available in app server.
+  All the *_plugin identifier_* will be loaded at plugins directory at path *workspace/app-server/plugins*. Plugins will be available in *_plugin location_*..
 
   **Action:**
 
@@ -1208,8 +1208,8 @@ The following error message codes may appear on the app-server log. Use the foll
   Plugin %s not loaded
 
   **Reason:**
-
- A plugin object was not returned in the *makePlugin()* call of the app-server, and therefore the app-server did not load this plugin. The plugin will not be available in the server.
+  Plugin *_plugin identifier_* not loaded.
+  A plugin object was not returned in the *makePlugin()* call of the app-server, and therefore the app-server did not load this plugin. The plugin will not be available in the server.
 
   **Action:**
 
@@ -1222,16 +1222,16 @@ The following error message codes may appear on the app-server log. Use the foll
   (%s) Listening on %s
 
   **Reason:**
-
-  *app-server*  components use HTTPS by default, and the port parameters components.app-server.port  
+  *_type_* (HTTP or HTTPS) Listening on  *_app-server ports_*.
+  *app-server*  components use _type_ (HTTP or HTTPS) methods, and the port parameters components.app-server.port  
   control which port they are accessible from. However, each have advanced configuration options 
   to control their HTTPS behavior.
-  app-server ports start listening on the port number that is assigned in zowe configuration file 
+  *_app-server ports_* start listening on the port number that is assigned in zowe configuration file 
   and can be accessible.
 
   **Action:**
 
-  No action requied.
+  No action required.
 
 
 
@@ -1240,12 +1240,12 @@ The following error message codes may appear on the app-server log. Use the foll
   (%s) About to start listening on %s
 
   **Reason:**
-
-  TODO
+  *_type_* (HTTP or HTTPS) About to start listening on *_app-server ports_*.
+  It specifies that https server starts listening on port number and zowe desktop is accessible.
 
   **Action:**
 
-  TODO
+  No action required.
 
 
 
