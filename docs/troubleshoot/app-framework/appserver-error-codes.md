@@ -1221,7 +1221,7 @@ The following error message codes may appear on the app-server log. Use the foll
   (%s) Listening on %s
 
   **Reason:**
-  *type* (HTTP or HTTPS) Listening on  ip address:port.
+  *type* (HTTP or HTTPS) Listening on ip address:port.
   
 
   **Action:**
