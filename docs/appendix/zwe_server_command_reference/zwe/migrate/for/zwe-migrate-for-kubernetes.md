@@ -42,11 +42,6 @@ have these domains defined in certificate Subject Alt Name (SAN):
 Without the additional domains in SAN, you may see warnings/errors related to certificate
 validation.
 
-If you cannot add those domains into certificate Subject Alt Name (SAN), you can change
-`zowe.verifyCertificates` to `NONSTRICT` mode. Zowe components will not validate domain
-names but will continue to validate certificate chain, validity and whether it's trusted
-in Zowe truststore.
-
 **IMPORTANT**: It's not recommended to disable `zowe.verifyCertificates`.
 
 **NOTES**: With below conditions, this migration script will re-generate a new
