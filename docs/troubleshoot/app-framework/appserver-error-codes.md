@@ -964,7 +964,7 @@ The following error message codes may appear on the app-server log. Use the foll
 
   **Reason:**
 
-  It specifies that Apache Tomcat Host Manager stopping *_manager id_*.
+  It specifies that Apache Tomcat Host Manager is stopping *_manager id_*.
 
   **Action:**
 
@@ -978,7 +978,7 @@ The following error message codes may appear on the app-server log. Use the foll
 
   **Reason:**
 
-  It specifies that Apache Tomcat Host Manager successfully cleanup the *_manager id_*.
+  It specifies that Apache Tomcat Host Manager successfully cleaned up the *_manager id_*.
 
   **Action:**
 
@@ -992,7 +992,7 @@ The following error message codes may appear on the app-server log. Use the foll
 
   **Reason:**
 
-  It specifies that it extracted the war directory successfully to the *_destination path_*.
+  It specifies that it extracted the WAR directory successfully to the *_destination path_*.
 
   **Action:**
 
@@ -1021,7 +1021,7 @@ The following error message codes may appear on the app-server log. Use the foll
 
   **Reason:**
 
-  It creates a symlink  between *_extracted war_* directory to *_appbase_* directory.
+  It creates a symbolic link  between *_extracted war_* directory to *_appbase_* directory.
 
 
   **Action:**
@@ -1036,7 +1036,7 @@ The following error message codes may appear on the app-server log. Use the foll
 
   **Reason:**
   The registration attempt from ZWED0109I has succeeded.
-  Before the server starts it registers all the *_plugin identifier_* with the App server and installed them.
+  Before the server starts it registers all the *_plugin identifier_* with the App server and installs them.
 
   **Action:**
 
@@ -1063,7 +1063,7 @@ The following error message codes may appear on the app-server log. Use the foll
 
   **Reason:**
 
-  We are effectively registering auth plugin *_plugin identifier_* as a part of *_authentication category_*.
+  Auth plugin *plugin identifier* is being registered as a part of *authentication category*.
 
   **Action:**
 
@@ -1126,7 +1126,7 @@ The following error message codes may appear on the app-server log. Use the foll
 
   **Reason:**
 
-  It set the location for *_serverModuleLocation_* and *_clientModuleLocation_*.
+  The server has set the location *_serverModuleLocation_* and *_clientModuleLocation_*.
 
   **Action:**
 
@@ -1153,8 +1153,7 @@ The following error message codes may appear on the app-server log. Use the foll
   The NODE_PATH is %s
 
   **Reason:**
-  The NODE_PATH is *_process.env.NODEPATH_*.
-  NODE_PATH is set to environment.
+  The server recognizes the location of Node as *NODE_PATH* from environment variable.
 
   **Action:**
 
@@ -1195,7 +1194,7 @@ The following error message codes may appear on the app-server log. Use the foll
   Plugin %s at path=%s loaded.
 
   **Reason:**
-  All the *_plugin identifier_* will be loaded at plugins directory at path *workspace/app-server/plugins*. Plugins will be available in *_plugin location_*..
+  All the *_plugin identifier_* will be loaded at plugins directory at *path*. Plugins will be available in *_plugin location_*..
 
   **Action:**
 
@@ -1222,12 +1221,8 @@ The following error message codes may appear on the app-server log. Use the foll
   (%s) Listening on %s
 
   **Reason:**
-  *_type_* (HTTP or HTTPS) Listening on  *_app-server ports_*.
-  *app-server*  components use _type_ (HTTP or HTTPS) methods, and the port parameters components.app-server.port  
-  control which port they are accessible from. However, each have advanced configuration options 
-  to control their HTTPS behavior.
-  *_app-server ports_* start listening on the port number that is assigned in zowe configuration file 
-  and can be accessible.
+  *type* (HTTP or HTTPS) Listening on  ip address:port.
+  
 
   **Action:**
 
@@ -1240,8 +1235,7 @@ The following error message codes may appear on the app-server log. Use the foll
   (%s) About to start listening on %s
 
   **Reason:**
-  *_type_* (HTTP or HTTPS) About to start listening on *_app-server ports_*.
-  It specifies that https server starts listening on port number and zowe desktop is accessible.
+  About to start listening on *app-server port*.
 
   **Action:**
 
