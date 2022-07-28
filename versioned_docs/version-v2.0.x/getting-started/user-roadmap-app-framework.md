@@ -48,10 +48,6 @@ The following definition of skill levels about Zowe will help you gather most re
      
    This information describes how to configure the Zowe Application Framework as a Mediation Layer client, configure connections for the terminal application plug-ins, modify the Zowe Application Server and Zowe System Services (ZSS) configuration, and so on.
 
-- [**Upgrading the z/OS system for Zowe**](../user-guide/upgrade-zos-system.md)
-
-   Learn how to upgrade Zowe API Mediation Layer to a more recent version.
-
 ## Using Zowe Application Framework
 
 > Zowe skill level: Intermediate
