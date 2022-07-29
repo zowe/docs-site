@@ -61,7 +61,7 @@ Alternatively, you can create a CICS profile manually by adding a section that c
     zowe config init -–gc
     ```
 
-3. Add the following code to the `profiles` section of the configuration file:
+3. Add the following code to the "profiles" section of the configuration file:
 
     **Example:**
     ```
