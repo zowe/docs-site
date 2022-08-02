@@ -105,3 +105,14 @@ The following error message codes may appear on Zowe Launcher SYSPRINT. Use the 
 
   Check `<component-name>` configuration and correct if needed, then either 1) start the component manually by using z/OS MODIFY command `F ZWESLSTC,APPL=STOP(<component-name>)` or 2) restart the entire HA instance
 
+### ZWEL0047E
+
+  failed to parse zowe.yaml - %s
+
+  **Reason:**
+
+  Failed to parse Zowe configuration file.
+
+  **Action:**
+
+  Validate the format of Zowe configuration file. It should be a valid YAML file following specifications defined in https://yaml.org/.

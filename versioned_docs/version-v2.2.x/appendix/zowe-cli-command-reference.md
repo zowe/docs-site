@@ -7,4 +7,4 @@ the Zowe CLI core component and CLI plug-ins maintained by Zowe. As third-party 
 
 - <a href="/v2.2.x/web_help/index.html" target="_blank">Browse online</a>
 - <a href="/v2.2.x/CLIReference_Zowe.pdf" target="_blank">Download CLI reference in PDF format</a>
-- <a href="/v2.2/zowe_web_help.zip" target="_blank">Download CLI reference in ZIP format</a>
+- <a href="/v2.2.x/zowe_web_help.zip" target="_blank">Download CLI reference in ZIP format</a>

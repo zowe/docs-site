@@ -82,7 +82,7 @@ The following definition of skill levels about Zowe will help you gather most re
    You can read an interactive online version, download a PDF document, or download a ZIP file containing the HTML for the online version:
    - <b><a href="/v2.2.x/web_help/index.html" target="_blank">Browse online</a></b>
    - <b><a href="/v2.2.x/CLIReference_Zowe.pdf" target="_blank">Download CLI reference in PDF format</a></b>
-   - <b><a href="/v2.2/zowe_web_help.zip" target="_blank">Download CLI reference in ZIP format</a></b>
+   - <b><a href="/v2.2.x/zowe_web_help.zip" target="_blank">Download CLI reference in ZIP format</a></b>
 
 - **Best practices**
 
