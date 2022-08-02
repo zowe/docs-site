@@ -30,7 +30,7 @@ The following definition of skill levels about Zowe assist you with gathering th
 
 - [**Planning**](../user-guide/installandconfig.md#planning-the-installation-of-zowe-server-components)
 
-  This article includes details about planning for installation, the Zowe z/OS launch process, and information about the Zowe runtime directory, instance directory, and keystore directory.
+  This article includes details about planning for installation, the Zowe z/OS launch process, and information about the Zowe runtime directory and keystore directory.
 
 - [**Installing API Mediation Layer**](../user-guide/install-zos.md#z-os-installation-roadmap)
 
@@ -53,10 +53,6 @@ The following definition of skill levels about Zowe assist you with gathering th
    - [Advanced Gateway features configuration](../user-guide/api-mediation/api-gateway-configuration.md)
       
       This article is for system programmers who want to configure advanced Gateway features of the API Mediation Layer, such as the Gateway retry policy, connection limits, Gateway timeouts, and other advanced Gateway features.
-
-- [**Upgrading the z/OS system for Zowe**](../user-guide/upgrade-zos-system.md)
-
-   Learn how to upgrade the z/OS system for Zowe.
 
 ## Using Zowe API Mediation Layer
 
