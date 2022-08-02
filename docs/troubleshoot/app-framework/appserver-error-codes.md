@@ -960,7 +960,7 @@ The following error message codes may appear on the app-server log. Use the foll
 
 ### ZWED0092I
 
-  Tomcat Manager ID=%s stopping
+  Tomcat Manager ID=*_manager id_* stopping
 
   **Reason:**
 
@@ -974,7 +974,7 @@ The following error message codes may appear on the app-server log. Use the foll
 
 ### ZWED0093I
 
-  Tomcat Manager ID=%s cleanup successful
+  Tomcat Manager ID=*_manager id_* cleanup successful
 
   **Reason:**
 
@@ -988,7 +988,7 @@ The following error message codes may appear on the app-server log. Use the foll
 
 ### ZWED0094I
 
-  Extracted war to %s
+  Extracted war to *_destination path_*
 
   **Reason:**
 
@@ -1002,7 +1002,7 @@ The following error message codes may appear on the app-server log. Use the foll
 
 ### ZWED0095I
 
-  Making junction from %s to %s
+  Making junction from *_extracted war_* to *_appbase_*
 
   **Reason:**
 
@@ -1017,7 +1017,7 @@ The following error message codes may appear on the app-server log. Use the foll
 
 ### ZWED0096I
 
-  Making symlink from %s to %s
+  Making symlink from *_extracted war_* to *_appbase_*
 
   **Reason:**
 
@@ -1032,7 +1032,7 @@ The following error message codes may appear on the app-server log. Use the foll
 
 ### ZWED0109I
 
-  Registering App (ID=%s) with App Server
+  Registering App (ID=*_plugin identifier_*) with App Server
 
   **Reason:**
   The registration attempt from ZWED0109I has succeeded.
@@ -1045,7 +1045,7 @@ The following error message codes may appear on the app-server log. Use the foll
 
 ### ZWED0110I
 
-  App %s installed to %s and registered with App Server
+  App *_plugin identifier_* installed to *_appdir_* and registered with App Server
 
   **Reason:**
 
@@ -1059,7 +1059,7 @@ The following error message codes may appear on the app-server log. Use the foll
 
 ### ZWED0111I
 
-  Authentication plugin %s added to category %s
+  Authentication plugin *plugin identifier* added to category *authentication category*
 
   **Reason:**
 
@@ -1101,12 +1101,10 @@ The following error message codes may appear on the app-server log. Use the foll
 
 ### ZWED0115I
 
-  Skip child process spawning on worker %s %s
+  Skip child processes spawning on worker *_workerId_* *_childProcessPath_*
 
   **Reason:**
-  Skip child processes spawning on worker *_workerId_* *_childProcessPath_*.
-
-  The process listed as childProcessPath was not spawned under the specified worker
+ The process listed as childProcessPath was not spawned under the specified worker
   because it was listed as being a process that should only be started once. 
   Some child processes should be started per-worker for redundancy, 
   while others that need exclusive access to a resource such as
@@ -1122,7 +1120,7 @@ The following error message codes may appear on the app-server log. Use the foll
 
 ### ZWED0116I
 
-  The LOCATIONS are %s and %s
+  The LOCATIONS are *_serverModuleLocation_* and *_clientModuleLocation_*
 
   **Reason:**
 
@@ -1136,7 +1134,7 @@ The following error message codes may appear on the app-server log. Use the foll
 
 ### ZWED0117I
 
-  The fileLocation is %s
+  The fileLocation is *_lib_*
 
   **Reason:**
 
@@ -1150,7 +1148,7 @@ The following error message codes may appear on the app-server log. Use the foll
 
 ### ZWED0118I
 
-  The NODE_PATH is %s
+  The NODE_PATH is *NODE_PATH* from environment variable.
 
   **Reason:**
   The server recognizes the location of Node as *NODE_PATH* from environment variable.
@@ -1163,7 +1161,7 @@ The following error message codes may appear on the app-server log. Use the foll
 
 ### ZWED0119I
 
-  Plugin %s will serve library data from directory %s
+  Plugin *_plugin identifier_* will serve library data from directory *_dir location_*
 
   **Reason:**
 
@@ -1177,10 +1175,9 @@ The following error message codes may appear on the app-server log. Use the foll
 
 ### ZWED0120I
 
-  Auth plugin %s: loading auth handler module %s
+  Auth plugin *_plugin identifier_*: loading auth handler module *_app server_*
 
   **Reason:**
-  Auth plugin *_plugin identifier_*: loading auth handler module *_app server_*.
   An auth category was requested as the default in the server configuration, or requested by a particular plugin, and because the auth plugin pluginId handles this category, it is being loaded by the app-server.
 
   **Action:**
@@ -1191,10 +1188,10 @@ The following error message codes may appear on the app-server log. Use the foll
 
 ### ZWED0124I
 
-  Plugin %s at path=%s loaded.
+  Plugin *_plugin identifier_* at path=*_plugin location_* loaded.
 
   **Reason:**
-  All the *_plugin identifier_* will be loaded at plugins directory at *path*. Plugins will be available in *_plugin location_*..
+  All the *_plugin identifier_* will be loaded at plugins directory at *path*. Plugins will be available in *_plugin location_*.
 
   **Action:**
 
@@ -1204,10 +1201,9 @@ The following error message codes may appear on the app-server log. Use the foll
 
 ### ZWED0125I
 
-  Plugin %s not loaded
+  Plugin *_plugin identifier_* not loaded
 
   **Reason:**
-  Plugin *_plugin identifier_* not loaded.
   A plugin object was not returned in the *makePlugin()* call of the app-server, and therefore the app-server did not load this plugin. The plugin will not be available in the server.
 
   **Action:**
@@ -1218,7 +1214,7 @@ The following error message codes may appear on the app-server log. Use the foll
 
 ### ZWED0129I
 
-  (%s) Listening on %s
+  (*HTTP or HTTPS*) Listening on *ip address:port*
 
   **Reason:**
   *type* (HTTP or HTTPS) Listening on ip address:port.
@@ -1232,7 +1228,7 @@ The following error message codes may appear on the app-server log. Use the foll
 
 ### ZWED0130I
 
-  (%s) About to start listening on %s
+  (*HTTP or HTTPS*) About to start listening on *app-server port*
 
   **Reason:**
   About to start listening on *app-server port*.
