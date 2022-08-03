@@ -42,9 +42,7 @@ The corresponding [IBM Knowledge Center for Node.js - z/OS](https://www.ibm.com/
 
 You can obtain IBM SDK for Node.js - z/OS for free in one of the following ways:
 - Use the PAX edition for non-production deployments which you can download from [ibm.com/products/sdk-nodejs-compiler-zos](https://www.ibm.com/products/sdk-nodejs-compiler-zos).
-- Order the SMP/E edition through your IBM representative for production use.  
-
-For more information, see the blog ["How to obtain IBM SDK for Node.js - z/OS, at no charge"](https://developer.ibm.com/mainframe/2019/04/17/ibm-sdk-for-node-js-z-os-at-no-charge/).
+- Order the SMP/E edition through IBM Shopz for production use with optional paid support available. For more information, see the blog ["Options on how to obtain IBM Open Enterprise SDK for Node.js"](https://community.ibm.com/community/user/ibmz-and-linuxone/blogs/bruce-armstrong/2022/07/27/options-on-how-to-obtain-ibm-open-enterprise-sdk-f).
 
 ## Hardware and software prerequisites
 
