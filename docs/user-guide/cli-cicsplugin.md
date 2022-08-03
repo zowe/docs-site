@@ -46,7 +46,7 @@ You create a cics profile to avoid entering your connection details each time th
 - **Create plug-in profiles using a command:** Issue the `zowe profiles create` command to create the profile.
 We recommend that you create profiles using the configuration file. We do not recommend using profile commands because we are removing them from a future major release.
 
-### Create Plug-in Profiles Using a Configuration File
+### Creating plug-in profiles using a configuration file
 
 When you issue various `zowe config` commands, such as `init`, `auto-init`, and `convert-profiles`, they create a `zowe.config.json` configuration file. When you install the CICS plug-in, the commands create an entry for a cics profile in your `zowe.config.json` file.
 
@@ -61,9 +61,8 @@ Alternatively, you can create a CICS profile manually by adding a section that c
     zowe config init -–gc
     ```
 
-3. Add the following code to the "profiles" section of the configuration file:
+3. Add code to the "profiles" section as shown in the following example: :
 
-    **Example:**
     ```
     "Your_cics_profile": {
       "type": "cics",
@@ -84,7 +83,7 @@ Alternatively, you can create a CICS profile manually by adding a section that c
 
 You can now use your profile when you issue commands in the cics command group.
 
-### Create Plug-in Profiles Using a Command
+### Creating plug-in profiles using a command
 
 The following steps describe how to create a profile using the `zowe profiles create` command.
 
