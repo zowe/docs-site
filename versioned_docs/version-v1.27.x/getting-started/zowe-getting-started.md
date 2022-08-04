@@ -44,7 +44,6 @@ Zowe Application Framework, <br/> Zowe API Mediation Layer <br/> (these are inst
 Zowe Explorer                 |  [Information roadmap for Zowe Explorer](user-roadmap-zowe-explorer.md)
 Zowe CLI                      |  [Information roadmap for Zowe CLI](user-roadmap-zowe-cli.md)
 Zowe Client SDKs <br/>(under development) |  [Information roadmap for Zowe client SDKs](user-roadmap-client-sdk.md)
-Zowe Mobile (Incubator) | [Information roadmap for Zowe Mobile](user-roadmap-zowe-mobile.md)
 
 ## Getting involved
 
