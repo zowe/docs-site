@@ -77,10 +77,6 @@
         {
           "type": "doc",
           "id": "version-v1.24.x/getting-started/user-roadmap-client-sdk"
-        },
-        {
-          "type": "doc",
-          "id": "version-v1.24.x/getting-started/user-roadmap-zowe-mobile"
         }
       ]
     },
