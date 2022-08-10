@@ -376,6 +376,15 @@ apiInfo:
       swaggerUrl: http://localhost:10021/sampleservice/api-doc
       documentationUrl: http://your.service.documentation.url
       defaultApi: true
+      codeSnippet:
+        - endpoint: /endpoint1
+          language: java
+          codeBlock: |
+            System.out.println("Greeting code snippet");
+        - endpoint: /endpoint2
+          language: javascript
+          codeBlock: |
+            console.log('hello');
 ```
 
 where:
@@ -409,6 +418,14 @@ where:
     specifies that this API is the default one shown in the API Catalog. If no apiInfo fields have `defaultApi` set to `true`, the default API is the one
     with the highest API `version`.
 
+* **apiInfo.codeSnippet** (Optional)
+
+  specifies the customized code snippet for a specific endpoint (API operation). The snippet will be displayed in the API Catalog under the specified operation, after executing
+  the request using the *Try it out* functionality.
+  When specifying this configuration, you need to provide:
+    1. the `endpoint`, which represents the API operation of the customized snippet
+    2. the `language`, the language of the snippet
+    3. the `codeBlock`, the content of the snippet which will be displayed in the API Catalog
 
 ### API routing information
 
