@@ -134,6 +134,59 @@ This section outlines the process for making a request.
 
     <img src={require("../images/api-mediation/discoverable_clien_pet_swagger_response.png").default} alt="endpoint detail" width="700px"/>
 
+## Swagger Code Snippets functionality in the API Catalog
+
+As part of the **Try it out** functionality, API Catalog provides the **Code Snippets** in different languages for each service API operation. The supported languages are:
+* C
+* C#
+* Go
+* Java
+* JavaScript
+* Node.js
+* PHP
+* Python
+* cURL
+
+and each of them supports different HTTP Snippet library (i.e. Java Unirest, Java okhttp etc.).
+
+The basic code snippets provides Rest API call samples, so in order to show to the user a real usage of the SDKs, the service onboarder can specify a customized snippet as part of the service configuration:
+
+**Example:**
+```yaml
+apiInfo:
+  -   apiId: zowe.apiml.discoverableclient.rest
+      version: 1.0.0
+      gatewayUrl: api/v1
+      swaggerUrl: ${apiml.service.scheme}://${apiml.service.hostname}:${apiml.service.port}${apiml.service.contextPath}/v3/api-docs/apiv1
+      documentationUrl: https://www.zowe.org
+      defaultApi: true
+      codeSnippet:
+        - endpoint: /greeting
+          language: java
+          codeBlock: |
+            System.out.println("Greeting code snippet");
+        - endpoint: /{yourName}/greeting
+          language: javascript
+          codeBlock: |
+            console.log("Your name greeting code snippet");
+```
+
+**Example:**
+
+<img src={require("../images/api-mediation/customized-code-snippets.png").default} alt="basic code snippets" width="700px"/>
+
+### Generate the code snippets
+
+This section outlines the process for generating the code snippets.
+
+**Follow these steps:**
+
+1. Click **Try it out** and execute the request, as described in the section above.
+
+2. The API Catalog will generate the basic code snippets, shown under the code snippet tab. If the service onboarder has also provided customized code snippets, they will be displayed in the snippet bar under a title prefixed with `Customized`.
+
+   **Example:**
+   <img src={require("../images/api-mediation/basic-code-snippets.png").default} alt="basic code snippets" width="700px"/>
 
 ## Static APIs refresh functionality in the API Catalog
 
