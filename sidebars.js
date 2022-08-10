@@ -22,6 +22,7 @@ module.exports = {
       type: "category",
       label: "Release notes",
       items: [
+        "getting-started/release-notes/v2_3_0",
         "getting-started/release-notes/v2_2_0",
         "getting-started/release-notes/v2_1_0",
         "getting-started/release-notes/v2_0_0",
@@ -117,7 +118,6 @@ module.exports = {
             "user-guide/initialize-vsam-dataset", 
             "user-guide/install-stc-members",
             "user-guide/configure-xmem-server",
-        //    "user-guide/configure-zowe-server", //out of date, v1 info included
             "user-guide/configure-auxiliary-address-space",
             "user-guide/configure-zowe-zosmf-workflow",
           ],
@@ -133,9 +133,7 @@ module.exports = {
          ],
        }, 
         "user-guide/start-zowe-zos",
-        "user-guide/verify-zowe-runtime-install",
-    //    "user-guide/upgrade-zos-system",
-    //    "user-guide/zowe-zos-uninstall",       
+        "user-guide/verify-zowe-runtime-install",    
       ],
     },
     {
@@ -371,11 +369,9 @@ module.exports = {
       items: [
         "troubleshoot/troubleshooting",
         "troubleshoot/troubleshoot-zowe-release",
-    //    "troubleshoot/troubleshoot-diagnostics",
         "troubleshoot/verify-fingerprint",
       ],
     },
-    //"troubleshoot/troubleshoot-zos",
     //"troubleshoot/troubleshoot-zos-certificate",
     "troubleshoot/k8s-troubleshoot",
     {
@@ -396,7 +392,6 @@ module.exports = {
         "troubleshoot/app-framework/zss-error-codes",
       ],
     },
-    //"troubleshoot/troubleshoot-zos-services", //still refers to old STC names
     {
       type: "category",
       label: "Zowe CLI",
