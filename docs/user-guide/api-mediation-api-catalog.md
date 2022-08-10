@@ -136,7 +136,7 @@ This section outlines the process for making a request.
 
 ## Swagger Code Snippets functionality in the API Catalog
 
-As part of the **Try it out** functionality, API Catalog provides the **Code Snippets** in different languages for each service API operation. The supported languages are:
+As part of the *Try it out* functionality, the API Catalog provides **Code Snippets** in different languages for each service API operation. The following languages are supported:
 * C
 * C#
 * Go
@@ -147,9 +147,9 @@ As part of the **Try it out** functionality, API Catalog provides the **Code Sni
 * Python
 * cURL
 
-and each of them supports different HTTP Snippet library (i.e. Java Unirest, Java okhttp etc.).
+Each of these languages supports a specific HTTP Snippet library (i.e. Java Unirest, Java okhttp etc.).
 
-The basic code snippets provides Rest API call samples, so in order to show to the user a real usage of the SDKs, the service onboarder can specify a customized snippet as part of the service configuration:
+The basic code snippets provide REST API call samples. To show to the user the real usage of the SDKs, the service onboarder can specify a customized snippet as part of the service configuration:
 
 **Example:**
 ```yaml
@@ -177,13 +177,13 @@ apiInfo:
 
 ### Generate the code snippets
 
-This section outlines the process for generating the code snippets.
+This section outlines the process for generating code snippets.
 
 **Follow these steps:**
 
-1. Click **Try it out** and execute the request, as described in the section above.
+1. Click **Try it out** and execute the request, as described in the previous section.
 
-2. The API Catalog will generate the basic code snippets, shown under the code snippet tab. If the service onboarder has also provided customized code snippets, they will be displayed in the snippet bar under a title prefixed with `Customized`.
+2. The API Catalog generates the basic code snippets, shown under the code snippet tab. If the service onboarder has also provided customized code snippets, these snippets are displayed in the snippet bar under a title prefixed with `Customized`.
 
    **Example:**
    <img src={require("../images/api-mediation/basic-code-snippets.png").default} alt="basic code snippets" width="700px"/>

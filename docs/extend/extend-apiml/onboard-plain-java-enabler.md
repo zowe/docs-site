@@ -420,12 +420,15 @@ where:
 
 * **apiInfo.codeSnippet** (Optional)
 
-  specifies the customized code snippet for a specific endpoint (API operation). The snippet will be displayed in the API Catalog under the specified operation, after executing
+  specifies the customized code snippet for a specific endpoint (API operation). The snippet is displayed in the API Catalog under the specified operation, after executing
   the request using the *Try it out* functionality.
-  When specifying this configuration, you need to provide:
-    1. the `endpoint`, which represents the API operation of the customized snippet
-    2. the `language`, the language of the snippet
-    3. the `codeBlock`, the content of the snippet which will be displayed in the API Catalog
+  When specifying this configuration, you need to provide the following parameters:
+    * **`endpoint`**  
+    The endpoint that represents the API operation of the customized snippet
+    * **`language`**  
+    The language of the snippet
+    * **`codeBlock`**  
+    The content of the snippet to be displayed in the API Catalog
 
 ### API routing information
 
