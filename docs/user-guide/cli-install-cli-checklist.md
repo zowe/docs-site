@@ -8,7 +8,7 @@ To plan your Zowe CLI installation, review the following checklist.
 
 | Step        | Description | Role       | Time Estimate | Status     |
 | ----------- | ----------- | ---------- | ------------- | ---------- |
-| [Review the Zowe CLI information roadmap](../getting-started/user-roadmap-zowe-cli.md) | Learn about various Zowe CLI topics | Systems administrator, application developer, systems programmer, DevOps architect  | **.25** hrs | Complete, TBD, NA |
+| [Review the Zowe CLI information roadmap](../user-guide/user-roadmap-zowe-cli.md) | Learn about various Zowe CLI topics | Systems administrator, application developer, systems programmer, DevOps architect  | **.25** hrs | Complete, TBD, NA |
 | [Review the release notes](../getting-started/overview.md) | Read about new features and enhancements included with this release of Zowe CLI | Systems administrator, DevOps architect |  **.25** hours |Complete, TBD, NA || Review the Zowe CLI installation methods | [Determine the installation package to use to install CLI](cli-installcli.md) | Systems administrator |  **.25**hrs | Complete, TBD, NA |
 | [Address the requirements](../user-guide/systemrequirements-cli.md) | Install the client-side and host-side software, and ensure that there is sufficient free disk space | Systems administrator | **See Note-1** | Complete, TBD, NA |
 | [(Optional) Install API Mediation Layer](../user-guide/install-zos.md) | Install the Zowe Runtime, which includes API Mediation Layer] | Systems administrator | **8** hrs | Complete, TBD, NA |
