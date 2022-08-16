@@ -164,11 +164,11 @@ Multi-factor authentication is provided by third-party products which Zowe is co
 
 For information on using MFA in Zowe, see [Multi-Factor Authentication](mvd-configuration.md#multi-factor-authentication-configuration).
 
-**Note:** MFA must work with Single sign-on (SSO). Make sure Athat [SSO](#single-sign-on-sso) is configured before you use MFA in Zowe.
+**Note:** MFA must work with Single sign-on (SSO). Make sure that [SSO](#single-sign-on-sso) is configured before you use MFA in Zowe.
 
 ### Single Sign-On (SSO)
 
-Zowe has an SSO scheme with the goal that each time you use multiple Zowe components you should only be prompted to login once. This behavior includes the services onboarded to the Zowe.
+Zowe has an SSO scheme with the goal that each time you use multiple Zowe components you should only be prompted to login once. 
 
 Requirements:
 
