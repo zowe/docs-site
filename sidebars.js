@@ -151,6 +151,7 @@ module.exports = {
       label: "Installing Zowe CLI",
       items: [
         "user-guide/cli-install-cli-checklist",
+        "user-guide/user-roadmap-zowe-cli",
         "user-guide/systemrequirements-cli",
         {
           type: "category",
