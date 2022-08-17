@@ -55,6 +55,10 @@ Configure Redis as a storage solution through the Caching service by setting the
 
     The timeout duration in seconds for the Caching service when first connecting to Redis. Defaults to 60 seconds.
 
+* **`storage.redis.sentinel.enabled`**
+
+    A flag indicating if Redis is being used with Redis Sentinel instances. Defaults to `false`.
+
 * **`storage.redis.sentinel.masterInstance`** 
 
     The Redis master instance ID used by the Redis Sentinel instances. Required if Redis Sentinel is being used.
