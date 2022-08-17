@@ -22,7 +22,7 @@
 <h4>Options</h4>
 <ul>
 <li>
-<p><code>--model</code> | <code>-m</code> <em>(string)</em></p>
+<p><code>--model</code>  | <code>-m</code> <em>(string)</em></p>
 <ul>
 <li>Specifies the name of a model large format sequential data set name for allocating parameters.<br>
 The parameters of the model data set override all defaults.<br>
@@ -30,7 +30,7 @@ Example: -m fmmvs.model.dsname</li>
 </ul>
 </li>
 <li>
-<p><code>--logical-record-length</code> | <code>--lrecl</code> | <code>--lrl</code> <em>(number)</em></p>
+<p><code>--logical-record-length</code>  | <code>--lrecl</code> | <code>--lrl</code> <em>(number)</em></p>
 <ul>
 <li>Specifies the length of the logical record.<br>
 Allowed values: 1-32760<br>
@@ -39,7 +39,7 @@ Example: --lrecl 80</li>
 </ul>
 </li>
 <li>
-<p><code>--block-size</code> | <code>--blksize</code> | <code>--bs</code> <em>(number)</em></p>
+<p><code>--block-size</code>  | <code>--blksize</code> | <code>--bs</code> <em>(number)</em></p>
 <ul>
 <li>Specifies the size of the block of records.<br>
 Allowed values: 1-32760<br>
@@ -48,7 +48,7 @@ Example: --blksize 6160</li>
 </ul>
 </li>
 <li>
-<p><code>--record-format</code> | <code>--recfm</code> | <code>--rf</code> <em>(string)</em></p>
+<p><code>--record-format</code>  | <code>--recfm</code> | <code>--rf</code> <em>(string)</em></p>
 <ul>
 <li>
 <p>Specifies the record format.<br>
@@ -68,7 +68,7 @@ Example: --recfm FB</p>
 </ul>
 </li>
 <li>
-<p><code>--space-units</code> | <code>--su</code> <em>(string)</em></p>
+<p><code>--space-units</code>  | <code>--su</code> <em>(string)</em></p>
 <ul>
 <li>
 <p>Specifies the space allocation unit.<br>
@@ -83,7 +83,7 @@ Example: --su blk</p>
 </ul>
 </li>
 <li>
-<p><code>--primary-space</code> | <code>--ps</code> <em>(number)</em></p>
+<p><code>--primary-space</code>  | <code>--ps</code> <em>(number)</em></p>
 <ul>
 <li>Specifies primary space allocation unit.<br>
 Allowed values: 1-16777215<br>
@@ -92,7 +92,7 @@ Example: --ps 3</li>
 </ul>
 </li>
 <li>
-<p><code>--secondary-space</code> | <code>--ss</code> <em>(number)</em></p>
+<p><code>--secondary-space</code>  | <code>--ss</code> <em>(number)</em></p>
 <ul>
 <li>Specifies secondary space allocation unit.<br>
 Allowed values: 1-16777215<br>
@@ -101,21 +101,21 @@ Example: --ss 5</li>
 </ul>
 </li>
 <li>
-<p><code>--volume</code> | <code>-v</code> <em>(array)</em></p>
+<p><code>--volume</code>  | <code>-v</code> <em>(array)</em></p>
 <ul>
 <li>Specifies a disk volume or specific tapes.<br>
 Example: -v vol002</li>
 </ul>
 </li>
 <li>
-<p><code>--unit-type</code> | <code>--ut</code> <em>(string)</em></p>
+<p><code>--unit-type</code>  | <code>--ut</code> <em>(string)</em></p>
 <ul>
 <li>Specifies the DASD unit name.<br>
 Example: --ut sysda</li>
 </ul>
 </li>
 <li>
-<p><code>--expiration-date</code> | <code>--ed</code> <em>(string)</em></p>
+<p><code>--expiration-date</code>  | <code>--ed</code> <em>(string)</em></p>
 <ul>
 <li>Specifies the expiration date after which the data set can be deleted.<br>
 Specify 'P' or 'p' to make the data set permanent, or an expiration date in YYYY-MM-DD format.<br>
@@ -123,21 +123,21 @@ Example: --ed 2032-07-31</li>
 </ul>
 </li>
 <li>
-<p><code>--storage-class</code> | <code>--sc</code> <em>(string)</em></p>
+<p><code>--storage-class</code>  | <code>--sc</code> <em>(string)</em></p>
 <ul>
 <li>Specifies the storage class.<br>
 Example: --sc scl002</li>
 </ul>
 </li>
 <li>
-<p><code>--management-class</code> | <code>--mc</code> <em>(string)</em></p>
+<p><code>--management-class</code>  | <code>--mc</code> <em>(string)</em></p>
 <ul>
 <li>Specifies the management class.<br>
 Example: --mc mcl002</li>
 </ul>
 </li>
 <li>
-<p><code>--data-class</code> | <code>--dc</code> <em>(string)</em></p>
+<p><code>--data-class</code>  | <code>--dc</code> <em>(string)</em></p>
 <ul>
 <li>Specifies the data class.<br>
 Example: --dc dcl002</li>
@@ -147,34 +147,31 @@ Example: --dc dcl002</li>
 <h4>FMP Connection Options</h4>
 <ul>
 <li>
-<p><code>--host</code> | <code>-H</code> <em>(string)</em></p>
+<p><code>--host</code>  | <code>-H</code> <em>(string)</em></p>
 <ul>
 <li>Specifies File Master Plus server host name.</li>
 </ul>
 </li>
 <li>
-<p><code>--port</code> | <code>-P</code> <em>(number)</em></p>
+<p><code>--port</code>  | <code>-P</code> <em>(number)</em></p>
 <ul>
-<li>
-<p>Specifies File Master Plus server port.</p>
-<p>Default value: 51914</p>
-</li>
+<li>Specifies File Master Plus server port.</li>
 </ul>
 </li>
 <li>
-<p><code>--user</code> | <code>-u</code> <em>(string)</em></p>
+<p><code>--user</code>  | <code>-u</code> <em>(string)</em></p>
 <ul>
 <li>Specifies Mainframe user name. May be the same as TSO login.</li>
 </ul>
 </li>
 <li>
-<p><code>--password</code> | <code>--pass</code> | <code>--pw</code> <em>(string)</em></p>
+<p><code>--password</code>  | <code>--pass</code> | <code>--pw</code> <em>(string)</em></p>
 <ul>
 <li>Specifies Mainframe password. May be the same as TSO password.</li>
 </ul>
 </li>
 <li>
-<p><code>--protocol</code> | <code>-o</code> <em>(string)</em></p>
+<p><code>--protocol</code>  | <code>-o</code> <em>(string)</em></p>
 <ul>
 <li>
 <p>Specifies File Master Plus REST API protocol.</p>
@@ -184,7 +181,7 @@ Allowed values: http, https</p>
 </ul>
 </li>
 <li>
-<p><code>--reject-unauthorized</code> | <code>--ru</code> <em>(boolean)</em></p>
+<p><code>--reject-unauthorized</code>  | <code>--ru</code> <em>(boolean)</em></p>
 <ul>
 <li>
 <p>Reject self-signed certificates.</p>
@@ -193,7 +190,7 @@ Allowed values: http, https</p>
 </ul>
 </li>
 <li>
-<p><code>--base-path</code> | <code>--bp</code> <em>(string)</em></p>
+<p><code>--base-path</code>  | <code>--bp</code> <em>(string)</em></p>
 <ul>
 <li>The base path for your API mediation layer instance. Specify this option to prepend the base path to all FMP resources when making REST requests. Do not specify this option if you are not using an API mediation layer.</li>
 </ul>
@@ -202,13 +199,13 @@ Allowed values: http, https</p>
 <h4>Profile Options</h4>
 <ul>
 <li>
-<p><code>--fmp-profile</code> | <code>--fmp-p</code> <em>(string)</em></p>
+<p><code>--fmp-profile</code>  | <code>--fmp-p</code> <em>(string)</em></p>
 <ul>
 <li>The name of a (fmp) profile to load for this command execution.</li>
 </ul>
 </li>
 <li>
-<p><code>--base-profile</code> | <code>--base-p</code> <em>(string)</em></p>
+<p><code>--base-profile</code>  | <code>--base-p</code> <em>(string)</em></p>
 <ul>
 <li>The name of a (base) profile to load for this command execution.</li>
 </ul>
@@ -217,25 +214,25 @@ Allowed values: http, https</p>
 <h4>Base Connection Options</h4>
 <ul>
 <li>
-<p><code>--token-type</code> | <code>--tt</code> <em>(string)</em></p>
+<p><code>--token-type</code>  | <code>--tt</code> <em>(string)</em></p>
 <ul>
 <li>The type of token to get and use for the API. Omit this option to use the default token type, which is provided by 'zowe auth login'.</li>
 </ul>
 </li>
 <li>
-<p><code>--token-value</code> | <code>--tv</code> <em>(string)</em></p>
+<p><code>--token-value</code>  | <code>--tv</code> <em>(string)</em></p>
 <ul>
 <li>The value of the token to pass to the API.</li>
 </ul>
 </li>
 <li>
-<p><code>--cert-file</code> <em>(local file path)</em></p>
+<p><code>--cert-file</code>  <em>(local file path)</em></p>
 <ul>
 <li>The file path to a certificate file to use for authentication</li>
 </ul>
 </li>
 <li>
-<p><code>--cert-key-file</code> <em>(local file path)</em></p>
+<p><code>--cert-key-file</code>  <em>(local file path)</em></p>
 <ul>
 <li>The file path to a certificate key file to use for authentication</li>
 </ul>

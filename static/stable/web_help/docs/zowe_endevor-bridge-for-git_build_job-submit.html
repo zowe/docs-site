@@ -13,13 +13,13 @@
 <h4>Required Options</h4>
 <ul>
 <li>
-<p><code>--endevor-instance</code> | <code>--endevori</code> <em>(string)</em></p>
+<p><code>--endevor-instance</code>  | <code>--endevori</code> <em>(string)</em></p>
 <ul>
-<li>The Endevor Web Services Endevor configuration name.</li>
+<li>The CA Endevor Web Services dataSource name.</li>
 </ul>
 </li>
 <li>
-<p><code>--skeleton-jcl</code> | <code>--sjcl</code> <em>(string)</em></p>
+<p><code>--skeleton-jcl</code>  | <code>--sjcl</code> <em>(string)</em></p>
 <ul>
 <li>The path of the file of skeleton JCL to submit endevor scl statements. Download it from: <a href="https://techdocs.broadcom.com/content/broadcom/techdocs/us/en/ca-mainframe-software/devops/ca-endevor-integrations-for-enterprise-devops/1-0/ca-endevor-bridge-for-git/set-up-and-run-the-ca-endevor-bridge-for-git/configuration-for-build-using-zowe-cli.html">https://techdocs.broadcom.com/content/broadcom/techdocs/us/en/ca-mainframe-software/devops/ca-endevor-integrations-for-enterprise-devops/1-0/ca-endevor-bridge-for-git/set-up-and-run-the-ca-endevor-bridge-for-git/configuration-for-build-using-zowe-cli.html</a></li>
 </ul>
@@ -28,34 +28,34 @@
 <h4>Endevor work area options</h4>
 <ul>
 <li>
-<p><code>--work-area-id</code> | <code>--waid</code> <em>(string)</em></p>
+<p><code>--work-area-id</code>  | <code>--waid</code> <em>(string)</em></p>
 <ul>
 <li>Endevor work area ID. Name-masking is not allowed.</li>
 </ul>
 </li>
 <li>
-<p><code>--endevor-subsystem</code> | <code>--endevorsub</code> <em>(string)</em></p>
+<p><code>--endevor-subsystem</code>  | <code>--endevorsub</code> <em>(string)</em></p>
 <ul>
-<li>The Endevor SCM build subsystem. Note: The build subsystem can be cleared without prior permission.</li>
+<li>The CA Endevor SCM build subsystem. Note: The build subsystem can be cleared without prior permission.</li>
 </ul>
 </li>
 <li>
-<p><code>--endevor-environment</code> | <code>--endevorenv</code> <em>(string)</em></p>
+<p><code>--endevor-environment</code>  | <code>--endevorenv</code> <em>(string)</em></p>
 <ul>
-<li>The Endevor SCM environment where your build subsystem resides.</li>
+<li>The CA Endevor SCM environment where your build subsystem resides.</li>
 </ul>
 </li>
 <li>
-<p><code>--endevor-system</code> | <code>--endevorsys</code> <em>(string)</em></p>
+<p><code>--endevor-system</code>  | <code>--endevorsys</code> <em>(string)</em></p>
 <ul>
-<li>The Endevor SCM system where your build subsystem resides.</li>
+<li>The CA Endevor SCM system where your build subsystem resides.</li>
 </ul>
 </li>
 </ul>
 <h4>Options</h4>
 <ul>
 <li>
-<p><code>--work-dir</code> | <code>--wd</code> <em>(string)</em></p>
+<p><code>--work-dir</code>  | <code>--wd</code> <em>(string)</em></p>
 <ul>
 <li>
 <p>The local working directory of your Git-Endevor mapping that you are building.</p>
@@ -64,7 +64,7 @@
 </ul>
 </li>
 <li>
-<p><code>--force-cleanup</code> | <code>--fc</code> <em>(boolean)</em></p>
+<p><code>--force-cleanup</code>  | <code>--fc</code> <em>(boolean)</em></p>
 <ul>
 <li>
 <p>Starts the build process after cleaning the build subsystem.</p>
@@ -73,7 +73,7 @@
 </ul>
 </li>
 <li>
-<p><code>--autogen-span</code> | <code>--ags</code> <em>(string)</em></p>
+<p><code>--autogen-span</code>  | <code>--ags</code> <em>(string)</em></p>
 <ul>
 <li>
 <p>Specifies the autogen action option to automatically generate using elements.<br>
@@ -91,41 +91,41 @@ Allowed values: NONE, ALL, SYSTEMS, SUBSYSTEMS</p>
 <h4>Endevor options (alternatively use an 'endevor' profile)</h4>
 <ul>
 <li>
-<p><code>--endevor-protocol</code> | <code>--endevorprot</code> <em>(string)</em></p>
+<p><code>--endevor-protocol</code>  | <code>--endevorprot</code> <em>(string)</em></p>
 <ul>
 <li>
-<p>The Endevor SCM Rest API protocol.</p>
+<p>The CA Endevor SCM Rest API protocol.</p>
 <p>Default value: http</p>
 <p>Allowed values: http, https</p>
 </li>
 </ul>
 </li>
 <li>
-<p><code>--endevor-host</code> | <code>--endevorh</code> <em>(string)</em></p>
+<p><code>--endevor-host</code>  | <code>--endevorh</code> <em>(string)</em></p>
 <ul>
 <li>The Endevor Rest API hostname.</li>
 </ul>
 </li>
 <li>
-<p><code>--endevor-port</code> | <code>--endevorp</code> <em>(number)</em></p>
+<p><code>--endevor-port</code>  | <code>--endevorp</code> <em>(number)</em></p>
 <ul>
 <li>The Endevor Rest API port.</li>
 </ul>
 </li>
 <li>
-<p><code>--endevor-user</code> | <code>--endevoru</code> <em>(string)</em></p>
+<p><code>--endevor-user</code>  | <code>--endevoru</code> <em>(string)</em></p>
 <ul>
 <li>Mainframe (Endevor) username, which can be the same as your TSO login.</li>
 </ul>
 </li>
 <li>
-<p><code>--endevor-password</code> | <code>--endevorpass</code> | <code>--endevorpw</code> <em>(string)</em></p>
+<p><code>--endevor-password</code>  | <code>--endevorpass</code> | <code>--endevorpw</code> <em>(string)</em></p>
 <ul>
 <li>Mainframe (Endevor) password, which can be the same as your TSO password.</li>
 </ul>
 </li>
 <li>
-<p><code>--endevor-reject-unauthorized</code> | <code>--endevorru</code> <em>(boolean)</em></p>
+<p><code>--endevor-reject-unauthorized</code>  | <code>--endevorru</code> <em>(boolean)</em></p>
 <ul>
 <li>
 <p>Reject self-signed certificates.</p>
@@ -134,10 +134,10 @@ Allowed values: NONE, ALL, SYSTEMS, SUBSYSTEMS</p>
 </ul>
 </li>
 <li>
-<p><code>--endevor-base-path</code> | <code>--endevorbp</code> <em>(string)</em></p>
+<p><code>--endevor-base-path</code>  | <code>--endevorbp</code> <em>(string)</em></p>
 <ul>
 <li>
-<p>The Endevor SCM Rest API base path.</p>
+<p>The CA Endevor SCM Rest API base path.</p>
 <p>Default value: EndevorService/rest</p>
 </li>
 </ul>
@@ -146,13 +146,13 @@ Allowed values: NONE, ALL, SYSTEMS, SUBSYSTEMS</p>
 <h4>z/OSMF connection options (alternatively use a 'zosmf' profile)</h4>
 <ul>
 <li>
-<p><code>--zosmf-host</code> | <code>--zosmfh</code> <em>(string)</em></p>
+<p><code>--zosmf-host</code>  | <code>--zosmfh</code> <em>(string)</em></p>
 <ul>
 <li>The z/OSMF server host name.</li>
 </ul>
 </li>
 <li>
-<p><code>--zosmf-port</code> | <code>--zosmfp</code> <em>(number)</em></p>
+<p><code>--zosmf-port</code>  | <code>--zosmfp</code> <em>(number)</em></p>
 <ul>
 <li>
 <p>The z/OSMF server port.</p>
@@ -161,19 +161,19 @@ Allowed values: NONE, ALL, SYSTEMS, SUBSYSTEMS</p>
 </ul>
 </li>
 <li>
-<p><code>--zosmf-user</code> | <code>--zosmfu</code> <em>(string)</em></p>
+<p><code>--zosmf-user</code>  | <code>--zosmfu</code> <em>(string)</em></p>
 <ul>
 <li>Mainframe (z/OSMF) username, which can be the same as your TSO login.</li>
 </ul>
 </li>
 <li>
-<p><code>--zosmf-password</code> | <code>--zosmfpass</code> | <code>--zosmfpw</code> <em>(string)</em></p>
+<p><code>--zosmf-password</code>  | <code>--zosmfpass</code> | <code>--zosmfpw</code> <em>(string)</em></p>
 <ul>
 <li>Mainframe (z/OSMF) password, which can be the same as your TSO password.</li>
 </ul>
 </li>
 <li>
-<p><code>--zosmf-reject-unauthorized</code> | <code>--zosmfru</code> <em>(boolean)</em></p>
+<p><code>--zosmf-reject-unauthorized</code>  | <code>--zosmfru</code> <em>(boolean)</em></p>
 <ul>
 <li>
 <p>Reject self-signed certificates.</p>
@@ -182,7 +182,7 @@ Allowed values: NONE, ALL, SYSTEMS, SUBSYSTEMS</p>
 </ul>
 </li>
 <li>
-<p><code>--zosmf-base-path</code> | <code>--zosmfbp</code> <em>(string)</em></p>
+<p><code>--zosmf-base-path</code>  | <code>--zosmfbp</code> <em>(string)</em></p>
 <ul>
 <li>The base path for your API mediation layer instance. Specify this option toprepend the base path to all z/OSMF resources when making REST requests. Do notspecify this option if you are not using an API mediation layer.</li>
 </ul>
@@ -191,19 +191,19 @@ Allowed values: NONE, ALL, SYSTEMS, SUBSYSTEMS</p>
 <h4>Profile Options</h4>
 <ul>
 <li>
-<p><code>--endevor-profile</code> | <code>--endevor-p</code> <em>(string)</em></p>
+<p><code>--endevor-profile</code>  | <code>--endevor-p</code> <em>(string)</em></p>
 <ul>
 <li>The name of a (endevor) profile to load for this command execution.</li>
 </ul>
 </li>
 <li>
-<p><code>--zosmf-profile</code> | <code>--zosmf-p</code> <em>(string)</em></p>
+<p><code>--zosmf-profile</code>  | <code>--zosmf-p</code> <em>(string)</em></p>
 <ul>
 <li>The name of a (zosmf) profile to load for this command execution.</li>
 </ul>
 </li>
 <li>
-<p><code>--base-profile</code> | <code>--base-p</code> <em>(string)</em></p>
+<p><code>--base-profile</code>  | <code>--base-p</code> <em>(string)</em></p>
 <ul>
 <li>The name of a (base) profile to load for this command execution.</li>
 </ul>
@@ -212,31 +212,31 @@ Allowed values: NONE, ALL, SYSTEMS, SUBSYSTEMS</p>
 <h4>Base Connection Options</h4>
 <ul>
 <li>
-<p><code>--host</code> | <code>-H</code> <em>(string)</em></p>
+<p><code>--host</code>  | <code>-H</code> <em>(string)</em></p>
 <ul>
 <li>Host name of service on the mainframe.</li>
 </ul>
 </li>
 <li>
-<p><code>--port</code> | <code>-P</code> <em>(number)</em></p>
+<p><code>--port</code>  | <code>-P</code> <em>(number)</em></p>
 <ul>
 <li>Port number of service on the mainframe.</li>
 </ul>
 </li>
 <li>
-<p><code>--user</code> | <code>-u</code> <em>(string)</em></p>
+<p><code>--user</code>  | <code>-u</code> <em>(string)</em></p>
 <ul>
 <li>User name to authenticate to service on the mainframe.</li>
 </ul>
 </li>
 <li>
-<p><code>--password</code> | <code>--pass</code> | <code>--pw</code> <em>(string)</em></p>
+<p><code>--password</code>  | <code>--pass</code> | <code>--pw</code> <em>(string)</em></p>
 <ul>
 <li>Password to authenticate to service on the mainframe.</li>
 </ul>
 </li>
 <li>
-<p><code>--reject-unauthorized</code> | <code>--ru</code> <em>(boolean)</em></p>
+<p><code>--reject-unauthorized</code>  | <code>--ru</code> <em>(boolean)</em></p>
 <ul>
 <li>
 <p>Reject self-signed certificates.</p>
@@ -245,25 +245,25 @@ Allowed values: NONE, ALL, SYSTEMS, SUBSYSTEMS</p>
 </ul>
 </li>
 <li>
-<p><code>--token-type</code> | <code>--tt</code> <em>(string)</em></p>
+<p><code>--token-type</code>  | <code>--tt</code> <em>(string)</em></p>
 <ul>
 <li>The type of token to get and use for the API. Omit this option to use the default token type, which is provided by 'zowe auth login'.</li>
 </ul>
 </li>
 <li>
-<p><code>--token-value</code> | <code>--tv</code> <em>(string)</em></p>
+<p><code>--token-value</code>  | <code>--tv</code> <em>(string)</em></p>
 <ul>
 <li>The value of the token to pass to the API.</li>
 </ul>
 </li>
 <li>
-<p><code>--cert-file</code> <em>(local file path)</em></p>
+<p><code>--cert-file</code>  <em>(local file path)</em></p>
 <ul>
 <li>The file path to a certificate file to use for authentication</li>
 </ul>
 </li>
 <li>
-<p><code>--cert-key-file</code> <em>(local file path)</em></p>
+<p><code>--cert-key-file</code>  <em>(local file path)</em></p>
 <ul>
 <li>The file path to a certificate key file to use for authentication</li>
 </ul>
@@ -272,13 +272,13 @@ Allowed values: NONE, ALL, SYSTEMS, SUBSYSTEMS</p>
 <h4>Response Format Options</h4>
 <ul>
 <li>
-<p><code>--response-format-filter</code> | <code>--rff</code> <em>(array)</em></p>
+<p><code>--response-format-filter</code>  | <code>--rff</code> <em>(array)</em></p>
 <ul>
 <li>Filter (include) fields in the response. Accepts an array of field/property names to include in the output response. You can filter JSON objects properties OR table columns/fields. In addition, you can use this option in conjunction with '--response-format-type' to reduce the output of a command to a single field/property or a list of a single field/property.</li>
 </ul>
 </li>
 <li>
-<p><code>--response-format-type</code> | <code>--rft</code> <em>(string)</em></p>
+<p><code>--response-format-type</code>  | <code>--rft</code> <em>(string)</em></p>
 <ul>
 <li>
 <p>The command response output format type. Must be one of the following:</p>
@@ -291,7 +291,7 @@ Allowed values: NONE, ALL, SYSTEMS, SUBSYSTEMS</p>
 </ul>
 </li>
 <li>
-<p><code>--response-format-header</code> | <code>--rfh</code> <em>(boolean)</em></p>
+<p><code>--response-format-header</code>  | <code>--rfh</code> <em>(boolean)</em></p>
 <ul>
 <li>If &quot;--response-format-type table&quot; is specified, include the column headers in the output.</li>
 </ul>

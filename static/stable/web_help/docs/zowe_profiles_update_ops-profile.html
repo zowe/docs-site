@@ -8,8 +8,6 @@
 <article class="markdown-body">
 <h2><a href="zowe.html">zowe</a> › <a href="zowe_profiles.html">profiles</a> › <a href="zowe_profiles_update.html">update</a> › <a href="zowe_profiles_update_ops-profile.html">ops-profile</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
 <p>The OPS Web Services session profile schema, where you specify your session information and credentials</p>
-<p>Warning: This command has been deprecated.<br>
-Recommended replacement: The 'config set' command</p>
 <h4>Usage</h4>
 <p>zowe profiles update ops-profile &lt;profileName&gt; [options]</p>
 <h4>Positional Arguments</h4>
@@ -24,31 +22,31 @@ Recommended replacement: The 'config set' command</p>
 <h4>OPS WEB SERVICES CONNECTION OPTIONS</h4>
 <ul>
 <li>
-<p><code>--host</code> <em>(string)</em></p>
+<p><code>--host</code>  <em>(string)</em></p>
 <ul>
 <li>The hostname of the server where OPS Web Services is running.</li>
 </ul>
 </li>
 <li>
-<p><code>--port</code> | <code>-p</code> <em>(number)</em></p>
+<p><code>--port</code>  | <code>-p</code> <em>(number)</em></p>
 <ul>
 <li>The port number for OPS Web Services.</li>
 </ul>
 </li>
 <li>
-<p><code>--user</code> <em>(string)</em></p>
+<p><code>--user</code>  <em>(string)</em></p>
 <ul>
 <li>Your z/OS user name used to authenticate to OPS Web Services</li>
 </ul>
 </li>
 <li>
-<p><code>--password</code> | <code>--pass</code> <em>(string)</em></p>
+<p><code>--password</code>  | <code>--pass</code> <em>(string)</em></p>
 <ul>
 <li>Your z/OS password used to authenticate to OPS Web Services</li>
 </ul>
 </li>
 <li>
-<p><code>--protocol</code> | <code>--prot</code> <em>(string)</em></p>
+<p><code>--protocol</code>  | <code>--prot</code> <em>(string)</em></p>
 <ul>
 <li>
 <p>The protocol used for connecting to OPS Web Services</p>
@@ -57,13 +55,13 @@ Recommended replacement: The 'config set' command</p>
 </ul>
 </li>
 <li>
-<p><code>--reject-unauthorized</code> | <code>--ru</code> <em>(boolean)</em></p>
+<p><code>--reject-unauthorized</code>  | <code>--ru</code> <em>(boolean)</em></p>
 <ul>
 <li>If set to true, the server certificate is verified against the list of supplied CAs. If set to false, certificate verification is not performed.</li>
 </ul>
 </li>
 <li>
-<p><code>--subsystem</code> | <code>--subs</code> <em>(string)</em></p>
+<p><code>--subsystem</code>  | <code>--subs</code> <em>(string)</em></p>
 <ul>
 <li>Specifies the subsystem id of the OPS/MVS instance to which commands will be directed.</li>
 </ul>

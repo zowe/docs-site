@@ -7,7 +7,7 @@
 <link rel="stylesheet" href="../css/docs.css">
 <article class="markdown-body">
 <h2><a href="zowe.html">zowe</a> › <a href="zowe_endevor-bridge-for-git.html">endevor-bridge-for-git</a> › <a href="zowe_endevor-bridge-for-git_mapping.html">mapping</a> › <a href="zowe_endevor-bridge-for-git_mapping_add-element.html">add-element</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
-<p>Add an element from up the map in your Endevor to your Git repository.</p>
+<p>Add an element from up the map in your CA Endevor to your Git repository.</p>
 <h4>Usage</h4>
 <p>zowe endevor-bridge-for-git mapping add-element &lt;context&gt; &lt;mapping&gt; [options]</p>
 <h4>Positional Arguments</h4>
@@ -28,31 +28,31 @@
 <h4>Options</h4>
 <ul>
 <li>
-<p><code>--element-name</code> | <code>--name</code> <em>(string)</em></p>
+<p><code>--elementName</code>  | <code>--name</code> <em>(string)</em></p>
 <ul>
-<li>The name of the Endevor element you want to add.</li>
+<li>The name of the CA Endevor element you want to add.</li>
 </ul>
 </li>
 <li>
-<p><code>--element-type</code> | <code>--type</code> <em>(string)</em></p>
+<p><code>--elementType</code>  | <code>--type</code> <em>(string)</em></p>
 <ul>
-<li>The type of the Endevor element you want to add</li>
+<li>The type of the CA Endevor element you want to add</li>
 </ul>
 </li>
 <li>
-<p><code>--endevor-system</code> | <code>--endevorsys</code> | <code>--system</code> <em>(string)</em></p>
+<p><code>--endevor-system</code>  | <code>--endevorsys</code> <em>(string)</em></p>
 <ul>
-<li>The Endevor system where your element resides.</li>
+<li>The CA Endevor system where your element resides.</li>
 </ul>
 </li>
 <li>
-<p><code>--endevor-subsystem</code> | <code>--endevorsub</code> | <code>--sub</code> | <code>--subsystem</code> <em>(string)</em></p>
+<p><code>--endevor-subsystem</code>  | <code>--endevorsub</code> <em>(string)</em></p>
 <ul>
-<li>The Endevor subsystem where your element resides.</li>
+<li>The CA Endevor subsystem where your element resides.</li>
 </ul>
 </li>
 <li>
-<p><code>--withDependencies</code> <em>(boolean)</em></p>
+<p><code>--withDependencies</code>  <em>(boolean)</em></p>
 <ul>
 <li>
 <p>If specified, the requested element will be added with dependencies (eg. COBOL copybooks).</p>
@@ -61,7 +61,7 @@
 </ul>
 </li>
 <li>
-<p><code>--force-get-dependencies</code> | <code>--force</code> <em>(boolean)</em></p>
+<p><code>--force-get-dependencies</code>  | <code>--force</code> <em>(boolean)</em></p>
 <ul>
 <li>
 <p>If specified, the maximum number of dependencies will be bypassed. This only applies to the repository administrator.</p>
@@ -70,22 +70,22 @@
 </ul>
 </li>
 <li>
-<p><code>--validate</code> <em>(boolean)</em></p>
+<p><code>--validate</code>  <em>(boolean)</em></p>
 <ul>
 <li>
-<p>If specified, the requested elements will be validated against Endevor.</p>
+<p>If specified, the requested elements will be validated against CA Endevor.</p>
 <p>Default value: false</p>
 </li>
 </ul>
 </li>
 <li>
-<p><code>--branchId</code> <em>(string)</em></p>
+<p><code>--branchId</code>  <em>(string)</em></p>
 <ul>
 <li>If specified, the requested elements will be added to the selected branch.</li>
 </ul>
 </li>
 <li>
-<p><code>--all-branches</code> <em>(boolean)</em></p>
+<p><code>--all-branches</code>  <em>(boolean)</em></p>
 <ul>
 <li>
 <p>If specified, the requested elements will be added to all synchronized branches in your repository.</p>
@@ -94,7 +94,7 @@
 </ul>
 </li>
 <li>
-<p><code>--file</code> | <code>--fn</code> <em>(local file path)</em></p>
+<p><code>--file</code>  | <code>--fn</code> <em>(local file path)</em></p>
 <ul>
 <li>If specified, the elements to add will be read from file. Make sure that the file is in the correct format as specified in the documentation.</li>
 </ul>
@@ -103,41 +103,41 @@
 <h4>Endevor options (alternatively use an 'endevor' profile)</h4>
 <ul>
 <li>
-<p><code>--endevor-protocol</code> | <code>--endevorprot</code> <em>(string)</em></p>
+<p><code>--endevor-protocol</code>  | <code>--endevorprot</code> <em>(string)</em></p>
 <ul>
 <li>
-<p>The Endevor SCM Rest API protocol.</p>
+<p>The CA Endevor SCM Rest API protocol.</p>
 <p>Default value: http</p>
 <p>Allowed values: http, https</p>
 </li>
 </ul>
 </li>
 <li>
-<p><code>--endevor-host</code> | <code>--endevorh</code> <em>(string)</em></p>
+<p><code>--endevor-host</code>  | <code>--endevorh</code> <em>(string)</em></p>
 <ul>
 <li>The Endevor Rest API hostname.</li>
 </ul>
 </li>
 <li>
-<p><code>--endevor-port</code> | <code>--endevorp</code> <em>(number)</em></p>
+<p><code>--endevor-port</code>  | <code>--endevorp</code> <em>(number)</em></p>
 <ul>
 <li>The Endevor Rest API port.</li>
 </ul>
 </li>
 <li>
-<p><code>--endevor-user</code> | <code>--endevoru</code> <em>(string)</em></p>
+<p><code>--endevor-user</code>  | <code>--endevoru</code> <em>(string)</em></p>
 <ul>
 <li>Mainframe (Endevor) username, which can be the same as your TSO login.</li>
 </ul>
 </li>
 <li>
-<p><code>--endevor-password</code> | <code>--endevorpass</code> | <code>--endevorpw</code> <em>(string)</em></p>
+<p><code>--endevor-password</code>  | <code>--endevorpass</code> | <code>--endevorpw</code> <em>(string)</em></p>
 <ul>
 <li>Mainframe (Endevor) password, which can be the same as your TSO password.</li>
 </ul>
 </li>
 <li>
-<p><code>--endevor-reject-unauthorized</code> | <code>--endevorru</code> <em>(boolean)</em></p>
+<p><code>--endevor-reject-unauthorized</code>  | <code>--endevorru</code> <em>(boolean)</em></p>
 <ul>
 <li>
 <p>Reject self-signed certificates.</p>
@@ -146,54 +146,53 @@
 </ul>
 </li>
 <li>
-<p><code>--endevor-base-path</code> | <code>--endevorbp</code> <em>(string)</em></p>
+<p><code>--endevor-base-path</code>  | <code>--endevorbp</code> <em>(string)</em></p>
 <ul>
 <li>
-<p>The Endevor SCM Rest API base path.</p>
+<p>The CA Endevor SCM Rest API base path.</p>
 <p>Default value: EndevorService/rest</p>
 </li>
 </ul>
 </li>
 </ul>
-<h4>Endevor Bridge for Git connection options (alternatively use an 'ebg' profile)</h4>
+<h4>CA Endevor Bridge for Git connection options (alternatively use an 'ebg' profile)</h4>
 <ul>
 <li>
-<p><code>--protocol</code> | <code>--prot</code> <em>(string)</em></p>
+<p><code>--protocol</code>  | <code>--prot</code> <em>(string)</em></p>
 <ul>
 <li>
 <p>The Endevor Bridge for Git SCM protocol.</p>
-<p>Default value: https</p>
-<p>Default value: https<br>
-Allowed values: http, https</p>
+<p>Default value: http</p>
+<p>Allowed values: http, https</p>
 </li>
 </ul>
 </li>
 <li>
-<p><code>--host</code> | <code>-H</code> <em>(string)</em></p>
+<p><code>--host</code>  | <code>-H</code> <em>(string)</em></p>
 <ul>
 <li>The Endevor Bridge for Git hostname.</li>
 </ul>
 </li>
 <li>
-<p><code>--port</code> | <code>-P</code> <em>(number)</em></p>
+<p><code>--port</code>  | <code>-P</code> <em>(number)</em></p>
 <ul>
 <li>The Endevor Bridge for Git port.</li>
 </ul>
 </li>
 <li>
-<p><code>--user</code> | <code>-u</code> <em>(string)</em></p>
+<p><code>--user</code>  | <code>-u</code> <em>(string)</em></p>
 <ul>
 <li>Endevor Bridge for Git username (your git username).</li>
 </ul>
 </li>
 <li>
-<p><code>--token</code> | <code>-t</code> <em>(string)</em></p>
+<p><code>--token</code>  | <code>-t</code> <em>(string)</em></p>
 <ul>
 <li>Git personal access token (it can be obtained from your Git Enterprise Server).</li>
 </ul>
 </li>
 <li>
-<p><code>--reject-unauthorized</code> | <code>--ru</code> <em>(boolean)</em></p>
+<p><code>--reject-unauthorized</code>  | <code>--ru</code> <em>(boolean)</em></p>
 <ul>
 <li>
 <p>Reject self-signed certificates.</p>
@@ -205,19 +204,19 @@ Allowed values: http, https</p>
 <h4>Profile Options</h4>
 <ul>
 <li>
-<p><code>--ebg-profile</code> | <code>--ebg-p</code> <em>(string)</em></p>
+<p><code>--ebg-profile</code>  | <code>--ebg-p</code> <em>(string)</em></p>
 <ul>
 <li>The name of a (ebg) profile to load for this command execution.</li>
 </ul>
 </li>
 <li>
-<p><code>--endevor-profile</code> | <code>--endevor-p</code> <em>(string)</em></p>
+<p><code>--endevor-profile</code>  | <code>--endevor-p</code> <em>(string)</em></p>
 <ul>
 <li>The name of a (endevor) profile to load for this command execution.</li>
 </ul>
 </li>
 <li>
-<p><code>--base-profile</code> | <code>--base-p</code> <em>(string)</em></p>
+<p><code>--base-profile</code>  | <code>--base-p</code> <em>(string)</em></p>
 <ul>
 <li>The name of a (base) profile to load for this command execution.</li>
 </ul>
@@ -226,31 +225,31 @@ Allowed values: http, https</p>
 <h4>Base Connection Options</h4>
 <ul>
 <li>
-<p><code>--password</code> | <code>--pass</code> | <code>--pw</code> <em>(string)</em></p>
+<p><code>--password</code>  | <code>--pass</code> | <code>--pw</code> <em>(string)</em></p>
 <ul>
 <li>Password to authenticate to service on the mainframe.</li>
 </ul>
 </li>
 <li>
-<p><code>--token-type</code> | <code>--tt</code> <em>(string)</em></p>
+<p><code>--token-type</code>  | <code>--tt</code> <em>(string)</em></p>
 <ul>
 <li>The type of token to get and use for the API. Omit this option to use the default token type, which is provided by 'zowe auth login'.</li>
 </ul>
 </li>
 <li>
-<p><code>--token-value</code> | <code>--tv</code> <em>(string)</em></p>
+<p><code>--token-value</code>  | <code>--tv</code> <em>(string)</em></p>
 <ul>
 <li>The value of the token to pass to the API.</li>
 </ul>
 </li>
 <li>
-<p><code>--cert-file</code> <em>(local file path)</em></p>
+<p><code>--cert-file</code>  <em>(local file path)</em></p>
 <ul>
 <li>The file path to a certificate file to use for authentication</li>
 </ul>
 </li>
 <li>
-<p><code>--cert-key-file</code> <em>(local file path)</em></p>
+<p><code>--cert-key-file</code>  <em>(local file path)</em></p>
 <ul>
 <li>The file path to a certificate key file to use for authentication</li>
 </ul>

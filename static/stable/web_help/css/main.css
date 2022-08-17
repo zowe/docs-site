@@ -34,7 +34,6 @@ body {
 }
 
 #footer {
-    cursor: pointer;
     flex: none;
     font-size: small;
     margin: 10px 0;
@@ -100,31 +99,4 @@ body {
 .gutter.gutter-horizontal {
     background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAFAQMAAABo7865AAAABlBMVEVHcEzMzMzyAv2sAAAAAXRSTlMAQObYZgAAABBJREFUeF5jOAMEEAIEEFwAn3kMwcB6I2AAAAAASUVORK5CYII=');
     cursor: col-resize;
-}
-
-@media (prefers-color-scheme: dark) {
-    #header-text {
-        color: #c9d1d9;
-    }
-
-    #panel-left {
-        background-color: #161b22;
-    }
-
-    #panel-right {
-        background-color: #0d1117;
-    }
-
-    #tree-search {
-        background-color: #0d1117;
-        color: #8b949e;
-    }
-
-    .gutter {
-        background-color: #30363d;
-    }
-
-    .jstree-default-dark {
-        background-color: #161b22;
-    }
 }

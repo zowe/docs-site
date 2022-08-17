@@ -30,7 +30,7 @@ It supports all data set types that are supported by File Master Plus.</p>
 <h4>Options</h4>
 <ul>
 <li>
-<p><code>--members</code> | <code>-m</code> <em>(array)</em></p>
+<p><code>--members</code>  | <code>-m</code> <em>(array)</em></p>
 <ul>
 <li>Specifies the members that you want to copy from the data set. To rename the member, specify a new member name after the delimiter ','.If this parameter is not specified all the members are copied.<br>
 Note: This parameter only applies to a PDS or PDSE.<br>
@@ -38,7 +38,7 @@ Example: --mem mem1,newmem1 mem2. Here 'mem2' is copied as it is, and 'mem1' is 
 </ul>
 </li>
 <li>
-<p><code>--generation</code> | <code>-g</code> <em>(string)</em></p>
+<p><code>--generation</code>  | <code>-g</code> <em>(string)</em></p>
 <ul>
 <li>Specifies the PDSE V2 generation number that you want to copy from the data set from.<br>
 Note: This parameter should only be specified if data set from is PDSEV2. If not specified and data set from is a PDSE V2 then current generation, i.e. generation 0, is copied. If generation is negative specifies Relative generation, positive specifies Absolute generation, * specifies all generations and 0 specifies current generation.<br>
@@ -49,7 +49,7 @@ Allowed values: '*','range from -2000000000 to 2000000000'</li>
 </ul>
 </li>
 <li>
-<p><code>--replace</code> | <code>-r</code> <em>(string)</em></p>
+<p><code>--replace</code>  | <code>-r</code> <em>(string)</em></p>
 <ul>
 <li>
 <p>Replace resource-specific items in the target data set. Note: Used only if the target data set is a PDS or a VSAM KSDS.<br>
@@ -60,28 +60,28 @@ Allowed values: y, n</p>
 </ul>
 </li>
 <li>
-<p><code>--static-selection-criteria</code> | <code>--ssc</code> <em>(string)</em></p>
+<p><code>--static-selection-criteria</code>  | <code>--ssc</code> <em>(string)</em></p>
 <ul>
 <li>Specifies the name of pre-defined File Master Plus selection criteria. The name refers to a member in the defaultselection criteria data set as defined in the FMM_CLIST parameter in File Master Plus server.<br>
 Example: --ssc testcri</li>
 </ul>
 </li>
 <li>
-<p><code>--dynamic-selection-criteria</code> | <code>--dsc</code> <em>(string)</em></p>
+<p><code>--dynamic-selection-criteria</code>  | <code>--dsc</code> <em>(string)</em></p>
 <ul>
 <li>Specifies path of the .txt file where the dynamic selection criteria exist. Ensure the format of the file is identical to the static selection criteria created by File Master Plus. If the selection criteria refer to field names in a Cobol or PL/I copybook, use the --layout-member and --layout-data-set parameters to name the copybook location.<br>
 Example: --dsc ../selcri/testcri.txt</li>
 </ul>
 </li>
 <li>
-<p><code>--layout-member</code> | <code>--lm</code> <em>(string)</em></p>
+<p><code>--layout-member</code>  | <code>--lm</code> <em>(string)</em></p>
 <ul>
 <li>Specifies name of the Cobol or PL/I copybook.<br>
 Example: -lm testlay.</li>
 </ul>
 </li>
 <li>
-<p><code>--layout-data-set</code> | <code>--lds</code> <em>(string)</em></p>
+<p><code>--layout-data-set</code>  | <code>--lds</code> <em>(string)</em></p>
 <ul>
 <li>Specifies name of the data set that contains the layout member.<br>
 Example: -lds fmmvs.layout.dataset.</li>
@@ -91,34 +91,31 @@ Example: -lds fmmvs.layout.dataset.</li>
 <h4>FMP Connection Options</h4>
 <ul>
 <li>
-<p><code>--host</code> | <code>-H</code> <em>(string)</em></p>
+<p><code>--host</code>  | <code>-H</code> <em>(string)</em></p>
 <ul>
 <li>Specifies File Master Plus server host name.</li>
 </ul>
 </li>
 <li>
-<p><code>--port</code> | <code>-P</code> <em>(number)</em></p>
+<p><code>--port</code>  | <code>-P</code> <em>(number)</em></p>
 <ul>
-<li>
-<p>Specifies File Master Plus server port.</p>
-<p>Default value: 51914</p>
-</li>
+<li>Specifies File Master Plus server port.</li>
 </ul>
 </li>
 <li>
-<p><code>--user</code> | <code>-u</code> <em>(string)</em></p>
+<p><code>--user</code>  | <code>-u</code> <em>(string)</em></p>
 <ul>
 <li>Specifies Mainframe user name. May be the same as TSO login.</li>
 </ul>
 </li>
 <li>
-<p><code>--password</code> | <code>--pass</code> | <code>--pw</code> <em>(string)</em></p>
+<p><code>--password</code>  | <code>--pass</code> | <code>--pw</code> <em>(string)</em></p>
 <ul>
 <li>Specifies Mainframe password. May be the same as TSO password.</li>
 </ul>
 </li>
 <li>
-<p><code>--protocol</code> | <code>-o</code> <em>(string)</em></p>
+<p><code>--protocol</code>  | <code>-o</code> <em>(string)</em></p>
 <ul>
 <li>
 <p>Specifies File Master Plus REST API protocol.</p>
@@ -128,7 +125,7 @@ Allowed values: http, https</p>
 </ul>
 </li>
 <li>
-<p><code>--reject-unauthorized</code> | <code>--ru</code> <em>(boolean)</em></p>
+<p><code>--reject-unauthorized</code>  | <code>--ru</code> <em>(boolean)</em></p>
 <ul>
 <li>
 <p>Reject self-signed certificates.</p>
@@ -137,7 +134,7 @@ Allowed values: http, https</p>
 </ul>
 </li>
 <li>
-<p><code>--base-path</code> | <code>--bp</code> <em>(string)</em></p>
+<p><code>--base-path</code>  | <code>--bp</code> <em>(string)</em></p>
 <ul>
 <li>The base path for your API mediation layer instance. Specify this option to prepend the base path to all FMP resources when making REST requests. Do not specify this option if you are not using an API mediation layer.</li>
 </ul>
@@ -146,13 +143,13 @@ Allowed values: http, https</p>
 <h4>Profile Options</h4>
 <ul>
 <li>
-<p><code>--fmp-profile</code> | <code>--fmp-p</code> <em>(string)</em></p>
+<p><code>--fmp-profile</code>  | <code>--fmp-p</code> <em>(string)</em></p>
 <ul>
 <li>The name of a (fmp) profile to load for this command execution.</li>
 </ul>
 </li>
 <li>
-<p><code>--base-profile</code> | <code>--base-p</code> <em>(string)</em></p>
+<p><code>--base-profile</code>  | <code>--base-p</code> <em>(string)</em></p>
 <ul>
 <li>The name of a (base) profile to load for this command execution.</li>
 </ul>
@@ -161,25 +158,25 @@ Allowed values: http, https</p>
 <h4>Base Connection Options</h4>
 <ul>
 <li>
-<p><code>--token-type</code> | <code>--tt</code> <em>(string)</em></p>
+<p><code>--token-type</code>  | <code>--tt</code> <em>(string)</em></p>
 <ul>
 <li>The type of token to get and use for the API. Omit this option to use the default token type, which is provided by 'zowe auth login'.</li>
 </ul>
 </li>
 <li>
-<p><code>--token-value</code> | <code>--tv</code> <em>(string)</em></p>
+<p><code>--token-value</code>  | <code>--tv</code> <em>(string)</em></p>
 <ul>
 <li>The value of the token to pass to the API.</li>
 </ul>
 </li>
 <li>
-<p><code>--cert-file</code> <em>(local file path)</em></p>
+<p><code>--cert-file</code>  <em>(local file path)</em></p>
 <ul>
 <li>The file path to a certificate file to use for authentication</li>
 </ul>
 </li>
 <li>
-<p><code>--cert-key-file</code> <em>(local file path)</em></p>
+<p><code>--cert-key-file</code>  <em>(local file path)</em></p>
 <ul>
 <li>The file path to a certificate key file to use for authentication</li>
 </ul>

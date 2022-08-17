@@ -22,13 +22,13 @@
 <h4>Options</h4>
 <ul>
 <li>
-<p><code>--stepname</code> | <code>--st</code> <em>(string)</em></p>
+<p><code>--stepname</code>  | <code>--st</code> <em>(string)</em></p>
 <ul>
 <li>Specifies the name of the job step that you want to delete from the list of inclusions in the PMA scope.</li>
 </ul>
 </li>
 <li>
-<p><code>--procstep</code> | <code>--ps</code> <em>(string)</em></p>
+<p><code>--procstep</code>  | <code>--ps</code> <em>(string)</em></p>
 <ul>
 <li>Specifies the procname of the job that you want to delete from the list of inclusions in the PMA scope.</li>
 </ul>
@@ -37,19 +37,19 @@
 <h4>PMA Connection Options</h4>
 <ul>
 <li>
-<p><code>--job_acct</code> | <code>--ja</code> <em>(string)</em></p>
+<p><code>--job_acct</code>  | <code>--ja</code> <em>(string)</em></p>
 <ul>
 <li>Specifies z/OS TSO/E accounting information. Values: numeric characters (0-9)</li>
 </ul>
 </li>
 <li>
-<p><code>--job_class</code> | <code>--jc</code> <em>(string)</em></p>
+<p><code>--job_class</code>  | <code>--jc</code> <em>(string)</em></p>
 <ul>
 <li>Your z/OS class information. Values: alphanumeric characters (A-Z, 0-9)</li>
 </ul>
 </li>
 <li>
-<p><code>--job_mclass</code> | <code>--jmc</code> <em>(string)</em></p>
+<p><code>--job_mclass</code>  | <code>--jmc</code> <em>(string)</em></p>
 <ul>
 <li>
 <p>Specifies the MSGCLASS parameter value and assigns the job log to the specified output class. The specified MSGCLASS value is used in all JCLs that PMA runs while you execute the commands. If you do not provide the job_mclass parameter, the default MSGCLASS value is used. Values: alphanumeric characters (A-Z, 0-9)</p>
@@ -58,34 +58,34 @@
 </ul>
 </li>
 <li>
-<p><code>--job_load</code> | <code>--jl</code> <em>(string)</em></p>
+<p><code>--job_load</code>  | <code>--jl</code> <em>(string)</em></p>
 <ul>
 <li>Specifies the PMA loadlib data set name that you defined during the PMA customization (&amp;HLQ.CEETLOAD)</li>
 </ul>
 </li>
 <li>
-<p><code>--job_pmahlq</code> | <code>--jph</code> <em>(string)</em></p>
+<p><code>--job_pmahlq</code>  | <code>--jph</code> <em>(string)</em></p>
 <ul>
-<li>Specifies your PMA HLQ to access the KSDSALT, KSDSJOB, and KSDSEXC VSAM files that ensure the collection of the necessary data</li>
+<li>Specifies your PMA HLQ to access the KSDSALT, KSDSJOB, and KSDSEXC VSAM files to collect the necessary data</li>
 </ul>
 </li>
 </ul>
 <h4>Profile Options</h4>
 <ul>
 <li>
-<p><code>--zosmf-profile</code> | <code>--zosmf-p</code> <em>(string)</em></p>
+<p><code>--zosmf-profile</code>  | <code>--zosmf-p</code> <em>(string)</em></p>
 <ul>
 <li>The name of a (zosmf) profile to load for this command execution.</li>
 </ul>
 </li>
 <li>
-<p><code>--pma-profile</code> | <code>--pma-p</code> <em>(string)</em></p>
+<p><code>--pma-profile</code>  | <code>--pma-p</code> <em>(string)</em></p>
 <ul>
 <li>The name of a (pma) profile to load for this command execution.</li>
 </ul>
 </li>
 <li>
-<p><code>--base-profile</code> | <code>--base-p</code> <em>(string)</em></p>
+<p><code>--base-profile</code>  | <code>--base-p</code> <em>(string)</em></p>
 <ul>
 <li>The name of a (base) profile to load for this command execution.</li>
 </ul>
@@ -94,31 +94,31 @@
 <h4>Base Connection Options</h4>
 <ul>
 <li>
-<p><code>--host</code> | <code>-H</code> <em>(string)</em></p>
+<p><code>--host</code>  | <code>-H</code> <em>(string)</em></p>
 <ul>
 <li>Host name of service on the mainframe.</li>
 </ul>
 </li>
 <li>
-<p><code>--port</code> | <code>-P</code> <em>(number)</em></p>
+<p><code>--port</code>  | <code>-P</code> <em>(number)</em></p>
 <ul>
 <li>Port number of service on the mainframe.</li>
 </ul>
 </li>
 <li>
-<p><code>--user</code> | <code>-u</code> <em>(string)</em></p>
+<p><code>--user</code>  | <code>-u</code> <em>(string)</em></p>
 <ul>
 <li>User name to authenticate to service on the mainframe.</li>
 </ul>
 </li>
 <li>
-<p><code>--password</code> | <code>--pass</code> | <code>--pw</code> <em>(string)</em></p>
+<p><code>--password</code>  | <code>--pass</code> | <code>--pw</code> <em>(string)</em></p>
 <ul>
 <li>Password to authenticate to service on the mainframe.</li>
 </ul>
 </li>
 <li>
-<p><code>--reject-unauthorized</code> | <code>--ru</code> <em>(boolean)</em></p>
+<p><code>--reject-unauthorized</code>  | <code>--ru</code> <em>(boolean)</em></p>
 <ul>
 <li>
 <p>Reject self-signed certificates.</p>
@@ -127,25 +127,25 @@
 </ul>
 </li>
 <li>
-<p><code>--token-type</code> | <code>--tt</code> <em>(string)</em></p>
+<p><code>--token-type</code>  | <code>--tt</code> <em>(string)</em></p>
 <ul>
 <li>The type of token to get and use for the API. Omit this option to use the default token type, which is provided by 'zowe auth login'.</li>
 </ul>
 </li>
 <li>
-<p><code>--token-value</code> | <code>--tv</code> <em>(string)</em></p>
+<p><code>--token-value</code>  | <code>--tv</code> <em>(string)</em></p>
 <ul>
 <li>The value of the token to pass to the API.</li>
 </ul>
 </li>
 <li>
-<p><code>--cert-file</code> <em>(local file path)</em></p>
+<p><code>--cert-file</code>  <em>(local file path)</em></p>
 <ul>
 <li>The file path to a certificate file to use for authentication</li>
 </ul>
 </li>
 <li>
-<p><code>--cert-key-file</code> <em>(local file path)</em></p>
+<p><code>--cert-key-file</code>  <em>(local file path)</em></p>
 <ul>
 <li>The file path to a certificate key file to use for authentication</li>
 </ul>

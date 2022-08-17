@@ -8,8 +8,6 @@
 <article class="markdown-body">
 <h2><a href="zowe.html">zowe</a> › <a href="zowe_profiles.html">profiles</a> › <a href="zowe_profiles_create.html">create</a> › <a href="zowe_profiles_create_fmp-profile.html">fmp-profile</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
 <p>File Master Plus profile schema.</p>
-<p>Warning: This command has been deprecated.<br>
-Recommended replacement: The 'config init' command</p>
 <h4>Usage</h4>
 <p>zowe profiles create fmp-profile &lt;profileName&gt; [options]</p>
 <h4>Positional Arguments</h4>
@@ -24,34 +22,31 @@ Recommended replacement: The 'config init' command</p>
 <h4>FMP Connection Options</h4>
 <ul>
 <li>
-<p><code>--host</code> | <code>-H</code> <em>(string)</em></p>
+<p><code>--host</code>  | <code>-H</code> <em>(string)</em></p>
 <ul>
 <li>Specifies File Master Plus server host name.</li>
 </ul>
 </li>
 <li>
-<p><code>--port</code> | <code>-P</code> <em>(number)</em></p>
+<p><code>--port</code>  | <code>-P</code> <em>(number)</em></p>
 <ul>
-<li>
-<p>Specifies File Master Plus server port.</p>
-<p>Default value: 51914</p>
-</li>
+<li>Specifies File Master Plus server port.</li>
 </ul>
 </li>
 <li>
-<p><code>--user</code> | <code>-u</code> <em>(string)</em></p>
+<p><code>--user</code>  | <code>-u</code> <em>(string)</em></p>
 <ul>
 <li>Specifies Mainframe user name. May be the same as TSO login.</li>
 </ul>
 </li>
 <li>
-<p><code>--password</code> | <code>--pass</code> | <code>--pw</code> <em>(string)</em></p>
+<p><code>--password</code>  | <code>--pass</code> | <code>--pw</code> <em>(string)</em></p>
 <ul>
 <li>Specifies Mainframe password. May be the same as TSO password.</li>
 </ul>
 </li>
 <li>
-<p><code>--protocol</code> | <code>-o</code> <em>(string)</em></p>
+<p><code>--protocol</code>  | <code>-o</code> <em>(string)</em></p>
 <ul>
 <li>
 <p>Specifies File Master Plus REST API protocol.</p>
@@ -61,7 +56,7 @@ Allowed values: http, https</p>
 </ul>
 </li>
 <li>
-<p><code>--reject-unauthorized</code> | <code>--ru</code> <em>(boolean)</em></p>
+<p><code>--reject-unauthorized</code>  | <code>--ru</code> <em>(boolean)</em></p>
 <ul>
 <li>
 <p>Reject self-signed certificates.</p>
@@ -70,7 +65,7 @@ Allowed values: http, https</p>
 </ul>
 </li>
 <li>
-<p><code>--base-path</code> | <code>--bp</code> <em>(string)</em></p>
+<p><code>--base-path</code>  | <code>--bp</code> <em>(string)</em></p>
 <ul>
 <li>The base path for your API mediation layer instance. Specify this option to prepend the base path to all FMP resources when making REST requests. Do not specify this option if you are not using an API mediation layer.</li>
 </ul>
@@ -79,13 +74,13 @@ Allowed values: http, https</p>
 <h4>Options</h4>
 <ul>
 <li>
-<p><code>--overwrite</code> | <code>--ow</code> <em>(boolean)</em></p>
+<p><code>--overwrite</code>  | <code>--ow</code> <em>(boolean)</em></p>
 <ul>
 <li>Overwrite the fmp profile when a profile of the same name exists.</li>
 </ul>
 </li>
 <li>
-<p><code>--disable-defaults</code> | <code>--dd</code> <em>(boolean)</em></p>
+<p><code>--disable-defaults</code>  | <code>--dd</code> <em>(boolean)</em></p>
 <ul>
 <li>Disable populating profile values of undefined properties with default values.</li>
 </ul>

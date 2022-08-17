@@ -8,8 +8,6 @@
 <article class="markdown-body">
 <h2><a href="zowe.html">zowe</a> › <a href="zowe_profiles.html">profiles</a> › <a href="zowe_profiles_create.html">create</a> › <a href="zowe_profiles_create_caview-profile.html">caview-profile</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
 <p>Configuration profile for View</p>
-<p>Warning: This command has been deprecated.<br>
-Recommended replacement: The 'config init' command</p>
 <h4>Usage</h4>
 <p>zowe profiles create caview-profile &lt;profileName&gt; [options]</p>
 <h4>Positional Arguments</h4>
@@ -24,7 +22,7 @@ Recommended replacement: The 'config init' command</p>
 <h4>Options</h4>
 <ul>
 <li>
-<p><code>--protocol</code> <em>(string)</em></p>
+<p><code>--protocol</code>  <em>(string)</em></p>
 <ul>
 <li>
 <p>Protocol of the target View REST API instance.</p>
@@ -34,13 +32,13 @@ Allowed values: http, https</p>
 </ul>
 </li>
 <li>
-<p><code>--host</code> | <code>--hostname</code> <em>(string)</em></p>
+<p><code>--hostname</code>  <em>(string)</em></p>
 <ul>
 <li>Hostname or ip address of the target View REST API instance.</li>
 </ul>
 </li>
 <li>
-<p><code>--port</code> <em>(number)</em></p>
+<p><code>--port</code>  | <code>-P</code> <em>(number)</em></p>
 <ul>
 <li>
 <p>Port of the target View REST API instance.</p>
@@ -49,7 +47,7 @@ Allowed values: http, https</p>
 </ul>
 </li>
 <li>
-<p><code>--base-path</code> <em>(string)</em></p>
+<p><code>--base-path</code>  <em>(string)</em></p>
 <ul>
 <li>
 <p>Context name of the target View REST API instance.</p>
@@ -58,25 +56,25 @@ Allowed values: http, https</p>
 </ul>
 </li>
 <li>
-<p><code>--user</code> | <code>--username</code> <em>(string)</em></p>
+<p><code>--username</code>  <em>(string)</em></p>
 <ul>
 <li>User name used to authenticate against the target View REST API instance.</li>
 </ul>
 </li>
 <li>
-<p><code>--password</code> <em>(string)</em></p>
+<p><code>--password</code>  | <code>--pass</code> | <code>--pw</code> <em>(string)</em></p>
 <ul>
 <li>Password used to authenticate against the target View REST API instance.</li>
 </ul>
 </li>
 <li>
-<p><code>--overwrite</code> | <code>--ow</code> <em>(boolean)</em></p>
+<p><code>--overwrite</code>  | <code>--ow</code> <em>(boolean)</em></p>
 <ul>
 <li>Overwrite the caview profile when a profile of the same name exists.</li>
 </ul>
 </li>
 <li>
-<p><code>--disable-defaults</code> | <code>--dd</code> <em>(boolean)</em></p>
+<p><code>--disable-defaults</code>  | <code>--dd</code> <em>(boolean)</em></p>
 <ul>
 <li>Disable populating profile values of undefined properties with default values.</li>
 </ul>
