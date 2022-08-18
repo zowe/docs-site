@@ -8,8 +8,8 @@
 <article class="markdown-body">
 <h2><a href="zowe.html">zowe</a> › <a href="zowe_file-master-plus.html">file-master-plus</a> › <a href="zowe_file-master-plus_copy.html">copy</a> › <a href="zowe_file-master-plus_copy_data-set.html">data-set</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
 <p>Copy from a data set to another data set.<br>
-If the &lt;to&gt; data set does not exist, CA File Master Plus automatically creates a new data set using the attributes of &lt;from&gt; data set.<br>
-It supports all data set types that are supported by CA File Master Plus.</p>
+If the &lt;to&gt; data set does not exist, File Master Plus automatically creates a new data set using the attributes of &lt;from&gt; data set.<br>
+It supports all data set types that are supported by File Master Plus.</p>
 <h4>Usage</h4>
 <p>zowe file-master-plus copy data-set &lt;from&gt; &lt;to&gt; [options]</p>
 <h4>Positional Arguments</h4>
@@ -62,14 +62,14 @@ Allowed values: y, n</p>
 <li>
 <p><code>--static-selection-criteria</code>  | <code>--ssc</code> <em>(string)</em></p>
 <ul>
-<li>Specifies the name of pre-defined CA File Master Plus selection criteria. The name refers to a member in the defaultselection criteria data set as defined in the FMM_CLIST parameter in CA File Master Plus server.<br>
+<li>Specifies the name of pre-defined File Master Plus selection criteria. The name refers to a member in the defaultselection criteria data set as defined in the FMM_CLIST parameter in File Master Plus server.<br>
 Example: --ssc testcri</li>
 </ul>
 </li>
 <li>
 <p><code>--dynamic-selection-criteria</code>  | <code>--dsc</code> <em>(string)</em></p>
 <ul>
-<li>Specifies path of the .txt file where the dynamic selection criteria exist. Ensure the format of the file is identical to the static selection criteria created by CA File Master Plus. If the selection criteria refer to field names in a Cobol or PL/I copybook, use the --layout-member and --layout-data-set parameters to name the copybook location.<br>
+<li>Specifies path of the .txt file where the dynamic selection criteria exist. Ensure the format of the file is identical to the static selection criteria created by File Master Plus. If the selection criteria refer to field names in a Cobol or PL/I copybook, use the --layout-member and --layout-data-set parameters to name the copybook location.<br>
 Example: --dsc ../selcri/testcri.txt</li>
 </ul>
 </li>
@@ -93,13 +93,13 @@ Example: -lds fmmvs.layout.dataset.</li>
 <li>
 <p><code>--host</code>  | <code>-H</code> <em>(string)</em></p>
 <ul>
-<li>Specifies CA File Master Plus server host name.</li>
+<li>Specifies File Master Plus server host name.</li>
 </ul>
 </li>
 <li>
 <p><code>--port</code>  | <code>-P</code> <em>(number)</em></p>
 <ul>
-<li>Specifies CA File Master Plus server port.</li>
+<li>Specifies File Master Plus server port.</li>
 </ul>
 </li>
 <li>
@@ -118,7 +118,7 @@ Example: -lds fmmvs.layout.dataset.</li>
 <p><code>--protocol</code>  | <code>-o</code> <em>(string)</em></p>
 <ul>
 <li>
-<p>Specifies CA File Master Plus REST API protocol.</p>
+<p>Specifies File Master Plus REST API protocol.</p>
 <p>Default value: https<br>
 Allowed values: http, https</p>
 </li>

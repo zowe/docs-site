@@ -7,7 +7,7 @@
 <link rel="stylesheet" href="../css/docs.css">
 <article class="markdown-body">
 <h2><a href="zowe.html">zowe</a> › <a href="zowe_profiles.html">profiles</a> › <a href="zowe_profiles_create.html">create</a> › <a href="zowe_profiles_create_mat-profile.html">mat-profile</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
-<p>CA MAT Analyze CLI profile schema.</p>
+<p>MAT Analyze CLI profile schema.</p>
 <h4>Usage</h4>
 <p>zowe profiles create mat-profile &lt;profileName&gt; [options]</p>
 <h4>Positional Arguments</h4>
@@ -25,7 +25,7 @@
 <p><code>--protocol</code>  | <code>--prt</code> <em>(string)</em></p>
 <ul>
 <li>
-<p>Specifies the protocol defined for the CA MAT REST API server (http or https).</p>
+<p>Specifies the protocol defined for the MAT REST API server (http or https).</p>
 <p>Allowed values: http, https</p>
 </li>
 </ul>
@@ -33,7 +33,7 @@
 <li>
 <p><code>--hostname</code>  | <code>--hn</code> <em>(string)</em></p>
 <ul>
-<li>Specifies the hostname or IP address defined for the CA MAT REST API server (e.g. 127.0.0.0 or localhost).</li>
+<li>Specifies the hostname or IP address defined for the MAT REST API server (e.g. 127.0.0.0 or localhost).</li>
 </ul>
 </li>
 <li>
@@ -58,7 +58,7 @@
 <p><code>--zowediscoverable</code>  | <code>--zdis</code> <em>(boolean)</em></p>
 <ul>
 <li>
-<p>Specifies whether you want to use Zowe API Mediation Layer to process the commands for this profile. Set '--zowediscoverable true' only if you have configured the Zowe API Mediation Layer properties in your CA MAT REST API server settings.</p>
+<p>Specifies whether you want to use Zowe API Mediation Layer to process the commands for this profile. Set '--zowediscoverable true' only if you have configured the Zowe API Mediation Layer properties in your MAT REST API server settings.</p>
 <p>Allowed values: false, true</p>
 </li>
 </ul>
@@ -66,7 +66,7 @@
 <li>
 <p><code>--listingDir</code>  | <code>--ldir</code> <em>(string)</em></p>
 <ul>
-<li>Specifies the directory where you want to store the registered program listings (e.g. 'c:\listings') for your immediate source code inspection. You can use the advantage of automated listing registration with CA MAT and listing retrieval through CA Endevor® footprints for Cobol, C/C++, and Assembler programs. When a source program listing is registered with CA MAT, you can enhance the histogram analysis data with the program listing details that pertain to the specific CSECT and program statement. The listing is transfered to the specified directory, which enables you to navigate directly to the line of the source code in you VS Code IDE and inspect the program statement. To use the listing retrieval option through CA Endevor® footprints, you need to have the CA Endevor® Web Services installed and configured and specify the CA Endevor® web server details in the CA MAT database configuration.</li>
+<li>Specifies the directory where you want to store the registered program listings (e.g. 'c:\listings') for your immediate source code inspection. You can use the advantage of automated listing registration with MAT and listing retrieval through Endevor® footprints for Cobol, C/C++, and Assembler programs. When a source program listing is registered with MAT, you can enhance the histogram analysis data with the program listing details that pertain to the specific CSECT and program statement. The listing is transfered to the specified directory, which enables you to navigate directly to the line of the source code in you VS Code IDE and inspect the program statement. To use the listing retrieval option through Endevor® footprints, you need to have the Endevor® Web Services installed and configured and specify the Endevor® web server details in the MAT database configuration.</li>
 </ul>
 </li>
 </ul>
@@ -88,13 +88,13 @@
 <h4>Examples</h4>
 <ul>
 <li>
-<p>Create a MAT profile called 'matprofile' using your CA MAT configuration and REST API details, with the CA MAT REST API server integrated with the Zowe API Mediation Layer:</p>
+<p>Create a MAT profile called 'matprofile' using your MAT configuration and REST API details, with the MAT REST API server integrated with the Zowe API Mediation Layer:</p>
 <ul>
 <li><code>zowe profiles create mat-profile matprofile --prt http --hn localhost --pt 1234 --user user --pass pass --zowediscoverable true</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe profiles create mat-profile matprofile --prt http --hn localhost --pt 1234 --user user --pass pass --zowediscoverable true">Copy</button></li>
 </ul>
 </li>
 <li>
-<p>Create a MAT profile called 'matprofile' using your CA MAT configuration and the details of the CA MAT REST API server without integration with the Zowe API Mediation Layer,and define the 'c:\listings' directory to store program listings for instant analysis from your VS Code IDE:</p>
+<p>Create a MAT profile called 'matprofile' using your MAT configuration and the details of the MAT REST API server without integration with the Zowe API Mediation Layer,and define the 'c:\listings' directory to store program listings for instant analysis from your VS Code IDE:</p>
 <ul>
 <li><code>zowe profiles create mat-profile matprofile --prt http --hn localhost --pt 1234 --user user --pass pass --zowediscoverable false --listingDir 'c:\listings'</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe profiles create mat-profile matprofile --prt http --hn localhost --pt 1234 --user user --pass pass --zowediscoverable false --listingDir 'c:\listings'">Copy</button></li>
 </ul>

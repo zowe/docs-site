@@ -7,7 +7,7 @@
 <link rel="stylesheet" href="../css/docs.css">
 <article class="markdown-body">
 <h2><a href="zowe.html">zowe</a> › <a href="zowe_profiles.html">profiles</a> › <a href="zowe_profiles_create.html">create</a> › <a href="zowe_profiles_create_caview-profile.html">caview-profile</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
-<p>Configuration profile for CA View</p>
+<p>Configuration profile for View</p>
 <h4>Usage</h4>
 <p>zowe profiles create caview-profile &lt;profileName&gt; [options]</p>
 <h4>Positional Arguments</h4>
@@ -25,17 +25,23 @@
 <p><code>--protocol</code>  <em>(string)</em></p>
 <ul>
 <li>
-<p>Protocol of the target CA View REST API instance.</p>
+<p>Protocol of the target View REST API instance.</p>
 <p>Default value: https<br>
 Allowed values: http, https</p>
 </li>
 </ul>
 </li>
 <li>
-<p><code>--port</code>  <em>(number)</em></p>
+<p><code>--hostname</code>  <em>(string)</em></p>
+<ul>
+<li>Hostname or ip address of the target View REST API instance.</li>
+</ul>
+</li>
+<li>
+<p><code>--port</code>  | <code>-P</code> <em>(number)</em></p>
 <ul>
 <li>
-<p>Port of the target CA View REST API instance.</p>
+<p>Port of the target View REST API instance.</p>
 <p>Default value: 443</p>
 </li>
 </ul>
@@ -44,9 +50,21 @@ Allowed values: http, https</p>
 <p><code>--base-path</code>  <em>(string)</em></p>
 <ul>
 <li>
-<p>Context name of the target CA View REST API instance.</p>
+<p>Context name of the target View REST API instance.</p>
 <p>Default value: web-viewer</p>
 </li>
+</ul>
+</li>
+<li>
+<p><code>--username</code>  <em>(string)</em></p>
+<ul>
+<li>User name used to authenticate against the target View REST API instance.</li>
+</ul>
+</li>
+<li>
+<p><code>--password</code>  | <code>--pass</code> | <code>--pw</code> <em>(string)</em></p>
+<ul>
+<li>Password used to authenticate against the target View REST API instance.</li>
 </ul>
 </li>
 <li>
@@ -62,31 +80,10 @@ Allowed values: http, https</p>
 </ul>
 </li>
 </ul>
-<h4>Required Options</h4>
-<ul>
-<li>
-<p><code>--hostname</code>  <em>(string)</em></p>
-<ul>
-<li>Hostname or ip address of the target CA View REST API instance.</li>
-</ul>
-</li>
-<li>
-<p><code>--username</code>  <em>(string)</em></p>
-<ul>
-<li>User name used to authenticate against the target CA View REST API instance.</li>
-</ul>
-</li>
-<li>
-<p><code>--password</code>  <em>(string)</em></p>
-<ul>
-<li>Password used to authenticate against the target CA View REST API instance.</li>
-</ul>
-</li>
-</ul>
 <h4>Examples</h4>
 <ul>
 <li>
-<p>Create a profile for CA View® Plug-in for Zowe CLI named 'myProfile' to connect to '<a href="http://mf.company.org">mf.company.org</a>' over HTTP on port 80 using the 'johndoe' account.:</p>
+<p>Create a profile for View™ Plug-in for Zowe CLI named 'myProfile' to connect to '<a href="http://mf.company.org">mf.company.org</a>' over HTTP on port 80 using the 'johndoe' account.:</p>
 <ul>
 <li><code>zowe profiles create caview-profile myProfile --hostname mf.company.org --protocol http --port 80 --username johndoe --password secret</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe profiles create caview-profile myProfile --hostname mf.company.org --protocol http --port 80 --username johndoe --password secret">Copy</button></li>
 </ul>

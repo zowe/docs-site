@@ -39,19 +39,19 @@
 <li>
 <p><code>--group</code>  <em>(string)</em></p>
 <ul>
-<li>Specifies the histogram group size parameter that defines the resolution of the histogram (e.g., --group 32). If you do not specify the group parameter, the group size value defaults to 4 bytes. If the source program listing is registered with CA MAT, the group size parameter is ignored. The --group parameter is optional. Lower values of the --group parameter result in more granular representation of the histogram data. Values: numbers between 2 and 999999.</li>
+<li>Specifies the histogram group size parameter that defines the resolution of the histogram (e.g., --group 32). If you do not specify the group parameter, the group size value defaults to 4 bytes. If the source program listing is registered with MAT, the group size parameter is ignored. The --group parameter is optional. Lower values of the --group parameter result in more granular representation of the histogram data. Values: numbers between 2 and 999999.</li>
 </ul>
 </li>
 <li>
 <p><code>--top</code>  <em>(number)</em></p>
 <ul>
-<li>Specifies the maximum number of the top consuming CSECT activity locations that you want to obtain in the response (e.g., --top 5). If you specify --top 0, you get the list of all CSECT activity locations that CA MAT has detected during the measurement.The --top parameter is optional. Values: numbers between 0 and 300.</li>
+<li>Specifies the maximum number of the top consuming CSECT activity locations that you want to obtain in the response (e.g., --top 5). If you specify --top 0, you get the list of all CSECT activity locations that MAT has detected during the measurement.The --top parameter is optional. Values: numbers between 0 and 300.</li>
 </ul>
 </li>
 <li>
 <p><code>--listing</code>  <em>(boolean)</em></p>
 <ul>
-<li>Enables you to retrieve program listing details that pertain to the specific CSECT and statement. To use the listing retrieval option, you must install and configure the CA Endevor® Web Services and have the program listing for the specific measurement registered with CA MAT. The source code listing is retrieved through CA Endevor® footprints for Cobol, C/C++, and Assembler programs. The program listing file is downloaded to your local directory that you specified with the 'listingDir' parameter in your MAT configuration profile. When you request the histogram details with the '--listing' option, the 'histogram' command returns the additional 'listing' column that contains a reference to the program listing with the specific CSECT name, program type, line and column number that pertain to the requested CSECT and statement, for example, c:listingsSA420LE.asm:382:51. If you use Visual Studio Code (VS Code) IDE, you can click on the reference in the command responce in your VS Code terminal to navigate directly to the indicated source program location.The --listing parameter is optional.</li>
+<li>Enables you to retrieve program listing details that pertain to the specific CSECT and statement. To use the listing retrieval option, you must install and configure the Endevor® Web Services and have the program listing for the specific measurement registered with MAT. The source code listing is retrieved through Endevor® footprints for Cobol, C/C++, and Assembler programs. The program listing file is downloaded to your local directory that you specified with the 'listingDir' parameter in your MAT configuration profile. When you request the histogram details with the '--listing' option, the 'histogram' command returns the additional 'listing' column that contains a reference to the program listing with the specific CSECT name, program type, line and column number that pertain to the requested CSECT and statement, for example, c:listingsSA420LE.asm:382:51. If you use Visual Studio Code (VS Code) IDE, you can click on the reference in the command responce in your VS Code terminal to navigate directly to the indicated source program location.The --listing parameter is optional.</li>
 </ul>
 </li>
 </ul>

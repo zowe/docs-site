@@ -7,7 +7,7 @@
 <link rel="stylesheet" href="../css/docs.css">
 <article class="markdown-body">
 <h2><a href="zowe.html">zowe</a> › <a href="zowe_profiles.html">profiles</a> › <a href="zowe_profiles_update.html">update</a> › <a href="zowe_profiles_update_caspool-profile.html">caspool-profile</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
-<p>Configuration profile for CA Spool, where you specify information about your CA Spool instance</p>
+<p>Configuration profile for Spool, where you specify information about your Spool instance</p>
 <h4>Usage</h4>
 <p>zowe profiles update caspool-profile &lt;profileName&gt; [options]</p>
 <h4>Positional Arguments</h4>
@@ -19,7 +19,7 @@
 </ul>
 </li>
 </ul>
-<h4>CA SPOOL OPTIONS</h4>
+<h4>SPOOL OPTIONS</h4>
 <ul>
 <li>
 <p><code>--account</code>  | <code>-a</code> <em>(string)</em></p>
@@ -30,19 +30,19 @@
 <li>
 <p><code>--spoolhlq</code>  | <code>--hlq</code> <em>(string)</em></p>
 <ul>
-<li>High level qualifier of CA Spool installation.</li>
+<li>High level qualifier of Spool installation.</li>
 </ul>
 </li>
 <li>
 <p><code>--subsys</code>  | <code>--sub</code> <em>(string)</em></p>
 <ul>
-<li>CA Spool subsystem name.</li>
+<li>Spool subsystem name.</li>
 </ul>
 </li>
 <li>
 <p><code>--outds</code>  | <code>--out</code> <em>(string)</em></p>
 <ul>
-<li>The SYSTSPRT data set allocated by CAI.CBQ4JCL(BQ4JZOWE). It must be unique for each Zowe CLI user interacting with CA Spool.</li>
+<li>The SYSTSPRT data set allocated by CAI.CBQ4JCL(BQ4JZOWE). It must be unique for each Zowe CLI user interacting with Spool.</li>
 </ul>
 </li>
 <li>
@@ -55,31 +55,31 @@
 <h4>Examples</h4>
 <ul>
 <li>
-<p>Update the TSO account information to '3213213210' for CA Spool profile named 'myProfile':</p>
+<p>Update the TSO account information to '3213213210' for Spool profile named 'myProfile':</p>
 <ul>
 <li><code>zowe profiles update caspool-profile myProfile --account 3213213210</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe profiles update caspool-profile myProfile --account 3213213210">Copy</button></li>
 </ul>
 </li>
 <li>
-<p>Update high level qualifier of the CA Spool installation to 'CASPOOL.HLQ' for CA Spool profile named 'myProfile':</p>
+<p>Update high level qualifier of the Spool installation to 'CASPOOL.HLQ' for Spool profile named 'myProfile':</p>
 <ul>
 <li><code>zowe profiles update caspool-profile myProfile --spoolhlq CASPOOL.HLQ</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe profiles update caspool-profile myProfile --spoolhlq CASPOOL.HLQ">Copy</button></li>
 </ul>
 </li>
 <li>
-<p>Update the CA Spool subsystem name to 'ESF2' for CA Spool profile named 'myProfile':</p>
+<p>Update the Spool subsystem name to 'ESF2' for Spool profile named 'myProfile':</p>
 <ul>
 <li><code>zowe profiles update caspool-profile myProfile --subsys ESF2</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe profiles update caspool-profile myProfile --subsys ESF2">Copy</button></li>
 </ul>
 </li>
 <li>
-<p>Update the output response data set to 'OUTPUT.RESPONSE.DS.NEW' for CA Spool profile named 'myProfile':</p>
+<p>Update the output response data set to 'OUTPUT.RESPONSE.DS.NEW' for Spool profile named 'myProfile':</p>
 <ul>
 <li><code>zowe profiles update caspool-profile myProfile --outds OUTPUT.RESPONSE.DS.NEW</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe profiles update caspool-profile myProfile --outds OUTPUT.RESPONSE.DS.NEW">Copy</button></li>
 </ul>
 </li>
 <li>
-<p>Update the data set containing ESFZOWE REXX exec to 'USER.CLIST' for CA Spool profile named 'myProfile':</p>
+<p>Update the data set containing ESFZOWE REXX exec to 'USER.CLIST' for Spool profile named 'myProfile':</p>
 <ul>
 <li><code>zowe profiles update caspool-profile myProfile --clist USER.CLIST</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe profiles update caspool-profile myProfile --clist USER.CLIST">Copy</button></li>
 </ul>
