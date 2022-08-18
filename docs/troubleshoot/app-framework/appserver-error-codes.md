@@ -862,113 +862,114 @@ The following error message codes may appear on the app-server log. Use the foll
 
 ### ZWED0092I
 
-  Tomcat Manager ID=%s stopping
+  Tomcat Manager ID=*_manager id_* stopping
 
   **Reason:**
 
-  TODO
+  It specifies that Apache Tomcat Host Manager is stopping *_manager id_*.
 
   **Action:**
 
-  TODO
+  No action required.
 
 
 
 ### ZWED0093I
 
-  Tomcat Manager ID=%s cleanup successful
+  Tomcat Manager ID=*_manager id_* cleanup successful
 
   **Reason:**
 
-  TODO
+  It specifies that Apache Tomcat Host Manager successfully cleaned up the *_manager id_*.
 
   **Action:**
 
-  TODO
+  No action required.
 
 
 
 ### ZWED0094I
 
-  Extracted war to %s
+  Extracted war to *_destination path_*
 
   **Reason:**
 
-  TODO
+  It specifies that it extracted the WAR directory successfully to the *_destination path_*.
 
   **Action:**
 
-  TODO
+  No action required.
 
 
 
 ### ZWED0095I
 
-  Making junction from %s to %s
+  Making junction from *_extracted war_* to *_appbase_*
 
   **Reason:**
 
-  TODO
+  A junction link is a sort of subset or a variation of a symbolic link.
+  It creates a junction link between *_extracted war_* directory to *_appbase_* directory.
 
   **Action:**
 
-  TODO
+  No action required.
 
 
 
 ### ZWED0096I
 
-  Making symlink from %s to %s
+  Making symlink from *_extracted war_* to *_appbase_*
 
   **Reason:**
 
-  TODO
+  It creates a symbolic link  between *_extracted war_* directory to *_appbase_* directory.
+
 
   **Action:**
 
-  TODO
+  No action required.
 
 
 
 ### ZWED0109I
 
-  Registering App (ID=%s) with App Server
+  Registering App (ID=*_plugin identifier_*) with App Server
 
   **Reason:**
-
-  TODO
+  The registration attempt from ZWED0109I has succeeded.
+  Before the server starts it registers all the *_plugin identifier_* with the App server and installs them.
 
   **Action:**
 
-  TODO
-
+  No action required.
 
 
 ### ZWED0110I
 
-  App %s installed to %s and registered with App Server
+  App *_plugin identifier_* installed to *_appdir_* and registered with App Server
 
   **Reason:**
 
-  TODO
+  App *_plugin identifier_* installed to *_appdir_*  and registered with App Server successfully.
 
   **Action:**
 
-  TODO
+  No action required.
 
 
 
 ### ZWED0111I
 
-  Authentication plugin %s added to category %s
+  Authentication plugin *plugin identifier* added to category *authentication category*
 
   **Reason:**
 
-  TODO
+  Auth plugin *plugin identifier* is being registered as a part of *authentication category*.
 
   **Action:**
 
-  TODO
+  No action required.
 
 
 
@@ -986,255 +987,157 @@ The following error message codes may appear on the app-server log. Use the foll
 
 
 
-### ZWED0113I
-
-  %s
-
-  **Reason:**
-
-  TODO
-
-  **Action:**
-
-  TODO
-
-
-
 ### ZWED0114I
 
   Adding plugin remotely 
 
   **Reason:**
 
-  TODO
+  A new plugin is detected and is being added.
 
   **Action:**
 
-  TODO
+  No action required.
 
 
 
 ### ZWED0115I
 
-  Skip child process spawning on worker %s %s
+  Skip child processes spawning on worker *_workerId_* *_childProcessPath_*
 
   **Reason:**
-
-  TODO
+ The process listed as childProcessPath was not spawned under the specified worker
+  because it was listed as being a process that should only be started once. 
+  Some child processes should be started per-worker for redundancy, 
+  while others that need exclusive access to a resource such as
+  a network port are specified with the property *childProcess.once*,
+  and are skipped on all but one worker. The other workers print 
+  this message to indicate this behavior.
 
   **Action:**
 
-  TODO
+  No action required.
 
 
 
 ### ZWED0116I
 
-  The LOCATIONS are %s and %s
+  The LOCATIONS are *_serverModuleLocation_* and *_clientModuleLocation_*
 
   **Reason:**
 
-  TODO
+  The server has set the location *_serverModuleLocation_* and *_clientModuleLocation_*.
 
   **Action:**
 
-  TODO
+  No action required.
 
 
 
 ### ZWED0117I
 
-  The fileLocation is %s
+  The fileLocation is *_lib_*
 
   **Reason:**
 
-  TODO
+  Location of files will be in *_lib_* directory.
 
   **Action:**
 
-  TODO
+  No action required.
 
 
 
 ### ZWED0118I
 
-  The NODE_PATH is %s
+  The NODE_PATH is *NODE_PATH* from environment variable.
 
   **Reason:**
-
-  TODO
+  The server recognizes the location of Node as *NODE_PATH* from environment variable.
 
   **Action:**
 
-  TODO
+  No action required.
 
 
 
 ### ZWED0119I
 
-  Plugin %s will serve library data from directory %s
+  Plugin *_plugin identifier_* will serve library data from directory *_dir location_*
 
   **Reason:**
 
-  TODO
+   For plugins with type 'library', plugin *_plugin identifier_* has been registered and will be serving library data from *_dir location_*
 
   **Action:**
 
-  TODO
+  No action required.
 
 
 
 ### ZWED0120I
 
-  Auth plugin %s: loading auth handler module %s
+  Auth plugin *_plugin identifier_*: loading auth handler module *_app server_*
 
   **Reason:**
-
-  TODO
+  An auth category was requested as the default in the server configuration, or requested by a particular plugin, and because the auth plugin pluginId handles this category, it is being loaded by the app-server.
 
   **Action:**
 
-  TODO
-
-
-
-### ZWED0121I
-
-  %s
-
-  **Reason:**
-
-  TODO
-
-  **Action:**
-
-  TODO
-
-
-
-### ZWED0122I
-
-  %s
-
-  **Reason:**
-
-  TODO
-
-  **Action:**
-
-  TODO
-
-
-
-### ZWED0123I
-
-  %s
-
-  **Reason:**
-
-  TODO
-
-  **Action:**
-
-  TODO
+  No action required.
 
 
 
 ### ZWED0124I
 
-  Plugin %s at path=%s loaded.
+  Plugin *_plugin identifier_* at path=*_plugin location_* loaded.
 
   **Reason:**
-
-  TODO
+  All the *_plugin identifier_* will be loaded at plugins directory at *path*. Plugins will be available in *_plugin location_*.
 
   **Action:**
 
-  TODO
+  No action required.
 
 
 
 ### ZWED0125I
 
-  Plugin %s not loaded
+  Plugin *_plugin identifier_* not loaded
 
   **Reason:**
-
-  TODO
+  A plugin object was not returned in the *makePlugin()* call of the app-server, and therefore the app-server did not load this plugin. The plugin will not be available in the server.
 
   **Action:**
 
-  TODO
-
-
-
-### ZWED0126I
-
-  SessionStore.sessions.size=%d
-
-  **Reason:**
-
-  TODO
-
-  **Action:**
-
-  TODO
-
-
-
-### ZWED0127I
-
-  Timeout cleaner dead session= %s key= %s map.size=%s
-
-  **Reason:**
-
-  TODO
-
-  **Action:**
-
-  TODO
-
-
-
-### ZWED0128I
-
-  Echo\n%s
-
-  **Reason:**
-
-  TODO
-
-  **Action:**
-
-  TODO
+  Check the log for references to *pluginId* to see other messages that indicate the cause
 
 
 
 ### ZWED0129I
 
-  (%s) Listening on %s
+  (*HTTP or HTTPS*) Listening on *ip address:port*
 
   **Reason:**
-
-  TODO
+  *type* (HTTP or HTTPS) Listening on ip address:port.
+  
 
   **Action:**
 
-  TODO
+  No action required.
 
 
 
 ### ZWED0130I
 
-  (%s) About to start listening on %s
+  (*HTTP or HTTPS*) About to start listening on *app-server port*
 
   **Reason:**
-
-  TODO
+  About to start listening on *app-server port*.
 
   **Action:**
 
-  TODO
+  No action required.
 
 
 
