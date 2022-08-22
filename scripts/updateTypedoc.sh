@@ -1,5 +1,5 @@
 #!/bin/bash
-# Usage: bash scripts/updateTypedoc.sh <zoweVersion> [outputDir]
+# Usage: bash scripts/updateTypedoc.sh <zoweVersion> [<outputDir>]
 
 set -e
 ZOWE_VERSION=$1

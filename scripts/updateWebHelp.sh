@@ -1,5 +1,5 @@
 #!/bin/bash
-# Usage: bash scripts/updateWebHelp.sh <zoweVersion> [outputDir]
+# Usage: bash scripts/updateWebHelp.sh <zoweVersion> [<outputDir>]
 
 set -e
 ZOWE_VERSION=$1
