@@ -1,4 +1,4 @@
-# Configuring JCERACFS certificates in a key ring
+# Configuring JCERACFKS certificates in a key ring
 
 Zowe is able to work with certificates held in a **z/OS Keyring**.  
 
