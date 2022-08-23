@@ -18,13 +18,9 @@ Learn what is Zowe, how Zowe works and what it can do for you.
 
    Review the Zowe architecture to understand how Zowe works. 
 
-- [**Zowe FAQs**](freqaskques.md)
+- [**Zowe FAQs**](zowe_faq.md)
    
    If you have a question, it's a good idea to try the FAQ, which answers the most commonly asked questions about Zowe.
-
-- [**Release notes**](summaryofchanges.md)
-
-   Check out what's new with Zowe. 
    
 - [**Zowe learning resources**](zowe-resources.md)
 

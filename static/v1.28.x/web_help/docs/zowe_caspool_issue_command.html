@@ -7,7 +7,7 @@
 <link rel="stylesheet" href="../css/docs.css">
 <article class="markdown-body">
 <h2><a href="zowe.html">zowe</a> › <a href="zowe_caspool.html">caspool</a> › <a href="zowe_caspool_issue.html">issue</a> › <a href="zowe_caspool_issue_command.html">command</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
-<p>Issue commands to work with CA Spool.</p>
+<p>Issue commands to work with Spool.</p>
 <h4>Usage</h4>
 <p>zowe caspool issue command &lt;commandText&gt; [options]</p>
 <h4>Positional Arguments</h4>
@@ -15,11 +15,11 @@
 <li>
 <p><code>commandText</code>		 <em>(string)</em></p>
 <ul>
-<li>The CA Spool command to issue.</li>
+<li>The Spool command to issue.</li>
 </ul>
 </li>
 </ul>
-<h4>CA SPOOL OPTIONS</h4>
+<h4>SPOOL OPTIONS</h4>
 <ul>
 <li>
 <p><code>--account</code>  | <code>-a</code> <em>(string)</em></p>
@@ -30,14 +30,14 @@
 <li>
 <p><code>--spoolhlq</code>  | <code>--hlq</code> <em>(string)</em></p>
 <ul>
-<li>High level qualifier of CA Spool installation.</li>
+<li>High level qualifier of Spool installation.</li>
 </ul>
 </li>
 <li>
 <p><code>--subsys</code>  | <code>--sub</code> <em>(string)</em></p>
 <ul>
 <li>
-<p>CA Spool subsystem name.</p>
+<p>Spool subsystem name.</p>
 <p>Default value: ESF</p>
 </li>
 </ul>
@@ -45,7 +45,7 @@
 <li>
 <p><code>--outds</code>  | <code>--out</code> <em>(string)</em></p>
 <ul>
-<li>The SYSTSPRT data set allocated by CAI.CBQ4JCL(BQ4JZOWE). It must be unique for each Zowe CLI user interacting with CA Spool.</li>
+<li>The SYSTSPRT data set allocated by CAI.CBQ4JCL(BQ4JZOWE). It must be unique for each Zowe CLI user interacting with Spool.</li>
 </ul>
 </li>
 <li>
@@ -161,7 +161,7 @@ Allowed values: http, https</p>
 <h4>Examples</h4>
 <ul>
 <li>
-<p>Issue the CA Spool command 'DS' to display the status of the ESF system:</p>
+<p>Issue the Spool command 'DS' to display the status of the ESF system:</p>
 <ul>
 <li><code>zowe caspool issue command &quot;DS&quot;</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe caspool issue command &quot;DS&quot;">Copy</button></li>
 </ul>

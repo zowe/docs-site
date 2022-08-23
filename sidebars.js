@@ -22,6 +22,7 @@ module.exports = {
       type: "category",
       label: "Release notes",
       items: [
+        "getting-started/release-notes/v2_3_0",
         "getting-started/release-notes/v2_2_0",
         "getting-started/release-notes/v2_1_0",
         "getting-started/release-notes/v2_0_0",
@@ -39,13 +40,7 @@ module.exports = {
       type: "category",
       label: "Migrating from V1 to V2",
       items: [
-    //    "getting-started/migrate-instance",  //Not ready yet, need to check
         "extend/migrate-extensions",
-        {
-          type: "link",
-          label: "Migrating Zowe CLI from V1 to V2",
-          href: "../user-guide/cli-updatingcli#updating-to-the-zowe-cli-v2-long-term-support-v2-lts-version",
-        },
       ],
     },
     "getting-started/zowe-resources",
@@ -123,7 +118,6 @@ module.exports = {
             "user-guide/initialize-vsam-dataset", 
             "user-guide/install-stc-members",
             "user-guide/configure-xmem-server",
-        //    "user-guide/configure-zowe-server", //out of date, v1 info included
             "user-guide/configure-auxiliary-address-space",
             "user-guide/configure-zowe-zosmf-workflow",
           ],
@@ -139,9 +133,7 @@ module.exports = {
          ],
        }, 
         "user-guide/start-zowe-zos",
-        "user-guide/verify-zowe-runtime-install",
-    //    "user-guide/upgrade-zos-system",
-    //    "user-guide/zowe-zos-uninstall",       
+        "user-guide/verify-zowe-runtime-install",    
       ],
     },
     {
@@ -191,10 +183,17 @@ module.exports = {
       items: [
         "user-guide/mvd-configuration",
         "user-guide/cli-configuringcli-ev",
-        "user-guide/configure-data-sets-jobs-api",
-        "user-guide/api-mediation/api-gateway-configuration",
-        "user-guide/api-mediation/discovery-service-configuration",
-        "user-guide/api-mediation/api-mediation-internal-configuration",
+        {
+          type: "category",
+          label: "API Mediation Layer",
+          items: [
+            "user-guide/configure-data-sets-jobs-api",
+            "user-guide/api-mediation/api-gateway-configuration",
+            "user-guide/api-mediation/discovery-service-configuration",
+            "user-guide/api-mediation/api-mediation-internal-configuration",
+            "extend/extend-apiml/api-mediation-passtickets",
+          ],
+        },        
       ],
     },
   ],
@@ -214,6 +213,9 @@ module.exports = {
           items: [
             "user-guide/api-mediation-api-catalog",
             "user-guide/api-mediation-metrics-service",
+            "extend/extend-apiml/api-mediation-routing",
+            "extend/extend-apiml/service-information",
+            "extend/extend-apiml/websocket",
           ],
         },
         {
@@ -323,13 +325,9 @@ module.exports = {
         "extend/extend-apiml/onboard-static-definition",
         "extend/extend-apiml/onboard-wizard",
         "extend/extend-apiml/api-mediation-sso",
-        "extend/extend-apiml/service-information",
-        "extend/extend-apiml/websocket",
         "extend/extend-apiml/create-apiml-extension",
         "extend/extend-apiml/api-mediation-message-service",
         "extend/extend-apiml/api-mediation-security",
-        "extend/extend-apiml/api-mediation-routing",
-        "extend/extend-apiml/api-mediation-passtickets",
         "extend/extend-apiml/custom-metadata",
         "extend/extend-apiml/api-mediation-versioning",
         "extend/extend-apiml/implement-new-saf-provider", 
@@ -377,11 +375,9 @@ module.exports = {
       items: [
         "troubleshoot/troubleshooting",
         "troubleshoot/troubleshoot-zowe-release",
-    //    "troubleshoot/troubleshoot-diagnostics",
         "troubleshoot/verify-fingerprint",
       ],
     },
-    //"troubleshoot/troubleshoot-zos",
     //"troubleshoot/troubleshoot-zos-certificate",
     "troubleshoot/k8s-troubleshoot",
     {
@@ -402,7 +398,6 @@ module.exports = {
         "troubleshoot/app-framework/zss-error-codes",
       ],
     },
-    //"troubleshoot/troubleshoot-zos-services", //still refers to old STC names
     {
       type: "category",
       label: "Zowe CLI",

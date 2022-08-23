@@ -422,6 +422,19 @@ additionalServiceMetadata:
         
         (Optional) This parameter specifics that the API is the default one to show in the API Catalog. If this not set to true for any API, or multiple APIs have it set to true,
         then the default API becomes the API with the highest major version as seen in `apiInfo.version`.
+  
+    * **apiInfo.codeSnippet** (Optional)
+
+        specifies the customized code snippet for a specific endpoint (API operation). The snippet is displayed in the API Catalog under the specified operation, after executing
+        the request using the *Try it out* functionality.
+        When specifying this configuration, you need to provide the following parameters:
+        * **`endpoint`**  
+        The endpoint that represents the API operation of the customized snippet
+        * **`language`**  
+        The language of the snippet
+        * **`codeBlock`**  
+        The content of the snippet to be displayed in the API Catalog
+
 
 * **customMetadata**
 
@@ -514,8 +527,6 @@ After you define and validate the service in YAML format, you are ready to add y
 **Follow these steps:**
 
 1. Locate the Zowe instance directory. The Zowe instance directory is the directory from which Zowe was launched, or else was passed as an argument to the SDSF command used to start Zowe.  If you are unsure which instance directory a particular Zowe job is using, open the `JESJCL` spool file and navigate to the line that contains `STARTING EXEC ZWESVSTC,INSTANCE=`. This is the fully qualified path to the instance directory.
-
-    **Tip:**  For more information, see [Creating and configuring the Zowe instance directory](../../user-guide/configure-instance-directory.md#extensions).
 
     **Note:** We use the `${zoweInstanceDir}` symbol in following instructions.
 

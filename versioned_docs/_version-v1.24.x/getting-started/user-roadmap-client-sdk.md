@@ -46,7 +46,7 @@ The following definition of skill levels about Zowe will help you gather most re
 
    Refer to the following Zowe Client SDK reference guides for information about the API endpoints:
    - **[Browse Node SDK reference guide online](https://docs.zowe.org/stable/typedoc/index.html)**
-   - **[Download SDK reference guide in ZIP format](../zowe-nodejs-sdk-typedoc.zip)**
+   - **<a href="/v1.24.x/zowe-nodejs-sdk-typedoc.zip" target="_blank">Download SDK reference guide in ZIP format</a>**
 
 - [**Zowe SDK Sample Scripts**](https://github.com/zowe/zowe-sdk-sample-scripts/)
 

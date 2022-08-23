@@ -14,7 +14,7 @@ The Zowe containers are designed to be run together with extensions and Zowe uti
 1. [Prerequisites](k8s-prereqs.md)
 2. [Downloading and installing](k8s-downloading.md)
 3. [Configuring the Zowe container environment](k8s-config.md)
-4. [Starting, stopping, and monitoring](k8s-using.md)
+4. [Starting, stopping, and monitoring](./k8s-using)
 5. [Known limitations](#known-limitations)
 
 ## Known limitations

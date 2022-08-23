@@ -49,7 +49,7 @@ report success using the following workarounds:
   - Issue the `npm cache clean` command.
 
   - Uninstall and reinstall Zowe CLI. For more information,
-    see [Install Zowe CLI](../../user-guide/cli-installcli.html).
+    see [Install Zowe CLI](../../user-guide/cli-installcli.md).
 
   - `Add the --no-optional` flag to the end of the `npm install` command.
 
