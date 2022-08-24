@@ -6,6 +6,8 @@ The checklist includes a brief description of the steps, with links to the compr
 
 Use the Status column to track your progress.
 
+For a printable version of this checklist, <a href="/stable/Zowe_CLI_Installation_Checklist.xlsx" target="_blank">click here</a>.
+
 ## Addressing the prerequisites
 
 To plan your Zowe CLI installation, review the following checklist.
