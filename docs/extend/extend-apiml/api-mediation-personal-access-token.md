@@ -14,6 +14,7 @@ To do that, the API ML offers a set of REST APIs to:
 7. [Evict the non-relevant tokens and rules](#evict-the-non-relevant-tokens-and-rules)
 
 The **User** is able to :
+* Generate the token
 * Validate the token
 * Invalidate a specific token
 * Invalidate all tokens
