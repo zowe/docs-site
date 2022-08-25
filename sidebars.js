@@ -190,6 +190,7 @@ module.exports = {
       ],
     },
   ],
+
   "use": [
         "user-guide/zowe-getting-started-tutorial", 
         {
@@ -253,8 +254,7 @@ module.exports = {
         },
         "user-guide/cli-using-using-prompt-feature",
         "user-guide/cli-using-writing-scripts",
-      ],
-    },
+
         {
           type: "category",
           label: "Zowe CLI plug-ins",
