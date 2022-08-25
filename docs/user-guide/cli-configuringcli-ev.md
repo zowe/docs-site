@@ -4,7 +4,7 @@ This section explains how to configure Zowe CLI using environment variables.
 
 By default, Zowe CLI configuration is stored on your computer in the `C:\Users\user01\.zowe` directory. The directory includes log files, profile information, and installed CLI plug-ins. When troubleshooting, refer to the logs in the `imperative` and `zowe` folders.
 
-**Note:** For advanced configuration on using environment variables, [click here](cli-using-using-environment-variables.md).
+**Note:** For information on additional configuration for environment variables, see [Using environment variables](cli-using-using-environment-variables.md).
 
 ## Setting the CLI home directory
 

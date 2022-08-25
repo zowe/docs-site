@@ -241,20 +241,22 @@ module.exports = {
             },
             "user-guide/cli-using-integrating-apiml",
             "user-guide/cli-using-working-certificates",
+
+            {
+              type: "category",
+              label: "Using environment variables",
+              items: [
+                "user-guide/cli-using-using-environment-variables",
+                "user-guide/cli-using-formatting-environment-variables",
+                "user-guide/cli-using-setting-environment-variables-in-automation-server",
+                                              ],
+            },
+            "user-guide/cli-using-using-prompt-feature",
+            "user-guide/cli-using-writing-scripts",
+
+
           ],
         },
-        {
-          type: "category",
-          label: "Using environment variables",
-          items: [
-            "user-guide/cli-using-using-environment-variables",
-            "user-guide/cli-using-formatting-environment-variables",
-            "user-guide/cli-using-setting-environment-variables-in-automation-server",
-                                          ],
-        },
-        "user-guide/cli-using-using-prompt-feature",
-        "user-guide/cli-using-writing-scripts",
-
         {
           type: "category",
           label: "Zowe CLI plug-ins",
