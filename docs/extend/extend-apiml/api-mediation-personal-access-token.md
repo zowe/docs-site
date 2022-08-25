@@ -13,13 +13,15 @@ To do that, the API ML offers a set of REST APIs to:
 6. [Retrieve all the tokens and rules](#retrieve-all-the-tokens-and-rules)
 7. [Evict the non-relevant tokens and rules](#evict-the-non-relevant-tokens-and-rules)
 
-The **User** is able to :
+Some of these APIs listed above are only meant for the administrator, and are protected by the SAF resource checking.
+
+Namely, the **User** is able to :
 * Generate the token
 * Validate the token
 * Invalidate a specific token
 * Invalidate all tokens
 
-The **Security Administrator** is able to:
+The **Security Administrator** is rather able to:
 * Invalidate the token for a user
 * Invalidate all the tokens for a user
 * Invalidate all tokens
@@ -41,7 +43,7 @@ The request requires the body in the following format:
 }
 ```
 
-The **validity** refers to the expiration time of the tokens. The maximum threshold is 90 days.
+The **validity** refers to the expiration time of the token. The maximum threshold is 90 days.
 The **scopes** allows to limit the access on a service level, so it will introduce higher level of security in some aspects. Users will be forced to provide a scope and if no service is specified, it will work for none.
 
 When creation is successful, the response to the request is a body containing the PAT. When creation fails, the user receives a 401 status code.
@@ -62,7 +64,7 @@ The request requires the body in the following format:
 }
 ```
 
-When validation is successful, the response to the request is a an empty body. When validation fails, the user receives a 401 status code.
+When validation is successful, the response to the request is an empty body. When validation fails, the user receives a 401 status code.
 
 ## Invalidate a specific token
 
@@ -79,7 +81,8 @@ The request requires the body in the following format:
 }
 ```
 
-When the `/auth/access-token/revoke` endpoint is called, the provided PAT's hash will be stored in the Caching Service will be storing only hashes of already invalidated tokens. Access to these entries is protected by API ML’s client certificate.
+When the `/auth/access-token/revoke` endpoint is called, the provided PAT's hash will be stored in the Caching Service under the `invalidTokens` key and this will mean that the token has been invalidated.
+Access to these entries is protected by API ML’s client certificate.
 
 When invalidation is successful, the response to the request is an empty body.
 
@@ -103,7 +106,9 @@ The request requires the body in the following format:
 }
 ```
 
-The `userId` is the user the revocation should be applied to, while the timestamp represents the current date of revocation, in milliseconds. 
+The `userId` refers the user the revocation should be applied to, while the timestamp represents the current date of revocation, in milliseconds. 
+
+By calling this endpoint, the user rule will be stored in the Caching Service under the `invalidUsers` key.
 
 When invalidation is successful, the response to the request is an empty body.
 
@@ -126,6 +131,8 @@ The request requires the body in the following format:
 
 The `serviceId` represents the service the revocation should be applied to (e.g. APPL IDs), while the timestamp represents the current date of revocation, in milliseconds.
 
+By calling this endpoint, the user rule will be stored in the Caching Service under the `invalidScopes` key.
+
 When invalidation is successful, the response to the request is an empty body.
 
 ## Retrieve all the tokens and rules
@@ -144,7 +151,7 @@ The Security Administrator can evict the non-relevant invalidated tokens and rul
 `DELETE /auth/access-token/evict`
 The full path of the `/auth/access-token/evict` endpoint appear as `https://{gatewayUrl}:{gatewayPort}/gateway/api/v1/auth/access-token/evict`.
 
-The `/auth/access-token/evict` endpoint evicts the all the invalidated tokens which were expired and all the rules related to the expired tokens.
+The `/auth/access-token/evict` endpoint evicts all the invalidated tokens which were expired and all the rules related to the expired tokens.
 
 The main purpose of the eviction API is to make sure that the size of the cache does not grow unbounded.
 
