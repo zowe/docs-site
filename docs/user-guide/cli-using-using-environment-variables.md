@@ -1,6 +1,6 @@
 # Using environment variables
 
-**Note:** For information on configuring environment variables, see [Configuring Zowe CLI environment variables](cli-configuringcli-ev.md).
+**Note:** For information on how to modify Zowe CLI default environment variables, see [Configuring Zowe CLI environment variables](cli-configuringcli-ev.md).
 
 You can define environment variables to execute commands more efficiently. Store a value such as your password in an environment variable, then issue commands without specifying your password every time. 
 
