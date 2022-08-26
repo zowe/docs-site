@@ -1,6 +1,6 @@
 # Personal Access Token
 
-You can use the API ML to generate, validate and invalidate a **Personal Access Token (PAT)** that can enable access to tools such as VCS without using the credentials of a specific person and storing the credentials in for automation during the development of an application on the z/OS system.
+You can use the API ML to generate, validate and invalidate a **Personal Access Token (PAT)** that can enable access to tools such as VCS without using the credentials of a specific person and storing the mainframe credentials as part of the automation configuration on the server during the development of an application on the z/OS system.
 The PAT functionality also makes it possible to limit access when using a token to specific services and users, through a mechanism of token revocation.
 
 Gateway APIs are available to both users as well as security administrators.
