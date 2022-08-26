@@ -407,9 +407,9 @@ You can also use the `/gateway/api/v1/auth/keys/public/all` endpoint to obtain a
 
 ### Personal Access Token
 
-The Personal Access Token (PAT) is an alternative to using passwords for authentication.
-It is possible to generate a Personal Access Token that can be used for instance for Version Control Systems on mainframe without having to store mainframe credentials
-or to use a certificate. For more information about the PAT functionality, see the [Personal Access Token documentation](../../user-guide/api-mediation/api-mediation-personal-access-token.md).
+A Personal Access Token (PAT) is an alternative to using passwords for authentication.
+It is possible to generate a Personal Access Token that can be used for an instance of Version Control Systems on mainframe without having to store mainframe credentials
+or use a certificate. For more information about the PAT functionality, see the [Personal Access Token documentation](../../user-guide/api-mediation/api-mediation-personal-access-token.md).
 
 ### z/OSMF JSON Web Tokens Support
 
