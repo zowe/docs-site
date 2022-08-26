@@ -87,15 +87,7 @@ The user can invalidate all his Personal Access Tokens by calling the following 
 `DELETE /auth/access-token/revoke/tokens`
 The full path of the `/auth/access-token/revoke/tokens` endpoint appear as `https://{gatewayUrl}:{gatewayPort}/gateway/api/v1/auth/access-token/revoke/tokens`.
 
-The request requires the body in the following format:
-
-```json
-{
-  "token": "<token_value>"
-}
-```
-
-When the `/auth/access-token/revoke/tokens` endpoint is called, the provided PAT's hash will be stored in the cache by the Caching Service under the `invalidTokens` key and this will mean that the token has been invalidated.
+When the `/auth/access-token/revoke/tokens` endpoint is called, the provided user rule be stored in the cache by the Caching Service under the `invalidUsers` key and this will mean that all the user's tokens have been invalidated.
 Access to these entries is protected by API ML’s client certificate.
 
 When invalidation is successful, the response to the request is an empty body with a 200 status code. When invalidation fails, the user receives a 401 status code.
@@ -122,7 +114,7 @@ The request requires the body in the following format:
 }
 ```
 
-The `userId` refers the user the revocation should be applied to, while the timestamp represents the date of revocation (the default value is the current time), in milliseconds, and it is
+The **userId** refers the user the revocation should be applied to, while the **timestamp** represents the date of revocation (the default value is the current time), in milliseconds, and it is
 used to state that the tokens created before the date specified in the timestamp are invalidated. Therefore, any other tokens created
 after that date will not be affected by the user rule.
 
@@ -148,7 +140,7 @@ The request requires the body in the following format:
 
 This is possible by using rules based on service scopes.
 
-The `serviceId` represents the service the revocation should be applied to (e.g. APPL IDs), while the timestamp represents the date of revocation (the default value is the current time), in milliseconds, and it is
+The **serviceId** represents the service the revocation should be applied to (e.g. APPL IDs), while the **timestamp** represents the date of revocation (the default value is the current time), in milliseconds, and it is
 used to state that the tokens created before the date specified in the timestamp are invalidated. Therefore, any other tokens created
 after that date will not be affected by the service rule.
 
