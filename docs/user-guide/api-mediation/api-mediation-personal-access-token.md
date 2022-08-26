@@ -87,6 +87,16 @@ The user can invalidate all his Personal Access Tokens by calling the following 
 `DELETE /auth/access-token/revoke/tokens`
 The full path of the `/auth/access-token/revoke/tokens` endpoint appear as `https://{gatewayUrl}:{gatewayPort}/gateway/api/v1/auth/access-token/revoke/tokens`.
 
+The body can be optionally provided to as part of the request. The format of the body is:
+
+```json
+{
+   "timestamp": "<timestamp>"
+}
+```
+
+In case the body is not provided, the timestamp value will be the current date.
+
 When the `/auth/access-token/revoke/tokens` endpoint is called, the provided user rule be stored in the cache by the Caching Service under the `invalidUsers` key and this will mean that all the user's tokens have been invalidated.
 Access to these entries is protected by API ML’s client certificate.
 
