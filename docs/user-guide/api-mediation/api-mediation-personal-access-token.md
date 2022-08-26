@@ -38,7 +38,7 @@ The request requires the body in the following format:
 The **validity** refers to the expiration time of the token. The maximum threshold is 90 days.
 The **scopes** allows to limit the access on a service level, so it will introduce higher level of security in some aspects. Users will be forced to provide a scope and if no service is specified, it will work for none.
 
-When creation is successful, the response to the request is a body containing the PAT. When creation fails, the user receives a 401 status code.
+When creation is successful, the response to the request is a body containing the PAT with a 200 status code. When creation fails, the user receives a 401 status code.
 
 ### Validate the token
 
@@ -169,4 +169,4 @@ The main purpose of the eviction API is to make sure that the size of the cache 
 but rather due to the fact that for the tokens' verification it is necessary to consult all the rules, making this 
 action expensive if there are stored rules which are not relevant anymore.
 
-When eviction is successful, the response to the request is an empty body. When eviction fails due to lack of permissions, the administrator receives a 403 status code.
+When eviction is successful, the response to the request is an empty body with a 204 status code. When eviction fails due to lack of permissions, the administrator receives a 403 status code.
