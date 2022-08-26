@@ -1,7 +1,7 @@
 # Personal Access Token
 
-The API ML allows generating, validating and invalidating a **Personal Access Token (PAT)** that can be used, for instance, to leverage modern tools such as Version Control Systems (VCS) during
-the development of some application on the z/OS system.
+The API ML allows generating, validating and invalidating a **Personal Access Token (PAT)** that could help access the tools such as VCS without using the credentials of the specific person and storing the credentials in the automation.
+The PAT functionality also allows to limit the access using the token to specific services and users, through a mechanism of revocation.
 
 To do that, the API ML offers a set of REST APIs to:
 
@@ -27,7 +27,7 @@ The **Security Administrator** is rather able to:
 * Invalidate all tokens
 * Evict invalidated tokens and rules which are not relevant anymore
 
-## Generate of the token
+## Generate the token
 
 The user can create the Personal Access Token by calling the following REST API endpoint via Gateway:
 
@@ -81,14 +81,14 @@ The request requires the body in the following format:
 }
 ```
 
-When the `/auth/access-token/revoke` endpoint is called, the provided PAT's hash will be stored in the Caching Service under the `invalidTokens` key and this will mean that the token has been invalidated.
+When the `/auth/access-token/revoke` endpoint is called, the provided PAT's hash will be stored in the cache by the Caching Service under the `invalidTokens` key and this will mean that the token has been invalidated.
 Access to these entries is protected by API ML’s client certificate.
 
-When invalidation is successful, the response to the request is an empty body.
+When invalidation is successful, the response to the request is an empty body with a 200 status code. When invalidation fails, the user receives a 401 status code.
 
 ## Invalidate all the tokens for a user
 
-In case of possibility of breach, the Security Administrator can invalidate all the tokens based on some criteria.
+When there is a suspicion on breach, the Security Administrator can invalidate all the tokens based on some criteria.
 Such criteria define the level of access control and can restrict the access in advance. This can be done by using
 **rules**, and the access restriction can be applied by either user ID or service scopes.
 
@@ -108,13 +108,12 @@ The request requires the body in the following format:
 
 The `userId` refers the user the revocation should be applied to, while the timestamp represents the current date of revocation, in milliseconds. 
 
-By calling this endpoint, the user rule will be stored in the Caching Service under the `invalidUsers` key.
+By calling this endpoint, the user rule will be stored in the cache by the Caching Service under the `invalidUsers` key.
 
-When invalidation is successful, the response to the request is an empty body.
+When invalidation is successful, the response to the request is an empty body with a 200 status code. When invalidation fails, the user receives a 401 status code.
 
 ## Invalidate all the tokens for a service
 
-As we mentioned in the above section, it is possible to revoke tokens also by using rules based on service scopes.
 The administrator can invalidate all the tokens bound to a specific service by calling the following REST API endpoint via Gateway:
 
 `DELETE /auth/access-token/revoke/tokens/scope`
@@ -129,11 +128,13 @@ The request requires the body in the following format:
 }
 ```
 
+This is possible by using rules based on service scopes.
+
 The `serviceId` represents the service the revocation should be applied to (e.g. APPL IDs), while the timestamp represents the current date of revocation, in milliseconds.
 
-By calling this endpoint, the user rule will be stored in the Caching Service under the `invalidScopes` key.
+By calling this endpoint, the user rule will be stored in the cache by the Caching Service under the `invalidScopes` key.
 
-When invalidation is successful, the response to the request is an empty body.
+When invalidation is successful, the response to the request is an empty body with a 200 status code. When invalidation fails, the user receives a 401 status code.
 
 ## Retrieve all the tokens and rules
 
