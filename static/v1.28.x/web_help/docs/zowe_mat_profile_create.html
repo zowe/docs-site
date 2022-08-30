@@ -7,7 +7,7 @@
 <link rel="stylesheet" href="../css/docs.css">
 <article class="markdown-body">
 <h2><a href="zowe.html">zowe</a> › <a href="zowe_mat.html">mat</a> › <a href="zowe_mat_profile.html">profile</a> › <a href="zowe_mat_profile_create.html">create</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
-<p>Create a CA MAT monitor profile.</p>
+<p>Create a MAT monitor profile.</p>
 <h4>Usage</h4>
 <p>zowe mat profile create [options]</p>
 <h4>Required Options</h4>
@@ -15,13 +15,13 @@
 <li>
 <p><code>--profile</code>  <em>(string)</em></p>
 <ul>
-<li>Specifies the name of the profile that you create in CA MAT (e.g. PROFILE1). Values: 1 to 8 characters, a combination of alphanumeric and national characters (A-Z, 0-9, and @), the first character must be an alphabetic or @. The profile name must not contain characters # and $.</li>
+<li>Specifies the name of the profile that you create in MAT (e.g. PROFILE1). Values: 1 to 8 characters, a combination of alphanumeric and national characters (A-Z, 0-9, and @), the first character must be an alphabetic or @. The profile name must not contain characters # and $.</li>
 </ul>
 </li>
 <li>
 <p><code>--jobname</code>  <em>(string)</em></p>
 <ul>
-<li>Specifies the name of the job that you want to measure (e.g. JOB1). Values: 1 to 8 characters, alphanumeric (A-Z capitals only and 0-9), national (#, $, @), and wildcards (* or %).</li>
+<li>Specifies the name of the job that you want to measure (e.g. JOB1). Values: 1 to 8 characters, alphanumeric (A-Z capitals only and 0-9), national (#, $, @), and wildcards (* or %).</li>
 </ul>
 </li>
 <li>
@@ -52,13 +52,13 @@ Allowed values: yes, no</p>
 <li>
 <p><code>--mondsn</code>  <em>(string)</em></p>
 <ul>
-<li>Specifies the monitor data set name where CA MAT saves the measurement (e.g. DEMO.MAT.MONITOR). Values: data set name pattern, maximum 46 characters. If not specified, your default CA MAT monitor DSN pattern is applied.</li>
+<li>Specifies the monitor data set name where MAT saves the measurement (e.g. DEMO.MAT.MONITOR). Values: data set name pattern, maximum 46 characters. If not specified, your default MAT monitor DSN pattern is applied.</li>
 </ul>
 </li>
 <li>
 <p><code>--stepname</code>  <em>(string)</em></p>
 <ul>
-<li>Specifies the name of the job step to monitor. Values: maximum 8 characters, alphanumeric (A-Z capitals only and 0-9), national (#, $, @), and wildcards (* or %).</li>
+<li>Specifies the name of the job step to monitor. Values: maximum 8 characters, alphanumeric (A-Z capitals only and 0-9), national (#, $, @), and wildcards (* or %).</li>
 </ul>
 </li>
 <li>
@@ -74,13 +74,13 @@ Allowed values: yes, no</p>
 <li>
 <p><code>--procstep</code>  <em>(string)</em></p>
 <ul>
-<li>Specifies the name of the procedure step. Values: maximum 8 characters, alphanumeric (A-Z capitals only and 0-9), national (#, $, @), and wildcards (* or %).</li>
+<li>Specifies the name of the procedure step. Values: maximum 8 characters, alphanumeric (A-Z capitals only and 0-9), national (#, $, @), and wildcards (* or %).</li>
 </ul>
 </li>
 <li>
 <p><code>--program</code>  <em>(string)</em></p>
 <ul>
-<li>Specifies the name of the program to monitor. Values: maximum 8 characters, alphanumeric (A-Z capitals only and 0-9), national (#, $, @), and wildcards (* or %).</li>
+<li>Specifies the name of the program to monitor. Values: maximum 8 characters, alphanumeric (A-Z capitals only and 0-9), national (#, $, @), and wildcards (* or %).</li>
 </ul>
 </li>
 <li>
@@ -105,14 +105,14 @@ Allowed values: yes, no</p>
 <li>
 <p><code>--tasklib</code>  <em>(string)</em></p>
 <ul>
-<li>Specifies an additional DD name for load modules. Values: maximum 8 characters, alphanumeric (A-Z capitals only and 0-9), national (#, $, @), and wildcards (* or %).</li>
+<li>Specifies an additional DD name for load modules. Values: maximum 8 characters, alphanumeric (A-Z capitals only and 0-9), national (#, $, @), and wildcards (* or %).</li>
 </ul>
 </li>
 <li>
 <p><code>--samplecnt</code>  <em>(string)</em></p>
 <ul>
 <li>
-<p>Specifies the number of observations requested. Values: maximum 6 characters, numbers between 10 and 999999.</p>
+<p>Specifies the number of observations requested. Values: maximum 6 characters, numbers between 10 and 999999.</p>
 <p>Default value: 6000</p>
 </li>
 </ul>
@@ -121,7 +121,7 @@ Allowed values: yes, no</p>
 <p><code>--succnt</code>  <em>(string)</em></p>
 <ul>
 <li>
-<p>Specifies the maximum number of monitors to run per job execution. Values: maximum 4 characters, numbers between 1 and 9999.</p>
+<p>Specifies the maximum number of monitors to run per job execution. Values: maximum 4 characters, numbers between 1 and 9999.</p>
 <p>Default value: 1</p>
 </li>
 </ul>
@@ -130,7 +130,7 @@ Allowed values: yes, no</p>
 <p><code>--reccnt</code>  <em>(string)</em></p>
 <ul>
 <li>
-<p>Specifies the number of times this job step will be monitored. Values: maximum 4 characters, numbers between 1 and 9999.</p>
+<p>Specifies the number of times this job step will be monitored. Values: maximum 4 characters, numbers between 1 and 9999.</p>
 <p>Default value: 1</p>
 </li>
 </ul>
@@ -139,7 +139,7 @@ Allowed values: yes, no</p>
 <p><code>--sampdelay</code>  <em>(string)</em></p>
 <ul>
 <li>
-<p>Specifies the delay monitoring time in seconds after the step start. Values: maximum 4 characters, numbers between 0 and 9999.</p>
+<p>Specifies the delay monitoring time in seconds after the step start. Values: maximum 4 characters, numbers between 0 and 9999.</p>
 <p>Default value: 0</p>
 </li>
 </ul>
@@ -147,49 +147,49 @@ Allowed values: yes, no</p>
 <li>
 <p><code>--userexit1</code>  <em>(string)</em></p>
 <ul>
-<li>Specifies the name for the call user written Data Base. Values: maximum 8 characters, alphanumeric (A-Z capitals only and 0-9), national (#, $, @), and wildcards (* or %) (e.g. DBEXIT1).</li>
+<li>Specifies the name for the call user written Data Base. Values: maximum 8 characters, alphanumeric (A-Z capitals only and 0-9), national (#, $, @), and wildcards (* or %) (e.g. DBEXIT1).</li>
 </ul>
 </li>
 <li>
 <p><code>--userexit2</code>  <em>(string)</em></p>
 <ul>
-<li>Specifies the name 1 for the call user written 4GL exit programs for this monitor . Values: maximum 8 characters, alphanumeric (A-Z capitals only and 0-9), national (#, $, @), and wildcards (* or %) (e.g. UEXIT1).</li>
+<li>Specifies the name 1 for the call user written 4GL exit programs for this monitor . Values: maximum 8 characters, alphanumeric (A-Z capitals only and 0-9), national (#, $, @), and wildcards (* or %) (e.g. UEXIT1).</li>
 </ul>
 </li>
 <li>
 <p><code>--userexit3</code>  <em>(string)</em></p>
 <ul>
-<li>Specifies the name 2 for the call user written 4GL exit programs for this monitor . Values: maximum 8 characters, alphanumeric (A-Z capitals only and 0-9), national (#, $, @), and wildcards (* or %) (e.g. UEXIT2).</li>
+<li>Specifies the name 2 for the call user written 4GL exit programs for this monitor . Values: maximum 8 characters, alphanumeric (A-Z capitals only and 0-9), national (#, $, @), and wildcards (* or %) (e.g. UEXIT2).</li>
 </ul>
 </li>
 <li>
 <p><code>--inctask</code>  <em>(string)</em></p>
 <ul>
-<li>Specifies the task name to define the tasks that you want to sample in a multitasking environment and restrict monitoring to the specific subtask within the address space. Values: a comma separated list of up to 4 values is allowed, maximum 8 characters each, alphanumeric (A-Z capitals only and 0-9), national (#, $, @), and wildcards (* or %) (e.g. INC31,INC32).</li>
+<li>Specifies the task name to define the tasks that you want to sample in a multitasking environment and restrict monitoring to the specific subtask within the address space. Values: a comma separated list of up to 4 values is allowed, maximum 8 characters each, alphanumeric (A-Z capitals only and 0-9), national (#, $, @), and wildcards (* or %) (e.g. INC31,INC32).</li>
 </ul>
 </li>
 <li>
 <p><code>--exctask</code>  <em>(string)</em></p>
 <ul>
-<li>Specifies the task name to omit from sampling in a multitasking environment Values: a comma separated list of up to 4 values is allowed, max. 8 characters each, alphanumeric (A-Z capitals only and 0-9), national (#, $, @), and wildcards (* or %) (e.g. EXC31,EXC32).</li>
+<li>Specifies the task name to omit from sampling in a multitasking environment Values: a comma separated list of up to 4 values is allowed, max. 8 characters each, alphanumeric (A-Z capitals only and 0-9), national (#, $, @), and wildcards (* or %) (e.g. EXC31,EXC32).</li>
 </ul>
 </li>
 <li>
 <p><code>--tran</code>  <em>(string)</em></p>
 <ul>
-<li>Specifies the CICS transaction code name to monitor .Values: a comma separated list of up to 4 values is allowed, maximum 8 characters each, alphanumeric (A-Z capitals only and 0-9), national (#, $, @), and wildcards (* or +) (e.g. TRAN1,TRAN2).</li>
+<li>Specifies the CICS transaction code name to monitor .Values: a comma separated list of up to 4 values is allowed, maximum 8 characters each, alphanumeric (A-Z capitals only and 0-9), national (#, $, @), and wildcards (* or +) (e.g. TRAN1,TRAN2).</li>
 </ul>
 </li>
 <li>
 <p><code>--term</code>  <em>(string)</em></p>
 <ul>
-<li>Specifies the CICS terminal IDs to monitor. Values: a comma separated list of up to 4 values is allowed, maximum 8 characters each, alphanumeric (A-Z capitals only and 0-9), national (#, $, @), and wildcards (* or +) (e.g. TERM1,TERM2).</li>
+<li>Specifies the CICS terminal IDs to monitor. Values: a comma separated list of up to 4 values is allowed, maximum 8 characters each, alphanumeric (A-Z capitals only and 0-9), national (#, $, @), and wildcards (* or +) (e.g. TERM1,TERM2).</li>
 </ul>
 </li>
 <li>
 <p><code>--userid</code>  <em>(string)</em></p>
 <ul>
-<li>Specifies the CICS user IDs to monitor. Values:  Values: a comma separated list of up to 4 values is allowed, maximum 8 characters each, alphanumeric (A-Z capitals only and 0-9), national (#, $, @), and wildcards (* or +) (e.g. USER1,USER2).</li>
+<li>Specifies the CICS user IDs to monitor. Values:  Values: a comma separated list of up to 4 values is allowed, maximum 8 characters each, alphanumeric (A-Z capitals only and 0-9), national (#, $, @), and wildcards (* or +) (e.g. USER1,USER2).</li>
 </ul>
 </li>
 <li>
@@ -206,7 +206,7 @@ Allowed values: yes, no</p>
 <p><code>--db2ctsql</code>  <em>(string)</em></p>
 <ul>
 <li>
-<p>Indicates whether the Collect SQL from Catalog option is enabled for DB2 SQL statements.If you specify db2expl=yes, then db2ctsql must be also set to yes.</p>
+<p>Indicates whether the Collect SQL from Catalog option is enabled for DB2 SQL statements.If you specify db2expl=yes, then db2ctsql must be also set to yes.</p>
 <p>Default value: no<br>
 Allowed values: yes, no</p>
 </li>
@@ -216,7 +216,7 @@ Allowed values: yes, no</p>
 <p><code>--db2hvloc</code>  <em>(string)</em></p>
 <ul>
 <li>
-<p>Indicates whether the Requestor Location option is enabled for DB2 measurements.</p>
+<p>Indicates whether the Requestor Location option is enabled for DB2 measurements.</p>
 <p>Default value: no<br>
 Allowed values: yes, no</p>
 </li>
@@ -226,7 +226,7 @@ Allowed values: yes, no</p>
 <p><code>--db2hvcor</code>  <em>(string)</em></p>
 <ul>
 <li>
-<p>Indicates whether the Correlation ID option for SQL statements is enabled for DB2 measurements.</p>
+<p>Indicates whether the Correlation ID option for SQL statements is enabled for DB2 measurements.</p>
 <p>Default value: no<br>
 Allowed values: yes, no</p>
 </li>
@@ -236,7 +236,7 @@ Allowed values: yes, no</p>
 <p><code>--db2hviid</code>  <em>(string)</em></p>
 <ul>
 <li>
-<p>Indicates whether the Operator ID option for SQL statements is enabled for DB2 measurements.</p>
+<p>Indicates whether the Operator ID option for SQL statements is enabled for DB2 measurements.</p>
 <p>Default value: no<br>
 Allowed values: yes, no</p>
 </li>
@@ -246,7 +246,7 @@ Allowed values: yes, no</p>
 <p><code>--db2hvthd</code>  <em>(string)</em></p>
 <ul>
 <li>
-<p>Indicates whether the Thread Address option for SQL statements is enabled for DB2 measurements.</p>
+<p>Indicates whether the Thread Address option for SQL statements is enabled for DB2 measurements.</p>
 <p>Default value: no<br>
 Allowed values: yes, no</p>
 </li>
@@ -277,7 +277,7 @@ Allowed values: yes, no</p>
 <li>
 <p><code>--schedule</code>  <em>(string)</em></p>
 <ul>
-<li>Specifies the name of the schedule that you want to apply to the monitor profile (maximum 8 characters).</li>
+<li>Specifies the name of the schedule that you want to apply to the monitor profile (maximum 8 characters).</li>
 </ul>
 </li>
 </ul>

@@ -2,66 +2,77 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
-<title>endevor-bridge-for-git endevor-connection list</title>
+<title>idms list datasources</title>
 <link rel="stylesheet" href="../css/bundle-docs.css">
 <link rel="stylesheet" href="../css/docs.css">
 <article class="markdown-body">
-<h2><a href="zowe.html">zowe</a> › <a href="zowe_endevor-bridge-for-git.html">endevor-bridge-for-git</a> › <a href="zowe_endevor-bridge-for-git_endevor-connection.html">endevor-connection</a> › <a href="zowe_endevor-bridge-for-git_endevor-connection_list.html">list</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
-<p>List Endevor connections used by CA Endevor Bridge for Git.</p>
+<h2><a href="zowe.html">zowe</a> › <a href="zowe_idms.html">idms</a> › <a href="zowe_idms_list.html">list</a> › <a href="zowe_idms_list_datasources.html">datasources</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
+<p>Lists data sources defined to the IDMS REST API</p>
 <h4>Usage</h4>
-<p>zowe endevor-bridge-for-git endevor-connection list [options]</p>
-<h4>CA Endevor Bridge for Git connection options (alternatively use an 'ebg' profile)</h4>
+<p>zowe idms list datasources [options]</p>
+<h4>IDMS Connection Options</h4>
 <ul>
-<li>
-<p><code>--protocol</code>  | <code>--prot</code> <em>(string)</em></p>
-<ul>
-<li>
-<p>The Endevor Bridge for Git SCM protocol.</p>
-<p>Default value: http</p>
-<p>Allowed values: http, https</p>
-</li>
-</ul>
-</li>
 <li>
 <p><code>--host</code>  | <code>-H</code> <em>(string)</em></p>
 <ul>
-<li>The Endevor Bridge for Git hostname.</li>
+<li>Host name of the IDMS REST API service</li>
 </ul>
 </li>
 <li>
 <p><code>--port</code>  | <code>-P</code> <em>(number)</em></p>
 <ul>
-<li>The Endevor Bridge for Git port.</li>
+<li>Port for the IDMS REST API service</li>
 </ul>
 </li>
 <li>
 <p><code>--user</code>  | <code>-u</code> <em>(string)</em></p>
 <ul>
-<li>Endevor Bridge for Git username (your git username).</li>
+<li>Mainframe user name, which can be the same as your TSO login ID</li>
 </ul>
 </li>
 <li>
-<p><code>--token</code>  | <code>-t</code> <em>(string)</em></p>
+<p><code>--password</code>  | <code>--pass</code> | <code>--pw</code> <em>(string)</em></p>
 <ul>
-<li>Git personal access token (it can be obtained from your Git Enterprise Server).</li>
+<li>Mainframe password, which can be the same as your TSO password</li>
 </ul>
 </li>
 <li>
 <p><code>--reject-unauthorized</code>  | <code>--ru</code> <em>(boolean)</em></p>
 <ul>
 <li>
-<p>Reject self-signed certificates.</p>
-<p>Default value: false</p>
+<p>Reject self-signed certificates</p>
+<p>Default value: true</p>
 </li>
+</ul>
+</li>
+<li>
+<p><code>--base-path</code>  | <code>--bp</code> <em>(string)</em></p>
+<ul>
+<li>The base path for your API Mediation Layer instance. Specify this option to prepend the base path to all resources when making REST requests. Only specify this option if you are using an API Mediation Layer</li>
+</ul>
+</li>
+</ul>
+<h4>Options</h4>
+<ul>
+<li>
+<p><code>--datasourcename</code>  | <code>--dsn</code> <em>(string)</em></p>
+<ul>
+<li>Specifies a specific datasource to view the definition of</li>
+</ul>
+</li>
+<li>
+<p><code>--all</code>  | <code>-a</code> <em>(boolean)</em></p>
+<ul>
+<li>Lists each datasource defined to the IDMS REST API</li>
 </ul>
 </li>
 </ul>
 <h4>Profile Options</h4>
 <ul>
 <li>
-<p><code>--ebg-profile</code>  | <code>--ebg-p</code> <em>(string)</em></p>
+<p><code>--idms-profile</code>  | <code>--idms-p</code> <em>(string)</em></p>
 <ul>
-<li>The name of a (ebg) profile to load for this command execution.</li>
+<li>The name of a (idms) profile to load for this command execution.</li>
 </ul>
 </li>
 <li>
@@ -73,12 +84,6 @@
 </ul>
 <h4>Base Connection Options</h4>
 <ul>
-<li>
-<p><code>--password</code>  | <code>--pass</code> | <code>--pw</code> <em>(string)</em></p>
-<ul>
-<li>Password to authenticate to service on the mainframe.</li>
-</ul>
-</li>
 <li>
 <p><code>--token-type</code>  | <code>--tt</code> <em>(string)</em></p>
 <ul>
@@ -135,15 +140,15 @@
 <h4>Examples</h4>
 <ul>
 <li>
-<p>List all the Endevor connections using the default EBG profile:</p>
+<p>Lists all data sources defined to the IDMS Rest API:</p>
 <ul>
-<li><code>zowe endevor-bridge-for-git endevor-connection list</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe endevor-bridge-for-git endevor-connection list">Copy</button></li>
+<li><code>zowe idms list datasources --all</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe idms list datasources --all">Copy</button></li>
 </ul>
 </li>
 <li>
-<p>List all the Endevor connections without an EBG profile:</p>
+<p>Lists a single IDMS data source identified by the data source name:</p>
 <ul>
-<li><code>zowe endevor-bridge-for-git endevor-connection list --protocol http --host my-host --port 8080 --user my-git-username --token 1234567890</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe endevor-bridge-for-git endevor-connection list --protocol http --host my-host --port 8080 --user my-git-username --token 1234567890">Copy</button></li>
+<li><code>zowe idms list datasources --dsn SYSDEMO</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe idms list datasources --dsn SYSDEMO">Copy</button></li>
 </ul>
 </li>
 </ul>
