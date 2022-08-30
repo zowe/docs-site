@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>profiles create dbm-db2-profile</title>
+<link rel="stylesheet" href="../css/bundle-docs.css">
+<link rel="stylesheet" href="../css/docs.css">
+<article class="markdown-body">
+<h2><a href="zowe.html">zowe</a> › <a href="zowe_profiles.html">profiles</a> › <a href="zowe_profiles_create.html">create</a> › <a href="zowe_profiles_create_dbm-db2-profile.html">dbm-db2-profile</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
+<p>The dbm-db2 profile is a named set of DBM Data Service parameters that are implicitly used with the zowe dbm-db2 commands. The profile includes server connection, z/OS execution, and user-dependent details.</p>
+<h4>Usage</h4>
+<p>zowe profiles create dbm-db2-profile &lt;profileName&gt; [options]</p>
+<h4>Positional Arguments</h4>
+<ul>
+<li>
+<p><code>profileName</code>		 <em>(string)</em></p>
+<ul>
+<li>Specifies the name of the new dbm-db2 profile. You can load this profile by using the name on commands that support the &quot;--dbm-db2-profile&quot; option.</li>
+</ul>
+</li>
+</ul>
+<h4>dbm-db2 Common Options</h4>
+<ul>
+<li>
+<p><code>--job-cards</code>  | <code>--jc</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>Specifies a newline delimited string of z/OS JCL JOB statements.</p>
+<p>Default value: //DB2DVOPS JOB (&lt;nnn&gt;),'DB2 PROVISIONING',NOTIFY=&amp;SYSUID,\n//     CLASS=A,MSGCLASS=X,MSGLEVEL=(1,1),\n//     REGION=0M,TIME=NOLIMIT</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--work-dataset-prefix</code>  | <code>--wdp</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>Specifies the prefix that is used as the high level qualifier in z/OS work data set names.</p>
+<p>Default value: &lt;hlq&gt;</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--authid</code>  | <code>-a</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>Specifies the primary Db2 authorization ID (user ID) that is used to establish a connection between Db2 and a process.</p>
+<p>Default value: &lt;authid&gt;</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--sqlid</code>  | <code>-s</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>Specifies the authorization ID that is used as the value in generated SET CURRENT SQLID statements most of the time.</p>
+<p>Default value: &lt;sqlid&gt;</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--termination-character</code>  | <code>--tc</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>Specifies the SQL termination character that you want to use to terminate object DDL for triggers, XML indexes, functions, and procedures that contain embedded semicolon-terminated SQL statements.</p>
+<p>You cannot use a comma, an underscore, a single quote, double quotes, left parentheses, or right parentheses for this value.</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--overwrite-output-files</code>  | <code>--oof</code> <em>(boolean)</em></p>
+<ul>
+<li>
+<p>Specifies whether to overwrite output files when they already exist.</p>
+<p>Default value: false</p>
+</li>
+</ul>
+</li>
+</ul>
+<h4>dbm-db2 Connection Options</h4>
+<ul>
+<li>
+<p><code>--host</code>  | <code>-H</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>Specifies the DBM Data Service REST API server host name or TCP/IP address to use.</p>
+<p>Default value: &lt;host&gt;</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--port</code>  | <code>-P</code> <em>(number)</em></p>
+<ul>
+<li>
+<p>Specifies the DBM Data Service REST API server TCP/IP port number.</p>
+<p>Default value: 7300</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--user</code>  | <code>-u</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>Specifies the mainframe user name that you want to use to connect to the mainframe systems during execution of the Zowe CLI commands. This user name can be the same as your TSO login ID.</p>
+<p>Default value: &lt;user&gt;</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--password</code>  | <code>--pass</code> | <code>--pw</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>Specifies the mainframe password for the user name that is used to connect to the mainframe systems during execution of the CLI commands. This password can be the same as your TSO password.</p>
+<p>Default value: &lt;password&gt;</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--reject-unauthorized</code>  | <code>--ru</code> <em>(boolean)</em></p>
+<ul>
+<li>
+<p>Determines whether the dbm-db2 command is accepted or rejected when a self-signed certificate is returned by the DBM Data Service.</p>
+<p>Default value: true</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--protocol</code>  <em>(string)</em></p>
+<ul>
+<li>
+<p>Specifies the communication protocol to use between the zowe dbm-db2 client and the DBM Data Service.</p>
+<p>Default value: https<br>
+Allowed values: http, https</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--environment-list</code>  | <code>--el</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>Specifies a string of one or more paired values consisting of a Db2 subsystem ID and a DBM Data Service environment pair. The paired entry identifies the DBM Data Service environment to use for a subsystem that is accessible through multiple DBM Data Service environments.</p>
+<p>Format:</p>
+<p>&lt;ssid1&gt;:&lt;env1&gt;, &lt;ssid2&gt;:&lt;env2&gt;, …</p>
+<p>&lt;ssid&gt; is the subsystem ID. &lt;env&gt; is an entry that is configured in the DBM Data Service environments.yaml file. For more information about configuring the DBM Data Service, see the Database Management Solutions for Db2 for z/OS documentation at <a href="https://techdocs.broadcom.com/db2mgmt">https://techdocs.broadcom.com/db2mgmt</a>.</p>
+<p>Example: ssid:prod@host1.net:7300,ssid2:test@host2.net:7300</p>
+</li>
+</ul>
+</li>
+</ul>
+<h4>Options</h4>
+<ul>
+<li>
+<p><code>--overwrite</code>  | <code>--ow</code> <em>(boolean)</em></p>
+<ul>
+<li>Overwrite the dbm-db2 profile when a profile of the same name exists.</li>
+</ul>
+</li>
+<li>
+<p><code>--disable-defaults</code>  | <code>--dd</code> <em>(boolean)</em></p>
+<ul>
+<li>Disable populating profile values of undefined properties with default values.</li>
+</ul>
+</li>
+</ul>
+<h4>Examples</h4>
+<ul>
+<li>
+<p>Create a dbm-db2 profile named profile_name1 and default values for all the dbm-db2-profile options:</p>
+<ul>
+<li><code>zowe profiles create dbm-db2-profile profile_name1</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe profiles create dbm-db2-profile profile_name1">Copy</button></li>
+</ul>
+</li>
+<li>
+<p>Create a dbm-db2 profile named dbm123 that connects to the DBM Data Service at host dbm123 and port 1443 as user db2user and password myp4ss:</p>
+<ul>
+<li><code>zowe profiles create dbm-db2-profile dbm123 --host dbm123 --port 1443 --user db2user --password myp4ss</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe profiles create dbm-db2-profile dbm123 --host dbm123 --port 1443 --user db2user --password myp4ss">Copy</button></li>
+</ul>
+</li>
+<li>
+<p>Create a dbm-db2 profile named dbm124 that connects to the DBM Data Service at host dbm124 and the default port as user db2user and password myp4ss, and allow self-signed certificates:</p>
+<ul>
+<li><code>zowe profiles create dbm-db2-profile dbm124 --host dbm124 --user db2user --password myp4ss --reject-unauthorized false</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe profiles create dbm-db2-profile dbm124 --host dbm124 --user db2user --password myp4ss --reject-unauthorized false">Copy</button></li>
+</ul>
+</li>
+<li>
+<p>Create a dbm-db2 profile named dbm125 that connects to the DBM Data Service at host dbm125 and port 1443 and requires a user and password to be specified on every dbm-db2 command. DBM Data Service access to Db2 subsystems SUBA and SUBB uses prod@host1.com:322 and test@host2.com:522, respectively:</p>
+<ul>
+<li><code>zowe profiles create dbm-db2-profile dbm125 --host dbm125 --port 1443 --el “SUBA:prod@host1.com:322,SUBB:test@host2.net:522”</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe profiles create dbm-db2-profile dbm125 --host dbm125 --port 1443 --el “SUBA:prod@host1.com:322,SUBB:test@host2.net:522”">Copy</button></li>
+</ul>
+</li>
+</ul>
+</article>
+<script src="../js/bundle-docs.js"></script>
+<script src="../js/docs.js"></script>
