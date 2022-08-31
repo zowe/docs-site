@@ -1,5 +1,7 @@
 # Authentication for API ML services
 
+Review how services of the API Mediation Layer address authentication.  
+
 - **API Gateway**
 
     - The API Gateway handles authentication
@@ -28,9 +30,8 @@
 
 The API Gateway contains the following REST API authentication endpoints:
 
-- `auth/login`
-  
-  The full path of the `auth/login` endpoint appears as `https://{gatewayUrl}  :{gatewayPort}/gateway/api/v1/auth/login`.
+- **`auth/login`**  
+The full path of the `auth/login` endpoint appears as `https://{gatewayUrl}  :{gatewayPort}/gateway/api/v1/auth/login`.
 
   The `auth/login` endpoint authenticates mainframe user credentials and   returns an authentication token. The login request requires user   credentials though one of the following methods:
     * Basic access authentication
@@ -39,9 +40,8 @@ The API Gateway contains the following REST API authentication endpoints:
   
   When authentication is successful, the response to the request is an empty body and a token is contained in a secure `HttpOnly` cookie named `apimlAuthenticationToken`. When authentication fails, the user receives a 401 status code.
 
-- `auth/query`
-
-   The full path of the `auth/query` endpoint appear as `https://{gatewayUrl}:   {gatewayPort}/gateway/api/v1/auth/query`.
+- **`auth/query`**  
+The full path of the `auth/query` endpoint appear as `https://{gatewayUrl}:   {gatewayPort}/gateway/api/v1/auth/query`.
 
    The `auth/query` endpoint validates the token and retrieves the    information associated with the token.
    The query request requires the token through one of the following methods:
@@ -50,9 +50,8 @@ The API Gateway contains the following REST API authentication endpoints:
 
    When authentication is successful, the response to the request is a JSON object which contains information associated with the token. When authentication fails, the user receives a 401 status code.
 
-- `auth/ticket`
-
-  The `auth/ticket` endpoint generates a PassTicket for the user associated with a token. The full path of the `auth/ticket` endpoint appears as `https://{gatewayUrl}:{gatewayPort}/gateway/api/v1/auth/ticket`.
+- **`auth/ticket`**  
+The `auth/ticket` endpoint generates a PassTicket for the user associated with a token. The full path of the `auth/ticket` endpoint appears as `https://{gatewayUrl}:{gatewayPort}/gateway/api/v1/auth/ticket`.
 
   This endpoint is protected by a client certificate.
   The ticket request requires the token in one of the following formats:
@@ -64,14 +63,13 @@ The API Gateway contains the following REST API authentication endpoints:
 
   The response is a JSON object, which contains information associated with the ticket.
 
-- `auth/refresh`
+- **`auth/refresh`**  
+ The `auth/refresh` endpoint generates a new token for the user based on valid jwt token. The full path of the `auth/refresh` endpoint appears as `https://{gatewayUrl}:{gatewayPort}/gateway/api/v1/auth/refresh`. The new token overwrites the old cookie with a `Set-Cookie` header. As part of the process, the old token gets invalidated and is not usable anymore.
 
   **Notes:** 
   
    - The endpoint is disabled by default. For more information, see [Enable JWT token endpoint](../../user-guide/api-mediation/api-gateway-configuration.md#enable-jwt-token-refresh-endpoint).
    - The endpoint is protected by a client certificate.
-  
-  The `auth/refresh` endpoint generates a new token for the user based on valid jwt token. The full path of the `auth/refresh` endpoint appears as `https://{gatewayUrl}:{gatewayPort}/gateway/api/v1/auth/refresh`. The new token overwrites the old cookie with a `Set-Cookie` header. As part of the process, the old token gets invalidated and is not usable anymore.
 
   The refresh request requires the token in one of the following formats:
   
@@ -129,6 +127,12 @@ Authentication is performed in the following ways:
 
 When the client authenticates with the API ML, the client receives the JWT token in exchange. This token can be used for further authentication. If z/OSMF is configured as the authentication provider and the client already received a JWT token produced by z/OSMF, it is possible to reuse this token within API ML for authentication.  
 
+### Authentication with Personal Access Token
+
+A Personal Access Token (PAT) is an alternative to using passwords for authentication.
+It is possible to generate a Personal Access Token that can be used for an instance of Version Control Systems on mainframe without having to store mainframe credentials
+or use a certificate. For more information about the PAT functionality, see the [Personal Access Token documentation](../../user-guide/api-mediation/api-mediation-personal-access-token.md).
+
 ## Authentication parameters
 
 Parameters are specified in the onboarding enablers.
@@ -145,25 +149,21 @@ authentication:
     applid: ZOWEAPPL
 ```
 
-* **authentication.scheme**
-
-  The value of this parameter specifies a service authentication scheme. Any valid headers or `X-Zowe-Auth-Failure` error headers are set and passed to southbound services. In addition, any `X-Zowe-Auth-Failure` error headers coming from the northbound service are also be passed to the southbound services without setting the valid headers. The `X-Zowe-Auth-Failure` error header contains details about the error and suggests potential actions.
+* **authentication.scheme**  
+The value of this parameter specifies a service authentication scheme. Any valid headers or `X-Zowe-Auth-Failure` error headers are set and passed to southbound services. In addition, any `X-Zowe-Auth-Failure` error headers coming from the northbound service are also be passed to the southbound services without setting the valid headers. The `X-Zowe-Auth-Failure` error header contains details about the error and suggests potential actions.
   The following schemes are supported by the API Gateway:
 
-    * **bypass**
-
-      This value specifies that the token is passed unchanged to service.
+    * **bypass**  
+    This value specifies that the token is passed unchanged to service.
 
       **Note:** This is the default scheme when no authentication parameters are specified.
 
-    * **zoweJwt**
+    * **zoweJwt**  
+      * When a Zowe JWT is provided, this scheme value specifies that the service accepts the Zowe JWT. No additional processing is done by the API Gateway.
+      * When a client certificate is provided, the certificate is transformed into a Zowe JWT, and the southbound service performs the authentication.
 
-        * When a Zowe JWT is provided, this scheme value specifies that the service accepts the Zowe JWT. No additional processing is done by the API Gateway.
-        * When a client certificate is provided, the certificate is transformed into a Zowe JWT, and the southbound service performs the authentication.
-
-    * **httpBasicPassTicket**
-
-      This value specifies that a service accepts PassTickets in the Authorization header of the HTTP requests using the basic authentication scheme.
+    * **httpBasicPassTicket**  
+    This value specifies that a service accepts PassTickets in the Authorization header of the HTTP requests using the basic authentication scheme.
       It is necessary to provide a service APPLID in the `authentication.applid` parameter to prevent passticket generation errors.
 
         * When a JWT is provided, the service validates the Zowe JWT to use for passticket generation.
@@ -171,9 +171,8 @@ authentication:
 
       For more information, see [Enabling PassTicket creation for API Services that Accept PassTickets](api-mediation-passtickets.md)
 
-    * **zosmf**
-
-      This value specifies that a service accepts z/OSMF LTPA (Lightweight Third-Party Authentication).
+    * **zosmf**  
+This value specifies that a service accepts z/OSMF LTPA (Lightweight Third-Party Authentication).
       This scheme should only be used only for a z/OSMF service used by the API Gateway Authentication Service and other z/OSMF services that use the same LTPA key.
 
         * When a JWT is provided, the token extracts the LTPA and forwards it to the service.
@@ -181,35 +180,28 @@ authentication:
 
       For more information about z/OSMF Single Sign-on, see [Establishing a single sign-on environment](https://www.ibm.com/support/knowledgecenter/SSLTBW_2.4.0/com.ibm.zosmfcore.multisysplex.help.doc/izuG00hpManageSecurityCredentials.html)
 
-    * **safIdt**
-
-      This value specifies that the service accepts SAF IDT, and expects that the token produced by the SAF IDT provider implementation is in the `X-SAF-Token` header. It is necessary to provide a service APPLID in the `authentication.applid` parameter.
+    * **safIdt**  
+This value specifies that the service accepts SAF IDT, and expects that the token produced by the SAF IDT provider implementation is in the `X-SAF-Token` header. It is necessary to provide a service APPLID in the `authentication.applid` parameter.
 
       For more information, see [Implement a SAF IDT provider](implement-new-saf-provider.md).
 
-    * **x509**
+    * **x509**  
+This value specifies that a service accepts client certificates forwarded in the HTTP header. The Gateway service extracts information from a valid client certificate. For validation, the certificate needs to be trusted by API Mediation Layer, and needs to contain a Client Authentication (1.3.6.1.5.5.7.3.2) entry in Extended Key Usage. To use this scheme, it is also necessary to specify which headers to include. Specify these parameters in `headers`.
 
-      This value specifies that a service accepts client certificates forwarded in the HTTP header. The Gateway service extracts information from a valid client certificate. For validation, the certificate needs to be trusted by API Mediation Layer, and needs to contain a Client Authentication (1.3.6.1.5.5.7.3.2) entry in Extended Key Usage. To use this scheme, it is also necessary to specify which headers to include. Specify these parameters in `headers`.
+* **authentication.headers**  
+When the `x509` scheme is specified, use the `headers` parameter to select which values to send to a service. Use one of the following values:
 
-* **authentication.headers**
+    * `X-Certificate-Public`  
+The public part of client certificate base64 encoded
 
-  When the `x509` scheme is specified, use the `headers` parameter to select which values to send to a service. Use one of the following values:
+    * `X-Certificate-DistinguishedName`  
+The distinguished name from client certificate
 
-    * `X-Certificate-Public`
+    * `X-Certificate-CommonName`  
+The common name from the client certificate
 
-      The public part of client certificate base64 encoded
-
-    * `X-Certificate-DistinguishedName`
-
-      The distinguished name from client certificate
-
-    * `X-Certificate-CommonName`
-
-      The common name from the client certificate
-
-* **authentication.applid**
-
-  This parameter specifies a service APPLID.
+* **authentication.applid**  
+This parameter specifies a service APPLID.
   This parameter is valid only for the `httpBasicPassTicket` authentication scheme.
 
 ## Authentication providers
@@ -228,7 +220,6 @@ Use the following properties of the API Gateway to enable the `z/OSMF Authentica
 apiml.security.auth.provider: zosmf
 apiml.security.auth.zosmfServiceId: zosmf  # Replace me with the correct z/OSMF service id
 ```
-
 ### SAF Authentication Provider
 
 The `SAF Authentication Provider` allows the API Gateway to authenticate directly with the z/OS SAF provider that is installed on the system. The user needs a SAF account to authenticate. 
@@ -253,82 +244,7 @@ apiml.security.auth.provider: dummy
 Authorization is a method used to determine access rights of an entity.
 
 In the API ML, authorization is performed by the z/OS security manager ([ACF2](https://www.broadcom.com/products/mainframe/identity-access/acf2), [IBM RACF](https://www.ibm.com/support/knowledgecenter/zosbasics/com.ibm.zos.zsecurity/zsecc_042.htm), [Top Secret](https://www.broadcom.com/products/mainframe/identity-access/top-secret)). An authentication token is used as proof of valid authentication. The authorization checks, however, are always performed by the z/OS security manager.
-
-### JWT Token
-
-The JWT secret that signs the JWT Token is an asymmetric private key that is generated during Zowe keystore configuration. The JWT token is signed with the RS256 signature algorithm.
-
-You can find the JWT secret, alias `localhost`, in the PKCS12 keystore that is stored in `${KEYSTORE_DIRECTORY}/localhost/localhost.keystore.p12`. The public key necessary to validate the JWT signature is read from the keystore.
-
-You can also use the `/gateway/api/v1/auth/keys/public/all` endpoint to obtain all public keys that can be used to verify JWT tokens signature in standard [JWK format](https://openid.net/specs/).
-
-### Personal Access Token
-
-A Personal Access Token (PAT) is an alternative to using passwords for authentication.
-It is possible to generate a Personal Access Token that can be used for an instance of Version Control Systems on mainframe without having to store mainframe credentials
-or use a certificate. For more information about the PAT functionality, see the [Personal Access Token documentation](../../user-guide/api-mediation/api-mediation-personal-access-token.md).
-
-### z/OSMF JSON Web Tokens Support
-
-Your z/OSMF instance can be enabled to support JWT tokens as described at [Enabling JSON Web Token support](https://www.ibm.com/support/knowledgecenter/SSLTBW_2.4.0/com.ibm.zos.v2r4.izua300/izuconfig_EnableJSONWebTokens.htm).
-In this case, the Zowe API ML uses this JWT token and does not generate its own Zowe JWT token. All authentication APIs, such as `/gateway/api/v1/login` and `/gateway/api/v1/check` function in the same way as without z/OSMF JWT.
-Gateway service endpoint `/gateway/api/v1/auth/keys/public/all` serves the z/OSMF JWK that can be used for JWT signature validation.
-
-### API ML truststore and keystore
-
-A _keystore_ is a repository of security certificates consisting of either authorization certificates or public key certificates with corresponding private keys (PK), used in TLS encryption. A _keystore_ can be stored in Java specific format (JKS) or use the standard format (PKCS12). The Zowe API ML uses PKCS12 to enable the keystores to be used
-by other technologies in Zowe (Node.js).
-
-### API ML SAF Keyring
-
-As an alternative to using a keystore and truststore, API ML can read certificates from a SAF keyring. The user running the API ML must have rights to access the keyring. From the java perspective, the keyring behaves as the `JCERACFKS` keystore. The path to the keyring is specified as `safkeyring:////user_id/key_ring_id`. The content of SAF keyring is equivalent to the combined contents of the keystore and the truststore.
-
-**Note:** When using JCERACFKS as the keystore type, ensure that you define the class to handle the RACF keyring using the `-D` options to specify the `java.protocol.handler.pkgs property`:
-
-    -Djava.protocol.handler.pkgs=com.ibm.crypto.provider
-
-The elements in the following list, which apply to the API ML SAF Keyring, have these corresponding characteristics:
-
-**The API ML local certificate authority (CA)**
-
-- The API ML local CA contains a local CA certificate and a private key that needs to be securely stored.
-- The API ML local certificate authority is used to sign certificates of services.
-- The API ML local CA certificate is trusted by API services and clients.
-
-**The API ML keystore or API ML SAF Keyring**
-
-- Server certificate of the Gateway (with PK). This can be signed by the local CA or an external CA.
-- Server certificate of the Discovery Service (with PK). This can be signed by the local CA.
-- Server certificate of the Catalog (with PK). This can be signed by the local CA.
-- The API ML keystore is used by API ML services.
-
-**The API ML truststore or API ML SAF Keyring**
-
-- Local CA public certificate
-- External CA public certificate (optional)
-- Can contain self-signed certificates of API Services that are not signed by the local or external CA
-- Used by API ML services
-
-**Zowe core services**
-
-- Services can use the same keystore and truststore or the same keyring as APIML for simpler installation and management.
-- When using a keystore and truststore, services have to have rights to access and read them on the filesystem.
-- When using a keyring, the user of the service must have authorization to read the keyring from the security system.
-- Alternatively, services can have individual stores for higher security.
-
-**API service keystore or SAF keyring** (for each service)
-
-- The API service keystore contains a server and client certificate signed by the local CA.
-
-**API service truststore or SAF keyring** (for each service)
-
-- (Optional) The API service truststore contains a local CA and external CA certificates.
-
-**Client certificates**
-
-- A client certificate is a certificate that is used for validation of the HTTPS client. The client certificate of a Discovery Service client can be the same certificate as the server certificate of the services which the Discovery Service client uses.
-
-### Discovery Service authentication
+## Discovery Service authentication
 
 There are several authentication mechanisms, depending on the desired endpoint, as described by the following matrix:
 
