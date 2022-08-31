@@ -4,9 +4,9 @@
 
 ### How to start API ML on localhost with full HTTPS
 
-The https://github.com/zowe/api-layer repository already contains pre-generated certificates that can be used to start API ML with HTTPS on your computer. The certificates are not trusted by your browser so you can either ignore the security warning or generate your own certificates and add them to the truststore of your browser or system.
+The https://github.com/zowe/api-layer repository contains pre-generated certificates that can be used to start API ML with HTTPS on your computer. The certificates are not trusted by your browser so you can either ignore the security warning or generate your own certificates and add them to the truststore of your browser or system.
 
-The certificates are described in more detail in the [TLS Certificates for localhost](https://github.com/zowe/api-layer/blob/master/keystore/README.md).
+For more information about certificates, see [TLS Certificates for localhost](https://github.com/zowe/api-layer/blob/master/keystore/README.md).
 
 **Note:** When running on localhost, only the combination of using a keystore and truststore is supported.
 
@@ -22,10 +22,12 @@ It is a UNIX shell script that can be executed by Bash or z/OS Shell. For Window
 
 ### Generate certificates for localhost
 
+Use the following procedure to generate certificates for localhost. 
+
 **Follow these steps:**
 
 1. Clone the `zowe-install-packaging` repository to your local machine.
-2. Place the `bin/apiml_cm.sh` script intoto `scripts` directory in your API Mediation Layer repository folder
+2. Place the `bin/apiml_cm.sh` script into the `scripts` directory in your API Mediation Layer repository folder
 3. Use the following script in the root of the `api-layer` repository to generate certificates for localhost:
 
 `scripts/apiml_cm.sh --action setup`
@@ -74,18 +76,18 @@ Trust in the API ML server is a necessary precondition for secure communication 
 
 1. Download the local CA certificate to your computer. Use one of the following methods to download the local CA certificate to your computer:
 
-    - **Use [Zowe CLI](https://github.com/zowe/zowe-cli#zowe-cli--) (Recommended)**
-    Issue the following command:
+    - **Use [Zowe CLI](https://github.com/zowe/zowe-cli#zowe-cli--) (Recommended)**  
+Issue the following command:
 
-    `zowe zos-files download uss-file --binary $KEYSTORE_DIRECTORY/local_ca/localca.cer`
+        `zowe zos-files download uss-file --binary $KEYSTORE_DIRECTORY/local_ca/localca.cer`
 
-    - **Use `sftp`**
-    Issue the following command:
+    - **Use `sftp`**  
+Issue the following command:
 
-    ```
-    sftp <system>
-    get $KEYSTORE_DIRECTORY/local_ca/localca.cer
-    ```
+        ```
+        sftp <system>
+        get $KEYSTORE_DIRECTORY/local_ca/localca.cer
+        ```
 
     To verify that the file has been transferred correctly, open the file. The following heading and closing should appear:
 
@@ -118,11 +120,11 @@ Trust in the API ML server is a necessary precondition for secure communication 
       pref("security.enterprise_roots.enabled", true);
       ```
 
-### Generate a keystore and truststore for a new service on z/OS
+### Generate a keystore and truststore for a new service on z/OS	
 
-**Note:** This procedure applies to UNIX file keystore and truststore only. For the SAF keyring option, it is recommended that you perform the actions manually using your security system commands.	
+You can generate a keystore and truststore for a new service by calling the `apiml_cm.sh` script in the directory with API Mediation Layer.
 
-You can generate a keystore and truststore for a new service by calling the `apiml_cm.sh` script in the directory with API Mediation Layer:
+**Note:** This procedure applies to UNIX file keystore and truststore only. For the SAF keyring option, it is recommended that you perform the actions manually using your security system commands.
 
 Call the `apiml_cm.sh` script in the directory with the API Mediation Layer as in the following example.
 
@@ -140,32 +142,31 @@ where:
 is a unique string to identify the key entry. All keystore entries (key and trusted certificate entries) are accessed via unique aliases. Since the keystore has only one certificate, you can omit this parameter and use the default value `localhost`.
 
 * **`service-keystore`**  
- Specifies repository of security certificates plus corresponding private keys. The `<keystore_path>` is the path excluding the extension to the keystore that is generated. It can be an absolute path or a path relative to the current working directory. The key store is generated in PKCS12 format with the `.p12` extension. Ensure that the path is in an existing directory where your service expects the keystore.
+ specifies repository of security certificates plus corresponding private keys. The `<keystore_path>` is the path excluding the extension to the keystore that is generated. It can be an absolute path or a path relative to the current working directory. The key store is generated in PKCS12 format with the `.p12` extension. Ensure that the path is in an existing directory where your service expects the keystore.
 
   **Example:** `/opt/myservice/keystore/service.keystore`.
 
 * **`service-truststore`**  
-Contains certificates from other parties that you expect to communicate with, or from Certificate Authorities that you trust to identify other parties. The `<truststore_path>` is the path excluding the extension to the trust store that is generated. It can be an absolute path or a path relative to the current working directory. The truststore is generated in PKCS12 format.
+contains certificates from other parties that you expect to communicate with, or from Certificate Authorities that you trust to identify other parties. The `<truststore_path>` is the path excluding the extension to the trust store that is generated. It can be an absolute path or a path relative to the current working directory. The truststore is generated in PKCS12 format.
 
 * **`service-ext`**  
-Specifies the X.509 extension that should be the Subject Alternate Name (SAN). The SAN contains host names that are used to access the service. You need to specify the same hostname that is used by the service during API Mediation Layer registration.
+specifies the X.509 extension that should be the Subject Alternate Name (SAN). The SAN contains host names that are used to access the service. You need to specify the same hostname that is used by the service during API Mediation Layer registration.
 
   **Example:** `"SAN=dns:localhost.localdomain,dns:localhost,ip:127.0.0.1"`
 
   **Note:** For more information about SAN, see *SAN or SubjectAlternativeName* at [Java Keytool - Common Options](https://www.ibm.com/support/knowledgecenter/en/SSYKE2_8.0.0/com.ibm.java.security.component.80.doc/security-component/keytoolDocs/commonoptions.html).
 
 * **`service-dname`**  
-Specifies the X.509 Distinguished Name and is used to identify entities, such as those which are named by the subject and issuer (signer) fields of X.509 certificates.
+specifies the X.509 Distinguished Name and is used to identify entities, such as those which are named by the subject and issuer (signer) fields of X.509 certificates.
 
   **Example:** `"CN=Zowe Service, OU=API Mediation Layer, O=Zowe Sample, L=Prague, S=Prague, C=CZ"`
 
 * **`service-validity`**  
-Specifies the number of days until the certificate expires.
+specifies the number of days until the certificate expires.
 
 * **`service-password`**  
-Specifies the keystore password. The purpose of the password is the integrity check. The access protection for the keystore and keystore need to be achieved by making them accessible only by the ZOVESVR user ID and the system administrator.
-
-The `local-ca-filename` is the path to the keystore that is used to sign your new certificate with the local CA private key. It should point to the `$KEYSTORE_DIRECTORY/local_ca/localca` where `$KEYSTORE_DIRECTORY` is defined in a customized `$ZOWE_ROOT_DIR/bin/zowe-setup-certificates.env` file during the installation step that generates Zowe certificates.
+ Specifies the keystore password. The purpose of the password is the integrity check. The access protection for the keystore and keystore need to be achieved by making them accessible only by the ZOVESVR user ID and the system administrator.
+ The `local-ca-filename` is the path to the keystore that is used to sign your new certificate with the local CA private key. It should point to the `$KEYSTORE_DIRECTORY/local_ca/localca` where `$KEYSTORE_DIRECTORY` is defined in a customized `$ZOWE_ROOT_DIR/bin/zowe-setup-certificates.env` file during the installation step that generates Zowe certificates.
 
 
 ### Add a service with an existing certificate to API ML on z/OS
