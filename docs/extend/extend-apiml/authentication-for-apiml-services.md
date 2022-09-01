@@ -1,6 +1,22 @@
 # Authentication for API ML services
 
-Review how services of the API Mediation Layer address authentication.  
+Review how services of the API Mediation Layer address authentication.
+
+  - [Services of API Mediation Layer](#services-of-api-mediation-layer)
+  - [Authentication endpoints](#authentication-endpoints)
+  - [Supported authentication methods](#supported-authentication-methods)
+    - [Authentication with Username Password](#authentication-with-usernamepassword)
+    - [Authentication with Client certificate](#authentication-with-client-certificate)
+    - [Authentication with JWT Token](#authentication-with-jwt-token)
+- [Authentication parameters](#authentication-parameters)
+- [Authentication providers](#authentication-providers)
+    * [z/OSMF Authentication Provider](#z-osmf-authentication-provider)
+    * [SAF Authentication Provider](#saf-authentication-provider)
+    * [Dummy Authentication Provider](#dummy-authentication-provider)
+- [Authorization](#authorization)
+- [Discovery Service authentication](#discovery-service-authentication)
+
+## Services of API Mediation Layer
 
 - **API Gateway**
 
