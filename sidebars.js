@@ -173,6 +173,7 @@ module.exports = {
       type: "category",
       label: "Installing Zowe Explorer",
       items: [
+        "getting-started/user-roadmap-zowe-explorer",
         "user-guide/ze-install",
         "user-guide/ze-profiles",
       ],

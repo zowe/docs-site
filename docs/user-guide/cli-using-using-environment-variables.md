@@ -14,6 +14,6 @@ You may want to assign a variable in the following scenarios:
 * **Override a value in existing profiles.**
 
     For example, you might want to override a value that you previously defined in multiple profiles to avoid recreating each profile. Specify the new value as a variable to override the value in profiles.
-* **Secure credentials in an automation server or container**
+* **Secure credentials in an automation server or container.**
     
     You can set environment variables for use in scripts that run in your CI/CD pipeline. For example, can define environment variables in Jenkins so that your password is not seen in plaintext in logs. You can also define sensitive information in the Jenkins secure credential store.
