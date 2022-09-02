@@ -2,9 +2,9 @@
 
 Review how services of the API Mediation Layer address authentication.
 
-  - [Services of API Mediation Layer](#services-of-api-mediation-layer)
-  - [Authentication endpoints](#authentication-endpoints)
-  - [Supported authentication methods](#supported-authentication-methods)
+- [Services of API Mediation Layer](#services-of-api-mediation-layer)
+- [Authentication endpoints](#authentication-endpoints)
+- [Supported authentication methods](#supported-authentication-methods)
     - [Authentication with Username Password](#authentication-with-usernamepassword)
     - [Authentication with Client certificate](#authentication-with-client-certificate)
     - [Authentication with JWT Token](#authentication-with-jwt-token)
