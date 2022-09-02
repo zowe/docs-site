@@ -1,5 +1,21 @@
 # Certificate management in Zowe API Mediation Layer
 
+Review details of certificate management in Zowe API Mediaiton Layer including running on localhost, Zowe runtime on z/OS. This topic also addressing key information about the API ML truststore and keystore, and API ML SAF Keyring.
+
++ [Running on localhost](#running-on-localhost)
+    - [How to start API ML on localhost with full HTTPS](#how-to-start-api-ml-on-localhost-with-full-https)
+    - [Certificate management script](#certificate-management-script)
+    - [Generate certificates for localhost](#generate-certificates-for-localhost)
+    - [Generate a certificate for a new service on localhost](#generate-a-certificate-for-a-new-service-on-localhost)
+    - [Add a service with an existing certificate to API ML on localhost](#add-a-service-with-an-existing-certificate-to-api-ml-on-localhost)
+    - [Service registration to Discovery Service on localhost](#service-registration-to-discovery-service-on-localhost)
++ [Zowe runtime on z/OS](#zowe-runtime-on-zos)
+    - [Import the local CA certificate to your browser](#import-the-local-ca-certificate-to-your-browser)
+    - [Generate a keystore and truststore for a new service on z/OS](#generate-a-keystore-and-truststore-for-a-new-service-on-z-os)
+    - [Add a service with an existing certificate to API ML on z/OS](#add-a-service-with-an-existing-certificate-to-api-ml-on-z-os)
+    - [Procedure if the service is not trusted](#procedure-if-the-service-is-not-trusted)
++ [API ML truststore and keystore](#api-ml-truststore-and-keystore)    
++ [API ML SAF Keyring](#api-ml-saf-keyring)    
 ## Running on localhost
 
 ### How to start API ML on localhost with full HTTPS
@@ -171,19 +187,15 @@ specifies the number of days until the certificate expires.
 
 ### Add a service with an existing certificate to API ML on z/OS
 
+The API Mediation Layer requires validation of the certificate of each service that it accessed by the API Mediation Layer. The API Mediation Layer requires validation of the full certificate chain.
+
 **Note:** This procedure applies only to UNIX file keystore/truststore. For the SAF keyring option, we recommend to perform the actions manually using your security system commands.
 
-The API Mediation Layer requires validation of the certificate of each service that it accessed by the API Mediation Layer. The API Mediation Layer requires validation of the full certificate chain. Use one of the following methods:
+Import the public certificate of the root CA that has signed the certificate of the service to the APIML truststore.
 
-- Import the public certificate of the root CA that has signed the certificate of the service to the APIML truststore.
+  **Note:** Validation fails if a service does not provide an intermediate CA certificates to the API ML. This can be circumvented by importing the intermediate CA certificates to the API ML truststore.
 
-- Ensure that your service has its own certificate. If it was signed by intermediate CA, ensure that all intermediate CA certificates are contained in the service's keystore.
-
-  **Note:** If the service does not provide an intermediate CA certificates to the API ML, then validation fails. This can be circumvented by importing the intermediate CA certificates to the API ML truststore.
-
-The following path is an example of importing a public certificate to the API ML truststore by calling in the directory with API Mediation Layer.
-
-**Example:**
+The following path is an example of how to import a public certificate to the API ML truststore by calling in the directory with API Mediation Layer:
 
 ```
 cd <RUNTIME_DIR>
@@ -192,7 +204,7 @@ bin/apiml_cm.sh --action trust --certificate <path-to-certificate-in-PEM-format>
 
 #### Procedure if the service is not trusted
 
-If your service is not trusted, you may receive a response with the HTTP status code [502 Bad Gateway](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/502) and a JSON response in the standardized format for error messages. The following request is an example of when this errror response may occur.
+If your service is not trusted, you may receive a response with the HTTP status code [502 Bad Gateway](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/502) and a JSON response in the standardized format for error messages. The following request is an example of when this error response may occur.
 
 **Example:**
 
@@ -216,6 +228,6 @@ In this example, you receive a similar response:
     }
 ```
 
-The message has the key `apiml.common.tlsError`, and the message number `AML0105`, and content that explains details about the message.
+The message has the key `apiml.common.tlsError`, and message number `AML0105`. The content explains details about the message.
 
 If you receive this message, import the certificate of your service or the CA that signed it to the truststore of the API Mediation Layer as described previously.
