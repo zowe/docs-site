@@ -54,7 +54,7 @@ The following range of service types apply to the Zowe&trade; API ML:
 
 - **Authentication and Authorization Service (AAS)**  
     AAS provides authentication and authorization functionality to check user access to resources on z/OS.
-    The API ML uses z/OSMF API for  authentication. For more information, see the [API ML wiki](https://github.com/zowe/api-layer/wiki/Zowe-Authentication-and-Authorization-Service).
+    The API ML uses z/OSMF API for  authentication. 
 
 - **API Clients**  
     API Clients are external applications, users, or other API services that access API services through the API Gateway
