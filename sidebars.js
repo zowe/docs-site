@@ -327,10 +327,19 @@ module.exports = {
         "extend/extend-apiml/api-mediation-sso",
         "extend/extend-apiml/create-apiml-extension",
         "extend/extend-apiml/api-mediation-message-service",
-        "extend/extend-apiml/api-mediation-security",
         "extend/extend-apiml/custom-metadata",
         "extend/extend-apiml/api-mediation-versioning",
         "extend/extend-apiml/implement-new-saf-provider", 
+        {
+          type: "category",
+          label: "Zowe API Mediation Layer Security",
+          items: [
+            "extend/extend-apiml/zowe-api-mediation-layer-security-overview",
+            "extend/extend-apiml/authentication-for-apiml-services",
+            "extend/extend-apiml/zaas-client",
+            "extend/extend-apiml/certificate-management=in-zowe-apiml",
+          ],
+        }
         {
           type: "category",
           label: "Caching service",
