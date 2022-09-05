@@ -1,6 +1,6 @@
 # Certificate management in Zowe API Mediation Layer
 
-Review details of certificate management in Zowe API Mediaiton Layer including running on localhost, Zowe runtime on z/OS. This topic also addressing key information about the API ML truststore and keystore, and API ML SAF Keyring.
+Review details of certificate management in Zowe API Mediation Layer including running on localhost, Zowe runtime on z/OS. This topic also addressing key information about the API ML truststore and keystore, and API ML SAF Keyring.
 
 + [Running on localhost](#running-on-localhost)
     - [How to start API ML on localhost with full HTTPS](#how-to-start-api-ml-on-localhost-with-full-https)
@@ -181,7 +181,7 @@ specifies the X.509 Distinguished Name and is used to identify entities, such as
 specifies the number of days until the certificate expires.
 
 * **`service-password`**  
- Specifies the keystore password. The purpose of the password is the integrity check. The access protection for the keystore and keystore need to be achieved by making them accessible only by the ZOVESVR user ID and the system administrator.
+ specifies the keystore password. The purpose of the password is the integrity check. The access protection for the keystore and keystore need to be achieved by making them accessible only by the ZOVESVR user ID and the system administrator.
  The `local-ca-filename` is the path to the keystore that is used to sign your new certificate with the local CA private key. It should point to the `$KEYSTORE_DIRECTORY/local_ca/localca` where `$KEYSTORE_DIRECTORY` is defined in a customized `$ZOWE_ROOT_DIR/bin/zowe-setup-certificates.env` file during the installation step that generates Zowe certificates.
 
 
