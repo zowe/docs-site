@@ -68,49 +68,39 @@ To apply a method to the Caching service, use the following API path:
 
 Use the following methods with the Caching Service API:
 
-- **`POST /cache`**
+- **`POST /cache`**  
+Creates a new key in the Cache
 
-   Creates a new key in the Cache
+- **`GET /cache`**  
+Returns all key/value pairs for specific service
 
-- **`GET /cache`**
+- **`PUT /cache/{key}`**  
+Updates the existing value for the given key
 
-   Returns all key/value pairs for specific service
+- **`GET /cache/{key}`**  
+Returns the existing value for the given key
 
-- **`PUT /cache/{key}`**
-
-   Updates the existing value for the given key
-
-- **`GET /cache/{key}`**
-
-   Returns the existing value for the given key
-
-- **`DELETE /cache/{key}`**
-
-   Deletes a key/value pair
+- **`DELETE /cache/{key}`**  
+Deletes a key/value pair
 
 ## Configuration properties
 
 The Caching Service uses the standard `application.yml` structure for configuration. The service is built on top of the Spring enabler. As such, it dynamically registers to the API Mediation Layer. The service appears in the API Catalog under the tile, "Zowe Applications".
 
-* **`caching.storage.size`**
+* **`caching.storage.size`**  
+This property limits the size of the Caching Service. In the VSAM and InMemory implementations, this property represents the number of records stored before the eviction strategy is initiated. The default value is `100`.  
+**Note:** Different implementations may implement this property differently.
 
-  This property limits the size of the Caching Service. In the VSAM and InMemory implementations, this property represents the number of records stored before the eviction strategy is initiated. The default value is `100`. 
-
-  **Note:** Different implementations may implement this property differently.
-
-* **`caching.storage.evictionStrategy`**
-
-  This parameter specifies service behavior when the limit of records is reached. The default value is `Reject`.
+* **`caching.storage.evictionStrategy`**  
+This parameter specifies service behavior when the limit of records is reached. The default value is `Reject`.
 
   where:
   
-  * **reject**
-  
-    rejects the new item with the HTTP status code `507` when the service reaches the configured maximum number
+  * **reject**  
+  rejects the new item with the HTTP status code `507` when the service reaches the configured maximum number
 
-  * **removeOldest**
-  
-    removes the oldest item in the cache when the service reaches the configured maximum number
+  * **removeOldest**  
+  removes the oldest item in the cache when the service reaches the configured maximum number
 
 **Notes:** 
 - For more information about how to configure the Caching Service in the `application.yml`, see: [Add API Onboarding Configuration](../extend-apiml/onboard-spring-boot-enabler.md).
@@ -131,4 +121,4 @@ apiml.service.authentication.scheme: x509
 apiml.service.authentication.headers: X-Certificate-Public,X-Certificate-DistinguishedName,X-Certificate-CommonName
 ```
 
-which makes Gateway to attempt mutual authentication with Client and if succesfull, propagate the Client's certificate information to `X-Certificate-` headers. With this scheme, Gateway will use it's server/client certificate for the routed call to caching service.
+The result is that the Gateway attempts mutual authentication with the Client.  If authentication is succesful, the Client's certificate information is propogated to `X-Certificate-` headers. With this scheme, the Gateway uses its server/client certificate for the routed call to the Caching service.
