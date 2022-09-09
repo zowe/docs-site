@@ -340,7 +340,7 @@ module.exports = {
             "extend/extend-apiml/zaas-client",
             "extend/extend-apiml/certificate-management=in-zowe-apiml",
           ],
-        }
+        },
         {
           type: "category",
           label: "Caching service",
