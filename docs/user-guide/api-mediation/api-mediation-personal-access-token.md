@@ -1,7 +1,7 @@
 # Personal Access Token
 
-You can use the API ML to generate, validate and invalidate a **Personal Access Token (PAT)** that can enable access to tools such as VCS without using the credentials of a specific person and storing the mainframe credentials as part of the automation configuration on the server during the development of an application on the z/OS system.
-The PAT functionality also makes it possible to limit access when using a token to specific services and users, through a mechanism of token revocation.
+You can use the API ML to generate, validate, and invalidate a **Personal Access Token (PAT)** that can enable access to tools such as VCS without having to use credentials of a specific person. The use of PAT also does not require storing mainframe credentials, as part of the automation configuration, on a server during  application development on z/OS.
+Additionally, using a PAT makes it possible to limit access when using a token to specific services and users by means of token revocation.
 
 Gateway APIs are available to both users as well as security administrators.
 APIs for users can accomplish the following functions:
@@ -12,7 +12,7 @@ APIs for users can accomplish the following functions:
    * [Invalidate a specific token](#invalidate-a-specific-token)
    * [Invalidate all tokens](#invalidate-all-tokens)
 
-APIs for security administrators are protected by SAF resource checking and  can accomplish the following functions:
+APIs for security administrators are protected by SAF resource checking and can accomplish the following functions:
 
 [Security Administrator APIs](#security-administrator-apis)
    * [Invalidate all tokens for a user](#invalidate-all-tokens-for-a-user)
@@ -96,7 +96,7 @@ The user can invalidate all Personal Access Tokens by calling the following REST
 
 The full path of the `/auth/access-token/revoke/tokens` endpoint appears as `https://{gatewayUrl}:{gatewayPort}/gateway/api/v1/auth/access-token/revoke/tokens`.
 
-The body can be optionally provide a timestamp as part of the request. Use the following format for the body:
+The body can optionally provide a timestamp as part of the request. Use the following format for the body:
 
 ```json
 {
@@ -119,20 +119,20 @@ If a security breech is suspected, the security administrator can invalidate all
 Such criteria define the level of access control and can restrict access in advance. Rule based access restriction can be applied by either user ID or service scopes.
 
 **Note:** _Rules_ are entries used to revoke the tokens either by users or by services. Such rule entries for services appear in the following format:
-
+```
 {
    "serviceId": "<serviceId>",
    "timestamp": "<timestamp>"
 }
-
+```
 Rule entries for users appear in the following format:
-
+```
 {
    "userId": "<userId>",
    "timestamp": "<timestamp>"
 }
-
-The Security Administrator that has specific access to SAF resources can invalidate all tokens bound to a specific user by calling the following REST API endpoint through the Gateway:
+```
+The Security Administrator with specific access to SAF resources can invalidate all tokens bound to a specific user by calling the following REST API endpoint through the Gateway:
 
 `DELETE /auth/access-token/revoke/tokens/users`  
 
@@ -150,7 +150,7 @@ The request requires the body in the following format:
 refers the user the revocation is applied to.
 
 * **timestamp**  
-represents the date of revocation (the default value is the current time), in milliseconds. The timestamp is
+represents the date of revocation (the default value is the current time) in milliseconds. The timestamp is
 used to specify that tokens created before the date specified in the timestamp are invalidated. As such, any subsequent tokens created
 after that date are not affected by the user rule.
 
@@ -160,7 +160,7 @@ When invalidation is successful, the response to the request is an empty body wi
 
 ### Invalidate all tokens for a service
 
-A security administrator that has specific access to SAF resources can invalidate all tokens bound to a specific service by calling the following REST API endpoint through the Gateway:
+A security administrator who has specific access to SAF resources can invalidate all tokens bound to a specific service by calling the following REST API endpoint through the Gateway:
 
 `DELETE /auth/access-token/revoke/tokens/scope`  
 
@@ -178,10 +178,10 @@ The request requires the body in the following format:
 Invalidation of all tokens is possible by using rules based on service scopes.
 
 * **serviceId**  
-represents the service the revocation should be applied to (e.g. APPL IDs). 
+represents the service to which the revocation should be applied (e.g. APPL IDs). 
 
 * **timestamp**  
-represents the date of revocation (the default value is the current time), in milliseconds. A timestamp is
+represents the date of revocation (the default value is the current time) in milliseconds. A timestamp is
 used to state that tokens created before the date specified in the timestamp are invalidated. As such, any subsequent tokens created
 after that date are not affected by the service rule.
 
@@ -191,7 +191,7 @@ When invalidation is successful, the response to the request is an empty body wi
 
 ### Evict non-relevant tokens and rules
 
-The Security Administrator with specific access to SAF resources can evict  non-relevant invalidated tokens and rules from the cache by calling the following REST API endpoint through the Gateway:
+The Security Administrator with specific access to SAF resources can evict non-relevant invalidated tokens and rules from the cache by calling the following REST API endpoint through the Gateway:
 
 `DELETE /auth/access-token/evict`  
 
@@ -202,3 +202,33 @@ The `/auth/access-token/evict` endpoint evicts all invalidated tokens which were
 The main purpose of the eviction API is to ensure that the size of the cache does not grow unbounded. The token verification process requires processing of all rules, including those which may no longer be applicable. As such, verification processing may result in needless associated costs if there are stored rules which are no longer relevant. 
 
 When eviction is successful, the response to the request is an empty body with a status code of `204`. When eviction fails due to lack of permissions, the administrator receives a status code of `403`.
+
+## Use the Personal Access Token to authenticate
+
+There are two ways the API client can use the Personal Access Token to authenticate as part of the Single Sign On in which a service is specified in the scopes at the time when the token is issued:
+
+* Using a Secure HttpOnly cookie with the name `personalAccessToken`.
+
+  **Example:**
+
+    ```
+    GET /<allowed-service>/api/v1/request HTTP/1.1
+    Cookie: personalAccessToken=eyJhbGciOiJSUzI1NiJ9...
+    
+    HTTP/1.1 200
+    ...
+    ```
+* Using a request header with the name `PRIVATE-TOKEN`.
+
+   **Example:**
+   
+     ```
+     GET /<allowed-service>/api/v1/request HTTP/1.1
+     PRIVATE-TOKEN: eyJhbGciOiJSUzI1NiJ9...
+     
+     HTTP/1.1 200
+     ...
+     ```
+In these examples, the API client is authenticated.  
+
+If the API client tries to authenticate with a service that is not defined in the token scopes, the `X-Zowe-Auth-Failure` error header is set and passed to the southbound service. The error message contains a message that the provided authentication is not valid.
