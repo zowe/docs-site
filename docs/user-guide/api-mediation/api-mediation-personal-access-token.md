@@ -202,3 +202,13 @@ The `/auth/access-token/evict` endpoint evicts all invalidated tokens which were
 The main purpose of the eviction API is to ensure that the size of the cache does not grow unbounded. The token verification process requires processing of all rules, including those which may no longer be applicable. As such, verification processing may result in needless associated costs if there are stored rules which are no longer relevant. 
 
 When eviction is successful, the response to the request is an empty body with a status code of `204`. When eviction fails due to lack of permissions, the administrator receives a status code of `403`.
+
+## Use the Personal Access Token to authenticate
+
+There are two ways the API client can provide the Personal Access Token as part of the Single Sign On to authenticate with a service specified in the scopes at the time of issue of the token:
+
+1. Via a Secure HttpOnly cookie with the name `personalAccessToken`
+2. Via a request header with the name `PRIVATE-TOKEN`
+
+If the API client tries to authenticate with a service not defined in the token scopes, the `X-Zowe-Auth-Failure` error header is set and passed to southbound service, and will contain
+a message saying that the provided authentication was not valid.
