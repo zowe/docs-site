@@ -119,19 +119,19 @@ If a security breech is suspected, the security administrator can invalidate all
 Such criteria define the level of access control and can restrict access in advance. Rule based access restriction can be applied by either user ID or service scopes.
 
 **Note:** _Rules_ are entries used to revoke the tokens either by users or by services. Such rule entries for services appear in the following format:
-
+```
 {
    "serviceId": "<serviceId>",
    "timestamp": "<timestamp>"
 }
-
+```
 Rule entries for users appear in the following format:
-
+```
 {
    "userId": "<userId>",
    "timestamp": "<timestamp>"
 }
-
+```
 The Security Administrator with specific access to SAF resources can invalidate all tokens bound to a specific user by calling the following REST API endpoint through the Gateway:
 
 `DELETE /auth/access-token/revoke/tokens/users`  
