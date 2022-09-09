@@ -2,14 +2,14 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
-<title>zos-files download data-set-matching</title>
+<title>zos-files download data-sets-matching</title>
 <link rel="stylesheet" href="../css/bundle-docs.css">
 <link rel="stylesheet" href="../css/docs.css">
 <article class="markdown-body">
-<h2><a href="zowe.html">zowe</a> › <a href="zowe_zos-files.html">zos-files</a> › <a href="zowe_zos-files_download.html">download</a> › <a href="zowe_zos-files_download_data-set-matching.html">data-set-matching</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
+<h2><a href="zowe.html">zowe</a> › <a href="zowe_zos-files.html">zos-files</a> › <a href="zowe_zos-files_download.html">download</a> › <a href="zowe_zos-files_download_data-sets-matching.html">data-sets-matching</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
 <p>Download all data sets that match a DSLEVEL pattern (see help below). You can use several options to qualify which data sets will be skipped and how the downloaded files will be structured. Data sets that are neither physical sequential nor partitioned data sets (with members) will be excluded.</p>
 <h4>Usage</h4>
-<p>zowe zos-files download data-set-matching &lt;pattern&gt; [options]</p>
+<p>zowe zos-files download data-sets-matching &lt;pattern&gt; [options]</p>
 <h4>Positional Arguments</h4>
 <ul>
 <li>
@@ -213,13 +213,13 @@ Allowed values: http, https</p>
 <li>
 <p>Download all data sets beginning with &quot;ibmuser&quot; and ending with &quot;.cntl&quot; or &quot;.jcl&quot; to the local directory &quot;jcl&quot; to files with the extension &quot;.jcl&quot;:</p>
 <ul>
-<li><code>zowe zos-files download data-set-matching &quot;ibmuser.**.cntl, ibmuser.**.jcl&quot; --directory jcl --extension .jcl</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe zos-files download data-set-matching &quot;ibmuser.**.cntl, ibmuser.**.jcl&quot; --directory jcl --extension .jcl">Copy</button></li>
+<li><code>zowe zos-files download data-sets-matching &quot;ibmuser.**.cntl, ibmuser.**.jcl&quot; --directory jcl --extension .jcl</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe zos-files download data-sets-matching &quot;ibmuser.**.cntl, ibmuser.**.jcl&quot; --directory jcl --extension .jcl">Copy</button></li>
 </ul>
 </li>
 <li>
 <p>Download all data sets that begin with &quot;ibmuser.public.project&quot; or &quot;ibmuser.project.private&quot;, excluding those that end in &quot;lib&quot; to the local directory &quot;project&quot;, providing a custom mapping of data set low level qualifier to local file extension:</p>
 <ul>
-<li><code>zowe zos-files download data-set-matching &quot;ibmuser.public.project.*, ibmuser.project.private.*&quot; --exclude-patterns &quot;ibmuser.public.**.*lib&quot; --directory project --extension-map cpgm=c,asmpgm=asm,java=java,chdr=c,jcl=jcl,cntl=jcl</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe zos-files download data-set-matching &quot;ibmuser.public.project.*, ibmuser.project.private.*&quot; --exclude-patterns &quot;ibmuser.public.**.*lib&quot; --directory project --extension-map cpgm=c,asmpgm=asm,java=java,chdr=c,jcl=jcl,cntl=jcl">Copy</button></li>
+<li><code>zowe zos-files download data-sets-matching &quot;ibmuser.public.project.*, ibmuser.project.private.*&quot; --exclude-patterns &quot;ibmuser.public.**.*lib&quot; --directory project --extension-map cpgm=c,asmpgm=asm,java=java,chdr=c,jcl=jcl,cntl=jcl</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe zos-files download data-sets-matching &quot;ibmuser.public.project.*, ibmuser.project.private.*&quot; --exclude-patterns &quot;ibmuser.public.**.*lib&quot; --directory project --extension-map cpgm=c,asmpgm=asm,java=java,chdr=c,jcl=jcl,cntl=jcl">Copy</button></li>
 </ul>
 </li>
 </ul>
