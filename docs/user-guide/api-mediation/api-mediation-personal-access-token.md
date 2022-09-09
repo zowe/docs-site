@@ -207,8 +207,28 @@ When eviction is successful, the response to the request is an empty body with a
 
 There are two ways the API client can use the Personal Access Token to authenticate as part of the Single Sign On in which a service is specified in the scopes at the time when the token is issued:
 
-* Using a Secure HttpOnly cookie with the name `personalAccessToken`
-* Using a request header with the name `PRIVATE-TOKEN`
+* Using a Secure HttpOnly cookie with the name `personalAccessToken`.
+
+  **Example:**
+
+    ```
+    GET /<allowed-service>/api/v1/request HTTP/1.1
+    Cookie: personalAccessToken=eyJhbGciOiJSUzI1NiJ9...
+    
+    HTTP/1.1 200
+    ...
+    ```
+* Using a request header with the name `PRIVATE-TOKEN`.
+
+   **Example:**
+   
+     ```
+     GET /<allowed-service>/api/v1/request HTTP/1.1
+     PRIVATE-TOKEN: eyJhbGciOiJSUzI1NiJ9...
+     
+     HTTP/1.1 200
+     ...
+     ```
 
 If the API client tries to authenticate with a service not defined in the token scopes, the `X-Zowe-Auth-Failure` error header is set and passed to the southbound service. The error message contains
 a message that the provided authentication is not valid.
