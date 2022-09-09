@@ -192,6 +192,7 @@ module.exports = {
             "user-guide/api-mediation/discovery-service-configuration",
             "user-guide/api-mediation/api-mediation-internal-configuration",
             "extend/extend-apiml/api-mediation-passtickets",
+            "user-guide/api-mediation/api-mediation-personal-access-token",
           ],
         },        
       ],
