@@ -229,5 +229,6 @@ There are two ways the API client can use the Personal Access Token to authentic
      HTTP/1.1 200
      ...
      ```
+In these examples, the API client is authenticated.  
 
 If the API client tries to authenticate with a service that is not defined in the token scopes, the `X-Zowe-Auth-Failure` error header is set and passed to the southbound service. The error message contains a message that the provided authentication is not valid.
