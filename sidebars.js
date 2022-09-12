@@ -354,7 +354,7 @@ module.exports = {
             "extend/extend-apiml/zowe-api-mediation-layer-security-overview",
             "extend/extend-apiml/authentication-for-apiml-services",
             "extend/extend-apiml/zaas-client",
-            "extend/extend-apiml/certificate-management=in-zowe-apiml",
+            "extend/extend-apiml/certificate-management-in-zowe-apiml",
           ],
         },
         {
