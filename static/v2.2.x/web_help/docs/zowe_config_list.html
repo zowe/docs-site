@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>config list</title>
+<link rel="stylesheet" href="../css/bundle-docs.css">
+<link rel="stylesheet" href="../css/docs.css">
+<article class="markdown-body">
+<h2><a href="zowe.html">zowe</a> › <a href="zowe_config.html">config</a> › <a href="zowe_config_list.html">list</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
+<p>List config properties</p>
+<h4>Usage</h4>
+<p>zowe config list [property] [options]</p>
+<h4>Positional Arguments</h4>
+<ul>
+<li>
+<p><code>property</code>		 <em>(string)</em></p>
+<ul>
+<li>The config property to list. Blank to list all properties.</li>
+</ul>
+</li>
+</ul>
+<h4>Options</h4>
+<ul>
+<li>
+<p><code>--locations</code> <em>(boolean)</em></p>
+<ul>
+<li>Separate the config properties into their respective config file locations. Helpful to determine where configuration value is specified.</li>
+</ul>
+</li>
+<li>
+<p><code>--root</code> <em>(boolean)</em></p>
+<ul>
+<li>List only the root level property names. For example, specify in addition to '--locations' to get a list of config file paths only.</li>
+</ul>
+</li>
+</ul>
+<h4>Examples</h4>
+<ul>
+<li>
+<p>List property names for a specified config property.:</p>
+<ul>
+<li><code>zowe config list &quot;defaults&quot;</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe config list &quot;defaults&quot;">Copy</button></li>
+</ul>
+</li>
+<li>
+<p>List only root level property names for a specified config property.:</p>
+<ul>
+<li><code>zowe config list &quot;defaults&quot; --root</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe config list &quot;defaults&quot; --root">Copy</button></li>
+</ul>
+</li>
+<li>
+<p>List config properties by separating them by their respective config file locations.:</p>
+<ul>
+<li><code>zowe config list --locations</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe config list --locations">Copy</button></li>
+</ul>
+</li>
+<li>
+<p>List only the root level configuration property names.:</p>
+<ul>
+<li><code>zowe config list --root</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe config list --root">Copy</button></li>
+</ul>
+</li>
+<li>
+<p>List only the root level configuration properties by separating them by their respective config file locations.:</p>
+<ul>
+<li><code>zowe config list --locations --root</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe config list --locations --root">Copy</button></li>
+</ul>
+</li>
+</ul>
+</article>
+<script src="../js/bundle-docs.js"></script>
+<script src="../js/docs.js"></script>

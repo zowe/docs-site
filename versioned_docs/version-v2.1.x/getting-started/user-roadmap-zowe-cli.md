@@ -65,7 +65,7 @@ The following definition of skill levels about Zowe will help you gather most re
 
 > Zowe skill level: Intermediate
 
-- [**Using Zowe CLI**](../user-guide/cli-usingcli.md)
+- [**Using Zowe CLI**](../user-guide/cli-using-usingcli.md)
 
    Learn about how to use Zowe CLI, including connecting to the mainframe, managing profiles, integrating with API Mediation Layer, and more.
 

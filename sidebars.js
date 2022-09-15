@@ -22,6 +22,7 @@ module.exports = {
       type: "category",
       label: "Release notes",
       items: [
+        "getting-started/release-notes/v2_3_0",
         "getting-started/release-notes/v2_2_0",
         "getting-started/release-notes/v2_1_0",
         "getting-started/release-notes/v2_0_0",
@@ -39,13 +40,7 @@ module.exports = {
       type: "category",
       label: "Migrating from V1 to V2",
       items: [
-    //    "getting-started/migrate-instance",  //Not ready yet, need to check
         "extend/migrate-extensions",
-        {
-          type: "link",
-          label: "Migrating Zowe CLI from V1 to V2",
-          href: "../user-guide/cli-updatingcli#updating-to-the-zowe-cli-v2-long-term-support-v2-lts-version",
-        },
       ],
     },
     "getting-started/zowe-resources",
@@ -123,7 +118,6 @@ module.exports = {
             "user-guide/initialize-vsam-dataset", 
             "user-guide/install-stc-members",
             "user-guide/configure-xmem-server",
-        //    "user-guide/configure-zowe-server", //out of date, v1 info included
             "user-guide/configure-auxiliary-address-space",
             "user-guide/configure-zowe-zosmf-workflow",
           ],
@@ -139,9 +133,7 @@ module.exports = {
          ],
        }, 
         "user-guide/start-zowe-zos",
-        "user-guide/verify-zowe-runtime-install",
-    //    "user-guide/upgrade-zos-system",
-    //    "user-guide/zowe-zos-uninstall",       
+        "user-guide/verify-zowe-runtime-install",    
       ],
     },
     {
@@ -160,6 +152,7 @@ module.exports = {
       label: "Installing Zowe CLI",
       items: [
         "user-guide/cli-install-cli-checklist",
+        "user-guide/user-roadmap-zowe-cli",
         "user-guide/systemrequirements-cli",
         {
           type: "category",
@@ -181,6 +174,7 @@ module.exports = {
       type: "category",
       label: "Installing Zowe Explorer",
       items: [
+        "getting-started/user-roadmap-zowe-explorer",
         "user-guide/ze-install",
         "user-guide/ze-profiles",
       ],
@@ -191,13 +185,22 @@ module.exports = {
       items: [
         "user-guide/mvd-configuration",
         "user-guide/cli-configuringcli-ev",
-        "user-guide/configure-data-sets-jobs-api",
-        "user-guide/api-mediation/api-gateway-configuration",
-        "user-guide/api-mediation/discovery-service-configuration",
-        "user-guide/api-mediation/api-mediation-internal-configuration",
+        {
+          type: "category",
+          label: "API Mediation Layer",
+          items: [
+            "user-guide/configure-data-sets-jobs-api",
+            "user-guide/api-mediation/api-gateway-configuration",
+            "user-guide/api-mediation/discovery-service-configuration",
+            "user-guide/api-mediation/api-mediation-internal-configuration",
+            "extend/extend-apiml/api-mediation-passtickets",
+            "user-guide/api-mediation/api-mediation-personal-access-token",
+          ],
+        },        
       ],
     },
   ],
+
   "use": [
         "user-guide/zowe-getting-started-tutorial", 
         {
@@ -214,6 +217,9 @@ module.exports = {
           items: [
             "user-guide/api-mediation-api-catalog",
             "user-guide/api-mediation-metrics-service",
+            "extend/extend-apiml/api-mediation-routing",
+            "extend/extend-apiml/service-information",
+            "extend/extend-apiml/websocket",
           ],
         },
         {
@@ -248,7 +254,20 @@ module.exports = {
             },
             "user-guide/cli-using-integrating-apiml",
             "user-guide/cli-using-working-certificates",
-            "user-guide/cli-using-completing-advanced-tasks",
+
+            {
+              type: "category",
+              label: "Using environment variables",
+              items: [
+                "user-guide/cli-using-using-environment-variables",
+                "user-guide/cli-using-formatting-environment-variables",
+                "user-guide/cli-using-setting-environment-variables-in-automation-server",
+                                              ],
+            },
+            "user-guide/cli-using-using-prompt-feature",
+            "user-guide/cli-using-writing-scripts",
+
+
           ],
         },
         {
@@ -323,16 +342,21 @@ module.exports = {
         "extend/extend-apiml/onboard-static-definition",
         "extend/extend-apiml/onboard-wizard",
         "extend/extend-apiml/api-mediation-sso",
-        "extend/extend-apiml/service-information",
-        "extend/extend-apiml/websocket",
         "extend/extend-apiml/create-apiml-extension",
         "extend/extend-apiml/api-mediation-message-service",
-        "extend/extend-apiml/api-mediation-security",
-        "extend/extend-apiml/api-mediation-routing",
-        "extend/extend-apiml/api-mediation-passtickets",
         "extend/extend-apiml/custom-metadata",
         "extend/extend-apiml/api-mediation-versioning",
         "extend/extend-apiml/implement-new-saf-provider", 
+        {
+          type: "category",
+          label: "Zowe API Mediation Layer Security",
+          items: [
+            "extend/extend-apiml/zowe-api-mediation-layer-security-overview",
+            "extend/extend-apiml/authentication-for-apiml-services",
+            "extend/extend-apiml/zaas-client",
+            "extend/extend-apiml/certificate-management-in-zowe-apiml",
+          ],
+        },
         {
           type: "category",
           label: "Caching service",
@@ -377,11 +401,9 @@ module.exports = {
       items: [
         "troubleshoot/troubleshooting",
         "troubleshoot/troubleshoot-zowe-release",
-    //    "troubleshoot/troubleshoot-diagnostics",
         "troubleshoot/verify-fingerprint",
       ],
     },
-    //"troubleshoot/troubleshoot-zos",
     //"troubleshoot/troubleshoot-zos-certificate",
     "troubleshoot/k8s-troubleshoot",
     {
@@ -402,7 +424,6 @@ module.exports = {
         "troubleshoot/app-framework/zss-error-codes",
       ],
     },
-    //"troubleshoot/troubleshoot-zos-services", //still refers to old STC names
     {
       type: "category",
       label: "Zowe CLI",

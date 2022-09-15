@@ -138,7 +138,7 @@ To include Apps, be sure to define the location of the Plugins directory in the 
 ```
 
 ## Logging configuration
-For more information, see [Logging Utility](../extend/extend-desktop/mvd-logutility.md).
+For more information, see [Logging Utility](mvd-logutility.md).
 
 ## ZSS Configuration
 When running ZSS, it will require a configuration file similar or the same as the one used for the App Server. The attributes that are needed for ZSS, at minimum, are: *productDir*, *siteDir*, *instanceDir*, *groupsDir*, *usersDir*, *pluginsDir* and **agent**. All of these attributes have the same meaning as described above for the App server, but if the App server and ZSS are not run from the same location, then these directories may be different if desired.

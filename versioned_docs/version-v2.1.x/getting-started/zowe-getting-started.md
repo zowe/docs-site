@@ -18,13 +18,9 @@ Learn what is Zowe, how Zowe works and what it can do for you.
 
    Review the Zowe architecture to understand how Zowe works. 
 
-- [**Zowe FAQs**](freqaskques.md)
+- [**Zowe FAQs**](zowe_faq.md)
    
    If you have a question, it's a good idea to try the FAQ, which answers the most commonly asked questions about Zowe.
-
-- [**Release notes**](summaryofchanges.md)
-
-   Check out what's new with Zowe. 
    
 - [**Zowe learning resources**](zowe-resources.md)
 
@@ -44,7 +40,6 @@ Zowe Application Framework, <br/> Zowe API Mediation Layer <br/> (these are inst
 Zowe Explorer                 |  [Information roadmap for Zowe Explorer](user-roadmap-zowe-explorer.md)
 Zowe CLI                      |  [Information roadmap for Zowe CLI](user-roadmap-zowe-cli.md)
 Zowe Client SDKs <br/>(under development) |  [Information roadmap for Zowe client SDKs](user-roadmap-client-sdk.md)
-Zowe Mobile (Incubator) | [Information roadmap for Zowe Mobile](user-roadmap-zowe-mobile.md)
 
 ## Getting involved
 

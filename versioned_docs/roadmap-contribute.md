@@ -50,7 +50,7 @@ Check out the contribution guidelines for different components and squads to lea
   - [Zowe Application Framework](https://github.com/zowe/zlux)  
   - [Zowe Explorer](https://github.com/zowe/vscode-extension-for-zowe/blob/master/CONTRIBUTING.md)
   - [Zowe Client SDKs](https://github.com/zowe/zowe-cli/blob/master/docs/SDKGuidelines.md)
-  - [Zowe Docs](contributing.md)
+  - [Zowe Docs](./contributing)
 
 ## Promote Zowe
 

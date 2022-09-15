@@ -51,7 +51,7 @@ Be sure your z/OS system meets the following prerequisites.
 
 ### Java 
 
-- IBM SDK for Java Technology Edition V8 or later
+- IBM SDK for Java Technology Edition V8
 
 ### z/OSMF (Optional) 
 
@@ -193,5 +193,3 @@ Discovery service | 256MB
 API Catalog | 512MB
 Metrics service | 512MB
 Caching service | 512MB
-
-- (Optional, recommended) PKCS#11 token setup is required when using ZSS, the Desktop, and Application Framework with SSO. See [Creating a PKCS#11 Token](configure-certificates-keystore.md#using-web-tokens-for-sso-on-zlux-and-zss) for more information.

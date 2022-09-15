@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>ims query region</title>
+<link rel="stylesheet" href="../css/bundle-docs.css">
+<link rel="stylesheet" href="../css/docs.css">
+<article class="markdown-body">
+<h2><a href="zowe.html">zowe</a> › <a href="zowe_ims.html">ims</a> › <a href="zowe_ims_query.html">query</a> › <a href="zowe_ims_query_region.html">region</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
+<p>Query an IMS region.</p>
+<h4>Usage</h4>
+<p>zowe ims query region [options]</p>
+<h4>Options</h4>
+<ul>
+<li>
+<p><code>--dc</code> <em>(boolean)</em></p>
+<ul>
+<li>
+<p>Displays only the DC subset of the output</p>
+<p>Default value: true</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--region</code> <em>(boolean)</em></p>
+<ul>
+<li>
+<p>Displays only the REGION subset of the output. The display consists of active regions</p>
+<p>Default value: true</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--route</code> | <code>--rt</code> <em>(array)</em></p>
+<ul>
+<li>Specifies the routes to return.</li>
+</ul>
+</li>
+</ul>
+<h4>IMS Connection Options</h4>
+<ul>
+<li>
+<p><code>--host</code> | <code>-H</code> <em>(string)</em></p>
+<ul>
+<li>The IMS Operations API server host name.</li>
+</ul>
+</li>
+<li>
+<p><code>--port</code> | <code>-P</code> <em>(number)</em></p>
+<ul>
+<li>The IMS Operations API server port.</li>
+</ul>
+</li>
+<li>
+<p><code>--ims-connect-host</code> | <code>--ich</code> <em>(string)</em></p>
+<ul>
+<li>The hostname of your instance of IMS Connect. This is typically the hostname of the mainframe LPAR where IMS Connect is running.</li>
+</ul>
+</li>
+<li>
+<p><code>--ims-connect-port</code> | <code>--icp</code> <em>(number)</em></p>
+<ul>
+<li>The port of your instance of IMS Connect. This port can be found in your IMS Connect configuration file on the mainframe.</li>
+</ul>
+</li>
+<li>
+<p><code>--plex</code> | <code>-x</code> <em>(string)</em></p>
+<ul>
+<li>The name of the IMS plex.</li>
+</ul>
+</li>
+<li>
+<p><code>--user</code> | <code>-u</code> <em>(string)</em></p>
+<ul>
+<li>The web server user name where the IMS Operations API resides.</li>
+</ul>
+</li>
+<li>
+<p><code>--password</code> | <code>--pass</code> <em>(string)</em></p>
+<ul>
+<li>The web server user password where the IMS Operations API resides.</li>
+</ul>
+</li>
+<li>
+<p><code>--base-path</code> | <code>--bp</code> <em>(string)</em></p>
+<ul>
+<li>The base path for your API mediation layer instance. Specify this option to prepend the base path to all z/OSMF resources when making REST requests. Do not specify this option if you are not using an API mediation layer.</li>
+</ul>
+</li>
+<li>
+<p><code>--protocol</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>Specifies protocol (http or https).</p>
+<p>Default value: https<br>
+Allowed values: http, https</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--reject-unauthorized</code> | <code>--ru</code> <em>(boolean)</em></p>
+<ul>
+<li>
+<p>Reject self-signed certificates.</p>
+<p>Default value: true</p>
+</li>
+</ul>
+</li>
+</ul>
+<h4>Profile Options</h4>
+<ul>
+<li>
+<p><code>--ims-profile</code> | <code>--ims-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (ims) profile to load for this command execution.</li>
+</ul>
+</li>
+<li>
+<p><code>--base-profile</code> | <code>--base-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (base) profile to load for this command execution.</li>
+</ul>
+</li>
+</ul>
+<h4>Base Connection Options</h4>
+<ul>
+<li>
+<p><code>--token-type</code> | <code>--tt</code> <em>(string)</em></p>
+<ul>
+<li>The type of token to get and use for the API. Omit this option to use the default token type, which is provided by 'zowe auth login'.</li>
+</ul>
+</li>
+<li>
+<p><code>--token-value</code> | <code>--tv</code> <em>(string)</em></p>
+<ul>
+<li>The value of the token to pass to the API.</li>
+</ul>
+</li>
+<li>
+<p><code>--cert-file</code> <em>(local file path)</em></p>
+<ul>
+<li>The file path to a certificate file to use for authentication</li>
+</ul>
+</li>
+<li>
+<p><code>--cert-key-file</code> <em>(local file path)</em></p>
+<ul>
+<li>The file path to a certificate key file to use for authentication</li>
+</ul>
+</li>
+</ul>
+<h4>Response Format Options</h4>
+<ul>
+<li>
+<p><code>--response-format-filter</code> | <code>--rff</code> <em>(array)</em></p>
+<ul>
+<li>Filter (include) fields in the response. Accepts an array of field/property names to include in the output response. You can filter JSON objects properties OR table columns/fields. In addition, you can use this option in conjunction with '--response-format-type' to reduce the output of a command to a single field/property or a list of a single field/property.</li>
+</ul>
+</li>
+<li>
+<p><code>--response-format-type</code> | <code>--rft</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>The command response output format type. Must be one of the following:</p>
+<p>table: Formats output data as a table. Use this option when the output data is an array of homogeneous JSON objects. Each property of the object will become a column in the table.</p>
+<p>list: Formats output data as a list of strings. Can be used on any data type (JSON objects/arrays) are stringified and a new line is added after each entry in an array.</p>
+<p>object: Formats output data as a list of prettified objects (or single object). Can be used in place of &quot;table&quot; to change from tabular output to a list of prettified objects.</p>
+<p>string: Formats output data as a string. JSON objects/arrays are stringified.</p>
+<p>Allowed values: table, list, object, string</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--response-format-header</code> | <code>--rfh</code> <em>(boolean)</em></p>
+<ul>
+<li>If &quot;--response-format-type table&quot; is specified, include the column headers in the output.</li>
+</ul>
+</li>
+</ul>
+<h4>Examples</h4>
+<ul>
+<li>
+<p>Query information for regions on route IMS1:</p>
+<ul>
+<li><code>zowe ims query region &quot;IMS1&quot;</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe ims query region &quot;IMS1&quot;">Copy</button></li>
+</ul>
+</li>
+<li>
+<p>Query information for regions on routes IMS1 and IMS2:</p>
+<ul>
+<li><code>zowe ims query region &quot;IMS1 IMS2&quot;</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe ims query region &quot;IMS1 IMS2&quot;">Copy</button></li>
+</ul>
+</li>
+<li>
+<p>Query DC and region information for regions on routes IMS1 and IMS2:</p>
+<ul>
+<li><code>zowe ims query region &quot;IMS1 IMS2&quot; --dc true --region true</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe ims query region &quot;IMS1 IMS2&quot; --dc true --region true">Copy</button></li>
+</ul>
+</li>
+<li>
+<p>Query information for regions specifying optional connection parameters:</p>
+<ul>
+<li><code>zowe ims query region --user &quot;username&quot; --pass &quot;pass1234&quot; --host &quot;localhost&quot; --port 8080 --ich &quot;zos1&quot; --icp 9999 --plex &quot;PLEX1&quot;</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe ims query region --user &quot;username&quot; --pass &quot;pass1234&quot; --host &quot;localhost&quot; --port 8080 --ich &quot;zos1&quot; --icp 9999 --plex &quot;PLEX1&quot;">Copy</button></li>
+</ul>
+</li>
+</ul>
+</article>
+<script src="../js/bundle-docs.js"></script>
+<script src="../js/docs.js"></script>

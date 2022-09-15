@@ -56,7 +56,7 @@ If you are using the sample follow the instructions in the readme to get it up a
 
 ## Modifying the Gateway script
 
-As described earlier we are registering our application with the API Catalog by way of a file that is read by the Gateway when it's started. We think of this as a static definition as the details of the service won't change whilst the gateway is running. To achieve a more dynamic relationship between the application and registry, one that can respond to changes in one or the other e.g. for load balancing purposes we need to construct the product differently. See [Onboarding from scratch](./existingApp.md)
+As described earlier we are registering our application with the API Catalog by way of a file that is read by the Gateway when it's started. We think of this as a static definition as the details of the service won't change whilst the gateway is running. To achieve a more dynamic relationship between the application and registry, one that can respond to changes in one or the other e.g. for load balancing purposes we need to construct the product differently. See [Onboarding from scratch](./existingApp).
 
 The information contained in the yaml definitions file abover requires input from both the onboarding organization (you) and the end user. Therefore the intent is to provide as much of the onboarder information into the script template so the end user has fewer choices to make. Therefore the script should be updated.  
 

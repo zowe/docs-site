@@ -41,12 +41,84 @@ Use one of the following methods to install or update the plug-in:
 
 ## Creating a user profile
 
-You can set up a CICS profile to avoid typing your connection details on every command. The profile contains your host, port, username, and password for the CMCI instance of your choice. You can create multiple profiles and switch between them if necessary. Issue the following command to create a cics profile:
+You create a cics profile to avoid entering your connection details each time that you issue a command. You can create multiple profiles and switch between them as needed. Use one of the following methods to create a profile:
+- **Create plug-in profiles using a configuration file:** Specify your profile and connection details in the `zowe.config.json` configuration file.
+- **Create plug-in profiles using a command:** Issue the `zowe profiles create` command to create the profile.
+We recommend that you create profiles using the configuration file. We do not recommend using profile commands because we are removing them from a future major release.
 
-```
-zowe profiles create cics <profile name> -H <host> -P <port> -u <user> -p <password>
-```
+### Creating plug-in profiles using a configuration file
+
+When you issue various `zowe config` commands, such as `init`, `auto-init`, and `convert-profiles`, they create a `zowe.config.json` configuration file. When you install the CICS plug-in, the commands create an entry for a cics profile in your `zowe.config.json` file.
+
+Alternatively, you can create a CICS profile manually by adding a section that contains the configuration details to your `zowe.config.json` configuration file.
+
+1. Browse to the following directory `C:\Users\<username>\.zowe`
+
+2. Open the `zowe.config.json` configuration file using a text editor or IDE, such as Visual Studio Code or IntelliJ.
+
+    **NOTE:** If the file does not exist, issue the following command to create the configuration file:
+    ```
+    zowe config init -–gc
+    ```
+
+3. Add code to the "profiles" section as shown in the following example: :
+
+    ```
+    "Your_cics_profile": {
+      "type": "cics",
+      "properties": {
+          "host": "Your_host_name",
+          "port": Your_port_number,
+          "regionName": “Your_CICS_region”
+      },
+      "secure": [
+        "user",
+        "password"
+      ]
+    }
+    ```
+
+
+4. Save the file.
+
+You can now use your profile when you issue commands in the cics command group.
+
+### Creating plug-in profiles using a command
+
+The following steps describe how to create a profile using the `zowe profiles create` command.
+
+1. Open a terminal window and issue the following command:
+
+    ```
+    zowe profiles create cics <profile_name> –-host <host> --port <port> --user <user> --password <password> -–region-name <region>
+    ```
+
+- **`profile_name`:**
+
+  Specifies a name for your profile.
+- **`host`:**
+
+  Specifies the host name for the instance.
+- **`user`**:
+
+  Specifies your user name to log in to the instance.
+- **`password`**:
+
+  Specifies your password to log in to the instance.
+- **`port`**:
+
+  Specifies the port number to connect to the instance.
+- **`region`**:
+
+  Specifies the region to use on the instance.
+
+  **Example:**
+  ```
+  zowe profiles create cics-profile REGION1 --host mylpar.zowe.org --port 1443 --user zowe --password zowepass --region-name CICCMCI
+  ```
+
+2. Press Enter. The result of the command displays as a success or failure message.
+
+You can now use your profile when you issue commands in the cics command group.
 
 The plug-in uses HTTPS by default. Use the optional flag `--protocol http` to override the default with HTTP.
-
-**Note:** For more information, issue the command `zowe profiles create cics --help`

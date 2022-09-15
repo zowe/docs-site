@@ -26,6 +26,10 @@
       "items": [
         {
           "type": "doc",
+          "id": "version-v1.28.x/getting-started/release-notes/v1_28_1"
+        },
+        {
+          "type": "doc",
           "id": "version-v1.28.x/getting-started/release-notes/v1_28_0"
         },
         {
@@ -105,10 +109,6 @@
         {
           "type": "doc",
           "id": "version-v1.28.x/getting-started/user-roadmap-client-sdk"
-        },
-        {
-          "type": "doc",
-          "id": "version-v1.28.x/getting-started/user-roadmap-zowe-mobile"
         }
       ]
     },

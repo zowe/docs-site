@@ -286,7 +286,7 @@ If multiple services are registered to the API Mediation Layer at your site, Zow
 
 When you are logged-in, supply the `--base-path` option on commands for each service. Ensure that you do not provide username, password, host, or port directly on your service commands or profiles. Supplying those options causes the CLI to ignore the token in your base profile and directly access the service. You might need to remove those options from existing profiles to use SSO.
 
-For information about registering an API service at your site, see [Developing for API Mediation Layer](../extend/extend-apiml/onboard-overview.md).
+For information about registering an API service at your site, see [Developing for API Mediation Layer](../extend/extend-apiml/onboard-overview).
 
 ### Accessing services through SSO + one service not through APIML
 
@@ -320,7 +320,7 @@ System Administrators can configure the server with a certificate signed by a Ce
 
 - [Using certificates with z/OS client/server applications](https://www.ibm.com/support/knowledgecenter/en/SSLTBW_2.3.0/com.ibm.zos.v2r3.icha700/icha700_Using_certificates_with_z_OS_client_server_applications.htm) in the IBM Knowledge Center.
 - [Configuring the z/OSMF key ring and certificate](https://www.ibm.com/support/knowledgecenter/en/SSLTBW_2.3.0/com.ibm.zos.v2r3.izua300/izuconfig_KeyringAndCertificate.htm) in the IBM Knowledge Center.
-- [Certificate management in Zowe API Mediation Layer](../extend/extend-apiml/api-mediation-security.md#certificate-management-in-zowe-api-mediation-layer)
+- [Certificate management in Zowe API Mediation Layer](../extend/extend-apiml/api-mediation-security#certificate-management-in-zowe-api-mediation-layer)
 - [Mozilla Included CA Certificate List](https://wiki.mozilla.org/CA/Included_Certificates)
 
 ### Extend trusted certificates on client

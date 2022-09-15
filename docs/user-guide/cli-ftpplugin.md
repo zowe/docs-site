@@ -33,21 +33,99 @@ Use one of the following methods to install or update the plug-in:
 
 ## Creating a user profile
 
-You can create a `zftp` user profile to avoid typing your connection details on every command. A `zftp` profile contains the host, port, username, and password for the z/OS instance to which you want to connect. You can create multiple profiles and switch between them as needed.
+You create a zftp profile to avoid entering your connection details each time that you issue a command. You can create multiple profiles and switch between them as needed. Use one of the following methods to create a profile:
 
-Issue the following command:
+- **Create plug-in profiles using a configuration file:** Specify your profile and connection details in the `zowe.config.json` configuration file.
 
+- **Create plug-in profiles using a command:** Issue the `zowe profiles create` command to create the profile.
+
+We recommend that you create profiles using the configuration file. We do not recommend using profile commands because we are removing them in a future major release.
+
+### Creating plug-in profiles using a configuration file
+
+When you issue various `zowe config` commands, such as `init`, `auto-init`, and `convert-profiles`, they create a `zowe.config.json` configuration file. When you install the z/OS FTP plug-in, the commands create an entry for a `zftp profile` in your `zowe.config.json` file.
+
+Alternatively, you can create a zftp profile manually by adding a section that contains the configuration details to your `zowe.config.json` configuration file.
+
+1. Browse to the following directory: `C:\Users\<username>\.zowe`
+
+2. Open the `zowe.config.json` configuration file using a text editor or IDE, such as Visual Studio Code or IntelliJ.
+
+  NOTE: If the file does not exist, issue the following command to create the configuration file: `zowe config init -–gc`
+
+3. Add code to the "profiles" section as shown in the following example: 
+  
     ```
-    zowe profiles create zftp <profile name> -H <host> -u <user> -p <password> -P <port>
+    "Your_zftp_profile": {
+       "type": "zftp",
+        "properties": {
+            "host": "Your_host_name",
+            "port": Your_port_number,
+            "secureFtp": true
+        },
+        "secure": [
+            "user",
+            "password"
+        ]
+    }
+    ```
+    **Note:** The value of the “`secureftp`" option is defined as true by default. We recommend that you specify this value when FTPS (FTP over SSL) is enabled in the z/OS FTP service. FTPS is not equivalent to SFTP (FTP over SSH). SFTP is not currently supported.
+
+4. Save the file
+
+You can now use your profile when you issue commands in the zftp command group.
+
+### Creating plug-in profiles using a command
+
+The following steps describe how to create a profile using the `zowe profiles create` command.
+
+1. Open a terminal window and issue the following command:
+    ```
+    zowe profiles create zftp  <profile_name> --host <host> --port <port> --user <user> --password <password>
     ```
 
-    The result of the command displays as a success or failure message. You can use your profile when you issue commands in the `zftp` command group.
+    **`profile_name`:** 
+  
+    Specifies a name for your profile.
+  
+    **`host`:** 
+  
+    Specifies the host name for the instance.
+  
+    **`user`:** 
+  
+    Specifies your user name to log in to the instance.
+  
+    **`password`:** 
+  
+    Specifies your password to log in to the instance.
+  
+    **`port`:** 
+  
+    Specifies the port number to connect to the instance.
 
-**Note:** There is an option named `--secure-ftp` that is set to `true` by default. If FTPS (FTP over SSL) is not enabled in z/OS FTP service, we recommend using `--secure-ftp false`. FTPS is not equivalent to SFTP (FTP over SSH).
+    **Example:** 
+    ```
+    zowe profiles create zftp-profile LPAR1 --host ftp.zowe.org --port 21 --user zowe --password zowepass --secure-ftp
+    ```
 
-**Note:** For more information about the syntax, actions, and options, for a profiles create command, open Zowe CLI and issue the following command:
+2. Press Enter. The result of the command displays as a success or failure message.
 
-```
-zowe profiles create zftp -h
-```
+    **Note:** The command contains an option named `--secure-ftp` that is defined as true by default. We recommend that you specify this value when FTPS (FTP over SSL) is enabled in the z/OS FTP service. FTPS is not equivalent to SFTP (FTP over SSH).
 
+You can now use your profile when you issue commands in the zftp command group.
+
+### Issuing test commands
+
+After installing the plugin successfully, you can issue commands to test basic Zowe CLI functionality.
+
+For example, you can use one of the following methods to download a data set:
+
+- Download a data set using a default profile:
+  ```
+  zowe zftp download data-set USERHLQ.DATASET.NAME
+  ```
+- Download a data set without using a default profile:
+  ```
+  zowe zftp download data-set USERHLQ.DATASET.NAME --host <hostname> --port 21 --user <User_ID> --password <password> --secure-ftp false 
+  ```
