@@ -120,6 +120,7 @@ module.exports = {
             "user-guide/configure-xmem-server",
             "user-guide/configure-auxiliary-address-space",
             "user-guide/configure-zowe-zosmf-workflow",
+            "user-guide/configmgr-using"
           ],
         },
        {

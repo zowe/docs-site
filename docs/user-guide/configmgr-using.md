@@ -1,4 +1,4 @@
-# Configuration Manager
+# Using the Configuration Manager
 
 When you install the Zowe&trade; server Components on z/OS, a utility called `configmgr` or "Configuration Manager" is bundled within. It can be used directly in a few ways, but can also be leveraged by the `zwe` command to empower it with several abilities and even performance enhancements.
 
@@ -114,7 +114,7 @@ There are a few reasons you may want to split your Zowe configuration into multi
 CONFIG=FILE(/home/me/zowe-customizations.yaml)\
 :FILE(/global/org/zosmf-zowe.yaml)\
 :FILE(/global/org/java-zowe.yaml)\
-:FILE(/global/zowe/example-zowe.yaml`)
+:FILE(/global/zowe/example-zowe.yaml)
 ```
 
 When you use multiple files, Zowe constructs the unified configuration by having the files listed on the left override the values of files to their right in the list. This means the left-most file's values take priority, and the right-most file should be treated as a set of defaults. Here is an example of Splitting configuration into multiple files:
