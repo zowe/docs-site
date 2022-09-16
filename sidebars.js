@@ -310,6 +310,7 @@ module.exports = {
       label: "Developing server components",
       items: [
         "extend/packaging-zos-extensions",
+        "extend/server-schemas",
         "extend/install-configure-zos-extensions",
         "extend/lifecycling-with-zwesvstc",
         "extend/k8s-extend",
