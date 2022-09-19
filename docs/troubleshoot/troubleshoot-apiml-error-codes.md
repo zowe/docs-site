@@ -1141,6 +1141,25 @@ The following error message codes may appear on logs or API responses. Use the f
 
   Based on the specific information in the message, verify that the key configuration is correct, or alternatively, that z/OSMF is available.
 
+  Use the following configuration format:
+  ```
+  apiml:
+    security:
+        auth: 
+            zosmf:
+                jwtAutoconfiguration: 
+  ```
+  Apply one of the following values:
+  
+  * **auto**  
+  Signifies that API ML is enabled to resolve the JWT producer.
+  
+  * **jwt**  
+  Signifies that z/OSMF supports JWT (APAR PH12143 is applied)
+  
+  * **ltpa**  
+  Signifies that z/OSMF does not support JWT
+
 ### ZWEAG714E
 
   Unknown error occurred while retrieving the used public key
