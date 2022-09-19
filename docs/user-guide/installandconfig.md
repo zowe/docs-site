@@ -52,15 +52,15 @@ A typical Zowe runtime directory looks like this:
 ├── components/                      - Zowe core components runtime
 │   ├── api-catalog/                 - Zowe core component - API Catalog as example
 │   │   ├── bin/
-│   │   └── manifest.yaml            - Zowe component manifest file
-_   _   ___ catalog-schema.json      - This component's schema file
+│   │   ├── manifest.yaml            - Zowe component manifest file
+|   │   └── catalog-schema.json      - This component's schema file
 │   ├── ...
 │   └── zss/
-___ schemas/
-_   _   ___ manifest-schema.json     - The json schema describing component manifest files
-_   _   ___ server-common.json       - The json schema describing common schema types such as dataset names
-_   _   ___ trivial-component-schema.json - A trivial component json schema for extenders to get started with
-_   _   ___ zowe-yaml-schema.json    - The json schema describing the core properties of the Zowe configuration file.
+├── schemas/
+│   ├── manifest-schema.json         - The json schema describing component manifest files
+│   ├── server-common.json           - The json schema describing common schema types such as dataset names
+│   ├── trivial-component-schema.json - A trivial component json schema for extenders to get started with
+│   └── zowe-yaml-schema.json        - The json schema describing the core properties of the Zowe configuration file.
 ├── files/                           - Other support files to setup, configure and start Zowe
 │   ├── SZWEEXEC/                    - USS copy of <prefix>.SZWEEXEC data set
 │   ├── SZWESAMP/                    - USS copy of <prefix>.SZWESAMP data set
