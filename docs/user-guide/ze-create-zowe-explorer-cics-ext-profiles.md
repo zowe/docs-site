@@ -5,6 +5,7 @@ You need to have a Zowe Explorer profile to use all functions of the extension.
 If you already have a Zowe CICS CLI profile, the CICS tree will load the default profile on startup.  
 
 If you don't have an existing Zowe CICS CLI profile, follow these steps to create one:
+
 ## Using Zowe Team Configuration
 
 1. Select the **+** button in the CICS tree.
@@ -29,7 +30,7 @@ If you don't have an existing Zowe CICS CLI profile, follow these steps to creat
 
 **Note**: The connection must point to a CICS region's CICS Management Client Interface (CMCI) TCP/IP host name and port number. The region can be a WUI server in a CICSPlex, or else a stand-alone Single Management Application Programming (SMSS) region.  
 
-Configuring a CICS region to have a connection is a system programmer task and more details can be found in [Setting up CMCI with CICSPlex SM](https://www.ibm.com/docs/en/cics-ts/5.3?topic=explorer-setting-up-cmci-cicsplex-sm) or [Setting up CMCI in a stand-alone CICS region](https://www.ibm.com/docs/en/cics-ts/5.3?topic=suace-setting-up-cmci-in-stand-alone-cics-region). If your CMCI connection is configured to use a self-signed certificate that your PC's trust store doesn't recognize, see [Untrusted TLS certificates](#untrusted-tls-certificates).
+Configuring a CICS region to have a connection is a system programmer task and more details can be found in [Setting up CMCI with CICSPlex SM](https://www.ibm.com/docs/en/cics-ts/5.3?topic=explorer-setting-up-cmci-cicsplex-sm) or [Setting up CMCI in a stand-alone CICS region](https://www.ibm.com/docs/en/cics-ts/5.3?topic=suace-setting-up-cmci-in-stand-alone-cics-region). If your CMCI connection is configured to use a self-signed certificate that your PC's trust store doesn't recognize, see [Overriding TLS certificates](overriding-tls-certificates.md).
 
 ![Zowe CICS Explorer profiles](../images/ze-cics/create-profile.gif)
 

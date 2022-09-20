@@ -37,7 +37,7 @@ The Zowe Explorer pane will show tree views for **Data Sets**, **Unit System Ser
 
 ![CICS tree in Zowe pane](../images/ze-cics/cics-tree-in-zowe-pane.png)
 
-# Uninstalling
+## Uninstalling
 
 You can uninstall the Zowe Explorer CICS extension from the VS Code Extensions tab.
 

@@ -8,7 +8,7 @@ If you define a profile as only accepting trusted TLS certificates when the Zowe
 
 ![Image that shows how to accept untrusted TLS certificate](../images/ze-cics/untrusted-cert.gif)
 
-# Usage tips
+## Usage tips
 
 - All menu action commands available via right-clicking a profile or resource (excluding **Show Attributes**) can be applied to multiple items. To do this, you can multi-select the nodes of the same type before right-clicking and selecting the command.
 

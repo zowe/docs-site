@@ -37,7 +37,7 @@ Similar to filtering resources in a region, you can apply a filter on a all regi
 Plexes includes **All Programs**, **All Local Transactions** and **All Local Files** trees which contain all the corresponding resources from all regions in the plex.
 
 - To view resources under these trees, use the search icon inline with the tree and apply a filter.
-   
+
    ![Zowe CICS Explorer All Resource Filter](../images/ze-cics/all-resources.gif)
 
 - If the applied filter results in over 500 records, you can change the filter to narrow down the search, or click the **view X more ...** item to retrieve 'X' more resources.
@@ -56,7 +56,7 @@ For every resource, including a CICS region, the **Show Attributes** option open
 
 2. Click **Disable [CICS resource]** to disable the resource. A disabled resource is identified by a `(Disabled)` text next to its name.
 
-When a resource is already disabled, you can enable it again by clicking **Enable [CICS resource]** in the pop-up menu. 
+When a resource is already disabled, you can enable it again by clicking **Enable [CICS resource]** in the pop-up menu.
 
 ![Zowe CICS Explorer Disable and Enable](../images/ze-cics/disable-enable.gif)
 
@@ -72,13 +72,13 @@ The `New copy count` for a program which is greater than zero is shown next to t
 
 **Open a local file**
 
-1. Right-click against a closed local file. 
+1. Right-click against a closed local file.
 2. Select **Open Local File** to toggle the `openstatus` attribute to `OPEN`.
 
 **Close a local file**
 
-1. Right-click against an open local file and select **Close Local File**. 
-2. When prompted, choose one option: **Wait**, **No Wait**, or **Force**. 
+1. Right-click against an open local file and select **Close Local File**.
+2. When prompted, choose one option: **Wait**, **No Wait**, or **Force**.
 
    After you select an option, the local file name will be appended with a `(Closed)` label upon success.
 
