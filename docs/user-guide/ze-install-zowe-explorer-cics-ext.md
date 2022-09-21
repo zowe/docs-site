@@ -1,4 +1,4 @@
-# Installing
+# Installing and uninstalling
 
 You can install or update the extension from Visual Studio Code Extensions or from a VSIX file.
 
