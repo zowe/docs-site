@@ -422,6 +422,19 @@ additionalServiceMetadata:
         
         (Optional) This parameter specifics that the API is the default one to show in the API Catalog. If this not set to true for any API, or multiple APIs have it set to true,
         then the default API becomes the API with the highest major version as seen in `apiInfo.version`.
+  
+    * **apiInfo.codeSnippet** (Optional)
+
+        specifies the customized code snippet for a specific endpoint (API operation). The snippet is displayed in the API Catalog under the specified operation, after executing
+        the request using the *Try it out* functionality.
+        When specifying this configuration, you need to provide the following parameters:
+        * **`endpoint`**  
+        The endpoint that represents the API operation of the customized snippet
+        * **`language`**  
+        The language of the snippet
+        * **`codeBlock`**  
+        The content of the snippet to be displayed in the API Catalog
+
 
 * **customMetadata**
 
