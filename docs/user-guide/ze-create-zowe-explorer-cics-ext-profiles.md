@@ -80,7 +80,7 @@ To show more than one CICS profiles in the tree, select the **+** button and cho
 
 1. Right-click the team profile you want to delete to open the menu actions.
 
-2. Select **Delete Profile** which opens the config file.
+2. Select **Delete Profile**, which opens the config file.
 
 3. Edit the config file to remove the cics profile entry.
 

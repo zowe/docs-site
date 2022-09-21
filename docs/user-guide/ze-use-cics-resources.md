@@ -62,7 +62,7 @@ When a resource is already disabled, you can re-enable it by clicking **Enable [
 
 ## New copy and phase in
 
-Use the new copy and the phase in actions against a CICS program to get the CICS region to load a fresh copy of the selected program into memory. This could be after you've edited a COBOL program source and successfully compiled it into a load library and now want to test your change.
+Use the new copy and the phase in actions against a CICS program to get the CICS region to load a fresh copy of the selected program into memory. This could be useful after you edited a COBOL program source and successfully compiled it into a load library and now want to test your change.
 
 The `New copy count` for a program which is greater than zero is shown next to the program item in the CICS resource tree.
 
@@ -77,7 +77,7 @@ The `New copy count` for a program which is greater than zero is shown next to t
 
 **Close a local file**
 
-1. Right-click against an open local file and select **Close Local File**.
+1. Right-click an open local file and select **Close Local File**.
 2. When prompted, choose one option: **Wait**, **No Wait**, or **Force**.
 
    After you select an option, the local file name is appended with a `(Closed)` label upon success.
