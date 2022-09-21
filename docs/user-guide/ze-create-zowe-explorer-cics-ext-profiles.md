@@ -70,7 +70,7 @@ To show more than one CICS profiles in the tree, select the **+** button and cho
 
 2. Select **Hide Profile** to hide it from the CICS view.
 
-3. To add the profile back, click the **+** button and select the profile from the quick pick list.
+3. To unhide the profile, click the **+** button and select the profile from the quick pick list.
 
    ![Zowe CICS Explorer hide profiles](../images/ze-cics/hide-profile.gif)
 
