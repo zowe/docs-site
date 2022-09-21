@@ -22,6 +22,7 @@ module.exports = {
       type: "category",
       label: "Release notes",
       items: [
+        "getting-started/release-notes/v2_3_0",
         "getting-started/release-notes/v2_2_0",
         "getting-started/release-notes/v2_1_0",
         "getting-started/release-notes/v2_0_0",
@@ -184,10 +185,18 @@ module.exports = {
       items: [
         "user-guide/mvd-configuration",
         "user-guide/cli-configuringcli-ev",
-        "user-guide/configure-data-sets-jobs-api",
-        "user-guide/api-mediation/api-gateway-configuration",
-        "user-guide/api-mediation/discovery-service-configuration",
-        "user-guide/api-mediation/api-mediation-internal-configuration",
+        {
+          type: "category",
+          label: "API Mediation Layer",
+          items: [
+            "user-guide/configure-data-sets-jobs-api",
+            "user-guide/api-mediation/api-gateway-configuration",
+            "user-guide/api-mediation/discovery-service-configuration",
+            "user-guide/api-mediation/api-mediation-internal-configuration",
+            "extend/extend-apiml/api-mediation-passtickets",
+            "user-guide/api-mediation/api-mediation-personal-access-token",
+          ],
+        },        
       ],
     },
   ],
@@ -208,6 +217,9 @@ module.exports = {
           items: [
             "user-guide/api-mediation-api-catalog",
             "user-guide/api-mediation-metrics-service",
+            "extend/extend-apiml/api-mediation-routing",
+            "extend/extend-apiml/service-information",
+            "extend/extend-apiml/websocket",
           ],
         },
         {
@@ -342,16 +354,21 @@ module.exports = {
         "extend/extend-apiml/onboard-static-definition",
         "extend/extend-apiml/onboard-wizard",
         "extend/extend-apiml/api-mediation-sso",
-        "extend/extend-apiml/service-information",
-        "extend/extend-apiml/websocket",
         "extend/extend-apiml/create-apiml-extension",
         "extend/extend-apiml/api-mediation-message-service",
-        "extend/extend-apiml/api-mediation-security",
-        "extend/extend-apiml/api-mediation-routing",
-        "extend/extend-apiml/api-mediation-passtickets",
         "extend/extend-apiml/custom-metadata",
         "extend/extend-apiml/api-mediation-versioning",
         "extend/extend-apiml/implement-new-saf-provider", 
+        {
+          type: "category",
+          label: "Zowe API Mediation Layer Security",
+          items: [
+            "extend/extend-apiml/zowe-api-mediation-layer-security-overview",
+            "extend/extend-apiml/authentication-for-apiml-services",
+            "extend/extend-apiml/zaas-client",
+            "extend/extend-apiml/certificate-management-in-zowe-apiml",
+          ],
+        },
         {
           type: "category",
           label: "Caching service",

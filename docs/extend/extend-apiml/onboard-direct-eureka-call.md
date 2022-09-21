@@ -1,6 +1,6 @@
-# Onboarding a service with the Zowe API Meditation Layer without an onboarding enabler
+# Onboarding a service with the Zowe API Mediation Layer without an onboarding enabler
 
-This article is part of a series of guides to onboard a REST service with the Zowe API Mediation Layer (API ML). Onboarding with API ML makes services accessible through the API Gateway and visible in the API Catalog.  Once a service is successfully onboarded, users can see if the service is currently available and accepting requests.
+This article is part of a series of guides to onboard a REST service with the Zowe API Mediation Layer (API ML). Onboarding with API ML makes services accessible through the API Gateway and visible in the API Catalog. Once a service is successfully onboarded, users can see if the service is currently available and accepting requests.
 
 This guide describes how a REST service can be onboarded with the Zowe API ML independent of the language used to write the service. As such, this guide does not describe how to onboard a service with a specific enabler. Similarly, various Eureka client implementations are not used in this onboarding method.
 
@@ -68,9 +68,8 @@ The following code block shows the format of the parameters in your `POST` call,
 
 where:
 
- * **app**
-
-    uniquely identifies one or more instances of a microservice in the API ML.
+ * **app**  
+ uniquely identifies one or more instances of a microservice in the API ML.
 
     The API ML Gateway uses the `serviceId` for routing to the API service instances.
     As such, the `serviceId` is part of the service URL path in the API ML Gateway address space.
@@ -88,44 +87,33 @@ where:
        https://gateway-host:gateway-port/sampleservice/api/v1/...
        ```
 
- * **ipAddr**
+ * **ipAddr**  
+ specifies the IP address of this specific service instance.
 
-    specifies the IP address of this specific service instance.
+ * **port**  
+ specifies the port of the instance when you use Http. For Http, set `enabled` to `true`.
 
- * **port**
+* **securePort**  
+specifies the port of the instance for when you use Https. For Https, set `enabled` to `true`.
 
-    specifies the port of the instance when you use Http. For Http, set `enabled` to `true`.
+ * **hostname**  
+ specifies the hostname of the instance.
 
-* **securePort**
+ * **vipAddress**  
+ specifies the `serviceId` when you use Http.  
+**Important!** Ensure that the value of `vipAddress` is the same as the value of `app`. In addition, be sure not to omit `vipAddress`, even if you provided `secureVipAddress`. Due to 
+a current limitation in Spring Cloud Netflix, routes are created only for instances in which `vipAddress` is defined.
 
-    specifies the port of the instance for when you use Https. For Https, set `enabled` to `true`.
+ * **secureVipAddress**  
+ specifies the `serviceId` when you use Https.  
+ **Important!** Ensure that the value of `secureVipAddress` is the same as the value of `app`.
 
- * **hostname**
-
-    specifies the hostname of the instance.
-
- * **vipAddress**
-
-    specifies the `serviceId` when you use Http.
-
-     **Important!** Ensure that the value of `vipAddress` is the same as the value of `app`. 
-     Furthermore, be sure not to omit `vipAddress`, even if you provided `secureVipAddress`. Due to 
-     a current limitation in Spring Cloud Netflix, routes are created only for instances in which `vipAddress` is defined.
-
- * **secureVipAddress**
-
-    specifies the `serviceId` when you use Https.
-
-    **Important!** Ensure that the value of `secureVipAddress` is the same as the value of `app`.
-
- * **instanceId**
-
-    specifies a unique id for the instance. Define a unique value for the `instanceId` in the following format:
+ * **instanceId**  
+ specifies a unique id for the instance. Define a unique value for the `instanceId` in the following format:
 
     ```{hostname}:{serviceId}:{port}```
- * **metadata**
-
-    specifies the set of parameters described in the following section addressing API ML service metadata.
+ * **metadata**  
+ specifies the set of parameters described in the following section addressing API ML service metadata.
 
 ### API Mediation Layer Service onboarding metadata
 
@@ -174,94 +162,67 @@ The Catalog groups correlated services in the same tile when these services are 
 
 The following parameters are used to populate the API Catalog:
 
-* **apiml.catalog.tile.id**
+* **apiml.catalog.tile.id**  
+This parameter specifies the specific identifier for the product family of API services. This is a value used by the API ML to group multiple API services into a single tile.Each identifier represents a single API dashboard tile in the Catalog.  
+**Important!** Specify a value that does not interfere with API services from other products. We recommend that you use your company and product name as part of the ID.
 
-    This parameter specifies the specific identifier for the product family of API services.
-    This is a value used by the API ML to group multiple API services into a single tile.
-    Each identifier represents a single API dashboard tile in the Catalog.
+* **apiml.catalog.tile.title**  
+This parameter specifies the title of the API services product family. This value is displayed in the API Catalog dashboard as the tile title.
 
-    **Important!** Specify a value that does not interfere with API services from other products. We recommend that you use your company and product name as part of the ID.
+* **apiml.catalog.tile.description**  
+This parameter is the detailed description of the API services product family. This value is displayed in the API Catalog UI dashboard as the tile description.
 
-* **apiml.catalog.tile.title**
-
-    This parameter specifies the title of the API services product family. This value is displayed in the API Catalog dashboard as the tile title.
-
-* **apiml.catalog.tile.description**
-
-    This parameter is the detailed description of the API services product family.
-    This value is displayed in the API Catalog UI dashboard as the tile description.
-
-* **apiml.catalog.tile.version**
-
-    This parameter specifies the semantic version of this API Catalog tile.
-
-    **Note:** Ensure that you increase the version number when you introduce changes to the API service product family details.
+* **apiml.catalog.tile.version**  
+This parameter specifies the semantic version of this API Catalog tile.  
+**Note:** Ensure that you increase the version number when you introduce changes to the API service product family details.
 
 #### Service parameters
 Service parameters are grouped under the prefix: `apiml.service`
 
 The following parameters define service information for the API Catalog:
 
-* **apiml.service.title**
+* **apiml.service.title**  
+This parameter specifies the human-readable name of the API service instance. This value is displayed in the API Catalog when a specific API service instance is selected.
 
-    This parameter specifies the human-readable name of the API service instance.
+* **apiml.service.description**  
+This parameter specifies a short description of the API service.
+This value is displayed in the API Catalog when a specific API service instance is selected.
 
-    This value is displayed in the API Catalog when a specific API service instance is selected.
+* **apiml.enableUrlEncodedCharacters**  
+When this parameter is set to `true`, the Gateway allows encoded characters to be part of URL requests redirected through the Gateway. The default setting of `false` is the recommended setting. Change this setting to `true` only if you expect certain encoded characters in your application's requests.  
+**Important!**  When the expected encoded character is an encoded slash or backslash (`%2F`, `%5C`), make sure the Gateway is also configured to allow encoded slashes. For more info see [Installing the Zowe runtime on z/OS](../../user-guide/install-zos).
 
-* **apiml.service.description**
+* **apiml.connectTimeout**  
+The value in milliseconds that specifies a period in which API ML should establish a single, non-managed connection with this service. If omitted, the default value specified in the API ML Gateway service configuration is used.
 
-    This parameter specifies a short description of the API service.
-
-    This value is displayed in the API Catalog when a specific API service instance is selected.
-
-* **apiml.enableUrlEncodedCharacters**
-
-    When this parameter is set to `true`, the Gateway allows encoded characters to be part of URL requests redirected through the Gateway. The default setting of `false` is the recommended setting. Change this setting to `true` only if you expect certain encoded characters in your application's requests.
-
-    **Important!**  When the expected encoded character is an encoded slash or backslash (`%2F`, `%5C`), make sure the Gateway is also configured to allow encoded slashes. For more info see [Installing the Zowe runtime on z/OS](../../user-guide/install-zos).
-
-* **apiml.connectTimeout**
+* **apiml.readTimeout**  
+The value in milliseconds that specifies maximum time of inactivity between two packets in response from this service to API ML. If omitted, the default value specified in the API ML Gateway service configuration is used.
     
-    The value in milliseconds that specifies a period in which API ML should establish a single, non-managed connection with this service. If omitted, the default value specified in the API ML Gateway service configuration is used.
+* **apiml.connectionManagerTimeout**  
+HttpClient employs a special entity to manage access to HTTP connections called by HTTP connection manager. The purpose of an HTTP connection manager is to serve as a factory for new HTTP connections, to manage the life cycle of persistent connections, and to synchronize access to persistent connections. Internally, an HTTP connection manager works with managed connections, which serve as proxies for real connections. `ConnectionManagerTimeout` specifies a period in which managed connections with API ML should be established. The value is in milliseconds. If omitted, the default value specified in the API ML Gateway service configuration is used.
 
-* **apiml.readTimeout**
-    
-    The value in milliseconds that specifies maximum time of inactivity between two packets in response from this service to API ML. If omitted, the default value specified in the API ML Gateway service configuration is used.
-    
-* **apiml.connectionManagerTimeout**
-    
-    HttpClient employs a special entity to manage access to HTTP connections called by HTTP connection manager. The purpose of an HTTP connection manager is to serve as a factory for new HTTP connections, to manage the life cycle of persistent connections, and to synchronize access to persistent connections. Internally, an HTTP connection manager works with managed connections, which serve as proxies for real connections. `ConnectionManagerTimeout` specifies a period in which managed connections with API ML should be established. The value is in milliseconds. If omitted, the default value specified in the API ML Gateway service configuration is used.
+* **apiml.okToRetryOnAllOperations**  
+Specifies whether all operations can be retried for this service. The default value is `false`. The `false` value allows retries for only GET requests if a response code of `503` is returned. Setting this value to `true` enables retry requests for all methods, which return a `503` response code. Enabling retry can impact server resources resulting from buffering of the request body.
 
-* **apiml.okToRetryOnAllOperations**
-    
-    Specifies whether all operations can be retried for this service. The default value is `false`. The `false` value allows retries for only GET requests if a response code of `503` is returned. Setting this value to `true` enables retry requests for all methods, which return a `503` response code. Enabling retry can impact server resources resulting from buffering of the request body.
+* **apiml.service.corsEnabled**  
+When this parameter is set to `true`, CORS is enabled on the service level for all service routes. The same parameter can also be set on the service level, by providing the parameter as `customMetadata` as shown in the [Custom Metadata](custom-metadata).
 
-* **apiml.service.corsEnabled**
-    
-    When this parameter is set to `true`, CORS is enabled on the service level for all service routes. 
-    The same parameter can also be set on the service level, by providing the parameter as `customMetadata` as shown in the [Custom Metadata](custom-metadata).
+* **apiml.response.compress**  
+When this parameter is set to `true`, API ML compresses content for all responses from these services using GZIP. API ML also adds the `Content-Encoding` header with the value `gzip` to responses.
 
-* **apiml.response.compress**
+* **customMetadata.apiml.response.compressRoutes**  
+When the `customMetadata.apiml.response.compress` parameter is set to `true`, this parameter allows the services to further limit the compressed routes. The parameter accepts [ant style](https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/util/AntPathMatcher.html) routes deliminated by `,` . The expectation is to provide the absolute paths. If relative paths are provided, the starting `/` is added. If the beginning of the pattern does not require specification, use `**/{pathYouAreInterestedIn}`
 
-    When this parameter is set to `true`, API ML compresses content for all responses from these services using GZIP. API ML also adds the `Content-Encoding` header with the value `gzip` to responses.
+    **Examples:** 
 
-* **customMetadata.apiml.response.compressRoutes**
+    * `/service/**`  
+    Compresses all paths starting with `/service/`
 
-    When the `customMetadata.apiml.response.compress` parameter is set to `true`, this parameter allows the services to further limit the compressed routes. The parameter accepts [ant style](https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/util/AntPathMatcher.html) routes deliminated by `,` . The expectation is to provide the absolute paths. If relative paths are provided, the starting `/` is added. If the beginning of the pattern does not require specification, use `**/{pathYouAreInterestedIn}`
+    * `/service/api/v1/compress,/service/api/v1/custom-compress`  
+    Compresses the specific two routes
 
-    **Examples** 
-
-    * `/service/**`
-    
-      Compresses all paths starting with `/service/`
-
-    * `/service/api/v1/compress,/service/api/v1/custom-compress`
-    
-      Compresses the specific two routes
-
-    * `/\*\*/compress/\*\*`
-    
-      Compresses all paths that contain `compress` as a specific path
+    * `/\*\*/compress/\*\*`  
+    Compresses all paths that contain `compress` as a specific path
 
       
 #### Routing parameters
@@ -288,14 +249,11 @@ The following snippet is an example of the API routing information properties.
 ```
 where:
 
-* **apiml.routes.{route-prefix}.gatewayUrl**
+* **apiml.routes.{route-prefix}.gatewayUrl**  
+The `gatewayUrl` parameter specifies the portion of the gateway URL which is replaced by the `serviceUrl` path.
 
-    The `gatewayUrl` parameter specifies the portion of the gateway URL which is replaced by the `serviceUrl` path.
-
-* **apiml.routes.{route-prefix}.serviceUrl**
-
-    The `serviceUrl` parameter provides a portion of the service instance URL path which replaces the `gatewayUrl` part.
-
+* **apiml.routes.{route-prefix}.serviceUrl**  
+The `serviceUrl` parameter provides a portion of the service instance URL path which replaces the `gatewayUrl` part.  
 **Note:** The routes configuration used for a direct REST call to register a service must also contain a prefix before the `gatewayUrl` and `serviceUrl`.
 This prefix is used to differentiate the routes. This prefix must be provided manually when _XML_ configuration is used.
 
@@ -308,70 +266,49 @@ This parameter enables a service to accept the Zowe JWT token. The API Gateway t
 
 The following parameters define the service authentication method:
 
-* **apiml.authentication.scheme**
+* **apiml.authentication.scheme**  
+This parameter specifies a service authentication scheme. The following schemes are supported by the API Gateway:
 
-    This parameter specifies a service authentication scheme.
-    The following schemes are supported by the API Gateway:
+    * **bypass**  
+    This value specifies that the token is passed unchanged to the service.  
+    **Note:** This is the default scheme when no authentication parameters are specified.
 
-    * **bypass**
+    * **zoweJwt**  
+    This value specifies that a service accepts the Zowe JWT token. No additional processing is done by the API Gateway.
 
-        This value specifies that the token is passed unchanged to the service.
+    * **httpBasicPassTicket**  
+    This value specifies that a service accepts PassTickets in the Authorization header of the HTTP requests using the basic authentication scheme. It is necessary to provide a service APPLID in the `apiml.authentication.applid` parameter.  
+    **Tip:** For more information, see [Enabling PassTicket creation for API Services that Accept PassTickets](api-mediation-passtickets).
 
-        **Note:** This is the default scheme when no authentication parameters are specified.
+    * **zosmf**  
+    This value specifies that a service accepts z/OSMF LTPA (Lightweight Third-Party Authentication). This scheme should only be used for a z/OSMF service used by the API Gateway Authentication Service, and other z/OSMF services that are using the same LTPA key.  
+    **Tip:** For more information about z/OSMF Single Sign-on, see [Establishing a single sign-on environment](https://www.ibm.com/support/knowledgecenter/SSLTBW_2.4.0/com.ibm.zosmfcore.multisysplex.help.doc/izuG00hpManageSecurityCredentials.html).
 
-    * **zoweJwt**
+    * **safIdt**  
+    This value specifies that the application recognizes the SAF IDT scheme and fills the `X-SAF-Token` header with the token produced by the Saf IDT provider implementation. For more information, see [Implement a New SAF IDT provider](./implement-new-saf-provider).
 
-        This value specifies that a service accepts the Zowe JWT token. No additional processing is done by the API Gateway.
+    * **x509**  
+    This value specifies that a service accepts client certificates forwarded in the HTTP header. The Gateway service extracts information from a valid client certificate. For validation, the certificate needs to be trusted by API Mediation Layer, and needs to contain a Client Authentication (1.3.6.1.5.5.7.3.2) entry in Extended Key Usage. To use this scheme, it is also necessary to specify which headers to include. Specify these parameters in `headers`.
 
-    * **httpBasicPassTicket**
-
-        This value specifies that a service accepts PassTickets in the Authorization header of the HTTP requests using the basic authentication scheme.
-        It is necessary to provide a service APPLID in the `apiml.authentication.applid` parameter.
-
-        **Tip:** For more information, see [Enabling PassTicket creation for API Services that Accept PassTickets](api-mediation-passtickets).
-
-    * **zosmf**
-
-        This value specifies that a service accepts z/OSMF LTPA (Lightweight Third-Party Authentication).
-        This scheme should only be used for a z/OSMF service used by the API Gateway Authentication Service, and other z/OSMF services that are using the same LTPA key.
-
-        **Tip:** For more information about z/OSMF Single Sign-on, see [Establishing a single sign-on environment](https://www.ibm.com/support/knowledgecenter/SSLTBW_2.4.0/com.ibm.zosmfcore.multisysplex.help.doc/izuG00hpManageSecurityCredentials.html).
-
-    * **safIdt**
-
-       This value specifies that the application recognizes the SAF IDT scheme and fills the `X-SAF-Token` header with the token produced by the Saf IDT provider implementation. For more information, see [Implement a New SAF IDT provider](./implement-new-saf-provider).
-
-    * **x509**
-
-        This value specifies that a service accepts client certificates forwarded in the HTTP header. The Gateway service extracts information from a valid client certificate. For validation, the certificate needs to be trusted by API Mediation Layer, and needs to contain a Client Authentication (1.3.6.1.5.5.7.3.2) entry in Extended Key Usage. To use this scheme, it is also necessary to specify which headers to include. Specify these parameters in `headers`.
-
-    * **zosmf**
-        
-        This value specifies that a service accepts z/OSMF LTPA (Lightweight Third-Party Authentication).
-        This scheme should only be used for a z/OSMF service used by the API Gateway Authentication Service, and other z/OSMF services that are using the same LTPA key.
-        
-        **Tip:** For more information about z/OSMF Single Sign-on, see [Establishing a single sign-on environment](https://www.ibm.com/support/knowledgecenter/SSLTBW_2.4.0/com.ibm.zosmfcore.multisysplex.help.doc/izuG00hpManageSecurityCredentials.html).
+    * **zosmf**  
+    This value specifies that a service accepts z/OSMF LTPA (Lightweight Third-Party Authentication). This scheme should only be used for a z/OSMF service used by the API Gateway Authentication Service, and other z/OSMF services that are using the same LTPA key.  
+    **Tip:** For more information about z/OSMF Single Sign-on, see [Establishing a single sign-on environment](https://www.ibm.com/support/knowledgecenter/SSLTBW_2.4.0/com.ibm.zosmfcore.multisysplex.help.doc/izuG00hpManageSecurityCredentials.html).
 
 * **authentication.headers**
     
     When the `x509` scheme is specified, use the `headers` parameter to select which values to send to a service. Use one of the following values:
     
-    * `X-Certificate-Public`
-    
-        The public part of the client certificate base64 encoded 
+    * `X-Certificate-Public`  
+    The public part of the client certificate base64 encoded 
 
-    * `X-Certificate-DistinguishedName`
-    
-        The distinguished name the from client certificate
+    * `X-Certificate-DistinguishedName`  
+    The distinguished name the from client certificate
 
-    * `X-Certificate-CommonName` 
+    * `X-Certificate-CommonName`  
+    The common name from the client certificate
     
-        The common name from the client certificate
-    
-* **apiml.authentication.applid**
-
-    This parameter specifies a service APPLID.
-    This parameter is valid only for the `httpBasicPassTicket` authentication scheme.
+* **apiml.authentication.applid**  
+This parameter specifies a service APPLID. This parameter is valid only for the `httpBasicPassTicket` authentication scheme.
 
 #### API Info parameters
 API Info parameters are grouped under the prefix: `apiml.apiInfo`.
@@ -380,41 +317,30 @@ REST services can provide multiple APIs. Add API info parameters for each API th
 
 The following parameters provide the information properties of a single API:
 
-* **apiml.apiInfo.{api-index}.apiId**
+* **apiml.apiInfo.{api-index}.apiId**  
+The API ID uniquely identifies the API in the API ML.
+Multiple services can provide the same API. The API ID can be used
+to locate the same APIs that are provided by different services.
+The creator of the API defines this ID.
+The API ID needs to be a string of up to 64 characters
+that uses lowercase alphanumeric characters and a dot: `.`.  
+**Tip:** We recommend that you use your organization as the prefix.
 
-    The API ID uniquely identifies the API in the API ML.
-    Multiple services can provide the same API. The API ID can be used
-    to locate the same APIs that are provided by different services.
-    The creator of the API defines this ID.
-    The API ID needs to be a string of up to 64 characters
-    that uses lowercase alphanumeric characters and a dot: `.`.
+* **apiml.apiInfo.{api-index}.version**  
+This parameter specifies the API version. This parameter is used to correctly retrieve the API documentation according to the requested version of the API.
 
-    **Tip:** We recommend that you use your organization as the prefix.
+* **apiml.apiInfo.{api-index}.gatewayUrl**  
+This parameter specifies the base path at the API Gateway where the API is available. Ensure that this value is the same path as the `gatewayUrl` value in the `routes` sections for the routes, which belong to this API.
 
-* **apiml.apiInfo.{api-index}.version**
+* **apiml.apiInfo.{api-index}.swaggerUrl**  
+(Optional) This parameter specifies the Http or Https address where the Swagger JSON document is available.
 
-    This parameter specifies the API version. This parameter is used to correctly retrieve the API documentation according to the requested version of the API.
+* **apiml.apiInfo.{api-index}.documentationUrl**  
+(Optional) This parameter specifies the link to the external documentation. A link to the external documentation can be included along with the Swagger documentation.
 
-* **apiml.apiInfo.{api-index}.gatewayUrl**
-
-    This parameter specifies the base path at the API Gateway where the API is available.
-    Ensure that this value is the same path as the `gatewayUrl` value in the `routes` sections for the routes, which belong to this API.
-
-* **apiml.apiInfo.{api-index}.swaggerUrl**
-
-    (Optional) This parameter specifies the Http or Https address where the Swagger JSON document is available.
-
-* **apiml.apiInfo.{api-index}.documentationUrl**
-
-    (Optional) This parameter specifies the link to the external documentation. A link to the external documentation can be included along with the Swagger documentation.
-
-* **apiml.apiInfo.{api-index}.defaultApi**
-
-    (Optional) This parameter specifies if the API is the default one shown in the API Catalog. If no API has this parameter set to `true`, or multiple APIs have it set to `true`,
-    then the default API becomes the API with the highest major version seen in `apiml.apiInfo.{api-index}.version`.
-
-**Note:** The `{api-index}` is used to differentiate the service APIs. This index must be provided manually when _XML_ configuration is used.
-In the following example, `0` represents the `api-index`.
+* **apiml.apiInfo.{api-index}.defaultApi**  
+(Optional) This parameter specifies if the API is the default one shown in the API Catalog. If no API has this parameter set to `true`, or multiple APIs have it set to `true`, then the default API becomes the API with the highest major version seen in `apiml.apiInfo.{api-index}.version`.  
+**Note:** The `{api-index}` is used to differentiate the service APIs. This index must be provided manually when _XML_ configuration is used. In the following example, `0` represents the `api-index`.  
 
 ```
 <apiml.apiInfo.0.apiId>zowe.apiml.sampleclient</apiml.apiInfo.0.apiId>

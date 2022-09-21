@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>ca7 commands post</title>
+<link rel="stylesheet" href="../css/bundle-docs.css">
+<link rel="stylesheet" href="../css/docs.css">
+<article class="markdown-body">
+<h2><a href="zowe.html">zowe</a> › <a href="zowe_ca7.html">ca7</a> › <a href="zowe_ca7_commands.html">commands</a> › <a href="zowe_ca7_commands_post.html">post</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
+<p>The POST command indicates to the CA Workload Automation CA 7 Editionsystem that a preexecution requirement for a job in the request queue is satisfied</p>
+<h4>Usage</h4>
+<p>zowe ca7 commands post [options]</p>
+<h4>Required Options</h4>
+<ul>
+<li>
+<p><code>--ca7num</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>ca7num=0016</p>
+<p>Indicates the job number in up to four digits, for which requirements are posted.</p>
+</li>
+</ul>
+</li>
+</ul>
+<h4>Options</h4>
+<ul>
+<li>
+<p><code>--usr</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>example: USER WILL CALL TO RELEASE<br>
+(Optional) Identifies a user-defined description of a requirement to post as satisfied.<br>
+Mutually exclusive with DEPJOB and DSN.<br>
+When used, must match the text that is used to define the requirement on the DB.6 panel or with the ADDRQ command.</p>
+<p>Limits: 1 to 36 alphanumeric characters</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--depjob</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>example: PAYJOB<br>
+(Optional) Identifies a predecessor job dependency requirement to post as satisfied.<br>
+Value must be a specific job name.<br>
+Mutually exclusive with DSN and USR.</p>
+<p>In normal situations, CA WA CA 7 Edition automatically posts this type of requirement when the predecessor job completes its execution successfully.<br>
+A manual posting is only necessary if a job defined as a requirement was not to be run,<br>
+or ran unsuccessfully and a successor job is to be run.The DEPJOB must be posted if it is not currently defined to CA WA CA 7 Edition<br>
+(an external job).<br>
+Limits: 1 to 8 alphanumeric characters</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--dsn</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>example: CA7.DSN1<br>
+(Optional) Identifies a data set requirement to post as satisfied.<br>
+Value can be a specific data set name or a CA WA CA 7 Edition data set number.<br>
+If you are using a number, only the number can be specified without the DS prefix.</p>
+<p>Mutually exclusive with DEPJOB and USR.<br>
+dsname<br>
+Indicates a specific data set name.<br>
+Limits: 1 to 44 alphanumeric characters<br>
+dsnumber<br>
+Indicates a specific data set number.<br>
+Limits: 1 to 8 numeric characters</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--internal</code> <em>(string)</em></p>
+<ul>
+<li>example: YES<br>
+(Optional) Valid only with DSN to indicate that the data set being posted is internal to the CA WA CA 7 Edition workload.<br>
+YES is the only acceptable value.<br>
+Mutually exclusive with USR, DEPJOB, and PREQ.<br>
+In normal situations, CA WA CA 7 Edition automatically posts requirements for internal data sets.<br>
+Limits: YES is the only acceptable value.</li>
+</ul>
+</li>
+<li>
+<p><code>--preq</code> <em>(string)</em></p>
+<ul>
+<li>example: (17,19,20,32)<br>
+(Optional) Valid only with DSN to identify up to 11 numeric values to include<br>
+with other CA WA CA 7 Edition log data logged as a result of the POST command being issued.<br>
+Mutually exclusive with USR, DEPJOB, and INTERNAL.<br>
+Code values in sublist form, within parentheses.<br>
+You can code up to 11 values that are separated by commas between the parentheses.<br>
+Each value cannot exceed 4 numeric digits.<br>
+This optional field can be useful for logging any meaningful numbers, such as batch numbers, which can later be reviewed in the log data set.</li>
+</ul>
+</li>
+<li>
+<p><code>--rmtjob</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>example: RMT_JOB</p>
+<p>Names the job in the remote scheduler that is required by the job specified in the JOB field.<br>
+Limits: RMTJOB should accept up to 64 characters<br>
+valid characters are a-z, A-Z, 0-9, period (.), underscore (_), hyphen (-),<br>
+colon (:), and pound (#); do not include embedded spaces or tabs.</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--rmtschd</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>example: AP1</p>
+<p>Names the remote scheduler where the predecessor job runs.<br>
+Before adding this requirement, the remote scheduler must be defined.<br>
+The remote scheduler defined as type LOCAL cannot be specified.<br>
+Limits: 1 to 3 alphanumeric characters; generic specification not supported.</p>
+</li>
+</ul>
+</li>
+</ul>
+<h4>CA7 Connection Options</h4>
+<ul>
+<li>
+<p><code>--host</code> | <code>-H</code> <em>(string)</em></p>
+<ul>
+<li>Host name of the CA7 API service that is running on the mainframe system.</li>
+</ul>
+</li>
+<li>
+<p><code>--port</code> | <code>-P</code> <em>(number)</em></p>
+<ul>
+<li>Port for the CA7 API service that is running on the mainframe system.</li>
+</ul>
+</li>
+<li>
+<p><code>--user</code> | <code>-u</code> <em>(string)</em></p>
+<ul>
+<li>User name for authenticating connections to the CA7 API service that is running on the mainframe system.</li>
+</ul>
+</li>
+<li>
+<p><code>--password</code> | <code>--pass</code> | <code>--pw</code> <em>(string)</em></p>
+<ul>
+<li>Password for authenticating connections to the CA7 API service that is running on the mainframe system.</li>
+</ul>
+</li>
+<li>
+<p><code>--base-path</code> | <code>--bp</code> <em>(string)</em></p>
+<ul>
+<li>The base path for your API mediation layer instance. Specify this option to prepend the base path to all resources when making REST requests. Do not specify this option if you are not using an API mediation layer.</li>
+</ul>
+</li>
+<li>
+<p><code>--protocol</code> | <code>-o</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>Specifies protocol to use for CA7 connection (http or https).</p>
+<p>Allowed values: http, https</p>
+</li>
+</ul>
+</li>
+</ul>
+<h4>Profile Options</h4>
+<ul>
+<li>
+<p><code>--ca7-profile</code> | <code>--ca7-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (ca7) profile to load for this command execution.</li>
+</ul>
+</li>
+<li>
+<p><code>--base-profile</code> | <code>--base-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (base) profile to load for this command execution.</li>
+</ul>
+</li>
+</ul>
+<h4>Base Connection Options</h4>
+<ul>
+<li>
+<p><code>--reject-unauthorized</code> | <code>--ru</code> <em>(boolean)</em></p>
+<ul>
+<li>
+<p>Reject self-signed certificates.</p>
+<p>Default value: true</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--token-type</code> | <code>--tt</code> <em>(string)</em></p>
+<ul>
+<li>The type of token to get and use for the API. Omit this option to use the default token type, which is provided by 'zowe auth login'.</li>
+</ul>
+</li>
+<li>
+<p><code>--token-value</code> | <code>--tv</code> <em>(string)</em></p>
+<ul>
+<li>The value of the token to pass to the API.</li>
+</ul>
+</li>
+<li>
+<p><code>--cert-file</code> <em>(local file path)</em></p>
+<ul>
+<li>The file path to a certificate file to use for authentication</li>
+</ul>
+</li>
+<li>
+<p><code>--cert-key-file</code> <em>(local file path)</em></p>
+<ul>
+<li>The file path to a certificate key file to use for authentication</li>
+</ul>
+</li>
+</ul>
+<h4>Examples</h4>
+<ul>
+<li>
+<p>The requirement for ca7 number 0016 in the request queue is satisfied:</p>
+<ul>
+<li><code>zowe ca7 commands post --ca7num 0016</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe ca7 commands post --ca7num 0016">Copy</button></li>
+</ul>
+</li>
+</ul>
+</article>
+<script src="../js/bundle-docs.js"></script>
+<script src="../js/docs.js"></script>
