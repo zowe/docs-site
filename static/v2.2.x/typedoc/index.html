@@ -1,0 +1,359 @@
+<!doctype html>
+<html class="default no-js">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Zowe Node.js SDK - v2.2.0</title>
+	<meta name="description" content="Documentation for Zowe Node.js SDK - v2.2.0">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="assets/css/main.css">
+</head>
+<body>
+<header>
+	<div class="tsd-page-toolbar">
+		<div class="container">
+			<div class="table-wrap">
+				<div class="table-cell" id="tsd-search" data-index="assets/js/search.json" data-base=".">
+					<div class="field">
+						<label for="tsd-search-field" class="tsd-widget search no-caption">Search</label>
+						<input id="tsd-search-field" type="text" />
+					</div>
+					<ul class="results">
+						<li class="state loading">Preparing search index...</li>
+						<li class="state failure">The search index is not available</li>
+					</ul>
+					<a href="index.html" class="title">Zowe Node.js SDK - v2.2.0</a>
+				</div>
+				<div class="table-cell" id="tsd-widgets">
+					<div id="tsd-filter">
+						<a href="#" class="tsd-widget options no-caption" data-toggle="options">Options</a>
+						<div class="tsd-filter-group">
+							<div class="tsd-select" id="tsd-filter-visibility">
+								<span class="tsd-select-label">All</span>
+								<ul class="tsd-select-list">
+									<li data-value="public">Public</li>
+									<li data-value="protected">Public/Protected</li>
+									<li data-value="private" class="selected">All</li>
+								</ul>
+							</div>
+							<input type="checkbox" id="tsd-filter-inherited" checked />
+							<label class="tsd-widget" for="tsd-filter-inherited">Inherited</label>
+							<input type="checkbox" id="tsd-filter-externals" checked />
+							<label class="tsd-widget" for="tsd-filter-externals">Externals</label>
+						</div>
+					</div>
+					<a href="#" class="tsd-widget menu no-caption" data-toggle="menu">Menu</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="tsd-page-title">
+		<div class="container">
+			<ul class="tsd-breadcrumb">
+				<li>
+					<a href="globals.html">Globals</a>
+				</li>
+			</ul>
+			<h1>Zowe Node.js SDK - v2.2.0</h1>
+		</div>
+	</div>
+</header>
+<div class="container container-main">
+	<div class="row">
+		<div class="col-8 col-content">
+			<div class="tsd-panel tsd-typography">
+				<a href="#zowe-cli--" id="zowe-cli--" style="color: inherit; text-decoration: none;">
+					<h1>Zowe CLI  <!-- omit in toc --></h1>
+				</a>
+				<p><a href="https://codecov.io/gh/zowe/zowe-cli"><img src="https://codecov.io/gh/zowe/zowe-cli/branch/master/graph/badge.svg" alt="codecov"></a></p>
+				<p>Zowe CLI is a command-line interface that lets you interact with the mainframe in a familiar format. Zowe CLI helps to increase overall productivity, reduce the learning curve for developing mainframe applications, and exploit the ease-of-use of off-platform tools. Zowe CLI lets you use common tools such as Integrated Development Environments (IDEs), shell commands, bash scripts, and build tools for mainframe development. Through its ecosystem of plug-ins, you can automate actions on systems such as IBM Db2, IBM CICS, and more. It provides a set of utilities and services that help developers, DevOps engineers, and more become efficient in supporting and building z/OS applications quickly.</p>
+				<p>This repository also contains the Zowe Node Client SDK. The SDK lets you leverage the underlying APIs to build applications that interface with the mainframe.</p>
+				<a href="#contents--" id="contents--" style="color: inherit; text-decoration: none;">
+					<h2>Contents  <!-- omit in toc --></h2>
+				</a>
+				<ul>
+					<li><a href="#early-access-features">Early Access Features</a></li>
+					<li><a href="#documentation">Documentation</a></li>
+					<li><a href="#contribution-guidelines">Contribution guidelines</a></li>
+					<li><a href="#build-zowe-cli-from-source">Build Zowe CLI from source</a></li>
+					<li><a href="#install-zowe-cli-from-source">Install Zowe CLI from source</a></li>
+					<li><a href="#uninstall-zowe-cli">Uninstall Zowe CLI</a></li>
+					<li><a href="#configure-zowe-cli">Configure Zowe CLI</a></li>
+					<li><a href="#zowe-node-client-sdk">Zowe Node Client SDK</a></li>
+					<li><a href="#run-system-tests">Run system tests</a></li>
+					<li><a href="#frequently-asked-questions">FAQs</a></li>
+				</ul>
+				<a href="#early-access-features" id="early-access-features" style="color: inherit; text-decoration: none;">
+					<h2>Early Access Features</h2>
+				</a>
+				<p>To try out early access features, install the &quot;next&quot; release of Zowe CLI (<code>npm install -g @zowe/cli@next</code>). This version may receive breaking changes and is intended to gather early feedback on what may become a future LTS release.</p>
+				<p>For documentation about these features, see these files:</p>
+				<ul>
+					<li><a href="https://github.com/zowe/zowe-cli/blob/next/docs/Early%20Access%20-%20Using%20Global%20Profile%20Configuration.md">Using Global Profile Configuration</a></li>
+					<li><a href="https://github.com/zowe/zowe-cli/blob/next/zowex/design.md">Daemon Mode Design Overview</a></li>
+				</ul>
+				<a href="#documentation" id="documentation" style="color: inherit; text-decoration: none;">
+					<h2>Documentation</h2>
+				</a>
+				<p>For detailed information about how to install, configure, and use Zowe CLI, see <a href="https://docs.zowe.org/stable/getting-started/cli-getting-started/">Zowe CLI Documentation</a>. The documentation includes examples and tutorials for how to contribute to Zowe CLI and develop CLI plug-ins.</p>
+				<p>The <code>docs</code> directory in this repository contains auto-generated typescript documentation under the <code>docs/typedoc</code> directory. To access the typescript documentation locally, navigate to the local <code>node_modules</code> directory that contains the installed package and access the <code>docs</code> directory after you install the Zowe CLI package.</p>
+				<p><strong>Note:</strong> Some links in the auto-generated typescript documentation are not functional at this time.</p>
+				<a href="#contribution-guidelines" id="contribution-guidelines" style="color: inherit; text-decoration: none;">
+					<h2>Contribution guidelines</h2>
+				</a>
+				<p>The following information is critical to working with the code, running/writing/maintaining automated tests, developing consistent syntax in your plug-in, and ensuring that your plug-in integrates with Zowe CLI properly:</p>
+				<table>
+					<thead>
+						<tr>
+							<th>For more information about ...</th>
+							<th>See:</th>
+						</tr>
+					</thead>
+					<tbody><tr>
+							<td>General guidelines that apply to contributing to Zowe CLI and Plug-ins</td>
+							<td><a href="https://github.com/zowe/zowe-cli/blob/v7.4.0/CONTRIBUTING.md">Contribution Guidelines</a></td>
+						</tr>
+						<tr>
+							<td>Conventions and best practices for creating packages and plug-ins for Zowe CLI</td>
+							<td><a href="https://github.com/zowe/zowe-cli/blob/v7.4.0/docs/PackagesAndPluginGuidelines.md">Package and Plug-in Guidelines</a></td>
+						</tr>
+						<tr>
+							<td>Guidelines for contributing to Zowe SDKs</td>
+							<td><a href="https://github.com/zowe/zowe-cli/blob/v7.4.0/docs/SDKGuidelines.md">SDK Guidelines</a></td>
+						</tr>
+						<tr>
+							<td>Guidelines for running tests on Zowe CLI</td>
+							<td><a href="https://github.com/zowe/zowe-cli/blob/v7.4.0/docs/TESTING.md">Testing Guidelines</a></td>
+						</tr>
+						<tr>
+							<td>Guidelines for running tests on the plug-ins that you build</td>
+							<td><a href="https://github.com/zowe/zowe-cli/blob/v7.4.0/docs/PluginTESTINGGuidelines.md">Plug-in Testing Guidelines</a></td>
+						</tr>
+						<tr>
+							<td>Documentation that describes the features of the Imperative CLI Framework</td>
+							<td><a href="https://github.com/zowe/imperative/wiki">About Imperative CLI Framework</a></td>
+						</tr>
+						<tr>
+							<td>Naming CLI commands and developing syntax</td>
+							<td><a href="https://github.com/zowe/zowe-cli/blob/v7.4.0/docs/CommandFormatStandards.md">Command Format Standards</a></td>
+						</tr>
+						<tr>
+							<td>Documentation that describes the features of the Imperative CLI Framework</td>
+							<td><a href="https://github.com/zowe/imperative/wiki">About Imperative CLI Framework</a></td>
+						</tr>
+						<tr>
+							<td>Versioning conventions for Zowe CLI and Plug-ins</td>
+							<td><a href="https://github.com/zowe/zowe-cli/blob/v7.4.0/docs/MaintainerVersioning.md">Versioning Guidelines</a></td>
+						</tr>
+						<tr>
+							<td>Miscellaneous tips for development</td>
+							<td><a href="https://github.com/zowe/zowe-cli/blob/v7.4.0/docs/DevelopmentTips.md">Development Tips</a></td>
+						</tr>
+				</tbody></table>
+				<p><strong>Tip:</strong> Visit our <a href="https://github.com/zowe/zowe-cli-sample-plugin">Sample Plug-in repository</a> for example plug-in code. You can follow developer tutorials <a href="https://docs.zowe.org/stable/extend/extend-cli/cli-devTutorials.html">here</a>.</p>
+				<a href="#build-zowe-cli-from-source" id="build-zowe-cli-from-source" style="color: inherit; text-decoration: none;">
+					<h2>Build Zowe CLI from source</h2>
+				</a>
+				<p>Zowe CLI requires NPM version 7 to install from source. Before proceeding, check your NPM version with <code>npm --version</code> and if it&#39;s older than 7.x, update with <code>npm install -g npm</code>.</p>
+				<p>The first time that you download Zowe CLI from the GitHub repository, issue the following command to install the required Zowe CLI dependencies and several development tools:</p>
+				<pre><code>npm install --<span class="hljs-variable">@zowe</span><span class="hljs-symbol">:registry=https</span><span class="hljs-symbol">://registry</span>.npmjs.org --no-package-lock --force
+</code></pre>
+				<p><strong>Note:</strong> When necessary, you can run the install command again to update dependencies that were changed in package.json.</p>
+				<p>To build your code changes, issue the following command:</p>
+				<pre><code>npm <span class="hljs-builtin-name">run</span> build
+</code></pre>
+				<p>When you update <code>package.json</code> to include new dependencies, or when you pull changes that affect <code>package.json</code>, issue the <code>npm update</code> command to download the dependencies.</p>
+				<a href="#install-zowe-cli-from-source" id="install-zowe-cli-from-source" style="color: inherit; text-decoration: none;">
+					<h2>Install Zowe CLI from source</h2>
+				</a>
+				<p>From your copy of this repository, after a build, navigate to the <code>packages/cli</code> directory, then issue the following command to install Zowe CLI from source:</p>
+				<pre><code>npm <span class="hljs-keyword">install</span> -g
+</code></pre>
+				<p><b>Notes:</b></p>
+				<ul>
+					<li>Depending on how you configured npm on Linux or Mac, you might need to prefix the <code>npm install -g</code> command or the <code>npm uninstall -g</code> command with <code>sudo</code> to let npm have write access to the installation directory.</li>
+					<li>On Windows, the <code>npm install -g</code> command might fail several times due to an <code>EPERM</code> error. This appears to be a bug that npm documented in their GitHub issues. This behaviour does not appear to be specific to installing the Zowe CLI package. Unfortunately, the only solution that we know of is to issue the <code>npm cache clean</code> command and the <code>npm install -g</code> command repeatedly until it works.</li>
+				</ul>
+				<a href="#uninstall-zowe-cli" id="uninstall-zowe-cli" style="color: inherit; text-decoration: none;">
+					<h2>Uninstall Zowe CLI</h2>
+				</a>
+				<p>From your local copy of this repository, issue the following command to uninstall Zowe CLI:</p>
+				<pre><code><span class="hljs-built_in">npm</span> uninstall --<span class="hljs-built_in">global</span> @zowe/cli
+</code></pre>
+				<a href="#configure-zowe-cli" id="configure-zowe-cli" style="color: inherit; text-decoration: none;">
+					<h2>Configure Zowe CLI</h2>
+				</a>
+				<p>Zowe CLI configuration is made up of different <strong>profiles</strong>. The profiles contain the information that Zowe CLI needs to communicate with the mainframe system. For example, credentials and z/OSMF host name. If you try to use Zowe CLI functionality and you get an error message that Zowe CLI failed to load any profiles, see the <code>zowe profiles create --help</code> command for the group of commands that you are trying to use (if any) to initialize your configuration.</p>
+				<p>The most fundamental Zowe CLI profile is a <code>zosmf</code> profile. Issue the following command to understand how to create a <code>zosmf</code> profile in Zowe CLI:</p>
+				<pre><code>zowe profiles <span class="hljs-built_in">create</span> zosmf-profile <span class="hljs-comment">--help</span>
+</code></pre>
+				<p>After you create your profile, you can confirm that the properties of your profile can connect to and communicate with your mainframe system successfully by issuing the following command:</p>
+				<pre><code>zowe zosmf<span class="hljs-built_in"> check </span>status
+</code></pre>
+				<p><strong>Tip:</strong> When you confirm that your profile connects to and communicates with your mainframe system successfully, you can issue the same command at any time to verify the availability and status of the z/OSMF subsystem on your mainframe.</p>
+				<p>For detailed information about creating service profiles, creating base profiles, or integrating with Zowe API ML, see <a href="https://docs.zowe.org/stable/user-guide/cli-usingcli.html">Using Zowe CLI</a>.</p>
+				<a href="#zowe-node-client-sdk" id="zowe-node-client-sdk" style="color: inherit; text-decoration: none;">
+					<h2>Zowe Node Client SDK</h2>
+				</a>
+				<p>The Zowe Node Client SDK consists of APIs that enable you to build client applications that interface with the mainframe. Use the APIs to build your own client applications or automation scripts, independent of Zowe CLI.</p>
+				<p>For information about downloading and getting started with the SDK, see the <a href="https://docs.zowe.org/stable/user-guide/cli-usingcli.html#using-sdk">Zowe Docs</a>.</p>
+				<p><strong>Tip:</strong> Alternatively, you can import Zowe CLI into your project to call the Node APIs. However, importing all of Zowe CLI will increase the size of your project. For example, use the following statement to import packages from Zowe CLI:</p>
+				<pre><code><span class="hljs-keyword">import</span> { &lt;<span class="hljs-built_in">int</span>erfaceName&gt; } <span class="hljs-keyword">from</span> @zowe/cli
+</code></pre>
+				<p><em>Where</em> <code>&lt;interfaceName&gt;</code> is the name of an interface that you populate (i.e. <code>IIssueParms</code>) or a function that submits requests (i.e <code>IssueCommand</code>).</p>
+				<a href="#example-api-usage" id="example-api-usage" style="color: inherit; text-decoration: none;">
+					<h3>Example API usage</h3>
+				</a>
+				<p>For example usage syntax, see the readme for each API package in this repository:</p>
+				<ul>
+					<li><a href="https://github.com/zowe/zowe-cli/tree/master/packages/provisioning">Provisioning</a>: Provision middleware and resources such as IBM CICS, IBM Db2, IBM MQ, and more.</li>
+					<li><a href="https://github.com/zowe/zowe-cli/tree/master/packages/zosconsole">z/OS Console</a>: Perform z/OS console operations.</li>
+					<li><a href="https://github.com/zowe/zowe-cli/tree/master/packages/zosfiles">z/OS Data Sets</a>: Work with data sets on z/OS.</li>
+					<li><a href="https://github.com/zowe/zowe-cli/tree/master/packages/zosjobs">z/OS Jobs</a>: Work with batch jobs on z/OS.</li>
+					<li><a href="https://github.com/zowe/zowe-cli/tree/master/packages/zosmf">z/OSMF</a>: Return data about z/OSMF, such as connection status or a list of available systems.</li>
+					<li><a href="https://github.com/zowe/zowe-cli/tree/master/packages/zostso">z/OS TSO</a>: Interact with TSO/E adress spaces on z/OS.</li>
+					<li><a href="https://github.com/zowe/zowe-cli/tree/master/packages/zosuss">z/OS USS</a>: Work with UNIX system services (USS) files on z/OS.</li>
+					<li><a href="https://github.com/zowe/zowe-cli/tree/master/packages/workflows">z/OS Workflows</a>: Create and manage z/OSMF workflows on z/OS.</li>
+				</ul>
+				<a href="#run-system-tests" id="run-system-tests" style="color: inherit; text-decoration: none;">
+					<h2>Run system tests</h2>
+				</a>
+				<p>In addition to Node.js, you must have a means to execute <code>.sh</code> (bash) scripts, which are required for running integration tests. On Windows, you can install &quot;Git Bash&quot; (bundled with the standard <a href="https://git-scm.com/downloads">Git</a> installation - check &quot;Use Git and Unix Tools from Windows Command Prompt&quot; installation option).</p>
+				<p>After downloading/installing the prerequisites, ensure that you can execute the following commands and receive success responses:</p>
+				<ol>
+					<li><code>node --version</code></li>
+					<li><code>npm --version</code></li>
+					<li>On Windows: <code>where sh</code></li>
+				</ol>
+				<p>To run Zowe CLI system tests, you need a configured properties file with proper system information present.</p>
+				<p>A dummy properties file is present in the <code>__tests__/__resources__/properties folder</code>, <code>default_properties.yaml</code>. Using this file as a template, you should create a <code>custom_properties.yaml</code> file within the same directory. Git is configured to ignore all properties files in the properties folder, except for the <code>default_properties.yaml</code> file.</p>
+				<p><strong>Important!</strong> Do not check in configured properties files because they contain security principles and other critical information.</p>
+				<p>You can run the system tests by issuing the following command:</p>
+				<pre><code>npm <span class="hljs-keyword">run</span><span class="bash"> <span class="hljs-built_in">test</span>:system</span>
+</code></pre>
+				<p>If the <code>custom_properties.yaml</code> file cannot be found or loaded, an error with relevant details is thrown.</p>
+				<a href="#frequently-asked-questions" id="frequently-asked-questions" style="color: inherit; text-decoration: none;">
+					<h2>Frequently asked questions</h2>
+				</a>
+				<ul>
+					<li><p><strong>How can I install Zowe CLI as a root user on Mac/Linux?</strong></p>
+						<p>You can install the CLI as root so that all users can access the CLI without installing it individually on their user account. As the root user on Mac/Linux, issue the following command:</p>
+						<p><code>npm i -g @zowe/cli@latest --ignore-scripts</code></p>
+						<p><strong>Warning!</strong> If you use this method, plug-ins that are installed as root can only be accessed as root. Users must install plug-ins on their user account or share all profiles/plugins/settings/logs with root. You also might encounter npm errors if you install as root. We recommend that Linux administrators implement a user/group environment where permissions can be more carefully controlled.</p>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
+			<nav class="tsd-navigation primary">
+				<ul>
+					<li class="globals  ">
+						<a href="globals.html"><em>Globals</em></a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/_zowe_core_for_zowe_sdk.html">@zowe/core-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/_zowe_imperative.html">@zowe/imperative</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/_zowe_provisioning_for_zowe_sdk.html">@zowe/provisioning-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/_zowe_zos_console_for_zowe_sdk.html">@zowe/zos-<wbr>console-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/_zowe_zos_files_for_zowe_sdk.html">@zowe/zos-<wbr>files-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/_zowe_zos_jobs_for_zowe_sdk.html">@zowe/zos-<wbr>jobs-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/_zowe_zos_logs_for_zowe_sdk.html">@zowe/zos-<wbr>logs-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/_zowe_zos_tso_for_zowe_sdk.html">@zowe/zos-<wbr>tso-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/_zowe_zos_uss_for_zowe_sdk.html">@zowe/zos-<wbr>uss-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/_zowe_zos_workflows_for_zowe_sdk.html">@zowe/zos-<wbr>workflows-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/_zowe_zosmf_for_zowe_sdk.html">@zowe/zosmf-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+				</ul>
+			</nav>
+			<nav class="tsd-navigation secondary menu-sticky">
+				<ul class="before-current">
+					<li class=" tsd-kind-module">
+						<a href="modules/_zowe_core_for_zowe_sdk.html" class="tsd-kind-icon">@zowe/core-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/_zowe_imperative.html" class="tsd-kind-icon">@zowe/imperative</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/_zowe_provisioning_for_zowe_sdk.html" class="tsd-kind-icon">@zowe/provisioning-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/_zowe_zos_console_for_zowe_sdk.html" class="tsd-kind-icon">@zowe/zos-<wbr>console-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/_zowe_zos_files_for_zowe_sdk.html" class="tsd-kind-icon">@zowe/zos-<wbr>files-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/_zowe_zos_jobs_for_zowe_sdk.html" class="tsd-kind-icon">@zowe/zos-<wbr>jobs-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/_zowe_zos_logs_for_zowe_sdk.html" class="tsd-kind-icon">@zowe/zos-<wbr>logs-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/_zowe_zos_tso_for_zowe_sdk.html" class="tsd-kind-icon">@zowe/zos-<wbr>tso-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/_zowe_zos_uss_for_zowe_sdk.html" class="tsd-kind-icon">@zowe/zos-<wbr>uss-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/_zowe_zos_workflows_for_zowe_sdk.html" class="tsd-kind-icon">@zowe/zos-<wbr>workflows-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/_zowe_zosmf_for_zowe_sdk.html" class="tsd-kind-icon">@zowe/zosmf-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</div>
+</div>
+<footer class="with-border-bottom">
+	<div class="container">
+		<h2>Legend</h2>
+		<div class="tsd-legend-group">
+			<ul class="tsd-legend">
+				<li class="tsd-kind-object-literal"><span class="tsd-kind-icon">Object literal</span></li>
+				<li class="tsd-kind-variable"><span class="tsd-kind-icon">Variable</span></li>
+				<li class="tsd-kind-function"><span class="tsd-kind-icon">Function</span></li>
+				<li class="tsd-kind-type-alias"><span class="tsd-kind-icon">Type alias</span></li>
+				<li class="tsd-kind-type-alias tsd-has-type-parameter"><span class="tsd-kind-icon">Type alias with type parameter</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-interface"><span class="tsd-kind-icon">Interface</span></li>
+				<li class="tsd-kind-interface tsd-has-type-parameter"><span class="tsd-kind-icon">Interface with type parameter</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-class"><span class="tsd-kind-icon">Class</span></li>
+				<li class="tsd-kind-class tsd-has-type-parameter"><span class="tsd-kind-icon">Class with type parameter</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-enum"><span class="tsd-kind-icon">Enumeration</span></li>
+			</ul>
+		</div>
+	</div>
+</footer>
+<div class="container tsd-generator">
+	<p>Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p>
+</div>
+<div class="overlay"></div>
+<script src="assets/js/main.js"></script>
+</body>
+</html>

@@ -456,6 +456,11 @@
 </ul></li>
 </ul></li>
 <li><a href="#zowe_zos-files">zos-files | files</a><ul><li><a href="#zowe_zos-files_compare">compare | cmp</a><ul><li><a href="#zowe_zos-files_compare_data-set">data-set | ds</a></li>
+</ul><ul><li><a href="#zowe_zos-files_compare_local-file-data-set">local-file-data-set | lf-ds</a></li>
+</ul><ul><li><a href="#zowe_zos-files_compare_local-file-spool-dd">local-file-spool-dd | lf-sdd</a></li>
+</ul><ul><li><a href="#zowe_zos-files_compare_local-file-uss-file">local-file-uss-file | lf-uss</a></li>
+</ul><ul><li><a href="#zowe_zos-files_compare_spool-dd">spool-dd | sdd</a></li>
+</ul><ul><li><a href="#zowe_zos-files_compare_uss-files">uss-files | uss</a></li>
 </ul></li>
 </ul><ul><li><a href="#zowe_zos-files_copy">copy | cp</a><ul><li><a href="#zowe_zos-files_copy_data-set">data-set | ds</a></li>
 </ul></li>
@@ -478,7 +483,7 @@
 </ul></li>
 </ul><ul><li><a href="#zowe_zos-files_download">download | dl</a><ul><li><a href="#zowe_zos-files_download_all-members">all-members | am</a></li>
 </ul><ul><li><a href="#zowe_zos-files_download_data-set">data-set | ds</a></li>
-</ul><ul><li><a href="#zowe_zos-files_download_data-set-matching">data-set-matching | dsm</a></li>
+</ul><ul><li><a href="#zowe_zos-files_download_data-sets-matching">data-sets-matching | dsm | data-set-matching</a></li>
 </ul><ul><li><a href="#zowe_zos-files_download_uss-file">uss-file | uf | uss</a></li>
 </ul></li>
 </ul><ul><li><a href="#zowe_zos-files_invoke">invoke | call</a><ul><li><a href="#zowe_zos-files_invoke_ams-file">ams-file | af</a></li>
@@ -5889,7 +5894,7 @@ Limits: 1 to 8 alphanumeric characters</li>
 <h4>Examples</h4>
 <ul>
 <li>
-<p>Create a Dataset Trigger definition <a href="http://DATA.SET.NAME">DATA.SET.NAME</a> with schid 42 for Triggered job JOBA:</p>
+<p>Create a Dataset Trigger definition DATA.SET.NAME with schid 42 for Triggered job JOBA:</p>
 <ul>
 <li><code>zowe ca7 dataset create-dataset-trigger --dname DATA.SET.NAME --schid 42 --tj JOBA --tjdot 0830</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe ca7 dataset create-dataset-trigger --dname DATA.SET.NAME --schid 42 --tj JOBA --tjdot 0830">Copy</button></li>
 </ul>
@@ -6013,7 +6018,7 @@ Limits: 1 to 8 numeric characters</li>
 <h4>Examples</h4>
 <ul>
 <li>
-<p>Delete the definition of a dataset named <a href="http://DATA.SET.NAME">DATA.SET.NAME</a>:</p>
+<p>Delete the definition of a dataset named DATA.SET.NAME:</p>
 <ul>
 <li><code>zowe ca7 dataset delete-dataset --dname DATA.SET.NAME</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe ca7 dataset delete-dataset --dname DATA.SET.NAME">Copy</button></li>
 </ul>
@@ -6156,7 +6161,7 @@ Limits: 1 to 8 alphanumeric characters</li>
 <h4>Examples</h4>
 <ul>
 <li>
-<p>Delete a Dataset Trigger definition <a href="http://DATA.SET.NAME">DATA.SET.NAME</a> with schid 42 for Triggered job JOBA:</p>
+<p>Delete a Dataset Trigger definition DATA.SET.NAME with schid 42 for Triggered job JOBA:</p>
 <ul>
 <li><code>zowe ca7 dataset delete-dataset-trigger --dname DATA.SET.NAME --schid 42 --tj JOBA</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe ca7 dataset delete-dataset-trigger --dname DATA.SET.NAME --schid 42 --tj JOBA">Copy</button></li>
 </ul>
@@ -6680,7 +6685,7 @@ Limits: 1 to 8 alphanumeric characters</li>
 <h4>Examples</h4>
 <ul>
 <li>
-<p>Update a Dataset Trigger definition <a href="http://DATA.SET.NAME">DATA.SET.NAME</a> with schid 42 for Triggered job JOBA:</p>
+<p>Update a Dataset Trigger definition DATA.SET.NAME with schid 42 for Triggered job JOBA:</p>
 <ul>
 <li><code>zowe ca7 dataset update-dataset-trigger --dname DATA.SET.NAME --schid 42 --tj JOBA --tjdot 0830 --tjlt 0030 --tjst 1030</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe ca7 dataset update-dataset-trigger --dname DATA.SET.NAME --schid 42 --tj JOBA --tjdot 0830 --tjlt 0030 --tjst 1030">Copy</button></li>
 </ul>
@@ -8561,7 +8566,7 @@ Notes:The step-name parameter applies to the first occurrence of the stepname th
 <h4>Examples</h4>
 <ul>
 <li>
-<p>Creates a job named JOBA with resource name <a href="http://RESOURCE.NAME">RESOURCE.NAME</a> of free type F, step name JS010 and schedule id 23:</p>
+<p>Creates a job named JOBA with resource name RESOURCE.NAME of free type F, step name JS010 and schedule id 23:</p>
 <ul>
 <li><code>zowe ca7 job-definition create-resource-count-resource --job JOBA --schid 23 --rn RESOURCE.NAME --free F --sn JS010 </code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe ca7 job-definition create-resource-count-resource --job JOBA --schid 23 --rn RESOURCE.NAME --free F --sn JS010 ">Copy</button></li>
 </ul>
@@ -8979,7 +8984,7 @@ Limits: 1 to 3 numeric characters from 0 through 999</li>
 <h4>Examples</h4>
 <ul>
 <li>
-<p>Deletes a job named JOBA with resource name <a href="http://RESOURCE.NAME">RESOURCE.NAME</a>:</p>
+<p>Deletes a job named JOBA with resource name RESOURCE.NAME:</p>
 <ul>
 <li><code>zowe ca7 job-definition delete-address-space-resource --job JOBA --rn RESOURCE.NAME --schid 42</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe ca7 job-definition delete-address-space-resource --job JOBA --rn RESOURCE.NAME --schid 42">Copy</button></li>
 </ul>
@@ -9119,7 +9124,7 @@ Limits: 1 to 3 numeric characters from 0 through 999</li>
 <h4>Examples</h4>
 <ul>
 <li>
-<p>Deletes a job named JOBA with resource name <a href="http://RESOURCE.NAME">RESOURCE.NAME</a> and schid 42:</p>
+<p>Deletes a job named JOBA with resource name RESOURCE.NAME and schid 42:</p>
 <ul>
 <li><code>zowe ca7 job-definition delete-corequisite-resource --jn JOBA --rn RESOURCE.NAME --schid 42</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe ca7 job-definition delete-corequisite-resource --jn JOBA --rn RESOURCE.NAME --schid 42">Copy</button></li>
 </ul>
@@ -9253,7 +9258,7 @@ Limits: 1 to 3 numeric characters from 0 through 999</li>
 <h4>Examples</h4>
 <ul>
 <li>
-<p>Deletes a job named JOBA with resource name <a href="http://RESOURCE.NAME">RESOURCE.NAME</a>:</p>
+<p>Deletes a job named JOBA with resource name RESOURCE.NAME:</p>
 <ul>
 <li><code>zowe ca7 job-definition delete-exclusive-resource --job JOBA --rn RESOURCE.NAME --schid 42</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe ca7 job-definition delete-exclusive-resource --job JOBA --rn RESOURCE.NAME --schid 42">Copy</button></li>
 </ul>
@@ -9652,7 +9657,7 @@ Limits: 1 to 3 numeric characters from 0 through 999</li>
 <h4>Examples</h4>
 <ul>
 <li>
-<p>Deletes a job named JOBA with resource name <a href="http://RESOURCE.NAME">RESOURCE.NAME</a>:</p>
+<p>Deletes a job named JOBA with resource name RESOURCE.NAME:</p>
 <ul>
 <li><code>zowe ca7 job-definition delete-resource-count-resource --job JOBA --rn RESOURCE.NAME --schid 42</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe ca7 job-definition delete-resource-count-resource --job JOBA --rn RESOURCE.NAME --schid 42">Copy</button></li>
 </ul>
@@ -10317,7 +10322,7 @@ A = Specifies the job is submitted only if the resource is active on the same sy
 <h4>Examples</h4>
 <ul>
 <li>
-<p>Updates a job named JOBA with resource name <a href="http://RESOURCE.NAME">RESOURCE.NAME</a>, schedule id 42  and job is submitted only if the resource is not active:</p>
+<p>Updates a job named JOBA with resource name RESOURCE.NAME, schedule id 42  and job is submitted only if the resource is not active:</p>
 <ul>
 <li><code>zowe ca7 job-definition update-address-space-resource --job JOBA --rn RESOURCE.NAME --rw I--schid 42</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe ca7 job-definition update-address-space-resource --job JOBA --rn RESOURCE.NAME --rw I--schid 42">Copy</button></li>
 </ul>
@@ -10468,7 +10473,7 @@ Specifies the job is submitted only if the resource is not active.</li>
 <h4>Examples</h4>
 <ul>
 <li>
-<p>Updates a job named JOBA with resource name <a href="http://RESOURCE.NAME">RESOURCE.NAME</a>, schedule id 42 and job is submitted only if the resource is not active:</p>
+<p>Updates a job named JOBA with resource name RESOURCE.NAME, schedule id 42 and job is submitted only if the resource is not active:</p>
 <ul>
 <li><code>zowe ca7 job-definition update-corequisite-resource --jn JOBA --rn RESOURCE.NAME --schid 42 --rw I</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe ca7 job-definition update-corequisite-resource --jn JOBA --rn RESOURCE.NAME --schid 42 --rw I">Copy</button></li>
 </ul>
@@ -10618,7 +10623,7 @@ Notes:The step-name parameter applies to the first occurrence of the stepname th
 <h4>Examples</h4>
 <ul>
 <li>
-<p>Updates a job named JOBA with resource name <a href="http://RESOURCE.NAME">RESOURCE.NAME</a>, of free type F, and schedule id 42 to job with step name JS011:</p>
+<p>Updates a job named JOBA with resource name RESOURCE.NAME, of free type F, and schedule id 42 to job with step name JS011:</p>
 <ul>
 <li><code>zowe ca7 job-definition update-exclusive-resource --job JOBA --rn RESOURCE.NAME --free F --sn JS011 --schid 42</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe ca7 job-definition update-exclusive-resource --job JOBA --rn RESOURCE.NAME --free F --sn JS011 --schid 42">Copy</button></li>
 </ul>
@@ -11521,7 +11526,7 @@ Notes:The step-name parameter applies to the first occurrence of the stepname th
 <h4>Examples</h4>
 <ul>
 <li>
-<p>Updates a job named JOBA with resource name <a href="http://RESOURCE.NAME">RESOURCE.NAME</a>, of free type F, and schedule id 42 to job with step name JS011:</p>
+<p>Updates a job named JOBA with resource name RESOURCE.NAME, of free type F, and schedule id 42 to job with step name JS011:</p>
 <ul>
 <li><code>zowe ca7 job-definition update-resource-count-resource --job JOBA --rn RESOURCE.NAME --free F --sn JS011 --schid 42</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe ca7 job-definition update-resource-count-resource --job JOBA --rn RESOURCE.NAME --free F --sn JS011 --schid 42">Copy</button></li>
 </ul>
@@ -19104,7 +19109,7 @@ Allowed values: http, https</p>
 <h4>Examples</h4>
 <ul>
 <li>
-<p>Define a URIMAP named URIMAPA to the region named MYREGION in the CSD group MYGRP where the host is <a href="http://www.example.com">www.example.com</a> and the path is /example/index.html:</p>
+<p>Define a URIMAP named URIMAPA to the region named MYREGION in the CSD group MYGRP where the host is www.example.com and the path is /example/index.html:</p>
 <ul>
 <li><code>zowe cics define urimap-client URIMAPA MYGRP --urimap-path /example/index.html --urimap-host www.example.com --region-name MYREGION</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe cics define urimap-client URIMAPA MYGRP --urimap-path /example/index.html --urimap-host www.example.com --region-name MYREGION">Copy</button></li>
 </ul>
@@ -19302,7 +19307,7 @@ Allowed values: http, https</p>
 <h4>Examples</h4>
 <ul>
 <li>
-<p>Define a URIMAP named URIMAPA for the pipeline named PIPE123 to the region named MYREGION in the CSD group MYGRP where the host is <a href="http://www.example.com">www.example.com</a> and the path is /example/index.html:</p>
+<p>Define a URIMAP named URIMAPA for the pipeline named PIPE123 to the region named MYREGION in the CSD group MYGRP where the host is www.example.com and the path is /example/index.html:</p>
 <ul>
 <li><code>zowe cics define urimap-pipeline URIMAPA MYGRP --urimap-path /example/index.html --urimap-host www.example.com --pipeline-name PIPE123 --region-name MYREGION</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe cics define urimap-pipeline URIMAPA MYGRP --urimap-path /example/index.html --urimap-host www.example.com --pipeline-name PIPE123 --region-name MYREGION">Copy</button></li>
 </ul>
@@ -19488,7 +19493,7 @@ Allowed values: http, https</p>
 <h4>Examples</h4>
 <ul>
 <li>
-<p>Define a URIMAP named URIMAPA for the program named PGM123 to the region named MYREGION in the CSD group MYGRP where the host is <a href="http://www.example.com">www.example.com</a> and the path is /example/index.html:</p>
+<p>Define a URIMAP named URIMAPA for the program named PGM123 to the region named MYREGION in the CSD group MYGRP where the host is www.example.com and the path is /example/index.html:</p>
 <ul>
 <li><code>zowe cics define urimap-server URIMAPA MYGRP --urimap-path /example/index.html --urimap-host www.example.com --program-name PGM123 --region-name MYREGION</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe cics define urimap-server URIMAPA MYGRP --urimap-path /example/index.html --urimap-host www.example.com --program-name PGM123 --region-name MYREGION">Copy</button></li>
 </ul>
@@ -22048,43 +22053,43 @@ Allowed values: http, https</p>
 <h4>Examples</h4>
 <ul>
 <li>
-<p>Initialize configuration files in your home &quot;~/.zowe&quot; directory.:</p>
+<p>Initialize configuration files in your home &quot;~/.zowe&quot; directory:</p>
 <ul>
 <li><code>zowe config init --global-config</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe config init --global-config">Copy</button></li>
 </ul>
 </li>
 <li>
-<p>Do a dry run of initializing configuration files in your home &quot;~/.zowe&quot; directory.:</p>
+<p>Do a dry run of initializing configuration files in your home &quot;~/.zowe&quot; directory:</p>
 <ul>
 <li><code>zowe config init --global-config --dry-run</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe config init --global-config --dry-run">Copy</button></li>
 </ul>
 </li>
 <li>
-<p>Initialize the user config files.:</p>
+<p>Initialize the user config files:</p>
 <ul>
 <li><code>zowe config init --user-config</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe config init --user-config">Copy</button></li>
 </ul>
 </li>
 <li>
-<p>Initialize the user config files and do not prompt for secure values.:</p>
+<p>Initialize the user config files and do not prompt for secure values:</p>
 <ul>
 <li><code>zowe config init --user-config --prompt false</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe config init --user-config --prompt false">Copy</button></li>
 </ul>
 </li>
 <li>
-<p>Do a dry run of initializing the user config files and do not prompt for secure values.:</p>
+<p>Do a dry run of initializing the user config files and do not prompt for secure values:</p>
 <ul>
 <li><code>zowe config init --user-config --prompt false --dry-run</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe config init --user-config --prompt false --dry-run">Copy</button></li>
 </ul>
 </li>
 <li>
-<p>Overwrite any existing global config files.:</p>
+<p>Overwrite any existing global config files:</p>
 <ul>
 <li><code>zowe config init --global-config --overwrite --for-sure</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe config init --global-config --overwrite --for-sure">Copy</button></li>
 </ul>
 </li>
 <li>
-<p>Overwrite any existing user config files.:</p>
+<p>Overwrite any existing user config files:</p>
 <ul>
 <li><code>zowe config init --user-config --overwrite --for-sure</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe config init --user-config --overwrite --for-sure">Copy</button></li>
 </ul>
@@ -22121,31 +22126,31 @@ Allowed values: http, https</p>
 <h4>Examples</h4>
 <ul>
 <li>
-<p>List property names for a specified config property.:</p>
+<p>List property names for a specified config property:</p>
 <ul>
 <li><code>zowe config list &quot;defaults&quot;</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe config list &quot;defaults&quot;">Copy</button></li>
 </ul>
 </li>
 <li>
-<p>List only root level property names for a specified config property.:</p>
+<p>List only root level property names for a specified config property:</p>
 <ul>
 <li><code>zowe config list &quot;defaults&quot; --root</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe config list &quot;defaults&quot; --root">Copy</button></li>
 </ul>
 </li>
 <li>
-<p>List config properties by separating them by their respective config file locations.:</p>
+<p>List config properties by separating them by their respective config file locations:</p>
 <ul>
 <li><code>zowe config list --locations</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe config list --locations">Copy</button></li>
 </ul>
 </li>
 <li>
-<p>List only the root level configuration property names.:</p>
+<p>List only the root level configuration property names:</p>
 <ul>
 <li><code>zowe config list --root</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe config list --root">Copy</button></li>
 </ul>
 </li>
 <li>
-<p>List only the root level configuration properties by separating them by their respective config file locations.:</p>
+<p>List only the root level configuration properties by separating them by their respective config file locations:</p>
 <ul>
 <li><code>zowe config list --locations --root</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe config list --locations --root">Copy</button></li>
 </ul>
@@ -22158,7 +22163,7 @@ Allowed values: http, https</p>
 <h4>Examples</h4>
 <ul>
 <li>
-<p>Display profile paths.:</p>
+<p>Display profile paths:</p>
 <ul>
 <li><code>zowe config profiles</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe config profiles">Copy</button></li>
 </ul>
@@ -22171,7 +22176,7 @@ Allowed values: http, https</p>
 <h4>Examples</h4>
 <ul>
 <li>
-<p>Display the JSON schema for the config.:</p>
+<p>Display the JSON schema for the config:</p>
 <ul>
 <li><code>zowe config schema</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe config schema">Copy</button></li>
 </ul>
@@ -22205,13 +22210,13 @@ Allowed values: http, https</p>
 <h4>Examples</h4>
 <ul>
 <li>
-<p>Secure the properties in global config.:</p>
+<p>Secure the properties in global config:</p>
 <ul>
 <li><code>zowe config secure --global-config</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe config secure --global-config">Copy</button></li>
 </ul>
 </li>
 <li>
-<p>Secure the properties in user config.:</p>
+<p>Secure the properties in user config:</p>
 <ul>
 <li><code>zowe config secure --user-config</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe config secure --user-config">Copy</button></li>
 </ul>
@@ -22275,19 +22280,19 @@ Allowed values: http, https</p>
 <h4>Examples</h4>
 <ul>
 <li>
-<p>Set the property in global config.:</p>
+<p>Set the property in global config:</p>
 <ul>
 <li><code>zowe config set &quot;profiles.host1.profiles.service1.properties.setting&quot; &quot;value&quot; --global-config</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe config set &quot;profiles.host1.profiles.service1.properties.setting&quot; &quot;value&quot; --global-config">Copy</button></li>
 </ul>
 </li>
 <li>
-<p>Set the property in user config.:</p>
+<p>Set the property in user config:</p>
 <ul>
 <li><code>zowe config set &quot;profiles.host1.profiles.service2.properties.setting&quot; &quot;value&quot; --user-config</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe config set &quot;profiles.host1.profiles.service2.properties.setting&quot; &quot;value&quot; --user-config">Copy</button></li>
 </ul>
 </li>
 <li>
-<p>Set property value to JSON.:</p>
+<p>Set property value to JSON:</p>
 <ul>
 <li><code>zowe config set &quot;profiles.host1.profiles.service3.properties.setting&quot; &quot;{&quot;property&quot;:&quot;value&quot;}&quot; --json</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe config set &quot;profiles.host1.profiles.service3.properties.setting&quot; &quot;{&quot;property&quot;:&quot;value&quot;}&quot; --json">Copy</button></li>
 </ul>
@@ -22296,6 +22301,18 @@ Allowed values: http, https</p>
 <p>Store the property value:</p>
 <ul>
 <li><code>zowe config set &quot;profiles.host1.profiles.service1.properties.setting&quot; &quot;value&quot; --secure</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe config set &quot;profiles.host1.profiles.service1.properties.setting&quot; &quot;value&quot; --secure">Copy</button></li>
+</ul>
+</li>
+<li>
+<p>Set a default zosmf profile:</p>
+<ul>
+<li><code>zowe config set &quot;defaults.zosmf&quot; &quot;zosmfProfileName&quot;</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe config set &quot;defaults.zosmf&quot; &quot;zosmfProfileName&quot;">Copy</button></li>
+</ul>
+</li>
+<li>
+<p>Set a default tso profile:</p>
+<ul>
+<li><code>zowe config set &quot;defaults.tso&quot; &quot;tsoProfileName&quot;</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe config set &quot;defaults.tso&quot; &quot;tsoProfileName&quot;">Copy</button></li>
 </ul>
 </li>
 </ul>
@@ -23291,7 +23308,7 @@ Allowed values: http, https</p>
 <a name="zowe_endevor-bridge-for-git_build"></a><h2><a href="#zowe">zowe</a> › <a href="#zowe_endevor-bridge-for-git">endevor-bridge-for-git</a> › <a href="#zowe_endevor-bridge-for-git_build">build</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
 <p>Build changes from git local repository in Endevor</p>
 <a class="cmd-anchor" name="zowe_endevor-bridge-for-git_build_execute"></a><h3><a href="#zowe">zowe</a> › <a href="#zowe_endevor-bridge-for-git">endevor-bridge-for-git</a> › <a href="#zowe_endevor-bridge-for-git_build">build</a> › <a href="#zowe_endevor-bridge-for-git_build_execute">execute</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h3>
-<p>Build changes against remote git repository's Endevor Bridge for Git synchronized branch, using work area or build <a href="http://subsystem.It">subsystem.It</a> does not support autogen for building dependencies.</p>
+<p>Build changes against remote git repository's Endevor Bridge for Git synchronized branch, using work area or build subsystem.It does not support autogen for building dependencies.</p>
 <h4>Usage</h4>
 <p>zowe endevor-bridge-for-git build execute [options]</p>
 <h4>Required Options</h4>
@@ -38054,19 +38071,19 @@ Recommended replacement: The 'config init' command</p>
 <h4>Examples</h4>
 <ul>
 <li>
-<p>Create a profile called 'base1' to connect to host <a href="http://example.com">example.com</a> and port 443:</p>
+<p>Create a profile called 'base1' to connect to host example.com and port 443:</p>
 <ul>
 <li><code>zowe profiles create base-profile base1 --host example.com --port 443 --user admin --password 123456</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe profiles create base-profile base1 --host example.com --port 443 --user admin --password 123456">Copy</button></li>
 </ul>
 </li>
 <li>
-<p>Create a profile called 'base2' to connect to host <a href="http://example.com">example.com</a> (default port - 443) and allow self-signed certificates:</p>
+<p>Create a profile called 'base2' to connect to host example.com (default port - 443) and allow self-signed certificates:</p>
 <ul>
 <li><code>zowe profiles create base-profile base2 --host example.com --user admin --password 123456 --reject-unauthorized false</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe profiles create base-profile base2 --host example.com --user admin --password 123456 --reject-unauthorized false">Copy</button></li>
 </ul>
 </li>
 <li>
-<p>Create a profile called 'base3' to connect to host <a href="http://example.com">example.com</a> and port 1443,  not specifying a username or password so they are not stored on disk; these will need to be specified on every command:</p>
+<p>Create a profile called 'base3' to connect to host example.com and port 1443,  not specifying a username or password so they are not stored on disk; these will need to be specified on every command:</p>
 <ul>
 <li><code>zowe profiles create base-profile base3 --host example.com --port 1443</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe profiles create base-profile base3 --host example.com --port 1443">Copy</button></li>
 </ul>
@@ -38238,7 +38255,7 @@ Allowed values: http, https</p>
 <h4>Examples</h4>
 <ul>
 <li>
-<p>Create a profile for View™ Plug-in for Zowe CLI named 'myProfile' to connect to '<a href="http://mf.company.org">mf.company.org</a>' over HTTP on port 80 using the 'johndoe' account.:</p>
+<p>Create a profile for View™ Plug-in for Zowe CLI named 'myProfile' to connect to 'mf.company.org' over HTTP on port 80 using the 'johndoe' account.:</p>
 <ul>
 <li><code>zowe profiles create caview-profile myProfile --hostname mf.company.org --protocol http --port 80 --username johndoe --password secret</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe profiles create caview-profile myProfile --hostname mf.company.org --protocol http --port 80 --username johndoe --password secret">Copy</button></li>
 </ul>
@@ -43794,6 +43811,12 @@ Allowed values: http, https</p>
 </ul>
 </li>
 <li>
+<p><code>--browser-view</code> | <code>--bv</code> <em>(boolean)</em></p>
+<ul>
+<li>Opens the diffs between two given files in browser</li>
+</ul>
+</li>
+<li>
 <p><code>--response-timeout</code> | <code>--rto</code> <em>(number)</em></p>
 <ul>
 <li>The maximum amount of time in seconds the z/OSMF Files TSO servlet should run before returning a response. Any request exceeding this amount of time will be terminated and return an error. Allowed values: 5 - 600</li>
@@ -43909,6 +43932,862 @@ Allowed values: http, https</p>
 <p>Compare the contents of the data set members &quot;sys1.samplib(antptso)&quot; and &quot;sys1.samplib(antxtso)&quot; without sequence numbers:</p>
 <ul>
 <li><code>zowe zos-files compare data-set &quot;sys1.samplib(antptso)&quot; &quot;sys1.samplib(antxtso)&quot; --no-seqnum</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe zos-files compare data-set &quot;sys1.samplib(antptso)&quot; &quot;sys1.samplib(antxtso)&quot; --no-seqnum">Copy</button></li>
+</ul>
+</li>
+</ul>
+<a class="cmd-anchor" name="zowe_zos-files_compare_local-file-data-set"></a><h3><a href="#zowe">zowe</a> › <a href="#zowe_zos-files">zos-files</a> › <a href="#zowe_zos-files_compare">compare</a> › <a href="#zowe_zos-files_compare_local-file-data-set">local-file-data-set</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h3>
+<p>Compare content of a local file and a z/os dataset on your terminal (stdout).</p>
+<h4>Usage</h4>
+<p>zowe zos-files compare local-file-data-set &lt;localFilePath&gt; &lt;dataSetName&gt; [options]</p>
+<h4>Positional Arguments</h4>
+<ul>
+<li>
+<p><code>localFilePath</code>		 <em>(string)</em></p>
+<ul>
+<li>The path of the local file  you want to compare.</li>
+</ul>
+</li>
+<li>
+<p><code>dataSetName</code>		 <em>(string)</em></p>
+<ul>
+<li>The name of the data set you want to compare.</li>
+</ul>
+</li>
+</ul>
+<h4>Options</h4>
+<ul>
+<li>
+<p><code>--binary</code> | <code>-b</code> <em>(boolean)</em></p>
+<ul>
+<li>Transfer the content of the first data set in binary mode (no EBCDIC to ASCII conversion). If binary mode is set and the binary2 flag is not set then both datasets are transferred in binary mode.</li>
+</ul>
+</li>
+<li>
+<p><code>--encoding</code> | <code>--ec</code> <em>(string)</em></p>
+<ul>
+<li>Transfer the content of the first data set with encoding mode, which means that data conversion is performed using the file encoding specified. If encoding mode is set and the encoding2 flag is not set both data sets are transferred in encoding mode.</li>
+</ul>
+</li>
+<li>
+<p><code>--record</code> | <code>-r</code> <em>(boolean)</em></p>
+<ul>
+<li>Transfer the content for the first data set in record mode, which means that no data conversion is performed and the record length is prepended to the data. The data transfer process returns each line as-is, without translation. No delimiters are added between records. If encoding mode is set and the encoding2 flag is not set both data sets are transferred in encoding mode. This option conflicts with binary mode.</li>
+</ul>
+</li>
+<li>
+<p><code>--volume-serial</code> | <code>--vs</code> <em>(string)</em></p>
+<ul>
+<li>The volume serial (VOLSER) where the first data set resides. You can use this option at any time. However, the VOLSER is required only when the data set is not cataloged on the system. A VOLSER is analogous to a drive name on a PC.</li>
+</ul>
+</li>
+<li>
+<p><code>--seqnum</code> | <code>--sn</code> <em>(boolean)</em></p>
+<ul>
+<li>
+<p>If you are comparing two files that contain sequence numbers, this option controls if the sequences numbers are removed from the end of each string. The default is to keep the sequence numbers. Use the --no-seqnum option to not include them.</p>
+<p>Default value: true</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--context-lines</code> | <code>--cl</code> <em>(number)</em></p>
+<ul>
+<li>The number of context lines that display before and after detected non-matching lines. By default all matching lines display. If you want to limit the amount of data returned to only lines with differences use the context lines option to reduce the matching lines to only those before and after non-matching lines. Using the value of 0 strips all matching lines.</li>
+</ul>
+</li>
+<li>
+<p><code>--browser-view</code> | <code>--bv</code> <em>(boolean)</em></p>
+<ul>
+<li>Opens the diffs between two given files in browser</li>
+</ul>
+</li>
+<li>
+<p><code>--response-timeout</code> | <code>--rto</code> <em>(number)</em></p>
+<ul>
+<li>The maximum amount of time in seconds the z/OSMF Files TSO servlet should run before returning a response. Any request exceeding this amount of time will be terminated and return an error. Allowed values: 5 - 600</li>
+</ul>
+</li>
+</ul>
+<h4>Zosmf Connection Options</h4>
+<ul>
+<li>
+<p><code>--host</code> | <code>-H</code> <em>(string)</em></p>
+<ul>
+<li>The z/OSMF server host name.</li>
+</ul>
+</li>
+<li>
+<p><code>--port</code> | <code>-P</code> <em>(number)</em></p>
+<ul>
+<li>
+<p>The z/OSMF server port.</p>
+<p>Default value: 443</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--user</code> | <code>-u</code> <em>(string)</em></p>
+<ul>
+<li>Mainframe (z/OSMF) user name, which can be the same as your TSO login.</li>
+</ul>
+</li>
+<li>
+<p><code>--password</code> | <code>--pass</code> | <code>--pw</code> <em>(string)</em></p>
+<ul>
+<li>Mainframe (z/OSMF) password, which can be the same as your TSO password.</li>
+</ul>
+</li>
+<li>
+<p><code>--reject-unauthorized</code> | <code>--ru</code> <em>(boolean)</em></p>
+<ul>
+<li>
+<p>Reject self-signed certificates.</p>
+<p>Default value: true</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--base-path</code> | <code>--bp</code> <em>(string)</em></p>
+<ul>
+<li>The base path for your API mediation layer instance. Specify this option to prepend the base path to all z/OSMF resources when making REST requests. Do not specify this option if you are not using an API mediation layer.</li>
+</ul>
+</li>
+<li>
+<p><code>--protocol</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>The protocol used (HTTP or HTTPS)</p>
+<p>Default value: https<br>
+Allowed values: http, https</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--cert-file</code> <em>(local file path)</em></p>
+<ul>
+<li>The file path to a certificate file to use for authentication</li>
+</ul>
+</li>
+<li>
+<p><code>--cert-key-file</code> <em>(local file path)</em></p>
+<ul>
+<li>The file path to a certificate key file to use for authentication</li>
+</ul>
+</li>
+</ul>
+<h4>Profile Options</h4>
+<ul>
+<li>
+<p><code>--zosmf-profile</code> | <code>--zosmf-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (zosmf) profile to load for this command execution.</li>
+</ul>
+</li>
+<li>
+<p><code>--base-profile</code> | <code>--base-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (base) profile to load for this command execution.</li>
+</ul>
+</li>
+</ul>
+<h4>Base Connection Options</h4>
+<ul>
+<li>
+<p><code>--token-type</code> | <code>--tt</code> <em>(string)</em></p>
+<ul>
+<li>The type of token to get and use for the API. Omit this option to use the default token type, which is provided by 'zowe auth login'.</li>
+</ul>
+</li>
+<li>
+<p><code>--token-value</code> | <code>--tv</code> <em>(string)</em></p>
+<ul>
+<li>The value of the token to pass to the API.</li>
+</ul>
+</li>
+</ul>
+<h4>Examples</h4>
+<ul>
+<li>
+<p>Compare the contents of the local file and the data set member &quot;./a.txt&quot; and &quot;sys1.samplib(antxtso)&quot;:</p>
+<ul>
+<li><code>zowe zos-files compare local-file-data-set &quot;./a.txt&quot; &quot;sys1.samplib(antxtso)&quot;</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe zos-files compare local-file-data-set &quot;./a.txt&quot; &quot;sys1.samplib(antxtso)&quot;">Copy</button></li>
+</ul>
+</li>
+<li>
+<p>Compare the contents of the local file and the data set member &quot;./a.txt&quot; and &quot;sys1.samplib(antxtso)&quot;without sequence numbers:</p>
+<ul>
+<li><code>zowe zos-files compare local-file-data-set &quot;./a.txt&quot; &quot;sys1.samplib(antxtso)&quot; --no-seqnum</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe zos-files compare local-file-data-set &quot;./a.txt&quot; &quot;sys1.samplib(antxtso)&quot; --no-seqnum">Copy</button></li>
+</ul>
+</li>
+</ul>
+<a class="cmd-anchor" name="zowe_zos-files_compare_local-file-spool-dd"></a><h3><a href="#zowe">zowe</a> › <a href="#zowe_zos-files">zos-files</a> › <a href="#zowe_zos-files_compare">compare</a> › <a href="#zowe_zos-files_compare_local-file-spool-dd">local-file-spool-dd</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h3>
+<p>Compare content of a local-file and a spool-dd on your terminal (stdout).</p>
+<h4>Usage</h4>
+<p>zowe zos-files compare local-file-spool-dd &lt;localFilePath&gt; &lt;spoolDescription&gt; [options]</p>
+<h4>Positional Arguments</h4>
+<ul>
+<li>
+<p><code>localFilePath</code>		 <em>(string)</em></p>
+<ul>
+<li>The path of the local file  you want to compare.</li>
+</ul>
+</li>
+<li>
+<p><code>spoolDescription</code>		 <em>(string)</em></p>
+<ul>
+<li>The name of the job with the id of spool dd</li>
+</ul>
+</li>
+</ul>
+<h4>Options</h4>
+<ul>
+<li>
+<p><code>--seqnum</code> | <code>--sn</code> <em>(boolean)</em></p>
+<ul>
+<li>
+<p>If you are comparing two files that contain sequence numbers, this option controls if the sequences numbers are removed from the end of each string. The default is to keep the sequence numbers. Use the --no-seqnum option to not include them.</p>
+<p>Default value: true</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--context-lines</code> | <code>--cl</code> <em>(number)</em></p>
+<ul>
+<li>The number of context lines that display before and after detected non-matching lines. By default all matching lines display. If you want to limit the amount of data returned to only lines with differences use the context lines option to reduce the matching lines to only those before and after non-matching lines. Using the value of 0 strips all matching lines.</li>
+</ul>
+</li>
+<li>
+<p><code>--browser-view</code> | <code>--bv</code> <em>(boolean)</em></p>
+<ul>
+<li>Opens the diffs between two given files in browser</li>
+</ul>
+</li>
+<li>
+<p><code>--response-timeout</code> | <code>--rto</code> <em>(number)</em></p>
+<ul>
+<li>The maximum amount of time in seconds the z/OSMF Files TSO servlet should run before returning a response. Any request exceeding this amount of time will be terminated and return an error. Allowed values: 5 - 600</li>
+</ul>
+</li>
+</ul>
+<h4>Zosmf Connection Options</h4>
+<ul>
+<li>
+<p><code>--host</code> | <code>-H</code> <em>(string)</em></p>
+<ul>
+<li>The z/OSMF server host name.</li>
+</ul>
+</li>
+<li>
+<p><code>--port</code> | <code>-P</code> <em>(number)</em></p>
+<ul>
+<li>
+<p>The z/OSMF server port.</p>
+<p>Default value: 443</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--user</code> | <code>-u</code> <em>(string)</em></p>
+<ul>
+<li>Mainframe (z/OSMF) user name, which can be the same as your TSO login.</li>
+</ul>
+</li>
+<li>
+<p><code>--password</code> | <code>--pass</code> | <code>--pw</code> <em>(string)</em></p>
+<ul>
+<li>Mainframe (z/OSMF) password, which can be the same as your TSO password.</li>
+</ul>
+</li>
+<li>
+<p><code>--reject-unauthorized</code> | <code>--ru</code> <em>(boolean)</em></p>
+<ul>
+<li>
+<p>Reject self-signed certificates.</p>
+<p>Default value: true</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--base-path</code> | <code>--bp</code> <em>(string)</em></p>
+<ul>
+<li>The base path for your API mediation layer instance. Specify this option to prepend the base path to all z/OSMF resources when making REST requests. Do not specify this option if you are not using an API mediation layer.</li>
+</ul>
+</li>
+<li>
+<p><code>--protocol</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>The protocol used (HTTP or HTTPS)</p>
+<p>Default value: https<br>
+Allowed values: http, https</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--cert-file</code> <em>(local file path)</em></p>
+<ul>
+<li>The file path to a certificate file to use for authentication</li>
+</ul>
+</li>
+<li>
+<p><code>--cert-key-file</code> <em>(local file path)</em></p>
+<ul>
+<li>The file path to a certificate key file to use for authentication</li>
+</ul>
+</li>
+</ul>
+<h4>Profile Options</h4>
+<ul>
+<li>
+<p><code>--zosmf-profile</code> | <code>--zosmf-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (zosmf) profile to load for this command execution.</li>
+</ul>
+</li>
+<li>
+<p><code>--base-profile</code> | <code>--base-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (base) profile to load for this command execution.</li>
+</ul>
+</li>
+</ul>
+<h4>Base Connection Options</h4>
+<ul>
+<li>
+<p><code>--token-type</code> | <code>--tt</code> <em>(string)</em></p>
+<ul>
+<li>The type of token to get and use for the API. Omit this option to use the default token type, which is provided by 'zowe auth login'.</li>
+</ul>
+</li>
+<li>
+<p><code>--token-value</code> | <code>--tv</code> <em>(string)</em></p>
+<ul>
+<li>The value of the token to pass to the API.</li>
+</ul>
+</li>
+</ul>
+<h4>Examples</h4>
+<ul>
+<li>
+<p>Compare the contents of a local-file and a spool dd &quot;./a.txt&quot;  &quot;jobName:jobId:spoolId&quot;:</p>
+<ul>
+<li><code>zowe zos-files compare local-file-spool-dd &quot;./a.txt&quot; &quot;jobName:jobId:spoolId&quot;</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe zos-files compare local-file-spool-dd &quot;./a.txt&quot; &quot;jobName:jobId:spoolId&quot;">Copy</button></li>
+</ul>
+</li>
+<li>
+<p>Compare the contents of a local-file and a spool dd  &quot;./a.txt&quot;  &quot;jobName:jobId:spoolId&quot;without sequence numbers:</p>
+<ul>
+<li><code>zowe zos-files compare local-file-spool-dd &quot;./a.txt&quot; &quot;jobName:jobId:spoolId&quot; --no-seqnum</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe zos-files compare local-file-spool-dd &quot;./a.txt&quot; &quot;jobName:jobId:spoolId&quot; --no-seqnum">Copy</button></li>
+</ul>
+</li>
+</ul>
+<a class="cmd-anchor" name="zowe_zos-files_compare_local-file-uss-file"></a><h3><a href="#zowe">zowe</a> › <a href="#zowe_zos-files">zos-files</a> › <a href="#zowe_zos-files_compare">compare</a> › <a href="#zowe_zos-files_compare_local-file-uss-file">local-file-uss-file</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h3>
+<p>Compare content of a local file and a z/os uss file on your terminal (stdout).</p>
+<h4>Usage</h4>
+<p>zowe zos-files compare local-file-uss-file &lt;localFilePath&gt; &lt;ussFilePath&gt; [options]</p>
+<h4>Positional Arguments</h4>
+<ul>
+<li>
+<p><code>localFilePath</code>		 <em>(string)</em></p>
+<ul>
+<li>The path of the local file  you want to compare.</li>
+</ul>
+</li>
+<li>
+<p><code>ussFilePath</code>		 <em>(string)</em></p>
+<ul>
+<li>The path of the uss file set you want to compare.</li>
+</ul>
+</li>
+</ul>
+<h4>Options</h4>
+<ul>
+<li>
+<p><code>--binary</code> | <code>-b</code> <em>(boolean)</em></p>
+<ul>
+<li>Transfer the content of the first data set in binary mode (no EBCDIC to ASCII conversion). If binary mode is set and the binary2 flag is not set then both datasets are transferred in binary mode.</li>
+</ul>
+</li>
+<li>
+<p><code>--encoding</code> | <code>--ec</code> <em>(string)</em></p>
+<ul>
+<li>Transfer the content of the first data set with encoding mode, which means that data conversion is performed using the file encoding specified. If encoding mode is set and the encoding2 flag is not set both data sets are transferred in encoding mode.</li>
+</ul>
+</li>
+<li>
+<p><code>--seqnum</code> | <code>--sn</code> <em>(boolean)</em></p>
+<ul>
+<li>
+<p>If you are comparing two files that contain sequence numbers, this option controls if the sequences numbers are removed from the end of each string. The default is to keep the sequence numbers. Use the --no-seqnum option to not include them.</p>
+<p>Default value: true</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--context-lines</code> | <code>--cl</code> <em>(number)</em></p>
+<ul>
+<li>The number of context lines that display before and after detected non-matching lines. By default all matching lines display. If you want to limit the amount of data returned to only lines with differences use the context lines option to reduce the matching lines to only those before and after non-matching lines. Using the value of 0 strips all matching lines.</li>
+</ul>
+</li>
+<li>
+<p><code>--browser-view</code> | <code>--bv</code> <em>(boolean)</em></p>
+<ul>
+<li>Opens the diffs between two given files in browser</li>
+</ul>
+</li>
+<li>
+<p><code>--response-timeout</code> | <code>--rto</code> <em>(number)</em></p>
+<ul>
+<li>The maximum amount of time in seconds the z/OSMF Files TSO servlet should run before returning a response. Any request exceeding this amount of time will be terminated and return an error. Allowed values: 5 - 600</li>
+</ul>
+</li>
+</ul>
+<h4>Zosmf Connection Options</h4>
+<ul>
+<li>
+<p><code>--host</code> | <code>-H</code> <em>(string)</em></p>
+<ul>
+<li>The z/OSMF server host name.</li>
+</ul>
+</li>
+<li>
+<p><code>--port</code> | <code>-P</code> <em>(number)</em></p>
+<ul>
+<li>
+<p>The z/OSMF server port.</p>
+<p>Default value: 443</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--user</code> | <code>-u</code> <em>(string)</em></p>
+<ul>
+<li>Mainframe (z/OSMF) user name, which can be the same as your TSO login.</li>
+</ul>
+</li>
+<li>
+<p><code>--password</code> | <code>--pass</code> | <code>--pw</code> <em>(string)</em></p>
+<ul>
+<li>Mainframe (z/OSMF) password, which can be the same as your TSO password.</li>
+</ul>
+</li>
+<li>
+<p><code>--reject-unauthorized</code> | <code>--ru</code> <em>(boolean)</em></p>
+<ul>
+<li>
+<p>Reject self-signed certificates.</p>
+<p>Default value: true</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--base-path</code> | <code>--bp</code> <em>(string)</em></p>
+<ul>
+<li>The base path for your API mediation layer instance. Specify this option to prepend the base path to all z/OSMF resources when making REST requests. Do not specify this option if you are not using an API mediation layer.</li>
+</ul>
+</li>
+<li>
+<p><code>--protocol</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>The protocol used (HTTP or HTTPS)</p>
+<p>Default value: https<br>
+Allowed values: http, https</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--cert-file</code> <em>(local file path)</em></p>
+<ul>
+<li>The file path to a certificate file to use for authentication</li>
+</ul>
+</li>
+<li>
+<p><code>--cert-key-file</code> <em>(local file path)</em></p>
+<ul>
+<li>The file path to a certificate key file to use for authentication</li>
+</ul>
+</li>
+</ul>
+<h4>Profile Options</h4>
+<ul>
+<li>
+<p><code>--zosmf-profile</code> | <code>--zosmf-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (zosmf) profile to load for this command execution.</li>
+</ul>
+</li>
+<li>
+<p><code>--base-profile</code> | <code>--base-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (base) profile to load for this command execution.</li>
+</ul>
+</li>
+</ul>
+<h4>Base Connection Options</h4>
+<ul>
+<li>
+<p><code>--token-type</code> | <code>--tt</code> <em>(string)</em></p>
+<ul>
+<li>The type of token to get and use for the API. Omit this option to use the default token type, which is provided by 'zowe auth login'.</li>
+</ul>
+</li>
+<li>
+<p><code>--token-value</code> | <code>--tv</code> <em>(string)</em></p>
+<ul>
+<li>The value of the token to pass to the API.</li>
+</ul>
+</li>
+</ul>
+<h4>Examples</h4>
+<ul>
+<li>
+<p>Compare the contents of the local file and the uss file &quot;./a.txt&quot; and &quot;/u/user/test.txt&quot;:</p>
+<ul>
+<li><code>zowe zos-files compare local-file-uss-file &quot;./a.txt&quot; &quot;/u/user/test.txt&quot;</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe zos-files compare local-file-uss-file &quot;./a.txt&quot; &quot;/u/user/test.txt&quot;">Copy</button></li>
+</ul>
+</li>
+<li>
+<p>Compare the contents of the local file and the uss file &quot;./a.txt&quot; and &quot;/u/user/test.txt&quot;without sequence numbers:</p>
+<ul>
+<li><code>zowe zos-files compare local-file-uss-file &quot;./a.txt&quot; &quot;/u/user/test.txt&quot; --no-seqnum</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe zos-files compare local-file-uss-file &quot;./a.txt&quot; &quot;/u/user/test.txt&quot; --no-seqnum">Copy</button></li>
+</ul>
+</li>
+</ul>
+<a class="cmd-anchor" name="zowe_zos-files_compare_spool-dd"></a><h3><a href="#zowe">zowe</a> › <a href="#zowe_zos-files">zos-files</a> › <a href="#zowe_zos-files_compare">compare</a> › <a href="#zowe_zos-files_compare_spool-dd">spool-dd</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h3>
+<p>Compare content of two spool dds on your terminal (stdout).</p>
+<h4>Usage</h4>
+<p>zowe zos-files compare spool-dd &lt;spoolDescription1&gt; &lt;spoolDescription2&gt; [options]</p>
+<h4>Positional Arguments</h4>
+<ul>
+<li>
+<p><code>spoolDescription1</code>		 <em>(string)</em></p>
+<ul>
+<li>The name of the first job with the id of spool dd</li>
+</ul>
+</li>
+<li>
+<p><code>spoolDescription2</code>		 <em>(string)</em></p>
+<ul>
+<li>The name of the second job with the id of spool dd</li>
+</ul>
+</li>
+</ul>
+<h4>Options</h4>
+<ul>
+<li>
+<p><code>--context-lines</code> | <code>--cl</code> <em>(number)</em></p>
+<ul>
+<li>The number of context lines that display before and after detected non-matching lines. By default all matching lines display. If you want to limit the amount of data returned to only lines with differences use the context lines option to reduce the matching lines to only those before and after non-matching lines. Using the value of 0 strips all matching lines.</li>
+</ul>
+</li>
+<li>
+<p><code>--browser-view</code> | <code>--bv</code> <em>(boolean)</em></p>
+<ul>
+<li>Opens the diffs between two given files in browser</li>
+</ul>
+</li>
+<li>
+<p><code>--response-timeout</code> | <code>--rto</code> <em>(number)</em></p>
+<ul>
+<li>The maximum amount of time in seconds the z/OSMF Files TSO servlet should run before returning a response. Any request exceeding this amount of time will be terminated and return an error. Allowed values: 5 - 600</li>
+</ul>
+</li>
+</ul>
+<h4>Zosmf Connection Options</h4>
+<ul>
+<li>
+<p><code>--host</code> | <code>-H</code> <em>(string)</em></p>
+<ul>
+<li>The z/OSMF server host name.</li>
+</ul>
+</li>
+<li>
+<p><code>--port</code> | <code>-P</code> <em>(number)</em></p>
+<ul>
+<li>
+<p>The z/OSMF server port.</p>
+<p>Default value: 443</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--user</code> | <code>-u</code> <em>(string)</em></p>
+<ul>
+<li>Mainframe (z/OSMF) user name, which can be the same as your TSO login.</li>
+</ul>
+</li>
+<li>
+<p><code>--password</code> | <code>--pass</code> | <code>--pw</code> <em>(string)</em></p>
+<ul>
+<li>Mainframe (z/OSMF) password, which can be the same as your TSO password.</li>
+</ul>
+</li>
+<li>
+<p><code>--reject-unauthorized</code> | <code>--ru</code> <em>(boolean)</em></p>
+<ul>
+<li>
+<p>Reject self-signed certificates.</p>
+<p>Default value: true</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--base-path</code> | <code>--bp</code> <em>(string)</em></p>
+<ul>
+<li>The base path for your API mediation layer instance. Specify this option to prepend the base path to all z/OSMF resources when making REST requests. Do not specify this option if you are not using an API mediation layer.</li>
+</ul>
+</li>
+<li>
+<p><code>--protocol</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>The protocol used (HTTP or HTTPS)</p>
+<p>Default value: https<br>
+Allowed values: http, https</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--cert-file</code> <em>(local file path)</em></p>
+<ul>
+<li>The file path to a certificate file to use for authentication</li>
+</ul>
+</li>
+<li>
+<p><code>--cert-key-file</code> <em>(local file path)</em></p>
+<ul>
+<li>The file path to a certificate key file to use for authentication</li>
+</ul>
+</li>
+</ul>
+<h4>Profile Options</h4>
+<ul>
+<li>
+<p><code>--zosmf-profile</code> | <code>--zosmf-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (zosmf) profile to load for this command execution.</li>
+</ul>
+</li>
+<li>
+<p><code>--base-profile</code> | <code>--base-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (base) profile to load for this command execution.</li>
+</ul>
+</li>
+</ul>
+<h4>Base Connection Options</h4>
+<ul>
+<li>
+<p><code>--token-type</code> | <code>--tt</code> <em>(string)</em></p>
+<ul>
+<li>The type of token to get and use for the API. Omit this option to use the default token type, which is provided by 'zowe auth login'.</li>
+</ul>
+</li>
+<li>
+<p><code>--token-value</code> | <code>--tv</code> <em>(string)</em></p>
+<ul>
+<li>The value of the token to pass to the API.</li>
+</ul>
+</li>
+</ul>
+<h4>Examples</h4>
+<ul>
+<li>
+<p>Compare the contents of the two spool dds &quot;jobName1:jobId1:spoolId1&quot;  &quot;jobName2:jobId2:spoolId2&quot;:</p>
+<ul>
+<li><code>zowe zos-files compare spool-dd &quot;jobName1:jobId1:spoolId1&quot; &quot;jobName2:jobId2:spoolId2&quot;</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe zos-files compare spool-dd &quot;jobName1:jobId1:spoolId1&quot; &quot;jobName2:jobId2:spoolId2&quot;">Copy</button></li>
+</ul>
+</li>
+<li>
+<p>Compare the contents of the two spool dds &quot;jobName1:jobId1:spoolId1&quot;  &quot;jobName2:jobId2:spoolId2&quot;without sequence numbers:</p>
+<ul>
+<li><code>zowe zos-files compare spool-dd &quot;jobName1:jobId1:spoolId1&quot; &quot;jobName2:jobId2:spoolId2&quot; --no-seqnum</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe zos-files compare spool-dd &quot;jobName1:jobId1:spoolId1&quot; &quot;jobName2:jobId2:spoolId2&quot; --no-seqnum">Copy</button></li>
+</ul>
+</li>
+</ul>
+<a class="cmd-anchor" name="zowe_zos-files_compare_uss-files"></a><h3><a href="#zowe">zowe</a> › <a href="#zowe_zos-files">zos-files</a> › <a href="#zowe_zos-files_compare">compare</a> › <a href="#zowe_zos-files_compare_uss-files">uss-files</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h3>
+<p>Compare the contents of a two uss files on your terminal (stdout). browser.</p>
+<h4>Usage</h4>
+<p>zowe zos-files compare uss-files &lt;ussFilePath1&gt; &lt;ussFilePath2&gt; [options]</p>
+<h4>Positional Arguments</h4>
+<ul>
+<li>
+<p><code>ussFilePath1</code>		 <em>(string)</em></p>
+<ul>
+<li>The path of the first uss file you want to compare.</li>
+</ul>
+</li>
+<li>
+<p><code>ussFilePath2</code>		 <em>(string)</em></p>
+<ul>
+<li>The path of the second uss file you want to compare.</li>
+</ul>
+</li>
+</ul>
+<h4>Options</h4>
+<ul>
+<li>
+<p><code>--binary</code> | <code>-b</code> <em>(boolean)</em></p>
+<ul>
+<li>Transfer the content of the first data set in binary mode (no EBCDIC to ASCII conversion). If binary mode is set and the binary2 flag is not set then both datasets are transferred in binary mode.</li>
+</ul>
+</li>
+<li>
+<p><code>--binary2</code> | <code>--b2</code> <em>(boolean)</em></p>
+<ul>
+<li>Transfer the content of the second data set in binary mode.</li>
+</ul>
+</li>
+<li>
+<p><code>--encoding</code> | <code>--ec</code> <em>(string)</em></p>
+<ul>
+<li>Transfer the content of the first data set with encoding mode, which means that data conversion is performed using the file encoding specified. If encoding mode is set and the encoding2 flag is not set both data sets are transferred in encoding mode.</li>
+</ul>
+</li>
+<li>
+<p><code>--encoding2</code> | <code>--ec2</code> <em>(string)</em></p>
+<ul>
+<li>Transfer the content of the second data set with encoding mode.</li>
+</ul>
+</li>
+<li>
+<p><code>--seqnum</code> | <code>--sn</code> <em>(boolean)</em></p>
+<ul>
+<li>
+<p>If you are comparing two files that contain sequence numbers, this option controls if the sequences numbers are removed from the end of each string. The default is to keep the sequence numbers. Use the --no-seqnum option to not include them.</p>
+<p>Default value: true</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--context-lines</code> | <code>--cl</code> <em>(number)</em></p>
+<ul>
+<li>The number of context lines that display before and after detected non-matching lines. By default all matching lines display. If you want to limit the amount of data returned to only lines with differences use the context lines option to reduce the matching lines to only those before and after non-matching lines. Using the value of 0 strips all matching lines.</li>
+</ul>
+</li>
+<li>
+<p><code>--browser-view</code> | <code>--bv</code> <em>(boolean)</em></p>
+<ul>
+<li>Opens the diffs between two given files in browser</li>
+</ul>
+</li>
+<li>
+<p><code>--response-timeout</code> | <code>--rto</code> <em>(number)</em></p>
+<ul>
+<li>The maximum amount of time in seconds the z/OSMF Files TSO servlet should run before returning a response. Any request exceeding this amount of time will be terminated and return an error. Allowed values: 5 - 600</li>
+</ul>
+</li>
+</ul>
+<h4>Zosmf Connection Options</h4>
+<ul>
+<li>
+<p><code>--host</code> | <code>-H</code> <em>(string)</em></p>
+<ul>
+<li>The z/OSMF server host name.</li>
+</ul>
+</li>
+<li>
+<p><code>--port</code> | <code>-P</code> <em>(number)</em></p>
+<ul>
+<li>
+<p>The z/OSMF server port.</p>
+<p>Default value: 443</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--user</code> | <code>-u</code> <em>(string)</em></p>
+<ul>
+<li>Mainframe (z/OSMF) user name, which can be the same as your TSO login.</li>
+</ul>
+</li>
+<li>
+<p><code>--password</code> | <code>--pass</code> | <code>--pw</code> <em>(string)</em></p>
+<ul>
+<li>Mainframe (z/OSMF) password, which can be the same as your TSO password.</li>
+</ul>
+</li>
+<li>
+<p><code>--reject-unauthorized</code> | <code>--ru</code> <em>(boolean)</em></p>
+<ul>
+<li>
+<p>Reject self-signed certificates.</p>
+<p>Default value: true</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--base-path</code> | <code>--bp</code> <em>(string)</em></p>
+<ul>
+<li>The base path for your API mediation layer instance. Specify this option to prepend the base path to all z/OSMF resources when making REST requests. Do not specify this option if you are not using an API mediation layer.</li>
+</ul>
+</li>
+<li>
+<p><code>--protocol</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>The protocol used (HTTP or HTTPS)</p>
+<p>Default value: https<br>
+Allowed values: http, https</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--cert-file</code> <em>(local file path)</em></p>
+<ul>
+<li>The file path to a certificate file to use for authentication</li>
+</ul>
+</li>
+<li>
+<p><code>--cert-key-file</code> <em>(local file path)</em></p>
+<ul>
+<li>The file path to a certificate key file to use for authentication</li>
+</ul>
+</li>
+</ul>
+<h4>Profile Options</h4>
+<ul>
+<li>
+<p><code>--zosmf-profile</code> | <code>--zosmf-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (zosmf) profile to load for this command execution.</li>
+</ul>
+</li>
+<li>
+<p><code>--base-profile</code> | <code>--base-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (base) profile to load for this command execution.</li>
+</ul>
+</li>
+</ul>
+<h4>Base Connection Options</h4>
+<ul>
+<li>
+<p><code>--token-type</code> | <code>--tt</code> <em>(string)</em></p>
+<ul>
+<li>The type of token to get and use for the API. Omit this option to use the default token type, which is provided by 'zowe auth login'.</li>
+</ul>
+</li>
+<li>
+<p><code>--token-value</code> | <code>--tv</code> <em>(string)</em></p>
+<ul>
+<li>The value of the token to pass to the API.</li>
+</ul>
+</li>
+</ul>
+<h4>Examples</h4>
+<ul>
+<li>
+<p>Compare the contents of the uss file &quot;/u/user/test.txt&quot; and &quot;/u/user/test.txt&quot;:</p>
+<ul>
+<li><code>zowe zos-files compare uss-files &quot;/u/user/test.txt&quot; &quot;/u/user/test.txt&quot;</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe zos-files compare uss-files &quot;/u/user/test.txt&quot; &quot;/u/user/test.txt&quot;">Copy</button></li>
+</ul>
+</li>
+<li>
+<p>Compare the contents of the uss file &quot;/u/user/test.txt&quot; and &quot;/u/user/test.txt&quot; without sequence numbers:</p>
+<ul>
+<li><code>zowe zos-files compare uss-files &quot;/u/user/test.txt&quot; &quot;/u/user/test.txt&quot; --no-seqnum</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe zos-files compare uss-files &quot;/u/user/test.txt&quot; &quot;/u/user/test.txt&quot; --no-seqnum">Copy</button></li>
 </ul>
 </li>
 </ul>
@@ -45649,19 +46528,19 @@ Allowed values: http, https</p>
 <h4>Examples</h4>
 <ul>
 <li>
-<p>Create a VSAM data set named &quot;<a href="http://SOME.DATA.SET.NAME">SOME.DATA.SET.NAME</a>&quot; using default values of INDEXED, 840 KB primary storage and 84 KB secondary storage:</p>
+<p>Create a VSAM data set named &quot;SOME.DATA.SET.NAME&quot; using default values of INDEXED, 840 KB primary storage and 84 KB secondary storage:</p>
 <ul>
 <li><code>zowe zos-files create data-set-vsam SOME.DATA.SET.NAME</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe zos-files create data-set-vsam SOME.DATA.SET.NAME">Copy</button></li>
 </ul>
 </li>
 <li>
-<p>Create a 5 MB LINEAR VSAM data set named &quot;<a href="http://SOME.DATA.SET.NAME">SOME.DATA.SET.NAME</a>&quot; with 1 MB of secondary space. Show the properties of the data set when it is created:</p>
+<p>Create a 5 MB LINEAR VSAM data set named &quot;SOME.DATA.SET.NAME&quot; with 1 MB of secondary space. Show the properties of the data set when it is created:</p>
 <ul>
 <li><code>zowe zos-files create data-set-vsam SOME.DATA.SET.NAME --data-set-organization LINEAR --size 5MB --secondary-space 1 --attributes</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe zos-files create data-set-vsam SOME.DATA.SET.NAME --data-set-organization LINEAR --size 5MB --secondary-space 1 --attributes">Copy</button></li>
 </ul>
 </li>
 <li>
-<p>Create a VSAM data set named &quot;<a href="http://SOME.DATA.SET.NAME">SOME.DATA.SET.NAME</a>&quot;, which is retained for 100 days:</p>
+<p>Create a VSAM data set named &quot;SOME.DATA.SET.NAME&quot;, which is retained for 100 days:</p>
 <ul>
 <li><code>zowe zos-files create data-set-vsam SOME.DATA.SET.NAME --retain-for 100 </code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe zos-files create data-set-vsam SOME.DATA.SET.NAME --retain-for 100 ">Copy</button></li>
 </ul>
@@ -47294,10 +48173,10 @@ Allowed values: http, https</p>
 </ul>
 </li>
 </ul>
-<a class="cmd-anchor" name="zowe_zos-files_download_data-set-matching"></a><h3><a href="#zowe">zowe</a> › <a href="#zowe_zos-files">zos-files</a> › <a href="#zowe_zos-files_download">download</a> › <a href="#zowe_zos-files_download_data-set-matching">data-set-matching</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h3>
+<a class="cmd-anchor" name="zowe_zos-files_download_data-sets-matching"></a><h3><a href="#zowe">zowe</a> › <a href="#zowe_zos-files">zos-files</a> › <a href="#zowe_zos-files_download">download</a> › <a href="#zowe_zos-files_download_data-sets-matching">data-sets-matching</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h3>
 <p>Download all data sets that match a DSLEVEL pattern (see help below). You can use several options to qualify which data sets will be skipped and how the downloaded files will be structured. Data sets that are neither physical sequential nor partitioned data sets (with members) will be excluded.</p>
 <h4>Usage</h4>
-<p>zowe zos-files download data-set-matching &lt;pattern&gt; [options]</p>
+<p>zowe zos-files download data-sets-matching &lt;pattern&gt; [options]</p>
 <h4>Positional Arguments</h4>
 <ul>
 <li>
@@ -47501,13 +48380,13 @@ Allowed values: http, https</p>
 <li>
 <p>Download all data sets beginning with &quot;ibmuser&quot; and ending with &quot;.cntl&quot; or &quot;.jcl&quot; to the local directory &quot;jcl&quot; to files with the extension &quot;.jcl&quot;:</p>
 <ul>
-<li><code>zowe zos-files download data-set-matching &quot;ibmuser.**.cntl, ibmuser.**.jcl&quot; --directory jcl --extension .jcl</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe zos-files download data-set-matching &quot;ibmuser.**.cntl, ibmuser.**.jcl&quot; --directory jcl --extension .jcl">Copy</button></li>
+<li><code>zowe zos-files download data-sets-matching &quot;ibmuser.**.cntl, ibmuser.**.jcl&quot; --directory jcl --extension .jcl</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe zos-files download data-sets-matching &quot;ibmuser.**.cntl, ibmuser.**.jcl&quot; --directory jcl --extension .jcl">Copy</button></li>
 </ul>
 </li>
 <li>
 <p>Download all data sets that begin with &quot;ibmuser.public.project&quot; or &quot;ibmuser.project.private&quot;, excluding those that end in &quot;lib&quot; to the local directory &quot;project&quot;, providing a custom mapping of data set low level qualifier to local file extension:</p>
 <ul>
-<li><code>zowe zos-files download data-set-matching &quot;ibmuser.public.project.*, ibmuser.project.private.*&quot; --exclude-patterns &quot;ibmuser.public.**.*lib&quot; --directory project --extension-map cpgm=c,asmpgm=asm,java=java,chdr=c,jcl=jcl,cntl=jcl</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe zos-files download data-set-matching &quot;ibmuser.public.project.*, ibmuser.project.private.*&quot; --exclude-patterns &quot;ibmuser.public.**.*lib&quot; --directory project --extension-map cpgm=c,asmpgm=asm,java=java,chdr=c,jcl=jcl,cntl=jcl">Copy</button></li>
+<li><code>zowe zos-files download data-sets-matching &quot;ibmuser.public.project.*, ibmuser.project.private.*&quot; --exclude-patterns &quot;ibmuser.public.**.*lib&quot; --directory project --extension-map cpgm=c,asmpgm=asm,java=java,chdr=c,jcl=jcl,cntl=jcl</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe zos-files download data-sets-matching &quot;ibmuser.public.project.*, ibmuser.project.private.*&quot; --exclude-patterns &quot;ibmuser.public.**.*lib&quot; --directory project --extension-map cpgm=c,asmpgm=asm,java=java,chdr=c,jcl=jcl,cntl=jcl">Copy</button></li>
 </ul>
 </li>
 </ul>
@@ -50015,7 +50894,7 @@ Allowed values: http, https</p>
 <h4>Examples</h4>
 <ul>
 <li>
-<p>Upload file contents to a sequential data set named &quot;<a href="http://ibmuser.ps">ibmuser.ps</a>&quot;:</p>
+<p>Upload file contents to a sequential data set named &quot;ibmuser.ps&quot;:</p>
 <ul>
 <li><code>zowe zos-files upload file-to-data-set &quot;file.txt&quot; &quot;ibmuser.ps&quot;</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe zos-files upload file-to-data-set &quot;file.txt&quot; &quot;ibmuser.ps&quot;">Copy</button></li>
 </ul>
@@ -50328,7 +51207,7 @@ Allowed values: http, https</p>
 <h4>Examples</h4>
 <ul>
 <li>
-<p>Stream content from stdin to a sequential data set named &quot;<a href="http://ibmuser.ps">ibmuser.ps</a>&quot; from a Windows console:</p>
+<p>Stream content from stdin to a sequential data set named &quot;ibmuser.ps&quot; from a Windows console:</p>
 <ul>
 <li><code>echo &quot;hello world&quot; |  zowe zos-files upload stdin-to-data-set &quot;ibmuser.ps&quot;</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="echo &quot;hello world&quot; |  zowe zos-files upload stdin-to-data-set &quot;ibmuser.ps&quot;">Copy</button></li>
 </ul>
@@ -56631,7 +57510,7 @@ Allowed values: http, https</p>
 <li>
 <p><code>spoolfileid</code>		 <em>(number)</em></p>
 <ul>
-<li>The spool file ID number for the spool file to view. Use the &quot;zowe zos-jobs list spool-files-by-jobid&quot; command to obtain spool ID <a href="http://numbers.No">numbers.No</a> pre-validation of the ID is performed.</li>
+<li>The spool file ID number for the spool file to view. Use the &quot;zowe zos-jobs list spool-files-by-jobid&quot; command to obtain spool ID numbers.No pre-validation of the ID is performed.</li>
 </ul>
 </li>
 </ul>
