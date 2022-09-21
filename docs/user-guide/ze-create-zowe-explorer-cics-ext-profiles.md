@@ -2,15 +2,15 @@
 
 You need to have a Zowe Explorer profile to use all functions of the extension.
 
-If you already have a Zowe CICS CLI profile, the CICS tree will load the default profile on startup.  
+If you already have a Zowe CICS CLI profile, the CICS tree loads the default profile on startup.  
 
-If you don't have an existing Zowe CICS CLI profile, follow these steps to create one:
+If you do not have an existing Zowe CICS CLI profile, follow these steps to create one:
 
 ## Using Zowe team configuration
 
 1. Select the **+** button in the CICS tree.
 
-2. Select the **Create New CICS profile** option to open your config file.
+2. Select the **Create New CICS profile** option to open the config file.
 
 3. Edit the config file to add a CICS profile.
 
@@ -30,11 +30,11 @@ If you don't have an existing Zowe CICS CLI profile, follow these steps to creat
 
 **Note**: The connection must point to a CICS region's CICS Management Client Interface (CMCI) TCP/IP host name and port number. The region can be a WUI server in a CICSPlex, or else a stand-alone Single Management Application Programming (SMSS) region.  
 
-Configuring a CICS region to have a connection is a system programmer task and more details can be found in [Setting up CMCI with CICSPlex SM](https://www.ibm.com/docs/en/cics-ts/5.3?topic=explorer-setting-up-cmci-cicsplex-sm) or [Setting up CMCI in a stand-alone CICS region](https://www.ibm.com/docs/en/cics-ts/5.3?topic=suace-setting-up-cmci-in-stand-alone-cics-region). If your CMCI connection is configured to use a self-signed certificate that your PC's trust store doesn't recognize, see [Overriding untrusted TLS certificates](ze-override-tls-certs.md).
+Configuring a CICS region to have a connection is a system programmer task and more details can be found in [Setting up CMCI with CICSPlex SM](https://www.ibm.com/docs/en/cics-ts/5.3?topic=explorer-setting-up-cmci-cicsplex-sm) or [Setting up CMCI in a stand-alone CICS region](https://www.ibm.com/docs/en/cics-ts/5.3?topic=suace-setting-up-cmci-in-stand-alone-cics-region). If your CMCI connection is configured to use a self-signed certificate that your PC's trust store does not recognize, see [Overriding untrusted TLS certificates](ze-override-tls-certs.md).
 
 ![Zowe CICS Explorer profiles](../images/ze-cics/create-profile.gif)
 
-To show more than one CICS profiles in the tree, select the **+** button and choose from the list of profiles. Only profiles that not already included in the CICS tree will be shown.
+To show more than one CICS profiles in the tree, select the **+** button and choose from the list of profiles. Only profiles that are not already included in the CICS tree are shown.
 
 ## Updating profiles
 
@@ -58,7 +58,7 @@ To show more than one CICS profiles in the tree, select the **+** button and cho
 
 2. Select the **Update Profile** button to update the session details.
 
-    This will open a panel with fields containing the details that are used to create the connection. You can modify all fields apart from the **Profile Name**.
+    This opens a panel with fields containing the details that are used to create the connection. You can modify all fields apart from the **Profile Name**.
 
 3. Once the details are updated, click the **Update Profile** button to apply the changes to the profile.
 
@@ -66,7 +66,7 @@ To show more than one CICS profiles in the tree, select the **+** button and cho
 
 ## Hiding profiles
 
-1. Right-click a chosen profile to open the menu actions.
+1. Right-click the profile you want to hide to open the menu actions.
 
 2. Select **Hide Profile** to hide it from the CICS view.
 
@@ -78,7 +78,7 @@ To show more than one CICS profiles in the tree, select the **+** button and cho
 
 ### Deleting Zowe team profiles
 
-1. Right-click a chosen profile.
+1. Right-click the team profile you want to delete to open the menu actions.
 
 2. Select **Delete Profile** which opens the config file.
 
@@ -92,7 +92,7 @@ To show more than one CICS profiles in the tree, select the **+** button and cho
 
 ### Deleting Zowe V1 profiles
 
-1. Right-click a chosen profile.
+1. Right-click the Zowe V1 profile you want to delete to open the menu actions.
 
 2. Select **Delete Profile** and click the **Yes** button when prompted to confirm the action of permanently deleting the profile. The functionality deletes the CICS profile from the persistent storage directory `~/.zowe/profiles/cics`.
 
