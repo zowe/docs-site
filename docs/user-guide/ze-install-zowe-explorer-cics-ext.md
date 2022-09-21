@@ -2,9 +2,6 @@
 
 You can install or update the extension from Visual Studio Code Extensions or from a VSIX file.
 
-- [Installing from Visual Studio Code Extensions](#installing-from-visual-studio-code-extensions)
-- [Installing from a VSIX file](#installing-from-a-vsix-file)
-
 ## Installing from Visual Studio Code Extensions
 
 1. Navigate to **Extensions** tab of your VS Code application.

@@ -2,9 +2,6 @@
 
 To help make Zowe Explorer CICS Extension better, you are welcome to contribute in many forms:
 
-- [Checking the source of an error](#checking-the-source-of-an-error)
-- [Filing an issue](#filing-an-issue)
-
 ## Checking the source of an error
 
 Before filing an issue, check if an error is arising from the Zowe Explorer for IBM CICS extension instead of the Zowe Explorer extension. To check the error source, expand the error message and review the `Source` description.

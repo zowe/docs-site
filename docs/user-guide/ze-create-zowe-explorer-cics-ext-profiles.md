@@ -6,7 +6,7 @@ If you already have a Zowe CICS CLI profile, the CICS tree will load the default
 
 If you don't have an existing Zowe CICS CLI profile, follow these steps to create one:
 
-## Using Zowe Team Configuration
+## Using Zowe team configuration
 
 1. Select the **+** button in the CICS tree.
 
