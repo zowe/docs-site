@@ -16,9 +16,10 @@ If you want to configure Zowe for high availability, see [High Availability over
 ## Stage 1: Plan and prepare
 
 Before continuing with the installation, you should be familiar with the following topics:
-   - Zowe's hardware and software requirements
-   - The `zwe` utility used for installing, configuring, and managing Zowe
-   - The configuration file used for Zowe, zowe.yaml
+
+- Zowe's hardware and software requirements
+- The `zwe` utility used for installing, configuring, and managing Zowe
+- The configuration file used for Zowe, `zowe.yaml`
 
 These topics and more are covered in the [Planning the installation](installandconfig.md) page.
 
@@ -59,7 +60,7 @@ After successful installation of either a convenience build or an SMP/E build, t
 
 You can configure the Zowe runtime with one of the following methods depending on your needs. 
 
-- Use a combination of JCL and the [zwe]((installandconfig.md#zwe-server-command) command `zwe init`
+- Use a combination of JCL and the [zwe](installandconfig.md#zwe-server-command) command `zwe init`
 - Use z/OSMF Workflows
 
 **Tip:** We recommend you open the links to this configuration procedure in new tabs.
@@ -78,23 +79,27 @@ Whether you have obtained Zowe from a .pax convenience build, or an SMP/E distri
 
 ## Stage 4: (Optional) Customize the configuration
 
-Now that you have the permissions, certificates, tasks, files and datasets necessary to run Zowe, you may want to customize your Zowe configuration.
-Through customization, you can change attributes such as:
-   - Enabling or disabling components so you only run what you need.
-   - Changing the network ports Zowe runs on to suit your environment.
-   - Customizing the behavior of a component, such as turning on optional features or logging
+Now that you have the permissions, certificates, tasks, files and datasets necessary to run Zowe, you may want to customize your Zowe configuration. Through customization, you can change attributes such as:
+
+- Enabling or disabling components so you only run what you need.
+- Changing the network ports Zowe runs on to suit your environment.
+- Customizing the behavior of a component, such as turning on optional features or logging
    
-It's recommended that the first customization you do is to [set zwe to use the configuration manager](configmgr-using.md)
+It's recommended that the first customization you do is to [set `zwe` to use the Configuration Manager](configmgr-using.md)
 Many other customization options can be found in [Zowe YAML configuration file reference](../appendix/zowe-yaml-configuration.md).
    
 ## Stage 5: (Optional) Installing extensions
 
 You should [start zowe](start-zowe-zos.md) for the first time before installing extensions.
-After it is customized to your liking, you can get even more value from Zowe through installing extensions, whether they are optional components from the Zowe project or from other vendors.
-You can learn how to [install extensions here](../extend/install-configure-zos-extensions.md)
+
+After it is customized based on your needs, you can get more value from Zowe through installing extensions, whether they are optional components from the Zowe project or from other vendors.
+
+You can learn how to install extensions [here](../extend/install-configure-zos-extensions.md)
 
 ## Looking for troubleshooting help?
 
 If you encounter unexpected behavior when installing or verifying the Zowe runtime on z/OS, see the [Troubleshooting](../troubleshoot/troubleshooting.md) section for tips.
+
 If you need more information on `zwe` check [the zwe appendix](../appendix/zwe_server_command_reference/zwe/zwe.md)
+
 If you need more information on the server configuration file, check the [Zowe YAML configuration file reference](../appendix/zowe-yaml-configuration.md).
