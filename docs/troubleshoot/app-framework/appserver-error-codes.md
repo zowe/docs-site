@@ -1143,15 +1143,15 @@ The following error message codes may appear on the app-server log. Use the foll
 
 ### ZWED0141I
 
-  Protocol:%s Port:%s
+  (*HTTP or HTTPS*) listening on *app-server port*
 
   **Reason:**
 
-  TODO
+  Listening on *app-server port*.
 
   **Action:**
 
-  TODO
+  No action required.
 
 
 
