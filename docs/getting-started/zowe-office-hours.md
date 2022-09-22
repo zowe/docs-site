@@ -83,8 +83,35 @@ The following videos walk you through Zowe V2 updates from an extender's perspec
 
 ## Office hours for Zowe consumers
 
-The following office hours walk you through Zowe V2 updates from a consumer's perspective. Listen to the recordings to learn more about the enhancements that are introduced to each core component. The videos will be ready later.
+The following office hours walk you through Zowe V2 updates from a consumer's perspective. Watch these videos to learn more about the enhancements that are introduced to each core component. 
 
-- [V2 Office Hours: Zowe API Mediation Layer for Consumers](https://zoom.us/rec/share/20SzIK38fhPD7RdNVRG0kFtaM5cC7bYsSbPCOQs2v-pJsJn-0GqvlAj-HGanAWuD.wSTgajcTaccDfYkT?startTime=1649260398000)
-- [V2 Office Hours: Zowe CLI for Consumers](https://zoom.us/rec/share/RdrLjSLouMku0AVu0EAvsc7xR_3dJAS8DWddkb7FuErz1Je-JpEW2bvfiFfOMOc.aH9QT4sJjPZhGI5q?startTime=1649865177000)
-- [V2 Office Hours: Zowe Explorers for Consumers](https://zoom.us/rec/share/_obkOAHY6aI2oeQIjSZiNh3zouWtN8WyYmqOLbXN9GSV-W-qqa-nxGK1-276D8ln.kP--nSkSX3qkdBhL?startTime=1650469958000)
+### Zowe component updates
+
+<table rules="none" align="center" width="100%">
+	<tr>
+		<td>
+			<center>
+				<iframe class="embed-responsive-item" id="youtubeplayer" title="Zowe videos" type="text/html" width="200px" height="200" src="https://www.youtube.com/embed/ih52PzPncrw" frameborder="0" webkitallowfullscreen="true" mozallowfullscreen="true" allowfullscreen="true"></iframe>
+				<font color="000000">Zowe CLI</font>
+			</center>
+		</td>
+		<td>
+			<center>
+				<iframe class="embed-responsive-item" id="youtubeplayer" title="Zowe videos" type="text/html" width="200px" height="200" src="https://www.youtube.com/embed/cH9SpWknHsY" frameborder="0" webkitallowfullscreen="true" mozallowfullscreen="true" allowfullscreen="true"></iframe>
+				<font color="000000">Zowe API Mediation Layer</font>
+			</center>
+		</td>
+		<td>
+			<center>
+				<iframe class="embed-responsive-item" id="youtubeplayer" title="Zowe videos" type="text/html" width="200px" height="200" src="https://www.youtube.com/embed/1BFGtv95eC0" frameborder="0" webkitallowfullscreen="true" mozallowfullscreen="true" allowfullscreen="true"></iframe>
+				<font color="000000">Zowe Application Framework</font>
+			</center>
+		</td>
+		<td>
+			<center>
+				<iframe class="embed-responsive-item" id="youtubeplayer" title="Zowe videos" type="text/html" width="200px" height="200" src="https://www.youtube.com/embed/44klrbtNd-8" frameborder="0" webkitallowfullscreen="true" mozallowfullscreen="true" allowfullscreen="true"></iframe>
+				<font color="000000">Zowe Explorer</font>
+			</center>
+		</td>
+	</tr>
+</table>
