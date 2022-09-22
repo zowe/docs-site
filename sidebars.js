@@ -298,8 +298,20 @@ module.exports = {
           type: "category",
           label: "Zowe Explorer extensions",
           items: [
-            "user-guide/ze-cics",
-            "user-guide/ze-ftp",
+            {
+              type: "category",
+              label: "Zowe Explorer CICS Extension",
+              items: [
+                "user-guide/ze-using-zowe-explorer-cics-ext",
+                "user-guide/ze-install-zowe-explorer-cics-ext",
+                "user-guide/ze-create-zowe-explorer-cics-ext-profiles",
+                "user-guide/ze-use-cics-resources",
+                "user-guide/ze-override-tls-certs",
+                "user-guide/ze-usage-tips",
+                "user-guide/ze-provide-feedback-contribute",
+                              ],
+            },
+            "user-guide/ze-ftp"
           ],
         },
         "user-guide/sdks-using",
