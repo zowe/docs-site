@@ -1147,25 +1147,11 @@ The following error message codes may appear on the app-server log. Use the foll
 
   **Reason:**
 
-  Listening on *app-server port*.
+  The app-server is listening on the *app-server port*.
 
   **Action:**
 
   No action required.
-
-
-
-### ZWED0142I
-
-  %s
-
-  **Reason:**
-
-  TODO
-
-  **Action:**
-
-  TODO
 
 
 
@@ -1175,11 +1161,11 @@ The following error message codes may appear on the app-server log. Use the foll
 
   **Reason:**
 
-  TODO
+  Registering API ML with the app-server using the _settings_
 
   **Action:**
 
-  TODO
+  No action required.
 
 
 
@@ -1189,25 +1175,11 @@ The following error message codes may appear on the app-server log. Use the foll
 
   **Reason:**
 
-  TODO
+  Zlux proxy server instance configuration: _config_
 
   **Action:**
 
-  TODO
-
-
-
-### ZWED0145I
-
-  zluxProxyServerInstanceConfig %s
-
-  **Reason:**
-
-  TODO
-
-  **Action:**
-
-  TODO
+  No action required.
 
 
 
@@ -1217,11 +1189,11 @@ The following error message codes may appear on the app-server log. Use the foll
 
   **Reason:**
 
-  TODO
+  The server has added the plugin with _plugin identifier_ to its bootstrapped list of plugins. It also emits a `pluginAdded` event.
 
   **Action:**
 
-  TODO
+  No action required. If the user desires, they may check their list of plugins on the Desktop to see if the plugin was added successfully.
 
 
 
@@ -1231,11 +1203,11 @@ The following error message codes may appear on the app-server log. Use the foll
 
   **Reason:**
 
-  TODO
+  The server is checking if the plugin with _plugin identifier_ exists and will attempt to process it.
 
   **Action:**
 
-  TODO
+  No action required.
 
 
 
@@ -1245,11 +1217,11 @@ The following error message codes may appear on the app-server log. Use the foll
 
   **Reason:**
 
-  TODO
+  The server has found the dependency of the plugin.
 
   **Action:**
 
-  TODO
+  No action required.
 
 
 
@@ -1259,11 +1231,11 @@ The following error message codes may appear on the app-server log. Use the foll
 
   **Reason:**
 
-  TODO
+  Resolved the plugin version for import.
 
   **Action:**
 
-  TODO
+  No action required.
 
 
 
@@ -1273,11 +1245,11 @@ The following error message codes may appear on the app-server log. Use the foll
 
   **Reason:**
 
-  TODO
+  The server has found the dependency of the plugin.
 
   **Action:**
 
-  TODO
+  No action required.
 
 
 
@@ -1287,11 +1259,11 @@ The following error message codes may appear on the app-server log. Use the foll
 
   **Reason:**
 
-  TODO
+  Resolved the plugin version for import.
 
   **Action:**
 
-  TODO
+  No action required.
 
 
 
@@ -1301,11 +1273,11 @@ The following error message codes may appear on the app-server log. Use the foll
 
   **Reason:**
 
-  TODO
+  Graph with broken dependencies of the plugins.
 
   **Action:**
 
-  TODO
+  No action required.
 
 
 
@@ -1315,11 +1287,11 @@ The following error message codes may appear on the app-server log. Use the foll
 
   **Reason:**
 
-  TODO
+  Visiting the broken plugin nodes in the graph.
 
   **Action:**
 
-  TODO
+  No action required.
 
 
 
@@ -1329,11 +1301,11 @@ The following error message codes may appear on the app-server log. Use the foll
 
   **Reason:**
 
-  TODO
+  Following the link formed by the _dependency_ and the _dependency importer_ in the graph.
 
   **Action:**
 
-  TODO
+  No action required.
 
 
 
@@ -1343,11 +1315,11 @@ The following error message codes may appear on the app-server log. Use the foll
 
   **Reason:**
 
-  TODO
+  Graph with broken dependencies of the plugins.
 
   **Action:**
 
-  TODO
+  No action required.
 
 
 
@@ -1357,25 +1329,11 @@ The following error message codes may appear on the app-server log. Use the foll
 
   **Reason:**
 
-  TODO
+  Visiting the plugin node in the graph.
 
   **Action:**
 
-  TODO
-
-
-
-### ZWED0157I
-
-  %s: %s/%s
-
-  **Reason:**
-
-  TODO
-
-  **Action:**
-
-  TODO
+  No action required.
 
 
 
@@ -1385,11 +1343,11 @@ The following error message codes may appear on the app-server log. Use the foll
 
   **Reason:**
 
-  TODO
+  The graph with the sorted plugins.
 
   **Action:**
 
-  TODO
+  No action required.
 
 
 
@@ -1399,11 +1357,11 @@ The following error message codes may appear on the app-server log. Use the foll
 
   **Reason:**
 
-  TODO
+  Removing the plugins with the broken dependencies from the graph.
 
   **Action:**
 
-  TODO
+  No action required.
 
 
 
@@ -1413,25 +1371,11 @@ The following error message codes may appear on the app-server log. Use the foll
 
   **Reason:**
 
-  TODO
+  Checking if the dependency is valid.
 
   **Action:**
 
-  TODO
-
-
-
-### ZWED0161I
-
-  %s
-
-  **Reason:**
-
-  TODO
-
-  **Action:**
-
-  TODO
+  No action required.
 
 
 
@@ -1441,25 +1385,25 @@ The following error message codes may appear on the app-server log. Use the foll
 
   **Reason:**
 
-  TODO
+  The server has added the plugin mentioned in the _plugin definition_ file.
 
   **Action:**
 
-  TODO
+  No action required.
 
 
 
-### ZWED0163I
+### ZWED0164I
 
-  %s::%s: found %s
+  Content:\n%s
 
   **Reason:**
 
-  TODO
+  Content of the plugin: _plugin_
 
   **Action:**
 
-  TODO
+  No action required.
 
 
 
