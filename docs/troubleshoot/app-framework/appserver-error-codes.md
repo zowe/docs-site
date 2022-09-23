@@ -1473,7 +1473,7 @@ The following error message codes may appear on the app-server log. Use the foll
 
   **Action:**
 
-  If logout was intentional, message can be safely ignored. If logout was intentional, keep in mind the Desktop logs out after inactivity. Incorrect logout behavior can be troubleshooted with
+  If logout was intentional, message can be safely ignored. If logout was unintentional, keep in mind the Desktop logs out after inactivity. Incorrect logout behavior can be troubleshooted with
   the authentication plugin.
 
 
