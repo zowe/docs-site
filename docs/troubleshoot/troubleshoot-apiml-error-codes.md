@@ -1135,11 +1135,11 @@ The following error message codes may appear on logs or API responses. Use the f
 
   **Reason:**
 
-  A problem occurred while trying to make sure that there is a valid JWT producer available.
+  A problem occurred while trying to make sure that there is a valid JWT producer available. A possible cause of the problem is that API ML does not recognize the authentication type used by z/OSMF.
 
   **Action:**
 
-  Based on the specific information in the message, verify that the key configuration is correct, or alternatively, that z/OSMF is available.
+  Based on the specific information in the message, verify that the key configuration is correct, or alternatively, that z/OSMF is available. If z/OSMF is available, specify the authentication type used by z/OSMF in your configuration settings.
 
   Use the following configuration format:
   ```
