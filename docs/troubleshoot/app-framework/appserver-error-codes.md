@@ -1399,7 +1399,7 @@ The following error message codes may appear on the app-server log. Use the foll
 
   **Reason:**
 
-  Content of the plugin: _plugin_
+  This message prints the content of the plugin: _plugin_
 
   **Action:**
 
