@@ -1463,283 +1463,46 @@ The following error message codes may appear on the app-server log. Use the foll
 
 
 
-### ZWED0190I
-
-  Type requested = %s
-
-  **Reason:**
-
-  TODO
-
-  **Action:**
-
-  TODO
-
-
-
-### ZWED0191I
-
-  Returning true if type matches, type=%s
-
-  **Reason:**
-
-  TODO
-
-  **Action:**
-
-  TODO
-
-
-
-### ZWED0192I
-
-  Returning true because type is application
-
-  **Reason:**
-
-  TODO
-
-  **Action:**
-
-  TODO
-
-
-
-### ZWED0193I
-
-  Returning false because type did not match
-
-  **Reason:**
-
-  TODO
-
-  **Action:**
-
-  TODO
-
-
-
-### ZWED0194I
-
-  Callservice: Data received
-
-  **Reason:**
-
-  TODO
-
-  **Action:**
-
-  TODO
-
-
-
-### ZWED0195I
-
-  Callservice: Service call completed.
-
-  **Reason:**
-
-  TODO
-
-  **Action:**
-
-  TODO
-
-
-
-### ZWED0196I
-
-  Callservice: Issuing request to service: %s
-
-  **Reason:**
-
-  TODO
-
-  **Action:**
-
-  TODO
-
-
-
-### ZWED0197I
-
-  User=%s: %s service called: %s, %s %s
-
-  **Reason:**
-
-  TODO
-
-  **Action:**
-
-  TODO
-
-
-
-### ZWED0198I
-
-  User=%s: Service called: %s::%s, %s %s
-
-  **Reason:**
-
-  TODO
-
-  **Action:**
-
-  TODO
-
-
-
-### ZWED0199I
-
-  %s: service %s
-
-  **Reason:**
-
-  TODO
-
-  **Action:**
-
-  TODO
-
-
-
-### ZWED0200I
-
-  %s: %s %s handled by %s
-
-  **Reason:**
-
-  TODO
-
-  **Action:**
-
-  TODO
-
-
-
-### ZWED0201I
-
-  About to call myProxy
-
-  **Reason:**
-
-  TODO
-
-  **Action:**
-
-  TODO
-
-
-
-### ZWED0202I
-
-  After myProxy call
-
-  **Reason:**
-
-  TODO
-
-  **Action:**
-
-  TODO
-
-
-
-### ZWED0203I
-
-  Referrer proxying miss. Resource not found, sending 404 because referrer (%s) didn't match an existing proxy service
-
-  **Reason:**
-
-  TODO
-
-  **Action:**
-
-  TODO
-
-
-
-### ZWED0204I
-
-  Referrer proxying miss. Resource not found, sending 404 because referrer (%s) didn't match a plugin pattern
-
-  **Reason:**
-
-  TODO
-
-  **Action:**
-
-  TODO
-
-
-
 ### ZWED0205I
 
-  User=%s (%s): User logout
+  User=_user_ (_pluginId_): User logout
 
   **Reason:**
 
-  TODO
+  This message prints when the _user_ logs out of the Zowe Desktop. Logout is being handled by the _pluginId_ plugin.
 
   **Action:**
 
-  TODO
-
-
-
-### ZWED0206I
-
-  Writing: %s, Size=%s
-
-  **Reason:**
-
-  TODO
-
-  **Action:**
-
-  TODO
-
-
-
-### ZWED0207I
-
-  Wrote: %s
-
-  **Reason:**
-
-  TODO
-
-  **Action:**
-
-  TODO
+  If logout was intentional, message can be safely ignored. If logout was unintentional, keep in mind the Desktop logs out after inactivity. Incorrect logout behavior can be troubleshooted with
+  the authentication plugin.
 
 
 
 ### ZWED0211I
 
-  The number of processors is: %d
+  The number of processors is: _count_
 
   **Reason:**
 
-  TODO
+  Lists the _count_ of CPU cores on the system hosting the App server.
 
   **Action:**
 
-  TODO
+  No action required.
 
 
 
 ### ZWED0212I
 
-  Environmental variable ZLUX_MIN_WORKERS was not a valid number therefore %s will be used as the minimum workers
+  Environmental variable ZLUX_MIN_WORKERS was not a valid number therefore _count_ will be used as the minimum workers
 
   **Reason:**
 
-  TODO
+  ZLUX_MIN_WORKERS environment variable is not valid, so the minimum number of workers as part of the cluster will be _count_
 
   **Action:**
 
-  TODO
+  By default, the App server runs in a cluster. You can specify minimum number of cluster workers 
 
 
 
@@ -1749,53 +1512,39 @@ The following error message codes may appear on the app-server log. Use the foll
 
   **Reason:**
 
-  TODO
+  ZLUX_MAX_WORKERS environment variable is not valid, so the maximum number of workers as part of the cluster will be _count_
 
   **Action:**
 
-  TODO
+  By default, the App server runs in a cluster. You can specify maximum number of cluster workers 
 
 
 
 ### ZWED0214I
 
-  Read %s: found plugin id = %s, type = %s
+  Read _directory_: found plugin id = _identifier_, type = _type_
 
   **Reason:**
 
-  TODO
+  Reading in _directory_, found a plugin with _identifier_ of _type_
 
   **Action:**
 
-  TODO
-
-
-
-### ZWED0286I
-
-  Writing plugin locator file to %s, contents=\n%s
-
-  **Reason:**
-
-  TODO
-
-  **Action:**
-
-  TODO
+  No action required.
 
 
 
 ### ZWED0287I
 
-  JarMgr with id=%s invoked to startup with config=%s
+  JarMgr with id=_id_ invoked to startup with config=_object_
 
   **Reason:**
 
-  TODO
+  JarManager _id_ has been started with the configuration _object_
 
   **Action:**
 
-  TODO
+  No action required. 
 
 
 
