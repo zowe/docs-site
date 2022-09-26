@@ -1141,20 +1141,6 @@ The following error message codes may appear on the app-server log. Use the foll
 
 
 
-### ZWED0149I
-
-  Resolved actual version for import 
-
-  **Reason:**
-
-  Resolved the plugin version for import.
-
-  **Action:**
-
-  No action required.
-
-
-
 ### ZWED0150I
 
   Found dependency: 
@@ -1162,34 +1148,6 @@ The following error message codes may appear on the app-server log. Use the foll
   **Reason:**
 
   The server has found the dependency of the plugin.
-
-  **Action:**
-
-  No action required.
-
-
-
-### ZWED0151I
-
-  Resolved actual version for import 
-
-  **Reason:**
-
-  Resolved the plugin version for import.
-
-  **Action:**
-
-  No action required.
-
-
-
-### ZWED0153I
-
-  Visiting broken node 
-
-  **Reason:**
-
-  Visiting the broken plugin nodes in the graph.
 
   **Action:**
 
@@ -1218,20 +1176,6 @@ The following error message codes may appear on the app-server log. Use the foll
   **Reason:**
 
   Graph with broken dependencies of the plugins.
-
-  **Action:**
-
-  No action required.
-
-
-
-### ZWED0156I
-
-  Visiting node 
-
-  **Reason:**
-
-  Visiting the plugin node in the graph.
 
   **Action:**
 
@@ -1274,34 +1218,6 @@ The following error message codes may appear on the app-server log. Use the foll
   **Reason:**
 
   Checking if the dependency is valid.
-
-  **Action:**
-
-  No action required.
-
-
-
-### ZWED0162I
-
-  Adding plugin 
-
-  **Reason:**
-
-  The server has added the plugin mentioned in the _plugin definition_ file.
-
-  **Action:**
-
-  No action required.
-
-
-
-### ZWED0164I
-
-  Content:\n%s
-
-  **Reason:**
-
-  This message prints the content of the plugin: _plugin_
 
   **Action:**
 
