@@ -120,6 +120,7 @@ module.exports = {
             "user-guide/configure-xmem-server",
             "user-guide/configure-auxiliary-address-space",
             "user-guide/configure-zowe-zosmf-workflow",
+            "user-guide/configmgr-using"
           ],
         },
        {
@@ -297,8 +298,20 @@ module.exports = {
           type: "category",
           label: "Zowe Explorer extensions",
           items: [
-            "user-guide/ze-cics",
-            "user-guide/ze-ftp",
+            {
+              type: "category",
+              label: "Zowe Explorer CICS Extension",
+              items: [
+                "user-guide/ze-using-zowe-explorer-cics-ext",
+                "user-guide/ze-install-zowe-explorer-cics-ext",
+                "user-guide/ze-create-zowe-explorer-cics-ext-profiles",
+                "user-guide/ze-use-cics-resources",
+                "user-guide/ze-override-tls-certs",
+                "user-guide/ze-usage-tips",
+                "user-guide/ze-provide-feedback-contribute",
+                              ],
+            },
+            "user-guide/ze-ftp"
           ],
         },
         "user-guide/sdks-using",
@@ -310,6 +323,7 @@ module.exports = {
       label: "Developing server components",
       items: [
         "extend/packaging-zos-extensions",
+        "extend/server-schemas",
         "extend/install-configure-zos-extensions",
         "extend/lifecycling-with-zwesvstc",
         "extend/k8s-extend",
