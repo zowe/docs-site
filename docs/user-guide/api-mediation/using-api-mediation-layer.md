@@ -7,6 +7,7 @@ There are various ways you can use the API Mediation Layer. For more information
 * Swagger Code Snippets functionality
 * Static APIs refresh functionality
 * Change password via API Catalog functionality
+* Onboarding via Wizard
 
 **Tip:** 
 For testing purposes, it is not necessary to set up certificates when configuring the API Mediation Layer. You can configure Zowe without certificate setup and run Zowe with `verify_certificates: DISABLED`.  
