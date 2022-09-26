@@ -1141,20 +1141,6 @@ The following error message codes may appear on the app-server log. Use the foll
 
 
 
-### ZWED0150I
-
-  Found dependency: 
-
-  **Reason:**
-
-  The server has found the dependency of the plugin.
-
-  **Action:**
-
-  No action required.
-
-
-
 ### ZWED0154I
 
   Following link: %s: %s
