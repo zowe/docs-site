@@ -1141,90 +1141,6 @@ The following error message codes may appear on the app-server log. Use the foll
 
 
 
-### ZWED0141I
-
-  (*HTTP or HTTPS*) listening on *app-server port*
-
-  **Reason:**
-
-  The app-server is listening on the *app-server port*.
-
-  **Action:**
-
-  No action required.
-
-
-
-### ZWED0143I
-
-  API ML registration settings: %s
-
-  **Reason:**
-
-  Registering API ML with the app-server using the _settings_
-
-  **Action:**
-
-  No action required.
-
-
-
-### ZWED0144I
-
-  zluxProxyServerInstanceConfig: %s
-
-  **Reason:**
-
-  Zlux proxy server instance configuration: _config_
-
-  **Action:**
-
-  No action required.
-
-
-
-### ZWED0146I
-
-  Adding plugin %s
-
-  **Reason:**
-
-  The server has added the plugin with _plugin identifier_ to its bootstrapped list of plugins. It also emits a `pluginAdded` event.
-
-  **Action:**
-
-  No action required. If the user desires, they may check their list of plugins on the Desktop to see if the plugin was added successfully.
-
-
-
-### ZWED0147I
-
-  Processing plugin 
-
-  **Reason:**
-
-  The server is checking if the plugin with _plugin identifier_ exists and will attempt to process it.
-
-  **Action:**
-
-  No action required.
-
-
-
-### ZWED0148I
-
-  Found dependency: 
-
-  **Reason:**
-
-  The server has found the dependency of the plugin.
-
-  **Action:**
-
-  No action required.
-
-
-
 ### ZWED0149I
 
   Resolved actual version for import 
@@ -1260,20 +1176,6 @@ The following error message codes may appear on the app-server log. Use the foll
   **Reason:**
 
   Resolved the plugin version for import.
-
-  **Action:**
-
-  No action required.
-
-
-
-### ZWED0152I
-
-  Graph: 
-
-  **Reason:**
-
-  Graph with broken dependencies of the plugins.
 
   **Action:**
 
