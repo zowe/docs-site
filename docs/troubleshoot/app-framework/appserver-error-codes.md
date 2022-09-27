@@ -524,339 +524,87 @@ The following error message codes may appear on the app-server log. Use the foll
 
 
 
-### ZWED0068I
-
-  Creating composite swagger endpoint for %s
-
-  **Reason:**
-
-  TODO
-
-  **Action:**
-
-  TODO
-
-
-
-### ZWED0069I
-
-  Creating swagger endpoint for %s:%s
-
-  **Reason:**
-
-  TODO
-
-  **Action:**
-
-  TODO
-
-
-
 ### ZWED0070I
 
-  User=%s (%s): Session %s successful. Plugin response: %s
+  User=_user_ (_pluginId_): Session _authCapability_ successful. Plugin response: _httpResponse_
 
   **Reason:**
 
-  TODO
+  An authentication plugin has performed a successful operation and received a valid HTTP response.
 
   **Action:**
 
-  TODO
-
-
-
-### ZWED0071I
-
-  Using PFX: %s
-
-  **Reason:**
-
-  TODO
-
-  **Action:**
-
-  TODO
+  No action required.
 
 
 
 ### ZWED0072I
 
-  Using Certificate: %s
+  Using Certificate: _stringArray_
 
   **Reason:**
 
-  TODO
+  The app server has successfully loaded a certificate and added it to the certificates array.
 
   **Action:**
 
-  TODO
-
-
-
-### ZWED0073I
-
-  HTTP config valid, will listen on: %s
-
-  **Reason:**
-
-  TODO
-
-  **Action:**
-
-  TODO
-
-
-
-### ZWED0074I
-
-  HTTPS config valid, will listen on: %s
-
-  **Reason:**
-
-  TODO
-
-  **Action:**
-
-  TODO
-
-
-
-### ZWED0075I
-
-  HTTPS config valid, will listen on: %s
-
-  **Reason:**
-
-  TODO
-
-  **Action:**
-
-  TODO
-
-
-
-### ZWED0076I
-
-  (HTTP) Closing server %s
-
-  **Reason:**
-
-  TODO
-
-  **Action:**
-
-  TODO
-
-
-
-### ZWED0077I
-
-  (HTTPS) Closing server %s
-
-  **Reason:**
-
-  TODO
-
-  **Action:**
-
-  TODO
-
-
-
-### ZWED0078I
-
-  Tomcat Manager ID=%s found service=%s, war=%s
-
-  **Reason:**
-
-  TODO
-
-  **Action:**
-
-  TODO
-
-
-
-### ZWED0079I
-
-  Starting tomcat with parameters:\n Catalina: %s\n Args: %s\n Env: %s
-
-  **Reason:**
-
-  TODO
-
-  **Action:**
-
-  TODO
-
-
-
-### ZWED0080I
-
-  Starting tomcat with params:\n Java=%s\n Options=%s\n Env=%s\n cwd=%s
-
-  **Reason:**
-
-  TODO
-
-  **Action:**
-
-  TODO
-
-
-
-### ZWED0081I
-
-  Tomcat Manager with id=%s invoked to startup with config=%s
-
-  **Reason:**
-
-  TODO
-
-  **Action:**
-
-  TODO
-
-
-
-### ZWED0082I
-
-  Service=%s has Servlet name=%s
-
-  **Reason:**
-
-  TODO
-
-  **Action:**
-
-  TODO
-
-
-
-### ZWED0083I
-
-  Skipping linking for extracted war at dest=%s
-
-  **Reason:**
-
-  TODO
-
-  **Action:**
-
-  TODO
-
-
-
-### ZWED0084I
-
-  About to tomcat, ID=%s, URL=%s
-
-  **Reason:**
-
-  TODO
-
-  **Action:**
-
-  TODO
-
-
-
-### ZWED0085I
-
-  %s stdout=%s
-
-  **Reason:**
-
-  TODO
-
-  **Action:**
-
-  TODO
+  No action required.
 
 
 
 ### ZWED0086I
 
-  %s closed, code=%s
+  _tomcatPID_ closed, code=_returnCode_
 
   **Reason:**
 
-  TODO
+  A running tomcat process with PID _tomcatPID_ was cloesd.
 
   **Action:**
 
-  TODO
+  Refer to return code.
 
 
 
 ### ZWED0087I
 
-  %s exited, code=%s
+  _tomcatPID_ exited, code=_returnCode_
 
   **Reason:**
 
-  TODO
+  A running tomcat process with PID _tomcatPID_ was exited.
 
   **Action:**
 
-  TODO
-
-
-
-### ZWED0088I
-
-  %s Manager issuing sigterm
-
-  **Reason:**
-
-  TODO
-
-  **Action:**
-
-  TODO
-
-
-
-### ZWED0089I
-
-  %s stdout=%s
-
-  **Reason:**
-
-  TODO
-
-  **Action:**
-
-  TODO
+  Refer to return code.
 
 
 
 ### ZWED0090I
 
-  %s closed, code=%s
+  _tomcatPID_ closed, code=_returnCode_
 
   **Reason:**
 
-  TODO
+  A running tomcat process with PID _tomcatPID_ was cloesd.
 
   **Action:**
 
-  TODO
+  Refer to return code.
 
 
 
 ### ZWED0091I
-
-  %s exited, code=%s
+ 
+  _tomcatPID_ exited, code=_returnCode_
 
   **Reason:**
 
-  TODO
+  A running tomcat process with PID _tomcatPID_ was exited.
 
   **Action:**
 
-  TODO
+  Refer to return code.
 
 
 
