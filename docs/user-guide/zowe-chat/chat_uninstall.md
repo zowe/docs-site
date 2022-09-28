@@ -1,0 +1,2 @@
+# Uninstalling Zowe Chat
+

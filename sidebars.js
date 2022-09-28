@@ -182,6 +182,101 @@ module.exports = {
     },
     {
       type: "category",
+      label: "Installing Zowe Chat",
+      items: [
+        {
+          type: "category",
+          label: "Planning for Zowe Chat",
+          items: [
+            "user-guide/zowe-chat/systemrequirements-chat",
+            {
+              type: "category",
+              label: "Configuring chat platforms",
+              items: [
+                {
+                  type: "category",
+                  label: "Configuring Mattermost",
+                  items: [
+                    "user-guide/zowe-chat/chat_prerequisite_install_mattermost",
+                    "user-guide/zowe-chat/chat_prerequisite_mattermost_admin_account",
+                    "user-guide/zowe-chat/chat_prerequisite_mattermost_bot_account",
+                    "user-guide/zowe-chat/chat_prerequisite_mattermost_invite_team",
+                    "user-guide/zowe-chat/chat_prerequisite_mattermost_invite_mattermost",
+                    "user-guide/zowe-chat/chat_prerequisite_mattermost_enable_connection",
+                  ],
+                },
+                {
+                  type: "category",
+                  label: "Configuring Microsoft Teams",
+                  items: [
+                    {
+                      type: "category",
+                      label: "Creating Microsoft Teams bot app",
+                      items: [
+                        "user-guide/zowe-chat/chat_prerequisite_teams_create_app_developer_portal",   
+                        "user-guide/zowe-chat/chat_prerequisite_teams_create_app_studio",                  
+                      ],
+                    },
+                    {
+                      type: "category",
+                      label: "Creating a bot for Microsoft Teams bot app",
+                      items: [
+                        "user-guide/zowe-chat/chat_prerequisite_teams_create_bot",   
+                        "user-guide/zowe-chat/chat_prerequisite_teams_create_bot_framework", 
+                        "user-guide/zowe-chat/chat_prerequisite_teams_create_bot_azure",                 
+                      ],
+                    },
+                    {
+                      type: "category",
+                      label: "Configuring messaging endpoint",
+                      items: [
+                        "user-guide/zowe-chat/chat_prerequisite_teams_configure_endpoint",
+                        "user-guide/zowe-chat/chat_prerequisite_teams_configure_endpoint_framework",   
+                        "user-guide/zowe-chat/chat_prerequisite_teams_configure_endpoint_azure",                  
+                      ],
+                    },             
+                  ],
+                },
+                {
+                  type: "category",
+                  label: "Configuring Slack",
+                  items: [
+                    "user-guide/zowe-chat/chat_prerequisite_slack", 
+                    {
+                      type: "category",
+                      label: "Creating and installing Slack app",
+                      items: [
+                        "user-guide/zowe-chat/chat_prerequisite_slack_create_app",
+                        "user-guide/zowe-chat/chat_prerequisite_slack_configure_app",
+                        "user-guide/zowe-chat/chat_prerequisite_slack_install",                
+                      ],
+                    }, 
+                    "user-guide/zowe-chat/chat_prerequisite_slack_invite_app_to_channel",                  
+                  ],
+                },            
+              ],
+            },                 
+          ],
+        },
+        {
+          type: "category",
+          label: "Installing Zowe Chat",
+          items: [
+            "user-guide/zowe-chat/chat_install_overview",                
+          ],
+        }, 
+        {
+          type: "category",
+          label: "Configuring Zowe Chat",
+          items: [
+            "user-guide/zowe-chat/chat_configure_overview",                
+          ],
+        }, 
+        "user-guide/zowe-chat/chat_uninstall",
+      ],
+    },
+    {
+      type: "category",
       label: "Advanced Zowe configuration",
       items: [
         "user-guide/mvd-configuration",
@@ -312,6 +407,13 @@ module.exports = {
                               ],
             },
             "user-guide/ze-ftp"
+          ],
+        },
+        {
+          type: "category",
+          label: "Using Zowe Chat",
+          items: [
+            "user-guide/zowe-chat/chat-use-interact-methods",
           ],
         },
         "user-guide/sdks-using",

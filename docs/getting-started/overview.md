@@ -201,6 +201,39 @@ Provides an advanced launcher for Zowe z/OS server components in a high availabi
 - Stopping the Zowe server components using the `STOP` (or `P`) operator command
 - Stopping and starting specific server components without restarting the entire Zowe instance using `MODIFY` (or `F`) operator command
 
+### Zowe Chat (Technical Preview)
+
+Zowe Chat is a chatbot that aims to enable a ChatOps collaboration model including z/OS resources and tools. 
+
+![Zowe Chat](diagrams/zowe-chat.png)
+
+#### Zowe Chat main features
+
+Zowe Chat is focused on making you more productive by eliminating (or minimizing) the context switching between different tools and user interfaces.
+
+- **z/OS resource management:**
+  
+  Enables you to manage z/OS resources, such as z/OS job, dataset, and USS files. You can also issue Zowe CLI commands including console commands directly from the chat tool. 
+
+- **Security:**
+   
+   Once authenticated against the mainframe security, Zowe Chat will securely cache in memory the relationship between your Chat tool ID and the mainframe ID. 
+
+- **Display alerts:**
+
+   Allows you to send alert or event to a channel in the chat tool in use. An event data model enables Zowe Chat extenders to send alerts to a channel in the chat through Zowe Chat. 
+
+Read the following blogs to learn more about Zowe Chat: 
+
+- [Zowe Gets Chatty](https://medium.com/zowe/zowe-gets-chatty-842e3b548902)
+- [Zowe Chat can make you more productive: user scenarios](https://medium.com/zowe/zowe-chat-can-make-you-more-productive-user-scenarios-f52a9985dd50)
+
+#### Zowe Chat architecture
+
+Zowe Chat is based on the Common Bot framework, which is required for the chat platform Slack, Mattermost and Microsoft Teams. 
+
+> Needs an architecture diagram
+
 ### ZEBRA (Zowe Embedded Browser for RMF/SMF and APIs) - Incubator 
 
 Provides re-usable and industry compliant JSON formatted RMF/SMF data records, so that many other ISV SW and users can exploit them using open-source SW for many ways.
