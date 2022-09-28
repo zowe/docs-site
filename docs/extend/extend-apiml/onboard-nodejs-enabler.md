@@ -151,9 +151,10 @@ Once you build and start your service successfully, you can use the option of va
 
 Specific addresses and user credentials for the individual API ML components depend on your target runtime environment.
 
-**Note:** If you are working with a local installation of API ML, and you are using our dummy identity provider, enter `user` for both `username` and `password`. If API ML was installed by system administrators, ask them to provide you
-with actual addresses of API ML components and the respective user credentials.
-
-**Note:** Wait for the Discovery Service to fully register your service. This process may take a few minutes after your
+**Notes:**  
+* If you are working with a local installation of API ML, and you are using our dummy identity provider, enter `user` for both `username` and `password`. If API ML was installed by system administrators, ask them to provide you
+with actual addresses of API ML components and the respective user credentials.  
+* Wait for the Discovery Service to fully register your service. This process may take a few minutes after your
 service starts successfully.
+
 
