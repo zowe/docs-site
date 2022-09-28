@@ -1143,7 +1143,7 @@ The following error message codes may appear on the app-server log. Use the foll
 
 ### ZWED0154I
 
-  Following link: %s: %s
+  Following link: _dependency_: _dependency importer_
 
   **Reason:**
 
