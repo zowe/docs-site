@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>ca7 commands run</title>
+<link rel="stylesheet" href="../css/bundle-docs.css">
+<link rel="stylesheet" href="../css/docs.css">
+<article class="markdown-body">
+<h2><a href="zowe.html">zowe</a> › <a href="zowe_ca7.html">ca7</a> › <a href="zowe_ca7_commands.html">commands</a> › <a href="zowe_ca7_commands_run.html">run</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
+<p>Run a single job to CA 7.</p>
+<h4>Usage</h4>
+<p>zowe ca7 commands run [options]</p>
+<h4>Options</h4>
+<ul>
+<li>
+<p><code>--job</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>job=PAYROLL</p>
+<p>Defines the long name of the job to run.<br>
+The ran jobs are placed in the request queue and assigned a unique CA 7 job number.</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--jobl</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>job=payrollSW123</p>
+<p>Identifies the job to submit.<br>
+The value must be a long job name.<br>
+If the job has not been defined in the database, use JOB instead.<br>
+See also JCLID. JOB and JOBL are mutually exclusive.<br>
+Limits:<br>
+1 to 64 alphanumeric characters</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--arfset</code> | <code>--as</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>arfset={arfsetname|**NONE**}</p>
+<p>Defines the ARF set name that is used for this run of the job.<br>
+If you specify **NONE**, no ARF processing is performed for this run of the job.</p>
+<p>Limits: 1 to 8 alphanumeric characters or **NONE**</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--class</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>class=n</p>
+<p>Defines the workload balancing class for resource checking.</p>
+<p>Limits: 1 alphanumeric character</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--dotm</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>dotm=hhmm</p>
+<p>Defines the due-out time-of-day for the job in hours (hh) and minutes (mm).<br>
+If DOTM is specified on the DEMAND/DEMANDH command and the value that is given is earlier than the current time, the due-out day is assumed to be the following day.</p>
+<p>If DOTM and LEADTM are both omitted, then deadline start time is assumed to be the current time plus the LEADTM.</p>
+<p>Limits:  hh= 2 numeric characters from 0 to 24<br>
+mm= 2 numeric characters from 00 to 59</p>
+<p>Required: No (unless DATE is used, if so, DOTM or TIME must be specified)</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--exec</code> | <code>-e</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>exec={NO|YES}</p>
+<p>Specifies whether to execute the job (YES/NO).<br>
+If NO (N) is used, the job does not run but shows a normal completion as if it did run. The value that is specified here overrides the value that is coded on the job definition EXEC field.</p>
+<p>Default: The job definition panel EXEC value if the job is defined to CA WA CA 7 Edition; otherwise YES.</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--jclid</code> | <code>--ji</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>jclid=10</p>
+<p>Defines the JCL data set that contains the execution JCL to be submitted.</p>
+<p>If used, the value must be a numeric INDEX associated with the wanted JCL data set (on the JCL statement in the initialization file).</p>
+<p>If the job is defined in the database, the value must be the same as the value on the DB.1 panel or the Optional PARMLIB/Parmlib value on the DB.10 and DB.11 panels.This field or the JCLLIB field is required if the job is not defined in the database. JCLID and JCLLIB are mutually exclusive.Limits: 1 to 3 numeric characters from 0 through 254 and from 256 through 999. 255 is reserved.</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--jcllib</code> | <code>--jl</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>jcllib=&amp;SPECIAL</p>
+<p>Defines the JCL data set that contains the execution JCL to be submitted.</p>
+<p>If used, the value must be a symbolic INDEX associated with the wanted JCL data set (on the JCL statement in the initialization file).</p>
+<p>If the job is defined in the database, the value must be the same as the value on the DB.1 panel or the Optional PARMLIB/Parmlib value on the DB.10 and DB.11 panels.This field or the JCLLIB field is required if the job is not defined in the database. JCLID and JCLLIB are mutually exclusive.Limits: 2 to 16 alphanumeric characters beginning with ampersand (&amp;)</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--late</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>late={NO|YES}</p>
+<p>Specifies whether a notification occurs when the job becomes late.<br>
+Specify YES (Y) to make the job eligible to be marked LATE. If NO (N) is used, the job is never marked LATE. The value that is specified here overrides the value that is coded on the job definition PROMPTS field.</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--leadtm</code> | <code>--lt</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>leadtm={0100|hhmm}</p>
+<p>Specifies the lead (processing) time that is required for the job to run.<br>
+If omitted, 1 hour is usedFormat: hhmm<br>
+Limits: hh= 2 numeric characters from 0 to 24<br>
+mm= 2 numeric characters from 00 to 59You can omit leading zeros.</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--mainid</code> | <code>--mi</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>mainid={ALL|SYn|/SYn|-SYn}</p>
+<p>Specifies the MAINID, as defined in the initialization file CPU statement, to which you want to redirect the job.<br>
+The value that is specified here overrides the value that is coded on the job definition MAINID field. The name must be one of the following values:</p>
+<p>ALL<br>
+Specifies all CPUs are acceptable for executing the job.</p>
+<p>SYn<br>
+n defines the CPU to which the job is being redirected. The value of n can range from 1 to 7.</p>
+<p>/SYn<br>
+n defines a CPU to which the job cannot be submitted. The value of n can range from 1 to 7.</p>
+<p>-SYn<br>
+n defines a CPU to which the job cannot be submitted. The value of n can range from 1 to 7.</p>
+<p>Limits: Invalid for internal cross-platform jobs.</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--rms</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>rms={NO|YES}</p>
+<p>Specifies whether CA WA CA 7 Edition inserts the CA Workload Automation Restart Option for z/OS Schedulers RMS step.</p>
+<p>Specify YES (Y) to insert the step with the CA Workload Automation Restart Option for z/OS Schedulers processing code of P. Enter NO (N) to indicate that the RMS step is not inserted.</p>
+<p>The value that is specified here overrides the value that is coded on the job definition INSERT-RMS field.<br>
+Default: The job definition panel INSERT-RMS value if job defined to CA WA CA 7 Edition; otherwise NO.<br>
+Limits: Invalid for internal cross-platform jobs.</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--schid</code> | <code>--si</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>schid={1|nnn}</p>
+<p>Indicates the schedule ID to be used for evaluating JCL overrides that are scheduled with the #Jx or #Xx commands.</p>
+<p>Default: 1<br>
+Limits: 1 to 3 numeric characters from 1 to 999 (See Note)</p>
+<p>No (unless the SCHEDULE statement in the initialization file specifies SCHID=YES, then this parameter is required)</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--time</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>time={hhmm|+hhmm}</p>
+<p>Establishes a submit time-of-day requirement for the job.</p>
+<p>Format: hhmm<br>
+Defines the time-of-day where hh is hours (0 through 23) and mm is minutes (00 through 59).<br>
+Leading zeros are not required</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--type</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>type={CLOCK|END|RES|START}</p>
+<p>Indicates that the job is being scheduled for rerun.<br>
+The value must be specified as shown.</p>
+<p>TYPE=RES is optional.If used, a restart requirement is placed on the job, and the job has to be manually restarted.Limits: RES, CLOCK, START, or END</p>
+</li>
+</ul>
+</li>
+</ul>
+<h4>CA7 Connection Options</h4>
+<ul>
+<li>
+<p><code>--host</code> | <code>-H</code> <em>(string)</em></p>
+<ul>
+<li>Host name of the CA7 API service that is running on the mainframe system.</li>
+</ul>
+</li>
+<li>
+<p><code>--port</code> | <code>-P</code> <em>(number)</em></p>
+<ul>
+<li>Port for the CA7 API service that is running on the mainframe system.</li>
+</ul>
+</li>
+<li>
+<p><code>--user</code> | <code>-u</code> <em>(string)</em></p>
+<ul>
+<li>User name for authenticating connections to the CA7 API service that is running on the mainframe system.</li>
+</ul>
+</li>
+<li>
+<p><code>--password</code> | <code>--pass</code> | <code>--pw</code> <em>(string)</em></p>
+<ul>
+<li>Password for authenticating connections to the CA7 API service that is running on the mainframe system.</li>
+</ul>
+</li>
+<li>
+<p><code>--base-path</code> | <code>--bp</code> <em>(string)</em></p>
+<ul>
+<li>The base path for your API mediation layer instance. Specify this option to prepend the base path to all resources when making REST requests. Do not specify this option if you are not using an API mediation layer.</li>
+</ul>
+</li>
+<li>
+<p><code>--protocol</code> | <code>-o</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>Specifies protocol to use for CA7 connection (http or https).</p>
+<p>Allowed values: http, https</p>
+</li>
+</ul>
+</li>
+</ul>
+<h4>Profile Options</h4>
+<ul>
+<li>
+<p><code>--ca7-profile</code> | <code>--ca7-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (ca7) profile to load for this command execution.</li>
+</ul>
+</li>
+<li>
+<p><code>--base-profile</code> | <code>--base-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (base) profile to load for this command execution.</li>
+</ul>
+</li>
+</ul>
+<h4>Base Connection Options</h4>
+<ul>
+<li>
+<p><code>--reject-unauthorized</code> | <code>--ru</code> <em>(boolean)</em></p>
+<ul>
+<li>
+<p>Reject self-signed certificates.</p>
+<p>Default value: true</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--token-type</code> | <code>--tt</code> <em>(string)</em></p>
+<ul>
+<li>The type of token to get and use for the API. Omit this option to use the default token type, which is provided by 'zowe auth login'.</li>
+</ul>
+</li>
+<li>
+<p><code>--token-value</code> | <code>--tv</code> <em>(string)</em></p>
+<ul>
+<li>The value of the token to pass to the API.</li>
+</ul>
+</li>
+<li>
+<p><code>--cert-file</code> <em>(local file path)</em></p>
+<ul>
+<li>The file path to a certificate file to use for authentication</li>
+</ul>
+</li>
+<li>
+<p><code>--cert-key-file</code> <em>(local file path)</em></p>
+<ul>
+<li>The file path to a certificate key file to use for authentication</li>
+</ul>
+</li>
+</ul>
+<h4>Examples</h4>
+<ul>
+<li>
+<p>Run a job, PAYROLL to CA 7:</p>
+<ul>
+<li><code>zowe ca7 commands run --job PAYROLL</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe ca7 commands run --job PAYROLL">Copy</button></li>
+</ul>
+</li>
+</ul>
+</article>
+<script src="../js/bundle-docs.js"></script>
+<script src="../js/docs.js"></script>
