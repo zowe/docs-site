@@ -1,0 +1,2702 @@
+<!doctype html>
+<html class="default no-js">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>AbstractProfileManager | Zowe Node.js SDK - v2.3.0</title>
+	<meta name="description" content="Documentation for Zowe Node.js SDK - v2.3.0">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="../assets/css/main.css">
+</head>
+<body>
+<header>
+	<div class="tsd-page-toolbar">
+		<div class="container">
+			<div class="table-wrap">
+				<div class="table-cell" id="tsd-search" data-index="../assets/js/search.json" data-base="..">
+					<div class="field">
+						<label for="tsd-search-field" class="tsd-widget search no-caption">Search</label>
+						<input id="tsd-search-field" type="text" />
+					</div>
+					<ul class="results">
+						<li class="state loading">Preparing search index...</li>
+						<li class="state failure">The search index is not available</li>
+					</ul>
+					<a href="../index.html" class="title">Zowe Node.js SDK - v2.3.0</a>
+				</div>
+				<div class="table-cell" id="tsd-widgets">
+					<div id="tsd-filter">
+						<a href="#" class="tsd-widget options no-caption" data-toggle="options">Options</a>
+						<div class="tsd-filter-group">
+							<div class="tsd-select" id="tsd-filter-visibility">
+								<span class="tsd-select-label">All</span>
+								<ul class="tsd-select-list">
+									<li data-value="public">Public</li>
+									<li data-value="protected">Public/Protected</li>
+									<li data-value="private" class="selected">All</li>
+								</ul>
+							</div>
+							<input type="checkbox" id="tsd-filter-inherited" checked />
+							<label class="tsd-widget" for="tsd-filter-inherited">Inherited</label>
+							<input type="checkbox" id="tsd-filter-externals" checked />
+							<label class="tsd-widget" for="tsd-filter-externals">Externals</label>
+						</div>
+					</div>
+					<a href="#" class="tsd-widget menu no-caption" data-toggle="menu">Menu</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="tsd-page-title">
+		<div class="container">
+			<ul class="tsd-breadcrumb">
+				<li>
+					<a href="../globals.html">Globals</a>
+				</li>
+				<li>
+					<a href="../modules/_zowe_imperative.html">@zowe/imperative</a>
+				</li>
+				<li>
+					<a href="_zowe_imperative.abstractprofilemanager.html">AbstractProfileManager</a>
+				</li>
+			</ul>
+			<h1>Class AbstractProfileManager&lt;T&gt;</h1>
+		</div>
+	</div>
+</header>
+<div class="container container-main">
+	<div class="row">
+		<div class="col-8 col-content">
+			<section class="tsd-panel tsd-comment">
+				<div class="tsd-comment tsd-typography">
+					<div class="lead">
+						<p>The abstract profile manager contains most (if not all in some cases) methods to manage Imperative profiles. Profiles
+							are user configuration documents intended to be used on commands, as a convenience, to supply a slew of additional
+							input and configuration (normally more than would be feasible as command arguments). See the &quot;IProfile&quot; interface
+						for a detailed description of profiles, their use case, and examples.</p>
+					</div>
+					<p>The abstract manager is implemented by (at least as part of Imperative) the BasicProfileManager. The BasicProfileManager
+						implements the save, load, update, etc. methods in, as the name implies, a &quot;basic&quot; way. In general, the abstract
+						manager contains all parameter and profile validation code, methods to write/read/etc and the Basic Manager uses
+						most of the internal methods to perform the &quot;work&quot;. The basic manager does in some cases change the default abstract
+					behavior (such as for loadAll profile and loadDependencies).</p>
+					<p>Imperative, however, uses the the &quot;Cli Profile Manager&quot;, which extends the &quot;Basic Profile Manager&quot;. The CLI Manager includes
+					additional capabilities, such as creating or updating a profile from command line arguments.</p>
+					<p>In general, Imperative CLI&#39;s will use the &quot;Cli Profile Manager&quot;, where the &quot;Basic Profile Manager&quot; is normally sufficient
+						for usage outside of Imperative (for usage in building extensions to editors, Electron apps, programmatic usage of
+					APIs built by implementations of Imperative, etc.), although either can be used.</p>
+					<p>It is not an absolute requirement, but in the case of an Imperative CLI, the &quot;Basic Profile Manager initialize()&quot; API
+						is invoked to create the required directories and sub-directories. This is NOT a requirement, but avoiding &quot;initialize()&quot;
+						means you must supply all configuration information to the manager when creating an instance. See the &quot;initialize()&quot; API
+					method in the &quot;BasicProfileManager&quot; for full details.</p>
+					<dl class="tsd-comment-tags">
+						<dt>export</dt>
+						<dd></dd>
+						<dt>abstract</dt>
+						<dd></dd>
+					</dl>
+				</div>
+			</section>
+			<section class="tsd-panel tsd-type-parameters">
+				<h3>Type parameters</h3>
+				<ul class="tsd-type-parameters">
+					<li>
+						<h4>T<span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_imperative.iprofiletypeconfiguration.html" class="tsd-signature-type">IProfileTypeConfiguration</a></h4>
+					</li>
+				</ul>
+			</section>
+			<section class="tsd-panel tsd-hierarchy">
+				<h3>Hierarchy</h3>
+				<ul class="tsd-hierarchy">
+					<li>
+						<span class="target">AbstractProfileManager</span>
+						<ul class="tsd-hierarchy">
+							<li>
+								<a href="_zowe_imperative.basicprofilemanager.html" class="tsd-signature-type">BasicProfileManager</a>
+							</li>
+						</ul>
+					</li>
+				</ul>
+			</section>
+			<section class="tsd-panel-group tsd-index-group">
+				<h2>Index</h2>
+				<section class="tsd-panel tsd-index-panel">
+					<div class="tsd-index-content">
+						<section class="tsd-index-section ">
+							<h3>Constructors</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-constructor tsd-parent-kind-class"><a href="_zowe_imperative.abstractprofilemanager.html#constructor" class="tsd-kind-icon">constructor</a></li>
+							</ul>
+						</section>
+						<section class="tsd-index-section ">
+							<h3>Properties</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="_zowe_imperative.abstractprofilemanager.html#mconstructorparms" class="tsd-kind-icon">m<wbr>Constructor<wbr>Parms</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="_zowe_imperative.abstractprofilemanager.html#mloadcounter" class="tsd-kind-icon">m<wbr>Load<wbr>Counter</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="_zowe_imperative.abstractprofilemanager.html#mlogger" class="tsd-kind-icon">m<wbr>Logger</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="_zowe_imperative.abstractprofilemanager.html#mproductdisplayname" class="tsd-kind-icon">m<wbr>Product<wbr>Display<wbr>Name</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="_zowe_imperative.abstractprofilemanager.html#mprofilerootdirectory" class="tsd-kind-icon">m<wbr>Profile<wbr>Root<wbr>Directory</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="_zowe_imperative.abstractprofilemanager.html#mprofiletype" class="tsd-kind-icon">m<wbr>Profile<wbr>Type</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="_zowe_imperative.abstractprofilemanager.html#mprofiletypeconfiguration" class="tsd-kind-icon">m<wbr>Profile<wbr>Type<wbr>Configuration</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="_zowe_imperative.abstractprofilemanager.html#mprofiletypeconfigurations" class="tsd-kind-icon">m<wbr>Profile<wbr>Type<wbr>Configurations</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="_zowe_imperative.abstractprofilemanager.html#mprofiletypemetafilename" class="tsd-kind-icon">m<wbr>Profile<wbr>Type<wbr>Meta<wbr>File<wbr>Name</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="_zowe_imperative.abstractprofilemanager.html#mprofiletyperootdirectory" class="tsd-kind-icon">m<wbr>Profile<wbr>Type<wbr>Root<wbr>Directory</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="_zowe_imperative.abstractprofilemanager.html#mprofiletypeschema" class="tsd-kind-icon">m<wbr>Profile<wbr>Type<wbr>Schema</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-static"><a href="_zowe_imperative.abstractprofilemanager.html#meta_file_suffix" class="tsd-kind-icon">META_<wbr>FILE_<wbr>SUFFIX</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-static"><a href="_zowe_imperative.abstractprofilemanager.html#profile_extension" class="tsd-kind-icon">PROFILE_<wbr>EXTENSION</a></li>
+							</ul>
+						</section>
+						<section class="tsd-index-section ">
+							<h3>Accessors</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-get-signature tsd-parent-kind-class"><a href="_zowe_imperative.abstractprofilemanager.html#configurations" class="tsd-kind-icon">configurations</a></li>
+								<li class="tsd-kind-get-signature tsd-parent-kind-class tsd-is-protected"><a href="_zowe_imperative.abstractprofilemanager.html#loadcounter" class="tsd-kind-icon">load<wbr>Counter</a></li>
+								<li class="tsd-kind-get-signature tsd-parent-kind-class tsd-is-protected"><a href="_zowe_imperative.abstractprofilemanager.html#log" class="tsd-kind-icon">log</a></li>
+								<li class="tsd-kind-get-signature tsd-parent-kind-class tsd-is-protected"><a href="_zowe_imperative.abstractprofilemanager.html#managerparameters" class="tsd-kind-icon">manager<wbr>Parameters</a></li>
+								<li class="tsd-kind-get-signature tsd-parent-kind-class tsd-is-protected"><a href="_zowe_imperative.abstractprofilemanager.html#productdisplayname" class="tsd-kind-icon">product<wbr>Display<wbr>Name</a></li>
+								<li class="tsd-kind-get-signature tsd-parent-kind-class tsd-is-protected"><a href="_zowe_imperative.abstractprofilemanager.html#profilerootdirectory" class="tsd-kind-icon">profile<wbr>Root<wbr>Directory</a></li>
+								<li class="tsd-kind-get-signature tsd-parent-kind-class tsd-is-protected"><a href="_zowe_imperative.abstractprofilemanager.html#profiletype" class="tsd-kind-icon">profile<wbr>Type</a></li>
+								<li class="tsd-kind-get-signature tsd-parent-kind-class tsd-is-protected"><a href="_zowe_imperative.abstractprofilemanager.html#profiletypeconfiguration" class="tsd-kind-icon">profile<wbr>Type<wbr>Configuration</a></li>
+								<li class="tsd-kind-get-signature tsd-parent-kind-class tsd-is-protected"><a href="_zowe_imperative.abstractprofilemanager.html#profiletypeconfigurations" class="tsd-kind-icon">profile<wbr>Type<wbr>Configurations</a></li>
+								<li class="tsd-kind-get-signature tsd-parent-kind-class tsd-is-protected"><a href="_zowe_imperative.abstractprofilemanager.html#profiletypemetafilename" class="tsd-kind-icon">profile<wbr>Type<wbr>Meta<wbr>File<wbr>Name</a></li>
+								<li class="tsd-kind-get-signature tsd-parent-kind-class tsd-is-protected"><a href="_zowe_imperative.abstractprofilemanager.html#profiletyperootdirectory" class="tsd-kind-icon">profile<wbr>Type<wbr>Root<wbr>Directory</a></li>
+								<li class="tsd-kind-get-signature tsd-parent-kind-class tsd-is-protected"><a href="_zowe_imperative.abstractprofilemanager.html#profiletypeschema" class="tsd-kind-icon">profile<wbr>Type<wbr>Schema</a></li>
+							</ul>
+						</section>
+						<section class="tsd-index-section ">
+							<h3>Methods</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_zowe_imperative.abstractprofilemanager.html#cleardefault" class="tsd-kind-icon">clear<wbr>Default</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><a href="_zowe_imperative.abstractprofilemanager.html#collectallconfigurations" class="tsd-kind-icon">collect<wbr>All<wbr>Configurations</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-protected"><a href="_zowe_imperative.abstractprofilemanager.html#constructfullprofilepath" class="tsd-kind-icon">construct<wbr>Full<wbr>Profile<wbr>Path</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><a href="_zowe_imperative.abstractprofilemanager.html#constructmetaname" class="tsd-kind-icon">construct<wbr>Meta<wbr>Name</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><a href="_zowe_imperative.abstractprofilemanager.html#createprofiletypedirectory" class="tsd-kind-icon">create<wbr>Profile<wbr>Type<wbr>Directory</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter"><a href="_zowe_imperative.abstractprofilemanager.html#delete" class="tsd-kind-icon">delete</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-protected"><a href="_zowe_imperative.abstractprofilemanager.html#deleteprofile" class="tsd-kind-icon">delete<wbr>Profile</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-protected"><a href="_zowe_imperative.abstractprofilemanager.html#deleteprofilefromdisk" class="tsd-kind-icon">delete<wbr>Profile<wbr>From<wbr>Disk</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><a href="_zowe_imperative.abstractprofilemanager.html#failnotfounddefaultresponse" class="tsd-kind-icon">fail<wbr>Not<wbr>Found<wbr>Default<wbr>Response</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_zowe_imperative.abstractprofilemanager.html#getallprofilenames" class="tsd-kind-icon">get<wbr>All<wbr>Profile<wbr>Names</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_zowe_imperative.abstractprofilemanager.html#getdefaultprofilename" class="tsd-kind-icon">get<wbr>Default<wbr>Profile<wbr>Name</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><a href="_zowe_imperative.abstractprofilemanager.html#isdependencyof" class="tsd-kind-icon">is<wbr>Dependency<wbr>Of</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-protected"><a href="_zowe_imperative.abstractprofilemanager.html#isprofileempty" class="tsd-kind-icon">is<wbr>Profile<wbr>Empty</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter"><a href="_zowe_imperative.abstractprofilemanager.html#load" class="tsd-kind-icon">load</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_zowe_imperative.abstractprofilemanager.html#loadall" class="tsd-kind-icon">load<wbr>All</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-protected"><a href="_zowe_imperative.abstractprofilemanager.html#loaddependencies" class="tsd-kind-icon">load<wbr>Dependencies</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-protected"><a href="_zowe_imperative.abstractprofilemanager.html#loadfailed" class="tsd-kind-icon">load<wbr>Failed</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-protected"><a href="_zowe_imperative.abstractprofilemanager.html#loadprofile" class="tsd-kind-icon">load<wbr>Profile</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-protected"><a href="_zowe_imperative.abstractprofilemanager.html#loadspecificprofile" class="tsd-kind-icon">load<wbr>Specific<wbr>Profile</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-protected"><a href="_zowe_imperative.abstractprofilemanager.html#locateexistingprofile" class="tsd-kind-icon">locate<wbr>Existing<wbr>Profile</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_zowe_imperative.abstractprofilemanager.html#mergeprofiles" class="tsd-kind-icon">merge<wbr>Profiles</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><a href="_zowe_imperative.abstractprofilemanager.html#protectagainstoverwrite" class="tsd-kind-icon">protect<wbr>Against<wbr>Overwrite</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><a href="_zowe_imperative.abstractprofilemanager.html#readmeta" class="tsd-kind-icon">read<wbr>Meta</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter"><a href="_zowe_imperative.abstractprofilemanager.html#save" class="tsd-kind-icon">save</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-protected"><a href="_zowe_imperative.abstractprofilemanager.html#saveprofile" class="tsd-kind-icon">save<wbr>Profile</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_zowe_imperative.abstractprofilemanager.html#setdefault" class="tsd-kind-icon">set<wbr>Default</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><a href="_zowe_imperative.abstractprofilemanager.html#setdefaultinmetaobject" class="tsd-kind-icon">set<wbr>Default<wbr>InMeta<wbr>Object</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter"><a href="_zowe_imperative.abstractprofilemanager.html#update" class="tsd-kind-icon">update</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-protected"><a href="_zowe_imperative.abstractprofilemanager.html#updateprofile" class="tsd-kind-icon">update<wbr>Profile</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter"><a href="_zowe_imperative.abstractprofilemanager.html#validate" class="tsd-kind-icon">validate</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><a href="_zowe_imperative.abstractprofilemanager.html#validateconfigurationdocument" class="tsd-kind-icon">validate<wbr>Configuration<wbr>Document</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><a href="_zowe_imperative.abstractprofilemanager.html#validatemetaprofile" class="tsd-kind-icon">validate<wbr>Meta<wbr>Profile</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-protected"><a href="_zowe_imperative.abstractprofilemanager.html#validateprofile" class="tsd-kind-icon">validate<wbr>Profile</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-protected"><a href="_zowe_imperative.abstractprofilemanager.html#validateprofileagainstschema" class="tsd-kind-icon">validate<wbr>Profile<wbr>Against<wbr>Schema</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-protected"><a href="_zowe_imperative.abstractprofilemanager.html#validateprofileobject" class="tsd-kind-icon">validate<wbr>Profile<wbr>Object</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><a href="_zowe_imperative.abstractprofilemanager.html#validaterequireddependenciesarespecified" class="tsd-kind-icon">validate<wbr>Required<wbr>Dependencies<wbr>Are<wbr>Specified</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><a href="_zowe_imperative.abstractprofilemanager.html#validateschema" class="tsd-kind-icon">validate<wbr>Schema</a></li>
+							</ul>
+						</section>
+					</div>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group ">
+				<h2>Constructors</h2>
+				<section class="tsd-panel tsd-member tsd-kind-constructor tsd-parent-kind-class">
+					<a name="constructor" class="tsd-anchor"></a>
+					<h3>constructor</h3>
+					<ul class="tsd-signatures tsd-kind-constructor tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">new <wbr>Abstract<wbr>Profile<wbr>Manager<span class="tsd-signature-symbol">(</span>parms<span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_imperative.iprofilemanager.html" class="tsd-signature-type">IProfileManager</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_zowe_imperative.abstractprofilemanager.html" class="tsd-signature-type">AbstractProfileManager</a></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.5.1/packages/profiles/src/abstract/AbstractProfileManager.ts#L184">@zowe/imperative/packages/profiles/src/abstract/AbstractProfileManager.ts:184</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Creates an instance of ProfileManager - Performs basic parameter validation and will create the required
+										profile root directory (if it does not exist) and will attempt to load type configurations from the
+									existing profile root directory (unless the type definitions are passed on the constructor parameters).</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>memberof</dt>
+									<dd><p>ProfileManager</p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>parms: <a href="../interfaces/_zowe_imperative.iprofilemanager.html" class="tsd-signature-type">IProfileManager</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<div class="lead">
+											<p>See the interface for details.</p>
+										</div>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="_zowe_imperative.abstractprofilemanager.html" class="tsd-signature-type">AbstractProfileManager</a></h4>
+						</li>
+					</ul>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group ">
+				<h2>Properties</h2>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
+					<a name="mconstructorparms" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> m<wbr>Constructor<wbr>Parms</h3>
+					<div class="tsd-signature tsd-kind-icon">m<wbr>Constructor<wbr>Parms<span class="tsd-signature-symbol">:</span> <a href="../interfaces/_zowe_imperative.iprofilemanager.html" class="tsd-signature-type">IProfileManager</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.5.1/packages/profiles/src/abstract/AbstractProfileManager.ts#L106">@zowe/imperative/packages/profiles/src/abstract/AbstractProfileManager.ts:106</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Parameters passed on the constructor (normally used to create additional instances of profile manager objects)</p>
+						</div>
+						<dl class="tsd-comment-tags">
+							<dt>memberof</dt>
+							<dd><p>AbstractProfileManager</p>
+							</dd>
+						</dl>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
+					<a name="mloadcounter" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> m<wbr>Load<wbr>Counter</h3>
+					<div class="tsd-signature tsd-kind-icon">m<wbr>Load<wbr>Counter<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Map</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> = new Map&lt;string, number&gt;()</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.5.1/packages/profiles/src/abstract/AbstractProfileManager.ts#L98">@zowe/imperative/packages/profiles/src/abstract/AbstractProfileManager.ts:98</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Load counter for this instance of the imperative profile manager. The load counter ensures that we are not
+								attempting to load circular dependencies by checking if a load (with dependencies) is attempting a load of
+							the same profile twice. The counts are reset when the loads complete, so state should be preserved correctly.</p>
+						</div>
+						<dl class="tsd-comment-tags">
+							<dt>static</dt>
+							<dd></dd>
+							<dt>memberof</dt>
+							<dd><p>AbstractProfileManager</p>
+							</dd>
+						</dl>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
+					<a name="mlogger" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> m<wbr>Logger</h3>
+					<div class="tsd-signature tsd-kind-icon">m<wbr>Logger<span class="tsd-signature-symbol">:</span> <a href="_zowe_imperative.logger.html" class="tsd-signature-type">Logger</a><span class="tsd-signature-symbol"> = Logger.getImperativeLogger()</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.5.1/packages/profiles/src/abstract/AbstractProfileManager.ts#L184">@zowe/imperative/packages/profiles/src/abstract/AbstractProfileManager.ts:184</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Logger instance - must be log4js compatible. Can be the Imperative logger (normally), but is required for
+							profile manager operation.</p>
+						</div>
+						<dl class="tsd-comment-tags">
+							<dt>memberof</dt>
+							<dd><p>AbstractProfileManager</p>
+							</dd>
+						</dl>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
+					<a name="mproductdisplayname" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> m<wbr>Product<wbr>Display<wbr>Name</h3>
+					<div class="tsd-signature tsd-kind-icon">m<wbr>Product<wbr>Display<wbr>Name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.5.1/packages/profiles/src/abstract/AbstractProfileManager.ts#L175">@zowe/imperative/packages/profiles/src/abstract/AbstractProfileManager.ts:175</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Product display name of the CLI.</p>
+						</div>
+						<dl class="tsd-comment-tags">
+							<dt>memberof</dt>
+							<dd><p>AbstractProfileManager</p>
+							</dd>
+						</dl>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
+					<a name="mprofilerootdirectory" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> m<wbr>Profile<wbr>Root<wbr>Directory</h3>
+					<div class="tsd-signature tsd-kind-icon">m<wbr>Profile<wbr>Root<wbr>Directory<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.5.1/packages/profiles/src/abstract/AbstractProfileManager.ts#L115">@zowe/imperative/packages/profiles/src/abstract/AbstractProfileManager.ts:115</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>The profile root directory is normally supplied on an Imperative configuration document, but it is the
+							location where all profile type directories are stored.</p>
+						</div>
+						<dl class="tsd-comment-tags">
+							<dt>memberof</dt>
+							<dd><p>AbstractProfileManager</p>
+							</dd>
+						</dl>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
+					<a name="mprofiletype" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> m<wbr>Profile<wbr>Type</h3>
+					<div class="tsd-signature tsd-kind-icon">m<wbr>Profile<wbr>Type<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.5.1/packages/profiles/src/abstract/AbstractProfileManager.ts#L133">@zowe/imperative/packages/profiles/src/abstract/AbstractProfileManager.ts:133</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>The profile &quot;type&quot; for this manager - indicating the profile/schema that this manager is working directly with.</p>
+						</div>
+						<dl class="tsd-comment-tags">
+							<dt>memberof</dt>
+							<dd><p>AbstractProfileManager</p>
+							</dd>
+						</dl>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
+					<a name="mprofiletypeconfiguration" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> m<wbr>Profile<wbr>Type<wbr>Configuration</h3>
+					<div class="tsd-signature tsd-kind-icon">m<wbr>Profile<wbr>Type<wbr>Configuration<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">T</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.5.1/packages/profiles/src/abstract/AbstractProfileManager.ts#L142">@zowe/imperative/packages/profiles/src/abstract/AbstractProfileManager.ts:142</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>The profile configuration document for the &quot;type&quot; defined to this manager. Contains the schema and dependency
+							specifications for the profile type.</p>
+						</div>
+						<dl class="tsd-comment-tags">
+							<dt>memberof</dt>
+							<dd><p>AbstractProfileManager</p>
+							</dd>
+						</dl>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
+					<a name="mprofiletypeconfigurations" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> m<wbr>Profile<wbr>Type<wbr>Configurations</h3>
+					<div class="tsd-signature tsd-kind-icon">m<wbr>Profile<wbr>Type<wbr>Configurations<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">[]</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.5.1/packages/profiles/src/abstract/AbstractProfileManager.ts#L125">@zowe/imperative/packages/profiles/src/abstract/AbstractProfileManager.ts:125</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>The full set of profile type configurations. The manager needs to ensure that A) the profile type configuration
+								is among the set (because it contains schema and dependency specifications) and B) That other type configurations
+							are available to verify/load dependencies, etc.</p>
+						</div>
+						<dl class="tsd-comment-tags">
+							<dt>memberof</dt>
+							<dd><p>AbstractProfileManager</p>
+							</dd>
+						</dl>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
+					<a name="mprofiletypemetafilename" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> m<wbr>Profile<wbr>Type<wbr>Meta<wbr>File<wbr>Name</h3>
+					<div class="tsd-signature tsd-kind-icon">m<wbr>Profile<wbr>Type<wbr>Meta<wbr>File<wbr>Name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.5.1/packages/profiles/src/abstract/AbstractProfileManager.ts#L167">@zowe/imperative/packages/profiles/src/abstract/AbstractProfileManager.ts:167</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>The meta file name for this profile type. Of the form &quot;<type>_meta&quot;.</p>
+						</div>
+						<dl class="tsd-comment-tags">
+							<dt>memberof</dt>
+							<dd><p>AbstractProfileManager</p>
+							</dd>
+						</dl>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
+					<a name="mprofiletyperootdirectory" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> m<wbr>Profile<wbr>Type<wbr>Root<wbr>Directory</h3>
+					<div class="tsd-signature tsd-kind-icon">m<wbr>Profile<wbr>Type<wbr>Root<wbr>Directory<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.5.1/packages/profiles/src/abstract/AbstractProfileManager.ts#L159">@zowe/imperative/packages/profiles/src/abstract/AbstractProfileManager.ts:159</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>The root directory for the type (contained within the profile root directory).</p>
+						</div>
+						<dl class="tsd-comment-tags">
+							<dt>memberof</dt>
+							<dd><p>AbstractProfileManager</p>
+							</dd>
+						</dl>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
+					<a name="mprofiletypeschema" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> m<wbr>Profile<wbr>Type<wbr>Schema</h3>
+					<div class="tsd-signature tsd-kind-icon">m<wbr>Profile<wbr>Type<wbr>Schema<span class="tsd-signature-symbol">:</span> <a href="../interfaces/_zowe_imperative.iprofileschema.html" class="tsd-signature-type">IProfileSchema</a></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.5.1/packages/profiles/src/abstract/AbstractProfileManager.ts#L151">@zowe/imperative/packages/profiles/src/abstract/AbstractProfileManager.ts:151</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>The profile schema for the &quot;type&quot;. The JSON schema is used to validate any profiles loaded or saved by this
+							profile manager for the type.</p>
+						</div>
+						<dl class="tsd-comment-tags">
+							<dt>memberof</dt>
+							<dd><p>AbstractProfileManager</p>
+							</dd>
+						</dl>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-static">
+					<a name="meta_file_suffix" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> <span class="tsd-flag ts-flagReadonly">Readonly</span> META_<wbr>FILE_<wbr>SUFFIX</h3>
+					<div class="tsd-signature tsd-kind-icon">META_<wbr>FILE_<wbr>SUFFIX<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &quot;_meta&quot;</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.5.1/packages/profiles/src/abstract/AbstractProfileManager.ts#L87">@zowe/imperative/packages/profiles/src/abstract/AbstractProfileManager.ts:87</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>The meta file suffix - always appended to the meta file to distinguish from other profiles. Users then cannot
+							supply a profile name that would conflict with the meta file.</p>
+						</div>
+						<dl class="tsd-comment-tags">
+							<dt>static</dt>
+							<dd></dd>
+							<dt>memberof</dt>
+							<dd><p>AbstractProfileManager</p>
+							</dd>
+						</dl>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-static">
+					<a name="profile_extension" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> <span class="tsd-flag ts-flagReadonly">Readonly</span> PROFILE_<wbr>EXTENSION</h3>
+					<div class="tsd-signature tsd-kind-icon">PROFILE_<wbr>EXTENSION<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &quot;.yaml&quot;</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.5.1/packages/profiles/src/abstract/AbstractProfileManager.ts#L78">@zowe/imperative/packages/profiles/src/abstract/AbstractProfileManager.ts:78</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>The default profile file extension (YAML format) - all profiles are stored in YAML format including
+							the meta profile file.</p>
+						</div>
+						<dl class="tsd-comment-tags">
+							<dt>static</dt>
+							<dd></dd>
+							<dt>memberof</dt>
+							<dd><p>ProfileManager</p>
+							</dd>
+						</dl>
+					</div>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group ">
+				<h2>Accessors</h2>
+				<section class="tsd-panel tsd-member tsd-kind-get-signature tsd-parent-kind-class">
+					<a name="configurations" class="tsd-anchor"></a>
+					<h3>configurations</h3>
+					<ul class="tsd-signatures tsd-kind-get-signature tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">get</span> configurations<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_imperative.iprofiletypeconfiguration.html" class="tsd-signature-type">IProfileTypeConfiguration</a><span class="tsd-signature-symbol">[]</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.5.1/packages/profiles/src/abstract/AbstractProfileManager.ts#L380">@zowe/imperative/packages/profiles/src/abstract/AbstractProfileManager.ts:380</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Accessor that returns a copy of of the profile configuration document.</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>readonly</dt>
+									<dd></dd>
+									<dt>memberof</dt>
+									<dd><p>AbstractProfileManager</p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-returns-title">Returns <a href="../interfaces/_zowe_imperative.iprofiletypeconfiguration.html" class="tsd-signature-type">IProfileTypeConfiguration</a><span class="tsd-signature-symbol">[]</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-get-signature tsd-parent-kind-class tsd-is-protected">
+					<a name="loadcounter" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagProtected">Protected</span> load<wbr>Counter</h3>
+					<ul class="tsd-signatures tsd-kind-get-signature tsd-parent-kind-class tsd-is-protected">
+						<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">get</span> loadCounter<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Map</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.5.1/packages/profiles/src/abstract/AbstractProfileManager.ts#L247">@zowe/imperative/packages/profiles/src/abstract/AbstractProfileManager.ts:247</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Accessor for the load counter (protects against circular loading)</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>readonly</dt>
+									<dd></dd>
+									<dt>memberof</dt>
+									<dd><p>AbstractProfileManager</p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Map</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-get-signature tsd-parent-kind-class tsd-is-protected">
+					<a name="log" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagProtected">Protected</span> log</h3>
+					<ul class="tsd-signatures tsd-kind-get-signature tsd-parent-kind-class tsd-is-protected">
+						<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">get</span> log<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_zowe_imperative.logger.html" class="tsd-signature-type">Logger</a></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.5.1/packages/profiles/src/abstract/AbstractProfileManager.ts#L258">@zowe/imperative/packages/profiles/src/abstract/AbstractProfileManager.ts:258</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Accessor for the logger instance - passed on the constructor</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>readonly</dt>
+									<dd></dd>
+									<dt>memberof</dt>
+									<dd><p>AbstractProfileManager</p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-returns-title">Returns <a href="_zowe_imperative.logger.html" class="tsd-signature-type">Logger</a></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-get-signature tsd-parent-kind-class tsd-is-protected">
+					<a name="managerparameters" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagProtected">Protected</span> manager<wbr>Parameters</h3>
+					<ul class="tsd-signatures tsd-kind-get-signature tsd-parent-kind-class tsd-is-protected">
+						<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">get</span> managerParameters<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_imperative.iprofilemanager.html" class="tsd-signature-type">IProfileManager</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.5.1/packages/profiles/src/abstract/AbstractProfileManager.ts#L269">@zowe/imperative/packages/profiles/src/abstract/AbstractProfileManager.ts:269</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Accessor the input parameters to the constructor - used sometimes to create other instances of profile managers.</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>readonly</dt>
+									<dd></dd>
+									<dt>memberof</dt>
+									<dd><p>AbstractProfileManager</p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-returns-title">Returns <a href="../interfaces/_zowe_imperative.iprofilemanager.html" class="tsd-signature-type">IProfileManager</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-get-signature tsd-parent-kind-class tsd-is-protected">
+					<a name="productdisplayname" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagProtected">Protected</span> product<wbr>Display<wbr>Name</h3>
+					<ul class="tsd-signatures tsd-kind-get-signature tsd-parent-kind-class tsd-is-protected">
+						<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">get</span> productDisplayName<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.5.1/packages/profiles/src/abstract/AbstractProfileManager.ts#L291">@zowe/imperative/packages/profiles/src/abstract/AbstractProfileManager.ts:291</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Accesor for the product display name.</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>readonly</dt>
+									<dd></dd>
+									<dt>memberof</dt>
+									<dd><p>AbstractProfileManager</p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-get-signature tsd-parent-kind-class tsd-is-protected">
+					<a name="profilerootdirectory" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagProtected">Protected</span> profile<wbr>Root<wbr>Directory</h3>
+					<ul class="tsd-signatures tsd-kind-get-signature tsd-parent-kind-class tsd-is-protected">
+						<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">get</span> profileRootDirectory<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.5.1/packages/profiles/src/abstract/AbstractProfileManager.ts#L359">@zowe/imperative/packages/profiles/src/abstract/AbstractProfileManager.ts:359</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Accessor for the profile root directory - supplied on the constructor - used to construct the profile type
+									directory.</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>readonly</dt>
+									<dd></dd>
+									<dt>memberof</dt>
+									<dd><p>AbstractProfileManager</p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-get-signature tsd-parent-kind-class tsd-is-protected">
+					<a name="profiletype" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagProtected">Protected</span> profile<wbr>Type</h3>
+					<ul class="tsd-signatures tsd-kind-get-signature tsd-parent-kind-class tsd-is-protected">
+						<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">get</span> profileType<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.5.1/packages/profiles/src/abstract/AbstractProfileManager.ts#L280">@zowe/imperative/packages/profiles/src/abstract/AbstractProfileManager.ts:280</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Accessor for the profile type specified on the constructor.</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>readonly</dt>
+									<dd></dd>
+									<dt>memberof</dt>
+									<dd><p>AbstractProfileManager</p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-get-signature tsd-parent-kind-class tsd-is-protected">
+					<a name="profiletypeconfiguration" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagProtected">Protected</span> profile<wbr>Type<wbr>Configuration</h3>
+					<ul class="tsd-signatures tsd-kind-get-signature tsd-parent-kind-class tsd-is-protected">
+						<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">get</span> profileTypeConfiguration<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">T</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.5.1/packages/profiles/src/abstract/AbstractProfileManager.ts#L302">@zowe/imperative/packages/profiles/src/abstract/AbstractProfileManager.ts:302</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Accessor for the profile type configuration for this manager.</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>readonly</dt>
+									<dd></dd>
+									<dt>memberof</dt>
+									<dd><p>AbstractProfileManager</p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">T</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-get-signature tsd-parent-kind-class tsd-is-protected">
+					<a name="profiletypeconfigurations" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagProtected">Protected</span> profile<wbr>Type<wbr>Configurations</h3>
+					<ul class="tsd-signatures tsd-kind-get-signature tsd-parent-kind-class tsd-is-protected">
+						<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">get</span> profileTypeConfigurations<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">[]</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.5.1/packages/profiles/src/abstract/AbstractProfileManager.ts#L314">@zowe/imperative/packages/profiles/src/abstract/AbstractProfileManager.ts:314</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Accessor for the full set of type configurations - passed on the constructor or obtained from reading
+									the profile root directories and meta files.</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>readonly</dt>
+									<dd></dd>
+									<dt>memberof</dt>
+									<dd><p>AbstractProfileManager</p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">[]</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-get-signature tsd-parent-kind-class tsd-is-protected">
+					<a name="profiletypemetafilename" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagProtected">Protected</span> profile<wbr>Type<wbr>Meta<wbr>File<wbr>Name</h3>
+					<ul class="tsd-signatures tsd-kind-get-signature tsd-parent-kind-class tsd-is-protected">
+						<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">get</span> profileTypeMetaFileName<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.5.1/packages/profiles/src/abstract/AbstractProfileManager.ts#L347">@zowe/imperative/packages/profiles/src/abstract/AbstractProfileManager.ts:347</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Accessor for the profile meta file name - constructed as &quot;<type>_meta&quot;</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>readonly</dt>
+									<dd></dd>
+									<dt>memberof</dt>
+									<dd><p>AbstractProfileManager</p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-get-signature tsd-parent-kind-class tsd-is-protected">
+					<a name="profiletyperootdirectory" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagProtected">Protected</span> profile<wbr>Type<wbr>Root<wbr>Directory</h3>
+					<ul class="tsd-signatures tsd-kind-get-signature tsd-parent-kind-class tsd-is-protected">
+						<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">get</span> profileTypeRootDirectory<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.5.1/packages/profiles/src/abstract/AbstractProfileManager.ts#L336">@zowe/imperative/packages/profiles/src/abstract/AbstractProfileManager.ts:336</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Accessor for the profile type root directory (contained within the profile root directory and named by the type itself)</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>readonly</dt>
+									<dd></dd>
+									<dt>memberof</dt>
+									<dd><p>AbstractProfileManager</p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-get-signature tsd-parent-kind-class tsd-is-protected">
+					<a name="profiletypeschema" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagProtected">Protected</span> profile<wbr>Type<wbr>Schema</h3>
+					<ul class="tsd-signatures tsd-kind-get-signature tsd-parent-kind-class tsd-is-protected">
+						<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">get</span> profileTypeSchema<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_imperative.iprofileschema.html" class="tsd-signature-type">IProfileSchema</a></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.5.1/packages/profiles/src/abstract/AbstractProfileManager.ts#L325">@zowe/imperative/packages/profiles/src/abstract/AbstractProfileManager.ts:325</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Accessor for the schema of this type - JSON schema standard</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>readonly</dt>
+									<dd></dd>
+									<dt>memberof</dt>
+									<dd><p>AbstractProfileManager</p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-returns-title">Returns <a href="../interfaces/_zowe_imperative.iprofileschema.html" class="tsd-signature-type">IProfileSchema</a></h4>
+						</li>
+					</ul>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group ">
+				<h2>Methods</h2>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="cleardefault" class="tsd-anchor"></a>
+					<h3>clear<wbr>Default</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">clear<wbr>Default<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.5.1/packages/profiles/src/abstract/AbstractProfileManager.ts#L792">@zowe/imperative/packages/profiles/src/abstract/AbstractProfileManager.ts:792</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Clears the default profile for the profile managers type.</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>memberof</dt>
+									<dd><p>AbstractProfileManager</p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
+							<ul>
+								<li>The response string (or an error is thrown if the request cannot be completed);</li>
+							</ul>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-private">
+					<a name="collectallconfigurations" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> collect<wbr>All<wbr>Configurations</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-private">
+						<li class="tsd-signature tsd-kind-icon">collect<wbr>All<wbr>Configurations<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">[]</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.5.1/packages/profiles/src/abstract/AbstractProfileManager.ts#L1298">@zowe/imperative/packages/profiles/src/abstract/AbstractProfileManager.ts:1298</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Reads all configuration documents from the meta and collects all type configuration documents.</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>memberof</dt>
+									<dd><p>AbstractProfileManager</p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">[]</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-protected">
+					<a name="constructfullprofilepath" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagProtected">Protected</span> construct<wbr>Full<wbr>Profile<wbr>Path</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-protected">
+						<li class="tsd-signature tsd-kind-icon">construct<wbr>Full<wbr>Profile<wbr>Path<span class="tsd-signature-symbol">(</span>name<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, type<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.5.1/packages/profiles/src/abstract/AbstractProfileManager.ts#L1051">@zowe/imperative/packages/profiles/src/abstract/AbstractProfileManager.ts:1051</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Constructs the full path to the profile of the managers &quot;type&quot;.</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>memberof</dt>
+									<dd><p>AbstractProfileManager</p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>name: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The profile name to construct the path</p>
+									</div>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> type: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = this.profileType</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
+							<ul>
+								<li>The full profile directory.</li>
+							</ul>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-private">
+					<a name="constructmetaname" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> construct<wbr>Meta<wbr>Name</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-private">
+						<li class="tsd-signature tsd-kind-icon">construct<wbr>Meta<wbr>Name<span class="tsd-signature-symbol">(</span>type<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.5.1/packages/profiles/src/abstract/AbstractProfileManager.ts#L1243">@zowe/imperative/packages/profiles/src/abstract/AbstractProfileManager.ts:1243</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Builds the meta profile name for this type. Normally of the form &quot;<type>_meta&quot;. This method does NOT include the extension</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>memberof</dt>
+									<dd><p>AbstractProfileManager</p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> type: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = this.profileType</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-private">
+					<a name="createprofiletypedirectory" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> create<wbr>Profile<wbr>Type<wbr>Directory</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-private">
+						<li class="tsd-signature tsd-kind-icon">create<wbr>Profile<wbr>Type<wbr>Directory<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.5.1/packages/profiles/src/abstract/AbstractProfileManager.ts#L1253">@zowe/imperative/packages/profiles/src/abstract/AbstractProfileManager.ts:1253</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Create&#39;s the directory for this profile manager&#39;s type.</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>memberof</dt>
+									<dd><p>AbstractProfileManager</p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
+							<ul>
+								<li>The directory created</li>
+							</ul>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter">
+					<a name="delete" class="tsd-anchor"></a>
+					<h3>delete</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter">
+						<li class="tsd-signature tsd-kind-icon">delete&lt;D&gt;<span class="tsd-signature-symbol">(</span>parms<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">D</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_imperative.ipromisewithprogress.html#promise" class="tsd-signature-type">Promise</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_zowe_imperative.iprofiledeleted.html" class="tsd-signature-type">IProfileDeleted</a><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.5.1/packages/profiles/src/abstract/AbstractProfileManager.ts#L649">@zowe/imperative/packages/profiles/src/abstract/AbstractProfileManager.ts:649</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Deletes a profile from disk. Ensures that the parameters are correct and removes the profile. If the profile is listed as a dependency of
+									other profiles it will NOT delete the profile unless &quot;rejectIfDependency&quot; is set to false.</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>memberof</dt>
+									<dd><p>AbstractProfileManager</p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-type-parameters-title">Type parameters</h4>
+							<ul class="tsd-type-parameters">
+								<li>
+									<h4>D<span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_imperative.ideleteprofile.html" class="tsd-signature-type">IDeleteProfile</a></h4>
+								</li>
+							</ul>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>parms: <span class="tsd-signature-type">D</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>See the interface for details</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="../interfaces/_zowe_imperative.ipromisewithprogress.html#promise" class="tsd-signature-type">Promise</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_zowe_imperative.iprofiledeleted.html" class="tsd-signature-type">IProfileDeleted</a><span class="tsd-signature-symbol">&gt;</span></h4>
+							<ul>
+								<li>The promise that is fulfilled with the response object (see interface for details) or rejected
+								with an Imperative Error.</li>
+							</ul>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-protected">
+					<a name="deleteprofile" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagProtected">Protected</span> <span class="tsd-flag ts-flagAbstract">Abstract</span> delete<wbr>Profile</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-protected">
+						<li class="tsd-signature tsd-kind-icon">delete<wbr>Profile<span class="tsd-signature-symbol">(</span>parms<span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_imperative.ideleteprofile.html" class="tsd-signature-type">IDeleteProfile</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_imperative.ipromisewithprogress.html#promise" class="tsd-signature-type">Promise</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_zowe_imperative.iprofiledeleted.html" class="tsd-signature-type">IProfileDeleted</a><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.5.1/packages/profiles/src/abstract/AbstractProfileManager.ts#L889">@zowe/imperative/packages/profiles/src/abstract/AbstractProfileManager.ts:889</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Delete profile - performs the profile delete according to the implementation - invoked when all parameters are valid
+									(according the abstract manager).</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>abstract</dt>
+									<dd></dd>
+									<dt>memberof</dt>
+									<dd><p>AbstractProfileManager</p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>parms: <a href="../interfaces/_zowe_imperative.ideleteprofile.html" class="tsd-signature-type">IDeleteProfile</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>See interface for details</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="../interfaces/_zowe_imperative.ipromisewithprogress.html#promise" class="tsd-signature-type">Promise</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_zowe_imperative.iprofiledeleted.html" class="tsd-signature-type">IProfileDeleted</a><span class="tsd-signature-symbol">&gt;</span></h4>
+							<ul>
+								<li>The promise fulfilled with response or rejected with an ImperativeError.</li>
+							</ul>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-protected">
+					<a name="deleteprofilefromdisk" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagProtected">Protected</span> delete<wbr>Profile<wbr>From<wbr>Disk</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-protected">
+						<li class="tsd-signature tsd-kind-icon">delete<wbr>Profile<wbr>From<wbr>Disk<span class="tsd-signature-symbol">(</span>name<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.5.1/packages/profiles/src/abstract/AbstractProfileManager.ts#L932">@zowe/imperative/packages/profiles/src/abstract/AbstractProfileManager.ts:932</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Invokes the profile IO method to delete the profile from disk.</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>memberof</dt>
+									<dd><p>AbstractProfileManager</p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>name: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The name of the profile to delete.</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
+							<ul>
+								<li>The path where the profile was.</li>
+							</ul>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-private">
+					<a name="failnotfounddefaultresponse" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> fail<wbr>Not<wbr>Found<wbr>Default<wbr>Response</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-private">
+						<li class="tsd-signature tsd-kind-icon">fail<wbr>Not<wbr>Found<wbr>Default<wbr>Response<span class="tsd-signature-symbol">(</span>name<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_imperative.iprofileloaded.html" class="tsd-signature-type">IProfileLoaded</a></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.5.1/packages/profiles/src/abstract/AbstractProfileManager.ts#L1279">@zowe/imperative/packages/profiles/src/abstract/AbstractProfileManager.ts:1279</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Construct the default response for the situation when a profile is not found (on a load/save/update/etc), but ignore not found is true.</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>memberof</dt>
+									<dd><p>AbstractProfileManager</p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>name: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The name of the profile that was not found</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="../interfaces/_zowe_imperative.iprofileloaded.html" class="tsd-signature-type">IProfileLoaded</a></h4>
+							<ul>
+								<li>The default response.</li>
+							</ul>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="getallprofilenames" class="tsd-anchor"></a>
+					<h3>get<wbr>All<wbr>Profile<wbr>Names</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">get<wbr>All<wbr>Profile<wbr>Names<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.5.1/packages/profiles/src/abstract/AbstractProfileManager.ts#L369">@zowe/imperative/packages/profiles/src/abstract/AbstractProfileManager.ts:369</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Obtains all profile names for the profile &quot;type&quot; specified on the manager. The names are obtained from the
+									filesystem (in the profile type directory) and the meta file is NOT returned in the list.</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>memberof</dt>
+									<dd><p>AbstractProfileManager</p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span></h4>
+							<ul>
+								<li>The list of profile names (obtained from disk).</li>
+							</ul>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="getdefaultprofilename" class="tsd-anchor"></a>
+					<h3>get<wbr>Default<wbr>Profile<wbr>Name</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">get<wbr>Default<wbr>Profile<wbr>Name<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.5.1/packages/profiles/src/abstract/AbstractProfileManager.ts#L828">@zowe/imperative/packages/profiles/src/abstract/AbstractProfileManager.ts:828</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Returns the default profile name for this &quot;type&quot; or &quot;undefined&quot; if no default is set.</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>memberof</dt>
+									<dd><p>AbstractProfileManager</p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
+							<ul>
+								<li>The default profile name or undefined.</li>
+							</ul>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-private">
+					<a name="isdependencyof" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> is<wbr>Dependency<wbr>Of</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-private">
+						<li class="tsd-signature tsd-kind-icon">is<wbr>Dependency<wbr>Of<span class="tsd-signature-symbol">(</span>profilesToSearch<span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_imperative.iprofileloaded.html" class="tsd-signature-type">IProfileLoaded</a><span class="tsd-signature-symbol">[]</span>, name<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_imperative.iprofile.html" class="tsd-signature-type">IProfile</a><span class="tsd-signature-symbol">[]</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.5.1/packages/profiles/src/abstract/AbstractProfileManager.ts#L1202">@zowe/imperative/packages/profiles/src/abstract/AbstractProfileManager.ts:1202</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Checks if the profile (by name) is listed as a dependency of any other profile passed. The type of the profiled named is
+									the type of the current manager object.</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>memberof</dt>
+									<dd><p>AbstractProfileManager</p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>profilesToSearch: <a href="../interfaces/_zowe_imperative.iprofileloaded.html" class="tsd-signature-type">IProfileLoaded</a><span class="tsd-signature-symbol">[]</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The list of profiles to search for the dependency.</p>
+									</div>
+								</li>
+								<li>
+									<h5>name: <span class="tsd-signature-type">string</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="../interfaces/_zowe_imperative.iprofile.html" class="tsd-signature-type">IProfile</a><span class="tsd-signature-symbol">[]</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-protected">
+					<a name="isprofileempty" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagProtected">Protected</span> is<wbr>Profile<wbr>Empty</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-protected">
+						<li class="tsd-signature tsd-kind-icon">is<wbr>Profile<wbr>Empty<span class="tsd-signature-symbol">(</span>profile<span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_imperative.iprofile.html" class="tsd-signature-type">IProfile</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.5.1/packages/profiles/src/abstract/AbstractProfileManager.ts#L1087">@zowe/imperative/packages/profiles/src/abstract/AbstractProfileManager.ts:1087</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Checks if the profile object passed is &quot;empty&quot; - meaning it has no contents other than that type or name.
+									A profile can only specify &quot;dependencies&quot;, in the event that it is just acting as a &quot;pointer&quot; to another profile.</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>memberof</dt>
+									<dd><p>AbstractProfileManager</p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>profile: <a href="../interfaces/_zowe_imperative.iprofile.html" class="tsd-signature-type">IProfile</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The profile to check for &quot;emptiness&quot;.</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
+							<p>True if the profile object is empty.</p>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter">
+					<a name="load" class="tsd-anchor"></a>
+					<h3>load</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter">
+						<li class="tsd-signature tsd-kind-icon">load&lt;L&gt;<span class="tsd-signature-symbol">(</span>parms<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">L</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_imperative.ipromisewithprogress.html#promise" class="tsd-signature-type">Promise</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_zowe_imperative.iprofileloaded.html" class="tsd-signature-type">IProfileLoaded</a><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.5.1/packages/profiles/src/abstract/AbstractProfileManager.ts#L453">@zowe/imperative/packages/profiles/src/abstract/AbstractProfileManager.ts:453</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Load a profile from disk. Ensures that the parameters are valid and loads the profile specified by name OR the default profile if
+									requested. If load default is requested, any name supplied is ignored.</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>memberof</dt>
+									<dd><p>AbstractProfileManager</p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-type-parameters-title">Type parameters</h4>
+							<ul class="tsd-type-parameters">
+								<li>
+									<h4>L<span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_imperative.iloadprofile.html" class="tsd-signature-type">ILoadProfile</a></h4>
+								</li>
+							</ul>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>parms: <span class="tsd-signature-type">L</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>See the interface for details.</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="../interfaces/_zowe_imperative.ipromisewithprogress.html#promise" class="tsd-signature-type">Promise</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_zowe_imperative.iprofileloaded.html" class="tsd-signature-type">IProfileLoaded</a><span class="tsd-signature-symbol">&gt;</span></h4>
+							<ul>
+								<li>The promise that is fulfilled with the response object (see interface for details) or rejected
+								with an Imperative Error.</li>
+							</ul>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="loadall" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagAbstract">Abstract</span> load<wbr>All</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">load<wbr>All<span class="tsd-signature-symbol">(</span>parms<span class="tsd-signature-symbol">?: </span><a href="../interfaces/_zowe_imperative.iloadallprofiles.html" class="tsd-signature-type">ILoadAllProfiles</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_imperative.ipromisewithprogress.html#promise" class="tsd-signature-type">Promise</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_zowe_imperative.iprofileloaded.html" class="tsd-signature-type">IProfileLoaded</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.5.1/packages/profiles/src/abstract/AbstractProfileManager.ts#L856">@zowe/imperative/packages/profiles/src/abstract/AbstractProfileManager.ts:856</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Load all profiles - the behavior is dictated by the implementation.</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>abstract</dt>
+									<dd></dd>
+									<dt>memberof</dt>
+									<dd><p>AbstractProfileManager</p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> parms: <a href="../interfaces/_zowe_imperative.iloadallprofiles.html" class="tsd-signature-type">ILoadAllProfiles</a></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="../interfaces/_zowe_imperative.ipromisewithprogress.html#promise" class="tsd-signature-type">Promise</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_zowe_imperative.iprofileloaded.html" class="tsd-signature-type">IProfileLoaded</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span></h4>
+							<ul>
+								<li>The list of profiles when the promise is fulfilled or rejected with an ImperativeError.</li>
+							</ul>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-protected">
+					<a name="loaddependencies" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagProtected">Protected</span> <span class="tsd-flag ts-flagAbstract">Abstract</span> load<wbr>Dependencies</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-protected">
+						<li class="tsd-signature tsd-kind-icon">load<wbr>Dependencies<span class="tsd-signature-symbol">(</span>name<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, profile<span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_imperative.iprofile.html" class="tsd-signature-type">IProfile</a>, failNotFound<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_imperative.ipromisewithprogress.html#promise" class="tsd-signature-type">Promise</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_zowe_imperative.iprofileloaded.html" class="tsd-signature-type">IProfileLoaded</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.5.1/packages/profiles/src/abstract/AbstractProfileManager.ts#L923">@zowe/imperative/packages/profiles/src/abstract/AbstractProfileManager.ts:923</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Load a profiles dependencies - dictacted by the implementation.</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>abstract</dt>
+									<dd></dd>
+									<dt>memberof</dt>
+									<dd><p>AbstractProfileManager</p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>name: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>the name of the profile to load dependencies for</p>
+									</div>
+								</li>
+								<li>
+									<h5>profile: <a href="../interfaces/_zowe_imperative.iprofile.html" class="tsd-signature-type">IProfile</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The profile to load dependencies for.</p>
+									</div>
+								</li>
+								<li>
+									<h5>failNotFound: <span class="tsd-signature-type">boolean</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>True to fail &quot;not found&quot; errors</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="../interfaces/_zowe_imperative.ipromisewithprogress.html#promise" class="tsd-signature-type">Promise</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_zowe_imperative.iprofileloaded.html" class="tsd-signature-type">IProfileLoaded</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span></h4>
+							<ul>
+								<li>The promise fulfilled with response or rejected with an ImperativeError.</li>
+							</ul>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-protected">
+					<a name="loadfailed" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagProtected">Protected</span> load<wbr>Failed</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-protected">
+						<li class="tsd-signature tsd-kind-icon">load<wbr>Failed<span class="tsd-signature-symbol">(</span>name<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.5.1/packages/profiles/src/abstract/AbstractProfileManager.ts#L1073">@zowe/imperative/packages/profiles/src/abstract/AbstractProfileManager.ts:1073</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Standard load failed error message and Imperative Error.</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>memberof</dt>
+									<dd><p>AbstractProfileManager</p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>name: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The name of the profile for which the load failed.</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-protected">
+					<a name="loadprofile" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagProtected">Protected</span> <span class="tsd-flag ts-flagAbstract">Abstract</span> load<wbr>Profile</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-protected">
+						<li class="tsd-signature tsd-kind-icon">load<wbr>Profile<span class="tsd-signature-symbol">(</span>parms<span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_imperative.iloadprofile.html" class="tsd-signature-type">ILoadProfile</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_imperative.ipromisewithprogress.html#promise" class="tsd-signature-type">Promise</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_zowe_imperative.iprofileloaded.html" class="tsd-signature-type">IProfileLoaded</a><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.5.1/packages/profiles/src/abstract/AbstractProfileManager.ts#L878">@zowe/imperative/packages/profiles/src/abstract/AbstractProfileManager.ts:878</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Save profile - performs the profile load according to the implementation - invoked when all parameters are valid
+									(according the abstract manager).</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>abstract</dt>
+									<dd></dd>
+									<dt>memberof</dt>
+									<dd><p>AbstractProfileManager</p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>parms: <a href="../interfaces/_zowe_imperative.iloadprofile.html" class="tsd-signature-type">ILoadProfile</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>See interface for details</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="../interfaces/_zowe_imperative.ipromisewithprogress.html#promise" class="tsd-signature-type">Promise</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_zowe_imperative.iprofileloaded.html" class="tsd-signature-type">IProfileLoaded</a><span class="tsd-signature-symbol">&gt;</span></h4>
+							<ul>
+								<li>The promise fulfilled with response or rejected with an ImperativeError.</li>
+							</ul>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-protected">
+					<a name="loadspecificprofile" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagProtected">Protected</span> load<wbr>Specific<wbr>Profile</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-protected">
+						<li class="tsd-signature tsd-kind-icon">load<wbr>Specific<wbr>Profile<span class="tsd-signature-symbol">(</span>name<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, failNotFound<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">boolean</span>, loadDependencies<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_imperative.ipromisewithprogress.html#promise" class="tsd-signature-type">Promise</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_zowe_imperative.iprofileloaded.html" class="tsd-signature-type">IProfileLoaded</a><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.5.1/packages/profiles/src/abstract/AbstractProfileManager.ts#L1108">@zowe/imperative/packages/profiles/src/abstract/AbstractProfileManager.ts:1108</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Loads a specific profile (by name).</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>memberof</dt>
+									<dd><p>AbstractProfileManager</p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>name: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The name of the profile to load.</p>
+									</div>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> failNotFound: <span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol"> = true</span></h5>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> loadDependencies: <span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol"> = true</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="../interfaces/_zowe_imperative.ipromisewithprogress.html#promise" class="tsd-signature-type">Promise</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_zowe_imperative.iprofileloaded.html" class="tsd-signature-type">IProfileLoaded</a><span class="tsd-signature-symbol">&gt;</span></h4>
+							<ul>
+								<li>The promise to fulfill with the response OR reject with an ImperativeError</li>
+							</ul>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-protected">
+					<a name="locateexistingprofile" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagProtected">Protected</span> locate<wbr>Existing<wbr>Profile</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-protected">
+						<li class="tsd-signature tsd-kind-icon">locate<wbr>Existing<wbr>Profile<span class="tsd-signature-symbol">(</span>name<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.5.1/packages/profiles/src/abstract/AbstractProfileManager.ts#L1062">@zowe/imperative/packages/profiles/src/abstract/AbstractProfileManager.ts:1062</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Locate the existing profile for the name specified.</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>memberof</dt>
+									<dd><p>AbstractProfileManager</p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>name: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The profile to locate</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
+							<ul>
+								<li>The fully qualified path or undefined if not found.</li>
+							</ul>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="mergeprofiles" class="tsd-anchor"></a>
+					<h3>merge<wbr>Profiles</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">merge<wbr>Profiles<span class="tsd-signature-symbol">(</span>oldProfile<span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_imperative.iprofile.html" class="tsd-signature-type">IProfile</a>, newProfile<span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_imperative.iprofile.html" class="tsd-signature-type">IProfile</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_imperative.iprofile.html" class="tsd-signature-type">IProfile</a></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.5.1/packages/profiles/src/abstract/AbstractProfileManager.ts#L574">@zowe/imperative/packages/profiles/src/abstract/AbstractProfileManager.ts:574</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Merge two profiles together. Useful when updating existing profiles with a few new
+									fields, for example.</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>oldProfile: <a href="../interfaces/_zowe_imperative.iprofile.html" class="tsd-signature-type">IProfile</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>the old profile, fields on this will have lower precedence</p>
+									</div>
+								</li>
+								<li>
+									<h5>newProfile: <a href="../interfaces/_zowe_imperative.iprofile.html" class="tsd-signature-type">IProfile</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>the new profile, fields on this will have higher precedence</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="../interfaces/_zowe_imperative.iprofile.html" class="tsd-signature-type">IProfile</a></h4>
+							<ul>
+								<li>the merged profile</li>
+							</ul>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-private">
+					<a name="protectagainstoverwrite" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> protect<wbr>Against<wbr>Overwrite</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-private">
+						<li class="tsd-signature tsd-kind-icon">protect<wbr>Against<wbr>Overwrite<span class="tsd-signature-symbol">(</span>name<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, overwrite<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.5.1/packages/profiles/src/abstract/AbstractProfileManager.ts#L1223">@zowe/imperative/packages/profiles/src/abstract/AbstractProfileManager.ts:1223</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Protects a against an overwrite on a profile save (if requested).</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>memberof</dt>
+									<dd><p>AbstractProfileManager</p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>name: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The name of the profile to check for existance.</p>
+									</div>
+								</li>
+								<li>
+									<h5>overwrite: <span class="tsd-signature-type">boolean</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>False to protect against overwrite.</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-private">
+					<a name="readmeta" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> read<wbr>Meta</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-private">
+						<li class="tsd-signature tsd-kind-icon">read<wbr>Meta<span class="tsd-signature-symbol">(</span>path<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, type<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_imperative.imetaprofile.html" class="tsd-signature-type">IMetaProfile</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.5.1/packages/profiles/src/abstract/AbstractProfileManager.ts#L1368">@zowe/imperative/packages/profiles/src/abstract/AbstractProfileManager.ts:1368</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Read the meta profile and validate the contents.</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>memberof</dt>
+									<dd><p>AbstractProfileManager</p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>path: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>path to the meta profile</p>
+									</div>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> type: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = this.profileType</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="../interfaces/_zowe_imperative.imetaprofile.html" class="tsd-signature-type">IMetaProfile</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></h4>
+							<ul>
+								<li>The meta profile read from disk.</li>
+							</ul>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter">
+					<a name="save" class="tsd-anchor"></a>
+					<h3>save</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter">
+						<li class="tsd-signature tsd-kind-icon">save&lt;S&gt;<span class="tsd-signature-symbol">(</span>parms<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">S</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_imperative.ipromisewithprogress.html#promise" class="tsd-signature-type">Promise</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_zowe_imperative.iprofilesaved.html" class="tsd-signature-type">IProfileSaved</a><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.5.1/packages/profiles/src/abstract/AbstractProfileManager.ts#L393">@zowe/imperative/packages/profiles/src/abstract/AbstractProfileManager.ts:393</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Save a profile to disk. Ensures that the profile specified is valid (basic and schema validation) and invokes the implementations
+									&quot;saveProfile&quot; method to perform the save and formulate the response.</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>memberof</dt>
+									<dd><p>AbstractProfileManager</p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-type-parameters-title">Type parameters</h4>
+							<ul class="tsd-type-parameters">
+								<li>
+									<h4>S<span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_imperative.isaveprofile.html" class="tsd-signature-type">ISaveProfile</a></h4>
+								</li>
+							</ul>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>parms: <span class="tsd-signature-type">S</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>See interface for details</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="../interfaces/_zowe_imperative.ipromisewithprogress.html#promise" class="tsd-signature-type">Promise</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_zowe_imperative.iprofilesaved.html" class="tsd-signature-type">IProfileSaved</a><span class="tsd-signature-symbol">&gt;</span></h4>
+							<ul>
+								<li>The promise that is fulfilled with the response object (see interface for details) or rejected
+								with an Imperative Error.</li>
+							</ul>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-protected">
+					<a name="saveprofile" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagProtected">Protected</span> <span class="tsd-flag ts-flagAbstract">Abstract</span> save<wbr>Profile</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-protected">
+						<li class="tsd-signature tsd-kind-icon">save<wbr>Profile<span class="tsd-signature-symbol">(</span>parms<span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_imperative.isaveprofile.html" class="tsd-signature-type">ISaveProfile</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_imperative.ipromisewithprogress.html#promise" class="tsd-signature-type">Promise</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_zowe_imperative.iprofilesaved.html" class="tsd-signature-type">IProfileSaved</a><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.5.1/packages/profiles/src/abstract/AbstractProfileManager.ts#L867">@zowe/imperative/packages/profiles/src/abstract/AbstractProfileManager.ts:867</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Save profile - performs the profile save according to the implementation - invoked when all parameters are valid
+									(according the abstract manager).</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>abstract</dt>
+									<dd></dd>
+									<dt>memberof</dt>
+									<dd><p>AbstractProfileManager</p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>parms: <a href="../interfaces/_zowe_imperative.isaveprofile.html" class="tsd-signature-type">ISaveProfile</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>See interface for details</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="../interfaces/_zowe_imperative.ipromisewithprogress.html#promise" class="tsd-signature-type">Promise</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_zowe_imperative.iprofilesaved.html" class="tsd-signature-type">IProfileSaved</a><span class="tsd-signature-symbol">&gt;</span></h4>
+							<ul>
+								<li>The promise fulfilled with response or rejected with an ImperativeError.</li>
+							</ul>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="setdefault" class="tsd-anchor"></a>
+					<h3>set<wbr>Default</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">set<wbr>Default<span class="tsd-signature-symbol">(</span>name<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.5.1/packages/profiles/src/abstract/AbstractProfileManager.ts#L744">@zowe/imperative/packages/profiles/src/abstract/AbstractProfileManager.ts:744</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Sets the default profile for the profile managers type.</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>memberof</dt>
+									<dd><p>AbstractProfileManager</p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>name: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The name of the new default</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
+							<ul>
+								<li>The response string (or an error is thrown if the request cannot be completed);</li>
+							</ul>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-private">
+					<a name="setdefaultinmetaobject" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> set<wbr>Default<wbr>InMeta<wbr>Object</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-private">
+						<li class="tsd-signature tsd-kind-icon">set<wbr>Default<wbr>InMeta<wbr>Object<span class="tsd-signature-symbol">(</span>meta<span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_imperative.imetaprofile.html" class="tsd-signature-type">IMetaProfile</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span>, defaultProfileName<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.5.1/packages/profiles/src/abstract/AbstractProfileManager.ts#L1268">@zowe/imperative/packages/profiles/src/abstract/AbstractProfileManager.ts:1268</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Set the default profile name in the meta profile for this type.</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>memberof</dt>
+									<dd><p>AbstractProfileManager</p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>meta: <a href="../interfaces/_zowe_imperative.imetaprofile.html" class="tsd-signature-type">IMetaProfile</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The meta profile contents.</p>
+									</div>
+								</li>
+								<li>
+									<h5>defaultProfileName: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The name to set as default.</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter">
+					<a name="update" class="tsd-anchor"></a>
+					<h3>update</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter">
+						<li class="tsd-signature tsd-kind-icon">update&lt;U&gt;<span class="tsd-signature-symbol">(</span>parms<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">U</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_imperative.ipromisewithprogress.html#promise" class="tsd-signature-type">Promise</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_zowe_imperative.iprofileupdated.html" class="tsd-signature-type">IProfileUpdated</a><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.5.1/packages/profiles/src/abstract/AbstractProfileManager.ts#L717">@zowe/imperative/packages/profiles/src/abstract/AbstractProfileManager.ts:717</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Update the profile - The action performed is dictacted by the implementation of the Abstract manager.</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>memberof</dt>
+									<dd><p>AbstractProfileManager</p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-type-parameters-title">Type parameters</h4>
+							<ul class="tsd-type-parameters">
+								<li>
+									<h4>U<span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_imperative.iupdateprofile.html" class="tsd-signature-type">IUpdateProfile</a></h4>
+								</li>
+							</ul>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>parms: <span class="tsd-signature-type">U</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>See the interface for details</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="../interfaces/_zowe_imperative.ipromisewithprogress.html#promise" class="tsd-signature-type">Promise</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_zowe_imperative.iprofileupdated.html" class="tsd-signature-type">IProfileUpdated</a><span class="tsd-signature-symbol">&gt;</span></h4>
+							<ul>
+								<li>The promise that is fulfilled with the response object (see interface for details) or rejected
+								with an Imperative Error.</li>
+							</ul>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-protected">
+					<a name="updateprofile" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagProtected">Protected</span> <span class="tsd-flag ts-flagAbstract">Abstract</span> update<wbr>Profile</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-protected">
+						<li class="tsd-signature tsd-kind-icon">update<wbr>Profile<span class="tsd-signature-symbol">(</span>parms<span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_imperative.iupdateprofile.html" class="tsd-signature-type">IUpdateProfile</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_imperative.ipromisewithprogress.html#promise" class="tsd-signature-type">Promise</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_zowe_imperative.iprofileupdated.html" class="tsd-signature-type">IProfileUpdated</a><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.5.1/packages/profiles/src/abstract/AbstractProfileManager.ts#L911">@zowe/imperative/packages/profiles/src/abstract/AbstractProfileManager.ts:911</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Update profile - performs the profile update according to the implementation - invoked when all parameters are valid
+									(according the abstract manager).</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>abstract</dt>
+									<dd></dd>
+									<dt>memberof</dt>
+									<dd><p>AbstractProfileManager</p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>parms: <a href="../interfaces/_zowe_imperative.iupdateprofile.html" class="tsd-signature-type">IUpdateProfile</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>See interface for details</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="../interfaces/_zowe_imperative.ipromisewithprogress.html#promise" class="tsd-signature-type">Promise</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_zowe_imperative.iprofileupdated.html" class="tsd-signature-type">IProfileUpdated</a><span class="tsd-signature-symbol">&gt;</span></h4>
+							<ul>
+								<li>The promise fulfilled with response or rejected with an ImperativeError.</li>
+							</ul>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter">
+					<a name="validate" class="tsd-anchor"></a>
+					<h3>validate</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter">
+						<li class="tsd-signature tsd-kind-icon">validate&lt;V&gt;<span class="tsd-signature-symbol">(</span>parms<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">V</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_imperative.ipromisewithprogress.html#promise" class="tsd-signature-type">Promise</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_zowe_imperative.iprofilevalidated.html" class="tsd-signature-type">IProfileValidated</a><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.5.1/packages/profiles/src/abstract/AbstractProfileManager.ts#L537">@zowe/imperative/packages/profiles/src/abstract/AbstractProfileManager.ts:537</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Validate a profile. Includes basic and schema validation. Can be called explicitly, but is also called during
+									loads and saves to protect the integrity of the profiles against the type definitions.</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>memberof</dt>
+									<dd><p>AbstractProfileManager</p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-type-parameters-title">Type parameters</h4>
+							<ul class="tsd-type-parameters">
+								<li>
+									<h4>V<span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_imperative.ivalidateprofile.html" class="tsd-signature-type">IValidateProfile</a></h4>
+								</li>
+							</ul>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>parms: <span class="tsd-signature-type">V</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>See the interface for details</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="../interfaces/_zowe_imperative.ipromisewithprogress.html#promise" class="tsd-signature-type">Promise</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_zowe_imperative.iprofilevalidated.html" class="tsd-signature-type">IProfileValidated</a><span class="tsd-signature-symbol">&gt;</span></h4>
+							<ul>
+								<li>The promise that is fulfilled with the response object (see interface for details) or rejected
+								with an Imperative Error.</li>
+							</ul>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-private">
+					<a name="validateconfigurationdocument" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> validate<wbr>Configuration<wbr>Document</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-private">
+						<li class="tsd-signature tsd-kind-icon">validate<wbr>Configuration<wbr>Document<span class="tsd-signature-symbol">(</span>typeConfiguration<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.5.1/packages/profiles/src/abstract/AbstractProfileManager.ts#L1331">@zowe/imperative/packages/profiles/src/abstract/AbstractProfileManager.ts:1331</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Validates the basic configuration document to ensure it contains all the proper fields</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>memberof</dt>
+									<dd><p>AbstractProfileManager</p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>typeConfiguration: <span class="tsd-signature-type">T</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The type configuration document</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-private">
+					<a name="validatemetaprofile" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> validate<wbr>Meta<wbr>Profile</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-private">
+						<li class="tsd-signature tsd-kind-icon">validate<wbr>Meta<wbr>Profile<span class="tsd-signature-symbol">(</span>meta<span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_imperative.imetaprofile.html" class="tsd-signature-type">IMetaProfile</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span>, type<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.5.1/packages/profiles/src/abstract/AbstractProfileManager.ts#L1355">@zowe/imperative/packages/profiles/src/abstract/AbstractProfileManager.ts:1355</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Validate that a meta profile (one read from disk in particular) is valid.</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>memberof</dt>
+									<dd><p>AbstractProfileManager</p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>meta: <a href="../interfaces/_zowe_imperative.imetaprofile.html" class="tsd-signature-type">IMetaProfile</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The meta profile to validate</p>
+									</div>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> type: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = this.profileType</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-protected">
+					<a name="validateprofile" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagProtected">Protected</span> <span class="tsd-flag ts-flagAbstract">Abstract</span> validate<wbr>Profile</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-protected">
+						<li class="tsd-signature tsd-kind-icon">validate<wbr>Profile<span class="tsd-signature-symbol">(</span>parms<span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_imperative.ivalidateprofilewithschema.html" class="tsd-signature-type">IValidateProfileWithSchema</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_imperative.ipromisewithprogress.html#promise" class="tsd-signature-type">Promise</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_zowe_imperative.iprofilevalidated.html" class="tsd-signature-type">IProfileValidated</a><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.5.1/packages/profiles/src/abstract/AbstractProfileManager.ts#L900">@zowe/imperative/packages/profiles/src/abstract/AbstractProfileManager.ts:900</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Validate profile - performs the profile validation according to the implementation - invoked when all parameters are valid
+									(according the abstract manager).</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>abstract</dt>
+									<dd></dd>
+									<dt>memberof</dt>
+									<dd><p>AbstractProfileManager</p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>parms: <a href="../interfaces/_zowe_imperative.ivalidateprofilewithschema.html" class="tsd-signature-type">IValidateProfileWithSchema</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>See interface for details</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="../interfaces/_zowe_imperative.ipromisewithprogress.html#promise" class="tsd-signature-type">Promise</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_zowe_imperative.iprofilevalidated.html" class="tsd-signature-type">IProfileValidated</a><span class="tsd-signature-symbol">&gt;</span></h4>
+							<ul>
+								<li>The promise fulfilled with response or rejected with an ImperativeError.</li>
+							</ul>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-protected">
+					<a name="validateprofileagainstschema" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagProtected">Protected</span> validate<wbr>Profile<wbr>Against<wbr>Schema</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-protected">
+						<li class="tsd-signature tsd-kind-icon">validate<wbr>Profile<wbr>Against<wbr>Schema<span class="tsd-signature-symbol">(</span>name<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, profile<span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_imperative.iprofile.html" class="tsd-signature-type">IProfile</a>, strict<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.5.1/packages/profiles/src/abstract/AbstractProfileManager.ts#L993">@zowe/imperative/packages/profiles/src/abstract/AbstractProfileManager.ts:993</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Validates the profile against the schema for its type and reports and errors located.</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>memberof</dt>
+									<dd><p>AbstractProfileManager</p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>name: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>the name of the profile to validate</p>
+									</div>
+								</li>
+								<li>
+									<h5>profile: <a href="../interfaces/_zowe_imperative.iprofile.html" class="tsd-signature-type">IProfile</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The profile to validate.</p>
+									</div>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> strict: <span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol"> = false</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-protected">
+					<a name="validateprofileobject" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagProtected">Protected</span> validate<wbr>Profile<wbr>Object</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-protected">
+						<li class="tsd-signature tsd-kind-icon">validate<wbr>Profile<wbr>Object<span class="tsd-signature-symbol">(</span>name<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, type<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, profile<span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_imperative.iprofile.html" class="tsd-signature-type">IProfile</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.5.1/packages/profiles/src/abstract/AbstractProfileManager.ts#L946">@zowe/imperative/packages/profiles/src/abstract/AbstractProfileManager.ts:946</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Performs basic validation of a profile object - ensures that all fields are present (if required).</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>memberof</dt>
+									<dd><p>AbstractProfileManager</p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>name: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>the name of the profile to validate</p>
+									</div>
+								</li>
+								<li>
+									<h5>type: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>the type of profile to validate</p>
+									</div>
+								</li>
+								<li>
+									<h5>profile: <a href="../interfaces/_zowe_imperative.iprofile.html" class="tsd-signature-type">IProfile</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The profile to validate.</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-private">
+					<a name="validaterequireddependenciesarespecified" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> validate<wbr>Required<wbr>Dependencies<wbr>Are<wbr>Specified</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-private">
+						<li class="tsd-signature tsd-kind-icon">validate<wbr>Required<wbr>Dependencies<wbr>Are<wbr>Specified<span class="tsd-signature-symbol">(</span>profile<span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_imperative.iprofile.html" class="tsd-signature-type">IProfile</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.5.1/packages/profiles/src/abstract/AbstractProfileManager.ts#L1168">@zowe/imperative/packages/profiles/src/abstract/AbstractProfileManager.ts:1168</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Validates a profiles contents against the required dependencies specified on the profile configuration type document. If the document
+									indicates that a dependency is required and that dependency is missing from the input profile, an error is thrown.</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>memberof</dt>
+									<dd><p>AbstractProfileManager</p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>profile: <a href="../interfaces/_zowe_imperative.iprofile.html" class="tsd-signature-type">IProfile</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The profile to validate dependency specs</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-private">
+					<a name="validateschema" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> validate<wbr>Schema</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-private">
+						<li class="tsd-signature tsd-kind-icon">validate<wbr>Schema<span class="tsd-signature-symbol">(</span>schema<span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_imperative.iprofileschema.html" class="tsd-signature-type">IProfileSchema</a>, type<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.5.1/packages/profiles/src/abstract/AbstractProfileManager.ts#L1316">@zowe/imperative/packages/profiles/src/abstract/AbstractProfileManager.ts:1316</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Validate that the schema document passed is well formed for the profile manager usage. Ensures that the
+									schema is not overloading reserved properties.</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>memberof</dt>
+									<dd><p>AbstractProfileManager</p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>schema: <a href="../interfaces/_zowe_imperative.iprofileschema.html" class="tsd-signature-type">IProfileSchema</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The schema document to validate.</p>
+									</div>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> type: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = this.profileType</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>the type of profile for the schema - defaults to the current type for this manager</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+			</section>
+		</div>
+		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
+			<nav class="tsd-navigation primary">
+				<ul>
+					<li class="globals  ">
+						<a href="../globals.html"><em>Globals</em></a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_core_for_zowe_sdk.html">@zowe/core-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class="current tsd-kind-module">
+						<a href="../modules/_zowe_imperative.html">@zowe/imperative</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_provisioning_for_zowe_sdk.html">@zowe/provisioning-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_zos_console_for_zowe_sdk.html">@zowe/zos-<wbr>console-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_zos_files_for_zowe_sdk.html">@zowe/zos-<wbr>files-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_zos_jobs_for_zowe_sdk.html">@zowe/zos-<wbr>jobs-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_zos_logs_for_zowe_sdk.html">@zowe/zos-<wbr>logs-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_zos_tso_for_zowe_sdk.html">@zowe/zos-<wbr>tso-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_zos_uss_for_zowe_sdk.html">@zowe/zos-<wbr>uss-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_zos_workflows_for_zowe_sdk.html">@zowe/zos-<wbr>workflows-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_zosmf_for_zowe_sdk.html">@zowe/zosmf-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+				</ul>
+			</nav>
+			<nav class="tsd-navigation secondary menu-sticky">
+				<ul class="before-current">
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_core_for_zowe_sdk.html" class="tsd-kind-icon">@zowe/core-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+				</ul>
+				<ul class="current">
+					<li class="current tsd-kind-module">
+						<a href="../modules/_zowe_imperative.html" class="tsd-kind-icon">@zowe/imperative</a>
+						<ul>
+							<li class="current tsd-kind-class tsd-parent-kind-module tsd-has-type-parameter">
+								<a href="_zowe_imperative.abstractprofilemanager.html" class="tsd-kind-icon">Abstract<wbr>Profile<wbr>Manager</a>
+								<ul>
+									<li class=" tsd-kind-constructor tsd-parent-kind-class">
+										<a href="_zowe_imperative.abstractprofilemanager.html#constructor" class="tsd-kind-icon">constructor</a>
+									</li>
+									<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
+										<a href="_zowe_imperative.abstractprofilemanager.html#mconstructorparms" class="tsd-kind-icon">m<wbr>Constructor<wbr>Parms</a>
+									</li>
+									<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
+										<a href="_zowe_imperative.abstractprofilemanager.html#mloadcounter" class="tsd-kind-icon">m<wbr>Load<wbr>Counter</a>
+									</li>
+									<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
+										<a href="_zowe_imperative.abstractprofilemanager.html#mlogger" class="tsd-kind-icon">m<wbr>Logger</a>
+									</li>
+									<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
+										<a href="_zowe_imperative.abstractprofilemanager.html#mproductdisplayname" class="tsd-kind-icon">m<wbr>Product<wbr>Display<wbr>Name</a>
+									</li>
+									<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
+										<a href="_zowe_imperative.abstractprofilemanager.html#mprofilerootdirectory" class="tsd-kind-icon">m<wbr>Profile<wbr>Root<wbr>Directory</a>
+									</li>
+									<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
+										<a href="_zowe_imperative.abstractprofilemanager.html#mprofiletype" class="tsd-kind-icon">m<wbr>Profile<wbr>Type</a>
+									</li>
+									<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
+										<a href="_zowe_imperative.abstractprofilemanager.html#mprofiletypeconfiguration" class="tsd-kind-icon">m<wbr>Profile<wbr>Type<wbr>Configuration</a>
+									</li>
+									<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
+										<a href="_zowe_imperative.abstractprofilemanager.html#mprofiletypeconfigurations" class="tsd-kind-icon">m<wbr>Profile<wbr>Type<wbr>Configurations</a>
+									</li>
+									<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
+										<a href="_zowe_imperative.abstractprofilemanager.html#mprofiletypemetafilename" class="tsd-kind-icon">m<wbr>Profile<wbr>Type<wbr>Meta<wbr>File<wbr>Name</a>
+									</li>
+									<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
+										<a href="_zowe_imperative.abstractprofilemanager.html#mprofiletyperootdirectory" class="tsd-kind-icon">m<wbr>Profile<wbr>Type<wbr>Root<wbr>Directory</a>
+									</li>
+									<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
+										<a href="_zowe_imperative.abstractprofilemanager.html#mprofiletypeschema" class="tsd-kind-icon">m<wbr>Profile<wbr>Type<wbr>Schema</a>
+									</li>
+									<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-static">
+										<a href="_zowe_imperative.abstractprofilemanager.html#meta_file_suffix" class="tsd-kind-icon">META_<wbr>FILE_<wbr>SUFFIX</a>
+									</li>
+									<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-static">
+										<a href="_zowe_imperative.abstractprofilemanager.html#profile_extension" class="tsd-kind-icon">PROFILE_<wbr>EXTENSION</a>
+									</li>
+									<li class=" tsd-kind-get-signature tsd-parent-kind-class">
+										<a href="_zowe_imperative.abstractprofilemanager.html#configurations" class="tsd-kind-icon">configurations</a>
+									</li>
+									<li class=" tsd-kind-get-signature tsd-parent-kind-class tsd-is-protected">
+										<a href="_zowe_imperative.abstractprofilemanager.html#loadcounter" class="tsd-kind-icon">load<wbr>Counter</a>
+									</li>
+									<li class=" tsd-kind-get-signature tsd-parent-kind-class tsd-is-protected">
+										<a href="_zowe_imperative.abstractprofilemanager.html#log" class="tsd-kind-icon">log</a>
+									</li>
+									<li class=" tsd-kind-get-signature tsd-parent-kind-class tsd-is-protected">
+										<a href="_zowe_imperative.abstractprofilemanager.html#managerparameters" class="tsd-kind-icon">manager<wbr>Parameters</a>
+									</li>
+									<li class=" tsd-kind-get-signature tsd-parent-kind-class tsd-is-protected">
+										<a href="_zowe_imperative.abstractprofilemanager.html#productdisplayname" class="tsd-kind-icon">product<wbr>Display<wbr>Name</a>
+									</li>
+									<li class=" tsd-kind-get-signature tsd-parent-kind-class tsd-is-protected">
+										<a href="_zowe_imperative.abstractprofilemanager.html#profilerootdirectory" class="tsd-kind-icon">profile<wbr>Root<wbr>Directory</a>
+									</li>
+									<li class=" tsd-kind-get-signature tsd-parent-kind-class tsd-is-protected">
+										<a href="_zowe_imperative.abstractprofilemanager.html#profiletype" class="tsd-kind-icon">profile<wbr>Type</a>
+									</li>
+									<li class=" tsd-kind-get-signature tsd-parent-kind-class tsd-is-protected">
+										<a href="_zowe_imperative.abstractprofilemanager.html#profiletypeconfiguration" class="tsd-kind-icon">profile<wbr>Type<wbr>Configuration</a>
+									</li>
+									<li class=" tsd-kind-get-signature tsd-parent-kind-class tsd-is-protected">
+										<a href="_zowe_imperative.abstractprofilemanager.html#profiletypeconfigurations" class="tsd-kind-icon">profile<wbr>Type<wbr>Configurations</a>
+									</li>
+									<li class=" tsd-kind-get-signature tsd-parent-kind-class tsd-is-protected">
+										<a href="_zowe_imperative.abstractprofilemanager.html#profiletypemetafilename" class="tsd-kind-icon">profile<wbr>Type<wbr>Meta<wbr>File<wbr>Name</a>
+									</li>
+									<li class=" tsd-kind-get-signature tsd-parent-kind-class tsd-is-protected">
+										<a href="_zowe_imperative.abstractprofilemanager.html#profiletyperootdirectory" class="tsd-kind-icon">profile<wbr>Type<wbr>Root<wbr>Directory</a>
+									</li>
+									<li class=" tsd-kind-get-signature tsd-parent-kind-class tsd-is-protected">
+										<a href="_zowe_imperative.abstractprofilemanager.html#profiletypeschema" class="tsd-kind-icon">profile<wbr>Type<wbr>Schema</a>
+									</li>
+									<li class=" tsd-kind-method tsd-parent-kind-class">
+										<a href="_zowe_imperative.abstractprofilemanager.html#cleardefault" class="tsd-kind-icon">clear<wbr>Default</a>
+									</li>
+									<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private">
+										<a href="_zowe_imperative.abstractprofilemanager.html#collectallconfigurations" class="tsd-kind-icon">collect<wbr>All<wbr>Configurations</a>
+									</li>
+									<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-protected">
+										<a href="_zowe_imperative.abstractprofilemanager.html#constructfullprofilepath" class="tsd-kind-icon">construct<wbr>Full<wbr>Profile<wbr>Path</a>
+									</li>
+									<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private">
+										<a href="_zowe_imperative.abstractprofilemanager.html#constructmetaname" class="tsd-kind-icon">construct<wbr>Meta<wbr>Name</a>
+									</li>
+									<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private">
+										<a href="_zowe_imperative.abstractprofilemanager.html#createprofiletypedirectory" class="tsd-kind-icon">create<wbr>Profile<wbr>Type<wbr>Directory</a>
+									</li>
+									<li class=" tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter">
+										<a href="_zowe_imperative.abstractprofilemanager.html#delete" class="tsd-kind-icon">delete</a>
+									</li>
+									<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-protected">
+										<a href="_zowe_imperative.abstractprofilemanager.html#deleteprofile" class="tsd-kind-icon">delete<wbr>Profile</a>
+									</li>
+									<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-protected">
+										<a href="_zowe_imperative.abstractprofilemanager.html#deleteprofilefromdisk" class="tsd-kind-icon">delete<wbr>Profile<wbr>From<wbr>Disk</a>
+									</li>
+									<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private">
+										<a href="_zowe_imperative.abstractprofilemanager.html#failnotfounddefaultresponse" class="tsd-kind-icon">fail<wbr>Not<wbr>Found<wbr>Default<wbr>Response</a>
+									</li>
+									<li class=" tsd-kind-method tsd-parent-kind-class">
+										<a href="_zowe_imperative.abstractprofilemanager.html#getallprofilenames" class="tsd-kind-icon">get<wbr>All<wbr>Profile<wbr>Names</a>
+									</li>
+									<li class=" tsd-kind-method tsd-parent-kind-class">
+										<a href="_zowe_imperative.abstractprofilemanager.html#getdefaultprofilename" class="tsd-kind-icon">get<wbr>Default<wbr>Profile<wbr>Name</a>
+									</li>
+									<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private">
+										<a href="_zowe_imperative.abstractprofilemanager.html#isdependencyof" class="tsd-kind-icon">is<wbr>Dependency<wbr>Of</a>
+									</li>
+									<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-protected">
+										<a href="_zowe_imperative.abstractprofilemanager.html#isprofileempty" class="tsd-kind-icon">is<wbr>Profile<wbr>Empty</a>
+									</li>
+									<li class=" tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter">
+										<a href="_zowe_imperative.abstractprofilemanager.html#load" class="tsd-kind-icon">load</a>
+									</li>
+									<li class=" tsd-kind-method tsd-parent-kind-class">
+										<a href="_zowe_imperative.abstractprofilemanager.html#loadall" class="tsd-kind-icon">load<wbr>All</a>
+									</li>
+									<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-protected">
+										<a href="_zowe_imperative.abstractprofilemanager.html#loaddependencies" class="tsd-kind-icon">load<wbr>Dependencies</a>
+									</li>
+									<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-protected">
+										<a href="_zowe_imperative.abstractprofilemanager.html#loadfailed" class="tsd-kind-icon">load<wbr>Failed</a>
+									</li>
+									<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-protected">
+										<a href="_zowe_imperative.abstractprofilemanager.html#loadprofile" class="tsd-kind-icon">load<wbr>Profile</a>
+									</li>
+									<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-protected">
+										<a href="_zowe_imperative.abstractprofilemanager.html#loadspecificprofile" class="tsd-kind-icon">load<wbr>Specific<wbr>Profile</a>
+									</li>
+									<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-protected">
+										<a href="_zowe_imperative.abstractprofilemanager.html#locateexistingprofile" class="tsd-kind-icon">locate<wbr>Existing<wbr>Profile</a>
+									</li>
+									<li class=" tsd-kind-method tsd-parent-kind-class">
+										<a href="_zowe_imperative.abstractprofilemanager.html#mergeprofiles" class="tsd-kind-icon">merge<wbr>Profiles</a>
+									</li>
+									<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private">
+										<a href="_zowe_imperative.abstractprofilemanager.html#protectagainstoverwrite" class="tsd-kind-icon">protect<wbr>Against<wbr>Overwrite</a>
+									</li>
+									<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private">
+										<a href="_zowe_imperative.abstractprofilemanager.html#readmeta" class="tsd-kind-icon">read<wbr>Meta</a>
+									</li>
+									<li class=" tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter">
+										<a href="_zowe_imperative.abstractprofilemanager.html#save" class="tsd-kind-icon">save</a>
+									</li>
+									<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-protected">
+										<a href="_zowe_imperative.abstractprofilemanager.html#saveprofile" class="tsd-kind-icon">save<wbr>Profile</a>
+									</li>
+									<li class=" tsd-kind-method tsd-parent-kind-class">
+										<a href="_zowe_imperative.abstractprofilemanager.html#setdefault" class="tsd-kind-icon">set<wbr>Default</a>
+									</li>
+									<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private">
+										<a href="_zowe_imperative.abstractprofilemanager.html#setdefaultinmetaobject" class="tsd-kind-icon">set<wbr>Default<wbr>InMeta<wbr>Object</a>
+									</li>
+									<li class=" tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter">
+										<a href="_zowe_imperative.abstractprofilemanager.html#update" class="tsd-kind-icon">update</a>
+									</li>
+									<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-protected">
+										<a href="_zowe_imperative.abstractprofilemanager.html#updateprofile" class="tsd-kind-icon">update<wbr>Profile</a>
+									</li>
+									<li class=" tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter">
+										<a href="_zowe_imperative.abstractprofilemanager.html#validate" class="tsd-kind-icon">validate</a>
+									</li>
+									<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private">
+										<a href="_zowe_imperative.abstractprofilemanager.html#validateconfigurationdocument" class="tsd-kind-icon">validate<wbr>Configuration<wbr>Document</a>
+									</li>
+									<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private">
+										<a href="_zowe_imperative.abstractprofilemanager.html#validatemetaprofile" class="tsd-kind-icon">validate<wbr>Meta<wbr>Profile</a>
+									</li>
+									<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-protected">
+										<a href="_zowe_imperative.abstractprofilemanager.html#validateprofile" class="tsd-kind-icon">validate<wbr>Profile</a>
+									</li>
+									<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-protected">
+										<a href="_zowe_imperative.abstractprofilemanager.html#validateprofileagainstschema" class="tsd-kind-icon">validate<wbr>Profile<wbr>Against<wbr>Schema</a>
+									</li>
+									<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-protected">
+										<a href="_zowe_imperative.abstractprofilemanager.html#validateprofileobject" class="tsd-kind-icon">validate<wbr>Profile<wbr>Object</a>
+									</li>
+									<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private">
+										<a href="_zowe_imperative.abstractprofilemanager.html#validaterequireddependenciesarespecified" class="tsd-kind-icon">validate<wbr>Required<wbr>Dependencies<wbr>Are<wbr>Specified</a>
+									</li>
+									<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private">
+										<a href="_zowe_imperative.abstractprofilemanager.html#validateschema" class="tsd-kind-icon">validate<wbr>Schema</a>
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</li>
+				</ul>
+				<ul class="after-current">
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_provisioning_for_zowe_sdk.html" class="tsd-kind-icon">@zowe/provisioning-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_zos_console_for_zowe_sdk.html" class="tsd-kind-icon">@zowe/zos-<wbr>console-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_zos_files_for_zowe_sdk.html" class="tsd-kind-icon">@zowe/zos-<wbr>files-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_zos_jobs_for_zowe_sdk.html" class="tsd-kind-icon">@zowe/zos-<wbr>jobs-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_zos_logs_for_zowe_sdk.html" class="tsd-kind-icon">@zowe/zos-<wbr>logs-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_zos_tso_for_zowe_sdk.html" class="tsd-kind-icon">@zowe/zos-<wbr>tso-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_zos_uss_for_zowe_sdk.html" class="tsd-kind-icon">@zowe/zos-<wbr>uss-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_zos_workflows_for_zowe_sdk.html" class="tsd-kind-icon">@zowe/zos-<wbr>workflows-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_zosmf_for_zowe_sdk.html" class="tsd-kind-icon">@zowe/zosmf-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</div>
+</div>
+<footer class="with-border-bottom">
+	<div class="container">
+		<h2>Legend</h2>
+		<div class="tsd-legend-group">
+			<ul class="tsd-legend">
+				<li class="tsd-kind-object-literal"><span class="tsd-kind-icon">Object literal</span></li>
+				<li class="tsd-kind-variable"><span class="tsd-kind-icon">Variable</span></li>
+				<li class="tsd-kind-function"><span class="tsd-kind-icon">Function</span></li>
+				<li class="tsd-kind-type-alias"><span class="tsd-kind-icon">Type alias</span></li>
+				<li class="tsd-kind-type-alias tsd-has-type-parameter"><span class="tsd-kind-icon">Type alias with type parameter</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-class"><span class="tsd-kind-icon">Class</span></li>
+				<li class="tsd-kind-class tsd-has-type-parameter"><span class="tsd-kind-icon">Class with type parameter</span></li>
+				<li class="tsd-kind-constructor tsd-parent-kind-class"><span class="tsd-kind-icon">Constructor</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class"><span class="tsd-kind-icon">Method</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-interface"><span class="tsd-kind-icon">Interface</span></li>
+				<li class="tsd-kind-interface tsd-has-type-parameter"><span class="tsd-kind-icon">Interface with type parameter</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private method</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-enum"><span class="tsd-kind-icon">Enumeration</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-protected"><span class="tsd-kind-icon">Protected method</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-static"><span class="tsd-kind-icon">Static property</span></li>
+			</ul>
+		</div>
+	</div>
+</footer>
+<div class="container tsd-generator">
+	<p>Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p>
+</div>
+<div class="overlay"></div>
+<script src="../assets/js/main.js"></script>
+</body>
+</html>
