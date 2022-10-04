@@ -20,3 +20,6 @@ For production environments, certificates are required. Ensure that certificates
 * Zowe
 * The service that is onboarding to Zowe
 
+## API Versioning
+
+For information about the API versioning, see [API Catalog and Versioning](../extend/extend-apiml/api-mediation-versioning.md).
