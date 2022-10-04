@@ -38,7 +38,8 @@ You create an mq profile to avoid entering your connection details each time tha
 
 We recommend that you create profiles using the configuration file. We do not recommend using profile commands because we are removing them in a future major release.
 
-### Create plug-in profiles using a configuration file
+
+### Creating plug-in profiles using a configuration file
 
 When you issue various zowe config commands, such as `init`, `auto-init`, and `convert-profiles`, they create a `zowe.config.json` configuration file. When you install the MQ plug-in, the commands create an entry for an `mq profile` in your `zowe.config.json` file.
 
@@ -50,7 +51,7 @@ Alternatively, you can create a mq profile manually by adding a section that con
 
     **NOTE:** If the file does not exist, issue the following command to create the configuration file: `zowe config init -–gc`
 
-3. Add the following code to the "profiles" section of the configuration file. 
+3. Add code to the "profiles" section as shown in the following example: 
 
     **Example:**
     ```
@@ -70,7 +71,7 @@ Alternatively, you can create a mq profile manually by adding a section that con
 
 You can now use your profile when you issue commands in the mq command group.
 
-### Create plug-in profiles using a command
+### Creating plug-in profiles using a command
 
 The following steps describe how to create a profile using the `zowe profiles create` command.
 

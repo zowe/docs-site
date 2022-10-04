@@ -22,6 +22,8 @@ module.exports = {
       type: "category",
       label: "Release notes",
       items: [
+        "getting-started/release-notes/v2_4_0",
+        "getting-started/release-notes/v2_3_1",
         "getting-started/release-notes/v2_3_0",
         "getting-started/release-notes/v2_2_0",
         "getting-started/release-notes/v2_1_0",
@@ -120,6 +122,7 @@ module.exports = {
             "user-guide/configure-xmem-server",
             "user-guide/configure-auxiliary-address-space",
             "user-guide/configure-zowe-zosmf-workflow",
+            "user-guide/configmgr-using"
           ],
         },
        {
@@ -152,6 +155,7 @@ module.exports = {
       label: "Installing Zowe CLI",
       items: [
         "user-guide/cli-install-cli-checklist",
+        "user-guide/user-roadmap-zowe-cli",
         "user-guide/systemrequirements-cli",
         {
           type: "category",
@@ -173,6 +177,7 @@ module.exports = {
       type: "category",
       label: "Installing Zowe Explorer",
       items: [
+        "getting-started/user-roadmap-zowe-explorer",
         "user-guide/ze-install",
         "user-guide/ze-profiles",
       ],
@@ -192,11 +197,13 @@ module.exports = {
             "user-guide/api-mediation/discovery-service-configuration",
             "user-guide/api-mediation/api-mediation-internal-configuration",
             "extend/extend-apiml/api-mediation-passtickets",
+            "user-guide/api-mediation/api-mediation-personal-access-token",
           ],
         },        
       ],
     },
   ],
+
   "use": [
         "user-guide/zowe-getting-started-tutorial", 
         {
@@ -250,7 +257,20 @@ module.exports = {
             },
             "user-guide/cli-using-integrating-apiml",
             "user-guide/cli-using-working-certificates",
-            "user-guide/cli-using-completing-advanced-tasks",
+
+            {
+              type: "category",
+              label: "Using environment variables",
+              items: [
+                "user-guide/cli-using-using-environment-variables",
+                "user-guide/cli-using-formatting-environment-variables",
+                "user-guide/cli-using-setting-environment-variables-in-automation-server",
+                                              ],
+            },
+            "user-guide/cli-using-using-prompt-feature",
+            "user-guide/cli-using-writing-scripts",
+
+
           ],
         },
         {
@@ -280,8 +300,20 @@ module.exports = {
           type: "category",
           label: "Zowe Explorer extensions",
           items: [
-            "user-guide/ze-cics",
-            "user-guide/ze-ftp",
+            {
+              type: "category",
+              label: "Zowe Explorer CICS Extension",
+              items: [
+                "user-guide/ze-using-zowe-explorer-cics-ext",
+                "user-guide/ze-install-zowe-explorer-cics-ext",
+                "user-guide/ze-create-zowe-explorer-cics-ext-profiles",
+                "user-guide/ze-use-cics-resources",
+                "user-guide/ze-override-tls-certs",
+                "user-guide/ze-usage-tips",
+                "user-guide/ze-provide-feedback-contribute",
+                              ],
+            },
+            "user-guide/ze-ftp"
           ],
         },
         "user-guide/sdks-using",
@@ -293,6 +325,7 @@ module.exports = {
       label: "Developing server components",
       items: [
         "extend/packaging-zos-extensions",
+        "extend/server-schemas",
         "extend/install-configure-zos-extensions",
         "extend/lifecycling-with-zwesvstc",
         "extend/k8s-extend",
@@ -327,10 +360,19 @@ module.exports = {
         "extend/extend-apiml/api-mediation-sso",
         "extend/extend-apiml/create-apiml-extension",
         "extend/extend-apiml/api-mediation-message-service",
-        "extend/extend-apiml/api-mediation-security",
         "extend/extend-apiml/custom-metadata",
         "extend/extend-apiml/api-mediation-versioning",
         "extend/extend-apiml/implement-new-saf-provider", 
+        {
+          type: "category",
+          label: "Zowe API Mediation Layer Security",
+          items: [
+            "extend/extend-apiml/zowe-api-mediation-layer-security-overview",
+            "extend/extend-apiml/authentication-for-apiml-services",
+            "extend/extend-apiml/zaas-client",
+            "extend/extend-apiml/certificate-management-in-zowe-apiml",
+          ],
+        },
         {
           type: "category",
           label: "Caching service",

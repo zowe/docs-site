@@ -626,6 +626,10 @@
         },
         {
           "type": "doc",
+          "id": "version-v2.2.x/extend/server-schemas"
+        },
+        {
+          "type": "doc",
           "id": "version-v2.2.x/extend/install-configure-zos-extensions"
         },
         {
