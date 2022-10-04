@@ -26,7 +26,7 @@ To demonstrate **Try it out**, we use the example of the Swagger Petstore.
 
 <img src={require("../images/api-mediation/discoverable_clien_pet_swagger.png").default} alt="endpoint detail" width="700px"/>
 
-### Make a request
+## Make a request
 
 This section outlines the process for making a request.
 
