@@ -27,8 +27,6 @@ See the following topics for detailed information about how to use the API Media
     * [Swagger Code Snippets functionality](../api-mediation-swagger-code-snippets.md)
     * [Static APIs refresh functionality](../api-mediation-static-api-refresh.md)
     * [Change password via API Catalog functionality](../api-mediation-change-password-via-catalog.md) 
-
-* **Enhanced API Onboarding Experience**  
     * [Onboarding a REST API service with the YAML Wizard](../onboard-wizard.md)
 
 * **Other features when using API ML**  
