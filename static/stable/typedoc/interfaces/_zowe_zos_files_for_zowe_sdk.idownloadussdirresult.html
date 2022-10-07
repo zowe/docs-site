@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>IPluginJson | Zowe Node.js SDK - v2.4.0</title>
+	<title>IDownloadUssDirResult | Zowe Node.js SDK - v2.4.0</title>
 	<meta name="description" content="Documentation for Zowe Node.js SDK - v2.4.0">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -54,13 +54,13 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="../modules/_zowe_imperative.html">@zowe/imperative</a>
+					<a href="../modules/_zowe_zos_files_for_zowe_sdk.html">@zowe/zos-files-for-zowe-sdk</a>
 				</li>
 				<li>
-					<a href="_zowe_imperative.ipluginjson.html">IPluginJson</a>
+					<a href="_zowe_zos_files_for_zowe_sdk.idownloadussdirresult.html">IDownloadUssDirResult</a>
 				</li>
 			</ul>
-			<h1>Interface IPluginJson</h1>
+			<h1>Interface IDownloadUssDirResult</h1>
 		</div>
 	</div>
 </header>
@@ -70,27 +70,95 @@
 			<section class="tsd-panel tsd-comment">
 				<div class="tsd-comment tsd-typography">
 					<div class="lead">
-						<p>Format of plugins.json file. Represents the list of installed plugins.</p>
+						<p>This interface defines results of the download dir-from-uss command.</p>
 					</div>
+					<dl class="tsd-comment-tags">
+						<dt>export</dt>
+						<dd></dd>
+						<dt>interface</dt>
+						<dd><p>IDownloadUssDirResult</p>
+						</dd>
+					</dl>
 				</div>
 			</section>
 			<section class="tsd-panel tsd-hierarchy">
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<span class="target">IPluginJson</span>
+						<span class="target">IDownloadUssDirResult</span>
 					</li>
 				</ul>
 			</section>
-			<section class="tsd-panel tsd-kind-interface tsd-parent-kind-module">
-				<h3 class="tsd-before-signature">Indexable</h3>
-				<div class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">[</span>key: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">]: </span><a href="_zowe_imperative.ipluginjsonobject.html" class="tsd-signature-type">IPluginJsonObject</a></div>
-				<div class="tsd-comment tsd-typography">
-					<div class="lead">
-						<p>Each object key is the name of a plugin and the value is information about
-						said plugin.</p>
+			<section class="tsd-panel-group tsd-index-group">
+				<h2>Index</h2>
+				<section class="tsd-panel tsd-index-panel">
+					<div class="tsd-index-content">
+						<section class="tsd-index-section ">
+							<h3>Properties</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_zowe_zos_files_for_zowe_sdk.idownloadussdirresult.html#downloaded" class="tsd-kind-icon">downloaded</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_zowe_zos_files_for_zowe_sdk.idownloadussdirresult.html#failedwitherrors" class="tsd-kind-icon">failed<wbr>With<wbr>Errors</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_zowe_zos_files_for_zowe_sdk.idownloadussdirresult.html#skippedexisting" class="tsd-kind-icon">skipped<wbr>Existing</a></li>
+							</ul>
+						</section>
 					</div>
-				</div>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group ">
+				<h2>Properties</h2>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="downloaded" class="tsd-anchor"></a>
+					<h3>downloaded</h3>
+					<div class="tsd-signature tsd-kind-icon">downloaded<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.6.2/packages/zosfiles/src/methods/download/doc/IDownloadUssDirResult.ts#L21">@zowe/zos-files-for-zowe-sdk/src/methods/download/doc/IDownloadUssDirResult.ts:21</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>List of file names that have downloaded successfully.</p>
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="failedwitherrors" class="tsd-anchor"></a>
+					<h3>failed<wbr>With<wbr>Errors</h3>
+					<div class="tsd-signature tsd-kind-icon">failed<wbr>With<wbr>Errors<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">{}</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.6.2/packages/zosfiles/src/methods/download/doc/IDownloadUssDirResult.ts#L31">@zowe/zos-files-for-zowe-sdk/src/methods/download/doc/IDownloadUssDirResult.ts:31</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Object containing key-value pairs of files and errors for uss files that failed to download.</p>
+						</div>
+					</div>
+					<div class="tsd-type-declaration">
+						<h4>Type declaration</h4>
+						<ul class="tsd-parameters">
+							<li class="tsd-parameter-index-signature">
+								<h5><span class="tsd-signature-symbol">[</span>key: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">]: </span><a href="../classes/_zowe_imperative.imperativeerror.html#error" class="tsd-signature-type">Error</a></h5>
+							</li>
+						</ul>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="skippedexisting" class="tsd-anchor"></a>
+					<h3>skipped<wbr>Existing</h3>
+					<div class="tsd-signature tsd-kind-icon">skipped<wbr>Existing<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.6.2/packages/zosfiles/src/methods/download/doc/IDownloadUssDirResult.ts#L26">@zowe/zos-files-for-zowe-sdk/src/methods/download/doc/IDownloadUssDirResult.ts:26</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>List of file names that were not downloaded because they already existed on the system.</p>
+						</div>
+					</div>
+				</section>
 			</section>
 		</div>
 		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
@@ -102,7 +170,7 @@
 					<li class=" tsd-kind-module">
 						<a href="../modules/_zowe_core_for_zowe_sdk.html">@zowe/core-<wbr>for-<wbr>zowe-<wbr>sdk</a>
 					</li>
-					<li class="current tsd-kind-module">
+					<li class=" tsd-kind-module">
 						<a href="../modules/_zowe_imperative.html">@zowe/imperative</a>
 					</li>
 					<li class=" tsd-kind-module">
@@ -111,7 +179,7 @@
 					<li class=" tsd-kind-module">
 						<a href="../modules/_zowe_zos_console_for_zowe_sdk.html">@zowe/zos-<wbr>console-<wbr>for-<wbr>zowe-<wbr>sdk</a>
 					</li>
-					<li class=" tsd-kind-module">
+					<li class="current tsd-kind-module">
 						<a href="../modules/_zowe_zos_files_for_zowe_sdk.html">@zowe/zos-<wbr>files-<wbr>for-<wbr>zowe-<wbr>sdk</a>
 					</li>
 					<li class=" tsd-kind-module">
@@ -139,27 +207,38 @@
 					<li class=" tsd-kind-module">
 						<a href="../modules/_zowe_core_for_zowe_sdk.html" class="tsd-kind-icon">@zowe/core-<wbr>for-<wbr>zowe-<wbr>sdk</a>
 					</li>
-				</ul>
-				<ul class="current">
-					<li class="current tsd-kind-module">
+					<li class=" tsd-kind-module">
 						<a href="../modules/_zowe_imperative.html" class="tsd-kind-icon">@zowe/imperative</a>
-						<ul>
-							<li class="current tsd-kind-interface tsd-parent-kind-module">
-								<a href="_zowe_imperative.ipluginjson.html" class="tsd-kind-icon">IPlugin<wbr>Json</a>
-							</li>
-						</ul>
 					</li>
-				</ul>
-				<ul class="after-current">
 					<li class=" tsd-kind-module">
 						<a href="../modules/_zowe_provisioning_for_zowe_sdk.html" class="tsd-kind-icon">@zowe/provisioning-<wbr>for-<wbr>zowe-<wbr>sdk</a>
 					</li>
 					<li class=" tsd-kind-module">
 						<a href="../modules/_zowe_zos_console_for_zowe_sdk.html" class="tsd-kind-icon">@zowe/zos-<wbr>console-<wbr>for-<wbr>zowe-<wbr>sdk</a>
 					</li>
-					<li class=" tsd-kind-module">
+				</ul>
+				<ul class="current">
+					<li class="current tsd-kind-module">
 						<a href="../modules/_zowe_zos_files_for_zowe_sdk.html" class="tsd-kind-icon">@zowe/zos-<wbr>files-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+						<ul>
+							<li class="current tsd-kind-interface tsd-parent-kind-module">
+								<a href="_zowe_zos_files_for_zowe_sdk.idownloadussdirresult.html" class="tsd-kind-icon">IDownload<wbr>Uss<wbr>Dir<wbr>Result</a>
+								<ul>
+									<li class=" tsd-kind-property tsd-parent-kind-interface">
+										<a href="_zowe_zos_files_for_zowe_sdk.idownloadussdirresult.html#downloaded" class="tsd-kind-icon">downloaded</a>
+									</li>
+									<li class=" tsd-kind-property tsd-parent-kind-interface">
+										<a href="_zowe_zos_files_for_zowe_sdk.idownloadussdirresult.html#failedwitherrors" class="tsd-kind-icon">failed<wbr>With<wbr>Errors</a>
+									</li>
+									<li class=" tsd-kind-property tsd-parent-kind-interface">
+										<a href="_zowe_zos_files_for_zowe_sdk.idownloadussdirresult.html#skippedexisting" class="tsd-kind-icon">skipped<wbr>Existing</a>
+									</li>
+								</ul>
+							</li>
+						</ul>
 					</li>
+				</ul>
+				<ul class="after-current">
 					<li class=" tsd-kind-module">
 						<a href="../modules/_zowe_zos_jobs_for_zowe_sdk.html" class="tsd-kind-icon">@zowe/zos-<wbr>jobs-<wbr>for-<wbr>zowe-<wbr>sdk</a>
 					</li>
@@ -197,6 +276,7 @@
 			<ul class="tsd-legend">
 				<li class="tsd-kind-interface"><span class="tsd-kind-icon">Interface</span></li>
 				<li class="tsd-kind-interface tsd-has-type-parameter"><span class="tsd-kind-icon">Interface with type parameter</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-interface"><span class="tsd-kind-icon">Property</span></li>
 			</ul>
 			<ul class="tsd-legend">
 				<li class="tsd-kind-class"><span class="tsd-kind-icon">Class</span></li>
