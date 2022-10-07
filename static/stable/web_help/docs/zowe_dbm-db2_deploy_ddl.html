@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>dbm-db2 deploy ddl</title>
+<link rel="stylesheet" href="../css/bundle-docs.css">
+<link rel="stylesheet" href="../css/docs.css">
+<article class="markdown-body">
+<h2><a href="zowe.html">zowe</a> › <a href="zowe_dbm-db2.html">dbm-db2</a> › <a href="zowe_dbm-db2_deploy.html">deploy</a> › <a href="zowe_dbm-db2_deploy_ddl.html">ddl</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
+<p>Deploy Db2 object changes on the target Db2 subsystem using an input file that contains the DDL. For example, an application developer has made changes to DDL in a local file and is ready to test the DDL changes. Use this command to deploy the changes to the test environment.</p>
+<h4>Usage</h4>
+<p>zowe dbm-db2 deploy ddl &lt;local-input-ddl-filename&gt; [options]</p>
+<h4>Positional Arguments</h4>
+<ul>
+<li>
+<p><code>local-input-ddl-filename</code>		 <em>(string)</em></p>
+<ul>
+<li>Specifies the local input file that contains DDL statements for the Db2 objects that you want to deploy on a target subsystem. Typically, this file is created by a 'zowe dbm-db2 generate ddl' command or retrieved from an archive. You can edit this file.</li>
+</ul>
+</li>
+</ul>
+<h4>Required Options</h4>
+<ul>
+<li>
+<p><code>--target-db2</code> | <code>--td</code> <em>(string)</em></p>
+<ul>
+<li>Specifies the target Db2 subsystem ID.</li>
+</ul>
+</li>
+</ul>
+<h4>Options</h4>
+<ul>
+<li>
+<p><code>--match-set</code> | <code>--ms</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>Specifies the creator and name of an existing RC/Migrator automapping mask set. Matching is used to pair objects in a DDL file to objects that are defined on a Db2 subsystem. Matching determines whether the 'change-set' or 'rule-set' options are applied.</p>
+<p>Format:</p>
+<p>&lt;match-set-creator.match-set-name&gt;</p>
+<p>For more information about mask services, see the RC/Migrator documentation at <a href="https://techdocs.broadcom.com/db2rcmig">https://techdocs.broadcom.com/db2rcmig</a>.</p>
+<p>Note: If --match-set and --match-set-file are both specified, specifications in match-set-file take precedence.</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--match-set-file</code> | <code>--msf</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>Specifies the name of the local input file that contains the mapping mask specifications. Matching is used to pair objects in a DDL file to objects that are defined on a Db2 subsystem. For example, a mask specification can account for different schema naming patterns across environments. Matching determines whether the 'change-set' or 'rule-set' options are applied.</p>
+<p>Format:</p>
+<p>&lt;object-type&gt; &lt;source-name-mask&gt; &lt;target-name-mask&gt;;</p>
+<p>STOGROUP &lt;name&gt; &lt;name&gt;<br>
+DATABASE &lt;name&gt; &lt;name&gt;<br>
+TABLESPACE &lt;database.name&gt; &lt;database.name&gt;<br>
+TABLE &lt;schema.name&gt; &lt;schema.name&gt;<br>
+INDEX &lt;schema.name&gt; &lt;schema.name&gt;<br>
+VIEW &lt;schema.name&gt; &lt;schema.name&gt;<br>
+SYNONYM &lt;schema.name&gt; &lt;schema.name&gt;<br>
+ALIAS &lt;schema.name&gt; &lt;schema.name&gt;<br>
+TRIGGER &lt;schema.name&gt; &lt;schema.name&gt;<br>
+SEQUENCE &lt;schema.name&gt; &lt;schema.name&gt;<br>
+FUNCTION &lt;schema.name[.version]&gt; &lt;schema.name[.version]&gt;<br>
+PROCEDURE &lt;schema.name[.version]&gt; &lt;schema.name[.version]&gt;</p>
+<p>Note: &lt;schema&gt; must be 8 characters or less. &lt;name&gt; must be 18 characters or less. The SEQUENCE &lt;name&gt; must be 8 characters or less.</p>
+<p>A mask specification can include the following wildcard characters:</p>
+<p>% (percent sign) indicates that zero or more characters can occupy that position. Other non-wildcard characters must match.</p>
+<p>- (hyphen) indicates that any character can occupy that position, but a character must exist at that position.</p>
+<p>* (asterisk) indicates that like named objects on the source and target should be mapped. No other characters can appear together with this character.</p>
+<p>Use a semicolon to separate mask specifications. Multiple mask specifications for the same object type are supported.</p>
+<p>Example:</p>
+<p>The following example demonstrates different ways of matching the table MYNAME.MYTABLE to the table YOURNAME.YOURTABLE:</p>
+<p>TABLE MY%.%TABLE YOUR%.%TABLE;<br>
+TABLE MYN-M-.MYT% YOURN-M-.YOURT%;<br>
+TABLE MYNAME.MYTABLE YOURNAME.YOURTABLE;<br>
+TABLE *.MYTABLE *.YOURTABLE;</p>
+<p>For a list of mask specifications, see the RC/Migrator documentation at <a href="https://techdocs.broadcom.com/db2rcmig">https://techdocs.broadcom.com/db2rcmig</a>.</p>
+<p>Note: If --match-set and --match-set-file are both specified, specifications in match-set-file take precedence.</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--change-set</code> | <code>--cs</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>Specifies the creator and name of an existing RC/Migrator global change set to be used to modify Db2 object attributes. The changes apply to new objects only as determined by match-set processing.</p>
+<p>Format:</p>
+<p>&lt;change-set-creator.change-set-name&gt;</p>
+<p>For more information about global change services, see the RC/Migrator documentation at <a href="https://techdocs.broadcom.com/db2rcmig">https://techdocs.broadcom.com/db2rcmig</a>.</p>
+<p>Note: If change-set and change-set-file are both specified, specifications in change-set-file take precedence.</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--change-set-file</code> | <code>--csf</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>Specifies the name of the local input file that contains the global change specifications to modify Db2 object attributes. The changes apply to new objects only as determined by match-set processing.</p>
+<p>Format:</p>
+<p>&lt;object-attribute&gt; &lt;from-value&gt; &lt;to-value&gt;</p>
+<p>The &lt;object-attribute&gt; consists of four characters. The first two characters identify the object type. The last two characters identify the specific attribute. Wildcard characters are supported in the &lt;from-value&gt; and &lt;to-value&gt;. The first occurrence in multiple specifications for the same &lt;object-attribute&gt; has the highest precedence.</p>
+<p>Example:</p>
+<p>The following example demonstrates changes to table’s schema (creator) and tablespace names:</p>
+<p>TBCR TEST% PROD%<br>
+TBTS TESTTS% PRODTS%</p>
+<p>For a list of global change set attributes, see the RC/Migrator documentation at <a href="https://techdocs.broadcom.com/db2rcmig">https://techdocs.broadcom.com/db2rcmig</a>.</p>
+<p>Note: If change-set and change-set-file are both specified, specifications in change-set-file take precedence.</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--rule-set</code> | <code>--rs</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>Specifies the creator and name of an existing RC/Migrator rule set to be used to override Db2 object attributes in the target Db2 subsystem with the corresponding values from the input DDL file.The changes apply to the existing objects only (as determined by match-set processing).</p>
+<p>Format:</p>
+<p>&lt;rule-set-creator.rule-set-name&gt;</p>
+<p>For more information about rule database services, see the RC/Migrator documentation at <a href="https://techdocs.broadcom.com/db2rcmig">https://techdocs.broadcom.com/db2rcmig</a>.</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--modification</code> | <code>-m</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>Identifies a named set of server-managed default parameter values that control the execution behavior of the zowe dbm-db2 commands. For example, you can use a modification to identify a set of default values that differ from the set of values that are normally used.</p>
+<p>For more information about using the modification option, see the DBM Data Service documentation at <a href="https://techdocs.broadcom.com/db2mgmt">https://techdocs.broadcom.com/db2mgmt</a>.</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--error-file</code> | <code>--ef</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>Specifies the local output error file in YAML format that contains errors that occurred during execution of the command.</p>
+<p>Default value: error.log</p>
+</li>
+</ul>
+</li>
+</ul>
+<h4>Profile Options</h4>
+<ul>
+<li>
+<p><code>--dbm-db2-profile</code> | <code>--dbm-db2-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (dbm-db2) profile to load for this command execution.</li>
+</ul>
+</li>
+<li>
+<p><code>--base-profile</code> | <code>--base-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (base) profile to load for this command execution.</li>
+</ul>
+</li>
+</ul>
+<h4>Base Connection Options</h4>
+<ul>
+<li>
+<p><code>--host</code> | <code>-H</code> <em>(string)</em></p>
+<ul>
+<li>Host name of service on the mainframe.</li>
+</ul>
+</li>
+<li>
+<p><code>--port</code> | <code>-P</code> <em>(number)</em></p>
+<ul>
+<li>Port number of service on the mainframe.</li>
+</ul>
+</li>
+<li>
+<p><code>--user</code> | <code>-u</code> <em>(string)</em></p>
+<ul>
+<li>User name to authenticate to service on the mainframe.</li>
+</ul>
+</li>
+<li>
+<p><code>--password</code> | <code>--pass</code> | <code>--pw</code> <em>(string)</em></p>
+<ul>
+<li>Password to authenticate to service on the mainframe.</li>
+</ul>
+</li>
+<li>
+<p><code>--reject-unauthorized</code> | <code>--ru</code> <em>(boolean)</em></p>
+<ul>
+<li>
+<p>Reject self-signed certificates.</p>
+<p>Default value: true</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--token-type</code> | <code>--tt</code> <em>(string)</em></p>
+<ul>
+<li>The type of token to get and use for the API. Omit this option to use the default token type, which is provided by 'zowe auth login'.</li>
+</ul>
+</li>
+<li>
+<p><code>--token-value</code> | <code>--tv</code> <em>(string)</em></p>
+<ul>
+<li>The value of the token to pass to the API.</li>
+</ul>
+</li>
+<li>
+<p><code>--cert-file</code> <em>(local file path)</em></p>
+<ul>
+<li>The file path to a certificate file to use for authentication</li>
+</ul>
+</li>
+<li>
+<p><code>--cert-key-file</code> <em>(local file path)</em></p>
+<ul>
+<li>The file path to a certificate key file to use for authentication</li>
+</ul>
+</li>
+</ul>
+<h4>Examples</h4>
+<ul>
+<li>
+<p>Update Db2 objects on a target Db2 subsystem according to DDL definitions in myddl.sql file:</p>
+<ul>
+<li><code>zowe dbm-db2 deploy ddl myddl.sql --target-db2 TEST</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe dbm-db2 deploy ddl myddl.sql --target-db2 TEST">Copy</button></li>
+</ul>
+</li>
+<li>
+<p>Update Db2 objects according to the input DDL definitions and applied rule set for the matched objects:</p>
+<ul>
+<li><code>zowe dbm-db2 deploy ddl myddl.sql --target-db2 TEST --rule-set USER1.RULESET</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe dbm-db2 deploy ddl myddl.sql --target-db2 TEST --rule-set USER1.RULESET">Copy</button></li>
+</ul>
+</li>
+<li>
+<p>Update Db2 objects according to the input DDL definitions and applied rule set for the objects matched as determined by the local mask specifications in the pair.txt file:</p>
+<ul>
+<li><code>zowe dbm-db2 deploy ddl myddl.sql --target-db2 TEST --rule-set USER1.RULESET --match-set-file pair.txt</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe dbm-db2 deploy ddl myddl.sql --target-db2 TEST --rule-set USER1.RULESET --match-set-file pair.txt">Copy</button></li>
+</ul>
+</li>
+</ul>
+</article>
+<script src="../js/bundle-docs.js"></script>
+<script src="../js/docs.js"></script>

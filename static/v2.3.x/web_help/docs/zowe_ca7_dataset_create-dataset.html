@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>ca7 dataset create-dataset</title>
+<link rel="stylesheet" href="../css/bundle-docs.css">
+<link rel="stylesheet" href="../css/docs.css">
+<article class="markdown-body">
+<h2><a href="zowe.html">zowe</a> › <a href="zowe_ca7.html">ca7</a> › <a href="zowe_ca7_dataset.html">dataset</a> › <a href="zowe_ca7_dataset_create-dataset.html">create-dataset</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
+<p>Create Dataset</p>
+<h4>Usage</h4>
+<p>zowe ca7 dataset create-dataset [options]</p>
+<h4>Required Options</h4>
+<ul>
+<li>
+<p><code>--dataset-name</code> | <code>--dname</code> <em>(string)</em></p>
+<ul>
+<li>Specifies the data set and must be the fully qualified data set name.<br>
+Limits: 1 to 44 alphanumeric characters<br>
+Note: dataset-name is not required to conform to MVS data set name standards. Embedded blanks and special characters such as slashes, dashes, and underscores are permitted. All alphabetic characters are uppercased.</li>
+</ul>
+</li>
+</ul>
+<h4>Options</h4>
+<ul>
+<li>
+<p><code>--type</code> <em>(string)</em></p>
+<ul>
+<li>(Optional) Specifies the data set type.<br>
+Valid values are:<br>
+NORM = Internal means both the creating-job and using-jobs for this data set are known to CA 7.<br>
+External means the creating-job, using-jobs, or both for this data set are not known to CA 7.PERM = Specifies this data set is always available for inputDefault: NORM<br>
+Note: When a data set is marked PERM, no SMF records are captured. PERM means no data set triggering can occur with this type of data set</li>
+</ul>
+</li>
+<li>
+<p><code>--gdg</code> <em>(string)</em></p>
+<ul>
+<li>(Optional) Specifies whether this data set is a generation data group.<br>
+Valid values are:<br>
+Y = The data set is a generation data groupN = The data set is not a generation data groupDefault: N<br>
+Note: The specific GDG creations cannot be used for posting requirements or for triggering jobs. Posting and triggering are done based on the creation/updating (SMF 15 record) of any generation of the GDG.</li>
+</ul>
+</li>
+<li>
+<p><code>--smf-feedback-required</code> | <code>--sfr</code> <em>(string)</em></p>
+<ul>
+<li>(Optional) Specifies whether the interface to System Management Facility (SMF) inserts the values for DSORG, RECFM, LRECL, and BLKSIZE when this data set is next used. Unless the value is reset, this insertion is only done once.<br>
+Valid values are:<br>
+Y = SMF inserts the values when the data set is next usedN = SMF does not insert the values when the data set is next usedDefault: Y<br>
+Note: After the first time the job that creates this data set runs under CA 7, this field is reset to N. If the data set attributes change, this field must be reset to Y. The changed attribute field (that is, DSORG, RECFM) must be zeroed (if numeric) or blanked out. This process causes CA 7 to record the new values when the job is run again.</li>
+</ul>
+</li>
+<li>
+<p><code>--post-at-close-time</code> | <code>--pact</code> <em>(string)</em></p>
+<ul>
+<li>(Optional) Specifies when to post the creation or update of a data set to the database and queues. This process does not ensure successful step or job termination.<br>
+Valid values are:<br>
+Y = The action takes place when the SMF data set creation record is received (when the data set is closed)N = Causes triggering or posting action to take place at the job terminationDefault: N</li>
+</ul>
+</li>
+<li>
+<p><code>--device</code> <em>(string)</em></p>
+<ul>
+<li>(Optional) Specifies a device type.<br>
+Valid values are:<br>
+TAPEDASD</li>
+</ul>
+</li>
+<li>
+<p><code>--dsorg</code> <em>(string)</em></p>
+<ul>
+<li>(Optional) Specifies the data set organization. This value is the same as the DSORG specified in the DCB subparameter in the JCL.<br>
+Limits: 1 to 3 alphanumeric characters</li>
+</ul>
+</li>
+<li>
+<p><code>--recfm</code> <em>(string)</em></p>
+<ul>
+<li>(Optional) Specifies the record format of the data set. This value is the same as the RECFM specified in the DCB subparameter in the JCL.<br>
+Limits: 1 to 5 alphanumeric characters</li>
+</ul>
+</li>
+<li>
+<p><code>--lrecl</code> <em>(string)</em></p>
+<ul>
+<li>(Optional) Specifies the logical record length of the data set. This value is the same as the LRECL specified in the DCB subparameter in the JCL.<br>
+Limits: 1 to 5 numeric characters</li>
+</ul>
+</li>
+<li>
+<p><code>--blksize</code> <em>(string)</em></p>
+<ul>
+<li>(Optional) Specifies the block size of the data set. This value is the same as the BLKSIZE specified in the DCB subparameter in the JCL.<br>
+Limits: 1 to 5 numeric characters</li>
+</ul>
+</li>
+</ul>
+<h4>CA7 Connection Options</h4>
+<ul>
+<li>
+<p><code>--host</code> | <code>-H</code> <em>(string)</em></p>
+<ul>
+<li>Host name of the CA7 API service that is running on the mainframe system.</li>
+</ul>
+</li>
+<li>
+<p><code>--port</code> | <code>-P</code> <em>(number)</em></p>
+<ul>
+<li>Port for the CA7 API service that is running on the mainframe system.</li>
+</ul>
+</li>
+<li>
+<p><code>--user</code> | <code>-u</code> <em>(string)</em></p>
+<ul>
+<li>User name for authenticating connections to the CA7 API service that is running on the mainframe system.</li>
+</ul>
+</li>
+<li>
+<p><code>--password</code> | <code>--pass</code> | <code>--pw</code> <em>(string)</em></p>
+<ul>
+<li>Password for authenticating connections to the CA7 API service that is running on the mainframe system.</li>
+</ul>
+</li>
+<li>
+<p><code>--base-path</code> | <code>--bp</code> <em>(string)</em></p>
+<ul>
+<li>The base path for your API mediation layer instance. Specify this option to prepend the base path to all resources when making REST requests. Do not specify this option if you are not using an API mediation layer.</li>
+</ul>
+</li>
+<li>
+<p><code>--protocol</code> | <code>-o</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>Specifies protocol to use for CA7 connection (http or https).</p>
+<p>Allowed values: http, https</p>
+</li>
+</ul>
+</li>
+</ul>
+<h4>Profile Options</h4>
+<ul>
+<li>
+<p><code>--ca7-profile</code> | <code>--ca7-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (ca7) profile to load for this command execution.</li>
+</ul>
+</li>
+<li>
+<p><code>--base-profile</code> | <code>--base-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (base) profile to load for this command execution.</li>
+</ul>
+</li>
+</ul>
+<h4>Base Connection Options</h4>
+<ul>
+<li>
+<p><code>--reject-unauthorized</code> | <code>--ru</code> <em>(boolean)</em></p>
+<ul>
+<li>
+<p>Reject self-signed certificates.</p>
+<p>Default value: true</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--token-type</code> | <code>--tt</code> <em>(string)</em></p>
+<ul>
+<li>The type of token to get and use for the API. Omit this option to use the default token type, which is provided by 'zowe auth login'.</li>
+</ul>
+</li>
+<li>
+<p><code>--token-value</code> | <code>--tv</code> <em>(string)</em></p>
+<ul>
+<li>The value of the token to pass to the API.</li>
+</ul>
+</li>
+<li>
+<p><code>--cert-file</code> <em>(local file path)</em></p>
+<ul>
+<li>The file path to a certificate file to use for authentication</li>
+</ul>
+</li>
+<li>
+<p><code>--cert-key-file</code> <em>(local file path)</em></p>
+<ul>
+<li>The file path to a certificate key file to use for authentication</li>
+</ul>
+</li>
+</ul>
+<h4>Examples</h4>
+<ul>
+<li>
+<p>Create a new dataset named DATASET.NAME.TEST of type NORM and data set is not a generation data group:</p>
+<ul>
+<li><code>zowe ca7 dataset create-dataset --dname DATASET.NAME.TEST --type NORM --gdg N</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe ca7 dataset create-dataset --dname DATASET.NAME.TEST --type NORM --gdg N">Copy</button></li>
+</ul>
+</li>
+</ul>
+</article>
+<script src="../js/bundle-docs.js"></script>
+<script src="../js/docs.js"></script>
