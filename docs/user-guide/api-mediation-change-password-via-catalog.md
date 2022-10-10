@@ -1,4 +1,4 @@
 # Change password via API Catalog
 
-In case of mainframe password expiration,, the API Catalog offers the possibility to set a new password, using either the SAF or the z/OSMF provider.
-For more information about the password change functionality, see [Advanced Gateway features configuration](../user-guide/api-mediation/api-gateway-configuration.md).
+In case you receive notification of mainframe password expiration, the API Catalog offers the possibility to set a new password, using either the SAF or the z/OSMF provider.
+For more information about the password change functionality, see the sub-topics, [Change password with SAF provider](../user-guide/api-mediation/api-gateway-configuration/#change-password-with-saf-provider) and [Change password with z/OSMF provider](../user-guide/api-mediation/api-gateway-configuration/#change-password-with-zosmf-provider) in the topic **Advanced Gateway features configuration**.
