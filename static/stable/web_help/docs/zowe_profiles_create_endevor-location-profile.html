@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>profiles create endevor-location-profile</title>
+<link rel="stylesheet" href="../css/bundle-docs.css">
+<link rel="stylesheet" href="../css/docs.css">
+<article class="markdown-body">
+<h2><a href="zowe.html">zowe</a> › <a href="zowe_profiles.html">profiles</a> › <a href="zowe_profiles_create.html">create</a> › <a href="zowe_profiles_create_endevor-location-profile.html">endevor-location-profile</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
+<p>The Endevor element location, where you specify your working environment, system and subsystem</p>
+<p>Warning: This command has been deprecated.<br>
+Recommended replacement: The 'config init' command</p>
+<h4>Usage</h4>
+<p>zowe profiles create endevor-location-profile &lt;profileName&gt; [options]</p>
+<h4>Positional Arguments</h4>
+<ul>
+<li>
+<p><code>profileName</code>		 <em>(string)</em></p>
+<ul>
+<li>Specifies the name of the new endevor-location profile. You can load this profile by using the name on commands that support the &quot;--endevor-location-profile&quot; option.</li>
+</ul>
+</li>
+</ul>
+<h4>Options</h4>
+<ul>
+<li>
+<p><code>--instance</code> | <code>-i</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>The STC/datasource of the session</p>
+<p>Default value: ENDEVOR</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--environment</code> | <code>--env</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>The Endevor environment where your project resides</p>
+<p>Default value: DEV</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--system</code> | <code>--sys</code> <em>(string)</em></p>
+<ul>
+<li>The Endevor system where the element resides</li>
+</ul>
+</li>
+<li>
+<p><code>--subsystem</code> | <code>--sub</code> <em>(string)</em></p>
+<ul>
+<li>The Endevor subsystem where your element resides</li>
+</ul>
+</li>
+<li>
+<p><code>--type</code> | <code>--typ</code> <em>(string)</em></p>
+<ul>
+<li>Name of the Endevor element's type</li>
+</ul>
+</li>
+<li>
+<p><code>--stage-number</code> | <code>--sn</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>The Endevor stage where your project resides</p>
+<p>Allowed values: 1, 2</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--comment</code> | <code>--com</code> <em>(string)</em></p>
+<ul>
+<li>The Endevor comment you want to use when performing an action</li>
+</ul>
+</li>
+<li>
+<p><code>--ccid</code> | <code>--cci</code> <em>(string)</em></p>
+<ul>
+<li>The Endevor CCID you want to use when performing an action</li>
+</ul>
+</li>
+<li>
+<p><code>--maxrc</code> <em>(number)</em></p>
+<ul>
+<li>
+<p>The return code of Endevor that defines a failed action</p>
+<p>Default value: 8</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--override-signout</code> | <code>--os</code> <em>(boolean)</em></p>
+<ul>
+<li>
+<p>Always override element signout, without having to specify the override signout option on each command</p>
+<p>Default value: false</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--overwrite</code> | <code>--ow</code> <em>(boolean)</em></p>
+<ul>
+<li>Overwrite the endevor-location profile when a profile of the same name exists.</li>
+</ul>
+</li>
+<li>
+<p><code>--disable-defaults</code> | <code>--dd</code> <em>(boolean)</em></p>
+<ul>
+<li>Disable populating profile values of undefined properties with default values.</li>
+</ul>
+</li>
+</ul>
+<h4>Examples</h4>
+<ul>
+<li>
+<p>Create a location profile called 'ndvrLoc' to work at Endevor location ENV/1/SYS/SUBSYS, with elements of type COBOL, using Endevor web services configuration ENDEVOR:</p>
+<ul>
+<li><code>zowe profiles create endevor-location-profile ndvrLoc --env ENV --sys SYS --sub SUBSYS --typ COBOL --sn 1 -i ENDEVOR</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe profiles create endevor-location-profile ndvrLoc --env ENV --sys SYS --sub SUBSYS --typ COBOL --sn 1 -i ENDEVOR">Copy</button></li>
+</ul>
+</li>
+<li>
+<p>Create a location profile called 'ndvrLoc2' to work at Endevor location ENV/1/SYS/SUBSYS, using CCID 'CCID' and comment 'sample comment':</p>
+<ul>
+<li><code>zowe profiles create endevor-location-profile ndvrLoc2 --env ENV --sys SYS --sub SUBSYS --sn 1 --com 'sample comment' --cci 'CCID'</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe profiles create endevor-location-profile ndvrLoc2 --env ENV --sys SYS --sub SUBSYS --sn 1 --com 'sample comment' --cci 'CCID'">Copy</button></li>
+</ul>
+</li>
+</ul>
+</article>
+<script src="../js/bundle-docs.js"></script>
+<script src="../js/docs.js"></script>
