@@ -2,6 +2,15 @@
 
 As an API Mediation Layer user, you may encounter problems with how the API ML functions. This article presents known API ML issues and their solutions.
 
+## Install API ML without Certificate Setup
+
+For testing purposes, it is not necessary to set up certificates when configuring the API Mediation Layer. You can configure Zowe without certificate setup and run Zowe with `verify_certificates: DISABLED`.
+
+**Important:** For production environments, certificate are required. Ensure that certificates for each of the following services are issued by the Certificate Authority (CA) and that all keyrings contain the public part of the certificate for the relevant CA:
+* z/OSMF
+* Zowe
+* The service that is onboarded to Zowe
+
 ## Enable API ML Debug Mode
 
 Use debug mode to activate the following functions:
