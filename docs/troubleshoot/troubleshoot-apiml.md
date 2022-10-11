@@ -2,6 +2,27 @@
 
 As an API Mediation Layer user, you may encounter problems with how the API ML functions. This article presents known API ML issues and their solutions.
 
+* [Install API ML without Certificate Setup](#install-api-ml-without-certificate-setup)
+* [Enable API ML Debug Mode](#enable-api-ml-debug-mode)
+* [Change the Log Level of Individual Code Components](#change-the-log-level-of-individual-code-components)
+* [Known Issues](#known-issues)
+    * [API ML stops accepting connections after z/OS TCP/IP stack is recycled](#api-ml-stops-accepting-connections-after-zos-tcpip-stack-is-recycled)
+    * [SEC0002 error when logging in to API Catalog](#sec0002-error-when-logging-in-to-api-catalog)
+    * [API ML throws I/O error on GET request and cannot connect to other services](#api-ml-throws-io-error-on-get-request-and-cannot-connect-to-other-services)
+    * [Certificate error when using both an external certificate and Single Sign-On to deploy Zowe](#certificate-error-when-using-both-an-external-certificate-and-single-sign-on-to-deploy-zowe)
+    * [Browser unable to connect due to a CIPHER error](#browser-unable-to-connect-due-to-a-cipher-error)
+    * [API Components unable to handshake](#api-components-unable-to-handshake)
+    * [Java z/OS components of Zowe unable to read certificates from keyring](#java-zos-components-of-zowe-unable-to-read-certificates-from-keyring)
+    
+## Install API ML without Certificate Setup
+
+For testing purposes, it is not necessary to set up certificates when configuring the API Mediation Layer. You can configure Zowe without certificate setup and run Zowe with `verify_certificates: DISABLED`.
+
+**Important:** For production environments, certificate are required. Ensure that certificates for each of the following services are issued by the Certificate Authority (CA) and that all keyrings contain the public part of the certificate for the relevant CA:
+* z/OSMF
+* Zowe
+* The service that is onboarded to Zowe
+
 ## Enable API ML Debug Mode
 
 Use debug mode to activate the following functions:
@@ -114,9 +135,6 @@ This activates the application/loggers endpoints in each API ML internal service
     ```
     http POST https://hostname:port/application/loggers/org.zowe.apiml.enable.model configuredLevel=WARN
     ```
-
-
-
 ## Known Issues
 
 ### API ML stops accepting connections after z/OS TCP/IP stack is recycled
@@ -161,8 +179,14 @@ The error is caused by failed z/OSMF authentication. To determine the reason aut
 Check the rest of the message, and identify the cause of the problem. The following list provides the possible reasons and solutions for the z/OSMF authentication issue:
 
 - [Connection refused](#connection-refused)
+- [Configure z/OSMF](#configure-zosmf)
 - [Missing z/OSMF host name in subject alternative names](#missing-z-osmf-host-name-in-subject-alternative-names)
 - [Invalid z/OSMF host name in subject alternative names](#invalid-z-osmf-host-name-in-subject-alternative-names)
+- [Secure Fix](#secure-fix)
+- [Insecure Fix](#insecure-fix)
+- [Invalid z/OSMF host name in subject alternative names](#invalid-zosmf-host-name-in-subject-alternative-names)
+- [Request a new certificate](#request-a-new-certificate)
+- [Re-create the Zowe keystore](#re-create-the-zowe-keystore)
 
 #### Connection refused
 
