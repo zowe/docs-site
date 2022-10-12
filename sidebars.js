@@ -219,7 +219,6 @@ module.exports = {
           label: "Using Zowe API Mediation Layer",
           items: [
             "user-guide/api-mediation/using-api-mediation-layer",
-            "user-guide/api-mediation-api-catalog",
             {
               type: "category",
               label: "Using API Catalog",
