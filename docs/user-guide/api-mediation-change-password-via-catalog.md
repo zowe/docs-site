@@ -9,7 +9,7 @@ It is possible that your mainframe installation has specific rules for passwords
 
 <img src={require("../images/api-mediation/catalog-new-pass-err.png").default} alt="api refresh error" width="700px"/>
 
-After you repeat the new password you are able to request the change again. The number of retries depends on the security manager setup of your zOS.
+After you repeat the new password, you are able to request the change again. The number of retries depends on the security manager setup of your zOS.
 
 <img src={require("../images/api-mediation/catalog-pass-update-ok.png").default} alt="api refresh error" width="700px"/>
 
