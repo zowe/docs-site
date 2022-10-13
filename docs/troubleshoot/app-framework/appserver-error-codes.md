@@ -1030,23 +1030,9 @@ The following error message codes may appear on the app-server log. Use the foll
 
 
 
-### ZWED0289I
-
-  JarMgr with id=%s invoked to startup with config=%s
-
-  **Reason:**
-
-  TODO
-
-  **Action:**
-
-  TODO
-
-
-
 ### ZWED0290I
 
-  Plugin (%s) loaded. Version: %s. Successful: %s% (%s/%s) Attempted: %s% (%s/%s)
+  Plugin (_pluginId_) loaded. Version: _pluginVersion_. Successful: _overallSuccess_% (_pluginsLoaded_/_pluginsTotal_) Attempted: %s% (%s/%s)
 
   **Reason:**
 
@@ -1284,187 +1270,226 @@ The following error message codes may appear on the app-server log. Use the foll
 
 
 
-### ZWED0013W":"Initializing was not complete for worker %s
+### ZWED0013W
+  
+  Initializing was not complete for worker _workerId_
 
   **Reason:**
 
-  TODO
+  A cluster mode worker exited before it fully initialized. Another worker will be started soon to attempt again.
 
   **Action:**
 
-  TODO
+  If this continues to happen, you should contact support.
 
 
 
-### ZWED0014W":"Error adding plugin: %s
+### ZWED0014W
+
+  Error adding plugin: _error_
 
   **Reason:**
 
-  TODO
+  A dynamic plugin, or a plugin added post-startup was unable to be added to the server. The server continues to run, but this plugin was not added.
 
   **Action:**
 
-  TODO
+  Check the _error_ and lines above in the log to determine the reason for the failure.
 
 
 
-### ZWED0015W":"Error reloading workers: %s
+### ZWED0015W
+
+  Error reloading workers: _error_
 
   **Reason:**
 
-  TODO
+  The server was attempting to reload all workers, probably to complete a configuration change. An error occurred instead so some of the workers may not have been reloaded and could contain the old configuration.
 
   **Action:**
 
-  TODO
+  If you were doing a configuration change, you should try again or restart the server if the error persists. You can check the _error_ to see the reason for the issue.
 
 
 
-### ZWED0016W":"Error setting override: %s
+### ZWED0016W
+
+  Error setting override: _error_
 
   **Reason:**
 
-  TODO
+  The server attempted to load a new configuration, but failed when writing the configuration update to a file.
 
   **Action:**
 
-  TODO
+  Check the _error_ to see the possible cause for the failure. Retry this operation but if thie issue persists you should restart the server.
 
 
 
-### ZWED0017W":"Duplicate plugin identifier %s found.
+### ZWED0017W
+
+  Duplicate plugin identifier _pluginId_ found.
 
   **Reason:**
 
-  TODO
+  A plugin was trying to be added to the server but it wasn't possible because another plugin with the same ID already was running within the server.
 
   **Action:**
 
-  TODO
+  Plugin upgrades cannot be done through the add plugin operation. Instead, the server should be stopped to perform this upgrade.
 
 
 
-### ZWED0018W":"Could not initialize Java manager. Java services from Apps will not be able to load\n%s
+### ZWED0018W
+
+  Could not initialize Java manager. Java services from Apps will not be able to load _stackTrace_
 
   **Reason:**
 
-  TODO
+  The Java manager is used to run Java services bundled into plugins. It could not start, so the server cannot load any Java services. Plugins that have Java services may fail to load, but the server will still run with the remaining plugins.
 
   **Action:**
 
-  TODO
+  Check the _stackTrace_ output to determine the reason the Java manager could not run.
 
 
 
-### ZWED0019W":"Exception when setting log level for ID=%s. E:\n%s
+### ZWED0019W
+
+  Exception when setting log level for ID=_logId_. E: _stackTrace_
 
   **Reason:**
 
-  TODO
+  Log levels listed in the configuration file are set during startup. For some reason, the level for _logId_ could not be set, but the server will continue to run with that logger set to default verbosity.
 
   **Action:**
 
-  TODO
+  Check the _stackTrace_ to determine the reason why _logId_ could not be set. Potentially the log id was an invalid name, or the log level was an invalid number.
 
 
 
-### ZWED0020W":"Could not spawn %s: %s
+### ZWED0020W
+
+  Could not spawn _childProcess_: _errorMessage_
 
   **Reason:**
 
-  TODO
+  The child process that was requested to run when the server started up could not run for some reason. _childProcess_ lists the parameters requested to start the process.
 
   **Action:**
 
-  TODO
+  Check the _errorMessage_ to determine the reason of failure, and also verify that the information in _childProcess_ is valid.
 
 
 
-### ZWED0021W":"Missing one or more parameters required to run.\nThe server requires either HTTP or HTTPS. HTTP Port given: %s. HTTPS Port given: %s\nHTTPS requires either a PFX file or Key & Certificate files.\nGiven PFX: %s\nGiven Key: %s\nGiven Certificate: %s\nconfig was: %s\nAll but host server and config file parameters should be defined within the config file in JSON format.
+### ZWED0021W
+
+  Missing one or more parameters required to run.
+  The server requires either HTTP or HTTPS. HTTP Port given: _httpPort_. HTTPS Port given: _httpsPort_
+  HTTPS requires either a PFX file or Key & Certificate files.
+  Given PFX: _pfx_
+  Given Key: _key_
+  Given Certificate: _certificate_
+  config was: _configuration_
+  All but host server and config file parameters should be defined within the config file in JSON format.
 
   **Reason:**
 
-  TODO
+  The server could not start because the configuration was not valid. When the server's HTTPS section is specified, _httpsPort_ must be a valid TCP port number and you must have a key and certificate. If the HTTPS section is not specified, the HTTP section must be specified and _httpPort_ must be a valid TCP port number.
 
   **Action:**
 
-  TODO
+  Review the _configuration_ to see if there are corrections to be made before restarting the server.
 
 
 
-### ZWED0027W":"Plugin (%s) loading failed. Version: %s. Message: "%s" Successful: %s% (%s/%s) Attempted: %s% (%s/%s)
+### ZWED0027W
+
+  Plugin (_pluginId_) loading failed. Version: _versionNumber_. Message: "_errorMessage_" Successful: _percentSuccess_% (_pluginsLoaded_/_pluginsTotal_) Attempted: _percentAttempted_% (_pluginsAttempted_/_pluginsTotal_)
 
   **Reason:**
 
-  TODO
+  An error prevented the plugin _pluginId_ from loading. Other plugins will still be attempted to be loaded, until _percentAttempted_ reaches 100%. The server will run if all auth plugins needed have successfully loaded.
 
   **Action:**
 
-  TODO
+  Review _errorMessage_ to see if there is something you can do to fix the error. You may need to contact the plugin developer to find a solution. If you do not need this plugin, it is OK to continue.
 
 
 
-### ZWED0028W":"Encountered parse exception while reading %s
+### ZWED0028W
+
+  Encountered parse exception while reading _filename_
 
   **Reason:**
 
-  TODO
+  The server cannot read the JSON file _filename_. This might be a configuration file or a plugin file. In either case, the server may not be able to run or may run with less plugins than desired.
 
   **Action:**
 
-  TODO
+  Review the file listed in _filename_. Check if it is in the right encoding for your platform. Tagging the file according to its encoding is recommended for z/OS. Also check if the file is valid JSON. The file may have a missing or extra comma, or missing quotes or brackets.
 
 
 
-### ZWED0029W":"Authentication plugin was found which was not requested in the server configuration file's dataserviceAuthentication object. Skipping load of this plugin
+### ZWED0029W
+
+  Authentication plugin was found which was not requested in the server configuration file's dataserviceAuthentication object. Skipping load of this plugin
 
   **Reason:**
 
-  TODO
+  The server will attempt to load every plugin given to it in the plugins directory. Authentication plugins are only needed if a plugin requests them or it implements the default authentication category. Because the server did not find a user of this plugin, it was not loaded.
 
   **Action:**
 
-  TODO
+  No action is needed unless you believe that this plugin needed to be loaded. If so, check for plugins that require it to determine if there is missing or incorrect auth configuration.
 
 
 
-### ZWED0030W":"%s points to an invalid plugin definition, skipping
+### ZWED0030W
+
+  _location_ points to an invalid plugin definition, skipping
 
   **Reason:**
 
-  TODO
+  The file specified at _location_ is not valid according to the [pluginDefinition schema](https://github.com/zowe/zlux-app-server/blob/v2.x/staging/schemas/plugindefinition-schema.json), so it cannot be loaded. The server will still start without the plugin if possible.
 
   **Action:**
 
-  TODO
+  Correct the pluginDefinition.json file of the plugin to load the plugin on next server restart, or remove the plugin if not needed.
 
 
 
-### ZWED0032W":"Failed to load %s
+### ZWED0032W
+
+  Failed to load _filename_
 
   **Reason:**
 
-  TODO
+  The plugin definition located at _filename_ could not be read, so the plugin that referred to this cannot be loaded. The server may still run without the plugin if possible.
 
   **Action:**
 
-  TODO
+  Check if the file exists and is readable to the user that is running the server. Also check that the file is in the right encoding for the OS the app-server is running on. On z/OS, it is recommended to have the file encoding tagged.
 
 
 
-### ZWED0033W":"Could not initialize plugin %s: %s
+### ZWED0033W
+
+  Could not initialize plugin _pluginId_: _error_
 
   **Reason:**
 
-  TODO
+  The plugin _pluginId_ could not be loaded. This may be due to unsatisfied imports, where an import requested a version of something that was not available, or an entire plugin was not available.  The server will still attempt to load if this plugin was not needed.
 
   **Action:**
 
-  TODO
+  Check the _error_ message to determine the cause of error for correction.
 
 
 
-### ZWED0034W":"Skipping install of plugin due to existing plugin with same id=
+### ZWED0034W
+
+  Skipping install of plugin due to existing plugin with same id=_identifier_
 
   **Reason:**
 
