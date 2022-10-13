@@ -1493,47 +1493,55 @@ The following error message codes may appear on the app-server log. Use the foll
 
   **Reason:**
 
-  TODO
+  The plugin could not be loaded due to a plugin that is already loaded containing the same _identifier_ ID. Plugin IDs are unique, so the first plugin with that ID that is seen is the one that is loaded.
 
   **Action:**
 
-  TODO
+  Check to see if you have 2 extensions that contain plugins with the same ID. Alternatively, an extension may have updated to have its name change without its ID changing, causing a duplicate to appear. You may need to clean up your extensions or the contents of the pluginsDir directory.
 
 
 
-### ZWED0035W":"Error thrown when installing plugin=%s: 
+### ZWED0035W
+
+  Error thrown when installing plugin=_identifier_: _error_ 
 
   **Reason:**
 
-  TODO
+  The plugin with id _identifier_ could not be added to the server because of an error that occurred. The server will still attempt to run without the plugin if possible.
 
   **Action:**
 
-  TODO
+  Check the _error_ message to see what the reason for the error could be, and correct it before restarting the server in order to try loading the plugin again.
 
 
 
-### ZWED0036W":"Uncaught exception found. Error:\n%s
+### ZWED0036W
+
+  Uncaught exception found. Error: _stackTrace_
 
   **Reason:**
 
-  TODO
+  The server encountered an unexpected error. If cluster mode is running, this will result in the worker crashing but the cluster starting a new worker to replace it. The client that initiated the request will need to retry the operation though other clients should not experience disruption.
+  
+  If cluster mode is not running, the process will end but the launcher will restart it. In this case, state may be lost unless the caching service was also being used.
 
   **Action:**
 
-  TODO
+  The _stackTrace_ should be sent to developers so that the issue can be fixed.
 
 
 
-### ZWED0037W":"Ending server process due to uncaught exception.
+### ZWED0037W
+
+  Ending server process due to uncaught exception.
 
   **Reason:**
 
-  TODO
+  The server is stopping after encountering ZWED00036W.
 
   **Action:**
 
-  TODO
+  The information within ZWED0036W should be sent to developers so that the issue can be fixed.
 
 
 
