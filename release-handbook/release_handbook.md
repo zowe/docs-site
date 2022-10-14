@@ -1,5 +1,7 @@
 # Release handbook
 
+Learn how to handle the documentation for Zowe releases.
+
 - [Release communication](#release-communication)
 - [Preparing documentation for a new release](#preparing-documentation-for-a-new-release)
     - [Before you begin](#before-you-begin)
@@ -11,7 +13,7 @@
 - [Publish documentation for a new release](#publish-documentation-for-a-new-release)
 - [Remove archived version](#remove-archived-version)
 
-## Release communication 
+## Release schedule 
 
 The Zowe community communicates the release schedule in several ways. 
 - [Zowe release cadence document](https://github.com/zowe/community/blob/master/Project%20Management/Schedule/Zowe%20PI%20%26%20Sprint%20Cadence.md) 
@@ -19,7 +21,20 @@ The Zowe community communicates the release schedule in several ways.
 
 Release contacts are as follows:  
 
-- Release engineer: Tom Zhang @FlappiTomic
+- Release engineer: OJ Celis (Slack @OJ Celis)
+
+For each release, Zowe documentation should define a doc delivery schedule with several key checkpoints. Code freeze date is not doc freeze date. The doc usually freezes 1 day before the GA date to allow time for doc build testing and issue fix. We also define a freeze date for release notes which is usually 3 days before the GA date to allow time for review. 
+
+The following schedule takes release version 2.4 as an example: 
+
+```
+2.4
+Code Freeze 2022/10/04
+RC Build 2022/10/05
+Release Notes Freeze 2022/10/14  (3 days before GA, 2 days for review)
+Doc Freeze 2022/10/16  (1 day before GA)
+GA/Doc Publish  2022/10/17
+```
 
 ## Preparing documentation for a new release
 
@@ -136,13 +151,14 @@ presets: [
   ]
   ```
 
-**Note:** It's recommended to remove the oldest archived version every time a new version is added to minimize the build time. The steps are mentioned in [Removing archived version](#removing-archived-version).
-
 ### Part 3: Prepare new release files
 
 1. Add the release notes placeholder file for the new version. 
     1. Go to `/docs/getting-started/release-notes`. 
-    2. Create a file for the new version and add the outline to the document. For example: `/docs/getting-started/release-notes/v1_25.md` 
+    2. Create a file for the new version and add the outline to the document. For example: `/docs/getting-started/release-notes/v1_25.md`
+
+       Populate the release notes file with the basic outline. Copy and paste the template from the [Release Notes guide](release_notes_guide.md). Ensure that you update the release version number in the template. 
+
     3. Go to `sidebars.js` file and add the new topic to the release notes section.    
     ```
     {
@@ -157,26 +173,11 @@ presets: [
     },
     ```
 
-2. Update the announcement bar to point to the new release notes document. 
-
-   1. Navigate to the `/docusaurus.config.js` file and locate the following code section. 
-   2. Update the `id` to use a new one. 
-   3. Update the `href` to point to the new release document.
-
-```
-announcementBar: {
-    id: "v1_25_GA",
-    content:
-    '<a target="_blank" rel="noopener noreferrer" href="release-notes/v1_25">Zowe Version 1.25</a> is now available! Read about the new features and fixes in this release.',
-    backgroundColor: "#333333",
-    textColor: "#FFFFFF",
-    isCloseable: true,
-    },
-```
-
 3. Add the TPSR placeholder file. 
     1. Go to the `/tpsr` directory. 
     2. Add a new file for the new version. For example: `/tpsr/tpsr-v1.25.x.md`. 
+
+    **Note:** This is just a placeholder file. Once the RC build is available, this file should be updated to include the information for the new release. 
 
 4. Build the site to check that no error occurs. 
 
@@ -206,7 +207,24 @@ Usually 1 week before the GA date of the new release, create a PR to merge the `
 - Add Zowe Doc Squad maintainers to the reivewer list. 
 - Check the build status and send build issues to the doc squad. 
 
-Usually 2 days before the GA date, review the documentation checklist for the release to ensure that all items are complete. 
+Usually 2 days before the GA date, review the [release checklist](#release-checklist) for the release to ensure that all items are complete. 
+
+### Release checklist
+
+|Checkpoint | Due Date | Details
+|--|--|--|
+|New version doc setup               | Right after a release is published |See the [Preparing documentation for a new release](#preparing-documentation-for-a-new-release) on the `docs-staging` branch |  
+|Relnotes: CHANGELOG update cutoff   | 3 days before GA | Doc squad to work with squads to complete review | 
+|Relnotes: Draft review              | 3 days before GA | First run of release notes. Squad leads review the draft. | 
+|Zowe CLI: Update web help and type doc |  | Zowe CLI squad
+|Update TPSR                         |  | Work with CICD squad. See [Updating TPSR](#updating-tpsr) for how-to. 
+|Doc freeze, PR for publish ready    | 1 day before GA | All release PRs merged. Action: Inform CI/CD squad of the doc PR number. Add CICD members as a reviewer of the PR. 
+|Doc publish                         | GA day | Work with CICD squad to merge the doc PR. 
+|Doc validation                      | Once published | Check that the doc site has been refreshed correctly. 
+|Release promotion                   |  | Slack, LinkedIn, Twitter, etc
+|System demo                         |  | See the [OMP Calendar](https://lists.openmainframeproject.org/g/zowe-dev/calendar) for details.  
+|Write release blog, upload release demo video                  |  | Convert the system demo recording into a blog. 
+|Add release demo video and blog link back in the release notes | Once the video and blog is published | Go to the release notes and add the links. For example, `Release demo: Check out the Zowe demo video for v1.24.0 to see a demo of what's new in this release. Release blog: Read this blog Zowe 1.24 Release Highlights written by Joe Winchester for a deeper dive of the major enhancements and changes for this release.` 
 
 ## Removing archived version
 
@@ -225,3 +243,9 @@ Removing archived version is necessary once two new versions are released to red
      label: "v1.17.x LTS",
    },
   ```
+
+## Updating TPSR
+
+Pick up the latest licenses file from this location: https://zowe.jfrog.io/zowe/libs-release-local/org/zowe/licenses/. Open the release folder and download the `zowe_licenses_full.zip` file. 
+
+Extract the file and copy the content into the placeholder TPSR document for the release in the /tpsr folder. 
