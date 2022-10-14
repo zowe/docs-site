@@ -303,8 +303,8 @@ authentication:
 
         * When a Zowe JWT is provided, this scheme value specifies that the service accepts the Zowe JWT. No additional processing is done by the API Gateway.
         * When a client certificate is provided, the certificate is transformed into a Zowe JWT, and the southbound service performs the authentication.
-        * If the southbound service needs to consume the JWT token from a custom HTTP request header (i.e. to participate in the Zowe SSO), it is possible to provide such header in the Gateway configuration. 
-      The HTTP header is then added to each request towards the southbound service and will contain the Zowe JWT to be consumed by the service.
+        * If the southbound service needs to consume the JWT token from a custom HTTP request header (i.e. to participate in the Zowe SSO), it is possible to provide a header in the Gateway configuration. 
+      The HTTP header is then added to each request towards the southbound service. The header contains the Zowe JWT to be consumed by the service.
 
     * **httpBasicPassTicket**
 
