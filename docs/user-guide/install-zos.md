@@ -64,7 +64,11 @@ You can configure the Zowe runtime with one of the following methods depending o
 - Use a combination of JCL and the [zwe](installandconfig.md#zwe-server-command) command `zwe init`
 - Use z/OSMF Workflows
 
-**Tip:** We recommend you open the links to this configuration procedure in new tabs.
+:::tip
+
+We recommend you open the links to this configuration procedure in new tabs.
+
+:::
 
 Whether you have obtained Zowe from a .pax convenience build, or an SMP/E distribution, the steps to initialize the system are the same.
 
@@ -78,13 +82,15 @@ Whether you have obtained Zowe from a .pax convenience build, or an SMP/E distri
 1. Configure Zowe to use TLS certificates.
 1. [Install Zowe main started tasks](install-stc-members.md).
 
-**Tip:**
+:::tip
+
 * For testing purposes, it is not necessary to set up certificates when configuring the API Mediation Layer. You can configure Zowe without certificate setup and run Zowe with `verify_certificates: DISABLED`.
 * For production environments, certificate are required. Ensure that certificates for each of the following services are issued by the Certificate Authority (CA) and that all keyrings contain the public part of the certificate for the relevant CA.
    * z/OSMF
    * Zowe
    * The service that is onboarded to Zowe
-
+   
+:::
 
 ## Stage 4: (Optional) Customize the configuration
 

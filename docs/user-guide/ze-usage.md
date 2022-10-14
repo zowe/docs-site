@@ -1,6 +1,6 @@
 # Using Zowe Explorer
 
-Review this section to familiarize yourself with the extension and make the best use of available options and features. The section contains usage tips and sample use cases for data sets, USS files, JOBs, and TSO commands.
+Review this section to familiarize yourself with the extension and make the best use of available options and features. 
 
 ## Usage Tips
 
@@ -22,6 +22,44 @@ Make the best use of the extension with the following tips:
 - **Hide a profile**: You can hide a profile from profile tree by right-clicking the profile and selecting the **Hide Profile** option. If necessary, add the profile back by clicking the **+** button from the explorer tree.
 
 - **Open recent members**: Zowe Explorer lets you open a list of members you worked on earlier. You can access the list by pressing Ctrl+Alt+R or Command+Alt+R.
+
+## Using a specific version of Zowe Explorer
+
+Depending on their circumstances, developers might want to keep using a specific version of Zowe Explorer. To ensure that a particular version remains installed on VS Code, refer to the procedure for one of the following scenarios:
+
+### Zowe Explorer is installed
+
+#### **Preventing automatic version updates**
+
+By default, VS Code automatically updates extensions as new versions are released. Refer to the following steps to prevent automatic updates:
+
+1. On the VS Code menu bar, click **File**, **Preferences**, and click **Settings** to display the Settings editor.
+2. Select the **User** or **Workspace** tab, depending on which settings you want to update.
+3. In the Settings navigation menu, click **Features** and click **Extensions**.
+4. In the **Auto Update** dropdown menu, select **None**. This prevents VS Code from updating your extensions automatically.
+
+#### **Installing a specific previous version**
+
+1. Select the **Extensions** tab on the **Activities Bar** to display a list of installed extensions.
+2. In the **Side Bar**, click the **Gear** icon next to Zowe Explorer to open a dropdown menu that lists available options.
+3. Select **Install Another Version…** to open a dropdown menu that lists previous versions of Zowe Explorer.
+4. Click the version of Zowe Explorer you want to install.
+
+
+### Zowe Explorer is not installed
+
+If Zowe Explorer is not installed, you can install the current release of the extension and then revert to a previous version.
+
+#### **Installing a previous version of Zowe Explorer**
+
+1. Select the **Extensions** tab on the **Activities Bar** to display the **Search Extensions in Marketplace** field.
+2. In the **Side Bar**, search for `Zowe Explorer`. Click the **Install** button on the Zowe Explorer search result item. This opens a Zowe Explorer tab in the **Editor** area.
+
+![Zowe Explorer search result item](../images/ze/ZE-zowe-explorer-result-item.jpg "Zowe Explorer search result item")
+<br /><br />
+
+3. Click the **Down** arrow next to the **Uninstall** button. Select **Install Another Version…** to open a dropdown menu that lists previous versions of Zowe Explorer.
+4. Search for and click the version of Zowe Explorer you want to install.
 
 ## Sample Use Cases
 
