@@ -274,7 +274,7 @@ Use the following procedure to add the custom HTTP header.
 2. Find or add the property `components.gateway.apiml.security.auth.customAuthHeader` and set the value which represents the header's name.
 3. Restart `Zowe&trade`.
 
-Requests through the Gateway towards the southbound service using the `zoweJwt` scheme now contain a CORS header.
+Requests through the Gateway towards the southbound service now contain a CORS header.
 
 ## Connection limits
 
