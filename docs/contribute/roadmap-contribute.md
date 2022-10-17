@@ -14,7 +14,7 @@ You are welcome to contribute to Zowe in many forms and help make this project b
 
 - Report bugs: Download and try one of the latest Zowe builds. Report any bugs you find by [creating a Zowe bug report in GitHub](https://github.com/zowe/community/issues/new?assignees=&labels=bug&template=bug_report.md&title=).
 - Report enhancements: Got an idea for a feature? Or something you're already using could be improved? [Post an enhancement request in GitHub](https://github.com/zowe/community/issues/new?assignees=&labels=enhancement&template=feature_request.md&title=)! 
-- Upvote enhancements and bugs: You can show us that issue matters to you by using the Thumbs-up emoji for the specific issue. The example of how [it looks like sorted for API ML](https://github.com/zowe/api-layer/issues?q=is%3Aissue+is%3Aopen+sort%3Areactions-%2B1-desc). This information is taken into account when planning the PI. 
+- Upvote enhancements and bugs: You can show us that an issue matters to you by applying the thumbs-up emoji for a specific issue. See [this link](https://github.com/zowe/api-layer/issues?q=is%3Aissue+is%3Aopen+sort%3Areactions-%2B1-desc) to view the list of issues sorted by the most upvotes. This information is taken into account when planning the upcoming PI. 
 
 If you have an issue that is specific to a sub-project or community team, feel free to submit an issue against a specific repo.
 
