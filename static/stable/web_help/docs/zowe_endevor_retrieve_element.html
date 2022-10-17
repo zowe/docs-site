@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>endevor retrieve element</title>
+<link rel="stylesheet" href="../css/bundle-docs.css">
+<link rel="stylesheet" href="../css/docs.css">
+<article class="markdown-body">
+<h2><a href="zowe.html">zowe</a> › <a href="zowe_endevor.html">endevor</a> › <a href="zowe_endevor_retrieve.html">retrieve</a> › <a href="zowe_endevor_retrieve_element.html">element</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
+<p>The retrieve element command retrieves an existing element in Endevor.</p>
+<h4>Usage</h4>
+<p>zowe endevor retrieve element &lt;element&gt; [options]</p>
+<h4>Positional Arguments</h4>
+<ul>
+<li>
+<p><code>element</code>		 <em>(string)</em></p>
+<ul>
+<li>Name of the Endevor element.</li>
+</ul>
+</li>
+</ul>
+<h4>endevor-location definition options</h4>
+<ul>
+<li>
+<p><code>--environment</code> | <code>--env</code> <em>(string)</em></p>
+<ul>
+<li>The Endevor environment where your project resides.</li>
+</ul>
+</li>
+<li>
+<p><code>--system</code> | <code>--sys</code> <em>(string)</em></p>
+<ul>
+<li>The Endevor system where your project resides.</li>
+</ul>
+</li>
+<li>
+<p><code>--subsystem</code> | <code>--sub</code> <em>(string)</em></p>
+<ul>
+<li>The Endevor subsystem where your project resides.</li>
+</ul>
+</li>
+<li>
+<p><code>--type</code> | <code>--typ</code> <em>(string)</em></p>
+<ul>
+<li>Name of the Endevor element's type.</li>
+</ul>
+</li>
+<li>
+<p><code>--stage-number</code> | <code>--sn</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>The Endevor stage number where your project resides.</p>
+<p>Allowed values: \*, \%, 1, 2</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--ccid</code> | <code>--cci</code> <em>(string)</em></p>
+<ul>
+<li>The CCID you want to use when performing an Element action.</li>
+</ul>
+</li>
+<li>
+<p><code>--comment</code> | <code>--com</code> <em>(string)</em></p>
+<ul>
+<li>The comment you want to have when performing an Element action</li>
+</ul>
+</li>
+<li>
+<p><code>--maxrc</code> <em>(number)</em></p>
+<ul>
+<li>
+<p>The maximum value of the return code of a successful action. When the return code is greater than the maxrc value, the command fails</p>
+<p>Default value: 8</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--instance</code> | <code>-i</code> <em>(string)</em></p>
+<ul>
+<li>Specifies Endevor Web Services dataSource name.</li>
+</ul>
+</li>
+</ul>
+<h4>options</h4>
+<ul>
+<li>
+<p><code>--element-version</code> | <code>--ev</code> <em>(number)</em></p>
+<ul>
+<li>Indicates the version number of the element (use along with the level option).</li>
+</ul>
+</li>
+<li>
+<p><code>--level</code> | <code>--lev</code> <em>(number)</em></p>
+<ul>
+<li>Indicates the level number of the element (use along with the version option).</li>
+</ul>
+</li>
+<li>
+<p><code>--override-signout</code> | <code>--os</code> <em>(boolean)</em></p>
+<ul>
+<li>Specify if you want to override the Signout of an Endevor element while performing this action.</li>
+</ul>
+</li>
+<li>
+<p><code>--signout</code> <em>(boolean)</em></p>
+<ul>
+<li>Specify if you want to perform the action with signing the element out.</li>
+</ul>
+</li>
+<li>
+<p><code>--replace-member</code> | <code>--replace</code> | <code>--rm</code> <em>(boolean)</em></p>
+<ul>
+<li>Specify if you want to replace the member currently in the library with the new element contents</li>
+</ul>
+</li>
+<li>
+<p><code>--expand-includes</code> | <code>--expand</code> | <code>--ei</code> <em>(boolean)</em></p>
+<ul>
+<li>Indicates that INCLUDE statements should be expanded in the course of the action.</li>
+</ul>
+</li>
+<li>
+<p><code>--search</code> | <code>--sea</code> <em>(boolean)</em></p>
+<ul>
+<li>Enables the search through the Endevor map.</li>
+</ul>
+</li>
+<li>
+<p><code>--get-fingerprint</code> | <code>--gfg</code> <em>(boolean)</em></p>
+<ul>
+<li>
+<p>Return fingerprint of a retrieved, added or updated element as the first line of the response.</p>
+<p>Default value: false</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--where-ccid-all</code> | <code>--wca</code> <em>(string)</em></p>
+<ul>
+<li>Instructs Endevor to search both the Master Control File and the SOURCE DELTA levels for a specified CCIDs.<br>
+Accepts up to 8 CCIDs separated by &quot;, &quot;. Enclose CCIDs that contain special characters in quotes.</li>
+</ul>
+</li>
+<li>
+<p><code>--where-ccid-current</code> | <code>--wcc</code> <em>(string)</em></p>
+<ul>
+<li>Instructs Endevor to search through the CCID fields in the Master Control File to find a specified CCIDs.<br>
+Accept up to 8 CCIDs separated by &quot;, &quot;. Enclose CCIDs that contain special characters in quotes.</li>
+</ul>
+</li>
+<li>
+<p><code>--where-ccid-retrieve</code> | <code>--wcr</code> <em>(string)</em></p>
+<ul>
+<li>Instructs Endevor to use the CCID in the Master Control File RETRIEVE CCID field.<br>
+Accepts up to 8 CCIDs separated by &quot;, &quot;. Enclose CCIDs that contain special characters in quotes.</li>
+</ul>
+</li>
+<li>
+<p><code>--where-proc-group</code> | <code>--wpg</code> <em>(string)</em></p>
+<ul>
+<li>Lets you select Elements according to a specified Processor group. You can use a wildcard when specifying the Processor group name.<br>
+Accepts up to 8 Processor group names separated by &quot;, &quot;.</li>
+</ul>
+</li>
+</ul>
+<h4>output location options</h4>
+<ul>
+<li>
+<p><code>--to-path</code> | <code>--tp</code> <em>(string)</em></p>
+<ul>
+<li>Provide a USS path to a destination location.</li>
+</ul>
+</li>
+<li>
+<p><code>--to-uss-file</code> | <code>--tuf</code> <em>(string)</em></p>
+<ul>
+<li>Provide a USS file as a destination file.</li>
+</ul>
+</li>
+<li>
+<p><code>--to-dataset</code> | <code>--td</code> <em>(string)</em></p>
+<ul>
+<li>Provide a destination data set name.</li>
+</ul>
+</li>
+<li>
+<p><code>--to-member</code> | <code>--tm</code> <em>(string)</em></p>
+<ul>
+<li>Provide a destination member name inside the data set.</li>
+</ul>
+</li>
+</ul>
+<h4>output customization options</h4>
+<ul>
+<li>
+<p><code>--to-file</code> | <code>--tf</code> <em>(string)</em></p>
+<ul>
+<li>The file name in which the data from the command output is stored</li>
+</ul>
+</li>
+<li>
+<p><code>--suppress-messages</code> | <code>--sm</code> <em>(boolean)</em></p>
+<ul>
+<li>Suppress all [INFO]/[WARN] messages from terminal output.</li>
+</ul>
+</li>
+<li>
+<p><code>--report-file</code> | <code>--file-name</code> <em>(string)</em></p>
+<ul>
+<li>File name for saving reports from Endevor SCM locally.</li>
+</ul>
+</li>
+<li>
+<p><code>--report-dir</code> <em>(string)</em></p>
+<ul>
+<li>Directory for saving reports from Endevor SCM locally, if --report-file wasn't specified. Defaults to current directory.</li>
+</ul>
+</li>
+<li>
+<p><code>--write-report</code> <em>(boolean)</em></p>
+<ul>
+<li>Write the endevor reports to a file. By default, when return code is 0, no report will be written, unless this option is specified. When return code is bigger than 0, reports will be written to a file, unless this option is specifed to be false</li>
+</ul>
+</li>
+</ul>
+<h4>bulk action options</h4>
+<ul>
+<li>
+<p><code>--to-dir</code> | <code>--tdir</code> <em>(string)</em></p>
+<ul>
+<li>Directory name in which the command output will be stored.</li>
+</ul>
+</li>
+<li>
+<p><code>--flat</code> <em>(boolean)</em></p>
+<ul>
+<li>Store the output of the bulk action within one folder. When you use this option, ensure that the results do not contain duplicate names. (Duplicate names occur when two or more Elements have the same name and type.)</li>
+</ul>
+</li>
+<li>
+<p><code>--with-dependencies</code> | <code>--wd</code> <em>(boolean)</em></p>
+<ul>
+<li>Retrieve Elements, including their Endevor-managed input components.</li>
+</ul>
+</li>
+<li>
+<p><code>--where-ccid-generate</code> | <code>--wcg</code> <em>(string)</em></p>
+<ul>
+<li>Instructs Endevor to search using the generate CCID associated with an Element.<br>
+Accepts up to 8 CCIDs separated by &quot;, &quot;. Enclose CCIDs that contain special characters in quotes.</li>
+</ul>
+</li>
+<li>
+<p><code>--where-ccid-lastact</code> | <code>--wcla</code> <em>(string)</em></p>
+<ul>
+<li>Instructs Endevor to search using the last action CCID associated with an Element.<br>
+Accepts up to 8 CCIDs separated by &quot;, &quot;. Enclose CCIDs that contain special characters in quotes.</li>
+</ul>
+</li>
+<li>
+<p><code>--where-ccid-lastlvl</code> | <code>--wcll</code> <em>(string)</em></p>
+<ul>
+<li>Instructs Endevor to search using the last level CCID associated with an Element.<br>
+Accepts up to 8 CCIDs separated by &quot;, &quot;. Enclose CCIDs that contain special characters in quotes.</li>
+</ul>
+</li>
+<li>
+<p><code>--where-ccid-change</code> | <code>--wcchg</code> <em>(string)</em></p>
+<ul>
+<li>This option is only valid when the data option is ele or comp. Instructs Endevor to filter the results of the list data summary function that is based on the specified ccids.<br>
+Accepts up to 8 CCIDs separated by &quot;, &quot;. Enclose CCIDs that contain special characters in quotes.</li>
+</ul>
+</li>
+</ul>
+<h4>endevor session definition options</h4>
+<ul>
+<li>
+<p><code>--host</code> | <code>--hostname</code> <em>(string)</em></p>
+<ul>
+<li>Specifies the base host name.</li>
+</ul>
+</li>
+<li>
+<p><code>--port</code> | <code>-p</code> <em>(string)</em></p>
+<ul>
+<li>Specifies the port number.</li>
+</ul>
+</li>
+<li>
+<p><code>--protocol</code> | <code>--prot</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>Specifies the protocol used for connecting to Endevor Rest API</p>
+<p>Default value: https<br>
+Allowed values: http, https</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--user</code> | <code>--username</code> <em>(string)</em></p>
+<ul>
+<li>Specifies the user name.</li>
+</ul>
+</li>
+<li>
+<p><code>--password</code> | <code>--pass</code> <em>(string)</em></p>
+<ul>
+<li>Specifies the user's password.</li>
+</ul>
+</li>
+<li>
+<p><code>--reject-unauthorized</code> | <code>--ru</code> <em>(boolean)</em></p>
+<ul>
+<li>Specify this option to have the server certificate verified against the list of supplied CAs</li>
+</ul>
+</li>
+<li>
+<p><code>--base-path</code> | <code>--bp</code> <em>(string)</em></p>
+<ul>
+<li>Specifies the base path used for connecting to Endevor Rest API</li>
+</ul>
+</li>
+</ul>
+<h4>Profile Options</h4>
+<ul>
+<li>
+<p><code>--endevor-profile</code> | <code>--endevor-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (endevor) profile to load for this command execution.</li>
+</ul>
+</li>
+<li>
+<p><code>--endevor-location-profile</code> | <code>--endevor-location-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (endevor-location) profile to load for this command execution.</li>
+</ul>
+</li>
+<li>
+<p><code>--base-profile</code> | <code>--base-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (base) profile to load for this command execution.</li>
+</ul>
+</li>
+</ul>
+<h4>Base Connection Options</h4>
+<ul>
+<li>
+<p><code>--token-type</code> | <code>--tt</code> <em>(string)</em></p>
+<ul>
+<li>The type of token to get and use for the API. Omit this option to use the default token type, which is provided by 'zowe auth login'.</li>
+</ul>
+</li>
+<li>
+<p><code>--token-value</code> | <code>--tv</code> <em>(string)</em></p>
+<ul>
+<li>The value of the token to pass to the API.</li>
+</ul>
+</li>
+<li>
+<p><code>--cert-file</code> <em>(local file path)</em></p>
+<ul>
+<li>The file path to a certificate file to use for authentication</li>
+</ul>
+</li>
+<li>
+<p><code>--cert-key-file</code> <em>(local file path)</em></p>
+<ul>
+<li>The file path to a certificate key file to use for authentication</li>
+</ul>
+</li>
+</ul>
+<h4>Response Format Options</h4>
+<ul>
+<li>
+<p><code>--response-format-filter</code> | <code>--rff</code> <em>(array)</em></p>
+<ul>
+<li>Filter (include) fields in the response. Accepts an array of field/property names to include in the output response. You can filter JSON objects properties OR table columns/fields. In addition, you can use this option in conjunction with '--response-format-type' to reduce the output of a command to a single field/property or a list of a single field/property.</li>
+</ul>
+</li>
+<li>
+<p><code>--response-format-type</code> | <code>--rft</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>The command response output format type. Must be one of the following:</p>
+<p>table: Formats output data as a table. Use this option when the output data is an array of homogeneous JSON objects. Each property of the object will become a column in the table.</p>
+<p>list: Formats output data as a list of strings. Can be used on any data type (JSON objects/arrays) are stringified and a new line is added after each entry in an array.</p>
+<p>object: Formats output data as a list of prettified objects (or single object). Can be used in place of &quot;table&quot; to change from tabular output to a list of prettified objects.</p>
+<p>string: Formats output data as a string. JSON objects/arrays are stringified.</p>
+<p>Allowed values: table, list, object, string</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--response-format-header</code> | <code>--rfh</code> <em>(boolean)</em></p>
+<ul>
+<li>If &quot;--response-format-type table&quot; is specified, include the column headers in the output.</li>
+</ul>
+</li>
+</ul>
+<h4>Examples</h4>
+<ul>
+<li>
+<p>Retrieve element from specified inventory location to local file with endevor profile set up:</p>
+<ul>
+<li><code>zowe endevor retrieve element elementName --env ENVNAME --sn 1 --sys SYSNAME --sub SUBNAME --typ TYPENAME --tf localfile.txt -i ENDEVOR</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe endevor retrieve element elementName --env ENVNAME --sn 1 --sys SYSNAME --sub SUBNAME --typ TYPENAME --tf localfile.txt -i ENDEVOR">Copy</button></li>
+</ul>
+</li>
+<li>
+<p>Bulk Retrieve elements with wildcarded element name and type, to local directory with endevor profile set up:</p>
+<ul>
+<li><code>zowe endevor retrieve element &quot;*&quot; --env ENVNAME --sn 1 --sys SYSNAME --sub SUBNAME --typ &quot;*&quot; --to-dir /user/localdir -i ENDEVOR</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe endevor retrieve element &quot;*&quot; --env ENVNAME --sn 1 --sys SYSNAME --sub SUBNAME --typ &quot;*&quot; --to-dir /user/localdir -i ENDEVOR">Copy</button></li>
+</ul>
+</li>
+</ul>
+</article>
+<script src="../js/bundle-docs.js"></script>
+<script src="../js/docs.js"></script>
