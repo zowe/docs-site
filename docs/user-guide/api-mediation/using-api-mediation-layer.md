@@ -1,6 +1,6 @@
 # Using API Mediation Layer
 
-There are numerous ways you can use the API Mediation Layer. Review this topic and its child pages to discover how to use the various ways to use the API Mediation Layer.  
+There are numerous ways you can use the API Mediation Layer. Review this topic and its child pages to learn more about the various ways to use the API Mediation Layer.  
 For information about the API versioning, see [API Catalog and Versioning](../extend/extend-apiml/api-mediation-versioning.md).
 
 **Tip:** 
