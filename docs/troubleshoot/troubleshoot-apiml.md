@@ -18,7 +18,7 @@ As an API Mediation Layer user, you may encounter problems with how the API ML f
 
 For testing purposes, it is not necessary to set up certificates when configuring the API Mediation Layer. You can configure Zowe without certificate setup and run Zowe with `verify_certificates: DISABLED`.
 
-**Important:** For production environments, certificate are required. Ensure that certificates for each of the following services are issued by the Certificate Authority (CA) and that all keyrings contain the public part of the certificate for the relevant CA:
+**Important:** For production environments, certificates are required. Ensure that certificates for each of the following services are issued by the Certificate Authority (CA) and that all keyrings contain the public part of the certificate for the relevant CA:
 * z/OSMF
 * Zowe
 * The service that is onboarded to Zowe
@@ -43,7 +43,7 @@ its performance and create large log files that consume a large volume of disk s
    ```
     components.gateway.debug: true
    ```
-   By default debug mode is disabled, so the `components.*.debug` is set to `false`.
+   By default, debug mode is disabled, and the `components.*.debug` is set to `false`.
    
 3. Restart Zowe&trade;.
 
@@ -59,7 +59,7 @@ You can change the log level of a particular code component of the API ML intern
 
 1. Enable API ML Debug Mode as described in Enable API ML Debug Mode.
 This activates the application/loggers endpoints in each API ML internal service (Gateway, Discovery Service, and Catalog).
-2. List the available loggers of a service by issuing the GET request for the given service URL:
+2. List the available loggers of a service by issuing the **GET** request for the given service URL:
 
     ```
     GET scheme://hostname:port/application/loggers

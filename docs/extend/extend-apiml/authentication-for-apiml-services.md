@@ -177,7 +177,8 @@ The value of this parameter specifies a service authentication scheme. Any valid
     * **zoweJwt**  
       * When a Zowe JWT is provided, this scheme value specifies that the service accepts the Zowe JWT. No additional processing is done by the API Gateway.
       * When a client certificate is provided, the certificate is transformed into a Zowe JWT, and the southbound service performs the authentication.
-
+      * If the southbound service needs to consume the JWT token from a custom HTTP request header to participate in the Zowe SSO, it is possible to provide a header in the Gateway configuration.
+      The HTTP header is then added to each request towards the southbound service and contains the Zowe JWT to be consumed by the service.
     * **httpBasicPassTicket**  
     This value specifies that a service accepts PassTickets in the Authorization header of the HTTP requests using the basic authentication scheme.
       It is necessary to provide a service APPLID in the `authentication.applid` parameter to prevent passticket generation errors.
