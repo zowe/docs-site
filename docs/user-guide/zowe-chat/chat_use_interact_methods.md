@@ -12,7 +12,8 @@ You can also **@zowechat** and issue commands to interact with Zowe Chat. In Tec
 
 ### Zowe Chat Command structure
 
-`<scope><resource><action><object>[Positional Arguments + Options]`
+&lt;scope&gt;&lt;resource&gt;&lt;action&gt;&lt;object&gt;[adjectives]
+**Note** adjectives = Positional Arguments + Options
 
 For detailed Zowe Chat commands, see [Zowe Chat command reference]().
 
