@@ -22,7 +22,7 @@ Follow the procedures in the following sections to customize Gateway parameters 
   * [CORS handling](#cors-handling)
   * [Encoded slashes](#encoded-slashes)
   * [Add a custom HTTP Auth header to store Zowe JWT token](#add-a-custom-http-auth-header-to-store-zowe-jwt-token)
-  * [Add a custom HTTP Auth header to store PassTicket](#add-a-custom-http-auth-header-to-store-passticket)
+  * [Add custom HTTP Auth headers to store user ID and PassTicket](#add-custom-http-auth-headers-to-store-user-id-and-passticket)
   * [Connection limits](#connection-limits)
   * [Routed instance header](#routed-instance-header)
   * [Distributed load balancer cache](#distributed-load-balancer-cache)
@@ -277,7 +277,7 @@ Use the following procedure to add the custom HTTP header.
 
 Requests through the Gateway towards the southbound service now contain the custom HTTP header with the JWT token.
 
-## Add a custom HTTP Auth header to store PassTicket
+## Add custom HTTP Auth headers to store user ID and PassTicket
 
 If a southbound service needs to consume the passticket from a custom header to participate in the Zowe SSO.
 The southbound service must use the `httpBasicPassTicket` scheme in order to leverage this functionality. Once the HTTP header name is defined, each request to the southbound service contains the passticket in the custom header.
