@@ -1,4 +1,4 @@
-# Toubleshooting Zowe Chat
+# Troubleshooting Zowe Chat
 
 When necessary, you can reach out for troubleshooting support via GitHub or Slack. 
 

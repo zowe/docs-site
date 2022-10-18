@@ -568,6 +568,7 @@ module.exports = {
         "troubleshoot/launcher/launcher-error-codes"
       ],
     },
+    "troubleshoot/zowe-chat-troubleshoot/troubleshooting",
   ],
   contributing: [
     "contribute/roadmap-contribute",
