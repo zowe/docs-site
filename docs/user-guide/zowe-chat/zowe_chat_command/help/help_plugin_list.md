@@ -1,4 +1,4 @@
-# help plugin list &lt;object&gt;
+# `help plugin list <object>`
 
 ## Usage
 
