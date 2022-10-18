@@ -15,10 +15,10 @@ You can also **@zowechat** and issue commands to interact with Zowe Chat. In Tec
 &lt;scope&gt;&lt;resource&gt;&lt;action&gt;&lt;object&gt;[adjectives]
 **Note** adjectives = Positional Arguments + Options
 
-For detailed Zowe Chat commands, see [Zowe Chat command reference]().
+For detailed Zowe Chat commands, see [Zowe Chat command reference](zowe_chat_command_reference.md).
 
 ## Zowe CLI commands
 
 You can also issue Zowe CLI commands to perform operations. In Technical Preview, Zowe Chat supports the commands for help and z/OS resource management including z/OS job, data set, USS file, error code, and console command.
 
-For detailed CLI commands, see [Zowe CLI command reference]().
+For detailed CLI commands, see [Zowe CLI command reference].
