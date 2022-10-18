@@ -1,4 +1,4 @@
-# zos command issue &lt;object&gt;
+# `zos command issue <object>`
 
 ## Usage
 

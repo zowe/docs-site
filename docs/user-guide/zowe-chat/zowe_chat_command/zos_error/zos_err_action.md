@@ -1,4 +1,4 @@
-# zos code &lt;action&gt;
+# `zos code <action>`
 
 ## Usage
 

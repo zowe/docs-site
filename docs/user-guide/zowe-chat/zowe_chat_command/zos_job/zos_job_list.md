@@ -1,8 +1,8 @@
-# zos job list &lt;object&gt;
+# `zos job list <object>`
 
 ## Usage
 
-zos job &lt;action&gt; &lt;object&gt;, where `object` is one of the following:
+zos job list &lt;object&gt;, where `object` is one of the following:
 
 ## Objects
 

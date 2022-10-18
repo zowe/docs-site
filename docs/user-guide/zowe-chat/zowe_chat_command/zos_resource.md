@@ -1,10 +1,10 @@
-# zos &lt;resources&gt;
+# `zos <resources>`
 
-Manage z/OS resources.
+Manage z/OS resources. 
 
 ## Usage
 
-zos &lt;resource&gt;, where `resource` is one of the following:
+@zowechat zos &lt;resource&gt;, where `resource` is one of the following:
 
 ## Resources
 

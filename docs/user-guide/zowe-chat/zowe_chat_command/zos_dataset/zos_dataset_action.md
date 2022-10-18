@@ -1,4 +1,4 @@
-# zos dataset &lt;action&gt;
+# `zos dataset <action>`
 
 ## Usage
 

@@ -1,4 +1,4 @@
-# help plugin &lt;action&gt;
+# `help plugin <action>`
 
 ## Usage
 

@@ -1,4 +1,4 @@
-# zos command &lt;action&gt;
+# `zos command <action>`
 
 ## Usage
 

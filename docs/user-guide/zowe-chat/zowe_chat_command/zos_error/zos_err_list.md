@@ -1,4 +1,4 @@
-# zos code list &lt;object&gt;
+# `zos code list <object>`
 
 ## Usage
 

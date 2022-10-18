@@ -1,4 +1,4 @@
-# zos file &lt;action&gt;
+# `zos file <action>`
 
 ## Usage
 

@@ -1,4 +1,4 @@
-# zos help list &lt;object&gt;
+# `zos help list <object>`
 
 ## Usage
 

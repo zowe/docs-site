@@ -1,4 +1,4 @@
-# zos file list &lt;object&gt;
+# `zos file list <object>`
 
 ## Usage
 

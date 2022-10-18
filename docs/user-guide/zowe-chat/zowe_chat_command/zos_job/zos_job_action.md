@@ -1,4 +1,4 @@
-# zos job &lt;action&gt;
+# `zos job <action>`
 
 ## Usage
 

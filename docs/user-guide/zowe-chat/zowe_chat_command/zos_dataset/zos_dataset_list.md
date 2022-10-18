@@ -1,4 +1,4 @@
-# zos dataset list &lt;object&gt;
+# `zos dataset list <object>`
 
 
 

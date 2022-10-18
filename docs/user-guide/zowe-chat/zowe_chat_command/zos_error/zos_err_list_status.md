@@ -1,4 +1,4 @@
-# zos code list status 
+# zos code list status [adjectives]
 
 ## Usage
 
