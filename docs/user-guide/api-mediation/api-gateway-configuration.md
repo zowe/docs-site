@@ -266,6 +266,9 @@ Requests with encoded slashes are now rejected by the API Mediation Layer.
 If a southbound service needs to consume the Zowe JWT token from a HTTP request header to participate in the Zowe SSO, you can define a custom HTTP header name as part of the Gateway configuration.
 The southbound service must use the `zoweJwt` scheme in order to leverage this functionality. Once the HTTP header name is defined, each request to the southbound service contains the JWT token in the custom header.
 
+Another use case is when the southbound service needs to consume the passticket from a custom header to participate in the Zowe SSO.
+The southbound service must use the `httpBasicPassTicket` scheme in order to leverage this functionality. Once the HTTP header name is defined, each request to the southbound service contains the passticket in the custom header.
+
 Use the following procedure to add the custom HTTP header.
 
 **Follow these steps:**
@@ -274,7 +277,7 @@ Use the following procedure to add the custom HTTP header.
 2. Find or add the property `components.gateway.apiml.security.auth.customAuthHeader` and set the value which represents the header's name.
 3. Restart `Zowe&trade`.
 
-Requests through the Gateway towards the southbound service now contain the custom HTTP header with the JWT token.
+Requests through the Gateway towards the southbound service now contain the custom HTTP header with either the JWT token or the passticket, based on the requirement.
 
 ## Connection limits
 

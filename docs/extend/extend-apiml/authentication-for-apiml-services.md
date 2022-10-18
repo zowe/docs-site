@@ -185,7 +185,9 @@ The value of this parameter specifies a service authentication scheme. Any valid
 
         * When a JWT is provided, the service validates the Zowe JWT to use for passticket generation.
         * When a client certificate is provided, the service validates the certificate by mapping it to a mainframe user to use for passticket generation.
-
+        * If the southbound service needs to consume the passticket from a custom HTTP request header (i.e. to participate in the Zowe SSO), it is possible to provide a header in the Gateway configuration.
+      The HTTP header is then added to each request towards the southbound service. The header contains the passticket to be consumed by the service.
+      
       For more information, see [Enabling PassTicket creation for API Services that Accept PassTickets](api-mediation-passtickets.md)
 
     * **zosmf**  
