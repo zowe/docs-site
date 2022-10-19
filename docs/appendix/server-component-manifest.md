@@ -96,7 +96,7 @@ The manifest file contains the following properties:
   
       Defines the path to the static definition file. This file is supposed to be a template.
 
-    - **`basePackage`**
+  * **`basePackage`**
 
         Defines the base package name of the extension. It is used to notify the extended service of the location for component scan.
 
