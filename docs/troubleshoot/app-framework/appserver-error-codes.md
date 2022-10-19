@@ -1026,201 +1026,133 @@ The following error message codes may appear on the app-server log. Use the foll
 
   **Action:**
 
-  No action required. 
-
-
-
-### ZWED0289I
-
-  JarMgr with id=%s invoked to startup with config=%s
-
-  **Reason:**
-
-  TODO
-
-  **Action:**
-
-  TODO
+  No action required.
 
 
 
 ### ZWED0290I
 
-  Plugin (%s) loaded. Version: %s. Successful: %s% (%s/%s) Attempted: %s% (%s/%s)
+  Plugin *event.data.identifier* loaded. Version: *event.data.pluginVersion*. Successful: _(pluginsLoaded/event.count)*100)_ (*pluginsLoaded*/*event.count*) Attempted: _(pluginCount/event.count)*100)_ (*pluginsCount*/*event.count*)
 
   **Reason:**
 
-  TODO
+  Plugin event data identifier loaded successfully. Version is event data pluginVersion.
+  Successfully plugin loaded and event count, and attempted pluginCount and event count.
 
   **Action:**
 
-  TODO
-
-
-
-### ZWED0291I
-
-  Server is ready at %s Plugins successfully loaded: %s% (%s/%s)
-
-  **Reason:**
-
-  TODO
-
-  **Action:**
-
-  TODO
+  No action Required.
 
 
 
 ### ZWED0292I
 
-  Plugin (%s) loaded. Version: %s.
+  Plugin *identifier* loaded. Version: *plugin* version.
 
   **Reason:**
 
-  TODO
+  Plugin identifier loaded successfully and the plugin version for the same is *plugin version*.
 
   **Action:**
 
-  TODO
-
-
-
-### ZWED0293I
-
-  Handling scan plugin request from worker=%d
-
-  **Reason:**
-
-  TODO
-
-  **Action:**
-
-  TODO
+  No action Required.
 
 
 
 ### ZWED0294I
 
-  Successfully loaded %d recognizers for '%s' into config
+  Successfully loaded *recognizers.length* recognizers for *appId* into config
 
   **Reason:**
 
-  TODO
+  Successfully loaded recognizers length for plugin recognizers into config at path *workspace/app-server/ZLUX/pluginStorage/org.zowe.zlux.ng2desktop/recognizers*.
 
   **Action:**
 
-  TODO
+  No action Required.
 
 
 
 ### ZWED0295I
 
-  Successfully loaded %d actions for '%s' into config
+  Successfully loaded *actions.length* actions for *appId* into config
 
   **Reason:**
 
-  TODO
+  Successfully loaded actions length for appID into config at path *workspace/app-server/ZLUX/pluginStorage/org.zowe.zlux.ng2desktop/actions/* .
 
   **Action:**
 
-  TODO
+  No action required.
 
 
 
-### ZWED0296I": "(%s) is a supported platform for %s to install (%s).
+### ZWED0297I
+
+  *environmentComponent.cpu* is a supported architecture for *name* to install *plugin.identifier*.
 
   **Reason:**
 
-  TODO
+  *environmentComponent.cpu* is a supported architecture for component to install *plugin.identifier*.
 
   **Action:**
 
-  TODO
+  No action Required.
 
 
 
-### ZWED0297I": "(%s) is a supported architecture for %s to install (%s).
+### ZWED0299I
+
+   Loading remote iframe app *plugin.identifier* located at *remoteUrl*
 
   **Reason:**
 
-  TODO
+  Loading remote iframe app plugin identifier which is located at remoteUrl.
 
   **Action:**
 
-  TODO
+  No action Required.
 
 
 
-### ZWED0298I": "(%s) is a supported endpoint for %s to install (%s).
+### ZWED0300I
+
+   APIML Storage configured
 
   **Reason:**
 
-  TODO
+  caching service/APML storage is configured
 
   **Action:**
 
-  TODO
+  No action Required.
 
 
 
-### ZWED0299I": "Loading remote iframe app %s located at %s
+### ZWED0301I
+
+  Found *pre-existing recognizers* in config for *appID*
 
   **Reason:**
 
-  TODO
+  Get pre-existing recognizers in config, if any
 
   **Action:**
 
-  TODO
+  No action Required.
 
 
 
-### ZWED0300I": "APIML Storage configured
+### ZWED0302I
+  HA mode is enabled/disabled.
 
   **Reason:**
 
-  TODO
+  High Availability mode is enabled/disabled.
 
   **Action:**
 
-  TODO
-
-
-
-### ZWED0301I": "Found %s in config for '%s'
-
-  **Reason:**
-
-  TODO
-
-  **Action:**
-
-  TODO
-
-
-
-### ZWED0302I": "HA mode is %s
-
-  **Reason:**
-
-  TODO
-
-  **Action:**
-
-  TODO
-
-
-
-### ZWED0003W":"User=%s (%s): Session %s failed. Plugin response: %s
-
-  **Reason:**
-
-  TODO
-
-  **Action:**
-
-  TODO
+  No action Required.
 
 
 
