@@ -1103,7 +1103,7 @@ The following error message codes may appear on the app-server log. Use the foll
 
 ### ZWED0299I
 
-   Loading remote iframe app *plugin.identifier* located at *remoteUrl*
+  Loading remote iframe app *plugin.identifier* located at *remoteUrl*
 
   **Reason:**
 
@@ -1117,7 +1117,7 @@ The following error message codes may appear on the app-server log. Use the foll
 
 ### ZWED0300I
 
-   APIML Storage configured
+  APIML Storage configured
 
   **Reason:**
 
@@ -1144,6 +1144,7 @@ The following error message codes may appear on the app-server log. Use the foll
 
 
 ### ZWED0302I
+
   HA mode is enabled/disabled.
 
   **Reason:**
