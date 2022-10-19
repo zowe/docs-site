@@ -21,4 +21,6 @@ For detailed Zowe Chat commands, see [Zowe Chat command reference](zowe_chat_com
 
 You can also issue Zowe CLI commands to perform operations. In Technical Preview, Zowe Chat supports the commands for help and z/OS resource management including z/OS job, data set, USS file, error code, and console command.
 
+> **Note**: Zowe Chat currently supports the non-interactive Zowe CLI commands. Commands like uploading or downloading are not supported in Technical Preview.
+
 For detailed CLI commands, see [Zowe CLI command reference].
