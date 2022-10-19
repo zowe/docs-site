@@ -9,12 +9,14 @@
 * Copyright Contributors to the Zowe Project.
 *
 */
-var __spreadArrays = (this && this.__spreadArrays) || function () {
-    for (var s = 0, i = 0, il = arguments.length; i < il; i++) s += arguments[i].length;
-    for (var r = Array(s), k = 0, i = 0; i < il; i++)
-        for (var a = arguments[i], j = 0, jl = a.length; j < jl; j++, k++)
-            r[k] = a[j];
-    return r;
+var __spreadArray = (this && this.__spreadArray) || function (to, from, pack) {
+    if (pack || arguments.length === 2) for (var i = 0, l = from.length, ar; i < l; i++) {
+        if (ar || !(i in from)) {
+            if (!ar) ar = Array.prototype.slice.call(from, 0, i);
+            ar[i] = from[i];
+        }
+    }
+    return to.concat(ar || Array.prototype.slice.call(from));
 };
 // Define global variables
 var urlParams = new URLSearchParams(window.location.search);
@@ -65,7 +67,7 @@ function permuteSearchStr(searchStr) {
             var newSearchWordsList_1 = [];
             searchWordsList.forEach(function (oldSearchWords) {
                 aliasList[word].forEach(function (alias) {
-                    newSearchWordsList_1.push(__spreadArrays(oldSearchWords.slice(0, i), [alias], oldSearchWords.slice(i + 1)));
+                    newSearchWordsList_1.push(__spreadArray(__spreadArray(__spreadArray([], oldSearchWords.slice(0, i), true), [alias], false), oldSearchWords.slice(i + 1), true));
                 });
             });
             searchWordsList.push.apply(searchWordsList, newSearchWordsList_1);
@@ -96,14 +98,14 @@ function updateCurrentNode(newNodeId, goto, expand, force) {
     if (goto) {
         // Load docs page for node in iframe
         if (currentView === 0) {
-            $("#docs-page").attr("src", "./docs/" + currentNodeId);
+            $("#docs-page").attr("src", "./docs/".concat(currentNodeId));
         }
         else {
-            $("#docs-page").attr("src", "./docs/all.html#" + nodeIdWithoutExt);
+            $("#docs-page").attr("src", "./docs/all.html#".concat(nodeIdWithoutExt));
         }
     }
     // Update page title
-    document.title = nodeIdWithoutExt.replace(/_/g, " ") + " | " + headerStr + " Docs";
+    document.title = "".concat(nodeIdWithoutExt.replace(/_/g, " "), " | ").concat(headerStr, " Docs");
     // Select node in command tree
     $("#cmd-tree").jstree(true).deselect_all();
     $("#cmd-tree").jstree(true).select_node(currentNodeId);
@@ -190,7 +192,7 @@ function onTreeLoaded() {
     var tempNodeId = currentNodeId;
     if (!tempNodeId) {
         var cmdToLoad = urlParams.get("p");
-        tempNodeId = (cmdToLoad != null) ? cmdToLoad + ".html" : treeNodes[0].id;
+        tempNodeId = (cmdToLoad != null) ? "".concat(cmdToLoad, ".html") : treeNodes[0].id;
     }
     updateCurrentNode(tempNodeId, true, true, true);
     if ($("#tree-search").val()) {

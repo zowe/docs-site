@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>ca7 create-job-definition schedule</title>
+<link rel="stylesheet" href="../css/bundle-docs.css">
+<link rel="stylesheet" href="../css/docs.css">
+<article class="markdown-body">
+<h2><a href="zowe.html">zowe</a> › <a href="zowe_ca7.html">ca7</a> › <a href="zowe_ca7_create-job-definition.html">create-job-definition</a> › <a href="zowe_ca7_create-job-definition_schedule.html">schedule</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
+<p>Create schedule parameters</p>
+<h4>Usage</h4>
+<p>zowe ca7 create-job-definition schedule [options]</p>
+<h4>Required Options</h4>
+<ul>
+<li>
+<p><code>--job</code> <em>(string)</em></p>
+<ul>
+<li>The name of the job</li>
+</ul>
+</li>
+<li>
+<p><code>--schid</code> <em>(string)</em></p>
+<ul>
+<li>Specifies the numeric schedule ID on which the user wants to perform the specified action.<br>
+Limits: 1 to 3 numeric characters from 1 through 999</li>
+</ul>
+</li>
+</ul>
+<h4>Options</h4>
+<ul>
+<li>
+<p><code>--scal</code> <em>(string)</em></p>
+<ul>
+<li>Specifies the override of the default SCAL for this SCHID. Specify scal if you want to override the default scal.<br>
+Limits: 2 alphanumeric characters</li>
+</ul>
+</li>
+<li>
+<p><code>--default-scal</code> | <code>--dscal</code> <em>(string)</em></p>
+<ul>
+<li>Specifies the default SCAL for this job. If this is not specified, an LJOB will be issued to fetch the SCAL<br>
+Limits: 2 alphanumeric characters</li>
+</ul>
+</li>
+<li>
+<p><code>--due-out-time</code> | <code>--dot</code> <em>(string)</em></p>
+<ul>
+<li>Specifies the due-out time of day for this schedule ID.<br>
+Limits: 4 numeric characters that are specified as hhmm<br>
+where hh can be 00 through 24 and mm can be 00 through 59. Must be greater than 0000.</li>
+</ul>
+</li>
+<li>
+<p><code>--lead-time</code> | <code>--lt</code> <em>(string)</em></p>
+<ul>
+<li>Specifies the due-out time of day for this schedule ID.<br>
+Limits: 4 numeric characters that are specified as hhmm<br>
+where hh can be 00 through 24 and mm can be 00 through 59. Must be greater than 0000.</li>
+</ul>
+</li>
+<li>
+<p><code>--submit-time</code> | <code>--st</code> <em>(string)</em></p>
+<ul>
+<li>Specifies the submit time of day for this schedule ID.<br>
+If specified, the job is not submitted before this time.<br>
+If the submit time is before deadline start time,<br>
+the submit time requirement is automatically satisfied when the job enters the queue.<br>
+A submit time of zeros is the same as not specifying it, and no submit time is set up.<br>
+Note:If the submit time is after the due-out time, the submit day value is set to the previous day.<br>
+Limits: 4 numeric characters that are specified as hhmm<br>
+where hh can be 00 through 24 and mm can be 00 through 59. Must be greater than 0000.</li>
+</ul>
+</li>
+<li>
+<p><code>--daily</code> <em>(string)</em></p>
+<ul>
+<li>Specifies that the user wants to define a daily schedule.<br>
+Daily means every available processing day as defined by the Base Calendar.<br>
+If DAILY is used, the ROLL has no effect.<br>
+Limits: One of Y or N</li>
+</ul>
+</li>
+<li>
+<p><code>--roll</code> <em>(string)</em></p>
+<ul>
+<li>Specifies the action to take when a schedule day falls on a base calendar non available processing day.<br>
+This value is not used if the DAILY option is used<br>
+If DAILY is used, the ROLL has no effect.<br>
+If used, the value must be one of the following values:<br>
+B: Roll the schedule back to the previous available processing day in the Base Calendar.<br>
+F: Roll forward the schedule to the next available processing day.<br>
+N: Do not roll. Schedule day must stand.<br>
+D: Do not roll and do not schedule.<br>
+Default:D</li>
+</ul>
+</li>
+<li>
+<p><code>--index</code> <em>(string)</em></p>
+<ul>
+<li>Specifies an adjustment to schedule days.<br>
+After you exercise the ROLL option, the schedule is adjusted,<br>
+forward for plus or backward for minus, by the number of working days entered.<br>
+Limits:4 numeric characters that are specified as Innn where I can be plus (unsigned) or minus (-) and nnn can be 0 to 365 daysUsage:<br>
+Use this field with the RDAY field to schedule a job to run three workdays before the 15th of the month:<br>
+specify -3 in the INDEX field, X in the MONTHLY field, and 15 in the RDAY field.</li>
+</ul>
+</li>
+<li>
+<p><code>--interval</code> <em>(string)</em></p>
+<ul>
+<li>Specifies that the job should be repeated (executed more than once) and<br>
+specifies the amount of time between each iteration.<br>
+If INTERVAL is specified, the SBTM (submit time requirement) and TYPE fields are required.<br>
+If both INTERVAL and COUNT are specified, the INTERVAL value times the COUNT value must total less than 24 hours.<br>
+Limits:4 numeric characters in hhmm format where hh can be from 0 to 23 and mm can be from 00 to 59</li>
+</ul>
+</li>
+<li>
+<p><code>--type</code> <em>(string)</em></p>
+<ul>
+<li>Determines how the submit time requirement is calculated for repeating jobs.<br>
+A TYPE of CLOCK indicates that the INTERVAL is added to the previous iteration's<br>
+submit time requirement to determine the new submit time requirement.<br>
+A TYPE of START and END indicates that the INTERVAL is added to the previous iteration's<br>
+last (most recent) start and end times,respectively, to determine the new submit time requirement.<br>
+TYPE is required if INTERVAL is specified.<br>
+TYPE is discarded if INTERVAL is not specifiedLimits:CLOCK, START, or END</li>
+</ul>
+</li>
+<li>
+<p><code>--count</code> <em>(string)</em></p>
+<ul>
+<li>Specifies the maximum number of times to repeat the job.<br>
+COUNT is discarded if INTERVAL is not specified.<br>
+If both COUNT and STOP are specified, the job stops repeating when the COUNT reaches zero or the STOP time is reached, whichever comes first.<br>
+If COUNT is not specified, the job repeats until the STOP time is reached.TYPE is required if INTERVAL is specified. TYPE is discarded if INTERVAL is not specifiedLimits:1 to 4 numeric characters from 0 to 1439. Leading zeros can be discarded.</li>
+</ul>
+</li>
+<li>
+<p><code>--weekly</code> <em>(string)</em></p>
+<ul>
+<li>Specifies that the user wants to define a weekly schedule.<br>
+If WEEKLY is used, the run days of the week must be specified using DAYS field<br>
+Limits:Y or N</li>
+</ul>
+</li>
+<li>
+<p><code>--days</code> <em>(string)</em></p>
+<ul>
+<li>Defines specific days of the week on which to run the job.<br>
+as comma separated list of day name abbreviations.<br>
+Limits: A comma separated list of Sun,Mon,Tue,Wed,Thu,Fri,Sat</li>
+</ul>
+</li>
+<li>
+<p><code>--monthly</code> <em>(string)</em></p>
+<ul>
+<li>Specifies that the user wants to define a monthly schedule.<br>
+If this field is used, the user can optionally specify on which particular months the job is to run.<br>
+If specific months are not specified in the months property, all months are assumed.Limits: Y or N</li>
+</ul>
+</li>
+<li>
+<p><code>--months</code> <em>(string)</em></p>
+<ul>
+<li>Defines specific months on which to run the job.<br>
+as comma separated list of month name abbreviations.<br>
+Limits: A comma separated list of Jan,Feb,Mar,Apr,May,Jun,Jul,Aug,Sep,Oct,Nov,Dec</li>
+</ul>
+</li>
+<li>
+<p><code>--weeks-of-month</code> | <code>--wom</code> <em>(string)</em></p>
+<ul>
+<li>Specifies the weeks of the month to run the job.<br>
+The values that are specified can be positive (unsigned), negative (-) or slash (/).<br>
+Positive values 1, 2, 3, 4, or 5 are used to indicate the week relative to the beginning of the month.<br>
+Negative values -0, -1, and -2 are used to indicate occurrence of week relative to the end of the month.<br>
+Slashes indicate the job will not run the following value.<br>
+Limits: 1 to 14 numeric characters and required if MONTHLY and DAY-OF-WEEK are used.<br>
+The values are separated by comma</li>
+</ul>
+</li>
+<li>
+<p><code>--day-of-week</code> | <code>--dow</code> <em>(string)</em></p>
+<ul>
+<li>Specifies which days of the week to run the job.<br>
+If used, each day must be the first three letters of the wanted run days.<br>
+If you want to specify multiple days, use a comma separated list for example MON,TUE,FRI.<br>
+Limits: A comma separated list of SUN, MON, TUE, WED, THU, FRI, SAT, case insensitive</li>
+</ul>
+</li>
+<li>
+<p><code>--relative-day</code> | <code>--rd</code> <em>(string)</em></p>
+<ul>
+<li>Specifies relative days of the month on which the job is to run. Used with MONTHLY.<br>
+A day relative to the beginning or end of the month is specified.<br>
+If a positive (unsigned) value is used, the job runs that day relative to the first of the month.<br>
+Also, if you have days of the month when this job is not to run,a slash (/) can be used with the unsigned or negative values.<br>
+Valid positive values range from 1 to 31.<br>
+Valid negative values range from -0 to -30.<br>
+Limits:1 to 60 numeric characters, separated by comma.<br>
+Note:relative-day(s) represents calendar days, unless the base calendar was generated with OPTIONS=SCHDYONLY,<br>
+in which case relative-day(s) represents processing days.</li>
+</ul>
+</li>
+<li>
+<p><code>--annual</code> <em>(string)</em></p>
+<ul>
+<li>Defines an annual schedule.<br>
+Limits: If annual is used, day is required. One of Y, N</li>
+</ul>
+</li>
+<li>
+<p><code>--day-of-year</code> | <code>--doy</code> <em>(string)</em></p>
+<ul>
+<li>Specifies on which days of the annual schedule the user wants to run the job.<br>
+Days are entered as 1 through 366 and are prefixed by positive (unsigned) or slash (/) values.<br>
+Slash indicates the job will not run this day.<br>
+For example, if a job is to run on days 121, 132, 240, and 241, but is not to run on days 122, 242, and 1,the user would specify: /1,121,/122,132,240,241,/242<br>
+Limits: 1 to 55 numeric characters and required if annual is used.<br>
+The numbers will be separated by comma</li>
+</ul>
+</li>
+<li>
+<p><code>--symmetric</code> <em>(string)</em></p>
+<ul>
+<li>Used with the START and SPAN fields, defines a symmetric schedule.<br>
+With this option, schedules are defined as beginning on the date specified with<br>
+the START field and recurring every nnn days as specified with the SPAN field.<br>
+Limits: One of Y, N</li>
+</ul>
+</li>
+<li>
+<p><code>--start</code> <em>(string)</em></p>
+<ul>
+<li>This field is required when the SYMETRIC option is taken.<br>
+Value must be specified as the Julian day of the year on which the symmetric schedule is to begin.<br>
+This value should be evaluated yearly before schedule resolution and may need to be changed each year.<br>
+If the schedule will be resolved on a July-June basis, the start date must be within<br>
+the first of the two years in which the schedule overlaps.<br>
+For January-December schedules, it is simply relative to January 1 of the year specified on a RESOLV command.<br>
+If the calendar against which this SCHID will be resolved does not have the OPTIONS=SCHDYONLY,<br>
+the START day is adjusted each year to maintain the job's symmetric schedule from the job's original specified START day.<br>
+If the calendar against which the SCHID will be resolved was generated with overall available processing days only (OPTIONS=SCHDYONLY)<br>
+the start date must specify the first day on which the job would actually run.<br>
+This requires manually setting (verifying) the START value each year before the RESOLV.<br>
+If a nonprocessing day is specified, the start day is the next processing day found in the calendar.<br>
+For example, if January 1 is a nonprocessing day and the calendar was generated with OPTIONS=SCHDYONLY,<br>
+and 1 is specified as the START day, January 2 is the actual START day (provided it is an available processing day).<br>
+SPAN is based from January 2 in this example rather than January 1.<br>
+For other types of calendars, the start date is determined at RESOLV time based on the ROLL and INDEX options taken.<br>
+Limits: 3 numeric characters specified as Julian day of the year from 1 to 365</li>
+</ul>
+</li>
+<li>
+<p><code>--span</code> <em>(string)</em></p>
+<ul>
+<li>Used with SYMETRIC and START, defines symmetric schedules.<br>
+This field is required if the SYMETRIC option is taken.<br>
+When used, specifies the number of days between scheduled processing cycles.<br>
+If the calendar against which the SCHID will be resolved was generated with processing days<br>
+only (OPTIONS=SCHDYONLY), the SPAN value is specified as the number of available processing days<br>
+between and including the next processing date as opposed to the actual number of days.<br>
+With this type of calendar, the ROLL and INDEX options serve no practical purpose.<br>
+For other calendar types, the SPAN value is specified as the number of calendar days<br>
+between processing cycles and the ROLL and INDEX options can be used as necessary.<br>
+Limits: 1 to 3 numeric characters from 1 to 255</li>
+</ul>
+</li>
+</ul>
+<h4>CA7 Connection Options</h4>
+<ul>
+<li>
+<p><code>--host</code> | <code>-H</code> <em>(string)</em></p>
+<ul>
+<li>Host name of the CA7 API service that is running on the mainframe system.</li>
+</ul>
+</li>
+<li>
+<p><code>--port</code> | <code>-P</code> <em>(number)</em></p>
+<ul>
+<li>Port for the CA7 API service that is running on the mainframe system.</li>
+</ul>
+</li>
+<li>
+<p><code>--user</code> | <code>-u</code> <em>(string)</em></p>
+<ul>
+<li>User name for authenticating connections to the CA7 API service that is running on the mainframe system.</li>
+</ul>
+</li>
+<li>
+<p><code>--password</code> | <code>--pass</code> | <code>--pw</code> <em>(string)</em></p>
+<ul>
+<li>Password for authenticating connections to the CA7 API service that is running on the mainframe system.</li>
+</ul>
+</li>
+<li>
+<p><code>--base-path</code> | <code>--bp</code> <em>(string)</em></p>
+<ul>
+<li>The base path for your API mediation layer instance. Specify this option to prepend the base path to all resources when making REST requests. Do not specify this option if you are not using an API mediation layer.</li>
+</ul>
+</li>
+<li>
+<p><code>--protocol</code> | <code>-o</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>Specifies protocol to use for CA7 connection (http or https).</p>
+<p>Allowed values: http, https</p>
+</li>
+</ul>
+</li>
+</ul>
+<h4>Profile Options</h4>
+<ul>
+<li>
+<p><code>--ca7-profile</code> | <code>--ca7-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (ca7) profile to load for this command execution.</li>
+</ul>
+</li>
+<li>
+<p><code>--base-profile</code> | <code>--base-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (base) profile to load for this command execution.</li>
+</ul>
+</li>
+</ul>
+<h4>Base Connection Options</h4>
+<ul>
+<li>
+<p><code>--reject-unauthorized</code> | <code>--ru</code> <em>(boolean)</em></p>
+<ul>
+<li>
+<p>Reject self-signed certificates.</p>
+<p>Default value: true</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--token-type</code> | <code>--tt</code> <em>(string)</em></p>
+<ul>
+<li>The type of token to get and use for the API. Omit this option to use the default token type, which is provided by 'zowe auth login'.</li>
+</ul>
+</li>
+<li>
+<p><code>--token-value</code> | <code>--tv</code> <em>(string)</em></p>
+<ul>
+<li>The value of the token to pass to the API.</li>
+</ul>
+</li>
+<li>
+<p><code>--cert-file</code> <em>(local file path)</em></p>
+<ul>
+<li>The file path to a certificate file to use for authentication</li>
+</ul>
+</li>
+<li>
+<p><code>--cert-key-file</code> <em>(local file path)</em></p>
+<ul>
+<li>The file path to a certificate key file to use for authentication</li>
+</ul>
+</li>
+</ul>
+<h4>Examples</h4>
+<ul>
+<li>
+<p>Create schedule for job TESTJOB1 with the parameters:</p>
+<ul>
+<li><code>zowe ca7 create-job-definition schedule --job TESTJOB1 --schid 01 --dscal 03</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe ca7 create-job-definition schedule --job TESTJOB1 --schid 01 --dscal 03">Copy</button></li>
+</ul>
+</li>
+</ul>
+</article>
+<script src="../js/bundle-docs.js"></script>
+<script src="../js/docs.js"></script>
