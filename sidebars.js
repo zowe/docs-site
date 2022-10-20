@@ -427,7 +427,7 @@ module.exports = {
           type: "category",
           label: "Using Zowe Chat",
           items: [
-            "user-guide/zowe-chat/chat-use-interact-methods",
+            "user-guide/zowe-chat/chat_use_interact_methods",
           ],
         },
         "user-guide/sdks-using",
@@ -581,6 +581,7 @@ module.exports = {
         "troubleshoot/launcher/launcher-error-codes"
       ],
     },
+    "troubleshoot/zowe-chat-troubleshoot/troubleshooting",
   ],
   contributing: [
     "contribute/roadmap-contribute",
@@ -621,7 +622,8 @@ module.exports = {
         }
       ]
     },  
-    "appendix/zowe-yaml-configuration", 
+    "appendix/zowe-yaml-configuration",
+    "user-guide/zowe-chat/zowe_chat_command_reference", 
     "appendix/server-component-manifest",     
     "appendix/bill-of-materials",
     {
