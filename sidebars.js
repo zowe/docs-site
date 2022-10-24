@@ -22,6 +22,7 @@ module.exports = {
       type: "category",
       label: "Release notes",
       items: [
+        "getting-started/release-notes/v2_4_0",
         "getting-started/release-notes/v2_3_1",
         "getting-started/release-notes/v2_3_0",
         "getting-started/release-notes/v2_2_0",
@@ -217,7 +218,19 @@ module.exports = {
           type: "category",
           label: "Using Zowe API Mediation Layer",
           items: [
-            "user-guide/api-mediation-api-catalog",
+            "user-guide/api-mediation/using-api-mediation-layer",
+            {
+              type: "category",
+              label: "Using API Catalog",
+              items: [
+                "user-guide/api-mediation-view-service-information-and-api-doc",
+                "user-guide/api-mediation-swagger-try-it-out",
+                "user-guide/api-mediation-swagger-code-snippets",
+                "user-guide/api-mediation-static-api-refresh",
+                "user-guide/api-mediation-change-password-via-catalog",
+                "user-guide/onboard-wizard",
+                              ],
+            },
             "user-guide/api-mediation-metrics-service",
             "extend/extend-apiml/api-mediation-routing",
             "extend/extend-apiml/service-information",
@@ -370,7 +383,6 @@ module.exports = {
         "extend/extend-apiml/onboard-micronaut-enabler",
         "extend/extend-apiml/onboard-nodejs-enabler",
         "extend/extend-apiml/onboard-static-definition",
-        "extend/extend-apiml/onboard-wizard",
         "extend/extend-apiml/api-mediation-sso",
         "extend/extend-apiml/create-apiml-extension",
         "extend/extend-apiml/api-mediation-message-service",

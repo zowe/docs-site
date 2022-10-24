@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>zos-files download all-members</title>
+<link rel="stylesheet" href="../css/bundle-docs.css">
+<link rel="stylesheet" href="../css/docs.css">
+<article class="markdown-body">
+<h2><a href="zowe.html">zowe</a> › <a href="zowe_zos-files.html">zos-files</a> › <a href="zowe_zos-files_download.html">download</a> › <a href="zowe_zos-files_download_all-members.html">all-members</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
+<p>Download all members from a partitioned data set to a local folder</p>
+<h4>Usage</h4>
+<p>zowe zos-files download all-members &lt;dataSetName&gt; [options]</p>
+<h4>Positional Arguments</h4>
+<ul>
+<li>
+<p><code>dataSetName</code>		 <em>(string)</em></p>
+<ul>
+<li>The name of the data set from which you want to download members</li>
+</ul>
+</li>
+</ul>
+<h4>Options</h4>
+<ul>
+<li>
+<p><code>--binary</code> | <code>-b</code> <em>(boolean)</em></p>
+<ul>
+<li>Download the file content in binary mode, which means that no data conversion is performed. The data transfer process returns each line as-is, without translation. No delimiters are added between records.</li>
+</ul>
+</li>
+<li>
+<p><code>--directory</code> | <code>-d</code> <em>(string)</em></p>
+<ul>
+<li>The directory to where you want to save the members. The command creates the directory for you when it does not already exist. By default, the command creates a folder structure based on the data set qualifiers. For example, the data set ibmuser.new.cntl's members are downloaded to ibmuser/new/cntl).</li>
+</ul>
+</li>
+<li>
+<p><code>--encoding</code> | <code>--ec</code> <em>(string)</em></p>
+<ul>
+<li>Download the file content with encoding mode, which means that data conversion is performed using the file encoding specified.</li>
+</ul>
+</li>
+<li>
+<p><code>--extension</code> | <code>-e</code> <em>(string)</em></p>
+<ul>
+<li>Save the local files with a specified file extension. For example, .txt. Or &quot;&quot; for no extension. When no extension is specified, .txt is used as the default file extension.</li>
+</ul>
+</li>
+<li>
+<p><code>--fail-fast</code> | <code>--ff</code> <em>(boolean)</em></p>
+<ul>
+<li>
+<p>Set this option to false to continue downloading dataset members if one or more fail.</p>
+<p>Default value: true</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--max-concurrent-requests</code> | <code>--mcr</code> <em>(number)</em></p>
+<ul>
+<li>
+<p>Specifies the maximum number of concurrent z/OSMF REST API requests to download members. Increasing the value results in faster downloads. However, increasing the value increases resource consumption on z/OS and can be prone to errors caused by making too many concurrent requests. If the download process encounters an error, the following message displays:<br>
+The maximum number of TSO address spaces have been created. When you specify 0, Zowe CLI attempts to download all members at once without a maximum number of concurrent requests.</p>
+<p>Default value: 1</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--preserve-original-letter-case</code> | <code>--po</code> <em>(boolean)</em></p>
+<ul>
+<li>
+<p>Specifies if the automatically generated directories and files use the original letter case</p>
+<p>Default value: false</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--record</code> | <code>-r</code> <em>(boolean)</em></p>
+<ul>
+<li>Download the file content in record mode, which means that no data conversion is performed and the record length is prepended to the data. The data transfer process returns each line as-is, without translation. No delimiters are added between records. Conflicts with binary.</li>
+</ul>
+</li>
+<li>
+<p><code>--volume-serial</code> | <code>--vs</code> <em>(string)</em></p>
+<ul>
+<li>The volume serial (VOLSER) where the data set resides. You can use this option at any time. However, the VOLSER is required only when the data set is not cataloged on the system. A VOLSER is analogous to a drive name on a PC.</li>
+</ul>
+</li>
+<li>
+<p><code>--response-timeout</code> | <code>--rto</code> <em>(number)</em></p>
+<ul>
+<li>The maximum amount of time in seconds the z/OSMF Files TSO servlet should run before returning a response. Any request exceeding this amount of time will be terminated and return an error. Allowed values: 5 - 600</li>
+</ul>
+</li>
+</ul>
+<h4>Zosmf Connection Options</h4>
+<ul>
+<li>
+<p><code>--host</code> | <code>-H</code> <em>(string)</em></p>
+<ul>
+<li>The z/OSMF server host name.</li>
+</ul>
+</li>
+<li>
+<p><code>--port</code> | <code>-P</code> <em>(number)</em></p>
+<ul>
+<li>
+<p>The z/OSMF server port.</p>
+<p>Default value: 443</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--user</code> | <code>-u</code> <em>(string)</em></p>
+<ul>
+<li>Mainframe (z/OSMF) user name, which can be the same as your TSO login.</li>
+</ul>
+</li>
+<li>
+<p><code>--password</code> | <code>--pass</code> | <code>--pw</code> <em>(string)</em></p>
+<ul>
+<li>Mainframe (z/OSMF) password, which can be the same as your TSO password.</li>
+</ul>
+</li>
+<li>
+<p><code>--reject-unauthorized</code> | <code>--ru</code> <em>(boolean)</em></p>
+<ul>
+<li>
+<p>Reject self-signed certificates.</p>
+<p>Default value: true</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--base-path</code> | <code>--bp</code> <em>(string)</em></p>
+<ul>
+<li>The base path for your API mediation layer instance. Specify this option to prepend the base path to all z/OSMF resources when making REST requests. Do not specify this option if you are not using an API mediation layer.</li>
+</ul>
+</li>
+<li>
+<p><code>--protocol</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>The protocol used (HTTP or HTTPS)</p>
+<p>Default value: https<br>
+Allowed values: http, https</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--cert-file</code> <em>(local file path)</em></p>
+<ul>
+<li>The file path to a certificate file to use for authentication</li>
+</ul>
+</li>
+<li>
+<p><code>--cert-key-file</code> <em>(local file path)</em></p>
+<ul>
+<li>The file path to a certificate key file to use for authentication</li>
+</ul>
+</li>
+</ul>
+<h4>Profile Options</h4>
+<ul>
+<li>
+<p><code>--zosmf-profile</code> | <code>--zosmf-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (zosmf) profile to load for this command execution.</li>
+</ul>
+</li>
+<li>
+<p><code>--base-profile</code> | <code>--base-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (base) profile to load for this command execution.</li>
+</ul>
+</li>
+</ul>
+<h4>Base Connection Options</h4>
+<ul>
+<li>
+<p><code>--token-type</code> | <code>--tt</code> <em>(string)</em></p>
+<ul>
+<li>The type of token to get and use for the API. Omit this option to use the default token type, which is provided by 'zowe auth login'.</li>
+</ul>
+</li>
+<li>
+<p><code>--token-value</code> | <code>--tv</code> <em>(string)</em></p>
+<ul>
+<li>The value of the token to pass to the API.</li>
+</ul>
+</li>
+</ul>
+<h4>Examples</h4>
+<ul>
+<li>
+<p>Download the members of the data set &quot;ibmuser.loadlib&quot; in binary mode to the directory &quot;loadlib/&quot;:</p>
+<ul>
+<li><code>zowe zos-files download all-members &quot;ibmuser.loadlib&quot; -b -d loadlib</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe zos-files download all-members &quot;ibmuser.loadlib&quot; -b -d loadlib">Copy</button></li>
+</ul>
+</li>
+<li>
+<p>Download the members of the data set &quot;ibmuser.cntl&quot; in text mode to the directory &quot;jcl/&quot;:</p>
+<ul>
+<li><code>zowe zos-files download all-members &quot;ibmuser.cntl&quot; -d jcl</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe zos-files download all-members &quot;ibmuser.cntl&quot; -d jcl">Copy</button></li>
+</ul>
+</li>
+</ul>
+</article>
+<script src="../js/bundle-docs.js"></script>
+<script src="../js/docs.js"></script>
