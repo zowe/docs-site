@@ -4,7 +4,7 @@ As an API developer, you can onboard a REST API service to the Zowe&trade; API M
 
 The specific method you use to onboard a REST API to the API ML depends on the programming language or framework used to build your REST service.
 
-**Note:** To streamline the process of onboarding new REST API services to the Zowe API Mediation Layer, see [Onboarding a REST API service with the YAML Wizard](./onboard-wizard.md)
+**Note:** To streamline the process of onboarding new REST API services to the Zowe API Mediation Layer, see [Onboarding a REST API service with the YAML Wizard](../../user-guide/onboard-wizard.md)
 
 This Onboarding Overview article addresses the following topics:
 
