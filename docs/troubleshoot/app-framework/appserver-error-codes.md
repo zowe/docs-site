@@ -1032,12 +1032,11 @@ The following error message codes may appear on the app-server log. Use the foll
 
 ### ZWED0290I
 
-  Plugin *event.data.identifier* loaded. Version: *event.data.pluginVersion*. Successful: _(pluginsLoaded/event.count)*100)_ (*pluginsLoaded*/*event.count*) Attempted: _(pluginCount/event.count)*100)_ (*pluginsCount*/*event.count*)
+  Plugin _pluginIdentifier_ loaded. Version: _pluginVersion_. Successful: _pluginsLoaded_  Attempted: _pluginsAttempted_.
 
   **Reason:**
 
-  Plugin event data identifier loaded successfully. Version is event data pluginVersion.
-  Successfully plugin loaded and event count, and attempted pluginCount and event count.
+  Plugin with plugin identifier loaded, with version pluginVersion. The server attempted to load a total of pluginsAttempted with pluginsLoaded plugins successfully loaded.
 
   **Action:**
 
@@ -1047,11 +1046,11 @@ The following error message codes may appear on the app-server log. Use the foll
 
 ### ZWED0292I
 
-  Plugin *identifier* loaded. Version: *plugin* version.
+  Plugin _identifier_ loaded. Version: _plugin_ version.
 
   **Reason:**
 
-  Plugin identifier loaded successfully and the plugin version for the same is *plugin version*.
+  Plugin identifier loaded successfully and the plugin version for the same is _plugin version_.
 
   **Action:**
 
@@ -1061,11 +1060,11 @@ The following error message codes may appear on the app-server log. Use the foll
 
 ### ZWED0294I
 
-  Successfully loaded *recognizers.length* recognizers for *appId* into config
+  Successfully loaded _recognizers length_ recognizers for _appId_ into config
 
   **Reason:**
 
-  Successfully loaded recognizers length for plugin recognizers into config at path *workspace/app-server/ZLUX/pluginStorage/org.zowe.zlux.ng2desktop/recognizers*.
+  Successfully loaded _recognizers length_ for _appId_ into config at path _workspace/app-server/ZLUX/pluginStorage/org.zowe.zlux.ng2desktop/_.
 
   **Action:**
 
@@ -1075,11 +1074,11 @@ The following error message codes may appear on the app-server log. Use the foll
 
 ### ZWED0295I
 
-  Successfully loaded *actions.length* actions for *appId* into config
+  Successfully loaded _actions length_ actions for _appId_ into config
 
   **Reason:**
 
-  Successfully loaded actions length for appID into config at path *workspace/app-server/ZLUX/pluginStorage/org.zowe.zlux.ng2desktop/actions/* .
+  Successfully loaded _actions length_ for appID into config at path _workspace/app-server/ZLUX/pluginStorage/org.zowe.zlux.ng2desktop/_ .
 
   **Action:**
 
@@ -1087,27 +1086,13 @@ The following error message codes may appear on the app-server log. Use the foll
 
 
 
-### ZWED0297I
-
-  *environmentComponent.cpu* is a supported architecture for *name* to install *plugin.identifier*.
-
-  **Reason:**
-
-  *environmentComponent.cpu* is a supported architecture for component to install *plugin.identifier*.
-
-  **Action:**
-
-  No action Required.
-
-
-
 ### ZWED0299I
 
-  Loading remote iframe app *plugin.identifier* located at *remoteUrl*
+  Loading remote iframe app _plugin_identifier_ located at _remoteUrl_.
 
   **Reason:**
 
-  Loading remote iframe app plugin identifier which is located at remoteUrl.
+  Loading remote iframe app plugin identifier which is located at _remoteUrl_.
 
   **Action:**
 
@@ -1131,11 +1116,11 @@ The following error message codes may appear on the app-server log. Use the foll
 
 ### ZWED0301I
 
-  Found *pre-existing recognizers* in config for *appID*
+  Found _pre-existing recognizers_/_pre-existing actions_ in config for _appID_.
 
   **Reason:**
 
-  Get pre-existing recognizers in config, if any
+  Get pre-existing recognizers/pre-existing actions in config, if any
 
   **Action:**
 
