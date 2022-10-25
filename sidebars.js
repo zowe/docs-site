@@ -304,10 +304,16 @@ module.exports = {
             "user-guide/cli-ftpplugin",
             "user-guide/cli-imsplugin",
             "user-guide/cli-mqplugin",
-            "user-guide/ze-install",
           ],
         },
-        "user-guide/ze-usage",
+        {
+          type: "category",
+          label: "Using Zowe Explorer",
+          items: [
+                "user-guide/ze-usage",
+                "user-guide/ze-use-cases",
+         ],
+            },
          {
           type: "category",
           label: "Zowe Explorer extensions",
@@ -325,7 +331,16 @@ module.exports = {
                 "user-guide/ze-provide-feedback-contribute",
                               ],
             },
-            "user-guide/ze-ftp"
+            {
+              type: "category",
+              label: "Zowe Explorer FTP Extension",
+              items: [
+                "user-guide/ze-ftp-install-ze-ftp-ext",
+                "user-guide/ze-ftp-using-ze-ftp-ext",
+                "user-guide/ze-ftp-supported-functions",
+                "user-guide/ze-ftp-provide-feedback-contribute",
+                              ],
+            },
           ],
         },
         "user-guide/sdks-using",
