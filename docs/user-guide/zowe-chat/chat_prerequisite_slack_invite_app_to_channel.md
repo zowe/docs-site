@@ -2,35 +2,37 @@
 
 You can add the bot user that you created to your Slack channel in two ways: either mention your bot user directly in the message field or click the link **Add an app** at the beginning of your channel.
 
--   You can add your bot user to your Slack channel with either of the following two methods.
--   Mention your bot user directly in the message field.
+## Mention your bot user directly 
 
-    1.  Select the channel where you want to invite your Slack App.
+You can mention your bot user directly in the message field.
 
-    2.  In the message field, type @ and select the bot name you created, for example, bnz. You can see a **not in channel** notice behind it.
+1. Select the channel where you want to invite your Slack App.
 
-    3.  Send the message to the channel. You will receive a message from Slackbot to help you invite your bot user to this channel. Click **Invite Them**.
+2. In the message field, type @ and select the bot name you created, for example, bnz. You can see a **not in channel** notice behind it.
 
-        ![Invite to channel](bnz_slack_invitebot.png "Invite to channel")
+3. Send the message to the channel. You will receive a message from Slackbot to help you invite your bot user to this channel. Click **Invite Them**.
 
--   Click the link **Add an app** at the beginning of your channel.
+    ![Invite to channel](../../images/zowe-chat/slack_invitebot.png)
 
-    1.  Select the channel where you want to invite your Slack App.
+## Use the channel link
 
-    2.  Click the drill-down box at the top of your channel. Select **Integrations**.
+You can click the link **Add an app** at the beginning of your channel.
 
-        ![](bnz_slack_channelhead.png "Drill-down box")
+1. Select the channel where you want to invite your Slack App.
 
-    3.  You can see the dialog as the image below shows. Click **Add an app**.
+2. Click the drill-down box at the top of your channel. Select **Integrations**.
 
-        ![Add an app](bnz_slack_addapp.png "Add an app")
+    ![Drill-down box](../../images/zowe-chat/slack_channelhead.png)
 
-    4.  Search for your app with your app name. Click **Add** when you see it.
+3. You can see the dialog as the image below shows. Click **Add an app**.
 
-        ![Add app to channel](bnz_slack_add.png "Add app to channel")
+    ![Add an app](../../images/zowe-chat/slack_addapp.png)
+
+4. Search for your app with your app name. Click **Add** when you see it.
+
+    ![Add app to channel](../../images/zowe-chat/slack_add.png)
 
 
 You have invited the Zowe Chat app to your Slack channel. You can talk to it now.
 
-**Parent topic:**[Configuring Slack chat platform](chatops_prerequisite_slack.md)
 

@@ -184,7 +184,7 @@ module.exports = {
     },
     {
       type: "category",
-      label: "Installing Zowe Chat",
+      label: "Installing Zowe Chat (Technical Preview)",
       items: [
         {
           type: "category",
@@ -199,11 +199,12 @@ module.exports = {
                   type: "category",
                   label: "Configuring Mattermost",
                   items: [
+                    "user-guide/zowe-chat/chat_prerequisite_mattermost",
                     "user-guide/zowe-chat/chat_prerequisite_install_mattermost",
                     "user-guide/zowe-chat/chat_prerequisite_mattermost_admin_account",
                     "user-guide/zowe-chat/chat_prerequisite_mattermost_bot_account",
                     "user-guide/zowe-chat/chat_prerequisite_mattermost_invite_team",
-                    "user-guide/zowe-chat/chat_prerequisite_mattermost_invite_mattermost",
+                    "user-guide/zowe-chat/chat_prerequisite_mattermost_invite_channel",
                     "user-guide/zowe-chat/chat_prerequisite_mattermost_enable_connection",
                   ],
                 },
@@ -211,14 +212,8 @@ module.exports = {
                   type: "category",
                   label: "Configuring Microsoft Teams",
                   items: [
-                    {
-                      type: "category",
-                      label: "Creating Microsoft Teams bot app",
-                      items: [
-                        "user-guide/zowe-chat/chat_prerequisite_teams_create_app_developer_portal",   
-                        "user-guide/zowe-chat/chat_prerequisite_teams_create_app_studio",                  
-                      ],
-                    },
+                    "user-guide/zowe-chat/chat_prerequisite_teams",
+                    "user-guide/zowe-chat/chat_prerequisite_teams_create_app_developer_portal",
                     {
                       type: "category",
                       label: "Creating a bot for Microsoft Teams bot app",
@@ -249,7 +244,15 @@ module.exports = {
                       label: "Creating and installing Slack app",
                       items: [
                         "user-guide/zowe-chat/chat_prerequisite_slack_create_app",
-                        "user-guide/zowe-chat/chat_prerequisite_slack_configure_app",
+                        {
+                          type: "category",
+                          label: "Creating and installing Slack app",
+                          items: [
+                            "user-guide/zowe-chat/chat_prerequisite_slack_configure_app",
+                            "user-guide/zowe-chat/chat_prerequisite_slack_socket_mode",
+                            "user-guide/zowe-chat/chat_prerequisite_slack_http_endpoint",                
+                          ],
+                        },
                         "user-guide/zowe-chat/chat_prerequisite_slack_install",                
                       ],
                     }, 
@@ -264,14 +267,19 @@ module.exports = {
           type: "category",
           label: "Installing Zowe Chat",
           items: [
-            "user-guide/zowe-chat/chat_install_overview",                
+            "user-guide/zowe-chat/chat_install_overview", 
+            "user-guide/zowe-chat/chat_start_stop",               
           ],
         }, 
         {
           type: "category",
           label: "Configuring Zowe Chat",
           items: [
-            "user-guide/zowe-chat/chat_configure_overview",                
+            "user-guide/zowe-chat/chat_configure_overview",
+            "user-guide/zowe-chat/chat_configure_server",
+            "user-guide/zowe-chat/chat_configure_mattermost", 
+            "user-guide/zowe-chat/chat_configure_teams",
+            "user-guide/zowe-chat/chat_configure_slack",              
           ],
         }, 
         "user-guide/zowe-chat/chat_uninstall",

@@ -8,15 +8,15 @@ To create a bot with Microsoft™ Azure, you need to use Microsoft Azure portal 
 
     2.  Click **Create a resource** under **Azure services**.
 
-        ![Create a resource](bnz_azure_create.png "Create a resource")
+        ![Create a resource](../../images/zowe-chat/azure_create.png "Create a resource")
 
     3.  Search for **Bot Channels Registration** with the search bar and select it.
 
-        ![Bot Channels Registration](bnz_azure_bot_channel_registration.png "Bot Channels Registration")
+        ![Bot Channels Registration](../../images/zowe-chat/azure_bot_channel_registration.png "Bot Channels Registration")
 
     4.  Click **Create** to create a new resource.
 
-        ![Create a resource with bot channels registration service](bnz_azure_registration_create.png "Create a resource with Bot Channels Registration
+        ![Create a resource with bot channels registration service](../../images/zowe-chat/azure_registration_create.png "Create a resource with Bot Channels Registration
         service")
 
     5.  Specify the required values, where
@@ -66,7 +66,7 @@ To create a bot with Microsoft™ Azure, you need to use Microsoft Azure portal 
 
     3.  Click the **Bots** icon under **Capabilities** and click **Edit**.
 
-        ![Capabilities section](bnz_teams_bots_menu.png "Capabilities section")
+        ![Capabilities section](../../images/zowe-chat/teams_bots_menu.png "Capabilities section")
 
     4.  Select **Connect to a different bot id** and specify with the Microsoft App ID that you have for your Azure bot.
 
@@ -77,5 +77,5 @@ To create a bot with Microsoft™ Azure, you need to use Microsoft Azure portal 
 
 Your Microsoft Azure bot is successfully created.
 
-You can continue with installing or publishing your bot app in your Microsoft Teams. For specific steps, refer to the step 4 and 5 in [Creating Microsoft Teams bot app using App Studio](chatops_prerequisite_teams_app.md).
+You can continue with installing or publishing your bot app in your Microsoft Teams.
 
