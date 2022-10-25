@@ -57,7 +57,7 @@ The following definition of skill levels about Zowe Explorer helps you find the 
 
    Learn how to create extensions for Zowe Explorer to introduce new functionalities.
 
-- [**Zowe Explorer CICS Extension**](../user-guide/ze-cics.md)
+- [**Zowe Explorer CICS Extension**](../user-guide/ze-using-zowe-explorer-cics-ext.md)
 
    Learn how to install the CICS extension. The extension adds CICS functionality to the Visual Studio Code extension, which lets you interact with CICS regions and programs.
 
