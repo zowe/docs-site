@@ -413,7 +413,7 @@ module.exports = {
           type: "category",
           label: "Using Zowe Chat",
           items: [
-            "user-guide/zowe-chat/chat_use_interact_methods",
+            "user-guide/zowe-chat/chat-use-interact-methods",
           ],
         },
         "user-guide/sdks-using",
@@ -608,9 +608,88 @@ module.exports = {
           dirName: "appendix/zwe_server_command_reference"
         }
       ]
+    },
+    {
+      type: "category",
+      label: "Zowe Chat command reference",
+      items: [
+        "user-guide/zowe-chat/zowe-chat-command-reference",
+        {
+          type: "category",
+          label: "zos",
+          items: [
+            {
+              type: "category",
+              label: "job",
+              items: [
+                {
+                  type: "category",
+                  label: "list",
+                  items: [
+                    "user-guide/zowe-chat/zowe-chat-command-reference/zos/job/list/zos-job-list-status",
+                  ]
+                },
+              ]
+            },
+            {
+              type: "category",
+              label: "dataset",
+              items: [
+                {
+                  type: "category",
+                  label: "list",
+                  items: [
+                    "user-guide/zowe-chat/zowe-chat-command-reference/zos/dataset/list/zos-dataset-list-status",
+                    "user-guide/zowe-chat/zowe-chat-command-reference/zos/dataset/list/zos-dataset-list-member",
+                  ]
+                },
+              ]
+            },
+            {
+              type: "category",
+              label: "file",
+              items: [
+                {
+                  type: "category",
+                  label: "list",
+                  items: [
+                    "user-guide/zowe-chat/zowe-chat-command-reference/zos/file/list/zos-file-list-status",
+                    "user-guide/zowe-chat/zowe-chat-command-reference/zos/file/list/zos-file-list-mounts",
+                  ]
+                },
+              ]
+            },
+            {
+              type: "category",
+              label: "command",
+              items: [
+                {
+                  type: "category",
+                  label: "issue",
+                  items: [
+                    "user-guide/zowe-chat/zowe-chat-command-reference/zos/command/issue/zos-command-issue-console",
+                  ]
+                },
+              ]
+            },
+            {
+              type: "category",
+              label: "help",
+              items: [
+                {
+                  type: "category",
+                  label: "list",
+                  items: [
+                    "user-guide/zowe-chat/zowe-chat-command-reference/zos/help/list/zos-help-list-command",
+                  ]
+                },
+              ]
+            },
+          ]
+        },
+      ]
     },  
     "appendix/zowe-yaml-configuration",
-    "user-guide/zowe-chat/zowe_chat_command_reference", 
     "appendix/server-component-manifest",     
     "appendix/bill-of-materials",
     {
