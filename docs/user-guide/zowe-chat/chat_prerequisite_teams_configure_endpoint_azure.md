@@ -8,7 +8,7 @@ If you create your bot with Microsoft™ Azure, you need to specify the messagin
 
 3.  Select **Configuration** in **Settings**.
 
-4.  Specify the **Messaging endpoint** with the Zowe Chat web hook URL if it is publicly accessible, for example, https://zchatops.cn.ibm.com:5001/bnz/api/v1. Otherwise, you must fill in with your public proxy URL that transmits network payload to Zowe Chat web hook URL.
+4.  Specify the **Messaging endpoint** with the Zowe Chat web hook URL if it is publicly accessible. Otherwise, you must fill in with your public proxy URL that transmits network payload to Zowe Chat web hook URL.
 
 5.  Verify that the **Enable Streaming Endpoint** box is enabled.
 
@@ -16,6 +16,3 @@ If you create your bot with Microsoft™ Azure, you need to specify the messagin
 
 
 Your messaging endpoint for Microsoft Azure bot is successfully configured.
-
-**Parent topic:**[Configuring messaging endpoint for Microsoft Teams](chatops_prerequisite_endpoint_teams.md)
-

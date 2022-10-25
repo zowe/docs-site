@@ -203,21 +203,23 @@ Provides an advanced launcher for Zowe z/OS server components in a high availabi
 
 ### Zowe Chat (Technical Preview)
 
-Zowe Chat is a chatbot that aims to enable a ChatOps collaboration model including z/OS resources and tools. 
+Zowe Chat is a chatbot that aims to enable a ChatOps collaboration model including z/OS resources and tools. Zowe Chat enables you to  interact with the mainframe from chat clients such as Slack, Microsoft Teams, and Mattermost. Zowe Chat helps to increase your productivity by eliminating or minimizing the context switching between different tools and user interfaces.
 
-![Zowe Chat](diagrams/zowe-chat.png)
+![Zowe Chat](diagrams/chat_demo.png)
 
-#### Zowe Chat main features
+<details>
+<summary> Learn more </summary>
 
-Zowe Chat is focused on making you more productive by eliminating (or minimizing) the context switching between different tools and user interfaces.
+#### Zowe Chat key features
 
 - **z/OS resource management:**
   
-  Enables you to manage z/OS resources, such as z/OS job, dataset, and USS files. You can also issue Zowe CLI commands including console commands directly from the chat tool. 
+  Enables you to manage z/OS resources, such as z/OS job, data set, and USS files. You can also issue Zowe CLI commands including console commands directly from the chat tool. You can drill down on a specific job, data set, error code, and so on to get more details through the drop-down menu that Zowe Chat provides. 
 
 - **Security:**
    
-   Once authenticated against the mainframe security, Zowe Chat will securely cache in memory the relationship between your Chat tool ID and the mainframe ID. 
+   Zowe Chat makes use of z/OS SAF calls and supports the three main security management products on z/OS (RACF, Top Secret, ACF2). You can log in to the chat client via enterprise standards, including two factor authentication if required. The first time you issue a command to the Zowe Chat installed in the chat workspace, it prompts you to log in with the mainframe ID using a one-time URL. Once authenticated against the mainframe security, Zowe Chat securely caches in memory the relationship between your Chat tool ID and the mainframe ID. Zowe Chat’s Security Facility will generate credentials for downstream API requests.
+
 
 - **Display alerts:**
 
@@ -230,9 +232,13 @@ Read the following blogs to learn more about Zowe Chat:
 
 #### Zowe Chat architecture
 
-Zowe Chat is based on the Common Bot framework, which is required for the chat platform Slack, Mattermost and Microsoft Teams. 
+Zowe Chat is based on the Common Bot framework, which is required for the chat platform Slack, Mattermost, and Microsoft Teams. 
 
-> Needs an architecture diagram
+<!--todo add a diagram-->
+
+Ready to install Zowe Chat? See [Installing Zowe Chat](../user-guide/zowe-chat/chat_install_overview.md) to get started. 
+
+</details>
 
 ### ZEBRA (Zowe Embedded Browser for RMF/SMF and APIs) - Incubator 
 

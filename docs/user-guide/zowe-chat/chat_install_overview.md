@@ -1,56 +1,88 @@
-# Installing Zowe Chat 
+# Installing Zowe Chat
 
-<!--Topics listed below are example, feel free to modify them-->
-
+You can install Zowe Chat via a native installation package by running several commands.
 
 ## Prerequisites
 
-Before installing Zowe Chat, ... 
-
-### Chat plarform requirements
-
-- [Slack](chat_prerequisite_slack_install.md)
-- [Microsoft Teams]
-- [Mattermost](chat_prerequisite_install_mattermost.md)
+Before installing Zowe Chat, ensure that your environment meets the [system requirements](systemrequirements-chat.md).
 
 ## Installing
 
-1. Download `Zowe Chat` according to the architecture of the target server where Zowe Chat will be installed.
+1. Download the Zowe Chat package from [Zowe.org](https://www.zowe.org/download.html). Navigate to **Technical Preview** > **Zowe Chat** section, and select the button to download the Zowe Chat build.mYou'll get a tar.gz file.
 
-1. Run the command to unpack the downloaded package to a target directory.
+1. Log on to your Linux server. 
+
+1. Navigate to the target directory that you want to transfer the Zowe Chat installation package into or create a new directory. 
+
+1. When you are in the directory you want to transfer the Zowe Chat installation package into, issue the following command to upload it to the directory:
+
+   ```
+   put <zowe-chat-package-name>.tar.gz
+   ```
+   
+   Where *zowe-chat-package-name* is a variable that indicates the name of the Zowe Chat build file you downloaded. 
+   
+1. Run the command to expand the downloaded package to the target directory.
 
     ```
-    xxxxxx
-    ```
-1. Edit file `xxxx.conf` if you want to change the default settings of bnzDocker.sh. 
+    tar zxvf <zowe-chat-package-name>.tar.gz
+    ```   
 
-1. Load the Zowe Chat image into your Docker environment by using the Docker Command Line Utility. Run the following command:
+    This will expand to a file structure similar to the following one.
 
     ```
-    xxxx.sh load
-    ```
-1. Verify if the Docker image is loaded. Run the command `xxxx.sh status`.
-
-    Sample output as follows: 
-    ```
-    Executing command status ...
-
-    Docker image zchatops:110 ----------------------------------- Loaded.
-    Docker container zchatops_110 ------------------------------- Not available.
-    Status of Docker container zchatops_110 --------------------- Not started.
-    ```
-    If the load is successful, you can delete the Z-ChatOps-Image-v110.tar because you don't need it anymore.
-
-1. Start the Docker container by using the Docker Command Line Utility. 
-
-    Run the following command:
-    ```
-    ./bnzDocker.sh start
+    /zoweChat   
+    /plugins   
     ```
 
-1. Verify if the Docker container from the Zowe Chat image is started. Run command `xxxx.sh` status.
-    Sample output as follows: 
+1. Run the following commands to update your environment variables. 
+   
+    - Update the Zowe Chat home directory. 
 
+      ```
+      export ZOWE_CHAT_HOME=<your-chat-package-directory>/zoweChat
+      ```
+      where, *your-chat-package-directory* is the diretory of the Zowe Chat installation package. 
+    
+    - Update the Zowe Chat plug-in home directory. 
 
+      ```
+      export ZOWE_CHAT_PLUGIN_HOME=<your-chat-package-directory>/plugins
+      ```
+    
+    - Update your `PATH` environment variable with your Zowe Chat home directory path.
+    
+      ```
+      export PATH=$PATH:$ZOWE_CHAT_HOME/bin
+      ```
 
+1. Update the plug-in configuration file `$ZOWE_CHAT_PLUGIN_HOME/plugin.yaml` if necessary. 
+
+1. Run the following commands to install local dependencies. 
+
+   ```
+    cd $ZOWE_CHAT_HOME/node_modules/i18next
+    npm link
+    cd  $ZOWE_CHAT_PLUGIN_HOME/@zowe/clicmd
+    npm link $ZOWE_CHAT_HOME
+    npm link i18next
+    cd  $ZOWE_CHAT_PLUGIN_HOME/@zowe/zos
+    npm link $ZOWE_CHAT_HOME
+    npm link i18next
+   ```
+1. Update the following configuration files based on your need. 
+
+   - Zowe Chat: `$ZOWE_CHAT_HOME/config/chatServer.yaml`
+   - Chat tool: `$ZOWE_CHAT_HOME/config/zosmfServer.yaml`
+   - z/OSMF server: `$ZOWE_CHAT_HOME/config/chatTools/<mattermost | msteams | slack>.yaml`
+
+<!--TODO: How to verify the installation?-->
+
+Now you can [start the Zowe Chat server](chat_start_stop.md#starting-zowe-chat). 
+
+:::tip
+
+If you encounter any issue during the installation, you can check the Zowe Chat server log in the folder `$ZOWE_CHAT_HOME/log/` for troubleshooting.
+
+:::
 

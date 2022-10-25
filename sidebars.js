@@ -22,6 +22,8 @@ module.exports = {
       type: "category",
       label: "Release notes",
       items: [
+        "getting-started/release-notes/v2_4_0",
+        "getting-started/release-notes/v2_3_1",
         "getting-started/release-notes/v2_3_0",
         "getting-started/release-notes/v2_2_0",
         "getting-started/release-notes/v2_1_0",
@@ -182,7 +184,7 @@ module.exports = {
     },
     {
       type: "category",
-      label: "Installing Zowe Chat",
+      label: "Installing Zowe Chat (Technical Preview)",
       items: [
         {
           type: "category",
@@ -197,11 +199,12 @@ module.exports = {
                   type: "category",
                   label: "Configuring Mattermost",
                   items: [
+                    "user-guide/zowe-chat/chat_prerequisite_mattermost",
                     "user-guide/zowe-chat/chat_prerequisite_install_mattermost",
                     "user-guide/zowe-chat/chat_prerequisite_mattermost_admin_account",
                     "user-guide/zowe-chat/chat_prerequisite_mattermost_bot_account",
                     "user-guide/zowe-chat/chat_prerequisite_mattermost_invite_team",
-                    "user-guide/zowe-chat/chat_prerequisite_mattermost_invite_mattermost",
+                    "user-guide/zowe-chat/chat_prerequisite_mattermost_invite_channel",
                     "user-guide/zowe-chat/chat_prerequisite_mattermost_enable_connection",
                   ],
                 },
@@ -209,14 +212,8 @@ module.exports = {
                   type: "category",
                   label: "Configuring Microsoft Teams",
                   items: [
-                    {
-                      type: "category",
-                      label: "Creating Microsoft Teams bot app",
-                      items: [
-                        "user-guide/zowe-chat/chat_prerequisite_teams_create_app_developer_portal",   
-                        "user-guide/zowe-chat/chat_prerequisite_teams_create_app_studio",                  
-                      ],
-                    },
+                    "user-guide/zowe-chat/chat_prerequisite_teams",
+                    "user-guide/zowe-chat/chat_prerequisite_teams_create_app_developer_portal",
                     {
                       type: "category",
                       label: "Creating a bot for Microsoft Teams bot app",
@@ -247,7 +244,15 @@ module.exports = {
                       label: "Creating and installing Slack app",
                       items: [
                         "user-guide/zowe-chat/chat_prerequisite_slack_create_app",
-                        "user-guide/zowe-chat/chat_prerequisite_slack_configure_app",
+                        {
+                          type: "category",
+                          label: "Creating and installing Slack app",
+                          items: [
+                            "user-guide/zowe-chat/chat_prerequisite_slack_configure_app",
+                            "user-guide/zowe-chat/chat_prerequisite_slack_socket_mode",
+                            "user-guide/zowe-chat/chat_prerequisite_slack_http_endpoint",                
+                          ],
+                        },
                         "user-guide/zowe-chat/chat_prerequisite_slack_install",                
                       ],
                     }, 
@@ -262,14 +267,19 @@ module.exports = {
           type: "category",
           label: "Installing Zowe Chat",
           items: [
-            "user-guide/zowe-chat/chat_install_overview",                
+            "user-guide/zowe-chat/chat_install_overview", 
+            "user-guide/zowe-chat/chat_start_stop",               
           ],
         }, 
         {
           type: "category",
           label: "Configuring Zowe Chat",
           items: [
-            "user-guide/zowe-chat/chat_configure_overview",                
+            "user-guide/zowe-chat/chat_configure_overview",
+            "user-guide/zowe-chat/chat_configure_server",
+            "user-guide/zowe-chat/chat_configure_mattermost", 
+            "user-guide/zowe-chat/chat_configure_teams",
+            "user-guide/zowe-chat/chat_configure_slack",              
           ],
         }, 
         "user-guide/zowe-chat/chat_uninstall",
@@ -311,7 +321,19 @@ module.exports = {
           type: "category",
           label: "Using Zowe API Mediation Layer",
           items: [
-            "user-guide/api-mediation-api-catalog",
+            "user-guide/api-mediation/using-api-mediation-layer",
+            {
+              type: "category",
+              label: "Using API Catalog",
+              items: [
+                "user-guide/api-mediation-view-service-information-and-api-doc",
+                "user-guide/api-mediation-swagger-try-it-out",
+                "user-guide/api-mediation-swagger-code-snippets",
+                "user-guide/api-mediation-static-api-refresh",
+                "user-guide/api-mediation-change-password-via-catalog",
+                "user-guide/onboard-wizard",
+                              ],
+            },
             "user-guide/api-mediation-metrics-service",
             "extend/extend-apiml/api-mediation-routing",
             "extend/extend-apiml/service-information",
@@ -413,7 +435,7 @@ module.exports = {
           type: "category",
           label: "Using Zowe Chat",
           items: [
-            "user-guide/zowe-chat/chat-use-interact-methods",
+            "user-guide/zowe-chat/chat_use_interact_methods",
           ],
         },
         "user-guide/sdks-using",
@@ -456,7 +478,6 @@ module.exports = {
         "extend/extend-apiml/onboard-micronaut-enabler",
         "extend/extend-apiml/onboard-nodejs-enabler",
         "extend/extend-apiml/onboard-static-definition",
-        "extend/extend-apiml/onboard-wizard",
         "extend/extend-apiml/api-mediation-sso",
         "extend/extend-apiml/create-apiml-extension",
         "extend/extend-apiml/api-mediation-message-service",

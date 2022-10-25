@@ -4,7 +4,7 @@ As a Zowe Chat user, you might encounter some issues with how Zowe Chat works. T
 
 ## Check the chatServer.log
 
-When you run into some errors, please check the server log which can be found in `$ZOWE_CHAT_HOME/chatServer.log/`). 
+When you run into some errors, you can check the server log which can be found in `$ZOWE_CHAT_HOME/chatServer.log/`. 
 
 ## Raising a Zowe Chat issue on GitHub
 
