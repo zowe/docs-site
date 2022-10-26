@@ -1046,11 +1046,11 @@ The following error message codes may appear on the app-server log. Use the foll
 
 ### ZWED0292I
 
-  Plugin _identifier_ loaded. Version: _plugin_ version.
+  Plugin _identifier_ loaded. Version: _pluginVersion_.
 
   **Reason:**
 
-  Plugin _identifier_ loaded successfully and the plugin version for the same is _plugin_ version.
+  Plugin _identifier_ loaded successfully and the plugin version for the same is _pluginVersion_.
 
   **Action:**
 
