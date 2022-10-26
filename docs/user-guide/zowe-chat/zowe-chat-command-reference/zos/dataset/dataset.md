@@ -47,14 +47,14 @@ Manages z/OS data sets. <!--dataset-description-->
 ```
 @bot zos dataset list status --dl user.asm
 ```
-- Show the data set \"user.asm\""
+- Show the data set "user.asm".
 
 ```
 @bot zos dataset list status user.*
 ```
-- Show all data sets of the user \"user\"
+- Show all data sets of the user "user".
 
 ```
 @bot dataset list member --dn user.asm
 ``` 
-- Show members of the data set \"user.asm\"
+- Show members of the data set "user.asm".
