@@ -38,13 +38,13 @@ The chat server must meet the following requirements.
 
    - Mattermost 7.0 or later
 
-     See [Configuring Mattermost chat platform](chat_prerequisite_mattermost).
+     See [Configuring Mattermost chat platform](chat_prerequisite_mattermost.md).
     
    - Microsoft Teams
 
-     See [Configuring Microsoft Teams chat platform](chat_prerequisite_teams).
+     See [Configuring Microsoft Teams chat platform](chat_prerequisite_teams.md).
   
    - Slack
          
-     See [Configuring Slack chat platform](chat_prerequisite_slack).
+     See [Configuring Slack chat platform](chat_prerequisite_slack.md).
        
