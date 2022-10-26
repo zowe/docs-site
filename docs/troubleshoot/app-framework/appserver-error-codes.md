@@ -1036,7 +1036,7 @@ The following error message codes may appear on the app-server log. Use the foll
 
   **Reason:**
 
-  Plugin with plugin identifier loaded, with version pluginVersion. The server attempted to load a total of pluginsAttempted with pluginsLoaded plugins successfully loaded.
+  Plugin with _pluginIdentifier_ loaded, with version _pluginVersion_. The server attempted to load a total of _pluginsAttempted_ with _pluginsLoaded_ plugins successfully loaded.
 
   **Action:**
 
@@ -1050,7 +1050,7 @@ The following error message codes may appear on the app-server log. Use the foll
 
   **Reason:**
 
-  Plugin identifier loaded successfully and the plugin version for the same is _plugin version_.
+  Plugin _identifier_ loaded successfully and the plugin version for the same is _plugin_ version.
 
   **Action:**
 
@@ -1064,7 +1064,7 @@ The following error message codes may appear on the app-server log. Use the foll
 
   **Reason:**
 
-  Successfully loaded _recognizers length_ for _appId_ into config at path _workspace/app-server/ZLUX/pluginStorage/org.zowe.zlux.ng2desktop/_.
+  Successfully loaded _recognizers length_ for _appId_ into config at path workspace/app-server/ZLUX/pluginStorage/org.zowe.zlux.ng2desktop/.
 
   **Action:**
 
@@ -1078,7 +1078,7 @@ The following error message codes may appear on the app-server log. Use the foll
 
   **Reason:**
 
-  Successfully loaded _actions length_ for appID into config at path _workspace/app-server/ZLUX/pluginStorage/org.zowe.zlux.ng2desktop/_ .
+  Successfully loaded _actions length_ for _appId_  into config at path workspace/app-server/ZLUX/pluginStorage/org.zowe.zlux.ng2desktop/.
 
   **Action:**
 
@@ -1092,7 +1092,7 @@ The following error message codes may appear on the app-server log. Use the foll
 
   **Reason:**
 
-  Loading remote iframe app plugin identifier which is located at _remoteUrl_.
+  Loading remote iframe app _plugin_identifier_ which is located at _remoteUrl_.
 
   **Action:**
 
@@ -1120,7 +1120,7 @@ The following error message codes may appear on the app-server log. Use the foll
 
   **Reason:**
 
-  Get pre-existing recognizers/pre-existing actions in config, if any
+  Get _pre-existing recognizers_/_pre-existing actions_ in config, if any for _appID_.
 
   **Action:**
 
