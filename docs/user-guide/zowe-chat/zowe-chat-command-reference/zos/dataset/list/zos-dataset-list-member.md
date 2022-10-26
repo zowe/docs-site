@@ -27,4 +27,4 @@ Show all members of a partitioned data set. <!--dataset-list-member-description-
 ```
 @bot dataset list member --dn user.asm
 ``` 
-- Show members of the data set \"user.asm\"
+- Show members of the data set "user.asm".

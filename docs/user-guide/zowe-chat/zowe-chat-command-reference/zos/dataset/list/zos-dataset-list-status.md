@@ -33,10 +33,10 @@ Show status or details of data sets. <!--dataset-list-status-description-->
 ```
 @bot zos dataset list status --dl user.asm
 ```
-- Show the data set \"user.asm\"
+- Show the data set "user.asm".
 
 ```
 @bot zos dataset list status user.*
 ```
     
-- Show all data sets of the user \"user\"
+- Show all data sets of the user "user".
