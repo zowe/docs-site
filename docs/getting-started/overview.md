@@ -205,8 +205,6 @@ Provides an advanced launcher for Zowe z/OS server components in a high availabi
 
 Zowe Chat is a chatbot that aims to enable a ChatOps collaboration model including z/OS resources and tools. Zowe Chat enables you to  interact with the mainframe from chat clients such as Slack, Microsoft Teams, and Mattermost. Zowe Chat helps to increase your productivity by eliminating or minimizing the context switching between different tools and user interfaces.
 
-![Zowe Chat](diagrams/chat_demo.png)
-
 <details>
 <summary> Learn more </summary>
 
@@ -236,9 +234,9 @@ Zowe Chat is based on the Common Bot framework, which is required for the chat p
 
 <!--todo add a diagram-->
 
-Ready to install Zowe Chat? See [Installing Zowe Chat](../user-guide/zowe-chat/chat_install_overview.md) to get started. 
-
 </details>
+
+For more information, see [Installing Zowe Chat](../user-guide/zowe-chat/chat_install_overview.md) and [Using Zowe Chat](../user-guide/zowe-chat/chat_use_interact_methods.md). 
 
 ### ZEBRA (Zowe Embedded Browser for RMF/SMF and APIs) - Incubator 
 

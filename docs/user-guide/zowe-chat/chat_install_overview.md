@@ -1,6 +1,6 @@
 # Installing Zowe Chat
 
-You can install Zowe Chat via a native installation package by running several commands.
+You can install Zowe Chat from a local package.
 
 ## Prerequisites
 
@@ -12,15 +12,9 @@ Before installing Zowe Chat, ensure that your environment meets the [system requ
 
 1. Log on to your Linux server. 
 
-1. Navigate to the target directory that you want to transfer the Zowe Chat installation package into or create a new directory. 
+1. Navigate to the target directory that you want to transfer the Zowe Chat package into or create a new directory. 
 
-1. When you are in the directory you want to transfer the Zowe Chat installation package into, issue the following command to upload it to the directory:
-
-   ```
-   put <zowe-chat-package-name>.tar.gz
-   ```
-   
-   Where *zowe-chat-package-name* is a variable that indicates the name of the Zowe Chat build file you downloaded. 
+1. When you are in the directory you want to transfer the Zowe Chat package into, upload it to the directory.
    
 1. Run the command to expand the downloaded package to the target directory.
 
