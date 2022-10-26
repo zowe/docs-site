@@ -6,4 +6,4 @@ Zowe Chat currently supports users to perform interactions with Zowe Chat bot.
 
 Check out the commands that Zowe Chat supports.
 
-- [z/OS commands](./zowe-chat-command-reference/zos/zos)
+- [z/OS commands](zowe-chat-command-reference/zos/zos)
