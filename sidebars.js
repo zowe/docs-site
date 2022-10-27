@@ -649,7 +649,7 @@ module.exports = {
       type: "category",
       label: "Zowe Chat command reference",
       items: [
-        "user-guide/zowe-chat/zowe-chat-command-reference",
+        "appendix/zowe-chat-command-reference/zos/zowe-chat-command-reference",
         {
           type: "category",
           label: "zos",
@@ -662,7 +662,7 @@ module.exports = {
                   type: "category",
                   label: "list",
                   items: [
-                    "user-guide/zowe-chat/zowe-chat-command-reference/zos/job/list/zos-job-list-status",
+                    "appendix/zowe-chat-command-reference/zos/job/list/zos-job-list-status",
                   ]
                 },
               ]
@@ -675,8 +675,8 @@ module.exports = {
                   type: "category",
                   label: "list",
                   items: [
-                    "user-guide/zowe-chat/zowe-chat-command-reference/zos/dataset/list/zos-dataset-list-status",
-                    "user-guide/zowe-chat/zowe-chat-command-reference/zos/dataset/list/zos-dataset-list-member",
+                    "appendix/zowe-chat-command-reference/zos/dataset/list/zos-dataset-list-status",
+                    "appendix/zowe-chat-command-reference/zos/dataset/list/zos-dataset-list-member",
                   ]
                 },
               ]
@@ -689,8 +689,8 @@ module.exports = {
                   type: "category",
                   label: "list",
                   items: [
-                    "user-guide/zowe-chat/zowe-chat-command-reference/zos/file/list/zos-file-list-status",
-                    "user-guide/zowe-chat/zowe-chat-command-reference/zos/file/list/zos-file-list-mounts",
+                    "appendix/zowe-chat-command-reference/zos/file/list/zos-file-list-status",
+                    "appendix/zowe-chat-command-reference/zos/file/list/zos-file-list-mounts",
                   ]
                 },
               ]
@@ -703,7 +703,7 @@ module.exports = {
                   type: "category",
                   label: "issue",
                   items: [
-                    "user-guide/zowe-chat/zowe-chat-command-reference/zos/command/issue/zos-command-issue-console",
+                    "appendix/zowe-chat-command-reference/zos/command/issue/zos-command-issue-console",
                   ]
                 },
               ]
@@ -716,7 +716,7 @@ module.exports = {
                   type: "category",
                   label: "list",
                   items: [
-                    "user-guide/zowe-chat/zowe-chat-command-reference/zos/help/list/zos-help-list-command",
+                    "appendix/zowe-chat-command-reference/zos/help/list/zos-help-list-command",
                   ]
                 },
               ]
