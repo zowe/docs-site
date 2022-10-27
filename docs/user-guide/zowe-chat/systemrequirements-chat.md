@@ -8,11 +8,11 @@ The chat server must meet the following requirements.
 
 - Processor number: 1
 - Memory: 4 GB
-- Disk space: 300 M for native installation
+- Disk space: 300 M
 - Port numbers: 2
-  - 4001 for Microservice
-  - 5001 for for messaging endpoint of Chatbot
-
+  - 7701 for for messaging endpoint of Chatbot
+  - 7702 for web app
+  
    :::note
    
    You can configure the port number in the configuration file as you need. 
