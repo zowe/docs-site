@@ -25,6 +25,11 @@ Issue a z/OS console command and print the response. In general, when issuing a 
 ## Examples
 
 ```
-zos command issue console "d a,l" --console-name test
+@bot zos command issue console “d a ,l”
+```
+- Issue a simple command.
+
+```
+@bot zos command issue console "d a,l" --console-name test
 ```
 - Issue a z/OS console command with a console name.

@@ -30,6 +30,11 @@ Interact with z/OS command related services, including z/OSMF Console services, 
 ## Examples
 
 ```
-zos command issue console "d a,l" --console-name test
+@bot zos command issue console “d a ,l”
+```
+- Issue a simple command.
+
+```
+@bot zos command issue console "d a,l" --console-name test
 ```
 - Issue a z/OS console command with a console name.

@@ -42,6 +42,14 @@ Manage USS files in a z/OS system. <!--file-description-->
 ## Examples
 
 ```
+@bot zos file
+```
+```
+@bot zos file list
+```
+- List all USS files.
+
+```
 @bot zos file list status -p '/u/user'
 ```
 - Show the files and directories in path '/u/user'.
@@ -54,14 +62,14 @@ Manage USS files in a z/OS system. <!--file-description-->
 ```
 @bot zos file list mounts
 ```
-- Show all mounted file systems.
+- Show all mounted filesystems.
 
 ```
 @bot zos file list mounts --mp '/a/ibmuser'
 ```
-- Show file systems which are mounted to a specific path.
+- Show filesystems which are mounted to a specific path.
 
 ```
 @bot zos file list mounts sac*
 ```
-- Show mounted file systems with name starting with 'sac'.
+- Show mounted filesystems with name starting with 'sac'.
