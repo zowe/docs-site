@@ -27,14 +27,14 @@ Show status or details of mounted z/OS file systems. <!--file-list-mounts-descri
 ```
 @bot zos file list mounts
 ```
-- Show all mounted file systems.
+- Show all mounted filesystems.
 
 ```
 @bot zos file list mounts --mp '/a/ibmuser'
 ```
-- Show file systems which are mounted to a specific path.
+- Show filesystems which are mounted to a specific path.
 
 ```
 @bot zos file list mounts sac*
 ```
-- Show mounted file systems with name starting with 'sac'.
+- Show mounted filesystems with name starting with 'sac'.

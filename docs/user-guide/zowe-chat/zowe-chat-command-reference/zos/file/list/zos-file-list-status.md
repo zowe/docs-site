@@ -25,6 +25,17 @@ Show status or details of USS files. <!--file-list-status-description-->
 ## Examples
 
 ```
+@bot zos file
+```
+```
+@bot zos file list
+```
+```
+@bot zos file list status
+```
+- All three commands can list all files with default settings.
+
+```
 @bot zos file list status -p '/u/user'
 ```
 - Show the files and directories in path '/u/user'.

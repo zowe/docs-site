@@ -17,9 +17,15 @@ List help information of the command.
 ## Examples
 
 ```
+@bot zos help
+```
+```
+@bot zos help list
+```
+```
 @bot zos help list command
 ```
-- Show all commands.
+- All three commands can list all supported Zowe Chat commands.
 
 ```
 @bot zos help list command job

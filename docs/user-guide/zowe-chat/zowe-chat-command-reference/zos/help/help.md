@@ -25,12 +25,13 @@ Show help information of commands.
 ```
 @bot zos help
 ```
-- Show all commands.
-
+```
+@bot zos help list
+```
 ```
 @bot zos help list command
 ```
-- Show all commands.
+- All three commands can list all supported Zowe Chat commands.
 
 ```
 @bot zos help list command job

@@ -26,7 +26,7 @@ zos job list status [jobId] --owner | o <owner> --prefix | p <prefix>
 
 For detailed Zowe Chat commands, see [Zowe Chat command reference](./zowe-chat-command-reference.md).
 
-## Zowe CLI commands
+### Zowe CLI commands
 
 You can also issue Zowe CLI commands to perform operations. In Technical Preview, Zowe Chat supports the commands for help and z/OS resource management including z/OS job, data set, USS file, error code, and console command.
 

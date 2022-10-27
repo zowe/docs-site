@@ -45,6 +45,17 @@ Manages z/OS data sets. <!--dataset-description-->
 ## Examples
 
 ```
+@bot zos dataset
+```
+```
+@bot zos dataset list 
+```
+```
+@bot zos dataset list status
+```
+- All three commands can list all data sets with default settings.
+
+```
 @bot zos dataset list status --dl user.asm
 ```
 - Show the data set "user.asm".

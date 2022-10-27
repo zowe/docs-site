@@ -28,13 +28,25 @@ Show status or detail of jobs. <!--job-list-status-description-->
 ## Examples
 
 ```
+@bot zos job 
+```
+```
+@bot zos job list
+```
+```
+@bot zos job list status
+```
+- All three commands can list all jobs with default settings. The command returns jobs owned by your user ID with any job name.
+
+```
+@bot zos job -o zow* -p myjo*
+```
+```
 @bot zos job list status -o zow* -p myjo*
 ``` 
-
-- Show all jobs owned by the users who have IDs starting with 'zow' and job names starting with 'myjo'.
+- Both the two commands can list all jobs owned by the users who have IDs starting with 'zow' and job names starting with 'myjo'.
 
 ```
 @bot zos job list status TSU15026
 ``` 
-
-- Show the job with job ID TSU15026.
+- Show the job with job ID "TSU15026".
