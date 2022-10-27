@@ -21,6 +21,10 @@ module.exports = {
     {
       type: "category",
       label: "Release notes",
+      link: {
+        type: "doc",
+        id: "getting-started/release-notes/introduction",
+      },
       items: [
         "getting-started/release-notes/v2_4_0",
         "getting-started/release-notes/v2_3_1",
@@ -28,7 +32,7 @@ module.exports = {
         "getting-started/release-notes/v2_2_0",
         "getting-started/release-notes/v2_1_0",
         "getting-started/release-notes/v2_0_0",
-        "getting-started/zowe-office-hours"
+        "getting-started/zowe-office-hours",
       ],
     },
     {
