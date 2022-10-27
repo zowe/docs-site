@@ -50,7 +50,10 @@ Manages z/OS data sets. <!--dataset-description-->
 ```
 @bot zos dataset list 
 ```
-- Both two commands can list all data sets with default settings.
+```
+@bot zos dataset list status
+```
+- All three commands can list all data sets with default settings.
 
 ```
 @bot zos dataset list status --dl user.asm

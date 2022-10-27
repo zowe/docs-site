@@ -47,7 +47,10 @@ Manage USS files in a z/OS system. <!--file-description-->
 ```
 @bot zos file list
 ```
-- List all USS files.
+```
+@bot zos file list status
+```
+- All three commands list all USS files.
 
 ```
 @bot zos file list status -p '/u/user'

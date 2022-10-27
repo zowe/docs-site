@@ -25,17 +25,6 @@ Show status or details of mounted z/OS file systems. <!--file-list-mounts-descri
 ## Examples
 
 ```
-@bot zos file
-```
-```
-@bot zos file list
-```
-```
-@bot zos file list mounts
-```
-- All three commands can list all mounted filesystems. 
-
-```
 @bot zos file list mounts
 ```
 - Show all mounted filesystems.

@@ -25,15 +25,9 @@ Show all members of a partitioned data set. <!--dataset-list-member-description-
 ## Examples
 
 ```
-@bot zos dataset
-```
-```
-@bot zos dataset list
-```
-```
 @bot zos dataset list member
 ```
-- All three commands can list all data set members with default settings. The command returns data set members owned by your HLQ name.
+- List all data set members with default settings. The command returns data set members owned by your HLQ name.
 
 ```
 @bot dataset list member --dn user.asm
