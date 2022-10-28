@@ -24,7 +24,7 @@ For example,
 zos job list status [jobId] --owner | o <owner> --prefix | p <prefix>
 ```
 
-For detailed Zowe Chat commands, see [Zowe Chat command reference](./zowe-chat-command-reference.md).
+For detailed Zowe Chat commands, see [Zowe Chat command reference](../../appendix/zowe-chat-command-reference/zos/zowe-chat-command-reference.md).
 
 ### Zowe CLI commands
 
