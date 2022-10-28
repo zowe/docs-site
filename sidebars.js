@@ -186,6 +186,7 @@ module.exports = {
       type: "category",
       label: "Installing Zowe Chat (Technical Preview)",
       items: [
+        "user-guide/zowe-chat/introduction",
         {
           type: "category",
           label: "Planning for Zowe Chat",
