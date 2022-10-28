@@ -275,9 +275,7 @@ module.exports = {
           type: "category",
           label: "Configuring Zowe Chat",
           items: [
-            "user-guide/zowe-chat/chat_configure_overview",
             "user-guide/zowe-chat/chat_configure_server",
-            "user-guide/zowe-chat/chat_configure_zosmf",
             {
               type: "category",
               label: "Configuring Chat Tools",

@@ -1,6 +1,6 @@
-# Configuring the chat tool - Slack
+# Configuring Zowe Chat with Slack
 
-This step is for Slack users only. You can configure your chat platform by editing the `slack.yaml` file.
+This step is for Slack users only. You configure your chat platform by editing the `slack.yaml` file.
 
 ## Prerequisite
 

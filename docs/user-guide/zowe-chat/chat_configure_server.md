@@ -1,8 +1,17 @@
-# Configuring the Zowe Chat server
+# Configuring Zowe Chat
+
+To complete configuration of Zowe Chat, you must complete the individual configuration steps listed below.
+
+- [Configure Zowe Chat Server](#zowe-chat-server-configuration)
+- [Configure z/OSMF Endpoint Information](#zowe-chat-zosmf-endpoint-configuration)
+- [Configure Chat Tool Information](#zowe-chat-tool-configuration)
+
+
+## Zowe Chat Server Configuration
 
 You can configure the Zowe Chat server by editing the `chatServer.yaml` configuration file.
 
-1. Go to the Zowe Chat configuration directory by running the following command. 
+1. Go to the Zowe Chat configuration directory by running the following command:
 
    ```
    cd $ZOWE_CHAT_HOME/config
@@ -74,3 +83,62 @@ You can configure the Zowe Chat server by editing the `chatServer.yaml` configur
      # Specify the absolute file path of the TLS certificate (PEM) if HTTPS protocol is specified.
      tlsCert: <Your absolute TLS cert file path of your messaging server>
     ```
+
+## Zowe Chat z/OSMF Endpoint Configuration
+
+Zowe Chat is configured to run against a single z/OSMF server. You describe your z/OSMF server information by editing the `zosmfServer.yaml` configuration file.
+
+1. Go to the z/OSMF server configuration directory by running the following command: 
+
+   ```
+   cd $ZOWE_CHAT_HOME/config
+   ```
+
+2. Edit the `zosmfServer.yaml` configuration file. Customize the default values based on your system . 
+
+   ```
+   # Specify the protocol of your Z/OSMF server. The value can be https or http.
+   # The default value is https.
+   protocol: https
+
+   # Specify the host name or IP address of your Z/OSMF server.
+   hostName: <Your host name>
+
+   # Specify the port number of your z/OSMF server.
+   # The default value is 443.
+   port: 443
+
+   # Specify whether self-signed certificates are rejected or not. The value can be true or false.
+   # The default value is true
+   rejectUnauthorized: true
+
+   # Specify authentication type. The value can be token or password
+   # The default value is password
+   authType: password
+
+   # If you prefer all bot requests against mainframe services to use a single service account, set to true
+   serviceAccount: 
+     # Enable or disable the service account. The value can be true or false.
+     # The default value is false.
+     enabled: false
+
+     # Service account id. if service account is enabled, this information is required.
+     user: <Service account ID>
+
+    # Service account password. if service account is enabled, this information is required.
+     password: <Service account password>
+    ```
+
+
+## Zowe Chat Tool Configuration
+
+Zowe Chat's chat tool configuration varies depending on your choice of chat tool. 
+
+**Slack**
+- [Configuring Zowe Chat with Slack](chat_configure_slack.md)
+
+**Microsoft Teams**
+- [Configuring Zowe chat with Microsoft Teams](chat_configure_teams.md)
+
+**Mattermost** 
+- [Configuring Zowe Chat with Mattermost](chat_configure_mattermost.md)
