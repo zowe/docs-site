@@ -17,9 +17,9 @@ The chat server must meet the following requirements.
    
    You can configure the port number in the configuration file as you need. 
    
-   To configure the port number for Microservice, edit the Microservice server configuration file<!--at ZCHATOPS_HOME/microservice/config/bnzsvc-server.yaml-->. 
+   To configure the port number for web app, edit the configuration file `ZOWE_CHAT_HOME/config/chatServer.yaml`. 
    
-   To configure the port number for the messaging endpoint, edit the chat tool configuration file<!--at ZCHATOPS_HOME/chatbot/config/bnzbot-server.yaml-->.
+   To configure the port number for the messaging endpoint, edit the chat tool configuration file at `$ZOWE_CHAT_HOME/config/chatTools/<mattermost | msteams | slack>.yaml`.
    :::
 
 -   Internet access 
@@ -36,15 +36,9 @@ The chat server must meet the following requirements.
 
 - Chat platform: 
 
-   - Mattermost 7.0 or later
-
-     See [Configuring Mattermost chat platform](chat_prerequisite_mattermost.md).
+   - Mattermost 7.0 or later. See [Configuring Mattermost chat platform](chat_prerequisite_mattermost.md).
     
-   - Microsoft Teams
-
-     See [Configuring Microsoft Teams chat platform](chat_prerequisite_teams.md).
+   - Microsoft Teams. See [Configuring Microsoft Teams chat platform](chat_prerequisite_teams.md).
   
-   - Slack
-         
-     See [Configuring Slack chat platform](chat_prerequisite_slack.md).
+   - Slack. See [Configuring Slack chat platform](chat_prerequisite_slack.md).
        

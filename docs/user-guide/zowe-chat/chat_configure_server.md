@@ -15,9 +15,6 @@ You can configure the Zowe Chat server by editing the `chatServer.yaml` configur
    # The default value is mattermost.
    chatToolType: mattermost
 
-   # # Specify your chat tool's configuration here. By default, sample configuration files will be in the "chatTools" sub-directory.
-   # chatToolConfiguration: ./chatTools/mattermost.yaml
-
    # Configure logging
    log:
      # Specify the log file path
@@ -26,16 +23,20 @@ You can configure the Zowe Chat server by editing the `chatServer.yaml` configur
   
      # Specify the level of logs, the value can be error, warn, info, verbose, debug or silly.
      # The default value is info.
-     level: debug
+     level: info
 
      # Specify the maximum size of the file after which it will rotate. The value can be a number of bytes without any unit
      # or a number suffixed with 'k', 'm', or 'g' as units of kb, mb, or gb separately.
      # The default value is null, which means the file size is unlimited except operating system limit.
-     maximumSize: 10m
+     maximumSize: null
 
      # Specify the maximum file number of logs to keep.
      # The default value is null, which means only one log file and no logs will be removed.
-     maximumFiles: 10
+     maximumFile: null
+
+     # Specify whether the console output is suppressed or not. The value can be true or false.
+     # The default value is true, which means the console output is suppressed.
+     consoleSilent: true
 
    # Specify the chatting limit
    limit:
@@ -62,6 +63,7 @@ You can configure the Zowe Chat server by editing the `chatServer.yaml` configur
      # The default value is 7702.
      port: 7702
 
+     # TODO: this should not be configurable, we should set it. At the very least, it must not be obviously configurable - advanced only.
      # Specify the base path of your HTTP endpoint.
      # The default value is /zowe/chat/index
      basePath: /zowe/chat/index

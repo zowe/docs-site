@@ -31,31 +31,29 @@ Make sure that you have configured your chat tool when configuring the Zowe Chat
    botId: <Your Bot ID>
 
    # Specify the password of your Microsoft Teams bot.
-   # The password will be encrypted automatically by Z ChatOps server with <AES> prefix added.
    botPassword: <Your bot password>
 
    # Configure the messaging endpoint for your Microsoft Teams bot.
    # Configure the messaging application which your Microsoft Teams bot will communicate with when some user clicking actions occur.
    messagingApp:
-   # Specify the protocol of your messaging endpoint. The value only can be https.
-   # The default value is https.
-   protocol: https
+     # Specify the protocol of your messaging endpoint. The value only can be https.
+     # The default value is https.
+     protocol: https
 
-   # Specify the host name or IP address of your messaging endpoint.
-   hostName: <Your host name>
+     # Specify the host name or IP address of your messaging endpoint.
+     hostName: <Your host name>
 
-   # Specify the port number of your messaging endpoint.
-   # The default value is 7701.
-   port: 7701
+     # Specify the port number of your messaging endpoint.
+     # The default value is 7701.
+     port: 7701
   
-   # Specify the base path of your messaging endpoint.
-   # The default value is /zowe/chat/api/v1.
-   basePath: /zowe/chat/api/v1
+     # Specify the base path of your messaging endpoint.
+     # The default value is /zowe/chat/api/v1.
+     basePath: /zowe/chat/api/v1
 
-   # Specify the absolute file path of the TLS key (PEM) if HTTPS protocol is specified.  
-   tlsKey: <Your absolute TLS key file path of your messaging server>
+     # Specify the absolute file path of the TLS key (PEM) if HTTPS protocol is specified.  
+     tlsKey: <Your absolute TLS key file path of your messaging server>
 
-   # Specify the absolute file path of the TLS certificate (PEM) if HTTPS protocol is specified.
-   tlsCert: <Your absolute TLS cert file path of your messaging server>
+     # Specify the absolute file path of the TLS certificate (PEM) if HTTPS protocol is specified.
+     tlsCert: <Your absolute TLS cert file path of your messaging server>
    ```
-   <!-->
