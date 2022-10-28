@@ -1032,181 +1032,113 @@ The following error message codes may appear on the app-server log. Use the foll
 
 ### ZWED0290I
 
-  Plugin (_pluginId_) loaded. Version: _pluginVersion_. Successful: _overallSuccess_% (_pluginsLoaded_/_pluginsTotal_) Attempted: %s% (%s/%s)
+  Plugin (_pluginId_) loaded. Version: _pluginVersion_. Successful: _overallSuccess_% (_pluginsLoaded_/_pluginsTotal_) Attempted: _pluginsAttempted_% (_attemptedCount_/_pluginsTotal_)
 
   **Reason:**
 
-  TODO
+  Plugin with _pluginId_ loaded, with version _pluginVersion_. The server attempted to load a total of _pluginsTotal_ with _pluginsLoaded_ plugins already successfully loaded.
 
   **Action:**
 
-  TODO
-
-
-
-### ZWED0291I
-
-  Server is ready at %s Plugins successfully loaded: %s% (%s/%s)
-
-  **Reason:**
-
-  TODO
-
-  **Action:**
-
-  TODO
+  No action Required.
 
 
 
 ### ZWED0292I
 
-  Plugin (%s) loaded. Version: %s.
+  Plugin _identifier_ loaded. Version: _pluginVersion_.
 
   **Reason:**
 
-  TODO
+  Plugin _identifier_ loaded successfully and the plugin version for the same is _pluginVersion_.
 
   **Action:**
 
-  TODO
-
-
-
-### ZWED0293I
-
-  Handling scan plugin request from worker=%d
-
-  **Reason:**
-
-  TODO
-
-  **Action:**
-
-  TODO
+  No action Required.
 
 
 
 ### ZWED0294I
 
-  Successfully loaded %d recognizers for '%s' into config
+  Successfully loaded _recognizers length_ recognizers for _appId_ into config
 
   **Reason:**
 
-  TODO
+  Successfully loaded _recognizers length_ for _appId_ into config at path workspace/app-server/ZLUX/pluginStorage/org.zowe.zlux.ng2desktop/.
 
   **Action:**
 
-  TODO
+  No action Required.
 
 
 
 ### ZWED0295I
 
-  Successfully loaded %d actions for '%s' into config
+  Successfully loaded _actions length_ actions for _appId_ into config
 
   **Reason:**
 
-  TODO
+  Successfully loaded _actions length_ for _appId_  into config at path workspace/app-server/ZLUX/pluginStorage/org.zowe.zlux.ng2desktop/.
 
   **Action:**
 
-  TODO
+  No action required.
 
 
 
-### ZWED0296I": "(%s) is a supported platform for %s to install (%s).
+### ZWED0299I
+
+  Loading remote iframe app _plugin_identifier_ located at _remoteUrl_.
 
   **Reason:**
 
-  TODO
+  Loading remote iframe app _plugin_identifier_ which is located at _remoteUrl_.
 
   **Action:**
 
-  TODO
+  No action Required.
 
 
 
-### ZWED0297I": "(%s) is a supported architecture for %s to install (%s).
+### ZWED0300I
+
+  APIML Storage configured
 
   **Reason:**
 
-  TODO
+  caching service/APML storage is configured
 
   **Action:**
 
-  TODO
+  No action Required.
 
 
 
-### ZWED0298I": "(%s) is a supported endpoint for %s to install (%s).
+### ZWED0301I
+
+  Found _pre-existing recognizers_/_pre-existing actions_ in config for _appID_.
 
   **Reason:**
 
-  TODO
+  Get _pre-existing recognizers_/_pre-existing actions_ in config, if any for _appID_.
 
   **Action:**
 
-  TODO
+  No action Required.
 
 
 
-### ZWED0299I": "Loading remote iframe app %s located at %s
+### ZWED0302I
+
+  HA mode is enabled/disabled.
 
   **Reason:**
 
-  TODO
+  High Availability mode is enabled/disabled.
 
   **Action:**
 
-  TODO
-
-
-
-### ZWED0300I": "APIML Storage configured
-
-  **Reason:**
-
-  TODO
-
-  **Action:**
-
-  TODO
-
-
-
-### ZWED0301I": "Found %s in config for '%s'
-
-  **Reason:**
-
-  TODO
-
-  **Action:**
-
-  TODO
-
-
-
-### ZWED0302I": "HA mode is %s
-
-  **Reason:**
-
-  TODO
-
-  **Action:**
-
-  TODO
-
-
-
-### ZWED0003W":"User=%s (%s): Session %s failed. Plugin response: %s
-
-  **Reason:**
-
-  TODO
-
-  **Action:**
-
-  TODO
+  No action Required.
 
 
 
