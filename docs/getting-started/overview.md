@@ -232,7 +232,7 @@ Read the following blogs to learn more about Zowe Chat:
 
 Zowe Chat is based on the Common Bot framework, which is required for the chat platform Slack, Mattermost, and Microsoft Teams. 
 
-<!--todo add a diagram-->
+![Zowe chat architecture](./diagrams/zowe-chat-architecture.png)
 
 </details>
 

@@ -30,11 +30,9 @@ Make sure that you have configured your chat tool when configuring the Zowe Chat
    botUserName: zowechat
 
    # Specify the signing secret of your chatbot Slack app
-   # The secret will be encrypted automatically by Z ChatOps server with <AES> prefix added.
    signingSecret: <Your slack signing secret>
 
    # Specify the bot user OAuth token of your chatbot Slack app
-   # The token will be encrypted automatically by Z ChatOps server with <AES> prefix added.
    token: <Your bot user oauth token>
 
    # Specify the protocol to connect to Slack for your chatbot Slack app to receive app payloads.
@@ -47,35 +45,34 @@ Make sure that you have configured your chat tool when configuring the Zowe Chat
      enabled: true
 
      # Specify the app level token of your chatbot Slack app.
-     # The token will be encrypted automatically by Z ChatOps server with <AES> prefix added.
      appToken: <Your app level token>
 
-     # Configure the messaging application which Slack will communicate with when some user clicking actions occur.
-     httpEndpoint:
+   # Configure the messaging application which Slack will communicate with when some user clicking actions occur.
+   httpEndpoint:
      # Enable or disable the httpEndpoint connection protocol. The value can be true or false.
      # The default value is false.
      enabled: false
 
      messagingApp:
-     # Specify the protocol of your HTTP endpoint. The value can be https or http.
-     # The default value is https.
-     protocol: https
+       # Specify the protocol of your HTTP endpoint. The value can be https or http.
+       # The default value is https.
+       protocol: https
 
-     # Specify the host name or IP address of your HTTP endpoint.
-     hostName: <Your host name>
+       # Specify the host name or IP address of your HTTP endpoint.
+       hostName: <Your host name>
 
-     # Specify the port number of your HTTP endpoint.
-     # The default value is 7701.
-     port: 7701
+       # Specify the port number of your HTTP endpoint.
+       # The default value is 7701.
+       port: 7701
     
-     # Specify the base path of your HTTP endpoint.
-     # The default value is /zowe/chat/api/v1.
-     basePath: /zowe/chat/api/v1
+       # Specify the base path of your HTTP endpoint.
+       # The default value is /zowe/chat/api/v1.
+       basePath: /zowe/chat/api/v1
 
-     # Specify the absolute file path of the TLS key (PEM) if HTTPS protocol is specified.  
-     tlsKey: <Your absolute TLS key file path of your messaging server>
+       # Specify the absolute file path of the TLS key (PEM) if HTTPS protocol is specified.  
+       tlsKey: <Your absolute TLS key file path of your messaging server>
 
-     # Specify the absolute file path of the TLS certificate (PEM) if HTTPS protocol is specified.
-     tlsCert: <Your absolute TLS cert file path of your messaging server>
+       # Specify the absolute file path of the TLS certificate (PEM) if HTTPS protocol is specified.
+       tlsCert: <Your absolute TLS cert file path of your messaging server>
     ```
 

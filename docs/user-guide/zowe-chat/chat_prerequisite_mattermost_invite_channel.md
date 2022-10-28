@@ -28,7 +28,7 @@ You can create your own private channel in Mattermost, invite your bot user to y
 
 4.  Enter the name of your bot account to add it to this channel, for example, bnz. You can see bnz in the list. Select it and click **Add**.
 
-    ![Add bnz](../../images/zowe-chat/mattermost_add_bnz.png "Add your bot account")
+    ![Add zowechat](../../images/zowe-chat/mattermost_add_zowechat.png "Add your bot account")
 
 
 You add your bot account to your channel successfully.

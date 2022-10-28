@@ -14,7 +14,7 @@ Make sure that you have configured your chat tool when configuring the Zowe Chat
    cd $ZOWE_CHAT_HOME/config/chatTools
    ```
 
-2. Download the SSL certificate of Mattermost server.
+2. If you enabled TLS on the Mattermost Server when you [create an administrator account](chat_prerequisite_mattermost_admin_account.md), you can download the SSL certificate of Mattermost server. 
 
    1. Log in to Mattermost with your administrator account.
    2. Click Main Menu icon and then click System Console. 
@@ -72,31 +72,30 @@ Make sure that you have configured your chat tool when configuring the Zowe Chat
    botUserName: zowechat
 
    # Specify the access token to connect to your bot.
-   # The token will be encrypted automatically by Z ChatOps server with <AES> prefix added.
    botAccessToken: <Your bot token>
 
    # Configure the messaging application which your Mattermost server will communicate with when some user clicking actions occur.
    messagingApp:
-   # Specify the protocol of your HTTP endpoint. The value can be https or http.
-   # The default value is https.
-   protocol: https
+     # Specify the protocol of your HTTP endpoint. The value can be https or http.
+     # The default value is https.
+     protocol: https
 
-   # Specify the host name or IP address of your HTTP endpoint.
-   hostName: <Your host name>
+     # Specify the host name or IP address of your HTTP endpoint.
+     hostName: <Your host name>
 
-   # Specify the port number of your HTTP endpoint.
-   # The default value is 7701.
-   port: 7701
+     # Specify the port number of your HTTP endpoint.
+     # The default value is 7701.
+     port: 7701
   
-   # Specify the base path of your HTTP endpoint.
-   # The default value is /zowe/chat/api/v1.
-   basePath: /zowe/chat/api/v1
+     # Specify the base path of your HTTP endpoint.
+     # The default value is /zowe/chat/api/v1.
+     basePath: /zowe/chat/api/v1
 
-   # Specify the absolute file path of the TLS key (PEM) if HTTPS protocol is specified.  
-   tlsKey: <Your absolute TLS key file path of your messaging server>
+     # Specify the absolute file path of the TLS key (PEM) if HTTPS protocol is specified.  
+     tlsKey: <Your absolute TLS key file path of your messaging server>
 
-   # Specify the absolute file path of the TLS certificate (PEM) if HTTPS protocol is specified.
-   tlsCert: <Your absolute TLS cert file path of your messaging server>
+     # Specify the absolute file path of the TLS certificate (PEM) if HTTPS protocol is specified.
+     tlsCert: <Your absolute TLS cert file path of your messaging server>
    ``` 
 
 <!--https://github.com/zowe/zowe-chat/main/packages/chat/src/config/chatTools/mattermost.yaml-->
