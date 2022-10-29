@@ -8,7 +8,7 @@ Before installing Zowe Chat, ensure that your environment meets the [system requ
 
 ## Installing
 
-1. Download the Zowe Chat package from [Zowe.org](https://www.zowe.org/download.html). Navigate to **Technical Preview** > **Zowe Chat** section, and select the button to download the Zowe Chat build.mYou'll get a tar.gz file.
+1. Download the Zowe Chat package from [Zowe.org](https://www.zowe.org/download.html). Navigate to **Technical Preview** > **Zowe Chat** section, and select the button to download the Zowe Chat build. You'll get a tar.gz file.
 
 1. Log on to your Linux server. 
 
