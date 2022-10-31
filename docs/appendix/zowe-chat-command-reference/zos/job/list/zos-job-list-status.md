@@ -6,7 +6,7 @@ Show status or detail of jobs. <!--job-list-status-description-->
 
 ## Usage
 
-```zos job list status [jobID] --owner | -o <owner> --prefix | -p <prefix> --limit <limit>``` <!--job-synopsis-->
+```zos job list status [jobID] --owner | -o <owner> --prefix | -p <prefix> --limit <limit>``` 
 
 ## Positional Arguments
 

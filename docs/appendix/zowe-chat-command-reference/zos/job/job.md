@@ -7,7 +7,6 @@ Manage z/OS jobs.  <!--job-description-->
 ## Usage
 
 `zos job list status [jobID] --owner | -o <owner> --prefix | -p <prefix> --limit <limit>`
-<!--job-synopsis-->
 
 ## Action
 
