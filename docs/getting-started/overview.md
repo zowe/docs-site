@@ -210,20 +210,27 @@ Zowe Chat is a chatbot that aims to enable a ChatOps collaboration model includi
 
 #### Zowe Chat key features
 
-- **z/OS resource management:**
-  
-  Enables you to manage z/OS resources, such as z/OS job, data set, and USS files. You can also issue Zowe CLI commands including console commands directly from the chat tool. You can drill down on a specific job, data set, error code, and so on to get more details through the drop-down menu that Zowe Chat provides. 
+- **Manage z/OS resource in chat tool channels**
+
+  Check your z/OS job, data set, and USS files status directly in chat tool channels. You can also issue Zowe CLI commands including console commands directly from the chat tool. You can drill down on a specific job, data set, error code, and so on to get more details through button or drop-down menu that Zowe Chat provides.
+
+- **Execute Zowe CLI commands in chat tool channels**
+
+  You can also issue Zowe CLI commands to perform operations such as help and z/OS resource management including z/OS job, data set, USS file, error code, and console command. Theoretically, most of Zowe CLI commands are supported as long as it is executable with single-submit.
+
+- **Extensibility**
+
+  Zowe Chat is extensible via plug-ins. You can extend Zowe Chat by developing plug-ins and contributing code to the base Zowe Chat or existing plug-ins.
 
 - **Security:**
    
-   Zowe Chat makes use of z/OS SAF calls and supports the three main security management products on z/OS (RACF, Top Secret, ACF2). You can log in to the chat client via enterprise standards, including two factor authentication if required. The first time you issue a command to the Zowe Chat installed in the chat workspace, it prompts you to log in with the mainframe ID using a one-time URL. Once authenticated against the mainframe security, Zowe Chat securely caches in memory the relationship between your Chat tool ID and the mainframe ID. Zowe Chat’s Security Facility will generate credentials for downstream API requests.
-
+  Zowe Chat makes use of z/OS SAF calls and supports the three main security management products on z/OS (RACF, Top Secret, ACF2). You can log in to the chat client via enterprise standards, including two factor authentication if required. The first time you issue a command to the Zowe Chat installed in the chat workspace, it prompts you to log in with the mainframe ID using a one-time URL. Once authenticated against the mainframe security, Zowe Chat securely caches in memory the relationship between your Chat tool ID and the mainframe ID. Zowe Chat’s Security Facility will generate credentials for downstream API requests.
 
 - **Display alerts:**
 
-   Allows you to send alert or event to a channel in the chat tool in use. An event data model enables Zowe Chat extenders to send alerts to a channel in the chat through Zowe Chat. 
+  Allows you to send alert or event to a channel in the chat tool in use. An event data model enables Zowe Chat extenders to send alerts to a channel in the chat through Zowe Chat.
 
-Read the following blogs to learn more about Zowe Chat: 
+Read the following blogs to learn more about Zowe Chat:
 
 - [Zowe Gets Chatty](https://medium.com/zowe/zowe-gets-chatty-842e3b548902)
 - [Zowe Chat can make you more productive: user scenarios](https://medium.com/zowe/zowe-chat-can-make-you-more-productive-user-scenarios-f52a9985dd50)
