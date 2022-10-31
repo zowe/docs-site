@@ -277,6 +277,7 @@ module.exports = {
           items: [
             "user-guide/zowe-chat/chat_configure_overview",
             "user-guide/zowe-chat/chat_configure_server",
+            "user-guide/zowe-chat/chat_configure_zosmf",
             "user-guide/zowe-chat/chat_configure_mattermost", 
             "user-guide/zowe-chat/chat_configure_teams",
             "user-guide/zowe-chat/chat_configure_slack",              
