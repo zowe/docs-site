@@ -42,16 +42,11 @@ Manage USS files in a z/OS system. <!--file-description-->
 ## Examples
 
 ```
-@bot zos file
+@bot zos file -p '/u/user'
 ```
 ```
-@bot zos file list
+@bot zos file list -p '/u/user'
 ```
-```
-@bot zos file list status
-```
-- All three commands list all USS files.
-
 ```
 @bot zos file list status -p '/u/user'
 ```

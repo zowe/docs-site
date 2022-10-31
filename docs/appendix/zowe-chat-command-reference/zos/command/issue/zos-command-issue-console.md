@@ -6,11 +6,11 @@ Issue a z/OS console command and print the response. In general, when issuing a 
 
 ## Usage
 
-`zos command issue console <positional argument> <option>`
+`zos command issue console [commandString] --console-name | --cn <consoleName> --system-name | --sn <systemName>`
 
 ## Positional Arguments
 
-- `cmdString`
+- `commandString`
 
     - The z/OS console command to issue.
 
@@ -25,7 +25,7 @@ Issue a z/OS console command and print the response. In general, when issuing a 
 ## Examples
 
 ```
-@bot zos command issue console “d a ,l”
+@bot zos command issue console “d a,l”
 ```
 - Issue a simple command.
 
