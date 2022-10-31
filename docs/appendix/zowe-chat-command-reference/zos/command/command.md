@@ -22,10 +22,10 @@ Interact with z/OS command related services, including z/OSMF Console services, 
 
 - [zos command issue console](./issue/zos-command-issue-console#options)
 
-    | Full name  | Type |
-    | :---- | :---- |
-    | --console-name | string |
-    | --system-name  | string |
+    | Full name  | Alias| Type |
+    | :---- | :---- | :---- |
+    | --console-name |--cn| string |
+    | --system-name  |--sn|string |
 
 ## Examples
 
