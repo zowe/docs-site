@@ -4,9 +4,9 @@
 
 ## Usage
 
-`zos file list status [fileName*] --path | p <path> --limit <limit>`
+`zos file list status [fileName*] --path | -p <path> --limit <limit>`
 
-```zos file list mounts [fileSystemName*] --mount-point | mp <mount-point-path> --limit <limit>```
+```zos file list mounts [fileSystemName*] --mount-point | --mp <mount-point-path> --limit <limit>```
 
 ## Objects
 

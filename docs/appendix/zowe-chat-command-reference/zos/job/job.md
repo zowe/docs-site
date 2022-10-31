@@ -6,8 +6,7 @@ Manage z/OS jobs.  <!--job-description-->
 
 ## Usage
 
-`zos job list status [jobId] --owner | o <owner> --prefix | p <prefix> --limit <limit>`
-<!--job-synopsis-->
+`zos job list status [jobID] --owner | -o <owner> --prefix | -p <prefix> --limit <limit>`
 
 ## Action
 
@@ -25,8 +24,8 @@ Manage z/OS jobs.  <!--job-description-->
 
     | Full name  | Alias | Type |
     | :---- | :----  | :---- |
-    | --owner | o | string |
-    | --prefix | p | string |
+    | --owner | -o | string |
+    | --prefix | -p | string |
     | --limit |  | number |
 
 ## Examples

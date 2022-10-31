@@ -6,9 +6,9 @@ Manages z/OS data sets. <!--dataset-description-->
 
 ## Usage 
 
-```zos dataset list status [datasetName*] --dsname-level | dl <dsnamelevel> --volume-serial | vs <volumeserial> --start | s <firstDatasetName> --limit <limit>```
+```zos dataset list status [datasetName*] --dsname-level | --dl <dsnamelevel> --volume-serial | --vs <volumeserial> --start | -s <firstDatasetName> --limit <limit>```
 
-```zos dataset list member [datasetMemberName*] --dataset-name | dn <datasetName> --limit <limit>```
+```zos dataset list member [datasetMemberName*] --dataset-name | --dn <datasetName> --limit <limit>```
 
 ## Action
 
@@ -30,16 +30,16 @@ Manages z/OS data sets. <!--dataset-description-->
 
     | Full name  | Alias | Type |
     | :---- | :----  | :---- |
-    | --dsname-level | dl | string |
-    | --volume-serial| vs | string |
-    | --start | s | string |
+    | --dsname-level | --dl | string |
+    | --volume-serial| --vs | string |
+    | --start | -s | string |
     | --limit |  | number |
 
 - [zos dataset list member](./list/zos-dataset-list-member#options)
 
     | Full name  | Alias | Type |
     | :---- | :----  | :---- |
-    | --dataset-name | dn | string |
+    | --dataset-name | --dn | string |
     | --limit |  | number |
 
 ## Examples

@@ -26,7 +26,6 @@ Issue a z/OS console command and print the response. In general, when issuing a 
 
 ```
 @bot zos command issue console “d a,l”
-
 ```
 - Issue a simple command.
 

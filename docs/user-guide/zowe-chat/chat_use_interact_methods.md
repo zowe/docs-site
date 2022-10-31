@@ -21,7 +21,7 @@ You can issue Zowe Chat commands in the following format:
 For example, 
 
 ```
-zos job list status [jobId] --owner | o <owner> --prefix | p <prefix>
+zos job list status [jobID] --owner | -o <owner> --prefix | -p <prefix>
 ```
 
 For detailed Zowe Chat commands, see [Zowe Chat command reference](../../appendix/zowe-chat-command-reference/zos/zowe-chat-command-reference.md).
