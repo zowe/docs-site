@@ -1,6 +1,6 @@
-# Configuring the chat tool - Microsoft Teams
+# Configuring Zowe Chat with Microsoft Teams
 
-This step is for Microsoft Teams users only. You can configure your chat platform by editing the `msteams.yaml` file.
+This step is for Microsoft Teams users only. You configure your chat platform by editing the `msteams.yaml` file.
 
 ## Prerequisite
 

@@ -1,6 +1,6 @@
-# Configuring the chat tool - Mattermost
+# Configuring Zowe Chat with Mattermost
 
-This step is for Mattermost users only. You can configure your chat platform by editing the `mattermost.yaml` file.
+This step is for Mattermost users only. You configure your chat platform by editing the `mattermost.yaml` file.
 
 ## Prerequisite
 

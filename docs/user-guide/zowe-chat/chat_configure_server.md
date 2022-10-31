@@ -1,8 +1,16 @@
-# Configuring the Zowe Chat server
+# Configuring Zowe Chat
+
+To complete the configuration of Zowe Chat, you must complete the individual configuration steps listed below.
+
+1. [Configure Zowe Chat server](#zowe-chat-server-configuration)
+2. [Configure z/OSMF endpoint information](#zowe-chat-zosmf-endpoint-configuration)
+3. [Configure chat tool information](#chat-tool-configuration)
+
+## Zowe Chat server configuration
 
 You can configure the Zowe Chat server by editing the `chatServer.yaml` configuration file.
 
-1. Go to the Zowe Chat configuration directory by running the following command. 
+1. Go to the Zowe Chat configuration directory by running the following command:
 
    ```
    cd $ZOWE_CHAT_HOME/config
@@ -63,7 +71,6 @@ You can configure the Zowe Chat server by editing the `chatServer.yaml` configur
      # The default value is 7702.
      port: 7702
 
-     # TODO: this should not be configurable, we should set it. At the very least, it must not be obviously configurable - advanced only.
      # Specify the base path of your HTTP endpoint.
      # The default value is /zowe/chat/index
      basePath: /zowe/chat/index
@@ -74,3 +81,62 @@ You can configure the Zowe Chat server by editing the `chatServer.yaml` configur
      # Specify the absolute file path of the TLS certificate (PEM) if HTTPS protocol is specified.
      tlsCert: <Your absolute TLS cert file path of your messaging server>
     ```
+
+## Zowe Chat z/OSMF endpoint configuration
+
+Zowe Chat is configured to run against a single z/OSMF server. You describe your z/OSMF server information by editing the `zosmfServer.yaml` configuration file.
+
+1. Go to the z/OSMF server configuration directory by running the following command: 
+
+   ```
+   cd $ZOWE_CHAT_HOME/config
+   ```
+
+2. Edit the `zosmfServer.yaml` configuration file. Customize the default values based on your system . 
+
+   ```
+   # Specify the protocol of your Z/OSMF server. The value can be https or http.
+   # The default value is https.
+   protocol: https
+
+   # Specify the host name or IP address of your Z/OSMF server.
+   hostName: <Your host name>
+
+   # Specify the port number of your z/OSMF server.
+   # The default value is 443.
+   port: 443
+
+   # Specify whether self-signed certificates are rejected or not. The value can be true or false.
+   # The default value is true
+   rejectUnauthorized: true
+
+   # Specify authentication type. The value can be token or password
+   # The default value is password
+   # Note: token is not supported at present
+   authType: password
+
+   # If you prefer all bot requests against mainframe services to use a single service account, set to true
+   serviceAccount: 
+     # Enable or disable the service account. The value can be true or false.
+     # The default value is false.
+     enabled: false
+
+     # Service account id. if service account is enabled, this information is required.
+     user: <Service account ID>
+
+     # Service account password. if service account is enabled, this information is required.
+     password: <Service account password>
+    ```
+
+## Chat tool configuration
+
+Zowe Chat's chat tool configuration varies depending on your choice of chat tool. 
+
+**Slack**
+- [Configuring Zowe Chat with Slack](chat_configure_slack.md)
+
+**Microsoft Teams**
+- [Configuring Zowe chat with Microsoft Teams](chat_configure_teams.md)
+
+**Mattermost** 
+- [Configuring Zowe Chat with Mattermost](chat_configure_mattermost.md)
