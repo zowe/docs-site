@@ -6,7 +6,7 @@ Show status or details of mounted z/OS file systems. <!--file-list-mounts-descri
 
 ## Usage
 
-`zos file list mounts [fileSystemName*] --mount-point | mp <mount-point-path> --limit <limit>`
+`zos file list mounts [fileSystemName*] --mount-point | --mp <mount-point-path> --limit <limit>`
 
 ## Positional Arguments
 

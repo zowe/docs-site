@@ -6,7 +6,7 @@ Show all members of a partitioned data set. <!--dataset-list-member-description-
 
 ## Usage
 
-```zos dataset list member [datasetMemberName*] --dataset-name | dn <datasetName> --limit <limit>```
+```zos dataset list member [datasetMemberName*] --dataset-name | --dn <datasetName> --limit <limit>```
 
 ## Positional Arguments
 

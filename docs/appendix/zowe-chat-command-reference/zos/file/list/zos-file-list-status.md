@@ -6,7 +6,7 @@ Show status or details of USS files. <!--file-list-status-description-->
 
 ## Usage
 
-`zos file list status [fileName*] --path | p <path> --limit <limit>`
+`zos file list status [fileName*] --path | -p <path> --limit <limit>`
 
 ## Positional Arguments
 

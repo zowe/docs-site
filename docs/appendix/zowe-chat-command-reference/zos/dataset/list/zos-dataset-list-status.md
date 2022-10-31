@@ -6,7 +6,7 @@ Show status or details of data sets. <!--dataset-list-status-description-->
 
 ## Usage
 
-`zos dataset list status [datasetName*] --dsname-level | dl <dsnamelevel> --volume-serial | vs <volumeserial> --start | s <firstDatasetName> --limit <limit>`
+`zos dataset list status [datasetName*] --dsname-level | --dl <dsnamelevel> --volume-serial | --vs <volumeserial> --start | -s <firstDatasetName> --limit <limit>`
 
 ## Positional Arguments
 

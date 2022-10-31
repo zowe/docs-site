@@ -6,9 +6,9 @@ Manage USS files in a z/OS system. <!--file-description-->
 
 ## Usage
 
-```zos file list status [fileName*] --path | p <path> --limit <limit>```
+```zos file list status [fileName*] --path | -p <path> --limit <limit>```
 
-```zos file list mounts [fileSystemName*] --mount-point | mp <mount-point-path> --limit <limit>```
+```zos file list mounts [fileSystemName*] --mount-point | --mp <mount-point-path> --limit <limit>```
 
 ## Action
 
@@ -29,14 +29,14 @@ Manage USS files in a z/OS system. <!--file-description-->
 
     | Full name  | Alias | Type |
     | :---- | :----  | :---- |
-    | --path | p | string |
+    | --path | -p | string |
     | --limit |  | number |
 
 - [zos file list mounts](./list/zos-file-list-mounts#options)
 
     | Full name  | Alias | Type |
     | :---- | :----  | :---- |
-    | --mount-point | mp | string |
+    | --mount-point | --mp | string |
     | --limit |  | number |
 
 ## Examples
