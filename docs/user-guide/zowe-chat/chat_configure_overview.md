@@ -6,7 +6,7 @@ You must properly configure Zowe Chat before you can ask the bot to operate on Z
    
    You can configure the Zowe Chat server by editing the `chatServer.yaml` configuration file.
 
-- [Configuring Zowe Chat server](chat_configure_zosmf.md)
+- [Configuring z/OSMF server](chat_configure_zosmf.md)
    
    You can configure the z/OSMF server by editing the `zosmfServer.yaml` configuration file.
 
