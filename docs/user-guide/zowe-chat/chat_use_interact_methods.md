@@ -28,11 +28,12 @@ For detailed Zowe Chat commands, see [Zowe Chat command reference](../../appendi
 
 ### Zowe CLI commands
 
-You can also issue Zowe CLI commands to perform operations. In Technical Preview, Zowe Chat supports the commands for help and z/OS resource management including z/OS job, data set, USS file, error code, and console command.
+You can also issue Zowe CLI commands to perform operations, such as help and z/OS resource management including z/OS job, data set, USS file, error code, and console command. Theorytically, most of Zowe CLI commands are supported as long as it is excutable with single-submit.
 
 :::warning
 
-Zowe Chat currently does not support the Zowe CLI command-line interactive or ["prompt" feature](cli-using-using-prompt-feature.md) that asks you to provide required option values.
+- Zowe CLI must be installed on your Zowe Chat server first before you can issue Zowe CLI commands.
+- Zowe Chat currently does not support the Zowe CLI command-line interactive or ["prompt" feature](../cli-using-using-prompt-feature.md) that asks you to provide required option values.
 
 :::
 

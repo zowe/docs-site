@@ -6,6 +6,7 @@ Zowe Chat must be able to communicate with the chat tool you plan to use. More i
 
 - [Linux System Requirements](#linux-system-requirements)
   - [Node.js](#nodejs)
+  - [Optional: Zowe CLI](#zowe-cli-optional)
 - [z/OS System Requirements](#zos-system-requirements)
   - [z/OSMF](#zosmf)
 - [Network Requirements](#network-requirements)
@@ -34,6 +35,10 @@ The chat server must meet the following requirements:
 - Node.js v16.x. Zowe Chat has not yet been tested with 14.x or 18.x.
 
   If Node.js is not included out of the box in your Linux distribution, you must install it. To install Node.js, follow the instructions on the [Node.js Download Page](https://nodejs.org/en/download/). It is recommended that you use a package manager [as outlined here](https://nodejs.org/en/download/package-manager/) if possible.
+
+### Zowe CLI (Optional)
+
+If you want to run Zowe CLI on Zowe Chat, you must install Zowe CLI on your Zowe Chat server. To install Zowe CLI, see [Installing Zowe CLI](../cli-installcli.md).
 
 ## z/OS system requirements
 
