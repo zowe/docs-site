@@ -31,20 +31,15 @@ Show status or details of data sets. <!--dataset-list-status-description-->
 ## Examples
 
 ```
-@bot zos dataset
+@bot zos dataset --dl user.asm
 ```
 ```
-@bot zos dataset list
+@bot zos dataset list --dl user.asm
 ```
-```
-@bot zos dataset list status
-```
-- All three commands can list all data sets. 
-
 ```
 @bot zos dataset list status --dl user.asm
 ```
-- Show the details of the data set "user.asm".
+- Show the data set "user.asm".
 
 ```
 @bot zos dataset list status user.*

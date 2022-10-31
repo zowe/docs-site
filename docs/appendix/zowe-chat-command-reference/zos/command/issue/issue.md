@@ -6,7 +6,7 @@ Issue z/OS commands.
 
 ## Usage
 
-`zos command issue console <positional argument> <option>`
+`zos command issue console [commandString] --console-name | --cn <consoleName> --system-name | --sn <systemName>`
 
 ## Object
 

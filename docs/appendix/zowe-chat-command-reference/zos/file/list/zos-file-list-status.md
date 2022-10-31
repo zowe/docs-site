@@ -25,16 +25,11 @@ Show status or details of USS files. <!--file-list-status-description-->
 ## Examples
 
 ```
-@bot zos file
+@bot zos file -p '/u/user'
 ```
 ```
-@bot zos file list
+@bot zos file list -p '/u/user'
 ```
-```
-@bot zos file list status
-```
-- All three commands can list all files with default settings.
-
 ```
 @bot zos file list status -p '/u/user'
 ```

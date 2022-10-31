@@ -6,7 +6,7 @@ Interact with z/OS command related services, including z/OSMF Console services, 
 
 ## Usage
 
-`zos command issue console <positional argument> <option>`
+`zos command issue console [commandString] --console-name | --cn <consoleName> --system-name | --sn <systemName>`
 
 ## Action
 
@@ -16,21 +16,21 @@ Interact with z/OS command related services, including z/OSMF Console services, 
 
 - [zos command issue console](./issue/zos-command-issue-console#positional-arguments)
 
-    - `cmdString`
+    - `commandString`
 
 ## Options
 
 - [zos command issue console](./issue/zos-command-issue-console#options)
 
-    | Full name  | Alias | Type |
-    | :---- | :----  | :---- |
-    | --path | p | string |
-    | --limit |  | number |
+    | Full name  | Type |
+    | :---- | :---- |
+    | --console-name | string |
+    | --system-name  | string |
 
 ## Examples
 
 ```
-@bot zos command issue console “d a ,l”
+@bot zos command issue console “d a,l”
 ```
 - Issue a simple command.
 
