@@ -1,13 +1,12 @@
 # Configuring Zowe Chat
 
-To complete configuration of Zowe Chat, you must complete the individual configuration steps listed below.
+To complete the configuration of Zowe Chat, you must complete the individual configuration steps listed below.
 
-- [Configure Zowe Chat Server](#zowe-chat-server-configuration)
-- [Configure z/OSMF Endpoint Information](#zowe-chat-zosmf-endpoint-configuration)
-- [Configure Chat Tool Information](#zowe-chat-tool-configuration)
+1. [Configure Zowe Chat server](#zowe-chat-server-configuration)
+2. [Configure z/OSMF endpoint information](#zowe-chat-zosmf-endpoint-configuration)
+3. [Configure chat tool information](#chat-tool-configuration)
 
-
-## Zowe Chat Server Configuration
+## Zowe Chat server configuration
 
 You can configure the Zowe Chat server by editing the `chatServer.yaml` configuration file.
 
@@ -72,7 +71,6 @@ You can configure the Zowe Chat server by editing the `chatServer.yaml` configur
      # The default value is 7702.
      port: 7702
 
-     # TODO: this should not be configurable, we should set it. At the very least, it must not be obviously configurable - advanced only.
      # Specify the base path of your HTTP endpoint.
      # The default value is /zowe/chat/index
      basePath: /zowe/chat/index
@@ -84,7 +82,7 @@ You can configure the Zowe Chat server by editing the `chatServer.yaml` configur
      tlsCert: <Your absolute TLS cert file path of your messaging server>
     ```
 
-## Zowe Chat z/OSMF Endpoint Configuration
+## Zowe Chat z/OSMF endpoint configuration
 
 Zowe Chat is configured to run against a single z/OSMF server. You describe your z/OSMF server information by editing the `zosmfServer.yaml` configuration file.
 
@@ -114,6 +112,7 @@ Zowe Chat is configured to run against a single z/OSMF server. You describe your
 
    # Specify authentication type. The value can be token or password
    # The default value is password
+   # Note: token is not supported at present
    authType: password
 
    # If you prefer all bot requests against mainframe services to use a single service account, set to true
@@ -125,12 +124,11 @@ Zowe Chat is configured to run against a single z/OSMF server. You describe your
      # Service account id. if service account is enabled, this information is required.
      user: <Service account ID>
 
-    # Service account password. if service account is enabled, this information is required.
+     # Service account password. if service account is enabled, this information is required.
      password: <Service account password>
     ```
 
-
-## Zowe Chat Tool Configuration
+## Chat tool configuration
 
 Zowe Chat's chat tool configuration varies depending on your choice of chat tool. 
 

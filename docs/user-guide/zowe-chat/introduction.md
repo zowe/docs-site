@@ -9,15 +9,10 @@ The following topics will guide you in setting up and using Zowe Chat.
 3. [Installing Zowe Chat](chat_install_overview.md)
 4. [Configuring Zowe Chat](chat_configure_overview.md)
 5. [Starting, stopping, and monitoring](chat_start_stop.md)
-6. [Known limitations](#known-limitations)
-7. [Uninstalling Zowe Chat](chat_uninstall.md)
+6. [Uninstalling Zowe Chat](chat_uninstall.md)
 
-## System Diagram
+## Deployment diagram
 
 Zowe Chat works by connecting to your chat tool of a choice as a Bot account, and is configured against a single sysplex environment through a z/OSMF installation. Zowe Chat requires network connectivity to each of the configuration endpoints. For more details and information on installation and configuration, follow the topics above. 
 
 <img src={require("../../images/zowe-chat/chat-HLA.png").default} alt="zowe chat hla system diagram v1" width="200"/>
-
-## Known limitations
-
-- Zowe Chat can only be deployed to Linux or zLinux environments at this time. z/OS support is pending further review. If you are interested in running Zowe Chat on z/OS, let us know by [opening a question](https://github.com/zowe/zowe-chat/issues/new/choose).
