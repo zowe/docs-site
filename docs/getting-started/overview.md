@@ -212,7 +212,7 @@ Zowe Chat is a chatbot that aims to enable a ChatOps collaboration model includi
 
 - **Manage z/OS resource in chat tool channels**
 
-  Check your z/OS job, data set, and USS files status directly in chat tool channels. You can also issue Zowe CLI commands including console commands directly from the chat tool. You can drill down on a specific job, data set, error code, and so on to get more details through button or drop-down menu that Zowe Chat provides.
+  Check your z/OS job, data set, and USS files status directly in chat tool channels. You can also issue z/OS console commands directly in the chat tool. You can drill down on a specific job, data set, error code, and so on to get more details through button or drop-down menu that Zowe Chat provides.
 
 - **Execute Zowe CLI commands in chat tool channels**
 
