@@ -472,6 +472,7 @@ module.exports = {
       items: [
         "troubleshoot/cli/troubleshoot-cli",
         "troubleshoot/cli/mustgather-cli",
+        "troubleshoot/cli/use-individual-troubleshoot-commands",
         "troubleshoot/cli/zosmf-cli",
         "troubleshoot/cli/known-cli",
         "troubleshoot/cli/cli-issue",
