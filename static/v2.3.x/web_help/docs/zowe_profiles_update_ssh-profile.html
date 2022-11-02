@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>profiles update ssh-profile</title>
+<link rel="stylesheet" href="../css/bundle-docs.css">
+<link rel="stylesheet" href="../css/docs.css">
+<article class="markdown-body">
+<h2><a href="zowe.html">zowe</a> › <a href="zowe_profiles.html">profiles</a> › <a href="zowe_profiles_update.html">update</a> › <a href="zowe_profiles_update_ssh-profile.html">ssh-profile</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
+<p>z/OS SSH Profile</p>
+<p>Warning: This command has been deprecated.<br>
+Recommended replacement: The 'config set' command</p>
+<h4>Usage</h4>
+<p>zowe profiles update ssh-profile &lt;profileName&gt; [options]</p>
+<h4>Positional Arguments</h4>
+<ul>
+<li>
+<p><code>profileName</code>		 <em>(string)</em></p>
+<ul>
+<li>Specifies the name of the new ssh profile. You can load this profile by using the name on commands that support the &quot;--ssh-profile&quot; option.</li>
+</ul>
+</li>
+</ul>
+<h4>z/OS Ssh Connection Options</h4>
+<ul>
+<li>
+<p><code>--host</code> | <code>-H</code> <em>(string)</em></p>
+<ul>
+<li>The z/OS SSH server host name.</li>
+</ul>
+</li>
+<li>
+<p><code>--port</code> | <code>-P</code> <em>(number)</em></p>
+<ul>
+<li>The z/OS SSH server port.</li>
+</ul>
+</li>
+<li>
+<p><code>--user</code> | <code>-u</code> <em>(string)</em></p>
+<ul>
+<li>Mainframe user name, which can be the same as your TSO login.</li>
+</ul>
+</li>
+<li>
+<p><code>--password</code> | <code>--pass</code> | <code>--pw</code> <em>(string)</em></p>
+<ul>
+<li>Mainframe password, which can be the same as your TSO password.</li>
+</ul>
+</li>
+<li>
+<p><code>--privateKey</code> | <code>--key</code> | <code>--pk</code> <em>(string)</em></p>
+<ul>
+<li>Path to a file containing your private key, that must match a public key stored in the server for authentication</li>
+</ul>
+</li>
+<li>
+<p><code>--keyPassphrase</code> | <code>--passphrase</code> | <code>--kp</code> <em>(string)</em></p>
+<ul>
+<li>Private key passphrase, which unlocks the private key.</li>
+</ul>
+</li>
+<li>
+<p><code>--handshakeTimeout</code> | <code>--timeout</code> | <code>--to</code> <em>(number)</em></p>
+<ul>
+<li>How long in milliseconds to wait for the SSH handshake to complete.</li>
+</ul>
+</li>
+</ul>
+</article>
+<script src="../js/bundle-docs.js"></script>
+<script src="../js/docs.js"></script>

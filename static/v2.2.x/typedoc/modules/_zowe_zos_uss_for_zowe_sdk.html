@@ -1,0 +1,839 @@
+<!doctype html>
+<html class="default no-js">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>@zowe/zos-uss-for-zowe-sdk | Zowe Node.js SDK - v2.2.0</title>
+	<meta name="description" content="Documentation for Zowe Node.js SDK - v2.2.0">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="../assets/css/main.css">
+</head>
+<body>
+<header>
+	<div class="tsd-page-toolbar">
+		<div class="container">
+			<div class="table-wrap">
+				<div class="table-cell" id="tsd-search" data-index="../assets/js/search.json" data-base="..">
+					<div class="field">
+						<label for="tsd-search-field" class="tsd-widget search no-caption">Search</label>
+						<input id="tsd-search-field" type="text" />
+					</div>
+					<ul class="results">
+						<li class="state loading">Preparing search index...</li>
+						<li class="state failure">The search index is not available</li>
+					</ul>
+					<a href="../index.html" class="title">Zowe Node.js SDK - v2.2.0</a>
+				</div>
+				<div class="table-cell" id="tsd-widgets">
+					<div id="tsd-filter">
+						<a href="#" class="tsd-widget options no-caption" data-toggle="options">Options</a>
+						<div class="tsd-filter-group">
+							<div class="tsd-select" id="tsd-filter-visibility">
+								<span class="tsd-select-label">All</span>
+								<ul class="tsd-select-list">
+									<li data-value="public">Public</li>
+									<li data-value="protected">Public/Protected</li>
+									<li data-value="private" class="selected">All</li>
+								</ul>
+							</div>
+							<input type="checkbox" id="tsd-filter-inherited" checked />
+							<label class="tsd-widget" for="tsd-filter-inherited">Inherited</label>
+							<input type="checkbox" id="tsd-filter-externals" checked />
+							<label class="tsd-widget" for="tsd-filter-externals">Externals</label>
+						</div>
+					</div>
+					<a href="#" class="tsd-widget menu no-caption" data-toggle="menu">Menu</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="tsd-page-title">
+		<div class="container">
+			<ul class="tsd-breadcrumb">
+				<li>
+					<a href="../globals.html">Globals</a>
+				</li>
+				<li>
+					<a href="_zowe_zos_uss_for_zowe_sdk.html">@zowe/zos-uss-for-zowe-sdk</a>
+				</li>
+			</ul>
+			<h1>Module @zowe/zos-uss-for-zowe-sdk</h1>
+		</div>
+	</div>
+</header>
+<div class="container container-main">
+	<div class="row">
+		<div class="col-8 col-content">
+			<section class="tsd-panel tsd-comment">
+				<div class="tsd-comment tsd-typography">
+					<a href="#zos-uss-package" id="zos-uss-package" style="color: inherit; text-decoration: none;">
+						<h1>z/OS USS Package</h1>
+					</a>
+					<p>Contains APIs to interact with USS on z/OS (using the z/OS SSH service).</p>
+					<a href="#installation-instructions" id="installation-instructions" style="color: inherit; text-decoration: none;">
+						<h2>Installation Instructions</h2>
+					</a>
+					<p>The z/OS USS SDK has a dependency on the ssh2 package. This package allows for more secure cryptographic ciphers to be used first on supporting hardware. In order to do this, the dependency attempts to build some native modules at install time.</p>
+					<p>If these modules cannot be built, the dependency will continue to function, without the optimal cipher list order. However, some error messaging may be visible. These errors can be safely ignored, if desired.</p>
+					<p>To consume the optimal cipher list and build the native modules, the following software is pre-requisite:</p>
+					<a href="#windows" id="windows" style="color: inherit; text-decoration: none;">
+						<h3>Windows</h3>
+					</a>
+					<p>We recommend NodeJS be installed with Chocolatey, which includes most of the required tooling. An additional tool, <a href="https://cmake.org/download/">CMake</a>, will need to be installed in addition to Chocolatey.</p>
+					<p>Alternatively, install the following:</p>
+					<ul>
+						<li>Python 3.7 or greater</li>
+						<li><a href="https://cmake.org/download/">CMake</a></li>
+						<li>Choose one of the following:<ul>
+								<li>Visual Studio Build Tools<ul>
+										<li>&quot;Visual C++ build tools&quot; workload</li>
+									</ul>
+								</li>
+								<li>Visual Studio Community<ul>
+										<li>&quot;Desktop development with C++&quot; workload</li>
+									</ul>
+								</li>
+							</ul>
+						</li>
+					</ul>
+					<a href="#unix" id="unix" style="color: inherit; text-decoration: none;">
+						<h3>Unix</h3>
+					</a>
+					<ul>
+						<li>Python 3.7 or greater</li>
+						<li><a href="https://cmake.org/download/">CMake</a></li>
+						<li><code>make</code></li>
+						<li>A C/C++ Compiler (i.e. <code>gcc-c++</code>, <code>g++</code>)</li>
+					</ul>
+					<a href="#macos" id="macos" style="color: inherit; text-decoration: none;">
+						<h3>MacOS</h3>
+					</a>
+					<ul>
+						<li>Python 3.7 or greater</li>
+						<li><a href="https://cmake.org/download/">CMake</a></li>
+						<li>XCode<ul>
+								<li>Including <code>XCode Command Line Tools</code></li>
+							</ul>
+						</li>
+					</ul>
+					<a href="#api-examples" id="api-examples" style="color: inherit; text-decoration: none;">
+						<h2>API Examples</h2>
+					</a>
+					<p><strong>Check disk space on file system containing home directory</strong></p>
+					<pre><code class="language-typescript"><span class="hljs-keyword">import</span> { ProfileInfo } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@zowe/imperative&quot;</span>;
+<span class="hljs-keyword">import</span> { Shell, SshSession } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@zowe/zos-uss-for-zowe-sdk&quot;</span>;
+
+(<span class="hljs-keyword">async</span> () =&gt; {
+    <span class="hljs-comment">// Load connection info from default SSH profile</span>
+    <span class="hljs-keyword">const</span> profInfo = <span class="hljs-keyword">new</span> ProfileInfo(<span class="hljs-string">&quot;zowe&quot;</span>);
+    <span class="hljs-keyword">await</span> profInfo.readProfilesFromDisk();
+    <span class="hljs-keyword">const</span> sshProfAttrs = profInfo.getDefaultProfile(<span class="hljs-string">&quot;ssh&quot;</span>);
+    <span class="hljs-keyword">const</span> sshMergedArgs = profInfo.mergeArgsForProfile(sshProfAttrs, { <span class="hljs-attr">getSecureVals</span>: <span class="hljs-literal">true</span> });
+    <span class="hljs-keyword">const</span> session = <span class="hljs-keyword">new</span> SshSession(ProfileInfo.initSessCfg(sshMergedArgs.knownArgs));
+
+    <span class="hljs-keyword">await</span> Shell.executeSsh(session, <span class="hljs-string">&quot;df .&quot;</span>, <span class="hljs-function">(<span class="hljs-params">data: <span class="hljs-built_in">string</span></span>) =&gt;</span> {
+        <span class="hljs-keyword">if</span> (data.trim()) <span class="hljs-built_in">console</span>.log(data);
+    });
+})().catch(<span class="hljs-function">(<span class="hljs-params">err</span>) =&gt;</span> {
+    <span class="hljs-built_in">console</span>.error(err);
+    process.exit(<span class="hljs-number">1</span>);
+});
+</code></pre>
+					<a href="#" id="" style="color: inherit; text-decoration: none;">
+						<h1></h1>
+					</a>
+					<p><strong>Make a script executable</strong></p>
+					<pre><code class="language-typescript"><span class="hljs-keyword">import</span> { ProfileInfo } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@zowe/imperative&quot;</span>;
+<span class="hljs-keyword">import</span> { Shell, SshSession } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@zowe/zos-uss-for-zowe-sdk&quot;</span>;
+
+(<span class="hljs-keyword">async</span> () =&gt; {
+    <span class="hljs-comment">// Load connection info from default SSH profile</span>
+    <span class="hljs-keyword">const</span> profInfo = <span class="hljs-keyword">new</span> ProfileInfo(<span class="hljs-string">&quot;zowe&quot;</span>);
+    <span class="hljs-keyword">await</span> profInfo.readProfilesFromDisk();
+    <span class="hljs-keyword">const</span> sshProfAttrs = profInfo.getDefaultProfile(<span class="hljs-string">&quot;ssh&quot;</span>);
+    <span class="hljs-keyword">const</span> sshMergedArgs = profInfo.mergeArgsForProfile(sshProfAttrs, { <span class="hljs-attr">getSecureVals</span>: <span class="hljs-literal">true</span> });
+    <span class="hljs-keyword">const</span> session = <span class="hljs-keyword">new</span> SshSession(ProfileInfo.initSessCfg(sshMergedArgs.knownArgs));
+
+    <span class="hljs-keyword">await</span> Shell.executeSshCwd(session, <span class="hljs-string">&quot;chmod +x test.sh&quot;</span>, <span class="hljs-string">&quot;/tmp&quot;</span>, <span class="hljs-function">(<span class="hljs-params">data: <span class="hljs-built_in">string</span></span>) =&gt;</span> {
+        <span class="hljs-keyword">if</span> (data.trim()) <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Error</span>(data);
+    });
+})().catch(<span class="hljs-function">(<span class="hljs-params">err</span>) =&gt;</span> {
+    <span class="hljs-built_in">console</span>.error(err);
+    process.exit(<span class="hljs-number">1</span>);
+});
+</code></pre>
+				</div>
+			</section>
+			<section class="tsd-panel-group tsd-index-group">
+				<h2>Index</h2>
+				<section class="tsd-panel tsd-index-panel">
+					<div class="tsd-index-content">
+						<section class="tsd-index-section ">
+							<h3>Classes</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-class tsd-parent-kind-module"><a href="../classes/_zowe_zos_uss_for_zowe_sdk.shell.html" class="tsd-kind-icon">Shell</a></li>
+								<li class="tsd-kind-class tsd-parent-kind-module"><a href="../classes/_zowe_zos_uss_for_zowe_sdk.sshbasehandler.html" class="tsd-kind-icon">Ssh<wbr>Base<wbr>Handler</a></li>
+								<li class="tsd-kind-class tsd-parent-kind-module"><a href="../classes/_zowe_zos_uss_for_zowe_sdk.sshsession.html" class="tsd-kind-icon">Ssh<wbr>Session</a></li>
+							</ul>
+						</section>
+						<section class="tsd-index-section ">
+							<h3>Interfaces</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-interface tsd-parent-kind-module"><a href="../interfaces/_zowe_zos_uss_for_zowe_sdk.isshsession.html" class="tsd-kind-icon">ISsh<wbr>Session</a></li>
+							</ul>
+						</section>
+						<section class="tsd-index-section ">
+							<h3>Variables</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-variable tsd-parent-kind-module"><a href="_zowe_zos_uss_for_zowe_sdk.html#startcmdflag" class="tsd-kind-icon">start<wbr>Cmd<wbr>Flag</a></li>
+							</ul>
+						</section>
+						<section class="tsd-index-section ">
+							<h3>Object literals</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-object-literal tsd-parent-kind-module"><a href="_zowe_zos_uss_for_zowe_sdk.html#zosussmessages" class="tsd-kind-icon">Zos<wbr>Uss<wbr>Messages</a></li>
+								<li class="tsd-kind-object-literal tsd-parent-kind-module"><a href="_zowe_zos_uss_for_zowe_sdk.html#zosussprofile" class="tsd-kind-icon">Zos<wbr>Uss<wbr>Profile</a></li>
+							</ul>
+						</section>
+					</div>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group ">
+				<h2>Variables</h2>
+				<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-module">
+					<a name="startcmdflag" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagConst">Const</span> start<wbr>Cmd<wbr>Flag</h3>
+					<div class="tsd-signature tsd-kind-icon">start<wbr>Cmd<wbr>Flag<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">"@@START OF COMMAND@@"</span><span class="tsd-signature-symbol"> = Shell.startCmdFlag</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.4.0/packages/zosuss/src/Shell.ts#L175">@zowe/zos-uss-for-zowe-sdk/src/Shell.ts:175</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<dl class="tsd-comment-tags">
+							<dt>deprecated</dt>
+							<dd><p>Use <code>Shell.startCmdFlag</code> instead.</p>
+							</dd>
+						</dl>
+					</div>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group ">
+				<h2>Object literals</h2>
+				<section class="tsd-panel tsd-member tsd-kind-object-literal tsd-parent-kind-module">
+					<a name="zosussmessages" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagConst">Const</span> Zos<wbr>Uss<wbr>Messages</h3>
+					<div class="tsd-signature tsd-kind-icon">Zos<wbr>Uss<wbr>Messages<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.4.0/packages/zosuss/src/constants/ZosUss.messages.ts#L19">@zowe/zos-uss-for-zowe-sdk/src/constants/ZosUss.messages.ts:19</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Messages to be used as command responses for different scenarios</p>
+						</div>
+						<dl class="tsd-comment-tags">
+							<dt>memberof</dt>
+							<dd><p>ZosUssMessages</p>
+							</dd>
+						</dl>
+					</div>
+					<section class="tsd-panel tsd-member tsd-kind-object-literal tsd-parent-kind-object-literal">
+						<a name="zosussmessages.allauthmethodsfailed" class="tsd-anchor"></a>
+						<h3>all<wbr>Auth<wbr>Methods<wbr>Failed</h3>
+						<div class="tsd-signature tsd-kind-icon">all<wbr>Auth<wbr>Methods<wbr>Failed<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.4.0/packages/zosuss/src/constants/ZosUss.messages.ts#L24">@zowe/zos-uss-for-zowe-sdk/src/constants/ZosUss.messages.ts:24</a></li>
+							</ul>
+						</aside>
+						<div class="tsd-comment tsd-typography">
+							<div class="lead">
+								<p>Message indicating that the data set type is unsupported</p>
+							</div>
+						</div>
+						<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+							<a name="zosussmessages.allauthmethodsfailed.message" class="tsd-anchor"></a>
+							<h3>message</h3>
+							<div class="tsd-signature tsd-kind-icon">message<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &quot;All configured authentication methods failed&quot;</span></div>
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.4.0/packages/zosuss/src/constants/ZosUss.messages.ts#L25">@zowe/zos-uss-for-zowe-sdk/src/constants/ZosUss.messages.ts:25</a></li>
+								</ul>
+							</aside>
+						</section>
+					</section>
+					<section class="tsd-panel tsd-member tsd-kind-object-literal tsd-parent-kind-object-literal">
+						<a name="zosussmessages.connectionrefused" class="tsd-anchor"></a>
+						<h3>connection<wbr>Refused</h3>
+						<div class="tsd-signature tsd-kind-icon">connection<wbr>Refused<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.4.0/packages/zosuss/src/constants/ZosUss.messages.ts#L27">@zowe/zos-uss-for-zowe-sdk/src/constants/ZosUss.messages.ts:27</a></li>
+							</ul>
+						</aside>
+						<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+							<a name="zosussmessages.connectionrefused.message-1" class="tsd-anchor"></a>
+							<h3>message</h3>
+							<div class="tsd-signature tsd-kind-icon">message<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &quot;Connection was refused&quot;</span></div>
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.4.0/packages/zosuss/src/constants/ZosUss.messages.ts#L28">@zowe/zos-uss-for-zowe-sdk/src/constants/ZosUss.messages.ts:28</a></li>
+								</ul>
+							</aside>
+						</section>
+					</section>
+					<section class="tsd-panel tsd-member tsd-kind-object-literal tsd-parent-kind-object-literal">
+						<a name="zosussmessages.expiredpassword" class="tsd-anchor"></a>
+						<h3>expired<wbr>Password</h3>
+						<div class="tsd-signature tsd-kind-icon">expired<wbr>Password<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.4.0/packages/zosuss/src/constants/ZosUss.messages.ts#L36">@zowe/zos-uss-for-zowe-sdk/src/constants/ZosUss.messages.ts:36</a></li>
+							</ul>
+						</aside>
+						<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+							<a name="zosussmessages.expiredpassword.message-2" class="tsd-anchor"></a>
+							<h3>message</h3>
+							<div class="tsd-signature tsd-kind-icon">message<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &quot;Your password has expired&quot;</span></div>
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.4.0/packages/zosuss/src/constants/ZosUss.messages.ts#L37">@zowe/zos-uss-for-zowe-sdk/src/constants/ZosUss.messages.ts:37</a></li>
+								</ul>
+							</aside>
+						</section>
+					</section>
+					<section class="tsd-panel tsd-member tsd-kind-object-literal tsd-parent-kind-object-literal">
+						<a name="zosussmessages.handshaketimeout" class="tsd-anchor"></a>
+						<h3>handshake<wbr>Timeout</h3>
+						<div class="tsd-signature tsd-kind-icon">handshake<wbr>Timeout<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.4.0/packages/zosuss/src/constants/ZosUss.messages.ts#L30">@zowe/zos-uss-for-zowe-sdk/src/constants/ZosUss.messages.ts:30</a></li>
+							</ul>
+						</aside>
+						<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+							<a name="zosussmessages.handshaketimeout.message-3" class="tsd-anchor"></a>
+							<h3>message</h3>
+							<div class="tsd-signature tsd-kind-icon">message<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &quot;Timed out while waiting for handshake&quot;</span></div>
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.4.0/packages/zosuss/src/constants/ZosUss.messages.ts#L31">@zowe/zos-uss-for-zowe-sdk/src/constants/ZosUss.messages.ts:31</a></li>
+								</ul>
+							</aside>
+						</section>
+					</section>
+					<section class="tsd-panel tsd-member tsd-kind-object-literal tsd-parent-kind-object-literal">
+						<a name="zosussmessages.unexpected" class="tsd-anchor"></a>
+						<h3>unexpected</h3>
+						<div class="tsd-signature tsd-kind-icon">unexpected<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.4.0/packages/zosuss/src/constants/ZosUss.messages.ts#L33">@zowe/zos-uss-for-zowe-sdk/src/constants/ZosUss.messages.ts:33</a></li>
+							</ul>
+						</aside>
+						<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+							<a name="zosussmessages.unexpected.message-4" class="tsd-anchor"></a>
+							<h3>message</h3>
+							<div class="tsd-signature tsd-kind-icon">message<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &quot;Connection failed because of an unexpected error&quot;</span></div>
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.4.0/packages/zosuss/src/constants/ZosUss.messages.ts#L34">@zowe/zos-uss-for-zowe-sdk/src/constants/ZosUss.messages.ts:34</a></li>
+								</ul>
+							</aside>
+						</section>
+					</section>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-object-literal tsd-parent-kind-module">
+					<a name="zosussprofile" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagConst">Const</span> Zos<wbr>Uss<wbr>Profile</h3>
+					<div class="tsd-signature tsd-kind-icon">Zos<wbr>Uss<wbr>Profile<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.4.0/packages/zosuss/src/constants/ZosUss.profile.ts#L20">@zowe/zos-uss-for-zowe-sdk/src/constants/ZosUss.profile.ts:20</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Profile configuration for SSH profiles</p>
+						</div>
+						<dl class="tsd-comment-tags">
+							<dt>memberof</dt>
+							<dd><p>ZosUssProfile</p>
+							</dd>
+						</dl>
+					</div>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+						<a name="zosussprofile.createprofileexamples" class="tsd-anchor"></a>
+						<h3>create<wbr>Profile<wbr>Examples</h3>
+						<div class="tsd-signature tsd-kind-icon">create<wbr>Profile<wbr>Examples<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">{ </span>description<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">; </span>options<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol"> = [{options: &quot;ssh111 --host sshhost --user ibmuser --password myp4ss&quot;,description: &quot;Create a ssh profile called &#x27;ssh111&#x27; to connect to z/OS SSH server at host &#x27;zos123&#x27; and default port 22&quot;},{options: &quot;ssh222 --host sshhost --port 13022 --user ibmuser --password myp4ss&quot;,description: &quot;Create a ssh profile called &#x27;ssh222&#x27; to connect to z/OS SSH server at host &#x27;zos123&#x27; and port 13022&quot;},{options: &quot;ssh333 --host sshhost --user ibmuser --privateKey /path/to/privatekey --keyPassphrase privateKeyPassphrase&quot;,description: &quot;Create a ssh profile called &#x27;ssh333&#x27; to connect to z/OS SSH server at host &#x27;zos123&#x27; &quot; +&quot;using a privatekey &#x27;/path/to/privatekey&#x27; and its decryption passphrase &#x27;privateKeyPassphrase&#x27; &quot; +&quot;for privatekey authentication&quot;},{options: &quot;ssh444 --privateKey /path/to/privatekey&quot;,description: &quot;Create a ssh profile called &#x27;ssh444&#x27; to connect to z/OS SSH server on default port 22, without specifying &quot; +&quot;username, host, or password, preventing those values from being stored on disk&quot;}]</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.4.0/packages/zosuss/src/constants/ZosUss.profile.ts#L62">@zowe/zos-uss-for-zowe-sdk/src/constants/ZosUss.profile.ts:62</a></li>
+							</ul>
+						</aside>
+					</section>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+						<a name="zosussprofile.type" class="tsd-anchor"></a>
+						<h3>type</h3>
+						<div class="tsd-signature tsd-kind-icon">type<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &quot;ssh&quot;</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.4.0/packages/zosuss/src/constants/ZosUss.profile.ts#L21">@zowe/zos-uss-for-zowe-sdk/src/constants/ZosUss.profile.ts:21</a></li>
+							</ul>
+						</aside>
+					</section>
+					<section class="tsd-panel tsd-member tsd-kind-object-literal tsd-parent-kind-object-literal">
+						<a name="zosussprofile.schema" class="tsd-anchor"></a>
+						<h3>schema</h3>
+						<div class="tsd-signature tsd-kind-icon">schema<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.4.0/packages/zosuss/src/constants/ZosUss.profile.ts#L22">@zowe/zos-uss-for-zowe-sdk/src/constants/ZosUss.profile.ts:22</a></li>
+							</ul>
+						</aside>
+						<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+							<a name="zosussprofile.schema.description" class="tsd-anchor"></a>
+							<h3>description</h3>
+							<div class="tsd-signature tsd-kind-icon">description<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &quot;z/OS SSH Profile&quot;</span></div>
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.4.0/packages/zosuss/src/constants/ZosUss.profile.ts#L25">@zowe/zos-uss-for-zowe-sdk/src/constants/ZosUss.profile.ts:25</a></li>
+								</ul>
+							</aside>
+						</section>
+						<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+							<a name="zosussprofile.schema.required" class="tsd-anchor"></a>
+							<h3>required</h3>
+							<div class="tsd-signature tsd-kind-icon">required<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol"> = []</span></div>
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.4.0/packages/zosuss/src/constants/ZosUss.profile.ts#L60">@zowe/zos-uss-for-zowe-sdk/src/constants/ZosUss.profile.ts:60</a></li>
+								</ul>
+							</aside>
+						</section>
+						<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+							<a name="zosussprofile.schema.title" class="tsd-anchor"></a>
+							<h3>title</h3>
+							<div class="tsd-signature tsd-kind-icon">title<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &quot;z/OS SSH Profile&quot;</span></div>
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.4.0/packages/zosuss/src/constants/ZosUss.profile.ts#L24">@zowe/zos-uss-for-zowe-sdk/src/constants/ZosUss.profile.ts:24</a></li>
+								</ul>
+							</aside>
+						</section>
+						<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+							<a name="zosussprofile.schema.type-1" class="tsd-anchor"></a>
+							<h3>type</h3>
+							<div class="tsd-signature tsd-kind-icon">type<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &quot;object&quot;</span></div>
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.4.0/packages/zosuss/src/constants/ZosUss.profile.ts#L23">@zowe/zos-uss-for-zowe-sdk/src/constants/ZosUss.profile.ts:23</a></li>
+								</ul>
+							</aside>
+						</section>
+						<section class="tsd-panel tsd-member tsd-kind-object-literal tsd-parent-kind-object-literal">
+							<a name="zosussprofile.schema.properties" class="tsd-anchor"></a>
+							<h3>properties</h3>
+							<div class="tsd-signature tsd-kind-icon">properties<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.4.0/packages/zosuss/src/constants/ZosUss.profile.ts#L26">@zowe/zos-uss-for-zowe-sdk/src/constants/ZosUss.profile.ts:26</a></li>
+								</ul>
+							</aside>
+							<section class="tsd-panel tsd-member tsd-kind-object-literal tsd-parent-kind-object-literal">
+								<a name="zosussprofile.schema.properties.handshaketimeout-1" class="tsd-anchor"></a>
+								<h3>handshake<wbr>Timeout</h3>
+								<div class="tsd-signature tsd-kind-icon">handshake<wbr>Timeout<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
+								<aside class="tsd-sources">
+									<ul>
+										<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.4.0/packages/zosuss/src/constants/ZosUss.profile.ts#L55">@zowe/zos-uss-for-zowe-sdk/src/constants/ZosUss.profile.ts:55</a></li>
+									</ul>
+								</aside>
+								<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+									<a name="zosussprofile.schema.properties.handshaketimeout-1.optiondefinition" class="tsd-anchor"></a>
+									<h3>option<wbr>Definition</h3>
+									<div class="tsd-signature tsd-kind-icon">option<wbr>Definition<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">any</span><span class="tsd-signature-symbol"> = SshSession.SSH_OPTION_HANDSHAKETIMEOUT</span></div>
+									<aside class="tsd-sources">
+										<ul>
+											<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.4.0/packages/zosuss/src/constants/ZosUss.profile.ts#L57">@zowe/zos-uss-for-zowe-sdk/src/constants/ZosUss.profile.ts:57</a></li>
+										</ul>
+									</aside>
+								</section>
+								<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+									<a name="zosussprofile.schema.properties.handshaketimeout-1.type-2" class="tsd-anchor"></a>
+									<h3>type</h3>
+									<div class="tsd-signature tsd-kind-icon">type<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &quot;number&quot;</span></div>
+									<aside class="tsd-sources">
+										<ul>
+											<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.4.0/packages/zosuss/src/constants/ZosUss.profile.ts#L56">@zowe/zos-uss-for-zowe-sdk/src/constants/ZosUss.profile.ts:56</a></li>
+										</ul>
+									</aside>
+								</section>
+							</section>
+							<section class="tsd-panel tsd-member tsd-kind-object-literal tsd-parent-kind-object-literal">
+								<a name="zosussprofile.schema.properties.host" class="tsd-anchor"></a>
+								<h3>host</h3>
+								<div class="tsd-signature tsd-kind-icon">host<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
+								<aside class="tsd-sources">
+									<ul>
+										<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.4.0/packages/zosuss/src/constants/ZosUss.profile.ts#L27">@zowe/zos-uss-for-zowe-sdk/src/constants/ZosUss.profile.ts:27</a></li>
+									</ul>
+								</aside>
+								<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+									<a name="zosussprofile.schema.properties.host.optiondefinition-1" class="tsd-anchor"></a>
+									<h3>option<wbr>Definition</h3>
+									<div class="tsd-signature tsd-kind-icon">option<wbr>Definition<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">any</span><span class="tsd-signature-symbol"> = SshSession.SSH_OPTION_HOST</span></div>
+									<aside class="tsd-sources">
+										<ul>
+											<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.4.0/packages/zosuss/src/constants/ZosUss.profile.ts#L29">@zowe/zos-uss-for-zowe-sdk/src/constants/ZosUss.profile.ts:29</a></li>
+										</ul>
+									</aside>
+								</section>
+								<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+									<a name="zosussprofile.schema.properties.host.type-3" class="tsd-anchor"></a>
+									<h3>type</h3>
+									<div class="tsd-signature tsd-kind-icon">type<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &quot;string&quot;</span></div>
+									<aside class="tsd-sources">
+										<ul>
+											<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.4.0/packages/zosuss/src/constants/ZosUss.profile.ts#L28">@zowe/zos-uss-for-zowe-sdk/src/constants/ZosUss.profile.ts:28</a></li>
+										</ul>
+									</aside>
+								</section>
+							</section>
+							<section class="tsd-panel tsd-member tsd-kind-object-literal tsd-parent-kind-object-literal">
+								<a name="zosussprofile.schema.properties.keypassphrase" class="tsd-anchor"></a>
+								<h3>key<wbr>Passphrase</h3>
+								<div class="tsd-signature tsd-kind-icon">key<wbr>Passphrase<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
+								<aside class="tsd-sources">
+									<ul>
+										<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.4.0/packages/zosuss/src/constants/ZosUss.profile.ts#L50">@zowe/zos-uss-for-zowe-sdk/src/constants/ZosUss.profile.ts:50</a></li>
+									</ul>
+								</aside>
+								<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+									<a name="zosussprofile.schema.properties.keypassphrase.optiondefinition-2" class="tsd-anchor"></a>
+									<h3>option<wbr>Definition</h3>
+									<div class="tsd-signature tsd-kind-icon">option<wbr>Definition<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">any</span><span class="tsd-signature-symbol"> = SshSession.SSH_OPTION_KEYPASSPHRASE</span></div>
+									<aside class="tsd-sources">
+										<ul>
+											<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.4.0/packages/zosuss/src/constants/ZosUss.profile.ts#L53">@zowe/zos-uss-for-zowe-sdk/src/constants/ZosUss.profile.ts:53</a></li>
+										</ul>
+									</aside>
+								</section>
+								<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+									<a name="zosussprofile.schema.properties.keypassphrase.secure" class="tsd-anchor"></a>
+									<h3>secure</h3>
+									<div class="tsd-signature tsd-kind-icon">secure<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol"> = true</span></div>
+									<aside class="tsd-sources">
+										<ul>
+											<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.4.0/packages/zosuss/src/constants/ZosUss.profile.ts#L52">@zowe/zos-uss-for-zowe-sdk/src/constants/ZosUss.profile.ts:52</a></li>
+										</ul>
+									</aside>
+								</section>
+								<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+									<a name="zosussprofile.schema.properties.keypassphrase.type-4" class="tsd-anchor"></a>
+									<h3>type</h3>
+									<div class="tsd-signature tsd-kind-icon">type<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &quot;string&quot;</span></div>
+									<aside class="tsd-sources">
+										<ul>
+											<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.4.0/packages/zosuss/src/constants/ZosUss.profile.ts#L51">@zowe/zos-uss-for-zowe-sdk/src/constants/ZosUss.profile.ts:51</a></li>
+										</ul>
+									</aside>
+								</section>
+							</section>
+							<section class="tsd-panel tsd-member tsd-kind-object-literal tsd-parent-kind-object-literal">
+								<a name="zosussprofile.schema.properties.password" class="tsd-anchor"></a>
+								<h3>password</h3>
+								<div class="tsd-signature tsd-kind-icon">password<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
+								<aside class="tsd-sources">
+									<ul>
+										<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.4.0/packages/zosuss/src/constants/ZosUss.profile.ts#L41">@zowe/zos-uss-for-zowe-sdk/src/constants/ZosUss.profile.ts:41</a></li>
+									</ul>
+								</aside>
+								<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+									<a name="zosussprofile.schema.properties.password.optiondefinition-3" class="tsd-anchor"></a>
+									<h3>option<wbr>Definition</h3>
+									<div class="tsd-signature tsd-kind-icon">option<wbr>Definition<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">any</span><span class="tsd-signature-symbol"> = SshSession.SSH_OPTION_PASSWORD</span></div>
+									<aside class="tsd-sources">
+										<ul>
+											<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.4.0/packages/zosuss/src/constants/ZosUss.profile.ts#L44">@zowe/zos-uss-for-zowe-sdk/src/constants/ZosUss.profile.ts:44</a></li>
+										</ul>
+									</aside>
+								</section>
+								<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+									<a name="zosussprofile.schema.properties.password.secure-1" class="tsd-anchor"></a>
+									<h3>secure</h3>
+									<div class="tsd-signature tsd-kind-icon">secure<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol"> = true</span></div>
+									<aside class="tsd-sources">
+										<ul>
+											<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.4.0/packages/zosuss/src/constants/ZosUss.profile.ts#L43">@zowe/zos-uss-for-zowe-sdk/src/constants/ZosUss.profile.ts:43</a></li>
+										</ul>
+									</aside>
+								</section>
+								<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+									<a name="zosussprofile.schema.properties.password.type-5" class="tsd-anchor"></a>
+									<h3>type</h3>
+									<div class="tsd-signature tsd-kind-icon">type<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &quot;string&quot;</span></div>
+									<aside class="tsd-sources">
+										<ul>
+											<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.4.0/packages/zosuss/src/constants/ZosUss.profile.ts#L42">@zowe/zos-uss-for-zowe-sdk/src/constants/ZosUss.profile.ts:42</a></li>
+										</ul>
+									</aside>
+								</section>
+							</section>
+							<section class="tsd-panel tsd-member tsd-kind-object-literal tsd-parent-kind-object-literal">
+								<a name="zosussprofile.schema.properties.port" class="tsd-anchor"></a>
+								<h3>port</h3>
+								<div class="tsd-signature tsd-kind-icon">port<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
+								<aside class="tsd-sources">
+									<ul>
+										<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.4.0/packages/zosuss/src/constants/ZosUss.profile.ts#L31">@zowe/zos-uss-for-zowe-sdk/src/constants/ZosUss.profile.ts:31</a></li>
+									</ul>
+								</aside>
+								<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+									<a name="zosussprofile.schema.properties.port.includeintemplate" class="tsd-anchor"></a>
+									<h3>include<wbr>InTemplate</h3>
+									<div class="tsd-signature tsd-kind-icon">include<wbr>InTemplate<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol"> = true</span></div>
+									<aside class="tsd-sources">
+										<ul>
+											<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.4.0/packages/zosuss/src/constants/ZosUss.profile.ts#L34">@zowe/zos-uss-for-zowe-sdk/src/constants/ZosUss.profile.ts:34</a></li>
+										</ul>
+									</aside>
+								</section>
+								<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+									<a name="zosussprofile.schema.properties.port.optiondefinition-4" class="tsd-anchor"></a>
+									<h3>option<wbr>Definition</h3>
+									<div class="tsd-signature tsd-kind-icon">option<wbr>Definition<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">any</span><span class="tsd-signature-symbol"> = SshSession.SSH_OPTION_PORT</span></div>
+									<aside class="tsd-sources">
+										<ul>
+											<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.4.0/packages/zosuss/src/constants/ZosUss.profile.ts#L33">@zowe/zos-uss-for-zowe-sdk/src/constants/ZosUss.profile.ts:33</a></li>
+										</ul>
+									</aside>
+								</section>
+								<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+									<a name="zosussprofile.schema.properties.port.type-6" class="tsd-anchor"></a>
+									<h3>type</h3>
+									<div class="tsd-signature tsd-kind-icon">type<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &quot;number&quot;</span></div>
+									<aside class="tsd-sources">
+										<ul>
+											<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.4.0/packages/zosuss/src/constants/ZosUss.profile.ts#L32">@zowe/zos-uss-for-zowe-sdk/src/constants/ZosUss.profile.ts:32</a></li>
+										</ul>
+									</aside>
+								</section>
+							</section>
+							<section class="tsd-panel tsd-member tsd-kind-object-literal tsd-parent-kind-object-literal">
+								<a name="zosussprofile.schema.properties.privatekey" class="tsd-anchor"></a>
+								<h3>private<wbr>Key</h3>
+								<div class="tsd-signature tsd-kind-icon">private<wbr>Key<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
+								<aside class="tsd-sources">
+									<ul>
+										<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.4.0/packages/zosuss/src/constants/ZosUss.profile.ts#L46">@zowe/zos-uss-for-zowe-sdk/src/constants/ZosUss.profile.ts:46</a></li>
+									</ul>
+								</aside>
+								<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+									<a name="zosussprofile.schema.properties.privatekey.optiondefinition-5" class="tsd-anchor"></a>
+									<h3>option<wbr>Definition</h3>
+									<div class="tsd-signature tsd-kind-icon">option<wbr>Definition<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">any</span><span class="tsd-signature-symbol"> = SshSession.SSH_OPTION_PRIVATEKEY</span></div>
+									<aside class="tsd-sources">
+										<ul>
+											<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.4.0/packages/zosuss/src/constants/ZosUss.profile.ts#L48">@zowe/zos-uss-for-zowe-sdk/src/constants/ZosUss.profile.ts:48</a></li>
+										</ul>
+									</aside>
+								</section>
+								<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+									<a name="zosussprofile.schema.properties.privatekey.type-7" class="tsd-anchor"></a>
+									<h3>type</h3>
+									<div class="tsd-signature tsd-kind-icon">type<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &quot;string&quot;</span></div>
+									<aside class="tsd-sources">
+										<ul>
+											<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.4.0/packages/zosuss/src/constants/ZosUss.profile.ts#L47">@zowe/zos-uss-for-zowe-sdk/src/constants/ZosUss.profile.ts:47</a></li>
+										</ul>
+									</aside>
+								</section>
+							</section>
+							<section class="tsd-panel tsd-member tsd-kind-object-literal tsd-parent-kind-object-literal">
+								<a name="zosussprofile.schema.properties.user" class="tsd-anchor"></a>
+								<h3>user</h3>
+								<div class="tsd-signature tsd-kind-icon">user<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
+								<aside class="tsd-sources">
+									<ul>
+										<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.4.0/packages/zosuss/src/constants/ZosUss.profile.ts#L36">@zowe/zos-uss-for-zowe-sdk/src/constants/ZosUss.profile.ts:36</a></li>
+									</ul>
+								</aside>
+								<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+									<a name="zosussprofile.schema.properties.user.optiondefinition-6" class="tsd-anchor"></a>
+									<h3>option<wbr>Definition</h3>
+									<div class="tsd-signature tsd-kind-icon">option<wbr>Definition<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">any</span><span class="tsd-signature-symbol"> = SshSession.SSH_OPTION_USER</span></div>
+									<aside class="tsd-sources">
+										<ul>
+											<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.4.0/packages/zosuss/src/constants/ZosUss.profile.ts#L39">@zowe/zos-uss-for-zowe-sdk/src/constants/ZosUss.profile.ts:39</a></li>
+										</ul>
+									</aside>
+								</section>
+								<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+									<a name="zosussprofile.schema.properties.user.secure-2" class="tsd-anchor"></a>
+									<h3>secure</h3>
+									<div class="tsd-signature tsd-kind-icon">secure<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol"> = true</span></div>
+									<aside class="tsd-sources">
+										<ul>
+											<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.4.0/packages/zosuss/src/constants/ZosUss.profile.ts#L38">@zowe/zos-uss-for-zowe-sdk/src/constants/ZosUss.profile.ts:38</a></li>
+										</ul>
+									</aside>
+								</section>
+								<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+									<a name="zosussprofile.schema.properties.user.type-8" class="tsd-anchor"></a>
+									<h3>type</h3>
+									<div class="tsd-signature tsd-kind-icon">type<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &quot;string&quot;</span></div>
+									<aside class="tsd-sources">
+										<ul>
+											<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.4.0/packages/zosuss/src/constants/ZosUss.profile.ts#L37">@zowe/zos-uss-for-zowe-sdk/src/constants/ZosUss.profile.ts:37</a></li>
+										</ul>
+									</aside>
+								</section>
+							</section>
+						</section>
+					</section>
+				</section>
+			</section>
+		</div>
+		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
+			<nav class="tsd-navigation primary">
+				<ul>
+					<li class="globals  ">
+						<a href="../globals.html"><em>Globals</em></a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="_zowe_core_for_zowe_sdk.html">@zowe/core-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="_zowe_imperative.html">@zowe/imperative</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="_zowe_provisioning_for_zowe_sdk.html">@zowe/provisioning-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="_zowe_zos_console_for_zowe_sdk.html">@zowe/zos-<wbr>console-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="_zowe_zos_files_for_zowe_sdk.html">@zowe/zos-<wbr>files-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="_zowe_zos_jobs_for_zowe_sdk.html">@zowe/zos-<wbr>jobs-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="_zowe_zos_logs_for_zowe_sdk.html">@zowe/zos-<wbr>logs-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="_zowe_zos_tso_for_zowe_sdk.html">@zowe/zos-<wbr>tso-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class="current tsd-kind-module">
+						<a href="_zowe_zos_uss_for_zowe_sdk.html">@zowe/zos-<wbr>uss-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="_zowe_zos_workflows_for_zowe_sdk.html">@zowe/zos-<wbr>workflows-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="_zowe_zosmf_for_zowe_sdk.html">@zowe/zosmf-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+				</ul>
+			</nav>
+			<nav class="tsd-navigation secondary menu-sticky">
+				<ul class="before-current">
+					<li class=" tsd-kind-module">
+						<a href="_zowe_core_for_zowe_sdk.html" class="tsd-kind-icon">@zowe/core-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="_zowe_imperative.html" class="tsd-kind-icon">@zowe/imperative</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="_zowe_provisioning_for_zowe_sdk.html" class="tsd-kind-icon">@zowe/provisioning-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="_zowe_zos_console_for_zowe_sdk.html" class="tsd-kind-icon">@zowe/zos-<wbr>console-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="_zowe_zos_files_for_zowe_sdk.html" class="tsd-kind-icon">@zowe/zos-<wbr>files-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="_zowe_zos_jobs_for_zowe_sdk.html" class="tsd-kind-icon">@zowe/zos-<wbr>jobs-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="_zowe_zos_logs_for_zowe_sdk.html" class="tsd-kind-icon">@zowe/zos-<wbr>logs-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="_zowe_zos_tso_for_zowe_sdk.html" class="tsd-kind-icon">@zowe/zos-<wbr>tso-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+				</ul>
+				<ul class="current">
+					<li class="current tsd-kind-module">
+						<a href="_zowe_zos_uss_for_zowe_sdk.html" class="tsd-kind-icon">@zowe/zos-<wbr>uss-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+						<ul>
+							<li class=" tsd-kind-class tsd-parent-kind-module">
+								<a href="../classes/_zowe_zos_uss_for_zowe_sdk.shell.html" class="tsd-kind-icon">Shell</a>
+							</li>
+							<li class=" tsd-kind-class tsd-parent-kind-module">
+								<a href="../classes/_zowe_zos_uss_for_zowe_sdk.sshbasehandler.html" class="tsd-kind-icon">Ssh<wbr>Base<wbr>Handler</a>
+							</li>
+							<li class=" tsd-kind-class tsd-parent-kind-module">
+								<a href="../classes/_zowe_zos_uss_for_zowe_sdk.sshsession.html" class="tsd-kind-icon">Ssh<wbr>Session</a>
+							</li>
+							<li class=" tsd-kind-interface tsd-parent-kind-module">
+								<a href="../interfaces/_zowe_zos_uss_for_zowe_sdk.isshsession.html" class="tsd-kind-icon">ISsh<wbr>Session</a>
+							</li>
+							<li class=" tsd-kind-variable tsd-parent-kind-module">
+								<a href="_zowe_zos_uss_for_zowe_sdk.html#startcmdflag" class="tsd-kind-icon">start<wbr>Cmd<wbr>Flag</a>
+							</li>
+							<li class=" tsd-kind-object-literal tsd-parent-kind-module">
+								<a href="_zowe_zos_uss_for_zowe_sdk.html#zosussmessages" class="tsd-kind-icon">Zos<wbr>Uss<wbr>Messages</a>
+							</li>
+							<li class=" tsd-kind-object-literal tsd-parent-kind-module">
+								<a href="_zowe_zos_uss_for_zowe_sdk.html#zosussprofile" class="tsd-kind-icon">Zos<wbr>Uss<wbr>Profile</a>
+							</li>
+						</ul>
+					</li>
+				</ul>
+				<ul class="after-current">
+					<li class=" tsd-kind-module">
+						<a href="_zowe_zos_workflows_for_zowe_sdk.html" class="tsd-kind-icon">@zowe/zos-<wbr>workflows-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="_zowe_zosmf_for_zowe_sdk.html" class="tsd-kind-icon">@zowe/zosmf-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</div>
+</div>
+<footer class="with-border-bottom">
+	<div class="container">
+		<h2>Legend</h2>
+		<div class="tsd-legend-group">
+			<ul class="tsd-legend">
+				<li class="tsd-kind-object-literal"><span class="tsd-kind-icon">Object literal</span></li>
+				<li class="tsd-kind-variable"><span class="tsd-kind-icon">Variable</span></li>
+				<li class="tsd-kind-function"><span class="tsd-kind-icon">Function</span></li>
+				<li class="tsd-kind-type-alias"><span class="tsd-kind-icon">Type alias</span></li>
+				<li class="tsd-kind-type-alias tsd-has-type-parameter"><span class="tsd-kind-icon">Type alias with type parameter</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-interface"><span class="tsd-kind-icon">Interface</span></li>
+				<li class="tsd-kind-interface tsd-has-type-parameter"><span class="tsd-kind-icon">Interface with type parameter</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-class"><span class="tsd-kind-icon">Class</span></li>
+				<li class="tsd-kind-class tsd-has-type-parameter"><span class="tsd-kind-icon">Class with type parameter</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-enum"><span class="tsd-kind-icon">Enumeration</span></li>
+			</ul>
+		</div>
+	</div>
+</footer>
+<div class="container tsd-generator">
+	<p>Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p>
+</div>
+<div class="overlay"></div>
+<script src="../assets/js/main.js"></script>
+</body>
+</html>
