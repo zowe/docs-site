@@ -10,18 +10,12 @@ Issue the following command:
 zowe -V
 ```
 
-The exact Zowe CLI version may vary depending upon if the `@latest` or `@zowe-v1-lts`, or `@lts-incremental` version is installed.
+The exact Zowe CLI version may vary depending upon if the `@latest` or `@zowe-v1-lts`, or `@zowe-v2-lts` version is installed.
 
-For the `@zowe-v1-lts` and the `@latest` (forward-development) version tags:
+You can also display the version of your globally-installed Zowe CLI through the following NPM command:
 
 ```
 npm list -g @zowe/cli
-```
-
-For the `@lts-incremental` version tag:
-
-```
-npm list -g @brightside/core
 ```
 
 More information regarding versioning conventions for Zowe CLI and plug-ins is located in [Versioning Guidelines](https://github.com/zowe/zowe-cli/blob/master/docs/MaintainerVersioning.md).
@@ -82,6 +76,8 @@ Analyze these logs for any information relevant to your issue.
 The `profiles` folder stores connection information.
 
 **Important\!** The profile directory might contain "sensitive" information, such as your mainframe password. You should obfuscate any sensitive references before providing configuration files.
+
+**Note:** While the profile directory can still be used in Zowe CLI v2, it has been deprecated in favor of v2 [team configuration](https://docs.zowe.org/stable/user-guide/cli-using-using-team-profiles) files.
 
 ## Node.js and npm
 Zowe CLI is compatible with the currently supported Node.js LTS versions. For an up-to-date list of supported LTS versions, see [Node.js.org](https://nodejs.org/en/download/releases/).
