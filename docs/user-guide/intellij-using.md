@@ -8,18 +8,18 @@ You can create, rename, and delete datasets and members by using the Zowe Intell
 
 You can create a new dataset, member, or allocate a dataset like an existing one by using **Allocate Like**** menu item in a context menu.
 
-You can use the following functionalities when interacting with data sets:
+You can use the following functionalities when interacting with datasets:
 
-- **View data sets and use different Working Sets**: You can see different datasets in the tree using several different Working Sets.
-- **Refresh the list of data sets**: Use “Refresh” menu item in the context menu for any data set or Working set in a tree. 
-- **Migrate data sets**: Use “Migrate” menu item in the context menu for any data set. 
-- **Rename data sets and members**: Use “Rename” menu item in the context menu for any data set or member. 
-- **Copy/move data sets and data set members**: Use “Copy”, “Paste”, or “Cut” menu items in the context menu for any data set or member. 
-- **Edit data set members**: Use double-click to open and edit any dataset member. 
-- **Create data sets/members and specify the parameters**: Use “New” -> “Dataset” or “Member” menu item in the context menu for any data set or member. 
-- **Delete data set or data set member**: Use “Delete” menu item in the context menu for any data set or dataset ember. 
-- **Submit a JCL**: You can submit a JCL from a chosen data set. Use “Submit Job” menu item in the context menu for any dataset member. 
-- **Allocate Like**: You can create a copy of a chosen data set with the same parameters. Use “Allocate Like” menu item in the context menu for any data set. 
+- **View datasets and use different Working Sets**: You can see different datasets in the tree using several different Working Sets.
+- **Refresh the list of datasets**: Use “Refresh” menu item in the context menu for any dataset or Working set in a tree. 
+- **Migrate datasets**: Use “Migrate” menu item in the context menu for any dataset. 
+- **Rename datasets and members**: Use “Rename” menu item in the context menu for any dataset or dataset member. 
+- **Copy/move datasets and dataset members**: Use “Copy”, “Paste”, or “Cut” menu items in the context menu for any dataset or dataset member. 
+- **Edit dataset members**: Use double-click to open and edit any dataset member. 
+- **Create datasets/members and specify the parameters**: Use “New” -> “Dataset” or “Member” menu item in the context menu for any dataset or dataset member. 
+- **Delete dataset or dataset member**: Use “Delete” menu item in the context menu for any dataset or dataset member. 
+- **Submit a JCL**: You can submit a JCL from a chosen dataset. Use “Submit Job” menu item in the context menu for any dataset member. 
+- **Allocate Like**: You can create a copy of a chosen dataset with the same parameters. Use “Allocate Like” menu item in the context menu for any dataset. 
 
 ![Work with datasets](../images/intellij/intellij-using-datasets.gif)
 
@@ -27,7 +27,7 @@ You can use the following functionalities when interacting with data sets:
 
 To work with USS files, you need to [set up a specified Working Set](intellij-configure.md#creating-a-files-working-set) first and then work with all available files and directories. 
 
-Using the context menu in Zowe IntelliJ plug-in, you can create, rename and delete files and directories.
+Using the context menu in Zowe IntelliJ plug-in, you can create, rename, and delete files and directories.
 
 You can use the following functionalities when interacting with USS files:
 
