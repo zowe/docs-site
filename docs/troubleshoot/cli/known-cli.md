@@ -89,7 +89,7 @@ You attempt to issue node.js commands and you do not receive the expected  outpu
 
 There might be a program that is named *node* on your path. The Node.js installer automatically adds a program that is named *node* to your path. When there are pre-existing programs that are named *node* on your computer, the program that appears first in the path is used. To correct this behavior, change the order of the programs in the path so that Node.js appears first.
 
-## `npm install -g `command fails due to an EPERM error
+## `npm install -g` command fails due to an EPERM error
 
 **Valid on Windows**
 
@@ -135,33 +135,40 @@ npm install npm@5.3.0 -g
 
 **Symptom:**
 
-When issuing a command with a relative directory path using forward slashes, Git Bash converts the path into an absolute path with a root directory.
+When issuing a command with an absolute directory path that begins with a forward slash, Git Bash converts it into an invalid path that does not exist.
+
+If a command includes a path similar to the following example:
+
+  ```
+  /a/ibmuser/my_dir
+  ```
+  Git Bash can erroneously convert the root directory to a drive letter, as in the example below:
+
+  ```
+  A:/ibmuser/my_dir
+  ```
+  **Note:** Depending on the root directory, the Git Bash conversion can add other directories it assumes to be included in the path.
 
 **Solutions:**
 
-- Replace the single slash in front of a path with double forward slashes (//). This stops Git Bash from remapping the path.
-
-  Git Bash converts the path entered in the following command:
-
+- Replace the single slash in front of a path with double slashes (//). This stops Git Bash from remapping the path.
+  
+  To avoid conversion in the example above, edit the path in the following manner:
   ```
-  zowe zos-files upload dir-to-uss local_dir /a/ibmuser/my_dir
-  ```
-  To avoid conversion, the path should be edited as in the following example:
-  ```
-  zowe zos-files upload dir-to-uss local_dir //a/ibmuser/my_dir
+  //a/ibmuser/my_dir
   ```
 
-- Use an environment variable in one of the following ways:
-    - In your active terminal, set the environment variable `MSYS_NO_PATHCONV` to `1`.
+- Set the environment variable `MSYS_NO_PATHCONV` to `1` in one of the following ways:
+    - Use the export command.
     
-      Then add an export of the environment variable once during a terminal session. If writing a script, run the export command once at the top of the script.
-      
+      While running commands in a terminal, run the export command once during that terminal session. If writing a script, run the command once at the top of the script.
+    
       The export command is included in the following example:
       ```
       export MSYS_NO_PATHCONV=1
       zowe zos-files upload dir-to-uss local_dir /a/ibmuser/my_dir
       ```
-    - Add it to your `~/.bashrc` file to define it permanently.
+    - Set the environment variable in your `~/.bashrc` file to define it permanently.
 
 The better option depends on particular circumstances. Using double forward slashes is a good choice when defining system-wide environment variables could cause problems with other applications. On the other hand, the environment variable helps avoid rewriting paths on every CLI command that uses them.
 
