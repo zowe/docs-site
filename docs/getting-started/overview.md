@@ -259,13 +259,13 @@ For more information, see the [Workflow Template Reference](https://github.com/z
 
 ### Zowe IntelliJ Plug-in - Incubator
 
-Zowe IntelliJ plug-in for Intellij-based IDEs is a smart and interactive mainframe code editing tool that allows you to browse, edit and create data on z/OS via z/OSMF REST API. 
+Zowe IntelliJ plug-in for Intellij-based IDEs is a smart and interactive mainframe code editing tool that allows you to browse, edit, and create data on z/OS via z/OSMF REST API. 
 
 Zowe IntelliJ plug-in helps you to: 
 - Start working with z/OS easily with no complex configurations.
 - Organize datasets on z/OS, files on USS into working sets.
 - Allocate datasets, create members, files and directories with different permissions.
-- Perform renaming, copying and moving data in a modern way.
+- Perform operations like renaming, copying and moving data in a modern way.
 - Edit datasets, files and members. Smart auto-save will keep your content both in the editor and on the mainframe in-sync.
 - Create multiple connections to different z/OS systems.
 - Perform all available operations with jobs.
