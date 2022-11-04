@@ -64,7 +64,7 @@ To correct this behavior, verify the following:
 
 **More Information:** [System requirements for Zowe CLI](../../user-guide/systemrequirements-cli.md)
 
-## `npm install -g `Command Fails Due to an EPERM Error
+## `npm install -g` Command Fails Due to an EPERM Error
 
 **Valid on Windows**
 
