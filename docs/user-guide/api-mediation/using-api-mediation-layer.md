@@ -1,7 +1,7 @@
 # Using API Mediation Layer
 
 There are numerous ways you can use the API Mediation Layer. Review this topic and its child pages to learn more about the various ways to use the API Mediation Layer.  
-For information about the API versioning, see [API Catalog and Versioning](../extend/extend-apiml/api-mediation-versioning.md).
+For information about the API versioning, see [API Catalog and Versioning](../../extend/extend-apiml/api-mediation-versioning.md).
 
 **Tip:** 
 For testing purposes, it is not necessary to set up certificates when configuring the API Mediation Layer. You can configure Zowe without certificate setup and run Zowe with `verify_certificates: DISABLED`.  
@@ -31,8 +31,8 @@ See the following topics for detailed information about how to use the API Media
 
 * **Other features when using API ML**  
     * [Using Metrics Service (Technical Preview)](../api-mediation-metrics-service.md)
-    * [API Mediation Layer Routing](../extend/extend-apiml/api-mediation-routing.md)
-    * [Obtaining Information about API Services](../extend/extend-apiml/service-information.md)
-    * [WebSocket support in API Gateway](../extend/extend-apiml/websocket.md)
+    * [API Mediation Layer Routing](../../extend/extend-apiml/api-mediation-routing.md)
+    * [Obtaining Information about API Services](../../extend/extend-apiml/service-information.md)
+    * [WebSocket support in API Gateway](../../extend/extend-apiml/websocket.md)
 
 

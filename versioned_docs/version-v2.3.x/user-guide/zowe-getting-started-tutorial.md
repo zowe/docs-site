@@ -13,7 +13,7 @@ Learn how to start exploring the Zowe components, applications and plug-ins.
 **Explore available plug-ins:**
 
 - [Zowe CLI plug-ins](cli-extending.md)
-- [Zowe Explorer extensions](ze-cics.md)
+- [Zowe Explorer extensions](ze-using-zowe-explorer-cics-ext.md)
 
 
 

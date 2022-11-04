@@ -124,7 +124,7 @@ Essential to the API Mediation Layer ecosystem is the API services that expose t
 * [Onboarding Overview](../extend/extend-apiml/onboard-overview.md)
 * [Onboard an existing Spring Boot REST API service using Zowe API Mediation Layer](../extend/extend-apiml/onboard-spring-boot-enabler.md)
 * [Onboard an existing Node.js REST API service using Zowe API Mediation Layer](../extend/extend-apiml/onboard-nodejs-enabler.md)
-* [Using API Catalog](../user-guide/api-mediation-api-catalog.md)
+* [Using API Mediation Layer](../user-guide/api-mediation/using-api-mediation-layer.md)
 
 </details>
 
@@ -200,6 +200,50 @@ Provides an advanced launcher for Zowe z/OS server components in a high availabi
 
 - Stopping the Zowe server components using the `STOP` (or `P`) operator command
 - Stopping and starting specific server components without restarting the entire Zowe instance using `MODIFY` (or `F`) operator command
+
+### Zowe Chat (Technical Preview)
+
+Zowe Chat is a chatbot that aims to enable a ChatOps collaboration model including z/OS resources and tools. Zowe Chat enables you to  interact with the mainframe from chat clients such as Slack, Microsoft Teams, and Mattermost. Zowe Chat helps to increase your productivity by eliminating or minimizing the context switching between different tools and user interfaces.
+
+<details>
+<summary> Learn more </summary>
+
+#### Zowe Chat key features
+
+- **Manage z/OS resource in chat tool channels**
+
+  Check your z/OS job, data set, and USS files status directly in chat tool channels. You can also issue z/OS console commands directly in the chat tool. You can drill down on a specific job, data set, error code, and so on to get more details through button or drop-down menu that Zowe Chat provides.
+
+- **Execute Zowe CLI commands in chat tool channels**
+
+  You can also issue Zowe CLI commands to perform operations such as help and z/OS resource management including z/OS job, data set, USS file, error code, and console command. Theoretically, most of Zowe CLI commands are supported as long as it is executable with single-submit.
+
+- **Extensibility**
+
+  Zowe Chat is extensible via plug-ins. You can extend Zowe Chat by developing plug-ins and contributing code to the base Zowe Chat or existing plug-ins.
+
+- **Security:**
+   
+  Zowe Chat makes use of z/OS SAF calls and supports the three main security management products on z/OS (RACF, Top Secret, ACF2). You can log in to the chat client via enterprise standards, including two factor authentication if required. The first time you issue a command to the Zowe Chat installed in the chat workspace, it prompts you to log in with the mainframe ID using a one-time URL. Once authenticated against the mainframe security, Zowe Chat securely caches in memory the relationship between your Chat tool ID and the mainframe ID. Zowe Chat’s Security Facility will generate credentials for downstream API requests.
+
+- **Display alerts:**
+
+  Allows you to send alert or event to a channel in the chat tool in use. An event data model enables Zowe Chat extenders to send alerts to a channel in the chat through Zowe Chat.
+
+Read the following blogs to learn more about Zowe Chat:
+
+- [Zowe Gets Chatty](https://medium.com/zowe/zowe-gets-chatty-842e3b548902)
+- [Zowe Chat can make you more productive: user scenarios](https://medium.com/zowe/zowe-chat-can-make-you-more-productive-user-scenarios-f52a9985dd50)
+
+#### Zowe Chat architecture
+
+Zowe Chat is based on the Common Bot framework, which is required for the chat platform Slack, Mattermost, and Microsoft Teams. 
+
+![Zowe chat architecture](./diagrams/zowe-chat-architecture.png)
+
+</details>
+
+For more information, see [Installing Zowe Chat](../user-guide/zowe-chat/chat_install_overview.md) and [Using Zowe Chat](../user-guide/zowe-chat/chat_use_interact_methods.md). 
 
 ### ZEBRA (Zowe Embedded Browser for RMF/SMF and APIs) - Incubator 
 

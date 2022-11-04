@@ -32,7 +32,7 @@ To register a z/OS service with the API Mediation Layer, there are two approache
 
 For information about how to onboard REST APIs, see the [Onboarding Overview](extend-apiml/onboard-overview.md).
 
-To streamline the process of onboarding new REST API services to the API Mediation Layer, see [Onboarding a REST API service with the YAML Wizard](./extend-apiml/onboard-wizard.md)
+To streamline the process of onboarding new REST API services to the API Mediation Layer, see [Onboarding a REST API service with the YAML Wizard](../user-guide/onboard-wizard.md).
 
 ### Dynamic API registration
 
