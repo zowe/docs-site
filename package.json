@@ -15,7 +15,7 @@
     "docs:pdf": "npx mr-pdf --initialDocURLs=\"http://localhost:3000/stable/getting-started/overview,http://localhost:3000/stable/user-guide/installandconfig,http://localhost:3000/stable/extend/extend-zowe-overview,http://localhost:3000/stable/troubleshoot/troubleshooting,http://localhost:3000/stable/contribute/roadmap-contribute,http://localhost:3000/stable/appendix/zowe-cli-command-reference\" --contentSelector=\"article\" --paginationSelector=\".pagination-nav__item--next > a\" --excludeSelectors=\".announcementBar_UUUQ,nav.navbar,.docSidebarContainer_3pwe,.docMainContainer_2pgU .col.col--3,footer.footer,.docItemContainer_2szM > .margin-vert--xl > .row > .col:first-child,.pagination-nav,.docsRating,.navbar__inner,.thin-scrollbar\" --coverImage=\"http://localhost:3000/img/zowe-icon.png\" --coverTitle=\"Zowe Documentation\" --outputPDFFilename=\"static/zowe-docs.pdf\""
   },
   "dependencies": {
-    "@docusaurus/core": "2.0.0-beta.3",
+    "@docusaurus/core": "2.2.0",
     "@docusaurus/plugin-client-redirects": "2.0.0-beta.3",
     "@docusaurus/plugin-pwa": "2.0.0-beta.3",
     "@docusaurus/preset-classic": "2.0.0-beta.3",
