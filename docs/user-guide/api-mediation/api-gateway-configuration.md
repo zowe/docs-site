@@ -27,6 +27,7 @@ Follow the procedures in the following sections to customize Gateway parameters 
   * [Routed instance header](#routed-instance-header)
   * [Distributed load balancer cache](#distributed-load-balancer-cache)
   * [Replace or remove catalog with another service](#replace-or-remove-catalog-with-another-service)
+  * [Personal Access Token](#personal-access-token)
   * [API Mediation Layer as a standalone component](#api-mediation-layer-as-a-standalone-component)
   * [SAF resource checking](#saf-resource-checking)
 
@@ -368,6 +369,19 @@ Use the following procedure to change or replace the Catalog service.
 
     - Set the value to `none` to remove the Catalog service.
     - Set the value to the ID of the service that is onboarded to the API Mediation Layer. 
+
+## Personal Access Token
+
+By default the API Mediation Layer doesn't provide the ability to use personal access tokens. Learn more about
+the functionality in [Personal Access Tokens](user-guide/api-mediation/api-mediation-personal-access-token/)
+
+Use the following procedure to enable the personal access tokens.
+
+**Follow these steps:**
+
+1. Open the file `zowe.yaml`.
+2. Find or add the property with value `components.gateway.apiml.security.personalAccessToken.enabled: true`.
+3. Restart Zowe.
 
 ## API Mediation Layer as a standalone component
 
