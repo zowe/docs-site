@@ -372,15 +372,15 @@ Use the following procedure to change or replace the Catalog service.
 
 ## Personal Access Token
 
-By default the API Mediation Layer doesn't provide the ability to use personal access tokens. Learn more about
-the functionality in [Personal Access Tokens](user-guide/api-mediation/api-mediation-personal-access-token/)
+By default the API Mediation Layer does not provide the ability to use personal access tokens. For more information about about
+this functionality, see [Personal Access Tokens](user-guide/api-mediation/api-mediation-personal-access-token/).
 
-Use the following procedure to enable the personal access tokens.
+Use the following procedure to enable personal access tokens.
 
 **Follow these steps:**
 
 1. Open the file `zowe.yaml`.
-2. Find or add the property with value `components.gateway.apiml.security.personalAccessToken.enabled: true`.
+2. Find or add the property with the value `components.gateway.apiml.security.personalAccessToken.enabled: true`.
 3. Restart Zowe.
 
 ## API Mediation Layer as a standalone component
