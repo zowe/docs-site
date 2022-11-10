@@ -306,7 +306,6 @@ module.exports = {
             "user-guide/api-mediation/discovery-service-configuration",
             "user-guide/api-mediation/api-mediation-internal-configuration",
             "extend/extend-apiml/api-mediation-passtickets",
-            "user-guide/api-mediation/api-mediation-personal-access-token",
           ],
         },
       ],
@@ -344,6 +343,7 @@ module.exports = {
         "extend/extend-apiml/api-mediation-routing",
         "extend/extend-apiml/service-information",
         "extend/extend-apiml/websocket",
+        "user-guide/api-mediation/api-mediation-personal-access-token",
       ],
     },
     {
