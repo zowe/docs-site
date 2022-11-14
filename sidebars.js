@@ -559,27 +559,43 @@ module.exports = {
       items: [
         "troubleshoot/troubleshooting",
         "troubleshoot/troubleshoot-zowe-release",
+      ],
+    },
+    {
+      type: "category",
+      label: "Zowe Servers",
+      items: [
+        "troubleshoot/servers/must-gather",
         "troubleshoot/verify-fingerprint",
-      ],
-    },
-    //"troubleshoot/troubleshoot-zos-certificate",
-    "troubleshoot/k8s-troubleshoot",
-    {
-      type: "category",
-      label: "Zowe API Mediation Layer",
-      items: [
-        "troubleshoot/troubleshoot-apiml",
-        "troubleshoot/troubleshoot-apiml-error-codes",
-      ],
-    },
-    {
-      type: "category",
-      label: "Zowe Application Framework",
-      items: [
-        //    "troubleshoot/app-framework/app-troubleshoot", //still refers to instance.env
-        //    "troubleshoot/app-framework/app-mustgather", //still refers to instance.env
-        "troubleshoot/app-framework/app-issue",
-        "troubleshoot/app-framework/zss-error-codes",
+        "troubleshoot/k8s-troubleshoot",
+        //"troubleshoot/troubleshoot-zos-certificate",
+        {
+          type: "category",
+          label: "Zowe API Mediation Layer",
+          items: [
+            "troubleshoot/troubleshoot-apiml",
+            "troubleshoot/troubleshoot-apiml-error-codes",
+          ],
+        },
+        {
+          type: "category",
+          label: "Zowe Application Framework",
+          items: [
+            "troubleshoot/app-framework/app-troubleshoot",
+            "troubleshoot/app-framework/app-mustgather",
+            "troubleshoot/app-framework/app-issue", 
+            "troubleshoot/app-framework/zss-error-codes",
+          ],
+        },
+        {
+          type: "category",
+          label: "Zowe Launcher",
+          items: [
+            "troubleshoot/launcher/launcher-troubleshoot",
+            "troubleshoot/launcher/launcher-error-codes"
+          ],
+        },
+        "troubleshoot/verify-fingerprint",
       ],
     },
     {
@@ -601,14 +617,6 @@ module.exports = {
         "troubleshoot/ze/troubleshoot-ze",
         "troubleshoot/ze/known-ze",
         "troubleshoot/ze/ze-issues",
-      ],
-    },
-    {
-      type: "category",
-      label: "Zowe Launcher",
-      items: [
-        "troubleshoot/launcher/launcher-troubleshoot",
-        "troubleshoot/launcher/launcher-error-codes"
       ],
     },
     "troubleshoot/zowe-chat-troubleshoot/troubleshooting",
