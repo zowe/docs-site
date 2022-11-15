@@ -43,7 +43,7 @@ This behavior occurs under the following conditions:
 
 **Solution:**
 
-To prevent the Zowe executable from taking control and stopping the execution of the script it is called from, add `call` in front of the first Zowe CLI command.
+To prevent the Zowe executable from taking control and stopping the execution of the script it is called from, add `call` in front of each Zowe CLI command.
 
 In the example below, the script never prints "hello" to the terminal:
 
@@ -56,6 +56,14 @@ To fix this, add `call` before the Zowe CLI command.
 ```
 call zowe --version 
 echo hello
+```
+For multiple Zowe CLI commands, see the following example:
+
+```
+call zowe --version
+echo hello
+call zowe --version
+echo goodbye
 ```
 
 ## *Command not found* message displays when issuing `npm install` commands
