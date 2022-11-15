@@ -54,7 +54,7 @@ echo hello
 To fix this, add `call` before the Zowe CLI command.
 
 ```
-call zowe --version
+call zowe --version 
 echo hello
 ```
 
