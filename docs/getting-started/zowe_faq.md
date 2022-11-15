@@ -430,3 +430,65 @@ As a developer, you may contribute to Zowe Explorer in the following ways:
    Note: For more information, see [Extending Zowe Explorer](https://github.com/zowe/vscode-extension-for-zowe/blob/main/docs/README-Extending.md).
 
 </details>
+
+## Zowe IntelliJ plug-in FAQ
+
+### Why might I use Zowe IntelliJ plug-in versus a traditional ISPF interface to perform mainframe tasks?
+
+<details class="zowe-faq">
+
+<summary></summary>
+
+Zowe IntelliJ plug-in allows you to access and work with data sets, members and jobs directly from your IntelliJ-based IDE.
+
+</details>
+
+### How can I get started with Zowe IntelliJ plug-in?
+
+<details class="zowe-faq">
+
+<summary></summary>
+
+Install the plug-in in your IntelliJ-based IDE directly from marketplace or download it from [here](https://plugins.jetbrains.com/plugin/18688-zowe-explorer). 
+
+</details>
+
+### Where can I use Zowe IntelliJ plug-in?
+
+<details class="zowe-faq">
+
+<summary></summary>
+
+You can use it in any IntelliJ-based IDE. 
+
+</details>
+
+### How do I get help with using Zowe IntelliJ plug-in?
+
+<details class="zowe-faq">
+
+<summary></summary>
+
+You can read detailed user guide and find any information you need [here](https://plugins.jetbrains.com/plugin/18688-zowe-explorer/user-guide). Also, you can ask any questions in the Zowe Slack channel [#zowe-explorer-intellij](https://openmainframeproject.slack.com/archives/C020BGPSU0M).
+
+</details>
+
+### How can I create, edit and delete z/OSMF connection?
+
+<details class="zowe-faq">
+
+<summary></summary>
+
+To create a connection, expand plug-in panel on an IDE sidebar (on the right side of your screen) and press the "wrench" pictogram, or go to **File** -> **Settings** (CTRL+ALT+S), select **Zowe Explorer (Zowe IntelliJ plugin)** and then switch to the **z/OSMF connection** tab. Press the “+” button and fill inn all necessary fields.
+
+</details>
+
+### How can I contribute to Zowe IntelliJ plug-in?
+
+<details class="zowe-faq">
+
+<summary></summary>
+
+If you have something to introduce but there is no related issue in the project repo, then you can either create the issue by yourself or contact us to help you with it. See more information in the [CONTRIBUTION.md](https://github.com/zowe/zowe-explorer-intellij/blob/main/CONTRIBUTING.md) file.  
+
+</details>
