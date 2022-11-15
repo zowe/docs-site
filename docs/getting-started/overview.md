@@ -257,7 +257,7 @@ The Workflow wiZard delivers a workflow builder which simplifies the creation of
 
 For more information, see the [Workflow Template Reference](https://github.com/zowe/workflow-wizard/raw/main/doc/Workflow%20Templates%20Reference.docx).
 
-### Zowe IntelliJ Plug-in - Incubator
+### Zowe IntelliJ Plug-in
 
 Zowe IntelliJ plug-in for Intellij-based IDEs is a smart and interactive mainframe code editing tool that allows you to browse, edit, and create data on z/OS via z/OSMF REST API. 
 
