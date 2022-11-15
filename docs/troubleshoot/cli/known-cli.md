@@ -39,7 +39,7 @@ This behavior occurs under the following conditions:
 
 **Valid on Windows**
 
-**Symptom:** When invoking Zowe CLI in a batch script (.bat or .cmd file), subsequent commands in the script do not run.
+**Symptom:** When invoking Zowe CLI in a batch script (`.bat` or `.cmd` file), subsequent commands in the script do not run.
 
 **Solution:**
 
