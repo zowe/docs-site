@@ -293,7 +293,7 @@ module.exports = {
     },
     {
       type: "category",
-      label: "Installing Zowe IntelliJ Plug-in (Incubator)",
+      label: "Installing Zowe IntelliJ Plug-in",
       items: [
         "user-guide/intellij-install",
         "user-guide/intellij-configure",
