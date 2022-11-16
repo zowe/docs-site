@@ -293,6 +293,14 @@ module.exports = {
     },
     {
       type: "category",
+      label: "Installing Zowe IntelliJ Plug-in (Incubator)",
+      items: [
+        "user-guide/intellij-install",
+        "user-guide/intellij-configure",
+      ],
+    },
+    {
+      type: "category",
       label: "Advanced Zowe configuration",
       items: [
         "user-guide/mvd-configuration",
@@ -460,6 +468,7 @@ module.exports = {
       ],
     },
     "user-guide/sdks-using",
+    "user-guide/intellij-using",
   ],
   extending: [
     "extend/extend-zowe-overview",
@@ -620,6 +629,7 @@ module.exports = {
       ],
     },
     "troubleshoot/zowe-chat-troubleshoot/troubleshooting",
+    "troubleshoot/troubleshoot-intellij",
   ],
   contributing: [
     "contribute/roadmap-contribute",

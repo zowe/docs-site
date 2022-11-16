@@ -12,6 +12,7 @@ You can also find error messages and codes, must-gathers, and information about 
 - [Troubleshooting Zowe Application Framework](./app-framework/app-troubleshoot.md)
 - [Troubleshooting Zowe CLI](./cli/troubleshoot-cli.md)
 - [Troubleshooting Zowe Launcher](./launcher/launcher-troubleshoot.md)
+- [Troubleshooting Zowe IntelliJ plug-in](troubleshoot-intellij.md)
 
 ## Verifying a Zowe release's integrity
 
