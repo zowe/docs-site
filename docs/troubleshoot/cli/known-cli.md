@@ -52,7 +52,44 @@ To correct this behavior, verify the following:
 
 **More Information:** [System requirements for Zowe CLI](../../user-guide/systemrequirements-cli.md)
 
-## `npm install -g` Command Fails Due to an EPERM Error
+## EACCESS error when issing `npm install` command
+
+**Valid on Windows, Mac, or Linux**
+
+**Symptom:**
+
+An `EACCESS` error is returned when you issue the `npm install -g` command to install a package from Zowe.org or npm.
+
+**Solution:**
+
+To resolve the issue, follow the steps described in [Resolving EACCESS permissions errors when installing packages globally](https://docs.npmjs.com/resolving-eacces-permissions-errors-when-installing-packages-globally) in the npm documentation.
+
+## Installation fails on Oracle Linux 6
+
+**Valid on Oracle Linux 6**
+
+**Symptom:**
+
+You receive error messages when you attempt to install the product on an
+Oracle Linux 6 operating system.
+
+**Solution:**
+
+Install the product on Oracle Linux 7 or another Linux or Windows OS. Zowe CLI is not compatible with Oracle Linux 6.
+
+## Node.js commands do not respond as expected
+
+**Valid on Windows or Linux**
+
+**Symptom:**
+
+You attempt to issue node.js commands and you do not receive the expected  output.
+
+**Solution:**
+
+There might be a program that is named *node* on your path. The Node.js installer automatically adds a program that is named *node* to your path. When there are pre-existing programs that are named *node* on your computer, the program that appears first in the path is used. To correct this behavior, change the order of the programs in the path so that Node.js appears first.
+
+## `npm install -g` command fails due to an EPERM error
 
 **Valid on Windows**
 
