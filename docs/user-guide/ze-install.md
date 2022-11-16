@@ -7,11 +7,10 @@ The Zowe Explorer extension for Visual Studio Code (VS Code) modernizes the way 
 
 Install the extension directly to [VSCode](https://code.visualstudio.com/) to enable the extension within the GUI. Working with data sets and USS files from VSCode can be more convenient than using 3270 emulators, and complements your Zowe CLI experience. The extension provides the following benefits:
 
-* Enables you to create, modify, rename, copy, and upload data sets directly to a z/OS mainframe.
-* Enables you to create, modify, rename, and upload USS files directly to a z/OS mainframe.
-* Provides a more streamlined way to access data sets, USS files, and jobs.
-* Lets you create, edit, and delete Zowe CLI `zosmf` compatible profiles.
-* Lets you use the Secure Credential Store plug-in to store your credentials securely in the settings.
+- Enables you to create, modify, rename, copy, and upload data sets directly to a z/OS mainframe.
+- Enables you to create, modify, rename, and upload USS files directly to a z/OS mainframe.
+- Provides a more streamlined way to access data sets, USS files, and jobs.
+- Lets you create, edit, and delete Zowe CLI `zosmf` compatible profiles.
 
 **Note:** Zowe Explorer is a subcomponent of [Zowe](https://zowe.org/home/). The extension demonstrates the potential for plug-ins powered by Zowe.
 
@@ -19,19 +18,19 @@ Install the extension directly to [VSCode](https://code.visualstudio.com/) to en
 
 Ensure that you meet the following prerequisites before you use the extension:
 
-* Get access to z/OSMF.
-* Install [Node.js](https://nodejs.org/en/download/) v8.0 or later.
-* Install [Visual Studio Code](https://code.visualstudio.com/).
-* Configure TSO/E address space services, z/OS data set, file REST interface, and z/OS jobs REST interface. For more information, see [z/OS Requirements](https://docs.zowe.org/stable/user-guide/systemrequirements-zosmf#z-os-requirements).
-* Create a Zowe CLI `zosmf` profile so that the extension can communicate with the mainframe.
+- Get access to z/OSMF.
+- Install [Node.js](https://nodejs.org/en/download/) v8.0 or later.
+- Install [Visual Studio Code](https://code.visualstudio.com/).
+- Configure TSO/E address space services, z/OS data set, file REST interface, and z/OS jobs REST interface. For more information, see [z/OS Requirements](https://docs.zowe.org/stable/user-guide/systemrequirements-zosmf#z-os-requirements).
+- Create a Zowe CLI `zosmf` profile so that the extension can communicate with the mainframe.
 
 ### Profile notes:
 
-   - Use existing Zowe CLI `zosmf` profiles created with Zowe CLI v.2.0.0 or later.
+- Use existing Zowe CLI `zosmf` profiles created with Zowe CLI v.2.0.0 or later.
 
-   - Zowe CLI `zosmf` profiles that are created in Zowe Explorer can be interchangeably used in Zowe CLI.
+- Zowe CLI `zosmf` profiles that are created in Zowe Explorer can be interchangeably used in Zowe CLI.
 
-   - *Optionally*, you can continue using Zowe CLI V1 profiles with Zowe Explorer. For more information, see [Working with Zowe Explorer profiles](https://docs.zowe.org/stable/user-guide/ze-profiles#working-with-zowe-explorer-profiles).
+- *Optionally*, you can continue using Zowe CLI V1 profiles with Zowe Explorer. For more information, see [Working with Zowe Explorer profiles](https://docs.zowe.org/stable/user-guide/ze-profiles#working-with-zowe-explorer-profiles).
 
 ## Installing Zowe Explorer
 
@@ -63,6 +62,7 @@ Configure Zowe Explorer in the settings file of the extension.
 To access the extension settings, follow these steps:
 
 1. Click the **Settings** icon at the bottom of the **Activity Bar**.
+
 2. Select the **Settings** option.
 3. Open the **Extension** option listed in the **Commonly Used** menu.
 4. Select **Zowe Explorer** to access its settings.
@@ -117,6 +117,7 @@ When environment conditions do not support Visual Studio Code security handling,
 
 In this section you can find useful links and other information relevant to Zowe Explorer that can improve your experience with the extension.
 
-* For information about how to develop for Eclipse Theia, see [Theia README](https://github.com/zowe/vscode-extension-for-zowe/blob/main/docs/README-Theia.md).
-* For information about how to create a VSCode extension for Zowe Explorer, see [VSCode extensions for Zowe Explorer](https://github.com/zowe/vscode-extension-for-zowe/blob/main/docs/README-Extending.md).
-* Visit the **#zowe-explorer** channel on [Slack](https://openmainframeproject.slack.com/) for questions and general guidance.
+- For information about how to develop for Eclipse Theia, see [Theia README](https://github.com/zowe/vscode-extension-for-zowe/blob/main/docs/README-Theia.md).
+- For information about how to create a VSCode extension for Zowe Explorer, see [VSCode extensions for Zowe Explorer](https://github.com/zowe/vscode-extension-for-zowe/blob/main/docs/README-Extending.md).
+
+- Visit the **#zowe-explorer** channel on [Slack](https://openmainframeproject.slack.com/) for questions and general guidance.
