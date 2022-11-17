@@ -251,7 +251,7 @@ Provides re-usable and industry compliant JSON formatted RMF/SMF data records, s
 
 For more information, see the [ZEBRA documentation](https://github.com/zowe/zebra/tree/main/Documentation) or visit the [ZEBRA test/trial site](https://zebra.talktothemainframe.com/).
 
-### Zowe IntelliJ Plug-in - Incubator
+### Zowe IntelliJ Plug-in
 
 Zowe IntelliJ plug-in for Intellij-based IDEs is a smart and interactive mainframe code editing tool that allows you to browse, edit, and create data on z/OS via z/OSMF REST API. 
 
