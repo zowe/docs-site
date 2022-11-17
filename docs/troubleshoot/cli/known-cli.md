@@ -35,6 +35,37 @@ This behavior occurs under the following conditions:
     - **macOS/Linux Bash:** `export npm_config_global=`
 4. Continue configuring Zowe CLI. Or, reissue a Zowe command that returned an error message. You should no longer get an error message.
 
+## Chain commands fail in a batch script
+
+**Valid on Windows**
+
+**Symptom:** When invoking Zowe CLI in a batch script (`.bat` or `.cmd` file), subsequent commands in the script do not run.
+
+**Solution:**
+
+To prevent the Zowe executable from taking control and stopping the execution of the script it is called from, add `call` in front of each Zowe CLI command.
+
+In the example below, the script never prints "hello" to the terminal:
+
+```
+zowe --version
+echo hello
+```
+To fix this, add `call` before the Zowe CLI command.
+
+```
+call zowe --version 
+echo hello
+```
+For multiple Zowe CLI commands, see the following example:
+
+```
+call zowe --version
+echo hello
+call zowe --version
+echo goodbye
+```
+
 ## *Command not found* message displays when issuing `npm install` commands
 
 **Valid on all supported platforms**
@@ -182,4 +213,4 @@ The installation fails on Linux or macOS.
 
 **Solution:**
 
-Depending on how you configured Node.js on Linux or macOS, you might need to add the prefix `sudo ` before the `npm install -g` command or the `npm uninstall -g` command. This step gives Node.js write access to the installation directory.
+Depending on how you configured Node.js on Linux or macOS, you might need to add the prefix `sudo` before the `npm install -g` command or the `npm uninstall -g` command. This step gives Node.js write access to the installation directory.
