@@ -103,7 +103,7 @@ Change the default folder location where temporary files are stored with the fol
 
 ### Modifying the `Secure Credentials Enabled` setting
 
-When environment conditions do not support Visual Studio Code security handling, change the `Secure Credentials Enabled` setting with the following steps:
+When environment conditions do not support the Zowe CLI built-in Credential Manager, change the `Secure Credentials Enabled` setting with the following steps:
 
  1. Navigate to Zowe Explorer settings.
  2. Scroll to **Security: Secure Credentials Enabled**.
