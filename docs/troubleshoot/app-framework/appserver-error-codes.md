@@ -1477,291 +1477,326 @@ The following error message codes may appear on the app-server log. Use the foll
 
 
 
-### ZWED0038W":"[Path=%s stderr]: %s
+### ZWED0038W
+
+  [Path=_childProcessConfig.path_ stderr]: _data_
 
   **Reason:**
 
-  TODO
+  A child process with path _childProcessConfig.path_ encountered an error with receiving _data_.
 
   **Action:**
 
-  TODO
+  Action depends on context of what _data_ is. May be useful in debugging an issue with internal ProcessManager.
 
 
 
-### ZWED0039W":"Exception at server cleanup function:\n%s
+### ZWED0039W
+
+  Exception at server cleanup function:
+  _stack_
 
   **Reason:**
 
-  TODO
+  An exception occurred when ending process, during the cleanup phase.
 
   **Action:**
 
-  TODO
+  No action is needed, but _stack_ can be sent to developers if server processes are failing to end.
 
 
 
-### ZWED0040W":"Callservice: Service call to %s:%s%s failed. 
+### ZWED0040W
+
+  Callservice: Service call to %s:%s%s failed. 
 
   **Reason:**
 
-  TODO
+  An HTTP request to _host_ with _port_ at _path_ failed.
 
   **Action:**
 
-  TODO
+  Check the subsequent error message to see why it failed or Network log, if request originated from the browser.
 
 
 
-### ZWED0041W":"%s Exception caught. Message=%s
+### ZWED0041W
+
+  [Proxy URL: _urlPrefix_] Exception caught. Message=_message_
 
   **Reason:**
 
-  TODO
+  For _urlPrefix_ proxy, an exception was caught with content _message_
 
   **Action:**
 
-  TODO
+  No action needed usually, but message may be needed for debugging
 
 
 
-### ZWED0042W":"Stack trace follows\n%s
+### ZWED0042W
+
+  Stack trace follows
+  _stack_
 
   **Reason:**
 
-  TODO
+  For the exception from ZWED0041W, a _stack_ trace is printed
 
   **Action:**
 
-  TODO
+  No action needed usually, but stack may be needed for debugging
 
 
 
-### ZWED0043W":"%s proxyWS error:%s
+### ZWED0043W
+  
+  [Proxy URL: _urlPrefix_] proxyWS error: _error_
 
   **Reason:**
 
-  TODO
+  Proxy worker encountered an _error_
 
   **Action:**
 
-  TODO
+  No action needed usually, but error may be needed for debugging
 
 
 
-### ZWED0044W":"%s WS error:%s
+### ZWED0044W
+  
+  [Proxy URL: _urlPrefix_] WS error: _error_
 
   **Reason:**
 
-  TODO
+  Worker encountered an _error_
 
   **Action:**
 
-  TODO
+  No action needed usually, but error may be needed for debugging
 
 
 
-### ZWED0045W":"Failed to reach the auth services host for address %s:%s
+### ZWED0045W
+
+  Failed to reach the auth services host for address _host_:_port_
 
   **Reason:**
 
-  TODO
+  Client encountered error when trying to connect to an agent _host_:_port_
 
   **Action:**
 
-  TODO
+  This usually means your agent (for example: ZSS) is unreachable or your configuration is pointing to an incorrect agent
 
 
 
-### ZWED0046W":"The auth services host system was not specified at startup, and defaulted to 127.0.0.1.\nVerify that the auth services server is running, or specify at startup the remote host and port to connect to. See documentation for details.
+### ZWED0046W
+
+  The auth services host system was not specified at startup, and defaulted to 127.0.0.1.
+  Verify that the auth services server is running, or specify at startup the remote host and port to connect to. See documentation for details.
 
   **Reason:**
 
-  TODO
+  Client encountered an error when trying to connect to the agent from ZWED0045W
 
   **Action:**
 
-  TODO
+  See ZWED0045W
 
 
 
-### ZWED0047W":"Swagger file for service (%s:%s) not found
+### ZWED0048W
+
+  Invalid Swagger from file for service (_plugin identifier_:_service name_)
 
   **Reason:**
 
-  TODO
+  N/A
 
   **Action:**
 
-  TODO
+  Check validity of Swagger file
 
 
 
-### ZWED0048W":"Invalid Swagger from file for service (%s:%s)
+### ZWED0049W"
+
+  _error message_ _stack_
 
   **Reason:**
 
-  TODO
+  Prints the _error message_ and _stack_ from ZWED0048W
 
   **Action:**
 
-  TODO
+  See ZWED0048W
 
 
 
-### ZWED0049W":"%s %s
+### ZWED0051W
+
+  Failed to parse translation file _path_. File skipped
 
   **Reason:**
 
-  TODO
+  Failed to parse the file _path_ as a valid translation file, most likely because it's not valid JSON
 
   **Action:**
 
-  TODO
+  Check if the translation file is valid JSON and matches the structure of core translation files (i.e. Sample Apps)
 
 
 
-### ZWED0050W":"Could not read swagger doc folder %s
+### ZWED0052W
+
+  Error when reading file=_path_. Error=_message_
 
   **Reason:**
 
-  TODO
+  Failed to read certificates or keys _path_ with a returned _message_
 
   **Action:**
 
-  TODO
+  Review content of _message_ and correct
 
 
 
-### ZWED0051W":"Failed to parse translation file %s. File skipped
+### ZWED0053W
+
+  Event handler failed: _error_
 
   **Reason:**
 
-  TODO
+  An asynchronous event listener handler failed
 
   **Action:**
 
-  TODO
+  This isn't part of normal operation, if it causes issue, _error_ and any relevant context should be sent to developers
 
 
 
-### ZWED0052W":"Error when reading file=%s. Error=%s
+### ZWED0054W
+
+  Skipping invalid listener address=_hostname_
 
   **Reason:**
 
-  TODO
+  _hostname_ was deemed invalid when attempting a DNS lookup to find IP address
 
   **Action:**
 
-  TODO
+  Compare with your configuration to see where the invalid _hostname_ is being picked up
 
 
 
-### ZWED0053W":"Event handler failed: 
+### ZWED0055W
+
+  Skipping invalid listener address=_hostname_
 
   **Reason:**
 
-  TODO
+  _hostname_ is not a valid string
 
   **Action:**
 
-  TODO
+  Compare with your configuration to see where the invalid _hostname_ is being referenced
 
 
 
-### ZWED0054W":"Skipping invalid listener address=%s
+### ZWED0056W
+
+  Couldn't process _address_ as IP
 
   **Reason:**
 
-  TODO
+  The _address_ was not pointing a valid IP address by the ipaddr utility
 
   **Action:**
 
-  TODO
+  Compare with your configuration to see where the invalid _address is being referenced
 
 
 
-### ZWED0055W":"Skipping invalid listener address=%s
+### ZWED0057W
+
+  Loopback calls: localhost equivalent address not found in list _listenerAddresses_. Using first address _address_; Verify firewall will allow this.
 
   **Reason:**
 
-  TODO
+  Unable to find a localhost equivalent from the _listenerAddresses_ list so server defaults to the first address in the loop
 
   **Action:**
 
-  TODO
+  Verify if this is intended configuration (edit/define zowe.components.app-server.node.https.ipAddresses or check Zowe documenation)
 
 
 
-### ZWED0056W":"Couldn't process %s as IP
+### ZWED0058W
+
+  Log location for logger '_identifier_:_serviceDefinitionName_' is undefined
 
   **Reason:**
 
-  TODO
+  Log location isn't being specified for this dataservice
 
   **Action:**
 
-  TODO
+  Check dataservice plugin definition to see if log location is being specified
 
 
 
-### ZWED0057W":"Loopback calls: localhost equivalent address not found in list %s. Using first address (%s); Verify firewall will allow this.
+### ZWED0059W
+
+  Failed to add the plugin: _errorMessage_
 
   **Reason:**
 
-  TODO
+  Using the /plugins API to add a plugin, has failed
 
   **Action:**
 
-  TODO
+  Review _errorMessage_ for explanation
 
 
+### ZWED0060W
 
-### ZWED0058W":"Log location for logger '%s:%s' is undefined
+  _errorMessage_
 
   **Reason:**
 
-  TODO
+  Invalid JSON
 
   **Action:**
 
-  TODO
+  Review _errorMessage_
 
 
+### ZWED0061W
 
-### ZWED0059W":"Failed to add the plugin: 
+  Callservice: Service call failed.
 
   **Reason:**
 
-  TODO
+  A network request to this service failed
 
   **Action:**
 
-  TODO
+  Check Network log and review error
 
 
 
-### ZWED0061W":"Callservice: Service call failed.
+### ZWED0062W
+
+  [Service URL: _url_] Exception caught. Message=_errorMessage_
 
   **Reason:**
 
-  TODO
+  An error occurred calling _url_ with reason _errorMessage_
 
   **Action:**
 
-  TODO
-
-
-
-### ZWED0062W":"%s Exception caught. Message=%s
-
-  **Reason:**
-
-  TODO
-
-  **Action:**
-
-  TODO
+  Review correctness of _url_ and review _errorMessage_
 
 
 
