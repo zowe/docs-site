@@ -16,7 +16,7 @@ Zowe high availability instances require a Sysplex environment that consists of 
 - USS Shared file system, see [How to share file systems in a Sysplex](https://www.ibm.com/docs/en/zos/2.4.0?topic=planning-sharing-file-systems-in-sysplex)
 - JESPlex/JES2 Multi-Access Spool (MAS) environment
 - z/OSMF high availability, see [Configuring z/OSMF high availability in Sysplex](systemrequirements-zosmf-ha.md)
-- Node.js v12.x, v14.x (except v14.17.2), or v16.x
+- Node.js v14.x(except v14.17.2) or v16.x
 
   **Note:** It is highly recommended that Node.js installed on a shared file system.
 
