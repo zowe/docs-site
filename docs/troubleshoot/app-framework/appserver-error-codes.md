@@ -2053,303 +2053,285 @@ The following error message codes may appear on the app-server log. Use the foll
 
 
 
-### ZWED0146W":"Could not stat destination or temp folder %s. Error=%s
+### ZWED0146W
+
+  Could not stat destination or temp folder _path_. Error=_ErrorMsg_
 
   **Reason:**
 
-  TODO
+  When it could not able to find the destination or _path_ of temp folder and throws _ErrorMsg_.
 
   **Action:**
 
-  TODO
+  No action needed usually, but error may be needed for debugging
 
 
 
-### ZWED0147W":"Cleanup not yet implemented
+### ZWED0147W
+
+   Cleanup not yet implemented
 
   **Reason:**
 
-  TODO
+  Cleanup is not started as its not yet implemented. 
 
   **Action:**
 
-  TODO
+  No action required.
 
 
 
-### ZWED0148W":"App extracted but not registered to App Server due to write fail. Error=%s
+### ZWED0148W
+
+  App extracted but not registered to App Server due to write fail. Error=_FILE_WRITE_MODE_
 
   **Reason:**
 
-  TODO
+  App extracted successfully but not registered to App Server due to write fail. Error=_FILE_WRITE_MODE_.
 
   **Action:**
 
-  TODO
+  Check write access to App Server.
 
 
 
-### ZWED0149W":"Could not find pluginDefinition.json file in App (dir=%s). Error=%s
+### ZWED0149W
+
+  Could not find pluginDefinition.json file in App (dir=_AppDir_). Error=_ErrorMsg_
 
   **Reason:**
 
-  TODO
+  Throws _ErrorMsg_ when its not able to find the pluginDefinition.json file in _AppDir_ location.
 
   **Action:**
 
-  TODO
+  No action needed usually, but error may be needed for debugging
 
 
 
-### ZWED0150W":"%s library path %s does not exist
+### ZWED0150W
+
+   _identifier_ library path _PluginDefination_ does not exist.
 
   **Reason:**
 
-  TODO
+  It throws warning when library _identifier_ does not exist at path _pluginDefination_.
 
   **Action:**
 
-  TODO
+  Check library exist in the path _pluginDefination_.
 
 
 
-### ZWED0151W":"unhandledRejection 
+### ZWED0151W
+
+  unhandledRejection 
 
   **Reason:**
 
-  TODO
+  When process experiences an unhandledRejection.
 
   **Action:**
 
-  TODO
+  No action needed usually, but error may be needed for debugging
 
 
 
-### ZWED0152W":"Error at call sessionStore. %s: %s
+### ZWED0152W
+
+  Error at call sessionStore. _APIMethodname_: _Error Object_
 
   **Reason:**
 
-  TODO
+  There is a problem calling a sessionStore _APIMethodname_.
 
   **Action:**
 
-  TODO
+  No action needed usually, but error may be needed for debugging.
+  
 
 
 
-### ZWED0153W":"WARNING: CLI Argument missing name or has unsupported type%s
+### ZWED0153W
+
+  WARNING: CLI Argument missing name or has unsupported type _ARG_TYPE_FLAG_/_ARG_TYPE_VALUE_/_ARG_TYPE_JSON_.
 
   **Reason:**
 
-  TODO
+  It throws warning when CLI Argument missing any name or has unsupported type for any one of them _ARG_TYPE_FLAG_/_ARG_TYPE_VALUE_/_ARG_TYPE_JSON_.
 
   **Action:**
 
-  TODO
+  Check any missing argument or unsupported argument.
 
 
 
-### ZWED0154W":"WARNING: Unrecognized command: %s
+### ZWED0154W
+
+  WARNING: Unrecognized command: _args_
 
   **Reason:**
 
-  TODO
+  Throws warning error _args_ when command is Unrecognized.
 
   **Action:**
 
-  TODO
+  Check the command once again.
 
 
 
-### ZWED0155W":"%s
+### ZWED0155W
+
+   _ErrorMsg_
 
   **Reason:**
 
-  TODO
+  Server throws 500 code with _ErrorMsg_.
 
   **Action:**
 
-  TODO
+  Go through the _ErrorMsg_ for detail to debug.
 
 
 
-### ZWED0156W":"1 function initLoggerMessages - ERROR - %s
+### ZWED0156W
+
+  1 function initLoggerMessages - ERROR - _Error_
 
   **Reason:**
 
-  TODO
+  When we encountered an _Error_ ,then 1 function created a logger file with specified message.
 
   **Action:**
 
-  TODO
+  Go through the logger file for detail _Error_ to debug.
 
 
 
-### ZWED0157W":"2 function initLoggerMessages - ERROR - %s
+### ZWED0157W
+
+  2 function initLoggerMessages - ERROR - _Error_.
 
   **Reason:**
 
-  TODO
+  When we encountered an _Error_ ,then 2 function created a logger file with specified message.
 
   **Action:**
 
-  TODO
+  Go through the logger file for detail _Error_ to debug.
 
 
 
-### ZWED0158W":"%s
+### ZWED0158W
+
+   _ErrorMsg_
 
   **Reason:**
 
-  TODO
+  Server throws 500 code with _ErrorMsg_.
 
   **Action:**
 
-  TODO
+  Go through the _ErrorMsg_ for detail to debug.
 
 
 
-### ZWED0159W":"Plugin (%s) loading failed. Message: "%s" Successful: %s% (%s/%s) Attempted: %s% (%s/%s)
+### ZWED0159W
+
+  Plugin (_PluginIdentifier_) loading failed. Message: "_pluginsTotal_" Successful: _pluginsLoaded_% (_pluginsLoaded_/_eventCount_) Attempted: _pluginCount_% (_pluginCount_/_eventCount_)
 
   **Reason:**
 
-  TODO
+  Plugin with _pluginId_ loaded failed. The server attempted to load a total of _pluginsTotal_ with _pluginsLoaded_ plugins already successfully loaded.
 
   **Action:**
 
-  TODO
+  Review _errorMessage_ to see if there is something you can do to fix the error. You may need to contact the plugin developer to find a solution. If you do not need this plugin, it is OK to continue.
 
 
 
-### ZWED0160W":"Master cluster not found to save storage for id: %s, value: %s
+### ZWED0166W
+
+  Error updating the storage: _Error_
 
   **Reason:**
 
-  TODO
+  Throws warning _Error_ when it faced error while updating the storage.
 
   **Action:**
 
-  TODO
+  Contact support if _Error_ is not clear.
 
 
 
-### ZWED0161W":"Master cluster not found to save storage
+### ZWED0167W
+
+  Error adding to the storage: _storageTimeout_
 
   **Reason:**
 
-  TODO
+  Throws _storageTimeout_ error while adding to the storage.
 
   **Action:**
 
-  TODO
+  You may change the value of _storageTimeout_ ms by setting 'node.cluster.storageTimeout' within the config.
 
 
 
-### ZWED0162W":"Master cluster not found to add storage
+### ZWED0168W
+
+  Unable to retrieve storage value from cluster _Error_
 
   **Reason:**
 
-  TODO
+  Throws warning _Error_ when it unable to retrieve storage value from cluster.
 
   **Action:**
 
-  TODO
+  Contact support if _Error_ is not clear.
 
 
 
-### ZWED0163W":"Master cluster was not found to delete storage for id: %s
+### ZWED0169W
+
+  Error deleting the storage with id: _deleteStorageByKey_  _Error_
 
   **Reason:**
 
-  TODO
+  Throws warning _Error_ when it tries deleting the storage with _deleteStorageByKey_ 
 
   **Action:**
 
-  TODO
+  Contact support if _Error_ is not clear.
 
 
 
-### ZWED0165W":"Unable to retrieve storage data from cluster promise %s
+### ZWED0170W
+
+  Plugin (_PluginIdentifier_) loading failed. Version: _PluginVersion_. Message: "_Error_"
 
   **Reason:**
 
-  TODO
+  Throws warning _Error_ when plugin with _PluginIdentifier_ failed to load. version of plugin is _PluginVersion_. 
 
   **Action:**
 
-  TODO
+  Review _Error_ to see if there is something you can do to fix the error. You may need to contact the plugin developer to find a solution. If you do not need this plugin, it is OK to continue.
 
 
 
-### ZWED0166W":"Error updating the storage: %s
+
+### ZWED0171W
+
+  Rejected undefined referrer for url=_originalUrl_, ip=_ip_
 
   **Reason:**
 
-  TODO
+  Throws 403 Forbidden due to referrer, when it failed to load the webApp. 
 
   **Action:**
 
-  TODO
-
-
-
-### ZWED0167W":"Error adding to the storage: %s
-
-  **Reason:**
-
-  TODO
-
-  **Action:**
-
-  TODO
-
-
-
-### ZWED0168W":"Unable to retrieve storage value from cluster %s
-
-  **Reason:**
-
-  TODO
-
-  **Action:**
-
-  TODO
-
-
-
-### ZWED0169W":"Error deleting the storage with id: %s %s
-
-  **Reason:**
-
-  TODO
-
-  **Action:**
-
-  TODO
-
-
-
-### ZWED0170W":"Plugin (%s) loading failed. Version: %s. Message: "%s"
-
-  **Reason:**
-
-  TODO
-
-  **Action:**
-
-  TODO
-
-
-
-### ZWED0171W":"Rejected undefined referrer for url=%s, ip=%s
-
-  **Reason:**
-
-  TODO
-
-  **Action:**
-
-  TODO
+  Double Check the Address. The most common reason for a 403 error is a mistyped _originalUrl_ or _ip_.
 
 
 
