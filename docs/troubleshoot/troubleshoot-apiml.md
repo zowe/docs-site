@@ -315,7 +315,7 @@ main¨ o.a.http.impl.client.DefaultHttpClient   : Retrying connect to {s}->https
 
 **Solution:**
 
-The Zowe started task needs to run under the same user ID as z/OSMF (typically IZUSVR). This is stated in the [installation documentation](../user-guide/configure-zos-system#grant-users-permission-to-access-z-osmf).
+The Zowe started task needs to run under the user with sufficient privileges. As a workaround you can try running it under the same user ID as z/OSMF (typically IZUSVR).
 
 The hostname that is displayed in the details of the exception is a valid hostname. You can validate that the hostname is valid by using `ping` command on the same mainframe system. For example, `ping USILCA32.lvn.broadcom.net`. If it is valid, then the problem can be caused by insufficient privileges of your started task that is not allowed to do network access.
 
