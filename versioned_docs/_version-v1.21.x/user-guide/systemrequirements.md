@@ -59,7 +59,7 @@ For more information on the relationship between the Zowe server components and 
 
 ### Zowe Web Explorers and APIs on z/OS requirements (host)
 
-- Node.js v14.x(except v14.17.2) or v16.x
+- Node.js v14.x (except v14.17.2) or v16.x
   
   **Note:** When using Node.js v14.x or later, it is highly recommended that plug-ins used are tagged. For more information, see [Tagging on z/OS](../extend/extend-desktop/mvd-buildingplugins.md#tagging-plugin-files-on-z-os).
   
@@ -71,7 +71,7 @@ For more information on the relationship between the Zowe server components and 
 
 The Zowe Application Framework server provides the Zowe Desktop that contains an extensible GUI with a number of applications allowing access to z/OS functions, such as the File Editor, TN3270 emulator, JES Explorer, and more. For more information, see [Zowe Architecture](../getting-started/zowe-architecture.md#zlux).
 
-- Node.js v14.x(except v14.17.2) or v16.x
+- Node.js v14.x (except v14.17.2) or v16.x
   
   **Note:** When using Node.js v14.x or later, it is highly recommended that plug-ins used are tagged. For more information, see [Tagging on z/OS](../extend/extend-desktop/mvd-buildingplugins.md#tagging-plugin-files-on-z-os). 
   

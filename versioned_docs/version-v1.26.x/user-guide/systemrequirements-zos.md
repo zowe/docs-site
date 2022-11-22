@@ -43,7 +43,7 @@ Be sure your z/OS system meets the following prerequisites.
 
 ### Node.js
 
-- Node.js v14.x(except v14.17.2) or v16.x
+- Node.js v14.x (except v14.17.2) or v16.x
 
   Node is not included with z/OS so must be installed separately.  To install Node.js on z/OS, follow the instructions in [Installing Node.js on z/OS](install-nodejs-zos.md).
   
