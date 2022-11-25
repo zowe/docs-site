@@ -13,7 +13,7 @@ As an API Mediation Layer user, you may encounter problems with how the API ML f
     * [Browser unable to connect due to a CIPHER error](#browser-unable-to-connect-due-to-a-cipher-error)
     * [API Components unable to handshake](#api-components-unable-to-handshake)
     * [Java z/OS components of Zowe unable to read certificates from keyring](#java-zos-components-of-zowe-unable-to-read-certificates-from-keyring)
-    
+    * [Java z/OS components of Zowe cannot load the certificate private key pair from the keyring](#java-zos-components-of-zowe-cannot-load-the-certificate-private-key-pair-from-the-keyring)
 ## Install API ML without Certificate Setup
 
 For testing purposes, it is not necessary to set up certificates when configuring the API Mediation Layer. You can configure Zowe without certificate setup and run Zowe with `verify_certificates: DISABLED`.
@@ -437,7 +437,7 @@ Check that the Zowe certificate has been configured as a client certificate, and
 
 **Symptom:**
 
-Java z/OS components of Zowe are unable to read certificates from a keyring. This problem may appear as an error as in teh following example where Java treats the SAF keyring as a file.
+Java z/OS components of Zowe are unable to read certificates from a keyring. This problem may appear as an error as in the following example where Java treats the SAF keyring as a file.
 
 **Example:**
 ```
@@ -454,3 +454,37 @@ at com.ibm.jsse2.be$p$a.run(be$p$a.java:2)
 Apply the following APAR to address this issue:
 
 * [APAR IJ31756](https://www.ibm.com/support/pages/apar/IJ31756)
+
+### Java z/OS components of Zowe cannot load the certificate private key pair from the keyring
+
+**Symptom:**
+
+API ML components configured with SAF keyring are not able to start due to an unrecoverable exception. The exception message notifies the user that the private key is not properly padded.
+
+**Example:**
+```
+Caused by: java.security.UnrecoverableKeyException: Given final block not properly padded
+	at com.ibm.crypto.provider.I.a(Unknown Source)
+	at com.ibm.crypto.provider.JceRACFKeyStore.engineGetKey(Unknown Source)
+	at java.security.KeyStore.getKey(KeyStore.java:1034)
+	at org.apache.tomcat.util.net.SSLUtilBase.getKeyManagers(SSLUtilBase.java:354)
+	at org.apache.tomcat.util.net.SSLUtilBase.createSSLContext(SSLUtilBase.java:247)
+	at org.apache.tomcat.util.net.AbstractJsseEndpoint.createSSLContext(AbstractJsseEndpoint.java:105)
+```
+
+**Solution:**
+
+First, make sure that the private key stored in the keyring is not encrypted by a password, or that the private key integrity is not protected by a password. This is not related to SAF keyrings themselves, which are not usually protected by password, but rather to is related to the concrete certificate private key pair stored in the SAF keyring. In case the private key is not protected in any way by a password, there is a possible workaround. Specify "dummy" as the key password in zowe.yaml certificate configuration. 
+
+```
+  certificate:
+    keystore:
+      type: JCERACFKS
+      file: safkeyring:////ZWESVUSR/ZoweKeyring
+      password: dummy
+      alias: <cert-label>
+    truststore:
+      type: JCERACFKS
+      file: safkeyring:////ZWESVUSR/ZoweKeyring
+      password:
+```
