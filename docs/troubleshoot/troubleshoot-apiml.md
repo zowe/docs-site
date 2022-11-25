@@ -454,3 +454,37 @@ at com.ibm.jsse2.be$p$a.run(be$p$a.java:2)
 Apply the following APAR to address this issue:
 
 * [APAR IJ31756](https://www.ibm.com/support/pages/apar/IJ31756)
+
+### Java z/OS components of Zowe can't load certificate private key pair from keyring
+
+**Symptom:**
+
+API ML components configured with SAF keyring are not able to start because of the unrecoverable exception. The exception message is saying that the private key is not properly padded.
+
+**Example:**
+```
+Caused by: java.security.UnrecoverableKeyException: Given final block not properly padded
+	at com.ibm.crypto.provider.I.a(Unknown Source)
+	at com.ibm.crypto.provider.JceRACFKeyStore.engineGetKey(Unknown Source)
+	at java.security.KeyStore.getKey(KeyStore.java:1034)
+	at org.apache.tomcat.util.net.SSLUtilBase.getKeyManagers(SSLUtilBase.java:354)
+	at org.apache.tomcat.util.net.SSLUtilBase.createSSLContext(SSLUtilBase.java:247)
+	at org.apache.tomcat.util.net.AbstractJsseEndpoint.createSSLContext(AbstractJsseEndpoint.java:105)
+```
+
+**Solution:**
+
+First, make sure that the private key stored in the keyring is not encrypted by a password or private key integrity is not protected by a password. This is not related to SAF keyrings themselves, which are not usually protected by password, but rather to concrete certificate private key pair stored in the SAF keyring. In case the private key is not protected in any way by a password, there is a possible workaround. You need to specify "dummy" as the key password in zowe.yaml certificate configuration. 
+
+```
+  certificate:
+    keystore:
+      type: JCERACFKS
+      file: safkeyring:////ZWESVUSR/ZoweKeyring
+      password: dummy
+      alias: <cert-label>
+    truststore:
+      type: JCERACFKS
+      file: safkeyring:////ZWESVUSR/ZoweKeyring
+      password:
+```
