@@ -2041,15 +2041,17 @@ The following error message codes may appear on the app-server log. Use the foll
 
 
 
-### ZWED0087W":"%s stderr=%s
+### ZWED0087W
+
+  _this.getIdString()_ stderr=_data_
 
   **Reason:**
 
-  TODO
+  While stopping tomcat process with _this.getIdString()_, encountered a standard error with receiving _data_.
 
   **Action:**
 
-  TODO
+  Action depends on what _data_ is and may be useful to debug.
 
 
 
