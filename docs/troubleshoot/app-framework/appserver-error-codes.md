@@ -2059,7 +2059,7 @@ The following error message codes may appear on the app-server log. Use the foll
 
   **Reason:**
 
-  When it could not able to find the destination or _path_ of temp folder and throws _ErrorMsg_.
+  Server was unable to use 'stat' command on folder _path_ and threw _ErrorMsg_.
 
   **Action:**
 
@@ -2067,31 +2067,17 @@ The following error message codes may appear on the app-server log. Use the foll
 
 
 
-### ZWED0147W
-
-   Cleanup not yet implemented
-
-  **Reason:**
-
-  Cleanup is not started as its not yet implemented. 
-
-  **Action:**
-
-  No action required.
-
-
-
 ### ZWED0148W
 
-  App extracted but not registered to App Server due to write fail. Error=_FILE_WRITE_MODE_
+  App extracted but not registered to App Server due to write fail. Error=_errorMessage_
 
   **Reason:**
 
-  App extracted successfully but not registered to App Server due to write fail. Error=_FILE_WRITE_MODE_.
+  App extracted successfully but not registered to App Server due to write fail. Error=_errorMessage_.
 
   **Action:**
 
-  Check write access to App Server.
+  Go through the _errorMessage_ for context on what to debug.
 
 
 
@@ -2105,27 +2091,27 @@ The following error message codes may appear on the app-server log. Use the foll
 
   **Action:**
 
-  No action needed usually, but error may be needed for debugging
+  Check if pluginDefinition.json exists in _AppDir_.
 
 
 
 ### ZWED0150W
 
-   _identifier_ library path _PluginDefination_ does not exist.
+   _identifier_ library path _location_ does not exist.
 
   **Reason:**
 
-  It throws warning when library _identifier_ does not exist at path _pluginDefination_.
+  Server throws warning when library plugin _identifier_ does not exist at path _location_.
 
   **Action:**
 
-  Check library exist in the path _pluginDefination_.
+  Check library exist in the path _location_.
 
 
 
 ### ZWED0151W
 
-  unhandledRejection 
+  unhandledRejection _error_
 
   **Reason:**
 
@@ -2133,7 +2119,7 @@ The following error message codes may appear on the app-server log. Use the foll
 
   **Action:**
 
-  No action needed usually, but error may be needed for debugging
+  No action needed usually, but error may be needed for debugging.
 
 
 
@@ -2148,17 +2134,16 @@ The following error message codes may appear on the app-server log. Use the foll
   **Action:**
 
   No action needed usually, but error may be needed for debugging.
-  
 
 
 
 ### ZWED0153W
 
-  WARNING: CLI Argument missing name or has unsupported type _ARG_TYPE_FLAG_/_ARG_TYPE_VALUE_/_ARG_TYPE_JSON_.
+  WARNING: CLI Argument missing name or has unsupported type=_type_ (supported types: 1 - _flag_, 2 - _value_, 3 - _json_)
 
   **Reason:**
 
-  It throws warning when CLI Argument missing any name or has unsupported type for any one of them _ARG_TYPE_FLAG_/_ARG_TYPE_VALUE_/_ARG_TYPE_JSON_.
+  It throws warning when CLI Argument missing any name or has unsupported type for any one of them _flag_/_value_/_json_.
 
   **Action:**
 
@@ -2172,11 +2157,11 @@ The following error message codes may appear on the app-server log. Use the foll
 
   **Reason:**
 
-  Throws warning error _args_ when command is Unrecognized.
+  Throws warning when _args_ is unrecognized.
 
   **Action:**
 
-  Check the command once again.
+  Check the command once again Or Check if specified command is interpreted as intended.
 
 
 
@@ -2190,7 +2175,7 @@ The following error message codes may appear on the app-server log. Use the foll
 
   **Action:**
 
-  Go through the _ErrorMsg_ for detail to debug.
+  Go through the _ErrorMsg_ for context on what to debug.
 
 
 
@@ -2200,11 +2185,11 @@ The following error message codes may appear on the app-server log. Use the foll
 
   **Reason:**
 
-  When we encountered an _Error_ ,then 1 function created a logger file with specified message.
+  Attempt to get a log message for a language a user may have specified, has failed with _Error_.
 
   **Action:**
 
-  Go through the logger file for detail _Error_ to debug.
+  Go through the Error for details on what to debug.
 
 
 
@@ -2214,11 +2199,11 @@ The following error message codes may appear on the app-server log. Use the foll
 
   **Reason:**
 
-  When we encountered an _Error_ ,then 2 function created a logger file with specified message.
+  Attempt to get a log message for English has failed with _Error_.
 
   **Action:**
 
-  Go through the logger file for detail _Error_ to debug.
+  Go through the Error for details on what to debug.
 
 
 
@@ -2232,17 +2217,17 @@ The following error message codes may appear on the app-server log. Use the foll
 
   **Action:**
 
-  Go through the _ErrorMsg_ for detail to debug.
+  Go through the _ErrorMsg_ for details on what to debug.
 
 
 
 ### ZWED0159W
 
-  Plugin (_PluginIdentifier_) loading failed. Message: "_pluginsTotal_" Successful: _pluginsLoaded_% (_pluginsLoaded_/_eventCount_) Attempted: _pluginCount_% (_pluginCount_/_eventCount_)
+  Plugin (_PluginIdentifier_) loading failed. Message: "_errorMessage_" Successful: _pluginsLoaded_% (_pluginsLoaded_/_eventCount_) Attempted: _pluginCount_% (_pluginCount_/_eventCount_)
 
   **Reason:**
 
-  Plugin with _pluginId_ loaded failed. The server attempted to load a total of _pluginsTotal_ with _pluginsLoaded_ plugins already successfully loaded.
+  Plugin with _pluginId_ loaded failed with _errorMessage_. The server attempted to load a total of _pluginCount_ with _pluginsLoaded_ plugins already successfully loaded.
 
   **Action:**
 
@@ -2274,7 +2259,8 @@ The following error message codes may appear on the app-server log. Use the foll
 
   **Action:**
 
-  You may change the value of _storageTimeout_ ms by setting 'node.cluster.storageTimeout' within the config.
+  Go through the error for details on what to debug or contact support if error is not clear.
+  
 
 
 
@@ -2298,7 +2284,7 @@ The following error message codes may appear on the app-server log. Use the foll
 
   **Reason:**
 
-  Throws warning _Error_ when it tries deleting the storage with _deleteStorageByKey_ 
+  when server tries deleting storage by key _deleteStorageByKey_.
 
   **Action:**
 
@@ -2312,7 +2298,7 @@ The following error message codes may appear on the app-server log. Use the foll
 
   **Reason:**
 
-  Throws warning _Error_ when plugin with _PluginIdentifier_ failed to load. version of plugin is _PluginVersion_. 
+  when plugin _PluginIdentifier_ failed to load. version of plugin is _PluginVersion_. 
 
   **Action:**
 
@@ -2327,11 +2313,11 @@ The following error message codes may appear on the app-server log. Use the foll
 
   **Reason:**
 
-  Throws 403 Forbidden due to referrer, when it failed to load the webApp. 
+  Throws 403 Forbidden when App server fails to honor a network request due to failed referrer check. 
 
   **Action:**
 
-  Double Check the Address. The most common reason for a 403 error is a mistyped _originalUrl_ or _ip_.
+  Double check the address. A possible reason for a 403 error is a misstyped _originalUrl_ or _ip_ or because loopback routing is not configured in the App server.
 
 
 
