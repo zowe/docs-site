@@ -1767,7 +1767,7 @@ The following error message codes may appear on the app-server log. Use the foll
 
 ### ZWED0063W
 
-  Stack Trace Exception
+  Stack trace follows _stackTrace_
 
   **Reason:**
 
@@ -1782,7 +1782,7 @@ The following error message codes may appear on the app-server log. Use the foll
 
 ### ZWED0064W
 
-  Invalid method
+  _plugin.identifier_: Invalid method _method_
 
   **Reason:**
 
@@ -1796,11 +1796,11 @@ The following error message codes may appear on the app-server log. Use the foll
 
 ### ZWED0065W
 
-  Library plugin identifier is missing libraryVersion attribute for hosting files. Skipping file hosting.
+  Library _plugin.identifier_ is missing libraryVersion attribute for hosting files. Skipping file hosting.
 
   **Reason:**
 
-  Library plugin's definition is missing the library version attribute
+  Library plugin's plugin definition is missing the library version attribute
 
   **Action:**
 
@@ -1810,35 +1810,36 @@ The following error message codes may appear on the app-server log. Use the foll
 
 ### ZWED0066W
 
-  pluginID: getCapabilities() is not a function
+  _pluginID_: _getCapabilities()_ is not a function
 
   **Reason:**
 
-  Handler _pluginid_ has no function/method defined as _getCapabilities()_
+  _getCapabilities()_ is not a formatted variable name in the original message
 
   **Action:**
 
-  Function _getCapabilities()_ should be defined
+  No action required. Please send the log and any relevant info to the developers
 
 
 
 ### ZWED0068W
 
-  Failed to set proxy authorizations. Error=_ErrorMsg_
+  Failed to set proxy authorizations. Error=_errorMessage_
 
   **Reason:**
 
-  When handler fails to set proxy authorizations with handler pluginId, then it throws _ErrorMsg_ in the catch block.
+  Failed to add proxy authorization with reason _errorMessage_.
 
   **Action:**
 
-  Add correct proxy authorizations for the handler.
+  No action required. If your desired authentication plugin isn't successfully authenticating a login, 
+  please send the log and any relevant info to the developers.
 
 
 
 ### ZWED0069W
 
-  Returning null for cipher array because input had non-string
+  Returning null for cipher array because input had non-string:
 
   **Reason:**
 
@@ -1852,22 +1853,22 @@ The following error message codes may appear on the app-server log. Use the foll
 
 ### ZWED0070W
 
-  Error when reading PFX. The server cannot continue. Error=_ErrorMsg_  
+  Error when reading PFX. The server cannot continue. Error=_errorMessage_  
 
   **Reason:**
 
   If we get an error while reading _config.https.pfx_ file then the server cannot continue 
-  and throws _ErrorMsg_ in the catch block.
+  and throws _errorMessage_ in the catch block.
 
   **Action:**
 
-  No action is needed, but the _ErrorMsg_ may be needed to debug
+  No action is needed, but the _errorMessage_ may be needed to debug
 
 
 
 ### ZWED0071W
 
-  Unexpected error on server _ipAddress_: _port_ Error=_ErrorMsg_ stack trace Exception
+  Unexpected error on server _ipAddress_: _port_ Error=_errorMessage_ stack trace Exception
 
   **Reason:**
 
@@ -1881,15 +1882,15 @@ The following error message codes may appear on the app-server log. Use the foll
 
 ### ZWED0072W
 
-  Could not stop manager due to error _ErrorMsg_
+  Could not stop manager due to error _errorMessage_
 
   **Reason:**
 
-  If the server manager is unable to stop due to any reason it will throw an exception with an _ErrorMsg_.
+  If the server manager is unable to stop due to any reason it will throw an exception with an _errorMessage_.
 
   **Action:**
 
-  Review the _ErrorMsg_ and see if there is something you can do to fix the error
+  Review the _errorMessage_ and see if there is something you can do to fix the error
 
 
 
@@ -1954,11 +1955,11 @@ The following error message codes may appear on the app-server log. Use the foll
 
 ### ZWED0077W
 
-  Could not extract war for service=_key-value_, error=_ErrorMsg_
+  Could not extract war for service=_key-value_, error=_errorMessage_
 
   **Reason:**
 
-  If the service with the _key-value_ pair is unable to extract the war file then it throws the _ErrorMsg_
+  If the service with the _key-value_ pair is unable to extract the war file then it throws the _errorMessage_
 
   **Action:**
 
@@ -1968,11 +1969,11 @@ The following error message codes may appear on the app-server log. Use the foll
 
 ### ZWED0078W
 
-  Could not access files to determine status for service=_key-value_, error=_ErrorMsg_
+  Could not access files to determine status for service=_key-value_, error=_errorMessage_
 
   **Reason:**
 
-  If we are unable to get the status of war extracted or not, then it throws _ErrorMsg_ in catch block.
+  If we are unable to get the status of war extracted or not, then it throws _errorMessage_ in catch block.
 
   **Action:**
 
@@ -1982,11 +1983,11 @@ The following error message codes may appear on the app-server log. Use the foll
 
 ### ZWED0079W
 
-  Cannot add servlet for service=_key-value_, error=_ErrorMsg_
+  Cannot add servlet for service=_key-value_, error=_errorMessage_
 
   **Reason:**
 
-  If unable to add servlet for service _key-value_, then it logs a warning _ErrorMsg_. 
+  If unable to add servlet for service _key-value_, then it logs a warning _errorMessage_. 
 
   **Action:**
 
@@ -2010,11 +2011,11 @@ The following error message codes may appear on the app-server log. Use the foll
 
 ### ZWED0081W
 
-  Could not start tomcat, error=_ErrorMsg_
+  Could not start tomcat, error=_errorMessage_
 
   **Reason:**
 
-  If tomcat manager is unable to start tomcat with _DOptionsArray_, then it logs _ErrorMsg_ in catch block.
+  If tomcat manager is unable to start tomcat with _DOptionsArray_, then it logs _errorMessage_ in catch block.
 
   **Action:**
 
@@ -2069,29 +2070,29 @@ The following error message codes may appear on the app-server log. Use the foll
 
 ### ZWED0085
 
-  _getIdString()_ Error when stopping, error=_ErrorMsg_
+  _getIdString()_ Error when stopping, error=_errorMessage_
 
   **Reason:**
 
-  An error occurred while stopping tomcat-process for windows then it logs _ErrorMsg_ with _getIdString()_.
+  An error occurred while stopping tomcat-process for windows then it logs _errorMessage_ with _getIdString()_.
 
   **Action:**
 
-  Review the _ErrorMsg_ and see if there is something you can do to fix the error
+  Review the _errorMessage_ and see if there is something you can do to fix the error
 
 
 
 ### ZWED0086W
 
-  Could not stop tomcat, error=_ErrorMsg_
+  Could not stop tomcat, error=_errorMessage_
 
   **Reason:**
 
-  If Tomcat manager unable to stop tomcat-process for Unix then it logs _ErrorMsg_ in catch block.
+  If Tomcat manager unable to stop tomcat-process for Unix then it logs _errorMessage_ in catch block.
 
   **Action:**
 
-  Review the _ErrorMsg_ and see if there is something you can do to fix the error
+  Review the _errorMessage_ and see if there is something you can do to fix the error
 
 
 
