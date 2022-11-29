@@ -36,7 +36,7 @@ zowe:
     - [Configure external extension](#configure-external-extension)
 - [YAML configurations - haInstances](#yaml-configurations---hainstances)
 - [Auto-generated environment variables](#auto-generated-environment-variables)
-- [Troubleshooting your YAML with the Red Hat VSCode extension](#troubleshooting-your-YAML-with-the-Red-Hat-VSCode-extension)
+- [Troubleshooting your YAML with the Red Hat VSCode extension](#troubleshooting-your-yaml-with-the-red-hat-vs-code-extension)
 
 ### High-level overview of YAML configuration file
 
