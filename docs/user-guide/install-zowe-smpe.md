@@ -293,6 +293,7 @@ Library DDNAME | Member Type | Target Volume | Type | Org | RECFM | LRECL | No. 
 ---|---|---|---|---|---|---|---|---
 SZWEAUTH | APF Load Modules	| ANY | U | PDSE | U | 0 | 15 | N/A
 SZWESAMP | Samples | ANY | U | PDSE | FB | 80 | 15 | 5
+SZWELOAD | Load Modules | ANY | U | PDSE | U | 0 | 30 | N/A
 
 **Zowe file system paths**
 
