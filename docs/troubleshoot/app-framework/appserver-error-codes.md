@@ -2063,7 +2063,7 @@ The following error message codes may appear on the app-server log. Use the foll
 
   **Action:**
 
-  No action needed usually, but error may be needed for debugging
+  No action is needed usually, but an _ErrorMsg_ may be needed for debugging.
 
 
 
@@ -2105,7 +2105,7 @@ The following error message codes may appear on the app-server log. Use the foll
 
   **Action:**
 
-  Check library exist in the path _location_.
+  Check if the library plugin exists in the path _location_.
 
 
 
@@ -2119,7 +2119,7 @@ The following error message codes may appear on the app-server log. Use the foll
 
   **Action:**
 
-  No action needed usually, but error may be needed for debugging.
+  No action is needed usually, but an error message may be needed for debugging.
 
 
 
@@ -2133,7 +2133,7 @@ The following error message codes may appear on the app-server log. Use the foll
 
   **Action:**
 
-  No action needed usually, but error may be needed for debugging.
+  No action is needed usually, but an error message may be needed for debugging.
 
 
 
@@ -2143,7 +2143,7 @@ The following error message codes may appear on the app-server log. Use the foll
 
   **Reason:**
 
-  It throws warning when CLI Argument missing any name or has unsupported type for any one of them _flag_/_value_/_json_.
+  It throws a warning when CLI Argument is missing any name or has an unsupported type for any one of them _flag_/_value_/_json_.
 
   **Action:**
 
@@ -2161,7 +2161,7 @@ The following error message codes may appear on the app-server log. Use the foll
 
   **Action:**
 
-  Check the command once again Or Check if specified command is interpreted as intended.
+  Check the command once again or check if the specified command is interpreted as intended.
 
 
 
@@ -2270,7 +2270,7 @@ The following error message codes may appear on the app-server log. Use the foll
 
   **Reason:**
 
-  Throws warning _Error_ when it unable to retrieve storage value from cluster.
+  throws warning _Error_ when it is unable to retrieve storage value from cluster.
 
   **Action:**
 
