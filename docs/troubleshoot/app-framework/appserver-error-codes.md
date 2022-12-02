@@ -1800,291 +1800,348 @@ The following error message codes may appear on the app-server log. Use the foll
 
 
 
-### ZWED0063W":"Stack trace follows\n%s
+### ZWED0063W
+
+  Stack trace follows _stackTrace_
 
   **Reason:**
 
-  TODO
+  This exception originates from the web socket and the stack trace message handles the generated exception.
+  The stack trace for an exception helps in understanding the error and what went wrong with the code.
 
   **Action:**
 
-  TODO
+  No action needed unless user is experiencing an interruption in server service, then send stack to developers
 
 
 
-### ZWED0064W":"%s: invalid method %s
+### ZWED0064W
+
+  _plugin.identifier_: Invalid method _method_
 
   **Reason:**
 
-  TODO
+  It will throw the warning if method is invalid (different from these methods: get|post|put|delete|ws)
 
   **Action:**
 
-  TODO
+  Review the warning message and use correct method
 
 
 
-### ZWED0065W":"Library %s is missing libraryVersion attribute for hosting files. Skipping file hosting.
+### ZWED0065W
+
+  Library _plugin.identifier_ is missing libraryVersion attribute for hosting files. Skipping file hosting.
 
   **Reason:**
 
-  TODO
+  Library plugin's plugin definition is missing the library version attribute
 
   **Action:**
 
-  TODO
+  Add the correct library version in the plugin definition
 
 
 
-### ZWED0066W":"%s: getCapabilities() is not a function
+### ZWED0066W
+
+  _pluginID_: _getCapabilities()_ is not a function
 
   **Reason:**
 
-  TODO
+  _getCapabilities()_ is not a formatted variable name in the original message
 
   **Action:**
 
-  TODO
+  No action required. Please send the log and any relevant info to the developers
 
 
 
-### ZWED0068W":"Failed to set proxy authorizations. Error=
+### ZWED0068W
+
+  Failed to set proxy authorizations. Error=_errorMessage_
 
   **Reason:**
 
-  TODO
+  Failed to add proxy authorization with reason _errorMessage_.
 
   **Action:**
 
-  TODO
+  No action required. If your desired authentication plugin isn't successfully authenticating a login,
+  please send the log and any relevant info to the developers.
 
 
 
-### ZWED0069W":"Returning null for cipher array because input had non-string: 
+### ZWED0069W
+
+  Returning null for cipher array because input had non-string:
 
   **Reason:**
 
-  TODO
+  Returns null for cipher array if an array element is not a string type.
 
   **Action:**
 
-  TODO
+  As it is an array of string then all elements should be of type string.
 
 
 
-### ZWED0070W":"Error when reading PFX. Server cannot continue. Error=%s
+### ZWED0070W
+
+  Error when reading PFX. The server cannot continue. Error=_errorMessage_
 
   **Reason:**
 
-  TODO
+  If we get an error while reading _config.https.pfx_ file then the server cannot continue
+  and throws _errorMessage_ in the catch block.
 
   **Action:**
 
-  TODO
+  No action is needed, but the _errorMessage_ may be needed to debug
 
 
 
-### ZWED0071W":"Unexpected error on server %s:%s. E=%s. Stack trace follows.\n%s
+### ZWED0071W
+
+  Unexpected error on server _ipAddress_: _port_ Error=_errorMessage_ stack trace Exception
 
   **Reason:**
 
-  TODO
+  When we get an unexpected error on the server with _ipAddress_ and _port_.
 
   **Action:**
 
-  TODO
+  No action needed unless user is experiencing an interruption in server, then send stack to developers
 
 
 
-### ZWED0072W":"Could not stop manager, error=
+### ZWED0072W
+
+  Could not stop manager due to error _errorMessage_
 
   **Reason:**
 
-  TODO
+  If the server manager is unable to stop due to any reason it will throw an exception with an _errorMessage_.
 
   **Action:**
 
-  TODO
+  Review the _errorMessage_ and see if there is something you can do to fix the error
 
 
 
-### ZWED0073W":"No server returned for group=
+### ZWED0073W
+
+  No server returned for group=_group_
 
   **Reason:**
 
-  TODO
+  If no server returned for _group_ element from _groupingConfig_ array
+  then it will throw this warning message.
 
   **Action:**
 
-  TODO
+  Review the warning message and check for the _group_ element to fix the error
 
 
+### ZWED0074W
 
-### ZWED0074W":"Unknown default behavior=%s
+  Unknown default behavior=_defaultBehavior_
 
   **Reason:**
 
-  TODO
+  If the server is not in a microservice or appserver then it logs a default
+  switch case warning message as the unknown _defaultBehavior_.
 
   **Action:**
 
-  TODO
+  No action is needed, but the warning may be needed to debug
 
 
 
-### ZWED0075W":"Services in plugin=%s war grouping skipped. Plugin missing or already grouped
+### ZWED0075W
+
+  Services in plugin=_plugin[i]_ war grouping skipped. Plugin missing or already grouped
 
   **Reason:**
 
-  TODO
+  If element from _plugins_ array, does not contain a compatible service (data service plugin/war service)
+  then the element is skipped and not added to a new array.
 
   **Action:**
 
-  TODO
+  Review the warning message and check for the _plugins_ array element to fix the error
 
 
 
-### ZWED0076W":"Skipping invalid plugin group=
+### ZWED0076W
+
+  Skipping invalid plugin group=_plugins_
 
   **Reason:**
 
-  TODO
+  If the _plugins_ is not an array and the size is less than zero, then it will log a
+  warning message in the else block.
 
   **Action:**
 
-  TODO
+  Make sure _plugins_ should be an array of size greater than zero.
 
 
 
-### ZWED0077W":"Could not extract war for service=%s, error=
+### ZWED0077W
+
+  Could not extract war for service=_key-value_, error=_errorMessage_
 
   **Reason:**
 
-  TODO
+  If the service with the _key-value_ pair is unable to extract the war file then it throws the _errorMessage_
 
   **Action:**
 
-  TODO
+  Check if your war file is in a valid format or exists.
 
 
 
-### ZWED0078W":"Could not access files to determine status for service=%s, error=
+### ZWED0078W
+
+  Could not access files to determine status for service=_key-value_, error=_errorMessage_
 
   **Reason:**
 
-  TODO
+  If we are unable to get the status of war extracted or not, then it throws _errorMessage_ in catch block.
 
   **Action:**
 
-  TODO
+  Check if your war file is in a valid format or not.
 
 
 
-### ZWED0079W":"Cannot add servlet for service=%s, error=
+### ZWED0079W
+
+  Cannot add servlet for service=_key-value_, error=_errorMessage_
 
   **Reason:**
 
-  TODO
+  If unable to add servlet for service _key-value_, then it logs a warning _errorMessage_.
 
   **Action:**
 
-  TODO
+  No action is needed, but the warning may be needed to debug
 
 
 
-### ZWED0080W":"Cannot add servlet for service=%s
+### ZWED0080W
+
+  Cannot add servlet for service=_key-value_
 
   **Reason:**
 
-  TODO
+  When we are not able to get the _dir_ to add servlet for service _key-value_.
 
   **Action:**
 
-  TODO
+  Check if your _dir_ is exists / in valid format or not.
 
 
 
-### ZWED0081W":"Could not start tomcat, error=
+### ZWED0081W
+
+  Could not start tomcat, error=_errorMessage_
 
   **Reason:**
 
-  TODO
+  If tomcat manager is unable to start tomcat with _DOptionsArray_, then it logs _errorMessage_ in catch block.
 
   **Action:**
 
-  TODO
+  Review the warning message and verify _DOptionsArray_ element values are valid or not.
 
 
 
-### ZWED0082W":"%s stderr=%s
+### ZWED0082W
+
+  _this.getIdString()_ stderr=_data_
 
   **Reason:**
 
-  TODO
+  A tomcat process with _this.getIdString()_ encountered an standard error with receiving _data_.
 
   **Action:**
 
-  TODO
+  Action depends on what _data_ is. May be useful in debugging.
 
 
 
-### ZWED0083W":"Tomcat could not start. Closing. code=%s
+### ZWED0083W
+
+  Tomcat could not start. Closing. code=_code_
 
   **Reason:**
 
-  TODO
+  If tomcat manager is unable to start Tomcat, and closing the tomcat process with _code_
+  then it logs this message.
 
   **Action:**
 
-  TODO
+  Review the warning message and see if you are able to check why the tomcat unable to start.
 
 
 
-### ZWED0084W":"Tomcat could not start. Exiting. code=%s
+### ZWED0084W
+
+  Tomcat could not start. Exiting. code=_code_
 
   **Reason:**
 
-  TODO
+  If tomcat manager is unable to start Tomcat, and exiting from the tomcat process
+  with _code_ then it logs this message.
 
   **Action:**
 
-  TODO
+  Review the warning message and see if you are able to check why the tomcat unable to start
+  and exited from tomcat process.
 
 
 
-### ZWED0085W":"%s Error when stopping, error=
+### ZWED0085
+
+  _getIdString()_ Error when stopping, error=_errorMessage_
 
   **Reason:**
 
-  TODO
+  An error occurred while stopping tomcat-process for windows then it logs _errorMessage_ with _getIdString()_.
 
   **Action:**
 
-  TODO
+  Review the _errorMessage_ and see if there is something you can do to fix the error
 
 
 
-### ZWED0086W":"Could not stop tomcat, error=
+### ZWED0086W
+
+  Could not stop tomcat, error=_errorMessage_
 
   **Reason:**
 
-  TODO
+  If Tomcat manager unable to stop tomcat-process for Unix then it logs _errorMessage_ in catch block.
 
   **Action:**
 
-  TODO
+  Review the _errorMessage_ and see if there is something you can do to fix the error
 
 
 
-### ZWED0087W":"%s stderr=%s
+### ZWED0087W
+
+  _this.getIdString()_ stderr=_data_
 
   **Reason:**
 
-  TODO
+  While stopping tomcat process with _this.getIdString()_, encountered a standard error with receiving _data_.
 
   **Action:**
 
-  TODO
+  Action depends on what _data_ is and may be useful to debug.
 
 
 
