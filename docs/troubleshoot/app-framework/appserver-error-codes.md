@@ -2185,7 +2185,7 @@ The following error message codes may appear on the app-server log. Use the foll
 
   **Reason:**
 
-  Attempt to get a log message for a language a user may have specified, has failed with _Error_.
+  Attempt to get log message for a language a user may have specified, has failed with _Error_.
 
   **Action:**
 
@@ -2199,7 +2199,7 @@ The following error message codes may appear on the app-server log. Use the foll
 
   **Reason:**
 
-  Attempt to get a log message for English has failed with _Error_.
+  Attempt to get log message for English has failed with _Error_.
 
   **Action:**
 
@@ -2270,7 +2270,7 @@ The following error message codes may appear on the app-server log. Use the foll
 
   **Reason:**
 
-  throws warning _Error_ when it is unable to retrieve storage value from cluster.
+  Throws warning _Error_ when it is unable to retrieve storage value from cluster.
 
   **Action:**
 
@@ -2298,7 +2298,7 @@ The following error message codes may appear on the app-server log. Use the foll
 
   **Reason:**
 
-  when plugin _PluginIdentifier_ failed to load. version of plugin is _PluginVersion_. 
+  Plugin _PluginIdentifier_ with version _PluginVersion_ has failed to load with an _Error_. 
 
   **Action:**
 
