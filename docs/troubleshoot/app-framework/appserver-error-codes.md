@@ -1821,7 +1821,7 @@ The following error message codes may appear on the app-server log. Use the foll
 
   **Reason:**
 
-  It will throw the warning if method is invalid (different from these methods: get|post|put|delete|ws)
+  It will throw the warning if _method_ is invalid (different from these methods: get|post|put|delete|ws)
 
   **Action:**
 
@@ -1831,7 +1831,7 @@ The following error message codes may appear on the app-server log. Use the foll
 
 ### ZWED0065W
 
-  Library _plugin.identifier_ is missing libraryVersion attribute for hosting files. Skipping file hosting.
+  Library plugin _plugin.identifier_ is missing libraryVersion attribute for hosting files. Skipping file hosting.
 
   **Reason:**
 
@@ -1845,15 +1845,16 @@ The following error message codes may appear on the app-server log. Use the foll
 
 ### ZWED0066W
 
-  _pluginID_: _getCapabilities()_ is not a function
+  _getCapabilities()_ is not a variable name in the log message
 
   **Reason:**
 
-  _getCapabilities()_ is not a formatted variable name in the original message
+  The handler for plugin pluginID does not have a _getCapabilities()_ method
 
   **Action:**
 
-  No action required. Please send the log and any relevant info to the developers
+  No action required. If your desired authentication plugin isn't successfully authenticating a login,
+  please send the log and any relevant info to the developers.
 
 
 
@@ -1882,7 +1883,7 @@ The following error message codes may appear on the app-server log. Use the foll
 
   **Action:**
 
-  As it is an array of string then all elements should be of type string.
+  Please verify, if any custom cyphers, that all cyphers are of type string.
 
 
 
@@ -1893,7 +1894,7 @@ The following error message codes may appear on the app-server log. Use the foll
   **Reason:**
 
   If we get an error while reading _config.https.pfx_ file then the server cannot continue
-  and throws _errorMessage_ in the catch block.
+  and throws _errorMessage_.
 
   **Action:**
 
@@ -1903,15 +1904,16 @@ The following error message codes may appear on the app-server log. Use the foll
 
 ### ZWED0071W
 
-  Unexpected error on server _ipAddress_: _port_ Error=_errorMessage_ stack trace Exception
+  Unexpected error on server _ipAddress_:_port_. E=_errorMessage_. Stack trace follows. _stack_
 
   **Reason:**
 
-  When we get an unexpected error on the server with _ipAddress_ and _port_.
+  When we get an unexpected (anything except EACCES, EADDRINUSE, ENOTFOUND, EADDRNOTAVAIL) error
+  in the web server for _ipAddress_:_port_.
 
   **Action:**
 
-  No action needed unless user is experiencing an interruption in server, then send stack to developers
+  No action needed unless user is experiencing an interruption in server, then send error message and stack to developers
 
 
 
@@ -1925,7 +1927,7 @@ The following error message codes may appear on the app-server log. Use the foll
 
   **Action:**
 
-  Review the _errorMessage_ and see if there is something you can do to fix the error
+  If the Java manager (handles Jar and War) is unable to stop all servers, send _errorMessage_ to developers
 
 
 
@@ -1935,12 +1937,11 @@ The following error message codes may appear on the app-server log. Use the foll
 
   **Reason:**
 
-  If no server returned for _group_ element from _groupingConfig_ array
-  then it will throw this warning message.
+  If No server was found in this War _group_ then it will throw this warning message.
 
   **Action:**
 
-  Review the warning message and check for the _group_ element to fix the error
+  No action is required
 
 
 ### ZWED0074W
@@ -1949,8 +1950,7 @@ The following error message codes may appear on the app-server log. Use the foll
 
   **Reason:**
 
-  If the server is not in a microservice or appserver then it logs a default
-  switch case warning message as the unknown _defaultBehavior_.
+  The default grouping behaviour in the config for this War is not of type 'microservice' or 'appserver'
 
   **Action:**
 
@@ -1964,12 +1964,11 @@ The following error message codes may appear on the app-server log. Use the foll
 
   **Reason:**
 
-  If element from _plugins_ array, does not contain a compatible service (data service plugin/war service)
-  then the element is skipped and not added to a new array.
+  Server was not created for _plugin[i]_ War grouping, because it was already made or plugin is missing.
 
   **Action:**
 
-  Review the warning message and check for the _plugins_ array element to fix the error
+  No action is needed
 
 
 
@@ -1979,8 +1978,7 @@ The following error message codes may appear on the app-server log. Use the foll
 
   **Reason:**
 
-  If the _plugins_ is not an array and the size is less than zero, then it will log a
-  warning message in the else block.
+  If the _plugins_ is not an array and the size is less than zero, then it will log a warning message.
 
   **Action:**
 
@@ -1998,7 +1996,7 @@ The following error message codes may appear on the app-server log. Use the foll
 
   **Action:**
 
-  Check if your war file is in a valid format or exists.
+  Check if the war file exists and configured correctly.
 
 
 
@@ -2012,7 +2010,7 @@ The following error message codes may appear on the app-server log. Use the foll
 
   **Action:**
 
-  Check if your war file is in a valid format or not.
+  Check if the war file exists.
 
 
 
@@ -2026,7 +2024,7 @@ The following error message codes may appear on the app-server log. Use the foll
 
   **Action:**
 
-  No action is needed, but the warning may be needed to debug
+  No action is needed, but the warning may be needed to debug this War
 
 
 
@@ -2040,7 +2038,7 @@ The following error message codes may appear on the app-server log. Use the foll
 
   **Action:**
 
-  Check if your _dir_ is exists / in valid format or not.
+  Check if your _dir_ is exists and is valid.
 
 
 
@@ -2050,7 +2048,7 @@ The following error message codes may appear on the app-server log. Use the foll
 
   **Reason:**
 
-  If tomcat manager is unable to start tomcat with _DOptionsArray_, then it logs _errorMessage_ in catch block.
+  Tomcat manager is unable to start tomcat with _DOptionsArray_.
 
   **Action:**
 
@@ -2060,11 +2058,11 @@ The following error message codes may appear on the app-server log. Use the foll
 
 ### ZWED0082W
 
-  _this.getIdString()_ stderr=_data_
+  Tomcat PID=_pid_: stderr=_data_
 
   **Reason:**
 
-  A tomcat process with _this.getIdString()_ encountered an standard error with receiving _data_.
+  A tomcat process with Tomcat _pid_ encountered an standard error with receiving _data_.
 
   **Action:**
 
@@ -2078,8 +2076,7 @@ The following error message codes may appear on the app-server log. Use the foll
 
   **Reason:**
 
-  If tomcat manager is unable to start Tomcat, and closing the tomcat process with _code_
-  then it logs this message.
+  If Tomcat Manager is unable to start Tomcat, then it closes the Tomcat.
 
   **Action:**
 
@@ -2093,8 +2090,7 @@ The following error message codes may appear on the app-server log. Use the foll
 
   **Reason:**
 
-  If tomcat manager is unable to start Tomcat, and exiting from the tomcat process
-  with _code_ then it logs this message.
+  If Tomcat Manager is unable to start Tomcat, then it exists the Tomcat.
 
   **Action:**
 
@@ -2105,11 +2101,11 @@ The following error message codes may appear on the app-server log. Use the foll
 
 ### ZWED0085
 
-  _getIdString()_ Error when stopping, error=_errorMessage_
+  Tomcat PID=_pid_ Error when stopping, error=_errorMessage_
 
   **Reason:**
 
-  An error occurred while stopping tomcat-process for windows then it logs _errorMessage_ with _getIdString()_.
+  If Tomcat manager unable to stop tomcat-process for Windows then it logs _errorMessage_.
 
   **Action:**
 
@@ -2123,7 +2119,7 @@ The following error message codes may appear on the app-server log. Use the foll
 
   **Reason:**
 
-  If Tomcat manager unable to stop tomcat-process for Unix then it logs _errorMessage_ in catch block.
+  If Tomcat manager unable to stop tomcat-process for Unix then it logs _errorMessage_.
 
   **Action:**
 
@@ -2133,11 +2129,11 @@ The following error message codes may appear on the app-server log. Use the foll
 
 ### ZWED0087W
 
-  _this.getIdString()_ stderr=_data_
+  Tomcat PID=_pid_: stderr=_data_
 
   **Reason:**
 
-  While stopping tomcat process with _this.getIdString()_, encountered a standard error with receiving _data_.
+  While stopping Tomcat, Tomcat process with Tomcat _pid_ encountered an standard error.
 
   **Action:**
 
