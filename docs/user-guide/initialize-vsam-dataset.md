@@ -57,7 +57,7 @@ If you want to preview the member before submitting it use the value `--security
 >> Create VSAM storage for Zowe Caching Service
 Modify ZWECSVSM
 - IBMUSER.ZWE.CUST.JCLLIB(ZWECSVSM) is prepared
-Submit WINCHJ.ZWEV2.CUST.JCLLIB(ZWECSVSM)
+Submit USER.ZWEV2.CUST.JCLLIB(ZWECSVSM)
 - Job ZWECSVSM(JOB05407) ends with code 0 (COMPLETED).
 >> Zowe Caching Service VSAM storage is created successfully.
 >
