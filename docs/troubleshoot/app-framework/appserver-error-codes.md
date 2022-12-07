@@ -2145,7 +2145,7 @@ The following error message codes may appear on the app-server log. Use the foll
 
   The server throws a warning when the CLI argument is missing a name, or has an unsupported type (supported types: 1 - _flag_, 2 - _value_, 3 - _json_).
 
-  *Action:*
+  **Action:**
 
   Check any missing argument or unsupported argument.
 
