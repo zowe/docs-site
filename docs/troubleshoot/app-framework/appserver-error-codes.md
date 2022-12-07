@@ -1883,7 +1883,7 @@ The following error message codes may appear on the app-server log. Use the foll
 
   **Action:**
 
-  Please verify, if any customer cyphers present, that all cyphers are of type string.
+  Please verify, if any custom cyphers present, that all cyphers are of type string.
 
 
 
@@ -2034,11 +2034,11 @@ The following error message codes may appear on the app-server log. Use the foll
 
   **Reason:**
 
-  When we are not able to get the dir to add servlet for service _key-value_.
+  When we are not able to get the directory to add servlet for service _key-value_.
 
   **Action:**
 
-  Check if your dir is exists and is valid.
+  Check if your directory is exists and is valid.
 
 
 
@@ -2048,11 +2048,11 @@ The following error message codes may appear on the app-server log. Use the foll
 
   **Reason:**
 
-  Tomcat manager is unable to start Tomcat with DOptionsArray.
+  Tomcat manager is unable to start Tomcat with the Java option, due to an incorrect configuration with `components.app-server.node.https.port`, `components.app-server.node.https.key`, or `components.app-server.node.https.certificate`.
 
   **Action:**
 
-  Review the warning message and verify DOptionsArray element values are valid or not.
+  Verify configuration with `components.app-server.node.https.port`, `components.app-server.node.https.key`, or `components.app-server.node.https.certificate` is valid or not.
 
 
 
@@ -2076,11 +2076,11 @@ The following error message codes may appear on the app-server log. Use the foll
 
   **Reason:**
 
-  If the Tomcat manager is unable to start itself, then it closes with code..
+  If the Tomcat manager is unable to start itself, then it closes with _code_.
 
   **Action:**
 
-  Review the warning message and see if you are able to check why the Tomcat unable to start.
+  Review the message and if app server service is interrupted, send it and your log to support for troubleshooting.
 
 
 
@@ -2094,8 +2094,7 @@ The following error message codes may appear on the app-server log. Use the foll
 
   **Action:**
 
-  Review the warning message and see if you are able to check why the Tomcat unable to start
-  and exited from Tomcat process.
+  Review the message and if app server service is interrupted, send it and your log to support for troubleshooting.
 
 
 
@@ -2123,7 +2122,7 @@ The following error message codes may appear on the app-server log. Use the foll
 
   **Action:**
 
-  Review the _errorMessage_ and see if there is something you can do to fix the error
+  Review the _errorMessage_ and if app server service is interrupted, send it and your log to support for troubleshooting.
 
 
 
@@ -2137,7 +2136,7 @@ The following error message codes may appear on the app-server log. Use the foll
 
   **Action:**
 
-  Action depends on what _error_ is and may be useful to debug.
+  Review the _error_ and if app server service is interrupted, send it and your log to support for troubleshooting.
 
 
 
