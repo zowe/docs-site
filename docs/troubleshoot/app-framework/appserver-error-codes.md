@@ -1845,11 +1845,11 @@ The following error message codes may appear on the app-server log. Use the foll
 
 ### ZWED0066W
 
-  _getCapabilities()_ is not a variable name in the log message
+  _pluginID_: getCapabilities() is not a function
 
   **Reason:**
 
-  The handler for plugin pluginID does not have a _getCapabilities()_ method
+  The handler for plugin _pluginID_ does not have a getCapabilities() method
 
   **Action:**
 
@@ -1883,7 +1883,7 @@ The following error message codes may appear on the app-server log. Use the foll
 
   **Action:**
 
-  Please verify, if any custom cyphers, that all cyphers are of type string.
+  Please verify, if any customer cyphers present, that all cyphers are of type string.
 
 
 
@@ -1960,11 +1960,11 @@ The following error message codes may appear on the app-server log. Use the foll
 
 ### ZWED0075W
 
-  Services in plugin=_plugin[i]_ war grouping skipped. Plugin missing or already grouped
+  Services in plugin=_plugin_ war grouping skipped. Plugin missing or already grouped
 
   **Reason:**
 
-  Server was not created for _plugin[i]_ War grouping, because it was already made or plugin is missing.
+  Server was not created for _plugin_ War grouping, because it was already made or plugin is missing.
 
   **Action:**
 
@@ -1978,7 +1978,7 @@ The following error message codes may appear on the app-server log. Use the foll
 
   **Reason:**
 
-  If the _plugins_ is not an array and the size is less than zero, then it will log a warning message.
+  If _plugins_ is not an array and the size is less than zero, then it will log a warning message.
 
   **Action:**
 
@@ -2034,39 +2034,39 @@ The following error message codes may appear on the app-server log. Use the foll
 
   **Reason:**
 
-  When we are not able to get the _dir_ to add servlet for service _key-value_.
+  When we are not able to get the dir to add servlet for service _key-value_.
 
   **Action:**
 
-  Check if your _dir_ is exists and is valid.
+  Check if your dir is exists and is valid.
 
 
 
 ### ZWED0081W
 
-  Could not start tomcat, error=_errorMessage_
+  Could not start Tomcat, error=_errorMessage_
 
   **Reason:**
 
-  Tomcat manager is unable to start tomcat with _DOptionsArray_.
+  Tomcat manager is unable to start Tomcat with DOptionsArray.
 
   **Action:**
 
-  Review the warning message and verify _DOptionsArray_ element values are valid or not.
+  Review the warning message and verify DOptionsArray element values are valid or not.
 
 
 
 ### ZWED0082W
 
-  Tomcat PID=_pid_: stderr=_data_
+  Tomcat PID=_pid_: stderr=_error_
 
   **Reason:**
 
-  A tomcat process with Tomcat _pid_ encountered an standard error with receiving _data_.
+  A Tomcat process with Tomcat _pid_ encountered an _error_ (stderr).
 
   **Action:**
 
-  Action depends on what _data_ is. May be useful in debugging.
+  Action depends on what _error_ is and may be useful to debug.
 
 
 
@@ -2076,11 +2076,11 @@ The following error message codes may appear on the app-server log. Use the foll
 
   **Reason:**
 
-  If Tomcat Manager is unable to start Tomcat, then it closes the Tomcat.
+  If the Tomcat manager is unable to start itself, then it closes with code..
 
   **Action:**
 
-  Review the warning message and see if you are able to check why the tomcat unable to start.
+  Review the warning message and see if you are able to check why the Tomcat unable to start.
 
 
 
@@ -2090,12 +2090,12 @@ The following error message codes may appear on the app-server log. Use the foll
 
   **Reason:**
 
-  If Tomcat Manager is unable to start Tomcat, then it exists the Tomcat.
+  If the Tomcat manager is unable to start itself, then it exits with _code_.
 
   **Action:**
 
-  Review the warning message and see if you are able to check why the tomcat unable to start
-  and exited from tomcat process.
+  Review the warning message and see if you are able to check why the Tomcat unable to start
+  and exited from Tomcat process.
 
 
 
@@ -2105,7 +2105,7 @@ The following error message codes may appear on the app-server log. Use the foll
 
   **Reason:**
 
-  If Tomcat manager unable to stop tomcat-process for Windows then it logs _errorMessage_.
+  If Tomcat manager is unable to stop the Tomcat process on Windows, then it logs _errorMessage_.
 
   **Action:**
 
@@ -2115,11 +2115,11 @@ The following error message codes may appear on the app-server log. Use the foll
 
 ### ZWED0086W
 
-  Could not stop tomcat, error=_errorMessage_
+  Could not stop Tomcat, error=_errorMessage_
 
   **Reason:**
 
-  If Tomcat manager unable to stop tomcat-process for Unix then it logs _errorMessage_.
+  If Tomcat manager is unable to stop the Tomcat process on Unix, then it logs _errorMessage_.
 
   **Action:**
 
@@ -2129,15 +2129,15 @@ The following error message codes may appear on the app-server log. Use the foll
 
 ### ZWED0087W
 
-  Tomcat PID=_pid_: stderr=_data_
+  Tomcat PID=_pid_: stderr=_error_
 
   **Reason:**
 
-  While stopping Tomcat, Tomcat process with Tomcat _pid_ encountered an standard error.
+  While stopping Tomcat, Tomcat process with Tomcat _pid_ encountered an _error_ (stderr).
 
   **Action:**
 
-  Action depends on what _data_ is and may be useful to debug.
+  Action depends on what _error_ is and may be useful to debug.
 
 
 
