@@ -30,7 +30,7 @@ The `zowe-configure-instance.sh` script will detect if there are new configurati
 The `zowe-configure-instance.sh` script will echo any values that are added to the `instance.env` file.
 
 ```
-Missing properties that will be appended to /u/winchj/zowe-instance/instance.env:
+Missing properties that will be appended to /u/USER/zowe-instance/instance.env:
 ```
 
 ### Important note for users upgrading to v1.14
