@@ -2139,7 +2139,7 @@ The following error message codes may appear on the app-server log. Use the foll
 
 ### ZWED0153W
 
-  WARNING: CLI Argument missing name or has unsupported type=_type_ (supported types: 1 - _flag_, 2 - _value_, 3 - _json_)
+  WARNING: CLI Argument missing name or has unsupported type=_type_
 
   **Reason:**
 
@@ -2189,7 +2189,7 @@ The following error message codes may appear on the app-server log. Use the foll
 
   **Action:**
 
-  Go through the Error for details on what to debug.
+  Go through the _Error_ for details on what to debug.
 
 
 
@@ -2203,7 +2203,7 @@ The following error message codes may appear on the app-server log. Use the foll
 
   **Action:**
 
-  Go through the Error for details on what to debug.
+  Go through the _Error_ for details on what to debug.
 
 
 
@@ -2251,17 +2251,16 @@ The following error message codes may appear on the app-server log. Use the foll
 
 ### ZWED0167W
 
-  Error adding to the storage: _storageTimeout_
+  Error adding to the storage: _errorMessage_
 
   **Reason:**
 
-  Throws _storageTimeout_ error while adding to the storage.
+  Throws _errorMessage_ while adding to the storage.
 
   **Action:**
 
-  Go through the error for details on what to debug or contact support if error is not clear.
+  If app server service is interrupted, go through the _errorMessage_ for details on what to debug or contact support if _errorMessage_ is not clear.
   
-
 
 
 ### ZWED0168W
@@ -2274,7 +2273,7 @@ The following error message codes may appear on the app-server log. Use the foll
 
   **Action:**
 
-  Contact support if _Error_ is not clear.
+  By default, the timeout for cluster method calls is 1000ms which should cause no issues. If service is interrupted, contact support and provide _Error_.
 
 
 
@@ -2303,7 +2302,6 @@ The following error message codes may appear on the app-server log. Use the foll
   **Action:**
 
   Review _Error_ to see if there is something you can do to fix the error. You may need to contact the plugin developer to find a solution. If you do not need this plugin, it is OK to continue.
-
 
 
 
