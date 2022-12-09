@@ -53,7 +53,7 @@ The script in this example submits a job, waits for the job to enter output stat
 ```
 #! /bin/env bash
 #submit our job
-jobid=$(zowe zos-jobs submit data-set "boech02.public.cntl(iefbr14)" --rff jobid --rft string)
+jobid=$(zowe zos-jobs submit data-set "ibmuser.public.cntl(iefbr14)" --rff jobid --rft string)
 echo "Submitted our job, JOB ID is $jobid"
 #wait for job to go to output
 status="UNKNOWN"
