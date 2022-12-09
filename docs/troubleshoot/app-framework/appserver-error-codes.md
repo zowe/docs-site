@@ -2641,291 +2641,213 @@ The following error message codes may appear on the app-server log. Use the foll
 
 
 
-### ZWED0017E":"Identifier doesn't match one found in pluginDefinition: %s
+### ZWED0017E 
+
+  Identifier doesn't match one found in pluginDefinition: _pluginIdentifier_
 
   **Reason:**
 
-  TODO
+  The identifier found in the plugin reference doesn't match the one specified in the pluginDefinition.json
 
   **Action:**
 
-  TODO
+  Check if identifier found is the same one as intended (typo perhaps?). If not, edit pluginDefinition.json or turn on App server debugging for the bootstrap logger (_zsf.bootstrap) and check if the plugin reference found in code ZWED0044I is correct
 
 
 
-### ZWED0018E":"No plugin type found, skipping
+### ZWED0018E 
+
+  No plugin type found, skipping
 
   **Reason:**
 
-  TODO
+  The plugin definition for the plugin has no 'pluginType' property set
 
   **Action:**
 
-  TODO
+  Contact app developers if you need plugin to be loaded and working
 
 
 
-### ZWED0019E":"Plugin already registered
+### ZWED0019E 
+
+  Plugin already registered
 
   **Reason:**
 
-  TODO
+  A plugin with this identifier has already been registered to the map of plugins
 
   **Action:**
 
-  TODO
+  Check if you have multiple components sharing the same, or different versions, of the same plugin. This is not allowed
 
 
 
-### ZWED0020E":"%s: pluginType %s is unknown
+### ZWED0020E 
+
+  "_pluginIdentifier_: pluginType _type_ is unknown
 
   **Reason:**
 
-  TODO
+  The plugin _pluginIdentifier_ has in its plugin definition an invalid plugin _type_
 
   **Action:**
 
-  TODO
+  Accepted plugin types: library, application, windowManager, bootstrap, desktop, nodeAuthentication, proxyConnector
 
 
 
-### ZWED0021E":"%s is missing
+### ZWED0021E
+
+  _pluginPath_ is missing
 
   **Reason:**
 
-  TODO
+  App server tried to process the plugin reference from path _pluginPath_
 
   **Action:**
 
-  TODO
+  Check if _pluginPath_ is a real path
 
 
 
-### ZWED0022E":"Module not found %s
+### ZWED0022E
+  
+  Module not found _moduleName_
 
   **Reason:**
 
-  TODO
+  App server, during a cluster/worker method call, tried to require a module _moduleName_ it couldn't find
 
   **Action:**
 
-  TODO
+  Contact the plugin developer if plugin returns this error
 
 
 
-### ZWED0023E":"Method not implemented %s
+### ZWED0023E
+
+  Method not implemented _methodName_
 
   **Reason:**
 
-  TODO
+  App server, during a cluster/worker method call, tried to act on a method that isn't valid
 
   **Action:**
 
-  TODO
+  Contact the plugin developer if plugin returns this error
 
 
 
-### ZWED0024E":"Object not exported %s
+### ZWED0024E
+
+  Object not exported _exportName_
 
   **Reason:**
 
-  TODO
+  App server, during a cluster/worker method call, tried and failed to export a module object
 
   **Action:**
 
-  TODO
+  Contact the plugin developer if plugin returns this error
 
 
 
-### ZWED0025E":".authenticate() missing
+### ZWED0025E
+
+  .authenticate() missing
 
   **Reason:**
 
-  TODO
+  Authentication plugin (which plugin includes looking at nearby log messages) is missing the .authenticate() method
 
   **Action:**
 
-  TODO
+  Contact the plugin developer if plugis is essential for authenticaiton
 
 
 
-### ZWED0026E":"Circular dependency: %s
+### ZWED0026E
+
+  Circular dependency: _pluginIdentifier_
 
   **Reason:**
 
-  TODO
+  The App server encountered a circular dependency for plugin _pluginIdentifier_ (meaning it contains a dependency that imports itself)
 
   **Action:**
 
-  TODO
+  Contact the plugin developer for troubleshooting help. This is a packaging issue
 
 
 
-### ZWED0027E":"Circular dependency: %s
+### ZWED0027E
+
+  Circular dependency: _pluginIdentifier_
 
   **Reason:**
 
-  TODO
+   The App server encountered a circular dependency for plugin _pluginIdentifier_ (meaning it contains a dependency that imports itself)
 
   **Action:**
 
-  TODO
+  Contact the plugin developer for troubleshooting help. This is a packaging issue
 
 
 
-### ZWED0028E":"Config invalid
+### ZWED0028E
+
+  Config invalid
 
   **Reason:**
 
-  TODO
+  The App server attempted to validate and process the server configuration and there was an issue
 
   **Action:**
 
-  TODO
+  Please consult the App server schema components.app-server.node section (https://github.com/zowe/zlux-app-server/blob/v2.x/staging/schemas/app-server-config.json#L9). You may also instead have a syntax issue. For a free, offline YAML validator, check out RedHat's VSCode YAML Extension
 
 
 
-### ZWED0029E":"JavaManager given port range beyond limits
+### ZWED0038E
+  
+  JavaManager given port range beyond limits
 
   **Reason:**
 
-  TODO
+  The Java manager was given a port outside the valid port range (0 < 65535)
 
   **Action:**
 
-  TODO
+  Please check your configuration to see if any ports are out of bounds
 
 
 
-### ZWED0030E":"JavaManager not given any ports with which to run servers
+### ZWED0039E
+
+  JavaManager not given any ports with which to run servers
 
   **Reason:**
 
-  TODO
+  Configuration does not contain ports for Java manager to try to run the servers
 
   **Action:**
 
-  TODO
+  Please check your configuration to see if any ports are missing
 
 
 
-### ZWED0031E":"Unknown java war grouping default=%s
+### ZWED0040E 
+
+  Unknown java war grouping default=_grouping_
 
   **Reason:**
 
-  TODO
+  For this war, an unknown grouping default _grouping_ was encountered (types: 'microservice' or 'appserver' allowed)
 
   **Action:**
 
-  TODO
-
-
-
-### ZWED0032E":"Could not find port to use for configuration, at config position=%s
-
-  **Reason:**
-
-  TODO
-
-  **Action:**
-
-  TODO
-
-
-
-### ZWED0033E":"Could not find runtime to satisfy group: %s
-
-  **Reason:**
-
-  TODO
-
-  **Action:**
-
-  TODO
-
-
-
-### ZWED0034E":"Unknown java app server type=%s specified in config. Cannot continue with java loading
-
-  **Reason:**
-
-  TODO
-
-  **Action:**
-
-  TODO
-
-
-
-### ZWED0035E":"Java runtimes not specified, and no JAVA_HOME set
-
-  **Reason:**
-
-  TODO
-
-  **Action:**
-
-  TODO
-
-
-
-### ZWED0036E":"Java app server not defined in config
-
-  **Reason:**
-
-  TODO
-
-  **Action:**
-
-  TODO
-
-
-
-### ZWED0037E":"JavaManager not given either war or jar configuration options, nothing to do
-
-  **Reason:**
-
-  TODO
-
-  **Action:**
-
-  TODO
-
-
-
-### ZWED0038E":"JavaManager given port range beyond limits
-
-  **Reason:**
-
-  TODO
-
-  **Action:**
-
-  TODO
-
-
-
-### ZWED0039E":"JavaManager not given any ports with which to run servers
-
-  **Reason:**
-
-  TODO
-
-  **Action:**
-
-  TODO
-
-
-
-### ZWED0040E":"Unknown java war grouping default=%s
-
-  **Reason:**
-
-  TODO
-
-  **Action:**
-
-  TODO
+  Contact the plugin developer for troubleshooting
 
 
 
