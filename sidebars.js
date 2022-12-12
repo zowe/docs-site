@@ -353,6 +353,8 @@ module.exports = {
         "extend/extend-apiml/api-mediation-routing",
         "extend/extend-apiml/service-information",
         "extend/extend-apiml/websocket",
+        "user-guide/api-mediation/api-mediation-personal-access-token",
+        "user-guide/api-mediation/api-mediation-smf",
       ],
     },
     {
