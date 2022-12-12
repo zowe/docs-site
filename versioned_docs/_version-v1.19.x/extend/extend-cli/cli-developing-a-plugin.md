@@ -213,7 +213,7 @@ The advantage of Zowe CLI and of the CLI approach in mainframe development is th
 
 Install the `diff2html` CLI via `npm install -g diff2html-cli`. Then, pipe your Zowe CL plugin's output into `diff2html` to generate diff HTML and launch a web browser that contains the content in the screen shot at the [top of this file](#overview).
 
-- `zowe files-util diff data-sets "kelda16.work.jcl(iefbr14)" "kelda16.work.jcl(iefbr15)" | diff2html -i stdin`
+- `zowe files-util diff data-sets "IBMUSER.work.jcl(iefbr14)" "IBMUSER.work.jcl(iefbr15)" | diff2html -i stdin`
 
 ## Next steps
 Try the [Implementing profiles in a plug-in](cli-implement-profiles.md) tutorial to learn about using profiles with your plug-in.

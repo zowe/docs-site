@@ -22,6 +22,7 @@ module.exports = {
       type: "category",
       label: "Release notes",
       items: [
+        "getting-started/release-notes/v2_5_0",
         "getting-started/release-notes/v2_4_0",
         "getting-started/release-notes/v2_3_1",
         "getting-started/release-notes/v2_3_0",
@@ -352,6 +353,7 @@ module.exports = {
         "extend/extend-apiml/service-information",
         "extend/extend-apiml/websocket",
         "user-guide/api-mediation/api-mediation-personal-access-token",
+        "user-guide/api-mediation/api-mediation-smf",
       ],
     },
     {

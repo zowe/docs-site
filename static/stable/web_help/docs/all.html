@@ -209,6 +209,7 @@
 </ul><ul><li><a href="#zowe_config_init">init</a></li>
 </ul><ul><li><a href="#zowe_config_list">list | ls</a></li>
 </ul><ul><li><a href="#zowe_config_profiles">profiles</a></li>
+</ul><ul><li><a href="#zowe_config_report-env">report-env | re</a></li>
 </ul><ul><li><a href="#zowe_config_schema">schema</a></li>
 </ul><ul><li><a href="#zowe_config_secure">secure</a></li>
 </ul><ul><li><a href="#zowe_config_set">set</a></li>
@@ -323,6 +324,10 @@
 </ul></li>
 </ul><ul><li><a href="#zowe_endevor-bridge-for-git_endevor-credentials">endevor-credentials | ec</a><ul><li><a href="#zowe_endevor-bridge-for-git_endevor-credentials_update">update | u</a></li>
 </ul></li>
+</ul><ul><li><a href="#zowe_endevor-bridge-for-git_local-hook-token">local-hook-token | token</a><ul><li><a href="#zowe_endevor-bridge-for-git_local-hook-token_generate">generate | g</a></li>
+</ul><ul><li><a href="#zowe_endevor-bridge-for-git_local-hook-token_list">list | ls</a></li>
+</ul><ul><li><a href="#zowe_endevor-bridge-for-git_local-hook-token_revoke">revoke | r</a></li>
+</ul></li>
 </ul><ul><li><a href="#zowe_endevor-bridge-for-git_mapping">mapping | m</a><ul><li><a href="#zowe_endevor-bridge-for-git_mapping_add-element">add-element | add</a></li>
 </ul><ul><li><a href="#zowe_endevor-bridge-for-git_mapping_create">create | c</a></li>
 </ul><ul><li><a href="#zowe_endevor-bridge-for-git_mapping_delete">delete | del</a></li>
@@ -424,6 +429,7 @@
 </ul></li>
 <li><a href="#zowe_plugins">plugins</a><ul><li><a href="#zowe_plugins_install">install</a></li>
 </ul><ul><li><a href="#zowe_plugins_list">list</a></li>
+</ul><ul><li><a href="#zowe_plugins_show-first-steps">show-first-steps | fs</a></li>
 </ul><ul><li><a href="#zowe_plugins_uninstall">uninstall</a></li>
 </ul><ul><li><a href="#zowe_plugins_update">update</a></li>
 </ul><ul><li><a href="#zowe_plugins_validate">validate</a></li>
@@ -659,6 +665,8 @@
 </ul></li>
 </ul><ul><li><a href="#zowe_zos-jobs_list">list | ls</a><ul><li><a href="#zowe_zos-jobs_list_jobs">jobs | js</a></li>
 </ul><ul><li><a href="#zowe_zos-jobs_list_spool-files-by-jobid">spool-files-by-jobid | sfbj</a></li>
+</ul></li>
+</ul><ul><li><a href="#zowe_zos-jobs_modify">modify | mod</a><ul><li><a href="#zowe_zos-jobs_modify_job">job</a></li>
 </ul></li>
 </ul><ul><li><a href="#zowe_zos-jobs_submit">submit | sub</a><ul><li><a href="#zowe_zos-jobs_submit_data-set">data-set | ds</a></li>
 </ul><ul><li><a href="#zowe_zos-jobs_submit_local-file">local-file | lf</a></li>
@@ -22267,6 +22275,25 @@ Allowed values: http, https</p>
 </ul>
 </li>
 </ul>
+<a class="cmd-anchor" name="zowe_config_report-env"></a><h3><a href="#zowe">zowe</a> › <a href="#zowe_config">config</a> › <a href="#zowe_config_report-env">report-env</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h3>
+<p>Reports key items from your environment and identifies problem conditions</p>
+<h4>Usage</h4>
+<p>zowe config report-env [options]</p>
+<h4>Examples</h4>
+<ul>
+<li>
+<p>Report information and issues about your working environment:</p>
+<ul>
+<li><code>zowe config report-env</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe config report-env">Copy</button></li>
+</ul>
+</li>
+<li>
+<p>Save the report about your working environment to a file:</p>
+<ul>
+<li><code>zowe config report-env &gt; report.log</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe config report-env &gt; report.log">Copy</button></li>
+</ul>
+</li>
+</ul>
 <a class="cmd-anchor" name="zowe_config_schema"></a><h3><a href="#zowe">zowe</a> › <a href="#zowe_config">config</a> › <a href="#zowe_config_schema">schema</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h3>
 <p>Dumps the JSON schema for the config. The schema is dynamically created based on your available plugins. Direct the output of this command to a file and include in your config with '$schema' property to get editor completion.</p>
 <h4>Usage</h4>
@@ -22939,7 +22966,7 @@ Allowed values: http, https</p>
 <p><code>--error-file</code> | <code>--ef</code> <em>(string)</em></p>
 <ul>
 <li>
-<p>Specifies the local output error file in YAML format that contains errors that occurred during execution of the command.</p>
+<p>Specifies the local output error file in YAML format that contains basic execution information, connection details, dbm-db2 profile parameters, used arguments, and errors that occurred during execution of the command.</p>
 <p>Default value: error.log</p>
 </li>
 </ul>
@@ -23195,7 +23222,7 @@ TBTS TESTTS% PRODTS%</p>
 <p><code>--error-file</code> | <code>--ef</code> <em>(string)</em></p>
 <ul>
 <li>
-<p>Specifies the local output error file in YAML format that contains errors that occurred during execution of the command.</p>
+<p>Specifies the local output error file in YAML format that contains basic execution information, connection details, dbm-db2 profile parameters, used arguments, and errors that occurred during execution of the command.</p>
 <p>Default value: error.log</p>
 </li>
 </ul>
@@ -23424,7 +23451,7 @@ TBTS TESTTS% PRODTS%</p>
 <p><code>--error-file</code> | <code>--ef</code> <em>(string)</em></p>
 <ul>
 <li>
-<p>Specifies the local output error file in YAML format that contains errors that occurred during execution of the command.</p>
+<p>Specifies the local output error file in YAML format that contains basic execution information, connection details, dbm-db2 profile parameters, used arguments, and errors that occurred during execution of the command.</p>
 <p>Default value: error.log</p>
 </li>
 </ul>
@@ -23576,7 +23603,7 @@ TBTS TESTTS% PRODTS%</p>
 <p><code>--error-file</code> | <code>--ef</code> <em>(string)</em></p>
 <ul>
 <li>
-<p>Specifies the local output error file in YAML format that contains errors that occurred during execution of the command.</p>
+<p>Specifies the local output error file in YAML format that contains basic execution information, connection details, dbm-db2 profile parameters, used arguments, and errors that occurred during execution of the command.</p>
 <p>Default value: error.log</p>
 </li>
 </ul>
@@ -23718,7 +23745,7 @@ TBTS TESTTS% PRODTS%</p>
 <p><code>--error-file</code> | <code>--ef</code> <em>(string)</em></p>
 <ul>
 <li>
-<p>Specifies the local output error file in YAML format that contains errors that occurred during execution of the command.</p>
+<p>Specifies the local output error file in YAML format that contains basic execution information, connection details, dbm-db2 profile parameters, used arguments, and errors that occurred during execution of the command.</p>
 <p>Default value: error.log</p>
 </li>
 </ul>
@@ -23880,7 +23907,7 @@ TBTS TESTTS% PRODTS%</p>
 <p><code>--error-file</code> | <code>--ef</code> <em>(string)</em></p>
 <ul>
 <li>
-<p>Specifies the local output error file in YAML format that contains errors that occurred during execution of the command.</p>
+<p>Specifies the local output error file in YAML format that contains basic execution information, connection details, dbm-db2 profile parameters, used arguments, and errors that occurred during execution of the command.</p>
 <p>Default value: error.log</p>
 </li>
 </ul>
@@ -24120,7 +24147,7 @@ Allowed values: drop, create</p>
 <p><code>--error-file</code> | <code>--ef</code> <em>(string)</em></p>
 <ul>
 <li>
-<p>Specifies the local output error file in YAML format that contains errors that occurred during execution of the command.</p>
+<p>Specifies the local output error file in YAML format that contains basic execution information, connection details, dbm-db2 profile parameters, used arguments, and errors that occurred during execution of the command.</p>
 <p>Default value: error.log</p>
 </li>
 </ul>
@@ -24338,7 +24365,7 @@ TBTS TESTTS% PRODTS%</p>
 <p><code>--error-file</code> | <code>--ef</code> <em>(string)</em></p>
 <ul>
 <li>
-<p>Specifies the local output error file in YAML format that contains errors that occurred during execution of the command.</p>
+<p>Specifies the local output error file in YAML format that contains basic execution information, connection details, dbm-db2 profile parameters, used arguments, and errors that occurred during execution of the command.</p>
 <p>Default value: error.log</p>
 </li>
 </ul>
@@ -27319,9 +27346,14 @@ Allowed values: http, https</p>
 <p><code>--data</code> | <code>--dat</code> <em>(string)</em></p>
 <ul>
 <li>
-<p>Allows to select the type of summary data returned in the element list (defaults to all).</p>
-<p>Default value: all<br>
-Allowed values: all, bas, ele, comp</p>
+<p>Allows to select the type of summary data returned in the element list:<br>
+ALL - Full element information<br>
+BAS - Basic element information<br>
+ELE - Element change level summary<br>
+COMP - Component change level summary</p>
+<p>When data=ALL --fo (full-output) always takes place unless there is a --rff (response-format-filter).<br>
+In all other cases default set of columns will be shown.</p>
+<p>Allowed values: all, bas, ele, comp</p>
 </li>
 </ul>
 </li>
@@ -35814,6 +35846,344 @@ Allowed values: http, https</p>
 <p>Update the Endevor credentials for the Git-Endevor mapping 'MY-CONTEXT / MY-MAPPING' using the default EBG profile but not using an Endevor profile:</p>
 <ul>
 <li><code>zowe endevor-bridge-for-git endevor-credentials update MY-CONTEXT MY-MAPPING --endevor-user my-user --endevor-password my-password</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe endevor-bridge-for-git endevor-credentials update MY-CONTEXT MY-MAPPING --endevor-user my-user --endevor-password my-password">Copy</button></li>
+</ul>
+</li>
+</ul>
+<a name="zowe_endevor-bridge-for-git_local-hook-token"></a><h2><a href="#zowe">zowe</a> › <a href="#zowe_endevor-bridge-for-git">endevor-bridge-for-git</a> › <a href="#zowe_endevor-bridge-for-git_local-hook-token">local-hook-token</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
+<p>Manage the token you use for secure communication with BridgeForGit when using the local hook validation.</p>
+<a class="cmd-anchor" name="zowe_endevor-bridge-for-git_local-hook-token_generate"></a><h3><a href="#zowe">zowe</a> › <a href="#zowe_endevor-bridge-for-git">endevor-bridge-for-git</a> › <a href="#zowe_endevor-bridge-for-git_local-hook-token">local-hook-token</a> › <a href="#zowe_endevor-bridge-for-git_local-hook-token_generate">generate</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h3>
+<p>Generate a new local hook token for Endevor Bridge for Git.</p>
+<h4>Usage</h4>
+<p>zowe endevor-bridge-for-git local-hook-token generate [options]</p>
+<h4>Options</h4>
+<ul>
+<li>
+<p><code>--overwrite</code> <em>(boolean)</em></p>
+<ul>
+<li>
+<p>If specified, your previous token will be overwritten.</p>
+<p>Default value: false</p>
+</li>
+</ul>
+</li>
+</ul>
+<h4>Endevor Bridge for Git connection options (alternatively use an 'ebg' profile)</h4>
+<ul>
+<li>
+<p><code>--protocol</code> | <code>--prot</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>The Endevor Bridge for Git SCM protocol.</p>
+<p>Default value: https</p>
+<p>Default value: https<br>
+Allowed values: http, https</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--host</code> | <code>-H</code> <em>(string)</em></p>
+<ul>
+<li>The Endevor Bridge for Git hostname.</li>
+</ul>
+</li>
+<li>
+<p><code>--port</code> | <code>-P</code> <em>(number)</em></p>
+<ul>
+<li>The Endevor Bridge for Git port.</li>
+</ul>
+</li>
+<li>
+<p><code>--user</code> | <code>-u</code> <em>(string)</em></p>
+<ul>
+<li>Endevor Bridge for Git username (your git username).</li>
+</ul>
+</li>
+<li>
+<p><code>--token</code> | <code>-t</code> <em>(string)</em></p>
+<ul>
+<li>Git personal access token (it can be obtained from your Git Enterprise Server).</li>
+</ul>
+</li>
+<li>
+<p><code>--reject-unauthorized</code> | <code>--ru</code> <em>(boolean)</em></p>
+<ul>
+<li>
+<p>Reject self-signed certificates.</p>
+<p>Default value: false</p>
+</li>
+</ul>
+</li>
+</ul>
+<h4>Profile Options</h4>
+<ul>
+<li>
+<p><code>--ebg-profile</code> | <code>--ebg-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (ebg) profile to load for this command execution.</li>
+</ul>
+</li>
+<li>
+<p><code>--base-profile</code> | <code>--base-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (base) profile to load for this command execution.</li>
+</ul>
+</li>
+</ul>
+<h4>Base Connection Options</h4>
+<ul>
+<li>
+<p><code>--password</code> | <code>--pass</code> | <code>--pw</code> <em>(string)</em></p>
+<ul>
+<li>Password to authenticate to service on the mainframe.</li>
+</ul>
+</li>
+<li>
+<p><code>--token-type</code> | <code>--tt</code> <em>(string)</em></p>
+<ul>
+<li>The type of token to get and use for the API. Omit this option to use the default token type, which is provided by 'zowe auth login'.</li>
+</ul>
+</li>
+<li>
+<p><code>--token-value</code> | <code>--tv</code> <em>(string)</em></p>
+<ul>
+<li>The value of the token to pass to the API.</li>
+</ul>
+</li>
+<li>
+<p><code>--cert-file</code> <em>(local file path)</em></p>
+<ul>
+<li>The file path to a certificate file to use for authentication</li>
+</ul>
+</li>
+<li>
+<p><code>--cert-key-file</code> <em>(local file path)</em></p>
+<ul>
+<li>The file path to a certificate key file to use for authentication</li>
+</ul>
+</li>
+</ul>
+<h4>Examples</h4>
+<ul>
+<li>
+<p>Generate a token using the default EBG profile:</p>
+<ul>
+<li><code>zowe endevor-bridge-for-git local-hook-token generate</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe endevor-bridge-for-git local-hook-token generate">Copy</button></li>
+</ul>
+</li>
+</ul>
+<a class="cmd-anchor" name="zowe_endevor-bridge-for-git_local-hook-token_list"></a><h3><a href="#zowe">zowe</a> › <a href="#zowe_endevor-bridge-for-git">endevor-bridge-for-git</a> › <a href="#zowe_endevor-bridge-for-git_local-hook-token">local-hook-token</a> › <a href="#zowe_endevor-bridge-for-git_local-hook-token_list">list</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h3>
+<p>List your local hook token.</p>
+<h4>Usage</h4>
+<p>zowe endevor-bridge-for-git local-hook-token list [options]</p>
+<h4>Endevor Bridge for Git connection options (alternatively use an 'ebg' profile)</h4>
+<ul>
+<li>
+<p><code>--protocol</code> | <code>--prot</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>The Endevor Bridge for Git SCM protocol.</p>
+<p>Default value: https</p>
+<p>Default value: https<br>
+Allowed values: http, https</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--host</code> | <code>-H</code> <em>(string)</em></p>
+<ul>
+<li>The Endevor Bridge for Git hostname.</li>
+</ul>
+</li>
+<li>
+<p><code>--port</code> | <code>-P</code> <em>(number)</em></p>
+<ul>
+<li>The Endevor Bridge for Git port.</li>
+</ul>
+</li>
+<li>
+<p><code>--user</code> | <code>-u</code> <em>(string)</em></p>
+<ul>
+<li>Endevor Bridge for Git username (your git username).</li>
+</ul>
+</li>
+<li>
+<p><code>--token</code> | <code>-t</code> <em>(string)</em></p>
+<ul>
+<li>Git personal access token (it can be obtained from your Git Enterprise Server).</li>
+</ul>
+</li>
+<li>
+<p><code>--reject-unauthorized</code> | <code>--ru</code> <em>(boolean)</em></p>
+<ul>
+<li>
+<p>Reject self-signed certificates.</p>
+<p>Default value: false</p>
+</li>
+</ul>
+</li>
+</ul>
+<h4>Profile Options</h4>
+<ul>
+<li>
+<p><code>--ebg-profile</code> | <code>--ebg-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (ebg) profile to load for this command execution.</li>
+</ul>
+</li>
+<li>
+<p><code>--base-profile</code> | <code>--base-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (base) profile to load for this command execution.</li>
+</ul>
+</li>
+</ul>
+<h4>Base Connection Options</h4>
+<ul>
+<li>
+<p><code>--password</code> | <code>--pass</code> | <code>--pw</code> <em>(string)</em></p>
+<ul>
+<li>Password to authenticate to service on the mainframe.</li>
+</ul>
+</li>
+<li>
+<p><code>--token-type</code> | <code>--tt</code> <em>(string)</em></p>
+<ul>
+<li>The type of token to get and use for the API. Omit this option to use the default token type, which is provided by 'zowe auth login'.</li>
+</ul>
+</li>
+<li>
+<p><code>--token-value</code> | <code>--tv</code> <em>(string)</em></p>
+<ul>
+<li>The value of the token to pass to the API.</li>
+</ul>
+</li>
+<li>
+<p><code>--cert-file</code> <em>(local file path)</em></p>
+<ul>
+<li>The file path to a certificate file to use for authentication</li>
+</ul>
+</li>
+<li>
+<p><code>--cert-key-file</code> <em>(local file path)</em></p>
+<ul>
+<li>The file path to a certificate key file to use for authentication</li>
+</ul>
+</li>
+</ul>
+<h4>Examples</h4>
+<ul>
+<li>
+<p>List your token using the default EBG profile:</p>
+<ul>
+<li><code>zowe endevor-bridge-for-git local-hook-token list</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe endevor-bridge-for-git local-hook-token list">Copy</button></li>
+</ul>
+</li>
+</ul>
+<a class="cmd-anchor" name="zowe_endevor-bridge-for-git_local-hook-token_revoke"></a><h3><a href="#zowe">zowe</a> › <a href="#zowe_endevor-bridge-for-git">endevor-bridge-for-git</a> › <a href="#zowe_endevor-bridge-for-git_local-hook-token">local-hook-token</a> › <a href="#zowe_endevor-bridge-for-git_local-hook-token_revoke">revoke</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h3>
+<p>Revoke your local hook token.</p>
+<h4>Usage</h4>
+<p>zowe endevor-bridge-for-git local-hook-token revoke [options]</p>
+<h4>Endevor Bridge for Git connection options (alternatively use an 'ebg' profile)</h4>
+<ul>
+<li>
+<p><code>--protocol</code> | <code>--prot</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>The Endevor Bridge for Git SCM protocol.</p>
+<p>Default value: https</p>
+<p>Default value: https<br>
+Allowed values: http, https</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--host</code> | <code>-H</code> <em>(string)</em></p>
+<ul>
+<li>The Endevor Bridge for Git hostname.</li>
+</ul>
+</li>
+<li>
+<p><code>--port</code> | <code>-P</code> <em>(number)</em></p>
+<ul>
+<li>The Endevor Bridge for Git port.</li>
+</ul>
+</li>
+<li>
+<p><code>--user</code> | <code>-u</code> <em>(string)</em></p>
+<ul>
+<li>Endevor Bridge for Git username (your git username).</li>
+</ul>
+</li>
+<li>
+<p><code>--token</code> | <code>-t</code> <em>(string)</em></p>
+<ul>
+<li>Git personal access token (it can be obtained from your Git Enterprise Server).</li>
+</ul>
+</li>
+<li>
+<p><code>--reject-unauthorized</code> | <code>--ru</code> <em>(boolean)</em></p>
+<ul>
+<li>
+<p>Reject self-signed certificates.</p>
+<p>Default value: false</p>
+</li>
+</ul>
+</li>
+</ul>
+<h4>Profile Options</h4>
+<ul>
+<li>
+<p><code>--ebg-profile</code> | <code>--ebg-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (ebg) profile to load for this command execution.</li>
+</ul>
+</li>
+<li>
+<p><code>--base-profile</code> | <code>--base-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (base) profile to load for this command execution.</li>
+</ul>
+</li>
+</ul>
+<h4>Base Connection Options</h4>
+<ul>
+<li>
+<p><code>--password</code> | <code>--pass</code> | <code>--pw</code> <em>(string)</em></p>
+<ul>
+<li>Password to authenticate to service on the mainframe.</li>
+</ul>
+</li>
+<li>
+<p><code>--token-type</code> | <code>--tt</code> <em>(string)</em></p>
+<ul>
+<li>The type of token to get and use for the API. Omit this option to use the default token type, which is provided by 'zowe auth login'.</li>
+</ul>
+</li>
+<li>
+<p><code>--token-value</code> | <code>--tv</code> <em>(string)</em></p>
+<ul>
+<li>The value of the token to pass to the API.</li>
+</ul>
+</li>
+<li>
+<p><code>--cert-file</code> <em>(local file path)</em></p>
+<ul>
+<li>The file path to a certificate file to use for authentication</li>
+</ul>
+</li>
+<li>
+<p><code>--cert-key-file</code> <em>(local file path)</em></p>
+<ul>
+<li>The file path to a certificate key file to use for authentication</li>
+</ul>
+</li>
+</ul>
+<h4>Examples</h4>
+<ul>
+<li>
+<p>Revoke your token using the default EBG profile:</p>
+<ul>
+<li><code>zowe endevor-bridge-for-git local-hook-token revoke</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe endevor-bridge-for-git local-hook-token revoke">Copy</button></li>
 </ul>
 </li>
 </ul>
@@ -48569,8 +48939,10 @@ Allowed values: http, https</p>
 <p><code>--login</code> <em>(boolean)</em></p>
 <ul>
 <li>
-<p>The flag to add a registry user account to install from secure registry. It saves credentials to the .npmrc file using `npm adduser`. When this value is omitted, credentials from .npmrc file is used. If you used this flag once for specific registry, you don't have to use it again, it uses credentials from .npmrc file.</p>
-<p>For more information about npm registries, see: <a href="https://docs.npmjs.com/cli/adduser">https://docs.npmjs.com/cli/adduser</a></p>
+<p>The flag to add a registry user account to install from secure registry. It saves credentials to the .npmrc file using `npm login`. When this value is omitted, credentials from .npmrc file is used. If you used this flag once for specific registry, you don't have to use it again, it uses credentials from .npmrc file.</p>
+<p>For more information about npm registries, see:<br>
+<a href="https://docs.npmjs.com/cli/login">https://docs.npmjs.com/cli/login</a> for NPM &gt;= 9<br>
+<a href="https://docs.npmjs.com/cli/adduser">https://docs.npmjs.com/cli/adduser</a> for NPM &lt; 9</p>
 </li>
 </ul>
 </li>
@@ -48633,6 +49005,31 @@ Allowed values: http, https</p>
 </ul>
 </li>
 </ul>
+<a class="cmd-anchor" name="zowe_plugins_show-first-steps"></a><h3><a href="#zowe">zowe</a> › <a href="#zowe_plugins">plugins</a> › <a href="#zowe_plugins_show-first-steps">show-first-steps</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h3>
+<p>Show first steps required to set up plugin for use.</p>
+<h4>Usage</h4>
+<p>zowe plugins show-first-steps [plugin] [options]</p>
+<h4>Positional Arguments</h4>
+<ul>
+<li>
+<p><code>plugin</code>		 <em>(string)</em></p>
+<ul>
+<li>
+<p>The name of the installed plug-in to show first steps for.</p>
+<p>If the plug-in argument is omitted, no action is taken.</p>
+</li>
+</ul>
+</li>
+</ul>
+<h4>Examples</h4>
+<ul>
+<li>
+<p>Show first steps for a plugin called 'my-plugin':</p>
+<ul>
+<li><code>zowe plugins show-first-steps my-plugin</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe plugins show-first-steps my-plugin">Copy</button></li>
+</ul>
+</li>
+</ul>
 <a class="cmd-anchor" name="zowe_plugins_uninstall"></a><h3><a href="#zowe">zowe</a> › <a href="#zowe_plugins">plugins</a> › <a href="#zowe_plugins_uninstall">uninstall</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h3>
 <p>Uninstall plug-ins.</p>
 <h4>Usage</h4>
@@ -48689,8 +49086,10 @@ Allowed values: http, https</p>
 <p><code>--login</code> <em>(boolean)</em></p>
 <ul>
 <li>
-<p>The flag to add a registry user account to install from secure registry. It saves credentials to the .npmrc file using `npm adduser`. When this value is omitted, credentials from .npmrc file is used. If you used this flag once for specific registry, you don't have to use it again, it uses credentials from .npmrc file.</p>
-<p>For more information about npm registries, see: <a href="https://docs.npmjs.com/cli/adduser">https://docs.npmjs.com/cli/adduser</a></p>
+<p>The flag to add a registry user account to install from secure registry. It saves credentials to the .npmrc file using `npm login`. When this value is omitted, credentials from .npmrc file is used. If you used this flag once for specific registry, you don't have to use it again, it uses credentials from .npmrc file.</p>
+<p>For more information about npm registries, see:<br>
+<a href="https://docs.npmjs.com/cli/login">https://docs.npmjs.com/cli/login</a> for NPM &gt;= 9<br>
+<a href="https://docs.npmjs.com/cli/adduser">https://docs.npmjs.com/cli/adduser</a> for NPM &lt; 9</p>
 </li>
 </ul>
 </li>
@@ -49249,7 +49648,7 @@ Recommended replacement: The 'config init' command</p>
 <ul>
 <li>
 <p>Specifies a string array of z/OS JCL JOB statements.</p>
-<p>Default value: //DB2DVOPS CLASS=A,,//         MSGCLASS=X</p>
+<p>Default value: //DB2DVOPS JOB CLASS=A,,//         MSGCLASS=X</p>
 </li>
 </ul>
 </li>
@@ -57654,6 +58053,15 @@ Allowed values: http, https</p>
 <h4>Options</h4>
 <ul>
 <li>
+<p><code>--allocation-space-unit</code> | <code>--asu</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>The allocation unit (for example, CYL for Cylinders)</p>
+<p>Default value: CYL</p>
+</li>
+</ul>
+</li>
+<li>
 <p><code>--attributes</code> | <code>-a</code> <em>(boolean)</em></p>
 <ul>
 <li>Show the full allocation attributes</li>
@@ -63286,6 +63694,12 @@ Allowed values: http, https</p>
 </ul>
 </li>
 <li>
+<p><code>--range</code> | <code>-R</code> <em>(string)</em></p>
+<ul>
+<li>The range of records to return in either of SSS-EEE where SSS is the start and EEE is the end of records or SSS,NNN where is is the start and NNN is the number of records retrieved.</li>
+</ul>
+</li>
+<li>
 <p><code>--response-timeout</code> | <code>--rto</code> <em>(number)</em></p>
 <ul>
 <li>The maximum amount of time in seconds the z/OSMF Files TSO servlet should run before returning a response. Any request exceeding this amount of time will be terminated and return an error. Allowed values: 5 - 600</li>
@@ -63401,6 +63815,18 @@ Allowed values: http, https</p>
 <p>View the contents of the data set member &quot;ibmuser.test.loadlib(main)&quot; in binary mode:</p>
 <ul>
 <li><code>zowe zos-files view data-set &quot;ibmuser.test.loadlib(main)&quot; --binary</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe zos-files view data-set &quot;ibmuser.test.loadlib(main)&quot; --binary">Copy</button></li>
+</ul>
+</li>
+<li>
+<p>View only the first two lines of content for data set member &quot;ibmuser.cntl(iefbr14)&quot;:</p>
+<ul>
+<li><code>zowe zos-files view data-set &quot;ibmuser.cntl(iefbr14)&quot; --range 0,2</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe zos-files view data-set &quot;ibmuser.cntl(iefbr14)&quot; --range 0,2">Copy</button></li>
+</ul>
+</li>
+<li>
+<p>View only lines six through eight (zero-based) in the contents of the data set member &quot;ibmuser.cntl(iefbr14)&quot;:</p>
+<ul>
+<li><code>zowe zos-files view data-set &quot;ibmuser.cntl(iefbr14)&quot; --range 5-7</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe zos-files view data-set &quot;ibmuser.cntl(iefbr14)&quot; --range 5-7">Copy</button></li>
 </ul>
 </li>
 </ul>
@@ -68509,6 +68935,160 @@ Allowed values: http, https</p>
 </ul>
 </li>
 </ul>
+<a name="zowe_zos-jobs_modify"></a><h2><a href="#zowe">zowe</a> › <a href="#zowe_zos-jobs">zos-jobs</a> › <a href="#zowe_zos-jobs_modify">modify</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
+<p>Modify the job class or the hold status of a job.</p>
+<a class="cmd-anchor" name="zowe_zos-jobs_modify_job"></a><h3><a href="#zowe">zowe</a> › <a href="#zowe_zos-jobs">zos-jobs</a> › <a href="#zowe_zos-jobs_modify">modify</a> › <a href="#zowe_zos-jobs_modify_job">job</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h3>
+<p>Modify the job class or the hold status of a job.</p>
+<h4>Usage</h4>
+<p>zowe zos-jobs modify job &lt;jobid&gt; [options]</p>
+<h4>Positional Arguments</h4>
+<ul>
+<li>
+<p><code>jobid</code>		 <em>(string)</em></p>
+<ul>
+<li>The job ID (e.g. JOB00123) of the job. Job ID is a unique identifier for z/OS batch jobs -- no two jobs on one system can have the same ID. Note: z/OS allows you to abbreviate the job ID if desired. You can use, for example &quot;J123&quot;.</li>
+</ul>
+</li>
+</ul>
+<h4>Options</h4>
+<ul>
+<li>
+<p><code>--jobclass</code> <em>(string)</em></p>
+<ul>
+<li>The job class (e.g. 'A', 'B', ...) assigned to the job.</li>
+</ul>
+</li>
+<li>
+<p><code>--hold</code> <em>(boolean)</em></p>
+<ul>
+<li>Setting this flag will prevent a job from executing until entering a second command with the '--release' flag</li>
+</ul>
+</li>
+<li>
+<p><code>--release</code> <em>(boolean)</em></p>
+<ul>
+<li>Flag that releases a held a job for execution</li>
+</ul>
+</li>
+</ul>
+<h4>Zosmf Connection Options</h4>
+<ul>
+<li>
+<p><code>--host</code> | <code>-H</code> <em>(string)</em></p>
+<ul>
+<li>The z/OSMF server host name.</li>
+</ul>
+</li>
+<li>
+<p><code>--port</code> | <code>-P</code> <em>(number)</em></p>
+<ul>
+<li>
+<p>The z/OSMF server port.</p>
+<p>Default value: 443</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--user</code> | <code>-u</code> <em>(string)</em></p>
+<ul>
+<li>Mainframe (z/OSMF) user name, which can be the same as your TSO login.</li>
+</ul>
+</li>
+<li>
+<p><code>--password</code> | <code>--pass</code> | <code>--pw</code> <em>(string)</em></p>
+<ul>
+<li>Mainframe (z/OSMF) password, which can be the same as your TSO password.</li>
+</ul>
+</li>
+<li>
+<p><code>--reject-unauthorized</code> | <code>--ru</code> <em>(boolean)</em></p>
+<ul>
+<li>
+<p>Reject self-signed certificates.</p>
+<p>Default value: true</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--base-path</code> | <code>--bp</code> <em>(string)</em></p>
+<ul>
+<li>The base path for your API mediation layer instance. Specify this option to prepend the base path to all z/OSMF resources when making REST requests. Do not specify this option if you are not using an API mediation layer.</li>
+</ul>
+</li>
+<li>
+<p><code>--protocol</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>The protocol used (HTTP or HTTPS)</p>
+<p>Default value: https<br>
+Allowed values: http, https</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--cert-file</code> <em>(local file path)</em></p>
+<ul>
+<li>The file path to a certificate file to use for authentication</li>
+</ul>
+</li>
+<li>
+<p><code>--cert-key-file</code> <em>(local file path)</em></p>
+<ul>
+<li>The file path to a certificate key file to use for authentication</li>
+</ul>
+</li>
+</ul>
+<h4>Profile Options</h4>
+<ul>
+<li>
+<p><code>--zosmf-profile</code> | <code>--zosmf-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (zosmf) profile to load for this command execution.</li>
+</ul>
+</li>
+<li>
+<p><code>--base-profile</code> | <code>--base-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (base) profile to load for this command execution.</li>
+</ul>
+</li>
+</ul>
+<h4>Base Connection Options</h4>
+<ul>
+<li>
+<p><code>--token-type</code> | <code>--tt</code> <em>(string)</em></p>
+<ul>
+<li>The type of token to get and use for the API. Omit this option to use the default token type, which is provided by 'zowe auth login'.</li>
+</ul>
+</li>
+<li>
+<p><code>--token-value</code> | <code>--tv</code> <em>(string)</em></p>
+<ul>
+<li>The value of the token to pass to the API.</li>
+</ul>
+</li>
+</ul>
+<h4>Examples</h4>
+<ul>
+<li>
+<p>Modify class of job with job ID JOB0000:</p>
+<ul>
+<li><code>zowe zos-jobs modify job JOB0000 --jobclass A</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe zos-jobs modify job JOB0000 --jobclass A">Copy</button></li>
+</ul>
+</li>
+<li>
+<p>Hold job with job ID JOB0000:</p>
+<ul>
+<li><code>zowe zos-jobs modify job JOB0000 --hold</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe zos-jobs modify job JOB0000 --hold">Copy</button></li>
+</ul>
+</li>
+<li>
+<p>Release job with job ID JOB0000:</p>
+<ul>
+<li><code>zowe zos-jobs modify job JOB0000 --release</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe zos-jobs modify job JOB0000 --release">Copy</button></li>
+</ul>
+</li>
+</ul>
 <a name="zowe_zos-jobs_submit"></a><h2><a href="#zowe">zowe</a> › <a href="#zowe_zos-jobs">zos-jobs</a> › <a href="#zowe_zos-jobs_submit">submit</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
 <p>Submit a job (JCL).</p>
 <a class="cmd-anchor" name="zowe_zos-jobs_submit_data-set"></a><h3><a href="#zowe">zowe</a> › <a href="#zowe_zos-jobs">zos-jobs</a> › <a href="#zowe_zos-jobs_submit">submit</a> › <a href="#zowe_zos-jobs_submit_data-set">data-set</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h3>
@@ -69812,6 +70392,7 @@ Allowed values: forward, backward</p>
 <p>Issue a z/OS USS command.</p>
 <a class="cmd-anchor" name="zowe_zos-ssh_issue_command"></a><h3><a href="#zowe">zowe</a> › <a href="#zowe_zos-ssh">zos-ssh</a> › <a href="#zowe_zos-ssh_issue">issue</a> › <a href="#zowe_zos-ssh_issue_command">command</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h3>
 <p>Issue a z/OS USS command</p>
+<p>Note: The common CLI 'Base Connection Options' of token-type and token-value are not applicable to the ssh command, since the ssh service is not accessible through APIML.</p>
 <h4>Usage</h4>
 <p>zowe zos-ssh issue command &lt;command&gt; [options]</p>
 <h4>Positional Arguments</h4>
