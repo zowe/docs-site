@@ -21,6 +21,8 @@ APIs for security administrators are protected by SAF resource checking and can 
    * [Invalidate all tokens for a service](#invalidate-all-tokens-for-a-service)
    * [Evict non-relevant tokens and rules](#evict-non-relevant-tokens-and-rules)
 
+**Note:** An SMF record can be issued when a Personal Access Token is generated. For more information, see [SMF records issued by API ML](api-mediation-smf.md)
+
 ## User APIs
 
 ### Generate a token
