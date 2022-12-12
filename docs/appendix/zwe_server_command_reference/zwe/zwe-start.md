@@ -18,15 +18,15 @@ zowe:
         zowe: ZWESLSTC
   jobname: ZWE1SV
 haInstances:
-  <ha-instance>:
+  [ha-instance]:
     sysname: ZLP1
 ```
 
 - `zowe.setup.security.stcs.zowe` is Zowe started task name.
   This configuration is optional. Default value is `ZWESLSTC`.
-- `zowe.jobname` is the optional customized job name to start Zowe. If it's
+- `zowe.job.name` is the optional customized job name to start Zowe. If it's
   empty, the start command will not pass `JOBNAME=` option to `S` command.
-- `haInstances.<ha-instance>.sysname` is the SYSNAME of the target HA instance.
+- `haInstances.[ha-instance].sysname` is the SYSNAME of the target HA instance.
   If you pass `--ha-instance` parameter, this is the SYSNAME the start command
   will be routed to.
 
@@ -42,18 +42,18 @@ zwe start -c /path/to/zowe.yaml
 
 Full name|Alias|Type|Required|Help message
 |---|---|---|---|---
---ha-instance|-i|string|no||Zowe high availability instance ID.
+--ha-instance|-i|string|no|Zowe high availability instance ID.
 ### Inherited from parent command
 
 Full name|Alias|Type|Required|Help message
 |---|---|---|---|---
---help|-h|boolean|no||Display this help.
---debug,--verbose|-v|boolean|no||Enable verbose mode.
---trace|-vv|boolean|no||Enable trace level debug mode.
---silent|-s|boolean|no||Do not display messages to standard output.
---log-dir,--log|-l|string|no||Write logs to this directory.
---config|-c|string|no||Path to Zowe configuration zowe.yaml file.
---configmgr||boolean|no||(Experimental, WIP)Enable use of configmgr capabilities.
+--help|-h|boolean|no|Display this help.
+--debug,--verbose|-v|boolean|no|Enable verbose mode.
+--trace|-vv|boolean|no|Enable trace level debug mode.
+--silent|-s|boolean|no|Do not display messages to standard output.
+--log-dir,--log|-l|string|no|Write logs to this directory.
+--config|-c|string|no|Path to Zowe configuration zowe.yaml file.
+--configmgr||boolean|no|Enable use of configmgr capabilities.
 
 
 ## Errors
@@ -99,3 +99,4 @@ ZWEL0200E||Failed to copy USS file %s to MVS data set %s.
 ZWEL0201E||File %s does not exist.
 ZWEL0202E||Unable to find samplib key for %s.
 ZWEL0203E||Env value in key-value pair %s has not been defined.
+ZWEL0316E||Command requires zowe.useConfigmgr=true to use.

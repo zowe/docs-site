@@ -53,23 +53,23 @@ zwe init mvs -v -c /path/to/zowe.yaml
 
 Full name|Alias|Type|Required|Help message
 |---|---|---|---|---
---allow-overwrite,--allow-overwritten||boolean|no||Allow overwritten existing MVS data set.
+--allow-overwrite,--allow-overwritten||boolean|no|Allow overwritten existing MVS data set.
 ### Inherited from parent command
 
 Full name|Alias|Type|Required|Help message
 |---|---|---|---|---
---allow-overwrite,--allow-overwritten||boolean|no||Allow overwritten existing MVS data set.
---skip-security-setup||boolean|no||Whether should skip security related setup.
---security-dry-run||boolean|no||Whether to dry run security related setup.
---ignore-security-failures||boolean|no||Whether to ignore security setup job failures.
---update-config||boolean|no||Whether to update YAML configuration file with initialization result.
---help|-h|boolean|no||Display this help.
---debug,--verbose|-v|boolean|no||Enable verbose mode.
---trace|-vv|boolean|no||Enable trace level debug mode.
---silent|-s|boolean|no||Do not display messages to standard output.
---log-dir,--log|-l|string|no||Write logs to this directory.
---config|-c|string|no||Path to Zowe configuration zowe.yaml file.
---configmgr||boolean|no||(Experimental, WIP)Enable use of configmgr capabilities.
+--allow-overwrite,--allow-overwritten||boolean|no|Allow overwritten existing MVS data set.
+--skip-security-setup||boolean|no|Whether should skip security related setup.
+--security-dry-run||boolean|no|Whether to dry run security related setup.
+--ignore-security-failures||boolean|no|Whether to ignore security setup job failures.
+--update-config||boolean|no|Whether to update YAML configuration file with initialization result.
+--help|-h|boolean|no|Display this help.
+--debug,--verbose|-v|boolean|no|Enable verbose mode.
+--trace|-vv|boolean|no|Enable trace level debug mode.
+--silent|-s|boolean|no|Do not display messages to standard output.
+--log-dir,--log|-l|string|no|Write logs to this directory.
+--config|-c|string|no|Path to Zowe configuration zowe.yaml file.
+--configmgr||boolean|no|Enable use of configmgr capabilities.
 
 
 ## Errors
@@ -118,3 +118,4 @@ ZWEL0200E||Failed to copy USS file %s to MVS data set %s.
 ZWEL0201E||File %s does not exist.
 ZWEL0202E||Unable to find samplib key for %s.
 ZWEL0203E||Env value in key-value pair %s has not been defined.
+ZWEL0316E||Command requires zowe.useConfigmgr=true to use.

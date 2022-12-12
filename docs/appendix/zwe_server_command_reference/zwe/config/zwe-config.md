@@ -1,43 +1,17 @@
-# zwe
+# zwe config
 
-[zwe](./zwe)
+[zwe](.././zwe) > [config](./zwe-config)
 
-	zwe [sub-command [sub-command]...] [parameter [parameter]...]
+	zwe config [sub-command [sub-command]...] [parameter [parameter]...]
 
 ## Sub-commands
 
-* [certificate](./certificate/zwe-certificate.md)
-* [components](./components/zwe-components.md)
-* [config](./config/zwe-config.md)
-* [init](./init/zwe-init.md)
-* [install](./zwe-install.md)
-* [internal](./internal/zwe-internal.md)
-* [migrate](./migrate/zwe-migrate.md)
-* [sample](./sample/zwe-sample.md)
-* [start](./zwe-start.md)
-* [stop](./zwe-stop.md)
-* [support](./support/zwe-support.md)
-* [version](./zwe-version.md)
-
-## Description
-
-A command line utility helps you managing Zowe instance.
-
-You can issue --help or -h to find information for all commands it supports.
-
-
-## Examples
-
-```
-zwe install -h
-
-zwe init --allow-overwrite --config /path/to/zowe.yaml
-
-zwe start -c /path/to/zowe.yaml
-
-```
+* [get](./zwe-config-get.md)
+* [validate](./zwe-config-validate.md)
 
 ## Parameters
+
+### Inherited from parent command
 
 Full name|Alias|Type|Required|Help message
 |---|---|---|---|---
@@ -51,6 +25,8 @@ Full name|Alias|Type|Required|Help message
 
 
 ## Errors
+
+### Inherited from parent command
 
 Error code|Exit code|Error message
 |---|---|---
