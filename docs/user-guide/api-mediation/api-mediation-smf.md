@@ -1,12 +1,12 @@
 # SMF records
 
-API Mediation Layer can issue SMF type 83, 230, or 231 security-related audit records. You can use the SMF records to assist with auditing of the events when a Personal Access Token is created.
+API Mediation Layer can issue SMF type 83, 230, or 231 security-related audit records. You can use SMF records to assist with auditing events when a Personal Access Token is created.
 
 To enable this functionality on your Zowe instance, see the [configuration procedure](#configure-the-main-zowe-server-to-issue-smf-records).
 
-Some of the predefined values in the SMF record are possible to change. For more information, see the [full list of configurable parameters](#smf-record-configurable-parameters). 
+It is possible to customize some predefined values in the SMF record. For more information, see the [full list of configurable parameters](#smf-record-configurable-parameters). 
 
-**Note:** Record type 83 is a RACF processing record. This record type can be replaced by other SMF type depending on the ESM:
+**Note:** Record type 83 is a RACF processing record. This record type can be replaced by other SMF types depending on the ESM:
 * ACF2 - SMF type 230
 * TSS - SMF type 231
 
@@ -15,7 +15,7 @@ Some of the predefined values in the SMF record are possible to change. For more
 This security configuration is necessary for API ML to be able to issue SMF records. A user running the API Gateway must have _read_ access to the RACF general resource `IRR.RAUDITX` in the `FACILITY` class.
 To set up this security configuration, submit the `ZWESECUR` JCL member. For users upgrading from version 1.18 and lower, use the configuration steps that correspond to the ESM.
 
-You can issue the following command first to check whether you already have the auditing profile defined. Review the output to confirm that the profile exists and that the user `ZWESVUSR` who runs the `ZWESVSTC` started task has `READ` access to this profile.
+To check whether you already have the auditing profile defined, issue the following command and review the output to confirm that the profile exists and that the user `ZWESVUSR` who runs the `ZWESVSTC` started task has `READ` access to this profile.
 
 - If you use RACF, issue the following command:
     ```
@@ -33,7 +33,7 @@ You can issue the following command first to check whether you already have the 
     LIST LIKE(IRR-)
     ```
 
-If the user `ZWESVUSR` who runs the `ZWESVSTC` started task does not have `READ` access to this profile follow the instructions below.
+If the user `ZWESVUSR` who runs the `ZWESVSTC` started task does not have `READ` access to this profile, follow the procedure that corresponds to your ESM:
 
 - If you use RACF, update permission in the `FACILITY` class.
 
