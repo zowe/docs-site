@@ -220,7 +220,8 @@ Usually 2 days before the GA date, review the [release checklist](#release-check
 |Update TPSR                         |  | Work with CICD squad. See [Updating TPSR](#updating-tpsr) for how-to. 
 |Doc freeze, PR for publish ready    | 1 day before GA | All release PRs merged. Action: Inform CI/CD squad of the doc PR number. Add CICD members as a reviewer of the PR. 
 |Doc publish                         | GA day | Work with CICD squad to merge the doc PR. 
-|Doc validation                      | Once published | Check that the doc site has been refreshed correctly. 
+|Doc validation                      | 1 hour within publish | Check that the doc site has been refreshed correctly. 
+|Build and upload new release PDF file | 1 hour within publish | See [PDF generation guide](https://github.com/zowe/docs-site/blob/master/release-handbook/pdf_generation_guide.md#steps-to-manually-generate-pdf-recommended) for how-to. It's recommended that you run the manual build and then create a PR against the master branch to upload the PDF file. 
 |Release promotion                   |  | Slack, LinkedIn, Twitter, etc
 |System demo                         |  | See the [OMP Calendar](https://lists.openmainframeproject.org/g/zowe-dev/calendar) for details.  
 |Write release blog, upload release demo video                  |  | Convert the system demo recording into a blog. 

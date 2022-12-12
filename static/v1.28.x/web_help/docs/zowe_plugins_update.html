@@ -37,8 +37,10 @@
 <p><code>--login</code>  <em>(boolean)</em></p>
 <ul>
 <li>
-<p>The flag to add a registry user account to install from secure registry. It saves credentials to the .npmrc file using `npm adduser`. When this value is omitted, credentials from .npmrc file is used. If you used this flag once for specific registry, you don't have to use it again, it uses credentials from .npmrc file.</p>
-<p>For more information about npm registries, see: <a href="https://docs.npmjs.com/cli/adduser">https://docs.npmjs.com/cli/adduser</a></p>
+<p>The flag to add a registry user account to install from secure registry. It saves credentials to the .npmrc file using `npm login`. When this value is omitted, credentials from .npmrc file is used. If you used this flag once for specific registry, you don't have to use it again, it uses credentials from .npmrc file.</p>
+<p>For more information about npm registries, see:<br>
+<a href="https://docs.npmjs.com/cli/login">https://docs.npmjs.com/cli/login</a> for NPM &gt;= 9<br>
+<a href="https://docs.npmjs.com/cli/adduser">https://docs.npmjs.com/cli/adduser</a> for NPM &lt; 9</p>
 </li>
 </ul>
 </li>
