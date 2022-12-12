@@ -1,6 +1,6 @@
 # Zowe YAML configuration file reference
 
-Zowe v2 uses a YAML configuration file during installation, configuration and runtime. This file is usually referred to as `zowe.yaml`. YAML is a human-friendly data serialization language for all programming languages. To learn more about YAML specifications, see [https://yaml.org/](https://yaml.org/).
+Zowe v2 uses a YAML configuration file during installation, configuration, and runtime. This file is usually referred to as the Zowe configuration YAML file or the `zowe.yaml` file. YAML is a human-friendly data serialization language for all programming languages. To learn more about YAML specifications, see [https://yaml.org/](https://yaml.org/). For a free, offline YAML validator to help validate your syntax, download the [Red Hat's VS Code YAML extension](https://marketplace.visualstudio.com/items?itemName=redhat.vscode-yaml).
 
 **Note:** In the following sections, we refer to configuration keys by using concatenation of key names and dots. For example, if you want to update the configuration key `zowe.certificate.keystore.type` with value `PKCS12`, you should set value for this entry in the `zowe.yaml`:
 
@@ -36,6 +36,7 @@ zowe:
     - [Configure external extension](#configure-external-extension)
 - [YAML configurations - haInstances](#yaml-configurations---hainstances)
 - [Auto-generated environment variables](#auto-generated-environment-variables)
+- [Troubleshooting your YAML with the Red Hat VSCode extension](#troubleshooting-your-yaml-with-the-red-hat-vs-code-extension)
 
 ### High-level overview of YAML configuration file
 
@@ -603,3 +604,7 @@ For examples:
 - `ZWE_zowe_setup_dataset_authPluginLib` is the data set configured to store APF authorized ZIS plug-ins load library.
 - `ZWE_zowe_setup_security_users_zowe` is the name of Zowe runtime user.
 - `ZWE_configs_port` is your component port number you can use in your start script. It points to the value of `haInstances.<current-ha-instance>.components.<your-component>.port`, or fall back to `components.<my-component>.port`, or fall back to `configs.port` defined in your component manifest.
+
+### Troubleshooting your YAML with the Red Hat VS Code extension
+
+After you download the Red Hat VSCode extension for YAML, YAML validation for your files is turned on by default. Syntax mistakes are highlighted in red. To parse sensitive information, we would highly recommend leaving the data gathering option disabled. To customize your settings, click on the "Extensions" category in VS Code left-hand side workspace, scroll down to YAML Language Support by Red Hat, and click on the gear icon and select "Extension Settings".

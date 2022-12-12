@@ -1,80 +1,72 @@
 # SMF records
 
-API Mediation Layer can issue SMF type 83 sybtype 2 security-related audit records. This requires the generation of a Personal Access Token.
+API Mediation Layer can issue SMF type 83, 230, or 231 security-related audit records. You can use the SMF records to assist with auditing of the events when a Personal Access Token is created.
 
-To enable this functionality on your Zowe instance, follow the corresponding configuration procedure:
-
-[Configure main Zowe server to issue SMF records](#configure-main-zowe-server-to-issue-smf-records)
-   * [Using RACF](#using-racf)
-   * [Using ACF2](#using-acf2)
-   * [Using TSS](#using-tss)
+To enable this functionality on your Zowe instance, see the [configuration procedure](#configure-the-main-zowe-server-to-issue-smf-records).
 
 Some of the predefined values in the SMF record are possible to change. For more information, see the [full list of configurable parameters](#smf-record-configurable-parameters). 
 
-**Note:** Record type 83 is a RACF processing record. This record type can be wrapped into other SMF types depending on the ESM:
+**Note:** Record type 83 is a RACF processing record. This record type can be replaced by other SMF type depending on the ESM:
 * ACF2 - SMF type 230
 * TSS - SMF type 231
 
-## Configure main Zowe server to issue SMF records
+## Configure the main Zowe server to issue SMF records
 
 This security configuration is necessary for API ML to be able to issue SMF records. A user running the API Gateway must have _read_ access to the RACF general resource `IRR.RAUDITX` in the `FACILITY` class.
 To set up this security configuration, submit the `ZWESECUR` JCL member. For users upgrading from version 1.18 and lower, use the configuration steps that correspond to the ESM.
 
-### Using RACF
+You can issue the following command first to check whether you already have the auditing profile defined. Review the output to confirm that the profile exists and that the user `ZWESVUSR` who runs the `ZWESVSTC` started task has `READ` access to this profile.
 
-If you use RACF, verify and update permission in the `FACILITY` class.
-
-**Follow these steps:**
-
-1. Verify that user `ZWESVUSR` has _read_ access.
-
+- If you use RACF, issue the following command:
     ```
     RLIST FACILITY IRR.RAUDITX AUTHUSER
     ```
-
-2. Add user `ZWESVUSR` permission to `READ`.
+- If you use Top Secret, issue the following command:
     ```
-    PERMIT IRR.RAUDITX CLASS(FACILITY) ACCESS(READ) ID(ZWESVUSR)
-    ```
-3. Activate changes.
-    ```
-    SETROPTS RACLIST(FACILITY) REFRESH
-    ```
-
-### Using ACF2
-
-If you use ACF2, verify and update permission in the `FACILITY` class.
-
-**Follow these steps:**
-
-1. Verify user `ZWESVUSR` has _read_ access.
-    ```      
-    SET RESOURCE(FAC) 
-    LIST LIKE(IRR-)
-    ```    
-2. Add user `ZWESVUSR` permission to `READ`.
-    ```
-    RECKEY IRR.RAUDITX ADD(SERVICE(READ) ROLE(&STCGRP.) ALLOW)
-    ```
-
-### Using TSS
-
-If you use TSS, verify and update permission in the `FACILITY` class.
-
-**Follow these steps:**
-
-1. verify user `ZWESVUSR` has _read_ access.
-    ```      
     TSS WHOHAS IBMFAC(IRR.RAUDITX)
-    ```    
-2. Add user `ZWESVUSR` permission to `READ`.
     ```
-    TSS PER(ZWESVUSR) IBMFAC(IRR.RAUDITX) ACCESS(READ)
+- If you use ACF2, issue the following commands:
     ```
+    SET RESOURCE(FAC)
+    ```
+    ```
+    LIST LIKE(IRR-)
+    ```
+
+If the user `ZWESVUSR` who runs the `ZWESVSTC` started task does not have `READ` access to this profile follow the instructions below.
+
+- If you use RACF, update permission in the `FACILITY` class.
+
+   **Follow these steps:**
+
+   1. Add user `ZWESVUSR` permission to `READ`.
+      ```
+      PERMIT IRR.RAUDITX CLASS(FACILITY) ACCESS(READ) ID(ZWESVUSR)
+      ```
+   2. Activate changes.
+      ```
+      SETROPTS RACLIST(FACILITY) REFRESH
+      ```
+
+- If you use Top Secret, add user `ZWESVUSR` permission to `READ`. Issue the following command:
+   ```
+   TSS PER(ZWESVUSR) IBMFAC(IRR.RAUDITX) ACCESS(READ)
+   ```
+
+- If you use ACF2, add user `ZWESVUSR` permission to `READ`. Issue the following commands:
+   ```
+   SET RESOURCE(FAC)
+   ```
+   ```
+   RECKEY IRR ADD(RAUDITX ROLE(&STCGRP.) SERVICE(READ) ALLOW)
+   ```
+   ```
+   F ACF2,REBUILD(FAC)
+   ```
    
 ## SMF record configurable parameters
 
-The following list of parameters is required to set up SMF records. Default values for these parameters can be overwritten in `zowe.yaml`. For more information, see [how to configure rauditx parameters](#configure-rauditx-parameters).
+The following list of parameters can be used to modify the default SMF record values. Default values for these parameters can be overwritten in `zowe.yaml`. For more information, see [how to configure rauditx parameters](#configure-rauditx-parameters).
 
 | Parameter                 | Description                                                                                                                                                                                   | Type    | Default value |
 |---------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------|:-------------:|

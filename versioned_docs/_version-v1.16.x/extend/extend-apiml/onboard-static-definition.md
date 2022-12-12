@@ -514,7 +514,7 @@ The API Mediation Layer log can contain messages based on the API ML configurati
 
 ```
 Scanning directory with static services definition: config/local/api-defs
-Static API definition file: /Users/plape03/workspace/api-layer/config/local/api-defs/petstore.yml
+Static API definition file: /Users/user/workspace/api-layer/config/local/api-defs/petstore.yml
 Adding static instance STATIC-localhost:petstore:8080 for service ID petstore mapped to URL http://localhost:8080
 ```
 
