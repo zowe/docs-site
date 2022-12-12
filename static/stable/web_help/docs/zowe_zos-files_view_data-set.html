@@ -46,6 +46,12 @@
 </ul>
 </li>
 <li>
+<p><code>--range</code> | <code>-R</code> <em>(string)</em></p>
+<ul>
+<li>The range of records to return in either of SSS-EEE where SSS is the start and EEE is the end of records or SSS,NNN where is is the start and NNN is the number of records retrieved.</li>
+</ul>
+</li>
+<li>
 <p><code>--response-timeout</code> | <code>--rto</code> <em>(number)</em></p>
 <ul>
 <li>The maximum amount of time in seconds the z/OSMF Files TSO servlet should run before returning a response. Any request exceeding this amount of time will be terminated and return an error. Allowed values: 5 - 600</li>
@@ -161,6 +167,18 @@ Allowed values: http, https</p>
 <p>View the contents of the data set member &quot;ibmuser.test.loadlib(main)&quot; in binary mode:</p>
 <ul>
 <li><code>zowe zos-files view data-set &quot;ibmuser.test.loadlib(main)&quot; --binary</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe zos-files view data-set &quot;ibmuser.test.loadlib(main)&quot; --binary">Copy</button></li>
+</ul>
+</li>
+<li>
+<p>View only the first two lines of content for data set member &quot;ibmuser.cntl(iefbr14)&quot;:</p>
+<ul>
+<li><code>zowe zos-files view data-set &quot;ibmuser.cntl(iefbr14)&quot; --range 0,2</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe zos-files view data-set &quot;ibmuser.cntl(iefbr14)&quot; --range 0,2">Copy</button></li>
+</ul>
+</li>
+<li>
+<p>View only lines six through eight (zero-based) in the contents of the data set member &quot;ibmuser.cntl(iefbr14)&quot;:</p>
+<ul>
+<li><code>zowe zos-files view data-set &quot;ibmuser.cntl(iefbr14)&quot; --range 5-7</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe zos-files view data-set &quot;ibmuser.cntl(iefbr14)&quot; --range 5-7">Copy</button></li>
 </ul>
 </li>
 </ul>
