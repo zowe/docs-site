@@ -1,6 +1,6 @@
 # SMF records
 
-API Mediation Layer can issue SMF type 83, 230, or 231 security-related audit records. This requires the generation of a Personal Access Token.
+API Mediation Layer can issue SMF type 83, 230, or 231 security-related audit records. You can use the SMF records to assist with auditing of the events when a Personal Access Token is created.
 
 To enable this functionality on your Zowe instance, see the [configuration procedure](#configure-the-main-zowe-server-to-issue-smf-records).
 
