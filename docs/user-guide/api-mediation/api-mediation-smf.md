@@ -53,9 +53,15 @@ If the user `ZWESVUSR` who runs the `ZWESVSTC` started task does not have `READ`
    TSS PER(ZWESVUSR) IBMFAC(IRR.RAUDITX) ACCESS(READ)
    ```
 
-- If you use ACF2, add user `ZWESVUSR` permission to `READ`. Issue the following command:
+- If you use ACF2, add user `ZWESVUSR` permission to `READ`. Issue the following commands:
    ```
-   RECKEY IRR.RAUDITX ADD(SERVICE(READ) ROLE(&STCGRP.) ALLOW)
+   SET RESOURCE(FAC)
+   ```
+   ```
+   RECKEY IRR ADD(RAUDITX ROLE(&STCGRP.) SERVICE(READ) ALLOW)
+   ```
+   ```
+   F ACF2,REBUILD(FAC)
    ```
    
 ## SMF record configurable parameters
