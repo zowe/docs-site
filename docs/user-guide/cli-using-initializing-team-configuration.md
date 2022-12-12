@@ -49,7 +49,7 @@ After the `zowe.config.json` team configuration file is created and new plug-ins
 
 2. Run the `zowe config init --global-config` or `zowe config auto-init --global-config` command.
 
-    This adds a plug-in profile to the configuration file in the `.zowe` root directory.
+    This adds a plug-in profile to the configuration file in the `.zowe` home directory.
 
 3. Open the `zowe.config.json` file and confirm the plug-in profile is included.
     
@@ -65,9 +65,9 @@ After the `zowe.config.json` team configuration file is created and new plug-ins
         }
     ```
 
-    The plug-in profile has been successfully added to the `zowe.config.json` file in the `.zowe` root directory.
+    The plug-in profile has been successfully added to the `zowe.config.json` file in the `.zowe` home directory.
 
-    **Note:** To add plug-in profiles to a configuration file in the current working directory, enter the base command without the option: `zowe config init`.
+    **Note:** To add plug-in profiles to a configuration file in the current working directory, enter the base command without the `--global-config` option: `zowe config init`.
 
 ## Connecting profiles to API Mediation Layer
 
@@ -85,9 +85,9 @@ If you are using the API Mediation Layer, set up the `zowe.config.json` file to 
     
     - Your username and password.
 
-    A default profile is added to the configuration file in the `.zowe` root directory.
+    A default profile is added to the configuration file in the `.zowe` home directory.
 
-**Note:** To add a profile to a configuration file in the current working directory, enter the base command without the option: `zowe config init`.
+**Note:** To add a profile to a configuration file in the current working directory, enter the base command without the `--global-config` option: `zowe config init`.
 
 **Using Certificates:**
 
