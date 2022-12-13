@@ -115,7 +115,7 @@ do
 done
 ```
 
-For more information, see [Writing scripts](../user-guide/cli-using-completing-advanced-tasks.md#writing-scripts).
+For more information, see [Writing scripts](../user-guide/cli-using-writing-scripts.md).
 
 ## Next steps
 
@@ -125,6 +125,6 @@ You successfully installed Zowe CLI, issued your first commands, and wrote a sim
 - Learn how to configure Zowe CLI [run Zowe CLI in daemon mode](../user-guide/cli-using-using-daemon-mode.md). **Daemon mode** significantly improves the performance of Zowe CLI commands by running Zowe CLI as a persistent background process.
 - Learn about [configuring environment variables](../user-guide/cli-configuringcli-ev.md) to store configuration options.
 - Learn about [integrating with API Mediation Layer](../user-guide/cli-using-integrating-apiml.md).
-- Learn about how to [write scripts](../user-guide/cli-using-completing-advanced-tasks.md#writing-scripts) and integrate them with automation server, such as Jenkins.
+- Learn about how to [write scripts](../user-guide/cli-using-writing-scripts.md) and integrate them with automation server, such as Jenkins.
 - See what [plug-ins are available](../user-guide/cli-extending.md) for the CLI.
 - Learn about [developing for the CLI](../extend/extend-cli/cli-devTutorials.md) (contributing to core and developing plug-ins).
