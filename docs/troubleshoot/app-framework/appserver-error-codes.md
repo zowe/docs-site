@@ -2406,291 +2406,326 @@ The following error message codes may appear on the app-server log. Use the foll
 
 
 
-### ZWED0172W":"Rejected bad referrer=%s for url=%s, ip=%s
+### ZWED0172W
+
+  Rejected bad referrer=_referrerHeaderValue_ for url=_accessedUrl_, ip=_clientIp_
 
   **Reason:**
 
-  TODO
+  The client from _clientIp_ tried to access _accessedUrl_ but due to having a referrer header value that didn't seem to originate from this server, a security violation was caused and the attempt to access the URL was rejected.
 
   **Action:**
 
-  TODO
+  Review the values to determine if this was a valid attempt to access the server or not. If this access seems suspicious, then the server was correct in rejecting the access. However, if the access attempt seemed legitimate, then this points to the referrer configuration needing revision. You can customize which referrer header values are permitted using the environment variable ZWE_REFERRER_HOSTS and it should be set to match the external hostnames of the system the app-server is running on.
 
 
 
-### ZWED0173W":"Unable to decode P12 certificate (different password than keystore?). Attempting to use empty string as password. Decode error: %s.
+### ZWED0173W
+
+  Unable to decode P12 certificate (different password than keystore?). Attempting to use empty string as password. Decode error: _error_.
 
   **Reason:**
 
-  TODO
+  The server tried to load the p12 file provided for the server certificate or certificate authorities, but encountered _error_. The server may not be accessible as a result of invalid TLS configuration.
 
   **Action:**
 
-  TODO
+  Check the value of zowe.certificate.keystore.password and zowe.certificate.truststore.password, or the environment variable KEYSTORE_PASSWORD to see if they any are valid for the p12 file provided, and adjust the configuration if needed. 
 
 
 
-### ZWED0174W":"%s could not verify (%s) as a supported platform to install (%s). Proceeding anyway...
+### ZWED0174W
+
+  _componentName_ could not verify (_operatingSystem_) as a supported platform to install (_pluginId_). Proceeding anyway...
 
   **Reason:**
 
-  TODO
+  The plugin _pluginId_ has a dependency which can only run on certain operating systems, and _operatingSystem_ is not on the list, but because the operating system is not explicitly forbidden, the server will attempt to load the plugin anyway. This may fail, but the server may continue to run without the plugin if possible.
 
   **Action:**
 
-  TODO
+  Review the plugin dependencies as seen in the plugin's pluginDefinition.json file to see if your Zowe configuration or the plugin can be changed in order to match the requirements. Consult the plugin developer if you believe the plugin was able to run fine on the operating system, so they can explicitly add support in the future.
 
 
 
-### ZWED0175W":"%s could not verify (%s) as a supported architecture to install (%s). Proceeding anyway...
+### ZWED0175W
+
+  _componentName_ could not verify (_systemArchitecture_) as a supported architecture to install (_pluginId_). Proceeding anyway...
 
   **Reason:**
 
-  TODO
+  The plugin _pluginId_ has a dependency which can only run on certain system architectures, and _systemArchitecture_ is not on the list, but because the system architecture is not explicitly forbidden, the server will attempt to load the plugin anyway. This may fail, but the server may continue to run without the plugin if possible.
 
   **Action:**
 
-  TODO
+  Review the plugin dependencies as seen in the plugin's pluginDefinition.json file to see if your Zowe configuration or the plugin can be changed in order to match the requirements. Consult the plugin developer if you believe the plugin was able to run fine on the system architecture, so they can explicitly add support in the future.
 
 
 
-### ZWED0176W":"Failed to load client cert/key pair for Caching Service
+### ZWED0177W
+
+  Unable to load _actionOrRecognizer_ for '_pluginId_' into config
 
   **Reason:**
 
-  TODO
+  The plugin _pluginId_ has an action or recognizer within its package and the plugin install process was trying to copy that into the workspace so it can be used, but encountered an error that prevented this.
 
   **Action:**
 
-  TODO
+  Contact support if the reason cannot be determined.
 
 
 
-### ZWED0177W":"Unable to load %s for '%s' into config
+### ZWED0178W
+
+  Skipping authentication plugin _pluginId_ because it's not HA compatible
 
   **Reason:**
 
-  TODO
+  The server is setup for running in high availability (HA) mode which requires that plugins that have state, in particular authentication plugins, must be HA-compatible or else errors will occur. Therefore, the server skips over loading of this plugin nbecause its pluginDefinition.json did not state it was HA compatible.
 
   **Action:**
 
-  TODO
+  Either the plugin must be updated to support and state its support for HA, or it must be removed, or HA mode disabled. To make a plugin support HA, the conformance program should be reviewed. When HA mode is supported, the plugin can be marked as compatible by setting capabilities.haCompatible=true within its initialization.
 
 
 
-### ZWED0178W":"Skipping authentication plugin %s because it's not HA compatible
+### ZWED0179W
+
+  Unable to retrieve the list of certificate authorities from the keyring=_keyringName_ owner=_username_ Error: _error_
 
   **Reason:**
 
-  TODO
+  The server could not automatically determine the certificate authorities (CA) from the z/OS keyring listed. This may cause the server to be unable to verify certificate chains from other servers or clients causing other errors later.
 
   **Action:**
 
-  TODO
+  Review the error to resolve it and contact support if needed. It's also possible as a workaround to explicitly state the CAs within the keyring that you would like to load, rather than relying upon the server's attempt to automatically find all CAs within the keyring.
 
 
 
-### ZWED0179W":"Unable to retrieve the list of certificate authorities from the keyring=%s owner=%s Error: %s
+### ZWED0001E
+
+  Error: _error_
 
   **Reason:**
 
-  TODO
+  The server is running in cluster mode and the cluster manager has encountered an unexpected error.
 
   **Action:**
 
-  TODO
+  Review the error to resolve it, and contact support if needed.
 
 
 
-### ZWED0001E":"Error: %s
+### ZWED0002E
+
+  Could not stop language manager for types=_languageNames_
 
   **Reason:**
 
-  TODO
+  A plugin had a service that needed a language manager to run. During shutdown, the language manager could not be stopped.
 
   **Action:**
 
-  TODO
+  The language manager may continue to run after the app-server shuts down. Review the logs to determine the location of the language manager and try to stop the manager manually.
 
 
 
-### ZWED0002E":"Could not stop language manager for types=%s
+### ZWED0003E
+
+  Loopback configuration not valid, _loobackConfiguration_
+  Loopback calls will fail!
 
   **Reason:**
 
-  TODO
+  The loopback configuration that the server uses to contact itself over an internal network was missing a value for the network port, therefore no requests over the loopback address will be possible.
 
   **Action:**
 
-  TODO
+  Review the configuration of `components.app-server.node.port` to see if it has a value and set one to fix the issue.
 
 
 
-### ZWED0003E":"Loopback configuration not valid,%s\nLoopback calls will fail!
+### ZWED0004E
+
+  Could not listen on address _ip_:_port_. It is already in use by another process.
 
   **Reason:**
 
-  TODO
+  The server tried to start using the ip and port values shown which were from the zowe configuration. When trying to connect to this address, the server recieved an error telling it that the address was already in use.
 
   **Action:**
 
-  TODO
+  Check the system's network port status to see what program could be using this address, and either stop that program or change the zowe configuration to use a different address before restarting zowe.
 
 
 
-### ZWED0004E":"Could not listen on address %s:%s. It is already in use by another process.
+### ZWED0005E
+
+  Could not listen on address _ip_:_port_. Invalid IP for this system.
 
   **Reason:**
 
-  TODO
+  When the app-server was binding to the address shown, it recieved the error EADDRNOTAVAIL or ENOTFOUND. In either case, the app-server was not able to bind to the address and so it will not run until the problem is solved.
 
   **Action:**
 
-  TODO
+  Review the address and check if it is valid or if there is some lack of permissions that might explain why these errors were received by the server.
 
 
 
-### ZWED0005E":"Could not listen on address %s:%s. Invalid IP for this system.
+### ZWED0006E
+
+  Usage: --inputApp | -i INPUTAPP --pluginsDir | -p PLUGINSDIR --zluxConfig | -c ZLUXCONFIGPATH [--verbose | -v]
 
   **Reason:**
 
-  TODO
+  This message appearas when you attempt app installation but have not provided enough of the mandatory arguments for the program to run. It is printing out what options are valid so that you can retry with different options.
 
   **Action:**
 
-  TODO
+  Retry the operation after modifying the input arguments to be valid against the list shown. Or, if you are trying to do app installation, you should use `zwe components install` instead whenever possible.
 
 
 
-### ZWED0006E":"Usage: --inputApp | -i INPUTAPP --pluginsDir | -p PLUGINSDIR --zluxConfig | -c ZLUXCONFIGPATH [--verbose | -v]
+### ZWED0007E
+
+  _serviceName_ invalid version _version_
 
   **Reason:**
 
-  TODO
+  The service mentioned was trying to be loaded by the server but failed validation due to the version number not being a a valid semver string. This service and therefore plugin will be skipped during loading.
 
   **Action:**
 
-  TODO
+  Contact the developers so that they can revise the pluginDefinition.json of the plugin where the service is located to be semver-compatible. Details on what a semver version is can be found at semver.org
 
 
 
-### ZWED0007E":"%s invalid version %s
+### ZWED0008E
+
+  _localServiceName_: invalid version range _serviceName_: _versionRange_
 
   **Reason:**
 
-  TODO
+  When the _serviceName_ was trying to be imported into a plugin as _localServiceName_, the version range of acceptable versions for the service to be imported was not valid. Due to this, the import cannot be resolved and the plugin will be skipped in loading.
 
   **Action:**
 
-  TODO
+  Contact the developers of the plugin this error occurred in as the pluginDefinition.json needs to be revised to have the version range given for this import service be a valid semver range string.
 
 
 
-### ZWED0008E":"%s: invalid version range %s: %s
+### ZWED0009E
+
+  _localServiceName_: invalid version range _versionRange_
 
   **Reason:**
 
-  TODO
+  When the a service was trying to be imported into a plugin as _localServiceName_, the version range of acceptable versions for the service to be imported was not valid. Due to this, the import cannot be resolved and the plugin will be skipped in loading.
 
   **Action:**
 
-  TODO
+  Contact the developers of the plugin this error occurred in as the pluginDefinition.json needs to be revised to have the version range given for this import service be a valid semver range string.
 
 
 
-### ZWED0009E":"${this.localName}: invalid version range %s
+### ZWED0010E
+
+  No file name for data service
 
   **Reason:**
 
-  TODO
+  When the server was trying to load a service for a plugn, it couldn't identify the filename where the service is located within the plugin, so the service and therefore plugin have been skipped during loading.
 
   **Action:**
 
-  TODO
+  Contact the plugin developer to fix that the service within the pluginDefinition.json is missing the "fileName" or "filename" property which must describe the path to the dataservice entry file, relative to the plugin's lib directory.
 
 
 
-### ZWED0010E":"No file name for data service
+### ZWED0011E
+
+  Plugin _pluginId_ has web content but no web directory under _location_
 
   **Reason:**
 
-  TODO
+  The plugin definition of _pluginId_ stated that the plugin has web content to serve such as HTML files, but the required 'web' folder was missing, so the plugin cannot be loaded.
 
   **Action:**
 
-  TODO
+  Check that the web folder within this plugin exists or not. If it does exist, then the server may not have had permission to read it. Otherwise, if it doesn't exist, try to reinstall the plugin in case it is corrupt. Or, contact the developers to fix the lack of web directory.
 
 
 
-### ZWED0011E":"Plugin %s has web content but no web directory under %s
+### ZWED0012E
+
+  _pluginId_::_serviceName_ Required local service missing: _localService_
 
   **Reason:**
 
-  TODO
+  The service _serviceName_ could not be loaded because of an unsatisfied version requirement upon another service. This causes the plugin _pluginId_ to be skipped during loading.
 
   **Action:**
 
-  TODO
+  Review the plugin's definition to see why the version match could not be made. Either a required plugin is missing, or the pluginDefinition.json will need to be revised by the developer of the plugin to fix the version check failure.
 
 
 
-### ZWED0012E":"%s::%s Required local service missing: serviceName
+### ZWED0013E
+
+  _pluginId_::_serviceName_ Could not find a version to satisfy local dependency _serviceName_@_requiredVersion_
 
   **Reason:**
 
-  TODO
+  The service _serviceName_ could not be loaded because of an unsatisfied version requirement upon another service. This causes the plugin _pluginId_ to be skipped during loading.
 
   **Action:**
 
-  TODO
+  Review the plugin's definition to see why the version match could not be made. Either a required plugin is missing, or the pluginDefinition.json will need to be revised by the developer of the plugin to fix the version check failure.
 
 
 
-### ZWED0013E":"%s::%s Could not find a version to satisfy local dependency %s@%s
+### ZWED0014E
+
+  Plugin _pluginId_ invalid
 
   **Reason:**
 
-  TODO
+  The plugin could not be loaded because the plugin definition was not valid in some way. There are fields that every plugin must define, such as type. Then, depending on type, there are more fields a plugin can and cannot have. When the server went to load the plugin, it found that the definition was not correct versus the requirements, so the loading of this plugin was skipped.
 
   **Action:**
 
-  TODO
+  Contact the developers of this plugin so that they can fix the plugin to adhere to the [plugin schema](https://github.com/zowe/zlux-app-server/blob/v2.x/master/schemas/plugindefinition-schema.json)
 
 
 
-### ZWED0014E":"Plugin %s invalid
+### ZWED0015E
+
+  No plugin directory found at _pluginLocation_
 
   **Reason:**
 
-  TODO
+  The server finds plugins by reading JSON files within the "plugins" folder of its workspace directory. When it checked the JSON of this particular plugin, the JSON stated the plugin could be found at a folder _pluginLocation_ which either does not exist or could not be read by the server.
 
   **Action:**
 
-  TODO
+  Check that the location shown exists. If it does exist, then there is some permission problem preventing the server from reading it. If it does not exist, determine whether this plugin is desired but has the wrong location, or if this plugin is not desired and should be removed. Contact support so they can assist in fixing the plugin location problem.
 
 
 
-### ZWED0015E":"%s: No plugin directory found at %s
+### ZWED0016E
+
+  No pluginDefinition.json found at _pluginLocation_
 
   **Reason:**
 
-  TODO
+  The server finds pugins by reading JSON files within the "plugins" folder of its workspace directory. When it checked the JSON of this particular plugin, it stated the plugin was located in a folder which the server determined did not contain the pluginDefinition.json file that every plugin requires. Due to this missing file, the loading of this plugin was skipped.
 
   **Action:**
 
-  TODO
-
-
-
-### ZWED0016E":"%s: No pluginDefinition.json found at %s
-
-  **Reason:**
-
-  TODO
-
-  **Action:**
-
-  TODO
+  Check that a pluginDefinition.json exists at the location specified. If it does, then the server is missing permissions necessary to read the file. If the file does not exist, review if there is a problem with the plugin itself that should be resolved by contacting the plugin developers. If the plugin exists with a pluginDefinition.json file at a different location than the error suggests, contact Zowe support to resolve the location problem.
 
 
 
@@ -3343,3 +3378,11 @@ The following error message codes may appear on the app-server log. Use the foll
 
 
 ### ZWED0158E":"Could not listen on address %s:%s. Insufficient permissions to perform port bind."
+
+  **Reason:**
+
+  TODO
+
+  **Action:**
+
+  TODO
