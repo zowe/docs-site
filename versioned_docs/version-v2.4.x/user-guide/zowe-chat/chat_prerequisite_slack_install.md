@@ -29,7 +29,7 @@ You must install the Slack App to your workspace before you can talk with your c
 
     2. Find the **Bot User OAuth Token** and click **Copy**.
 
-    Save this token. You will need it to configure your Slack in later steps. <!--See [Configuring the chat tool-Slack](configuring_the_chat_tool_slack.md) for details.-->
+    Save this token. You will need it to configure your Slack in later steps.
 
 3.  Get the signing secret.
 
@@ -43,6 +43,6 @@ You must install the Slack App to your workspace before you can talk with your c
 
         ![Signing Secret](../../images/zowe-chat/slack_signing.png)
 
-    Save this signing secret. You will need it to configure your Slack in later steps. <!--See [Configuring the chat tool-Slack](configuring_the_chat_tool_slack.md) for details.-->
+    Save this signing secret. You will need it to configure your Slack in later steps.
 
 
