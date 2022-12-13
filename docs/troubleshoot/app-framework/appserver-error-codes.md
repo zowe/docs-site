@@ -2651,7 +2651,7 @@ The following error message codes may appear on the app-server log. Use the foll
 
   **Action:**
 
-  Check if identifier found is the same one as intended (typo perhaps?). If not, edit pluginDefinition.json or turn on App server debugging for the bootstrap logger (_zsf.bootstrap) and check if the plugin reference found in code ZWED0044I is correct
+  Check if identifier found is the same one as intended (typo perhaps?). If not, delete the plugin identifier JSON (found in instance/workspace/app-server/plugins) and restart Zowe. If issue isn't resolved, increase app server debugging and send logs to the app developer
 
 
 
@@ -2693,7 +2693,7 @@ The following error message codes may appear on the app-server log. Use the foll
 
   **Action:**
 
-  Accepted plugin types: library, application, windowManager, bootstrap, desktop, nodeAuthentication, proxyConnector
+  Accepted plugin types found in the schema (https://github.com/zowe/zlux-app-server/blob/v2.x/staging/schemas/plugindefinition-schema.json#L47)
 
 
 
@@ -2707,7 +2707,7 @@ The following error message codes may appear on the app-server log. Use the foll
 
   **Action:**
 
-  Check if _pluginPath_ is a real path
+  Check if _pluginPath_ is a real path or the App server (started task user of Zowe) has the permission to read it
 
 
 
