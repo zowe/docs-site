@@ -10,6 +10,19 @@ For detailed contribution guidelines, see the following documents:
 
 ===================
 
+## LTS Requirements
+
+| Item | Required | Best Practice | Conformant | Criteria |
+|-----|-----|-----|-----|-----|
+|  | x | x | x | x |
+
+## Naming
+
+| Item | Required | Best Practice | Conformant | Criteria |
+|-----|-----|-----|-----|-----|
+|  | X |  |  | Must name your package(s) in the following format: `<service>-for-zowe-sdk` |
+
+
 ## Build automation
 
 | Item | Required | Best Practice | Conformant | Criteria |
@@ -20,9 +33,9 @@ For detailed contribution guidelines, see the following documents:
 
 | Item | Required | Best Practice | Conformant | Criteria |
 |-----|-----|-----|-----|-----|
-| Load Zowe v2 configuration | X |  |  |  |
-| Document packaging and publishing process | ? |  |  |  |
-| Validate 3rd party dependencies | ? |  |  | Disclose to consumers with SBOM |
+|  | X |  |  | Must clearly articulate how they support Zowe V<sub>2</sub> configuration files |
+|  | X |  |  | Must clearly articulate how they build and publish the package(s) |
+|  | X |  |  | Must disclose all 3rd party dependencies using a Software Bill of Materials (SBOM) |
 
 ## Extensibility 
 
@@ -30,14 +43,20 @@ For detailed contribution guidelines, see the following documents:
 |-----|-----|-----|-----|-----|
 | x | x | x | x | x |
 
-## Functionality
+## Functionality (Extenders)
 
 | Item | Required | Best Practice | Conformant | Criteria |
 |-----|-----|-----|-----|-----|
-| Sample SDK |  | X |  |  |
-| Core SDK (profiles and REST API) | X |  |  |  |
-| Load Zowe v2 configuration | X |  |  |  |
-| z/OSMF functionality | X |  |  |  |
+|  | X |  |  | Must use the core SDK provided by the corresponding programming language |
+
+## Functionality (New Language)
+
+| Item | Required | Best Practice | Conformant | Criteria |
+|-----|-----|-----|-----|-----|
+|  | X |  |  | Must provide a core SDK which provides a REST client |
+|  | X |  |  | Must provide a core SDK which supports Zowe V2 configuration files |
+|  | X |  |  | Must provide basic z/OSMF fucntionality |
+|  |  | X |  | Should provide a sample SDK for extenders to use as a template  |
 
 ## Interoperability
 
@@ -45,11 +64,19 @@ For detailed contribution guidelines, see the following documents:
 |-----|-----|-----|-----|-----|
 | Core SDK (profiles and REST API) | X |  |  |  |
 
+## Installation
+
+| Item | Required | Best Practice | Conformant | Criteria |
+|-----|-----|-----|-----|-----|
+|  | X |  |  | Package is compatible with the zowe-vN-lts version of the Core SDK for the corresponding programming language (where "N" = the latest "active" LTS release number) |
+| | | X | | The absence of a label or tag should retrieve the same version as the most recent lts tag (Note: for V2 it will be `@zowe-v2-lts`) | 
+
+
 ## Maintenance
 
 | Item | Required | Best Practice | Conformant | Criteria |
 |-----|-----|-----|-----|-----|
-| Sample SDK |  | X |  |  |
+|  |  | X |  | Sample SDK |
 | Load Zowe v2 configuration | X |  |  |  |
 | Validate 3rd party dependencies | ? |  |  | Audit with npm and other tools |
 
@@ -57,7 +84,8 @@ For detailed contribution guidelines, see the following documents:
 
 | Item | Required | Best Practice | Conformant | Criteria |
 |-----|-----|-----|-----|-----|
-| x | x | x | x | x |
+| | x | | | Must follow [Semantic Versioning](semver.org) guidelines |
+|  | x |  |  | Must follow a pre-release labeling system where developers can make breaking changes |
 
 =============
 Notes from 12/5 meeting:
