@@ -1,43 +1,30 @@
-# zwe
+# zwe config validate
 
-[zwe](./zwe)
+[zwe](./.././zwe) > [config](././zwe-config) > [validate](./zwe-config-validate)
 
-	zwe [sub-command [sub-command]...] [parameter [parameter]...]
-
-## Sub-commands
-
-* [certificate](./certificate/zwe-certificate.md)
-* [components](./components/zwe-components.md)
-* [config](./config/zwe-config.md)
-* [init](./init/zwe-init.md)
-* [install](./zwe-install.md)
-* [internal](./internal/zwe-internal.md)
-* [migrate](./migrate/zwe-migrate.md)
-* [sample](./sample/zwe-sample.md)
-* [start](./zwe-start.md)
-* [stop](./zwe-stop.md)
-* [support](./support/zwe-support.md)
-* [version](./zwe-version.md)
+	zwe config validate [parameter [parameter]...]
 
 ## Description
 
-A command line utility helps you managing Zowe instance.
-
-You can issue --help or -h to find information for all commands it supports.
+Runs schema validation upon given zowe yaml configuration files.
+This command can be used to prove that the zowe configuration is good before starting zowe.
+It requires that zowe.useConfigmgr=true or --configmgr are set.
+This command can optionally validate enabled components or all components, but otherwise would only validate the zowe core configuration.
 
 
 ## Examples
 
 ```
-zwe install -h
-
-zwe init --allow-overwrite --config /path/to/zowe.yaml
-
-zwe start -c /path/to/zowe.yaml
-
+zwe config validate -c /path/to/zowe.yaml
+zwe config validate -c FILE(/customizations/zowe.yaml):FILE(/defaults/zowe.yaml) --all
 ```
 
 ## Parameters
+
+Full name|Alias|Type|Required|Help message
+|---|---|---|---|---
+--components||boolean|no|Turns on validation for enabled components.
+--all||boolean|no|Turns on validation for all components, even disabled ones.### Inherited from parent command
 
 Full name|Alias|Type|Required|Help message
 |---|---|---|---|---
@@ -51,6 +38,8 @@ Full name|Alias|Type|Required|Help message
 
 
 ## Errors
+
+### Inherited from parent command
 
 Error code|Exit code|Error message
 |---|---|---

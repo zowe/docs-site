@@ -1,43 +1,32 @@
-# zwe
+# zwe config get
 
-[zwe](./zwe)
+[zwe](./.././zwe) > [config](././zwe-config) > [get](./zwe-config-get)
 
-	zwe [sub-command [sub-command]...] [parameter [parameter]...]
-
-## Sub-commands
-
-* [certificate](./certificate/zwe-certificate.md)
-* [components](./components/zwe-components.md)
-* [config](./config/zwe-config.md)
-* [init](./init/zwe-init.md)
-* [install](./zwe-install.md)
-* [internal](./internal/zwe-internal.md)
-* [migrate](./migrate/zwe-migrate.md)
-* [sample](./sample/zwe-sample.md)
-* [start](./zwe-start.md)
-* [stop](./zwe-stop.md)
-* [support](./support/zwe-support.md)
-* [version](./zwe-version.md)
+	zwe config get [parameter [parameter]...]
 
 ## Description
 
-A command line utility helps you managing Zowe instance.
-
-You can issue --help or -h to find information for all commands it supports.
+Return value of a configuration defined in YAML configuration.
+This command requires zowe.useConfigmgr=true or --configmgr to be used.
 
 
 ## Examples
 
 ```
-zwe install -h
-
-zwe init --allow-overwrite --config /path/to/zowe.yaml
-
-zwe start -c /path/to/zowe.yaml
-
+zwe config get -p path-of-configuration -c /path/to/zowe.yaml
+zwe config get -p .zowe.certificate -c /path/to/zowe.yaml
+zwe config get -p .zowe.components[] -c /path/to/zowe.yaml
+zwe config get -p .zowe.components.gateway -c /path/to/zowe.yaml
+zwe config get -p .zowe.components.gateway.enabled -c /path/to/zowe.yaml
 ```
 
 ## Parameters
+
+Full name|Alias|Type|Required|Help message
+|---|---|---|---|---
+--ha-instance|-i|string|no|Zowe high availability instance ID.
+--path|-p|string|yes|Path of the configuration. For example, `components.gateway.port`.
+### Inherited from parent command
 
 Full name|Alias|Type|Required|Help message
 |---|---|---|---|---
@@ -51,6 +40,10 @@ Full name|Alias|Type|Required|Help message
 
 
 ## Errors
+
+Error code|Exit code|Error message
+|---|---|---
+ZWEL0303E|303|Invalid config path syntax for %s. Get only supports single period delimiters between values.### Inherited from parent command
 
 Error code|Exit code|Error message
 |---|---|---
