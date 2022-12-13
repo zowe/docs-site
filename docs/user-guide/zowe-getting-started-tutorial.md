@@ -14,8 +14,11 @@ Learn how to start exploring the Zowe components, applications and plug-ins.
 
 - [Zowe CLI plug-ins](cli-extending.md)
 - [Zowe Explorer extensions](ze-using-zowe-explorer-cics-ext.md)
-- [Using Zowe IntelliJ Plug-in](intellij-using.md)
 
 **Use incubator components:** 
 
 - [Using Zowe Chat (Incubator)](zowe-chat/chat_use_interact_methods.md)
+- [Using Zowe IntelliJ Plug-in (Incubator)](intellij-using.md)
+
+
+

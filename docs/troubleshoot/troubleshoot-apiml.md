@@ -13,7 +13,7 @@ As an API Mediation Layer user, you may encounter problems with how the API ML f
     * [Browser unable to connect due to a CIPHER error](#browser-unable-to-connect-due-to-a-cipher-error)
     * [API Components unable to handshake](#api-components-unable-to-handshake)
     * [Java z/OS components of Zowe unable to read certificates from keyring](#java-zos-components-of-zowe-unable-to-read-certificates-from-keyring)
-    * [Java z/OS components of Zowe cannot load the certificate private key pair from the keyring](#java-zos-components-of-zowe-cannot-load-the-certificate-private-key-pair-from-the-keyring)
+    
 ## Install API ML without Certificate Setup
 
 For testing purposes, it is not necessary to set up certificates when configuring the API Mediation Layer. You can configure Zowe without certificate setup and run Zowe with `verify_certificates: DISABLED`.
@@ -78,7 +78,7 @@ This activates the application/loggers endpoints in each API ML internal service
     MFS_DS_PORT for the Discovery Service (by default, set to gateway port + 1), and MFS_AC_PORT for the Catalog
     (by default, set to gateway port + 2).
 
-    **Note:**  For the Catalog you can list the available loggers by issuing a **GET** request for the given service URL in the following format:
+    **Note:**  For the Catalog you can list the available loggers by issuing a GET request for the given service URL in the following format:
     ```
     GET [gateway-scheme]://[gateway-hostname]:[gateway-port]/apicatalog/api/v1/application/loggers
     ```
@@ -102,7 +102,7 @@ This activates the application/loggers endpoints in each API ML internal service
     }
     ```
 
-3. Alternatively, extract the configuration of a specific logger using the extended **GET** request:
+3. Alternatively, you extract the configuration of a specific logger using the extended **GET** request:
 
     ```
     GET scheme://hostname:port/application/loggers/{name}
@@ -112,12 +112,12 @@ This activates the application/loggers endpoints in each API ML internal service
 
          Specifies the logger name
 
-4. Change the log level of the given component of the API ML internal service. Use the **POST** request for the given service URL:
+4. Change the log level of the given component of the API ML internal service. Use the POST request for the given service URL:
 
     ```
     POST scheme://hostname:port/application/loggers/{name}
     ```
-    The **POST** request requires a new log level parameter value that is provided in the request body:
+    The POST request requires a new log level parameter value that is provided in the request body:
     ```
     {
 
@@ -143,7 +143,7 @@ This activates the application/loggers endpoints in each API ML internal service
 
 When z/OS TCP/IP stack is restarted, it is possible that the internal services of API Mediation Layer
 (Gateway, Catalog, and Discovery Service) stop accepting all incoming connections, go into a continuous loop,
-and write numerous error messages in the log.
+and write a numerous error messages in the log.
 
 **Sample message:**
 
@@ -253,10 +253,9 @@ Fix the missing z/OSMF host name in subject alternative names using the followin
 
 **Follow these steps:**
 
-1. Re-create the Zowe keystore by deleting it and re-creating it. For more information, see [Configuring PKCS12 certificates](../user-guide/configure-certificates-keystore.md). 
-2. In the `zowe-setup-certificates.env` file that is used to generate the keystore, ensure that the property `VERIFY_CERTIFICATES` and `NONSTRICT_VERIFY_CERTIFICATES` are set to `false`.
+1. Re-create the Zowe keystore by deleting it and re-creating it. For more information, see [Configuring PKCS12 certificates](../user-guide/configure-certificates-keystore.md). In the `zowe-setup-certificates.env` file that is used to generate the keystore, ensure that the property `VERIFY_CERTIFICATES` and `NONSTRICT_VERIFY_CERTIFICATES` are set to `false`.
 
-**Important!** Disabling `VERIFY_CERTIFICATES` or `NONSTRICT_VERIFY_CERTIFICATES` may expose your server to security risks. Ensure that you contact your system administrator before disabling these certificates and use these options only for troubleshooting purposes.
+**Important!** Disabling `VERIFY_CERTIFICATES` or `NONSTRICT_VERIFY_CERTIFICATES` may expose your server to security risks. Ensure that you contact your system administrator before you do so and use these options only for troubleshooting purpose.
 
 #### Invalid z/OSMF host name in subject alternative names
 
@@ -286,7 +285,7 @@ Re-create the Zowe keystore by deleting it and re-creating it. For more informat
 
 **Symptom:**
 
-The API ML services are running but they are in the DOWN state and not working properly. The following exceptions can be found in the log: `java.net.UnknownHostException` and `java.net.NoRouteToHostException`. 
+The API ML services are running but they are in DOWN state and not working properly. The following exceptions can be found in the log: `java.net.UnknownHostException` and `java.net.NoRouteToHostException`. 
 
 **Sample message:**
 
@@ -316,7 +315,7 @@ main¨ o.a.http.impl.client.DefaultHttpClient   : Retrying connect to {s}->https
 
 **Solution:**
 
-The Zowe started task needs to run under a user with sufficient privileges. As a workaround, you can try to run the started task under the same user ID as z/OSMF (typically IZUSVR).
+The Zowe started task needs to run under the same user ID as z/OSMF (typically IZUSVR). This is stated in the [installation documentation](../user-guide/configure-zos-system#grant-users-permission-to-access-z-osmf).
 
 The hostname that is displayed in the details of the exception is a valid hostname. You can validate that the hostname is valid by using `ping` command on the same mainframe system. For example, `ping USILCA32.lvn.broadcom.net`. If it is valid, then the problem can be caused by insufficient privileges of your started task that is not allowed to do network access.
 
@@ -383,9 +382,7 @@ To do this, first locate the `$JAVA_HOME/lib/security/java.security` file. You c
 - Method 2: By inspecting the `STDOUT` JES spool file for the `ZWESVSTC` started task that launches the API Mediation Layer.
 
    
-In the `java.security` file, there is a parameter value for `jdk.tls.disabledAlgorithms`.
-
-**Example:**
+In the `java.security` file, there is a parameter value for `jdk.tls.disabledAlgorithms`, for example,
 
 ```
 jdk.tls.disabledAlgorithms=SSLv3, RC4, MD5withRSA, DH keySize < 1024, 3DES_EDE_CBC, DESede, EC keySize < 224, GCM
@@ -393,9 +390,7 @@ jdk.tls.disabledAlgorithms=SSLv3, RC4, MD5withRSA, DH keySize < 1024, 3DES_EDE_C
 
 **Note:** This line may have a continuation character `\` and be split across two lines due to its length.  
 
-Edit the parameter value for `jdk.tls.disabledAlgorithms` to remove `GCM`. If, as shown in the previous example, the line ends `<224, GCM`, remove the preceding comma so the values remain as a well-formed list of comma-separated algorithms:
-
-**Example:**
+Edit the parameter value for `jdk.tls.disabledAlgorithms` to remove `GCM`. If as shown above the line ends `<224, GCM`, remove the preceding comma so the values remain a well-formed list of comma-separated algorithms:
 
 ```
 jdk.tls.disabledAlgorithms=SSLv3, RC4, MD5withRSA, DH keySize < 1024, 3DES_EDE_CBC, DESede, EC keySize < 224
@@ -412,14 +407,14 @@ After you remove `GCM`, restart the `ZWESVSTC` started task for the change to ta
 The API Mediation Layer address spaces ZWE1AG, ZWE1AC and ZWE1AD start successfully and are visible in SDSF, 
 however they are unable to communicate with each other.
 
-Externally, the status of the API Gateway homepage displays **!** icons against the API Catalog, Discovery Service and Authentication Service (shown on the left side image below)
+Externally the status of the API Gateway homepage will show ! icons against the API Catalog, Discovery Service and Authentication Service (shown on the left side image below)
  which do not progress to green tick icons as normally occurs during successful startup (shown on the right side image below).
  
 <img src={require("../images/api-mediation/apiml-startup.png").default} alt="Zowe API Mediation Layer Startup" width="600px"/> 
 
 The Zowe desktop is able to start but logon fails.
  
-The log contains messages to indicate that connections are being reset. For example, the following message shows that the API Gateway `ZWEAG` is unable to connect to the API Discovery service, by default 7553.
+The log contains messages to indicate that connections are being reset. For example, the message below shows that the API Gateway `ZWEAG` is unable to connect to the API Discovery service, by default 7553.
 
 ``` 
 <ZWEAGW1:DiscoveryClient-InstanceInfoReplicator-0:16843005> ZWESVUSR INFO  (o.a.h.i.c.DefaultHttpClient) I/O exception (java.net.SocketException) caught when connecting to {s}->https://<host>:<disovery_server_port>: Connection reset
@@ -437,7 +432,7 @@ Check that the Zowe certificate has been configured as a client certificate, and
 
 **Symptom:**
 
-Java z/OS components of Zowe are unable to read certificates from a keyring. This problem may appear as an error as in the following example where Java treats the SAF keyring as a file.
+Java z/OS components of Zowe are unable to read certificates from a keyring. This problem may appear as an error as in teh following example where Java treats the SAF keyring as a file.
 
 **Example:**
 ```
@@ -454,37 +449,3 @@ at com.ibm.jsse2.be$p$a.run(be$p$a.java:2)
 Apply the following APAR to address this issue:
 
 * [APAR IJ31756](https://www.ibm.com/support/pages/apar/IJ31756)
-
-### Java z/OS components of Zowe cannot load the certificate private key pair from the keyring
-
-**Symptom:**
-
-API ML components configured with SAF keyring are not able to start due to an unrecoverable exception. The exception message notifies the user that the private key is not properly padded.
-
-**Example:**
-```
-Caused by: java.security.UnrecoverableKeyException: Given final block not properly padded
-	at com.ibm.crypto.provider.I.a(Unknown Source)
-	at com.ibm.crypto.provider.JceRACFKeyStore.engineGetKey(Unknown Source)
-	at java.security.KeyStore.getKey(KeyStore.java:1034)
-	at org.apache.tomcat.util.net.SSLUtilBase.getKeyManagers(SSLUtilBase.java:354)
-	at org.apache.tomcat.util.net.SSLUtilBase.createSSLContext(SSLUtilBase.java:247)
-	at org.apache.tomcat.util.net.AbstractJsseEndpoint.createSSLContext(AbstractJsseEndpoint.java:105)
-```
-
-**Solution:**
-
-First, make sure that the private key stored in the keyring is not encrypted by a password, or that the private key integrity is not protected by a password. This is not related to SAF keyrings themselves, which are not usually protected by password, but rather to is related to the concrete certificate private key pair stored in the SAF keyring. In case the private key is not protected in any way by a password, there is a possible workaround. Specify "dummy" as the key password in zowe.yaml certificate configuration. 
-
-```
-  certificate:
-    keystore:
-      type: JCERACFKS
-      file: safkeyring:////ZWESVUSR/ZoweKeyring
-      password: dummy
-      alias: <cert-label>
-    truststore:
-      type: JCERACFKS
-      file: safkeyring:////ZWESVUSR/ZoweKeyring
-      password:
-```

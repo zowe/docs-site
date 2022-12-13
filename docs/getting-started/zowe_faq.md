@@ -431,7 +431,7 @@ As a developer, you may contribute to Zowe Explorer in the following ways:
 
 </details>
 
-## Zowe IntelliJ plug-in FAQ
+## Zowe IntelliJ plug-in (incubator) FAQ
 
 ### Why might I use Zowe IntelliJ plug-in versus a traditional ISPF interface to perform mainframe tasks?
 
