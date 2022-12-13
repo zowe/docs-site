@@ -13,7 +13,6 @@ Configuration step | Purpose |
 [Configure the cross memory server for SAF](#configure-the-cross-memory-server-for-saf) | Required if you have not run `ZWESECUR` and are configuring your z/OS environment manually. This step describes how to configure the cross memory server for SAF to guard against access by non-priviledged clients.|
 [Configure main Zowe server to use identity mapping](#configure-main-zowe-server-to-use-identity-mapping) | Required for API Mediation Layer to map client certificate to a z/OS identity. | 
 [Configure signed SAF Identity tokens IDT](#configure-signed-saf-identity-tokens-idt) | Required to configure SAF Identity tokens on z/OS so that they can be used by Zowe components like zss or API Mediation Layer. | 
-[Configure the main Zowe server to issue SMF records](api-mediation/api-mediation-smf.md#configure-the-main-zowe-server-to-issue-smf-records) | Required for API Mediation Layer to issue SMF records. |
 
 
 ## Configure an ICSF cryptographic services environment

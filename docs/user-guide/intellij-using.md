@@ -1,4 +1,4 @@
-# Using Zowe IntelliJ plug-in
+# Using Zowe IntelliJ plug-in (incubator)
 
 Learn how to work with the Zowe IntelliJ plug-in, including working with datasets, USS files, and jobs. 
 

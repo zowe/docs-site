@@ -1,4 +1,4 @@
-# Troubleshooting Zowe IntelliJ plug-in
+# Troubleshooting Zowe IntelliJ plug-in (incubator)
 
 As a Zowe IntelliJ plug-in user, you may encounter problems with how the plug-in functions.
 

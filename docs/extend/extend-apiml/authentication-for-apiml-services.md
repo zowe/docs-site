@@ -178,16 +178,14 @@ The value of this parameter specifies a service authentication scheme. Any valid
       * When a Zowe JWT is provided, this scheme value specifies that the service accepts the Zowe JWT. No additional processing is done by the API Gateway.
       * When a client certificate is provided, the certificate is transformed into a Zowe JWT, and the southbound service performs the authentication.
       * If the southbound service needs to consume the JWT token from a custom HTTP request header to participate in the Zowe SSO, it is possible to provide a header in the Gateway configuration.
-      The HTTP header is then added to each request towards the southbound service and contains the Zowe JWT to be consumed by the service. See [Advanced Gateway features configuration](../../user-guide/api-mediation/api-gateway-configuration.md) for more information about the custom HTTP request header.
+      The HTTP header is then added to each request towards the southbound service and contains the Zowe JWT to be consumed by the service.
     * **httpBasicPassTicket**  
     This value specifies that a service accepts PassTickets in the Authorization header of the HTTP requests using the basic authentication scheme.
       It is necessary to provide a service APPLID in the `authentication.applid` parameter to prevent passticket generation errors.
 
         * When a JWT is provided, the service validates the Zowe JWT to use for passticket generation.
         * When a client certificate is provided, the service validates the certificate by mapping it to a mainframe user to use for passticket generation.
-        * If the southbound service needs to consume the user ID and the passticket from custom HTTP request headers (i.e. to participate in the Zowe SSO), it is possible to provide the headers in the Gateway configuration.
-      The HTTP headers are then added to each request towards the southbound service. The headers contain the user ID and the passticket to be consumed by the service. See [Advanced Gateway features configuration](../../user-guide/api-mediation/api-gateway-configuration.md) for more information about the custom HTTP request headers.
-      
+
       For more information, see [Enabling PassTicket creation for API Services that Accept PassTickets](api-mediation-passtickets.md)
 
     * **zosmf**  
@@ -205,7 +203,7 @@ This value specifies that the service accepts SAF IDT, and expects that the toke
       For more information, see [Implement a SAF IDT provider](implement-new-saf-provider.md).
 
     * **x509**  
- This value specifies that a service accepts client certificates forwarded in the HTTP header only. The Gateway service extracts information from a valid client certificate. For validation, the certificate needs to be trusted by API Mediation Layer. Extended Key Usage must either be empty or needs to contain a Client Authentication (1.3.6.1.5.5.7.3.2) entry. To use this scheme, it is also necessary to specify which headers to include. Specify these parameters in `headers`. This scheme does not relate to the certificate used in the TLS handshake between API ML and the southbound service, but rather the certificate that is forwarded in the header that authenticates the user.
+This value specifies that a service accepts client certificates forwarded in the HTTP header. The Gateway service extracts information from a valid client certificate. For validation, the certificate needs to be trusted by API Mediation Layer, and needs to contain a Client Authentication (1.3.6.1.5.5.7.3.2) entry in Extended Key Usage. To use this scheme, it is also necessary to specify which headers to include. Specify these parameters in `headers`.
 
 * **authentication.headers**  
 When the `x509` scheme is specified, use the `headers` parameter to select which values to send to a service. Use one of the following values:

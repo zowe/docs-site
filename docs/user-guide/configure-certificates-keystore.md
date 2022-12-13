@@ -2,7 +2,7 @@
 
 Zowe is able to use PKCS12 certificates that are stored in USS.  This certificate is used for encrypting TLS communication between Zowe clients and the Zowe z/OS servers, as well as intra z/OS Zowe server to Zowe server.  Zowe uses a `keystore` directory to contain its external certificate, and a `truststore` directory to hold the public keys of servers it communicate with (for example z/OSMF).  
 
-Using USS PKCS12 certificates is useful for proof of concept projects using a self signed certificates.  For production usage of Zowe it is recomended to work with certificates held in z/OS keyrings.  Working with z/OS keyrings may require system administrator priviledges and working with your z/OS security team, so the self signed PKCS12 path is provided to assist with configuring and launching test and scratch Zowe instances.  
+Using USS PKCS12 certificates is useful for proof of concept projects using a self signed certificates.  For production usage of Zowe it is recomended to work with certificates held in z/OS keystores.  Working with z/OS keystores may require system administrator priviledges and working with your z/OS security team, so the self signed PKCS12 path is provided to assist with configuring and launching test and scratch Zowe instances.  
 
 ## Use a PKCS12 certificate
 

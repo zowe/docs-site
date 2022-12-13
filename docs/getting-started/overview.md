@@ -251,7 +251,13 @@ Provides re-usable and industry compliant JSON formatted RMF/SMF data records, s
 
 For more information, see the [ZEBRA documentation](https://github.com/zowe/zebra/tree/main/Documentation) or visit the [ZEBRA test/trial site](https://zebra.talktothemainframe.com/).
 
-### Zowe IntelliJ Plug-in
+### Zowe Workflow wiZard - Incubator
+
+The Workflow wiZard delivers a workflow builder which simplifies the creation of z/OSMF workflows. The workflow builder reads a library of templates along with a set of properties, determines which steps are necessary based upon rules that use property values, determines a suitable order to satisfy the workflow engine requirements, inserts variable definitions when required, and outputs workflow XML.
+
+For more information, see the [Workflow Template Reference](https://github.com/zowe/workflow-wizard/raw/main/doc/Workflow%20Templates%20Reference.docx).
+
+### Zowe IntelliJ Plug-in - Incubator
 
 Zowe IntelliJ plug-in for Intellij-based IDEs is a smart and interactive mainframe code editing tool that allows you to browse, edit, and create data on z/OS via z/OSMF REST API. 
 
