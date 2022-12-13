@@ -7,8 +7,8 @@ module.exports = {
     "Combining the past and the present to build the future of Mainframe",
   url: "https://docs.zowe.org/",
   baseUrl: "/",
-  onBrokenLinks: "warn",
-  onBrokenMarkdownLinks: "warn",
+  onBrokenLinks: "ignore",
+  onBrokenMarkdownLinks: "ignore",
   onDuplicateRoutes: "ignore",
   favicon: "img/zowe-icon.png",
   organizationName: "zowe",
@@ -217,9 +217,6 @@ module.exports = {
             },
             "v1.28.x": {
               label: "v1.28.x LTS",
-            },
-            "v1.27.x": {
-              label: "v1.27.x LTS",
             },
           },
         },
