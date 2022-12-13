@@ -22,6 +22,7 @@ module.exports = {
       type: "category",
       label: "Release notes",
       items: [
+        "getting-started/release-notes/v2_5_0",
         "getting-started/release-notes/v2_4_0",
         "getting-started/release-notes/v2_3_1",
         "getting-started/release-notes/v2_3_0",
@@ -293,7 +294,7 @@ module.exports = {
     },
     {
       type: "category",
-      label: "Installing Zowe IntelliJ Plug-in (Incubator)",
+      label: "Installing Zowe IntelliJ Plug-in",
       items: [
         "user-guide/intellij-install",
         "user-guide/intellij-configure",
@@ -314,7 +315,6 @@ module.exports = {
             "user-guide/api-mediation/discovery-service-configuration",
             "user-guide/api-mediation/api-mediation-internal-configuration",
             "extend/extend-apiml/api-mediation-passtickets",
-            "user-guide/api-mediation/api-mediation-personal-access-token",
           ],
         },
       ],
@@ -352,6 +352,8 @@ module.exports = {
         "extend/extend-apiml/api-mediation-routing",
         "extend/extend-apiml/service-information",
         "extend/extend-apiml/websocket",
+        "user-guide/api-mediation/api-mediation-personal-access-token",
+        "user-guide/api-mediation/api-mediation-smf",
       ],
     },
     {
@@ -568,27 +570,43 @@ module.exports = {
       items: [
         "troubleshoot/troubleshooting",
         "troubleshoot/troubleshoot-zowe-release",
+      ],
+    },
+    {
+      type: "category",
+      label: "Zowe Servers",
+      items: [
+        "troubleshoot/servers/must-gather",
         "troubleshoot/verify-fingerprint",
-      ],
-    },
-    //"troubleshoot/troubleshoot-zos-certificate",
-    "troubleshoot/k8s-troubleshoot",
-    {
-      type: "category",
-      label: "Zowe API Mediation Layer",
-      items: [
-        "troubleshoot/troubleshoot-apiml",
-        "troubleshoot/troubleshoot-apiml-error-codes",
-      ],
-    },
-    {
-      type: "category",
-      label: "Zowe Application Framework",
-      items: [
-        //    "troubleshoot/app-framework/app-troubleshoot", //still refers to instance.env
-        //    "troubleshoot/app-framework/app-mustgather", //still refers to instance.env
-        "troubleshoot/app-framework/app-issue",
-        "troubleshoot/app-framework/zss-error-codes",
+        "troubleshoot/k8s-troubleshoot",
+        //"troubleshoot/troubleshoot-zos-certificate",
+        {
+          type: "category",
+          label: "Zowe API Mediation Layer",
+          items: [
+            "troubleshoot/troubleshoot-apiml",
+            "troubleshoot/troubleshoot-apiml-error-codes",
+          ],
+        },
+        {
+          type: "category",
+          label: "Zowe Application Framework",
+          items: [
+            "troubleshoot/app-framework/app-troubleshoot",
+            "troubleshoot/app-framework/app-mustgather",
+            "troubleshoot/app-framework/app-issue",
+            "troubleshoot/app-framework/zss-error-codes",
+          ],
+        },
+        {
+          type: "category",
+          label: "Zowe Launcher",
+          items: [
+            "troubleshoot/launcher/launcher-troubleshoot",
+            "troubleshoot/launcher/launcher-error-codes"
+          ],
+        },
+        "troubleshoot/verify-fingerprint",
       ],
     },
     {
@@ -597,6 +615,7 @@ module.exports = {
       items: [
         "troubleshoot/cli/troubleshoot-cli",
         "troubleshoot/cli/mustgather-cli",
+        "troubleshoot/cli/use-individual-troubleshoot-commands",
         "troubleshoot/cli/zosmf-cli",
         "troubleshoot/cli/known-cli",
         "troubleshoot/cli/cli-issue",
@@ -609,14 +628,6 @@ module.exports = {
         "troubleshoot/ze/troubleshoot-ze",
         "troubleshoot/ze/known-ze",
         "troubleshoot/ze/ze-issues",
-      ],
-    },
-    {
-      type: "category",
-      label: "Zowe Launcher",
-      items: [
-        "troubleshoot/launcher/launcher-troubleshoot",
-        "troubleshoot/launcher/launcher-error-codes"
       ],
     },
     "troubleshoot/zowe-chat-troubleshoot/troubleshooting",
@@ -747,7 +758,7 @@ module.exports = {
     {
       type: "link",
       label: "Third Party Software Requirements",
-      href: "https://github.com/zowe/docs-site/tree/master/tpsr/tpsr-v2.1.x.md",
+      href: "https://github.com/zowe/docs-site/tree/master/tpsr/tpsr-v2.5.x.md",
     },
   ],
 };
