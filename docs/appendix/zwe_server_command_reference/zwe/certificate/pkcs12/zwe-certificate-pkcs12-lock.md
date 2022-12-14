@@ -25,21 +25,21 @@ zwe certificate pkcs12 lock -d /path/to/my/keystore/dir --user keystore-user --g
 
 Full name|Alias|Type|Required|Help message
 |---|---|---|---|---
---keystore-dir|-d|string|yes||Keystore directory.
---user||string|yes||Owner of the keystore directory.
---group||string|yes||Group of the keystore directory.
---group-permission||string|no||Group permission. Can be <empty> for no permission, or `read`, `write`.
+--keystore-dir|-d|string|yes|Keystore directory.
+--user||string|yes|Owner of the keystore directory.
+--group||string|yes|Group of the keystore directory.
+--group-permission||string|no|Group permission. Can be `empty` for no permission, or `read`, `write`.
 ### Inherited from parent command
 
 Full name|Alias|Type|Required|Help message
 |---|---|---|---|---
---help|-h|boolean|no||Display this help.
---debug,--verbose|-v|boolean|no||Enable verbose mode.
---trace|-vv|boolean|no||Enable trace level debug mode.
---silent|-s|boolean|no||Do not display messages to standard output.
---log-dir,--log|-l|string|no||Write logs to this directory.
---config|-c|string|no||Path to Zowe configuration zowe.yaml file.
---configmgr||boolean|no||(Experimental, WIP)Enable use of configmgr capabilities.
+--help|-h|boolean|no|Display this help.
+--debug,--verbose|-v|boolean|no|Enable verbose mode.
+--trace|-vv|boolean|no|Enable trace level debug mode.
+--silent|-s|boolean|no|Do not display messages to standard output.
+--log-dir,--log|-l|string|no|Write logs to this directory.
+--config|-c|string|no|Path to Zowe configuration zowe.yaml file.
+--configmgr||boolean|no|Enable use of configmgr capabilities.
 
 
 ## Errors
@@ -85,3 +85,4 @@ ZWEL0200E||Failed to copy USS file %s to MVS data set %s.
 ZWEL0201E||File %s does not exist.
 ZWEL0202E||Unable to find samplib key for %s.
 ZWEL0203E||Env value in key-value pair %s has not been defined.
+ZWEL0316E||Command requires zowe.useConfigmgr=true to use.

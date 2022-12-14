@@ -1,43 +1,31 @@
-# zwe
+# zwe components uninstall
 
-[zwe](./zwe)
+[zwe](./.././zwe) > [components](././zwe-components) > [uninstall](./zwe-components-uninstall)
 
-	zwe [sub-command [sub-command]...] [parameter [parameter]...]
-
-## Sub-commands
-
-* [certificate](./certificate/zwe-certificate.md)
-* [components](./components/zwe-components.md)
-* [config](./config/zwe-config.md)
-* [init](./init/zwe-init.md)
-* [install](./zwe-install.md)
-* [internal](./internal/zwe-internal.md)
-* [migrate](./migrate/zwe-migrate.md)
-* [sample](./sample/zwe-sample.md)
-* [start](./zwe-start.md)
-* [stop](./zwe-stop.md)
-* [support](./support/zwe-support.md)
-* [version](./zwe-version.md)
+	zwe components uninstall [parameter [parameter]...]
 
 ## Description
 
-A command line utility helps you managing Zowe instance.
-
-You can issue --help or -h to find information for all commands it supports.
+Uninstall a Zowe component, given its name.
 
 
 ## Examples
 
 ```
-zwe install -h
+zwe components uninstall -c /path/to/zowe.yaml -o /path/to/component/package
 
-zwe init --allow-overwrite --config /path/to/zowe.yaml
-
-zwe start -c /path/to/zowe.yaml
+zwe components uninstall -c /path/to/zowe.yaml -o package-name
 
 ```
 
 ## Parameters
+
+Full name|Alias|Type|Required|Help message
+|---|---|---|---|---
+--component-name,--component|-o|string|yes|The name of an installed component.
+--registry|-r|string|no|Specifies the registry to searh within instead of the default. The registry must be compatible with the manager used.
+--handler||string|no|Specifies the registry handler name used with the package registry, instead of the default. The handler must be compatible with the registry used.
+--dry-run|-d|boolean|no|Whether or not to perform the upgrade versus just checking if an upgrade is available### Inherited from parent command
 
 Full name|Alias|Type|Required|Help message
 |---|---|---|---|---
@@ -51,6 +39,15 @@ Full name|Alias|Type|Required|Help message
 
 
 ## Errors
+
+Error code|Exit code|Error message
+|---|---|---
+ZWEL0306W|306|Component %s cannot be uninstalled, because it is not currently installed.
+ZWEL0307E|307|Component %s cannot be uninstalled, because it is a core component. If you do not want to use it, disable it instead.
+ZWEL0308W|308|Component directory %s could not be removed, rc=%s.
+ZWEL0309W|309|Skipping removal of component %s because it is a core component.
+ZWEL0312W|312|Component %s marked for removal but is not installed.
+ZWEL????E|???|Command requires zowe.useConfigmgr=true to use.### Inherited from parent command
 
 Error code|Exit code|Error message
 |---|---|---

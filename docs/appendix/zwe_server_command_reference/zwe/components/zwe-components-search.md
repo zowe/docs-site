@@ -1,43 +1,40 @@
-# zwe
+# zwe components search
 
-[zwe](./zwe)
+[zwe](./.././zwe) > [components](././zwe-components) > [search](./zwe-components-search)
 
-	zwe [sub-command [sub-command]...] [parameter [parameter]...]
-
-## Sub-commands
-
-* [certificate](./certificate/zwe-certificate.md)
-* [components](./components/zwe-components.md)
-* [config](./config/zwe-config.md)
-* [init](./init/zwe-init.md)
-* [install](./zwe-install.md)
-* [internal](./internal/zwe-internal.md)
-* [migrate](./migrate/zwe-migrate.md)
-* [sample](./sample/zwe-sample.md)
-* [start](./zwe-start.md)
-* [stop](./zwe-stop.md)
-* [support](./support/zwe-support.md)
-* [version](./zwe-version.md)
+	zwe components search [parameter [parameter]...]
 
 ## Description
 
-A command line utility helps you managing Zowe instance.
+Search for a Zowe component within a Zowe package registry.
 
-You can issue --help or -h to find information for all commands it supports.
+This command requires you have a registry manager set up for zowe's use already, such as npm or conda.
 
 
 ## Examples
 
 ```
-zwe install -h
+    zwe components search --component-name angular-sample
 
-zwe init --allow-overwrite --config /path/to/zowe.yaml
+    zwe components search --component-id org.zowe.zlux.sample.angular
 
-zwe start -c /path/to/zowe.yaml
+    zwe components search --component-id org.zowe.zlux.sample.angular --registry https://myregistry/url
 
+    zwe components search --component-id org.zowe.zlux.sample.angular --registry https://myregistry/url --handler npm
+    
+    
 ```
 
 ## Parameters
+
+Full name|Alias|Type|Required|Help message
+|---|---|---|---|---
+--component-name,--component|-o|string|no|Component name to search for.
+--component-id,--id|-d|string|no|Component id to search for.
+--registry|-r|string|no|Specifies the registry to searh within instead of the default. The registry must be compatible with the manager used.
+--handler||string|no|Specifies the registry handler name used with the package registry, instead of the default. The handler must be compatible with the registry used.
+
+### Inherited from parent command
 
 Full name|Alias|Type|Required|Help message
 |---|---|---|---|---
@@ -51,6 +48,11 @@ Full name|Alias|Type|Required|Help message
 
 
 ## Errors
+
+Error code|Exit code|Error message
+|---|---|---
+ZWEL0310E|310|Component name (-name|-n) or id (-id,-d) required but not specified.
+ZWEL0311E|311|Handler (-handler,-h or zowe.extensionRegistry.defaultHandler) required but not specified.### Inherited from parent command
 
 Error code|Exit code|Error message
 |---|---|---

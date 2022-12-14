@@ -1,7 +1,9 @@
 # Personal Access Token
 
-You can use the API ML to generate, validate, and invalidate a **Personal Access Token (PAT)** that can enable access to tools such as VCS without having to use credentials of a specific person. The use of PAT also does not require storing mainframe credentials, as part of the automation configuration, on a server during  application development on z/OS.
-Additionally, using a PAT makes it possible to limit access when using a token to specific services and users by means of token revocation.
+You can use the API ML to generate, validate, and invalidate a **Personal Access Token (PAT)** that can enable access to tools such as VCS without having to use credentials of a specific person. The use of PAT also does not require storing mainframe credentials as part of the automation configuration on a server during  application development on z/OS.
+Additionally, using a PAT makes it possible to limit access to specific services and users by means of token revocation when using a token. 
+
+To enable this functionality on your Zowe instance, see the [configuration guide](api-gateway-configuration#personal-access-token).
 
 Gateway APIs are available to both users as well as security administrators.
 APIs for users can accomplish the following functions:
@@ -29,7 +31,8 @@ A user can create the Personal Access Token by calling the following REST API en
 
 `POST /auth/access-token/generate`  
 
-The full path of the `/auth/access-token/generate` endpoint appears as `https://{gatewayUrl}:{gatewayPort}/gateway/api/v1/auth/access-token/generate`.
+The full path of the `/auth/access-token/generate` endpoint appears as:  
+`https://{gatewayUrl}:{gatewayPort}/gateway/api/v1/auth/access-token/generate`.
 
 The request requires the body in the following format:
 

@@ -115,7 +115,7 @@ do
 done
 ```
 
-For more information, see [Writing scripts](../user-guide/cli-using-completing-advanced-tasks.md#writing-scripts).
+For more information, see [Writing scripts](../user-guide/cli-using-writing-scripts.md).
 
 ## Next steps
 

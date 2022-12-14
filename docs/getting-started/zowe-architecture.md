@@ -52,17 +52,30 @@ When deploying other server components into container orchestration software lik
 - Components may register themselves to Discovery with their own `Pod` name within the cluster.
 - Zowe workloads use the `zowe-launch-scripts` `initContainers` step to prepare required runtime directories.
 - Only necessary components ports are exposed outside of Kubernetes with `Service`.
+
 ## App Server
 
-The App Server is a node.js server that is responsible for the Zowe Application Framework. This server provides the Zowe desktop, which is accessible through a web browser via port 7556. The Zowe desktop includes a number of applications that run inside the Application Framework such as a 3270 emulator and a File Editor.
+The App Server is a portable, extensible HTTPS server written in node.js. It can be extended with expressjs routers to add REST or Websocket APIs. This server is responsible for the Zowe Application Framework, including the Desktop which is described later in this page.
 
 ![Zowe Desktop Diagram](../images/mvd/zowe-desktop.png)
 
-The App Server server logs write to `<zowe.logDirectory>/appServer-yyyy-mm-dd-hh-mm.log`.  The Application Framework provides REST APIs for its services that are included on the API catalog tile `Zowe Application Framework` that can be viewed at `https://<ZOWE_HOST_IP>:7554/apicatalog/ui/v1/#/tile/ZLUX/zlux`.
+When the API gateway is running, this server and the Desktop are accessible at `https://<ZOWE_HOST_IP>:7554/zlux/ui/v1/`.
+When the API catalog is running, this server's API documentation is accessible at the API catalog tile `Zowe Application Server` which can be viewed at `https://<ZOWE_HOST_IP>:7554/apicatalog/ui/v1/#/tile/zlux/zlux`
+When running on z/OS, this server uses the jobname suffix of DS1. 
 
 ## ZSS
 
-The Zowe desktop delegates a number of its services to the ZSS server which it accesses through the http port 7557. ZSS is written in C and has native calls to z/OS to provide its services. ZSS logs write to `STDOUT` and `STDERR` for capture into job logs, but also as a file into `<zowe.logDirectory>/zssServer-yyyy-mm-dd-hh-mm.log`.  
+Zowe System Services (ZSS) is a z/OS native, extensible HTTPS server which allows you to empower web programs with z/OS functionality due to ZSS' conveniences for writing REST and Websocket APIs around z/OS system calls. The Zowe desktop delegates a number of its services to the ZSS server.
+
+When the API gateway is running, this server is accessible at `https://<ZOWE_HOST_IP>:7554/zss/api/v1`.
+When the API catalog is running, this server's API documentation is accessible at the API catalog tile `Zowe System Services (ZSS)` which can be viewed at `https://<ZOWE_HOST_IP>:7554/apicatalog/ui/v1/#/tile/zss/zss`
+When running on z/OS, the server uses the jobname suffix of SZ.
+
+## ZIS
+
+ZIS is a z/OS native, authorized cross-memory server that allows a secure and convenient way for Zowe programs, primarily ZSS, to build powerful APIs to handle z/OS data that would otherwise be unavailable or insecure to access from higher-level languages and software. As part of Zowe's security model, this server is not accessible over a network but rather empowers the less privileged servers. It runs as a separate STC, `ZWESISTC` to run the program `ZWESIS01` under its own user ID `ZWESIUSR`.
+
+Unlike all of the servers described above which run under the `ZWESLSTC` started task as address spaces for USS processes, the Cross Memory server has its own separate started task `ZWESISTC` and its own user ID `ZWESIUSR` that runs the program `ZWESIS01`.
 
 ## API Gateway
 
@@ -70,11 +83,18 @@ The API Gateway is a proxy server that routes requests from clients on its north
 
 ![Zowe API Mediation Layer](../images/api-mediation/api-mediationlayer.png)
 
+When the API gateway is running, this server is accessible at `https://<ZOWE_HOST_IP>:7554/`.
+When running on z/OS, the server uses the jobname suffix of AG.
+
 ## API Catalog
 
 The API Catalog provides a list of the API services that have registered themselves as catalog tiles. These tiles make it possible to view the available APIs from Zowe's southbound servers, as well as test REST API calls.  
 
 ![Zowe API Catalog](../images/api-mediation/api-catalog.png)
+
+When the API gateway is running, this server is accessible at `https://<ZOWE_HOST_IP>:7554/apicatalog/ui/v1`.
+When the API catalog is running, this server's API documentation is accessible at the API catalog tile `Zowe Applications` which can be viewed at `https://<ZOWE_HOST_IP>:7554/apicatalog/ui/v1/#/tile/apimediationlayer/apicatalog`
+When running on z/OS, the server uses the jobname suffix of AC.
 
 ## API Discovery
 
@@ -82,10 +102,16 @@ The API Discovery server acts as the registration service broker between the API
 
 ![Zowe API Discovery](../images/api-mediation/api-discovery.png)
 
+When running on z/OS, the server uses the jobname suffix of AD.
+
 ## Caching service
 
 The Caching service aims to provide an API which offers the possibility to store, retrieve, and delete data associated with keys. The service is used only by internal Zowe applications and is not exposed to the internet. The Caching service URL is `https://<ZOWE_HOST_IP>:7555`.
 For more information about the Caching service, see the [Caching service documentation](../extend/extend-apiml/api-mediation-caching-service.md).
+
+When the API gateway is running, this server is accessible at `https://<ZOWE_HOST_IP>:7554/cachingservice/api/v1`.
+When the API catalog is running, this server's API documentation is accessible at the API catalog tile `Zowe Applications` which can be viewed at `https://<ZOWE_HOST_IP>:7554/apicatalog/ui/v1/#/tile/zowe/cachingservice`
+When running on z/OS, the server uses the jobname suffix of CS.
 
 ## Desktop Apps
 
@@ -101,9 +127,4 @@ The JES API server provides a set of REST APIs for working with JES. These APIs 
 
 Both the File API and JES API servers are registered as tiles on the API Catalog, so users can view the Swagger definition and test API requests and responses.
 
-## Cross Memory server
 
-The Cross Memory server is a low-level privileged server for managing mainframe data securely.
-For security reasons, it is not an HTTP server. Instead, this server has a trust relationship with ZSS. Other Zowe components can work through ZSS in order to handle z/OS data that would otherwise be unavailable or insecure to access from higher-level languages and software.
-
-Unlike all of the servers described above which run under the `ZWESLSTC` started task as address spaces for USS processes, the Cross Memory server has its own separate started task `ZWESISTC` and its own user ID `ZWESIUSR` that runs the program `ZWESIS01`.

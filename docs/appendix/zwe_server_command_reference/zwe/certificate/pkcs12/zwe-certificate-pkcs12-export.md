@@ -24,20 +24,20 @@ zwe certificate pkcs12 export -f /path/to/my/keystore/file -p keystore-cert-pass
 
 Full name|Alias|Type|Required|Help message
 |---|---|---|---|---
---keystore|-f|string|yes||PKCS12 keystore file name.
---password|-p|string|yes||Password of the certificate keystore.
---private-keys||string|no||Private keys should also be exported.
+--keystore|-f|string|yes|PKCS12 keystore file name.
+--password|-p|string|yes|Password of the certificate keystore.
+--private-keys||string|no|Private keys should also be exported.
 ### Inherited from parent command
 
 Full name|Alias|Type|Required|Help message
 |---|---|---|---|---
---help|-h|boolean|no||Display this help.
---debug,--verbose|-v|boolean|no||Enable verbose mode.
---trace|-vv|boolean|no||Enable trace level debug mode.
---silent|-s|boolean|no||Do not display messages to standard output.
---log-dir,--log|-l|string|no||Write logs to this directory.
---config|-c|string|no||Path to Zowe configuration zowe.yaml file.
---configmgr||boolean|no||(Experimental, WIP)Enable use of configmgr capabilities.
+--help|-h|boolean|no|Display this help.
+--debug,--verbose|-v|boolean|no|Enable verbose mode.
+--trace|-vv|boolean|no|Enable trace level debug mode.
+--silent|-s|boolean|no|Do not display messages to standard output.
+--log-dir,--log|-l|string|no|Write logs to this directory.
+--config|-c|string|no|Path to Zowe configuration zowe.yaml file.
+--configmgr||boolean|no|Enable use of configmgr capabilities.
 
 
 ## Errors
@@ -83,3 +83,4 @@ ZWEL0200E||Failed to copy USS file %s to MVS data set %s.
 ZWEL0201E||File %s does not exist.
 ZWEL0202E||Unable to find samplib key for %s.
 ZWEL0203E||Env value in key-value pair %s has not been defined.
+ZWEL0316E||Command requires zowe.useConfigmgr=true to use.

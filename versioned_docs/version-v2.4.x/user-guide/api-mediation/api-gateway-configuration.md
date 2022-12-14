@@ -373,7 +373,7 @@ Use the following procedure to change or replace the Catalog service.
 ## Personal Access Token
 
 By default the API Mediation Layer does not provide the ability to use personal access tokens. For more information about about
-this functionality, see [Personal Access Tokens](user-guide/api-mediation/api-mediation-personal-access-token/).
+this functionality, see [Personal Access Tokens](api-mediation-personal-access-token.md).
 
 Use the following procedure to enable personal access tokens.
 

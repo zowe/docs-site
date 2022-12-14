@@ -1,43 +1,32 @@
-# zwe
+# zwe components upgrade
 
-[zwe](./zwe)
+[zwe](./.././zwe) > [components](././zwe-components) > [upgrade](./zwe-components-upgrade)
 
-	zwe [sub-command [sub-command]...] [parameter [parameter]...]
-
-## Sub-commands
-
-* [certificate](./certificate/zwe-certificate.md)
-* [components](./components/zwe-components.md)
-* [config](./config/zwe-config.md)
-* [init](./init/zwe-init.md)
-* [install](./zwe-install.md)
-* [internal](./internal/zwe-internal.md)
-* [migrate](./migrate/zwe-migrate.md)
-* [sample](./sample/zwe-sample.md)
-* [start](./zwe-start.md)
-* [stop](./zwe-stop.md)
-* [support](./support/zwe-support.md)
-* [version](./zwe-version.md)
+	zwe components upgrade [parameter [parameter]...]
 
 ## Description
 
-A command line utility helps you managing Zowe instance.
-
-You can issue --help or -h to find information for all commands it supports.
+Upgrade a Zowe component from a Zowe package registry when given a component name or "all" to upgrade all components.
+The upgrade will only be performed if a Zowe package registry is configured.
 
 
 ## Examples
 
 ```
-zwe install -h
+zwe components install -c /path/to/zowe.yaml -o /path/to/component/package
 
-zwe init --allow-overwrite --config /path/to/zowe.yaml
-
-zwe start -c /path/to/zowe.yaml
+zwe components install extract -c /path/to/zowe.yaml -o /path/to/component/package
 
 ```
 
 ## Parameters
+
+Full name|Alias|Type|Required|Help message
+|---|---|---|---|---
+--component-file,--component|-o|string|yes|Either a path or component name. The path must be to a component package or directory. If a name is specified instead, install checks the zowe package registry.
+--registry|-r|string|no|Specifies the registry to searh within instead of the default. The registry must be compatible with the manager used.
+--handler||string|no|Specifies the registry handler name used with the package registry, instead of the default. The handler must be compatible with the registry used.
+--dry-run|-d|boolean|no|Whether or not to perform the upgrade versus just checking if an upgrade is available### Inherited from parent command
 
 Full name|Alias|Type|Required|Help message
 |---|---|---|---|---
@@ -51,6 +40,14 @@ Full name|Alias|Type|Required|Help message
 
 
 ## Errors
+
+Error code|Exit code|Error message
+|---|---|---
+ZWEL0156E|156|Component name is not initialized after extract step.
+ZWEL0180E|180|Zowe extension directory (zowe.extensionDirectory) is not defined in Zowe YAML configuration file.
+ZWEL0304E|304|Handler install failure, cannot continue.
+ZWEL0305E|305|Could not find one of the components' directories.
+### Inherited from parent command
 
 Error code|Exit code|Error message
 |---|---|---
