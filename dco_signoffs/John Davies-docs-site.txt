@@ -1,0 +1,5 @@
+I, John Davies hereby sign-off-by all of my past commits to this repo subject to the Developer Certificate of Origin (DCO), Version 1.1. In the past I have used emails: daviesja@uk.ibm.com
+
+93e63a02a2aa725d15f5ee76097fa3c67525ad7b Document the use of .zowe_profile
+
+5c475e0f9fe7dcaddde7a1ae4c5d47efbc688117 Add pre- and post-install verify script descriptions

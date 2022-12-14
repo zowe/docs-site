@@ -1,0 +1,306 @@
+<!doctype html>
+<html class="default no-js">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>@zowe/zos-logs-for-zowe-sdk | Zowe Node.js SDK - v2.3.0</title>
+	<meta name="description" content="Documentation for Zowe Node.js SDK - v2.3.0">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="../assets/css/main.css">
+</head>
+<body>
+<header>
+	<div class="tsd-page-toolbar">
+		<div class="container">
+			<div class="table-wrap">
+				<div class="table-cell" id="tsd-search" data-index="../assets/js/search.json" data-base="..">
+					<div class="field">
+						<label for="tsd-search-field" class="tsd-widget search no-caption">Search</label>
+						<input id="tsd-search-field" type="text" />
+					</div>
+					<ul class="results">
+						<li class="state loading">Preparing search index...</li>
+						<li class="state failure">The search index is not available</li>
+					</ul>
+					<a href="../index.html" class="title">Zowe Node.js SDK - v2.3.0</a>
+				</div>
+				<div class="table-cell" id="tsd-widgets">
+					<div id="tsd-filter">
+						<a href="#" class="tsd-widget options no-caption" data-toggle="options">Options</a>
+						<div class="tsd-filter-group">
+							<div class="tsd-select" id="tsd-filter-visibility">
+								<span class="tsd-select-label">All</span>
+								<ul class="tsd-select-list">
+									<li data-value="public">Public</li>
+									<li data-value="protected">Public/Protected</li>
+									<li data-value="private" class="selected">All</li>
+								</ul>
+							</div>
+							<input type="checkbox" id="tsd-filter-inherited" checked />
+							<label class="tsd-widget" for="tsd-filter-inherited">Inherited</label>
+							<input type="checkbox" id="tsd-filter-externals" checked />
+							<label class="tsd-widget" for="tsd-filter-externals">Externals</label>
+						</div>
+					</div>
+					<a href="#" class="tsd-widget menu no-caption" data-toggle="menu">Menu</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="tsd-page-title">
+		<div class="container">
+			<ul class="tsd-breadcrumb">
+				<li>
+					<a href="../globals.html">Globals</a>
+				</li>
+				<li>
+					<a href="_zowe_zos_logs_for_zowe_sdk.html">@zowe/zos-logs-for-zowe-sdk</a>
+				</li>
+			</ul>
+			<h1>Module @zowe/zos-logs-for-zowe-sdk</h1>
+		</div>
+	</div>
+</header>
+<div class="container container-main">
+	<div class="row">
+		<div class="col-8 col-content">
+			<section class="tsd-panel tsd-comment">
+				<div class="tsd-comment tsd-typography">
+					<a href="#zos-logs-package" id="zos-logs-package" style="color: inherit; text-decoration: none;">
+						<h1>z/OS Logs Package</h1>
+					</a>
+					<p>Contains APIs to interact with logs on z/OS (using z/OSMF log REST endpoints).
+					z/OSMF version 2.4 or higher is required. Ensure that the <a href="https://www.ibm.com/support/pages/apar/PH35930">z/OSMF Operations Log Support is available via APAR and associated PTFs</a>.</p>
+					<a href="#api-examples" id="api-examples" style="color: inherit; text-decoration: none;">
+						<h2>API Examples</h2>
+					</a>
+					<p><strong>List z/OS logs</strong></p>
+					<pre><code class="language-typescript"><span class="hljs-keyword">import</span> { ProfileInfo } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@zowe/imperative&quot;</span>;
+<span class="hljs-keyword">import</span> { GetZosLog, IZosLogParms } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@zowe/zos-logs-for-zowe-sdk&quot;</span>;
+
+(<span class="hljs-keyword">async</span> () =&gt; {
+    <span class="hljs-comment">// Load connection info from default z/OSMF profile</span>
+    <span class="hljs-keyword">const</span> profInfo = <span class="hljs-keyword">new</span> ProfileInfo(<span class="hljs-string">&quot;zowe&quot;</span>);
+    <span class="hljs-keyword">await</span> profInfo.readProfilesFromDisk();
+    <span class="hljs-keyword">const</span> zosmfProfAttrs = profInfo.getDefaultProfile(<span class="hljs-string">&quot;zosmf&quot;</span>);
+    <span class="hljs-keyword">const</span> zosmfMergedArgs = profInfo.mergeArgsForProfile(zosmfProfAttrs, { <span class="hljs-attr">getSecureVals</span>: <span class="hljs-literal">true</span> });
+    <span class="hljs-keyword">const</span> session = ProfileInfo.createSession(zosmfMergedArgs.knownArgs);
+
+    <span class="hljs-keyword">const</span> zosLogParms: IZosLogParms = {
+        <span class="hljs-attr">direction</span>: <span class="hljs-string">&quot;backward&quot;</span>,
+        <span class="hljs-attr">range</span>: <span class="hljs-string">&quot;1m&quot;</span>
+    };
+    <span class="hljs-keyword">const</span> response = <span class="hljs-keyword">await</span> GetZosLog.getZosLog(session, zosLogParms);
+    <span class="hljs-built_in">console</span>.log(response);
+})().catch(<span class="hljs-function">(<span class="hljs-params">err</span>) =&gt;</span> {
+    <span class="hljs-built_in">console</span>.error(err);
+    process.exit(<span class="hljs-number">1</span>);
+});
+</code></pre>
+				</div>
+			</section>
+			<section class="tsd-panel-group tsd-index-group">
+				<h2>Index</h2>
+				<section class="tsd-panel tsd-index-panel">
+					<div class="tsd-index-content">
+						<section class="tsd-index-section ">
+							<h3>Classes</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-class tsd-parent-kind-module"><a href="../classes/_zowe_zos_logs_for_zowe_sdk.getzoslog.html" class="tsd-kind-icon">Get<wbr>Zos<wbr>Log</a></li>
+								<li class="tsd-kind-class tsd-parent-kind-module"><a href="../classes/_zowe_zos_logs_for_zowe_sdk.getzoslogvalidator.html" class="tsd-kind-icon">Get<wbr>Zos<wbr>Log<wbr>Validator</a></li>
+								<li class="tsd-kind-class tsd-parent-kind-module"><a href="../classes/_zowe_zos_logs_for_zowe_sdk.zoslogconstants.html" class="tsd-kind-icon">Zos<wbr>Log<wbr>Constants</a></li>
+							</ul>
+						</section>
+						<section class="tsd-index-section ">
+							<h3>Interfaces</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-interface tsd-parent-kind-module"><a href="../interfaces/_zowe_zos_logs_for_zowe_sdk.izoslogitemtype.html" class="tsd-kind-icon">IZos<wbr>Log<wbr>Item<wbr>Type</a></li>
+								<li class="tsd-kind-interface tsd-parent-kind-module"><a href="../interfaces/_zowe_zos_logs_for_zowe_sdk.izoslogparms.html" class="tsd-kind-icon">IZos<wbr>Log<wbr>Parms</a></li>
+								<li class="tsd-kind-interface tsd-parent-kind-module"><a href="../interfaces/_zowe_zos_logs_for_zowe_sdk.izoslogtype.html" class="tsd-kind-icon">IZos<wbr>Log<wbr>Type</a></li>
+							</ul>
+						</section>
+						<section class="tsd-index-section ">
+							<h3>Object literals</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-object-literal tsd-parent-kind-module"><a href="_zowe_zos_logs_for_zowe_sdk.html#nosessionmessage" class="tsd-kind-icon">no<wbr>Session<wbr>Message</a></li>
+							</ul>
+						</section>
+					</div>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group ">
+				<h2>Object literals</h2>
+				<section class="tsd-panel tsd-member tsd-kind-object-literal tsd-parent-kind-module">
+					<a name="nosessionmessage" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagConst">Const</span> no<wbr>Session<wbr>Message</h3>
+					<div class="tsd-signature tsd-kind-icon">no<wbr>Session<wbr>Message<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.5.1/packages/zoslogs/src/ZosLogConstants.ts#L24">@zowe/zos-logs-for-zowe-sdk/src/ZosLogConstants.ts:24</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Error message that no session provided.</p>
+						</div>
+						<dl class="tsd-comment-tags">
+							<dt>static</dt>
+							<dd></dd>
+							<dt>memberof</dt>
+							<dd><p>ZosLogConstants</p>
+							</dd>
+						</dl>
+					</div>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+						<a name="nosessionmessage.message" class="tsd-anchor"></a>
+						<h3>message</h3>
+						<div class="tsd-signature tsd-kind-icon">message<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = apiErrorHeader.message + &#x60; No session was supplied.&#x60;</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.5.1/packages/zoslogs/src/ZosLogConstants.ts#L25">@zowe/zos-logs-for-zowe-sdk/src/ZosLogConstants.ts:25</a></li>
+							</ul>
+						</aside>
+					</section>
+				</section>
+			</section>
+		</div>
+		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
+			<nav class="tsd-navigation primary">
+				<ul>
+					<li class="globals  ">
+						<a href="../globals.html"><em>Globals</em></a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="_zowe_core_for_zowe_sdk.html">@zowe/core-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="_zowe_imperative.html">@zowe/imperative</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="_zowe_provisioning_for_zowe_sdk.html">@zowe/provisioning-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="_zowe_zos_console_for_zowe_sdk.html">@zowe/zos-<wbr>console-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="_zowe_zos_files_for_zowe_sdk.html">@zowe/zos-<wbr>files-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="_zowe_zos_jobs_for_zowe_sdk.html">@zowe/zos-<wbr>jobs-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class="current tsd-kind-module">
+						<a href="_zowe_zos_logs_for_zowe_sdk.html">@zowe/zos-<wbr>logs-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="_zowe_zos_tso_for_zowe_sdk.html">@zowe/zos-<wbr>tso-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="_zowe_zos_uss_for_zowe_sdk.html">@zowe/zos-<wbr>uss-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="_zowe_zos_workflows_for_zowe_sdk.html">@zowe/zos-<wbr>workflows-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="_zowe_zosmf_for_zowe_sdk.html">@zowe/zosmf-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+				</ul>
+			</nav>
+			<nav class="tsd-navigation secondary menu-sticky">
+				<ul class="before-current">
+					<li class=" tsd-kind-module">
+						<a href="_zowe_core_for_zowe_sdk.html" class="tsd-kind-icon">@zowe/core-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="_zowe_imperative.html" class="tsd-kind-icon">@zowe/imperative</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="_zowe_provisioning_for_zowe_sdk.html" class="tsd-kind-icon">@zowe/provisioning-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="_zowe_zos_console_for_zowe_sdk.html" class="tsd-kind-icon">@zowe/zos-<wbr>console-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="_zowe_zos_files_for_zowe_sdk.html" class="tsd-kind-icon">@zowe/zos-<wbr>files-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="_zowe_zos_jobs_for_zowe_sdk.html" class="tsd-kind-icon">@zowe/zos-<wbr>jobs-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+				</ul>
+				<ul class="current">
+					<li class="current tsd-kind-module">
+						<a href="_zowe_zos_logs_for_zowe_sdk.html" class="tsd-kind-icon">@zowe/zos-<wbr>logs-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+						<ul>
+							<li class=" tsd-kind-class tsd-parent-kind-module">
+								<a href="../classes/_zowe_zos_logs_for_zowe_sdk.getzoslog.html" class="tsd-kind-icon">Get<wbr>Zos<wbr>Log</a>
+							</li>
+							<li class=" tsd-kind-class tsd-parent-kind-module">
+								<a href="../classes/_zowe_zos_logs_for_zowe_sdk.getzoslogvalidator.html" class="tsd-kind-icon">Get<wbr>Zos<wbr>Log<wbr>Validator</a>
+							</li>
+							<li class=" tsd-kind-class tsd-parent-kind-module">
+								<a href="../classes/_zowe_zos_logs_for_zowe_sdk.zoslogconstants.html" class="tsd-kind-icon">Zos<wbr>Log<wbr>Constants</a>
+							</li>
+							<li class=" tsd-kind-interface tsd-parent-kind-module">
+								<a href="../interfaces/_zowe_zos_logs_for_zowe_sdk.izoslogitemtype.html" class="tsd-kind-icon">IZos<wbr>Log<wbr>Item<wbr>Type</a>
+							</li>
+							<li class=" tsd-kind-interface tsd-parent-kind-module">
+								<a href="../interfaces/_zowe_zos_logs_for_zowe_sdk.izoslogparms.html" class="tsd-kind-icon">IZos<wbr>Log<wbr>Parms</a>
+							</li>
+							<li class=" tsd-kind-interface tsd-parent-kind-module">
+								<a href="../interfaces/_zowe_zos_logs_for_zowe_sdk.izoslogtype.html" class="tsd-kind-icon">IZos<wbr>Log<wbr>Type</a>
+							</li>
+							<li class=" tsd-kind-object-literal tsd-parent-kind-module">
+								<a href="_zowe_zos_logs_for_zowe_sdk.html#nosessionmessage" class="tsd-kind-icon">no<wbr>Session<wbr>Message</a>
+							</li>
+						</ul>
+					</li>
+				</ul>
+				<ul class="after-current">
+					<li class=" tsd-kind-module">
+						<a href="_zowe_zos_tso_for_zowe_sdk.html" class="tsd-kind-icon">@zowe/zos-<wbr>tso-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="_zowe_zos_uss_for_zowe_sdk.html" class="tsd-kind-icon">@zowe/zos-<wbr>uss-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="_zowe_zos_workflows_for_zowe_sdk.html" class="tsd-kind-icon">@zowe/zos-<wbr>workflows-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="_zowe_zosmf_for_zowe_sdk.html" class="tsd-kind-icon">@zowe/zosmf-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</div>
+</div>
+<footer class="with-border-bottom">
+	<div class="container">
+		<h2>Legend</h2>
+		<div class="tsd-legend-group">
+			<ul class="tsd-legend">
+				<li class="tsd-kind-object-literal"><span class="tsd-kind-icon">Object literal</span></li>
+				<li class="tsd-kind-variable"><span class="tsd-kind-icon">Variable</span></li>
+				<li class="tsd-kind-function"><span class="tsd-kind-icon">Function</span></li>
+				<li class="tsd-kind-type-alias"><span class="tsd-kind-icon">Type alias</span></li>
+				<li class="tsd-kind-type-alias tsd-has-type-parameter"><span class="tsd-kind-icon">Type alias with type parameter</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-interface"><span class="tsd-kind-icon">Interface</span></li>
+				<li class="tsd-kind-interface tsd-has-type-parameter"><span class="tsd-kind-icon">Interface with type parameter</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-class"><span class="tsd-kind-icon">Class</span></li>
+				<li class="tsd-kind-class tsd-has-type-parameter"><span class="tsd-kind-icon">Class with type parameter</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-enum"><span class="tsd-kind-icon">Enumeration</span></li>
+			</ul>
+		</div>
+	</div>
+</footer>
+<div class="container tsd-generator">
+	<p>Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p>
+</div>
+<div class="overlay"></div>
+<script src="../assets/js/main.js"></script>
+</body>
+</html>

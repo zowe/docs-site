@@ -1,0 +1,1176 @@
+<!doctype html>
+<html class="default no-js">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>@zowe/zosmf-for-zowe-sdk | Zowe Node.js SDK - v2.1.0</title>
+	<meta name="description" content="Documentation for Zowe Node.js SDK - v2.1.0">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="../assets/css/main.css">
+</head>
+<body>
+<header>
+	<div class="tsd-page-toolbar">
+		<div class="container">
+			<div class="table-wrap">
+				<div class="table-cell" id="tsd-search" data-index="../assets/js/search.json" data-base="..">
+					<div class="field">
+						<label for="tsd-search-field" class="tsd-widget search no-caption">Search</label>
+						<input id="tsd-search-field" type="text" />
+					</div>
+					<ul class="results">
+						<li class="state loading">Preparing search index...</li>
+						<li class="state failure">The search index is not available</li>
+					</ul>
+					<a href="../index.html" class="title">Zowe Node.js SDK - v2.1.0</a>
+				</div>
+				<div class="table-cell" id="tsd-widgets">
+					<div id="tsd-filter">
+						<a href="#" class="tsd-widget options no-caption" data-toggle="options">Options</a>
+						<div class="tsd-filter-group">
+							<div class="tsd-select" id="tsd-filter-visibility">
+								<span class="tsd-select-label">All</span>
+								<ul class="tsd-select-list">
+									<li data-value="public">Public</li>
+									<li data-value="protected">Public/Protected</li>
+									<li data-value="private" class="selected">All</li>
+								</ul>
+							</div>
+							<input type="checkbox" id="tsd-filter-inherited" checked />
+							<label class="tsd-widget" for="tsd-filter-inherited">Inherited</label>
+							<input type="checkbox" id="tsd-filter-externals" checked />
+							<label class="tsd-widget" for="tsd-filter-externals">Externals</label>
+						</div>
+					</div>
+					<a href="#" class="tsd-widget menu no-caption" data-toggle="menu">Menu</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="tsd-page-title">
+		<div class="container">
+			<ul class="tsd-breadcrumb">
+				<li>
+					<a href="../globals.html">Globals</a>
+				</li>
+				<li>
+					<a href="_zowe_zosmf_for_zowe_sdk.html">@zowe/zosmf-for-zowe-sdk</a>
+				</li>
+			</ul>
+			<h1>Module @zowe/zosmf-for-zowe-sdk</h1>
+		</div>
+	</div>
+</header>
+<div class="container container-main">
+	<div class="row">
+		<div class="col-8 col-content">
+			<section class="tsd-panel tsd-comment">
+				<div class="tsd-comment tsd-typography">
+					<a href="#zos-management-facility-package" id="zos-management-facility-package" style="color: inherit; text-decoration: none;">
+						<h1>z/OS Management Facility Package</h1>
+					</a>
+					<p>Contains APIs to interact with the z/OS Management Facility (using z/OSMF REST endpoints).</p>
+					<a href="#api-examples" id="api-examples" style="color: inherit; text-decoration: none;">
+						<h2>API Examples</h2>
+					</a>
+					<p><strong>Check z/OSMF status</strong></p>
+					<pre><code class="language-typescript"><span class="hljs-keyword">import</span> { ProfileInfo } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@zowe/imperative&quot;</span>;
+<span class="hljs-keyword">import</span> { CheckStatus } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@zowe/zosmf-for-zowe-sdk&quot;</span>;
+
+(<span class="hljs-keyword">async</span> () =&gt; {
+    <span class="hljs-comment">// Load connection info from default z/OSMF profile</span>
+    <span class="hljs-keyword">const</span> profInfo = <span class="hljs-keyword">new</span> ProfileInfo(<span class="hljs-string">&quot;zowe&quot;</span>);
+    <span class="hljs-keyword">await</span> profInfo.readProfilesFromDisk();
+    <span class="hljs-keyword">const</span> zosmfProfAttrs = profInfo.getDefaultProfile(<span class="hljs-string">&quot;zosmf&quot;</span>);
+    <span class="hljs-keyword">const</span> zosmfMergedArgs = profInfo.mergeArgsForProfile(zosmfProfAttrs, { <span class="hljs-attr">getSecureVals</span>: <span class="hljs-literal">true</span> });
+    <span class="hljs-keyword">const</span> session = ProfileInfo.createSession(zosmfMergedArgs.knownArgs);
+
+    <span class="hljs-keyword">const</span> response = <span class="hljs-keyword">await</span> CheckStatus.getZosmfInfo(session);
+    <span class="hljs-built_in">console</span>.log(response);
+})().catch(<span class="hljs-function">(<span class="hljs-params">err</span>) =&gt;</span> {
+    <span class="hljs-built_in">console</span>.error(err);
+    process.exit(<span class="hljs-number">1</span>);
+});
+</code></pre>
+					<a href="#" id="" style="color: inherit; text-decoration: none;">
+						<h1></h1>
+					</a>
+					<p><strong>List systems defined to z/OSMF</strong></p>
+					<pre><code class="language-typescript"><span class="hljs-keyword">import</span> { ProfileInfo } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@zowe/imperative&quot;</span>;
+<span class="hljs-keyword">import</span> { ListDefinedSystems } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@zowe/zosmf-for-zowe-sdk&quot;</span>;
+
+(<span class="hljs-keyword">async</span> () =&gt; {
+    <span class="hljs-comment">// Load connection info from default z/OSMF profile</span>
+    <span class="hljs-keyword">const</span> profInfo = <span class="hljs-keyword">new</span> ProfileInfo(<span class="hljs-string">&quot;zowe&quot;</span>);
+    <span class="hljs-keyword">await</span> profInfo.readProfilesFromDisk();
+    <span class="hljs-keyword">const</span> zosmfProfAttrs = profInfo.getDefaultProfile(<span class="hljs-string">&quot;zosmf&quot;</span>);
+    <span class="hljs-keyword">const</span> zosmfMergedArgs = profInfo.mergeArgsForProfile(zosmfProfAttrs, { <span class="hljs-attr">getSecureVals</span>: <span class="hljs-literal">true</span> });
+    <span class="hljs-keyword">const</span> session = ProfileInfo.createSession(zosmfMergedArgs.knownArgs);
+
+    <span class="hljs-keyword">const</span> response = <span class="hljs-keyword">await</span> ListDefinedSystems.listDefinedSystems(session);
+    <span class="hljs-built_in">console</span>.log(response);
+})().catch(<span class="hljs-function">(<span class="hljs-params">err</span>) =&gt;</span> {
+    <span class="hljs-built_in">console</span>.error(err);
+    process.exit(<span class="hljs-number">1</span>);
+});
+</code></pre>
+				</div>
+			</section>
+			<section class="tsd-panel-group tsd-index-group">
+				<h2>Index</h2>
+				<section class="tsd-panel tsd-index-panel">
+					<div class="tsd-index-content">
+						<section class="tsd-index-section ">
+							<h3>Classes</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-class tsd-parent-kind-module"><a href="../classes/_zowe_zosmf_for_zowe_sdk.checkstatus.html" class="tsd-kind-icon">Check<wbr>Status</a></li>
+								<li class="tsd-kind-class tsd-parent-kind-module"><a href="../classes/_zowe_zosmf_for_zowe_sdk.listdefinedsystems.html" class="tsd-kind-icon">List<wbr>Defined<wbr>Systems</a></li>
+								<li class="tsd-kind-class tsd-parent-kind-module"><a href="../classes/_zowe_zosmf_for_zowe_sdk.zosmfbasehandler.html" class="tsd-kind-icon">Zosmf<wbr>Base<wbr>Handler</a></li>
+								<li class="tsd-kind-class tsd-parent-kind-module"><a href="../classes/_zowe_zosmf_for_zowe_sdk.zosmfsession.html" class="tsd-kind-icon">Zosmf<wbr>Session</a></li>
+							</ul>
+						</section>
+						<section class="tsd-index-section ">
+							<h3>Interfaces</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-interface tsd-parent-kind-module"><a href="../interfaces/_zowe_zosmf_for_zowe_sdk.idefinedsystem.html" class="tsd-kind-icon">IDefined<wbr>System</a></li>
+								<li class="tsd-kind-interface tsd-parent-kind-module"><a href="../interfaces/_zowe_zosmf_for_zowe_sdk.izosmfinforesponse.html" class="tsd-kind-icon">IZosmf<wbr>Info<wbr>Response</a></li>
+								<li class="tsd-kind-interface tsd-parent-kind-module"><a href="../interfaces/_zowe_zosmf_for_zowe_sdk.izosmflistdefinedsystemsresponse.html" class="tsd-kind-icon">IZosmf<wbr>List<wbr>Defined<wbr>Systems<wbr>Response</a></li>
+								<li class="tsd-kind-interface tsd-parent-kind-module"><a href="../interfaces/_zowe_zosmf_for_zowe_sdk.izosmfplugininfo.html" class="tsd-kind-icon">IZosmf<wbr>Plugin<wbr>Info</a></li>
+							</ul>
+						</section>
+						<section class="tsd-index-section ">
+							<h3>Object literals</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-object-literal tsd-parent-kind-module"><a href="_zowe_zosmf_for_zowe_sdk.html#zosfilesoptions" class="tsd-kind-icon">Zos<wbr>Files<wbr>Options</a></li>
+								<li class="tsd-kind-object-literal tsd-parent-kind-module"><a href="_zowe_zosmf_for_zowe_sdk.html#zosmfconstants" class="tsd-kind-icon">Zosmf<wbr>Constants</a></li>
+								<li class="tsd-kind-object-literal tsd-parent-kind-module"><a href="_zowe_zosmf_for_zowe_sdk.html#zosmfmessages" class="tsd-kind-icon">Zosmf<wbr>Messages</a></li>
+								<li class="tsd-kind-object-literal tsd-parent-kind-module"><a href="_zowe_zosmf_for_zowe_sdk.html#zosmfprofile" class="tsd-kind-icon">Zosmf<wbr>Profile</a></li>
+							</ul>
+						</section>
+					</div>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group ">
+				<h2>Object literals</h2>
+				<section class="tsd-panel tsd-member tsd-kind-object-literal tsd-parent-kind-module">
+					<a name="zosfilesoptions" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagConst">Const</span> Zos<wbr>Files<wbr>Options</h3>
+					<div class="tsd-signature tsd-kind-icon">Zos<wbr>Files<wbr>Options<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.2.2/packages/zosmf/src/constants/Zosmf.constants.ts#L77">@zowe/zosmf-for-zowe-sdk/src/constants/Zosmf.constants.ts:77</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Object containing all options to be used by the Download data set API</p>
+						</div>
+					</div>
+					<section class="tsd-panel tsd-member tsd-kind-object-literal tsd-parent-kind-object-literal">
+						<a name="zosfilesoptions.responsetimeout" class="tsd-anchor"></a>
+						<h3>response<wbr>Timeout</h3>
+						<div class="tsd-signature tsd-kind-icon">response<wbr>Timeout<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.2.2/packages/zosmf/src/constants/Zosmf.constants.ts#L82">@zowe/zosmf-for-zowe-sdk/src/constants/Zosmf.constants.ts:82</a></li>
+							</ul>
+						</aside>
+						<div class="tsd-comment tsd-typography">
+							<div class="lead">
+								<p>The files timeout header value</p>
+							</div>
+						</div>
+						<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+							<a name="zosfilesoptions.responsetimeout.aliases" class="tsd-anchor"></a>
+							<h3>aliases</h3>
+							<div class="tsd-signature tsd-kind-icon">aliases<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol"> = [&quot;rto&quot;]</span></div>
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.2.2/packages/zosmf/src/constants/Zosmf.constants.ts#L84">@zowe/zosmf-for-zowe-sdk/src/constants/Zosmf.constants.ts:84</a></li>
+								</ul>
+							</aside>
+						</section>
+						<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+							<a name="zosfilesoptions.responsetimeout.defaultvalue" class="tsd-anchor"></a>
+							<h3>default<wbr>Value</h3>
+							<div class="tsd-signature tsd-kind-icon">default<wbr>Value<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> = undefined</span></div>
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.2.2/packages/zosmf/src/constants/Zosmf.constants.ts#L88">@zowe/zosmf-for-zowe-sdk/src/constants/Zosmf.constants.ts:88</a></li>
+								</ul>
+							</aside>
+						</section>
+						<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+							<a name="zosfilesoptions.responsetimeout.description" class="tsd-anchor"></a>
+							<h3>description</h3>
+							<div class="tsd-signature tsd-kind-icon">description<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &quot;The maximum amount of time in seconds the z/OSMF Files TSO servlet should run before returning a response.&quot; +&quot; Any request exceeding this amount of time will be terminated and return an error. Allowed values: 5 - 600&quot;</span></div>
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.2.2/packages/zosmf/src/constants/Zosmf.constants.ts#L85">@zowe/zosmf-for-zowe-sdk/src/constants/Zosmf.constants.ts:85</a></li>
+								</ul>
+							</aside>
+						</section>
+						<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+							<a name="zosfilesoptions.responsetimeout.name" class="tsd-anchor"></a>
+							<h3>name</h3>
+							<div class="tsd-signature tsd-kind-icon">name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &quot;response-timeout&quot;</span></div>
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.2.2/packages/zosmf/src/constants/Zosmf.constants.ts#L83">@zowe/zosmf-for-zowe-sdk/src/constants/Zosmf.constants.ts:83</a></li>
+								</ul>
+							</aside>
+						</section>
+						<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+							<a name="zosfilesoptions.responsetimeout.numericvaluerange" class="tsd-anchor"></a>
+							<h3>numeric<wbr>Value<wbr>Range</h3>
+							<div class="tsd-signature tsd-kind-icon">numeric<wbr>Value<wbr>Range<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol"> = [5, 600]</span></div>
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.2.2/packages/zosmf/src/constants/Zosmf.constants.ts#L90">@zowe/zosmf-for-zowe-sdk/src/constants/Zosmf.constants.ts:90</a></li>
+								</ul>
+							</aside>
+						</section>
+						<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+							<a name="zosfilesoptions.responsetimeout.type" class="tsd-anchor"></a>
+							<h3>type</h3>
+							<div class="tsd-signature tsd-kind-icon">type<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &quot;number&quot;</span></div>
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.2.2/packages/zosmf/src/constants/Zosmf.constants.ts#L87">@zowe/zosmf-for-zowe-sdk/src/constants/Zosmf.constants.ts:87</a></li>
+								</ul>
+							</aside>
+						</section>
+					</section>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-object-literal tsd-parent-kind-module">
+					<a name="zosmfconstants" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagConst">Const</span> Zosmf<wbr>Constants</h3>
+					<div class="tsd-signature tsd-kind-icon">Zosmf<wbr>Constants<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.2.2/packages/zosmf/src/constants/Zosmf.constants.ts#L17">@zowe/zosmf-for-zowe-sdk/src/constants/Zosmf.constants.ts:17</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Constants to be used by the z/OSMF API</p>
+						</div>
+					</div>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+						<a name="zosmfconstants.info" class="tsd-anchor"></a>
+						<h3>INFO</h3>
+						<div class="tsd-signature tsd-kind-icon">INFO<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &quot;/info&quot;</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.2.2/packages/zosmf/src/constants/Zosmf.constants.ts#L28">@zowe/zosmf-for-zowe-sdk/src/constants/Zosmf.constants.ts:28</a></li>
+							</ul>
+						</aside>
+						<div class="tsd-comment tsd-typography">
+							<div class="lead">
+								<p>indicator for get info request</p>
+							</div>
+						</div>
+					</section>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+						<a name="zosmfconstants.resource" class="tsd-anchor"></a>
+						<h3>RESOURCE</h3>
+						<div class="tsd-signature tsd-kind-icon">RESOURCE<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &quot;/zosmf&quot;</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.2.2/packages/zosmf/src/constants/Zosmf.constants.ts#L22">@zowe/zosmf-for-zowe-sdk/src/constants/Zosmf.constants.ts:22</a></li>
+							</ul>
+						</aside>
+						<div class="tsd-comment tsd-typography">
+							<div class="lead">
+								<p>Specifies the z/OS data set and file REST interface</p>
+							</div>
+						</div>
+					</section>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+						<a name="zosmfconstants.systems" class="tsd-anchor"></a>
+						<h3>SYSTEMS</h3>
+						<div class="tsd-signature tsd-kind-icon">SYSTEMS<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &quot;/systems&quot;</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.2.2/packages/zosmf/src/constants/Zosmf.constants.ts#L40">@zowe/zosmf-for-zowe-sdk/src/constants/Zosmf.constants.ts:40</a></li>
+							</ul>
+						</aside>
+						<div class="tsd-comment tsd-typography">
+							<div class="lead">
+								<p>indicator for get defined systems in zosmf</p>
+							</div>
+						</div>
+					</section>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+						<a name="zosmfconstants.topology" class="tsd-anchor"></a>
+						<h3>TOPOLOGY</h3>
+						<div class="tsd-signature tsd-kind-icon">TOPOLOGY<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &quot;/resttopology&quot;</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.2.2/packages/zosmf/src/constants/Zosmf.constants.ts#L34">@zowe/zosmf-for-zowe-sdk/src/constants/Zosmf.constants.ts:34</a></li>
+							</ul>
+						</aside>
+						<div class="tsd-comment tsd-typography">
+							<div class="lead">
+								<p>indicator for get topology services</p>
+							</div>
+						</div>
+					</section>
+					<section class="tsd-panel tsd-member tsd-kind-object-literal tsd-parent-kind-object-literal">
+						<a name="zosmfconstants.error_codes" class="tsd-anchor"></a>
+						<h3>ERROR_<wbr>CODES</h3>
+						<div class="tsd-signature tsd-kind-icon">ERROR_<wbr>CODES<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.2.2/packages/zosmf/src/constants/Zosmf.constants.ts#L46">@zowe/zosmf-for-zowe-sdk/src/constants/Zosmf.constants.ts:46</a></li>
+							</ul>
+						</aside>
+						<div class="tsd-comment tsd-typography">
+							<div class="lead">
+								<p>Known error codes return by the API</p>
+							</div>
+						</div>
+						<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+							<a name="zosmfconstants.error_codes.bad_host_name" class="tsd-anchor"></a>
+							<h3>BAD_<wbr>HOST_<wbr>NAME</h3>
+							<div class="tsd-signature tsd-kind-icon">BAD_<wbr>HOST_<wbr>NAME<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &quot;ENOTFOUND&quot;</span></div>
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.2.2/packages/zosmf/src/constants/Zosmf.constants.ts#L51">@zowe/zosmf-for-zowe-sdk/src/constants/Zosmf.constants.ts:51</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Error code when unable to connect to host</p>
+								</div>
+							</div>
+						</section>
+						<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+							<a name="zosmfconstants.error_codes.bad_port" class="tsd-anchor"></a>
+							<h3>BAD_<wbr>PORT</h3>
+							<div class="tsd-signature tsd-kind-icon">BAD_<wbr>PORT<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &quot;ECONNREFUSED&quot;</span></div>
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.2.2/packages/zosmf/src/constants/Zosmf.constants.ts#L57">@zowe/zosmf-for-zowe-sdk/src/constants/Zosmf.constants.ts:57</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Error code when unable to connect to port</p>
+								</div>
+							</div>
+						</section>
+						<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+							<a name="zosmfconstants.error_codes.self_signed_cert_in_chain" class="tsd-anchor"></a>
+							<h3>SELF_<wbr>SIGNED_<wbr>CERT_<wbr>IN_<wbr>CHAIN</h3>
+							<div class="tsd-signature tsd-kind-icon">SELF_<wbr>SIGNED_<wbr>CERT_<wbr>IN_<wbr>CHAIN<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &quot;SELF_SIGNED_CERT_IN_CHAIN&quot;</span></div>
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.2.2/packages/zosmf/src/constants/Zosmf.constants.ts#L63">@zowe/zosmf-for-zowe-sdk/src/constants/Zosmf.constants.ts:63</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Error code when self signed certificate in chain</p>
+								</div>
+							</div>
+						</section>
+						<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+							<a name="zosmfconstants.error_codes.unable_to_verify_leaf_signature" class="tsd-anchor"></a>
+							<h3>UNABLE_<wbr>TO_<wbr>VERIFY_<wbr>LEAF_<wbr>SIGNATURE</h3>
+							<div class="tsd-signature tsd-kind-icon">UNABLE_<wbr>TO_<wbr>VERIFY_<wbr>LEAF_<wbr>SIGNATURE<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &quot;UNABLE_TO_VERIFY_LEAF_SIGNATURE&quot;</span></div>
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.2.2/packages/zosmf/src/constants/Zosmf.constants.ts#L69">@zowe/zosmf-for-zowe-sdk/src/constants/Zosmf.constants.ts:69</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Error code when unable to verify the first certificate</p>
+								</div>
+							</div>
+						</section>
+					</section>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-object-literal tsd-parent-kind-module">
+					<a name="zosmfmessages" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagConst">Const</span> Zosmf<wbr>Messages</h3>
+					<div class="tsd-signature tsd-kind-icon">Zosmf<wbr>Messages<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.2.2/packages/zosmf/src/constants/Zosmf.messages.ts#L18">@zowe/zosmf-for-zowe-sdk/src/constants/Zosmf.messages.ts:18</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Messages to be used as detail display error message when gathering z/OSMF information</p>
+						</div>
+					</div>
+					<section class="tsd-panel tsd-member tsd-kind-object-literal tsd-parent-kind-object-literal">
+						<a name="zosmfmessages.improperrejectunauthorized" class="tsd-anchor"></a>
+						<h3>improper<wbr>Reject<wbr>Unauthorized</h3>
+						<div class="tsd-signature tsd-kind-icon">improper<wbr>Reject<wbr>Unauthorized<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.2.2/packages/zosmf/src/constants/Zosmf.messages.ts#L44">@zowe/zosmf-for-zowe-sdk/src/constants/Zosmf.messages.ts:44</a></li>
+							</ul>
+						</aside>
+						<div class="tsd-comment tsd-typography">
+							<div class="lead">
+								<p>Message indicate that the rejectUnauthorized flag was not set properly</p>
+							</div>
+						</div>
+						<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+							<a name="zosmfmessages.improperrejectunauthorized.message" class="tsd-anchor"></a>
+							<h3>message</h3>
+							<div class="tsd-signature tsd-kind-icon">message<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &quot;A self-signed certificate was used ({{causeMsg}}),and your reject-unauthorized option is &#x27;{{rejectUnauthorized}}&#x27;.&quot;</span></div>
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.2.2/packages/zosmf/src/constants/Zosmf.messages.ts#L45">@zowe/zosmf-for-zowe-sdk/src/constants/Zosmf.messages.ts:45</a></li>
+								</ul>
+							</aside>
+						</section>
+					</section>
+					<section class="tsd-panel tsd-member tsd-kind-object-literal tsd-parent-kind-object-literal">
+						<a name="zosmfmessages.invalidhostname" class="tsd-anchor"></a>
+						<h3>invalid<wbr>Host<wbr>Name</h3>
+						<div class="tsd-signature tsd-kind-icon">invalid<wbr>Host<wbr>Name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.2.2/packages/zosmf/src/constants/Zosmf.messages.ts#L30">@zowe/zosmf-for-zowe-sdk/src/constants/Zosmf.messages.ts:30</a></li>
+							</ul>
+						</aside>
+						<div class="tsd-comment tsd-typography">
+							<div class="lead">
+								<p>Message indicate that unable to connect to specified host name</p>
+							</div>
+						</div>
+						<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+							<a name="zosmfmessages.invalidhostname.message-1" class="tsd-anchor"></a>
+							<h3>message</h3>
+							<div class="tsd-signature tsd-kind-icon">message<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &quot;Unable to establish connection to host &quot;</span></div>
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.2.2/packages/zosmf/src/constants/Zosmf.messages.ts#L31">@zowe/zosmf-for-zowe-sdk/src/constants/Zosmf.messages.ts:31</a></li>
+								</ul>
+							</aside>
+						</section>
+					</section>
+					<section class="tsd-panel tsd-member tsd-kind-object-literal tsd-parent-kind-object-literal">
+						<a name="zosmfmessages.invalidport" class="tsd-anchor"></a>
+						<h3>invalid<wbr>Port</h3>
+						<div class="tsd-signature tsd-kind-icon">invalid<wbr>Port<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.2.2/packages/zosmf/src/constants/Zosmf.messages.ts#L37">@zowe/zosmf-for-zowe-sdk/src/constants/Zosmf.messages.ts:37</a></li>
+							</ul>
+						</aside>
+						<div class="tsd-comment tsd-typography">
+							<div class="lead">
+								<p>Message indicate that unable to establish connection with specified port number</p>
+							</div>
+						</div>
+						<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+							<a name="zosmfmessages.invalidport.message-2" class="tsd-anchor"></a>
+							<h3>message</h3>
+							<div class="tsd-signature tsd-kind-icon">message<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &quot;Unable to establish connection at port &quot;</span></div>
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.2.2/packages/zosmf/src/constants/Zosmf.messages.ts#L38">@zowe/zosmf-for-zowe-sdk/src/constants/Zosmf.messages.ts:38</a></li>
+								</ul>
+							</aside>
+						</section>
+					</section>
+					<section class="tsd-panel tsd-member tsd-kind-object-literal tsd-parent-kind-object-literal">
+						<a name="zosmfmessages.missingsession" class="tsd-anchor"></a>
+						<h3>missing<wbr>Session</h3>
+						<div class="tsd-signature tsd-kind-icon">missing<wbr>Session<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.2.2/packages/zosmf/src/constants/Zosmf.messages.ts#L23">@zowe/zosmf-for-zowe-sdk/src/constants/Zosmf.messages.ts:23</a></li>
+							</ul>
+						</aside>
+						<div class="tsd-comment tsd-typography">
+							<div class="lead">
+								<p>Message indicate that input session object is invalid</p>
+							</div>
+						</div>
+						<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+							<a name="zosmfmessages.missingsession.message-3" class="tsd-anchor"></a>
+							<h3>message</h3>
+							<div class="tsd-signature tsd-kind-icon">message<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &quot;Missing profile session information.&quot;</span></div>
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.2.2/packages/zosmf/src/constants/Zosmf.messages.ts#L24">@zowe/zosmf-for-zowe-sdk/src/constants/Zosmf.messages.ts:24</a></li>
+								</ul>
+							</aside>
+						</section>
+					</section>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-object-literal tsd-parent-kind-module">
+					<a name="zosmfprofile" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagConst">Const</span> Zosmf<wbr>Profile</h3>
+					<div class="tsd-signature tsd-kind-icon">Zosmf<wbr>Profile<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.2.2/packages/zosmf/src/constants/Zosmf.profile.ts#L21">@zowe/zosmf-for-zowe-sdk/src/constants/Zosmf.profile.ts:21</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Profile configuration for ZOSMF profiles</p>
+						</div>
+						<dl class="tsd-comment-tags">
+							<dt>memberof</dt>
+							<dd><p>ZosmfProfile</p>
+							</dd>
+						</dl>
+					</div>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+						<a name="zosmfprofile.createprofileexamples" class="tsd-anchor"></a>
+						<h3>create<wbr>Profile<wbr>Examples</h3>
+						<div class="tsd-signature tsd-kind-icon">create<wbr>Profile<wbr>Examples<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">{ </span>description<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">; </span>options<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol"> = [{options: &quot;zos123 --host zos123 --port 1443 --user ibmuser --password myp4ss&quot;,description: &quot;Create a zosmf profile called &#x27;zos123&#x27; to connect to z/OSMF at host zos123 and port 1443&quot;},{options: &quot;zos124 --host zos124 --user ibmuser --password myp4ss --reject-unauthorized false&quot;,description: &quot;Create a zosmf profile called &#x27;zos124&#x27; to connect to z/OSMF at the host zos124 (default port - 443) &quot; +&quot;and allow self-signed certificates&quot;},{options: &quot;zos125 --host zos125 --port 1443&quot;,description: &quot;Create a zosmf profile called &#x27;zos125&#x27; to connect to z/OSMF at the host zos125 and port 1443, &quot; +&quot; not specifying a username or password so they are not stored on disk; these will need to be specified on every command&quot;},{options: &quot;zos126 --reject-unauthorized false&quot;,description: &quot;Create a zosmf profile called &#x27;zos126&#x27; to connect to z/OSMF on the default port 443 and allow self-signed &quot; +&quot;certificates, not specifying a username, password, or host so they are not stored on disk; these will need to be &quot; +&quot;specified on every command&quot;},{options: &quot;zosAPIML --host zosAPIML --port 2020 --user ibmuser --password myp4ss --reject-unauthorized false --base-path basePath&quot;,description: &quot;Create a zosmf profile called &#x27;zos124&#x27; to connect to z/OSMF at the host zos124 (default port - 443) &quot; +&quot;and allow self-signed certificates&quot;}]</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.2.2/packages/zosmf/src/constants/Zosmf.profile.ts#L90">@zowe/zosmf-for-zowe-sdk/src/constants/Zosmf.profile.ts:90</a></li>
+							</ul>
+						</aside>
+					</section>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+						<a name="zosmfprofile.type-1" class="tsd-anchor"></a>
+						<h3>type</h3>
+						<div class="tsd-signature tsd-kind-icon">type<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &quot;zosmf&quot;</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.2.2/packages/zosmf/src/constants/Zosmf.profile.ts#L23">@zowe/zosmf-for-zowe-sdk/src/constants/Zosmf.profile.ts:23</a></li>
+							</ul>
+						</aside>
+					</section>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+						<a name="zosmfprofile.updateprofileexamples" class="tsd-anchor"></a>
+						<h3>update<wbr>Profile<wbr>Examples</h3>
+						<div class="tsd-signature tsd-kind-icon">update<wbr>Profile<wbr>Examples<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">{ </span>description<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">; </span>options<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol"> = [{options: &quot;zos123 --user newuser --password newp4ss&quot;,description: &quot;Update a zosmf profile named &#x27;zos123&#x27; with a new username and password&quot;}]</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.2.2/packages/zosmf/src/constants/Zosmf.profile.ts#L117">@zowe/zosmf-for-zowe-sdk/src/constants/Zosmf.profile.ts:117</a></li>
+							</ul>
+						</aside>
+					</section>
+					<section class="tsd-panel tsd-member tsd-kind-object-literal tsd-parent-kind-object-literal">
+						<a name="zosmfprofile.schema" class="tsd-anchor"></a>
+						<h3>schema</h3>
+						<div class="tsd-signature tsd-kind-icon">schema<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.2.2/packages/zosmf/src/constants/Zosmf.profile.ts#L24">@zowe/zosmf-for-zowe-sdk/src/constants/Zosmf.profile.ts:24</a></li>
+							</ul>
+						</aside>
+						<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+							<a name="zosmfprofile.schema.description-1" class="tsd-anchor"></a>
+							<h3>description</h3>
+							<div class="tsd-signature tsd-kind-icon">description<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &quot;z/OSMF Profile&quot;</span></div>
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.2.2/packages/zosmf/src/constants/Zosmf.profile.ts#L27">@zowe/zosmf-for-zowe-sdk/src/constants/Zosmf.profile.ts:27</a></li>
+								</ul>
+							</aside>
+						</section>
+						<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+							<a name="zosmfprofile.schema.required" class="tsd-anchor"></a>
+							<h3>required</h3>
+							<div class="tsd-signature tsd-kind-icon">required<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol"> = []</span></div>
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.2.2/packages/zosmf/src/constants/Zosmf.profile.ts#L88">@zowe/zosmf-for-zowe-sdk/src/constants/Zosmf.profile.ts:88</a></li>
+								</ul>
+							</aside>
+						</section>
+						<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+							<a name="zosmfprofile.schema.title" class="tsd-anchor"></a>
+							<h3>title</h3>
+							<div class="tsd-signature tsd-kind-icon">title<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &quot;z/OSMF Profile&quot;</span></div>
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.2.2/packages/zosmf/src/constants/Zosmf.profile.ts#L26">@zowe/zosmf-for-zowe-sdk/src/constants/Zosmf.profile.ts:26</a></li>
+								</ul>
+							</aside>
+						</section>
+						<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+							<a name="zosmfprofile.schema.type-2" class="tsd-anchor"></a>
+							<h3>type</h3>
+							<div class="tsd-signature tsd-kind-icon">type<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &quot;object&quot;</span></div>
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.2.2/packages/zosmf/src/constants/Zosmf.profile.ts#L25">@zowe/zosmf-for-zowe-sdk/src/constants/Zosmf.profile.ts:25</a></li>
+								</ul>
+							</aside>
+						</section>
+						<section class="tsd-panel tsd-member tsd-kind-object-literal tsd-parent-kind-object-literal">
+							<a name="zosmfprofile.schema.properties" class="tsd-anchor"></a>
+							<h3>properties</h3>
+							<div class="tsd-signature tsd-kind-icon">properties<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.2.2/packages/zosmf/src/constants/Zosmf.profile.ts#L28">@zowe/zosmf-for-zowe-sdk/src/constants/Zosmf.profile.ts:28</a></li>
+								</ul>
+							</aside>
+							<section class="tsd-panel tsd-member tsd-kind-object-literal tsd-parent-kind-object-literal">
+								<a name="zosmfprofile.schema.properties.basepath" class="tsd-anchor"></a>
+								<h3>base<wbr>Path</h3>
+								<div class="tsd-signature tsd-kind-icon">base<wbr>Path<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
+								<aside class="tsd-sources">
+									<ul>
+										<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.2.2/packages/zosmf/src/constants/Zosmf.profile.ts#L65">@zowe/zosmf-for-zowe-sdk/src/constants/Zosmf.profile.ts:65</a></li>
+									</ul>
+								</aside>
+								<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+									<a name="zosmfprofile.schema.properties.basepath.optiondefinition" class="tsd-anchor"></a>
+									<h3>option<wbr>Definition</h3>
+									<div class="tsd-signature tsd-kind-icon">option<wbr>Definition<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">any</span><span class="tsd-signature-symbol"> = ZosmfSession.ZOSMF_OPTION_BASE_PATH</span></div>
+									<aside class="tsd-sources">
+										<ul>
+											<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.2.2/packages/zosmf/src/constants/Zosmf.profile.ts#L67">@zowe/zosmf-for-zowe-sdk/src/constants/Zosmf.profile.ts:67</a></li>
+										</ul>
+									</aside>
+								</section>
+								<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+									<a name="zosmfprofile.schema.properties.basepath.type-3" class="tsd-anchor"></a>
+									<h3>type</h3>
+									<div class="tsd-signature tsd-kind-icon">type<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &quot;string&quot;</span></div>
+									<aside class="tsd-sources">
+										<ul>
+											<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.2.2/packages/zosmf/src/constants/Zosmf.profile.ts#L66">@zowe/zosmf-for-zowe-sdk/src/constants/Zosmf.profile.ts:66</a></li>
+										</ul>
+									</aside>
+								</section>
+							</section>
+							<section class="tsd-panel tsd-member tsd-kind-object-literal tsd-parent-kind-object-literal">
+								<a name="zosmfprofile.schema.properties.certfile" class="tsd-anchor"></a>
+								<h3>cert<wbr>File</h3>
+								<div class="tsd-signature tsd-kind-icon">cert<wbr>File<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
+								<aside class="tsd-sources">
+									<ul>
+										<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.2.2/packages/zosmf/src/constants/Zosmf.profile.ts#L52">@zowe/zosmf-for-zowe-sdk/src/constants/Zosmf.profile.ts:52</a></li>
+									</ul>
+								</aside>
+								<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+									<a name="zosmfprofile.schema.properties.certfile.optiondefinition-1" class="tsd-anchor"></a>
+									<h3>option<wbr>Definition</h3>
+									<div class="tsd-signature tsd-kind-icon">option<wbr>Definition<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">any</span><span class="tsd-signature-symbol"> = ZosmfSession.ZOSMF_OPTION_CERT_FILE</span></div>
+									<aside class="tsd-sources">
+										<ul>
+											<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.2.2/packages/zosmf/src/constants/Zosmf.profile.ts#L54">@zowe/zosmf-for-zowe-sdk/src/constants/Zosmf.profile.ts:54</a></li>
+										</ul>
+									</aside>
+								</section>
+								<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+									<a name="zosmfprofile.schema.properties.certfile.type-4" class="tsd-anchor"></a>
+									<h3>type</h3>
+									<div class="tsd-signature tsd-kind-icon">type<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &quot;string&quot;</span></div>
+									<aside class="tsd-sources">
+										<ul>
+											<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.2.2/packages/zosmf/src/constants/Zosmf.profile.ts#L53">@zowe/zosmf-for-zowe-sdk/src/constants/Zosmf.profile.ts:53</a></li>
+										</ul>
+									</aside>
+								</section>
+							</section>
+							<section class="tsd-panel tsd-member tsd-kind-object-literal tsd-parent-kind-object-literal">
+								<a name="zosmfprofile.schema.properties.certkeyfile" class="tsd-anchor"></a>
+								<h3>cert<wbr>Key<wbr>File</h3>
+								<div class="tsd-signature tsd-kind-icon">cert<wbr>Key<wbr>File<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
+								<aside class="tsd-sources">
+									<ul>
+										<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.2.2/packages/zosmf/src/constants/Zosmf.profile.ts#L56">@zowe/zosmf-for-zowe-sdk/src/constants/Zosmf.profile.ts:56</a></li>
+									</ul>
+								</aside>
+								<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+									<a name="zosmfprofile.schema.properties.certkeyfile.optiondefinition-2" class="tsd-anchor"></a>
+									<h3>option<wbr>Definition</h3>
+									<div class="tsd-signature tsd-kind-icon">option<wbr>Definition<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">any</span><span class="tsd-signature-symbol"> = ZosmfSession.ZOSMF_OPTION_CERT_KEY_FILE</span></div>
+									<aside class="tsd-sources">
+										<ul>
+											<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.2.2/packages/zosmf/src/constants/Zosmf.profile.ts#L58">@zowe/zosmf-for-zowe-sdk/src/constants/Zosmf.profile.ts:58</a></li>
+										</ul>
+									</aside>
+								</section>
+								<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+									<a name="zosmfprofile.schema.properties.certkeyfile.type-5" class="tsd-anchor"></a>
+									<h3>type</h3>
+									<div class="tsd-signature tsd-kind-icon">type<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &quot;string&quot;</span></div>
+									<aside class="tsd-sources">
+										<ul>
+											<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.2.2/packages/zosmf/src/constants/Zosmf.profile.ts#L57">@zowe/zosmf-for-zowe-sdk/src/constants/Zosmf.profile.ts:57</a></li>
+										</ul>
+									</aside>
+								</section>
+							</section>
+							<section class="tsd-panel tsd-member tsd-kind-object-literal tsd-parent-kind-object-literal">
+								<a name="zosmfprofile.schema.properties.encoding" class="tsd-anchor"></a>
+								<h3>encoding</h3>
+								<div class="tsd-signature tsd-kind-icon">encoding<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
+								<aside class="tsd-sources">
+									<ul>
+										<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.2.2/packages/zosmf/src/constants/Zosmf.profile.ts#L73">@zowe/zosmf-for-zowe-sdk/src/constants/Zosmf.profile.ts:73</a></li>
+									</ul>
+								</aside>
+								<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+									<a name="zosmfprofile.schema.properties.encoding.type-6" class="tsd-anchor"></a>
+									<h3>type</h3>
+									<div class="tsd-signature tsd-kind-icon">type<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &quot;string&quot;</span></div>
+									<aside class="tsd-sources">
+										<ul>
+											<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.2.2/packages/zosmf/src/constants/Zosmf.profile.ts#L74">@zowe/zosmf-for-zowe-sdk/src/constants/Zosmf.profile.ts:74</a></li>
+										</ul>
+									</aside>
+								</section>
+								<section class="tsd-panel tsd-member tsd-kind-object-literal tsd-parent-kind-object-literal">
+									<a name="zosmfprofile.schema.properties.encoding.optiondefinition-3" class="tsd-anchor"></a>
+									<h3>option<wbr>Definition</h3>
+									<div class="tsd-signature tsd-kind-icon">option<wbr>Definition<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
+									<aside class="tsd-sources">
+										<ul>
+											<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.2.2/packages/zosmf/src/constants/Zosmf.profile.ts#L75">@zowe/zosmf-for-zowe-sdk/src/constants/Zosmf.profile.ts:75</a></li>
+										</ul>
+									</aside>
+									<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+										<a name="zosmfprofile.schema.properties.encoding.optiondefinition-3.aliases-1" class="tsd-anchor"></a>
+										<h3>aliases</h3>
+										<div class="tsd-signature tsd-kind-icon">aliases<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol"> = [&quot;ec&quot;]</span></div>
+										<aside class="tsd-sources">
+											<ul>
+												<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.2.2/packages/zosmf/src/constants/Zosmf.profile.ts#L77">@zowe/zosmf-for-zowe-sdk/src/constants/Zosmf.profile.ts:77</a></li>
+											</ul>
+										</aside>
+									</section>
+									<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+										<a name="zosmfprofile.schema.properties.encoding.optiondefinition-3.description-2" class="tsd-anchor"></a>
+										<h3>description</h3>
+										<div class="tsd-signature tsd-kind-icon">description<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &quot;The encoding for download and upload of z/OS data set and USS files.&quot; +&quot; The default encoding if not specified is IBM-1047.&quot;</span></div>
+										<aside class="tsd-sources">
+											<ul>
+												<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.2.2/packages/zosmf/src/constants/Zosmf.profile.ts#L78">@zowe/zosmf-for-zowe-sdk/src/constants/Zosmf.profile.ts:78</a></li>
+											</ul>
+										</aside>
+									</section>
+									<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+										<a name="zosmfprofile.schema.properties.encoding.optiondefinition-3.name-1" class="tsd-anchor"></a>
+										<h3>name</h3>
+										<div class="tsd-signature tsd-kind-icon">name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &quot;encoding&quot;</span></div>
+										<aside class="tsd-sources">
+											<ul>
+												<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.2.2/packages/zosmf/src/constants/Zosmf.profile.ts#L76">@zowe/zosmf-for-zowe-sdk/src/constants/Zosmf.profile.ts:76</a></li>
+											</ul>
+										</aside>
+									</section>
+									<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+										<a name="zosmfprofile.schema.properties.encoding.optiondefinition-3.type-7" class="tsd-anchor"></a>
+										<h3>type</h3>
+										<div class="tsd-signature tsd-kind-icon">type<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &quot;string&quot;</span></div>
+										<aside class="tsd-sources">
+											<ul>
+												<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.2.2/packages/zosmf/src/constants/Zosmf.profile.ts#L80">@zowe/zosmf-for-zowe-sdk/src/constants/Zosmf.profile.ts:80</a></li>
+											</ul>
+										</aside>
+									</section>
+								</section>
+							</section>
+							<section class="tsd-panel tsd-member tsd-kind-object-literal tsd-parent-kind-object-literal">
+								<a name="zosmfprofile.schema.properties.host" class="tsd-anchor"></a>
+								<h3>host</h3>
+								<div class="tsd-signature tsd-kind-icon">host<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
+								<aside class="tsd-sources">
+									<ul>
+										<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.2.2/packages/zosmf/src/constants/Zosmf.profile.ts#L29">@zowe/zosmf-for-zowe-sdk/src/constants/Zosmf.profile.ts:29</a></li>
+									</ul>
+								</aside>
+								<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+									<a name="zosmfprofile.schema.properties.host.optiondefinition-4" class="tsd-anchor"></a>
+									<h3>option<wbr>Definition</h3>
+									<div class="tsd-signature tsd-kind-icon">option<wbr>Definition<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">any</span><span class="tsd-signature-symbol"> = ZosmfSession.ZOSMF_OPTION_HOST</span></div>
+									<aside class="tsd-sources">
+										<ul>
+											<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.2.2/packages/zosmf/src/constants/Zosmf.profile.ts#L31">@zowe/zosmf-for-zowe-sdk/src/constants/Zosmf.profile.ts:31</a></li>
+										</ul>
+									</aside>
+								</section>
+								<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+									<a name="zosmfprofile.schema.properties.host.type-8" class="tsd-anchor"></a>
+									<h3>type</h3>
+									<div class="tsd-signature tsd-kind-icon">type<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &quot;string&quot;</span></div>
+									<aside class="tsd-sources">
+										<ul>
+											<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.2.2/packages/zosmf/src/constants/Zosmf.profile.ts#L30">@zowe/zosmf-for-zowe-sdk/src/constants/Zosmf.profile.ts:30</a></li>
+										</ul>
+									</aside>
+								</section>
+							</section>
+							<section class="tsd-panel tsd-member tsd-kind-object-literal tsd-parent-kind-object-literal">
+								<a name="zosmfprofile.schema.properties.password" class="tsd-anchor"></a>
+								<h3>password</h3>
+								<div class="tsd-signature tsd-kind-icon">password<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
+								<aside class="tsd-sources">
+									<ul>
+										<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.2.2/packages/zosmf/src/constants/Zosmf.profile.ts#L43">@zowe/zosmf-for-zowe-sdk/src/constants/Zosmf.profile.ts:43</a></li>
+									</ul>
+								</aside>
+								<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+									<a name="zosmfprofile.schema.properties.password.optiondefinition-5" class="tsd-anchor"></a>
+									<h3>option<wbr>Definition</h3>
+									<div class="tsd-signature tsd-kind-icon">option<wbr>Definition<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">any</span><span class="tsd-signature-symbol"> = ZosmfSession.ZOSMF_OPTION_PASSWORD</span></div>
+									<aside class="tsd-sources">
+										<ul>
+											<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.2.2/packages/zosmf/src/constants/Zosmf.profile.ts#L46">@zowe/zosmf-for-zowe-sdk/src/constants/Zosmf.profile.ts:46</a></li>
+										</ul>
+									</aside>
+								</section>
+								<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+									<a name="zosmfprofile.schema.properties.password.secure" class="tsd-anchor"></a>
+									<h3>secure</h3>
+									<div class="tsd-signature tsd-kind-icon">secure<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol"> = true</span></div>
+									<aside class="tsd-sources">
+										<ul>
+											<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.2.2/packages/zosmf/src/constants/Zosmf.profile.ts#L45">@zowe/zosmf-for-zowe-sdk/src/constants/Zosmf.profile.ts:45</a></li>
+										</ul>
+									</aside>
+								</section>
+								<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+									<a name="zosmfprofile.schema.properties.password.type-9" class="tsd-anchor"></a>
+									<h3>type</h3>
+									<div class="tsd-signature tsd-kind-icon">type<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &quot;string&quot;</span></div>
+									<aside class="tsd-sources">
+										<ul>
+											<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.2.2/packages/zosmf/src/constants/Zosmf.profile.ts#L44">@zowe/zosmf-for-zowe-sdk/src/constants/Zosmf.profile.ts:44</a></li>
+										</ul>
+									</aside>
+								</section>
+							</section>
+							<section class="tsd-panel tsd-member tsd-kind-object-literal tsd-parent-kind-object-literal">
+								<a name="zosmfprofile.schema.properties.port" class="tsd-anchor"></a>
+								<h3>port</h3>
+								<div class="tsd-signature tsd-kind-icon">port<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
+								<aside class="tsd-sources">
+									<ul>
+										<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.2.2/packages/zosmf/src/constants/Zosmf.profile.ts#L33">@zowe/zosmf-for-zowe-sdk/src/constants/Zosmf.profile.ts:33</a></li>
+									</ul>
+								</aside>
+								<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+									<a name="zosmfprofile.schema.properties.port.includeintemplate" class="tsd-anchor"></a>
+									<h3>include<wbr>InTemplate</h3>
+									<div class="tsd-signature tsd-kind-icon">include<wbr>InTemplate<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol"> = true</span></div>
+									<aside class="tsd-sources">
+										<ul>
+											<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.2.2/packages/zosmf/src/constants/Zosmf.profile.ts#L36">@zowe/zosmf-for-zowe-sdk/src/constants/Zosmf.profile.ts:36</a></li>
+										</ul>
+									</aside>
+								</section>
+								<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+									<a name="zosmfprofile.schema.properties.port.optiondefinition-6" class="tsd-anchor"></a>
+									<h3>option<wbr>Definition</h3>
+									<div class="tsd-signature tsd-kind-icon">option<wbr>Definition<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">any</span><span class="tsd-signature-symbol"> = ZosmfSession.ZOSMF_OPTION_PORT</span></div>
+									<aside class="tsd-sources">
+										<ul>
+											<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.2.2/packages/zosmf/src/constants/Zosmf.profile.ts#L35">@zowe/zosmf-for-zowe-sdk/src/constants/Zosmf.profile.ts:35</a></li>
+										</ul>
+									</aside>
+								</section>
+								<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+									<a name="zosmfprofile.schema.properties.port.type-10" class="tsd-anchor"></a>
+									<h3>type</h3>
+									<div class="tsd-signature tsd-kind-icon">type<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &quot;number&quot;</span></div>
+									<aside class="tsd-sources">
+										<ul>
+											<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.2.2/packages/zosmf/src/constants/Zosmf.profile.ts#L34">@zowe/zosmf-for-zowe-sdk/src/constants/Zosmf.profile.ts:34</a></li>
+										</ul>
+									</aside>
+								</section>
+							</section>
+							<section class="tsd-panel tsd-member tsd-kind-object-literal tsd-parent-kind-object-literal">
+								<a name="zosmfprofile.schema.properties.protocol" class="tsd-anchor"></a>
+								<h3>protocol</h3>
+								<div class="tsd-signature tsd-kind-icon">protocol<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
+								<aside class="tsd-sources">
+									<ul>
+										<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.2.2/packages/zosmf/src/constants/Zosmf.profile.ts#L69">@zowe/zosmf-for-zowe-sdk/src/constants/Zosmf.profile.ts:69</a></li>
+									</ul>
+								</aside>
+								<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+									<a name="zosmfprofile.schema.properties.protocol.optiondefinition-7" class="tsd-anchor"></a>
+									<h3>option<wbr>Definition</h3>
+									<div class="tsd-signature tsd-kind-icon">option<wbr>Definition<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">any</span><span class="tsd-signature-symbol"> = ZosmfSession.ZOSMF_OPTION_PROTOCOL</span></div>
+									<aside class="tsd-sources">
+										<ul>
+											<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.2.2/packages/zosmf/src/constants/Zosmf.profile.ts#L71">@zowe/zosmf-for-zowe-sdk/src/constants/Zosmf.profile.ts:71</a></li>
+										</ul>
+									</aside>
+								</section>
+								<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+									<a name="zosmfprofile.schema.properties.protocol.type-11" class="tsd-anchor"></a>
+									<h3>type</h3>
+									<div class="tsd-signature tsd-kind-icon">type<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &quot;string&quot;</span></div>
+									<aside class="tsd-sources">
+										<ul>
+											<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.2.2/packages/zosmf/src/constants/Zosmf.profile.ts#L70">@zowe/zosmf-for-zowe-sdk/src/constants/Zosmf.profile.ts:70</a></li>
+										</ul>
+									</aside>
+								</section>
+							</section>
+							<section class="tsd-panel tsd-member tsd-kind-object-literal tsd-parent-kind-object-literal">
+								<a name="zosmfprofile.schema.properties.rejectunauthorized" class="tsd-anchor"></a>
+								<h3>reject<wbr>Unauthorized</h3>
+								<div class="tsd-signature tsd-kind-icon">reject<wbr>Unauthorized<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
+								<aside class="tsd-sources">
+									<ul>
+										<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.2.2/packages/zosmf/src/constants/Zosmf.profile.ts#L48">@zowe/zosmf-for-zowe-sdk/src/constants/Zosmf.profile.ts:48</a></li>
+									</ul>
+								</aside>
+								<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+									<a name="zosmfprofile.schema.properties.rejectunauthorized.optiondefinition-8" class="tsd-anchor"></a>
+									<h3>option<wbr>Definition</h3>
+									<div class="tsd-signature tsd-kind-icon">option<wbr>Definition<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">any</span><span class="tsd-signature-symbol"> = ZosmfSession.ZOSMF_OPTION_REJECT_UNAUTHORIZED</span></div>
+									<aside class="tsd-sources">
+										<ul>
+											<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.2.2/packages/zosmf/src/constants/Zosmf.profile.ts#L50">@zowe/zosmf-for-zowe-sdk/src/constants/Zosmf.profile.ts:50</a></li>
+										</ul>
+									</aside>
+								</section>
+								<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+									<a name="zosmfprofile.schema.properties.rejectunauthorized.type-12" class="tsd-anchor"></a>
+									<h3>type</h3>
+									<div class="tsd-signature tsd-kind-icon">type<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &quot;boolean&quot;</span></div>
+									<aside class="tsd-sources">
+										<ul>
+											<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.2.2/packages/zosmf/src/constants/Zosmf.profile.ts#L49">@zowe/zosmf-for-zowe-sdk/src/constants/Zosmf.profile.ts:49</a></li>
+										</ul>
+									</aside>
+								</section>
+							</section>
+							<section class="tsd-panel tsd-member tsd-kind-object-literal tsd-parent-kind-object-literal">
+								<a name="zosmfprofile.schema.properties.responsetimeout-1" class="tsd-anchor"></a>
+								<h3>response<wbr>Timeout</h3>
+								<div class="tsd-signature tsd-kind-icon">response<wbr>Timeout<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
+								<aside class="tsd-sources">
+									<ul>
+										<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.2.2/packages/zosmf/src/constants/Zosmf.profile.ts#L83">@zowe/zosmf-for-zowe-sdk/src/constants/Zosmf.profile.ts:83</a></li>
+									</ul>
+								</aside>
+								<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+									<a name="zosmfprofile.schema.properties.responsetimeout-1.optiondefinition-9" class="tsd-anchor"></a>
+									<h3>option<wbr>Definition</h3>
+									<div class="tsd-signature tsd-kind-icon">option<wbr>Definition<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">any</span><span class="tsd-signature-symbol"> = ZosFilesOptions.responseTimeout</span></div>
+									<aside class="tsd-sources">
+										<ul>
+											<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.2.2/packages/zosmf/src/constants/Zosmf.profile.ts#L85">@zowe/zosmf-for-zowe-sdk/src/constants/Zosmf.profile.ts:85</a></li>
+										</ul>
+									</aside>
+								</section>
+								<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+									<a name="zosmfprofile.schema.properties.responsetimeout-1.type-13" class="tsd-anchor"></a>
+									<h3>type</h3>
+									<div class="tsd-signature tsd-kind-icon">type<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &quot;number&quot;</span></div>
+									<aside class="tsd-sources">
+										<ul>
+											<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.2.2/packages/zosmf/src/constants/Zosmf.profile.ts#L84">@zowe/zosmf-for-zowe-sdk/src/constants/Zosmf.profile.ts:84</a></li>
+										</ul>
+									</aside>
+								</section>
+							</section>
+							<section class="tsd-panel tsd-member tsd-kind-object-literal tsd-parent-kind-object-literal">
+								<a name="zosmfprofile.schema.properties.user" class="tsd-anchor"></a>
+								<h3>user</h3>
+								<div class="tsd-signature tsd-kind-icon">user<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
+								<aside class="tsd-sources">
+									<ul>
+										<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.2.2/packages/zosmf/src/constants/Zosmf.profile.ts#L38">@zowe/zosmf-for-zowe-sdk/src/constants/Zosmf.profile.ts:38</a></li>
+									</ul>
+								</aside>
+								<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+									<a name="zosmfprofile.schema.properties.user.optiondefinition-10" class="tsd-anchor"></a>
+									<h3>option<wbr>Definition</h3>
+									<div class="tsd-signature tsd-kind-icon">option<wbr>Definition<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">any</span><span class="tsd-signature-symbol"> = ZosmfSession.ZOSMF_OPTION_USER</span></div>
+									<aside class="tsd-sources">
+										<ul>
+											<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.2.2/packages/zosmf/src/constants/Zosmf.profile.ts#L41">@zowe/zosmf-for-zowe-sdk/src/constants/Zosmf.profile.ts:41</a></li>
+										</ul>
+									</aside>
+								</section>
+								<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+									<a name="zosmfprofile.schema.properties.user.secure-1" class="tsd-anchor"></a>
+									<h3>secure</h3>
+									<div class="tsd-signature tsd-kind-icon">secure<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol"> = true</span></div>
+									<aside class="tsd-sources">
+										<ul>
+											<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.2.2/packages/zosmf/src/constants/Zosmf.profile.ts#L40">@zowe/zosmf-for-zowe-sdk/src/constants/Zosmf.profile.ts:40</a></li>
+										</ul>
+									</aside>
+								</section>
+								<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+									<a name="zosmfprofile.schema.properties.user.type-14" class="tsd-anchor"></a>
+									<h3>type</h3>
+									<div class="tsd-signature tsd-kind-icon">type<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &quot;string&quot;</span></div>
+									<aside class="tsd-sources">
+										<ul>
+											<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.2.2/packages/zosmf/src/constants/Zosmf.profile.ts#L39">@zowe/zosmf-for-zowe-sdk/src/constants/Zosmf.profile.ts:39</a></li>
+										</ul>
+									</aside>
+								</section>
+							</section>
+						</section>
+					</section>
+				</section>
+			</section>
+		</div>
+		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
+			<nav class="tsd-navigation primary">
+				<ul>
+					<li class="globals  ">
+						<a href="../globals.html"><em>Globals</em></a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="_zowe_core_for_zowe_sdk.html">@zowe/core-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="_zowe_imperative.html">@zowe/imperative</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="_zowe_provisioning_for_zowe_sdk.html">@zowe/provisioning-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="_zowe_zos_console_for_zowe_sdk.html">@zowe/zos-<wbr>console-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="_zowe_zos_files_for_zowe_sdk.html">@zowe/zos-<wbr>files-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="_zowe_zos_jobs_for_zowe_sdk.html">@zowe/zos-<wbr>jobs-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="_zowe_zos_logs_for_zowe_sdk.html">@zowe/zos-<wbr>logs-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="_zowe_zos_tso_for_zowe_sdk.html">@zowe/zos-<wbr>tso-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="_zowe_zos_uss_for_zowe_sdk.html">@zowe/zos-<wbr>uss-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="_zowe_zos_workflows_for_zowe_sdk.html">@zowe/zos-<wbr>workflows-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class="current tsd-kind-module">
+						<a href="_zowe_zosmf_for_zowe_sdk.html">@zowe/zosmf-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+				</ul>
+			</nav>
+			<nav class="tsd-navigation secondary menu-sticky">
+				<ul class="before-current">
+					<li class=" tsd-kind-module">
+						<a href="_zowe_core_for_zowe_sdk.html" class="tsd-kind-icon">@zowe/core-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="_zowe_imperative.html" class="tsd-kind-icon">@zowe/imperative</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="_zowe_provisioning_for_zowe_sdk.html" class="tsd-kind-icon">@zowe/provisioning-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="_zowe_zos_console_for_zowe_sdk.html" class="tsd-kind-icon">@zowe/zos-<wbr>console-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="_zowe_zos_files_for_zowe_sdk.html" class="tsd-kind-icon">@zowe/zos-<wbr>files-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="_zowe_zos_jobs_for_zowe_sdk.html" class="tsd-kind-icon">@zowe/zos-<wbr>jobs-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="_zowe_zos_logs_for_zowe_sdk.html" class="tsd-kind-icon">@zowe/zos-<wbr>logs-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="_zowe_zos_tso_for_zowe_sdk.html" class="tsd-kind-icon">@zowe/zos-<wbr>tso-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="_zowe_zos_uss_for_zowe_sdk.html" class="tsd-kind-icon">@zowe/zos-<wbr>uss-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="_zowe_zos_workflows_for_zowe_sdk.html" class="tsd-kind-icon">@zowe/zos-<wbr>workflows-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+				</ul>
+				<ul class="current">
+					<li class="current tsd-kind-module">
+						<a href="_zowe_zosmf_for_zowe_sdk.html" class="tsd-kind-icon">@zowe/zosmf-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+						<ul>
+							<li class=" tsd-kind-class tsd-parent-kind-module">
+								<a href="../classes/_zowe_zosmf_for_zowe_sdk.checkstatus.html" class="tsd-kind-icon">Check<wbr>Status</a>
+							</li>
+							<li class=" tsd-kind-class tsd-parent-kind-module">
+								<a href="../classes/_zowe_zosmf_for_zowe_sdk.listdefinedsystems.html" class="tsd-kind-icon">List<wbr>Defined<wbr>Systems</a>
+							</li>
+							<li class=" tsd-kind-class tsd-parent-kind-module">
+								<a href="../classes/_zowe_zosmf_for_zowe_sdk.zosmfbasehandler.html" class="tsd-kind-icon">Zosmf<wbr>Base<wbr>Handler</a>
+							</li>
+							<li class=" tsd-kind-class tsd-parent-kind-module">
+								<a href="../classes/_zowe_zosmf_for_zowe_sdk.zosmfsession.html" class="tsd-kind-icon">Zosmf<wbr>Session</a>
+							</li>
+							<li class=" tsd-kind-interface tsd-parent-kind-module">
+								<a href="../interfaces/_zowe_zosmf_for_zowe_sdk.idefinedsystem.html" class="tsd-kind-icon">IDefined<wbr>System</a>
+							</li>
+							<li class=" tsd-kind-interface tsd-parent-kind-module">
+								<a href="../interfaces/_zowe_zosmf_for_zowe_sdk.izosmfinforesponse.html" class="tsd-kind-icon">IZosmf<wbr>Info<wbr>Response</a>
+							</li>
+							<li class=" tsd-kind-interface tsd-parent-kind-module">
+								<a href="../interfaces/_zowe_zosmf_for_zowe_sdk.izosmflistdefinedsystemsresponse.html" class="tsd-kind-icon">IZosmf<wbr>List<wbr>Defined<wbr>Systems<wbr>Response</a>
+							</li>
+							<li class=" tsd-kind-interface tsd-parent-kind-module">
+								<a href="../interfaces/_zowe_zosmf_for_zowe_sdk.izosmfplugininfo.html" class="tsd-kind-icon">IZosmf<wbr>Plugin<wbr>Info</a>
+							</li>
+							<li class=" tsd-kind-object-literal tsd-parent-kind-module">
+								<a href="_zowe_zosmf_for_zowe_sdk.html#zosfilesoptions" class="tsd-kind-icon">Zos<wbr>Files<wbr>Options</a>
+							</li>
+							<li class=" tsd-kind-object-literal tsd-parent-kind-module">
+								<a href="_zowe_zosmf_for_zowe_sdk.html#zosmfconstants" class="tsd-kind-icon">Zosmf<wbr>Constants</a>
+							</li>
+							<li class=" tsd-kind-object-literal tsd-parent-kind-module">
+								<a href="_zowe_zosmf_for_zowe_sdk.html#zosmfmessages" class="tsd-kind-icon">Zosmf<wbr>Messages</a>
+							</li>
+							<li class=" tsd-kind-object-literal tsd-parent-kind-module">
+								<a href="_zowe_zosmf_for_zowe_sdk.html#zosmfprofile" class="tsd-kind-icon">Zosmf<wbr>Profile</a>
+							</li>
+						</ul>
+					</li>
+				</ul>
+				<ul class="after-current">
+				</ul>
+			</nav>
+		</div>
+	</div>
+</div>
+<footer class="with-border-bottom">
+	<div class="container">
+		<h2>Legend</h2>
+		<div class="tsd-legend-group">
+			<ul class="tsd-legend">
+				<li class="tsd-kind-object-literal"><span class="tsd-kind-icon">Object literal</span></li>
+				<li class="tsd-kind-variable"><span class="tsd-kind-icon">Variable</span></li>
+				<li class="tsd-kind-function"><span class="tsd-kind-icon">Function</span></li>
+				<li class="tsd-kind-type-alias"><span class="tsd-kind-icon">Type alias</span></li>
+				<li class="tsd-kind-type-alias tsd-has-type-parameter"><span class="tsd-kind-icon">Type alias with type parameter</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-interface"><span class="tsd-kind-icon">Interface</span></li>
+				<li class="tsd-kind-interface tsd-has-type-parameter"><span class="tsd-kind-icon">Interface with type parameter</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-class"><span class="tsd-kind-icon">Class</span></li>
+				<li class="tsd-kind-class tsd-has-type-parameter"><span class="tsd-kind-icon">Class with type parameter</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-enum"><span class="tsd-kind-icon">Enumeration</span></li>
+			</ul>
+		</div>
+	</div>
+</footer>
+<div class="container tsd-generator">
+	<p>Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p>
+</div>
+<div class="overlay"></div>
+<script src="../assets/js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,2752 @@
+<!doctype html>
+<html class="default no-js">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>ZosmfRestClient | Zowe Node.js SDK - v6.24.2</title>
+	<meta name="description" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="../assets/css/main.css">
+</head>
+<body>
+<header>
+	<div class="tsd-page-toolbar">
+		<div class="container">
+			<div class="table-wrap">
+				<div class="table-cell" id="tsd-search" data-index="../assets/js/search.js" data-base="..">
+					<div class="field">
+						<label for="tsd-search-field" class="tsd-widget search no-caption">Search</label>
+						<input id="tsd-search-field" type="text" />
+					</div>
+					<ul class="results">
+						<li class="state loading">Preparing search index...</li>
+						<li class="state failure">The search index is not available</li>
+					</ul>
+					<a href="../index.html" class="title">Zowe Node.js SDK - v6.24.2</a>
+				</div>
+				<div class="table-cell" id="tsd-widgets">
+					<div id="tsd-filter">
+						<a href="#" class="tsd-widget options no-caption" data-toggle="options">Options</a>
+						<div class="tsd-filter-group">
+							<div class="tsd-select" id="tsd-filter-visibility">
+								<span class="tsd-select-label">All</span>
+								<ul class="tsd-select-list">
+									<li data-value="public">Public</li>
+									<li data-value="protected">Public/Protected</li>
+									<li data-value="private" class="selected">All</li>
+								</ul>
+							</div>
+							<input type="checkbox" id="tsd-filter-inherited" checked />
+							<label class="tsd-widget" for="tsd-filter-inherited">Inherited</label>
+							<input type="checkbox" id="tsd-filter-externals" checked />
+							<label class="tsd-widget" for="tsd-filter-externals">Externals</label>
+							<input type="checkbox" id="tsd-filter-only-exported" />
+							<label class="tsd-widget" for="tsd-filter-only-exported">Only exported</label>
+						</div>
+					</div>
+					<a href="#" class="tsd-widget menu no-caption" data-toggle="menu">Menu</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="tsd-page-title">
+		<div class="container">
+			<ul class="tsd-breadcrumb">
+				<li>
+					<a href="../index.html">Globals</a>
+				</li>
+				<li>
+					<a href="zosmfrestclient.html">ZosmfRestClient</a>
+				</li>
+			</ul>
+			<h1>Class ZosmfRestClient</h1>
+		</div>
+	</div>
+</header>
+<div class="container container-main">
+	<div class="row">
+		<div class="col-8 col-content">
+			<section class="tsd-panel tsd-comment">
+				<div class="tsd-comment tsd-typography">
+					<div class="lead">
+						<p>Wrapper for invoke z/OSMF API through the RestClient to perform common error
+						handling and checking and resolve promises according to generic types</p>
+					</div>
+					<dl class="tsd-comment-tags">
+						<dt>export</dt>
+						<dd></dd>
+					</dl>
+				</div>
+			</section>
+			<section class="tsd-panel tsd-hierarchy">
+				<h3>Hierarchy</h3>
+				<ul class="tsd-hierarchy">
+					<li>
+						<span class="tsd-signature-type">RestClient</span>
+						<ul class="tsd-hierarchy">
+							<li>
+								<span class="target">ZosmfRestClient</span>
+							</li>
+						</ul>
+					</li>
+				</ul>
+			</section>
+			<section class="tsd-panel-group tsd-index-group">
+				<h2>Index</h2>
+				<section class="tsd-panel tsd-index-panel">
+					<div class="tsd-index-content">
+						<section class="tsd-index-section tsd-is-inherited">
+							<h3>Constructors</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-constructor tsd-parent-kind-class tsd-is-inherited"><a href="zosmfrestclient.html#constructor" class="tsd-kind-icon">constructor</a></li>
+							</ul>
+						</section>
+						<section class="tsd-index-section tsd-is-inherited tsd-is-private tsd-is-private-protected">
+							<h3>Properties</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-private"><a href="zosmfrestclient.html#mbytesreceived" class="tsd-kind-icon">m<wbr>Bytes<wbr>Received</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-private"><a href="zosmfrestclient.html#mcontentlength" class="tsd-kind-icon">m<wbr>Content<wbr>Length</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-private"><a href="zosmfrestclient.html#mdata" class="tsd-kind-icon">m<wbr>Data</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-private"><a href="zosmfrestclient.html#misjson" class="tsd-kind-icon">m<wbr>IsJson</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-private"><a href="zosmfrestclient.html#mlogger" class="tsd-kind-icon">m<wbr>Logger</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-private"><a href="zosmfrestclient.html#mnormalizerequestnewlines" class="tsd-kind-icon">m<wbr>Normalize<wbr>Request<wbr>Newlines</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-private"><a href="zosmfrestclient.html#mnormalizeresponsenewlines" class="tsd-kind-icon">m<wbr>Normalize<wbr>Response<wbr>Newlines</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-private"><a href="zosmfrestclient.html#mreject" class="tsd-kind-icon">m<wbr>Reject</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-private"><a href="zosmfrestclient.html#mreqheaders" class="tsd-kind-icon">m<wbr>Req<wbr>Headers</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-private"><a href="zosmfrestclient.html#mrequest" class="tsd-kind-icon">m<wbr>Request</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-private"><a href="zosmfrestclient.html#mrequeststream" class="tsd-kind-icon">m<wbr>Request<wbr>Stream</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-private"><a href="zosmfrestclient.html#mresolve" class="tsd-kind-icon">m<wbr>Resolve</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-private"><a href="zosmfrestclient.html#mresource" class="tsd-kind-icon">m<wbr>Resource</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-private"><a href="zosmfrestclient.html#mresponse" class="tsd-kind-icon">m<wbr>Response</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-private"><a href="zosmfrestclient.html#mresponsestream" class="tsd-kind-icon">m<wbr>Response<wbr>Stream</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-private"><a href="zosmfrestclient.html#mtask" class="tsd-kind-icon">m<wbr>Task</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-private"><a href="zosmfrestclient.html#mwritedata" class="tsd-kind-icon">m<wbr>Write<wbr>Data</a></li>
+							</ul>
+						</section>
+						<section class="tsd-index-section ">
+							<h3>Accessors</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-get-signature tsd-parent-kind-class tsd-is-inherited"><a href="zosmfrestclient.html#data" class="tsd-kind-icon">data</a></li>
+								<li class="tsd-kind-get-signature tsd-parent-kind-class tsd-is-inherited"><a href="zosmfrestclient.html#datastring" class="tsd-kind-icon">data<wbr>String</a></li>
+								<li class="tsd-kind-get-signature tsd-parent-kind-class tsd-is-overwrite"><a href="zosmfrestclient.html#log" class="tsd-kind-icon">log</a></li>
+								<li class="tsd-kind-get-signature tsd-parent-kind-class tsd-is-inherited"><a href="zosmfrestclient.html#requestfailure" class="tsd-kind-icon">request<wbr>Failure</a></li>
+								<li class="tsd-kind-get-signature tsd-parent-kind-class tsd-is-inherited"><a href="zosmfrestclient.html#requestsuccess" class="tsd-kind-icon">request<wbr>Success</a></li>
+								<li class="tsd-kind-get-signature tsd-parent-kind-class tsd-is-inherited"><a href="zosmfrestclient.html#response" class="tsd-kind-icon">response</a></li>
+								<li class="tsd-kind-get-signature tsd-parent-kind-class tsd-is-inherited"><a href="zosmfrestclient.html#session" class="tsd-kind-icon">session</a></li>
+							</ul>
+						</section>
+						<section class="tsd-index-section ">
+							<h3>Methods</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-overwrite tsd-is-protected"><a href="zosmfrestclient.html#appendheaders" class="tsd-kind-icon">append<wbr>Headers</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="zosmfrestclient.html#performrest" class="tsd-kind-icon">perform<wbr>Rest</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-overwrite tsd-is-protected"><a href="zosmfrestclient.html#processerror" class="tsd-kind-icon">process<wbr>Error</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="zosmfrestclient.html#request" class="tsd-kind-icon">request</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-static"><a href="zosmfrestclient.html#deleteexpectbuffer" class="tsd-kind-icon">delete<wbr>Expect<wbr>Buffer</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-static"><a href="zosmfrestclient.html#deleteexpectfullresponse" class="tsd-kind-icon">delete<wbr>Expect<wbr>Full<wbr>Response</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-inherited tsd-is-static"><a href="zosmfrestclient.html#deleteexpectjson" class="tsd-kind-icon">delete<wbr>ExpectJSON</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-static"><a href="zosmfrestclient.html#deleteexpectstring" class="tsd-kind-icon">delete<wbr>Expect<wbr>String</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-static"><a href="zosmfrestclient.html#deletestreamed" class="tsd-kind-icon">delete<wbr>Streamed</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-static"><a href="zosmfrestclient.html#getexpectbuffer" class="tsd-kind-icon">get<wbr>Expect<wbr>Buffer</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-static"><a href="zosmfrestclient.html#getexpectfullresponse" class="tsd-kind-icon">get<wbr>Expect<wbr>Full<wbr>Response</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-inherited tsd-is-static"><a href="zosmfrestclient.html#getexpectjson" class="tsd-kind-icon">get<wbr>ExpectJSON</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-static"><a href="zosmfrestclient.html#getexpectstring" class="tsd-kind-icon">get<wbr>Expect<wbr>String</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-static"><a href="zosmfrestclient.html#getstreamed" class="tsd-kind-icon">get<wbr>Streamed</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-static"><a href="zosmfrestclient.html#hasquerystring" class="tsd-kind-icon">has<wbr>Query<wbr>String</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-static"><a href="zosmfrestclient.html#postexpectbuffer" class="tsd-kind-icon">post<wbr>Expect<wbr>Buffer</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-static"><a href="zosmfrestclient.html#postexpectfullresponse" class="tsd-kind-icon">post<wbr>Expect<wbr>Full<wbr>Response</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-inherited tsd-is-static"><a href="zosmfrestclient.html#postexpectjson" class="tsd-kind-icon">post<wbr>ExpectJSON</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-static"><a href="zosmfrestclient.html#postexpectstring" class="tsd-kind-icon">post<wbr>Expect<wbr>String</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-static"><a href="zosmfrestclient.html#poststreamed" class="tsd-kind-icon">post<wbr>Streamed</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-static"><a href="zosmfrestclient.html#poststreamedrequestonly" class="tsd-kind-icon">post<wbr>Streamed<wbr>Request<wbr>Only</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-static"><a href="zosmfrestclient.html#putexpectbuffer" class="tsd-kind-icon">put<wbr>Expect<wbr>Buffer</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-static"><a href="zosmfrestclient.html#putexpectfullresponse" class="tsd-kind-icon">put<wbr>Expect<wbr>Full<wbr>Response</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-inherited tsd-is-static"><a href="zosmfrestclient.html#putexpectjson" class="tsd-kind-icon">put<wbr>ExpectJSON</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-static"><a href="zosmfrestclient.html#putexpectstring" class="tsd-kind-icon">put<wbr>Expect<wbr>String</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-static"><a href="zosmfrestclient.html#putstreamed" class="tsd-kind-icon">put<wbr>Streamed</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-static"><a href="zosmfrestclient.html#putstreamedrequestonly" class="tsd-kind-icon">put<wbr>Streamed<wbr>Request<wbr>Only</a></li>
+							</ul>
+						</section>
+					</div>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group tsd-is-inherited">
+				<h2>Constructors</h2>
+				<section class="tsd-panel tsd-member tsd-kind-constructor tsd-parent-kind-class tsd-is-inherited">
+					<a name="constructor" class="tsd-anchor"></a>
+					<h3>constructor</h3>
+					<ul class="tsd-signatures tsd-kind-constructor tsd-parent-kind-class tsd-is-inherited">
+						<li class="tsd-signature tsd-kind-icon">new <wbr>Zosmf<wbr>Rest<wbr>Client<span class="tsd-signature-symbol">(</span>mSession<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">AbstractSession</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="zosmfrestclient.html" class="tsd-signature-type">ZosmfRestClient</a></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Inherited from <a href="zosmfrestclient.html">ZosmfRestClient</a>.<a href="zosmfrestclient.html#constructor">constructor</a></p>
+								<ul>
+									<li>Defined in imperative/lib/rest/src/client/AbstractRestClient.d.ts:144</li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Creates an instance of AbstractRestClient.</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>memberof</dt>
+									<dd><p>AbstractRestClient</p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>mSession: <span class="tsd-signature-type">AbstractSession</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<div class="lead">
+											<p>representing connection to this api</p>
+										</div>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="zosmfrestclient.html" class="tsd-signature-type">ZosmfRestClient</a></h4>
+						</li>
+					</ul>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group tsd-is-inherited tsd-is-private tsd-is-private-protected">
+				<h2>Properties</h2>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-private">
+					<a name="mbytesreceived" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> m<wbr>Bytes<wbr>Received</h3>
+					<div class="tsd-signature tsd-kind-icon">m<wbr>Bytes<wbr>Received<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
+					<aside class="tsd-sources">
+						<p>Inherited from <a href="zosmfrestclient.html">ZosmfRestClient</a>.<a href="zosmfrestclient.html#mbytesreceived">mBytesReceived</a></p>
+						<ul>
+							<li>Defined in imperative/lib/rest/src/client/AbstractRestClient.d.ts:144</li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Bytes received from the server response so far</p>
+						</div>
+						<dl class="tsd-comment-tags">
+							<dt>memberof</dt>
+							<dd><p>AbstractRestClient</p>
+							</dd>
+						</dl>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-private">
+					<a name="mcontentlength" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> m<wbr>Content<wbr>Length</h3>
+					<div class="tsd-signature tsd-kind-icon">m<wbr>Content<wbr>Length<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
+					<aside class="tsd-sources">
+						<p>Inherited from <a href="zosmfrestclient.html">ZosmfRestClient</a>.<a href="zosmfrestclient.html#mcontentlength">mContentLength</a></p>
+						<ul>
+							<li>Defined in imperative/lib/rest/src/client/AbstractRestClient.d.ts:63</li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>If we get a response containing a Content-Length header,
+							it is saved here</p>
+						</div>
+						<dl class="tsd-comment-tags">
+							<dt>memberof</dt>
+							<dd><p>AbstractRestClient</p>
+							</dd>
+						</dl>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-private">
+					<a name="mdata" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> m<wbr>Data</h3>
+					<div class="tsd-signature tsd-kind-icon">m<wbr>Data<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Buffer</span></div>
+					<aside class="tsd-sources">
+						<p>Inherited from <a href="zosmfrestclient.html">ZosmfRestClient</a>.<a href="zosmfrestclient.html#mdata">mData</a></p>
+						<ul>
+							<li>Defined in imperative/lib/rest/src/client/AbstractRestClient.d.ts:27</li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Contains buffered data from REST chucks</p>
+						</div>
+						<dl class="tsd-comment-tags">
+							<dt>memberof</dt>
+							<dd><p>AbstractRestClient</p>
+							</dd>
+						</dl>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-private">
+					<a name="misjson" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> m<wbr>IsJson</h3>
+					<div class="tsd-signature tsd-kind-icon">m<wbr>IsJson<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
+					<aside class="tsd-sources">
+						<p>Inherited from <a href="zosmfrestclient.html">ZosmfRestClient</a>.<a href="zosmfrestclient.html#misjson">mIsJson</a></p>
+						<ul>
+							<li>Defined in imperative/lib/rest/src/client/AbstractRestClient.d.ts:70</li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Indicates if payload data is JSON to be stringified before writing</p>
+						</div>
+						<dl class="tsd-comment-tags">
+							<dt>memberof</dt>
+							<dd><p>AbstractRestClient</p>
+							</dd>
+						</dl>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-private">
+					<a name="mlogger" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> m<wbr>Logger</h3>
+					<div class="tsd-signature tsd-kind-icon">m<wbr>Logger<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Logger</span></div>
+					<aside class="tsd-sources">
+						<p>Inherited from <a href="zosmfrestclient.html">ZosmfRestClient</a>.<a href="zosmfrestclient.html#mlogger">mLogger</a></p>
+						<ul>
+							<li>Defined in imperative/lib/rest/src/client/AbstractRestClient.d.ts:34</li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Instance of logger</p>
+						</div>
+						<dl class="tsd-comment-tags">
+							<dt>memberof</dt>
+							<dd><p>AbstractRestClient</p>
+							</dd>
+						</dl>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-private">
+					<a name="mnormalizerequestnewlines" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> m<wbr>Normalize<wbr>Request<wbr>Newlines</h3>
+					<div class="tsd-signature tsd-kind-icon">m<wbr>Normalize<wbr>Request<wbr>Newlines<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
+					<aside class="tsd-sources">
+						<p>Inherited from <a href="zosmfrestclient.html">ZosmfRestClient</a>.<a href="zosmfrestclient.html#mnormalizerequestnewlines">mNormalizeRequestNewlines</a></p>
+						<ul>
+							<li>Defined in imperative/lib/rest/src/client/AbstractRestClient.d.ts:78</li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Indicates if request data should have its newlines normalized to /n before sending
+							each chunk to the server</p>
+						</div>
+						<dl class="tsd-comment-tags">
+							<dt>memberof</dt>
+							<dd><p>AbstractRestClient</p>
+							</dd>
+						</dl>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-private">
+					<a name="mnormalizeresponsenewlines" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> m<wbr>Normalize<wbr>Response<wbr>Newlines</h3>
+					<div class="tsd-signature tsd-kind-icon">m<wbr>Normalize<wbr>Response<wbr>Newlines<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
+					<aside class="tsd-sources">
+						<p>Inherited from <a href="zosmfrestclient.html">ZosmfRestClient</a>.<a href="zosmfrestclient.html#mnormalizeresponsenewlines">mNormalizeResponseNewlines</a></p>
+						<ul>
+							<li>Defined in imperative/lib/rest/src/client/AbstractRestClient.d.ts:86</li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Indicates if response data should have its newlines normalized for the current platform
+							(\r\n for windows, otherwise \n)</p>
+						</div>
+						<dl class="tsd-comment-tags">
+							<dt>memberof</dt>
+							<dd><p>AbstractRestClient</p>
+							</dd>
+						</dl>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-private">
+					<a name="mreject" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> m<wbr>Reject</h3>
+					<div class="tsd-signature tsd-kind-icon">m<wbr>Reject<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">ImperativeReject</span></div>
+					<aside class="tsd-sources">
+						<p>Inherited from <a href="zosmfrestclient.html">ZosmfRestClient</a>.<a href="zosmfrestclient.html#mreject">mReject</a></p>
+						<ul>
+							<li>Defined in imperative/lib/rest/src/client/AbstractRestClient.d.ts:48</li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Reject for errors when obtaining data</p>
+						</div>
+						<dl class="tsd-comment-tags">
+							<dt>memberof</dt>
+							<dd><p>AbstractRestClient</p>
+							</dd>
+						</dl>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-private">
+					<a name="mreqheaders" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> m<wbr>Req<wbr>Headers</h3>
+					<div class="tsd-signature tsd-kind-icon">m<wbr>Req<wbr>Headers<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span></div>
+					<aside class="tsd-sources">
+						<p>Inherited from <a href="zosmfrestclient.html">ZosmfRestClient</a>.<a href="zosmfrestclient.html#mreqheaders">mReqHeaders</a></p>
+						<ul>
+							<li>Defined in imperative/lib/rest/src/client/AbstractRestClient.d.ts:107</li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Save req headers</p>
+						</div>
+						<dl class="tsd-comment-tags">
+							<dt>memberof</dt>
+							<dd><p>AbstractRestClient</p>
+							</dd>
+						</dl>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-private">
+					<a name="mrequest" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> m<wbr>Request</h3>
+					<div class="tsd-signature tsd-kind-icon">m<wbr>Request<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">HTTP_VERB</span></div>
+					<aside class="tsd-sources">
+						<p>Inherited from <a href="zosmfrestclient.html">ZosmfRestClient</a>.<a href="zosmfrestclient.html#mrequest">mRequest</a></p>
+						<ul>
+							<li>Defined in imperative/lib/rest/src/client/AbstractRestClient.d.ts:100</li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Save request</p>
+						</div>
+						<dl class="tsd-comment-tags">
+							<dt>memberof</dt>
+							<dd><p>AbstractRestClient</p>
+							</dd>
+						</dl>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-private">
+					<a name="mrequeststream" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> m<wbr>Request<wbr>Stream</h3>
+					<div class="tsd-signature tsd-kind-icon">m<wbr>Request<wbr>Stream<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Readable</span></div>
+					<aside class="tsd-sources">
+						<p>Inherited from <a href="zosmfrestclient.html">ZosmfRestClient</a>.<a href="zosmfrestclient.html#mrequeststream">mRequestStream</a></p>
+						<ul>
+							<li>Defined in imperative/lib/rest/src/client/AbstractRestClient.d.ts:129</li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>stream for outgoing request data to the server</p>
+						</div>
+						<dl class="tsd-comment-tags">
+							<dt>memberof</dt>
+							<dd><p>AbstractRestClient</p>
+							</dd>
+						</dl>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-private">
+					<a name="mresolve" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> m<wbr>Resolve</h3>
+					<div class="tsd-signature tsd-kind-icon">m<wbr>Resolve<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">RestClientResolve</span></div>
+					<aside class="tsd-sources">
+						<p>Inherited from <a href="zosmfrestclient.html">ZosmfRestClient</a>.<a href="zosmfrestclient.html#mresolve">mResolve</a></p>
+						<ul>
+							<li>Defined in imperative/lib/rest/src/client/AbstractRestClient.d.ts:41</li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Resolved when all data has been obtained</p>
+						</div>
+						<dl class="tsd-comment-tags">
+							<dt>memberof</dt>
+							<dd><p>AbstractRestClient</p>
+							</dd>
+						</dl>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-private">
+					<a name="mresource" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> m<wbr>Resource</h3>
+					<div class="tsd-signature tsd-kind-icon">m<wbr>Resource<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<p>Inherited from <a href="zosmfrestclient.html">ZosmfRestClient</a>.<a href="zosmfrestclient.html#mresource">mResource</a></p>
+						<ul>
+							<li>Defined in imperative/lib/rest/src/client/AbstractRestClient.d.ts:93</li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Save resource</p>
+						</div>
+						<dl class="tsd-comment-tags">
+							<dt>memberof</dt>
+							<dd><p>AbstractRestClient</p>
+							</dd>
+						</dl>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-private">
+					<a name="mresponse" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> m<wbr>Response</h3>
+					<div class="tsd-signature tsd-kind-icon">m<wbr>Response<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">any</span></div>
+					<aside class="tsd-sources">
+						<p>Inherited from <a href="zosmfrestclient.html">ZosmfRestClient</a>.<a href="zosmfrestclient.html#mresponse">mResponse</a></p>
+						<ul>
+							<li>Defined in imperative/lib/rest/src/client/AbstractRestClient.d.ts:55</li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Contain response from http(s) request</p>
+						</div>
+						<dl class="tsd-comment-tags">
+							<dt>memberof</dt>
+							<dd><p>AbstractRestClient</p>
+							</dd>
+						</dl>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-private">
+					<a name="mresponsestream" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> m<wbr>Response<wbr>Stream</h3>
+					<div class="tsd-signature tsd-kind-icon">m<wbr>Response<wbr>Stream<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Writable</span></div>
+					<aside class="tsd-sources">
+						<p>Inherited from <a href="zosmfrestclient.html">ZosmfRestClient</a>.<a href="zosmfrestclient.html#mresponsestream">mResponseStream</a></p>
+						<ul>
+							<li>Defined in imperative/lib/rest/src/client/AbstractRestClient.d.ts:122</li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Stream for incoming response data from the server.
+							If specified, response data will not be buffered</p>
+						</div>
+						<dl class="tsd-comment-tags">
+							<dt>memberof</dt>
+							<dd><p>AbstractRestClient</p>
+							</dd>
+						</dl>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-private">
+					<a name="mtask" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> m<wbr>Task</h3>
+					<div class="tsd-signature tsd-kind-icon">m<wbr>Task<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">ITaskWithStatus</span></div>
+					<aside class="tsd-sources">
+						<p>Inherited from <a href="zosmfrestclient.html">ZosmfRestClient</a>.<a href="zosmfrestclient.html#mtask">mTask</a></p>
+						<ul>
+							<li>Defined in imperative/lib/rest/src/client/AbstractRestClient.d.ts:137</li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Task used to display progress bars or other user feedback mechanisms
+							Automatically updated if task is specified and streams are provided for upload/download</p>
+						</div>
+						<dl class="tsd-comment-tags">
+							<dt>memberof</dt>
+							<dd><p>AbstractRestClient</p>
+							</dd>
+						</dl>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-private">
+					<a name="mwritedata" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> m<wbr>Write<wbr>Data</h3>
+					<div class="tsd-signature tsd-kind-icon">m<wbr>Write<wbr>Data<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">any</span></div>
+					<aside class="tsd-sources">
+						<p>Inherited from <a href="zosmfrestclient.html">ZosmfRestClient</a>.<a href="zosmfrestclient.html#mwritedata">mWriteData</a></p>
+						<ul>
+							<li>Defined in imperative/lib/rest/src/client/AbstractRestClient.d.ts:114</li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Save write data</p>
+						</div>
+						<dl class="tsd-comment-tags">
+							<dt>memberof</dt>
+							<dd><p>AbstractRestClient</p>
+							</dd>
+						</dl>
+					</div>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group ">
+				<h2>Accessors</h2>
+				<section class="tsd-panel tsd-member tsd-kind-get-signature tsd-parent-kind-class tsd-is-inherited">
+					<a name="data" class="tsd-anchor"></a>
+					<h3>data</h3>
+					<ul class="tsd-signatures tsd-kind-get-signature tsd-parent-kind-class tsd-is-inherited">
+						<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">get</span> data<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Buffer</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Inherited from <a href="zosmfrestclient.html">ZosmfRestClient</a>.<a href="zosmfrestclient.html#data">data</a></p>
+								<ul>
+									<li>Defined in imperative/lib/rest/src/client/AbstractRestClient.d.ts:287</li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Return http(s) response body as a buffer</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>readonly</dt>
+									<dd></dd>
+									<dt>memberof</dt>
+									<dd><p>AbstractRestClient</p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Buffer</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-get-signature tsd-parent-kind-class tsd-is-inherited">
+					<a name="datastring" class="tsd-anchor"></a>
+					<h3>data<wbr>String</h3>
+					<ul class="tsd-signatures tsd-kind-get-signature tsd-parent-kind-class tsd-is-inherited">
+						<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">get</span> dataString<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Inherited from <a href="zosmfrestclient.html">ZosmfRestClient</a>.<a href="zosmfrestclient.html#datastring">dataString</a></p>
+								<ul>
+									<li>Defined in imperative/lib/rest/src/client/AbstractRestClient.d.ts:294</li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Return http(s) response body as a string</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>readonly</dt>
+									<dd></dd>
+									<dt>memberof</dt>
+									<dd><p>AbstractRestClient</p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-get-signature tsd-parent-kind-class tsd-is-overwrite">
+					<a name="log" class="tsd-anchor"></a>
+					<h3>log</h3>
+					<ul class="tsd-signatures tsd-kind-get-signature tsd-parent-kind-class tsd-is-overwrite">
+						<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">get</span> log<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Logger</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Overrides AbstractRestClient.log</p>
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/4e6da34f/packages/core/src/rest/ZosmfRestClient.ts#L29">zowe-cli/packages/core/src/rest/ZosmfRestClient.ts:29</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Use the Brightside logger instead of the imperative logger</p>
+								</div>
+							</div>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Logger</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-get-signature tsd-parent-kind-class tsd-is-inherited">
+					<a name="requestfailure" class="tsd-anchor"></a>
+					<h3>request<wbr>Failure</h3>
+					<ul class="tsd-signatures tsd-kind-get-signature tsd-parent-kind-class tsd-is-inherited">
+						<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">get</span> requestFailure<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Inherited from <a href="zosmfrestclient.html">ZosmfRestClient</a>.<a href="zosmfrestclient.html#requestfailure">requestFailure</a></p>
+								<ul>
+									<li>Defined in imperative/lib/rest/src/client/AbstractRestClient.d.ts:280</li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Return whether or not a REST request was successful by HTTP status code</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>readonly</dt>
+									<dd></dd>
+									<dt>memberof</dt>
+									<dd><p>AbstractRestClient</p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-get-signature tsd-parent-kind-class tsd-is-inherited">
+					<a name="requestsuccess" class="tsd-anchor"></a>
+					<h3>request<wbr>Success</h3>
+					<ul class="tsd-signatures tsd-kind-get-signature tsd-parent-kind-class tsd-is-inherited">
+						<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">get</span> requestSuccess<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Inherited from <a href="zosmfrestclient.html">ZosmfRestClient</a>.<a href="zosmfrestclient.html#requestsuccess">requestSuccess</a></p>
+								<ul>
+									<li>Defined in imperative/lib/rest/src/client/AbstractRestClient.d.ts:273</li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Return whether or not a REST request was successful by HTTP status code</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>readonly</dt>
+									<dd></dd>
+									<dt>memberof</dt>
+									<dd><p>AbstractRestClient</p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-get-signature tsd-parent-kind-class tsd-is-inherited">
+					<a name="response" class="tsd-anchor"></a>
+					<h3>response</h3>
+					<ul class="tsd-signatures tsd-kind-get-signature tsd-parent-kind-class tsd-is-inherited">
+						<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">get</span> response<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Inherited from <a href="zosmfrestclient.html">ZosmfRestClient</a>.<a href="zosmfrestclient.html#response">response</a></p>
+								<ul>
+									<li>Defined in imperative/lib/rest/src/client/AbstractRestClient.d.ts:301</li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Return http(s) response object</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>readonly</dt>
+									<dd></dd>
+									<dt>memberof</dt>
+									<dd><p>AbstractRestClient</p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">any</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-get-signature tsd-parent-kind-class tsd-is-inherited">
+					<a name="session" class="tsd-anchor"></a>
+					<h3>session</h3>
+					<ul class="tsd-signatures tsd-kind-get-signature tsd-parent-kind-class tsd-is-inherited">
+						<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">get</span> session<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Session</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Inherited from <a href="zosmfrestclient.html">ZosmfRestClient</a>.<a href="zosmfrestclient.html#session">session</a></p>
+								<ul>
+									<li>Defined in imperative/lib/rest/src/client/AbstractRestClient.d.ts:308</li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Return this session object</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>readonly</dt>
+									<dd></dd>
+									<dt>memberof</dt>
+									<dd><p>AbstractRestClient</p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Session</span></h4>
+						</li>
+					</ul>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group ">
+				<h2>Methods</h2>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-overwrite tsd-is-protected">
+					<a name="appendheaders" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagProtected">Protected</span> append<wbr>Headers</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-overwrite tsd-is-protected">
+						<li class="tsd-signature tsd-kind-icon">append<wbr>Headers<span class="tsd-signature-symbol">(</span>headers<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Overrides AbstractRestClient.appendHeaders</p>
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/4e6da34f/packages/core/src/rest/ZosmfRestClient.ts#L39">zowe-cli/packages/core/src/rest/ZosmfRestClient.ts:39</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Append z/OSMF specific headers to the callers headers for cases
+									where a header is common to every request.</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>memberof</dt>
+									<dd><p>ZosmfRestClient</p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>headers: <span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">undefined</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>current header array</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+					<a name="performrest" class="tsd-anchor"></a>
+					<h3>perform<wbr>Rest</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+						<li class="tsd-signature tsd-kind-icon">perform<wbr>Rest<span class="tsd-signature-symbol">(</span>resource<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, request<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">HTTP_VERB</span>, reqHeaders<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span>, writeData<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">any</span>, responseStream<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">Writable</span>, requestStream<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">Readable</span>, normalizeResponseNewLines<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">boolean</span>, normalizeRequestNewLines<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">boolean</span>, task<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">ITaskWithStatus</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Inherited from <a href="zosmfrestclient.html">ZosmfRestClient</a>.<a href="zosmfrestclient.html#performrest">performRest</a></p>
+								<ul>
+									<li>Defined in imperative/lib/rest/src/client/AbstractRestClient.d.ts:178</li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Perform the actual http REST call with appropriate user input</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>deprecated</dt>
+									<dd><ul>
+											<li>since version 4.4.9. Changed to wrapper for request(). Please use request() directly.<pre><code>        It will be removed <span class="hljs-keyword">in</span> version <span class="hljs-number">5.0</span><span class="hljs-number">.0</span></code></pre></li>
+										</ul>
+									</dd>
+									<dt>throws</dt>
+									<dd><p>if the request gets a status code outside of the 200 range
+										or other connection problems occur (e.g. connection refused)</p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>resource: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>URI for this request</p>
+									</div>
+								</li>
+								<li>
+									<h5>request: <span class="tsd-signature-type">HTTP_VERB</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>REST request type GET|PUT|POST|DELETE</p>
+									</div>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> reqHeaders: <span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>option headers to include with request</p>
+									</div>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> writeData: <span class="tsd-signature-type">any</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>data to write on this REST request</p>
+									</div>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> responseStream: <span class="tsd-signature-type">Writable</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>stream for incoming response data from the server. If specified, response data will not be buffered</p>
+									</div>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> requestStream: <span class="tsd-signature-type">Readable</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>stream for outgoing request data to the server</p>
+									</div>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> normalizeResponseNewLines: <span class="tsd-signature-type">boolean</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>streaming only - true if you want newlines to be \r\n on windows
+										when receiving data from the server to responseStream. Don&#39;t set this for binary responses</p>
+									</div>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> normalizeRequestNewLines: <span class="tsd-signature-type">boolean</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>streaming only - true if you want \r\n to be replaced with \n when sending
+										data to the server from requestStream. Don&#39;t set this for binary requests</p>
+									</div>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> task: <span class="tsd-signature-type">ITaskWithStatus</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>task that will automatically be updated to report progress of upload or download to user</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-overwrite tsd-is-protected">
+					<a name="processerror" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagProtected">Protected</span> process<wbr>Error</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-overwrite tsd-is-protected">
+						<li class="tsd-signature tsd-kind-icon">process<wbr>Error<span class="tsd-signature-symbol">(</span>original<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">IImperativeError</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">IImperativeError</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Overrides AbstractRestClient.processError</p>
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/4e6da34f/packages/core/src/rest/ZosmfRestClient.ts#L54">zowe-cli/packages/core/src/rest/ZosmfRestClient.ts:54</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Process an error encountered in the rest client</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>memberof</dt>
+									<dd><p>ZosmfRestClient</p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>original: <span class="tsd-signature-type">IImperativeError</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>the original error automatically built by the abstract rest client</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">IImperativeError</span></h4>
+							<ul>
+								<li>the processed error with details added</li>
+							</ul>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+					<a name="request" class="tsd-anchor"></a>
+					<h3>request</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+						<li class="tsd-signature tsd-kind-icon">request<span class="tsd-signature-symbol">(</span>options<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">IRestOptions</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Inherited from <a href="zosmfrestclient.html">ZosmfRestClient</a>.<a href="zosmfrestclient.html#request">request</a></p>
+								<ul>
+									<li>Defined in imperative/lib/rest/src/client/AbstractRestClient.d.ts:159</li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Perform the actual http REST call with appropriate user input</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>throws</dt>
+									<dd><p>if the request gets a status code outside of the 200 range
+										or other connection problems occur (e.g. connection refused)</p>
+									</dd>
+									<dt>memberof</dt>
+									<dd><p>AbstractRestClient</p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>options: <span class="tsd-signature-type">IRestOptions</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-static">
+					<a name="deleteexpectbuffer" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> delete<wbr>Expect<wbr>Buffer</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-static">
+						<li class="tsd-signature tsd-kind-icon">delete<wbr>Expect<wbr>Buffer<span class="tsd-signature-symbol">(</span>session<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">AbstractSession</span>, resource<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, reqHeaders<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Buffer</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Inherited from <a href="zosmfrestclient.html">ZosmfRestClient</a>.<a href="zosmfrestclient.html#deleteexpectbuffer">deleteExpectBuffer</a></p>
+								<ul>
+									<li>Defined in imperative/lib/rest/src/client/RestClient.d.ts:119</li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>REST HTTP DELETE operation</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>static</dt>
+									<dd></dd>
+									<dt>throws</dt>
+									<dd><p>if the request gets a status code outside of the 200 range
+										or other connection problems occur (e.g. connection refused)</p>
+									</dd>
+									<dt>memberof</dt>
+									<dd><p>RestClient</p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>session: <span class="tsd-signature-type">AbstractSession</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>representing connection to this api</p>
+									</div>
+								</li>
+								<li>
+									<h5>resource: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>URI for which this request should go against</p>
+									</div>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> reqHeaders: <span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>headers to include in the REST request</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Buffer</span><span class="tsd-signature-symbol">&gt;</span></h4>
+							<ul>
+								<li>response body content from http(s) call</li>
+							</ul>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-static">
+					<a name="deleteexpectfullresponse" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> delete<wbr>Expect<wbr>Full<wbr>Response</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-static">
+						<li class="tsd-signature tsd-kind-icon">delete<wbr>Expect<wbr>Full<wbr>Response<span class="tsd-signature-symbol">(</span>session<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">AbstractSession</span>, options<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">IOptionsFullResponse</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">IRestClientResponse</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Inherited from <a href="zosmfrestclient.html">ZosmfRestClient</a>.<a href="zosmfrestclient.html#deleteexpectfullresponse">deleteExpectFullResponse</a></p>
+								<ul>
+									<li>Defined in imperative/lib/rest/src/client/RestClient.d.ts:304</li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>REST HTTP delete operation returning full HTTP(S) Response</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>static</dt>
+									<dd></dd>
+									<dt>throws</dt>
+									<dd><p>if the request gets a status code outside of the 200 range
+										or other connection problems occur (e.g. connection refused)</p>
+									</dd>
+									<dt>memberof</dt>
+									<dd><p>RestClient</p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>session: <span class="tsd-signature-type">AbstractSession</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>representing connection to this api</p>
+									</div>
+								</li>
+								<li>
+									<h5>options: <span class="tsd-signature-type">IOptionsFullResponse</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>list of parameters</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">IRestClientResponse</span><span class="tsd-signature-symbol">&gt;</span></h4>
+							<ul>
+								<li>response content from http(s) call</li>
+							</ul>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-inherited tsd-is-static">
+					<a name="deleteexpectjson" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> delete<wbr>ExpectJSON</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-inherited tsd-is-static">
+						<li class="tsd-signature tsd-kind-icon">delete<wbr>ExpectJSON&lt;T&gt;<span class="tsd-signature-symbol">(</span>session<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">AbstractSession</span>, resource<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, reqHeaders<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Inherited from <a href="zosmfrestclient.html">ZosmfRestClient</a>.<a href="zosmfrestclient.html#deleteexpectjson">deleteExpectJSON</a></p>
+								<ul>
+									<li>Defined in imperative/lib/rest/src/client/RestClient.d.ts:69</li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Wrap post for common error handling and supporting generic JSON types</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>static</dt>
+									<dd></dd>
+									<dt>template</dt>
+									<dd><p>T - object type to return</p>
+									</dd>
+									<dt>throws</dt>
+									<dd><p>if the request gets a status code outside of the 200 range
+										or other connection problems occur (e.g. connection refused)</p>
+									</dd>
+									<dt>memberof</dt>
+									<dd><p>RestClient</p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-type-parameters-title">Type parameters</h4>
+							<ul class="tsd-type-parameters">
+								<li>
+									<h4>T<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">object</span></h4>
+								</li>
+							</ul>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>session: <span class="tsd-signature-type">AbstractSession</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>representing connection to this api</p>
+									</div>
+								</li>
+								<li>
+									<h5>resource: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>the API URI that we are targeting</p>
+									</div>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> reqHeaders: <span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>headers for the http(s) request</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></h4>
+							<ul>
+								<li>object on promise</li>
+							</ul>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-static">
+					<a name="deleteexpectstring" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> delete<wbr>Expect<wbr>String</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-static">
+						<li class="tsd-signature tsd-kind-icon">delete<wbr>Expect<wbr>String<span class="tsd-signature-symbol">(</span>session<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">AbstractSession</span>, resource<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, reqHeaders<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Inherited from <a href="zosmfrestclient.html">ZosmfRestClient</a>.<a href="zosmfrestclient.html#deleteexpectstring">deleteExpectString</a></p>
+								<ul>
+									<li>Defined in imperative/lib/rest/src/client/RestClient.d.ts:169</li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>REST HTTP DELETE operation</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>static</dt>
+									<dd></dd>
+									<dt>throws</dt>
+									<dd><p>if the request gets a status code outside of the 200 range
+										or other connection problems occur (e.g. connection refused)</p>
+									</dd>
+									<dt>memberof</dt>
+									<dd><p>RestClient</p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>session: <span class="tsd-signature-type">AbstractSession</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>representing connection to this api</p>
+									</div>
+								</li>
+								<li>
+									<h5>resource: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>URI for which this request should go against</p>
+									</div>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> reqHeaders: <span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>headers to include in the REST request</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span></h4>
+							<ul>
+								<li>response body content from http(s) call</li>
+							</ul>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-static">
+					<a name="deletestreamed" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> delete<wbr>Streamed</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-static">
+						<li class="tsd-signature tsd-kind-icon">delete<wbr>Streamed<span class="tsd-signature-symbol">(</span>session<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">AbstractSession</span>, resource<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, reqHeaders<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span>, responseStream<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Writable</span>, normalizeResponseNewLines<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">boolean</span>, task<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">ITaskWithStatus</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Inherited from <a href="zosmfrestclient.html">ZosmfRestClient</a>.<a href="zosmfrestclient.html#deletestreamed">deleteStreamed</a></p>
+								<ul>
+									<li>Defined in imperative/lib/rest/src/client/RestClient.d.ts:271</li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>REST HTTP DELETE operation</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>static</dt>
+									<dd></dd>
+									<dt>throws</dt>
+									<dd><p>if the request gets a status code outside of the 200 range
+										or other connection problems occur (e.g. connection refused)</p>
+									</dd>
+									<dt>memberof</dt>
+									<dd><p>RestClient</p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>session: <span class="tsd-signature-type">AbstractSession</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>representing connection to this api</p>
+									</div>
+								</li>
+								<li>
+									<h5>resource: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>URI for which this request should go against</p>
+									</div>
+								</li>
+								<li>
+									<h5>reqHeaders: <span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>headers to include in the REST request</p>
+									</div>
+								</li>
+								<li>
+									<h5>responseStream: <span class="tsd-signature-type">Writable</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>stream to which the response data will be written</p>
+									</div>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> normalizeResponseNewLines: <span class="tsd-signature-type">boolean</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>streaming only - true if you want newlines to be \r\n on windows
+										when receiving data from the server to responseStream. Don&#39;t set this for binary responses</p>
+									</div>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> task: <span class="tsd-signature-type">ITaskWithStatus</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>task used to update the user on the progress of their request</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span></h4>
+							<ul>
+								<li>empty string - data is not buffered for streamed requests</li>
+							</ul>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-static">
+					<a name="getexpectbuffer" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> get<wbr>Expect<wbr>Buffer</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-static">
+						<li class="tsd-signature tsd-kind-icon">get<wbr>Expect<wbr>Buffer<span class="tsd-signature-symbol">(</span>session<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">AbstractSession</span>, resource<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, reqHeaders<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Buffer</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Inherited from <a href="zosmfrestclient.html">ZosmfRestClient</a>.<a href="zosmfrestclient.html#getexpectbuffer">getExpectBuffer</a></p>
+								<ul>
+									<li>Defined in imperative/lib/rest/src/client/RestClient.d.ts:81</li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>REST HTTP GET operation</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>static</dt>
+									<dd></dd>
+									<dt>throws</dt>
+									<dd><p>if the request gets a status code outside of the 200 range
+										or other connection problems occur (e.g. connection refused)</p>
+									</dd>
+									<dt>memberof</dt>
+									<dd><p>RestClient</p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>session: <span class="tsd-signature-type">AbstractSession</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>representing connection to this api</p>
+									</div>
+								</li>
+								<li>
+									<h5>resource: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>URI for which this request should go against</p>
+									</div>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> reqHeaders: <span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>headers to include in the REST request</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Buffer</span><span class="tsd-signature-symbol">&gt;</span></h4>
+							<ul>
+								<li>response body content from http(s) call</li>
+							</ul>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-static">
+					<a name="getexpectfullresponse" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> get<wbr>Expect<wbr>Full<wbr>Response</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-static">
+						<li class="tsd-signature tsd-kind-icon">get<wbr>Expect<wbr>Full<wbr>Response<span class="tsd-signature-symbol">(</span>session<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">AbstractSession</span>, options<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">IOptionsFullResponse</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">IRestClientResponse</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Inherited from <a href="zosmfrestclient.html">ZosmfRestClient</a>.<a href="zosmfrestclient.html#getexpectfullresponse">getExpectFullResponse</a></p>
+								<ul>
+									<li>Defined in imperative/lib/rest/src/client/RestClient.d.ts:282</li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>REST HTTP GET operation returning full HTTP(S) Response</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>static</dt>
+									<dd></dd>
+									<dt>throws</dt>
+									<dd><p>if the request gets a status code outside of the 200 range
+										or other connection problems occur (e.g. connection refused)</p>
+									</dd>
+									<dt>memberof</dt>
+									<dd><p>RestClient</p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>session: <span class="tsd-signature-type">AbstractSession</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>representing connection to this api</p>
+									</div>
+								</li>
+								<li>
+									<h5>options: <span class="tsd-signature-type">IOptionsFullResponse</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>URI for which this request should go against</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">IRestClientResponse</span><span class="tsd-signature-symbol">&gt;</span></h4>
+							<ul>
+								<li>full response or filtered based on provided params</li>
+							</ul>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-inherited tsd-is-static">
+					<a name="getexpectjson" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> get<wbr>ExpectJSON</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-inherited tsd-is-static">
+						<li class="tsd-signature tsd-kind-icon">get<wbr>ExpectJSON&lt;T&gt;<span class="tsd-signature-symbol">(</span>session<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">AbstractSession</span>, resource<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, reqHeaders<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Inherited from <a href="zosmfrestclient.html">ZosmfRestClient</a>.<a href="zosmfrestclient.html#getexpectjson">getExpectJSON</a></p>
+								<ul>
+									<li>Defined in imperative/lib/rest/src/client/RestClient.d.ts:28</li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Wrap get for common error handling and supporting generic JSON types</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>static</dt>
+									<dd></dd>
+									<dt>template</dt>
+									<dd><p>T - object type to return</p>
+									</dd>
+									<dt>throws</dt>
+									<dd><p>if the request gets a status code outside of the 200 range
+										or other connection problems occur (e.g. connection refused)</p>
+									</dd>
+									<dt>memberof</dt>
+									<dd><p>RestClient</p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-type-parameters-title">Type parameters</h4>
+							<ul class="tsd-type-parameters">
+								<li>
+									<h4>T<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">object</span></h4>
+								</li>
+							</ul>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>session: <span class="tsd-signature-type">AbstractSession</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>representing connection to this api</p>
+									</div>
+								</li>
+								<li>
+									<h5>resource: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>the API URI that we are targeting</p>
+									</div>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> reqHeaders: <span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>headers for the http(s) request</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></h4>
+							<ul>
+								<li>object on promise</li>
+							</ul>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-static">
+					<a name="getexpectstring" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> get<wbr>Expect<wbr>String</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-static">
+						<li class="tsd-signature tsd-kind-icon">get<wbr>Expect<wbr>String<span class="tsd-signature-symbol">(</span>session<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">AbstractSession</span>, resource<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, reqHeaders<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Inherited from <a href="zosmfrestclient.html">ZosmfRestClient</a>.<a href="zosmfrestclient.html#getexpectstring">getExpectString</a></p>
+								<ul>
+									<li>Defined in imperative/lib/rest/src/client/RestClient.d.ts:131</li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>REST HTTP GET operation</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>static</dt>
+									<dd></dd>
+									<dt>throws</dt>
+									<dd><p>if the request gets a status code outside of the 200 range
+										or other connection problems occur (e.g. connection refused)</p>
+									</dd>
+									<dt>memberof</dt>
+									<dd><p>RestClient</p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>session: <span class="tsd-signature-type">AbstractSession</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>representing connection to this api</p>
+									</div>
+								</li>
+								<li>
+									<h5>resource: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>URI for which this request should go against</p>
+									</div>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> reqHeaders: <span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>headers to include in the REST request</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span></h4>
+							<ul>
+								<li>response body content from http(s) call</li>
+							</ul>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-static">
+					<a name="getstreamed" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> get<wbr>Streamed</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-static">
+						<li class="tsd-signature tsd-kind-icon">get<wbr>Streamed<span class="tsd-signature-symbol">(</span>session<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">AbstractSession</span>, resource<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, reqHeaders<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span>, responseStream<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Writable</span>, normalizeResponseNewLines<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">boolean</span>, task<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">ITaskWithStatus</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Inherited from <a href="zosmfrestclient.html">ZosmfRestClient</a>.<a href="zosmfrestclient.html#getstreamed">getStreamed</a></p>
+								<ul>
+									<li>Defined in imperative/lib/rest/src/client/RestClient.d.ts:185</li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>REST HTTP GET operation - streaming the response to a writable stream</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>static</dt>
+									<dd></dd>
+									<dt>throws</dt>
+									<dd><p>if the request gets a status code outside of the 200 range
+										or other connection problems occur (e.g. connection refused)</p>
+									</dd>
+									<dt>memberof</dt>
+									<dd><p>RestClient</p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>session: <span class="tsd-signature-type">AbstractSession</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>representing connection to this api</p>
+									</div>
+								</li>
+								<li>
+									<h5>resource: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>URI for which this request should go against</p>
+									</div>
+								</li>
+								<li>
+									<h5>reqHeaders: <span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>headers to include in the REST request</p>
+									</div>
+								</li>
+								<li>
+									<h5>responseStream: <span class="tsd-signature-type">Writable</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>the stream to which the response data will be written</p>
+									</div>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> normalizeResponseNewLines: <span class="tsd-signature-type">boolean</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>streaming only - true if you want newlines to be \r\n on windows
+										when receiving data from the server to responseStream. Don&#39;t set this for binary responses</p>
+									</div>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> task: <span class="tsd-signature-type">ITaskWithStatus</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>task used to update the user on the progress of their request</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span></h4>
+							<ul>
+								<li>empty string - data is not buffered for this request</li>
+							</ul>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-static">
+					<a name="hasquerystring" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> has<wbr>Query<wbr>String</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-static">
+						<li class="tsd-signature tsd-kind-icon">has<wbr>Query<wbr>String<span class="tsd-signature-symbol">(</span>query<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Inherited from <a href="zosmfrestclient.html">ZosmfRestClient</a>.<a href="zosmfrestclient.html#hasquerystring">hasQueryString</a></p>
+								<ul>
+									<li>Defined in imperative/lib/rest/src/client/RestClient.d.ts:323</li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Helper method to return an indicator for whether or not a URI contains a query string.</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>static</dt>
+									<dd></dd>
+									<dt>memberof</dt>
+									<dd><p>RestClient</p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>query: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>URI</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
+							<ul>
+								<li>true if query is contained within URI</li>
+							</ul>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-static">
+					<a name="postexpectbuffer" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> post<wbr>Expect<wbr>Buffer</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-static">
+						<li class="tsd-signature tsd-kind-icon">post<wbr>Expect<wbr>Buffer<span class="tsd-signature-symbol">(</span>session<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">AbstractSession</span>, resource<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, reqHeaders<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span>, data<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Buffer</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Inherited from <a href="zosmfrestclient.html">ZosmfRestClient</a>.<a href="zosmfrestclient.html#postexpectbuffer">postExpectBuffer</a></p>
+								<ul>
+									<li>Defined in imperative/lib/rest/src/client/RestClient.d.ts:107</li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>REST HTTP POST operation</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>static</dt>
+									<dd></dd>
+									<dt>throws</dt>
+									<dd><p>if the request gets a status code outside of the 200 range
+										or other connection problems occur (e.g. connection refused)</p>
+									</dd>
+									<dt>memberof</dt>
+									<dd><p>RestClient</p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>session: <span class="tsd-signature-type">AbstractSession</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>representing connection to this api</p>
+									</div>
+								</li>
+								<li>
+									<h5>resource: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>URI for which this request should go against</p>
+									</div>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> reqHeaders: <span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>headers to include in the REST request</p>
+									</div>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> data: <span class="tsd-signature-type">any</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>payload data</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Buffer</span><span class="tsd-signature-symbol">&gt;</span></h4>
+							<ul>
+								<li>response body content from http(s) call</li>
+							</ul>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-static">
+					<a name="postexpectfullresponse" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> post<wbr>Expect<wbr>Full<wbr>Response</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-static">
+						<li class="tsd-signature tsd-kind-icon">post<wbr>Expect<wbr>Full<wbr>Response<span class="tsd-signature-symbol">(</span>session<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">AbstractSession</span>, options<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">IOptionsFullResponse</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">IRestClientResponse</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Inherited from <a href="zosmfrestclient.html">ZosmfRestClient</a>.<a href="zosmfrestclient.html#postexpectfullresponse">postExpectFullResponse</a></p>
+								<ul>
+									<li>Defined in imperative/lib/rest/src/client/RestClient.d.ts:315</li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>REST HTTP post operation returning full HTTP(S) Response</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>static</dt>
+									<dd></dd>
+									<dt>throws</dt>
+									<dd><p>if the request gets a status code outside of the 200 range
+										or other connection problems occur (e.g. connection refused)</p>
+									</dd>
+									<dt>memberof</dt>
+									<dd><p>RestClient</p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>session: <span class="tsd-signature-type">AbstractSession</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>representing connection to this api</p>
+									</div>
+								</li>
+								<li>
+									<h5>options: <span class="tsd-signature-type">IOptionsFullResponse</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>list of parameters</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">IRestClientResponse</span><span class="tsd-signature-symbol">&gt;</span></h4>
+							<ul>
+								<li>response content from http(s) call</li>
+							</ul>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-inherited tsd-is-static">
+					<a name="postexpectjson" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> post<wbr>ExpectJSON</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-inherited tsd-is-static">
+						<li class="tsd-signature tsd-kind-icon">post<wbr>ExpectJSON&lt;T&gt;<span class="tsd-signature-symbol">(</span>session<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">AbstractSession</span>, resource<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, reqHeaders<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span>, payload<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Inherited from <a href="zosmfrestclient.html">ZosmfRestClient</a>.<a href="zosmfrestclient.html#postexpectjson">postExpectJSON</a></p>
+								<ul>
+									<li>Defined in imperative/lib/rest/src/client/RestClient.d.ts:56</li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Wrap post for common error handling and supporting generic JSON types</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>static</dt>
+									<dd></dd>
+									<dt>template</dt>
+									<dd><p>T - object type to return</p>
+									</dd>
+									<dt>throws</dt>
+									<dd><p>if the request gets a status code outside of the 200 range
+										or other connection problems occur (e.g. connection refused)</p>
+									</dd>
+									<dt>memberof</dt>
+									<dd><p>RestClient</p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-type-parameters-title">Type parameters</h4>
+							<ul class="tsd-type-parameters">
+								<li>
+									<h4>T<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">object</span></h4>
+								</li>
+							</ul>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>session: <span class="tsd-signature-type">AbstractSession</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>representing connection to this api</p>
+									</div>
+								</li>
+								<li>
+									<h5>resource: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>the API URI that we are targeting</p>
+									</div>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> reqHeaders: <span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>headers for the http(s) request</p>
+									</div>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> payload: <span class="tsd-signature-type">any</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>data to write on the http(s) request</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></h4>
+							<ul>
+								<li>object on promise</li>
+							</ul>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-static">
+					<a name="postexpectstring" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> post<wbr>Expect<wbr>String</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-static">
+						<li class="tsd-signature tsd-kind-icon">post<wbr>Expect<wbr>String<span class="tsd-signature-symbol">(</span>session<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">AbstractSession</span>, resource<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, reqHeaders<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span>, data<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Inherited from <a href="zosmfrestclient.html">ZosmfRestClient</a>.<a href="zosmfrestclient.html#postexpectstring">postExpectString</a></p>
+								<ul>
+									<li>Defined in imperative/lib/rest/src/client/RestClient.d.ts:157</li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>REST HTTP POST operation</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>static</dt>
+									<dd></dd>
+									<dt>throws</dt>
+									<dd><p>if the request gets a status code outside of the 200 range
+										or other connection problems occur (e.g. connection refused)</p>
+									</dd>
+									<dt>memberof</dt>
+									<dd><p>RestClient</p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>session: <span class="tsd-signature-type">AbstractSession</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>representing connection to this api</p>
+									</div>
+								</li>
+								<li>
+									<h5>resource: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>URI for which this request should go against</p>
+									</div>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> reqHeaders: <span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>headers to include in the REST request</p>
+									</div>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> data: <span class="tsd-signature-type">any</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>payload data</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span></h4>
+							<ul>
+								<li>response body content from http(s) call</li>
+							</ul>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-static">
+					<a name="poststreamed" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> post<wbr>Streamed</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-static">
+						<li class="tsd-signature tsd-kind-icon">post<wbr>Streamed<span class="tsd-signature-symbol">(</span>session<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">AbstractSession</span>, resource<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, reqHeaders<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span>, responseStream<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Writable</span>, requestStream<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Readable</span>, normalizeResponseNewLines<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">boolean</span>, normalizeRequestNewLines<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">boolean</span>, task<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">ITaskWithStatus</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Inherited from <a href="zosmfrestclient.html">ZosmfRestClient</a>.<a href="zosmfrestclient.html#poststreamed">postStreamed</a></p>
+								<ul>
+									<li>Defined in imperative/lib/rest/src/client/RestClient.d.ts:239</li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>REST HTTP POST operation streaming both the request and the response</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>static</dt>
+									<dd></dd>
+									<dt>throws</dt>
+									<dd><p>if the request gets a status code outside of the 200 range
+										or other connection problems occur (e.g. connection refused)</p>
+									</dd>
+									<dt>memberof</dt>
+									<dd><p>RestClient</p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>session: <span class="tsd-signature-type">AbstractSession</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>representing connection to this api</p>
+									</div>
+								</li>
+								<li>
+									<h5>resource: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>URI for which this request should go against</p>
+									</div>
+								</li>
+								<li>
+									<h5>reqHeaders: <span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>headers to include in the REST request</p>
+									</div>
+								</li>
+								<li>
+									<h5>responseStream: <span class="tsd-signature-type">Writable</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>stream to which the response data will be written</p>
+									</div>
+								</li>
+								<li>
+									<h5>requestStream: <span class="tsd-signature-type">Readable</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>stream from which payload data will be read</p>
+									</div>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> normalizeResponseNewLines: <span class="tsd-signature-type">boolean</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>streaming only - true if you want newlines to be \r\n on windows
+										when receiving data from the server to responseStream. Don&#39;t set this for binary responses</p>
+									</div>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> normalizeRequestNewLines: <span class="tsd-signature-type">boolean</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>streaming only - true if you want \r\n to be replaced with \n when sending
+										data to the server from requestStream. Don&#39;t set this for binary requests</p>
+									</div>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> task: <span class="tsd-signature-type">ITaskWithStatus</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>task used to update the user on the progress of their request</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span></h4>
+							<ul>
+								<li>empty string - data is not buffered for  this request</li>
+							</ul>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-static">
+					<a name="poststreamedrequestonly" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> post<wbr>Streamed<wbr>Request<wbr>Only</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-static">
+						<li class="tsd-signature tsd-kind-icon">post<wbr>Streamed<wbr>Request<wbr>Only<span class="tsd-signature-symbol">(</span>session<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">AbstractSession</span>, resource<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, reqHeaders<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span>, requestStream<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Readable</span>, normalizeRequestNewLines<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">boolean</span>, task<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">ITaskWithStatus</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Inherited from <a href="zosmfrestclient.html">ZosmfRestClient</a>.<a href="zosmfrestclient.html#poststreamedrequestonly">postStreamedRequestOnly</a></p>
+								<ul>
+									<li>Defined in imperative/lib/rest/src/client/RestClient.d.ts:255</li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>REST HTTP POST operation, streaming only the request and not the response</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>static</dt>
+									<dd></dd>
+									<dt>throws</dt>
+									<dd><p>if the request gets a status code outside of the 200 range
+										or other connection problems occur (e.g. connection refused)</p>
+									</dd>
+									<dt>memberof</dt>
+									<dd><p>RestClient</p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>session: <span class="tsd-signature-type">AbstractSession</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>representing connection to this api</p>
+									</div>
+								</li>
+								<li>
+									<h5>resource: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>URI for which this request should go against</p>
+									</div>
+								</li>
+								<li>
+									<h5>reqHeaders: <span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>headers to include in the REST request</p>
+									</div>
+								</li>
+								<li>
+									<h5>requestStream: <span class="tsd-signature-type">Readable</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>stream from which payload data will be read</p>
+									</div>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> normalizeRequestNewLines: <span class="tsd-signature-type">boolean</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>streaming only - true if you want \r\n to be replaced with \n when sending
+										data to the server from requestStream. Don&#39;t set this for binary requests</p>
+									</div>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> task: <span class="tsd-signature-type">ITaskWithStatus</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>task used to update the user on the progress of their request</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span></h4>
+							<ul>
+								<li>string of the response</li>
+							</ul>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-static">
+					<a name="putexpectbuffer" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> put<wbr>Expect<wbr>Buffer</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-static">
+						<li class="tsd-signature tsd-kind-icon">put<wbr>Expect<wbr>Buffer<span class="tsd-signature-symbol">(</span>session<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">AbstractSession</span>, resource<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, reqHeaders<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span>, data<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Buffer</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Inherited from <a href="zosmfrestclient.html">ZosmfRestClient</a>.<a href="zosmfrestclient.html#putexpectbuffer">putExpectBuffer</a></p>
+								<ul>
+									<li>Defined in imperative/lib/rest/src/client/RestClient.d.ts:94</li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>REST HTTP PUT operation</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>static</dt>
+									<dd></dd>
+									<dt>throws</dt>
+									<dd><p>if the request gets a status code outside of the 200 range
+										or other connection problems occur (e.g. connection refused)</p>
+									</dd>
+									<dt>memberof</dt>
+									<dd><p>RestClient</p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>session: <span class="tsd-signature-type">AbstractSession</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>representing connection to this api</p>
+									</div>
+								</li>
+								<li>
+									<h5>resource: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>URI for which this request should go against</p>
+									</div>
+								</li>
+								<li>
+									<h5>reqHeaders: <span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>headers to include in the REST request</p>
+									</div>
+								</li>
+								<li>
+									<h5>data: <span class="tsd-signature-type">any</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>payload data</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Buffer</span><span class="tsd-signature-symbol">&gt;</span></h4>
+							<ul>
+								<li>response body content from http(s) call</li>
+							</ul>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-static">
+					<a name="putexpectfullresponse" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> put<wbr>Expect<wbr>Full<wbr>Response</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-static">
+						<li class="tsd-signature tsd-kind-icon">put<wbr>Expect<wbr>Full<wbr>Response<span class="tsd-signature-symbol">(</span>session<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">AbstractSession</span>, options<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">IOptionsFullResponse</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">IRestClientResponse</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Inherited from <a href="zosmfrestclient.html">ZosmfRestClient</a>.<a href="zosmfrestclient.html#putexpectfullresponse">putExpectFullResponse</a></p>
+								<ul>
+									<li>Defined in imperative/lib/rest/src/client/RestClient.d.ts:293</li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>REST HTTP PUT operation returning full HTTP(S) Response</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>static</dt>
+									<dd></dd>
+									<dt>throws</dt>
+									<dd><p>if the request gets a status code outside of the 200 range
+										or other connection problems occur (e.g. connection refused)</p>
+									</dd>
+									<dt>memberof</dt>
+									<dd><p>RestClient</p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>session: <span class="tsd-signature-type">AbstractSession</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>representing connection to this api</p>
+									</div>
+								</li>
+								<li>
+									<h5>options: <span class="tsd-signature-type">IOptionsFullResponse</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>list of parameters</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">IRestClientResponse</span><span class="tsd-signature-symbol">&gt;</span></h4>
+							<ul>
+								<li>response content from http(s) call</li>
+							</ul>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-inherited tsd-is-static">
+					<a name="putexpectjson" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> put<wbr>ExpectJSON</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-inherited tsd-is-static">
+						<li class="tsd-signature tsd-kind-icon">put<wbr>ExpectJSON&lt;T&gt;<span class="tsd-signature-symbol">(</span>session<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">AbstractSession</span>, resource<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, reqHeaders<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span>, payload<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Inherited from <a href="zosmfrestclient.html">ZosmfRestClient</a>.<a href="zosmfrestclient.html#putexpectjson">putExpectJSON</a></p>
+								<ul>
+									<li>Defined in imperative/lib/rest/src/client/RestClient.d.ts:42</li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Wrap put for common error handling and supporting generic JSON types</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>static</dt>
+									<dd></dd>
+									<dt>template</dt>
+									<dd><p>T - object type to return</p>
+									</dd>
+									<dt>throws</dt>
+									<dd><p>if the request gets a status code outside of the 200 range
+										or other connection problems occur (e.g. connection refused)</p>
+									</dd>
+									<dt>memberof</dt>
+									<dd><p>RestClient</p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-type-parameters-title">Type parameters</h4>
+							<ul class="tsd-type-parameters">
+								<li>
+									<h4>T<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">object</span></h4>
+								</li>
+							</ul>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>session: <span class="tsd-signature-type">AbstractSession</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>representing connection to this api</p>
+									</div>
+								</li>
+								<li>
+									<h5>resource: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>the API URI that we are targeting</p>
+									</div>
+								</li>
+								<li>
+									<h5>reqHeaders: <span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>headers for the http(s) request</p>
+									</div>
+								</li>
+								<li>
+									<h5>payload: <span class="tsd-signature-type">any</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>data to write on the http(s) request</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></h4>
+							<ul>
+								<li>object on promise</li>
+							</ul>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-static">
+					<a name="putexpectstring" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> put<wbr>Expect<wbr>String</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-static">
+						<li class="tsd-signature tsd-kind-icon">put<wbr>Expect<wbr>String<span class="tsd-signature-symbol">(</span>session<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">AbstractSession</span>, resource<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, reqHeaders<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span>, data<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Inherited from <a href="zosmfrestclient.html">ZosmfRestClient</a>.<a href="zosmfrestclient.html#putexpectstring">putExpectString</a></p>
+								<ul>
+									<li>Defined in imperative/lib/rest/src/client/RestClient.d.ts:144</li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>REST HTTP PUT operation</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>static</dt>
+									<dd></dd>
+									<dt>throws</dt>
+									<dd><p>if the request gets a status code outside of the 200 range
+										or other connection problems occur (e.g. connection refused)</p>
+									</dd>
+									<dt>memberof</dt>
+									<dd><p>RestClient</p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>session: <span class="tsd-signature-type">AbstractSession</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>representing connection to this api</p>
+									</div>
+								</li>
+								<li>
+									<h5>resource: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>URI for which this request should go against</p>
+									</div>
+								</li>
+								<li>
+									<h5>reqHeaders: <span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>headers to include in the REST request</p>
+									</div>
+								</li>
+								<li>
+									<h5>data: <span class="tsd-signature-type">any</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>payload data</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span></h4>
+							<ul>
+								<li>response body content from http(s) call</li>
+							</ul>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-static">
+					<a name="putstreamed" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> put<wbr>Streamed</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-static">
+						<li class="tsd-signature tsd-kind-icon">put<wbr>Streamed<span class="tsd-signature-symbol">(</span>session<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">AbstractSession</span>, resource<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, reqHeaders<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span>, responseStream<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Writable</span>, requestStream<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Readable</span>, normalizeResponseNewLines<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">boolean</span>, normalizeRequestNewLines<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">boolean</span>, task<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">ITaskWithStatus</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Inherited from <a href="zosmfrestclient.html">ZosmfRestClient</a>.<a href="zosmfrestclient.html#putstreamed">putStreamed</a></p>
+								<ul>
+									<li>Defined in imperative/lib/rest/src/client/RestClient.d.ts:204</li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>REST HTTP PUT operation with streamed response and request</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>static</dt>
+									<dd></dd>
+									<dt>throws</dt>
+									<dd><p>if the request gets a status code outside of the 200 range
+										or other connection problems occur (e.g. connection refused)</p>
+									</dd>
+									<dt>memberof</dt>
+									<dd><p>RestClient</p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>session: <span class="tsd-signature-type">AbstractSession</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>representing connection to this api</p>
+									</div>
+								</li>
+								<li>
+									<h5>resource: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>URI for which this request should go against</p>
+									</div>
+								</li>
+								<li>
+									<h5>reqHeaders: <span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>headers to include in the REST request</p>
+									</div>
+								</li>
+								<li>
+									<h5>responseStream: <span class="tsd-signature-type">Writable</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>stream to which the response data will be written</p>
+									</div>
+								</li>
+								<li>
+									<h5>requestStream: <span class="tsd-signature-type">Readable</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>stream from which payload data will be read</p>
+									</div>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> normalizeResponseNewLines: <span class="tsd-signature-type">boolean</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>streaming only - true if you want newlines to be \r\n on windows
+										when receiving data from the server to responseStream. Don&#39;t set this for binary responses</p>
+									</div>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> normalizeRequestNewLines: <span class="tsd-signature-type">boolean</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>streaming only - true if you want \r\n to be replaced with \n when sending
+										data to the server from requestStream. Don&#39;t set this for binary requests</p>
+									</div>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> task: <span class="tsd-signature-type">ITaskWithStatus</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>task used to update the user on the progress of their request</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span></h4>
+							<ul>
+								<li>empty string - data is not buffered for streamed requests</li>
+							</ul>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-static">
+					<a name="putstreamedrequestonly" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> put<wbr>Streamed<wbr>Request<wbr>Only</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-static">
+						<li class="tsd-signature tsd-kind-icon">put<wbr>Streamed<wbr>Request<wbr>Only<span class="tsd-signature-symbol">(</span>session<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">AbstractSession</span>, resource<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, reqHeaders<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span>, requestStream<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Readable</span>, normalizeRequestNewLines<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">boolean</span>, task<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">ITaskWithStatus</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Inherited from <a href="zosmfrestclient.html">ZosmfRestClient</a>.<a href="zosmfrestclient.html#putstreamedrequestonly">putStreamedRequestOnly</a></p>
+								<ul>
+									<li>Defined in imperative/lib/rest/src/client/RestClient.d.ts:220</li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>REST HTTP PUT operation with only streamed request, buffers response data and returns it</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>static</dt>
+									<dd></dd>
+									<dt>throws</dt>
+									<dd><p>if the request gets a status code outside of the 200 range
+										or other connection problems occur (e.g. connection refused)</p>
+									</dd>
+									<dt>memberof</dt>
+									<dd><p>RestClient</p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>session: <span class="tsd-signature-type">AbstractSession</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>representing connection to this api</p>
+									</div>
+								</li>
+								<li>
+									<h5>resource: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>URI for which this request should go against</p>
+									</div>
+								</li>
+								<li>
+									<h5>reqHeaders: <span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>headers to include in the REST request</p>
+									</div>
+								</li>
+								<li>
+									<h5>requestStream: <span class="tsd-signature-type">Readable</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>stream from which payload data will be read</p>
+									</div>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> normalizeRequestNewLines: <span class="tsd-signature-type">boolean</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>streaming only - true if you want \r\n to be replaced with \n when sending
+										data to the server from requestStream. Don&#39;t set this for binary requests</p>
+									</div>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> task: <span class="tsd-signature-type">ITaskWithStatus</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>task used to update the user on the progress of their request</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span></h4>
+							<ul>
+								<li>string of the response</li>
+							</ul>
+						</li>
+					</ul>
+				</section>
+			</section>
+		</div>
+		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
+			<nav class="tsd-navigation primary">
+				<ul>
+					<li class="globals  ">
+						<a href="../index.html"><em>Globals</em></a>
+					</li>
+				</ul>
+			</nav>
+			<nav class="tsd-navigation secondary menu-sticky">
+				<ul class="before-current">
+				</ul>
+				<ul class="current">
+					<li class="current tsd-kind-class">
+						<a href="zosmfrestclient.html" class="tsd-kind-icon">Zosmf<wbr>Rest<wbr>Client</a>
+						<ul>
+							<li class=" tsd-kind-constructor tsd-parent-kind-class tsd-is-inherited">
+								<a href="zosmfrestclient.html#constructor" class="tsd-kind-icon">constructor</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-private">
+								<a href="zosmfrestclient.html#mbytesreceived" class="tsd-kind-icon">m<wbr>Bytes<wbr>Received</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-private">
+								<a href="zosmfrestclient.html#mcontentlength" class="tsd-kind-icon">m<wbr>Content<wbr>Length</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-private">
+								<a href="zosmfrestclient.html#mdata" class="tsd-kind-icon">m<wbr>Data</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-private">
+								<a href="zosmfrestclient.html#misjson" class="tsd-kind-icon">m<wbr>IsJson</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-private">
+								<a href="zosmfrestclient.html#mlogger" class="tsd-kind-icon">m<wbr>Logger</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-private">
+								<a href="zosmfrestclient.html#mnormalizerequestnewlines" class="tsd-kind-icon">m<wbr>Normalize<wbr>Request<wbr>Newlines</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-private">
+								<a href="zosmfrestclient.html#mnormalizeresponsenewlines" class="tsd-kind-icon">m<wbr>Normalize<wbr>Response<wbr>Newlines</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-private">
+								<a href="zosmfrestclient.html#mreject" class="tsd-kind-icon">m<wbr>Reject</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-private">
+								<a href="zosmfrestclient.html#mreqheaders" class="tsd-kind-icon">m<wbr>Req<wbr>Headers</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-private">
+								<a href="zosmfrestclient.html#mrequest" class="tsd-kind-icon">m<wbr>Request</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-private">
+								<a href="zosmfrestclient.html#mrequeststream" class="tsd-kind-icon">m<wbr>Request<wbr>Stream</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-private">
+								<a href="zosmfrestclient.html#mresolve" class="tsd-kind-icon">m<wbr>Resolve</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-private">
+								<a href="zosmfrestclient.html#mresource" class="tsd-kind-icon">m<wbr>Resource</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-private">
+								<a href="zosmfrestclient.html#mresponse" class="tsd-kind-icon">m<wbr>Response</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-private">
+								<a href="zosmfrestclient.html#mresponsestream" class="tsd-kind-icon">m<wbr>Response<wbr>Stream</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-private">
+								<a href="zosmfrestclient.html#mtask" class="tsd-kind-icon">m<wbr>Task</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-private">
+								<a href="zosmfrestclient.html#mwritedata" class="tsd-kind-icon">m<wbr>Write<wbr>Data</a>
+							</li>
+							<li class=" tsd-kind-get-signature tsd-parent-kind-class tsd-is-inherited">
+								<a href="zosmfrestclient.html#data" class="tsd-kind-icon">data</a>
+							</li>
+							<li class=" tsd-kind-get-signature tsd-parent-kind-class tsd-is-inherited">
+								<a href="zosmfrestclient.html#datastring" class="tsd-kind-icon">data<wbr>String</a>
+							</li>
+							<li class=" tsd-kind-get-signature tsd-parent-kind-class tsd-is-overwrite">
+								<a href="zosmfrestclient.html#log" class="tsd-kind-icon">log</a>
+							</li>
+							<li class=" tsd-kind-get-signature tsd-parent-kind-class tsd-is-inherited">
+								<a href="zosmfrestclient.html#requestfailure" class="tsd-kind-icon">request<wbr>Failure</a>
+							</li>
+							<li class=" tsd-kind-get-signature tsd-parent-kind-class tsd-is-inherited">
+								<a href="zosmfrestclient.html#requestsuccess" class="tsd-kind-icon">request<wbr>Success</a>
+							</li>
+							<li class=" tsd-kind-get-signature tsd-parent-kind-class tsd-is-inherited">
+								<a href="zosmfrestclient.html#response" class="tsd-kind-icon">response</a>
+							</li>
+							<li class=" tsd-kind-get-signature tsd-parent-kind-class tsd-is-inherited">
+								<a href="zosmfrestclient.html#session" class="tsd-kind-icon">session</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-overwrite tsd-is-protected">
+								<a href="zosmfrestclient.html#appendheaders" class="tsd-kind-icon">append<wbr>Headers</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+								<a href="zosmfrestclient.html#performrest" class="tsd-kind-icon">perform<wbr>Rest</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-overwrite tsd-is-protected">
+								<a href="zosmfrestclient.html#processerror" class="tsd-kind-icon">process<wbr>Error</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+								<a href="zosmfrestclient.html#request" class="tsd-kind-icon">request</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-static">
+								<a href="zosmfrestclient.html#deleteexpectbuffer" class="tsd-kind-icon">delete<wbr>Expect<wbr>Buffer</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-static">
+								<a href="zosmfrestclient.html#deleteexpectfullresponse" class="tsd-kind-icon">delete<wbr>Expect<wbr>Full<wbr>Response</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-inherited tsd-is-static">
+								<a href="zosmfrestclient.html#deleteexpectjson" class="tsd-kind-icon">delete<wbr>ExpectJSON</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-static">
+								<a href="zosmfrestclient.html#deleteexpectstring" class="tsd-kind-icon">delete<wbr>Expect<wbr>String</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-static">
+								<a href="zosmfrestclient.html#deletestreamed" class="tsd-kind-icon">delete<wbr>Streamed</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-static">
+								<a href="zosmfrestclient.html#getexpectbuffer" class="tsd-kind-icon">get<wbr>Expect<wbr>Buffer</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-static">
+								<a href="zosmfrestclient.html#getexpectfullresponse" class="tsd-kind-icon">get<wbr>Expect<wbr>Full<wbr>Response</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-inherited tsd-is-static">
+								<a href="zosmfrestclient.html#getexpectjson" class="tsd-kind-icon">get<wbr>ExpectJSON</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-static">
+								<a href="zosmfrestclient.html#getexpectstring" class="tsd-kind-icon">get<wbr>Expect<wbr>String</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-static">
+								<a href="zosmfrestclient.html#getstreamed" class="tsd-kind-icon">get<wbr>Streamed</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-static">
+								<a href="zosmfrestclient.html#hasquerystring" class="tsd-kind-icon">has<wbr>Query<wbr>String</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-static">
+								<a href="zosmfrestclient.html#postexpectbuffer" class="tsd-kind-icon">post<wbr>Expect<wbr>Buffer</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-static">
+								<a href="zosmfrestclient.html#postexpectfullresponse" class="tsd-kind-icon">post<wbr>Expect<wbr>Full<wbr>Response</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-inherited tsd-is-static">
+								<a href="zosmfrestclient.html#postexpectjson" class="tsd-kind-icon">post<wbr>ExpectJSON</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-static">
+								<a href="zosmfrestclient.html#postexpectstring" class="tsd-kind-icon">post<wbr>Expect<wbr>String</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-static">
+								<a href="zosmfrestclient.html#poststreamed" class="tsd-kind-icon">post<wbr>Streamed</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-static">
+								<a href="zosmfrestclient.html#poststreamedrequestonly" class="tsd-kind-icon">post<wbr>Streamed<wbr>Request<wbr>Only</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-static">
+								<a href="zosmfrestclient.html#putexpectbuffer" class="tsd-kind-icon">put<wbr>Expect<wbr>Buffer</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-static">
+								<a href="zosmfrestclient.html#putexpectfullresponse" class="tsd-kind-icon">put<wbr>Expect<wbr>Full<wbr>Response</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-inherited tsd-is-static">
+								<a href="zosmfrestclient.html#putexpectjson" class="tsd-kind-icon">put<wbr>ExpectJSON</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-static">
+								<a href="zosmfrestclient.html#putexpectstring" class="tsd-kind-icon">put<wbr>Expect<wbr>String</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-static">
+								<a href="zosmfrestclient.html#putstreamed" class="tsd-kind-icon">put<wbr>Streamed</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-static">
+								<a href="zosmfrestclient.html#putstreamedrequestonly" class="tsd-kind-icon">put<wbr>Streamed<wbr>Request<wbr>Only</a>
+							</li>
+						</ul>
+					</li>
+				</ul>
+				<ul class="after-current">
+				</ul>
+			</nav>
+		</div>
+	</div>
+</div>
+<footer class="with-border-bottom">
+	<div class="container">
+		<h2>Legend</h2>
+		<div class="tsd-legend-group">
+			<ul class="tsd-legend">
+				<li class="tsd-kind-module"><span class="tsd-kind-icon">Module</span></li>
+				<li class="tsd-kind-object-literal"><span class="tsd-kind-icon">Object literal</span></li>
+				<li class="tsd-kind-variable"><span class="tsd-kind-icon">Variable</span></li>
+				<li class="tsd-kind-function"><span class="tsd-kind-icon">Function</span></li>
+				<li class="tsd-kind-function tsd-has-type-parameter"><span class="tsd-kind-icon">Function with type parameter</span></li>
+				<li class="tsd-kind-index-signature"><span class="tsd-kind-icon">Index signature</span></li>
+				<li class="tsd-kind-type-alias"><span class="tsd-kind-icon">Type alias</span></li>
+				<li class="tsd-kind-type-alias tsd-has-type-parameter"><span class="tsd-kind-icon">Type alias with type parameter</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-enum"><span class="tsd-kind-icon">Enumeration</span></li>
+				<li class="tsd-kind-enum-member"><span class="tsd-kind-icon">Enumeration member</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-enum"><span class="tsd-kind-icon">Property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-enum"><span class="tsd-kind-icon">Method</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-interface"><span class="tsd-kind-icon">Interface</span></li>
+				<li class="tsd-kind-interface tsd-has-type-parameter"><span class="tsd-kind-icon">Interface with type parameter</span></li>
+				<li class="tsd-kind-constructor tsd-parent-kind-interface"><span class="tsd-kind-icon">Constructor</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-interface"><span class="tsd-kind-icon">Property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-interface"><span class="tsd-kind-icon">Method</span></li>
+				<li class="tsd-kind-index-signature tsd-parent-kind-interface"><span class="tsd-kind-icon">Index signature</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-class"><span class="tsd-kind-icon">Class</span></li>
+				<li class="tsd-kind-class tsd-has-type-parameter"><span class="tsd-kind-icon">Class with type parameter</span></li>
+				<li class="tsd-kind-constructor tsd-parent-kind-class"><span class="tsd-kind-icon">Constructor</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-class"><span class="tsd-kind-icon">Property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class"><span class="tsd-kind-icon">Method</span></li>
+				<li class="tsd-kind-accessor tsd-parent-kind-class"><span class="tsd-kind-icon">Accessor</span></li>
+				<li class="tsd-kind-index-signature tsd-parent-kind-class"><span class="tsd-kind-icon">Index signature</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-constructor tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited constructor</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited method</span></li>
+				<li class="tsd-kind-accessor tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited accessor</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-protected"><span class="tsd-kind-icon">Protected property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-protected"><span class="tsd-kind-icon">Protected method</span></li>
+				<li class="tsd-kind-accessor tsd-parent-kind-class tsd-is-protected"><span class="tsd-kind-icon">Protected accessor</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private method</span></li>
+				<li class="tsd-kind-accessor tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private accessor</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-static"><span class="tsd-kind-icon">Static property</span></li>
+				<li class="tsd-kind-call-signature tsd-parent-kind-class tsd-is-static"><span class="tsd-kind-icon">Static method</span></li>
+			</ul>
+		</div>
+	</div>
+</footer>
+<div class="container tsd-generator">
+	<p>Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p>
+</div>
+<div class="overlay"></div>
+<script src="../assets/js/main.js"></script>
+<script>if (location.protocol == 'file:') document.write('<script src="../assets/js/search.js"><' + '/script>');</script>
+</body>
+</html>

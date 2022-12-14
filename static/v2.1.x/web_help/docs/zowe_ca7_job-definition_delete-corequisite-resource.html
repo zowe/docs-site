@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>ca7 job-definition delete-corequisite-resource</title>
+<link rel="stylesheet" href="../css/bundle-docs.css">
+<link rel="stylesheet" href="../css/docs.css">
+<article class="markdown-body">
+<h2><a href="zowe.html">zowe</a> › <a href="zowe_ca7.html">ca7</a> › <a href="zowe_ca7_job-definition.html">job-definition</a> › <a href="zowe_ca7_job-definition_delete-corequisite-resource.html">delete-corequisite-resource</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
+<p>Delete Corequisite Resource</p>
+<h4>Usage</h4>
+<p>zowe ca7 job-definition delete-corequisite-resource [options]</p>
+<h4>Required Options</h4>
+<ul>
+<li>
+<p><code>--job-name</code> | <code>--jn</code> <em>(string)</em></p>
+<ul>
+<li>Specifies the job name on which the indicated function is performed.<br>
+Limits: 1 to 8 alphanumeric characters</li>
+</ul>
+</li>
+<li>
+<p><code>--resource-name</code> | <code>--rn</code> <em>(string)</em></p>
+<ul>
+<li>Specifies the resource name being connected to the job.<br>
+Limits: 1 to 44 characters, the first character must be nonblank, and no embedded blanks<br>
+Exception: If the resource connection is made to a resource count resource,<br>
+the resource name can be from 1 to 39 characters followed by a / (slash) and<br>
+a 1 through 4 numeric value indicating the number of occurrences for the resource that the job uses.</li>
+</ul>
+</li>
+</ul>
+<h4>Options</h4>
+<ul>
+<li>
+<p><code>--schid</code> <em>(string)</em></p>
+<ul>
+<li>(Optional) Specifies the schedule ID (of this job) for which a user requirement is applied.<br>
+A zero default cannot be specified for one connection and a nonzero schedule ID used for<br>
+a subsequent connection to the same job with the same user requirement description.<br>
+An attempt to make such a connection results in an error message that is issued.<br>
+Default: 0, which indicates that the requirement holds for all schedule IDs<br>
+Limits: 1 to 3 numeric characters from 0 through 999</li>
+</ul>
+</li>
+</ul>
+<h4>CA7 Connection Options</h4>
+<ul>
+<li>
+<p><code>--host</code> | <code>-H</code> <em>(string)</em></p>
+<ul>
+<li>Host name of the CA7 API service that is running on the mainframe system.</li>
+</ul>
+</li>
+<li>
+<p><code>--port</code> | <code>-P</code> <em>(number)</em></p>
+<ul>
+<li>Port for the CA7 API service that is running on the mainframe system.</li>
+</ul>
+</li>
+<li>
+<p><code>--user</code> | <code>-u</code> <em>(string)</em></p>
+<ul>
+<li>User name for authenticating connections to the CA7 API service that is running on the mainframe system.</li>
+</ul>
+</li>
+<li>
+<p><code>--password</code> | <code>--pass</code> | <code>--pw</code> <em>(string)</em></p>
+<ul>
+<li>Password for authenticating connections to the CA7 API service that is running on the mainframe system.</li>
+</ul>
+</li>
+<li>
+<p><code>--base-path</code> | <code>--bp</code> <em>(string)</em></p>
+<ul>
+<li>The base path for your API mediation layer instance. Specify this option to prepend the base path to all resources when making REST requests. Do not specify this option if you are not using an API mediation layer.</li>
+</ul>
+</li>
+<li>
+<p><code>--protocol</code> | <code>-o</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>Specifies protocol to use for CA7 connection (http or https).</p>
+<p>Allowed values: http, https</p>
+</li>
+</ul>
+</li>
+</ul>
+<h4>Profile Options</h4>
+<ul>
+<li>
+<p><code>--ca7-profile</code> | <code>--ca7-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (ca7) profile to load for this command execution.</li>
+</ul>
+</li>
+<li>
+<p><code>--base-profile</code> | <code>--base-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (base) profile to load for this command execution.</li>
+</ul>
+</li>
+</ul>
+<h4>Base Connection Options</h4>
+<ul>
+<li>
+<p><code>--reject-unauthorized</code> | <code>--ru</code> <em>(boolean)</em></p>
+<ul>
+<li>
+<p>Reject self-signed certificates.</p>
+<p>Default value: true</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--token-type</code> | <code>--tt</code> <em>(string)</em></p>
+<ul>
+<li>The type of token to get and use for the API. Omit this option to use the default token type, which is provided by 'zowe auth login'.</li>
+</ul>
+</li>
+<li>
+<p><code>--token-value</code> | <code>--tv</code> <em>(string)</em></p>
+<ul>
+<li>The value of the token to pass to the API.</li>
+</ul>
+</li>
+<li>
+<p><code>--cert-file</code> <em>(local file path)</em></p>
+<ul>
+<li>The file path to a certificate file to use for authentication</li>
+</ul>
+</li>
+<li>
+<p><code>--cert-key-file</code> <em>(local file path)</em></p>
+<ul>
+<li>The file path to a certificate key file to use for authentication</li>
+</ul>
+</li>
+</ul>
+<h4>Examples</h4>
+<ul>
+<li>
+<p>Deletes a job named JOBA with resource name <a href="http://RESOURCE.NAME">RESOURCE.NAME</a> and schid 42:</p>
+<ul>
+<li><code>zowe ca7 job-definition delete-corequisite-resource --jn JOBA --rn RESOURCE.NAME --schid 42</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe ca7 job-definition delete-corequisite-resource --jn JOBA --rn RESOURCE.NAME --schid 42">Copy</button></li>
+</ul>
+</li>
+</ul>
+</article>
+<script src="../js/bundle-docs.js"></script>
+<script src="../js/docs.js"></script>

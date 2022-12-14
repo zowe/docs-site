@@ -1,0 +1,5 @@
+I, Mark Ackert hereby sign-off-by all of my past commits to this repo subject to the Developer Certificate of Origin (DCO), Version 1.1. In the past I have used emails: 35308966+MarkAckert@users.noreply.github.com, Mark.Ackert@ca.com
+
+90cb4392b50c9a77bf8c67b500ea1911fc0f7a01 remove zowe desktop summary, will be in 0.9.6
+70c00a78eb307e818de25e952af6cc6577c404ac Add block to install section for z/OSMF Trust Error
+ef54594a5eb5e343d0b7b9354ab9653c5efd9cc6 Small wording changes

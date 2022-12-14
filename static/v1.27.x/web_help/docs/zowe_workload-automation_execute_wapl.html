@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>workload-automation execute wapl</title>
+<link rel="stylesheet" href="../css/bundle-docs.css">
+<link rel="stylesheet" href="../css/docs.css">
+<article class="markdown-body">
+<h2><a href="zowe.html">zowe</a> › <a href="zowe_workload-automation.html">workload-automation</a> › <a href="zowe_workload-automation_execute.html">execute</a> › <a href="zowe_workload-automation_execute_wapl.html">wapl</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
+<p>Execute one or multiple WAPL statements from a command line.</p>
+<h4>Usage</h4>
+<p>zowe workload-automation execute wapl [options]</p>
+<h4>Options</h4>
+<ul>
+<li>
+<p><code>--command</code>  | <code>--cmd</code> <em>(string)</em></p>
+<ul>
+<li>Execute one or multiple WAPL statements from a command line using semicolon (;) as command separator</li>
+</ul>
+</li>
+<li>
+<p><code>--file</code>  | <code>-f</code> <em>(string)</em></p>
+<ul>
+<li>A local file containing WAPL statements to be executed</li>
+</ul>
+</li>
+</ul>
+<h4>workload-automation Connection Options</h4>
+<ul>
+<li>
+<p><code>--host</code>  | <code>-H</code> <em>(string)</em></p>
+<ul>
+<li>The Z connector server host name or API ML server host name</li>
+</ul>
+</li>
+<li>
+<p><code>--port</code>  | <code>-P</code> <em>(number)</em></p>
+<ul>
+<li>The Z connector server port or API ML server port</li>
+</ul>
+</li>
+<li>
+<p><code>--user</code>  | <code>-u</code> <em>(string)</em></p>
+<ul>
+<li>The Z connector user ID</li>
+</ul>
+</li>
+<li>
+<p><code>--password</code>  | <code>--pwd</code> <em>(string)</em></p>
+<ul>
+<li>The Z connector password</li>
+</ul>
+</li>
+<li>
+<p><code>--engine</code>  | <code>--eng</code> <em>(string)</em></p>
+<ul>
+<li>Name of the engine, as defined on the Z connector</li>
+</ul>
+</li>
+<li>
+<p><code>--base-path</code>  | <code>--bp</code> <em>(string)</em></p>
+<ul>
+<li>Base path of your API mediation layer instance. If a base path is specified, the plug-in connects to API ML. Specify this value according to the yaml static file added to API ML</li>
+</ul>
+</li>
+<li>
+<p><code>--reject-unauthorized</code>  | <code>--ru</code> <em>(boolean)</em></p>
+<ul>
+<li>
+<p>Reject self-signed certificates</p>
+<p>Default value: true</p>
+</li>
+</ul>
+</li>
+</ul>
+<h4>Profile Options</h4>
+<ul>
+<li>
+<p><code>--wa-profile</code>  | <code>--wa-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (wa) profile to load for this command execution.</li>
+</ul>
+</li>
+<li>
+<p><code>--base-profile</code>  | <code>--base-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (base) profile to load for this command execution.</li>
+</ul>
+</li>
+</ul>
+<h4>Base Connection Options</h4>
+<ul>
+<li>
+<p><code>--token-type</code>  | <code>--tt</code> <em>(string)</em></p>
+<ul>
+<li>The type of token to get and use for the API. Omit this option to use the default token type, which is provided by 'zowe auth login'.</li>
+</ul>
+</li>
+<li>
+<p><code>--token-value</code>  | <code>--tv</code> <em>(string)</em></p>
+<ul>
+<li>The value of the token to pass to the API.</li>
+</ul>
+</li>
+<li>
+<p><code>--cert-file</code>  <em>(local file path)</em></p>
+<ul>
+<li>The file path to a certificate file to use for authentication</li>
+</ul>
+</li>
+<li>
+<p><code>--cert-key-file</code>  <em>(local file path)</em></p>
+<ul>
+<li>The file path to a certificate key file to use for authentication</li>
+</ul>
+</li>
+</ul>
+<h4>Examples</h4>
+<ul>
+<li>
+<p>List all applications named MYAD:</p>
+<ul>
+<li><code>zowe workload-automation execute wapl --command  &quot;LOADDEF AD* DATA(-) LOADER(*);OPTIONS STRIP(Y) EXPAND(N) SELECT(Y) SERVER(Y);LIST AD ADID(MYAD)&quot;</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe workload-automation execute wapl --command  &quot;LOADDEF AD* DATA(-) LOADER(*);OPTIONS STRIP(Y) EXPAND(N) SELECT(Y) SERVER(Y);LIST AD ADID(MYAD)&quot;">Copy</button></li>
+</ul>
+</li>
+<li>
+<p>Execute a file with WAPL statements:</p>
+<ul>
+<li><code>zowe workload-automation execute wapl --file  waplfile.txt</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe workload-automation execute wapl --file  waplfile.txt">Copy</button></li>
+</ul>
+</li>
+</ul>
+</article>
+<script src="../js/bundle-docs.js"></script>
+<script src="../js/docs.js"></script>

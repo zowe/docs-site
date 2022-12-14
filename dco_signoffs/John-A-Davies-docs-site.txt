@@ -1,0 +1,30 @@
+I, John-A-Davies hereby sign-off-by all of my past commits to this repo subject to the Developer Certificate of Origin (DCO), Version 1.1. In the past I have used emails: 36740892+John-A-Davies@users.noreply.github.com
+
+ef042300531480fedb43318190ee758936012eb7 Node server to node cluster (#503)
+
+* Update mvd-creatingappplugins.md
+
+* Update mvd-plugindefandstruct.md
+
+`pluginsDir` did not exist so I changed it to `plugins`.
+
+* Update zlux-app-server.md
+
+* Update zlux-workshop-user-browser.md
+
+ce3452e76ff3f2fef2ef79098d7a0c4f4cad037c typo (#493)
+
+Should say "to resize" instead of "to resized".
+
+ff71def9599be89b5df47a9bd02d0d129a9374ed Update install-zos.md
+
+737270bf4b183fcb2b3086f8a28b0c5c7ba74736 Update api-mediation-security.md
+
+6da442a1c08aac52e8d581404ef30d5d90f571b4 Update troubleshootinstall.md
+
+3aae065c31c3c7ec158db8c0b2e3460371d2ed4e Update gettingstarted.md
+
+b5f3c2ae4091b3254eb9d02d956843096a2b81cd Update gettingstarted.md
+
+The relative directory of paxes from builds is `../paxes`, not `../../paxes`.
+

@@ -1,0 +1,86 @@
+:root {
+  --ifm-background-section-dark: #3d3f42;
+}
+
+html[data-theme="light"] .card {
+  background-color: var(--ifm-background-section-color);
+}
+
+.displayNone {
+  display: none;
+}
+
+.overflow {
+  height: 12rem;
+  overflow-y: auto;
+}
+
+html[data-theme="dark"] .card {
+  background-color: var(--ifm-background-section-dark);
+}
+
+.section {
+  padding: 3rem 0rem;
+}
+
+.card {
+  position: relative;
+  height: 100%;
+}
+
+.card .metadata {
+  min-height: 220px;
+}
+
+.card img {
+  width: 25px;
+}
+
+.featureImage {
+  height: 200px;
+  width: 200px;
+}
+
+button img {
+  margin-right: -15px;
+}
+
+.versionButton:hover {
+  background-color: inherit;
+  color: var(--ifm-link-hover-color);
+}
+
+.versionButton {
+  border-radius: inherit;
+  font-weight: 400;
+  font-family: inherit;
+  font-size: inherit;
+}
+
+@media screen and (min-width: 1450px) {
+  .card .metadata {
+    min-height: 165px;
+  }
+}
+
+@media (min-width: 1100px) and (max-width: 1300px) {
+  .card .metadata {
+    min-height: 250px;
+  }
+}
+
+@media screen and (max-width: 1100px) {
+  .section {
+    padding: 3rem 1rem;
+  }
+
+  .card .metadata {
+    min-height: 325px;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .card .metadata {
+    min-height: inherit;
+  }
+}

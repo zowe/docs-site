@@ -1,0 +1,50 @@
+I, AshleyLi hereby sign-off-by all of my past commits to this repo subject to the Developer Certificate of Origin (DCO), Version 1.1. In the past I have used emails: nannanli@cn.ibm.com
+
+639e6afe87f46338e9a3b199ff724956fce4b485 Update the Node.js install topic
+
+- Point users to the Node.js blog for details to obtain the SDK
+- Summarized what's needed to satisfy the need to run Zowe
+9da900a391491c2075ff91c5677ae307216ad3cc Moved archive information to the doc wiki
+5506a170c87191e3e3dc9f2ca67f5d17b75f6d6f Update versions.json
+
+Add v1.1.x as a legacy version
+676f8a5360003b76cf31ddb1239531bee5babb4e Update summaryofchanges.md
+
+Co-Authored-By: Jordan Cain <jordancain@users.noreply.github.com>
+2ed7a76b72ce2ede8a652cca22b39e1b18200058 Release notes for Zowe USS API
+
+Co-Authored-By: Jordan Cain <jordancain@users.noreply.github.com>
+f7d24a924a3a995015e12ae23fc79aebc2ada85c Fix link
+4316817a68fa0ddaa4fe31aca4c2581a22860f80 Update version mumber to 1.1.1 and update homepage
+818fc4639a46fc40e99986b7cd042a6ef3db632f Placeholder for v1.1.1 release notes
+700bf7714514d89bdb081ce3ca70b467e890456b Update release version on the homepage
+764346cdc31413529b3a009925b0bb73f8d7f118 Change v1.0.2 to v1.1.0 in all required locations in docs
+41099f16743593151a316f84f17d6d4d100a5cbe #446 Remove the z/OS prereq npm from system requirements
+e9409aae2714530dc7304300162099b69731fd44 Update summaryofchanges.md
+7414feac4731ce4a96162be123f1f2d8e92d4765 Edits to the troubleshooting
+
+- Adjusted structure to use symptom and solution format
+- Fixed typos
+- Updated wording
+
+Co-Authored-By: joe-winchester <joe-winchester@users.noreply.github.com>
+5526206cd28c5a034488e68667a3775136aa6e8d #411 Clarify juncture of BPX access, fix links
+
+@john-a-davies Thanks!
+8410ddf354366d67bb406525ecaae0ccf3788a9d Update summaryofchanges.md
+491ac248b8149855a2e338db51ad6c7ff8f47287 Update install-zos.md
+7803f3c2960a5d21e350bb7419f6e01346d1546c Update Zowe_Documentation_1.0.0.pdf
+4594c1514cbb87b88e93126e2afd2c25df09e319 Installation changes in release notes
+97e5801c1c6d0521a27c9f3ae210c7a693fc015d Revert "Revert "Create Zowe_Overview.pdf""
+
+This reverts commit 580a4e7a6a3ee17b5e81ff0945f378f028480940.
+580a4e7a6a3ee17b5e81ff0945f378f028480940 Revert "Create Zowe_Overview.pdf"
+
+This reverts commit d740a9d1e4364d54e61eed81d4f28626a70f4215.
+d740a9d1e4364d54e61eed81d4f28626a70f4215 Create Zowe_Overview.pdf
+314c5668814aaee88631ade562714a19a075fcd1 Remove repetitive Troubleshooting word
+b0d209751ac3313f2a5ec1696ce7bb26dd087154 Fix links
+6cfe3097402b100dc90b1d4c833e675e9a15cb81 Upgrade version to 1.0.1, remove unused files and update homepage
+
+The ink to the overview deck is a placeholder.
+12ffd4591ede69bbbe1ca4ba12ff65ea3d8d5e9e Add release notes skeleton for 1.0.1

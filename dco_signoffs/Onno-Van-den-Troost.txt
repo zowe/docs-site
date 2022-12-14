@@ -1,0 +1,8 @@
+I, Onno-Van-den-Troost hereby sign-off-by all of my past commits to this repo subject to the Developer Certificate of Origin (DCO), Version 1.1. In the past I have used emails: onno@us.ibm.com
+49648041+OnnoVdT@users.noreply.github.com
+
+https://github.com/zowe/docs-site/pull/986/commits/affb69cb4de697daf3338200495d3bedea70dc45 - Update systemrequirements.md
+https://github.com/zowe/docs-site/pull/986/commits/734c5742f325df118b3aaab4fb0b7ba99e3d975b - Update systemrequirements.md
+https://github.com/zowe/docs-site/pull/987/commits/734c5742f325df118b3aaab4fb0b7ba99e3d975b - Update systemrequirements.md
+https://github.com/zowe/docs-site/pull/992/commits/1d6b27613066d0b64ecef4b221a8d1c5acd0e964 - Update configure-zos-system.md
+

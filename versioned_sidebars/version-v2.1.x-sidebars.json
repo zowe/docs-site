@@ -1,0 +1,1084 @@
+{
+  "version-v2.1.x/getting-started": [
+    {
+      "collapsed": false,
+      "type": "category",
+      "label": "Zowe fundamentals",
+      "items": [
+        {
+          "type": "doc",
+          "id": "version-v2.1.x/getting-started/overview"
+        },
+        {
+          "type": "doc",
+          "id": "version-v2.1.x/getting-started/zowe-architecture"
+        }
+      ]
+    },
+    {
+      "collapsed": true,
+      "type": "category",
+      "label": "FAQ",
+      "items": [
+        {
+          "type": "doc",
+          "id": "version-v2.1.x/getting-started/zowe_faq"
+        },
+        {
+          "type": "doc",
+          "id": "version-v2.1.x/getting-started/zowe_v2_faq"
+        }
+      ]
+    },
+    {
+      "collapsed": true,
+      "type": "category",
+      "label": "Release notes",
+      "items": [
+        {
+          "type": "doc",
+          "id": "version-v2.1.x/getting-started/release-notes/v2_1_0"
+        },
+        {
+          "type": "doc",
+          "id": "version-v2.1.x/getting-started/release-notes/v2_0_0"
+        },
+        {
+          "type": "doc",
+          "id": "version-v2.1.x/getting-started/zowe-office-hours"
+        }
+      ]
+    },
+    {
+      "collapsed": true,
+      "type": "category",
+      "label": "Quick start",
+      "items": [
+        {
+          "type": "doc",
+          "id": "version-v2.1.x/getting-started/cli-getting-started"
+        }
+      ]
+    },
+    {
+      "collapsed": true,
+      "type": "category",
+      "label": "Migrating from V1 to V2",
+      "items": [
+        {
+          "type": "doc",
+          "id": "version-v2.1.x/extend/migrate-extensions"
+        }
+      ]
+    },
+    {
+      "type": "doc",
+      "id": "version-v2.1.x/getting-started/zowe-resources"
+    }
+  ],
+  "version-v2.1.x/setup": [
+    {
+      "type": "doc",
+      "id": "version-v2.1.x/user-guide/install-overview"
+    },
+    {
+      "collapsed": true,
+      "type": "category",
+      "label": "Installing Zowe z/OS components",
+      "items": [
+        {
+          "type": "doc",
+          "id": "version-v2.1.x/user-guide/install-zos"
+        },
+        {
+          "collapsed": true,
+          "type": "category",
+          "label": "Planning",
+          "items": [
+            {
+              "type": "doc",
+              "id": "version-v2.1.x/user-guide/installandconfig"
+            },
+            {
+              "type": "doc",
+              "id": "version-v2.1.x/user-guide/configure-uss"
+            }
+          ]
+        },
+        {
+          "collapsed": true,
+          "type": "category",
+          "label": "System requirements",
+          "items": [
+            {
+              "type": "doc",
+              "id": "version-v2.1.x/user-guide/systemrequirements-zos"
+            },
+            {
+              "type": "doc",
+              "id": "version-v2.1.x/user-guide/install-nodejs-zos"
+            },
+            {
+              "type": "doc",
+              "id": "version-v2.1.x/user-guide/systemrequirements-zosmf"
+            },
+            {
+              "type": "doc",
+              "id": "version-v2.1.x/user-guide/systemrequirements-zosmf-lite"
+            }
+          ]
+        },
+        {
+          "collapsed": true,
+          "type": "category",
+          "label": "Installing",
+          "items": [
+            {
+              "type": "doc",
+              "id": "version-v2.1.x/user-guide/install-zowe-zos-convenience-build"
+            },
+            {
+              "collapsed": true,
+              "type": "category",
+              "label": "Installing Zowe SMP/E build",
+              "items": [
+                {
+                  "type": "doc",
+                  "id": "version-v2.1.x/user-guide/install-zowe-smpe"
+                },
+                {
+                  "type": "doc",
+                  "id": "version-v2.1.x/user-guide/install-zowe-smpe-zosmf-workflow"
+                }
+              ]
+            },
+            {
+              "collapsed": true,
+              "type": "category",
+              "label": "Installing Zowe Portable Software Instance",
+              "items": [
+                {
+                  "type": "doc",
+                  "id": "version-v2.1.x/user-guide/install-zowe-pswi"
+                },
+                {
+                  "type": "doc",
+                  "id": "version-v2.1.x/user-guide/install-zowe-pswi-address-requirements"
+                },
+                {
+                  "type": "doc",
+                  "id": "version-v2.1.x/user-guide/install-zowe-pswi-acquire"
+                },
+                {
+                  "type": "doc",
+                  "id": "version-v2.1.x/user-guide/install-zowe-pswi-deployment"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "collapsed": true,
+          "type": "category",
+          "label": "Configuring",
+          "items": [
+            {
+              "type": "doc",
+              "id": "version-v2.1.x/user-guide/initialize-zos-system"
+            },
+            {
+              "type": "doc",
+              "id": "version-v2.1.x/user-guide/initialize-mvs-datasets"
+            },
+            {
+              "type": "doc",
+              "id": "version-v2.1.x/user-guide/initialize-security-configuration"
+            },
+            {
+              "type": "doc",
+              "id": "version-v2.1.x/user-guide/configure-zos-system"
+            },
+            {
+              "type": "doc",
+              "id": "version-v2.1.x/user-guide/grant-user-permission-zosmf"
+            },
+            {
+              "type": "doc",
+              "id": "version-v2.1.x/user-guide/apf-authorize-load-library"
+            },
+            {
+              "collapsed": true,
+              "type": "category",
+              "label": "Configuring certificates",
+              "items": [
+                {
+                  "type": "doc",
+                  "id": "version-v2.1.x/user-guide/configure-certificates-keystore"
+                },
+                {
+                  "type": "doc",
+                  "id": "version-v2.1.x/user-guide/configure-certificates-keyring"
+                },
+                {
+                  "type": "doc",
+                  "id": "version-v2.1.x/user-guide/certificates-setup"
+                }
+              ]
+            },
+            {
+              "type": "doc",
+              "id": "version-v2.1.x/user-guide/initialize-vsam-dataset"
+            },
+            {
+              "type": "doc",
+              "id": "version-v2.1.x/user-guide/install-stc-members"
+            },
+            {
+              "type": "doc",
+              "id": "version-v2.1.x/user-guide/configure-xmem-server"
+            },
+            {
+              "type": "doc",
+              "id": "version-v2.1.x/user-guide/configure-auxiliary-address-space"
+            },
+            {
+              "type": "doc",
+              "id": "version-v2.1.x/user-guide/configure-zowe-zosmf-workflow"
+            }
+          ]
+        },
+        {
+          "collapsed": true,
+          "type": "category",
+          "label": "High Availability",
+          "items": [
+            {
+              "type": "doc",
+              "id": "version-v2.1.x/user-guide/zowe-ha-overview"
+            },
+            {
+              "type": "doc",
+              "id": "version-v2.1.x/user-guide/configure-sysplex"
+            },
+            {
+              "type": "doc",
+              "id": "version-v2.1.x/user-guide/systemrequirements-zosmf-ha"
+            },
+            {
+              "type": "doc",
+              "id": "version-v2.1.x/user-guide/configure-caching-service-ha"
+            }
+          ]
+        },
+        {
+          "type": "doc",
+          "id": "version-v2.1.x/user-guide/start-zowe-zos"
+        },
+        {
+          "type": "doc",
+          "id": "version-v2.1.x/user-guide/verify-zowe-runtime-install"
+        }
+      ]
+    },
+    {
+      "collapsed": true,
+      "type": "category",
+      "label": "Installing Zowe Containers",
+      "items": [
+        {
+          "type": "doc",
+          "id": "version-v2.1.x/user-guide/k8s-introduction"
+        },
+        {
+          "type": "doc",
+          "id": "version-v2.1.x/user-guide/k8s-prereqs"
+        },
+        {
+          "type": "doc",
+          "id": "version-v2.1.x/user-guide/k8s-downloading"
+        },
+        {
+          "type": "doc",
+          "id": "version-v2.1.x/user-guide/k8s-config"
+        },
+        {
+          "type": "doc",
+          "id": "version-v2.1.x/user-guide/k8s-using"
+        }
+      ]
+    },
+    {
+      "collapsed": true,
+      "type": "category",
+      "label": "Installing Zowe CLI",
+      "items": [
+        {
+          "type": "doc",
+          "id": "version-v2.1.x/user-guide/cli-install-cli-checklist"
+        },
+        {
+          "type": "doc",
+          "id": "version-v2.1.x/user-guide/systemrequirements-cli"
+        },
+        {
+          "collapsed": true,
+          "type": "category",
+          "label": "Install CLI",
+          "items": [
+            {
+              "type": "doc",
+              "id": "version-v2.1.x/user-guide/cli-installcli"
+            },
+            {
+              "type": "doc",
+              "id": "version-v2.1.x/user-guide/cli-configure-scs-on-headless-linux-os"
+            },
+            {
+              "type": "doc",
+              "id": "version-v2.1.x/user-guide/cli-configure-cli-on-os-where-scs-unavailable"
+            },
+            {
+              "type": "doc",
+              "id": "version-v2.1.x/user-guide/cli-install-cli-nodejs-windows"
+            }
+          ]
+        },
+        {
+          "type": "doc",
+          "id": "version-v2.1.x/user-guide/install-cli-via-proxy"
+        },
+        {
+          "type": "doc",
+          "id": "version-v2.1.x/user-guide/cli-updatingcli"
+        },
+        {
+          "type": "doc",
+          "id": "version-v2.1.x/user-guide/cli-uninstall"
+        }
+      ]
+    },
+    {
+      "collapsed": true,
+      "type": "category",
+      "label": "Installing Zowe Explorer",
+      "items": [
+        {
+          "type": "doc",
+          "id": "version-v2.1.x/user-guide/ze-install"
+        },
+        {
+          "type": "doc",
+          "id": "version-v2.1.x/user-guide/ze-profiles"
+        }
+      ]
+    },
+    {
+      "collapsed": true,
+      "type": "category",
+      "label": "Advanced Zowe configuration",
+      "items": [
+        {
+          "type": "doc",
+          "id": "version-v2.1.x/user-guide/mvd-configuration"
+        },
+        {
+          "type": "doc",
+          "id": "version-v2.1.x/user-guide/cli-configuringcli-ev"
+        },
+        {
+          "type": "doc",
+          "id": "version-v2.1.x/user-guide/configure-data-sets-jobs-api"
+        },
+        {
+          "type": "doc",
+          "id": "version-v2.1.x/user-guide/api-mediation/api-gateway-configuration"
+        },
+        {
+          "type": "doc",
+          "id": "version-v2.1.x/user-guide/api-mediation/discovery-service-configuration"
+        },
+        {
+          "type": "doc",
+          "id": "version-v2.1.x/user-guide/api-mediation/api-mediation-internal-configuration"
+        }
+      ]
+    }
+  ],
+  "version-v2.1.x/use": [
+    {
+      "type": "doc",
+      "id": "version-v2.1.x/user-guide/zowe-getting-started-tutorial"
+    },
+    {
+      "collapsed": true,
+      "type": "category",
+      "label": "Using Zowe Desktop",
+      "items": [
+        {
+          "type": "doc",
+          "id": "version-v2.1.x/user-guide/mvd-using"
+        },
+        {
+          "type": "doc",
+          "id": "version-v2.1.x/user-guide/mvd-editor"
+        }
+      ]
+    },
+    {
+      "collapsed": true,
+      "type": "category",
+      "label": "Using Zowe API Mediation Layer",
+      "items": [
+        {
+          "type": "doc",
+          "id": "version-v2.1.x/user-guide/api-mediation-api-catalog"
+        },
+        {
+          "type": "doc",
+          "id": "version-v2.1.x/user-guide/api-mediation-metrics-service"
+        }
+      ]
+    },
+    {
+      "collapsed": true,
+      "type": "category",
+      "label": "Using Zowe CLI",
+      "items": [
+        {
+          "type": "doc",
+          "id": "version-v2.1.x/user-guide/cli-using-usingcli"
+        },
+        {
+          "type": "doc",
+          "id": "version-v2.1.x/user-guide/cli-using-displaying-help"
+        },
+        {
+          "type": "doc",
+          "id": "version-v2.1.x/user-guide/cli-using-understanding-core-command-groups"
+        },
+        {
+          "type": "doc",
+          "id": "version-v2.1.x/user-guide/cli-using-issuing-first-command"
+        },
+        {
+          "collapsed": true,
+          "type": "category",
+          "label": "Configuring daemon mode",
+          "items": [
+            {
+              "type": "doc",
+              "id": "version-v2.1.x/user-guide/cli-using-using-daemon-mode"
+            },
+            {
+              "type": "doc",
+              "id": "version-v2.1.x/user-guide/cli-configure-daemon-on-zlinux-os"
+            }
+          ]
+        },
+        {
+          "type": "doc",
+          "id": "version-v2.1.x/user-guide/cli-using-using-profiles"
+        },
+        {
+          "collapsed": true,
+          "type": "category",
+          "label": "Configuring team profiles",
+          "items": [
+            {
+              "type": "doc",
+              "id": "version-v2.1.x/user-guide/cli-using-using-team-profiles"
+            },
+            {
+              "type": "doc",
+              "id": "version-v2.1.x/user-guide/cli-using-initializing-team-configuration"
+            },
+            {
+              "type": "doc",
+              "id": "version-v2.1.x/user-guide/cli-using-team-configuration-application-developers"
+            },
+            {
+              "type": "doc",
+              "id": "version-v2.1.x/user-guide/cli-using-team-configuration-team-leaders"
+            },
+            {
+              "type": "doc",
+              "id": "version-v2.1.x/user-guide/cli-using-sharing-team-config-files"
+            },
+            {
+              "type": "doc",
+              "id": "version-v2.1.x/user-guide/cli-using-team-managing-credential-security"
+            },
+            {
+              "type": "doc",
+              "id": "version-v2.1.x/user-guide/cli-using-global-storing-properties-automatically"
+            }
+          ]
+        },
+        {
+          "type": "doc",
+          "id": "version-v2.1.x/user-guide/cli-using-integrating-apiml"
+        },
+        {
+          "type": "doc",
+          "id": "version-v2.1.x/user-guide/cli-using-working-certificates"
+        },
+        {
+          "type": "doc",
+          "id": "version-v2.1.x/user-guide/cli-using-completing-advanced-tasks"
+        }
+      ]
+    },
+    {
+      "collapsed": true,
+      "type": "category",
+      "label": "Zowe CLI plug-ins",
+      "items": [
+        {
+          "type": "doc",
+          "id": "version-v2.1.x/user-guide/cli-extending"
+        },
+        {
+          "type": "doc",
+          "id": "version-v2.1.x/user-guide/cli-swreqplugins"
+        },
+        {
+          "type": "doc",
+          "id": "version-v2.1.x/user-guide/cli-installplugins"
+        },
+        {
+          "type": "doc",
+          "id": "version-v2.1.x/user-guide/cli-cicsplugin"
+        },
+        {
+          "collapsed": true,
+          "type": "category",
+          "label": "IBM® Db2® Database Plug-in for Zowe CLI",
+          "items": [
+            {
+              "type": "doc",
+              "id": "version-v2.1.x/user-guide/cli-db2plugin"
+            },
+            {
+              "type": "doc",
+              "id": "version-v2.1.x/user-guide/cli-db2-install-m1"
+            }
+          ]
+        },
+        {
+          "type": "doc",
+          "id": "version-v2.1.x/user-guide/cli-ftpplugin"
+        },
+        {
+          "type": "doc",
+          "id": "version-v2.1.x/user-guide/cli-imsplugin"
+        },
+        {
+          "type": "doc",
+          "id": "version-v2.1.x/user-guide/cli-mqplugin"
+        },
+        {
+          "type": "doc",
+          "id": "version-v2.1.x/user-guide/ze-install"
+        }
+      ]
+    },
+    {
+      "type": "doc",
+      "id": "version-v2.1.x/user-guide/ze-usage"
+    },
+    {
+      "collapsed": true,
+      "type": "category",
+      "label": "Zowe Explorer extensions",
+      "items": [
+        {
+          "type": "doc",
+          "id": "version-v2.1.x/user-guide/ze-cics"
+        },
+        {
+          "type": "doc",
+          "id": "version-v2.1.x/user-guide/ze-ftp"
+        }
+      ]
+    },
+    {
+      "type": "doc",
+      "id": "version-v2.1.x/user-guide/sdks-using"
+    }
+  ],
+  "version-v2.1.x/extending": [
+    {
+      "type": "doc",
+      "id": "version-v2.1.x/extend/extend-zowe-overview"
+    },
+    {
+      "collapsed": true,
+      "type": "category",
+      "label": "Developing server components",
+      "items": [
+        {
+          "type": "doc",
+          "id": "version-v2.1.x/extend/packaging-zos-extensions"
+        },
+        {
+          "type": "doc",
+          "id": "version-v2.1.x/extend/server-schemas"
+        },
+        {
+          "type": "doc",
+          "id": "version-v2.1.x/extend/install-configure-zos-extensions"
+        },
+        {
+          "type": "doc",
+          "id": "version-v2.1.x/extend/lifecycling-with-zwesvstc"
+        },
+        {
+          "type": "doc",
+          "id": "version-v2.1.x/extend/k8s-extend"
+        },
+        {
+          "type": "doc",
+          "id": "version-v2.1.x/extend/k8s-conformance"
+        }
+      ]
+    },
+    {
+      "collapsed": true,
+      "type": "category",
+      "label": "Developing for Zowe CLI",
+      "items": [
+        {
+          "type": "doc",
+          "id": "version-v2.1.x/extend/extend-cli/cli-devTutorials"
+        },
+        {
+          "type": "doc",
+          "id": "version-v2.1.x/extend/extend-cli/cli-setting-up"
+        },
+        {
+          "type": "doc",
+          "id": "version-v2.1.x/extend/extend-cli/cli-installing-sample-plugin"
+        },
+        {
+          "type": "doc",
+          "id": "version-v2.1.x/extend/extend-cli/cli-extending-a-plugin"
+        },
+        {
+          "type": "doc",
+          "id": "version-v2.1.x/extend/extend-cli/cli-developing-a-plugin"
+        },
+        {
+          "type": "doc",
+          "id": "version-v2.1.x/extend/extend-cli/cli-implement-profiles"
+        }
+      ]
+    },
+    {
+      "collapsed": true,
+      "type": "category",
+      "label": "Developing for Zowe API Mediation Layer",
+      "items": [
+        {
+          "type": "doc",
+          "id": "version-v2.1.x/extend/extend-apiml/onboard-overview"
+        },
+        {
+          "type": "doc",
+          "id": "version-v2.1.x/extend/extend-apiml/onboard-plain-java-enabler"
+        },
+        {
+          "type": "doc",
+          "id": "version-v2.1.x/extend/extend-apiml/onboard-plain-java-enabler-external-configuration"
+        },
+        {
+          "type": "doc",
+          "id": "version-v2.1.x/extend/extend-apiml/onboard-direct-eureka-call"
+        },
+        {
+          "type": "doc",
+          "id": "version-v2.1.x/extend/extend-apiml/onboard-spring-boot-enabler"
+        },
+        {
+          "type": "doc",
+          "id": "version-v2.1.x/extend/extend-apiml/onboard-micronaut-enabler"
+        },
+        {
+          "type": "doc",
+          "id": "version-v2.1.x/extend/extend-apiml/onboard-nodejs-enabler"
+        },
+        {
+          "type": "doc",
+          "id": "version-v2.1.x/extend/extend-apiml/onboard-static-definition"
+        },
+        {
+          "type": "doc",
+          "id": "version-v2.1.x/extend/extend-apiml/onboard-wizard"
+        },
+        {
+          "type": "doc",
+          "id": "version-v2.1.x/extend/extend-apiml/api-mediation-sso"
+        },
+        {
+          "type": "doc",
+          "id": "version-v2.1.x/extend/extend-apiml/service-information"
+        },
+        {
+          "type": "doc",
+          "id": "version-v2.1.x/extend/extend-apiml/websocket"
+        },
+        {
+          "type": "doc",
+          "id": "version-v2.1.x/extend/extend-apiml/create-apiml-extension"
+        },
+        {
+          "type": "doc",
+          "id": "version-v2.1.x/extend/extend-apiml/api-mediation-message-service"
+        },
+        {
+          "type": "doc",
+          "id": "version-v2.1.x/extend/extend-apiml/api-mediation-security"
+        },
+        {
+          "type": "doc",
+          "id": "version-v2.1.x/extend/extend-apiml/api-mediation-routing"
+        },
+        {
+          "type": "doc",
+          "id": "version-v2.1.x/extend/extend-apiml/api-mediation-passtickets"
+        },
+        {
+          "type": "doc",
+          "id": "version-v2.1.x/extend/extend-apiml/custom-metadata"
+        },
+        {
+          "type": "doc",
+          "id": "version-v2.1.x/extend/extend-apiml/api-mediation-versioning"
+        },
+        {
+          "type": "doc",
+          "id": "version-v2.1.x/extend/extend-apiml/implement-new-saf-provider"
+        },
+        {
+          "collapsed": true,
+          "type": "category",
+          "label": "Caching service",
+          "items": [
+            {
+              "type": "doc",
+              "id": "version-v2.1.x/extend/extend-apiml/api-mediation-caching-service"
+            },
+            {
+              "type": "doc",
+              "id": "version-v2.1.x/extend/extend-apiml/api-mediation-vsam"
+            },
+            {
+              "type": "doc",
+              "id": "version-v2.1.x/extend/extend-apiml/api-mediation-redis"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "collapsed": true,
+      "type": "category",
+      "label": "Developing for Zowe Application Framework",
+      "items": [
+        {
+          "type": "doc",
+          "id": "version-v2.1.x/extend/extend-desktop/mvd-extendingzlux"
+        },
+        {
+          "type": "doc",
+          "id": "version-v2.1.x/extend/extend-desktop/mvd-plugindefandstruct"
+        },
+        {
+          "type": "doc",
+          "id": "version-v2.1.x/extend/extend-desktop/mvd-buildingplugins"
+        },
+        {
+          "type": "doc",
+          "id": "version-v2.1.x/extend/extend-desktop/mvd-installplugins"
+        },
+        {
+          "type": "doc",
+          "id": "version-v2.1.x/extend/extend-desktop/mvd-embeddingplugins"
+        },
+        {
+          "type": "doc",
+          "id": "version-v2.1.x/extend/extend-desktop/mvd-dataservices"
+        },
+        {
+          "type": "doc",
+          "id": "version-v2.1.x/extend/extend-desktop/mvd-authentication-api"
+        },
+        {
+          "type": "doc",
+          "id": "version-v2.1.x/extend/extend-desktop/mvd-internationalization"
+        },
+        {
+          "type": "doc",
+          "id": "version-v2.1.x/extend/extend-desktop/mvd-desktopandwindowmgt"
+        },
+        {
+          "type": "doc",
+          "id": "version-v2.1.x/extend/extend-desktop/mvd-configdataservice"
+        },
+        {
+          "type": "doc",
+          "id": "version-v2.1.x/extend/extend-desktop/mvd-uribroker"
+        },
+        {
+          "type": "doc",
+          "id": "version-v2.1.x/extend/extend-desktop/mvd-apptoappcommunication"
+        },
+        {
+          "type": "doc",
+          "id": "version-v2.1.x/extend/extend-desktop/mvd-iframecomm"
+        },
+        {
+          "type": "doc",
+          "id": "version-v2.1.x/extend/extend-desktop/mvd-errorreportingui"
+        },
+        {
+          "type": "doc",
+          "id": "version-v2.1.x/extend/extend-desktop/mvd-logutility"
+        },
+        {
+          "type": "doc",
+          "id": "version-v2.1.x/extend/extend-desktop/mvd-conda"
+        }
+      ]
+    },
+    {
+      "type": "doc",
+      "id": "version-v2.1.x/extend/extend-ze/ze-extensions"
+    },
+    {
+      "type": "doc",
+      "id": "version-v2.1.x/extend/extend-sdks"
+    },
+    {
+      "type": "doc",
+      "id": "version-v2.1.x/extend/zowe-conformance-program"
+    }
+  ],
+  "version-v2.1.x/troubleshooting": [
+    {
+      "collapsed": true,
+      "type": "category",
+      "label": "Overview",
+      "items": [
+        {
+          "type": "doc",
+          "id": "version-v2.1.x/troubleshoot/troubleshooting"
+        },
+        {
+          "type": "doc",
+          "id": "version-v2.1.x/troubleshoot/troubleshoot-zowe-release"
+        },
+        {
+          "type": "doc",
+          "id": "version-v2.1.x/troubleshoot/verify-fingerprint"
+        }
+      ]
+    },
+    {
+      "type": "doc",
+      "id": "version-v2.1.x/troubleshoot/k8s-troubleshoot"
+    },
+    {
+      "collapsed": true,
+      "type": "category",
+      "label": "Zowe API Mediation Layer",
+      "items": [
+        {
+          "type": "doc",
+          "id": "version-v2.1.x/troubleshoot/troubleshoot-apiml"
+        },
+        {
+          "type": "doc",
+          "id": "version-v2.1.x/troubleshoot/troubleshoot-apiml-error-codes"
+        }
+      ]
+    },
+    {
+      "collapsed": true,
+      "type": "category",
+      "label": "Zowe Application Framework",
+      "items": [
+        {
+          "type": "doc",
+          "id": "version-v2.1.x/troubleshoot/app-framework/app-issue"
+        },
+        {
+          "type": "doc",
+          "id": "version-v2.1.x/troubleshoot/app-framework/zss-error-codes"
+        }
+      ]
+    },
+    {
+      "collapsed": true,
+      "type": "category",
+      "label": "Zowe CLI",
+      "items": [
+        {
+          "type": "doc",
+          "id": "version-v2.1.x/troubleshoot/cli/troubleshoot-cli"
+        },
+        {
+          "type": "doc",
+          "id": "version-v2.1.x/troubleshoot/cli/mustgather-cli"
+        },
+        {
+          "type": "doc",
+          "id": "version-v2.1.x/troubleshoot/cli/zosmf-cli"
+        },
+        {
+          "type": "doc",
+          "id": "version-v2.1.x/troubleshoot/cli/known-cli"
+        },
+        {
+          "type": "doc",
+          "id": "version-v2.1.x/troubleshoot/cli/cli-issue"
+        }
+      ]
+    },
+    {
+      "collapsed": true,
+      "type": "category",
+      "label": "Zowe Explorer",
+      "items": [
+        {
+          "type": "doc",
+          "id": "version-v2.1.x/troubleshoot/ze/troubleshoot-ze"
+        },
+        {
+          "type": "doc",
+          "id": "version-v2.1.x/troubleshoot/ze/known-ze"
+        },
+        {
+          "type": "doc",
+          "id": "version-v2.1.x/troubleshoot/ze/ze-issues"
+        }
+      ]
+    },
+    {
+      "collapsed": true,
+      "type": "category",
+      "label": "Zowe Launcher",
+      "items": [
+        {
+          "type": "doc",
+          "id": "version-v2.1.x/troubleshoot/launcher/launcher-troubleshoot"
+        },
+        {
+          "type": "doc",
+          "id": "version-v2.1.x/troubleshoot/launcher/launcher-error-codes"
+        }
+      ]
+    }
+  ],
+  "version-v2.1.x/contributing": [
+    {
+      "type": "doc",
+      "id": "version-v2.1.x/contribute/roadmap-contribute"
+    },
+    {
+      "collapsed": true,
+      "type": "category",
+      "label": "Code Guidelines",
+      "items": [
+        {
+          "type": "doc",
+          "id": "version-v2.1.x/contribute/guidelines-code/categories"
+        },
+        {
+          "type": "doc",
+          "id": "version-v2.1.x/contribute/guidelines-code/general"
+        },
+        {
+          "type": "doc",
+          "id": "version-v2.1.x/contribute/guidelines-code/code-and-patches"
+        },
+        {
+          "type": "doc",
+          "id": "version-v2.1.x/contribute/guidelines-code/documentation"
+        }
+      ]
+    },
+    {
+      "collapsed": true,
+      "type": "category",
+      "label": "UI Guidelines",
+      "items": [
+        {
+          "type": "doc",
+          "id": "version-v2.1.x/contribute/guidelines-ui/ui"
+        },
+        {
+          "type": "doc",
+          "id": "version-v2.1.x/contribute/guidelines-ui/colors"
+        },
+        {
+          "type": "doc",
+          "id": "version-v2.1.x/contribute/guidelines-ui/typography"
+        },
+        {
+          "type": "doc",
+          "id": "version-v2.1.x/contribute/guidelines-ui/grid"
+        },
+        {
+          "type": "doc",
+          "id": "version-v2.1.x/contribute/guidelines-ui/icon"
+        },
+        {
+          "type": "doc",
+          "id": "version-v2.1.x/contribute/guidelines-ui/appicon"
+        }
+      ]
+    },
+    {
+      "type": "doc",
+      "id": "version-v2.1.x/contribute/contributing"
+    }
+  ],
+  "version-v2.1.x/reference": [
+    {
+      "type": "doc",
+      "id": "version-v2.1.x/appendix/zowe-cli-command-reference"
+    },
+    {
+      "type": "doc",
+      "id": "version-v2.1.x/appendix/zowe-api-reference"
+    },
+    {
+      "collapsed": true,
+      "type": "category",
+      "label": "ZWE Server Command Reference",
+      "items": [
+        {
+          "type": "autogenerated",
+          "dirName": "appendix/zwe_server_command_reference"
+        }
+      ]
+    },
+    {
+      "type": "doc",
+      "id": "version-v2.1.x/appendix/zowe-yaml-configuration"
+    },
+    {
+      "type": "doc",
+      "id": "version-v2.1.x/appendix/server-component-manifest"
+    },
+    {
+      "type": "doc",
+      "id": "version-v2.1.x/appendix/bill-of-materials"
+    },
+    {
+      "type": "link",
+      "label": "Third Party Software Requirements",
+      "href": "https://github.com/zowe/docs-site/tree/master/tpsr/tpsr-v2.1.x.md"
+    }
+  ]
+}

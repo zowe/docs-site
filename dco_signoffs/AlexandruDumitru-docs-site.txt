@@ -1,0 +1,5 @@
+I, Alexandru Dumitru hereby sign-off-by all of my past commits to this repo subject to the Developer Certificate of Origin (DCO), Version 1.1. In the past I have used emails: alexandru.dumitru@broadcom.com,  45846673+alexandru-dumitru@users.noreply.github.com
+
+87e2aa419e7ea7988bbcc15bf76736be21a406d3 gathering npm log files
+
+adding info where to look for npm log files
