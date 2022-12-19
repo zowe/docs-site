@@ -34,5 +34,7 @@ See the following topics for detailed information about how to use the API Media
     * [API Mediation Layer Routing](../../extend/extend-apiml/api-mediation-routing.md)
     * [Obtaining Information about API Services](../../extend/extend-apiml/service-information.md)
     * [WebSocket support in API Gateway](../../extend/extend-apiml/websocket.md)
+    * [Personal Access Tokens](../../user-guide/api-mediation/api-mediation-personal-access-token.md)
+    * [SMF records](../../user-guide/api-mediation/api-mediation-smf.md)
 
 
