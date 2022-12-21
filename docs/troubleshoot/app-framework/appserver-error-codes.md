@@ -3243,11 +3243,11 @@ The following error message codes may appear on the app-server log. Use the foll
 
   **Reason:**
 
-  TODO
+  (_operatingSystemName_) is not a supported platform for _componentName_. Skipping _pluginid_... Supported: _requiredOperatingSystem_
 
   **Action:**
 
-  TODO
+  Contact the author of the component, or a system administrator.
 
 
 
@@ -3255,11 +3255,11 @@ The following error message codes may appear on the app-server log. Use the foll
 
   **Reason:**
 
-  TODO
+  (_operatingSystemName_) is not a supported platform for _componentName_. Skipping _pluginid_... Supported: _requiredOperatingSystem_
 
   **Action:**
 
-  TODO
+  Contact the author of the component, or a system administrator.
 
 
 
@@ -3267,11 +3267,11 @@ The following error message codes may appear on the app-server log. Use the foll
 
   **Reason:**
 
-  TODO
+  (_url_) is not a supported endpoint for _componentName_. Skipping _pluginid_... Supported: _urls_
 
   **Action:**
 
-  TODO
+  Refer to component API doc.
 
 
 
@@ -3279,11 +3279,11 @@ The following error message codes may appear on the app-server log. Use the foll
 
   **Reason:**
 
-  TODO
+  Could not register default plugins into app-server
 
   **Action:**
 
-  TODO
+  Verify integrity of required plugin files, or contact publisher.
 
 
 
@@ -3291,11 +3291,11 @@ The following error message codes may appear on the app-server log. Use the foll
 
   **Reason:**
 
-  TODO
+  Could not register default plugin _pluginid_ into app-server
 
   **Action:**
 
-  TODO
+  Verify integrity of required plugin files, or contact publisher.
 
 
 
@@ -3303,8 +3303,8 @@ The following error message codes may appear on the app-server log. Use the foll
 
   **Reason:**
 
-  TODO
+  Could not listen on address (_ipAddress_):(_port_). Insufficient permissions to perform port bind.
 
   **Action:**
 
-  TODO
+  Contact system administrator.
