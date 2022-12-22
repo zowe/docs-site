@@ -1177,7 +1177,7 @@ The following error message codes may appear on the app-server log. Use the foll
 
   **Reason:**
 
-  The `components.app-server.dataserviceAuthentication` configuration section is missing or invalid, so the server cannot continue until it is fixed.
+  The `components.app-server.dataserviceAuthentication` configuration section is missing or invalid, so the server cannot continue until it is fixed. [Authentication plugins for dataservices are described here](https://docs.zowe.org/stable/extend/extend-desktop/mvd-auth-plugins/)
 
   **Action:**
 
@@ -2938,7 +2938,7 @@ The following error message codes may appear on the app-server log. Use the foll
 
 ### ZWED0041E
 
-  Could not find port to use for configuration, at config position=_port_
+  Could not find port to use for configuration, at config position=_portIndex_
 
   **Reason:**
 
@@ -3022,7 +3022,9 @@ The following error message codes may appear on the app-server log. Use the foll
 
 ### ZWED0047E
 
- Proxy (_pluginid_:_servicename_) setup failed.\nHost & Port for proxy destination are required but were missing.\nFor information on how to configure a proxy service, see the Zowe wiki on dataservices (https://github.com/zowe/zlux/wiki/ZLUX-Dataservices)
+ Proxy (_pluginid_:_servicename_) setup failed.
+ Host & Port for proxy destination are required but were missing.
+ For information on how to configure a proxy service, see the Zowe wiki on dataservices (https://github.com/zowe/zlux/wiki/ZLUX-Dataservices)
 
   **Reason:**
 
@@ -3106,7 +3108,8 @@ The following error message codes may appear on the app-server log. Use the foll
 
 ### ZWED0111E
 
- SEVERE: Exception occurred trying to generate object from input: _error_
+  SEVERE: Exception occurred trying to generate object from input: _error_
+
   **Reason:**
 
   The server could not parse its input configuration due to the error shown, so the server cannot start.
@@ -3198,7 +3201,7 @@ The following error message codes may appear on the app-server log. Use the foll
 
   **Action:**
 
-  Check the keystore configuration of the server such as in `zowe.certificate` or `components.app-server.node.https` to see if it is valid for Zowe. The SAF keyring Zowe was configured to use may be missing a key and certificate pair, or certificate authorities keychain.
+  Check the keystore configuration of the server such as in `zowe.certificate` or `components.app-server.node.https` to see if it is valid for Zowe. The SAF keyring Zowe was configured to use may be missing a key and certificate pair, or certificate authorities keychain. For more suggestions on configuring keyrings for Zowe, review the [install guide](https://docs.zowe.org/stable/user-guide/configure-certificates-keyring)
 
 
 
@@ -3240,7 +3243,7 @@ The following error message codes may appear on the app-server log. Use the foll
 
   **Action:**
 
-  Check the `zowe.certificate` or `components.app-server.node.https` sections of Zowe configuration to see if there are entries that start with `safkeyring://` and verify that they are in the format of `safkeyring://USERNAME:RINGNAME&LABEL`. Older versions of zowe will require that there be 4 slashes, such as `safkeyring:////`. The `&LABEL` suffix is only needed for specifying certificate authorities and should be omitted in other sections, for example it is only needed within `zowe.certificate.pem.certificateAuthorities` or `components.app-server.node.https.certificateAuthorities`. 
+  Check the `zowe.certificate` or `components.app-server.node.https` sections of Zowe configuration to see if there are entries that start with `safkeyring://` and verify that they are in the format of `safkeyring://USERNAME:RINGNAME&LABEL`. Older versions of zowe will require that there be 4 slashes, such as `safkeyring:////`. The `&LABEL` suffix is only needed for specifying certificate authorities and should be omitted in other sections, for example it is only needed within `zowe.certificate.pem.certificateAuthorities` or `components.app-server.node.https.certificateAuthorities`. For more suggestions on configuring keyrings for Zowe, review the [install guide](https://docs.zowe.org/stable/user-guide/configure-certificates-keyring)
 
 
 
@@ -3278,7 +3281,7 @@ The following error message codes may appear on the app-server log. Use the foll
 
   **Reason:**
 
-  Whilee installing a plugin, the server could not determine the location of the configuration dataservice's "instance" folder. Due to this, the plugin could not be completely installed.
+  While installing a plugin, the server could not determine the location of the configuration dataservice's "instance" folder. Due to this, the plugin could not be completely installed.
 
   **Action:**
 
