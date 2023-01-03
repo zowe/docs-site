@@ -143,6 +143,17 @@ The following use cases demonstrate the various functionalities available in Zow
 
    ![Delete](../images/ze/ZE-delete-ds.gif)
 
+### Viewing data set, member attributes
+
+1. Expand **DATA SETS** in the **Side Bar**, and click the **+** icon.
+2. Select the **Search** icon.
+3. In the **picker** field, enter or select a search pattern to filter search results in the **Side Bar**.
+4. Right-click a data set or member and select the **Show Attributes** option.
+
+   This displays the attributes in an **Editor** tab.
+
+    ![View Data Set, Member Attributes](../images/ze/ZE-show-attributes.gif)
+
 ### Viewing and accessing multiple profiles simultaneously
 
 1. Expand **DATA SETS** in the **Side Bar**, and click the **+** icon.
