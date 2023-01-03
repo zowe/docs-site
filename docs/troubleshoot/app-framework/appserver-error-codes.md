@@ -316,11 +316,11 @@ The following error message codes may appear on the app-server log. Use the foll
 
 ### ZWED0046I
 
-  Adding dynamic plugin %s
+  Adding dynamic plugin _pluginIdentifier_
 
   **Reason:**
 
-  The server has added the plugin with _plugin identifier_ to its bootstrapped list of plugins. It also emits a `pluginAdded` event.
+  The server has added the plugin with _pluginIdentifier_ to its bootstrapped list of plugins. It also emits a `pluginAdded` event.
 
   **Action:**
 
@@ -330,7 +330,7 @@ The following error message codes may appear on the app-server log. Use the foll
 
 ### ZWED0047I
 
-  [Path= %s stdout]: %s
+  [Path= _path_ stdout]: _data_
 
   **Reason:**
 
@@ -344,7 +344,7 @@ The following error message codes may appear on the app-server log. Use the foll
 
 ### ZWED0048I
 
-  [Path= %s] exited, code: %s
+  [Path= _path_] exited, code: _code_
 
   **Reason:**
 
@@ -372,7 +372,7 @@ The following error message codes may appear on the app-server log. Use the foll
 
 ### ZWED0050I
 
-  Server shutting down, received signal=%s
+  Server shutting down, received signal=_signal_
 
   **Reason:**
 
@@ -386,11 +386,11 @@ The following error message codes may appear on the app-server log. Use the foll
 
 ### ZWED0052I
 
-  Deleting plugin due to request, id %s, path %s
+  Deleting plugin due to request, id _pluginIdentifier_, path _path_
 
   **Reason:**
 
-  Notifies that the server is removing a plugin with _plugin identifier_ located in _path_.
+  Notifies that the server is removing a plugin with _pluginIdentifier_ located in _path_.
 
   **Action:**
 
@@ -400,11 +400,11 @@ The following error message codes may appear on the app-server log. Use the foll
 
 ### ZWED0053I
 
-  Setting up %s proxy (%s) to destination=%s
+  Setting up _type_ proxy (_pluginIdentifier_:_serviceName_) to destination=_destination_
 
   **Reason:**
 
-  Making an external proxy of _type_ (HTTP or HTTPS) for _plugin identifier_:_service name_ at the _destination_.
+  Making an external proxy of _type_ (HTTP or HTTPS) for _pluginIdentifier_:_serviceName_ at the _destination_.
 
   **Action:**
 
@@ -414,7 +414,7 @@ The following error message codes may appear on the app-server log. Use the foll
 
 ### ZWED0054I
 
-  Installing root service at %s
+  Installing root service at _url_
 
   **Reason:**
 
@@ -428,7 +428,7 @@ The following error message codes may appear on the app-server log. Use the foll
 
 ### ZWED0055I
 
-  Installing root service proxy at %s
+  Installing root service proxy at _url_
 
   **Reason:**
 
@@ -442,11 +442,11 @@ The following error message codes may appear on the app-server log. Use the foll
 
 ### ZWED0056I
 
-  %s: installing websocket service
+  _pluginIdentifier_: installing websocket service
 
   **Reason:**
 
-  Attempting to install new websocket service for _plugin identifier_.
+  Attempting to install new websocket service for _pluginIdentifier_.
 
   **Action:**
 
@@ -456,11 +456,11 @@ The following error message codes may appear on the app-server log. Use the foll
 
 ### ZWED0059I
 
-  Found connection info for %s=%s
+  Found connection info for _pluginIdentifier_:_service_=_info_
 
   **Reason:**
 
-  Connection info for _plugin identifier_:_service_ was found as _info_.
+  Connection info for _pluginIdentifier_:_service_ was found as _info_.
 
   **Action:**
 
@@ -470,11 +470,11 @@ The following error message codes may appear on the app-server log. Use the foll
 
 ### ZWED0062I
 
-  %s: installing router at %s
+  _pluginIdentifier_: installing router at _url_
 
   **Reason:**
 
-  For _plugin identifier_, the server is installing new router at _url_.
+  For _pluginIdentifier_, the server is installing new router at _url_.
 
   **Action:**
 
@@ -484,11 +484,11 @@ The following error message codes may appear on the app-server log. Use the foll
 
 ### ZWED0064I
 
-  %s: installing import %s:%s at %s
+  _pluginIdentifier_: installing import _sourcePlugin_:_name_ at _url_
 
   **Reason:**
 
-  For _plugin identifier_, the server is instaling import from _sourcePlugin_ with _name_ at _url_.
+  For _pluginIdentifier_, the server is instaling import from _sourcePlugin_ with _name_ at _url_.
 
   **Action:**
 
@@ -498,11 +498,11 @@ The following error message codes may appear on the app-server log. Use the foll
 
 ### ZWED0066I
 
-  %s: serving static files at %s
+  _pluginIdentifier_: serving static files at _url_
 
   **Reason:**
 
-  For _plugin identifier_, the server is serving static files and assets at _url_.
+  For _pluginIdentifier_, the server is serving static files and assets at _url_.
 
   **Action:**
 
@@ -512,11 +512,11 @@ The following error message codes may appear on the app-server log. Use the foll
 
 ### ZWED0067I
 
-  %s: serving library files at %s
+  _pluginIdentifier_: serving library files at _url_
 
   **Reason:**
 
-  For _plugin identifier_, the server is serving libary files at _url_.
+  For _pluginIdentifier_, the server is serving libary files at _url_.
 
   **Action:**
 
@@ -727,11 +727,11 @@ The following error message codes may appear on the app-server log. Use the foll
 
   **Reason:**
 
-  TODO
+  This message alerts you whenever an authentication handler is requested but the dataservice has authentication disabled via configuration. This is not the default behavior of Zowe but a user may have configured it for a dataservice or a plugin may have shipped with this configuration.
 
   **Action:**
 
-  TODO
+  Review dataservice configuration to determine if this is intentional and desired. Some dataservices are okay to not require authentication, while others should have it.
 
 
 
@@ -990,7 +990,7 @@ The following error message codes may appear on the app-server log. Use the foll
 
 ### ZWED0213I
 
-  Environmental variable ZLUX_MAX_WORKERS was not a valid number therefore %s will be used as the maximum workers
+  Environmental variable ZLUX_MAX_WORKERS was not a valid number therefore _count_ will be used as the maximum workers
 
   **Reason:**
 
@@ -1142,63 +1142,60 @@ The following error message codes may appear on the app-server log. Use the foll
 
 
 
-### ZWED0004W":"Tomcat for ID=%s not starting, no services succeeded loading
+### ZWED0004W
+
+  Tomcat for ID=_id_ not starting, no services succeeded loading
 
   **Reason:**
 
-  TODO
+  A tomcat instance required for loading a set of java dataservices could not start, so none of the associated dataservices will be available either.
 
   **Action:**
 
-  TODO
+  Review prior logs to determine the reason the tomcat server is not starting, and address the problem before restarting Zowe in order to access the missing dataservices.
 
 
 
-### ZWED0006W":"RBAC is disabled in the configuration. All authenticated users will have access to all services. Enable RBAC in the configuration to control users' access to individual services.
+### ZWED0006W
+
+  RBAC is disabled in the configuration. All authenticated users will have access to all services. Enable RBAC in the configuration to control users' access to individual services.
 
   **Reason:**
 
-  TODO
+  RBAC can be used to permit and reject access to each URL of the app-server individually according to security rules such as those from SAF resources. Enabling RBAC is beneficial but requires configuration first so this message is often seen.
 
   **Action:**
 
-  TODO
+  If you wish to learn more about RBAC and enable it, read [Application Framework Advanced Configuration](https://docs.zowe.org/stable/user-guide/mvd-configuration#controlling-access-to-apps)
 
 
 
-### ZWED0007W":"Dataservice authentication definition is not present in server configuration file, or malformed.\nCorrect the configuration file before restarting the server.
+### ZWED0007W
+
+  Dataservice authentication definition is not present in server configuration file, or malformed.
+  Correct the configuration file before restarting the server.
 
   **Reason:**
 
-  TODO
+  The `components.app-server.dataserviceAuthentication` configuration section is missing or invalid, so the server cannot continue until it is fixed. [Authentication plugins for dataservices are described here](https://docs.zowe.org/stable/extend/extend-desktop/mvd-auth-plugins/)
 
   **Action:**
 
-  TODO
+  Correct your zowe configuration for this section according to the [app-server schema](https://github.com/zowe/zlux-app-server/blob/v2.x/master/schemas/app-server-config.json)
 
 
 
-### ZWED0008W":"Error loading auth plugin %s: 
+### ZWED0008W
+
+  Error loading auth plugin _pluginIdentifier_: _error_
 
   **Reason:**
 
-  TODO
+  The plugin could not be loaded due to an error. This plugin may be required for the server to continue, but if it is non-essential then the server will continue to run without the ability to perform authentication against that particular plugin.
 
   **Action:**
 
-  TODO
-
-
-
-### ZWED0012W":"Implementation defaults for %s was not an object, or did not contain a plugins attribute. Other criteria for selecting authentication implementations is not yet implemented.
-
-  **Reason:**
-
-  TODO
-
-  **Action:**
-
-  TODO
+  Review the error to determine the way to fix the plugin before restarting Zowe.
 
 
 
@@ -2939,303 +2936,356 @@ The following error message codes may appear on the app-server log. Use the foll
 
 
 
-### ZWED0041E":"Could not find port to use for configuration, at config position=%s
+### ZWED0041E
+
+  Could not find port to use for configuration, at config position=_portIndex_
 
   **Reason:**
 
-  TODO
+  The server was trying to determine a network port to use for a Java dataservice, but no available ports could be found, so the server cannot load that service.
 
   **Action:**
 
-  TODO
+  Check your Zowe configuration to see if you have enough or any ports specified for the app-server to use when assigning ports to Java dataservices.
 
 
 
-### ZWED0042E":"Could not find runtime to satisfy group: %s
+### ZWED0042E
+
+ Could not find runtime to satisfy group: _javaRuntime_
 
   **Reason:**
 
-  TODO
+  When trying to run a group of Java dataservices under a common java runtime, the _javaRuntime_ couldn't be found, so the dataservices cannot be run.
 
   **Action:**
 
-  TODO
+  Check the configuration for this group of Java services to see if _javaRuntime_ is a good value, and resolve the Java issue before restarting the server.
 
 
 
-### ZWED0043E":"Unknown java app server type=%s specified in config. Cannot continue with java loading
+### ZWED0043E
+
+ Unknown java app server type=_javaRuntimeTime_ specified in config. Cannot continue with java loading
 
   **Reason:**
 
-  TODO
+  The app-server can only handle Java dataservices if they run under certain types of Java server runtimes. The type chosen was not one of the types supported, so the server cannot continue with the loading.
 
   **Action:**
 
-  TODO
+  Check if the version of the plugin you are using is compatible with the version of Zowe you are using. Check if you can change the "type" of java server to one that the app-server does work with, such as "tomcat".
 
 
 
-### ZWED0044E":"Java runtimes not specified, and no JAVA_HOME set
+### ZWED0044E
+
+ Java runtimes not specified, and no JAVA_HOME set
 
   **Reason:**
 
-  TODO
+  The app-server cannot run the java dataservices because it doesn't know how to start any Java with the configuration specified.
 
   **Action:**
 
-  TODO
+  Either define the environment variable JAVA_HOME to point to a valid Java runtime home, or specify a Java runtime within the app-server configuration as `components.app-server.languages.java.runtimes`. For more information, see the server schema https://github.com/zowe/zlux-app-server/blob/v2.x/master/schemas/app-server-config.json
 
 
 
-### ZWED0045E":"Java app server not defined in config
+### ZWED0045E
+
+ Java app server not defined in config
 
   **Reason:**
 
-  TODO
+  A dataservice was configured to run from a WAR file but the configuration section `components.app-server.languages.java.war.javaAppServer` was missing, so the app-server could not run the dataservice.
 
   **Action:**
 
-  TODO
+  Define the missing configuration section according to the app-server schema https://github.com/zowe/zlux-app-server/blob/v2.x/master/schemas/app-server-config.json or remove it and the plugin that required it.
 
 
 
-### ZWED0046E":"JavaManager not given either war or jar configuration options, nothing to do
+### ZWED0046E
+
+ JavaManager not given either war or jar configuration options, nothing to do
 
   **Reason:**
 
-  TODO
+  A java dataservice was requested but the `components.app-server.languages.java` configuration section of Zowe was missing either a `war` or `jar` subsection. Since one of the two is needed, the server could not continue with loading the java dataservices.
 
   **Action:**
 
-  TODO
+  Review the app-server schema https://github.com/zowe/zlux-app-server/blob/v2.x/master/schemas/app-server-config.json and your Zowe configuration file to identify and correct the missing properties within `components.app-server`.
 
 
 
-### ZWED0047E":"Proxy (%s:%s) setup failed.\nHost & Port for proxy destination are required but were missing.\nFor information on how to configure a proxy service, see the Zowe wiki on dataservices (https://github.com/zowe/zlux/wiki/ZLUX-Dataservices)
+### ZWED0047E
+
+ Proxy (_pluginid_:_servicename_) setup failed.
+ Host & Port for proxy destination are required but were missing.
+ For information on how to configure a proxy service, see the Zowe wiki on dataservices (https://github.com/zowe/zlux/wiki/ZLUX-Dataservices)
 
   **Reason:**
 
-  TODO
+  A proxy was requested by the service _pluginid_:_servicename_ but the service configuration or pluginDefinition did not specify what the proxy destination was, so the server is skipping the loading of that plugin.
 
   **Action:**
 
-  TODO
+  Review the plugin's configuration or contact the developer of that plugin to correct the proxy configuration.
 
 
 
-### ZWED0049E":"Can't specify error metadata
+### ZWED0049E
+
+ Can't specify error metadata
 
   **Reason:**
 
-  TODO
+  When a dataservice called the utility function makeErrorObject, it did not supply context of the `_objectType` and `_metaDataVersion`, which are required and caused the function to throw its own error about the lack of information.
 
   **Action:**
 
-  TODO
+  Contact the developer of the plugin which caused this error.
 
 
 
-### ZWED0050E":"Root service %s not found
+### ZWED0050E
+
+ Root service _serviceName_ not found
 
   **Reason:**
 
-  TODO
+  A dataservice tried to call a "root", or non-plugin service of the app-server or app-server's agent, and this root service _serviceName_ was not found on the server, so the request failed.
 
   **Action:**
 
-  TODO
+  Verify that your version of Zowe works with the plugins that you have installed, and contact the developer of the plugin which tried to call this missing root service.
 
 
 
-### ZWED0051E":"Could not resolve service URL. Plugin=%s, service=%s
+### ZWED0051E
+
+ Could not resolve service URL. Plugin=_pluginId_, service=_serviceName_
 
   **Reason:**
 
-  TODO
+  A dataservice _serviceName_ handled by a language manager could not be used because the URL in which to access this dataservice from its language manager could not be determined.
 
   **Action:**
 
-  TODO
+  Check the logs to see if there was trouble installing the service or plugin, and contact the developers of _pluginId_ for more support.
 
 
 
-### ZWED0052E":"Could not load service %s:%s due to unknown type=%s
+### ZWED0052E
+
+ Could not load service _pluginId_:_serviceName_ due to unknown type=_serviceType_
 
   **Reason:**
 
-  TODO
+  The service from the plugin shown could not be loaded because the plugin declared the service to be of some type that the app-server does not handle.
 
   **Action:**
 
-  TODO
+  Check to see if the version of Zowe you are using works with the version of the plugin you are using. Plugins must have dataservices only of types seen within the pluginDefinition schema https://github.com/zowe/zlux-app-server/blob/v2.x/staging/schemas/plugindefinition-schema.json
 
 
 
-### ZWED0053E":"Import %s:%s can't be satisfied
+### ZWED0053E
+
+ Import _sourcePluginId_:_sourceServiceName_ can't be satisfied
 
   **Reason:**
 
-  TODO
+  A plugin trying to load a dataservice from _sourcePluginId_:_sourceServiceName_ couldn't load that service, therefore the requesting plugin will fail to load.
 
   **Action:**
 
-  TODO
+  Confirm that the source plugin and service exist. Check the logs to see if there was something that caused the source service to fail loading. Contact the developers of either source or target plugin for more assistance if the cause is not clear.
 
 
 
-### ZWED0111E":"SEVERE: Exception occurred trying to generate object from input:%s
+### ZWED0111E
+
+  SEVERE: Exception occurred trying to generate object from input: _error_
 
   **Reason:**
 
-  TODO
+  The server could not parse its input configuration due to the error shown, so the server cannot start.
 
   **Action:**
 
-  TODO
+  Review the error to determine the cause, or contact support if the cause is unclear.
 
 
 
-### ZWED0112E":"The server found no plugin implementing the specified default authentication type of %s.
+### ZWED0112E
+
+ The server found no plugin implementing the specified default authentication type of _type_.
 
   **Reason:**
 
-  TODO
+  The value of `components.app-server.dataserviceAuthentication.defaultAuthentication` within the server configuration specified a type of authentication that some authentication plugin must implement in order for the server to run. Because no plugin that successfully loaded declared that it implemented this type, the server found no implementation and could not continue.
 
   **Action:**
 
-  TODO
+  Review if any plugin you have implements the given type. If the type is incorrect, revise the configuration to choose a type that does exist in your system. If the type is correct, check if you are missing a required plugin.
 
 
 
-### ZWED0113E":"The server found no authentication types. Verify that the server configuration file defines server authentication.
+### ZWED0113E
+
+ The server found no authentication types. Verify that the server configuration file defines server authentication.
 
   **Reason:**
 
-  TODO
+  The server was unable to find any authentication plugins where at least one is required to run.
 
   **Action:**
 
-  TODO
+  Review the list of plugins that are being used and see if any authentication plugins you needed have failed to load, and review their error messages.
 
 
 
-### ZWED0114E":"The server found no plugin implementing the specified default authentication type of %s.
+### ZWED0114E
+
+ The server found no plugin implementing the specified default authentication type of _type_.
 
   **Reason:**
 
-  TODO
+  The value of `components.app-server.dataserviceAuthentication.defaultAuthentication` within the server configuration specified a type of authentication that some authentication plugin must implement in order for the server to run. Because no plugin that successfully loaded declared that it implemented this type, the server found no implementation and could not continue.
 
   **Action:**
 
-  TODO
+  Review if any plugin you have implements the given type. If the type is incorrect, revise the configuration to choose a type that does exist in your system. If the type is correct, check if you are missing a required plugin.
 
 
 
-### ZWED0115E":"Unable to retrieve storage object from cluster. This is probably due to a timeout.\nYou may change the default of '%s' ms by setting 'node.cluster.storageTimeout' within the config. %s
+### ZWED0115E
+
+ Unable to retrieve storage object from cluster. This is probably due to a timeout.
+ You may change the default of '_storageTimeout_' ms by setting 'node.cluster.storageTimeout' within the config.
 
   **Reason:**
 
-  TODO
+  The app-server was running in cluster mode and a service attempted to get content from the cluster storage but this failed. Because storage could not be read, its possible the service that requested the storage will have further errors.
 
   **Action:**
 
-  TODO
+  If there was a network disruption or performance issue, a timeout could have occurred. Review the rest of the logs to see if there are other messages to explain the failure. You can attempt to avoid timeout-related failures by editing the configuration parameter `components.app-server.node.cluster.storageTimeout`.
 
 
 
-### ZWED0145E":"Cannot load SAF keyring content outside of z/OS
+### ZWED0145E
+
+ Cannot load SAF keyring content outside of z/OS
 
   **Reason:**
 
-  TODO
+  The Zowe configuration of `zowe.certificate` or `components.app-server.node.https` specifies SAF keyrings as locations to find keystore and truststore data. SAF keyrings only exist on z/OS, and the server detected it was not running on z/OS so it cannot continue.
 
   **Action:**
 
-  TODO
+  Modify the configuration to use a different keystore type, or migrate the server to z/OS.
 
 
 
-### ZWED0146E":"SAF keyring data had no attribute "%s". Attributes=
+### ZWED0146E
+
+ SAF keyring data had no attribute "_attribute_". Attributes=_attributeKeys_
 
   **Reason:**
 
-  TODO
+  Within the list of _attributeKeys_, _attribute_ could not be found.
 
   **Action:**
 
-  TODO
+  Check the keystore configuration of the server such as in `zowe.certificate` or `components.app-server.node.https` to see if it is valid for Zowe. The SAF keyring Zowe was configured to use may be missing a key and certificate pair, or certificate authorities keychain. For more suggestions on configuring keyrings for Zowe, review the [install guide](https://docs.zowe.org/stable/user-guide/configure-certificates-keyring)
 
 
 
-### ZWED0147E":"SAF keyring data was not found for "%s"
+### ZWED0147E
+
+ SAF keyring data was not found for "_keyName_"
 
   **Reason:**
 
-  TODO
+  The server tried to read the SAF keyring specified within the Zowe configuration, but ran into an error where the server received no data instead.
 
   **Action:**
 
-  TODO
+  Review the logs to see if a reason for the error is shown. Verify that the Zowe configuration points to a valid keyring that the Zowe server user has permissions to read.
 
 
 
-### ZWED0148E":"Exception thrown when reading SAF keyring, e=
+### ZWED0148E
+
+ Exception thrown when reading SAF keyring, e=_error_
 
   **Reason:**
 
-  TODO
+  The SAF keyring which the app-server was configured to use could not be read due to an error. The server likely will not start or will be unable to do any network activity until this error is resolved.
 
   **Action:**
 
-  TODO
+  Review the error message to determine the cause. Often, the error messages will originate from a system service where the documentation can be found here https://www.ibm.com/docs/en/zos/2.5.0?topic=library-return-reason-codes
 
 
 
-### ZWED0149E":"SAF keyring reference missing userId "%s", keyringName "%s", or label "%s"
+### ZWED0149E
+
+ SAF keyring reference missing userId "_user_", keyringName "_name_", or label "_label_"
 
   **Reason:**
 
-  TODO
+  The server configuration specified that the app-server should load keystore and truststore content from a SAF keyring, but the syntax in the configuration was incorrect, because _user_, _name_, or _label_ were not usable by the server.
 
   **Action:**
 
-  TODO
+  Check the `zowe.certificate` or `components.app-server.node.https` sections of Zowe configuration to see if there are entries that start with `safkeyring://` and verify that they are in the format of `safkeyring://USERNAME:RINGNAME&LABEL`. Older versions of zowe will require that there be 4 slashes, such as `safkeyring:////`. The `&LABEL` suffix is only needed for specifying certificate authorities and should be omitted in other sections, for example it is only needed within `zowe.certificate.pem.certificateAuthorities` or `components.app-server.node.https.certificateAuthorities`. For more suggestions on configuring keyrings for Zowe, review the [install guide](https://docs.zowe.org/stable/user-guide/configure-certificates-keyring)
 
 
 
-### ZWED0150E":"Cannot load SAF keyring due to missing keyring_js library
+### ZWED0150E
+
+ Cannot load SAF keyring due to missing keyring_js library
 
   **Reason:**
 
-  TODO
+  The Zowe configuration specified that the app-server should load keystore and truststore information from a SAF keyring, which requires the nodejs library keyring_js. This library is defined within the package.json of zlux-server-framework and ships with Zowe installs, but could not be loaded for some reason and therefore the server could not load keyrings and will either stop or have issues with network communication.
 
   **Action:**
 
-  TODO
+  Use the command `zwe support` to verify if the Zowe install has all files expected, as this message indicates the keyring_js library is missing and reinstalling Zowe may be required.
 
 
 
-### ZWED0151E":"Env var %s not found
+### ZWED0151E
+
+ Env var _variableName_ not found
 
   **Reason:**
 
-  TODO
+  The server was loading plugins and determines the location of each plugin via a plugin pointer file. In the plugin referenced in the logs, this plugin's location is dynamically determined by an environment variable _variableName_. Because the variable did not resolve to a value, the plugin could not be found and could not be loaded.
 
   **Action:**
 
-  TODO
+  Review documentation for the plugin that failed to load to see what the value of the variable should be, and contact support for that plugin if needed.
 
 
 
-### ZWED0152E":"Unable to locate server config instance location and INSTANCE_DIR environment variable does not exist.
+### ZWED0152E
+
+ Unable to locate server config instance location and INSTANCE_DIR environment variable does not exist.
 
   **Reason:**
 
-  TODO
+  While installing a plugin, the server could not determine the location of the configuration dataservice's "instance" folder. Due to this, the plugin could not be completely installed.
 
   **Action:**
 
-  TODO
+  Correct the error before reinstalling the plugin. This error could happen due to an incorrect value for `components.app-server.instanceDir` and normally defaults to `{{ zowe.workspaceDirectory }}/app-server`.
 
 
 
