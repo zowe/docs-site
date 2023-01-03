@@ -3243,7 +3243,7 @@ The following error message codes may appear on the app-server log. Use the foll
 
   **Reason:**
 
-  The Zowe host operating system is not a supported by the component. Supported platforms are defined in the component's pluginDefinition.json.
+  The Zowe host operating system _operatingSystemName_ is not a supported by the component _componentName_. Supported platforms are defined in the component's pluginDefinition.json.
 
   **Action:**
 
