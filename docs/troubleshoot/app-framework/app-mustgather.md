@@ -4,7 +4,7 @@ If you need to contact a support group for Zowe, they will likely need a variety
 
 ## Basic information
 
-Please review [the list of information needed for general server support](servers/must-gather)
+Please review [the list of information needed for general server support](../servers/must-gather.md).
 
 ## Javascript console output
 

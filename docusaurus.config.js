@@ -218,9 +218,6 @@ module.exports = {
             "v1.28.x": {
               label: "v1.28.x LTS",
             },
-            "v1.27.x": {
-              label: "v1.27.x LTS",
-            },
           },
         },
         theme: {

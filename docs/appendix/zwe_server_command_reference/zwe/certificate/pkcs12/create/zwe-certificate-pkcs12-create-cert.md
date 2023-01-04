@@ -24,34 +24,34 @@ zwe certificate pkcs12 create cert -d /path/to/my/keystore/dir -a cert-alias -p 
 
 Full name|Alias|Type|Required|Help message
 |---|---|---|---|---
---allow-overwrite,--allow-overwritten||boolean|no||Allow overwritten existing MVS data set.
---keystore|-k|string|yes||PKCS12 keystore name.
---alias|-a|string|yes||Certificate alias name.
---password|-p|string|yes||Password of the certificate keystore.
---common-name|-cn|string|no||Common name of certificate.
---domains|-d|string|no||Domain list of certificate Subject Alternative Name (SAN).
---ca-alias||string|yes||Alias name of the certificate authority which is used to sign CSR.
---ca-password||string|yes||Password of the certificate authority keystore which is used to sign CSR.
---org-unit||string|no||Organization unit of certificate.
---org||string|no||Organization of certificate.
---locality||string|no||Locality of certificate.
---state||string|no||State of certificate.
---country||string|no||Country of certificate.
---validity||string|no||Validity days of certificate.
---key-usage||string|no||Key usage of certificate.
---extended-key-usage||string|no||Extended key usage of certificate.
+--allow-overwrite,--allow-overwritten||boolean|no|Allow overwritten existing MVS data set.
+--keystore|-k|string|yes|PKCS12 keystore name.
+--alias|-a|string|yes|Certificate alias name.
+--password|-p|string|yes|Password of the certificate keystore.
+--common-name|-cn|string|no|Common name of certificate.
+--domains|-d|string|no|Domain list of certificate Subject Alternative Name (SAN).
+--ca-alias||string|yes|Alias name of the certificate authority which is used to sign CSR.
+--ca-password||string|yes|Password of the certificate authority keystore which is used to sign CSR.
+--org-unit||string|no|Organization unit of certificate.
+--org||string|no|Organization of certificate.
+--locality||string|no|Locality of certificate.
+--state||string|no|State of certificate.
+--country||string|no|Country of certificate.
+--validity||string|no|Validity days of certificate.
+--key-usage||string|no|Key usage of certificate.
+--extended-key-usage||string|no|Extended key usage of certificate.
 ### Inherited from parent command
 
 Full name|Alias|Type|Required|Help message
 |---|---|---|---|---
---keystore-dir|-d|string|yes||Keystore directory.
---help|-h|boolean|no||Display this help.
---debug,--verbose|-v|boolean|no||Enable verbose mode.
---trace|-vv|boolean|no||Enable trace level debug mode.
---silent|-s|boolean|no||Do not display messages to standard output.
---log-dir,--log|-l|string|no||Write logs to this directory.
---config|-c|string|no||Path to Zowe configuration zowe.yaml file.
---configmgr||boolean|no||(Experimental, WIP)Enable use of configmgr capabilities.
+--keystore-dir|-d|string|yes|Keystore directory.
+--help|-h|boolean|no|Display this help.
+--debug,--verbose|-v|boolean|no|Enable verbose mode.
+--trace|-vv|boolean|no|Enable trace level debug mode.
+--silent|-s|boolean|no|Do not display messages to standard output.
+--log-dir,--log|-l|string|no|Write logs to this directory.
+--config|-c|string|no|Path to Zowe configuration zowe.yaml file.
+--configmgr||boolean|no|Enable use of configmgr capabilities.
 
 
 ## Errors
@@ -99,3 +99,4 @@ ZWEL0200E||Failed to copy USS file %s to MVS data set %s.
 ZWEL0201E||File %s does not exist.
 ZWEL0202E||Unable to find samplib key for %s.
 ZWEL0203E||Env value in key-value pair %s has not been defined.
+ZWEL0316E||Command requires zowe.useConfigmgr=true to use.
