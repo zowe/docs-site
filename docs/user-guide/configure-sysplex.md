@@ -44,7 +44,7 @@ The following example DVIPA configuration ensures the availability of Zowe in Ho
    - x.x.x.A is the home address for SYSA.
    - x.x.x.B is the home address for SYSB.
    - x.x.x.V is Dynamic VIP Address.
-   - 7554 is the port number of you Zowe API Mediation Layer Gateway. This should be the same port number you configured for `zowe.externalPort` in `zowe.yaml`. See [Zowe YAML configuration file reference](../appendix/zowe-yaml-configuration) to learn more about `zowe.yaml`.
+   - 7554 is the port number of you Zowe API Mediation Layer Gateway. This should be the same port number you configured for `zowe.externalPort` in `zowe.yaml`. See [Zowe YAML configuration file reference](../appendix/zowe-yaml-configuration.md) to learn more about `zowe.yaml`.
 
 The `VIPADISTRIBUTE` statement with `PREFERRED` and `BACKUP` settings is used to enable automatic dynamic VIPA takeover to occur, if needed.
 
