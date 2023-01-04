@@ -2,7 +2,7 @@
 
 The release notes for all Zowe releases are published in this section.
 
-Release notes detail all the new features, enhancements, and bug fixes included in a particular Zowe release.
+Release notes detail all the new features, enhancements, bug fixes, and security vulnerabilities fixed in a particular Zowe release.
 
 Select a Zowe release version on the **Table of Contents** located on the left of the page to view its release notes.
 
