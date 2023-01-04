@@ -1,4 +1,4 @@
-const LATEST_VERSION = "v2.4.x";
+const LATEST_VERSION = "v2.5.x";
 const versionsArray = require("./versions.json");
 
 module.exports = {
@@ -200,6 +200,9 @@ module.exports = {
               path: "stable",
               label: `${LATEST_VERSION}` + " LTS",
             },
+            "v2.4.x": {
+              label: "v2.4.x LTS",
+           },
             "v2.3.x": {
               label: "v2.3.x LTS",
            },
@@ -214,12 +217,6 @@ module.exports = {
             },
             "v1.28.x": {
               label: "v1.28.x LTS",
-            },
-            "v1.27.x": {
-              label: "v1.27.x LTS",
-            },
-            "v1.26.x": {
-              label: "v1.26.x LTS",
             },
           },
         },

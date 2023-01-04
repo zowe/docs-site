@@ -26,6 +26,10 @@
       "items": [
         {
           "type": "doc",
+          "id": "version-v1.28.x/getting-started/release-notes/v1_28_2"
+        },
+        {
+          "type": "doc",
           "id": "version-v1.28.x/getting-started/release-notes/v1_28_1"
         },
         {

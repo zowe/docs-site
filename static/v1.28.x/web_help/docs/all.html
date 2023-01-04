@@ -7970,7 +7970,7 @@ Allowed values: http, https</p>
 <h4>Examples</h4>
 <ul>
 <li>
-<p>Define a URIMAP named URIMAPA to the region named MYREGION in the CSD group MYGRP where the host is <a href="http://www.example.com">www.example.com</a> and the path is /example/index.html:</p>
+<p>Define a URIMAP named URIMAPA to the region named MYREGION in the CSD group MYGRP where the host is www.example.com and the path is /example/index.html:</p>
 <ul>
 <li><code>zowe cics define urimap-client URIMAPA MYGRP --urimap-path /example/index.html --urimap-host www.example.com --region-name MYREGION</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe cics define urimap-client URIMAPA MYGRP --urimap-path /example/index.html --urimap-host www.example.com --region-name MYREGION">Copy</button></li>
 </ul>
@@ -8168,7 +8168,7 @@ Allowed values: http, https</p>
 <h4>Examples</h4>
 <ul>
 <li>
-<p>Define a URIMAP named URIMAPA for the pipeline named PIPE123 to the region named MYREGION in the CSD group MYGRP where the host is <a href="http://www.example.com">www.example.com</a> and the path is /example/index.html:</p>
+<p>Define a URIMAP named URIMAPA for the pipeline named PIPE123 to the region named MYREGION in the CSD group MYGRP where the host is www.example.com and the path is /example/index.html:</p>
 <ul>
 <li><code>zowe cics define urimap-pipeline URIMAPA MYGRP --urimap-path /example/index.html --urimap-host www.example.com --pipeline-name PIPE123 --region-name MYREGION</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe cics define urimap-pipeline URIMAPA MYGRP --urimap-path /example/index.html --urimap-host www.example.com --pipeline-name PIPE123 --region-name MYREGION">Copy</button></li>
 </ul>
@@ -8354,7 +8354,7 @@ Allowed values: http, https</p>
 <h4>Examples</h4>
 <ul>
 <li>
-<p>Define a URIMAP named URIMAPA for the program named PGM123 to the region named MYREGION in the CSD group MYGRP where the host is <a href="http://www.example.com">www.example.com</a> and the path is /example/index.html:</p>
+<p>Define a URIMAP named URIMAPA for the program named PGM123 to the region named MYREGION in the CSD group MYGRP where the host is www.example.com and the path is /example/index.html:</p>
 <ul>
 <li><code>zowe cics define urimap-server URIMAPA MYGRP --urimap-path /example/index.html --urimap-host www.example.com --program-name PGM123 --region-name MYREGION</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe cics define urimap-server URIMAPA MYGRP --urimap-path /example/index.html --urimap-host www.example.com --program-name PGM123 --region-name MYREGION">Copy</button></li>
 </ul>
@@ -21380,7 +21380,7 @@ Allowed values: http, https</p>
 <a name="zowe_endevor-bridge-for-git_build"></a><h2><a href="#zowe">zowe</a> › <a href="#zowe_endevor-bridge-for-git">endevor-bridge-for-git</a> › <a href="#zowe_endevor-bridge-for-git_build">build</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
 <p>Build changes from git local repository in Endevor</p>
 <a class="cmd-anchor" name="zowe_endevor-bridge-for-git_build_execute"></a><h3><a href="#zowe">zowe</a> › <a href="#zowe_endevor-bridge-for-git">endevor-bridge-for-git</a> › <a href="#zowe_endevor-bridge-for-git_build">build</a> › <a href="#zowe_endevor-bridge-for-git_build_execute">execute</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h3>
-<p>Build changes against remote git repository's CA Endevor Bridge for Git synchronized branch, using work area or build <a href="http://subsystem.It">subsystem.It</a> does not support autogen for building dependencies.</p>
+<p>Build changes against remote git repository's CA Endevor Bridge for Git synchronized branch, using work area or build subsystem.It does not support autogen for building dependencies.</p>
 <h4>Usage</h4>
 <p>zowe endevor-bridge-for-git build execute [options]</p>
 <h4>Required Options</h4>
@@ -36551,8 +36551,10 @@ Allowed values: http, https</p>
 <p><code>--login</code>  <em>(boolean)</em></p>
 <ul>
 <li>
-<p>The flag to add a registry user account to install from secure registry. It saves credentials to the .npmrc file using `npm adduser`. When this value is omitted, credentials from .npmrc file is used. If you used this flag once for specific registry, you don't have to use it again, it uses credentials from .npmrc file.</p>
-<p>For more information about npm registries, see: <a href="https://docs.npmjs.com/cli/adduser">https://docs.npmjs.com/cli/adduser</a></p>
+<p>The flag to add a registry user account to install from secure registry. It saves credentials to the .npmrc file using `npm login`. When this value is omitted, credentials from .npmrc file is used. If you used this flag once for specific registry, you don't have to use it again, it uses credentials from .npmrc file.</p>
+<p>For more information about npm registries, see:<br>
+<a href="https://docs.npmjs.com/cli/login">https://docs.npmjs.com/cli/login</a> for NPM &gt;= 9<br>
+<a href="https://docs.npmjs.com/cli/adduser">https://docs.npmjs.com/cli/adduser</a> for NPM &lt; 9</p>
 </li>
 </ul>
 </li>
@@ -36671,8 +36673,10 @@ Allowed values: http, https</p>
 <p><code>--login</code>  <em>(boolean)</em></p>
 <ul>
 <li>
-<p>The flag to add a registry user account to install from secure registry. It saves credentials to the .npmrc file using `npm adduser`. When this value is omitted, credentials from .npmrc file is used. If you used this flag once for specific registry, you don't have to use it again, it uses credentials from .npmrc file.</p>
-<p>For more information about npm registries, see: <a href="https://docs.npmjs.com/cli/adduser">https://docs.npmjs.com/cli/adduser</a></p>
+<p>The flag to add a registry user account to install from secure registry. It saves credentials to the .npmrc file using `npm login`. When this value is omitted, credentials from .npmrc file is used. If you used this flag once for specific registry, you don't have to use it again, it uses credentials from .npmrc file.</p>
+<p>For more information about npm registries, see:<br>
+<a href="https://docs.npmjs.com/cli/login">https://docs.npmjs.com/cli/login</a> for NPM &gt;= 9<br>
+<a href="https://docs.npmjs.com/cli/adduser">https://docs.npmjs.com/cli/adduser</a> for NPM &lt; 9</p>
 </li>
 </ul>
 </li>
@@ -36847,19 +36851,19 @@ Validation issues identified for this plug-in are displayed.</p>
 <h4>Examples</h4>
 <ul>
 <li>
-<p>Create a profile called 'base1' to connect to host <a href="http://example.com">example.com</a> and port 443:</p>
+<p>Create a profile called 'base1' to connect to host example.com and port 443:</p>
 <ul>
 <li><code>zowe profiles create base-profile base1 --host example.com --port 443 --user admin --password 123456</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe profiles create base-profile base1 --host example.com --port 443 --user admin --password 123456">Copy</button></li>
 </ul>
 </li>
 <li>
-<p>Create a profile called 'base2' to connect to host <a href="http://example.com">example.com</a> (default port - 443) and allow self-signed certificates:</p>
+<p>Create a profile called 'base2' to connect to host example.com (default port - 443) and allow self-signed certificates:</p>
 <ul>
 <li><code>zowe profiles create base-profile base2 --host example.com --user admin --password 123456 --reject-unauthorized false</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe profiles create base-profile base2 --host example.com --user admin --password 123456 --reject-unauthorized false">Copy</button></li>
 </ul>
 </li>
 <li>
-<p>Create a profile called 'base3' to connect to host <a href="http://example.com">example.com</a> and port 1443,  not specifying a username or password so they are not stored on disk; these will need to be specified on every command:</p>
+<p>Create a profile called 'base3' to connect to host example.com and port 1443,  not specifying a username or password so they are not stored on disk; these will need to be specified on every command:</p>
 <ul>
 <li><code>zowe profiles create base-profile base3 --host example.com --port 1443</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe profiles create base-profile base3 --host example.com --port 1443">Copy</button></li>
 </ul>
@@ -37104,7 +37108,7 @@ Allowed values: http, https</p>
 <h4>Examples</h4>
 <ul>
 <li>
-<p>Create a profile for View™ Plug-in for Zowe CLI named 'myProfile' to connect to '<a href="http://mf.company.org">mf.company.org</a>' over HTTP on port 80 using the 'johndoe' account.:</p>
+<p>Create a profile for View™ Plug-in for Zowe CLI named 'myProfile' to connect to 'mf.company.org' over HTTP on port 80 using the 'johndoe' account.:</p>
 <ul>
 <li><code>zowe profiles create caview-profile myProfile --hostname mf.company.org --protocol http --port 80 --username johndoe --password secret</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe profiles create caview-profile myProfile --hostname mf.company.org --protocol http --port 80 --username johndoe --password secret">Copy</button></li>
 </ul>
@@ -50012,7 +50016,7 @@ The maximum number of TSO address spaces have been created. When you specify 0, 
 <h4>Examples</h4>
 <ul>
 <li>
-<p>Upload file contents to a sequential data set named &quot;<a href="http://ibmuser.ps">ibmuser.ps</a>&quot;:</p>
+<p>Upload file contents to a sequential data set named &quot;ibmuser.ps&quot;:</p>
 <ul>
 <li><code>zowe rse-api-for-zowe-cli upload file-to-data-set &quot;file.txt&quot; &quot;ibmuser.ps&quot;</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe rse-api-for-zowe-cli upload file-to-data-set &quot;file.txt&quot; &quot;ibmuser.ps&quot;">Copy</button></li>
 </ul>
@@ -50290,7 +50294,7 @@ The maximum number of TSO address spaces have been created. When you specify 0, 
 <li>
 <p><code>spoolfileid</code>		 <em>(number)</em></p>
 <ul>
-<li>The spool file ID number for the spool file to view. Use the &quot;zowe rse list spool-files-by-jobid&quot; command to obtain spool ID <a href="http://numbers.No">numbers.No</a> pre-validation of the ID is performed.</li>
+<li>The spool file ID number for the spool file to view. Use the &quot;zowe rse list spool-files-by-jobid&quot; command to obtain spool ID numbers.No pre-validation of the ID is performed.</li>
 </ul>
 </li>
 </ul>
@@ -60764,19 +60768,19 @@ Allowed values: http, https</p>
 <h4>Examples</h4>
 <ul>
 <li>
-<p>Create a VSAM data set named &quot;<a href="http://SOME.DATA.SET.NAME">SOME.DATA.SET.NAME</a>&quot; using default values of INDEXED, 840 KB primary storage and 84 KB secondary storage:</p>
+<p>Create a VSAM data set named &quot;SOME.DATA.SET.NAME&quot; using default values of INDEXED, 840 KB primary storage and 84 KB secondary storage:</p>
 <ul>
 <li><code>zowe zos-files create data-set-vsam SOME.DATA.SET.NAME</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe zos-files create data-set-vsam SOME.DATA.SET.NAME">Copy</button></li>
 </ul>
 </li>
 <li>
-<p>Create a 5 MB LINEAR VSAM data set named &quot;<a href="http://SOME.DATA.SET.NAME">SOME.DATA.SET.NAME</a>&quot; with 1 MB of secondary space. Show the properties of the data set when it is created:</p>
+<p>Create a 5 MB LINEAR VSAM data set named &quot;SOME.DATA.SET.NAME&quot; with 1 MB of secondary space. Show the properties of the data set when it is created:</p>
 <ul>
 <li><code>zowe zos-files create data-set-vsam SOME.DATA.SET.NAME --data-set-organization LINEAR --size 5MB --secondary-space 1 --show-attributes</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe zos-files create data-set-vsam SOME.DATA.SET.NAME --data-set-organization LINEAR --size 5MB --secondary-space 1 --show-attributes">Copy</button></li>
 </ul>
 </li>
 <li>
-<p>Create a VSAM data set named &quot;<a href="http://SOME.DATA.SET.NAME">SOME.DATA.SET.NAME</a>&quot;, which is retained for 100 days:</p>
+<p>Create a VSAM data set named &quot;SOME.DATA.SET.NAME&quot;, which is retained for 100 days:</p>
 <ul>
 <li><code>zowe zos-files create data-set-vsam SOME.DATA.SET.NAME --retain-for 100 </code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe zos-files create data-set-vsam SOME.DATA.SET.NAME --retain-for 100 ">Copy</button></li>
 </ul>
@@ -64916,7 +64920,7 @@ Allowed values: http, https</p>
 <h4>Examples</h4>
 <ul>
 <li>
-<p>Upload file contents to a sequential data set named &quot;<a href="http://ibmuser.ps">ibmuser.ps</a>&quot;:</p>
+<p>Upload file contents to a sequential data set named &quot;ibmuser.ps&quot;:</p>
 <ul>
 <li><code>zowe zos-files upload file-to-data-set &quot;file.txt&quot; &quot;ibmuser.ps&quot;</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe zos-files upload file-to-data-set &quot;file.txt&quot; &quot;ibmuser.ps&quot;">Copy</button></li>
 </ul>
@@ -65229,7 +65233,7 @@ Allowed values: http, https</p>
 <h4>Examples</h4>
 <ul>
 <li>
-<p>Stream content from stdin to a sequential data set named &quot;<a href="http://ibmuser.ps">ibmuser.ps</a>&quot; from a Windows console:</p>
+<p>Stream content from stdin to a sequential data set named &quot;ibmuser.ps&quot; from a Windows console:</p>
 <ul>
 <li><code>echo &quot;hello world&quot; |  zowe zos-files upload stdin-to-data-set &quot;ibmuser.ps&quot;</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="echo &quot;hello world&quot; |  zowe zos-files upload stdin-to-data-set &quot;ibmuser.ps&quot;">Copy</button></li>
 </ul>
@@ -70727,7 +70731,7 @@ Allowed values: http, https</p>
 <li>
 <p><code>spoolfileid</code>		 <em>(number)</em></p>
 <ul>
-<li>The spool file ID number for the spool file to view. Use the &quot;zowe zos-jobs list spool-files-by-jobid&quot; command to obtain spool ID <a href="http://numbers.No">numbers.No</a> pre-validation of the ID is performed.</li>
+<li>The spool file ID number for the spool file to view. Use the &quot;zowe zos-jobs list spool-files-by-jobid&quot; command to obtain spool ID numbers.No pre-validation of the ID is performed.</li>
 </ul>
 </li>
 </ul>
