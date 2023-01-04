@@ -3289,72 +3289,84 @@ The following error message codes may appear on the app-server log. Use the foll
 
 
 
-### ZWED0153E":"(%s) is not a supported platform for %s. Skipping (%s)... Supported: %s
+### ZWED0153E
+
+ (_operatingSystemName_) is not a supported platform for _componentName_. Skipping (_pluginid_)... Supported: _requiredOperatingSystem_
 
   **Reason:**
 
-  TODO
+  The Zowe host operating system _operatingSystemName_ is not a supported by the component _componentName_. Supported platforms are defined in the component's pluginDefinition.json.
 
   **Action:**
 
-  TODO
+  Refer to _componentName_ pluginDefinition.json for supported platforms. The installation of Zowe may also be moved to a supported platform. Lastly, contact the author of the component, or a system administrator.
 
 
 
-### ZWED0154E":"(%s) is not a supported architecture for %s. Skipping (%s)... Supported: %s
+### ZWED0154E
+
+ (_architectureName_) is not a supported architecture for _componentName_. Skipping (_pluginid_)... Supported: _requiredArchitecture_
 
   **Reason:**
 
-  TODO
+  The Zowe host architecture is not supported by _componentName_. Supported architectures are defined in the component's pluginDefintion.json.
 
   **Action:**
 
-  TODO
+  Refer to _componentName_ pluginDefinition.json for supported architectures. The installation of Zowe may also be moved to a supported architecture. Lastly, contact the author of the component, or a system administrator.
 
 
 
-### ZWED0155E":"(%s) is not a supported endpoint for %s. Skipping (%s)... Supported: %s
+### ZWED0155E
+
+ (_url_) is not a supported endpoint for _componentName_. Skipping (_pluginid_)... Supported: _urls_
 
   **Reason:**
 
-  TODO
+  The endpoint _url_ does not match any required endpoints of _componentName_. Supported endpoints may be viewd in the component's pluginDefinition.json.
 
   **Action:**
 
-  TODO
+ Refer to _componentName_ pluginDefinition.json for supported endpoints. Optionally, remove _url_ from the required endpoints in pluginDefinition.json. Lastly, contact the author of the component, or a system administrator.
 
 
 
-### ZWED0156E":"Could not register default plugins into app-server
+### ZWED0156E
+
+ Could not register default plugins into app-server
 
   **Reason:**
 
-  TODO
+  org.zowe.zlux.json is missing from app-server plugin directory. This error will cause the process to exit. 
 
   **Action:**
 
-  TODO
+  Verify integrity of Zowe installation, or contact system administrator. Please refer to https://docs.zowe.org/stable/appendix/zwe_server_command_reference/zwe/support/zwe-support for collecting Zowe runtime information.
 
 
 
-### ZWED0157E":"Could not register default plugin %s into app-server
+### ZWED0157E
+
+ Could not register default plugin _pluginid_ into app-server
 
   **Reason:**
 
-  TODO
+  Could not register default plugin _pluginid_ into app-server due to plugin upgrade failure.
 
   **Action:**
 
-  TODO
+  Verify integrity of plugin files, or contact system administrator. Please refer to https://docs.zowe.org/stable/appendix/zwe_server_command_reference/zwe/support/zwe-support for collecting Zowe runtime information.
 
 
 
-### ZWED0158E":"Could not listen on address %s:%s. Insufficient permissions to perform port bind."
+### ZWED0158E
+
+ Could not listen on address _ipAddress_:_port_. Insufficient permissions to perform port bind.
 
   **Reason:**
 
-  TODO
+  Server could not bind to port due to an EACCES error. User lacks privilege to perform port bind. This error will cause the process to exit.
 
   **Action:**
 
-  TODO
+  Contact system administrator.
