@@ -12,7 +12,10 @@
 <p>An example .zosattributes file:<br>
 # pattern        local-encoding        remote-encoding<br>
 # Don't upload the node_modules directory<br>
+node_modules     -<br>
+# Don't upload files that start with periods<br>
 .*               -<br>
+# Upload jpg images in binary<br>
 *.jpg            binary                binary<br>
 # Convert CICS Node.js profiles to EBCDIC<br>
 *.profile        ISO8859-1             EBCDIC</p>
@@ -190,31 +193,31 @@ Allowed values: http, https</p>
 <h4>Examples</h4>
 <ul>
 <li>
-<p>Upload all files from the &quot;local_dir&quot; directory to the &quot;/a/ibmuser/my_dir&quot; USS directory:&quot;:</p>
+<p>Upload all files from the &quot;local_dir&quot; directory to the &quot;/a/ibmuser/my_dir&quot; USS directory:</p>
 <ul>
 <li><code>zowe zos-files upload dir-to-uss &quot;local_dir&quot; &quot;/a/ibmuser/my_dir&quot;</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe zos-files upload dir-to-uss &quot;local_dir&quot; &quot;/a/ibmuser/my_dir&quot;">Copy</button></li>
 </ul>
 </li>
 <li>
-<p>Upload all files from the &quot;local_dir&quot; directory and all its sub-directories, to the &quot;/a/ibmuser/my_dir&quot; USS directory::</p>
+<p>Upload all files from the &quot;local_dir&quot; directory and all its sub-directories, to the &quot;/a/ibmuser/my_dir&quot; USS directory:</p>
 <ul>
 <li><code>zowe zos-files upload dir-to-uss &quot;local_dir&quot; &quot;/a/ibmuser/my_dir&quot; --recursive</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe zos-files upload dir-to-uss &quot;local_dir&quot; &quot;/a/ibmuser/my_dir&quot; --recursive">Copy</button></li>
 </ul>
 </li>
 <li>
-<p>Upload all files from the &quot;local_dir&quot; directory to the &quot;/a/ibmuser/my_dir&quot; USS directory in default ASCII mode, while specifying a list of file names (without path) to be uploaded in binary mode::</p>
+<p>Upload all files from the &quot;local_dir&quot; directory to the &quot;/a/ibmuser/my_dir&quot; USS directory in default ASCII mode, while specifying a list of file names (without path) to be uploaded in binary mode:</p>
 <ul>
 <li><code>zowe zos-files upload dir-to-uss &quot;local_dir&quot; &quot;/a/ibmuser/my_dir&quot; --binary-files &quot;myFile1.exe,myFile2.exe,myFile3.exe&quot;</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe zos-files upload dir-to-uss &quot;local_dir&quot; &quot;/a/ibmuser/my_dir&quot; --binary-files &quot;myFile1.exe,myFile2.exe,myFile3.exe&quot;">Copy</button></li>
 </ul>
 </li>
 <li>
-<p>Upload all files from the &quot;local_dir&quot; directory to the &quot;/a/ibmuser/my_dir&quot; USS directory in binary mode, while specifying a list of file names (without path) to be uploaded in ASCII mode::</p>
+<p>Upload all files from the &quot;local_dir&quot; directory to the &quot;/a/ibmuser/my_dir&quot; USS directory in binary mode, while specifying a list of file names (without path) to be uploaded in ASCII mode:</p>
 <ul>
 <li><code>zowe zos-files upload dir-to-uss &quot;local_dir&quot; &quot;/a/ibmuser/my_dir&quot; --binary --ascii-files &quot;myFile1.txt,myFile2.txt,myFile3.txt&quot;</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe zos-files upload dir-to-uss &quot;local_dir&quot; &quot;/a/ibmuser/my_dir&quot; --binary --ascii-files &quot;myFile1.txt,myFile2.txt,myFile3.txt&quot;">Copy</button></li>
 </ul>
 </li>
 <li>
-<p>Recursively upload all files from the &quot;local_dir&quot; directory to the &quot;/a/ibmuser/my_dir&quot; USS directory, specifying files to ignore and file encodings in the local file my_global_attributes::</p>
+<p>Recursively upload all files from the &quot;local_dir&quot; directory to the &quot;/a/ibmuser/my_dir&quot; USS directory, specifying files to ignore and file encodings in the local file my_global_attributes:</p>
 <ul>
 <li><code>zowe zos-files upload dir-to-uss &quot;local_dir&quot; &quot;/a/ibmuser/my_dir&quot; --recursive --attributes my_global_attributes</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe zos-files upload dir-to-uss &quot;local_dir&quot; &quot;/a/ibmuser/my_dir&quot; --recursive --attributes my_global_attributes">Copy</button></li>
 </ul>

@@ -1325,7 +1325,7 @@ You can install the latest version of the extension from the [Visual Studio Code
 
 #### Zowe documentation
 
-- Added a topic [Zowe runtime lifecycle](../extend/lifecycling-with-zwesvstc.html#zowe-runtime-lifecycle) that describes the use of the `EXTENDER_COMPONENTS` value in the `instance.env` file. See [Creating and configuring the Zowe instance directory](../user-guide/configure-instance-directory.md#extensions).
+- Added a topic [Zowe runtime lifecycle](../extend/lifecycling-with-zwesvstc#zowe-runtime-lifecycle) that describes the use of the `EXTENDER_COMPONENTS` value in the `instance.env` file. See [Creating and configuring the Zowe instance directory](../user-guide/configure-instance-directory.md#extensions).
 - Improved the [Zowe architecture](../getting-started/zowe-architecture.md) information to include a more current architecture topology diagram and more details on the individual Zowe services, where they log their data, and how to perform high-level problem determination.
 - Added new problem determination scenarios and resolution. See [Troubleshooting Zowe Application Framework](../troubleshoot/app-framework/app-troubleshoot.md)
 - Added information on how to determine which release of Zowe is installed. See [Zowe releases](../troubleshoot/troubleshooting.md#zowe-releases).
@@ -1817,7 +1817,7 @@ The following bugs are fixed:
 
 The following commands and enhancements are added:
 
-- You can append `--help-web` to launch interactive command help in your Web browser. For more information, see [Interactive Web Help](../user-guide#interactive-web-help). [(#238)](https://github.com/zowe/imperative/issues/238)
+- You can append `--help-web` to launch interactive command help in your Web browser. [(#238)](https://github.com/zowe/imperative/issues/238)
 
 
 ## Zowe SMP/E Alpha (August 2019)
@@ -2113,7 +2113,7 @@ Version 1.0.1 contains the following changes since the last version.
 
 ### What's new in Zowe installation on z/OS
 
-During product operation of the Zowe Cross Memory Server which was introduced in V1.0.0, the z/OSMF user ID IZUSVR or its equivalent must have UPDATE access to the BPX.SERVER and BPX.DAEMON FACILITY classes. The install script will do this automatically if the installing user has enough authority, or provide the commands to be issued manually if not. For more information, see [Installing the Zowe Cross Memory Server on z/OS](../user-guide/install-zos.html#installing-the-zowe-cross-memory-server-on-z-os)
+During product operation of the Zowe Cross Memory Server which was introduced in V1.0.0, the z/OSMF user ID IZUSVR or its equivalent must have UPDATE access to the BPX.SERVER and BPX.DAEMON FACILITY classes. The install script will do this automatically if the installing user has enough authority, or provide the commands to be issued manually if not.
 
 ### What's new in the Zowe App Server
 

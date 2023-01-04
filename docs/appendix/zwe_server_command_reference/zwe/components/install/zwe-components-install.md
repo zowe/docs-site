@@ -11,7 +11,14 @@
 
 ## Description
 
-Install a Zowe module.
+Install a Zowe component, given a component archive, component directory, or component name.
+When a component name is given instead of a path, the installation will be performed against a Zowe package registry if one is configured.
+Archives can be in the .tar, .zip, or pax format where a component is at the root of the archive.
+
+Components are the packaging standard of Zowe.
+Zowe has core Components, but extensions are also delivered as Components.
+You can read more about them here:
+https://docs.zowe.org/stable/extend/packaging-zos-extensions/
 
 **IMPORTANT NOTES**, by default, this command will enable the component globally
                      by modifying your YAML configuration. You can pass
@@ -31,9 +38,12 @@ zwe components install extract -c /path/to/zowe.yaml -o /path/to/component/packa
 
 Full name|Alias|Type|Required|Help message
 |---|---|---|---|---
---component-file,--component|-o|string|yes||Path to the component package or directory.
---auto-encoding|-e|string|no||If we want to automatically tagging the module files.
---skip-enable||boolean|no||Install component without enabling it for use.
+--component-file,--component|-o|string|yes|Either a path or component name. The path must be to a component package or directory. If a name is specified instead, install checks the zowe package registry.
+--auto-encoding|-e|string|no|If we want to automatically tagging the module files.
+--skip-enable||boolean|no|Install component without enabling it for use.
+--registry|-r|string|no|Specifies the registry to searh within instead of the default. The registry must be compatible with the manager used.
+--handler||string|no|Specifies the registry handler name used with the package registry, instead of the default. The handler must be compatible with the registry used.
+
 
 ## Parameters
 
@@ -41,12 +51,13 @@ Full name|Alias|Type|Required|Help message
 
 Full name|Alias|Type|Required|Help message
 |---|---|---|---|---
---help|-h|boolean|no||Display this help.
---debug,--verbose|-v|boolean|no||Enable verbose mode.
---trace|-vv|boolean|no||Enable trace level debug mode.
---silent|-s|boolean|no||Do not display messages to standard output.
---log-dir,--log|-l|string|no||Write logs to this directory.
---config|-c|string|no||Path to Zowe configuration zowe.yaml file.
+--help|-h|boolean|no|Display this help.
+--debug,--verbose|-v|boolean|no|Enable verbose mode.
+--trace|-vv|boolean|no|Enable trace level debug mode.
+--silent|-s|boolean|no|Do not display messages to standard output.
+--log-dir,--log|-l|string|no|Write logs to this directory.
+--config|-c|string|no|Path to Zowe configuration zowe.yaml file.
+--configmgr||boolean|no|Enable use of configmgr capabilities.
 
 
 ## Errors
@@ -55,7 +66,10 @@ Error code|Exit code|Error message
 |---|---|---
 ZWEL0156E|156|Component name is not initialized after extract step.
 ZWEL0180E|180|Zowe extension directory (zowe.extensionDirectory) is not defined in Zowe YAML configuration file.
-### Inherited from parent command
+ZWEL0304E|304|Handler install failure, cannot continue.
+ZWEL0305E|305|Could not find one of the components' directories.
+ZWEL0314E|314|Cannot install with component=all. This option only exists for upgrade.
+ZWEL0315E|315|Handler (-handler or zowe.extensionRegistry.defaultHandler) required but not specified.### Inherited from parent command
 
 Error code|Exit code|Error message
 |---|---|---
@@ -89,3 +103,8 @@ ZWEL0139E|139|Failed to create directory %s.
 ZWEL0140E|140|Failed to translate Zowe configuration (%s).
 ZWEL0142E|142|Failed to refresh APIML static registrations.
 ZWEL0172E||Component %s has %s defined but the file is missing.
+ZWEL0200E||Failed to copy USS file %s to MVS data set %s.
+ZWEL0201E||File %s does not exist.
+ZWEL0202E||Unable to find samplib key for %s.
+ZWEL0203E||Env value in key-value pair %s has not been defined.
+ZWEL0316E||Command requires zowe.useConfigmgr=true to use.

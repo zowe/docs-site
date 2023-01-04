@@ -1,0 +1,2353 @@
+<!doctype html>
+<html class="default no-js">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>CliProfileManager | Zowe Node.js SDK - v2.2.0</title>
+	<meta name="description" content="Documentation for Zowe Node.js SDK - v2.2.0">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="../assets/css/main.css">
+</head>
+<body>
+<header>
+	<div class="tsd-page-toolbar">
+		<div class="container">
+			<div class="table-wrap">
+				<div class="table-cell" id="tsd-search" data-index="../assets/js/search.json" data-base="..">
+					<div class="field">
+						<label for="tsd-search-field" class="tsd-widget search no-caption">Search</label>
+						<input id="tsd-search-field" type="text" />
+					</div>
+					<ul class="results">
+						<li class="state loading">Preparing search index...</li>
+						<li class="state failure">The search index is not available</li>
+					</ul>
+					<a href="../index.html" class="title">Zowe Node.js SDK - v2.2.0</a>
+				</div>
+				<div class="table-cell" id="tsd-widgets">
+					<div id="tsd-filter">
+						<a href="#" class="tsd-widget options no-caption" data-toggle="options">Options</a>
+						<div class="tsd-filter-group">
+							<div class="tsd-select" id="tsd-filter-visibility">
+								<span class="tsd-select-label">All</span>
+								<ul class="tsd-select-list">
+									<li data-value="public">Public</li>
+									<li data-value="protected">Public/Protected</li>
+									<li data-value="private" class="selected">All</li>
+								</ul>
+							</div>
+							<input type="checkbox" id="tsd-filter-inherited" checked />
+							<label class="tsd-widget" for="tsd-filter-inherited">Inherited</label>
+							<input type="checkbox" id="tsd-filter-externals" checked />
+							<label class="tsd-widget" for="tsd-filter-externals">Externals</label>
+						</div>
+					</div>
+					<a href="#" class="tsd-widget menu no-caption" data-toggle="menu">Menu</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="tsd-page-title">
+		<div class="container">
+			<ul class="tsd-breadcrumb">
+				<li>
+					<a href="../globals.html">Globals</a>
+				</li>
+				<li>
+					<a href="../modules/_zowe_imperative.html">@zowe/imperative</a>
+				</li>
+				<li>
+					<a href="_zowe_imperative.cliprofilemanager.html">CliProfileManager</a>
+				</li>
+			</ul>
+			<h1>Class CliProfileManager</h1>
+		</div>
+	</div>
+</header>
+<div class="container container-main">
+	<div class="row">
+		<div class="col-8 col-content">
+			<section class="tsd-panel tsd-comment">
+				<div class="tsd-comment tsd-typography">
+					<div class="lead">
+						<p>A profile management API compatible with transforming command line arguments into
+						profiles</p>
+					</div>
+				</div>
+			</section>
+			<section class="tsd-panel tsd-hierarchy">
+				<h3>Hierarchy</h3>
+				<ul class="tsd-hierarchy">
+					<li>
+						<a href="_zowe_imperative.basicprofilemanager.html" class="tsd-signature-type">BasicProfileManager</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_zowe_imperative.icommandprofiletypeconfiguration.html" class="tsd-signature-type">ICommandProfileTypeConfiguration</a><span class="tsd-signature-symbol">&gt;</span>
+						<ul class="tsd-hierarchy">
+							<li>
+								<span class="target">CliProfileManager</span>
+							</li>
+						</ul>
+					</li>
+				</ul>
+			</section>
+			<section class="tsd-panel-group tsd-index-group">
+				<h2>Index</h2>
+				<section class="tsd-panel tsd-index-panel">
+					<div class="tsd-index-content">
+						<section class="tsd-index-section tsd-is-inherited">
+							<h3>Constructors</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-constructor tsd-parent-kind-class tsd-is-inherited"><a href="_zowe_imperative.cliprofilemanager.html#constructor" class="tsd-kind-icon">constructor</a></li>
+							</ul>
+						</section>
+						<section class="tsd-index-section tsd-is-inherited">
+							<h3>Properties</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-static"><a href="_zowe_imperative.cliprofilemanager.html#meta_file_suffix" class="tsd-kind-icon">META_<wbr>FILE_<wbr>SUFFIX</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-static"><a href="_zowe_imperative.cliprofilemanager.html#profile_extension" class="tsd-kind-icon">PROFILE_<wbr>EXTENSION</a></li>
+							</ul>
+						</section>
+						<section class="tsd-index-section tsd-is-inherited">
+							<h3>Accessors</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-get-signature tsd-parent-kind-class tsd-is-inherited"><a href="_zowe_imperative.cliprofilemanager.html#configurations" class="tsd-kind-icon">configurations</a></li>
+								<li class="tsd-kind-get-signature tsd-parent-kind-class tsd-is-inherited tsd-is-protected"><a href="_zowe_imperative.cliprofilemanager.html#loadcounter" class="tsd-kind-icon">load<wbr>Counter</a></li>
+								<li class="tsd-kind-get-signature tsd-parent-kind-class tsd-is-inherited tsd-is-protected"><a href="_zowe_imperative.cliprofilemanager.html#log" class="tsd-kind-icon">log</a></li>
+								<li class="tsd-kind-get-signature tsd-parent-kind-class tsd-is-inherited tsd-is-protected"><a href="_zowe_imperative.cliprofilemanager.html#managerparameters" class="tsd-kind-icon">manager<wbr>Parameters</a></li>
+								<li class="tsd-kind-get-signature tsd-parent-kind-class tsd-is-inherited tsd-is-protected"><a href="_zowe_imperative.cliprofilemanager.html#productdisplayname" class="tsd-kind-icon">product<wbr>Display<wbr>Name</a></li>
+								<li class="tsd-kind-get-signature tsd-parent-kind-class tsd-is-inherited tsd-is-protected"><a href="_zowe_imperative.cliprofilemanager.html#profilerootdirectory" class="tsd-kind-icon">profile<wbr>Root<wbr>Directory</a></li>
+								<li class="tsd-kind-get-signature tsd-parent-kind-class tsd-is-inherited tsd-is-protected"><a href="_zowe_imperative.cliprofilemanager.html#profiletype" class="tsd-kind-icon">profile<wbr>Type</a></li>
+								<li class="tsd-kind-get-signature tsd-parent-kind-class tsd-is-inherited tsd-is-protected"><a href="_zowe_imperative.cliprofilemanager.html#profiletypeconfiguration" class="tsd-kind-icon">profile<wbr>Type<wbr>Configuration</a></li>
+								<li class="tsd-kind-get-signature tsd-parent-kind-class tsd-is-inherited tsd-is-protected"><a href="_zowe_imperative.cliprofilemanager.html#profiletypeconfigurations" class="tsd-kind-icon">profile<wbr>Type<wbr>Configurations</a></li>
+								<li class="tsd-kind-get-signature tsd-parent-kind-class tsd-is-inherited tsd-is-protected"><a href="_zowe_imperative.cliprofilemanager.html#profiletypemetafilename" class="tsd-kind-icon">profile<wbr>Type<wbr>Meta<wbr>File<wbr>Name</a></li>
+								<li class="tsd-kind-get-signature tsd-parent-kind-class tsd-is-inherited tsd-is-protected"><a href="_zowe_imperative.cliprofilemanager.html#profiletyperootdirectory" class="tsd-kind-icon">profile<wbr>Type<wbr>Root<wbr>Directory</a></li>
+								<li class="tsd-kind-get-signature tsd-parent-kind-class tsd-is-inherited tsd-is-protected"><a href="_zowe_imperative.cliprofilemanager.html#profiletypeschema" class="tsd-kind-icon">profile<wbr>Type<wbr>Schema</a></li>
+							</ul>
+						</section>
+						<section class="tsd-index-section ">
+							<h3>Methods</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><a href="_zowe_imperative.cliprofilemanager.html#addprofileinstruction" class="tsd-kind-icon">add<wbr>Profile<wbr>Instruction</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="_zowe_imperative.cliprofilemanager.html#cleardefault" class="tsd-kind-icon">clear<wbr>Default</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected"><a href="_zowe_imperative.cliprofilemanager.html#constructfullprofilepath" class="tsd-kind-icon">construct<wbr>Full<wbr>Profile<wbr>Path</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><a href="_zowe_imperative.cliprofilemanager.html#createprofilefromcommandarguments" class="tsd-kind-icon">create<wbr>Profile<wbr>From<wbr>Command<wbr>Arguments</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-inherited"><a href="_zowe_imperative.cliprofilemanager.html#delete" class="tsd-kind-icon">delete</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-overwrite tsd-is-protected"><a href="_zowe_imperative.cliprofilemanager.html#deleteprofile" class="tsd-kind-icon">delete<wbr>Profile</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected"><a href="_zowe_imperative.cliprofilemanager.html#deleteprofilefromdisk" class="tsd-kind-icon">delete<wbr>Profile<wbr>From<wbr>Disk</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><a href="_zowe_imperative.cliprofilemanager.html#findoptions" class="tsd-kind-icon">find<wbr>Options</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="_zowe_imperative.cliprofilemanager.html#getallprofilenames" class="tsd-kind-icon">get<wbr>All<wbr>Profile<wbr>Names</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="_zowe_imperative.cliprofilemanager.html#getdefaultprofilename" class="tsd-kind-icon">get<wbr>Default<wbr>Profile<wbr>Name</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><a href="_zowe_imperative.cliprofilemanager.html#insertcliargumentsintoprofile" class="tsd-kind-icon">insert<wbr>Cli<wbr>Arguments<wbr>Into<wbr>Profile</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><a href="_zowe_imperative.cliprofilemanager.html#insertdependenciesintoprofilefromcliarguments" class="tsd-kind-icon">insert<wbr>Dependencies<wbr>Into<wbr>Profile<wbr>FromCLIArguments</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected"><a href="_zowe_imperative.cliprofilemanager.html#isprofileempty" class="tsd-kind-icon">is<wbr>Profile<wbr>Empty</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-inherited"><a href="_zowe_imperative.cliprofilemanager.html#load" class="tsd-kind-icon">load</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-overwrite"><a href="_zowe_imperative.cliprofilemanager.html#loadall" class="tsd-kind-icon">load<wbr>All</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-overwrite tsd-is-inherited tsd-is-protected"><a href="_zowe_imperative.cliprofilemanager.html#loaddependencies" class="tsd-kind-icon">load<wbr>Dependencies</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected"><a href="_zowe_imperative.cliprofilemanager.html#loadfailed" class="tsd-kind-icon">load<wbr>Failed</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-overwrite tsd-is-protected"><a href="_zowe_imperative.cliprofilemanager.html#loadprofile" class="tsd-kind-icon">load<wbr>Profile</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected"><a href="_zowe_imperative.cliprofilemanager.html#loadspecificprofile" class="tsd-kind-icon">load<wbr>Specific<wbr>Profile</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected"><a href="_zowe_imperative.cliprofilemanager.html#locateexistingprofile" class="tsd-kind-icon">locate<wbr>Existing<wbr>Profile</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="_zowe_imperative.cliprofilemanager.html#mergeprofiles" class="tsd-kind-icon">merge<wbr>Profiles</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><a href="_zowe_imperative.cliprofilemanager.html#processsecureproperties" class="tsd-kind-icon">process<wbr>Secure<wbr>Properties</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-inherited"><a href="_zowe_imperative.cliprofilemanager.html#save" class="tsd-kind-icon">save</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-overwrite tsd-is-protected"><a href="_zowe_imperative.cliprofilemanager.html#saveprofile" class="tsd-kind-icon">save<wbr>Profile</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="_zowe_imperative.cliprofilemanager.html#setdefault" class="tsd-kind-icon">set<wbr>Default</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-inherited"><a href="_zowe_imperative.cliprofilemanager.html#update" class="tsd-kind-icon">update</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-overwrite tsd-is-protected"><a href="_zowe_imperative.cliprofilemanager.html#updateprofile" class="tsd-kind-icon">update<wbr>Profile</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><a href="_zowe_imperative.cliprofilemanager.html#updateprofilefieldsfromcommandarguments" class="tsd-kind-icon">update<wbr>Profile<wbr>Fields<wbr>From<wbr>Command<wbr>Arguments</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><a href="_zowe_imperative.cliprofilemanager.html#updateprofilefromcliargs" class="tsd-kind-icon">update<wbr>Profile<wbr>From<wbr>Cli<wbr>Args</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-inherited"><a href="_zowe_imperative.cliprofilemanager.html#validate" class="tsd-kind-icon">validate</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-overwrite tsd-is-protected"><a href="_zowe_imperative.cliprofilemanager.html#validateprofile" class="tsd-kind-icon">validate<wbr>Profile</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected"><a href="_zowe_imperative.cliprofilemanager.html#validateprofileagainstschema" class="tsd-kind-icon">validate<wbr>Profile<wbr>Against<wbr>Schema</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected"><a href="_zowe_imperative.cliprofilemanager.html#validateprofileobject" class="tsd-kind-icon">validate<wbr>Profile<wbr>Object</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-private"><a href="_zowe_imperative.cliprofilemanager.html#validaterequireddependenciesarespecified" class="tsd-kind-icon">validate<wbr>Required<wbr>Dependencies<wbr>Are<wbr>Specified</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-static"><a href="_zowe_imperative.cliprofilemanager.html#initialize" class="tsd-kind-icon">initialize</a></li>
+							</ul>
+						</section>
+					</div>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group tsd-is-inherited">
+				<h2>Constructors</h2>
+				<section class="tsd-panel tsd-member tsd-kind-constructor tsd-parent-kind-class tsd-is-inherited">
+					<a name="constructor" class="tsd-anchor"></a>
+					<h3>constructor</h3>
+					<ul class="tsd-signatures tsd-kind-constructor tsd-parent-kind-class tsd-is-inherited">
+						<li class="tsd-signature tsd-kind-icon">new <wbr>Cli<wbr>Profile<wbr>Manager<span class="tsd-signature-symbol">(</span>parms<span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_imperative.iprofilemanager.html" class="tsd-signature-type">IProfileManager</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_zowe_imperative.icommandprofiletypeconfiguration.html" class="tsd-signature-type">ICommandProfileTypeConfiguration</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_zowe_imperative.cliprofilemanager.html" class="tsd-signature-type">CliProfileManager</a></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Inherited from <a href="_zowe_imperative.cliprofilemanager.html">CliProfileManager</a>.<a href="_zowe_imperative.cliprofilemanager.html#constructor">constructor</a></p>
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.3.5/packages/profiles/src/abstract/AbstractProfileManager.ts#L184">@zowe/imperative/packages/profiles/src/abstract/AbstractProfileManager.ts:184</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Creates an instance of ProfileManager - Performs basic parameter validation and will create the required
+										profile root directory (if it does not exist) and will attempt to load type configurations from the
+									existing profile root directory (unless the type definitions are passed on the constructor parameters).</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>memberof</dt>
+									<dd><p>ProfileManager</p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>parms: <a href="../interfaces/_zowe_imperative.iprofilemanager.html" class="tsd-signature-type">IProfileManager</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_zowe_imperative.icommandprofiletypeconfiguration.html" class="tsd-signature-type">ICommandProfileTypeConfiguration</a><span class="tsd-signature-symbol">&gt;</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<div class="lead">
+											<p>See the interface for details.</p>
+										</div>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="_zowe_imperative.cliprofilemanager.html" class="tsd-signature-type">CliProfileManager</a></h4>
+						</li>
+					</ul>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group tsd-is-inherited">
+				<h2>Properties</h2>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-static">
+					<a name="meta_file_suffix" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> <span class="tsd-flag ts-flagReadonly">Readonly</span> META_<wbr>FILE_<wbr>SUFFIX</h3>
+					<div class="tsd-signature tsd-kind-icon">META_<wbr>FILE_<wbr>SUFFIX<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &quot;_meta&quot;</span></div>
+					<aside class="tsd-sources">
+						<p>Inherited from <a href="_zowe_imperative.cliprofilemanager.html">CliProfileManager</a>.<a href="_zowe_imperative.cliprofilemanager.html#meta_file_suffix">META_FILE_SUFFIX</a></p>
+						<ul>
+							<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.3.5/packages/profiles/src/abstract/AbstractProfileManager.ts#L87">@zowe/imperative/packages/profiles/src/abstract/AbstractProfileManager.ts:87</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>The meta file suffix - always appended to the meta file to distinguish from other profiles. Users then cannot
+							supply a profile name that would conflict with the meta file.</p>
+						</div>
+						<dl class="tsd-comment-tags">
+							<dt>static</dt>
+							<dd></dd>
+							<dt>memberof</dt>
+							<dd><p>AbstractProfileManager</p>
+							</dd>
+						</dl>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-static">
+					<a name="profile_extension" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> <span class="tsd-flag ts-flagReadonly">Readonly</span> PROFILE_<wbr>EXTENSION</h3>
+					<div class="tsd-signature tsd-kind-icon">PROFILE_<wbr>EXTENSION<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &quot;.yaml&quot;</span></div>
+					<aside class="tsd-sources">
+						<p>Inherited from <a href="_zowe_imperative.cliprofilemanager.html">CliProfileManager</a>.<a href="_zowe_imperative.cliprofilemanager.html#profile_extension">PROFILE_EXTENSION</a></p>
+						<ul>
+							<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.3.5/packages/profiles/src/abstract/AbstractProfileManager.ts#L78">@zowe/imperative/packages/profiles/src/abstract/AbstractProfileManager.ts:78</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>The default profile file extension (YAML format) - all profiles are stored in YAML format including
+							the meta profile file.</p>
+						</div>
+						<dl class="tsd-comment-tags">
+							<dt>static</dt>
+							<dd></dd>
+							<dt>memberof</dt>
+							<dd><p>ProfileManager</p>
+							</dd>
+						</dl>
+					</div>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group tsd-is-inherited">
+				<h2>Accessors</h2>
+				<section class="tsd-panel tsd-member tsd-kind-get-signature tsd-parent-kind-class tsd-is-inherited">
+					<a name="configurations" class="tsd-anchor"></a>
+					<h3>configurations</h3>
+					<ul class="tsd-signatures tsd-kind-get-signature tsd-parent-kind-class tsd-is-inherited">
+						<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">get</span> configurations<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_imperative.iprofiletypeconfiguration.html" class="tsd-signature-type">IProfileTypeConfiguration</a><span class="tsd-signature-symbol">[]</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Inherited from <a href="_zowe_imperative.cliprofilemanager.html">CliProfileManager</a>.<a href="_zowe_imperative.cliprofilemanager.html#configurations">configurations</a></p>
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.3.5/packages/profiles/src/abstract/AbstractProfileManager.ts#L380">@zowe/imperative/packages/profiles/src/abstract/AbstractProfileManager.ts:380</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Accessor that returns a copy of of the profile configuration document.</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>readonly</dt>
+									<dd></dd>
+									<dt>memberof</dt>
+									<dd><p>AbstractProfileManager</p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-returns-title">Returns <a href="../interfaces/_zowe_imperative.iprofiletypeconfiguration.html" class="tsd-signature-type">IProfileTypeConfiguration</a><span class="tsd-signature-symbol">[]</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-get-signature tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+					<a name="loadcounter" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagProtected">Protected</span> load<wbr>Counter</h3>
+					<ul class="tsd-signatures tsd-kind-get-signature tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+						<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">get</span> loadCounter<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Map</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Inherited from <a href="_zowe_imperative.cliprofilemanager.html">CliProfileManager</a>.<a href="_zowe_imperative.cliprofilemanager.html#loadcounter">loadCounter</a></p>
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.3.5/packages/profiles/src/abstract/AbstractProfileManager.ts#L247">@zowe/imperative/packages/profiles/src/abstract/AbstractProfileManager.ts:247</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Accessor for the load counter (protects against circular loading)</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>readonly</dt>
+									<dd></dd>
+									<dt>memberof</dt>
+									<dd><p>AbstractProfileManager</p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Map</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-get-signature tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+					<a name="log" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagProtected">Protected</span> log</h3>
+					<ul class="tsd-signatures tsd-kind-get-signature tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+						<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">get</span> log<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_zowe_imperative.logger.html" class="tsd-signature-type">Logger</a></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Inherited from <a href="_zowe_imperative.cliprofilemanager.html">CliProfileManager</a>.<a href="_zowe_imperative.cliprofilemanager.html#log">log</a></p>
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.3.5/packages/profiles/src/abstract/AbstractProfileManager.ts#L258">@zowe/imperative/packages/profiles/src/abstract/AbstractProfileManager.ts:258</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Accessor for the logger instance - passed on the constructor</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>readonly</dt>
+									<dd></dd>
+									<dt>memberof</dt>
+									<dd><p>AbstractProfileManager</p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-returns-title">Returns <a href="_zowe_imperative.logger.html" class="tsd-signature-type">Logger</a></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-get-signature tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+					<a name="managerparameters" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagProtected">Protected</span> manager<wbr>Parameters</h3>
+					<ul class="tsd-signatures tsd-kind-get-signature tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+						<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">get</span> managerParameters<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_imperative.iprofilemanager.html" class="tsd-signature-type">IProfileManager</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_zowe_imperative.icommandprofiletypeconfiguration.html" class="tsd-signature-type">ICommandProfileTypeConfiguration</a><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Inherited from <a href="_zowe_imperative.cliprofilemanager.html">CliProfileManager</a>.<a href="_zowe_imperative.cliprofilemanager.html#managerparameters">managerParameters</a></p>
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.3.5/packages/profiles/src/abstract/AbstractProfileManager.ts#L269">@zowe/imperative/packages/profiles/src/abstract/AbstractProfileManager.ts:269</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Accessor the input parameters to the constructor - used sometimes to create other instances of profile managers.</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>readonly</dt>
+									<dd></dd>
+									<dt>memberof</dt>
+									<dd><p>AbstractProfileManager</p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-returns-title">Returns <a href="../interfaces/_zowe_imperative.iprofilemanager.html" class="tsd-signature-type">IProfileManager</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_zowe_imperative.icommandprofiletypeconfiguration.html" class="tsd-signature-type">ICommandProfileTypeConfiguration</a><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-get-signature tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+					<a name="productdisplayname" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagProtected">Protected</span> product<wbr>Display<wbr>Name</h3>
+					<ul class="tsd-signatures tsd-kind-get-signature tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+						<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">get</span> productDisplayName<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Inherited from <a href="_zowe_imperative.cliprofilemanager.html">CliProfileManager</a>.<a href="_zowe_imperative.cliprofilemanager.html#productdisplayname">productDisplayName</a></p>
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.3.5/packages/profiles/src/abstract/AbstractProfileManager.ts#L291">@zowe/imperative/packages/profiles/src/abstract/AbstractProfileManager.ts:291</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Accesor for the product display name.</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>readonly</dt>
+									<dd></dd>
+									<dt>memberof</dt>
+									<dd><p>AbstractProfileManager</p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-get-signature tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+					<a name="profilerootdirectory" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagProtected">Protected</span> profile<wbr>Root<wbr>Directory</h3>
+					<ul class="tsd-signatures tsd-kind-get-signature tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+						<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">get</span> profileRootDirectory<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Inherited from <a href="_zowe_imperative.cliprofilemanager.html">CliProfileManager</a>.<a href="_zowe_imperative.cliprofilemanager.html#profilerootdirectory">profileRootDirectory</a></p>
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.3.5/packages/profiles/src/abstract/AbstractProfileManager.ts#L359">@zowe/imperative/packages/profiles/src/abstract/AbstractProfileManager.ts:359</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Accessor for the profile root directory - supplied on the constructor - used to construct the profile type
+									directory.</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>readonly</dt>
+									<dd></dd>
+									<dt>memberof</dt>
+									<dd><p>AbstractProfileManager</p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-get-signature tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+					<a name="profiletype" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagProtected">Protected</span> profile<wbr>Type</h3>
+					<ul class="tsd-signatures tsd-kind-get-signature tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+						<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">get</span> profileType<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Inherited from <a href="_zowe_imperative.cliprofilemanager.html">CliProfileManager</a>.<a href="_zowe_imperative.cliprofilemanager.html#profiletype">profileType</a></p>
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.3.5/packages/profiles/src/abstract/AbstractProfileManager.ts#L280">@zowe/imperative/packages/profiles/src/abstract/AbstractProfileManager.ts:280</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Accessor for the profile type specified on the constructor.</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>readonly</dt>
+									<dd></dd>
+									<dt>memberof</dt>
+									<dd><p>AbstractProfileManager</p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-get-signature tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+					<a name="profiletypeconfiguration" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagProtected">Protected</span> profile<wbr>Type<wbr>Configuration</h3>
+					<ul class="tsd-signatures tsd-kind-get-signature tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+						<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">get</span> profileTypeConfiguration<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_imperative.icommandprofiletypeconfiguration.html" class="tsd-signature-type">ICommandProfileTypeConfiguration</a></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Inherited from <a href="_zowe_imperative.cliprofilemanager.html">CliProfileManager</a>.<a href="_zowe_imperative.cliprofilemanager.html#profiletypeconfiguration">profileTypeConfiguration</a></p>
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.3.5/packages/profiles/src/abstract/AbstractProfileManager.ts#L302">@zowe/imperative/packages/profiles/src/abstract/AbstractProfileManager.ts:302</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Accessor for the profile type configuration for this manager.</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>readonly</dt>
+									<dd></dd>
+									<dt>memberof</dt>
+									<dd><p>AbstractProfileManager</p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-returns-title">Returns <a href="../interfaces/_zowe_imperative.icommandprofiletypeconfiguration.html" class="tsd-signature-type">ICommandProfileTypeConfiguration</a></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-get-signature tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+					<a name="profiletypeconfigurations" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagProtected">Protected</span> profile<wbr>Type<wbr>Configurations</h3>
+					<ul class="tsd-signatures tsd-kind-get-signature tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+						<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">get</span> profileTypeConfigurations<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_imperative.icommandprofiletypeconfiguration.html" class="tsd-signature-type">ICommandProfileTypeConfiguration</a><span class="tsd-signature-symbol">[]</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Inherited from <a href="_zowe_imperative.cliprofilemanager.html">CliProfileManager</a>.<a href="_zowe_imperative.cliprofilemanager.html#profiletypeconfigurations">profileTypeConfigurations</a></p>
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.3.5/packages/profiles/src/abstract/AbstractProfileManager.ts#L314">@zowe/imperative/packages/profiles/src/abstract/AbstractProfileManager.ts:314</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Accessor for the full set of type configurations - passed on the constructor or obtained from reading
+									the profile root directories and meta files.</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>readonly</dt>
+									<dd></dd>
+									<dt>memberof</dt>
+									<dd><p>AbstractProfileManager</p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-returns-title">Returns <a href="../interfaces/_zowe_imperative.icommandprofiletypeconfiguration.html" class="tsd-signature-type">ICommandProfileTypeConfiguration</a><span class="tsd-signature-symbol">[]</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-get-signature tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+					<a name="profiletypemetafilename" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagProtected">Protected</span> profile<wbr>Type<wbr>Meta<wbr>File<wbr>Name</h3>
+					<ul class="tsd-signatures tsd-kind-get-signature tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+						<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">get</span> profileTypeMetaFileName<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Inherited from <a href="_zowe_imperative.cliprofilemanager.html">CliProfileManager</a>.<a href="_zowe_imperative.cliprofilemanager.html#profiletypemetafilename">profileTypeMetaFileName</a></p>
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.3.5/packages/profiles/src/abstract/AbstractProfileManager.ts#L347">@zowe/imperative/packages/profiles/src/abstract/AbstractProfileManager.ts:347</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Accessor for the profile meta file name - constructed as &quot;<type>_meta&quot;</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>readonly</dt>
+									<dd></dd>
+									<dt>memberof</dt>
+									<dd><p>AbstractProfileManager</p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-get-signature tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+					<a name="profiletyperootdirectory" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagProtected">Protected</span> profile<wbr>Type<wbr>Root<wbr>Directory</h3>
+					<ul class="tsd-signatures tsd-kind-get-signature tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+						<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">get</span> profileTypeRootDirectory<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Inherited from <a href="_zowe_imperative.cliprofilemanager.html">CliProfileManager</a>.<a href="_zowe_imperative.cliprofilemanager.html#profiletyperootdirectory">profileTypeRootDirectory</a></p>
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.3.5/packages/profiles/src/abstract/AbstractProfileManager.ts#L336">@zowe/imperative/packages/profiles/src/abstract/AbstractProfileManager.ts:336</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Accessor for the profile type root directory (contained within the profile root directory and named by the type itself)</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>readonly</dt>
+									<dd></dd>
+									<dt>memberof</dt>
+									<dd><p>AbstractProfileManager</p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-get-signature tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+					<a name="profiletypeschema" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagProtected">Protected</span> profile<wbr>Type<wbr>Schema</h3>
+					<ul class="tsd-signatures tsd-kind-get-signature tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+						<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">get</span> profileTypeSchema<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_imperative.iprofileschema.html" class="tsd-signature-type">IProfileSchema</a></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Inherited from <a href="_zowe_imperative.cliprofilemanager.html">CliProfileManager</a>.<a href="_zowe_imperative.cliprofilemanager.html#profiletypeschema">profileTypeSchema</a></p>
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.3.5/packages/profiles/src/abstract/AbstractProfileManager.ts#L325">@zowe/imperative/packages/profiles/src/abstract/AbstractProfileManager.ts:325</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Accessor for the schema of this type - JSON schema standard</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>readonly</dt>
+									<dd></dd>
+									<dt>memberof</dt>
+									<dd><p>AbstractProfileManager</p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-returns-title">Returns <a href="../interfaces/_zowe_imperative.iprofileschema.html" class="tsd-signature-type">IProfileSchema</a></h4>
+						</li>
+					</ul>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group ">
+				<h2>Methods</h2>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-private">
+					<a name="addprofileinstruction" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> add<wbr>Profile<wbr>Instruction</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-private">
+						<li class="tsd-signature tsd-kind-icon">add<wbr>Profile<wbr>Instruction<span class="tsd-signature-symbol">(</span>errDetails<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.3.5/packages/cmd/src/profiles/CliProfileManager.ts#L327">@zowe/imperative/packages/cmd/src/profiles/CliProfileManager.ts:327</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>After the DefaultCredentialManager reports an error resolution of recreating
+									a credential, add instruction to recreate the profile.</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>errDetails: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The additional details of an error thrown
+										by DefaultCredentialManager.</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
+							<p>An error details string that contains an instruction to
+							recreate the profile (when appropriate).</p>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+					<a name="cleardefault" class="tsd-anchor"></a>
+					<h3>clear<wbr>Default</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+						<li class="tsd-signature tsd-kind-icon">clear<wbr>Default<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Inherited from <a href="_zowe_imperative.cliprofilemanager.html">CliProfileManager</a>.<a href="_zowe_imperative.cliprofilemanager.html#cleardefault">clearDefault</a></p>
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.3.5/packages/profiles/src/abstract/AbstractProfileManager.ts#L792">@zowe/imperative/packages/profiles/src/abstract/AbstractProfileManager.ts:792</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Clears the default profile for the profile managers type.</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>memberof</dt>
+									<dd><p>AbstractProfileManager</p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
+							<ul>
+								<li>The response string (or an error is thrown if the request cannot be completed);</li>
+							</ul>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+					<a name="constructfullprofilepath" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagProtected">Protected</span> construct<wbr>Full<wbr>Profile<wbr>Path</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+						<li class="tsd-signature tsd-kind-icon">construct<wbr>Full<wbr>Profile<wbr>Path<span class="tsd-signature-symbol">(</span>name<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, type<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Inherited from <a href="_zowe_imperative.cliprofilemanager.html">CliProfileManager</a>.<a href="_zowe_imperative.cliprofilemanager.html#constructfullprofilepath">constructFullProfilePath</a></p>
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.3.5/packages/profiles/src/abstract/AbstractProfileManager.ts#L1051">@zowe/imperative/packages/profiles/src/abstract/AbstractProfileManager.ts:1051</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Constructs the full path to the profile of the managers &quot;type&quot;.</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>memberof</dt>
+									<dd><p>AbstractProfileManager</p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>name: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The profile name to construct the path</p>
+									</div>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> type: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = this.profileType</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
+							<ul>
+								<li>The full profile directory.</li>
+							</ul>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-private">
+					<a name="createprofilefromcommandarguments" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> create<wbr>Profile<wbr>From<wbr>Command<wbr>Arguments</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-private">
+						<li class="tsd-signature tsd-kind-icon">create<wbr>Profile<wbr>From<wbr>Command<wbr>Arguments<span class="tsd-signature-symbol">(</span>profileArguments<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Arguments</span>, starterProfile<span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_imperative.iprofile.html" class="tsd-signature-type">IProfile</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_imperative.ipromisewithprogress.html#promise" class="tsd-signature-type">Promise</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_zowe_imperative.iprofile.html" class="tsd-signature-type">IProfile</a><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.3.5/packages/cmd/src/profiles/CliProfileManager.ts#L576">@zowe/imperative/packages/cmd/src/profiles/CliProfileManager.ts:576</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Take command line arguments from the user and create a profile from them using the schema and configuration for
+									the profile type</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>profileArguments: <span class="tsd-signature-type">Arguments</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>CLI arguments specified by the user</p>
+									</div>
+								</li>
+								<li>
+									<h5>starterProfile: <a href="../interfaces/_zowe_imperative.iprofile.html" class="tsd-signature-type">IProfile</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>the profile with name and type to use to start the profile creation</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="../interfaces/_zowe_imperative.ipromisewithprogress.html#promise" class="tsd-signature-type">Promise</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_zowe_imperative.iprofile.html" class="tsd-signature-type">IProfile</a><span class="tsd-signature-symbol">&gt;</span></h4>
+							<p>profile which provides the finished profile on fulfill</p>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-inherited">
+					<a name="delete" class="tsd-anchor"></a>
+					<h3>delete</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-inherited">
+						<li class="tsd-signature tsd-kind-icon">delete&lt;D&gt;<span class="tsd-signature-symbol">(</span>parms<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">D</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_imperative.ipromisewithprogress.html#promise" class="tsd-signature-type">Promise</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_zowe_imperative.iprofiledeleted.html" class="tsd-signature-type">IProfileDeleted</a><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Inherited from <a href="_zowe_imperative.cliprofilemanager.html">CliProfileManager</a>.<a href="_zowe_imperative.cliprofilemanager.html#delete">delete</a></p>
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.3.5/packages/profiles/src/abstract/AbstractProfileManager.ts#L649">@zowe/imperative/packages/profiles/src/abstract/AbstractProfileManager.ts:649</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Deletes a profile from disk. Ensures that the parameters are correct and removes the profile. If the profile is listed as a dependency of
+									other profiles it will NOT delete the profile unless &quot;rejectIfDependency&quot; is set to false.</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>memberof</dt>
+									<dd><p>AbstractProfileManager</p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-type-parameters-title">Type parameters</h4>
+							<ul class="tsd-type-parameters">
+								<li>
+									<h4>D<span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_imperative.ideleteprofile.html" class="tsd-signature-type">IDeleteProfile</a></h4>
+								</li>
+							</ul>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>parms: <span class="tsd-signature-type">D</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>See the interface for details</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="../interfaces/_zowe_imperative.ipromisewithprogress.html#promise" class="tsd-signature-type">Promise</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_zowe_imperative.iprofiledeleted.html" class="tsd-signature-type">IProfileDeleted</a><span class="tsd-signature-symbol">&gt;</span></h4>
+							<ul>
+								<li>The promise that is fulfilled with the response object (see interface for details) or rejected
+								with an Imperative Error.</li>
+							</ul>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-overwrite tsd-is-protected">
+					<a name="deleteprofile" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagProtected">Protected</span> delete<wbr>Profile</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-overwrite tsd-is-protected">
+						<li class="tsd-signature tsd-kind-icon">delete<wbr>Profile<span class="tsd-signature-symbol">(</span>parms<span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_imperative.ideleteprofile.html" class="tsd-signature-type">IDeleteProfile</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_imperative.ipromisewithprogress.html#promise" class="tsd-signature-type">Promise</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_zowe_imperative.iprofiledeleted.html" class="tsd-signature-type">IProfileDeleted</a><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Overrides <a href="_zowe_imperative.basicprofilemanager.html">BasicProfileManager</a>.<a href="_zowe_imperative.basicprofilemanager.html#deleteprofile">deleteProfile</a></p>
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.3.5/packages/cmd/src/profiles/CliProfileManager.ts#L256">@zowe/imperative/packages/cmd/src/profiles/CliProfileManager.ts:256</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Overridden loadProfile functionality
+									Before the BasicProfileManager deletes the profile, we remove the secure properties associated with the profile</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>parms: <a href="../interfaces/_zowe_imperative.ideleteprofile.html" class="tsd-signature-type">IDeleteProfile</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Delete control params - see the interface for full details</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="../interfaces/_zowe_imperative.ipromisewithprogress.html#promise" class="tsd-signature-type">Promise</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_zowe_imperative.iprofiledeleted.html" class="tsd-signature-type">IProfileDeleted</a><span class="tsd-signature-symbol">&gt;</span></h4>
+							<ul>
+								<li>Promise that is fulfilled when complete (or rejected with an Imperative Error)</li>
+							</ul>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+					<a name="deleteprofilefromdisk" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagProtected">Protected</span> delete<wbr>Profile<wbr>From<wbr>Disk</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+						<li class="tsd-signature tsd-kind-icon">delete<wbr>Profile<wbr>From<wbr>Disk<span class="tsd-signature-symbol">(</span>name<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Inherited from <a href="_zowe_imperative.cliprofilemanager.html">CliProfileManager</a>.<a href="_zowe_imperative.cliprofilemanager.html#deleteprofilefromdisk">deleteProfileFromDisk</a></p>
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.3.5/packages/profiles/src/abstract/AbstractProfileManager.ts#L932">@zowe/imperative/packages/profiles/src/abstract/AbstractProfileManager.ts:932</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Invokes the profile IO method to delete the profile from disk.</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>memberof</dt>
+									<dd><p>AbstractProfileManager</p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>name: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The name of the profile to delete.</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
+							<ul>
+								<li>The path where the profile was.</li>
+							</ul>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-private">
+					<a name="findoptions" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> find<wbr>Options</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-private">
+						<li class="tsd-signature tsd-kind-icon">find<wbr>Options<span class="tsd-signature-symbol">(</span>prop<span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_imperative.icommandprofileproperty.html" class="tsd-signature-type">ICommandProfileProperty</a>, propNamePath<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, propValue<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span>, secureOp<span class="tsd-signature-symbol">?: </span><a href="../modules/_zowe_imperative.html#secureoperationfunction" class="tsd-signature-type">SecureOperationFunction</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_imperative.ipromisewithprogress.html#promise" class="tsd-signature-type">Promise</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.3.5/packages/cmd/src/profiles/CliProfileManager.ts#L352">@zowe/imperative/packages/cmd/src/profiles/CliProfileManager.ts:352</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Helper routine to find nested properties
+									Inspired by the inner function of insertCliArgumentsIntoProfile</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>prop: <a href="../interfaces/_zowe_imperative.icommandprofileproperty.html" class="tsd-signature-type">ICommandProfileProperty</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>profile property</p>
+									</div>
+								</li>
+								<li>
+									<h5>propNamePath: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Dot notation path of a property (e.g. my.nested.property)</p>
+									</div>
+								</li>
+								<li>
+									<h5>propValue: <span class="tsd-signature-type">any</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Current value of the property while traversing down the object tree</p>
+									</div>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> secureOp: <a href="../modules/_zowe_imperative.html#secureoperationfunction" class="tsd-signature-type">SecureOperationFunction</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Function to be executed if we are supposed to process secure properties</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="../interfaces/_zowe_imperative.ipromisewithprogress.html#promise" class="tsd-signature-type">Promise</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></h4>
+							<p>Processed version of a property</p>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+					<a name="getallprofilenames" class="tsd-anchor"></a>
+					<h3>get<wbr>All<wbr>Profile<wbr>Names</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+						<li class="tsd-signature tsd-kind-icon">get<wbr>All<wbr>Profile<wbr>Names<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Inherited from <a href="_zowe_imperative.cliprofilemanager.html">CliProfileManager</a>.<a href="_zowe_imperative.cliprofilemanager.html#getallprofilenames">getAllProfileNames</a></p>
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.3.5/packages/profiles/src/abstract/AbstractProfileManager.ts#L369">@zowe/imperative/packages/profiles/src/abstract/AbstractProfileManager.ts:369</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Obtains all profile names for the profile &quot;type&quot; specified on the manager. The names are obtained from the
+									filesystem (in the profile type directory) and the meta file is NOT returned in the list.</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>memberof</dt>
+									<dd><p>AbstractProfileManager</p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span></h4>
+							<ul>
+								<li>The list of profile names (obtained from disk).</li>
+							</ul>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+					<a name="getdefaultprofilename" class="tsd-anchor"></a>
+					<h3>get<wbr>Default<wbr>Profile<wbr>Name</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+						<li class="tsd-signature tsd-kind-icon">get<wbr>Default<wbr>Profile<wbr>Name<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Inherited from <a href="_zowe_imperative.cliprofilemanager.html">CliProfileManager</a>.<a href="_zowe_imperative.cliprofilemanager.html#getdefaultprofilename">getDefaultProfileName</a></p>
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.3.5/packages/profiles/src/abstract/AbstractProfileManager.ts#L828">@zowe/imperative/packages/profiles/src/abstract/AbstractProfileManager.ts:828</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Returns the default profile name for this &quot;type&quot; or &quot;undefined&quot; if no default is set.</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>memberof</dt>
+									<dd><p>AbstractProfileManager</p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
+							<ul>
+								<li>The default profile name or undefined.</li>
+							</ul>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-private">
+					<a name="insertcliargumentsintoprofile" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> insert<wbr>Cli<wbr>Arguments<wbr>Into<wbr>Profile</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-private">
+						<li class="tsd-signature tsd-kind-icon">insert<wbr>Cli<wbr>Arguments<wbr>Into<wbr>Profile<span class="tsd-signature-symbol">(</span>args<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Arguments</span>, profile<span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_imperative.iprofile.html" class="tsd-signature-type">IProfile</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_imperative.ipromisewithprogress.html#promise" class="tsd-signature-type">Promise</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.3.5/packages/cmd/src/profiles/CliProfileManager.ts#L636">@zowe/imperative/packages/cmd/src/profiles/CliProfileManager.ts:636</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Default style of building of profile fields to option definitions defined in the schema
+									Will only work if there is a one-to-one option definition mapping for schema fields</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>args: <span class="tsd-signature-type">Arguments</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>the arguments specified by the user</p>
+									</div>
+								</li>
+								<li>
+									<h5>profile: <a href="../interfaces/_zowe_imperative.iprofile.html" class="tsd-signature-type">IProfile</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>the profile so far, which will be updated</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="../interfaces/_zowe_imperative.ipromisewithprogress.html#promise" class="tsd-signature-type">Promise</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-private">
+					<a name="insertdependenciesintoprofilefromcliarguments" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> insert<wbr>Dependencies<wbr>Into<wbr>Profile<wbr>FromCLIArguments</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-private">
+						<li class="tsd-signature tsd-kind-icon">insert<wbr>Dependencies<wbr>Into<wbr>Profile<wbr>FromCLIArguments<span class="tsd-signature-symbol">(</span>args<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Arguments</span>, profile<span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_imperative.iprofile.html" class="tsd-signature-type">IProfile</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.3.5/packages/cmd/src/profiles/CliProfileManager.ts#L676">@zowe/imperative/packages/cmd/src/profiles/CliProfileManager.ts:676</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Build the &quot;dependencies&quot; field of a profile object from command line arguments</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>args: <span class="tsd-signature-type">Arguments</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>the command line arguments from the user</p>
+									</div>
+								</li>
+								<li>
+									<h5>profile: <a href="../interfaces/_zowe_imperative.iprofile.html" class="tsd-signature-type">IProfile</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>the profile object so far.</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+					<a name="isprofileempty" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagProtected">Protected</span> is<wbr>Profile<wbr>Empty</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+						<li class="tsd-signature tsd-kind-icon">is<wbr>Profile<wbr>Empty<span class="tsd-signature-symbol">(</span>profile<span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_imperative.iprofile.html" class="tsd-signature-type">IProfile</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Inherited from <a href="_zowe_imperative.cliprofilemanager.html">CliProfileManager</a>.<a href="_zowe_imperative.cliprofilemanager.html#isprofileempty">isProfileEmpty</a></p>
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.3.5/packages/profiles/src/abstract/AbstractProfileManager.ts#L1087">@zowe/imperative/packages/profiles/src/abstract/AbstractProfileManager.ts:1087</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Checks if the profile object passed is &quot;empty&quot; - meaning it has no contents other than that type or name.
+									A profile can only specify &quot;dependencies&quot;, in the event that it is just acting as a &quot;pointer&quot; to another profile.</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>memberof</dt>
+									<dd><p>AbstractProfileManager</p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>profile: <a href="../interfaces/_zowe_imperative.iprofile.html" class="tsd-signature-type">IProfile</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The profile to check for &quot;emptiness&quot;.</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
+							<p>True if the profile object is empty.</p>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-inherited">
+					<a name="load" class="tsd-anchor"></a>
+					<h3>load</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-inherited">
+						<li class="tsd-signature tsd-kind-icon">load&lt;L&gt;<span class="tsd-signature-symbol">(</span>parms<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">L</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_imperative.ipromisewithprogress.html#promise" class="tsd-signature-type">Promise</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_zowe_imperative.iprofileloaded.html" class="tsd-signature-type">IProfileLoaded</a><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Inherited from <a href="_zowe_imperative.cliprofilemanager.html">CliProfileManager</a>.<a href="_zowe_imperative.cliprofilemanager.html#load">load</a></p>
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.3.5/packages/profiles/src/abstract/AbstractProfileManager.ts#L453">@zowe/imperative/packages/profiles/src/abstract/AbstractProfileManager.ts:453</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Load a profile from disk. Ensures that the parameters are valid and loads the profile specified by name OR the default profile if
+									requested. If load default is requested, any name supplied is ignored.</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>memberof</dt>
+									<dd><p>AbstractProfileManager</p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-type-parameters-title">Type parameters</h4>
+							<ul class="tsd-type-parameters">
+								<li>
+									<h4>L<span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_imperative.iloadprofile.html" class="tsd-signature-type">ILoadProfile</a></h4>
+								</li>
+							</ul>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>parms: <span class="tsd-signature-type">L</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>See the interface for details.</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="../interfaces/_zowe_imperative.ipromisewithprogress.html#promise" class="tsd-signature-type">Promise</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_zowe_imperative.iprofileloaded.html" class="tsd-signature-type">IProfileLoaded</a><span class="tsd-signature-symbol">&gt;</span></h4>
+							<ul>
+								<li>The promise that is fulfilled with the response object (see interface for details) or rejected
+								with an Imperative Error.</li>
+							</ul>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-overwrite">
+					<a name="loadall" class="tsd-anchor"></a>
+					<h3>load<wbr>All</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-overwrite">
+						<li class="tsd-signature tsd-kind-icon">load<wbr>All<span class="tsd-signature-symbol">(</span>params<span class="tsd-signature-symbol">?: </span><a href="../interfaces/_zowe_imperative.icliloadallprofiles.html" class="tsd-signature-type">ICliLoadAllProfiles</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_imperative.ipromisewithprogress.html#promise" class="tsd-signature-type">Promise</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_zowe_imperative.iprofileloaded.html" class="tsd-signature-type">IProfileLoaded</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Overrides <a href="_zowe_imperative.basicprofilemanager.html">BasicProfileManager</a>.<a href="_zowe_imperative.basicprofilemanager.html#loadall">loadAll</a></p>
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.3.5/packages/cmd/src/profiles/CliProfileManager.ts#L54">@zowe/imperative/packages/cmd/src/profiles/CliProfileManager.ts:54</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>NOTE: This is just a copy of BasicProfileManager.loadAll
+										REASON: We needed the Abstract profile manager to call the CLI profile manager to handle loading of secure properties
+										Loads all profiles from every type. Profile types are determined by reading all directories within the
+									profile root directory.</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> params: <a href="../interfaces/_zowe_imperative.icliloadallprofiles.html" class="tsd-signature-type">ICliLoadAllProfiles</a></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="../interfaces/_zowe_imperative.ipromisewithprogress.html#promise" class="tsd-signature-type">Promise</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_zowe_imperative.iprofileloaded.html" class="tsd-signature-type">IProfileLoaded</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span></h4>
+							<ul>
+								<li>The list of all profiles for every type</li>
+							</ul>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-overwrite tsd-is-inherited tsd-is-protected">
+					<a name="loaddependencies" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagProtected">Protected</span> load<wbr>Dependencies</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-overwrite tsd-is-inherited tsd-is-protected">
+						<li class="tsd-signature tsd-kind-icon">load<wbr>Dependencies<span class="tsd-signature-symbol">(</span>name<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, profile<span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_imperative.iprofile.html" class="tsd-signature-type">IProfile</a>, failNotFound<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_imperative.ipromisewithprogress.html#promise" class="tsd-signature-type">Promise</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_zowe_imperative.iprofileloaded.html" class="tsd-signature-type">IProfileLoaded</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Inherited from <a href="_zowe_imperative.cliprofilemanager.html">CliProfileManager</a>.<a href="_zowe_imperative.cliprofilemanager.html#loaddependencies">loadDependencies</a></p>
+								<p>Overrides <a href="_zowe_imperative.abstractprofilemanager.html">AbstractProfileManager</a>.<a href="_zowe_imperative.abstractprofilemanager.html#loaddependencies">loadDependencies</a></p>
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.3.5/packages/profiles/src/BasicProfileManager.ts#L187">@zowe/imperative/packages/profiles/src/BasicProfileManager.ts:187</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Loads all dependencies for the profile specified - returns the list in the response structure. Sub-dependencies
+									are also loaded.</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>memberof</dt>
+									<dd><p>BasicProfileManager</p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>name: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>the name of hte profile to load dependencies for</p>
+									</div>
+								</li>
+								<li>
+									<h5>profile: <a href="../interfaces/_zowe_imperative.iprofile.html" class="tsd-signature-type">IProfile</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The profile to load dependencies.</p>
+									</div>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> failNotFound: <span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol"> = true</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="../interfaces/_zowe_imperative.ipromisewithprogress.html#promise" class="tsd-signature-type">Promise</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_zowe_imperative.iprofileloaded.html" class="tsd-signature-type">IProfileLoaded</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span></h4>
+							<ul>
+								<li>The list of profiles loaded with all dependencies.</li>
+							</ul>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+					<a name="loadfailed" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagProtected">Protected</span> load<wbr>Failed</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+						<li class="tsd-signature tsd-kind-icon">load<wbr>Failed<span class="tsd-signature-symbol">(</span>name<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Inherited from <a href="_zowe_imperative.cliprofilemanager.html">CliProfileManager</a>.<a href="_zowe_imperative.cliprofilemanager.html#loadfailed">loadFailed</a></p>
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.3.5/packages/profiles/src/abstract/AbstractProfileManager.ts#L1073">@zowe/imperative/packages/profiles/src/abstract/AbstractProfileManager.ts:1073</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Standard load failed error message and Imperative Error.</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>memberof</dt>
+									<dd><p>AbstractProfileManager</p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>name: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The name of the profile for which the load failed.</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-overwrite tsd-is-protected">
+					<a name="loadprofile" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagProtected">Protected</span> load<wbr>Profile</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-overwrite tsd-is-protected">
+						<li class="tsd-signature tsd-kind-icon">load<wbr>Profile<span class="tsd-signature-symbol">(</span>parms<span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_imperative.icliloadprofile.html" class="tsd-signature-type">ICliLoadProfile</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_imperative.ipromisewithprogress.html#promise" class="tsd-signature-type">Promise</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_zowe_imperative.iprofileloaded.html" class="tsd-signature-type">IProfileLoaded</a><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Overrides <a href="_zowe_imperative.basicprofilemanager.html">BasicProfileManager</a>.<a href="_zowe_imperative.basicprofilemanager.html#loadprofile">loadProfile</a></p>
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.3.5/packages/cmd/src/profiles/CliProfileManager.ts#L189">@zowe/imperative/packages/cmd/src/profiles/CliProfileManager.ts:189</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Overridden loadProfile functionality
+									After the BasicProfileManager loads the profile, we process the secured properties for the CLi to use</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>parms: <a href="../interfaces/_zowe_imperative.icliloadprofile.html" class="tsd-signature-type">ICliLoadProfile</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Load control params - see the interface for full details</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="../interfaces/_zowe_imperative.ipromisewithprogress.html#promise" class="tsd-signature-type">Promise</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_zowe_imperative.iprofileloaded.html" class="tsd-signature-type">IProfileLoaded</a><span class="tsd-signature-symbol">&gt;</span></h4>
+							<ul>
+								<li>Promise that is fulfilled when complete (or rejected with an Imperative Error)</li>
+							</ul>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+					<a name="loadspecificprofile" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagProtected">Protected</span> load<wbr>Specific<wbr>Profile</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+						<li class="tsd-signature tsd-kind-icon">load<wbr>Specific<wbr>Profile<span class="tsd-signature-symbol">(</span>name<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, failNotFound<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">boolean</span>, loadDependencies<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_imperative.ipromisewithprogress.html#promise" class="tsd-signature-type">Promise</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_zowe_imperative.iprofileloaded.html" class="tsd-signature-type">IProfileLoaded</a><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Inherited from <a href="_zowe_imperative.cliprofilemanager.html">CliProfileManager</a>.<a href="_zowe_imperative.cliprofilemanager.html#loadspecificprofile">loadSpecificProfile</a></p>
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.3.5/packages/profiles/src/abstract/AbstractProfileManager.ts#L1108">@zowe/imperative/packages/profiles/src/abstract/AbstractProfileManager.ts:1108</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Loads a specific profile (by name).</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>memberof</dt>
+									<dd><p>AbstractProfileManager</p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>name: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The name of the profile to load.</p>
+									</div>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> failNotFound: <span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol"> = true</span></h5>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> loadDependencies: <span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol"> = true</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="../interfaces/_zowe_imperative.ipromisewithprogress.html#promise" class="tsd-signature-type">Promise</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_zowe_imperative.iprofileloaded.html" class="tsd-signature-type">IProfileLoaded</a><span class="tsd-signature-symbol">&gt;</span></h4>
+							<ul>
+								<li>The promise to fulfill with the response OR reject with an ImperativeError</li>
+							</ul>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+					<a name="locateexistingprofile" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagProtected">Protected</span> locate<wbr>Existing<wbr>Profile</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+						<li class="tsd-signature tsd-kind-icon">locate<wbr>Existing<wbr>Profile<span class="tsd-signature-symbol">(</span>name<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Inherited from <a href="_zowe_imperative.cliprofilemanager.html">CliProfileManager</a>.<a href="_zowe_imperative.cliprofilemanager.html#locateexistingprofile">locateExistingProfile</a></p>
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.3.5/packages/profiles/src/abstract/AbstractProfileManager.ts#L1062">@zowe/imperative/packages/profiles/src/abstract/AbstractProfileManager.ts:1062</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Locate the existing profile for the name specified.</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>memberof</dt>
+									<dd><p>AbstractProfileManager</p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>name: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The profile to locate</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
+							<ul>
+								<li>The fully qualified path or undefined if not found.</li>
+							</ul>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+					<a name="mergeprofiles" class="tsd-anchor"></a>
+					<h3>merge<wbr>Profiles</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+						<li class="tsd-signature tsd-kind-icon">merge<wbr>Profiles<span class="tsd-signature-symbol">(</span>oldProfile<span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_imperative.iprofile.html" class="tsd-signature-type">IProfile</a>, newProfile<span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_imperative.iprofile.html" class="tsd-signature-type">IProfile</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_imperative.iprofile.html" class="tsd-signature-type">IProfile</a></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Inherited from <a href="_zowe_imperative.cliprofilemanager.html">CliProfileManager</a>.<a href="_zowe_imperative.cliprofilemanager.html#mergeprofiles">mergeProfiles</a></p>
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.3.5/packages/profiles/src/abstract/AbstractProfileManager.ts#L574">@zowe/imperative/packages/profiles/src/abstract/AbstractProfileManager.ts:574</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Merge two profiles together. Useful when updating existing profiles with a few new
+									fields, for example.</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>oldProfile: <a href="../interfaces/_zowe_imperative.iprofile.html" class="tsd-signature-type">IProfile</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>the old profile, fields on this will have lower precedence</p>
+									</div>
+								</li>
+								<li>
+									<h5>newProfile: <a href="../interfaces/_zowe_imperative.iprofile.html" class="tsd-signature-type">IProfile</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>the new profile, fields on this will have higher precedence</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="../interfaces/_zowe_imperative.iprofile.html" class="tsd-signature-type">IProfile</a></h4>
+							<ul>
+								<li>the merged profile</li>
+							</ul>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-private">
+					<a name="processsecureproperties" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> process<wbr>Secure<wbr>Properties</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-private">
+						<li class="tsd-signature tsd-kind-icon">process<wbr>Secure<wbr>Properties<span class="tsd-signature-symbol">(</span>name<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, profile<span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_imperative.iprofile.html" class="tsd-signature-type">IProfile</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_imperative.ipromisewithprogress.html#promise" class="tsd-signature-type">Promise</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_zowe_imperative.iprofile.html" class="tsd-signature-type">IProfile</a><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.3.5/packages/cmd/src/profiles/CliProfileManager.ts#L397">@zowe/imperative/packages/cmd/src/profiles/CliProfileManager.ts:397</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Process and store all secure properties and replace them with a constant for display purposes</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>name: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>the name of the profile with which the secure properties are associated</p>
+									</div>
+								</li>
+								<li>
+									<h5>profile: <a href="../interfaces/_zowe_imperative.iprofile.html" class="tsd-signature-type">IProfile</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Profile contents to be processed</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="../interfaces/_zowe_imperative.ipromisewithprogress.html#promise" class="tsd-signature-type">Promise</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_zowe_imperative.iprofile.html" class="tsd-signature-type">IProfile</a><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-inherited">
+					<a name="save" class="tsd-anchor"></a>
+					<h3>save</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-inherited">
+						<li class="tsd-signature tsd-kind-icon">save&lt;S&gt;<span class="tsd-signature-symbol">(</span>parms<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">S</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_imperative.ipromisewithprogress.html#promise" class="tsd-signature-type">Promise</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_zowe_imperative.iprofilesaved.html" class="tsd-signature-type">IProfileSaved</a><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Inherited from <a href="_zowe_imperative.cliprofilemanager.html">CliProfileManager</a>.<a href="_zowe_imperative.cliprofilemanager.html#save">save</a></p>
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.3.5/packages/profiles/src/abstract/AbstractProfileManager.ts#L393">@zowe/imperative/packages/profiles/src/abstract/AbstractProfileManager.ts:393</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Save a profile to disk. Ensures that the profile specified is valid (basic and schema validation) and invokes the implementations
+									&quot;saveProfile&quot; method to perform the save and formulate the response.</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>memberof</dt>
+									<dd><p>AbstractProfileManager</p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-type-parameters-title">Type parameters</h4>
+							<ul class="tsd-type-parameters">
+								<li>
+									<h4>S<span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_imperative.isaveprofile.html" class="tsd-signature-type">ISaveProfile</a></h4>
+								</li>
+							</ul>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>parms: <span class="tsd-signature-type">S</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>See interface for details</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="../interfaces/_zowe_imperative.ipromisewithprogress.html#promise" class="tsd-signature-type">Promise</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_zowe_imperative.iprofilesaved.html" class="tsd-signature-type">IProfileSaved</a><span class="tsd-signature-symbol">&gt;</span></h4>
+							<ul>
+								<li>The promise that is fulfilled with the response object (see interface for details) or rejected
+								with an Imperative Error.</li>
+							</ul>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-overwrite tsd-is-protected">
+					<a name="saveprofile" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagProtected">Protected</span> save<wbr>Profile</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-overwrite tsd-is-protected">
+						<li class="tsd-signature tsd-kind-icon">save<wbr>Profile<span class="tsd-signature-symbol">(</span>parms<span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_imperative.isaveprofilefromcliargs.html" class="tsd-signature-type">ISaveProfileFromCliArgs</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_imperative.ipromisewithprogress.html#promise" class="tsd-signature-type">Promise</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_zowe_imperative.iprofilesaved.html" class="tsd-signature-type">IProfileSaved</a><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Overrides <a href="_zowe_imperative.basicprofilemanager.html">BasicProfileManager</a>.<a href="_zowe_imperative.basicprofilemanager.html#saveprofile">saveProfile</a></p>
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.3.5/packages/cmd/src/profiles/CliProfileManager.ts#L120">@zowe/imperative/packages/cmd/src/profiles/CliProfileManager.ts:120</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Overridden saveProfile functionality.
+										If CLI args are provided, profile fields are built from the args.
+									Otherwise BaseProfileManager functionality is used.</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>parms: <a href="../interfaces/_zowe_imperative.isaveprofilefromcliargs.html" class="tsd-signature-type">ISaveProfileFromCliArgs</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>parameters for the save, potentially including CLI args</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="../interfaces/_zowe_imperative.ipromisewithprogress.html#promise" class="tsd-signature-type">Promise</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_zowe_imperative.iprofilesaved.html" class="tsd-signature-type">IProfileSaved</a><span class="tsd-signature-symbol">&gt;</span></h4>
+							<ul>
+								<li>promise which fulfills with the save results</li>
+							</ul>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+					<a name="setdefault" class="tsd-anchor"></a>
+					<h3>set<wbr>Default</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+						<li class="tsd-signature tsd-kind-icon">set<wbr>Default<span class="tsd-signature-symbol">(</span>name<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Inherited from <a href="_zowe_imperative.cliprofilemanager.html">CliProfileManager</a>.<a href="_zowe_imperative.cliprofilemanager.html#setdefault">setDefault</a></p>
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.3.5/packages/profiles/src/abstract/AbstractProfileManager.ts#L744">@zowe/imperative/packages/profiles/src/abstract/AbstractProfileManager.ts:744</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Sets the default profile for the profile managers type.</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>memberof</dt>
+									<dd><p>AbstractProfileManager</p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>name: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The name of the new default</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
+							<ul>
+								<li>The response string (or an error is thrown if the request cannot be completed);</li>
+							</ul>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-inherited">
+					<a name="update" class="tsd-anchor"></a>
+					<h3>update</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-inherited">
+						<li class="tsd-signature tsd-kind-icon">update&lt;U&gt;<span class="tsd-signature-symbol">(</span>parms<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">U</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_imperative.ipromisewithprogress.html#promise" class="tsd-signature-type">Promise</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_zowe_imperative.iprofileupdated.html" class="tsd-signature-type">IProfileUpdated</a><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Inherited from <a href="_zowe_imperative.cliprofilemanager.html">CliProfileManager</a>.<a href="_zowe_imperative.cliprofilemanager.html#update">update</a></p>
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.3.5/packages/profiles/src/abstract/AbstractProfileManager.ts#L717">@zowe/imperative/packages/profiles/src/abstract/AbstractProfileManager.ts:717</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Update the profile - The action performed is dictacted by the implementation of the Abstract manager.</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>memberof</dt>
+									<dd><p>AbstractProfileManager</p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-type-parameters-title">Type parameters</h4>
+							<ul class="tsd-type-parameters">
+								<li>
+									<h4>U<span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_imperative.iupdateprofile.html" class="tsd-signature-type">IUpdateProfile</a></h4>
+								</li>
+							</ul>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>parms: <span class="tsd-signature-type">U</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>See the interface for details</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="../interfaces/_zowe_imperative.ipromisewithprogress.html#promise" class="tsd-signature-type">Promise</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_zowe_imperative.iprofileupdated.html" class="tsd-signature-type">IProfileUpdated</a><span class="tsd-signature-symbol">&gt;</span></h4>
+							<ul>
+								<li>The promise that is fulfilled with the response object (see interface for details) or rejected
+								with an Imperative Error.</li>
+							</ul>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-overwrite tsd-is-protected">
+					<a name="updateprofile" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagProtected">Protected</span> update<wbr>Profile</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-overwrite tsd-is-protected">
+						<li class="tsd-signature tsd-kind-icon">update<wbr>Profile<span class="tsd-signature-symbol">(</span>parms<span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_imperative.iupdateprofilefromcliargs.html" class="tsd-signature-type">IUpdateProfileFromCliArgs</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_imperative.ipromisewithprogress.html#promise" class="tsd-signature-type">Promise</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_zowe_imperative.iprofileupdated.html" class="tsd-signature-type">IProfileUpdated</a><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Overrides <a href="_zowe_imperative.basicprofilemanager.html">BasicProfileManager</a>.<a href="_zowe_imperative.basicprofilemanager.html#updateprofile">updateProfile</a></p>
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.3.5/packages/cmd/src/profiles/CliProfileManager.ts#L153">@zowe/imperative/packages/cmd/src/profiles/CliProfileManager.ts:153</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Overridden updateProfile functionality
+										If CLI args are provided, profile fields are built from the arguments. Otherwise
+									the BaseProfileManager update functionality is used</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>parms: <a href="../interfaces/_zowe_imperative.iupdateprofilefromcliargs.html" class="tsd-signature-type">IUpdateProfileFromCliArgs</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>parameters, potentially including CLI args</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="../interfaces/_zowe_imperative.ipromisewithprogress.html#promise" class="tsd-signature-type">Promise</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_zowe_imperative.iprofileupdated.html" class="tsd-signature-type">IProfileUpdated</a><span class="tsd-signature-symbol">&gt;</span></h4>
+							<ul>
+								<li>promise which contains the updated profile, path, and message<pre><code>                                <span class="hljs-keyword">when</span> fulfilled
+</code></pre>
+								</li>
+							</ul>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-private">
+					<a name="updateprofilefieldsfromcommandarguments" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> update<wbr>Profile<wbr>Fields<wbr>From<wbr>Command<wbr>Arguments</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-private">
+						<li class="tsd-signature tsd-kind-icon">update<wbr>Profile<wbr>Fields<wbr>From<wbr>Command<wbr>Arguments<span class="tsd-signature-symbol">(</span>oldProfile<span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_imperative.iprofile.html" class="tsd-signature-type">IProfile</a>, newProfile<span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_imperative.iprofile.html" class="tsd-signature-type">IProfile</a>, newArguments<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Arguments</span>, merge<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_imperative.ipromisewithprogress.html#promise" class="tsd-signature-type">Promise</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_zowe_imperative.iprofile.html" class="tsd-signature-type">IProfile</a><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.3.5/packages/cmd/src/profiles/CliProfileManager.ts#L508">@zowe/imperative/packages/cmd/src/profiles/CliProfileManager.ts:508</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>If a custom handler is provided for update, the handler will be loaded and invoked
+									in order to build the finished profile</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>oldProfile: <a href="../interfaces/_zowe_imperative.iprofile.html" class="tsd-signature-type">IProfile</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>the old profile to update</p>
+									</div>
+								</li>
+								<li>
+									<h5>newProfile: <a href="../interfaces/_zowe_imperative.iprofile.html" class="tsd-signature-type">IProfile</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>new profile which may have fields populated, which will be updated from the CLI args</p>
+									</div>
+								</li>
+								<li>
+									<h5>newArguments: <span class="tsd-signature-type">Arguments</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>CLi arguments specified by the user</p>
+									</div>
+								</li>
+								<li>
+									<h5>merge: <span class="tsd-signature-type">boolean</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>should the profiles be merged? (will be skipped if there is a custom update profile handler)</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="../interfaces/_zowe_imperative.ipromisewithprogress.html#promise" class="tsd-signature-type">Promise</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_zowe_imperative.iprofile.html" class="tsd-signature-type">IProfile</a><span class="tsd-signature-symbol">&gt;</span></h4>
+							<ul>
+								<li>promise which provides the finished profile on fulfill</li>
+							</ul>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-private">
+					<a name="updateprofilefromcliargs" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> update<wbr>Profile<wbr>From<wbr>Cli<wbr>Args</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-private">
+						<li class="tsd-signature tsd-kind-icon">update<wbr>Profile<wbr>From<wbr>Cli<wbr>Args<span class="tsd-signature-symbol">(</span>parms<span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_imperative.iupdateprofilefromcliargs.html" class="tsd-signature-type">IUpdateProfileFromCliArgs</a>, oldProfile<span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_imperative.iprofile.html" class="tsd-signature-type">IProfile</a>, newProfile<span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_imperative.iprofile.html" class="tsd-signature-type">IProfile</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_imperative.ipromisewithprogress.html#promise" class="tsd-signature-type">Promise</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_zowe_imperative.iprofileupdated.html" class="tsd-signature-type">IProfileUpdated</a><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.3.5/packages/cmd/src/profiles/CliProfileManager.ts#L468">@zowe/imperative/packages/cmd/src/profiles/CliProfileManager.ts:468</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Update an existing profile with arguments from the user based on
+									the schema and configuration for this profile type</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>parms: <a href="../interfaces/_zowe_imperative.iupdateprofilefromcliargs.html" class="tsd-signature-type">IUpdateProfileFromCliArgs</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>parameters including args</p>
+									</div>
+								</li>
+								<li>
+									<h5>oldProfile: <a href="../interfaces/_zowe_imperative.iprofile.html" class="tsd-signature-type">IProfile</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>the pre-existing profile to update</p>
+									</div>
+								</li>
+								<li>
+									<h5>newProfile: <a href="../interfaces/_zowe_imperative.iprofile.html" class="tsd-signature-type">IProfile</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>new profile which will have fields set from CLI args</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="../interfaces/_zowe_imperative.ipromisewithprogress.html#promise" class="tsd-signature-type">Promise</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_zowe_imperative.iprofileupdated.html" class="tsd-signature-type">IProfileUpdated</a><span class="tsd-signature-symbol">&gt;</span></h4>
+							<p>promise which provides the finished profile on fulfill</p>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-inherited">
+					<a name="validate" class="tsd-anchor"></a>
+					<h3>validate</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-inherited">
+						<li class="tsd-signature tsd-kind-icon">validate&lt;V&gt;<span class="tsd-signature-symbol">(</span>parms<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">V</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_imperative.ipromisewithprogress.html#promise" class="tsd-signature-type">Promise</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_zowe_imperative.iprofilevalidated.html" class="tsd-signature-type">IProfileValidated</a><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Inherited from <a href="_zowe_imperative.cliprofilemanager.html">CliProfileManager</a>.<a href="_zowe_imperative.cliprofilemanager.html#validate">validate</a></p>
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.3.5/packages/profiles/src/abstract/AbstractProfileManager.ts#L537">@zowe/imperative/packages/profiles/src/abstract/AbstractProfileManager.ts:537</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Validate a profile. Includes basic and schema validation. Can be called explicitly, but is also called during
+									loads and saves to protect the integrity of the profiles against the type definitions.</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>memberof</dt>
+									<dd><p>AbstractProfileManager</p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-type-parameters-title">Type parameters</h4>
+							<ul class="tsd-type-parameters">
+								<li>
+									<h4>V<span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_imperative.ivalidateprofile.html" class="tsd-signature-type">IValidateProfile</a></h4>
+								</li>
+							</ul>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>parms: <span class="tsd-signature-type">V</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>See the interface for details</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="../interfaces/_zowe_imperative.ipromisewithprogress.html#promise" class="tsd-signature-type">Promise</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_zowe_imperative.iprofilevalidated.html" class="tsd-signature-type">IProfileValidated</a><span class="tsd-signature-symbol">&gt;</span></h4>
+							<ul>
+								<li>The promise that is fulfilled with the response object (see interface for details) or rejected
+								with an Imperative Error.</li>
+							</ul>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-overwrite tsd-is-protected">
+					<a name="validateprofile" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagProtected">Protected</span> validate<wbr>Profile</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-overwrite tsd-is-protected">
+						<li class="tsd-signature tsd-kind-icon">validate<wbr>Profile<span class="tsd-signature-symbol">(</span>parms<span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_imperative.ivalidateprofileforcli.html" class="tsd-signature-type">IValidateProfileForCLI</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_imperative.ipromisewithprogress.html#promise" class="tsd-signature-type">Promise</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_zowe_imperative.iprofilevalidated.html" class="tsd-signature-type">IProfileValidated</a><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Overrides <a href="_zowe_imperative.basicprofilemanager.html">BasicProfileManager</a>.<a href="_zowe_imperative.basicprofilemanager.html#validateprofile">validateProfile</a></p>
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.3.5/packages/cmd/src/profiles/CliProfileManager.ts#L307">@zowe/imperative/packages/cmd/src/profiles/CliProfileManager.ts:307</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Validate a profile&#39;s structure, skipping the validation if we haven&#39;t built the
+									profile&#39;s fields from the CLI arguments yet.</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>parms: <a href="../interfaces/_zowe_imperative.ivalidateprofileforcli.html" class="tsd-signature-type">IValidateProfileForCLI</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>validate profile parameters. if these don&#39;t
+											have readyForValidation = true, validation is
+										skipped</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="../interfaces/_zowe_imperative.ipromisewithprogress.html#promise" class="tsd-signature-type">Promise</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_zowe_imperative.iprofilevalidated.html" class="tsd-signature-type">IProfileValidated</a><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+					<a name="validateprofileagainstschema" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagProtected">Protected</span> validate<wbr>Profile<wbr>Against<wbr>Schema</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+						<li class="tsd-signature tsd-kind-icon">validate<wbr>Profile<wbr>Against<wbr>Schema<span class="tsd-signature-symbol">(</span>name<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, profile<span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_imperative.iprofile.html" class="tsd-signature-type">IProfile</a>, strict<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Inherited from <a href="_zowe_imperative.cliprofilemanager.html">CliProfileManager</a>.<a href="_zowe_imperative.cliprofilemanager.html#validateprofileagainstschema">validateProfileAgainstSchema</a></p>
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.3.5/packages/profiles/src/abstract/AbstractProfileManager.ts#L993">@zowe/imperative/packages/profiles/src/abstract/AbstractProfileManager.ts:993</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Validates the profile against the schema for its type and reports and errors located.</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>memberof</dt>
+									<dd><p>AbstractProfileManager</p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>name: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>the name of the profile to validate</p>
+									</div>
+								</li>
+								<li>
+									<h5>profile: <a href="../interfaces/_zowe_imperative.iprofile.html" class="tsd-signature-type">IProfile</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The profile to validate.</p>
+									</div>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> strict: <span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol"> = false</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+					<a name="validateprofileobject" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagProtected">Protected</span> validate<wbr>Profile<wbr>Object</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+						<li class="tsd-signature tsd-kind-icon">validate<wbr>Profile<wbr>Object<span class="tsd-signature-symbol">(</span>name<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, type<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, profile<span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_imperative.iprofile.html" class="tsd-signature-type">IProfile</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Inherited from <a href="_zowe_imperative.cliprofilemanager.html">CliProfileManager</a>.<a href="_zowe_imperative.cliprofilemanager.html#validateprofileobject">validateProfileObject</a></p>
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.3.5/packages/profiles/src/abstract/AbstractProfileManager.ts#L946">@zowe/imperative/packages/profiles/src/abstract/AbstractProfileManager.ts:946</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Performs basic validation of a profile object - ensures that all fields are present (if required).</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>memberof</dt>
+									<dd><p>AbstractProfileManager</p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>name: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>the name of the profile to validate</p>
+									</div>
+								</li>
+								<li>
+									<h5>type: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>the type of profile to validate</p>
+									</div>
+								</li>
+								<li>
+									<h5>profile: <a href="../interfaces/_zowe_imperative.iprofile.html" class="tsd-signature-type">IProfile</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The profile to validate.</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-private">
+					<a name="validaterequireddependenciesarespecified" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> validate<wbr>Required<wbr>Dependencies<wbr>Are<wbr>Specified</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-private">
+						<li class="tsd-signature tsd-kind-icon">validate<wbr>Required<wbr>Dependencies<wbr>Are<wbr>Specified<span class="tsd-signature-symbol">(</span>profile<span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_imperative.iprofile.html" class="tsd-signature-type">IProfile</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Inherited from <a href="_zowe_imperative.cliprofilemanager.html">CliProfileManager</a>.<a href="_zowe_imperative.cliprofilemanager.html#validaterequireddependenciesarespecified">validateRequiredDependenciesAreSpecified</a></p>
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.3.5/packages/profiles/src/abstract/AbstractProfileManager.ts#L1168">@zowe/imperative/packages/profiles/src/abstract/AbstractProfileManager.ts:1168</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Validates a profiles contents against the required dependencies specified on the profile configuration type document. If the document
+									indicates that a dependency is required and that dependency is missing from the input profile, an error is thrown.</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>memberof</dt>
+									<dd><p>AbstractProfileManager</p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>profile: <a href="../interfaces/_zowe_imperative.iprofile.html" class="tsd-signature-type">IProfile</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The profile to validate dependency specs</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-static">
+					<a name="initialize" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> initialize</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-static">
+						<li class="tsd-signature tsd-kind-icon">initialize<span class="tsd-signature-symbol">(</span>parms<span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_imperative.iprofilemanagerinit.html" class="tsd-signature-type">IProfileManagerInit</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_imperative.ipromisewithprogress.html#promise" class="tsd-signature-type">Promise</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_zowe_imperative.iprofileinitialized.html" class="tsd-signature-type">IProfileInitialized</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Inherited from <a href="_zowe_imperative.cliprofilemanager.html">CliProfileManager</a>.<a href="_zowe_imperative.cliprofilemanager.html#initialize">initialize</a></p>
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.3.5/packages/profiles/src/BasicProfileManager.ts#L69">@zowe/imperative/packages/profiles/src/BasicProfileManager.ts:69</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Static method to initialize the profile environment. Accepts the profile root directory (normally supplied by
+										your Imperative configuration documents) and all profile &quot;type&quot; configuration documents and constructs the directories
+										needed to manage profiles of all types. You must execute this method before beginning to use profiles OR you must
+										supply all the type configuration documents (normally obtained from your Imperative configuration document) to
+									the constructor of</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>static</dt>
+									<dd></dd>
+									<dt>memberof</dt>
+									<dd><p>AbstractProfileManager</p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>parms: <a href="../interfaces/_zowe_imperative.iprofilemanagerinit.html" class="tsd-signature-type">IProfileManagerInit</a></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="../interfaces/_zowe_imperative.ipromisewithprogress.html#promise" class="tsd-signature-type">Promise</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_zowe_imperative.iprofileinitialized.html" class="tsd-signature-type">IProfileInitialized</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+			</section>
+		</div>
+		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
+			<nav class="tsd-navigation primary">
+				<ul>
+					<li class="globals  ">
+						<a href="../globals.html"><em>Globals</em></a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_core_for_zowe_sdk.html">@zowe/core-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class="current tsd-kind-module">
+						<a href="../modules/_zowe_imperative.html">@zowe/imperative</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_provisioning_for_zowe_sdk.html">@zowe/provisioning-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_zos_console_for_zowe_sdk.html">@zowe/zos-<wbr>console-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_zos_files_for_zowe_sdk.html">@zowe/zos-<wbr>files-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_zos_jobs_for_zowe_sdk.html">@zowe/zos-<wbr>jobs-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_zos_logs_for_zowe_sdk.html">@zowe/zos-<wbr>logs-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_zos_tso_for_zowe_sdk.html">@zowe/zos-<wbr>tso-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_zos_uss_for_zowe_sdk.html">@zowe/zos-<wbr>uss-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_zos_workflows_for_zowe_sdk.html">@zowe/zos-<wbr>workflows-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_zosmf_for_zowe_sdk.html">@zowe/zosmf-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+				</ul>
+			</nav>
+			<nav class="tsd-navigation secondary menu-sticky">
+				<ul class="before-current">
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_core_for_zowe_sdk.html" class="tsd-kind-icon">@zowe/core-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+				</ul>
+				<ul class="current">
+					<li class="current tsd-kind-module">
+						<a href="../modules/_zowe_imperative.html" class="tsd-kind-icon">@zowe/imperative</a>
+						<ul>
+							<li class="current tsd-kind-class tsd-parent-kind-module">
+								<a href="_zowe_imperative.cliprofilemanager.html" class="tsd-kind-icon">Cli<wbr>Profile<wbr>Manager</a>
+								<ul>
+									<li class=" tsd-kind-constructor tsd-parent-kind-class tsd-is-inherited">
+										<a href="_zowe_imperative.cliprofilemanager.html#constructor" class="tsd-kind-icon">constructor</a>
+									</li>
+									<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-static">
+										<a href="_zowe_imperative.cliprofilemanager.html#meta_file_suffix" class="tsd-kind-icon">META_<wbr>FILE_<wbr>SUFFIX</a>
+									</li>
+									<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-static">
+										<a href="_zowe_imperative.cliprofilemanager.html#profile_extension" class="tsd-kind-icon">PROFILE_<wbr>EXTENSION</a>
+									</li>
+									<li class=" tsd-kind-get-signature tsd-parent-kind-class tsd-is-inherited">
+										<a href="_zowe_imperative.cliprofilemanager.html#configurations" class="tsd-kind-icon">configurations</a>
+									</li>
+									<li class=" tsd-kind-get-signature tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+										<a href="_zowe_imperative.cliprofilemanager.html#loadcounter" class="tsd-kind-icon">load<wbr>Counter</a>
+									</li>
+									<li class=" tsd-kind-get-signature tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+										<a href="_zowe_imperative.cliprofilemanager.html#log" class="tsd-kind-icon">log</a>
+									</li>
+									<li class=" tsd-kind-get-signature tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+										<a href="_zowe_imperative.cliprofilemanager.html#managerparameters" class="tsd-kind-icon">manager<wbr>Parameters</a>
+									</li>
+									<li class=" tsd-kind-get-signature tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+										<a href="_zowe_imperative.cliprofilemanager.html#productdisplayname" class="tsd-kind-icon">product<wbr>Display<wbr>Name</a>
+									</li>
+									<li class=" tsd-kind-get-signature tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+										<a href="_zowe_imperative.cliprofilemanager.html#profilerootdirectory" class="tsd-kind-icon">profile<wbr>Root<wbr>Directory</a>
+									</li>
+									<li class=" tsd-kind-get-signature tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+										<a href="_zowe_imperative.cliprofilemanager.html#profiletype" class="tsd-kind-icon">profile<wbr>Type</a>
+									</li>
+									<li class=" tsd-kind-get-signature tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+										<a href="_zowe_imperative.cliprofilemanager.html#profiletypeconfiguration" class="tsd-kind-icon">profile<wbr>Type<wbr>Configuration</a>
+									</li>
+									<li class=" tsd-kind-get-signature tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+										<a href="_zowe_imperative.cliprofilemanager.html#profiletypeconfigurations" class="tsd-kind-icon">profile<wbr>Type<wbr>Configurations</a>
+									</li>
+									<li class=" tsd-kind-get-signature tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+										<a href="_zowe_imperative.cliprofilemanager.html#profiletypemetafilename" class="tsd-kind-icon">profile<wbr>Type<wbr>Meta<wbr>File<wbr>Name</a>
+									</li>
+									<li class=" tsd-kind-get-signature tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+										<a href="_zowe_imperative.cliprofilemanager.html#profiletyperootdirectory" class="tsd-kind-icon">profile<wbr>Type<wbr>Root<wbr>Directory</a>
+									</li>
+									<li class=" tsd-kind-get-signature tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+										<a href="_zowe_imperative.cliprofilemanager.html#profiletypeschema" class="tsd-kind-icon">profile<wbr>Type<wbr>Schema</a>
+									</li>
+									<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private">
+										<a href="_zowe_imperative.cliprofilemanager.html#addprofileinstruction" class="tsd-kind-icon">add<wbr>Profile<wbr>Instruction</a>
+									</li>
+									<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+										<a href="_zowe_imperative.cliprofilemanager.html#cleardefault" class="tsd-kind-icon">clear<wbr>Default</a>
+									</li>
+									<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+										<a href="_zowe_imperative.cliprofilemanager.html#constructfullprofilepath" class="tsd-kind-icon">construct<wbr>Full<wbr>Profile<wbr>Path</a>
+									</li>
+									<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private">
+										<a href="_zowe_imperative.cliprofilemanager.html#createprofilefromcommandarguments" class="tsd-kind-icon">create<wbr>Profile<wbr>From<wbr>Command<wbr>Arguments</a>
+									</li>
+									<li class=" tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-inherited">
+										<a href="_zowe_imperative.cliprofilemanager.html#delete" class="tsd-kind-icon">delete</a>
+									</li>
+									<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-overwrite tsd-is-protected">
+										<a href="_zowe_imperative.cliprofilemanager.html#deleteprofile" class="tsd-kind-icon">delete<wbr>Profile</a>
+									</li>
+									<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+										<a href="_zowe_imperative.cliprofilemanager.html#deleteprofilefromdisk" class="tsd-kind-icon">delete<wbr>Profile<wbr>From<wbr>Disk</a>
+									</li>
+									<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private">
+										<a href="_zowe_imperative.cliprofilemanager.html#findoptions" class="tsd-kind-icon">find<wbr>Options</a>
+									</li>
+									<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+										<a href="_zowe_imperative.cliprofilemanager.html#getallprofilenames" class="tsd-kind-icon">get<wbr>All<wbr>Profile<wbr>Names</a>
+									</li>
+									<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+										<a href="_zowe_imperative.cliprofilemanager.html#getdefaultprofilename" class="tsd-kind-icon">get<wbr>Default<wbr>Profile<wbr>Name</a>
+									</li>
+									<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private">
+										<a href="_zowe_imperative.cliprofilemanager.html#insertcliargumentsintoprofile" class="tsd-kind-icon">insert<wbr>Cli<wbr>Arguments<wbr>Into<wbr>Profile</a>
+									</li>
+									<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private">
+										<a href="_zowe_imperative.cliprofilemanager.html#insertdependenciesintoprofilefromcliarguments" class="tsd-kind-icon">insert<wbr>Dependencies<wbr>Into<wbr>Profile<wbr>FromCLIArguments</a>
+									</li>
+									<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+										<a href="_zowe_imperative.cliprofilemanager.html#isprofileempty" class="tsd-kind-icon">is<wbr>Profile<wbr>Empty</a>
+									</li>
+									<li class=" tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-inherited">
+										<a href="_zowe_imperative.cliprofilemanager.html#load" class="tsd-kind-icon">load</a>
+									</li>
+									<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-overwrite">
+										<a href="_zowe_imperative.cliprofilemanager.html#loadall" class="tsd-kind-icon">load<wbr>All</a>
+									</li>
+									<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-overwrite tsd-is-inherited tsd-is-protected">
+										<a href="_zowe_imperative.cliprofilemanager.html#loaddependencies" class="tsd-kind-icon">load<wbr>Dependencies</a>
+									</li>
+									<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+										<a href="_zowe_imperative.cliprofilemanager.html#loadfailed" class="tsd-kind-icon">load<wbr>Failed</a>
+									</li>
+									<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-overwrite tsd-is-protected">
+										<a href="_zowe_imperative.cliprofilemanager.html#loadprofile" class="tsd-kind-icon">load<wbr>Profile</a>
+									</li>
+									<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+										<a href="_zowe_imperative.cliprofilemanager.html#loadspecificprofile" class="tsd-kind-icon">load<wbr>Specific<wbr>Profile</a>
+									</li>
+									<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+										<a href="_zowe_imperative.cliprofilemanager.html#locateexistingprofile" class="tsd-kind-icon">locate<wbr>Existing<wbr>Profile</a>
+									</li>
+									<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+										<a href="_zowe_imperative.cliprofilemanager.html#mergeprofiles" class="tsd-kind-icon">merge<wbr>Profiles</a>
+									</li>
+									<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private">
+										<a href="_zowe_imperative.cliprofilemanager.html#processsecureproperties" class="tsd-kind-icon">process<wbr>Secure<wbr>Properties</a>
+									</li>
+									<li class=" tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-inherited">
+										<a href="_zowe_imperative.cliprofilemanager.html#save" class="tsd-kind-icon">save</a>
+									</li>
+									<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-overwrite tsd-is-protected">
+										<a href="_zowe_imperative.cliprofilemanager.html#saveprofile" class="tsd-kind-icon">save<wbr>Profile</a>
+									</li>
+									<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+										<a href="_zowe_imperative.cliprofilemanager.html#setdefault" class="tsd-kind-icon">set<wbr>Default</a>
+									</li>
+									<li class=" tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-inherited">
+										<a href="_zowe_imperative.cliprofilemanager.html#update" class="tsd-kind-icon">update</a>
+									</li>
+									<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-overwrite tsd-is-protected">
+										<a href="_zowe_imperative.cliprofilemanager.html#updateprofile" class="tsd-kind-icon">update<wbr>Profile</a>
+									</li>
+									<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private">
+										<a href="_zowe_imperative.cliprofilemanager.html#updateprofilefieldsfromcommandarguments" class="tsd-kind-icon">update<wbr>Profile<wbr>Fields<wbr>From<wbr>Command<wbr>Arguments</a>
+									</li>
+									<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private">
+										<a href="_zowe_imperative.cliprofilemanager.html#updateprofilefromcliargs" class="tsd-kind-icon">update<wbr>Profile<wbr>From<wbr>Cli<wbr>Args</a>
+									</li>
+									<li class=" tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-inherited">
+										<a href="_zowe_imperative.cliprofilemanager.html#validate" class="tsd-kind-icon">validate</a>
+									</li>
+									<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-overwrite tsd-is-protected">
+										<a href="_zowe_imperative.cliprofilemanager.html#validateprofile" class="tsd-kind-icon">validate<wbr>Profile</a>
+									</li>
+									<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+										<a href="_zowe_imperative.cliprofilemanager.html#validateprofileagainstschema" class="tsd-kind-icon">validate<wbr>Profile<wbr>Against<wbr>Schema</a>
+									</li>
+									<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+										<a href="_zowe_imperative.cliprofilemanager.html#validateprofileobject" class="tsd-kind-icon">validate<wbr>Profile<wbr>Object</a>
+									</li>
+									<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-private">
+										<a href="_zowe_imperative.cliprofilemanager.html#validaterequireddependenciesarespecified" class="tsd-kind-icon">validate<wbr>Required<wbr>Dependencies<wbr>Are<wbr>Specified</a>
+									</li>
+									<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-static">
+										<a href="_zowe_imperative.cliprofilemanager.html#initialize" class="tsd-kind-icon">initialize</a>
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</li>
+				</ul>
+				<ul class="after-current">
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_provisioning_for_zowe_sdk.html" class="tsd-kind-icon">@zowe/provisioning-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_zos_console_for_zowe_sdk.html" class="tsd-kind-icon">@zowe/zos-<wbr>console-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_zos_files_for_zowe_sdk.html" class="tsd-kind-icon">@zowe/zos-<wbr>files-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_zos_jobs_for_zowe_sdk.html" class="tsd-kind-icon">@zowe/zos-<wbr>jobs-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_zos_logs_for_zowe_sdk.html" class="tsd-kind-icon">@zowe/zos-<wbr>logs-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_zos_tso_for_zowe_sdk.html" class="tsd-kind-icon">@zowe/zos-<wbr>tso-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_zos_uss_for_zowe_sdk.html" class="tsd-kind-icon">@zowe/zos-<wbr>uss-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_zos_workflows_for_zowe_sdk.html" class="tsd-kind-icon">@zowe/zos-<wbr>workflows-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_zosmf_for_zowe_sdk.html" class="tsd-kind-icon">@zowe/zosmf-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</div>
+</div>
+<footer class="with-border-bottom">
+	<div class="container">
+		<h2>Legend</h2>
+		<div class="tsd-legend-group">
+			<ul class="tsd-legend">
+				<li class="tsd-kind-object-literal"><span class="tsd-kind-icon">Object literal</span></li>
+				<li class="tsd-kind-variable"><span class="tsd-kind-icon">Variable</span></li>
+				<li class="tsd-kind-function"><span class="tsd-kind-icon">Function</span></li>
+				<li class="tsd-kind-type-alias"><span class="tsd-kind-icon">Type alias</span></li>
+				<li class="tsd-kind-type-alias tsd-has-type-parameter"><span class="tsd-kind-icon">Type alias with type parameter</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-class"><span class="tsd-kind-icon">Class</span></li>
+				<li class="tsd-kind-class tsd-has-type-parameter"><span class="tsd-kind-icon">Class with type parameter</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class"><span class="tsd-kind-icon">Method</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-interface"><span class="tsd-kind-icon">Interface</span></li>
+				<li class="tsd-kind-interface tsd-has-type-parameter"><span class="tsd-kind-icon">Interface with type parameter</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-constructor tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited constructor</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited method</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-enum"><span class="tsd-kind-icon">Enumeration</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-protected"><span class="tsd-kind-icon">Protected method</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private method</span></li>
+			</ul>
+		</div>
+	</div>
+</footer>
+<div class="container tsd-generator">
+	<p>Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p>
+</div>
+<div class="overlay"></div>
+<script src="../assets/js/main.js"></script>
+</body>
+</html>

@@ -12,7 +12,7 @@ Before you install Zowe&trade;, you must install IBM SDK for Node.js on the same
 
 The following Node.js versions are supported to run Zowe. See the [Hardware and software prerequisites](#hardware-and-software-prerequisites) section for the prerequisites that are required by Zowe.
 
-The corresponding [IBM Knowledge Center for Node.js - z/OS](https://www.ibm.com/support/knowledgecenter/SSWLKB/welcome_nodesdk_family.html) lists all the prerequisites for Node.js. Some software packages, which might be listed as prerequisites there, are **NOT** required by Zowe. Specifically, you do **NOT** need to install Python, Make, Perl, or C/C++ runtime or compiler.  If you can run `node --version` successfully, you have installed the prerequisites required by Zowe.
+The corresponding [IBM SDK for Node.js - z/OS documentation](https://www.ibm.com/docs/en/sdk-nodejs-zos) lists all the prerequisites for Node.js. Some software packages, which might be listed as prerequisites there, are **NOT** required by Zowe. Specifically, you do **NOT** need to install Python, Make, Perl, or C/C++ runtime or compiler.  If you can run `node --version` successfully, you have installed the prerequisites required by Zowe.
 
 **Note: Starting in September 2020, Node.js v6 on z/OS program number 5655-SDK will no longer be supported. You are advised to update to more recent versions of Node.js.** For more information, see [Software withdrawal and support discontinuance](https://www-01.ibm.com/common/ssi/cgi-bin/ssialias?subtype=ca&infotype=an&appname=iSource&supplier=897&letternum=ENUS919-021).  For a full list of the end of support dates for Node.js versions and other products, see [IBM Support EOS dates for z/OS](https://www.ibm.com/support/pages/eos-out-support-dates-zos).
 
@@ -36,16 +36,17 @@ The corresponding [IBM Knowledge Center for Node.js - z/OS](https://www.ibm.com/
 ## How to obtain IBM SDK for Node.js - z/OS
 
 You can obtain IBM SDK for Node.js - z/OS for free in one of the following ways:
-- Order the SMP/E edition through your IBM representative for production use
-- Use the PAX edition for non-production deployments
 
-For more information, see the blog ["How to obtain IBM SDK for Node.js - z/OS, at no charge"](https://developer.ibm.com/mainframe/2019/04/17/ibm-sdk-for-node-js-z-os-at-no-charge/).
+- Order the SMP/E edition through your IBM representative if that is your standard way to order IBM software.
+- Order the SMP/E edition through IBM Shopz with optional paid support available.
+- Download PAX file format at [ibm.com/products/sdk-nodejs-compiler-zos](https://www.ibm.com/products/sdk-nodejs-compiler-zos). IBM defect Support is not available for this format.
+For more information, see the blog ["Options on how to obtain IBM Open Enterprise SDK for Node.js"](https://community.ibm.com/community/user/ibmz-and-linuxone/blogs/bruce-armstrong/2022/07/27/options-on-how-to-obtain-ibm-open-enterprise-sdk-f).
 
 ## Hardware and software prerequisites
 
 To install Node.js for Zowe, the following requirements must be met.
 
-The corresponding [IBM Knowledge Center for Node.js - z/OS](https://www.ibm.com/support/knowledgecenter/SSWLKB/welcome_nodesdk_family.html) lists all the prerequisites for Node.js. Some software packages, which might be listed as prerequisites there, are **NOT** required by Zowe. Specifically, you do **NOT** need to install Python, Make, Perl, or C/C++ runtime or compiler.
+The corresponding [IBM SDK for Node.js - z/OS documentation](https://www.ibm.com/docs/en/sdk-nodejs-zos) lists all the prerequisites for Node.js. Some software packages, which might be listed as prerequisites there, are **NOT** required by Zowe. Specifically, you do **NOT** need to install Python, Make, Perl, or C/C++ runtime or compiler.
 
 If you can run `node --version` successfully, you have installed the Node.js prerequisites required by Zowe.
 
@@ -83,4 +84,4 @@ Follow these steps to install the PAX edition of Node.js - z/OS to run Zowe.
 
 ## Installing the SMP/E edition of Node.js - z/OS
 
-To install the SMP/E edition of Node.js, see the [documentation for IBM SDK for Node.js - z/OS](https://www.ibm.com/support/knowledgecenter/SSWLKB/welcome_nodesdk_family.html). Remember that the software packages Perl, Python, Make, or C/C++ runtime or compiler that the Node.js documentation might mention are **NOT** needed by Zowe.
+To install the SMP/E edition of Node.js, see the [documentation for IBM SDK for Node.js - z/OS](https://www.ibm.com/docs/en/sdk-nodejs-zos). Remember that the software packages Perl, Python, Make, or C/C++ runtime or compiler that the Node.js documentation might mention are **NOT** needed by Zowe.

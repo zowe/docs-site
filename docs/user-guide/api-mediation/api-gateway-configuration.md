@@ -21,6 +21,7 @@ Follow the procedures in the following sections to customize Gateway parameters 
   * [Gateway timeouts](#gateway-timeouts)
   * [CORS handling](#cors-handling)
   * [Encoded slashes](#encoded-slashes)
+  * [Add a custom HTTP Auth header](#add-a-custom-http-auth-header)
   * [Connection limits](#connection-limits)
   * [Routed instance header](#routed-instance-header)
   * [Distributed load balancer cache](#distributed-load-balancer-cache)
@@ -62,11 +63,9 @@ Enable the `/gateway/api/v1/auth/refresh` endpoint to exchange a valid JWT token
 
 3. Restart Zowe.
 
-### Change password with SAF provider
+## Change password with SAF provider
 
 Update the user password using the SAF Authentication provider. To use this functionality, add the parameter `newPassword` on the login endpoint `/gateway/api/v1/auth/login`. The Gateway service returns a valid JWT with the response code `204` as a result of successful password change. The user is then authenticated and can consume APIs through the Gateway. If it is not possible to change the password for any reason, the response code is `401`.
-
-This feature is also available in the API Catalog.
 
 This feature is also available in the API Catalog.
 
@@ -93,7 +92,7 @@ where:
 
   Specifies the number of days before the password can be reset
 
-### Change password with z/OSMF provider
+## Change password with z/OSMF provider
 
 Update the user password using the z/OSMF Authentication provider. To use this functionality, add the parameter `newPassword` on the login endpoint `/gateway/api/v1/auth/login`. The Gateway service returns a valid JWT with the response code `204` as a result of successful password change. The user is then authenticated and can consume APIs through the Gateway. If it is not possible to change the password for any reason, the response code is `401`.
 
@@ -262,6 +261,21 @@ Use the following procedure to reject encoded slashes.
     
 Requests with encoded slashes are now rejected by the API Mediation Layer.
 
+## Add a custom HTTP Auth header
+
+If a southbound service needs to consume the Zowe JWT token from a HTTP request header to participate in the Zowe SSO, you can define a custom HTTP header name as part of the Gateway configuration.
+The southbound service must use the `zoweJwt` scheme in order to leverage this functionality. Once the HTTP header name is defined, each request to the southbound service contains the JWT token in the custom header.
+
+Use the following procedure to add the custom HTTP header.
+
+**Follow these steps:**
+
+1. Open the file `zowe.yaml`.
+2. Find or add the property `components.gateway.apiml.security.auth.customAuthHeader` and set the value which represents the header's name.
+3. Restart `Zowe&trade`.
+
+Requests through the Gateway towards the southbound service now contain the custom HTTP header with the JWT token.
+
 ## Connection limits
 
 By default, the API Gateway accepts up to 100 concurrent connections per route, and 1000 total concurrent connections. Any further concurrent requests are queued until the completion of an existing request. The API Gateway is built on top of Apache HTTP components that require these two connection limits for concurrent requests. For more information, see [Apache documentation](http://hc.apache.org/httpcomponents-client-ga/tutorial/html/connmgmt.html#d5e393).
@@ -354,8 +368,6 @@ Once Zowe is installed, use the following procedure to limit which components st
 1. Open the file `zowe.yaml`.
 2. Find or add the property `components.*.enabled` and set this property to `false` for all components that should not be started.
 3. Restart `Zowe&trade`.   
-
-To learn more about the related section of the environment file, see [Creating and configuring the Zowe instance directory](../configure-instance-directory.md#component-groups). We recommend you open this page in a new tab.
 
 ## SAF Resource Checking
 

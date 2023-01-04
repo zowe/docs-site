@@ -23,18 +23,19 @@ zwe components install extract -c /path/to/zowe.yaml -o /path/to/component/packa
 
 Full name|Alias|Type|Required|Help message
 |---|---|---|---|---
---component-file,--component|-o|string|yes||Path to the component package or directory.
---auto-encoding|-e|string|no||If we want to automatically tagging the module files.
+--component-file,--component|-o|string|yes|Path to the component package or directory.
+--auto-encoding|-e|string|no|If we want to automatically tagging the module files.
 ### Inherited from parent command
 
 Full name|Alias|Type|Required|Help message
 |---|---|---|---|---
---help|-h|boolean|no||Display this help.
---debug,--verbose|-v|boolean|no||Enable verbose mode.
---trace|-vv|boolean|no||Enable trace level debug mode.
---silent|-s|boolean|no||Do not display messages to standard output.
---log-dir,--log|-l|string|no||Write logs to this directory.
---config|-c|string|no||Path to Zowe configuration zowe.yaml file.
+--help|-h|boolean|no|Display this help.
+--debug,--verbose|-v|boolean|no|Enable verbose mode.
+--trace|-vv|boolean|no|Enable trace level debug mode.
+--silent|-s|boolean|no|Do not display messages to standard output.
+--log-dir,--log|-l|string|no|Write logs to this directory.
+--config|-c|string|no|Path to Zowe configuration zowe.yaml file.
+--configmgr||boolean|no|Enable use of configmgr capabilities.
 
 
 ## Errors
@@ -46,13 +47,17 @@ ZWEL0153E|153|Cannot install Zowe component to system root directory.
 ZWEL0154E|154|Temporary directory is empty.
 ZWEL0155E|155|Component %s already exists in %s.
 ZWEL0167E|167|Cannot find component name from %s package manifest.
-### Inherited from parent command
+ZWEL0204E|204|Symlink creation failure, error=%s
+ZWEL0313E|313|Cannot file component file %s.### Inherited from parent command
 
 Error code|Exit code|Error message
 |---|---|---
 ZWEL0156E|156|Component name is not initialized after extract step.
 ZWEL0180E|180|Zowe extension directory (zowe.extensionDirectory) is not defined in Zowe YAML configuration file.
-||100|If the user pass `--help` or `-h` parameter, the zwe command always exits with `100` code.
+ZWEL0304E|304|Handler install failure, cannot continue.
+ZWEL0305E|305|Could not find one of the components' directories.
+ZWEL0314E|314|Cannot install with component=all. This option only exists for upgrade.
+ZWEL0315E|315|Handler (-handler or zowe.extensionRegistry.defaultHandler) required but not specified.||100|If the user pass `--help` or `-h` parameter, the zwe command always exits with `100` code.
 ZWEL0101E|101|ZWE_zowe_runtimeDirectory is not defined.
 ZWEL0102E|102|Invalid parameter %s.
 ZWEL0103E|103|Invalid type of parameter %s.
@@ -82,3 +87,8 @@ ZWEL0139E|139|Failed to create directory %s.
 ZWEL0140E|140|Failed to translate Zowe configuration (%s).
 ZWEL0142E|142|Failed to refresh APIML static registrations.
 ZWEL0172E||Component %s has %s defined but the file is missing.
+ZWEL0200E||Failed to copy USS file %s to MVS data set %s.
+ZWEL0201E||File %s does not exist.
+ZWEL0202E||Unable to find samplib key for %s.
+ZWEL0203E||Env value in key-value pair %s has not been defined.
+ZWEL0316E||Command requires zowe.useConfigmgr=true to use.

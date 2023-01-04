@@ -64,11 +64,6 @@
         {
           "type": "doc",
           "id": "version-v2.0.x/extend/migrate-extensions"
-        },
-        {
-          "type": "link",
-          "label": "Migrating Zowe CLI from V1 to V2",
-          "href": "../user-guide/cli-updatingcli#updating-to-the-zowe-cli-v2-long-term-support-v2-lts-version"
         }
       ]
     },
@@ -620,6 +615,10 @@
         {
           "type": "doc",
           "id": "version-v2.0.x/extend/packaging-zos-extensions"
+        },
+        {
+          "type": "doc",
+          "id": "version-v2.0.x/extend/server-schemas"
         },
         {
           "type": "doc",

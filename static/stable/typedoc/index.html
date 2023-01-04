@@ -3,8 +3,8 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Zowe Node.js SDK - v2.1.0</title>
-	<meta name="description" content="Documentation for Zowe Node.js SDK - v2.1.0">
+	<title>Zowe Node.js SDK - v2.4.0</title>
+	<meta name="description" content="Documentation for Zowe Node.js SDK - v2.4.0">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="assets/css/main.css">
 </head>
@@ -22,7 +22,7 @@
 						<li class="state loading">Preparing search index...</li>
 						<li class="state failure">The search index is not available</li>
 					</ul>
-					<a href="index.html" class="title">Zowe Node.js SDK - v2.1.0</a>
+					<a href="index.html" class="title">Zowe Node.js SDK - v2.4.0</a>
 				</div>
 				<div class="table-cell" id="tsd-widgets">
 					<div id="tsd-filter">
@@ -54,7 +54,7 @@
 					<a href="globals.html">Globals</a>
 				</li>
 			</ul>
-			<h1>Zowe Node.js SDK - v2.1.0</h1>
+			<h1>Zowe Node.js SDK - v2.4.0</h1>
 		</div>
 	</div>
 </header>
@@ -111,23 +111,23 @@
 					</thead>
 					<tbody><tr>
 							<td>General guidelines that apply to contributing to Zowe CLI and Plug-ins</td>
-							<td><a href="https://github.com/zowe/zowe-cli/blob/v7.2.2/CONTRIBUTING.md">Contribution Guidelines</a></td>
+							<td><a href="https://github.com/zowe/zowe-cli/blob/v7.6.2/CONTRIBUTING.md">Contribution Guidelines</a></td>
 						</tr>
 						<tr>
 							<td>Conventions and best practices for creating packages and plug-ins for Zowe CLI</td>
-							<td><a href="https://github.com/zowe/zowe-cli/blob/v7.2.2/docs/PackagesAndPluginGuidelines.md">Package and Plug-in Guidelines</a></td>
+							<td><a href="https://github.com/zowe/zowe-cli/blob/v7.6.2/docs/PackagesAndPluginGuidelines.md">Package and Plug-in Guidelines</a></td>
 						</tr>
 						<tr>
 							<td>Guidelines for contributing to Zowe SDKs</td>
-							<td><a href="https://github.com/zowe/zowe-cli/blob/v7.2.2/docs/SDKGuidelines.md">SDK Guidelines</a></td>
+							<td><a href="https://github.com/zowe/zowe-cli/blob/v7.6.2/docs/SDKGuidelines.md">SDK Guidelines</a></td>
 						</tr>
 						<tr>
 							<td>Guidelines for running tests on Zowe CLI</td>
-							<td><a href="https://github.com/zowe/zowe-cli/blob/v7.2.2/docs/TESTING.md">Testing Guidelines</a></td>
+							<td><a href="https://github.com/zowe/zowe-cli/blob/v7.6.2/docs/TESTING.md">Testing Guidelines</a></td>
 						</tr>
 						<tr>
 							<td>Guidelines for running tests on the plug-ins that you build</td>
-							<td><a href="https://github.com/zowe/zowe-cli/blob/v7.2.2/docs/PluginTESTINGGuidelines.md">Plug-in Testing Guidelines</a></td>
+							<td><a href="https://github.com/zowe/zowe-cli/blob/v7.6.2/docs/PluginTESTINGGuidelines.md">Plug-in Testing Guidelines</a></td>
 						</tr>
 						<tr>
 							<td>Documentation that describes the features of the Imperative CLI Framework</td>
@@ -135,7 +135,7 @@
 						</tr>
 						<tr>
 							<td>Naming CLI commands and developing syntax</td>
-							<td><a href="https://github.com/zowe/zowe-cli/blob/v7.2.2/docs/CommandFormatStandards.md">Command Format Standards</a></td>
+							<td><a href="https://github.com/zowe/zowe-cli/blob/v7.6.2/docs/CommandFormatStandards.md">Command Format Standards</a></td>
 						</tr>
 						<tr>
 							<td>Documentation that describes the features of the Imperative CLI Framework</td>
@@ -143,11 +143,11 @@
 						</tr>
 						<tr>
 							<td>Versioning conventions for Zowe CLI and Plug-ins</td>
-							<td><a href="https://github.com/zowe/zowe-cli/blob/v7.2.2/docs/MaintainerVersioning.md">Versioning Guidelines</a></td>
+							<td><a href="https://github.com/zowe/zowe-cli/blob/v7.6.2/docs/MaintainerVersioning.md">Versioning Guidelines</a></td>
 						</tr>
 						<tr>
 							<td>Miscellaneous tips for development</td>
-							<td><a href="https://github.com/zowe/zowe-cli/blob/v7.2.2/docs/DevelopmentTips.md">Development Tips</a></td>
+							<td><a href="https://github.com/zowe/zowe-cli/blob/v7.6.2/docs/DevelopmentTips.md">Development Tips</a></td>
 						</tr>
 				</tbody></table>
 				<p><strong>Tip:</strong> Visit our <a href="https://github.com/zowe/zowe-cli-sample-plugin">Sample Plug-in repository</a> for example plug-in code. You can follow developer tutorials <a href="https://docs.zowe.org/stable/extend/extend-cli/cli-devTutorials.html">here</a>.</p>
@@ -156,7 +156,7 @@
 				</a>
 				<p>Zowe CLI requires NPM version 7 to install from source. Before proceeding, check your NPM version with <code>npm --version</code> and if it&#39;s older than 7.x, update with <code>npm install -g npm</code>.</p>
 				<p>The first time that you download Zowe CLI from the GitHub repository, issue the following command to install the required Zowe CLI dependencies and several development tools:</p>
-				<pre><code>npm install --<span class="hljs-variable">@zowe</span><span class="hljs-symbol">:registry=https</span><span class="hljs-symbol">://registry</span>.npmjs.org --no-package-lock --force
+				<pre><code>npm <span class="hljs-keyword">install</span>
 </code></pre>
 				<p><strong>Note:</strong> When necessary, you can run the install command again to update dependencies that were changed in package.json.</p>
 				<p>To build your code changes, issue the following command:</p>

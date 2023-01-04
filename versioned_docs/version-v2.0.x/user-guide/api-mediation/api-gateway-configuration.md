@@ -355,7 +355,7 @@ Once Zowe is installed, use the following procedure to limit which components st
 2. Find or add the property `components.*.enabled` and set this property to `false` for all components that should not be started.
 3. Restart `Zowe&trade`.   
 
-To learn more about the related section of the environment file, see [Creating and configuring the Zowe instance directory](../configure-instance-directory.md#component-groups). We recommend you open this page in a new tab.
+To learn more about the related section of the environment file, see [Creating and configuring the Zowe instance directory](../../appendix/zowe-yaml-configuration.md). We recommend you open this page in a new tab.
 
 ## SAF Resource Checking
 

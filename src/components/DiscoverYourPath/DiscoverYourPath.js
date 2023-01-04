@@ -45,10 +45,6 @@ const thirdSection = [
     item: "Zowe Client SDKs",
     link: "stable/getting-started/user-roadmap-client-sdk",
   },
-  {
-    item: "Zowe Mobile",
-    link: "stable/getting-started/user-roadmap-zowe-mobile",
-  },
 ];
 
 function Item({ item, link }) {

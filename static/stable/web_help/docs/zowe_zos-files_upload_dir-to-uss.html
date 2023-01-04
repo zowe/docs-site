@@ -12,7 +12,10 @@
 <p>An example .zosattributes file:<br>
 # pattern        local-encoding        remote-encoding<br>
 # Don't upload the node_modules directory<br>
+node_modules     -<br>
+# Don't upload files that start with periods<br>
 .*               -<br>
+# Upload jpg images in binary<br>
 *.jpg            binary                binary<br>
 # Convert CICS Node.js profiles to EBCDIC<br>
 *.profile        ISO8859-1             EBCDIC</p>
@@ -22,7 +25,6 @@
 <li>A local-encoding to identify a file’s encoding on the local workstation. If '-' is specified for local-encoding,files that match the pattern are not transferred.</li>
 <li>A remote-encoding to specify the file’s desired character set on USS. This attribute must either match the local encoding or be set to EBCDIC. If set to EBCDIC, files are transferred in text mode and converted, otherwise they are transferred in binary mode. Remote files are tagged either with the remote encoding or as binary.</li>
 </ul>
-<p>Due to a z/OSMF limitation, files that are transferred in text mode are converted to the default EBCDIC code page on the z/OS system. Therefore the only EBCDIC code page to specify as the remote encoding is the default code page for your system.</p>
 <p>A .zosattributes file can either be placed in the top-level directory you want to upload, or its location can be specified by using the --attributes parameter. .zosattributes files that are placed in nested directories are ignored.</p>
 <h4>Usage</h4>
 <p>zowe zos-files upload dir-to-uss &lt;inputDir&gt; &lt;USSDir&gt; [options]</p>
@@ -81,6 +83,12 @@
 The maximum number of TSO address spaces have been created. When you specify 0, Zowe CLI attempts to upload all members at once without a maximum number of concurrent requests.</p>
 <p>Default value: 1</p>
 </li>
+</ul>
+</li>
+<li>
+<p><code>--include-hidden</code> | <code>--ih</code> <em>(boolean)</em></p>
+<ul>
+<li>Include hidden files and folders that have names beginning with a dot</li>
 </ul>
 </li>
 <li>
@@ -190,31 +198,31 @@ Allowed values: http, https</p>
 <h4>Examples</h4>
 <ul>
 <li>
-<p>Upload all files from the &quot;local_dir&quot; directory to the &quot;/a/ibmuser/my_dir&quot; USS directory:&quot;:</p>
+<p>Upload all files from the &quot;local_dir&quot; directory to the &quot;/a/ibmuser/my_dir&quot; USS directory:</p>
 <ul>
 <li><code>zowe zos-files upload dir-to-uss &quot;local_dir&quot; &quot;/a/ibmuser/my_dir&quot;</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe zos-files upload dir-to-uss &quot;local_dir&quot; &quot;/a/ibmuser/my_dir&quot;">Copy</button></li>
 </ul>
 </li>
 <li>
-<p>Upload all files from the &quot;local_dir&quot; directory and all its sub-directories, to the &quot;/a/ibmuser/my_dir&quot; USS directory::</p>
+<p>Upload all files from the &quot;local_dir&quot; directory and all its sub-directories, to the &quot;/a/ibmuser/my_dir&quot; USS directory:</p>
 <ul>
 <li><code>zowe zos-files upload dir-to-uss &quot;local_dir&quot; &quot;/a/ibmuser/my_dir&quot; --recursive</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe zos-files upload dir-to-uss &quot;local_dir&quot; &quot;/a/ibmuser/my_dir&quot; --recursive">Copy</button></li>
 </ul>
 </li>
 <li>
-<p>Upload all files from the &quot;local_dir&quot; directory to the &quot;/a/ibmuser/my_dir&quot; USS directory in default ASCII mode, while specifying a list of file names (without path) to be uploaded in binary mode::</p>
+<p>Upload all files from the &quot;local_dir&quot; directory to the &quot;/a/ibmuser/my_dir&quot; USS directory in default ASCII mode, while specifying a list of file names (without path) to be uploaded in binary mode:</p>
 <ul>
 <li><code>zowe zos-files upload dir-to-uss &quot;local_dir&quot; &quot;/a/ibmuser/my_dir&quot; --binary-files &quot;myFile1.exe,myFile2.exe,myFile3.exe&quot;</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe zos-files upload dir-to-uss &quot;local_dir&quot; &quot;/a/ibmuser/my_dir&quot; --binary-files &quot;myFile1.exe,myFile2.exe,myFile3.exe&quot;">Copy</button></li>
 </ul>
 </li>
 <li>
-<p>Upload all files from the &quot;local_dir&quot; directory to the &quot;/a/ibmuser/my_dir&quot; USS directory in binary mode, while specifying a list of file names (without path) to be uploaded in ASCII mode::</p>
+<p>Upload all files from the &quot;local_dir&quot; directory to the &quot;/a/ibmuser/my_dir&quot; USS directory in binary mode, while specifying a list of file names (without path) to be uploaded in ASCII mode:</p>
 <ul>
 <li><code>zowe zos-files upload dir-to-uss &quot;local_dir&quot; &quot;/a/ibmuser/my_dir&quot; --binary --ascii-files &quot;myFile1.txt,myFile2.txt,myFile3.txt&quot;</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe zos-files upload dir-to-uss &quot;local_dir&quot; &quot;/a/ibmuser/my_dir&quot; --binary --ascii-files &quot;myFile1.txt,myFile2.txt,myFile3.txt&quot;">Copy</button></li>
 </ul>
 </li>
 <li>
-<p>Recursively upload all files from the &quot;local_dir&quot; directory to the &quot;/a/ibmuser/my_dir&quot; USS directory, specifying files to ignore and file encodings in the local file my_global_attributes::</p>
+<p>Recursively upload all files from the &quot;local_dir&quot; directory to the &quot;/a/ibmuser/my_dir&quot; USS directory, specifying files to ignore and file encodings in the local file my_global_attributes:</p>
 <ul>
 <li><code>zowe zos-files upload dir-to-uss &quot;local_dir&quot; &quot;/a/ibmuser/my_dir&quot; --recursive --attributes my_global_attributes</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe zos-files upload dir-to-uss &quot;local_dir&quot; &quot;/a/ibmuser/my_dir&quot; --recursive --attributes my_global_attributes">Copy</button></li>
 </ul>

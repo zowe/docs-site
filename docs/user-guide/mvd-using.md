@@ -57,12 +57,12 @@ To log out, click the User icon in the lower right corner and click **Sign Out**
   - While opening an application in new tab you can also do the following:
    
      -  You can use url to send data to the application, for example you would specify
-        `https://zowe.externalDomains[0]:zowe.externalPort/ZLUX/plugins/org.zowe.zlux.bootstrap/web/?pluginId=org.zowe.editor:data:{"type":"openFile","name":"<path of file>"}`
+        `https://zowe.externalDomains[0]:zowe.externalPort/zlux/ui/v1/ZLUX/plugins/org.zowe.zlux.bootstrap/web/?pluginId=org.zowe.editor:data:{"type":"openFile","name":"<path of file>"}`
      -  You can use url to open application directly on browser with and without credentials using
          `showLogin` in url.
             1. If `showLogin = true` then you need to login with your credentials before using an 
                application for example.
-              `https://zowe.externalDomains[0]:zowe.externalPort/ZLUX/plugins/org.zowe.zlux.bootstrap/web/?pluginId=org.zowe.terminal.tn3270&showLogin=true`.
+              `https://zowe.externalDomains[0]:zowe.externalPort/zlux/ui/v1/ZLUX/plugins/org.zowe.zlux.bootstrap/web/?pluginId=org.zowe.terminal.tn3270&showLogin=true`.
             2. If `showLogin = false` then you can access application directly without login.
 
 ### Personalizing the Desktop

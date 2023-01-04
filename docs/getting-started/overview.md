@@ -26,7 +26,6 @@ Zowe consists of the following components:
 - [Zowe Explorer](#zowe-explorer)
 - [Zowe Client Software Development Kits SDKs](#zowe-client-software-development-kits-sdks)
 - [Zowe Launcher](#zowe-launcher)
-- [Zowe Mobile - Incubator](#zowe-mobile---incubator)
 - [ZEBRA (Zowe Embedded Browser for RMF/SMF and APIs) - Incubator](#zebra-zowe-embedded-browser-for-rmfsmf-and-apis---incubator)
 
 ### Zowe Application Framework
@@ -125,7 +124,7 @@ Essential to the API Mediation Layer ecosystem is the API services that expose t
 * [Onboarding Overview](../extend/extend-apiml/onboard-overview.md)
 * [Onboard an existing Spring Boot REST API service using Zowe API Mediation Layer](../extend/extend-apiml/onboard-spring-boot-enabler.md)
 * [Onboard an existing Node.js REST API service using Zowe API Mediation Layer](../extend/extend-apiml/onboard-nodejs-enabler.md)
-* [Using API Catalog](../user-guide/api-mediation-api-catalog.md)
+* [Using API Mediation Layer](../user-guide/api-mediation/using-api-mediation-layer.md)
 
 </details>
 
@@ -202,11 +201,49 @@ Provides an advanced launcher for Zowe z/OS server components in a high availabi
 - Stopping the Zowe server components using the `STOP` (or `P`) operator command
 - Stopping and starting specific server components without restarting the entire Zowe instance using `MODIFY` (or `F`) operator command
 
-### Zowe Mobile - Incubator
+### Zowe Chat (Technical Preview)
 
-Lets you interact with your Zowe instance running on the mainframe from your mobile. 
+Zowe Chat is a chatbot that aims to enable a ChatOps collaboration model including z/OS resources and tools. Zowe Chat enables you to  interact with the mainframe from chat clients such as Slack, Microsoft Teams, and Mattermost. Zowe Chat helps to increase your productivity by eliminating or minimizing the context switching between different tools and user interfaces.
 
-For more information, see [Information roadmap for Zowe Mobile](user-roadmap-zowe-mobile.md).
+<details>
+<summary> Learn more </summary>
+
+#### Zowe Chat key features
+
+- **Manage z/OS resource in chat tool channels**
+
+  Check your z/OS job, data set, and USS files status directly in chat tool channels. You can also issue z/OS console commands directly in the chat tool. You can drill down on a specific job, data set, error code, and so on to get more details through button or drop-down menu that Zowe Chat provides.
+
+- **Execute Zowe CLI commands in chat tool channels**
+
+  You can also issue Zowe CLI commands to perform operations such as help and z/OS resource management including z/OS job, data set, USS file, error code, and console command. Theoretically, most of Zowe CLI commands are supported as long as it is executable with single-submit.
+
+- **Extensibility**
+
+  Zowe Chat is extensible via plug-ins. You can extend Zowe Chat by developing plug-ins and contributing code to the base Zowe Chat or existing plug-ins.
+
+- **Security:**
+   
+  Zowe Chat makes use of z/OS SAF calls and supports the three main security management products on z/OS (RACF, Top Secret, ACF2). You can log in to the chat client via enterprise standards, including two factor authentication if required. The first time you issue a command to the Zowe Chat installed in the chat workspace, it prompts you to log in with the mainframe ID using a one-time URL. Once authenticated against the mainframe security, Zowe Chat securely caches in memory the relationship between your Chat tool ID and the mainframe ID. Zowe Chat’s Security Facility will generate credentials for downstream API requests.
+
+- **Display alerts:**
+
+  Allows you to send alert or event to a channel in the chat tool in use. An event data model enables Zowe Chat extenders to send alerts to a channel in the chat through Zowe Chat.
+
+Read the following blogs to learn more about Zowe Chat:
+
+- [Zowe Gets Chatty](https://medium.com/zowe/zowe-gets-chatty-842e3b548902)
+- [Zowe Chat can make you more productive: user scenarios](https://medium.com/zowe/zowe-chat-can-make-you-more-productive-user-scenarios-f52a9985dd50)
+
+#### Zowe Chat architecture
+
+Zowe Chat is based on the Common Bot framework, which is required for the chat platform Slack, Mattermost, and Microsoft Teams. 
+
+![Zowe chat architecture](./diagrams/zowe-chat-architecture.png)
+
+</details>
+
+For more information, see [Installing Zowe Chat](../user-guide/zowe-chat/chat_install_overview.md) and [Using Zowe Chat](../user-guide/zowe-chat/chat_use_interact_methods.md). 
 
 ### ZEBRA (Zowe Embedded Browser for RMF/SMF and APIs) - Incubator 
 
@@ -219,6 +256,22 @@ For more information, see the [ZEBRA documentation](https://github.com/zowe/zebr
 The Workflow wiZard delivers a workflow builder which simplifies the creation of z/OSMF workflows. The workflow builder reads a library of templates along with a set of properties, determines which steps are necessary based upon rules that use property values, determines a suitable order to satisfy the workflow engine requirements, inserts variable definitions when required, and outputs workflow XML.
 
 For more information, see the [Workflow Template Reference](https://github.com/zowe/workflow-wizard/raw/main/doc/Workflow%20Templates%20Reference.docx).
+
+### Zowe IntelliJ Plug-in - Incubator
+
+Zowe IntelliJ plug-in for Intellij-based IDEs is a smart and interactive mainframe code editing tool that allows you to browse, edit, and create data on z/OS via z/OSMF REST API. 
+
+Zowe IntelliJ plug-in helps you to: 
+- Start working with z/OS easily with no complex configurations.
+- Organize datasets on z/OS, files on USS into working sets.
+- Allocate datasets, create members, files and directories with different permissions.
+- Perform operations like renaming, copying and moving data in a modern way.
+- Edit datasets, files and members. Smart auto-save will keep your content both in the editor and on the mainframe in-sync.
+- Create multiple connections to different z/OS systems.
+- Perform all available operations with jobs.
+- Highlight all IntelliJ supported languages automatically and recognize them once opened from the mainframe.
+
+For more information, see [Using Zowe IntelliJ plug-in](../user-guide/intellij-using.md).
 
 ## Zowe Third-Party Software Requirements and Bill of Materials
 

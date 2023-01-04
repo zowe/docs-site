@@ -19,6 +19,7 @@
         * [Dummy Authentication Provider](#dummy-authentication-provider)
     + [Authorization](#authorization)
     + [JWT Token](#jwt-token)
+    + [Personal Access Token](#personal-access-token)
     + [z/OSMF JSON Web Tokens Support](#z-osmf-json-web-tokens-support)
     + [API ML truststore and keystore](#api-ml-truststore-and-keystore)
     + [API ML SAF Keyring](#api-ml-saf-keyring)
@@ -272,6 +273,7 @@ Authentication is performed in the following ways:
 When the client authenticates with the API ML, the client receives the JWT token in exchange. This token can be used for further authentication. If z/OSMF is configured as the authentication provider and the client already received a JWT token produced by z/OSMF, it is possible to reuse this token within API ML for authentication.  
 
 ### Authentication parameters
+
 Parameters are specified in the onboarding enablers.
 
 Authentication parameters enable a service to accept a Zowe JWT or client certificate. The API Gateway translates the authentication token to an authentication method supported by a service.
@@ -301,6 +303,8 @@ authentication:
 
         * When a Zowe JWT is provided, this scheme value specifies that the service accepts the Zowe JWT. No additional processing is done by the API Gateway.
         * When a client certificate is provided, the certificate is transformed into a Zowe JWT, and the southbound service performs the authentication.
+        * If the southbound service needs to consume the JWT token from a custom HTTP request header (i.e. to participate in the Zowe SSO), it is possible to provide a header in the Gateway configuration. 
+      The HTTP header is then added to each request towards the southbound service. The header contains the Zowe JWT to be consumed by the service.
 
     * **httpBasicPassTicket**
 
@@ -402,6 +406,12 @@ The JWT secret that signs the JWT Token is an asymmetric private key that is gen
 You can find the JWT secret, alias `localhost`, in the PKCS12 keystore that is stored in `${KEYSTORE_DIRECTORY}/localhost/localhost.keystore.p12`. The public key necessary to validate the JWT signature is read from the keystore.
 
 You can also use the `/gateway/api/v1/auth/keys/public/all` endpoint to obtain all public keys that can be used to verify JWT tokens signature in standard [JWK format](https://openid.net/specs/).
+
+### Personal Access Token
+
+A Personal Access Token (PAT) is an alternative to using passwords for authentication.
+It is possible to generate a Personal Access Token that can be used for an instance of Version Control Systems on mainframe without having to store mainframe credentials
+or use a certificate. For more information about the PAT functionality, see the [Personal Access Token documentation](../../user-guide/api-mediation/api-mediation-personal-access-token.md).
 
 ### z/OSMF JSON Web Tokens Support
 
@@ -827,7 +837,7 @@ There are two ways to set up certificates on a z/OS machine:
 - Certificates in SAF keyring
 - Certificates in UNIX files (keystore and truststore)
  
-The [Configuring Zowe certificates](../../user-guide/configure-certificates.md#configuring-zowe-certificates) contains instructions about how to set up certificates during installation. Follow the procedure in the applicable section described in this article during installation.
+The [Configuring PKCS12 certificates](../../user-guide/configure-certificates-keystore) and [Configuring JCERACFS certificates in a key ring](../../user-guide/configure-certificates-keyring) contain instructions about how to set up certificates during installation. Follow the procedure in the applicable section described in this article during installation.
 
 
 #### Import the local CA certificate to your browser

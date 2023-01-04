@@ -43,7 +43,7 @@ If you are running Zowe CLI version v1.8.x to v1.27.x, you can update to `@zowe-
 
 You updated to the Zowe CLI V2-LTS version!
 
-Ensure that you review the [Release Notes](../getting-started/summaryofchanges.md), which describes **Notable Changes** in this version. We recommend issuing familiar commands and running scripts to ensure that your profiles/scripts are compatible. You might need to take corrective action to address the breaking changes.
+Ensure that you review the [Release Notes](../getting-started/release-notes/v2_0_0.md), which describes **Notable Changes** in this version. We recommend issuing familiar commands and running scripts to ensure that your profiles/scripts are compatible. You might need to take corrective action to address the breaking changes.
 
 ## Identify the currently installed version of Zowe CLI
 

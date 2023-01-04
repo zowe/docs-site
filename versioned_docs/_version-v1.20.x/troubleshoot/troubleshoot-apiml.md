@@ -227,13 +227,13 @@ Fix the missing z/OSMF host name in subject alternative names using the followin
 **Follow these steps:**
 
 1. Obtain a valid certificate for z/OSMF and place it in the z/OSMF keyring. For more information, see [Configure the z/OSMF Keyring and Certificate](https://www.ibm.com/support/knowledgecenter/en/SSLTBW_2.3.0/com.ibm.zos.v2r3.izua300/izuconfig_KeyringAndCertificate.htm).
-2. Re-create the Zowe keystore by deleting it and re-creating it. For more information, see [Configuring Zowe certificates](../user-guide/configure-certificates.md).  The Zowe keystore directory is the value of the `KEYSTORE_DIRECTORY` variable in the `instance.env` file in the instance directory that is used to launch Zowe. See [Creating and configuring the Zowe instance directory](../user-guide/configure-instance-directory.md#keystore-configuration) for more information. 
+2. Re-create the Zowe keystore by deleting it and re-creating it. For more information, see [Configuring Zowe certificates](../user-guide/configure-certificates).  The Zowe keystore directory is the value of the `KEYSTORE_DIRECTORY` variable in the `instance.env` file in the instance directory that is used to launch Zowe. See [Creating and configuring the Zowe instance directory](../user-guide/configure-instance-directory.md#keystore-configuration) for more information. 
 
 #### Insecure fix
 
 **Follow these steps:**
 
-1. Re-create the Zowe keystore by deleting it and re-creating it. For more information, see [Configuring Zowe certificates](../user-guide/configure-certificates.md). In the `zowe-setup-certificates.env` file that is used to generate the keystore, ensure that the property `VERIFY_CERTIFICATES` is set to `FALSE`.
+1. Re-create the Zowe keystore by deleting it and re-creating it. For more information, see [Configuring Zowe certificates](../user-guide/configure-certificates). In the `zowe-setup-certificates.env` file that is used to generate the keystore, ensure that the property `VERIFY_CERTIFICATES` is set to `FALSE`.
 
 
 #### Invalid z/OSMF host name in subject alternative names
@@ -258,7 +258,7 @@ Request a new certificate that contains a valid z/OSMF host name in the subject 
 
 #### Re-create the Zowe keystore
 
-Re-create the Zowe keystore by deleting it and re-creating it. For more information, see [Configuring Zowe certificates](../user-guide/configure-certificates.md).  The Zowe keystore directory is the value of the `KEYSTORE_DIRECTORY` variable in the `instance.env` file in the instance directory that is used to launch Zowe. See [Creating and configuring the Zowe instance directory](../user-guide/configure-instance-directory.md#keystore-configuration).
+Re-create the Zowe keystore by deleting it and re-creating it. For more information, see [Configuring Zowe certificates](../user-guide/configure-certificates).  The Zowe keystore directory is the value of the `KEYSTORE_DIRECTORY` variable in the `instance.env` file in the instance directory that is used to launch Zowe. See [Creating and configuring the Zowe instance directory](../user-guide/configure-instance-directory.md#keystore-configuration).
 
 ### API ML throws I/O error on GET request and cannot connect to other services
 
@@ -405,5 +405,5 @@ The Zowe desktop is able to be displayed in a browser but fails to logon.
  
 **Solution:**
 
-Check that the Zowe certificate has been configured as a client certificate, and not just as a server certificate. More detail can be found in [Configuring certificates](../user-guide/configure-certificates.md).
+Check that the Zowe certificate has been configured as a client certificate, and not just as a server certificate. More detail can be found in [Configuring certificates](../user-guide/configure-certificates).
 

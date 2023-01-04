@@ -7,7 +7,7 @@
 <link rel="stylesheet" href="../css/docs.css">
 <article class="markdown-body">
 <h2><a href="zowe.html">zowe</a> › <a href="zowe_profiles.html">profiles</a> › <a href="zowe_profiles_create.html">create</a> › <a href="zowe_profiles_create_caspool-profile.html">caspool-profile</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
-<p>Configuration profile for CA Spool, where you specify information about your CA Spool instance</p>
+<p>Configuration profile for Spool, where you specify information about your Spool instance</p>
 <h4>Usage</h4>
 <p>zowe profiles create caspool-profile &lt;profileName&gt; [options]</p>
 <h4>Positional Arguments</h4>
@@ -19,7 +19,7 @@
 </ul>
 </li>
 </ul>
-<h4>CA SPOOL OPTIONS</h4>
+<h4>SPOOL OPTIONS</h4>
 <ul>
 <li>
 <p><code>--account</code>  | <code>-a</code> <em>(string)</em></p>
@@ -30,14 +30,14 @@
 <li>
 <p><code>--spoolhlq</code>  | <code>--hlq</code> <em>(string)</em></p>
 <ul>
-<li>High level qualifier of CA Spool installation.</li>
+<li>High level qualifier of Spool installation.</li>
 </ul>
 </li>
 <li>
 <p><code>--subsys</code>  | <code>--sub</code> <em>(string)</em></p>
 <ul>
 <li>
-<p>CA Spool subsystem name.</p>
+<p>Spool subsystem name.</p>
 <p>Default value: ESF</p>
 </li>
 </ul>
@@ -45,7 +45,7 @@
 <li>
 <p><code>--outds</code>  | <code>--out</code> <em>(string)</em></p>
 <ul>
-<li>The SYSTSPRT data set allocated by CAI.CBQ4JCL(BQ4JZOWE). It must be unique for each Zowe CLI user interacting with CA Spool.</li>
+<li>The SYSTSPRT data set allocated by CAI.CBQ4JCL(BQ4JZOWE). It must be unique for each Zowe CLI user interacting with Spool.</li>
 </ul>
 </li>
 <li>
@@ -73,7 +73,7 @@
 <h4>Examples</h4>
 <ul>
 <li>
-<p>Create a profile for CA Spool named 'myProfile' with TSO account information '1234567890', CA Spool installation high level qualifier of 'CASPOOL.HLQ', subsystem name 'ESF1', output response data set 'OUTPUT.RESPONSE.DS', and data set 'USER.CLIST', containing ESFZOWE REXX exec:</p>
+<p>Create a profile for Spool named 'myProfile' with TSO account information '1234567890', Spool installation high level qualifier of 'CASPOOL.HLQ', subsystem name 'ESF1', output response data set 'OUTPUT.RESPONSE.DS', and data set 'USER.CLIST', containing ESFZOWE REXX exec:</p>
 <ul>
 <li><code>zowe profiles create caspool-profile myProfile --account 1234567890 --spoolhlq CASPOOL.HLQ --subsys ESF1 --outds OUTPUT.RESPONSE.DS --clist USER.CLIST</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe profiles create caspool-profile myProfile --account 1234567890 --spoolhlq CASPOOL.HLQ --subsys ESF1 --outds OUTPUT.RESPONSE.DS --clist USER.CLIST">Copy</button></li>
 </ul>

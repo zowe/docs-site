@@ -16,7 +16,7 @@ Zowe high availability instances require a Sysplex environment that consists of 
 - USS Shared file system, see [How to share file systems in a Sysplex](https://www.ibm.com/docs/en/zos/2.4.0?topic=planning-sharing-file-systems-in-sysplex)
 - JESPlex/JES2 Multi-Access Spool (MAS) environment
 - z/OSMF high availability, see [Configuring z/OSMF high availability in Sysplex](systemrequirements-zosmf-ha.md)
-- Node.js v12.x, v14.x (except v14.17.2), or v16.x
+- Node.js v14.x (except v14.17.2), or v16.x
 
   **Note:** It is highly recommended that Node.js installed on a shared file system.
 
@@ -44,7 +44,7 @@ The following example DVIPA configuration ensures the availability of Zowe in Ho
    - x.x.x.A is the home address for SYSA.
    - x.x.x.B is the home address for SYSB.
    - x.x.x.V is Dynamic VIP Address.
-   - 7554 is the port number of you Zowe API Mediation Layer Gateway. This should be the same port number you configured for `zowe.externalPort` in `zowe.yaml`. See [Updating the zowe.yaml configuration file](configure-instance-directory.md#updating-the-zowe-yaml-configuration-file) to learn more about `zowe.yaml`.
+   - 7554 is the port number of you Zowe API Mediation Layer Gateway. This should be the same port number you configured for `zowe.externalPort` in `zowe.yaml`. See [Zowe YAML configuration file reference](../appendix/zowe-yaml-configuration) to learn more about `zowe.yaml`.
 
 The `VIPADISTRIBUTE` statement with `PREFERRED` and `BACKUP` settings is used to enable automatic dynamic VIPA takeover to occur, if needed.
 

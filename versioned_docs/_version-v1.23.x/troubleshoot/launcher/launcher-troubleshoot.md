@@ -4,7 +4,7 @@ The following topics contain information that can help you troubleshoot problems
 
 Issues and development of the Zowe Launcher is managed in GitHub. When you troubleshoot a problem, you can check whether a GitHub issue (open or closed) that covers the problem already exists. For a list of issues, see the [launcher repo](https://github.com/zowe/launcher).
 
-[**Error Message Codes**](../launcher-error-codes.md)
+[**Error Message Codes**](launcher-error-codes.md)
 ## Enable Zowe Launcher Debug Mode
 
 Use debug mode to display additional debug messages for Zowe Launcher.

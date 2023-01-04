@@ -8,6 +8,8 @@ You can build the docs with this command:
 npm run build
 ```
 
+Running this command will also check the broken links in docs. For more information, see [Checking broken links](#checking-broken-links).
+
 ## Testing the build locally
 
 Once `npm run build` finishes, the static files will be generated within the build directory.
@@ -19,6 +21,103 @@ npm run serve
 ```
 
 Now you will be able to visit `http://localhost:3000/` to check the content.
+
+## Checking broken links
+
+To check the broken links that your changes might introduce, use the `npm run build` command. When this command is run, it will report an exhaustive list of broken links that must be fixed before you submit the changes. 
+
+Here is an example: 
+```
+ashleyli@ashleylis-MacBook-Pro-2 docs-site % npm run build
+
+> docs-site@0.0.0 build
+> node --max-old-space-size=16384 node_modules/@docusaurus/core/bin/docusaurus build
+
+
+[en] Creating an optimized production build...
+
+✔ Client
+  
+
+✔ Server
+  Compiled successfully in 44.28s
+
+
+✔ Client
+  
+
+✔ Server
+  
+
+✔ Service Worker
+  Compiled successfully in 477.27ms
+
+warn Docusaurus found broken links!
+
+Please check the pages of your site in the list below, and make sure you don't reference any path that does not exist.
+Note: it's possible to ignore broken links with the 'onBrokenLinks' Docusaurus configuration, and let the build pass.
+
+Exhaustive list of all broken links found:
+
+- On source page path = /stable/getting-started/user-roadmap-apiml:
+   -> linking to ../user-guide/upgrade-zos-system.md (resolved as: /v2.0.x/user-guide/upgrade-zos-system.md)
+
+- On source page path = /stable/troubleshoot/troubleshooting:
+   -> linking to troubleshoot-zos.md (resolved as: /stable/troubleshoot/troubleshoot-zos.md)
+   -> linking to troubleshoot-zos-services.md (resolved as: /stable/troubleshoot/troubleshoot-zos-services.md)
+   -> linking to troubleshoot-diagnostics.md (resolved as: /stable/troubleshoot/troubleshoot-diagnostics.md)
+
+Success! Generated static files in "build".
+
+Use `npm run serve` command to test your build locally.
+```
+
+Check the **Exhaustive list of all broken links found:** section and fix all the reported link issues. Where, 
+
+- `On source page path =` indicates the local preview page that contains the broken links. 
+- `linking to` entries point to the broken links in the source files. For example, 
+
+```
+- On source page path = /stable/troubleshoot/troubleshooting:
+   -> linking to troubleshoot-zos.md (resolved as: /stable/troubleshoot/troubleshoot-zos.md)
+```
+
+means that in the `docs/troubleshoot/troubleshooting.md` file, there is a link to `troubleshoot-zos.md` which is broken. You can find the file and locate the link to `troubleshoot-zos.md` by searching it and then take action to fix it. 
+
+After all the broken links reported are fixed, run the `npm run build` command again to ensure that the log is clean now. You will see a log like this which does not contain the broken link section: 
+
+```
+ashleyli@ashleylis-MacBook-Pro-2 docs-site % npm run build
+
+> docs-site@0.0.0 build
+> node --max-old-space-size=16384 node_modules/@docusaurus/core/bin/docusaurus build
+
+
+[en] Creating an optimized production build...
+
+✔ Client
+  
+
+✔ Server
+  Compiled successfully in 39.44s
+
+
+✔ Client
+  
+
+✔ Server
+  
+
+✔ Service Worker
+  Compiled successfully in 486.21ms
+
+Success! Generated static files in "build".
+
+Use `npm run serve` command to test your build locally.
+```
+
+
+
 
 ## How to update the homepage?
 

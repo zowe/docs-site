@@ -56,14 +56,6 @@ Follow these steps:
 
 This section gives writing style guidelines for the Zowe documentation.
 
-* [Headings and titles](#headings)
-* [Technical elements](#ui)
-* [Tone](#tone)
-* [Word usage](#word)
-* [Graphics](#graphics)
-* [Abbreviations](#abbreviations)
-* [Structure and format](#Structure)
-
 ### Headings and titles<a name="headings"></a>
 
 #### Use sentence-style capitalization for headings

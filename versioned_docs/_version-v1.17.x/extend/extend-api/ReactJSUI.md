@@ -45,7 +45,7 @@ Notice that here we are setting our 'host' for the app. We are connecting to hyp
 
 ### Actions.js
 
-Next lets look at calling our API created in the [creating a RestAPI with Swagger documentation using Liberty](libertyAPI.html) tutorial. Following Redux structure, this call will be in our action.js file. We won't be looking at the entire file, but instead the relevant fetch request.
+Next lets look at calling our API created in the [creating a RestAPI with Swagger documentation using Liberty](libertyAPI.md) tutorial. Following Redux structure, this call will be in our action.js file. We won't be looking at the entire file, but instead the relevant fetch request.
 
 ```javascript
 function fetchPosts(subreddit) {

@@ -3,8 +3,8 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>IZosFilesResponse | Zowe Node.js SDK - v2.1.0</title>
-	<meta name="description" content="Documentation for Zowe Node.js SDK - v2.1.0">
+	<title>IZosFilesResponse | Zowe Node.js SDK - v2.4.0</title>
+	<meta name="description" content="Documentation for Zowe Node.js SDK - v2.4.0">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
 </head>
@@ -22,7 +22,7 @@
 						<li class="state loading">Preparing search index...</li>
 						<li class="state failure">The search index is not available</li>
 					</ul>
-					<a href="../index.html" class="title">Zowe Node.js SDK - v2.1.0</a>
+					<a href="../index.html" class="title">Zowe Node.js SDK - v2.4.0</a>
 				</div>
 				<div class="table-cell" id="tsd-widgets">
 					<div id="tsd-filter">
@@ -100,6 +100,7 @@
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_zowe_zos_files_for_zowe_sdk.izosfilesresponse.html#apiresponse" class="tsd-kind-icon">api<wbr>Response</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_zowe_zos_files_for_zowe_sdk.izosfilesresponse.html#commandresponse" class="tsd-kind-icon">command<wbr>Response</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_zowe_zos_files_for_zowe_sdk.izosfilesresponse.html#errormessage" class="tsd-kind-icon">error<wbr>Message</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_zowe_zos_files_for_zowe_sdk.izosfilesresponse.html#success" class="tsd-kind-icon">success</a></li>
 							</ul>
 						</section>
@@ -114,17 +115,13 @@
 					<div class="tsd-signature tsd-kind-icon">api<wbr>Response<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">any</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.2.2/packages/zosfiles/src/doc/IZosFilesResponse.ts#L33">@zowe/zos-files-for-zowe-sdk/src/doc/IZosFilesResponse.ts:33</a></li>
+							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.6.2/packages/zosfiles/src/doc/IZosFilesResponse.ts#L33">@zowe/zos-files-for-zowe-sdk/src/doc/IZosFilesResponse.ts:33</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
 							<p>The api response object.</p>
 						</div>
-						<dl class="tsd-comment-tags">
-							<dt>type{*}</dt>
-							<dd></dd>
-						</dl>
 					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
@@ -133,17 +130,29 @@
 					<div class="tsd-signature tsd-kind-icon">command<wbr>Response<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.2.2/packages/zosfiles/src/doc/IZosFilesResponse.ts#L27">@zowe/zos-files-for-zowe-sdk/src/doc/IZosFilesResponse.ts:27</a></li>
+							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.6.2/packages/zosfiles/src/doc/IZosFilesResponse.ts#L27">@zowe/zos-files-for-zowe-sdk/src/doc/IZosFilesResponse.ts:27</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
 							<p>The command response text.</p>
 						</div>
-						<dl class="tsd-comment-tags">
-							<dt>type{string}</dt>
-							<dd></dd>
-						</dl>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="errormessage" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> error<wbr>Message</h3>
+					<div class="tsd-signature tsd-kind-icon">error<wbr>Message<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.6.2/packages/zosfiles/src/doc/IZosFilesResponse.ts#L40">@zowe/zos-files-for-zowe-sdk/src/doc/IZosFilesResponse.ts:40</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>The error message text.
+							If not defined, the command response will be used.</p>
+						</div>
 					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
@@ -152,7 +161,7 @@
 					<div class="tsd-signature tsd-kind-icon">success<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.2.2/packages/zosfiles/src/doc/IZosFilesResponse.ts#L21">@zowe/zos-files-for-zowe-sdk/src/doc/IZosFilesResponse.ts:21</a></li>
+							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.6.2/packages/zosfiles/src/doc/IZosFilesResponse.ts#L21">@zowe/zos-files-for-zowe-sdk/src/doc/IZosFilesResponse.ts:21</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -231,6 +240,9 @@
 									</li>
 									<li class=" tsd-kind-property tsd-parent-kind-interface">
 										<a href="_zowe_zos_files_for_zowe_sdk.izosfilesresponse.html#commandresponse" class="tsd-kind-icon">command<wbr>Response</a>
+									</li>
+									<li class=" tsd-kind-property tsd-parent-kind-interface">
+										<a href="_zowe_zos_files_for_zowe_sdk.izosfilesresponse.html#errormessage" class="tsd-kind-icon">error<wbr>Message</a>
 									</li>
 									<li class=" tsd-kind-property tsd-parent-kind-interface">
 										<a href="_zowe_zos_files_for_zowe_sdk.izosfilesresponse.html#success" class="tsd-kind-icon">success</a>

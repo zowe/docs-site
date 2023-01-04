@@ -26,7 +26,6 @@ Zowe consists of the following components:
 - [Zowe Explorer](#zowe-explorer)
 - [Zowe Client Software Development Kits SDKs](#zowe-client-software-development-kits-sdks)
 - [Zowe Launcher](#zowe-launcher)
-- [Zowe Mobile - Incubator](#zowe-mobile---incubator)
 - [ZEBRA (Zowe Embedded Browser for RMF/SMF and APIs) - Incubator](#zebra-zowe-embedded-browser-for-rmfsmf-and-apis---incubator)
 
 ### Zowe Application Framework
@@ -201,12 +200,6 @@ Provides an advanced launcher for Zowe z/OS server components in a high availabi
 
 - Stopping the Zowe server components using the `STOP` (or `P`) operator command
 - Stopping and starting specific server components without restarting the entire Zowe instance using `MODIFY` (or `F`) operator command
-
-### Zowe Mobile - Incubator
-
-Lets you interact with your Zowe instance running on the mainframe from your mobile. 
-
-For more information, see [Information roadmap for Zowe Mobile](user-roadmap-zowe-mobile.md).
 
 ### ZEBRA (Zowe Embedded Browser for RMF/SMF and APIs) - Incubator 
 

@@ -3,8 +3,8 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Download | Zowe Node.js SDK - v2.1.0</title>
-	<meta name="description" content="Documentation for Zowe Node.js SDK - v2.1.0">
+	<title>Download | Zowe Node.js SDK - v2.4.0</title>
+	<meta name="description" content="Documentation for Zowe Node.js SDK - v2.4.0">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
 </head>
@@ -22,7 +22,7 @@
 						<li class="state loading">Preparing search index...</li>
 						<li class="state failure">The search index is not available</li>
 					</ul>
-					<a href="../index.html" class="title">Zowe Node.js SDK - v2.1.0</a>
+					<a href="../index.html" class="title">Zowe Node.js SDK - v2.4.0</a>
 				</div>
 				<div class="table-cell" id="tsd-widgets">
 					<div id="tsd-filter">
@@ -89,8 +89,16 @@
 						<section class="tsd-index-section ">
 							<h3>Methods</h3>
 							<ul class="tsd-index-list">
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><a href="_zowe_zos_files_for_zowe_sdk.download.html#alldatasets" class="tsd-kind-icon">all<wbr>Data<wbr>Sets</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><a href="_zowe_zos_files_for_zowe_sdk.download.html#allmembers" class="tsd-kind-icon">all<wbr>Members</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-static"><a href="_zowe_zos_files_for_zowe_sdk.download.html#builddownloaddsmresponse" class="tsd-kind-icon">build<wbr>Download<wbr>Dsm<wbr>Response</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-static"><a href="_zowe_zos_files_for_zowe_sdk.download.html#builddownloadussdirresponse" class="tsd-kind-icon">build<wbr>Download<wbr>Uss<wbr>Dir<wbr>Response</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><a href="_zowe_zos_files_for_zowe_sdk.download.html#dataset" class="tsd-kind-icon">data<wbr>Set</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-static"><a href="_zowe_zos_files_for_zowe_sdk.download.html#emptydownloaddsmresult" class="tsd-kind-icon">empty<wbr>Download<wbr>Dsm<wbr>Result</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-static"><a href="_zowe_zos_files_for_zowe_sdk.download.html#emptydownloadussdirresult" class="tsd-kind-icon">empty<wbr>Download<wbr>Uss<wbr>Dir<wbr>Result</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-static"><a href="_zowe_zos_files_for_zowe_sdk.download.html#generateheadersbasedonoptions" class="tsd-kind-icon">generate<wbr>Headers<wbr>Based<wbr>OnOptions</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-static"><a href="_zowe_zos_files_for_zowe_sdk.download.html#parseattributeoptions" class="tsd-kind-icon">parse<wbr>Attribute<wbr>Options</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><a href="_zowe_zos_files_for_zowe_sdk.download.html#ussdir" class="tsd-kind-icon">uss<wbr>Dir</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><a href="_zowe_zos_files_for_zowe_sdk.download.html#ussfile" class="tsd-kind-icon">uss<wbr>File</a></li>
 							</ul>
 						</section>
@@ -99,6 +107,67 @@
 			</section>
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Methods</h2>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-static">
+					<a name="alldatasets" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> all<wbr>Data<wbr>Sets</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-static">
+						<li class="tsd-signature tsd-kind-icon">all<wbr>Data<wbr>Sets<span class="tsd-signature-symbol">(</span>session<span class="tsd-signature-symbol">: </span><a href="_zowe_imperative.abstractsession.html" class="tsd-signature-type">AbstractSession</a>, dataSetObjs<span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_zos_files_for_zowe_sdk.izosmflistresponse.html" class="tsd-signature-type">IZosmfListResponse</a><span class="tsd-signature-symbol">[]</span>, options<span class="tsd-signature-symbol">?: </span><a href="../interfaces/_zowe_zos_files_for_zowe_sdk.idownloadoptions.html" class="tsd-signature-type">IDownloadOptions</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_imperative.ipromisewithprogress.html#promise" class="tsd-signature-type">Promise</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_zowe_zos_files_for_zowe_sdk.izosfilesresponse.html" class="tsd-signature-type">IZosFilesResponse</a><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.6.2/packages/zosfiles/src/methods/download/Download.ts#L327">@zowe/zos-files-for-zowe-sdk/src/methods/download/Download.ts:327</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Download a list of data sets to local files</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>throws</dt>
+									<dd><p>{ImperativeError} data set name must be set</p>
+									</dd>
+									<dt>throws</dt>
+									<dd><p>{Error} When the <a href="_zowe_core_for_zowe_sdk.zosmfrestclient.html">ZosmfRestClient</a> throws an error</p>
+									</dd>
+									<dt>example</dt>
+									<dd><pre><code class="language-typescript">
+<span class="hljs-comment">// Download a list of &quot;PS&quot; and &quot;PO&quot; datasets to the directory &quot;./path/to/dir/&quot;</span>
+<span class="hljs-keyword">await</span> Download.allDataSets(session, [
+   { <span class="hljs-attr">dsname</span>: <span class="hljs-string">&quot;USER.DATA.SET.PS&quot;</span>, <span class="hljs-attr">dsorg</span>: <span class="hljs-string">&quot;PS&quot;</span> },
+   { <span class="hljs-attr">dsname</span>: <span class="hljs-string">&quot;USER.DATA.SET.PDS&quot;</span>, <span class="hljs-attr">dsorg</span>: <span class="hljs-string">&quot;PO&quot;</span> }
+], {<span class="hljs-attr">directory</span>: <span class="hljs-string">&quot;./path/to/dir/&quot;</span>});
+</code></pre>
+									</dd>
+									<dt>see</dt>
+									<dd><p><a href="https://www.ibm.com/support/knowledgecenter/SSLTBW_2.2.0/com.ibm.zos.v2r2.izua700/IZUHPINFO_API_GetReadDataSet.htm">https://www.ibm.com/support/knowledgecenter/SSLTBW_2.2.0/com.ibm.zos.v2r2.izua700/IZUHPINFO_API_GetReadDataSet.htm</a></p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>session: <a href="_zowe_imperative.abstractsession.html" class="tsd-signature-type">AbstractSession</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>z/OS MF connection info</p>
+									</div>
+								</li>
+								<li>
+									<h5>dataSetObjs: <a href="../interfaces/_zowe_zos_files_for_zowe_sdk.izosmflistresponse.html" class="tsd-signature-type">IZosmfListResponse</a><span class="tsd-signature-symbol">[]</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>contains data set objects returned by z/OSMF List API</p>
+									</div>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> options: <a href="../interfaces/_zowe_zos_files_for_zowe_sdk.idownloadoptions.html" class="tsd-signature-type">IDownloadOptions</a><span class="tsd-signature-symbol"> = {}</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="../interfaces/_zowe_imperative.ipromisewithprogress.html#promise" class="tsd-signature-type">Promise</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_zowe_zos_files_for_zowe_sdk.izosfilesresponse.html" class="tsd-signature-type">IZosFilesResponse</a><span class="tsd-signature-symbol">&gt;</span></h4>
+							<p>A response indicating the outcome of the API</p>
+						</li>
+					</ul>
+				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-static">
 					<a name="allmembers" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagStatic">Static</span> all<wbr>Members</h3>
@@ -109,7 +178,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.2.2/packages/zosfiles/src/methods/download/Download.ts#L168">@zowe/zos-files-for-zowe-sdk/src/methods/download/Download.ts:168</a></li>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.6.2/packages/zosfiles/src/methods/download/Download.ts#L194">@zowe/zos-files-for-zowe-sdk/src/methods/download/Download.ts:194</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -160,6 +229,82 @@
 						</li>
 					</ul>
 				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-static">
+					<a name="builddownloaddsmresponse" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> <span class="tsd-flag ts-flagPrivate">Private</span> build<wbr>Download<wbr>Dsm<wbr>Response</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-static">
+						<li class="tsd-signature tsd-kind-icon">build<wbr>Download<wbr>Dsm<wbr>Response<span class="tsd-signature-symbol">(</span>result<span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_zos_files_for_zowe_sdk.idownloaddsmresult.html" class="tsd-signature-type">IDownloadDsmResult</a>, options<span class="tsd-signature-symbol">?: </span><a href="../interfaces/_zowe_zos_files_for_zowe_sdk.idownloadoptions.html" class="tsd-signature-type">IDownloadOptions</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.6.2/packages/zosfiles/src/methods/download/Download.ts#L733">@zowe/zos-files-for-zowe-sdk/src/methods/download/Download.ts:733</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Build a response string from a download data sets matching result.</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>result: <a href="../interfaces/_zowe_zos_files_for_zowe_sdk.idownloaddsmresult.html" class="tsd-signature-type">IDownloadDsmResult</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Result object from the download API</p>
+									</div>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> options: <a href="../interfaces/_zowe_zos_files_for_zowe_sdk.idownloadoptions.html" class="tsd-signature-type">IDownloadOptions</a><span class="tsd-signature-symbol"> = {}</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Options passed to the download API</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
+							<p>Response string to print to console</p>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-static">
+					<a name="builddownloadussdirresponse" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> <span class="tsd-flag ts-flagPrivate">Private</span> build<wbr>Download<wbr>Uss<wbr>Dir<wbr>Response</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-static">
+						<li class="tsd-signature tsd-kind-icon">build<wbr>Download<wbr>Uss<wbr>Dir<wbr>Response<span class="tsd-signature-symbol">(</span>result<span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_zos_files_for_zowe_sdk.idownloadussdirresult.html" class="tsd-signature-type">IDownloadUssDirResult</a>, options<span class="tsd-signature-symbol">?: </span><a href="../interfaces/_zowe_zos_files_for_zowe_sdk.idownloadoptions.html" class="tsd-signature-type">IDownloadOptions</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.6.2/packages/zosfiles/src/methods/download/Download.ts#L782">@zowe/zos-files-for-zowe-sdk/src/methods/download/Download.ts:782</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Build a response string from a download ussDir result.</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>result: <a href="../interfaces/_zowe_zos_files_for_zowe_sdk.idownloadussdirresult.html" class="tsd-signature-type">IDownloadUssDirResult</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Result object from the download API</p>
+									</div>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> options: <a href="../interfaces/_zowe_zos_files_for_zowe_sdk.idownloadoptions.html" class="tsd-signature-type">IDownloadOptions</a><span class="tsd-signature-symbol"> = {}</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Options passed to the download API</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
+							<p>Response string to print to console</p>
+						</li>
+					</ul>
+				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-static">
 					<a name="dataset" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagStatic">Static</span> data<wbr>Set</h3>
@@ -170,7 +315,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.2.2/packages/zosfiles/src/methods/download/Download.ts#L60">@zowe/zos-files-for-zowe-sdk/src/methods/download/Download.ts:60</a></li>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.6.2/packages/zosfiles/src/methods/download/Download.ts#L81">@zowe/zos-files-for-zowe-sdk/src/methods/download/Download.ts:81</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -224,6 +369,153 @@
 						</li>
 					</ul>
 				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-static">
+					<a name="emptydownloaddsmresult" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> <span class="tsd-flag ts-flagPrivate">Private</span> empty<wbr>Download<wbr>Dsm<wbr>Result</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-static">
+						<li class="tsd-signature tsd-kind-icon">empty<wbr>Download<wbr>Dsm<wbr>Result<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_zos_files_for_zowe_sdk.idownloaddsmresult.html" class="tsd-signature-type">IDownloadDsmResult</a></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.6.2/packages/zosfiles/src/methods/download/Download.ts#L706">@zowe/zos-files-for-zowe-sdk/src/methods/download/Download.ts:706</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Create an empty download data sets matching result.</p>
+								</div>
+							</div>
+							<h4 class="tsd-returns-title">Returns <a href="../interfaces/_zowe_zos_files_for_zowe_sdk.idownloaddsmresult.html" class="tsd-signature-type">IDownloadDsmResult</a></h4>
+							<p>Results object with all lists initialized as empty</p>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-static">
+					<a name="emptydownloadussdirresult" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> <span class="tsd-flag ts-flagPrivate">Private</span> empty<wbr>Download<wbr>Uss<wbr>Dir<wbr>Result</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-static">
+						<li class="tsd-signature tsd-kind-icon">empty<wbr>Download<wbr>Uss<wbr>Dir<wbr>Result<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_zos_files_for_zowe_sdk.idownloadussdirresult.html" class="tsd-signature-type">IDownloadUssDirResult</a></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.6.2/packages/zosfiles/src/methods/download/Download.ts#L719">@zowe/zos-files-for-zowe-sdk/src/methods/download/Download.ts:719</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Create an empty download data sets matching result.</p>
+								</div>
+							</div>
+							<h4 class="tsd-returns-title">Returns <a href="../interfaces/_zowe_zos_files_for_zowe_sdk.idownloadussdirresult.html" class="tsd-signature-type">IDownloadUssDirResult</a></h4>
+							<p>Results object with all lists initialized as empty</p>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-static">
+					<a name="generateheadersbasedonoptions" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> <span class="tsd-flag ts-flagPrivate">Private</span> generate<wbr>Headers<wbr>Based<wbr>OnOptions</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-static">
+						<li class="tsd-signature tsd-kind-icon">generate<wbr>Headers<wbr>Based<wbr>OnOptions<span class="tsd-signature-symbol">(</span>options<span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_zos_files_for_zowe_sdk.idownloadoptions.html" class="tsd-signature-type">IDownloadOptions</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.6.2/packages/zosfiles/src/methods/download/Download.ts#L820">@zowe/zos-files-for-zowe-sdk/src/methods/download/Download.ts:820</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>options: <a href="../interfaces/_zowe_zos_files_for_zowe_sdk.idownloadoptions.html" class="tsd-signature-type">IDownloadOptions</a></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-static">
+					<a name="parseattributeoptions" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> <span class="tsd-flag ts-flagPrivate">Private</span> parse<wbr>Attribute<wbr>Options</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-static">
+						<li class="tsd-signature tsd-kind-icon">parse<wbr>Attribute<wbr>Options<span class="tsd-signature-symbol">(</span>filename<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, attributes<span class="tsd-signature-symbol">?: </span><a href="_zowe_zos_files_for_zowe_sdk.zosfilesattributes.html" class="tsd-signature-type">ZosFilesAttributes</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Partial</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_zowe_zos_files_for_zowe_sdk.idownloadoptions.html" class="tsd-signature-type">IDownloadOptions</a><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.6.2/packages/zosfiles/src/methods/download/Download.ts#L832">@zowe/zos-files-for-zowe-sdk/src/methods/download/Download.ts:832</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>filename: <span class="tsd-signature-type">string</span></h5>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> attributes: <a href="_zowe_zos_files_for_zowe_sdk.zosfilesattributes.html" class="tsd-signature-type">ZosFilesAttributes</a></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Partial</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_zowe_zos_files_for_zowe_sdk.idownloadoptions.html" class="tsd-signature-type">IDownloadOptions</a><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-static">
+					<a name="ussdir" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> uss<wbr>Dir</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-static">
+						<li class="tsd-signature tsd-kind-icon">uss<wbr>Dir<span class="tsd-signature-symbol">(</span>session<span class="tsd-signature-symbol">: </span><a href="_zowe_imperative.abstractsession.html" class="tsd-signature-type">AbstractSession</a>, ussDirName<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, fileOptions<span class="tsd-signature-symbol">?: </span><a href="../interfaces/_zowe_zos_files_for_zowe_sdk.idownloadoptions.html" class="tsd-signature-type">IDownloadOptions</a>, listOptions<span class="tsd-signature-symbol">?: </span><a href="../interfaces/_zowe_zos_files_for_zowe_sdk.iusslistoptions.html" class="tsd-signature-type">IUSSListOptions</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_imperative.ipromisewithprogress.html#promise" class="tsd-signature-type">Promise</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_zowe_zos_files_for_zowe_sdk.izosfilesresponse.html" class="tsd-signature-type">IZosFilesResponse</a><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.6.2/packages/zosfiles/src/methods/download/Download.ts#L577">@zowe/zos-files-for-zowe-sdk/src/methods/download/Download.ts:577</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Retrieve USS file content and save it in your local workspace.</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>throws</dt>
+									<dd><p>{ImperativeError} USS file name must be set</p>
+									</dd>
+									<dt>throws</dt>
+									<dd><p>{Error} When the <a href="_zowe_core_for_zowe_sdk.zosmfrestclient.html">ZosmfRestClient</a> throws an error</p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>session: <a href="_zowe_imperative.abstractsession.html" class="tsd-signature-type">AbstractSession</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>z/OS MF connection info</p>
+									</div>
+								</li>
+								<li>
+									<h5>ussDirName: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>contains the USS file name</p>
+									</div>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> fileOptions: <a href="../interfaces/_zowe_zos_files_for_zowe_sdk.idownloadoptions.html" class="tsd-signature-type">IDownloadOptions</a><span class="tsd-signature-symbol"> = {}</span></h5>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> listOptions: <a href="../interfaces/_zowe_zos_files_for_zowe_sdk.iusslistoptions.html" class="tsd-signature-type">IUSSListOptions</a><span class="tsd-signature-symbol"> = {}</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="../interfaces/_zowe_imperative.ipromisewithprogress.html#promise" class="tsd-signature-type">Promise</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_zowe_zos_files_for_zowe_sdk.izosfilesresponse.html" class="tsd-signature-type">IZosFilesResponse</a><span class="tsd-signature-symbol">&gt;</span></h4>
+							<p>A response indicating the outcome of the API</p>
+						</li>
+					</ul>
+				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-static">
 					<a name="ussfile" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagStatic">Static</span> uss<wbr>File</h3>
@@ -234,7 +526,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.2.2/packages/zosfiles/src/methods/download/Download.ts#L290">@zowe/zos-files-for-zowe-sdk/src/methods/download/Download.ts:290</a></li>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.6.2/packages/zosfiles/src/methods/download/Download.ts#L500">@zowe/zos-files-for-zowe-sdk/src/methods/download/Download.ts:500</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -339,10 +631,34 @@
 								<a href="_zowe_zos_files_for_zowe_sdk.download.html" class="tsd-kind-icon">Download</a>
 								<ul>
 									<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-static">
+										<a href="_zowe_zos_files_for_zowe_sdk.download.html#alldatasets" class="tsd-kind-icon">all<wbr>Data<wbr>Sets</a>
+									</li>
+									<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-static">
 										<a href="_zowe_zos_files_for_zowe_sdk.download.html#allmembers" class="tsd-kind-icon">all<wbr>Members</a>
+									</li>
+									<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-static">
+										<a href="_zowe_zos_files_for_zowe_sdk.download.html#builddownloaddsmresponse" class="tsd-kind-icon">build<wbr>Download<wbr>Dsm<wbr>Response</a>
+									</li>
+									<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-static">
+										<a href="_zowe_zos_files_for_zowe_sdk.download.html#builddownloadussdirresponse" class="tsd-kind-icon">build<wbr>Download<wbr>Uss<wbr>Dir<wbr>Response</a>
 									</li>
 									<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-static">
 										<a href="_zowe_zos_files_for_zowe_sdk.download.html#dataset" class="tsd-kind-icon">data<wbr>Set</a>
+									</li>
+									<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-static">
+										<a href="_zowe_zos_files_for_zowe_sdk.download.html#emptydownloaddsmresult" class="tsd-kind-icon">empty<wbr>Download<wbr>Dsm<wbr>Result</a>
+									</li>
+									<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-static">
+										<a href="_zowe_zos_files_for_zowe_sdk.download.html#emptydownloadussdirresult" class="tsd-kind-icon">empty<wbr>Download<wbr>Uss<wbr>Dir<wbr>Result</a>
+									</li>
+									<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-static">
+										<a href="_zowe_zos_files_for_zowe_sdk.download.html#generateheadersbasedonoptions" class="tsd-kind-icon">generate<wbr>Headers<wbr>Based<wbr>OnOptions</a>
+									</li>
+									<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-static">
+										<a href="_zowe_zos_files_for_zowe_sdk.download.html#parseattributeoptions" class="tsd-kind-icon">parse<wbr>Attribute<wbr>Options</a>
+									</li>
+									<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-static">
+										<a href="_zowe_zos_files_for_zowe_sdk.download.html#ussdir" class="tsd-kind-icon">uss<wbr>Dir</a>
 									</li>
 									<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-static">
 										<a href="_zowe_zos_files_for_zowe_sdk.download.html#ussfile" class="tsd-kind-icon">uss<wbr>File</a>

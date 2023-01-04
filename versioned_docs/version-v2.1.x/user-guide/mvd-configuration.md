@@ -115,7 +115,7 @@ When running, the App Server will access the server's settings and read or modif
 - Group: Multiple users can be associated into one group, so that settings are shared among them.
 - User: When authenticated, users have their own settings and storage for the Apps that they use.
 
-These directories dictate where the Configuration Dataservice will store content. For more information, see the [Configuration Dataservice documentation](../extend-desktop/mvd-configdataservice.md)
+These directories dictate where the Configuration Dataservice will store content. For more information, see the [Configuration Dataservice documentation](../extend/extend-desktop/mvd-configdataservice.md)
 
 ### Old defaults
 Prior to Zowe release 2.0.0, the location of the configuration directories were initialized to be within the `<INSTANCE_DIR>` folder unless otherwise customized. 2.0.0 does have backwards compatibility for the existence of these directories, but `<INSTANCE_DIR>` folder no longer exists, so they should be migrated to match the ones specified in the Zowe configuration file.
@@ -464,7 +464,7 @@ By default, RBAC is disabled and all authenticated Zowe users can access all dat
     - To make an app unavailable, delete it from the list of objects.
     - To make an app available, copy an existing plugin object and specify the app's values in the new object. Identifier and version attributes are required.
 
-5. [Restart the app server](configure-zowe-server.md#stopping-the-zwesvstc-proc).
+5. [Restart the app server](start-zowe-zos.md).
 
 ### Controlling app access for individual users
 
@@ -502,7 +502,7 @@ By default, RBAC is disabled and all authenticated Zowe users can access all dat
     - Identifier and version attributes are required.
     - When a user logs in to the desktop, Zowe determines which apps they can see by concatenating the list of apps available to all users with the apps available to the individual user.
 
-6. [Restart the app server](configure-zowe-server.md#stopping-the-zwesvstc-proc).
+6. [Restart the app server](start-zowe-zos.md).
 
 
 ## Controlling access to dataservices

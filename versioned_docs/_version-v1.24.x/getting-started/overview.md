@@ -26,7 +26,6 @@ Zowe consists of the following components:
 - [Zowe Explorer](#zowe-explorer)
 - [Zowe Client Software Development Kits SDKs](#zowe-client-software-development-kits-sdks)
 - [Zowe Launcher](#zowe-launcher)
-- [Zowe Mobile - Incubator](#zowe-mobile---incubator)
 - [ZEBRA (Zowe Embedded Browser for RMF/SMF and APIs) - Incubator](#zebra-zowe-embedded-browser-for-rmfsmf-and-apis---incubator)
 
 ### Zowe Application Framework
@@ -66,7 +65,7 @@ The Zowe Application Framework consists of the following components:
 
 ### API Mediation Layer
 
-Provides a gateway that acts as a reverse proxy for z/OS services, together with a catalog of REST APIs and a dynamic discovery capability. Base Zowe provides core services for working with MVS Data Sets, JES, as well as working with z/OSMF REST APIs.  The API Mediation Layer also provides a framework for [Single Sign On (SSO)](../extend/extend-apiml/api-mediation-sso.html#zowe-api-mediation-layer-single-sign-on-overview).
+Provides a gateway that acts as a reverse proxy for z/OS services, together with a catalog of REST APIs and a dynamic discovery capability. Base Zowe provides core services for working with MVS Data Sets, JES, as well as working with z/OSMF REST APIs.  The API Mediation Layer also provides a framework for [Single Sign On (SSO)](../extend/extend-apiml/api-mediation-sso#zowe-api-mediation-layer-single-sign-on-overview).
 
 <details>
 <summary> Learn more </summary>
@@ -157,7 +156,7 @@ With Zowe CLI, you can interact with z/OS remotely in the following ways:
 - **Produce responses as JSON documents:**
     Return data in JSON format on request for consumption in other programming languages.
 
-For detailed information about the available functionality in Zowe CLI, see [Zowe CLI Command Groups](../user-guide/cli-usingcli.html#understanding-core-command-groups).
+For detailed information about the available functionality in Zowe CLI, see [Zowe CLI Command Groups](../user-guide/cli-usingcli#understanding-core-command-groups).
 
 For information about extending the functionality of Zowe CLI by installing plug-ins, see [Extending Zowe CLI](../user-guide/cli-extending.md).
 
@@ -196,12 +195,6 @@ Provides an advanced launcher for Zowe z/OS server components in a high availabi
 
 - Stopping the Zowe server components using the `STOP` (or `P`) operator command
 - Stopping and starting specific server components without restarting the entire Zowe instance using `MODIFY` (or `F`) operator command
-
-### Zowe Mobile - Incubator
-
-Lets you interact with your Zowe instance running on the mainframe from your mobile. 
-
-For more information, see [Information roadmap for Zowe Mobile](user-roadmap-zowe-mobile.md).
 
 ### ZEBRA (Zowe Embedded Browser for RMF/SMF and APIs) - Incubator 
 

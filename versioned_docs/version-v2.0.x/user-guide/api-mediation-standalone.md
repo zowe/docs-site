@@ -15,4 +15,3 @@ Once Zowe is installed, use the following procedure to limit which components st
 2. Add the property ZWE_LAUNCH_COMPONENTS at the end of the instance.env file and set `discovery,gateway,api-catalog`
 3. Restart Zowe&trade.   
 
-To learn more about the related section of the environment file, see [Creating and configuring the Zowe instance directory](configure-instance-directory.md#component-groups). We recommend you open this page in a new tab.

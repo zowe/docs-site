@@ -4,7 +4,7 @@
 
 This topic describes the runtime lifecycle of Zowe core components and how an offering that provides a Zowe extension can set up runtime lifecycle for their component.  
 
-The Zowe UNIX System Services (USS) components are run as part of the started task `ZWESLSTC`. For more information, see [Starting Zowe from a USS shell](../user-guide/configure-zowe-server.md#option-1-starting-zowe-from-a-uss-shell). There are two key USS directories that play different roles when launching Zowe.  
+The Zowe UNIX System Services (USS) components are run as part of the started task `ZWESLSTC`. There are two key USS directories that play different roles when launching Zowe.  
 
 - The Zowe runtime directory `<RUNTIME_DIR>` that contains the executable files is an immutable set of directories and files that are replaced each time a new release is applied.  The initial release or an upgrade is installed either with UNIX shell scripts (see [Installing Zowe runtime from a convenience build](../user-guide/install-zowe-zos-convenience-build.md)), or SMP/E where the runtime directory is laid down initially as FMID AZWE002 and then upgraded through rollup PTF builds (see [Installing Zowe SMP/E](../user-guide/install-zowe-smpe.md)).  The Zowe runtime directory is not altered during operation of Zowe, so no data is written to it and no customization is performed on its contents.  **Important**, any customizations to the original Zowe runtime directory are not recommended. This may include installing extensions to this directory, putting your `zowe.yaml` or Zowe workspace into this directory, or changing any of the files in it, etc.
 

@@ -3,8 +3,8 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>List | Zowe Node.js SDK - v2.1.0</title>
-	<meta name="description" content="Documentation for Zowe Node.js SDK - v2.1.0">
+	<title>List | Zowe Node.js SDK - v2.4.0</title>
+	<meta name="description" content="Documentation for Zowe Node.js SDK - v2.4.0">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
 </head>
@@ -22,7 +22,7 @@
 						<li class="state loading">Preparing search index...</li>
 						<li class="state failure">The search index is not available</li>
 					</ul>
-					<a href="../index.html" class="title">Zowe Node.js SDK - v2.1.0</a>
+					<a href="../index.html" class="title">Zowe Node.js SDK - v2.4.0</a>
 				</div>
 				<div class="table-cell" id="tsd-widgets">
 					<div id="tsd-filter">
@@ -97,6 +97,7 @@
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><a href="_zowe_zos_files_for_zowe_sdk.list.html#allmembers" class="tsd-kind-icon">all<wbr>Members</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><a href="_zowe_zos_files_for_zowe_sdk.list.html#dataset" class="tsd-kind-icon">data<wbr>Set</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><a href="_zowe_zos_files_for_zowe_sdk.list.html#datasetsmatchingpattern" class="tsd-kind-icon">data<wbr>Sets<wbr>Matching<wbr>Pattern</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><a href="_zowe_zos_files_for_zowe_sdk.list.html#filelist" class="tsd-kind-icon">file<wbr>List</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><a href="_zowe_zos_files_for_zowe_sdk.list.html#fs" class="tsd-kind-icon">fs</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><a href="_zowe_zos_files_for_zowe_sdk.list.html#fswithpath" class="tsd-kind-icon">fs<wbr>With<wbr>Path</a></li>
@@ -117,7 +118,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.2.2/packages/zosfiles/src/methods/list/List.ts#L290">@zowe/zos-files-for-zowe-sdk/src/methods/list/List.ts:290</a></li>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.6.2/packages/zosfiles/src/methods/list/List.ts#L423">@zowe/zos-files-for-zowe-sdk/src/methods/list/List.ts:423</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">any</span></h4>
@@ -137,7 +138,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.2.2/packages/zosfiles/src/methods/list/List.ts#L42">@zowe/zos-files-for-zowe-sdk/src/methods/list/List.ts:42</a></li>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.6.2/packages/zosfiles/src/methods/list/List.ts#L45">@zowe/zos-files-for-zowe-sdk/src/methods/list/List.ts:45</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -189,7 +190,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.2.2/packages/zosfiles/src/methods/list/List.ts#L95">@zowe/zos-files-for-zowe-sdk/src/methods/list/List.ts:95</a></li>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.6.2/packages/zosfiles/src/methods/list/List.ts#L98">@zowe/zos-files-for-zowe-sdk/src/methods/list/List.ts:98</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -229,6 +230,58 @@
 					</ul>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-static">
+					<a name="datasetsmatchingpattern" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> data<wbr>Sets<wbr>Matching<wbr>Pattern</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-static">
+						<li class="tsd-signature tsd-kind-icon">data<wbr>Sets<wbr>Matching<wbr>Pattern<span class="tsd-signature-symbol">(</span>session<span class="tsd-signature-symbol">: </span><a href="_zowe_imperative.abstractsession.html" class="tsd-signature-type">AbstractSession</a>, patterns<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span>, options<span class="tsd-signature-symbol">?: </span><a href="../interfaces/_zowe_zos_files_for_zowe_sdk.idsmlistoptions.html" class="tsd-signature-type">IDsmListOptions</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_imperative.ipromisewithprogress.html#promise" class="tsd-signature-type">Promise</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_zowe_zos_files_for_zowe_sdk.izosfilesresponse.html" class="tsd-signature-type">IZosFilesResponse</a><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.6.2/packages/zosfiles/src/methods/list/List.ts#L336">@zowe/zos-files-for-zowe-sdk/src/methods/list/List.ts:336</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>List data sets that match a DSLEVEL pattern</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>example</dt>
+									<dd><pre><code class="language-typescript">
+<span class="hljs-comment">// List all &quot;PS&quot; and &quot;PO&quot; datasets that match the pattern &quot;USER.**.DATASET&quot;</span>
+<span class="hljs-keyword">await</span> List.dataSetsMatchingPattern(session, <span class="hljs-string">&quot;USER.**.DATASET&quot;</span>);
+</code></pre>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>session: <a href="_zowe_imperative.abstractsession.html" class="tsd-signature-type">AbstractSession</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>z/OSMF connection info</p>
+									</div>
+								</li>
+								<li>
+									<h5>patterns: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Data set patterns to include</p>
+									</div>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> options: <a href="../interfaces/_zowe_zos_files_for_zowe_sdk.idsmlistoptions.html" class="tsd-signature-type">IDsmListOptions</a><span class="tsd-signature-symbol"> = {}</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Contains options for the z/OSMF request</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="../interfaces/_zowe_imperative.ipromisewithprogress.html#promise" class="tsd-signature-type">Promise</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_zowe_zos_files_for_zowe_sdk.izosfilesresponse.html" class="tsd-signature-type">IZosFilesResponse</a><span class="tsd-signature-symbol">&gt;</span></h4>
+							<p>List of z/OSMF list responses for each data set</p>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-static">
 					<a name="filelist" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagStatic">Static</span> file<wbr>List</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-static">
@@ -238,7 +291,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.2.2/packages/zosfiles/src/methods/list/List.ts#L165">@zowe/zos-files-for-zowe-sdk/src/methods/list/List.ts:165</a></li>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.6.2/packages/zosfiles/src/methods/list/List.ts#L168">@zowe/zos-files-for-zowe-sdk/src/methods/list/List.ts:168</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -287,7 +340,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.2.2/packages/zosfiles/src/methods/list/List.ts#L209">@zowe/zos-files-for-zowe-sdk/src/methods/list/List.ts:209</a></li>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.6.2/packages/zosfiles/src/methods/list/List.ts#L241">@zowe/zos-files-for-zowe-sdk/src/methods/list/List.ts:241</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -330,7 +383,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.2.2/packages/zosfiles/src/methods/list/List.ts#L257">@zowe/zos-files-for-zowe-sdk/src/methods/list/List.ts:257</a></li>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.6.2/packages/zosfiles/src/methods/list/List.ts#L289">@zowe/zos-files-for-zowe-sdk/src/methods/list/List.ts:289</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -436,6 +489,9 @@
 									</li>
 									<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-static">
 										<a href="_zowe_zos_files_for_zowe_sdk.list.html#dataset" class="tsd-kind-icon">data<wbr>Set</a>
+									</li>
+									<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-static">
+										<a href="_zowe_zos_files_for_zowe_sdk.list.html#datasetsmatchingpattern" class="tsd-kind-icon">data<wbr>Sets<wbr>Matching<wbr>Pattern</a>
 									</li>
 									<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-static">
 										<a href="_zowe_zos_files_for_zowe_sdk.list.html#filelist" class="tsd-kind-icon">file<wbr>List</a>

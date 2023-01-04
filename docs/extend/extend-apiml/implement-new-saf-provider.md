@@ -96,11 +96,11 @@ You can generate and verify an existing SAF token by using an implementation of 
 
 [SafRestAuthenticationService](https://github.com/zowe/api-layer/blob/master/gateway-service/src/main/java/org/zowe/apiml/gateway/security/service/saf/SafRestAuthenticationService.java) is an example of the SAF IDT provider implementation which uses REST as a method of communication.
 
-To use `SafRestAuthenticationService` ensure that `apiml.security.saf.provider` is set to `rest`. (This is the default value)
+To use `SafRestAuthenticationService` ensure that `ZWE_configs_apiml_security_saf_provider` is set to `rest`. (This is the default value)
 Set the following environment parameters in `zowe.yaml`:
 
-* `ZWE_configs_apiml_security_authorization_endpoint_url=https://${ZWE_haInstance_hostname}:${GATEWAY_PORT}/zss/api/v1/saf/authenticate`
-* `ZWE_configs_apiml_security_authorization_endpoint_url=https://${ZWE_haInstance_hostname}:${GATEWAY_PORT}/zss/api/v1/saf/verify`
+* `ZWE_configs_apiml_security_saf_urls_authenticate=https://${ZWE_haInstance_hostname}:${GATEWAY_PORT}/zss/api/v1/saf/authenticate`
+* `ZWE_configs_apiml_security_saf_urls_verify=https://${ZWE_haInstance_hostname}:${GATEWAY_PORT}/zss/api/v1/saf/verify`
 
 These ZSS endpoints are used by the `SafRestAuthenticationService` to generate and validate the SAF token.
 

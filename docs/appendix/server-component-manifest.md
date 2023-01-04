@@ -96,7 +96,7 @@ The manifest file contains the following properties:
   
       Defines the path to the static definition file. This file is supposed to be a template.
 
-    - **`basePackage`**
+  * **`basePackage`**
 
         Defines the base package name of the extension. It is used to notify the extended service of the location for component scan.
 
@@ -125,7 +125,7 @@ The manifest file contains the following properties:
 
   * **`path`**
     
-    This points to the directory where the load modules are housed for a plugin, for example `/zisServer`. If there is more than 1 plugin to a single manifest (say for a product family of multiple plugins), then multiple path variables can be contained within the manifest denoted by individual folders, for example `yourplugin1/zisServer`. The parameters for the Zowe parmlib are assumed to be in `<PATH>/samplib`. The names of the plugin executables are assumed to be in `<PATH>/loadlib`.
+    This points to the directory where the load modules are housed for a plugin, for example `zisServer`. If there is more than 1 plugin to a single manifest (say for a product family of multiple plugins), then multiple path variables can be contained within the manifest denoted by individual folders, for example `yourplugin1/zisServer`. The parameters for the Zowe parmlib are assumed to be in `<PATH>/samplib`. The names of the plugin executables are assumed to be in `<PATH>/loadlib`.
 
   For example,
   
@@ -133,10 +133,10 @@ The manifest file contains the following properties:
   zisPlugins:
     -
       id: yourplugin1
-      path: /proj/yourplugin-1/zisServer
+      path: yourplugin-1/zisServer
     -
       id: yourplugin2
-      path: /proj/yourplugin2/zisServer
+      path: yourplugin2/zisServer
   ```
 
 - **`configs`**

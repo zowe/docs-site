@@ -50,4 +50,4 @@ For more information, see the [Caching service documentation](../../extend/exten
 
 ## Metrics service (Techincal Preview)
 
-The Metrics service aims to provide a web user interface to visualize requests to API Mediation Layer services. The Metrics service is currently in technical preview and is not ready for production. At this time, only core API Mediation Layer services integrate with the Metrics service. Metrics are not displayed for onboarded services. For more information, see the [Metrics service documentation](../../api-mediation-metrics-service.md).
+The Metrics service aims to provide a web user interface to visualize requests to API Mediation Layer services. The Metrics service is currently in technical preview and is not ready for production. At this time, only core API Mediation Layer services integrate with the Metrics service. Metrics are not displayed for onboarded services. For more information, see the [Metrics service documentation](../api-mediation-metrics-service.md).

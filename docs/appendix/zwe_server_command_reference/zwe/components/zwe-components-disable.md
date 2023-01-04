@@ -24,18 +24,19 @@ zwe components disable --component-name gateway --ha-instance lpar1
 
 Full name|Alias|Type|Required|Help message
 |---|---|---|---|---
---component-name,--component|-o|string|yes||Component name to be disabled.
---ha-instance|-i|string|no||Zowe high availability instance ID from zowe.yaml.
+--component-name,--component|-o|string|yes|Component name to be disabled.
+--ha-instance|-i|string|no|Zowe high availability instance ID from zowe.yaml.
 ### Inherited from parent command
 
 Full name|Alias|Type|Required|Help message
 |---|---|---|---|---
---help|-h|boolean|no||Display this help.
---debug,--verbose|-v|boolean|no||Enable verbose mode.
---trace|-vv|boolean|no||Enable trace level debug mode.
---silent|-s|boolean|no||Do not display messages to standard output.
---log-dir,--log|-l|string|no||Write logs to this directory.
---config|-c|string|no||Path to Zowe configuration zowe.yaml file.
+--help|-h|boolean|no|Display this help.
+--debug,--verbose|-v|boolean|no|Enable verbose mode.
+--trace|-vv|boolean|no|Enable trace level debug mode.
+--silent|-s|boolean|no|Do not display messages to standard output.
+--log-dir,--log|-l|string|no|Write logs to this directory.
+--config|-c|string|no|Path to Zowe configuration zowe.yaml file.
+--configmgr||boolean|no|Enable use of configmgr capabilities.
 
 
 ## Errors
@@ -77,3 +78,8 @@ ZWEL0139E|139|Failed to create directory %s.
 ZWEL0140E|140|Failed to translate Zowe configuration (%s).
 ZWEL0142E|142|Failed to refresh APIML static registrations.
 ZWEL0172E||Component %s has %s defined but the file is missing.
+ZWEL0200E||Failed to copy USS file %s to MVS data set %s.
+ZWEL0201E||File %s does not exist.
+ZWEL0202E||Unable to find samplib key for %s.
+ZWEL0203E||Env value in key-value pair %s has not been defined.
+ZWEL0316E||Command requires zowe.useConfigmgr=true to use.

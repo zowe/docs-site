@@ -7,7 +7,7 @@
 <link rel="stylesheet" href="../css/docs.css">
 <article class="markdown-body">
 <h2><a href="zowe.html">zowe</a> › <a href="zowe_profiles.html">profiles</a> › <a href="zowe_profiles_create.html">create</a> › <a href="zowe_profiles_create_endevor-location-profile.html">endevor-location-profile</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
-<p>The CA Endevor SCM element location, where you specify your working environment, system and subsystem</p>
+<p>The Endevor element location, where you specify your working environment, system and subsystem</p>
 <h4>Usage</h4>
 <p>zowe profiles create endevor-location-profile &lt;profileName&gt; [options]</p>
 <h4>Positional Arguments</h4>
@@ -31,7 +31,7 @@
 <p><code>--environment</code>  | <code>--env</code> <em>(string)</em></p>
 <ul>
 <li>
-<p>The CA Endevor SCM environment where your project resides</p>
+<p>The Endevor environment where your project resides</p>
 <p>Default value: DEV</p>
 </li>
 </ul>
@@ -39,26 +39,26 @@
 <li>
 <p><code>--system</code>  | <code>--sys</code> <em>(string)</em></p>
 <ul>
-<li>The CA Endevor SCM system where the element resides</li>
+<li>The Endevor system where the element resides</li>
 </ul>
 </li>
 <li>
 <p><code>--subsystem</code>  | <code>--sub</code> <em>(string)</em></p>
 <ul>
-<li>The CA Endevor SCM subsystem where your element resides</li>
+<li>The Endevor subsystem where your element resides</li>
 </ul>
 </li>
 <li>
 <p><code>--type</code>  | <code>--typ</code> <em>(string)</em></p>
 <ul>
-<li>Name of the CA Endevor SCM element's type</li>
+<li>Name of the Endevor element's type</li>
 </ul>
 </li>
 <li>
 <p><code>--stage-number</code>  | <code>--sn</code> <em>(string)</em></p>
 <ul>
 <li>
-<p>The CA Endevor SCM stage where your project resides</p>
+<p>The Endevor stage where your project resides</p>
 <p>Allowed values: 1, 2</p>
 </li>
 </ul>
@@ -66,30 +66,21 @@
 <li>
 <p><code>--comment</code>  | <code>--com</code> <em>(string)</em></p>
 <ul>
-<li>The CA Endevor SCM comment you want to use when performing an action</li>
+<li>The Endevor comment you want to use when performing an action</li>
 </ul>
 </li>
 <li>
 <p><code>--ccid</code>  | <code>--cci</code> <em>(string)</em></p>
 <ul>
-<li>The CA Endevor SCM CCID you want to use when performing an action</li>
+<li>The Endevor CCID you want to use when performing an action</li>
 </ul>
 </li>
 <li>
 <p><code>--maxrc</code>  <em>(number)</em></p>
 <ul>
 <li>
-<p>The return code of CA Endevor SCM that defines a failed action</p>
-<p>Default value: 8</p>
-</li>
-</ul>
-</li>
-<li>
-<p><code>--override-signout</code>  | <code>--os</code> <em>(boolean)</em></p>
-<ul>
-<li>
-<p>Always override element signout, without having to specify the override signout option on each command</p>
-<p>Default value: false</p>
+<p>The return code of Endevor that defines a failed action</p>
+<p>Default value: 12</p>
 </li>
 </ul>
 </li>
@@ -109,13 +100,13 @@
 <h4>Examples</h4>
 <ul>
 <li>
-<p>Create a location profile called 'ndvrLoc' to work at CA Endevor SCM location ENV/1/SYS/SUBSYS, with elements of type COBOL, using CA Endevor SCM web services configuration ENDEVOR:</p>
+<p>Create a location profile called 'ndvrLoc' to work at Endevor location ENV/1/SYS/SUBSYS, with elements of type COBOL, using Endevor web services configuration ENDEVOR:</p>
 <ul>
 <li><code>zowe profiles create endevor-location-profile ndvrLoc --env ENV --sys SYS --sub SUBSYS --typ COBOL --sn 1 -i ENDEVOR</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe profiles create endevor-location-profile ndvrLoc --env ENV --sys SYS --sub SUBSYS --typ COBOL --sn 1 -i ENDEVOR">Copy</button></li>
 </ul>
 </li>
 <li>
-<p>Create a location profile called 'ndvrLoc2' to work at CA Endevor SCM location ENV/1/SYS/SUBSYS, using CCID 'CCID' and comment 'sample comment':</p>
+<p>Create a location profile called 'ndvrLoc2' to work at Endevor location ENV/1/SYS/SUBSYS, using CCID 'CCID' and comment 'sample comment':</p>
 <ul>
 <li><code>zowe profiles create endevor-location-profile ndvrLoc2 --env ENV --sys SYS --sub SUBSYS --sn 1 --com 'sample comment' --cci 'CCID'</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe profiles create endevor-location-profile ndvrLoc2 --env ENV --sys SYS --sub SUBSYS --sn 1 --com 'sample comment' --cci 'CCID'">Copy</button></li>
 </ul>

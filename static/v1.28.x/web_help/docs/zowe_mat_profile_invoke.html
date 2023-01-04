@@ -7,7 +7,7 @@
 <link rel="stylesheet" href="../css/docs.css">
 <article class="markdown-body">
 <h2><a href="zowe.html">zowe</a> › <a href="zowe_mat.html">mat</a> › <a href="zowe_mat_profile.html">profile</a> › <a href="zowe_mat_profile_invoke.html">invoke</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
-<p>Invoke a CA MAT monitor profile to start measurement.</p>
+<p>Invoke a MAT monitor profile to start measurement.</p>
 <h4>Usage</h4>
 <p>zowe mat profile invoke [options]</p>
 <h4>Required Options</h4>
@@ -15,7 +15,7 @@
 <li>
 <p><code>--profile</code>  <em>(string)</em></p>
 <ul>
-<li>Specifies the name of the profile in CA MAT that you invoke (e.g. PROFILE1). Values: 1 to 8 characters, a combination of alphanumeric and national characters (A-Z, 0-9, and @), the first character must be an alphabetic or @. The profile name must not contain characters # and $.</li>
+<li>Specifies the name of the profile in MAT that you invoke (e.g. PROFILE1). Values: 1 to 8 characters, a combination of alphanumeric and national characters (A-Z, 0-9, and @), the first character must be an alphabetic or @. The profile name must not contain characters # and $.</li>
 </ul>
 </li>
 <li>
@@ -36,7 +36,7 @@
 <li>
 <p><code>--mondsn</code>  <em>(string)</em></p>
 <ul>
-<li>Specifies the monitor data set name where CA MAT saves the measurement (e.g. DEMO.MAT.MONITOR). Values: data set name pattern, maximum 46 characters. If not specified, your default CA MAT monitor DSN pattern is applied.</li>
+<li>Specifies the monitor data set name where MAT saves the measurement (e.g. DEMO.MAT.MONITOR). Values: data set name pattern, maximum 46 characters. If not specified, your default MAT monitor DSN pattern is applied.</li>
 </ul>
 </li>
 <li>
@@ -54,7 +54,7 @@
 <li>
 <p><code>--listing</code>  <em>(boolean)</em></p>
 <ul>
-<li>Activates automated registration of Cobol, C/C++, and Assembler program listings through CA Endevor® footprints. After completion of the measurement that you invoke with the --listing parameter, the CA MAT Analyze plug-in for Zowe CLI automatically retrieves the program listing that is associated with the monitored job and registers the listing with CA MAT. A registered program listing enhances the analysis possibilities of the 'codeview histogram' command  the 'codeview histogram' command and enables you to inspect the source code statements that are associated with specific modules and CSECTs.</li>
+<li>Activates automated registration of Cobol, C/C++, and Assembler program listings through Endevor® footprints. After completion of the measurement that you invoke with the --listing parameter, the MAT Analyze plug-in for Zowe CLI automatically retrieves the program listing that is associated with the monitored job and registers the listing with MAT. A registered program listing enhances the analysis possibilities of the 'codeview histogram' command  the 'codeview histogram' command and enables you to inspect the source code statements that are associated with specific modules and CSECTs.</li>
 </ul>
 </li>
 </ul>
@@ -136,7 +136,7 @@
 <h4>Examples</h4>
 <ul>
 <li>
-<p>Invoke the PROFILE1 monitor profile to measure job JOB1 that runs on the AA31 system:</p>
+<p>Invoke the PROFILE1 monitor profile to measure job JOB1 that runs on the AA31 system :</p>
 <ul>
 <li><code>zowe mat profile invoke --profile PROFILE1 --jobname JOB1 --targsys AA31</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe mat profile invoke --profile PROFILE1 --jobname JOB1 --targsys AA31">Copy</button></li>
 </ul>

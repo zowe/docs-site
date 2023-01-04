@@ -39,7 +39,6 @@ Components to install and use |  Information roadmaps
 Zowe Application Framework, Zowe API Mediation Layer (these are installed as z/OS server components) |  [Information roadmap for Zowe Application Framework](user-roadmap-app-framework.md), [Information roadmap for Zowe API Mediation Layer](user-roadmap-apiml.md)
 Zowe CLI                      |  [Information roadmap for Zowe Explorer](user-roadmap-zowe-explorer.md)
 Zowe SDKs (under development) |  [Information roadmap for Zowe client SDKs](user-roadmap-client-sdk.md)
-Zowe Mobile (Incubator) | [Information roadmap for Zowe Mobile](user-roadmap-zowe-mobile.md)
 
 ## Getting involved
 

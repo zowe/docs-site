@@ -60,7 +60,7 @@ zowe daemon restart
 
 You **must** restart daemon mode under the following scenarios:
 
-- You changed the value of any of the following [Zowe CLI environment variables](../user-guide/cli-configuringcli.md):
+- You changed the value of any of the following [Zowe CLI environment variables](../user-guide/cli-configuringcli-ev.md):
   - `ZOWE_CLI_HOME`
   - `ZOWE_APP_LOG_LEVEL`
   - `ZOWE_IMPERATIVE_LOG_LEVEL`

@@ -53,7 +53,7 @@ The following definition of skill levels about Zowe Explorer helps you find the 
 
 > Zowe skill level: Advanced
 
-* [**Extend Zowe Explorer**](../user-guide/ze-extensions.md)
+* [**Extend Zowe Explorer**](../extend/extend-ze/ze-extensions)
 
    This page describes how to create an extension for Zowe Explorer to introduce more functionalities.
 

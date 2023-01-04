@@ -1,8 +1,8 @@
-# Configuring JCERACFS certificates in a key ring
+# Configuring JCERACFKS certificates in a key ring
 
 Zowe is able to work with certificates held in a **z/OS Keyring**.  
 
-The JCL member `.SZWESAMP(ZWEKRING)` contains the security commands to create a keyring named ``ZoweKeyring` and manage the certificate and certificate authoritie (CA) used by Zowe's servers to encrypt TLS communications.  The JCL contains commands for three z/OS security managers: RACF, TopSecret, and ACF/2.
+The JCL member `.SZWESAMP(ZWEKRING)` contains the security commands to create a keyring named `ZoweKeyring` and manage the certificate and certificate authoritie (CA) used by Zowe's servers to encrypt TLS communications.  The JCL contains commands for three z/OS security managers: RACF, TopSecret, and ACF/2.
 
 There are two ways to configure and submit `ZWEKRING`.
 
@@ -53,7 +53,7 @@ zowe
 
 The follow command output shows generation of a self signed JCERACFKS certificate using the default values.  Some detailed output messages have been omitted.
 
-When the command is run a customized JCL member name in created the `CUST.JCLLIB` data set.  The PDS name is defined in the `zowe.setup.dataset.jcllib` property.  In the sample below the PDS meember `WINCHJ.ZWEV2.CUST.JCLLIB(ZW101431)` is created that contains the security manager commands and then submitted as a job ID `ZWEKRING(JOB03054)`.  
+When the command is run a customized JCL member name in created the `CUST.JCLLIB` data set.  The PDS name is defined in the `zowe.setup.dataset.jcllib` property.  In the sample below the PDS meember `USER.ZWEV2.CUST.JCLLIB(ZW101431)` is created that contains the security manager commands and then submitted as a job ID `ZWEKRING(JOB03054)`.  
 
 ```
 #>zwe init certificate -c ./zowe.yaml --update-config

@@ -2,7 +2,7 @@
 
 Install Zowe&trade; CLI on your computer.
 
-If your role is that of a systems administrator or you are familiar with command-line tools and want to get started using Zowe CLI quickly, see [Zowe CLI quick start](../getting-started/cli-getting-started.md). You can learn about new CLI features in the [Release notes](../getting-started/summaryofchanges.md).
+If your role is that of a systems administrator or you are familiar with command-line tools and want to get started using Zowe CLI quickly, see [Zowe CLI quick start](../getting-started/cli-getting-started.md). You can learn about new CLI features in the [Release notes](../getting-started/release-notes/v2_0_0.md).
 
 After you install Zowe CLI and Zowe CLI plug-ins using your preferred installation method, see [Using CLI](../user-guide/cli-using-usingcli.md) to learn about how to connect Zowe CLI to the mainframe, create Zowe CLI profiles and team profiles, integrate Zowe CLI with API ML, enable daemon mode, and much, much more!
 ## Installation guidelines

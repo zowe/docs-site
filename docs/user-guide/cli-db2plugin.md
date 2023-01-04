@@ -151,57 +151,83 @@ If the utility `db2connectactivate` has not been executed against the Db2 databa
 
 ## Creating a user profile
 
-Before you start using the IBM Db2 plug-in, create a profile with details of the Db2 system you're connecting to.
+You create a DB2 profile to avoid entering your connection details each time that you issue a command. You can create multiple profiles and switch between them as needed. Use one of the following methods to create a profile:
 
-  - The Db2 server host name
-  - The Db2 server port number
-  - The database name (you can also use the location)
+- Create plug-in profiles using a configuration file: Specify your profile and connection details in the `zowe.config.json` configuration file.
 
-To get the Db2 system information, the following two methods can be used.
+- Create plug-in profiles using a command: Issue the `zowe profiles create` command to create the profile.
 
-- Issue the command `-DISPLAY DDF` in the Db2 SPUFI command on z/OS
+We recommend that you create profiles using the configuration file. We do not recommend using profile commands because we are removing them in a future major release.
 
-or
+### Creating plug-in profiles using a configuration file
 
-- View the JES spool for the MSTR job for the Db2 subsystem and search for the message `DSNL004I`. For example, for the database DI2E the JES job `DI2EMSTR` will have an entry with similar to:
-```
-DSNL004I  #DI2E DDF START COMPLETE  025        
-           LOCATION  DSNV102E                  
-           LU        GBIBMIYA.IYCYZDBE         
-           GENERICLU -NONE                     
-           DOMAIN    host.ip.address.com  
-           TCPPORT   40100                     
-           SECPORT   30100
-```
+When you issue various `zowe config` commands, such as `init`, `auto-init`, and `convert-profiles`, they create a `zowe.config.json` configuration file. When you install the DB2 plug-in, the commands create an entry for a `db2 profile` in your `zowe.config.json` file.
 
-The DOMAIN is used for the &lt;hostname&gt;, the TCPPORT for the &lt;port&gt; and the LOCATION for the &lt;database&gt; in the zowe create profile command.  
+Alternatively, you can create a db2 profile manually by adding a section that contains the configuration details to your `zowe.config.json` configuration file.
 
-In addition to the host, port and database you'll need
+1. Browse to the following directory: `C:\Users\<username>\.zowe`
 
-  - The user name
-  - The password
-  - If your Db2 systems use a secure connection, you can also
-    provide an SSL/TSL certificate file.
+2. Open the `zowe.config.json` configuration file using a text editor or IDE, such as Visual Studio Code or IntelliJ. 
 
-To create a db2 team profile in Zowe CLI, open the `zowe.config.json` file and specify the properties for the `port` and `database`:
+    **NOTE:** If the file does not exist, issue the following command to create the configuration file: `zowe config init -–gc`
 
-```
-"db2": {
-  "type": "db2",
-  "properties": {
-    "port": 0,
-    "database": ""
-  },
-  "secure": []
-}
-```
-### SQL0805N: Database BIND
+3. Add code to the "profiles" section as shown in the following example:
+    ```
+    "Your_db2_profile": {
+        "type": "db2",
+        "properties": {
+            "host": "Your_host_name",
+            "port": Your_port_number,
+            "database": “Your_database”
+        },
+        "secure": [
+            "user",
+            "password"
+        ]
+    }
+    ```
 
-To be able to run remote SQL commands against a Db2 database, you must invoke a `BIND` command against it. If the `BIND` command is not run, you will see an error that contains `SQL0805N` similar to the log below:
+4. Save the file
 
-```
-Command Error:
-DB2 ODBC Driver Error: [node-ibm_db] Error in ODBCConnection::QuerySync while executing query.Error Details:
-Error:    [IBM][CLI Driver][DB2] SQL0805N  Package "DSNV112E.NULLID.SYSSH200.5359534C564C3031" was not found.
-```
-If you receive this error, a user with `DBADM` authority must run the `BIND` command. This will typically be done by a Db2 System Programmer.  More information can be found in the [Db2 product documentation](https://medium.com/r/?url=https%3A%2F%2Fwww.ibm.com%2Fsupport%2Fproducthub%2Fdb2%2Fdocs%2Fcontent%2FSSEPGG_11.5.0%2Fcom.ibm.db2.luw.admin.cmd.doc%2Fdoc%2Fr0001935.html) and [The Bind process](https://medium.com/r/?url=https%3A%2F%2Fwww.ibm.com%2Fsupport%2Fknowledgecenter%2FSSEPEK_10.0.0%2Fapsg%2Fsrc%2Ftpc%2Fdb2z_bindprocess.html).
+You can now use your profile when you issue commands in the db2 command group.
+
+### Creating plug-in profiles using a command
+
+The following steps describe how to create a profile using the `zowe profiles create` command.
+
+1. Open a terminal window and issue the following command:
+    ```
+    zowe profiles create db2 <profile_name> –-host <host> --port <port> --user <user> --password <password> -–region-name <region>
+    ```
+
+   **`profile_name`:** 
+
+    Specifies a name for your profile.
+
+    **`host`:**
+
+    Specifies the host name for the instance.
+
+    **`user`:**
+
+    Specifies your user name to log in to the instance.
+
+    **`password`:**
+
+    Specifies your password to log in to the instance.
+
+    **`port`:**
+
+    Specifies the port number to connect to the instance.
+
+    **`database`:**
+
+    Specifies the database to use on the instance.
+
+    **Example:**
+    ```
+    zowe profiles create db2-profile database1 --host db2.zowe.org --port 25000 --user zowe --password zowepass --database zowedb
+    ```
+2. Press Enter. The result of the command displays as a success or failure message.
+
+You can now use your profile when you issue commands in the db2 command group.

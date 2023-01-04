@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>ca7 commands rmttrk</title>
+<link rel="stylesheet" href="../css/bundle-docs.css">
+<link rel="stylesheet" href="../css/docs.css">
+<article class="markdown-body">
+<h2><a href="zowe.html">zowe</a> › <a href="zowe_ca7.html">ca7</a> › <a href="zowe_ca7_commands.html">commands</a> › <a href="zowe_ca7_commands_rmttrk.html">rmttrk</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
+<p>The RMTTRK defines a dependency on a job in a remote CA 7 workload.</p>
+<h4>Usage</h4>
+<p>zowe ca7 commands rmttrk [options]</p>
+<h4>Required Options</h4>
+<ul>
+<li>
+<p><code>--remote-sched</code> | <code>--rs</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>remote-sched=AS1</p>
+<p>The name of publishing scheduler that issues this RMTTRK command.<br>
+Must be defined to receiving CA7ONL using XN.7.<br>
+This name is provided to the remote scheduler at subscription time.<br>
+Limists: 1-4 alphanumeric  characters</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--job-name</code> | <code>--jn</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>job-name=PAYJOB</p>
+<p>The name of job running in the publishing scheduler that invokes this command.<br>
+Limits: Autosys job names can be up to 64 characters.Valid characters are a-z, A-Z, 0-9, period (.),underscore (_), hyphen (-), colon (:), and pound (#).Do not include embedded spaces or tabs.</p>
+</li>
+</ul>
+</li>
+</ul>
+<h4>Options</h4>
+<ul>
+<li>
+<p><code>--status</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>status=FAILURE</p>
+<p>The status of job named on job-name.<br>
+The analogue of this service in AutoSys is change-status-job which supports these values:<br>
+FAILURE, INACTIVE, RUNNING, STARTING, SUCCESS, TERMINATED</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--date-time-status-changed</code> | <code>--dtsc</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>date-time-status-changed=2021-08-12T10:12:13.680000-04:00</p>
+<p>Date/time remote scheduler detected status change reported by the STATUS keyword.<br>
+Limits: ISO8601 character format.</p>
+</li>
+</ul>
+</li>
+</ul>
+<h4>CA7 Connection Options</h4>
+<ul>
+<li>
+<p><code>--host</code> | <code>-H</code> <em>(string)</em></p>
+<ul>
+<li>Host name of the CA7 API service that is running on the mainframe system.</li>
+</ul>
+</li>
+<li>
+<p><code>--port</code> | <code>-P</code> <em>(number)</em></p>
+<ul>
+<li>Port for the CA7 API service that is running on the mainframe system.</li>
+</ul>
+</li>
+<li>
+<p><code>--user</code> | <code>-u</code> <em>(string)</em></p>
+<ul>
+<li>User name for authenticating connections to the CA7 API service that is running on the mainframe system.</li>
+</ul>
+</li>
+<li>
+<p><code>--password</code> | <code>--pass</code> | <code>--pw</code> <em>(string)</em></p>
+<ul>
+<li>Password for authenticating connections to the CA7 API service that is running on the mainframe system.</li>
+</ul>
+</li>
+<li>
+<p><code>--base-path</code> | <code>--bp</code> <em>(string)</em></p>
+<ul>
+<li>The base path for your API mediation layer instance. Specify this option to prepend the base path to all resources when making REST requests. Do not specify this option if you are not using an API mediation layer.</li>
+</ul>
+</li>
+<li>
+<p><code>--protocol</code> | <code>-o</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>Specifies protocol to use for CA7 connection (http or https).</p>
+<p>Allowed values: http, https</p>
+</li>
+</ul>
+</li>
+</ul>
+<h4>Profile Options</h4>
+<ul>
+<li>
+<p><code>--ca7-profile</code> | <code>--ca7-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (ca7) profile to load for this command execution.</li>
+</ul>
+</li>
+<li>
+<p><code>--base-profile</code> | <code>--base-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (base) profile to load for this command execution.</li>
+</ul>
+</li>
+</ul>
+<h4>Base Connection Options</h4>
+<ul>
+<li>
+<p><code>--reject-unauthorized</code> | <code>--ru</code> <em>(boolean)</em></p>
+<ul>
+<li>
+<p>Reject self-signed certificates.</p>
+<p>Default value: true</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--token-type</code> | <code>--tt</code> <em>(string)</em></p>
+<ul>
+<li>The type of token to get and use for the API. Omit this option to use the default token type, which is provided by 'zowe auth login'.</li>
+</ul>
+</li>
+<li>
+<p><code>--token-value</code> | <code>--tv</code> <em>(string)</em></p>
+<ul>
+<li>The value of the token to pass to the API.</li>
+</ul>
+</li>
+<li>
+<p><code>--cert-file</code> <em>(local file path)</em></p>
+<ul>
+<li>The file path to a certificate file to use for authentication</li>
+</ul>
+</li>
+<li>
+<p><code>--cert-key-file</code> <em>(local file path)</em></p>
+<ul>
+<li>The file path to a certificate key file to use for authentication</li>
+</ul>
+</li>
+</ul>
+<h4>Examples</h4>
+<ul>
+<li>
+<p>Rmttrk job name JOB123 to CA 7:</p>
+<ul>
+<li><code>zowe ca7 commands rmttrk --jn JOB123</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe ca7 commands rmttrk --jn JOB123">Copy</button></li>
+</ul>
+</li>
+</ul>
+</article>
+<script src="../js/bundle-docs.js"></script>
+<script src="../js/docs.js"></script>

@@ -195,19 +195,19 @@ Allowed values: http, https</p>
 <h4>Examples</h4>
 <ul>
 <li>
-<p>Create a VSAM data set named &quot;<a href="http://SOME.DATA.SET.NAME">SOME.DATA.SET.NAME</a>&quot; using default values of INDEXED, 840 KB primary storage and 84 KB secondary storage:</p>
+<p>Create a VSAM data set named &quot;SOME.DATA.SET.NAME&quot; using default values of INDEXED, 840 KB primary storage and 84 KB secondary storage:</p>
 <ul>
 <li><code>zowe zos-files create data-set-vsam SOME.DATA.SET.NAME</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe zos-files create data-set-vsam SOME.DATA.SET.NAME">Copy</button></li>
 </ul>
 </li>
 <li>
-<p>Create a 5 MB LINEAR VSAM data set named &quot;<a href="http://SOME.DATA.SET.NAME">SOME.DATA.SET.NAME</a>&quot; with 1 MB of secondary space. Show the properties of the data set when it is created:</p>
+<p>Create a 5 MB LINEAR VSAM data set named &quot;SOME.DATA.SET.NAME&quot; with 1 MB of secondary space. Show the properties of the data set when it is created:</p>
 <ul>
 <li><code>zowe zos-files create data-set-vsam SOME.DATA.SET.NAME --data-set-organization LINEAR --size 5MB --secondary-space 1 --show-attributes</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe zos-files create data-set-vsam SOME.DATA.SET.NAME --data-set-organization LINEAR --size 5MB --secondary-space 1 --show-attributes">Copy</button></li>
 </ul>
 </li>
 <li>
-<p>Create a VSAM data set named &quot;<a href="http://SOME.DATA.SET.NAME">SOME.DATA.SET.NAME</a>&quot;, which is retained for 100 days:</p>
+<p>Create a VSAM data set named &quot;SOME.DATA.SET.NAME&quot;, which is retained for 100 days:</p>
 <ul>
 <li><code>zowe zos-files create data-set-vsam SOME.DATA.SET.NAME --retain-for 100 </code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe zos-files create data-set-vsam SOME.DATA.SET.NAME --retain-for 100 ">Copy</button></li>
 </ul>

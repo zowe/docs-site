@@ -4,26 +4,27 @@ Before installing Zowe&trade; z/OS components, ensure that your z/OS environment
 
 All Zowe server components can be installed on a z/OS environment, while some can alternatively be installed on Linux or zLinux via Docker. The components provide a number of services that are accessed through a web browser such as an API catalog and a web desktop.  
 
-- [z/OS system requirements](#zos-system-requirements)
-  - [z/OS](#zos)
-  - [Node.js](#nodejs)
-  - [Java](#java)
-  - [z/OSMF (Optional)](#zosmf-optional)
-- [User ID requirements](#user-id-requirements)
-  - [ZWESVUSR](#zwesvusr)
-  - [ZWESIUSR](#zwesiusr)
-  - [ZWEADMIN](#zweadmin)
-  - [zowe_user](#zowe_user)
-- [Network requirements](#network-requirements)
-- [Zowe Containers requirements](#zowe-containers-requirements)
-- [Zowe Desktop requirements (client PC)](#zowe-desktop-requirements-client-pc)
-- [Feature requirements](#feature-requirements)
-  - [Multi-Factor Authentication MFA](#multi-factor-authentication-mfa)
-  - [Single Sign-On SSO](#single-sign-on-sso)
-- [Memory requirements](#memory-requirements)
+- [System requirements](#system-requirements)
+  - [z/OS system requirements](#zos-system-requirements)
+    - [z/OS](#zos)
+    - [Node.js](#nodejs)
+    - [Java](#java)
+    - [z/OSMF (Optional)](#zosmf-optional)
+  - [User ID requirements](#user-id-requirements)
+    - [ZWESVUSR](#zwesvusr)
+    - [ZWESIUSR](#zwesiusr)
+    - [ZWEADMIN](#zweadmin)
+    - [zowe_user](#zowe_user)
+  - [Network requirements](#network-requirements)
+  - [Zowe Containers requirements](#zowe-containers-requirements)
+  - [Zowe Desktop requirements (client PC)](#zowe-desktop-requirements-client-pc)
+  - [Feature requirements](#feature-requirements)
+    - [Multi-Factor Authentication (MFA)](#multi-factor-authentication-mfa)
+    - [Single Sign-On (SSO)](#single-sign-on-sso)
+  - [Memory requirements](#memory-requirements)
 ## z/OS system requirements
 
-Be sure your z/OS system meets the following prerequisites.
+Be sure your z/OS system meets the following prerequisites:
 
 ### z/OS
 
@@ -43,11 +44,11 @@ Be sure your z/OS system meets the following prerequisites.
 
 ### Node.js
 
-- Node.js v12.x, v14.x (except v14.17.2), or v16.x
+- Node.js v14.x (except v14.17.2), or v16.x
 
   Node is not included with z/OS so must be installed separately.  To install Node.js on z/OS, follow the instructions in [Installing Node.js on z/OS](install-nodejs-zos.md).
   
-  **Note:** If you are a software vendor building extensions for Zowe, when using Node.js v12.x or later, it is highly recommended that plug-ins used are tagged. For more information, see [Tagging on z/OS](../extend/extend-desktop/mvd-buildingplugins.md#tagging-plugin-files-on-z-os).
+  **Note:** If you are a software vendor building extensions for Zowe, when using Node.js v14.x or later, it is highly recommended that plug-ins used are tagged. For more information, see [Tagging on z/OS](../extend/extend-desktop/mvd-buildingplugins.md#tagging-plugin-files-on-z-os).
 
 ### Java 
 
@@ -83,14 +84,15 @@ The task starts a USS environment using `BPXBATSL` that executes the core Zowe D
 
 | Class  | ID     | Access |  Reason |
 |--------|--------|--------|---------|
-
 | CSFSERV | `Multiple` | READ | To generate symmetric keys using ICSF that is used by [Zowe Desktop cookies](./configure-zos-system.md#configure-an-icsf-cryptographic-services-environment). The list of IDs to enable will include `CSF1TRD` , `CSF1TRC` , `CSF1SKE` , `CSF1SKD`. The full list of IDs is described in the z/OS Cryptographic Services user guide for your z/OS release level: [2.2](https://www.ibm.com/docs/en/zos/2.2.0?topic=ssl-racf-csfserv-resource-requirements), [2.3](https://www.ibm.com/docs/en/zos/2.3.0?topic=ssl-racf-csfserv-resource-requirements), [2.4](https://www.ibm.com/docs/en/zos/2.4.0?topic=ssl-racf-csfserv-resource-requirements) and [2.5](https://www.ibm.com/docs/en/zos/2.5.0?topic=ssl-racf-csfserv-resource-requirements). |
 | FACILITY | `ZWES.IS` | READ | To allow Zowe ZWESVSTC processes to access the Zowe ZIS cross memory server |
 | FACILITY | `BPX.SERVER` + `BPX.DAEMON` | UPDATE | To allow the Zowe Desktop ZLUX server to run code on behalf of the API requester's TSO user ID. For more information, see [Security Environment Switching](./configure-zos-system.md#configure-security-environment-switching). |
 | FACILITY | `IRR.RUSERMAP` | READ | To allow Zowe to [map an X.509 client certificate to a z/OS identity](./configure-zos-system.md#configure-main-zowe-server-to-use-identity-mapping) | 
 | FACILITY | `BPX.JOBNAME` | READ | To allow z/OS address spaces for unix processes to be renamed for [ease of identification](./configure-zos-system.md#configure-address-space-job-naming) |
 | FACILITY | `IRR.RADMIN.LISTUSER` | READ | To allow Zowe to obtain information about OMVS segment of the user profile using `LISTUSER` TSO command |
-| APPL     | 'OMVSAPPL' | READ | **Optional** To allow Zowe Desktop vendor extensions the ability to use single-sign on.  
+| FACILITY | `IRR.RAUDITX` | READ | **Optional** To allow API Mediation Layer to issue SMF 83 records about activity of Personal Access Tokens. [See here for more info](./api-mediation/api-mediation-smf) |
+| APPL     | 'OMVSAPPL' | READ | **Optional** To allow Zowe Desktop vendor extensions the ability to use single-sign on.  |
+
 
 ### ZWESIUSR
 
@@ -156,6 +158,8 @@ Zowe has several optional features that have additional prerequisites as follows
 
 Multi-factor authentication is supported for several components, such as the Desktop and API Mediation Layer.
 Multi-factor authentication is provided by third-party products which Zowe is compatible with. The following are known to work:
+
+- [CA Advanced Authentication Mainframe](https://techdocs.broadcom.com/us/en/ca-mainframe-software/security/ca-advanced-authentication-mainframe/2-0.html)
 - [IBM Z Multi-Factor Authentication](https://www.ibm.com/us-en/marketplace/ibm-multifactor-authentication-for-zos).
 
 **Note:** To support the multi-factor authentication, it is necessary to apply z/OSMF APAR  [PH39582](https://www.ibm.com/support/pages/apar/PH39582). 
@@ -166,7 +170,7 @@ For information on using MFA in Zowe, see [Multi-Factor Authentication](mvd-conf
 
 ### Single Sign-On (SSO)
 
-Zowe has an SSO scheme with the goal that each time you use multiple Zowe components you should only be prompted to login once.
+Zowe has an SSO scheme with the goal that each time you use multiple Zowe components you should only be prompted to login once. 
 
 Requirements:
 
@@ -183,5 +187,3 @@ Discovery service | 256MB
 API Catalog | 512MB
 Metrics service | 512MB
 Caching service | 512MB
-
-- (Optional, recommended) PKCS#11 token setup is required when using ZSS, the Desktop, and Application Framework with SSO. See [Creating a PKCS#11 Token](configure-certificates-keystore.md#using-web-tokens-for-sso-on-zlux-and-zss) for more information.

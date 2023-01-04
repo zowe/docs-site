@@ -19,12 +19,6 @@
 </ul>
 </li>
 <li>
-<p><code>--connection</code>  <em>(string)</em></p>
-<ul>
-<li>Endevor connection name.</li>
-</ul>
-</li>
-<li>
 <p><code>--endevor-instance</code>  | <code>--endevori</code> <em>(string)</em></p>
 <ul>
 <li>The CA Endevor Web Services dataSource name.</li>
@@ -40,18 +34,6 @@
 <p><code>--endevor-subsystem</code>  | <code>--endevorsub</code> <em>(string)</em></p>
 <ul>
 <li>The CA Endevor subsystem where your project resides.</li>
-</ul>
-</li>
-<li>
-<p><code>--system-alias</code>  <em>(string)</em></p>
-<ul>
-<li>The alias of CA Endevor system.</li>
-</ul>
-</li>
-<li>
-<p><code>--subsystem-alias</code>  <em>(string)</em></p>
-<ul>
-<li>The alias of CA Endevor subsystem.</li>
 </ul>
 </li>
 <li>
@@ -88,12 +70,6 @@
 <p><code>--endevor-stage-number</code>  | <code>--endevorsn</code> <em>(string)</em></p>
 <ul>
 <li>The CA Endevor stage where your project resides (only for read only mappings).</li>
-</ul>
-</li>
-<li>
-<p><code>--type-filter</code>  <em>(string)</em></p>
-<ul>
-<li>Type filter</li>
 </ul>
 </li>
 <li>
@@ -264,12 +240,6 @@
 <p>Create the Git-Endevor mapping 'MY-CONTEXT / MY-MAPPING' using the default EBG and Endevor profile:</p>
 <ul>
 <li><code>zowe endevor-bridge-for-git mapping create --remote-url https://git-server-enterprise.com/my-context/my-mapping.git --endevor-instance INSTANCE --endevor-environment ENVNAME --endevor-system SYSNAME --endevor-subsystem SUBNAME </code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe endevor-bridge-for-git mapping create --remote-url https://git-server-enterprise.com/my-context/my-mapping.git --endevor-instance INSTANCE --endevor-environment ENVNAME --endevor-system SYSNAME --endevor-subsystem SUBNAME ">Copy</button></li>
-</ul>
-</li>
-<li>
-<p>Create the Git-Endevor mapping 'MY-CONTEXT / MY-MAPPING' using the default EBG and Endevor profile:</p>
-<ul>
-<li><code>zowe endevor-bridge-for-git mapping create --remote-url https://git-server-enterprise.com/my-context/my-mapping.git --connection endevor-connection-name --endevor-environment ENVNAME --endevor-system SYSNAME --endevor-subsystem SUBNAME </code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe endevor-bridge-for-git mapping create --remote-url https://git-server-enterprise.com/my-context/my-mapping.git --connection endevor-connection-name --endevor-environment ENVNAME --endevor-system SYSNAME --endevor-subsystem SUBNAME ">Copy</button></li>
 </ul>
 </li>
 <li>

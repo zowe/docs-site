@@ -550,7 +550,7 @@ where:
        This value specifies that a service accepts PassTickets in the Authorization header of the HTTP requests using the basic authentication scheme.
        It is necessary to provide a service APPLID in `authentication.applid` parameter.
         
-       For more information, see [Enabling PassTicket creation for API Services that Accept PassTickets](api-mediation-passtickets.md)
+       For more information, see [Enabling PassTicket creation for API Services that Accept PassTickets](./api-mediation-passtickets)
      
     * **zosmf**
      
@@ -561,9 +561,7 @@ where:
   
     * **safIdt**
 
-       This value specifies that the application recognizes the SAF IDT scheme and fills the `X-SAF-Token` header with the token produced by the Saf IDT provider implementation.
-  
-       For more information, see [SAF IDT provider](implement-new-saf-provider.md)
+       This value specifies that the application recognizes the SAF IDT scheme and fills the `X-SAF-Token` header with the token produced by the Saf IDT provider implementation. For more information, see [SAF IDT provider](./implement-new-saf-provider).
 
     * **x509**
 

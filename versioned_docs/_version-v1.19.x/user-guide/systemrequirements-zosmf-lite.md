@@ -168,11 +168,11 @@ In most cases, you can run the IZUNUSEC security job without modification. To ve
 
 #### Procedure
 
-1.	If you run z/OS V2R2 or V2R3, download job IZUNUSEC in the [sample jobs package](../zosmf_lite_samples.zip) and upload this job to z/OS. If you run z/OS V2R4, locate job IZUNUSEC at SYS1.SAMPLIB.
+1.	If you run z/OS V2R2 or V2R3, download job IZUNUSEC in the [sample jobs package](https://docs.zowe.org/stable/zosmf_lite_samples.zip) and upload this job to z/OS. If you run z/OS V2R4, locate job IZUNUSEC at SYS1.SAMPLIB.
 2.	Review and edit the job, if necessary.
 3.	Submit IZUNUSEC as a batch job on your z/OS system.  
 4.	Connect your user ID to IZUADMIN group. 
-    1. Download job IZUAUTH in the [sample jobs package](../zosmf_lite_samples.zip) and customize it.
+    1. Download job IZUAUTH in the [sample jobs package](https://docs.zowe.org/stable/zosmf_lite_samples.zip) and customize it.
     2. Replace the 'userid' with your z/OSMF user ID. 
     3. Submit the job on your z/OS system.
 
@@ -535,7 +535,7 @@ TSOASMGR: ALLOWED: 50 IN USE: 0 HIGHCNT: 0
 
 #### Procedure
 
-1.	If you run z/OS V2R2 and V2R3, download job IZUTSSEC in the [sample jobs package](../zosmf_lite_samples.zip) and upload this Job to z/OS. If you run z/OS V2R4, locate job IZUTSSEC at `SYS1.SAMPLIB`.
+1.	If you run z/OS V2R2 and V2R3, download job IZUTSSEC in the [sample jobs package](https://docs.zowe.org/stable/zosmf_lite_samples.zip) and upload this Job to z/OS. If you run z/OS V2R4, locate job IZUTSSEC at `SYS1.SAMPLIB`.
 2.	Review and edit job IZUTSSEC before you submit. You can review the IZUTSSEC section below for more details.
 3.	Submit IZUTSSEC as a batch job on your z/OS system.  
 
@@ -608,7 +608,7 @@ USERDATA= 0000
 
 #### Procedure
 
-1.	If you run z/OS V2R2 and V2R3, download job IZURFSEC in the [sample jobs package](../zosmf_lite_samples.zip) and upload it to z/OS. If you run z/OS V2R4, locate job IZURFSEC at `SYS1.SAMPLIB`.
+1.	If you run z/OS V2R2 and V2R3, download job IZURFSEC in the [sample jobs package](https://docs.zowe.org/stable/zosmf_lite_samples.zip) and upload it to z/OS. If you run z/OS V2R4, locate job IZURFSEC at `SYS1.SAMPLIB`.
 2.	Copy the job.
 3.	Examine the contents of the job.
 4.	Modify the contents as needed so that the job will run on your system.
@@ -641,7 +641,7 @@ The Zowe framework requires that you enable the z/OSMF Workflow REST services an
 
 #### Procedure
 
-1.	If you run z/OS V2R2 and V2R3, download job IZUWFSEC in the [sample jobs package](../zosmf_lite_samples.zip) and upload this job to z/OS. If you run z/OS V2R4, locate job IZUWFSEC at `SYS1.SAMPLIB`.
+1.	If you run z/OS V2R2 and V2R3, download job IZUWFSEC in the [sample jobs package](https://docs.zowe.org/stable/zosmf_lite_samples.zip) and upload this job to z/OS. If you run z/OS V2R4, locate job IZUWFSEC at `SYS1.SAMPLIB`.
 2.	Copy the job.
 3.	Examine the contents of the job.
 4.	Modify the contents as needed so that the job will run on your system.

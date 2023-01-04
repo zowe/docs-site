@@ -54,15 +54,11 @@ The following definition of skill levels about Zowe assist you with gathering th
       
       This article is for system programmers who want to configure advanced Gateway features of the API Mediation Layer, such as the Gateway retry policy, connection limits, Gateway timeouts, and other advanced Gateway features.
 
-- [**Upgrading the z/OS system for Zowe**](../user-guide/upgrade-zos-system.md)
-
-   Learn how to upgrade the z/OS system for Zowe.
-
 ## Using Zowe API Mediation Layer
 
 > Zowe skill level: Intermediate
 
-- [**Using API Catalog**](../user-guide/api-mediation-api-catalog.md)
+- [**Using API Mediation Layer**](../user-guide/api-mediation/using-api-mediation-layer.md)
 
    Learn how to use the API Catalog to view what services are running in the API Mediation Layer. Through the API Catalog, you can also view associated API documentation corresponding to a service, descriptive information about the service, and the current state of the service. 
 

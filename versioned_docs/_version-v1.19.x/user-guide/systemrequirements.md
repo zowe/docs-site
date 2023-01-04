@@ -59,9 +59,9 @@ For more information on the relationship between the Zowe server components and 
 
 ### Zowe Web Explorers and APIs on z/OS requirements (host)
 
-- Node.js v8.x (except v8.16.1), v12.x, or v14
+- Node.js v14.x (except v14.17.2) or v16.x
   
-  **Note:** When using Node.js v12.x or later, it is highly recommended that plug-ins used are tagged. For more information, see [Tagging on z/OS](../extend/extend-desktop/mvd-buildingplugins.md#tagging-plugin-files-on-z-os).
+  **Note:** When using Node.js v14.x or later, it is highly recommended that plug-ins used are tagged. For more information, see [Tagging on z/OS](../extend/extend-desktop/mvd-buildingplugins.md#tagging-plugin-files-on-z-os).
   
   To install Node.js on z/OS, follow the instructions in [Installing Node.js on z/OS](install-nodejs-zos.md).
 
@@ -71,9 +71,9 @@ For more information on the relationship between the Zowe server components and 
 
 The Zowe Application Framework server provides the Zowe Desktop that contains an extensible GUI with a number of applications allowing access to z/OS functions, such as the File Editor, TN3270 emulator, JES Explorer, and more. For more information, see [Zowe Architecture](../getting-started/zowe-architecture.md#zlux).
 
-- Node.js v8.x (except v8.16.1), v12.x, or v14
+- Node.js v14.x (except v14.17.2) or v16.x
   
-  **Note:** When using Node.js v12.x or later, it is highly recommended that plug-ins used are tagged. For more information, see [Tagging on z/OS](../extend/extend-desktop/mvd-buildingplugins.md#tagging-plugin-files-on-z-os). 
+  **Note:** When using Node.js v14.x or later, it is highly recommended that plug-ins used are tagged. For more information, see [Tagging on z/OS](../extend/extend-desktop/mvd-buildingplugins.md#tagging-plugin-files-on-z-os). 
   
   To install Node.js on z/OS, follow the instructions in [Installing Node.js on z/OS](install-nodejs-zos.md).
 

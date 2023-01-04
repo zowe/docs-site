@@ -3,8 +3,8 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>AbstractRestClient | Zowe Node.js SDK - v2.1.0</title>
-	<meta name="description" content="Documentation for Zowe Node.js SDK - v2.1.0">
+	<title>AbstractRestClient | Zowe Node.js SDK - v2.4.0</title>
+	<meta name="description" content="Documentation for Zowe Node.js SDK - v2.4.0">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
 </head>
@@ -22,7 +22,7 @@
 						<li class="state loading">Preparing search index...</li>
 						<li class="state failure">The search index is not available</li>
 					</ul>
-					<a href="../index.html" class="title">Zowe Node.js SDK - v2.1.0</a>
+					<a href="../index.html" class="title">Zowe Node.js SDK - v2.4.0</a>
 				</div>
 				<div class="table-cell" id="tsd-widgets">
 					<div id="tsd-filter">
@@ -107,6 +107,7 @@
 						<section class="tsd-index-section tsd-is-private tsd-is-private-protected">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="_zowe_imperative.abstractrestclient.html#lastbytereceived" class="tsd-kind-icon">last<wbr>Byte<wbr>Received</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="_zowe_imperative.abstractrestclient.html#mbytesreceived" class="tsd-kind-icon">m<wbr>Bytes<wbr>Received</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="_zowe_imperative.abstractrestclient.html#mchunks" class="tsd-kind-icon">m<wbr>Chunks</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="_zowe_imperative.abstractrestclient.html#mcontentencoding" class="tsd-kind-icon">m<wbr>Content<wbr>Encoding</a></li>
@@ -172,7 +173,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.3.2/packages/rest/src/client/AbstractRestClient.ts#L214">@zowe/imperative/packages/rest/src/client/AbstractRestClient.ts:214</a></li>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.5.4/packages/rest/src/client/AbstractRestClient.ts#L222">@zowe/imperative/packages/rest/src/client/AbstractRestClient.ts:222</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -204,12 +205,32 @@
 			<section class="tsd-panel-group tsd-member-group tsd-is-private tsd-is-private-protected">
 				<h2>Properties</h2>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
+					<a name="lastbytereceived" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> last<wbr>Byte<wbr>Received</h3>
+					<div class="tsd-signature tsd-kind-icon">last<wbr>Byte<wbr>Received<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> = 0</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.5.4/packages/rest/src/client/AbstractRestClient.ts#L222">@zowe/imperative/packages/rest/src/client/AbstractRestClient.ts:222</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Last byte received when response is being streamed</p>
+						</div>
+						<dl class="tsd-comment-tags">
+							<dt>memberof</dt>
+							<dd><p>AbstractRestClient</p>
+							</dd>
+						</dl>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
 					<a name="mbytesreceived" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagPrivate">Private</span> m<wbr>Bytes<wbr>Received</h3>
 					<div class="tsd-signature tsd-kind-icon">m<wbr>Bytes<wbr>Received<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> = 0</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.3.2/packages/rest/src/client/AbstractRestClient.ts#L206">@zowe/imperative/packages/rest/src/client/AbstractRestClient.ts:206</a></li>
+							<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.5.4/packages/rest/src/client/AbstractRestClient.ts#L206">@zowe/imperative/packages/rest/src/client/AbstractRestClient.ts:206</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -229,7 +250,7 @@
 					<div class="tsd-signature tsd-kind-icon">m<wbr>Chunks<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Buffer</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol"> = []</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.3.2/packages/rest/src/client/AbstractRestClient.ts#L55">@zowe/imperative/packages/rest/src/client/AbstractRestClient.ts:55</a></li>
+							<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.5.4/packages/rest/src/client/AbstractRestClient.ts#L55">@zowe/imperative/packages/rest/src/client/AbstractRestClient.ts:55</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -249,7 +270,7 @@
 					<div class="tsd-signature tsd-kind-icon">m<wbr>Content<wbr>Encoding<span class="tsd-signature-symbol">:</span> <a href="../modules/_zowe_imperative.html#contentencoding" class="tsd-signature-type">ContentEncoding</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.3.2/packages/rest/src/client/AbstractRestClient.ts#L114">@zowe/imperative/packages/rest/src/client/AbstractRestClient.ts:114</a></li>
+							<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.5.4/packages/rest/src/client/AbstractRestClient.ts#L114">@zowe/imperative/packages/rest/src/client/AbstractRestClient.ts:114</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -271,7 +292,7 @@
 					<div class="tsd-signature tsd-kind-icon">m<wbr>Content<wbr>Length<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.3.2/packages/rest/src/client/AbstractRestClient.ts#L104">@zowe/imperative/packages/rest/src/client/AbstractRestClient.ts:104</a></li>
+							<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.5.4/packages/rest/src/client/AbstractRestClient.ts#L104">@zowe/imperative/packages/rest/src/client/AbstractRestClient.ts:104</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -292,7 +313,7 @@
 					<div class="tsd-signature tsd-kind-icon">m<wbr>Data<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Buffer</span><span class="tsd-signature-symbol"> = Buffer.from([])</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.3.2/packages/rest/src/client/AbstractRestClient.ts#L63">@zowe/imperative/packages/rest/src/client/AbstractRestClient.ts:63</a></li>
+							<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.5.4/packages/rest/src/client/AbstractRestClient.ts#L63">@zowe/imperative/packages/rest/src/client/AbstractRestClient.ts:63</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -312,7 +333,7 @@
 					<div class="tsd-signature tsd-kind-icon">m<wbr>Decode<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol"> = true</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.3.2/packages/rest/src/client/AbstractRestClient.ts#L214">@zowe/imperative/packages/rest/src/client/AbstractRestClient.ts:214</a></li>
+							<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.5.4/packages/rest/src/client/AbstractRestClient.ts#L214">@zowe/imperative/packages/rest/src/client/AbstractRestClient.ts:214</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -332,7 +353,7 @@
 					<div class="tsd-signature tsd-kind-icon">m<wbr>IsJson<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.3.2/packages/rest/src/client/AbstractRestClient.ts#L122">@zowe/imperative/packages/rest/src/client/AbstractRestClient.ts:122</a></li>
+							<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.5.4/packages/rest/src/client/AbstractRestClient.ts#L122">@zowe/imperative/packages/rest/src/client/AbstractRestClient.ts:122</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -352,7 +373,7 @@
 					<div class="tsd-signature tsd-kind-icon">m<wbr>Logger<span class="tsd-signature-symbol">:</span> <a href="_zowe_imperative.logger.html" class="tsd-signature-type">Logger</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.3.2/packages/rest/src/client/AbstractRestClient.ts#L71">@zowe/imperative/packages/rest/src/client/AbstractRestClient.ts:71</a></li>
+							<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.5.4/packages/rest/src/client/AbstractRestClient.ts#L71">@zowe/imperative/packages/rest/src/client/AbstractRestClient.ts:71</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -372,7 +393,7 @@
 					<div class="tsd-signature tsd-kind-icon">m<wbr>Normalize<wbr>Request<wbr>Newlines<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.3.2/packages/rest/src/client/AbstractRestClient.ts#L131">@zowe/imperative/packages/rest/src/client/AbstractRestClient.ts:131</a></li>
+							<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.5.4/packages/rest/src/client/AbstractRestClient.ts#L131">@zowe/imperative/packages/rest/src/client/AbstractRestClient.ts:131</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -393,7 +414,7 @@
 					<div class="tsd-signature tsd-kind-icon">m<wbr>Normalize<wbr>Response<wbr>Newlines<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.3.2/packages/rest/src/client/AbstractRestClient.ts#L140">@zowe/imperative/packages/rest/src/client/AbstractRestClient.ts:140</a></li>
+							<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.5.4/packages/rest/src/client/AbstractRestClient.ts#L140">@zowe/imperative/packages/rest/src/client/AbstractRestClient.ts:140</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -414,7 +435,7 @@
 					<div class="tsd-signature tsd-kind-icon">m<wbr>Reject<span class="tsd-signature-symbol">:</span> <a href="../modules/_zowe_imperative.html#imperativereject" class="tsd-signature-type">ImperativeReject</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.3.2/packages/rest/src/client/AbstractRestClient.ts#L87">@zowe/imperative/packages/rest/src/client/AbstractRestClient.ts:87</a></li>
+							<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.5.4/packages/rest/src/client/AbstractRestClient.ts#L87">@zowe/imperative/packages/rest/src/client/AbstractRestClient.ts:87</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -434,7 +455,7 @@
 					<div class="tsd-signature tsd-kind-icon">m<wbr>Req<wbr>Headers<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.3.2/packages/rest/src/client/AbstractRestClient.ts#L164">@zowe/imperative/packages/rest/src/client/AbstractRestClient.ts:164</a></li>
+							<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.5.4/packages/rest/src/client/AbstractRestClient.ts#L164">@zowe/imperative/packages/rest/src/client/AbstractRestClient.ts:164</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -454,7 +475,7 @@
 					<div class="tsd-signature tsd-kind-icon">m<wbr>Request<span class="tsd-signature-symbol">:</span> <a href="../modules/_zowe_imperative.html#http_verb" class="tsd-signature-type">HTTP_VERB</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.3.2/packages/rest/src/client/AbstractRestClient.ts#L156">@zowe/imperative/packages/rest/src/client/AbstractRestClient.ts:156</a></li>
+							<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.5.4/packages/rest/src/client/AbstractRestClient.ts#L156">@zowe/imperative/packages/rest/src/client/AbstractRestClient.ts:156</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -474,7 +495,7 @@
 					<div class="tsd-signature tsd-kind-icon">m<wbr>Request<wbr>Stream<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Readable</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.3.2/packages/rest/src/client/AbstractRestClient.ts#L189">@zowe/imperative/packages/rest/src/client/AbstractRestClient.ts:189</a></li>
+							<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.5.4/packages/rest/src/client/AbstractRestClient.ts#L189">@zowe/imperative/packages/rest/src/client/AbstractRestClient.ts:189</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -494,7 +515,7 @@
 					<div class="tsd-signature tsd-kind-icon">m<wbr>Resolve<span class="tsd-signature-symbol">:</span> <a href="../modules/_zowe_imperative.html#restclientresolve" class="tsd-signature-type">RestClientResolve</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.3.2/packages/rest/src/client/AbstractRestClient.ts#L79">@zowe/imperative/packages/rest/src/client/AbstractRestClient.ts:79</a></li>
+							<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.5.4/packages/rest/src/client/AbstractRestClient.ts#L79">@zowe/imperative/packages/rest/src/client/AbstractRestClient.ts:79</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -514,7 +535,7 @@
 					<div class="tsd-signature tsd-kind-icon">m<wbr>Resource<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.3.2/packages/rest/src/client/AbstractRestClient.ts#L148">@zowe/imperative/packages/rest/src/client/AbstractRestClient.ts:148</a></li>
+							<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.5.4/packages/rest/src/client/AbstractRestClient.ts#L148">@zowe/imperative/packages/rest/src/client/AbstractRestClient.ts:148</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -534,7 +555,7 @@
 					<div class="tsd-signature tsd-kind-icon">m<wbr>Response<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">any</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.3.2/packages/rest/src/client/AbstractRestClient.ts#L95">@zowe/imperative/packages/rest/src/client/AbstractRestClient.ts:95</a></li>
+							<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.5.4/packages/rest/src/client/AbstractRestClient.ts#L95">@zowe/imperative/packages/rest/src/client/AbstractRestClient.ts:95</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -554,7 +575,7 @@
 					<div class="tsd-signature tsd-kind-icon">m<wbr>Response<wbr>Stream<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Writable</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.3.2/packages/rest/src/client/AbstractRestClient.ts#L181">@zowe/imperative/packages/rest/src/client/AbstractRestClient.ts:181</a></li>
+							<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.5.4/packages/rest/src/client/AbstractRestClient.ts#L181">@zowe/imperative/packages/rest/src/client/AbstractRestClient.ts:181</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -575,7 +596,7 @@
 					<div class="tsd-signature tsd-kind-icon">m<wbr>Session<span class="tsd-signature-symbol">:</span> <a href="_zowe_imperative.abstractsession.html" class="tsd-signature-type">AbstractSession</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.3.2/packages/rest/src/client/AbstractRestClient.ts#L221">@zowe/imperative/packages/rest/src/client/AbstractRestClient.ts:221</a></li>
+							<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.5.4/packages/rest/src/client/AbstractRestClient.ts#L229">@zowe/imperative/packages/rest/src/client/AbstractRestClient.ts:229</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -590,7 +611,7 @@
 					<div class="tsd-signature tsd-kind-icon">m<wbr>Task<span class="tsd-signature-symbol">:</span> <a href="../interfaces/_zowe_imperative.itaskwithstatus.html" class="tsd-signature-type">ITaskWithStatus</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.3.2/packages/rest/src/client/AbstractRestClient.ts#L198">@zowe/imperative/packages/rest/src/client/AbstractRestClient.ts:198</a></li>
+							<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.5.4/packages/rest/src/client/AbstractRestClient.ts#L198">@zowe/imperative/packages/rest/src/client/AbstractRestClient.ts:198</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -611,7 +632,7 @@
 					<div class="tsd-signature tsd-kind-icon">m<wbr>Write<wbr>Data<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">any</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.3.2/packages/rest/src/client/AbstractRestClient.ts#L172">@zowe/imperative/packages/rest/src/client/AbstractRestClient.ts:172</a></li>
+							<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.5.4/packages/rest/src/client/AbstractRestClient.ts#L172">@zowe/imperative/packages/rest/src/client/AbstractRestClient.ts:172</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -638,7 +659,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.3.2/packages/rest/src/client/AbstractRestClient.ts#L829">@zowe/imperative/packages/rest/src/client/AbstractRestClient.ts:829</a></li>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.5.4/packages/rest/src/client/AbstractRestClient.ts#L838">@zowe/imperative/packages/rest/src/client/AbstractRestClient.ts:838</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -667,7 +688,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.3.2/packages/rest/src/client/AbstractRestClient.ts#L839">@zowe/imperative/packages/rest/src/client/AbstractRestClient.ts:839</a></li>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.5.4/packages/rest/src/client/AbstractRestClient.ts#L848">@zowe/imperative/packages/rest/src/client/AbstractRestClient.ts:848</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -696,7 +717,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.3.2/packages/rest/src/client/AbstractRestClient.ts#L872">@zowe/imperative/packages/rest/src/client/AbstractRestClient.ts:872</a></li>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.5.4/packages/rest/src/client/AbstractRestClient.ts#L881">@zowe/imperative/packages/rest/src/client/AbstractRestClient.ts:881</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -725,7 +746,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.3.2/packages/rest/src/client/AbstractRestClient.ts#L819">@zowe/imperative/packages/rest/src/client/AbstractRestClient.ts:819</a></li>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.5.4/packages/rest/src/client/AbstractRestClient.ts#L828">@zowe/imperative/packages/rest/src/client/AbstractRestClient.ts:828</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -754,7 +775,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.3.2/packages/rest/src/client/AbstractRestClient.ts#L804">@zowe/imperative/packages/rest/src/client/AbstractRestClient.ts:804</a></li>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.5.4/packages/rest/src/client/AbstractRestClient.ts#L813">@zowe/imperative/packages/rest/src/client/AbstractRestClient.ts:813</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -783,7 +804,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.3.2/packages/rest/src/client/AbstractRestClient.ts#L852">@zowe/imperative/packages/rest/src/client/AbstractRestClient.ts:852</a></li>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.5.4/packages/rest/src/client/AbstractRestClient.ts#L861">@zowe/imperative/packages/rest/src/client/AbstractRestClient.ts:861</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -812,7 +833,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.3.2/packages/rest/src/client/AbstractRestClient.ts#L862">@zowe/imperative/packages/rest/src/client/AbstractRestClient.ts:862</a></li>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.5.4/packages/rest/src/client/AbstractRestClient.ts#L871">@zowe/imperative/packages/rest/src/client/AbstractRestClient.ts:871</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -844,7 +865,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.3.2/packages/rest/src/client/AbstractRestClient.ts#L372">@zowe/imperative/packages/rest/src/client/AbstractRestClient.ts:372</a></li>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.5.4/packages/rest/src/client/AbstractRestClient.ts#L380">@zowe/imperative/packages/rest/src/client/AbstractRestClient.ts:380</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -883,7 +904,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.3.2/packages/rest/src/client/AbstractRestClient.ts#L767">@zowe/imperative/packages/rest/src/client/AbstractRestClient.ts:767</a></li>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.5.4/packages/rest/src/client/AbstractRestClient.ts#L776">@zowe/imperative/packages/rest/src/client/AbstractRestClient.ts:776</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -925,7 +946,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.3.2/packages/rest/src/client/AbstractRestClient.ts#L408">@zowe/imperative/packages/rest/src/client/AbstractRestClient.ts:408</a></li>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.5.4/packages/rest/src/client/AbstractRestClient.ts#L416">@zowe/imperative/packages/rest/src/client/AbstractRestClient.ts:416</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -976,7 +997,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.3.2/packages/rest/src/client/AbstractRestClient.ts#L595">@zowe/imperative/packages/rest/src/client/AbstractRestClient.ts:595</a></li>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.5.4/packages/rest/src/client/AbstractRestClient.ts#L603">@zowe/imperative/packages/rest/src/client/AbstractRestClient.ts:603</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1014,7 +1035,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.3.2/packages/rest/src/client/AbstractRestClient.ts#L637">@zowe/imperative/packages/rest/src/client/AbstractRestClient.ts:637</a></li>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.5.4/packages/rest/src/client/AbstractRestClient.ts#L646">@zowe/imperative/packages/rest/src/client/AbstractRestClient.ts:646</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1042,7 +1063,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.3.2/packages/rest/src/client/AbstractRestClient.ts#L691">@zowe/imperative/packages/rest/src/client/AbstractRestClient.ts:691</a></li>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.5.4/packages/rest/src/client/AbstractRestClient.ts#L700">@zowe/imperative/packages/rest/src/client/AbstractRestClient.ts:700</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1085,7 +1106,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.3.2/packages/rest/src/client/AbstractRestClient.ts#L393">@zowe/imperative/packages/rest/src/client/AbstractRestClient.ts:393</a></li>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.5.4/packages/rest/src/client/AbstractRestClient.ts#L401">@zowe/imperative/packages/rest/src/client/AbstractRestClient.ts:401</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1128,7 +1149,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.3.2/packages/rest/src/client/AbstractRestClient.ts#L235">@zowe/imperative/packages/rest/src/client/AbstractRestClient.ts:235</a></li>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.5.4/packages/rest/src/client/AbstractRestClient.ts#L243">@zowe/imperative/packages/rest/src/client/AbstractRestClient.ts:243</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1165,7 +1186,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.3.2/packages/rest/src/client/AbstractRestClient.ts#L521">@zowe/imperative/packages/rest/src/client/AbstractRestClient.ts:521</a></li>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.5.4/packages/rest/src/client/AbstractRestClient.ts#L529">@zowe/imperative/packages/rest/src/client/AbstractRestClient.ts:529</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1201,7 +1222,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.3.2/packages/rest/src/client/AbstractRestClient.ts#L787">@zowe/imperative/packages/rest/src/client/AbstractRestClient.ts:787</a></li>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.5.4/packages/rest/src/client/AbstractRestClient.ts#L796">@zowe/imperative/packages/rest/src/client/AbstractRestClient.ts:796</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1285,6 +1306,9 @@
 								<ul>
 									<li class=" tsd-kind-constructor tsd-parent-kind-class">
 										<a href="_zowe_imperative.abstractrestclient.html#constructor" class="tsd-kind-icon">constructor</a>
+									</li>
+									<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
+										<a href="_zowe_imperative.abstractrestclient.html#lastbytereceived" class="tsd-kind-icon">last<wbr>Byte<wbr>Received</a>
 									</li>
 									<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
 										<a href="_zowe_imperative.abstractrestclient.html#mbytesreceived" class="tsd-kind-icon">m<wbr>Bytes<wbr>Received</a>

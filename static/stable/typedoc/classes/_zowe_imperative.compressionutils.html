@@ -3,8 +3,8 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>CompressionUtils | Zowe Node.js SDK - v2.1.0</title>
-	<meta name="description" content="Documentation for Zowe Node.js SDK - v2.1.0">
+	<title>CompressionUtils | Zowe Node.js SDK - v2.4.0</title>
+	<meta name="description" content="Documentation for Zowe Node.js SDK - v2.4.0">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
 </head>
@@ -22,7 +22,7 @@
 						<li class="state loading">Preparing search index...</li>
 						<li class="state failure">The search index is not available</li>
 					</ul>
-					<a href="../index.html" class="title">Zowe Node.js SDK - v2.1.0</a>
+					<a href="../index.html" class="title">Zowe Node.js SDK - v2.4.0</a>
 				</div>
 				<div class="table-cell" id="tsd-widgets">
 					<div id="tsd-filter">
@@ -85,6 +85,7 @@
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><a href="_zowe_imperative.compressionutils.html#decompressbuffer" class="tsd-kind-icon">decompress<wbr>Buffer</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-static"><a href="_zowe_imperative.compressionutils.html#decompresserror" class="tsd-kind-icon">decompress<wbr>Error</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><a href="_zowe_imperative.compressionutils.html#decompressstream" class="tsd-kind-icon">decompress<wbr>Stream</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-static"><a href="_zowe_imperative.compressionutils.html#newlinestransform" class="tsd-kind-icon">new<wbr>Lines<wbr>Transform</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-static"><a href="_zowe_imperative.compressionutils.html#zlibtransform" class="tsd-kind-icon">zlib<wbr>Transform</a></li>
 							</ul>
 						</section>
@@ -103,7 +104,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.3.2/packages/rest/src/client/CompressionUtils.ts#L25">@zowe/imperative/packages/rest/src/client/CompressionUtils.ts:25</a></li>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.5.4/packages/rest/src/client/CompressionUtils.ts#L25">@zowe/imperative/packages/rest/src/client/CompressionUtils.ts:25</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -145,7 +146,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.3.2/packages/rest/src/client/CompressionUtils.ts#L96">@zowe/imperative/packages/rest/src/client/CompressionUtils.ts:96</a></li>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.5.4/packages/rest/src/client/CompressionUtils.ts#L90">@zowe/imperative/packages/rest/src/client/CompressionUtils.ts:90</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -188,7 +189,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.3.2/packages/rest/src/client/CompressionUtils.ts#L54">@zowe/imperative/packages/rest/src/client/CompressionUtils.ts:54</a></li>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.5.4/packages/rest/src/client/CompressionUtils.ts#L54">@zowe/imperative/packages/rest/src/client/CompressionUtils.ts:54</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -232,6 +233,28 @@
 					</ul>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-static">
+					<a name="newlinestransform" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> <span class="tsd-flag ts-flagPrivate">Private</span> new<wbr>Lines<wbr>Transform</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-static">
+						<li class="tsd-signature tsd-kind-icon">new<wbr>Lines<wbr>Transform<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Transform</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.5.4/packages/rest/src/client/CompressionUtils.ts#L101">@zowe/imperative/packages/rest/src/client/CompressionUtils.ts:101</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Return a transform to normalize line endings in response text.</p>
+								</div>
+							</div>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Transform</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-static">
 					<a name="zlibtransform" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagStatic">Static</span> <span class="tsd-flag ts-flagPrivate">Private</span> zlib<wbr>Transform</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-static">
@@ -241,7 +264,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.3.2/packages/rest/src/client/CompressionUtils.ts#L108">@zowe/imperative/packages/rest/src/client/CompressionUtils.ts:108</a></li>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.5.4/packages/rest/src/client/CompressionUtils.ts#L116">@zowe/imperative/packages/rest/src/client/CompressionUtils.ts:116</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -329,6 +352,9 @@
 									</li>
 									<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-static">
 										<a href="_zowe_imperative.compressionutils.html#decompressstream" class="tsd-kind-icon">decompress<wbr>Stream</a>
+									</li>
+									<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-static">
+										<a href="_zowe_imperative.compressionutils.html#newlinestransform" class="tsd-kind-icon">new<wbr>Lines<wbr>Transform</a>
 									</li>
 									<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-static">
 										<a href="_zowe_imperative.compressionutils.html#zlibtransform" class="tsd-kind-icon">zlib<wbr>Transform</a>
