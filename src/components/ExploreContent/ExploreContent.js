@@ -18,14 +18,13 @@ const firstDataRow = [
     ),
   },
   {
-    title: "User Guide",
+    title: "Setup and Use",
     icon: "img/user_guide-icon.png",
-    link: "stable/user-guide/installandconfig",
+    link: "stable/user-guide/install-overview",
     description: (
       <>
-        Find out how to install and configure Zowe. Learn about how to use Zowe
-        components, including Zowe Application Framework, API Mediation Layer,
-        and Zowe CLI.
+        Find out how to install and configure Zowe. Learn about how to use 
+        different Zowe components and a numer of Zowe applications and plug-ins.
       </>
     ),
   },
@@ -57,11 +56,11 @@ const secondDataRow = [
   {
     title: "Contribute",
     icon: "img/contribute-icon.png",
-    link: "stable/contribute/contributing",
+    link: "stable/contribute/roadmap-contribute",
     description: (
       <>
-        Learn about how you can contribute to this documentation. Read about the
-        Zowe UI and code guidelines to help you contribute to Zowe.
+        Learn about how you can contribute to Zowe and this documentation. Read about 
+        the Zowe UI and code guidelines.
       </>
     ),
   },

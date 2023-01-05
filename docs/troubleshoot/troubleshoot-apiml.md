@@ -2,6 +2,27 @@
 
 As an API Mediation Layer user, you may encounter problems with how the API ML functions. This article presents known API ML issues and their solutions.
 
+* [Install API ML without Certificate Setup](#install-api-ml-without-certificate-setup)
+* [Enable API ML Debug Mode](#enable-api-ml-debug-mode)
+* [Change the Log Level of Individual Code Components](#change-the-log-level-of-individual-code-components)
+* [Known Issues](#known-issues)
+    * [API ML stops accepting connections after z/OS TCP/IP stack is recycled](#api-ml-stops-accepting-connections-after-zos-tcpip-stack-is-recycled)
+    * [SEC0002 error when logging in to API Catalog](#sec0002-error-when-logging-in-to-api-catalog)
+    * [API ML throws I/O error on GET request and cannot connect to other services](#api-ml-throws-io-error-on-get-request-and-cannot-connect-to-other-services)
+    * [Certificate error when using both an external certificate and Single Sign-On to deploy Zowe](#certificate-error-when-using-both-an-external-certificate-and-single-sign-on-to-deploy-zowe)
+    * [Browser unable to connect due to a CIPHER error](#browser-unable-to-connect-due-to-a-cipher-error)
+    * [API Components unable to handshake](#api-components-unable-to-handshake)
+    * [Java z/OS components of Zowe unable to read certificates from keyring](#java-zos-components-of-zowe-unable-to-read-certificates-from-keyring)
+    
+## Install API ML without Certificate Setup
+
+For testing purposes, it is not necessary to set up certificates when configuring the API Mediation Layer. You can configure Zowe without certificate setup and run Zowe with `verify_certificates: DISABLED`.
+
+**Important:** For production environments, certificates are required. Ensure that certificates for each of the following services are issued by the Certificate Authority (CA) and that all keyrings contain the public part of the certificate for the relevant CA:
+* z/OSMF
+* Zowe
+* The service that is onboarded to Zowe
+
 ## Enable API ML Debug Mode
 
 Use debug mode to activate the following functions:
@@ -15,14 +36,14 @@ its performance and create large log files that consume a large volume of disk s
 
 **Follow these steps:**
 
-1. Open the file `instance.env`.
+1. Open the file `zowe.yaml`.
 
-2. Find the line that contains the `APIML_DEBUG_MODE_ENABLED=` parameter and set the value to `true`:
+2. For each component, find the `components.*.debug` parameter and set the value to `true`:
 
    ```
-    APIML_DEBUG_MODE_ENABLED=true
+    components.gateway.debug: true
    ```
-   By default debug mode is disabled, so the `APIML_DEBUG_MODE_ENABLED` is set to `false`.
+   By default, debug mode is disabled, and the `components.*.debug` is set to `false`.
    
 3. Restart Zowe&trade;.
 
@@ -38,7 +59,7 @@ You can change the log level of a particular code component of the API ML intern
 
 1. Enable API ML Debug Mode as described in Enable API ML Debug Mode.
 This activates the application/loggers endpoints in each API ML internal service (Gateway, Discovery Service, and Catalog).
-2. List the available loggers of a service by issuing the GET request for the given service URL:
+2. List the available loggers of a service by issuing the **GET** request for the given service URL:
 
     ```
     GET scheme://hostname:port/application/loggers
@@ -59,7 +80,7 @@ This activates the application/loggers endpoints in each API ML internal service
 
     **Note:**  For the Catalog you can list the available loggers by issuing a GET request for the given service URL in the following format:
     ```
-    GET [gateway-scheme]://[gateway-hostname]:[gateway-port]/api/v1/apicatalog/application/loggers
+    GET [gateway-scheme]://[gateway-hostname]:[gateway-port]/apicatalog/api/v1/application/loggers
     ```
 
     **Tip:** One way to issue REST calls is to use the http command in the free HTTPie tool: https://httpie.org/.
@@ -114,9 +135,6 @@ This activates the application/loggers endpoints in each API ML internal service
     ```
     http POST https://hostname:port/application/loggers/org.zowe.apiml.enable.model configuredLevel=WARN
     ```
-
-
-
 ## Known Issues
 
 ### API ML stops accepting connections after z/OS TCP/IP stack is recycled
@@ -161,8 +179,14 @@ The error is caused by failed z/OSMF authentication. To determine the reason aut
 Check the rest of the message, and identify the cause of the problem. The following list provides the possible reasons and solutions for the z/OSMF authentication issue:
 
 - [Connection refused](#connection-refused)
+- [Configure z/OSMF](#configure-zosmf)
 - [Missing z/OSMF host name in subject alternative names](#missing-z-osmf-host-name-in-subject-alternative-names)
 - [Invalid z/OSMF host name in subject alternative names](#invalid-z-osmf-host-name-in-subject-alternative-names)
+- [Secure Fix](#secure-fix)
+- [Insecure Fix](#insecure-fix)
+- [Invalid z/OSMF host name in subject alternative names](#invalid-zosmf-host-name-in-subject-alternative-names)
+- [Request a new certificate](#request-a-new-certificate)
+- [Re-create the Zowe keystore](#re-create-the-zowe-keystore)
 
 #### Connection refused
 
@@ -223,13 +247,13 @@ Fix the missing z/OSMF host name in subject alternative names using the followin
 **Follow these steps:**
 
 1. Obtain a valid certificate for z/OSMF and place it in the z/OSMF keyring. For more information, see [Configure the z/OSMF Keyring and Certificate](https://www.ibm.com/support/knowledgecenter/en/SSLTBW_2.3.0/com.ibm.zos.v2r3.izua300/izuconfig_KeyringAndCertificate.htm).
-2. Re-create the Zowe keystore by deleting it and re-creating it. For more information, see [Configuring Zowe certificates](../user-guide/configure-certificates.md).  The Zowe keystore directory is the value of the `KEYSTORE_DIRECTORY` variable in the `instance.env` file in the instance directory that is used to launch Zowe. See [Creating and configuring the Zowe instance directory](../user-guide/configure-instance-directory.md#keystore-configuration) for more information. 
+2. Re-create the Zowe keystore by deleting it and re-creating it. For more information, see [Configuring PKCS12 certificates](../user-guide/configure-certificates-keystore.md).  The Zowe keystore directory is the value of the `KEYSTORE_DIRECTORY` variable in the `zowe.yaml` file that is used to launch Zowe.
 
 #### Insecure fix
 
 **Follow these steps:**
 
-1. Re-create the Zowe keystore by deleting it and re-creating it. For more information, see [Configuring Zowe certificates](../user-guide/configure-certificates.md). In the `zowe-setup-certificates.env` file that is used to generate the keystore, ensure that the property `VERIFY_CERTIFICATES` and `NONSTRICT_VERIFY_CERTIFICATES` are set to `false`.
+1. Re-create the Zowe keystore by deleting it and re-creating it. For more information, see [Configuring PKCS12 certificates](../user-guide/configure-certificates-keystore.md). In the `zowe-setup-certificates.env` file that is used to generate the keystore, ensure that the property `VERIFY_CERTIFICATES` and `NONSTRICT_VERIFY_CERTIFICATES` are set to `false`.
 
 **Important!** Disabling `VERIFY_CERTIFICATES` or `NONSTRICT_VERIFY_CERTIFICATES` may expose your server to security risks. Ensure that you contact your system administrator before you do so and use these options only for troubleshooting purpose.
 
@@ -255,7 +279,7 @@ Request a new certificate that contains a valid z/OSMF host name in the subject 
 
 #### Re-create the Zowe keystore
 
-Re-create the Zowe keystore by deleting it and re-creating it. For more information, see [Configuring Zowe certificates](../user-guide/configure-certificates.md).  The Zowe keystore directory is the value of the `KEYSTORE_DIRECTORY` variable in the `instance.env` file in the instance directory that is used to launch Zowe. See [Creating and configuring the Zowe instance directory](../user-guide/configure-instance-directory.md#keystore-configuration).
+Re-create the Zowe keystore by deleting it and re-creating it. For more information, see [Configuring PKCS12 certificates](../user-guide/configure-certificates-keystore.md).  The Zowe keystore directory is the value of the `KEYSTORE_DIRECTORY` variable in the `zowe.yaml` file that is used to launch Zowe.
 
 ### API ML throws I/O error on GET request and cannot connect to other services
 
@@ -317,9 +341,9 @@ You used an external certificate and Single Sign-On to deploy Zowe. When you log
 
 **Solution:**
 
-This issue might occur when you use a Zowe version of 1.12.0 or later. To resolve the issue, you can download your external root certificate and intermediate certificates in PEM format. Then, add the following parameter in the Zowe `instance.env` file.
+This issue might occur when you use a Zowe version of 1.12.0 or later. To resolve the issue, you can download your external root certificate and intermediate certificates in PEM format. Then, add the following parameter in the `zowe.yaml` file.
  
-```ZWED_node_https_certificateAuthorities="/path/to/zowe/keystore/local_ca/localca.cer-ebcdic","/path/to/carootcert.pem","/path/to/caintermediatecert.pem"```
+```environments.ZWED_node_https_certificateAuthorities: "/path/to/zowe/keystore/local_ca/localca.cer-ebcdic","/path/to/carootcert.pem","/path/to/caintermediatecert.pem"```
  
 Recycle your Zowe server. You should be able to log in to the Zowe Desktop successfully now.
 
@@ -345,12 +369,12 @@ Remove `GCM` as a disabled `TLS` algorithm from the Java runtime being used by Z
 
 To do this, first locate the `$JAVA_HOME/lib/security/java.security` file. You can find the value of `$JAVA_HOME` in one of the following ways. 
 
-- Method 1: By looking at the `JAVA_HOME=` value in the `instance.env` file used to start Zowe.  
+- Method 1: By looking at the `java.home` value in the `zowe.yaml` file used to start Zowe.  
 
-   For example, if the `instance.env` file contains the following line, 
+   For example, if the `zowe.yaml` file contains the following line, 
 
    ```
-   JAVA_HOME=`/usr/lpp/java/J8.0_64/
+   java.home: `/usr/lpp/java/J8.0_64/
    ```
 
    then, the `$JAVA_HOME/lib/security/java.security` file will be `/usr/lpp/java/J8.0_64/lib/security/java.security`.
@@ -402,7 +426,7 @@ The Zowe desktop is able to be displayed in a browser but fails to logon.
  
 **Solution:**
 
-Check that the Zowe certificate has been configured as a client certificate, and not just as a server certificate. More detail can be found in [Configuring certificates](../user-guide/configure-certificates.md).
+Check that the Zowe certificate has been configured as a client certificate, and not just as a server certificate. More detail can be found in [Configuring PKCS12 certificates](../user-guide/configure-certificates-keystore) and [Configuring JCERACFS certificates in a key ring](../user-guide/configure-certificates-keyring).
 
 ### Java z/OS components of Zowe unable to read certificates from keyring
 

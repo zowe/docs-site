@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>config init</title>
+<link rel="stylesheet" href="../css/bundle-docs.css">
+<link rel="stylesheet" href="../css/docs.css">
+<article class="markdown-body">
+<h2><a href="zowe.html">zowe</a> › <a href="zowe_config.html">config</a> › <a href="zowe_config_init.html">init</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
+<p>Initialize config files. Defaults to initializing &quot;zowe.config.json&quot; in the current working directory unless otherwise specified.</p>
+<p>Use &quot;--user-config&quot; to init &quot;zowe.config.user.json&quot;. Use &quot;--global-config&quot; to initialize the configuration files in your home &quot;~/.zowe&quot; directory.</p>
+<p>Use &quot;--no-prompt&quot; to skip prompting for values in a CI environment.</p>
+<h4>Usage</h4>
+<p>zowe config init [options]</p>
+<h4>Options</h4>
+<ul>
+<li>
+<p><code>--global-config</code> | <code>--gc</code> <em>(boolean)</em></p>
+<ul>
+<li>
+<p>Target the global config files.</p>
+<p>Default value: false</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--user-config</code> | <code>--uc</code> <em>(boolean)</em></p>
+<ul>
+<li>
+<p>Target the user config files.</p>
+<p>Default value: false</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--prompt</code> <em>(boolean)</em></p>
+<ul>
+<li>
+<p>Prompt for missing values in the base profile. Useful for disabling prompting in CI environments.</p>
+<p>Default value: true</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--overwrite</code> | <code>--ow</code> <em>(boolean)</em></p>
+<ul>
+<li>Replace existing config files instead of merging the new changes.</li>
+</ul>
+</li>
+<li>
+<p><code>--for-sure</code> | <code>--fs</code> <em>(boolean)</em></p>
+<ul>
+<li>
+<p>Confirms the overwrite option.</p>
+<p>Default value: false</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--dry-run</code> | <code>--dr</code> | <code>--dry</code> <em>(boolean)</em></p>
+<ul>
+<li>Display the outcome of the initialization without saving it.</li>
+</ul>
+</li>
+<li>
+<p><code>--edit</code> | <code>-e</code> <em>(boolean)</em></p>
+<ul>
+<li>Open in editor after initializing the configuration</li>
+</ul>
+</li>
+</ul>
+<h4>Examples</h4>
+<ul>
+<li>
+<p>Initialize configuration files in your home &quot;~/.zowe&quot; directory.:</p>
+<ul>
+<li><code>zowe config init --global-config</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe config init --global-config">Copy</button></li>
+</ul>
+</li>
+<li>
+<p>Do a dry run of initializing configuration files in your home &quot;~/.zowe&quot; directory.:</p>
+<ul>
+<li><code>zowe config init --global-config --dry-run</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe config init --global-config --dry-run">Copy</button></li>
+</ul>
+</li>
+<li>
+<p>Initialize the user config files.:</p>
+<ul>
+<li><code>zowe config init --user-config</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe config init --user-config">Copy</button></li>
+</ul>
+</li>
+<li>
+<p>Initialize the user config files and do not prompt for secure values.:</p>
+<ul>
+<li><code>zowe config init --user-config --prompt false</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe config init --user-config --prompt false">Copy</button></li>
+</ul>
+</li>
+<li>
+<p>Do a dry run of initializing the user config files and do not prompt for secure values.:</p>
+<ul>
+<li><code>zowe config init --user-config --prompt false --dry-run</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe config init --user-config --prompt false --dry-run">Copy</button></li>
+</ul>
+</li>
+<li>
+<p>Overwrite any existing global config files.:</p>
+<ul>
+<li><code>zowe config init --global-config --overwrite --for-sure</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe config init --global-config --overwrite --for-sure">Copy</button></li>
+</ul>
+</li>
+<li>
+<p>Overwrite any existing user config files.:</p>
+<ul>
+<li><code>zowe config init --user-config --overwrite --for-sure</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe config init --user-config --overwrite --for-sure">Copy</button></li>
+</ul>
+</li>
+</ul>
+</article>
+<script src="../js/bundle-docs.js"></script>
+<script src="../js/docs.js"></script>

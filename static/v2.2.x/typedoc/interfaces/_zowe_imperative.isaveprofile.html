@@ -1,0 +1,385 @@
+<!doctype html>
+<html class="default no-js">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>ISaveProfile | Zowe Node.js SDK - v2.2.0</title>
+	<meta name="description" content="Documentation for Zowe Node.js SDK - v2.2.0">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="../assets/css/main.css">
+</head>
+<body>
+<header>
+	<div class="tsd-page-toolbar">
+		<div class="container">
+			<div class="table-wrap">
+				<div class="table-cell" id="tsd-search" data-index="../assets/js/search.json" data-base="..">
+					<div class="field">
+						<label for="tsd-search-field" class="tsd-widget search no-caption">Search</label>
+						<input id="tsd-search-field" type="text" />
+					</div>
+					<ul class="results">
+						<li class="state loading">Preparing search index...</li>
+						<li class="state failure">The search index is not available</li>
+					</ul>
+					<a href="../index.html" class="title">Zowe Node.js SDK - v2.2.0</a>
+				</div>
+				<div class="table-cell" id="tsd-widgets">
+					<div id="tsd-filter">
+						<a href="#" class="tsd-widget options no-caption" data-toggle="options">Options</a>
+						<div class="tsd-filter-group">
+							<div class="tsd-select" id="tsd-filter-visibility">
+								<span class="tsd-select-label">All</span>
+								<ul class="tsd-select-list">
+									<li data-value="public">Public</li>
+									<li data-value="protected">Public/Protected</li>
+									<li data-value="private" class="selected">All</li>
+								</ul>
+							</div>
+							<input type="checkbox" id="tsd-filter-inherited" checked />
+							<label class="tsd-widget" for="tsd-filter-inherited">Inherited</label>
+							<input type="checkbox" id="tsd-filter-externals" checked />
+							<label class="tsd-widget" for="tsd-filter-externals">Externals</label>
+						</div>
+					</div>
+					<a href="#" class="tsd-widget menu no-caption" data-toggle="menu">Menu</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="tsd-page-title">
+		<div class="container">
+			<ul class="tsd-breadcrumb">
+				<li>
+					<a href="../globals.html">Globals</a>
+				</li>
+				<li>
+					<a href="../modules/_zowe_imperative.html">@zowe/imperative</a>
+				</li>
+				<li>
+					<a href="_zowe_imperative.isaveprofile.html">ISaveProfile</a>
+				</li>
+			</ul>
+			<h1>Interface ISaveProfile</h1>
+		</div>
+	</div>
+</header>
+<div class="container container-main">
+	<div class="row">
+		<div class="col-8 col-content">
+			<section class="tsd-panel tsd-comment">
+				<div class="tsd-comment tsd-typography">
+					<div class="lead">
+						<p>Parameters to the &quot;save()&quot; profile API.</p>
+					</div>
+					<p>Note: This profile could contain the following additional arguments,
+					which will only be kept in memory (for a short period of time) and NOT saved to a file.</p>
+					<dl class="tsd-comment-tags">
+						<dt>export</dt>
+						<dd></dd>
+						<dt>interface</dt>
+						<dd><p>ISaveProfile</p>
+						</dd>
+					</dl>
+				</div>
+			</section>
+			<section class="tsd-panel tsd-hierarchy">
+				<h3>Hierarchy</h3>
+				<ul class="tsd-hierarchy">
+					<li>
+						<span class="target">ISaveProfile</span>
+						<ul class="tsd-hierarchy">
+							<li>
+								<a href="_zowe_imperative.isaveprofilefromcliargs.html" class="tsd-signature-type">ISaveProfileFromCliArgs</a>
+							</li>
+						</ul>
+					</li>
+				</ul>
+			</section>
+			<section class="tsd-panel-group tsd-index-group">
+				<h2>Index</h2>
+				<section class="tsd-panel tsd-index-panel">
+					<div class="tsd-index-content">
+						<section class="tsd-index-section ">
+							<h3>Properties</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_zowe_imperative.isaveprofile.html#disabledefaults" class="tsd-kind-icon">disable<wbr>Defaults</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_zowe_imperative.isaveprofile.html#name" class="tsd-kind-icon">name</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_zowe_imperative.isaveprofile.html#overwrite" class="tsd-kind-icon">overwrite</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_zowe_imperative.isaveprofile.html#profile" class="tsd-kind-icon">profile</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_zowe_imperative.isaveprofile.html#type" class="tsd-kind-icon">type</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_zowe_imperative.isaveprofile.html#updatedefault" class="tsd-kind-icon">update<wbr>Default</a></li>
+							</ul>
+						</section>
+					</div>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group ">
+				<h2>Properties</h2>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="disabledefaults" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> disable<wbr>Defaults</h3>
+					<div class="tsd-signature tsd-kind-icon">disable<wbr>Defaults<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.3.5/packages/profiles/src/doc/parms/ISaveProfile.ts#L69">@zowe/imperative/packages/profiles/src/doc/parms/ISaveProfile.ts:69</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>The argument to disable populating defaults</p>
+						</div>
+						<dl class="tsd-comment-tags">
+							<dt>memberof</dt>
+							<dd><p>ISaveProfileFromCliArgs</p>
+							</dd>
+						</dl>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="name" class="tsd-anchor"></a>
+					<h3>name</h3>
+					<div class="tsd-signature tsd-kind-icon">name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.3.5/packages/profiles/src/doc/parms/ISaveProfile.ts#L41">@zowe/imperative/packages/profiles/src/doc/parms/ISaveProfile.ts:41</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>The name of the profile to save</p>
+						</div>
+						<dl class="tsd-comment-tags">
+							<dt>memberof</dt>
+							<dd><p>ISaveProfile</p>
+							</dd>
+						</dl>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="overwrite" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> overwrite</h3>
+					<div class="tsd-signature tsd-kind-icon">overwrite<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.3.5/packages/profiles/src/doc/parms/ISaveProfile.ts#L62">@zowe/imperative/packages/profiles/src/doc/parms/ISaveProfile.ts:62</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Set to true to overwrite an existing profile of the same name. If false, an error is thrown if the profile
+							already exists.</p>
+						</div>
+						<dl class="tsd-comment-tags">
+							<dt>memberof</dt>
+							<dd><p>ISaveProfile</p>
+							</dd>
+						</dl>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="profile" class="tsd-anchor"></a>
+					<h3>profile</h3>
+					<div class="tsd-signature tsd-kind-icon">profile<span class="tsd-signature-symbol">:</span> <a href="_zowe_imperative.iprofile.html" class="tsd-signature-type">IProfile</a></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.3.5/packages/profiles/src/doc/parms/ISaveProfile.ts#L33">@zowe/imperative/packages/profiles/src/doc/parms/ISaveProfile.ts:33</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>The profile contents - must extend the IProfile interface to function properly with Imperative. The contents
+							are always validated against the schema documents (and basic validation occurs)</p>
+						</div>
+						<dl class="tsd-comment-tags">
+							<dt>memberof</dt>
+							<dd><p>ISaveProfile</p>
+							</dd>
+						</dl>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="type" class="tsd-anchor"></a>
+					<h3>type</h3>
+					<div class="tsd-signature tsd-kind-icon">type<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.3.5/packages/profiles/src/doc/parms/ISaveProfile.ts#L48">@zowe/imperative/packages/profiles/src/doc/parms/ISaveProfile.ts:48</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>The type of profile to save</p>
+						</div>
+						<dl class="tsd-comment-tags">
+							<dt>memberof</dt>
+							<dd><p>ISaveProfile</p>
+							</dd>
+						</dl>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="updatedefault" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> update<wbr>Default</h3>
+					<div class="tsd-signature tsd-kind-icon">update<wbr>Default<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.3.5/packages/profiles/src/doc/parms/ISaveProfile.ts#L55">@zowe/imperative/packages/profiles/src/doc/parms/ISaveProfile.ts:55</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Set to true to update the default profile for the profile type.</p>
+						</div>
+						<dl class="tsd-comment-tags">
+							<dt>memberof</dt>
+							<dd><p>ISaveProfile</p>
+							</dd>
+						</dl>
+					</div>
+				</section>
+			</section>
+		</div>
+		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
+			<nav class="tsd-navigation primary">
+				<ul>
+					<li class="globals  ">
+						<a href="../globals.html"><em>Globals</em></a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_core_for_zowe_sdk.html">@zowe/core-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class="current tsd-kind-module">
+						<a href="../modules/_zowe_imperative.html">@zowe/imperative</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_provisioning_for_zowe_sdk.html">@zowe/provisioning-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_zos_console_for_zowe_sdk.html">@zowe/zos-<wbr>console-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_zos_files_for_zowe_sdk.html">@zowe/zos-<wbr>files-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_zos_jobs_for_zowe_sdk.html">@zowe/zos-<wbr>jobs-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_zos_logs_for_zowe_sdk.html">@zowe/zos-<wbr>logs-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_zos_tso_for_zowe_sdk.html">@zowe/zos-<wbr>tso-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_zos_uss_for_zowe_sdk.html">@zowe/zos-<wbr>uss-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_zos_workflows_for_zowe_sdk.html">@zowe/zos-<wbr>workflows-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_zosmf_for_zowe_sdk.html">@zowe/zosmf-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+				</ul>
+			</nav>
+			<nav class="tsd-navigation secondary menu-sticky">
+				<ul class="before-current">
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_core_for_zowe_sdk.html" class="tsd-kind-icon">@zowe/core-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+				</ul>
+				<ul class="current">
+					<li class="current tsd-kind-module">
+						<a href="../modules/_zowe_imperative.html" class="tsd-kind-icon">@zowe/imperative</a>
+						<ul>
+							<li class="current tsd-kind-interface tsd-parent-kind-module">
+								<a href="_zowe_imperative.isaveprofile.html" class="tsd-kind-icon">ISave<wbr>Profile</a>
+								<ul>
+									<li class=" tsd-kind-property tsd-parent-kind-interface">
+										<a href="_zowe_imperative.isaveprofile.html#disabledefaults" class="tsd-kind-icon">disable<wbr>Defaults</a>
+									</li>
+									<li class=" tsd-kind-property tsd-parent-kind-interface">
+										<a href="_zowe_imperative.isaveprofile.html#name" class="tsd-kind-icon">name</a>
+									</li>
+									<li class=" tsd-kind-property tsd-parent-kind-interface">
+										<a href="_zowe_imperative.isaveprofile.html#overwrite" class="tsd-kind-icon">overwrite</a>
+									</li>
+									<li class=" tsd-kind-property tsd-parent-kind-interface">
+										<a href="_zowe_imperative.isaveprofile.html#profile" class="tsd-kind-icon">profile</a>
+									</li>
+									<li class=" tsd-kind-property tsd-parent-kind-interface">
+										<a href="_zowe_imperative.isaveprofile.html#type" class="tsd-kind-icon">type</a>
+									</li>
+									<li class=" tsd-kind-property tsd-parent-kind-interface">
+										<a href="_zowe_imperative.isaveprofile.html#updatedefault" class="tsd-kind-icon">update<wbr>Default</a>
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</li>
+				</ul>
+				<ul class="after-current">
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_provisioning_for_zowe_sdk.html" class="tsd-kind-icon">@zowe/provisioning-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_zos_console_for_zowe_sdk.html" class="tsd-kind-icon">@zowe/zos-<wbr>console-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_zos_files_for_zowe_sdk.html" class="tsd-kind-icon">@zowe/zos-<wbr>files-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_zos_jobs_for_zowe_sdk.html" class="tsd-kind-icon">@zowe/zos-<wbr>jobs-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_zos_logs_for_zowe_sdk.html" class="tsd-kind-icon">@zowe/zos-<wbr>logs-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_zos_tso_for_zowe_sdk.html" class="tsd-kind-icon">@zowe/zos-<wbr>tso-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_zos_uss_for_zowe_sdk.html" class="tsd-kind-icon">@zowe/zos-<wbr>uss-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_zos_workflows_for_zowe_sdk.html" class="tsd-kind-icon">@zowe/zos-<wbr>workflows-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_zosmf_for_zowe_sdk.html" class="tsd-kind-icon">@zowe/zosmf-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</div>
+</div>
+<footer class="with-border-bottom">
+	<div class="container">
+		<h2>Legend</h2>
+		<div class="tsd-legend-group">
+			<ul class="tsd-legend">
+				<li class="tsd-kind-object-literal"><span class="tsd-kind-icon">Object literal</span></li>
+				<li class="tsd-kind-variable"><span class="tsd-kind-icon">Variable</span></li>
+				<li class="tsd-kind-function"><span class="tsd-kind-icon">Function</span></li>
+				<li class="tsd-kind-type-alias"><span class="tsd-kind-icon">Type alias</span></li>
+				<li class="tsd-kind-type-alias tsd-has-type-parameter"><span class="tsd-kind-icon">Type alias with type parameter</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-interface"><span class="tsd-kind-icon">Interface</span></li>
+				<li class="tsd-kind-interface tsd-has-type-parameter"><span class="tsd-kind-icon">Interface with type parameter</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-interface"><span class="tsd-kind-icon">Property</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-class"><span class="tsd-kind-icon">Class</span></li>
+				<li class="tsd-kind-class tsd-has-type-parameter"><span class="tsd-kind-icon">Class with type parameter</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-enum"><span class="tsd-kind-icon">Enumeration</span></li>
+			</ul>
+		</div>
+	</div>
+</footer>
+<div class="container tsd-generator">
+	<p>Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p>
+</div>
+<div class="overlay"></div>
+<script src="../assets/js/main.js"></script>
+</body>
+</html>

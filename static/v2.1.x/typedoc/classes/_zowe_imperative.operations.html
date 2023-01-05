@@ -1,0 +1,1594 @@
+<!doctype html>
+<html class="default no-js">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Operations | Zowe Node.js SDK - v2.1.0</title>
+	<meta name="description" content="Documentation for Zowe Node.js SDK - v2.1.0">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="../assets/css/main.css">
+</head>
+<body>
+<header>
+	<div class="tsd-page-toolbar">
+		<div class="container">
+			<div class="table-wrap">
+				<div class="table-cell" id="tsd-search" data-index="../assets/js/search.json" data-base="..">
+					<div class="field">
+						<label for="tsd-search-field" class="tsd-widget search no-caption">Search</label>
+						<input id="tsd-search-field" type="text" />
+					</div>
+					<ul class="results">
+						<li class="state loading">Preparing search index...</li>
+						<li class="state failure">The search index is not available</li>
+					</ul>
+					<a href="../index.html" class="title">Zowe Node.js SDK - v2.1.0</a>
+				</div>
+				<div class="table-cell" id="tsd-widgets">
+					<div id="tsd-filter">
+						<a href="#" class="tsd-widget options no-caption" data-toggle="options">Options</a>
+						<div class="tsd-filter-group">
+							<div class="tsd-select" id="tsd-filter-visibility">
+								<span class="tsd-select-label">All</span>
+								<ul class="tsd-select-list">
+									<li data-value="public">Public</li>
+									<li data-value="protected">Public/Protected</li>
+									<li data-value="private" class="selected">All</li>
+								</ul>
+							</div>
+							<input type="checkbox" id="tsd-filter-inherited" checked />
+							<label class="tsd-widget" for="tsd-filter-inherited">Inherited</label>
+							<input type="checkbox" id="tsd-filter-externals" checked />
+							<label class="tsd-widget" for="tsd-filter-externals">Externals</label>
+						</div>
+					</div>
+					<a href="#" class="tsd-widget menu no-caption" data-toggle="menu">Menu</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="tsd-page-title">
+		<div class="container">
+			<ul class="tsd-breadcrumb">
+				<li>
+					<a href="../globals.html">Globals</a>
+				</li>
+				<li>
+					<a href="../modules/_zowe_imperative.html">@zowe/imperative</a>
+				</li>
+				<li>
+					<a href="_zowe_imperative.operations.html">Operations</a>
+				</li>
+			</ul>
+			<h1>Class Operations&lt;T&gt;</h1>
+		</div>
+	</div>
+</header>
+<div class="container container-main">
+	<div class="row">
+		<div class="col-8 col-content">
+			<section class="tsd-panel tsd-comment">
+				<div class="tsd-comment tsd-typography">
+					<div class="lead">
+						<p>The Operations class extends Operation and is used to create a &#39;string&#39; of operations that must
+						be completed in serial order.</p>
+					</div>
+					<p>The implementing class is responsible (in defineOperations) for creating each operation (and
+						invoking addNextOperation) to add the operations to the list. You must also call &quot;defineOperations&quot;
+						from your constructor. This allows you to setup anything you need (in your constructor) before defining
+					the list of operations.</p>
+					<p>You can initiate the operation by invoking performOperation, which will iterate through each operation
+					defined and perform them in sequence. If a operation chooses to diverge, then</p>
+				</div>
+			</section>
+			<section class="tsd-panel tsd-type-parameters">
+				<h3>Type parameters</h3>
+				<ul class="tsd-type-parameters">
+					<li>
+						<h4>T</h4>
+					</li>
+				</ul>
+			</section>
+			<section class="tsd-panel tsd-hierarchy">
+				<h3>Hierarchy</h3>
+				<ul class="tsd-hierarchy">
+					<li>
+						<a href="_zowe_imperative.operation.html" class="tsd-signature-type">Operation</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span>
+						<ul class="tsd-hierarchy">
+							<li>
+								<span class="target">Operations</span>
+							</li>
+						</ul>
+					</li>
+				</ul>
+			</section>
+			<section class="tsd-panel">
+				<h3>Implements</h3>
+				<ul class="tsd-hierarchy">
+					<li><a href="../interfaces/_zowe_imperative.itaskwithstatus.html" class="tsd-signature-type">ITaskWithStatus</a></li>
+				</ul>
+			</section>
+			<section class="tsd-panel-group tsd-index-group">
+				<h2>Index</h2>
+				<section class="tsd-panel tsd-index-panel">
+					<div class="tsd-index-content">
+						<section class="tsd-index-section ">
+							<h3>Constructors</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-constructor tsd-parent-kind-class tsd-is-overwrite"><a href="_zowe_imperative.operations.html#constructor" class="tsd-kind-icon">constructor</a></li>
+							</ul>
+						</section>
+						<section class="tsd-index-section ">
+							<h3>Properties</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="_zowe_imperative.operations.html#errormessages" class="tsd-kind-icon">error<wbr>Messages</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="_zowe_imperative.operations.html#infomessages" class="tsd-kind-icon">info<wbr>Messages</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-protected"><a href="_zowe_imperative.operations.html#log" class="tsd-kind-icon">log</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="_zowe_imperative.operations.html#mcurrentoperation" class="tsd-kind-icon">m<wbr>Current<wbr>Operation</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="_zowe_imperative.operations.html#minputparameters" class="tsd-kind-icon">m<wbr>Input<wbr>Parameters</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="_zowe_imperative.operations.html#moperationlist" class="tsd-kind-icon">m<wbr>Operation<wbr>List</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-protected"><a href="_zowe_imperative.operations.html#moperationresult" class="tsd-kind-icon">m<wbr>Operation<wbr>Result</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-protected"><a href="_zowe_imperative.operations.html#moperationresults" class="tsd-kind-icon">m<wbr>Operation<wbr>Results</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="_zowe_imperative.operations.html#moperationundoindex" class="tsd-kind-icon">m<wbr>Operation<wbr>Undo<wbr>Index</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="_zowe_imperative.operations.html#moperationundolist" class="tsd-kind-icon">m<wbr>Operation<wbr>Undo<wbr>List</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="_zowe_imperative.operations.html#moperationscompletecallback" class="tsd-kind-icon">m<wbr>Operations<wbr>Complete<wbr>Callback</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="_zowe_imperative.operations.html#moverallstatusmessage" class="tsd-kind-icon">m<wbr>Overall<wbr>Status<wbr>Message</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-static"><a href="_zowe_imperative.operations.html#no_output" class="tsd-kind-icon">NO_<wbr>OUTPUT</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-static"><a href="_zowe_imperative.operations.html#no_parms" class="tsd-kind-icon">NO_<wbr>PARMS</a></li>
+							</ul>
+						</section>
+						<section class="tsd-index-section ">
+							<h3>Accessors</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-get-signature tsd-parent-kind-class tsd-is-inherited"><a href="_zowe_imperative.operations.html#allfilescreated" class="tsd-kind-icon">all<wbr>Files<wbr>Created</a></li>
+								<li class="tsd-kind-get-signature tsd-parent-kind-class tsd-is-inherited"><a href="_zowe_imperative.operations.html#filetoundo" class="tsd-kind-icon">file<wbr>ToUndo</a></li>
+								<li class="tsd-kind-get-signature tsd-parent-kind-class tsd-is-inherited"><a href="_zowe_imperative.operations.html#operationname" class="tsd-kind-icon">operation<wbr>Name</a></li>
+								<li class="tsd-kind-get-signature tsd-parent-kind-class tsd-is-inherited"><a href="_zowe_imperative.operations.html#operationresult" class="tsd-kind-icon">operation<wbr>Result</a></li>
+								<li class="tsd-kind-set-signature tsd-parent-kind-class tsd-is-inherited"><a href="_zowe_imperative.operations.html#operationresultmessage" class="tsd-kind-icon">operation<wbr>Result<wbr>Message</a></li>
+								<li class="tsd-kind-get-signature tsd-parent-kind-class tsd-is-inherited"><a href="_zowe_imperative.operations.html#operationsucceeded" class="tsd-kind-icon">operation<wbr>Succeeded</a></li>
+								<li class="tsd-kind-get-signature tsd-parent-kind-class tsd-is-overwrite"><a href="_zowe_imperative.operations.html#percentcomplete" class="tsd-kind-icon">percent<wbr>Complete</a></li>
+								<li class="tsd-kind-get-signature tsd-parent-kind-class tsd-is-inherited"><a href="_zowe_imperative.operations.html#stagename" class="tsd-kind-icon">stage<wbr>Name</a></li>
+								<li class="tsd-kind-get-signature tsd-parent-kind-class tsd-is-overwrite"><a href="_zowe_imperative.operations.html#statusmessage" class="tsd-kind-icon">status<wbr>Message</a></li>
+								<li class="tsd-kind-get-signature tsd-parent-kind-class tsd-is-overwrite"><a href="_zowe_imperative.operations.html#totaloperations" class="tsd-kind-icon">total<wbr>Operations</a></li>
+							</ul>
+						</section>
+						<section class="tsd-index-section ">
+							<h3>Methods</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected"><a href="_zowe_imperative.operations.html#addfilecreated" class="tsd-kind-icon">add<wbr>File<wbr>Created</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-protected"><a href="_zowe_imperative.operations.html#addnextoperation" class="tsd-kind-icon">add<wbr>Next<wbr>Operation</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected"><a href="_zowe_imperative.operations.html#addresult" class="tsd-kind-icon">add<wbr>Result</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected"><a href="_zowe_imperative.operations.html#createfile" class="tsd-kind-icon">create<wbr>File</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-protected"><a href="_zowe_imperative.operations.html#defineoperations" class="tsd-kind-icon">define<wbr>Operations</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-overwrite tsd-is-protected"><a href="_zowe_imperative.operations.html#execute" class="tsd-kind-icon">execute</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><a href="_zowe_imperative.operations.html#executenextoperation" class="tsd-kind-icon">execute<wbr>Next<wbr>Operation</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><a href="_zowe_imperative.operations.html#executenextundo" class="tsd-kind-icon">execute<wbr>Next<wbr>Undo</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-overwrite"><a href="_zowe_imperative.operations.html#executeoperation" class="tsd-kind-icon">execute<wbr>Operation</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-overwrite tsd-is-protected"><a href="_zowe_imperative.operations.html#logoperationbeginmessages" class="tsd-kind-icon">log<wbr>Operation<wbr>Begin<wbr>Messages</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-overwrite"><a href="_zowe_imperative.operations.html#logoperationresults" class="tsd-kind-icon">log<wbr>Operation<wbr>Results</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-protected"><a href="_zowe_imperative.operations.html#operationcompleted" class="tsd-kind-icon">operation<wbr>Completed</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="_zowe_imperative.operations.html#performundo" class="tsd-kind-icon">perform<wbr>Undo</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><a href="_zowe_imperative.operations.html#prepareforundo" class="tsd-kind-icon">prepare<wbr>For<wbr>Undo</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected"><a href="_zowe_imperative.operations.html#printfilescreatedlist" class="tsd-kind-icon">print<wbr>Files<wbr>Created<wbr>List</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected"><a href="_zowe_imperative.operations.html#setoperationdiverge" class="tsd-kind-icon">set<wbr>Operation<wbr>Diverge</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected"><a href="_zowe_imperative.operations.html#setoperationfailed" class="tsd-kind-icon">set<wbr>Operation<wbr>Failed</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected"><a href="_zowe_imperative.operations.html#setoperationundoattempted" class="tsd-kind-icon">set<wbr>Operation<wbr>Undo<wbr>Attempted</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected"><a href="_zowe_imperative.operations.html#setoperationundofailed" class="tsd-kind-icon">set<wbr>Operation<wbr>Undo<wbr>Failed</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected"><a href="_zowe_imperative.operations.html#setoperationundoable" class="tsd-kind-icon">set<wbr>Operation<wbr>Undoable</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-overwrite"><a href="_zowe_imperative.operations.html#setstatusmessage" class="tsd-kind-icon">set<wbr>Status<wbr>Message</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-overwrite tsd-is-protected"><a href="_zowe_imperative.operations.html#undo" class="tsd-kind-icon">undo</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><a href="_zowe_imperative.operations.html#undoopcomplete" class="tsd-kind-icon">undo<wbr>OpComplete</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-static"><a href="_zowe_imperative.operations.html#summarizeresults" class="tsd-kind-icon">summarize<wbr>Results</a></li>
+							</ul>
+						</section>
+					</div>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group ">
+				<h2>Constructors</h2>
+				<section class="tsd-panel tsd-member tsd-kind-constructor tsd-parent-kind-class tsd-is-overwrite">
+					<a name="constructor" class="tsd-anchor"></a>
+					<h3>constructor</h3>
+					<ul class="tsd-signatures tsd-kind-constructor tsd-parent-kind-class tsd-is-overwrite">
+						<li class="tsd-signature tsd-kind-icon">new <wbr>Operations<span class="tsd-signature-symbol">(</span>opName<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, critical<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_zowe_imperative.operations.html" class="tsd-signature-type">Operations</a></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Overrides <a href="_zowe_imperative.operation.html">Operation</a>.<a href="_zowe_imperative.operation.html#constructor">constructor</a></p>
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.3.2/packages/operations/src/Operations.ts#L71">@zowe/imperative/packages/operations/src/Operations.ts:71</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Building an Operations object</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>opName: <span class="tsd-signature-type">string</span></h5>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> critical: <span class="tsd-signature-type">boolean</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="_zowe_imperative.operations.html" class="tsd-signature-type">Operations</a></h4>
+						</li>
+					</ul>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group ">
+				<h2>Properties</h2>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
+					<a name="errormessages" class="tsd-anchor"></a>
+					<h3>error<wbr>Messages</h3>
+					<div class="tsd-signature tsd-kind-icon">error<wbr>Messages<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol"> = []</span></div>
+					<aside class="tsd-sources">
+						<p>Inherited from <a href="_zowe_imperative.operation.html">Operation</a>.<a href="_zowe_imperative.operation.html#errormessages">errorMessages</a></p>
+						<ul>
+							<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.3.2/packages/operations/src/Operation.ts#L102">@zowe/imperative/packages/operations/src/Operation.ts:102</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
+					<a name="infomessages" class="tsd-anchor"></a>
+					<h3>info<wbr>Messages</h3>
+					<div class="tsd-signature tsd-kind-icon">info<wbr>Messages<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol"> = []</span></div>
+					<aside class="tsd-sources">
+						<p>Inherited from <a href="_zowe_imperative.operation.html">Operation</a>.<a href="_zowe_imperative.operation.html#infomessages">infoMessages</a></p>
+						<ul>
+							<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.3.2/packages/operations/src/Operation.ts#L101">@zowe/imperative/packages/operations/src/Operation.ts:101</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+					<a name="log" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagProtected">Protected</span> log</h3>
+					<div class="tsd-signature tsd-kind-icon">log<span class="tsd-signature-symbol">:</span> <a href="_zowe_imperative.logger.html" class="tsd-signature-type">Logger</a></div>
+					<aside class="tsd-sources">
+						<p>Inherited from <a href="_zowe_imperative.operation.html">Operation</a>.<a href="_zowe_imperative.operation.html#log">log</a></p>
+						<ul>
+							<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.3.2/packages/operations/src/Operation.ts#L127">@zowe/imperative/packages/operations/src/Operation.ts:127</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
+					<a name="mcurrentoperation" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> m<wbr>Current<wbr>Operation</h3>
+					<div class="tsd-signature tsd-kind-icon">m<wbr>Current<wbr>Operation<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> = 0</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.3.2/packages/operations/src/Operations.ts#L48">@zowe/imperative/packages/operations/src/Operations.ts:48</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>The current operation that is being executed.</p>
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
+					<a name="minputparameters" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> m<wbr>Input<wbr>Parameters</h3>
+					<div class="tsd-signature tsd-kind-icon">m<wbr>Input<wbr>Parameters<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">T</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.3.2/packages/operations/src/Operations.ts#L71">@zowe/imperative/packages/operations/src/Operations.ts:71</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>The input parameters to this string of operations</p>
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
+					<a name="moperationlist" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> m<wbr>Operation<wbr>List</h3>
+					<div class="tsd-signature tsd-kind-icon">m<wbr>Operation<wbr>List<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Array</span><span class="tsd-signature-symbol">&lt;</span><a href="_zowe_imperative.operation.html" class="tsd-signature-type">Operation</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> = []</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.3.2/packages/operations/src/Operations.ts#L36">@zowe/imperative/packages/operations/src/Operations.ts:36</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>The list of operations that should be executed in sequence</p>
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+					<a name="moperationresult" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagProtected">Protected</span> m<wbr>Operation<wbr>Result</h3>
+					<div class="tsd-signature tsd-kind-icon">m<wbr>Operation<wbr>Result<span class="tsd-signature-symbol">:</span> <a href="../interfaces/_zowe_imperative.ioperationresult.html" class="tsd-signature-type">IOperationResult</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></div>
+					<aside class="tsd-sources">
+						<p>Inherited from <a href="_zowe_imperative.operation.html">Operation</a>.<a href="_zowe_imperative.operation.html#moperationresult">mOperationResult</a></p>
+						<ul>
+							<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.3.2/packages/operations/src/Operation.ts#L136">@zowe/imperative/packages/operations/src/Operation.ts:136</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>the result from the operation</p>
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+					<a name="moperationresults" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagProtected">Protected</span> m<wbr>Operation<wbr>Results</h3>
+					<div class="tsd-signature tsd-kind-icon">m<wbr>Operation<wbr>Results<span class="tsd-signature-symbol">:</span> <a href="../interfaces/_zowe_imperative.ioperationresult.html" class="tsd-signature-type">IOperationResult</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> = null</span></div>
+					<aside class="tsd-sources">
+						<p>Inherited from <a href="_zowe_imperative.operation.html">Operation</a>.<a href="_zowe_imperative.operation.html#moperationresults">mOperationResults</a></p>
+						<ul>
+							<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.3.2/packages/operations/src/Operation.ts#L131">@zowe/imperative/packages/operations/src/Operation.ts:131</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>The full list of operation results</p>
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
+					<a name="moperationundoindex" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> m<wbr>Operation<wbr>Undo<wbr>Index</h3>
+					<div class="tsd-signature tsd-kind-icon">m<wbr>Operation<wbr>Undo<wbr>Index<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> = 0</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.3.2/packages/operations/src/Operations.ts#L66">@zowe/imperative/packages/operations/src/Operations.ts:66</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>The current operation undo index.</p>
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
+					<a name="moperationundolist" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> m<wbr>Operation<wbr>Undo<wbr>List</h3>
+					<div class="tsd-signature tsd-kind-icon">m<wbr>Operation<wbr>Undo<wbr>List<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Array</span><span class="tsd-signature-symbol">&lt;</span><a href="_zowe_imperative.operation.html" class="tsd-signature-type">Operation</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> = []</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.3.2/packages/operations/src/Operations.ts#L60">@zowe/imperative/packages/operations/src/Operations.ts:60</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>In the event of an undo request, we will prepare a list that will be traversed to complete
+							each undo function.</p>
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
+					<a name="moperationscompletecallback" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> m<wbr>Operations<wbr>Complete<wbr>Callback</h3>
+					<div class="tsd-signature tsd-kind-icon">m<wbr>Operations<wbr>Complete<wbr>Callback<span class="tsd-signature-symbol">:</span> <a href="../modules/_zowe_imperative.html#ioperationresultready" class="tsd-signature-type">IOperationResultReady</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.3.2/packages/operations/src/Operations.ts#L53">@zowe/imperative/packages/operations/src/Operations.ts:53</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>the callers operations complete callback</p>
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
+					<a name="moverallstatusmessage" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> m<wbr>Overall<wbr>Status<wbr>Message</h3>
+					<div class="tsd-signature tsd-kind-icon">m<wbr>Overall<wbr>Status<wbr>Message<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.3.2/packages/operations/src/Operations.ts#L42">@zowe/imperative/packages/operations/src/Operations.ts:42</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Optionally give a status message in your Operations object instead of
+							letting the message from your sub-operations come through.</p>
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-static">
+					<a name="no_output" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> <span class="tsd-flag ts-flagReadonly">Readonly</span> NO_<wbr>OUTPUT</h3>
+					<div class="tsd-signature tsd-kind-icon">NO_<wbr>OUTPUT<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">any</span><span class="tsd-signature-symbol"> = null</span></div>
+					<aside class="tsd-sources">
+						<p>Inherited from <a href="_zowe_imperative.operation.html">Operation</a>.<a href="_zowe_imperative.operation.html#no_output">NO_OUTPUT</a></p>
+						<ul>
+							<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.3.2/packages/operations/src/Operation.ts#L35">@zowe/imperative/packages/operations/src/Operation.ts:35</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-static">
+					<a name="no_parms" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> <span class="tsd-flag ts-flagReadonly">Readonly</span> NO_<wbr>PARMS</h3>
+					<div class="tsd-signature tsd-kind-icon">NO_<wbr>PARMS<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">any</span><span class="tsd-signature-symbol"> = null</span></div>
+					<aside class="tsd-sources">
+						<p>Inherited from <a href="_zowe_imperative.operation.html">Operation</a>.<a href="_zowe_imperative.operation.html#no_parms">NO_PARMS</a></p>
+						<ul>
+							<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.3.2/packages/operations/src/Operation.ts#L33">@zowe/imperative/packages/operations/src/Operation.ts:33</a></li>
+						</ul>
+					</aside>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group ">
+				<h2>Accessors</h2>
+				<section class="tsd-panel tsd-member tsd-kind-get-signature tsd-parent-kind-class tsd-is-inherited">
+					<a name="allfilescreated" class="tsd-anchor"></a>
+					<h3>all<wbr>Files<wbr>Created</h3>
+					<ul class="tsd-signatures tsd-kind-get-signature tsd-parent-kind-class tsd-is-inherited">
+						<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">get</span> allFilesCreated<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Inherited from <a href="_zowe_imperative.operation.html">Operation</a>.<a href="_zowe_imperative.operation.html#allfilescreated">allFilesCreated</a></p>
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.3.2/packages/operations/src/Operation.ts#L278">@zowe/imperative/packages/operations/src/Operation.ts:278</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Accessor method to obtain all the files created using the file creator service</p>
+								</div>
+							</div>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-get-signature tsd-parent-kind-class tsd-is-inherited">
+					<a name="filetoundo" class="tsd-anchor"></a>
+					<h3>file<wbr>ToUndo</h3>
+					<ul class="tsd-signatures tsd-kind-get-signature tsd-parent-kind-class tsd-is-inherited">
+						<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">get</span> fileToUndo<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Inherited from <a href="_zowe_imperative.operation.html">Operation</a>.<a href="_zowe_imperative.operation.html#filetoundo">fileToUndo</a></p>
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.3.2/packages/operations/src/Operation.ts#L286">@zowe/imperative/packages/operations/src/Operation.ts:286</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Accessor method to obtain all the files created that are marked as delete on undo</p>
+								</div>
+							</div>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-get-signature tsd-parent-kind-class tsd-is-inherited">
+					<a name="operationname" class="tsd-anchor"></a>
+					<h3>operation<wbr>Name</h3>
+					<ul class="tsd-signatures tsd-kind-get-signature tsd-parent-kind-class tsd-is-inherited">
+						<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">get</span> operationName<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Inherited from <a href="_zowe_imperative.operation.html">Operation</a>.<a href="_zowe_imperative.operation.html#operationname">operationName</a></p>
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.3.2/packages/operations/src/Operation.ts#L294">@zowe/imperative/packages/operations/src/Operation.ts:294</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Get the operation name for display and other purposes</p>
+								</div>
+							</div>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-get-signature tsd-parent-kind-class tsd-is-inherited">
+					<a name="operationresult" class="tsd-anchor"></a>
+					<h3>operation<wbr>Result</h3>
+					<ul class="tsd-signatures tsd-kind-get-signature tsd-parent-kind-class tsd-is-inherited">
+						<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">get</span> operationResult<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_imperative.ioperationresult.html" class="tsd-signature-type">IOperationResult</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Inherited from <a href="_zowe_imperative.operation.html">Operation</a>.<a href="_zowe_imperative.operation.html#operationresult">operationResult</a></p>
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.3.2/packages/operations/src/Operation.ts#L259">@zowe/imperative/packages/operations/src/Operation.ts:259</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Accessor method for operation result</p>
+								</div>
+							</div>
+							<h4 class="tsd-returns-title">Returns <a href="../interfaces/_zowe_imperative.ioperationresult.html" class="tsd-signature-type">IOperationResult</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></h4>
+							<p>: The operation result</p>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-set-signature tsd-parent-kind-class tsd-is-inherited">
+					<a name="operationresultmessage" class="tsd-anchor"></a>
+					<h3>operation<wbr>Result<wbr>Message</h3>
+					<ul class="tsd-signatures tsd-kind-set-signature tsd-parent-kind-class tsd-is-inherited">
+						<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">set</span> operationResultMessage<span class="tsd-signature-symbol">(</span>message<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Inherited from <a href="_zowe_imperative.operation.html">Operation</a>.<a href="_zowe_imperative.operation.html#operationresultmessage">operationResultMessage</a></p>
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.3.2/packages/operations/src/Operation.ts#L319">@zowe/imperative/packages/operations/src/Operation.ts:319</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Append an additional message to the result message buffer</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>message: <span class="tsd-signature-type">string</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-get-signature tsd-parent-kind-class tsd-is-inherited">
+					<a name="operationsucceeded" class="tsd-anchor"></a>
+					<h3>operation<wbr>Succeeded</h3>
+					<ul class="tsd-signatures tsd-kind-get-signature tsd-parent-kind-class tsd-is-inherited">
+						<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">get</span> operationSucceeded<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Inherited from <a href="_zowe_imperative.operation.html">Operation</a>.<a href="_zowe_imperative.operation.html#operationsucceeded">operationSucceeded</a></p>
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.3.2/packages/operations/src/Operation.ts#L328">@zowe/imperative/packages/operations/src/Operation.ts:328</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Determine if the operation failed</p>
+								</div>
+							</div>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
+							<p>: If the operation failed</p>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-get-signature tsd-parent-kind-class tsd-is-overwrite">
+					<a name="percentcomplete" class="tsd-anchor"></a>
+					<h3>percent<wbr>Complete</h3>
+					<ul class="tsd-signatures tsd-kind-get-signature tsd-parent-kind-class tsd-is-overwrite">
+						<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">get</span> percentComplete<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Overrides <a href="_zowe_imperative.operation.html">Operation</a>.<a href="_zowe_imperative.operation.html#percentcomplete">percentComplete</a></p>
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.3.2/packages/operations/src/Operations.ts#L125">@zowe/imperative/packages/operations/src/Operations.ts:125</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>What percent complete is the Operations as a whole?s</p>
+								</div>
+							</div>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">number</span></h4>
+							<p>percentComplete weighted against how many operations are complete</p>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-get-signature tsd-parent-kind-class tsd-is-inherited">
+					<a name="stagename" class="tsd-anchor"></a>
+					<h3>stage<wbr>Name</h3>
+					<ul class="tsd-signatures tsd-kind-get-signature tsd-parent-kind-class tsd-is-inherited">
+						<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">get</span> stageName<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../enums/_zowe_imperative.taskstage.html" class="tsd-signature-type">TaskStage</a></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Inherited from <a href="_zowe_imperative.operation.html">Operation</a>.<a href="_zowe_imperative.operation.html#stagename">stageName</a></p>
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.3.2/packages/operations/src/Operation.ts#L270">@zowe/imperative/packages/operations/src/Operation.ts:270</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Accessor method for operation status</p>
+								</div>
+							</div>
+							<h4 class="tsd-returns-title">Returns <a href="../enums/_zowe_imperative.taskstage.html" class="tsd-signature-type">TaskStage</a></h4>
+							<p>: The operation status/ stage name e.g. FAILED</p>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-get-signature tsd-parent-kind-class tsd-is-overwrite">
+					<a name="statusmessage" class="tsd-anchor"></a>
+					<h3>status<wbr>Message</h3>
+					<ul class="tsd-signatures tsd-kind-get-signature tsd-parent-kind-class tsd-is-overwrite">
+						<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">get</span> statusMessage<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Overrides <a href="_zowe_imperative.operation.html">Operation</a>.<a href="_zowe_imperative.operation.html#statusmessage">statusMessage</a></p>
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.3.2/packages/operations/src/Operations.ts#L111">@zowe/imperative/packages/operations/src/Operations.ts:111</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-get-signature tsd-parent-kind-class tsd-is-overwrite">
+					<a name="totaloperations" class="tsd-anchor"></a>
+					<h3>total<wbr>Operations</h3>
+					<ul class="tsd-signatures tsd-kind-get-signature tsd-parent-kind-class tsd-is-overwrite">
+						<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">get</span> totalOperations<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Overrides <a href="_zowe_imperative.operation.html">Operation</a>.<a href="_zowe_imperative.operation.html#totaloperations">totalOperations</a></p>
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.3.2/packages/operations/src/Operations.ts#L147">@zowe/imperative/packages/operations/src/Operations.ts:147</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Count the total number of base operation objects</p>
+								</div>
+							</div>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">number</span></h4>
+						</li>
+					</ul>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group ">
+				<h2>Methods</h2>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+					<a name="addfilecreated" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagProtected">Protected</span> add<wbr>File<wbr>Created</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+						<li class="tsd-signature tsd-kind-icon">add<wbr>File<wbr>Created<span class="tsd-signature-symbol">(</span>fileUndoable<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span>, file<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Inherited from <a href="_zowe_imperative.operation.html">Operation</a>.<a href="_zowe_imperative.operation.html#addfilecreated">addFileCreated</a></p>
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.3.2/packages/operations/src/Operation.ts#L448">@zowe/imperative/packages/operations/src/Operation.ts:448</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Add a file created by the operation to the list of all files created and optionally mark this file
+									as undoable, which will cause the undo operation to attempt to remove the file or directory.</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>fileUndoable: <span class="tsd-signature-type">boolean</span></h5>
+								</li>
+								<li>
+									<h5>file: <span class="tsd-signature-type">string</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-protected">
+					<a name="addnextoperation" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagProtected">Protected</span> add<wbr>Next<wbr>Operation</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-protected">
+						<li class="tsd-signature tsd-kind-icon">add<wbr>Next<wbr>Operation<span class="tsd-signature-symbol">(</span>newOperation<span class="tsd-signature-symbol">: </span><a href="_zowe_imperative.operation.html" class="tsd-signature-type">Operation</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.3.2/packages/operations/src/Operations.ts#L160">@zowe/imperative/packages/operations/src/Operations.ts:160</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Add a new operation to the list of operations to be executed.</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>newOperation: <a href="_zowe_imperative.operation.html" class="tsd-signature-type">Operation</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+					<a name="addresult" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagProtected">Protected</span> add<wbr>Result</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+						<li class="tsd-signature tsd-kind-icon">add<wbr>Result<span class="tsd-signature-symbol">(</span>result<span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_imperative.ioperationresult.html" class="tsd-signature-type">IOperationResult</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Inherited from <a href="_zowe_imperative.operation.html">Operation</a>.<a href="_zowe_imperative.operation.html#addresult">addResult</a></p>
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.3.2/packages/operations/src/Operation.ts#L384">@zowe/imperative/packages/operations/src/Operation.ts:384</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Add the result to the end of the results list</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>result: <a href="../interfaces/_zowe_imperative.ioperationresult.html" class="tsd-signature-type">IOperationResult</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+					<a name="createfile" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagProtected">Protected</span> create<wbr>File</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+						<li class="tsd-signature tsd-kind-icon">create<wbr>File<span class="tsd-signature-symbol">(</span>filePath<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, message<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, saveFileNameForUndo<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span>, isDir<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Inherited from <a href="_zowe_imperative.operation.html">Operation</a>.<a href="_zowe_imperative.operation.html#createfile">createFile</a></p>
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.3.2/packages/operations/src/Operation.ts#L409">@zowe/imperative/packages/operations/src/Operation.ts:409</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Use this method to create files and optionally push them onto the files created stack that will
+									be referenced when an undo is required.</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>filePath: <span class="tsd-signature-type">string</span></h5>
+								</li>
+								<li>
+									<h5>message: <span class="tsd-signature-type">string</span></h5>
+								</li>
+								<li>
+									<h5>saveFileNameForUndo: <span class="tsd-signature-type">boolean</span></h5>
+								</li>
+								<li>
+									<h5>isDir: <span class="tsd-signature-type">boolean</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-protected">
+					<a name="defineoperations" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagProtected">Protected</span> <span class="tsd-flag ts-flagAbstract">Abstract</span> define<wbr>Operations</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-protected">
+						<li class="tsd-signature tsd-kind-icon">define<wbr>Operations<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.3.2/packages/operations/src/Operations.ts#L233">@zowe/imperative/packages/operations/src/Operations.ts:233</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Abstract method that must be implemented by the subclass. In this method, you invoke &quot;addNextOperation&quot;
+									to add all the operations that must be performed when &quot;executeOperation&quot; is invoked.</p>
+								</div>
+							</div>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-overwrite tsd-is-protected">
+					<a name="execute" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagProtected">Protected</span> execute</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-overwrite tsd-is-protected">
+						<li class="tsd-signature tsd-kind-icon">execute<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Overrides <a href="_zowe_imperative.operation.html">Operation</a>.<a href="_zowe_imperative.operation.html#execute">execute</a></p>
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.3.2/packages/operations/src/Operations.ts#L167">@zowe/imperative/packages/operations/src/Operations.ts:167</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>This is a placeholder and is never directly called.</p>
+								</div>
+							</div>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-private">
+					<a name="executenextoperation" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> execute<wbr>Next<wbr>Operation</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-private">
+						<li class="tsd-signature tsd-kind-icon">execute<wbr>Next<wbr>Operation<span class="tsd-signature-symbol">(</span>input<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.3.2/packages/operations/src/Operations.ts#L239">@zowe/imperative/packages/operations/src/Operations.ts:239</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>If more operations are available, execute the next operation in the list</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>input: <span class="tsd-signature-type">any</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-private">
+					<a name="executenextundo" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> execute<wbr>Next<wbr>Undo</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-private">
+						<li class="tsd-signature tsd-kind-icon">execute<wbr>Next<wbr>Undo<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.3.2/packages/operations/src/Operations.ts#L296">@zowe/imperative/packages/operations/src/Operations.ts:296</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Execute the next undo in the list. If the undo index is 0 when this function is called, then we can
+									invoke the callers callback as all undos are complete.</p>
+								</div>
+							</div>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-overwrite">
+					<a name="executeoperation" class="tsd-anchor"></a>
+					<h3>execute<wbr>Operation</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-overwrite">
+						<li class="tsd-signature tsd-kind-icon">execute<wbr>Operation<span class="tsd-signature-symbol">(</span>inputParameters<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">T</span>, operationComplete<span class="tsd-signature-symbol">: </span><a href="../modules/_zowe_imperative.html#ioperationresultready" class="tsd-signature-type">IOperationResultReady</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Overrides <a href="_zowe_imperative.operation.html">Operation</a>.<a href="_zowe_imperative.operation.html#executeoperation">executeOperation</a></p>
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.3.2/packages/operations/src/Operations.ts#L86">@zowe/imperative/packages/operations/src/Operations.ts:86</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>The public interface to Operations. This method allows consumers to initiate the operation sequence.</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>inputParameters: <span class="tsd-signature-type">T</span></h5>
+								</li>
+								<li>
+									<h5>operationComplete: <a href="../modules/_zowe_imperative.html#ioperationresultready" class="tsd-signature-type">IOperationResultReady</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+							<p>: The operation results</p>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-overwrite tsd-is-protected">
+					<a name="logoperationbeginmessages" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagProtected">Protected</span> log<wbr>Operation<wbr>Begin<wbr>Messages</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-overwrite tsd-is-protected">
+						<li class="tsd-signature tsd-kind-icon">log<wbr>Operation<wbr>Begin<wbr>Messages<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Overrides <a href="_zowe_imperative.operation.html">Operation</a>.<a href="_zowe_imperative.operation.html#logoperationbeginmessages">logOperationBeginMessages</a></p>
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.3.2/packages/operations/src/Operations.ts#L181">@zowe/imperative/packages/operations/src/Operations.ts:181</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Log that this is a set of operations that are about to begin.</p>
+								</div>
+							</div>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-overwrite">
+					<a name="logoperationresults" class="tsd-anchor"></a>
+					<h3>log<wbr>Operation<wbr>Results</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-overwrite">
+						<li class="tsd-signature tsd-kind-icon">log<wbr>Operation<wbr>Results<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Overrides <a href="_zowe_imperative.operation.html">Operation</a>.<a href="_zowe_imperative.operation.html#logoperationresults">logOperationResults</a></p>
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.3.2/packages/operations/src/Operations.ts#L139">@zowe/imperative/packages/operations/src/Operations.ts:139</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Log that the set of operations have completed.</p>
+								</div>
+							</div>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-protected">
+					<a name="operationcompleted" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagProtected">Protected</span> operation<wbr>Completed</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-protected">
+						<li class="tsd-signature tsd-kind-icon">operation<wbr>Completed<span class="tsd-signature-symbol">(</span>output<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span>, operationResult<span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_imperative.ioperationresult.html" class="tsd-signature-type">IOperationResult</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.3.2/packages/operations/src/Operations.ts#L191">@zowe/imperative/packages/operations/src/Operations.ts:191</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Callback invoked when the operation completes. Passed the result object of the operation.</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>output: <span class="tsd-signature-type">any</span></h5>
+								</li>
+								<li>
+									<h5>operationResult: <a href="../interfaces/_zowe_imperative.ioperationresult.html" class="tsd-signature-type">IOperationResult</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+					<a name="performundo" class="tsd-anchor"></a>
+					<h3>perform<wbr>Undo</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+						<li class="tsd-signature tsd-kind-icon">perform<wbr>Undo<span class="tsd-signature-symbol">(</span>undoCompletedCallback<span class="tsd-signature-symbol">: </span><a href="../modules/_zowe_imperative.html#ioperationundocompleted" class="tsd-signature-type">IOperationUndoCompleted</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Inherited from <a href="_zowe_imperative.operation.html">Operation</a>.<a href="_zowe_imperative.operation.html#performundo">performUndo</a></p>
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.3.2/packages/operations/src/Operation.ts#L242">@zowe/imperative/packages/operations/src/Operation.ts:242</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>The perform undo method sets that an attempt was made to perform the undo and invokes the
+									undo method of the implemented operation.</p>
+								</div>
+								<p>Before invoking, any files that have been created and saved on the undo-able list will be cleaned.</p>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>undoCompletedCallback: <a href="../modules/_zowe_imperative.html#ioperationundocompleted" class="tsd-signature-type">IOperationUndoCompleted</a></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-private">
+					<a name="prepareforundo" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> prepare<wbr>For<wbr>Undo</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-private">
+						<li class="tsd-signature tsd-kind-icon">prepare<wbr>For<wbr>Undo<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.3.2/packages/operations/src/Operations.ts#L269">@zowe/imperative/packages/operations/src/Operations.ts:269</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Prepare a list of operations to &#39;undo&#39;, we will traverse the list calling the undo function of
+									each operation. Only operations that are marked as &#39;undoa-able&#39; will be called.</p>
+								</div>
+								<p>TODO - we could probably fire off all undo functions here async, but for now they are serial</p>
+							</div>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+					<a name="printfilescreatedlist" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagProtected">Protected</span> print<wbr>Files<wbr>Created<wbr>List</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+						<li class="tsd-signature tsd-kind-icon">print<wbr>Files<wbr>Created<wbr>List<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Inherited from <a href="_zowe_imperative.operation.html">Operation</a>.<a href="_zowe_imperative.operation.html#printfilescreatedlist">printFilesCreatedList</a></p>
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.3.2/packages/operations/src/Operation.ts#L433">@zowe/imperative/packages/operations/src/Operation.ts:433</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Method to print all the files created by the file creator service.</p>
+								</div>
+							</div>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+					<a name="setoperationdiverge" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagProtected">Protected</span> set<wbr>Operation<wbr>Diverge</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+						<li class="tsd-signature tsd-kind-icon">set<wbr>Operation<wbr>Diverge<span class="tsd-signature-symbol">(</span>operation<span class="tsd-signature-symbol">: </span><a href="_zowe_imperative.operation.html" class="tsd-signature-type">Operation</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span>, continuePathAfterDiverge<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Inherited from <a href="_zowe_imperative.operation.html">Operation</a>.<a href="_zowe_imperative.operation.html#setoperationdiverge">setOperationDiverge</a></p>
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.3.2/packages/operations/src/Operation.ts#L347">@zowe/imperative/packages/operations/src/Operation.ts:347</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>If the operation decides that a different path is required. You can set the next operation to complete
+									and whether or not you should continue down the original path</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>operation: <a href="_zowe_imperative.operation.html" class="tsd-signature-type">Operation</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></h5>
+								</li>
+								<li>
+									<h5>continuePathAfterDiverge: <span class="tsd-signature-type">boolean</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+					<a name="setoperationfailed" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagProtected">Protected</span> set<wbr>Operation<wbr>Failed</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+						<li class="tsd-signature tsd-kind-icon">set<wbr>Operation<wbr>Failed<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Inherited from <a href="_zowe_imperative.operation.html">Operation</a>.<a href="_zowe_imperative.operation.html#setoperationfailed">setOperationFailed</a></p>
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.3.2/packages/operations/src/Operation.ts#L301">@zowe/imperative/packages/operations/src/Operation.ts:301</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Set method to indicate that the operation failed.</p>
+								</div>
+							</div>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+					<a name="setoperationundoattempted" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagProtected">Protected</span> set<wbr>Operation<wbr>Undo<wbr>Attempted</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+						<li class="tsd-signature tsd-kind-icon">set<wbr>Operation<wbr>Undo<wbr>Attempted<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Inherited from <a href="_zowe_imperative.operation.html">Operation</a>.<a href="_zowe_imperative.operation.html#setoperationundoattempted">setOperationUndoAttempted</a></p>
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.3.2/packages/operations/src/Operation.ts#L356">@zowe/imperative/packages/operations/src/Operation.ts:356</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Set the operation undo attempted (whether it succeed or failed is up to the undo method to set)</p>
+								</div>
+							</div>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+					<a name="setoperationundofailed" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagProtected">Protected</span> set<wbr>Operation<wbr>Undo<wbr>Failed</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+						<li class="tsd-signature tsd-kind-icon">set<wbr>Operation<wbr>Undo<wbr>Failed<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Inherited from <a href="_zowe_imperative.operation.html">Operation</a>.<a href="_zowe_imperative.operation.html#setoperationundofailed">setOperationUndoFailed</a></p>
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.3.2/packages/operations/src/Operation.ts#L335">@zowe/imperative/packages/operations/src/Operation.ts:335</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Set that the operation undo failed. This is for diagnostic purposes.</p>
+								</div>
+							</div>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+					<a name="setoperationundoable" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagProtected">Protected</span> set<wbr>Operation<wbr>Undoable</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+						<li class="tsd-signature tsd-kind-icon">set<wbr>Operation<wbr>Undoable<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Inherited from <a href="_zowe_imperative.operation.html">Operation</a>.<a href="_zowe_imperative.operation.html#setoperationundoable">setOperationUndoable</a></p>
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.3.2/packages/operations/src/Operation.ts#L311">@zowe/imperative/packages/operations/src/Operation.ts:311</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Set method to indicate that the operation is &quot;undoable&quot;.</p>
+								</div>
+								<p>This means that if an operation fails, we will &#39;rollback&#39; through the completed operations
+								and undo any that have occurred.</p>
+							</div>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-overwrite">
+					<a name="setstatusmessage" class="tsd-anchor"></a>
+					<h3>set<wbr>Status<wbr>Message</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-overwrite">
+						<li class="tsd-signature tsd-kind-icon">set<wbr>Status<wbr>Message<span class="tsd-signature-symbol">(</span>message<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, <span class="tsd-signature-symbol">...</span>args<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Overrides <a href="_zowe_imperative.operation.html">Operation</a>.<a href="_zowe_imperative.operation.html#setstatusmessage">setStatusMessage</a></p>
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.3.2/packages/operations/src/Operations.ts#L103">@zowe/imperative/packages/operations/src/Operations.ts:103</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p> Set the status message for the overall Operations object,
+									which takes precedence over the sub-operations&#39; messages</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>message: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>the message,  including any templates you want replaced like %s or &quot;{{myObject}}&quot;</p>
+									</div>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagRest">Rest</span> <span class="tsd-signature-symbol">...</span>args: <span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>variable args as allowed by printf-like syntax or {myObject: this.myObject}</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
+							<p>the final translated and formatted string (in case you want to log it etc.)</p>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-overwrite tsd-is-protected">
+					<a name="undo" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagProtected">Protected</span> undo</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-overwrite tsd-is-protected">
+						<li class="tsd-signature tsd-kind-icon">undo<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Overrides <a href="_zowe_imperative.operation.html">Operation</a>.<a href="_zowe_imperative.operation.html#undo">undo</a></p>
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.3.2/packages/operations/src/Operations.ts#L174">@zowe/imperative/packages/operations/src/Operations.ts:174</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Perform all undos if the undo function is called for an Operations</p>
+								</div>
+							</div>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-private">
+					<a name="undoopcomplete" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> undo<wbr>OpComplete</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-private">
+						<li class="tsd-signature tsd-kind-icon">undo<wbr>OpComplete<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.3.2/packages/operations/src/Operations.ts#L312">@zowe/imperative/packages/operations/src/Operations.ts:312</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Undo operation completed callback. Probably unnecessary.</p>
+								</div>
+							</div>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-static">
+					<a name="summarizeresults" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> summarize<wbr>Results</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-static">
+						<li class="tsd-signature tsd-kind-icon">summarize<wbr>Results<span class="tsd-signature-symbol">(</span>operationResults<span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_imperative.ioperationresult.html" class="tsd-signature-type">IOperationResult</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Inherited from <a href="_zowe_imperative.operation.html">Operation</a>.<a href="_zowe_imperative.operation.html#summarizeresults">summarizeResults</a></p>
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.3.2/packages/operations/src/Operation.ts#L37">@zowe/imperative/packages/operations/src/Operation.ts:37</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>operationResults: <a href="../interfaces/_zowe_imperative.ioperationresult.html" class="tsd-signature-type">IOperationResult</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
+						</li>
+					</ul>
+				</section>
+			</section>
+		</div>
+		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
+			<nav class="tsd-navigation primary">
+				<ul>
+					<li class="globals  ">
+						<a href="../globals.html"><em>Globals</em></a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_core_for_zowe_sdk.html">@zowe/core-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class="current tsd-kind-module">
+						<a href="../modules/_zowe_imperative.html">@zowe/imperative</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_provisioning_for_zowe_sdk.html">@zowe/provisioning-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_zos_console_for_zowe_sdk.html">@zowe/zos-<wbr>console-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_zos_files_for_zowe_sdk.html">@zowe/zos-<wbr>files-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_zos_jobs_for_zowe_sdk.html">@zowe/zos-<wbr>jobs-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_zos_logs_for_zowe_sdk.html">@zowe/zos-<wbr>logs-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_zos_tso_for_zowe_sdk.html">@zowe/zos-<wbr>tso-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_zos_uss_for_zowe_sdk.html">@zowe/zos-<wbr>uss-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_zos_workflows_for_zowe_sdk.html">@zowe/zos-<wbr>workflows-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_zosmf_for_zowe_sdk.html">@zowe/zosmf-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+				</ul>
+			</nav>
+			<nav class="tsd-navigation secondary menu-sticky">
+				<ul class="before-current">
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_core_for_zowe_sdk.html" class="tsd-kind-icon">@zowe/core-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+				</ul>
+				<ul class="current">
+					<li class="current tsd-kind-module">
+						<a href="../modules/_zowe_imperative.html" class="tsd-kind-icon">@zowe/imperative</a>
+						<ul>
+							<li class="current tsd-kind-class tsd-parent-kind-module tsd-has-type-parameter">
+								<a href="_zowe_imperative.operations.html" class="tsd-kind-icon">Operations</a>
+								<ul>
+									<li class=" tsd-kind-constructor tsd-parent-kind-class tsd-is-overwrite">
+										<a href="_zowe_imperative.operations.html#constructor" class="tsd-kind-icon">constructor</a>
+									</li>
+									<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
+										<a href="_zowe_imperative.operations.html#errormessages" class="tsd-kind-icon">error<wbr>Messages</a>
+									</li>
+									<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
+										<a href="_zowe_imperative.operations.html#infomessages" class="tsd-kind-icon">info<wbr>Messages</a>
+									</li>
+									<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+										<a href="_zowe_imperative.operations.html#log" class="tsd-kind-icon">log</a>
+									</li>
+									<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
+										<a href="_zowe_imperative.operations.html#mcurrentoperation" class="tsd-kind-icon">m<wbr>Current<wbr>Operation</a>
+									</li>
+									<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
+										<a href="_zowe_imperative.operations.html#minputparameters" class="tsd-kind-icon">m<wbr>Input<wbr>Parameters</a>
+									</li>
+									<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
+										<a href="_zowe_imperative.operations.html#moperationlist" class="tsd-kind-icon">m<wbr>Operation<wbr>List</a>
+									</li>
+									<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+										<a href="_zowe_imperative.operations.html#moperationresult" class="tsd-kind-icon">m<wbr>Operation<wbr>Result</a>
+									</li>
+									<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+										<a href="_zowe_imperative.operations.html#moperationresults" class="tsd-kind-icon">m<wbr>Operation<wbr>Results</a>
+									</li>
+									<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
+										<a href="_zowe_imperative.operations.html#moperationundoindex" class="tsd-kind-icon">m<wbr>Operation<wbr>Undo<wbr>Index</a>
+									</li>
+									<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
+										<a href="_zowe_imperative.operations.html#moperationundolist" class="tsd-kind-icon">m<wbr>Operation<wbr>Undo<wbr>List</a>
+									</li>
+									<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
+										<a href="_zowe_imperative.operations.html#moperationscompletecallback" class="tsd-kind-icon">m<wbr>Operations<wbr>Complete<wbr>Callback</a>
+									</li>
+									<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
+										<a href="_zowe_imperative.operations.html#moverallstatusmessage" class="tsd-kind-icon">m<wbr>Overall<wbr>Status<wbr>Message</a>
+									</li>
+									<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-static">
+										<a href="_zowe_imperative.operations.html#no_output" class="tsd-kind-icon">NO_<wbr>OUTPUT</a>
+									</li>
+									<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-static">
+										<a href="_zowe_imperative.operations.html#no_parms" class="tsd-kind-icon">NO_<wbr>PARMS</a>
+									</li>
+									<li class=" tsd-kind-get-signature tsd-parent-kind-class tsd-is-inherited">
+										<a href="_zowe_imperative.operations.html#allfilescreated" class="tsd-kind-icon">all<wbr>Files<wbr>Created</a>
+									</li>
+									<li class=" tsd-kind-get-signature tsd-parent-kind-class tsd-is-inherited">
+										<a href="_zowe_imperative.operations.html#filetoundo" class="tsd-kind-icon">file<wbr>ToUndo</a>
+									</li>
+									<li class=" tsd-kind-get-signature tsd-parent-kind-class tsd-is-inherited">
+										<a href="_zowe_imperative.operations.html#operationname" class="tsd-kind-icon">operation<wbr>Name</a>
+									</li>
+									<li class=" tsd-kind-get-signature tsd-parent-kind-class tsd-is-inherited">
+										<a href="_zowe_imperative.operations.html#operationresult" class="tsd-kind-icon">operation<wbr>Result</a>
+									</li>
+									<li class=" tsd-kind-set-signature tsd-parent-kind-class tsd-is-inherited">
+										<a href="_zowe_imperative.operations.html#operationresultmessage" class="tsd-kind-icon">operation<wbr>Result<wbr>Message</a>
+									</li>
+									<li class=" tsd-kind-get-signature tsd-parent-kind-class tsd-is-inherited">
+										<a href="_zowe_imperative.operations.html#operationsucceeded" class="tsd-kind-icon">operation<wbr>Succeeded</a>
+									</li>
+									<li class=" tsd-kind-get-signature tsd-parent-kind-class tsd-is-overwrite">
+										<a href="_zowe_imperative.operations.html#percentcomplete" class="tsd-kind-icon">percent<wbr>Complete</a>
+									</li>
+									<li class=" tsd-kind-get-signature tsd-parent-kind-class tsd-is-inherited">
+										<a href="_zowe_imperative.operations.html#stagename" class="tsd-kind-icon">stage<wbr>Name</a>
+									</li>
+									<li class=" tsd-kind-get-signature tsd-parent-kind-class tsd-is-overwrite">
+										<a href="_zowe_imperative.operations.html#statusmessage" class="tsd-kind-icon">status<wbr>Message</a>
+									</li>
+									<li class=" tsd-kind-get-signature tsd-parent-kind-class tsd-is-overwrite">
+										<a href="_zowe_imperative.operations.html#totaloperations" class="tsd-kind-icon">total<wbr>Operations</a>
+									</li>
+									<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+										<a href="_zowe_imperative.operations.html#addfilecreated" class="tsd-kind-icon">add<wbr>File<wbr>Created</a>
+									</li>
+									<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-protected">
+										<a href="_zowe_imperative.operations.html#addnextoperation" class="tsd-kind-icon">add<wbr>Next<wbr>Operation</a>
+									</li>
+									<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+										<a href="_zowe_imperative.operations.html#addresult" class="tsd-kind-icon">add<wbr>Result</a>
+									</li>
+									<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+										<a href="_zowe_imperative.operations.html#createfile" class="tsd-kind-icon">create<wbr>File</a>
+									</li>
+									<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-protected">
+										<a href="_zowe_imperative.operations.html#defineoperations" class="tsd-kind-icon">define<wbr>Operations</a>
+									</li>
+									<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-overwrite tsd-is-protected">
+										<a href="_zowe_imperative.operations.html#execute" class="tsd-kind-icon">execute</a>
+									</li>
+									<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private">
+										<a href="_zowe_imperative.operations.html#executenextoperation" class="tsd-kind-icon">execute<wbr>Next<wbr>Operation</a>
+									</li>
+									<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private">
+										<a href="_zowe_imperative.operations.html#executenextundo" class="tsd-kind-icon">execute<wbr>Next<wbr>Undo</a>
+									</li>
+									<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-overwrite">
+										<a href="_zowe_imperative.operations.html#executeoperation" class="tsd-kind-icon">execute<wbr>Operation</a>
+									</li>
+									<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-overwrite tsd-is-protected">
+										<a href="_zowe_imperative.operations.html#logoperationbeginmessages" class="tsd-kind-icon">log<wbr>Operation<wbr>Begin<wbr>Messages</a>
+									</li>
+									<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-overwrite">
+										<a href="_zowe_imperative.operations.html#logoperationresults" class="tsd-kind-icon">log<wbr>Operation<wbr>Results</a>
+									</li>
+									<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-protected">
+										<a href="_zowe_imperative.operations.html#operationcompleted" class="tsd-kind-icon">operation<wbr>Completed</a>
+									</li>
+									<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+										<a href="_zowe_imperative.operations.html#performundo" class="tsd-kind-icon">perform<wbr>Undo</a>
+									</li>
+									<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private">
+										<a href="_zowe_imperative.operations.html#prepareforundo" class="tsd-kind-icon">prepare<wbr>For<wbr>Undo</a>
+									</li>
+									<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+										<a href="_zowe_imperative.operations.html#printfilescreatedlist" class="tsd-kind-icon">print<wbr>Files<wbr>Created<wbr>List</a>
+									</li>
+									<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+										<a href="_zowe_imperative.operations.html#setoperationdiverge" class="tsd-kind-icon">set<wbr>Operation<wbr>Diverge</a>
+									</li>
+									<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+										<a href="_zowe_imperative.operations.html#setoperationfailed" class="tsd-kind-icon">set<wbr>Operation<wbr>Failed</a>
+									</li>
+									<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+										<a href="_zowe_imperative.operations.html#setoperationundoattempted" class="tsd-kind-icon">set<wbr>Operation<wbr>Undo<wbr>Attempted</a>
+									</li>
+									<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+										<a href="_zowe_imperative.operations.html#setoperationundofailed" class="tsd-kind-icon">set<wbr>Operation<wbr>Undo<wbr>Failed</a>
+									</li>
+									<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+										<a href="_zowe_imperative.operations.html#setoperationundoable" class="tsd-kind-icon">set<wbr>Operation<wbr>Undoable</a>
+									</li>
+									<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-overwrite">
+										<a href="_zowe_imperative.operations.html#setstatusmessage" class="tsd-kind-icon">set<wbr>Status<wbr>Message</a>
+									</li>
+									<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-overwrite tsd-is-protected">
+										<a href="_zowe_imperative.operations.html#undo" class="tsd-kind-icon">undo</a>
+									</li>
+									<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private">
+										<a href="_zowe_imperative.operations.html#undoopcomplete" class="tsd-kind-icon">undo<wbr>OpComplete</a>
+									</li>
+									<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-static">
+										<a href="_zowe_imperative.operations.html#summarizeresults" class="tsd-kind-icon">summarize<wbr>Results</a>
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</li>
+				</ul>
+				<ul class="after-current">
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_provisioning_for_zowe_sdk.html" class="tsd-kind-icon">@zowe/provisioning-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_zos_console_for_zowe_sdk.html" class="tsd-kind-icon">@zowe/zos-<wbr>console-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_zos_files_for_zowe_sdk.html" class="tsd-kind-icon">@zowe/zos-<wbr>files-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_zos_jobs_for_zowe_sdk.html" class="tsd-kind-icon">@zowe/zos-<wbr>jobs-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_zos_logs_for_zowe_sdk.html" class="tsd-kind-icon">@zowe/zos-<wbr>logs-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_zos_tso_for_zowe_sdk.html" class="tsd-kind-icon">@zowe/zos-<wbr>tso-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_zos_uss_for_zowe_sdk.html" class="tsd-kind-icon">@zowe/zos-<wbr>uss-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_zos_workflows_for_zowe_sdk.html" class="tsd-kind-icon">@zowe/zos-<wbr>workflows-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_zosmf_for_zowe_sdk.html" class="tsd-kind-icon">@zowe/zosmf-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</div>
+</div>
+<footer class="with-border-bottom">
+	<div class="container">
+		<h2>Legend</h2>
+		<div class="tsd-legend-group">
+			<ul class="tsd-legend">
+				<li class="tsd-kind-object-literal"><span class="tsd-kind-icon">Object literal</span></li>
+				<li class="tsd-kind-variable"><span class="tsd-kind-icon">Variable</span></li>
+				<li class="tsd-kind-function"><span class="tsd-kind-icon">Function</span></li>
+				<li class="tsd-kind-type-alias"><span class="tsd-kind-icon">Type alias</span></li>
+				<li class="tsd-kind-type-alias tsd-has-type-parameter"><span class="tsd-kind-icon">Type alias with type parameter</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-class"><span class="tsd-kind-icon">Class</span></li>
+				<li class="tsd-kind-class tsd-has-type-parameter"><span class="tsd-kind-icon">Class with type parameter</span></li>
+				<li class="tsd-kind-constructor tsd-parent-kind-class"><span class="tsd-kind-icon">Constructor</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class"><span class="tsd-kind-icon">Method</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-interface"><span class="tsd-kind-icon">Interface</span></li>
+				<li class="tsd-kind-interface tsd-has-type-parameter"><span class="tsd-kind-icon">Interface with type parameter</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited method</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private method</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-enum"><span class="tsd-kind-icon">Enumeration</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-protected"><span class="tsd-kind-icon">Protected method</span></li>
+			</ul>
+		</div>
+	</div>
+</footer>
+<div class="container tsd-generator">
+	<p>Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p>
+</div>
+<div class="overlay"></div>
+<script src="../assets/js/main.js"></script>
+</body>
+</html>

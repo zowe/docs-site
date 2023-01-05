@@ -3,8 +3,8 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>IHTTPSOptions | Zowe Node.js SDK - v1.23.0</title>
-	<meta name="description" content="Documentation for Zowe Node.js SDK - v1.23.0">
+	<title>IHTTPSOptions | Zowe Node.js SDK - v2.4.0</title>
+	<meta name="description" content="Documentation for Zowe Node.js SDK - v2.4.0">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
 </head>
@@ -22,7 +22,7 @@
 						<li class="state loading">Preparing search index...</li>
 						<li class="state failure">The search index is not available</li>
 					</ul>
-					<a href="../index.html" class="title">Zowe Node.js SDK - v1.23.0</a>
+					<a href="../index.html" class="title">Zowe Node.js SDK - v2.4.0</a>
 				</div>
 				<div class="table-cell" id="tsd-widgets">
 					<div id="tsd-filter">
@@ -82,9 +82,11 @@
 						<section class="tsd-index-section ">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_zowe_imperative.ihttpsoptions.html#cert" class="tsd-kind-icon">cert</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_zowe_imperative.ihttpsoptions.html#hash" class="tsd-kind-icon">hash</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_zowe_imperative.ihttpsoptions.html#headers" class="tsd-kind-icon">headers</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_zowe_imperative.ihttpsoptions.html#hostname" class="tsd-kind-icon">hostname</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_zowe_imperative.ihttpsoptions.html#key" class="tsd-kind-icon">key</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_zowe_imperative.ihttpsoptions.html#method" class="tsd-kind-icon">method</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_zowe_imperative.ihttpsoptions.html#path" class="tsd-kind-icon">path</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_zowe_imperative.ihttpsoptions.html#port" class="tsd-kind-icon">port</a></li>
@@ -97,12 +99,22 @@
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Properties</h2>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="cert" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> cert</h3>
+					<div class="tsd-signature tsd-kind-icon">cert<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.5.4/packages/rest/src/client/doc/IHTTPSOptions.ts#L21">@zowe/imperative/packages/rest/src/client/doc/IHTTPSOptions.ts:21</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
 					<a name="hash" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagOptional">Optional</span> hash</h3>
 					<div class="tsd-signature tsd-kind-icon">hash<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/zowe/imperative/blob/v4.13.4/packages/rest/src/client/doc/IHTTPSOptions.ts#L21">@zowe/imperative/packages/rest/src/client/doc/IHTTPSOptions.ts:21</a></li>
+							<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.5.4/packages/rest/src/client/doc/IHTTPSOptions.ts#L25">@zowe/imperative/packages/rest/src/client/doc/IHTTPSOptions.ts:25</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -112,7 +124,7 @@
 					<div class="tsd-signature tsd-kind-icon">headers<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">OutgoingHttpHeaders</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/zowe/imperative/blob/v4.13.4/packages/rest/src/client/doc/IHTTPSOptions.ts#L15">@zowe/imperative/packages/rest/src/client/doc/IHTTPSOptions.ts:15</a></li>
+							<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.5.4/packages/rest/src/client/doc/IHTTPSOptions.ts#L15">@zowe/imperative/packages/rest/src/client/doc/IHTTPSOptions.ts:15</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -122,7 +134,17 @@
 					<div class="tsd-signature tsd-kind-icon">hostname<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/zowe/imperative/blob/v4.13.4/packages/rest/src/client/doc/IHTTPSOptions.ts#L16">@zowe/imperative/packages/rest/src/client/doc/IHTTPSOptions.ts:16</a></li>
+							<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.5.4/packages/rest/src/client/doc/IHTTPSOptions.ts#L16">@zowe/imperative/packages/rest/src/client/doc/IHTTPSOptions.ts:16</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="key" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> key</h3>
+					<div class="tsd-signature tsd-kind-icon">key<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.5.4/packages/rest/src/client/doc/IHTTPSOptions.ts#L22">@zowe/imperative/packages/rest/src/client/doc/IHTTPSOptions.ts:22</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -132,7 +154,7 @@
 					<div class="tsd-signature tsd-kind-icon">method<span class="tsd-signature-symbol">:</span> <a href="../modules/_zowe_imperative.html#http_verb" class="tsd-signature-type">HTTP_VERB</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/zowe/imperative/blob/v4.13.4/packages/rest/src/client/doc/IHTTPSOptions.ts#L17">@zowe/imperative/packages/rest/src/client/doc/IHTTPSOptions.ts:17</a></li>
+							<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.5.4/packages/rest/src/client/doc/IHTTPSOptions.ts#L17">@zowe/imperative/packages/rest/src/client/doc/IHTTPSOptions.ts:17</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -142,7 +164,7 @@
 					<div class="tsd-signature tsd-kind-icon">path<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/zowe/imperative/blob/v4.13.4/packages/rest/src/client/doc/IHTTPSOptions.ts#L18">@zowe/imperative/packages/rest/src/client/doc/IHTTPSOptions.ts:18</a></li>
+							<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.5.4/packages/rest/src/client/doc/IHTTPSOptions.ts#L18">@zowe/imperative/packages/rest/src/client/doc/IHTTPSOptions.ts:18</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -152,7 +174,7 @@
 					<div class="tsd-signature tsd-kind-icon">port<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/zowe/imperative/blob/v4.13.4/packages/rest/src/client/doc/IHTTPSOptions.ts#L19">@zowe/imperative/packages/rest/src/client/doc/IHTTPSOptions.ts:19</a></li>
+							<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.5.4/packages/rest/src/client/doc/IHTTPSOptions.ts#L19">@zowe/imperative/packages/rest/src/client/doc/IHTTPSOptions.ts:19</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -162,7 +184,7 @@
 					<div class="tsd-signature tsd-kind-icon">reject<wbr>Unauthorized<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/zowe/imperative/blob/v4.13.4/packages/rest/src/client/doc/IHTTPSOptions.ts#L20">@zowe/imperative/packages/rest/src/client/doc/IHTTPSOptions.ts:20</a></li>
+							<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.5.4/packages/rest/src/client/doc/IHTTPSOptions.ts#L20">@zowe/imperative/packages/rest/src/client/doc/IHTTPSOptions.ts:20</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -193,6 +215,9 @@
 						<a href="../modules/_zowe_zos_jobs_for_zowe_sdk.html">@zowe/zos-<wbr>jobs-<wbr>for-<wbr>zowe-<wbr>sdk</a>
 					</li>
 					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_zos_logs_for_zowe_sdk.html">@zowe/zos-<wbr>logs-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
 						<a href="../modules/_zowe_zos_tso_for_zowe_sdk.html">@zowe/zos-<wbr>tso-<wbr>for-<wbr>zowe-<wbr>sdk</a>
 					</li>
 					<li class=" tsd-kind-module">
@@ -220,6 +245,9 @@
 								<a href="_zowe_imperative.ihttpsoptions.html" class="tsd-kind-icon">IHTTPSOptions</a>
 								<ul>
 									<li class=" tsd-kind-property tsd-parent-kind-interface">
+										<a href="_zowe_imperative.ihttpsoptions.html#cert" class="tsd-kind-icon">cert</a>
+									</li>
+									<li class=" tsd-kind-property tsd-parent-kind-interface">
 										<a href="_zowe_imperative.ihttpsoptions.html#hash" class="tsd-kind-icon">hash</a>
 									</li>
 									<li class=" tsd-kind-property tsd-parent-kind-interface">
@@ -227,6 +255,9 @@
 									</li>
 									<li class=" tsd-kind-property tsd-parent-kind-interface">
 										<a href="_zowe_imperative.ihttpsoptions.html#hostname" class="tsd-kind-icon">hostname</a>
+									</li>
+									<li class=" tsd-kind-property tsd-parent-kind-interface">
+										<a href="_zowe_imperative.ihttpsoptions.html#key" class="tsd-kind-icon">key</a>
 									</li>
 									<li class=" tsd-kind-property tsd-parent-kind-interface">
 										<a href="_zowe_imperative.ihttpsoptions.html#method" class="tsd-kind-icon">method</a>
@@ -257,6 +288,9 @@
 					</li>
 					<li class=" tsd-kind-module">
 						<a href="../modules/_zowe_zos_jobs_for_zowe_sdk.html" class="tsd-kind-icon">@zowe/zos-<wbr>jobs-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_zos_logs_for_zowe_sdk.html" class="tsd-kind-icon">@zowe/zos-<wbr>logs-<wbr>for-<wbr>zowe-<wbr>sdk</a>
 					</li>
 					<li class=" tsd-kind-module">
 						<a href="../modules/_zowe_zos_tso_for_zowe_sdk.html" class="tsd-kind-icon">@zowe/zos-<wbr>tso-<wbr>for-<wbr>zowe-<wbr>sdk</a>

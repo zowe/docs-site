@@ -2,8 +2,9 @@
 
 As a system programmer who wants to configure advanced Gateway features of the API Mediation Layer, you can customize Gateway parameters by modifying either of the following files:
 
-- `<Zowe install directory>/components/gateway/bin/start-gateway.sh` 
-- `<Zowe instance directory>/instance.env`
+- `<Zowe runtime directory>/components/gateway/bin/start-gateway.sh` 
+- `<Zowe runtime directory>/components/gateway/manifest.yaml`
+- `zowe.yaml`
 
 The parameters begin with the `-D` prefix, similar to all the other parameters in the file.
 
@@ -13,30 +14,20 @@ Follow the procedures in the following sections to customize Gateway parameters 
 
   * [Prefer IP Address for API Layer services](#prefer-ip-address-for-api-layer-services)
   * [SAF as an Authentication provider](#saf-as-an-authentication-provider)
-  * [Enable Jwt token refresh endpoint](#enable-jwt-token-refresh-endpoint)
+  * [Enable JWT token refresh endpoint](#enable-jwt-token-refresh-endpoint)
+  * [Change password with SAF provider](#change-password-with-saf-provider)
   * [Gateway retry policy](#gateway-retry-policy)
   * [Gateway client certificate authentication](#gateway-client-certificate-authentication)
   * [Gateway timeouts](#gateway-timeouts)
   * [CORS handling](#cors-handling)
   * [Encoded slashes](#encoded-slashes)
+  * [Add a custom HTTP Auth header](#add-a-custom-http-auth-header)
   * [Connection limits](#connection-limits)
   * [Routed instance header](#routed-instance-header)
   * [Distributed load balancer cache](#distributed-load-balancer-cache)
   * [Replace or remove catalog with another service](#replace-or-remove-catalog-with-another-service)
   * [API Mediation Layer as a standalone component](#api-mediation-layer-as-a-standalone-component)
   * [SAF resource checking](#saf-resource-checking)
-
-## Prefer IP Address for API Layer services
-
-API Mediation Layer services use the hostname when communicating with each other. This behavior can be changed so that the IP address is used instead.
-
-**Follow these steps:**
-     
-1. Open the `<Zowe instance directory>/instance.env` configuration file.
-2. Find the property `APIML_PREFER_IP_ADDRESS` and set the value to `true`.
-3. Restart Zowe&trade.
-
-**Note:** Changing the value of this property might introduce problems with certificates. Ensure that the IP Address is present on the certificate SAN name.
 
 ## SAF as an Authentication provider
 
@@ -47,34 +38,36 @@ the following procedure to switch to SAF.
 
 **Follow these steps:**
      
-1. Open the `<Zowe instance directory>/instance.env` configuration file.
-2. Find the property `APIML_SECURITY_AUTH_PROVIDER` and set the value to `saf`.
+1. Open the `zowe.yaml` configuration file.
+2. Find or add the property `components.gateway.apiml.security.auth.provider` and set the value to `saf`.
 3. Restart Zowe&trade.
 
 Authentication requests now utilize SAF as the authentication provider. API ML can run without z/OSMF present on the system. 
 
-## Enable Jwt token refresh endpoint
+## Enable JWT token refresh endpoint
 
 Enable the `/gateway/api/v1/auth/refresh` endpoint to exchange a valid JWT token for a new token with a new expiration date. Call the endpoint with a valid JWT token and trusted client certificate. In case of z/OSMF authentication provider, enable API Mediation Layer for passticket generation and configure z/OSMF APPLID. [Configure Passtickets](../../extend/extend-apiml/api-mediation-passtickets.md)
 
 **Follow these steps:**
 
-1. Open the file `<Zowe instance directory>/instance.env`.
+1. Open the file `zowe.yaml`.
 3. Configure the following properties:
 
-    * **APIML_SECURITY_ALLOWTOKENREFRESH=true**
+    * **components.gateway.apiml.security.allowtokenrefresh: true**
 
       Add this property to enable the refresh endpoint.
 
-    * **APIML_SECURITY_ZOSMF_APPLID**
+    * **components.gateway.apiml.security.zosmf.applid**
 
       If you use z/OSMF as an authentication provider, provide a valid `APPLID`. The API ML generates a passticket for the specified `APPLID` and subsequently uses this passticket to authenticate to z/OSMF. The default value in the installation of z/OSMF is `IZUDFLT`.
 
 3. Restart Zowe.
 
-### Change password with SAF provider
+## Change password with SAF provider
 
-Update the user password using the SAF Authentication provider. To use this functionality, add the parameter `newPassword` on the login endpoint `/gateway/api/v1/auth/login`. The Gateway service returns a valid JWT with the response code `204` as a result of successful password change. The user is then authenticated and can consume APIs through the Gateway. If it is not possible to change the password for any reason, the response code is `401`. 
+Update the user password using the SAF Authentication provider. To use this functionality, add the parameter `newPassword` on the login endpoint `/gateway/api/v1/auth/login`. The Gateway service returns a valid JWT with the response code `204` as a result of successful password change. The user is then authenticated and can consume APIs through the Gateway. If it is not possible to change the password for any reason, the response code is `401`.
+
+This feature is also available in the API Catalog.
 
 Use a `POST` REST call against the URL `/gateway/api/v1/auth/login`:
 
@@ -98,6 +91,26 @@ where:
 * **`120`**
 
   Specifies the number of days before the password can be reset
+
+## Change password with z/OSMF provider
+
+Update the user password using the z/OSMF Authentication provider. To use this functionality, add the parameter `newPassword` on the login endpoint `/gateway/api/v1/auth/login`. The Gateway service returns a valid JWT with the response code `204` as a result of successful password change. The user is then authenticated and can consume APIs through the Gateway. If it is not possible to change the password for any reason, the response code is `401`.
+
+This feature is also available in the API Catalog.
+
+Use a `POST` REST call against the URL `/gateway/api/v1/auth/login`:
+
+ ```
+ {
+ "username" : "<username>",
+ "password" : "<password>",
+ "newPassword" : "<newPassword>"
+}
+```
+
+**Note:**
+In order to use the password change functionality via z/OSMF, it is necessary to install the PTF for APAR PH34912.
+
 ## Gateway retry policy
 
 To change the Gateway retry policy, edit properties in the `<Zowe install directory>/components/gateway/bin/start.sh` file:
@@ -127,20 +140,18 @@ To change this default configuration, include the following parameters:
     
 ## Gateway client certificate authentication
 
-Beginning with release 1.19 LTS, it is possible to authenticate using client certificates. The feature is functional and tested, but automated testing on various security systems is not complete. As such, the feature is provided as a beta release for early preview. If you would like to offer feedback using client certificate authentication, please create an issue against the api-layer repository. Client Certificate authentication will move out of Beta once test automation is fully implemented across different security systems.
-
 Use the following procedure to enable the feature to use a client certificate as the method of authentication for the API Mediation Layer Gateway.
 
 **Follow these steps:**
 
-1. Open the `<Zowe instance directory>/instance.env` configuration file.
+1. Open the `zowe.yaml` configuration file.
 2. Configure the following properties:
 
-   * **APIML_SECURITY_X509_ENABLED**
+   * **components.gateway.apiml.security.x509.enabled**
 
      This property is the global feature toggle. Set the value to `true` to enable client certificate functionality.
 
-   * **APIML_SECURITY_ZOSMF_APPLID**
+   * **components.gateway.apiml.security.zosmf.applid**
 
      When z/OSMF is used as an authentication provider, provide a valid `APPLID` to allow for client certificate authentication. The API ML generates a passticket for the specified `APPLID` and subsequently uses this passticket to authenticate to z/OSMF. The default value in the installation of z/OSMF is `IZUDFLT`.
   
@@ -148,7 +159,7 @@ Use the following procedure to enable the feature to use a client certificate as
 
 3. Change the following property if user mapping is provided by an external API:
 
-   * **APIML_GATEWAY_EXTERNAL_MAPPER**
+   * **components.gateway.apiml.security.x509.externalMapperUrl**
 
    **Note:** Skip this step if user mapping is not provided by an external API.
 
@@ -157,23 +168,23 @@ Use the following procedure to enable the feature to use a client certificate as
    The following URL is the default value for Zowe and ZSS:
 
      ```
-     https://${ZOWE_EXPLORER_HOST}:${GATEWAY_PORT}/zss/api/v1/certificate/x509/map
+     https://${ZWE_haInstance_hostname}:${GATEWAY_PORT}/zss/api/v1/certificate/x509/map
      ```
 
 4. Add the following property if the Zowe runtime userId is altered from the default `ZWESVUSR`:
 
-   * **APIML_GATEWAY_MAPPER_USER**
+   * **components.gateway.apiml.security.x509.externalMapperUser**
 
    **Note:** Skip this step if the Zowe runtime userId is not altered from the default `ZWESVUSR`.
 
    To authenticate to the mapping API, a JWT is sent with the request. The token represents the user that is configured with this property. The user authorization is required to use the `IRR.RUSERMAP` resource within the `FACILITY` class. The default value is `ZWESVUSR`. Permissions are set up during installation with the `ZWESECUR` JCL or workflow.
 
-   If you customized the `ZWESECUR` JCL or workflow (the customization of zowe runtime user: `// SET ZOWEUSER=ZWESVUSR * userid for Zowe started task`) and changed the default USERID, create the `APIML_GATEWAY_MAPPER_USER` property and set the value by adding a new line as in the following example:
+   If you customized the `ZWESECUR` JCL or workflow (the customization of zowe runtime user: `// SET ZOWEUSER=ZWESVUSR * userid for Zowe started task`) and changed the default USERID, create the `components.gateway.apiml.security.x509.externalMapperUser` property and set the value by adding a new line as in the following example:
 
    **Example:**
 
    ```
-   APIML_GATEWAY_MAPPER_USER=yournewuserid  
+   components.gateway.apiml.security.x509.externalMapperUser: yournewuserid  
    ```
 
 5. Restart `Zowe&trade`.
@@ -184,8 +195,8 @@ Use the following procedure to change the global timeout value for the API Media
 
 **Follow these steps:**
 
-1. Open the file `<Zowe instance directory>/instance.env`.
-2. Find the property `APIML_GATEWAY_TIMEOUT_MILLIS`, and set the value to the desired value.
+1. Open the file `zowe.yaml`.
+2. Find or add the property `components.gateway.apiml.gateway.timeoutmillis`, and set the value to the desired value.
 3. Restart `Zowe&trade`. 
 
 If you require finer control, you can edit the `<Zowe install directory>/components/gateway/bin/start.sh`, and modify the following properties:
@@ -212,22 +223,26 @@ Add the following properties to the file for the API Gateway:
     
 ## CORS handling
 
-You can enable the Gateway to terminate CORS requests for itself and also for routed services. By default, Cross-Origin Resource Sharing (CORS) handling is disabled for Gateway routes `api/v1/gateway/**` and for individual services. After enabling the feature as stated in the prodecure below, API Gateway endpoints start handling CORS requests and individual services can control whether they want the Gateway to handle CORS for them through the [Custom Metadata](../../extend/extend-apiml/custom-metadata.md) parameters.
+You can enable the Gateway to terminate CORS requests for itself and also for routed services. By default, Cross-Origin Resource Sharing (CORS) handling is disabled for Gateway routes `gateway/api/v1/**` and for individual services. After enabling the feature as stated in the prodecure below, API Gateway endpoints start handling CORS requests and individual services can control whether they want the Gateway to handle CORS for them through the [Custom Metadata](../../extend/extend-apiml/custom-metadata.md) parameters.
 
-When the Gateway handles CORS on behalf of the service, it sanitizes defined headers from the communication (upstream and downstream). `Access-Control-Request-Method,Access-Control-Request-Headers,Access-Control-Allow-Origin,Access-Control-Allow-Methods,Access-Control-Allow-Headers,Access-Control-Allow-Credentials,Origin` The resulting request to the service is not a CORS request and the service does not need to do anything extra. The list can be overridden by specifying different comma-separated list in the property `APIML_SERVICE_IGNOREDHEADERSWHENCORSENABLED` in `<Zowe instance directory>/instance.env`
+When the Gateway handles CORS on behalf of the service, it sanitizes defined headers from the communication (upstream and downstream). `Access-Control-Request-Method,Access-Control-Request-Headers,Access-Control-Allow-Origin,Access-Control-Allow-Methods,Access-Control-Allow-Headers,Access-Control-Allow-Credentials,Origin` The resulting request to the service is not a CORS request and the service does not need to do anything extra. The list can be overridden by specifying different comma-separated list in the property `components.gateway.apiml.service.ignoredHeadersWhenCorsEnabled` in `zowe.yaml`
 
-Additionally, the Gateway handles the preflight requests on behalf of the service, replying with CORS headers:
+Additionally, the Gateway handles the preflight requests on behalf of the service when CORS is enabled in [Custom Metadata](../../extend/extend-apiml/custom-metadata.md), replying with CORS headers:
 - `Access-Control-Allow-Methods: GET,HEAD,POST,DELETE,PUT,OPTIONS`
 - `Access-Control-Allow-Headers: origin, x-requested-with`
 - `Access-Control-Allow-Credentials: true`
-- `Access-Control-Allow-Origin: *` or a list of origins as configured by the service.
+- `Access-Control-Allow-Origin: *` 
+
+Alternatively, list the origins as configured by the service, associated with the value **customMetadata.apiml.corsAllowedOrigins** in [Custom Metadata](../../extend/extend-apiml/custom-metadata.md).
+
+If CORS is enabled for Gateway routes but not in [Custom Metadata](../../extend/extend-apiml/custom-metadata.md), the Gateway does not set any of the previously listed CORS headers. As such, the Gateway rejects any CORS requests with an origin header for the Gateway routes.
 
 Use the following procedure to enable CORS handling.
 
 **Follow these steps:**
      
-1. Open the file `<Zowe instance directory>/instance.env`.
-2. Find the property `APIML_CORS_ENABLED` and set the value to `true`.
+1. Open the file `zowe.yaml`.
+2. Find or add the property `components.gateway.apiml.service.corsEnabled` and set the value to `true`.
 3. Restart `Zowe&trade`.
   
 Requests through the Gateway now contain a CORS header. 
@@ -240,11 +255,26 @@ Use the following procedure to reject encoded slashes.
 
 **Follow these steps:**
     
-1. Open the file `<Zowe instance directory>/instance.env`.
-2. Find the property `APIML_ALLOW_ENCODED_SLASHES` and set the value to `false`.
+1. Open the file `zowe.yaml`.
+2. Find or add the property `components.gateway.apiml.service.allowEncodedSlashes` and set the value to `false`.
 3. Restart `Zowe&trade`. 
     
 Requests with encoded slashes are now rejected by the API Mediation Layer.
+
+## Add a custom HTTP Auth header
+
+If a southbound service needs to consume the Zowe JWT token from a HTTP request header to participate in the Zowe SSO, you can define a custom HTTP header name as part of the Gateway configuration.
+The southbound service must use the `zoweJwt` scheme in order to leverage this functionality. Once the HTTP header name is defined, each request to the southbound service contains the JWT token in the custom header.
+
+Use the following procedure to add the custom HTTP header.
+
+**Follow these steps:**
+
+1. Open the file `zowe.yaml`.
+2. Find or add the property `components.gateway.apiml.security.auth.customAuthHeader` and set the value which represents the header's name.
+3. Restart `Zowe&trade`.
+
+Requests through the Gateway towards the southbound service now contain the custom HTTP header with the JWT token.
 
 ## Connection limits
 
@@ -254,9 +284,9 @@ Use the following procedure to change the number of concurrent connections.
 
 **Follow these steps:**
 
-1. Open the file `<Zowe instance directory>/instance.env`.
-2. Find the property `APIML_MAX_CONNECTIONS_PER_ROUTE` and set the value to an appropriate positive integer.
-3. Find the property `APIML_MAX_TOTAL_CONNECTIONS` and set the value to an appropriate positive integer.
+1. Open the file `zowe.yaml`.
+2. Find or add the property `components.gateway.server.maxConnectionsPerRoute` and set the value to an appropriate positive integer.
+3. Find or add the property `components.gateway.server.maxTotalConnections` and set the value to an appropriate positive integer.
 
 ## Routed instance header
 
@@ -268,8 +298,8 @@ Use the following procedure to output a special header that contains the value o
 
 **Follow these steps:**
 
-1. Open the file `<Zowe instance directory>/instance.env`.
-2. Add the property with value `APIML_ROUTING_INSTANCEIDHEADER=true`.
+1. Open the file `zowe.yaml`.
+2. Find or add the property with value `components.gateway.apiml.routing.instanceIdHeader:true`.
 3. Restart Zowe.
 
 ## Distributed load balancer cache
@@ -280,8 +310,8 @@ Use the following procedure to distribute the load balancer cache between instan
 
 **Follow these steps:**
 
-1. Open the file `<Zowe instance directory>/instance.env`.
-2. Add the property with value `APIML_LOADBALANCER_DISTRIBUTE=true`.
+1. Open the file `zowe.yaml`.
+2. Find or add the property with value `components.gateway.apiml.loadBalancer.distribute: true`.
 3. Restart Zowe.
 
 ## Replace or remove the Catalog with another service
@@ -290,10 +320,7 @@ By default, the API Mediation Layer contains API Catalog as a service showing av
 
 The default option displays the API Catalog.
 
-```
-APIML_GATEWAY_CATALOG_ID = apicatalog
-```
-A value can also be applied to `API_GATEWAY_CATALOG_ID`.
+A value can also be applied to `components.gateway.apiml.catalog.serviceId`.
 
 **Examples:**
 
@@ -319,8 +346,8 @@ Use the following procedure to change or replace the Catalog service.
 
 **Follow these steps:**
 
-1. Open the file `<Zowe instance directory>/instance.env`.
-2. At the end of the file with the property `APIML_GATEWAY_CATALOG_ID` add a new line. Set the value with the following options:
+1. Open the file `zowe.yaml`.
+2. Find or add the property `components.gateway.apiml.catalog.serviceId`. Set the value with the following options:
 
     - Set the value to `none` to remove the Catalog service.
     - Set the value to the ID of the service that is onboarded to the API Mediation Layer. 
@@ -338,11 +365,9 @@ Once Zowe is installed, use the following procedure to limit which components st
 
 **Follow these steps:**
 
-1. Open the file `<Zowe instance directory>/instance.env`.
-2. Find the property `ZWE_LAUNCH_COMPONENTS` and set `discovery,gateway,api-catalog`
+1. Open the file `zowe.yaml`.
+2. Find or add the property `components.*.enabled` and set this property to `false` for all components that should not be started.
 3. Restart `Zowe&trade`.   
-
-To learn more about the related section of the environment file, see [Creating and configuring the Zowe instance directory](../configure-instance-directory.md#component-groups). We recommend you open this page in a new tab.
 
 ## SAF Resource Checking
 
@@ -364,35 +389,35 @@ Verification of the SAF resource is provided by the following three providers:
 
 **Note:** Verification of the SAF resource uses the first available provider based on the specified priority. The default configuration resolves to the native provider. 
 
-You can select a specific provider by specifying the `APIML_SECURITY_AUTHORIZATION_PROVIDER` key in the `instance.env` file. Use the parameter value to
+You can select a specific provider by specifying the `components.gateway.apiml.security.authorization.provider` key in the `zowe.yaml` file. Use the parameter value to
 strictly define a provider. If verification is disabled, select the `endpoint` option. 
 
 **Follow these steps:**
 
-1. Open the file `<Zowe instance directory>/instance.env`.
-2. Add the property `APIML_SECURITY_AUTHORIZATION_PROVIDER` and set desired value.
+1. Open the file `zowe.yaml`.
+2. Find or add the property `components.gateway.apiml.security.authorization.provider` and set desired value.
 3. Restart `Zowe&trade`.
 
 **Examples:**
 ```
-APIML_SECURITY_AUTHORIZATION_PROVIDER=endpoint
+components.gateway.apiml.security.authorization.endpoint.url: endpoint
 ```
 **Note:** To configure the `endpoint` provider, add the following additional property:
-`APIML_SECURITY_AUTHORIZATION_ENDPOINT_ENABLED=true`
+`components.gateway.apiml.security.authorization.endpoint.enabled: true`
 ```
-APIML_SECURITY_AUTHORIZATION_PROVIDER=native
+components.gateway.apiml.security.authorization.provider: native
 ```
 ```
-APIML_SECURITY_AUTHORIZATION_PROVIDER=dummy
+components.gateway.apiml.security.authorization.provider: dummy
 ```
 
 To use the endpoint provider, customize the URL corresponding to the SAF resource authorization. By default, the ZSS API is configured and used. 
 
 **Follow these steps:**
 
-1. Open the file `<Zowe instance directory>/instance.env`.
-2. Modify the property `APIML_SECURITY_AUTHORIZATION_ENDPOINT_URL` and set desired value.
-   The default value for ZSS API is `https://${ZOWE_EXPLORER_HOST}:${GATEWAY_PORT}/zss/api/v1/saf-auth`
+1. Open the file `zowe.yaml`.
+2. Find or add the property `components.gateway.apiml.security.authorization.endpoint.url` and set desired value.
+   The default value for ZSS API is `https://${ZWE_haInstance_hostname}:${GATEWAY_PORT}/zss/api/v1/saf-auth`
 3. Restart `Zowe&trade`.
 
 ### Checking providers

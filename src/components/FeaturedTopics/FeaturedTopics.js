@@ -4,20 +4,20 @@ import styles from "./styles.module.css";
 
 const firstSection = [
   {
-    item: "Release notes",
-    link: "stable/getting-started/summaryofchanges",
+    item: "What's new",
+    link: "stable/getting-started/release-notes/v2_0_0",
   },
   {
     item: "Zowe overview",
     link: "stable/getting-started/overview",
   },
   {
-    item: "Getting started tutorial",
-    link: "stable/user-guide/zowe-getting-started-tutorial",
+    item: "Zowe architecture",
+    link: "stable/getting-started/zowe-architecture",
   },
   {
-    item: "Planning for installation",
-    link: "stable/user-guide/installandconfig",
+    item: "Using team profiles",
+    link: "stable/user-guide/cli-using-using-team-profiles",
   },
 ];
 
@@ -36,7 +36,7 @@ const secondSection = [
   },
   {
     item: "Configuring Zowe certificates",
-    link: "stable/user-guide/configure-certificates",
+    link: "stable/user-guide/configure-certificates-keystore",
   },
 ];
 
@@ -46,16 +46,16 @@ const thirdSection = [
     link: "stable/user-guide/cli-installcli",
   },
   {
-    item: "Using Zowe CLI",
-    link: "stable/user-guide/cli-usingcli",
-  },
-  {
     item: "Installing Zowe SMP/E",
     link: "stable/user-guide/install-zowe-smpe",
   },
   {
-    item: "Configuring the z/OS system",
-    link: "stable/user-guide/configure-zos-system",
+    item: "API Mediation Layer onboarding configuration",
+    link: "stable/extend/extend-apiml/onboard-plain-java-enabler-external-configuration",
+  },
+  {
+    item: "Zowe Conformance Program",
+    link: "stable/extend/zowe-conformance-program",
   },
 ];
 

@@ -3,8 +3,8 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>IOptionsForAddConnProps | Zowe Node.js SDK - v1.23.0</title>
-	<meta name="description" content="Documentation for Zowe Node.js SDK - v1.23.0">
+	<title>IOptionsForAddConnProps | Zowe Node.js SDK - v2.4.0</title>
+	<meta name="description" content="Documentation for Zowe Node.js SDK - v2.4.0">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
 </head>
@@ -22,7 +22,7 @@
 						<li class="state loading">Preparing search index...</li>
 						<li class="state failure">The search index is not available</li>
 					</ul>
-					<a href="../index.html" class="title">Zowe Node.js SDK - v1.23.0</a>
+					<a href="../index.html" class="title">Zowe Node.js SDK - v2.4.0</a>
 				</div>
 				<div class="table-cell" id="tsd-widgets">
 					<div id="tsd-filter">
@@ -96,9 +96,13 @@
 						<section class="tsd-index-section ">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_zowe_imperative.ioptionsforaddconnprops.html#autostore" class="tsd-kind-icon">auto<wbr>Store</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_zowe_imperative.ioptionsforaddconnprops.html#defaulttokentype" class="tsd-kind-icon">default<wbr>Token<wbr>Type</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_zowe_imperative.ioptionsforaddconnprops.html#doprompting" class="tsd-kind-icon">do<wbr>Prompting</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_zowe_imperative.ioptionsforaddconnprops.html#parms" class="tsd-kind-icon">parms</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_zowe_imperative.ioptionsforaddconnprops.html#propertyoverrides" class="tsd-kind-icon">property<wbr>Overrides</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_zowe_imperative.ioptionsforaddconnprops.html#requesttoken" class="tsd-kind-icon">request<wbr>Token</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_zowe_imperative.ioptionsforaddconnprops.html#servicedescription" class="tsd-kind-icon">service<wbr>Description</a></li>
 							</ul>
 						</section>
 						<section class="tsd-index-section ">
@@ -113,12 +117,29 @@
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Properties</h2>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="autostore" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> auto<wbr>Store</h3>
+					<div class="tsd-signature tsd-kind-icon">auto<wbr>Store<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.5.4/packages/rest/src/session/doc/IOptionsForAddConnProps.ts#L84">@zowe/imperative/packages/rest/src/session/doc/IOptionsForAddConnProps.ts:84</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Specifies if properties that the user was prompted for should be
+								automatically stored in profiles. Defaults to true when team config
+							exists.</p>
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
 					<a name="defaulttokentype" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagOptional">Optional</span> default<wbr>Token<wbr>Type</h3>
 					<div class="tsd-signature tsd-kind-icon">default<wbr>Token<wbr>Type<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">SessConstants.TOKEN_TYPE_CHOICES</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/zowe/imperative/blob/v4.13.4/packages/rest/src/session/doc/IOptionsForAddConnProps.ts#L45">@zowe/imperative/packages/rest/src/session/doc/IOptionsForAddConnProps.ts:45</a></li>
+							<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.5.4/packages/rest/src/session/doc/IOptionsForAddConnProps.ts#L47">@zowe/imperative/packages/rest/src/session/doc/IOptionsForAddConnProps.ts:47</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -136,7 +157,7 @@
 					<div class="tsd-signature tsd-kind-icon">do<wbr>Prompting<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/zowe/imperative/blob/v4.13.4/packages/rest/src/session/doc/IOptionsForAddConnProps.ts#L37">@zowe/imperative/packages/rest/src/session/doc/IOptionsForAddConnProps.ts:37</a></li>
+							<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.5.4/packages/rest/src/session/doc/IOptionsForAddConnProps.ts#L39">@zowe/imperative/packages/rest/src/session/doc/IOptionsForAddConnProps.ts:39</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -150,12 +171,49 @@
 					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="parms" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> parms</h3>
+					<div class="tsd-signature tsd-kind-icon">parms<span class="tsd-signature-symbol">:</span> <a href="_zowe_imperative.ihandlerparameters.html" class="tsd-signature-type">IHandlerParameters</a></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.5.4/packages/rest/src/session/doc/IOptionsForAddConnProps.ts#L71">@zowe/imperative/packages/rest/src/session/doc/IOptionsForAddConnProps.ts:71</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Specifies full command parameter object if running in a CLI environment (versus) as
+							a Node.js SDK</p>
+						</div>
+						<dl class="tsd-comment-tags">
+							<dt>memberof</dt>
+							<dd><p>IOptionsForAddConnProps</p>
+							</dd>
+						</dl>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="propertyoverrides" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> property<wbr>Overrides</h3>
+					<div class="tsd-signature tsd-kind-icon">property<wbr>Overrides<span class="tsd-signature-symbol">:</span> <a href="_zowe_imperative.ioverridepromptconnprops.html" class="tsd-signature-type">IOverridePromptConnProps</a><span class="tsd-signature-symbol">[]</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.5.4/packages/rest/src/session/doc/IOptionsForAddConnProps.ts#L53">@zowe/imperative/packages/rest/src/session/doc/IOptionsForAddConnProps.ts:53</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Specifies a list of authentication properties, and what they should override.
+							If one of these properties is available on the session, do not prompt for the other property.</p>
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
 					<a name="requesttoken" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagOptional">Optional</span> request<wbr>Token</h3>
 					<div class="tsd-signature tsd-kind-icon">request<wbr>Token<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/zowe/imperative/blob/v4.13.4/packages/rest/src/session/doc/IOptionsForAddConnProps.ts#L28">@zowe/imperative/packages/rest/src/session/doc/IOptionsForAddConnProps.ts:28</a></li>
+							<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.5.4/packages/rest/src/session/doc/IOptionsForAddConnProps.ts#L30">@zowe/imperative/packages/rest/src/session/doc/IOptionsForAddConnProps.ts:30</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -165,6 +223,22 @@
 								to obtain a token. This applies during a login command.
 								Otherwise, you typically want this to be false.
 							The default value is false.</p>
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="servicedescription" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> service<wbr>Description</h3>
+					<div class="tsd-signature tsd-kind-icon">service<wbr>Description<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.5.4/packages/rest/src/session/doc/IOptionsForAddConnProps.ts#L77">@zowe/imperative/packages/rest/src/session/doc/IOptionsForAddConnProps.ts:77</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Specifies the description of your service to be used in CLI prompt
+							messages. If undefined, the default value is &quot;your service&quot;.</p>
 						</div>
 					</div>
 				</section>
@@ -181,7 +255,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v4.13.4/packages/rest/src/session/doc/IOptionsForAddConnProps.ts#L55">@zowe/imperative/packages/rest/src/session/doc/IOptionsForAddConnProps.ts:55</a></li>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.5.4/packages/rest/src/session/doc/IOptionsForAddConnProps.ts#L63">@zowe/imperative/packages/rest/src/session/doc/IOptionsForAddConnProps.ts:63</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -239,6 +313,9 @@
 						<a href="../modules/_zowe_zos_jobs_for_zowe_sdk.html">@zowe/zos-<wbr>jobs-<wbr>for-<wbr>zowe-<wbr>sdk</a>
 					</li>
 					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_zos_logs_for_zowe_sdk.html">@zowe/zos-<wbr>logs-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
 						<a href="../modules/_zowe_zos_tso_for_zowe_sdk.html">@zowe/zos-<wbr>tso-<wbr>for-<wbr>zowe-<wbr>sdk</a>
 					</li>
 					<li class=" tsd-kind-module">
@@ -266,13 +343,25 @@
 								<a href="_zowe_imperative.ioptionsforaddconnprops.html" class="tsd-kind-icon">IOptions<wbr>For<wbr>Add<wbr>Conn<wbr>Props</a>
 								<ul>
 									<li class=" tsd-kind-property tsd-parent-kind-interface">
+										<a href="_zowe_imperative.ioptionsforaddconnprops.html#autostore" class="tsd-kind-icon">auto<wbr>Store</a>
+									</li>
+									<li class=" tsd-kind-property tsd-parent-kind-interface">
 										<a href="_zowe_imperative.ioptionsforaddconnprops.html#defaulttokentype" class="tsd-kind-icon">default<wbr>Token<wbr>Type</a>
 									</li>
 									<li class=" tsd-kind-property tsd-parent-kind-interface">
 										<a href="_zowe_imperative.ioptionsforaddconnprops.html#doprompting" class="tsd-kind-icon">do<wbr>Prompting</a>
 									</li>
 									<li class=" tsd-kind-property tsd-parent-kind-interface">
+										<a href="_zowe_imperative.ioptionsforaddconnprops.html#parms" class="tsd-kind-icon">parms</a>
+									</li>
+									<li class=" tsd-kind-property tsd-parent-kind-interface">
+										<a href="_zowe_imperative.ioptionsforaddconnprops.html#propertyoverrides" class="tsd-kind-icon">property<wbr>Overrides</a>
+									</li>
+									<li class=" tsd-kind-property tsd-parent-kind-interface">
 										<a href="_zowe_imperative.ioptionsforaddconnprops.html#requesttoken" class="tsd-kind-icon">request<wbr>Token</a>
+									</li>
+									<li class=" tsd-kind-property tsd-parent-kind-interface">
+										<a href="_zowe_imperative.ioptionsforaddconnprops.html#servicedescription" class="tsd-kind-icon">service<wbr>Description</a>
 									</li>
 									<li class=" tsd-kind-method tsd-parent-kind-interface">
 										<a href="_zowe_imperative.ioptionsforaddconnprops.html#getvaluesback" class="tsd-kind-icon">get<wbr>Values<wbr>Back</a>
@@ -294,6 +383,9 @@
 					</li>
 					<li class=" tsd-kind-module">
 						<a href="../modules/_zowe_zos_jobs_for_zowe_sdk.html" class="tsd-kind-icon">@zowe/zos-<wbr>jobs-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_zos_logs_for_zowe_sdk.html" class="tsd-kind-icon">@zowe/zos-<wbr>logs-<wbr>for-<wbr>zowe-<wbr>sdk</a>
 					</li>
 					<li class=" tsd-kind-module">
 						<a href="../modules/_zowe_zos_tso_for_zowe_sdk.html" class="tsd-kind-icon">@zowe/zos-<wbr>tso-<wbr>for-<wbr>zowe-<wbr>sdk</a>

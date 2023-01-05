@@ -14,6 +14,7 @@ You are welcome to contribute to Zowe in many forms and help make this project b
 
 - Report bugs: Download and try one of the latest Zowe builds. Report any bugs you find by [creating a Zowe bug report in GitHub](https://github.com/zowe/community/issues/new?assignees=&labels=bug&template=bug_report.md&title=).
 - Report enhancements: Got an idea for a feature? Or something you're already using could be improved? [Post an enhancement request in GitHub](https://github.com/zowe/community/issues/new?assignees=&labels=enhancement&template=feature_request.md&title=)! 
+- Upvote enhancements and bugs: You can show us that an issue matters to you by applying the thumbs-up emoji for a specific issue. See [this link](https://github.com/zowe/api-layer/issues?q=is%3Aissue+is%3Aopen+sort%3Areactions-%2B1-desc) to view the list of issues sorted by the most upvotes. This information is taken into account when planning the upcoming PI. 
 
 If you have an issue that is specific to a sub-project or community team, feel free to submit an issue against a specific repo.
 
@@ -37,7 +38,7 @@ All Zowe commits need to be signed by using the [Developer’s Certificate of Or
 
 ```Signed-off-by: John Doe <john.doe@hisdomain.com>```
 
-You can find more information about DCO signoff in the [zlc repo](https://github.com/zowe/zlc/edit/master/CONTRIBUTING.md). 
+You can find more information about DCO signoff in the [zac repo](https://github.com/zowe/zac/blob/master/CONTRIBUTING.md). 
 
 ## Report security issues
 
@@ -51,8 +52,9 @@ Check out the contribution guidelines for different components and squads to lea
   - [Zowe Application Framework](https://github.com/zowe/zlux)  
   - [Zowe Explorer](https://github.com/zowe/vscode-extension-for-zowe/blob/master/CONTRIBUTING.md)
   - [Zowe Client SDKs](https://github.com/zowe/zowe-cli/blob/master/docs/SDKGuidelines.md)
-  - [Zowe Docs](contributing.md)
-
+  - [Zowe IntelliJ plug-in (incubator)](https://github.com/zowe/zowe-explorer-intellij/blob/main/CONTRIBUTING.md)
+  - [Zowe Docs](./contributing)
+  
 ## Promote Zowe
 
 - Contribute a blog about Zowe. Read the [Zowe blog guidelines](https://github.com/zowe/community/blob/master/blogging/blog_guidelines.md) to get started. 
@@ -60,8 +62,8 @@ Check out the contribution guidelines for different components and squads to lea
 
 ## Helpful resources
 
-- [General code guidelines](guidelines-code/categories.md)
-- [UI guidelines](guidelines-ui/ui.md)
-- [Zowe learning resources](../getting-started/zowe-resources.md)
+- [General code guidelines](./guidelines-code/categories)
+- [UI guidelines](./guidelines-ui/ui)
+- [Zowe learning resources](../getting-started/zowe-resources)
 
 

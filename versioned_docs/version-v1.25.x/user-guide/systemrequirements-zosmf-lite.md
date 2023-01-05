@@ -195,17 +195,16 @@ The following sample jobs that you might use are included in the package and ava
 
 Check out the video for a demo of the process:
 
-<iframe class="embed-responsive-item" id="youtubeplayer" title="Creating a z/OSMF nucleus on your system demo" type="text/html" width="100%" height="365" src="https://www.youtube.com/embed/ebJb9RR9x9c" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen> </iframe>
+<iframe class="embed-responsive-item" id="youtubeplayer" title="Creating a z/OSMF nucleus on your system demo" type="text/html" width="100%" height="365" src="https://www.youtube.com/embed/ebJb9RR9x9c" frameborder="0" webkitallowfullscreen="true" mozallowfullscreen="true" allowfullscreen="true"> </iframe>
 
 ### Running job IZUNUSEC to create security
 
 The security job IZUNUSEC contains a minimal set of RACF® commands for creating security profiles for the z/OSMF nucleus. The profiles are used to protect the resources that are used by the z/OSMF server, and to grant users access to the z/OSMF core functions. IZUNUSEC is a simplified version of the sample job IZUSEC, which is intended for a more complete installation of z/OSMF.
 
-**Note:** If your implementation uses an external security manager other than RACF (for example, CA Top Secret or CA ACF2), provide equivalent commands for your environment. For more information, see the following CA Technologies product documentation:
+**Note:** If your implementation uses an external security manager other than RACF (for example, Top Secret or ACF2), provide equivalent commands for your environment. For more information, see the following  product documentation:
 
-- [Configure z/OS Management Facility for CA Top Secret](https://docops.ca.com/ca-top-secret-for-z-os/16-0/en/installing/configure-z-os-management-facility-for-ca-top-secret)
-
-- [Configure z/OS Management Facility for CA ACF2](https://techdocs.broadcom.com/us/en/ca-mainframe-software/security/ca-acf2-for-z-os/16-0/installing/configure-z-os-management-facility-for-ca-acf2.html)
+- [Configure z/OS Management Facility for Top Secret](https://docops.ca.com/ca-top-secret-for-z-os/16-0/en/installing/configure-z-os-management-facility-for-ca-top-secret)
+- [Configure z/OS Management Facility for ACF2](https://techdocs.broadcom.com/us/en/ca-mainframe-software/security/ca-acf2-for-z-os/16-0/installing/configure-z-os-management-facility-for-ca-acf2.html)
 
 #### Before you begin
 
@@ -213,11 +212,11 @@ In most cases, you can run the IZUNUSEC security job without modification. To ve
 
 #### Procedure
 
-1.	If you run z/OS V2R2 or V2R3, download job IZUNUSEC in the [sample jobs package](../zosmf_lite_samples.zip) and upload this job to z/OS. If you run z/OS V2R4, locate job IZUNUSEC at SYS1.SAMPLIB.
+1.	If you run z/OS V2R2 or V2R3, download job IZUNUSEC in the [sample jobs package](https://docs.zowe.org/stable/zosmf_lite_samples.zip) and upload this job to z/OS. If you run z/OS V2R4, locate job IZUNUSEC at SYS1.SAMPLIB.
 2.	Review and edit the job, if necessary.
 3.	Submit IZUNUSEC as a batch job on your z/OS system.  
 4.	Connect your user ID to IZUADMIN group. 
-    1. Download job IZUAUTH in the [sample jobs package](../zosmf_lite_samples.zip) and customize it.
+    1. Download job IZUAUTH in the [sample jobs package](https://docs.zowe.org/stable/zosmf_lite_samples.zip) and customize it.
     2. Replace the 'userid' with your z/OSMF user ID. 
     3. Submit the job on your z/OS system.
 
@@ -580,7 +579,7 @@ TSOASMGR: ALLOWED: 50 IN USE: 0 HIGHCNT: 0
 
 #### Procedure
 
-1.	If you run z/OS V2R2 and V2R3, download job IZUTSSEC in the [sample jobs package](../zosmf_lite_samples.zip) and upload this Job to z/OS. If you run z/OS V2R4, locate job IZUTSSEC at `SYS1.SAMPLIB`.
+1.	If you run z/OS V2R2 and V2R3, download job IZUTSSEC in the [sample jobs package](https://docs.zowe.org/stable/zosmf_lite_samples.zip) and upload this Job to z/OS. If you run z/OS V2R4, locate job IZUTSSEC at `SYS1.SAMPLIB`.
 2.	Review and edit job IZUTSSEC before you submit. You can review the IZUTSSEC section below for more details.
 3.	Submit IZUTSSEC as a batch job on your z/OS system.  
 
@@ -653,7 +652,7 @@ USERDATA= 0000
 
 #### Procedure
 
-1.	If you run z/OS V2R2 and V2R3, download job IZURFSEC in the [sample jobs package](../zosmf_lite_samples.zip) and upload it to z/OS. If you run z/OS V2R4, locate job IZURFSEC at `SYS1.SAMPLIB`.
+1.	If you run z/OS V2R2 and V2R3, download job IZURFSEC in the [sample jobs package](https://docs.zowe.org/stable/zosmf_lite_samples.zip) and upload it to z/OS. If you run z/OS V2R4, locate job IZURFSEC at `SYS1.SAMPLIB`.
 2.	Copy the job.
 3.	Examine the contents of the job.
 4.	Modify the contents as needed so that the job will run on your system.
@@ -686,7 +685,7 @@ The Zowe framework requires that you enable the z/OSMF Workflow REST services an
 
 #### Procedure
 
-1.	If you run z/OS V2R2 and V2R3, download job IZUWFSEC in the [sample jobs package](../zosmf_lite_samples.zip) and upload this job to z/OS. If you run z/OS V2R4, locate job IZUWFSEC at `SYS1.SAMPLIB`.
+1.	If you run z/OS V2R2 and V2R3, download job IZUWFSEC in the [sample jobs package](https://docs.zowe.org/stable/zosmf_lite_samples.zip) and upload this job to z/OS. If you run z/OS V2R4, locate job IZUWFSEC at `SYS1.SAMPLIB`.
 2.	Copy the job.
 3.	Examine the contents of the job.
 4.	Modify the contents as needed so that the job will run on your system.

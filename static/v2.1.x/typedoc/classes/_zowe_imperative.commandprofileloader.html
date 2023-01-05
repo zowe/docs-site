@@ -1,0 +1,805 @@
+<!doctype html>
+<html class="default no-js">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>CommandProfileLoader | Zowe Node.js SDK - v2.1.0</title>
+	<meta name="description" content="Documentation for Zowe Node.js SDK - v2.1.0">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="../assets/css/main.css">
+</head>
+<body>
+<header>
+	<div class="tsd-page-toolbar">
+		<div class="container">
+			<div class="table-wrap">
+				<div class="table-cell" id="tsd-search" data-index="../assets/js/search.json" data-base="..">
+					<div class="field">
+						<label for="tsd-search-field" class="tsd-widget search no-caption">Search</label>
+						<input id="tsd-search-field" type="text" />
+					</div>
+					<ul class="results">
+						<li class="state loading">Preparing search index...</li>
+						<li class="state failure">The search index is not available</li>
+					</ul>
+					<a href="../index.html" class="title">Zowe Node.js SDK - v2.1.0</a>
+				</div>
+				<div class="table-cell" id="tsd-widgets">
+					<div id="tsd-filter">
+						<a href="#" class="tsd-widget options no-caption" data-toggle="options">Options</a>
+						<div class="tsd-filter-group">
+							<div class="tsd-select" id="tsd-filter-visibility">
+								<span class="tsd-select-label">All</span>
+								<ul class="tsd-select-list">
+									<li data-value="public">Public</li>
+									<li data-value="protected">Public/Protected</li>
+									<li data-value="private" class="selected">All</li>
+								</ul>
+							</div>
+							<input type="checkbox" id="tsd-filter-inherited" checked />
+							<label class="tsd-widget" for="tsd-filter-inherited">Inherited</label>
+							<input type="checkbox" id="tsd-filter-externals" checked />
+							<label class="tsd-widget" for="tsd-filter-externals">Externals</label>
+						</div>
+					</div>
+					<a href="#" class="tsd-widget menu no-caption" data-toggle="menu">Menu</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="tsd-page-title">
+		<div class="container">
+			<ul class="tsd-breadcrumb">
+				<li>
+					<a href="../globals.html">Globals</a>
+				</li>
+				<li>
+					<a href="../modules/_zowe_imperative.html">@zowe/imperative</a>
+				</li>
+				<li>
+					<a href="_zowe_imperative.commandprofileloader.html">CommandProfileLoader</a>
+				</li>
+			</ul>
+			<h1>Class CommandProfileLoader</h1>
+		</div>
+	</div>
+</header>
+<div class="container container-main">
+	<div class="row">
+		<div class="col-8 col-content">
+			<section class="tsd-panel tsd-comment">
+				<div class="tsd-comment tsd-typography">
+					<div class="lead">
+						<p>The command processor profile loader loads all profiles that are required (or optional) given a command
+							definitions requirements. It returns the CommandProfiles object (which contains the map and getters for the
+						command handlers usage).</p>
+					</div>
+					<dl class="tsd-comment-tags">
+						<dt>export</dt>
+						<dd></dd>
+					</dl>
+				</div>
+			</section>
+			<section class="tsd-panel tsd-hierarchy">
+				<h3>Hierarchy</h3>
+				<ul class="tsd-hierarchy">
+					<li>
+						<span class="target">CommandProfileLoader</span>
+					</li>
+				</ul>
+			</section>
+			<section class="tsd-panel-group tsd-index-group">
+				<h2>Index</h2>
+				<section class="tsd-panel tsd-index-panel">
+					<div class="tsd-index-content">
+						<section class="tsd-index-section ">
+							<h3>Constructors</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-constructor tsd-parent-kind-class"><a href="_zowe_imperative.commandprofileloader.html#constructor" class="tsd-kind-icon">constructor</a></li>
+							</ul>
+						</section>
+						<section class="tsd-index-section tsd-is-private tsd-is-private-protected">
+							<h3>Properties</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="_zowe_imperative.commandprofileloader.html#mcommanddefinition" class="tsd-kind-icon">m<wbr>Command<wbr>Definition</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="_zowe_imperative.commandprofileloader.html#mfactory" class="tsd-kind-icon">m<wbr>Factory</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="_zowe_imperative.commandprofileloader.html#mlog" class="tsd-kind-icon">m<wbr>Log</a></li>
+							</ul>
+						</section>
+						<section class="tsd-index-section tsd-is-private tsd-is-private-protected">
+							<h3>Accessors</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-get-signature tsd-parent-kind-class tsd-is-private"><a href="_zowe_imperative.commandprofileloader.html#definition" class="tsd-kind-icon">definition</a></li>
+								<li class="tsd-kind-get-signature tsd-parent-kind-class tsd-is-private"><a href="_zowe_imperative.commandprofileloader.html#factory" class="tsd-kind-icon">factory</a></li>
+								<li class="tsd-kind-get-signature tsd-parent-kind-class tsd-is-private"><a href="_zowe_imperative.commandprofileloader.html#log" class="tsd-kind-icon">log</a></li>
+							</ul>
+						</section>
+						<section class="tsd-index-section ">
+							<h3>Methods</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><a href="_zowe_imperative.commandprofileloader.html#buildcommandmap" class="tsd-kind-icon">build<wbr>Command<wbr>Map</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><a href="_zowe_imperative.commandprofileloader.html#buildcommandmetamap" class="tsd-kind-icon">build<wbr>Command<wbr>Meta<wbr>Map</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><a href="_zowe_imperative.commandprofileloader.html#buildload" class="tsd-kind-icon">build<wbr>Load</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><a href="_zowe_imperative.commandprofileloader.html#constructloadlist" class="tsd-kind-icon">construct<wbr>Load<wbr>List</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><a href="_zowe_imperative.commandprofileloader.html#loadall" class="tsd-kind-icon">load<wbr>All</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_zowe_imperative.commandprofileloader.html#loadprofiles" class="tsd-kind-icon">load<wbr>Profiles</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><a href="_zowe_imperative.commandprofileloader.html#loader" class="tsd-kind-icon">loader</a></li>
+							</ul>
+						</section>
+					</div>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group ">
+				<h2>Constructors</h2>
+				<section class="tsd-panel tsd-member tsd-kind-constructor tsd-parent-kind-class">
+					<a name="constructor" class="tsd-anchor"></a>
+					<h3>constructor</h3>
+					<ul class="tsd-signatures tsd-kind-constructor tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">new <wbr>Command<wbr>Profile<wbr>Loader<span class="tsd-signature-symbol">(</span>commandDefinition<span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_imperative.icommanddefinition.html" class="tsd-signature-type">ICommandDefinition</a>, factory<span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_imperative.iprofilemanagerfactory.html" class="tsd-signature-type">IProfileManagerFactory</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_zowe_imperative.icommandprofiletypeconfiguration.html" class="tsd-signature-type">ICommandProfileTypeConfiguration</a><span class="tsd-signature-symbol">&gt;</span>, logger<span class="tsd-signature-symbol">?: </span><a href="_zowe_imperative.logger.html" class="tsd-signature-type">Logger</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_zowe_imperative.commandprofileloader.html" class="tsd-signature-type">CommandProfileLoader</a></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.3.2/packages/cmd/src/profiles/CommandProfileLoader.ts#L71">@zowe/imperative/packages/cmd/src/profiles/CommandProfileLoader.ts:71</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Creates an instance of CommandProfileLoader.</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>memberof</dt>
+									<dd><p>CommandProfileLoader</p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>commandDefinition: <a href="../interfaces/_zowe_imperative.icommanddefinition.html" class="tsd-signature-type">ICommandDefinition</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<div class="lead">
+											<p>The input command definition for the command being issued.</p>
+										</div>
+									</div>
+								</li>
+								<li>
+									<h5>factory: <a href="../interfaces/_zowe_imperative.iprofilemanagerfactory.html" class="tsd-signature-type">IProfileManagerFactory</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_zowe_imperative.icommandprofiletypeconfiguration.html" class="tsd-signature-type">ICommandProfileTypeConfiguration</a><span class="tsd-signature-symbol">&gt;</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<div class="lead">
+											<p>The profile manager factory</p>
+										</div>
+									</div>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> logger: <a href="_zowe_imperative.logger.html" class="tsd-signature-type">Logger</a><span class="tsd-signature-symbol"> = Logger.getImperativeLogger()</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="_zowe_imperative.commandprofileloader.html" class="tsd-signature-type">CommandProfileLoader</a></h4>
+						</li>
+					</ul>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group tsd-is-private tsd-is-private-protected">
+				<h2>Properties</h2>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
+					<a name="mcommanddefinition" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> m<wbr>Command<wbr>Definition</h3>
+					<div class="tsd-signature tsd-kind-icon">m<wbr>Command<wbr>Definition<span class="tsd-signature-symbol">:</span> <a href="../interfaces/_zowe_imperative.icommanddefinition.html" class="tsd-signature-type">ICommandDefinition</a></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.3.2/packages/cmd/src/profiles/CommandProfileLoader.ts#L55">@zowe/imperative/packages/cmd/src/profiles/CommandProfileLoader.ts:55</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>The input command definition for the command being issued.</p>
+						</div>
+						<dl class="tsd-comment-tags">
+							<dt>memberof</dt>
+							<dd><p>CommandProfileLoader</p>
+							</dd>
+						</dl>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
+					<a name="mfactory" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> m<wbr>Factory</h3>
+					<div class="tsd-signature tsd-kind-icon">m<wbr>Factory<span class="tsd-signature-symbol">:</span> <a href="../interfaces/_zowe_imperative.iprofilemanagerfactory.html" class="tsd-signature-type">IProfileManagerFactory</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_zowe_imperative.icommandprofiletypeconfiguration.html" class="tsd-signature-type">ICommandProfileTypeConfiguration</a><span class="tsd-signature-symbol">&gt;</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.3.2/packages/cmd/src/profiles/CommandProfileLoader.ts#L63">@zowe/imperative/packages/cmd/src/profiles/CommandProfileLoader.ts:63</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>The factory for getting profile manager instances.</p>
+						</div>
+						<dl class="tsd-comment-tags">
+							<dt>memberof</dt>
+							<dd><p>CommandProfileLoader</p>
+							</dd>
+						</dl>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
+					<a name="mlog" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> m<wbr>Log</h3>
+					<div class="tsd-signature tsd-kind-icon">m<wbr>Log<span class="tsd-signature-symbol">:</span> <a href="_zowe_imperative.logger.html" class="tsd-signature-type">Logger</a></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.3.2/packages/cmd/src/profiles/CommandProfileLoader.ts#L71">@zowe/imperative/packages/cmd/src/profiles/CommandProfileLoader.ts:71</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Logger - supplied on the constructor - but defaults to the Imperative logger.</p>
+						</div>
+						<dl class="tsd-comment-tags">
+							<dt>memberof</dt>
+							<dd><p>CommandProfileLoader</p>
+							</dd>
+						</dl>
+					</div>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group tsd-is-private tsd-is-private-protected">
+				<h2>Accessors</h2>
+				<section class="tsd-panel tsd-member tsd-kind-get-signature tsd-parent-kind-class tsd-is-private">
+					<a name="definition" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> definition</h3>
+					<ul class="tsd-signatures tsd-kind-get-signature tsd-parent-kind-class tsd-is-private">
+						<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">get</span> definition<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_imperative.icommanddefinition.html" class="tsd-signature-type">ICommandDefinition</a></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.3.2/packages/cmd/src/profiles/CommandProfileLoader.ts#L307">@zowe/imperative/packages/cmd/src/profiles/CommandProfileLoader.ts:307</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Accessor for the command definition document</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>readonly</dt>
+									<dd></dd>
+									<dt>memberof</dt>
+									<dd><p>CommandProfileLoader</p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-returns-title">Returns <a href="../interfaces/_zowe_imperative.icommanddefinition.html" class="tsd-signature-type">ICommandDefinition</a></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-get-signature tsd-parent-kind-class tsd-is-private">
+					<a name="factory" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> factory</h3>
+					<ul class="tsd-signatures tsd-kind-get-signature tsd-parent-kind-class tsd-is-private">
+						<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">get</span> factory<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_imperative.iprofilemanagerfactory.html" class="tsd-signature-type">IProfileManagerFactory</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_zowe_imperative.icommandprofiletypeconfiguration.html" class="tsd-signature-type">ICommandProfileTypeConfiguration</a><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.3.2/packages/cmd/src/profiles/CommandProfileLoader.ts#L296">@zowe/imperative/packages/cmd/src/profiles/CommandProfileLoader.ts:296</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Accessor for the profile manager factory</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>readonly</dt>
+									<dd></dd>
+									<dt>memberof</dt>
+									<dd><p>CommandProfileLoader</p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-returns-title">Returns <a href="../interfaces/_zowe_imperative.iprofilemanagerfactory.html" class="tsd-signature-type">IProfileManagerFactory</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_zowe_imperative.icommandprofiletypeconfiguration.html" class="tsd-signature-type">ICommandProfileTypeConfiguration</a><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-get-signature tsd-parent-kind-class tsd-is-private">
+					<a name="log" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> log</h3>
+					<ul class="tsd-signatures tsd-kind-get-signature tsd-parent-kind-class tsd-is-private">
+						<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">get</span> log<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_zowe_imperative.logger.html" class="tsd-signature-type">Logger</a></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.3.2/packages/cmd/src/profiles/CommandProfileLoader.ts#L318">@zowe/imperative/packages/cmd/src/profiles/CommandProfileLoader.ts:318</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Accessor for the logging object</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>readonly</dt>
+									<dd></dd>
+									<dt>memberof</dt>
+									<dd><p>CommandProfileLoader</p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-returns-title">Returns <a href="_zowe_imperative.logger.html" class="tsd-signature-type">Logger</a></h4>
+						</li>
+					</ul>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group ">
+				<h2>Methods</h2>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-private">
+					<a name="buildcommandmap" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> build<wbr>Command<wbr>Map</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-private">
+						<li class="tsd-signature tsd-kind-icon">build<wbr>Command<wbr>Map<span class="tsd-signature-symbol">(</span>responses<span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_imperative.iprofileloaded.html" class="tsd-signature-type">IProfileLoaded</a><span class="tsd-signature-symbol">[]</span>, map<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Map</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">, </span><a href="../interfaces/_zowe_imperative.iprofile.html" class="tsd-signature-type">IProfile</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.3.2/packages/cmd/src/profiles/CommandProfileLoader.ts#L141">@zowe/imperative/packages/cmd/src/profiles/CommandProfileLoader.ts:141</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Builds the command map for input the the command map object for the command handlers</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>memberof</dt>
+									<dd><p>CommandProfileLoader</p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>responses: <a href="../interfaces/_zowe_imperative.iprofileloaded.html" class="tsd-signature-type">IProfileLoaded</a><span class="tsd-signature-symbol">[]</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The full list of profiles loaded for this command</p>
+									</div>
+								</li>
+								<li>
+									<h5>map: <span class="tsd-signature-type">Map</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">, </span><a href="../interfaces/_zowe_imperative.iprofile.html" class="tsd-signature-type">IProfile</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The map to populate</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-private">
+					<a name="buildcommandmetamap" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> build<wbr>Command<wbr>Meta<wbr>Map</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-private">
+						<li class="tsd-signature tsd-kind-icon">build<wbr>Command<wbr>Meta<wbr>Map<span class="tsd-signature-symbol">(</span>responses<span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_imperative.iprofileloaded.html" class="tsd-signature-type">IProfileLoaded</a><span class="tsd-signature-symbol">[]</span>, map<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Map</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">, </span><a href="../interfaces/_zowe_imperative.iprofileloaded.html" class="tsd-signature-type">IProfileLoaded</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.3.2/packages/cmd/src/profiles/CommandProfileLoader.ts#L165">@zowe/imperative/packages/cmd/src/profiles/CommandProfileLoader.ts:165</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Builds the command meta map for input the the command map object for the command handlers</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>memberof</dt>
+									<dd><p>CommandProfileLoader</p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>responses: <a href="../interfaces/_zowe_imperative.iprofileloaded.html" class="tsd-signature-type">IProfileLoaded</a><span class="tsd-signature-symbol">[]</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The full list of profiles loaded for this command</p>
+									</div>
+								</li>
+								<li>
+									<h5>map: <span class="tsd-signature-type">Map</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">, </span><a href="../interfaces/_zowe_imperative.iprofileloaded.html" class="tsd-signature-type">IProfileLoaded</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The meta map to populate</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-private">
+					<a name="buildload" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> build<wbr>Load</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-private">
+						<li class="tsd-signature tsd-kind-icon">build<wbr>Load<span class="tsd-signature-symbol">(</span>optional<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span>, types<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span>, commandArguments<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Arguments</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_imperative.icommandloadprofile.html" class="tsd-signature-type">ICommandLoadProfile</a><span class="tsd-signature-symbol">[]</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.3.2/packages/cmd/src/profiles/CommandProfileLoader.ts#L206">@zowe/imperative/packages/cmd/src/profiles/CommandProfileLoader.ts:206</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Builds the control parameters for the loading of each profile name/type.</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>memberof</dt>
+									<dd><p>CommandProfileLoader</p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>optional: <span class="tsd-signature-type">boolean</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>If the profile is optional</p>
+									</div>
+								</li>
+								<li>
+									<h5>types: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The profile types to load</p>
+									</div>
+								</li>
+								<li>
+									<h5>commandArguments: <span class="tsd-signature-type">Arguments</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The command arguments</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="../interfaces/_zowe_imperative.icommandloadprofile.html" class="tsd-signature-type">ICommandLoadProfile</a><span class="tsd-signature-symbol">[]</span></h4>
+							<ul>
+								<li>The list of profiles to load (and control parameters)</li>
+							</ul>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-private">
+					<a name="constructloadlist" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> construct<wbr>Load<wbr>List</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-private">
+						<li class="tsd-signature tsd-kind-icon">construct<wbr>Load<wbr>List<span class="tsd-signature-symbol">(</span>commandArguments<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Arguments</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_imperative.icommandloadprofile.html" class="tsd-signature-type">ICommandLoadProfile</a><span class="tsd-signature-symbol">[]</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.3.2/packages/cmd/src/profiles/CommandProfileLoader.ts#L189">@zowe/imperative/packages/cmd/src/profiles/CommandProfileLoader.ts:189</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Builds the list of profiles to load for this command.</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>memberof</dt>
+									<dd><p>CommandProfileLoader</p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>commandArguments: <span class="tsd-signature-type">Arguments</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The arguments supplied on the command (Yargs Style)</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="../interfaces/_zowe_imperative.icommandloadprofile.html" class="tsd-signature-type">ICommandLoadProfile</a><span class="tsd-signature-symbol">[]</span></h4>
+							<ul>
+								<li>The list of profiles to load (and other control information)</li>
+							</ul>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-private">
+					<a name="loadall" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> load<wbr>All</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-private">
+						<li class="tsd-signature tsd-kind-icon">load<wbr>All<span class="tsd-signature-symbol">(</span>list<span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_imperative.icommandloadprofile.html" class="tsd-signature-type">ICommandLoadProfile</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_imperative.ipromisewithprogress.html#promise" class="tsd-signature-type">Promise</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_zowe_imperative.iprofileloaded.html" class="tsd-signature-type">IProfileLoaded</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.3.2/packages/cmd/src/profiles/CommandProfileLoader.ts#L249">@zowe/imperative/packages/cmd/src/profiles/CommandProfileLoader.ts:249</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Invoke the profile managers to load the profiles requested for this command.</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>memberof</dt>
+									<dd><p>CommandProfileLoader</p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>list: <a href="../interfaces/_zowe_imperative.icommandloadprofile.html" class="tsd-signature-type">ICommandLoadProfile</a><span class="tsd-signature-symbol">[]</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The list of profiles to load and control parameters.</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="../interfaces/_zowe_imperative.ipromisewithprogress.html#promise" class="tsd-signature-type">Promise</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_zowe_imperative.iprofileloaded.html" class="tsd-signature-type">IProfileLoaded</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span></h4>
+							<ul>
+								<li>The promise to fulfill with the entire load response OR rejected with
+								an Imperative Error.</li>
+							</ul>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="loadprofiles" class="tsd-anchor"></a>
+					<h3>load<wbr>Profiles</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">load<wbr>Profiles<span class="tsd-signature-symbol">(</span>commandArguments<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Arguments</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_imperative.ipromisewithprogress.html#promise" class="tsd-signature-type">Promise</a><span class="tsd-signature-symbol">&lt;</span><a href="_zowe_imperative.commandprofiles.html" class="tsd-signature-type">CommandProfiles</a><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.3.2/packages/cmd/src/profiles/CommandProfileLoader.ts#L100">@zowe/imperative/packages/cmd/src/profiles/CommandProfileLoader.ts:100</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Load the profiles for the command - the command arguments are supplied to grab the profile names from
+									the arguments supplied by the user.</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>memberof</dt>
+									<dd><p>CommandProfileLoader</p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>commandArguments: <span class="tsd-signature-type">Arguments</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The command arguments supplied on this command invocation (Yargs style)</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="../interfaces/_zowe_imperative.ipromisewithprogress.html#promise" class="tsd-signature-type">Promise</a><span class="tsd-signature-symbol">&lt;</span><a href="_zowe_imperative.commandprofiles.html" class="tsd-signature-type">CommandProfiles</a><span class="tsd-signature-symbol">&gt;</span></h4>
+							<ul>
+								<li>The promise is fulfilled with the map object OR rejected with an
+								Imperative error</li>
+							</ul>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-static">
+					<a name="loader" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> loader</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-static">
+						<li class="tsd-signature tsd-kind-icon">loader<span class="tsd-signature-symbol">(</span>parms<span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_imperative.icommandprofileloaderparms.html" class="tsd-signature-type">ICommandProfileLoaderParms</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_zowe_imperative.commandprofileloader.html" class="tsd-signature-type">CommandProfileLoader</a></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.3.2/packages/cmd/src/profiles/CommandProfileLoader.ts#L44">@zowe/imperative/packages/cmd/src/profiles/CommandProfileLoader.ts:44</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Create a new instance of the profile loader</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>static</dt>
+									<dd></dd>
+									<dt>memberof</dt>
+									<dd><p>CommandProfileLoader</p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>parms: <a href="../interfaces/_zowe_imperative.icommandprofileloaderparms.html" class="tsd-signature-type">ICommandProfileLoaderParms</a></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="_zowe_imperative.commandprofileloader.html" class="tsd-signature-type">CommandProfileLoader</a></h4>
+						</li>
+					</ul>
+				</section>
+			</section>
+		</div>
+		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
+			<nav class="tsd-navigation primary">
+				<ul>
+					<li class="globals  ">
+						<a href="../globals.html"><em>Globals</em></a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_core_for_zowe_sdk.html">@zowe/core-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class="current tsd-kind-module">
+						<a href="../modules/_zowe_imperative.html">@zowe/imperative</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_provisioning_for_zowe_sdk.html">@zowe/provisioning-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_zos_console_for_zowe_sdk.html">@zowe/zos-<wbr>console-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_zos_files_for_zowe_sdk.html">@zowe/zos-<wbr>files-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_zos_jobs_for_zowe_sdk.html">@zowe/zos-<wbr>jobs-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_zos_logs_for_zowe_sdk.html">@zowe/zos-<wbr>logs-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_zos_tso_for_zowe_sdk.html">@zowe/zos-<wbr>tso-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_zos_uss_for_zowe_sdk.html">@zowe/zos-<wbr>uss-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_zos_workflows_for_zowe_sdk.html">@zowe/zos-<wbr>workflows-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_zosmf_for_zowe_sdk.html">@zowe/zosmf-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+				</ul>
+			</nav>
+			<nav class="tsd-navigation secondary menu-sticky">
+				<ul class="before-current">
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_core_for_zowe_sdk.html" class="tsd-kind-icon">@zowe/core-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+				</ul>
+				<ul class="current">
+					<li class="current tsd-kind-module">
+						<a href="../modules/_zowe_imperative.html" class="tsd-kind-icon">@zowe/imperative</a>
+						<ul>
+							<li class="current tsd-kind-class tsd-parent-kind-module">
+								<a href="_zowe_imperative.commandprofileloader.html" class="tsd-kind-icon">Command<wbr>Profile<wbr>Loader</a>
+								<ul>
+									<li class=" tsd-kind-constructor tsd-parent-kind-class">
+										<a href="_zowe_imperative.commandprofileloader.html#constructor" class="tsd-kind-icon">constructor</a>
+									</li>
+									<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
+										<a href="_zowe_imperative.commandprofileloader.html#mcommanddefinition" class="tsd-kind-icon">m<wbr>Command<wbr>Definition</a>
+									</li>
+									<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
+										<a href="_zowe_imperative.commandprofileloader.html#mfactory" class="tsd-kind-icon">m<wbr>Factory</a>
+									</li>
+									<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
+										<a href="_zowe_imperative.commandprofileloader.html#mlog" class="tsd-kind-icon">m<wbr>Log</a>
+									</li>
+									<li class=" tsd-kind-get-signature tsd-parent-kind-class tsd-is-private">
+										<a href="_zowe_imperative.commandprofileloader.html#definition" class="tsd-kind-icon">definition</a>
+									</li>
+									<li class=" tsd-kind-get-signature tsd-parent-kind-class tsd-is-private">
+										<a href="_zowe_imperative.commandprofileloader.html#factory" class="tsd-kind-icon">factory</a>
+									</li>
+									<li class=" tsd-kind-get-signature tsd-parent-kind-class tsd-is-private">
+										<a href="_zowe_imperative.commandprofileloader.html#log" class="tsd-kind-icon">log</a>
+									</li>
+									<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private">
+										<a href="_zowe_imperative.commandprofileloader.html#buildcommandmap" class="tsd-kind-icon">build<wbr>Command<wbr>Map</a>
+									</li>
+									<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private">
+										<a href="_zowe_imperative.commandprofileloader.html#buildcommandmetamap" class="tsd-kind-icon">build<wbr>Command<wbr>Meta<wbr>Map</a>
+									</li>
+									<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private">
+										<a href="_zowe_imperative.commandprofileloader.html#buildload" class="tsd-kind-icon">build<wbr>Load</a>
+									</li>
+									<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private">
+										<a href="_zowe_imperative.commandprofileloader.html#constructloadlist" class="tsd-kind-icon">construct<wbr>Load<wbr>List</a>
+									</li>
+									<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private">
+										<a href="_zowe_imperative.commandprofileloader.html#loadall" class="tsd-kind-icon">load<wbr>All</a>
+									</li>
+									<li class=" tsd-kind-method tsd-parent-kind-class">
+										<a href="_zowe_imperative.commandprofileloader.html#loadprofiles" class="tsd-kind-icon">load<wbr>Profiles</a>
+									</li>
+									<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-static">
+										<a href="_zowe_imperative.commandprofileloader.html#loader" class="tsd-kind-icon">loader</a>
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</li>
+				</ul>
+				<ul class="after-current">
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_provisioning_for_zowe_sdk.html" class="tsd-kind-icon">@zowe/provisioning-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_zos_console_for_zowe_sdk.html" class="tsd-kind-icon">@zowe/zos-<wbr>console-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_zos_files_for_zowe_sdk.html" class="tsd-kind-icon">@zowe/zos-<wbr>files-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_zos_jobs_for_zowe_sdk.html" class="tsd-kind-icon">@zowe/zos-<wbr>jobs-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_zos_logs_for_zowe_sdk.html" class="tsd-kind-icon">@zowe/zos-<wbr>logs-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_zos_tso_for_zowe_sdk.html" class="tsd-kind-icon">@zowe/zos-<wbr>tso-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_zos_uss_for_zowe_sdk.html" class="tsd-kind-icon">@zowe/zos-<wbr>uss-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_zos_workflows_for_zowe_sdk.html" class="tsd-kind-icon">@zowe/zos-<wbr>workflows-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_zosmf_for_zowe_sdk.html" class="tsd-kind-icon">@zowe/zosmf-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</div>
+</div>
+<footer class="with-border-bottom">
+	<div class="container">
+		<h2>Legend</h2>
+		<div class="tsd-legend-group">
+			<ul class="tsd-legend">
+				<li class="tsd-kind-object-literal"><span class="tsd-kind-icon">Object literal</span></li>
+				<li class="tsd-kind-variable"><span class="tsd-kind-icon">Variable</span></li>
+				<li class="tsd-kind-function"><span class="tsd-kind-icon">Function</span></li>
+				<li class="tsd-kind-type-alias"><span class="tsd-kind-icon">Type alias</span></li>
+				<li class="tsd-kind-type-alias tsd-has-type-parameter"><span class="tsd-kind-icon">Type alias with type parameter</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-class"><span class="tsd-kind-icon">Class</span></li>
+				<li class="tsd-kind-class tsd-has-type-parameter"><span class="tsd-kind-icon">Class with type parameter</span></li>
+				<li class="tsd-kind-constructor tsd-parent-kind-class"><span class="tsd-kind-icon">Constructor</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class"><span class="tsd-kind-icon">Method</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-interface"><span class="tsd-kind-icon">Interface</span></li>
+				<li class="tsd-kind-interface tsd-has-type-parameter"><span class="tsd-kind-icon">Interface with type parameter</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private method</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-enum"><span class="tsd-kind-icon">Enumeration</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><span class="tsd-kind-icon">Static method</span></li>
+			</ul>
+		</div>
+	</div>
+</footer>
+<div class="container tsd-generator">
+	<p>Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p>
+</div>
+<div class="overlay"></div>
+<script src="../assets/js/main.js"></script>
+</body>
+</html>

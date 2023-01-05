@@ -1,55 +1,5 @@
 # Maintainer handbook
 
-- [Tagging a new version](#tagging-a-new-version)
-- [Building the docs for production](#building-the-docs-for-production)
-- [Testing the build locally](#testing-the-build-locally)
-- [Removing archived version](#removing-archived-version)
-- [How to update the homepage?](#how-to-update-the-homepage)
-
-## Tagging a new version
-
-- First, make sure your content in the docs directory is ready to be frozen as a version. A version always should be based from master.
-- Search all instances of `<a href="/stable/web_help/index.html" target="_blank">` & replace `stable` with current latest version before adding the new version. Example: `<a href="/v1.22.x/web_help/index.html" target="_blank">`.
-- Search all instaces of `<a href="/stable/CLIReference_Zowe.pdf" target="_blank">` & replace `stable` with current latest version before adding the new version. Example: `<a href="/v1.22.x/CLIReference_Zowe.pdf" target="_blank">`.
-- Search all instaces of `<a href="/stable/zowe_web_help.zip" target="_blank">` & replace `stable` with current latest version before adding the new version. Example: `<a href="/v1.22.x/zowe_web_help.zip" target="_blank">`.
-  Note: All the instances will be only present in `/docs` directory only.
-
-- Enter a new version number and run the following command:
-
-  ```
-  npm run docusaurus docs:version v1.23.x
-  ```
-  Tagging a new version, the document versioning mechanism will:
-
-  - Copy the full `docs/` folder contents into a new `versioned_docs/version-<version>/` folder.
-  - Create a versioned sidebars file based from your current sidebar configuration - saved as `versioned_sidebars/version-<version>-sidebars.json`.
-  - Append the new version number to `versions.json`.
-
-- Add the new version's **Zowe Third Party Library Usage guide** in `/tpsr` directory. Example: `tpsr/tpsr-v1.23.x.md`.
-- Create a empty directory with a name of **Previous version** `v1.22.x` in `/static`. Example: `static/v1.22.x`.
-- Copy all contents of `/static/stable` in the **Previous version's** empty directory in the above step like `/static/v1.22.x`.
-- Add the new version's static files in `/static/stable`.
-- Change the `LATEST_VERSION` variable present in `/docusaurus.config.js` to a new version.
-- Navigate to the `/docusaurus.config.js` file and locate the `presets:` > `@docusaurus/preset-classic"` > `docs` > `versions`.
-
-  Create a **Previous version's** entry label. Example: if version `v1.22.x` docs is getting updated to `v1.23.x`. Then `v1.22.x` will be appended between `current` & `v1.21.x` in the following format:
-
-  ```
-  current: {
-    path: "stable",
-    label: `${LATEST_VERSION}` + " LTS",
-  },
-  "v1.22.x": { 
-    label: "v1.22.x LTS",
-  },
-  "v1.21.x": {
-    label: "v1.21.x LTS",
-  },
-  ```
-
-- **NOTE:** It's recommended to remove the oldest archived version every time a new version is added to minimize the build time.
-The steps are mentioned in [Removing archived version](#removing-archived-version).
-
 ## Building the docs for production
 
 You can build the docs with this command:
@@ -57,6 +7,8 @@ You can build the docs with this command:
 ```
 npm run build
 ```
+
+Running this command will also check the broken links in docs. For more information, see [Checking broken links](#checking-broken-links).
 
 ## Testing the build locally
 
@@ -70,23 +22,102 @@ npm run serve
 
 Now you will be able to visit `http://localhost:3000/` to check the content.
 
-## Removing archived version
+## Checking broken links
 
-Removing archived version is necessary once two new versions are released to reduce total deploy & build time. It is advisable to keep latest **8-9 versions only** in the master branch to avoid build failure.
+To check the broken links that your changes might introduce, use the `npm run build` command. When this command is run, it will report an exhaustive list of broken links that must be fixed before you submit the changes. 
 
-- Remove the specific version from `/versions.json` file.
-- Delete the specific complete version folder from `/versioned_docs` directory. Example: `versioned_docs/version-v1.17.x.`
-- Delete the versioned sidebars JSON file from `/versioned_sidebars`. Example: `versioned_sidebars/version-v1.17.x-sidebars.json`.
-- Delete the specific version's static files from `/static` directory. Example: `static/v1.17.x`.
-- Add the specific version entry in `versionsArchived.json` file. Example: `"v1.17.x LTS": "https://zowe-archived-docs.netlify.app/v1.17.x/getting-started/overview"`.
-- Navigate to the `/docusaurus.config.js` file and locate the `presets:` > `@docusaurus/preset-classic"` > `docs` > `versions`.
-  Delete the definition of that version which is specified in the following format:
+Here is an example: 
+```
+ashleyli@ashleylis-MacBook-Pro-2 docs-site % npm run build
 
-  ```
-   "v1.17.x": {
-     label: "v1.17.x LTS",
-   },
-  ```
+> docs-site@0.0.0 build
+> node --max-old-space-size=16384 node_modules/@docusaurus/core/bin/docusaurus build
+
+
+[en] Creating an optimized production build...
+
+✔ Client
+  
+
+✔ Server
+  Compiled successfully in 44.28s
+
+
+✔ Client
+  
+
+✔ Server
+  
+
+✔ Service Worker
+  Compiled successfully in 477.27ms
+
+warn Docusaurus found broken links!
+
+Please check the pages of your site in the list below, and make sure you don't reference any path that does not exist.
+Note: it's possible to ignore broken links with the 'onBrokenLinks' Docusaurus configuration, and let the build pass.
+
+Exhaustive list of all broken links found:
+
+- On source page path = /stable/getting-started/user-roadmap-apiml:
+   -> linking to ../user-guide/upgrade-zos-system.md (resolved as: /v2.0.x/user-guide/upgrade-zos-system.md)
+
+- On source page path = /stable/troubleshoot/troubleshooting:
+   -> linking to troubleshoot-zos.md (resolved as: /stable/troubleshoot/troubleshoot-zos.md)
+   -> linking to troubleshoot-zos-services.md (resolved as: /stable/troubleshoot/troubleshoot-zos-services.md)
+   -> linking to troubleshoot-diagnostics.md (resolved as: /stable/troubleshoot/troubleshoot-diagnostics.md)
+
+Success! Generated static files in "build".
+
+Use `npm run serve` command to test your build locally.
+```
+
+Check the **Exhaustive list of all broken links found:** section and fix all the reported link issues. Where, 
+
+- `On source page path =` indicates the local preview page that contains the broken links. 
+- `linking to` entries point to the broken links in the source files. For example, 
+
+```
+- On source page path = /stable/troubleshoot/troubleshooting:
+   -> linking to troubleshoot-zos.md (resolved as: /stable/troubleshoot/troubleshoot-zos.md)
+```
+
+means that in the `docs/troubleshoot/troubleshooting.md` file, there is a link to `troubleshoot-zos.md` which is broken. You can find the file and locate the link to `troubleshoot-zos.md` by searching it and then take action to fix it. 
+
+After all the broken links reported are fixed, run the `npm run build` command again to ensure that the log is clean now. You will see a log like this which does not contain the broken link section: 
+
+```
+ashleyli@ashleylis-MacBook-Pro-2 docs-site % npm run build
+
+> docs-site@0.0.0 build
+> node --max-old-space-size=16384 node_modules/@docusaurus/core/bin/docusaurus build
+
+
+[en] Creating an optimized production build...
+
+✔ Client
+  
+
+✔ Server
+  Compiled successfully in 39.44s
+
+
+✔ Client
+  
+
+✔ Server
+  
+
+✔ Service Worker
+  Compiled successfully in 486.21ms
+
+Success! Generated static files in "build".
+
+Use `npm run serve` command to test your build locally.
+```
+
+
+
 
 ## How to update the homepage?
 
@@ -134,6 +165,7 @@ The icons used in all the sections are stored in the `./staic/img` folder. To up
    ```
 
 ### Updating Banner: Zowe Docs
+
 - To update the content:
     Navigate to the `/docusaurus.config.js` directory and change the **title** field:
     ```
@@ -385,3 +417,13 @@ For example, to update the `Products` section, edit the variables in the followi
 },
 ```
 
+## Particular assets
+
+### ZWE command reference
+
+The ZWE command reference guide is published under References on the doc site. It's updated automatically from the zowe-install-packaging repo by using GitHub Actions ((https://github.com/zowe/zowe-install-packaging/actions/workflows/zwe-doc-generation.yml)[https://github.com/zowe/zowe-install-packaging/actions/workflows/zwe-doc-generation.yml]). 
+
+- This action runs whenever there is a change to zowe-install-packaging (which is where zwe is defined, so any change to zwe commands will trigger this action).
+- This action generates the zwe documentation and creates a PR to the Zowe docs-site repo. If there are no changes to zwe, then no PR is created. This is an example PR that was created: https://github.com/zowe/docs-site/pull/2076. Therefore, changes will get merged into staging branch on a consistent basis for the release process.
+
+For Zowe doc maintainers, ensure that you review and merge PRs titled **Update zwe server command reference** from branch **auto-update-zwe-reference** during new release preparation.

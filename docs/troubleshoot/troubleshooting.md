@@ -8,16 +8,11 @@ Some common problems with Zowe are documented, along with their solutions or wor
 
 You can also find error messages and codes, must-gathers, and information about how to get community support in these topics.
 
-- [Troubleshooting Zowe z/OS component installation](troubleshoot-zos.md)
 - [Troubleshooting API Mediation Layer](troubleshoot-apiml.md)
 - [Troubleshooting Zowe Application Framework](./app-framework/app-troubleshoot.md)
-- [Troubleshooting z/OS Services](troubleshoot-zos-services.md)
 - [Troubleshooting Zowe CLI](./cli/troubleshoot-cli.md)
 - [Troubleshooting Zowe Launcher](./launcher/launcher-troubleshoot.md)
-
-## Collecting data for Zowe problems
-
-Sometimes you cannot solve a problem by troubleshooting the symptoms. In such cases, you must collect diagnostic data. To collect diagnostic data about Zowe, see [Capturing diagnostics to assist problem determination](troubleshoot-diagnostics.md).
+- [Troubleshooting Zowe IntelliJ plug-in](troubleshoot-intellij.md)
 
 ## Verifying a Zowe release's integrity
 

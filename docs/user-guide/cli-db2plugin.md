@@ -4,8 +4,6 @@ The IBM® Db2® Database Plug-in for Zowe&trade; CLI lets you interact with Db2 
 
 Zowe CLI Plug-in for IBM Db2 Database lets you execute SQL statements against a Db2 region, export a Db2 table, and call a stored procedure. The plug-in also exposes its API so that the plug-in can be used directly in other products.
 
-[[toc]]
-
 ## Use cases
 
 As an application developer, you can use Zowe CLI Plug-in for IBM DB2 Database to perform the following tasks:
@@ -36,12 +34,14 @@ Use one of the following methods to install the the Zowe CLI Plug-in for IBM Db2
 
 ### Installing from an online registry
 
-If you installed Zowe CLI from **online registry**, complete the following steps:
+Complete the following steps if you installed Zowe CLI from **online registry**:
 
-1. Open a commandline window and issue the following command:
+1. If you are installing the plug-in on an Apple computer that contains an M1 (or later architecture) processor, complete the steps in [M1 processor installation](../user-guide/cli-db2-install-m1.md). If not, continue to Step 2.
+
+2. Open a command line window and issue the following command:
 
     ```
-    zowe plugins install @zowe/db2-for-zowe-cli@zowe-v1-lts
+    zowe plugins install @zowe/db2-for-zowe-cli@zowe-v2-lts
     ```
 
 2. [Address the license requirements](#addressing-the-license-requirement) to begin using the plug-in.
@@ -56,11 +56,13 @@ Download the ODBC driver before you install the Db2 plug-in.
 
 **Follow these steps:**
 
-1. [Download the ODBC CLI Driver](https://github.com/ibmdb/node-ibm_db#-download-clidriver-based-on-your-platform--architecture-from-the-below-ibm-hosted-url). Use the table within the download URL to select the correct CLI Driver for your platform and architecture.
+1. If you are installing the plug-in on a Apple computer that contains an M1 (or later architecture) processor, complete the steps in [M1 processor installation](../user-guide/cli-db2-install-m1.md). If not, continue to Step 2.
 
-2. Create a new directory named `odbc_cli`  on your computer. Remember the path to the new directory. You will need to provide the full path to this directory immediately before you install the Db2 plug-in.
+2. [Download the ODBC CLI Driver](https://github.com/ibmdb/node-ibm_db#-download-clidriver-based-on-your-platform--architecture-from-the-below-ibm-hosted-url) (Darwin x64). Use the table within the download URL to select the correct CLI Driver for your platform and architecture.
 
-3. Place the ODBC driver in the `odbc_cli` folder. **Do not extract the ODBC driver**.
+3. Create a new directory named `odbc_cli`  on your computer. Remember the path to the new directory. You will need to provide the full path to this directory immediately before you install the Db2 plug-in.
+
+4. Place the ODBC driver in the `odbc_cli` folder. **Do not extract the ODBC driver**.
 
 You downloaded and prepared to use the ODBC driver successfully. Proceed to install the plug-in to Zowe CLI.
 
@@ -118,12 +120,12 @@ Now that the Db2 ODBC CLI driver is downloaded, set the `IBM_DB_INSTALLER_URL` e
 
 ## Addressing the license requirement
 
-To successfully connect the Db2 CLI plug-in to a database on z/OS, a license needs to be present either on the client where the Zowe CLI is executed from, or else on z/OS. If you don't have a license configured when you execute Db2 CLI commands, you will receive an error `SQL1598N`, for example:
+To successfully connect the Db2 CLI plug-in to a database on z/OS, a license needs to be present either on the client where the Zowe CLI is executed from, or else on z/OS. If you do not have a license configured when you execute Db2 CLI commands, you will receive an error `SQL1598N`, for example:
 
 ```
 DB2 ODBC Driver Error: [node-ibm_db] SQL_ERROR
 Error Details:
-Error:    [IBM][CLI Driver] SQL1598N  An attempt to connect to the   database server failed because of a licensing problem.
+Error:    [IBM][CLI Driver] SQL1598N An attempt to connect to the database server failed because of a licensing problem.
 ```
 
 ### Server-side license
@@ -149,53 +151,83 @@ If the utility `db2connectactivate` has not been executed against the Db2 databa
 
 ## Creating a user profile
 
-Before you start using the IBM Db2 plug-in, create a profile with details of the Db2 system you're connecting to.
+You create a DB2 profile to avoid entering your connection details each time that you issue a command. You can create multiple profiles and switch between them as needed. Use one of the following methods to create a profile:
 
-  - The Db2 server host name
-  - The Db2 server port number
-  - The database name (you can also use the location)
+- Create plug-in profiles using a configuration file: Specify your profile and connection details in the `zowe.config.json` configuration file.
 
-To get the Db2 system information, the following two methods can be used.
+- Create plug-in profiles using a command: Issue the `zowe profiles create` command to create the profile.
 
-- Issue the command `-DISPLAY DDF` in the Db2 SPUFI command on z/OS
+We recommend that you create profiles using the configuration file. We do not recommend using profile commands because we are removing them in a future major release.
 
-or
+### Creating plug-in profiles using a configuration file
 
-- View the JES spool for the MSTR job for the Db2 subsystem and search for the message `DSNL004I`. For example, for the database DI2E the JES job `DI2EMSTR` will have an entry with similar to:
-```
-DSNL004I  #DI2E DDF START COMPLETE  025        
-           LOCATION  DSNV102E                  
-           LU        GBIBMIYA.IYCYZDBE         
-           GENERICLU -NONE                     
-           DOMAIN    host.ip.address.com  
-           TCPPORT   40100                     
-           SECPORT   30100
-```
+When you issue various `zowe config` commands, such as `init`, `auto-init`, and `convert-profiles`, they create a `zowe.config.json` configuration file. When you install the DB2 plug-in, the commands create an entry for a `db2 profile` in your `zowe.config.json` file.
 
-The DOMAIN is used for the &lt;hostname&gt;, the TCPPORT for the &lt;port&gt; and the LOCATION for the &lt;database&gt; in the zowe create profile command.  
+Alternatively, you can create a db2 profile manually by adding a section that contains the configuration details to your `zowe.config.json` configuration file.
 
-In addition to the host, port and database you'll need
+1. Browse to the following directory: `C:\Users\<username>\.zowe`
 
-  - The user name
-  - The password
-  - If your Db2 systems use a secure connection, you can also
-    provide an SSL/TSL certificate file.
+2. Open the `zowe.config.json` configuration file using a text editor or IDE, such as Visual Studio Code or IntelliJ. 
 
-To create a db2 profile in Zowe CLI, issue the following command with your connection details for the Db2 instance:
+    **NOTE:** If the file does not exist, issue the following command to create the configuration file: `zowe config init -–gc`
 
-```
-zowe profiles create db2 <profileName> -H <host> -P <port> -d <database> -u <user> --pw <password>
-```
+3. Add code to the "profiles" section as shown in the following example:
+    ```
+    "Your_db2_profile": {
+        "type": "db2",
+        "properties": {
+            "host": "Your_host_name",
+            "port": Your_port_number,
+            "database": “Your_database”
+        },
+        "secure": [
+            "user",
+            "password"
+        ]
+    }
+    ```
 
-**Note** For more information, issue the command `zowe profiles create db2-profile --help`
+4. Save the file
 
-### SQL0805N: Database BIND
+You can now use your profile when you issue commands in the db2 command group.
 
-To be able to run remote SQL commands against a Db2 database, you must invoke a `BIND` command against it. If the `BIND` command is not run, you will see an error that contains `SQL0805N` similar to the log below:
+### Creating plug-in profiles using a command
 
-```
-Command Error:
-DB2 ODBC Driver Error: [node-ibm_db] Error in ODBCConnection::QuerySync while executing query.Error Details:
-Error:    [IBM][CLI Driver][DB2] SQL0805N  Package "DSNV112E.NULLID.SYSSH200.5359534C564C3031" was not found.
-```
-If you receive this error, a user with `DBADM` authority must run the `BIND` command. This will typically be done by a Db2 System Programmer.  More information can be found in the [Db2 product documentation](https://medium.com/r/?url=https%3A%2F%2Fwww.ibm.com%2Fsupport%2Fproducthub%2Fdb2%2Fdocs%2Fcontent%2FSSEPGG_11.5.0%2Fcom.ibm.db2.luw.admin.cmd.doc%2Fdoc%2Fr0001935.html) and [The Bind process](https://medium.com/r/?url=https%3A%2F%2Fwww.ibm.com%2Fsupport%2Fknowledgecenter%2FSSEPEK_10.0.0%2Fapsg%2Fsrc%2Ftpc%2Fdb2z_bindprocess.html).
+The following steps describe how to create a profile using the `zowe profiles create` command.
+
+1. Open a terminal window and issue the following command:
+    ```
+    zowe profiles create db2 <profile_name> –-host <host> --port <port> --user <user> --password <password> -–region-name <region>
+    ```
+
+   **`profile_name`:** 
+
+    Specifies a name for your profile.
+
+    **`host`:**
+
+    Specifies the host name for the instance.
+
+    **`user`:**
+
+    Specifies your user name to log in to the instance.
+
+    **`password`:**
+
+    Specifies your password to log in to the instance.
+
+    **`port`:**
+
+    Specifies the port number to connect to the instance.
+
+    **`database`:**
+
+    Specifies the database to use on the instance.
+
+    **Example:**
+    ```
+    zowe profiles create db2-profile database1 --host db2.zowe.org --port 25000 --user zowe --password zowepass --database zowedb
+    ```
+2. Press Enter. The result of the command displays as a success or failure message.
+
+You can now use your profile when you issue commands in the db2 command group.

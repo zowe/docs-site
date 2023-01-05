@@ -9,7 +9,10 @@ Zowe can be extended in the following ways:
   - [Dynamic API registration](#dynamic-api-registration)
   - [Static API registration](#static-api-registration)
 - [Add a plug-in to the Zowe Desktop](#add-a-plug-in-to-the-zowe-desktop)
-- [Sample extensions](#sample-extensions)
+- [Extend Zowe Explorer](#extend-zowe-explorer)
+
+To help Zowe extenders better understand how extensions are developed and deployed,
+we provide a set of [sample extensions](#sample-extensions). These sample extensions contain the necessary boilerplate project setup, application code, and installation scripts to jumpstart the extension development and deployment to Zowe.
 
 **Note:** For more information on the architecture of Zowe, see [Zowe Architecture](../getting-started/zowe-architecture.md).
 
@@ -28,6 +31,8 @@ To register a z/OS service with the API Mediation Layer, there are two approache
 - [Static API registration](#static-api-registration)
 
 For information about how to onboard REST APIs, see the [Onboarding Overview](extend-apiml/onboard-overview.md).
+
+To streamline the process of onboarding new REST API services to the API Mediation Layer, see [Onboarding a REST API service with the YAML Wizard](../user-guide/onboard-wizard.md).
 
 ### Dynamic API registration
 
@@ -50,6 +55,12 @@ The Zowe Desktop is an angular application that allows native plug-ins to be bui
 - [Sample iframe App](extend-desktop/mvd-extendingzlux.md#sample-iframe-app).
 - [Sample Angular App](extend-desktop/mvd-extendingzlux.md#sample-angular-app).
 - [Sample React App](extend-desktop/mvd-extendingzlux.md#sample-react-app).
+
+## Extend Zowe Explorer
+
+Zowe Explorer provides extension APIs that assist third party extenders to create extensions that access Zowe Explorer resource entities to enrich the user experience. There are many ways Zowe Explorer can be extended to support many different use cases. 
+
+For the kinds of extensions that are supported and how to get started with extending Zowe Explorer, see [Extensions for Zowe Explorer](https://github.com/zowe/vscode-extension-for-zowe/blob/master/docs/README-Extending.md).
 
 ## Sample extensions
 

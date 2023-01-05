@@ -1,0 +1,565 @@
+<!doctype html>
+<html class="default no-js">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>PluginIssues | Zowe Node.js SDK - v2.2.0</title>
+	<meta name="description" content="Documentation for Zowe Node.js SDK - v2.2.0">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="../assets/css/main.css">
+</head>
+<body>
+<header>
+	<div class="tsd-page-toolbar">
+		<div class="container">
+			<div class="table-wrap">
+				<div class="table-cell" id="tsd-search" data-index="../assets/js/search.json" data-base="..">
+					<div class="field">
+						<label for="tsd-search-field" class="tsd-widget search no-caption">Search</label>
+						<input id="tsd-search-field" type="text" />
+					</div>
+					<ul class="results">
+						<li class="state loading">Preparing search index...</li>
+						<li class="state failure">The search index is not available</li>
+					</ul>
+					<a href="../index.html" class="title">Zowe Node.js SDK - v2.2.0</a>
+				</div>
+				<div class="table-cell" id="tsd-widgets">
+					<div id="tsd-filter">
+						<a href="#" class="tsd-widget options no-caption" data-toggle="options">Options</a>
+						<div class="tsd-filter-group">
+							<div class="tsd-select" id="tsd-filter-visibility">
+								<span class="tsd-select-label">All</span>
+								<ul class="tsd-select-list">
+									<li data-value="public">Public</li>
+									<li data-value="protected">Public/Protected</li>
+									<li data-value="private" class="selected">All</li>
+								</ul>
+							</div>
+							<input type="checkbox" id="tsd-filter-inherited" checked />
+							<label class="tsd-widget" for="tsd-filter-inherited">Inherited</label>
+							<input type="checkbox" id="tsd-filter-externals" checked />
+							<label class="tsd-widget" for="tsd-filter-externals">Externals</label>
+						</div>
+					</div>
+					<a href="#" class="tsd-widget menu no-caption" data-toggle="menu">Menu</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="tsd-page-title">
+		<div class="container">
+			<ul class="tsd-breadcrumb">
+				<li>
+					<a href="../globals.html">Globals</a>
+				</li>
+				<li>
+					<a href="../modules/_zowe_imperative.html">@zowe/imperative</a>
+				</li>
+				<li>
+					<a href="_zowe_imperative.pluginissues.html">PluginIssues</a>
+				</li>
+			</ul>
+			<h1>Class PluginIssues</h1>
+		</div>
+	</div>
+</header>
+<div class="container container-main">
+	<div class="row">
+		<div class="col-8 col-content">
+			<section class="tsd-panel tsd-comment">
+				<div class="tsd-comment tsd-typography">
+					<div class="lead">
+						<p>This class is used to record and access plugin errors and warnings.
+						It is a singleton and should be accessed via PluginIssues.instance.</p>
+					</div>
+				</div>
+			</section>
+			<section class="tsd-panel tsd-hierarchy">
+				<h3>Hierarchy</h3>
+				<ul class="tsd-hierarchy">
+					<li>
+						<span class="target">PluginIssues</span>
+					</li>
+				</ul>
+			</section>
+			<section class="tsd-panel-group tsd-index-group">
+				<h2>Index</h2>
+				<section class="tsd-panel tsd-index-panel">
+					<div class="tsd-index-content">
+						<section class="tsd-index-section tsd-is-private tsd-is-private-protected">
+							<h3>Properties</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="_zowe_imperative.pluginissues.html#installedplugins" class="tsd-kind-icon">installed<wbr>Plugins</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="_zowe_imperative.pluginissues.html#pluginissues" class="tsd-kind-icon">plugin<wbr>Issues</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private tsd-is-static"><a href="_zowe_imperative.pluginissues.html#minstance" class="tsd-kind-icon">m<wbr>Instance</a></li>
+							</ul>
+						</section>
+						<section class="tsd-index-section ">
+							<h3>Accessors</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-get-signature tsd-parent-kind-class tsd-is-static"><a href="_zowe_imperative.pluginissues.html#instance" class="tsd-kind-icon">instance</a></li>
+							</ul>
+						</section>
+						<section class="tsd-index-section ">
+							<h3>Methods</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_zowe_imperative.pluginissues.html#doespluginhaveissuesev" class="tsd-kind-icon">does<wbr>Plugin<wbr>Have<wbr>Issue<wbr>Sev</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_zowe_imperative.pluginissues.html#getallissues" class="tsd-kind-icon">get<wbr>All<wbr>Issues</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_zowe_imperative.pluginissues.html#getinstalledplugins" class="tsd-kind-icon">get<wbr>Installed<wbr>Plugins</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_zowe_imperative.pluginissues.html#getissuelistforplugin" class="tsd-kind-icon">get<wbr>Issue<wbr>List<wbr>For<wbr>Plugin</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_zowe_imperative.pluginissues.html#recordissue" class="tsd-kind-icon">record<wbr>Issue</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_zowe_imperative.pluginissues.html#removeissuesforplugin" class="tsd-kind-icon">remove<wbr>Issues<wbr>For<wbr>Plugin</a></li>
+							</ul>
+						</section>
+					</div>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group tsd-is-private tsd-is-private-protected">
+				<h2>Properties</h2>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
+					<a name="installedplugins" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> installed<wbr>Plugins</h3>
+					<div class="tsd-signature tsd-kind-icon">installed<wbr>Plugins<span class="tsd-signature-symbol">:</span> <a href="../interfaces/_zowe_imperative.ipluginjson.html" class="tsd-signature-type">IPluginJson</a><span class="tsd-signature-symbol"> = null</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.3.5/packages/imperative/src/plugins/utilities/PluginIssues.ts#L79">@zowe/imperative/packages/imperative/src/plugins/utilities/PluginIssues.ts:79</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>The set of installed plugins. We access this class property only
+								through its accompanying function
+								[getInstalledPlugins]{@link PluginIssues#getInstalledPlugins}
+							to ensure that we only read the file once and reduce excessive I/O.</p>
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
+					<a name="pluginissues" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> plugin<wbr>Issues</h3>
+					<div class="tsd-signature tsd-kind-icon">plugin<wbr>Issues<span class="tsd-signature-symbol">:</span> <a href="../interfaces/_zowe_imperative.ipluginissues.html" class="tsd-signature-type">IPluginIssues</a></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.3.5/packages/imperative/src/plugins/utilities/PluginIssues.ts#L68">@zowe/imperative/packages/imperative/src/plugins/utilities/PluginIssues.ts:68</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>A map containing issues  for each plugin for which problems were detected.</p>
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private tsd-is-static">
+					<a name="minstance" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> <span class="tsd-flag ts-flagPrivate">Private</span> m<wbr>Instance</h3>
+					<div class="tsd-signature tsd-kind-icon">m<wbr>Instance<span class="tsd-signature-symbol">:</span> <a href="_zowe_imperative.pluginissues.html" class="tsd-signature-type">PluginIssues</a></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.3.5/packages/imperative/src/plugins/utilities/PluginIssues.ts#L60">@zowe/imperative/packages/imperative/src/plugins/utilities/PluginIssues.ts:60</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>This is the variable that stores the specific instance of the PluginIssues.
+							Defined as static so that it can be accessed from anywhere.</p>
+						</div>
+					</div>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group ">
+				<h2>Accessors</h2>
+				<section class="tsd-panel tsd-member tsd-kind-get-signature tsd-parent-kind-class tsd-is-static">
+					<a name="instance" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> instance</h3>
+					<ul class="tsd-signatures tsd-kind-get-signature tsd-parent-kind-class tsd-is-static">
+						<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">get</span> instance<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_zowe_imperative.pluginissues.html" class="tsd-signature-type">PluginIssues</a></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.3.5/packages/imperative/src/plugins/utilities/PluginIssues.ts#L89">@zowe/imperative/packages/imperative/src/plugins/utilities/PluginIssues.ts:89</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Gets a single instance of the PluginIssues. On the first call of
+										PluginIssues.instance, a new Plugin Issues object is initialized and returned.
+									Every subsequent call will use the one that was first created.</p>
+								</div>
+							</div>
+							<h4 class="tsd-returns-title">Returns <a href="_zowe_imperative.pluginissues.html" class="tsd-signature-type">PluginIssues</a></h4>
+							<p>The newly initialized PMF object.</p>
+						</li>
+					</ul>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group ">
+				<h2>Methods</h2>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="doespluginhaveissuesev" class="tsd-anchor"></a>
+					<h3>does<wbr>Plugin<wbr>Have<wbr>Issue<wbr>Sev</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">does<wbr>Plugin<wbr>Have<wbr>Issue<wbr>Sev<span class="tsd-signature-symbol">(</span>pluginName<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, issueSevs<span class="tsd-signature-symbol">: </span><a href="../enums/_zowe_imperative.issueseverity.html" class="tsd-signature-type">IssueSeverity</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.3.5/packages/imperative/src/plugins/utilities/PluginIssues.ts#L109">@zowe/imperative/packages/imperative/src/plugins/utilities/PluginIssues.ts:109</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Reports whether or not a plugin has any issues with any of the specified
+									severities.</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>pluginName: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The name of the plugin</p>
+									</div>
+								</li>
+								<li>
+									<h5>issueSevs: <a href="../enums/_zowe_imperative.issueseverity.html" class="tsd-signature-type">IssueSeverity</a><span class="tsd-signature-symbol">[]</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>An array of issue severities.</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
+							<ul>
+								<li>True if any plugin issues have any of the severities.<pre><code>               <span class="hljs-literal">False</span> <span class="hljs-keyword">otherwise</span>.
+</code></pre>
+								</li>
+							</ul>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="getallissues" class="tsd-anchor"></a>
+					<h3>get<wbr>All<wbr>Issues</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">get<wbr>All<wbr>Issues<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_imperative.ipluginissues.html" class="tsd-signature-type">IPluginIssues</a></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.3.5/packages/imperative/src/plugins/utilities/PluginIssues.ts#L127">@zowe/imperative/packages/imperative/src/plugins/utilities/PluginIssues.ts:127</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Get the issues recorded for all plugins.</p>
+								</div>
+							</div>
+							<h4 class="tsd-returns-title">Returns <a href="../interfaces/_zowe_imperative.ipluginissues.html" class="tsd-signature-type">IPluginIssues</a></h4>
+							<ul>
+								<li>Map of plugin names to their array of issues.</li>
+							</ul>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="getinstalledplugins" class="tsd-anchor"></a>
+					<h3>get<wbr>Installed<wbr>Plugins</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">get<wbr>Installed<wbr>Plugins<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_imperative.ipluginjson.html" class="tsd-signature-type">IPluginJson</a></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.3.5/packages/imperative/src/plugins/utilities/PluginIssues.ts#L138">@zowe/imperative/packages/imperative/src/plugins/utilities/PluginIssues.ts:138</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Get the set of installed plugins. This function should be the only means
+									used to access our installedPlugins class variable.</p>
+								</div>
+							</div>
+							<h4 class="tsd-returns-title">Returns <a href="../interfaces/_zowe_imperative.ipluginjson.html" class="tsd-signature-type">IPluginJson</a></h4>
+							<ul>
+								<li>The set of installed plugins.</li>
+							</ul>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="getissuelistforplugin" class="tsd-anchor"></a>
+					<h3>get<wbr>Issue<wbr>List<wbr>For<wbr>Plugin</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">get<wbr>Issue<wbr>List<wbr>For<wbr>Plugin<span class="tsd-signature-symbol">(</span>pluginName<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_imperative.ipluginissue.html" class="tsd-signature-type">IPluginIssue</a><span class="tsd-signature-symbol">[]</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.3.5/packages/imperative/src/plugins/utilities/PluginIssues.ts#L170">@zowe/imperative/packages/imperative/src/plugins/utilities/PluginIssues.ts:170</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Get the array of issues for the specified plugin.</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>pluginName: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The name of the plugin</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="../interfaces/_zowe_imperative.ipluginissue.html" class="tsd-signature-type">IPluginIssue</a><span class="tsd-signature-symbol">[]</span></h4>
+							<ul>
+								<li>Array of issues for the plugin.<pre><code>                      If no issues, an empty<span class="hljs-built_in"> array </span>is returned.
+</code></pre>
+								</li>
+							</ul>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="recordissue" class="tsd-anchor"></a>
+					<h3>record<wbr>Issue</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">record<wbr>Issue<span class="tsd-signature-symbol">(</span>pluginName<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, issueSev<span class="tsd-signature-symbol">: </span><a href="../enums/_zowe_imperative.issueseverity.html" class="tsd-signature-type">IssueSeverity</a>, issueText<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.3.5/packages/imperative/src/plugins/utilities/PluginIssues.ts#L197">@zowe/imperative/packages/imperative/src/plugins/utilities/PluginIssues.ts:197</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Record an issue that was discovered in a plugin into an in-memory structure.
+									The plugin issues can later be accessed to report the health of a plugin.</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>pluginName: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The name of the plugin</p>
+									</div>
+								</li>
+								<li>
+									<h5>issueSev: <a href="../enums/_zowe_imperative.issueseverity.html" class="tsd-signature-type">IssueSeverity</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The severity of the issue.
+										Use PluginIssues.ERROR or PluginIssues.WARNING</p>
+									</div>
+								</li>
+								<li>
+									<h5>issueText: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The issue message text to record.</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="removeissuesforplugin" class="tsd-anchor"></a>
+					<h3>remove<wbr>Issues<wbr>For<wbr>Plugin</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">remove<wbr>Issues<wbr>For<wbr>Plugin<span class="tsd-signature-symbol">(</span>pluginName<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.3.5/packages/imperative/src/plugins/utilities/PluginIssues.ts#L182">@zowe/imperative/packages/imperative/src/plugins/utilities/PluginIssues.ts:182</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Remove the specified plugin from the collection of plugin issues.</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>pluginName: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The name of the plugin to remove</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+			</section>
+		</div>
+		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
+			<nav class="tsd-navigation primary">
+				<ul>
+					<li class="globals  ">
+						<a href="../globals.html"><em>Globals</em></a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_core_for_zowe_sdk.html">@zowe/core-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class="current tsd-kind-module">
+						<a href="../modules/_zowe_imperative.html">@zowe/imperative</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_provisioning_for_zowe_sdk.html">@zowe/provisioning-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_zos_console_for_zowe_sdk.html">@zowe/zos-<wbr>console-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_zos_files_for_zowe_sdk.html">@zowe/zos-<wbr>files-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_zos_jobs_for_zowe_sdk.html">@zowe/zos-<wbr>jobs-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_zos_logs_for_zowe_sdk.html">@zowe/zos-<wbr>logs-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_zos_tso_for_zowe_sdk.html">@zowe/zos-<wbr>tso-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_zos_uss_for_zowe_sdk.html">@zowe/zos-<wbr>uss-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_zos_workflows_for_zowe_sdk.html">@zowe/zos-<wbr>workflows-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_zosmf_for_zowe_sdk.html">@zowe/zosmf-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+				</ul>
+			</nav>
+			<nav class="tsd-navigation secondary menu-sticky">
+				<ul class="before-current">
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_core_for_zowe_sdk.html" class="tsd-kind-icon">@zowe/core-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+				</ul>
+				<ul class="current">
+					<li class="current tsd-kind-module">
+						<a href="../modules/_zowe_imperative.html" class="tsd-kind-icon">@zowe/imperative</a>
+						<ul>
+							<li class="current tsd-kind-class tsd-parent-kind-module">
+								<a href="_zowe_imperative.pluginissues.html" class="tsd-kind-icon">Plugin<wbr>Issues</a>
+								<ul>
+									<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
+										<a href="_zowe_imperative.pluginissues.html#installedplugins" class="tsd-kind-icon">installed<wbr>Plugins</a>
+									</li>
+									<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
+										<a href="_zowe_imperative.pluginissues.html#pluginissues" class="tsd-kind-icon">plugin<wbr>Issues</a>
+									</li>
+									<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private tsd-is-static">
+										<a href="_zowe_imperative.pluginissues.html#minstance" class="tsd-kind-icon">m<wbr>Instance</a>
+									</li>
+									<li class=" tsd-kind-get-signature tsd-parent-kind-class tsd-is-static">
+										<a href="_zowe_imperative.pluginissues.html#instance" class="tsd-kind-icon">instance</a>
+									</li>
+									<li class=" tsd-kind-method tsd-parent-kind-class">
+										<a href="_zowe_imperative.pluginissues.html#doespluginhaveissuesev" class="tsd-kind-icon">does<wbr>Plugin<wbr>Have<wbr>Issue<wbr>Sev</a>
+									</li>
+									<li class=" tsd-kind-method tsd-parent-kind-class">
+										<a href="_zowe_imperative.pluginissues.html#getallissues" class="tsd-kind-icon">get<wbr>All<wbr>Issues</a>
+									</li>
+									<li class=" tsd-kind-method tsd-parent-kind-class">
+										<a href="_zowe_imperative.pluginissues.html#getinstalledplugins" class="tsd-kind-icon">get<wbr>Installed<wbr>Plugins</a>
+									</li>
+									<li class=" tsd-kind-method tsd-parent-kind-class">
+										<a href="_zowe_imperative.pluginissues.html#getissuelistforplugin" class="tsd-kind-icon">get<wbr>Issue<wbr>List<wbr>For<wbr>Plugin</a>
+									</li>
+									<li class=" tsd-kind-method tsd-parent-kind-class">
+										<a href="_zowe_imperative.pluginissues.html#recordissue" class="tsd-kind-icon">record<wbr>Issue</a>
+									</li>
+									<li class=" tsd-kind-method tsd-parent-kind-class">
+										<a href="_zowe_imperative.pluginissues.html#removeissuesforplugin" class="tsd-kind-icon">remove<wbr>Issues<wbr>For<wbr>Plugin</a>
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</li>
+				</ul>
+				<ul class="after-current">
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_provisioning_for_zowe_sdk.html" class="tsd-kind-icon">@zowe/provisioning-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_zos_console_for_zowe_sdk.html" class="tsd-kind-icon">@zowe/zos-<wbr>console-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_zos_files_for_zowe_sdk.html" class="tsd-kind-icon">@zowe/zos-<wbr>files-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_zos_jobs_for_zowe_sdk.html" class="tsd-kind-icon">@zowe/zos-<wbr>jobs-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_zos_logs_for_zowe_sdk.html" class="tsd-kind-icon">@zowe/zos-<wbr>logs-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_zos_tso_for_zowe_sdk.html" class="tsd-kind-icon">@zowe/zos-<wbr>tso-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_zos_uss_for_zowe_sdk.html" class="tsd-kind-icon">@zowe/zos-<wbr>uss-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_zos_workflows_for_zowe_sdk.html" class="tsd-kind-icon">@zowe/zos-<wbr>workflows-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_zosmf_for_zowe_sdk.html" class="tsd-kind-icon">@zowe/zosmf-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</div>
+</div>
+<footer class="with-border-bottom">
+	<div class="container">
+		<h2>Legend</h2>
+		<div class="tsd-legend-group">
+			<ul class="tsd-legend">
+				<li class="tsd-kind-object-literal"><span class="tsd-kind-icon">Object literal</span></li>
+				<li class="tsd-kind-variable"><span class="tsd-kind-icon">Variable</span></li>
+				<li class="tsd-kind-function"><span class="tsd-kind-icon">Function</span></li>
+				<li class="tsd-kind-type-alias"><span class="tsd-kind-icon">Type alias</span></li>
+				<li class="tsd-kind-type-alias tsd-has-type-parameter"><span class="tsd-kind-icon">Type alias with type parameter</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-class"><span class="tsd-kind-icon">Class</span></li>
+				<li class="tsd-kind-class tsd-has-type-parameter"><span class="tsd-kind-icon">Class with type parameter</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class"><span class="tsd-kind-icon">Method</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-interface"><span class="tsd-kind-icon">Interface</span></li>
+				<li class="tsd-kind-interface tsd-has-type-parameter"><span class="tsd-kind-icon">Interface with type parameter</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-enum"><span class="tsd-kind-icon">Enumeration</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private property</span></li>
+			</ul>
+		</div>
+	</div>
+</footer>
+<div class="container tsd-generator">
+	<p>Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p>
+</div>
+<div class="overlay"></div>
+<script src="../assets/js/main.js"></script>
+</body>
+</html>
