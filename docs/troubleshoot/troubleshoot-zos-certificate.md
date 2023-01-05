@@ -51,3 +51,35 @@ ZOSMF_CERTIFICATE=
 ```
 
 4. Restart Zowe and check whether the error is resolved.
+
+## PKCS 12 server keystore generation fails in Java 8 SR7FP15, SR7 FP16, and SR7 FP20
+
+**Symptoms**
+
+When you let Zowe server installs create a PKCS12 keystore, the keystore that is generated cannot be read by ZSS. Then, parts of Zowe cannot be used. 
+
+**Solutions**
+
+This error occurs because of the incompatibility which is found between Java and GSK regarding cryptography.
+
+You can try the following options if you are effected by this error.
+
+- You can temporarily downgrade Java, for example, to Java 7.
+
+- Or you can also use the flags as below when generating a keystore. 
+
+```
+-J-Dkeystore.pkcs12.certProtectionAlgorithm=PBEWithSHAAnd40BitRC2 -J-
+Dkeystore.pkcs12.certPbeIterationCount=50000 -J-
+Dkeystore.pkcs12.keyProtectionAlgorithm=PBEWithSHAAnd3KeyTripleDES -J-
+Dkeystore.pkcs12.keyPbeIterationCount=50000
+```
+
+**Notes**
+
+If you already have an existing keystore or you are using keyrings, this error will not happen.
+
+If you do not use ZSS, this error will not happen because ZSS is on by default.
+
+If you already use your own PKCS12 files instead of the files that Zowe generates for you, this error will not happen. 
+
