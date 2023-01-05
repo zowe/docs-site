@@ -75,12 +75,12 @@ Follow these steps:
 1. In Zowe Explorer settings, scroll to a data set, USS file, or job setting type.
 2. Click the setting's corresponding **Edit in settings.json** link.
 
-    This opens the `settings.json` file in an **Editor** tab.
+    This opens the `settings.json` file in an **Editor** tab. (The suggestions widget also opens if the functionality is enabled.)
 
 3. Edit the settings in the file as needed.
 4. Save the file to keep changes.
 
-    ![Configure Zowe settings](../images/ze/ZE-Configuration.gif)
+    ![Configure Zowe settings](../images/ze/ZE-Configuration2.gif)
 
 ### Modifying temporary file location settings
 
@@ -91,7 +91,7 @@ Change the default folder location where temporary files are stored with the fol
    3. Modify the following definition in the file:
 
       ```json
-      "Zowe-Temp-Folder-Location": {
+      "zowe.files.temporaryDownloadsFolder": {
           "folderPath": "/path/to/directory"
         }
       ```
