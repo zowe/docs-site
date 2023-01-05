@@ -26,7 +26,7 @@ Ensure that you meet the following prerequisites before you use the extension:
 
 ### Profile notes:
 
-- Use existing Zowe CLI `zosmf` profiles created with Zowe CLI v.2.0.0 or later.
+- You can use existing Zowe CLI `zosmf` profiles created with Zowe CLI v.2.0.0 or later.
 
 - Zowe CLI `zosmf` profiles that are created in Zowe Explorer can be interchangeably used in Zowe CLI.
 
