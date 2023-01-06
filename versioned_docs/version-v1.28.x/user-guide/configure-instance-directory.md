@@ -165,6 +165,15 @@ When Zowe starts, a number of its microservices need to be given port numbers th
 
 **Note:** If all of the default port values are acceptable, the ports do not need to be changed. To allocate ports for the Zowe runtime servers, ensure that the ports are not in use.
 
+
+#### Port validation
+
+When Zowe starts up, it may automatically check if the above ports are available for use by Zowe. If it detects that a port is already occupied, then Zowe will not start as a precaution. In a DVIPA or other advanced networking configuration, this behavior can be customized in case Zowe misinterprets a port as being occupied. In `instance.env`, one of two customization parameters can be added to alter the default behavior:
+
+- `ZWE_NETWORK_VIPA_IP=some.ip`: When set, Zowe will narrow its port validation to this specific IP
+- `ZWE_NETWORK_VALIDATE_PORT_FREE`: When set to `false`, Zowe will skip validation. By default, this is `true`.
+
+
 To determine which ports are not available, follow these steps:
 
 1. Display the list of ports that are in use with the following command:
