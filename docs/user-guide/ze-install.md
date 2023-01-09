@@ -116,7 +116,7 @@ When environment conditions do not support the Zowe CLI built-in Credential Mana
 
 Submitting the wrong job can risk potential problems on your server. This can happen when the user enters the wrong job or inadvertently selects the **Submit Jobs** option.
 
-To prevent this, enable the option to require confirmation before submitting a job. Once enabled, a dialog window asking for user confirmation displays when **Submit Jobs** is selected.
+To help prevent this, enable the option to require confirmation before submitting a job. Once enabled, a dialog window asking for user confirmation displays when **Submit Jobs** is selected.
 
 ![Confirm Submit Job](../images/ze/ZE-SubmitJobConfirm.gif)
 
