@@ -97,9 +97,8 @@ Change the default folder location where temporary files are stored with the fol
       ```
 
       Replace **/path/to/directory** with the new folder location.
-    
-    
-  3. Save the file to keep the change.
+
+4. Save the file to keep the change.
 
 ### Modifying the `Secure Credentials Enabled` setting
 
@@ -112,6 +111,24 @@ When environment conditions do not support the Zowe CLI built-in Credential Mana
     When disabled, if the `autoStore` setting in the `zowe.config.json` file is set to *true*, z/OS credentials are stored as text in the file.
 
     If the `autoStore` setting is set to *false*, you are prompted for the missing credentials in Visual Studio Code. These are stored and used for the duration of the session.
+
+### Setting confirmation requirements for submitting jobs
+
+Submitting the wrong job can risk potential problems on your server. This can happen when the user enters the wrong job or inadvertently selects the **Submit Jobs** option.
+
+To prevent this, enable the option to require confirmation before submitting a job. Once enabled, a dialog window asking for user confirmation displays when **Submit Jobs** is selected.
+
+![Confirm Submit Job](../images/ze/ZE-SubmitJobConfirm.gif)
+
+To configure confirmation settings for submitting a job, follow these steps:
+
+1. On the VS Code menu bar, click **File**, **Preferences**, and click **Settings** to display the Settings editor.
+
+2. Select the **User** or **Workspace** tab, depending on the settings you want to update.
+3. In the Settings navigation menu, open the **Extensions** menu and click **Zowe Explorer**.
+4. Select **Jobs: Confirm Submission** to enable or disable the Confirm Submission feature.
+    - If enabled, the **All jobs** option is selected by default. Open the dropdown menu to select a different option.
+    - Once enabled, a confirmation dialog displays when a job matching the selected option is submitted.
 
 ## Relevant Information
 
