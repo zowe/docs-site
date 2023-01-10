@@ -126,9 +126,8 @@ To configure confirmation settings for submitting a job, follow these steps:
 
 2. Select the **User** or **Workspace** tab, depending on the settings you want to update.
 3. In the Settings navigation menu, open the **Extensions** menu and click **Zowe Explorer**.
-4. Select **Jobs: Confirm Submission** to enable or disable the Confirm Submission feature.
-    - If enabled, the **All jobs** option is selected by default. Open the dropdown menu to select a different option.
-    - Once enabled, a confirmation dialog displays when a job matching the selected option is submitted.
+4. In the **Jobs: Confirm Submission** section, open the drop-down menu to select a different confirmation setting.
+    - If enabled, a confirmation dialog displays when a job matching the selected option is submitted.
 
 ## Relevant Information
 
