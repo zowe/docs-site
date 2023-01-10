@@ -386,6 +386,18 @@ The high-level configuration `node` supports these definitions:
 - **`home`**  
  Defines the path to the Node.js runtime directory.
 
+:::tips
+
+Make sure the value of `node.home` in the `zowe.yaml` is visible to the zowe STC user, and contains within it "bin/node". For example, 
+```
+node:
+  home: "/usrlppSysplex/nodejs/node-v12.16.1"
+```
+
+The above example implies that the path "/usrlppSysplex/nodejs/node-v12.16.1/bin/node" exists. If it does not, you need to correct the value so that it would be the value that contains within it "bin/node".
+
+:::
+
 ### YAML configurations - zOSMF
 
 The high-level configuration `zOSMF` supports these definitions:
