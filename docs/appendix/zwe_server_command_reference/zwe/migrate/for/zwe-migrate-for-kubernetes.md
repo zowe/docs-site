@@ -30,13 +30,13 @@ In order to make certificates working in Kubernetes, the certificate you are usi
 have these domains defined in certificate Subject Alt Name (SAN):
 
 - your external domains to access Zowe APIML Gateway Service running in Kubernetes cluster,
-- `*.[k8s-namespace].svc.[k8s-cluster-name]`
-- `*.discovery-service.[k8s-namespace].svc.[k8s-cluster-name]`
-- `*.gateway-service.[k8s-namespace].svc.[k8s-cluster-name]`
-- `*.[k8s-namespace].pod.[k8s-cluster-name]`
+- `*.<k8s-namespace>.svc.<k8s-cluster-name>`
+- `*.discovery-service.<k8s-namespace>.svc.<k8s-cluster-name>`
+- `*.gateway-service.<k8s-namespace>.svc.<k8s-cluster-name>`
+- `*.<k8s-namespace>.pod.<k8s-cluster-name>`
 
-`[k8s-namespace]` is the Kubernetes Namespace you installed Zowe into. And
-`[k8s-cluster-name]` is the Kubernetes cluster name, which usually should be
+`<k8s-namespace>` is the Kubernetes Namespace you installed Zowe into. And
+`<k8s-cluster-name>` is the Kubernetes cluster name, which usually should be
 `cluster.local`.
 
 Without the additional domains in SAN, you may see warnings/errors related to certificate
