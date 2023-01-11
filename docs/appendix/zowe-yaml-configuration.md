@@ -388,13 +388,13 @@ The high-level configuration `node` supports these definitions:
 
 :::tips
 
-Make sure the value of `node.home` in the `zowe.yaml` is visible to the zowe STC user, and contains within it "bin/node". For example, 
+Make sure the value of `node.home` in the `zowe.yaml` is visible to the Zowe STC users, and contains within it "bin/node". For example, 
 ```
 node:
   home: "/usrlppSysplex/nodejs/node-v12.16.1"
 ```
 
-The above example implies that the path "/usrlppSysplex/nodejs/node-v12.16.1/bin/node" exists. If it does not, you need to correct the value so that it would be the value that contains within it "bin/node".
+The above value is valid only when the path "/usrlppSysplex/nodejs/node-v12.16.1/bin/node" exists. If you observe output that says "node is not found", you need to check if the value contains within it "bin/node", and correct the value if it does not.
 
 :::
 
