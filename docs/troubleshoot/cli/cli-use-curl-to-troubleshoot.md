@@ -96,6 +96,6 @@ z/OSMF Plug-ins that are installed on 'lpar.hostname.net':
 msgId:   IZUG612E
 msgText: IZUG612E
 ```
-When both responses include a matching error, that may indicate there could be a problem with z/OSMF.
+When both responses include a the same error, that may indicate there could be a problem with z/OSMF.
 
 If an API call fails with the Zowe CLI command but not cURL, this can mean the problem lies with Zowe CLI.
