@@ -386,7 +386,7 @@ The high-level configuration `node` supports these definitions:
 - **`home`**  
  Defines the path to the Node.js runtime directory.
 
-:::tips
+:::tip
 
 Make sure the value of `node.home` in the `zowe.yaml` is visible to the Zowe STC users, and contains within it "bin/node". For example, 
 ```
