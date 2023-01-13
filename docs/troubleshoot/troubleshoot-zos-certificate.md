@@ -75,7 +75,7 @@ Dkeystore.pkcs12.keyProtectionAlgorithm=PBEWithSHAAnd3KeyTripleDES -J-
 Dkeystore.pkcs12.keyPbeIterationCount=50000
 ```
 
-- Or, to create a PKCS12 keystore that can be loaded, set the system property `keystore.pkcs12.legacy` which overrides the values of the properties defined below with legacy algorithms. This system property can only be enabled and has no value. 
+- Or, to create a PKCS12 keystore that can be loaded, set the flag `keystore.pkcs12.legacy` enabled with no value.
 
 **Notes**
 
