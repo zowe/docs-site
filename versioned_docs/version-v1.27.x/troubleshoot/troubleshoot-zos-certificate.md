@@ -62,7 +62,7 @@ When you let Zowe server installs create a PKCS12 keystore, the keystore that is
 
 This error occurs because of the incompatibility which is found between Java and GSK regarding cryptography.
 
-You can try one of the following options if you are effected by this error.
+You can try one of the following options if you are affected by this error.
 
 - Temporarily downgrade Java, for example, to Java 7.
 
