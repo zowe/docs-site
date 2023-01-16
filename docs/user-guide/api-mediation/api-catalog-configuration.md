@@ -1,16 +1,18 @@
 # Advanced API Catalog features configuration
 
-As a system programmer who wants to configure advanced API Catalog features of the API Mediation Layer, you can customize API Catalog parameters by modifying the `<Zowe install directory>/components/api-catalog/bin/start.sh` file:
+As a system programmer who wants to configure advanced API Catalog features of the API Mediation Layer, you can customize API Catalog parameters by modifying the `<Zowe install directory>/components/api-catalog/bin/start.sh` file.
 
 ## API ML configuration
 
 * **apiml.catalog.hideServiceInfo**
 
-  This parameter is used to hide the instance URL value of all the services registered to the API ML in the API Catalog. This can be useful when the service owner doesn't want to expose sensitive information
-  such as the hostname.
-  Set the value of `*apiml.catalog.hideServiceInfo` parameter to `true` if you want to enable this functionality for all the services registered to the API Catalog.
+  This parameter is used to hide the instance URL value of all the services registered to the API ML in the API Catalog. This can be useful when the service owner does not want to expose sensitive information such as the hostname.  
+
+  Set the value of the `*apiml.catalog.hideServiceInfo` parameter to `true` to to hide the instance URL for all services registered to the API Catalog.
   
-  Set this parameter in your Zowe YAML configuration (typically `zowe.yaml`) by defining `configs.apiml.catalog.hideServiceInfo`. For example, defining it globally:
+  In your Zowe YAML configuration (typically `zowe.yaml`), set this parameter by defining `configs.apiml.catalog.hideServiceInfo`. 
+  
+  Example to define this parameter globally:
 
     ```yaml
       configs:
@@ -18,7 +20,7 @@ As a system programmer who wants to configure advanced API Catalog features of t
             catalog:
                 hideServiceInfo: true
     ```
-  Or defining it only for lpar1 high availability instance:
+  An alternative example is to define the parameter only for a high availability instance on lpar1:
 
     ```yaml
       haInstances:
