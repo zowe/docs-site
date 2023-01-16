@@ -69,7 +69,7 @@ As an application developer who wants to run Zowe, set the following parameters 
 
 ## Eureka configuration
 
-The Discovery Service contains a configuration for implementing the client-side service discovery and for defining a Eureka Server for service registry. Such configuration is shown below:
+The Discovery Service contains a configuration for implementing the client-side service discovery and for defining a Eureka Server for service registry. This configuration is presented in the following codeblock:
 
 ```yaml
 eureka:
@@ -93,13 +93,16 @@ eureka:
         useReadOnlyResponseCache: false
 ```
 
-* **eureka.client.registerWithEureka**
-    If we make this property as true then while the server starts the inbuilt client will try to register itself with the Eureka server.
+* **eureka.client.registerWithEureka**  
 
-* **eureka.client.registerWithEureka**
-    The inbuilt client will try to fetch the Eureka registry if we configure this property as true.
+    Setting this property as `true` causes the inbuilt client to attempt registration with the Eureka server when the server starts. 
 
-* **eureka.client.serviceUrl.defaultZone**
-    A fallback value that provides the Eureka service URL for any client that does not express a preference (in other words, it is a useful default).
+* **eureka.client.registerWithEureka**  
 
-More information about the other Eureka parameters can be found in the [Spring Cloud Netflix Eureka documentation](https://cloud.spring.io/spring-cloud-netflix/multi/multi__service_discovery_eureka_clients.html).
+    Setting this propaerty to `true` causes the inbuilt client to attempt to fetch the Eureka registry. 
+
+* **eureka.client.serviceUrl.defaultZone**  
+
+    This paramenter specifies a fallback value that provides the Eureka service URL for any client that does not express a preference. This parameter serves as a useful default.
+
+For more information about other Eureka parameters, see the [Spring Cloud Netflix Eureka documentation](https://cloud.spring.io/spring-cloud-netflix/multi/multi__service_discovery_eureka_clients.html).
