@@ -18,7 +18,7 @@ zowe:
         zowe: ZWESLSTC
   jobname: ZWE1SV
 haInstances:
-  [ha-instance]:
+  <ha-instance>:
     sysname: ZLP1
 ```
 
@@ -26,7 +26,7 @@ haInstances:
   This configuration is optional. Default value is `ZWESLSTC`.
 - `zowe.job.name` is the optional customized job name to start Zowe. If it's
   empty, the start command will not pass `JOBNAME=` option to `S` command.
-- `haInstances.[ha-instance].sysname` is the SYSNAME of the target HA instance.
+- `haInstances.<ha-instance>.sysname` is the SYSNAME of the target HA instance.
   If you pass `--ha-instance` parameter, this is the SYSNAME the start command
   will be routed to.
 

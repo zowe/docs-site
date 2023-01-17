@@ -18,7 +18,7 @@ zowe:
         zowe: ZWESLSTC
   jobname: ZWE1SV
 haInstances:
-  [ha-instance]:
+  <ha-instance>:
     sysname: ZLP1
 ```
 
@@ -27,7 +27,7 @@ haInstances:
 - `zowe.job.name` is the optional customized job name to start Zowe. If it's
   empty, the stop command will try to use value of
   `zowe.setup.security.stcs.zowe` as job name to stop.
-- `haInstances.[ha-instance].sysname` is the SYSNAME of the target HA instance.
+- `haInstances.<ha-instance>.sysname` is the SYSNAME of the target HA instance.
   If you pass `--ha-instance` parameter, this is the SYSNAME the start command
   will be routed to.
 

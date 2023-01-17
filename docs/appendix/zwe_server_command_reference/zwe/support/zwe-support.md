@@ -23,8 +23,8 @@ This command will collect these information:
   * Zowe configuration file
   * Zowe installation logs
   * Zowe PKCS#12 keystore if used
-  * Zowe temporary configuration files under "`zowe.workspaceDirectory`/.env"
-  * Zowe APIML static registration files under "`zowe.workspaceDirectory`/api-mediation/api-defs"
+  * Zowe temporary configuration files under `<workspace>/.env`
+  * Zowe APIML static registration files under `<workspace>/api-mediation/api-defs`
 - Zowe runtime
   * Active running Zowe processes
   * Zowe job log
