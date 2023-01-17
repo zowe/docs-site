@@ -234,3 +234,7 @@ npm login
 cd /your/extension/package/folder
 npm publish
 ```
+
+## Additional resources
+
+While this document is the authoritative source on Zowe's component package regpistry technology, older additional information may be found in [the presentation](https://github.com/zowe/zowe-install-packaging/files/9292283/appstore2.pdf) and [the recording](https://zoom.us/rec/share/y6zsW5U9QWE1s1r4M3nFnSO9Kkv3yeT5boyZFqWH1BxW3Tju_jcAGP7jO1DsLuZq.rhlqHx6DgPxmXBhW?startTime=1660053548000) used during the initial technology prototype.
