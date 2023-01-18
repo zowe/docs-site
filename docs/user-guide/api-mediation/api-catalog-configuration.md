@@ -4,13 +4,13 @@ As a system programmer who wants to configure advanced API Catalog features of t
 
 ## API ML configuration
 
-* **apiml.catalog.hideServiceInfo**
+* **apiml.catalog.hide.serviceInfo**
 
   This parameter is used to hide the instance URL value of all the services registered to the API ML in the API Catalog. This can be useful when the service owner does not want to expose sensitive information such as the hostname.  
 
-  Set the value of the `*apiml.catalog.hideServiceInfo` parameter to `true` to to hide the instance URL for all services registered to the API Catalog.
+  Set the value of the `*apiml.catalog.hide.serviceInfo` parameter to `true` to to hide the instance URL for all services registered to the API Catalog.
   
-  In your Zowe YAML configuration (typically `zowe.yaml`), set this parameter by defining `configs.apiml.catalog.hideServiceInfo`. 
+  In your Zowe YAML configuration (typically `zowe.yaml`), set this parameter by defining `configs.apiml.catalog.hide.serviceInfo`. 
   
   Example to define this parameter globally:
 
@@ -18,7 +18,8 @@ As a system programmer who wants to configure advanced API Catalog features of t
       configs:
          apiml:
             catalog:
-                hideServiceInfo: true
+                hide:
+                    serviceInfo: true
     ```
   An alternative example is to define the parameter only for a high availability instance on lpar1:
 
@@ -28,5 +29,6 @@ As a system programmer who wants to configure advanced API Catalog features of t
           configs:
             apiml:
                catalog:
-                  hideServiceInfo: true
+                  hide:
+                      serviceInfo: true
     ```    
