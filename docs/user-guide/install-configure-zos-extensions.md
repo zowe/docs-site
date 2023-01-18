@@ -4,9 +4,9 @@ This page covers how to install and manage Zowe server components or extensions 
  
 ## Installing a component
 
-Zowe ships the [`zwe components install` command](../appendix/zwe_server_command_reference/zwe/components/install/zwe-components-install.md) to help end-user to install any Zowe server extensions (extensions are components that are not part of Zowe core). In order to be compatible with the command, components must follow [Zowe server component package format standard](../extend/packaging-zos-extensions.md#zowe-server-component-package-format).
+Zowe ships the [`zwe components install` command](../appendix/zwe_server_command_reference/zwe/components/install/zwe-components-install.md) to help end-user to install any Zowe server extensions (extensions are components that are not part of Zowe core). In order to be compatible with the command, components must follow [Zowe server component package format standard](../extend/packaging-zos-extensions.md#zowe-server-component-package-format.md).
 
-More information such as parameters and examples can be found on the [`zwe components install` reference page](https://docs.zowe.org/stable/appendix/zwe_server_command_reference/zwe/components/install/zwe-components-install)
+More information such as parameters and examples can be found on the [`zwe components install` reference page](../appendix/zwe_server_command_reference/zwe/components/install/zwe-components-install.md)
 
   **Note:** The automatic tagging process is opinionated about which file extensions should be in which encoding. If this does not fit in your needs, a `pax` format is recommended to include the tagging information into your package. This option is only applicable for z/OS. The following list presents the allowed values:
   * `yes`
@@ -34,36 +34,36 @@ More information such as parameters and examples can be found on the [`zwe compo
 
 ## Enable and disable component
 
-Zowe ships [`zwe components enable`](../appendix/zwe_server_command_reference/zwe/components/zwe-components-enable.md) and [`zwe components disable`](../appendix/zwe_server_command_reference/zwe/components/zwe-components-disable.md) commands to help you enable and disable Zowe server component (extension). In order to be compatible with these commands, components must follow [Zowe server component package format standard](../extend/packaging-zos-extensions.md#zowe-server-component-package-format).
+Zowe ships [`zwe components enable`](../appendix/zwe_server_command_reference/zwe/components/zwe-components-enable.md) and [`zwe components disable`](../appendix/zwe_server_command_reference/zwe/components/zwe-components-disable.md) commands to help you enable and disable Zowe server component (extension). In order to be compatible with these commands, components must follow [Zowe server component package format standard](../extend/packaging-zos-extensions.md#zowe-server-component-package-format.md).
 
 **Important** these commands will update your `zowe.yaml` configuration file.
 
 **Note** `zwe components install` command will enable the component globally if `--skip-enable` is not passed to it.
 
-More information such as parameters and examples can be found on the [`zwe components enable` reference page](https://docs.zowe.org/stable/appendix/zwe_server_command_reference/zwe/components/install/zwe-components-enable) and the [`zwe components disable` reference page](https://docs.zowe.org/stable/appendix/zwe_server_command_reference/zwe/components/install/zwe-components-disable)
+More information such as parameters and examples can be found on the [`zwe components enable` reference page](../appendix/zwe_server_command_reference/zwe/components/install/zwe-components-enable.md) and the [`zwe components disable` reference page](../appendix/zwe_server_command_reference/zwe/components/install/zwe-components-disable.md)
 
 ## Upgrading a component
 
 `zwe components install` is only used for installing a component that is not yet installed.
-If you need to install a new version of an existing component, you must use the [`zwe components upgrade` command](https://docs.zowe.org/stable/appendix/zwe_server_command_reference/zwe/components/zwe-components-upgrade) instead.
+If you need to install a new version of an existing component, you must use the [`zwe components upgrade` command](../appendix/zwe_server_command_reference/zwe/components/zwe-components-upgrade.md) instead.
 
-More information such as parameters and examples can be found on the [`zwe components install` reference page](https://docs.zowe.org/stable/appendix/zwe_server_command_reference/zwe/components/install/zwe-components-install)
+More information such as parameters and examples can be found on the [`zwe components install` reference page](../appendix/zwe_server_command_reference/zwe/components/install/zwe-components-install.md)
 
-This command can be used to upgrade all components that have an upgrade available when using `zwe` with a component package registry. More information can be found within [the component package registry documentation](component-registries.md)
+This command can be used to upgrade all components that have an upgrade available when using `zwe` with a component package registry. More information can be found within [the component package registry documentation](../extend/component-registries.md)
 
 
 ## Uninstalling a component
 
 `zwe components uninstall` can be used to remove a previously installed extension. It will not remove core components. 
 
-More information such as parameters and examples can be found on the [`zwe components uninstall` reference page](https://docs.zowe.org/stable/appendix/zwe_server_command_reference/zwe/components/install/zwe-components-uninstall)
+More information such as parameters and examples can be found on the [`zwe components uninstall` reference page](../appendix/zwe_server_command_reference/zwe/components/install/zwe-components-uninstall.md)
 
 
 ## Searching for a component
 
-`zwe components search` helps you find components that are available for installation from your chosen component package registry. This command requires that you have configured your Zowe instance for use with such a registry. [Click here for more information on how to set up and use a component package registry](component-registries.md)
+`zwe components search` helps you find components that are available for installation from your chosen component package registry. This command requires that you have configured your Zowe instance for use with such a registry. [Click here for more information on how to set up and use a component package registry](../extend/component-registries.md)
 
-More information such as parameters and examples can be found on the [`zwe components search` reference page](https://docs.zowe.org/stable/appendix/zwe_server_command_reference/zwe/components/install/zwe-components-search)
+More information such as parameters and examples can be found on the [`zwe components search` reference page](../appendix/zwe_server_command_reference/zwe/components/install/zwe-components-search.md)
 
 
 ## Manual Component management

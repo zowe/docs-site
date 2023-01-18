@@ -109,7 +109,7 @@ You should [start zowe](start-zowe-zos.md) for the first time before installing 
 
 After it is customized based on your needs, you can get more value from Zowe through installing extensions, whether they are optional components from the Zowe project or from other vendors.
 
-You can learn how to install and manage extensions [here](../extend/install-configure-zos-extensions.md)
+You can learn how to install and manage extensions [here](install-configure-zos-extensions.md)
 
 ## Looking for troubleshooting help?
 

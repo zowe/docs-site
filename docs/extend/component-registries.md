@@ -1,9 +1,9 @@
 # Component package registries
 
-Component package registries are on-premesis or remote storage which contains Zowe components (usually, extensions) and allows Zowe administrators to download an extension and its dependent extensions from that storage.
+Component package registries are on-premisis or remote storage which contains Zowe components (usually, extensions) and allows Zowe administrators to download an extension and its dependent extensions from that storage.
 A component package registry makes Zowe component and extension management easier by reducing the need for manually uploading and installing an extension and its dependencies into Zowe.
 
-Zowe server content can manage components and extensions via the [`zwe components` commands](install-configure-zos-extensions.md).
+Zowe server content can manage components and extensions via the [`zwe components` commands](../user-guide/install-configure-zos-extensions.md).
 These commands have optional parameters for performing operations using a registry instead of only using content local to the Zowe host.
 Note: Using `zwe` with component package registries requires that `zowe.useConfigmgr=true` is set in your Zowe server configuration. [See using the configuration manager for more info](../user-guide/configmgr-using.md)
 
@@ -28,7 +28,7 @@ Both issues can be resolved by using a registry, such as in
 
 In this example, because `zwe` was not given the name of a file, it takes the parameter "my-zowe-extension" and searches for an extension package with that exact name within the component package registry configured for Zowe.
 If the package is found in the registry, that extension and all of its dependencies will be downloaded and then installed.
-**Note: This means you must trust the registry that you use. On-premesis registries are a great way to curate a list of trusted extensions and make it easy to install them. On the other hand, it would not be recommended to use a registry found on a public network, because you do not want to install extensions that you have not vetted.**
+**Note: This means you must trust the registry that you use. On-premisis registries are a great way to curate a list of trusted extensions and make it easy to install them. On the other hand, it would not be recommended to use a registry found on a public network, because you do not want to install extensions that you have not vetted.**
 
 The above example omits the registry configuration information, so the values default to what is containted within the zowe.yaml
 If they were explicitly provided instead, the command may look like
@@ -126,7 +126,7 @@ npm is the nodejs package manager. Typically npm registries store javascript cod
 npm registries are webservers that have an API which associates uploaded packages to users which own them, and such user accounts may also determine what you are permitted to download.
 What webserver you use, and how user credentials are managed isn't standardized by npm, any webserver could be an npm server as long as it fulfills the npm API.
 
-As an example, https://verdaccio.org/ is such a webserver that you can set up to create your own on-premesis npm package registry.
+As an example, https://verdaccio.org/ is such a webserver that you can set up to create your own on-premisis npm package registry.
 You can find out more about verdaccio and [how to set up a verdaccio-based npm registry on their website](https://verdaccio.org/docs/what-is-verdaccio/)
 
 Another example is jfrog artifactory. Artifactory can store packages to serve through an npm registry, a docker registry, and much more.
@@ -181,7 +181,7 @@ The Handler API interface is [located within Zowe's code here](https://github.co
 And Zowe delivers a handler written for use with [npm, located here](https://github.com/zowe/zowe-install-packaging/blob/2751a194048f0050fc7ebcaeaac8c96a36106991/bin/commands/components/npm.ts)
 
 
-## Packaging & Distributing components
+## Component Packaging Requirements
 
 Zowe extensions can be written in a variety of languages and may have network-level dependencies. These attributes of extensions may seem like an odd fit for some existing package managers such as those that are language specific. However, all Zowe requires out of a package manager is that the manager can deliver an archive of a extension or folder containing an extension. The Zowe community has found that delivering a Zowe extension as an archive can avoid the complexities of some package managers and make it simple to deliver an extension via one or more package manager with minimal work. Below are some patterns that can work for certain package managers.
 
