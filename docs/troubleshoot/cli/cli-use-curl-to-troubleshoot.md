@@ -4,6 +4,12 @@ When a REST API call fails on Zowe CLI, you can use cURL to troubleshoot.
 
 Run a command with cURL and compare its output with what is returned using Zowe CLI. This can help pinpoint whether the problem lies with z/OSMF or Zowe CLI, depending on which command returns an API error.
 
+## Installing cURL
+
+cURL is installed by default on Windows 10 V1803 and later, macOS, and most Linux distributions.
+
+If the cURL command is missing from your system, you can download it from the cURL [Releases and Downloads](https://curl.se/download.html) page.
+
 ## Understanding cURL commands
 
 A cURL command using the `https` protocol follows the basic syntax `curl <URL>`.
@@ -20,21 +26,21 @@ curl --location --request <API method> "https://<host>:<port>/<API>" --header "X
 
 Use `--location` to allow the server to redirect to a different URL, if needed. 
 
-When a different location exists and `--location` is not included in the command, the server responds with a 3XX status code.
+When the server attempts to redirect and `--location` is not included in the command, the server responds with a 3XX status code.
 
 ### `--request <API method>`
 
-Use `--request` to identify the API method and name. Not necessary when the API method is `GET`.
+Use `--request` to identify the API method (such as `POST`, `GET`, `PUT`, `DELETE`). Not necessary when the API method is `GET`.
 
 - `<API method>`: Specifies the API method used in the request.
 
-### `https://<host>:<port>/<API>"`
+### `"https://<host>:<port>/<API>"`
 
 Indicates the protocol and URL.
 
 - `<host>`: Specifies the host name where the z/OSMF services are running.
-- `<port>`: Specifies the REST port number.
-- `<API>`: Specifies the name of the API used in the request.
+- `<port>`: Specifies the REST port number. If not specified, defaults to 443 for HTTPS.
+- `<API>`: Specifies the API endpoint used in the request.
 
 ### `--header "X-CSRF-ZOSMF-HEADER;"`
 
@@ -44,7 +50,7 @@ Required to establish communication with z/OSMF. Specifies that the client is se
 
 ### `--insecure`
 
-Use `--insecure` with a trusted server that does not require verification before a data transfer.
+Use `--insecure` to bypass SSL certificate validation if you are connecting to a trusted server that has self-signed certificates.
 
 ### `--user "<ID>:<PASSWORD>"`
 
@@ -52,6 +58,8 @@ Required and displays as plain text. Also possible to [use an environment variab
 
 - `<ID>`: Specifies the z/OSMF user identification.
 - `<PASSWORD>`: Specifies the user password for z/OSMF.
+
+**NOTE:** To be prompted for a password instead of displaying it in plain text, omit the password from the command and enter `--user "<ID>"`.
 
 ## Comparing commands
 
