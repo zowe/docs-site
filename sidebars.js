@@ -125,7 +125,7 @@ module.exports = {
             "user-guide/configure-auxiliary-address-space",
             "user-guide/configure-zowe-zosmf-workflow",
             "user-guide/configmgr-using",
-            "install-configure-zos-extensions"
+            "user-guide/install-configure-zos-extensions"
           ],
         },
         {
