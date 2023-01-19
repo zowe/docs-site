@@ -245,6 +245,29 @@ Removing archived version is necessary once two new versions are released to red
    },
   ```
 
+## Zowe CLI: Update web help and type doc
+
+Note: Instructions use Visual Studio Code and GitHub Desktop. Replace version numbers in examples with the correct version.
+
+1. Create your own branch and, in Visual Studio Code, open the folder for the `docs-site` repository.
+2. In the **Side Bar**, navigate to the `scripts` directory.
+3. To work on the CLI web help, select the `updateWebHelp.sh` file.
+4. Open a new Terminal.
+5. Select **Git Bash** from the Terminal **+** dropdown menu.
+6. In the Terminal, enter the command in **Line 2** of the **Editor** tab. Include everything after the colon:
+
+    `bash scripts/updateWebHelp.sh <zoweVersion> [<outputDir>]`
+
+7. Replace `<zoweVersion>` with the correct version in the following format:
+    
+    1.28.2
+8. Replace `[<outputDir>]` with the correct directory:
+    - For the next version: static/stable
+    - For an older version: static/v1.28.x 
+9. For the type doc, repeat Steps 3-8 using the `updateTypedoc.sh` file and command.
+10. In GitHub Desktop, commit your updates to your branch.
+11. Merge your branch to `docs-staging`.
+
 ## Updating TPSR
 
 Pick up the latest licenses file from this location: https://zowe.jfrog.io/zowe/libs-release-local/org/zowe/licenses/. Open the release folder and download the `zowe_licenses_full.zip` file. 
