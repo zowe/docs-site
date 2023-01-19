@@ -145,13 +145,13 @@ When a `zwe components` command needs to use a handler, the handler is given inp
 
 The following table details the input and output expected for each handler action.
 
-|-----------|------|-----------------|---------|-------------|
 | Attribute | Type | Input or Output | Actions | Description |
+|-----------|------|-----------------|---------|-------------|
 | `ZWE_CLI_REGISTRY_COMMAND` | string | Input | All | Values of 'install', 'upgrade', 'uninstall', 'search' inform handler which action to take and what additional input & output to expect |
 | `ZWE_CLI_PARAMETER_REGISTRY` | string | Input | Install, Upgrade, Uninstall, Search | Used to inform handler which registry to use. Can be any format the handler understands. |
 | `ZWE_CLI_REGISTRY_DRY_RUN` | boolean | Input | Install, Upgrade, Uninstall | If true, handler should show as much as possible about what would happen during this command, without committing changes that would alter which components are installed. |
-| `ZWE_CLI_PARAMETER_COMPONENT_NAME` | string | input | Install, Upgrade, Uninstall, Search | Value varies by command. For 'install' and 'uninstall', this value is the exact name of a component. For upgrade, it may also be 'all' to perform an upgrade for all components possible. For 'search', it may be any string to perform searching for exact or partial matching component names. |
-| `ZWE_CLI_PARAMETER_COMPONENT_FILE` | string | output | Install, Upgrade, Uninstall | A comma-separated list of components that have been added or removed. During 'install' or 'upgrade', the list must be full unix paths to component folders or archives that were added. For 'uninstall', the list must instead be just the names of the components that were removed. If the handler failed during its operation or there were no changes, the output should instead just be the string 'null'. |
+| `ZWE_CLI_PARAMETER_COMPONENT_NAME` | string | Input | Install, Upgrade, Uninstall, Search | Value varies by command. For 'install' and 'uninstall', this value is the exact name of a component. For upgrade, it may also be 'all' to perform an upgrade for all components possible. For 'search', it may be any string to perform searching for exact or partial matching component names. |
+| `ZWE_CLI_PARAMETER_COMPONENT_FILE` | string | Output | Install, Upgrade, Uninstall | A comma-separated list of components that have been added or removed. During 'install' or 'upgrade', the list must be full unix paths to component folders or archives that were added. For 'uninstall', the list must instead be just the names of the components that were removed. If the handler failed during its operation or there were no changes, the output should instead just be the string 'null'. |
 
 An example of running `zwe components install -o exact-component-name --handler npm --registry https://zowe` would have the handler being given the following environment variables:
 
