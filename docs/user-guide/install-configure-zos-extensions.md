@@ -4,7 +4,7 @@ This page covers how to install and manage Zowe server components or extensions 
  
 ## Installing a component
 
-Zowe ships the [`zwe components install` command](../appendix/zwe_server_command_reference/zwe/components/install/zwe-components-install.md) to help end-user to install any Zowe server extensions (extensions are components that are not part of Zowe core). In order to be compatible with the command, components must follow [Zowe server component package format standard](../extend/packaging-zos-extensions.md#zowe-server-component-package-format.md).
+Zowe ships the [`zwe components install` command](../appendix/zwe_server_command_reference/zwe/components/install/zwe-components-install.md) to help end-user to install any Zowe server extensions (extensions are components that are not part of Zowe core). In order to be compatible with the command, components must follow [Zowe server component package format standard](../extend/packaging-zos-extensions.md#zowe-server-component-package-format).
 
 More information such as parameters and examples can be found on the [`zwe components install` reference page](../appendix/zwe_server_command_reference/zwe/components/install/zwe-components-install.md)
 
@@ -34,7 +34,7 @@ More information such as parameters and examples can be found on the [`zwe compo
 
 ## Enable and disable component
 
-Zowe ships [`zwe components enable`](../appendix/zwe_server_command_reference/zwe/components/zwe-components-enable.md) and [`zwe components disable`](../appendix/zwe_server_command_reference/zwe/components/zwe-components-disable.md) commands to help you enable and disable Zowe server component (extension). In order to be compatible with these commands, components must follow [Zowe server component package format standard](../extend/packaging-zos-extensions.md#zowe-server-component-package-format.md).
+Zowe ships [`zwe components enable`](../appendix/zwe_server_command_reference/zwe/components/zwe-components-enable.md) and [`zwe components disable`](../appendix/zwe_server_command_reference/zwe/components/zwe-components-disable.md) commands to help you enable and disable Zowe server component (extension). In order to be compatible with these commands, components must follow [Zowe server component package format standard](../extend/packaging-zos-extensions.md#zowe-server-component-package-format).
 
 **Important** these commands will update your `zowe.yaml` configuration file.
 
