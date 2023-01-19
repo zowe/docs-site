@@ -66,30 +66,32 @@ Zowe release notes build on its components' CHANGELOGs. Each component or area m
 For recommendations about CHANGELOGs, see [CHANGELOG recommendations](#changelog-recommendations)
 
 - Install and packaging
-  
-  - https://github.com/zowe/zowe-install-packaging/blob/v2.x/rc/CHANGELOG.md
-
+  > Pull updates in the section that matches Zowe release number like 2.6.0.
+  - https://github.com/zowe/zowe-install-packaging/blob/v2.x/rc/CHANGELOG.md    
+    
 - App Framework
-
+  > Pull updates in the section that matches Zowe release number.
   - https://github.com/zowe/zlux-app-server/blob/v2.x/staging/CHANGELOG.md
   - https://github.com/zowe/zss/blob/v2.x/staging/CHANGELOG.md
-  - https://github.com/zowe/zlux-editor/blob/v2.x/staging/CHANGELOG.md
   - https://github.com/zowe/zowe-common-c/blob/v2.x/staging/CHANGELOG.md
-  - https://github.com/zowe/tn3270-ng2/blob/v2.x/staging/CHANGELOG.md
-  - https://github.com/zowe/vt-ng2/blob/v2.x/staging/CHANGELOG.md
   - https://github.com/zowe/zlux-app-manager/blob/v2.x/staging/CHANGELOG.md
   - https://github.com/zowe/zlux-server-framework/blob/v2.x/staging/CHANGELOG.md
+ 
+  > Based on change history timestamp, pull updates after last release.
+  - https://github.com/zowe/zlux-editor/blob/v2.x/staging/CHANGELOG.md
+  - https://github.com/zowe/tn3270-ng2/blob/v2.x/staging/CHANGELOG.md
+  - https://github.com/zowe/vt-ng2/blob/v2.x/staging/CHANGELOG.md
   - https://github.com/zowe/sample-angular-app/blob/v2.x/rc/CHANGELOG.md
   - https://github.com/zowe/explorer-uss/blob/v2.x/master/CHANGELOG.md
   - https://github.com/zowe/explorer-mvs/blob/v2.x/master/CHANGELOG.md
   - https://github.com/zowe/explorer-jes/blob/v2.x/master/CHANGELOG.md
 
 - APIML
-
+  > Pull updates in the section that matches Zowe release number.
   - https://github.com/zowe/api-layer/blob/v2.x.x/CHANGELOG.md
 
 - CLI 
-
+  > Based on change history timestamp, pull updates after last release or identify CLI versions included in the release.
   - Core: https://github.com/zowe/zowe-cli/blob/master/packages/cli/CHANGELOG.md
   - Imperative CLI Framework: https://github.com/zowe/imperative/blob/master/CHANGELOG.md
   - CICS plug-in: https://github.com/zowe/zowe-cli-cics-plugin/blob/master/CHANGELOG.md
@@ -97,8 +99,47 @@ For recommendations about CHANGELOGs, see [CHANGELOG recommendations](#changelog
   - FTP Plug-in: https://github.com/zowe/zowe-cli-ftp-plugin/blob/master/CHANGELOG.md
 
 - Zowe Explorer
-
+  > Pull updates in the section that matches Zowe release number.
   - https://github.com/zowe/vscode-extension-for-zowe/blob/master/packages/zowe-explorer/CHANGELOG.md
+
+
+The following list shows all V1 release CHANGELOGs.
+
+- Install and packaging
+  
+  - https://github.com/zowe/zowe-install-packaging/blob/v1.x/staging/CHANGELOG.md
+
+- App Framework
+
+  - https://github.com/zowe/zlux-app-server/blob/v1.x/staging/CHANGELOG.md
+  - https://github.com/zowe/zss/blob/v1.x/staging/CHANGELOG.md
+  - https://github.com/zowe/zlux-editor/blob/v1.x/staging/CHANGELOG.md
+  - https://github.com/zowe/zowe-common-c/blob/v1.x/staging/CHANGELOG.md
+  - https://github.com/zowe/tn3270-ng2/blob/v1.x/staging/CHANGELOG.md
+  - https://github.com/zowe/vt-ng2/blob/v1.x/staging/CHANGELOG.md
+  - https://github.com/zowe/zlux-app-manager/blob/v1.x/staging/CHANGELOG.md
+  - https://github.com/zowe/zlux-server-framework/blob/v1.x/staging/CHANGELOG.md
+  - https://github.com/zowe/sample-angular-app/blob/v1.x/staging/CHANGELOG.md
+  - https://github.com/zowe/explorer-uss/blob/v1.x/master/CHANGELOG.md
+  - https://github.com/zowe/explorer-mvs/blob/v1.x/master/CHANGELOG.md
+  - https://github.com/zowe/explorer-jes/blob/v1.x/master/CHANGELOG.md
+
+- APIML
+
+  - https://github.com/zowe/api-layer/blob/v1.x.x/CHANGELOG.md
+
+- CLI 
+
+  - Core: https://github.com/zowe/zowe-cli/blob/zowe-v1-lts/packages/cli/CHANGELOG.md
+  - Imperative CLI Framework: https://github.com/zowe/imperative/blob/zowe-v1-lts/CHANGELOG.md
+  - CICS plug-in: https://github.com/zowe/zowe-cli-cics-plugin/blob/zowe-v1-lts/CHANGELOG.md
+  - DB2 plug-in: https://github.com/zowe/zowe-cli-db2-plugin/blob/zowe-v1-lts/CHANGELOG.md
+  - FTP Plug-in: https://github.com/zowe/zowe-cli-ftp-plugin/blob/zowe-v1-lts/CHANGELOG.md
+  - Secure Credential Store Plug-in: https://github.com/zowe/zowe-cli-scs-plugin/blob/master/CHANGELOG.md
+
+- Zowe Explorer
+
+  - https://github.com/zowe/vscode-extension-for-zowe/blob/v1-lts/packages/zowe-explorer/CHANGELOG.md
 
 ### Vulnerabilities fixed
 
