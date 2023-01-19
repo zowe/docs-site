@@ -125,7 +125,8 @@ module.exports = {
             "user-guide/configure-xmem-server",
             "user-guide/configure-auxiliary-address-space",
             "user-guide/configure-zowe-zosmf-workflow",
-            "user-guide/configmgr-using"
+            "user-guide/configmgr-using",
+            "user-guide/install-configure-zos-extensions"
           ],
         },
         {
@@ -483,7 +484,6 @@ module.exports = {
       items: [
         "extend/packaging-zos-extensions",
         "extend/server-schemas",
-        "extend/install-configure-zos-extensions",
         "extend/lifecycling-with-zwesvstc",
         "extend/k8s-extend",
         "extend/k8s-conformance",
