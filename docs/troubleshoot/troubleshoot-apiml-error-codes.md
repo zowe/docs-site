@@ -141,6 +141,30 @@ The following error message codes may appear on logs or API responses. Use the f
 
   Verify that the URL of the endpoint you are trying to reach is correct.
 
+### ZWEAG140E
+
+  The 'applicationName' parameter name is missing.
+
+  **Reason:**
+
+  The application name is not provided.
+
+  **Action:**
+
+  Provide the 'applicationName' parameter.
+
+### ZWEAG141E
+
+  The generation of the PassTicket failed. Reason: %s
+
+  **Reason:**
+
+  An error occurred in the SAF Auth Service. Review the reason in the error message.
+
+  **Action:**
+
+  Supply a valid user and application name, and check that corresponding permissions have been set up.
+
 ### ZWEAM400E
 
   Error initializing SSL Context: '%s'
@@ -1140,25 +1164,10 @@ The following error message codes may appear on logs or API responses. Use the f
   **Action:**
 
   Based on the specific information in the message, verify that the key configuration is correct, or alternatively, that z/OSMF is available. If z/OSMF is available, specify the authentication type used by z/OSMF in your configuration settings.
-
-  Use the following configuration format:
-  ```
-  apiml:
-    security:
-        auth: 
-            zosmf:
-                jwtAutoconfiguration: 
-  ```
-  Apply one of the following values:
-  
-  * **auto**  
-  Signifies that API ML is enabled to resolve the JWT producer
-  
-  * **jwt**  
-  Signifies that z/OSMF supports JWT (APAR PH12143 is applied)
-  
-  * **ltpa**  
-  Signifies that z/OSMF does not support JWT
+ Use the following configuration format: ``` apiml: security: auth: zosmf: jwtAutoconfiguration: ``` Apply one of the following values:
+ * **auto** Signifies that API ML is enabled to resolve the JWT producer
+ * **jwt** Signifies that z/OSMF supports JWT (APAR PH12143 is applied)
+ * **ltpa** Signifies that z/OSMF does not support JWT
 
 ### ZWEAG714E
 
@@ -1399,30 +1408,6 @@ The following error message codes may appear on logs or API responses. Use the f
   **Action:**
 
   Provide a valid authorization token.
-
-### ZWEAG140E
-
-  The 'applicationName' parameter name is missing.
-
-  **Reason:**
-
-  The application name is not provided.
-
-  **Action:**
-
-  Provide the 'applicationName' parameter.
-
-### ZWEAG141E
-
-  The generation of the PassTicket failed. Reason: %s
-
-  **Reason:**
-
-  An error occurred in the SAF Auth Service. Review the reason in the error message.
-
-  **Action:**
-
-  Supply a valid user and application name, and check that corresponding permissions have been set up.
 
 ### ZWEAG150E
 
