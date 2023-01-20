@@ -23,6 +23,7 @@ module.exports = {
       label: "Release notes",
       items: [
         "getting-started/release-notes/release-notes-overview",
+        "getting-started/release-notes/v2_6_0",
         "getting-started/release-notes/v2_5_0",
         "getting-started/release-notes/v2_4_0",
         "getting-started/release-notes/v2_3_1",
@@ -124,7 +125,8 @@ module.exports = {
             "user-guide/configure-xmem-server",
             "user-guide/configure-auxiliary-address-space",
             "user-guide/configure-zowe-zosmf-workflow",
-            "user-guide/configmgr-using"
+            "user-guide/configmgr-using",
+            "user-guide/install-configure-zos-extensions"
           ],
         },
         {
@@ -482,7 +484,6 @@ module.exports = {
       items: [
         "extend/packaging-zos-extensions",
         "extend/server-schemas",
-        "extend/install-configure-zos-extensions",
         "extend/lifecycling-with-zwesvstc",
         "extend/k8s-extend",
         "extend/k8s-conformance",
@@ -760,7 +761,7 @@ module.exports = {
     {
       type: "link",
       label: "Third Party Software Requirements",
-      href: "https://github.com/zowe/docs-site/tree/master/tpsr/tpsr-v2.5.x.md",
+      href: "https://github.com/zowe/docs-site/tree/master/tpsr/tpsr-v2.6.x.md",
     },
   ],
 };
