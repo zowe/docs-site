@@ -40,7 +40,7 @@ Zowe ships [`zwe components enable`](../appendix/zwe_server_command_reference/zw
 
 **Note** `zwe components install` command will enable the component globally if `--skip-enable` is not passed to it.
 
-More information such as parameters and examples can be found on the [`zwe components enable` reference page](../appendix/zwe_server_command_reference/zwe/components/install/zwe-components-enable.md) and the [`zwe components disable` reference page](../appendix/zwe_server_command_reference/zwe/components/install/zwe-components-disable.md)
+More information such as parameters and examples can be found on the [`zwe components enable` reference page](../appendix/zwe_server_command_reference/zwe/components/zwe-components-enable.md) and the [`zwe components disable` reference page](../appendix/zwe_server_command_reference/zwe/components/zwe-components-disable.md)
 
 ## Upgrading a component
 
@@ -56,14 +56,14 @@ This command can be used to upgrade all components that have an upgrade availabl
 
 `zwe components uninstall` can be used to remove a previously installed extension. It will not remove core components. 
 
-More information such as parameters and examples can be found on the [`zwe components uninstall` reference page](../appendix/zwe_server_command_reference/zwe/components/install/zwe-components-uninstall.md)
+More information such as parameters and examples can be found on the [`zwe components uninstall` reference page](../appendix/zwe_server_command_reference/zwe/components/zwe-components-uninstall.md)
 
 
 ## Searching for a component
 
 `zwe components search` helps you find components that are available for installation from your chosen component package registry. This command requires that you have configured your Zowe instance for use with such a registry. [Click here for more information on how to set up and use a component package registry](../extend/component-registries.md)
 
-More information such as parameters and examples can be found on the [`zwe components search` reference page](../appendix/zwe_server_command_reference/zwe/components/install/zwe-components-search.md)
+More information such as parameters and examples can be found on the [`zwe components search` reference page](../appendix/zwe_server_command_reference/zwe/components/zwe-components-search.md)
 
 
 ## Manual Component management
