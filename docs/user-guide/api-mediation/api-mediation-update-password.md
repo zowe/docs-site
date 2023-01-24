@@ -1,6 +1,6 @@
 # Update user password using Gateway REST APIs
 
-You can use the API ML to update the mainframe password. This is possible through the API Gateway REST APIs the update password functionality is supported by two authentication providers:
+You can use the API ML to update the mainframe password. This is possible through the API Gateway REST APIs and the update password functionality is supported by two authentication providers:
 
 * [Change password with SAF provider](#change-password-with-saf-provider)
 * [Change password with z/OSMF provider](#change-password-with-zosmf-provider)
