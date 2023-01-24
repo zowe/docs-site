@@ -1,4 +1,4 @@
-# Gateway REST APIs 
+# API Gateway REST APIs 
 
 The API Gateway provides different functionalities and implements several REST APIs to leverage these functionalities:
 
