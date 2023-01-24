@@ -46,11 +46,15 @@ Indicates the protocol and URL.
 
 Required to establish communication with z/OSMF. Specifies that the client is sending a cross-site request to the REST interface.
 
-- `;`: Indicates that the header has no value. (A value is not required.)
+- `;`: Indicates that the header has no value. (Not all commands require a value.)
+
+    To pass an additional header with a value, use a colon to separate the key and value. For example: `--header "X-IBM-Data-Type: binary"`.
 
 ### `--insecure`
 
-Use `--insecure` to bypass SSL certificate validation if you are connecting to a trusted server that has self-signed certificates.
+Use `--insecure` with a trusted server that does not require verification before a data transfer.
+
+For example, this bypasses SSL certificate verification for servers with self-signed certificates.
 
 ### `--user "<ID>:<PASSWORD>"`
 
@@ -65,12 +69,17 @@ Required and displays as plain text. Also possible to [use an environment variab
 
 To troubleshoot, run a Zowe API request with Zowe CLI and cURL commands, then compare responses.
 
-### z/OSMF Info API
+When both responses include the same error, that may indicate there could be a problem with z/OSMF.
+
+If an API call fails with the Zowe CLI command but not cURL, this can mean the problem lies with Zowe CLI.
+
+The following APIs illustrate some common examples of comparing commands that you can use to troubleshoot with cURL.
+
+### **z/OSMF Info API**
 
 The [`z/OSMF Info`](https://www.ibm.com/docs/en/zos/2.5.0?topic=service-retrieve-zosmf-information) API uses a `GET` request to obtain basic information from z/OSMF, such as the version, available services, and other details.
 
-
-**Submitting the cURL command:**
+#### Submitting the cURL command:
 
 Run the following example command using your information:
 
@@ -82,12 +91,12 @@ A successful cURL response follows the format below:
 {"zos_version":"04.28.00","zosmf_port":"443","zosmf_version":"28","zosmf_hostname":"lpar.hostname.net","plugins":{"msgId":"IZUG612E","msgText":"IZUG612E"},"zosmf_saf_realm":"SAFRealm","zosmf_full_version":"28.0","api_version":"1"}
 ```
 
-**Submitting the Zowe CLI command:**
+#### Submitting the Zowe CLI command:
 
 Run the following example command using your information:
 
 ```
-zowe zosmf check status --host lpar.hostname.net --port 443 --user ibmuser --password password
+zowe zosmf check status --host lpar.hostname.net --port 443 --user ibmuser --password password --reject-unauthorized false
 ```
 
 A successful Zowe CLI response follows the format below:
@@ -104,6 +113,74 @@ z/OSMF Plug-ins that are installed on 'lpar.hostname.net':
 msgId:   IZUG612E
 msgText: IZUG612E
 ```
-When both responses include a the same error, that may indicate there could be a problem with z/OSMF.
 
-If an API call fails with the Zowe CLI command but not cURL, this can mean the problem lies with Zowe CLI.
+### **z/OSMF Files API**
+
+The [`z/OSMF Files`](https://www.ibm.com/docs/en/zos/2.5.0?topic=interface-write-data-zos-data-set-member) API uses a `PUT` request to upload a file to a data set via z/OSMF.
+
+#### Submitting the cURL command:
+
+Run the following example command using your information:
+
+```
+curl --location --request PUT "https://lpar.hostname.net:443/zosmf/restfiles/ds/IBMUSER.TEST.PDS(HELLO)" --header "X-CSRF-ZOSMF-HEADER;" --header "X-IBM-Data-Type: binary" --insecure --user "ibmuser:password" --data @hello.txt
+```
+A successful cURL response is empty without any error messages.
+
+#### Submitting the Zowe CLI command:
+
+Run the following example command using your information:
+
+```
+zowe zos-files upload file-to-data-set hello.txt "IBMUSER.TEST.PDS(HELLO)" --binary --host lpar.hostname.net --port 443 --user ibmuser --password password --reject-unauthorized false
+```
+
+A successful Zowe CLI response follows the format below:
+
+```
+success: true
+from:    C:\Users\User\Desktop\hello.txt
+to:      IBMUSER.TEST.PDS(HELLO)
+
+
+file_to_upload: 1
+success:        1
+error:          0
+skipped:        0
+
+
+Data set uploaded successfully.
+```
+
+### **z/OSMF Jobs API**
+
+The [`z/OSMF Jobs`](https://www.ibm.com/docs/en/zos/2.5.0?topic=interface-submit-job) API uses a `PUT` request to submit a job from a data set via z/OSMF.
+
+#### Submitting the cURL command:
+
+Run the following example command using your information:
+
+```
+curl --location --request PUT "https://lpar.hostname.net:443/zosmf/restjobs/jobs" --header "X-CSRF-ZOSMF-HEADER;" --insecure --user "ibmuser:password" --header "Content-Type: application/json" --data '{"file": "//''IBMUSER.TEST.IEFBR14''"}'
+```
+A successful cURL response folllows the format below:
+```
+{"owner":"IBMUSER","phase":14,"subsystem":"JES2","phase-name":"Job is actively executing","job-correlator":"J000...","type":"JOB","url":"https:\/\/lpar.hostname.net:443\/zosmf\/restjobs\/jobs\/J000...%3A","jobid":"JOB12345","class":"A","files-url":"https:\/\/lpar.hostname.net:443\/zosmf\/restjobs\/jobs\/J000...%3A\/files","jobname":"IEFBR14","status":"ACTIVE","retcode":null}
+```
+
+#### Submitting the Zowe CLI command:
+
+Run the following example command using your information:
+
+```
+zowe zos-jobs submit data-set "IBMUSER.TEST.IEFBR14" --host lpar.hostname.net --port 443 --user ibmuser --password password --reject-unauthorized false
+```
+
+A successful Zowe CLI response follows the format below:
+
+```
+jobid:   JOB12345
+retcode: null
+jobname: IEFBR14
+status:  INPUT
+```
