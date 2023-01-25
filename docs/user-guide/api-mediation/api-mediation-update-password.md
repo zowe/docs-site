@@ -10,12 +10,12 @@ This feature is also available in the API Catalog. For more information about ho
 
 ## Change password with SAF provider
 
-Update the user password using the SAF Authentication provider. To use this functionality, add the parameter `newPassword` on the login endpoint `/gateway/api/v1/auth/login`. 
+Update the user password using the SAF Authentication provider. To use this functionality, add the parameter `newPassword` on the login endpoint `/gateway/api/v1/auth/login` in a `POST` call to this endpoint. 
 
 The Gateway service returns a valid JWT with the response code `204` as a result of successful password change. The user is then authenticated and can consume APIs through the Gateway. 
 A response code of `401` is thrown if it is not possible to change the password for any reason.
 
-Use a `POST` REST call against the URL `/gateway/api/v1/auth/login`:
+Use the following format in the `POST` REST call against the URL `/gateway/api/v1/auth/login`:
 
  ```
  {
@@ -34,17 +34,16 @@ It is a common practice to set a limit to the number of password changes permiss
 
 where:
 
-* **`120`**
-
-  Specifies the number of days before the password can be reset
+* **`120`**  
+Specifies the number of days before the password can be reset
 
 ## Change password with z/OSMF provider
 
-Update the user password using the z/OSMF Authentication provider. To use this functionality, add the parameter `newPassword` on the login endpoint `/gateway/api/v1/auth/login`. 
+Update the user password using the z/OSMF Authentication provider. To use this functionality, add the parameter `newPassword` on the login endpoint `/gateway/api/v1/auth/login` in a `POST` call to this endpoint.
 
 The Gateway service returns a valid JWT with the response code `204` as a result of successful password change. The user is then authenticated and can consume APIs through the Gateway. A response code of `401` is thrown if it is not possible to change the password.
 
-Use a `POST` REST call against the URL `/gateway/api/v1/auth/login`:
+Use the following format in the `POST` REST call against the URL `/gateway/api/v1/auth/login`:
 
  ```
  {
