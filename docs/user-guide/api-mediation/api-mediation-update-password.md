@@ -15,7 +15,7 @@ Update the user password using the SAF Authentication provider. To use this func
 The Gateway service returns a valid JWT with the response code `204` as a result of successful password change. The user is then authenticated and can consume APIs through the Gateway. 
 A response code of `401` is thrown if it is not possible to change the password for any reason.
 
-Use the following format in the `POST` REST call against the URL `/gateway/api/v1/auth/login`:
+Use the following request body format in the `POST` REST call against the URL `/gateway/api/v1/auth/login`:
 
  ```
  {
@@ -43,7 +43,7 @@ Update the user password using the z/OSMF Authentication provider. To use this f
 
 The Gateway service returns a valid JWT with the response code `204` as a result of successful password change. The user is then authenticated and can consume APIs through the Gateway. A response code of `401` is thrown if it is not possible to change the password.
 
-Use the following format in the `POST` REST call against the URL `/gateway/api/v1/auth/login`:
+Use the following request body format in the `POST` REST call against the URL `/gateway/api/v1/auth/login`:
 
  ```
  {
