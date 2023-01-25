@@ -10,23 +10,23 @@ You can use the API ML to update a mainframe password. Mainframe password change
 
 One method to change a mainframe password is via the SAF Authentication provider, either directly through the login endpoint or via the API Catalog.  
 
-### Change password with SAF provider via the login endpoint
+* **Change password with SAF provider ba adding a parameter**
 
-Add the parameter `newPassword` on the login endpoint `/gateway/api/v1/auth/login`. 
+    Add the parameter `newPassword` on the login endpoint `/gateway/api/v1/auth/login`. 
 
-The Gateway service returns a valid JWT with the response code `204` as a result of successful password change. The user is then authenticated and can consume APIs through the Gateway. A response code of `401` is thrown if it is not possible to change the password.
+    The Gateway service returns a valid JWT with the response code `204` as a result of successful password change. The user is then authenticated and can consume APIs through the Gateway. A response code of `401` is thrown if it is not possible to change the password.
 
-### Change password with SAF provider via API Catalog
+* **Change password with SAF provider via API Catalog**
 
-Use a `POST` REST call against the URL `/gateway/api/v1/auth/login`:
+    Use a `POST` REST call against the URL `/gateway/api/v1/auth/login`:
 
- ```
- {
- "username" : "<username>",
- "password" : "<password>",
- "newPassword" : "<newPassword>"
-}
-```
+    ```
+    {
+    "username" : "<username>",
+    "password" : "<password>",
+    "newPassword" : "<newPassword>"
+    }
+    ```
 
 **Note:**
 It is a common practice to set a limit to the number of password changes permissible in the ESM. This value is set by the parameter `MINCHANGE` for `PASSWORD`. The password can be changed once. Subsequently, it is necessary to wait the specified time period before the password can be changed again.
@@ -44,23 +44,23 @@ Specifies the number of days before the password can be reset
 
 An alternative method to change your password is to use the z/OSMF Authentication provider either directly through the login endpoint, or via the API Catalog
 
-### Change password with z/OSMF provider via the login endpoint 
+* **Change password with z/OSMF provider by adding a parameter**
 
-Add the parameter `newPassword` on the login endpoint `/gateway/api/v1/auth/login`. 
+    Add the parameter `newPassword` on the login endpoint `/gateway/api/v1/auth/login`. 
 
-The Gateway service returns a valid JWT with the response code `204` as a result of successful password change. The user is then authenticated and can consume APIs through the Gateway. A response code of `401` is thrown if it is not possible to change the password.
+    The Gateway service returns a valid JWT with the response code `204` as a result of successful password change. The user is then authenticated and can consume APIs through the Gateway. A response code of `401` is thrown if it is not possible to change the password.
 
-### Change password with z/OSMF provider via API Catalog
+* **Change password with z/OSMF provider via API Catalog**
 
-Use a `POST` REST call against the URL `/gateway/api/v1/auth/login`:
+    Use a `POST` REST call against the URL `/gateway/api/v1/auth/login`:
 
- ```
- {
- "username" : "<username>",
- "password" : "<password>",
- "newPassword" : "<newPassword>"
-}
-```
+    ```
+    {
+    "username" : "<username>",
+    "password" : "<password>",
+    "newPassword" : "<newPassword>"
+    }
+    ```
 
-**Note:**
-In order to use the password change functionality via z/OSMF, it is necessary to install the PTF for APAR PH34912.
+    **Note:**
+    In order to use the password change functionality via z/OSMF, it is necessary to install the PTF for APAR PH34912.
