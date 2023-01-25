@@ -14,9 +14,7 @@ One method to change a mainframe password is via the SAF Authentication provider
 
 Add the parameter `newPassword` on the login endpoint `/gateway/api/v1/auth/login`. 
 
-The Gateway service returns a valid JWT with the response code `204` as a result of successful password change. The user is then authenticated and can consume APIs through the Gateway. 
-
-A response code of `401` is thrown if it is not possible to change the password for any reason.
+The Gateway service returns a valid JWT with the response code `204` as a result of successful password change. The user is then authenticated and can consume APIs through the Gateway. A response code of `401` is thrown if it is not possible to change the password.
 
 ### Change password with SAF provider via API Catalog
 
@@ -46,13 +44,13 @@ Specifies the number of days before the password can be reset
 
 An alternative method to change your password is to use the z/OSMF Authentication provider either directly through the login endpoint, or via the API Catalog
 
-## Change password with z/OSMF provider via the login endpoint 
+### Change password with z/OSMF provider via the login endpoint 
 
 Add the parameter `newPassword` on the login endpoint `/gateway/api/v1/auth/login`. 
 
 The Gateway service returns a valid JWT with the response code `204` as a result of successful password change. The user is then authenticated and can consume APIs through the Gateway. A response code of `401` is thrown if it is not possible to change the password.
 
-## Change password with z/OSMF provider via API Catalog
+### Change password with z/OSMF provider via API Catalog
 
 Use a `POST` REST call against the URL `/gateway/api/v1/auth/login`:
 
