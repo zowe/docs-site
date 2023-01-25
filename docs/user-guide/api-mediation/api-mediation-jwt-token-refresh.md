@@ -1,10 +1,10 @@
 # JWT token refresh endpoint
 
-The API Gateway allows to generate a new token for the user based on valid JWT token. This is possible through the `auth/refresh` REST endpoint. The full path of the `auth/refresh` endpoint appears as `https://{gatewayUrl}:{gatewayPort}/gateway/api/v1/auth/refresh`. The new token overwrites the old cookie with a `Set-Cookie` header. As part of the process, the old token gets invalidated and is not usable anymore.
+The API Gateway allows for the generation of a new token for a user based on a valid JWT token, made possible through the `auth/refresh` REST endpoint. The full path of the `auth/refresh` endpoint appears as `https://{gatewayUrl}:{gatewayPort}/gateway/api/v1/auth/refresh`. The new token overwrites the old cookie with a `Set-Cookie` header. As part of the process, the old token is invalidated and is no longer usable.
 
 The refresh request requires the token in one of the following formats:
 
-- Cookie named `apimlAuthenticationToken`.
+- A cookie named `apimlAuthenticationToken`.
 - Bearer authentication
 
 **Notes:**
