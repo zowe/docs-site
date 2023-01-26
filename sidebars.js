@@ -617,6 +617,7 @@ module.exports = {
         "troubleshoot/cli/troubleshoot-cli",
         "troubleshoot/cli/mustgather-cli",
         "troubleshoot/cli/use-individual-troubleshoot-commands",
+        "troubleshoot/cli/cli-use-curl-to-troubleshoot",
         "troubleshoot/cli/zosmf-cli",
         "troubleshoot/cli/known-cli",
         "troubleshoot/cli/cli-issue",
