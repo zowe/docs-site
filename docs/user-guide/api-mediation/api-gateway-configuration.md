@@ -15,7 +15,6 @@ Follow the procedures in the following sections to customize Gateway parameters 
   * [Prefer IP Address for API Layer services](#prefer-ip-address-for-api-layer-services)
   * [SAF as an Authentication provider](#saf-as-an-authentication-provider)
   * [Enable JWT token refresh endpoint](#enable-jwt-token-refresh-endpoint)
-  * [Change password with SAF provider](#change-password-with-saf-provider)
   * [Gateway retry policy](#gateway-retry-policy)
   * [Gateway client certificate authentication](#gateway-client-certificate-authentication)
   * [Gateway timeouts](#gateway-timeouts)
@@ -64,54 +63,6 @@ Enable the `/gateway/api/v1/auth/refresh` endpoint to exchange a valid JWT token
       If you use z/OSMF as an authentication provider, provide a valid `APPLID`. The API ML generates a passticket for the specified `APPLID` and subsequently uses this passticket to authenticate to z/OSMF. The default value in the installation of z/OSMF is `IZUDFLT`.
 
 3. Restart Zowe.
-
-## Change password with SAF provider
-
-Update the user password using the SAF Authentication provider. To use this functionality, add the parameter `newPassword` on the login endpoint `/gateway/api/v1/auth/login`. The Gateway service returns a valid JWT with the response code `204` as a result of successful password change. The user is then authenticated and can consume APIs through the Gateway. If it is not possible to change the password for any reason, the response code is `401`.
-
-This feature is also available in the API Catalog.
-
-Use a `POST` REST call against the URL `/gateway/api/v1/auth/login`:
-
- ```
- {
- "username" : "<username>",
- "password" : "<password>",
- "newPassword" : "<newPassword>"
-}
-```
-
-**Note:**
-It is a common practice to set the limit for changing the password in the ESM. This value is set by the parameter `MINCHANGE` for `PASSWORD`. The password can be changed once. Subsequently, it is necessary to wait the specified time period before changing the password again.
-
-**Example:**
-
-`MINCHANGE=120`
-
-where:
-
-* **`120`**
-
-  Specifies the number of days before the password can be reset
-
-## Change password with z/OSMF provider
-
-Update the user password using the z/OSMF Authentication provider. To use this functionality, add the parameter `newPassword` on the login endpoint `/gateway/api/v1/auth/login`. The Gateway service returns a valid JWT with the response code `204` as a result of successful password change. The user is then authenticated and can consume APIs through the Gateway. If it is not possible to change the password for any reason, the response code is `401`.
-
-This feature is also available in the API Catalog.
-
-Use a `POST` REST call against the URL `/gateway/api/v1/auth/login`:
-
- ```
- {
- "username" : "<username>",
- "password" : "<password>",
- "newPassword" : "<newPassword>"
-}
-```
-
-**Note:**
-In order to use the password change functionality via z/OSMF, it is necessary to install the PTF for APAR PH34912.
 
 ## Gateway retry policy
 
