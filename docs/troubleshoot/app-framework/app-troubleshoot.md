@@ -262,6 +262,26 @@ If you are using Zowe's local CA certificate but it still reports **ZWED0148E**,
 
 In this case, you must make sure that the label names exactly match the names in TSO when looking up the keyring you own. Any difference in spaces, capitalization, or other places will cause the error.
 
+## Error: Exception thrown when reading SAF keyring {ZWED0148E}
+
+**Symptom:**
+If you see one or more of the following in the logs,
+
+* ZWED0148E - Exception thrown when reading SAF keyring, e= Error: R_datalib call failed: function code: 01, SAF rc: `number`, RACF rc: `number`, RACF rsn: `number`
+
+* java.io.IOException: R_datalib (IRRSDL00) error: profile for ring not found (`number`, `number`, `number`)
+
+Then the cause is due to keyring configuration.
+You may also see the log message
+* ZWES1060W Failed to init TLS environment, rc=1(Handle is not valid)
+
+But this log message can have other causes too, such as lack of READ permission to resources in the CRYPTOZ class.
+
+**Solution:**
+
+Refer to table 2 (DataGetFirst) of the [Return and Reason Codes](https://www.ibm.com/docs/en/zos/2.5.0?topic=library-return-reason-codes) to decide the problem you are facing.
+Then, check your keyring (such as with a LISTRING command) and your zowe configuration file's `zowe.certificate` section to spot and resolve the issue.
+
 ## Warning: Problem making eureka request { Error: connect ECONNREFUSED }
 
 **Symptom:** 
