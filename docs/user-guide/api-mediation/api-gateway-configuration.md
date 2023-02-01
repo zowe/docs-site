@@ -418,23 +418,6 @@ Use the following procedure to enable personal access tokens.
 2. Find or add the property with the value `components.gateway.apiml.security.personalAccessToken.enabled: true`.
 3. Restart Zowe.
 
-## API Mediation Layer as a standalone component
-
-You can start the API Mediation Layer independently of other Zowe components. 
-By default, the Gateway, Zowe System Services, and Virtual Desktop start when
- Zowe runs. To limit consumed resources when the Virtual Desktop or Zowe System
- Services are not required, it is possible to specify which components start in the
- context of Zowe. No change is required during the installation process to
- support this setup.
-
-Once Zowe is installed, use the following procedure to limit which components start.
-
-**Follow these steps:**
-
-1. Open the file `zowe.yaml`.
-2. Find or add the property `components.*.enabled` and set this property to `false` for all components that should not be started.
-3. Restart `Zowe&trade`.   
-
 ## SAF Resource Checking
 
 The API ML can check for the authorization of the user on certain endpoints. Access to a SAF resource is checked with ESM.
