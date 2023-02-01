@@ -357,6 +357,7 @@ module.exports = {
         "extend/extend-apiml/service-information",
         "extend/extend-apiml/websocket",
         "user-guide/api-mediation/api-gateway-rest-apis-documentation",
+        "user-guide/api-mediation/api-mediation-saf-resource-checking",
         "user-guide/api-mediation/api-mediation-smf",
       ],
     },

@@ -16,6 +16,7 @@ Follow the procedures in the following sections to customize Gateway parameters 
     * [Environment variables](#environment-variables)
   * [SAF as an Authentication provider](#saf-as-an-authentication-provider)
   * [Enable JWT token refresh endpoint](#enable-jwt-token-refresh-endpoint)
+  * [Enabling PassTicket support](#enabling-passticket-support)
   * [Gateway retry policy](#gateway-retry-policy)
   * [Gateway client certificate authentication](#gateway-client-certificate-authentication)
   * [Gateway timeouts](#gateway-timeouts)
@@ -176,6 +177,19 @@ Enable the `/gateway/api/v1/auth/refresh` endpoint to exchange a valid JWT token
       If you use z/OSMF as an authentication provider, provide a valid `APPLID`. The API ML generates a passticket for the specified `APPLID` and subsequently uses this passticket to authenticate to z/OSMF. The default value in the installation of z/OSMF is `IZUDFLT`.
 
 3. Restart Zowe.
+
+## Enabling PassTicket support
+
+The following steps outline the procedure for enabling PassTicket Support:
+
+1. Follow the [API service documentation](../../extend/extend-apiml/authentication-for-apiml-services.md#authentication-with-passtickets) that explains how to activate support for PassTickets.
+    - The PassTickets for the API service must have the replay protection switched off. The PassTickets are exchanged between Zowe API Gateway and the API Service in a secure mainframe environment.
+2. Record the value of the APPLID of the API service.
+3. Enable the Zowe started task user ID to generate PassTickets for the API service. For more information, see [PassTicket Security Configuration](../../extend/extend-apiml/api-mediation-passtickets.md). 
+4. Enable PassTicket support in the API Gateway for your API service.
+
+**Note:**
+PassTickets must be enabled for every user who requires access to the API service.
 
 ## Gateway retry policy
 
@@ -515,57 +529,7 @@ To use the endpoint provider, customize the URL corresponding to the SAF resourc
    The default value for ZSS API is `https://${ZWE_haInstance_hostname}:${GATEWAY_PORT}/zss/api/v1/saf-auth`
 3. Restart `Zowe&trade`.
 
-### Checking providers
-
-#### REST endpoint call
-
-The REST provider calls the external API to retrieve information about access rights. To enable the feature outside of the mainframe, such as when running in Docker, you can use a REST endpoint call using the `GET` method:
-
-- Method: `GET`
-- URL: `{base path}/{userId}/{class}/{entity}/{level}`
-- Response:
-```json5
-    {
-        "authorized": "{true|false}",
-        "error": "{true|false}",
-        "message": "{message}"
-    }
-```
-**Note:** For more information about this REST endpoint call, see [ZSS implementation](https://github.com/zowe/zss/blob/master/c/authService.c).
-
-#### Native
-
-The Native provider is the easiest approach to use the SAF resource checking feature on the mainframe.
-
-Enable this provider when classes `com.ibm.os390.security.PlatformAccessControl` and `com.ibm.os390.security.PlatformReturned`
-are available on the classpath. This approach uses the following method described in the IBM documentation: [method](https://www.ibm.com/support/knowledgecenter/SSYKE2_8.0.0/com.ibm.java.zsecurity.api.80.doc/com.ibm.os390.security/com/ibm/os390/security/PlatformAccessControl.html?view=kc#checkPermission-java.lang.String-java.lang.String-java.lang.String-int-).
-
-**Note:** Ensure that the version of Java on your system has the same version of classes and method signatures.
-
-#### Dummy implementation
-
-The Dummy provider is for testing purpose outside of the mainframe.
-
-Create the file `saf.yml` and locate it in the folder, where is application running or create file `mock-saf.yml` in the
-test module (root folder). The highest priority is to read the file outside of the JAR. A file (inner or outside) has to exist.
-
-The following YAML presents the structure of the file:
-
-```yaml
-  safAccess:
-    {CLASS}:
-      {RESOURCE}:
-        - {UserID}
-```
-
-**Notes**:
-- Classes and resources are mapped into a map, user IDs into a list.
-- The load method does not support formatting with dots, such as shown in the following example:
-  **Example:** {CLASS}.{RESOURCE}
-  Ensure that each element is separated.
-- The field `safAccess` is not required to define an empty file without a definition.
-- Classes and resources cannot be defined without the user ID list.
-- When a user has multiple definitions of the same class and resource, only the most privileged access level loads.
+For more information about the SAF resource checking providers, see [SAF Resource Checking Providers](api-mediation-saf-resource-checking.md).
 
 ## AT-TLS
 
