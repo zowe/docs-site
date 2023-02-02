@@ -1,19 +1,12 @@
 # Advanced Gateway features configuration
 
-As a system programmer who wants to configure advanced Gateway features of the API Mediation Layer, you can customize Gateway parameters by modifying either of the following files:
-
-- `<Zowe runtime directory>/components/gateway/bin/start-gateway.sh` 
-- `<Zowe runtime directory>/components/gateway/manifest.yaml`
-- `zowe.yaml`
-
-The parameters begin with the `-D` prefix, similar to all the other parameters in the file.
+As a system programmer who wants to configure advanced Gateway features of the API Mediation Layer, you can customize Gateway parameters by modifying the `zowe.yaml` file.
 
 **Note:** Restart Zowe to apply changes to the parameter.
 
 Follow the procedures in the following sections to customize Gateway parameters according to your preferences:
 
   * [Runtime configuration](#runtime-configuration)
-    * [Environment variables](#environment-variables)
   * [SAF as an Authentication provider](#saf-as-an-authentication-provider)
   * [Enable JWT token refresh endpoint](#enable-jwt-token-refresh-endpoint)
   * [Enabling PassTicket support](#enabling-passticket-support)
@@ -41,25 +34,17 @@ This section describes runtime configuration properties.
 1. Open the file `zowe.yaml`.
 2. Configure the following properties:
 
-   * **components.gateway.apiml.service.hostname**
+   * **apiml.service.hostname**
 
-     This property is used to set the API Gateway hostname.
+     This property is used to set the API Gateway hostname. The value can be set by defining the `ZWE_haInstance_hostname` property in the `zowe.yaml` file.
 
-   * **components.gateway.apiml.service.port**
+   * **apiml.service.port**
 
-     This property is used to set the API Gateway port.
+     This property is used to set the API Gateway port. The value can be set by defining the `ZWE_configs_port` property in the `zowe.yaml` file.
 
-   * **components.gateway.apiml.service.discoveryServiceUrls**
+   * **apiml.service.discoveryServiceUrls**
 
-     This property specifies the Discovery Service URL used by the service to register to Eureka.
-
-   * **components.gateway.apiml.service.preferIpAddress**
-
-     Set the value of this property to `true` to advertize a service IP address instead of its hostname.
-
-     **Notes:**
-       * If you set this property to `true` on the Discovery Service, ensure that you modify the value of `discoveryLocations:` to use the IP address instead of the hostname. Failure to modify the `discoveryLocations:` value prevents Eureka from detecting registered services. As a result, the **available-replicas** is empty.
-       * Enabling this property may also cause issues with SSL certificates and Subject Alternative Name (SAN).
+     This property specifies the Discovery Service URL used by the service to register to Eureka. The value can be set by defining the `ZWE_DISCOVERY_SERVICES_LIST` property in the `zowe.yaml` file.
     
    * **components.gateway.apiml.security.ssl.verifySslCertificatesOfServices**
 
@@ -68,7 +53,7 @@ This section describes runtime configuration properties.
      **Important!** Ensure that this parameter is set to `true` in production environments.
      Setting this parameter to `false` in production environments significantly degrades the overall security of the system.
 
-   * **components.gateway.apiml.security.auth.zosmfServiceId**
+   * **components.gateway.apiml.security.auth.zosmf.ServiceId**
 
      This parameter specifies the z/OSMF service id used as authentication provider. The service id is defined in the static definition of z/OSMF. The default value is `zosmf`.
 
@@ -81,21 +66,6 @@ This section describes runtime configuration properties.
      These two properties are used to set the number of concurrent connections. Further connection requests that put the number of connections over either of these limits are queued until an existing connection completes. The API Gateway is built on top of Apache HTTP components that require these two connection limits for concurrent requests. For more information, see [Apache documentation](http://hc.apache.org/httpcomponents-client-ga/tutorial/html/connmgmt.html#d5e393).
 
 3. Restart Zowe&trade.
-
-### Environment variables
-
-You can add additional environment variables to store configuration properties for the API Mediation Layer.
-
-**Note:** Use either dot separation, or the UPPER_CASE naming convention when adding an additional environmental variable.
-
-One use case for adding an environmental variable is to change the authentication provider. The `SAF Authentication Provider` allows the API Gateway to authenticate directly with the z/OS SAF provider that is installed on the system. The user needs a SAF account to authenticate. Use this procedure to customize authentication provider.
-
-**Follow the steps:**
-
-1. Open the file `<Zowe instance directory>/instance.env`.
-2. Add a new line with the following property:
-
-   `apiml.security.auth.provider=saf`.
 
 ## SAF as an Authentication provider
 

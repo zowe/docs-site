@@ -309,6 +309,7 @@ module.exports = {
       items: [
         "user-guide/mvd-configuration",
         "user-guide/cli-configuringcli-ev",
+        "user-guide/configure-data-sets-jobs-api",
         {
           type: "category",
           label: "API Mediation Layer",
