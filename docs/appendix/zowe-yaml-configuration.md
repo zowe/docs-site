@@ -1,6 +1,9 @@
-# Zowe YAML configuration file reference
+# Zowe YAML server configuration file reference
 
-Zowe v2 uses a YAML configuration file during installation, configuration, and runtime. This file is usually referred to as the Zowe configuration YAML file or the `zowe.yaml` file. YAML is a human-friendly data serialization language for all programming languages. To learn more about YAML specifications, see [https://yaml.org/](https://yaml.org/). For a free, offline YAML validator to help validate your syntax, download the [Red Hat's VS Code YAML extension](https://marketplace.visualstudio.com/items?itemName=redhat.vscode-yaml).
+Zowe v2 uses a YAML configuration file for server installation, configuration, and runtime. This file is usually referred to as the Zowe configuration YAML file or the `zowe.yaml` file. YAML is a human-friendly data serialization language for all programming languages. To learn more about YAML specifications, see [https://yaml.org/](https://yaml.org/). For a free, offline YAML validator to help validate your syntax, download the [Red Hat's VS Code YAML extension](https://marketplace.visualstudio.com/items?itemName=redhat.vscode-yaml).
+
+Content within the YAML file is documented by and validated against schema files which are shipped within Zowe and extended by Zowe extensions.
+For details on the schema technology and where to find the schema files within our source code, [see the configuration manager page](../user-guide/configmgr-using.md#json-schema-validation)
 
 **Note:** In the following sections, we refer to configuration keys by using concatenation of key names and dots. For example, if you want to update the configuration key `zowe.certificate.keystore.type` with value `PKCS12`, you should set value for this entry in the `zowe.yaml`:
 
