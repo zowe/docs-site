@@ -1,5 +1,8 @@
 # Providing feedback and contributing
 
+[![codecov](https://codecov.io/gh/zowe/vscode-extension-for-zowe/branch/main/graph/badge.svg)](https://codecov.io/gh/zowe/vscode-extension-for-zowe)
+[![slack](https://img.shields.io/badge/chat-on%20Slack-blue)](https://app.slack.com/client/T1BAJVCTY/CUVE37Z5F)
+
 To help make Zowe Explorer CICS Extension better, you are welcome to contribute in different ways.
 
 ## Filing an issue

@@ -1,5 +1,8 @@
 # Using the FTP Extension
 
+[![codecov](https://codecov.io/gh/zowe/vscode-extension-for-zowe/branch/main/graph/badge.svg)](https://codecov.io/gh/zowe/vscode-extension-for-zowe)
+[![slack](https://img.shields.io/badge/chat-on%20Slack-blue)](https://app.slack.com/client/T1BAJVCTY/CUVE37Z5F)
+
 ## Prerequisites
 
 Ensure that you obtain remote access to z/OS FTP service before you can use the extension.
