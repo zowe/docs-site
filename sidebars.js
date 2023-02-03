@@ -309,6 +309,7 @@ module.exports = {
       items: [
         "user-guide/mvd-configuration",
         "user-guide/cli-configuringcli-ev",
+        "user-guide/configure-data-sets-jobs-api",
         {
           type: "category",
           label: "API Mediation Layer",
@@ -318,6 +319,7 @@ module.exports = {
             "user-guide/api-mediation/api-gateway-configuration",
             "user-guide/api-mediation/discovery-service-configuration",
             "user-guide/api-mediation/api-mediation-internal-configuration",
+            "user-guide/api-mediation-standalone",
             "extend/extend-apiml/api-mediation-passtickets",
           ],
         },
@@ -357,6 +359,7 @@ module.exports = {
         "extend/extend-apiml/service-information",
         "extend/extend-apiml/websocket",
         "user-guide/api-mediation/api-gateway-rest-apis-documentation",
+        "user-guide/api-mediation/api-mediation-saf-resource-checking",
         "user-guide/api-mediation/api-mediation-smf",
       ],
     },

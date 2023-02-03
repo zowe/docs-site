@@ -188,7 +188,7 @@ The value of this parameter specifies a service authentication scheme. Any valid
         * If the southbound service needs to consume the user ID and the passticket from custom HTTP request headers (i.e. to participate in the Zowe SSO), it is possible to provide the headers in the Gateway configuration.
       The HTTP headers are then added to each request towards the southbound service. The headers contain the user ID and the passticket to be consumed by the service. See [Advanced Gateway features configuration](../../user-guide/api-mediation/api-gateway-configuration.md) for more information about the custom HTTP request headers.
       
-      For more information, see [Enabling PassTicket creation for API Services that Accept PassTickets](api-mediation-passtickets.md)
+      For more information, see [Authentication with PassTickets](#authentication-with-passtickets).
 
     * **zosmf**  
 This value specifies that a service accepts z/OSMF LTPA (Lightweight Third-Party Authentication).
@@ -287,3 +287,77 @@ Since the Discovery Service uses HTTPS, your client also requires verification o
  http --cert=keystore/localhost/localhost.pem --verify=false -j GET https://localhost:10011/eureka/apps/
  ```
 
+
+### Authentication with PassTickets
+
+The following types of API services support PassTickets:
+
+- [API Services that register dynamically with API ML that provide authentication information](#api-services-that-register-dynamically-with-api-ml-that-provide-authentication-information)
+- [API Services that register dynamically with API ML but do not provide metadata](#api-services-that-register-dynamically-with-api-ml-but-do-not-provide-metadata)
+- [API services that are defined using a static YAML definition](#api-services-that-are-defined-using-a-static-yaml-definition)
+
+#### API Services that register dynamically with API ML that provide authentication information
+
+API services that support Zowe API Mediation Layer and use dynamic registration to the Discovery Service already provide metadata that enables PassTicket support.
+
+As a system programmer, you are not required to do anything in this case. All required information is provided by the API service automatically.
+
+#### API Services that register dynamically with API ML but do not provide metadata
+
+Some services can use PassTickets but the API ML does not recognize that the service can accept PassTickets.
+For such services, you can provide additional service metadata externally in the same file that contains the static YAML definiton. The static YAML definitions are described in [REST APIs without code changes required](./onboard-static-definition.md).
+
+Add the following section to the YAML file with a static definition:
+
+```yaml
+additionalServiceMetadata:
+    - serviceId: <serviceId>
+      mode: UPDATE
+      authentication:
+        scheme: httpBasicPassTicket
+        applid: <applid>
+```
+
+where:
+
+- `<serviceId>`
+
+  is the service ID of the service to which you want to add metadata.
+
+#### API services that are defined using a static YAML definition
+
+Add the following metadata to the same level as the `serviceId`:
+
+**Example:**
+
+```yaml
+    - serviceId: ...
+      authentication:
+        scheme: httpBasicPassTicket
+        applid: TSTAPPL
+```
+
+**Note:** The fields in this example are explained later in this article.
+
+#### Adding YAML configuration to API services that register dynamically with API ML
+
+As a developer of an API service that registers dynamically with the API ML, you need to provide additional metadata to tell the API Gateway to use PassTickets.
+Additional metadata tells the API Gateway how to generate them. The following code shows an example of the YAML configuration that contains this metadata.
+
+**Example:**
+
+```yaml
+authentication:
+    scheme: httpBasicPassTicket
+    applid: <applid>
+```
+
+where:
+
+- `httpBasicPassTicket`
+
+  is the value that indicates that the HTTP Basic authentication scheme is used with PassTickets.
+
+- `<applid>`
+
+  is the `APPLID` value that is used by the API service for PassTicket support (e.g. `OMVSAPPL`).
