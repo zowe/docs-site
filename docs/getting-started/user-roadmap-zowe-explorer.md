@@ -1,6 +1,8 @@
 # Information Roadmap for Zowe Explorer
 
-This roadmap outlines the information resources that are applicable to the users who are interested in Zowe Explorer. These resources provide information about various subject areas, such as learning basic skills, installation, developing, and troubleshooting for Zowe Zowe Explorer.
+[![codecov](https://codecov.io/gh/zowe/vscode-extension-for-zowe/branch/main/graph/badge.svg)](https://codecov.io/gh/zowe/vscode-extension-for-zowe) [![slack](https://img.shields.io/badge/chat-on%20Slack-blue)](https://app.slack.com/client/T1BAJVCTY/CUVE37Z5F)
+
+This roadmap outlines the information resources that are applicable to the users who are interested in Zowe Explorer. These resources provide information about various subject areas, such as learning basic skills, installation, developing, and troubleshooting for Zowe Explorer.
 
 The following definition of skill levels about Zowe Explorer helps you find the most relevant resources:
 
@@ -22,7 +24,7 @@ The following definition of skill levels about Zowe Explorer helps you find the 
 
 * [**Blog: Visual Studio Code for Mainframe Via the Zowe Explorer Extension**](https://medium.com/zowe/visual-studio-code-for-mainframe-via-the-zowe-explorer-extension-b679054ffaf7)
 
-   This Meduim article outlines the basics of Zowe Explorer, including Getting Started videos.
+   This Medium article outlines the basics of Zowe Explorer, including Getting Started videos.
 
 ## Installing and configuring
 
