@@ -16,7 +16,7 @@ For detailed contribution guidelines, see the following documents:
 
 | Item | Required | Best Practice | Conformant | Criteria |
 |-----|-----|-----|-----|-----|
-|  | X |  |  | Must name your package(s) in the following format: `<service>-for-zowe-sdk` |
+|  | X |  |  | Must name your package(s) in the following format: `<service>-for-zowe-<language>-sdk` |
 
 ## Documentation
 
@@ -98,9 +98,10 @@ For detailed contribution guidelines, see the following documents:
 |  | X |  |  | Test coverage |
 |  | X |  |  | Deployment |
 |  | X |  |  | Sonar scans |
-|  |  | X |  | Changelog |
+|  |  | X |  | Changelog (example [file](https://github.com/zowe/zowe-cli/blob/master/packages/cli/CHANGELOG.md) and [workflow](https://github.com/zowe/zowe-cli/blob/master/.github/workflows/changelog.yml))|
 |  |  | X |  | Issue triage |
 |  |  | X |  | CodeQL |
+|  | X |  |  | Contribution guidelines |
 
 ## Documentation
 
