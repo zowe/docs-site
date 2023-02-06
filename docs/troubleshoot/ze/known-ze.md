@@ -2,6 +2,14 @@
 
 The following topics contain information that can help you troubleshoot problems when you encounter unexpected behavior, using Zowe Explorer.
 
+## Bidirectional languages
+
+Scripts written in languages primarily read from right to left (Arabic, Hebrew, many Asian languages) can include portions of text that are written and read left to right, such as numbers.
+
+These bidirectional (BiDi) languages are not currently supported in Visual Studio Code. See [Issue #86667](https://github.com/microsoft/vscode/issues/86667) for more information.
+
+As a result, VS Code extensions like Zowe Explorer, Zowe Explorer CICS Extension, and Zowe Explorer FTP Extension are not able to support BiDi languages in scripts or code comments.
+
 ## Data Set Creation Error
 
 **Symptom:**
