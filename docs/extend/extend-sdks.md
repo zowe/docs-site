@@ -16,7 +16,7 @@ For detailed contribution guidelines, see the following documents:
 
 | Item | Required | Best Practice | Conformant | Criteria |
 |-----|-----|-----|-----|-----|
-|  | X |  |  | Must name your package(s) in the following format: `<service>-for-zowe-<language>-sdk` |
+|  | X |  |  | Must name your package(s) in the format: `<service>-for-zowe-<language>-sdk` |
 
 ## Documentation
 
