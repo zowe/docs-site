@@ -5,39 +5,47 @@
 As an application developer who wants to run Zowe, set the following parameters during the Zowe runtime configuration by modifying the `<Zowe install directory>/components/discovery/bin/start.sh` file:
 
 * **[API ML configuration](#api-ml-configuration)**
-* **[Eureka configuration](#eureka-configuration)**
 
 ## API ML configuration
 
-* **apiml.discovery.userid**
+**Follow these steps:**
 
-    The Discovery service in HTTP mode protects it's endpoints with basic authentication instead of client certificate. This parameter  specifies the userid. The default value is `eureka`. 
+1. Open the file `zowe.yaml`.
+2. Configure the following properties:
 
-* **apiml.discovery.password**
+* **apiml.service.hostname**
 
-    This parameter specifies the password for the basic authentication used by the Discovery Service in HTTP mode. The default value is `password`.
-    
-* **apiml.discovery.allPeersUrls**
+  This property is used to set the Discovery Service hostname. The value can be set by defining the `ZWE_haInstance_hostname` property in the `zowe.yaml` file.
 
-    This parameter contains the list of URLs of the Discovery Service in case of multiple instances of the service on different host. 
-    **Example:** 
-    ```yaml
-    apiml:
-        discovery:
-            allPeersUrls: https://localhost2:10021/eureka/,https://localhost3:10031/eureka/
-    ```
-    **Note:** Each URL within the list must be separated by a comma.
-    
+* **apiml.service.port**
+
+  This property is used to set the Discovery Service port. The value can be set by defining the `ZWE_configs_port` property in the `zowe.yaml` file.
+  
 * **apiml.discovery.staticApiDefinitionsDirectories**
 
-    The static definition directories can be specified as a parameter at startup and will be scanned by the Discovery Service. These directories contains the definitions of static services.
-     **Example:** 
-        ```yaml
-        apiml:
-            discovery:
-                staticApiDefinitionsDirectories: config/local/api-defs;config/local2/api-defs
+  The value of `apiml.discovery.staticApiDefinitionsDirectories` can be set by defining the `ZWE_STATIC_DEFINITIONS_DIR` property in `zowe.yaml`. The static definition directories can be specified as a parameter at startup and will be scanned by the Discovery Service. These directories contain the definitions of static services.
+  **Example:**
+  ```yaml
+  ZWE_STATIC_DEFINITIONS_DIR: config/local/api-defs;config/local2/api-defs
+  ```
+* **apiml.discovery.allPeersUrls**
 
-* **apiml.discovery.serviceIdPrefixReplacer**
+  The value of `apiml.discovery.allPeersUrls` can be set by defining the `ZWE_DISCOVERY_SERVICES_LIST` property in `zowe.yaml`. 
+  This parameter contains the list of URLs of the Discovery Service in case of multiple instances of the service on different host.
+  **Example:**
+    ```yaml
+    ZWE_DISCOVERY_SERVICES_LIST: https://localhost2:10021/eureka/,https://localhost3:10031/eureka/
+    ```
+  **Note:** Each URL within the list must be separated by a comma.The  directories can be specified as a parameter at startup and will be scanned by the Discovery Service. These directories contain the definitions of static services.
+
+* **components.discovery.apiml.security.ssl.verifySslCertificatesOfServices**
+
+  This parameter makes it possible to prevent server certificate validation.
+
+  **Important!** Ensure that this parameter is set to `true` in production environments.
+  Setting this parameter to `false` in production environments significantly degrades the overall security of the system.
+
+* **components.discovery.apiml.discovery.serviceIdPrefixReplacer**
     
     This parameter is used to modify the service ID of a service instance, before it registers to API ML.
     Using this parameter ensures compatibility of services that use a non-conformant organization prefix with v2, based on Zowe v2 conformance.
@@ -65,41 +73,6 @@ As an application developer who wants to run Zowe, set the following parameters 
             apiml:
                discovery:
                   serviceIdPrefixReplacer: ca*,bcm
-    ```    
+    ```
 
-## Eureka configuration
-
-The Discovery Service contains a configuration for implementing the client-side service discovery and for defining a Eureka Server for service registry. Such configuration is shown below:
-
-```yaml
-eureka:
-    instance:
-        hostname: ${apiml.service.hostname}
-        ipAddress: ${apiml.service.ipAddress}
-        port: ${server.port}
-        securePort: 0
-        nonSecurePortEnabled: true
-        securePortEnabled: false
-        preferIpAddress: ${apiml.service.preferIpAddress}
-        statusPageUrl: http://${apiml.service.hostname}:${apiml.service.port}/application/info
-        healthCheckUrl: http://${apiml.service.hostname}:${apiml.service.port}/application/health
-    client:
-        registerWithEureka: true
-        fetchRegistry: true
-        region: default
-        serviceUrl:
-            defaultZone: ${apiml.discovery.allPeersUrls}
-    server:
-        useReadOnlyResponseCache: false
-```
-
-* **eureka.client.registerWithEureka**
-    If we make this property as true then while the server starts the inbuilt client will try to register itself with the Eureka server.
-
-* **eureka.client.registerWithEureka**
-    The inbuilt client will try to fetch the Eureka registry if we configure this property as true.
-
-* **eureka.client.serviceUrl.defaultZone**
-    A fallback value that provides the Eureka service URL for any client that does not express a preference (in other words, it is a useful default).
-
-More information about the other Eureka parameters can be found in the [Spring Cloud Netflix Eureka documentation](https://cloud.spring.io/spring-cloud-netflix/multi/multi__service_discovery_eureka_clients.html).
+3. Restart Zowe&trade.

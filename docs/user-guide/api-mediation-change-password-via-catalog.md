@@ -15,4 +15,4 @@ After you repeat the new password, you are able to request the change again. The
 
 Once you successfully change the password, you are informed with a green pop-up message indicating `Your mainframe password was successfully changed`. You can now use the new password for authentication.
 
-For more information about the password change REST API available on the API Gateway service, see [Advanced Gateway features configuration](../user-guide/api-mediation/api-gateway-configuration.md).
+For more information about the password change REST API available on the API Gateway service, see [API Gateway REST APIs](../user-guide/api-mediation/api-gateway-rest-apis-documentation.md).
