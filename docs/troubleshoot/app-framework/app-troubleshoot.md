@@ -230,15 +230,19 @@ Add the Zowe Desktop directory path to the `MVD_DESKTOP_DIR` environment variabl
 
 If you see one or more of the following in the logs,
 
-* ZWED0148E - Exception thrown when reading SAF keyring, e= Error: R_datalib call failed: function code: 01, SAF rc: `number`, RACF rc: `number`, RACF rsn: `number`
+
+- ZWED0148E - Exception thrown when reading SAF keyring, e= Error: R_datalib call failed: function code: 01, SAF rc: `number`, RACF rc: `number`, RACF rsn: `number`
+
 
 * java.io.IOException: R_datalib (IRRSDL00) error: profile for ring not found (`number`, `number`, `number`)
 
+
 Then the cause is due to keyring configuration.
 You may also see the log message
-* ZWES1060W Failed to init TLS environment, rc=1(Handle is not valid)
 
-But this log message can have other causes too, such as lack of READ permission to resources in the CRYPTOZ class.
+`ZWES1060W Failed to init TLS environment, rc=1(Handle is not valid)`
+
+ **Note:** This log message can have other causes too, such as lack of READ permission to resources in the CRYPTOZ class.
 
 **Solution:**
 
