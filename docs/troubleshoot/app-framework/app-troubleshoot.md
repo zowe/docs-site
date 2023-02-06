@@ -223,17 +223,33 @@ Add the Zowe Desktop directory path to the `MVD_DESKTOP_DIR` environment variabl
   set MVD_DESKTOP_DIR=<zlux-root-dir>/zlux-app-manager/virtual-desktop
   ```
 
+
 ## Error: Exception thrown when reading SAF keyring {ZWED0148E}
 
 **Symptom:**
-The error message indicates that Zowe's local certificate authority (local CA) `ZoweCert`, the certificate `jwtsecret`, or the Zowe certificate `localhost` does not exist in the Zowe keyring. ZWED0148E contains the following messages.
+
+If you see one or more of the following in the logs,
+
+* ZWED0148E - Exception thrown when reading SAF keyring, e= Error: R_datalib call failed: function code: 01, SAF rc: `number`, RACF rc: `number`, RACF rsn: `number`
+
+* java.io.IOException: R_datalib (IRRSDL00) error: profile for ring not found (`number`, `number`, `number`)
+
+Then the cause is due to keyring configuration.
+You may also see the log message
+* ZWES1060W Failed to init TLS environment, rc=1(Handle is not valid)
+
+But this log message can have other causes too, such as lack of READ permission to resources in the CRYPTOZ class.
+
+**Solution:**
+
+Refer to table 2 (DataGetFirst) of the [Return and Reason Codes](https://www.ibm.com/docs/en/zos/2.5.0?topic=library-return-reason-codes) to decide the problem you are facing.
+Then, check your keyring (such as with a LISTRING command) and your zowe configuration file's `zowe.certificate` section to spot and resolve the issue.
+For example, if ZWED0148E contains the following message, it indicates that Zowe's local certificate authority (local CA) `ZoweCert`, the certificate `jwtsecret`, or the Zowe certificate `localhost` does not exist in the Zowe keyring. 
 
 ```
 2021-01-18 10:16:33.601 <ZWED:16847011> ZWESVUSR WARN (_zsf.bootstrap,webserver.js:156) ZWED0148E - Exception thrown when reading SAF keyring, e= TypeError: R_datalib call failed: function code: 01, SAF rc: 8, RACF rc: 8, RACF rsn: 44
 at Object.getPemEncodedData (/software/zowev15/1.15.0/components/app-server/share/zlux-server-framework/node_modules/keyring_js/index.js:21:26)
 ```
-
-**Solution:**
 
 Zowe's local CA certificate has its default name `ZoweCert`, and the Zowe Desktop hardcodes this certificate in the configuration scripts.
 
@@ -261,27 +277,6 @@ If you are using Zowe's local CA certificate but it still reports **ZWED0148E**,
 ```
 
 In this case, you must make sure that the label names exactly match the names in TSO when looking up the keyring you own. Any difference in spaces, capitalization, or other places will cause the error.
-
-## Error: Exception thrown when reading SAF keyring {ZWED0148E}
-
-**Symptom:**
-If you see one or more of the following in the logs,
-
-* ZWED0148E - Exception thrown when reading SAF keyring, e= Error: R_datalib call failed: function code: 01, SAF rc: `number`, RACF rc: `number`, RACF rsn: `number`
-
-* java.io.IOException: R_datalib (IRRSDL00) error: profile for ring not found (`number`, `number`, `number`)
-
-Then the cause is due to keyring configuration.
-You may also see the log message
-* ZWES1060W Failed to init TLS environment, rc=1(Handle is not valid)
-
-But this log message can have other causes too, such as lack of READ permission to resources in the CRYPTOZ class.
-
-**Solution:**
-
-Refer to table 2 (DataGetFirst) of the [Return and Reason Codes](https://www.ibm.com/docs/en/zos/2.5.0?topic=library-return-reason-codes) to decide the problem you are facing.
-Then, check your keyring (such as with a LISTRING command) and your zowe configuration file's `zowe.certificate` section to spot and resolve the issue.
-
 ## Warning: Problem making eureka request { Error: connect ECONNREFUSED }
 
 **Symptom:** 
