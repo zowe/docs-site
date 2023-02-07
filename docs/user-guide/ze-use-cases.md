@@ -1,8 +1,5 @@
 # Sample Use Cases
 
-[![codecov](https://codecov.io/gh/zowe/vscode-extension-for-zowe/branch/main/graph/badge.svg)](https://codecov.io/gh/zowe/vscode-extension-for-zowe)
-[![slack](https://img.shields.io/badge/chat-on%20Slack-blue)](https://app.slack.com/client/T1BAJVCTY/CUVE37Z5F)
-
 The following use cases demonstrate the various functionalities available in Zowe Explorer.
 
 ## Working with Data Sets

@@ -1,8 +1,5 @@
 # Troubleshooting Zowe Explorer
 
-[![codecov](https://codecov.io/gh/zowe/vscode-extension-for-zowe/branch/main/graph/badge.svg)](https://codecov.io/gh/zowe/vscode-extension-for-zowe)
-[![slack](https://img.shields.io/badge/chat-on%20Slack-blue)](https://app.slack.com/client/T1BAJVCTY/CUVE37Z5F)
-
 As a Zowe Explorer user, you may encounter problems when using Visual Studio Code extension functions. Review Zowe Explorer known issues and troubleshooting solutions here.
 
 ## Before reaching out for support

@@ -1,7 +1,5 @@
 # Information Roadmap for Zowe Explorer
 
-[![codecov](https://codecov.io/gh/zowe/vscode-extension-for-zowe/branch/main/graph/badge.svg)](https://codecov.io/gh/zowe/vscode-extension-for-zowe) [![slack](https://img.shields.io/badge/chat-on%20Slack-blue)](https://app.slack.com/client/T1BAJVCTY/CUVE37Z5F)
-
 This roadmap outlines the information resources that are applicable to the users who are interested in Zowe Explorer. These resources provide information about various subject areas, such as learning basic skills, installation, developing, and troubleshooting for Zowe Explorer.
 
 The following definition of skill levels about Zowe Explorer helps you find the most relevant resources:

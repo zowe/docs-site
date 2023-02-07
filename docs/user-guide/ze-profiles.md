@@ -1,8 +1,5 @@
 # Zowe Explorer profiles
 
-[![codecov](https://codecov.io/gh/zowe/vscode-extension-for-zowe/branch/main/graph/badge.svg)](https://codecov.io/gh/zowe/vscode-extension-for-zowe)
-[![slack](https://img.shields.io/badge/chat-on%20Slack-blue)](https://app.slack.com/client/T1BAJVCTY/CUVE37Z5F)
-
 After you install Zowe Explorer, you need to have a Zowe Explorer profile to use all functions of the extension.
 
 **Note:** You can continue using Zowe V1 profiles with Zowe Explorer V2. 
