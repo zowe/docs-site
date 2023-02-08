@@ -32,7 +32,7 @@ The following `zowe.yaml` example will generate:
 
 ```
 zowe
-  init
+  setup
     certificate:
       # Type of certificate storage. Valid values are: PKCS12 or JCERACFKS
       type: JCERACFKS
@@ -82,7 +82,7 @@ zowe
   certificate:
     keystore:
       alias: localhost
-      password:
+      password: 'password'
       file: safkeyring:////ZWESVUSR/ZoweKeyring
       type: JCERACFKS
     truststore:
