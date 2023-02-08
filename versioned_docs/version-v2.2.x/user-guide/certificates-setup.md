@@ -15,7 +15,7 @@ You can use four z/OSMF workflows that enable you to manage keyring setup, certi
 
     The workflow includes the steps that you can see on the following image:
 
-    <img src="../images/configure/workflow-one.jpg" alt="Workflow ZWEKRING" style="height: 300px; width:500px;"/> <br />
+    ![Workflow ZWEKRING](../images/configure/workflow-one.jpg)
 
      Based on the variable setup from the first step, the workflow can perform various certificate configurations and connect certificates to a keyring in RACF, TSS, and ACF2 security systems.
 
@@ -33,7 +33,7 @@ You can use four z/OSMF workflows that enable you to manage keyring setup, certi
 
     The workflow includes the steps that you can see on the following image:
 
-    <img src="../images/configure/workflow-two.jpg" alt="Workflow ZWECRECR" style="height: 450px; width:500px;"/> <br />
+    ![Workflow ZWECRECR](../images/configure/workflow-two.jpg)
 
    **Note:** You can find links to the specific security systems (BCM, IBM) official documentation in the instructions section of the workflow in related steps.
 
@@ -45,14 +45,14 @@ You can use four z/OSMF workflows that enable you to manage keyring setup, certi
 
     The workflow includes the steps that you can see on the following image:
 
-    <img src="../images/configure/workflow-threeB.jpg" alt="Workflow ZWESIGNC" style="height: 150px; width:500px;"/> <br />
+    ![Workflow ZWESIGNC](../images/configure/workflow-threeB.jpg)
 
     Fill in the fields, that you can see on the following image, to sign a CSR request. Ensure that the workflow includes the following information:
 
     - A USS location path of the CSR file
     - A USS location path where a signed certificate is stored in pem format
 
-    <img src="../images/configure/workflow-parameters.jpg" alt="Workflow Parameters" style="height: 400px; width:500px;"/> <br />
+     ![Workflow Parameters](../images/configure/workflow-parameters.jpg)
 
 4. Load the Signed Client Authentication Certificate into ESM using ZWELOADC.xml
 
@@ -62,4 +62,4 @@ You can use four z/OSMF workflows that enable you to manage keyring setup, certi
 
    The workflow includes the steps that you can see on the following image:
 
-   <img src="../images/configure/workflow-four.jpg" alt="Workflow ZWELOADC" style="height: 450px; width:500px;"/> <br />
+      ![Workflow ZWELOADC](../images/configure/workflow-four.jpg)
