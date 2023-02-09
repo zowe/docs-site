@@ -623,6 +623,13 @@ module.exports = {
         "troubleshoot/cli/zosmf-cli",
         "troubleshoot/cli/known-cli",
         "troubleshoot/cli/cli-issue",
+        {
+          type: "category",
+          label: "Zowe CLI Plug-ins",
+          items: [
+            "troubleshoot/cli/troubleshoot-cli-plugins"
+          ],
+        }
       ],
     },
     {
