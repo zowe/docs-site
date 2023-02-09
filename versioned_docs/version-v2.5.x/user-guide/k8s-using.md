@@ -81,11 +81,3 @@ If you want to permanently remove a component, you can delete the component `Dep
 ```
 kubectl delete -n zowe deployment jobs-api
 ```
-
-## Known limitations
-
-Zowe v2.5.x LTS has some known limitations, see details below. 
-
-* You may encounter an issue that some plugins are not showing up in Zowe Desktop. You can click the **Refresh Applications** button in the Desktop start menu.
-* You may encounter an issue that some services are not showing up in Zowe API Catalog. You can click the **Refresh Static APIs**button in the top right corner of API Catalog web page.
-* `useConfigmgr` is disabled within containers, so yaml schema validation is not yet supported.
