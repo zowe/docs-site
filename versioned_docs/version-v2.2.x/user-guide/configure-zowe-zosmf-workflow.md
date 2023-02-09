@@ -90,7 +90,7 @@ You can use the following methods to execute the configuration workflow:
 
 In the PSWI deployment phase, you are presented with the checklist that helps guide you during the deployment process.
 
-<img src="../images/zosmf/perform-workflows.png" alt="Workflow ZWECRECR" style="height: 300px; width:500px;"/> <br />
+![Workflow ZWECRECR](../images/zosmf/perform-workflows.jpg)
 
 The **perform workflows** step enables you to run either all attached workflows or just the mandatory one — the post-deployment workflow for mounting.
 
