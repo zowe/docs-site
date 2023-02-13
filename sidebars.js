@@ -344,6 +344,13 @@ module.exports = {
         "user-guide/api-mediation/using-api-mediation-layer",
         {
           type: "category",
+          label: "Information Roadmap for Zowe API Mediation Layer",
+          items: [
+            "getting-started/user-roadmap-apiml",
+          ],
+        },
+        {
+          type: "category",
           label: "Using API Catalog",
           items: [
             "user-guide/api-mediation-view-service-information-and-api-doc",
