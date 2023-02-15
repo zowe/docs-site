@@ -2,218 +2,323 @@
 Before you begin this tutorial, complete the [Extending an existing plug-in](cli-extending-a-plugin.md) tutorial.
 
 ## Overview
-This tutorial demonstrates how to create a brand new Zowe&trade; CLI plug-in that uses Zowe CLI Node.js programmatic APIs.
+The advantage of Zowe CLI and of the CLI approach in mainframe development is that it allows for combining different developer tools for new and interesting uses.
 
-At the end of this tutorial, you will have created a data set diff utility plug-in for Zowe CLI, from which you can pipe
-your plugin's output to a third-party utility for a side-by-side diff of data set member contents.
+This tutorial demonstrates how to create a brand new Zowe CLI plug-in that uses Node.js to create client-side APIs.
 
-![Side by Side Diff](../../images/guides/CLI/htmlDiff.png)
+After following all the steps, you will have created a data set diff utility plug-in called **Files Util Plug-in**. The plug-in provides an output that can be sent to a third-party utility to display easy-to-read side-by-side diffs of data set member contents, as shown in the image at the [bottom of this page](../extend-cli/cli-developing-a-plugin#bringing-together-new-tools).
 
-Completed source for this tutorial can be found on the `develop-a-plugin` branch of the zowe-cli-sample-plugin repository.
+The completed source for this tutorial can be found on the `develop-a-plugin` branch of the [zowe-cli-sample-plugin repository](https://github.com/zowe/zowe-cli-sample-plugin).
 
-### Cloning the sample plug-in source
- Clone the sample repo, delete the irrelevant source, and create a brand new plug-in. Follow these steps:
+If you are ready to create your own unique Zowe CLI plug-in, refer to the notes below each tutorial step for guidance.
 
-1. `cd` into your `zowe-tutorial` folder
-2. `git clone https://github.com/zowe/zowe-cli-sample-plugin files-util`
-3. `cd files-util`
-4. Delete the `.git` (hidden) folder.
-5. Delete all content within the `src/api`, `src/cli`, and `docs` folders.
-6. Delete all content within the `__tests__/__system__/api`, `__tests__/__system__/cli`, `__tests__/api`, and `__tests__/cli` folders
-7. `git init`
-8. `git add .`
-9. `git commit -m "initial"`
+## Setting up the new sample plug-in project
+ Download the sample plug-in source and delete the irrelevant folders to set up your plug-in project.
+ 
+ Follow these steps:
 
-### Changing package.json
-Use a unique `npm` name for your plugin. Change `package.json` name field as follows:
+1. Open a terminal and run the command `mkdir zowe-tutorial`.
+    
+    **Note:** All the files created through this tutorial are saved in this tutorial directory.
+2. Enter `cd` to change directory into your `zowe-tutorial` folder.
+3. Download the [source code zip file](https://github.com/zowe/zowe-cli-sample-plugin/archive/refs/heads/master.zip) from the Zowe CLI sample plug-in repository.
+4. In your File Explorer, extract the zip file to the  `zowe-tutorial` folder.
+5. Rename the `zowe-cli-sample-plugin-master` directory to `files-util`.
+    
+    This is the project directory used throughout the rest of this tutorial. 
+6. Delete all content within the following folders:
+    - `src/api`
+    - `src/cli`
+    - `docs` folders
+    - `__tests__/__system__/api`
+    - `__tests__/__system__/cli`
+    -  `__tests__/api`
+    - `__tests__/cli`
+7. Return to your terminal and run `cd files-util` to enter the project directory.
+8. Enter `git init` to set up a new Git repository.
+9. Enter `git add --all` to *stage* (track) all files in the current directory with Git.
+
+10. Enter `git commit --message "Initial commit"` to create a snapshot of the staged files in your repository.
+11. Run `npm install` to install third-party dependencies defined in the `package.json` file of your Node.js project.
+
+**To create a unique plug-in:** **[what can we advise here?]**
+
+## Updating package.json
+
+Change the name property in the `package.json` file to the plug-in name.
+
+Open the `package.json` file in a text editor and replace the name field with the following information:
 
 ```typescript
   "name": "@zowe/files-util",
 ```
 
-Issue the command `npm install` against the local repository.
+This tutorial uses `@zowe/files-util` as the tutorial plug-in name.
 
-### Adjusting Imperative CLI Framework configuration
-Change `imperative.ts` to contain the following:
+**To create a unique plug-in:** Replace `@zowe/files-util` with a unique plug-in name. This allows you to publish the plug-in under that name to the `npm` registry in the future.
+
+## Adjusting Imperative CLI Framework configuration
+Define json configurations for the plug-in to Imperative.
+
+Change the `src/imperative.ts` file to contain the following configurations:
+
 ```typescript
 import { IImperativeConfig } from "@zowe/imperative";
 
 const config: IImperativeConfig = {
     commandModuleGlobs: ["**/cli/*/*.definition!(.d).*s"],
     rootCommandDescription: "Files utility plugin for Zowe CLI",
-    envVariablePrefix: "FILES_UTIL_PLUGIN",
-    defaultHome: "~/.files_util_plugin",
     productDisplayName: "Files Util Plugin",
     name: "files-util"
 };
 
 export = config;
 ```
-Here we adjusted the description and other fields in the `imperative` JSON configuration to be relevant to this plug-in.
 
-### Adding third-party packages
+## Adding third-party packages
+Install third-party packages as dependencies for the plug-in's client-side API.
 
-We'll use the following packages to create a programmatic API:
+ Follow these steps:
 
-- `npm install --save diff`
-- `npm install -D @types/diff`
+1. Run `npm install --save-exact diff` to install the diff package (which includes methods for comparing text).
 
+2. Run `npm install --save-dev @types/diff` to install the typescript type definitions for the diff package as a [development dependency](https://docs.npmjs.com/specifying-dependencies-and-devdependencies-in-a-package-json-file).
 
-### Creating a Node.js programmatic API
-In `files-util/src/api`, create a file named `DataSetDiff.ts`. The content of `DataSetDiff.ts` should be the following:
-```typescript
-import { AbstractSession } from "@zowe/imperative";
-import { Download, IDownloadOptions, IZosFilesResponse } from "@zowe/cli";
-import * as diff from "diff";
-import { readFileSync } from "fs";
+    When commands are successful, the `diff` and `@types/diff` packages are added to the dependency list in the `package.json` file.
 
-export class DataSetDiff {
+**To create a unique plug-in:** **[what can we advise here?]**
 
-    public static async diff(session: AbstractSession, oldDataSet: string, newDataSet: string) {
+## Creating a Node.js client-side API
+Create a client-side API that compares the contents of two data sets on the mainframe. 
 
-        let error;
-        let response: IZosFilesResponse;
+Follow these steps:
 
-        const options: IDownloadOptions = {
-            extension: "dat",
-        };
+1. In the `src/api` directory, create a file named `DataSetDiff.ts`. 
 
-        try {
-            response = await Download.dataSet(session, oldDataSet, options);
-        } catch (err) {
-            error = "oldDataSet: " + err;
-            throw error;
+2. Copy and paste the following code into the `DataSetDiff.ts` file:
+
+    ```typescript
+    import { AbstractSession } from "@zowe/imperative";
+    import { Download, IDownloadOptions, IZosFilesResponse } from "@zowe/cli";
+    import * as diff from "diff";
+    import { readFileSync } from "fs";
+
+    export class DataSetDiff {
+
+        public static async diff(session: AbstractSession, oldDataSet: string, newDataSet: string) {
+
+            let error;
+            let response: IZosFilesResponse;
+
+            const options: IDownloadOptions = {
+                extension: "dat",
+            };
+
+            try {
+                response = await Download.dataSet(session, oldDataSet, options);
+            } catch (err) {
+                error = "oldDataSet: " + err;
+                throw error;
+            }
+
+            try {
+                response = await Download.dataSet(session, newDataSet, options);
+            } catch (err) {
+                error = "newDataSet: " + err;
+                throw error;
+            }
+
+            const regex = /\.|\(/gi; // Replace . and ( with /
+            const regex2 = /\)/gi;   // Replace ) with .
+
+            // convert the old data set name to use as a path/file
+            let file = oldDataSet.replace(regex, "/");
+            file = file.replace(regex2, ".") + "dat";
+            // Load the downloaded contents of 'oldDataSet'
+            const oldContent = readFileSync(`${file}`).toString();
+
+            // convert the new data set name to use as a path/file
+            file = newDataSet.replace(regex, "/");
+            file = file.replace(regex2, ".") + "dat";
+            // Load the downloaded contents of 'oldDataSet'
+            const newContent = readFileSync(`${file}`).toString();
+
+            return diff.createTwoFilesPatch(oldDataSet, newDataSet, oldContent, newContent, "Old", "New");
         }
+    }
+    ```
 
-        try {
-            response = await Download.dataSet(session, newDataSet, options);
-        } catch (err) {
-            error = "newDataSet: " + err;
-            throw error;
+3. In the `src` directory, add the following code to the end of the `index.ts` file to make the API available for other developers to import:
+
+    ```typescript
+    export * from "./api/DataSetDiff";
+    ```
+
+**To create a unique plug-in:** **[what can we advise here?]**
+
+## Building your plug-in source
+
+Confirm that your project builds successfully.
+
+Follow these steps:
+
+1. In the terminal, run `npm run build` to verify there are no errors.
+
+    This command builds your typescript files into javascript files for your plug-in in the `lib` directory.
+
+2. If you come across linting errors, run `npm run lint -- --fix` to resolve the errors automatically.
+
+**To create a unique plug-in:** **[what can we advise here?]**
+
+## Creating a Zowe CLI command
+Define the command that calls the client-side API.
+
+Follow these steps:
+
+1. In `src/cli`, create a folder named `diff`. 
+2. In the `diff` directory, create a file named `Diff.definition.ts`. 
+3. Copy and paste the following code into the `Diff.definition.ts` file:
+
+
+    ```typescript
+    import { ICommandDefinition } from "@zowe/imperative";
+    import { DataSetsDefinition } from "./data-sets/DataSets.definition";
+    const IssueDefinition: ICommandDefinition = {
+        name: "diff",
+        summary: "Diff two data sets content",
+        description: "Uses open source diff packages to diff two data sets content",
+        type: "group",
+        children: [DataSetsDefinition]
+    };
+
+    export = IssueDefinition;
+    ```
+
+4. In the `diff` folder, create a folder named `data-sets`. 
+5. In the `data-sets` folder, create the following two files: 
+    - `DataSets.definition.ts`
+    - `DataSets.handler.ts`
+
+6. Copy and paste the following code into the `DataSets.definition.ts` file:
+    ```typescript
+    import { ICommandDefinition } from "@zowe/imperative";
+
+    export const DataSetsDefinition: ICommandDefinition = {
+        name: "data-sets",
+        aliases: ["ds"],
+        summary: "data sets to diff",
+        description: "diff the first data set with the second",
+        type: "command",
+        handler: __dirname + "/DataSets.handler",
+        positionals: [
+            {
+                name: "oldDataSet",
+                description: "The old data set",
+                type: "string"
+            },
+            {
+                name: "newDataSet",
+                description: "The new data set",
+                type: "string"
+            }
+        ],
+        profile: {
+            required: ["zosmf"]
         }
+    };
+    ```
 
-        const regex = /\.|\(/gi; // Replace . and ( with /
-        const regex2 = /\)/gi;   // Replace ) with .
+7. Copy and paste the following code into the `DataSets.handler.ts` file:
+    ```typescript
+    import { ConnectionPropsForSessCfg, ICommandHandler, IHandlerParameters, ISession, Session } from "@zowe/imperative";
+    import { DataSetDiff } from "../../../api/DataSetDiff";
 
-        // convert the old data set name to use as a path/file
-        let file = oldDataSet.replace(regex, "/");
-        file = file.replace(regex2, ".") + "dat";
-        // Load the downloaded contents of 'oldDataSet'
-        const oldContent = readFileSync(`${file}`).toString();
+    export default class DataSetsDiffHandler implements ICommandHandler {
+        public async process(params: IHandlerParameters): Promise<void> {
+            const sessCfg: ISession = {
+                hostname: params.arguments.host,
+                port: params.arguments.port,
+                basePath: params.arguments.basePath,
+                rejectUnauthorized: params.arguments.rejectUnauthorized,
+                protocol: params.arguments.protocol || "https"
+            };
+            const sessCfgWithCreds = await ConnectionPropsForSessCfg.   addPropsOrPrompt<ISession>(sessCfg, params.arguments,
+                { doPrompting: true, parms: params });
+            const session = new Session(sessCfgWithCreds);
 
-        // convert the new data set name to use as a path/file
-        file = newDataSet.replace(regex, "/");
-        file = file.replace(regex2, ".") + "dat";
-        // Load the downloaded contents of 'oldDataSet'
-        const newContent = readFileSync(`${file}`).toString();
-
-        return diff.createTwoFilesPatch(oldDataSet, newDataSet, oldContent, newContent, "Old", "New");
-    }
-}
-```
-
-### Exporting your API
-In `files-util/src`, change `index.ts` to contain the following:
-```typescript
-export * from "./api/DataSetDiff";
-```
-
-## Checkpoint
-At this point, you should be able to rebuild the plug-in without errors via `npm run build`. You included third party dependencies, created a programmatic API, and customized this new plug-in project. Next, you'll define the command to invoke your programmatic API.
-
-### Defining commands
-In `files-util/src/cli`, create a folder named `diff`. Within the `diff` folder, create a file `Diff.definition.ts`. Its content should be as follows:
-```typescript
-import { ICommandDefinition } from "@zowe/imperative";
-import { DataSetsDefinition } from "./data-sets/DataSets.definition";
-const IssueDefinition: ICommandDefinition = {
-    name: "diff",
-    summary: "Diff two data sets content",
-    description: "Uses open source diff packages to diff two data sets content",
-    type: "group",
-    children: [DataSetsDefinition]
-};
-
-export = IssueDefinition;
-```
-
-Also within the `diff` folder, create a folder named `data-sets`. Within the `data-sets` folder create `DataSets.definition.ts` and `DataSets.handler.ts`.
-
-`DataSets.definition.ts` should contain:
-```typescript
-import { ICommandDefinition } from "@zowe/imperative";
-
-export const DataSetsDefinition: ICommandDefinition = {
-    name: "data-sets",
-    aliases: ["ds"],
-    summary: "data sets to diff",
-    description: "diff the first data set with the second",
-    type: "command",
-    handler: __dirname + "/DataSets.handler",
-    positionals: [
-        {
-            name: "oldDataSet",
-            description: "The old data set",
-            type: "string"
-        },
-        {
-            name: "newDataSet",
-            description: "The new data set",
-            type: "string"
+            const resp = await DataSetDiff.diff(session, params.arguments.oldDataSet, params.arguments.newDataSet);
+            params.response.console.log(resp);
         }
-    ],
-    profile: {
-        required: ["zosmf"]
-    }
-};
-```
+    }    ```
 
-`DataSets.handler.ts` should contain the following:
-```typescript
-import { ICommandHandler, IHandlerParameters, TextUtils, Session } from "@zowe/imperative";
-import { DataSetDiff } from "../../../api/DataSetDiff";
 
-export default class DataSetsDiffHandler implements ICommandHandler {
-    public async process(params: IHandlerParameters): Promise<void> {
+**Note:** If you are adding multiple commands to your CLI plug-in, consider moving the code that creates a session into a base handler class that can be shared across multiple commands. See the [sample plugin code](https://github.com/zowe/zowe-cli-sample-plugin/blob/master/src/cli/list/ListBaseHandler.ts) for an example of how this can be done.
 
-        const profile = params.profiles.get("zosmf");
-        const session = new Session({
-            type: "basic",
-            hostname: profile.host,
-            port: profile.port,
-            user: profile.user,
-            password: profile.pass,
-            base64EncodedAuth: profile.auth,
-            rejectUnauthorized: profile.rejectUnauthorized,
-        });
-        const resp = await DataSetDiff.diff(session, params.arguments.oldDataSet, params.arguments.newDataSet);
-        params.response.console.log(resp);
-    }
-}
-
-```
+**To create a unique plug-in:** **[what can we advise here?]**
 
 ## Trying your command
-Be sure to build your plug-in via `npm run build`.
 
-Install your plug-in into Zowe CLI via `zowe plugins install`.
+Before you test your new command, confirm that you are able to connect to the mainframe.
 
-Issue the following command. Replace the data set names with valid mainframe data set names on your system:
+In order for the client-side API to reach the mainframe (to fetch data sets), Zowe CLI needs a z/OSMF profile for access. See [Using profiles](https://docs.zowe.org/stable/user-guide/cli-using-using-profiles/) for information. 
 
-![Pipe Output](../../images/guides/CLI/pipeOutput.png)
+Once the connection between Zowe CLI and z/OSMF is confirmed, build and install the plug-in before running it for the first time.
 
-The raw diff output is displayed as a command response:
+Follow these steps:
 
-![Raw Diff Output](../../images/guides/CLI/diffOutput.png)
+1. Repeat the steps in [Building your plug-in source](../extend-cli/cli-developing-a-plugin#building-your-plug-in-source).
+
+2. Issue the `zowe plugins install` command to install Files Util Plug-in into Zowe CLI.
+
+    A success message displays if installed correctly.
+
+3. Issue the following command (the Files Util Plug-in command) replacing the data set names with valid mainframe data set names on your system:
+
+    ```
+    zowe files-util diff data-sets "IBMUSER.REXX(TESTADD)" "IBMUSER.REXX(TESTSUB)"
+    ```
+    The raw diff output displays as a command response:
+
+    ```
+    $ zowe files-util diff data-sets "IBMUSER.REXX(TESTADD)" "IBMUSER.REXX(TESTSUB)"
+    ===================================================================
+    --- IBMUSER.REXX(TESTADD)        Old
+    +++ IBMUSER.REXX(TESTSUB)        New
+    @@ -1,6 +1,6 @@
+    /* REXX */
+    -say add(3,2)
+    +say sub(3,2)
+    exit
+    -add:
+    +sub:
+    parse arg a,b
+    -return a + b
+    +return a - b
+    ```
+
+**To create a unique plug-in:** **[what can we advise here?]**
 
 ## Bringing together new tools!
-The advantage of Zowe CLI and of the CLI approach in mainframe development is that it allows for combining different developer tools for new and interesting uses.
 
-[diff2html](https://diff2html.xyz/) is a free tool to generate HTML side-by-side diffs to help see actual differences in diff output.
+You have created a simple CLI plug-in that provides plain text diffs of two data sets. But the nature of plain text can make it difficult to identify differences, depending on the changes.
 
-Install the `diff2html` CLI via `npm install -g diff2html-cli`. Then, pipe your Zowe CL plugin's output into `diff2html` to generate diff HTML and launch a web browser that contains the content in the screen shot at the [top of this file](#overview).
+To help this, you can extend the plug-in to create a more visual output. For this tutorial, use [diff2html](https://diff2html.xyz/) to generate side-by-side diffs that make it easier to compare changes, as seen in the image below.
 
-- `zowe files-util diff data-sets "IBMUSER.work.jcl(iefbr14)" "IBMUSER.work.jcl(iefbr15)" | diff2html -i stdin`
+| ![Side by Side Diff](../../images/guides/CLI/htmlDiff2.png) |
+|:--:|
+| <b>Diff to HTML by [rtfpessoa](https://github.com/rtfpessoa)</b>|
+
+1. Run `npm install -g diff2html-cli` to install `diff2html`. 
+
+2. To pipe your Zowe CLI plug-in output to `diff2html`, run the following command with your information:
+
+    ```
+    zowe files-util diff data-sets "IBMUSER.REXX(TESTADD)" "IBMUSER.REXX(TESTSUB)" | diff2html -i stdin
+    ```
+
+    This launches a web browser that displays side-by-side diffs using HTML.
+
+**To create a unique plug-in:** **[what can we advise here?]**
 
 ## Next steps
-Try the [Implementing profiles in a plug-in](cli-implement-profiles.md) tutorial to learn about using profiles with your plug-in.
+Try the [Implementing profiles in a plug-in](cli-implement-profiles.md) tutorial to learn about defining new profiles with your plug-in.
