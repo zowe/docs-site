@@ -21,3 +21,14 @@ The Zowe containers are designed to be run together with extensions and Zowe uti
 
 - You may encounter an issue that some plugins are not showing up in Zowe Desktop. You can try `Refresh Applications` icon showing up in Desktop start menu.
 - You may encounter an issue that some services are not showing up in Zowe API Catalog. You can try `Refresh Static APIs` button showing up in top-right corner of API Catalog web page.
+- `useConfigmgr` is disabled within containers, so yaml schema validation is not yet supported.
+- Containerization 2.6.x release is still pending due to an issue related to API catalog Page not found issue, please refer to the [2.5.x documentation](../../versioned_docs/version-v2.5.x/user-guide/k8s-introduction.md).
+
+
+
+
+
+
+
+
+
