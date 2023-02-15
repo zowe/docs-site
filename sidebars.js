@@ -23,6 +23,7 @@ module.exports = {
       label: "Release notes",
       items: [
         "getting-started/release-notes/release-notes-overview",
+        "getting-started/release-notes/v2_6_1",
         "getting-started/release-notes/v2_6_0",
         "getting-started/release-notes/v2_5_0",
         "getting-started/release-notes/v2_4_0",
@@ -309,6 +310,7 @@ module.exports = {
       items: [
         "user-guide/mvd-configuration",
         "user-guide/cli-configuringcli-ev",
+        "user-guide/configure-data-sets-jobs-api",
         {
           type: "category",
           label: "API Mediation Layer",
@@ -318,6 +320,7 @@ module.exports = {
             "user-guide/api-mediation/api-gateway-configuration",
             "user-guide/api-mediation/discovery-service-configuration",
             "user-guide/api-mediation/api-mediation-internal-configuration",
+            "user-guide/api-mediation-standalone",
             "extend/extend-apiml/api-mediation-passtickets",
           ],
         },
@@ -342,6 +345,13 @@ module.exports = {
         "user-guide/api-mediation/using-api-mediation-layer",
         {
           type: "category",
+          label: "Information Roadmap for Zowe API Mediation Layer",
+          items: [
+            "getting-started/user-roadmap-apiml",
+          ],
+        },
+        {
+          type: "category",
           label: "Using API Catalog",
           items: [
             "user-guide/api-mediation-view-service-information-and-api-doc",
@@ -357,6 +367,7 @@ module.exports = {
         "extend/extend-apiml/service-information",
         "extend/extend-apiml/websocket",
         "user-guide/api-mediation/api-gateway-rest-apis-documentation",
+        "user-guide/api-mediation/api-mediation-saf-resource-checking",
         "user-guide/api-mediation/api-mediation-smf",
       ],
     },
