@@ -1,7 +1,7 @@
 # Visual Studio Code (VS Code) Extension for Zowe
 
-<img src="https://codecov.io/gh/zowe/vscode-extension-for-zowe/branch/main/graph/badge.svg" alt="codecov" scope="external"/>
-<img src="https://img.shields.io/badge/chat-on%20Slack-blue" alt="slack" scope="external"/>
+[![codecov](https://codecov.io/gh/zowe/vscode-extension-for-zowe/branch/main/graph/badge.svg)](https://codecov.io/gh/zowe/vscode-extension-for-zowe)
+[![slack](https://img.shields.io/badge/chat-on%20Slack-blue)](https://slack.openmainframeproject.org/)
 
 The Zowe Explorer extension for Visual Studio Code (VS Code) modernizes the way developers and system administrators interact with z/OS mainframes, and lets you interact with data sets, USS files, and jobs.
 
@@ -19,7 +19,7 @@ Install the extension directly to [VSCode](https://code.visualstudio.com/) to en
 Ensure that you meet the following prerequisites before you use the extension:
 
 - Get access to z/OSMF.
-- Install [Node.js](https://nodejs.org/en/download/) v8.0 or later.
+- Install [Node.js](https://nodejs.org/en/download/) v14.0 or later.
 - Install [Visual Studio Code](https://code.visualstudio.com/).
 - Configure TSO/E address space services, z/OS data set, file REST interface, and z/OS jobs REST interface. For more information, see [z/OS Requirements](https://docs.zowe.org/stable/user-guide/systemrequirements-zosmf#z-os-requirements).
 - Create a Zowe CLI `zosmf` profile so that the extension can communicate with the mainframe.
