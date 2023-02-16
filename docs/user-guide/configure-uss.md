@@ -96,7 +96,7 @@ This article describes options to customise the destination directory for all Zo
 There are three environment variables that control the directory used to place these temporary files:
 
 - `TMPDIR`: This is the main environment variable, it controls the directory used for most USS operations.
-- `TEMP_DIR`: This variable controls...
+- `TEMP_DIR`: This variable controls some installation specific files, such as the location to perform transformations on zowe.yaml.
 - `CATALINA_TMPDIR`: This variable controls the destination directory of Tomcat java servers used in some core components.
 
 #### In STC
