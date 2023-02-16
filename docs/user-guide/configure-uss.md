@@ -88,20 +88,23 @@ You can fix the storage-related issue by making one of the following changes:
 
 ## Temporary files management
 
-Zowe server components require the use of temporary files. By default, these are written to the global `/tmp` directory in the USS file system.
-This article describes options to customise the destination directory for all Zowe server components.
+Zowe server components require the use of temporary files. By default, these temporary files are written to the global `/tmp` directory in the USS file system.
+This section describes options to customize the destination directory for all Zowe server components.
 
 ### How to customize
 
 There are three environment variables that control the directory used to place these temporary files:
 
-- `TMPDIR`: This is the main environment variable, it controls the directory used for most USS operations.
-- `TEMP_DIR`: This variable controls some installation specific files, such as the location to perform transformations on zowe.yaml.
-- `CATALINA_TMPDIR`: This variable controls the destination directory of Tomcat java servers used in some core components.
+- **`TMPDIR`**  
+ This is the main environment variable, it controls the directory used for most USS operations.
+- **`TEMP_DIR`**  
+ This variable controls some installation specific files, such as the location to perform transformations on zowe.yaml.
+- **`CATALINA_TMPDIR`**  
+ This variable controls the destination directory of Tomcat java servers used in some core components.
 
 #### In STC
 
-Global environment variables can be customised directly in the Zowe STC, `zowe.setup.security.stcs.zowe` in `zowe.yaml` is the Zowe started task name. Default value is `ZWESLSTC`.
+Global environment variables can be customized directly in the Zowe STC, `zowe.setup.security.stcs.zowe` in `zowe.yaml` is the Zowe started task name. The default value is `ZWESLSTC`.
 
 To add environment variables, follow these steps:
 
@@ -109,15 +112,18 @@ To add environment variables, follow these steps:
 
 2. Find STDENV DD inline statements
 
-3. Add a new line for each environment variable, for example:
+3. Add a new line for each environment variable.  
+**Example:**
   
-  ```text
-  TMPDIR=<path to directory>
-  ```
+   ```text
+   TMPDIR=<path to directory>
+   ```
 
 #### In zowe.yaml
 
-Edit your installation `zowe.yaml` file and add values under property `zowe.environments`. For example:
+Edit your installation `zowe.yaml` file and add values under property `zowe.environments`. 
+
+**Example:**
 
 ```yaml
 zowe:
@@ -127,4 +133,4 @@ zowe:
    CATALINA_TMPDIR: <path to directory>
 ```
 
-**Note:** If the variable is defined in both, the definition from `zowe.yaml` has priority.
+**Note:** If the variable is defined in both the `zowe.yaml` and the STC member, the definition from `zowe.yaml` has priority.
