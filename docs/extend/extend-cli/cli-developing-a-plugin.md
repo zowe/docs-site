@@ -4,23 +4,23 @@ Before you begin this tutorial, complete the [Extending an existing plug-in](cli
 ## Overview
 The advantage of Zowe CLI and of the CLI approach in mainframe development is that it allows for combining different developer tools for new and interesting uses.
 
-This tutorial demonstrates how to create a brand new Zowe CLI plug-in that uses Node.js to create client-side APIs.
+This tutorial demonstrates how to create a brand new Zowe CLI plug-in that uses Node.js to create a client-side API.
 
 After following all the steps, you will have created a data set diff utility plug-in called **Files Util Plug-in**. The plug-in provides an output that can be sent to a third-party utility to display easy-to-read side-by-side diffs of data set member contents, as shown in the image at the [bottom of this page](../extend-cli/cli-developing-a-plugin#bringing-together-new-tools).
 
 The completed source for this tutorial can be found on the `develop-a-plugin` branch of the [zowe-cli-sample-plugin repository](https://github.com/zowe/zowe-cli-sample-plugin).
 
-If you are ready to create your own unique Zowe CLI plug-in, refer to the notes below each tutorial step for guidance.
+**Note:** If you are ready to create your own unique Zowe CLI plug-in, refer to the notes below each tutorial step for guidance.
 
 ## Setting up the new sample plug-in project
- Download the sample plug-in source and delete the irrelevant folders to set up your plug-in project.
+ Download the sample plug-in source and delete the irrelevant content to set up your plug-in project.
  
  Follow these steps:
 
 1. Open a terminal and run the command `mkdir zowe-tutorial`.
     
     **Note:** All the files created through this tutorial are saved in this tutorial directory.
-2. Enter `cd` to change directory into your `zowe-tutorial` folder.
+2. Enter `cd zowe-tutorial` to change directory into your `zowe-tutorial` folder.
 3. Download the [source code zip file](https://github.com/zowe/zowe-cli-sample-plugin/archive/refs/heads/master.zip) from the Zowe CLI sample plug-in repository.
 4. In your File Explorer, extract the zip file to the  `zowe-tutorial` folder.
 5. Rename the `zowe-cli-sample-plugin-master` directory to `files-util`.
@@ -38,12 +38,14 @@ If you are ready to create your own unique Zowe CLI plug-in, refer to the notes 
 8. Enter `git init` to set up a new Git repository.
 9. Enter `git add --all` to *stage* (track) all files in the current directory with Git.
 
-10. Enter `git commit --message "Initial commit"` to create a snapshot of the staged files in your repository.
+10. Enter `git commit --message "Initial commit"` to save a snapshot of the staged files in your repository.
 11. Run `npm install` to install third-party dependencies defined in the `package.json` file of your Node.js project.
 
-**To create a unique plug-in:** **[what can we advise here?]**
+    When successful, **[WHAT IS THE USER SUPPOSED TO SEE?]**.
 
-## Updating package.json
+**To create a unique plug-in:** Change the `files-util` directory to a name applicable for your project.
+
+## Updating `package.json`
 
 Change the name property in the `package.json` file to the plug-in name.
 
@@ -75,6 +77,10 @@ const config: IImperativeConfig = {
 export = config;
 ```
 
+When successful, **[WHAT IS THE USER SUPPOSED TO SEE?]**.
+
+**To create a unique plug-in:** **[what do we advise here?]**
+
 ## Adding third-party packages
 Install third-party packages as dependencies for the plug-in's client-side API.
 
@@ -84,12 +90,12 @@ Install third-party packages as dependencies for the plug-in's client-side API.
 
 2. Run `npm install --save-dev @types/diff` to install the typescript type definitions for the diff package as a [development dependency](https://docs.npmjs.com/specifying-dependencies-and-devdependencies-in-a-package-json-file).
 
-    When commands are successful, the `diff` and `@types/diff` packages are added to the dependency list in the `package.json` file.
+    When successful, the `diff` and `@types/diff` packages are added to the dependency list in the `package.json` file.
 
-**To create a unique plug-in:** **[what can we advise here?]**
+**To create a unique plug-in:** Instead of the `diff` package, install the package(s) that are required for your API, if any.
 
 ## Creating a Node.js client-side API
-Create a client-side API that compares the contents of two data sets on the mainframe. 
+Create a client-side API that compares the contents of two data sets on the mainframe.
 
 Follow these steps:
 
@@ -154,7 +160,9 @@ Follow these steps:
     export * from "./api/DataSetDiff";
     ```
 
-**To create a unique plug-in:** **[what can we advise here?]**
+    When successful, **[WHAT IS THE USER SUPPOSED TO SEE?]**.
+
+**To create a unique plug-in:** The file name and code in Step 2 may be entirely different if you want to implement an API to do something else.
 
 ## Building your plug-in source
 
@@ -168,17 +176,18 @@ Follow these steps:
 
 2. If you come across linting errors, run `npm run lint -- --fix` to resolve the errors automatically.
 
-**To create a unique plug-in:** **[what can we advise here?]**
+    When successful, no errors are returned and the `lib` directory contains the built javascript files.
+
+**To create a unique plug-in:** Follow these same steps.
 
 ## Creating a Zowe CLI command
 Define the command that calls the client-side API.
 
 Follow these steps:
 
-1. In `src/cli`, create a folder named `diff`. 
-2. In the `diff` directory, create a file named `Diff.definition.ts`. 
+1. In `src/cli`, create a folder named `diff`.
+2. In the `diff` directory, create a file named `Diff.definition.ts`.
 3. Copy and paste the following code into the `Diff.definition.ts` file:
-
 
     ```typescript
     import { ICommandDefinition } from "@zowe/imperative";
@@ -249,12 +258,13 @@ Follow these steps:
             const resp = await DataSetDiff.diff(session, params.arguments.oldDataSet, params.arguments.newDataSet);
             params.response.console.log(resp);
         }
-    }    ```
-
+    }    
+    ```
+    When successful, **[WHAT IS THE USER SUPPOSED TO SEE?]**.
 
 **Note:** If you are adding multiple commands to your CLI plug-in, consider moving the code that creates a session into a base handler class that can be shared across multiple commands. See the [sample plugin code](https://github.com/zowe/zowe-cli-sample-plugin/blob/master/src/cli/list/ListBaseHandler.ts) for an example of how this can be done.
 
-**To create a unique plug-in:** **[what can we advise here?]**
+**To create a unique plug-in:** Refer to file names specific to your project. Your code likely follows the same structure, but the command names, descriptions, and options would differ.
 
 ## Trying your command
 
@@ -296,19 +306,25 @@ Follow these steps:
     +return a - b
     ```
 
-**To create a unique plug-in:** **[what can we advise here?]**
+    When successful, the output displays plain text diffs of the entered data sets.
+
+**To create a unique plug-in:** Use Step 3 to run your new command.
 
 ## Bringing together new tools!
 
-You have created a simple CLI plug-in that provides plain text diffs of two data sets. But the nature of plain text can make it difficult to identify differences, depending on the changes.
+You have created a simple CLI plug-in that provides plain text diffs of two data sets. But you may not want to end there.
 
-To help this, you can extend the plug-in to create a more visual output. For this tutorial, use [diff2html](https://diff2html.xyz/) to generate side-by-side diffs that make it easier to compare changes, as seen in the image below.
+Depending on the complexity of your changes, it can be difficult to identify data set differences with plain text.
+
+To help this, you can extend Files Util Plug-in to create a more visual output. For this tutorial, use [diff2html](https://diff2html.xyz/) to generate side-by-side diffs that make it easier to compare changes, as seen in the image below.
 
 | ![Side by Side Diff](../../images/guides/CLI/htmlDiff2.png) |
 |:--:|
 | <b>Diff to HTML by [rtfpessoa](https://github.com/rtfpessoa)</b>|
 
-1. Run `npm install -g diff2html-cli` to install `diff2html`. 
+Follow these steps:
+
+1. Run `npm install -g diff2html-cli` to install `diff2html`.
 
 2. To pipe your Zowe CLI plug-in output to `diff2html`, run the following command with your information:
 
@@ -316,9 +332,9 @@ To help this, you can extend the plug-in to create a more visual output. For thi
     zowe files-util diff data-sets "IBMUSER.REXX(TESTADD)" "IBMUSER.REXX(TESTSUB)" | diff2html -i stdin
     ```
 
-    This launches a web browser that displays side-by-side diffs using HTML.
+    When successful, this launches a web browser that displays side-by-side diffs using HTML.
 
-**To create a unique plug-in:** **[what can we advise here?]**
+For a unique plug-in, consider integrating with more modern tools that make outputs easier to read or manage, or that can use outputs in scripts.
 
 ## Next steps
 Try the [Implementing profiles in a plug-in](cli-implement-profiles.md) tutorial to learn about defining new profiles with your plug-in.
