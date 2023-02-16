@@ -115,7 +115,7 @@ The terminal connection can be customized per-user and saved for future sessions
 The API Catalog plugin lets you view API services that have been discovered by the API Mediation Layer. For more information about the API Mediation Layer, Discovery Service, and API Catalog, see [API Mediation Layer Overview](../getting-started/overview.md).
 
 ### Editor
-With the Zowe Editor you can create, edit, and manage files, folders, and datasets. With files and folders, you can also modify properties such as ownership and tagging. The Editor is uses Monaco, a technology shared with the popular Microsoft Visual Studio Code program. As a result, you can benefit from advanced syntax highlighting and a modern editing experience. The editor has more features and customization that you can read about on [the Editor user guide](../mvd-editor).
+With the Zowe Editor you can create, edit, and manage files, folders, and datasets. With files and folders, you can also modify properties such as ownership and tagging. The Editor uses Monaco, a technology shared with the popular Microsoft Visual Studio Code program. As a result, you can benefit from advanced syntax highlighting and a modern editing experience. The editor has more features and customization that you can read about on [the Editor user guide](../mvd-editor).
 
 ### JES Explorer
 Use this application to query JES jobs with filters, and view the related steps, files, and status. You can also purge jobs from this view.
