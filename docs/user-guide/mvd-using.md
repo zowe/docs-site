@@ -91,34 +91,31 @@ Use the Languages setting in the Preferences panel to change the desktop languag
 
 ## Zowe Desktop application plugins
 
-Application plugins are applications that you can use to access the mainframe and to perform various tasks. Developers can create application plugins using a sample application as a guide. The following application plugins are installed by default:
+Application plugins are applications that you can use to access the mainframe and to perform various tasks. Zowe's official server download contains some built-in plugins as described below. 
 
-### Hello World Sample
-The Hello World sample application plugin for developers demonstrates how to create a dataservice and how to create an application plugin using Angular and using React.
+Additional plugins can be added to the Desktop, and are packaged and installed as Extensions to Zowe. [See here for how to install extensions](../install-configure-zos-extensions). 
 
-### IFrame Sample
-Github Sample Repo:
-[sample-iframe-app](https://github.com/zowe/sample-iframe-app)
-
-### Sample Angular App
-Github Sample Repo:
-[sample-angular-app](https://github.com/zowe/sample-angular-app/blob/lab/step-1-hello-world/README.md)
-
-### Sample React App
-Github Sample Repo:
-[sample-react-app](https://github.com/zowe/sample-react-app/blob/lab/step-1-hello-world/README.md)
+Developers can create application plug-ins to put into extensions, and developers should [read the extending guide for more information](../extend/extend-desktop/mvd-extendingzlux).
 
 ### 3270 Terminal
-The 3270 Terminal plugin provides a user interface that emulates the basic functions of IBM 3270 family terminals. On the "back end," the plugin and the Zowe Application Server connect to any standard TN3270E server.
+The 3270 Terminal Display Emulator plugin provides a user interface that emulates the basic functions of IBM 3270 family terminals. On the "back end," the plugin and the Zowe Application Server connect to any standard TN3270/E server.
+
+This terminal display emulator operates as a "Three-Tier" program. Due to web browsers being unable to supply TCP networking that terminals require, this terminal display emulator does not connect directly to your TN3270 server. Instead, the Zowe Application Server acts as a bridge, and uses websockets between it and the browser for terminal communication. As a result, terminal connections only work when the stack of network programs supports websockets and the TN3270 server destination is visible to the Zowe Application Server.
+
+The terminal connection can be customized per-user and saved for future sessions using the connection toolbar of the application. The preferences are stored within [the configuration dataservice storage](../extend/extend-desktop/mvd-configdataservice), which can also be used to set instance-wide defaults for multiple users.
 
 ### VT Terminal 
-The VT Terminal plugin provides a user interface that emulates the basic functions of DEC VT family terminals. On the "back end," the plugin and the Zowe Application Server connect to VT compatible hosts, such as z/OS UNIX System Services (USS), using standard network protocols.
+The VT Terminal plugin provides a user interface that emulates the basic functions of DEC VT family terminals. On the "back end," the plugin and the Zowe Application Server connect to VT compatible hosts, such as z/OS UNIX System Services (USS), using SSH or Telnet.
+
+This terminal display emulator operates as a "Three-Tier" program. Due to web browsers being unable to supply TCP networking that terminals require, this terminal display emulator does not connect directly to your SSH or Telnet server. Instead, the Zowe Application Server acts as a bridge, and uses websockets between it and the browser for terminal communication. As a result, terminal connections only work when the stack of network programs supports websockets and the TN3270 server destination is visible to the Zowe Application Server.
+
+The terminal connection can be customized per-user and saved for future sessions using the connection toolbar of the application. The preferences are stored within [the configuration dataservice storage](../extend/extend-desktop/mvd-configdataservice), which can also be used to set instance-wide defaults for multiple users.
 
 ### API Catalog
 The API Catalog plugin lets you view API services that have been discovered by the API Mediation Layer. For more information about the API Mediation Layer, Discovery Service, and API Catalog, see [API Mediation Layer Overview](../getting-started/overview.md).
 
 ### Editor
-With the Zowe Editor you can create, edit, and modify the properties of files such as ownership and permissions. You can also view and edit datasets. Navigation is controlled by the [File Tree.](https://github.com/zowe/zlux-file-explorer) Other actions are available using the top left menu, a toolbar above the tree, or hotkeys.
+With the Zowe Editor you can create, edit, and manage files, folders, and datasets. With files and folders, you can also modify properties such as ownership and tagging. The Editor is uses Monaco, a technology shared with the popular Microsoft Visual Studio Code program. As a result, you can benefit from advanced syntax highlighting and a modern editing experience. The editor has more features and customization that you can read about on [the Editor user guide](../mvd-editor).
 
 ### JES Explorer
 Use this application to query JES jobs with filters, and view the related steps, files, and status. You can also purge jobs from this view.
@@ -127,6 +124,8 @@ Use this application to query JES jobs with filters, and view the related steps,
 With the IP Explorer you can monitor the TCP/IP stacks, view active connections and reserved ports.
 
 ### MVS Explorer
+Most features of the MVS explorer are now incorporated into the "Editor" plug-in listed above, and the community focuses on future enhancements there, but you can still find the MVS Explorer in a Zowe install and use the features found below.
+
 Use this application to browse the MVS™ file system by using a high-level qualifier filter. With the MVS Explorer, you can complete the following tasks:
 
   - List the members of partitioned data sets.
@@ -138,12 +137,11 @@ Use this application to browse the MVS™ file system by using a high-level qual
   - Open data sets in full screen editor mode, which gives you a fully qualified link to that file. The link is then reusable for example in help tickets.
 
 ### USS Explorer
+Most features of the USS explorer are now incorporated into the "Editor" plug-in listed above, and the community focuses on future enhancements there, but you can still find the MVS Explorer in a Zowe install and use the features found below.
 
-  Use this application to browse the USS files by using a path. With the USS Explorer, you can complete the following tasks:
+Use this application to browse the USS files by using a path. With the USS Explorer, you can complete the following tasks:
 
  - List files and folders.
  - Create new files and folders.
  - Edit files with basic syntax highlighting and content assist for JCL and REXX.
  - Delete files and folders.
-
-
