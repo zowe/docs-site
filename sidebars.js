@@ -23,6 +23,7 @@ module.exports = {
       label: "Release notes",
       items: [
         "getting-started/release-notes/release-notes-overview",
+        "getting-started/release-notes/v2_6_1",
         "getting-started/release-notes/v2_6_0",
         "getting-started/release-notes/v2_5_0",
         "getting-started/release-notes/v2_4_0",
@@ -356,7 +357,7 @@ module.exports = {
         "extend/extend-apiml/api-mediation-routing",
         "extend/extend-apiml/service-information",
         "extend/extend-apiml/websocket",
-        "user-guide/api-mediation/api-mediation-personal-access-token",
+        "user-guide/api-mediation/api-gateway-rest-apis-documentation",
         "user-guide/api-mediation/api-mediation-smf",
       ],
     },
@@ -619,9 +620,17 @@ module.exports = {
         "troubleshoot/cli/troubleshoot-cli",
         "troubleshoot/cli/mustgather-cli",
         "troubleshoot/cli/use-individual-troubleshoot-commands",
+        "troubleshoot/cli/cli-use-curl-to-troubleshoot",
         "troubleshoot/cli/zosmf-cli",
         "troubleshoot/cli/known-cli",
         "troubleshoot/cli/cli-issue",
+        {
+          type: "category",
+          label: "Zowe CLI Plug-ins",
+          items: [
+            "troubleshoot/cli/troubleshoot-cli-plugins"
+          ],
+        }
       ],
     },
     {
