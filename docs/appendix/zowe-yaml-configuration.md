@@ -219,6 +219,8 @@ The high-level configuration `zowe` supports these definitions:
    ```
  Please be aware that variables defined here are global to all Zowe components, on all HA instances.
 
+ An example use case is to override system-wide environment variables for the Zowe runtime, such as the directory to use for temporary files.
+
 #### Certificate
 
 - **`zowe.certificate`**  
