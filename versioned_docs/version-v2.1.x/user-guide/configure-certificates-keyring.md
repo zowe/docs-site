@@ -31,8 +31,8 @@ The following `zowe.yaml` example will generate:
  - A certificate authority with the label `localca` specified in  `zowe.setup.certificate.keyring.caLabel` with a common name `Zowe Service CA`.
 
 ```
-zowe
-  init
+zowe:
+  setup:
     certificate:
       # Type of certificate storage. Valid values are: PKCS12 or JCERACFKS
       type: JCERACFKS
@@ -76,13 +76,14 @@ When the command is run a customized JCL member name in created the `CUST.JCLLIB
 Even though the job ends with code 0 there may be failures in the individual steps.  It is advised to check the job output.  The security manager commands in the job will be generated based on the value of `zowe.security.product`, and the job steps for each product are broken apart by security manager.  
 
 Because the `--update-config` parmarater was specified the runtime configuration section of `zowe.yaml` is updated to match the values to the generated keystore, certificate, and certificate authority.  
+Note: `zowe.certificate.keystore.password` has a hardcoded password field
 
 ```
-zowe
+zowe:
   certificate:
     keystore:
       alias: localhost
-      password:
+      password: 'password'
       file: safkeyring:////ZWESVUSR/ZoweKeyring
       type: JCERACFKS
     truststore:
