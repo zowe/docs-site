@@ -610,7 +610,6 @@ module.exports = {
             "troubleshoot/launcher/launcher-error-codes"
           ],
         },
-        "troubleshoot/verify-fingerprint",
       ],
     },
     {
