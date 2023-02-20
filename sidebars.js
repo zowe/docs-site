@@ -23,6 +23,7 @@ module.exports = {
       label: "Release notes",
       items: [
         "getting-started/release-notes/release-notes-overview",
+        "getting-started/release-notes/v2_6_1",
         "getting-started/release-notes/v2_6_0",
         "getting-started/release-notes/v2_5_0",
         "getting-started/release-notes/v2_4_0",
@@ -342,6 +343,13 @@ module.exports = {
       label: "Using Zowe API Mediation Layer",
       items: [
         "user-guide/api-mediation/using-api-mediation-layer",
+        {
+          type: "category",
+          label: "Information Roadmap for Zowe API Mediation Layer",
+          items: [
+            "getting-started/user-roadmap-apiml",
+          ],
+        },
         {
           type: "category",
           label: "Using API Catalog",
