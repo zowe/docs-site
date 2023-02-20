@@ -14,6 +14,7 @@ As an API Mediation Layer user, you may encounter problems with how the API ML f
     * [API Components unable to handshake](#api-components-unable-to-handshake)
     * [Java z/OS components of Zowe unable to read certificates from keyring](#java-zos-components-of-zowe-unable-to-read-certificates-from-keyring)
     * [Java z/OS components of Zowe cannot load the certificate private key pair from the keyring](#java-zos-components-of-zowe-cannot-load-the-certificate-private-key-pair-from-the-keyring)
+    * [Exception thrown when reading SAF keyring {ZWED0148E}](#exception-thrown-when-reading-saf-keyring-zwed0148e)
 ## Install API ML without Certificate Setup
 
 For testing purposes, it is not necessary to set up certificates when configuring the API Mediation Layer. You can configure Zowe without certificate setup and run Zowe with `verify_certificates: DISABLED`.
@@ -488,3 +489,60 @@ First, make sure that the private key stored in the keyring is not encrypted by 
       file: safkeyring:////ZWESVUSR/ZoweKeyring
       password:
 ```
+### Exception thrown when reading SAF keyring {ZWED0148E}
+
+**Symptom:**
+
+If you see one or more of the following messages in the logs, the cause is keyring configuration.
+
+
+- ZWED0148E - Exception thrown when reading SAF keyring, e= Error: R_datalib call failed: function code: 01, SAF rc: `number`, RACF rc: `number`, RACF rsn: `number`
+
+
+* java.io.IOException: R_datalib (IRRSDL00) error: profile for ring not found (`number`, `number`, `number`)
+
+You may also see the following log message:
+
+`ZWES1060W Failed to init TLS environment, rc=1(Handle is not valid)`
+
+ **Note:** This log message can have other causes too, such as lack of READ permission to resources in the CRYPTOZ class.
+
+**Solution:**
+
+1. Refer to table 2 (DataGetFirst) of the [Return and Reason Codes](https://www.ibm.com/docs/en/zos/2.5.0?topic=library-return-reason-codes) to determine the specific problem.
+2. Check your keyring (such as with a LISTRING command) and your zowe configuration file's `zowe.certificate` section to spot and resolve the issue.
+
+**Example:** 
+ If ZWED0148E contains the following message, it indicates that Zowe's local certificate authority (local CA) `ZoweCert`, the certificate `jwtsecret`, or the Zowe certificate `localhost` does not exist in the Zowe keyring. 
+
+```
+2021-01-18 10:16:33.601 <ZWED:16847011> ZWESVUSR WARN (_zsf.bootstrap,webserver.js:156) ZWED0148E - Exception thrown when reading SAF keyring, e= TypeError: R_datalib call failed: function code: 01, SAF rc: 8, RACF rc: 8, RACF rsn: 44
+at Object.getPemEncodedData (/software/zowev15/1.15.0/components/app-server/share/zlux-server-framework/node_modules/keyring_js/index.js:21:26)
+```
+
+Zowe's local CA certificate has its default name `ZoweCert`. Zowe Desktop hardcodes this certificate in the configuration scripts.
+
+If you are using your own trusted CA certificate in the keyring, and the name is different from the default one, this error will occur. To resolve the issue, you must match the names in the [Zowe configuration](../../user-guide/configure-certificates-keyring.md). 
+
+If you are using Zowe's local CA certificate and you still receive **ZWED0148E**, you may find the following message in the same log.
+
+```
+  "https": {
+    "ipAddresses": [
+      "0.0.0.0"
+    ],
+    "port": 8544,
+    "keys": [
+      "safkeyring:////ZWESVUSR/ring&Label A"
+    ],
+    "certificates": [
+      "safkeyring:////ZWESVUSR/ring&Label A"
+    ],
+    "certificateAuthorities": [
+      "safkeyring:////ZWESVUSR/ring&Label B",
+      "safkeyring:////ZWESVUSR/ring&Label B"
+    ]
+  },
+```
+
+In this case, ensure that the label names exactly match the names in TSO when confirming your keyring. Any difference in spaces, capitalization, or other places throw the error.
