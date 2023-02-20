@@ -547,7 +547,7 @@ The Zowe API ML Discovery Service communicates with its clients in secure Https 
 Client services need to configure several TLS/SSL parameters in order to communicate with the API ML Discovery service.
 When an enabler is used to onboard a service, the configuration is provided in the `ssl` section/group in the same _YAML_ file that is used to configure the Eureka parameters and the service metadata.
 
-For more information about API ML security, see [API ML security](api-mediation-security).
+For more information about API ML security, see [API ML security overview](zowe-api-mediation-layer-security-overview.md).
 
 TLS/SSL configuration consists of the following parameters:
 
