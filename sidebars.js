@@ -58,6 +58,7 @@ module.exports = {
       label: "Installing Zowe z/OS components",
       items: [
         "user-guide/install-zos",
+        "user-guide/zos-components-installation-checklist",
         {
           type: "category",
           label: "Planning",
