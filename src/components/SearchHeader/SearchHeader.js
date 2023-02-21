@@ -6,7 +6,8 @@ function SearchHeader() {
   const facetFilters = useAlgoliaContextualFacetFilters();
   return (
     <DocSearch
-    apiKey="59ff39ed48d0820010c7e09fc4b677bf"
+    apiKey="65cba55ab266253898f7ad088e57be78"
+    appId="1AB1S8E42B"
     indexName="zowe"
     searchParameters={{
       facetFilters

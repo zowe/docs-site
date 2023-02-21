@@ -37,4 +37,4 @@ You can also issue Zowe CLI commands to perform operations, such as help and z/O
 
 :::
 
-For detailed CLI commands, see <a href="/2.5.x/web_help/index.html" target="_blank">Zowe CLI command reference</a>.
+For detailed CLI commands, see <a href="/v2.5.x/web_help/index.html" target="_blank">Zowe CLI command reference</a>.

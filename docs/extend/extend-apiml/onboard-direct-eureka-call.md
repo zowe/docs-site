@@ -278,7 +278,7 @@ This parameter specifies a service authentication scheme. The following schemes 
 
     * **httpBasicPassTicket**  
     This value specifies that a service accepts PassTickets in the Authorization header of the HTTP requests using the basic authentication scheme. It is necessary to provide a service APPLID in the `apiml.authentication.applid` parameter.  
-    **Tip:** For more information, see [Enabling PassTicket creation for API Services that Accept PassTickets](api-mediation-passtickets).
+    **Tip:** For more information, see [Enabling PassTicket creation for API Services that Accept PassTickets](authentication-for-apiml-services.md#authentication-with-passtickets).
 
     * **zosmf**  
     This value specifies that a service accepts z/OSMF LTPA (Lightweight Third-Party Authentication). This scheme should only be used for a z/OSMF service used by the API Gateway Authentication Service, and other z/OSMF services that are using the same LTPA key.  
@@ -290,9 +290,6 @@ This parameter specifies a service authentication scheme. The following schemes 
     * **x509**  
     This value specifies that a service accepts client certificates forwarded in the HTTP header only. The Gateway service extracts information from a valid client certificate. For validation, the certificate needs to be trusted by API Mediation Layer. Extended Key Usage must either be empty or needs to contain a Client Authentication (1.3.6.1.5.5.7.3.2) entry. To use this scheme, it is also necessary to specify which headers to include. Specify these parameters in `headers`. This scheme does not relate to the certificate used in the TLS handshake between API ML and the southbound service, but rather the certificate that is forwarded in the header that authenticates the user.
 
-    * **zosmf**  
-    This value specifies that a service accepts z/OSMF LTPA (Lightweight Third-Party Authentication). This scheme should only be used for a z/OSMF service used by the API Gateway Authentication Service, and other z/OSMF services that are using the same LTPA key.  
-    **Tip:** For more information about z/OSMF Single Sign-on, see [Establishing a single sign-on environment](https://www.ibm.com/support/knowledgecenter/SSLTBW_2.4.0/com.ibm.zosmfcore.multisysplex.help.doc/izuG00hpManageSecurityCredentials.html).
 
 * **authentication.headers**
     
