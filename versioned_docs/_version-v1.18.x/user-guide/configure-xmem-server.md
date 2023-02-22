@@ -109,9 +109,9 @@ Wherever you place the `ZWESIP00` member, ensure that the data set is listed in 
 
 For the cross memory server to be started, you must move the JCL PROCLIB `ZWESISTC` member from the installation PDS SAMPLIB `SZWESAMP` into a PDS that is on the JES concatenation path.  
 
-You need to update the `ZWESISTC` member in the JES concatenation path with the location of the load library that contains the load module `ZWESI00` by editing the STEPLIB DD statement of `ZWESISTC`.  Edit the PARMLIB DD statement to point to the location of the PDS that contains the `ZWESIP00` member.  
+You need to update the `ZWESISTC` member in the JES concatenation path with the location of the load library that contains the load module `ZWESIS01` by editing the STEPLIB DD statement of `ZWESISTC`.  Edit the PARMLIB DD statement to point to the location of the PDS that contains the `ZWESIP00` member.  
 
-For example, the sample JCL below shows `ZWESVSTC` where the APF-authorized PDSE containing `ZWESI00` is `ZWESVUSR.SZWEAUTH` and the PDS PARMLIB containing `ZWESIP00` is `ZWESVUSR.SZWESAMP`.  
+For example, the sample JCL below shows `ZWESVSTC` where the APF-authorized PDSE containing `ZWESIS01` is `ZWESVUSR.SZWEAUTH` and the PDS PARMLIB containing `ZWESIP00` is `ZWESVUSR.SZWESAMP`.  
 
 ```cobol
 //ZWESIS01 EXEC PGM=ZWESIS01,REGION=&RGN,
@@ -130,9 +130,9 @@ You must configure the z/OS system in order to correctly run the cross memory se
 You can start the cross memory server using the command `/S ZWESISTC` once the following steps have been completed.
 
 - JCL member `ZWESVSTC` is copied from `SZWESAMP` installation PDS to a PDS on the JES concatenation path.
-- The PDSE Load Library `SZWEAUTH`is APF-authorized, or Load module `ZWESI00` is copied to an existing APF Auth LoadLib.
-- The JCL member `ZWESVSTC` DD statements are updated to point to the location of `ZWESI00` and `ZWESIP00`. 
-- The load module `ZWESI00` must run in key 4 and be non-swappable by adding a PPT entry to the SCHEDxx member of the system PARMLIB `PPT PGMNAME(ZWESI00) KEY(4) NOSWAP`.
+- The PDSE Load Library `SZWEAUTH`is APF-authorized, or Load module `ZWESIS01` is copied to an existing APF Auth LoadLib.
+- The JCL member `ZWESVSTC` DD statements are updated to point to the location of `ZWESIS01` and `ZWESIP00`. 
+- The load module `ZWESIS01` must run in key 4 and be non-swappable by adding a PPT entry to the SCHEDxx member of the system PARMLIB `PPT PGMNAME(ZWESIS01) KEY(4) NOSWAP`.
 
 ## Starting and stopping the cross memory server on z/OS
 
