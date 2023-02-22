@@ -204,8 +204,22 @@ You can install the API Audit Log for Zowe API ML. The API `Audit Log` is an add
 - Brightside license is required.
 - Elasticsearch, Logstash, and Kibana (ELK Stack) is configured. Using the API Audit Log also enables you to utilize ELK Stack for data visualizations.
 
+For detailed information about the API Audit Log, see how to [Enable the API Audit Log](https://techdocs.broadcom.com/us/en/ca-mainframe-software/devops/ca-brightside/4-0/installing/install-brightside-extensions-and-z-os-components/enable-the-api-audit-log.html).
 
+### Features
 
+The API `Audit Log` can help you observe and analyze the data located on the mainframe, including suspicious activities and the state of the services.
 
+## Distributed Identify Federation
 
+The user identity federation allows for default separation of the two main user security management concerns - authentication managed by the distributed Identity and Access Management (IAM). The user access authorization managed by SAF (the installed Mainframe ESM respectively).
 
+**Prerequisites**
+
+- Zowe System Services are installed and configured.
+- Zowe cross memory server for SAF should be configured. 
+
+**Possible providers**
+
+- Keycloak
+- Okta
