@@ -21,19 +21,10 @@ jobs:
             ln -s $(basename $f) ${f%.*}
           done
 
-      # - name: Restore lychee cache
-      #   uses: actions/cache@v3
-      #   with:
-      #     path: .lycheecache
-      #     key: cache-lychee-${{ github.head_ref }}
-      #     restore-keys: cache-lychee-
-
       - name: Run lychee
         uses: lycheeverse/lychee-action@v1.5.4
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          args: "--cache --max-cache-age 1d --max-concurrency 32 --no-progress --verbose 'docs/**/*.md'"
+          args: "--no-progress --offline --verbose 'docs/**/*.md'"
           fail: true
 
       - name: Archive report
