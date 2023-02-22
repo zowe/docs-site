@@ -33,7 +33,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          args: "--cache --max-cache-age 1d --no-progress --verbose 'docs/**/*.md'"
+          args: "--cache --max-cache-age 1d --max-concurrency 32 --no-progress --verbose 'docs/**/*.md'"
           fail: true
 
       - name: Archive report
