@@ -44,7 +44,7 @@ jobs:
 
       - name: List changed files with errors
         id: changed-files
-        uses: tj-actions/changed-files@v35
+        uses: tj-actions/changed-files@v34
         with:
           files_from_source_file: lychee/files.txt
 
