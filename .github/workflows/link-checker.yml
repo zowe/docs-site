@@ -1,0 +1,28 @@
+name: Link Checker
+
+on:
+  pull_request:
+    branches:
+      - docs-staging
+      - master
+
+jobs:
+  test:
+    name: Check for broken links
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Link Checker
+        id: lychee
+        uses: lycheeverse/lychee-action@v1.5.4
+        env:
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+
+      - name: Comment on PR
+        if: env.lychee_exit_code != 0
+        uses: marocchino/sticky-pull-request-comment@v2
+        with:
+          path: ./lychee/out.md
