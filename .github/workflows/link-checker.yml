@@ -27,7 +27,9 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          args: "--cache --max-cache-age 1d --no-progress --verbose 'docs/**/*.md'"
+          args: "--accept 200,429 --cache --max-cache-age 1d --no-progress --verbose 'docs/**/*.md'"
+          fail: true
 
       - name: Archive report
+        if: success() || failure()
         run: cat lychee/out.md > $GITHUB_STEP_SUMMARY
