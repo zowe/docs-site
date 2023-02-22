@@ -340,7 +340,7 @@ additionalServiceMetadata:
             This value specifies that a service accepts PassTickets in the Authorization header of the HTTP requests using the basic authentication scheme.
             It is necessary to provide a service APPLID in the `apiml.authentication.applid` parameter.
             
-            **Tip:** For more information, see [Enabling PassTicket creation for API Services that accept PassTickets](api-mediation-passtickets.md).
+            **Tip:** For more information, see [Enabling PassTicket creation for API Services that accept PassTickets](authentication-for-apiml-services.md#authentication-with-passtickets).
          
         * **safIdt**
 

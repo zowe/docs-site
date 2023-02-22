@@ -42,10 +42,6 @@ The following definition of skill levels about Zowe assist you with gathering th
 
 - **Configuring API Mediation Layer**
 
-   - [API Gateway configuration parameters](../user-guide/api-mediation/api-mediation-internal-configuration.md)
-     
-      This article introduces the default configuration of the API Mediation Layer and how to change the parameters to meet your needs. 
-
    - [Configuring the Zowe APIs](../user-guide/configure-data-sets-jobs-api.md) 
 
       This article explains how to configure security for the Zowe API Mediation Layer. 

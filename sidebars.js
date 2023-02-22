@@ -310,6 +310,7 @@ module.exports = {
       items: [
         "user-guide/mvd-configuration",
         "user-guide/cli-configuringcli-ev",
+        "user-guide/configure-data-sets-jobs-api",
         {
           type: "category",
           label: "API Mediation Layer",
@@ -319,6 +320,7 @@ module.exports = {
             "user-guide/api-mediation/api-gateway-configuration",
             "user-guide/api-mediation/discovery-service-configuration",
             "user-guide/api-mediation/api-mediation-internal-configuration",
+            "user-guide/api-mediation-standalone",
             "extend/extend-apiml/api-mediation-passtickets",
           ],
         },
@@ -341,6 +343,13 @@ module.exports = {
       label: "Using Zowe API Mediation Layer",
       items: [
         "user-guide/api-mediation/using-api-mediation-layer",
+        {
+          type: "category",
+          label: "Information Roadmap for Zowe API Mediation Layer",
+          items: [
+            "getting-started/user-roadmap-apiml",
+          ],
+        },
         {
           type: "category",
           label: "Using API Catalog",
@@ -583,6 +592,7 @@ module.exports = {
         "troubleshoot/servers/must-gather",
         "troubleshoot/verify-fingerprint",
         "troubleshoot/k8s-troubleshoot",
+        "troubleshoot/servers/return-codes",
         //"troubleshoot/troubleshoot-zos-certificate",
         {
           type: "category",
@@ -599,6 +609,7 @@ module.exports = {
             "troubleshoot/app-framework/app-troubleshoot",
             "troubleshoot/app-framework/app-mustgather",
             "troubleshoot/app-framework/app-issue",
+            "troubleshoot/app-framework/app-return-codes",
             "troubleshoot/app-framework/zss-error-codes",
           ],
         },
