@@ -18,7 +18,7 @@ jobs:
       - name: Create symlinks
         run: |
           find docs -name "*.md" -type f | while read f; do
-            ln -s $f $(basename $f .md)
+            ln -s $f ${f%.*}
           done
 
       - name: Restore lychee cache
