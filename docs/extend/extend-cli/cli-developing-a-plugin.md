@@ -1,4 +1,4 @@
-# Developing a new plug-in
+# Developing a new Zowe CLI plug-in
 Before you begin this tutorial, complete the [Extending an existing plug-in](cli-extending-a-plugin.md) tutorial.
 
 ## Overview
