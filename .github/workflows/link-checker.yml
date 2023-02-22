@@ -15,14 +15,19 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
-      - name: Link Checker
-        id: lychee
+      - name: Restore lychee cache
+        uses: actions/cache@v3
+        with:
+          path: .lycheecache
+          key: cache-lychee-${{ github.head_ref }}
+          restore-keys: cache-lychee-
+
+      - name: Run lychee
         uses: lycheeverse/lychee-action@v1.5.4
         env:
-          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
-
-      - name: Comment on PR
-        if: env.lychee_exit_code != 0
-        uses: marocchino/sticky-pull-request-comment@v2
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          path: ./lychee/out.md
+          args: "--cache --max-cache-age 1d --no-progress --verbose 'docs/**/*.md'"
+
+      - name: Archive report
+        run: cat lychee/out.md > $GITHUB_STEP_SUMMARY
