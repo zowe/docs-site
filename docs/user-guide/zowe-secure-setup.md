@@ -43,7 +43,7 @@ For more information, see the [TLS requirements in Zowe API ML requirements](../
 
 ### SAF keyring
 
-You can choose to use a SAF keyring instead of keystore and truststore for storing certificates. It is more secure than PKCS12 files. And SAF keyring allows you to import existing or generate new ertificates with Top Secret, ACF2, and RACF.
+You can choose to use a SAF keyring instead of keystore and truststore for storing certificates. It is more secure than PKCS12 files. And SAF keyring allows you to import existing or generate new certificates with Top Secret, ACF2, and RACF.
 
 For details about SAF Keyring, see the documentation [here](../extend/extend-apiml/certificate-management-in-zowe-apiml.md).
 
