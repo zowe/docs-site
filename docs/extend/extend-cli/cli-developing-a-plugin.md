@@ -8,9 +8,9 @@ This tutorial demonstrates how to create a brand new Zowe CLI plug-in that uses 
 
 After following all the steps, you will have created a data set diff utility plug-in called **Files Util Plug-in**. The plug-in provides an output that can be sent to a third-party utility to display easy-to-read side-by-side diffs of data set member contents, as shown in the image at the [bottom of this page](../extend-cli/cli-developing-a-plugin#bringing-together-new-tools).
 
-The completed source for this tutorial can be found on the `develop-a-plugin` branch of the [zowe-cli-sample-plugin repository](https://github.com/zowe/zowe-cli-sample-plugin).
-
 **Note:** If you are ready to create your own unique Zowe CLI plug-in, refer to the notes below each tutorial step for guidance.
+
+**Note:** If you're interested in creating a credential manager plug-in, see the [Zowe CLI secrets for kubernetes plug-in](https://github.com/zowe/zowe-cli-secrets-for-kubernetes) repository.
 
 ## Setting up the new sample plug-in project
  Download the sample plug-in source and delete the irrelevant content to set up your plug-in project.
@@ -41,7 +41,9 @@ The completed source for this tutorial can be found on the `develop-a-plugin` br
 10. Enter `git commit --message "Initial commit"` to save a snapshot of the staged files in your repository.
 11. Run `npm install` to install third-party dependencies defined in the `package.json` file of your Node.js project.
 
-    When successful, **[WHAT IS THE USER SUPPOSED TO SEE?]**.
+    When successful, a progress bar displays. Once the plug-in is installed, a message displays the status of the packages in the `node_modules` directory.
+
+    **Note:** If vulnerabilities are found in any of the installed dependencies, refer to [npm Docs](https://docs.npmjs.com/cli/v9/commands/npm-audit) on how to fix them.
 
 **To create a unique plug-in:** Change the `files-util` directory to a name applicable for your project.
 
@@ -57,9 +59,10 @@ Open the `package.json` file in a text editor and replace the name field with th
 
 This tutorial uses `@zowe/files-util` as the tutorial plug-in name.
 
-**To create a unique plug-in:** Replace `@zowe/files-util` with a unique plug-in name. This allows you to publish the plug-in under that name to the `npm` registry in the future.
+**To create a unique plug-in:** Replace `@zowe/files-util` with a unique plug-in name. This allows you to publish the plug-in under that name to the `npm` registry in the future. For information regarding npm scoping, see the [npm documentation](https://docs.npmjs.com/cli/v9/using-npm/scope).
 
 ## Adjusting Imperative CLI Framework configuration
+
 Define json configurations for the plug-in to Imperative.
 
 Change the `src/imperative.ts` file to contain the following configurations:
@@ -77,11 +80,12 @@ const config: IImperativeConfig = {
 export = config;
 ```
 
-When successful, **[WHAT IS THE USER SUPPOSED TO SEE?]**.
+When successful, the `src/imperative.ts` file contains the new configurations.
 
-**To create a unique plug-in:** **[what do we advise here?]**
+**To create a unique plug-in:** Make sure to change the plug-in name, display name, and description according to your project.
 
 ## Adding third-party packages
+
 Install third-party packages as dependencies for the plug-in's client-side API.
 
  Follow these steps:
@@ -154,13 +158,13 @@ Follow these steps:
     }
     ```
 
-3. In the `src` directory, add the following code to the end of the `index.ts` file to make the API available for other developers to import:
+3. In the `src` directory, replace the contents of the `index.ts` file with the following code in order to make the API available for other developers to import:
 
     ```typescript
     export * from "./api/DataSetDiff";
     ```
 
-    When successful, **[WHAT IS THE USER SUPPOSED TO SEE?]**.
+    When successful, the `index.ts` file contains the new code.
 
 **To create a unique plug-in:** The file name and code in Step 2 may be entirely different if you want to implement an API to do something else.
 
@@ -172,9 +176,11 @@ Follow these steps:
 
 1. In the terminal, run `npm run build` to verify there are no errors.
 
-    This command builds your typescript files into javascript files for your plug-in in the `lib` directory.
+    This command builds your typescript files by looking at the configuration details in `tsconfig.json` and placing the output javascript files in the `lib` directory.
+    
+    The `lib` directory is configurable by modifying [this value](https://github.com/zowe/zowe-cli-sample-plugin/blob/master/tsconfig.json#L12) in the `tsconfig.json` file.
 
-2. If you come across linting errors, run `npm run lint -- --fix` to resolve the errors automatically.
+2. Optional: If you come across linting errors, run `npm run lint:fix` to resolve the errors automatically.
 
     When successful, no errors are returned and the `lib` directory contains the built javascript files.
 
@@ -203,7 +209,7 @@ Follow these steps:
     export = IssueDefinition;
     ```
 
-4. In the `diff` folder, create a folder named `data-sets`. 
+4. In the `diff` folder, create a folder named `data-sets`.
 5. In the `data-sets` folder, create the following two files: 
     - `DataSets.definition.ts`
     - `DataSets.handler.ts`
@@ -232,7 +238,7 @@ Follow these steps:
             }
         ],
         profile: {
-            required: ["zosmf"]
+            optional: ["zosmf"]
         }
     };
     ```
@@ -260,7 +266,7 @@ Follow these steps:
         }
     }    
     ```
-    When successful, **[WHAT IS THE USER SUPPOSED TO SEE?]**.
+    When successful, the `Diff.definition.ts`, `DataSets.definition.ts`, and `DataSets.handler.ts` files contain the new code.
 
 **Note:** If you are adding multiple commands to your CLI plug-in, consider moving the code that creates a session into a base handler class that can be shared across multiple commands. See the [sample plugin code](https://github.com/zowe/zowe-cli-sample-plugin/blob/master/src/cli/list/ListBaseHandler.ts) for an example of how this can be done.
 
@@ -308,7 +314,7 @@ Follow these steps:
 
     When successful, the output displays plain text diffs of the entered data sets.
 
-**To create a unique plug-in:** Use Step 3 to run your new command.
+**To create a unique plug-in:** Use Step 3 to run your new command. Note that the command is different based on the plugin name in the `src/imperative.ts` file.
 
 ## Bringing together new tools!
 
@@ -324,7 +330,9 @@ To help this, you can extend Files Util Plug-in to create a more visual output. 
 
 Follow these steps:
 
-1. Run `npm install -g diff2html-cli` to install `diff2html`.
+1. Run `npm install --global diff2html-cli` to install `diff2html`.
+
+    **Note:** Zowe is not associated with `diff2html-cli`.
 
 2. To pipe your Zowe CLI plug-in output to `diff2html`, run the following command with your information:
 
