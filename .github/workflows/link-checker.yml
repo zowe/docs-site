@@ -25,7 +25,7 @@ jobs:
         uses: actions/cache@v3
         with:
           path: .lycheecache
-          key: cache-lychee-${{ github.head_ref }}
+          key: cache-lychee-${{ github.sha }}
           restore-keys: cache-lychee-
 
       - name: Run lychee
@@ -45,5 +45,5 @@ jobs:
           files_from_source_file: lychee/files.txt
 
       - name: Fail if new errors found
-        if: steps.changed-files.outputs.any_changed
+        if: steps.changed-files.outputs.any_changed == 'true'
         run: echo "Detected broken links in changed files" && exit 1
