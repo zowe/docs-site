@@ -604,7 +604,7 @@ TLS/SSL configuration consists of the following parameters:
 ### SAF Keyring configuration
 
 You can choose to use SAF keyring instead of keystore and truststore for storing certificates.
-For information about required certificates, see [Zowe API ML TLS requirements](api-mediation-security#zowe-api-ml-tls-requirements). For information about running Java on z/OS with keyring, see [SAF Keyring](api-mediation-security#api-ml-saf-keyring). Make sure that the enabler can access and read the keyring. Please refer to documentation of your security system for details.
+For information about required certificates, see [Zowe API ML TLS requirements](./zowe-api-mediation-layer-security-overview.md/#zowe-api-ml-tls-requirements). For information about running Java on z/OS with keyring, see [SAF Keyring](./certificate-management-in-zowe-apiml.md) Make sure that the enabler can access and read the keyring. Please refer to documentation of your security system for details.
 
 The following example shows enabler configuration with keyrings.
 
