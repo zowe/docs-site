@@ -367,7 +367,6 @@ module.exports = {
         "extend/extend-apiml/service-information",
         "extend/extend-apiml/websocket",
         "user-guide/api-mediation/api-gateway-rest-apis-documentation",
-        "user-guide/api-mediation/api-mediation-saf-resource-checking",
         "user-guide/api-mediation/api-mediation-smf",
       ],
     },
@@ -593,7 +592,8 @@ module.exports = {
         "troubleshoot/servers/must-gather",
         "troubleshoot/verify-fingerprint",
         "troubleshoot/k8s-troubleshoot",
-        //"troubleshoot/troubleshoot-zos-certificate",
+        "troubleshoot/servers/return-codes",
+        "troubleshoot/troubleshoot-zos-certificate",
         {
           type: "category",
           label: "Zowe API Mediation Layer",
@@ -609,6 +609,7 @@ module.exports = {
             "troubleshoot/app-framework/app-troubleshoot",
             "troubleshoot/app-framework/app-mustgather",
             "troubleshoot/app-framework/app-issue",
+            "troubleshoot/app-framework/app-return-codes",
             "troubleshoot/app-framework/zss-error-codes",
           ],
         },
@@ -620,7 +621,6 @@ module.exports = {
             "troubleshoot/launcher/launcher-error-codes"
           ],
         },
-        "troubleshoot/verify-fingerprint",
       ],
     },
     {
@@ -634,6 +634,13 @@ module.exports = {
         "troubleshoot/cli/zosmf-cli",
         "troubleshoot/cli/known-cli",
         "troubleshoot/cli/cli-issue",
+        {
+          type: "category",
+          label: "Zowe CLI Plug-ins",
+          items: [
+            "troubleshoot/cli/troubleshoot-cli-plugins"
+          ],
+        }
       ],
     },
     {
