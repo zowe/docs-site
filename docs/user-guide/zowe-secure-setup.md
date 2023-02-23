@@ -160,7 +160,8 @@ Sysplex is required to make sure multiple Zowe instances can work together. Chec
 
 To enable high availability when Zowe runs in Sysplex, you need to meet the following requirements:
 
-- Zowe instance with all services should be installed on every LPAR.
+- Zowe instance with should be installed on every LPAR.
+- The API services must be registered to each Zowe instance.
 - Shared File system should be created between LPARs in Sysplex. See [How to share file systems in a Sysplex](https://www.ibm.com/docs/en/zos/2.4.0?topic=planning-sharing-file-systems-in-sysplex). 
 - z/OSMF High Availability mode should be configured. See [Configuring z/OSMF high availability in Sysplex](../user-guide/systemrequirements-zosmf-ha).
 
