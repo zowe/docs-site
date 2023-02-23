@@ -6,11 +6,11 @@ The advantage of Zowe CLI and of the CLI approach in mainframe development is th
 
 This tutorial demonstrates how to create a brand new Zowe CLI plug-in that uses Node.js to create a client-side API.
 
-After following all the steps, you will have created a data set diff utility plug-in called **Files Util Plug-in**. The plug-in provides an output that can be sent to a third-party utility to display easy-to-read side-by-side diffs of data set member contents, as shown in the image at the [bottom of this page](../extend-cli/cli-developing-a-plugin#bringing-together-new-tools).
+After following all the steps, you will have created a data set diff utility plug-in called **Files Util Plug-in**. This plug-in takes in any two data sets, or files, and returns a plain text output in the terminal showing how they differ. This tutorial will also show you how you can integrate your new plug-in with a third-party utility to make your output colorful and easier to read, as shown in the image at the [bottom of this page](../extend-cli/cli-developing-a-plugin#bringing-together-new-tools).
 
-**Note:** If you are ready to create your own unique Zowe CLI plug-in, refer to the notes below each tutorial step for guidance.
+If you are ready to create your own unique Zowe CLI plug-in, refer to the notes at the end of each tutorial step for guidance.
 
-**Note:** If you're interested in creating a credential manager plug-in, see the [Zowe CLI secrets for kubernetes plug-in](https://github.com/zowe/zowe-cli-secrets-for-kubernetes) repository.
+If you are interested in creating a credential manager plug-in, see the [Zowe CLI secrets for kubernetes plug-in](https://github.com/zowe/zowe-cli-secrets-for-kubernetes) repository.
 
 ## Setting up the new sample plug-in project
  Download the sample plug-in source and delete the irrelevant content to set up your plug-in project.
@@ -43,7 +43,7 @@ After following all the steps, you will have created a data set diff utility plu
 
     When successful, a progress bar displays. Once the plug-in is installed, a message displays the status of the packages in the `node_modules` directory.
 
-    **Note:** If vulnerabilities are found in any of the installed dependencies, refer to [npm Docs](https://docs.npmjs.com/cli/v9/commands/npm-audit) on how to fix them.
+    **Note:** If vulnerabilities are found in any of the installed dependencies, refer to [npm Docs](https://docs.npmjs.com/cli/v9/commands/npm-audit) for how to fix them.
 
 **To create a unique plug-in:** Change the `files-util` directory to a name applicable for your project.
 
@@ -82,7 +82,7 @@ export = config;
 
 When successful, the `src/imperative.ts` file contains the new configurations.
 
-**To create a unique plug-in:** Make sure to change the plug-in name, display name, and description according to your project.
+**To create a unique plug-in:** Change the plug-in name, display name, and description according to your project.
 
 ## Adding third-party packages
 
@@ -270,7 +270,7 @@ Follow these steps:
 
 **Note:** If you are adding multiple commands to your CLI plug-in, consider moving the code that creates a session into a base handler class that can be shared across multiple commands. See the [sample plugin code](https://github.com/zowe/zowe-cli-sample-plugin/blob/master/src/cli/list/ListBaseHandler.ts) for an example of how this can be done.
 
-**To create a unique plug-in:** Refer to file names specific to your project. Your code likely follows the same structure, but the command names, descriptions, and options would differ.
+**To create a unique plug-in:** Refer to file names specific to your project. Your code likely follows the same structure, but command names, descriptions, and options would differ.
 
 ## Trying your command
 
@@ -288,7 +288,7 @@ Follow these steps:
 
     A success message displays if installed correctly.
 
-3. Issue the following command (the Files Util Plug-in command) replacing the data set names with valid mainframe data set names on your system:
+3. Issue the following command (the new Files Util Plug-in command) replacing the data set names with valid mainframe data set names on your system:
 
     ```
     zowe files-util diff data-sets "IBMUSER.REXX(TESTADD)" "IBMUSER.REXX(TESTSUB)"
@@ -314,7 +314,7 @@ Follow these steps:
 
     When successful, the output displays plain text diffs of the entered data sets.
 
-**To create a unique plug-in:** Use Step 3 to run your new command. Note that the command is different based on the plugin name in the `src/imperative.ts` file.
+**To create a unique plug-in:** Use Step 3 to run your new command. Note that the command is different based on the plug-in name in the `src/imperative.ts` file.
 
 ## Bringing together new tools!
 
@@ -322,7 +322,7 @@ You have created a simple CLI plug-in that provides plain text diffs of two data
 
 Depending on the complexity of your changes, it can be difficult to identify data set differences with plain text.
 
-To help this, you can extend Files Util Plug-in to create a more visual output. For this tutorial, use [diff2html](https://diff2html.xyz/) to generate side-by-side diffs that make it easier to compare changes, as seen in the image below.
+To help fix this, you can extend Files Util Plug-in to create a more visual output. For this tutorial, use [diff2html](https://diff2html.xyz/) to generate side-by-side diffs that make it easier to compare changes, as seen in the image below.
 
 | ![Side by Side Diff](../../images/guides/CLI/htmlDiff2.png) |
 |:--:|
