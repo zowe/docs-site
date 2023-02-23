@@ -6,7 +6,7 @@ The following topic provides the information that can help you troubleshoot prob
 
 **Symptoms**
 
-When you let Zowe server installs create a PKCS12 keystore, the keystore that is generated cannot be read by ZSS. Then, parts of Zowe cannot be used. 
+When you let Zowe server install create a PKCS12 keystore, the keystore that is generated cannot be read by ZSS. Then, parts of Zowe cannot be used. 
 
 **Solutions**
 
