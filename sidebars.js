@@ -593,7 +593,7 @@ module.exports = {
         "troubleshoot/verify-fingerprint",
         "troubleshoot/k8s-troubleshoot",
         "troubleshoot/servers/return-codes",
-        //"troubleshoot/troubleshoot-zos-certificate",
+        "troubleshoot/troubleshoot-zos-certificate",
         {
           type: "category",
           label: "Zowe API Mediation Layer",
