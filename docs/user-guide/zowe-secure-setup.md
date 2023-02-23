@@ -152,7 +152,7 @@ For detailed information, see the [SAF resource checking documentation](../user-
 
 ## High Availability
 
-To deploy Zowe high availability, you must set up the Parallel Sysplex® environment. A Parallel Sysplex is a collection of z/OS® systems that cooperatively use certain hardware and software components to achieve a high-availability workload processing environment.
+To deploy Zowe in high availability (HA) mode, you must set up a Parallel Sysplex® environment. A Parallel Sysplex is a cluster of z/OS® systems that cooperatively use certain hardware and software components to achieve a high-availability workload processing environment.
 
 ### Sysplex architecture and configuration
 
