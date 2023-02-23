@@ -180,7 +180,7 @@ Zowe uses the Caching Service to centralize the state data persistent in high av
 If you are runnning the caching service on z/OS, there are three storage methods with their own characteristics:
 
 - [VSAM](../user-guide/configure-caching-service-ha)
-  - Known by zOS engineers.
+  - Familiar to zOS engineers.
   - Slow.
 - [Redis](../extend/extend-apiml/api-mediation-redis#redis-configuration)
   - Needs to run in Distributed world separately.
