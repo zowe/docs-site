@@ -104,7 +104,7 @@ The SAF Authentication Provider allows the API Gateway to authenticate directly 
 
 The SAF IDT token is signed in JWT format and can be consumed by southbound services. 
 
-SAF IDT is issued for `APPLID` and valid for up to 24 hours. And the token is hidden from clients.
+SAF IDT is issued for specified `APPLID` and is valid for up to 24 hours. The SAF IDT is not returned to the clients. They receive an API ML-generated JWT access token instead, which is internally mapped to the corresponding SAF IDT.
 
 For more information about configuring the token, see the [Configure signed SAF Identity tokens (IDT) documentation](../user-guide/configure-zos-system/#configure-signed-saf-identity-tokens-idt).
 
