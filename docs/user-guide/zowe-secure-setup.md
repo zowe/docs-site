@@ -58,7 +58,7 @@ When the user successfully authenticates with the API ML, the client receives a 
 To utilize [Single-Sign-On (SSO)](../user-guide/systemrequirements-zos/#single-sign-on-sso), the Zowe API ML client needs to provide the access token to API services in the form of the cookie `apimlAuthenticationToken`, or in the `Authorization: Bearer` HTTP header as described [here](https://github.com/zowe/sample-spring-boot-api-service/blob/master/zowe-rest-api-sample-spring/docs/api-client-authentication.md#authenticated-request).
 
 - Validation:
-  - Use Gateway query endpoint to validate the token and retrieves the information associated with the token.
+  - Use Gateway query endpoint to validate the token and retrieve the information associated with the token.
   - Use JWKS to validate.
 
 - JWT token issuers
