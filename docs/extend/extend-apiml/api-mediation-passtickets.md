@@ -5,7 +5,7 @@ For more information, see [Authentication with PassTickets](authentication-for-a
 
 ## Overview
 API clients can use either a Zowe JWT token or client certificate to access an API service even if the API service itself does not support the JWT token or client certificate.
-The Zowe JWT token is available through the API Gateway [authentication endpoint](../extend-apiml/api-mediation-security.md#authentication-for-api-ml-services).
+The Zowe JWT token is available through the API Gateway [authentication endpoint](../extend-apiml/authentication-for-apiml-services).
 
 When an API client provides a valid Zowe JWT token or client certificate to the API ML, the API Gateway then generates a valid PassTicket for any API service that supports PassTickets.
 The API Gateway then uses the PassTicket to access that API service.

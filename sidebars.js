@@ -367,7 +367,6 @@ module.exports = {
         "extend/extend-apiml/service-information",
         "extend/extend-apiml/websocket",
         "user-guide/api-mediation/api-gateway-rest-apis-documentation",
-        "user-guide/api-mediation/api-mediation-saf-resource-checking",
         "user-guide/api-mediation/api-mediation-smf",
       ],
     },
@@ -635,6 +634,13 @@ module.exports = {
         "troubleshoot/cli/zosmf-cli",
         "troubleshoot/cli/known-cli",
         "troubleshoot/cli/cli-issue",
+        {
+          type: "category",
+          label: "Zowe CLI Plug-ins",
+          items: [
+            "troubleshoot/cli/troubleshoot-cli-plugins"
+          ],
+        }
       ],
     },
     {
