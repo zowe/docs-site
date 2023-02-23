@@ -100,7 +100,7 @@ For more information about PAT, see [the Personal Access Token documentation](..
 
 ### Authentication with SAF Identity Tokens (SAF IDT)
 
-The SAF Authentication Provider allows the API Gateway to authenticate directly with the z/OS SAF provider that is installed on the system. 
+The SAF Authentication Provider allows the API Gateway to authenticate the user directly with the z/OS SAF provider that is installed on the system. 
 
 The SAF IDT token is signed in JWT format and can be consumed by southbound services. 
 
