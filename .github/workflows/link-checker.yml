@@ -15,42 +15,24 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
-      # Fetch Git refs before link check to avoid rate limiting
-      - name: List changed files
-        uses: tj-actions/changed-files@v35
-
-      # Workaround for Lychee not recognizing MD links without extensions as valid
+      # Workaround for MD links without extensions being detected as broken
       - name: Create symlinks
         run: |
           find docs -name "*.md" -type f | while read f; do
             ln -s $(basename $f) ${f%.*}
           done
 
-      # Disable cache until https://github.com/lycheeverse/lychee/issues/840 is fixed
-      # - name: Restore lychee cache
-      #   uses: actions/cache@v3
-      #   with:
-      #     path: .lycheecache
-      #     key: cache-lychee-${{ github.ref_name }}
-      #     restore-keys: cache-lychee-
+      - name: Restore lychee cache
+        uses: actions/cache@v3
+        with:
+          path: .lycheecache
+          key: cache-lychee-${{ github.ref_name }}
+          restore-keys: cache-lychee-
 
       - name: Run lychee
-        uses: lycheeverse/lychee-action@v1.5.4
+        uses: lycheeverse/lychee-action@v1.6.1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          # args: "--accept 401,429 --cache --max-cache-age 1d --max-concurrency 64 --no-progress --verbose 'docs/**/*.md'"
-          args: "--accept 401,429 --max-concurrency 64 --no-progress --verbose 'docs/**/*.md'"
-
-      - name: List all files with errors
-        run: cat lychee/out.md | grep "# Errors in" | cut -f4- -d' ' > lychee/files.txt
-
-      - name: List changed files with errors
-        id: changed-files
-        uses: tj-actions/changed-files@v35
-        with:
-          files_from_source_file: lychee/files.txt
-
-      - name: Fail if new errors found
-        if: steps.changed-files.outputs.any_changed == 'true'
-        run: echo "Detected broken links in changed files" && exit 1
+          args: "--accept 401,429 --cache --max-cache-age 1d --max-concurrency 64 --no-progress --verbose 'docs/**/*.md'"
+          fail: true
