@@ -169,7 +169,7 @@ Instance on every LPAR is started.
 
 **Configuration**
 
-The configuration for the specific instance is composed of the defaults in the main section and the overrides in the `haInstances` section.
+The configuration for the specific instance is composed of the defaults in the main section and the overrides in the `haInstances` section of the zowe.yaml configuration file.
 
 In this section, <ha-instance> represents any Zowe high availability instance ID. Every instance has internal id and a section with overrides compared to the main configuration in the beginning of the `zowe.yaml` file. Check [Zowe YAML configuration reference](../appendix/zowe-yaml-configuration/#yaml-configurations---hainstances) for details.
 
