@@ -87,7 +87,7 @@ For details, see the [Authentication for API ML services documentation](../exten
 
 ### Authentication with Personal Access Token (PAT)
 
-A Personal Access Token (PAT) is an alternative to using client certificate for authentication. It is disabled by default. To enable this functionality, see [the configuration documentation](../user-guide/api-mediation/api-gateway-configuration#personal-access-token ). 
+A Personal Access Token (PAT) is a specific scoped JWT with configurable validity duration. PAT authentication method is an alternative to using client certificate for authentication. It is disabled by default. To enable this functionality, see [the configuration documentation](../user-guide/api-mediation/api-gateway-configuration#personal-access-token ). 
 
 **Benefits**
 
