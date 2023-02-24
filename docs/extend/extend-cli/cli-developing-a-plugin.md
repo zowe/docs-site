@@ -257,7 +257,7 @@ Follow these steps:
                 rejectUnauthorized: params.arguments.rejectUnauthorized,
                 protocol: params.arguments.protocol || "https"
             };
-            const sessCfgWithCreds = await ConnectionPropsForSessCfg.   addPropsOrPrompt<ISession>(sessCfg, params.arguments,
+            const sessCfgWithCreds = await ConnectionPropsForSessCfg.addPropsOrPrompt<ISession>(sessCfg, params.arguments,
                 { doPrompting: true, parms: params });
             const session = new Session(sessCfgWithCreds);
 
