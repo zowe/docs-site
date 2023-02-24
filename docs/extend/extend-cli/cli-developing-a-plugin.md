@@ -270,7 +270,7 @@ Follow these steps:
 
 **Note:** If you are adding multiple commands to your CLI plug-in, consider moving the code that creates a session into a base handler class that can be shared across multiple commands. See the [sample plugin code](https://github.com/zowe/zowe-cli-sample-plugin/blob/master/src/cli/list/ListBaseHandler.ts) for an example of how this can be done.
 
-**To create a unique plug-in:** Refer to file names specific to your project. Your code likely follows the same structure, but command names, descriptions, and options would differ.
+**To create a unique plug-in:** Refer to file names specific to your project. Your code likely follows the same structure, but command name, handler, definition, and other information would differ.
 
 ## Trying your command
 
