@@ -4,19 +4,21 @@ To isolate and resolve Zowe&trade; problems, you can use the troubleshooting and
 
 ## How to start troubleshooting
 
-When you run into some issues and look for troubleshooting tips, the following steps may help you.
+When you run into some issues and are looking for troubleshooting tips, the following steps may help you.
 
-1. Search the error message or error code that you have in log on [Zowe doc site](https://docs.zowe.org/). If there are existing solutions, then you could follow them.
+1. Search the error message or error code in your error log by using the Search bar in the [Zowe Docs site](https://docs.zowe.org/). If there is an existing solution, follow the instructions to troubleshoot.
 
-2. If no solution is available or the existing solutions cannot apply to your problems, you could search the keywords, error messages, or error code in [Zowe GitHub repository](https://github.com/zowe). If the issues or pull requests are closed with solutions, you could follow them. If the issues are still open, you could leave your question or have a discussion in the thread to solve your issue.
+![A screenshot to show how to search in github repo](../images/troubleshoot/search-bar-2.png)
+
+2. If no solution is available or the existing solutions cannot apply to your problem, you could search the keywords, error messages, or error code in the [Zowe GitHub repository](https://github.com/zowe). If you find a closed issue or pull request, try troubleshooting by using the information shared in the item's Conversation section. If the issue is still open, post your question or comment to prompt a discussion on your problem.
 
 ![A gif to show how to search in github repo](../images/troubleshoot/how-to-troubleshooting.gif)
 
-3. If your problems are not solved, you could try the following options:
+3. If your problem is not solved, try the following options:
 
-* Create a new issue in the Zowe GitHub repository with detailed description of the problem that you encounter with.
+* Create an issue in the [Zowe GitHub repository](https://github.com/zowe) with a detailed description of the problem you have encountered.
 
-* Bring up your questions to the corresponding channels as shown below.
+* Bring up your questions to the corresponding channels as shown below:
 
     - [Zowe CLI Slack channel](https://openmainframeproject.slack.com/archives/CC8AALGN6)
     - [Zowe API ML Slack channel](https://openmainframeproject.slack.com/archives/CC5UUL005)
