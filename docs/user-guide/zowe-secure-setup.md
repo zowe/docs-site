@@ -19,21 +19,17 @@ Here is a list of all the security considerations and configurations needed.
 - High Availability
   - [Sysplex architecture and configuration](#sysplex-architecture-and-configuration)
   - [Caching service setup and configuration](#caching-service-setup-and-configuration)
-- Observation
-  - Audit Log 
-    - Integrate data in your observability solution
-- Distributed Identity Federation
-  - Okta
-  - KeyCloak
+- [Distributed Identity Federation](#distributed-identify-federation)
+
 
 ## Transport Layer Security(TLS)
 
-The TLS protocol should be used to ensure secure data-transport for all connections to API Mediation Layer services. 
+The TLS protocol should be used to ensure secure data-transport for all connections to API Mediation Layer services.
 
 ### TLS requirements
 
-* Java in version at least 8 sr6 fp25 is installed on the system.
-* The following list shows the cipher suites that API ML services use.
+- Java in version at least 8 sr6 fp25 is installed on the system.
+- The following list shows the cipher suites that API ML services use.
 
 ```
 TLS_AES_128_GCM_SHA256, TLS_AES_256_GCM_SHA384, TLS_CHACHA_POLY1305_SHA256
@@ -66,11 +62,12 @@ To utilize [Single-Sign-On (SSO)](../user-guide/systemrequirements-zos/#single-s
   - zOSMF - zOSMF JWT
 
 Encoded JWT example:
+
 ```
 eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c
 ```
 
-**Note** The endpoint is disabled by default. For more information, see [Enable JWT token endpoint](../user-guide/api-mediation/api-gateway-configuration#enable-jwt-token-refresh-endpoint).
+**Note** The endpoint is disabled by default.
 
 ### Authentication with client certificates
 
@@ -81,28 +78,27 @@ It is provided by client during the TLS handshake. And this authentication is pe
 - The authentication scheme is `x509` standard.
 - Certificate Authority (CA) must be trusted by Zowe.
 - Extended Key Usage (EKU) should contain a Client Authentication entry.
-- The certificate is connected to mainframe identity. 
+- The certificate is connected to mainframe identity.
 
 For details, see the [Authentication for API ML services documentation](../extend/extend-apiml/authentication-for-apiml-services#authentication-parameters).
 
 ### Authentication with Personal Access Token (PAT)
 
-A Personal Access Token (PAT) is a specific scoped JWT with configurable validity duration. PAT authentication method is an alternative to using client certificate for authentication. It is disabled by default. To enable this functionality, see [the configuration documentation](../user-guide/api-mediation/api-gateway-configuration#personal-access-token ). 
+A Personal Access Token (PAT) is a specific scoped JWT with configurable validity duration. PAT authentication method is an alternative to using client certificate for authentication. It is disabled by default. To enable this functionality, see [the configuration documentation](../user-guide/api-mediation/api-gateway-configuration#personal-access-token ).
 
 **Benefits**
 
 - Long lived. The maximum validity is 90 days.
 - Scoped. Users are required to provide a scope. It is only valid for the specified services.
-- Secure. If a security breech is suspected, the security administrator can invalidate all the tokens based on criteria as established by rules. 
+- Secure. If a security breech is suspected, the security administrator can invalidate all the tokens based on criteria as established by rules.
 
 For more information about PAT, see [the Personal Access Token documentation](../user-guide/api-mediation/api-mediation-personal-access-token).
 
-
 ### Authentication with SAF Identity Tokens (SAF IDT)
 
-The SAF Authentication Provider allows the API Gateway to authenticate the user directly with the z/OS SAF provider that is installed on the system. 
+The SAF Authentication Provider allows the API Gateway to authenticate the user directly with the z/OS SAF provider that is installed on the system.
 
-The SAF IDT token is signed in JWT format and can be consumed by southbound services. 
+The SAF IDT token is signed in JWT format and can be consumed by southbound services.
 
 SAF IDT is issued for specified `APPLID` and is valid for up to 24 hours. The SAF IDT is not returned to the clients. They receive an API ML-generated JWT access token instead, which is internally mapped to the corresponding SAF IDT.
 
@@ -121,9 +117,9 @@ Multi-factor authentication is provided by third-party products which Zowe is co
 
 To add dynamic element to the authentication, you can configure the Certificate Authority Advanced Authentication Mainframe to enable multi-factor authentication. For details about CA AAM, see [the documentation](https://techdocs.broadcom.com/us/en/ca-mainframe-software/security/ca-advanced-authentication-mainframe/2-0.html).
 
-**Note:** MFA must work with [Single sign-on (SSO)](../user-guide/systemrequirements-zos/#single-sign-on-sso). Make sure that SSO is configured before you use MFA in Zowe.
+**Note:** Make sure that SSO is configured before you use MFA in Zowe.
 
-**Prerequisite** 
+**Prerequisite**
 
 To support the multi-factor authentication, it is necessary to apply z/OSMF APAR [PH39582](https://www.ibm.com/support/pages/apar/PH39582).
 
@@ -149,7 +145,6 @@ To verify the ownership of the SAF resource, you can use the following available
 
 For detailed information, see the [SAF resource checking documentation](../user-guide/api-mediation/api-gateway-configuration/#saf-resource-checking).
 
-
 ## High Availability
 
 To deploy Zowe in high availability (HA) mode, you must set up a Parallel Sysplex® environment. A Parallel Sysplex is a cluster of z/OS® systems that cooperatively use certain hardware and software components to achieve a high-availability workload processing environment.
@@ -162,14 +157,14 @@ To enable high availability when Zowe runs in Sysplex, you need to meet the foll
 
 - Zowe instance with should be installed on every LPAR.
 - The API services must be registered to each Zowe instance.
-- Shared File system should be created between LPARs in Sysplex. See [How to share file systems in a Sysplex](https://www.ibm.com/docs/en/zos/2.4.0?topic=planning-sharing-file-systems-in-sysplex). 
+- Shared File system should be created between LPARs in Sysplex. See [How to share file systems in a Sysplex](https://www.ibm.com/docs/en/zos/2.4.0?topic=planning-sharing-file-systems-in-sysplex).
 - z/OSMF High Availability mode should be configured. See [Configuring z/OSMF high availability in Sysplex](../user-guide/systemrequirements-zosmf-ha).
 
 Instance on every LPAR is started.
 
 **Configuration**
 
-The configuration for the specific instance is composed of the defaults in the main section and the overrides in the `haInstances` section of the zowe.yaml configuration file.
+The configuration for the specific instance is composed of the defaults in the main section and the overrides in the `haInstances` section of the `zowe.yaml` configuration file.
 
 In this section, <ha-instance> represents any Zowe high availability instance ID. Every instance has internal id and a section with overrides compared to the main configuration in the beginning of the `zowe.yaml` file. Check [Zowe YAML configuration reference](../appendix/zowe-yaml-configuration/#yaml-configurations---hainstances) for details.
 
@@ -190,37 +185,18 @@ If you are runnning the caching service on z/OS, there are three storage methods
   - Doesn’t need separate processes.
   - Highly performant.
 
-## Observation
-
-It is essential to have observation in the whole secure operation process. The service availability is visible to everyone. It’s easy to find performance issues with southbound services.
-
-To do so, Zowe can easy integrate with the Alerting and Monitoring enterprise services such as ELK, Splunk, Grafana, etc and integrate the data as part of the Zero Trust Architecture approach with, for example SIEM (Security Incident Event Management). 
-
-### Use Audit Log to observe
-
-You can install the API Audit Log for Zowe API ML. The API `Audit Log` is an add-on to Zowe API Mediation Layer that provides unified auditing logs.
-
-**Prerequisites**
-
-- Brightside license is required.
-- Elasticsearch, Logstash, and Kibana (ELK Stack) is configured. Using the API Audit Log also enables you to utilize ELK Stack for data visualizations.
-
-For detailed information about the API Audit Log, see how to [Enable the API Audit Log](https://techdocs.broadcom.com/us/en/ca-mainframe-software/devops/ca-brightside/4-0/installing/install-brightside-extensions-and-z-os-components/enable-the-api-audit-log.html).
-
-### Features
-
-The API `Audit Log` can help you observe and analyze the data located on the mainframe, including suspicious activities and the state of the services.
-
 ## Distributed Identify Federation
 
-The user identity federation allows for default separation of the two main user security management concerns - authentication managed by the distributed Identity and Access Management (IAM). The user access authorization managed by SAF (the installed Mainframe ESM respectively).
+The user identity federation allows for default separation of the two main user security management concerns - authentication managed by the distributed Identity and Access Management (IAM). The user access authorization managed by SAF (the installed Mainframe ESM respectively). 
 
-**Prerequisites**
+For more information, please see [link to be added].
+
+<!--**Prerequisites**
 
 - Zowe System Services are installed and configured.
-- Zowe cross memory server for SAF should be configured. 
+- Zowe cross memory server for SAF should be configured.
 
 **Possible providers**
 
 - Keycloak
-- Okta
+- Okta -->
