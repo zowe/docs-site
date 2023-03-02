@@ -1,80 +1,80 @@
-# Understanding the hierarchy of team profiles in Zowe CLI
+# Using configuration files in Zowe CLI
 
 When you run a command, Zowe CLI needs specific information, or *properties*, in order to perform the action.
 
-There are two **[two correct?]** ways that properties and their values can be provided to Zowe CLI. One method is to manually include this information with each command when it is issued, as in the example command below:
+There are two common ways that properties and their values can be provided to Zowe CLI. One method is to manually include this information with each command when it is issued, as in the example command below:
 
 ```
-A COMPLICATED EXAMPLE
+zowe zos-files list data-set "SYS1.PARMLIB*" --host YourHostName --port 1234 --user YourUserName --password YourPassword
 ```
 
 Including properties with every command can be tedious, because there can be a lot of information required. This can lead to typos and mistakes.
 
-The second way of specifying configurations -- using team profiles -- can make things easier. A team profile is part of a configuration file and houses the properties and property values that Zowe CLI needs to run a command. When you have configuration files and you issue a command, Zowe CLI automatically applies the needed properties it finds. **[I've  noticed in our other documentation that we always stress team profiles, but seem to not emphasize user profiles as much. Why is this? In this paragraph, it seems odd to just talk about team profiles when the same]**
+Another way of specifying these properties -- using configuration files -- can make things easier. A configuration file contains profiles with properties that Zowe CLI can use when you run a command.
 
-If team profiles were used in the example above, the user would have needed to issue only the command: `example`.
+If configuration files were used in the example above, the user would have needed to issue only the command: 
+
+`zowe zos-files list data-set "SYS1.PARMLIB*"`
 
 ## Learning the terminology
 
-Zowe version 2.0 introduces the use of team profiles. In practice, however, you can have a *team* profile or a *user* profile. Moreover, you can use a *global* profile or a *project* profile. It is important to know how these differ. **[is it weird to keep talking about "profiles" when this also applies to config files?]**
+Zowe version 2.0 introduces the use of team profiles in configuration files. Both *user* and *team* profiles are stored in configuration files, and these configuration files can either be *project* configuration files or *global* configuration files. It is helpful to understand how these differ.
 
-- A **user profile** is stored in a *user configuration file* and is used by one person who needs their own unique properties to run commands.
+- A **user configuration file** stores *user profiles* and is used for one person who needs their own unique properties to run commands.
 
-- A **team profile** is stored in a *team configuration file* and is used by a group of people who need the same properties to run commands.
+- A **team configuration file** stores *team profiles* and is used by a group of people who need the same properties to run commands.
 
-- A **global profile** resides in the `ZOWE_CLI_HOME` directory (YourUserHomeDirectory/.zowe, by default) and it can be saved in either a global *user configuration file* or a global *team configuration file*.
+- A **global configuration file** resides in the `ZOWE_CLI_HOME` directory (YourUserHomeDirectory/.zowe, by default). It contains global *user profiles* and global *team profiles*.
 
-- A **project profile** resides in a directory of your choice. It can be saved in either a project *user configuration file* or a project *team configuration file*. It applies only when you run a CLI command in that project directory or subdirectory.
+- A **project configuration file** resides in a directory of your choice. It contains project *user profiles* and project *team profiles*.
 
-All configuration files are saved in `.json` format. 
+All configuration files are saved in `.json` format.
 
-## How configuration files work together
+## How configuration files and profiles work together
 
-There may be instances where a user has all four types of files in their system, and all four configurations are referred to simultaneously by Zowe CLI for a particular command.
+There may be instances where a user has all four types of files in their system, and all four configurations are referred to simultaneously by Zowe CLI for a particular command. **[is "simultaneously" correct?]**
 
-This can result in files with contradictory configurations. One file can specify that a certain property has a value of `ABC`, while another file uses `XYZ` as a value.
+This can mean working with files that have contradictory configurations. One file can specify that a certain profile property has a value of `ABC`, while another file uses `XYZ` as a value.
 
-When the same properties have different values across multiple configuration files, how does Zowe CLI know which configuration to use and which to ignore?
+When the same properties have different values across multiple configuration files, Zowe CLI follows a two-step check to determine which configurations apply:
 
-**[IMAGE GOES HERE]**
+1. Does the configuration file have a more *specialized* or more *generalized* use?
+2. Is the configuration file *more specific* or *less specific*.
 
-Configurations are applied according to a hierarchy of specificity. When multiple configuration files include the same profile but each with different properties and values, Zowe CLI commands use the most specific configuration and ignore the less specific configurations. **[I am introducing this "specificity" concept -- not sure if it's appropriate or not.]**
+Zowe CLI considers a user configuration file to have a more specific use than a team configuration file, and a project configuration file to be more specialized than a global configuration file, which is more generalized.
 
-Zowe CLI considers a user config file to be more specific that a team config file, and a project config file to be more specific than a global config file.
+When checking all possible configuration file types, Zowe CLI categorizes files in the manner below:
 
-Out of all possible configuration files, Zowe CLI commands use the following hierarchy:
+![Zowe CLI Config File Table](../images/common/cli-config-file-table.jpg)
 
-- **Most specific:** project user configuration file
-- **Slightly less specific:** project team configuration file
-- **Much less specific:** global user configuration file
-- **Least specific:** global team configuration file
+This order is applied no matter the directory in which you issue a Zowe CLI command. As a user, it can be easy to trace this logic when configuration files are all either in your home directory (i.e., specialized) or your project directory (i.e., generalized).
 
-This simple hierarchy is applied no matter the directory you issue a Zowe CLI command in.
+But when there are configuration files across directories (meaning, in a project directory *and* a home directory), tracking how these files work together can seem more complicated.
 
-When there are multiple configuration files with different profiles, the hierarchy can suddenly seem more complicated.
+Read on to go over some examples.
 
 ## Using a profile found in multiple configuration files
 
 Consider a user that has all configuration file types as in the following scenario:
 
-| specificity level | configuration | profile | property | value |
+| specificity type | file type | profile | property | value |
 |----------- | ----------- | ----------- | ----------- | ----------- |
-| Most specific | project user file | One | ABC | red |
-| Slightly less specific | project team file | Two | XYZ | yellow |
-| Much less specific | global user file | Three | MNO | green |
-|Least specific | global team file | Two | XYZ | blue |
+| specialized/more specific | project user config file | One | ABC | red |
+| specialized/less specific | project team config file | Two | XYZ | yellow |
+| generalized/more specific | global user config file | Three | MNO | green |
+| generalized/less specific | global team config file | Two | XYZ | blue |
 
-In the case above, if Zowe CLI needs the `MNO` property to carry out a command, it refers to the global user configuration to apply the `green` value because it is the only configuration file that has this particular property. Specificity does not matter here.
+In the case above, if Zowe CLI needs the `MNO` property to carry out a command, it refers to the global user configuration file to apply the `green` value because it is the only configuration file that has this particular property. No need to compare the specificity of files here.
 
 On the other hand, if a Zowe CLI command needs the information in the `Two` profile, it can seem like there are two possible values, `yellow` and `blue`. In this case Zowe CLI knows to use `yellow` by following the rules of specificity: The project team file is more specific than the global team file.
 
-Zowe CLI takes the following steps: **[is this correct? I kind of just inferred this.]**
+Zowe CLI takes the following steps:
 
 1. Finds the `XYZ` property in both Two profiles.
 
-2. Ignores the `blue` value for the `XYZ` property because the global team configuration is less specific.
+2. Ignores the `blue` value for the `XYZ` property because the global configuration file has a generalized use.
 
-3. Uses the `yellow` value for the `XYZ` property because the project team configuration is more specific.
+3. Uses the `yellow` value for the `XYZ` property because the project configuration file has a specialized use.
 
 ## Using multiple properties found in multiple profiles
 
@@ -89,9 +89,9 @@ In this scenario, the following profiles, properties, and values exist, displaye
 
 | Project User <br/> Configuration File |  Project Team <br/> Configuration File | Global User <br/> Configuration File |  Global Team <br/> Configuration File |
 | :----------------------  | :------------------------ | :---------------------- | :----------------------- |
-| **abc:** *direction:* north     | **abc:** *direction:* east       | **abc:** *direction:*  south   | **abc:** *direction:* west     |
-| **def:** *shape:* triangle  | **def:** *shape:* square        | **def:** *shape:* circle     |                                |
-|                                |                                 |                              | **ghi:** *texture:* bumpy      |
+| **abc:** *direction:* north  | **abc:** *direction:* east      | **abc:** *direction:*  south | **abc:** *direction:* west  <br/> **abc:** *numbers*: 123    |
+| **def:** *shape:* triangle     | **def:** *shape:* square        | **def:** *shape:* circle     |                                |
+|                                |                                 |                              | **ghi:** *texture:* bumpy <br/>|
 | **jkl:** *temperature:* cold   |                                 |                              |                                |
 |                                | **mno:** *fruit:* banana        |                              |                                |
 |                                |                                 | **pqr:** *distance:* near    |                                |
@@ -100,14 +100,12 @@ The following table shows how Zowe CLI determines which profiles, properties, an
 
 | Configuration files in use &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; | Specificity hierarchy rules | Profiles, properties and values used &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;|
 | :--------- | :------------ |:------------ |
-| - global user profile <br/> - global team profile | - When the same property exists within the same profile in both config files, the property value from the global user config is used. <br/> - When the same profile exists in both config files, but a property of that profile exists in only one configuration, that property is used. <br/> - If a profile exists in only one config file, that profile is used in its entirety. | **abc:** *direction:* south <br/> **def:** *shape:* circle <br/> **ghi:** *texture:* bumpy <br/> **pqr:** *distance:* near |
-| - project team profile <br/> - global user profile <br/> - global team profile | - When a profile exists in all three config files, the project team config is used. <br/> - If a profile exists in only one config file, that profile is used in its entirety. | **abc:** *direction:* east <br/> **def:** *shape:* square <br/> **ghi:** *texture:* bumpy <br/> **mno:** *fruit:* banana <br/> **pqr:** *distance:* near |
-| - project user team profile <br/> - project team profile <br/> - global user profile <br/> - global team profile | - When the same prop erty exists in all four config files, the property value from the project user config is used. <br/> - When the same profile exists in all four config files, but a property of that profile exists in only one configurations, that property is used. <br/> - If a profile exists in only one config file, that profile is used in its entirety. |  **abc:** *direction:* north <br/> **def:** *shape:* triangle <br/> **ghi:** *texture:* bumpy <br/> **jkl:** *temperature:* cold <br/> **mno:** *fruit:* banana <br/> **pqr:** *distance:* near |
+| - global user profile <br/> - global team profile | - When the same property exists within the same profile in both config files, the property value from the global user config is used. <br/> - When the same profile exists in both config files, but a property of that profile exists in only one file, that property is used. <br/> - If a profile exists in only one config file, that profile is used in its entirety. | **abc:** *direction:* south <br/> **def:** *shape:* circle <br/> **ghi:** *texture:* bumpy <br/> **pqr:** *distance:* near |
+| - project team profile <br/> - global user profile <br/> - global team profile | - When a profile exists in all three config files, the project team profile is used.<sup>*</sup> <br/> - If a profile exists in only one config file, that profile is used in its entirety. | **abc:** *direction:* east <br/> **def:** *shape:* square <br/> **ghi:** *texture:* bumpy <br/> **mno:** *fruit:* banana <br/> **pqr:** *distance:* near |
+| - project user profile <br/> - project team profile <br/> - global user profile <br/> - global team profile | - When the same profile with the same properties exists in all four config files, the property values from the project user config is used. <br/> - When the same profile exists in all four config files, the project files override the global files. If a property of the profile exists in only one of the two project configurations, that property is used.<sup>*</sup> <br/> - If a profile exists in only one config file, that profile is used in its entirety. |  **abc:** *direction:* north <br/> **def:** *shape:* triangle <br/> **ghi:** *texture:* bumpy <br/> **jkl:** *temperature:* cold <br/> **mno:** *fruit:* banana <br/> **pqr:** *distance:* near |
 
-**Note:** The rules above apply when profiles have the same name. To maintain the same set of properties in two different profiles, give each profile a different names so that Zowe CLI use a specific profile, if needed.
+<b>*</b> If the same profile exists in both a global configuration file and a project configuration file, the project configuration profile completely replaces the global profile. This is true even when the project profile has fewer properties in the same profile found in the global file.<br/><br/>
 
-Zowe CLI provides this information from configurations stored in team profiles. These configurations are stored as properties and property values. **[I think I have this wrong. Here, I want to explain that you can differentiate two profiles w/ the same name by changing the name (if this is even possible)]**
+The rules above apply when profiles have the same name. To maintain the same set of properties in two different profiles, give each profile a different name so that Zowe CLI uses a specific profile, if needed.
 
-**[Question for Gene: This article mentions base profiles and service profiles? How do those fit in w/ the team/user profiles?]** https://docs.zowe.org/stable/user-guide/cli-using-using-profiles
-
-**[Question for Gene: is it possible to have the same profile twice in the same config file but w/ different values?]**
+For more information on how configuration files work together, see [How Zowe CLI team configuration files are merged together](https://github.com/zowe/zowe-cli/blob/master/docs/How_config_files_are_merged.md). For information on other profile types, see [Using profiles](https://docs.zowe.org/stable/user-guide/cli-using-using-profiles).
