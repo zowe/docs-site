@@ -60,6 +60,14 @@ This section describes runtime configuration properties.
    * **ZWE_configs_debug**
 
      This property can be used to unconditionally add active debug profiles. For more information, see the [Spring documentation](https://docs.spring.io/spring-boot/docs/1.2.0.M1/reference/html/boot-features-profiles.html#boot-features-adding-active-profiles).
+   
+   * **ZWE_configs_sslDebug**
+
+     This property can be used to enable the SSL debugging and it can be helpful to know what exactly happens at the SSL layer.
+     It will use the `-Djavax.net.debug` Java parameter when starting the Gateway component. By setting `ZWE_configs_sslDebug` to `ssl`, all the SSL debugging
+     will be turned on. The `ZWE_configs_sslDebug` parameter also accepts other values that enables different level of tracing. For more information, see the [IBM documentation](https://www.ibm.com/docs/en/sdk-java-technology/8?topic=troubleshooting-debugging-utilities).
+     
+     **Note:** This property can also be enabled for the other API ML components.
 
    * **ZWE_configs_server_maxTotalConnections and ZWE_configs_server_maxConnectionsPerRoute**
 
