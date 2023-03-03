@@ -483,8 +483,15 @@ module.exports = {
         "user-guide/zowe-chat/chat_use_interact_methods",
       ],
     },
+    {
+      type: "category",
+      label: "Using Zowe IntelliJ Plug-in",
+      items: [
+        "user-guide/intellij-working-sets",
+        "user-guide/intellij-using",
+      ],
+    },
     "user-guide/sdks-using",
-    "user-guide/intellij-using",
   ],
   extending: [
     "extend/extend-zowe-overview",

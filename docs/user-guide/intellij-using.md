@@ -1,31 +1,45 @@
 # Using Zowe IntelliJ plug-in
 
-Learn how to work with the Zowe IntelliJ plug-in, including working with datasets, USS files, and jobs. 
+Learn how to work with the Zowe IntelliJ plug-in, including working with datasets, USS files, and jobs.
 
-## Working with datasets 
+## Settings
 
-You can create, rename, and delete datasets and members by using the Zowe IntelliJ plug-in. 
+<!-- Add settings description first -->
 
-You can create a new dataset, member, or allocate a dataset like an existing one by using **Allocate Like**** menu item in a context menu.
+## Working with Files Working Sets
 
-You can use the following functionalities when interacting with datasets:
+To work with z/OS datasets or USS files, you need to [set up a Files Working Set](intellij-working-sets.md#files-working-set). The most of the functions are available under context menu in Files Working Set view.
 
-- **View datasets and use different Working Sets**: You can see different datasets in the tree using several different Working Sets.
-- **Refresh the list of datasets**: Use “Refresh” menu item in the context menu for any dataset or Working set in a tree. 
-- **Migrate datasets**: Use “Migrate” menu item in the context menu for any dataset. 
-- **Rename datasets and members**: Use “Rename” menu item in the context menu for any dataset or dataset member. 
-- **Copy/move datasets and dataset members**: Use “Copy”, “Paste”, or “Cut” menu items in the context menu for any dataset or dataset member. 
-- **Edit dataset members**: Use double-click to open and edit any dataset member. 
-- **Create datasets/members and specify the parameters**: Use “New” -> “Dataset” or “Member” menu item in the context menu for any dataset or dataset member. 
-- **Delete dataset or dataset member**: Use “Delete” menu item in the context menu for any dataset or dataset member. 
-- **Submit a JCL**: You can submit a JCL from a chosen dataset. Use “Submit Job” menu item in the context menu for any dataset member. 
-- **Allocate Like**: You can create a copy of a chosen dataset with the same parameters. Use “Allocate Like” menu item in the context menu for any dataset. 
+Using the plug-in, you will be able to:
+- create, rename, view, edit, delete PS, PDS, PDS/e datasets, as well as PDS and PDS/e members;
+- use feature **Allocate Like** to create a dataset with parameters of another dataset;
+- use feature **Migrate** for datasets;
+- copy and move datasets and members between each other, as well as to USS filesystem and to another z/OS system;
+- submit JCL jobs with **Submit Job**;
 
-![Work with datasets](../images/intellij/intellij-using-datasets.gif)
+### Working with z/OS PS datasets
 
+![Work with PS datasets](../images/intellij/create_edit_rename_delete_ps.gif)
+
+### Working with z/OS PDS datasets
+
+![Work with PDS datasets](../images/intellij/pds_create_and_props.gif)
+
+### "Allocate Like" feature
+
+To issue the **Allocate Like**, click right mouse button on any of datasets and select **Allocate Like**.
+
+!["Allocate Like" feature](../images/intellij/allocate_like.gif)
+
+### "Submit Job" feature
+
+To issue the **Submit Job**, click right mouse button on any of PS datasets or PDS members and select **Submit Job**.
+
+!["Submit Job" feature](../images/intellij/submit_jcl.gif)
+
+
+<!-- CHANGEME -->
 ## Working with USS files
-
-To work with USS files, you need to [set up a specified Working Set](intellij-configure.md#creating-a-files-working-set) first and then work with all available files and directories. 
 
 Using the context menu in Zowe IntelliJ plug-in, you can create, rename, and delete files and directories.
 
