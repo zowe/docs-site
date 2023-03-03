@@ -319,8 +319,6 @@ module.exports = {
             "user-guide/api-mediation/api-catalog-configuration",
             "user-guide/api-mediation/api-gateway-configuration",
             "user-guide/api-mediation/discovery-service-configuration",
-            "user-guide/api-mediation/api-mediation-internal-configuration",
-            "user-guide/api-mediation-standalone",
             "extend/extend-apiml/api-mediation-passtickets",
           ],
         },
