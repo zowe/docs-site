@@ -382,7 +382,7 @@ module.exports = {
           label: "Using profiles",
           items: [
             "user-guide/cli-using-using-profiles",
-            "user-guide/cli-using-team-profiles-hierarchy",
+            "user-guide/cli-using-understand-profiles-configs",
           ],
         },
         {
