@@ -49,7 +49,7 @@ When checking all possible configuration file types, Zowe CLI categorizes files 
 
 ![Zowe CLI Config File Table](../images/common/cli-config-file-table.jpg)
 
-This order is applied no matter the directory in which you issue a Zowe CLI command. As a user, it can be easy to trace this logic when configuration files are all either in your ZOWE_CLI_HOME directory (i.e., narrow scope) or your project directory (i.e., broad scope).
+This order is applied no matter the directory in which you issue a Zowe CLI command. As a user, it can be easy to trace this logic when configuration files are all either in your ZOWE_CLI_HOME directory (i.e., broad scope) or your project directory (i.e., narrow scope).
 
 But when there are configuration files across directories (meaning, in a project directory *and* a home directory), tracking how these files work together can seem more complicated.
 
