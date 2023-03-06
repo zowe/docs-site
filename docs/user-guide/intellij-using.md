@@ -4,7 +4,19 @@ Learn how to work with the Zowe IntelliJ plug-in, including working with dataset
 
 ## Settings
 
-<!-- Add settings description first -->
+Before you start to use the plug-in, there are some settings available. First one - synchronization option.
+
+### Auto-sync option
+
+It is possible to synchronize the file or dataset you are editing either manually or automatically. The method is controlled by **Enable auto-sync with mainframe** option. When it is checked, you don't need to manually synchronize the file/dataset whilst you are editing it, the IntelliJ platform decides by itself, when and how to synchronize it. The plug-in is using this feature and allows users to avoid additional sync action. In case you want to be sure that you control the process of syncing with the mainframe, or in case you have some limitations for calls to z/OSMF, or for some other reason, you can disable this option and continue with manual synchronization either by button, appearing if there are any changes in the file, or by pressing simultaneously **Ctrl + Shift + S (Cmd + Shift + S for MacOS)**.
+
+![Auto-sync option](../images/intellij/sync_option.gif)
+
+### Batch size option
+
+Mainframe z/OS and USS filesystems could have a lot of datasets/files under a specified mask. Sometimes the loading of datasets/files list could take a lot of time if there are a lot of entries. To eliminate this problem, the plug-in provides the ability to control the amount of items loading at one time. It is called **Batch amount to show per fetch** in **Settings**. By default, it is set to **100** entries. When the list contains more than the specified number, you can load next amount of entries, specified in this option, double-clicking by **load more** item in the **File Explorer** view.
+
+![Batch size option](../images/intellij/batch_size.gif)
 
 ## Working with Files Working Sets
 
