@@ -14,6 +14,7 @@ As an API Mediation Layer user, you may encounter problems with how the API ML f
     * [API Components unable to handshake](#api-components-unable-to-handshake)
     * [Java z/OS components of Zowe unable to read certificates from keyring](#java-zos-components-of-zowe-unable-to-read-certificates-from-keyring)
     * [Java z/OS components of Zowe cannot load the certificate private key pair from the keyring](#java-zos-components-of-zowe-cannot-load-the-certificate-private-key-pair-from-the-keyring)
+    * [CeaTSORequest failed from z/OSMF Jobs REST API](#ceatsorequest-failed-from-zosmf-jobs-rest-api)
 ## Install API ML without Certificate Setup
 
 For testing purposes, it is not necessary to set up certificates when configuring the API Mediation Layer. You can configure Zowe without certificate setup and run Zowe with `verify_certificates: DISABLED`.
@@ -487,4 +488,58 @@ First, make sure that the private key stored in the keyring is not encrypted by 
       type: JCERACFKS
       file: safkeyring:////ZWESVUSR/ZoweKeyring
       password:
+```
+
+### CeaTSORequest failed from z/OSMF Jobs REST API
+
+**Symptom:**
+
+Use Zowe CLI file request (or Zowe Explorer USS or data sets) and get an error.
+
+**Example:**
+
+```
+Rest API failure with HTTP(S) status 500
+rc:       12
+reason:   2
+details: 
+  - 
+          =-=-=-=-=-=-=-=-=-=-=- CeaTsoRequest -=-=-=-=-=-=-=-=-=-=-=
+      ceatso_requesttype:    1
+      ceatso_userid:         WINCHJ
+      ceatso_asid:           0x0000
+      ceastso_logonproc:     IZUFPROC
+      ceatso_numqueryreq:    0
+      ceatso_numqueryrslt:   0
+      ceatso_msgqueueid:     0x00000000
+      ceatso_charset:        697
+      ceatso_codepage:       1047
+      ceatso_screenrows:     24
+      ceatso_screencols:     80
+      ceatso_account:        IZUACCT
+      ceatso_group:          SYS1
+      ceatso_region:         65536
+      ceatso_instance:       0
+      ceatso_apptag:         FSfcf15d
+      ceatso_stoken:         0x0000000000000000
+      ceatso_ascbaddr:       0x0
+      ceatso_flags:          0x0
+      ceatso_index:          0
+      =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+      
+    
+category: 3
+message:  CeaTso request failed
+```
+
+**Solution:**
+
+- Run the command `ipcs -x`. If there is a long list then recycle the Zowe `ZWESLSTC` started task.
+- To permanently fix this issue, add `zowe.environments.ZWE_PRIVATE_CLEANUP: true`. See an example as below:
+
+```
+  environments:
+    ZWED_SSH_PORT: 22
+    ZWED_TN3270_PORT: 992
+    ZWE_PRIVATE_CLEANUP_IPC_MQ: true
 ```
