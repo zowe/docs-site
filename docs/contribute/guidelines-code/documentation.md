@@ -51,7 +51,7 @@ Each of the common languages in Zowe have code-documentation-generation tools, e
 
 ### Typescript
 
-When writing TypeScript code, comment objects and functions in compliance with [JSDoc](http://usejsdoc.org/). If you are writing in an area of the codebase that does not yet have a definition file for JSDoc, define a configuration file that can be used for future documentation of that code.
+When writing TypeScript code, comment objects and functions in compliance with [JSDoc](https://jsdoc.app/). If you are writing in an area of the codebase that does not yet have a definition file for JSDoc, define a configuration file that can be used for future documentation of that code.
 
 ### Java
 
