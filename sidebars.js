@@ -23,6 +23,7 @@ module.exports = {
       label: "Release notes",
       items: [
         "getting-started/release-notes/release-notes-overview",
+        "getting-started/release-notes/v2_6_1",
         "getting-started/release-notes/v2_6_0",
         "getting-started/release-notes/v2_5_0",
         "getting-started/release-notes/v2_4_0",
@@ -317,7 +318,6 @@ module.exports = {
             "user-guide/api-mediation/api-catalog-configuration",
             "user-guide/api-mediation/api-gateway-configuration",
             "user-guide/api-mediation/discovery-service-configuration",
-            "user-guide/api-mediation/api-mediation-internal-configuration",
             "extend/extend-apiml/api-mediation-passtickets",
           ],
         },
@@ -376,7 +376,14 @@ module.exports = {
             "user-guide/cli-configure-daemon-on-zlinux-os",
           ],
         },
-        "user-guide/cli-using-using-profiles",
+        {
+          type: "category",
+          label: "Using profiles",
+          items: [
+            "user-guide/cli-using-using-profiles",
+            "user-guide/cli-using-understand-profiles-configs",
+          ],
+        },
         {
           type: "category",
           label: "Configuring team profiles",
@@ -609,7 +616,6 @@ module.exports = {
             "troubleshoot/launcher/launcher-error-codes"
           ],
         },
-        "troubleshoot/verify-fingerprint",
       ],
     },
     {
@@ -623,6 +629,13 @@ module.exports = {
         "troubleshoot/cli/zosmf-cli",
         "troubleshoot/cli/known-cli",
         "troubleshoot/cli/cli-issue",
+        {
+          type: "category",
+          label: "Zowe CLI Plug-ins",
+          items: [
+            "troubleshoot/cli/troubleshoot-cli-plugins"
+          ],
+        }
       ],
     },
     {
