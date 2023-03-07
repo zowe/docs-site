@@ -178,7 +178,7 @@ is presented to the end user. You can also see how to use your optional `--id` f
 ## Summary
 
 You extended an existing Zowe CLI plug-in by introducing a Node.js programmatic API, and you created a command definition with a handler.
-For an official plugin, you would also add [JSDoc](http://usejsdoc.org/) to your code and create automated tests.
+For an official plugin, you would also add [JSDoc](https://jsdoc.app/) to your code and create automated tests.
 
 ## Next steps
 

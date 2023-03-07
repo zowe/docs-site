@@ -23,6 +23,8 @@ module.exports = {
       label: "Release notes",
       items: [
         "getting-started/release-notes/release-notes-overview",
+        "getting-started/release-notes/v2_6_1",
+        "getting-started/release-notes/v2_6_0",
         "getting-started/release-notes/v2_5_0",
         "getting-started/release-notes/v2_4_0",
         "getting-started/release-notes/v2_3_1",
@@ -124,7 +126,8 @@ module.exports = {
             "user-guide/configure-xmem-server",
             "user-guide/configure-auxiliary-address-space",
             "user-guide/configure-zowe-zosmf-workflow",
-            "user-guide/configmgr-using"
+            "user-guide/configmgr-using",
+            "user-guide/install-configure-zos-extensions"
           ],
         },
         {
@@ -312,9 +315,9 @@ module.exports = {
           label: "API Mediation Layer",
           items: [
             "user-guide/configure-data-sets-jobs-api",
+            "user-guide/api-mediation/api-catalog-configuration",
             "user-guide/api-mediation/api-gateway-configuration",
             "user-guide/api-mediation/discovery-service-configuration",
-            "user-guide/api-mediation/api-mediation-internal-configuration",
             "extend/extend-apiml/api-mediation-passtickets",
           ],
         },
@@ -353,7 +356,7 @@ module.exports = {
         "extend/extend-apiml/api-mediation-routing",
         "extend/extend-apiml/service-information",
         "extend/extend-apiml/websocket",
-        "user-guide/api-mediation/api-mediation-personal-access-token",
+        "user-guide/api-mediation/api-gateway-rest-apis-documentation",
         "user-guide/api-mediation/api-mediation-smf",
       ],
     },
@@ -373,7 +376,14 @@ module.exports = {
             "user-guide/cli-configure-daemon-on-zlinux-os",
           ],
         },
-        "user-guide/cli-using-using-profiles",
+        {
+          type: "category",
+          label: "Using profiles",
+          items: [
+            "user-guide/cli-using-using-profiles",
+            "user-guide/cli-using-understand-profiles-configs",
+          ],
+        },
         {
           type: "category",
           label: "Configuring team profiles",
@@ -481,7 +491,6 @@ module.exports = {
       items: [
         "extend/packaging-zos-extensions",
         "extend/server-schemas",
-        "extend/install-configure-zos-extensions",
         "extend/lifecycling-with-zwesvstc",
         "extend/k8s-extend",
         "extend/k8s-conformance",
@@ -607,7 +616,6 @@ module.exports = {
             "troubleshoot/launcher/launcher-error-codes"
           ],
         },
-        "troubleshoot/verify-fingerprint",
       ],
     },
     {
@@ -621,6 +629,13 @@ module.exports = {
         "troubleshoot/cli/zosmf-cli",
         "troubleshoot/cli/known-cli",
         "troubleshoot/cli/cli-issue",
+        {
+          type: "category",
+          label: "Zowe CLI Plug-ins",
+          items: [
+            "troubleshoot/cli/troubleshoot-cli-plugins"
+          ],
+        }
       ],
     },
     {
@@ -760,7 +775,7 @@ module.exports = {
     {
       type: "link",
       label: "Third Party Software Requirements",
-      href: "https://github.com/zowe/docs-site/tree/master/tpsr/tpsr-v2.5.x.md",
+      href: "https://github.com/zowe/docs-site/tree/master/tpsr/tpsr-v2.6.x.md",
     },
   ],
 };

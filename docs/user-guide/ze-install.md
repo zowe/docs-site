@@ -1,7 +1,7 @@
 # Visual Studio Code (VS Code) Extension for Zowe
 
-<img src="https://codecov.io/gh/zowe/vscode-extension-for-zowe/branch/main/graph/badge.svg" alt="codecov" scope="external"/>
-<img src="https://img.shields.io/badge/chat-on%20Slack-blue" alt="slack" scope="external"/>
+[![codecov](https://codecov.io/gh/zowe/vscode-extension-for-zowe/branch/main/graph/badge.svg)](https://codecov.io/gh/zowe/vscode-extension-for-zowe)
+[![slack](https://img.shields.io/badge/chat-on%20Slack-blue)](https://slack.openmainframeproject.org/)
 
 The Zowe Explorer extension for Visual Studio Code (VS Code) modernizes the way developers and system administrators interact with z/OS mainframes, and lets you interact with data sets, USS files, and jobs.
 
@@ -19,14 +19,14 @@ Install the extension directly to [VSCode](https://code.visualstudio.com/) to en
 Ensure that you meet the following prerequisites before you use the extension:
 
 - Get access to z/OSMF.
-- Install [Node.js](https://nodejs.org/en/download/) v8.0 or later.
+- Install [Node.js](https://nodejs.org/en/download/) v14.0 or later.
 - Install [Visual Studio Code](https://code.visualstudio.com/).
 - Configure TSO/E address space services, z/OS data set, file REST interface, and z/OS jobs REST interface. For more information, see [z/OS Requirements](https://docs.zowe.org/stable/user-guide/systemrequirements-zosmf#z-os-requirements).
 - Create a Zowe CLI `zosmf` profile so that the extension can communicate with the mainframe.
 
 ### Profile notes:
 
-- Use existing Zowe CLI `zosmf` profiles created with Zowe CLI v.2.0.0 or later.
+- You can use existing Zowe CLI `zosmf` profiles created with Zowe CLI v.2.0.0 or later.
 
 - Zowe CLI `zosmf` profiles that are created in Zowe Explorer can be interchangeably used in Zowe CLI.
 
@@ -75,12 +75,12 @@ Follow these steps:
 1. In Zowe Explorer settings, scroll to a data set, USS file, or job setting type.
 2. Click the setting's corresponding **Edit in settings.json** link.
 
-    This opens the `settings.json` file in an **Editor** tab.
+    This opens the `settings.json` file in an **Editor** tab. (The suggestions widget also opens if the functionality is enabled.)
 
 3. Edit the settings in the file as needed.
 4. Save the file to keep changes.
 
-    ![Configure Zowe settings](../images/ze/ZE-Configuration.gif)
+    ![Configure Zowe settings](../images/ze/ZE-Configuration2.gif)
 
 ### Modifying temporary file location settings
 
@@ -91,15 +91,14 @@ Change the default folder location where temporary files are stored with the fol
    3. Modify the following definition in the file:
 
       ```json
-      "Zowe-Temp-Folder-Location": {
+      "zowe.files.temporaryDownloadsFolder": {
           "folderPath": "/path/to/directory"
         }
       ```
 
       Replace **/path/to/directory** with the new folder location.
-    
-    
-  3. Save the file to keep the change.
+
+4. Save the file to keep the change.
 
 ### Modifying the `Secure Credentials Enabled` setting
 
@@ -112,6 +111,23 @@ When environment conditions do not support the Zowe CLI built-in Credential Mana
     When disabled, if the `autoStore` setting in the `zowe.config.json` file is set to *true*, z/OS credentials are stored as text in the file.
 
     If the `autoStore` setting is set to *false*, you are prompted for the missing credentials in Visual Studio Code. These are stored and used for the duration of the session.
+
+### Setting confirmation requirements for submitting jobs
+
+Submitting the wrong job can risk potential problems on your server. This can happen when the user enters the wrong job or inadvertently selects the **Submit Jobs** option.
+
+To help prevent this, enable the option to require confirmation before submitting a job. Once enabled, a dialog window asking for user confirmation displays when **Submit Jobs** is selected.
+
+![Confirm Submit Job](../images/ze/ZE-SubmitJobConfirm.gif)
+
+To configure confirmation settings for submitting a job, follow these steps:
+
+1. On the VS Code menu bar, click **File**, **Preferences**, and click **Settings** to display the Settings editor.
+
+2. Select the **User** or **Workspace** tab, depending on the settings you want to update.
+3. In the Settings navigation menu, open the **Extensions** menu and click **Zowe Explorer**.
+4. In the **Jobs: Confirm Submission** section, open the drop-down menu to select a different confirmation setting.
+    - If enabled, a confirmation dialog displays when a job matching the selected option is submitted.
 
 ## Relevant Information
 
