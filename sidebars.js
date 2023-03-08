@@ -386,7 +386,14 @@ module.exports = {
             "user-guide/cli-configure-daemon-on-zlinux-os",
           ],
         },
-        "user-guide/cli-using-using-profiles",
+        {
+          type: "category",
+          label: "Using profiles",
+          items: [
+            "user-guide/cli-using-using-profiles",
+            "user-guide/cli-using-understand-profiles-configs",
+          ],
+        },
         {
           type: "category",
           label: "Configuring team profiles",
