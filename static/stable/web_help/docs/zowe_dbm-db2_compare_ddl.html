@@ -7,7 +7,7 @@
 <link rel="stylesheet" href="../css/docs.css">
 <article class="markdown-body">
 <h2><a href="zowe.html">zowe</a> › <a href="zowe_dbm-db2.html">dbm-db2</a> › <a href="zowe_dbm-db2_compare.html">compare</a> › <a href="zowe_dbm-db2_compare_ddl.html">ddl</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
-<p>Compare objects that are defined in a DDL file to objects that are defined on a Db2 subsystem and generate an update script to implement the necessary object changes. This command also generates a summary report that provides a high-level overview of the changes. You can execute the script that is generated from this command using the 'zowe dbm-db2 execute compare-script' command.</p>
+<p>Compare objects that are defined in a DDL file to objects that are defined on a Db2 subsystem and generate an update script to implement the necessary object changes. This command also generates a high-level change summary report and a parseable impact analysis report. You can execute the script that is generated from this command using the 'zowe dbm-db2 execute compare-script' command.</p>
 <h4>Usage</h4>
 <p>zowe dbm-db2 compare ddl &lt;local-input-ddl-filename&gt; [options]</p>
 <h4>Positional Arguments</h4>
@@ -146,8 +146,19 @@ TBTS TESTTS% PRODTS%</p>
 <p><code>--output-summary-file</code> | <code>--osf</code> <em>(string)</em></p>
 <ul>
 <li>
-<p>Specifies the local output file name that provides a summary of the changes to be performed to the Db2 objects on the target Db2 subsystem. The file summarizes what the changes are, but not how the changes are made.</p>
+<p>Specifies the local output file name that contains the change summary report in textual format. This report provides an overview of the changes to be performed to the Db2 objects on the target Db2 subsystem, but it does not describe how the changes are made.</p>
 <p>Default value: summary.txt</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--output-impact-file</code> | <code>--oif</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>Specifies the local output file name that contains the parseable impact analysis report in JSON or YAML format. This report helps identify significant DDL operations to be performed on Db2 objects. It provides the total number and type of DDL operations that are being performed on each object type, the list of DDL operations performed on each object instance, and the state of any pending changes.</p>
+<p>The report format is determined by the supplied file name extension: .json for JSON and .yaml or .yml for YAML. If no extension is provided, JSON format is used.</p>
+<p>Default value: impact.json</p>
+<p>For more information about the impact analysis report, see the RC/Migrator documentation at <a href="https://techdocs.broadcom.com/db2rcmig">https://techdocs.broadcom.com/db2rcmig</a>.</p>
 </li>
 </ul>
 </li>
@@ -254,13 +265,13 @@ TBTS TESTTS% PRODTS%</p>
 </ul>
 </li>
 <li>
-<p>Generate a script to update objects and apply a rule-set for the matched objects:</p>
+<p>Generate a script to update objects and apply a rule set for the matched objects:</p>
 <ul>
 <li><code>zowe dbm-db2 compare ddl myddl.sql --target-db2 TEST --rule-set USER1.RULESET</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe dbm-db2 compare ddl myddl.sql --target-db2 TEST --rule-set USER1.RULESET">Copy</button></li>
 </ul>
 </li>
 <li>
-<p>Generate a script to update objects and apply a ruleset for the objects matched as determined by the local mask specifications in the pair.txt file:</p>
+<p>Generate a script to update objects and apply a rule set for the objects matched as determined by the local mask specifications in the pair.txt file:</p>
 <ul>
 <li><code>zowe dbm-db2 compare ddl myddl.sql --target-db2 TEST --rule-set USER1.RULESET --match-set-file pair.txt</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe dbm-db2 compare ddl myddl.sql --target-db2 TEST --rule-set USER1.RULESET --match-set-file pair.txt">Copy</button></li>
 </ul>
