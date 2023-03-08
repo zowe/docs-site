@@ -34,7 +34,6 @@ body {
 }
 
 #footer {
-    cursor: pointer;
     flex: none;
     font-size: small;
     margin: 10px 0;
