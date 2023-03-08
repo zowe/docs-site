@@ -20,11 +20,11 @@ The following error message codes may appear on the app-server log. Use the foll
 
 ### ZWED0021I
 
-  Eureka Client Registered from _ipAddress_. Available at _discoveryUrl_
+  Eureka Client Registered from _ipAddress_. Available at _discoveryUrl_.
 
   **Reason:**
 
-  The registration attempt from ZWED0020I has succeeded. The server is known to the API ML discovery server from the address _ipAddress_
+  The registration attempt from ZWED0020I has succeeded. The server is known to the API ML discovery server from the address _ipAddress_.
 
   **Action:**
 
@@ -94,7 +94,7 @@ The following error message codes may appear on the app-server log. Use the foll
 
   **Reason:**
 
-  The server is starting up _quantity_ new workers. Workers are redundant execution contexts of the server and increase throughput and latency of requests when the server has a lot of concurrent client requests. This message happens at startup and the _quantity_ is determined by the environment variables ZLUX_MIN_WORKERS and ZLUX_MAX_WORKERS.
+  The server is starting up _quantity_ new workers. Workers are redundant execution contexts of the server and increase throughput and latency of requests when the server has a lot of concurrent client requests. This message appears at startup and the _quantity_ is determined by the environment variables ZLUX_MIN_WORKERS and ZLUX_MAX_WORKERS.
 
   **Action:**
 
@@ -150,7 +150,7 @@ The following error message codes may appear on the app-server log. Use the foll
 
   **Reason:**
 
-  The server is ready to accept client requests. It can be found at the _ipAddress_ listed, and you can tell if it has loaded all plugins successfully by the _percentage_ listed
+  The server is ready to accept client requests. It can be found at the _ipAddress_ listed, and you can tell if it has loaded all plugins successfully by the _percentage_ listed.
 
   **Action:**
 
@@ -180,7 +180,7 @@ The following error message codes may appear on the app-server log. Use the foll
 
   **Reason:**
 
-  The plugin _pluginId_ was loaded which has a webContent section defined in its pluginDefinition.json file. The server will serve the read-only content from the _filePath_
+  The plugin _pluginId_ was loaded which has a webContent section defined in its pluginDefinition.json file. The server will serve the read-only content from the _filePath_.
 
   **Action:**
 
@@ -278,7 +278,7 @@ The following error message codes may appear on the app-server log. Use the foll
 
   **Reason:**
 
-  When the server was loading the "nodeAuthentication" type plugin _pluginId_, it determined that the plugin only handles security actions for a category that was not requested by the server configuration or any plugins. Because nothing needed it, the plugin was skipped instead of loaded.
+  When the server was loading the "nodeAuthentication" type plugin _pluginId_, it determined that the plugin only handles security actions for a category that was not requested by the server configuration or any plugins. The plugin was skipped because it was not required.
 
   **Action:**
 
@@ -324,7 +324,7 @@ The following error message codes may appear on the app-server log. Use the foll
 
   **Action:**
 
-  No action required. If the user desires, they may check their list of plugins on the Desktop to see if the plugin was added successfully. 
+  No action required. If you need it, you may check the list of plugins on the Desktop to see if the plugin was added successfully. 
 
 
 
@@ -394,7 +394,9 @@ The following error message codes may appear on the app-server log. Use the foll
 
   **Action:**
 
-  No action required. Optionally, you could verify the deletion of the plugin in the Desktop, doing a GET call to the list of the plugins, or by viewing the status code of the REST request if plugin was deleted by network request.
+  No action required. Optionally, you could verify that the plugin was deleted using following options: 
+  * doing a GET call to the list of the plugins, OR 
+  * viewing the status code of the REST request if plugin was deleted by the network request.
 
 
 
@@ -530,7 +532,7 @@ The following error message codes may appear on the app-server log. Use the foll
 
   **Reason:**
 
-  An authentication plugin has performed a successful operation and received a valid HTTP response.
+  An authentication plugin ran successfully and received a valid HTTP response.
 
   **Action:**
 
@@ -686,7 +688,7 @@ The following error message codes may appear on the app-server log. Use the foll
 
   **Reason:**
   The registration attempt from ZWED0109I has succeeded.
-  Before the server starts it registers all the *_plugin identifier_* with the App server and installs them.
+  Before the server starts, it registers all the *_plugin identifier_* with the App server and installs them.
 
   **Action:**
 
@@ -731,7 +733,7 @@ The following error message codes may appear on the app-server log. Use the foll
 
   **Action:**
 
-  Review dataservice configuration to determine if this is intentional and desired. Some dataservices are okay to not require authentication, while others should have it.
+  Review dataservice configuration to determine if this is intentional and desired. Some dataservices do not require authentication, while others should have it.
 
 
 
@@ -984,21 +986,21 @@ The following error message codes may appear on the app-server log. Use the foll
 
   **Action:**
 
-  By default, the App server runs in a cluster. You can specify minimum number of cluster workers 
+  By default, the App server runs in a cluster. You can specify minimum number of cluster workers. 
 
 
 
 ### ZWED0213I
 
-  Environmental variable ZLUX_MAX_WORKERS was not a valid number therefore _count_ will be used as the maximum workers
+  Environmental variable ZLUX_MAX_WORKERS was not a valid number therefore _count_ will be used as the maximum workers.
 
   **Reason:**
 
-  ZLUX_MAX_WORKERS environment variable is not valid, so the maximum number of workers as part of the cluster will be _count_
+  ZLUX_MAX_WORKERS environment variable is not valid, so the maximum number of workers as part of the cluster will be _count_.
 
   **Action:**
 
-  By default, the App server runs in a cluster. You can specify maximum number of cluster workers 
+  By default, the App server runs in a cluster. You can specify maximum number of cluster workers. 
 
 
 
@@ -1251,7 +1253,7 @@ The following error message codes may appear on the app-server log. Use the foll
 
   **Action:**
 
-  Check the _error_ to see the possible cause for the failure. Retry this operation but if thie issue persists you should restart the server.
+  Check the _error_ to see the possible cause for the failure. Retry this operation but if the issue persists you should restart the server.
 
 
 
@@ -1261,7 +1263,7 @@ The following error message codes may appear on the app-server log. Use the foll
 
   **Reason:**
 
-  A plugin was trying to be added to the server but it wasn't possible because another plugin with the same ID already was running within the server.
+  A plugin was trying to be added to the server but it wasn't possible because another plugin with the same ID was already running within the server.
 
   **Action:**
 
@@ -1440,7 +1442,7 @@ The following error message codes may appear on the app-server log. Use the foll
 
   **Action:**
 
-  Check the _error_ message to see what the reason for the error could be, and correct it before restarting the server in order to try loading the plugin again.
+  Check the _error_ message to see the reason for the error, and correct it before restarting the server in order to try loading the plugin again.
 
 
 
@@ -1556,7 +1558,7 @@ The following error message codes may appear on the app-server log. Use the foll
 
   **Action:**
 
-  No action needed usually, but error may be needed for debugging
+  No action needed usually except, debugging of the error. 
 
 
 
@@ -1570,7 +1572,7 @@ The following error message codes may appear on the app-server log. Use the foll
 
   **Action:**
 
-  No action needed usually, but error may be needed for debugging
+  No action needed usually except, debugging of the error.
 
 
 
@@ -1711,17 +1713,17 @@ The following error message codes may appear on the app-server log. Use the foll
 
   **Action:**
 
-  Compare with your configuration to see where the invalid _address is being referenced
+  Compare with your configuration to see where the invalid _address_ is being referenced
 
 
 
 ### ZWED0057W
 
-  Loopback calls: localhost equivalent address not found in list _listenerAddresses_. Using first address _address_; Verify firewall will allow this.
+  Loopback calls: localhost equivalent address not found in the list _listenerAddresses_. Using first address _address_; Verify firewall will allow this.
 
   **Reason:**
 
-  Unable to find a localhost equivalent from the _listenerAddresses_ list so server defaults to the first address in the loop
+  Unable to find a localhost equivalent from the _listenerAddresses_ list so the server considers the first address in the loop by default.
 
   **Action:**
 
@@ -1735,11 +1737,11 @@ The following error message codes may appear on the app-server log. Use the foll
 
   **Reason:**
 
-  Log location isn't being specified for this dataservice
+  Log location isn't being specified for this dataservice.
 
   **Action:**
 
-  Check dataservice plugin definition to see if log location is being specified
+  Check dataservice plugin definition to see if log location is being specified.
 
 
 
@@ -1775,11 +1777,11 @@ The following error message codes may appear on the app-server log. Use the foll
 
   **Reason:**
 
-  A network request to this service failed
+  A network request to this service failed.
 
   **Action:**
 
-  Check Network log and review error
+  Check Network log and review the error.
 
 
 
@@ -1808,7 +1810,7 @@ The following error message codes may appear on the app-server log. Use the foll
 
   **Action:**
 
-  No action needed unless user is experiencing an interruption in server service, then send stack to developers
+  No action needed unless user is experiencing an interruption in the server service, then send the stack to developers.
 
 
 
@@ -1822,7 +1824,7 @@ The following error message codes may appear on the app-server log. Use the foll
 
   **Action:**
 
-  Review the warning message and use correct method
+  Review the warning message and use correct method.
 
 
 
@@ -1832,11 +1834,11 @@ The following error message codes may appear on the app-server log. Use the foll
 
   **Reason:**
 
-  Library plugin's plugin definition is missing the library version attribute
+  Library plugin's plugin definition is missing the library version attribute.
 
   **Action:**
 
-  Add the correct library version in the plugin definition
+  Add the correct library version in the plugin definition.
 
 
 
@@ -2035,7 +2037,7 @@ The following error message codes may appear on the app-server log. Use the foll
 
   **Action:**
 
-  Check if your directory is exists and is valid.
+  Check if your directory exists and is valid.
 
 
 
@@ -2077,7 +2079,7 @@ The following error message codes may appear on the app-server log. Use the foll
 
   **Action:**
 
-  Review the message and if app server service is interrupted, send it and your log to support for troubleshooting.
+  Review the message and if app server service is interrupted, send the message along with the log to support for troubleshooting.
 
 
 
@@ -2091,7 +2093,7 @@ The following error message codes may appear on the app-server log. Use the foll
 
   **Action:**
 
-  Review the message and if app server service is interrupted, send it and your log to support for troubleshooting.
+  Review the message and if app server service is interrupted, send the message along with the log to support for troubleshooting.
 
 
 
@@ -2119,7 +2121,7 @@ The following error message codes may appear on the app-server log. Use the foll
 
   **Action:**
 
-  Review the _errorMessage_ and if app server service is interrupted, send it and your log to support for troubleshooting.
+  Review the _errorMessage_ and if app server service is interrupted, send the message along with the log to support for troubleshooting.
 
 
 
@@ -2133,7 +2135,7 @@ The following error message codes may appear on the app-server log. Use the foll
 
   **Action:**
 
-  Review the _error_ and if app server service is interrupted, send it and your log to support for troubleshooting.
+  Review the _error_ and if app server service is interrupted, send the message along with the log to support for troubleshooting..
 
 
 
@@ -2147,7 +2149,7 @@ The following error message codes may appear on the app-server log. Use the foll
 
   **Action:**
 
-  No action is needed usually, but an _ErrorMsg_ may be needed for debugging.
+  No action is needed usually, however, need to debug the _ErrorMsg_.
 
 
 
@@ -2161,7 +2163,7 @@ The following error message codes may appear on the app-server log. Use the foll
 
   **Action:**
 
-  Go through the _errorMessage_ for context on what to debug.
+  Go through the _errorMessage_ and undestand what to debug.
 
 
 
@@ -2203,7 +2205,7 @@ The following error message codes may appear on the app-server log. Use the foll
 
   **Action:**
 
-  No action is needed usually, but an error message may be needed for debugging.
+  No action is needed usually, however, need to debug the _ErrorMsg_.
 
 
 
@@ -2217,7 +2219,7 @@ The following error message codes may appear on the app-server log. Use the foll
 
   **Action:**
 
-  No action is needed usually, but an error message may be needed for debugging.
+  No action is needed usually, however, need to debug the _ErrorMsg_.
 
 
 
@@ -2427,7 +2429,7 @@ The following error message codes may appear on the app-server log. Use the foll
 
   **Action:**
 
-  Check the value of zowe.certificate.keystore.password and zowe.certificate.truststore.password, or the environment variable KEYSTORE_PASSWORD to see if they any are valid for the p12 file provided, and adjust the configuration if needed. 
+  Check the value of zowe.certificate.keystore.password and zowe.certificate.truststore.password, or the environment variable KEYSTORE_PASSWORD to see if they are valid for the p12 file provided, and adjust the configuration if needed. 
 
 
 
@@ -2596,7 +2598,7 @@ The following error message codes may appear on the app-server log. Use the foll
 
   **Action:**
 
-  Contact the developers so that they can revise the pluginDefinition.json of the plugin where the service is located to be semver-compatible. Details on what a semver version is can be found at semver.org
+  Contact the developers so that they can revise the pluginDefinition.json of the plugin where the service is located to be semver-compatible. Details on semver version can be found at semver.org
 
 
 
@@ -2718,7 +2720,7 @@ The following error message codes may appear on the app-server log. Use the foll
 
   **Reason:**
 
-  The server finds pugins by reading JSON files within the "plugins" folder of its workspace directory. When it checked the JSON of this particular plugin, it stated the plugin was located in a folder which the server determined did not contain the pluginDefinition.json file that every plugin requires. Due to this missing file, the loading of this plugin was skipped.
+  The server finds plugins by reading JSON files within the "plugins" folder of its workspace directory. When it checked the JSON of this particular plugin, it stated the plugin was located in a folder which the server determined did not contain the pluginDefinition.json file that every plugin requires. Due to this missing file, the loading of this plugin was skipped.
 
   **Action:**
 
@@ -2806,7 +2808,7 @@ The following error message codes may appear on the app-server log. Use the foll
 
   **Action:**
 
-  Contact the plugin developer if plugin returns this error
+  Contact the plugin developer if plugin returns this error.
 
 
 
@@ -2816,11 +2818,11 @@ The following error message codes may appear on the app-server log. Use the foll
 
   **Reason:**
 
-  App server, during a cluster/worker method call, tried to act on a method that isn't valid
+  App server, during a cluster/worker method call, tried to act on a method that isn't valid.
 
   **Action:**
 
-  Contact the plugin developer if plugin returns this error
+  Contact the plugin developer if plugin returns this error.
 
 
 
@@ -2830,11 +2832,11 @@ The following error message codes may appear on the app-server log. Use the foll
 
   **Reason:**
 
-  App server, during a cluster/worker method call, tried and failed to export a module object
+  App server, during a cluster/worker method call, tried and failed to export a module object.
 
   **Action:**
 
-  Contact the plugin developer if plugin returns this error
+  Contact the plugin developer if plugin returns this error.
 
 
 
@@ -2844,11 +2846,11 @@ The following error message codes may appear on the app-server log. Use the foll
 
   **Reason:**
 
-  Authentication plugin (which plugin includes looking at nearby log messages) is missing the .authenticate() method
+  Authentication plugin (which plugin includes looking at nearby log messages) is missing the .authenticate() method.
 
   **Action:**
 
-  Contact the plugin developer if plugis is essential for authenticaiton
+  Contact the plugin developer if plugin is essential for authenticaiton.
 
 
 
@@ -2858,11 +2860,11 @@ The following error message codes may appear on the app-server log. Use the foll
 
   **Reason:**
 
-  The App server encountered a circular dependency for plugin _pluginIdentifier_ (meaning it contains a dependency that imports itself)
+  The App server encountered a circular dependency for plugin _pluginIdentifier_ (meaning it contains a dependency that imports itself).
 
   **Action:**
 
-  Contact the plugin developer for troubleshooting help. This is a packaging issue
+  Contact the plugin developer for troubleshooting help. This is a packaging issue.
 
 
 
@@ -2872,11 +2874,11 @@ The following error message codes may appear on the app-server log. Use the foll
 
   **Reason:**
 
-   The App server encountered a circular dependency for plugin _pluginIdentifier_ (meaning it contains a dependency that imports itself)
+   The App server encountered a circular dependency for plugin _pluginIdentifier_ (meaning it contains a dependency that imports itself).
 
   **Action:**
 
-  Contact the plugin developer for troubleshooting help. This is a packaging issue
+  Contact the plugin developer for troubleshooting help. This is a packaging issue.
 
 
 
@@ -2886,7 +2888,7 @@ The following error message codes may appear on the app-server log. Use the foll
 
   **Reason:**
 
-  The App server attempted to validate and process the server configuration and there was an issue
+  The App server attempted to validate and process the server configuration and there was an issue.
 
   **Action:**
 
@@ -2900,25 +2902,25 @@ The following error message codes may appear on the app-server log. Use the foll
 
   **Reason:**
 
-  The Java manager was given a port outside the valid port range (0 < 65535)
+  The Java manager was given a port outside the valid port range (0 < 65535).
 
   **Action:**
 
-  Please check your configuration to see if any ports are out of bounds
+  Please check your configuration to see if any ports are out of bounds.
 
 
 
 ### ZWED0039E
 
-  JavaManager not given any ports with which to run servers
+  JavaManager not given any ports with which to run servers.
 
   **Reason:**
 
-  Configuration does not contain ports for Java manager to try to run the servers
+  Configuration does not contain ports for Java manager to try to run the servers.
 
   **Action:**
 
-  Please check your configuration to see if any ports are missing
+  Please check your configuration to see if any ports are missing.
 
 
 
@@ -2928,17 +2930,17 @@ The following error message codes may appear on the app-server log. Use the foll
 
   **Reason:**
 
-  For this war, an unknown grouping default _grouping_ was encountered (types: 'microservice' or 'appserver' allowed)
+  For this war, an unknown grouping default _grouping_ was encountered (types: 'microservice' or 'appserver' allowed).
 
   **Action:**
 
-  Contact the plugin developer for troubleshooting
+  Contact the plugin developer for troubleshooting.
 
 
 
 ### ZWED0041E
 
-  Could not find port to use for configuration, at config position=_portIndex_
+  Could not find port to use for configuration, at config position=_portIndex_.
 
   **Reason:**
 
@@ -2966,7 +2968,7 @@ The following error message codes may appear on the app-server log. Use the foll
 
 ### ZWED0043E
 
- Unknown java app server type=_javaRuntimeTime_ specified in config. Cannot continue with java loading
+ Unknown java app server type=_javaRuntimeTime_ specified in config. Cannot continue with java loading.
 
   **Reason:**
 
@@ -3267,11 +3269,11 @@ The following error message codes may appear on the app-server log. Use the foll
 
   **Reason:**
 
-  The server was loading plugins and determines the location of each plugin via a plugin pointer file. In the plugin referenced in the logs, this plugin's location is dynamically determined by an environment variable _variableName_. Because the variable did not resolve to a value, the plugin could not be found and could not be loaded.
+  The server was loading plugins. It determines the location of each plugin via a plugin pointer file. The plugin referenced in the logs, it's location is dynamically determined by an environment variable _variableName_. Because the variable did not resolve to a value, the plugin could not be found and could not be loaded.
 
   **Action:**
 
-  Review documentation for the plugin that failed to load to see what the value of the variable should be, and contact support for that plugin if needed.
+  Review the documentation for the plugin that failed to load, check what the value of the variable should be, and contact support for that plugin if needed.
 
 
 
@@ -3295,7 +3297,7 @@ The following error message codes may appear on the app-server log. Use the foll
 
   **Reason:**
 
-  The Zowe host operating system _operatingSystemName_ is not a supported by the component _componentName_. Supported platforms are defined in the component's pluginDefinition.json.
+  The Zowe host operating system _operatingSystemName_ is not supported by the component _componentName_. Supported platforms are defined in the component's pluginDefinition.json.
 
   **Action:**
 
@@ -3333,7 +3335,7 @@ The following error message codes may appear on the app-server log. Use the foll
 
 ### ZWED0156E
 
- Could not register default plugins into app-server
+ Could not register default plugins into app-server.
 
   **Reason:**
 
@@ -3347,7 +3349,7 @@ The following error message codes may appear on the app-server log. Use the foll
 
 ### ZWED0157E
 
- Could not register default plugin _pluginid_ into app-server
+ Could not register default plugin _pluginid_ into app-server.
 
   **Reason:**
 
