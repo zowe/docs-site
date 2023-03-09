@@ -311,6 +311,7 @@ module.exports = {
       items: [
         "user-guide/mvd-configuration",
         "user-guide/cli-configuringcli-ev",
+        "user-guide/cli-configuringcli-evfile",
         "user-guide/configure-data-sets-jobs-api",
         {
           type: "category",
@@ -386,7 +387,14 @@ module.exports = {
             "user-guide/cli-configure-daemon-on-zlinux-os",
           ],
         },
-        "user-guide/cli-using-using-profiles",
+        {
+          type: "category",
+          label: "Using profiles",
+          items: [
+            "user-guide/cli-using-using-profiles",
+            "user-guide/cli-using-understand-profiles-configs",
+          ],
+        },
         {
           type: "category",
           label: "Configuring team profiles",
