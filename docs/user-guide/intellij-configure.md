@@ -31,7 +31,7 @@ To create the connection:
 *Prerequisite: Zowe CLI installed ([click here for the guide](https://docs.zowe.org/stable/user-guide/cli-installcli))*
 
 To create the z/OSMF connection with Zowe Config v2:
-1. In command line, issue: `npm install -g prebuild-install`;
+1. In command line, issue: `zowe config init`;
 2. Enter all the required information;
 3. After that, *Zowe config file detected* notification should appear, click **Add Zowe Connection**;
 4. If the connection test is failed, click **Add Anyway**;
