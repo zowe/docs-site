@@ -23,6 +23,7 @@ module.exports = {
       label: "Release notes",
       items: [
         "getting-started/release-notes/release-notes-overview",
+        "getting-started/release-notes/v2_7_0",
         "getting-started/release-notes/v2_6_1",
         "getting-started/release-notes/v2_6_0",
         "getting-started/release-notes/v2_5_0",
@@ -310,6 +311,7 @@ module.exports = {
       items: [
         "user-guide/mvd-configuration",
         "user-guide/cli-configuringcli-ev",
+        "user-guide/cli-configuringcli-evfile",
         "user-guide/configure-data-sets-jobs-api",
         {
           type: "category",
@@ -320,7 +322,6 @@ module.exports = {
             "user-guide/api-mediation/api-gateway-configuration",
             "user-guide/api-mediation/discovery-service-configuration",
             "user-guide/api-mediation/api-mediation-internal-configuration",
-            "user-guide/api-mediation-standalone",
             "extend/extend-apiml/api-mediation-passtickets",
           ],
         },
@@ -386,7 +387,14 @@ module.exports = {
             "user-guide/cli-configure-daemon-on-zlinux-os",
           ],
         },
-        "user-guide/cli-using-using-profiles",
+        {
+          type: "category",
+          label: "Using profiles",
+          items: [
+            "user-guide/cli-using-using-profiles",
+            "user-guide/cli-using-understand-profiles-configs",
+          ],
+        },
         {
           type: "category",
           label: "Configuring team profiles",
@@ -787,7 +795,7 @@ module.exports = {
     {
       type: "link",
       label: "Third Party Software Requirements",
-      href: "https://github.com/zowe/docs-site/tree/master/tpsr/tpsr-v2.6.x.md",
+      href: "https://github.com/zowe/docs-site/tree/master/tpsr/tpsr-v2.7.x.md",
     },
   ],
 };
