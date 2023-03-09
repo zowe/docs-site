@@ -26,8 +26,9 @@ Using the plug-in, you will be able to:
 - create, rename, view, edit, delete PS, PDS, PDS/e datasets, as well as PDS and PDS/e members;
 - use feature **Allocate Like** to create a dataset with parameters of another dataset;
 - use feature **Migrate** for datasets;
-- copy and move datasets and members between each other, as well as to USS filesystem and to another z/OS system;
 - submit JCL jobs with **Submit Job**;
+- create, rename, view, edit, delete USS files and folders;
+- copy, move z/OS datasets and USS files, both inside the filesystem, and between them, as well as between systems with different IP address.
 
 ### Working with z/OS PS datasets
 
@@ -49,27 +50,130 @@ To issue the **Submit Job**, click right mouse button on any of PS datasets or P
 
 !["Submit Job" feature](../images/intellij/submit_jcl.gif)
 
+### Working with USS files
 
-<!-- CHANGEME -->
-## Working with USS files
+There is a possibility to work with USS filesystem using the plug-in. Plug-in allows users to create files with a specific set of access rules, edit the file, rename, delete them, copy and move. With the existing ones, it is also possible to change the rules. Also the plug-in allows to change encoding of the file to a desired one, so the content of the file is shown correctly.
 
-Using the context menu in Zowe IntelliJ plug-in, you can create, rename, and delete files and directories.
+About the encoding: there is two different options for encoding change. One is **Reload** option, which allows users to reload the file with the specified encoding. It means that the file won't be converted to that encoding, and the plug-in just opens it with the specified one. The second option is **Convert**. This option converts the file to the specified encoding, changing it contents. It means that the plug-in will try to change the file bytes if it is possible, and then will display the contents with the changed bytes.
 
-You can use the following functionalities when interacting with USS files:
+![Work with USS files](../images/intellij/work_with_uss.gif)
 
-- **View Unix System Services (USS) files**: You can view multiple USS files simultaneously.
-- **Rename USS files and directories**: Use “Rename” menu item in the context menu for any directory or file. 
-- **Edit USS files**: Use double-click to open and edit any file. 
-- **Create USS files and directories**: Use “New” -> “Directory” or “File” menu item in the context menu for any directory or file. 
-- **Delete USS files and directories**: Use “Delete” menu item in the context menu for any directory or file. 
-- **Copy/move USS files and directories**: Use “Copy” / “Paste” / “Cut” menu item in the context menu for any directory or file. 
+### Copy/move functionality
 
-![Work with USS files](../images/intellij/intellij-using-uss-files.gif)
+There are some options to copy and move z/OS datasets and members, and USS files. 
 
-## Working with jobs
+**Important note**: the contents of the source files and datasets will stay the same, until you try to copy/move a file from USS to a z/OS partitioned dataset. If the file contents are longer than the specified for the PDS logical record length, then firstly the content will be cut to the specified LRECL, and the rest is going to be on the next lines. 
 
-To operate with your JCL jobs, ensure you [create a JES Working Set](intellij-configure.md#creating-a-jes-working-set) first, which will hold all the filters for the JES Explorer. 
+It is possible to move and copy files and datasets either through hotkey buttons and context menu, or using drag and drop.
 
-You can submit a job and see the output. 
+To move a member from one dataset to another:
+1. Click right mouse button on the member to be moved;
+2. Select **Cut**;
+3. On the target dataset click **Paste**;
+4. ...or just drag and drop it.
 
-![Work with jobs](../images/intellij/intellij-using-jobs.gif)
+![Move member from one PDS to another](../images/intellij/move_mem_to_ds.gif)
+
+If a sequential dataset is being moved to PDS, the name will be trimmed to the last element in the HLQ.
+
+To move a sequential dataset to a partitioned dataset:
+1. Click right mouse button on the PS to be moved;
+2. Select **Cut**;
+3. On the target dataset click **Paste**;
+4. ...or just drag and drop it.
+
+To copy member from one dataset to another:
+1. Click right mouse button on the member to be copied;
+2. Select **Copy**;
+3. On the target dataset click **Paste**;
+
+![Move PS to PDS and copy member from one PDS to another](../images/intellij/pds_copy_move_ds.gif)
+
+To move USS file or folder to another USS folder:
+1. Click right mouse button on the folder or the file to be moved;
+2. Select **Cut**;
+3. On the target folder click **Paste**;
+4. ...or just drag and drop it.
+
+![Move USS file or folder to another USS folder](../images/intellij/move_uss_folder_to_uss_folder.gif)
+
+To copy PDS member to USS filesystem:
+1. Click right mouse button on the member to be copied;
+2. Select **Copy**;
+3. On the target folder or the USS filesystem mask click **Paste**.
+
+![Copy member to USS](../images/intellij/copy_mem_to_uss.gif)
+
+While moving or copying a partitioned dataset to the USS filesystem, it will be converted to a USS folder. All the contents will become USS files.
+
+To move a PDS to USS filesystem:
+1. Click right mouse button on the PDS to be copied;
+2. Select **Cut**;
+3. On the target folder or the USS filesystem mask click **Paste**;
+4. ...or just drag and drop it.
+
+![Move PDS to USS](../images/intellij/pds_move_zos_to_uss.gif)
+
+Also, it is possible to copy/move USS file to PDS dataset. The file will become the PDS member.
+
+**Be aware**: the file name being copied/moved should be no more than 8 symbols. Also, see [the limitations and rules](#copymove-functionality) for the file being copied
+
+To move USS file to a PDS:
+1. Click right mouse button on the file to be copied;
+2. Select **Cut**;
+3. On the target PDS click **Paste**;
+4. ...or just drag and drop it.
+
+![Copy member to USS and USS file to PDS](../images/intellij/move_uss_to_pds.gif)
+
+### Cross-system copy
+
+The plug-in makes it possible to move and copy z/OS datasets and USS files between different system. E.g.: a user has two systems, the first - z/OS 2.3, the second - z/OS 2.4. So, it is possible to copy or move files and datasets either from z/OS 2.3 to z/OS 2.4, or vice versa. The rules of copying and moving that are described previously, are also applicable to such kind of action.
+
+To copy/move element from one system to another:
+1. Click right mouse button on the element to be copied/moved;
+2. Select **Copy**/**Cut**;
+3. On the target system's element click **Paste**.
+
+*(Use drag and drop to move elements faster)*
+
+![Cross-system operations](../images/intellij/cross_system_copy.gif)
+
+## Working with JES Working Sets
+
+To operate with your JCL jobs, ensure you [create a JES Working Set](intellij-working-sets.md#jes-working-set) first, which will hold all the filters for the JES Explorer.
+
+With the plug-in it is possible to view a status of jobs, view full log of a job run, view and edit jobs' JCLs, submit them right after they are edited, purge them.
+
+To edit JCL of a job and run it just after it is edited:
+1. Click right mouse button on a job;
+2. Select **Edit JCL**, the JCL will appear in the editor;
+3. Change the JCL as you want;
+4. Click green button **Submit Job** in the edittor.
+
+After the job is started, a console view will appear. In the console view it is possible to see the full execution log of the job.
+
+To view the execution log of the job again:
+1. Click right mouse button on the job;
+2. Select **View Job**.
+
+Also, it is possible to control the job execution through the console view.
+
+If you don't need the job anymore:
+1. Click right mouse button on the job;
+2. Select **Purge Job** *(**Delete** is the hotkey)*.
+
+![Working with jobs](../images/intellij/work_with_jes_jobs.gif)
+
+## TSO Command Line Interface
+
+Starting from the v1.0.0 of the plug-in, there is a feature to send TSO commands directly from the IntelliJ Platform IDE.
+
+To start using the TSO Command Line Interface:
+1. Click **+** in the Zowe Explorer view;
+2. Select **TSO Console**;
+3. In the dialog appeared, type in all the necessary parameters *(the default ones are most likely to fit)*, click **OK**.
+
+After that, the TSO Command Line Interface should appear. You can type in TSO commands, as well as run any possible scripts.
+
+![TSO CLI](../images/intellij/tso_cli.gif)
