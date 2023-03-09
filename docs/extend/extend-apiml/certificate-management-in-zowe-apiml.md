@@ -33,8 +33,7 @@ Zowe API Mediation Layer provides a script that can be used on Windows, Mac, Lin
 to generate a certificate and keystore for the local CA, API Mediation Layer, and services.
 
 This script is stored in `zowe/zowe-install-packaging` repository [bin/apiml_cm.sh](https://github.com/zowe/zowe-install-packaging/blob/master/bin/apiml_cm.sh).
-It is a UNIX shell script that can be executed by Bash or z/OS Shell. For Windows, install Bash by going to the following link: [cmder](http://cmder.net/).
-
+It is a UNIX shell script that can be executed by Bash or z/OS Shell. 
 
 ### Generate certificates for localhost
 
