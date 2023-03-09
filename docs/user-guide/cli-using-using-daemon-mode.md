@@ -73,6 +73,8 @@ You **must** restart daemon mode under the following scenarios:
    You may be running mismatched versions of Zowe executable and Zowe daemon.
    ```
 
+- You created or updated the `.zowe.env.json` file in your home directory or the path set in the `ZOWE_CLI_HOME` environment variable. See [Configuring an environment variables file](../user-guide/cli-configuringcli-evfile) for more information.
+
 ## Disable daemon mode
 
 You can disable Zowe from running in daemon mode at any time. For example, daemon mode lacks functionality that you desire, such as viewing colored-coded commands.
