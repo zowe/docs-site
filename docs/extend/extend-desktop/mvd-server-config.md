@@ -146,7 +146,7 @@ When running ZSS, it will require a configuration file similar or the same as th
 
 ### ZSS Networking
 
-The attributes that control ZSS exclusively are within the **agent** object. ZSS uses HTTPS by default, but for those who wish to use AT-TLS instead of the built-in HTTPS support, ZSS can use HTTP as well. HTTP should never be used without [AT-TLS](../user-guide/mvd-configuration/#defining-the-at-tls-rule), as this is a security risk. The values `agent.https.port`, `agent.http.port` tell ZSS which ports to bind to, but also where the app-server can find ZSS. The values `agent.host` is used to tell app-server where to find ZSS as well, though `agent.https.ipAddresses` and `agent.http.ipAddresses` tell ZSS which addresses to bind to. For addresses, at this time only the first value of that array is used, and it may either be a hostname or an ipv4 address.
+The attributes that control ZSS exclusively are within the **agent** object. ZSS uses HTTPS by default, but for those who wish to use AT-TLS instead of the built-in HTTPS support, ZSS can use HTTP as well. HTTP should never be used without [AT-TLS](../../user-guide/mvd-configuration#defining-the-at-tls-rule), as this is a security risk. The values `agent.https.port`, `agent.http.port` tell ZSS which ports to bind to, but also where the app-server can find ZSS. The values `agent.host` is used to tell app-server where to find ZSS as well, though `agent.https.ipAddresses` and `agent.http.ipAddresses` tell ZSS which addresses to bind to. For addresses, at this time only the first value of that array is used, and it may either be a hostname or an ipv4 address.
 
 Example of the agent body:
 ```
