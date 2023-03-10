@@ -1,6 +1,6 @@
-# Installation and Configuration Checklist for Zowe z/OS Components for Production Purposes
+# Installation Checklist for Zowe z/OS Components for Production Purposes
 
-Perform the steps in this checklist to streamline your installation of Zowe z/OS Components.
+Follow the steps in this checklist to guide you through the installation of Zowe z/OS Components for production purposes.
 
 
 ## Preparing and Installing
