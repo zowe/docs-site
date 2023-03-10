@@ -2,7 +2,6 @@
 
 Perform the steps in this checklist to streamline your installation of Zowe z/OS Components.
 
-**Note:** _For mvp* purposes_ refers to the minimum viable product.
 
 ## Preparing and Installing
 | Preparation/Installation Step | Task | Results | Time Estimate |  
