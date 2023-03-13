@@ -432,7 +432,7 @@ The Zowe desktop is able to be displayed in a browser but fails to logon.
  
 **Solution:**
 
-Check that the Zowe certificate has been configured as a client certificate, and not just as a server certificate. More detail can be found in [Configuring PKCS12 certificates](../user-guide/configure-certificates-keystore) and [Configuring JCERACFS certificates in a key ring](../user-guide/configure-certificates-keyring).
+Check that the Zowe certificate has been configured as a client certificate, and not just as a server certificate. More detail can be found in [Configuring PKCS12 certificates](../user-guide/configure-certificates-keystore.md) and [Configuring JCERACFS certificates in a key ring](../user-guide/configure-certificates-keyring.md).
 
 ### Java z/OS components of Zowe unable to read certificates from keyring
 
