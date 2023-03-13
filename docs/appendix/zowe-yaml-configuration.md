@@ -148,7 +148,7 @@ In Zowe YAML configuration, certificate definition shares the same format and th
 - **`keystore.type`**  
  Defines the type of the keystore. If you are using keystore, this value usually should be `PKCS12`. If you are using keyring, this value should be `JCERACFKS`.
 - **`keystore.file`**  
- Defines the path of the keystore file. If you are using keyring, this should look like `safkeyring:////<keyring-owner>/<keyring-name>`. For example, `safkeyring:////ZWESVUSR/ZoweKeyring`.
+ Defines the path of the keystore file. If you are using keyring, this should look like `safkeyring://<keyring-owner>/<keyring-name>`. For example, `safkeyring://ZWESVUSR/ZoweKeyring`.
 - **`keystore.password`**  
  Defines the password of the keystore.
 - **`keystore.alias`**  
@@ -156,7 +156,7 @@ In Zowe YAML configuration, certificate definition shares the same format and th
 - **`truststore.type`**  
  Defines the type of the truststore file. If you are using keystore, this value usually should be `PKCS12`. If you are using keyring, this value should be `JCERACFKS`.
 - **`truststore.file`**  
- Defines the path to the truststore file. If you are using keyring, this should look like `safkeyring:////<keyring-owner>/<keyring-name>`, usually will be the same value of `keystore.file`.
+ Defines the path to the truststore file. If you are using keyring, this should look like `safkeyring://<keyring-owner>/<keyring-name>`, usually will be the same value of `keystore.file`.
 - **`truststore.password`**  
  Defines the password of the truststore.
 - **`pem.key`**  
