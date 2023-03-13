@@ -190,7 +190,7 @@ module.exports = {
         docs: {
           path: "docs",
           sidebarPath: require.resolve("./sidebars.js"),
-          editUrl: "https://github.com/zowe/docs-site/edit/master/",
+          editUrl: "https://github.com/zowe/docs-site/edit/docs-staging/",
           showLastUpdateAuthor: false,
           showLastUpdateTime: true,
           routeBasePath: "/",
