@@ -1,6 +1,6 @@
 # Installation Checklist for Zowe z/OS Components for Testing and Minimum Viable Product (MVP)
 
-Follow the steps in this checklist to guide you through the installation of Zowe z/OS Components for testing purposes or for the minimum viable product.
+Follow the steps in this checklist to guide you through the installation of Zowe z/OS Components for testing purposes or for the minimum viable product. Use this installation procedure get started with Zowe z/OS components for the purpose of testing or just to familiarize yourself with Zowe installation time, performance and system requirements, or perhaps to develop a plug-in for a Zowe component. This procedure does not require defining certificates and high availability.
 
 
 ## Preparing and Installing
