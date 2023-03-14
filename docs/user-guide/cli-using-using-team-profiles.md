@@ -38,7 +38,7 @@ zowe config convert-profiles
 
 **Note:** You can continue using Zowe CLI and Zowe CLI plug-ins V1 profiles with Zowe CLI V2. However, we highly recommend that you implement V2 profiles with Zowe CLI V2.
 
-- Commands in the `zowe config` [command group](../user-guide/cli-using-understanding-core-command-groups#config.md) now let you manage security for any option value.
+- Commands in the `zowe config` [command group](../user-guide/cli-using-understanding-core-command-groups#config) now let you manage security for any option value.
 
 - The `zowe scs` and `zowe config` command groups were repurposed to work with team profiles.
 

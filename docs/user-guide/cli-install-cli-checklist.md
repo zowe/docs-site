@@ -44,5 +44,5 @@ To configure Zowe CLI, review the following checklist.
 | Step        | Description | Role       | Time Estimate | Status     |
 | ----------- | ----------- | ---------- | ------------- | ---------- |
 | [Configure environment variables](../user-guide/cli-configuringcli-ev.md) | Learn how to store configuration options that are common to your environment.  | Systems administrator, DevOps architect, application developer | **.25** hrs |  |
-| [Configure Zowe profiles](../user-guide/cli-using-using-profiles.md) | Learn how to configure Zowe team profiles and  user profiles. | Systems administrator, DevOps architect, application developer | **.25** hrs |  |
+| [Configure Zowe profiles](../user-guide/cli-using-initializing-team-configuration.md) | Learn how to configure Zowe team profiles and  user profiles. | Systems administrator, DevOps architect, application developer | **.25** hrs |  |
 | [Configure daemon mode](../user-guide/cli-using-using-daemon-mode.md) | Learn how to configure Zowe CLI to run as persistent background process (daemon). | Systems administrator, DevOps architect, application developer | **.25** hrs |  |

@@ -16,23 +16,23 @@ zowe zosmf check status --host <host> --port <port> --user <username> --pass <pa
 
 - `<host>`
 
-    Specifices the host.
+    Specifies the host.
 
 - `<port>`
 
-    Specifices the port.
+    Specifies the port.
 
 - `<username>`
 
-    Specifices the username.
+    Specifies the username.
 
 - `<password>`
 
-    Specifices the password.
+    Specifies the password.
 
 ### Default profile
 
-After you [create a profile](../user-guide/cli-using-initializing-team-configuration.md), verify that you can use your *default profile* to communicate with z/OSMF:
+After you create a profile in a configuration (such as a [global team configuration file](../user-guide/initializing-team-configuration)), verify that you can use your *default profile* to communicate with z/OSMF:
 
 ```
 zowe zosmf check status
@@ -40,7 +40,7 @@ zowe zosmf check status
 
 ### Specific profile
 
-After you [create a profile](../user-guide/cli-using-using-profiles.md), verify that you can use *a specific profile* to communicate with z/OSMF:
+After you create a specific profile in a configuration (such as a [global team configuration file](../user-guide/initializing-team-configuration)), verify that you can use a *specific profile* to communicate with z/OSMF:
 
 ```
 zowe zosmf check status --zosmf-profile <profile_name>
@@ -48,6 +48,6 @@ zowe zosmf check status --zosmf-profile <profile_name>
 
 - `<profile name>`
 
-    Specifies the name of the profile
+    Specifies the name of the profile.
 
 The commands return a success or failure message and display information about your z/OSMF server, such as the z/OSMF version number. Report failures to your systems administrator and use the information for diagnostic purposes.
