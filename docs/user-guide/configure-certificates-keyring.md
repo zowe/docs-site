@@ -84,15 +84,15 @@ zowe:
     keystore:
       alias: localhost
       password: 'password'
-      file: safkeyring:////ZWESVUSR/ZoweKeyring
+      file: safkeyring://ZWESVUSR/ZoweKeyring
       type: JCERACFKS
     truststore:
       type: JCERACFKS
-      file: safkeyring:////ZWESVUSR/ZoweKeyring
+      file: safkeyring://ZWESVUSR/ZoweKeyring
       password:
     pem:
       key:
       certificate:
-      certificateAuthorities: safkeyring:////ZWESVUSR/ZoweKeyring&localca
+      certificateAuthorities: safkeyring://ZWESVUSR/ZoweKeyring&localca
 ```
 
