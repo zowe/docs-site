@@ -464,6 +464,6 @@ To prevent the overwriting of default cookie name in the case of multiple instan
 Please follow below steps to configure unique cookie name for the instances,
 
 1. Open the `zowe.yaml` configuration file.
-2. Find or add the property  `ZWE_components_gateway_security_auth_uniqueCookie` and set it to true. A unique cookie name will be generated as apimlAuthenticationToken.instanceId (Eg. If the instance id is s0w1, cookie name will be `apimlAuthenticationToken.s0w1`)
+2. Find or add the property  `components.gateway.security.auth.uniqueCookie` and set it to true. A unique cookie name will be generated as apimlAuthenticationToken.instanceId (Eg. If the instance id is s0w1, cookie name will be `apimlAuthenticationToken.s0w1`)
 3. If the above is not set to true, cookie name will be `apimlAuthenticationToken`  by default.
 4. Restart `zowe`.
