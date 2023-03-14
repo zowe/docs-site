@@ -374,6 +374,7 @@ module.exports = {
           items: [
             "user-guide/cli-using-using-team-profiles",
             "user-guide/cli-using-initializing-team-configuration",
+            "user-guide/cli-using-test-zosmf-connection",
             "user-guide/cli-using-team-configuration-application-developers",
             "user-guide/cli-using-team-configuration-team-leaders",
             "user-guide/cli-using-sharing-team-config-files",

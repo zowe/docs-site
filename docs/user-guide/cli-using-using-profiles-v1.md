@@ -90,7 +90,7 @@ zowe zosmf check status --host <host> --port <port> --user <username> --pass <pa
 
 ### Default profile
 
-After you [create a profile](../user-guide/cli-using-using-profiles.md), verify that you can use your *default profile* to communicate with z/OSMF:
+After you [create a profile](../user-guide/cli-using-using-profiles-v1.md), verify that you can use your *default profile* to communicate with z/OSMF:
 
 ```
 zowe zosmf check status
@@ -98,7 +98,7 @@ zowe zosmf check status
 
 ### Specific profile
 
-After you [create a profile](../user-guide/cli-using-using-profiles.md), verify that you can use *a specific profile* to communicate with z/OSMF:
+After you [create a profile](../user-guide/cli-using-using-profiles-v1.md), verify that you can use *a specific profile* to communicate with z/OSMF:
 
 ```
 zowe zosmf check status --zosmf-profile <profile_name>

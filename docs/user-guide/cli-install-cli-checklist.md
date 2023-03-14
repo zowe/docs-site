@@ -19,7 +19,7 @@ To plan your Zowe CLI installation, review the following checklist.
 | [Address the requirements](../user-guide/systemrequirements-cli.md) | Install the client-side and host-side software, and ensure that there is sufficient free disk space | Systems administrator | **See Note-1** |  |
 | [(Optional) Install API Mediation Layer](../user-guide/install-zos.md) | Install the Zowe Runtime, which includes API Mediation Layer | Systems administrator | **8** hrs |  |
 | [Install z/OSMF](https://www.ibm.com/docs/en/zos/2.3.0?topic=configuration-setting-up-zosmf-first-time) | Follow the steps to install z/OSMF | Systems administrator  | **See Note-2** |  |
-| [Determine the profile types that you want to use](../user-guide/cli-using-using-profiles.md) | Learn about configuration and how to use team profiles | Systems administrator, DevOps architect | **.25** hrs |  |
+| [Determine the profile types that you want to use](../user-guide/cli-using-using-team-profiles) | Learn about configuration and how to use team profiles | Systems administrator, DevOps architect | **.25** hrs |  |
 
 **Note-1:** Allow **.25** hours to install the client-side software. The amount of time to install the host-side software depends upon your site's implementation. For example, do you require z/OSMF, REST APIs, or both, to support the Mediation Layer? See the information for the specific server-side software that you require to determine how much time to allow for complete server-side installation and configuration.
 
