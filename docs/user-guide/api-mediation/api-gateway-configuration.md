@@ -459,11 +459,11 @@ The following YAML presents the structure of the file:
 ## Unique cookie name for multiple zowe instances
 
 By default, in the API Gateway, the cookie name is apimlAuthenticationToken.
-To prevent the overwriting of default cookie name in the case of multiple instances of Zowe, there is a possibility to configure unique cookie names for each instances.  
+To prevent the overwriting of default cookie name in the case of multiple instances of Zowe, there is a possibility to configure unique cookie name for each instances.  
 
 Please follow below steps to configure unique cookie name for the instances,
 
-1. Open the zowe.yaml configuration file.
-2. Find or add the property ZWE_components_gateway_security_auth_uniqueCookie and set the value to true.
-3. Then the cookie name will be generated as apimlAuthenticationToken.instanceId (Eg. If the instance id is s0w1, cookie name will be apimlAuthenticationToken.s0w1)
-4. If the above is not set to true, cookie name will be “apimlAuthenticationToken”  by default.
+1. Open the `zowe.yaml` configuration file.
+2. Find or add the property  `ZWE_components_gateway_security_auth_uniqueCookie` and set it to true. A unique cookie name will be generated as apimlAuthenticationToken.instanceId (Eg. If the instance id is s0w1, cookie name will be `apimlAuthenticationToken.s0w1`)
+3. If the above is not set to true, cookie name will be `apimlAuthenticationToken`  by default.
+4. Restart `zowe`.
