@@ -12,11 +12,11 @@ The following definition of skill levels about Zowe will help you gather most re
 
 > Zowe skill level: Beginner
 
-- [**Zowe CLI overview**](getting-started/overview.md#zowe-cli)
+- [**Zowe CLI overview**](../getting-started/overview.md#zowe-cli)
 
    New to Zowe CLI? This overview topic introduces what is Zowe CLI.
 
-- [**Architecture**](getting-started/zowe-architecture.md#zowe-architecture)
+- [**Architecture**](../getting-started/zowe-architecture.md#zowe-architecture)
 
    Review the Zowe architecture to understand how Zowe CLI works in the Zowe framework. 
 
@@ -29,7 +29,7 @@ The following definition of skill levels about Zowe will help you gather most re
 
 > Zowe skill level: Beginner
 
-- [**Zowe CLI quick start**](getting-started/cli-getting-started.md)
+- [**Zowe CLI quick start**](../getting-started/cli-getting-started.md)
    
    Get started with Zowe CLI quickly and easily.
 

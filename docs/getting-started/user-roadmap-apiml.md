@@ -86,7 +86,7 @@ The following definition of skill levels about Zowe assist you with gathering th
 
 > Zowe skill level: Advanced
 
-- [**API Mediation Layer Security**](../extend/extend-apiml/api-mediation-security.md)
+- [**API Mediation Layer Security**](../extend/extend-apiml/zowe-api-mediation-layer-security-overview.md)
 
    This article describes how API ML uses Transport Layer Security (TLS). Use this guide to familiarize yourself with the API ML security concepts.
 
