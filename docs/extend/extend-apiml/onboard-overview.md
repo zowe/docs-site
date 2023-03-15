@@ -23,7 +23,7 @@ Meet the following prerequisites before you onboard your service:
   
 - A certificate that is trusted by Zowe and certificate(s) to trust Zowe services
 
-  Zowe uses secured communication over TLSv1.2. As such, the protocol version and the certificate is required. For more information, see [API Mediation Layer security setup](api-mediation-security.md#certificate-management-in-zowe-api-mediation-layer) and [Zowe API ML TLS requirements](api-mediation-security.md#Zowe-API-ML-TLS-requirements).
+  Zowe uses secured communication over TLSv1.2. As such, the protocol version and the certificate is required. For more information, see [API Mediation Layer security setup](api-mediation-security.md#certificate-management-in-zowe-api-mediation-layer) and [Zowe API ML TLS requirements](zowe-api-mediation-layer-security-overview.md/#zowe-api-ml-tls-requirements)
 
 - A REST API-enabled service that you want to onboard
 
@@ -62,11 +62,7 @@ Use one of the following guides if your service is not built with Java, or you d
 
 ### Documentation for legacy enablers
 
-For legacy enabler documentation (version 1.2 and lower), refer to the previous version of the documentation:
-
-- [Zowe Docs version 1.8.x](https://docs.zowe.org/v1-8-x/extend/extend-apiml/api-mediation-onboard-overview)
-
-**Note**: Enabler version 1.2 and previous versions are no longer supported.
+Enabler version 1.2 and previous versions are no longer supported.
 
 **Tip**: We recommend you use the enabler version 1.3 or higher to onboard your REST API service to the Zowe API Medaition Layer.
 

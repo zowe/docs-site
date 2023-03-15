@@ -3,8 +3,8 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>IDownloadAllSpoolContentParms | Zowe Node.js SDK - v2.5.0</title>
-	<meta name="description" content="Documentation for Zowe Node.js SDK - v2.5.0">
+	<title>IDownloadAllSpoolContentParms | Zowe Node.js SDK - v2.7.0</title>
+	<meta name="description" content="Documentation for Zowe Node.js SDK - v2.7.0">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
 </head>
@@ -22,7 +22,7 @@
 						<li class="state loading">Preparing search index...</li>
 						<li class="state failure">The search index is not available</li>
 					</ul>
-					<a href="../index.html" class="title">Zowe Node.js SDK - v2.5.0</a>
+					<a href="../index.html" class="title">Zowe Node.js SDK - v2.7.0</a>
 				</div>
 				<div class="table-cell" id="tsd-widgets">
 					<div id="tsd-filter">
@@ -96,11 +96,13 @@
 						<section class="tsd-index-section ">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_zowe_zos_jobs_for_zowe_sdk.idownloadallspoolcontentparms.html#binary" class="tsd-kind-icon">binary</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_zowe_zos_jobs_for_zowe_sdk.idownloadallspoolcontentparms.html#extension" class="tsd-kind-icon">extension</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_zowe_zos_jobs_for_zowe_sdk.idownloadallspoolcontentparms.html#jobid" class="tsd-kind-icon">jobid</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_zowe_zos_jobs_for_zowe_sdk.idownloadallspoolcontentparms.html#jobname" class="tsd-kind-icon">jobname</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_zowe_zos_jobs_for_zowe_sdk.idownloadallspoolcontentparms.html#omitjobiddirectory" class="tsd-kind-icon">omit<wbr>Jobid<wbr>Directory</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_zowe_zos_jobs_for_zowe_sdk.idownloadallspoolcontentparms.html#outdir" class="tsd-kind-icon">out<wbr>Dir</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_zowe_zos_jobs_for_zowe_sdk.idownloadallspoolcontentparms.html#record" class="tsd-kind-icon">record</a></li>
 							</ul>
 						</section>
 					</div>
@@ -109,12 +111,32 @@
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Properties</h2>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="binary" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> binary</h3>
+					<div class="tsd-signature tsd-kind-icon">binary<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.11.0/packages/zosjobs/src/doc/input/IDownloadAllSpoolContentParms.ts#L65">@zowe/zos-jobs-for-zowe-sdk/src/doc/input/IDownloadAllSpoolContentParms.ts:65</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>If you specify true for this field, the file will be downloaded in binary mode</p>
+						</div>
+						<dl class="tsd-comment-tags">
+							<dt>memberof</dt>
+							<dd><p>IDownloadSpoolContentParms</p>
+							</dd>
+						</dl>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
 					<a name="extension" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagOptional">Optional</span> extension</h3>
 					<div class="tsd-signature tsd-kind-icon">extension<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.9.1/packages/zosjobs/src/doc/input/IDownloadAllSpoolContentParms.ts#L58">@zowe/zos-jobs-for-zowe-sdk/src/doc/input/IDownloadAllSpoolContentParms.ts:58</a></li>
+							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.11.0/packages/zosjobs/src/doc/input/IDownloadAllSpoolContentParms.ts#L58">@zowe/zos-jobs-for-zowe-sdk/src/doc/input/IDownloadAllSpoolContentParms.ts:58</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -135,7 +157,7 @@
 					<div class="tsd-signature tsd-kind-icon">jobid<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.9.1/packages/zosjobs/src/doc/input/IDownloadAllSpoolContentParms.ts#L41">@zowe/zos-jobs-for-zowe-sdk/src/doc/input/IDownloadAllSpoolContentParms.ts:41</a></li>
+							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.11.0/packages/zosjobs/src/doc/input/IDownloadAllSpoolContentParms.ts#L41">@zowe/zos-jobs-for-zowe-sdk/src/doc/input/IDownloadAllSpoolContentParms.ts:41</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -156,7 +178,7 @@
 					<div class="tsd-signature tsd-kind-icon">jobname<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.9.1/packages/zosjobs/src/doc/input/IDownloadAllSpoolContentParms.ts#L33">@zowe/zos-jobs-for-zowe-sdk/src/doc/input/IDownloadAllSpoolContentParms.ts:33</a></li>
+							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.11.0/packages/zosjobs/src/doc/input/IDownloadAllSpoolContentParms.ts#L33">@zowe/zos-jobs-for-zowe-sdk/src/doc/input/IDownloadAllSpoolContentParms.ts:33</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -177,7 +199,7 @@
 					<div class="tsd-signature tsd-kind-icon">omit<wbr>Jobid<wbr>Directory<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.9.1/packages/zosjobs/src/doc/input/IDownloadAllSpoolContentParms.ts#L50">@zowe/zos-jobs-for-zowe-sdk/src/doc/input/IDownloadAllSpoolContentParms.ts:50</a></li>
+							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.11.0/packages/zosjobs/src/doc/input/IDownloadAllSpoolContentParms.ts#L50">@zowe/zos-jobs-for-zowe-sdk/src/doc/input/IDownloadAllSpoolContentParms.ts:50</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -199,7 +221,7 @@
 					<div class="tsd-signature tsd-kind-icon">out<wbr>Dir<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.9.1/packages/zosjobs/src/doc/input/IDownloadAllSpoolContentParms.ts#L25">@zowe/zos-jobs-for-zowe-sdk/src/doc/input/IDownloadAllSpoolContentParms.ts:25</a></li>
+							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.11.0/packages/zosjobs/src/doc/input/IDownloadAllSpoolContentParms.ts#L25">@zowe/zos-jobs-for-zowe-sdk/src/doc/input/IDownloadAllSpoolContentParms.ts:25</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -210,6 +232,26 @@
 						<dl class="tsd-comment-tags">
 							<dt>memberof</dt>
 							<dd><p>IDownloadAllSpoolContentParms</p>
+							</dd>
+						</dl>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="record" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> record</h3>
+					<div class="tsd-signature tsd-kind-icon">record<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.11.0/packages/zosjobs/src/doc/input/IDownloadAllSpoolContentParms.ts#L72">@zowe/zos-jobs-for-zowe-sdk/src/doc/input/IDownloadAllSpoolContentParms.ts:72</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>If you specify true for this field, the file will be downloaded in record mode</p>
+						</div>
+						<dl class="tsd-comment-tags">
+							<dt>memberof</dt>
+							<dd><p>IDownloadSpoolContentParms</p>
 							</dd>
 						</dl>
 					</div>
@@ -319,6 +361,9 @@
 								<a href="_zowe_zos_jobs_for_zowe_sdk.idownloadallspoolcontentparms.html" class="tsd-kind-icon">IDownload<wbr>All<wbr>Spool<wbr>Content<wbr>Parms</a>
 								<ul>
 									<li class=" tsd-kind-property tsd-parent-kind-interface">
+										<a href="_zowe_zos_jobs_for_zowe_sdk.idownloadallspoolcontentparms.html#binary" class="tsd-kind-icon">binary</a>
+									</li>
+									<li class=" tsd-kind-property tsd-parent-kind-interface">
 										<a href="_zowe_zos_jobs_for_zowe_sdk.idownloadallspoolcontentparms.html#extension" class="tsd-kind-icon">extension</a>
 									</li>
 									<li class=" tsd-kind-property tsd-parent-kind-interface">
@@ -332,6 +377,9 @@
 									</li>
 									<li class=" tsd-kind-property tsd-parent-kind-interface">
 										<a href="_zowe_zos_jobs_for_zowe_sdk.idownloadallspoolcontentparms.html#outdir" class="tsd-kind-icon">out<wbr>Dir</a>
+									</li>
+									<li class=" tsd-kind-property tsd-parent-kind-interface">
+										<a href="_zowe_zos_jobs_for_zowe_sdk.idownloadallspoolcontentparms.html#record" class="tsd-kind-icon">record</a>
 									</li>
 								</ul>
 							</li>

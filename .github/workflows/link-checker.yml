@@ -1,0 +1,38 @@
+name: Link Checker
+
+on:
+  pull_request:
+    branches:
+      - docs-staging
+      - master
+
+jobs:
+  test:
+    name: Check for broken links
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      # Workaround for MD links without extensions being detected as broken
+      - name: Create symlinks
+        run: |
+          find docs -name "*.md" -type f | while read f; do
+            ln -s $(basename $f) ${f%.*}
+          done
+
+      - name: Restore lychee cache
+        uses: actions/cache@v3
+        with:
+          path: .lycheecache
+          key: cache-lychee-${{ github.ref_name }}
+          restore-keys: cache-lychee-
+
+      - name: Run lychee
+        uses: lycheeverse/lychee-action@v1.6.1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          args: "--accept 401,429 --cache --max-cache-age 1d --max-concurrency 64 --no-progress --verbose 'docs/**/*.md'"
+          fail: true
