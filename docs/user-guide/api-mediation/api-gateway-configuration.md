@@ -24,6 +24,7 @@ Follow the procedures in the following sections to customize Gateway parameters 
   * [API Mediation Layer as a standalone component](#api-mediation-layer-as-a-standalone-component)
   * [SAF resource checking](#saf-resource-checking)
   * [AT-TLS](#at-tls)
+  * [Unique cookiename for multiple zowe instances](#unique-cookie-name-for-multiple-zowe-instances)
 
 ## Runtime configuration
 
@@ -465,3 +466,15 @@ components.*.certificate.keystore.password=<keyring-password>
 components.*.certificate.keystore.alias=<certificate-alias-from-AT-TLS-rule>
 ```
 **Note:** This procedure does not configure AT-TLS on z/OS, but rather enables API ML to work with AT-TLS in place.
+
+## Unique cookie name for multiple zowe instances
+
+By default, in the API Gateway, the cookie name is apimlAuthenticationToken.
+To prevent the overwriting of default cookie name in the case of multiple instances of Zowe, there is a possibility to configure unique cookie name for each instances.  
+
+Please follow below steps to configure unique cookie name for the instances,
+
+1. Open the `zowe.yaml` configuration file.
+2. Find or add the property  `components.gateway.security.auth.uniqueCookie` and set it to true. A unique cookie name will be generated as apimlAuthenticationToken.instanceId (Eg. If the instance id is s0w1, cookie name will be `apimlAuthenticationToken.s0w1`)
+3. If the above is not set to true, cookie name will be `apimlAuthenticationToken`  by default.
+4. Restart `zowe`.
