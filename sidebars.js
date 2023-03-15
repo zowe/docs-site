@@ -311,6 +311,7 @@ module.exports = {
       items: [
         "user-guide/mvd-configuration",
         "user-guide/cli-configuringcli-ev",
+        "user-guide/cli-configuringcli-evfile",
         "user-guide/configure-data-sets-jobs-api",
         {
           type: "category",
@@ -320,6 +321,7 @@ module.exports = {
             "user-guide/api-mediation/api-catalog-configuration",
             "user-guide/api-mediation/api-gateway-configuration",
             "user-guide/api-mediation/discovery-service-configuration",
+            "user-guide/api-mediation/api-mediation-internal-configuration",
             "extend/extend-apiml/api-mediation-passtickets",
           ],
         },

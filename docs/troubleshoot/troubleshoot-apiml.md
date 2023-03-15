@@ -432,7 +432,7 @@ The Zowe desktop is able to be displayed in a browser but fails to logon.
  
 **Solution:**
 
-Check that the Zowe certificate has been configured as a client certificate, and not just as a server certificate. More detail can be found in [Configuring PKCS12 certificates](../user-guide/configure-certificates-keystore) and [Configuring JCERACFS certificates in a key ring](../user-guide/configure-certificates-keyring).
+Check that the Zowe certificate has been configured as a client certificate, and not just as a server certificate. More detail can be found in [Configuring PKCS12 certificates](../user-guide/configure-certificates-keystore.md) and [Configuring JCERACFS certificates in a key ring](../user-guide/configure-certificates-keyring.md).
 
 ### Java z/OS components of Zowe unable to read certificates from keyring
 
@@ -475,20 +475,8 @@ Caused by: java.security.UnrecoverableKeyException: Given final block not proper
 
 **Solution:**
 
-First, make sure that the private key stored in the keyring is not encrypted by a password, or that the private key integrity is not protected by a password. This is not related to SAF keyrings themselves, which are not usually protected by password, but rather to is related to the concrete certificate private key pair stored in the SAF keyring. In case the private key is not protected in any way by a password, there is a possible workaround. Specify "dummy" as the key password in zowe.yaml certificate configuration. 
+Make sure that the private key stored in the keyring is not encrypted by a password, or that the private key integrity is not protected by a password. This is not related to SAF keyrings themselves, which are not usually protected by password, but rather to is related to the concrete certificate private key pair stored in the SAF keyring. 
 
-```
-  certificate:
-    keystore:
-      type: JCERACFKS
-      file: safkeyring:////ZWESVUSR/ZoweKeyring
-      password: dummy
-      alias: <cert-label>
-    truststore:
-      type: JCERACFKS
-      file: safkeyring:////ZWESVUSR/ZoweKeyring
-      password:
-```
 ### Exception thrown when reading SAF keyring {ZWED0148E}
 
 **Symptom:**
@@ -533,14 +521,14 @@ If you are using Zowe's local CA certificate and you still receive **ZWED0148E**
     ],
     "port": 8544,
     "keys": [
-      "safkeyring:////ZWESVUSR/ring&Label A"
+      "safkeyring://ZWESVUSR/ring&Label A"
     ],
     "certificates": [
-      "safkeyring:////ZWESVUSR/ring&Label A"
+      "safkeyring://ZWESVUSR/ring&Label A"
     ],
     "certificateAuthorities": [
-      "safkeyring:////ZWESVUSR/ring&Label B",
-      "safkeyring:////ZWESVUSR/ring&Label B"
+      "safkeyring://ZWESVUSR/ring&Label B",
+      "safkeyring://ZWESVUSR/ring&Label B"
     ]
   },
 ```
