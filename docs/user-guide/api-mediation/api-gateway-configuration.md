@@ -29,6 +29,7 @@ Follow the procedures in the following sections to customize Gateway parameters 
   * [Personal Access Token](#personal-access-token)
   * [API Mediation Layer as a standalone component](#api-mediation-layer-as-a-standalone-component)
   * [SAF resource checking](#saf-resource-checking)
+  * [Unique cookiename for multiple zowe instances](#unique-cookie-name-for-multiple-zowe-instances)
 
 ## SAF as an Authentication provider
 
@@ -453,3 +454,15 @@ The following YAML presents the structure of the file:
 - The field `safAccess` is not required to define an empty file without a definition.
 - Classes and resources cannot be defined without the user ID list.
 - When a user has multiple definitions of the same class and resource, only the most privileged access level loads.
+
+## Unique cookie name for multiple zowe instances
+
+By default, in the API Gateway, the cookie name is apimlAuthenticationToken.
+To prevent the overwriting of default cookie name in the case of multiple instances of Zowe, there is a possibility to configure unique cookie name for each instances.  
+
+Please follow below steps to configure unique cookie name,
+
+1. Open the `zowe.yaml` configuration file.
+2. Find or add the property  `components.gateway.security.auth.uniqueCookie` and set it to true. A unique cookie name will be generated as apimlAuthenticationToken.instanceId (Eg. If the instance id is s0w1, cookie name will be `apimlAuthenticationToken.s0w1`)
+3. If the above is not set to true, cookie name will be `apimlAuthenticationToken`  by default.
+4. Restart `zowe`.
