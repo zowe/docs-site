@@ -268,14 +268,14 @@ If you are using Zowe's local CA certificate but it still reports **ZWED0148E**,
     ],
     "port": 8544,
     "keys": [
-      "safkeyring:////ZWESVUSR/ring&Label A"
+      "safkeyring://ZWESVUSR/ring&Label A"
     ],
     "certificates": [
-      "safkeyring:////ZWESVUSR/ring&Label A"
+      "safkeyring://ZWESVUSR/ring&Label A"
     ],
     "certificateAuthorities": [
-      "safkeyring:////ZWESVUSR/ring&Label B",
-      "safkeyring:////ZWESVUSR/ring&Label B"
+      "safkeyring://ZWESVUSR/ring&Label B",
+      "safkeyring://ZWESVUSR/ring&Label B"
     ]
   },
 ```

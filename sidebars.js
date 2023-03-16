@@ -60,6 +60,8 @@ module.exports = {
       label: "Installing Zowe z/OS components",
       items: [
         "user-guide/install-zos",
+        "user-guide/zos-components-installation-checklist",
+        "user-guide/zos-components-installation-checklist-dev",
         {
           type: "category",
           label: "Planning",
@@ -321,6 +323,7 @@ module.exports = {
             "user-guide/api-mediation/api-catalog-configuration",
             "user-guide/api-mediation/api-gateway-configuration",
             "user-guide/api-mediation/discovery-service-configuration",
+            "user-guide/api-mediation/api-mediation-internal-configuration",
             "extend/extend-apiml/api-mediation-passtickets",
           ],
         },
