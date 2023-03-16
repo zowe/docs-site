@@ -3,8 +3,8 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>IDownloadSpoolContentParms | Zowe Node.js SDK - v2.5.0</title>
-	<meta name="description" content="Documentation for Zowe Node.js SDK - v2.5.0">
+	<title>IDownloadSpoolContentParms | Zowe Node.js SDK - v2.7.0</title>
+	<meta name="description" content="Documentation for Zowe Node.js SDK - v2.7.0">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
 </head>
@@ -22,7 +22,7 @@
 						<li class="state loading">Preparing search index...</li>
 						<li class="state failure">The search index is not available</li>
 					</ul>
-					<a href="../index.html" class="title">Zowe Node.js SDK - v2.5.0</a>
+					<a href="../index.html" class="title">Zowe Node.js SDK - v2.7.0</a>
 				</div>
 				<div class="table-cell" id="tsd-widgets">
 					<div id="tsd-filter">
@@ -85,7 +85,12 @@
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<span class="target">IDownloadSpoolContentParms</span>
+						<span class="tsd-signature-symbol">{}</span>
+						<ul class="tsd-hierarchy">
+							<li>
+								<span class="target">IDownloadSpoolContentParms</span>
+							</li>
+						</ul>
 					</li>
 				</ul>
 			</section>
@@ -97,8 +102,8 @@
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_zowe_zos_jobs_for_zowe_sdk.idownloadspoolcontentparms.html#jobfile" class="tsd-kind-icon">job<wbr>File</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_zowe_zos_jobs_for_zowe_sdk.idownloadspoolcontentparms.html#omitjobiddirectory" class="tsd-kind-icon">omit<wbr>Jobid<wbr>Directory</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_zowe_zos_jobs_for_zowe_sdk.idownloadspoolcontentparms.html#outdir" class="tsd-kind-icon">out<wbr>Dir</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_zowe_zos_jobs_for_zowe_sdk.idownloadspoolcontentparms.html#jobid" class="tsd-kind-icon">jobid</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_zowe_zos_jobs_for_zowe_sdk.idownloadspoolcontentparms.html#jobname" class="tsd-kind-icon">jobname</a></li>
 							</ul>
 						</section>
 					</div>
@@ -112,7 +117,7 @@
 					<div class="tsd-signature tsd-kind-icon">job<wbr>File<span class="tsd-signature-symbol">:</span> <a href="_zowe_zos_jobs_for_zowe_sdk.ijobfile.html" class="tsd-signature-type">IJobFile</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.9.1/packages/zosjobs/src/doc/input/IDownloadSpoolContentParms.ts#L34">@zowe/zos-jobs-for-zowe-sdk/src/doc/input/IDownloadSpoolContentParms.ts:34</a></li>
+							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.11.0/packages/zosjobs/src/doc/input/IDownloadSpoolContentParms.ts#L27">@zowe/zos-jobs-for-zowe-sdk/src/doc/input/IDownloadSpoolContentParms.ts:27</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -127,44 +132,43 @@
 					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="omitjobiddirectory" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagOptional">Optional</span> omit<wbr>Jobid<wbr>Directory</h3>
-					<div class="tsd-signature tsd-kind-icon">omit<wbr>Jobid<wbr>Directory<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
+					<a name="jobid" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> jobid</h3>
+					<div class="tsd-signature tsd-kind-icon">jobid<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.9.1/packages/zosjobs/src/doc/input/IDownloadSpoolContentParms.ts#L43">@zowe/zos-jobs-for-zowe-sdk/src/doc/input/IDownloadSpoolContentParms.ts:43</a></li>
+							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.11.0/packages/zosjobs/src/doc/input/IDownloadSpoolContentParms.ts#L43">@zowe/zos-jobs-for-zowe-sdk/src/doc/input/IDownloadSpoolContentParms.ts:43</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
-							<p>If you specify false or do not specify this field, a directory with the jobid of the job as the name
-								will automatically be appended to the outDir.
-							If you specify true, no directory will be appended to your outDir.</p>
+							<p>JOB ID of the job for which you want to download all output
+							e.g. JOB00001</p>
 						</div>
 						<dl class="tsd-comment-tags">
 							<dt>memberof</dt>
-							<dd><p>IDownloadSpoolContentParms</p>
+							<dd><p>IDownloadAllSpoolContentParms</p>
 							</dd>
 						</dl>
 					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="outdir" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagOptional">Optional</span> out<wbr>Dir</h3>
-					<div class="tsd-signature tsd-kind-icon">out<wbr>Dir<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<a name="jobname" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> jobname</h3>
+					<div class="tsd-signature tsd-kind-icon">jobname<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.9.1/packages/zosjobs/src/doc/input/IDownloadSpoolContentParms.ts#L27">@zowe/zos-jobs-for-zowe-sdk/src/doc/input/IDownloadSpoolContentParms.ts:27</a></li>
+							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.11.0/packages/zosjobs/src/doc/input/IDownloadSpoolContentParms.ts#L35">@zowe/zos-jobs-for-zowe-sdk/src/doc/input/IDownloadSpoolContentParms.ts:35</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
-							<p>The directory to which you would like to download the output
-							Default value: DownloadJobs.DEFAULT_JOBS_OUTPUT_DIR</p>
+							<p>Name of the job for which you want to download all output
+							e.g. MYJOBNM</p>
 						</div>
 						<dl class="tsd-comment-tags">
 							<dt>memberof</dt>
-							<dd><p>IDownloadSpoolContentParms</p>
+							<dd><p>IDownloadAllSpoolContentParms</p>
 							</dd>
 						</dl>
 					</div>
@@ -280,10 +284,10 @@
 										<a href="_zowe_zos_jobs_for_zowe_sdk.idownloadspoolcontentparms.html#jobfile" class="tsd-kind-icon">job<wbr>File</a>
 									</li>
 									<li class=" tsd-kind-property tsd-parent-kind-interface">
-										<a href="_zowe_zos_jobs_for_zowe_sdk.idownloadspoolcontentparms.html#omitjobiddirectory" class="tsd-kind-icon">omit<wbr>Jobid<wbr>Directory</a>
+										<a href="_zowe_zos_jobs_for_zowe_sdk.idownloadspoolcontentparms.html#jobid" class="tsd-kind-icon">jobid</a>
 									</li>
 									<li class=" tsd-kind-property tsd-parent-kind-interface">
-										<a href="_zowe_zos_jobs_for_zowe_sdk.idownloadspoolcontentparms.html#outdir" class="tsd-kind-icon">out<wbr>Dir</a>
+										<a href="_zowe_zos_jobs_for_zowe_sdk.idownloadspoolcontentparms.html#jobname" class="tsd-kind-icon">jobname</a>
 									</li>
 								</ul>
 							</li>

@@ -136,9 +136,9 @@ The Zowe launcher started task `ZWESLSTC` needs to be able to access the ZIS ser
 You can start the cross memory server using the command `/S ZWESISTC` once the following steps have been completed.
 
 - JCL member `ZWESVSTC` is copied from `SZWESAMP` installation PDS to a PDS on the JES concatenation path.
-- The PDSE Load Library `SZWEAUTH`is APF-authorized, or Load module `ZWESIS01` is copied to an existing APF Auth LoadLib.
-- The JCL member `ZWESVSTC` DD statements are updated to point to the location of `ZWESIS01` and `ZWESIP00`. 
-- The load module `ZWESIS01` must run in key 4 and be non-swappable by adding a PPT entry to the SCHEDxx member of the system PARMLIB `PPT PGMNAME(ZWESIS01) KEY(4) NOSWAP`.
+- The PDSE Load Library `SZWEAUTH`is APF-authorized, or Load module `ZWESI00` is copied to an existing APF Auth LoadLib.
+- The JCL member `ZWESVSTC` DD statements are updated to point to the location of `ZWESI00` and `ZWESIP00`. 
+- The load module `ZWESI00` must run in key 4 and be non-swappable by adding a PPT entry to the SCHEDxx member of the system PARMLIB `PPT PGMNAME(ZWESI00) KEY(4) NOSWAP`.
 
 ## Starting and stopping the cross memory server on z/OS
 
