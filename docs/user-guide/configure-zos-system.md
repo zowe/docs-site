@@ -241,7 +241,7 @@ FACILITY(ZOWE=MODE=FAIL)
 FACILITY(ZOWE=RES) 
 ```
 
-For more information about how to administer Facility Matrix Table, see [How to Perform Facility Matrix Table Administration](https://techdocs.broadcom.com/content/broadcom/techdocs/us/en/ca-mainframe-software/security/ca-top-secret-for-z-os/16-0/using/protecting-facilities/how-to-perform-facility-matrix-table-administration.html).
+For more information about how to administer Facility Matrix Table, see [How to Perform Facility Matrix Table Administration](https://techdocs.broadcom.com/us/en/ca-mainframe-software/security/ca-top-secret-for-z-os/16-0/administrating/protecting-facilities/how-to-perform-facility-matrix-table-administration.html).
 
 To assign the FACILITY to the started task, issue the following command:                                                  
 ```
