@@ -23,6 +23,7 @@ module.exports = {
       label: "Release notes",
       items: [
         "getting-started/release-notes/release-notes-overview",
+        "getting-started/release-notes/v2_7_0",
         "getting-started/release-notes/v2_6_1",
         "getting-started/release-notes/v2_6_0",
         "getting-started/release-notes/v2_5_0",
@@ -59,6 +60,8 @@ module.exports = {
       label: "Installing Zowe z/OS components",
       items: [
         "user-guide/install-zos",
+        "user-guide/zos-components-installation-checklist",
+        "user-guide/zos-components-installation-checklist-dev",
         {
           type: "category",
           label: "Planning",
@@ -310,6 +313,8 @@ module.exports = {
       items: [
         "user-guide/mvd-configuration",
         "user-guide/cli-configuringcli-ev",
+        "user-guide/cli-configuringcli-evfile",
+        "user-guide/configure-data-sets-jobs-api",
         {
           type: "category",
           label: "API Mediation Layer",
@@ -318,6 +323,7 @@ module.exports = {
             "user-guide/api-mediation/api-catalog-configuration",
             "user-guide/api-mediation/api-gateway-configuration",
             "user-guide/api-mediation/discovery-service-configuration",
+            "user-guide/api-mediation/api-mediation-internal-configuration",
             "extend/extend-apiml/api-mediation-passtickets",
           ],
         },
@@ -340,6 +346,13 @@ module.exports = {
       label: "Using Zowe API Mediation Layer",
       items: [
         "user-guide/api-mediation/using-api-mediation-layer",
+        {
+          type: "category",
+          label: "Information Roadmap for Zowe API Mediation Layer",
+          items: [
+            "getting-started/user-roadmap-apiml",
+          ],
+        },
         {
           type: "category",
           label: "Using API Catalog",
@@ -589,7 +602,8 @@ module.exports = {
         "troubleshoot/servers/must-gather",
         "troubleshoot/verify-fingerprint",
         "troubleshoot/k8s-troubleshoot",
-        //"troubleshoot/troubleshoot-zos-certificate",
+        "troubleshoot/servers/return-codes",
+        "troubleshoot/troubleshoot-zos-certificate",
         {
           type: "category",
           label: "Zowe API Mediation Layer",
@@ -605,6 +619,7 @@ module.exports = {
             "troubleshoot/app-framework/app-troubleshoot",
             "troubleshoot/app-framework/app-mustgather",
             "troubleshoot/app-framework/app-issue",
+            "troubleshoot/app-framework/app-return-codes",
             "troubleshoot/app-framework/zss-error-codes",
           ],
         },
@@ -775,7 +790,7 @@ module.exports = {
     {
       type: "link",
       label: "Third Party Software Requirements",
-      href: "https://github.com/zowe/docs-site/tree/master/tpsr/tpsr-v2.6.x.md",
+      href: "https://github.com/zowe/docs-site/tree/master/tpsr/tpsr-v2.7.x.md",
     },
   ],
 };

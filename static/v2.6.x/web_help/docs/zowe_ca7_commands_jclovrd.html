@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>ca7 commands jclovrd</title>
+<link rel="stylesheet" href="../css/bundle-docs.css">
+<link rel="stylesheet" href="../css/docs.css">
+<article class="markdown-body">
+<h2><a href="zowe.html">zowe</a> › <a href="zowe_ca7.html">ca7</a> › <a href="zowe_ca7_commands.html">commands</a> › <a href="zowe_ca7_commands_jclovrd.html">jclovrd</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
+<p>The JCLOVRD command establishes or satisfies JCL override requirements.</p>
+<h4>Usage</h4>
+<p>zowe ca7 commands jclovrd [options]</p>
+<h4>Required Options</h4>
+<ul>
+<li>
+<p><code>--ca7num</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>ca7num=0016</p>
+<p>Defines the CA 7 job number of the job in the request queue for which to establish or<br>
+remove the override requirement.<br>
+Limits: 1 to 4 numeric characters</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--set</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>example: ON<br>
+Specifies to establish or satisfy JCL override requirements.<br>
+When a job fails with a JCL error, the JCL override requirement is automatically<br>
+set to ON when the job returns to the request queue.</p>
+<p>ON<br>
+Establishes a JCL override requirement for the specified job.<br>
+The SET=ON option is used for jobs in the request queue to indicate that<br>
+an override is needed before execution is to occur.<br>
+OFF<br>
+Satisfies a JCL override requirement for the specified job. The SET=OFF option indicates that a previously defined<br>
+need (requirement) for overrides has been satisfied and execution can be safely attempted.<br>
+When a JCL override requirement is set to OFF,<br>
+that requirement no longer appears on a requirements list for the job<br>
+When a REPL is done from the QM.5 panel, the JCL override requirement is automatically set to OFF.<br>
+WLM<br>
+Sets job to allow the insertion of SCHENV= keyword on the JOB<br>
+statement at submission time when these conditions are true:<br>
+The scheduling environment insertion feature is activated.<br>
+A scheduling Environment VRM definition is attached to the job (or SCHENV global default).<br>
+NOWLM<br>
+Sets job to suppress the insertion of a SCHENV= keyword on the JOB statement at submission<br>
+time even when one is typically associated with the job.<br>
+This option can be used when the validation of an associated IBM WLM scheduling environment<br>
+has failed causing the job to be requeued (see Browse message SSM0-42).<br>
+FSetting the NOWLM option lets you submit the job without SCHENV= keyword insertion.</p>
+</li>
+</ul>
+</li>
+</ul>
+<h4>CA7 Connection Options</h4>
+<ul>
+<li>
+<p><code>--host</code> | <code>-H</code> <em>(string)</em></p>
+<ul>
+<li>Host name of the CA7 API service that is running on the mainframe system.</li>
+</ul>
+</li>
+<li>
+<p><code>--port</code> | <code>-P</code> <em>(number)</em></p>
+<ul>
+<li>Port for the CA7 API service that is running on the mainframe system.</li>
+</ul>
+</li>
+<li>
+<p><code>--user</code> | <code>-u</code> <em>(string)</em></p>
+<ul>
+<li>User name for authenticating connections to the CA7 API service that is running on the mainframe system.</li>
+</ul>
+</li>
+<li>
+<p><code>--password</code> | <code>--pass</code> | <code>--pw</code> <em>(string)</em></p>
+<ul>
+<li>Password for authenticating connections to the CA7 API service that is running on the mainframe system.</li>
+</ul>
+</li>
+<li>
+<p><code>--base-path</code> | <code>--bp</code> <em>(string)</em></p>
+<ul>
+<li>The base path for your API mediation layer instance. Specify this option to prepend the base path to all resources when making REST requests. Do not specify this option if you are not using an API mediation layer.</li>
+</ul>
+</li>
+<li>
+<p><code>--protocol</code> | <code>-o</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>Specifies protocol to use for CA7 connection (http or https).</p>
+<p>Allowed values: http, https</p>
+</li>
+</ul>
+</li>
+</ul>
+<h4>Profile Options</h4>
+<ul>
+<li>
+<p><code>--ca7-profile</code> | <code>--ca7-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (ca7) profile to load for this command execution.</li>
+</ul>
+</li>
+<li>
+<p><code>--base-profile</code> | <code>--base-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (base) profile to load for this command execution.</li>
+</ul>
+</li>
+</ul>
+<h4>Base Connection Options</h4>
+<ul>
+<li>
+<p><code>--reject-unauthorized</code> | <code>--ru</code> <em>(boolean)</em></p>
+<ul>
+<li>
+<p>Reject self-signed certificates.</p>
+<p>Default value: true</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--token-type</code> | <code>--tt</code> <em>(string)</em></p>
+<ul>
+<li>The type of token to get and use for the API. Omit this option to use the default token type, which is provided by 'zowe auth login'.</li>
+</ul>
+</li>
+<li>
+<p><code>--token-value</code> | <code>--tv</code> <em>(string)</em></p>
+<ul>
+<li>The value of the token to pass to the API.</li>
+</ul>
+</li>
+<li>
+<p><code>--cert-file</code> <em>(local file path)</em></p>
+<ul>
+<li>The file path to a certificate file to use for authentication</li>
+</ul>
+</li>
+<li>
+<p><code>--cert-key-file</code> <em>(local file path)</em></p>
+<ul>
+<li>The file path to a certificate key file to use for authentication</li>
+</ul>
+</li>
+</ul>
+<h4>Examples</h4>
+<ul>
+<li>
+<p>Satisfies JCL override ca7 number 0016:</p>
+<ul>
+<li><code>zowe ca7 commands jclovrd --ca7num 0016 --set ON</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe ca7 commands jclovrd --ca7num 0016 --set ON">Copy</button></li>
+</ul>
+</li>
+</ul>
+</article>
+<script src="../js/bundle-docs.js"></script>
+<script src="../js/docs.js"></script>

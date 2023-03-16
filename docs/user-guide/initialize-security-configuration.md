@@ -4,6 +4,7 @@ This security configuration step is required for first time setup of Zowe. If Zo
 
 The JCL member `.SZWESAMP(ZWESECUR)` is provided to assist with the security configuration. Before submitting the `ZWESECUR` JCL member, you should customize it to match site security rules. For script driven scenarios, you can run the command `zwe init security` which uses `ZWESECUR` as a template to create a customized member in `.CUST.JCLLIB` which contains the commands needed to perform the security configuration.
 
+**Note:** Zowe supports TLS versions 1.2 and 1.3.
 ## Configuring with `zwe init security` command
 
 The `zwe init security` command reads data from `zowe.yaml` and will construct a JCL member using `ZWESECUR` as a template which is then submitted.  This is a convenience step to assist with driving Zowe configuration through a pipeline or when you prefer to use USS commands rather than directly edit and customize JCL members.
