@@ -54,12 +54,12 @@ Component loggers are created from the core logger object, but when working with
 
 #### App Server
 
-See **Router Dataservice Context** in the topic [Dataservices](mvd-dataservices.md).   
+See **Router Dataservice Context** in the topic [Dataservices](mvd-dataservices.md).
 
 
 #### Web
 
-(Angular App Instance Injectible). See **Logger** in [Zowe Desktop and window management](mvd-desktopandwindowmgt.md).  
+(Angular App Instance Injectible). See **Logger** in [Zowe Desktop and window management](mvd-desktopandwindowmgt.md).
 
 
 ## Logger API
@@ -130,7 +130,7 @@ The application plug-in framework provides ways to specify what component logger
 [The server configuration file](https://github.com/zowe/zlux/wiki/Configuration-for-zLUX-App-Server-&-ZSS) allows for specification of default log levels, as a top-level attribute `logLevel`, which takes key-value pairs where the key is a regex pattern for component IDs, and the value is an integer for the log levels.
 
 For example:
-```  
+```
 "logLevel": {
     "com.rs.configjs.data.access": 2,
     //the string given is a regex pattern string, so .* at the end here will cover that service and its subloggers.
@@ -142,7 +142,6 @@ For example:
     //"_unp.dsauth": 2
   },
 ```
-<<<<<<< HEAD
 For more information about the server configuration file, see [Zowe Application Framework (zLUX) configuration](../../user-guide/mvd-configuration#zowe-application-framework-configuration).
 
 ## Using log message IDs
@@ -183,10 +182,7 @@ To use log message IDs, take the following steps:
    ```
    DATE TIME:TIME:TIME.TIME <ZWED:> username INFO (org.zowe.app.name,:) A001 - Приложение создано.
    ```
-   
+
 ### Message ID logging examples
 
 Server core: https://github.com/zowe/zlux-server-framework/blob/master/plugins/config/lib/assets/i18n/log/messages_en.json
-=======
-For more information about the server configuration file, see [Zowe Application Framework (zLUX) configuration](../../user-guide/mvd-configuration#zowe-application-framework-configuration).
->>>>>>> docs-staging
