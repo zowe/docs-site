@@ -1,6 +1,6 @@
-# Understanding profile configurations in Zowe CLI
+# How Zowe CLI uses configurations
 
-When you run a command, Zowe CLI needs specific information, or *properties*, in order to perform the action.
+When you run a command, Zowe CLI needs specific information, or *properties*, in order to perform the command action.
 
 There are two common ways that properties and their values can be provided to Zowe CLI. One method is to manually include this information with each command when it is issued, as in the example command below:
 
@@ -110,4 +110,4 @@ The table below shows how Zowe CLI determines which profiles, properties, and va
 
 The rules above apply when profiles have the same name. To maintain the same set of properties in two different profiles, give each profile a different name so that Zowe CLI uses a specific profile, if needed.
 
-For more information on how configuration files work together, see [How Zowe CLI team configuration files are merged together](https://github.com/zowe/zowe-cli/blob/master/docs/How_config_files_are_merged.md). For information on other profile types, see [Using profiles](https://docs.zowe.org/stable/user-guide/cli-using-using-profiles).
+For more information on how configuration files work together, see [How Zowe CLI team configuration files are merged together](https://github.com/zowe/zowe-cli/blob/master/docs/How_config_files_are_merged.md).
