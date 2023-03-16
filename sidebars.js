@@ -60,6 +60,8 @@ module.exports = {
       label: "Installing Zowe z/OS components",
       items: [
         "user-guide/install-zos",
+        "user-guide/zos-components-installation-checklist",
+        "user-guide/zos-components-installation-checklist-dev",
         {
           type: "category",
           label: "Planning",
