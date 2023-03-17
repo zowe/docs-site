@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>profiles update cics-deploy-profile</title>
+<link rel="stylesheet" href="../css/bundle-docs.css">
+<link rel="stylesheet" href="../css/docs.css">
+<article class="markdown-body">
+<h2><a href="zowe.html">zowe</a> › <a href="zowe_profiles.html">profiles</a> › <a href="zowe_profiles_update.html">update</a> › <a href="zowe_profiles_update_cics-deploy-profile.html">cics-deploy-profile</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
+<p>Specifies the target environment for the cics-deploy deploy and undeploy actions.</p>
+<h4>Usage</h4>
+<p>zowe profiles update cics-deploy-profile &lt;profileName&gt; [options]</p>
+<h4>Positional Arguments</h4>
+<ul>
+<li>
+<p><code>profileName</code>		 <em>(string)</em></p>
+<ul>
+<li>Specifies the name of the new cics-deploy profile. You can load this profile by using the name on commands that support the &quot;--cics-deploy-profile&quot; option.</li>
+</ul>
+</li>
+</ul>
+<h4>Options</h4>
+<ul>
+<li>
+<p><code>--cicsplex</code>  | <code>--cp</code> <em>(string)</em></p>
+<ul>
+<li>Specifies the CICSplex (up to 8 characters) to target.</li>
+</ul>
+</li>
+<li>
+<p><code>--scope</code>  | <code>--sc</code> <em>(string)</em></p>
+<ul>
+<li>Specifies the name of the CICS System, or CICS System Group (up to 8 characters) to target.</li>
+</ul>
+</li>
+<li>
+<p><code>--csd-group</code>  | <code>--cg</code> | <code>--csdgroup</code> <em>(string)</em></p>
+<ul>
+<li>Specifies the CSD group (up to 8 characters) for the bundle resource. If a bundle is deployed then a definition is added to this group; if a bundle is undeployed then the definition is removed from this group. The CSD group is changed for each CICS system that is specified by the --scope option. The --csd-group and --res-group options are mutually exclusive.</li>
+</ul>
+</li>
+<li>
+<p><code>--res-group</code>  | <code>--rg</code> | <code>--resgroup</code> <em>(string)</em></p>
+<ul>
+<li>Specifies the BAS resource group (up to 8 characters) for the bundle resource. If a bundle is deployed then a resource is defined in the BAS data repository; if a bundle is undeployed then the definition is removed. The --csd-group and --res-group options are mutually exclusive.</li>
+</ul>
+</li>
+<li>
+<p><code>--cics-hlq</code>  | <code>--cq</code> | <code>--cicshlq</code> <em>(string)</em></p>
+<ul>
+<li>Specifies the High Level Qualifier (up to 35 characters) at which the CICS datasets can be found in the target environment.</li>
+</ul>
+</li>
+<li>
+<p><code>--cpsm-hlq</code>  | <code>--cph</code> | <code>--cpsmhlq</code> <em>(string)</em></p>
+<ul>
+<li>Specifies the High Level Qualifier (up to 35 characters) at which the CPSM datasets can be found in the target environment.</li>
+</ul>
+</li>
+<li>
+<p><code>--target-directory</code>  | <code>--td</code> | <code>--targetdir</code> | <code>--target-dir</code> <em>(string)</em></p>
+<ul>
+<li>Specifies the target zFS location to which CICS bundles should be uploaded (up to 255 characters).</li>
+</ul>
+</li>
+<li>
+<p><code>--job-card</code>  | <code>--jc</code> | <code>--jobcard</code> <em>(string)</em></p>
+<ul>
+<li>Specifies the job card to use with any generated DFHDPLOY JCL.</li>
+</ul>
+</li>
+</ul>
+</article>
+<script src="../js/bundle-docs.js"></script>
+<script src="../js/docs.js"></script>
