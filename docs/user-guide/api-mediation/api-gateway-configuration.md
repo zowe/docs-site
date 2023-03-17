@@ -469,12 +469,15 @@ components.*.certificate.keystore.alias=<certificate-alias-from-AT-TLS-rule>
 
 ## Unique cookie name for multiple zowe instances
 
-By default, in the API Gateway, the cookie name is apimlAuthenticationToken.
-To prevent the overwriting of default cookie name in the case of multiple instances of Zowe, there is a possibility to configure unique cookie name for each instances.  
+By default, in the API Gateway, the cookie name is `apimlAuthenticationToken`.
+To prevent overwriting of the default cookie name in the case of multiple Zowe instances, a unique cookie name can be configured for each instance.  
 
-Please follow below steps to configure unique cookie name for the instances,
+Follow this procedure to configure a unique cookie name for the instances:
 
 1. Open the `zowe.yaml` configuration file.
-2. Find or add the property  `components.gateway.security.auth.uniqueCookie` and set it to true. A unique cookie name will be generated as apimlAuthenticationToken.instanceId (Eg. If the instance id is s0w1, cookie name will be `apimlAuthenticationToken.s0w1`)
-3. If the above is not set to true, cookie name will be `apimlAuthenticationToken`  by default.
+2. Find or add the property  `components.gateway.security.auth.uniqueCookie`, and set it to `true`. A unique cookie name is generated as `apimlAuthenticationToken.instanceId`.
+
+    **Example:**  
+    If this parameter is set to `true`, and the instance id is `s0w1`, the name of the cookie transforms to `apimlAuthenticationToken.s0w1`.  
+If this property is not set to `true`, the cookie name remains `apimlAuthenticationToken` by default.
 4. Restart `zowe`.
