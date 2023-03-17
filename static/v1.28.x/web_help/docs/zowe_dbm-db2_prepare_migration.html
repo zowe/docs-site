@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>dbm-db2 prepare migration</title>
+<link rel="stylesheet" href="../css/bundle-docs.css">
+<link rel="stylesheet" href="../css/docs.css">
+<article class="markdown-body">
+<h2><a href="zowe.html">zowe</a> › <a href="zowe_dbm-db2.html">dbm-db2</a> › <a href="zowe_dbm-db2_prepare.html">prepare</a> › <a href="zowe_dbm-db2_prepare_migration.html">migration</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
+<p>Generate a script to migrate Db2 object definitions (DDL) and data from a source subsystem to a target subsystem. You can specify which objects to include and apply changes to the objects as part of the migration. To execute the script, use the 'zowe dbm-db2 execute migration-script' command.</p>
+<h4>Usage</h4>
+<p>zowe dbm-db2 prepare migration [options]</p>
+<h4>Options</h4>
+<ul>
+<li>
+<p><code>--object</code>  | <code>-o</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>Specifies the Db2 objects that you want to migrate. Use the optional include syntax to include related Db2 objects.</p>
+<p>Format: see object-file description.</p>
+<pre><code>Note: The \-\-object and \-\-object\-file options are mutually exclusive\.
+</code></pre>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--object-file</code>  | <code>--of</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>Specifies the local input file that contains a list of Db2 objects, separated by a semicolon, that you want to migrate. Use the optional include syntax to include related Db2 objects.</p>
+<p>Format:</p>
+<pre><code>&lt;object\-type&gt; &lt;object\-name&gt; \[include(&lt;related\-object\-type&gt;,\.\.\.)\];
+
+The required clause &lt;object\-type&gt; &lt;object\-name&gt;  identifies the specific Db2 (base) object:
+ 
+    STOGROUP &lt;name&gt;
+    DATABASE &lt;name&gt;
+    TABLESPACE &lt;dbname&gt;\.&lt;name&gt;
+    TABLE &lt;schema&gt;\.&lt;name&gt;
+    INDEX &lt;schema&gt;\.&lt;name&gt;
+    VIEW &lt;schema&gt;\.&lt;name&gt;
+    ALIAS &lt;schema&gt;\.&lt;name&gt;
+    SYNONYM &lt;schema&gt;\.&lt;name&gt;
+    MQT &lt;schema&gt;\.&lt;name&gt;
+    SEQUENCE &lt;schema&gt;\.&lt;name&gt;
+    TRIGGER &lt;schema&gt;\.&lt;name&gt;
+    FUNCTION &lt;schema&gt;\.&lt;name&gt;\[\.&lt;version&gt;\]
+    PROCEDURE &lt;schema&gt;\.&lt;name&gt;\[\.&lt;version&gt;\]
+
+The optional clause include(&lt;related\-object\-type&gt;,\.\.\.) identifies one or more, comma separated related object types that you want to include in the object list\. You can specify STOGROUP, DATABASE, TABLESPACE, TABLE, INDEX, VIEW, SYNONYM, MQT\-ALL, TRIGGER, ROUTINE, PARENTS, CHILDREN, and ALL\.
+ 
+ Example:
+ 
+ table sysibm\.systables include (tablespace, database, index);
+ database db1 include(children);
+
+ Note: The \-\-object and \-\-object\-file options are mutually exclusive\.
+</code></pre>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--change-set</code>  | <code>--cs</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>Specifies the creator and name of an existing RC/Migrator global change set to be used to modify Db2 object attributes when preparing objects for migration.</p>
+<p>Format:</p>
+<pre><code>&lt;change\-set\-creator\.change\-set\-name&gt; 
+
+For more information about global change services, see the RC/Migrator documentation at https://techdocs\.broadcom\.com/db2rcmig\. 
+
+Note: If change\-set and change\-set\-file are both specified, specifications in change\-set\-file take precedence\.
+</code></pre>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--change-set-file</code>  | <code>--csf</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>Specifies the name of the local input file that contains the global change specifications to modify Db2 object attributes when preparing for migration.</p>
+<p>Format:</p>
+<pre><code>&lt;object\-attribute&gt; &lt;from\-value&gt; &lt;to\-value&gt;
+
+The &lt;object\-attribute&gt; consists of four characters\. The first two characters identify the object type\. The last two characters identify the specific attribute\. Wildcard characters are supported in the &lt;from\-value&gt; and &lt;to\-value&gt;\. The first occurrence in multiple specifications for the same &lt;object\-attribute&gt; has the highest precedence\.
+
+For a list of global change set attributes, see the RC/Migrator documentation at https://techdocs\.broadcom\.com/db2rcmig\.
+
+Example:
+
+The following example demonstrates changes to table’s schema (creator) and tablespace names:
+ 
+    TBCR TEST% PROD%
+    TBTS TESTTS% PRODTS%
+
+Note: If change\-set and change\-set\-file are both specified, specifications in change\-set\-file take precedence\.
+</code></pre>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--output-migrate-script</code>  | <code>--oms</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>Specifies the local output file name that contains the script to make changes to the target Db2 subsystem.</p>
+<p>Default value: migration.txt</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--output-ddl-file</code>  | <code>--odf</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>Specifies the local output file name that contains the generated DDL for the input objects that are identified by the --object-file or --object option.</p>
+<p>Default value: output.sql</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--modification</code>  | <code>-m</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>Identifies a named set of server-managed default parameter values that control the execution behavior of the zowe dbm-db2 commands. For example, you can use a modification to identify a set of default values that differ from the set of values that are normally used.</p>
+<p>For more information about using the modification option, see the DBM Data Service documentation at <a href="https://techdocs.broadcom.com/db2mgmt">https://techdocs.broadcom.com/db2mgmt</a>.</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--error-file</code>  | <code>--ef</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>Specifies the local output error file that contains errors that occurred during execution of the command.</p>
+<pre><code>   Default value: error\.log
+</code></pre>
+</li>
+</ul>
+</li>
+</ul>
+<h4>Required Options</h4>
+<ul>
+<li>
+<p><code>--source-db2</code>  | <code>--sd</code> <em>(string)</em></p>
+<ul>
+<li>Specifies the source Db2 subsystem ID where the object definitions and data that you want to migrate are located.</li>
+</ul>
+</li>
+<li>
+<p><code>--target-db2</code>  | <code>--td</code> <em>(string)</em></p>
+<ul>
+<li>Specifies the target Db2 subsystem ID where the object definitions and data are migrated (copied) to.</li>
+</ul>
+</li>
+</ul>
+<h4>Profile Options</h4>
+<ul>
+<li>
+<p><code>--dbm-db2-profile</code>  | <code>--dbm-db2-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (dbm-db2) profile to load for this command execution.</li>
+</ul>
+</li>
+<li>
+<p><code>--base-profile</code>  | <code>--base-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (base) profile to load for this command execution.</li>
+</ul>
+</li>
+</ul>
+<h4>Base Connection Options</h4>
+<ul>
+<li>
+<p><code>--host</code>  | <code>-H</code> <em>(string)</em></p>
+<ul>
+<li>Host name of service on the mainframe.</li>
+</ul>
+</li>
+<li>
+<p><code>--port</code>  | <code>-P</code> <em>(number)</em></p>
+<ul>
+<li>Port number of service on the mainframe.</li>
+</ul>
+</li>
+<li>
+<p><code>--user</code>  | <code>-u</code> <em>(string)</em></p>
+<ul>
+<li>User name to authenticate to service on the mainframe.</li>
+</ul>
+</li>
+<li>
+<p><code>--password</code>  | <code>--pass</code> | <code>--pw</code> <em>(string)</em></p>
+<ul>
+<li>Password to authenticate to service on the mainframe.</li>
+</ul>
+</li>
+<li>
+<p><code>--reject-unauthorized</code>  | <code>--ru</code> <em>(boolean)</em></p>
+<ul>
+<li>
+<p>Reject self-signed certificates.</p>
+<p>Default value: true</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--token-type</code>  | <code>--tt</code> <em>(string)</em></p>
+<ul>
+<li>The type of token to get and use for the API. Omit this option to use the default token type, which is provided by 'zowe auth login'.</li>
+</ul>
+</li>
+<li>
+<p><code>--token-value</code>  | <code>--tv</code> <em>(string)</em></p>
+<ul>
+<li>The value of the token to pass to the API.</li>
+</ul>
+</li>
+<li>
+<p><code>--cert-file</code>  <em>(local file path)</em></p>
+<ul>
+<li>The file path to a certificate file to use for authentication</li>
+</ul>
+</li>
+<li>
+<p><code>--cert-key-file</code>  <em>(local file path)</em></p>
+<ul>
+<li>The file path to a certificate key file to use for authentication</li>
+</ul>
+</li>
+</ul>
+<h4>Examples</h4>
+<ul>
+<li>
+<p>Generate a migration script for a tablespace and its child table:</p>
+<ul>
+<li><code>zowe dbm-db2 prepare migration --object &quot;tablespace my.tbsp include(table)&quot; --source-db2 SRC --target-db2 TRG --output-migrate-script migrate.txt</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe dbm-db2 prepare migration --object &quot;tablespace my.tbsp include(table)&quot; --source-db2 SRC --target-db2 TRG --output-migrate-script migrate.txt">Copy</button></li>
+</ul>
+</li>
+<li>
+<p>Generate a migration script and apply global changes:</p>
+<ul>
+<li><code>zowe dbm-db2 prepare migration --object &quot;database my.db include(children)&quot; --source-db2 SRC --target-db2 TRG –-change-set USER1.CHANGSET –-output-migrate-script migrate.txt --output-ddl-file objects.sql</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe dbm-db2 prepare migration --object &quot;database my.db include(children)&quot; --source-db2 SRC --target-db2 TRG –-change-set USER1.CHANGSET –-output-migrate-script migrate.txt --output-ddl-file objects.sql">Copy</button></li>
+</ul>
+</li>
+</ul>
+</article>
+<script src="../js/bundle-docs.js"></script>
+<script src="../js/docs.js"></script>

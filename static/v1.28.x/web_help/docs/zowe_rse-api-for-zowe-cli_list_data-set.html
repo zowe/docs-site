@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>rse-api-for-zowe-cli list data-set</title>
+<link rel="stylesheet" href="../css/bundle-docs.css">
+<link rel="stylesheet" href="../css/docs.css">
+<article class="markdown-body">
+<h2><a href="zowe.html">zowe</a> › <a href="zowe_rse-api-for-zowe-cli.html">rse-api-for-zowe-cli</a> › <a href="zowe_rse-api-for-zowe-cli_list.html">list</a> › <a href="zowe_rse-api-for-zowe-cli_list_data-set.html">data-set</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
+<p>List data sets that match a pattern in the data set name</p>
+<h4>Usage</h4>
+<p>zowe rse-api-for-zowe-cli list data-set &lt;filter&gt; [options]</p>
+<h4>Positional Arguments</h4>
+<ul>
+<li>
+<p><code>filter</code>		 <em>(string)</em></p>
+<ul>
+<li>The name or pattern of the data set that you want to list</li>
+</ul>
+</li>
+</ul>
+<h4>Options</h4>
+<ul>
+<li>
+<p><code>--attributes</code>  | <code>-a</code> <em>(boolean)</em></p>
+<ul>
+<li>Display more information about each member. Data sets with an undefined record format display information related to executable modules. Variable and fixed block data sets display information about when the members were created and modified.</li>
+</ul>
+</li>
+</ul>
+<h4>Profile Options</h4>
+<ul>
+<li>
+<p><code>--rse-profile</code>  | <code>--rse-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (rse) profile to load for this command execution.</li>
+</ul>
+</li>
+<li>
+<p><code>--base-profile</code>  | <code>--base-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (base) profile to load for this command execution.</li>
+</ul>
+</li>
+</ul>
+<h4>Base Connection Options</h4>
+<ul>
+<li>
+<p><code>--host</code>  | <code>-H</code> <em>(string)</em></p>
+<ul>
+<li>Host name of service on the mainframe.</li>
+</ul>
+</li>
+<li>
+<p><code>--port</code>  | <code>-P</code> <em>(number)</em></p>
+<ul>
+<li>Port number of service on the mainframe.</li>
+</ul>
+</li>
+<li>
+<p><code>--user</code>  | <code>-u</code> <em>(string)</em></p>
+<ul>
+<li>User name to authenticate to service on the mainframe.</li>
+</ul>
+</li>
+<li>
+<p><code>--password</code>  | <code>--pass</code> | <code>--pw</code> <em>(string)</em></p>
+<ul>
+<li>Password to authenticate to service on the mainframe.</li>
+</ul>
+</li>
+<li>
+<p><code>--reject-unauthorized</code>  | <code>--ru</code> <em>(boolean)</em></p>
+<ul>
+<li>
+<p>Reject self-signed certificates.</p>
+<p>Default value: true</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--token-type</code>  | <code>--tt</code> <em>(string)</em></p>
+<ul>
+<li>The type of token to get and use for the API. Omit this option to use the default token type, which is provided by 'zowe auth login'.</li>
+</ul>
+</li>
+<li>
+<p><code>--token-value</code>  | <code>--tv</code> <em>(string)</em></p>
+<ul>
+<li>The value of the token to pass to the API.</li>
+</ul>
+</li>
+<li>
+<p><code>--cert-file</code>  <em>(local file path)</em></p>
+<ul>
+<li>The file path to a certificate file to use for authentication</li>
+</ul>
+</li>
+<li>
+<p><code>--cert-key-file</code>  <em>(local file path)</em></p>
+<ul>
+<li>The file path to a certificate key file to use for authentication</li>
+</ul>
+</li>
+</ul>
+<h4>Examples</h4>
+<ul>
+<li>
+<p>Show the data set &quot;ibmuser.asm&quot;:</p>
+<ul>
+<li><code>zowe rse-api-for-zowe-cli list data-set &quot;ibmuser.asm&quot;</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe rse-api-for-zowe-cli list data-set &quot;ibmuser.asm&quot;">Copy</button></li>
+</ul>
+</li>
+<li>
+<p>Show attributes of the data set &quot;ibmuser.cntl&quot;:</p>
+<ul>
+<li><code>zowe rse-api-for-zowe-cli list data-set &quot;ibmuser.cntl&quot; -a</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe rse-api-for-zowe-cli list data-set &quot;ibmuser.cntl&quot; -a">Copy</button></li>
+</ul>
+</li>
+<li>
+<p>Show all data sets of the user &quot;ibmuser&quot;:</p>
+<ul>
+<li><code>zowe rse-api-for-zowe-cli list data-set &quot;ibmuser.*&quot;</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe rse-api-for-zowe-cli list data-set &quot;ibmuser.*&quot;">Copy</button></li>
+</ul>
+</li>
+<li>
+<p>Show attributes of all data sets of the user &quot;ibmuser&quot;:</p>
+<ul>
+<li><code>zowe rse-api-for-zowe-cli list data-set &quot;ibmuser.*&quot; -a</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe rse-api-for-zowe-cli list data-set &quot;ibmuser.*&quot; -a">Copy</button></li>
+</ul>
+</li>
+</ul>
+</article>
+<script src="../js/bundle-docs.js"></script>
+<script src="../js/docs.js"></script>
