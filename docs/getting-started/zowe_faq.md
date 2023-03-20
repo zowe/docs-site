@@ -399,7 +399,7 @@ Secure credential storage functionality is now contained in the Zowe CLI core ap
 
 <summary></summary>
 
-Zowe Explorer V2 supports using Service Profiles, Base Profiles, and Team Profiles. For more information, see [Using profiles](../user-guide/cli-using-using-profiles.md) in the Using Zowe CLI section. 
+Zowe Explorer V2 supports using Service Profiles, Base Profiles, and Team Profiles. For more information, see [Using V1 profiles](../user-guide/cli-using-using-profiles-v1.md) and [Team configurations](../user-guide/cli-using-using-team-profiles.md) in the Using Zowe CLI section. 
 
 </details>
 
@@ -431,7 +431,7 @@ As a developer, you may contribute to Zowe Explorer in the following ways:
 
 </details>
 
-## Zowe IntelliJ plug-in (incubator) FAQ
+## Zowe IntelliJ plug-in FAQ
 
 ### Why might I use Zowe IntelliJ plug-in versus a traditional ISPF interface to perform mainframe tasks?
 

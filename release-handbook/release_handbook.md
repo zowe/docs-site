@@ -54,9 +54,11 @@ The following steps takes v1.25 release prepration as an example. v1.24 was rele
 
 ### Part 1: Archive the previous release doc
 
-1. Go to the `docs-staging` branch. 
-2. Navigate to the `/docs-site` directory. 
-3. Run the following command:
+1. Update the `docs-staging` branch so it includes all the necessary updates made to the `master` branch. You may need to cherry pick changes to ensure the correct content is copied over to `docs-staging`.
+    - You can use GitHub Desktop to do this. Select the `Branch` menu, then the `Compare to branch` option. Select the `master` branch for comparison.
+2. Go to the `docs-staging` branch.
+3. Navigate to the `/docs-site` directory.
+4. Run the following command:
    
    ```npm run docusaurus docs:version <version>```
 
@@ -66,23 +68,23 @@ The following steps takes v1.25 release prepration as an example. v1.24 was rele
 
    When it completes, you’ll see a message `[docs]: version v1.24.x created!` 
 
-By doing this, the document versioning mechanism will:
+    By doing this, the document versioning mechanism will:
 
-* Copy the full `docs/` folder contents into a new `versioned_docs/version-<version>/` folder.
-* Create a versioned sidebars file based from your current sidebar configuration - saved as `versioned_sidebars/version-<version>-sidebars.json`.
-* Append the new version number to `versions.json`.
+    * Copy the full `docs/` folder contents into a new `versioned_docs/version-<version>/` folder.
+    * Create a versioned sidebars file based from your current sidebar configuration - saved as `versioned_sidebars/version-<version>-sidebars.json`.
+    * Append the new version number to `versions.json`.
 
-Here is an example of the changes when viewed in GitHub Desktop.
+    Here is an example of the changes when viewed in GitHub Desktop.
 
-![Tag new version](images/tag-new-version.png)
+    ![Tag new version](images/tag-new-version.png)
 
-4. Archive the `/static` files. 
+5. Archive the `/static` files. 
     
    1. Go to the `/static` folder. 
    2. Create an empty directory with the name of Previous version in `/static`. Example: static/v1.24.x.
    3. Copy all contents of the `/static/stable` directory and paste them in the Previous version's empty directory in the above step. Example: /static/v1.24.x.
 
-4. Next, update some links in the archived documentation to ensure that they refer to the correct location. To do this, switch to the archived directory. In our example, `versioned_docs/version-v1.24.x`. Update several locations in the archived docs to refer to the 1.24 release. 
+6. Next, update some links in the archived documentation to ensure that they refer to the correct location. To do this, switch to the archived directory. In our example, `versioned_docs/version-v1.24.x`. Update several locations in the archived docs to refer to the 1.24 release. 
 
    **Tip**: It's recommended that you use the Find function of Visual Studio Code editor to make the update. In our example, you can right-click the `versioned_docs/version-v1.24.x` folder and then select **Find in Folder**. 
 
@@ -100,9 +102,11 @@ Here is an example of the changes when viewed in GitHub Desktop.
 
      ![Update CLI web help ZIP](images/update-cli-help-zip.png)
 
-5. Verify that the archived version works. Run `npm start` to build the site locally and clear any errors. 
+7. Verify that the archived version works:
+    1. Run `npm install`.
+    2. Run `npm start` to build the site locally and clear any errors. 
 
-   ![Verify the archived doc](images/verify-archive.png)
+        ![Verify the archived doc](images/verify-archive.png)
 
 Next, let's bump the version of docs to a new version (example: v1.25). 
 
@@ -173,13 +177,22 @@ presets: [
     },
     ```
 
-3. Add the TPSR placeholder file. 
+2. Add the TPSR placeholder file. 
     1. Go to the `/tpsr` directory. 
-    2. Add a new file for the new version. For example: `/tpsr/tpsr-v1.25.x.md`. 
+    2. Add a new file for the new version. For example: `/tpsr/tpsr-v1.25.x.md`.
+    3. Update the TPSR file URL the `sidebar.js` file:
+
+        ```
+        {
+          type: "link",
+          label: "Third Party Software Requirements",
+          href: "https://github.com/zowe/docs-site/tree/master/tpsr/tpsr-v1.25.x.md",
+        },
+        ```
 
     **Note:** This is just a placeholder file. Once the RC build is available, this file should be updated to include the information for the new release. 
 
-4. Build the site to check that no error occurs. 
+3. Build the site to check that no error occurs.
 
 Done! The site setup for the new release version is now complete. 
 
@@ -245,8 +258,31 @@ Removing archived version is necessary once two new versions are released to red
    },
   ```
 
+## Zowe CLI: Update web help and type doc
+
+Note: Instructions use Visual Studio Code and GitHub Desktop. Replace version numbers in examples with the correct version.
+
+1. Create your own branch and, in Visual Studio Code, open the folder for the `docs-site` repository.
+2. In the **Side Bar**, navigate to the `scripts` directory.
+3. To work on the CLI web help, select the `updateWebHelp.sh` file.
+4. Open a new Terminal.
+5. Select **Git Bash** from the Terminal **+** dropdown menu.
+6. In the Terminal, enter the command in **Line 2** of the **Editor** tab. Include everything after the colon:
+
+    `bash scripts/updateWebHelp.sh <zoweVersion> [<outputDir>]`
+
+7. Replace `<zoweVersion>` with the correct version in the following format:
+    
+    1.28.2
+8. Replace `[<outputDir>]` with the correct directory:
+    - For the next version: static/stable
+    - For an older version: static/v1.28.x 
+9. For the type doc, repeat Steps 3-8 using the `updateTypedoc.sh` file and command.
+10. In GitHub Desktop, commit your updates to your branch.
+11. Merge your branch to `docs-staging`.
+
 ## Updating TPSR
 
 Pick up the latest licenses file from this location: https://zowe.jfrog.io/zowe/libs-release-local/org/zowe/licenses/. Open the release folder and download the `zowe_licenses_full.zip` file. 
 
-Extract the file and copy the content into the placeholder TPSR document for the release in the /tpsr folder. 
+Extract the file and copy the content into the placeholder TPSR document for the release in the /tpsr folder.

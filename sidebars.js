@@ -22,6 +22,11 @@ module.exports = {
       type: "category",
       label: "Release notes",
       items: [
+        "getting-started/release-notes/release-notes-overview",
+        "getting-started/release-notes/v2_7_0",
+        "getting-started/release-notes/v2_6_1",
+        "getting-started/release-notes/v2_6_0",
+        "getting-started/release-notes/v2_5_0",
         "getting-started/release-notes/v2_4_0",
         "getting-started/release-notes/v2_3_1",
         "getting-started/release-notes/v2_3_0",
@@ -55,6 +60,8 @@ module.exports = {
       label: "Installing Zowe z/OS components",
       items: [
         "user-guide/install-zos",
+        "user-guide/zos-components-installation-checklist",
+        "user-guide/zos-components-installation-checklist-dev",
         {
           type: "category",
           label: "Planning",
@@ -122,7 +129,8 @@ module.exports = {
             "user-guide/configure-xmem-server",
             "user-guide/configure-auxiliary-address-space",
             "user-guide/configure-zowe-zosmf-workflow",
-            "user-guide/configmgr-using"
+            "user-guide/configmgr-using",
+            "user-guide/install-configure-zos-extensions"
           ],
         },
         {
@@ -293,7 +301,7 @@ module.exports = {
     },
     {
       type: "category",
-      label: "Installing Zowe IntelliJ Plug-in (Incubator)",
+      label: "Installing Zowe IntelliJ Plug-in",
       items: [
         "user-guide/intellij-install",
         "user-guide/intellij-configure",
@@ -305,16 +313,18 @@ module.exports = {
       items: [
         "user-guide/mvd-configuration",
         "user-guide/cli-configuringcli-ev",
+        "user-guide/cli-configuringcli-evfile",
+        "user-guide/configure-data-sets-jobs-api",
         {
           type: "category",
           label: "API Mediation Layer",
           items: [
             "user-guide/configure-data-sets-jobs-api",
+            "user-guide/api-mediation/api-catalog-configuration",
             "user-guide/api-mediation/api-gateway-configuration",
             "user-guide/api-mediation/discovery-service-configuration",
             "user-guide/api-mediation/api-mediation-internal-configuration",
             "extend/extend-apiml/api-mediation-passtickets",
-            "user-guide/api-mediation/api-mediation-personal-access-token",
           ],
         },
       ],
@@ -338,6 +348,13 @@ module.exports = {
         "user-guide/api-mediation/using-api-mediation-layer",
         {
           type: "category",
+          label: "Information Roadmap for Zowe API Mediation Layer",
+          items: [
+            "getting-started/user-roadmap-apiml",
+          ],
+        },
+        {
+          type: "category",
           label: "Using API Catalog",
           items: [
             "user-guide/api-mediation-view-service-information-and-api-doc",
@@ -352,6 +369,8 @@ module.exports = {
         "extend/extend-apiml/api-mediation-routing",
         "extend/extend-apiml/service-information",
         "extend/extend-apiml/websocket",
+        "user-guide/api-mediation/api-gateway-rest-apis-documentation",
+        "user-guide/api-mediation/api-mediation-smf",
       ],
     },
     {
@@ -364,26 +383,28 @@ module.exports = {
         "user-guide/cli-using-issuing-first-command",
         {
           type: "category",
+          label: "Using team profiles",
+          items: [
+            "user-guide/cli-using-using-team-profiles",
+            "user-guide/cli-using-initializing-team-configuration",
+            "user-guide/cli-using-test-zosmf-connection",
+            "user-guide/cli-using-team-configuration-application-developers",
+            "user-guide/cli-using-team-configuration-team-leaders",
+            "user-guide/cli-using-sharing-team-config-files",
+            "user-guide/cli-using-understand-profiles-configs",
+            "user-guide/cli-using-team-managing-credential-security",
+            "user-guide/cli-using-global-storing-properties-automatically",
+          ],
+        },
+        {
+          type: "category",
           label: "Configuring daemon mode",
           items: [
             "user-guide/cli-using-using-daemon-mode",
             "user-guide/cli-configure-daemon-on-zlinux-os",
           ],
         },
-        "user-guide/cli-using-using-profiles",
-        {
-          type: "category",
-          label: "Configuring team profiles",
-          items: [
-            "user-guide/cli-using-using-team-profiles",
-            "user-guide/cli-using-initializing-team-configuration",
-            "user-guide/cli-using-team-configuration-application-developers",
-            "user-guide/cli-using-team-configuration-team-leaders",
-            "user-guide/cli-using-sharing-team-config-files",
-            "user-guide/cli-using-team-managing-credential-security",
-            "user-guide/cli-using-global-storing-properties-automatically",
-          ],
-        },
+        "user-guide/cli-using-using-profiles-v1",
         "user-guide/cli-using-integrating-apiml",
         "user-guide/cli-using-working-certificates",
 
@@ -478,7 +499,6 @@ module.exports = {
       items: [
         "extend/packaging-zos-extensions",
         "extend/server-schemas",
-        "extend/install-configure-zos-extensions",
         "extend/lifecycling-with-zwesvstc",
         "extend/k8s-extend",
         "extend/k8s-conformance",
@@ -568,27 +588,44 @@ module.exports = {
       items: [
         "troubleshoot/troubleshooting",
         "troubleshoot/troubleshoot-zowe-release",
+      ],
+    },
+    {
+      type: "category",
+      label: "Zowe Servers",
+      items: [
+        "troubleshoot/servers/must-gather",
         "troubleshoot/verify-fingerprint",
-      ],
-    },
-    //"troubleshoot/troubleshoot-zos-certificate",
-    "troubleshoot/k8s-troubleshoot",
-    {
-      type: "category",
-      label: "Zowe API Mediation Layer",
-      items: [
-        "troubleshoot/troubleshoot-apiml",
-        "troubleshoot/troubleshoot-apiml-error-codes",
-      ],
-    },
-    {
-      type: "category",
-      label: "Zowe Application Framework",
-      items: [
-        //    "troubleshoot/app-framework/app-troubleshoot", //still refers to instance.env
-        //    "troubleshoot/app-framework/app-mustgather", //still refers to instance.env
-        "troubleshoot/app-framework/app-issue",
-        "troubleshoot/app-framework/zss-error-codes",
+        "troubleshoot/k8s-troubleshoot",
+        "troubleshoot/servers/return-codes",
+        "troubleshoot/troubleshoot-zos-certificate",
+        {
+          type: "category",
+          label: "Zowe API Mediation Layer",
+          items: [
+            "troubleshoot/troubleshoot-apiml",
+            "troubleshoot/troubleshoot-apiml-error-codes",
+          ],
+        },
+        {
+          type: "category",
+          label: "Zowe Application Framework",
+          items: [
+            "troubleshoot/app-framework/app-troubleshoot",
+            "troubleshoot/app-framework/app-mustgather",
+            "troubleshoot/app-framework/app-issue",
+            "troubleshoot/app-framework/app-return-codes",
+            "troubleshoot/app-framework/zss-error-codes",
+          ],
+        },
+        {
+          type: "category",
+          label: "Zowe Launcher",
+          items: [
+            "troubleshoot/launcher/launcher-troubleshoot",
+            "troubleshoot/launcher/launcher-error-codes"
+          ],
+        },
       ],
     },
     {
@@ -597,9 +634,18 @@ module.exports = {
       items: [
         "troubleshoot/cli/troubleshoot-cli",
         "troubleshoot/cli/mustgather-cli",
+        "troubleshoot/cli/use-individual-troubleshoot-commands",
+        "troubleshoot/cli/cli-use-curl-to-troubleshoot",
         "troubleshoot/cli/zosmf-cli",
         "troubleshoot/cli/known-cli",
         "troubleshoot/cli/cli-issue",
+        {
+          type: "category",
+          label: "Zowe CLI Plug-ins",
+          items: [
+            "troubleshoot/cli/troubleshoot-cli-plugins"
+          ],
+        }
       ],
     },
     {
@@ -609,14 +655,6 @@ module.exports = {
         "troubleshoot/ze/troubleshoot-ze",
         "troubleshoot/ze/known-ze",
         "troubleshoot/ze/ze-issues",
-      ],
-    },
-    {
-      type: "category",
-      label: "Zowe Launcher",
-      items: [
-        "troubleshoot/launcher/launcher-troubleshoot",
-        "troubleshoot/launcher/launcher-error-codes"
       ],
     },
     "troubleshoot/zowe-chat-troubleshoot/troubleshooting",
@@ -747,7 +785,7 @@ module.exports = {
     {
       type: "link",
       label: "Third Party Software Requirements",
-      href: "https://github.com/zowe/docs-site/tree/master/tpsr/tpsr-v2.1.x.md",
+      href: "https://github.com/zowe/docs-site/tree/master/tpsr/tpsr-v2.7.x.md",
     },
   ],
 };

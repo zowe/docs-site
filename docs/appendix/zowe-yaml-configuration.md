@@ -2,7 +2,7 @@
 
 Zowe v2 uses a YAML configuration file during installation, configuration, and runtime. This file is usually referred to as the Zowe configuration YAML file or the `zowe.yaml` file. YAML is a human-friendly data serialization language for all programming languages. To learn more about YAML specifications, see [https://yaml.org/](https://yaml.org/). For a free, offline YAML validator to help validate your syntax, download the [Red Hat's VS Code YAML extension](https://marketplace.visualstudio.com/items?itemName=redhat.vscode-yaml).
 
-**Note:** In the following sections, we refer to configuration keys by using concatenation of key names and dots. For example, if you want to update the configuration key `zowe.certificate.keystore.type` with value `PKCS12`, you should set value for this entry in the `zowe.yaml`:
+**Note:** In the following sections, we refer to configuration keys by using the concatenation of key names and dots. For example, if you want to update the configuration key `zowe.certificate.keystore.type` with value `PKCS12`, you should set value for this entry in the `zowe.yaml`:
 
 ```yaml
 zowe:
@@ -51,7 +51,7 @@ The YAML configuration file has few high-level sections:
 - **`zOSMF`**  
  Tells Zowe your z/OSMF configurations.
 - **`components`**  
- Defines detailed configurations for each Zowe component or extension. Each component or extension may have a key entry under this section. For example, `components.gateway` is configuration for API Mediation Layer Gateway service.
+ Defines detailed configurations for each Zowe component or extension. Each component or extension may have a key entry under this section. For example, `components.gateway` is configuration for the API Mediation Layer Gateway service.
 - **`haInstances`**  
  Defines customized configurations for each High Availability (HA) instance. You should predefine all Zowe HA instances you want to start within your Sysplex.
 
@@ -148,7 +148,7 @@ In Zowe YAML configuration, certificate definition shares the same format and th
 - **`keystore.type`**  
  Defines the type of the keystore. If you are using keystore, this value usually should be `PKCS12`. If you are using keyring, this value should be `JCERACFKS`.
 - **`keystore.file`**  
- Defines the path of the keystore file. If you are using keyring, this should look like `safkeyring:////<keyring-owner>/<keyring-name>`. For example, `safkeyring:////ZWESVUSR/ZoweKeyring`.
+ Defines the path of the keystore file. If you are using keyring, this should look like `safkeyring://<keyring-owner>/<keyring-name>`. For example, `safkeyring://ZWESVUSR/ZoweKeyring`.
 - **`keystore.password`**  
  Defines the password of the keystore.
 - **`keystore.alias`**  
@@ -156,7 +156,7 @@ In Zowe YAML configuration, certificate definition shares the same format and th
 - **`truststore.type`**  
  Defines the type of the truststore file. If you are using keystore, this value usually should be `PKCS12`. If you are using keyring, this value should be `JCERACFKS`.
 - **`truststore.file`**  
- Defines the path to the truststore file. If you are using keyring, this should look like `safkeyring:////<keyring-owner>/<keyring-name>`, usually will be the same value of `keystore.file`.
+ Defines the path to the truststore file. If you are using keyring, this should look like `safkeyring://<keyring-owner>/<keyring-name>`, usually will be the same value of `keystore.file`.
 - **`truststore.password`**  
  Defines the password of the truststore.
 - **`pem.key`**  
@@ -218,6 +218,8 @@ The high-level configuration `zowe` supports these definitions:
       MY_NEW_ENV: value-of-my-env
    ```
  Please be aware that variables defined here are global to all Zowe components, on all HA instances.
+
+ An example use case is to override system-wide environment variables for the Zowe runtime, such as the directory to use for temporary files.
 
 #### Certificate
 
@@ -322,18 +324,18 @@ zowe:
 - `zowe.setup.dataset.prefix` shows where the `SZWEAUTH` data set is installed.
 - `zowe.setup.dataset.parmlib` is the user custom parameter library. Zowe server command may generate sample PARMLIB members and stores here.
 - `zowe.setup.dataset.jcllib` is the custom JCL library. Zowe server command may generate sample JCLs and put into this data set.
-- `zowe.setup.dataset.authLoadlib` is the user custom APF LOADLIB. This field is optional. If this is defined, members of `SZWEAUTH` will be copied over to this data set and it will be APF authorized. If it's not defined, `SZWEAUTH` from `zowe.setup.dataset.prefix` will be APF authorized.
+- `zowe.setup.dataset.authLoadlib` is the user custom APF LOADLIB. This field is optional. If this is defined, members of `SZWEAUTH` will be copied over to this data set and it will be APF authorized. If it is not defined, `SZWEAUTH` from `zowe.setup.dataset.prefix` will be APF authorized.
 - `zowe.setup.dataset.authPluginLib` is the user custom APF PLUGINLIB. You can install Zowe ZIS plug-ins into this load library. This loadlib requires APF authorize.
 
-- `zowe.setup.security.product` is security product. Can be `RACF`, `ACF2`, or `TSS`. This configuration is optional. Default value is `RACF`.
-- `zowe.setup.security.groups.admin` is the group for Zowe administrators. This configuration is optional. Default value is `ZWEADMIN`.
-- `zowe.setup.security.groups.stc` is the group for Zowe started tasks. This configuration is optional. Default value is `ZWEADMIN`.
-- `zowe.setup.security.groups.sysProg` is system programmer user ID/group. This configuration is optional. Default value is `ZWEADMIN`.
-- `zowe.setup.security.users.zowe` is the userid for Zowe started task. This configuration is optional. Default value is `ZWESVUSR`.
-- `zowe.setup.security.users.zis` is userid for ZIS started task. This configuration is optional. Default value is `ZWESIUSR`.
-- `zowe.setup.security.stcs.zowe` is Zowe started task name. This configuration is optional. Default value is `ZWESLSTC`.
-- `zowe.setup.security.stcs.zis` is ZIS started task name. This configuration is optional. Default value is `ZWESISTC`.
-- `zowe.setup.security.stcs.aux` is ZIS AUX started task name. This configuration is optional. Default value is `ZWESASTC`.
+- `zowe.setup.security.product` is the security product. Can be `RACF`, `ACF2`, or `TSS`. This configuration is optional. The default value is `RACF`.
+- `zowe.setup.security.groups.admin` is the group for Zowe administrators. This configuration is optional. The default value is `ZWEADMIN`.
+- `zowe.setup.security.groups.stc` is the group for Zowe started tasks. This configuration is optional. The default value is `ZWEADMIN`.
+- `zowe.setup.security.groups.sysProg` is system programmer user ID/group. This configuration is optional. The default value is `ZWEADMIN`.
+- `zowe.setup.security.users.zowe` is the userid for Zowe started task. This configuration is optional. The default value is `ZWESVUSR`.
+- `zowe.setup.security.users.zis` is userid for ZIS started task. This configuration is optional. Th default value is `ZWESIUSR`.
+- `zowe.setup.security.stcs.zowe` is Zowe started task name. This configuration is optional. The default value is `ZWESLSTC`.
+- `zowe.setup.security.stcs.zis` is ZIS started task name. This configuration is optional. The default value is `ZWESISTC`.
+- `zowe.setup.security.stcs.aux` is ZIS AUX started task name. This configuration is optional. The default value is `ZWESASTC`.
 
 - `zowe.setup.certificate.type` is the type of certificate. Valid values are `PKCS1` (USS keystore) or `JCERACFKS` (z/OS keyring).
 - `zowe.setup.certificate.dname` is the distinguished name of the certificate. You can define `caCommonName`, `commonName`, `orgUnit`, `org`, `locality`, `state`, and / or `country`. These configurations are optional.
@@ -344,7 +346,7 @@ zowe:
 **For `PKCS12` certificate users,**
 
 - `zowe.setup.certificate.pkcs12.directory` is the directory where you plan to store the PKCS12 keystore and truststore. This is required if `zowe.setup.certificate.type` is `PKCS12`.
-- `zowe.setup.certificate.pkcs12.lock` is a boolean configuration to tell if we should lock the PKCS12 keystore directory only for Zowe runtime user and group. Default value is true.
+- `zowe.setup.certificate.pkcs12.lock` is a boolean configuration to tell if we should lock the PKCS12 keystore directory only for Zowe runtime user and group. The default value is true.
 - You can also define `name`, `password`, `caAlias` and `caPassword` under `zowe.setup.certificate.pkcs12` to customized keystore and truststore. These configurations are optional, but it is recommended to update them from default values.
 - Define `zowe.setup.certificate.pkcs12.import.keystore` if you already acquired certificate from other CA, stored them in PKCS12 format, and want to import into Zowe PKCS12 keystore.
 - `zowe.setup.certificate.pkcs12.import.password` is the password for keystore defined in `zowe.setup.certificate.pkcs12.import.keystore`.
@@ -354,21 +356,21 @@ zowe:
 
 - `zowe.setup.certificate.keyring.owner` is the keyring owner. It's optional and default value is `zowe.setup.security.users.zowe`. If it's also not defined, the default value is `ZWESVUSR`.
 - `zowe.setup.certificate.keyring.name` is the keyring name will be created on z/OS. This is required if `zowe.setup.certificate.type` is `JCERACFKS`.
-- If you want to let Zowe to generate new certificate,
-  * You can also customize `label` and `caLabel` under `zowe.setup.certificate.keyring` if you want to generate new certificate. Default value of `label` is `localhost` and default value of `caLabel` is `localca`.
-- If you want to import certificate stored in MVS data set into Zowe keyring,
+- If you want to let Zowe to generate a new certificate:
+  * You can also customize `label` and `caLabel` under `zowe.setup.certificate.keyring` if you want to generate new certificate. The default value of `label` is `localhost` and default value of `caLabel` is `localca`.
+- If you want to import a certificate stored in MVS data set into Zowe keyring:
   * `zowe.setup.certificate.keyring.connect.dsName` is required in this case. It tells Zowe the data set where the certificate stored.
   * `zowe.setup.certificate.keyring.connect.password` is the password when importing the certificate.
-  * The certificate will be imported with label defined in `zowe.setup.certificate.keyring.label`.
-- If you want to connect existing certificate into Zowe keyring,
+  * The certificate will be imported with the label defined in `zowe.setup.certificate.keyring.label`.
+- If you want to connect an existing certificate into a Zowe keyring:
   * `zowe.setup.certificate.keyring.connect.user` is required and tells Zowe the owner of existing certificate. This field can have value of `SITE`.
   * `zowe.setup.certificate.keyring.connect.label` is also required and tells Zowe the label of existing certificate.
-- If `zowe.verifyCertificates` is not `DISABLED`, and z/OSMF host (`zOSMF.host`) is provided, Zowe will try to trust z/OSMF certificate.
+- If `zowe.verifyCertificates` is not `DISABLED`, and z/OSMF host (`zOSMF.host`) is provided, Zowe will try to trust the z/OSMF certificate.
   * If you are using `RACF` security manager, Zowe will try to automatically detect the z/OSMF CA based on certificate owner specified by
-    `zowe.setup.certificate.keyring.zOSMF.user`. Default value of this field is `IZUSVR`. If the automatic detection failed, you will need to define `zowe.setup.certificate.keyring.zOSMF.ca` indicates what is the label of z/OSMF root certificate authority.
-  * If you are using `ACF2` or `TSS` (Top Secret) security manager, `zowe.setup.certificate.keyring.zOSMF.ca` is required to indicates what is the label of z/OSMF root certificate authority.
+    `zowe.setup.certificate.keyring.zOSMF.user`. Default value of this field is `IZUSVR`. If the automatic detection failed, you will need to define `zowe.setup.certificate.keyring.zOSMF.ca` indicates what is the label of the z/OSMF root certificate authority.
+  * If you are using `ACF2` or `TSS` (Top Secret) security manager, `zowe.setup.certificate.keyring.zOSMF.ca` is required to indicates what is the label of the z/OSMF root certificate authority.
 
-- `zowe.setup.vsam.mode` indicates whether the VSAM will utilize Record Level Sharing (RLS) services or not. Valid value is `RLS` or `NONRLS`.
+- `zowe.setup.vsam.mode` indicates whether the VSAM will utilize Record Level Sharing (RLS) services or not. Valid values are `RLS` or `NONRLS`.
 - `zowe.setup.vsam.volume` indicates the name of volume. This field is required if VSAM mode is `NONRLS`.
 - `zowe.setup.vsam.storageClass` indicates the name of RLS storage class. This field is required if VSAM mode is `RLS`.
 

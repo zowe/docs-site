@@ -16,11 +16,11 @@ The following topics describe how to share the team configuration files.
     ```
     zowe config import <DriveLetter>:\<FolderPath>\zowe.config.json
     ```
-    - DriveLetter:
+    - `<DriveLetter>`
 
         The drive letter of the shared network drive
 
-    - FolderPath:
+    - `<FolderPath>`
 
         The directory path on the drive
 
@@ -41,27 +41,27 @@ Team leaders can import configuration files from a web URL that is in raw json f
         zowe config import https://<user>:<password>@<githubUrl>/raw/<repoName>/<branch>/<folderPath>/zowe.config.json
         ```
 
-        - user
+        - `<user>`
 
             Specifies the user ID
 
-        - password
+        - `<password>`
 
             Specifies the password for the user ID
 
-        - githuburl
+        - `<githubUrl>`
 
             Specifies the URL to the GitHub repository
 
-        - repoName
+        - `<repoName>`
 
             Specifies the name of the repository
 
-        - branch
+        - `<branch>`
 
             Specifies the name of the branch that contains the configuration file
 
-        - folderPath
+        - `<folderPath>`
 
             Specifies the path to the configuration file
 
@@ -71,16 +71,16 @@ Team leaders can import configuration files from a web URL that is in raw json f
         zowe config import https://<user>:<password>@<HostName>/<folderPath>/zowe.config.json
         ```
 
-        - user
+        - `<user>`
  
             Specifies the user ID
-        - password
+        - `<password>`
 
             Specifies the password for the user ID
-        - hostname
+        - `<hostname>`
 
             Specifies the host name of the system
-        - folderPath
+        - `<folderPath>`
 
         
         Specifies the path to the team configuration file

@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>ca7 job-definition update-job</title>
+<link rel="stylesheet" href="../css/bundle-docs.css">
+<link rel="stylesheet" href="../css/docs.css">
+<article class="markdown-body">
+<h2><a href="zowe.html">zowe</a> › <a href="zowe_ca7.html">ca7</a> › <a href="zowe_ca7_job-definition.html">job-definition</a> › <a href="zowe_ca7_job-definition_update-job.html">update-job</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
+<p>JobDefinition</p>
+<h4>Usage</h4>
+<p>zowe ca7 job-definition update-job [options]</p>
+<h4>Required Options</h4>
+<ul>
+<li>
+<p><code>--job</code> <em>(string)</em></p>
+<ul>
+<li>The name of the job</li>
+</ul>
+</li>
+<li>
+<p><code>--job-type</code> | <code>--jt</code> <em>(string)</em></p>
+<ul>
+<li>The type of job.<br>
+Valid values are:<br>
+CPU = A CPU jobXPJOB = A cross-platform jobAGENT = An Agent job</li>
+</ul>
+</li>
+</ul>
+<h4>Options</h4>
+<ul>
+<li>
+<p><code>--long-name</code> | <code>--ln</code> <em>(string)</em></p>
+<ul>
+<li>(Optional) Defines the long job name.<br>
+Limits: 1 to 64 alphanumeric characters, case sensitive</li>
+</ul>
+</li>
+<li>
+<p><code>--system</code> <em>(string)</em></p>
+<ul>
+<li>(Optional) Specifies the user-defined application system name of which this job is a part.<br>
+Limits: 1 to 8 alphanumeric characters. This field cannot contain a comma</li>
+</ul>
+</li>
+<li>
+<p><code>--uid</code> <em>(string)</em></p>
+<ul>
+<li>(Optional) Specifies the CA 7 user security identification.<br>
+Default: 0 (no internal security protection)<br>
+Limits: 1 to 3 numeric characters from 0 through 999</li>
+</ul>
+</li>
+<li>
+<p><code>--jobnet</code> <em>(string)</em></p>
+<ul>
+<li>(Optional) Specifies the name of a CPU job network of which this job is a part.<br>
+Limits: 1 to 8 alphanumeric characters. This field cannot contain a comma</li>
+</ul>
+</li>
+<li>
+<p><code>--owner</code> <em>(string)</em></p>
+<ul>
+<li>(Optional) Specifies the ID identifying ownership of this job. Depending on the startup options taken, the external security product being used and contents of the JCL, this value can be offered to the external security package by CA 7 at job submission time as the authority for this job to be executed.<br>
+Limits: 1 to 8 alphanumeric characters. Although this field supports up to 8 characters, some external security packages only accept up to 7 characters. This field must not exceed any such limit that exists</li>
+</ul>
+</li>
+<li>
+<p><code>--jcl-member</code> | <code>--jm</code> <em>(string)</em></p>
+<ul>
+<li>(Optional) Specifies the JCL library member name and required when the member name and job name are different.<br>
+Valid when: job-type is CPU<br>
+Default: Job name<br>
+Limits: 1 to 8 alphanumeric characters</li>
+</ul>
+</li>
+<li>
+<p><code>--id</code> <em>(string)</em></p>
+<ul>
+<li>(Optional) Specifies a numeric index value that is associated with a JCL library where the JCL member is located. NOTE: the id and lib properties are mutually exclusive.<br>
+Valid when: job-type is CPU<br>
+Default: 0<br>
+Limits: 1 to 3 numeric characters in the range 0-253 or 256-999</li>
+</ul>
+</li>
+<li>
+<p><code>--lib</code> <em>(string)</em></p>
+<ul>
+<li>(Optional) Specifies a JCL library identification consisting of a symbolic INDEX assigned to a JCL statement. NOTE: the id and lib properties are mutually exclusive.<br>
+Valid when: job-type is CPU<br>
+Limits: 2 to 16 alphanumeric characters beginning with ampersand (&amp;)</li>
+</ul>
+</li>
+<li>
+<p><code>--reload</code> <em>(string)</em></p>
+<ul>
+<li>(Optional) Specifies whether to reload the JCL of this job. When a job comes into the request queue, it is either flagged for load processing or it is not flagged.<br>
+Valid when: job-type is CPU<br>
+Default: N<br>
+Valid values are:<br>
+Y = The job is flagged for load processing. The reload flag is automatically reset to N once the load completes successfullyN = The job is not flagged for load processing unless it is the first time it has run in CA 7X = The job is only flagged for load processing when the LOAD command is used and is never automatically changed even if the LOAD command is used</li>
+</ul>
+</li>
+<li>
+<p><code>--execute</code> <em>(string)</em></p>
+<ul>
+<li>(Optional) Indicates whether to execute this job.<br>
+Default: Y<br>
+Valid values are:<br>
+Y = The job will be executedN = The job does not run but shows a normal completion as if it did run. JCL is not required for non-executable jobs</li>
+</ul>
+</li>
+<li>
+<p><code>--retain</code> <em>(string)</em></p>
+<ul>
+<li>(Optional) Specifies whether to retain the execution JCL in the trailer queue after a successful run.<br>
+Valid when: job-type is CPU or XPJOB<br>
+Default: N<br>
+Valid values are:<br>
+Y = Retain the JCL in the trailer queue after a successful run.N = Do not retain the JCL in the trailer queue after a successful run</li>
+</ul>
+</li>
+<li>
+<p><code>--hold</code> <em>(string)</em></p>
+<ul>
+<li>(Optional) Specifies whether to place this job in a hold status when it enters the request queue.<br>
+Default: N<br>
+Valid values are:<br>
+Y = The job will be heldN = The job will not be held</li>
+</ul>
+</li>
+<li>
+<p><code>--jcl-override</code> | <code>--jo</code> <em>(string)</em></p>
+<ul>
+<li>(Optional) Specifies whether this job needs manual JCL overrides before it can be submitted. Similar to the JCLOVRD command.<br>
+Valid when: job-type is CPU<br>
+Default: N<br>
+Valid values are:<br>
+Y = The job needs manual JCL overrides before it can be submittedN = The job does not need manual JCL overrides before it can be submitted</li>
+</ul>
+</li>
+<li>
+<p><code>--use-jcl-override-library</code> | <code>--ujol</code> <em>(string)</em></p>
+<ul>
+<li>(Optional) Specifies whether to retrieve the JCL from the JCL Override library (JCLID=254) for the next run only. This field is automatically set back to N the next time the job comes into the request queue.<br>
+Default: N<br>
+Valid values are:<br>
+Y = The JCL is retrieved from the JCL Override library for the next runN = The JCL is not retrieved from the JCL Override library for the next run</li>
+</ul>
+</li>
+<li>
+<p><code>--verify</code> <em>(string)</em></p>
+<ul>
+<li>(Optional) Specifies whether this job requires any pre-submission manual verification. Similar to VERIFY command.<br>
+Default: N<br>
+Valid values are:<br>
+Y = The job requires any pre-submission manual verificationN = The job does not require any pre-submission manual verification</li>
+</ul>
+</li>
+<li>
+<p><code>--maintenance</code> | <code>--maint</code> <em>(string)</em></p>
+<ul>
+<li>(Optional) Specifies whether this job is a maintenance job (for example, a system utility) with no production data set requirements. If Y is specified, all input data set requirements are ignored. None of the output data sets created by this job is posted back to CA 7.<br>
+Marking a job as maintenance enables job triggering but not data set triggering.<br>
+Also, if the LOADDSNS keyword is used on the DBASE statement in the initialization file, the LOAD process does not build any DD or data set information for jobs that are marked as maintenance. This means that there are not any data set connections for these jobs unless added manually.<br>
+Valid when: job-type is CPU<br>
+Default: N<br>
+Valid values are:<br>
+Y = The job is a maintenance jobN = The job is not a maintenance job</li>
+</ul>
+</li>
+<li>
+<p><code>--job-requirement-lead-time</code> | <code>--jrlt</code> <em>(string)</em></p>
+<ul>
+<li>(Optional) Specifies the number of hours to be considered when satisfying job-dependent requirements.<br>
+Default: 0<br>
+Valid values are:<br>
+0 = No lead time is considered when satisfying this job's requirements99 = Specifies the requirement is never considered as already satisfied when the job enters the queues. Each predecessor job must complete typically while this job is in the request queuenn = Since the last run of this job, specifies that each predecessor job must have run within the last nn hours. Values for nn can be from 1 to 98</li>
+</ul>
+</li>
+<li>
+<p><code>--dataset-requirement-lead-time</code> | <code>--drlt</code> <em>(string)</em></p>
+<ul>
+<li>(Optional) Specifies the number of hours to be considered when satisfying data set requirements.<br>
+Valid when: job-type is CPU<br>
+Default: 0<br>
+Valid values are:<br>
+0 = No lead time is considered when satisfying this job's requirements99 = Specifies the requirement is never considered as already satisfied when the job enters the queues. Each data set requirement must be satisfied typically while this job is in the request queuenn = Since the last run of this job, specifies that each data set requirement must be satisfied within the last nn hours. Values for nn can be from 1 to 98</li>
+</ul>
+</li>
+<li>
+<p><code>--arfset</code> <em>(string)</em></p>
+<ul>
+<li>(Optional) Names the collection of ARF definitions that apply to this job. Remember that ARF recovery is not invoked for non-executable jobs.<br>
+Limits: 1 to 8 alphanumeric characters</li>
+</ul>
+</li>
+<li>
+<p><code>--mainid</code> <em>(string)</em></p>
+<ul>
+<li>(Optional) Specifies on which CPU the job can or cannot be scheduled. If the job requirements impose CPU restrictions, specify SYn or /SYn where n is the system number and / indicates not this system. System numbers must be consistent with the initialization file CPU statement MAINIDS parameters.<br>
+Valid when: job-type is CPU<br>
+Default: ALL (lets the job run on any CPU)<br>
+Limits: 1 to 4 alphanumeric characters</li>
+</ul>
+</li>
+<li>
+<p><code>--insert-ca11-rms</code> | <code>--icr</code> <em>(string)</em></p>
+<ul>
+<li>(Optional) Specifies whether to insert the WA Restart Option RMS step automatically at execution time by CA 7.<br>
+Valid when: job-type is CPU<br>
+Default: N<br>
+Valid values are:<br>
+Y = Inserts the step with the WA Restart Option processing code of PN = Does not insert the RMS step</li>
+</ul>
+</li>
+<li>
+<p><code>--condition-code</code> | <code>--cc</code> <em>(string)</em></p>
+<ul>
+<li>(Optional) Used with relational-operator property to define the job-level condition codes used to determine whether a job executes successfully.<br>
+Valid when: job-type is CPU or XPJOB<br>
+Note: All condition codes that are returned from an XPJOB job are treated as positive values. Any negative value returned is converted to an absolute (positive) value<br>
+Default: 0<br>
+Limits: For job-type = CPU: 1 to 4 numeric characters in the range 0-4095<br>
+For job-type = &quot;XPJOB&quot;: 1 to 4 numeric characters in the range 0-9999</li>
+</ul>
+</li>
+<li>
+<p><code>--relational-operator</code> | <code>--ro</code> <em>(string)</em></p>
+<ul>
+<li>(Optional) Specifies the relational operator of the condition-code property or if the step level #SCC statements are being used in the job's JCL.<br>
+Valid when: job-type is CPU or XPJOB<br>
+Default: 0<br>
+Valid values are:<br>
+EQ = Equal toLT = Less thanGT = Greater thanGE = Greater than or equal toLE = Less than or equal toNE = Not equal to#S = Make step condition code tests based on #SCC statements in the JCLIG = Make no evaluation of the job. CA 7 always assumes the job completes successfully, regardless of condition codes, abend codes, or runtime JCL errors. When this is used, the insert-ca11-rms property should be N0 = No condition test will be madeNOTE: If 0 is used, no test is made on the job's condition code. The highest condition code that this job generates is tested by this pair of parameters. For example, if condition-code is set at 8 and RO is set at LT, the job is marked as completing abnormally if 8 is less than the job's highest condition code</li>
+</ul>
+</li>
+<li>
+<p><code>--do-not-schedule-before-date</code> | <code>--dnsbd</code> <em>(string)</em></p>
+<ul>
+<li>(Optional) Specifies not to schedule this job before this date (in YYDDD format, or 00000)</li>
+</ul>
+</li>
+<li>
+<p><code>--do-not-schedule-before-time</code> | <code>--dnsbt</code> <em>(string)</em></p>
+<ul>
+<li>(Optional) Specifies not to schedule this job before this time (in HHMM format)</li>
+</ul>
+</li>
+<li>
+<p><code>--do-not-schedule-after-date</code> | <code>--dnsad</code> <em>(string)</em></p>
+<ul>
+<li>(Optional) Specifies not to schedule this job after this date (in YYDDD format, or 99999)</li>
+</ul>
+</li>
+<li>
+<p><code>--do-not-schedule-after-time</code> | <code>--dnsat</code> <em>(string)</em></p>
+<ul>
+<li>(Optional) Specifies not to schedule this job after this time (in HHMM format)</li>
+</ul>
+</li>
+<li>
+<p><code>--lterm</code> <em>(string)</em></p>
+<ul>
+<li>(Optional) Routes the messages about this job to this logical terminal name.<br>
+Default: If not entered, the LTERM associated with the JCL library in the initialization file JCL statement is used. If LTERM is not specified on the JCL statement, the default is MASTER<br>
+Limits: 1 to 8 alphanumeric characters</li>
+</ul>
+</li>
+<li>
+<p><code>--list-requirements</code> | <code>--lr</code> <em>(string)</em></p>
+<ul>
+<li>(Optional) Specifies whether to list pre-execution requirements for this job when it enters the request queue.<br>
+Default: Y<br>
+Valid values are:<br>
+Y = The pre-execution requirements will be listedN = The pre-execution requirements will not be listed</li>
+</ul>
+</li>
+<li>
+<p><code>--prompts</code> <em>(string)</em></p>
+<ul>
+<li>(Optional) Specifies whether to issue prompt messages when this job is late.<br>
+Default: Y<br>
+Valid values are:<br>
+Y = Prompt messages will be issued when the job is lateN = Prompt messages will not be issued when the job is late</li>
+</ul>
+</li>
+<li>
+<p><code>--requirements-not-used</code> | <code>--rnu</code> <em>(string)</em></p>
+<ul>
+<li>(Optional) Specifies whether to issue error messages for job requirements not used.<br>
+Default: Y<br>
+Valid values are:<br>
+Y = Messages will be issued if requirements are not usedN = Messages will not be issued if requirements are not used</li>
+</ul>
+</li>
+<li>
+<p><code>--dsn-not-found</code> | <code>--dnf</code> <em>(string)</em></p>
+<ul>
+<li>(Optional) Specifies whether to list error messages for data sets used at execution time but not found in the CA 7 database.<br>
+Valid when: job-type is CPU<br>
+Default: Y<br>
+Valid values are:<br>
+Y = Messages will be issued if data sets used are not found in the CA 7 databaseN = Messages will not be issued if data sets used are not found in the CA 7 database</li>
+</ul>
+</li>
+<li>
+<p><code>--job-region</code> | <code>--jr</code> <em>(string)</em></p>
+<ul>
+<li>(Optional) Specifies the region size that is required by this job (information only).<br>
+Valid when: job-type is CPU<br>
+Default: 0<br>
+Limits: 1 to 4 numeric characters</li>
+</ul>
+</li>
+<li>
+<p><code>--elapsed-time</code> | <code>--et</code> <em>(string)</em></p>
+<ul>
+<li>(Optional) CA 7 maintains certain SMF feedback data in its database, including a weighted average elapsed runtime. If the database is updated with a time of 0000, the counters for number of runs, number of times late, and number of restarts are also reset to 0000. One use of this value is deadline prompting. If 2359 is specified, deadline prompt time is not adjusted. It remains due-out time minus lead time.<br>
+Default: 0000<br>
+Limits: 4 numeric characters in HHMM format where HH can be 00 - 23 and MM can be from 00 - 59</li>
+</ul>
+</li>
+<li>
+<p><code>--average-cpu-time</code> | <code>--act</code> <em>(string)</em></p>
+<ul>
+<li>(Optional) CA 7 maintains weighted average CPU time usage values for each job in its database. If the database is updated with a time of 0000, the counters for number of runs, number of times late, and number of restarts are also reset to 0000. One use of this value is deadline prompting. If 2359 is specified, deadline prompt time is not adjusted. It remains due-out time minus lead time.<br>
+Valid when: job-type is CPU<br>
+Default: 0000<br>
+Limits: 4 numeric characters in HHMM format where HH can be 00 - 23 and MM can be from 00 - 59</li>
+</ul>
+</li>
+<li>
+<p><code>--wlb-job-class</code> | <code>--wjc</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>(Optional) Specifies the CA 7 WLB job class. If not specified, a WLB class of A is automatically assigned. This value does not have to match the JOB statement CLASS value.</p>
+<p>NOTE: The value specified here does not apply when the job enters the queue as a result of a RUN(H) command. Class 9 is assigned by default. To override class 9, use the RUNCLASS keyword on the OPTIONS statement in the initialization file.</p>
+<p>NOTE: The value specified here does not apply when the job enters the queue as a result of a LOAD(H) command. Class 8 is assigned by default. To override class 8, use the LOADCLASS keyword on the OPTIONS statement in the initialization file<br>
+Default: A space<br>
+Limits: 1 alphanumeric character</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--wlb-priority</code> | <code>--wp</code> <em>(string)</em></p>
+<ul>
+<li>(Optional) Specifies the CA 7 WLB job priority. A value of 255 indicates an express priority used to bypass WLB priority scheduling criteria. If using WLB, any job without a specified priority is automatically assigned a priority of 100 unless the default is changed<br>
+Default: 0<br>
+Limits: 1 to 3 numeric characters in the range 0 - 255</li>
+</ul>
+</li>
+<li>
+<p><code>--message-class</code> | <code>--mc</code> <em>(string)</em></p>
+<ul>
+<li>(Optional) Specifies the job's message class. This field is informational only. Even though this field can be changed, it does not cause the JCL to be changed. Also, no validity checking is done on this field.<br>
+Valid when: job-type is CPU<br>
+Default: A space<br>
+Limits: 1 alphanumeric character</li>
+</ul>
+</li>
+<li>
+<p><code>--drclass</code> | <code>--dc</code> <em>(string)</em></p>
+<ul>
+<li>(Optional) Specifies the job's disaster recovery class. This field has no impact on processing during normal execution. When running in disaster recovery mode, the disaster recovery class is used to determine whether the job should execute.<br>
+Limits: 1 to 8 alphanumeric characters. Disaster recovery class values must start with a letter, #, or $ (not @) and can include letters, #, $, @, and numbers. Disaster recovery classes cannot contain embedded blanks</li>
+</ul>
+</li>
+<li>
+<p><code>--number-1-tape-man</code> | <code>--n1tm</code> <em>(string)</em></p>
+<ul>
+<li>(Optional) Specifies a manual override value for the number of TYPE1 tape drives needed for the job. Normally this field is only used to update a job where tape drive requirements have been changed, higher or lower, and the job has not been reloaded after the change. A value of 255 can be used to specify that the job uses 0 TYPE1 tape drives.<br>
+Valid when: job-type is CPU<br>
+Default: 0<br>
+Limits: 1 to 3 numeric characters in the range 0 - 255</li>
+</ul>
+</li>
+<li>
+<p><code>--number-2-tape-man</code> | <code>--n2tm</code> <em>(string)</em></p>
+<ul>
+<li>(Optional) Specifies a manual override value for the number of TYPE2 tape drives needed for the job. Normally this field is only used to update a job where tape drive requirements have been changed, higher or lower, and the job has not been reloaded after the change. A value of 255 can be used to specify that the job uses 0 TYPE2 tape drives.<br>
+Valid when: job-type is CPU<br>
+Default: 0<br>
+Limits: 1 to 3 numeric characters in the range 0 - 255</li>
+</ul>
+</li>
+<li>
+<p><code>--xp-node</code> | <code>--xn</code> <em>(string)</em></p>
+<ul>
+<li>(Required when job-type is XPJOB) Defines the CAICCI node to which the execution of this job is targeted. This field should state the primary node. If this node is unavailable and the node definition has alternate nodes defined, the execution of this job can be directed to an alternate node.<br>
+Valid when: job-type is XPJOB<br>
+Limits: 1 to 44 alphanumeric characters, although current z/OS CAICCI restricts this name to eight characters</li>
+</ul>
+</li>
+<li>
+<p><code>--xp-exec</code> | <code>--xe</code> <em>(string)</em></p>
+<ul>
+<li>(Required when job-type is XPJOB) Defines the executable (file, command) to execute at the targeted cross-platform node. If the targeted platform is a mainframe scheduling system such as CA 7, this value indicates the job name to execute on that platform. If the targeted platform is Workload Automation AE system, this value indicates a job that is defined in the Workload Automation AE system. If this field begins and ends in single quote (') marks, these marks are removed before being passed in the transmission data. Otherwise, the field is passed to the target system as-is and in its entirety. This value includes any embedded blanks and quotation marks.<br>
+Valid when: job-type is XPJOB<br>
+Limits: Up to 244 alphanumeric characters, and file delimiters of forward slash (/) and backward slash (\) signs. Note: Each backward slash character must be escaped by specifying (\\)</li>
+</ul>
+</li>
+<li>
+<p><code>--xp-parm</code> | <code>--xp</code> <em>(string)</em></p>
+<ul>
+<li>(Optional) Defines up to 128 bytes of parameter data to pass to the file or command being executed on the alternate platform. This data is supplied as PARM1 to the data being transmitted to the alternate platform. If this field begins and ends in single quote (') marks, these marks are removed before being passed in the transmission data. This value may be overridden if the PARMLIB/MEMBER field PARM1 is coded.<br>
+Valid when: job-type is XPJOB<br>
+Limits: Up to 128 EBCDIC characters</li>
+</ul>
+</li>
+<li>
+<p><code>--parmlib</code> | <code>--pl</code> <em>(string)</em></p>
+<ul>
+<li>(Optional) Defines extra, optional indexed, or symbolic (PDS) library from where execution data to be associated with this job can be found. This information is typically PARM1 through PARM64 keywords but can vary based on CA 7 system configuration options. If the PARM1 field is found within this file, it overrides the data that is specified in the XP PARM field that is listed on the panel.<br>
+Valid when: job-type is XPJOB or AGENT<br>
+Limits: 1 to 16 alphanumeric characters. If this field starts with a numeric value, the value is treated as a JCL Index value (0 - 253 or 256 - 999), and the associated numbered JCL library, as defined in the initialization file JCL statement, is used. If the first character is not numeric, the field must start with an ampersand (&amp;) and must denote the library variable as defined using a /JCL command.<br>
+Note: Specifying data in the PARMLIB/MEMBER fields is in addition to anything specified in the XPPARM field. If XPPARM is coded, and if the PARMLIB/Member contains a PARM1 statement, the PARMLIB specification overrides the XP PARM field. Thus, if both XPPARM and PARMLIB PARM1 fields contain data, the data that is obtained from the PARMLIB/MEMBER is used in the data that is transmitted to the target node</li>
+</ul>
+</li>
+<li>
+<p><code>--member</code> <em>(string)</em></p>
+<ul>
+<li>(Optional) Indicates the PDS member name in the parmlib library where the parameters for this job reside.<br>
+Valid when: job-type is XPJOB or AGENT<br>
+Default: Same as the job property<br>
+Limits: 1 to 8 alphanumeric characters, beginning with an alphabetic character</li>
+</ul>
+</li>
+<li>
+<p><code>--sutype</code> <em>(string)</em></p>
+<ul>
+<li>(Optional) Specifies the type of &quot;switch user&quot; command to execute at the UNIX target node.<br>
+Valid when: job-type is XPJOB<br>
+Default: Y<br>
+Valid values are:<br>
+Y = Executes an &quot;SU -&quot; causing the environment setup to include execution of the &quot;.PROFILE&quot; for the target userN = Executes an &quot;SU&quot; command without the profile option</li>
+</ul>
+</li>
+<li>
+<p><code>--xp-trace</code> | <code>--xt</code> <em>(string)</em></p>
+<ul>
+<li>(Optional) Indicates whether to trace the activity that is associated with this job as it moves through the queues.<br>
+Valid when: job-type is XPJOB<br>
+Default: N<br>
+Valid values are:<br>
+Y = Issue WTOs as the job enters into the submission process. Retain up to 256 characters of the data that is sent for inclusion in a log recordN = Do not activate tracing for this job</li>
+</ul>
+</li>
+<li>
+<p><code>--agent-job-type</code> | <code>--ajt</code> <em>(string)</em></p>
+<ul>
+<li>(Required when job-type is AGENT) Defines the type of agent job. For more information about the Agent job types see:<br>
+[CA 7 Documentation](<a href="https://techdocs.broadcom.com/us/en/ca-mainframe-software/automation/ca-workload-automation-ca-7-edition/12-1/configuring/interfaces/cross-platform-scheduling/ca-workload-automation-agents/ca-7-agent-job-types.html/">https://techdocs.broadcom.com/us/en/ca-mainframe-software/automation/ca-workload-automation-ca-7-edition/12-1/configuring/interfaces/cross-platform-scheduling/ca-workload-automation-agents/ca-7-agent-job-types.html/</a>)<br>
+Valid when: job-type is AGENT<br>
+Default: There is no default value<br>
+Valid values are:<br>
+UNIX_JOB - Generic UNIXNT_JOB - Microsoft WindowsFILE_TRIGGER - File TriggerFTP_JOB - FTPSCP_JOB - Secure CopySFTP_JOB - Secure File TransferBDC_JOB - SAP Batch Input SessionBWIP_JOB - SAP Business Warehouse InfoPackageBWPC_JOB - SAP Business Warehouse Process ChainSAP_JOB - SAP GenericSAPA_JOB - SAP ArchiveSAPE_JOB - SAP Event MonitorSAPM_JOB - SAP Process MonitorPS_JOB - PeopleSoftOA_JOB - Oracle RequestOAC_JOB - Oracle CopyCPU_MON - CPU MonitorDISK_MON - Disk MonitorIP_MON - IP MonitorPROCESS_MON - Process MonitorTEXT_MON - Text File MonitorEVENTLOG_MON - Event Log MonitorSERVICE_MON - Service MonitorSQL_JOB - Database SQLDBSP_JOB - Database Stored ProcedureDB_MON - Database MonitorDB_TRIG - Database TriggerAS400_JOB - AS400/OS400JMSP_JOB - J2EE JMS PublishJMSS_JOB - J2EE JMS SubscribeEJBE_JOB - J2EE Entity BeanHTTP_JOB - J2EE HTTP/ServletPOJO_JOB - J2EE POJORMI_JOB - J2EE RMIEJB_JOB - J2EE Session BeanJMXB_JOB - JMX-Mbean Attribute GetJMXA_JOB - JMX-Mbean Attribute SetJMXO_JOB - JMX-Mbean OperationJMXS_JOB - JMX-Mbean SubscribeJMXN_JOB - JMX-Mbean Create InstanceJMXR_JOB - JMX-Mbean Remove InstanceSNPG_JOB - SNMP Get AttributeSNPS_JOB - SNMP Set AttributeSNPC_JOB - SNMP SubscribeSNPE_JOB - SNMP TrapSendWEB_SERV - Web ServicesWOL_JOB - Wake-On-LANPROXY_JOB - Remote ExecutionNONSTOP_JOB - HP Integrity NonStop</li>
+</ul>
+</li>
+<li>
+<p><code>--agent</code> <em>(string)</em></p>
+<ul>
+<li>(Required when job-type is AGENT) Identifies the explicit distributed platform where the job is to run.<br>
+Valid when: job-type is AGENT<br>
+Limits: 1 to 16 alphanumeric characters. The value must be defined to CA 7 using the IASAGENT DD statement</li>
+</ul>
+</li>
+<li>
+<p><code>--agent-user</code> | <code>--au</code> <em>(string)</em></p>
+<ul>
+<li>(Optional) Defines the user ID that is passed to the distributed platform where the job is to run.<br>
+Valid when: job-type is AGENT<br>
+Limits: 1 to 128 alphanumeric characters</li>
+</ul>
+</li>
+</ul>
+<h4>CA7 Connection Options</h4>
+<ul>
+<li>
+<p><code>--host</code> | <code>-H</code> <em>(string)</em></p>
+<ul>
+<li>Host name of the CA7 API service that is running on the mainframe system.</li>
+</ul>
+</li>
+<li>
+<p><code>--port</code> | <code>-P</code> <em>(number)</em></p>
+<ul>
+<li>Port for the CA7 API service that is running on the mainframe system.</li>
+</ul>
+</li>
+<li>
+<p><code>--user</code> | <code>-u</code> <em>(string)</em></p>
+<ul>
+<li>User name for authenticating connections to the CA7 API service that is running on the mainframe system.</li>
+</ul>
+</li>
+<li>
+<p><code>--password</code> | <code>--pass</code> | <code>--pw</code> <em>(string)</em></p>
+<ul>
+<li>Password for authenticating connections to the CA7 API service that is running on the mainframe system.</li>
+</ul>
+</li>
+<li>
+<p><code>--base-path</code> | <code>--bp</code> <em>(string)</em></p>
+<ul>
+<li>The base path for your API mediation layer instance. Specify this option to prepend the base path to all resources when making REST requests. Do not specify this option if you are not using an API mediation layer.</li>
+</ul>
+</li>
+<li>
+<p><code>--protocol</code> | <code>-o</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>Specifies protocol to use for CA7 connection (http or https).</p>
+<p>Allowed values: http, https</p>
+</li>
+</ul>
+</li>
+</ul>
+<h4>Profile Options</h4>
+<ul>
+<li>
+<p><code>--ca7-profile</code> | <code>--ca7-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (ca7) profile to load for this command execution.</li>
+</ul>
+</li>
+<li>
+<p><code>--base-profile</code> | <code>--base-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (base) profile to load for this command execution.</li>
+</ul>
+</li>
+</ul>
+<h4>Base Connection Options</h4>
+<ul>
+<li>
+<p><code>--reject-unauthorized</code> | <code>--ru</code> <em>(boolean)</em></p>
+<ul>
+<li>
+<p>Reject self-signed certificates.</p>
+<p>Default value: true</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--token-type</code> | <code>--tt</code> <em>(string)</em></p>
+<ul>
+<li>The type of token to get and use for the API. Omit this option to use the default token type, which is provided by 'zowe auth login'.</li>
+</ul>
+</li>
+<li>
+<p><code>--token-value</code> | <code>--tv</code> <em>(string)</em></p>
+<ul>
+<li>The value of the token to pass to the API.</li>
+</ul>
+</li>
+<li>
+<p><code>--cert-file</code> <em>(local file path)</em></p>
+<ul>
+<li>The file path to a certificate file to use for authentication</li>
+</ul>
+</li>
+<li>
+<p><code>--cert-key-file</code> <em>(local file path)</em></p>
+<ul>
+<li>The file path to a certificate key file to use for authentication</li>
+</ul>
+</li>
+</ul>
+<h4>Examples</h4>
+<ul>
+<li>
+<p>updates long name of a job named JOBA to NewJob:</p>
+<ul>
+<li><code>zowe ca7 job-definition update-job --job JOBAB --long-name NewJob --job-type CPU</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe ca7 job-definition update-job --job JOBAB --long-name NewJob --job-type CPU">Copy</button></li>
+</ul>
+</li>
+</ul>
+</article>
+<script src="../js/bundle-docs.js"></script>
+<script src="../js/docs.js"></script>

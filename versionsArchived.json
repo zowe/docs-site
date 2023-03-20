@@ -1,4 +1,8 @@
-{ 
+{
+  "v2.1.x LTS": "https://deploy-preview-2745--zowe-docs-master.netlify.app/v2.1.x/getting-started/overview",
+  "v2.0.x LTS": "https://deploy-preview-2745--zowe-docs-master.netlify.app/v2.0.x/getting-started/overview",
+  "v1.27.x LTS": "https://deploy-preview-2531--zowe-docs-master.netlify.app/v1.27.x/getting-started/overview",
+  "v1.26.x LTS": "https://deploy-preview-2531--zowe-docs-master.netlify.app/v1.26.x/getting-started/overview",
   "v1.25.x LTS": "https://deploy-preview-2233--zowe-docs-master.netlify.app/v1.25.x/getting-started/overview",
   "v1.24.x LTS": "https://deploy-preview-2233--zowe-docs-master.netlify.app/v1.24.x/getting-started/overview",
   "v1.23.x LTS": "https://deploy-preview-1770--zowe-docs-master.netlify.app/stable/getting-started/overview",
@@ -23,6 +27,6 @@
   "v1.4.x": "https://60d62fb82094240af9dbbbd2--zowe-docs-testing.netlify.app/v1.4.x/getting-started/overview",
   "v1.3.x": "https://60d62fb82094240af9dbbbd2--zowe-docs-testing.netlify.app/v1.3.x/getting-started/overview",
   "v1.2.x": "https://60d62fb82094240af9dbbbd2--zowe-docs-testing.netlify.app/v1.2.x/getting-started/overview",
-  "v1.1.x": "https://60d62fb82094240af9dbbbd2--zowe-docs-testing.netlify.app/v1.1.x/getting-started/overview",  
+  "v1.1.x": "https://60d62fb82094240af9dbbbd2--zowe-docs-testing.netlify.app/v1.1.x/getting-started/overview",
   "v1.0.x": "https://60d62fb82094240af9dbbbd2--zowe-docs-testing.netlify.app/v1.0.x/getting-started/overview"
 }
