@@ -161,6 +161,8 @@ zss:
 
 All settings are optional.
 
+Note: Loggers here are either for builtin logs (\_zss or \_zsf) or plugins. The dots (.) are literally part of the strings, and not another level in the configuration. For example, `components.zss.logLevels['_zss.traceLevel']=5` is a logLevels object with a member zss.traceLevel
+
 ### Log files
 
 The app-server and zss will create log files containing processing messages and statistics. The log files are generated within the log directory specified within the Zowe configuration file  (`zowe.logDirectory`). The filename patterns are:
