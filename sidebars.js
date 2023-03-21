@@ -499,6 +499,7 @@ module.exports = {
       items: [
         "extend/packaging-zos-extensions",
         "extend/server-schemas",
+        "extend/component-registries",
         "extend/lifecycling-with-zwesvstc",
         "extend/k8s-extend",
         "extend/k8s-conformance",
