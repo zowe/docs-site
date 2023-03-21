@@ -5,6 +5,7 @@ As an API Mediation Layer user, you may encounter problems with how the API ML f
 * [Install API ML without Certificate Setup](#install-api-ml-without-certificate-setup)
 * [Enable API ML Debug Mode](#enable-api-ml-debug-mode)
 * [Change the Log Level of Individual Code Components](#change-the-log-level-of-individual-code-components)
+* [Debug and Fix Common Problems with SSL/TLS Setup](#debug-and-fix-common-problems-with-ssltls-setup)
 * [Known Issues](#known-issues)
     * [API ML stops accepting connections after z/OS TCP/IP stack is recycled](#api-ml-stops-accepting-connections-after-zos-tcpip-stack-is-recycled)
     * [SEC0002 error when logging in to API Catalog](#sec0002-error-when-logging-in-to-api-catalog)
