@@ -94,7 +94,7 @@ It takes 2-3 hours to set up z/OSMF Lite. Some steps might require the
 assistance of your security administrator.
 
 For detailed information about various aspects of z/OSMF configuration such as
-enabling the optional plug-ins and services, see the IBM publication [_z/OSMF Configuration Guide_](https://www.ibm.com/support/knowledgecenter/en/SSLTBW_2.3.0/com.ibm.zos.v2r3.izua300/toc.htm).
+enabling the optional plug-ins and services, see the IBM publication [_z/OSMF Configuration Guide_](https://www.ibm.com/docs/en/zos/2.5.0?topic=configurations-autostart-concepts-in-zosmf).
 
 ## Assumptions
 
@@ -705,7 +705,7 @@ Optionally, you can add more users to z/OSMF, as described in [Appendix C. Addin
 
 ## Troubleshooting problems
 
-This section provides tips and techniques for troubleshooting problems you might encounter when creating a z/OSMF Lite configuration. For other types of problems that might occur, see [_z/OSMF Configuration Guide_](https://www.ibm.com/support/knowledgecenter/SSLTBW_2.3.0/com.ibm.zos.v2r3.izua300/toc.htm).
+This section provides tips and techniques for troubleshooting problems you might encounter when creating a z/OSMF Lite configuration. For other types of problems that might occur, see [_z/OSMF Configuration Guide_](https://www.ibm.com/docs/en/zos/2.5.0?topic=configurations-autostart-concepts-in-zosmf).
 
 ### Common problems and scenarios
 This section discusses troubleshooting topics, procedures, and tools for recovering from a set of known issues.

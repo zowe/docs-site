@@ -60,6 +60,8 @@ module.exports = {
       label: "Installing Zowe z/OS components",
       items: [
         "user-guide/install-zos",
+        "user-guide/zos-components-installation-checklist",
+        "user-guide/zos-components-installation-checklist-dev",
         {
           type: "category",
           label: "Planning",
@@ -381,33 +383,28 @@ module.exports = {
         "user-guide/cli-using-issuing-first-command",
         {
           type: "category",
+          label: "Using team profiles",
+          items: [
+            "user-guide/cli-using-using-team-profiles",
+            "user-guide/cli-using-initializing-team-configuration",
+            "user-guide/cli-using-test-zosmf-connection",
+            "user-guide/cli-using-team-configuration-application-developers",
+            "user-guide/cli-using-team-configuration-team-leaders",
+            "user-guide/cli-using-sharing-team-config-files",
+            "user-guide/cli-using-understand-profiles-configs",
+            "user-guide/cli-using-team-managing-credential-security",
+            "user-guide/cli-using-global-storing-properties-automatically",
+          ],
+        },
+        {
+          type: "category",
           label: "Configuring daemon mode",
           items: [
             "user-guide/cli-using-using-daemon-mode",
             "user-guide/cli-configure-daemon-on-zlinux-os",
           ],
         },
-        {
-          type: "category",
-          label: "Using profiles",
-          items: [
-            "user-guide/cli-using-using-profiles",
-            "user-guide/cli-using-understand-profiles-configs",
-          ],
-        },
-        {
-          type: "category",
-          label: "Configuring team profiles",
-          items: [
-            "user-guide/cli-using-using-team-profiles",
-            "user-guide/cli-using-initializing-team-configuration",
-            "user-guide/cli-using-team-configuration-application-developers",
-            "user-guide/cli-using-team-configuration-team-leaders",
-            "user-guide/cli-using-sharing-team-config-files",
-            "user-guide/cli-using-team-managing-credential-security",
-            "user-guide/cli-using-global-storing-properties-automatically",
-          ],
-        },
+        "user-guide/cli-using-using-profiles-v1",
         "user-guide/cli-using-integrating-apiml",
         "user-guide/cli-using-working-certificates",
 
@@ -502,6 +499,7 @@ module.exports = {
       items: [
         "extend/packaging-zos-extensions",
         "extend/server-schemas",
+        "extend/component-registries",
         "extend/lifecycling-with-zwesvstc",
         "extend/k8s-extend",
         "extend/k8s-conformance",
