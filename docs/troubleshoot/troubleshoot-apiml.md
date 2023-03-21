@@ -136,6 +136,18 @@ This activates the application/loggers endpoints in each API ML internal service
     ```
     http POST https://hostname:port/application/loggers/org.zowe.apiml.enable.model configuredLevel=WARN
     ```
+
+## Debug and Fix Common Problems with SSL/TLS Setup
+
+Review tips described in the blog post [Troubleshooting SSL/TLS setup with Zowe Certificate Analyzer](https://medium.com/zowe/troubleshooting-ssl-tls-setup-with-zowe-certificate-analyser-31aeec9e1144) to find out how you can use the Zowe Certificate Analyzer to address the following common issues with SSL/TLS setup:
+
+* How to verify if the API ML server certificate is trusted by your service
+* How to get a CA certificate in the correct format
+* How to perform a TLS handshake with debug logs
+* How to debug remote services
+* How to enable mutual authentication using a client certificate
+* How to add a trusted certificate to a SAF Key ring
+
 ## Known Issues
 
 ### API ML stops accepting connections after z/OS TCP/IP stack is recycled
