@@ -314,7 +314,6 @@ module.exports = {
         "user-guide/mvd-configuration",
         "user-guide/cli-configuringcli-ev",
         "user-guide/cli-configuringcli-evfile",
-        "user-guide/configure-data-sets-jobs-api",
         {
           type: "category",
           label: "API Mediation Layer",
@@ -506,6 +505,7 @@ module.exports = {
       items: [
         "extend/packaging-zos-extensions",
         "extend/server-schemas",
+        "extend/component-registries",
         "extend/lifecycling-with-zwesvstc",
         "extend/k8s-extend",
         "extend/k8s-conformance",
