@@ -314,7 +314,6 @@ module.exports = {
         "user-guide/mvd-configuration",
         "user-guide/cli-configuringcli-ev",
         "user-guide/cli-configuringcli-evfile",
-        "user-guide/configure-data-sets-jobs-api",
         {
           type: "category",
           label: "API Mediation Layer",
@@ -488,8 +487,15 @@ module.exports = {
         "user-guide/zowe-chat/chat_use_interact_methods",
       ],
     },
+    {
+      type: "category",
+      label: "Using Zowe IntelliJ Plug-in",
+      items: [
+        "user-guide/intellij-working-sets",
+        "user-guide/intellij-using",
+      ],
+    },
     "user-guide/sdks-using",
-    "user-guide/intellij-using",
   ],
   extending: [
     "extend/extend-zowe-overview",
