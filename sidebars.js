@@ -314,7 +314,6 @@ module.exports = {
         "user-guide/mvd-configuration",
         "user-guide/cli-configuringcli-ev",
         "user-guide/cli-configuringcli-evfile",
-        "user-guide/configure-data-sets-jobs-api",
         {
           type: "category",
           label: "API Mediation Layer",
