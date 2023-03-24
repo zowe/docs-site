@@ -212,9 +212,6 @@ module.exports = {
             "v2.3.x": {
               label: "v2.3.x LTS",
            },
-            "v2.2.x": {
-              label: "v2.2.x LTS",
-           },
             "v1.28.x": {
               label: "v1.28.x LTS",
             },
