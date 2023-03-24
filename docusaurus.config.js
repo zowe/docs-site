@@ -164,6 +164,7 @@ module.exports = {
       copyright: `© Open Mainframe Project. a Linux Foundation Project. All Rights Reserved. The Linux Foundation has registered trademarks and uses trademarks. For a list of trademarks of The Linux Foundation, please see our Trademark Usage page. Please refer to Marketing and Branding Guidelines for name usage guidelines. Linux is a registered trademark of Linus Torvalds. Privacy Policy and Terms of Use`,
     },
     algolia: {
+      appId: "1AB1S8E42B",
       apiKey: "de714331a88daaf9b541b4ad68c19d84",
       indexName: "zowe",
       contextualSearch: true,
