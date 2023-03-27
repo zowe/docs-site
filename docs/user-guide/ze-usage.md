@@ -6,23 +6,24 @@ Review this section to familiarize yourself with Zowe Explorer and make the best
 
 ### Operating systems
 
-- Windows 10+
+
 - MacOS 10.15 (Catalina), 11 (Big Sur), 12 (Monterey)
 - Unix-like:
    - [CentOS](https://www.centos.org/) 8+
    - [RHEL](https://www.redhat.com/en/technologies/linux-platforms/enterprise-linux) 8+
    - [Ubuntu](https://ubuntu.com/) 20.04+
+- Windows 10+
 
-### Integrated development environments:
+### Integrated development environments: 
 
-- [Theia](https://theia-ide.org/) 18+
-- [Red Hat CodeReady Workspaces](https://www.redhat.com/en/technologies/jboss-middleware/codeready-workspaces)
 - [Eclipse Che](https://www.eclipse.org/che/)
+- [Red Hat CodeReady Workspaces](https://www.redhat.com/en/technologies/jboss-middleware/codeready-workspaces)
+- [Theia](https://theia-ide.org/) 18+
 
 ### Platform versions:
 
-- [VS Code](https://code.visualstudio.com/) 1.53.2+
 - [NodeJS](https://nodejs.org/en/) (all LTS versions)
+- [VS Code](https://code.visualstudio.com/) 1.53.2+
 - [Yarn](https://yarnpkg.com/) 1.22+
 
 ## Usage Tips
