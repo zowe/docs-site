@@ -20,10 +20,10 @@ You can use the CLI interactively from a command window on any computer on which
 - Windows 10+
 - [z/OS Unix Systems Services](https://www.ibm.com/docs/en/zos/2.4.0?topic=descriptions-zos-unix-system-services) <sup>*</sup>
 
+    <b>*</b> Zowe CLI does not support secure credential storage in this environment. 
+    <br/>
 
-    **\*** Zowe CLI does not support secure credential storage in this environment.
-    
-    **Note:** [Node.js is required on z/OS](../user-guide/systemrequirements-zos#nodejs) before installing Zowe CLI.
+    **Note:** [Node.js must be running on z/OS](../user-guide/systemrequirements-zos#nodejs) before installing Zowe CLI.
 
 ### Package/resource managers:
 
