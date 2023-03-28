@@ -33,8 +33,7 @@ Zowe API Mediation Layer provides a script that can be used on Windows, Mac, Lin
 to generate a certificate and keystore for the local CA, API Mediation Layer, and services.
 
 This script is stored in `zowe/zowe-install-packaging` repository [bin/apiml_cm.sh](https://github.com/zowe/zowe-install-packaging/blob/master/bin/apiml_cm.sh).
-It is a UNIX shell script that can be executed by Bash or z/OS Shell. For Windows, install Bash by going to the following link: [cmder](http://cmder.net/).
-
+It is a UNIX shell script that can be executed by Bash or z/OS Shell. 
 
 ### Generate certificates for localhost
 
@@ -87,6 +86,8 @@ Trust in the API ML server is a necessary precondition for secure communication 
 - If a SAF keyring is being used and set up with `ZWEKRING` JCL, the procedure to obtain the certificate does not apply. It is recommended that you work with your security system administrator to obtain the certificate. Start the procedure at step 2.
 
 - The public certificate in the [PEM format](https://en.wikipedia.org/wiki/Privacy-Enhanced_Mail) is stored at `<KEYSTORE_DIRECTORY>/local_ca/localca.cer` where `<KEYSTORE_DIRECTORY>` is defined in a customized `<RUNTIME_DIR>/bin/zowe-setup-certificates.env` file during the installation step that generates Zowe certificates. The certificate is stored in UTF-8 encoding so you need to transfer it as a binary file. Since this is the certificate to be trusted by your browser, it is recommended to use a secure connection for transfer.
+
+- Windows currently does not recognize the PEM format. For Windows, use the P12 version of the local_cer.
 
 **Follow these steps:**
 
