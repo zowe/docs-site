@@ -18,7 +18,9 @@ Review this section to familiarize yourself with Zowe Explorer and make the best
 
 - [Eclipse Che](https://www.eclipse.org/che/)
 - [Red Hat CodeReady Workspaces](https://www.redhat.com/en/technologies/jboss-middleware/codeready-workspaces)
-- [Theia](https://theia-ide.org/) 18+
+- [Theia](https://theia-ide.org/) 1.18+
+
+   **Note:** Zowe Explorer is compatible with Theia 1.18.0 or higher. However, we recommend using a [Theia community release](https://theia-ide.org/releases/) as Zowe Explorer could experience possible unexpected behaviors with the latest Theia releases.
 
 ### Platform versions:
 
