@@ -50,7 +50,7 @@ The API Mediation Layer provides multiple methods which clients can use to authe
 
 When the user successfully authenticates with the API ML, the client receives a JWT token in exchange. This token can be used by the client to access REST services behind the API ML Gateway and also for subsequent user authentication. The access JWT Token is signed with the private key that is configured in the Zowe Identity Provider's certificate store, be it keystore or keyring.
 
-To utilize [Single-Sign-On (SSO)](../user-guide/systemrequirements-zos/#single-sign-on-sso), the Zowe API ML client needs to provide the access token to API services in the form of the cookie `apimlAuthenticationToken`, or in the `Authorization: Bearer` HTTP header as described [here](https://github.com/zowe/sample-spring-boot-api-service/blob/master/zowe-rest-api-sample-spring/docs/api-client-authentication.md#authenticated-request).
+To utilize [Single-Sign-On (SSO)](../user-guide/systemrequirements-zos#single-sign-on-sso), the Zowe API ML client needs to provide the access token to API services in the form of the cookie `apimlAuthenticationToken`, or in the `Authorization: Bearer` HTTP header as described [here](https://github.com/zowe/sample-spring-boot-api-service/blob/master/zowe-rest-api-sample-spring/docs/api-client-authentication.md#authenticated-request).
 
 - Validation:
   - Use Gateway query endpoint to validate the token and retrieve the information associated with the token.
@@ -66,7 +66,7 @@ Encoded JWT example:
 eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c
 ```
 
-**Note** The endpoint is disabled by default.
+**Note:** The endpoint is disabled by default.
 
 ### Authentication with client certificates
 
@@ -101,7 +101,7 @@ The SAF IDT token is signed in JWT format and can be consumed by southbound serv
 
 SAF IDT is issued for specified `APPLID` and is valid for up to 24 hours. The SAF IDT is not returned to the clients. They receive an API ML-generated JWT access token instead, which is internally mapped to the corresponding SAF IDT.
 
-For more information about configuring the token, see the [Configure signed SAF Identity tokens (IDT) documentation](../user-guide/configure-zos-system/#configure-signed-saf-identity-tokens-idt).
+For more information about configuring the token, see the [Configure signed SAF Identity tokens (IDT) documentation](../user-guide/configure-zos-system#configure-signed-saf-identity-tokens-idt).
 
 **Validation**
 
@@ -115,7 +115,7 @@ Multi-factor authentication is provided by third-party products which Zowe is co
 - [CA Advanced Authentication Mainframe](https://techdocs.broadcom.com/us/en/ca-mainframe-software/security/ca-advanced-authentication-mainframe/2-0.html)
 - [IBM Z Multi-Factor Authentication](https://www.ibm.com/us-en/marketplace/ibm-multifactor-authentication-for-zos).
 
-For details about multi-fator authentication, see [the MFA documentation here](mvd-configuration#multi-factor-authentication-configuration).
+For details about multi-fator authentication, see [the MFA documentation here](../user-guide/mvd-configuration#multi-factor-authentication-configuration).
 
 ### Certificate Authority Advanced Authentication Mainframe (CA AAM)
 
@@ -147,7 +147,7 @@ To verify the ownership of the SAF resource, you can use the following available
 
 `GET /gateway/{serviceId}/`
 
-For detailed information, see the [SAF resource checking documentation](../user-guide/api-mediation/api-gateway-configuration/#saf-resource-checking).
+For detailed information, see the [SAF resource checking documentation](../user-guide/api-mediation/api-gateway-configuration#saf-resource-checking).
 
 ## High Availability
 
@@ -170,7 +170,7 @@ Instance on every LPAR is started.
 
 The configuration for the specific instance is composed of the defaults in the main section and the overrides in the `haInstances` section of the `zowe.yaml` configuration file.
 
-In this section, <ha-instance> represents any Zowe high availability instance ID. Every instance has internal id and a section with overrides compared to the main configuration in the beginning of the `zowe.yaml` file. Check [Zowe YAML configuration reference](../appendix/zowe-yaml-configuration/#yaml-configurations---hainstances) for details.
+In this section, `ha-instance` represents any Zowe high availability instance ID. Every instance has internal id and a section with overrides compared to the main configuration in the beginning of the `zowe.yaml` file. Check the [Zowe YAML configuration reference](../appendix/zowe-yaml-configuration#yaml-configurations---hainstances) for details.
 
 ### Caching service setup and configuration
 
@@ -193,7 +193,7 @@ If you are runnning the caching service on z/OS, there are three storage methods
 
 It is essential to have observation in the whole secure operation process. The service availability is visible to everyone. It’s easy to find performance issues with southbound services.
 
-To do so, Zowe can easy integrate with the Alerting and Monitoring enterprise services such as ELK, Splunk, Grafana, etc and integrate the data as part of the Zero Trust Architecture approach with, for example SIEM (Security Incident Event Management).
+To do so, Zowe can easily integrate with the Alerting and Monitoring enterprise services such as ELK, Splunk, Grafana, etc and integrate the data as part of the Zero Trust Architecture approach with, for example, SIEM (Security Incident Event Management).
 
 <!--**Prerequisites**
 
