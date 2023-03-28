@@ -10,37 +10,35 @@ z/OS v2.1 or later is required z/OSMF configuration. The plug-in is in active de
 
 ## Creating z/OSMF connection 
 
-You can create a z/OSMF connection to your mainframe either by manually specifying all the needed information through the Settings tab, or just by clicking the "+" sign. The z/OSMF port should be specified at the end of the address. 
+There are two ways to create a z/OSMF connection: 
+- using the in-built plug-in feature
+- using Zowe Config v2
 
-![Configure IntelliJ z/OSMF connection](../images/intellij/intellij-configure.gif)
+### Creating the connection using the plug-in feature
 
-## Creating a files working set
+You can create a z/OSMF connection to your mainframe either by manually specifying all the needed information through the Settings tab, or by clicking the "+" sign. The z/OSMF port should be specified at the end of the address.
 
-To work with the datasets and USS files, you must set up a files working set through the **Settings**. 
+To create the connection:
+1. In Zowe Explorer click **+** button
+2. Select **Connection**
+3. Type in all the necessary information
+4. Wait until the connection is tested
 
-Complete the following steps:
+![Configure IntelliJ z/OSMF connection](../images/intellij/connection_create.gif)
 
-1. Go to plug-in **Settings**. 
-2. Go to the **Files Working Sets** tab (or go directly to the **File Explorer** tab on the plug-in panel). 
-3. Press the **+** button.
-4. Specify **Working Set Name**. 
-5. Press the **+** button and add necessary Mask. 
-6. Press the **OK** button. 
-7. Go to the plug-in panel and start working with data. 
+### Creating the connection using Zowe Config v2
 
-![Configure IntelliJ files working set](../images/intellij/intellij-files-working-set.gif)
+*Prerequisite: Zowe CLI installed ([click here for the guide](https://docs.zowe.org/stable/user-guide/cli-installcli))*
 
-## Creating a JES working set
+To create the z/OSMF connection with Zowe Config v2:
+1. In command line, issue: `zowe config init`
+2. Enter all the required information
+3. After that, *Zowe config file detected* notification should appear, click **Add Zowe Connection**
+4. If the connection test is failed, click **Add Anyway**
+5. In Zowe Config change all the wrong parameters to the correct ones
+6. Click appeared *Reload* button in the editor
+7. Wait until the connection is tested
 
-To operate with your JCL jobs, see their logs, view and edit JCL with further job run, you need to create a JES working set, which will hold all the filters for the JES Explorer. You can do it either by clicking the **+** button in the JES Explorer tab, or through the plugin **Settings**.  
+![Configure IntelliJ z/OSMF connection using Zowe Config v2](../images/intellij/connection_zowe_config_v2.gif)
 
-Complete the following steps:
-
-1. Go to plug-in **Settings**. 
-2. Go to the **JES Working Sets** tab (or go directly to **JES Explorer** tab on the Plug-in panel). 
-3. Press the **+** button.
-4. Specify the **JES Working Set Name**. 
-5. Press the **+** button and add necessary Mask. 
-6. Press the **OK** button.
-
-![Configure IntelliJ JES working set](../images/intellij/intellij-jes-working-set.gif)
+After the configuration is made, you will be able to use all the features of the plug-in.

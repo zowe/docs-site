@@ -24,9 +24,7 @@ z/OSMF workflow simplifies the procedure to create an SMP/E environment for Zowe
     The workflow is registered in z/OSMF and ready to execute.
 
 11. Select the workflow that you registered from the workflow list.
-12. Execute the steps in order. 
-
-    For general information about how to execute z/OSMF workflow steps, watch the [z/OSMF Workflows Tutorial](https://www.youtube.com/watch?v=KLKi7bhKBlE&feature=youtu.be).  
+12. Execute the steps in order.   
 13. Perform the following steps to execute each step individually:
 
     1. Double-click the title of the step.

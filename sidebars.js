@@ -24,6 +24,8 @@ module.exports = {
       label: "Release notes",
       items: [
         "getting-started/release-notes/release-notes-overview",
+        "getting-started/release-notes/v2_7_0",
+        "getting-started/release-notes/v2_6_1",
         "getting-started/release-notes/v2_6_0",
         "getting-started/release-notes/v2_5_0",
         "getting-started/release-notes/v2_4_0",
@@ -59,6 +61,8 @@ module.exports = {
       label: "Installing Zowe z/OS components",
       items: [
         "user-guide/install-zos",
+        "user-guide/zos-components-installation-checklist",
+        "user-guide/zos-components-installation-checklist-dev",
         {
           type: "category",
           label: "Planning",
@@ -310,6 +314,7 @@ module.exports = {
       items: [
         "user-guide/mvd-configuration",
         "user-guide/cli-configuringcli-ev",
+        "user-guide/cli-configuringcli-evfile",
         {
           type: "category",
           label: "API Mediation Layer",
@@ -343,6 +348,13 @@ module.exports = {
         "user-guide/api-mediation/using-api-mediation-layer",
         {
           type: "category",
+          label: "Information Roadmap for Zowe API Mediation Layer",
+          items: [
+            "getting-started/user-roadmap-apiml",
+          ],
+        },
+        {
+          type: "category",
           label: "Using API Catalog",
           items: [
             "user-guide/api-mediation-view-service-information-and-api-doc",
@@ -371,26 +383,28 @@ module.exports = {
         "user-guide/cli-using-issuing-first-command",
         {
           type: "category",
+          label: "Using team profiles",
+          items: [
+            "user-guide/cli-using-using-team-profiles",
+            "user-guide/cli-using-initializing-team-configuration",
+            "user-guide/cli-using-test-zosmf-connection",
+            "user-guide/cli-using-team-configuration-application-developers",
+            "user-guide/cli-using-team-configuration-team-leaders",
+            "user-guide/cli-using-sharing-team-config-files",
+            "user-guide/cli-using-understand-profiles-configs",
+            "user-guide/cli-using-team-managing-credential-security",
+            "user-guide/cli-using-global-storing-properties-automatically",
+          ],
+        },
+        {
+          type: "category",
           label: "Configuring daemon mode",
           items: [
             "user-guide/cli-using-using-daemon-mode",
             "user-guide/cli-configure-daemon-on-zlinux-os",
           ],
         },
-        "user-guide/cli-using-using-profiles",
-        {
-          type: "category",
-          label: "Configuring team profiles",
-          items: [
-            "user-guide/cli-using-using-team-profiles",
-            "user-guide/cli-using-initializing-team-configuration",
-            "user-guide/cli-using-team-configuration-application-developers",
-            "user-guide/cli-using-team-configuration-team-leaders",
-            "user-guide/cli-using-sharing-team-config-files",
-            "user-guide/cli-using-team-managing-credential-security",
-            "user-guide/cli-using-global-storing-properties-automatically",
-          ],
-        },
+        "user-guide/cli-using-using-profiles-v1",
         "user-guide/cli-using-integrating-apiml",
         "user-guide/cli-using-working-certificates",
 
@@ -474,8 +488,15 @@ module.exports = {
         "user-guide/zowe-chat/chat_use_interact_methods",
       ],
     },
+    {
+      type: "category",
+      label: "Using Zowe IntelliJ Plug-in",
+      items: [
+        "user-guide/intellij-working-sets",
+        "user-guide/intellij-using",
+      ],
+    },
     "user-guide/sdks-using",
-    "user-guide/intellij-using",
   ],
   extending: [
     "extend/extend-zowe-overview",
@@ -485,6 +506,7 @@ module.exports = {
       items: [
         "extend/packaging-zos-extensions",
         "extend/server-schemas",
+        "extend/component-registries",
         "extend/lifecycling-with-zwesvstc",
         "extend/k8s-extend",
         "extend/k8s-conformance",
@@ -583,7 +605,8 @@ module.exports = {
         "troubleshoot/servers/must-gather",
         "troubleshoot/verify-fingerprint",
         "troubleshoot/k8s-troubleshoot",
-        //"troubleshoot/troubleshoot-zos-certificate",
+        "troubleshoot/servers/return-codes",
+        "troubleshoot/troubleshoot-zos-certificate",
         {
           type: "category",
           label: "Zowe API Mediation Layer",
@@ -599,6 +622,7 @@ module.exports = {
             "troubleshoot/app-framework/app-troubleshoot",
             "troubleshoot/app-framework/app-mustgather",
             "troubleshoot/app-framework/app-issue",
+            "troubleshoot/app-framework/app-return-codes",
             "troubleshoot/app-framework/zss-error-codes",
           ],
         },
@@ -610,7 +634,6 @@ module.exports = {
             "troubleshoot/launcher/launcher-error-codes"
           ],
         },
-        "troubleshoot/verify-fingerprint",
       ],
     },
     {
@@ -624,6 +647,13 @@ module.exports = {
         "troubleshoot/cli/zosmf-cli",
         "troubleshoot/cli/known-cli",
         "troubleshoot/cli/cli-issue",
+        {
+          type: "category",
+          label: "Zowe CLI Plug-ins",
+          items: [
+            "troubleshoot/cli/troubleshoot-cli-plugins"
+          ],
+        }
       ],
     },
     {
@@ -763,7 +793,7 @@ module.exports = {
     {
       type: "link",
       label: "Third Party Software Requirements",
-      href: "https://github.com/zowe/docs-site/tree/master/tpsr/tpsr-v2.6.x.md",
+      href: "https://github.com/zowe/docs-site/tree/master/tpsr/tpsr-v2.7.x.md",
     },
   ],
 };
