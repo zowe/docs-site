@@ -38,7 +38,7 @@ To install the cross memory server, enable the PROCLIB, PARMLIB, and load module
 
 ## Load module
 
-The cross memory server load module `ZWESIS00` is installed by Zowe into a PDSE `SZWEAUTH`.  For the cross memory server to be started, the load module needs to be APF-authorized and the program needs to run in key(4) as non-swappable.  
+The cross memory server load module `ZWESIS01` is installed by Zowe into a PDSE `SZWEAUTH`.  For the cross memory server to be started, the load module needs to be APF-authorized and the program needs to run in key(4) as non-swappable.  
 
 ### APF authorize
 
