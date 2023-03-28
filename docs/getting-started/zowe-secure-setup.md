@@ -19,6 +19,7 @@ Here is a list of all the security considerations and configurations needed.
 - High Availability
   - [Sysplex architecture and configuration](#sysplex-architecture-and-configuration)
   - [Caching service setup and configuration](#caching-service-setup-and-configuration)
+- [Observation](#observation)
 
 ## Transport Layer Security(TLS)
 
@@ -188,6 +189,11 @@ If you are runnning the caching service on z/OS, there are three storage methods
   - Doesn’t need separate processes.
   - Highly performant.
 
+## Observation
+
+It is essential to have observation in the whole secure operation process. The service availability is visible to everyone. It’s easy to find performance issues with southbound services.
+
+To do so, Zowe can easy integrate with the Alerting and Monitoring enterprise services such as ELK, Splunk, Grafana, etc and integrate the data as part of the Zero Trust Architecture approach with, for example SIEM (Security Incident Event Management).
 
 <!--**Prerequisites**
 
