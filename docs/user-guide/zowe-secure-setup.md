@@ -19,8 +19,6 @@ Here is a list of all the security considerations and configurations needed.
 - High Availability
   - [Sysplex architecture and configuration](#sysplex-architecture-and-configuration)
   - [Caching service setup and configuration](#caching-service-setup-and-configuration)
-- [Distributed Identity Federation](#distributed-identify-federation)
-
 
 ## Transport Layer Security(TLS)
 
@@ -111,7 +109,12 @@ For more information about configuring the token, see the [Configure signed SAF 
 
 ## Multi-factor authentication (MFA)
 
-Multi-factor authentication is provided by third-party products which Zowe is compatible with. CA AAM is recomended here. For details about multi-fator authentication, see [the MFA documentation here](../user-guide/mvd-configuration/#multi-factor-authentication-configuration).
+Multi-factor authentication is provided by third-party products which Zowe is compatible with. The following are known to work:
+
+- [CA Advanced Authentication Mainframe](https://techdocs.broadcom.com/us/en/ca-mainframe-software/security/ca-advanced-authentication-mainframe/2-0.html)
+- [IBM Z Multi-Factor Authentication](https://www.ibm.com/us-en/marketplace/ibm-multifactor-authentication-for-zos).
+
+For details about multi-fator authentication, see [the MFA documentation here](mvd-configuration#multi-factor-authentication-configuration).
 
 ### Certificate Authority Advanced Authentication Mainframe (CA AAM)
 
@@ -185,11 +188,6 @@ If you are runnning the caching service on z/OS, there are three storage methods
   - Doesn’t need separate processes.
   - Highly performant.
 
-## Distributed Identify Federation
-
-The user identity federation allows for default separation of the two main user security management concerns - authentication managed by the distributed Identity and Access Management (IAM). The user access authorization managed by SAF (the installed Mainframe ESM respectively). 
-
-For more information, please see [link to be added].
 
 <!--**Prerequisites**
 
