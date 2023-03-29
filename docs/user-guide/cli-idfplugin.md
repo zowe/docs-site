@@ -38,7 +38,7 @@ At this stage, the Plug-in does not interface with the mainframe system, so no Z
 
 Use `zowe idf map --help` to get the most up-to-date details of the required parameters.
 
-`zowe idf map "CSV" --esm "ESM" --system "SYSTEM" --registry "REGISTRY"`
+`zowe idf map "CSV" --esm "ESM" --registry "REGISTRY" --system "SYSTEM"`
 
 - `CSV`: Path to the input CSV-formatted file, see below for the details of the format.
 - `ESM`: Identifier of the target ESM, one of ACF2, TSS or RACF.
