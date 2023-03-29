@@ -38,12 +38,12 @@ At this stage, the Plug-in does not interface with the mainframe system, so no Z
 
 Use `zowe idf map --help` to get the most up-to-date details of the required parameters.
 
-`zowe idf map "$CSV" --esm "$ESM" --system "$SYSTEM" --registry "$REGISTRY"`
+`zowe idf map "CSV" --esm "ESM" --system "SYSTEM" --registry "REGISTRY"`
 
-- `$CSV`: Path to the input CSV-formatted file, see below for the details of the format.
-- `$ESM`: Identifier of the target ESM, one of ACF2, TSS or RACF.
-- `$SYSTEM`: Optional parameter, system identifier for JCL purposes.
+- `CSV`: Path to the input CSV-formatted file, see below for the details of the format.
+- `ESM`: Identifier of the target ESM, one of ACF2, TSS or RACF.
 - `REGISTRY`: Registry to identify the distributed identity provider, for example LDAP `ldap://12.34.56.78:389`
+- `SYSTEM`: Optional parameter, system identifier for JCL purposes. It has to match the system name defined in JES.
 
 ### CSV Format
 
