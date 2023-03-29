@@ -1,10 +1,12 @@
 # Initializing team configuration
 
-Use one of the following methods to initialize team configuration.
+Team configurations can be applied *globally* and *per project*, depending on the development project. See [Team configurations](../user-guide/cli-using-using-team-profiles.md) for more information.
+
+Use one of the following methods to initialize global team configuration. These instructions show how to create a configuration file that you can later open in a text editor or IDE (such as Visual Studio Code) to add or modify profiles.
 
 **Note:** If API Mediation Layer is running on your site, [Connecting profiles to API Mediation Layer](#connecting-profiles-to-api-mediation-layer) is the recommended method to use to initialize team configuration.
 
-## Creating team profile configuration files
+## Creating a global team configuration file
 
 1. Issue the following command:
 
@@ -16,7 +18,7 @@ Use one of the following methods to initialize team configuration.
 
     The `zowe config init` command ensures that your credentials are stored securely on your computer by default.
 
-    When the credentials are received, the `zowe.config.json` team configuration file is added to the local `.zowe` directory. Use a text editor or IDE such as Visual Studio Code to add or modify connection details for your mainframe services.
+    When the credentials are received, the `zowe.config.json` team configuration file is added to the local `.zowe` directory. Use a text editor or IDE to add or modify connection details for your mainframe services.
 
     **Note:** Run the `zowe config init --global-config` command again after installing a new plug-in to add the plug-in profile to the global configuration file. See [Creating team plug-in profiles](#creating-team-plug-in-profiles) for information.
 
@@ -35,7 +37,7 @@ Use one of the following methods to initialize team configuration.
 
 ## Creating team plug-in profiles
 
-After the `zowe.config.json` team configuration file is created and new plug-ins installed, run the `zowe config init` (or `zowe config auto-init`, if using the API ML) command again to add the plug-in profiles to the configuration file.
+After the `zowe.config.json` team configuration file is created and new plug-ins are installed, run the `zowe config init` (or `zowe config auto-init`, if using the API ML) command again to add the plug-in profiles to the configuration file.
 
 1. Install a new plug-in.
 
@@ -45,7 +47,7 @@ After the `zowe.config.json` team configuration file is created and new plug-ins
     zowe plugins install @zowe/cics-for-zowe-cli
     ```
 
-    **Note:** If the `zowe.config.json` file has not yet been created in the `.zowe` directory, see [Creating team profile configuration files](#creating-team-profile-configuration-files).
+    **Note:** If the `zowe.config.json` file has not yet been created in the `.zowe` directory, see [Creating a global team configuration file](#creating-a-global-team-configuration-file).
 
 2. Run the `zowe config init --global-config` or `zowe config auto-init --global-config` command.
 
