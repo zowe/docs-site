@@ -5,6 +5,7 @@ As an API Mediation Layer user, you may encounter problems with how the API ML f
 * [Install API ML without Certificate Setup](#install-api-ml-without-certificate-setup)
 * [Enable API ML Debug Mode](#enable-api-ml-debug-mode)
 * [Change the Log Level of Individual Code Components](#change-the-log-level-of-individual-code-components)
+* [Debug and Fix Common Problems with SSL/TLS Setup](#debug-and-fix-common-problems-with-ssltls-setup)
 * [Known Issues](#known-issues)
     * [API ML stops accepting connections after z/OS TCP/IP stack is recycled](#api-ml-stops-accepting-connections-after-zos-tcpip-stack-is-recycled)
     * [SEC0002 error when logging in to API Catalog](#sec0002-error-when-logging-in-to-api-catalog)
@@ -136,6 +137,18 @@ This activates the application/loggers endpoints in each API ML internal service
     ```
     http POST https://hostname:port/application/loggers/org.zowe.apiml.enable.model configuredLevel=WARN
     ```
+
+## Debug and Fix Common Problems with SSL/TLS Setup
+
+Review tips described in the blog post [Troubleshooting SSL/TLS setup with Zowe Certificate Analyzer](https://medium.com/zowe/troubleshooting-ssl-tls-setup-with-zowe-certificate-analyser-31aeec9e1144) to find out how you can use the Zowe Certificate Analyzer to address the following common issues with SSL/TLS setup:
+
+* How to verify if the API ML server certificate is trusted by your service
+* How to get a CA certificate in the correct format
+* How to perform a TLS handshake with debug logs
+* How to debug remote services
+* How to enable mutual authentication using a client certificate
+* How to add a trusted certificate to a SAF Key ring
+
 ## Known Issues
 
 ### API ML stops accepting connections after z/OS TCP/IP stack is recycled
@@ -475,20 +488,8 @@ Caused by: java.security.UnrecoverableKeyException: Given final block not proper
 
 **Solution:**
 
-First, make sure that the private key stored in the keyring is not encrypted by a password, or that the private key integrity is not protected by a password. This is not related to SAF keyrings themselves, which are not usually protected by password, but rather to is related to the concrete certificate private key pair stored in the SAF keyring. In case the private key is not protected in any way by a password, there is a possible workaround. Specify "dummy" as the key password in zowe.yaml certificate configuration. 
+Make sure that the private key stored in the keyring is not encrypted by a password, or that the private key integrity is not protected by a password. This is not related to SAF keyrings themselves, which are not usually protected by password, but rather to is related to the concrete certificate private key pair stored in the SAF keyring. 
 
-```
-  certificate:
-    keystore:
-      type: JCERACFKS
-      file: safkeyring:////ZWESVUSR/ZoweKeyring
-      password: dummy
-      alias: <cert-label>
-    truststore:
-      type: JCERACFKS
-      file: safkeyring:////ZWESVUSR/ZoweKeyring
-      password:
-```
 ### Exception thrown when reading SAF keyring {ZWED0148E}
 
 **Symptom:**
@@ -533,14 +534,14 @@ If you are using Zowe's local CA certificate and you still receive **ZWED0148E**
     ],
     "port": 8544,
     "keys": [
-      "safkeyring:////ZWESVUSR/ring&Label A"
+      "safkeyring://ZWESVUSR/ring&Label A"
     ],
     "certificates": [
-      "safkeyring:////ZWESVUSR/ring&Label A"
+      "safkeyring://ZWESVUSR/ring&Label A"
     ],
     "certificateAuthorities": [
-      "safkeyring:////ZWESVUSR/ring&Label B",
-      "safkeyring:////ZWESVUSR/ring&Label B"
+      "safkeyring://ZWESVUSR/ring&Label B",
+      "safkeyring://ZWESVUSR/ring&Label B"
     ]
   },
 ```
