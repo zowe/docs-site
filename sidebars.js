@@ -8,6 +8,7 @@ module.exports = {
       items: [
         "getting-started/overview", //folder_name/file_name
         "getting-started/zowe-architecture",
+        "getting-started/zowe-secure-setup",
       ],
     },
     {
