@@ -276,7 +276,7 @@ Follow these steps:
 
 Before you test your new command, confirm that you are able to connect to the mainframe.
 
-In order for the client-side API to reach the mainframe (to fetch data sets), Zowe CLI needs a z/OSMF profile for access. See [Using profiles](https://docs.zowe.org/stable/user-guide/cli-using-using-profiles/) for information. 
+In order for the client-side API to reach the mainframe (to fetch data sets), Zowe CLI needs a z/OSMF profile for access. See [Team configurations](https://docs.zowe.org/stable/user-guide/cli-using-using-team-profiles/) for information. 
 
 Once the connection between Zowe CLI and z/OSMF is confirmed, build and install the plug-in before running it for the first time.
 
