@@ -35,7 +35,7 @@ Principles of operation and end-user guides (configuration, troubleshooting) sho
 
 Provide a readme.md file for developers (overview, build, test) as well as end-user documentation for your plug-in on Zowe Docs site. 
 
-For more information, see the CLI [documentation contribution guidelines](https://github.com/zowe/zowe-cli/blob/conformance/CONTRIBUTING.md#documentation-guidelines).
+For more information, see the CLI [documentation contribution guidelines](https://github.com/zowe/zowe-cli/blob/master/CONTRIBUTING.md#documentation-guidelines).
 
 ### Core CLI Imperative CLI Framework
 
