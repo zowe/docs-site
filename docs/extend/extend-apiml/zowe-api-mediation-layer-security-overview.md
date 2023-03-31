@@ -5,6 +5,7 @@ Review this article to learn about topics which address security features in Zow
 * [How API ML transport security works](#how-api-ml-transport-security-works)
     + [Transport layer security](#transport-layer-security)
     + [Authentication](#authentication)
+    + [OIDC authentication](#oidc-authentication)
     + [Zowe API ML services](#zowe-api-ml-services)
     + [Zowe API ML TLS requirements](#zowe-api-ml-tls-requirements)
 * [Setting ciphers for API ML services](#setting-ciphers-for-api-ml-services)
@@ -32,6 +33,18 @@ API ML uses the following authentication methods:
 
 - **TLS client certificates**
     - Certificates are used for service-only requests
+
+- **OIDC authentication**
+ 
+  API ML is now able to authenticate mainframe users with external/distributed IDP (OIDC provider), such as OKTA, KeyCloak and others.
+  Client applications can ask their users to login at OIDC provider's authentication page and then access APIs with the JWT provided by the external IDP. The basic flow is:
+  - The client application intiates OIDC authentication flow with the distributed IDP  
+  - The user provides their credentials as required at the provider's authentication page/end-point
+  - The client application obtains authorization in form of code that is exchanged for access JWT token (eventually also Identity JWT and Refresh JWT)
+  - The client application passes the access JWT token to the API ML GW with subsequent requests for mainframe resources
+  - API ML federates the user identities and calls the requested resource with appropriate mainframe user credentials
+
+For more information please read the detailed explanation of the [OIDC authentication and Identity Federation](apiml-oidc-authentication.md)
 
 ### Zowe API ML services
 
