@@ -1,7 +1,7 @@
 # Zowe API Mediation Layer Security
 
 - [Zowe API Mediation Layer Security](#zowe-api-mediation-layer-security)
-  * [How API ML transport security works](#how-api-ml-transport-security-works)
+  * [How API ML security works](#how-api-ml-transport-security-works)
     + [Transport layer security](#transport-layer-security)
     + [Authentication](#authentication)
     + [Zowe API ML services](#zowe-api-ml-services)
@@ -14,6 +14,7 @@
     + [Authorization](#authorization)
     + [JWT Token](#jwt-token)
     + [z/OSMF JSON Web Tokens Support](#z-osmf-json-web-tokens-support)
+    + 
     + [API ML truststore and keystore](#api-ml-truststore-and-keystore)
     + [API ML SAF Keyring](#api-ml-saf-keyring)
     + [Discovery Service authentication](#discovery-service-authentication)
