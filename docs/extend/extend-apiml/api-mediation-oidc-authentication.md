@@ -1,15 +1,17 @@
 # Zowe API Mediation Layer OIDC authentication
 
 Zowe API ML can be configured to authenticate users by accepting Access Tokens issued by an external Identity Provider (IDP) implementing OIDC/OAuth protocols.
+This is is useful in more advanced deployments of Zowe where client applications need to access mainframe and enterprise resources.  
 
 This article provides details of the OIDC authentication functionality and related configuration needed to achieve it.
 
 - [OIDC Usage](#oidc-usage)
 - [Authentication Workflow](#authentication-flow)
-- [Configuration](#oidc-configuration)
+- [Configuration](#api-ml-oidc-configuration)
     * [Prerequisites](#prerequisites)
     * [OIDC provider configuration](#oidc-provider-configuration)
     * [API ML GW configuration](#api-ml-gw-configuration)
+    * 
 - [Technical details](#technical-details)
 - [Troubleshooting](#troubleshooting)
 
@@ -35,7 +37,7 @@ for a short interval when the client would be accessing multiple resources in a 
 In case that the distribted access token is valid, the gateway fetches the user identity from the token and maps it to the user mainfrae identity using a SAF call.
 The mainframe user identity is then used to create the mainframe user credentials (Zowe or SAF JWT or pass-ticket) expected by the mainframe service which provides the requested resource.
 
-## OIDC Configuration
+## API ML OIDC Configuration
 
 ### Prerequisites
 
@@ -74,9 +76,10 @@ or must be part of group which is allowed to work with the client application.
           registry: ${saf_oidc_registry_name} 
 ```
 
-* SAF/ESM configuration
-  - sds
-  - 
+### SAF/ESM configuration
+
+SAF/ESM is configured with mapping between the mainframe and distributed user identities. API ML provides Zowe CLI plugin to help administrators to generate JCL for the required mapping configuration. 
+Please see (#TODO:Refer tot the cli plugin documentation) for details how to use the plugin tool.
 
 ## Technical details
 
