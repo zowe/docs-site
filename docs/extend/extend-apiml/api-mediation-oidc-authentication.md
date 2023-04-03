@@ -37,15 +37,16 @@ The mainframe user identity is then used to create the mainframe user credential
 
 ### Prerequisites
 
-  - User has mainframe identity
-  - User has distributed identity
-  - SAF mapping for the above user identities
+- The users who need access to mainframe resources using OIDC authentication must have a mainframe identity
+- The users distributed profiles in teh OIDC provide are configured to have access rights to the client application
+- SAF mapping for the above user identities
 
 #### External IDP Configuration
 
-- ** The Client Application must be configured in the distributed IDP.
-- ** User assigned to the Client Application
+- The Client Application must be configured in the distributed IDP.
+- User assigned to the Client Application
 F
 ### API ML Configuration
-- ** Allow OIDC authentication
-- ** External IDP config
+- Allow OIDC authentication in zowe.yaml
+- External IDP configuration in the API ML GW application.yaml
+- 
