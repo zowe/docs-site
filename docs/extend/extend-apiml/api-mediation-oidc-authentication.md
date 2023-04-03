@@ -1,9 +1,9 @@
 # Zowe API Mediation Layer OIDC authentication
 
-Zowe API ML can be configured to authenticate users by accepting Access Tokens issued by an external Identity Provider (IDP) implementing OIDC/OAuth protocols.
-This is is useful in more advanced deployments of Zowe where client applications need to access mainframe and enterprise resources.  
+Zowe API ML can be configured to authenticate users by accepting Access Tokens issued by an external Identity Provider (IDP) implementing OIDC/OAuth2 protocols.
+This is useful in advanced deployments of Zowe, where client applications need to access mainframe as well as enterprise/distributed systems, while offering their users the comfort of SSO across the systems boundaries.  
 
-This article provides details of the OIDC authentication functionality and related configuration needed to achieve it.
+This article provides details of the API ML OIDC authentication functionality and related configuration needed to achieve it.
 
 - [OIDC Usage](#oidc-usage)
 - [Authentication Workflow](#authentication-flow)
@@ -11,31 +11,34 @@ This article provides details of the OIDC authentication functionality and relat
     * [Prerequisites](#prerequisites)
     * [OIDC provider configuration](#oidc-provider-configuration)
     * [API ML GW configuration](#api-ml-gw-configuration)
-    * 
+    * [SAF/ESM configuration](#esm-configuration)
 - [Technical details](#technical-details)
 - [Troubleshooting](#troubleshooting)
 
 ## OIDC Usage
-[OIDC](https://openid.net/specs/openid-connect-core-1_0.html) protocol adds an authentication layer on top of the [OAuth2](https://www.rfc-editor.org/rfc/rfc6749) Authorization protocol. 
-It is used to request a trusted distributed OIDC provider to authenticate the user and after successful login to grant the client application an Access Token (along with Identity Token, eventually Refresh Token if requested).
-The JWT Access Token obtained from the trusted OIDC/IDP can be used to authenticate the user (and authorize the client) to access mainframe resources through the API ML GW.
+OIDC authentication is used together with the z/OS [Identity Propagation](https://www.redbooks.ibm.com/redbooks/pdfs/sg247850.pdf) feature to implement the AI ML Identity Federation.
+[OIDC](https://openid.net/specs/openid-connect-core-1_0.html) protocol adds an authentication layer on top of the [OAuth2](https://www.rfc-editor.org/rfc/rfc6749) Authorization protocol.
+It is used by APIML client applications to verify user's identity with a distributed OIDC provider trusted by the mainframe security.
+After successful login the OIDC provider grants the client an Access Token (along with Identity Token, eventually also a Refresh Token if requested and appropriate).
+The Access Token issued by a trusted OIDC provider is now accepted by APIML.
+is the foundation of API ML multi-domain Identity Federation.
+The JWT Access Token obtained from the OIDC/IDP can be then used to authenticate the user (and authorize the client application) and allow access to mainframe resources through the API ML GW.
 
-**Note:** Currently, API ML can provide SSO only in a single security domain.
 
 ## Authentication Flow
-The following diagram describes the interactions between the general participants in the OIDC authentication process with API ML GW.
+The following diagram describes the interactions between the participants in the OIDC authentication process with API ML GW.
 
 <img src={require("../../images/api-mediation/apiml-oidc-auth-seq.png").default} alt="APIML OIDC Workflow" width="700"/>
 
-When the User wants to access mainframe resources or services using the Client application without a valid authentication / access token, 
-the Client redirects the User agent to the login page of the distributed OIDC provider. The user is asked to provide valid credentials in form of authentication factors.
+When the User wants to access mainframe resources or services using the client application without a valid authentication / access token, 
+the client redirects the User agent to the login end-point of the distributed OIDC provider. The user is asked to provide their valid credentials in form of authentication factors.
 After successful validation of all authentication factors, the OIDC provider would grant the Client an access token. 
-The client then requests from API ML GW the needed mainframe resources presenting the access token in the request.
-The GW validates the distributed access token at the OIDC provider's /inttrospection end-point and caches for short time the outcome of a successful validation.
-In subsequent calls with the same token, the GW will reuse the validation outcome. This is needed to save round trips to the OIDC /introspection endpoint 
-for a short interval when the client would be accessing multiple resources in a sequence to complete a unit of work. The caching interval is configurable with a sensible default. 
-In case that the distribted access token is valid, the gateway fetches the user identity from the token and maps it to the user mainfrae identity using a SAF call.
-The mainframe user identity is then used to create the mainframe user credentials (Zowe or SAF JWT or pass-ticket) expected by the mainframe service which provides the requested resource.
+The client then can request from API ML GW the needed mainframe resources presenting the access token in the request.
+The GW validates the distributed access token at the OIDC provider's /introspection end-point and in case of success, caches the outcome for a short time.
+In subsequent calls with the same token, the GW reuses the cached validation outcome. This helps to save round trips to the OIDC /introspection end-point 
+for a short interval of time, when the client needs to access multiple resources in a row to complete a unit of work. The caching interval is configurable with a sensible default. 
+The API ML GW fetches  the distributed user identity from the distributed access token and maps it to the user mainframe identity using SAF.
+The mainframe user identity is then used to create the mainframe user credentials (Zowe or SAF JWT or pass-ticket) expected by the target mainframe service.
 
 ## API ML OIDC Configuration
 
@@ -76,7 +79,7 @@ or must be part of group which is allowed to work with the client application.
           registry: ${saf_oidc_registry_name} 
 ```
 
-### SAF/ESM configuration
+### ESM configuration
 
 SAF/ESM is configured with mapping between the mainframe and distributed user identities. API ML provides Zowe CLI plugin to help administrators to generate JCL for the required mapping configuration. 
 Please see (#TODO:Refer tot the cli plugin documentation) for details how to use the plugin tool.
