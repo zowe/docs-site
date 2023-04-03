@@ -73,7 +73,7 @@ and to call a REST API. See the [Imperative CLI Framework documentation](https:/
 
 #### Exporting interface and programmatic API for other Node.js applications
 
-Update [zowe-cli-sample-plugin/src/index.ts](https://github.com/zowe/zowe-cli-sample-plugin/src/index.ts) to contain the following:
+Update [zowe-cli-sample-plugin/src/index.ts](https://github.com/zowe/zowe-cli-sample-plugin/blob/master/src/index.ts) to contain the following:
 
 ```typescript
 export * from "./api/doc/ITodo";
