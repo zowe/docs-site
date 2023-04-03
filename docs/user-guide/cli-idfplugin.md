@@ -40,21 +40,20 @@ For the most up-to-date details of required parameters, use the `help` command:
 
  `zowe idf map --help`.
 
-<!-- Briefly indicate where the following is set and what this does. -->
-Use the following command to let zowe generate a JCL. This JCL can be then submitted by the security administrator to create a mapping.
+Use the following command to enable Zowe to generate a JCL. A security administrator can the submit this JCL to create a mapping.
 
 `zowe idf map <csv-file> --esm <esm> --registry <registry> --system <system>`
 
-- `csv-file`  
+- **csv-file**  
 The path to the input CSV-formatted file, see below for the details of the format.
 
-- `esm`  
+- **esm**  
  The identifier of the target ESM, one of ACF2, TSS or RACF.
 
-- `registry`  
+- **registry**  
  The registry to identify the distributed identity provider, for example LDAP `ldap://12.34.56.78:389`
 
-- `system`  
+- **system**  
 This is an optional parameter, system identifier for JCL purposes. Ensure that this value matches the system name defined in JES.
 
 ### CSV Format
@@ -65,13 +64,13 @@ For proper functionality of the plug-in, ensure that the CSV input file has the 
 name, dist_id, mf_id
 ```
 
-- `name`  
+- **name**  
 The descriptive name of the user.
 
-- `dist_id`  
+- **dist_id**  
 The distributed identity of the user.
 
-- `mf_id`  
+- **mf_id**  
 The mainframe id of the user.
 
 ### Output
@@ -80,5 +79,5 @@ The `map` command generates an output file with a valid JCL. The output file nam
 
 `idf_$ESM$SYSTEM.jcl`
 
-- `$SYSTEM`  
+- **$SYSTEM**  
  This parameter is ommited if it is not provided.
