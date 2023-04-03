@@ -4,33 +4,33 @@ Zowe API ML can be configured to authenticate users by accepting Access Tokens i
 
 This article provides details of the OIDC authentication functionality and related configuration needed to achieve it.
 
-- [OIDC Usage](#apiml-oidc-usage)
-- [Authentication Workflow](#apiml-oidc-flow)
-- [Configuration](#apiml-oidc-configuration)
-    * [Prerequisites](#apiml-oidc-prereqs)
-    * [External IDP Configuration](#external-idp-config)
-    * [API ML GW configuration](#apiml-gw-config)
+- [OIDC Usage](#oidc-usage)
+- [Authentication Workflow](#authentication-flow)
+- [Configuration](#oidc-configuration)
+    * [Prerequisites](#prerequisites)
+    * [External IDP Configuration](#external-idp-configuration)
+    * [API ML GW configuration](#api-ml-configuration)
 
-## API ML OIDC Usage
-[OIDC](#TODO-Provide-External-Link) protocol adds an authentication layer on top of the [OAuth2](#TODO-Provide-External-Link) Authorization protocol. It can be used to redirect
-the user to a recognized IDP and after successful authentication, the client application can be granted an Access Token (along with Identity Token, eventually Refresh Token).
+## OIDC Usage
+[OIDC](https://openid.net/specs/openid-connect-core-1_0.html) protocol adds an authentication layer on top of the [OAuth2](https://www.rfc-editor.org/rfc/rfc6749) Authorization protocol. 
+It is used to redirect the user to a recognized IDP and after successful authentication, the client application can be granted an Access Token (along with Identity Token, eventually Refresh Token).
 The JWT Access Token obtained from the distributed IDP can be used to authenticate the user (and authorize the client) to access mainframe resources through the API ML GW.
 
-![img.png](img.png)
+**Note:** Currently, API ML can provide SSO only in a single security domain.
 
-'**Note:** Currently, API ML can provide SSO only in a single security domain.
-
-## OIDC Authentication Workflow
+## Authentication Flow
 The following diagram describes the interactions between the general participants in the OIDC authentication process with API ML GW.
 
-<img src={require("../../images/api-mediation/oidc-diagram.jpeg").default} alt="APIML OIDC Workflow" width="700"/>
+<img src={require("../images/api-mediation/apiml-oidc-auth-seq.jpeg").default} alt="APIML OIDC Workflow" width="700"/>
 
-## Configuration
+## OIDC Configuration
 
 ### Prerequisites
-#### User has mainframe identity
-#### User has distributed identity
-#### SAF mapping for the above user identities
+
+  - User has mainframe identity
+  - User has distributed identity
+  - SAF mapping for the above user identities
+
 #### External IDP Configuration
 
 - ** The Client Application must be configured in the distributed IDP.
@@ -39,4 +39,3 @@ F
 ### API ML Configuration
 - ** Allow OIDC authentication
 - ** External IDP config
-
