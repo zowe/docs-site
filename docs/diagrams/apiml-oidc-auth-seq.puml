@@ -1,0 +1,19 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+'actor User
+'actor Client as ClientApp
+'Actor IDP as D_IDP
+'actor GW as APIML_GW
+
+User -> Client: Do stuff
+Client -> IDP: Initiate OIDC flow
+User --> IDP: Provide credentials [MFA]
+IDP -> Client: Provide JWTs[access,refresh,identity]
+Client -> GW: Request resources [JWT AT]
+GW -> GW: Validate JWT AT
+GW -> SAF: Map distributed mainframe to identity
+GW -> GW: Create Zowe JWT
+
+@enduml
