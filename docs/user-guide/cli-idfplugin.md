@@ -41,18 +41,20 @@ For the most up-to-date details of required parameters, use the `help` command:
  `zowe idf map --help`.
 
 <!-- Briefly indicate where the following is set and what this does. -->
-`zowe idf map "CSV" --esm "ESM" --registry "REGISTRY" --system "SYSTEM"`
+Use the following command to let zowe generate a JCL. This JCL can be then submitted by the security administrator to create a mapping.
 
-- `CSV`  
+`zowe idf map <csv-file> --esm <esm> --registry <registry> --system <system>`
+
+- `csv-file`  
 The path to the input CSV-formatted file, see below for the details of the format.
 
-- `ESM`  
+- `esm`  
  The identifier of the target ESM, one of ACF2, TSS or RACF.
 
-- `REGISTRY`  
+- `registry`  
  The registry to identify the distributed identity provider, for example LDAP `ldap://12.34.56.78:389`
 
-- `SYSTEM`  
+- `system`  
 This is an optional parameter, system identifier for JCL purposes. Ensure that this value matches the system name defined in JES.
 
 ### CSV Format
