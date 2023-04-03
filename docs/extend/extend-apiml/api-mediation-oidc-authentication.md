@@ -21,7 +21,7 @@ The JWT Access Token obtained from the trusted OIDC/IDP can be used to authentic
 ## Authentication Flow
 The following diagram describes the interactions between the general participants in the OIDC authentication process with API ML GW.
 
-<img src={require("../images/api-mediation/apiml-oidc-auth-seq.jpeg").default} alt="APIML OIDC Workflow" width="700"/>
+<img src={require("../../images/api-mediation/apiml-oidc-auth-seq.png").default} alt="APIML OIDC Workflow" width="700"/>
 
 When the User wants to access mainframe resources or services using the Client application without a valid authentication / access token, 
 the Client redirects the User agent to the login page of the distributed OIDC provider. The user is asked to provide valid credentials in form of authentication factors.
