@@ -2,16 +2,18 @@
 
 Learn how to handle the documentation for Zowe releases.
 
-- [Release communication](#release-communication)
+- [Release schedule](#release-schedule)
 - [Preparing documentation for a new release](#preparing-documentation-for-a-new-release)
     - [Before you begin](#before-you-begin)
     - [Part 1: Archive the previous release doc](#part-1-archive-the-previous-release-doc)
     - [Part 2: Bump the release version](#part-2-bump-the-release-version)
     - [Part 3: Prepare new release files](#part-3-prepare-new-release-files)
     - [What to do next](#what-to-do-next)
-- [Sycn changes between releases](#sycn-changes-between-releases)
+- [Sync changes between releases](#sync-changes-between-releases)
 - [Publish documentation for a new release](#publish-documentation-for-a-new-release)
-- [Remove archived version](#remove-archived-version)
+- [Removing archived version](#removing-archived-version)
+- [Zowe CLI: Update web help and type doc](#zowe-cli-update-web-help-and-type-doc)
+- [Updating TPSRs](#updating-tpsrs)
 
 ## Release schedule 
 
@@ -200,7 +202,7 @@ Done! The site setup for the new release version is now complete.
 
 Next, you must inform the squad and community that the branch for the vNext release is ready for doc changes. Post an announcement in the Slack channel [#zowe-doc](https://openmainframeproject.slack.com/archives/CC961JYMQ). 
 
-## Sycn changes between releases
+## Sync changes between releases
 
 Before the new release is published, you need to cherry-pick changes from the `master` branch periodically into the `docs-staging` branch to ensure that important changes are incorporated into the next release. The changes could include but are not limited to: 
 
@@ -228,9 +230,9 @@ Usually 2 days before the GA date, review the [release checklist](#release-check
 |--|--|--|
 |New version doc setup               | Right after a release is published |See the [Preparing documentation for a new release](#preparing-documentation-for-a-new-release) on the `docs-staging` branch |  
 |Relnotes: CHANGELOG update cutoff   | 3 days before GA | Doc squad to work with squads to complete review | 
-|Relnotes: Draft review              | 3 days before GA | First run of release notes. Squad leads review the draft. | 
+|Relnotes: Draft review              | 3 days before GA | First run of release notes. Squad leads review the draft. Post in #zowe-release Slack channel | 
 |Zowe CLI: Update web help and type doc |  | Zowe CLI squad
-|Update TPSR                         |  | Work with CICD squad. See [Updating TPSR](#updating-tpsr) for how-to. 
+|Update TPSRs                        |  | Work with CICD squad. See [Updating TPSR](#updating-tpsr) for how-to. 
 |Doc freeze, PR for publish ready    | 1 day before GA | All release PRs merged. Action: Inform CI/CD squad of the doc PR number. Add CICD members as a reviewer of the PR. 
 |Doc publish                         | GA day | Work with CICD squad to merge the doc PR. 
 |Doc validation                      | 1 hour within publish | Check that the doc site has been refreshed correctly. 
@@ -281,8 +283,10 @@ Note: Instructions use Visual Studio Code and GitHub Desktop. Replace version nu
 10. In GitHub Desktop, commit your updates to your branch.
 11. Merge your branch to `docs-staging`.
 
-## Updating TPSR
+## Updating TPSRs
 
-Pick up the latest licenses file from this location: https://zowe.jfrog.io/zowe/libs-release-local/org/zowe/licenses/. Open the release folder and download the `zowe_licenses_full.zip` file. 
+Pick up the latest licenses file from this location: https://zowe.jfrog.io/zowe/libs-release-local/org/zowe/licenses/. 
 
-Extract the file and copy the content into the placeholder TPSR document for the release in the /tpsr folder.
+1. Open the release folder and download the `zowe_licenses_full.zip` file. 
+
+2. Extract the file and copy the content into the placeholder TPSR document for the release in the /tpsr folder.
