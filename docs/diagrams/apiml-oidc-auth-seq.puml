@@ -18,11 +18,11 @@ Agent -> OIDC: Validate credentials
 end
 OIDC --> Client: Return Auth Code / JWTs[access,refresh,identity]
 Client -> GW: Request resources [JWT AT]
-group
+group validate
 GW -> GW: Validate AT
 GW -> OIDC: Validate AT
 end
-alt Success
+alt Validation success
 GW -> GW: Cache AT validity
 GW -> SAF: Map distributed mainframe to identity
 GW -> GW: Create Zowe JWT
