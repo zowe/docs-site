@@ -161,7 +161,6 @@ export default class TypicodeTodosHandler implements ICommandHandler {
 The `if` statement checks if a user provides an `--id` flag. If yes, we call `getTodo`. Otherwise, we call `getTodos`. If the
 Typicode API throws an error, the `@zowe/imperative` infrastructure will automatically surface this.
 
-
 ### Checkpoint two
 
 Issue `npm run build` to verify a clean compilation and confirm that no lint errors are present. You now have a handler, definition, and your command has been defined to the `list` group of the command.
