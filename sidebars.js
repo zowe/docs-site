@@ -362,6 +362,7 @@ module.exports = {
             "user-guide/api-mediation-static-api-refresh",
             "user-guide/api-mediation-change-password-via-catalog",
             "user-guide/onboard-wizard",
+            "user-guide/cli-idfplugin",
           ],
         },
         "user-guide/api-mediation-metrics-service",
