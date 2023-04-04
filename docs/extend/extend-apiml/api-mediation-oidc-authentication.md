@@ -82,6 +82,6 @@ or must be part of group which is allowed to work with the client application.
 ### ESM configuration
 
 SAF/ESM is configured with mapping between the mainframe and distributed user identities. API ML provides Zowe CLI plugin to help administrators to generate JCL for the required mapping configuration. 
-Please see (#TODO:Refer tot the cli plugin documentation) for details how to use the plugin tool.
+Please see the [Identity Federation cli plugin](../../user-guide/cli-idfplugin.md) documentation for details how to use the plugin tool to set up the mapping in the ESM of your z/OS system.
 
 ## Troubleshooting
