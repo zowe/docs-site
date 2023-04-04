@@ -48,10 +48,10 @@ Use the following command to enable Zowe to generate a JCL. A security administr
 The path to the input CSV-formatted file, see below for the details of the format.
 
 - **esm**  
- The identifier of the target ESM, one of ACF2, TSS or RACF.
+The identifier of the target external security manager, one of ACF2, RACF, or TSS.
 
 - **registry**  
- The registry to identify the distributed identity provider, for example LDAP `ldap://12.34.56.78:389`
+The registry to identify the distributed identity provider, for example LDAP `ldap://12.34.56.78:389`
 
 - **system**  
 This is an optional parameter, system identifier for JCL purposes. Ensure that this value matches the system name defined in JES.
