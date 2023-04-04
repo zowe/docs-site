@@ -614,10 +614,10 @@ The following example shows enabler configuration with keyrings.
 ssl:
     keyAlias: localhost
     keyPassword: password
-    keyStore: safkeyring:////my_racf_id/my_key_ring
+    keyStore: safkeyring://my_racf_id/my_key_ring
     keyStorePassword: password
     keyStoreType: JCERACFKS
-    trustStore: safkeyring:////my_racf_id/my_key_ring
+    trustStore: safkeyring://my_racf_id/my_key_ring
     trustStoreType: JCERACFKS
     trustStorePassword: password
 ```

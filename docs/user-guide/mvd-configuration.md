@@ -420,11 +420,11 @@ The following steps can be followed to point a Zowe instance at a particular ZIS
       
 3. [Start the new ZIS](https://docs.zowe.org/stable/user-guide/configure-xmem-server#starting-and-stopping-the-cross-memory-server-on-zos) with whatever PROCLIB name was chosen.
 
-4. [Stop the Zowe instance you wish to point to the ZIS server](https://docs.zowe.org/stable/user-guide/stop-zowe-zos)
+4. [Stop the Zowe instance you wish to point to the ZIS server](../user-guide/start-zowe-zos.md).
 
 5. Locate the zowe configuration file for the Zowe instance, and edit the parameter `components.zss.privilegedServerName` to match the name of the ZIS STC name chosen, such as `ZWESIS_MYSRV`
 
-6. [Restart the Zowe instance](https://docs.zowe.org/stable/user-guide/configure-zowe-server#step-3-launch-the-zwesvstc-started-task)
+6. [Restart the Zowe instance](../user-guide/start-zowe-zos/#starting-and-stopping-zowe-main-server-zweslstc-on-zos-with-zwe-server-command)
 
 7.  Verify that the new ZIS server is being used by checking for the following messages in the `ZWESLSTC` server job log:
 
@@ -536,7 +536,11 @@ If you use RACF security, take the following steps define the ZOWE class to the 
     ```
     SETROPTS CLASSACT(ZOWE)
     ```
-
+5. In TSO, issue the following command
+   ```
+   SETROPTS GENERIC (ZOWE) REFRESH
+   ```
+   **Note** You must run this command before creating generic profiles within ZOWE class. 
 For more information on RACF security administration, see the IBM Knowledge Center at [https://www.ibm.com/support/knowledgecenter/](https://www.ibm.com/support/knowledgecenter/).
 
 ### Creating authorization profiles

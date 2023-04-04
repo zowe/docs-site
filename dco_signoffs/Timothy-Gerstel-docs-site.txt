@@ -1,0 +1,4 @@
+I, Timothy Gerstel, hereby sign-off-by all of my past commits to this repo subject to the Developer Certificate of Origin (DCO), Version 1.1. In the past I have used emails: tim.gerstel@gmail.com, tgerstel@rocketsoftware.com
+
+bae0dbf1cfbf0e380bfbdc216955baab28e1382d Add error codes
+e7bc82ab2c741d934884839948096498b30b870b Add app server lines 376 to 381
