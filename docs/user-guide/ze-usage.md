@@ -16,17 +16,12 @@ Review this section to familiarize yourself with Zowe Explorer and make the best
 
 ### Integrated development environments: 
 
+- [VS Code](https://code.visualstudio.com/) 1.53.2+
 - [Eclipse Che](https://www.eclipse.org/che/)
 - [Red Hat CodeReady Workspaces](https://www.redhat.com/en/technologies/jboss-middleware/codeready-workspaces)
 - [Theia](https://theia-ide.org/) 1.18+
 
    **Note:** Zowe Explorer is compatible with Theia 1.18.0 or higher. However, we recommend using a [Theia community release](https://theia-ide.org/releases/) as Zowe Explorer could experience possible unexpected behaviors with the latest Theia releases.
-
-### Platform versions:
-
-- [NodeJS](https://nodejs.org/en/) (all LTS versions)
-- [VS Code](https://code.visualstudio.com/) 1.53.2+
-- [Yarn](https://yarnpkg.com/) 1.22+
 
 ## Usage Tips
 
