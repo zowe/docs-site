@@ -21,7 +21,7 @@ Use either of the following methods to install plug-ins:
 
 ## Installing plug-ins from an online registry
 
-Install Zowe CLI plug-ins using npm commands on Windows, Mac, and Linux. The procedures in this article assume that you previously installed the core CLI.
+Install Zowe CLI plug-ins on Windows, Mac, and Linux. The procedures in this article assume that you previously installed the core CLI.
 
 **Follow these steps:**
 
