@@ -32,7 +32,7 @@ zowe zosmf check status --host <host> --port <port> --user <username> --pass <pa
 
 ### Default profile
 
-After you create a profile in a configuration (such as a [global team configuration file](../user-guide/initializing-team-configuration)), verify that you can use your *default profile* to communicate with z/OSMF:
+After you create a profile in a configuration (such as a [global team configuration file](../user-guide/https://docs.zowe.org/stable/user-guide/cli-using-initializing-team-configuration/)), verify that you can use your *default profile* to communicate with z/OSMF:
 
 ```
 zowe zosmf check status
@@ -40,7 +40,7 @@ zowe zosmf check status
 
 ### Specific profile
 
-After you create a specific profile in a configuration (such as a [global team configuration file](../user-guide/initializing-team-configuration)), verify that you can use a *specific profile* to communicate with z/OSMF:
+After you create a specific profile in a configuration (such as a [global team configuration file](../user-guide/https://docs.zowe.org/stable/user-guide/cli-using-initializing-team-configuration/)), verify that you can use a *specific profile* to communicate with z/OSMF:
 
 ```
 zowe zosmf check status --zosmf-profile <profile_name>
