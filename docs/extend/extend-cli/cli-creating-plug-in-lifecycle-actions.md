@@ -27,7 +27,7 @@ Follow these steps:
 
     This file is the value for the `configurationModule` property in the plug-in `package.json` file.
 
-    See this [`IImperativeConfig.ts` file](https://github.com/zowe/imperative/blob/master/packages/imperative/src/doc/IImperativeConfig.ts) to view an example of the detailed format use in the plug-in definition file.
+    See this [`IImperativeConfig.ts` file](https://github.com/zowe/imperative/blob/master/packages/imperative/src/doc/IImperativeConfig.ts) to view an example of the detailed format used in the plug-in definition file.
 
 2. In the plug-in definition file, use the `pluginLifeCycle` property to add the path to the javascript file the plug-in uses to implement the class containing lifecycle functions.
 
