@@ -6,9 +6,9 @@ You can use the CLI interactively from a command window on any computer on which
 
 **Tip:** If you want to use the CLI together with a screen reader to provide accessibility, we recommend using the Mac™ Terminal application enabled for Accessibility through [System Preferences > Accessibility](https://support.apple.com/zh-sg/guide/terminal/trml1020/mac). On Windows™, adjust the Properties settings in Command Prompt. For other operating systems, or for alternative terminals, check the specification for the terminal to ensure that it meets accessibility requirements.
 
-## Supported CPU architecture, operating systems and package/resource managers
+## Supported CPU architectures, operating systems and package/resource managers
 
-Zowe CLI supports the following CPU architecture:
+Zowe CLI supports the following CPU architectures:
 - x64
 - Apple Silicon (M1+) with Rosetta
     - The [IBM Db2 Database Plug-in for Zowe CLI](../user-guide/cli-db2plugin) has limited support on Apple Silicon. To use the Db2 plug-in, a complete re-install of Zowe CLI and CLI plug-ins is required. See [M1 processor installation](../user-guide/cli-db2-install-m1) for information.
@@ -32,4 +32,4 @@ Zowe CLI supports the following CPU architecture:
 
 <br/> 
 
->Using Zowe CLI on [z/OS Unix Systems Services](https://www.ibm.com/docs/en/zos/2.4.0?topic=descriptions-zos-unix-system-services) is not supported at this time. If you would like to use USS in the future, show your interest by voting for the enhancement in the [Zowe CLI GitHub repository](https://github.com/zowe/zowe-cli/issues/1680). If enough votes are cast, the enhancement is added to the Zowe CLI dev team backlog.
+>Using Zowe CLI on [z/OS Unix Systems Services](https://www.ibm.com/docs/en/zos/2.4.0?topic=descriptions-zos-unix-system-services) is not supported at this time. If you would like to use it on USS in the future, show your interest by voting for the enhancement in the [Zowe CLI GitHub repository](https://github.com/zowe/zowe-cli/issues/1680). 
