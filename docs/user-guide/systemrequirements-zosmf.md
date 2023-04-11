@@ -132,7 +132,7 @@ The Zowe CLI uses z/OSMF Representational State Transfer (REST) APIs to work wit
 
   [0c0f6f64]: https://www.ibm.com/support/knowledgecenter/SSLTBW_2.3.0/com.ibm.zos.v2r3.izua700/IZUHPINFO_RESTServices.htm "Using the z/OSMF REST services"
 
-  To verify that z/OSMF REST services are configured correctly in your environment, enter the REST endpoint into your browser. For example: https://mvs.ibm.com:443/zosmf/restjobs/jobs
+  To verify that z/OSMF REST services are configured correctly in your environment, enter the REST endpoint into your browser. For example: `https://mvs.ibm.com:443/zosmf/restjobs/jobs`
 
   **Notes:**
 

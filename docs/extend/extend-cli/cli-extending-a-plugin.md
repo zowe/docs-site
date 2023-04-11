@@ -161,7 +161,6 @@ export default class TypicodeTodosHandler implements ICommandHandler {
 The `if` statement checks if a user provides an `--id` flag. If yes, we call `getTodo`. Otherwise, we call `getTodos`. If the
 Typicode API throws an error, the `@zowe/imperative` infrastructure will automatically surface this.
 
-
 ### Checkpoint two
 
 Issue `npm run build` to verify a clean compilation and confirm that no lint errors are present. You now have a handler, definition, and your command has been defined to the `list` group of the command.
@@ -178,7 +177,7 @@ is presented to the end user. You can also see how to use your optional `--id` f
 ## Summary
 
 You extended an existing Zowe CLI plug-in by introducing a Node.js programmatic API, and you created a command definition with a handler.
-For an official plugin, you would also add [JSDoc](http://usejsdoc.org/) to your code and create automated tests.
+For an official plugin, you would also add [JSDoc](https://jsdoc.app/) to your code and create automated tests.
 
 ## Next steps
 
