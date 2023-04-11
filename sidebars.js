@@ -510,6 +510,7 @@ module.exports = {
         "extend/lifecycling-with-zwesvstc",
         "extend/k8s-extend",
         "extend/k8s-conformance",
+        "extend/component-registries"
       ],
     },
     {
