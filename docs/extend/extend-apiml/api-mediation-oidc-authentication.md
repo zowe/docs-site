@@ -37,15 +37,16 @@ The following diagram describes the interactions between the participants of the
 * The mainframe user identity is used to create mainframe user credentials (Zowe or SAF JWT or pass-ticket) expected by the target mainframe service.
 
 ## Prerequisites
-<!--It appears there are multiple areas of prerequisites in this section with both OIDC provier configuration as well as ESM configuration. Maybe we need to create procedures with examples for both of these sections. -->
+<!--It appears there are multiple areas of prerequisites in this section with both OIDC provier configuration as well as ESM configuration. Maybe we need an introduction about the prereq sub-sections. -->
 
+### Application deployer
 As a deployer of a client application that would like to use OIDC authentication with API ML, ensure that the following prerequisites are met:  
 
 - Client application users have distributed identity managed by the OIDC provider.
 - Users who require access to mainframe resources using OIDC authentication have a mainframe identity managed by SAF/ESM.
 - SAF/ESM is configured with mapping between the mainframe and distributed user identities. For details, see the section [ESM configuration](#esm-configuration) in this topic.
   
-### OIDC provider configuration prerequisites <!-- Are these also prerequisites? -->
+### OIDC provider  <!-- Are these also prerequisites? -->
 
 - Client Application configuration in the OIDC provider.
 
@@ -58,10 +59,11 @@ For example Web Applications with a secure server side component can use `code g
 
   To access mainframe resources, users with a distributed authentication must either be directly assigned by the OIDC provider to the client application, or must be part of group which is allowed to work with the client application.     
 
-### ESM configuration prerequisites <!-- Are these also prerequisites? -->
-SAF/ESM must be configured to maintain mapping between mainframe and distributed user identities. 
+### ESM configuration  <!-- Are these also prerequisites? -->
+* SAF/ESM must be configured to maintain mapping between mainframe and distributed user identities. 
 API ML provides Zowe CLI plugin to help administrators to generate JCL for the required mapping configuration. 
-See the [Identity Federation cli plugin]( )  <!--Add link --> documentation for details about how to use the plugin tool to set up the mapping in the ESM of your z/OS system.
+
+  See the [Identity Federation cli plugin]( )  <!--Add link --> documentation for details about how to use the plugin tool to set up the mapping in the ESM of your z/OS system.
 
 ## Configure API ML to use an OIDC Access Token
 Use the following procedure to enable the feature to use an OIDC Access Token as the method of authentication for the API Mediation Layer Gateway.
