@@ -2,7 +2,7 @@
 
 Welcome to the Zowe documentation repository! This repo is the source for [https://docs.zowe.org](https://docs.zowe.org), also known as "Zowe Docs"!
 
-Zowe documentation is completely open-source and we appreciate contributions from the community.
+Zowe documentation is completely open-source and we appreciate contributions from the community...
 
 
 ## Providing feedback
