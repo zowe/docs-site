@@ -24,7 +24,7 @@ To create the connection:
 3. Type in all the necessary information
 4. Wait until the connection is tested
 
-![Configure IntelliJ z/OSMF connection](../images/intellij/connection_create.gif)
+![Configure IntelliJ z/OSMF connection](/stable/images/intellij/connection_create.gif)
 
 ### Creating the connection using Zowe Config v2
 
@@ -39,6 +39,6 @@ To create the z/OSMF connection with Zowe Config v2:
 6. Click appeared *Reload* button in the editor
 7. Wait until the connection is tested
 
-![Configure IntelliJ z/OSMF connection using Zowe Config v2](../images/intellij/connection_zowe_config_v2.gif)
+![Configure IntelliJ z/OSMF connection using Zowe Config v2](/stable/images/intellij/connection_zowe_config_v2.gif)
 
 After the configuration is made, you will be able to use all the features of the plug-in.

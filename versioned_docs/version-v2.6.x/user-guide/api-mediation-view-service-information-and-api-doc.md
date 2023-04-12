@@ -27,22 +27,22 @@ Services that belong to the same product family are displayed on the same tile.
 
    **Example:**
 
-   <img src={require("../images/api-mediation/newswagger.png").default} alt="controller detail" width="500px"/>
+   <img src={require("/v2.6.x/images/api-mediation/newswagger.png").default} alt="controller detail" width="500px"/>
 
 3. Select the version (**v1**, **v2**) to view the documentation of a specific API version.
 
     **Example:**
 
-    <img src={require("../images/api-mediation/discoverableclient-apiv1.png").default} alt="discoverable client api v1" width="500"/>
+    <img src={require("/v2.6.x/images/api-mediation/discoverableclient-apiv1.png").default} alt="discoverable client api v1" width="500"/>
 
-    <img src={require("../images/api-mediation/discoverableclient-apiv2.png").default} alt="discoverable client api v2" width="500"/>
+    <img src={require("/v2.6.x/images/api-mediation/discoverableclient-apiv2.png").default} alt="discoverable client api v2" width="500"/>
 
 4. Expand the endpoint panel to see a detailed summary with responses and parameters of each endpoint,
  the endpoint description, and the full structure of the endpoint.
 
    **Example:**
 
-   <img src={require("../images/api-mediation/expanded.png").default} alt="endpoint detail" width="500px"/>
+   <img src={require("/v2.6.x/images/api-mediation/expanded.png").default} alt="endpoint detail" width="500px"/>
 
    **Notes:**
 

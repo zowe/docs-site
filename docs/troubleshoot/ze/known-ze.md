@@ -59,10 +59,10 @@ When performing an action that requires a mainframe connection (such as searchin
 
 "z/OSMF REST API Error" that includes the message `Failed to establish a socket connection to proxies`, as in the following image:
 
-![Proxy Support set to off](../../images/ze/ZE-socket-connection-error.png)
+![Proxy Support set to off](/stable/images/ze/ZE-socket-connection-error.png)
 
 **Solution:**
 
 In Theia settings, search for `proxy` and change the http.proxySupport setting to `off`, as in the following image:
 
-![Proxy Support set to off](../../images/ze/ZE-proxy-support-off.png)
+![Proxy Support set to off](/stable/images/ze/ZE-proxy-support-off.png)

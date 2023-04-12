@@ -59,7 +59,7 @@ The values for these variables can be **echo**ed.
 
 ## Home directory structure
 
-![Home Directory](../../images/troubleshoot/cli/home_struc.png)
+![Home Directory](/stable/images/troubleshoot/cli/home_struc.png)
 
 ### Location of logs
 

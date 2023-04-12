@@ -38,7 +38,7 @@ In devices with a screen width less than 768px, the margins are **3%** on the le
     5% right = 38px (rounded to nearest whole pixel)
     12 columns + gutters = 768px - 38px - 38px = 692px (rounded to nearest whole pixel)
 
-![grid desktop](../../images/extender/grid_desktop-1024x780.png)
+![grid desktop](/v2.6.x/images/extender/grid_desktop-1024x780.png)
 
 
 **Example: Screen Width 320px**
@@ -47,4 +47,4 @@ In devices with a screen width less than 768px, the margins are **3%** on the le
     3% right = 10px (rounded to nearest whole pixel)
     12 columns + gutters = 320px - 10px - 10px = 300px (rounded to nearest whole pixel)
 
-![grid mobile](../../images/extender/grid_mobile-1024x709.png)
+![grid mobile](/v2.6.x/images/extender/grid_mobile-1024x709.png)

@@ -67,7 +67,7 @@ Configure Zowe Explorer in the settings file of the extension. To access the ext
 2. Edit the settings as needed.
 3. Save the settings.
 
-<img src={require("../images/ze/ZE-Configuration.gif").default} alt="Configure Zowe settings"/>
+<img src={require("/v1.27.x/images/ze/ZE-Configuration.gif").default} alt="Configure Zowe settings"/>
 
 * **Set the Temporary Folder Location:** You can change the default folder location where temporary files are stored. 
 

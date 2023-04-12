@@ -244,7 +244,7 @@ When providing credentials in any form together with client certificate on the s
 * The public part of the provided client certificate is checked against SAF, and SAF subsequently returns a user ID that owns this certificate. ZSS  provides this API for the Mediation Layer.
 * The Gateway performs the login of the mapped user and returns a valid JWT token.
 
-![Zowe client certificate authentication diagram](../../images/api-mediation/zowe-client-cert-auth.png)
+![Zowe client certificate authentication diagram](/v1.25.x/images/api-mediation/zowe-client-cert-auth.png)
 
 **Prerequisites:**
 

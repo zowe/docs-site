@@ -9,7 +9,7 @@ Before filing an issue, check if an error is arising from the Zowe Explorer for 
 - Errors arising from the Zowe Explorer CICS extension have the `Source` as `Zowe Explorer for IBM CICS (Extension)`,
 - Errors arising from the Zowe Explorer extension have the `Source` as `Zowe Explorer (Extension)`.
 
-![Image that shows how to check the error source](../images/ze-cics/expand-error-cics.gif)
+![Image that shows how to check the error source](/v2.3.x/images/ze-cics/expand-error-cics.gif)
 
 ## Filing an issue
 

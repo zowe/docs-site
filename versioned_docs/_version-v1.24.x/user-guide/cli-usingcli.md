@@ -54,7 +54,7 @@ To view top-level help, open a command-line and issue the following command:
 zowe --help
 ```
 
-![Issuing the help command](../images/guides/CLI/GetHelp.gif)
+![Issuing the help command](/v1.24.x/images/guides/CLI/GetHelp.gif)
 
 Alternatively, issue the following command to display a full list of all available commands:
 
@@ -384,7 +384,7 @@ You can use environment variables in an automation server, such as Jenkins, to w
 
 You can either set environment variables using the `SET` command within your scripts, or navigate to **Manage Jenkins \> Configure System \> Global Properties** and define an environment variable in the Jenkins GUI. For example:
 
-![jenkins gui](../images/guides/CLI/envVarsJenkins.png)
+![jenkins gui](/v1.24.x/images/guides/CLI/envVarsJenkins.png)
 
 ## Using the prompt feature
 

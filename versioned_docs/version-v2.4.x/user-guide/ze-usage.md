@@ -76,7 +76,7 @@ If Zowe Explorer is not installed, you can install the current release of the ex
 1. Select the **Extensions** tab on the **Activities Bar** to display the **Search Extensions in Marketplace** field.
 2. In the **Side Bar**, search for `Zowe Explorer`. Click the **Install** button on the Zowe Explorer search result item. This opens a Zowe Explorer tab in the **Editor** area.
 
-   ![Zowe Explorer search result item](../images/ze/ZE-zowe-explorer-result-item.jpg "Zowe Explorer search result item")
+   ![Zowe Explorer search result item](/v2.4.x/images/ze/ZE-zowe-explorer-result-item.jpg "Zowe Explorer search result item")
 <br /><br />
 
 

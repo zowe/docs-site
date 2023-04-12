@@ -32,7 +32,7 @@ The following information is required during the installation process. Software 
 
 The following diagram depicts the high-level structure of a Zowe installation and runtime.  
 
-<img src={require("../images/common/zowe-directories.png").default} alt="Zowe Directories" width="700px"/> 
+<img src={require("/v1.24.x/images/common/zowe-directories.png").default} alt="Zowe Directories" width="700px"/> 
 
 ### RUNTIME_DIR
 

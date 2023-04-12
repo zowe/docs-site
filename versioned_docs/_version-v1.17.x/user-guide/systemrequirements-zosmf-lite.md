@@ -244,11 +244,11 @@ IOEZ00077I HFS-compatibility aggregate izu.sizuusrd has been successfully create
 ```
 Sample output:
 
-![](../images/zosmf/IZUMKFS1.png)
+![](/v1.17.x/images/zosmf/IZUMKFS1.png)
 
-![](../images/zosmf/IZUMKFS2.png)
+![](/v1.17.x/images/zosmf/IZUMKFS2.png)
 
-![](../images/zosmf/IZUMKFS3.png)
+![](/v1.17.x/images/zosmf/IZUMKFS3.png)
 
 #### Common errors
 
@@ -352,7 +352,7 @@ At the end of the z/OSMF configuration process, you can verify the results of yo
 
 To find the URL of the Welcome page, look for message IZUG349I in the z/OSMF server job log.
 
-![](../images/zosmf/IZUG349I.png)
+![](/v1.17.x/images/zosmf/IZUG349I.png)
 
 #### Procedure
 
@@ -382,7 +382,7 @@ To find the URL of the Welcome page, look for message IZUG349I in the z/OSMF ser
 
 If the user ID and password or pass phrase are valid, you are authenticated to z/OSMF. The Welcome page of IBM z/OS Management Facility tab opens in the main area. At the top right of the screen, Welcome *<your_user_ID>* is displayed. In the UI, only the options you are allowed to use are displayed.
 
-<img src={require("../images/zosmf/Welcome.png").default} alt="Welcome" width="400px"/> 
+<img src={require("/v1.17.x/images/zosmf/Welcome.png").default} alt="Welcome" width="400px"/> 
 
 You have successfully configured the z/OSMF nucleus.
 

@@ -51,7 +51,7 @@ There are three known problems that might cause this error.  The [Zowe architect
 2. The Zowe Desktop Application Framework server connection to the zssServer across the default port 7557. If this fails, see [Application Framework unable to communicate with zssServer](#zlux-unable-to-communicate-with-zssserver).  The architecture diagram below has been annotated with a (2) to show this connection.  
 3. The Zowe Desktop Application Framework server cannot connect to API Mediation Layer for authentication. If this fails, see [Application Framework unable to communicate with API Mediation Layer](#zlux-unable-to-communicate-with-api-mediation-layer).
 
-<img src={require("../../images/common/zowe-desktop-unable-to-logon.png").default} alt="Zowe Desktop Unable to logon.png" width="700px"/> 
+<img src={require("/v2.6.x/images/common/zowe-desktop-unable-to-logon.png").default} alt="Zowe Desktop Unable to logon.png" width="700px"/> 
 
 ### ZSS server unable to communicate with ZIS
 

@@ -6,4 +6,4 @@ To override this behavior, set the `Only accept trusted TLS certificates` field 
 
 If you define a profile to accept trusted TLS certificates only when the Zowe Explorer first connects, it detects the mismatch and display a message. You can select **Yes** to override the profile's setting to accept the untrusted certificate authority.  
 
-![Image that shows how to accept untrusted TLS certificate](../images/ze-cics/untrusted-cert.gif)
+![Image that shows how to accept untrusted TLS certificate](/stable/images/ze-cics/untrusted-cert.gif)

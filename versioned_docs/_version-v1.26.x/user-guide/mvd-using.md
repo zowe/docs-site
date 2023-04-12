@@ -24,13 +24,13 @@ Where:
 
 To log out, click the User icon in the lower right corner and click **Sign Out**.
 
-<img src={require("../images/mvd/person.png").default}/>
+<img src={require("/v1.26.x/images/mvd/person.png").default}/>
 
 ### Changing user password
  
 1. Open the Preferences panel by clicking on the Preferences icon in the bottom right of the desktop.
 
-<img src={require("../images/mvd/settings.png").default}/>
+<img src={require("/v1.26.x/images/mvd/settings.png").default}/>
   
 2. Click the Change Password icon. 
 3. Fill out the Old Password and New Password fields.
@@ -52,11 +52,11 @@ To log out, click the User icon in the lower right corner and click **Sign Out**
 
 1. Click the **Preferences icon** to open the Preferences panel.
 
-<img src={require("../images/mvd/settings.png").default}/>
+<img src={require("/v1.26.x/images/mvd/settings.png").default}/>
 
 2. Click the **Personalization icon** to open the menu.
 
-<img src={require("../images/mvd/personalization.png").default}/>
+<img src={require("/v1.26.x/images/mvd/personalization.png").default}/>
 
 3. Drag an image into the wallpaper grid, or press the upload button, to upload a new Desktop wallpaper.
 4. To set a new theme color, select a color from the palette or hue. 
@@ -136,7 +136,7 @@ If you are prompted to log on to the system, complete these steps:
 
 ### Updating the data display
 
-To refresh the data on any tab, click ![the circular arrow](../images/mvd/mvd_workflow2.png) in the upper right corner of the window.
+To refresh the data on any tab, click ![the circular arrow](/v1.26.x/images/mvd/mvd_workflow2.png) in the upper right corner of the window.
 
 ### Configuration
 
@@ -241,7 +241,7 @@ Each task has a indicator of **PERFORM** (a step to be performed) or **CHECK** (
 
 ### Task work area
 
-When you click **CHECK** or **PERFORM**, a work area on the right side of the window opens to display the steps to complete the task. Expand or collapse the work area by clicking  ![alt text](../images/mvd/mvd_workflow3.png).
+When you click **CHECK** or **PERFORM**, a work area on the right side of the window opens to display the steps to complete the task. Expand or collapse the work area by clicking  ![alt text](/v1.26.x/images/mvd/mvd_workflow3.png).
 
 **Tip:** Hovering over the task description in the title bar of the work area window on the right side displays more information about the corresponding workflow and the step description.
 
@@ -261,7 +261,7 @@ When you click **CHECK** or **PERFORM**, a work area on the right side of the wi
 
 ### Managing tasks
 
-To manage a task in the PERFORM status, click ![alt text](../images/mvd/mvd_workflow1.png) to the right of the task status. Choose from the following options:
+To manage a task in the PERFORM status, click ![alt text](/v1.26.x/images/mvd/mvd_workflow1.png) to the right of the task status. Choose from the following options:
 
 **Properties**
 

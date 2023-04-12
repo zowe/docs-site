@@ -80,7 +80,7 @@ Follow these steps:
 3. Edit the settings in the file as needed.
 4. Save the file to keep changes.
 
-    ![Configure Zowe settings](../images/ze/ZE-Configuration2.gif)
+    ![Configure Zowe settings](/v2.6.x/images/ze/ZE-Configuration2.gif)
 
 ### Modifying temporary file location settings
 
@@ -118,7 +118,7 @@ Submitting the wrong job can risk potential problems on your server. This can ha
 
 To help prevent this, enable the option to require confirmation before submitting a job. Once enabled, a dialog window asking for user confirmation displays when **Submit Jobs** is selected.
 
-![Confirm Submit Job](../images/ze/ZE-SubmitJobConfirm.gif)
+![Confirm Submit Job](/v2.6.x/images/ze/ZE-SubmitJobConfirm.gif)
 
 To configure confirmation settings for submitting a job, follow these steps:
 

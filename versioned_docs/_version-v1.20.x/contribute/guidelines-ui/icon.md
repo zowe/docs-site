@@ -4,7 +4,7 @@ Icons are key component for a successful UI design because they are a visual way
 
 [Font Awesome](https://fontawesome.com/) is a robust icon library that allows for an easy addition to any web project. Scalable vector icons that can instantly be customized — size, color, drop shadow, and anything that can be done with the power of CSS.
 
-![icons sample](../../images/extender/icons_sample-1024x753.png)
+![icons sample](/v1.20.x/images/extender/icons_sample-1024x753.png)
 
 
 - **One Font, Hundreds of Icons** – In a single collection, Font Awesome is a pictographic language of web-related actions.

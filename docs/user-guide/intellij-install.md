@@ -11,4 +11,4 @@ To install the plug-in from IntelliJ:
 
 Contact your RACF administrator so that your user is in the IZUUSER RACF group. 
 
-![Intall IntelliJ](../images/intellij/intellij-install.gif)
+![Intall IntelliJ](/stable/images/intellij/intellij-install.gif)

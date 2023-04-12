@@ -21,7 +21,7 @@ To create Files working set:
 4. Add some masks
 5. Click **OK**
 
-![Configure IntelliJ files working set](../images/intellij/create_files_working_set.gif)
+![Configure IntelliJ files working set](/stable/images/intellij/create_files_working_set.gif)
 
 ## JES Working Set
 
@@ -36,4 +36,4 @@ To create JES working set:
 5. Add some JCL filters
 6. Click **OK**
 
-![Configure IntelliJ JES working set](../images/intellij/create_jes_working_set.gif)
+![Configure IntelliJ JES working set](/stable/images/intellij/create_jes_working_set.gif)

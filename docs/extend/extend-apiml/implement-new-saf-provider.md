@@ -104,10 +104,10 @@ Set the following environment parameters in `zowe.yaml`:
 
 These ZSS endpoints are used by the `SafRestAuthenticationService` to generate and validate the SAF token.
 
-<img src={require("../../images/api-mediation/safidt-providers.png").default} alt="SAF IDT providers"/>
+<img src={require("/stable/images/api-mediation/safidt-providers.png").default} alt="SAF IDT providers"/>
 
 The following diagram illustrates how communication using the SAF IDT provider works:
 
-<img src={require("../../images/api-mediation/safidt-diagram.png").default} alt="SAF IDT diagram"/>
+<img src={require("/stable/images/api-mediation/safidt-diagram.png").default} alt="SAF IDT diagram"/>
 
 

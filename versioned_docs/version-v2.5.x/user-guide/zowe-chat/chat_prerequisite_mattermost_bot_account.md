@@ -6,27 +6,27 @@ Create a bot account in Mattermost.
 
 2.  Click Main Menu icon and then click **System Console**.
 
-    ![System console](../../images/zowe-chat/mattermost_system_console.png "System console")
+    ![System console](/v2.5.x/images/zowe-chat/mattermost_system_console.png "System console")
 
 3.  Scroll down to **INTEGRATIONS** section and click **Bot Accounts**.
 
-    ![Integration menu item](../../images/zowe-chat/system_console_integrations.png "Integration menu item")
+    ![Integration menu item](/v2.5.x/images/zowe-chat/system_console_integrations.png "Integration menu item")
 
 4.  Select **true** for **Enable Bot Account Creation**, and click **Save**.
 
-    ![Bot accounts](../../images/zowe-chat/bot_accounts.png "Bot accounts")
+    ![Bot accounts](/v2.5.x/images/zowe-chat/bot_accounts.png "Bot accounts")
 
 5.  Click the Main Menu icon on the System Console, then click **Switch to your team**.
 
-    ![System console main menu](../../images/zowe-chat/system_console_menu.png "System console main menu")
+    ![System console main menu](/v2.5.x/images/zowe-chat/system_console_menu.png "System console main menu")
 
 6.  Click the Main Menu icon from the main screen of Mattermost, and click **Integrations**.
 
-    ![System console - Integrations](../../images/zowe-chat/mattermost_integrations.png "System console")
+    ![System console - Integrations](/v2.5.x/images/zowe-chat/mattermost_integrations.png "System console")
 
     The following dialog opens.
 
-    ![Integrations dialog](../../images/zowe-chat/integrations_dialog.png "Integrations dialog")
+    ![Integrations dialog](/v2.5.x/images/zowe-chat/integrations_dialog.png "Integrations dialog")
 
 7.  Add a new bot account.
 
@@ -36,7 +36,7 @@ Create a bot account in Mattermost.
 
     3.  Click **Create Bot Account**. A successful notification dialog displays. On this dialog you can find a **Token**.
 
-        ![Token](../../images/zowe-chat/token.png)
+        ![Token](/v2.5.x/images/zowe-chat/token.png)
 
 8.  Copy this **Token**.
 

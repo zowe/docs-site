@@ -4,7 +4,7 @@ Zowe&trade; is a collection of components that together form a framework that ma
 
 The following diagram illustrates the high-level Zowe architecture.
 
-![Zowe Architecture Diagram](../images/common/zowe-architecture.png)
+![Zowe Architecture Diagram](/v2.3.x/images/common/zowe-architecture.png)
 
 The diagram shows the default port numbers that are used by Zowe. These are dependent on each instance of Zowe and are held in the Zowe YAML configuration file.
 
@@ -16,7 +16,7 @@ Zowe server components can be installed and run entirely on z/OS, but a subset o
 
 The following diagram illustrates the difference in locations of Zowe components when deploying Zowe into a Sysplex with high availability enabled as opposed to running all components on a single z/OS system.  
 
-![Zowe Architecture Diagram with High Availability Enablement](../images/common/zowe-architecture-lpar.png)
+![Zowe Architecture Diagram with High Availability Enablement](/v2.3.x/images/common/zowe-architecture-lpar.png)
 
 Zowe has high availability feature build-in. To enable this feature, you can define `haInstances` section in your YAML configuration file.
 
@@ -39,7 +39,7 @@ To learn more about Zowe with high availability enablement, see [Configuring Sys
 
 The following diagram illustrates the difference in locations of Zowe components when deploying Zowe into a Kubernetes cluster as opposed to running all components on a single z/OS system.
 
-![Zowe Architecture Diagram in Kubernetes](../images/common/zowe-architecture-k8s.png)
+![Zowe Architecture Diagram in Kubernetes](/v2.3.x/images/common/zowe-architecture-k8s.png)
 
 When deploying other server components into container orchestration software like Kubernetes, Zowe follows standard Kubernetes practices. The cluster can be monitored and managed with common Kubernetes administration methods.
 
@@ -56,7 +56,7 @@ When deploying other server components into container orchestration software lik
 
 The App Server is a node.js server that is responsible for the Zowe Application Framework. This server provides the Zowe desktop, which is accessible through a web browser via port 7556. The Zowe desktop includes a number of applications that run inside the Application Framework such as a 3270 emulator and a File Editor.
 
-![Zowe Desktop Diagram](../images/mvd/zowe-desktop.png)
+![Zowe Desktop Diagram](/v2.3.x/images/mvd/zowe-desktop.png)
 
 The App Server server logs write to `<zowe.logDirectory>/appServer-yyyy-mm-dd-hh-mm.log`.  The Application Framework provides REST APIs for its services that are included on the API catalog tile `Zowe Application Framework` that can be viewed at `https://<ZOWE_HOST_IP>:7554/apicatalog/ui/v1/#/tile/ZLUX/zlux`.
 
@@ -68,19 +68,19 @@ The Zowe desktop delegates a number of its services to the ZSS server which it a
 
 The API Gateway is a proxy server that routes requests from clients on its northbound edge, such as web browsers or the Zowe command line interface, to servers on its southbound edge that are able to provide data to serve the request. The API Gateway is also responsible for generating the authentication token used to provide single sign-on (SSO) functionality. The API Gateway homepage is `https://<ZOWE_HOST_IP>:7554`. Following authentication, this URL enables users to navigate to the API Catalog.
 
-![Zowe API Mediation Layer](../images/api-mediation/api-mediationlayer.png)
+![Zowe API Mediation Layer](/v2.3.x/images/api-mediation/api-mediationlayer.png)
 
 ## API Catalog
 
 The API Catalog provides a list of the API services that have registered themselves as catalog tiles. These tiles make it possible to view the available APIs from Zowe's southbound servers, as well as test REST API calls.  
 
-![Zowe API Catalog](../images/api-mediation/api-catalog.png)
+![Zowe API Catalog](/v2.3.x/images/api-mediation/api-catalog.png)
 
 ## API Discovery
 
 The API Discovery server acts as the registration service broker between the API Gateway and its southbound servers. This server can be accessed through the URL `https://<ZOWE_HOST_IP>:7552` making it possible to view a list of registered API services on the API discovery homepage.
 
-![Zowe API Discovery](../images/api-mediation/api-discovery.png)
+![Zowe API Discovery](/v2.3.x/images/api-mediation/api-discovery.png)
 
 ## Caching service
 
@@ -91,7 +91,7 @@ For more information about the Caching service, see the [Caching service documen
 
 Zowe provides a number of rich GUI web applications for working with z/OS. Such applications include the Editor for files and datasets, the JES Explorer for jobs, and the IP Explorer for the TCPIP stack. You can access them through the Zowe desktop.
 
-![Zowe Desktop Explorers](../images/mvd/desktop-explorers.png)
+![Zowe Desktop Explorers](/v2.3.x/images/mvd/desktop-explorers.png)
 
 ### File API and JES API
 

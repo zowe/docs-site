@@ -36,7 +36,7 @@
  administrator (service-related), and some of them can be altered by user (catalog tiles - in
  future).
 
- ![API Class Diagram](../../images/api-mediation/API-Class-Diagram.png)
+ ![API Class Diagram](/v2.4.x/images/api-mediation/API-Class-Diagram.png)
 
  _(this a [UML class diagram](https://en.wikipedia.org/wiki/Class_diagram))_
 
@@ -125,4 +125,4 @@
  - Patch version - not specified in the URI, no difference in the API, used only when the API
  documentation is patched or a bug was fixed, there is no change in the API
 
- ![API Versioning](../../images/api-mediation/API-Versioning.png)
+ ![API Versioning](/v2.4.x/images/api-mediation/API-Versioning.png)

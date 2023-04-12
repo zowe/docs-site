@@ -163,7 +163,7 @@ Restart API Mediation Layer.
 
 SEC0002 error typically appears when users fail to log in to API Catalog. The following image shows the API Catalog login page with the SEC0002 error.
 
-<img src={require("../images/common/Error.png").default} alt="SEC0002 Error" title="SEC0002 Error" width="450" height="350"/>
+<img src={require("/v1.16.x/images/common/Error.png").default} alt="SEC0002 Error" title="SEC0002 Error" width="450" height="350"/>
 
 The error is caused by failed z/OSMF authentication. To determine the reason authentication failed, open the ZWESVSTC joblog and look for a message that contains `ZosmfAuthenticationProvider`. The following is an example of the message that contains `ZosmfAuthenticationProvider`:
 

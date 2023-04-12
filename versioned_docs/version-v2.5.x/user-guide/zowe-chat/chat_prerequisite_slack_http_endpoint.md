@@ -82,7 +82,7 @@ You can find the values for `protocol`, `hostName`, `port`, and `basePath` in th
    
       You will be prompted with a notification that the URL is not verified. You can ignore this notification, and configure the request URL after your Zowe Chat server is configured and started.
 
-      ![Notification](../../images/zowe-chat/slack_notification.png)
+      ![Notification](/v2.5.x/images/zowe-chat/slack_notification.png)
 
 4. Configure the request URL for the interactivity for your created Slack App. You can do this after your Zowe Chat is configured and started.
    

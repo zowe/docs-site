@@ -19,7 +19,7 @@ Review the installation diagram and the introduction in this topic to see the ge
 **NOTE**: You can click each step on the diagram for detailed instructions.
 
 <figure>
-  <image usemap="#home_map1" border="0" id="install-flow" src={require("../images/common/zowe-docker-install-diagram.png").default} width="850" alt="Click each step to get more details on the flow." />
+  <image usemap="#home_map1" border="0" id="install-flow" src={require("/v1.27.x/images/common/zowe-docker-install-diagram.png").default} width="850" alt="Click each step to get more details on the flow." />
   <figcaption></figcaption>
 </figure>
 <map name="home_map1" id="home_map1">

@@ -15,4 +15,4 @@ The following topics will guide you in setting up and using Zowe Chat.
 
 Zowe Chat works by connecting to your chat tool of a choice as a Bot account, and is configured against a single sysplex environment through a z/OSMF installation. Zowe Chat requires network connectivity to each of the configuration endpoints. For more details and information on installation and configuration, follow the topics above. 
 
-<img src={require("../../images/zowe-chat/chat-HLA.png").default} alt="zowe chat hla system diagram v1" width="200"/>
+<img src={require("/v2.5.x/images/zowe-chat/chat-HLA.png").default} alt="zowe chat hla system diagram v1" width="200"/>

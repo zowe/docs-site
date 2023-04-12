@@ -16,7 +16,7 @@ The list of resources is pre-filtered to exclude many of the IBM supplied ones t
 
 - To reset the filter to its initial criteria, use the clear filter icon against the resource type.  If you want to see all resources in a region (including IBM supplied ones), use __*__ as a filter.
 
-![Zowe CICS Explorer Filter](../images/ze-cics/region-filter.gif)
+![Zowe CICS Explorer Filter](/v2.3.x/images/ze-cics/region-filter.gif)
 
 **Tip:** To apply multiple filters, separate entries with a comma. You can append any filter with an __*__, which indicates wildcard searching.
 
@@ -28,7 +28,7 @@ Similar to filtering resources in a region, you can apply a filter on a all regi
 
 - To reset the filter to its initial criteria, use the clear filter icon against the **Regions** tree. This opens a drop-down menu that gives the option to clear the filter for all the **Regions**, **Programs**, **Local Transactions** or **Local Files** in the plex, and the option **All** to clear all filters in the plex.
 
-   ![Zowe CICS Explorer Plex Filter](../images/ze-cics/plex-filter.gif)
+   ![Zowe CICS Explorer Plex Filter](/v2.3.x/images/ze-cics/plex-filter.gif)
 
 **Tip:** To apply multiple filters, separate entries with a comma. You can append any filter with an __*__, which indicates wildcard searching.
 
@@ -38,7 +38,7 @@ Plexes includes **All Programs**, **All Local Transactions** and **All Local Fil
 
 - To view resources under these trees, use the search icon inline with the tree and apply a filter.
 
-   ![Zowe CICS Explorer All Resource Filter](../images/ze-cics/all-resources.gif)
+   ![Zowe CICS Explorer All Resource Filter](/v2.3.x/images/ze-cics/all-resources.gif)
 
 - If the applied filter results in over 500 records, you can change the filter to narrow  the search, or click the **view X more ...** item to retrieve 'X' more resources.
 
@@ -48,7 +48,7 @@ Right-click the program to open a pop-up menu that lists the available actions t
 
 For every resource, including a CICS region, the **Show Attributes** option opens a viewer that lists all attributes and their values. The attributes page has a filter box at the top that lets you search for attributes matching the criteria.  
 
-![Zowe CICS Explorer Show Attributes](../images/ze-cics/show-attributes.gif)
+![Zowe CICS Explorer Show Attributes](/v2.3.x/images/ze-cics/show-attributes.gif)
 
 ## Enabling and disabling
 
@@ -58,7 +58,7 @@ For every resource, including a CICS region, the **Show Attributes** option open
 
 When a resource is already disabled, you can re-enable it by clicking **Enable [CICS resource]** in the pop-up menu.
 
-![Zowe CICS Explorer Disable and Enable](../images/ze-cics/disable-enable.gif)
+![Zowe CICS Explorer Disable and Enable](/v2.3.x/images/ze-cics/disable-enable.gif)
 
 ## New copy and phase in
 
@@ -66,7 +66,7 @@ Use the new copy and the phase in actions against a CICS program to get the CICS
 
 The `New copy count` for a program which is greater than zero is shown next to the program item in the CICS resource tree.
 
-![Zowe CICS Explorer NewCopy Program](../images/ze-cics/new-copy.gif)
+![Zowe CICS Explorer NewCopy Program](/v2.3.x/images/ze-cics/new-copy.gif)
 
 ## Opening and closing local files
 
@@ -82,4 +82,4 @@ The `New copy count` for a program which is greater than zero is shown next to t
 
    After you select an option, the local file name is appended with a `(Closed)` label upon success.
 
-   ![Zowe CICS Explorer Close a Local File](../images/ze-cics/open-close.gif)
+   ![Zowe CICS Explorer Close a Local File](/v2.3.x/images/ze-cics/open-close.gif)

@@ -8,11 +8,11 @@ When you run into some issues and are looking for troubleshooting tips, the foll
 
 1. Search the error message or error code in your error log by using the Search bar in the [Zowe Docs site](https://docs.zowe.org/). If there is an existing solution, follow the instructions to troubleshoot.
 
-![A screenshot to show how to search in github repo](../images/troubleshoot/search-bar-2.png)
+![A screenshot to show how to search in github repo](/v2.6.x/images/troubleshoot/search-bar-2.png)
 
 2. If no solution is available or the existing solutions cannot apply to your problem, you could search the keywords, error messages, or error code in the [Zowe GitHub repository](https://github.com/zowe). If you find a closed issue or pull request, try troubleshooting by using the information shared in the item's Conversation section. If the issue is still open, post your question or comment to prompt a discussion on your problem.
 
-![A gif to show how to search in github repo](../images/troubleshoot/how-to-troubleshooting.gif)
+![A gif to show how to search in github repo](/v2.6.x/images/troubleshoot/how-to-troubleshooting.gif)
 
 3. If your problem is not solved, try the following options:
 

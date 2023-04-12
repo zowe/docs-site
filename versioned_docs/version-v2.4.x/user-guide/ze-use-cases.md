@@ -14,7 +14,7 @@ The following use cases demonstrate the various functionalities available in Zow
 
    **Tip:** To use multiple filters, separate individual entries with a comma. You can append or postpend any filter with an \* to indicate a wildcard search. You cannot enter an \* as the entire pattern.
 
-   ![View Data Set](../images/ze/ZE-multiple-search.gif)
+   ![View Data Set](/v2.4.x/images/ze/ZE-multiple-search.gif)
 
 ### Viewing data sets with member filters
 
@@ -22,7 +22,7 @@ The following use cases demonstrate the various functionalities available in Zow
 2. Click the **Search** icon.
 3. In the **picker** field, enter or select a search pattern in the `HLQ.ZZZ.SSS(MEMBERNAME)` format to filter out and display the specified member in the **Side Bar**.
 
-   ![View Data Set With Member Pattern](../images/ze/ZE-member-filter-search.gif)
+   ![View Data Set With Member Pattern](/v2.4.x/images/ze/ZE-member-filter-search.gif)
 
 ### Refreshing the list of data sets
 
@@ -35,7 +35,7 @@ The following use cases demonstrate the various functionalities available in Zow
 2. Right-click the data set and select the **Rename Data Set** option.
 3. Enter the new name of the data set in the **picker** field.
 
-   ![Rename Data Set](../images/ze/ZE-rename.gif)
+   ![Rename Data Set](/v2.4.x/images/ze/ZE-rename.gif)
 
 ### Copying data set members
 
@@ -44,7 +44,7 @@ The following use cases demonstrate the various functionalities available in Zow
 3. Right-click the data set where the member is to be contained and select the **Paste Member** option.
 4. In the **picker** field, enter the name of the copied member.
 
-   ![Copy Data Set Member](../images/ze/ZE-copy-member.gif)
+   ![Copy Data Set Member](/v2.4.x/images/ze/ZE-copy-member.gif)
 
 ### Editing and uploading a data set member
 
@@ -56,7 +56,7 @@ The following use cases demonstrate the various functionalities available in Zow
 
    **Note:** If someone else has made changes to the data set member while you were editing, you can merge your changes before uploading to the mainframe. See [Preventing merge conflicts](#preventing-merge-conflicts) for more information.
 
-   ![Edit and upload a data set member](../images/ze/ZE-edit-upload.gif)
+   ![Edit and upload a data set member](/v2.4.x/images/ze/ZE-edit-upload.gif)
 
 ### Preventing merge conflicts
 
@@ -67,7 +67,7 @@ The following use cases demonstrate the various functionalities available in Zow
    If the original content in your local version no longer matches the same file in the mainframe, a warning message displays advising the user to compare both versions.
 4. If necessary, use the editor tool bar to resolve merge conflicts.
 
-   ![Prevent merge conflicts](../images/ze/ZE-save.gif)
+   ![Prevent merge conflicts](/v2.4.x/images/ze/ZE-save.gif)
 
 ### Creating data sets and specifying parameters
 
@@ -117,7 +117,7 @@ The following use cases demonstrate the various functionalities available in Zow
 7. (Optional) Edit the parameters of your data set.
 8. Select the **+ Allocate Data Set** option to create the data set and list it in the **Side Bar**.
 
-   ![Set Parameters](../images/ze/ZE-set-params.gif)
+   ![Set Parameters](/v2.4.x/images/ze/ZE-set-params.gif)
 
 ### Creating data sets and data set members
 
@@ -141,7 +141,7 @@ The following use cases demonstrate the various functionalities available in Zow
 
    **Note:** You can delete a data set before you delete its members.
 
-   ![Delete](../images/ze/ZE-delete-ds.gif)
+   ![Delete](/v2.4.x/images/ze/ZE-delete-ds.gif)
 
 ### Viewing and accessing multiple profiles simultaneously
 
@@ -149,7 +149,7 @@ The following use cases demonstrate the various functionalities available in Zow
 2. Select the profiles from the **picker** drop-down to add them to the **Side Bar**.
 3. Click the **Search** icon for each profile to search and select associated data sets.
 
-   ![Add Profile](../images/ze/ZE-mult-profiles.gif)
+   ![Add Profile](/v2.4.x/images/ze/ZE-mult-profiles.gif)
 
 ### Submiting a JCL
 
@@ -159,7 +159,7 @@ The following use cases demonstrate the various functionalities available in Zow
 
    **Note:** Click on the hyperlink on the notification pop-up message to view the job.
 
-   ![Submit a JCL](../images/ze/ZE-submit-jcl.gif)
+   ![Submit a JCL](/v2.4.x/images/ze/ZE-submit-jcl.gif)
 
 ### Allocate like
 
@@ -167,7 +167,7 @@ The following use cases demonstrate the various functionalities available in Zow
 2. Right-click a data set and select the **Allocate Like (New File with Same Attributes)** option.
 3. Enter the new data set name in the **picker** field and press `Enter`.
 
-   ![Allocate Like](../images/ze/ZE-allocate.gif)
+   ![Allocate Like](/v2.4.x/images/ze/ZE-allocate.gif)
 
 ## Working with USS files
 
@@ -181,14 +181,14 @@ The following use cases demonstrate the various functionalities available in Zow
 
    **Note:** You will not be able to expand directories or files to which you are not authorized.
 
-    ![Enter Path](../images/ze/ZE-path.gif)
+    ![Enter Path](/v2.4.x/images/ze/ZE-path.gif)
 
 ### Refreshing the list of files
 
 1. Hover over **UNIX SYSTEM SERVICES (USS)** in the **Side Bar**.
 2. Click the **Refresh All** button.
 
-   ![Refresh All](../images/ze/ZE-refreshUSS.gif)
+   ![Refresh All](/v2.4.x/images/ze/ZE-refreshUSS.gif)
 
 ### Renaming USS files
 
@@ -210,7 +210,7 @@ The following use cases demonstrate the various functionalities available in Zow
 3. Edit the document.
 4. Press `Ctrl`+`S` or `Command`+`S` to save the changes and upload the USS file to the mainframe.
 
-   ![Edit](../images/ze/ZE-editUSS.gif)
+   ![Edit](/v2.4.x/images/ze/ZE-editUSS.gif)
 
 ### Creating and deleting USS files and directories
 
@@ -243,14 +243,14 @@ The following use cases demonstrate the various functionalities available in Zow
 2. Right-click the directory you want to remove.
 3. Select the **Delete** button and click **Delete** again to confirm and delete the directory and all its child files and directories.
 
-   ![Create and Delete](../images/ze/ZE-CreateDelete.gif)
+   ![Create and Delete](/v2.4.x/images/ze/ZE-CreateDelete.gif)
 
 ### Viewing and accessing multiple USS profiles simultaneously
 
 1. Expand **UNIX SYSTEM SERVICES (USS)** in the **Side Bar**, and click the **+** icon.
 2. Select or enter a profile in the **picker** drop-down menu to add it to the **Side Bar**.
 
-   ![View Profiles](../images/ze/ZE-profile2.gif)
+   ![View Profiles](/v2.4.x/images/ze/ZE-profile2.gif)
 
 ## Working with jobs
 
@@ -260,7 +260,7 @@ The following use cases demonstrate the various functionalities available in Zow
 2. Open a directory with JCL files.
 3. Right-click on the JCL file you want to view, and select the **Get JCL** option.
 
-   ![View JOB](../images/ze/ZE-jobs-get-jcl.gif)
+   ![View JOB](/v2.4.x/images/ze/ZE-jobs-get-jcl.gif)
 
 ### Downloading spool content
 
@@ -269,7 +269,7 @@ The following use cases demonstrate the various functionalities available in Zow
 3. Click the **Download** icon next to a folder with the spool content.
 4. Save the file on your computer.
 
-   ![Download Spool](../images/ze/ZE-jobs-download-spool.gif)
+   ![Download Spool](/v2.4.x/images/ze/ZE-jobs-download-spool.gif)
 
 ### Issuing MVS commands
 
@@ -281,7 +281,7 @@ The following use cases demonstrate the various functionalities available in Zow
 3. In the **picker** field, enter a new command or select a saved command.
 4. Press `Enter` to execute the command.
 
-   ![Issue a MVS command](../images/ze/ZE-Jobs-Issue-TSO-Command.gif)
+   ![Issue a MVS command](/v2.4.x/images/ze/ZE-Jobs-Issue-TSO-Command.gif)
 
 ### Issuing TSO commands
 
@@ -295,4 +295,4 @@ The following use cases demonstrate the various functionalities available in Zow
 
    The output displays in the **Output** panel.
 
-   ![Issue a TSO command](../images/ze/ZE-TSO-Command.gif)
+   ![Issue a TSO command](/v2.4.x/images/ze/ZE-TSO-Command.gif)

@@ -53,7 +53,7 @@ You can use the following functionalities when interacting with data sets:
   The data sets that match your pattern(s) display in the explorer tree.
 
 **Tip:** To provide multiple filters, separate entries with a comma. You can append or postpend any filter with an \*, which indicates wildcard searching. You cannot enter an \* as the entire pattern.
-<img src={require("../images/ze/ZE-multiple-search.gif").default} alt="View Data Set"/>
+<img src={require("/v1.16.x/images/ze/ZE-multiple-search.gif").default} alt="View Data Set"/>
 
 #### Refresh the list of data sets
 
@@ -68,7 +68,7 @@ You can use the following functionalities when interacting with data sets:
 4. Right-click the data set and select the **Rename Data Set** option.
 5. Change the name of the data set.
 
-<img src={require("../images/ze/ZE-rename.gif").default} alt="Rename Data Set"/>
+<img src={require("/v1.16.x/images/ze/ZE-rename.gif").default} alt="Rename Data Set"/>
 
 #### Copy data sets
 
@@ -79,7 +79,7 @@ You can use the following functionalities when interacting with data sets:
 5. Right-click the data set where the member belongs and select the **Paste Data Set** option.
 6. Enter the name of the copied member.
 
-<img src={require("../images/ze/ZE-copy.gif").default} alt="Copy Data Set"/>
+<img src={require("/v1.16.x/images/ze/ZE-copy.gif").default} alt="Copy Data Set"/>
 
 #### Download, edit, and upload existing PDS members
 
@@ -98,7 +98,7 @@ Your PDS member (or PS) is uploaded.
 
 **Note:** If someone else has made changes to the PDS member (or PS) while you were editing it, you can merge your conflicts before uploading to the mainframe.
 
-<img src={require("../images/ze/ZE-download-edit.gif").default} alt="Edit"/>
+<img src={require("/v1.16.x/images/ze/ZE-download-edit.gif").default} alt="Edit"/>
 
 #### Use the save option to prevent merge conflicts
 
@@ -109,7 +109,7 @@ Your PDS member (or PS) is uploaded.
 5. Press Ctrl+S or Command+S (OSx) to save you changes.
 6. (Optional) Resolve merge conflicts if necessary.
 
-<img src={require("../images/ze/ZE-save.gif").default} alt="Save"/>
+<img src={require("/v1.16.x/images/ze/ZE-save.gif").default} alt="Save"/>
 
 #### Create a new PDS and a PDS member
 
@@ -123,7 +123,7 @@ Your PDS member (or PS) is uploaded.
 7. Enter a name for the member.
    The member is created.
 
-<img src={require("../images/ze/ZE-cre-pds-member.gif").default} alt="Create"/>
+<img src={require("/v1.16.x/images/ze/ZE-cre-pds-member.gif").default} alt="Create"/>
 
 #### Delete a PDS member and PDS
 
@@ -138,7 +138,7 @@ Your PDS member (or PS) is uploaded.
 
     **Note:** You can delete a PDS before you delete its members.
 
-<img src={require("../images/ze/ZE-del-pds-member.gif").default} alt="Delete"/>
+<img src={require("/v1.16.x/images/ze/ZE-del-pds-member.gif").default} alt="Delete"/>
 
 #### View and access multiple profiles simultaneously
 
@@ -147,7 +147,7 @@ Your PDS member (or PS) is uploaded.
 3. Click the **Add Profile** button on the right of the **DATA SET** explorer bar.
 4. Select the profile that you want to add to the view as illustrated by the following screen.
 
-<img src={require("../images/ze/ZE-mult-profiles.gif").default} alt="Add Profile"/>
+<img src={require("/v1.16.x/images/ze/ZE-mult-profiles.gif").default} alt="Add Profile"/>
 
 #### Allocate Like
 
@@ -156,7 +156,7 @@ Your PDS member (or PS) is uploaded.
 3. Right-click the data set and select the **Allocate Like (New File with Same Attributes)** option.
 4. Enter the new data set name.
 
-<img src={require("../images/ze/ZE-allocate-like.gif").default} alt="Allocate Like"/>
+<img src={require("/v1.16.x/images/ze/ZE-allocate-like.gif").default} alt="Allocate Like"/>
 
 ### Work with USS Files
 
@@ -179,14 +179,14 @@ You can use the following functionalities when interacting with USS files:
 
   **Note:** You will not be able to expand directories or files that you are not authorised for.
 
-   <img src={require("../images/ze/ZE-path.gif").default} alt="Enter Path"/>
+   <img src={require("/v1.16.x/images/ze/ZE-path.gif").default} alt="Enter Path"/>
 
 #### Refresh the list of files
 
 1. Navigate to the explorer tree.
 2. Click **Refresh All** button on the right of the **Unix System Services (USS)** explorer bar as illustrated by the following screen:
 
-<img src={require("../images/ze/ZE-refreshUSS.gif").default} alt="Refresh All"/>
+<img src={require("/v1.16.x/images/ze/ZE-refreshUSS.gif").default} alt="Refresh All"/>
 
 #### Rename USS files
 
@@ -211,7 +211,7 @@ You can use the following functionalities when interacting with USS files:
 
 Your file is uploaded.  
 
-<img src={require("../images/ze/ZE-editUSS.gif").default} alt="Edit"/>
+<img src={require("/v1.16.x/images/ze/ZE-editUSS.gif").default} alt="Edit"/>
 
 #### Creating and deleting files and directories
 
@@ -247,7 +247,7 @@ Your file is uploaded.
 4. Select the **Delete** button and click **Yes** to confirm.
    The directory and all child files and directories are deleted.
 
-<img src={require("../images/ze/ZE-CreateDelete.gif").default} alt="Create and Delete"/>
+<img src={require("/v1.16.x/images/ze/ZE-CreateDelete.gif").default} alt="Create and Delete"/>
 
 #### View and access multiple USS profiles simultaneously
 
@@ -256,7 +256,7 @@ Your file is uploaded.
 3. Click the **Add Session** button on the right of the **Unix System Services (USS)** explorer bar.
 4. Select the profile that you want to add to the view as illustrated by the following screen.
 
-<img src={require("../images/ze/ZE-profile2.gif").default} alt="View Profiles"/>
+<img src={require("/v1.16.x/images/ze/ZE-profile2.gif").default} alt="View Profiles"/>
 
 ### Work with jobs
 
@@ -272,7 +272,7 @@ You can use the following functionalities when interacting with jobs:
 3. Select a directory with JCL files.
 4. Right-click on the JCL you want to view, and click **Get JCL**.
 
-<img src={require("../images/ze/ZE-jobs-get-jcl.gif").default} alt="View JOB"/>
+<img src={require("/v1.16.x/images/ze/ZE-jobs-get-jcl.gif").default} alt="View JOB"/>
 
 #### Download spool content
 
@@ -282,7 +282,7 @@ You can use the following functionalities when interacting with jobs:
 4. Click the **Download** icon next to a folder with the spool content.
 5. Save the file on your computer.
 
-<img src={require("../images/ze/ZE-jobs-download-spool.gif").default} alt="Download Spool"/>
+<img src={require("/v1.16.x/images/ze/ZE-jobs-download-spool.gif").default} alt="Download Spool"/>
 
 ### MVS/TSO Commands
 
@@ -295,4 +295,4 @@ Zowe Explorer also enables you to issue MVS commands. You can issue such command
 3. Select your profile.
 4. Issue an MVS command.
 
-<img src={require("../images/ze/ZE-Jobs-Issue-TSO-Command.gif").default} alt="Issue a MVS command"/>
+<img src={require("/v1.16.x/images/ze/ZE-Jobs-Issue-TSO-Command.gif").default} alt="Issue a MVS command"/>

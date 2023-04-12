@@ -7,7 +7,7 @@ This tutorial demonstrates how to create a brand new Zowe&trade; CLI plug-in tha
 At the end of this tutorial, you will have created a data set diff utility plug-in for Zowe CLI, from which you can pipe
 your plugin's output to a third-party utility for a side-by-side diff of data set member contents.
 
-![Side by Side Diff](../../images/guides/CLI/htmlDiff.png)
+![Side by Side Diff](/v1.27.x/images/guides/CLI/htmlDiff.png)
 
 Completed source for this tutorial can be found on the `develop-a-plugin` branch of the zowe-cli-sample-plugin repository.
 
@@ -200,11 +200,11 @@ Install your plug-in into Zowe CLI via `zowe plugins install`.
 
 Issue the following command. Replace the data set names with valid mainframe data set names on your system:
 
-![Pipe Output](../../images/guides/CLI/pipeOutput.png)
+![Pipe Output](/v1.27.x/images/guides/CLI/pipeOutput.png)
 
 The raw diff output is displayed as a command response:
 
-![Raw Diff Output](../../images/guides/CLI/diffOutput.png)
+![Raw Diff Output](/v1.27.x/images/guides/CLI/diffOutput.png)
 
 ## Bringing together new tools!
 The advantage of Zowe CLI and of the CLI approach in mainframe development is that it allows for combining different developer tools for new and interesting uses.

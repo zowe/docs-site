@@ -160,7 +160,7 @@ Issue the command: `zowe zowe-cli-sample list typicode-todos`
 Refer to `zowe zowe-cli-sample list typicode-todos --help` for more information about your command and to see how text in the command definition
 is presented to the end user. You can also see how to use your optional `--id` flag:
 
-![output](../../images/guides/CLI/completedSample.png)
+![output](/v1.26.x/images/guides/CLI/completedSample.png)
 
 ## Summary
 You extended an existing Zowe CLI plug-in by introducing a Node.js programmatic API, and you created a command definition with a handler.

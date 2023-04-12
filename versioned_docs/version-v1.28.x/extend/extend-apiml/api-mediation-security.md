@@ -250,7 +250,7 @@ Authentication is performed in the following ways:
 * The public part of the provided client certificate is checked against SAF, and SAF subsequently returns a user ID that owns this certificate. ZSS  provides this API for the Mediation Layer.
 *  Information about the user is extracted from the received certificate and then passed in specific headers to the southbound service. The Gateway authenticates itself to the service via the certificate to guarantee validity of the information.
 
-![Zowe client certificate authentication diagram](../../images/api-mediation/zowe-client-cert-auth.png)
+![Zowe client certificate authentication diagram](/v1.28.x/images/api-mediation/zowe-client-cert-auth.png)
 
 **Prerequisites:**
 

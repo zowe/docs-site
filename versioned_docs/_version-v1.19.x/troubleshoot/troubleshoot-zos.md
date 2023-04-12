@@ -36,11 +36,11 @@ To check whether the API mediation layer is fully initialized, you can look for 
 
 As well as looking for `ZWEAM00I` in the JES log, you can also log in to the gateway homepage and check the service status indicator.  If there is a red or yellow tick beside one of its three services, the components are still starting.  
 
-<img src={require("../images/api-mediation/apiml-startup.png").default} alt="Zowe API Mediation Layer Startup" width="600px"/> 
+<img src={require("/v1.19.x/images/api-mediation/apiml-startup.png").default} alt="Zowe API Mediation Layer Startup" width="600px"/> 
 
 When all services are fully initialized, there will be three green ticks.
 
-<img src={require("../images/api-mediation/apiml-started.png").default} alt="Zowe API Mediation Layer Startup" width="300px"/> 
+<img src={require("/v1.19.x/images/api-mediation/apiml-started.png").default} alt="Zowe API Mediation Layer Startup" width="300px"/> 
 
 ### Check the startup of Zowe Desktop 
 

@@ -121,7 +121,7 @@ CONFIG=FILE(/home/me/zowe-customizations.yaml)\
 
 When you use multiple files, Zowe constructs the unified configuration by having the files listed on the left override the values of files to their right in the list. This means the left-most file's values take priority, and the right-most file should be treated as a set of defaults. Here is an example of Splitting configuration into multiple files:
 
-![multi yaml example](../images/configure/multiyaml.png)
+![multi yaml example](/v2.3.x/images/configure/multiyaml.png)
 
 ## Configuration templates
 
@@ -137,7 +137,7 @@ Templates are resolved after merging files, but before schema validation occurs,
 To make a template, you use the syntax `${{ assignment }}` in which there must be a space after `${{` and before `}}`. The _assignment_ can be a ECMAScript 2020 statement, such as a JSON path or a conditional.
 Here are some examples of templates that you can use to simplify your configuration:
 
-![templating example](../images/configure/templating.png)
+![templating example](/v2.3.x/images/configure/templating.png)
 
 ## Configuration Manager unix executable
 

@@ -33,7 +33,7 @@ Use the USS, IDZ, or IBM Explorer for z/OS to confirm that your files have trans
 1.  Check the Browser to see if the REST APIs have been added.
     - _EX_: `<base>:<yourport>/ibm/api/explorer/#/`
 
-<img src={require("../../images/common/SampleMicroservesLook.png").default} alt="view" align="center"/>
+<img src={require("/v2.3.x/images/common/SampleMicroservesLook.png").default} alt="view" align="center"/>
 
 :::tip
 Make sure to set file transfer mode to binary before the transfer.

@@ -84,7 +84,7 @@ The following DVIPA configuration ensures the availability of z/OSMF for Hot-Sta
    - x.x.x.B is the home address for SYSB.
    - x.x.x.V is Dynamic VIP Address.
 
-   ![](../images/zosmf/zOSMF-HA.png)
+   ![](/v2.4.x/images/zosmf/zOSMF-HA.png)
 
 The `VIPADISTRIBUTE` statement with `PREFERRED` and `BACKUP` settings is used to enable automatic dynamic VIPA takeover to occur, if needed.
 

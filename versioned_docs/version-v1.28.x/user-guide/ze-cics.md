@@ -70,19 +70,19 @@ If your Zowe Explorer is installed, please follow the steps below to install Zow
 
 1. Visit the [download site](https://github.com/zowe/vscode-extension-for-cics). Select the **Latest** button which directs to a page that includes the latest version of `.vsix` file. Download it to your PC.
 
-   ![Download Zowe CICS Explorer](../images/ze-cics/cics-latest-vsix.png)
+   ![Download Zowe CICS Explorer](/v1.28.x/images/ze-cics/cics-latest-vsix.png)
 
 2. Open the Extensions icon in the side bar, navigate to the **...** menu, press **Install from VSIX ...** and select the downloaded `cics-extension-for-zowe-1.x.x.vsix` file.
 
-   ![Installing Zowe CICS Explorer](../images/ze-cics/zowe-cics-explorer-install.gif)
+   ![Installing Zowe CICS Explorer](/v1.28.x/images/ze-cics/zowe-cics-explorer-install.gif)
 
 The following message indicates that the extension is installed successfully.
 
-![Zowe CICS Explorer install completed](../images/ze-cics/info-message-install-completed.png)
+![Zowe CICS Explorer install completed](/v1.28.x/images/ze-cics/info-message-install-completed.png)
 
 The Zowe Explorer pane will show tree views for **Data Sets**, **Unit System Services (USS)** and **Jobs**, and a new view for **CICS**.
 
-![CICS tree in Zowe pane](../images/ze-cics/cics-tree-in-zowe-pane.png)
+![CICS tree in Zowe pane](/v1.28.x/images/ze-cics/cics-tree-in-zowe-pane.png)
 
 ## Getting started
 
@@ -99,7 +99,7 @@ If you don't have an existing Zowe CICS CLI profile, follow these steps to creat
 
 Configuring a CICS region to have a connection is a system programmer task and more details can be found in [Setting up CMCI with CICSPlex SM](https://www.ibm.com/docs/en/cics-ts/5.3?topic=explorer-setting-up-cmci-cicsplex-sm) or [Setting up CMCI in a stand-alone CICS region](https://www.ibm.com/docs/en/cics-ts/5.3?topic=suace-setting-up-cmci-in-stand-alone-cics-region). If your CMCI connection is configured to use a self-signed certificate that your PC's trust store doesn't recognize, see [Untrusted TLS certificates](#untrusted-tls-certificates).
 
-![Zowe CICS Explorer profiles](../images/ze-cics/create-profile.gif)
+![Zowe CICS Explorer profiles](/v1.28.x/images/ze-cics/create-profile.gif)
 
 To show more than one CICS profiles in the tree, select the **+** button and choose from the list of profiles. Only profiles that not already included in the CICS tree will be shown. To view all Zowe CICS CLI profiles, issue the command `zowe profiles list cics` from a terminal.  
 
@@ -113,7 +113,7 @@ To show more than one CICS profiles in the tree, select the **+** button and cho
 
 3. Once the details are updated, click the **Update Profile** button to apply the changes to the profile.
 
-   ![Zowe CICS Explorer update profiles](../images/ze-cics/update-profile.gif)
+   ![Zowe CICS Explorer update profiles](/v1.28.x/images/ze-cics/update-profile.gif)
 
 ### Hiding profiles
 
@@ -123,7 +123,7 @@ To show more than one CICS profiles in the tree, select the **+** button and cho
 
 3. To add the profile back, click the **+** button and select the profile from the quick pick list.
 
-   ![Zowe CICS Explorer hide profiles](../images/ze-cics/hide-profile.gif)
+   ![Zowe CICS Explorer hide profiles](/v1.28.x/images/ze-cics/hide-profile.gif)
 
 ### Deleting profiles
 
@@ -131,7 +131,7 @@ To show more than one CICS profiles in the tree, select the **+** button and cho
 
 2. Select **Delete Profile** and click the **Yes** button when prompted to confirm the action of permanently deleting the profile. The functionality deletes the CICS profile from the persistent storage directory `~/.zowe/profiles/cics`.
 
-![Zowe CICS Explorer delete profiles](../images/ze-cics/delete-profile.gif)
+![Zowe CICS Explorer delete profiles](/v1.28.x/images/ze-cics/delete-profile.gif)
 
 ## CICS resources
 
@@ -151,7 +151,7 @@ The list of resources is pre-filtered to exclude many of the IBM supplied ones t
 
 - To reset the filter to its initial criteria, use the clear filter icon against the resource type.  If you want to see all resources in a region (including IBM supplied ones), you can use __*__ as a filter.
 
-![Zowe CICS Explorer Filter](../images/ze-cics/region-filter.gif)
+![Zowe CICS Explorer Filter](/v1.28.x/images/ze-cics/region-filter.gif)
 
 **Tip:** To apply multiple filters, separate entries with a comma. You can append any filter with an __*__, which indicates wildcard searching.
 
@@ -163,7 +163,7 @@ Similar to filtering resources in a region, you can apply a filter on a all regi
 
 - To reset the filter to its initial criteria, use the clear filter icon against the **Regions** tree. This will open a drop-down menu which gives the option to clear the filter for all the **Regions**, **Programs**, **Local Transactions** or **Local Files** in the plex, and the option **All** to otherwise clear all filters within the plex.
 
-   ![Zowe CICS Explorer Plex Filter](../images/ze-cics/plex-filter.gif)
+   ![Zowe CICS Explorer Plex Filter](/v1.28.x/images/ze-cics/plex-filter.gif)
 
 **Tip:** To apply multiple filters, separate entries with a comma. You can append any filter with an __*__, which indicates wildcard searching.
 
@@ -173,7 +173,7 @@ Plexes includes **All Programs**, **All Local Transactions** and **All Local Fil
 
 - To view resources under these trees, use the search icon inline with the tree and apply a filter.
    
-   ![Zowe CICS Explorer All Resource Filter](../images/ze-cics/all-resources.gif)
+   ![Zowe CICS Explorer All Resource Filter](/v1.28.x/images/ze-cics/all-resources.gif)
 
 - If the applied filter results in over 500 records, you can change the filter to narrow down the search, or click the **view X more ...** item to retrieve 'X' more resources.
 
@@ -183,7 +183,7 @@ Right-click and use the pop-up menu against a program to list the available acti
 
 For every resource, including a CICS region, the **Show Attributes** option opens a viewer listing all attributes and their values. The attributes page has a filter box at the top that lets you search for attributes matching the criteria.  
 
-![Zowe CICS Explorer Show Attributes](../images/ze-cics/show-attributes.gif)
+![Zowe CICS Explorer Show Attributes](/v1.28.x/images/ze-cics/show-attributes.gif)
 
 
 ### Enabling and disabling
@@ -194,7 +194,7 @@ For every resource, including a CICS region, the **Show Attributes** option open
 
 When a resource is already disabled, you can enable it again by clicking **Enable [CICS resource]** in the pop-up menu. 
 
-![Zowe CICS Explorer Disable and Enable](../images/ze-cics/disable-enable.gif)
+![Zowe CICS Explorer Disable and Enable](/v1.28.x/images/ze-cics/disable-enable.gif)
 
 ### New copy and phase in
 
@@ -202,7 +202,7 @@ Use the new copy and the phase in actions against a CICS program to get the CICS
 
 The `New copy count` for a program which is greater than zero is shown next to the program item in the CICS resource tree.
 
-![Zowe CICS Explorer NewCopy Program](../images/ze-cics/new-copy.gif)
+![Zowe CICS Explorer NewCopy Program](/v1.28.x/images/ze-cics/new-copy.gif)
 
 ### Opening and closing local files
 
@@ -218,7 +218,7 @@ The `New copy count` for a program which is greater than zero is shown next to t
 
    After you select an option, the local file name will be appended with a `(Closed)` label upon success.
 
-   ![Zowe CICS Explorer Close a Local File](../images/ze-cics/open-close.gif)
+   ![Zowe CICS Explorer Close a Local File](/v1.28.x/images/ze-cics/open-close.gif)
 
 ## Untrusted TLS certificates
 
@@ -228,7 +228,7 @@ To override this behavior, you can set the `Only accept trusted TLS certificates
 
 If you define a profile as only accepting trusted TLS certificates when the Zowe Explorer first connects, it will detect the mismatch and pop up a message. You can select **Yes** to override the profile's setting to accept the untrusted certificate authority.  
 
-![Image that shows how to accept untrusted TLS certificate](../images/ze-cics/untrusted-cert.gif)
+![Image that shows how to accept untrusted TLS certificate](/v1.28.x/images/ze-cics/untrusted-cert.gif)
 
 ## Usage tips
 
@@ -252,7 +252,7 @@ Before filing an issue, check if an error is arising from the Zowe Explorer for 
 - Errors arising from the Zowe Explorer CICS extension will have the `Source` as `Zowe Explorer for IBM CICS (Extension)`,
 - Errors arising from the Zowe Explorer extension will have the `Source` as `Zowe Explorer (Extension)`.
 
-![Image that shows how to check the error source](../images/ze-cics/expand-error-cics.gif)
+![Image that shows how to check the error source](/v1.28.x/images/ze-cics/expand-error-cics.gif)
 
 ### Filing an issue
 
