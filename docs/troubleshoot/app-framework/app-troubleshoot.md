@@ -69,7 +69,7 @@ There are three known problems that might cause this error.  The [Zowe architect
    
      If the communication works, the problem is likely that the Application Framework server is unable to communicate to the zssServer. For more information, see [Application Framework unable to communicate with zssServer](#zlux-unable-to-communicate-with-zssserver).
 
-   - If the communication is not working, the message includes `Failure`. For example:
+   - If the communication is not working, the message includes `Failure`. For example::
 
      ```
      ZIS status - Failure (name='ZWESIS_STD      ', cmsRC=39, description='Cross-memory call ABENDed'
@@ -81,8 +81,8 @@ There are three known problems that might cause this error.  The [Zowe architect
      or
      ```
      ZIS status - Failure
-     (name='ZWESIS_STD      ',cmsRC=47,
-     description='N/A', clientVersion='2')
+     (name='ZWESIS_STD     ', cmsRC=47, description='N/A', clientVersion=2)
+     ```
      or
      ```
      ZIS status - 'Failure' (name='ZWESI_STD     ', cmsRC='12', description='N/A', clientVersion='2')
