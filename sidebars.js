@@ -362,6 +362,7 @@ module.exports = {
             "user-guide/api-mediation-static-api-refresh",
             "user-guide/api-mediation-change-password-via-catalog",
             "user-guide/onboard-wizard",
+            "user-guide/cli-idfplugin",
           ],
         },
         "user-guide/api-mediation-metrics-service",
@@ -517,6 +518,7 @@ module.exports = {
       items: [
         "extend/extend-cli/cli-devTutorials",
         "extend/extend-cli/cli-setting-up",
+        "extend/extend-cli/cli-creating-plug-in-lifecycle-actions",
         "extend/extend-cli/cli-installing-sample-plugin",
         "extend/extend-cli/cli-extending-a-plugin",
         "extend/extend-cli/cli-developing-a-plugin",
