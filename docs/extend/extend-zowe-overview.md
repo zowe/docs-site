@@ -4,13 +4,13 @@ Zowe is designed as an extensible tools platform. One of the Zowe architecture g
 
 Zowe can be extended in the following ways:
 
-On the server side:
+**On the server side:**
 
 - [Extend Zowe API Mediation Layer](#extend-zowe-api-mediation-layer)
   - [Dynamic API registration](#dynamic-api-registration)
   - [Static API registration](#static-api-registration)
 
-On the client side:
+**On the client side:**
 
 - [Extend Zowe CLI](#extend-zowe-cli)
 - [Add a plug-in to the Zowe Desktop](#add-a-plug-in-to-the-zowe-desktop)
