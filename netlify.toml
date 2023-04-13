@@ -7,6 +7,10 @@
   command = "npm run build"
   publish = "build"
 
+[build.environment]
+  DOCUSAURUS_SSR_CONCURRENCY = "5"
+  NODE_VERSION = "16"
+
 [[plugins]]
 package = "netlify-plugin-cache"
   [plugins.inputs]
