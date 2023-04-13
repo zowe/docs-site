@@ -21,7 +21,7 @@ You can use the following functionalities when interacting with datasets:
 - **Submit a JCL**: You can submit a JCL from a chosen dataset. Use “Submit Job” menu item in the context menu for any dataset member. 
 - **Allocate Like**: You can create a copy of a chosen dataset with the same parameters. Use “Allocate Like” menu item in the context menu for any dataset. 
 
-![Work with datasets](/v2.6.x/images/intellij/intellij-using-datasets.gif)
+![Work with datasets](pathname:///v2.6.x/images/intellij/intellij-using-datasets.gif)
 
 ## Working with USS files
 
@@ -38,7 +38,7 @@ You can use the following functionalities when interacting with USS files:
 - **Delete USS files and directories**: Use “Delete” menu item in the context menu for any directory or file. 
 - **Copy/move USS files and directories**: Use “Copy” / “Paste” / “Cut” menu item in the context menu for any directory or file. 
 
-![Work with USS files](/v2.6.x/images/intellij/intellij-using-uss-files.gif)
+![Work with USS files](pathname:///v2.6.x/images/intellij/intellij-using-uss-files.gif)
 
 ## Working with jobs
 
@@ -46,4 +46,4 @@ To operate with your JCL jobs, ensure you [create a JES Working Set](intellij-co
 
 You can submit a job and see the output. 
 
-![Work with jobs](/v2.6.x/images/intellij/intellij-using-jobs.gif)
+![Work with jobs](pathname:///v2.6.x/images/intellij/intellij-using-jobs.gif)

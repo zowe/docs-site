@@ -9,18 +9,18 @@ The following procedure describes how to onboard your REST service with the Wiza
 **Follow these steps:**
 
 1. In the dashboard of the API Catalog, click the **Onboard New API** dropdown located in the navbar.  
-   ![Onboarding](/v1.26.x/images/api-mediation/wizard-onboard-button.png)
+   ![Onboarding](pathname:///v1.26.x/images/api-mediation/wizard-onboard-button.png)
 2. Choose the type of onboarding according to your preference (static or via enablers).
-   ![Enablers](/v1.26.x/images/api-mediation/wizard-enablers.png)
+   ![Enablers](pathname:///v1.26.x/images/api-mediation/wizard-enablers.png)
 3. Fill in the input fields according to your service specifications.
 4. Address each of the categories in the dialog dropdown. 
-   ![Categories](/v1.26.x/images/api-mediation/wizard-categories.png)
+   ![Categories](pathname:///v1.26.x/images/api-mediation/wizard-categories.png)
 5. Click **Save** to apply your changes.
 6. Validate successful onboarding with the following step according to your onboarding method.
    * For static onboarding, the following validation message appears after successful onboarding:  
-   ![Validation](/v1.26.x/images/api-mediation/wizard-validation.png)  
+   ![Validation](pathname:///v1.26.x/images/api-mediation/wizard-validation.png)  
    * For onboarding using an enabler, click **Copy** to save the generated yaml file to your clipboard. Then paste this yaml file in your project's service-configuration.yml file.   
-   ![Validation](/v1.26.x/images/api-mediation/wizard-save-button.png)  
+   ![Validation](pathname:///v1.26.x/images/api-mediation/wizard-save-button.png)  
    
 If you see your service in the list of API Catalog available services, you have onboarded your service successfully.
 

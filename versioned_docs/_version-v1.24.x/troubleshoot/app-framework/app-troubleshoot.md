@@ -51,7 +51,7 @@ There are three known problems that might cause this error.  The [Zowe architect
 2. The Zowe Desktop ZLUX server connection to the zssServer across the default port 8542. If this fails, see [ZLUX unable to communicate with zssServer](#zlux-unable-to-communicate-with-zssserver).  The architecture diagram below has been annotated with a (2) to show this connection.  
 3. The Zowe Desktop ZLUX server cannot connect to API Mediation Layer for authentication. If this fails, see [ZLUX unable to communicate with API Mediation Layer](#zlux-unable-to-communicate-with-api-mediation-layer).
 
-<img src={require("/v1.24.x/images/common/zowe-desktop-unable-to-logon.png").default} alt="Zowe Desktop Unable to logon.png" width="700px"/> 
+<img src="pathname:///v1.24.x/images/common/zowe-desktop-unable-to-logon.png" alt="Zowe Desktop Unable to logon.png" width="700px"/> 
 
 ### ZSS server unable to communicate with X-MEM
 

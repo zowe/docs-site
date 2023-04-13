@@ -80,7 +80,7 @@ Follow these steps:
 3. Edit the settings in the file as needed.
 4. Save the file to keep changes.
 
-    ![Configure Zowe settings](/v2.4.x/images/ze/ZE-Configuration.gif)
+    ![Configure Zowe settings](pathname:///v2.4.x/images/ze/ZE-Configuration.gif)
 
 ### Modifying temporary file location settings
 

@@ -466,7 +466,7 @@ https://service:10015/sampleservice-api/api-doc
 The API ML Catalog UI displays information about discoverable REST services registered with the API ML Discovery Service.
 Information displayed in the Catalog is defined by the metadata provided by your service during registration. The Tile will look similar to the one shown on following image.
  
- ![Tile](/v1.18.x/images/api-mediation/API-Catalog-Tile.png "Tile of a sample service in API Catalog") 
+ ![Tile](pathname:///v1.18.x/images/api-mediation/API-Catalog-Tile.png "Tile of a sample service in API Catalog") 
 
 The Catalog groups correlated services in the same tile, if these services are configured with the same `catalog.tile.id` metadata parameter.
 

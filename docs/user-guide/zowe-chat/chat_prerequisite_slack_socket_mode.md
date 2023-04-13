@@ -67,7 +67,7 @@ You can use Socket mode to connect your app to Slack.
 Specify values for the following fields:
    - **Token Name**: socket-mode
 
-   ![Generate an app-level token to enable Socket Mode](/stable/images/zowe-chat/slack_socketmode.png)
+   ![Generate an app-level token to enable Socket Mode](pathname:///stable/images/zowe-chat/slack_socketmode.png)
 
 7. Click **Generate** button and you will be prompted with a dialog **socket-mode**. You will get the token in the dialog. Copy it for the later use. You will need it to configure your Slack in later steps. See [Configuring the chat tool - Slack](chat_configure_slack.md).
 

@@ -12,7 +12,7 @@ You can mention your bot user directly in the message field.
 
 3. Send the message to the channel. You will receive a message from Slackbot to help you invite your bot user to this channel. Click **Invite Them**.
 
-    ![Invite to channel](/v2.5.x/images/zowe-chat/slack_invitebot.png)
+    ![Invite to channel](pathname:///v2.5.x/images/zowe-chat/slack_invitebot.png)
 
 ## Use the channel link
 
@@ -22,15 +22,15 @@ You can click the link **Add an app** at the beginning of your channel.
 
 2. Click the drill-down box at the top of your channel. Select **Integrations**.
 
-    ![Drill-down box](/v2.5.x/images/zowe-chat/slack_channelhead.png)
+    ![Drill-down box](pathname:///v2.5.x/images/zowe-chat/slack_channelhead.png)
 
 3. You can see the dialog as the image below shows. Click **Add an app**.
 
-    ![Add an app](/v2.5.x/images/zowe-chat/slack_addapp.png)
+    ![Add an app](pathname:///v2.5.x/images/zowe-chat/slack_addapp.png)
 
 4. Search for your app with your app name. Click **Add** when you see it.
 
-    ![Add app to channel](/v2.5.x/images/zowe-chat/slack_add.png)
+    ![Add app to channel](pathname:///v2.5.x/images/zowe-chat/slack_add.png)
 
 
 You have invited the Zowe Chat app to your Slack channel. You can talk to it now.

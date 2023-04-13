@@ -43,22 +43,22 @@ Services that belong to the same product family are displayed on the same tile.
 
    **Example:**
 
-   <img src={require("/v1.18.x/images/api-mediation/newswagger.png").default} alt="controller detail" width="500px"/>
+   <img src="pathname:///v1.18.x/images/api-mediation/newswagger.png" alt="controller detail" width="500px"/>
 
 3. Select the version (**v1**, **v2**) to view the documentation of a specific API version.
 
     **Example:**
 
-    <img src={require("/v1.18.x/images/api-mediation/discoverableclient-apiv1.png").default} alt="discoverable client api v1" width="500"/>
+    <img src="pathname:///v1.18.x/images/api-mediation/discoverableclient-apiv1.png" alt="discoverable client api v1" width="500"/>
 
-    <img src={require("/v1.18.x/images/api-mediation/discoverableclient-apiv2.png").default} alt="discoverable client api v2" width="500"/>
+    <img src="pathname:///v1.18.x/images/api-mediation/discoverableclient-apiv2.png" alt="discoverable client api v2" width="500"/>
 
 4. Expand the endpoint panel to see a detailed summary with responses and parameters of each endpoint,
  the endpoint description, and the full structure of the endpoint.
 
    **Example:**
 
-   <img src={require("/v1.18.x/images/api-mediation/expanded.png").default} alt="endpoint detail" width="500px"/>
+   <img src="pathname:///v1.18.x/images/api-mediation/expanded.png" alt="endpoint detail" width="500px"/>
 
    **Notes:**
 
@@ -90,19 +90,19 @@ The API Catalog enables users to call service APIs through the **Try it out** fu
 
     **Example:**
 
-    <img src={require("/v1.18.x/images/api-mediation/catalog_proctected_endpoints_swagger_lock.png").default} alt="endpoint detail" width="1000px"/>
+    <img src="pathname:///v1.18.x/images/api-mediation/catalog_proctected_endpoints_swagger_lock.png" alt="endpoint detail" width="1000px"/>
 
     **Note:** Before making requests to protected endpoints, authorize your session by clicking the lock icon and complete the required information in the Authorization modal shown below:
 
     **Example:**
 
-    <img src={require("/v1.18.x/images/api-mediation/catalog_proctected_endpoints_swagger_auth.png").default} alt="endpoint detail" width="300px"/>
+    <img src="pathname:///v1.18.x/images/api-mediation/catalog_proctected_endpoints_swagger_auth.png" alt="endpoint detail" width="300px"/>
 
 To demonstrate **Try it out**, we use the example of the Swagger Petstore.
 
 **Example:**
 
-<img src={require("/v1.18.x/images/api-mediation/discoverable_clien_pet_swagger.png").default} alt="endpoint detail" width="700px"/>
+<img src="pathname:///v1.18.x/images/api-mediation/discoverable_clien_pet_swagger.png" alt="endpoint detail" width="700px"/>
 
 ### Make a request
 
@@ -116,7 +116,7 @@ This section outlines the process for making a request.
 
    **Example:**
 
-    <img src={require("/v1.18.x/images/api-mediation/discoverable_clien_pet_swagger_expanded.png").default} alt="endpoint detail" width="700px"/>
+    <img src="pathname:///v1.18.x/images/api-mediation/discoverable_clien_pet_swagger_expanded.png" alt="endpoint detail" width="700px"/>
 
     After you click **Try it out**, the example value in the **Request Body** field becomes editable.
 
@@ -126,13 +126,13 @@ This section outlines the process for making a request.
 
    **Example:**
 
-    <img src={require("/v1.18.x/images/api-mediation/discoverable_clien_pet_swagger_execute.png").default} alt="endpoint detail" width="700px"/>
+    <img src="pathname:///v1.18.x/images/api-mediation/discoverable_clien_pet_swagger_execute.png" alt="endpoint detail" width="700px"/>
 
     The API Catalog Swagger UI submits the request and shows the _curl_ that was submitted. The Responses section shows the response. 
 
    **Example:**
 
-    <img src={require("/v1.18.x/images/api-mediation/discoverable_clien_pet_swagger_response.png").default} alt="endpoint detail" width="700px"/>
+    <img src="pathname:///v1.18.x/images/api-mediation/discoverable_clien_pet_swagger_response.png" alt="endpoint detail" width="700px"/>
 
 
 ## Static APIs refresh functionality in the API Catalog
@@ -141,21 +141,21 @@ The API Catalog enables users to manually refresh static service APIs. Use the *
 
 **Example:**
 
-<img src={require("/v1.18.x/images/api-mediation/api_refresh_button.png").default} alt="api refresh" width="700px"/>
+<img src="pathname:///v1.18.x/images/api-mediation/api_refresh_button.png" alt="api refresh" width="700px"/>
 
 To refresh the status of a static service, click the **Refresh** option located in the upper right-hand side of the API Catalog UI. 
 Successful requests return a pop-up notification that displays the message, `The refresh of static APIs was successful!`.
  
 **Example:**
 
-<img src={require("/v1.18.x/images/api-mediation/api_refresh_success.png").default} alt="api refresh success" width="700px"/>
+<img src="pathname:///v1.18.x/images/api-mediation/api_refresh_success.png" alt="api refresh success" width="700px"/>
 
 
  If the request fails, a dialog appears with an error message that describes the cause of the fail. 
 
 **Example:**
 
-<img src={require("/v1.18.x/images/api-mediation/api_refresh_error.png").default} alt="api refresh error" width="700px"/>
+<img src="pathname:///v1.18.x/images/api-mediation/api_refresh_error.png" alt="api refresh error" width="700px"/>
 
 **Note:** The manual **Refresh Static APIs** option applies only to static service APIs. Changes to the status of services that are onboarded to allow for dynamic discovery require a restart of the specific services where changes are applied. It is not necessary to restart the API Catalog or the Discovery Service.
 

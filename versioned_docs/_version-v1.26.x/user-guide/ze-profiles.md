@@ -19,13 +19,13 @@ You must have a `zosmf` compatible profile before you can use Zowe Explorer. You
 
 4. Follow the instructions, and enter all required information to complete the profile creation.
 
-<img src={require("/v1.26.x/images/ze/ZE-newProfiles.gif").default} width="600" alt="New Connection"/>
+<img src="pathname:///v1.26.x/images/ze/ZE-newProfiles.gif" width="600" alt="New Connection"/>
 
 You successfully created a Zowe CLI `zosmf` profile. Now you can use all the functionalities of the extension.
 
 If you need to edit a profile, right-click the profile and select **Update Profile** option.
 
-<img src={require("/v1.26.x/images/ze/ZE-prof-update.gif").default} width="600" height="300" alt="Edit a Profile"/>
+<img src="pathname:///v1.26.x/images/ze/ZE-prof-update.gif" width="600" height="300" alt="Edit a Profile"/>
 
 In addition, you can hide a profile from the explorer tree, and permanently delete a profile. When you delete your profile permanently, the extension erases the profile from the `.zowe` folder. To hide or delete a profile, right-click the profile and choose one of the respective options from the list.
 
@@ -56,7 +56,7 @@ Create a secondary association for your Zowe Explorer profiles.
 4. Select a secondary profile type.
 5. Select a file name you want to create an association for.
 
-<img src={require("/v1.26.x/images/ze/ZE-associate.gif").default} width="600" height="300" alt="Edit a Profile"/>
+<img src="pathname:///v1.26.x/images/ze/ZE-associate.gif" width="600" height="300" alt="Edit a Profile"/>
 
 You have successfully created the secondary association for your Zowe Explorer profile.
 

@@ -67,7 +67,7 @@ The values for these variables can be **echo**ed.
 
 ## Home directory structure
 
-![Home Directory](/v1.26.x/images/troubleshoot/cli/home_struc.png)
+![Home Directory](pathname:///v1.26.x/images/troubleshoot/cli/home_struc.png)
 
 ### Location of logs
 

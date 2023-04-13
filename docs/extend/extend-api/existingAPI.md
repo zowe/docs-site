@@ -39,11 +39,11 @@ catalogUiTiles:
 ```
 
 This information together creates the catalog tile information
-![](/stable/images/extender/tile.png)
+![](pathname:///stable/images/extender/tile.png)
 
 
 By clicking on the tile the following information is presented. Note the swagger is generated from the swaggerUrl link which needs to be v2 swagger
-![](/stable/images/extender/service.png)
+![](pathname:///stable/images/extender/service.png)
 
 Although the most critical information, the redirection of the urls is under routed services along with the service id. 
 ```

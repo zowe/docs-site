@@ -4,21 +4,21 @@ You can use the tool Microsoft™ Developer Portal to create a bot with Microsof
 
 1.  Click the **Tools** icon at the top of the home page of Developer Portal to open the Tools pane.
 
-    ![Tools pane](/v2.5.x/images/zowe-chat/teams_tool_pane.png " Tools pane")
+    ![Tools pane](pathname:///v2.5.x/images/zowe-chat/teams_tool_pane.png " Tools pane")
 
 2.  Click **Bot management** to create your bot.
 
-    ![Create your bot](/v2.5.x/images/zowe-chat/teams_bot_management.png "Create your bot")
+    ![Create your bot](pathname:///v2.5.x/images/zowe-chat/teams_bot_management.png "Create your bot")
 
 3.  Click **New bot** to create a new bot.
 
 4.  In the prompted dialog, specify a short name for your bot and then click **Add**.
 
-    ![](/v2.5.x/images/zowe-chat/teams_bot_name.png "Add bot")
+    ![](pathname:///v2.5.x/images/zowe-chat/teams_bot_name.png "Add bot")
 
 5.  Click **Client secrets** at the left of the Developer Portal, and click **Add a client secret for your bot** to generate a client secret for your bot.
 
-    ![Generate new client secret](/v2.5.x/images/zowe-chat/teams_secret.png "Generate new client secret")
+    ![Generate new client secret](pathname:///v2.5.x/images/zowe-chat/teams_secret.png "Generate new client secret")
 
 6.  Copy the new client secret.
 

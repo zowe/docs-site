@@ -15,7 +15,7 @@ To view the HTTP metrics for a service, select the corresponding tab in the Metr
 
 **Example:**
 
-<img src={require("/v1.26.x/images/api-mediation/metrics-service-dashboard.png").default} alt="discoverable client api v1" width="500"/>
+<img src="pathname:///v1.26.x/images/api-mediation/metrics-service-dashboard.png" alt="discoverable client api v1" width="500"/>
 
 Metrics are provided on a near real-time basis, so the display shows the current activity of the selected service. At this time there is no persistence for this information.
 

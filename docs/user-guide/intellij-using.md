@@ -10,13 +10,13 @@ Before you start to use the plug-in, there are some settings available. First on
 
 It is possible to synchronize the file or dataset you are editing either manually or automatically. The method is controlled by **Enable auto-sync with mainframe** option. When it is checked, you don't need to manually synchronize the file/dataset whilst you are editing it, the IntelliJ platform decides by itself, when and how to synchronize it. The plug-in is using this feature and allows users to avoid additional sync action. In case you want to be sure that you control the process of syncing with the mainframe, or in case you have some limitations for calls to z/OSMF, or for some other reason, you can disable this option and continue with manual synchronization either by button, appearing if there are any changes in the file, or by pressing simultaneously **Ctrl + Shift + S (Cmd + Shift + S for MacOS)**.
 
-![Auto-sync option](/stable/images/intellij/sync_option.gif)
+![Auto-sync option](pathname:///stable/images/intellij/sync_option.gif)
 
 ### Batch size option
 
 Mainframe z/OS and USS filesystems could have a lot of datasets/files under a specified mask. Sometimes the loading of datasets/files list could take a lot of time if there are a lot of entries. To eliminate this problem, the plug-in provides the ability to control the amount of items loading at one time. It is called **Batch amount to show per fetch** in **Settings**. By default, it is set to **100** entries. When the list contains more than the specified number, you can load next amount of entries, specified in this option, double-clicking by **load more** item in the **File Explorer** view.
 
-![Batch size option](/stable/images/intellij/batch_size.gif)
+![Batch size option](pathname:///stable/images/intellij/batch_size.gif)
 
 ## Working with Files Working Sets
 
@@ -32,23 +32,23 @@ Using the plug-in, you will be able to:
 
 ### Working with z/OS PS datasets
 
-![Work with PS datasets](/stable/images/intellij/create_edit_rename_delete_ps.gif)
+![Work with PS datasets](pathname:///stable/images/intellij/create_edit_rename_delete_ps.gif)
 
 ### Working with z/OS PDS datasets
 
-![Work with PDS datasets](/stable/images/intellij/pds_create_and_props.gif)
+![Work with PDS datasets](pathname:///stable/images/intellij/pds_create_and_props.gif)
 
 ### "Allocate Like" feature
 
 To issue the **Allocate Like**, click the right mouse button on any of datasets and select **Allocate Like**.
 
-!["Allocate Like" feature](/stable/images/intellij/allocate_like.gif)
+!["Allocate Like" feature](pathname:///stable/images/intellij/allocate_like.gif)
 
 ### "Submit Job" feature
 
 To issue the **Submit Job**, click the right mouse button on any of PS datasets or PDS members and select **Submit Job**.
 
-!["Submit Job" feature](/stable/images/intellij/submit_jcl.gif)
+!["Submit Job" feature](pathname:///stable/images/intellij/submit_jcl.gif)
 
 ### Working with USS files
 
@@ -56,7 +56,7 @@ There is a possibility to work with USS filesystem using the plug-in. Plug-in al
 
 About the encoding: there is two different options for encoding change. One is **Reload** option, which allows users to reload the file with the specified encoding. It means that the file won't be converted to that encoding, and the plug-in just opens it with the specified one. The second option is **Convert**. This option converts the file to the specified encoding, changing it contents. It means that the plug-in will try to change the file bytes if it is possible, and then will display the contents with the changed bytes.
 
-![Work with USS files](/stable/images/intellij/work_with_uss.gif)
+![Work with USS files](pathname:///stable/images/intellij/work_with_uss.gif)
 
 ### Copy/move functionality
 
@@ -72,7 +72,7 @@ To move a member from one dataset to another:
 3. On the target dataset click **Paste**
 4. ...or just drag and drop it
 
-![Move member from one PDS to another](/stable/images/intellij/move_mem_to_ds.gif)
+![Move member from one PDS to another](pathname:///stable/images/intellij/move_mem_to_ds.gif)
 
 If a sequential dataset is being moved to PDS, the name will be trimmed to the last element in the HLQ.
 
@@ -87,7 +87,7 @@ To copy member from one dataset to another:
 2. Select **Copy**
 3. On the target dataset click **Paste**
 
-![Move PS to PDS and copy member from one PDS to another](/stable/images/intellij/pds_copy_move_ds.gif)
+![Move PS to PDS and copy member from one PDS to another](pathname:///stable/images/intellij/pds_copy_move_ds.gif)
 
 To move USS file or folder to another USS folder:
 1. Right click on the folder or the file to be moved;
@@ -95,14 +95,14 @@ To move USS file or folder to another USS folder:
 3. On the target folder click **Paste**
 4. ...or just drag and drop it
 
-![Move USS file or folder to another USS folder](/stable/images/intellij/move_uss_folder_to_uss_folder.gif)
+![Move USS file or folder to another USS folder](pathname:///stable/images/intellij/move_uss_folder_to_uss_folder.gif)
 
 To copy PDS member to USS filesystem:
 1. Right click on the member to be copied
 2. Select **Copy**
 3. On the target folder or the USS filesystem mask click **Paste**
 
-![Copy member to USS](/stable/images/intellij/copy_mem_to_uss.gif)
+![Copy member to USS](pathname:///stable/images/intellij/copy_mem_to_uss.gif)
 
 While moving or copying a partitioned dataset to the USS filesystem, it will be converted to a USS folder. All the contents will become USS files.
 
@@ -112,7 +112,7 @@ To move a PDS to USS filesystem:
 3. On the target folder or the USS filesystem mask click **Paste**
 4. ...or just drag and drop it
 
-![Move PDS to USS](/stable/images/intellij/pds_move_zos_to_uss.gif)
+![Move PDS to USS](pathname:///stable/images/intellij/pds_move_zos_to_uss.gif)
 
 Also, it is possible to copy/move USS file to PDS dataset. The file will become the PDS member.
 
@@ -124,7 +124,7 @@ To move USS file to a PDS:
 3. On the target PDS click **Paste**
 4. ...or just drag and drop it
 
-![Copy member to USS and USS file to PDS](/stable/images/intellij/move_uss_to_pds.gif)
+![Copy member to USS and USS file to PDS](pathname:///stable/images/intellij/move_uss_to_pds.gif)
 
 ### Cross-system copy
 
@@ -137,7 +137,7 @@ To copy/move element from one system to another:
 
 *(Use drag and drop to move elements faster)*
 
-![Cross-system operations](/stable/images/intellij/cross_system_copy.gif)
+![Cross-system operations](pathname:///stable/images/intellij/cross_system_copy.gif)
 
 ## Working with JES Working Sets
 
@@ -163,7 +163,7 @@ If you don't need the job anymore:
 1. Right click on the job
 2. Select **Purge Job** *(**Delete** is the hotkey)*
 
-![Working with jobs](/stable/images/intellij/work_with_jes_jobs.gif)
+![Working with jobs](pathname:///stable/images/intellij/work_with_jes_jobs.gif)
 
 ## TSO Command Line Interface
 
@@ -176,4 +176,4 @@ To start using the TSO Command Line Interface:
 
 After that, the TSO Command Line Interface should appear. You can type in TSO commands, as well as run any possible scripts.
 
-![TSO CLI](/stable/images/intellij/tso_cli.gif)
+![TSO CLI](pathname:///stable/images/intellij/tso_cli.gif)

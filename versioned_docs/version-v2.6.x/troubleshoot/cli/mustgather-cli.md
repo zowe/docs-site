@@ -26,7 +26,7 @@ The output provides a granular view of key areas in the working environment on y
 
 This detailed report helps provide insights as you troubleshoot. If it finds a problem with a setting, the report displays a warning message.
 
-![Warning Message](/v2.6.x/images/troubleshoot/cli/zowe_config_report_env_warn_message.jpg)
+![Warning Message](pathname:///v2.6.x/images/troubleshoot/cli/zowe_config_report_env_warn_message.jpg)
 
 Alternatively, the output can be saved as a text file that can be attached to an issue submitted to the [Zowe CLI issues list](https://github.com/zowe/zowe-cli/issues). Before filing an issue, confirm that it has not already been submitted.
 

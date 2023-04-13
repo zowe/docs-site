@@ -10,7 +10,7 @@ Body typeface: Roboto
 
 Sample:
 
-![type sample](/v2.5.x/images/extender/type_sample.png)
+![type sample](pathname:///v2.5.x/images/extender/type_sample.png)
 
 
 ## Font weight
@@ -21,17 +21,17 @@ Roboto font family provides a wide range of weights. However, only SemiBold, Reg
 
 - Font-weight: 300 / Light
 
-  ![type light sample](/v2.5.x/images/extender/type_light_sample.png)
+  ![type light sample](pathname:///v2.5.x/images/extender/type_light_sample.png)
 
   Should only be used at sizes greater than or equal to 18px / 1.125rem
 
 - Font-weight: 400 / Normal
 
-  ![type regular sample](/v2.5.x/images/extender/type_regular_sample.png)
+  ![type regular sample](pathname:///v2.5.x/images/extender/type_regular_sample.png)
 
 - Font-weight: 500 / Semi-bold
 
-  ![type bold sample](/v2.5.x/images/extender/type_bold_sample.png)
+  ![type bold sample](pathname:///v2.5.x/images/extender/type_bold_sample.png)
 
 ## Body copy
 
@@ -41,11 +41,11 @@ We recommended that you use two sizes for body copy. The first size is UI specif
 
 - 1.333 Perfect Fourth-type scale - desktop
 
-  ![type desktop sample](/v2.5.x/images/extender/type_scale_desktop-1024x533.png)
+  ![type desktop sample](pathname:///v2.5.x/images/extender/type_scale_desktop-1024x533.png)
 
 - 1.2 Minor Third type-scale - mobile
 
-  ![type mobile sample](/v2.5.x/images/extender/type_scale_mobile-1024x461.png)
+  ![type mobile sample](pathname:///v2.5.x/images/extender/type_scale_mobile-1024x461.png)
 
 
 ## Line-height

@@ -15,7 +15,7 @@ You can use four z/OSMF workflows that enable you to manage keyring setup, certi
 
     The workflow includes the steps that you can see on the following image:
 
-    ![Workflow ZWEKRING](/v2.6.x/images/configure/workflow-one.jpg)
+    ![Workflow ZWEKRING](pathname:///v2.6.x/images/configure/workflow-one.jpg)
 
      Based on the variable setup from the first step, the workflow can perform various certificate configurations and connect certificates to a keyring in RACF, TSS, and ACF2 security systems.
 
@@ -33,7 +33,7 @@ You can use four z/OSMF workflows that enable you to manage keyring setup, certi
 
     The workflow includes the steps that you can see on the following image:
 
-    ![Workflow ZWECRECR](/v2.6.x/images/configure/workflow-two.jpg)
+    ![Workflow ZWECRECR](pathname:///v2.6.x/images/configure/workflow-two.jpg)
 
    **Note:** You can find links to the specific security systems (BCM, IBM) official documentation in the instructions section of the workflow in related steps.
 
@@ -45,14 +45,14 @@ You can use four z/OSMF workflows that enable you to manage keyring setup, certi
 
     The workflow includes the steps that you can see on the following image:
 
-    ![Workflow ZWESIGNC](/v2.6.x/images/configure/workflow-three.jpg)
+    ![Workflow ZWESIGNC](pathname:///v2.6.x/images/configure/workflow-three.jpg)
 
     Fill in the fields, that you can see on the following image, to sign a CSR request. Ensure that the workflow includes the following information:
 
     - A USS location path of the CSR file
     - A USS location path where a signed certificate is stored in pem format
 
-    ![Workflow Parameters](/v2.6.x/images/configure/workflow-parameters.jpg)
+    ![Workflow Parameters](pathname:///v2.6.x/images/configure/workflow-parameters.jpg)
 
 4. Load the Signed Client Authentication Certificate into ESM using ZWELOADC.xml
 
@@ -62,4 +62,4 @@ You can use four z/OSMF workflows that enable you to manage keyring setup, certi
 
    The workflow includes the steps that you can see on the following image:
 
-   ![Workflow ZWELOADC](/v2.6.x/images/configure/workflow-four.jpg)
+   ![Workflow ZWELOADC](pathname:///v2.6.x/images/configure/workflow-four.jpg)

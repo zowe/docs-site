@@ -4,15 +4,15 @@
 
 2.  Click the Main Menu icon and then click **System Console**.
 
-    ![System console](/stable/images/zowe-chat/mattermost_system_console.png "System console")
+    ![System console](pathname:///stable/images/zowe-chat/mattermost_system_console.png "System console")
 
 3.  Scroll down to the **ENVIRONMENT** section and click **Web Server**.
 
-    ![Environment menu item](/stable/images/zowe-chat/system_console_environment.png "Environment menu item")
+    ![Environment menu item](pathname:///stable/images/zowe-chat/system_console_environment.png "Environment menu item")
 
 4.  Select **true** for **Enable Insecure Outgoing Connections**, and click **Save**.
 
-    ![Outgoing connections](/stable/images/zowe-chat/system_console_enable_connections.png "Outgoing connections")
+    ![Outgoing connections](pathname:///stable/images/zowe-chat/system_console_enable_connections.png "Outgoing connections")
 
 
 You enable insecure outgoing connections for mouse navigation successfully.

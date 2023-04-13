@@ -9,20 +9,20 @@ The following procedure describes how to onboard your REST service with the Wiza
 **Follow these steps:**
 
 1. In the dashboard of the API Catalog, click the **Onboard New API** dropdown located in the navbar.  
-   ![Onboarding](/stable/images/api-mediation/wizard-onboard-button.png)
+   ![Onboarding](pathname:///stable/images/api-mediation/wizard-onboard-button.png)
 2. Choose the type of onboarding according to your preference (static or via enablers).
-   ![Enablers](/stable/images/api-mediation/wizard-enablers.png)
+   ![Enablers](pathname:///stable/images/api-mediation/wizard-enablers.png)
 3. (Optional) To prefill the fields, click **Choose File** to upload a complete or partial YAML file. The YAML file is validated and the form fields are populated.
 
-   ![YAML Prefill](/stable/images/api-mediation/wizard-yaml-prefill.png)  
+   ![YAML Prefill](pathname:///stable/images/api-mediation/wizard-yaml-prefill.png)  
 4. Fill in the input fields according to your service specifications.
 5. Address each of the categories in the dialog dropdown. 
-   ![Categories](/stable/images/api-mediation/wizard-categories.png)
+   ![Categories](pathname:///stable/images/api-mediation/wizard-categories.png)
 6. Click **Save** to apply your changes.
 7. Validate successful onboarding with the following step according to your onboarding method.
    * For static onboarding, the following validation message appears after successful onboarding:  
-   ![Validation](/stable/images/api-mediation/wizard-validation.png)  
+   ![Validation](pathname:///stable/images/api-mediation/wizard-validation.png)  
    * For onboarding using an enabler, click **Copy** to save the generated yaml file to your clipboard. Then paste this yaml file in your project's service-configuration.yml file.   
-   ![Validation](/stable/images/api-mediation/wizard-save-button.png)  
+   ![Validation](pathname:///stable/images/api-mediation/wizard-save-button.png)  
    
 If you see your service in the list of API Catalog available services, you have onboarded your service successfully.

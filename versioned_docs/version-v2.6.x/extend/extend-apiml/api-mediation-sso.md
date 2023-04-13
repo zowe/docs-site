@@ -12,7 +12,7 @@ This article provides an overview of the API ML single-sign-on feature, the prin
 
 The following diagram describes the interactions between the general participants in the single-sign-on process. 
 
-<img src={require("/v2.6.x/images/api-mediation/sso-diagram.jpeg").default} alt="Zowe SSO Explanation" width="700"/>
+<img src="pathname:///v2.6.x/images/api-mediation/sso-diagram.jpeg" alt="Zowe SSO Explanation" width="700"/>
 
 There are two main types of components that participate in Zowe SSO through API ML:
 

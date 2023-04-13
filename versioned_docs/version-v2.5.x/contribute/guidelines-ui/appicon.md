@@ -16,7 +16,7 @@
 
 **Use a flat design style.** Flat design focuses on open space, bright colors, and flat graphics or illustrations. Our minimalistic design approach puts the emphasis on usability.
 
-![icon sample](/v2.5.x/images/extender/icon_sample1.png)
+![icon sample](pathname:///v2.5.x/images/extender/icon_sample1.png)
 
 A flat icon has clean, crisp edges and a flat dimensional layout.
 
@@ -27,7 +27,7 @@ Set the outer corners to 100% opacity. Create an image file that is 87x87 pixels
 
 **Maintain consistent visual proportions.**
 
-![icon sample2](/v2.5.x/images/extender/icon_sample2-1024x283.png)
+![icon sample2](pathname:///v2.5.x/images/extender/icon_sample2-1024x283.png)
 
 ## Colors and shades
 
@@ -35,7 +35,7 @@ Set the outer corners to 100% opacity. Create an image file that is 87x87 pixels
 
 Verify that the background color of the icon provides enough contrast against the desktop.
 
-![icon sample3](/v2.5.x/images/extender/icon_sample3.png)
+![icon sample3](pathname:///v2.5.x/images/extender/icon_sample3.png)
 
 ### Use the Zowe palette
 To ensure that your app icons are clear and consistent, use the [Zowe color palette](colors.md#color-palette).
@@ -44,11 +44,11 @@ If you need to use well-established brand identity elements, you can use the col
 ### Layer Shadows
 Use smooth shadows to represent that some elements are on different layers and should be visually separated. Avoid using too many layers because they can overcomplicate the icon.
 
-![icon sample4](/v2.5.x/images/extender/icon_sample4.png)
+![icon sample4](pathname:///v2.5.x/images/extender/icon_sample4.png)
 
 ### Use the long shadow for consistency.
 Although the long shadow effect does not have any semantic meaning, it adds focus to the main icon shape and identifies the central,most meaningful element.
 
 Use the gradient shadow settings shown in the following image, or use a flat non-gradient shadow with 20% opacity and #000000 color.
 
-![icon sample5](/v2.5.x/images/extender/icon_sample5.png)
+![icon sample5](pathname:///v2.5.x/images/extender/icon_sample5.png)

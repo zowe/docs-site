@@ -9,7 +9,7 @@ To view top-level help, open a command-line and issue the following command:
 zowe --help
 ```
 
-![Issuing the help command](/v2.5.x/images/guides/CLI/GetHelp.gif)
+![Issuing the help command](pathname:///v2.5.x/images/guides/CLI/GetHelp.gif)
 
 Alternatively, issue the following command to display a full list of all available commands:
 

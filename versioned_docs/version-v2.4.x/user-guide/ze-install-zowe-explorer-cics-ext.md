@@ -20,19 +20,19 @@ If  Zowe Explorer is installed, you can install Zowe Explorer CICS Extension fro
 
 1. Visit the [download site](https://github.com/zowe/vscode-extension-for-cics). Select the **Latest** button, which directs to a page that includes the latest version of `.vsix` file. Download it to your PC.
 
-   ![Download Zowe CICS Explorer](/v2.4.x/images/ze-cics/cics-latest-vsix.png)
+   ![Download Zowe CICS Explorer](pathname:///v2.4.x/images/ze-cics/cics-latest-vsix.png)
 
 2. Open the Extensions icon in the side bar, navigate to the **...** menu, press **Install from VSIX ...** and select the downloaded `Zowe.cics-extension-for-zowe-2.x.x.vsix` file.
 
-   ![Installing Zowe CICS Explorer](/v2.4.x/images/ze-cics/zowe-cics-explorer-install.gif)
+   ![Installing Zowe CICS Explorer](pathname:///v2.4.x/images/ze-cics/zowe-cics-explorer-install.gif)
 
 The following message indicates that the extension is installed successfully.
 
-![Zowe CICS Explorer install completed](/v2.4.x/images/ze-cics/info-message-install-completed.png)
+![Zowe CICS Explorer install completed](pathname:///v2.4.x/images/ze-cics/info-message-install-completed.png)
 
 The Zowe Explorer pane shows tree views for **Data Sets**, **Unit System Services (USS)** and **Jobs**, and a new view for **CICS**.
 
-![CICS tree in Zowe pane](/v2.4.x/images/ze-cics/cics-tree-in-zowe-pane.png)
+![CICS tree in Zowe pane](pathname:///v2.4.x/images/ze-cics/cics-tree-in-zowe-pane.png)
 
 ## Uninstalling
 

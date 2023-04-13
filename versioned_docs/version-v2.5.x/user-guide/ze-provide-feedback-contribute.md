@@ -8,7 +8,7 @@ Before filing an issue, check if the error stems from either the Zowe Explorer f
 
 1. To check the error source, expand the error message that displays in VS Code and review the **Source** description:
 
-    ![Image that shows how to check the error source](/v2.5.x/images/ze-cics/expand-error-cics.gif)
+    ![Image that shows how to check the error source](pathname:///v2.5.x/images/ze-cics/expand-error-cics.gif)
     - Errors arising from the Zowe Explorer CICS extension identify the **Source** as *Zowe Explorer for IBM CICS (Extension)*.
     - Errors arising from Zowe Explorer identify the **Source** as *Zowe Explorer (Extension)*.
 

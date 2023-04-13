@@ -19,11 +19,11 @@ Make sure that you have configured your chat tool when configuring the Zowe Chat
    1. Log in to Mattermost with your administrator account.
    2. Click Main Menu icon and then click System Console. 
 
-      ![System console](/stable/images/zowe-chat/mattermost_system_console.png)
+      ![System console](pathname:///stable/images/zowe-chat/mattermost_system_console.png)
 
    3. Scroll down to **ENVIRONMENT** section and click **Web Server**. Find your certificate according to the path configured in **TLS Certificate File**.
       
-      ![Environment menu item](/stable/images/zowe-chat/environment_web_server.png)
+      ![Environment menu item](pathname:///stable/images/zowe-chat/environment_web_server.png)
    
    4. Copy the certificate to your Zowe Chat Server. You can place it in any directory that your Zowe Chat server can access.
 
@@ -40,7 +40,7 @@ Make sure that you have configured your chat tool when configuring the Zowe Chat
 
    Team URL is what you got when you create your team. If you don't remember that, you can just select any channel in your team and copy link. Paste the link into a text editor, and then you will find the team URL. 
 
-   ![teams link](/stable/images/zowe-chat/mattermost_channel_link.png)
+   ![teams link](pathname:///stable/images/zowe-chat/mattermost_channel_link.png)
 
    :::
 

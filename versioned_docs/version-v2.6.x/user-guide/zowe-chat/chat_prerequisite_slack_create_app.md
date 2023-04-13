@@ -5,11 +5,11 @@ To create a bot app for Slack, you need to use the Slack app dashboard to create
 1. Open Slack app dashboard at [Slack API](https://www.ibm.com/links?url=https%3A%2F%2Fapi.slack.com%2Fapps).
 
 2. Click **Create App** button.
-   ![App created](/v2.6.x/images/zowe-chat/slack_createApp.png)
+   ![App created](pathname:///v2.6.x/images/zowe-chat/slack_createApp.png)
     
 3. Choose **From scratch**.
    
-   ![From scratch](/v2.6.x/images/zowe-chat/slack_app_config.png)
+   ![From scratch](pathname:///v2.6.x/images/zowe-chat/slack_app_config.png)
 
 4. In the prompted dialog, specify values for the following fields:
     

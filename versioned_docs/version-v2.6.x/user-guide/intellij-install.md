@@ -4,4 +4,4 @@ You can install the plug-in in your Intellij-based IDE directly from the marketp
 
 Contact your RACF administrator so that your user is in the IZUUSER RACF group. 
 
-![Intall IntelliJ](/v2.6.x/images/intellij/intellij-install.gif)
+![Intall IntelliJ](pathname:///v2.6.x/images/intellij/intellij-install.gif)

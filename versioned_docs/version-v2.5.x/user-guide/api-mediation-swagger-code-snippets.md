@@ -37,7 +37,7 @@ apiInfo:
 
 **Example:**
 
-<img src={require("/v2.5.x/images/api-mediation/customized-code-snippets.png").default} alt="basic code snippets" width="700px"/>
+<img src="pathname:///v2.5.x/images/api-mediation/customized-code-snippets.png" alt="basic code snippets" width="700px"/>
 
 ## Generate the code snippets
 
@@ -50,4 +50,4 @@ This section outlines the process for generating code snippets.
 2. The API Catalog generates the basic code snippets, shown under the code snippet tab. If the service onboarder has also provided customized code snippets, these snippets are displayed in the snippet bar under a title prefixed with `Customized`.
 
    **Example:**
-   <img src={require("/v2.5.x/images/api-mediation/basic-code-snippets.png").default} alt="basic code snippets" width="700px"/>
+   <img src="pathname:///v2.5.x/images/api-mediation/basic-code-snippets.png" alt="basic code snippets" width="700px"/>

@@ -12,7 +12,7 @@ z/OS v2.1 or later is required z/OSMF configuration. The plug-in is in active de
 
 You can create a z/OSMF connection to your mainframe either by manually specifying all the needed information through the Settings tab, or just by clicking the "+" sign. The z/OSMF port should be specified at the end of the address. 
 
-![Configure IntelliJ z/OSMF connection](/v2.6.x/images/intellij/intellij-configure.gif)
+![Configure IntelliJ z/OSMF connection](pathname:///v2.6.x/images/intellij/intellij-configure.gif)
 
 ## Creating a files working set
 
@@ -28,7 +28,7 @@ Complete the following steps:
 6. Press the **OK** button. 
 7. Go to the plug-in panel and start working with data. 
 
-![Configure IntelliJ files working set](/v2.6.x/images/intellij/intellij-files-working-set.gif)
+![Configure IntelliJ files working set](pathname:///v2.6.x/images/intellij/intellij-files-working-set.gif)
 
 ## Creating a JES working set
 
@@ -43,4 +43,4 @@ Complete the following steps:
 5. Press the **+** button and add necessary Mask. 
 6. Press the **OK** button.
 
-![Configure IntelliJ JES working set](/v2.6.x/images/intellij/intellij-jes-working-set.gif)
+![Configure IntelliJ JES working set](pathname:///v2.6.x/images/intellij/intellij-jes-working-set.gif)

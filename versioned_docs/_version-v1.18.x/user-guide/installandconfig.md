@@ -43,7 +43,7 @@ If you are installing one or more server components onto z/OS, the following inf
 
 The following diagram depicts the high-level structure of a Zowe installation and runtime.  
 
-<img src={require("/v1.18.x/images/common/zowe-directories.png").default} alt="Zowe Directories" width="700px"/> 
+<img src="pathname:///v1.18.x/images/common/zowe-directories.png" alt="Zowe Directories" width="700px"/> 
 
 ### RUNTIME_DIR
 

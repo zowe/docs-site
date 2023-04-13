@@ -100,7 +100,7 @@ The final step is to have the recently created error dialog display in the appli
 
 So now when the error is called, the new UI element should resemble the following:
 
-![UI element](/v1.23.x/images/mvd/mvderrorreportui.png)
+![UI element](pathname:///v1.23.x/images/mvd/mvderrorreportui.png)
 
 
 The order in which you place the pop-up manager determines how the error dialog will overlap in your UI. If you want the error dialog to overlap other UI elements, place it at the end of the `.html` file. You can also create custom styling through a CSS template, and add it within the scope of your application plug-in.

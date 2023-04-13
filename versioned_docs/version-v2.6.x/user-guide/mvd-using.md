@@ -24,13 +24,13 @@ Where:
 
 To log out, click the User icon in the lower right corner and click **Sign Out**.
 
-<img src={require("/v2.6.x/images/mvd/person.png").default}/>
+<img src="pathname:///v2.6.x/images/mvd/person.png"/>
 
 ### Changing user password
  
 1. Open the Preferences panel by clicking on the Preferences icon in the bottom right of the desktop.
 
-<img src={require("/v2.6.x/images/mvd/settings.png").default}/>
+<img src="pathname:///v2.6.x/images/mvd/settings.png"/>
   
 2. Click the Change Password icon. 
 3. Fill out the Old Password and New Password fields.
@@ -69,11 +69,11 @@ To log out, click the User icon in the lower right corner and click **Sign Out**
 
 1. Click the **Preferences icon** to open the Preferences panel.
 
-<img src={require("/v2.6.x/images/mvd/settings.png").default}/>
+<img src="pathname:///v2.6.x/images/mvd/settings.png"/>
 
 2. Click the **Personalization icon** to open the menu.
 
-<img src={require("/v2.6.x/images/mvd/personalization.png").default}/>
+<img src="pathname:///v2.6.x/images/mvd/personalization.png"/>
 
 3. Drag an image into the wallpaper grid, or press the upload button, to upload a new Desktop wallpaper.
 4. To set a new theme color, select a color from the palette or hue. 

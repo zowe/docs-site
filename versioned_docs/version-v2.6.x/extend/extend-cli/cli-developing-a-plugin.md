@@ -324,7 +324,7 @@ Depending on the complexity of your changes, it can be difficult to identify dat
 
 To help fix this, you can extend Files Util Plug-in to create a more visual output. For this tutorial, use [diff2html](https://diff2html.xyz/) to generate side-by-side diffs that make it easier to compare changes, as seen in the image below.
 
-| ![Side by Side Diff](/v2.6.x/images/guides/CLI/htmlDiff2.png) |
+| ![Side by Side Diff](pathname:///v2.6.x/images/guides/CLI/htmlDiff2.png) |
 |:--:|
 | <b>Diff to HTML by [rtfpessoa](https://github.com/rtfpessoa)</b>|
 

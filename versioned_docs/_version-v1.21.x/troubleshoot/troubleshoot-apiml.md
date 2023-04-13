@@ -154,7 +154,7 @@ Restart API Mediation Layer.
 
 SEC0002 error typically appears when users fail to log in to API Catalog. The following image shows the API Catalog login page with the SEC0002 error.
 
-<img src={require("/v1.21.x/images/common/Error.png").default} alt="SEC0002 Error" title="SEC0002 Error" width="450" height="350"/>
+<img src="pathname:///v1.21.x/images/common/Error.png" alt="SEC0002 Error" title="SEC0002 Error" width="450" height="350"/>
 
 The error is caused by failed z/OSMF authentication. To determine the reason authentication failed, open the ZWESVSTC joblog and look for a message that contains `ZosmfAuthenticationProvider`. The following is an example of the message that contains `ZosmfAuthenticationProvider`:
 
@@ -337,11 +337,11 @@ The error shown varies depending on the browser. For example,
 
 - For Google Chrome:
 
-   <img src={require("/v1.21.x/images/common/cipher_mismatch.png").default} alt="CIPHER_MISMATCH" title="CIPHER_MISMATCH Error"/>
+   <img src="pathname:///v1.21.x/images/common/cipher_mismatch.png" alt="CIPHER_MISMATCH" title="CIPHER_MISMATCH Error"/>
 
 - For Mozilla Firefox:
 
-   <img src={require("/v1.21.x/images/common/cipher_overlap.png").default} alt="CIPHER_OVERLAP" title="CIPHER_OVERLAP Error"/>
+   <img src="pathname:///v1.21.x/images/common/cipher_overlap.png" alt="CIPHER_OVERLAP" title="CIPHER_OVERLAP Error"/>
 
 **Solution:**
 
@@ -390,7 +390,7 @@ however they are unable to communicate with each other.
 Externally the status of the API Gateway homepage will show ! icons against the API Catalog, Discovery Service and Authentication Service (shown on the left side image below)
  which do not progress to green tick icons as normally occurs during successful startup (shown on the right side image below).
  
-<img src={require("/v1.21.x/images/api-mediation/apiml-startup.png").default} alt="Zowe API Mediation Layer Startup" width="600px"/> 
+<img src="pathname:///v1.21.x/images/api-mediation/apiml-startup.png" alt="Zowe API Mediation Layer Startup" width="600px"/> 
  
 The Zowe desktop is able to start but logon fails.
  

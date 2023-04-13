@@ -37,11 +37,11 @@ You must install the Slack App to your workspace before you can talk with your c
 
     2. Find the **Signing Secret** in **App Credentials** section and click **show**.
 
-        ![App Credentials](/v2.5.x/images/zowe-chat/slack_signingsecret.png)
+        ![App Credentials](pathname:///v2.5.x/images/zowe-chat/slack_signingsecret.png)
 
     3.  Copy this signing secret.
 
-        ![Signing Secret](/v2.5.x/images/zowe-chat/slack_signing.png)
+        ![Signing Secret](pathname:///v2.5.x/images/zowe-chat/slack_signing.png)
 
     Save this signing secret. You will need it to configure your Slack in later steps.
 

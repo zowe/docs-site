@@ -57,7 +57,7 @@ https://gateway:10010/api/v1/enablerv1sampleapp/samples
 
 The following diagram illustrates how basic routing works:
 
-<img src={require("/v1.20.x/images/api-mediation/Basic-Routing.png").default} alt="Zowe API Mediation basic routing"/>
+<img src="pathname:///v1.20.x/images/api-mediation/Basic-Routing.png" alt="Zowe API Mediation basic routing"/>
 
 ### Implementation Details
 

@@ -18,12 +18,12 @@ Issue the following commands to install the sample plug-in to Zowe CLI:
 ## Viewing the installed plug-in
 Issue `zowe --help` in the command line to return information for the installed `zowe-cli-sample` command group:
 
-![Installed](/v2.6.x/images/guides/CLI/InstalledSample.png "Installed Sample Plugin")
+![Installed](pathname:///v2.6.x/images/guides/CLI/InstalledSample.png "Installed Sample Plugin")
 
 ## Using the installed plug-in
 To use the plug-in functionality, issue: `zowe zowe-cli-sample list directory-contents`:
 
-![Output](/v2.6.x/images/guides/CLI/SampleOutput.png "Sample Plugin Output")
+![Output](pathname:///v2.6.x/images/guides/CLI/SampleOutput.png "Sample Plugin Output")
 
 ## Testing the installed plug-in
 To run automated tests against the plug-in, `cd` into your `zowe-tutorial/zowe-cli-sample-plugin` folder.

@@ -8,13 +8,13 @@ The Zowe&trade; color palette is designed and implemented in a theme-able manner
 
 A universal variable can also have multiple associated roles when the color is consistently used across those roles. This allows for uniform color application across themes, while giving each theme the freedom to express its own individuality at a more detailed level.
 
- ![color palette](/v1.20.x/images/extender/full_palette.png)
+ ![color palette](pathname:///v1.20.x/images/extender/full_palette.png)
 
 ### Light theme
-![default light theme colors](/v1.20.x/images/extender/light_palette.png)
+![default light theme colors](pathname:///v1.20.x/images/extender/light_palette.png)
 
 ### Dark theme
-![default dark theme colors](/v1.20.x/images/extender/dark_palette.png)
+![default dark theme colors](pathname:///v1.20.x/images/extender/dark_palette.png)
 
 ## Color contrast | WCAG AA standards
 

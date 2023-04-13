@@ -1685,7 +1685,7 @@ The following features and enhancements were added.
 
   You can now right-click a job label and click "Get JCL" to retrieve the JCL used to submit the job.  This JCL can then be edited and resubmitted.
 
-  <img src={require("/v1.24.x/images/releasenotes/v17-sjdemo.gif").default} alt="SJ Demo" width="550px"/>
+  <img src="pathname:///v1.24.x/images/releasenotes/v17-sjdemo.gif" alt="SJ Demo" width="550px"/>
 
 - File Explorer now offers a right click Delete option for files and folders ([#43](https://github.com/zowe/zlux-file-explorer/pull/43))
 - Prevented creation/deletion of files and folders queued for deletion. ([#48](https://github.com/zowe/zlux-file-explorer/pull/48))

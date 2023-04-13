@@ -33,7 +33,7 @@ To fix the configuration file causing the error, follow these steps:
 
 1. Click the **Show Config** button in the message window.
 
-    ![Show Config button](/stable/images/ze/ZE-show-config-button.gif)
+    ![Show Config button](pathname:///stable/images/ze/ZE-show-config-button.gif)
 
     This opens the file in an **Editor** tab.
 

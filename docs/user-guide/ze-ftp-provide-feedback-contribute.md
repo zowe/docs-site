@@ -6,7 +6,7 @@ Before filing an issue, check if the error stems from either the Zowe Explorer F
 
 1. To check the error source, expand the error message that displays in VS Code and review the **Source** description:
 
-    ![Image that shows how to check the error source](/stable/images/ze/ZE-ftp-find-source.gif)
+    ![Image that shows how to check the error source](pathname:///stable/images/ze/ZE-ftp-find-source.gif)
     - Errors arising from the Zowe Explorer FTP extension identify the **Source** as *Zowe Explorer Extension for FTP (Extension)*.
     - Errors arising from Zowe Explorer identify the **Source** as *Zowe Explorer (Extension)*.
 

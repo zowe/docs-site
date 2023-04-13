@@ -226,7 +226,7 @@ If the keyring or a truststore contains at least one valid certificate authority
 * The public part of the provided client certificate is checked against SAF, and SAF subsequently returns a user ID that owns this certificate. ZSS  provides this API for the Mediation Layer.
 * The Gateway performs the login of the mapped user and returns a valid JWT token.
 
-<img src={require("/v1.21.x/images/api-mediation/zowe-client-cert-auth.png").default} alt="Zowe client certificate authentication diagram" align="center" width="700px"/>
+<img src="pathname:///v1.21.x/images/api-mediation/zowe-client-cert-auth.png" alt="Zowe client certificate authentication diagram" align="center" width="700px"/>
 
 **Prerequisites:**
 * Alter the Zowe runtime user and set protection by password. The user is created with the `NOPASSWORD` parameter by the Zowe installer. This password must be changed and a new password has to be set. For RACF, issue the following TSO command: 

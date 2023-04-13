@@ -20,7 +20,7 @@ If you do not have an existing Zowe CICS CLI profile, follow these steps to crea
 
 6. Select the **+** button in the CICS tree and click the newly created profile to load it into view.
 
-![Zowe CICS Explorer profiles from config](/v2.5.x/images/ze-cics/create-profile-from-config.gif)
+![Zowe CICS Explorer profiles from config](pathname:///v2.5.x/images/ze-cics/create-profile-from-config.gif)
 
 ### Using Zowe V1 profiles
 
@@ -32,7 +32,7 @@ If you do not have an existing Zowe CICS CLI profile, follow these steps to crea
 
 Configuring a CICS region to have a connection is a system programmer task and more details can be found in [Setting up CMCI with CICSPlex SM](https://www.ibm.com/docs/en/cics-ts/5.3?topic=explorer-setting-up-cmci-cicsplex-sm) or [Setting up CMCI in a stand-alone CICS region](https://www.ibm.com/docs/en/cics-ts/5.3?topic=suace-setting-up-cmci-in-stand-alone-cics-region). If your CMCI connection is configured to use a self-signed certificate that your PC's trust store does not recognize, see [Overriding untrusted TLS certificates](ze-override-tls-certs.md).
 
-![Zowe CICS Explorer profiles](/v2.5.x/images/ze-cics/create-profile.gif)
+![Zowe CICS Explorer profiles](pathname:///v2.5.x/images/ze-cics/create-profile.gif)
 
 To show more than one CICS profiles in the tree, select the **+** button and choose from the list of profiles. Only profiles that are not already included in the CICS tree are shown.
 
@@ -50,7 +50,7 @@ To show more than one CICS profiles in the tree, select the **+** button and cho
 
 5. Click the **Refresh** button at the top level of the CICS tree or run the `Zowe Explorer for IBM CICS: Refresh` option in the command palette to refresh the Zowe Explorer for IBM CICS extension.
 
-![Zowe CICS Explorer update profiles from config](/v2.5.x/images/ze-cics/update-profile-from-config.gif)
+![Zowe CICS Explorer update profiles from config](pathname:///v2.5.x/images/ze-cics/update-profile-from-config.gif)
 
 ### Updating Zowe V1 profiles
 
@@ -62,7 +62,7 @@ To show more than one CICS profiles in the tree, select the **+** button and cho
 
 3. Once the details are updated, click the **Update Profile** button to apply the changes to the profile.
 
-   ![Zowe CICS Explorer update profiles](/v2.5.x/images/ze-cics/update-profile.gif)
+   ![Zowe CICS Explorer update profiles](pathname:///v2.5.x/images/ze-cics/update-profile.gif)
 
 ## Hiding profiles
 
@@ -72,7 +72,7 @@ To show more than one CICS profiles in the tree, select the **+** button and cho
 
 3. To unhide the profile, click the **+** button and select the profile from the quick pick list.
 
-   ![Zowe CICS Explorer hide profiles](/v2.5.x/images/ze-cics/hide-profile.gif)
+   ![Zowe CICS Explorer hide profiles](pathname:///v2.5.x/images/ze-cics/hide-profile.gif)
 
 ## Deleting profiles
 
@@ -88,7 +88,7 @@ To show more than one CICS profiles in the tree, select the **+** button and cho
 
 5. Click the **Refresh** button at the top level of the CICS tree or run the `Zowe Explorer for IBM CICS: Refresh` option in the command palette to refresh the Zowe Explorer for IBM CICS extension.
 
-![Zowe CICS Explorer delete profiles from config](/v2.5.x/images/ze-cics/delete-profile-from-config.gif)
+![Zowe CICS Explorer delete profiles from config](pathname:///v2.5.x/images/ze-cics/delete-profile-from-config.gif)
 
 ### Deleting Zowe V1 profiles
 
@@ -96,4 +96,4 @@ To show more than one CICS profiles in the tree, select the **+** button and cho
 
 2. Select **Delete Profile** and click the **Yes** button when prompted to confirm the action of permanently deleting the profile. The functionality deletes the CICS profile from the persistent storage directory `~/.zowe/profiles/cics`.
 
-![Zowe CICS Explorer delete profiles](/v2.5.x/images/ze-cics/delete-profile.gif)
+![Zowe CICS Explorer delete profiles](pathname:///v2.5.x/images/ze-cics/delete-profile.gif)

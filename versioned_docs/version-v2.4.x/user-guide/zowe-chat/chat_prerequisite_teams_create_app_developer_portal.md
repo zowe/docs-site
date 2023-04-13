@@ -10,15 +10,15 @@ Developer Portal is a Teams app that makes it easy to create or integrate your o
 
     2.  Click the Apps icon at the bottom left of your Microsoft Teams window to open the Apps pane.
 
-        ![Apps pane](/v2.4.x/images/zowe-chat/teams_app_panel2.png)
+        ![Apps pane](pathname:///v2.4.x/images/zowe-chat/teams_app_panel2.png)
 
     3.  Search for Developer Portal with the search bar.
 
-        ![Developer Portal](/v2.4.x/images/zowe-chat/teams_developer_protal.png)
+        ![Developer Portal](pathname:///v2.4.x/images/zowe-chat/teams_developer_protal.png)
 
     4.  Select Developer Portal and click **Add**.
 
-        ![Add Developer Portal](/v2.4.x/images/zowe-chat/teams_app_add2.png)
+        ![Add Developer Portal](pathname:///v2.4.x/images/zowe-chat/teams_app_add2.png)
 
         You can see the home page of Developer Portal.
 
@@ -26,33 +26,33 @@ Developer Portal is a Teams app that makes it easy to create or integrate your o
 
     1.  Click the **Apps** icon at the top of the home page of Developer Portal to open the Apps pane.
 
-        ![Apps pane](/v2.4.x/images/zowe-chat/teams_app_pane.png)
+        ![Apps pane](pathname:///v2.4.x/images/zowe-chat/teams_app_pane.png)
 
     2.  Click the **New app** icon to create a new app.
 
-        ![Create a new app](/v2.4.x/images/zowe-chat/teams_create_app.png)
+        ![Create a new app](pathname:///v2.4.x/images/zowe-chat/teams_create_app.png)
 
     3.  In the prompted dialog, specify a short name for your app that is used for configuration in Zowe Chat as the bot username, and then click **Add**.
 
     4.  Specify the required values for your app, and then click **Save**.
 
-        ![New App pane](/v2.4.x/images/zowe-chat/new_app_panel2.png)
+        ![New App pane](pathname:///v2.4.x/images/zowe-chat/new_app_panel2.png)
 
         - For **Descriptions**, specify a short description for your app.
 
         - Specify all the required information accordingly.
 
-          ![Developer information & App URLs](/v2.4.x/images/zowe-chat/teams_information.png)
+          ![Developer information & App URLs](pathname:///v2.4.x/images/zowe-chat/teams_information.png)
 
 3.  Configure your app.
 
     1.  Switch to **Apps** pane and select the app that you created.
 
-        ![Your app](/v2.4.x/images/zowe-chat/teams_app_select.png)
+        ![Your app](pathname:///v2.4.x/images/zowe-chat/teams_app_select.png)
 
     2.  Click the **App features** icon under **Configure**, and select **Bot** in App features pane.
 
-        ![App features](/v2.4.x/images/zowe-chat/app_features.png)
+        ![App features](pathname:///v2.4.x/images/zowe-chat/app_features.png)
 
     3.  Select the bot that you created in **Identify your bot** section.
 
@@ -64,41 +64,41 @@ Developer Portal is a Teams app that makes it easy to create or integrate your o
 
     1.  Click the **App package** icon under **Publish**.
 
-        ![App package](/v2.4.x/images/zowe-chat/teams_app_package.png)
+        ![App package](pathname:///v2.4.x/images/zowe-chat/teams_app_package.png)
 
     2.  Click **Download app package** to download your app package.
 
-        ![Download your app package](/v2.4.x/images/zowe-chat/teams_download_app_package.png)
+        ![Download your app package](pathname:///v2.4.x/images/zowe-chat/teams_download_app_package.png)
 
     3.  Click the Apps icon at the bottom left of your Microsoft Teams window, and click **Manage your apps**.
 
-        ![Manage your apps](/v2.4.x/images/zowe-chat/teams_manage_your_apps.png)
+        ![Manage your apps](pathname:///v2.4.x/images/zowe-chat/teams_manage_your_apps.png)
 
     4.  Select **Upload a custom app** to add the app to a team. Upload the app package that you download in substep b.
 
-        ![Upload a custom app](/v2.4.x/images/zowe-chat/teams_upload_custom_app.png)
+        ![Upload a custom app](pathname:///v2.4.x/images/zowe-chat/teams_upload_custom_app.png)
 
     5.  Select **Add to a team** in the drill-down options.
 
-        ![Add to a team](/v2.4.x/images/zowe-chat/teams_add_team.png)
+        ![Add to a team](pathname:///v2.4.x/images/zowe-chat/teams_add_team.png)
 
     6.  Type or select a team to set up your bot.
 
-        ![Set up a bot](/v2.4.x/images/zowe-chat/teams_setup_bot.png)
+        ![Set up a bot](pathname:///v2.4.x/images/zowe-chat/teams_setup_bot.png)
 
 5.  Optional: You can also choose to publish your app to your organization's app catalog so that people in your organization can share it.
 
     1.  Click the Apps icon at the bottom left of your Microsoft Teams window, and click **Manager your apps**.
 
-        ![Manage your apps](/v2.4.x/images/zowe-chat/teams_manage_your_apps.png)
+        ![Manage your apps](pathname:///v2.4.x/images/zowe-chat/teams_manage_your_apps.png)
 
     2.  Select **Submit an app to your org** to publish your app.
 
-        ![Submit an app to your org](/v2.4.x/images/zowe-chat/teams_submit_org.png)
+        ![Submit an app to your org](pathname:///v2.4.x/images/zowe-chat/teams_submit_org.png)
 
         Your app will appear on your Apps homepage when the IT admin of your organization approves.
 
-        ![App catalog](/v2.4.x/images/zowe-chat/teams_app_catalog.png)
+        ![App catalog](pathname:///v2.4.x/images/zowe-chat/teams_app_catalog.png)
 
         Now, people in your tenant can see this app and can use it.
 

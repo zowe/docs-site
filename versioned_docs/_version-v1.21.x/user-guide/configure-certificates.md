@@ -30,7 +30,7 @@ A proper setup of trust store is mandatory to successfully start Zowe with `VERI
 
 The [Zowe architecture diagram](../getting-started/zowe-architecture.md) shows the Zowe API Mediation Layer positioned on the client-server boundary between applications such as web browsers or the Zowe CLI accessing z/OS services.  The following diagram is a section of the architecture annotated to describe the role of certificates and trust stores.  
 
-<img src={require("/v1.21.x/images/common/zowe-ssl.png").default} alt="Zowe SSL" width="700px"/> 
+<img src="pathname:///v1.21.x/images/common/zowe-ssl.png" alt="Zowe SSL" width="700px"/> 
 
 The lines shown in bold red are communication over a TCP/IP connection that is encrypted with the Zowe certificate.  
 - On the northbound edge of the API gateway, the certificate is used between client applications such as web browsers, Zowe CLI, or any other application wishing to access Zowe's REST APIs.  
@@ -68,7 +68,7 @@ The `.env` configuration file should be customized based on security rules and p
 
 The Zowe launch diagram shows the relationship between a Zowe instance directory, a Zowe runtime directory, the Zowe keystore directory, and (if used to store the Zowe certificate) the z/OS keyring.  
 
-<img src={require("/v1.21.x/images/common/zowe-directories-keys.png").default} alt="Zowe Directories" width="700"/> 
+<img src="pathname:///v1.21.x/images/common/zowe-directories-keys.png" alt="Zowe Directories" width="700"/> 
 
 You create a `KEYSTORE_DIRECTORY` in USS by using the script `zowe-setup-certificates.sh` (1) with a `-p` argument that specifies a `.env` configuration file.  
 - If the `-p` argument file `zowe-setup-certificates.env` (2) is used, the `KEYSTORE_DIRECTORY` will contain the certificate, the certificate authority, the trust store, and the JWT Secret.  

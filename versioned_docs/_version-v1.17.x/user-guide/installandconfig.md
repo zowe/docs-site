@@ -34,7 +34,7 @@ The following information is required during the installation process of the Zow
 
 The following diagram depicts the high-level structure of a Zowe installation and runtime.  
 
-<img src={require("/v1.17.x/images/common/zowe-directories.png").default} alt="Zowe Directories" width="700px"/> 
+<img src="pathname:///v1.17.x/images/common/zowe-directories.png" alt="Zowe Directories" width="700px"/> 
 
 ### RUNTIME_DIR
 

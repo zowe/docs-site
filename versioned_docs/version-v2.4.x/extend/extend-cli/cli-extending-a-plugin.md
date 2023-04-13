@@ -173,7 +173,7 @@ Issue the command: `zowe zowe-cli-sample list typicode-todos`
 Refer to `zowe zowe-cli-sample list typicode-todos --help` for more information about your command and to see how text in the command definition
 is presented to the end user. You can also see how to use your optional `--id` flag:
 
-![output](/v2.4.x/images/guides/CLI/completedSample.png)
+![output](pathname:///v2.4.x/images/guides/CLI/completedSample.png)
 
 ## Summary
 

@@ -8,15 +8,15 @@ To create a bot with Microsoft™ Azure, you need to use Microsoft Azure portal 
 
     2.  Click **Create a resource** under **Azure services**.
 
-        ![Create a resource](/stable/images/zowe-chat/azure_create.png "Create a resource")
+        ![Create a resource](pathname:///stable/images/zowe-chat/azure_create.png "Create a resource")
 
     3.  Search for **Bot Channels Registration** with the search bar and select it.
 
-        ![Bot Channels Registration](/stable/images/zowe-chat/azure_bot_channel_registration.png "Bot Channels Registration")
+        ![Bot Channels Registration](pathname:///stable/images/zowe-chat/azure_bot_channel_registration.png "Bot Channels Registration")
 
     4.  Click **Create** to create a new resource.
 
-        ![Create a resource with bot channels registration service](/stable/images/zowe-chat/azure_registration_create.png "Create a resource with Bot Channels Registration
+        ![Create a resource with bot channels registration service](pathname:///stable/images/zowe-chat/azure_registration_create.png "Create a resource with Bot Channels Registration
         service")
 
     5.  Specify the required values, where
@@ -66,7 +66,7 @@ To create a bot with Microsoft™ Azure, you need to use Microsoft Azure portal 
 
     3.  Click the **Bots** icon under **Capabilities** and click **Edit**.
 
-        ![Capabilities section](/stable/images/zowe-chat/teams_bots_menu.png "Capabilities section")
+        ![Capabilities section](pathname:///stable/images/zowe-chat/teams_bots_menu.png "Capabilities section")
 
     4.  Select **Connect to a different bot id** and specify with the Microsoft App ID that you have for your Azure bot.
 

@@ -2,7 +2,7 @@
 
 One of the great things about working with Zowe is that you can include any UI's that you have already developed in your Zowe Virtual Desktop. In this blog we look at how we do this and also show how to take advantage of a Restful API created on a JEE server within the Zowe environment.
 
-![](/v1.17.x/images/samples/reactjs/overview.png)
+![](pathname:///v1.17.x/images/samples/reactjs/overview.png)
 
 Take a look at the [Creating a RestAPI with Swagger documentation using Liberty](../extend-api/libertyAPI.md) tutorial for the background to the Restful API with Swagger documentation we will be using.
 
