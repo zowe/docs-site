@@ -536,6 +536,11 @@ If you use RACF security, take the following steps define the ZOWE class to the 
     ```
     SETROPTS CLASSACT(ZOWE)
     ```
+5. In TSO, issue the following command
+    ```
+    SETROPTS GENERIC(ZOWE) REFRESH
+    ```
+    **Note**: You must run this command before creating generic profiles within ZOWE class.
 
 For more information on RACF security administration, see the IBM Knowledge Center at [https://www.ibm.com/support/knowledgecenter/](https://www.ibm.com/support/knowledgecenter/).
 
