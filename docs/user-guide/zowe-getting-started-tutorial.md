@@ -2,12 +2,12 @@
 
 Learn how to start exploring the Zowe components, applications and plug-ins.
 
-## Use Zowe server-side components
+## Zowe server-side components
 
 - [Using Zowe Desktop](mvd-using.md)
 - [Using Zowe API Mediation Layer](api-mediation/using-api-mediation-layer.md)
 
-## Use Zowe client-side components
+## Zowe client-side components
 
 - [Using Zowe CLI](cli-using-usingcli.md)
 - [Using Zowe Explorer](ze-usage.md)
@@ -21,4 +21,4 @@ Learn how to start exploring the Zowe components, applications and plug-ins.
 
 ### Use incubator components
 
-- [Using Zowe Chat (Incubator)](zowe-chat/chat_use_interact_methods.md)
+- [Using Zowe Chat (incubator)](zowe-chat/chat_use_interact_methods.md)
