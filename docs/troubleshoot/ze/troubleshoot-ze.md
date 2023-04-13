@@ -40,4 +40,39 @@ To fix the configuration file causing the error, follow these steps:
 2. Modify the file as needed and save the changes.
 3. Reload Visual Studio Code to confirm that Zowe Explorer can read the updated file.
 
+## Missing write access to VS Code `extensions` folder
 
+In some environments, the path for VS Code extensions (typically `~/.vscode/extensions`) can be read-only. This can happen when an environment has developers share a common read-only extensions folder that is managed by an admin with write access.
+
+In these cases, Zowe Explorer fails to activate because it cannot write to the `logs` and `temp` folders in the extension path. When Zowe Explorer launches, an error message displays, as in the following examples.
+
+`logs` folder write access error:
+
+![Logs folder write access error](../../images/troubleshoot/ZE/write-access-error-logs-folder.png)
+
+`temp` folder write access error:
+
+![Logs folder write access error](../../images/troubleshoot/ZE/write-access-error-temp-folder.png)
+
+To avoid this, change the `logs` and `temp` folder locations.
+
+Follow these steps:
+
+1. In Zowe Explorer, select the **File menu**, select **Preferences**, and click on **Settings**.
+
+2. In either the **User** or **Workspace** tab, click on the **Extensions** option to open the menu.
+
+3. Select **Zowe Explorer**.
+
+4. Enter the new path in the **Logs Folder** or **Temporary Downloads Folder** fields, as in the following examples:
+
+    `logs` folder setting:
+
+    ![Logs folder write access error](../../images/troubleshoot/ZE/new-logs-folder-path.png)
+
+    `temp` folder setting:
+
+    ![Temp folder write access error](../../images/troubleshoot/ZE/new-temp-folder-path.png)
+
+    After a new path is entered, Zowe Explorer writes logs and temporary files using the corresponding path.
+    
