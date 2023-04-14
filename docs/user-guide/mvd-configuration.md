@@ -538,7 +538,7 @@ If you use RACF security, take the following steps define the ZOWE class to the 
     ```
 5. In TSO, issue the following command
     ```
-    SETROPTS GENERIC(ZOWE) REFRESH
+    SETROPTS GENERIC(ZOWE) REFRESH..
     ```
     **Note**: You must run this command before creating generic profiles within ZOWE class.
 
