@@ -75,4 +75,3 @@ Follow these steps:
     ![Temp folder write access error](../../images/troubleshoot/ZE/new-temp-folder-path.png)
 
     After a new path is entered, Zowe Explorer writes logs and temporary files using the corresponding path.
-    
