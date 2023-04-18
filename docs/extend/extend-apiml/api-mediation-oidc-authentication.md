@@ -60,10 +60,12 @@ For example Web Applications with a secure server side component can use `code g
   To access mainframe resources, users with a distributed authentication must either be directly assigned by the OIDC provider to the client application, or must be part of group which is allowed to work with the client application.     
 
 ### ESM configuration  <!-- Are these also prerequisites? -->
-* SAF/ESM must be configured to maintain mapping between mainframe and distributed user identities. 
-API ML provides Zowe CLI plugin to help administrators to generate JCL for the required mapping configuration. 
+The user identity mapping is defined as a distributed identity filter, maintained by the System Authorization Facility (SAF).
+API ML provides Zowe CLI plugin to help administrators to generate a JCL for creating the mapping configuration specific for the installed ESM. 
 
   See the [Identity Federation cli plugin]( )  <!--Add link --> documentation for details about how to use the plugin tool to set up the mapping in the ESM of your z/OS system.
+
+Alternatively administrators can use the [RACMAP command](https://www.ibm.com/docs/en/zos/2.3.0?topic=rcs-racmap-create-delete-list-query-distributed-identity-filter) to create, delete, list, and query a distributed identity filter. 
 
 ## Configure API ML to use an OIDC Access Token
 Use the following procedure to enable the feature to use an OIDC Access Token as the method of authentication for the API Mediation Layer Gateway.
