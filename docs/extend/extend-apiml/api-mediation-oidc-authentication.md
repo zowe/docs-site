@@ -60,12 +60,16 @@ For example Web Applications with a secure server side component can use `code g
   To access mainframe resources, users with a distributed authentication must either be directly assigned by the OIDC provider to the client application, or must be part of group which is allowed to work with the client application.     
 
 ### ESM configuration  <!-- Are these also prerequisites? -->
-The user identity mapping is defined as a distributed identity filter, maintained by the System Authorization Facility (SAF).
-API ML provides Zowe CLI plugin to help administrators to generate a JCL for creating the mapping configuration specific for the installed ESM. 
+The user identity mapping is defined as a distributed user identity filter, maintained by the System Authorization Facility (SAF) / External Security Manager (ESM).
+A distributed identity consists of two parts: distributed identity name, and trusted registry which governs that identity. 
+API ML provides Zowe CLI plugin to help administrators to generate a JCL for creating the mapping filter specific for the ESM installed on the target mainframe system. 
 
   See the [Identity Federation cli plugin]( )  <!--Add link --> documentation for details about how to use the plugin tool to set up the mapping in the ESM of your z/OS system.
 
-Alternatively administrators can use the [RACMAP command](https://www.ibm.com/docs/en/zos/2.3.0?topic=rcs-racmap-create-delete-list-query-distributed-identity-filter) to create, delete, list, and query a distributed identity filter. 
+Alternatively, administrators can use the installed ESM functionality to create, delete, list, and query a distributed identity filter/s:
+ - For RACF consult [RACMAP command](https://www.ibm.com/docs/en/zos/2.3.0?topic=rcs-racmap-create-delete-list-query-distributed-identity-filter).
+ - For CA Top Secret use the [IDMAP Keyword - Implement z/OS Identity Propagation Mapping](https://techdocs.broadcom.com/us/en/ca-mainframe-software/security/ca-top-secret-for-z-os/16-0/administrating/issuing-commands-to-communicate-administrative-requirements/keywords/idmap-keyword-implement-z-os-identity-propagation-mapping.html).
+ - For CA ACF2 use [IDMAP User Profile Data Records](https://techdocs.broadcom.com/us/en/ca-mainframe-software/security/ca-acf2-for-z-os/16-0/administrating/administer-records/user-profile-records/idmap-user-profile-records.html).
 
 ## Configure API ML to use an OIDC Access Token
 Use the following procedure to enable the feature to use an OIDC Access Token as the method of authentication for the API Mediation Layer Gateway.
