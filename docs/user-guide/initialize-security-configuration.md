@@ -4,6 +4,7 @@ This security configuration step is required for first time setup of Zowe. If Zo
 
 The JCL member `.SZWESAMP(ZWESECUR)` is provided to assist with the security configuration. Before submitting the `ZWESECUR` JCL member, you should customize it to match site security rules. For script driven scenarios, you can run the command `zwe init security` which uses `ZWESECUR` as a template to create a customized member in `.CUST.JCLLIB` which contains the commands needed to perform the security configuration.
 
+**Note:** Zowe supports TLS versions 1.2 and 1.3.
 ## Configuring with `zwe init security` command
 
 The `zwe init security` command reads data from `zowe.yaml` and will construct a JCL member using `ZWESECUR` as a template which is then submitted.  This is a convenience step to assist with driving Zowe configuration through a pipeline or when you prefer to use USS commands rather than directly edit and customize JCL members.
@@ -60,13 +61,13 @@ The `ZWESECUR` JCL does not perform the following initialization steps so after 
 - [Copy the JCL members for Zowe's started tasks to a PDS on proclib concatenation path](install-stc-members.md)
 - [Create VSAM data sets used by the Zowe caching service](initialize-vsam-dataset.md)
 - [Grant users permission to access z/OSMF](grant-user-permission-zosmf.md)
-- [Configure an ICSF cryptographic services environment](configure-zos-system#configure-an-icsf-cryptographic-services-environment)
-- [Configure multi-user address space (for TSS only)](configure-zos-system#configure-multi-user-address-space-for-tss-only) 
+- [Configure an ICSF cryptographic services environment](configure-zos-system.md#configure-an-icsf-cryptographic-services-environment)
+- [Configure multi-user address space (for TSS only)](configure-zos-system.md#configure-multi-user-address-space-for-tss-only) 
 
 The `ZWESECUR` JCL performs the following initialization steps so you do not need to perform them manually if you have successfully run the JCL. However, if you prefer to manually configure the z/OS environment, you must complete the following steps next.  
 
-- [User IDs and groups for the Zowe started tasks](configure-zos-system#user-ids-and-groups-for-the-zowe-started-tasks)
-- [Configure ZWESLSTC to run high availability instances under ZWESVUSR user ID](configure-zos-system#configure-zweslstc-to-run-under-zwesvusr-user-ID)
-- [Configure the cross memory server for SAF](configure-zos-system#configure-the-cross-memory-server-for-saf)
+- [User IDs and groups for the Zowe started tasks](configure-zos-system.md#user-ids-and-groups-for-the-zowe-started-tasks)
+- [Configure ZWESLSTC to run high availability instances under ZWESVUSR user ID](configure-zos-system.md#configure-zweslstc-to-run-under-zwesvusr-user-ID)
+- [Configure the cross memory server for SAF](configure-zos-system.md#configure-the-cross-memory-server-for-saf)
 
 
