@@ -101,7 +101,7 @@ enabling the optional plug-ins and services, see the IBM publication [_z/OSMF Co
 This document is intended for a first time z/OSMF setup. If z/OSMF is already configured
 on your system, you do not need to create a z/OSMF Lite configuration.
 
-This document is designed for use with a single z/OS system, not a z/OS sysplex. If you plan to run z/OSMF in a sysplex, see [_z/OSMF Configuration Guide_](https://www.ibm.com/support/knowledgecenter/en/SSLTBW_2.3.0/com.ibm.zos.v2r3.izua300/toc.htm) for multi-system considerations.
+This document is designed for use with a single z/OS system, not a z/OS sysplex. If you plan to run z/OSMF in a sysplex, see [_z/OSMF Configuration Guide_](https://www.ibm.com/docs/en/zos/2.2.0?topic=configuration-using-zosmf-in-multi-system-environment) for multi-system considerations.
 
 It is assumed that a basic level of security for z/OSMF is sufficient on the z/OS system. IBM provides a program, IZUNUSEC, to help you set up basic security for a z/OSMF Lite configuration.
 
@@ -373,7 +373,7 @@ You must enter these commands manually at subsequent IPLs. If necessary, you can
 stop z/OSMF processing by entering the STOP command for each of the started
 tasks IZUANG1 and IZUSVR1.
 
-Note: z/OSMF offers an autostart function, which you can configure to have the z/OSMF server started automatically. For more information about the autostart capability, see [_z/OSMF Configuration Guide_](https://www.ibm.com/support/knowledgecenter/SSLTBW_2.3.0/com.ibm.zos.v2r3.izua300/toc.htm).
+Note: z/OSMF offers an autostart function, which you can configure to have the z/OSMF server started automatically. For more information about the autostart capability, see [_z/OSMF Configuration Guide_](https://www.ibm.com/docs/en/zos/2.5.0?topic=configurations-autostart-concepts-in-zosmf).
 
 ####  Results
 
@@ -715,7 +715,7 @@ This document assumes that the following is true of the z/OS host system:
 
 -   Port 443 is available for use. To check this, issue either TSO command `NETSTAT SOCKET` or TSO command `NETSTAT BYTE` to determine if the port is being used.
 
--   The system host name is unique and maps to the system on which z/OSMF Lite is being installed. To retrieve this value, enter either "hostname" z/OS UNIX command or TSO command "HOMETEST". If your system uses another method of assigning the system name, such as a multi-home stack, dynamic VIPA, or System Director, see [_z/OSMF Configuration Guide_](https://www.ibm.com/support/knowledgecenter/SSLTBW_2.3.0/com.ibm.zos.v2r3.izua300/toc.htm).
+-   The system host name is unique and maps to the system on which z/OSMF Lite is being installed. To retrieve this value, enter either "hostname" z/OS UNIX command or TSO command "HOMETEST". If your system uses another method of assigning the system name, such as a multi-home stack, dynamic VIPA, or System Director, see [_z/OSMF Configuration Guide_](https://www.ibm.com/docs/en/zos/2.3.0?topic=configuration-configuring-zosmf-high-availability).
 
 -   The global mount point exists. On a z/OS 2.3 system, the system includes this directory by default. On a z/OS 2.2 system, you must create the global directory at the following location: `/global/zosmf/`.
 
@@ -723,7 +723,7 @@ If you find that a different value is used on your z/OS system, you can edit the
 
 ### Tools and techniques for troubleshooting
 
-For information about working with z/OSMF log files, see [_z/OSMF Configuration Guide_](https://www.ibm.com/support/knowledgecenter/SSLTBW_2.3.0/com.ibm.zos.v2r3.izua300/toc.htm).
+For information about working with z/OSMF log files, see [_z/OSMF Configuration Guide_](https://www.ibm.com/docs/en/zos/2.4.0?topic=troubleshooting-zosmf-log-files).
 
 #### Common messages
 
@@ -758,7 +758,7 @@ The following setting is needed for the TSO/E REST services:
 
 -   COMMON_TSO ACCT(IZUACCT) REGION(50000) PROC(IZUFPROC)
 
-Descriptions of these settings are provided in the table below. For complete details about the IZUPRMxx settings and the proper syntax for updating the member, see [_z/OSMF Configuration Guide_](https://www.ibm.com/support/knowledgecenter/SSLTBW_2.3.0/com.ibm.zos.v2r3.izua300/toc.htm).
+Descriptions of these settings are provided in the table below. For complete details about the IZUPRMxx settings and the proper syntax for updating the member, see [_z/OSMF Configuration Guide_](https://www.ibm.com/docs/en/zos/2.3.0?topic=sys1parmlib-izuprmxx-configure-zos-management-facility).
 
 If you change values in the IZUPRMxx member, you might need to customize the started procedure IZUSVR1, accordingly. For details, see [Appendix B. Modifying IZUSVR1 settings](#appendix-b-modifying-izusvr1-settings).  
 
@@ -775,7 +775,7 @@ To create an IZUPRMxx parmlib member, follow these steps:
 ---|---|---|---|
 HOSTNAME(*hostname*) | Specifies the host name, as defined by DNS, where the z/OSMF server is located. To use the local host name, enter asterisk (\*), which is equivalent to \@HOSTNAME from previous releases. If you plan to use z/OSMF in a multisystem sysplex, IBM recommends using a dynamic virtual IP address (DVIPA) that resolves to the correct IP address if the z/OSMF server is moved to a different system. | Must be a valid TCP/IP HOSTNAME or an asterisk (\*).                        | Default: \*
 HTTP_SSL_PORT(nnn)   | Identifies the port number that is associated with the z/OSMF server. This port is used for SSL encrypted traffic from your z/OSMF configuration. The default value, 443, follows the Internet Engineering Task Force (IETF) standard. **Note:** By default, the z/OSMF server uses the SSL protocol SSL_TLSv2 for secure TCP/IP communications. As a result, the server can accept incoming connections that use SSL V3.0 and the TLS 1.0, 1.1 and 1.2 protocols. | Must be a valid TCP/IP port number. Value range: 1 - 65535 (up to 5 digits) | Default: 443  
-COMMON_TSO ACCT(*account-number*) REGION(*region-size*) PROC(*proc-name*)|Specifies values for the TSO/E logon procedure that is used internally for various z/OSMF activities and by the Workflows task.|The valid ranges for each value are described in [_z/OSMF Configuration Guide_](https://www.ibm.com/support/knowledgecenter/SSLTBW_2.3.0/com.ibm.zos.v2r3.izua300/toc.htm).|Default: 443 ACCT(IZUACCT) REGION(50000) PROC(IZUFPROC)
+COMMON_TSO ACCT(*account-number*) REGION(*region-size*) PROC(*proc-name*)|Specifies values for the TSO/E logon procedure that is used internally for various z/OSMF activities and by the Workflows task.|The valid ranges for each value are described in [_z/OSMF Configuration Guide_](https://www.ibm.com/docs/en/zos/2.4.0?topic=system-izuprmxx-reference-information).|Default: 443 ACCT(IZUACCT) REGION(50000) PROC(IZUFPROC)
 USER_DIR=*filepath*  | z/OSMF data directory path. By default, the z/OSMF data directory is located in `/global/zosmf`. If you want to use a different path for the z/OSMF data directory, specify that value here, for example: USER_DIR=`/the/new/config/dir`. | Must be a valid z/OS UNIX path name. | Default: `/global/zosmf/`
 
 ## Appendix B. Modifying IZUSVR1 settings
@@ -797,7 +797,7 @@ To modify the IZUSVR1 settings, follow these steps:
 
 ## Appendix C. Adding more users to z/OSMF
 
-Your security administrator can authorize more users to z/OSMF. Simply connect the required user IDs to the z/OSMF administrator group (IZUADMIN). This group is permitted to a default set of z/OSMF resources (tasks and services). For the specific group permissions, see Appendix A in [_z/OSMF Configuration Guide_](https://www.ibm.com/support/knowledgecenter/SSLTBW_2.3.0/com.ibm.zos.v2r3.izua300/toc.htm).
+Your security administrator can authorize more users to z/OSMF. Simply connect the required user IDs to the z/OSMF administrator group (IZUADMIN). This group is permitted to a default set of z/OSMF resources (tasks and services). For the specific group permissions, see Appendix A in [_z/OSMF Configuration Guide_](https://www.ibm.com/docs/en/zos/2.2.0?topic=ins-managing-user-access-zosmf-tasks-links).
 
 You can create more user groups as needed, for example, one group per z/OSMF task.
 

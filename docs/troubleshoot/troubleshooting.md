@@ -1,4 +1,4 @@
-# Troubleshooting
+# Troubleshooting overview
 
 To isolate and resolve Zowe&trade; problems, you can use the troubleshooting and support information.
 
@@ -33,10 +33,19 @@ Some common problems with Zowe are documented, along with their solutions or wor
 
 You can also find error messages and codes, must-gathers, and information about how to get community support in these topics.
 
+### Troubleshooting Zowe server-side components
+
+- [Troubleshooting Zowe Launcher](./launcher/launcher-troubleshoot.md)
+- [Troubleshooting Zowe z/OS component startup](troubleshoot-zos-startup.md)
 - [Troubleshooting API Mediation Layer](troubleshoot-apiml.md)
 - [Troubleshooting Zowe Application Framework](./app-framework/app-troubleshoot.md)
+
+
+### Troubleshooting Zowe client-side components
+
 - [Troubleshooting Zowe CLI](./cli/troubleshoot-cli.md)
-- [Troubleshooting Zowe Launcher](./launcher/launcher-troubleshoot.md)
+- [Troubleshooting Zowe Explorer](./ze/troubleshoot-ze.md)
+- [Troubleshooting Zowe Chat](./zowe-chat-troubleshoot/troubleshooting.md)
 - [Troubleshooting Zowe IntelliJ plug-in](troubleshoot-intellij.md)
 
 ## Verifying a Zowe release's integrity

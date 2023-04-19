@@ -51,13 +51,13 @@ This section describes the requirements that an API service needs to satisfy to 
 
 If you have a service that cannot be changed to adopt the Zowe authentication token, the service can utilize Zowe SSO if the API service is able to handle PassTickets. 
 
-**Note:** For more information, see [Enabling PassTicket creation for API Services that Accept PassTickets](api-mediation-passtickets.md) for more details.
+**Note:** For more information, see [Enabling PassTicket creation for API Services that Accept PassTickets](authentication-for-apiml-services.md#authentication-with-passtickets) for more details.
 
 ## Further resources
 
 * [Authentication Methods](./authentication-for-apiml-services/#supported-authentication-methods)
-* [User guide for SSO in Zowe CLI ](https://docs.zowe.org/stable/user-guide/cli-usingcli#accessing-multiple-services-with-sso)
-* [System requirements for using web tokens for SSO in Zlux and ZSS](https://docs.zowe.org/stable/user-guide/systemrequirements#using-web-tokens-for-sso-on-zlux-and-zss)
-* [Certificate configuration for the usage of web tokens for SSO in Zlux and ZSS](https://docs.zowe.org/stable/user-guide/configure-certificates#using-web-tokens-for-sso-on-zlux-and-zss) 
+* [User guide for SSO in Zowe CLI ](/docs/user-guide/cli-using-integrating-apiml.md/#accessing-multiple-services-with-sso)
+* [System requirements for using web tokens for SSO in Zlux and ZSS](/docs/user-guide/systemrequirements.md)
+
 
 
