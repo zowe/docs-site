@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>endevor add element</title>
+<link rel="stylesheet" href="../css/bundle-docs.css">
+<link rel="stylesheet" href="../css/docs.css">
+<article class="markdown-body">
+<h2><a href="zowe.html">zowe</a> › <a href="zowe_endevor.html">endevor</a> › <a href="zowe_endevor_add.html">add</a> › <a href="zowe_endevor_add_element.html">element</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
+<p>The add element command lets you add an Element to an Environment entry Stage in Endevor.</p>
+<h4>Usage</h4>
+<p>zowe endevor add element &lt;element&gt; [options]</p>
+<h4>Positional Arguments</h4>
+<ul>
+<li>
+<p><code>element</code>		 <em>(string)</em></p>
+<ul>
+<li>Name of the Endevor element.</li>
+</ul>
+</li>
+</ul>
+<h4>endevor-location definition options</h4>
+<ul>
+<li>
+<p><code>--environment</code> | <code>--env</code> <em>(string)</em></p>
+<ul>
+<li>The Endevor environment where your project resides.</li>
+</ul>
+</li>
+<li>
+<p><code>--system</code> | <code>--sys</code> <em>(string)</em></p>
+<ul>
+<li>The Endevor system where your project resides.</li>
+</ul>
+</li>
+<li>
+<p><code>--subsystem</code> | <code>--sub</code> <em>(string)</em></p>
+<ul>
+<li>The Endevor subsystem where your project resides.</li>
+</ul>
+</li>
+<li>
+<p><code>--type</code> | <code>--typ</code> <em>(string)</em></p>
+<ul>
+<li>Name of the Endevor element's type.</li>
+</ul>
+</li>
+<li>
+<p><code>--ccid</code> | <code>--cci</code> <em>(string)</em></p>
+<ul>
+<li>The CCID you want to use when performing an Element action.</li>
+</ul>
+</li>
+<li>
+<p><code>--comment</code> | <code>--com</code> <em>(string)</em></p>
+<ul>
+<li>The comment you want to have when performing an Element action</li>
+</ul>
+</li>
+<li>
+<p><code>--maxrc</code> <em>(number)</em></p>
+<ul>
+<li>
+<p>The maximum value of the return code of a successful action. When the return code is greater than the maxrc value, the command fails</p>
+<p>Default value: 8</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--instance</code> | <code>-i</code> <em>(string)</em></p>
+<ul>
+<li>Specifies Endevor Web Services dataSource name.</li>
+</ul>
+</li>
+</ul>
+<h4>input sources options</h4>
+<ul>
+<li>
+<p><code>--from-file</code> | <code>--ff</code> <em>(string)</em></p>
+<ul>
+<li>Use this input to provide source file.</li>
+</ul>
+</li>
+<li>
+<p><code>--from-dataset</code> | <code>--fd</code> <em>(string)</em></p>
+<ul>
+<li>Use this input to provide source data set name.</li>
+</ul>
+</li>
+<li>
+<p><code>--from-member</code> | <code>--fm</code> <em>(string)</em></p>
+<ul>
+<li>Use this input to provide source member name in the data set.</li>
+</ul>
+</li>
+<li>
+<p><code>--from-path</code> | <code>--fp</code> <em>(string)</em></p>
+<ul>
+<li>Use this input to provide the path of source USS file. It must be used with from-uss-file.</li>
+</ul>
+</li>
+<li>
+<p><code>--from-uss-file</code> | <code>--fuf</code> <em>(string)</em></p>
+<ul>
+<li>Use this input to provide source USS file name. It must be used with from-path</li>
+</ul>
+</li>
+</ul>
+<h4>options</h4>
+<ul>
+<li>
+<p><code>--override-signout</code> | <code>--os</code> <em>(boolean)</em></p>
+<ul>
+<li>Specify if you want to override the Signout of an Endevor element while performing this action.</li>
+</ul>
+</li>
+<li>
+<p><code>--new-version</code> | <code>--nv</code> <em>(number)</em></p>
+<ul>
+<li>Assign a different version number to the Element.</li>
+</ul>
+</li>
+<li>
+<p><code>--proc-group</code> | <code>--pg</code> <em>(string)</em></p>
+<ul>
+<li>The Endevor processor group you would like to use.</li>
+</ul>
+</li>
+<li>
+<p><code>--generate</code> | <code>-g</code> <em>(boolean)</em></p>
+<ul>
+<li>Specifies if you want to Generate Element after Add/Update action.</li>
+</ul>
+</li>
+<li>
+<p><code>--get-fingerprint</code> | <code>--gfg</code> <em>(boolean)</em></p>
+<ul>
+<li>
+<p>Return fingerprint of a retrieved, added or updated element as the first line of the response.</p>
+<p>Default value: false</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--fingerprint</code> | <code>--fg</code> <em>(string)</em></p>
+<ul>
+<li>Specifies the fingerprint of the element to Add or Update. Use value 'NEW' when adding a new element that shouldn't exist in the map yet.</li>
+</ul>
+</li>
+</ul>
+<h4>endevor session definition options</h4>
+<ul>
+<li>
+<p><code>--host</code> | <code>--hostname</code> <em>(string)</em></p>
+<ul>
+<li>Specifies the base host name.</li>
+</ul>
+</li>
+<li>
+<p><code>--port</code> | <code>-p</code> <em>(string)</em></p>
+<ul>
+<li>Specifies the port number.</li>
+</ul>
+</li>
+<li>
+<p><code>--protocol</code> | <code>--prot</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>Specifies the protocol used for connecting to Endevor Rest API</p>
+<p>Default value: https<br>
+Allowed values: http, https</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--user</code> | <code>--username</code> <em>(string)</em></p>
+<ul>
+<li>Specifies the user name.</li>
+</ul>
+</li>
+<li>
+<p><code>--password</code> | <code>--pass</code> <em>(string)</em></p>
+<ul>
+<li>Specifies the user's password.</li>
+</ul>
+</li>
+<li>
+<p><code>--reject-unauthorized</code> | <code>--ru</code> <em>(boolean)</em></p>
+<ul>
+<li>Specify this option to have the server certificate verified against the list of supplied CAs</li>
+</ul>
+</li>
+<li>
+<p><code>--base-path</code> | <code>--bp</code> <em>(string)</em></p>
+<ul>
+<li>Specifies the base path used for connecting to Endevor Rest API</li>
+</ul>
+</li>
+</ul>
+<h4>output customization options</h4>
+<ul>
+<li>
+<p><code>--suppress-messages</code> | <code>--sm</code> <em>(boolean)</em></p>
+<ul>
+<li>Suppress all [INFO]/[WARN] messages from terminal output.</li>
+</ul>
+</li>
+<li>
+<p><code>--report-file</code> | <code>--file-name</code> <em>(string)</em></p>
+<ul>
+<li>File name for saving reports from Endevor SCM locally.</li>
+</ul>
+</li>
+<li>
+<p><code>--report-dir</code> <em>(string)</em></p>
+<ul>
+<li>Directory for saving reports from Endevor SCM locally, if --report-file wasn't specified. Defaults to current directory.</li>
+</ul>
+</li>
+<li>
+<p><code>--write-report</code> <em>(boolean)</em></p>
+<ul>
+<li>Write the endevor reports to a file. By default, when return code is 0, no report will be written, unless this option is specified. When return code is bigger than 0, reports will be written to a file, unless this option is specifed to be false</li>
+</ul>
+</li>
+</ul>
+<h4>Profile Options</h4>
+<ul>
+<li>
+<p><code>--endevor-profile</code> | <code>--endevor-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (endevor) profile to load for this command execution.</li>
+</ul>
+</li>
+<li>
+<p><code>--endevor-location-profile</code> | <code>--endevor-location-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (endevor-location) profile to load for this command execution.</li>
+</ul>
+</li>
+<li>
+<p><code>--base-profile</code> | <code>--base-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (base) profile to load for this command execution.</li>
+</ul>
+</li>
+</ul>
+<h4>Base Connection Options</h4>
+<ul>
+<li>
+<p><code>--token-type</code> | <code>--tt</code> <em>(string)</em></p>
+<ul>
+<li>The type of token to get and use for the API. Omit this option to use the default token type, which is provided by 'zowe auth login'.</li>
+</ul>
+</li>
+<li>
+<p><code>--token-value</code> | <code>--tv</code> <em>(string)</em></p>
+<ul>
+<li>The value of the token to pass to the API.</li>
+</ul>
+</li>
+<li>
+<p><code>--cert-file</code> <em>(local file path)</em></p>
+<ul>
+<li>The file path to a certificate file to use for authentication</li>
+</ul>
+</li>
+<li>
+<p><code>--cert-key-file</code> <em>(local file path)</em></p>
+<ul>
+<li>The file path to a certificate key file to use for authentication</li>
+</ul>
+</li>
+</ul>
+<h4>Examples</h4>
+<ul>
+<li>
+<p>Add element from local file with endevor profile set up:</p>
+<ul>
+<li><code>zowe endevor add element elementName --env ENV --sys SYS --sub SUB --typ TYPE --ff localfile.txt -i ENDEVOR</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe endevor add element elementName --env ENV --sys SYS --sub SUB --typ TYPE --ff localfile.txt -i ENDEVOR">Copy</button></li>
+</ul>
+</li>
+</ul>
+</article>
+<script src="../js/bundle-docs.js"></script>
+<script src="../js/docs.js"></script>
