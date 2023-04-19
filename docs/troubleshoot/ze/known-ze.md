@@ -1,6 +1,6 @@
 # Known Zowe Explorer issues
 
-The following topics contain information that can help you troubleshoot problems when you encounter unexpected behavior, using Zowe Explorer.
+The following topics contain information that can help you troubleshoot problems when you encounter unexpected behavior when using Zowe Explorer.
 
 ## Bidirectional languages
 
@@ -48,3 +48,21 @@ Detail: File seems to be binary and cannot be opened as text. This is likely cau
 **Solution:**
 
 There is no solution or workaround at this time.
+
+## Theia Mainframe Connection Error
+
+**Symptom:**
+
+When performing an action that requires a mainframe connection (such as searching for data sets), you get a proxy error.
+
+**Sample message:**
+
+"z/OSMF REST API Error" that includes the message `Failed to establish a socket connection to proxies`, as in the following image:
+
+![Proxy Support set to off](../../images/ze/ZE-socket-connection-error.png)
+
+**Solution:**
+
+In Theia settings, search for `proxy` and change the http.proxySupport setting to `off`, as in the following image:
+
+![Proxy Support set to off](../../images/ze/ZE-proxy-support-off.png)

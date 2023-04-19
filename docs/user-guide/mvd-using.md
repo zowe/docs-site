@@ -93,7 +93,7 @@ Use the Languages setting in the Preferences panel to change the desktop languag
 
 Application plugins are applications that you can use to access the mainframe and to perform various tasks. Zowe's official server download contains some built-in plugins as described below. 
 
-Additional plugins can be added to the Desktop, and are packaged and installed as Extensions to Zowe. [See here for how to install extensions](install-configure-zos-extensions.md) 
+Additional plugins can be added to the Desktop, and are packaged and installed as Extensions to Zowe. [See here for how to install extensions](install-configure-zos-extensions).
 
 Developers can create application plug-ins to put into extensions, and developers should [read the extending guide for more information](../extend/extend-desktop/mvd-extendingzlux).
 
