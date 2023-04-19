@@ -36,14 +36,14 @@ API ML uses the following authentication methods:
 - **OIDC authentication**
  
   API ML is now able to authenticate mainframe users with external/distributed IDP (OIDC provider), such as OKTA, KeyCloak and others.
-  Client applications can ask their users to login at OIDC provider's authentication page and then access APIs with the JWT provided by the external IDP. The basic flow is:
-  - The client application intiates OIDC authentication flow with the distributed IDP  
-  - The user provides their credentials as required at the provider's authentication page/end-point
-  - The client application obtains authorization in form of code that is exchanged for access JWT token (eventually also Identity JWT and Refresh JWT)
-  - The client application passes the access JWT token to the API ML GW with subsequent requests for mainframe resources
+  Client applications can ask their users to log in at OIDC provider's authentication page, and then access APIs with the JWT provided by the external IDP. The following process outlines that basic flow:
+  - The client application intiates OIDC authentication flow with the distributed IDP.  
+  - The user provides credentials as required at the provider's authentication page/end-point.
+  - The client application obtains authorization in the form of code that is exchanged for access JWT token (or an Identity JWT and Refresh JWT).
+  - The client application passes the access JWT token to the API ML Gateway with subsequent requests for mainframe resources.
   - API ML federates the user identities and calls the requested resource with appropriate mainframe user credentials
 
-For more information please read the detailed explanation of the [OIDC authentication and Identity Federation](api-mediation-oidc-authentication.md)
+For more information, see the detailed explanation of the [OIDC authentication and Identity Federation](api-mediation-oidc-authentication.md)
 
 ### Zowe API ML services
 
@@ -153,4 +153,4 @@ You can also use the `/gateway/api/v1/auth/keys/public/all` endpoint to obtain a
 
 Your z/OSMF instance can be enabled to support JWT tokens as described at [Enabling JSON Web Token support](https://www.ibm.com/support/knowledgecenter/SSLTBW_2.4.0/com.ibm.zos.v2r4.izua300/izuconfig_EnableJSONWebTokens.htm).
 In this case, the Zowe API ML uses this JWT token and does not generate its own Zowe JWT token. All authentication APIs, such as `/gateway/api/v1/login` and `/gateway/api/v1/check` function in the same way as without z/OSMF JWT.
-Gateway service endpoint `/gateway/api/v1/auth/keys/public/all` serves the z/OSMF JWK that can be used for JWT signature validation.
+The Gateway service endpoint `/gateway/api/v1/auth/keys/public/all` serves the z/OSMF JWK that can be used for JWT signature validation.
