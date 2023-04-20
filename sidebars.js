@@ -128,8 +128,6 @@ module.exports = {
                     "user-guide/import-certificates.md",
                     "user-guide/generate-certificates.md",
                     "user-guide/use-certificates.md",
-                    "user-guide/configure-certificates-keystore",
-                    "user-guide/configure-certificates-keyring",
                     "user-guide/certificates-setup",
                   ],
                 },
