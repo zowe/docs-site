@@ -7,6 +7,7 @@ When you install Zowe&trade; on z/OS, you install the following two parts:
    - Zowe API Mediation Layer
    - Z Secure Services (ZSS)
 
+[![Roadmap]](deploy.drawio.svg)
 
 2. The Zowe Cross Memory Server, also known as ZIS, which is an APF authorized server application that provides privileged services to Zowe in a secure manner.
 
