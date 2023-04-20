@@ -1,17 +1,6 @@
-# Configuring PKCS12 certificates
+# Generate a certificate if you don't have a certificate
 
-Zowe is able to use PKCS12 certificates that are stored in USS.  This certificate is used for encrypting TLS communication between Zowe clients and the Zowe z/OS servers, as well as intra z/OS Zowe server to Zowe server.  Zowe uses a `keystore` directory to contain its external certificate, and a `truststore` directory to hold the public keys of servers it communicate with (for example z/OSMF).  
-
-Using USS PKCS12 certificates is useful for proof of concept projects using a self signed certificates.  For production usage of Zowe it is recomended to work with certificates held in z/OS keyrings.  Working with z/OS keyrings may require system administrator priviledges and working with your z/OS security team, so the self signed PKCS12 path is provided to assist with configuring and launching test and scratch Zowe instances.  
-
-## Use a PKCS12 certificate
-
-When Zowe is launched details for the PKCS12 certificate used are specified in the `zowe.yaml` section `certificates`.  This contains information for the certificate name and its location, together with the truststore location.  
-
-The two most common scenario for using a PKCS12 certtificate are where you have been given an existing certificate and wish to configure Zowe to use it, or else you do not have a certificate and wish to generate a new one.  The `zwe init certificate` command supports both scenarios.  The input parameters that control certificate configuration
-are specified in the section `zowe.setup.certificates`
-
-## Create a self signed PKCS12 certificate
+## Create a self-signed PKCS12 certificate 
 
 The following `zowe.yaml` example will generate: 
 
@@ -102,21 +91,79 @@ Because `--update-config` was specified the `zowe.certificates` section's values
       certificateAuthorities: /global/zowe/keystore/local_ca/local_ca.cer
 ```
 
-When using a self-signed certificate, you will be challenged by your browser when logging in to Zowe to accept its untrusted certificate authority.  Depending on the browser you are using there are different ways to proceed.  
+When using a self-signed certificate, you will be challenged by your browser when logging in to Zowe to accept its untrusted certificate authority.  Depending on the browser you are using there are different ways to proceed.
 
-### Manually import a certificate authority into a web browser
+## Create a self signed JCERACFKS certificate
 
-To avoid the browser untrusted CA challenge, you can import Zowe's certificates into the browser to avoid untrusted network traffic challenges. For more information, see [Import the local CA certificate to your browser](../extend/extend-apiml/certificate-management-in-zowe-apiml.md/#import-the-local-ca-certificate-to-your-browser).
+The following `zowe.yaml` example will generate:
 
-To avoid requiring each browser to trust the CA that signed the Zowe certificate, you can use a public certificate authority such as _Symantec_, _Comodo_, _Let's Encrypt_, or _GoDaddy_to create a certificate. These certificates are trusted by all browsers and most REST API clients. This option, however, requires a manual process to request a certificate and may incur a cost payable to the publicly trusted CA.
+ - A `JCERACFKS` certificate, specified in `zowe.setup.certificate.type` 
+ - A keyring named `ZoweKeyring` specified in  `zowe.setup.certificate.keyring.name`. 
+ - A certificate with the label `localhost` specified in `zowe.setup.certificate.keyring.label`  
+ - A certificate authority with the label `localca` specified in  `zowe.setup.certificate.keyring.caLabel` with a common name `Zowe Service CA`.
 
-<!--
+```
+zowe:
+  setup:
+    certificate:
+      # Type of certificate storage. Valid values are: PKCS12 or JCERACFKS
+      type: JCERACFKS
+      keyring:
+        name: Zowe Keyring
+        label: localhost
+        caLabel: localca
+      dname:
+        caCommonName: Zowe Service CA
+        commonName:
+        orgUnit:
+        org:
+        locality:
+        state:
+        country:
+      validity: 3650
+```
 
-## Import an existing self signed PKCS12 certificate
+The follow command output shows generation of a self signed JCERACFKS certificate using the default values.  Some detailed output messages have been omitted.
 
-**TODO**
+When the command is run a customized JCL member name in created the `CUST.JCLLIB` data set.  The PDS name is defined in the `zowe.setup.dataset.jcllib` property.  In the sample below the PDS meember `USER.ZWEV2.CUST.JCLLIB(ZW101431)` is created that contains the security manager commands and then submitted as a job ID `ZWEKRING(JOB03054)`.  
 
-## SSO
+```
+#>zwe init certificate -c ./zowe.yaml --update-config
+-------------------------------------------------------------------------------
+>> Generate Zowe certificate in keyring
 
-**TODO**
--->
+>>>> Modify ZWEKRING
+    - IBMUSER.ZWEV2.CUST.JCLLIB(ZW101431) is prepared
+>>>> Submit IBMUSER.ZWEV2.CUST.JCLLIB(ZW101431)
+    - Job ZWEKRING(JOB03054) ends with code 0 (COMPLETED).
+>> Certificate is generated in keyring successfully.
+
+-------------------------------------------------------------------------------
+>> Update certificate configuration to ./zowe.yaml
+>> Zowe configuration is updated successfully.
+
+#>
+```
+
+Even though the job ends with code 0 there may be failures in the individual steps.  It is advised to check the job output.  The security manager commands in the job will be generated based on the value of `zowe.security.product`, and the job steps for each product are broken apart by security manager.  
+
+Because the `--update-config` parameter was specified the runtime configuration section of `zowe.yaml` is updated to match the values to the generated keystore, certificate, and certificate authority.  
+Note: `zowe.certificate.keystore.password` has a hardcoded password field. However, if you are using `type: PKCS12`, the password field must be the real password.
+
+```
+zowe:
+  certificate:
+    keystore:
+      alias: localhost
+      password: 'password'
+      file: safkeyring://ZWESVUSR/ZoweKeyring
+      type: JCERACFKS
+    truststore:
+      type: JCERACFKS
+      file: safkeyring://ZWESVUSR/ZoweKeyring
+      password:
+    pem:
+      key:
+      certificate:
+      certificateAuthorities: safkeyring://ZWESVUSR/ZoweKeyring&localca
+```
