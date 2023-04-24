@@ -3,8 +3,8 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>IProfOpts | Zowe Node.js SDK - v2.7.0</title>
-	<meta name="description" content="Documentation for Zowe Node.js SDK - v2.7.0">
+	<title>IProfOpts | Zowe Node.js SDK - v2.8.0</title>
+	<meta name="description" content="Documentation for Zowe Node.js SDK - v2.8.0">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
 </head>
@@ -22,7 +22,7 @@
 						<li class="state loading">Preparing search index...</li>
 						<li class="state failure">The search index is not available</li>
 					</ul>
-					<a href="../index.html" class="title">Zowe Node.js SDK - v2.7.0</a>
+					<a href="../index.html" class="title">Zowe Node.js SDK - v2.8.0</a>
 				</div>
 				<div class="table-cell" id="tsd-widgets">
 					<div id="tsd-filter">
@@ -90,6 +90,7 @@
 						<section class="tsd-index-section ">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_zowe_imperative.iprofopts.html#credmgroverride" class="tsd-kind-icon">cred<wbr>Mgr<wbr>Override</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_zowe_imperative.iprofopts.html#overridewithenv" class="tsd-kind-icon">override<wbr>With<wbr>Env</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_zowe_imperative.iprofopts.html#requirekeytar" class="tsd-kind-icon">require<wbr>Keytar</a></li>
 							</ul>
@@ -100,12 +101,30 @@
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Properties</h2>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="credmgroverride" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> cred<wbr>Mgr<wbr>Override</h3>
+					<div class="tsd-signature tsd-kind-icon">cred<wbr>Mgr<wbr>Override<span class="tsd-signature-symbol">:</span> <a href="_zowe_imperative.icredentialmanagerinit.html" class="tsd-signature-type">ICredentialManagerInit</a></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.12.0/packages/config/src/doc/IProfOpts.ts#L45">@zowe/imperative/packages/config/src/doc/IProfOpts.ts:45</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Overrides the credential manager class used to load and store secure
+								properties. If undefined, the default implementation is to use the
+								Imperative {@link KeytarCredentialManager} which will <code>require(&quot;keytar&quot;)</code>
+							from the caller app&#39;s node_modules folder.</p>
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
 					<a name="overridewithenv" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagOptional">Optional</span> override<wbr>With<wbr>Env</h3>
 					<div class="tsd-signature tsd-kind-icon">override<wbr>With<wbr>Env<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.9.0/packages/config/src/doc/IProfOpts.ts#L27">@zowe/imperative/packages/config/src/doc/IProfOpts.ts:27</a></li>
+							<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.12.0/packages/config/src/doc/IProfOpts.ts#L29">@zowe/imperative/packages/config/src/doc/IProfOpts.ts:29</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -122,7 +141,7 @@
 					<div class="tsd-signature tsd-kind-icon">require<wbr>Keytar<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">NodeModule</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.9.0/packages/config/src/doc/IProfOpts.ts#L34">@zowe/imperative/packages/config/src/doc/IProfOpts.ts:34</a></li>
+							<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.12.0/packages/config/src/doc/IProfOpts.ts#L37">@zowe/imperative/packages/config/src/doc/IProfOpts.ts:37</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -131,6 +150,10 @@
 								secure credentials. If undefined, the default implementation is to
 							<code>require(&quot;keytar&quot;)</code> from the caller app&#39;s node_modules folder.</p>
 						</div>
+						<dl class="tsd-comment-tags">
+							<dt>deprecated</dt>
+							<dd></dd>
+						</dl>
 					</div>
 					<div class="tsd-type-declaration">
 						<h4>Type declaration</h4>
@@ -204,6 +227,9 @@
 							<li class="current tsd-kind-interface tsd-parent-kind-module">
 								<a href="_zowe_imperative.iprofopts.html" class="tsd-kind-icon">IProf<wbr>Opts</a>
 								<ul>
+									<li class=" tsd-kind-property tsd-parent-kind-interface">
+										<a href="_zowe_imperative.iprofopts.html#credmgroverride" class="tsd-kind-icon">cred<wbr>Mgr<wbr>Override</a>
+									</li>
 									<li class=" tsd-kind-property tsd-parent-kind-interface">
 										<a href="_zowe_imperative.iprofopts.html#overridewithenv" class="tsd-kind-icon">override<wbr>With<wbr>Env</a>
 									</li>
