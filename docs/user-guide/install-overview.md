@@ -1,11 +1,14 @@
 # Overview
 
 The installation of Zowe&trade; consists of the following processes:
-- installation of the Zowe server components.
+
+- Installation of the Zowe server-side components.
 
    You can install the components either on z/OS only or you can install the components both on z/OS and on Docker.
    
-- installation of Zowe CLI on a desktop computer.
+- Installation of Zowe client-side components.
+
+   You can install Zowe CLI or Zowe Explorer, a Visual Studio Code extension powered by Zowe CLI.
 
 The Zowe server components provide a web desktop that runs a number of applications such as API Mediation Layer that includes the Single Sign-on (SSO) capability, organization of the multiple Zowe servers under a single website, and other useful features for z/OS developers. 
 
