@@ -55,11 +55,11 @@ To log out of the API ML:
 zowe auth logout
 ```
 
-The token expires. Log in again to obtain a new token.
+This causes the token to expire. Log in again to obtain a new token.
 
 ## Accessing a service through API ML
 
-To access mainframe services through API ML using the token in your base profile, use the following commands options:
+To access mainframe services through API ML using the token in your base profile, use the following command options:
 
 * `--base-path`: Indicates the base path of the API ML instance that you want to access.
 
