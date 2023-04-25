@@ -86,7 +86,7 @@ The `zwe init` command runs the subcommands in sequence automatically. You can c
 
    If Zowe has already been launched on a z/OS system from a previous release of Zowe v2 you can skip this security configuration step unless told otherwise in the release documentation.
 
-1. [Configure Zowe to use TLS certificates.](configure-certificates.md) (`zwe init certificate`)
+1. Configure Zowe to use TLS certificates.(`zwe init certificate`)
 1. [Install Zowe main started tasks](install-stc-members.md). (`zwe init stc`)
 1. [Configure the z/OS system for Zowe](configure-zos-system.md).
 1. [Verify the installation](verify-zowe-runtime-install.md). Verify that Zowe is installed correctly on z/OS.
