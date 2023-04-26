@@ -10,7 +10,7 @@ Zowe provides the ability to generate a certificate using the `zwe init certific
 
 In addition to Zowe using the intra-address space of certificates, Zowe uses external services on z/OS (such as z/OSMF or Zowe conformant extensions that have registered themselves with the API Mediation Layer) to encrypt messages between its servers.  These services present their own certificate to the API Mediation Layer, in which case the trust store is used to capture the relationship between Zowe's southbound edge and these external certificates.  
 
-To disable the trust store validation of southbound certificates, set the value `zowe.verifyCertificates: DISABLED` in the `zowe.yaml` configuration file. A scenario when this is recommended is if the z/OSMF certificate is be self-signed or uses an untrusted CA. In this case, Zowe API Mediation Layer does not recognize the signing authority.  
+To disable the trust store validation of southbound certificates, set the value `zowe.verifyCertificates: DISABLED` in the `zowe.yaml` configuration file. A scenario when this is recommended is if the z/OSMF certificate is self-signed or uses an untrusted CA. In this case, Zowe API Mediation Layer does not recognize the signing authority.  
 
 To enable certificate validation without hostname validation, set `zowe.verifyCertificates: NONSTRICT`. Using this setting, the certificate Common Name or Subject Alternate Name (SAN) is not checked. This facilitates deployment to environments where certificates are valid but do not contain a valid hostname. This configuration is for development purposes only and should not be used for production.
 
