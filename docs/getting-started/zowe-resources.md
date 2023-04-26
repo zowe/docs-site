@@ -64,7 +64,7 @@ The [OMP Youtube channel](https://www.youtube.com/channel/UC-WTXQQtz2m5iTflJLK59
 
 **Trials**
 
-- [Zowe trial](https://early-access.ibm.com/software/support/trial/cst/welcomepage.wss?siteId=936&tabId=2216&w=1&mhsrc=ibmsearch_a&mhq=Zowe%20trial)
+- [Zowe trial](https://early-access.ibm.com/software/support/trial/cst/welcomepage.wss?siteId=936&tabId=2216&w=1&_ga=2.15671350.1464775468.1660748024-1918080361.1653724208)
 
    The Zowe trial hosted by IBM is a fully configured z/OS environment with Zowe preinstalled and set up along with a set of integrated easy-to-follow tutorials that walk you through the basics of Zowe and gives you hands-on experience of extending Zowe. This no-charge trial is available in two hours for three days. 
 
