@@ -23,9 +23,9 @@ Zowe supports certificates that are stored either in a USS directory **Java KeyS
 
 ### PKCS12 certificates in a keystore
 
-Zowe is able to use PKCS12 certificates that are stored in USS. This certificate is used for encrypting TLS communication between Zowe clients and the Zowe z/OS servers, as well as intra z/OS Zowe server to Zowe server.  Zowe uses a `keystore` directory to contain its external certificate, and a `truststore` directory to hold the public keys of servers it communicate with (for example z/OSMF).  
+Zowe is able to use PKCS12 certificates that are stored in USS. This certificate is used for encrypting TLS communication between Zowe clients and the Zowe z/OS servers, as well as intra z/OS Zowe server to Zowe server.  Zowe uses a `keystore` directory to contain its external certificate, and a `truststore` directory to hold the public keys of servers it communicates with (for example z/OSMF).  
 
-Using USS PKCS12 certificates is useful for proof of concept projects using a self signed certificates.  For production usage of Zowe it is recomended to work with certificates held in z/OS keyrings.  Working with z/OS keyrings may require system administrator priviledges and working with your z/OS security team, so the self signed PKCS12 path is provided to assist with configuring and launching test and scratch Zowe instances.
+Using USS PKCS12 certificates is useful for proof of concept projects using a self signed certificate.  For production usage of Zowe it is recomended to work with certificates held in z/OS keyrings.  Working with z/OS keyrings may require system administrator priviledges and working with your z/OS security team, so the self signed PKCS12 path is provided to assist with configuring and launching test and scratch Zowe instances.
 
 ### JCERACFKS certificates in a key ring
 
@@ -40,11 +40,11 @@ There are two ways to configure and submit `ZWEKRING`.
 
 If you use the `zwe init certificate` command this will prepare a customized JCL member using `ZWEKRING` as a template.  
 
-A number of keytring scenarios are supported
+A number of keyring scenarios are supported:
 
 - Creation of a local certificate authority (CA) which is used to sign a locally generated certificate, both of which are placed into the `ZoweKeyring`.
 - Importing an existing certificate already held in z/OS to the `ZoweKeyring` for use by Zowe.  
-- Creation of a locally generated certificated and signing it with an existing certificate authority, and placing the certificate into the key ring.
+- Creation of a locally generated certificate and signing it with an existing certificate authority, and placing the certificate into the key ring.
 
 
 ### Create a certificate authority and use it to self sign a certificate
