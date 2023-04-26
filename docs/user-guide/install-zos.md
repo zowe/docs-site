@@ -27,7 +27,7 @@ These topics and more are covered in the [Planning the installation](installandc
 
 ## Stage 2: Install the Zowe z/OS runtime
 
-![Install the Zowe z/OS runtime](/install.png)
+![Install the Zowe z/OS runtime](../images/install/install.png)
 
 1. Ensure that the software requirements are met. The prerequisites are described in [System requirements](systemrequirements-zos.md).
 
@@ -61,7 +61,7 @@ After successful installation of either a convenience build or an SMP/E build, t
 
 ## Stage 3: Configure the Zowe z/OS runtime
 
-![Configure the Zowe z/OS runtime](/config.png)
+![Configure the Zowe z/OS runtime](../images/install/install.png)
 
 You can configure the Zowe runtime with one of the following methods depending on your needs. 
 
