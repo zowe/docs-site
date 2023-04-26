@@ -5,9 +5,9 @@
 The following `zowe.yaml` example will generate: 
 
  - A `PKCS12` certificate, specified in `zowe.setup.certificate.type` 
- - A keystore directory `/global/zowe/keystore` specified in  `zowe.setup.certificate.pkcs12.directory`. 
- - A certificate name (or alias) `localhost` specified in `zowe.setup.certificate.pkcs12.name`  
- - A certificate authority name `local_ca` specified in `zowe.setup.certificate.certificate.pkcs12.caAlias`.
+ - A keystore directory `/global/zowe/keystore`, specified in  `zowe.setup.certificate.pkcs12.directory`
+ - A certificate name (or alias) `localhost`, specified in `zowe.setup.certificate.pkcs12.name`  
+ - A certificate authority name `local_ca`, specified in `zowe.setup.certificate.certificate.pkcs12.caAlias`
 
 ```
 zowe:
@@ -39,7 +39,7 @@ To assist with updating `zowe.yaml` the values to generate a self signed PKCS12 
 
 The `zwe init certificate` command will generate a certificate based on the `zowe.yaml` values in the `zowe.setup.certificate` section.  These certificate values used at runtime are referenced in the `zowe.yanl` section `zowe.certificates`. Specify `--update-config` for the `zwe` command to update the runtime `zowe.certificates` section to reference the generated certificate generated from the `zowe.setup.certificate`. 
 
-The follow command output shows generation of a self signed PKCS12 certificate using the default values.  Some detailed output messages have been omitted, but the flow can be viewed that creates the CA, creates the keystore and adds the CA to it,  create the certificate and adds that to the keystore,  creates the truststore,  changes directory permissions to restrict access to the private key.
+The following command output shows generation of a self signed PKCS12 certificate using the default values.  Some detailed output messages have been omitted, but the flow can be viewed that creates the CA, creates the keystore and adds the CA to it,  create the certificate and adds that to the keystore,  creates the truststore,  changes directory permissions to restrict access to the private key.
 
 ```
 #>zwe init certificate -c ./zowe.yaml --update-config
@@ -123,9 +123,9 @@ zowe:
       validity: 3650
 ```
 
-The follow command output shows generation of a self signed JCERACFKS certificate using the default values.  Some detailed output messages have been omitted.
+The following command output shows generation of a self signed JCERACFKS certificate using the default values.  Some detailed output messages have been omitted.
 
-When the command is run a customized JCL member name in created the `CUST.JCLLIB` data set.  The PDS name is defined in the `zowe.setup.dataset.jcllib` property.  In the sample below the PDS meember `USER.ZWEV2.CUST.JCLLIB(ZW101431)` is created that contains the security manager commands and then submitted as a job ID `ZWEKRING(JOB03054)`.  
+When the command is run, a customized JCL member name in created the `CUST.JCLLIB` data set. The PDS name is defined in the `zowe.setup.dataset.jcllib` property. In the sample below, the PDS meember `USER.ZWEV2.CUST.JCLLIB(ZW101431)` is created that contains the security manager commands and then submitted as a job ID `ZWEKRING(JOB03054)`.  
 
 ```
 #>zwe init certificate -c ./zowe.yaml --update-config
@@ -147,8 +147,8 @@ When the command is run a customized JCL member name in created the `CUST.JCLLIB
 
 Even though the job ends with code 0 there may be failures in the individual steps.  It is advised to check the job output.  The security manager commands in the job will be generated based on the value of `zowe.security.product`, and the job steps for each product are broken apart by security manager.  
 
-Because the `--update-config` parameter was specified the runtime configuration section of `zowe.yaml` is updated to match the values to the generated keystore, certificate, and certificate authority.  
-Note: `zowe.certificate.keystore.password` has a hardcoded password field. However, if you are using `type: PKCS12`, the password field must be the real password.
+Because the `--update-config` parameter was specified, the runtime configuration section of `zowe.yaml` is updated to match the values to the generated keystore, certificate, and certificate authority.  
+**Note:** `zowe.certificate.keystore.password` has a hardcoded password field. However, if you are using `type: PKCS12`, the password field must be the real password.
 
 ```
 zowe:
