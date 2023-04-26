@@ -310,7 +310,7 @@ The following use cases demonstrate the various functionalities available in Zow
 
 ### Polling a spool file
 
-Users can periodically refresh a spool file during long-running jobs to get the latest job outputs. This avoids having to close and reopen a spool file to get the latest updates.
+Users can periodically refresh a spool file during long-running jobs to get the latest job outputs. This avoids having to close and reopen a spool file to get the latest job outputs.
 
 There are two main ways to poll a spool file &mdash; automatically at set intervals or manually on demand.
 
@@ -330,7 +330,7 @@ There are two main ways to poll a spool file &mdash; automatically at set interv
 2. Navigate to the spool file by expanding its corresponding profile and job folder.
 3. Right click the spool file and select **Start Polling**.
     - Repeat this step with additional spool files to poll multiple files simultaneously.
-4. In the **Poll interval (in ms) for: &lt;spoolfilename&gt;** field, the interval value displays.
+4. The **Poll interval (in ms) for: &lt;spoolfilename&gt;** field displays the current interval value.
     - The default value is set to 5000 ms.
     - Change the value by entering a different number (must be greater than or equal to 1000 ms).
 5. Press **Enter** to confirm the interval time and start the polling action.
@@ -347,7 +347,7 @@ There are two main ways to poll a spool file &mdash; automatically at set interv
 1. In the **Side Bar**, select a spool file that is being polled.
 2. Right click the spool file and select **Stop Polling**.
 
-   The poll request is removed from the poller, and the selected spool file is no longer be marked with a "**P**" in the **Side Bar** and any corresponding **Editor** tabs.
+   The poll request is removed from the poller, and the selected spool file is no longer marked with a "**P**" in the **Side Bar** and any corresponding **Editor** tabs.
 
 #### **Polling a spool file manually**
 
