@@ -61,7 +61,7 @@ After successful installation of either a convenience build or an SMP/E build, t
 
 ## Stage 3: Configure the Zowe z/OS runtime
 
-![Configure the Zowe z/OS runtime](../images/install/install.png)
+![Configure the Zowe z/OS runtime](../images/install/config.png)
 
 You can configure the Zowe runtime with one of the following methods depending on your needs. 
 
