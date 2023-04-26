@@ -62,11 +62,7 @@ Use one of the following guides if your service is not built with Java, or you d
 
 ### Documentation for legacy enablers
 
-For legacy enabler documentation (version 1.2 and lower), refer to the previous version of the documentation:
-
-- [Zowe Docs version 1.8.x](https://docs.zowe.org/v1-8-x/extend/extend-apiml/api-mediation-onboard-overview)
-
-**Note**: Enabler version 1.2 and previous versions are no longer supported.
+Enabler version 1.2 and previous versions are no longer supported.
 
 **Tip**: We recommend you use the enabler version 1.3 or higher to onboard your REST API service to the Zowe API Medaition Layer.
 

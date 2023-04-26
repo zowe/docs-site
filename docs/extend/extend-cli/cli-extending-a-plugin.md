@@ -73,7 +73,7 @@ and to call a REST API. See the [Imperative CLI Framework documentation](https:/
 
 #### Exporting interface and programmatic API for other Node.js applications
 
-Update [zowe-cli-sample-plugin/src/index.ts](https://github.com/zowe/zowe-cli-sample-plugin/src/index.ts) to contain the following:
+Update [zowe-cli-sample-plugin/src/index.ts](https://github.com/zowe/zowe-cli-sample-plugin/blob/master/src/index.ts) to contain the following:
 
 ```typescript
 export * from "./api/doc/ITodo";
@@ -178,7 +178,7 @@ is presented to the end user. You can also see how to use your optional `--id` f
 ## Summary
 
 You extended an existing Zowe CLI plug-in by introducing a Node.js programmatic API, and you created a command definition with a handler.
-For an official plugin, you would also add [JSDoc](http://usejsdoc.org/) to your code and create automated tests.
+For an official plugin, you would also add [JSDoc](https://jsdoc.app/) to your code and create automated tests.
 
 ## Next steps
 

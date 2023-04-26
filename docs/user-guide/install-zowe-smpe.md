@@ -63,7 +63,7 @@ The Program Directory contains the following sections:
 
 ### Zowe description
 
-Zowe&trade; is an open source project created to host technologies that benefit the Z platform.  It is a sub-project of [Open Mainframe Project](https://www.openmainframeproject.org/projects) which is part of the Linux Foundation.  More information about Zowe is available at [https://zowe.org](https://zowe.org).
+Zowe&trade; is an open source project created to host technologies that benefit the Z platform.  It is a sub-project of [Open Mainframe Project](https://www.openmainframeproject.org/all-projects) which is part of the Linux Foundation.  More information about Zowe is available at [https://zowe.org](https://zowe.org).
 
 ### Zowe FMIDs
 
@@ -816,7 +816,7 @@ In this step, you run the sample job ZWE7APLY to apply Zowe. This step can take 
 
 1. Ensure that you have the latest HOLDDATA; then edit and submit sample job ZWE7APLY to perform an SMP/E APPLY CHECK for Zowe. Consult the instructions in the sample job for more information.
 
-   The latest HOLDDATA is available through several different portals, including [http://service.software.ibm.com/holdata/390holddata.html](http://service.software.ibm.com/holdata/390holddata.html). The latest HOLDDATA may identify HIPER and FIXCAT APARs for the FMIDs you will be installing. An APPLY CHECK will help you determine whether any HIPER or FIXCAT APARs are applicable to the FMIDs you are installing. If there are any applicable HIPER of FIXCAT APARs, the APPLY CHECK will also identify fixing PTFs that will resolve the APARs, if a fixing PTF is available.
+   The latest HOLDDATA is available through several different portals, including [https://service.software.ibm.com/holdata/390hdfaq.html](https://service.software.ibm.com/holdata/390hdfaq.html). The latest HOLDDATA may identify HIPER and FIXCAT APARs for the FMIDs you will be installing. An APPLY CHECK will help you determine whether any HIPER or FIXCAT APARs are applicable to the FMIDs you are installing. If there are any applicable HIPER of FIXCAT APARs, the APPLY CHECK will also identify fixing PTFs that will resolve the APARs, if a fixing PTF is available.
 
    You should install the FMIDs regardless of the status of unresolved HIPER or FIXCAT APARs. However, do not deploy the software until the unresolved HIPER and FIXCAT APARs have been analyzed to determine their applicability. That is, before deploying the software either ensure fixing PTFs are applied to resolve all HIPER or FIXCAT APARs, or ensure the problems reported by all HIPER or FIXCAT APARs are not applicable to your environment.
 
@@ -897,7 +897,9 @@ If you mount the file system in which you have installed Zowe in read-only mode 
 ## Zowe customization
 
 You can find the necessary information about customizing and using Zowe on the Zowe doc site.
-- For more information about how to customize Zowe, see [Configuring Zowe after installation](mvd-configuration.md).
-- For more information about how to use Zowe, see [Using Zowe](zowe-getting-started-tutorial.md).
+
+- For more information about how to customize Zowe, see [Configuring Zowe after installation](https://docs.zowe.org/stable/user-guide/mvd-configuration/).
+- For more information about how to use Zowe, see [Using Zowe](https://docs.zowe.org/stable/user-guide/zowe-getting-started-tutorial/).
+
 
 
