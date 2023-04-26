@@ -31,7 +31,7 @@ Using USS PKCS12 certificates is useful for proof of concept projects using a se
 
 Zowe is able to work with certificates held in a **z/OS Keyring**.  
 
-The JCL member `.SZWESAMP(ZWEKRING)` contains the security commands to create a keyring named `ZoweKeyring` and manage the certificate and certificate authoritie (CA) used by Zowe's servers to encrypt TLS communications.  The JCL contains commands for three z/OS security managers: RACF, TopSecret, and ACF/2.
+The JCL member `.SZWESAMP(ZWEKRING)` contains the security commands to create a keyring named `ZoweKeyring` and manage the certificate and certificate authority (CA) used by Zowe's servers to encrypt TLS communications.  The JCL contains commands for three z/OS security managers: RACF, TopSecret, and ACF/2.
 
 There are two ways to configure and submit `ZWEKRING`.
 
