@@ -141,6 +141,33 @@
 <li>Specifies the fingerprint of the element to Add or Update. Use value 'NEW' when adding a new element that shouldn't exist in the map yet.</li>
 </ul>
 </li>
+<li>
+<p><code>--charset</code> | <code>--char</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>Specifies the clients preferred character set when retrieving, printing or updating elements.</p>
+<p>Default value: false</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--sync</code> | <code>-s</code> <em>(boolean)</em></p>
+<ul>
+<li>Specify if you want to synchronize source and current level of the Elements while performing this action.</li>
+</ul>
+</li>
+<li>
+<p><code>--sync-with-history</code> | <code>--swh</code> <em>(boolean)</em></p>
+<ul>
+<li>Specify if you want to preserve the change history of the Elements while performing the synchronization during element update.</li>
+</ul>
+</li>
+<li>
+<p><code>--sync-fingerprint</code> | <code>--sfg</code> <em>(string)</em></p>
+<ul>
+<li>Specifies the fingerprint of the element directly up the map that the updated element should be synchronized with. Prevents the sync if the element up the map doesn't match the fingerprint.</li>
+</ul>
+</li>
 </ul>
 <h4>endevor session definition options</h4>
 <ul>
@@ -271,7 +298,7 @@ Allowed values: http, https</p>
 <li>
 <p>Update element from local file with endevor profile set up:</p>
 <ul>
-<li><code>zowe endevor update element elementName --env ENV --sys SYS --sub SUB --typ TYPE --ff localfile.txt -i ENDEVOR</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe endevor update element elementName --env ENV --sys SYS --sub SUB --typ TYPE --ff localfile.txt -i ENDEVOR">Copy</button></li>
+<li><code>zowe endevor update element elementName --env ENV --sys SYS --sub SUB --typ TYPE --ff localfile.txt -i ENDEVOR --ccid CCID --comment 'updating element'</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe endevor update element elementName --env ENV --sys SYS --sub SUB --typ TYPE --ff localfile.txt -i ENDEVOR --ccid CCID --comment 'updating element'">Copy</button></li>
 </ul>
 </li>
 </ul>
