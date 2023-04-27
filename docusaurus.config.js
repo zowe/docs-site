@@ -110,7 +110,7 @@ module.exports = {
             },
             {
               label: "Try Zowe",
-              href: "https://www.openmainframeproject.org/projects/zowe/ztrial",
+              href: "https://early-access.ibm.com/software/support/trial/cst/welcomepage.wss?siteId=936&tabId=2216&w=1",
             },
             {
               label: "Features",
