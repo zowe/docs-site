@@ -46,12 +46,17 @@ _____ Validation results for plugin '@zowe/db2-for-zowe-cli' _____
 This plugin has command errors. No plugin commands will be available.
 ```
 
-- The error also displays after any subsequent Db2 plug-in commands are run.
+When Db2 plug-in commands are run subsequently, an error displays that includes following message:
+
+```
+Command Error:
+Command failed due to improper syntax
+```
 
 **Solution:**
 
 1. Uninstall Node.js 18.16.x.
-2. Install Node.js 18.15.x.
+2. Install [Node.js 18.15.x](https://nodejs.org/download/release/v18.15.0/).
 3. Re-install [IBM Db2 Database Plug-in for Zowe CLI](../../user-guide/cli-db2plugin.md#installing).
 
 ### Reaching out for support
