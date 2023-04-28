@@ -26,11 +26,20 @@ The corresponding [IBM SDK for Node.js - z/OS documentation](https://www.ibm.com
    [PH16038](https://www.ibm.com/support/pages/apar/PH16038),
    [PH17481](https://www.ibm.com/support/pages/apar/PH17481))
 
-   **Known issue:** There is a known issue with node.js v14.17.2. It will cause the error of `ZWESLSTC not found in "<dsn-prefix>.SZWESAMP"` when you run the `zowe-install-proc.sh` utility.
-
 - v16.x
    - z/OS V2R4: PTFs [UI64830](https://www.ibm.com/support/pages/apar/PH14560), [UI64837](https://www.ibm.com/support/pages/apar/PH14560), [UI64839](https://www.ibm.com/support/pages/apar/PH14559), [UI64940](https://www.ibm.com/support/pages/apar/PH16038), [UI65567](https://www.ibm.com/support/pages/apar/PH17481).
    - z/OS V2R5: PTFs [UI64830](https://www.ibm.com/support/pages/apar/PH14560), [UI64837](https://www.ibm.com/support/pages/apar/PH15674),[UI64940](https://www.ibm.com/support/pages/apar/PH16038).
+
+- v18.x, v18.14.2 (March 2023 PTF) or later
+  - z/OS V2R4: PTFs [UI78913](https://www.ibm.com/support/pages/apar/PH41221), [UI81096](https://www.ibm.com/support/pages/apar/PH46883), [UI78103](https://www.ibm.com/support/pages/apar/PH39857), [UI80155](https://www.ibm.com/support/pages/apar/PH45663)
+  - z/OS V2R5: PTFs [UI78912](https://www.ibm.com/support/pages/apar/PH41221), [UI81095](https://www.ibm.com/support/pages/apar/PH46883), [UI80156](https://www.ibm.com/support/pages/apar/PH45672)
+
+
+### Known Issues
+
+- There is a known issue with node.js v14.17.2. It will cause the error of `ZWESLSTC not found in "<dsn-prefix>.SZWESAMP"` when you run the `zowe-install-proc.sh` utility.
+- Node versions 14 and 16 prior to March 2023 PTF may encounter high CPU when running Zowe Web Desktop with clustering enabled. This refers to versions *prior* to Node v14.21.3 and v16.19.1, respectively.
+- Node version 18 prior to the March 2023 PTF may cause Zowe to crash after a few hours of runtime.
 
 
 ## How to obtain IBM SDK for Node.js - z/OS
