@@ -72,11 +72,15 @@ There are three known problems that might cause this error.  The [Zowe architect
    - If the communication is not working, the message includes `Failure`. For example:
 
      ```
-     ZIS status - Failure (name='ZWESIS_STD      ', cmsRC=39, description='Cross-memory call ABENDed'
+     ZIS status - Failure (name='ZWESIS_STD      ', cmsRC=39, description='Cross-memory call ABENDed')
      ```
      or
      ```
      ZIS status - Failure (name='ZWESIS_STD      ', cmsRC=64, description='N/A', clientVersion=`2`)
+     ```
+     or
+     ```
+     ZIS status - Failure (name='ZWESIS_STD      ',cmsRC=47, description='N/A', clientVersion='2')
      ```
      or
      ```
