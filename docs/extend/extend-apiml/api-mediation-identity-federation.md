@@ -9,3 +9,4 @@ The Identity Federation at the API ML level allows for complex deployments made 
 The mainframe domains can be also independent and detached.
 
 A prerequisite for the Identity Federation to work is that both external and mainframe user identities be mapped in SAF, and that the distributed identity provider must be trusted by the mainframe security manager.
+See the configuration prerequisites in the (API ML OIDC Authentication)[api-mediation-oidc-authentication.md] article. 
