@@ -8,4 +8,4 @@ The Identity federation is based on the (SAF Identity Propagation mechanism)[htt
 The Identity Federation at the API ML level allows for complex deployments made of multiple mainframe systems representing individual security domains, each domain with dedicated API ML installations.
 The mainframe domains can be also independent and detached.
 
-A prerequisite for the Identity Federation to work is that both external and mainframe user identities be mapped in SAF, and that the distributed identity provider must be trusted by the mainframe security.
+A prerequisite for the Identity Federation to work is that both external and mainframe user identities be mapped in SAF, and that the distributed identity provider must be trusted by the mainframe security manager.
