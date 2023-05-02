@@ -18,7 +18,7 @@ Create a team configuration file.
 2. Hover over **DATA SETS**, **USS**, or **JOBS**.
 3. Click the **+** icon.
 4. Select **Create a New Team Configuration File**.
-5. Chose either a global configuration file or a project-level configuration file.
+5. If no workspace is open, a global configuration file is created. If a workspace is open, chose either a global configuration file or a project-level configuration file.
 6. Edit the config file to include the host information and save the file.
 7. Refresh Zowe Explorer by either clicking the button in the notification message shown after creation, `alt+z`, or the `Zowe Explorer: Refresh Zowe Explorer` command palette option.
 

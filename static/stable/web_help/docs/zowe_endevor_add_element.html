@@ -147,6 +147,15 @@
 <li>Specifies the fingerprint of the element to Add or Update. Use value 'NEW' when adding a new element that shouldn't exist in the map yet.</li>
 </ul>
 </li>
+<li>
+<p><code>--charset</code> | <code>--char</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>Specifies the clients preferred character set when retrieving, printing or updating elements.</p>
+<p>Default value: false</p>
+</li>
+</ul>
+</li>
 </ul>
 <h4>endevor session definition options</h4>
 <ul>
@@ -277,7 +286,7 @@ Allowed values: http, https</p>
 <li>
 <p>Add element from local file with endevor profile set up:</p>
 <ul>
-<li><code>zowe endevor add element elementName --env ENV --sys SYS --sub SUB --typ TYPE --ff localfile.txt -i ENDEVOR</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe endevor add element elementName --env ENV --sys SYS --sub SUB --typ TYPE --ff localfile.txt -i ENDEVOR">Copy</button></li>
+<li><code>zowe endevor add element elementName --env ENV --sys SYS --sub SUB --typ TYPE --ff localfile.txt -i ENDEVOR --ccid CCID --comment 'adding element'</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe endevor add element elementName --env ENV --sys SYS --sub SUB --typ TYPE --ff localfile.txt -i ENDEVOR --ccid CCID --comment 'adding element'">Copy</button></li>
 </ul>
 </li>
 </ul>

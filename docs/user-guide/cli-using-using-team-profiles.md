@@ -14,6 +14,17 @@ Both team and user configurations can be applied either *globally* or *per proje
 
 - A **project configuration file** resides in a directory of your choice. It contains project *user profiles* and project *team profiles*.
 
+## Zowe CLI profile types
+
+Configuration files are made up of multiple profiles that can be used by Zowe CLI. These profiles contain credentials and/or settings that are applied by the commands run in the CLI.
+
+The following profile types were introduced in Zowe V1 and continue to be used in Zowe V2:
+
+- **Service profiles** let you store connection information for specific mainframe service, such as IBM z/OSMF. Plug-ins can introduce other service profile types, such as the `cics` profile to connect to IBM CICS.
+
+- **Base profiles** let you store connection information for use with one or more services. Your service profiles can pull information from base profiles as needed, so that you can specify a common username and password once. The base profile can optionally store tokens to connect to Zowe API Mediation Layer, which improves security by enabling Multi-Factor Authentication (MFA) and Single Sign-on (SSO).
+## Benefits of team profiles
+
 Using team profiles in configuration files helps to improve the initial setup of Zowe CLI by making service connection details easier to share and easier to store within projects.
 
 Consider the following benefits of using team profiles:

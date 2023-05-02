@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>ca7 commands restart</title>
+<link rel="stylesheet" href="../css/bundle-docs.css">
+<link rel="stylesheet" href="../css/docs.css">
+<article class="markdown-body">
+<h2><a href="zowe.html">zowe</a> › <a href="zowe_ca7.html">ca7</a> › <a href="zowe_ca7_commands.html">commands</a> › <a href="zowe_ca7_commands_restart.html">restart</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
+<p>Restart a single job to CA 7.</p>
+<h4>Usage</h4>
+<p>zowe ca7 commands restart [options]</p>
+<h4>Required Options</h4>
+<ul>
+<li>
+<p><code>--ca7num</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>ca7num=0016</p>
+<p>Defines the name of the job to Restart.<br>
+Indicates the individual job to Restart, and the value must be a CA 7 job number.</p>
+</li>
+</ul>
+</li>
+</ul>
+<h4>Options</h4>
+<ul>
+<li>
+<p><code>--bypgdg</code> | <code>--bp</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>bypgdg={NO|YES|VER|CAT}</p>
+<p>Indicates whether CA Workload Automation Restart Option for z/OS Schedulers bypasses GDG logic on a restart/rerun.<br>
+Value can be NO, YES, VER, or CAT.</p>
+<p>Default: CA Workload Automation Restart Option for z/OS Schedulers default value</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--condcd</code> | <code>--cc</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>condcd=nnnn</p>
+<p>Indicates an optional CA Workload Automation Restart Option for z/OS Schedulers condition code<br>
+that the CA Workload Automation Restart Option for z/OS Schedulers step sets when the rerun is executed.</p>
+<p>This option is honored only if CA Workload Automation Restart Option for z/OS Schedulers is in use<br>
+and CA Workload Automation CA 7® Edition is inserting the RMS step.<br>
+See the INSERT-RMS field on the DB.1 panel.</p>
+<p>Limits: 1 to 4 numeric characters from 0 to 4095</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--forcecomp</code> | <code>--fc</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>forcecomp={NO|YES}</p>
+<p>Indicates whether to flag the job as a normal completion.<br>
+If FORCECOMP=YES, the previous abnormal status of the job is ignored.</p>
+<p>Normal job completion processing is performed instead of a restart.<br>
+Value can be NO or YES. NO is the default.</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--lcc</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>lc=nnnn</p>
+<p>Indicates an optional condition code value that replaces the last<br>
+condition code value for the step that the LSTP references and, optionally, LPSTP keywords.</p>
+<p>This option is honored only if CA Workload Automation Restart Option for z/OS Schedulers is in use.</p>
+<p>Default: 0<br>
+Limits: 1 to 4 numeric characters from 0 to 4095</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--lstp</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>lstp=JS050</p>
+<p>Indicates an optional step name that has its last condition code value reset in the<br>
+CA Workload Automation Restart Option for z/OS Schedulers CMT.</p>
+<p>Code LSTP and LCC when LPSTP is specified.<br>
+LSTP requires that an STPSTRT value is specified and that the LSTP step name occurs in the JCL of the job before the STPSTRT step name.</p>
+<p>This option is honored only when CA Workload Automation Restart Option for z/OS Schedulers is in use.</p>
+<p>Limits: 1 to 8 alphanumeric characters</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--lpstp</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>lpstp=COPY010</p>
+<p>Indicates an optional step name referencing a procedure that has its last condition code value reset<br>
+in the CA Workload Automation Restart Option for z/OS Schedulers CMT.</p>
+<p>If LPSTP is used, also code LSTP and LCC.<br>
+This option is honored only if CA Workload Automation Restart Option for z/OS Schedulers is in use.</p>
+<p>Limits: 1 to 8 alphanumeric characters</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--procstrt</code> | <code>--ps</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>procstrt=procname</p>
+<p>Indicates an optional step name referencing a procedure where processing is to start.<br>
+If PROCESS=R and PROCSTRT are used, also code STPSTRT.</p>
+<p>This option is honored only if CA Workload Automation Restart Option for z/OS Schedulers is in use.</p>
+<p>Limits: 1 to 8 alphanumeric characters</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--procend</code> | <code>--pe</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>procend=procname</p>
+<p>Indicates an optional step name referencing a procedure where processing is to end.</p>
+<p>If PROCESS=R and PROCEND are used, code STPEND.<br>
+This option is honored only if CA Workload Automation Restart Option for z/OS Schedulers is in use.</p>
+<p>Limits: 1 to 8 alphanumeric characters</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--process</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>process=code</p>
+<p>Indicates an optional CA Workload Automation Restart Option for z/OS Schedulers processing function code character to use in the restart/rerun.</p>
+<p>This option is honored only if CA Workload Automation Restart Option for z/OS Schedulers is in use<br>
+and CA WA CA 7 Edition is inserting the RMS step.</p>
+<p>See the INSERT-RMS field on the DB.1 panel. Value can be F, P, S, N, O, or R.</p>
+<p>Default: P<br>
+Limits: 1 alphabetic character</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--reason</code> | <code>-r</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>reason=text</p>
+<p>Specifies a reason for the restart.<br>
+If the CA Workload Automation Restart Option for z/OS Schedulers Reason-for-Rerun module is available,<br>
+a code of up to four characters can be input and it is expanded.</p>
+<p>Any reason input or expanded is copied to the run log.</p>
+<p>This field is optional unless CA Workload Automation Restart Option for z/OS Schedulers requires a reason or<br>
+REASON=YES was specified in the RESTART statement in the initialization file.</p>
+<p>Limits: 1 to 40 alphanumeric characters</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--stpend</code> | <code>--se</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>stpend=stepname</p>
+<p>Indicates an optional step name or number at which processing is to end.<br>
+If not specified, the last step of the job is assumed to be the ending step.</p>
+<p>Code STPEND when PROCEND is specified.<br>
+This option is honored only if CA Workload Automation Restart Option for z/OS Schedulers is in use.</p>
+<p>Limits: 1 to 8 alphanumeric characters</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--stpstrt</code> | <code>--ss</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>stpstrt={stepname|*CMT*|*RERUN*|*RESUBP*}</p>
+<p>Indicates an optional step name or number at which processing is to start.<br>
+If STPSTRT is not coded, the first step of the job is assigned to be the starting step.</p>
+<p>Code STPSTRT when PROCSTRT is specified. This option is honored only if CA Workload Automation Restart Option for z/OS Schedulers is in use.<br>
+It can be one of</p>
+<p>stepname<br>
+Specifies the step name or number at which processing is to start.</p>
+<p>*CMT*<br>
+Indicates that the job is to restart with the step values currently on the CMT record.</p>
+<p>*RERUN*<br>
+Indicates to rerun t the total job. If there are no restartable steps, specify RERUN.</p>
+<p>*RESUBP*<br>
+Indicates that the CMT record of the job is set to production, and then the job is submitted.</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--sup11stp</code> | <code>--su</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>sup11stp={NO|YES}</p>
+<p>Indicates whether to suppress the insertion of the CA Workload Automation Restart Option for z/OS Schedulers RMS step.</p>
+<p>If the job is resubmitted with SUP11STP=YES, the CA Workload Automation Restart Option for z/OS Schedulers step is not inserted.</p>
+<p>Only valid if CA WA CA 7 Edition is inserting the CA Workload Automation Restart Option for z/OS Schedulers step.</p>
+<p>See the INSERT-RMS field on the DB.1 panel.<br>
+Value can be NO or YES. NO is the default.</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--usage</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>usage=code</p>
+<p>Indicates an optional CA Workload Automation Restart Option for z/OS Schedulers<br>
+usage code of the character to use in the restart/rerun.</p>
+<p>For the values, see the CA Workload Automation Restart Option for z/OS Schedulers documentation.</p>
+<p>This option is honored only if CA Workload Automation Restart Option for z/OS Schedulers is in use and<br>
+CA WA CA 7 Edition is inserting the RMS step.</p>
+<p>See the INSERT-RMS field on the DB.1 panel.<br>
+Limits: 1 alphanumeric character</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--ca11rstp</code> | <code>-c</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>ca11rstp={Y|YES}</p>
+<p>Displays the CA11 restart step. Value can be Y or YES.</p>
+</li>
+</ul>
+</li>
+</ul>
+<h4>CA7 Connection Options</h4>
+<ul>
+<li>
+<p><code>--host</code> | <code>-H</code> <em>(string)</em></p>
+<ul>
+<li>Host name of the CA7 API service that is running on the mainframe system.</li>
+</ul>
+</li>
+<li>
+<p><code>--port</code> | <code>-P</code> <em>(number)</em></p>
+<ul>
+<li>Port for the CA7 API service that is running on the mainframe system.</li>
+</ul>
+</li>
+<li>
+<p><code>--user</code> | <code>-u</code> <em>(string)</em></p>
+<ul>
+<li>User name for authenticating connections to the CA7 API service that is running on the mainframe system.</li>
+</ul>
+</li>
+<li>
+<p><code>--password</code> | <code>--pass</code> | <code>--pw</code> <em>(string)</em></p>
+<ul>
+<li>Password for authenticating connections to the CA7 API service that is running on the mainframe system.</li>
+</ul>
+</li>
+<li>
+<p><code>--base-path</code> | <code>--bp</code> <em>(string)</em></p>
+<ul>
+<li>The base path for your API mediation layer instance. Specify this option to prepend the base path to all resources when making REST requests. Do not specify this option if you are not using an API mediation layer.</li>
+</ul>
+</li>
+<li>
+<p><code>--protocol</code> | <code>-o</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>Specifies protocol to use for CA7 connection (http or https).</p>
+<p>Allowed values: http, https</p>
+</li>
+</ul>
+</li>
+</ul>
+<h4>Profile Options</h4>
+<ul>
+<li>
+<p><code>--ca7-profile</code> | <code>--ca7-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (ca7) profile to load for this command execution.</li>
+</ul>
+</li>
+<li>
+<p><code>--base-profile</code> | <code>--base-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (base) profile to load for this command execution.</li>
+</ul>
+</li>
+</ul>
+<h4>Base Connection Options</h4>
+<ul>
+<li>
+<p><code>--reject-unauthorized</code> | <code>--ru</code> <em>(boolean)</em></p>
+<ul>
+<li>
+<p>Reject self-signed certificates.</p>
+<p>Default value: true</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--token-type</code> | <code>--tt</code> <em>(string)</em></p>
+<ul>
+<li>The type of token to get and use for the API. Omit this option to use the default token type, which is provided by 'zowe auth login'.</li>
+</ul>
+</li>
+<li>
+<p><code>--token-value</code> | <code>--tv</code> <em>(string)</em></p>
+<ul>
+<li>The value of the token to pass to the API.</li>
+</ul>
+</li>
+<li>
+<p><code>--cert-file</code> <em>(local file path)</em></p>
+<ul>
+<li>The file path to a certificate file to use for authentication</li>
+</ul>
+</li>
+<li>
+<p><code>--cert-key-file</code> <em>(local file path)</em></p>
+<ul>
+<li>The file path to a certificate key file to use for authentication</li>
+</ul>
+</li>
+</ul>
+<h4>Examples</h4>
+<ul>
+<li>
+<p>Restart ca7 number, 0016 from  CA 7:</p>
+<ul>
+<li><code>zowe ca7 commands restart --ca7num 0016</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe ca7 commands restart --ca7num 0016">Copy</button></li>
+</ul>
+</li>
+</ul>
+</article>
+<script src="../js/bundle-docs.js"></script>
+<script src="../js/docs.js"></script>
