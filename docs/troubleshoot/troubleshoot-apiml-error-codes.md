@@ -601,6 +601,28 @@ The following error message codes may appear on logs or API responses. Use the f
 
   Use a valid body in the request. Format of a message: {userId: string, (optional)timestamp: long} or {serviceId: string, (optional)timestamp: long}.
 
+### ZWEAT608E
+
+  Error mapping between distributed and mainframe identity. Reason: %s %s
+
+  **Reason:**
+
+  Unexpected error occurred when mapping between distributed and mainframe identity 
+
+  **Action:**
+
+  Contact Broadcom support.
+
+### ZWEAT609W
+
+  Mapping between distributed and mainframe identity failed. Reason: %s
+
+  **Reason:**
+
+  Mapping between distributed and mainframe identity failed.
+
+  **Action:**
+
 ## Security client messages
 
 ### ZWEAS100E
