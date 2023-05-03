@@ -86,13 +86,8 @@ Use the following procedure to enable the feature to use an OIDC Access Token as
    Specifies the client secret assigned by the OIDC provider to the API ML Gateway. It is used in combination with the client_id in Access Token validation requests at the /introspection endpoint of the OIDC provider.
    
    * **components.gateway.apiml.security.oidc.registry**  
-   Specifies the SAF registry used to group the identities recognized as having a OIDC identity mapping.        
-
-<!-- Can we add an example of this zowe.yml with these parameters? -->    
-
-TODO@PetrWeinfurt: Do we need a property for the ZWESVUSR name to be assigned for the identity mapper, similarly as for the x.509 mapper?
+   Specifies the SAF registry used to group the identities recognized as having a OIDC identity mapping.
 
 ## Troubleshooting
-TODO# Add here troubleshooting topics for at least the following cases:
 - OIDC provider is not configured properly
 - User identities are not mapped properly in SAF and Identitiy Propagation does not work correctly at request time.
