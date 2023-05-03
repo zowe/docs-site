@@ -34,7 +34,7 @@ The following diagram illustrates the interactions between the participants of t
 * The user is asked to provide valid credentials (authentication factors).
 * After successful validation of all authentication factors, the OIDC provider grants the client an Access Token.
 * The client can then request from API ML Gateway the needed mainframe resources presenting the access token in the request. 
-* The Gateway validates the access token at the provider's OIDC/introspection end-point. If the access token is validated, the outcome is cached for a short time. 
+* The Gateway validates the access token at the provider's OIDC/introspection end-point. If the access token is validated, the outcome is cached for a short time (20 sec by default). 
 * In subsequent calls with the same token, the Gateway reuses the cached validation outcome. As such, round trips to the OIDC /introspection end-point are not required between short intervals, when the client needs to access multiple resources in a row to complete a unit of work. The caching interval is configurable with a default value of 20 seconds, a sufficient time allotment to allow most client operations requiring multiple API requests to complete, while also providing adequate protection against unauthorized access. 
 * The API ML Gateway fetches the distributed user identity from the distributed access token and maps this user identity to the user mainframe identity using SAF. 
 * The API ML Gateway calls the requested mainframe service/s with mainframe user credentials (Zowe, SAF JWT, or pass-ticket) which are expected by the target mainframe service.
