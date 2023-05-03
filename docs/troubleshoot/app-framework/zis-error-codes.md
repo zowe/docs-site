@@ -390,7 +390,7 @@ The cross-memory auxiliary server detected that it was running in the wrong key.
 
 The cross-memory auxiliary server terminates. Ensure that you have added the
 correct PPT-entry (
-see [the documentation](https://docs.zowe.org/stable/user-guide/configure-xmem-server/))
+see [the documentation](../../user-guide/configure-xmem-server.md))
 for the ZIS AUX module.
 
 ### ZWES0055E
@@ -1020,7 +1020,7 @@ The cross-memory server detected that it was running in the wrong key.
 
 The cross-memory server terminates. Ensure that you have added the correct
 PPT-entry (
-see [the documentation](https://docs.zowe.org/stable/user-guide/configure-xmem-server/))
+see [the documentation](../../user-guide/configure-xmem-server.md))
 for the main ZIS module.
 
 ### ZWES0200I
