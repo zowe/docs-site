@@ -2,6 +2,7 @@
 
 The OpenID/Connect ([OIDC](https://openid.net/specs/openid-connect-core-1_0.html)) protocol adds an authentication layer on top of the [OAuth2](https://www.rfc-editor.org/rfc/rfc6749) Authorization protocol.
 OIDC authentication, together with the z/OS [Identity Propagation](https://www.redbooks.ibm.com/redbooks/pdfs/sg247850.pdf) mechanism, is the foundation of the API ML Identity Federation.
+Herein we often refer to OIDC as provider, while the token related functionality is actually provided by the OAuth2 component of the OIDC implementation.
 
 Zowe API ML can be configured to authenticate users by accepting Access Tokens issued by an external OIDC/OAuth2 provider.
 This configuration is useful in advanced deployments of Zowe where client applications need to access mainframe as well as enterprise/distributed systems while simultaneously offering single sign-on (SSO) across system boundaries.  
@@ -25,13 +26,13 @@ The API ML Gateway can then create mainframe user credentials (JWT or a Passtick
 The request is routed to the target API services with correct mainframe user credentials.
 
 ## Authentication Flow
-The following diagram illustrates the interactions between the participants of the OIDC based API ML authentication process.
+The following diagram illustrates the interactions between the participants of the OIDC/OAuth2 based API ML authentication process.
 
 <img src={require("../../images/api-mediation/apiml-oidc-auth-seq.png").default} alt="APIML OIDC Workflow" width="700"/>
 
 * When a user wants to access mainframe resources or services using the client application without a valid authentication / access token, the client redirects the user agent to the login end-point of the distributed OIDC provider. 
 * The user is asked to provide valid credentials (authentication factors).
-* After successful validation of all authentication factors, the OIDC provider grants the client an access token.
+* After successful validation of all authentication factors, the OIDC provider grants the client an Access Token.
 * The client can then request from API ML Gateway the needed mainframe resources presenting the access token in the request. 
 * The Gateway validates the access token at the provider's OIDC/introspection end-point. If the access token is validated, the outcome is cached for a short time. 
 * In subsequent calls with the same token, the Gateway reuses the cached validation outcome. As such, round trips to the OIDC /introspection end-point are not required between short intervals, when the client needs to access multiple resources in a row to complete a unit of work. The caching interval is configurable with a default value of 20 seconds, a sufficient time allotment to allow most client operations requiring multiple API requests to complete, while also providing adequate protection against unauthorized access. 
