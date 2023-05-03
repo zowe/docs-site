@@ -1,17 +1,16 @@
-# Using the FTP Extension
+# Using Zowe Explorer FTP Extension
+## System Requirements
 
-## Prerequisites
-
-Ensure that you obtain remote access to z/OS FTP service before you can use the extension.
+Ensure that you obtain remote access to a z/OS FTP service before you can use the extension:
 
 1. Connect to z/OS with the FTP client.
-1. Run the following command in the FTP client:
+2. Run the following command in the FTP client:
 
    ```bash
    rstat
    ```
 
-1. Confirm that the `JESINTERFACELevel` option is set to `2`.
+3. In the output of the preceding command, confirm that the `JESINTERFACELevel` option is set to `2`.
 
 ## Using
 
@@ -34,7 +33,7 @@ To use the FTP Extension with Zowe Explorer:
 
 ## Creating an FTP profile with Zowe Explorer
 
-If you do not have an existing Zowe FTP profile, you can create one graphically with Zowe Explorer.
+If you do not have an existing Zowe FTP profile, you can create one graphically with Zowe Explorer:
 
 1. Select the **Zowe Explorer** icon on the **Activity Bar** in VS Code.
 
