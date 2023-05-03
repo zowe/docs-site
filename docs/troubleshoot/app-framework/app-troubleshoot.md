@@ -55,7 +55,7 @@ There are three known problems that might cause this error.  The [Zowe architect
 
 ### ZSS server unable to communicate with ZIS
 
-- Open the log file `zowe.logsDirectory/zssServer-yyyy-mm-dd-hh-ss.log`.  This file is created each time ZWESLSTC is started and only the last five files are kept.  
+- Open the log file `zowe.logDirectory/zssServer-yyyy-mm-dd-hh-ss.log`.  This file is created each time ZWESLSTC is started and only the last five files are kept.  
 
 - Look for the message that starts with `ZIS status`.  
 
@@ -78,6 +78,11 @@ There are three known problems that might cause this error.  The [Zowe architect
      ```
      ZIS status - Failure (name='ZWESIS_STD      ', cmsRC=64, description='N/A', clientVersion=`2`)
      ```
+     or
+     ```
+     ZIS status - Failure
+     (name='ZWESIS_STD      ',cmsRC=47,
+     description='N/A', clientVersion='2')
      or
      ```
      ZIS status - 'Failure' (name='ZWESI_STD     ', cmsRC='12', description='N/A', clientVersion='2')
@@ -123,7 +128,7 @@ There are three known problems that might cause this error.  The [Zowe architect
 
 Follow these steps: 
 
-- Open the log file `zowe.logsDirectory/appServer-yyyy-mm-dd-hh-ss.log`.  This file is created each time ZWESLSTC is started and only the last five files are kept.  
+- Open the log file `zowe.logDirectory/appServer-yyyy-mm-dd-hh-ss.log`.  This file is created each time ZWESLSTC is started and only the last five files are kept.  
 
 - Look for the message that starts with `GetAddrInfoReqWrap.onlookup` and the log messages below.  
 
@@ -171,7 +176,7 @@ Follow these steps:
 ## Server startup problem ret=1115
 
 **Symptom:**
-When ZWESLSTC is restarted, the following message is returned in the output of the ZSS server log file, `zowe.logsDirectory/zssServer-yyyy-mm-dd-hh-ss.log`:
+When ZWESLSTC is restarted, the following message is returned in the output of the ZSS server log file, `zowe.logDirectory/zssServer-yyyy-mm-dd-hh-ss.log`:
 ```
 server startup problem ret=1115
 ```

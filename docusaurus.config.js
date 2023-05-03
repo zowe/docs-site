@@ -1,4 +1,4 @@
-const LATEST_VERSION = "v2.7.x";
+const LATEST_VERSION = "v2.8.x";
 const versionsArray = require("./versions.json");
 
 module.exports = {
@@ -164,7 +164,8 @@ module.exports = {
       copyright: `© Open Mainframe Project. a Linux Foundation Project. All Rights Reserved. The Linux Foundation has registered trademarks and uses trademarks. For a list of trademarks of The Linux Foundation, please see our Trademark Usage page. Please refer to Marketing and Branding Guidelines for name usage guidelines. Linux is a registered trademark of Linus Torvalds. Privacy Policy and Terms of Use`,
     },
     algolia: {
-      apiKey: "59ff39ed48d0820010c7e09fc4b677bf",
+      appId: "1AB1S8E42B",
+      apiKey: "de714331a88daaf9b541b4ad68c19d84",
       indexName: "zowe",
       contextualSearch: true,
     },
@@ -200,6 +201,9 @@ module.exports = {
               path: "stable",
               label: `${LATEST_VERSION}` + " LTS",
             },
+            "v2.7.x": {
+              label: "v2.7.x LTS",
+           },
             "v2.6.x": {
               label: "v2.6.x LTS",
            },
@@ -211,9 +215,6 @@ module.exports = {
            },
             "v2.3.x": {
               label: "v2.3.x LTS",
-           },
-            "v2.2.x": {
-              label: "v2.2.x LTS",
            },
             "v1.28.x": {
               label: "v1.28.x LTS",
