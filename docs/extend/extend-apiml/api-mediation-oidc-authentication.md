@@ -28,7 +28,7 @@ The request is routed to the target API services with correct mainframe user cre
 ## Authentication Flow
 The following diagram illustrates the interactions between the participants of the OIDC/OAuth2 based API ML authentication process.
 
-<img src={require("../../images/api-mediation/apiml-oidc-auth-seq.png").default} alt="APIML OIDC Workflow" width="700"/>
+![APIML OIDC Workflow](../../images/api-mediation/apiml-oidc-auth-seq.png)
 
 * When a user wants to access mainframe resources or services using the client application without a valid authentication / access token, the client redirects the user agent to the login end-point of the distributed OIDC provider. 
 * The user is asked to provide valid credentials (authentication factors).
@@ -45,6 +45,7 @@ Ensure that the following prerequisites are met:
 - Users who require access to mainframe resources using OIDC authentication have a mainframe identity managed by SAF/ESM.
 - Client application users have distributed identity managed by the OIDC provider. For details, see the section [OIDC provider](#oidc-provider) in this topic.
 - SAF/ESM is configured with mapping between the mainframe and distributed user identities. For details, see the section [ESM configuration](#esm-configuration) in this topic.
+- ZSS must be enabled and properly configured in the Zowe installation 
   
 ### OIDC provider
 
@@ -83,11 +84,25 @@ Use the following procedure to enable the feature to use an OIDC Access Token as
    Specifies the value of the client identification (client_id) assigned by the OIDC provider to the API ML Gateway.
    
    * **components.gateway.apiml.security.oidc.clientSecret**   
-   Specifies the client secret assigned by the OIDC provider to the API ML Gateway. It is used in combination with the client_id in Access Token validation requests at the /introspection endpoint of the OIDC provider.
+   Specifies the client secret assigned by the OIDC provider to the API ML Gateway. It is used in combination with the client_id in Access Token validation requests at the /introspect endpoint of the OIDC provider.
    
    * **components.gateway.apiml.security.oidc.registry**  
-   Specifies the SAF registry used to group the identities recognized as having a OIDC identity mapping.
+   Specifies the SAF registry used to group the identities recognized as having a OIDC identity mapping. The registry name is the string used during the creation of the mapping between the dustributed and mainframe user identities.
+See the [ESM configuration](#esm-configuration) for more information.
 
 ## Troubleshooting
-- OIDC provider is not configured properly
-- User identities are not mapped properly in SAF and Identitiy Propagation does not work correctly at request time.
+- Distributed OIDC provider (OKTA, Simulate bad requests and see OIDC responses - see oidc.debugger.com) is not configured properly
+  - See responses describe what to check
+- ZSS is not enabled or not running
+  - Do we have an error code ? See code, try.
+  
+- The configured external mapper user doesn't have required permissions to call the identity mapper. See [ESM configuration](#esm-configuration) for more information on required permissions depending on installed ESM.
+  - Return codes from ZSS - logged to GW - find what and what level
+  - 
+- The configured external mapper user, doesn't have sufficient access rights to create passtickets and/or to call z/OSMF
+  - (PZA#See troubleshooting of x509)
+  
+- User identities are not mapped properly in SAF. 
+  - Check the mapping definitions in SAF to containe correct values for both, distributed user ID and distributed registry. 
+  - In Debug - See reason codes
+-- 

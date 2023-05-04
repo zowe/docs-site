@@ -24,7 +24,7 @@ GW -> OIDC: Validate AT
 end
 alt Validation success
 GW -> GW: Cache AT validity
-GW -> SAF: Map distributed mainframe to identity
+GW -> SAF: Map distributed ID to mainframe ID
 GW -> GW: Create Zowe JWT
 GW -> Service: call API service
 Service --> GW: return Response
