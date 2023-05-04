@@ -77,18 +77,46 @@ Use the following procedure to enable the feature to use an OIDC Access Token as
 
  In the zowe.yaml file, configure the following properties:
           
-   * **components.gateway.apiml.security.oidc.enabled**  
+   * **`components.gateway.apiml.security.oidc.enabled`**  
    Specifies the global feature toggle. Set the value to true to enable OIDC authentication functionality.
 
-   * **components.gateway.apiml.security.oidc.clientId**  
+   * **`components.gateway.apiml.security.oidc.clientId`**  
    Specifies the value of the client identification (client_id) assigned by the OIDC provider to the API ML Gateway.
    
-   * **components.gateway.apiml.security.oidc.clientSecret**   
+   * **`components.gateway.apiml.security.oidc.clientSecret`**   
    Specifies the client secret assigned by the OIDC provider to the API ML Gateway. It is used in combination with the client_id in Access Token validation requests at the /introspect endpoint of the OIDC provider.
    
-   * **components.gateway.apiml.security.oidc.registry**  
-   Specifies the SAF registry used to group the identities recognized as having a OIDC identity mapping. The registry name is the string used during the creation of the mapping between the dustributed and mainframe user identities.
-See the [ESM configuration](#esm-configuration) for more information.
+   * **`components.gateway.apiml.security.oidc.registry`**  
+   Specifies the SAF registry used to group the identities recognized as having a OIDC identity mapping. The registry name is the string used during the creation of the mapping between the dustributed and mainframe user identities. See the [ESM configuration](#esm-configuration) for more information.
+
+   * **`components.gateway.apiml.security.oidc.introspectEndpoint`**
+
+
+Optionally configure API ML access to the external user identity mapper. Provide externalMapperUser and externalMapperUrl if they are differnt from the default values.     
+   
+  * **'components.gateway.apiml.security.x509.externalMapperUser'**
+
+**Note:** Skip this step if the Zowe runtime userId is not altered from the default `ZWESVUSR`.
+
+To authenticate to the mapping API, a JWT is sent with the request. The token represents the user that is configured with this property. The user authorization is required to use the `IRR.RUSERMAP` resource within the `FACILITY` class. The default value is `ZWESVUSR`. Permissions are set up during installation with the `ZWESECUR` JCL or workflow.
+
+If you customized the `ZWESECUR` JCL or workflow (the customization of zowe runtime user: `// SET ZOWEUSER=ZWESVUSR * userid for Zowe started task`) and changed the default USERID, create the `components.gateway.apiml.security.x509.externalMapperUser` property and set the value by adding a new line as in the following example:
+
+**Example:**
+
+   ```
+   components.gateway.apiml.security.x509.externalMapperUser: yournewuserid  
+   ```
+
+   * **`apiml.security.x509.externalMapperUrl`**  
+  Defines the URL where Gateway can query the mapping of distributed user ID to mainframe user ID. 
+  This property informs the Gateway about the location of this API. ZSS is the default API provider in Zowe. You can provide your own API to perform the mapping. In this case, it is necessary to customize this value.
+
+The following URL is the default value for Zowe and ZSS:
+
+     ```
+     https://${ZWE_haInstance_hostname}:${GATEWAY_PORT}/zss/api/v1/certificate/x509/map
+     ```
 
 ## Troubleshooting
 - Distributed OIDC provider (OKTA, Simulate bad requests and see OIDC responses - see oidc.debugger.com) is not configured properly
