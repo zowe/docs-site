@@ -87,9 +87,11 @@ Use the following procedure to enable the feature to use an OIDC Access Token as
    Specifies the client secret assigned by the OIDC provider to the API ML Gateway. It is used in combination with the client_id in Access Token validation requests at the /introspect endpoint of the OIDC provider.
    
    * **`components.gateway.apiml.security.oidc.registry`**  
-   Specifies the SAF registry used to group the identities recognized as having a OIDC identity mapping. The registry name is the string used during the creation of the mapping between the dustributed and mainframe user identities. See the [ESM configuration](#esm-configuration) for more information.
+   Specifies the trusted registry name used by SAF to group the identities recognized as having a OIDC identity mapping. 
+The trusted registry name is the string used during the creation of the mapping between the distributed and mainframe user identities. See the [ESM configuration](#esm-configuration) for more information.
 
    * **`components.gateway.apiml.security.oidc.introspectEndpoint`**
+This parameter specifies the path portion of the token introspection endpoint URL, provided by the OAuth2/OIDC provider.
 
 
 Optionally configure API ML access to the external user identity mapper. Provide externalMapperUser and externalMapperUrl if they are differnt from the default values.     
