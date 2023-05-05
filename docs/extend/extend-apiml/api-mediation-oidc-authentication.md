@@ -105,16 +105,16 @@ Use the following procedure to enable the feature to use an OIDC Access Token as
    
    * **`components.gateway.apiml.security.oidc.clientSecret`**   
    Specifies the client secret assigned by the OIDC provider to the API ML Gateway. It is used in combination with the client_id in Access Token validation requests at the /introspect endpoint of the OIDC provider.
-   
+
    * **`components.gateway.apiml.security.oidc.registry`**  
    Specifies the trusted registry name used by SAF to group the identities recognized as having a OIDC identity mapping. 
-The trusted registry name is the string used during the creation of the mapping between the distributed and mainframe user identities. See the [ESM configuration](#esm-configuration) for more information.
+   The trusted registry name is the string used during the creation of the mapping between the distributed and mainframe user identities. See the [ESM configuration](#esm-configuration) for more information.
 
    * **`components.gateway.apiml.security.oidc.introspectEndpoint`**
-This parameter specifies the path portion of the token introspection endpoint URL, provided by the OAuth2/OIDC provider.
+   Specifies the path portion of the token introspection endpoint URL, provided by the OAuth2/OIDC provider. The Token Introspection endpoint is defined by the [OAuth 2.0 Token Introspection extension](https://datatracker.ietf.org/doc/html/rfc7662) as an OAuth2 endpoint, that takes a parameter representing an OAuth 2.0 token and returns a JSON document representing the meta information surrounding the token, including whether this token is currently active.
 
 
-Optionally configure API ML access to the external user identity mapper. Provide externalMapperUser and externalMapperUrl if they are differnt from the default values.     
+**Note:** Provide externalMapperUser and externalMapperUrl if they differ from the default values.     
    
   * **'components.gateway.apiml.security.x509.externalMapperUser'**
 
@@ -160,17 +160,19 @@ The following URL is the default value for Zowe and ZSS:
 
   - ZSS is not enabled or not running
     - #TODO: Do we have an error code ? See code, try.
-    
+      - @PZA: Ask Shobha, Lena
+    - 
     To fix the issue:
       - Enable ZSS in the Zowe configuration (zowe.yaml) 
       - Start the ZSS component.
   
-  - The configured external mapper user doesn't have required permissions to call the identity mapper. 
-    - #TODO: Return codes from ZSS - logged to GW - find what and what level
+  - The configured external mapper user doesn't have required permissions to call the identity mapper.
+         Call ZSS with ZoweSVUser 
+      - #TODO: Return codes from ZSS - logged to GW - find what and what level
     
-    To fix the issue: 
-      - See [ESM configuration](#esm-configuration) for more information on required permissions depending on installed ESM.
-      - Contact your security administrator to assign all the neccessary permisions to the mapper user name according to your OIDC configuration. 
+      To fix the issue: 
+        - See [ESM configuration](#esm-configuration) for more information on required permissions depending on installed ESM.
+        - Contact your security administrator to assign all the neccessary permisions to the mapper user name according to your OIDC configuration. 
      
   - The configured external mapper user, doesn't have sufficient access rights to create passtickets and/or to call z/OSMF
       - (PZA#See troubleshooting of x509)
@@ -181,4 +183,10 @@ The following URL is the default value for Zowe and ZSS:
   - Distributed user identity is not mapped properly by SAF to a mainframe user identity. 
       - Start ZSS and API ML in Debug to see reason codes and more details.
       - Check the mapping definitions in SAF to contain correct values for both, distributed user ID and distributed registry. 
+
+  - #TODO: ZOWE facility is needed for users to authenticate when the SAF provider is used
+  - #TODO: Resources required are not documented and included in the security job
+  - #TODO: ZSS messages are misleading
+  - #TODO: ZSS does not provide a response with ACF2
+  - #TODO: Does not work with SAF provider
 -- 
