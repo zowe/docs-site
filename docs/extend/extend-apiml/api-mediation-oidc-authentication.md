@@ -65,7 +65,7 @@ Execute the following two tasks to ensure that ESM is properly configured for Id
 
 1. Distributed users identity configuration
 
-The users identity mappings are defined as distributed user identity filters, which are maintained by the System Authorization Facility (SAF) / External Security Manager (ESM).
+The users' identity mappings are defined as distributed user identity filters, which are maintained by the System Authorization Facility (SAF) / External Security Manager (ESM).
 A distributed identity consists of two parts: a distributed identity name, and a trusted registry which governs that identity. 
 API ML provides a Zowe CLI plugin to help administrators to generate a JCL for creating the mapping filter specific for the ESM installed on the target mainframe system. 
 
@@ -76,21 +76,65 @@ Alternatively, administrators can use the installed ESM functionality to create,
  - For CA Top Secret use the [IDMAP Keyword - Implement z/OS Identity Propagation Mapping](https://techdocs.broadcom.com/us/en/ca-mainframe-software/security/ca-top-secret-for-z-os/16-0/administrating/issuing-commands-to-communicate-administrative-requirements/keywords/idmap-keyword-implement-z-os-identity-propagation-mapping.html).
  - For CA ACF2 use [IDMAP User Profile Data Records](https://techdocs.broadcom.com/us/en/ca-mainframe-software/security/ca-acf2-for-z-os/16-0/administrating/administer-records/user-profile-records/idmap-user-profile-records.html).
 
-2. External Mapper User permissions
-    The External Mapper user's permissions vary and are set according to the actual ESM installed on the system.
-    1. For Top Secret execute the following command:
+2. External Mapper user's permissions.
+  The External Mapper functionality is executed on behalf of the calling `externalMapperUser`. By default, this will be the ZOWE runtime user `ZWESVUSR`.   
+  For the identity mapping calls to succeed, the externalMapperUser needs special privileges which may vary per installed ESM type.
+
+  Perform following validations and configuration steps to ensure that externalMapperUser is properly configured:   
+1. Make sure that the user has a default user group set. The default group could be any existing group.   
    
-       ```TSS PERMIT(user) IBMFAC(IRR.IDIDMAP.QUERY) ACCESS(READ)```
+  - For Top Secret, execute the following commands to set default group in the externalMapperUser profile:
+   
+        ```TSS ADD(user_id) GROUP(group_id)```
+        ```TSS ADD(user_id) DFLTGRP(group_id)```
+   
+        **TIP:** If the externalMapperUser is also used to call z/OSMF, make sure that the user is in IZUUSER group. 
 
-    2. For ACF2 take the following steps:
+  - For RACF, validate that the user already has DFLTGRP, which should be set by default     
 
-    ```
-    SET RESOURCE(FAC)                                          
-    RECKEY IRR ADD(IDIDMAP.QUERY UID(SDKTST2) SERVICE(READ) ALLOW)
-    F ACF2,REBUILD(FAC)
-    ```
+  - For ACF2, execute the following command:
 
-    3. For RACF take the following steps
+2. Make sure that the externalMappingUser has READ access to the Master Facility class set in the user profile. 
+  - For Top Secret, execute the following command: 
+      ```TSS PERMIT(user) IBMFAC(IRR.IDIDMAP.QUERY) ACCESS(READ)```
+  - For RACF, it is not required that the externalMapperUser has permissions to the Master Facility class.
+
+  - For ACF2, execute the following command:
+
+3. Make sure that the externalMapperUser has access to the ZOWE facility. 
+  - For Top Secret, execute the following command:
+
+    ```TSS ADDTO(user) FACILITY(ZOWE) ```
+  - For RACF it is not required that the externalMapperUser has permissions to the ZOWE Facility class.
+
+  - For ACF2 take the following command:
+4. Make sure that the externalMapperUser has permissions for the OMVSAPPL.
+  - For Top Secret, execute the following command:
+```TSS PERMIT(user) APPL(OMVSAPPL)```
+   
+  - For RACF take the following commands:
+```
+PERMIT OMVSAPPL CLASS(APPL) ID(user) ACCESS(READ)
+SETR RACLIST(APPL) REFRESH
+```
+
+5. Make sure the externalMapperUser has access to the `IRR.IDIDMAP.QUERY` facility.
+  - For Top Secret, execute the following command:
+`TSS PERMIT(user) IBMFAC(IRR.IDIDMAP.QUERY) ACCESS(READ)`
+
+  - For RACF, execute the following commands:
+```
+PERMIT IRR.IDIDMAP.QUERY CLASS(FACILITY) ID(SDKTST2) ACCESS(NONE)
+SETR RACLIST(FACILITY) REFRESH
+```
+  - For ACF2, execute the following command:
+```
+SET RESOURCE(FAC)                                          
+RECKEY IRR ADD(IDIDMAP.QUERY UID(SDKTST2) SERVICE(READ) ALLOW)
+F ACF2,REBUILD(FAC)
+```
+
+**Note:** If the ZOWE runtime user ZWESVUSR is configured as the externalMapperUser, some permissions listed above may be already configured during the ZOWE installation.
 
 ## API ML configuration
 Use the following procedure to enable the feature to use an OIDC Access Token as the method of authentication for the API Mediation Layer Gateway.
