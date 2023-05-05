@@ -326,7 +326,7 @@ html[data-theme="light"] .darkTheme {
   display: none;
 }
 
-.markdown header h1:first-of-type {
+.markdown h1:first-of-type {
   display: none;
 }
 
