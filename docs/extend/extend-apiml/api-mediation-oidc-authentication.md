@@ -61,7 +61,11 @@ For example Web Applications with a secure server side component can use `code g
   To access mainframe resources, users with a distributed authentication must either be directly assigned by the OIDC provider to the client application, or must be part of group which is allowed to work with the client application.     
 
 ### ESM configuration 
-The user identity mapping is defined as a distributed user identity filter, which is maintained by the System Authorization Facility (SAF) / External Security Manager (ESM).
+Execute the following two tasks to ensure that ESM is properly configured for Identity Mapping of distributed to mainframe user identity.
+
+1Distributed users identity configuration
+
+The users identity mappings are defined as distributed user identity filters, which are maintained by the System Authorization Facility (SAF) / External Security Manager (ESM).
 A distributed identity consists of two parts: a distributed identity name, and a trusted registry which governs that identity. 
 API ML provides a Zowe CLI plugin to help administrators to generate a JCL for creating the mapping filter specific for the ESM installed on the target mainframe system. 
 
@@ -71,6 +75,22 @@ Alternatively, administrators can use the installed ESM functionality to create,
  - For RACF consult [RACMAP command](https://www.ibm.com/docs/en/zos/2.3.0?topic=rcs-racmap-create-delete-list-query-distributed-identity-filter).
  - For CA Top Secret use the [IDMAP Keyword - Implement z/OS Identity Propagation Mapping](https://techdocs.broadcom.com/us/en/ca-mainframe-software/security/ca-top-secret-for-z-os/16-0/administrating/issuing-commands-to-communicate-administrative-requirements/keywords/idmap-keyword-implement-z-os-identity-propagation-mapping.html).
  - For CA ACF2 use [IDMAP User Profile Data Records](https://techdocs.broadcom.com/us/en/ca-mainframe-software/security/ca-acf2-for-z-os/16-0/administrating/administer-records/user-profile-records/idmap-user-profile-records.html).
+
+2. External Mapper User permissions
+    The External Mapper user's permissions vary and are set according to the actual ESM installed on the system.
+    1. For Top Secret execute the following command:
+   
+       ```TSS PERMIT(user) IBMFAC(IRR.IDIDMAP.QUERY) ACCESS(READ)```
+
+    2. For ACF2 take the following steps:
+
+    ```
+    SET RESOURCE(FAC)                                          
+    RECKEY IRR ADD(IDIDMAP.QUERY UID(SDKTST2) SERVICE(READ) ALLOW)
+    F ACF2,REBUILD(FAC)
+    ```
+
+    3. For RACF take the following steps
 
 ## API ML configuration
 Use the following procedure to enable the feature to use an OIDC Access Token as the method of authentication for the API Mediation Layer Gateway.
