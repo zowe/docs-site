@@ -461,6 +461,7 @@ module.exports = {
                 "user-guide/cli-ftpplugin",
                 "user-guide/cli-imsplugin",
                 "user-guide/cli-mqplugin",
+                "user-guide/cli-idfplugin",
               ],
             },    
           ],

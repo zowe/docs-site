@@ -63,13 +63,13 @@ For example Web Applications with a secure server side component can use `code g
 ### ESM configuration 
 Execute the following two tasks to ensure that ESM is properly configured for Identity Mapping of distributed to mainframe user identity.
 
-1Distributed users identity configuration
+1. Distributed users identity configuration
 
 The users identity mappings are defined as distributed user identity filters, which are maintained by the System Authorization Facility (SAF) / External Security Manager (ESM).
 A distributed identity consists of two parts: a distributed identity name, and a trusted registry which governs that identity. 
 API ML provides a Zowe CLI plugin to help administrators to generate a JCL for creating the mapping filter specific for the ESM installed on the target mainframe system. 
 
-  See the [Identity Federation cli plugin]( )  <!--Add link --> documentation for details about how to use the plugin tool to set up the mapping in the ESM of your z/OS system.
+  See the [Identity Federation cli plugin](../../user-guide/cli-idfplugin.md)
 
 Alternatively, administrators can use the installed ESM functionality to create, delete, list, and query a distributed identity filter/s:
  - For RACF consult [RACMAP command](https://www.ibm.com/docs/en/zos/2.3.0?topic=rcs-racmap-create-delete-list-query-distributed-identity-filter).
