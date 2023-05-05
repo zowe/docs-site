@@ -123,7 +123,7 @@ The following URL is the default value for Zowe and ZSS:
 ## Troubleshooting
 - API ML is not able to validate distributed Access Tokens with the OIDC provider
   - The connection to the OIDC provider can not be established or the provider is not running. 
-  You'll find the folowing message in the log:
+  You'll find the following message in the log:
   
     ```Failed to validate the OIDC access token. Can not establish connection to the OIDC provider.``` 
   
@@ -139,15 +139,26 @@ The following URL is the default value for Zowe and ZSS:
     In this case verify your OIDC provider configuration and the API ML Gateway configuration as OIDC client - `clientId` and `client_scret`. 
 
   - ZSS is not enabled or not running
-    - Do we have an error code ? See code, try.
+    - #TODO: Do we have an error code ? See code, try.
+    
+    To fix the issue:
+      - Enable ZSS in the Zowe configuration (zowe.yaml) 
+      - Start the ZSS component.
   
-  - The configured external mapper user doesn't have required permissions to call the identity mapper. See [ESM configuration](#esm-configuration) for more information on required permissions depending on installed ESM.
-    - Return codes from ZSS - logged to GW - find what and what level
+  - The configured external mapper user doesn't have required permissions to call the identity mapper. 
+    - #TODO: Return codes from ZSS - logged to GW - find what and what level
+    
+    To fix the issue: 
+      - See [ESM configuration](#esm-configuration) for more information on required permissions depending on installed ESM.
+      - Contact your security administrator to assign all the neccessary permisions to the mapper user name according to your OIDC configuration. 
      
   - The configured external mapper user, doesn't have sufficient access rights to create passtickets and/or to call z/OSMF
-    - (PZA#See troubleshooting of x509)
-  
-  - User identities are not mapped properly in SAF. 
-    - Check the mapping definitions in SAF to containe correct values for both, distributed user ID and distributed registry. 
-    - In Debug - See reason codes
+      - (PZA#See troubleshooting of x509)
+    
+      To fix the issue:
+        - Contact your security administrator to assign all the neccessary permisions to the mapper user name according to your OIDC configuration.
+
+  - Distributed user identity is not mapped properly by SAF to a mainframe user identity. 
+      - Start ZSS and API ML in Debug to see reason codes and more details.
+      - Check the mapping definitions in SAF to contain correct values for both, distributed user ID and distributed registry. 
 -- 
