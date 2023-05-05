@@ -1,4 +1,4 @@
-import InitialMDXComponents from "@theme-init/MDXComponents";
+import InitialMDXComponents from "@theme/MDXComponents";
 import Badge from "./Badge";
 import tpsr from "./tpsr";
 import img from "./ZoomedImage";

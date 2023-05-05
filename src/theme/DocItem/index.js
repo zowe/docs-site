@@ -3,7 +3,7 @@ import readingTime from "reading-time";
 import Head from "@docusaurus/Head";
 import MDXComponents from "@theme/MDXComponents";
 import { MDXProvider } from "@mdx-js/react";
-import { useTitleFormatter } from "@docusaurus/theme-common";
+import { useDocsVersion, useTitleFormatter } from "@docusaurus/theme-common/internal";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import useBaseUrl from "@docusaurus/useBaseUrl";
 import DocPaginator from "@theme/DocPaginator";
@@ -11,7 +11,7 @@ import DocVersionBanner from "@theme/DocVersionBanner";
 import TOC from "@theme/TOC";
 import clsx from "clsx";
 import styles from "./styles.module.css";
-import { useActivePlugin, useVersions } from "@theme/hooks/useDocs";
+import { useActivePlugin, useVersions } from "@docusaurus/plugin-content-docs/client";
 
 //Components
 import DocsInfo from "./DocsInfo";
@@ -20,7 +20,8 @@ import DocsRating from "./DocsRating";
 function DocItem(props) {
   const { siteConfig } = useDocusaurusContext();
   const { url: siteUrl } = siteConfig;
-  const { content: DocContent, versionMetadata } = props;
+  const { content: DocContent } = props;
+  const versionMetadata = useDocsVersion();
   const {
     metadata,
     frontMatter: {
@@ -29,6 +30,7 @@ function DocItem(props) {
       hide_title: hideTitle,
       hide_table_of_contents: hideTableOfContents,
     },
+    toc
   } = DocContent;
   const {
     description,
@@ -123,9 +125,9 @@ function DocItem(props) {
             </div>
           </div>
         </div>
-        {!hideTableOfContents && DocContent.toc && (
+        {!hideTableOfContents && toc && (
           <div className="col col--3">
-            <TOC toc={DocContent.toc} />
+            <TOC toc={toc} />
           </div>
         )}
       </div>

@@ -24,7 +24,11 @@ module.exports = {
     }),
   },
   themeConfig: {
-    hideableSidebar: true,
+    docs: {
+      sidebar: {
+        hideable: true
+      }
+    },
     image: "img/zowe-icon.png",
     navbar: {
       title: "Zowe Docs",
@@ -176,10 +180,6 @@ module.exports = {
     prism: {
       additionalLanguages: ["ini", "java", "properties", "groovy", "markup"],
     },
-    googleAnalytics: {
-      trackingID: "UA-123892882-1",
-      anonymizeIP: true,
-    },
   },
   customFields: {
     latestVersion: LATEST_VERSION,
@@ -220,6 +220,10 @@ module.exports = {
               label: "v1.28.x LTS",
             },
           },
+        },    
+        googleAnalytics: {
+          trackingID: "UA-123892882-1",
+          anonymizeIP: true,
         },
         theme: {
           customCss: require.resolve("./src/css/custom.css"),
