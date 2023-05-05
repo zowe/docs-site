@@ -85,54 +85,83 @@ Alternatively, administrators can use the installed ESM functionality to create,
    
   - For Top Secret, execute the following commands to set default group in the externalMapperUser profile:
    
-        ```TSS ADD(user_id) GROUP(group_id)```
-        ```TSS ADD(user_id) DFLTGRP(group_id)```
+    ```
+    TSS ADD(user_id) GROUP(group_id)
+    TSS ADD(user_id) DFLTGRP(group_id)
+    ```
    
-        **TIP:** If the externalMapperUser is also used to call z/OSMF, make sure that the user is in IZUUSER group. 
+    **TIP:** If the externalMapperUser is also used to call z/OSMF, make sure that the user is in IZUUSER group. 
+
 
   - For RACF, validate that the user already has DFLTGRP, which should be set by default     
 
+
   - For ACF2, execute the following command:
+
+    `#TODO- Find what command is needed`
 
 2. Make sure that the externalMappingUser has READ access to the Master Facility class set in the user profile. 
   - For Top Secret, execute the following command: 
-      ```TSS PERMIT(user) IBMFAC(IRR.IDIDMAP.QUERY) ACCESS(READ)```
+
+    ```TSS PERMIT(user) IBMFAC(IRR.IDIDMAP.QUERY) ACCESS(READ)```
+
+
   - For RACF, it is not required that the externalMapperUser has permissions to the Master Facility class.
 
+    
   - For ACF2, execute the following command:
 
-3. Make sure that the externalMapperUser has access to the ZOWE facility. 
+    `#TODO- Find what command is needed`
+
+3. Make sure that the externalMapperUser has access to the ZOWE facility.
   - For Top Secret, execute the following command:
 
     ```TSS ADDTO(user) FACILITY(ZOWE) ```
+
+
   - For RACF it is not required that the externalMapperUser has permissions to the ZOWE Facility class.
+   
+    `#TODO- Find what command is needed`
+
 
   - For ACF2 take the following command:
+
+    `#TODO- Find what command is needed`
+
 4. Make sure that the externalMapperUser has permissions for the OMVSAPPL.
   - For Top Secret, execute the following command:
-```TSS PERMIT(user) APPL(OMVSAPPL)```
+
+    ```TSS PERMIT(user) APPL(OMVSAPPL)```
    
-  - For RACF take the following commands:
-```
-PERMIT OMVSAPPL CLASS(APPL) ID(user) ACCESS(READ)
-SETR RACLIST(APPL) REFRESH
-```
+
+  - For RACF, execute the following commands:
+    ```
+    PERMIT OMVSAPPL CLASS(APPL) ID(user) ACCESS(READ)
+    SETR RACLIST(APPL) REFRESH
+    ```
+
+  - For ACF2, execute the following command:
+
+    `#TODO- Find what command is needed`
 
 5. Make sure the externalMapperUser has access to the `IRR.IDIDMAP.QUERY` facility.
   - For Top Secret, execute the following command:
-`TSS PERMIT(user) IBMFAC(IRR.IDIDMAP.QUERY) ACCESS(READ)`
+
+    `TSS PERMIT(user) IBMFAC(IRR.IDIDMAP.QUERY) ACCESS(READ)`
+
 
   - For RACF, execute the following commands:
-```
-PERMIT IRR.IDIDMAP.QUERY CLASS(FACILITY) ID(SDKTST2) ACCESS(NONE)
-SETR RACLIST(FACILITY) REFRESH
-```
+    ```
+    PERMIT IRR.IDIDMAP.QUERY CLASS(FACILITY) ID(SDKTST2) ACCESS(NONE)
+    SETR RACLIST(FACILITY) REFRESH
+    ```
+
   - For ACF2, execute the following command:
-```
-SET RESOURCE(FAC)                                          
-RECKEY IRR ADD(IDIDMAP.QUERY UID(SDKTST2) SERVICE(READ) ALLOW)
-F ACF2,REBUILD(FAC)
-```
+    ```
+    SET RESOURCE(FAC)                                          
+    RECKEY IRR ADD(IDIDMAP.QUERY UID(SDKTST2) SERVICE(READ) ALLOW)
+    F ACF2,REBUILD(FAC)
+    ```
 
 **Note:** If the ZOWE runtime user ZWESVUSR is configured as the externalMapperUser, some permissions listed above may be already configured during the ZOWE installation.
 
