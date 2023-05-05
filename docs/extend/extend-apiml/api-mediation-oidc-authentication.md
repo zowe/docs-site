@@ -117,8 +117,9 @@ Use the following procedure to enable the feature to use an OIDC Access Token as
 **Note:** Provide externalMapperUser and externalMapperUrl if they differ from the default values.     
    
   * **'components.gateway.apiml.security.x509.externalMapperUser'**
+    The user ID used to call the external mapper. Needs to be set properly according to the permissions requirements listed in the step 2 of the [ESM configuration](#esm-configuration) above.   
 
-**Note:** Skip this step if the Zowe runtime userId is not altered from the default `ZWESVUSR`.
+  **Note:** Skip this property if the Zowe runtime userId is not altered from the default `ZWESVUSR`.
 
 To authenticate to the mapping API, a JWT is sent with the request. The token represents the user that is configured with this property. The user authorization is required to use the `IRR.RUSERMAP` resource within the `FACILITY` class. The default value is `ZWESVUSR`. Permissions are set up during installation with the `ZWESECUR` JCL or workflow.
 
@@ -141,52 +142,57 @@ The following URL is the default value for Zowe and ZSS:
      ```
 
 ## Troubleshooting
-- API ML is not able to validate distributed Access Tokens with the OIDC provider
-  - The connection to the OIDC provider can not be established or the provider is not running. 
-  You'll find the following message in the log:
+- API ML is not able to validate distributed Access Tokens with the OIDC provider because connection to the OIDC provider cann't be established or the provider is not running.
+
+  If you find the following message in the log:
   
     ```Failed to validate the OIDC access token. Can not establish connection to the OIDC provider.``` 
-  
-  In this case:
-    - Make sure that the OIDC provider is up and running
-    - Verify that the OIDC provdier can be accessed from the system where AI ML GW is running
+
+  Make sure that:
+    - The OIDC provider is up and running
+    - The OIDC provider can be accessed from the system where AI ML GW is running
   
    
-  - Calls to OIDC provider introspection endpoint end with unexpected response code and following message can be found in the gateway log:
+- Calls to OIDC provider introspection endpoint finish with unexpected response code.
+
+  If you find following message in the gateway log:
 
     ```Failed to validate the OIDC access token. Unexpected response: ```
 
-    In this case verify your OIDC provider configuration and the API ML Gateway configuration as OIDC client - `clientId` and `client_scret`. 
+  Make sure that:
+  - Your OIDC provider is configured properly 
+  - The OIDC client credentials - `clientId` and `client_scret` are correctly set in the API ML Gateway configuration. 
 
-  - ZSS is not enabled or not running
-    - #TODO: Do we have an error code ? See code, try.
-      - @PZA: Ask Shobha, Lena
-    - 
-    To fix the issue:
-      - Enable ZSS in the Zowe configuration (zowe.yaml) 
-      - Start the ZSS component.
+- ZSS is not enabled or not running
+  - #TODO: Do we have an error code ? See code, try.
+    - @PZA: Ask Shobha, Lena
   
-  - The configured external mapper user doesn't have required permissions to call the identity mapper.
-         Call ZSS with ZoweSVUser 
-      - #TODO: Return codes from ZSS - logged to GW - find what and what level
+  To fix the issue:
+    - Enable ZSS in the Zowe configuration (zowe.yaml) 
+    - Start the ZSS component.
+  
+- The configured external mapper user doesn't have required permissions to call the identity mapper.
+       Call ZSS with ZoweSVUser 
+    - #TODO: Return codes from ZSS - logged to GW - find what and what level
     
-      To fix the issue: 
-        - See [ESM configuration](#esm-configuration) for more information on required permissions depending on installed ESM.
-        - Contact your security administrator to assign all the neccessary permisions to the mapper user name according to your OIDC configuration. 
+    To fix the issue: 
+      - Validate the [ESM configuration](#esm-configuration) depending on installed ESM.
+      - Contact your security administrator to assign all the necessary permissions to the mapper's username according to your OIDC configuration. 
      
-  - The configured external mapper user, doesn't have sufficient access rights to create passtickets and/or to call z/OSMF
+ - The configured external mapper user, doesn't have sufficient access rights to create passtickets and/or to call z/OSMF
       - (PZA#See troubleshooting of x509)
     
       To fix the issue:
         - Contact your security administrator to assign all the neccessary permisions to the mapper user name according to your OIDC configuration.
 
-  - Distributed user identity is not mapped properly by SAF to a mainframe user identity. 
+- Distributed user identity is not mapped properly by SAF to a mainframe user identity. 
       - Start ZSS and API ML in Debug to see reason codes and more details.
       - Check the mapping definitions in SAF to contain correct values for both, distributed user ID and distributed registry. 
 
-  - #TODO: ZOWE facility is needed for users to authenticate when the SAF provider is used
-  - #TODO: Resources required are not documented and included in the security job
-  - #TODO: ZSS messages are misleading
-  - #TODO: ZSS does not provide a response with ACF2
-  - #TODO: Does not work with SAF provider
+#TODO$Unresolved issues:
+  - ZOWE facility is needed for users to authenticate when the SAF provider is used
+  - Resources required are not documented and included in the security job
+  - ZSS messages are misleading
+  - ZSS does not provide a response with ACF2
+  - Does not work with SAF provider
 -- 
