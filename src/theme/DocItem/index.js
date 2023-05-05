@@ -3,7 +3,10 @@ import readingTime from "reading-time";
 import Head from "@docusaurus/Head";
 import MDXComponents from "@theme/MDXComponents";
 import { MDXProvider } from "@mdx-js/react";
-import { useDocsVersion, useTitleFormatter } from "@docusaurus/theme-common/internal";
+import {
+  useDocsVersion,
+  useTitleFormatter,
+} from "@docusaurus/theme-common/internal";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import useBaseUrl from "@docusaurus/useBaseUrl";
 import DocPaginator from "@theme/DocPaginator";
@@ -11,7 +14,10 @@ import DocVersionBanner from "@theme/DocVersionBanner";
 import TOC from "@theme/TOC";
 import clsx from "clsx";
 import styles from "./styles.module.css";
-import { useActivePlugin, useVersions } from "@docusaurus/plugin-content-docs/client";
+import {
+  useActivePlugin,
+  useVersions,
+} from "@docusaurus/plugin-content-docs/client";
 
 //Components
 import DocsInfo from "./DocsInfo";
@@ -30,7 +36,7 @@ function DocItem(props) {
       hide_title: hideTitle,
       hide_table_of_contents: hideTableOfContents,
     },
-    toc
+    toc,
   } = DocContent;
   const {
     description,
