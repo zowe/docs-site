@@ -121,18 +121,33 @@ The following URL is the default value for Zowe and ZSS:
      ```
 
 ## Troubleshooting
-- Distributed OIDC provider (OKTA, Simulate bad requests and see OIDC responses - see oidc.debugger.com) is not configured properly
-  - See responses describe what to check
-- ZSS is not enabled or not running
-  - Do we have an error code ? See code, try.
+- API ML is not able to validate distributed Access Tokens with the OIDC provider
+  - The connection to the OIDC provider can not be established or the provider is not running. 
+  You'll find the folowing message in the log:
   
-- The configured external mapper user doesn't have required permissions to call the identity mapper. See [ESM configuration](#esm-configuration) for more information on required permissions depending on installed ESM.
-  - Return codes from ZSS - logged to GW - find what and what level
-  - 
-- The configured external mapper user, doesn't have sufficient access rights to create passtickets and/or to call z/OSMF
-  - (PZA#See troubleshooting of x509)
+    ```Failed to validate the OIDC access token. Can not establish connection to the OIDC provider.``` 
   
-- User identities are not mapped properly in SAF. 
-  - Check the mapping definitions in SAF to containe correct values for both, distributed user ID and distributed registry. 
-  - In Debug - See reason codes
+  In this case:
+    - Make sure that the OIDC provider is up and running
+    - Verify that the OIDC provdier can be accessed from the system where AI ML GW is running
+  
+   
+  - Calls to OIDC provider introspection endpoint end with unexpected response code and following message can be found in the gateway log:
+
+    ```Failed to validate the OIDC access token. Unexpected response: ```
+
+    In this case verify your OIDC provider configuration and the API ML Gateway configuration as OIDC client - `clientId` and `client_scret`. 
+
+  - ZSS is not enabled or not running
+    - Do we have an error code ? See code, try.
+  
+  - The configured external mapper user doesn't have required permissions to call the identity mapper. See [ESM configuration](#esm-configuration) for more information on required permissions depending on installed ESM.
+    - Return codes from ZSS - logged to GW - find what and what level
+     
+  - The configured external mapper user, doesn't have sufficient access rights to create passtickets and/or to call z/OSMF
+    - (PZA#See troubleshooting of x509)
+  
+  - User identities are not mapped properly in SAF. 
+    - Check the mapping definitions in SAF to containe correct values for both, distributed user ID and distributed registry. 
+    - In Debug - See reason codes
 -- 
