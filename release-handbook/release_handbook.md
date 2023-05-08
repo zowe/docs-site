@@ -92,15 +92,15 @@ The following steps takes v1.25 release prepration as an example. v1.24 was rele
 
    ![Find in files in VSCode](images/vscode-find.png)
 
-   * Search all instances of `<a href="/stable/web_help/index.html" target="_blank">` and replace `stable` in the link with the previous version before adding the new version. Example: `<a href="/v1.24.x/web_help/index.html" target="_blank">`.
+   * Search all instances of `<a href="/v2.7.x/web_help/index.html" target="_blank">` and replace `stable` in the link with the previous version before adding the new version. Example: `<a href="/v1.24.x/web_help/index.html" target="_blank">`.
    
      ![Update CLI web help](images/update-cli-web-help.png)
 
-   * Search all instaces of `<a href="/stable/CLIReference_Zowe.pdf" target="_blank">` and replace `stable` with the previous version before adding the new version. Example: `<a href="/v1.24.x/CLIReference_Zowe.pdf" target="_blank">`.
+   * Search all instaces of `<a href="/v2.7.x/CLIReference_Zowe.pdf" target="_blank">` and replace `stable` with the previous version before adding the new version. Example: `<a href="/v1.24.x/CLIReference_Zowe.pdf" target="_blank">`.
 
      ![Update CLI reference PDF](images/update-cli-reference.png)
 
-   * Search all instaces of `<a href="/stable/zowe_web_help.zip" target="_blank">` and replace `stable` with the previous version before adding the new version. Example: `<a href="/v1.24.x/zowe_web_help.zip" target="_blank">`. 
+   * Search all instaces of `<a href="/v2.7.x/zowe_web_help.zip" target="_blank">` and replace `stable` with the previous version before adding the new version. Example: `<a href="/v1.24.x/zowe_web_help.zip" target="_blank">`. 
 
      ![Update CLI web help ZIP](images/update-cli-help-zip.png)
 

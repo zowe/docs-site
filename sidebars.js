@@ -24,6 +24,7 @@ module.exports = {
       label: "Release notes",
       items: [
         "getting-started/release-notes/release-notes-overview",
+        "getting-started/release-notes/v2_8_0",
         "getting-started/release-notes/v2_7_0",
         "getting-started/release-notes/v2_6_1",
         "getting-started/release-notes/v2_6_0",
@@ -835,7 +836,7 @@ module.exports = {
     {
       type: "link",
       label: "Third Party Software Requirements",
-      href: "https://github.com/zowe/docs-site/tree/master/tpsr/tpsr-v2.7.x.md",
+      href: "https://github.com/zowe/docs-site/tree/master/tpsr/tpsr-v2.8.x.md",
     },
   ],
 };
