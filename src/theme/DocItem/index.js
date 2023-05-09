@@ -12,6 +12,7 @@ import TOC from "@theme/TOC";
 import clsx from "clsx";
 import styles from "./styles.module.css";
 import { useActivePlugin, useVersions } from "@theme/hooks/useDocs";
+import TagsWrapper from "./TagsWrapper";
 
 //Components
 import DocsInfo from "./DocsInfo";
@@ -56,6 +57,57 @@ function DocItem(props) {
       readingTime(document.querySelector(".markdown").innerText).text
     );
   });
+
+  const getActiveIDs = (selectedComponents) => {
+    if (!metadata.frontMatter.meta || !metadata.frontMatter.meta[0].tags || !Object.keys(metadata.frontMatter.meta[0].tags).length) {
+      return undefined; // No tags defined for that page
+    }
+    if (!selectedComponents || !(selectedComponents.tags instanceof Object)) {
+      return undefined; // No selectedComponents or object has wrong structure
+    }
+    const numberOfSelectedComponents = Object.values(selectedComponents.tags).filter(i => i.value).length;
+    const activeDownloadType = selectedComponents.downloadType && selectedComponents.downloadType.toLowerCase() !== 'all'; 
+    const activeESM = selectedComponents.esm && selectedComponents.esm.toLowerCase() !== 'all'; 
+    if (!numberOfSelectedComponents && !activeDownloadType && !activeESM) {
+      return undefined; // Nothing is selected
+    }
+    const activeTags = Object.keys(selectedComponents.tags).filter(tag => selectedComponents.tags[tag].value).map(tag => tag.toLowerCase());
+    activeDownloadType && activeTags.push(selectedComponents.downloadType.toLowerCase());
+    activeESM && activeTags.push(selectedComponents.esm.toLowerCase());
+    const tagsDictionary = metadata.frontMatter.meta[0].tags;
+    const lowerCaseTagsDict = Object.keys(tagsDictionary).reduce((acc, i) => ({...acc, [i.toLowerCase()]: tagsDictionary[i]}), {});
+    const activeHeaders = activeTags.reduce((acc, tag) => lowerCaseTagsDict[tag] ? [...acc, ...lowerCaseTagsDict[tag]] : acc, []);
+    return activeHeaders.map(i => i.toLowerCase().replaceAll(' ', '-').replaceAll(/[^\w-]/ig, ''));
+  }
+
+  const getTOC = (activeIDs, toc) => {
+    if (!activeIDs) {
+      return toc;
+    }
+    const filterChildren = (arr) => {
+      return arr.reduce((acc, i) => {
+        if (activeIDs.includes(i.id)) {
+          acc.push(i);
+        } else if (i.children.length) {
+          const c = filterChildren(i.children);
+          if (c.length) {
+            acc.push({...i, children: c});
+          }
+        }
+        return acc;
+      }, []);
+    }
+    return filterChildren(toc);
+  }
+
+  const [activeIDs, setActiveIDs] = useState(getActiveIDs(JSON.parse(window.sessionStorage.getItem('ZoweDocs::selectedComponents') || "{}")));
+
+  window.onstorage = (e) => {
+    const newComponentsSelection = window.sessionStorage.getItem('ZoweDocs::selectedComponents');
+    if (newComponentsSelection) {
+      setActiveIDs(getActiveIDs(JSON.parse(newComponentsSelection)));
+    }
+  };
 
   return (
     <>
@@ -108,7 +160,9 @@ function DocItem(props) {
                   title={title}
                 />
               )}
-              <MDXProvider components={MDXComponents}>
+              <MDXProvider components={{...MDXComponents, 
+                wrapper: props => <TagsWrapper props={props} activeIDs={activeIDs}/>
+              }}>
                 <div className="markdown">
                   <DocContent />
                 </div>
@@ -125,7 +179,7 @@ function DocItem(props) {
         </div>
         {!hideTableOfContents && DocContent.toc && (
           <div className="col col--3">
-            <TOC toc={DocContent.toc} />
+            <TOC toc={getTOC(activeIDs, DocContent.toc)} />
           </div>
         )}
       </div>
