@@ -92,14 +92,10 @@ ZSS Cross-Memory server PARMLIB member suffix is incorrect - '_suffix_'
 
 The cross-memory's PARMLIB member suffix is invalid.
 
-Possible reasons:
-
-* The prefix is not 2-character long
-
 **Action:**
 
-The cross-memory server terminates. Specify the correct suffix and restart the
-server.
+The cross-memory server terminates. Ensure that the suffix consists
+of two characters that are allowed in a member name.
 
 ### ZWES0008E
 
@@ -299,9 +295,9 @@ The cross-memory server could not determine its module name.
 
 **Action:**
 
-The cross-memory server terminates. Review the provided CSVQUERY return code (
-see "z/OS MVS Programming: Assembler Services Reference ABE-HSP") and contact
-support if you cannot resolve the issue.
+The cross-memory server terminates. Review the provided CSVQUERY return code
+(see "z/OS MVS Programming: Assembler Services Reference ABE-HSP") and
+contact support if you cannot resolve the issue.
 
 ### ZWES0098I
 
@@ -389,8 +385,8 @@ The cross-memory auxiliary server detected that it was running in the wrong key.
 **Action:**
 
 The cross-memory auxiliary server terminates. Ensure that you have added the
-correct PPT-entry (
-see [the documentation](../../user-guide/configure-xmem-server.md))
+correct PPT-entry
+(see [the documentation](../../user-guide/configure-xmem-server.md))
 for the ZIS AUX module.
 
 ### ZWES0055E
@@ -1019,8 +1015,8 @@ The cross-memory server detected that it was running in the wrong key.
 **Action:**
 
 The cross-memory server terminates. Ensure that you have added the correct
-PPT-entry (
-see [the documentation](../../user-guide/configure-xmem-server.md))
+PPT-entry
+(see [the documentation](../../user-guide/configure-xmem-server.md))
 for the main ZIS module.
 
 ### ZWES0200I
@@ -1029,8 +1025,8 @@ _modify_commands_
 
 **Reason:**
 
-This message lists the modify commands supported by this cross-memory server (
-not including the plug-ins).
+This message lists the modify commands supported by this cross-memory server
+(not including the plug-ins).
 
 **Action:**
 
@@ -1132,8 +1128,8 @@ _csvdylpa_reason_code_
 
 **Reason:**
 
-The cross-memory server failed to add its main module to the link pack area (
-LPA).
+The cross-memory server failed to add its main module to the link pack area
+(LPA).
 
 **Action:**
 
@@ -1476,9 +1472,9 @@ The cross-memory server failed to create the resource manager name/token pair.
 
 **Action:**
 
-The cross-memory server terminates. Review the provided IEANTCR return code (
-see "z/OS MVS Programming: Assembler Services Reference IAR-XCT") and contact
-support if you cannot resolve the issue.
+The cross-memory server terminates. Review the provided IEANTCR return code
+(see "z/OS MVS Programming: Assembler Services Reference IAR-XCT") and
+contact support if you cannot resolve the issue.
 
 ### ZWES0235E
 
