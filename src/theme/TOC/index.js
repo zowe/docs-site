@@ -10,6 +10,10 @@ const TOP_OFFSET = 100;
 /* eslint-disable jsx-a11y/control-has-associated-label */
 
 function Headings({ toc, isChild }) {
+  if (!toc?.length) {
+    return null;
+  }
+  
   return (
     <ul
       className={
@@ -35,10 +39,6 @@ function Headings({ toc, isChild }) {
 
 function TOC({ toc }) {
   useTOCHighlight(LINK_CLASS_NAME, ACTIVE_LINK_CLASS_NAME, TOP_OFFSET);
-
-  if (!toc?.length) {
-    return null;
-  }
 
   return (
     <div className={clsx(styles.tableOfContents, "thin-scrollbar")}>
