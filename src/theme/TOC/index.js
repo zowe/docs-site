@@ -16,7 +16,7 @@ function Headings({ toc, isChild }) {
         isChild ? "" : "table-of-contents table-of-contents__left-border"
       }
     >
-      {toc?.map((heading) => (
+      {toc.map((heading) => (
         <li key={heading.id}>
           <a
             href={`#${heading.id}`}
