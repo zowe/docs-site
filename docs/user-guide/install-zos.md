@@ -79,6 +79,7 @@ Whether you have obtained Zowe from a .pax convenience build, or an SMP/E distri
 
 The `zwe init` command runs the subcommands in sequence automatically. You can choose to run the subcommands one by one to define each step based on your need, or if you encounter some failures with `zwe init` command, you can pick up the failed subcommands step specifically and rerun it.
 
+1. [Prepare zowe.yaml configuration file if the file does not already exist](../appendix/zowe-yaml-configuration.md).
 1. [Prepare custom MVS data sets](initialize-mvs-datasets.md). Copy the data sets provided with Zowe to custom data sets. (`zwe init mvs`)
 1. (Required only if you are configuring Zowe for cross LPAR sysplex high availability): [Create the VSAM data sets used by the Zowe API Mediation Layer caching service](initialize-vsam-dataset.md). (`zwe init vsam`)
 1. [APF authorize load libraries containing the modules that need to perform z/OS priviledged security calls.](apf-authorize-load-library.md). (`zwe init apfauth`)
