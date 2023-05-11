@@ -1,0 +1,9 @@
+I, Himani Pathak, hereby sign-off-by all of my past commits to this repo subject to the Developer Certificate of Origin (DCO), Version 1.1. In the past I have used emails: paripathak80@gmail.com
+7faa21abf0fc1d049dd6feee1550c9ab89cfd5ca message ids 276-300 (#2512)
+0893dfcb9a3d233a8b7a6af5f00b7c282098e1fa update app server codes 175-200 (#2444)
+f5866ee706bfd3771330772a7afbc7fa0b7eca8e update reason 75-100 (#2308)
+46646c3fdd04074a6c3fae6cc1c44bfeb68759d8 server.json --> zowe.yaml (#2152)
+f09327859facdb0ad85439554825a1bccf115109 update zowe Desktop docs (#2104)
+84edfc24a011d3f20b26a22be1141a75ba162488 update reason 75-100 (#2308)
+9bac202a3243e0bb662287a61127e72eb97b0681 update app server codes 175-200 (#2444)
+2863bcb1e8497d3a0318dc0de334a12f40bcc14e message ids 276-300 (#2512)

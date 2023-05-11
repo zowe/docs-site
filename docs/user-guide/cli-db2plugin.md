@@ -17,9 +17,9 @@ As an application developer, you can use Zowe CLI Plug-in for IBM DB2 Database t
 
 For detailed documentation on commands, actions, and options available in this plug-in, see our Web Help. It is available for download in three formats: a PDF document, an interactive online version, and a ZIP file containing the HTML for the online version.
 
-- <a href="/stable/web_help/index.html" target="_blank">Browse Online</a>
-- <a href="/stable/zowe_web_help.zip" target="_blank">Download (ZIP)</a>
-- <a href="/stable/CLIReference_Zowe.pdf" target="_blank">Download (PDF)</a>
+- <a href="/v2.7.x/web_help/index.html" target="_blank">Browse Online</a>
+- <a href="/v2.7.x/zowe_web_help.zip" target="_blank">Download (ZIP)</a>
+- <a href="/v2.7.x/CLIReference_Zowe.pdf" target="_blank">Download (PDF)</a>
 
 ## Software requirements
 
@@ -58,7 +58,7 @@ Download the ODBC driver before you install the Db2 plug-in.
 
 1. If you are installing the plug-in on a Apple computer that contains an M1 (or later architecture) processor, complete the steps in [M1 processor installation](../user-guide/cli-db2-install-m1.md). If not, continue to Step 2.
 
-2. [Download the ODBC CLI Driver](https://github.com/ibmdb/node-ibm_db#-download-clidriver-based-on-your-platform--architecture-from-the-below-ibm-hosted-url) (Darwin x64). Use the table within the download URL to select the correct CLI Driver for your platform and architecture.
+2. [Download the ODBC CLI Driver](https://github.com/ibmdb/node-ibm_db#-download-clidriver-based-on-your-platform--architecture-from-the-below-ibm-hosted-url). Use the table within the download URL to select the correct CLI Driver for your platform and architecture.
 
 3. Create a new directory named `odbc_cli`  on your computer. Remember the path to the new directory. You will need to provide the full path to this directory immediately before you install the Db2 plug-in.
 
