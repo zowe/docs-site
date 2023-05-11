@@ -3,7 +3,9 @@ name: Link Checker
 on:
   pull_request:
     branches:
+      - docs-staging
       - master
+  workflow_dispatch:
 
 jobs:
   test:
