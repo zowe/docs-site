@@ -11,7 +11,9 @@ Follow the steps in this checklist to guide you through the installation of Zowe
 | [Address System requirements](../user-guide/installandconfig.md)| System requirements are addressed: <br /> &nbsp;&nbsp;&nbsp;&nbsp;* [z/OS](../user-guide/systemrequirements-zos.md#zos)   <br />&nbsp;&nbsp;&nbsp;&nbsp;* [Node.js](../user-guide/systemrequirements-zos.md#nodejs)  <br /> &nbsp;&nbsp;&nbsp;&nbsp;* [Java](../user-guide/systemrequirements-zos.md#java)  <br /> &nbsp;&nbsp;&nbsp;&nbsp;* [z/OSMF](../user-guide/systemrequirements-zos.md#zosmf-optional) <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(recommended for full functionality)<br />&nbsp;&nbsp;&nbsp;&nbsp;* [z/OSMF HA](../user-guide/zowe-ha-overview.md)<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(required for production)            |  1 day                     | 
 
 ## Installing the Zowe z/OS runtime
+
 Use one of the following installation options to install Zowe z/OS components.
+
 | Task | Results | Time Estimate |  
 |--------------------|----|------|
 | **Option 1: [Install Zowe runtime from a convenience build](../user-guide/install-zowe-zos-convenience-build.md)**  <br />  **Option 2: [Install Zowe with SMP/E](../user-guide/install-zowe-smpe.md)** <br /> **Option 3: [Install Zowe with a portable software instance](../user-guide/install-zowe-pswi.md)** <br />                      | Executables and binaries are unpaxed on mainframe                |   1 hour                     |
@@ -20,7 +22,7 @@ Use one of the following installation options to install Zowe z/OS components.
 
 | Task | Results | Time Estimate |  
 |-----------------------|----|------|
-| 1. Use one of the following options to innitialize Zowe z/OS runtime.<br />**Option 1: [Initialize Zowe manually using zwe init command group](../user-guide/initialize-zos-system.md)  <br />** **Option 2: [Configure Zowe with z/OSMF workflows](../user-guide/configure-zowe-zosmf-workflow.md)** <br /> <br /> 2. [Configure the z/OS system for Zowe](../user-guide/configure-zos-system.md)<br />3. [Grant users permission to access z/OSMF](../user-guide/grant-user-permission-zosmf.md) <br />4. [Install and configure the Zowe cross memory server (ZWESISTC)](../user-guide/configure-xmem-server.md) |* All datasets are created and populated. See [Initialize MVS Datasets Results](../user-guide/initialize-mvs-datasets.md#results)<br />* Started tasks are copied to system libraries<br />* APF authorization is granted to load libraries<br />* Zowe user is created and is asigned all required permissions<br />* Your z/OS and security product are configured| 4 hours| 
+| 1. Use one of the following options to innitialize Zowe z/OS runtime.<br />**Option 1: [Initialize Zowe manually using zwe init command group](../user-guide/initialize-zos-system.md)  <br />** **Option 2: [Configure Zowe with z/OSMF workflows](../user-guide/configure-zowe-zosmf-workflow.md)** <br /> <br /> 2. [Configure the z/OS system for Zowe](../user-guide/configure-zos-system.md)<br />3. [Grant users permission to access z/OSMF](../user-guide/grant-user-permission-zosmf.md) <br />4. [Install and configure the Zowe cross memory server (ZWESISTC)](../user-guide/configure-xmem-server.md) | * All datasets are created and populated. See [Initialize MVS Datasets Results](../user-guide/initialize-mvs-datasets.md#results)<br /> * Started tasks are copied to system libraries<br /> * APF authorization is granted to load libraries<br /> * Zowe user is created and is asigned all required permissions<br /> * Your z/OS and security product are configured| 4 hours| 
 ## Configuring certificates
 
 | Task | Results | Time Estimate |  
