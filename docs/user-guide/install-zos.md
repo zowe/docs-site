@@ -14,7 +14,7 @@ Zowe provides the ability for some of its unix components to be run not under US
 
 If you want to configure Zowe for high availability, see [High Availability overview](zowe-ha-overview.md) for instructions.
 
-## Stage 1: Plan and prepare
+## Stage 1: Planning and preparing
 
 Before continuing with the installation, you should be familiar with the following topics:
 
@@ -25,7 +25,7 @@ Before continuing with the installation, you should be familiar with the followi
 These topics and more are covered in the [Planning the installation](installandconfig.md) page.
 
 
-## Stage 2: Install the Zowe z/OS runtime
+## Stage 2: Installing the Zowe z/OS runtime
 
 ![Install the Zowe z/OS runtime](../images/install/install.png)
 
@@ -59,7 +59,7 @@ These topics and more are covered in the [Planning the installation](installandc
 
 After successful installation of either a convenience build or an SMP/E build, there will be a zFS folder that contains the unconfigured Zowe runtime directory, a utility library `SZWEEXEC` that contains utilities, a SAMPLIB library `SZWESAMP` that contains sample members, and a load library `SZWEAUTH` that contains load modules. The steps to prepare the z/OS environment to launch Zowe are the same irrespective of the installation method.
 
-## Stage 3: Configure the Zowe z/OS runtime
+## Stage 3: Configuring the Zowe z/OS runtime
 
 ![Configure the Zowe z/OS runtime](../images/install/config.png)
 
@@ -102,7 +102,7 @@ The `zwe init` command runs the subcommands in sequence automatically. You can c
    
 :::
 
-## Stage 4: (Optional) Customize the configuration
+## Stage 4: (Optional) Customizing the configuration
 
 
 Now that you have the permissions, certificates, tasks, files and datasets necessary to run Zowe, you may want to customize your Zowe configuration. Through customization, you can change attributes such as:

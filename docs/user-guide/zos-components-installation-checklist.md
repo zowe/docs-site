@@ -26,7 +26,7 @@ Use one of the following installation options to install Zowe z/OS components.
 | Task | Results | Time Estimate |  
 |--------------------|----|------|
 | Zowe is able to use PKCS12 certificates or certificates held in a z/OS Keyring.<br /><br />Use one of the following options:<br /> **Option 1: Use zwe command group** <br />* [Configure PKCS12 certificates](../user-guide/configure-certificates-keystore.md) <br />&nbsp;&nbsp;&nbsp;or<br />* [Configure JCERACFKS certificates in a key ring](../user-guide/configure-certificates-keyring.md) <br />**Option 2: [Set up Zowe certificates using workflows](../user-guide/certificates-setup.md)** | Your certificates are configured and stored securely|2 hours  
-## [Configure High Availability](../user-guide/zowe-ha-overview.md) (optional)
+## [Configuring High Availability](../user-guide/zowe-ha-overview.md) (optional)
 | Task | Results | Time Estimate |  
 |--------------------|----|------|
 |Zowe has a high availability feature built-in, but your system should be properly configured to enable it. <br />1. [Configure Sysplex for high availability](../user-guide/configure-sysplex.md) <br />2. [Configure z/OSMF for high availability in Sysplex](../user-guide/systemrequirements-zosmf-ha.md) <br />3. [Configure the Caching Service storage](../user-guide/configure-caching-service-ha.md)<br />4. [Define the `haInstances` section in your zowe.yaml](../appendix/zowe-yaml-configuration.md)<br />| Zowe z/OS components are able to run in HA mode |2 hours  |
@@ -38,7 +38,7 @@ Use one of the following installation options to install Zowe z/OS components.
 |[Start and stop the cross memory server `ZWESISTC` on z/OS](../user-guide/start-zowe-zos.md#starting-and-stopping-the-cross-memory-server-zwesistc-on-zos) | The `ZWESISTC` task starts and stops the `ZWESASTC` task as needed | The cross memory server is run as a started task from the JCL in the PROCLIB member `ZWESISTC` | 5 minutes|
 |Start and stop the Zowe main server `ZWESLSTC` on z/OS |**Option 1: [Use zwe to start and stop the main Zowe server](../user-guide/start-zowe-zos.md#starting-and-stopping-zowe-main-server-zweslstc-on-zos-with-zwe-server-command)**<br /><p></p>**Option 2: [Manually start and stop the Zowe main server `ZWESLSTC`](../user-guide/start-zowe-zos.md#starting-and-stopping-zowe-main-server-zweslstc-on-zos-manually)** | You started or stopped Zowe main server `ZWESLSTC` on z/OS with `zwe` or manually | 20 minutes |
 
-## Verify Zowe installation on z/OS
+## Verifying Zowe installation on z/OS
 
 | Verification Step | Task | Results | Time Estimate | 
 |----|-----------|----|-------------|
