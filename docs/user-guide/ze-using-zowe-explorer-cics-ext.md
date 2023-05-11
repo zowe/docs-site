@@ -8,7 +8,7 @@ The CICS Extension for Zowe Explorer adds additional functionality to the popula
 
 - [Visual Studio Code](https://code.visualstudio.com/download)
 
-- [Zowe Explorer V2](../user-guide/)
+- [Zowe Explorer V2](../user-guide/ze-install#installing-zowe-explorer)
 
 ### Server side requirements
 

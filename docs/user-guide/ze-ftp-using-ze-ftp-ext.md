@@ -1,16 +1,12 @@
 # Using Zowe Explorer FTP Extension
 ## System Requirements
 
-Ensure that you obtain remote access to a z/OS FTP service before you can use the extension:
+Ensure that you can obtain remote access to a z/OS FTP service before using the extension.
 
-1. Connect to z/OS with the FTP client.
-2. Run the following command in the FTP client:
+Some functionality within the FTP extension requires the FTP server on the mainframe to be configured with the `JESINTERFACELevel` parameter set to `2`. For more information, see the [JESINTERFACELEVEL (FTP server) statement](https://www.ibm.com/docs/en/zos/2.5.0?topic=protocol-jesinterfacelevel-ftp-server-statement).
 
-   ```bash
-   rstat
-   ```
-
-3. In the output of the preceding command, confirm that the `JESINTERFACELevel` option is set to `2`.
+ The `JESINTERFACELevel` parameter can be found in multiple locations within the mainframe, depending on your site's security policies.
+Contact your system administrator to determine if your FTP server is configured with the correct `JESINTERFACELevel`. For more information, see [FTP configuration statements in FTP.DATA](https://www.ibm.com/docs/en/zos/2.5.0?topic=protocol-ftp-configuration-statements-in-ftpdata).
 
 ## Using
 
