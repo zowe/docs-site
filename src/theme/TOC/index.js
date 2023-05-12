@@ -10,17 +10,13 @@ const TOP_OFFSET = 100;
 /* eslint-disable jsx-a11y/control-has-associated-label */
 
 function Headings({ toc, isChild }) {
-  if (!toc?.length) {
-    return null;
-  }
-  
   return (
     <ul
       className={
         isChild ? "" : "table-of-contents table-of-contents__left-border"
       }
     >
-      {toc.map((heading) => (
+      {toc?.map((heading) => (
         <li key={heading.id}>
           <a
             href={`#${heading.id}`}
@@ -39,6 +35,10 @@ function Headings({ toc, isChild }) {
 
 function TOC({ toc }) {
   useTOCHighlight(LINK_CLASS_NAME, ACTIVE_LINK_CLASS_NAME, TOP_OFFSET);
+
+  if (!toc?.length) {
+    return null;
+  }
 
   return (
     <div className={clsx(styles.tableOfContents, "thin-scrollbar")}>
