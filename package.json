@@ -4,8 +4,8 @@
   "private": true,
   "scripts": {
     "docusaurus": "docusaurus",
-    "start": "node --max-old-space-size=9216 node_modules/@docusaurus/core/bin/docusaurus start --no-minify",
-    "build": "node --max-old-space-size=9216 node_modules/@docusaurus/core/bin/docusaurus build --no-minify",
+    "start": "node --max-old-space-size=11264 node_modules/@docusaurus/core/bin/docusaurus start",
+    "build": "node --max-old-space-size=11264 node_modules/@docusaurus/core/bin/docusaurus build",
     "swizzle": "docusaurus swizzle",
     "deploy": "docusaurus deploy",
     "clear": "docusaurus clear",
@@ -40,7 +40,6 @@
     ]
   },
   "devDependencies": {
-    "mr-pdf": "1.0.5",
-    "netlify-plugin-cache": "^1.0.3"
+    "mr-pdf": "1.0.5"
   }
 }
