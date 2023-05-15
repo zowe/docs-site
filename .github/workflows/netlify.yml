@@ -24,6 +24,8 @@ jobs:
 
       - name: Checkout
         uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
 
       - name: Use Node.js LTS
         uses: actions/setup-node@v3
@@ -39,6 +41,21 @@ jobs:
 
       - name: Install Dependencies
         run: npm ci
+
+      - name: Find Changed Files
+        if: github.event_name == 'pull_request'
+        id: changed-files
+        uses: tj-actions/changed-files@v35
+        with:
+          files: |
+            versioned_docs/**/*
+            versioned_sidebars/*
+            versions.json
+
+      - name: Decide Single Version Render
+        if: steps.changed-files.outputs.any_modified != 'true'
+        run: |
+          sed -i 's/onlyIncludeVersions: undefined/onlyIncludeVersions: \["current"\]/' docusaurus.config.js
 
       - name: Build with Docusaurus
         run: npm run build
