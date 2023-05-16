@@ -1,6 +1,8 @@
 <!-- omit in toc -->
 # WebSocket support in API Gateway
 
+The API Gateway includes a basic WebSocket proxy which enables the Gateway to access applications that use the WebSocket protocol together with a web UI and a REST API.
+
 - [Architecture](#architecture)
   - [Security and Authentication](#security-and-authentication)
   - [Subprotocols](#subprotocols)
@@ -8,8 +10,6 @@
   - [Idle Timeout](#idle-timeout)
 - [Diagnostics](#diagnostics)
 - [Limitations](#limitations)
-
-The API Gateway includes a basic WebSocket proxy which enables the Gateway to access applications that use the WebSocket protocol together with a web UI and REST API.
 
 The service can define what WebSocket services are exposed using Eureka metadata.
 
@@ -27,7 +27,7 @@ The service can define what WebSocket services are exposed using Eureka metadata
 These metadata make it possible for requests from `wss://gatewayHost:gatewayPort/serviceId/ws/v1/path` to map to `wss://serviceHost:servicePort/discoverableclient/ws/path`, where:
 
 * **`serviceId`**  
-  is the service ID of the service
+  is the service ID of the service.
   
 * **`path`**  
   is the remaining path segment in the URL.
@@ -38,7 +38,7 @@ In WebSocket routing, the API ML Gateway acts as both a WebSocket server for the
 
 Client (i.e. web browser) <-> Gateway (WebSocket Server) - Gateway (WebSocket Client) <-> Service's WebSocket Server
 
-As a general recommendation, clients should implement a ping-like mechanism to maintain the WebSocket sessions opened and not rely on the web browser to do it.
+As a general recommendation, clients should implement a ping-like mechanism to maintain the opened WebSocket sessions and not rely on the web browser to perform this action.
 
 ### Security and Authentication
 
@@ -64,7 +64,7 @@ Communication between the client and the server is handled by the API Gateway by
 
 ### Idle Timeout
 
-The WebSocket client on the API ML Gateway has a default Idle timeout of one hour. If a WebSocket session between the Gateway WebSocket Client and the Service's WebSocket Server does not have activity for the entire period, the connection will be closed.
+The WebSocket client on the API ML Gateway has a default Idle timeout of one hour. If a WebSocket session between the Gateway WebSocket Client and the Service's WebSocket Server does not have activity for the entire period, the connection is closed.
 
 To customize this setting, set the following property in zowe.yaml:
 
@@ -75,13 +75,13 @@ gateway:
         maxIdleTimeout: 300000
 ```
 
-*Note:* This setting is global for the API ML Gateway.
+**Note:** This setting is global for the API ML Gateway.
 
 ## Diagnostics
 
 The list of active routed WebSocket sessions is available at the Actuator endpoint `websockets`. On `localhost`, it is available at https://localhost:10010/application/websockets.
 
-*Note:* The actuator endpoint is enabled with debugging enabled in the API ML Gateway.
+The actuator endpoint is enabled with debugging enabled in the API ML Gateway.
 
 ## Limitations
 
