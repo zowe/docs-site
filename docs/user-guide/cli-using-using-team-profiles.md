@@ -46,8 +46,14 @@ You can convert all of your Zowe CLI and Zowe CLI plug-ins V1 profiles to team p
 ```
 zowe config convert-profiles
 ```
+:::caution
 
-**Note:** You can continue using Zowe CLI and Zowe CLI plug-ins V1 profiles with Zowe CLI V2. However, we highly recommend that you implement V2 profiles with Zowe CLI V2.
+You can continue using Zowe CLI and Zowe CLI plug-ins V1 profiles with Zowe CLI V2. However, we highly recommend that you implement V2 profiles with Zowe CLI V2.
+
+ If plain text credentials exist in the original V1 profiles and are converted, the resulting V2 team configuration file, `zowe.config.json`, will also contain plain text credentials.
+   
+:::
+
 
 - Commands in the `zowe config` [command group](../user-guide/cli-using-understanding-core-command-groups#config) now let you manage security for any option value.
 
