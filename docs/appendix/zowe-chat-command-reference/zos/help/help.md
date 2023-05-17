@@ -1,6 +1,6 @@
 # `zos help`
 
-**[zos](.././zos) > [help](help)**
+**[zos](../zos.md) > [help](help)**
 
 Show help information of commands.
 

@@ -1,6 +1,6 @@
 # zwe version
 
-[zwe](././zwe.md) > [version](./zwe-version)
+[zwe](./zwe.md) > [version](./zwe-version)
 
 	zwe version [parameter [parameter]...]
 

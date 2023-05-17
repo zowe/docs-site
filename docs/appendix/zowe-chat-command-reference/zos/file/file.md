@@ -1,6 +1,6 @@
 # `zos file`
 
-**[zos](.././zos) > [file](file)**
+**[zos](../zos.md) > [file](file)**
 
 Manage USS files in a z/OS system. <!--file-description-->
 
