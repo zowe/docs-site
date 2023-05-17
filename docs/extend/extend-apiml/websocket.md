@@ -11,7 +11,7 @@ The API Gateway includes a basic WebSocket proxy which enables the Gateway to ac
 - [Diagnostics](#diagnostics)
 - [Limitations](#limitations)
 
-The service can define what WebSocket services are exposed using Eureka metadata.
+The service defines what WebSocket endpoints are exposed using Eureka metadata.
 
 **Example:**
 
