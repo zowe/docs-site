@@ -362,3 +362,15 @@ The following error message codes may appear on ZSS log. Use the following messa
 
 No action required.
 
+### ZWES0054E
+
+  ZIS AUX Server started in wrong key 8
+
+  **Reasons:**
+
+  authPluginLib was missing in the `ZWESASTC JCL` and the `ZWESISTS JCL`.
+
+  **Action:**
+ 
+  The `IZPSRGSP`,`IZPSRGAD`, and `ZWESVUSR` need read access to the profile `OMVSAPPL`. Then the ZWESASTC started task was started successfully by the ZWESISTS started task.
+
