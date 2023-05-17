@@ -53,7 +53,7 @@ The following definition of skill levels about Zowe Explorer helps you find the 
 
 > Zowe skill level: Advanced
 
-* [**Extend Zowe Explorer**](https://github.com/zowe/vscode-extension-for-zowe/blob/master/docs/README-Extending.md)
+* [**Extend Zowe Explorer**](https://github.com/zowe/vscode-extension-for-zowe/wiki/Extending-Zowe-Explorer)
 
    Learn how to create extensions for Zowe Explorer to introduce new functionalities.
 
@@ -69,7 +69,7 @@ The following definition of skill levels about Zowe Explorer helps you find the 
 
    The GitHub repository of contains the source code of Zowe Explorer and other Zowe Explorer-related extensions. Check out the landing page README in the repository to find out how to contribute to the extension.
 
-* [**Developing for Eclipse Theia**](https://github.com/zowe/vscode-extension-for-zowe/blob/master/docs/README-Theia.md)
+* [**Developing for Eclipse Theia**](https://github.com/zowe/vscode-extension-for-zowe/wiki/Developing-for-Theia)
 
    This article contains information on how to develop for Eclipse Theia.
 
