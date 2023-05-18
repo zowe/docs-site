@@ -160,6 +160,7 @@ The starting and stopping of the `ZWESLSTC` started task for the main Zowe serve
 
 To diagnose problems that may occur with the Zowe `ZWESLSTC` not being able to attach to the `ZWESISTC` cross memory server, a log file `zssServer-yyyy-mm-dd-hh-mm.log` is created in the log directory each time ZIS is started.  More details on diagnosing errors can be found in [Zowe Application Framework issues](../troubleshoot/app-framework/app-troubleshoot.md#cannot-log-in-to-the-zowe-desktop).
 
+If the `crossMemoryServerName` is changed in `zowe.yaml` and the default name is not applied, mannually update the `PROC NAME` in the corresponding `PROCLIB`.
 
 ## Zowe auxiliary service
 
