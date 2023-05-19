@@ -101,17 +101,23 @@ Alternatively, administrators can use the installed ESM functionality to create,
     `#TODO- Find what command is needed`
 
 2. Make sure that the externalMappingUser has READ access to the Master Facility class set in the user profile. 
-  - For Top Secret, execute the following command: 
+  - For Top Secret, execute the following command:
 
-    ```TSS PERMIT(user) IBMFAC(IRR.IDIDMAP.QUERY) ACCESS(READ)```
+     `TSS PERMIT(user) IBMFAC(IRR.IDIDMAP.QUERY) ACCESS(READ)`
 
 
-  - For RACF, it is not required that the externalMapperUser has permissions to the Master Facility class.
+  - For RACF, execute the following commands:
+      ```
+      PERMIT IRR.IDIDMAP.QUERY CLASS(FACILITY) ID(SDKTST2) ACCESS(NONE)
+      SETR RACLIST(FACILITY) REFRESH
+      ```
 
-    
   - For ACF2, execute the following command:
-
-    `#TODO- Find what command is needed`
+    ```
+    SET RESOURCE(FAC)                                          
+    RECKEY IRR ADD(IDIDMAP.QUERY UID(SDKTST2) SERVICE(READ) ALLOW)
+    F ACF2,REBUILD(FAC)
+    ```
 
 3. Make sure that the externalMapperUser has access to the ZOWE facility.
   - For Top Secret, execute the following command:
@@ -143,26 +149,7 @@ Alternatively, administrators can use the installed ESM functionality to create,
   - For ACF2, execute the following command:
 
     `#TODO- Find what command is needed`
-
-5. Make sure the externalMapperUser has access to the `IRR.IDIDMAP.QUERY` facility.
-  - For Top Secret, execute the following command:
-
-    `TSS PERMIT(user) IBMFAC(IRR.IDIDMAP.QUERY) ACCESS(READ)`
-
-
-  - For RACF, execute the following commands:
-    ```
-    PERMIT IRR.IDIDMAP.QUERY CLASS(FACILITY) ID(SDKTST2) ACCESS(NONE)
-    SETR RACLIST(FACILITY) REFRESH
-    ```
-
-  - For ACF2, execute the following command:
-    ```
-    SET RESOURCE(FAC)                                          
-    RECKEY IRR ADD(IDIDMAP.QUERY UID(SDKTST2) SERVICE(READ) ALLOW)
-    F ACF2,REBUILD(FAC)
-    ```
-
+  
 **Note:** If the ZOWE runtime user ZWESVUSR is configured as the externalMapperUser, some permissions listed above may be already configured during the ZOWE installation.
 
 ## API ML configuration
