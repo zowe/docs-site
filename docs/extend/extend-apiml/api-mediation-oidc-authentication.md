@@ -90,7 +90,7 @@ Alternatively, administrators can use the installed ESM functionality to create,
     TSS ADD(user_id) DFLTGRP(group_id)
     ```
    
-    **TIP:** If the externalMapperUser is also used to call z/OSMF, make sure that the user is in IZUUSER group. 
+    **TIP:** The externalMapperUser must be able to login (with a passticket) to the z/OSMF (that's why it must be in one of the IZU* groups) and in order to do that it must have a password set (i.e. it must not have NOPASSWORD property in his security profile) .
 
 
   - For RACF, validate that the user already has DFLTGRP, which should be set by default     
@@ -204,15 +204,11 @@ If you customized the `ZWESECUR` JCL or workflow (the customization of zowe runt
    components.gateway.apiml.security.x509.externalMapperUser: yournewuserid  
    ```
 
-   * **`apiml.security.x509.externalMapperUrl`**  
+   * **`components.gateway.apiml.security.oidc.identityMapperUrl`**  
   Defines the URL where Gateway can query the mapping of distributed user ID to mainframe user ID. 
   This property informs the Gateway about the location of this API. ZSS is the default API provider in Zowe. You can provide your own API to perform the mapping. In this case, it is necessary to customize this value.
 
-The following URL is the default value for Zowe and ZSS:
-
-     ```
-     https://${ZWE_haInstance_hostname}:${GATEWAY_PORT}/zss/api/v1/certificate/x509/map
-     ```
+The following URL is the default value for Zowe and ZSS: `https://${ZWE_haInstance_hostname}:${GATEWAY_PORT}/zss/api/v1/certificate/dn`
 
 ## Troubleshooting
 - API ML is not able to validate distributed Access Tokens with the OIDC provider because connection to the OIDC provider cann't be established or the provider is not running.
