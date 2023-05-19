@@ -2,27 +2,6 @@
 
 Review this section to familiarize yourself with Zowe Explorer and make the best use of its available options and features.
 
-## Supported operating systems, environments, and platforms
-
-### Operating systems
-
-
-- MacOS 10.15 (Catalina), 11 (Big Sur), 12 (Monterey)
-- Unix-like:
-   - [CentOS](https://www.centos.org/) 8+
-   - [RHEL](https://www.redhat.com/en/technologies/linux-platforms/enterprise-linux) 8+
-   - [Ubuntu](https://ubuntu.com/) 20.04+
-- Windows 10+
-
-### Integrated development environments: 
-
-- [VS Code](https://code.visualstudio.com/) 1.53.2+
-- [Eclipse Che](https://www.eclipse.org/che/)
-- [Red Hat CodeReady Workspaces](https://www.redhat.com/en/technologies/jboss-middleware/codeready-workspaces)
-- [Theia](https://theia-ide.org/) 1.18+
-
-   **Note:** Zowe Explorer is compatible with Theia 1.18.0 or higher. However, we recommend using a [Theia community release](https://theia-ide.org/releases/) as Zowe Explorer could experience possible unexpected behaviors with the latest Theia releases.
-
 ## Usage Tips
 
 Make the best use of the extension with the following tips:

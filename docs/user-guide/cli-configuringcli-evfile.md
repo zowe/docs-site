@@ -35,7 +35,7 @@ Follow these steps:
         "ZOWE_CLI_HOME": "C:\Users\User\alternate\location\to\.zowe",
         "ZOWE_APP_LOG_LEVEL": "DEBUG",
         "ZOWE_IMPERATIVE_LOG_LEVEL": "DEBUG",
-        "ZOWE_CLI_PLUGINS_DIR: "C:\Users\Shared\.zowe\Plugins",
+        "ZOWE_CLI_PLUGINS_DIR": "C:\Users\Shared\.zowe\Plugins",
         "SOME_OTHER_VARIABLE": "SOME OTHER VALUE",
         "NUMBER": "12345",
         "BOOLEAN": "TRUE",
