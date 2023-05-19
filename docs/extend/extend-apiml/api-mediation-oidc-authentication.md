@@ -76,21 +76,21 @@ Alternatively, administrators can use the installed ESM functionality to create,
  - For CA Top Secret use the [IDMAP Keyword - Implement z/OS Identity Propagation Mapping](https://techdocs.broadcom.com/us/en/ca-mainframe-software/security/ca-top-secret-for-z-os/16-0/administrating/issuing-commands-to-communicate-administrative-requirements/keywords/idmap-keyword-implement-z-os-identity-propagation-mapping.html).
  - For CA ACF2 use [IDMAP User Profile Data Records](https://techdocs.broadcom.com/us/en/ca-mainframe-software/security/ca-acf2-for-z-os/16-0/administrating/administer-records/user-profile-records/idmap-user-profile-records.html).
 
-2. External Mapper user's permissions.
-  The External Mapper functionality is executed on behalf of the calling `externalMapperUser`. By default, this will be the ZOWE runtime user `ZWESVUSR`.   
-  For the identity mapping calls to succeed, the externalMapperUser needs special privileges which may vary per installed ESM type.
+2. Identity Mapper user's permissions.
+  The Identity Mapper functionality is executed on behalf of the calling `identityMapperUser`. By default, this will be the ZOWE runtime user `ZWESVUSR`.   
+  For the identity mapping calls to succeed, the identityMapperUser needs special privileges which may vary per installed ESM type.
 
-  Perform following validations and configuration steps to ensure that externalMapperUser is properly configured:   
+  Perform following validations and configuration steps to ensure that identityMapperUser is properly configured:   
 1. Make sure that the user has a default user group set. The default group could be any existing group.   
    
-  - For Top Secret, execute the following commands to set default group in the externalMapperUser profile:
+  - For Top Secret, execute the following commands to set default group in the identityMapperUser profile:
    
     ```
     TSS ADD(user_id) GROUP(group_id)
     TSS ADD(user_id) DFLTGRP(group_id)
     ```
    
-    **TIP:** The externalMapperUser must be able to login (with a passticket) to the z/OSMF (that's why it must be in one of the IZU* groups) and in order to do that it must have a password set (i.e. it must not have NOPASSWORD property in his security profile) .
+    **TIP:** The identityMapperUser must be able to login (with a passticket) to the z/OSMF (that's why it must be in one of the IZU* groups) and in order to do that it must have a password set (i.e. it must not have NOPASSWORD property in his security profile) .
 
 
   - For RACF, validate that the user already has DFLTGRP, which should be set by default     
@@ -100,7 +100,7 @@ Alternatively, administrators can use the installed ESM functionality to create,
 
     `#TODO- Find what command is needed`
 
-2. Make sure that the externalMappingUser has READ access to the Master Facility class set in the user profile. 
+2. Make sure that the identityMappingUser has READ access to the Master Facility class set in the user profile. 
   - For Top Secret, execute the following command:
 
      `TSS PERMIT(user) IBMFAC(IRR.IDIDMAP.QUERY) ACCESS(READ)`
@@ -119,13 +119,13 @@ Alternatively, administrators can use the installed ESM functionality to create,
     F ACF2,REBUILD(FAC)
     ```
 
-3. Make sure that the externalMapperUser has access to the ZOWE facility.
+3. Make sure that the identityMapperUser has access to the ZOWE facility.
   - For Top Secret, execute the following command:
 
     ```TSS ADDTO(user) FACILITY(ZOWE) ```
 
 
-  - For RACF it is not required that the externalMapperUser has permissions to the ZOWE Facility class.
+  - For RACF it is not required that the identityMapperUser has permissions to the ZOWE Facility class.
    
     `#TODO- Find what command is needed`
 
@@ -134,7 +134,7 @@ Alternatively, administrators can use the installed ESM functionality to create,
 
     `#TODO- Find what command is needed`
 
-4. Make sure that the externalMapperUser has permissions for the OMVSAPPL.
+4. Make sure that the identityMapperUser has permissions for the OMVSAPPL.
   - For Top Secret, execute the following command:
 
     ```TSS PERMIT(user) APPL(OMVSAPPL)```
@@ -150,7 +150,7 @@ Alternatively, administrators can use the installed ESM functionality to create,
 
     `#TODO- Find what command is needed`
   
-**Note:** If the ZOWE runtime user ZWESVUSR is configured as the externalMapperUser, some permissions listed above may be already configured during the ZOWE installation.
+**Note:** If the ZOWE runtime user ZWESVUSR is configured as the identityMapperUser, some permissions listed above may be already configured during the ZOWE installation.
 
 ## API ML configuration
 Use the following procedure to enable the feature to use an OIDC Access Token as the method of authentication for the API Mediation Layer Gateway.
@@ -174,21 +174,21 @@ Use the following procedure to enable the feature to use an OIDC Access Token as
    Specifies the path portion of the token introspection endpoint URL, provided by the OAuth2/OIDC provider. The Token Introspection endpoint is defined by the [OAuth 2.0 Token Introspection extension](https://datatracker.ietf.org/doc/html/rfc7662) as an OAuth2 endpoint, that takes a parameter representing an OAuth 2.0 token and returns a JSON document representing the meta information surrounding the token, including whether this token is currently active.
 
 
-**Note:** Provide externalMapperUser and externalMapperUrl if they differ from the default values.     
+**Note:** Provide identityMapperUser and identityMapperUrl if they differ from the default values.     
    
-  * **'components.gateway.apiml.security.x509.externalMapperUser'**
-    The user ID used to call the external mapper. Needs to be set properly according to the permissions requirements listed in the step 2 of the [ESM configuration](#esm-configuration) above.   
+  * **'components.gateway.apiml.security.oidc.identityMapperUser'**
+    The user ID used to call the identity mapper. Needs to be set properly according to the permissions requirements listed in the step 2 of the [ESM configuration](#esm-configuration) above.   
 
   **Note:** Skip this property if the Zowe runtime userId is not altered from the default `ZWESVUSR`.
 
 To authenticate to the mapping API, a JWT is sent with the request. The token represents the user that is configured with this property. The user authorization is required to use the `IRR.RUSERMAP` resource within the `FACILITY` class. The default value is `ZWESVUSR`. Permissions are set up during installation with the `ZWESECUR` JCL or workflow.
 
-If you customized the `ZWESECUR` JCL or workflow (the customization of zowe runtime user: `// SET ZOWEUSER=ZWESVUSR * userid for Zowe started task`) and changed the default USERID, create the `components.gateway.apiml.security.x509.externalMapperUser` property and set the value by adding a new line as in the following example:
+If you customized the `ZWESECUR` JCL or workflow (the customization of zowe runtime user: `// SET ZOWEUSER=ZWESVUSR * userid for Zowe started task`) and changed the default USERID, create the `components.gateway.apiml.security.oidc.identityMapperUser` property and set the value by adding a new line as in the following example:
 
 **Example:**
 
    ```
-   components.gateway.apiml.security.x509.externalMapperUser: yournewuserid  
+   components.gateway.apiml.security.oidc.identityMapperUser: yournewuserid  
    ```
 
    * **`components.gateway.apiml.security.oidc.identityMapperUrl`**  
@@ -227,7 +227,7 @@ The following URL is the default value for Zowe and ZSS: `https://${ZWE_haInstan
     - Enable ZSS in the Zowe configuration (zowe.yaml) 
     - Start the ZSS component.
   
-- The configured external mapper user doesn't have required permissions to call the identity mapper.
+- The configured identity mapper user doesn't have required permissions to call the identity mapper.
        Call ZSS with ZoweSVUser 
     - #TODO: Return codes from ZSS - logged to GW - find what and what level
     
@@ -235,7 +235,7 @@ The following URL is the default value for Zowe and ZSS: `https://${ZWE_haInstan
       - Validate the [ESM configuration](#esm-configuration) depending on installed ESM.
       - Contact your security administrator to assign all the necessary permissions to the mapper's username according to your OIDC configuration. 
      
- - The configured external mapper user, doesn't have sufficient access rights to create passtickets and/or to call z/OSMF
+ - The configured identity mapper user, doesn't have sufficient access rights to create passtickets and/or to call z/OSMF
       - (PZA#See troubleshooting of x509)
     
       To fix the issue:
