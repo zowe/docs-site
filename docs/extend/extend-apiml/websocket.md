@@ -38,7 +38,11 @@ Where:
 
 In WebSocket routing, the API ML Gateway acts as both a WebSocket server for the client requesting this connection, and as a WebSocket client.
 
-Client (i.e. web browser) <-> Gateway (WebSocket Server) - Gateway (WebSocket Client) <-> Service's WebSocket Server
+The following schema describes the interactions between client-side and server-side components where the Gateway has a double role as both client and server.
+
+```
+Client (i.e. web browser) <-> [Gateway (WebSocket Server) - Gateway (WebSocket Client)] <-> Service's WebSocket Server
+```
 
 **Tip:** We recommend that clients implement a ping-like mechanism to maintain the opened WebSocket sessions and not rely on the web browser to perform this action.
 
