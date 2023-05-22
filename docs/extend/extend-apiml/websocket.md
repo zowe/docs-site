@@ -11,7 +11,7 @@ The API Gateway includes a basic WebSocket proxy which enables the Gateway to ac
 - [Diagnostics](#diagnostics)
 - [Limitations](#limitations)
 
-The service defines what WebSocket endpoints are exposed using Eureka metadata.
+The service defines which WebSocket endpoints are exposed by using Eureka metadata.
 
 **Example:**
 
@@ -34,7 +34,7 @@ These metadata make it possible for requests from `wss://gatewayHost:gatewayPort
 
 ## Architecture
 
-In WebSocket routing, the API ML Gateway acts as both a WebSocket server for the client requesting this connection and as a WebSocket client.
+In WebSocket routing, the API ML Gateway acts as both a WebSocket server for the client requesting this connection, and as a WebSocket client.
 
 Client (i.e. web browser) <-> Gateway (WebSocket Server) - Gateway (WebSocket Client) <-> Service's WebSocket Server
 
@@ -64,7 +64,7 @@ Communication between the client and the server is handled by the API Gateway by
 
 ### Idle Timeout
 
-The WebSocket client on the API ML Gateway has a default Idle timeout of one hour. If a WebSocket session between the Gateway WebSocket Client and the Service's WebSocket Server does not have activity for the entire period, the connection is closed.
+The WebSocket client on the API ML Gateway has a default Idle timeout of one hour. If a WebSocket session between the Gateway WebSocket Client and the Service's WebSocket Server is inactive for the entire period, the connection is closed.
 
 To customize this setting, set the following property in zowe.yaml:
 
