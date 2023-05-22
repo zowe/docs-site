@@ -22,9 +22,9 @@ The service defines which WebSocket endpoints are exposed by using Eureka metada
                     routes:
                         ws_v1:
                             gatewayUrl: "ws/v1"
-                            serviceUrl: /discoverableclient/ws
+                            serviceUrl: /${serviceId}/ws
 
-These metadata make it possible for requests from `wss://gatewayHost:gatewayPort/serviceId/ws/v1/path` to map to `wss://serviceHost:servicePort/discoverableclient/ws/path`, where:
+These metadata make it possible for requests from `wss://gatewayHost:gatewayPort/${serviceId}/ws/v1/path` to map to `wss://serviceHost:servicePort/${serviceId}/ws/v1/path`, where:
 
 * **`serviceId`**  
   is the service ID of the service.
@@ -59,8 +59,7 @@ SERVER_WEBSOCKET_SUPPORTEDPROTOCOLS=v12.stomp,v11.stomp,wamp,soap
 
 ### High availability
 
-In the high availability scenario, the API Gateway makes it possible to open a new Websocket session by utilizing the load balancing mechanism. 
-Communication between the client and the server is handled by the API Gateway by propagating the session to a live instance.
+In the high availability scenario, a WebSocket session is established between client and a selected Gateway. This session will be tied to this instance for its entire duration.
 
 ### Idle Timeout
 
@@ -85,4 +84,4 @@ The actuator endpoint is enabled with debugging enabled in the API ML Gateway.
 
 ## Limitations
 
-Different HTTP status code errors may result. The WebSocket session starts before the session between the Gateway and the service starts. When a failure occurs when connecting to a service, the WebSocket session terminates with a WebSocket close code and a description of the failure rather than an HTTP error code.
+Different HTTP status code errors may result. The WebSocket session starts before the session between the Gateway and the service starts. When a failure occurs when connecting to a service, the WebSocket session terminates with the WebSocket close code and a description of the failure occurred between the Gateway and the Service rather than an HTTP error code.
