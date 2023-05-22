@@ -24,7 +24,9 @@ The service defines which WebSocket endpoints are exposed by using Eureka metada
                             gatewayUrl: "ws/v1"
                             serviceUrl: /${serviceId}/ws
 
-These metadata make it possible for requests from `wss://gatewayHost:gatewayPort/${serviceId}/ws/v1/path` to map to `wss://serviceHost:servicePort/${serviceId}/ws/v1/path`, where:
+These metadata make it possible for requests from `wss://gatewayHost:gatewayPort/${serviceId}/ws/v1/path` to map to `wss://serviceHost:servicePort/${serviceId}/ws/v1/path`.
+
+Where:
 
 * **`serviceId`**  
   is the service ID of the service.
@@ -38,7 +40,7 @@ In WebSocket routing, the API ML Gateway acts as both a WebSocket server for the
 
 Client (i.e. web browser) <-> Gateway (WebSocket Server) - Gateway (WebSocket Client) <-> Service's WebSocket Server
 
-As a general recommendation, clients should implement a ping-like mechanism to maintain the opened WebSocket sessions and not rely on the web browser to perform this action.
+**Tip:** We recommend that clients implement a ping-like mechanism to maintain the opened WebSocket sessions and not rely on the web browser to perform this action.
 
 ### Security and Authentication
 
@@ -59,7 +61,7 @@ SERVER_WEBSOCKET_SUPPORTEDPROTOCOLS=v12.stomp,v11.stomp,wamp,soap
 
 ### High availability
 
-In the high availability scenario, a WebSocket session is established between client and a selected Gateway. This session will be tied to this instance for its entire duration.
+In the high availability scenario, a WebSocket session is established between client and a selected Gateway. This session is then tied to this instance for its entire duration.
 
 ### Idle Timeout
 
