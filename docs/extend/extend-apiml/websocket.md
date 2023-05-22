@@ -90,4 +90,4 @@ The actuator endpoint is enabled with debugging enabled in the API ML Gateway.
 
 ## Limitations
 
-Different HTTP status code errors may result. The WebSocket session starts before the session between the Gateway and the service starts. When a failure occurs when connecting to a service, the WebSocket session terminates with the WebSocket close code and a description of the failure occurred between the Gateway and the Service rather than an HTTP error code.
+Different HTTP status code errors may result. The WebSocket session starts before the session starts between the Gateway and the service. When a failure occurs when connecting to a service, the WebSocket session terminates with the WebSocket close code and a description of the failure that occurred between the Gateway and the Service rather than an HTTP error code.
