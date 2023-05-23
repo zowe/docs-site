@@ -79,64 +79,6 @@ The [Configuring PKCS12 certificates](../../user-guide/configure-certificates-ke
 
 ### Import the local CA certificate to your browser
 
-Trust in the API ML server is a necessary precondition for secure communication between Browser or API Client application. Ensure this trust through the installation of a Certificate Authority (CA) public certificate. By default, API ML creates a local CA. Import the CA public certificate to the truststore for REST API clients and to your browser. You can also import the certificate to your root certificate store.
-
-**Notes:** 
-
-- If a SAF keyring is being used and set up with `ZWEKRING` JCL, the procedure to obtain the certificate does not apply. It is recommended that you work with your security system administrator to obtain the certificate. Start the procedure at step 2.
-
-- The public certificate in the [PEM format](https://en.wikipedia.org/wiki/Privacy-Enhanced_Mail) is stored at `<KEYSTORE_DIRECTORY>/local_ca/localca.cer` where `<KEYSTORE_DIRECTORY>` is defined in a customized `<RUNTIME_DIR>/bin/zowe-setup-certificates.env` file during the installation step that generates Zowe certificates. The certificate is stored in UTF-8 encoding so you need to transfer it as a binary file. Since this is the certificate to be trusted by your browser, it is recommended to use a secure connection for transfer.
-
-- Windows currently does not recognize the PEM format. For Windows, use the P12 version of the local_cer.
-
-**Follow these steps:**
-
-1. Download the local CA certificate to your computer. Use one of the following methods to download the local CA certificate to your computer:
-
-    - **Use [Zowe CLI](https://github.com/zowe/zowe-cli#zowe-cli--) (Recommended)**  
-Issue the following command:
-
-        `zowe zos-files download uss-file --binary $KEYSTORE_DIRECTORY/local_ca/localca.cer`
-
-    - **Use `sftp`**  
-Issue the following command:
-
-        ```
-        sftp <system>
-        get $KEYSTORE_DIRECTORY/local_ca/localca.cer
-        ```
-
-    To verify that the file has been transferred correctly, open the file. The following heading and closing should appear:
-
-    ```
-    -----BEGIN CERTIFICATE-----
-    ...
-    -----END CERTIFICATE-----
-    ```
-
-2. Import the certificate to your root certificate store and trust it.
-
-    - **For Windows**, run the following command:
-
-      `certutil -enterprise -f -v -AddStore "Root" localca.cer`
-
-      **Note:** Ensure that you open the terminal as **administrator**. This will install the certificate to the Trusted Root Certification Authorities.
-
-    - **For macOS**, run the following command:
-
-      `$ sudo security add-trusted-cert -d -r trustRoot -k /Library/Keychains/System.keychain localca.cer`
-
-    - **For Firefox**, manually import your root certificate via the Firefox settings, or force Firefox to use the Windows truststore.
-
-      **Note:** Firefox uses its own certificate truststore.
-
-        Create a new Javascript file firefox-windows-truststore.js at `C:\Program Files (x86)\Mozilla Firefox\defaults\pref` with the   following content:
-
-      ```
-      /* Enable experimental Windows truststore support */
-      pref("security.enterprise_roots.enabled", true);
-      ```
-
 ### Generate a keystore and truststore for a new service on z/OS	
 
 You can generate a keystore and truststore for a new service by calling the `apiml_cm.sh` script in the directory with API Mediation Layer.
