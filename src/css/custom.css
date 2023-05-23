@@ -267,7 +267,6 @@ a.menu__link.menu__link--sublist {
 
 .docsRating .text--left {
   padding: 16px;
-  background-color: #f6f8fa;
   border-radius: var(--ifm-badge-border-radius);
 }
 
@@ -290,19 +289,19 @@ html[data-theme="dark"] .docsRating .text--left {
 .docsRating .i_thumbsup {
   -webkit-transform: scaleX(-1);
   transform: scaleX(-1);
-  margin: auto 14px;
+  margin: -3px 9px auto;
 }
 
 .docsRating .i_thumbsdown {
   transform: scale(-1, -1) translateY(-0.25em);
-  margin: -3px 14px auto 14px;
+  margin: -3px 9px auto;
 }
 
-html[data-theme="dark"] .docsRating .i_thumbsup {
+.docsRating .i_thumbsup {
   fill: #56a211;
 }
 
-html[data-theme="dark"] .docsRating .i_thumbsdown {
+.docsRating .i_thumbsdown {
   fill: #e9430f;
 }
 

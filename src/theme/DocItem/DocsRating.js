@@ -56,11 +56,11 @@ const DocsRating = ({ label }) => {
             <div
               className="sub-rating pagination-nav__link margin-right--sm user-options"
               onClick={() => giveFeedback(1)}
-              style={{ height: "2.5em", padding: "0.5em 0.75em 0.5em 0 !important" }}
+              style={{ height: "2.5em" }}
             >
               <div
                 className="display-flex justify-content--center"
-                style={{ alignContent: "center", alignItems: "center" }}
+                style={{ alignContent: "center", alignItems: "center", marginLeft: "-8px", marginTop: "1px" }}
               >
                 <svg
                   className="i_thumbsup"
@@ -76,11 +76,11 @@ const DocsRating = ({ label }) => {
             <div
               className="sub-rating pagination-nav__link user-options"
               onClick={() => giveFeedback(0)}
-              style={{ height: "2.5em", padding: "0.5em 0.75em 0.5em 0 !important" }}
+              style={{ height: "2.5em" }}
             >
               <div
                 className="display-flex justify-content--center"
-                style={{ alignContent: "center", alignItems: "center" }}
+                style={{ alignContent: "center", alignItems: "center", marginLeft: "-8px", marginBottom: "1px" }}
               >
                 <svg
                   className="i_thumbsdown"
