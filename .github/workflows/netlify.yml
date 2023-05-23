@@ -1,0 +1,58 @@
+name: Netlify
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+
+jobs:
+  build:
+    name: Build and deploy
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+
+    concurrency:
+      group: ${{ github.workflow }}-${{ github.ref }}
+      cancel-in-progress: true
+
+    steps:
+      - name: Set Swap Space
+        uses: pierotofy/set-swap-space@master
+        with:
+          swap-size-gb: 6
+
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Use Node.js LTS
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+          cache: 'npm'
+
+      - name: Cache Webpack Build
+        uses: actions/cache@v3
+        with:
+          path: node_modules/.cache/webpack
+          key: cache-webpack-${{ github.base_ref || github.ref_name }}
+
+      - name: Install Dependencies
+        run: npm ci
+
+      - name: Build with Docusaurus
+        run: npm run build
+
+      - name: Deploy to Netlify
+        uses: nwtgck/actions-netlify@v2
+        with:
+          publish-dir: build
+          production-branch: master
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          deploy-message: "Deploy from GitHub Actions"
+          enable-pull-request-comment: true
+          enable-commit-comment: false
+          overwrites-pull-request-comment: true
+        env:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
