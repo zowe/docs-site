@@ -2,7 +2,10 @@ import React from "react";
 import Link from "@docusaurus/Link";
 import Layout from "@theme/Layout";
 
-import { useVersions, useLatestVersion } from "@theme/hooks/useDocs";
+import {
+  useVersions,
+  useLatestVersion,
+} from "@docusaurus/plugin-content-docs/client";
 
 import VersionsArchived from "@site/versionsArchived.json";
 
@@ -39,7 +42,12 @@ function Version() {
                     </Link>
                   </td>
                   <td>
-                    <a href={`stable/getting-started/release-notes/v1_23`}>
+                    <a
+                      href={`stable/getting-started/release-notes/${latestVersion.label.replace(
+                        /(v[0-9])\.([0-9]+).*/,
+                        `$1_$2${latestVersion.label.startsWith("v1.") ? "" : "_0"}`
+                      )}`}
+                    >
                       Release Notes
                     </a>
                   </td>
