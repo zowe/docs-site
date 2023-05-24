@@ -1,8 +1,7 @@
 # Certificate management in Zowe API Mediation Layer
 
-Review details of certificate management in Zowe API Mediation Layer including running on localhost, Zowe runtime on z/OS. This topic also addressing key information about the API ML truststore and keystore, and API ML SAF Keyring.
+Review details of certificate management in Zowe API Mediation Layer. This article decribes both how to manage certificates when running on localhost, as well as certificate management using Zowe runtime on z/OS. Additional information is provided about about the API ML truststore and keystore, and API ML SAF Keyring.
 
-- [Certificate management in Zowe API Mediation Layer](#certificate-management-in-zowe-api-mediation-layer)
   - [Running on localhost](#running-on-localhost)
     - [How to start API ML on localhost with full HTTPS](#how-to-start-api-ml-on-localhost-with-full-https)
     - [Certificate management guide](#certificate-management-guide)
@@ -29,10 +28,9 @@ For more information about certificates, see [TLS Certificates for localhost](ht
 
 ### Certificate management guide
 
-Zowe API Mediation Layer provides a guide that can be used on Windows, Mac, Linux, and z/OS to generate a keystore and truststore using Zowe local certificate authority.
+Zowe API Mediation Layer provides a guide that can be used to generate a keystore and truststore using the Zowe local certificate authority on Windows, Mac, Linux, and z/OS.
 
-This guide is maintained in `zowe/api-layer` repository [keystore/README.md](https://github.com/zowe/api-layer/blob/v2.x.x/keystore/README.md).
-It is a using combination of openssl and java keytool. 
+This guide is maintained in the `zowe/api-layer` repository [keystore/README.md](https://github.com/zowe/api-layer/blob/v2.x.x/keystore/README.md), and uses a combination of openssl and java keytool. 
 
 
 ### Generate a certificate for a new service on localhost
@@ -42,7 +40,7 @@ To generate a certificate for a new service on localhost, see [Generating certif
 
 ### Add a service with an existing certificate to API ML on localhost
 
-For more information about adding a service with an existing certificate to API ML on localhost, see [Trust certificates of other services](https://github.com/zowe/api-layer/blob/master/keystore/README.md#trust-certificates-of-other-services).
+For information about adding a service with an existing certificate to API ML on localhost, see [Trust certificates of other services](https://github.com/zowe/api-layer/blob/master/keystore/README.md#trust-certificates-of-other-services).
 
 
 ### Service registration to Discovery Service on localhost
@@ -52,7 +50,7 @@ To register a new service to the Discovery Service using HTTPS, provide a valid 
 
 ## Zowe runtime on z/OS
 
-Certificates for the API ML local CA and API ML service are managed by installing the Zowe runtime on z/OS. Follow the instructions in [Installing the Zowe runtime on z/OS](../../user-guide/install-zos.md).
+Certificates for the API ML local CA and API ML service are managed by installing the Zowe runtime on z/OS. For more information see the instructions in [Installing the Zowe runtime on z/OS](../../user-guide/install-zos.md).
 
 There are two ways to set up certificates on a z/OS machine:
 
@@ -81,7 +79,9 @@ Trust in the API ML server is a necessary precondition for secure communication 
     - **Use [Zowe CLI](https://github.com/zowe/zowe-cli#zowe-cli--) (Recommended)**  
 Issue the following command:
 
-        `zowe zos-files download uss-file --binary $KEYSTORE_DIRECTORY/local_ca/localca.cer`
+        ```
+        zowe zos-files download uss-file --binary $KEYSTORE_DIRECTORY/local_ca/localca.cer
+        ```
 
     - **Use `sftp`**  
 Issue the following command:
@@ -103,13 +103,17 @@ Issue the following command:
 
     - **For Windows**, run the following command:
 
-      `certutil -enterprise -f -v -AddStore "Root" localca.cer`
+      ```
+      certutil -enterprise -f -v -AddStore "Root" localca.cer
+      ```
 
       **Note:** Ensure that you open the terminal as **administrator**. This will install the certificate to the Trusted Root Certification Authorities.
 
     - **For macOS**, run the following command:
 
-      `$ sudo security add-trusted-cert -d -r trustRoot -k /Library/Keychains/System.keychain localca.cer`
+      ```
+      $ sudo security add-trusted-cert -d -r trustRoot -k /Library/Keychains/System.keychain localca.cer
+      ```
 
     - **For Firefox**, manually import your root certificate via the Firefox settings, or force Firefox to use the Windows truststore.
 
@@ -136,25 +140,25 @@ zwe certificate pkcs12 create cert -d <service-keystore-directory> -a <cert-alia
  ```
 where:
 
-* **`cert-alias`**  
+* **cert-alias**  
 is a unique string to identify the key entry. All keystore entries (key and trusted certificate entries) are accessed via unique aliases. Since the keystore has only one certificate, you can omit this parameter and use the default value `localhost`.
 
-* **`service-keystore-directory`**  
+* **service-keystore-directory**  
  specifies repository of security certificates plus corresponding private keys. The `<keystore_path>` is the path excluding the extension to the keystore that is generated. It can be an absolute path or a path relative to the current working directory. The key store is generated in PKCS12 format with the `.p12` extension. Ensure that the path is in an existing directory where your service expects the keystore.
 
   **Example:** `/opt/myservice/keystore/`.
 
-* **`service-name`**  
+* **service-name**  
 is the name of the service for which you want to generate keystore. Keystore will be created in the directory with the same name.
  **Example:** `my-new-service`.
 
-* **`keystore-password`**  
+* **keystore-password**  
  specifies the keystore password. 
 
-* **`ca-keystore-password`**  
+* **ca-keystore-password**  
 specifies the local certificate authority keystore password. 
 
-* **`ca-alias`**  
+* **ca-alias**  
 specifies the local certificate authority alias in the keystore. Zowe CA is stored under `loca_ca` alias.
 
 ### Add a service with an existing certificate to API ML on z/OS
@@ -163,9 +167,9 @@ The API Mediation Layer requires validation of the certificate of each service t
 
 **Note:** This procedure applies only to UNIX file keystore/truststore. For the SAF keyring option, we recommend to perform the actions manually using your security system commands.
 
-Import the public certificate of CA that has signed the certificate of the service to the APIML truststore.
+Import the public certificate of the CA that has signed the certificate of the service to the APIML truststore.
 
-  **Note:** Validation fails if a service does not provide an intermediate CA certificates to the API ML. This can be circumvented by importing the intermediate CA certificates to the API ML truststore.
+  **Note:** Validation fails if a service does not provide intermediate CA certificates to the API ML. This can be circumvented by importing the intermediate CA certificates to the API ML truststore.
 
 
 #### Procedure if the service is not trusted
@@ -174,7 +178,9 @@ If your service is not trusted, you may receive a response with the HTTP status 
 
 **Example:**
 
-```http --verify=$KEYSTORE_DIRECTORY/local_ca/localca.cer GET https://<gatewayHost>:<port>/<untrustedService>/api/v1/greeting```
+```
+http --verify=$KEYSTORE_DIRECTORY/local_ca/localca.cer GET https://<gatewayHost>:<port>/<untrustedService>/api/v1/greeting
+```
 
 In this example, you receive a similar response:
 
@@ -204,7 +210,7 @@ A _keystore_ is a repository of security certificates consisting of either autho
 by other technologies in Zowe (Node.js).
 ## API ML SAF Keyring
 
-As an alternative to using a keystore and truststore, API ML can read certificates from a SAF keyring. The user running the API ML must have rights to access the keyring. From the java perspective, the keyring behaves as the `JCERACFKS` keystore. The path to the keyring is specified as `safkeyring://user_id/key_ring_id`. The content of SAF keyring is equivalent to the combined contents of the keystore and the truststore.
+As an alternative to using a keystore and truststore, API ML can read certificates from a SAF keyring. The user running the API ML must have rights to access the keyring. From the java perspective, the keyring behaves as the `JCERACFKS` keystore. The path to the keyring is specified as `safkeyring://user_id/key_ring_id`. The content ofthe SAF keyring is equivalent to the combined contents of the keystore and the truststore.
 
 **Note:** When using JCEFACFKS as the keystore type, ensure that you define the class to handle the RACF keyring using the `-D` options to specify the `java.protocol.handler.pkgs property`:
 
