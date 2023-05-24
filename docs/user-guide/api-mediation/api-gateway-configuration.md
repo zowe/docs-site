@@ -28,7 +28,7 @@ Follow the procedures in the following sections to customize Gateway parameters 
 
 ## Runtime configuration
 
-This section describes runtime configuration properties.
+Use the following procedure to customize properties for your runtime configuration. 
 
 1. Open the file `zowe.yaml`.
 2. Configure the following properties:
@@ -76,13 +76,13 @@ the following procedure to switch to SAF.
      
 1. Open the `zowe.yaml` configuration file.
 2. Find or add the property `components.gateway.apiml.security.auth.provider` and set the value to `saf`.
-3. Restart Zowe&trade.
+3. Restart Zowe.
 
 Authentication requests now utilize SAF as the authentication provider. API ML can run without z/OSMF present on the system. 
 
 ## Enable JWT token refresh endpoint
 
-Enable the `/gateway/api/v1/auth/refresh` endpoint to exchange a valid JWT token for a new token with a new expiration date. Call the endpoint with a valid JWT token and trusted client certificate. In case of z/OSMF authentication provider, enable API Mediation Layer for passticket generation and configure z/OSMF APPLID. [Configure Passtickets](../../extend/extend-apiml/api-mediation-passtickets.md)
+Enable the `/gateway/api/v1/auth/refresh` endpoint to exchange a valid JWT token for a new token with a new expiration date. Call the endpoint with a valid JWT token and trusted client certificate. When using the z/OSMF authentication provider, enable API Mediation Layer for passticket generation and configure the z/OSMF APPLID. For more information, see [Configure Passtickets](../../extend/extend-apiml/api-mediation-passtickets.md)
 
 1. Open the file `zowe.yaml`.
 2. Configure the following properties:
@@ -117,15 +117,15 @@ All requests are disabled as the default configuration for retry with one except
 1. Open the `zowe.yaml` configuration file.
 2. Configure the following properties:
 
-* **components.gateway.ribbon.retryableStatusCodes**  
-Provides a list of status codes, for which the server should retry the request.
+  * **components.gateway.ribbon.retryableStatusCodes**  
+This property provides a list of status codes, for which the server should retry the request.
     
-  **Example:** `components.gateway.ribbon.retryableStatusCodes: "503, 404"` 
+    **Example:** `components.gateway.ribbon.retryableStatusCodes: "503, 404"` 
     
-* **components.gateway.ribbon.OkToRetryOnAllOperations**  
+  * **components.gateway.ribbon.OkToRetryOnAllOperations**  
 Specifies whether to retry all operations for this service. The default value is `false`. In this case, only `GET` requests are retried if they return a response code that is listed in `ribbon.retryableStatusCodes`. Setting this parameter to `true` enables retry requests for all methods which return a response code listed in `ribbon.retryableStatusCodes`. 
      
-  **Note:** Enabling retry can impact server resources due to request body buffering.
+    **Note:** Enabling retry can impact server resources due to request body buffering.
 
 * **components.gateway.ribbon.MaxAutoRetries**  
 Specifies the number of times a failed request is retried on the same server. This number is multiplied with `ribbon.MaxAutoRetriesNextServer`. The default value is `0`.
@@ -153,7 +153,7 @@ Use the following procedure to enable the feature to use a client certificate as
 
    * **components.gateway.apiml.security.x509.externalMapperUrl**
 
-   **Note:** Skip this step if user mapping is not provided by an external API.
+    **Note:** Skip this step if user mapping is not provided by an external API.
 
    The API Mediation Gateway uses an external API to map a certificate to the owner in SAF. This property informs the Gateway about the location of this API. ZSS is the default API provider in Zowe. You can provide your own API to perform the mapping. In this case, it is necessary to customize this value.
 
@@ -185,16 +185,14 @@ Use the following procedure to enable the feature to use a client certificate as
 
 Use the following procedure to change the global timeout value for the API Mediation Layer instance.
 
-**Follow these steps:**
-
 1. Open the file `zowe.yaml`.
 2. Configure the following properties:
 
-   * **components.gateway.apiml.gateway.timeoutmillis**  
+  * **components.gateway.apiml.gateway.timeoutmillis**  
    This property defines the global value for http/ws client timeout.
   
 
-   **Note:** Ribbon configures the client that connects to the routed services.
+    **Note:** Ribbon configures the client that connects to the routed services.
 
   * **components.gateway.ribbon.connectTimeout**  
   Specifies the value in milliseconds which corresponds to the period in which API ML should establish a single, non-managed connection with the service. If omitted, the default value specified in the API ML Gateway service configuration is used.
@@ -209,7 +207,7 @@ Use the following procedure to change the global timeout value for the API Media
 
 ## CORS handling
 
-You can enable the Gateway to terminate CORS requests for itself and also for routed services. By default, Cross-Origin Resource Sharing (CORS) handling is disabled for Gateway routes `gateway/api/v1/**` and for individual services. After enabling the feature as stated in the prodecure below, API Gateway endpoints start handling CORS requests and individual services can control whether they want the Gateway to handle CORS for them through the [Custom Metadata](../../extend/extend-apiml/custom-metadata.md) parameters.
+You can enable the Gateway to terminate CORS requests for itself and also for routed services. By default, Cross-Origin Resource Sharing (CORS) handling is disabled for Gateway routes `gateway/api/v1/**` and for individual services. After enabling the feature as stated in the following prodecure, API Gateway endpoints start handling CORS requests and individual services can control whether they want the Gateway to handle CORS for them through the [Custom Metadata](../../extend/extend-apiml/custom-metadata.md) parameters.
 
 When the Gateway handles CORS on behalf of the service, it sanitizes defined headers from the communication (upstream and downstream). `Access-Control-Request-Method,Access-Control-Request-Headers,Access-Control-Allow-Origin,Access-Control-Allow-Methods,Access-Control-Allow-Headers,Access-Control-Allow-Credentials,Origin` The resulting request to the service is not a CORS request and the service does not need to do anything extra. The list can be overridden by specifying different comma-separated list in the property `components.gateway.apiml.service.ignoredHeadersWhenCorsEnabled` in `zowe.yaml`
 
@@ -227,7 +225,7 @@ Use the following procedure to enable CORS handling.
      
 1. Open the file `zowe.yaml`.
 2. Find or add the property `components.gateway.apiml.service.corsEnabled` and set the value to `true`.
-3. Restart `Zowe&trade`.
+3. Restart Zowe.
   
 Requests through the Gateway now contain a CORS header. 
 
@@ -250,8 +248,6 @@ The southbound service must use the `zoweJwt` scheme in order to leverage this f
 
 Use the following procedure to add the custom HTTP header.
 
-**Follow these steps:**
-
 1. Open the file `zowe.yaml`.
 2. Find or add the property `components.gateway.apiml.security.auth.jwt.customAuthHeader` and set the value which represents the header's name.
 3. Restart Zowe.
@@ -264,8 +260,6 @@ If a southbound service needs to consume the passticket and the user ID from cus
 The southbound service must use the `httpBasicPassTicket` scheme in order to leverage this functionality. Once the HTTP headers names are defined, each request to the southbound service contains the passticket and the user ID in the custom headers.
 
 Use the following procedure to add the custom HTTP headers.
-
-**Follow these steps:**
 
 1. Open the file `zowe.yaml`.
 2. Find or add the property `components.gateway.apiml.security.auth.passticket.customAuthHeader` and set the value which represents the header's name.
@@ -292,8 +286,6 @@ The header name is `X-InstanceId`, and the sample value is `discoverable-client:
 
 Use the following procedure to output a special header that contains the value of the instance ID of the API service.
 
-**Follow these steps:**
-
 1. Open the file `zowe.yaml`.
 2. Find or add the property with value `components.gateway.apiml.routing.instanceIdHeader:true`.
 3. Restart Zowe.
@@ -304,15 +296,13 @@ You can choose to distribute the load balancer cache between instances of the AP
 
 Use the following procedure to distribute the load balancer cache between instances of the API Gateway.
 
-**Follow these steps:**
-
 1. Open the file `zowe.yaml`.
 2. Find or add the property with value `components.gateway.apiml.loadBalancer.distribute: true`.
 3. Restart Zowe.
 
 ## Replace or remove the Catalog with another service
 
-By default, the API Mediation Layer contains API Catalog as a service showing available services. As the API Mediation Layer can be successfully run without this component it is possible to replace or remove the service from the Gateway home page and health checks. The following section describes the behavior of the Gateway home page and health checks. 
+By default, the API Mediation Layer contains the API Catalog as a service showing available services. As the API Mediation Layer can be successfully run without this component it is possible to replace or remove the service from the Gateway home page and health checks. The following section describes the behavior of the Gateway home page and health checks. 
 
 The default option displays the API Catalog.
 
@@ -320,17 +310,14 @@ A value can also be applied to `components.gateway.apiml.catalog.serviceId`.
 
 **Examples:**
 
-- **`none`**
+- **none**  
+Nothing is displayed on the Gateway home page and the Catalog is removed from `/application/health`
 
-  Nothing is displayed on the Gateway home page and the Catalog is removed from `/application/health`
+- **alternative-catalog**   
+An alternative to the API Catalog is displayed
 
-- **`alternative-catalog`** 
-
-  An alternative to the API Catalog is displayed
-
-- **`metrics-dashboard`**
- 
-  A possible dashboard that could appear in place of the API Catalog 
+- **metrics-dashboard**  
+ A possible dashboard that could appear in place of the API Catalog 
 
 **Notes:**
 
@@ -340,22 +327,18 @@ A value can also be applied to `components.gateway.apiml.catalog.serviceId`.
 
 Use the following procedure to change or replace the Catalog service.
 
-**Follow these steps:**
-
 1. Open the file `zowe.yaml`.
 2. Find or add the property `components.gateway.apiml.catalog.serviceId`. Set the value with the following options:
 
     - Set the value to `none` to remove the Catalog service.
     - Set the value to the ID of the service that is onboarded to the API Mediation Layer. 
-
+3. Restart Zowe.
 ## Personal Access Token
 
 By default the API Mediation Layer does not provide the ability to use personal access tokens. For more information about about
 this functionality, see [Personal Access Tokens](api-mediation-personal-access-token.md).
 
 Use the following procedure to enable personal access tokens.
-
-**Follow these steps:**
 
 1. Open the file `zowe.yaml`.
 2. Find or add the property with the value `components.gateway.apiml.security.personalAccessToken.enabled: true`.
@@ -367,21 +350,19 @@ The API ML can check for the authorization of the user on certain endpoints. Acc
 
 Verification of the SAF resource is provided by the following three providers:
 
-- **`endpoint`**  
+- **endpoint**  
 This is the highest priority provider, such as a REST endpoint call (ZSS or similar one). This option is disabled by default. In Zowe, ZSS has the API to check for SAF   resource authorization.
   
-- **`native`**  
+- **native**  
 The Native JZOS classes from Java are used to determine SAF resource access. This is the default provider.
   
-- **`dummy`**  
+- **dummy**  
 This is the lowest priority provider. This is the dummy implementation and is defined in a file.
 
 **Note:** Verification of the SAF resource uses the first available provider based on the specified priority. The default configuration resolves to the native provider. 
 
 You can select a specific provider by specifying the `components.gateway.apiml.security.authorization.provider` key in the `zowe.yaml` file. Use the parameter value to
 strictly define a provider. If verification is disabled, select the `endpoint` option. 
-
-**Follow these steps:**
 
 1. Open the file `zowe.yaml`.
 2. Find or add the property `components.gateway.apiml.security.authorization.provider` and set desired value.
@@ -434,7 +415,7 @@ To prevent overwriting of the default cookie name in the case of multiple Zowe i
 Follow this procedure to configure a unique cookie name for the instances:
 
 1. Open the `zowe.yaml` configuration file.
-2. Find or add the property  `components.gateway.security.auth.uniqueCookie`, and set it to `true`. A unique cookie name is generated as `apimlAuthenticationToken.cookieIdentifier`.
+2. Find or add the property  `components.gateway.apiml.security.auth.uniqueCookie`, and set it to `true`. A unique cookie name is generated as `apimlAuthenticationToken.cookieIdentifier`.
 
     **Example:**  
     If this parameter is set to `true`, and the cookieIdentifier is `1`, the name of the cookie transforms to `apimlAuthenticationToken.1`.  

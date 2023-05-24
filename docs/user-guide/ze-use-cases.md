@@ -374,3 +374,17 @@ To manually poll a spool file:
     <br/>
     
     The entered key(s) can be used to activate polling.
+
+#### **Cancelling a job**
+<br/>
+1. In the **Side Bar**, click on a job session to view its respective jobs.
+
+2. Click on one or more jobs to select.
+
+3. Right-click on the selected job(s) and click **Cancel Job** in the pop-up menu.
+
+   The selected jobs are cancelled and are labelled "CANCELED" in the **Side Bar**.
+   
+   If cancellation fails, a message displays to notify which jobs have failed to be cancelled. The user can click on one of these jobs in the **Side Bar** to view its spool files and check for any outputs that might have occurred during the cancellation attempt.
+
+   ![Cancelling a job](../images/ze/ZE-cancel-jobs.gif)
