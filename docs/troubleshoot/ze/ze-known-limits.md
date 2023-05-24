@@ -1,4 +1,4 @@
-# Known Zowe Explorer limits
+# Known Zowe Explorer limitations
 
 ### Mismatched credentials when using Zowe Explorer and Zowe CLI
 
