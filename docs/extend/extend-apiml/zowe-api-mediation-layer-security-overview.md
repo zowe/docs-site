@@ -2,7 +2,6 @@
 
 Review this article to learn about topics which address security features in Zowe API Mediation Layer.
 
-- [Zowe API Mediation Layer Security Overview](#zowe-api-mediation-layer-security-overview)
   - [How API ML transport security works](#how-api-ml-transport-security-works)
     - [Transport layer security](#transport-layer-security)
     - [Authentication](#authentication)
@@ -108,7 +107,7 @@ You can override ciphers that are used by the HTTPS servers in API ML services b
 
 **Note:** You do not need to rebuild JAR files when you override the default values in shell scripts.
 
-The *application.yml* file contains the default value for each service, and can be found [here](https://github.com/zowe/api-layer/blob/master/gateway-service/src/main/resources/application.yml). The default configuration is packed in .jar files. On z/OS, you can override the default configuration in `<RUNTIME_DIR>/components/<APIML_COMPONENT>/bin/start.sh`.
+The default value for each service can be found in the [application.yml](https://github.com/zowe/api-layer/blob/master/gateway-service/src/main/resources/application.yml) file. The default configuration is packed in .jar files. On z/OS, you can override the default configuration in `<RUNTIME_DIR>/components/<APIML_COMPONENT>/bin/start.sh`.
 Add the launch parameter of the shell script to set a cipher:
 
 ```
@@ -116,7 +115,7 @@ Add the launch parameter of the shell script to set a cipher:
 ```
 
 On localhost, you can override the default configuration in [config/local/gateway-service.yml](https://github.com/zowe/api-layer/blob/master/config/local/gateway-service.yml) (including other YAML files for development purposes).
-
+ 
 The following list shows the default ciphers. API ML services use the following cipher order:
 
 **Note:** Ensure that the version of Java you use is compatible with the default cipherset.
@@ -130,16 +129,16 @@ The following list shows the default ciphers. API ML services use the following 
 
 Only IANA ciphers names are supported. For more information, see [Cipher Suites](https://wiki.mozilla.org/Security/Server_Side_TLS#Cipher_suites) or [List of Ciphers](https://testssl.net/openssl-iana.mapping.html).
 
-## JSON Web Token(JWT)
+## JSON Web Token (JWT)
 
-API ML authentication token in the form of JWT is sign with an asymmetric private key that is generated during Zowe keystore configuration. The JWT is signed with the RS256 signature algorithm.
+The API ML authentication token in the form of JWT is signed with an asymmetric private key that is generated during Zowe keystore configuration. The JWT is signed with the RS256 signature algorithm.
 
-You can find this private key under alias `localhost`, in the PKCS12 keystore that is stored in `${KEYSTORE_DIRECTORY}/localhost/localhost.keystore.p12`. The public key necessary to validate the JWT signature is read from the keystore.
+You can find this private key under the alias `localhost`, in the PKCS12 keystore that is stored in `${KEYSTORE_DIRECTORY}/localhost/localhost.keystore.p12`. The public key necessary to validate the JWT signature is read from the keystore.
 
-You can also use the `/gateway/api/v1/auth/keys/public` endpoint to obtain public key that can be used to verify JWT tokens signature in standard [JWK format](https://openid.net/specs/).
+You can also use the `/gateway/api/v1/auth/keys/public` endpoint to obtain a public key that can be used to verify the signature of the JWT in standard [JWK format](https://openid.net/specs/).
 
 ## z/OSMF JSON Web Tokens Support
 
-Your z/OSMF instance can be enabled to support JWT tokens as described at [Enabling JSON Web Token support](https://www.ibm.com/support/knowledgecenter/SSLTBW_2.4.0/com.ibm.zos.v2r4.izua300/izuconfig_EnableJSONWebTokens.htm).
-In this case, the Zowe API ML uses this JWT token and does not generate its own Zowe JWT token. All authentication APIs, such as `/gateway/api/v1/login` and `/gateway/api/v1/check` function in the same way as without z/OSMF JWT.
-Gateway service endpoint `/gateway/api/v1/auth/keys/public` serves the z/OSMF JWK that can be used for JWT signature validation.
+Your z/OSMF instance can be enabled to support JWTs as described in [Enabling JSON Web Token support](https://www.ibm.com/support/knowledgecenter/SSLTBW_2.4.0/com.ibm.zos.v2r4.izua300/izuconfig_EnableJSONWebTokens.htm).
+In such cases, the Zowe API ML uses this JWT and does not generate its own Zowe JWT. All authentication APIs, such as `/gateway/api/v1/login` and `/gateway/api/v1/check` function in the same way as without z/OSMF JWT.
+The Gateway service endpoint `/gateway/api/v1/auth/keys/public` serves the z/OSMF JWK that can be used for JWT signature validation.
