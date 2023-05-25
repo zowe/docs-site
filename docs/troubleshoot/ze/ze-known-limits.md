@@ -2,7 +2,7 @@
 
 ### Mismatched credentials when using Zowe Explorer and Zowe CLI
 
-#### Limitation
+#### **Limitation**
 
 Mismatching credentials can potentially lock you out from using Zowe CLI and Zowe Explorer in Visual Studio Code with either Windows Subsystem for Linux (WSL) or Remote Secure Shell (SSH).
 
@@ -12,15 +12,14 @@ With Remote SSH, the network protocol provides users with a secure connection to
 
 Both WSL and Remote SSH provide more tools for mainframe developers, but they also have limitations when it comes to credentials.
 
-Authentication information used in Zowe Explorer &mdash; such as usernames and passwords, SSH keys, API Mediation Layer tokens &mdash; resides on the developer’s local machine, not the Linux environment or the remote server or virtual machine. This is because credential storage is managed by VS Code, which runs on Windows.
+Authentication information used in Zowe Explorer &mdash; such as usernames and passwords, SSH keys, API Mediation Layer tokens &mdash; resides on the developer’s local machine, not the Linux environment or the remote server or virtual machine. This is because credential storage is managed by VS Code, which stores them using the host's operating system credential manager.
 
-Using the VS Code integrated terminal with virtual machines does not include access to the credentials stored by Zowe Explorer in the local machine. Zowe CLI, for example, is not able to retrieve credentials saved on a developer’s PC when accessing the mainframe. Instead it attempts to use any credentials stored in the virtual machine.
+Using the VS Code integrated terminal with virtual machines does not include access to the credentials stored by Zowe Explorer in the local machine. Zowe CLI, for example, is not able to retrieve credentials saved on a developer’s PC when accessing the mainframe. Instead, Zowe CLI attempts to use any credentials stored in the virtual machine.
 
 This can lead to confusion and inconsistencies when authenticating and accessing resources.
 
-#### Solution
+#### **Workaround**
 
-It is crucial to ensure that credentials are carefully managed between the local machine and the remote server to maintain proper authentication. 
+It is crucial to ensure that credentials are carefully managed between the local machine and the remote server to maintain proper authentication.
 
-To avoid any potential issues (such as being locked out) caused by credential mismatch or discrepancies, credentials in both local and virtual/remote machines must match.
-
+To avoid any potential issues (such as being locked out) caused by credential mismatch or discrepancies, credentials in both local and virtual/remote machines should match.
