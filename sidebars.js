@@ -703,6 +703,7 @@ module.exports = {
           items: [
             "troubleshoot/ze/troubleshoot-ze",
             "troubleshoot/ze/known-ze",
+            "troubleshoot/ze/ze-known-limits",
             "troubleshoot/ze/ze-issues",
           ],
         },
