@@ -206,8 +206,8 @@ Badge {
   display: none;
 }
 
-.zowe-faq p {
-  margin: revert;
+.zowe-faq > summary::after {
+  content: "\00a0"; /* non-breaking space */;
 }
 
 .hero__title {
