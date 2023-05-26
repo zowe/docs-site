@@ -419,7 +419,6 @@ If you use RACF, verify and update permission in the `FACILITY` class.
 **Follow these steps:**
 
 1. Verify user `ZWESVUSR` has read access.
-
     ```
     RLIST FACILITY IRR.RUSERMAP AUTHUSER
     ```
@@ -484,7 +483,6 @@ If you use RACF, verify and update permission in the `FACILITY` class.
 **Follow these steps:**
 
 1. Verify user `ZWESVUSR` has read access.
-
     ```
     RLIST FACILITY IRR.IDIDMAP.QUERY AUTHUSER
     ```
