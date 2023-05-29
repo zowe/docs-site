@@ -213,28 +213,24 @@ You must also grant READ access to the OMVSAPPL profile in the APPL class to Zow
 - If you use RACF, complete the following steps:
 
   1. Check whether you already have the required access defined as part of the environment configuration. Skip the following steps when the access was already granted.
-
-      ```
-      RLIST APPL OMVSAPPL AUTHUSER
-      ```
+       ```
+       RLIST APPL OMVSAPPL AUTHUSER
+       ```
 
   2. Issue the following commands and review the output to check whether permission has been successfully granted:
-  
-      ```
-      PERMIT OMVSAPPL CLASS(APPL) ID(<zowe_user>) ACCESS(READ)
-      SETROPTS RACLIST(APPL) REFRESH
-      ```
+       ```
+       PERMIT OMVSAPPL CLASS(APPL) ID(<zowe_user>) ACCESS(READ)
+       SETROPTS RACLIST(APPL) REFRESH
+       ```
      
 - If you use Top Secret, complete the following steps:
 
   1. Check whether you already have the required access as part of the environment configuration. Skip the following steps when the access was already granted.
-
-      ```
-      TSS WHOHAS APPL(OMVSAPPL)
-      ```
+       ```
+       TSS WHOHAS APPL(OMVSAPPL)
+       ```
 
   2. Issue the following commands and review the output to check whether permission has been successfully granted:
-  
        ```
        TSS PERMIT(<zowe_user>) APPL(OMVSAPPL)
        ```
@@ -242,19 +238,17 @@ You must also grant READ access to the OMVSAPPL profile in the APPL class to Zow
 - If you use ACF2, complete the following steps:
 
   1. Check whether you already have the required access defined as part of the environment configuration. Skip the following steps when the access was already granted.
-
-      ```
-      SET RESOURCE(APL)
-      LIST OMVSAAPL
-      ```
+       ```
+       SET RESOURCE(APL)
+       LIST OMVSAAPL
+       ```
 
   2. Issue the following commands and review the output to check whether permission has been successfully granted:
-  
-     ```
-       SET RESOURCE(APL)
-       RECKEY OMVSAPPL ADD(SERVICE(READ) ROLE(<zowe_user>) ALLOW)
-       F ACF2,REBUILD(APL)
-     ```
+      ```
+        SET RESOURCE(APL)
+        RECKEY OMVSAPPL ADD(SERVICE(READ) ROLE(<zowe_user>) ALLOW)
+        F ACF2,REBUILD(APL)
+      ```
 
 ## Configure address space job naming
 
