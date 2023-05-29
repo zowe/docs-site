@@ -176,6 +176,10 @@ Requirements:
 
 - IBM z/OS Management Facility (z/OSMF)
 
+### API Mediation Layer OIDC Authentication
+
+Zowe requires ACF2 APAR LU01316 to be applied when using the ACF2 security manager.
+
 ## Memory requirements
 
 Zowe API ML components have following memory requiremets:
