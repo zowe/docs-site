@@ -92,33 +92,32 @@ Use the following procedure to enable the feature to use an OIDC Access Token as
    * **`components.gateway.apiml.security.oidc.registry`**  
    Specifies the SAF registry used to group the identities recognized as having a OIDC identity mapping. The registry name is the string used during the creation of the mapping between the dustributed and mainframe user identities. For more information, see the [ESM configuration](#esm-configuration).
 
-   * **`components.gateway.apiml.security.oidc.introspectEndpoint`**
+   * **`components.gateway.apiml.security.oidc.introspectUrl`**
+   Specifies the full URL to the introspect endpoint of the OIDC provider. The OIDC token is sent to the provider's introspect endpoint for external validation.
 
 
-Optionally configure API ML access to the external user identity mapper. Provide `externalMapperUser` and `externalMapperUrl` if they are differnt from the default values.     
+Optionally configure API ML access to the external user identity mapper. Provide `identityMapperUser` and `identityMapperUrl` if they are different from the default values.     
    
-  * **`components.gateway.apiml.security.x509.externalMapperUser`**
+  * **`components.gateway.apiml.security.oidc.identityMapperUser`**
 
-**Note:** Skip this step if the Zowe runtime userId is not altered from the default `ZWESVUSR`.
+**Note:** Skip this step if the user calling the identity mapping API is the same as the Zowe runtime userId (`ZWESVUSR` by default).
 
 To authenticate to the mapping API, a JWT is sent with the request. The token represents the user that is configured with this property. User authorization is required to use the `IRR.RUSERMAP` resource within the `FACILITY` class. The default value is `ZWESVUSR`. Permissions are set up during installation with the `ZWESECUR` JCL or workflow.
-
-If you customized the `ZWESECUR` JCL or workflow (the customization of zowe runtime user: `// SET ZOWEUSER=ZWESVUSR * userid for Zowe started task`) and changed the default USERID, create the `components.gateway.apiml.security.x509.externalMapperUser` property and set the value by adding a new line as in the following example:
 
 **Example:**
 
    ```
-   components.gateway.apiml.security.x509.externalMapperUser: yournewuserid  
+   components.gateway.apiml.security.oidc.identityMapperUser: yournewuserid  
    ```
 
-   * **`apiml.security.x509.externalMapperUrl`**  
+   * **`apiml.security.oidc.identityMapperUrl`**  
   Defines the URL where the Gateway can query the mapping of the distributed user ID to the mainframe user ID. 
   This property informs the Gateway about the location of this API. ZSS is the default API provider in Zowe. You can provide your own API to perform the mapping. In this case, it is necessary to customize this value.
 
 The following URL is the default value for Zowe and ZSS:
 
   ```
-  https://${ZWE_haInstance_hostname}:${GATEWAY_PORT}/zss/api/v1/certificate/x509/map
+  https://${ZWE_haInstance_hostname}:${GATEWAY_PORT}/zss/api/v1/certificate/dn
   ```
 
 ## Troubleshooting
@@ -136,4 +135,13 @@ The following URL is the default value for Zowe and ZSS:
 - User identities are not mapped properly in SAF. 
   - Check the mapping definitions in SAF to containe correct values for both, distributed user ID and distributed registry. 
   - In Debug - See reason codes
+
+- API ML cannot validate the OIDC token with the Identity Provider
+  - Symptom: 
+    - `ZWESVUSR ERROR (o.z.a.g.s.s.t.OIDCTokenProvider) Failed to validate the OIDC access token.`
+    - `javax.net.ssl.SSLHandshakeException: com.ibm.jsse2.util.h: PKIX path building failed: com.ibm.security.cert.IBMCertPathBuilderException: unable to find valid certification path to requested target`
+  - Explanation:
+    - API ML is sending the OIDC token to the identity provider's `/introspect` api for validation. In order to successfully connect with the identity provider, the root certificate of the identity provider must be known and trusted by API ML.
+  - Solution:
+    - Include the root certificate in the truststore or keyring used by API ML.
 -- 
