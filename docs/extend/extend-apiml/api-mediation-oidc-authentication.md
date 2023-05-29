@@ -14,7 +14,7 @@ This article details the API ML OIDC authentication functionality, and how to co
 - [Prerequisites](#prerequisites)
   * [OIDC provider](#oidc-provider)
   * [ESM configuration](#esm-configuration)
-- [API ML configuration](#api-ml-configuration)
+- [API ML configuration](#api-ml-oidc-configuration)
 - [Troubleshooting](#troubleshooting)
 
 ## Usage
@@ -47,7 +47,7 @@ Ensure that the following prerequisites are met:
 - SAF/ESM is configured with mapping between the mainframe and distributed user identities. For details, see the section [ESM configuration](#esm-configuration) in this topic.
 - ZSS must be enabled and properly configured in the Zowe installation.
   
-### OIDC provider prerequisites
+### OIDC provider
 
 - Client Application configuration in the OIDC provider.
 
@@ -60,7 +60,7 @@ For example Web Applications with a secure server side component can use `code g
 
   To access mainframe resources, users with a distributed authentication must either be directly assigned by the OIDC provider to the client application, or must be part of group which is allowed to work with the client application.     
 
-### ESM configuration prerequisites
+### ESM configuration
 The user identity mapping is defined as a distributed user identity filter, which is maintained by the System Authorization Facility (SAF) / External Security Manager (ESM).
 A distributed identity consists of two parts:
 * A distributed identity name 
@@ -121,27 +121,29 @@ The following URL is the default value for Zowe and ZSS:
   ```
 
 ## Troubleshooting
-- Distributed OIDC provider (OKTA, Simulate bad requests and see OIDC responses - see oidc.debugger.com) is not configured properly
-  - See responses describe what to check
-- ZSS is not enabled or not running
-  - Do we have an error code ? See code, try.
+- API ML cannot validate the OIDC access token with the Identity Provider
+  - Symptom
+    - Gateway log contains WARNING message: "Missing or invalid introspectUrl configuration. Cannot proceed with token validation."
+  - Explanation
+    - introspectUrl is not configured in the API ML Gateway or doesn't contain the full URL fo the Identity Provider introspect endpoint.  
+  - Solution
+    Configure the introspectUrl properly to contain the full URL fo the Identity Provider introspect endpoint.
   
-- The configured external mapper user does not have required permissions to call the identity mapper. For more information about required permissions that apply to your specific installed ESM, see [ESM configuration](#esm-configuration).
-  - Return codes from ZSS - logged to GW - find what and what level
-  - 
-- The configured external mapper user, doesn't have sufficient access rights to create passtickets and/or to call z/OSMF
-  - (PZA#See troubleshooting of x509)
-  
-- User identities are not mapped properly in SAF. 
-  - Check the mapping definitions in SAF to containe correct values for both, distributed user ID and distributed registry. 
-  - In Debug - See reason codes
-
-- API ML cannot validate the OIDC token with the Identity Provider
-  - Symptom: 
+- API ML cannot validate the OIDC access token with the Identity Provider
+  - Symptom:
     - `ZWESVUSR ERROR (o.z.a.g.s.s.t.OIDCTokenProvider) Failed to validate the OIDC access token.`
     - `javax.net.ssl.SSLHandshakeException: com.ibm.jsse2.util.h: PKIX path building failed: com.ibm.security.cert.IBMCertPathBuilderException: unable to find valid certification path to requested target`
   - Explanation:
     - API ML is sending the OIDC token to the identity provider's `/introspect` api for validation. In order to successfully connect with the identity provider, the root certificate of the identity provider must be known and trusted by API ML.
   - Solution:
     - Include the root certificate in the truststore or keyring used by API ML.
+
+- The access token validation fails with HTTP error 
+  - Symptom
+    - OIDC provider returns HTTP 40x error code
+  - Cause
+    - The client application is not properly configured in API ML Gateway
+  - Solution
+    - Check that the client_id and client_secret as configured in API ML Gateway correspond to the client_id and client_secret of the client application as configured in the OIDC provider.
+  
 -- 
