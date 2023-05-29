@@ -121,7 +121,7 @@ The following URL is the default value for Zowe and ZSS:
   ```
 
 ## Troubleshooting
-- API ML cannot validate the OIDC access token with the Identity Provider
+- API ML fails to validate the OIDC access token because of Identity Provider introspect endpoint misconfiguration 
   - Symptom
     - Gateway log contains WARNING message: "Missing or invalid introspectUrl configuration. Cannot proceed with token validation."
   - Explanation
@@ -129,7 +129,7 @@ The following URL is the default value for Zowe and ZSS:
   - Solution
     Configure the introspectUrl properly to contain the full URL fo the Identity Provider introspect endpoint.
   
-- API ML cannot validate the OIDC access token with the Identity Provider
+- API ML cannot validate the OIDC access token because of Identity Provider certificate misconfiguration   
   - Symptom:
     - `ZWESVUSR ERROR (o.z.a.g.s.s.t.OIDCTokenProvider) Failed to validate the OIDC access token.`
     - `javax.net.ssl.SSLHandshakeException: com.ibm.jsse2.util.h: PKIX path building failed: com.ibm.security.cert.IBMCertPathBuilderException: unable to find valid certification path to requested target`
@@ -137,6 +137,24 @@ The following URL is the default value for Zowe and ZSS:
     - API ML is sending the OIDC token to the identity provider's `/introspect` api for validation. In order to successfully connect with the identity provider, the root certificate of the identity provider must be known and trusted by API ML.
   - Solution:
     - Include the root certificate in the truststore or keyring used by API ML.
+
+- API ML fails to validate the OIDC access token due to missing clientID and/or clientSecret
+  - Symptom
+    - Gateway log contains WARNING message: "Missing clientId or clientSecret configuration. Cannot proceed with token validation."
+  - Explanation
+    - clientId and/or clientSecret are not configures properly to correspond to the values set for the client application in the OIDC Identity Provider.
+  - Solution
+    Configure the clientId and/or clientSecret properly to contain the values set for the client application in the OIDC Identity Provider.
+
+- API ML fails to validate the OIDC access token with the Distributed Identity Provider 
+  - Symptom
+    - Gateway log contains ERROR message: "Failed to validate the OIDC access token. Unexpected response: XXX.", where XXX is a HTTP status code returned by the Identity Provider.
+  - Explanation
+    - The HTTP code will be one from the 40X variants to provide the reason of the failure.
+  - Solution
+    Correct the Gateway configuration according to the code returned byu the OIDC Identity Provider..
+
+
 
 - The access token validation fails with HTTP error 
   - Symptom
