@@ -95,14 +95,12 @@ Use the following procedure to enable the feature to use an OIDC Access Token as
    * **`components.gateway.apiml.security.oidc.introspectUrl`**  
     Specifies the full URL to the introspect endpoint of the OIDC provider. The OIDC token is sent to the provider's introspect endpoint for external validation.
 
+ * **`components.gateway.apiml.security.oidc.identityMapperUser`**  
+ (Optional) Configure API ML access to the external user identity mapper. Provide the properties `identityMapperUser` and `identityMapperUrl` if they are different from the default values.   
+ 
+  **Note:** Skip this step if the user calling the identity mapping API is the same as the Zowe runtime userId (`ZWESVUSR` by default).
 
-Optionally,  configure API ML access to the external user identity mapper. Provide the properties `identityMapperUser` and `identityMapperUrl` if they are different from the default values.     
-   
-  * **`components.gateway.apiml.security.oidc.identityMapperUser`**
-
-**Note:** Skip this step if the user calling the identity mapping API is the same as the Zowe runtime userId (`ZWESVUSR` by default).
-
-To authenticate to the mapping API, a JWT is sent with the request. The token represents the user that is configured with this property. User authorization is required to use the `IRR.RUSERMAP` resource within the `FACILITY` class. The default value is `ZWESVUSR`. Permissions are set up during installation with the `ZWESECUR` JCL or workflow.
+  To authenticate to the mapping API, a JWT is sent with the request. The token represents the user that is configured with this property. User authorization is required to use the `IRR.RUSERMAP` resource within the `FACILITY` class. The default value is `ZWESVUSR`. Permissions are set up during installation with the `ZWESECUR` JCL or workflow.
 
 **Example:**
 
@@ -121,47 +119,75 @@ The following URL is the default value for Zowe and ZSS:
   ```
 
 ## Troubleshooting
-- API ML fails to validate the OIDC access token because of Identity Provider introspect endpoint misconfiguration 
-  - Symptom
-    - Gateway log contains WARNING message: "Missing or invalid introspectUrl configuration. Cannot proceed with token validation."
-  - Explanation
-    - introspectUrl is not configured in the API ML Gateway or doesn't contain the full URL fo the Identity Provider introspect endpoint.  
-  - Solution
-    Configure the introspectUrl properly to contain the full URL fo the Identity Provider introspect endpoint.
+
+### API ML fails to validate the OIDC access token due to Identity Provider introspect endpoint misconfiguration 
+    
+**Symptom**  
+Gateway log contains a WARNING with the following message:  
+`Missing or invalid introspectUrl configuration. Cannot proceed with token validation.`
+
+**Explanation**  
+The `introspectUrl` is not configured in the API ML Gateway or does not contain the full URL for the Identity Provider introspect endpoint. 
+
+**Solution**  
+Configure the introspectUrl properly to contain the full URL fo the Identity Provider introspect endpoint.
+
+### API ML cannot validate the OIDC access token because of Identity Provider certificate misconfiguration  
+
+**Symptom**
+
+The following error is thrown:
+
+`ZWESVUSR ERROR (o.z.a.g.s.s.t.OIDCTokenProvider) Failed to validate the OIDC access token.`
+
+  `javax.net.ssl.SSLHandshakeException: com.ibm.jsse2.util.h: PKIX path building failed: com.ibm.security.cert.IBMCertPathBuilderException: unable to find valid certification path to requested target`  
+
+**Explanation**  
+API ML is sending the OIDC token to the `/introspect` API of the identity provider for validation. Successful connection to the identity provider requires that the root certificate of the identity provider be known and trusted by API ML.
+
+**Solution**  
+Include the root certificate in the truststore or keyring used by API ML.
+
+
+### API ML fails to validate the OIDC access token due to missing clientID and/or clientSecret
+
+**Symptom**  
+Gateway log contains the following WARNING message:  
+`Missing clientId or clientSecret configuration. Cannot proceed with token validation.`
+
+**Explanation**  
+`clientId` and/or `clientSecret` are not configured properly to correspond to the values set for the client application in the OIDC Identity Provider.
+
+**Solution**  
+Configure the `clientId` and/or `clientSecret` properly to contain the values set for the client application in the OIDC Identity Provider.
+
+### API ML fails to validate the OIDC access token with the Distributed Identity Provider
+
+**Symptom**  
+The Gateway log contains the following ERROR message:  
+`Failed to validate the OIDC access token. Unexpected response: XXX.`  
+where:
+
+* _XXX_   
+is a HTTP status code returned by the Identity Provider.
+
+**Explanation**  
+The HTTP code will be one from the 40X variants to provide the reason of the failure.
+
+**Solution**  
+
+Correct the Gateway configuration according to the code returned byu the OIDC Identity Provider.
+
+### The access token validation fails with HTTP error 
+
+**Symptom**  
+
+The OIDC provider returns HTTP 40x error code.
+
+**Explanation**  
+
+The client application is not properly configured in API ML Gateway.
+
+**Solution**  
+Check that the `client_id` and `client_secret` as configured in API ML Gateway correspond to the `client_id` and `client_secret` of the client application as configured in the OIDC provider.
   
-- API ML cannot validate the OIDC access token because of Identity Provider certificate misconfiguration   
-  - Symptom:
-    - `ZWESVUSR ERROR (o.z.a.g.s.s.t.OIDCTokenProvider) Failed to validate the OIDC access token.`
-    - `javax.net.ssl.SSLHandshakeException: com.ibm.jsse2.util.h: PKIX path building failed: com.ibm.security.cert.IBMCertPathBuilderException: unable to find valid certification path to requested target`
-  - Explanation:
-    - API ML is sending the OIDC token to the identity provider's `/introspect` api for validation. In order to successfully connect with the identity provider, the root certificate of the identity provider must be known and trusted by API ML.
-  - Solution:
-    - Include the root certificate in the truststore or keyring used by API ML.
-
-- API ML fails to validate the OIDC access token due to missing clientID and/or clientSecret
-  - Symptom
-    - Gateway log contains WARNING message: "Missing clientId or clientSecret configuration. Cannot proceed with token validation."
-  - Explanation
-    - clientId and/or clientSecret are not configures properly to correspond to the values set for the client application in the OIDC Identity Provider.
-  - Solution
-    Configure the clientId and/or clientSecret properly to contain the values set for the client application in the OIDC Identity Provider.
-
-- API ML fails to validate the OIDC access token with the Distributed Identity Provider 
-  - Symptom
-    - Gateway log contains ERROR message: "Failed to validate the OIDC access token. Unexpected response: XXX.", where XXX is a HTTP status code returned by the Identity Provider.
-  - Explanation
-    - The HTTP code will be one from the 40X variants to provide the reason of the failure.
-  - Solution
-    Correct the Gateway configuration according to the code returned byu the OIDC Identity Provider..
-
-
-
-- The access token validation fails with HTTP error 
-  - Symptom
-    - OIDC provider returns HTTP 40x error code
-  - Cause
-    - The client application is not properly configured in API ML Gateway
-  - Solution
-    - Check that the client_id and client_secret as configured in API ML Gateway correspond to the client_id and client_secret of the client application as configured in the OIDC provider.
-  
--- 
