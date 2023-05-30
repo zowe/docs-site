@@ -51,7 +51,7 @@ To log out, click the User icon in the lower right corner and click **Sign Out**
 ### Changing application elements size
 There are 3 supported ways of changing size within the Desktop.
 
-1. Use your browser's zoom feature (hotkeys: Ctrl +, Ctrl - for various supported browsers) to change any element size. Recommended: 67%
+1. Use your browser's zoom feature (hotkeys: Ctrl +, Ctrl - for various supported browsers) to change all elements' size. Recommended: 67%
 
 **Note:** Zoom is highly variable and depends on your display size, resolution, and many other variables so the recommended zoom may not be ideal for you
 
@@ -59,7 +59,7 @@ There are 3 supported ways of changing size within the Desktop.
 
 3. Change an individual application's size via its window handles or minimize/maximize buttons. You can also start an application in full screen mode by right clicking on an application's icon in the taskbar and select "Open in New Browser Tab"
 
-**Tip:** You can use the whole Desktop in full screen mode by using your browser's full screen feature (hotkeys: F11 for various supported browsers)
+**Tip:** Did you know you can use the whole Desktop in full screen mode by using your browser's full screen feature (hotkeys: F11 for various supported browsers)?
 
 ### Personalizing the Desktop
 
