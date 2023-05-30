@@ -98,25 +98,25 @@ Use the following procedure to enable the feature to use an OIDC Access Token as
  * **`components.gateway.apiml.security.oidc.identityMapperUser`**  
  (Optional) Configure API ML access to the external user identity mapper. Provide the properties `identityMapperUser` and `identityMapperUrl` if they are different from the default values.   
  
-  **Note:** Skip this step if the user calling the identity mapping API is the same as the Zowe runtime userId (`ZWESVUSR` by default).
+    **Note:** Skip this step if the user calling the identity mapping API is the same as the Zowe runtime userId (`ZWESVUSR` by default).
 
-  To authenticate to the mapping API, a JWT is sent with the request. The token represents the user that is configured with this property. User authorization is required to use the `IRR.RUSERMAP` resource within the `FACILITY` class. The default value is `ZWESVUSR`. Permissions are set up during installation with the `ZWESECUR` JCL or workflow.
+    To authenticate to the mapping API, a JWT is sent with the request. The token represents the user that is configured with this property. User authorization is required to use the `IRR.RUSERMAP` resource within the `FACILITY` class. The default value is `ZWESVUSR`. Permissions are set up during installation with the `ZWESECUR` JCL or workflow.
 
-**Example:**
+    **Example:**
 
    ```
    components.gateway.apiml.security.oidc.identityMapperUser: yournewuserid  
    ```
 
-   * **`apiml.security.oidc.identityMapperUrl`**  
+  * **`apiml.security.oidc.identityMapperUrl`**  
   Defines the URL where the Gateway can query the mapping of the distributed user ID to the mainframe user ID. 
   This property informs the Gateway about the location of this API. ZSS is the default API provider in Zowe. You can provide your own API to perform the mapping. In this case, it is necessary to customize this value.
 
-The following URL is the default value for Zowe and ZSS:
+    The following URL is the default value for Zowe and ZSS:
 
-  ```
-  https://${ZWE_haInstance_hostname}:${GATEWAY_PORT}/zss/api/v1/certificate/dn
-  ```
+    ```
+    https://${ZWE_haInstance_hostname}:${GATEWAY_PORT}/zss/api/v1/certificate/dn
+    ```
 
 ## Troubleshooting
 
