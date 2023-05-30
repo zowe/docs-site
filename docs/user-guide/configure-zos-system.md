@@ -208,6 +208,48 @@ If the user `ZWESVUSR` who runs the Zowe server started task does not have UPDAT
       LIST BPX
       ```
 
+You must also grant READ access to the OMVSAPPL profile in the APPL class to Zowe STC user and also **all other Zowe users** using various Zowe features. Skip the following steps when OMVSAPPL profile is not defined in your environment.
+
+- If you use RACF, complete the following steps:
+
+    1. Check whether you already have the required access defined as part of the environment configuration. Skip the following steps when the access was already granted.
+         ```
+         RLIST APPL OMVSAPPL AUTHUSER
+         ```
+
+    2. Issue the following commands and review the output to check whether permission has been successfully granted:
+         ```
+         PERMIT OMVSAPPL CLASS(APPL) ID(<zowe_user>) ACCESS(READ)
+         SETROPTS RACLIST(APPL) REFRESH
+         ```
+
+- If you use Top Secret, complete the following steps:
+
+    1. Check whether you already have the required access as part of the environment configuration. Skip the following steps when the access was already granted.
+         ```
+         TSS WHOHAS APPL(OMVSAPPL)
+         ```
+
+    2. Issue the following commands and review the output to check whether permission has been successfully granted:
+         ```
+         TSS PERMIT(<zowe_user>) APPL(OMVSAPPL)
+         ```
+
+- If you use ACF2, complete the following steps:
+
+    1. Check whether you already have the required access defined as part of the environment configuration. Skip the following steps when the access was already granted.
+         ```
+         SET RESOURCE(APL)
+         LIST OMVSAAPL
+         ```
+
+    2. Issue the following commands and review the output to check whether permission has been successfully granted:
+        ```
+          SET RESOURCE(APL)
+          RECKEY OMVSAPPL ADD(SERVICE(READ) ROLE(<zowe_user>) ALLOW)
+          F ACF2,REBUILD(APL)
+        ```
+
 ## Configure address space job naming
 
 The user ID `ZWESVUSR` that is associated with the Zowe started task must have `READ` permission for the `BPX.JOBNAME` profile in the `FACILITY` class. This is to allow setting of the names for the different z/OS UNIX address spaces for the Zowe runtime components.
@@ -407,9 +449,9 @@ To do this, issue the following commands that are also included in the `ZWESECUR
 - The cross memory server treats "no decision" style SAF return codes as failures. If there is no covering profile for the `ZWES.IS` resource in the FACILITY class, the request will be denied.
 - Cross memory server clients other than Zowe might have additional SAF security requirements. For more information, see the documentation for the specific client.
 
-## Configure main Zowe server to use identity mapping
+## Configure main Zowe server to use client certificate identity mapping
 
-This security configuration is necessary for API ML to be able to map client certificate to a z/OS identity. A user running API Gateway must have read access to the RACF general resource `IRR.RUSERMAP` in the `FACILITY` class. 
+This security configuration is necessary for API ML to be able to map client certificate to a z/OS identity. A user running API Gateway must have read access to the SAF resource `IRR.RUSERMAP` in the `FACILITY` class. 
 To set up this security configuration, submit the `ZWESECUR` JCL member. For users upgrading from version 1.18 and lower use the following configuration steps.
 
 ### Using RACF
@@ -419,7 +461,6 @@ If you use RACF, verify and update permission in the `FACILITY` class.
 **Follow these steps:**
 
 1. Verify user `ZWESVUSR` has read access.
-
     ```
     RLIST FACILITY IRR.RUSERMAP AUTHUSER
     ```
@@ -428,6 +469,70 @@ If you use RACF, verify and update permission in the `FACILITY` class.
     ```
     PERMIT IRR.RUSERMAP CLASS(FACILITY) ACCESS(READ) ID(ZWESVUSR)
     ```
+   
+3. Activate changes.
+    ```
+    SETROPTS RACLIST(FACILITY) REFRESH
+    ```
+
+### Using ACF2
+
+If you use ACF2, verify and update permission in the `FACILITY` class.
+
+**Follow these steps:**
+
+1. Verify user `ZWESVUSR` has read access.
+    ```      
+    SET RESOURCE(FAC) 
+    LIST LIKE(IRR-)
+    ```
+       
+2. Add user `ZWESVUSR` permission to read.
+    ```
+    RECKEY IRR.RUSERMAP ADD(SERVICE(READ) ROLE(&STCGRP.) ALLOW)
+    ```
+   
+3. Activate changes.
+    ```
+    F ACF2,REBUILD(FAC)
+    ```      
+
+### Using TSS
+
+If you use TSS, verify and update permission in `FACILITY` class.
+
+**Follow these steps:**
+
+1. Verify user `ZWESVUSR` has read access.
+    ```      
+    TSS WHOHAS IBMFAC(IRR.RUSERMAP)
+    ```    
+2. Add user `ZWESVUSR` permission to read.
+    ```
+    TSS PER(ZWESVUSR) IBMFAC(IRR.RUSERMAP) ACCESS(READ)
+    ```
+
+## Configure main Zowe server to use distributed identity mapping
+
+This security configuration is necessary for API ML to be able to map association between a z/OS user ID and a distributed user identity. A user running API Gateway must have read access to the SAF resource `IRR.IDIDMAP.QUERY` in the `FACILITY` class.
+To set up this security configuration, submit the `ZWESECUR` JCL member. For users upgrading from version 1.28 and lower use the following configuration steps.
+
+### Using RACF
+
+If you use RACF, verify and update permission in the `FACILITY` class.
+
+**Follow these steps:**
+
+1. Verify user `ZWESVUSR` has read access.
+    ```
+    RLIST FACILITY IRR.IDIDMAP.QUERY AUTHUSER
+    ```
+
+2. Add user `ZWESVUSR` permission to read.
+    ```
+    PERMIT IRR.IDIDMAP.QUERY CLASS(FACILITY) ACCESS(READ) ID(ZWESVUSR)
+    ```
+
 3. Activate changes.
     ```
     SETROPTS RACLIST(FACILITY) REFRESH
@@ -444,10 +549,16 @@ If you use ACF2, verify and update permission in the `FACILITY` class.
     SET RESOURCE(FAC) 
     LIST LIKE(IRR-)
     ```    
+
 2. Add user `ZWESVUSR` permission to read.
     ```
-    RECKEY IRR.RUSERMAP ADD(SERVICE(READ) ROLE(&STCGRP.) ALLOW)
+    RECKEY IRR.IDIDMAP.QUERY ADD(SERVICE(READ) ROLE(&STCGRP.) ALLOW)
     ```
+
+3. Activate changes.
+    ```
+    F ACF2,REBUILD(FAC)
+    ```   
 
 ### Using TSS
 
@@ -455,13 +566,14 @@ If you use TSS, verify and update permission in `FACILITY` class.
 
 **Follow these steps:**
 
-1. verify user `ZWESVUSR` has read access.
+1. Verify user `ZWESVUSR` has read access.
     ```      
-    TSS WHOHAS IBMFAC(IRR.RUSERMAP)
+    TSS WHOHAS IBMFAC(IRR.IDIDMAP.QUERY)
     ```    
+
 2. Add user `ZWESVUSR` permission to read.
     ```
-    TSS PER(ZWESVUSR) IBMFAC(IRR.RUSERMAP) ACCESS(READ)
+    TSS PER(ZWESVUSR) IBMFAC(IRR.IDIDMAP.QUERY) ACCESS(READ)
     ```
 
 ## Configure signed SAF Identity tokens (IDT)
