@@ -96,17 +96,10 @@ Use the following procedure to enable the feature to use an OIDC Access Token as
     Specifies the full URL to the introspect endpoint of the OIDC provider. The OIDC token is sent to the provider's introspect endpoint for external validation.
 
  * **`components.gateway.apiml.security.oidc.identityMapperUser`**  
- (Optional) Configure API ML access to the external user identity mapper. Provide the properties `identityMapperUser` and `identityMapperUrl` if they are different from the default values.   
- 
-    **Note:** Customize this property if the user calling the identity mapping API is the same as the Zowe runtime userId (`ZWESVUSR` by default).
+    (Optional) Configure API ML access to the external user identity mapper by providing the `identityMapperUser` userId, only if it is different from the default Zowe runtime userId (`ZWESVUSR`).
 
-    To authenticate to the mapping API, a JWT is sent with the request. The token represents the user that is configured with this property. User authorization is required to use the `IRR.RUSERMAP` resource within the `FACILITY` class. The default value is `ZWESVUSR`. Permissions are set up during installation with the `ZWESECUR` JCL or workflow.
-
-    **Example:**
-
-   ```
-   components.gateway.apiml.security.oidc.identityMapperUser: yournewuserid  
-   ```
+**Note** User authorization is required to use the `IRR.RUSERMAP` resource within the `FACILITY` class. The default value is `ZWESVUSR`. Permissions are set up during installation with the `ZWESECUR` JCL or workflow.
+To authenticate to the mapping API, a JWT is sent with the request. The token represents the user that is configured with this property.
 
   * **`apiml.security.oidc.identityMapperUrl`**  
   Defines the URL where the Gateway can query the mapping of the distributed user ID to the mainframe user ID. 
