@@ -92,11 +92,11 @@ Use the following procedure to enable the feature to use an OIDC Access Token as
    * **`components.gateway.apiml.security.oidc.registry`**  
    Specifies the SAF registry used to group the identities recognized as having a OIDC identity mapping. The registry name is the string used during the creation of the mapping between the dustributed and mainframe user identities. For more information, see the [ESM configuration](#esm-configuration).
 
-   * **`components.gateway.apiml.security.oidc.introspectUrl`**
-   Specifies the full URL to the introspect endpoint of the OIDC provider. The OIDC token is sent to the provider's introspect endpoint for external validation.
+   * **`components.gateway.apiml.security.oidc.introspectUrl`**  
+    Specifies the full URL to the introspect endpoint of the OIDC provider. The OIDC token is sent to the provider's introspect endpoint for external validation.
 
 
-Optionally configure API ML access to the external user identity mapper. Provide `identityMapperUser` and `identityMapperUrl` if they are different from the default values.     
+Optionally,  configure API ML access to the external user identity mapper. Provide the properties `identityMapperUser` and `identityMapperUrl` if they are different from the default values.     
    
   * **`components.gateway.apiml.security.oidc.identityMapperUser`**
 
