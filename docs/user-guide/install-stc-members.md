@@ -8,7 +8,7 @@ zowe
     security
       stcs
         zowe: ZWESLSTC
-        xmem: ZWESISTC
+        zis: ZWESISTC
         aux: ZWESASTC
 ```
 

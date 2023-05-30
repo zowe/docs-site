@@ -1,6 +1,6 @@
 import React from "react";
 import { useLocation } from "react-router-dom";
-import { useActiveVersion } from "@theme/hooks/useDocs";
+import { useActiveVersion } from "@docusaurus/plugin-content-docs/client";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import useBaseUrl from "@docusaurus/useBaseUrl";
 import styles from "./styles.module.css";
@@ -46,7 +46,7 @@ function DocsInfo({ docsPluginId, ...props }) {
                 {props.readingTimeInWords ? (
                   <>{props.readingTimeInWords}</>
                 ) : (
-                  <>0 min read</>
+                  <>... min read</>
                 )}
               </div>
               |
@@ -80,16 +80,14 @@ function DocsInfo({ docsPluginId, ...props }) {
                 }
                 target="_blank"
               >
-                {" "}
                 <img
-                  className="padding-right--sm"
                   src={printIconUrl}
                   style={{
                     width: "16px",
                     verticalAlign: "-0.125em",
                   }}
                 ></img>
-                PDF
+                <span className="margin-left--sm">PDF</span>
               </a>
             )}
           </div>
@@ -103,14 +101,13 @@ function DocsInfo({ docsPluginId, ...props }) {
                 rel="noreferrer noopener"
               >
                 <img
-                  className="padding-right--sm"
                   src={bugIconUrl}
                   style={{
                     width: "16px",
                     verticalAlign: "-0.125em",
                   }}
                 ></img>
-                Open doc issue
+                <span className="margin-left--sm">Open doc issue</span>
               </a>
             )}
           </div>
