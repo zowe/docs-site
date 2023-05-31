@@ -57,20 +57,20 @@ There are two ways to set up certificates on a z/OS machine:
 - Certificates in SAF keyring
 - Certificates in UNIX files (keystore and truststore)
  
-The [Configuring PKCS12 certificates](../../user-guide/configure-certificates-keystore) and [Configuring JCERACFS certificates in a key ring](../../user-guide/configure-certificates-keyring) contain instructions about how to set up certificates during installation. Follow the procedure in the applicable section described in this article during installation.
+The [Configuring PKCS12 certificates](../../user-guide/configure-certificates.md/#pkcs12-certificates-in-a-keystore) and [Configuring JCERACFS certificates in a key ring](../../user-guide/configure-certificates.md/#jceracfks-certificates-in-a-key-ring) contain instructions about how to set up certificates during installation. Follow the procedure in the applicable section described in this article during installation.
 
 
 ### Import the local CA certificate to your browser
 
-Trust in the API ML server is a necessary precondition for secure communication between Browser or API Client application. Ensure this trust through the installation of a Certificate Authority (CA) public certificate. By default, API ML creates a local CA. Import the CA public certificate to the truststore for REST API clients and to your browser. You can also import the certificate to your root certificate store.
+Trust in the API ML server is a necessary precondition for secure communication between a Browser or API Client application. Ensure this trust through the installation of a Certificate Authority (CA) public certificate. By default, API ML creates a local CA. Import the CA public certificate to the truststore for REST API clients and to your browser. You can also import the certificate to your root certificate store.
 
 **Notes:** 
 
 - If a SAF keyring is being used and set up with `ZWEKRING` JCL, the procedure to obtain the certificate does not apply. It is recommended that you work with your security system administrator to obtain the certificate. Start the procedure at step 2.
 
-- The public certificate in the [PEM format](https://en.wikipedia.org/wiki/Privacy-Enhanced_Mail) is stored at `<KEYSTORE_DIRECTORY>/local_ca/localca.cer` where `<KEYSTORE_DIRECTORY>` is defined in a customized `zowe.yaml` file during the installation step that generates Zowe certificates. The certificate is stored in UTF-8 encoding so you need to transfer it as a binary file. Since this is the certificate to be trusted by your browser, it is recommended to use a secure connection for transfer.
+- The public certificate in the [PEM format](https://en.wikipedia.org/wiki/Privacy-Enhanced_Mail) is stored at `<KEYSTORE_DIRECTORY>/local_ca/localca.cer`, where `<KEYSTORE_DIRECTORY>` is defined in a customized `zowe.yaml` file during the installation step that generates Zowe certificates. The certificate is stored in UTF-8 encoding so you need to transfer it as a binary file. Since this is the certificate to be trusted by your browser, it is recommended to use a secure connection for transfer.
 
-- Windows currently does not recognize the PEM format. For Windows, use the P12 version of the local_cer.
+- Windows currently does not recognize the PEM format. For Windows, use the P12 version of the `local_cer`.
 
 **Follow these steps:**
 
@@ -128,11 +128,11 @@ Issue the following command:
 
 ### Generate a keystore and truststore for a new service on z/OS	
 
-You can generate a keystore and truststore for a new service using local CA in the keystore directory.
+You can generate a keystore and truststore for a new service using the local CA in the keystore directory.
 
-**Note:** This procedure applies to UNIX file keystore and truststore only. For the SAF keyring option, it is recommended that you perform the actions manually using your security system commands.
+**Note:** This procedure applies to a UNIX file keystore and truststore only. For the SAF keyring option, it is recommended that you perform the actions manually using your security system commands.
 
-Use `zwe` command available in the zowe distribution package and execute following example.
+Use the `zwe` command available in the zowe distribution package and execute following example.
 
 **Example:**
 ```
@@ -141,33 +141,33 @@ zwe certificate pkcs12 create cert -d <service-keystore-directory> -a <cert-alia
 where:
 
 * **cert-alias**  
-is a unique string to identify the key entry. All keystore entries (key and trusted certificate entries) are accessed via unique aliases. Since the keystore has only one certificate, you can omit this parameter and use the default value `localhost`.
+Specifies a unique string to identify the key entry. All keystore entries (key and trusted certificate entries) are accessed via unique aliases. Since the keystore has only one certificate, you can omit this parameter and use the default value `localhost`.
 
 * **service-keystore-directory**  
- specifies repository of security certificates plus corresponding private keys. The `<keystore_path>` is the path excluding the extension to the keystore that is generated. It can be an absolute path or a path relative to the current working directory. The key store is generated in PKCS12 format with the `.p12` extension. Ensure that the path is in an existing directory where your service expects the keystore.
+ Specifies the repository of security certificates plus the corresponding private keys. The `<keystore_path>` is the path excluding the extension to the keystore that is generated. It can be an absolute path or a path relative to the current working directory. The key store is generated in PKCS12 format with the `.p12` extension. Ensure that the path is in an existing directory where your service expects the keystore.
 
   **Example:** `/opt/myservice/keystore/`.
 
 * **service-name**  
-is the name of the service for which you want to generate keystore. Keystore will be created in the directory with the same name.
+Specifies the name of the service for which you want to generate keystore. A keystore will be created in the directory with the same name.
  **Example:** `my-new-service`.
 
 * **keystore-password**  
- specifies the keystore password. 
+ Specifies the keystore password. 
 
 * **ca-keystore-password**  
-specifies the local certificate authority keystore password. 
+Specifies the local certificate authority keystore password. 
 
 * **ca-alias**  
-specifies the local certificate authority alias in the keystore. Zowe CA is stored under `loca_ca` alias.
+Specifies the local certificate authority alias in the keystore. Zowe CA is stored under the `local_ca` alias.
 
 ### Add a service with an existing certificate to API ML on z/OS
 
-The API Mediation Layer requires validation of the certificate of each service that it accessed by the API Mediation Layer. The API Mediation Layer requires validation of the full certificate chain.
+API Mediation Layer requires validation of the certificate of each service that it accessed by API Mediation Layer. API Mediation Layer requires validation of the full certificate chain.
 
 **Note:** This procedure applies only to UNIX file keystore/truststore. For the SAF keyring option, we recommend to perform the actions manually using your security system commands.
 
-Import the public certificate of the CA that has signed the certificate of the service to the APIML truststore.
+Import the public certificate of the CA that has signed the certificate of the service to the API ML truststore.
 
   **Note:** Validation fails if a service does not provide intermediate CA certificates to the API ML. This can be circumvented by importing the intermediate CA certificates to the API ML truststore.
 
@@ -210,9 +210,9 @@ A _keystore_ is a repository of security certificates consisting of either autho
 by other technologies in Zowe (Node.js).
 ## API ML SAF Keyring
 
-As an alternative to using a keystore and truststore, API ML can read certificates from a SAF keyring. The user running the API ML must have rights to access the keyring. From the java perspective, the keyring behaves as the `JCERACFKS` keystore. The path to the keyring is specified as `safkeyring://user_id/key_ring_id`. The content ofthe SAF keyring is equivalent to the combined contents of the keystore and the truststore.
+As an alternative to using a keystore and truststore, API ML can read certificates from a SAF keyring. The user running the API ML must have rights to access the keyring. From the java perspective, the keyring behaves as the `JCERACFKS` keystore. The path to the keyring is specified as `safkeyring://user_id/key_ring_id`. The content of the SAF keyring is equivalent to the combined contents of the keystore and the truststore.
 
-**Note:** When using JCEFACFKS as the keystore type, ensure that you define the class to handle the RACF keyring using the `-D` options to specify the `java.protocol.handler.pkgs property`:
+**Note:** When using JCEFACFKS as the keystore type, ensure that you define the class to handle the RACF keyring. Use the `-D` options to specify the `java.protocol.handler.pkgs property`:
 
     -Djava.protocol.handler.pkgs=com.ibm.crypto.provider
 
