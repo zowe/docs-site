@@ -68,7 +68,7 @@ A distributed identity consists of two parts:
 
 API ML provides a Zowe CLI plugin to help administrators to generate a JCL for creating the mapping filter specific for the ESM installed on the target mainframe system. 
 
-  See the [Identity Federation cli plugin]( )  <!--Add link --> documentation for details about how to use the plugin tool to set up the mapping in the ESM of your z/OS system.
+  See the [Identity Federation cli plugin](#)  <!--Add link --> documentation for details about how to use the plugin tool to set up the mapping in the ESM of your z/OS system.
 
 Alternatively, administrators can use the installed ESM functionality to create, delete, list, and query a distributed identity filter/s:
  - For RACF consult [RACMAP command](https://www.ibm.com/docs/en/zos/2.3.0?topic=rcs-racmap-create-delete-list-query-distributed-identity-filter).
