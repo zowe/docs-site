@@ -226,6 +226,7 @@ module.exports = {
           label: "Installing Zowe Explorer",
           items: [
             "getting-started/user-roadmap-zowe-explorer",
+            "getting-started/ZE-system-reqs",
             "user-guide/ze-install",
             "user-guide/ze-profiles",
           ],
@@ -462,6 +463,7 @@ module.exports = {
                 "user-guide/cli-ftpplugin",
                 "user-guide/cli-imsplugin",
                 "user-guide/cli-mqplugin",
+                "user-guide/cli-idfplugin",
               ],
             },    
           ],
@@ -567,6 +569,7 @@ module.exports = {
                 "extend/extend-apiml/authentication-for-apiml-services",
                 "extend/extend-apiml/zaas-client",
                 "extend/extend-apiml/certificate-management-in-zowe-apiml",
+                "extend/extend-apiml/api-mediation-oidc-authentication",
               ],
             },
             {
@@ -703,6 +706,7 @@ module.exports = {
           items: [
             "troubleshoot/ze/troubleshoot-ze",
             "troubleshoot/ze/known-ze",
+            "troubleshoot/ze/ze-known-limits",
             "troubleshoot/ze/ze-issues",
           ],
         },
