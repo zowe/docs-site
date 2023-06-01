@@ -96,10 +96,9 @@ Use the following procedure to enable the feature to use an OIDC Access Token as
     Specifies the full URL to the introspect endpoint of the OIDC provider. The OIDC token is sent to the provider's introspect endpoint for external validation.
 
  * **`components.gateway.apiml.security.oidc.identityMapperUser`**  
-    (Optional) Configure API ML access to the external user identity mapper by providing the `identityMapperUser` userId, only if it is different from the default Zowe runtime userId (`ZWESVUSR`).
+    (Optional) If the userId is different from the default Zowe runtime userId (`ZWESVUSR`), specify the `identityMapperUser` userId to configure API ML access to the external user identity mapper. 
 
-    **Note** User authorization is required to use the `IRR.RUSERMAP` resource within the `FACILITY` class. The default value is `ZWESVUSR`. Permissions are set up during installation with the `ZWESECUR` JCL or workflow.
-To authenticate to the mapping API, a JWT is sent with the request. The token represents the user that is configured with this property.
+    **Note** User authorization is required to use the `IRR.RUSERMAP` resource within the `FACILITY` class. The default value is `ZWESVUSR`. Permissions are set up during installation with the `ZWESECUR` JCL or workflow. To authenticate to the mapping API, a JWT is sent with the request. The token represents the user that is configured with this property.
 
   * **`apiml.security.oidc.identityMapperUrl`**  
   Defines the URL where the Gateway can query the mapping of the distributed user ID to the mainframe user ID. 
@@ -125,7 +124,7 @@ The Gateway log contains a WARNING with the following message:
 **Solution**  
 Configure `introspectUrl` properly to contain the full URL of the Identity Provider introspect end-point.
 
-### API ML cannot validate the OIDC access token because of Identity Provider certificate misconfiguration  
+### API ML cannot validate the OIDC access token due to misconfiguration of the Identity Provider certificate   
 
 **Symptom**
 
@@ -149,7 +148,7 @@ The Gateway log contains the following WARNING message:
 `Missing clientId or clientSecret configuration. Cannot proceed with token validation.`
 
 **Explanation**  
-`clientId` and/or `clientSecret` are not configured properly to correspond to the values set for the client application in the OIDC Identity Provider.
+The `clientId` and/or `clientSecret` are not configured properly to correspond to the values set for the client application in the OIDC Identity Provider.
 
 **Solution**  
 Configure the `clientId` and/or `clientSecret` properly to contain the values set for the client application in the OIDC Identity Provider.
@@ -162,10 +161,10 @@ The Gateway log contains the following ERROR message:
 where:
 
 * _XXX_   
-is an HTTP status code returned by the Identity Provider.
+is the HTTP status code returned by the Identity Provider.
 
 **Explanation**  
-The HTTP code will be one from the 40X variants to provide the reason of the failure.
+The HTTP code is one from the 40X variants to provide the reason of the failure.
 
 **Solution**  
 
