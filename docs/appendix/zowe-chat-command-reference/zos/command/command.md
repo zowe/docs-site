@@ -1,6 +1,6 @@
 # zos command
 
-**[zos](.././zos) > [command](command)**
+**[zos](../zos.md) > [command](command)**
 
 Interact with z/OS command related services, including z/OSMF Console services, etc.
 

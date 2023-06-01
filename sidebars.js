@@ -226,6 +226,7 @@ module.exports = {
           label: "Installing Zowe Explorer",
           items: [
             "getting-started/user-roadmap-zowe-explorer",
+            "getting-started/ZE-system-reqs",
             "user-guide/ze-install",
             "user-guide/ze-profiles",
           ],
@@ -705,6 +706,7 @@ module.exports = {
           items: [
             "troubleshoot/ze/troubleshoot-ze",
             "troubleshoot/ze/known-ze",
+            "troubleshoot/ze/ze-known-limits",
             "troubleshoot/ze/ze-issues",
           ],
         },

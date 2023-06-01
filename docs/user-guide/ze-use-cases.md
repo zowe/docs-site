@@ -322,6 +322,7 @@ There are two main ways to poll a spool file &mdash; automatically at set interv
 3. Select **Zowe Explorer**.
 4. In the **Jobs: Poll Interval** field, enter a valid time interval, in milliseconds.
  	- Value must be greater than or equal to 1000 ms (1 second).
+5. Press **Enter** to start the polling action.
 
 #### **Polling a spool file at set intervals**
 <br/>
@@ -345,6 +346,9 @@ There are two main ways to poll a spool file &mdash; automatically at set interv
 <br/>
 
 1. In the **Side Bar**, select a spool file that is being polled.
+
+   Spool files being polled are marked with a "**P**" in the **Side Bar**.
+
 2. Right click the spool file and select **Stop Polling**.
 
    The poll request is removed from the poller, and the selected spool file is no longer marked with a "**P**" in the **Side Bar** and any corresponding **Editor** tabs.
@@ -374,17 +378,3 @@ To manually poll a spool file:
     <br/>
     
     The entered key(s) can be used to activate polling.
-
-#### **Cancelling a job**
-<br/>
-1. In the **Side Bar**, click on a job session to view its respective jobs.
-
-2. Click on one or more jobs to select.
-
-3. Right-click on the selected job(s) and click **Cancel Job** in the pop-up menu.
-
-   The selected jobs are cancelled and are labelled "CANCELED" in the **Side Bar**.
-   
-   If cancellation fails, a message displays to notify which jobs have failed to be cancelled. The user can click on one of these jobs in the **Side Bar** to view its spool files and check for any outputs that might have occurred during the cancellation attempt.
-
-   ![Cancelling a job](../images/ze/ZE-cancel-jobs.gif)
