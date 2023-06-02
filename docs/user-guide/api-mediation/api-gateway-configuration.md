@@ -120,7 +120,7 @@ All requests are disabled as the default configuration for retry with one except
   * **components.gateway.ribbon.retryableStatusCodes**  
 This property provides a list of status codes, for which the server should retry the request.
     
-    **Example:** `components.gateway.ribbon.retryableStatusCodes: "503, 404"` 
+  **Example:** `components.gateway.ribbon.retryableStatusCodes: "503, 404"` 
     
   * **components.gateway.ribbon.OkToRetryOnAllOperations**  
 Specifies whether to retry all operations for this service. The default value is `false`. In this case, only `GET` requests are retried if they return a response code that is listed in `ribbon.retryableStatusCodes`. Setting this parameter to `true` enables retry requests for all methods which return a response code listed in `ribbon.retryableStatusCodes`. 
@@ -350,13 +350,13 @@ The API ML can check for the authorization of the user on certain endpoints. Acc
 
 Verification of the SAF resource is provided by the following three providers:
 
-- **endpoint**  
+- **`endpoint`**  
 This is the highest priority provider, such as a REST endpoint call (ZSS or similar one). This option is disabled by default. In Zowe, ZSS has the API to check for SAF   resource authorization.
   
-- **native**  
+- **`native`**  
 The Native JZOS classes from Java are used to determine SAF resource access. This is the default provider.
   
-- **dummy**  
+- **`dummy`**  
 This is the lowest priority provider. This is the dummy implementation and is defined in a file.
 
 **Note:** Verification of the SAF resource uses the first available provider based on the specified priority. The default configuration resolves to the native provider. 

@@ -10,6 +10,7 @@ Review this article to learn about topics which address security features in Zow
   - [Setting ciphers for API ML services](#setting-ciphers-for-api-ml-services)
   - [JSON Web Token(JWT)](#json-web-tokenjwt)
   - [z/OSMF JSON Web Tokens Support](#zosmf-json-web-tokens-support)
+
 ## How API ML transport security works
 
 Security within the API Mediation Layer (API ML) is performed on several levels. This article describes how API ML uses Transport Layer Security (TLS). As a system administrator or API developer, use this guide to familiarize yourself with the following security concepts:
@@ -32,6 +33,18 @@ API ML uses the following authentication methods:
 
 - **TLS client certificates**
     - Certificates are used for service-only requests
+
+- **OIDC authentication**
+ 
+  API ML is now able to authenticate mainframe users with an external/distributed Identity Provider (IDP) implemented by an OIDC/OAuth2 provider, such as OKTA, KeyCloak and others.
+  Client applications can ask their users to log in at the authentication page of the OIDC provider, and then access APIs with the JWT Access Token that is provided by the external IDP. The following process outlines that basic flow:
+  - The client application intiates the OIDC authentication flow with the distributed OIDC provider.  
+  - The user provides credentials as required at the provider's authentication page/end-point.
+  - The client application obtains authorization in the form of code that is exchanged for access JWT token (or an Identity JWT and Refresh JWT).
+  - The client application passes the access JWT token to the API ML Gateway with subsequent requests for mainframe resources.
+  - API ML federates the user identities and calls the requested resource with appropriate mainframe user credentials.
+
+For more information, see the detailed explanation of the [OIDC authentication and Identity Federation](api-mediation-oidc-authentication.md)
 
 ### Zowe API ML services
 
@@ -138,6 +151,7 @@ You can find this private key under the alias `localhost`, in the PKCS12 keystor
 You can also use the `/gateway/api/v1/auth/keys/public` endpoint to obtain a public key that can be used to verify the signature of the JWT in standard [JWK format](https://openid.net/specs/).
 
 ## z/OSMF JSON Web Tokens Support
+
 
 Your z/OSMF instance can be enabled to support JWTs as described in [Enabling JSON Web Token support](https://www.ibm.com/support/knowledgecenter/SSLTBW_2.4.0/com.ibm.zos.v2r4.izua300/izuconfig_EnableJSONWebTokens.htm).
 In such cases, the Zowe API ML uses this JWT and does not generate its own Zowe JWT. All authentication APIs, such as `/gateway/api/v1/login` and `/gateway/api/v1/check` function in the same way as without z/OSMF JWT.

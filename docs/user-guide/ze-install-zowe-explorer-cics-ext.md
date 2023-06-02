@@ -1,4 +1,4 @@
-# Installing and uninstalling
+# Installing Zowe Explorer CICS Extension
 
 You can install or update the extension from Visual Studio Code Extensions or from a VSIX file.
 
