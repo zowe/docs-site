@@ -2,10 +2,6 @@
 
 Before you install Zowe using IBM z/OSMF, address the following installation and security requirements. Your systems programmers and security administrators can complete these tasks in parallel.
 
-* **Apply required maintenance for Common Components and Services for z/OS (CCS) Version 15.0 (SO12499)**  
-    * **Role**: Systems programmer
-    * The CCS PTF installs load module stubs for select IBM products into your installed CCS library hlq.ZWE0CALL. If you are prompted during installation for the data set name of a load library for an IBM product that is not installed, specify your installed hlq.ZWE0CALL data set name.  
-
 * **Configure z/OSMF**
     * **Role**: Systems programmer, security administrator, domain administrator
     * The IBM z/OS Management Facility Configuration Guide is your primary source of information about how to configure z/OSMF. You can open the IBM documentation in a separate browser tab for reference during installation of your products using z/OSMF Deployments. To prevent configuration errors and to enable z/OSMF Software Update for maintenance, apply all z/OSMF related maintenance before you begin the installation process.
