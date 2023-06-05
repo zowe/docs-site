@@ -33,7 +33,7 @@ jobs:
 
       - name: Deploy to Netlify
         id: deploy
-        if: ${{ steps.download-artifact.outputs.found_artifact }}
+        if: ${{ steps.download-artifact.outputs.found_artifact == 'true' }}
         uses: nwtgck/actions-netlify@v2
         with:
           publish-dir: build
@@ -47,7 +47,7 @@ jobs:
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
 
       - name: Comment on PR
-        if: ${{ steps.deploy.conclusion == 'success' }}
+        if: ${{ steps.deploy.outputs.deploy-url }}
         uses: marocchino/sticky-pull-request-comment@v2
         with:
           number: ${{ steps.find-pr.outputs.number }}
