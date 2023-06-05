@@ -1,4 +1,4 @@
-name: Netlify
+name: Build docs site
 
 on:
   push:
@@ -8,7 +8,6 @@ on:
 
 jobs:
   build:
-    name: Build and deploy
     runs-on: ubuntu-latest
     timeout-minutes: 60
 
@@ -24,8 +23,6 @@ jobs:
 
       - name: Checkout
         uses: actions/checkout@v3
-        with:
-          ref: ${{ github.event.pull_request.head.sha || github.sha }}
 
       - name: Use Node.js LTS
         uses: actions/setup-node@v3
@@ -46,6 +43,8 @@ jobs:
         run: npm run build
 
       - name: Deploy to Netlify
+        id: deploy
+        if: ${{ github.event_name == 'push' || github.event.pull_request.head.repo.full_name == github.repository }}
         uses: nwtgck/actions-netlify@v2
         with:
           publish-dir: build
@@ -58,3 +57,11 @@ jobs:
         env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+
+      - name: Upload Build Artifact
+        if: ${{ steps.deploy.conclusion == 'skipped' }}
+        uses: actions/upload-artifact@v3
+        with:
+          name: build-pr-${{ github.event.pull_request.number }}
+          path: build
+          retention-days: 1

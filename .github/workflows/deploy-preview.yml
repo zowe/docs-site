@@ -1,0 +1,55 @@
+name: Deploy to Netlify
+
+on:
+  workflow_run:
+    workflows: ["Build docs site"]
+    types: [completed]
+    branches-ignore:
+      - master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+
+    steps:
+      - name: Find Current PR
+        id: find-pr
+        uses: jwalton/gh-find-current-pr@v1
+        with:
+          state: open
+          sha: ${{ github.event.workflow_run.head_sha }}
+
+      - name: Download Build Artifact
+        id: download-artifact
+        if: ${{ steps.find-pr.outputs.number }}
+        uses: dawidd6/action-download-artifact@v2
+        with:
+          workflow: build-docs.yml
+          run_id: ${{ github.event.workflow_run.id }}
+          name: build-pr-${{ steps.find-pr.outputs.number }}
+          path: build
+          if_no_artifact_found: warn
+
+      - name: Deploy to Netlify
+        id: deploy
+        if: ${{ steps.download-artifact.outputs.found_artifact }}
+        uses: nwtgck/actions-netlify@v2
+        with:
+          publish-dir: build
+          production-deploy: false
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          deploy-message: "Deploy from GitHub Actions"
+          enable-pull-request-comment: false
+          enable-commit-comment: false
+        env:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+
+      - name: Comment on PR
+        if: ${{ steps.deploy.conclusion == 'success' }}
+        uses: marocchino/sticky-pull-request-comment@v2
+        with:
+          number: ${{ steps.find-pr.outputs.number }}
+          message: |
+            🚀 Deployed on ${{ steps.deploy.outputs.deploy-url }}
