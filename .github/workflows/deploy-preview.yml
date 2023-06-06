@@ -4,11 +4,10 @@ on:
   workflow_run:
     workflows: ["Build docs site"]
     types: [completed]
-    branches-ignore:
-      - master
 
 jobs:
-  build:
+  deploy:
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
     runs-on: ubuntu-latest
     timeout-minutes: 60
 
@@ -28,8 +27,11 @@ jobs:
           workflow: build-docs.yml
           run_id: ${{ github.event.workflow_run.id }}
           name: build-pr-${{ steps.find-pr.outputs.number }}
-          path: build
           if_no_artifact_found: warn
+
+      - name: Extract Build Archive
+        if: ${{ steps.download-artifact.outputs.found_artifact == 'true' }}
+        run: tar -xzf build.tar.gz && rm build.tar.gz
 
       - name: Deploy to Netlify
         id: deploy

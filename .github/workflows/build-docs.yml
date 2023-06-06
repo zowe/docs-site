@@ -58,10 +58,14 @@ jobs:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
 
+      - name: Compress Build Archive
+        if: ${{ steps.deploy.conclusion == 'skipped' }}
+        run: tar -czf build.tar.gz build
+
       - name: Upload Build Artifact
         if: ${{ steps.deploy.conclusion == 'skipped' }}
         uses: actions/upload-artifact@v3
         with:
           name: build-pr-${{ github.event.pull_request.number }}
-          path: build
+          path: build.tar.gz
           retention-days: 1
