@@ -41,7 +41,7 @@ zowe:
 ```
 
 **Note:**  
-Due to the limitation of RACDCERT command, the `importCertificateAuthorities` field can contain a maximum of two entries.
+Due to the limitation of the RACDCERT command, the `importCertificateAuthorities` field can contain a maximum of two entries.
 
 
 ### Manually import a certificate authority into a web browser
