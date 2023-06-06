@@ -2,7 +2,7 @@
 
 As a system administrator, review this article to learn about the key concepts of Zowe certificates, and options for certificate configuration. 
 
-Zowe uses a certificate to encrypt data for communication across secure sockets. The certificate used is specified in the `zowe.certificates` section of the `zowe.yaml` file. Certificates can be either be a `PKCS12` certificate held in a USS keystore `.p12` file, or a `JCERACKS` certificate held in a key ring.  
+Zowe uses a certificate to encrypt data for communication across secure sockets. The certificate used is specified in the `zowe.certificates` section of the `zowe.yaml` file. Certificates can either be a `PKCS12` certificate held in a USS keystore `.p12` file, or a `JCERACKS` certificate held in a key ring.  
 
 Zowe provides the ability to generate a certificate using the `zwe init certificate` command. Zowe can also be configured to use an existing certificate provided by the security team in a z/OS customer shop.
  
@@ -22,13 +22,13 @@ A proper setup of the trust store is mandatory to successfully start Zowe with `
 
 ## Keystore versus key ring
 
-Zowe supports certificates that are stored either in a USS directory **Java KeyStore** `.p12` format or, alternatively, the certificates are held in a **z/OS Keyring**. Use of a z/OS keystore is the recommended option for storing certificates if system programmers are already familiar with the certificate operation and usage. To set up a keystore and connect the keystore with certificates requires elevated permissions granted to the user ID. When the TSO user ID does not have authority to manipulate key rings in such cases as creating a Zowe sandbox environment or for testing purposes, USS keystores are a good alternative.
+Zowe supports certificates that are stored either in a USS directory **Java KeyStore** in the `.p12` format or, alternatively, the certificates are held in a **z/OS Keyring**. Use of a z/OS keystore is the recommended option for storing certificates if system programmers are already familiar with the certificate operation and usage. To set up a keystore and connect the keystore with certificates requires elevated permissions granted to the user ID. When the TSO user ID does not have authority to manipulate key rings in such cases as creating a Zowe sandbox environment or for testing purposes, USS keystores are a good alternative.
 
 ### PKCS12 certificates in a keystore
 
-Zowe is able to use PKCS12 certificates that are stored in USS. This certificate is used for encrypting TLS communication between Zowe clients and the Zowe z/OS servers, as well as intra z/OS Zowe server to Zowe server communication. Zowe uses a `keystore` directory to contain its external certificate, and a `truststore` directory to hold the public keys of servers which Zowe communicates with (for example z/OSMF).  
+Zowe is able to use PKCS12 certificates that are stored in USS. This certificate is used for encrypting TLS communication between Zowe clients and Zowe z/OS servers, as well as intra z/OS Zowe server to Zowe server communication. Zowe uses a `keystore` directory to contain its external certificate, and a `truststore` directory to hold the public keys of servers which Zowe communicates with (for example z/OSMF).  
 
-USS PKCS12 certificates are self signed and are therefore useful for proof of concept projects. For production usage of Zowe, it is recomended to work with certificates held in z/OS key rings. Working with z/OS key rings may require system administrator priviledges and working with your z/OS security team. A path for using self signed PKCS12 is provided to assist with configuring and launching test and scratch Zowe instances.
+USS PKCS12 certificates are self-signed and are therefore useful for proof of concept projects. For production usage of Zowe, it is recomended to work with certificates held in z/OS key rings. Working with z/OS key rings may require system administrator priviledges and working with your z/OS security team. A path for using self signed PKCS12 is provided to assist with configuring and launching test and scratch Zowe instances.
 
 ### JCERACFKS certificates in a key ring
 
