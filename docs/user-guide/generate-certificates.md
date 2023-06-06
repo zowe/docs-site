@@ -203,12 +203,13 @@ When the command is run, a customized JCL member name is created in the `CUST.JC
 #>
 ```
 **Notes:**  
-* As shown in the example, the job ends with code `0`. However, there may be failures in the individual steps. It is advised to check the job output. The security manager commands in the job are generated based on the value of `zowe.security.product`. Job steps for each product can be determined by the security manager.  
+* As shown in the example, the job ends with code `0`. There may, however, be failures in the individual steps. It is advised to check the job output. The security manager commands in the job are generated based on the value of `zowe.security.product`. Job steps for each product can be determined by the security manager.  
 
-* The runtime configuration section of `zowe.yaml` is updated to match the values to the generated keystore, certificate, and certificate authority as a result of the specification of the `--update-config` parameter. 
+* The runtime configuration section of `zowe.yaml` is updated to match the values in the generated keystore, certificate, and certificate authority resulting from the specification of the `--update-config` parameter. 
 
-* `zowe.certificate.keystore.password` has a hardcoded password field. However, if you are using `type: PKCS12`, the password field must be the real password.
+* `zowe.certificate.keystore.password` has a hardcoded password value. However, if you are using `type: PKCS12`, the password field must be the real password.
 
+**YAML example:**
 ```
 zowe:
   certificate:
@@ -227,6 +228,6 @@ zowe:
       certificateAuthorities: safkeyring://ZWESVUSR/ZoweKeyring&localca
 ```
 
-### Next step
+### Next steps after JCERACFKS setup
 
 For more information about how to use your JCERACFKS certificate, see [Use JCERACFKS certificates](./use-certificates#use-jceracfks-certificates).
