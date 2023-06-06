@@ -196,6 +196,7 @@ module.exports = {
           showLastUpdateTime: true,
           routeBasePath: "/",
           lastVersion: "current",
+          onlyIncludeVersions: undefined,
           versions: {
             current: {
               path: "stable",

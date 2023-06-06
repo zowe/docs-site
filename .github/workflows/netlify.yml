@@ -42,6 +42,22 @@ jobs:
       - name: Install Dependencies
         run: npm ci
 
+      - name: Find Changed Files
+        if: github.event_name == 'pull_request'
+        id: changed-files
+        uses: tj-actions/changed-files@v35
+        with:
+          files: |
+            versioned_docs/**/*
+            versioned_sidebars/*
+            versions.json
+            versionsArchived.json
+
+      - name: Decide Single Version Render
+        if: steps.changed-files.outputs.any_modified != 'true'
+        run: |
+          sed -i 's/onlyIncludeVersions: undefined/onlyIncludeVersions: \["current"\]/' docusaurus.config.js
+
       - name: Build with Docusaurus
         run: npm run build
 
