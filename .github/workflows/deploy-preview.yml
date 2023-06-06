@@ -12,26 +12,20 @@ jobs:
     timeout-minutes: 60
 
     steps:
-      - name: Find Current PR
-        id: find-pr
-        uses: jwalton/gh-find-current-pr@v1
-        with:
-          state: open
-          sha: ${{ github.event.workflow_run.head_sha }}
-
       - name: Download Build Artifact
         id: download-artifact
-        if: ${{ steps.find-pr.outputs.number }}
         uses: dawidd6/action-download-artifact@v2
         with:
           workflow: build-docs.yml
           run_id: ${{ github.event.workflow_run.id }}
-          name: build-pr-${{ steps.find-pr.outputs.number }}
+          name: preview-build
           if_no_artifact_found: warn
 
       - name: Extract Build Archive
         if: ${{ steps.download-artifact.outputs.found_artifact == 'true' }}
-        run: tar -xzf build.tar.gz && rm build.tar.gz
+        run: |
+          tar -xzf build.tar.gz && rm build.tar.gz
+          cat build/.env >> "$GITHUB_ENV" && rm build/.env
 
       - name: Deploy to Netlify
         id: deploy
@@ -52,6 +46,6 @@ jobs:
         if: ${{ steps.deploy.outputs.deploy-url }}
         uses: marocchino/sticky-pull-request-comment@v2
         with:
-          number: ${{ steps.find-pr.outputs.number }}
+          number: ${{ env.PR_NUMBER }}
           message: |
             🚀 Deployed on ${{ steps.deploy.outputs.deploy-url }}
