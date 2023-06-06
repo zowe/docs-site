@@ -24,7 +24,7 @@ jobs:
       - name: Extract Build Archive
         if: ${{ steps.download-artifact.outputs.found_artifact == 'true' }}
         run: |
-          tar -xzf build.tar.gz && rm build.tar.gz
+          tar -xf build.tar.zst && rm build.tar.zst
           cat build/.env >> "$GITHUB_ENV" && rm build/.env
 
       - name: Deploy to Netlify

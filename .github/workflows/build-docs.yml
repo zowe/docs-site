@@ -62,7 +62,7 @@ jobs:
         if: ${{ steps.deploy.conclusion == 'skipped' }}
         run: |
           echo "PR_NUMBER=${{ github.event.pull_request.number }}" > build/.env
-          tar -czf build.tar.gz build
+          tar --zstd -cf build.tar.zst build
 
       - name: Upload Build Artifact
         if: ${{ steps.deploy.conclusion == 'skipped' }}
