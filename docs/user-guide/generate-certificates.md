@@ -134,7 +134,7 @@ When using a self-signed certificate, you will be challenged by your browser whe
 
 For JCERACFKS certificate (z/OS keyring) users, customize the following parameters in the `zowe.yaml` file:
 
-<!-- - `zowe.setup.certificate.keyring.owner` is the keyring owner. It's optional and default value is `zowe.setup.security.users.zowe`. If it's also not defined, the default value is ZWESVUSR. Sam: didn't see "owner" in the yaml file. -->
+- `zowe.setup.certificate.keyring.owner` is the keyring owner. It's optional and default value is `zowe.setup.security.users.zowe`. If it's also not defined, the default value is ZWESVUSR.
 - `zowe.setup.certificate.keyring.name`  
  Specifies the keyring name to be created on z/OS. This is required if `zowe.setup.certificate.type` is `JCERACFKS`.
 
@@ -170,7 +170,8 @@ zowe:
         - 12.34.56.78
 ```
 
-**Notes:**  
+**Notes:** 
+
 - Alias names should be all lower cases.
 - The name and lables shown above are the default value in `zowe.yaml`.
 - `dname` for distinguished name is all optional.
@@ -203,6 +204,7 @@ When the command is run, a customized JCL member name is created in the `CUST.JC
 #>
 ```
 **Notes:**  
+
 * As shown in the example, the job ends with code `0`. However, there may be failures in the individual steps. It is advised to check the job output. The security manager commands in the job are generated based on the value of `zowe.security.product`. Job steps for each product can be determined by the security manager.  
 
 * The runtime configuration section of `zowe.yaml` is updated to match the values to the generated keystore, certificate, and certificate authority as a result of the specification of the `--update-config` parameter. 
