@@ -65,6 +65,19 @@ To log out, click the User icon in the lower right corner and click **Sign Out**
               `https://zowe.externalDomains[0]:zowe.externalPort/zlux/ui/v1/ZLUX/plugins/org.zowe.zlux.bootstrap/web/?pluginId=org.zowe.terminal.tn3270&showLogin=true`.
             2. If `showLogin = false` then you can access application directly without login.
 
+## Hotkeys
+
+The following hotkeys can be used in the Desktop to navigate or perform actions with only the keyboard.
+
+|Hot Key|Command|
+|---	|---	|
+|CTRL+ALT+M  |Open the Zowe launchbar menu. Use the UP/DOWN arrow keys to select an app, RIGHT arrow key to spawn context menu, ENTER to launch app, and ESC to close menu |
+|CTRL+ALT+UP  |Maximize active app. Press again to restore |
+|CTRL+ALT+DOWN  |Minimize active app. Press again to restore |
+|CTRL+ALT+"<"   	|Switch to next recently active app |
+|CTRL+ALT+">"   	|Switch to least recently active app |
+|CTRL+ALT+W   	|Close active app |
+
 ### Personalizing the Desktop
 
 1. Click the **Preferences icon** to open the Preferences panel.
