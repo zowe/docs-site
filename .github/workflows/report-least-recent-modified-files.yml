@@ -19,5 +19,5 @@ jobs:
         run: "cd docs; while read file; do echo $(git log --pretty=format:%ai -n 1 --date=raw -w --follow -- $file) $file; done < <(git ls-tree -r --name-only HEAD) | sort | head -n 500 > ../least-recent-files.txt"
       - uses: actions/upload-artifact@v3
         with:
-          name: last-recent-files.txt
+          name: least-recent-files.txt
           path: ./
