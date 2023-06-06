@@ -16,7 +16,7 @@ jobs:
       - name: 'Checkout primary branch'
         uses: actions/checkout@v2
       - name: Report and upload
-        run: "cd docs; while read file; do echo $(git log --pretty=format:%ai -n 1 --date=raw -w --follow -- $file) $file; done < <(git ls-tree -r --name-only HEAD) | sort | head -n 500 > ../least-recent-files.txt"
+        run: "cd docs; while read file; do echo $(git log --pretty=format:%ai -n 1 --date=raw -w --follow -- $file) $file; done < <(git ls-tree -r --name-only HEAD) | sort -r | head -n 500 > ../least-recent-files.txt"
       - uses: actions/upload-artifact@v3
         with:
           name: least-recent-files.txt
