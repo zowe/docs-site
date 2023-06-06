@@ -69,5 +69,5 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: preview-build
-          path: build.tar.gz
+          path: build.tar.zst
           retention-days: 1
