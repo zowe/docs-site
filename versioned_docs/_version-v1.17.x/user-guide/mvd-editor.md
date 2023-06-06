@@ -50,7 +50,7 @@ To create a new file, complete these steps:
 
 ## Hotkeys
 
-- Shift TAB: Cycle through the menu bar, browsing type, search bar, file tree, and editor component.  
+- TAB/Shift + TAB: Cycle through the menu bar, browsing type, search bar, file tree, and editor component.  
     - Individual options within the menu bar and individual nodes within the file tree can be navigated with the arrow keys and ENTER (to select).
 
 |Hot Key|Command|
