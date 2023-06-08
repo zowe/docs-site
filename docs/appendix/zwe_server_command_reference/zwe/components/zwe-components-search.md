@@ -31,7 +31,7 @@ Full name|Alias|Type|Required|Help message
 |---|---|---|---|---
 --component-name,--component|-o|string|no|Component name to search for.
 --component-id,--id|-d|string|no|Component id to search for.
---registry|-r|string|no|Specifies the registry to searh within instead of the default. The registry must be compatible with the manager used.
+--registry|-r|string|no|Specifies the registry to search within instead of the default. The registry must be compatible with the manager used.
 --handler||string|no|Specifies the registry handler name used with the package registry, instead of the default. The handler must be compatible with the registry used.
 
 ### Inherited from parent command
