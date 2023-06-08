@@ -1,13 +1,15 @@
 # Import and configure an existing certificate 
 
 Zowe makes it possible to import and configure existing certificates. The following certificates are supported by Zowe:
+
 * PKCS12 certificates
-* JCERACFKS certificates 
+* JCERACFKS certificates
 
 Review the procedure to import existing PKCS12 or JCERACFKS certificates as well as how to import a certificate stored in an MVS data set into a Zowe keyring.
+
 ## Import an existing PKCS12 certificate
 
-To import a PKCS12 certificate, it is first necessary to import a certificate authority. Then, you can configure the section `>>>> Certificate setup scenario 2` in `zowe.yaml`. 
+To import a PKCS12 certificate, it is first necessary to import a certificate authority. Then, you can configure the section `[# >>>> Certificate setup scenario 2](https://github.com/zowe/zowe-install-packaging/blob/60bc4b44ecd502fcec640fbb9e2874e9d56e826a/example-zowe.yaml#L142)` in `zowe.yaml`. 
 
 For PKCS12 certificate users, specify the following parameters in the `zowe.yaml` file:
 
@@ -30,8 +32,8 @@ zowe:
       pkcs12:
         directory: /var/zowe/keystore
         lock: true
-          name: localhost
-          password: password
+          name: localhost     # Optional, default value is localhost.
+          password: password  # Optional, default value is password.
         import:
           keystore: ""
           password: ""
@@ -58,64 +60,40 @@ The public certificate in [PEM format](https://en.wikipedia.org/wiki/Privacy-Enh
 **Note:**  
 Windows currently does not recognize the PEM format. For Windows, use the P12 version of the `local_cer`.
 
-**Follow these steps:**
+**Procedure:**
 
-1. Download the local CA certificate to your computer. Use one of the following methods to download the local CA certificate to your computer:
+Import the certificate to your root certificate store and trust it.
 
-    - **Use [Zowe CLI](https://github.com/zowe/zowe-cli#zowe-cli--) (Recommended)**  
-Issue the following command:
-
-        ```
-        zowe zos-files download uss-file --binary $KEYSTORE_DIRECTORY/local_ca/localca.cer
-        ```
-
-    - **Use `sftp`**  
-Issue the following command:
-
-        ```
-        sftp <system>
-        get $KEYSTORE_DIRECTORY/local_ca/localca.cer
-        ```
-
-    To verify that the file has been transferred correctly, open the file. The following heading and closing should appear:
+  - **For Windows**, run the following command:
 
     ```
-    -----BEGIN CERTIFICATE-----
-    ...
-    -----END CERTIFICATE-----
+    certutil -enterprise -f -v -AddStore "Root" localca.cer
     ```
 
-2. Import the certificate to your root certificate store and trust it.
+    **Note:** Ensure that you open the terminal as **administrator**. This operation installs the certificate to the Trusted Root Certification Authorities.
 
-    - **For Windows**, run the following command:
+  - **For macOS**, run the following command:  
+    
+    ```
+    $ sudo security add-trusted-cert -d -r trustRoot -k /Library/Keychains/System.keychain localca.cer
+    ```
 
-      ```
-      certutil -enterprise -f -v -AddStore "Root" localca.cer
-      ```
-
-      **Note:** Ensure that you open the terminal as **administrator**. This operation installs the certificate to the Trusted Root Certification Authorities.
-
-    - **For macOS**, run the following command:  
-      ```
-      $ sudo security add-trusted-cert -d -r trustRoot -k /Library/Keychains/System.keychain localca.cer
-      ```
-
-    - **For Firefox**, manually import your root certificate via the Firefox settings, or force Firefox to use the Windows truststore.
+  - **For Firefox**, manually import your root certificate via the Firefox settings, or force Firefox to use the Windows truststore.
     As a default, Firefox uses its own certificate truststore.
 
-        Create a new Javascript file firefox-windows-truststore.js at `C:\Program Files (x86)\Mozilla Firefox\defaults\pref` with the   following content:
+    Create a new Javascript file firefox-windows-truststore.js at `C:\Program Files (x86)\Mozilla Firefox\defaults\pref` with the   following content:
 
-      ```
-      /* Enable experimental Windows truststore support */
-      pref("security.enterprise_roots.enabled", true);
-      ```
+    ```
+    /* Enable experimental Windows truststore support */
+    pref("security.enterprise_roots.enabled", true);
+    ```
 
 **Tip:**  
 To avoid requiring each browser to trust the CA that signed the Zowe certificate, you can use a public certificate authority such as _Symantec_, _Comodo_, _Let's Encrypt_, or _GoDaddy_to create a certificate. These certificates are trusted by all browsers and most REST API clients. This option, however, requires a manual process to request a certificate and may incur a cost payable to the publicly trusted CA.
 
 ## Import an existing JCERACFKS certificate
 
-To import a JCERACFKS certificate, you need to configure the section `>>>> Certificate setup scenario 4` in `zowe.yaml`. To use a JCERACFKS certificate, specify the following parameters in the `zowe.yaml` file.
+To import a JCERACFKS certificate, you need to configure the section `[# >>>> Certificate setup scenario 4](https://github.com/zowe/zowe-install-packaging/blob/60bc4b44ecd502fcec640fbb9e2874e9d56e826a/example-zowe.yaml#L211)` in `zowe.yaml`. To use a JCERACFKS certificate, specify the following parameters in the `zowe.yaml` file.
 
 - `zowe.setup.certificate.keyring.connect.user`  
 This is a required parameter that specifies the owner of existing certificate. This field can have value of SITE or a user ID.
@@ -142,7 +120,7 @@ Due to the limitation of the RACDCERT command, the `importCertificateAuthorities
 
 ## Import a certificate stored in an MVS data set into a Zowe keyring
 
-To import a certificate that is stored in a data set into a key ring, configure the section `>>>> Certificate setup scenario 5` in `zowe.yaml`. To use a JCERACFKS certificate, specify the following parameters in the `zowe.yaml` file.
+To import a certificate that is stored in a data set into a key ring, configure the section `[# >>>> Certificate setup scenario 5](https://github.com/zowe/zowe-install-packaging/blob/60bc4b44ecd502fcec640fbb9e2874e9d56e826a/example-zowe.yaml#L235)` in `zowe.yaml`. To use a JCERACFKS certificate, specify the following parameters in the `zowe.yaml` file.
 
 - `zowe.setup.certificate.keyring.connect.dsName`  
 This is a required parameter which specifies the data set where the certificate stored.
@@ -159,7 +137,7 @@ zowe:
       type: JCERACFKS
       keyring:
         name: ZoweKeyring
-        label: localhost
+        label: localhost  # Optional, default value is localhost.
       import:
         dsName: ""
         password: ""

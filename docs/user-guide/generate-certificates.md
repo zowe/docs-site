@@ -11,6 +11,7 @@ Use the following procedure to configure zowe.yaml and create a self-signed PKCS
 
 1. [Configure the PKCS12 setup section in zowe.yaml](#configure-the-pkcs12-setup-section-in-zoweyaml)
 2. [Run the command to generate a PKCS12 certificate](#run-the-command-to-generate-a-pkcs12-certificate)
+
 ### Configure the PKCS12 setup section in zowe.yaml
 
 For PKCS12 certificate users, customize the following parameters in the `zowe.yaml` file:
@@ -18,12 +19,12 @@ For PKCS12 certificate users, customize the following parameters in the `zowe.ya
 - `zowe.setup.certificate.pkcs12.directory`  
 Specifies the directory where you plan to store the PKCS12 keystore and truststore. This is required if `zowe.setup.certificate.type` is PKCS12.
 - `zowe.setup.certificate.pkcs12.lock`  
- Is a boolean configuration to tell if we should lock the PKCS12 keystore directory only for Zowe runtime user and group. Default value is true.
+Is a boolean configuration to tell if we should lock the PKCS12 keystore directory only for Zowe runtime user and group. Default value is true.
 - `zowe.setup.certificate.pkcs12`  
 (Optional) Define name, password, caAlias and caPassword to customize the keystore and truststore. It is recommended to update these values from the default values.  
 **Note:** Alias names should be all in lower case.
-- `dname`  
- (Optional) Specifies the distinguished name. Domain names and IPs should be added into certificate SAN. If the field `san` is not defined, the `zwe init` command uses `zowe.externalDomains`. 
+- `dname` 
+(Optional) Specifies the distinguished name. Domain names and IPs should be added into certificate SAN. If the field `san` is not defined, the `zwe init` command uses `zowe.externalDomains`.
 
 
 **Example:**  
@@ -42,11 +43,11 @@ zowe:
       type: PKCS12
         directory: /var/zowe/keystore
         lock: true
-        name: localhost
-        password: password
-        caAlias: local_ca
-        caPassword: local_ca_password
-      dname:
+        name: localhost      # Optional, default value is localhost.
+        password: password   # Optional, default value is password.
+        caAlias: local_ca    # Optional, default value is local_ca.
+        caPassword: local_ca_password  # Optional, default value is local_ca_password.
+      dname:                # Distinguished name for Zowe generated certificates. All optional.
         caCommonName: ""
         commonName: ""
         orgUnit: ""
@@ -60,7 +61,7 @@ zowe:
         - 12.34.56.78
 ```
 
-To assist with updating `zowe.yaml`, the values to generate a self-signed PKCS12 certificate are included in the section beginning with`# >>>> Certificate setup scenario 1`. Other certificate scenarios lower down in the `zowe.yaml` file are commented out.
+To assist with updating `zowe.yaml`, the values to generate a self-signed PKCS12 certificate are included in the section beginning with`[# >>>> Certificate setup scenario 1](https://github.com/zowe/zowe-install-packaging/blob/60bc4b44ecd502fcec640fbb9e2874e9d56e826a/example-zowe.yaml#L97)`. Other certificate scenarios lower down in the `zowe.yaml` file are commented out.
 
 ### Run the command to generate a PKCS12 certificate
 
@@ -112,6 +113,8 @@ Values of the `zowe.certificates` section are updated with customization of `--u
 
 Open the `zowe.yaml` file to check the references to the newly generated certificate values, as shown in the following code snippet:
 
+**Example YAML:**
+
 ```
   certificate:
     keystore:
@@ -143,6 +146,7 @@ Use the following procedure to configure zowe.yaml and create a self-signed PKCS
 
 1. [Configure the JCERACFKS setup section in zowe.yaml](#configure-the-jceracfks-setup-section-in-zoweyaml)
 2. [Run the command to generate a JCERACFKS certificate](#run-the-command-to-generate-a-jceracfks-certificate)
+
 ### Configure the JCERACFKS setup section in zowe.yaml
 
 For JCERACFKS certificate (z/OS keyring) users, customize the following parameters in the `zowe.yaml` file:
@@ -166,10 +170,10 @@ zowe:
       type: JCERACFKS
       createZosmfTrust: true
       keyring:
-        name: ZoweKeyring
-        label: localhost
-        caLabel: localca
-      dname:
+        name: ZoweKeyring   
+        label: localhost   # Optional, default value is localhost.
+        caLabel: localca   # Optional, default value is localca.
+      dname:   # Distinguished name for Zowe generated certificates. All optional.
         caCommonName: ""
         commonName: ""
         orgUnit: ""
@@ -190,7 +194,7 @@ zowe:
 - `dname` for distinguished name is all optional.
 - Domain names and IPs should be added into certificate SAN. If the field `san` is not defined, the `zwe init` command will use `zowe.externalDomains`. The value for the `san` parameter presented in the example is for demonstration purposes.
 
-To assist with updating `zowe.yaml`, the values to generate a self-signed PKCS12 certificate are included in the section beginning with` # >>>> Certificate setup scenario 3`. Other certificate scenarios in the `zowe.yaml` file are commented out.
+To assist with updating `zowe.yaml`, the values to generate a self-signed PKCS12 certificate are included in the section beginning with`[# >>>> Certificate setup scenario 3](https://github.com/zowe/zowe-install-packaging/blob/60bc4b44ecd502fcec640fbb9e2874e9d56e826a/example-zowe.yaml#L175)`. Other certificate scenarios in the `zowe.yaml` file are commented out.
 
 ### Run the command to generate a JCERACFKS certificate
 
@@ -217,13 +221,14 @@ When the command is run, a customized JCL member name is created in the `CUST.JC
 #>
 ```
 **Notes:**  
+
 * As shown in the example, the job ends with code `0`. There may, however, be failures in the individual steps. It is advised to check the job output. The security manager commands in the job are generated based on the value of `zowe.security.product`. Job steps for each product can be determined by the security manager.  
 
 * The runtime configuration section of `zowe.yaml` is updated to match the values in the generated keystore, certificate, and certificate authority resulting from the specification of the `--update-config` parameter. 
 
-* `zowe.certificate.keystore.password` has a hardcoded password value. However, if you are using `type: PKCS12`, the password field must be the real password.
+* `zowe.certificate.keystore.password` has a hardcoded password value. However, if you are using `type: PKCS12`, the password field must be the real password. Open the `zowe.yaml` file to check the references to the newly generated certificate values, as shown in the following code snippet:
 
-**YAML example:**
+**Example YAML:**
 ```
 zowe:
   certificate:
