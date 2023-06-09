@@ -2,7 +2,7 @@
 
 As a system administrator, review this article to learn about the key concepts of Zowe certificates, and options for certificate configuration. 
 
-Zowe uses a certificate to encrypt data for communication across secure sockets. The certificate used is specified in the `zowe.certificates` section of the `zowe.yaml` file. Certificates can either be a `PKCS12` certificate held in a USS keystore `.p12` file, or a `JCERACKS` certificate held in a key ring.  
+Zowe uses digital certificates to verify the identity and subsequently establish an encrypted network connection between applications using the Secure Sockets Layer/Transport Layer Security (SSL/TLS) protocol. The certificate needs to be stored together with belonging private key either in the SAF key ring or in the `PKCS12` java keystore.
 
 Zowe provides the ability to generate a certificate using the `zwe init certificate` command. Zowe can also be configured to use an existing certificate provided by the security team in a z/OS customer shop.
  
@@ -26,9 +26,10 @@ Zowe supports certificates that are stored either in a USS directory **Java KeyS
 
 ### PKCS12 certificates in a keystore
 
-Zowe is able to use PKCS12 certificates that are stored in USS. This certificate is used for encrypting TLS communication between Zowe clients and Zowe z/OS servers, as well as intra z/OS Zowe server to Zowe server communication. Zowe uses a `keystore` directory to contain its external certificate, and a `truststore` directory to hold the public keys of servers which Zowe communicates with (for example z/OSMF).  
+<!-- Zowe is able to use PKCS12 certificates that are stored in USS. This certificate is used for encrypting TLS communication between Zowe clients and Zowe z/OS servers, as well as intra z/OS Zowe server to Zowe server communication. Zowe uses a `keystore` directory to contain its external certificate, and a `truststore` directory to hold the public keys of servers which Zowe communicates with (for example z/OSMF). -->
+By default, Zowe is reading PKCS12 keystore from `keystore` directory which can be located in zowe.yaml. This directory contains server certificate, Zowe generated certificate authority, and a `truststore` which holds intermediate certificates of servers that Zowe communicates with (for example z/OSMF).
 
-USS PKCS12 certificates are self-signed and are therefore useful for proof of concept projects. For production usage of Zowe, it is recomended to work with certificates held in z/OS key rings. Working with z/OS key rings may require system administrator priviledges and working with your z/OS security team. A path for using self signed PKCS12 is provided to assist with configuring and launching test and scratch Zowe instances.
+USS PKCS12 keystore is useful for proof-of-concept projects because it does not require special permissions to create and manage. For production usage of Zowe, it is recomended to work with certificates held in z/OS key rings. Working with z/OS key rings may require system administrator priviledges and working with your z/OS security team. 
 
 ### JCERACFKS certificates in a key ring
 
@@ -55,7 +56,7 @@ The `zwe init security` command takes its input from the `zowe.setup.security` s
 
 ## Extended key usage
 
-When a TLS certificate is used for encryption across a socket connection two enpoints are used: One endpoint for the client, and another endpoint for the server. This usage is restricted with the `Extended Key Usage` (EKU) attribute. Zowe can work with certificates that have no EKU. However if an EKU is specified, it must have both server and client usage. 
+When a TLS certificate is used for encryption across a socket connection two enpoints are used: One endpoint for the client, and another endpoint for the server. This usage is restricted with the `Extended Key Usage` (EKU) attribute. Zowe is using the same certificate for server and client authentication and so it is required that this certificate is valid for both. Certificate extension Extended Key Usage (EKU) is not required, however, if an EKU is specified, it must have both server and client usage. Otherwise, a connection will be refused.
 
 **Note:**  
  A problem can occur when z/OS certificates are configured to explicitly act only as a server for northbound certificates with a `TLS Web Server Authentication (1.3.6.1.5.5.7.3.1)` OID. As Zowe's micro services authenticate to the API Catalog on USS using TLS, the certificate needs to be valid as a southbound client certificate. To maintain server northbound functionality as well as validation as a southbound certificate, ensure that the certificate contains the `TLS Web Client Authentication (1.3.6.1.5.5.7.3.2)` value in the Extended Key Usage section.
