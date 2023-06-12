@@ -118,7 +118,7 @@ zowe:
 **Note:**  
 Due to the limitation of the RACDCERT command, the `importCertificateAuthorities` field can contain a maximum of two entries.
 
-## Import a certificate stored in an MVS data set into a Zowe keyring
+## Import a certificate stored in an MVS data set into a Zowe key ring
 
 To import a certificate that is stored in a data set into a key ring, configure the section `[# >>>> Certificate setup scenario 5](https://github.com/zowe/zowe-install-packaging/blob/60bc4b44ecd502fcec640fbb9e2874e9d56e826a/example-zowe.yaml#L235)` in `zowe.yaml`. To use a JCERACFKS certificate, specify the following parameters in the `zowe.yaml` file.
 
