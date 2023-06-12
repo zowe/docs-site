@@ -29,7 +29,7 @@ Zowe supports certificates that are stored either in a USS directory **Java KeyS
 <!-- Zowe is able to use PKCS12 certificates that are stored in USS. This certificate is used for encrypting TLS communication between Zowe clients and Zowe z/OS servers, as well as intra z/OS Zowe server to Zowe server communication. Zowe uses a `keystore` directory to contain its external certificate, and a `truststore` directory to hold the public keys of servers which Zowe communicates with (for example z/OSMF). -->
 By default, Zowe is reading PKCS12 keystore from `keystore` directory which can be located in zowe.yaml. This directory contains server certificate, Zowe generated certificate authority, and a `truststore` which holds intermediate certificates of servers that Zowe communicates with (for example z/OSMF).
 
-USS PKCS12 keystore is useful for proof-of-concept projects because it does not require special permissions to create and manage. For production usage of Zowe, it is recomended to work with certificates held in z/OS key rings. Working with z/OS key rings may require system administrator priviledges and working with your z/OS security team. 
+USS PKCS12 keystore is valid for proof-of-concept projects because it does not require special permissions to create and manage. For production usage of Zowe, it is recommended to work with certificates held in z/OS key rings. Configuring z/OS key rings may require security administrator privileges and work with your z/OS security team. 
 
 ### JCERACFKS certificates in a key ring
 
