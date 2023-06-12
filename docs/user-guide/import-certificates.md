@@ -9,7 +9,7 @@ Review the procedure to import existing PKCS12 or JCERACFKS certificates as well
 
 ## Import an existing PKCS12 certificate
 
-To import a PKCS12 certificate, it is first necessary to import a certificate authority. Then, you can configure the section `[# >>>> Certificate setup scenario 2](https://github.com/zowe/zowe-install-packaging/blob/60bc4b44ecd502fcec640fbb9e2874e9d56e826a/example-zowe.yaml#L142)` in `zowe.yaml`. 
+To import a PKCS12 certificate, it is first necessary to [import a certificate authority](#manually-import-a-certificate-authority-into-a-web-browser). Then, you can configure the section `[# >>>> Certificate setup scenario 2](https://github.com/zowe/zowe-install-packaging/blob/60bc4b44ecd502fcec640fbb9e2874e9d56e826a/example-zowe.yaml#L142)` in `zowe.yaml`. 
 
 For PKCS12 certificate users, specify the following parameters in the `zowe.yaml` file:
 

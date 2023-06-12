@@ -22,7 +22,8 @@ A proper setup of the trust store is mandatory to successfully start Zowe with `
 
 ## Keystore versus key ring
 
-Zowe supports certificates that are stored either in a USS directory **Java KeyStore** in the `.p12` format or, alternatively, the certificates are held in a **z/OS Keyring**. Use of a z/OS keystore is the recommended option for storing certificates if system programmers are already familiar with the certificate operation and usage. To set up a keystore and connect the keystore with certificates requires elevated permissions granted to the user ID. When the TSO user ID does not have authority to manipulate key rings in such cases as creating a Zowe sandbox environment or for testing purposes, USS keystores are a good alternative.
+Zowe supports certificates that are stored either in a USS directory **Java KeyStore** in the `.p12` format or, alternatively, the certificates are held in a **z/OS Key ring**. Use of a z/OS keystore is the recommended option for storing certificates if system programmers are already familiar with the certificate operation and usage.
+Creating a key ring and connecting the certificate key pair requires elevated permissions. When the TSO user ID does not have the authority to manipulate key rings and users want to create a Zowe sandbox environment or for testing purposes, then the USS keystore is a good alternative.
 
 ### PKCS12 certificates in a keystore
 
@@ -35,7 +36,7 @@ USS PKCS12 keystore is valid for proof-of-concept projects because it does not r
 
 Zowe is able to work with certificates held in a **z/OS Key ring**.  
 
-The JCL member `.SZWESAMP(ZWEKRING)` contains the security commands to create a key ring named `ZoweKeyring` as well as manage the certificate and certificate authority (CA) used by Zowe's servers to encrypt TLS communications. The JCL contains commands for three z/OS security managers: RACF, TopSecret, and ACF/2.
+The JCL member `.SZWESAMP(ZWEKRING)` contains the security commands to create a SAF key ring. By default, this keyring is named `ZoweKeyring`. You can use these commands to generate Zowe certificate authority (CA) and sign a server certificate with this CA. The JCL contains commands for three z/OS security managers: RACF, TopSecret, and ACF/2.
 
 There are two ways to configure and submit `ZWEKRING`.
 

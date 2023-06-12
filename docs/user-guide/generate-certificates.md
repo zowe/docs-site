@@ -43,6 +43,7 @@ zowe:
   setup:
     certificate:
       type: PKCS12
+      pkcs12:
         directory: /var/zowe/keystore
         lock: true
         name: localhost      # Optional, default value is localhost.
