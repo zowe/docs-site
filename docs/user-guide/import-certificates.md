@@ -5,7 +5,7 @@ Zowe makes it possible to import and configure existing certificates. The follow
 * PKCS12 certificates
 * JCERACFKS certificates
 
-Review the procedure to import existing PKCS12 or JCERACFKS certificates as well as how to import a certificate stored in an MVS data set into a Zowe keyring.
+Review the procedure to import existing PKCS12 or JCERACFKS certificates as well as how to import a certificate stored in an MVS data set into a Zowe key ring.
 
 ## Import an existing PKCS12 certificate
 
