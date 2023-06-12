@@ -12,7 +12,7 @@ In addition to the use of the intra-address space of certificates, Zowe also use
 
 ### Disable trust store validation of certificates
 
-To disable the trust store validation of southbound certificates, set the value `zowe.verifyCertificates: DISABLED` in the `zowe.yaml` configuration file. A scenario when this is recommended is if the z/OSMF certificate is self-signed or uses an untrusted CA. In this case, Zowe API Mediation Layer does not recognize the signing authority.  
+To disable the trust store validation of southbound certificates, set the value `zowe.verifyCertificates: DISABLED` in the `zowe.yaml` configuration file.  A scenario when this is recommended is if the z/OSMF certificate is be self-signed or uses an untrusted CA. In this case, Zowe API Mediation Layer does not recognize the signing authority.  
 
 ### Enable certificate validation without hostname validation
 
@@ -73,3 +73,4 @@ If you do not have an existing certificate, you need to create one. See instruct
 When your certificate is in the keystore or key ring, it is ready for use. For more information, see instructions in [Use certificates](./use-certificates.md).
 
 If you run into any error when configuring certificates, see [Troubleshooting guide for certificate configuring](placeholder).
+

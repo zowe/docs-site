@@ -7,7 +7,8 @@
 <link rel="stylesheet" href="../css/docs.css">
 <article class="markdown-body">
 <h2><a href="zowe.html">zowe</a> › <a href="zowe_dbm-db2.html">dbm-db2</a> › <a href="zowe_dbm-db2_execute.html">execute</a> › <a href="zowe_dbm-db2_execute_script.html">script</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
-<p>Execute a Batch Processor script on a target subsystem. For example, use this command to execute a Batch Processor script or specifically to execute a recovery script to undo changes that were made by the 'zowe dbm-db2 execute compare-script' command. If execution of the script fails, you can execute it again using the 'script-section' or 'restart' options. You can edit the script and make changes before you execute or restart it.</p>
+<p>Execute a Batch Processor script on a target subsystem. For example, use this command to execute a Batch Processor script or specifically to execute a recovery script to undo changes that were made by the 'zowe dbm execute compare-script' command. If execution of the script fails, you can execute it again using the 'script-section' or 'restart' options. You can edit the script and make changes before you execute or restart it.</p>
+<p>For details about command usage for automation, see DBM-Db2 samples at <a href="https://github.com/BroadcomMFD/dbm-db2-for-zowe-cli">https://github.com/BroadcomMFD/dbm-db2-for-zowe-cli</a></p>
 <h4>Usage</h4>
 <p>zowe dbm-db2 execute script &lt;local-input-bp-script-filename&gt; [options]</p>
 <h4>Positional Arguments</h4>
@@ -15,7 +16,7 @@
 <li>
 <p><code>local-input-bp-script-filename</code>		 <em>(string)</em></p>
 <ul>
-<li>Specifies the local input file that contains the Batch Processor statements such as the recovery script that was created by executing the 'zowe dbm-db2 execute compare-script' command.</li>
+<li>Specifies the local input file that contains the Batch Processor statements such as the recovery script that was created by executing the 'zowe dbm execute compare-script' command.</li>
 </ul>
 </li>
 </ul>
@@ -186,7 +187,7 @@
 </ul>
 </li>
 <li>
-<p>Restart execution of a script at the location specified in the token. The restart token is returned by a previous 'zowe dbm-db2 execute command' failure as part of the terminal output and in the error file:</p>
+<p>Restart execution of a script at the location specified in the token. The restart token is returned by a previous 'zowe dbm execute command' failure as part of the terminal output and in the error file:</p>
 <ul>
 <li><code>zowe dbm-db2 execute script script001.txt ––restart 78A724A48DA5185D06FD140F6780D6FA</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe dbm-db2 execute script script001.txt ––restart 78A724A48DA5185D06FD140F6780D6FA">Copy</button></li>
 </ul>

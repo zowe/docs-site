@@ -10,7 +10,7 @@ Check out the following FAQs to learn more about the purpose and function of Zow
 
 ### What is Zowe?
 
-<details class="zowe-faq">
+<details className="zowe-faq">
 
 <summary></summary>
 
@@ -20,7 +20,7 @@ Zowe is an open source project within the [Open Mainframe Project](https://www.o
 
 ### Who is the target audience for using Zowe?
 
-<details class="zowe-faq">
+<details className="zowe-faq">
 
 <summary></summary>
 
@@ -30,7 +30,7 @@ Zowe technology can be used by a variety of mainframe IT and non-IT professional
 
 ### What language is Zowe written in?
 
-<details class="zowe-faq">
+<details className="zowe-faq">
 
 <summary></summary>
 
@@ -40,7 +40,7 @@ Zowe consists of several components. The primary languages are Java and JavaScri
 
 ### What is the licensing for Zowe?
 
-<details class="zowe-faq">
+<details className="zowe-faq">
 
 <summary></summary>
 
@@ -52,7 +52,7 @@ In the simplest terms (taken from the FAQs above) - "...if you have modified EPL
 
 ### Why is Zowe licensed using EPL2.0?
 
-<details class="zowe-faq">
+<details className="zowe-faq">
 
 <summary></summary>
 
@@ -63,7 +63,7 @@ The Open Mainframe Project wants to encourage adoption and innovation, and also 
 
 ### What are some examples of how Zowe technology might be used by z/OS products and applications?
 
-<details class="zowe-faq">
+<details className="zowe-faq">
 
 <summary></summary>
 
@@ -78,7 +78,7 @@ The increased capabilities of RESTful APIs on z/OS allows APIs to be used in pro
 
 ### What is the best way to get started with Zowe?
 
-<details class="zowe-faq">
+<details className="zowe-faq">
 
 <summary></summary>
 
@@ -93,7 +93,7 @@ To get up and running with the Zowe CLI component quickly, see [Zowe CLI quick s
 
 ### What are the prerequisites for Zowe?
 
-<details class="zowe-faq">
+<details className="zowe-faq">
 
 <summary></summary>
 
@@ -105,7 +105,7 @@ Prerequisites vary by component used, but in most cases the primary prerequisite
 
 <Badge text="Technical Preview"/>
 
-<details class="zowe-faq">
+<details className="zowe-faq">
 
 <summary></summary>
 
@@ -122,7 +122,7 @@ Configurating components with Docker is similar to the procedures you would foll
 
 <Badge text="Technical Preview"/>
 
-<details class="zowe-faq">
+<details className="zowe-faq">
 
 <summary></summary>
 
@@ -134,7 +134,7 @@ If you are interested in improvements such as this one, please be sure to expres
 
 ### Does ZOWE support z/OS ZIIP processors?
 
-<details class="zowe-faq">
+<details className="zowe-faq">
 
 <summary></summary>
 
@@ -146,7 +146,7 @@ This leaves C and NodeJS code which are not ZIIP enabled, BUT, we have a [tech p
 
 ### How is access security managed on z/OS?
 
-<details class="zowe-faq">
+<details className="zowe-faq">
 
 <summary></summary>
 
@@ -157,7 +157,7 @@ Zowe components use typical z/OS System authorization facility (SAF) calls for s
 
 ### How is access to the Zowe open source managed?
 
-<details class="zowe-faq">
+<details className="zowe-faq">
 
 <summary></summary>
 
@@ -168,7 +168,7 @@ The source code for Zowe is maintained on an Open Mainframe Project GitHub serve
 
 ### How do I get involved in the open source development?
 
-<details class="zowe-faq">
+<details className="zowe-faq">
 
 <summary></summary>
 
@@ -183,7 +183,7 @@ For information and tutorials about extending Zowe with a new plug-in or applica
 
 ### When will Zowe be completed?
 
-<details class="zowe-faq">
+<details className="zowe-faq">
 
 <summary></summary>
 
@@ -194,7 +194,7 @@ Zowe will continue to evolve in the coming years based on new ideas and new cont
 
 ### Can I try Zowe without a z/OS instance?
 
-<details class="zowe-faq">
+<details className="zowe-faq">
 
 <summary></summary>
 
@@ -211,7 +211,7 @@ Zowe is also compatible with IBM z/OSMF Lite for non-production use. For more in
 
 ### Why might I use Zowe CLI versus a traditional ISPF interface to perform mainframe tasks?
 
-<details class="zowe-faq">
+<details className="zowe-faq">
 
 <summary></summary>
 
@@ -222,7 +222,7 @@ For developers new to the mainframe, command-line interfaces might be more famil
 
 ### With what tools is Zowe CLI compatible?
 
-<details class="zowe-faq">
+<details className="zowe-faq">
 
 <summary></summary>
 
@@ -232,7 +232,7 @@ Zowe CLI is very flexible; developers can integrate with modern tools that work 
 
 ### Where can I use the CLI?
 
-<details class="zowe-faq">
+<details className="zowe-faq">
 
 <summary></summary>
 
@@ -247,7 +247,7 @@ Zowe CLI is very flexible; developers can integrate with modern tools that work 
 
 ### Which method should I use to install Zowe CLI?
 
-<details class="zowe-faq">
+<details className="zowe-faq">
 
 <summary></summary>
 
@@ -262,7 +262,7 @@ You can install Zowe CLI using the following methods:
 
 ### How can I get Zowe CLI to run faster?
 
-<details class="zowe-faq">
+<details className="zowe-faq">
 
 <summary></summary>
 
@@ -272,7 +272,7 @@ You can install Zowe CLI using the following methods:
 
 ### How can I manage profiles for my projects and teams?
 
-<details class="zowe-faq">
+<details className="zowe-faq">
 
 <summary></summary>
 
@@ -282,7 +282,7 @@ You can install Zowe CLI using the following methods:
 
 ### How can I get help with using Zowe CLI?
 
-<details class="zowe-faq">
+<details className="zowe-faq">
 
 <summary></summary>
 
@@ -294,7 +294,7 @@ You can install Zowe CLI using the following methods:
 
 ### How can I use Zowe CLI to automate mainframe actions?
 
-<details class="zowe-faq">
+<details className="zowe-faq">
 
 <summary></summary>
 
@@ -306,7 +306,7 @@ You can install Zowe CLI using the following methods:
 
 ### How can I contribute to Zowe CLI?
 
-<details class="zowe-faq">
+<details className="zowe-faq">
 
 <summary></summary>
 
@@ -326,7 +326,7 @@ As a developer, you can extend Zowe CLI in the following ways:
 
 ### Why might I use Zowe Explorer versus a traditional ISPF interface to perform mainframe tasks?
 
-<details class="zowe-faq">
+<details className="zowe-faq">
 
 <summary></summary>
 
@@ -336,7 +336,7 @@ The Zowe Explorer VSCode extension provides developers new to the mainframe with
 
 ### How can I get started with Zowe Explorer?
 
-<details class="zowe-faq">
+<details className="zowe-faq">
 
 <summary></summary>
 
@@ -362,17 +362,17 @@ You can also watch [Getting Started with Zowe Explorer](https://www.youtube.com/
 
 ### Where can I use Zowe Explorer?
 
-<details class="zowe-faq">
+<details className="zowe-faq">
 
 <summary></summary>
 
-You can use Zowe Explorer either in [VSCode](https://marketplace.visualstudio.com/items?itemName=Zowe.vscode-extension-for-zowe) or in Theia. For more information about Zowe Explorer in Theia, see [the Theia Readme](https://github.com/zowe/vscode-extension-for-zowe/blob/main/docs/README-Theia.md).
+You can use Zowe Explorer either in [VSCode](https://marketplace.visualstudio.com/items?itemName=Zowe.vscode-extension-for-zowe) or in Theia. For more information about Zowe Explorer in Theia, see [Developing for Theia](https://github.com/zowe/vscode-extension-for-zowe/wiki/Developing-for-Theia).
 
 </details>
 
 ### How do I get help with using Zowe Explorer?
 
-<details class="zowe-faq">
+<details className="zowe-faq">
 
 <summary></summary>
 
@@ -383,7 +383,7 @@ You can use Zowe Explorer either in [VSCode](https://marketplace.visualstudio.co
 
 ### How can I use Secure Credential Storage for Zowe Explorer?
 
-<details class="zowe-faq">
+<details className="zowe-faq">
 
 <summary></summary>
 
@@ -395,7 +395,7 @@ Secure credential storage functionality is now contained in the Zowe CLI core ap
 
 ### What types of profiles can I create for Zowe Explorer?
 
-<details class="zowe-faq">
+<details className="zowe-faq">
 
 <summary></summary>
 
@@ -405,7 +405,7 @@ Zowe Explorer V2 supports using Service Profiles, Base Profiles, and Team Profil
 
 ### How can I use FTP as my back-end service for Zowe Explorer?
 
-<details class="zowe-faq">
+<details className="zowe-faq">
 
 <summary></summary>
 
@@ -415,7 +415,7 @@ See the [Zowe FTP extension README](https://github.com/zowe/zowe-explorer-ftp-ex
 
 ### How can I contribute to Zowe Explorer? 
 
-<details class="zowe-faq">
+<details className="zowe-faq">
 
 <summary></summary>
 
@@ -427,7 +427,7 @@ As a developer, you may contribute to Zowe Explorer in the following ways:
 
 - Fix bugs in Zowe Explorer, submit enhancement requests via GitHub issues, and raise your ideas with the community in Slack.
 
-   Note: For more information, see [Extending Zowe Explorer](https://github.com/zowe/vscode-extension-for-zowe/blob/main/docs/README-Extending.md).
+   Note: For more information, see [Extending Zowe Explorer](https://github.com/zowe/vscode-extension-for-zowe/wiki/Extending-Zowe-Explorer).
 
 </details>
 
@@ -435,7 +435,7 @@ As a developer, you may contribute to Zowe Explorer in the following ways:
 
 ### Why might I use Zowe IntelliJ plug-in versus a traditional ISPF interface to perform mainframe tasks?
 
-<details class="zowe-faq">
+<details className="zowe-faq">
 
 <summary></summary>
 
@@ -445,7 +445,7 @@ Zowe IntelliJ plug-in allows you to access and work with data sets, members and 
 
 ### How can I get started with Zowe IntelliJ plug-in?
 
-<details class="zowe-faq">
+<details className="zowe-faq">
 
 <summary></summary>
 
@@ -455,7 +455,7 @@ Install the plug-in in your IntelliJ-based IDE directly from marketplace or down
 
 ### Where can I use Zowe IntelliJ plug-in?
 
-<details class="zowe-faq">
+<details className="zowe-faq">
 
 <summary></summary>
 
@@ -465,7 +465,7 @@ You can use it in any IntelliJ-based IDE.
 
 ### How do I get help with using Zowe IntelliJ plug-in?
 
-<details class="zowe-faq">
+<details className="zowe-faq">
 
 <summary></summary>
 
@@ -475,7 +475,7 @@ You can read detailed user guide and find any information you need [here](https:
 
 ### How can I create, edit and delete z/OSMF connection?
 
-<details class="zowe-faq">
+<details className="zowe-faq">
 
 <summary></summary>
 
@@ -485,7 +485,7 @@ To create a connection, expand plug-in panel on an IDE sidebar (on the right sid
 
 ### How can I contribute to Zowe IntelliJ plug-in?
 
-<details class="zowe-faq">
+<details className="zowe-faq">
 
 <summary></summary>
 
