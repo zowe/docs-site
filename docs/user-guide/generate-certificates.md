@@ -151,7 +151,7 @@ Use the following procedure to configure zowe.yaml:
 
 ### Configure the JCERACFKS setup section in zowe.yaml
 
-For JCERACFKS certificate (z/OS keyring) users, customize the following parameters in the `zowe.yaml` file:
+For JCERACFKS certificate (z/OS key ring) users, customize the following parameters in the `zowe.yaml` file:
 
 - `zowe.setup.certificate.keyring.owner` is the keyring owner. It's optional and default value is `zowe.setup.security.users.zowe`. If it's also not defined, the default value is ZWESVUSR.
 - `zowe.setup.certificate.keyring.name`  
