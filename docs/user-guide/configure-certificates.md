@@ -33,7 +33,7 @@ USS PKCS12 keystore is valid for proof-of-concept projects because it does not r
 
 ### JCERACFKS certificates in a key ring
 
-Zowe is able to work with certificates held in a **z/OS Keyring**.  
+Zowe is able to work with certificates held in a **z/OS Key ring**.  
 
 The JCL member `.SZWESAMP(ZWEKRING)` contains the security commands to create a key ring named `ZoweKeyring` as well as manage the certificate and certificate authority (CA) used by Zowe's servers to encrypt TLS communications. The JCL contains commands for three z/OS security managers: RACF, TopSecret, and ACF/2.
 
