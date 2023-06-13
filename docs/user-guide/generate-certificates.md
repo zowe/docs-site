@@ -1,21 +1,6 @@
 # Generate a certificate if you don't have a certificate
 
-<<<<<<<< HEAD:docs/user-guide/generate-certificates.md
 ## Create a self-signed PKCS12 certificate 
-========
-Zowe is able to use PKCS12 certificates that are stored in USS.  This certificate is used for encrypting TLS communication between Zowe clients and the Zowe z/OS servers, as well as intra z/OS Zowe server to Zowe server.  Zowe uses a `keystore` directory to contain its external certificate, and a `truststore` directory to hold the public keys of servers it communicate with (for example z/OSMF).  
-
-Using USS PKCS12 certificates is useful for proof of concept projects using a self signed certificates.  For production usage of Zowe it is recomended to work with certificates held in z/OS keyrings.  Working with z/OS keyrings may require system administrator priviledges and working with your z/OS security team, so the self signed PKCS12 path is provided to assist with configuring and launching test and scratch Zowe instances.  
-
-## Use a PKCS12 certificate
-
-When Zowe is launched details for the PKCS12 certificate used are specified in the `zowe.yaml` section `certificates`.  This contains information for the certificate name and its location, together with the truststore location.  
-
-The two most common scenario for using a PKCS12 certtificate are where you have been given an existing certificate and wish to configure Zowe to use it, or else you do not have a certificate and wish to generate a new one.  The `zwe init certificate` command supports both scenarios.  The input parameters that control certificate configuration
-are specified in the section `zowe.setup.certificates`
-
-## Create a self signed PKCS12 certificate
->>>>>>>> master:versioned_docs/version-v2.7.x/user-guide/configure-certificates-keystore.md
 
 The following `zowe.yaml` example will generate: 
 
@@ -110,11 +95,7 @@ When using a self-signed certificate, you will be challenged by your browser whe
 
 ## Create a self signed JCERACFKS certificate
 
-<<<<<<<< HEAD:docs/user-guide/generate-certificates.md
 The following `zowe.yaml` example will generate:
-========
-To avoid the browser untrusted CA challenge, you can import Zowe's certificates into the browser to avoid untrusted network traffic challenges. For more information, see [Import the local CA certificate to your browser](../extend/extend-apiml/certificate-management-in-zowe-apiml.md/#import-the-local-ca-certificate-to-your-browser).
->>>>>>>> master:versioned_docs/version-v2.7.x/user-guide/configure-certificates-keystore.md
 
  - A `JCERACFKS` certificate, specified in `zowe.setup.certificate.type` 
  - A keyring named `ZoweKeyring` specified in  `zowe.setup.certificate.keyring.name`. 
@@ -151,7 +132,6 @@ When the command is run, a customized JCL member name in created the `CUST.JCLLI
 -------------------------------------------------------------------------------
 >> Generate Zowe certificate in keyring
 
-<<<<<<<< HEAD:docs/user-guide/generate-certificates.md
 >>>> Modify ZWEKRING
     - IBMUSER.ZWEV2.CUST.JCLLIB(ZW101431) is prepared
 >>>> Submit IBMUSER.ZWEV2.CUST.JCLLIB(ZW101431)
@@ -187,7 +167,3 @@ zowe:
       certificate:
       certificateAuthorities: safkeyring://ZWESVUSR/ZoweKeyring&localca
 ```
-========
-**TODO**
--->
->>>>>>>> master:versioned_docs/version-v2.7.x/user-guide/configure-certificates-keystore.md
