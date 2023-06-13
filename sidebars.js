@@ -482,8 +482,8 @@ module.exports = {
                   type: "category",
                   label: "Zowe Explorer CICS Extension",
                   items: [
-                    "user-guide/ze-using-zowe-explorer-cics-ext",
                     "user-guide/ze-install-zowe-explorer-cics-ext",
+                    "user-guide/ze-using-zowe-explorer-cics-ext",
                     "user-guide/ze-create-zowe-explorer-cics-ext-profiles",
                     "user-guide/ze-use-cics-resources",
                     "user-guide/ze-override-tls-certs",
@@ -617,6 +617,7 @@ module.exports = {
           items: [
             "extend/extend-cli/cli-devTutorials",
             "extend/extend-cli/cli-setting-up",
+            "extend/extend-cli/cli-creating-plug-in-lifecycle-actions",
             "extend/extend-cli/cli-installing-sample-plugin",
             "extend/extend-cli/cli-extending-a-plugin",
             "extend/extend-cli/cli-developing-a-plugin",

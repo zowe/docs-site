@@ -82,17 +82,17 @@ Note: `zowe.certificate.keystore.password` has a hardcoded password field. Howev
 zowe:
   certificate:
     keystore:
-      alias: localhost
-      password: 'password'
-      file: safkeyring://ZWESVUSR/ZoweKeyring
       type: JCERACFKS
+      file: safkeyring://ZWESVUSR/ZoweKeyring
+      password: 'password'
+      alias: localhost
     truststore:
       type: JCERACFKS
       file: safkeyring://ZWESVUSR/ZoweKeyring
-      password:
+      password: "password"
     pem:
       key:
       certificate:
-      certificateAuthorities: safkeyring://ZWESVUSR/ZoweKeyring&localca
+      certificateAuthorities: safkeyring:////ZWESVUSR/ZoweKeyring&localca
 ```
 

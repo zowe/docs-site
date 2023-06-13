@@ -17,9 +17,15 @@ As an application developer, you can use Zowe CLI Plug-in for IBM DB2 Database t
 
 For detailed documentation on commands, actions, and options available in this plug-in, see our Web Help. It is available for download in three formats: a PDF document, an interactive online version, and a ZIP file containing the HTML for the online version.
 
+<<<<<<<< HEAD:versioned_docs/version-v2.8.x/user-guide/cli-db2plugin.md
 - <a href="/v2.8.x/web_help/index.html" target="_blank">Browse Online</a>
 - <a href="/v2.8.x/zowe_web_help.zip" target="_blank">Download (ZIP)</a>
 - <a href="/v2.8.x/CLIReference_Zowe.pdf" target="_blank">Download (PDF)</a>
+========
+- <a href="/v2.7.x/web_help/index.html" target="_blank">Browse Online</a>
+- <a href="/v2.7.x/zowe_web_help.zip" target="_blank">Download (ZIP)</a>
+- <a href="/v2.7.x/CLIReference_Zowe.pdf" target="_blank">Download (PDF)</a>
+>>>>>>>> master:versioned_docs/version-v2.7.x/user-guide/cli-db2plugin.md
 
 ## Software requirements
 
