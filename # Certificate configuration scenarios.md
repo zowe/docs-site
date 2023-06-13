@@ -1,6 +1,6 @@
 # Certificate configuration scenarios
 
-There are five scenarios/use cases for configuring a certificates.
+There are five scenarios/use cases for configuring certificates.
 Use the applicable certificate configuration scenario according to your needs.
 
 * [Scenario 1: Use a PKCS12 (keystore) with Zowe generated certificates](#scenario-1-use-a-pkcs12-keystore-with-zowe-generated-certificates)
