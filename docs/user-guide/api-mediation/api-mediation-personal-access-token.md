@@ -210,8 +210,32 @@ When eviction is successful, the response to the request is an empty body with a
 
 ## Use the Personal Access Token to authenticate
 
-There are two ways the API client can use the Personal Access Token to authenticate as part of the Single Sign On in which a service is specified in the scopes at the time when the token is issued:
+There are four ways the API client can use the Personal Access Token to authenticate as part of the Single Sign On in which a service is specified in the scopes at the time when the token is issued:
 
+* Using the `Authorization: Bearer` request header.
+
+  **Example:**
+
+    ```
+    GET /<allowed-service>/api/v1/request HTTP/1.1
+    Authorization: Bearer eyJhbGciOiJSUzI1NiJ9...
+    
+    HTTP/1.1 200
+    ...
+    ```
+  
+* Using a Secure HttpOnly cookie with the name `apimlAuthenticationToken`.
+
+  **Example:**
+
+    ```
+    GET /<allowed-service>/api/v1/request HTTP/1.1
+    Cookie: apimlAuthenticationToken=eyJhbGciOiJSUzI1NiJ9...
+    
+    HTTP/1.1 200
+    ...
+    ```
+  
 * Using a Secure HttpOnly cookie with the name `personalAccessToken`.
 
   **Example:**
