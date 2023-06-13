@@ -1,4 +1,4 @@
-const LATEST_VERSION = "v2.8.x";
+const LATEST_VERSION = "v2.9.x";
 const versionsArray = require("./versions.json");
 
 module.exports = {
