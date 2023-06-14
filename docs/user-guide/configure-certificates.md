@@ -2,7 +2,7 @@
 
 As a system administrator, review this article to learn about the key concepts of Zowe certificates, and options for certificate configuration. 
 
-Zowe uses digital certificates to verify the identity and subsequently establish an encrypted network connection between applications using the Secure Sockets Layer/Transport Layer Security (SSL/TLS) protocol. The certificate needs to be stored together with belonging private key either in the SAF key ring or in the `PKCS12` java keystore.
+Zowe uses digital certificates to verify the identity and subsequently establish an encrypted network connection between applications using the Secure Sockets Layer/Transport Layer Security (SSL/TLS) protocol. The certificate  together with the certificate's associated private key need to be stored either in the SAF key ring or in the `PKCS12` java keystore.
 
 Zowe provides the ability to generate a certificate using the `zwe init certificate` command. Zowe can also be configured to use an existing certificate provided by the security team in a z/OS customer shop.
  
@@ -12,7 +12,7 @@ In addition to the use of the intra-address space of certificates, Zowe also use
 
 ### Disable trust store validation of certificates
 
-To disable the trust store validation of southbound certificates, set the value `zowe.verifyCertificates: DISABLED` in the `zowe.yaml` configuration file.  A scenario when this is recommended is if the z/OSMF certificate is be self-signed or uses an untrusted CA. In this case, Zowe API Mediation Layer does not recognize the signing authority.  
+To disable the trust store validation of southbound certificates (i.e. certificates used for secure communication in the direction from Zowe to the external services or components), set the value `zowe.verifyCertificates: DISABLED` in the `zowe.yaml` configuration file.  A scenario when this is recommended is if the z/OSMF certificate is be self-signed or uses an untrusted CA. In this case, Zowe API Mediation Layer does not recognize the signing authority.  
 
 ### Enable certificate validation without hostname validation
 
@@ -20,38 +20,39 @@ To enable certificate validation without hostname validation, set `zowe.verifyCe
 
 A proper setup of the trust store is mandatory to successfully start Zowe with `zowe.verifyCertificates: STRICT`.
 
-## Keystore versus key ring
+## Choosing USS Keystore or z/OS Key Ring to store Zowe certificates
 
-Zowe supports certificates that are stored either in a USS directory **Java KeyStore** in the `.p12` format or, alternatively, the certificates are held in a **z/OS Key ring**. Use of a z/OS keystore is the recommended option for storing certificates if system programmers are already familiar with the certificate operation and usage.
-Creating a key ring and connecting the certificate key pair requires elevated permissions. When the TSO user ID does not have the authority to manipulate key rings and users want to create a Zowe sandbox environment or for testing purposes, then the USS keystore is a good alternative.
+Zowe supports certificates that are stored either in a USS directory **Java KeyStore** in the `.p12` format or, alternatively, certificates held in a **z/OS Key ring**. Use of a z/OS keystore is the recommended option for storing certificates if system programmers are already familiar with the certificate operation and usage.
+Creating a key ring and connecting the certificate key pair requires elevated permissions. When the TSO user ID does not have the authority to manipulate key rings and users want to create a Zowe sandbox environment or for testing purposes, the USS keystore is a good alternative.
 
 ### PKCS12 certificates in a keystore
 
-<!-- Zowe is able to use PKCS12 certificates that are stored in USS. This certificate is used for encrypting TLS communication between Zowe clients and Zowe z/OS servers, as well as intra z/OS Zowe server to Zowe server communication. Zowe uses a `keystore` directory to contain its external certificate, and a `truststore` directory to hold the public keys of servers which Zowe communicates with (for example z/OSMF). -->
-By default, Zowe is reading PKCS12 keystore from `keystore` directory which can be located in zowe.yaml. This directory contains server certificate, Zowe generated certificate authority, and a `truststore` which holds intermediate certificates of servers that Zowe communicates with (for example z/OSMF).
+Zowe is able to use PKCS12 certificates that are stored in USS. This certificate is used for encrypting TLS communication between Zowe clients and Zowe z/OS servers, as well as intra z/OS Zowe server to Zowe server communication. Zowe uses a `keystore` directory to contain its external certificate, and a `truststore` directory to hold the public keys of servers which Zowe communicates with (for example z/OSMF).
 
-USS PKCS12 keystore is valid for proof-of-concept projects because it does not require special permissions to create and manage. For production usage of Zowe, it is recommended to work with certificates held in z/OS key rings. Configuring z/OS key rings may require security administrator privileges and work with your z/OS security team. 
+By default, Zowe is reading PKCS12 keystore from `keystore` directory which can be located in zowe.yaml. This directory contains a server certificate, the Zowe generated certificate authority, and a `truststore` which holds intermediate certificates of servers that Zowe communicates with (for example z/OSMF).
+
+The use of a USS PKCS12 keystore is suitable for proof-of-concept projects as special permissions to create and manage the PKCS12 keystore are not required. For production usage of Zowe, it is recommended to work with certificates held in z/OS key rings. Configuring z/OS key rings may require security administrator privileges.  
 
 ### JCERACFKS certificates in a key ring
 
 Zowe is able to work with certificates held in a **z/OS Key ring**.  
 
-The JCL member `.SZWESAMP(ZWEKRING)` contains the security commands to create a SAF key ring. By default, this keyring is named `ZoweKeyring`. You can use these commands to generate Zowe certificate authority (CA) and sign a server certificate with this CA. The JCL contains commands for three z/OS security managers: RACF, TopSecret, and ACF/2.
+The JCL member `.SZWESAMP(ZWEKRING)` contains security commands to create a SAF key ring. By default, this keyring is named `ZoweKeyring`. You can use the security commands in this JCL member to generate a Zowe certificate authority (CA) and sign the server certificate with this CA. The JCL contains commands for three z/OS security managers: RACF, TopSecret, and ACF/2.
 
-There are two ways to configure and submit `ZWEKRING`.
+There are two ways to configure and submit `ZWEKRING`:
 
 - Customize and submit the `ZWEKRING` JCL member.
 - Customize the `zowe.setup.certificate` section in `zowe.yaml` and use the `zwe init certificate` command. 
 
-Using the `zwe init certificate` command prepares a customized JCL member using `ZWEKRING` as a template.  
+Use the `zwe init certificate` command to prepare a customized JCL member using `ZWEKRING` as a template.  
 
 A number of key ring scenarios are supported:
 
-- Creation of a local certificate authority (CA) which is used to sign a locally generated certificate. Both the CA and the certificate are placed into the `ZoweKeyring`.
-- Importing an existing certificate already held in z/OS to the `ZoweKeyring` for use by Zowe.  
-- Creation of a locally generated certificate and signing it with an existing certificate authority. The certificatate is placed in the key ring.
+- Creation of a local certificate authority (CA) which is used to sign a locally generated certificate. Both the CA and the certificate are placed in the `ZoweKeyring`.
+- Import of an existing certificate already held in z/OS to the `ZoweKeyring` for use by Zowe.  
+- Creation of a locally generated certificate and signed by an existing certificate authority. The certificatate is placed in the key ring.
 
-### Create a certificate authority and use it to self sign a certificate
+### Create a certificate authority and use it to self-sign a certificate
 
 The `zwe init security` command takes its input from the `zowe.setup.security` section in the `zowe.yaml` file. To help with file customization, there are five sections in the file.
 
