@@ -270,19 +270,19 @@
                   "items": [
                     {
                       "type": "doc",
-                      "id": "version-v2.7.x/user-guide/configure-certificates"
+                      "id": "version-v2.8.x/user-guide/configure-certificates"
                     },
                     {
                       "type": "doc",
-                      "id": "version-v2.7.x/user-guide/configure-certificates-keystore"
+                      "id": "version-v2.8.x/user-guide/configure-certificates-keystore"
                     },
                     {
                       "type": "doc",
-                      "id": "version-v2.7.x/user-guide/configure-certificates-keyring"
+                      "id": "version-v2.8.x/user-guide/configure-certificates-keyring"
                     },
                     {
                       "type": "doc",
-                      "id": "version-v2.7.x/user-guide/certificates-setup"
+                      "id": "version-v2.8.x/user-guide/certificates-setup"
                     }
                   ]
                 },
