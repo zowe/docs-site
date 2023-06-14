@@ -1,6 +1,6 @@
 import React from 'react'
 import { DocSearch } from "@docsearch/react";
-import useAlgoliaContextualFacetFilters from '@theme/hooks/useAlgoliaContextualFacetFilters';
+import { useAlgoliaContextualFacetFilters } from '@docusaurus/theme-search-algolia/client';
 
 function SearchHeader() {
   const facetFilters = useAlgoliaContextualFacetFilters();

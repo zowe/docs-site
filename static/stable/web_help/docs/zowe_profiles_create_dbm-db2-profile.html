@@ -7,7 +7,7 @@
 <link rel="stylesheet" href="../css/docs.css">
 <article class="markdown-body">
 <h2><a href="zowe.html">zowe</a> › <a href="zowe_profiles.html">profiles</a> › <a href="zowe_profiles_create.html">create</a> › <a href="zowe_profiles_create_dbm-db2-profile.html">dbm-db2-profile</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
-<p>The dbm-db2 profile is a named set of DBM Data Service parameters that are implicitly used with the zowe dbm-db2 commands. The profile includes server connection, z/OS execution, and user-dependent details.</p>
+<p>The DBM-Db2 profile is a named set of DBM Data Service parameters that are implicitly used with the zowe dbm-db2 commands. The profile includes server connection, z/OS execution, and user-dependent details.</p>
 <p>Warning: This command has been deprecated.<br>
 Recommended replacement: The 'config init' command</p>
 <h4>Usage</h4>
@@ -21,7 +21,7 @@ Recommended replacement: The 'config init' command</p>
 </ul>
 </li>
 </ul>
-<h4>dbm-db2 Common Options</h4>
+<h4>DBM-Db2 Common Options</h4>
 <ul>
 <li>
 <p><code>--job-cards</code> | <code>--jc</code> <em>(array)</em></p>
@@ -78,7 +78,7 @@ Recommended replacement: The 'config init' command</p>
 </ul>
 </li>
 </ul>
-<h4>dbm-db2 Connection Options</h4>
+<h4>DBM-Db2 Connection Options</h4>
 <ul>
 <li>
 <p><code>--host</code> | <code>-H</code> <em>(string)</em></p>
@@ -154,31 +154,31 @@ Allowed values: http, https</p>
 <h4>Examples</h4>
 <ul>
 <li>
-<p>Create a dbm-db2 profile named profile_name1 and default values for all the dbm-db2-profile options:</p>
+<p>Create a DBM-Db2 profile named profile_name1 and default values for all the DBM-Db2-profile options:</p>
 <ul>
 <li><code>zowe profiles create dbm-db2-profile profile_name1</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe profiles create dbm-db2-profile profile_name1">Copy</button></li>
 </ul>
 </li>
 <li>
-<p>Create a dbm-db2 profile named dbm123 that connects to the DBM Data Service at host dbm123 and port 1443 as user db2user and password myp4ss:</p>
+<p>Create a DBM-Db2 profile named dbm123 that connects to the DBM Data Service at host dbm123 and port 1443 as user db2user and password myp4ss:</p>
 <ul>
 <li><code>zowe profiles create dbm-db2-profile dbm123 --host dbm123 --port 1443 --user db2user --password myp4ss</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe profiles create dbm-db2-profile dbm123 --host dbm123 --port 1443 --user db2user --password myp4ss">Copy</button></li>
 </ul>
 </li>
 <li>
-<p>Create a dbm-db2 profile named dbm124 that connects to the DBM Data Service at host dbm124 and the default port as user db2user and password myp4ss, and allow self-signed certificates:</p>
+<p>Create a DBM-Db2 profile named dbm124 that connects to the DBM Data Service at host dbm124 and the default port as user db2user and password myp4ss, and allow self-signed certificates:</p>
 <ul>
 <li><code>zowe profiles create dbm-db2-profile dbm124 --host dbm124 --user db2user --password myp4ss --reject-unauthorized false</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe profiles create dbm-db2-profile dbm124 --host dbm124 --user db2user --password myp4ss --reject-unauthorized false">Copy</button></li>
 </ul>
 </li>
 <li>
-<p>Create a dbm-db2 profile named dbm125 that connects to the DBM Data Service at host dbm125 and port 1443 and requires a user and password to be specified on every dbm-db2 command. DBM Data Service access to Db2 subsystems SUBA and SUBB uses prod@host1.com:322 and test@host2.com:522, respectively:</p>
+<p>Create a DBM-Db2 profile named dbm125 that connects to the DBM Data Service at host dbm125 and port 1443 and requires a user and password to be specified on every dbm-db2 command. DBM Data Service access to Db2 subsystems SUBA and SUBB uses prod@host1.com:322 and test@host2.com:522, respectively:</p>
 <ul>
 <li><code>zowe profiles create dbm-db2-profile dbm125 --host dbm125 --port 1443 --environment-list &quot;SUBA:prod@host1.com:322,SUBB:test@host2.net:522&quot;</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe profiles create dbm-db2-profile dbm125 --host dbm125 --port 1443 --environment-list &quot;SUBA:prod@host1.com:322,SUBB:test@host2.net:522&quot;">Copy</button></li>
 </ul>
 </li>
 <li>
-<p>Create a dbm-db2 profile named dbm126 that uses specified job cards for every mainframe job:</p>
+<p>Create a DBM-Db2 profile named dbm126 that uses specified job cards for every mainframe job:</p>
 <ul>
 <li><code>zowe profiles create dbm-db2-profile dbm126 --job-cards &quot;//DB2DVOPS JOB (123456789),'DB2 PROVISIONING',NOTIFY=&amp;SYSUID,&quot; &quot;//     CLASS=A,MSGCLASS=X,MSGLEVEL=(1,1),&quot; &quot;//     REGION=0M,TIME=NOLIMIT&quot;</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe profiles create dbm-db2-profile dbm126 --job-cards &quot;//DB2DVOPS JOB (123456789),'DB2 PROVISIONING',NOTIFY=&amp;SYSUID,&quot; &quot;//     CLASS=A,MSGCLASS=X,MSGLEVEL=(1,1),&quot; &quot;//     REGION=0M,TIME=NOLIMIT&quot;">Copy</button></li>
 </ul>

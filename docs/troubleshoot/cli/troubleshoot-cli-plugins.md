@@ -14,7 +14,7 @@ For help with error codes from a back-end vendor, refer to the vendor’s help d
 
 IBM Db2 Database Plug-in for Zowe CLI fails to install in environments running with Node 18.16.0.
 
-Once Db2 is installed and validation is done, Zowe CLI returns the following error:
+After Db2 is installed and validation is complete, Zowe CLI returns the following error:
 
 ```
 $ zowe plugins install db2-for-zowe-cli.tgz
