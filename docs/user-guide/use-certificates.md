@@ -2,9 +2,13 @@
 
 ## Use PKCS12 certificates
 
-When Zowe is launched details for the PKCS12 certificate used are specified in the `zowe.yaml` section `certificates`. This contains information for the certificate name and its location, together with the truststore location.
+Run the command `zwe start -c ./zowe.yaml` in the directory with `zowe.yaml` file to start Zowe.
+
+When Zowe is launched, details for the PKCS12 certificate used are specified in the `zowe.yaml` section `certificates`. This contains information for the certificate name and its location, together with the truststore location.
 
 The two most common scenarios for using a PKCS12 certtificate are (1) where you have been given an existing certificate and wish to configure Zowe to use it, or else (2) you do not have a certificate and wish to [generate a new one](./generate-certificates.md). The `zwe init certificate` command supports both scenarios. The input parameters that control certificate configuration are specified in the section `zowe.setup.certificates`
+
+To check startup of Zowe, please see details [here](https://docs.zowe.org/stable/troubleshoot/troubleshoot-zos-startup).
 
 ## Use JCERACFKS certificates
 
