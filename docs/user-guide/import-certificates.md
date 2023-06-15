@@ -2,28 +2,25 @@
 
 Zowe makes it possible to import and configure existing certificates. The following certificates are supported by Zowe:
 
-* PKCS12 certificates
-* JCERACFKS certificates
+* [PKCS12 certificates](#import-an-existing-pkcs12-certificate)
+* [JCERACFKS certificates](#import-an-existing-jceracfks-certificate)
 
 Review the procedure to import existing PKCS12 or JCERACFKS certificates as well as how to import a certificate stored in an MVS data set into a Zowe key ring.
 
 ## Import an existing PKCS12 certificate
 
-To import a PKCS12 certificate, it is first necessary to [import a certificate authority](#manually-import-a-certificate-authority-into-a-web-browser). Then, you can configure the section `[# >>>> Certificate setup scenario 2](https://github.com/zowe/zowe-install-packaging/blob/60bc4b44ecd502fcec640fbb9e2874e9d56e826a/example-zowe.yaml#L142)` in `zowe.yaml`. 
+To import a PKCS12 certificate, it is first necessary to [import a certificate authority](#manually-import-a-certificate-authority-into-a-web-browser). Then, you can configure the section [# >>>> Certificate setup scenario 2](https://github.com/zowe/zowe-install-packaging/blob/60bc4b44ecd502fcec640fbb9e2874e9d56e826a/example-zowe.yaml#L142) in `zowe.yaml`.
 
 For PKCS12 certificate users, specify the following parameters in the `zowe.yaml` file:
 
-* Define `zowe.setup.certificate.pkcs12.import.keystore` if you acquired one or more certificates from another CA, stored them in PKCS12 format, and now want to import the certificate(s) into the Zowe PKCS12 keystore.
+| Parameter | Description |
+| --------- | ------------|
+| `zowe.setup.certificate.pkcs12.import.keystore` | Define it if you acquired one or more certificates from another CA, stored them in PKCS12 format, and now want to import the certificate(s) into the Zowe PKCS12 keystore.
+| `zowe.setup.certificate.pkcs12.import.password` | Specify it. This value is the password for keystore defined in `zowe.setup.certificate.pkcs12.import.keystore`. |
+| `zowe.setup.certificate.pkcs12.import.alias` | Specify it. This value is the original certificate alias defined in `zowe.setup.certificate.pkcs12.import.keystore`. |
+| `zowe.setup.certificate.pkcs12.name`| The imported certificate is saved under the alias specified in it. |
 
-* Specify `zowe.setup.certificate.pkcs12.import.password`  
- This value is the password for keystore defined in `zowe.setup.certificate.pkcs12.import.keystore`.
-
-* Specify `zowe.setup.certificate.pkcs12.import.alias`  
-This value is the original certificate alias defined in `zowe.setup.certificate.pkcs12.import.keystore`.
-
-    The imported certificate is saved under the alias specified in `zowe.setup.certificate.pkcs12.name`.
-
-**Example YAML:**
+**Configure `zowe.yaml`:**
 ```
 zowe:
   setup:
@@ -48,7 +45,7 @@ Due to the limitation of the RACDCERT command, the `importCertificateAuthorities
 
 ### Manually import a certificate authority into a web browser
 
-To import an existing certificate and avoid the browser untrusted CA challenge, import Zowe's certificates into the browser.
+To avoid the browser untrusted CA challenge, import Zowe's certificates into the browser.
 
 Trust in the API ML server is a necessary precondition for secure communication between the browser or API Client application. Ensure this trust by installing a Certificate Authority (CA) public certificate. By default, API ML creates a local CA. Import the CA public certificate to the truststore for REST API clients and to your browser. You can also import the certificate to your root certificate store.
 
@@ -93,14 +90,14 @@ To avoid requiring each browser to trust the CA that signed the Zowe certificate
 
 ## Import an existing JCERACFKS certificate
 
-To import a JCERACFKS certificate, you need to configure the section `[# >>>> Certificate setup scenario 4](https://github.com/zowe/zowe-install-packaging/blob/60bc4b44ecd502fcec640fbb9e2874e9d56e826a/example-zowe.yaml#L211)` in `zowe.yaml`. To use a JCERACFKS certificate, specify the following parameters in the `zowe.yaml` file:
+To import a JCERACFKS certificate, you need to configure the section [# >>>> Certificate setup scenario 4](https://github.com/zowe/zowe-install-packaging/blob/60bc4b44ecd502fcec640fbb9e2874e9d56e826a/example-zowe.yaml#L211) in `zowe.yaml`. To use a JCERACFKS certificate, specify the following parameters in the `zowe.yaml` file:
 
-- `zowe.setup.certificate.keyring.connect.user`  
-This is a required parameter that specifies the owner of existing certificate. This field can have value of SITE or a user ID.
-- `zowe.setup.certificate.keyring.connect.label`  
-This is a required parameter that sets the label of an existing certificate.
+| Parameter | Description |
+| --------- | ------------|
+| `zowe.setup.certificate.keyring.connect.user` | This is a required parameter that specifies the owner of existing certificate. This field can have value of SITE or a user ID.|
+| `zowe.setup.certificate.keyring.connect.label` | This is a required parameter that sets the label of an existing certificate. |
 
-**Example YAML:**
+**Configure `zowe.yaml`:**
 ```
 zowe:
   setup:
@@ -122,14 +119,13 @@ Due to the limitation of the RACDCERT command, the `importCertificateAuthorities
 
 To import a certificate that is stored in a data set into a key ring, configure the section `[# >>>> Certificate setup scenario 5](https://github.com/zowe/zowe-install-packaging/blob/60bc4b44ecd502fcec640fbb9e2874e9d56e826a/example-zowe.yaml#L235)` in `zowe.yaml`. To use a JCERACFKS certificate, specify the following parameters in the `zowe.yaml` file.
 
-- `zowe.setup.certificate.keyring.connect.dsName`  
-This is a required parameter which specifies the data set where the certificate stored.
-- `zowe.setup.certificate.keyring.connect.password`  
-This parameter specifies the password when importing the certificate.
--  `zowe.setup.certificate.keyring.label`  
-This parameter specifies that label of the certificate that is imported. 
+| Parameter | Description |
+| --------- | ----------- |
+|`zowe.setup.certificate.keyring.connect.dsName` | This is a required parameter which specifies the data set where the certificate stored.|
+|`zowe.setup.certificate.keyring.connect.password` | This parameter specifies the password when importing the certificate. |
+| `zowe.setup.certificate.keyring.label`  | This parameter specifies that label of the certificate that is imported. |
 
-**Example YAML:**
+**Configure `zowe.yaml`:**
 ```
 zowe:
   setup:

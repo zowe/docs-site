@@ -2,8 +2,8 @@
 
 If you do not have a certificate, you can generate either of the following certificate types:
 
-* PKCS12 certificate
-* JCERACFKS certificate
+* [PKCS12 certificate](#create-a-pkcs12-keystore)
+* [JCERACFKS certificate](#create-a-jceracfks-certificate)
 
 Both certificate types are self-signed certificates.
 
@@ -147,7 +147,7 @@ For more information about additional commands to manage a keystore, see the [ke
 
 When using a Zowe-generated certificate, you will be challenged by your browser when logging in to Zowe to accept Zowe's untrusted certificate authority. Depending on the browser you are using there are different ways to proceed. See next steps about how to [import the PKCS12 certificate to your brower](./import-certificates#import-your-pkcs12-certificate).
 
-## Create a self-signed JCERACFKS certificate
+## Create a JCERACFKS certificate
 
 Use the following procedure to configure zowe.yaml:
 

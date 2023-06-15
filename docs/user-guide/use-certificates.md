@@ -1,5 +1,10 @@
 # Use certificates
 
+Now you can use the certificates for your next actions. The following certificates are supported by Zowe:
+- [PKCS12 certificates](#use-pkcs12-certificates)
+- [JCERACFKS certificates](#use-jceracfks-certificates)
+
+
 ## Use PKCS12 certificates
 
 Run the command `zwe start -c ./zowe.yaml` in the directory with `zowe.yaml` file to start Zowe.
@@ -14,7 +19,12 @@ To check startup of Zowe, please see details [here](https://docs.zowe.org/stable
 
 When Zowe is launched, details for the PKCS12 certificate used are specified in the `zowe.yaml` section `certificates`.  This contains information for the certificate name and its location, together with the truststore location.  
 
-The two most common scenarios for using a PKCS12 certtificate are where you have been given an existing certificate and wish to configure Zowe to use it, or else you do not have a certificate and wish to generate a new one.  The `zwe init certificate` command supports both scenarios.  The input parameters that control certificate configuration
+The two most common scenarios for using a PKCS12 certtificate are:
+
+1. You have been given an existing certificate and wish to configure Zowe to use it.
+2. You do not have a certificate and wish to generate a new one.
+
+The `zwe init certificate` command supports both scenarios. The input parameters that control certificate configuration
 are specified in the section `zowe.setup.certificates`
 
 ### Use multiple certificate authorities
@@ -30,4 +40,5 @@ certificate:
     - "safkeyring:////stcusername/KeyName&ca name 1"        
     - "safkeyring:////stcusername/KeyName&ca name 2"
 ```
+
 If you run into `<ZWED:527259> SZOWE CRITICAL unable to get issuer certificate`, check this section in your `zowe.yaml` file and see if it is the problem about the syntax.
