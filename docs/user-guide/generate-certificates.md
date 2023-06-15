@@ -18,18 +18,14 @@ Follow the following procedure to generate a PKCS12 keystore:
 
 For PKCS12 certificate users, customize the following parameters in the `zowe.yaml` file:
 
-- `zowe.setup.certificate.pkcs12.directory`  
-Specifies the directory where you plan to store the PKCS12 keystore and truststore. This is required if `zowe.setup.certificate.type` is PKCS12.
-- `zowe.setup.certificate.pkcs12.lock`  
-Is a boolean configuration to tell if we should lock the PKCS12 keystore directory only for Zowe runtime user and group. Default value is true.
-- `zowe.setup.certificate.pkcs12`  
-(Optional) Define name, password, caAlias and caPassword to customize the keystore and truststore. It is recommended to update these values from the default values.  
-**Note:** Alias names should be all in lower case.
-- `dname` 
-(Optional) Specifies the distinguished name. Domain names and IPs should be added into certificate SAN. If the field `san` is not defined, the `zwe init` command uses `zowe.externalDomains`.
+| Parameter | Description |
+| --------- | ----------- |
+| `zowe.setup.certificate.pkcs12.directory` | Specifies the directory where you plan to store the PKCS12 keystore and truststore. This is required if `zowe.setup.certificate.type` is PKCS12. |
+| `zowe.setup.certificate.pkcs12.lock` | Is a boolean configuration to tell if we should lock the PKCS12 keystore directory only for Zowe runtime user and group. Default value is true. |
+| `zowe.setup.certificate.pkcs12` (*Optional*) | Defines name, password, caAlias and caPassword to customize the keystore and truststore. It is recommended to update these values from the default values. **Note:** Alias names should be all in lower case.|
+| `dname` (*Optional*) | Specifies the distinguished name. Domain names and IPs should be added into certificate SAN. If the field `san` is not defined, the `zwe init` command uses `zowe.externalDomains`.|
 
 **Configure `zowe.yaml` file:**  
-
 The following `zowe.yaml` example generates the following artifacts:
 
  - A `PKCS12` certificate, specified in `zowe.setup.certificate.type`
@@ -162,9 +158,10 @@ Use the following procedure to configure zowe.yaml:
 
 For JCERACFKS certificate (z/OS key ring) users, customize the following parameters in the `zowe.yaml` file:
 
-- `zowe.setup.certificate.keyring.owner` is the key ring owner. It's optional and default value is `zowe.setup.security.users.zowe`. If it's also not defined, the default value is ZWESVUSR.
-- `zowe.setup.certificate.keyring.name`  
- Specifies the key ring name to be created on z/OS. This is required if `zowe.setup.certificate.type` is `JCERACFKS`.
+| Parameter | Description |
+| ---------- | ----------- |
+| `zowe.setup.certificate.keyring.owner` | The key ring owner. It's optional and default value is `zowe.setup.security.users.zowe`. If it's also not defined, the default value is ZWESVUSR.|
+| `zowe.setup.certificate.keyring.name`  | Specifies the key ring name to be created on z/OS. This is required if `zowe.setup.certificate.type` is `JCERACFKS`.|
 
 The following `zowe.yaml` example generates the following artifacts:
 
