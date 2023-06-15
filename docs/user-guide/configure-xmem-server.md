@@ -38,7 +38,7 @@ To install the cross memory server, enable the PROCLIB, PARMLIB, and load module
 
 ## Load module
 
-The cross memory server load module `ZWESIS00` is installed by Zowe into a PDSE `SZWEAUTH`.  For the cross memory server to be started, the load module needs to be APF-authorized and the program needs to run in key(4) as non-swappable.  
+The cross memory server load module `ZWESIS01` is installed by Zowe into a PDSE `SZWEAUTH`.  For the cross memory server to be started, the load module needs to be APF-authorized and the program needs to run in key(4) as non-swappable.  
 
 ### APF authorize
 
@@ -135,9 +135,9 @@ The Zowe launcher started task `ZWESLSTC` needs to be able to access the ZIS ser
 
 You can start the cross memory server using the command `/S ZWESISTC` once the following steps have been completed.
 
-- JCL member `ZWESVSTC` is copied from `SZWESAMP` installation PDS to a PDS on the JES concatenation path.
+- JCL member `ZWESLSTC` is copied from `SZWESAMP` installation PDS to a PDS on the JES concatenation path.
 - The PDSE Load Library `SZWEAUTH`is APF-authorized, or Load module `ZWESI00` is copied to an existing APF Auth LoadLib.
-- The JCL member `ZWESVSTC` DD statements are updated to point to the location of `ZWESI00` and `ZWESIP00`. 
+- The JCL member `ZWESLSTC` DD statements are updated to point to the location of `ZWESI00` and `ZWESIP00`. 
 - The load module `ZWESI00` must run in key 4 and be non-swappable by adding a PPT entry to the SCHEDxx member of the system PARMLIB `PPT PGMNAME(ZWESI00) KEY(4) NOSWAP`.
 
 ## Starting and stopping the cross memory server on z/OS
@@ -156,9 +156,9 @@ To end the Zowe cross memory server process, issue the operator stop command thr
 ```
 **Note:** 
 
-The starting and stopping of the `ZWESVSTC` started task for the main Zowe servers is independent of the `ZWESISTC` cross memory server, which is an angel process. If you are running more than one `ZWESVSTC` instance on the same LPAR, then these will be sharing the same `ZWESISTC` cross memory server. Stopping `ZWESISTC` will affect the behavior of all Zowe servers on the same LPAR that use the same cross-memory server name, for example ZWESIS_STD. The Zowe Cross Memory Server is designed to be a long-lived address space. There is no requirement to recycle regularly. When the cross-memory server is started with a new version of its load module, it abandons its current load module instance in LPA and loads the updated version.
+The starting and stopping of the `ZWESLSTC` started task for the main Zowe servers is independent of the `ZWESISTC` cross memory server, which is an angel process. If you are running more than one `ZWESLSTC` instance on the same LPAR, then these will be sharing the same `ZWESISTC` cross memory server. Stopping `ZWESISTC` will affect the behavior of all Zowe servers on the same LPAR that use the same cross-memory server name, for example ZWESIS_STD. The Zowe Cross Memory Server is designed to be a long-lived address space. There is no requirement to recycle regularly. When the cross-memory server is started with a new version of its load module, it abandons its current load module instance in LPA and loads the updated version.
 
-To diagnose problems that may occur with the Zowe `ZWESVSTC` not being able to attach to the `ZWESISTC` cross memory server, a log file `zssServer-yyyy-mm-dd-hh-mm.log` is created in the log directory each time ZIS is started.  More details on diagnosing errors can be found in [Zowe Application Framework issues](../troubleshoot/app-framework/app-troubleshoot.md#cannot-log-in-to-the-zowe-desktop).
+To diagnose problems that may occur with the Zowe `ZWESLSTC` not being able to attach to the `ZWESISTC` cross memory server, a log file `zssServer-yyyy-mm-dd-hh-mm.log` is created in the log directory each time ZIS is started.  More details on diagnosing errors can be found in [Zowe Application Framework issues](../troubleshoot/app-framework/app-troubleshoot.md#cannot-log-in-to-the-zowe-desktop).
 
 
 ## Zowe auxiliary service

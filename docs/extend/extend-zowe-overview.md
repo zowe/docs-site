@@ -4,10 +4,15 @@ Zowe is designed as an extensible tools platform. One of the Zowe architecture g
 
 Zowe can be extended in the following ways:
 
-- [Extend Zowe CLI](#extend-zowe-cli)
+**On the server side:**
+
 - [Extend Zowe API Mediation Layer](#extend-zowe-api-mediation-layer)
   - [Dynamic API registration](#dynamic-api-registration)
   - [Static API registration](#static-api-registration)
+
+**On the client side:**
+
+- [Extend Zowe CLI](#extend-zowe-cli)
 - [Add a plug-in to the Zowe Desktop](#add-a-plug-in-to-the-zowe-desktop)
 - [Extend Zowe Explorer](#extend-zowe-explorer)
 
@@ -60,7 +65,7 @@ The Zowe Desktop is an angular application that allows native plug-ins to be bui
 
 Zowe Explorer provides extension APIs that assist third party extenders to create extensions that access Zowe Explorer resource entities to enrich the user experience. There are many ways Zowe Explorer can be extended to support many different use cases. 
 
-For the kinds of extensions that are supported and how to get started with extending Zowe Explorer, see [Extensions for Zowe Explorer](https://github.com/zowe/vscode-extension-for-zowe/blob/master/docs/README-Extending.md).
+For the kinds of extensions that are supported and how to get started with extending Zowe Explorer, see [Extensions for Zowe Explorer](https://github.com/zowe/vscode-extension-for-zowe/wiki/Extending-Zowe-Explorer).
 
 ## Sample extensions
 
