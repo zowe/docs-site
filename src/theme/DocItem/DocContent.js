@@ -117,7 +117,7 @@ export const DocContent = ({ Content, contentRef, readingTimeInWords }) => {
               <DocsRating label={unversionedId} />
             </div>
             <div className="margin-vert--lg">
-              <DocPaginator metadata={metadata} />
+              <DocPaginator previous={metadata.previous} next={metadata.next} />
             </div>
           </div>
         </div>
