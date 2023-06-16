@@ -1,6 +1,6 @@
 # `zos dataset list`
 
-**[zos](../../zos) > [dataset](../dataset) > [list](list)**
+**[zos](../../zos-article) > [dataset](../dataset-article) > [list](list-article)**
 
 Show status of data sets. <!--dataset-list-description-->
 

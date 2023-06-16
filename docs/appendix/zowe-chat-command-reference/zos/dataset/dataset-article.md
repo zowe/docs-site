@@ -1,6 +1,6 @@
 # zos dataset
 
-**[zos](.././zos) > [dataset](dataset)**
+**[zos](.././zos-article) > [dataset](dataset-article)**
 
 Manages z/OS data sets. <!--dataset-description-->
 
@@ -12,7 +12,7 @@ Manages z/OS data sets. <!--dataset-description-->
 
 ## Action
 
-- [`list`](./list/list)
+- [`list`](./list/list-article)
 
 ## Positional Arguments
 

@@ -1,6 +1,6 @@
 # `zos file`
 
-**[zos](.././zos) > [file](file)**
+**[zos](.././zos-article) > [file](file-article)**
 
 Manage USS files in a z/OS system. <!--file-description-->
 
@@ -12,7 +12,7 @@ Manage USS files in a z/OS system. <!--file-description-->
 
 ## Action
 
-- [`list`](./list/list)
+- [`list`](./list/list-article)
 
 ## Positional Argument
 

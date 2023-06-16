@@ -1,6 +1,6 @@
 # zos job
 
-**[zos](../zos) > [job](job)**
+**[zos](../zos-article) > [job](job-article)**
 
 Manage z/OS jobs.  <!--job-description-->
 
