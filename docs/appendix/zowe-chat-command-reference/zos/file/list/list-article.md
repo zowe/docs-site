@@ -1,6 +1,6 @@
 # zos file list
 
-**[zos](../../zos) > [file](../file) > [list](list)**
+**[zos](../../zos-artcile) > [file](../file-article) > [list](list-article)**
 
 ## Usage
 
