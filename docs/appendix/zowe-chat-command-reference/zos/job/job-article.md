@@ -10,7 +10,7 @@ Manage z/OS jobs.  <!--job-description-->
 
 ## Action
 
-- [`list`](./list/list)
+- [`list`](./list/list-article)
 
 ## Positional Arguments
 

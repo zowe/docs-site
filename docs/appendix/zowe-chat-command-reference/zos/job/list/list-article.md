@@ -1,6 +1,6 @@
 # `zos job list`
 
-**[zos](../../zos) > [job](../job) > [list](list)**
+**[zos](../../zos-article) > [job](../job-article) > [list](list-article)**
 
 List job status. <!--job-list-description-->
 
