@@ -1,6 +1,6 @@
 # zos job list status
 
-**[zos](../../zos) > [job](../job) > [list](./list) > [status](zos-job-list-status)**
+**[zos](../../zos-article) > [job](../job-article) > [list](./list-article) > [status](zos-job-list-status)**
 
 Show status or detail of jobs. <!--job-list-status-description-->
 
