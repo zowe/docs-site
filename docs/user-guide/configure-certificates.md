@@ -1,10 +1,10 @@
 # Configuring Zowe certificates 
 
-As a system administrator, review this article to learn about the key concepts of Zowe certificates, and options for certificate configuration. 
+As a system programmer, review this article to learn about the key concepts of Zowe certificates, and options for certificate configuration. 
 
-Zowe uses digital certificates to verify the identity and subsequently establish an encrypted network connection between applications using the Secure Sockets Layer/Transport Layer Security (SSL/TLS) protocol. The certificate  together with the certificate's associated private key need to be stored either in the SAF key ring or in the `PKCS12` java keystore.
+Zowe uses digital certificates to verify the identity and subsequently establish an encrypted network connection between applications using the Secure Sockets Layer/Transport Layer Security (SSL/TLS) protocol. Certificates and their associated private keys need to be stored either in the SAF key ring or in the `PKCS12` java keystore.
 
-Zowe provides the ability to generate a certificate using the `zwe init certificate` command. Zowe can also be configured to use an existing certificate provided by the security team in a z/OS customer shop.
+Zowe provides the ability to generate a certificate using the `zwe init certificate` command. Zowe can also be configured to use an existing certificate provided by the user's security team in a z/OS customer shop.
  
 ## Trust store
 
@@ -67,7 +67,7 @@ Additionally, the `Digital signature and/or key agreement` must also be set with
 
 ## Next steps: How to configure your certificate?
 
-If you have an existing certificate, you can import this certificate to the keystore or key ring. For more information, see the instructions in [Configure certificates if you have existing certificates](./import-certificates.md).
+If you have an existing certificate, you can import this certificate to the keystore or key ring. For more information, see the instructions in [Import and configure an existing certificate](./import-certificates.md).
 
 If you do not have an existing certificate, you need to create one. See instructions in [Generate a certificate if you do not have a certificate](./generate-certificates.md).
 
