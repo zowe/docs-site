@@ -9,12 +9,14 @@ Both certificate types are self-signed certificates.
 
 ## Create a PKCS12 keystore
 
-Follow the following procedure to generate a PKCS12 keystore:
+Follow these steps to generate a PKCS12 keystore:
 
 1. [Configure the PKCS12 setup section in zowe.yaml](#configure-the-pkcs12-setup-section-in-zoweyaml)
 2. [Run the command to generate a PKCS12 keystore](#run-the-command-to-generate-a-pkcs12-keystore)
 
 ### Configure the PKCS12 setup section in zowe.yaml
+
+To assist with updating `zowe.yaml`, see the example yaml for [scenario 1: Use a file-based (PKCS12) keystore with Zowe generated certificates](#certificate-configuration-scenarios.md/#scenario-1-use-a-pkcs12-keystore-with-zowe-generated-certificates) in the article Certificate configuration scenarios. 
 
 For PKCS12 certificate users, customize the following parameters in the `zowe.yaml` file:
 
@@ -61,11 +63,11 @@ zowe:
 
 **Tips:** To get the san IP address, you could run `ping dvipa.my-company.com` in your terminal. Please note that `dvipa.my-company.com` is an example address here.
 
-To assist with updating `zowe.yaml`, the values to generate a certificate are included in the section beginning with [# >>>> Certificate setup scenario 1](https://github.com/zowe/zowe-install-packaging/blob/60bc4b44ecd502fcec640fbb9e2874e9d56e826a/example-zowe.yaml#L97). Other certificate scenarios lower down in the `zowe.yaml` file are commented out.
+
 
 ### Run the command to generate a PKCS12 keystore
 
-After you configure the `zowe.yaml`, follow the procedure to generate the certificate.
+After you configure the `zowe.yaml`, use the following procedure to generate the certificate.
 
 1. Log in to your system. In this example, run `ssh dvipa.my-company.com` with your password. Please note that `dvipa.my-company.com` is an example address here.
 
@@ -115,9 +117,9 @@ Some detailed output messages have been omitted.
 #>
 ```
 
-The `zwe init certificate` command generates a certificate based on `zowe.yaml` values in the `zowe.setup.certificate` section. These certificate values used at runtime are referenced in the `zowe.certificate` section in the `zowe.yaml` file. This command `zwe init certificate -c ./zowe.yaml --update-config` updates the runtime `zowe.certificate` section to reference the generated certificate generated from the `zowe.setup.certificate`.
+The `zwe init certificate` command generates a certificate based on `zowe.yaml` values in the `zowe.setup.certificate` section. The certificate values used at runtime are referenced in the `zowe.certificate` section in the `zowe.yaml` file. The command `zwe init certificate -c ./zowe.yaml --update-config` updates the runtime `zowe.certificate` section to reference the generated certificate generated from the `zowe.setup.certificate`.
 
-Now you can open the `zowe.yaml` file to check the references to the newly generated certificate values, as shown in the following code snippet:
+Open the `zowe.yaml` file to check the references to the newly generated certificate values as shown in the following code snippet:
 
 **Updated `zowe.certificate` section in `zowe.yaml`:**
 
@@ -154,6 +156,7 @@ Use the following procedure to configure zowe.yaml:
 1. [Configure the JCERACFKS setup section in zowe.yaml](#configure-the-jceracfks-setup-section-in-zoweyaml)
 2. [Run the command to generate a JCERACFKS certificate](#run-the-command-to-generate-a-jceracfks-certificate)
 
+To assist with updating `zowe.yaml`, see the example yaml in [Scenario 3: Use a z/OS keyring-based keystore with Zowe generated certificates](#certificate-configuration-scenarios.md/##scenario-3-use-a-zos-keyring-with-zowe-generated-certificates) in the article Certificate configuration scenarios.
 ### Configure the JCERACFKS setup section in zowe.yaml
 
 For JCERACFKS certificate (z/OS key ring) users, customize the following parameters in the `zowe.yaml` file:
@@ -202,11 +205,11 @@ zowe:
 - `dname` for distinguished name is all optional.
 - Domain names and IPs should be added into certificate SAN. If the field `san` is not defined, the `zwe init` command will use `zowe.externalDomains`. The value for the `san` parameter presented in the example is for demonstration purposes.
 
-To assist with updating `zowe.yaml`, the values to generate a certificate are included in the section beginning with [# >>>> Certificate setup scenario 3](https://github.com/zowe/zowe-install-packaging/blob/60bc4b44ecd502fcec640fbb9e2874e9d56e826a/example-zowe.yaml#L175). Other certificate scenarios in the `zowe.yaml` file are commented out.
+
 
 ### Run the command to generate a JCERACFKS certificate
 
-After you configure the `zowe.yaml`, follow the procedure to generate the JCERACFKS certificate.
+After you configure the `zowe.yaml`, use the following procedure to generate a JCERACFKS certificate.
 
 1. Log in to your system. In this example, run `ssh dvipa.my-company.com` with your password.
 
