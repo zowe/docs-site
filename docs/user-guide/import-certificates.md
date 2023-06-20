@@ -1,4 +1,4 @@
-# Import and configure an existing certificate 
+# Import and configure a certificate if you have one
 
 Zowe makes it possible to import and configure existing certificates. The following certificates are supported by Zowe:
 
