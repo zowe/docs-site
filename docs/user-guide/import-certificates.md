@@ -1,8 +1,8 @@
 # Import and configure an existing certificate 
 
-Zowe makes it possible to import and configure existing certificates. The following certificates are supported by Zowe:
+One option for using certificates in Zowe is to import and configure existing certificates. Zowe supports the following types of certificates for import:
 
-* [PKCS12 certificates](#import-an-existing-pkcs12-certificate)
+* File-based [PKCS12 certificates](#import-an-existing-pkcs12-certificate)
 * [JCERACFKS certificates](#import-an-existing-jceracfks-certificate)
 
 Review the procedure to import existing PKCS12 or JCERACFKS certificates as well as how to import a certificate stored in an MVS data set into a Zowe key ring.
