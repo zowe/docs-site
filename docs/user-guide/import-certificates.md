@@ -90,21 +90,23 @@ To avoid requiring each browser to trust the CA that signed the Zowe certificate
 
 Zowe also supports importing certificates to make REST GTTPS curl request from the command line.
 
-Follow the instructions to import `local_ca.cer` from the path `.../zowe/keystore/local_ca`. Notes: the steps are verified with Ubuntu 20.04.6 LTS.
+Follow these steps to import `local_ca.cer` from the path `.../zowe/keystore/local_ca`.
+
+**Note:** Steps are verified with Ubuntu 20.04.6 LTS.
 
 1. Rename it with `.crt` file extension and copy it to the shared ca-certificates path.
    
    `$ cp local_ca.cer /usr/local/share/ca-certificates/zowe_local_ca.crt`
 
-2. Execute a ca-certificate store update by running the following command.
+2. Execute a ca-certificate store update by running the following command:
    
    `$ sudo update-ca-certificates`
 
-3. Verify the newly expected certificate was added (the newest will be at the bottom because it is a long list of concatenated CA's)
+3. Verify that the new expected certificate was added (the newest will be at the bottom of the list which contains an extended list of concatenated CAs)
    
    `$ cat /etc/ssl/certs/ca-certificates.crt`
 
-4. Run a basic curl HTTPS request from the command line. For example, run the following command.
+4. Run a basic curl HTTPS request from the command line. For example, run the following command:
 
 ```
   curl --request 'GET'
