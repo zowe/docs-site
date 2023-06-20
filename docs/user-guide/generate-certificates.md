@@ -240,8 +240,7 @@ The following command output shows the generation of a JCERACFKS certificate usi
 ```
 
 **Tips:**  
-
-* As shown in the example, the job ends with code `0`. There may, however, be failures in the individual steps. It is advised to check the job output. The security manager commands in the job are generated based on the value of `zowe.security.product`. Job steps for each product can be determined by the security manager.  
+As shown in the example, the job ends with code `0`. There may, however, be failures in the individual steps. It is advised to check the job output. The security manager commands in the job are generated based on the value of `zowe.security.product`. Job steps for each product can be determined by the security manager.  
 
 Now you can open the `zowe.yaml` file to check the references to the newly generated certificate values. Because the `--update-config` parameter was specified the runtime configuration section of zowe.yaml is updated to match the values to the generated keystore, certificate, and certificate authority. The updated section is shown in the following code snippet:
 
