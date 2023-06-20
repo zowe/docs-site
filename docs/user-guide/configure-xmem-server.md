@@ -162,6 +162,14 @@ To diagnose problems that may occur with the Zowe `ZWESLSTC` not being able to a
 
 If the `crossMemoryServerName` is changed in `zowe.yaml` and the default name is not applied, mannually update the `PROC NAME` in the corresponding `PROCLIB`.
 
+For example, the ZIS server name is changed from its default of `ZWESIS_STC` to be `ZWESIS_02`. The `PROCLIB` member line 1 is updated from `//ZWESIS01  PROC NAME='ZWESIS_STD',MEM=00,RGN=0M` to `//ZWESIS_01  PROC NAME='ZWESIS_02',MEM=02,RGN=0M`. 
+And the `zowe.yaml` file is updated to use the `02` instance:
+
+```
+zss:
+    crossMemoryServerName: ZWESIS_02
+```
+
 ## Zowe auxiliary service
 
 Under some situations in support of a Zowe extension, the cross memory server will start, control, and stop an auxiliary address space. This run as a `ZWESASTC` started task that runs the load module `ZWESAUX`. 
