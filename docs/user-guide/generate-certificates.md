@@ -1,4 +1,4 @@
-# Generate a certificate if you do not have a certificate
+# Generate a certificate if you do not have one
 
 If you do not have a certificate, you can generate either of the following certificate types:
 

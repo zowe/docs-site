@@ -1,4 +1,4 @@
-# Configuring Zowe certificates 
+# Zowe certificate configuration overview
 
 As a system programmer, review this article to learn about the key concepts of Zowe certificates, and options for certificate configuration. 
 
