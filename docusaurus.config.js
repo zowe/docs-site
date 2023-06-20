@@ -1,4 +1,4 @@
-const LATEST_VERSION = "v2.8.x";
+const LATEST_VERSION = "v2.9.x";
 const versionsArray = require("./versions.json");
 
 module.exports = {
@@ -24,7 +24,11 @@ module.exports = {
     }),
   },
   themeConfig: {
-    hideableSidebar: true,
+    docs: {
+      sidebar: {
+        hideable: true
+      }
+    },
     image: "img/zowe-icon.png",
     navbar: {
       title: "Zowe Docs",
@@ -176,10 +180,6 @@ module.exports = {
     prism: {
       additionalLanguages: ["ini", "java", "properties", "groovy", "markup"],
     },
-    googleAnalytics: {
-      trackingID: "UA-123892882-1",
-      anonymizeIP: true,
-    },
   },
   customFields: {
     latestVersion: LATEST_VERSION,
@@ -201,6 +201,9 @@ module.exports = {
               path: "stable",
               label: `${LATEST_VERSION}` + " LTS",
             },
+            "v2.8.x": {
+              label: "v2.8.x LTS",
+            },
             "v2.7.x": {
               label: "v2.7.x LTS",
            },
@@ -220,6 +223,10 @@ module.exports = {
               label: "v1.28.x LTS",
             },
           },
+        },    
+        googleAnalytics: {
+          trackingID: "UA-123892882-1",
+          anonymizeIP: true,
         },
         theme: {
           customCss: require.resolve("./src/css/custom.css"),

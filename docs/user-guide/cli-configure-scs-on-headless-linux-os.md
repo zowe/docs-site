@@ -47,19 +47,18 @@ When you are using SSH or TTY to log in to Linux, you can configure the Gnome ke
         session optional pam_gnome_keyring.so auto_start
         ```
 
-3. Add the following statements to `~/.bashrc`. The statement lets you launch DBus, which the Gnome keyring requires. Also the statement lets the keyring daemon start so that it is ready to be used by Zowe CLI commands.
+3. Add the following commands to `~/.bashrc`. The first command will launch DBus, which the Gnome keyring requires. The second command starts the keyring daemon so that it is ready to be used by Zowe CLI commands.
     ```bash
-    if test -z "$DBUS_SESSION_BUS_ADDRESS" ; then
-      exec dbus-run-session -- $SHELL
+    if [[ $- == *i* ]]; then  # Only run in interactive mode
+      if test -z "$DBUS_SESSION_BUS_ADDRESS" ; then
+        exec dbus-run-session -- $SHELL
+      fi
+
+      gnome-keyring-daemon --start --components=secrets
     fi
     ```
 
-4. Start the Gnome keyring daemon:
-    ```
-    gnome-keyring-daemon --start --components=secrets
-    ```
-
-5. Restart your computer.
+4. Restart your computer.
 
     Issue a Zowe CLI command that uses secure credentials to test that automatic unlock of the keyring works.
 
