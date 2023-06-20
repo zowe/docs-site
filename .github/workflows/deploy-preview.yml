@@ -1,0 +1,62 @@
+name: Deploy to Netlify
+
+on:
+  workflow_run:
+    workflows: ["Build docs site"]
+    types: [completed]
+
+jobs:
+  deploy:
+    if: ${{ github.event.workflow_run.event == 'pull_request' && github.event.workflow_run.conclusion == 'success' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+
+    steps:
+      - name: Download Build Artifact
+        id: download-artifact
+        uses: dawidd6/action-download-artifact@v2
+        with:
+          workflow: build-docs.yml
+          run_id: ${{ github.event.workflow_run.id }}
+          name: preview-build
+          if_no_artifact_found: warn
+
+      - name: Extract Build Archive
+        if: ${{ steps.download-artifact.outputs.found_artifact == 'true' }}
+        run: |
+          tar -xf build.tar.zst && rm build.tar.zst
+          cat build/.env >> "$GITHUB_ENV" && rm build/.env
+
+      - name: Deploy to Netlify
+        id: deploy
+        if: ${{ steps.download-artifact.outputs.found_artifact == 'true' }}
+        uses: nwtgck/actions-netlify@v2
+        with:
+          publish-dir: build
+          production-deploy: false
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          deploy-message: "Deploy from GitHub Actions"
+          enable-pull-request-comment: false
+          enable-commit-comment: false
+          # enable-github-deployment: false
+        env:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+
+      - name: Comment on PR
+        if: ${{ steps.deploy.outputs.deploy-url }}
+        uses: marocchino/sticky-pull-request-comment@v2
+        with:
+          number: ${{ env.PR_NUMBER }}
+          message: |
+            🚀 Deployed on ${{ steps.deploy.outputs.deploy-url }}
+
+      - name: Set Commit Status
+        if: ${{ always() && steps.download-artifact.outputs.found_artifact == 'true' }}
+        uses: myrotvorets/set-commit-status-action@master
+        with:
+          status: ${{ job.status == 'success' && 'success' || 'failure' }}
+          sha: ${{ github.event.workflow_run.head_sha }}
+          targetUrl: ${{ steps.deploy.outputs.deploy-url }}
+          description: Netlify deployment
+          context: Netlify

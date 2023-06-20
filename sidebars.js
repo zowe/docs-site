@@ -24,6 +24,7 @@ module.exports = {
       label: "Release notes",
       items: [
         "getting-started/release-notes/release-notes-overview",
+        "getting-started/release-notes/v2_9_0",
         "getting-started/release-notes/v2_8_0",
         "getting-started/release-notes/v2_7_0",
         "getting-started/release-notes/v2_6_1",
@@ -125,6 +126,7 @@ module.exports = {
                   type: "category",
                   label: "Configuring certificates",
                   items: [
+                    "user-guide/configure-certificates",
                     "user-guide/configure-certificates-keystore",
                     "user-guide/configure-certificates-keyring",
                     "user-guide/certificates-setup",
@@ -461,6 +463,7 @@ module.exports = {
                 "user-guide/cli-ftpplugin",
                 "user-guide/cli-imsplugin",
                 "user-guide/cli-mqplugin",
+                "user-guide/cli-idfplugin",
               ],
             },    
           ],
@@ -566,6 +569,7 @@ module.exports = {
                 "extend/extend-apiml/authentication-for-apiml-services",
                 "extend/extend-apiml/zaas-client",
                 "extend/extend-apiml/certificate-management-in-zowe-apiml",
+                "extend/extend-apiml/api-mediation-oidc-authentication",
               ],
             },
             {
@@ -703,6 +707,7 @@ module.exports = {
           items: [
             "troubleshoot/ze/troubleshoot-ze",
             "troubleshoot/ze/known-ze",
+            "troubleshoot/ze/ze-known-limits",
             "troubleshoot/ze/ze-issues",
           ],
         },
@@ -836,7 +841,7 @@ module.exports = {
     {
       type: "link",
       label: "Third Party Software Requirements",
-      href: "https://github.com/zowe/docs-site/tree/master/tpsr/tpsr-v2.8.x.md",
+      href: "https://github.com/zowe/docs-site/tree/master/tpsr/tpsr-v2.9.x.md",
     },
   ],
 };
