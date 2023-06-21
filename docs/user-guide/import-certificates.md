@@ -94,7 +94,7 @@ Follow these steps to import `local_ca.cer` from the path `.../zowe/keystore/loc
 
 **Note:** Steps are verified with Ubuntu 20.04.6 LTS.
 
-1. Rename it with `.crt` file extension and copy it to the shared ca-certificates path.
+1. Rename `local_ca.cer` with `local_ca.crt` and copy it to the shared ca-certificates path.
    
    `$ cp local_ca.cer /usr/local/share/ca-certificates/zowe_local_ca.crt`
 
