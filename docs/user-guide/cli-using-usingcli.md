@@ -6,6 +6,10 @@ You can use the CLI interactively from a command window on any computer on which
 
 **Tip:** If you want to use the CLI together with a screen reader to provide accessibility, we recommend using the Mac™ Terminal application enabled for Accessibility through [System Preferences > Accessibility](https://support.apple.com/zh-sg/guide/terminal/trml1020/mac). On Windows™, adjust the Properties settings in Command Prompt. For other operating systems, or for alternative terminals, check the specification for the terminal to ensure that it meets accessibility requirements.
 
+## Profile best practices
+
+According to [order of precedence](https://docs.zowe.org/v1.28.x/user-guide/cli-usingcli/#how-command-precedence-works), base profiles are used as a fallback for service profiles. This means that after you create a base profile, you might need to update your service profiles to remove username, password, host, and port information. Otherwise, commands will use the information stored in your service profile and will ignore your base profile definition.
+
 ## Supported CPU architectures, operating systems and package/resource managers
 
 Zowe CLI supports the following CPU architectures:
