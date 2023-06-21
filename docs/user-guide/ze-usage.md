@@ -59,3 +59,34 @@ If Zowe Explorer is not installed, you can install the current release of the ex
 
 3. Click the **Down** arrow next to the **Uninstall** button. Select **Install Another Version…** to open a dropdown menu that lists previous versions of Zowe Explorer.
 4. Search for and click the version of Zowe Explorer you want to install.
+
+## Credentials in Zowe Explorer
+
+When working in remote or virtualized environments &mdash; such as Eclipse Che, GitHub Codespaces, CodeReady Workspaces &mdash; administrators may find the configuration process for storing credentials securely too cumbersome. Instead, they may prefer to rely on the security tools integrated with these environments, like file access permissions. To do so, administrators need to disable Zowe Explorer's credential management functionality.
+
+**[Note: check theia]** 
+
+### Preventing Zowe Explorer from storing credentials
+
+1. Open the `zowe.config.json` file in Visual Studio Code
+
+2. Find the `autoStore` property
+3. Set the `autoStore` property to `false`
+
+   Credentials will be stored on a per profile/per panel basis until one of the following takes place:
+
+   - Data Sets/USS/Jobs panel refresh caused by an update to the `zowe.config.json` file
+   - Zowe Explorer refresh in the **Command Palette**
+   - Reload of the Visual Studio Code window
+   - Closing and reopening the VS Code window
+
+### Disabling Secure Credential Storage of credentials
+
+**NOTE: Confirm v1**
+
+1. Navigate to **Settings** in VS Code
+
+2. Uncheck the **Security: Secure Credentials Enabled** checkbox. 
+
+   When disabled and `autoStore` is set to True in `zowe.config.json`, z/OS credentials are stored as plain text in the configuration file.
+   
