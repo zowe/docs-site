@@ -274,15 +274,11 @@
                     },
                     {
                       "type": "doc",
-                      "id": "version-v2.8.x/user-guide/import-certificates"
+                      "id": "version-v2.8.x/user-guide/configure-certificates-keystore"
                     },
                     {
                       "type": "doc",
-                      "id": "version-v2.8.x/user-guide/generate-certificates"
-                    },
-                    {
-                      "type": "doc",
-                      "id": "version-v2.8.x/user-guide/use-certificates"
+                      "id": "version-v2.8.x/user-guide/configure-certificates-keyring"
                     },
                     {
                       "type": "doc",
