@@ -26,7 +26,7 @@ Release contacts are as follows:
 
 - Release engineer: OJ Celis (Slack @OJ Celis)
 
-For each release, Zowe documentation should define a doc delivery schedule with several key checkpoints. Code freeze date is not doc freeze date. The doc usually freezes 1 day before the GA date to allow time for doc build testing and issue fix. We also define a freeze date for release notes which is usually 3 days before the GA date to allow time for review. 
+For each release, Zowe documentation should define a doc delivery schedule with several key checkpoints. Code freeze date is not doc freeze date. The doc usually freezes 1 day before the GA date to allow time for doc build testing and issue fix. We also define a freeze date for release notes which is usually 3 days before the GA date to allow time for review.
 
 The following schedule takes release version 2.4 as an example: 
 
@@ -53,11 +53,10 @@ Once a new release rolls out, the `docs-staging` branch should be updated to get
 - Bump the release version number to vNext
 - Create placeholder files and folders for the vNext release, such as release notes document and TPSR document
 
-The following steps takes v1.25 release preparation as an example. v1.24 was released a day ago, now we will prepare the `docs-staging` branch for the v1.25 release. An example commit for the steps can be found in [this](https://github.com/zowe/docs-site/commit/7f3dc7a938609d84f15d3ad6e67198155d0de029) commit.
-
+The following steps takes v1.25 release preparation as an example. These steps should be followed the day Code Freeze takes place.
 ### **Part 1: Sync the doc branches**
 
-Update the `docs-staging` branch so it includes all the necessary updates made to the `master` branch.
+Summary: Update the `docs-staging` branch so it includes all the necessary updates made to the `master` branch.
 
 **Procedure**
 1. Create a pull request to update the `docs-staging` branch with changes made to the `master` branch.
@@ -73,7 +72,7 @@ Next, let's archive the content for the current version (example: v1.24).
 
 ### **Part 2: Archive the previous release doc**
 
-Create new directories to archive content. Relocate content files for the *current* release (v1.24.x) so they become content files for the *previous* release.
+Summary: Create new directories to archive content. Relocate content files for the *current* release (v1.24.x) so they become content files for the *previous* release.
 
 **Procedure**
 
@@ -135,7 +134,7 @@ Next, let's bump the version of docs to a new version (example: v1.25).
 
 ### Part 3: Bump the release version
 
-Using Visual Studio Code, update the necessary files to add the next release to the Zowe Docs site.
+Summary: Using Visual Studio Code, update the necessary files to add the next release to the Zowe Docs site.
 
 **Procedure**
 
@@ -188,7 +187,7 @@ Using Visual Studio Code, update the necessary files to add the next release to 
 
 ### Part 4: Prepare new release files
 
-Using Visual Studio Code, create placeholder files for the next release's release notes and TPSRs. Finish the staging process by merging your PR in GitHub.
+Summary: Using Visual Studio Code, create placeholder files for the next release's release notes and TPSRs. Finish the staging process by merging your PR in GitHub.
 
 **Procedure**
 
