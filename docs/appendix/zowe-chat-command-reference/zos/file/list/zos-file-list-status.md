@@ -1,6 +1,6 @@
 # zos file list status
 
-**[zos](../../zos) > [file](../file) > [list](./list) > [status](zos-file-list-status)** 
+**[zos](../../zos-article) > [file](../file-article) > [list](./list-article) > [status](zos-file-list-status)** 
 
 Show status or details of USS files. <!--file-list-status-description-->
 
