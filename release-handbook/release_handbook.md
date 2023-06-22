@@ -47,13 +47,13 @@ This information guides you to archive the documentation of the previous version
 
 The vNext release documentation is hosted in the `docs-staging` branch. The `docs-staging` branch is merged to the `master` branch when a release is published. 
 
-Once a new release rolls out, the `docs-staging` branch should be updated to get prepared for the next release. The updates include but are not limited to the following aspects:
+Once the Code Freeze for a new release takes place, the `docs-staging` branch must be updated to get prepared for the next release. The updates include but are not limited to the following aspects:
 
 - Archive the previous version documentation
 - Bump the release version number to vNext
 - Create placeholder files and folders for the vNext release, such as release notes document and TPSR document
 
-The following steps takes v1.25 release preparation as an example. These steps should be followed the day Code Freeze takes place.
+The following steps takes v1.25 release preparation as an example. You should follow these steps the day Code Freeze takes place.
 ### **Part 1: Sync the doc branches**
 
 Summary: Update the `docs-staging` branch so it includes all the necessary updates made to the `master` branch.
