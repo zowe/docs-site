@@ -7,7 +7,8 @@
 <link rel="stylesheet" href="../css/docs.css">
 <article class="markdown-body">
 <h2><a href="zowe.html">zowe</a> › <a href="zowe_dbm-db2.html">dbm-db2</a> › <a href="zowe_dbm-db2_execute.html">execute</a> › <a href="zowe_dbm-db2_execute_compare-script.html">compare-script</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
-<p>Execute the compare script that was generated with the 'zowe dbm-db2 compare ddl' command to implement the Db2 object changes on the Db2 subsystem specified within the script. This command also generates a recovery script to undo compare script changes.</p>
+<p>Execute the compare script that was generated with the 'zowe dbm compare ddl' command to implement the Db2 object changes on the Db2 subsystem specified within the script. This command also generates a recovery script to undo compare script changes.</p>
+<p>For details about command usage for automation, see DBM-Db2 samples at <a href="https://github.com/BroadcomMFD/dbm-db2-for-zowe-cli">https://github.com/BroadcomMFD/dbm-db2-for-zowe-cli</a></p>
 <h4>Usage</h4>
 <p>zowe dbm-db2 execute compare-script &lt;local-input-compare-script-filename&gt; [options]</p>
 <h4>Positional Arguments</h4>
@@ -15,7 +16,7 @@
 <li>
 <p><code>local-input-compare-script-filename</code>		 <em>(string)</em></p>
 <ul>
-<li>Specifies the local input compare-script file that contains the update script that was generated with the 'zowe dbm-db2 compare ddl' command.</li>
+<li>Specifies the local input compare-script file that contains the update script that was generated with the 'zowe dbm compare ddl' command.</li>
 </ul>
 </li>
 </ul>
@@ -25,7 +26,7 @@
 <p><code>--output-recovery-script</code> | <code>--ors</code> | <code>--output-recovery-file</code> | <code>--orf</code> <em>(string)</em></p>
 <ul>
 <li>
-<p>Specifies the local output file name that contains the recovery script that is generated during execution of this command. Executing the recovery script using the 'zowe dbm-db2 execute script' command undoes the changes that were made by execution of the compare-script.</p>
+<p>Specifies the local output file name that contains the recovery script that is generated during execution of this command. Executing the recovery script using the 'zowe dbm execute script' command undoes the changes that were made by execution of the compare-script.</p>
 <p>Default value: recovery.txt</p>
 </li>
 </ul>
