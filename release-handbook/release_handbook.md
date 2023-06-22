@@ -48,136 +48,168 @@ The vNext release documentation is hosted in the `docs-staging` branch. The `doc
 
 Once a new release rolls out, the `docs-staging` branch should be updated to get prepared for the next release. The updates include but are not limited to the following aspects:
 
-- Archive the previous cversion documentation
+- Archive the previous version documentation
 - Bump the release version number to vNext
 - Create placeholder files and folders for the vNext release, such as release notes document and TPSR document
 
-The following steps takes v1.25 release prepration as an example. v1.24 was released a day ago, now we will prepare the `docs-staging` branch for the v1.25 release. An example commit for the steps can be found in [this](https://github.com/zowe/docs-site/commit/7f3dc7a938609d84f15d3ad6e67198155d0de029) commit. 
+The following steps takes v1.25 release preparation as an example. v1.24 was released a day ago, now we will prepare the `docs-staging` branch for the v1.25 release. An example commit for the steps can be found in [this](https://github.com/zowe/docs-site/commit/7f3dc7a938609d84f15d3ad6e67198155d0de029) commit.
 
-### Part 1: Archive the previous release doc
+### **Part 1: Sync the doc branches**
 
-1. Update the `docs-staging` branch so it includes all the necessary updates made to the `master` branch. You may need to cherry pick changes to ensure the correct content is copied over to `docs-staging`.
-    - You can use GitHub Desktop to do this. Select the `Branch` menu, then the `Compare to branch` option. Select the `master` branch for comparison.
-2. Go to the `docs-staging` branch.
-3. Navigate to the `/docs-site` directory.
-4. Run the following command:
+Update the `docs-staging` branch so it includes all the necessary updates made to the `master` branch.
+
+**Procedure**
+1. Create a pull request to update the `docs-staging` branch with changes made to the `master` branch.
+  
+    This syncs both branches so that both contain the same content.
+
+2. Create a local build to confirm everything works in the updated `docs-staging` branch.
+
+    1. Run `npm install`.
+    2. Run `npm start` to build the site locally and clear any errors.
+
+Next, let's archive the content for the current version (example: v1.24).
+
+### **Part 2: Archive the previous release doc**
+
+Create new directories to archive content. Relocate content files for the *current* release (v1.24.x) so they become content files for the *previous* release.
+
+**Procedure**
+
+1. Create and publish a new (temporary) branch based off the `master` branch.
+
+    You will use this temporary branch to archive the content from the previous release in `master`.
+2. Open your temporary branch in Visual Studio Code.
+3. In the Terminal window, run the following command:
    
    ```npm run docusaurus docs:version <version>```
 
-   where, _version_ is the version number of the previous release. In our example, this is `v1.24.x` so the command looks like this: 
+   In the preceding command, *\<version>* is the version number of the previous release. In our example, this is `v1.24.x` so the command looks like this:
 
    ```npm run docusaurus docs:version v1.24.x```
 
-   When it completes, you’ll see a message `[docs]: version v1.24.x created!` 
+   When it completes, you’ll see a message `[docs]: version v1.24.x created!`
 
     By doing this, the document versioning mechanism will:
 
     * Copy the full `docs/` folder contents into a new `versioned_docs/version-<version>/` folder.
-    * Create a versioned sidebars file based from your current sidebar configuration - saved as `versioned_sidebars/version-<version>-sidebars.json`.
+    * Create a versioned `sidebars` file based from your current sidebar configuration - saved as `versioned_sidebars/version-<version>-sidebars.json`.
     * Append the new version number to `versions.json`.
 
-    Here is an example of the changes when viewed in GitHub Desktop.
-
-    ![Tag new version](images/tag-new-version.png)
-
-5. Archive the `/static` files. 
+4. Archive the `/static` files. 
     
    1. Go to the `/static` folder. 
-   2. Create an empty directory with the name of Previous version in `/static`. Example: static/v1.24.x.
-   3. Copy all contents of the `/static/stable` directory and paste them in the Previous version's empty directory in the above step. Example: /static/v1.24.x.
+   2. Create an empty directory with the name of the previous version in `/static`. For example: `static/v1.24.x`.
+   3. Copy all contents of the `/static/stable` directory and paste them in the previous version's empty directory in the above step. For example: `/static/v1.24.x`.
 
-6. Next, update some links in the archived documentation to ensure that they refer to the correct location. To do this, switch to the archived directory. In our example, `versioned_docs/version-v1.24.x`. Update several locations in the archived docs to refer to the 1.24 release. 
+5. Update some links in the archived documentation to ensure that they refer to the correct location. To do this, switch to the archived directory. In our example, `versioned_docs/version-v1.24.x`. Update several locations in the archived docs to refer to the correct release, the 1.24 release.
 
-   **Tip**: It's recommended that you use the Find function of Visual Studio Code editor to make the update. In our example, you can right-click the `versioned_docs/version-v1.24.x` folder and then select **Find in Folder**. 
+   **Tip**: Use the Find function of Visual Studio Code editor to make the updates. In our example, you can right-click the `versioned_docs/version-v1.24.x` folder and then select **Find in Folder**.
 
    ![Find in files in VSCode](images/vscode-find.png)
 
-   * Search all instances of `<a href="/v2.7.x/web_help/index.html" target="_blank">` and replace `stable` in the link with the previous version before adding the new version. Example: `<a href="/v1.24.x/web_help/index.html" target="_blank">`.
+   * Search all instances of `<a href="/stable/web_help/index.html" target="_blank">` and replace `stable` in the link with the previous version before adding the new version. Example: `<a href="/v1.24.x/web_help/index.html" target="_blank">`.
    
      ![Update CLI web help](images/update-cli-web-help.png)
 
-   * Search all instaces of `<a href="/v2.7.x/CLIReference_Zowe.pdf" target="_blank">` and replace `stable` with the previous version before adding the new version. Example: `<a href="/v1.24.x/CLIReference_Zowe.pdf" target="_blank">`.
+   * Search all instaces of `<a href="/stable/CLIReference_Zowe.pdf" target="_blank">` and replace `stable` with the previous version before adding the new version. Example: `<a href="/v1.24.x/CLIReference_Zowe.pdf" target="_blank">`.
 
      ![Update CLI reference PDF](images/update-cli-reference.png)
 
-   * Search all instaces of `<a href="/v2.7.x/zowe_web_help.zip" target="_blank">` and replace `stable` with the previous version before adding the new version. Example: `<a href="/v1.24.x/zowe_web_help.zip" target="_blank">`. 
+   * Search all instaces of `<a href="/stable/zowe_web_help.zip" target="_blank">` and replace `stable` with the previous version before adding the new version. Example: `<a href="/v1.24.x/zowe_web_help.zip" target="_blank">`. 
 
      ![Update CLI web help ZIP](images/update-cli-help-zip.png)
 
-7. Verify that the archived version works:
+6. Verify that the archived version works:
     1. Run `npm install`.
-    2. Run `npm start` to build the site locally and clear any errors. 
+    2. Run `npm start` to build the site locally and clear any errors.
 
         ![Verify the archived doc](images/verify-archive.png)
 
-Next, let's bump the version of docs to a new version (example: v1.25). 
+7. Create a pull request to merge the content in your temporary branch into the `docs-staging` branch.
 
-### Part 2: Bump the release version
+    Once the PR is merged, an archive of the content for the previous release (v1.24 in our example) is created in the `docs-staging` branch.
 
-1. Navigate to the `/docusaurus.config.js` file. 
-2. Change the `LATEST_VERSION` variable present in `/docusaurus.config.js` to a new version. 
-3. Locate the presets: > @docusaurus/preset-classic" > docs > versions. Create a Previous version's entry label. Example: if version v1.24.x docs is getting updated to v1.25.x. Then v1.24.x will be appended between current & v1.23.x in the following format:
+Next, let's bump the version of docs to a new version (example: v1.25).
 
-```
-presets: [
-    [
-      "@docusaurus/preset-classic",
-      {
-        docs: {
-          path: "docs",
-          sidebarPath: require.resolve("./sidebars.js"),
-          editUrl: "https://github.com/zowe/docs-site/edit/master/",
-          showLastUpdateAuthor: false,
-          showLastUpdateTime: true,
-          routeBasePath: "/",
-          lastVersion: "current",
-          versions: {
-            current: {
-              path: "stable",
-              label: `${LATEST_VERSION}` + " LTS",
-            },
-            "v1.24.x": {
-              label: "v1.24.x LTS",
-            },
-            "v1.23.x": {
-              label: "v1.23.x LTS",
-            },
-```
+### Part 3: Bump the release version
 
-4. Go to the `versions.json` file. Add the previous release version number at the top of the list. For example, 
+Using Visual Studio Code, update the necessary files to add the next release to the Zowe Docs site.
 
-```
-  [
-  "v1.24.x",
-  "v1.23.x",
-  "v1.22.x",
-  "v1.21.x",
-  "v1.20.x",
-  "v1.19.x"
-  ]
-  ```
+**Procedure**
 
-### Part 3: Prepare new release files
+1. Open the `docs-staging` branch in Visual Studio Code.
+2. Navigate to the `/docusaurus.config.js` file.
+3. Change the `LATEST_VERSION` variable present in `/docusaurus.config.js` to a new version. 
 
-1. Add the release notes placeholder file for the new version. 
-    1. Go to `/docs/getting-started/release-notes`. 
+    Locate the presets: `> @docusaurus/preset-classic" > docs > versions`. Create an entry label for the previous version.
+    
+    Example: If version v1.24.x docs is getting updated to v1.25.x, then v1.24.x will be appended between `current` and `v1.23.x` in the following format:
+
+        ```
+        presets: [
+            [
+              "@docusaurus/preset-classic",
+              {
+                docs: {
+                  path: "docs",
+                  sidebarPath: require.resolve("./sidebars.js"),
+                  editUrl: "https://github.com/zowe/docs-site/edit/master/",
+                  showLastUpdateAuthor: false,
+                  showLastUpdateTime: true,
+                  routeBasePath: "/",
+                  lastVersion: "current",
+                  versions: {
+                    current: {
+                      path: "stable",
+                      label: `${LATEST_VERSION}` + " LTS",
+                    },
+                    "v1.24.x": {
+                      label: "v1.24.x LTS",
+                    },
+                    "v1.23.x": {
+                      label: "v1.23.x LTS",
+                    },
+        ```
+
+4. Open the `versions.json` file. Add the previous release version number at the top of the list. For example:
+
+    ```
+      [
+      "v1.24.x",
+      "v1.23.x",
+      "v1.22.x",
+      "v1.21.x",
+      "v1.20.x",
+      "v1.19.x"
+      ]
+      ```
+
+### Part 4: Prepare new release files
+
+Using Visual Studio Code, create placeholder files for the next release's release notes and TPSRs. Finish the staging process by merging your PR in GitHub.
+
+**Procedure**
+
+1. Add the release notes placeholder file for the new version.
+    1. Go to `/docs/getting-started/release-notes`.
     2. Create a file for the new version and add the outline to the document. For example: `/docs/getting-started/release-notes/v1_25.md`
 
-       Populate the release notes file with the basic outline. Copy and paste the template from the [Release Notes guide](release_notes_guide.md). Ensure that you update the release version number in the template. 
+       To insert the outline, copy and paste the template from the [Release Notes guide](release_notes_guide.md). Ensure that you update the release version number in the template.
 
-    3. Go to `sidebars.js` file and add the new topic to the release notes section.    
-    ```
-    {
-      type: "category",
-      label: "Release notes",
-      items: [
-        "getting-started/release-notes/v1_25",
-        "getting-started/release-notes/v1_24",
-        "getting-started/release-notes/v1_23",
-        "getting-started/summaryofchanges",
-      ],
-    },
-    ```
+    3. Open the `sidebars.js` file and add the new topic to the release notes section.
+        ```
+        {
+          type: "category",
+          label: "Release notes",
+          items: [
+            "getting-started/release-notes/v1_25",
+            "getting-started/release-notes/v1_24",
+            "getting-started/release-notes/v1_23",
+            "getting-started/summaryofchanges",
+          ],
+        },
+        ```
 
 2. Add the TPSR placeholder file. 
     1. Go to the `/tpsr` directory. 
@@ -192,37 +224,42 @@ presets: [
         },
         ```
 
-    **Note:** This is just a placeholder file. Once the RC build is available, this file should be updated to include the information for the new release. 
+        **Note:** This is just a placeholder file. Once the RC build is available, this file should be updated to include the information for the new release. 
 
-3. Build the site to check that no error occurs.
+3. Create a local build to confirm everything works in the updated `docs-staging` branch.
 
-Done! The site setup for the new release version is now complete. 
+    1. Run `npm install`.
+    2. Run `npm start` to build the site locally and clear any errors.
+
+4. Once you confirm that everything works in the `docs-staging` build, merge the pull request in GitHub.
+
+Done! The site setup for the new release version is now complete.
 
 ### What to do next 
 
-Next, you must inform the squad and community that the branch for the vNext release is ready for doc changes. Post an announcement in the Slack channel [#zowe-doc](https://openmainframeproject.slack.com/archives/CC961JYMQ). 
+Next, you must inform the squad and community that the branch for the vNext release is ready for doc changes. Post an announcement in the Slack channel [#zowe-doc](https://openmainframeproject.slack.com/archives/CC961JYMQ).
 
 ## Sync changes between releases
 
-Before the new release is published, you need to cherry-pick changes from the `master` branch periodically into the `docs-staging` branch to ensure that important changes are incorporated into the next release. The changes could include but are not limited to: 
+Before the new release is published, you need to cherry-pick changes from the `master` branch periodically into the `docs-staging` branch to ensure that important changes are incorporated into the next release. The changes could include but are not limited to:
 
-- Late-coming doc changes that go to the `master` branch directly after the GA. 
+- Late-coming doc changes that go to the `master` branch directly after the GA.
 
-   For example, a feature doc for v1.24 didn't catch the GA date and two days after the v1.24 GA, the doc was published directly to master. In this case, it should be synchronized back to the docs-staging branch as these changes also apply to the next release. 
-- Doc fixes into the `master` branch, such as broken links, typos, doc editings. 
-- Doc enhancements into the `master` branch, such as refactoring, edits, new troubleshooting tips, etc. 
+   For example, a feature doc for v1.24 didn't catch the GA date and two days after the v1.24 GA, the doc was published directly to master. In this case, it should be synchronized back to the docs-staging branch as these changes also apply to the next release.
+- Doc fixes into the `master` branch, such as broken links, typos, doc edits.
+- Doc enhancements into the `master` branch, such as refactoring, edits, new troubleshooting tips, etc.
 
 ## Publish documentation for a new release
 
-The documentation for the new release is published with the build simultaneously. 
+The documentation for the new release is published with the build simultaneously.
 
 Usually 1 week before the GA date of the new release, create a PR to merge the `docs-staging` branch to the `master` branch and do the following:
 
-- Add the Zowe release engineer to the reviewer list. Check out the [release communication](#release-communication) section for up-to-date names. 
-- Add Zowe Doc Squad maintainers to the reivewer list. 
-- Check the build status and send build issues to the doc squad. 
+- Add the Zowe release engineer to the reviewer list. Check out the [release communication](#release-communication) section for up-to-date names.
+- Add Zowe Doc Squad maintainers to the reviewer list.
+- Check the build status and send build issues to the doc squad.
 
-Usually 2 days before the GA date, review the [release checklist](#release-checklist) for the release to ensure that all items are complete. 
+Usually 2 days before the GA date, review the [release checklist](#release-checklist) for the release to ensure that all items are complete.
 
 ### Release checklist
 
