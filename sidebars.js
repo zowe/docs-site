@@ -404,6 +404,7 @@ module.exports = {
           items: [
             "user-guide/cli-using-usingcli",
             "user-guide/cli-using-displaying-help",
+            "user-guide/cli-using-command-precedence",
             "user-guide/cli-using-understanding-core-command-groups",
             "user-guide/cli-using-issuing-first-command",
             {
