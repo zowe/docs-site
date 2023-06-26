@@ -207,7 +207,11 @@ Badge {
 }
 
 .zowe-faq > summary::after {
-  content: "\00a0"; /* non-breaking space */;
+  content: "Click to show answer";
+}
+
+.zowe-faq[open] > summary::after {
+  content: "Click to hide answer";
 }
 
 .hero__title {

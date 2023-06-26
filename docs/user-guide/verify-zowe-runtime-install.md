@@ -39,14 +39,18 @@ where,
 
 **Example:**
 
-The following example illustrates how to use the **curl** utility to invoke API Mediation Layer endpoint and the **grep** utility to parse out the response status variable value
+The following example illustrates how to use the **curl** utility to invoke API Mediation Layer endpoint and the **grep** utility to parse out the response status variable value. The `curl` command is a powerful tool used for making HTTP requests from the command line. It allows you to send and receive data from various protocols, including HTTP, HTTPS, FTP, and more. 
 
 ```
 $ curl -v -k --silent https://myhost:httpsPort/apicatalog/api/v1/application/health 2>&1 | awk '/"status":"UP"/' | awk -F\" '{print$4;}'
 UP
 ```
 
-The response `UP` confirms that API Mediation Layer is installed and is running properly.
+-  `-v`: The `-v` option stands for "verbose." When you include this option, curl provides more detailed information during the request and response process. It displays additional information such as the request headers, response headers, and other debugging details.
+
+- `-k`: The `-k` option stands for "insecure" or "insecure SSL." When you include this option, curl allows insecure connections and bypasses SSL certificate verification. It is useful when making requests to HTTPS URLs with self-signed certificates or when dealing with SSL certificate issues. However, it's important to note that using `-k` removes security checks and may expose you to potential security risks. Exercise caution when using this option, especially in production environments.
+
+The response `UP` confirms that API Mediation Layer is installed and is running properly. For more instructions about `curl` command, please see the [tutorial](https://curl.se/docs/manual.html).
 
 ## Verifying z/OS Services installation
 
