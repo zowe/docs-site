@@ -89,10 +89,7 @@ zowe:
     truststore:
       type: JCERACFKS
       file: safkeyring://ZWESVUSR/ZoweKeyring
-      password: "password"
-    pem:
-      key:
-      certificate:
-      certificateAuthorities: safkeyring:////ZWESVUSR/ZoweKeyring&localca
+      password:
+
 ```
 
