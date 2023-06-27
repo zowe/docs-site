@@ -89,7 +89,7 @@ zowe:
     truststore:
       type: JCERACFKS
       file: safkeyring://ZWESVUSR/ZoweKeyring
-      password:
+      password: 'password'
 
 ```
 
