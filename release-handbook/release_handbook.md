@@ -90,11 +90,11 @@ Summary: Create new directories to archive content. Relocate content files for t
 
    When it completes, you’ll see a message `[docs]: version v1.24.x created!`
 
-    By doing this, the document versioning mechanism will:
+    By doing this, the document versioning mechanism takes the following steps:
 
     * Copy the full `docs/` folder contents into a new `versioned_docs/version-<version>/` folder.
     * Create a versioned `sidebars` file based from your current sidebar configuration - saved as `versioned_sidebars/version-<version>-sidebars.json`.
-    * Append the new version number to `versions.json`.
+    * Append the new version number to the `versions.json` file.
 
 4. Archive the `/static` files. 
     
@@ -102,7 +102,11 @@ Summary: Create new directories to archive content. Relocate content files for t
    2. Create an empty directory with the name of the previous version in `/static`. For example: `static/v1.24.x`.
    3. Copy all contents of the `/static/stable` directory and paste them in the previous version's empty directory in the above step. For example: `/static/v1.24.x`.
 
-5. Update some links in the archived documentation to ensure that they refer to the correct location. To do this, switch to the archived directory. In our example, `versioned_docs/version-v1.24.x`. Update several locations in the archived docs to refer to the correct release, the 1.24 release.
+5. Update some links in the archived documentation to ensure that they refer to the correct location.
+
+    To do this, switch to the archived directory. In our example, `versioned_docs/version-v1.24.x`.
+    
+    Update several locations in the archived docs to refer to the correct release, the 1.24 release (in our example case).
 
    **Tip**: Use the Find function of Visual Studio Code editor to make the updates. In our example, you can right-click the `versioned_docs/version-v1.24.x` folder and then select **Find in Folder**.
 
@@ -128,11 +132,11 @@ Summary: Create new directories to archive content. Relocate content files for t
 
 7. Create a pull request to merge the content in your temporary branch into the `docs-staging` branch.
 
-    Once the PR is merged, an archive of the content for the previous release (v1.24 in our example) is created in the `docs-staging` branch.
+    Once the PR is merged, an archive of the content for the previous release (v1.24, in our example) is created in the `docs-staging` branch.
 
 Next, let's bump the version of docs to a new version (example: v1.25).
 
-### Part 3: Bump the release version
+### **Part 3: Bump the release version**
 
 Summary: Using Visual Studio Code, update the necessary files to add the next release to the Zowe Docs site.
 
@@ -140,11 +144,13 @@ Summary: Using Visual Studio Code, update the necessary files to add the next re
 
 1. Open the `docs-staging` branch in Visual Studio Code.
 2. Navigate to the `/docusaurus.config.js` file.
-3. Change the `LATEST_VERSION` variable present in `/docusaurus.config.js` to a new version. 
+3. Change the `LATEST_VERSION` variable present in the `/docusaurus.config.js` file to a new version.
 
-    Locate the presets: `> @docusaurus/preset-classic" > docs > versions`. Create an entry label for the previous version.
+    1. Locate the presets: `> @docusaurus/preset-classic" > docs > versions`. 
     
-    Example: If version v1.24.x docs is getting updated to v1.25.x, then v1.24.x will be appended between `current` and `v1.23.x` in the following format:
+    2. Create an entry label for the previous version.
+    
+        Example: If version v1.24.x docs is getting updated to v1.25.x, then v1.24.x will be appended between `current` and `v1.23.x` in the following format:
 
         ```
         presets: [
@@ -185,7 +191,7 @@ Summary: Using Visual Studio Code, update the necessary files to add the next re
       ]
       ```
 
-### Part 4: Prepare new release files
+### **Part 4: Prepare new release files**
 
 Summary: Using Visual Studio Code, create placeholder files for the next release's release notes and TPSRs. Finish the staging process by merging your PR in GitHub.
 
@@ -224,14 +230,14 @@ Summary: Using Visual Studio Code, create placeholder files for the next release
         },
         ```
 
-        **Note:** This is just a placeholder file. Once the RC build is available, this file should be updated to include the information for the new release. 
+        **Note:** This is just a placeholder file. Once the RC (Release Candidate) build is available, this file should be updated to include the information for the new release. 
 
 3. Create a local build to confirm everything works in the updated `docs-staging` branch.
 
     1. Run `npm install`.
     2. Run `npm start` to build the site locally and clear any errors.
 
-4. Once you confirm that everything works in the `docs-staging` build, merge the pull request in GitHub.
+4. Once you confirm that everything works in the `docs-staging` build, merge the pull request to the `docs-staging` branch in GitHub.
 
 Done! The site setup for the new release version is now complete.
 
