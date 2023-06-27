@@ -7,7 +7,7 @@ Use commands in the `plugins` command group to install and manage Zowe&trade; CL
 You can install the following Zowe plug-ins:
 - IBM® CICS® Plug-in for Zowe CLI
 - IBM® Db2® Plug-in for Zowe CLI
-- [Third-party Zowe Conformant Plug-ins](https://www.openmainframeproject.org/projects/zowe/conformance)
+- [Third-party Zowe Conformant Plug-ins](https://openmainframeproject.org/our-projects/zowe-conformance-program/)
 
 Use either of the following methods to install plug-ins:
 
