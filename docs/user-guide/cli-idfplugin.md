@@ -28,9 +28,9 @@ Use one of the following methods to install or update the plug-in:
 
 Use the following Plug-in ID with either of these installation methods:
 
-    | Plug-in | Syntax |
-    |---------|-----------------------------|
-    | IDF Plugin for Zowe CLI | `@zowe/zowe-cli-id-federation-plugin` |
+| Plug-in | Syntax |
+|---------|-----------------------------|
+| IDF Plugin for Zowe CLI | `@zowe/id-federation-for-zowe-cli` |
 
 ## Usage
 
