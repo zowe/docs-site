@@ -88,7 +88,7 @@ To avoid requiring each browser to trust the CA that signed the Zowe certificate
 
 ### Import a local CA certificate on Linux
 
-Zowe also supports importing certificates to make REST GTTPS curl request from the command line.
+Zowe also supports importing certificates to make REST HTTPS curl request from the command line.
 
 Follow these steps to import `local_ca.cer` from the path `.../zowe/keystore/local_ca`.
 
