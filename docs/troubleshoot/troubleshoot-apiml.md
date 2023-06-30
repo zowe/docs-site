@@ -582,7 +582,7 @@ Starting with Java 11, the safkeyring URLs are dependent on the type of RACF key
 **Symptom:**
 
 API ML components do not start properly because they fail to load the JCERACFKS keyring. The exception message indicates that the keyring is not available. 
-But the keyring is configured correctly and the STC user can access it. 
+The keyring, however, is configured correctly and the STC user can access it. 
 
 **Examples:**
 ```
@@ -602,7 +602,7 @@ JCERACFKS KeyStore not available
 **Solution:**
 
 In Java 11 releases before 11.0.17.0, the `IBMZSecurity` security provider is not enabled by default. Locate the `java.security` configuration file in the `$JAVA_HOME/conf/security` USS directory 
-and open the file for editing. Modify the list of security providers and insert the `IBMZSecurity` on second position. The list of enabled security providers should look like following:
+and open the file for editing. Modify the list of security providers and insert `IBMZSecurity` on second position. The list of enabled security providers should resemble the following series:
 ```
 security.provider.1=OpenJCEPlus
 security.provider.2=IBMZSecurity
