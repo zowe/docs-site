@@ -552,7 +552,7 @@ In this case, ensure that the label names exactly match the names in TSO when co
 
 **Symptom:**
 
-API ML components configured with SAF keyring are not able to start due to an unrecoverable exception. The message indicates that `safkeyring` is unknown protocol. 
+API ML components configured with SAF keyring are not able to start due to an unrecoverable exception. The message indicates that `safkeyring` is an unknown protocol. 
 
 **Examples:**
 ```
@@ -569,10 +569,13 @@ API ML components configured with SAF keyring are not able to start due to an un
 
 **Solution:**
 
-Starting with Java 11, the safkeyring URLs are now dependent on the type of RACF keystore as seen below.
- - The URL for a JCECCARACFKS keystore is now `safkeyringjcecca://ZWESVUSR/ZOWERING` 
- - The URL for a JCERACFKS keystore is now `safkeyringjce://ZWESVUSR/ZOWERING` 
- - The URL for a JCEHYBRIDRACFKS keystore is now `safkeyringjcehybrid://ZWESVUSR/ZOWERING`
+Starting with Java 11, the safkeyring URLs are dependent on the type of RACF keystore as presented in the following table.
+
+| URL | Keystore |
+|------|---------|
+| JCECCARACFKS | `safkeyringjcecca://ZWESVUSR/ZOWERING` |
+| JCERACFKS | `safkeyringjce://ZWESVUSR/ZOWERING` |
+| JCEHYBRIDRACFKS | `safkeyringjcehybrid://ZWESVUSR/ZOWERING` |
 
 ### Failed to load JCERACFKS keyring when using Java 11
 
@@ -599,5 +602,5 @@ JCERACFKS KeyStore not available
 **Solution:**
 
 In Java 11, the `IBMZSecurity` security provider is not enabled by default. Locate the `Java_HOME/conf/security/java.security` configuration file and open 
-it for editing. Modify the list of security providers and insert the `IBMZSecurity` on second position. 
-For more information follow [Enabling the IBMZSecurity provider](https://www.ibm.com/docs/en/semeru-runtime-ce-z/11?topic=guide-ibmzsecurity#ibmzsecurity__enabling_z_provider__title__1)
+the file for editing. Modify the list of security providers and insert the `IBMZSecurity` on second position. 
+For more information see the steps in [Enabling the IBMZSecurity provider](https://www.ibm.com/docs/en/semeru-runtime-ce-z/11?topic=guide-ibmzsecurity#ibmzsecurity__enabling_z_provider__title__1).
