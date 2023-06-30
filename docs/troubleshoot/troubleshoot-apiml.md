@@ -547,3 +547,57 @@ If you are using Zowe's local CA certificate and you still receive **ZWED0148E**
 ```
 
 In this case, ensure that the label names exactly match the names in TSO when confirming your keyring. Any difference in spaces, capitalization, or other places throw the error.
+
+### ZWEAM400E Error initializing SSL Context when using Java 11
+
+**Symptom:**
+
+API ML components configured with SAF keyring are not able to start due to an unrecoverable exception. The message indicates that `safkeyring` is unknown protocol. 
+
+**Examples:**
+```
+2023-06-27 13:07:04.493 <ZWEAGW1:main:394418> ZWESVUSR ERROR (o.z.a.s.HttpsFactory) error java.net.MalformedURLException: unknown protocol: safkeyring                                           
+.at java.base/java.net.URL.<init>(URL.java:652)                                                        
+.at java.base/java.net.URL.<init>(URL.java:541)                                                        
+.at java.base/java.net.URL.<init>(URL.java:488)                                                        
+.at org.zowe.apiml.security.SecurityUtils.keyRingUrl(SecurityUtils.java:246)
+...                                                           
+```
+```
+2023-06-27 13:07:04.528 <ZWEAGW1:main:394418> ZWESVUSR ERROR (o.z.a.s.HttpsFactory) ZWEAM400E Error initializing SSL Context: 'unknown protocol: safkeyring' 
+```
+
+**Solution:**
+
+Starting with Java 11, the safkeyring URLs are now dependent on the type of RACF keystore as seen below.
+ - The URL for a JCECCARACFKS keystore is now `safkeyringjcecca://ZWESVUSR/ZOWERING` 
+ - The URL for a JCERACFKS keystore is now `safkeyringjce://ZWESVUSR/ZOWERING` 
+ - The URL for a JCEHYBRIDRACFKS keystore is now `safkeyringjcehybrid://ZWESVUSR/ZOWERING`
+
+### Failed to load JCERACFKS keyring when using Java 11
+
+**Symptom:**
+
+API ML components do not start properly because they fail to load the JCERACFKS keyring. The exception message indicates that the keyring is not available. 
+But the keyring is configured correctly and the STC user can access it. 
+
+**Examples:**
+```
+2023-06-27 13:07:45.138 ..35m<ZWEACS1:main:67502789>..0;39m APIMTST ..31mERROR..0;39m ..36m(o.a.t.u.n.SSLUtilBase)..0;39m Failed to load keystore type .JCERACFKS. with path .safkeyring://ZWESVUSR/ZOWERING. due to .JCERACFKS not found.
+java.security.KeyStoreException: JCERACFKS not found                                                                                                            
+.at java.base/java.security.KeyStore.getInstance(KeyStore.java:878)                                                                                             
+.at org.apache.tomcat.util.net.SSLUtilBase.getStore(SSLUtilBase.java:187)                                                                                       
+.at org.apache.tomcat.util.net.SSLHostConfigCertificate.getCertificateKeystore(SSLHostConfigCertificate.java:207)                                                                                                                                        
+...
+Caused by: java.security.NoSuchAlgorithmException:                           
+JCERACFKS KeyStore not available                                             
+.at java.base/sun.security.jca.GetInstance.getInstance(GetInstance.java:159) 
+.at java.base/java.security.Security.getImpl(Security.java:725)              
+.at java.base/java.security.KeyStore.getInstance(KeyStore.java:875)          
+```
+
+**Solution:**
+
+In Java 11, the `IBMZSecurity` security provider is not enabled by default. Locate the `Java_HOME/conf/security/java.security` configuration file and open 
+it for editing. Modify the list of security providers and insert the `IBMZSecurity` on second position. 
+For more information follow [Enabling the IBMZSecurity provider](https://www.ibm.com/docs/en/semeru-runtime-ce-z/11?topic=guide-ibmzsecurity#ibmzsecurity__enabling_z_provider__title__1)
