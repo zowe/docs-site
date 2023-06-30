@@ -9,7 +9,8 @@ Learn how to handle the documentation for Zowe releases.
     - [Part 2: Archive the previous release doc](#part-2-archive-the-previous-release-doc)
     - [Part 3: Bump the release version](#part-3-bump-the-release-version)
     - [Part 4: Prepare new release files](#part-4-prepare-new-release-files)
-    - [What to do next](#what-to-do-next)
+    - [Part 5: Continue syncing branches](#part-5-continue-syncing-branches)
+    - [Part 6: Publish documentation for a new release](#part-6-publish-documentation-for-a-new-release)
 - [Sync changes between releases](#sync-changes-between-releases)
 - [Publish documentation for a new release](#publish-documentation-for-a-new-release)
 - [Removing archived version](#removing-archived-version)
@@ -59,14 +60,18 @@ The following steps takes v1.25 release preparation as an example. You should fo
 Summary: Update the `docs-staging` branch so it includes all the necessary updates made to the `master` branch.
 
 **Procedure**
-1. Create a pull request to update the `docs-staging` branch with changes made to the `master` branch.
-  
-    This syncs both branches so that both contain the same content.
+1. Create and publish a new (temporary) branch based off the `master` branch.
 
-2. Create a local build to confirm everything works in the updated `docs-staging` branch.
+2. Create a PR to merge the temporary branch into the `docs-staging` branch.
+  
+    This syncs both branches so that `docs-staging` is updated with all the edits made to the `master` branch since the last time the branches were synched.
+
+3. Create a local build to confirm the updated `docs-staging` branch has no errors.
 
     1. Run `npm install`.
     2. Run `npm start` to build the site locally and clear any errors.
+
+4. Merge the pull request so that `docs-staging` matches the `master` branch.
 
 Next, let's archive the content for the current version (example: v1.24).
 
@@ -76,7 +81,7 @@ Summary: Create new directories to archive content. Relocate content files for t
 
 **Procedure**
 
-1. Create and publish a new (temporary) branch based off the `master` branch.
+1. Create and publish a new (temporary) branch based off the `master` branch. (This branch should be different than the branch in [Part 1](#Part-1-Sync-the-doc-branches).)
 
     You will use this temporary branch to archive the content from the previous release in `master`.
 2. Open your temporary branch in Visual Studio Code.
@@ -84,7 +89,7 @@ Summary: Create new directories to archive content. Relocate content files for t
    
    ```npm run docusaurus docs:version <version>```
 
-   In the preceding command, *\<version>* is the version number of the previous release. In our example, this is `v1.24.x` so the command looks like this:
+   In the preceding command, *\<version>* is the version number of the previous release. In our example, this is `v1.24.x`, so the command looks like this:
 
    ```npm run docusaurus docs:version v1.24.x```
 
@@ -96,7 +101,7 @@ Summary: Create new directories to archive content. Relocate content files for t
     * Create a versioned `sidebars` file based from your current sidebar configuration - saved as `versioned_sidebars/version-<version>-sidebars.json`.
     * Append the new version number to the `versions.json` file.
 
-4. Archive the `/static` files. 
+4. Archive the `/static` files.
     
    1. Go to the `/static` folder. 
    2. Create an empty directory with the name of the previous version in `/static`. For example: `static/v1.24.x`.
@@ -239,15 +244,15 @@ Summary: Using Visual Studio Code, create placeholder files for the next release
 
 4. Once you confirm that everything works in the `docs-staging` build, merge the pull request to the `docs-staging` branch in GitHub.
 
+5. Inform the squad and community that the branch for the vNext release is ready for doc changes. Post an announcement in the Slack channel [#zowe-doc](https://openmainframeproject.slack.com/archives/CC961JYMQ).
+
 Done! The site setup for the new release version is now complete.
 
-### What to do next 
+### **Part 5: Continue syncing branches**
 
-Next, you must inform the squad and community that the branch for the vNext release is ready for doc changes. Post an announcement in the Slack channel [#zowe-doc](https://openmainframeproject.slack.com/archives/CC961JYMQ).
+Summary: Periodically sync the `docs-staging` branch with `master` to ensure that important changes are incorporated into the next release.
 
-## Sync changes between releases
-
-Before the new release is published, you need to cherry-pick changes from the `master` branch periodically into the `docs-staging` branch to ensure that important changes are incorporated into the next release. The changes could include but are not limited to:
+The live site goes through continuous editing, so expect that changes *will* be made from the time you initially synced the `master` and `docs-staging` branches to the day of vNext doc publication. These updates can range from:
 
 - Late-coming doc changes that go to the `master` branch directly after the GA.
 
@@ -255,17 +260,37 @@ Before the new release is published, you need to cherry-pick changes from the `m
 - Doc fixes into the `master` branch, such as broken links, typos, doc edits.
 - Doc enhancements into the `master` branch, such as refactoring, edits, new troubleshooting tips, etc.
 
-## Publish documentation for a new release
+**Procedure**
 
-The documentation for the new release is published with the build simultaneously.
+1. Repeat the steps in [Part 1](#Part-1-Sync-the-doc-branches).
 
-Usually 1 week before the GA date of the new release, create a PR to merge the `docs-staging` branch to the `master` branch and do the following:
+2. About two days before the GA date, review the [release checklist](#release-checklist) for the release to ensure that all items are complete.
+
+### Part 6: Publish documentation for a new release
+
+Summary: Publish the documentation for the new release the day the release goes GA.
+
+**Procedure**
+
+1. The day before the GA date of the new release, create and publish a new (temporary) branch based off the `docs-staging` branch.
+
+2. Create a local build to confirm the updated `docs-staging` branch has no errors.
+
+    1. Run `npm install`.
+    2. Run `npm start` to build the site locally and clear any errors.
+
+3. Create a PR to merge the temporary branch into the `master` branch.
+
+  In your PR, do the following:
 
 - Add the Zowe release engineer to the reviewer list. Check out the [release communication](#release-communication) section for up-to-date names.
 - Add Zowe Doc Squad maintainers to the reviewer list.
 - Check the build status and send build issues to the doc squad.
 
-Usually 2 days before the GA date, review the [release checklist](#release-checklist) for the release to ensure that all items are complete.
+4. Notify the release engineer that the PR has been created and needs review. It is the engineer who will merge the PR once the new release is published.
+
+5. **Important**: Remind the engineer to merge the PR by doing a **merge commit**.
+    The engineer should **NOT** commit with a "squash and merge," which can lead to merge conflicts for later releases.
 
 ### Release checklist
 
