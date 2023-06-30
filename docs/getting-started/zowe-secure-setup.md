@@ -14,9 +14,11 @@ Authorization to access is managed by the mainframe security facility.
 
 Read further to learn more detail on how Zowe leverages modern security concepts and technologies:
 - Digital certificates
+
   - [Digital certificates usage](#digital-certificates-usage)
   - [PKI (Public Key Infrastructure)](#public-key-infrastructure)
-  - [TLS considerations](#tls-considerations)
+  - [Transport Layer Security (TLS)](#transport-layer-security)
+  - [Digital certificates types](#digital-certificates-types)
   - [Certificates storage](#certificates-storage)
 - Authentication methods
   - [Authentication with JSON Web Tokens(JWT)](#authentication-with-json-web-tokensjwt)
@@ -27,48 +29,60 @@ Read further to learn more detail on how Zowe leverages modern security concepts
 - [Access Authorization](#authorization)
 
 ## Digital certificates
-Digital certificates facilitate secure electronic communication and data exchange between people, systems, and devices online.
-A Digital Certificate is an electronic file that is tied to a cryptographic key pair and authenticates the identity of a website, individual, organization, user, device or server.
-They are the foundation to implementing [Public Key Infrastructure (PKI)](#public-key-infrastructure) security.
-Digital certificates are issued by trusted Certificate Authorities (CAs), which also provide certificate validation methods.
-In some cases, e.g. for testing purposes, it is acceptable to issue and sign a certificate locally using security tools specific for the target technology platform.
+Digital certificates facilitate secure electronic communication and data exchange between people, systems, and devices online. They are the foundation to implementing [Public Key Infrastructure (PKI)](#public-key-infrastructure) security.
+A Digital Certificate is an electronic file that is tied to a cryptographic (public and private) key pair and authenticates the identity of a website, individual, organization, user, device or server.
+
+Digital certificates are issued by Certificate Authorities (CAs), which are trusted organizations providing infrastructure for creation of the certificates according to the contemporary security standards.   
+CAs also provide certificate revocation and validation methods. 
+
+In some cases, e.g. for testing purposes of Zowe, it is acceptable to use certificates issued and signed either by a company local CA, or even self-signed certificates issued by using security tools specific for the target technology platform.
 This is however not recommended for production environments.
-
-
-Zowe uses digital certificates as foundation element of the communication and identity security.
-Learn more about how to set up and configure digital certificates used in Zowe - <!-- #TODO Provide link.-->
 
 ### Digital certificates usage
 Digital certificates perform two primary functions:
 - Verifying the identity of the sender/receiver of an electronic message
 - Providing the means to encrypt/decrypt messages between sender and receiver.
 
-Zowe uses digital certificates
+Zowe uses digital certificates as foundation element of the communication and identity security.
+
+Learn more about how to set up and configure digital certificates used in Zowe - <!-- #TODO Provide link.-->
+
 ### Public key infrastructure
 PKI, or Public Key Infrastructure is an important aspect of internet security. It is the set of technology and processes
 that make up a framework of encryption to protect and authenticate digital communications.
 This includes software, hardware, policies, and procedures that are used to create, distribute, manage, store, and revoke digital certificates.
 
-<!-- TODO: Learn more about PKI ...
+<!-- TODO: Learn more about PKI ...provide link to:
   - GLosary, FAQ, Standards, Specifications BLogs?
 -->
 
-### TLS considerations
+### Transport Layer Security
 <!-- #TODO: Provide a concise description of wat digital certificate is. Keep it basic and don't focus that much on details on usage or infrastructure. -->
+Transport Layer Security (TLS) is a standard protocol that provides authentication, privacy and data integrity between two communicating computer applications.
+TLS uses a client-server handshake mechanism to establish an encrypted and secure connection and to ensure the authenticity of the communication.
 
-The TLS, or Transport Layer Security protocol should be used to ensure secure data-transport for all connections to API Mediation Layer services.
-
-- Java in version at least 8 sr6 fp25 is installed on the system.
-- The following list shows the cipher suites that API ML services use.
+The TLS should be used to ensure secure data-transport for all connections to API Mediation Layer services.
+To best illustrate how TLS works, look at the provided diagram below:
+![img.png](img.png)
+<!-- #TODO: Provide TLS diagram - either own or from a free source -->
+<!-- Candidate to remove or move elsewhere 
+  - Java in version at least 8 sr6 fp25 is installed on the system.
+  - The following list shows the cipher suites that API ML services use.
 
 ```
 TLS_AES_128_GCM_SHA256, TLS_AES_256_GCM_SHA384, TLS_CHACHA_POLY1305_SHA256
 ```
-N
-### Certificates storage
-
+-->
 
 For more information, see the [TLS requirements in Zowe API ML requirements](../extend/extend-apiml/zowe-api-mediation-layer-security-overview#zowe-api-ml-tls-requirements).
+
+### Digital certificates types
+The digital certificates can be issued in various formats. The format is dependent on the certificate storage type PKCS12 or JKS/JCEKS.
+The most general and widely deployed certificate format today is PKCS12, while the JKS and the more extended JCEKS are specific for Java environments.
+
+**Note: Java 9 and higher can also work with PKCS12 certificates
+
+### Certificates storage
 
 - Keystores and truststores
   - PKCS12](#pkcs12)
