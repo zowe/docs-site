@@ -1,6 +1,12 @@
+<!-- omit in toc -->
 # Advanced API Catalog features configuration
 
+- [API ML configuration](#api-ml-configuration)
+- [API Catalog branding](#api-catalog-branding)
+
 As a system programmer who wants to configure advanced API Catalog features of the API Mediation Layer, you can customize API Catalog parameters by modifying the `<Zowe install directory>/components/api-catalog/bin/start.sh` file.
+
+<!-- TODO This document should be updated to reflect the settings that can be updated in zowe.yaml -->
 
 ## API ML configuration
 
@@ -10,7 +16,7 @@ As a system programmer who wants to configure advanced API Catalog features of t
 
   Set the value of the `*apiml.catalog.hide.serviceInfo` parameter to `true` to to hide the instance URL for all services registered to the API Catalog.
   
-  In your Zowe YAML configuration (typically `zowe.yaml`), set this parameter by defining `configs.apiml.catalog.hide.serviceInfo`. 
+  In your Zowe YAML configuration (typically `zowe.yaml`), set this parameter by defining `configs.apiml.catalog.hide.serviceInfo`.
   
   Example to define this parameter globally:
 
@@ -21,6 +27,7 @@ As a system programmer who wants to configure advanced API Catalog features of t
                 hide:
                     serviceInfo: true
     ```
+
   An alternative example is to define the parameter only for a high availability instance on lpar1:
 
     ```yaml
@@ -31,4 +38,18 @@ As a system programmer who wants to configure advanced API Catalog features of t
                catalog:
                   hide:
                       serviceInfo: true
-    ```    
+    ```
+
+## API Catalog branding
+
+It is possible to customize logotype and selected style options directly in `zowe.yaml`. The following properties can be set under `apiml.catalog.customStyles`:
+
+- `logo`: Set the location of the logo, defaults to ...
+- `titlesColor`: Set the title color, defaults to ...
+- `fontFamily`: Set the font family to use across the API Catalog, defaults to ...
+- `hoverColor`: Set the HTML color
+- `focusColor`: Set the HTML color
+- `hyperlinksColor`: Set the HTML color of hyperlinks (`a` elements)
+- `boxShadowColor`: Set the HTML color of displayed shadows
+- `headerColor`: Set the HTML color of the header element in the API Catalog home page
+- `backgroundColor`: Set the HTML color of the main background across the API Catalog
