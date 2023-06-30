@@ -1,31 +1,62 @@
-# Zowe secure setup and configuration
+# Zowe secureity features
+<! #NOTE: This article is not about certificates configuration. It is placed in the Getting Started department and is intended to provide
+really only an overview of the security concepts implemented by Zowe.  
+-->
 
-Learn how to install and configure Zowe securely before you deploy Zowe in production.
+Learn about the Zowe security features before you start using or installing Zowe.
 
-A production instance of Zowe needs to run in a High Availability setup to achieve the necessary availability. The certificates used within the network communication to validate the servers should be stored in Keyrings to get the most out of the platform’s security. The network should be secured using TLS in version 1.3 to limit future risk.
+Zowe implements comprehensive measures to secure mainframe services and data resources from unauthorized access, regardless if in transition or in rest.
 
-Here is a list of all the security considerations and configurations needed.
+Digital certificates according to x.509 standard specification are the cornerstone for securing communication channels between clients and servers, as well as can be used to provide identification of clients and service users.  
+The communication channels are secured by the latest versions of Transport Layer Security (TLS) using x.509 certificates. Client identification can be ensured by the proof of ownership of provided x.509 certificate.  
+User access is managed by authenticating the user identity via modern authentication methods, such as Multi-Factor Authentication (MFA), JWT, or Personal Access Token (PAT).
+Authorization to access is managed by the mainframe security facility.
 
-- Transport Layer Security (TLS)
-  - [TLS requirements](#tls-requirements)
-  - [SAF Keyring](#saf-keyring)
+Read further to learn more detail on how Zowe leverages modern security concepts and technologies:
+- Digital certificates
+  - [Digital certificates usage](#digital-certificates-usage)
+  - [PKI (Public Key Infrastructure)](#public-key-infrastructure)
+  - [TLS considerations](#tls-considerations)
+  - [Certificates storage](#certificates-storage)
 - Authentication methods
   - [Authentication with JSON Web Tokens(JWT)](#authentication-with-json-web-tokensjwt)
   - [Authentication with client certificates](#authentication-with-client-certificates)
   - [Authentication with Personal Access Token (PAT)](#authentication-with-personal-access-token-pat)
-  - [Authentication with SAF IDT Tokens](#authentication-with-saf-idt-tokens)
-- [Multi-factor authentication (MFA)](#multi-factor-authentication-mfa)
-- [Authorization](#authorization)
-- High Availability
-  - [Sysplex architecture and configuration](#sysplex-architecture-and-configuration)
-  - [Caching service setup and configuration](#caching-service-setup-and-configuration)
-- [Observation](#observation)
+  - [Authentication with SAF IDT Tokens (SAF IDT)](#authentication-with-saf-identity-tokens)
+  - [Multi-factor authentication (MFA)](#multi-factor-authentication-mfa)
+- [Access Authorization](#authorization)
 
-## Transport Layer Security(TLS)
+## Digital certificates
+Digital certificates facilitate secure electronic communication and data exchange between people, systems, and devices online.
+A Digital Certificate is an electronic file that is tied to a cryptographic key pair and authenticates the identity of a website, individual, organization, user, device or server.
+They are the foundation to implementing [Public Key Infrastructure (PKI)](#public-key-infrastructure) security.
+Digital certificates are issued by trusted Certificate Authorities (CAs), which also provide certificate validation methods.
+In some cases, e.g. for testing purposes, it is acceptable to issue and sign a certificate locally using security tools specific for the target technology platform.
+This is however not recommended for production environments.
 
-The TLS protocol should be used to ensure secure data-transport for all connections to API Mediation Layer services.
 
-### TLS requirements
+Zowe uses digital certificates as foundation element of the communication and identity security.
+Learn more about how to set up and configure digital certificates used in Zowe - <!-- #TODO Provide link.-->
+
+### Digital certificates usage
+Digital certificates perform two primary functions:
+- Verifying the identity of the sender/receiver of an electronic message
+- Providing the means to encrypt/decrypt messages between sender and receiver.
+
+Zowe uses digital certificates
+### Public key infrastructure
+PKI, or Public Key Infrastructure is an important aspect of internet security. It is the set of technology and processes
+that make up a framework of encryption to protect and authenticate digital communications.
+This includes software, hardware, policies, and procedures that are used to create, distribute, manage, store, and revoke digital certificates.
+
+<!-- TODO: Learn more about PKI ...
+  - GLosary, FAQ, Standards, Specifications BLogs?
+-->
+
+### TLS considerations
+<!-- #TODO: Provide a concise description of wat digital certificate is. Keep it basic and don't focus that much on details on usage or infrastructure. -->
+
+The TLS, or Transport Layer Security protocol should be used to ensure secure data-transport for all connections to API Mediation Layer services.
 
 - Java in version at least 8 sr6 fp25 is installed on the system.
 - The following list shows the cipher suites that API ML services use.
@@ -33,10 +64,16 @@ The TLS protocol should be used to ensure secure data-transport for all connecti
 ```
 TLS_AES_128_GCM_SHA256, TLS_AES_256_GCM_SHA384, TLS_CHACHA_POLY1305_SHA256
 ```
+N
+### Certificates storage
+
 
 For more information, see the [TLS requirements in Zowe API ML requirements](../extend/extend-apiml/zowe-api-mediation-layer-security-overview#zowe-api-ml-tls-requirements).
 
-### SAF keyring
+- Keystores and truststores
+  - PKCS12](#pkcs12)
+
+  - SAF Keyring
 
 You can choose to use a SAF keyring instead of keystore and truststore for storing certificates. It is more secure than PKCS12 files. And SAF keyring allows you to import existing or generate new certificates with Top Secret, ACF2, and RACF.
 
@@ -87,13 +124,13 @@ A Personal Access Token (PAT) is a specific scoped JWT with configurable validit
 
 **Benefits**
 
-- Long lived. The maximum validity is 90 days.
+- Long-lived. The maximum validity is 90 days.
 - Scoped. Users are required to provide a scope. It is only valid for the specified services.
 - Secure. If a security breech is suspected, the security administrator can invalidate all the tokens based on criteria as established by rules.
 
 For more information about PAT, see [the Personal Access Token documentation](../user-guide/api-mediation/api-mediation-personal-access-token).
 
-### Authentication with SAF Identity Tokens (SAF IDT)
+### Authentication with SAF Identity Tokens
 
 The SAF Authentication Provider allows the API Gateway to authenticate the user directly with the z/OS SAF provider that is installed on the system.
 
@@ -148,56 +185,3 @@ To verify the ownership of the SAF resource, you can use the following available
 `GET /gateway/{serviceId}/`
 
 For detailed information, see the [SAF resource checking documentation](../user-guide/api-mediation/api-gateway-configuration#saf-resource-checking).
-
-## High Availability
-
-To deploy Zowe in high availability (HA) mode, you must set up a Parallel Sysplex® environment. A Parallel Sysplex is a cluster of z/OS® systems that cooperatively use certain hardware and software components to achieve a high-availability workload processing environment.
-
-### Sysplex architecture and configuration
-
-Sysplex is required to make sure multiple Zowe instances can work together. Check [Configuring Sysplex for high availability](../user-guide/configure-sysplex) for more details.
-
-To enable high availability when Zowe runs in Sysplex, you need to meet the following requirements:
-
-- Zowe instance with should be installed on every LPAR.
-- The API services must be registered to each Zowe instance.
-- Shared File system should be created between LPARs in Sysplex. See [How to share file systems in a Sysplex](https://www.ibm.com/docs/en/zos/2.4.0?topic=planning-sharing-file-systems-in-sysplex).
-- z/OSMF High Availability mode should be configured. See [Configuring z/OSMF high availability in Sysplex](../user-guide/systemrequirements-zosmf-ha).
-
-Instance on every LPAR is started.
-
-**Configuration**
-
-The configuration for the specific instance is composed of the defaults in the main section and the overrides in the `haInstances` section of the `zowe.yaml` configuration file.
-
-In this section, `ha-instance` represents any Zowe high availability instance ID. Every instance has internal id and a section with overrides compared to the main configuration in the beginning of the `zowe.yaml` file. Check the [Zowe YAML configuration reference](../appendix/zowe-yaml-configuration#yaml-configurations---hainstances) for details.
-
-### Caching service setup and configuration
-
-Zowe uses the Caching Service to centralize the state data persistent in high availability (HA) mode. It can be used to share information between services.
-
-If you are runnning the caching service on z/OS, there are three storage methods with their own characteristics:
-
-- [VSAM](../user-guide/configure-caching-service-ha)
-  - Familiar to zOS engineers.
-  - Slow.
-- [Redis](../extend/extend-apiml/api-mediation-redis#redis-configuration)
-  - Needs to run in Distributed world separately.
-  - Good for Kubernetes deployment.
-- [Infinispan (*recommended*)](../extend/extend-apiml/api-mediation-infinispan#infinispan-configuration)
-  - Part of the Caching service.
-  - Doesn’t need separate processes.
-  - Highly performant.
-
-## Observation
-
-It is essential to have observation in the whole secure operation process. The service availability is visible to everyone. It’s easy to find performance issues with southbound services.
-
-To do so, Zowe can easily integrate with the Alerting and Monitoring enterprise services such as ELK, Splunk, Grafana, etc and integrate the data as part of the Zero Trust Architecture approach with, for example, SIEM (Security Incident Event Management).
-
-<!--**Prerequisites**
-- Zowe System Services are installed and configured.
-- Zowe cross memory server for SAF should be configured.
-**Possible providers**
-- Keycloak
-- Okta -->
