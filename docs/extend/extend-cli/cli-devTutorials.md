@@ -24,7 +24,7 @@ Follow these tutorials to get started working with the sample plug-in:
 5. [Implementing user profiles:](cli-implement-profiles.md) Implement user profiles with the plug-in.
 
 ### Plug-in development overview
-At a high level, a plug-in must have `imperative-framework` configuration [(sample here)](https://github.com/zowe/zowe-cli-sample-plugin/blob/master/src/imperative.ts).  This configuration is discovered by  `imperative-framework` through the [package.json](https://github.com/zowe/zowe-cli-sample-plugin/blob/master/package.json) `imperative` key.
+At a high level, a plug-in must have `imperative-framework` configuration [(sample here)](https://github.com/zowe/zowe-cli-sample-plugin/blob/master/src/pluginDef.ts).  This configuration is discovered by  `imperative-framework` through the [package.json](https://github.com/zowe/zowe-cli-sample-plugin/blob/master/package.json) `imperative` key.
 
 A Zowe CLI plug-in will minimally contain the following:
 1. Programmatic API: Node.js programmatic APIs to be called by your handler or other Node.js applications.
