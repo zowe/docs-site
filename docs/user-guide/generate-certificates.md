@@ -73,12 +73,11 @@ After you configure the `zowe.yaml`, use the following procedure to generate the
 
 2. Run the following command in the directory with this `zowe.yaml` in terminal to generate the certificate and update the configuration values in `zowe.yaml`.
 
-  `zwe init certificate -c ./zowe.yaml --update-config`
+   `zwe init certificate -c ./zowe.yaml --update-config`
 
-3. The following command output shows the generation of a PKCS12 keystore using the default values, and has the following associated artifacts:
+    The following command output shows the generation of a PKCS12 keystore using the default values, and has the following associated artifacts:
 
-**Notes:**  
-Some detailed output messages have been omitted.
+    **Note:** Some detailed output messages have been omitted.
 
 - The CA is created.
 - The keystore is created and the CA is added to the keystore.
@@ -116,8 +115,10 @@ Some detailed output messages have been omitted.
 
 #>
 ```
-
-The `zwe init certificate` command generates a certificate based on `zowe.yaml` values in the `zowe.setup.certificate` section. The certificate values used at runtime are referenced in the `zowe.certificate` section in the `zowe.yaml` file. The command `zwe init certificate -c ./zowe.yaml --update-config` updates the runtime `zowe.certificate` section to reference the generated certificate generated from the `zowe.setup.certificate`.
+**Detailed explanation of generated output**
+* The `zwe init certificate` command generates a certificate based on `zowe.yaml` values in the `zowe.setup.certificate` section.
+* The certificate values used at runtime are referenced in the `zowe.certificate` section in the `zowe.yaml` file.
+* The command `zwe init certificate -c ./zowe.yaml --update-config` updates the runtime `zowe.certificate` section to reference the generated certificate generated from the `zowe.setup.certificate`.
 
 Open the `zowe.yaml` file to check the references to the newly generated certificate values as shown in the following code snippet:
 
@@ -153,8 +154,8 @@ When using a Zowe-generated certificate, you will be challenged by your browser 
 
 Use the following procedure to configure zowe.yaml:
 
-1. [Configure the JCERACFKS setup section in zowe.yaml](#configure-the-jceracfks-setup-section-in-zoweyaml)
-2. [Run the command to generate a JCERACFKS certificate](#run-the-command-to-generate-a-jceracfks-certificate)
+1. [Configure the JCERACFKS setup section in zowe.yaml](#configure-the-jceracfks-setup-section-in-zoweyaml).
+2. [Run the command to generate a JCERACFKS certificate](#run-the-command-to-generate-a-jceracfks-certificate).
 
 To assist with updating `zowe.yaml`, see the example yaml in [Scenario 3: Use a z/OS keyring-based keystore with Zowe generated certificates](#certificate-configuration-scenarios.md/##scenario-3-use-a-zos-keyring-with-zowe-generated-certificates) in the article Certificate configuration scenarios.
 ### Configure the JCERACFKS setup section in zowe.yaml
@@ -215,11 +216,17 @@ After you configure the `zowe.yaml`, use the following procedure to generate a J
 
 2. Run the following command in the directory with this `zowe.yaml` in terminal to generate the certificate and update the configuration values in `zowe.yaml`.
 
-  `zwe init certificate -c ./zowe.yaml --update-config`
+    `zwe init certificate -c ./zowe.yaml --update-config`
 
-3. When the command is run, a customized JCL member name is created in the `CUST.JCLLIB` data set. The PDS name is defined in the `zowe.setup.dataset.jcllib` property. In the following example output, the PDS meember `USER.ZWEV2.CUST.JCLLIB(ZW101431)` is created that contains the security manager commands, and then submitted as a job ID: `ZWEKRING(JOB03054)`.
+    Running this command generates the following artifacts:
+    * A customized JCL member name is created in the `CUST.JCLLIB` data set. 
+    * The PDS name is defined in the `zowe.setup.dataset.jcllib` property. 
+    
+    In the following example output, the PDS member `USER.ZWEV2.CUST.JCLLIB(ZW101431)` is created that contains the security manager commands, and then submitted as a job ID: `ZWEKRING(JOB03054)`.
 
-The following command output shows the generation of a JCERACFKS certificate using the default values. Some detailed output messages have been omitted.
+    The following command output shows the generation of a JCERACFKS certificate using the default values. 
+
+    **Note:** Some detailed output messages have been omitted.
 
 ```
 #>zwe init certificate -c ./zowe.yaml --update-config
@@ -242,7 +249,7 @@ The following command output shows the generation of a JCERACFKS certificate usi
 **Tips:**  
 As shown in the example, the job ends with code `0`. There may, however, be failures in the individual steps. It is advised to check the job output. The security manager commands in the job are generated based on the value of `zowe.security.product`. Job steps for each product can be determined by the security manager.  
 
-Now you can open the `zowe.yaml` file to check the references to the newly generated certificate values. Because the `--update-config` parameter was specified the runtime configuration section of zowe.yaml is updated to match the values to the generated keystore, certificate, and certificate authority. The updated section is shown in the following code snippet:
+Open the `zowe.yaml` file to check the references to the newly generated certificate values. Because the `--update-config` parameter was specified, the runtime configuration section of zowe.yaml is updated to match the values to the generated keystore, certificate, and certificate authority. The updated section is shown in the following code snippet:
 
 **Updated `zowe.certificate` section in `zowe.yaml`:**
 ```
@@ -262,9 +269,7 @@ zowe:
       certificate:
       certificateAuthorities: safkeyring://ZWESVUSR/ZoweKeyring&localca
 ```
-**Notes:**
-
-* `zowe.certificate.keystore.password` has a hardcoded password value. However, if you are using `type: PKCS12`, the password field must be the real password.
+**Note:** `zowe.certificate.keystore.password` has a hardcoded password value. However, if you are using `type: PKCS12`, the password field must be the real password.
 
 ### Next steps after JCERACFKS setup
 
