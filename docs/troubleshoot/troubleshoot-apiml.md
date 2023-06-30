@@ -601,6 +601,22 @@ JCERACFKS KeyStore not available
 
 **Solution:**
 
-In Java 11, the `IBMZSecurity` security provider is not enabled by default. Locate the `Java_HOME/conf/security/java.security` configuration file and open 
-the file for editing. Modify the list of security providers and insert the `IBMZSecurity` on second position. 
+In Java 11 releases before 11.0.17.0, the `IBMZSecurity` security provider is not enabled by default. Locate the `java.security` configuration file in the `$JAVA_HOME/conf/security` USS directory 
+and open the file for editing. Modify the list of security providers and insert the `IBMZSecurity` on second position. The list of enabled security providers should look like following:
+```
+security.provider.1=OpenJCEPlus
+security.provider.2=IBMZSecurity
+security.provider.3=SUN
+security.provider.4=SunRsaSign
+security.provider.5=SunEC
+security.provider.6=SunJSSE
+security.provider.7=SunJCE
+security.provider.8=SunJGSS
+security.provider.9=SunSASL
+security.provider.10=XMLDSig
+security.provider.11=SunPCSC
+security.provider.12=JdkLDAP
+security.provider.13=JdkSASL
+security.provider.14=SunPKCS11
+```
 For more information see the steps in [Enabling the IBMZSecurity provider](https://www.ibm.com/docs/en/semeru-runtime-ce-z/11?topic=guide-ibmzsecurity#ibmzsecurity__enabling_z_provider__title__1).
