@@ -1,4 +1,4 @@
-# Zowe secureity features
+# Zowe Security Overview
 <! #NOTE: This article is not about certificates configuration. It is placed in the Getting Started department and is intended to provide
 really only an overview of the security concepts implemented by Zowe.  
 -->
@@ -13,21 +13,22 @@ User access is managed by authenticating user identity thorough modern authentic
 Authorization to access is managed by the mainframe security facility.
 
 See the following topics to learn more detail about how Zowe leverages modern security concepts and technologies:
-- Digital certificates
 
+- [Digital certificates](#digital-certificates)
   - [Digital certificates usage](#digital-certificates-usage)
   - [PKI (Public Key Infrastructure)](#public-key-infrastructure)
   - [Transport Layer Security (TLS)](#transport-layer-security)
   - [Digital certificates types](#digital-certificates-types)
   - [Certificates storage](#certificates-storage)
-    - [Keystores](#keystores)
-    - [Truststores](#truststores)
-- Authentication methods
+    - Keystores
+    - Truststores
+- [Authentication methods](#authentication-methods)
   - [Authentication with JSON Web Tokens(JWT)](#authentication-with-json-web-tokensjwt)
   - [Authentication with client certificates](#authentication-with-client-certificates)
   - [Authentication with Personal Access Token (PAT)](#authentication-with-personal-access-token-pat)
   - [Authentication with SAF IDT Tokens (SAF IDT)](#authentication-with-saf-identity-tokens)
   - [Multi-factor authentication (MFA)](#multi-factor-authentication-mfa)
+  - [Certificate Authority Advanced Authentication Mainframe (CA AAM)](#certificate-authority-advanced-authentication-mainframe-ca-aam)
 - [Access Authorization](#authorization)
 
 ## Digital certificates
@@ -124,6 +125,12 @@ For details about SAF Keyring, see the documentation [API ML SAF Keyring](../ext
 
 The API Mediation Layer provides multiple methods which clients can use to authenticate.
 
+* [Authentication with JSON Web Tokens(JWT)](#authentication-with-json-web-tokensjwt)
+* [Authentication with client certificates](#authentication-with-client-certificates)
+* [Authentication with Personal Access Token (PAT)](#authentication-with-personal-access-token-pat)
+* [Authentication with SAF Identity Tokens](#authentication-with-saf-identity-tokens)
+* [Multi-factor authentication (MFA)](#multi-factor-authentication-mfa)
+* [Certificate Authority Advanced Authentication Mainframe (CA AAM)](#certificate-authority-advanced-authentication-mainframe-ca-aam)
 ### Authentication with JSON Web Tokens(JWT)
 
 When the user successfully authenticates with the API ML, the client receives a JWT token in exchange. This token can be used by the client to access REST services behind the API ML Gateway and also for subsequent user authentication. The access JWT Token is signed with the private key that is configured in the Zowe Identity Provider's certificate store, be it keystore or keyring.
@@ -186,7 +193,7 @@ For more information about configuring the token, see the [Configure signed SAF 
 - API ML REST endpoint is used.
 - The security administrator can configure an IDTDATA class profile to control how certain fields in an IDT are generated and how a specified IDT is validated in `RACROUTE REQUEST=VERIFY`. For details, see the ***Signed and Unsigned Identity Tokens*** and ***IDT Configuration*** subsections in [z/OS Security Server RACROUTE Macro Reference](https://www.ibm.com/docs/en/zos/2.4.0?topic=reference-activating-using-idta-parameter-in-racroute-requestverify).
 
-## Multi-factor authentication (MFA)
+### Multi-factor authentication (MFA)
 
 Multi-factor authentication is provided by third-party products which Zowe is compatible with. The following are known to work:
 
