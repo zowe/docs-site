@@ -20,6 +20,8 @@ See the following topics to learn more detail about how Zowe leverages modern se
   - [Transport Layer Security (TLS)](#transport-layer-security)
   - [Digital certificates types](#digital-certificates-types)
   - [Certificates storage](#certificates-storage)
+    - [Keystores](#keystores)
+    - [Truststores](#truststores)
 - Authentication methods
   - [Authentication with JSON Web Tokens(JWT)](#authentication-with-json-web-tokensjwt)
   - [Authentication with client certificates](#authentication-with-client-certificates)
@@ -77,22 +79,47 @@ TLS_AES_128_GCM_SHA256, TLS_AES_256_GCM_SHA384, TLS_CHACHA_POLY1305_SHA256
 For more information, see the [TLS requirements in Zowe API ML requirements](../extend/extend-apiml/zowe-api-mediation-layer-security-overview#zowe-api-ml-tls-requirements).
 
 ### Digital certificates types
-Digital certificates can be issued in various formats. The format is dependent on the certificate storage type PKCS12 or JKS/JCEKS.
-The most general and widely deployed certificate format today is PKCS12, while the JKS and the more extended JCEKS are specific for depending on the Java environment.
+Digital certificates can be issued in various formats. The format is dependent on the certificate storage type. Zowe supports:
+* **file-based PKCS12**  
+  PKCS12 certificates are the most general and widely deployed certificate format.
+* **z/OS keyring-based keystore (JKS/JCEKS)**  
+  JKS/JCEKS certificates are specific types of certificates that depend on the Java environment.
 
 **Note:** Java 9 and higher can also work with PKCS12 certificates.
 
 ### Certificates storage
 
-- Keystores and truststores
-  - [PKCS12](#pkcs12)
+There are two options for the storage of certificates:
 
-  - SAF Keyring
+* Keystore and Truststore Combination
+* SAF Keyrings
 
-You can choose to use a SAF keyring instead of keystore and truststore for storing certificates. It is more secure than PKCS12 files. And SAF keyring allows you to import existing or generate new certificates with Top Secret, ACF2, and RACF.
+#### Keystore and Truststore Combination
 
-For details about SAF Keyring, see the documentation [here](../extend/extend-apiml/certificate-management-in-zowe-apiml.md).
+Two key concepts to understand storage and verification of certificates are keystores and truststores.
 
+* **Keystores** are used to store certificates and the verification of these certificates.
+* **Truststores** are used for the storage of verification.
+
+Zowe supports keystores and truststores that are either z/OS keyrings (when on z/OS) or PKCS12 files. By default, Zowe reads a PKCS12 keystore from `keystore` directory in zowe.yaml. This directory contains a server certificate, the Zowe generated certificate authority, and a `truststore` which holds intermediate certificates of servers that Zowe communicates with (for example z/OSMF).
+
+* **Keystores**  
+  Zowe can use PKCS12 certificates stored in USS to encrypt TLS communication between Zowe clients and Zowe z/OS servers, as well as intra z/OS Zowe server to Zowe server communication. Zowe uses a `keystore` directory to contain its external certificate, and a `truststore` directory to hold the public keys of servers which Zowe communicates with (for example z/OSMF).
+
+* **Truststores**  
+  Truststore are essential to provide secure communication with external services. The truststore serves as a secure repository for storing certificates and trust anchors. In the context of Zowe, the truststore establishes the trust relationships with external services as well as manages the relationship between Zowe's components and the certificates presented by the external services.
+
+  In addition to utilizing the intra-address space of certificates, Zowe incorporates external services on z/OS to enhance the encryption of messages transmitted between its servers. These external services, such as z/OSMF or Zowe conformant extensions, have registered themselves with the API Mediation Layer.
+
+  The API Mediation Layer, acting as an intermediary, validates these certificates. When the API ML receives a certificate from an external service, it examines each certificate in the certificate chain and compares it to the certificates in the truststore.
+
+  By leveraging the truststore, Zowe ensures that only trusted and authorized external services can establish communication with its servers.
+
+#### SAF Keyring
+
+An alternative to certificate storage with keystores and trustores is to use a SAF Keyring. Use of a SAF Keyring is more secure than PKCS12 files. This SAF keyring method also makes it possible to import existing certificate or generate new certificates with Top Secret, ACF2, and RACF.
+
+For details about SAF Keyring, see the documentation [API ML SAF Keyring](../extend/extend-apiml/certificate-management-in-zowe-apiml.md) in the article **Certificate management in Zowe API Mediation Layer**.
 ## Authentication methods
 
 The API Mediation Layer provides multiple methods which clients can use to authenticate.
@@ -101,10 +128,10 @@ The API Mediation Layer provides multiple methods which clients can use to authe
 
 When the user successfully authenticates with the API ML, the client receives a JWT token in exchange. This token can be used by the client to access REST services behind the API ML Gateway and also for subsequent user authentication. The access JWT Token is signed with the private key that is configured in the Zowe Identity Provider's certificate store, be it keystore or keyring.
 
-To utilize [Single-Sign-On (SSO)](../user-guide/systemrequirements-zos#single-sign-on-sso), the Zowe API ML client needs to provide the access token to API services in the form of the cookie `apimlAuthenticationToken`, or in the `Authorization: Bearer` HTTP header as described [here](https://github.com/zowe/sample-spring-boot-api-service/blob/master/zowe-rest-api-sample-spring/docs/api-client-authentication.md#authenticated-request).
+To utilize [Single-Sign-On (SSO)](../user-guide/systemrequirements-zos#single-sign-on-sso), the Zowe API ML client needs to provide an access token to API services in the form of the cookie `apimlAuthenticationToken`, or in the `Authorization: Bearer` HTTP header as described [here](https://github.com/zowe/sample-spring-boot-api-service/blob/master/zowe-rest-api-sample-spring/docs/api-client-authentication.md#authenticated-request).
 
 - Validation:
-  - Use Gateway query endpoint to validate the token and retrieve the information associated with the token.
+  - Use the Gateway query endpoint to validate the token and retrieve the information associated with the token.
   - Use JWKS to validate.
 
 - JWT token issuers
@@ -121,7 +148,7 @@ eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4
 
 ### Authentication with client certificates
 
-If the keyring or a truststore contains at least one valid certificate authority (CA) other than the CA of the API ML, it is possible to use the client certificates issued by this CA to authenticate to the API ML.
+If the keyring or a truststore contains at least one valid certificate authority (CA) other than the CA of the API ML, it is possible to use client certificates issued by this CA to authenticate to the API ML.
 
 It is provided by client during the TLS handshake. And this authentication is performed with the following prerequisites:
 
