@@ -10,70 +10,87 @@ Learn how to handle the documentation for Zowe releases.
     - [Part 3: Bump the release version](#part-3-bump-the-release-version)
     - [Part 4: Prepare new release files](#part-4-prepare-new-release-files)
     - [Part 5: Continue syncing branches](#part-5-continue-syncing-branches)
-    - [Part 6: Publish documentation for a new release](#part-6-publish-documentation-for-a-new-release)
-- [Sync changes between releases](#sync-changes-between-releases)
-- [Publish documentation for a new release](#publish-documentation-for-a-new-release)
-- [Removing archived version](#removing-archived-version)
+    - [Part 6: Ask squads to review draft release notes](#part-6-ask-squads-to-review-draft-release-notes)
+    - [Part 7: Check the release checklist](#part-7-check-the-release-checklist)
+    - [Part 8: Update the TPSRs](#part-8-update-the-tpsrs)
+    - [Part 9: Publish documentation for a new release](#part-9-publish-documentation-for-a-new-release)
+    - [Part 10: Post-publication tasks](#part-10-post-publication-tasks)
+- [Release checklist](#release-checklist)
+- [Removing an archived version](#removing-an-archived-version)
 - [Zowe CLI: Update web help and type doc](#zowe-cli-update-web-help-and-type-doc)
-- [Updating TPSRs](#updating-tpsrs)
-
 ## Release schedule 
+
+For each release, Zowe documentation follows a doc delivery schedule with several key checkpoints:
+
+|Checkpoint | Due Date | Details
+|--|--|--|
+|Doc Prep Start | Code Freeze | Doc Squad preps, stages vNext content |
+|Release Notes Freeze | 3 days before GA | Zowe squad leads review notes |
+|Doc Freeze | 1 day before GA | Doc Squad finalizes vNext content |
+|Doc Publish | GA day | vNext content published to Zowe Docs |
+
+Code Freeze is the day the Doc Squad starts to prepare and stage content for the vNext release. We define a freeze date for release notes which is usually 3 days before the GA date to allow time for squad leads' review. The doc usually freezes 1 day before the GA date to allow time for doc build testing and issue fixing.
+
+The following schedule takes release version 2.4 as an example:
+
+|Checkpoint | Date | Details
+|--|--|--|
+|Doc Prep Start |2022/10/04 | Code Freeze |
+|RC Build | 2022/10/05 ||
+|Release Note Freeze | 2022/10/14| 3 days before GA, 2 days for review |
+|Doc Freeze | 2022/10/16| 1 day before GA|
+|Doc Publish | 2022/10/17| GA day |
+
+
+
+### Release communication
 
 The Zowe community communicates the release schedule in several ways. 
 - [Zowe release cadence document](https://github.com/zowe/community/blob/master/Project%20Management/Schedule/Zowe%20PI%20%26%20Sprint%20Cadence.md) 
-- [#zowe-release](https://openmainframeproject.slack.com/archives/G01M2C8QB3K) Slack channel (private for only release leads. Contact the CICD squad lead for invitation and access.)
+- [#zowe-release](https://openmainframeproject.slack.com/archives/G01M2C8QB3K) Slack channel
+  - Private for only release leads. Contact the CI/CD Squad lead for invitation and access.
 
 Release contacts are as follows:  
 
 - Release engineer: OJ Celis (Slack @OJ Celis)
 
-For each release, Zowe documentation should define a doc delivery schedule with several key checkpoints. Code freeze date is not doc freeze date. The doc usually freezes 1 day before the GA date to allow time for doc build testing and issue fix. We also define a freeze date for release notes which is usually 3 days before the GA date to allow time for review.
-
-The following schedule takes release version 2.4 as an example: 
-
-```
-2.4
-Code Freeze 2022/10/04
-RC Build 2022/10/05
-Release Notes Freeze 2022/10/14  (3 days before GA, 2 days for review)
-Doc Freeze 2022/10/16  (1 day before GA)
-GA/Doc Publish  2022/10/17
-```
 
 ## Preparing documentation for a new release
 
-This information guides you to archive the documentation of the previous version and tag a new version. 
+This information guides you to archive the documentation of the previous version and create the necessary files to make way for a new version.
 
-### Before you begin
+### Branching strategy
 
 The vNext release documentation is hosted in the `docs-staging` branch. The `docs-staging` branch is merged to the `master` branch when a release is published. 
 
-Once the Code Freeze for a new release takes place, the `docs-staging` branch must be updated to get prepared for the next release. The updates include but are not limited to the following aspects:
+Once the Code Freeze for a new release takes place, the `docs-staging` branch must be updated to get prepared for the next release. The updates include but are not limited to the following activities:
 
-- Archive the previous version documentation
-- Bump the release version number to vNext
-- Create placeholder files and folders for the vNext release, such as release notes document and TPSR document
+- Archiving the previous version documentation
+- Bumping the release version number to vNext
+- Creating placeholder files and folders for the vNext release
 
-The following steps takes v1.25 release preparation as an example. You should follow these steps the day Code Freeze takes place.
+The following steps takes v1.25 release preparation as an example. Preparation should start the day Code Freeze takes place.
 ### **Part 1: Sync the doc branches**
 
-Summary: Update the `docs-staging` branch so it includes all the necessary updates made to the `master` branch.
+Summary: Update the `docs-staging` branch so it includes all updates made to the `master` branch.
 
 **Procedure**
 1. Create and publish a new (temporary) branch based off the `master` branch.
 
 2. Create a PR to merge the temporary branch into the `docs-staging` branch.
   
-    This syncs both branches so that `docs-staging` is updated with all the edits made to the `master` branch since the last time the branches were synched.
+    This syncs both branches so that `docs-staging` is updated with all the edits made to the `master` branch since the branches were synched last.
 
 3. Create a local build to confirm the updated `docs-staging` branch has no errors.
 
     1. Run `npm install`.
     2. Run `npm start` to build the site locally and clear any errors.
 
-4. Merge the pull request so that `docs-staging` matches the `master` branch.
+4. Using the **Create a merge commit** option in GitHub, merge the pull request so that `docs-staging` matches the `master` branch.
 
-Next, let's archive the content for the current version (example: v1.24).
+    **Important**: When merging *any* PRs that sync content between the `master` and `docs-staging` branches, avoid using the **Squash and merge** option to help prevent merge conflicts in future releases.
+
+Next: Archive the content for the current version (v1.24 in our example).
 
 ### **Part 2: Archive the previous release doc**
 
@@ -81,7 +98,7 @@ Summary: Create new directories to archive content. Relocate content files for t
 
 **Procedure**
 
-1. Create and publish a new (temporary) branch based off the `master` branch. (This branch should be different than the branch in [Part 1](#Part-1-Sync-the-doc-branches).)
+1. Create and publish a new (temporary) branch based off the `master` branch. (This branch should be different than the branch in [Part 1](#part-1-sync-the-doc-branches).)
 
     You will use this temporary branch to archive the content from the previous release in `master`.
 2. Open your temporary branch in Visual Studio Code.
@@ -93,24 +110,26 @@ Summary: Create new directories to archive content. Relocate content files for t
 
    ```npm run docusaurus docs:version v1.24.x```
 
-   When it completes, you’ll see a message `[docs]: version v1.24.x created!`
+   When it completes, you’ll see this message:
+   
+    `[docs]: version v1.24.x created!`
 
     By doing this, the document versioning mechanism takes the following steps:
 
-    * Copy the full `docs/` folder contents into a new `versioned_docs/version-<version>/` folder.
-    * Create a versioned `sidebars` file based from your current sidebar configuration - saved as `versioned_sidebars/version-<version>-sidebars.json`.
-    * Append the new version number to the `versions.json` file.
+    * Copies the full `docs/` folder contents into a new `versioned_docs/version-<version>/` folder.
+    * Creates a versioned `sidebars` file based from your current sidebar configuration. The file is saved as `versioned_sidebars/version-<version>-sidebars.json`.
+    * Appends the new version number to the `versions.json` file.
 
 4. Archive the `/static` files.
     
-   1. Go to the `/static` folder. 
+   1. Go to the `/static` folder.
    2. Create an empty directory with the name of the previous version in `/static`. For example: `static/v1.24.x`.
-   3. Copy all contents of the `/static/stable` directory and paste them in the previous version's empty directory in the above step. For example: `/static/v1.24.x`.
+   3. Copy all contents of the `/static/stable` directory and paste them in the previous version's empty directory in the step above. For example: `/static/v1.24.x`.
 
-5. Update some links in the archived documentation to ensure that they refer to the correct location.
+5. Update a set of links in the archived documentation to ensure that they refer to the correct location.
 
     To do this, switch to the archived directory. In our example, `versioned_docs/version-v1.24.x`.
-    
+  
     Update several locations in the archived docs to refer to the correct release, the 1.24 release (in our example case).
 
    **Tip**: Use the Find function of Visual Studio Code editor to make the updates. In our example, you can right-click the `versioned_docs/version-v1.24.x` folder and then select **Find in Folder**.
@@ -135,11 +154,15 @@ Summary: Create new directories to archive content. Relocate content files for t
 
         ![Verify the archived doc](images/verify-archive.png)
 
-7. Create a pull request to merge the content in your temporary branch into the `docs-staging` branch.
+7. In GitHub, create a pull request to merge the content in your temporary branch into the `docs-staging` branch.
+
+8. Using the **Create a merge commit** option, merge the pull request.
+
+    **Important**: When merging *any* PRs between the `master` and `docs-staging` branches, avoid using the **Squash and merge** option to help prevent merge conflicts in future releases.
 
     Once the PR is merged, an archive of the content for the previous release (v1.24, in our example) is created in the `docs-staging` branch.
 
-Next, let's bump the version of docs to a new version (example: v1.25).
+Next: Bump the version of docs to a new version (example: v1.25).
 
 ### **Part 3: Bump the release version**
 
@@ -147,11 +170,12 @@ Summary: Using Visual Studio Code, update the necessary files to add the next re
 
 **Procedure**
 
-1. Open the `docs-staging` branch in Visual Studio Code.
-2. Navigate to the `/docusaurus.config.js` file.
-3. Change the `LATEST_VERSION` variable present in the `/docusaurus.config.js` file to a new version.
+1. Create and publish a new (temporary) branch based off the `docs-staging` branch.
+2. Open your branch branch in Visual Studio Code.
+3. Navigate to the `/docusaurus.config.js` file.
+4. Change the `LATEST_VERSION` variable present in the `/docusaurus.config.js` file to a new version.
 
-    1. Locate the presets: `> @docusaurus/preset-classic" > docs > versions`. 
+    1. Locate the presets: `> @docusaurus/preset-classic" > docs > versions`.
     
     2. Create an entry label for the previous version.
     
@@ -183,7 +207,7 @@ Summary: Using Visual Studio Code, update the necessary files to add the next re
                     },
         ```
 
-4. Open the `versions.json` file. Add the previous release version number at the top of the list. For example:
+5. Open the `versions.json` file. Add the previous release version number at the top of the list. For example:
 
     ```
       [
@@ -196,13 +220,14 @@ Summary: Using Visual Studio Code, update the necessary files to add the next re
       ]
       ```
 
+Next: Create placeholder files to prep for vNext release notes and TPSRs.
 ### **Part 4: Prepare new release files**
 
 Summary: Using Visual Studio Code, create placeholder files for the next release's release notes and TPSRs. Finish the staging process by merging your PR in GitHub.
 
 **Procedure**
 
-1. Add the release notes placeholder file for the new version.
+1. In Visual Studio Code, add the release notes placeholder file for the new version to the temporary branch you created in [Part 3](#part-3-bump-the-release-version).
     1. Go to `/docs/getting-started/release-notes`.
     2. Create a file for the new version and add the outline to the document. For example: `/docs/getting-started/release-notes/v1_25.md`
 
@@ -235,18 +260,30 @@ Summary: Using Visual Studio Code, create placeholder files for the next release
         },
         ```
 
-        **Note:** This is just a placeholder file. Once the RC (Release Candidate) build is available, this file should be updated to include the information for the new release. 
+        **Note:** This is just a placeholder file. The day before GA, this file should be updated to include the information for the new release.
 
-3. Create a local build to confirm everything works in the updated `docs-staging` branch.
+3. Remove the content for the *current* version's oldest *release*. See [Removing an archived version](#removing-an-archived-version) for instructions.
+
+    This helps avoid build failures due to RAM limits in the Docusaurus build process.
+
+4. Create a local build to confirm everything works in your temporary branch.
 
     1. Run `npm install`.
     2. Run `npm start` to build the site locally and clear any errors.
 
-4. Once you confirm that everything works in the `docs-staging` build, merge the pull request to the `docs-staging` branch in GitHub.
+5. Once you confirm that everything works in your temporary branch build, merge the pull request to the `docs-staging` branch in GitHub.
 
-5. Inform the squad and community that the branch for the vNext release is ready for doc changes. Post an announcement in the Slack channel [#zowe-doc](https://openmainframeproject.slack.com/archives/CC961JYMQ).
+    The site setup for the new release version is now complete.
 
-Done! The site setup for the new release version is now complete.
+6. Inform the Doc Squad and Zowe community that the branch for the vNext release is ready for vNext content. Post an announcement in the Slack channel [#zowe-doc](https://openmainframeproject.slack.com/archives/CC961JYMQ).
+
+    Remind Doc Squad members they can start adding content specific to the vNext release to the `docs-staging` branch, including:
+
+    - Release notes
+    - Articles on new features
+    - Updated Zowe CLI web help, type doc
+    
+Next: Continue to sync the `docs-staging` branch with `master`.
 
 ### **Part 5: Continue syncing branches**
 
@@ -262,11 +299,72 @@ The live site goes through continuous editing, so expect that changes *will* be 
 
 **Procedure**
 
-1. Repeat the steps in [Part 1](#Part-1-Sync-the-doc-branches).
+Repeat the steps in [Part 1](#part-1-sync-the-doc-branches).
 
-2. About two days before the GA date, review the [release checklist](#release-checklist) for the release to ensure that all items are complete.
+Next: Inform squad leads that release notes are ready for review.
 
-### Part 6: Publish documentation for a new release
+### **Part 6: Ask squads to review draft release notes**
+
+Summary: Let squad leads know they should review release notes.
+
+**Procedure**
+
+1. Three days before GA, ask squad leads to review their release notes.
+
+2. Post an announcement in [#zowe-doc](https://openmainframeproject.slack.com/archives/CC961JYMQ) and [#zowe-release](https://openmainframeproject.slack.com/archives/G01M2C8QB3K) with a link to the release notes file in the `docs-staging` branch.
+
+3. If any changes are needed, create a temporary branch off the `docs-staging` branch. Once you have made and committed your edits, merge your temporary branch to the `docs-staging` branch in GitHub.
+
+Next: Confirm all release tasks for documentation are completed.
+
+### **Part 7: Check the release checklist**
+
+Summary: Make sure all the doc tasks for the vNext release have been completed.
+
+**Procedure**
+
+1. About two days before the GA date, review the [release checklist](#release-checklist) to ensure all tasks are complete.
+
+2. To make updates, create a temporary branch off the `docs-staging` branch. Once you have made and committed your edits, merge your temporary branch to the `docs-staging` branch in GitHub.
+
+Next: Update the TPSRs.
+
+### **Part 8: Update the TPSRs**
+
+Summary: When the TPSRs are ready, update the TPSR placeholder file.
+
+**Procedure**
+
+1. The day before GA, check with the CI/CD Squad to find out if the vNext TPSRs are ready.
+
+    **Note**: While a TPSR file for the vNext release could be available earlier, it may not yet be finalized. It's better to upload the TPSR file closer to the GA date to give the CI/CD Squad time to update the TPSR file if needed.
+
+2. When the TPSRs are ready, create and publish a new (temporary) branch based off the `docs-staging` branch.
+
+3. Open your temporary branch in Visual Studio Code.
+
+4. Go to the `/tpsr` directory and open the vNext markdown file you created in [Part 4](#part-4-prepare-new-release-files).
+
+5. With a web browser, go to the location for release licenses:
+
+    https://zowe.jfrog.io/zowe/libs-release-local/org/zowe/licenses/.
+
+6. Navigate to the release folder and download the `zowe_licenses_full.zip` file.
+
+7. Extract the file and open the `zowe_full_dependency_list` markdown file.
+
+8. Copy the content from the `zowe_full_dependency_list` file and paste it into the placeholder TPSR file.
+
+9. Create a local build to confirm everything works in your temporary branch.
+
+    1. Run `npm install`.
+    2. Run `npm start` to build the site locally and clear any errors.
+
+10. Once you confirm that everything works in your build, create a pull request in GitHub to merge your temporary branch to the `docs-staging` branch.
+
+Next: Publish the staged doc to the live site!
+
+### **Part 9: Publish documentation for a new release**
 
 Summary: Publish the documentation for the new release the day the release goes GA.
 
@@ -281,38 +379,58 @@ Summary: Publish the documentation for the new release the day the release goes 
 
 3. Create a PR to merge the temporary branch into the `master` branch.
 
-  In your PR, do the following:
+    In your PR, do the following:
 
-- Add the Zowe release engineer to the reviewer list. Check out the [release communication](#release-communication) section for up-to-date names.
-- Add Zowe Doc Squad maintainers to the reviewer list.
-- Check the build status and send build issues to the doc squad.
+    - Add the Zowe release engineer to the reviewer list. 
+    - Add Zowe Doc Squad maintainers to the reviewer list.
+    - Check the build status and send build issues to the doc squad.
 
 4. Notify the release engineer that the PR has been created and needs review. It is the engineer who will merge the PR once the new release is published.
 
-5. **Important**: Remind the engineer to merge the PR by doing a **merge commit**.
-    The engineer should **NOT** commit with a "squash and merge," which can lead to merge conflicts for later releases.
+    **Important**: Remind the engineer to merge the PR by selecting the **Create a merge commit** option.
+    The engineer should **NOT** commit with a **Squash and merge**, which can lead to merge conflicts for later releases.
 
-### Release checklist
+Next: Check Zowe Docs for errors and announce the new release doc.
+### **Part 10: Post-publication tasks**
+
+Summary: Confirm that the Zowe Docs site works and announce the new doc to the Zowe community.
+
+**Procedure**
+
+1. After the vNext content is live, create and publish a PDF of the content for the current release version (v1.25 in our example).
+    
+    1. Follow the instructions in [Steps to manually generate PDF](pdf_generation_guide.md#steps-to-manually-generate-pdf-recommended).
+    2. Create a new temporary branch to add the PDF to the `master` branch. Create and merge a PR in GitHub.
+
+2. Check Zowe Docs to confirm the site works as expected. Confirm the following items:
+    - The version dropdown menu includes all available versions
+    - Release notes are current
+    - The correct TPSRs are linked
+    - The PDF for the current release can be downloaded and viewed
+    - The Search functionality returns correct results
+
+3. Announce the updated doc in the [#zowe-doc](https://openmainframeproject.slack.com/archives/CC961JYMQ) Slack channel.
+### **Release checklist**
 
 |Checkpoint | Due Date | Details
 |--|--|--|
-|New version doc setup               | Right after a release is published |See the [Preparing documentation for a new release](#preparing-documentation-for-a-new-release) on the `docs-staging` branch |  
-|Relnotes: CHANGELOG update cutoff   | 3 days before GA | Doc squad to work with squads to complete review | 
-|Relnotes: Draft review              | 3 days before GA | First run of release notes. Squad leads review the draft. Post in #zowe-release Slack channel | 
-|Zowe CLI: Update web help and type doc |  | Zowe CLI squad
-|Update TPSRs                        |  | Work with CICD squad. See [Updating TPSR](#updating-tpsr) for how-to. 
-|Doc freeze, PR for publish ready    | 1 day before GA | All release PRs merged. Action: Inform CI/CD squad of the doc PR number. Add CICD members as a reviewer of the PR. 
-|Doc publish                         | GA day | Work with CICD squad to merge the doc PR. 
+|New version doc setup               | vNext Code Freeze |See the [Preparing documentation for a new release](#preparing-documentation-for-a-new-release) on the `docs-staging` branch |  
+|Relnotes: CHANGELOG update cutoff   | 3 days before GA | Doc squad to work with squads to complete review |
+|Relnotes: Draft review              | 3 days before GA | First run of release notes. Squad leads review the draft. Post in [#zowe-release](https://openmainframeproject.slack.com/archives/G01M2C8QB3K) Slack channel. |
+|Zowe CLI: Update web help and type doc | Before Doc Freeze | Completed by Zowe CLI Squad doc writer. See [Update web help and type doc](#zowe-cli-update-web-help-and-type-doc) for how-to.
+|Update TPSRs                        | 1 day before GA | Work with CI/CD squad. See [Update the TPSRs](#part-8-update-the-tpsrs) for how-to.
+|Doc Freeze, PR for publish ready    | 1 day before GA | All vNext content merged to `docs-staging`. Action: Inform CI/CD squad of the doc PR number. Add the release engineer as reviewer of the PR.
+|Doc publish                         | GA day | Release engineer merges the doc PR.
 |Doc validation                      | 1 hour within publish | Check that the doc site has been refreshed correctly. 
-|Build and upload new release PDF file | 1 hour within publish | See [PDF generation guide](https://github.com/zowe/docs-site/blob/master/release-handbook/pdf_generation_guide.md#steps-to-manually-generate-pdf-recommended) for how-to. It's recommended that you run the manual build and then create a PR against the master branch to upload the PDF file. 
-|Release promotion                   |  | Slack, LinkedIn, Twitter, etc
+|Build and upload new release PDF file | 1 hour within publish | See [PDF generation guide](https://github.com/zowe/docs-site/blob/master/release-handbook/pdf_generation_guide.md#steps-to-manually-generate-pdf-recommended) for how-to. It's recommended that you run the manual build and then create a PR against the `master` branch to upload the PDF file. 
+|Release promotion                   | GA day  | Announce release in Slack channels. TSC members will make announcements in LinkedIn, Twitter, etc.
 |System demo                         |  | See the [OMP Calendar](https://lists.openmainframeproject.org/g/zowe-dev/calendar) for details.  
-|Write release blog, upload release demo video                  |  | Convert the system demo recording into a blog. 
-|Add release demo video and blog link back in the release notes | Once the video and blog is published | Go to the release notes and add the links. For example, `Release demo: Check out the Zowe demo video for v1.24.0 to see a demo of what's new in this release. Release blog: Read this blog Zowe 1.24 Release Highlights written by Joe Winchester for a deeper dive of the major enhancements and changes for this release.` 
+|~~Write release blog, upload release demo video~~                  |  | ~~Convert the system demo recording into a blog.~~ This is no longer done. Leaving this in case we can do this step again in the future.
+|~~Add release demo video and blog link back in the release notes~~ | ~~Once the video and blog is published~~ | ~~Go to the release notes and add the links. For example, `Release demo: Check out the Zowe demo video for v1.24.0 to see a demo of what's new in this release. Release blog: Read this blog Zowe 1.24 Release Highlights written by Joe Winchester for a deeper dive of the major enhancements and changes for this release.`~~ This is no longer done. Leaving this in case we can do this step again in the future.
 
-## Removing archived version
+## Removing an archived version
 
-Removing archived version is necessary once two new versions are released to reduce total deploy & build time. It is advisable to keep latest **8-9 versions only** in the `master` branch to avoid build failure.
+Removing archived version is necessary once two new versions are released to reduce total deploy and build time. It is advisable to keep latest **8-9 versions only** in the `master` branch to avoid build failure.
 
 - Remove the specific version from `/versions.json` file.
 - Delete the specific complete version folder from `/versioned_docs` directory. Example: `versioned_docs/version-v1.17.x.`
@@ -342,7 +460,6 @@ Note: Instructions use Visual Studio Code and GitHub Desktop. Replace version nu
     `bash scripts/updateWebHelp.sh <zoweVersion> [<outputDir>]`
 
 7. Replace `<zoweVersion>` with the correct version in the following format:
-    
     1.28.2
 8. Replace `[<outputDir>]` with the correct directory:
     - For the next version: static/stable
@@ -351,10 +468,3 @@ Note: Instructions use Visual Studio Code and GitHub Desktop. Replace version nu
 10. In GitHub Desktop, commit your updates to your branch.
 11. Merge your branch to `docs-staging`.
 
-## Updating TPSRs
-
-Pick up the latest licenses file from this location: https://zowe.jfrog.io/zowe/libs-release-local/org/zowe/licenses/. 
-
-1. Open the release folder and download the `zowe_licenses_full.zip` file. 
-
-2. Extract the file and copy the content into the placeholder TPSR document for the release in the /tpsr folder.
