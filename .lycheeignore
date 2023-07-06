@@ -1,3 +1,4 @@
 /hostname:.*
 /localhost:.*
-/%7B.*%7D
+/github.com/zowe/docs-site/tree/master/src/tpsr/tpsr-
+/%7BtpsrLatestLink%7D

@@ -72,7 +72,7 @@ If you have multiple LPARs and want to share option values only between services
 
 ## Profile best practices
 
-According to [order of precedence](#how-command-precedence-works), base profiles are used as a fallback for service profiles. This means that after you create a base profile, you might need to update your service profiles to remove username, password, host, and port. Otherwise, commands will use the information stored in your service profile and will ignore your base profile definition.
+According to [order of precedence](../user-guide/cli-using-command-precedence.md), base profiles are used as a fallback for service profiles. This means that after you create a base profile, you might need to update your service profiles to remove username, password, host, and port. Otherwise, commands will use the information stored in your service profile and will ignore your base profile definition.
 
 ## Testing connections to z/OSMF
 
