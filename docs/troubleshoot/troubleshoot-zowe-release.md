@@ -1,5 +1,4 @@
-# Understanding the Zowe release
-
+# Understanding Zowe release versions
 ## Zowe releases
 
 Zowe uses semantic versioning for its releases, also known as SemVer.  Each release has a unique ID made up of three numbers that are separated by periods.
@@ -12,12 +11,6 @@ Each time a new release is created, the release ID is incremented.  Each number 
 - `2.5.1` represents the first patch to the `2.5.0` release.
 - `2.6.0` is the first minor release to be created after `2.5.1`.
 
-### Patch
-A patch is usually reserved for a bug fix to a minor release.
-
-### Minor release
-A minor release indicates that new functionality is added but the code is compatible with an earlier version.  The Zowe community works on two-week sprints and creates a minor release at the end of these, typically once per month although the frequency might vary.
-
 ### Major release
 A major release is required if changes are made to the public API and the code is no longer compatible with an earlier version.  
 
@@ -29,31 +22,8 @@ Subsequent minor and patch releases to V2 are delivered as SMP/E PTF SYSMODs.  B
 
 While Major releases are required for a "breaking" change, they also can be used to indicate to the community a significant content update over and above what would be included in a minor release.
 
-## Check the Zowe release number
+### Minor release
+A minor release indicates that new functionality is added but the code is compatible with an earlier version.  The Zowe community works on two-week sprints and creates a minor release at the end of these, typically once per month although the frequency might vary.
 
-To see the release number of Zowe, look at the `manifest.json` file.  This is included in the top-level [directory of where a Zowe convenience build is expanded to](../user-guide/install-zowe-zos-convenience-build.md), the top-level directory of a Zowe runtime `<RUNTIME_DIR>`.
-
-To see the version of a Zowe release, use the `zwe version` command.
-
-```
-> zwe version
-```
-
-will return a single line with the Zowe release number. For example,
-```
-Zowe v2.0.0
-```
-
-You can pass `debug` or `trace` mode argument to this command to show more information. For example,
-
-```
-> zwe version --debug
-Zowe v2.0.0
-build and hash: (HEADdetachedfrom4dd7c20c)#2 (c295c516259df909cf241f1818b359645276a96a)
-> zwe version --trace
-Zowe v2.0.0
-build and hash: (HEADdetachedfrom4dd7c20c)#2 (c295c516259df909cf241f1818b359645276a96a)
-Zowe directory: /SYSTEM/var/zowe/runtime
-```
-
-You can see in `trace` mode, it also tells you where is the Zowe runtime directory where `zwe` command you are running.
+### Patch
+A patch is usually reserved for a bug fix to a minor release.
