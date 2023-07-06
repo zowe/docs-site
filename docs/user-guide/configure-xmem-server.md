@@ -160,6 +160,15 @@ The starting and stopping of the `ZWESLSTC` started task for the main Zowe serve
 
 To diagnose problems that may occur with the Zowe `ZWESLSTC` not being able to attach to the `ZWESISTC` cross memory server, a log file `zssServer-yyyy-mm-dd-hh-mm.log` is created in the log directory each time ZIS is started.  More details on diagnosing errors can be found in [Zowe Application Framework issues](../troubleshoot/app-framework/app-troubleshoot.md#cannot-log-in-to-the-zowe-desktop).
 
+If the `crossMemoryServerName` is changed in `zowe.yaml` and the default name is not applied, mannually update the `PROC NAME` in the corresponding `PROCLIB`.
+
+For example, the ZIS server name is changed from its default of `ZWESIS_STC` to be `ZWESIS_02`. The `PROCLIB` member line 1 is updated from `//ZWESIS01  PROC NAME='ZWESIS_STD',MEM=00,RGN=0M` to `//ZWESIS_01  PROC NAME='ZWESIS_02',MEM=02,RGN=0M`. 
+And the `zowe.yaml` file is updated to use the `02` instance:
+
+```
+zss:
+    crossMemoryServerName: ZWESIS_02
+```
 
 ## Zowe auxiliary service
 
