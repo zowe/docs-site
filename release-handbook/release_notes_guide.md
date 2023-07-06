@@ -27,6 +27,19 @@ Zowe Version 2.3.0 contains the enhancements that are described in the following
 
 ### Zowe CLI
 
+#### Zowe CLI (Core)
+
+#### Zowe CLI Imperative Framework
+
+#### CICS Plug-in for Zowe CLI
+
+#### DB2 Plug-in for Zowe CLI
+
+#### MQ Plug-in for Zowe CLI
+
+#### IMS Plug-in for Zowe CLI
+
+
 ### Zowe Explorer
 
 ## Bug fixes
@@ -40,6 +53,18 @@ Zowe Version 2.3.0 contains the bug fixes that are described in the following to
 ### Zowe API Mediation Layer
 
 ### Zowe CLI
+
+#### Zowe CLI (Core)
+
+#### Zowe CLI Imperative Framework
+
+#### CICS Plug-in for Zowe CLI
+
+#### DB2 Plug-in for Zowe CLI
+
+#### MQ Plug-in for Zowe CLI
+
+#### IMS Plug-in for Zowe CLI
 
 ### Zowe Explorer
 
