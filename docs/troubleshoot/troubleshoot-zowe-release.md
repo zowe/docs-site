@@ -6,7 +6,7 @@ Zowe uses semantic versioning for its releases, also known as SemVer.  Each rele
 ```
 <Major Version>.<Minor Version>.<Patch Version>
 ```
-Each time a new release is created, the release ID is incremented.  Each number represents the content change since the previous release.  For example, 
+Each time a new release is created, the release ID is incremented.  Each number represents the content change since the previous release.  For example:
 - `2.5.0` represents the fifth minor release since the first major release.  
 - `2.5.1` represents the first patch to the `2.5.0` release.
 - `2.6.0` is the first minor release to be created after `2.5.1`.

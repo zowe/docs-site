@@ -4,16 +4,18 @@ Once Zowe is installed and running, you will likely update it regularly as new m
 
 To keep track of which release is running as you troubleshoot an issue, the files and commands listed here can help.
 
+:::caution
+As you update Zowe and Zowe plug-ins, make sure that versions for server side and client side components match. This helps avoid bugs and other issues.
+:::
 ## Using the `manifest` file
 
 Find the version number of your Zowe release in the `manifest.json` file.
 
-1. Extract the PAX file for the [Zowe convenience build](../user-guide/install-zowe-zos-convenience-build.md) to `<YOURDIRECTORY>`.
-2. Navigate to `<YOURDIRECTORY>` to locate the `manifest.json` file.
+1. Extract the PAX file for the [Zowe convenience build](../user-guide/install-zowe-zos-convenience-build.md) to `<RUNTIME_DIR>`.
+2. Navigate to `<RUNTIME_DIR>` to locate the `manifest.json` file.
 3. Open the `manifest.json` file.
-
+    
     The Zowe version is listed at the beginning of the file:
-
     ```
     {
     "name": "Zowe",
@@ -41,19 +43,19 @@ Using the `debug` mode:
 
 ```
 zwe version --debug
-Zowe v2.0.0
-build and hash: (HEADdetachedfrom4dd7c20c)#2 (c295c516259df909cf241f1818b359645276a96a)
+Zowe v2.9.0
+build and hash: v2.x/master#3248 (77fe6c5277e52474ebe9258c1b745949537dc398)
 ```
 The `debug` mode shows the unique build identifier for the installed version of Zowe. Run this when you want to replicate a bug for testing or troubleshooting.
 
 Using the `trace` mode:
 ```
 zwe version --trace
-Zowe v2.0.0
-build and hash: (HEADdetachedfrom4dd7c20c)#2 (c295c516259df909cf241f1818b359645276a96a)
-Zowe directory: /SYSTEM/var/zowe/runtime
+Zowe v2.9.0
+build and hash: v2.x/master#3248 (77fe6c5277e52474ebe9258c1b745949537dc398)
+Zowe directory: /SYSTEM/zowe/runtime
 ```
-The `trace` mode  shows the location of the `zwe` executable script. Run this when you want to confirm the location of your script.
+The `trace` mode  shows the location where the convenience build was extracted (such as `<RUNTIME_DIR>`). Run this when you want to confirm the location of your Zowe runtime directory.
 
 ## Client side commands
 
