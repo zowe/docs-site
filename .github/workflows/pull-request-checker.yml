@@ -52,7 +52,7 @@ jobs:
           prefix_mode: true
           one_of: "release:"
           repo_token: ${{ secrets.GITHUB_TOKEN }}
-     - name: Missing Release Label Comment PR
+      - name: Missing Release Label Comment PR
         if: failure()
         uses: marocchino/sticky-pull-request-comment@v2
         with:
@@ -71,7 +71,7 @@ jobs:
           prefix_mode: true
           one_of: "area:"
           repo_token: ${{ secrets.GITHUB_TOKEN }}
-     - name: Missing Area Label Comment PR
+      - name: Missing Area Label Comment PR
         if: failure()
         uses: marocchino/sticky-pull-request-comment@v2
         with:
