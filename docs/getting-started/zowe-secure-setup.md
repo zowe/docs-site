@@ -1,11 +1,11 @@
 # Zowe Security Overview
-<! #NOTE: This article is not about certificates configuration. It is placed in the Getting Started department and is intended to provide
-really only an overview of the security concepts implemented by Zowe.  
+<! #NOTE: This article is not about certificates configuration. It is placed in the Getting Started department and is intended to provide a hogh-level overview of the security concepts implemented by Zowe.  
 -->
 
-Before installation and use of Zowe server-side components it is practical to first learn about security features built into the Zowe architecture. 
+Before installation and use of Zowe server-side components it is practical to first learn about security features built into the Zowe architecture. Zowe implements comprehensive measures to secure mainframe services and data resources from unauthorized access, regardless of whether these resources are in transition or in rest.
 
-Zowe implements comprehensive measures to secure mainframe services and data resources from unauthorized access, regardless of whether these resources are in transition or in rest.
+**Note:** For details about the key concepts of Zowe certificates, and options for certificate configuration, see the article [Zowe certificate configuration overview](../user-guide/configure-certificates.md) in the Zowe User Guide documentation.
+
 
 Digital certificates according to x.509 standard specification are the cornerstone for securing communication channels between clients and servers. These certificates can also be used to provide identification of clients and service users.  
 The communication channels are secured by the latest versions of Transport Layer Security (TLS) using x.509 certificates. Client identification can be ensured by the proof of ownership of the provided x.509 certificate.  
