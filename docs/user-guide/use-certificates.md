@@ -1,9 +1,8 @@
 # Use certificates
 
-Now you can use the certificates for your next actions. The following certificates are supported by Zowe:
+Once your keystore and truststore are configured and you have a valid certificate connected, you can use the certificates to launch Zowe. The following certificates are supported by Zowe.
 - [PKCS12 certificates](#use-pkcs12-certificates)
 - [JCERACFKS certificates](#use-jceracfks-certificates)
-
 
 ## Use PKCS12 certificates
 
@@ -19,6 +18,20 @@ To check startup of Zowe, see review the article [Troubleshooting startup of Zow
 
 ## Use JCERACFKS certificates
 
+### Before you launch Zowe
+
+Before you launch Zowe, you must customize the `zowe.yaml` file by manually updating the values in the certificate configuration section.
+
+* **Step 1**: Run the command `zwe init certificate -c ./zowe.yaml --security-dry-run` to connect your certificate to the key ring.
+  
+![Alt text](../images/certificates/connect-JCERACFKS.png)
+
+* **Step 2**: Copy the values under the console message "*Please manually update to these values:*" into your clipboard.
+
+
+
+* **Step 3**: Paste the values to `zowe.yaml` to replace the default values.
+
 When Zowe is launched, details for the PKCS12 certificate used are specified in the `zowe.yaml` section `certificates`.  This contains information for the certificate name and its location, together with the truststore location.  
 
 The two most common scenarios for using a PKCS12 certtificate are:
@@ -27,7 +40,7 @@ The two most common scenarios for using a PKCS12 certtificate are:
 2. You do not have a certificate and wish to generate a new one.
 
 The `zwe init certificate` command supports both scenarios. The input parameters that control certificate configuration
-are specified in the section `zowe.setup.certificates`
+are specified in the section `zowe.setup.certificates`.
 
 ### Use multiple certificate authorities
 
