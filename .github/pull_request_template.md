@@ -44,12 +44,19 @@ Please describe your pull request.
 
 
 
+Describe your PR here:
+
+After creating the PR, follow the instructions in the comments.
 
 
 
 Replace this sentence with your pull request description.
 
 Follow these steps:
+
+Describe your PR here: lokflkjbljkgklj
+
+Replace this text with your PR description.
 
 1. Add a review label.
 2. Identify your content topic with a label.

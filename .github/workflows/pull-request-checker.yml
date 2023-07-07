@@ -10,7 +10,7 @@ on:
 jobs:
 
   initial-comment:
-    name: Initial comment
+    name: PR Instructions
     runs-on: ubuntu-latest
 
     steps:
@@ -20,6 +20,15 @@ jobs:
           header: Initial comment
           message: |
             Initial message INSERT MESSAGE HERE using markdown
+    
+      - name: Description checker
+        uses: jadrol/pr-description-checker-action@v1.0.0
+        with:
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          template-path: "./.github/pull_request_template.md"  
+          comment: true
+          comment-empty-description: "The PR description is empty, please add a valid description."
+          comment-template-not-filled: "It looks like you may have deleted the description prompt. Please include \"Describe your PR here:\" in your description."
 
   review-labels:
     name: Check for missing review label
