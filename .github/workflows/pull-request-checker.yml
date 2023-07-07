@@ -20,7 +20,10 @@ jobs:
           header: Initial comment
           message: |
             Initial message INSERT MESSAGE HERE using markdown
-    
+      - name: Checkout file
+        uses: Bhacaz/checkout-files@v2
+        with:
+          files: ".github/pull_request_template.md"  
       - name: Description checker
         uses: jadrol/pr-description-checker-action@v1.0.0
         with:
