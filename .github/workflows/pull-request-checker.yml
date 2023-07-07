@@ -12,6 +12,7 @@ jobs:
   initial-comment:
     name: PR Instructions
     runs-on: ubuntu-latest
+    # if: github.event.action == 'opened'
 
     steps:
       - name: Add initial comment w/ instructions
@@ -43,7 +44,7 @@ jobs:
         uses: docker://agilepathway/pull-request-label-checker:latest
         with:
           prefix_mode: true
-          one_of: "needs review by"
+          any_of: "needs review by"
           repo_token: ${{ secrets.GITHUB_TOKEN }}
       - name: Missing Review Label Comment PR
         if: failure()
@@ -51,7 +52,7 @@ jobs:
         with:
           header: Review label missing
           message: |
-            Missing review INSERT MESSAGE HERE using markdown
+            Missing **review** INSERT [MESSAGE](https://docs.zowe.org/) HERE using markdown
           
   release-labels:
     name: Check for missing release label
@@ -81,7 +82,7 @@ jobs:
         uses: docker://agilepathway/pull-request-label-checker:latest
         with:
           prefix_mode: true
-          one_of: "area:"
+          any_of: "area:"
           repo_token: ${{ secrets.GITHUB_TOKEN }}
       - name: Missing Area Label Comment PR
         if: failure()
