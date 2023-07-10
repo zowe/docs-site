@@ -1,16 +1,16 @@
 # Zowe Security Overview
-<! #NOTE: This article is not about certificates configuration. It is placed in the Getting Started department and is intended to provide a hogh-level overview of the security concepts implemented by Zowe.  
+<!-- #NOTE: This article is not about certificates configuration. 
+It is placed in the Getting Started department and is intended to provide a hogh-level overview of the security concepts
+implemented by Zowe.
 -->
 
-Before installation and use of Zowe server-side components it is practical to first learn about security features built into the Zowe architecture. Zowe implements comprehensive measures to secure mainframe services and data resources from unauthorized access, regardless of whether these resources are in transition or in rest.
+Before installation and use of Zowe server-side components it is practical to first learn about security features built into the Zowe architecture.
 
-**Note:** For details about the key concepts of Zowe certificates, and options for certificate configuration, see the article [Zowe certificate configuration overview](../user-guide/configure-certificates.md) in the Zowe User Guide documentation.
-
-
-Digital certificates according to x.509 standard specification are the cornerstone for securing communication channels between clients and servers. These certificates can also be used to provide identification of clients and service users.  
-The communication channels are secured by the latest versions of Transport Layer Security (TLS) using x.509 certificates. Client identification can be ensured by the proof of ownership of the provided x.509 certificate.  
+Zowe implements comprehensive measures to secure mainframe services and data resources from unauthorized access.
+Digital certificates are used by Zowe to facilitate secure electronic communication and data exchange between people, systems, and devices online.
 User access is managed by authenticating user identity thorough modern authentication methods such as Multi-Factor Authentication (MFA), JWT, or Personal Access Token (PAT).
-Authorization to access is managed by the mainframe security facility.
+Authorization to access is managed by the mainframe security facility. 
+Data is protected, in transition and in rest.
 
 See the following topics to learn more detail about how Zowe leverages modern security concepts and technologies:
 
@@ -32,14 +32,18 @@ See the following topics to learn more detail about how Zowe leverages modern se
 - [Access Authorization](#authorization)
 
 ## Digital certificates
-Digital certificates facilitate secure electronic communication and data exchange between people, systems, and devices online. These certificates are the foundation behind [Public Key Infrastructure (PKI)](#public-key-infrastructure) security.
 A Digital Certificate is an electronic file that is tied to a cryptographic (public and private) key pair and authenticates the identity of a website, individual, organization, user, device or server.
+The x.509 certificates are the foundation behind [Public Key Infrastructure (PKI)](#public-key-infrastructure) security. They are issued by Certificate Authorities (CAs), which are trusted organizations providing infrastructure for creation of the certificates according to the contemporary security standards.   
+CAs also provide certificate revocation and validation methods.
 
-Digital certificates are issued by Certificate Authorities (CAs), which are trusted organizations providing infrastructure for creation of the certificates according to the contemporary security standards.   
-CAs also provide certificate revocation and validation methods. 
+Digital certificates according to x.509 standard specification are the cornerstone for securing communication channels between clients and servers.
+x.509 certificates can also be used to provide identification of clients and service users.  
+The communication channels are secured by the latest versions of Transport Layer Security (TLS) using x.509 certificates. Client identification can be ensured by the proof of ownership of the provided x.509 certificate.  
 
-In some cases, such as for testing purposes of Zowe, it is acceptable to use certificates issued and signed either by a company local CA, or even self-signed certificates issued by using security tools specific for the target technology platform.
+In some cases, such as for testing purposes of Zowe, it is acceptable to use certificates issued and signed either by a company local CA, or even self-signed certificates issued by Zowe security tools specific for the target technology platform.
 This is, however, not recommended for production environments.
+
+**Note:** For details about the key concepts of Zowe certificates, and options for certificate configuration, see the article [Zowe certificate configuration overview](../user-guide/configure-certificates.md) in the Zowe User Guide documentation.
 
 ### Digital certificates usage
 Digital certificates perform two primary functions:
