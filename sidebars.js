@@ -638,6 +638,7 @@ module.exports = {
       items: [
         "troubleshoot/troubleshooting",
         "troubleshoot/troubleshoot-zowe-release",
+        "troubleshoot/troubleshoot-check-your-zowe-version",
       ],
     },
     {
