@@ -34,7 +34,7 @@ jobs:
           comment-empty-description: "The PR description is empty, please add a valid description."
           comment-template-not-filled: "It looks like your description is too short. The PR description must be at least 85 characters. Thank you for creating this PR! To get your content published, please follow these instructions:
             <br/>
-            <br/>**If you are *not* a Doc Squad writer**
+            <br/><font size= "5">**If you are *not* a Doc Squad writer**</font>
           <br/>1. Add the label `needs review by doc`.
           <br/>2. Identify your content topic with a label. (Examples: `area: apiml`, `area: cli`, `area: install and config`, etc.)
           <br/>3. Specify the Zowe release for your content. Use either label `current release` or `next release`.
