@@ -1,29 +1,10 @@
 # Checking your Zowe version release number
 
-Once Zowe is installed and running, you will likely update it regularly as new major and minor releases come out.
+Once Zowe is installed and running, you will likely update Zowe and Zowe plug-ins regularly as new major and minor releases come out.
 
-To keep track of which release is running as you troubleshoot an issue, the files and commands listed here can help.
+To keep track of which release is running as you troubleshoot an issue, the commands and file listed here can help.
 
-:::caution
-As you update Zowe and Zowe plug-ins, make sure that versions for server side and client side components match. This helps avoid bugs and other issues.
-:::
-## Using the `manifest` file
-
-Find the version number of your Zowe release in the `manifest.json` file.
-
-1. Extract the PAX file for the [Zowe convenience build](../user-guide/install-zowe-zos-convenience-build.md) to `<RUNTIME_DIR>`.
-2. Navigate to `<RUNTIME_DIR>` to locate the `manifest.json` file.
-3. Open the `manifest.json` file.
-    
-    The Zowe version is listed at the beginning of the file:
-    ```
-    {
-    "name": "Zowe",
-    "version": "2.10.0",
-    "description": "Zowe is an open source project ...
-    ```
-
-## Server side commands
+## Server side
 
 To see the version of a Zowe release, run the `zwe version` command in USS:
 
@@ -57,7 +38,23 @@ Zowe directory: /SYSTEM/zowe/runtime
 ```
 The `trace` mode  shows the location where the convenience build was extracted (such as `<RUNTIME_DIR>`). Run this when you want to confirm the location of your Zowe runtime directory.
 
-## Client side commands
+### Using the `manifest` file
+
+Find the version number of your Zowe release in the `manifest.json` file.
+
+1. Extract the PAX file for the [Zowe convenience build](../user-guide/install-zowe-zos-convenience-build.md) to `<RUNTIME_DIR>`.
+2. Navigate to `<RUNTIME_DIR>` to locate the `manifest.json` file.
+3. Open the `manifest.json` file.
+    
+    The Zowe version is listed at the beginning of the file:
+    ```
+    {
+    "name": "Zowe",
+    "version": "2.10.0",
+    "description": "Zowe is an open source project ...
+    ```
+
+## Client side
 
 ### Zowe CLI
 
