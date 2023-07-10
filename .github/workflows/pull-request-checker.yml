@@ -86,7 +86,7 @@ jobs:
         with:
           header: Release label missing
           message: |
-          The **release** label is missing. Add a `current release` or `next release` label so your content is published with the correct Zowe release.
+            The **release** label is missing. Add a `current release` or `next release` label so your content is published with the correct Zowe release.
 
   area-labels:
     name: Check for missing area label
@@ -105,5 +105,5 @@ jobs:
         with:
           header: Area label missing
           message: |
-          The **subject area** label is missing. Add an `area:` label so we know what your content is about.
+            The **subject area** label is missing. Add an `area:` label so we know what your content is about.
     
