@@ -20,7 +20,7 @@ jobs:
         with:
           header: Initial comment
           message: |
-            Thank you for creating this pull request. Please follow the
+            Initial message INSERT MESSAGE HERE using markdown
       - name: Checkout file
         uses: Bhacaz/checkout-files@v2
         with:
@@ -31,8 +31,8 @@ jobs:
           repo-token: ${{ secrets.GITHUB_TOKEN }}
           template-path: "./.github/pull_request_template.md"  
           comment: true
-          comment-empty-description: ":warning: The PR description is empty, please add a valid description. For help, contact the Zowe Doc Squad on [Slack](https://openmainframeproject.slack.com/archives/CC961JYMQ)."
-          comment-template-not-filled: ":frowning: It looks like the PR description is too short. The description must be more than 85 characters. For help, contact the Zowe Doc Squad on [Slack](https://openmainframeproject.slack.com/archives/CC961JYMQ)."
+          comment-empty-description: ":warning: The PR description is empty, please add a valid description."
+          comment-template-not-filled: ":frowning: It looks like the PR description is too short. The description must be more than 85 characters."
 
   review-labels:
     name: Check for missing review label
@@ -52,7 +52,7 @@ jobs:
         with:
           header: Review label missing
           message: |
-            This PR is missing a review label. Add a `needs review by` label so the PR can be approved by the right person. For help, contact the Zowe Doc Squad on [Slack](https://openmainframeproject.slack.com/archives/CC961JYMQ).
+            Missing **review** INSERT [MESSAGE](https://docs.zowe.org/) HERE using markdown
           
   release-labels:
     name: Check for missing release label
@@ -71,7 +71,7 @@ jobs:
         with:
           header: Release label missing
           message: |
-          :hash: This PR is missing a release label. Add a `release` label so your content is published with the correct Zowe release. For help, contact the Zowe Doc Squad on [Slack](https://openmainframeproject.slack.com/archives/CC961JYMQ).
+            Missing release INSERT MESSAGE HERE using markdown
 
   area-labels:
     name: Check for missing area label
@@ -90,5 +90,5 @@ jobs:
         with:
           header: Area label missing
           message: |
-          :bookmark_tabs: This PR is missing a subject area label. Add an `area` label so we know what your content is about. For help, contact the Zowe Doc Squad on [Slack](https://openmainframeproject.slack.com/archives/CC961JYMQ).
+            Missing area INSERT MESSAGE HERE using markdown
     
