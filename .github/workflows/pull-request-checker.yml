@@ -20,7 +20,7 @@ jobs:
         with:
           header: Initial comment
           message: |
-            Thank you for creating this pull request. Please follow the instructions below to prepare your content for publication.
+            Thank you for creating this pull request. Please follow the
       - name: Checkout file
         uses: Bhacaz/checkout-files@v2
         with:
@@ -52,7 +52,7 @@ jobs:
         with:
           header: Review label missing
           message: |
-          :pencil: This PR is missing a review label. Add a `needs review by` label so the PR can be approved by the right person. For help, contact the Zowe Doc Squad on [Slack](https://openmainframeproject.slack.com/archives/CC961JYMQ).
+          This PR is missing a review label. Add a `needs review by` label so the PR can be approved by the right person. For help, contact the Zowe Doc Squad on [Slack](https://openmainframeproject.slack.com/archives/CC961JYMQ).
           
   release-labels:
     name: Check for missing release label
