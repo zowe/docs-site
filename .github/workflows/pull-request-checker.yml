@@ -33,7 +33,7 @@ jobs:
           comment: true
           comment-empty-description: "The PR description is empty, please add a valid description."
           comment-template-not-filled: "It looks like your description is too short. The PR description must be at least 85 characters. Thank you for creating this PR! To get your content published, please follow these instructions:
-          <br/> **If you are *not* a Doc Squad writer**
+          <br/> **If you are *not* a Doc Squad writer**"
 
   review-labels:
     name: Check for missing review label
