@@ -20,7 +20,21 @@ jobs:
         with:
           header: Initial comment
           message: |
-            Thank you for creating this PR! To get your content published, please follow these instructions:
+          Thank you for creating this PR! To get your content published, please follow these instructions:
+            <br/>
+            <br/>**If you are *not* a Doc Squad writer**
+          <br/>1. Add the label `needs review by doc`.
+          <br/>2. Identify your content topic with a label. (Examples: `area: apiml`, `area: cli`, `area: install and config`, etc.)
+          <br/>3. Specify the Zowe release for your content. Use either label `current release` or `next release`.
+          <br/>4. Notify the Doc Squad about this PR: If you don't know who should review your content, message the [#zowe-doc](https://openmainframeproject.slack.com/archives/CC961JYMQ) Slack channel. If you know which Doc Squad writer should approve your content, add that person as a reviewer.
+          <br/>5. If you are unable to take any of these steps, notify the Doc Squad in the [#zowe-doc](https://openmainframeproject.slack.com/archives/CC961JYMQ) Slack channel for help.
+          <br/>
+          <br/>**If you *are* a Doc Squad writer**
+          <br/>1. Add the label `needs review by sme`.
+          <br/>2. Identify your content topic with a label. (Examples: `area: apiml`, `area: cli`, `area: install and config`, etc.)
+          <br/>3. Specify the Zowe release for your content: Use either label `current release` or `next release`.
+          <br/>4. Notify the SME to review this PR.
+          <br/>5. Fix broken links found in your content areas and link any issues related to this PR.
       - name: Checkout file
         uses: Bhacaz/checkout-files@v2
         with:
@@ -32,21 +46,7 @@ jobs:
           template-path: "./.github/pull_request_template.md"  
           comment: true
           comment-empty-description: "The PR description is empty, please add a valid description."
-          comment-template-not-filled: "It looks like your description is too short. The PR description must be at least 85 characters. Thank you for creating this PR! To get your content published, please follow these instructions:
-            <br/>
-            <br/>**If you are *not* a Doc Squad writer**
-          <br/>1. Add the label `needs review by doc`.
-          <br/>2. Identify your content topic with a label. (Examples: `area: apiml`, `area: cli`, `area: install and config`, etc.)
-          <br/>3. Specify the Zowe release for your content. Use either label `current release` or `next release`.
-          <br/>4. Notify the Doc Squad about this PR: If you don't know who should review your content, message the [#zowe-doc](https://openmainframeproject.slack.com/archives/CC961JYMQ) Slack channel. If you know which Doc Squad writer should approve your content, add that person as a reviewer.
-          <br/>5. If you are unable to take any of these steps, notify the Doc Squad in the [#zowe-doc](https://openmainframeproject.slack.com/archives/CC961JYMQ) Slack channel for help.
-          <br/>
-          <br/>**If you *are* a Doc Squad writer**
-          <br/>1. Add the label `needs review by sme`.
-          <br/>2. Identify your content topic with a label. (Example labels: `area: apiml`, `area: install and config`, etc.)
-          <br/>3. Specify the Zowe release for your content: Use either label `current release` or `next release`.
-          <br/>4. Notify the SME to review this PR.
-          <br/>5. Fix broken links found in your content areas and link any issues related to this PR."
+          comment-template-not-filled: "It looks like your description is too short. The PR description must be at least 85 characters."
 
   review-labels:
     name: Check for missing review label
@@ -66,9 +66,7 @@ jobs:
         with:
           header: Review label missing
           message: |
-            Missing **review** INSERT [MESSAGE](https://docs.zowe.org/) HERE using markdown
-            1. Adding a second line to see what happens.
-            2. Adding another line.
+            The **review** label is missing. Add a `needs review by` label so we can determine who needs to approve this PR.
 
           
   release-labels:
@@ -88,7 +86,7 @@ jobs:
         with:
           header: Release label missing
           message: |
-            Missing release INSERT MESSAGE HERE using markdown
+          The **release** label is missing. Add a `current release` or `next release` label so your content is published with the correct Zowe release.
 
   area-labels:
     name: Check for missing area label
@@ -107,5 +105,5 @@ jobs:
         with:
           header: Area label missing
           message: |
-            Missing area INSERT MESSAGE HERE using markdown
+          The **subject area** label is missing. Add an `area:` label so we know what your content is about.
     
