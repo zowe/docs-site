@@ -31,8 +31,8 @@ jobs:
           repo-token: ${{ secrets.GITHUB_TOKEN }}
           template-path: "./.github/pull_request_template.md"  
           comment: true
-          comment-empty-description: ":warning: The PR description is empty, please add a valid description."
-          comment-template-not-filled: ":frowning: It looks like the PR description is too short. The description must be more than 85 characters."
+          comment-empty-description: "The PR description is empty, please add a valid description."
+          comment-template-not-filled: "It looks like the PR description is too short. The description must be more than 85 characters."
 
   review-labels:
     name: Check for missing review label
