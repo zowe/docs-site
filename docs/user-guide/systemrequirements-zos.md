@@ -32,9 +32,9 @@ Be sure your z/OS system meets the following prerequisites:
 
 ### z/OS
 
-- z/OS version is in active support, such as Version 2.3 and Version 2.4
+- z/OS version is in active support, such as Version 2.4 and Version 2.5
 
-   **Note:** z/OS V2.2 reached end of support on 30 September 2020. For more information, see the z/OS v2.2 lifecycle details [https://www.ibm.com/support/lifecycle/details?q45=Z497063S01245B61](https://www.ibm.com/support/lifecycle/details?q45=Z497063S01245B61). 
+   **Note:** z/OS V2.3 reached end of support on 30 September 2022. For more information, see the z/OS v2.3 lifecycle details [https://www.ibm.com/support/pages/zos23x](https://www.ibm.com/support/pages/zos23x)
 
 - zFS volume has at least 833 mb of free space for Zowe server components, their keystore, instance configuration files and logs, and third-party plug-ins.
 
