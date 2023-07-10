@@ -32,7 +32,7 @@ jobs:
           template-path: "./.github/pull_request_template.md"  
           comment: true
           comment-empty-description: :warning: "The PR description is empty, please add a valid description."
-          comment-template-not-filled: ":warning: It looks like you may have deleted the description prompt. Please include \"Describe your PR here:\" in your description."
+          comment-template-not-filled: :warning: "It looks like you may have deleted the description prompt. Please include \"Describe your PR here:\" in your description."
 
   review-labels:
     name: Check for missing review label
