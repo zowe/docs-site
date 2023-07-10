@@ -32,7 +32,9 @@ jobs:
           template-path: "./.github/pull_request_template.md"  
           comment: true
           comment-empty-description: "The PR description is empty, please add a valid description."
-          comment-template-not-filled: "It looks like your description is too short. The PR description must be at least 85 characters."
+          comment-template-not-filled: "It looks like your description is too short. The PR description must be at least 85 characters. Missing **review** INSERT [MESSAGE](https://docs.zowe.org/) HERE using markdown
+          1. Adding a second line to see what happens.
+          2. Adding another line."
 
   review-labels:
     name: Check for missing review label
