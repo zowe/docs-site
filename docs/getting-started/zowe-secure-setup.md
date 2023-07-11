@@ -58,7 +58,9 @@ For more practical guidance about how to set up and configure digital certificat
 
 ### Public key infrastructure
 [Public Key Infrastructure (PKI)](https://en.wikipedia.org/wiki/Public_key_infrastructure) is a key aspect of internet security. PKI is both the technology and processes that make up the framework for encryption to protect and authenticate digital communications.
-PKI includes software, hardware, policies, and procedures that are used to create, distribute, manage, store, and revoke digital certificates.
+PKI includes software, hardware, policies, and procedures that are used to create, distribute, manage, store, and revoke digital certificates and manage public-key encryption.
+
+Visit the following external link, to learn [How Does PKI Work](https://www.keyfactor.com/education-center/what-is-pki/#section2).
 
 ### Digital certificates types
 Digital certificates can be issued in various formats. The format is dependent on the certificate storage type. Zowe supports:
