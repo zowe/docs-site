@@ -20,7 +20,7 @@ jobs:
         with:
           header: Initial comment
           message: |
-            :smiley_cat: Thank you for creating this PR! To publish your content on Zowe Docs, follow these instructions.
+            :smiley_cat: Thank you for creating this PR! To publish your content on [Zowe Docs](https://docs.zowe.org/), follow these instructions.
 
             **If you are *not* a Doc Squad writer**
             1. Add the label `needs review by doc`.
@@ -66,7 +66,7 @@ jobs:
         with:
           header: Review label missing
           message: |
-            The **review** label is missing. Add a `needs review by` label so we can determine who needs to approve this PR.
+            :heavy_check_mark: The **review** label is missing. Add a `needs review by` label so we can determine who needs to approve this PR.
 
           
   release-labels:
@@ -86,7 +86,7 @@ jobs:
         with:
           header: Release label missing
           message: |
-            The **release** label is missing. Add a `current release` or `next release` label so your content is published with the correct Zowe release.
+            :hash: The **release** label is missing. Add a `current release` or `next release` label so your content is published with the correct Zowe release.
 
   area-labels:
     name: Check for missing area label
@@ -105,5 +105,5 @@ jobs:
         with:
           header: Area label missing
           message: |
-            The **subject area** label is missing. Add an `area:` label so we know what your content is about.
+            :bookmark_tabs: The **subject area** label is missing. Add an `area:` label so we know what your content is about.
     
