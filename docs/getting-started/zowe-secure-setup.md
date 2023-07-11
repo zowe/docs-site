@@ -38,7 +38,7 @@ The nowadays de-facto standard is the x.509 family type of certificates, which a
 Digital certificates according to x.509 standard specification are the cornerstone for securing communication channels between clients and servers.
 x.509 certificates can also be used to provide identification of clients and service users.
 
-Zowe doesn't compromise components communication channels security and strictly implements the latest versions of Transport Layer Security (TLS) using x.509 certificates. 
+Zowe doesn't compromise on components communication channels security and strictly implements the latest versions of Transport Layer Security (TLS) using x.509 certificates. 
 Additionally, Zowe provides client identity validation functionality based on the ownership of the provided x.509 client certificate and the mainframe security authentication mechanism.   
 
 Certificate can be self-signed or issued by a Certificate Authority (CA). A CA is an organization which provides infrastructure for creation, validation and revocation of the certificates according to the contemporary security standards.
@@ -69,8 +69,8 @@ Visit the following external link, to learn [How Does PKI Work](https://www.keyf
 Visit the following link to learn more about PKI in the context of the [z/OS Cryptographic Services](https://www.ibm.com/docs/en/zos/2.3.0?topic=planning-introducing-pki-services). 
 
 ### Transport Layer Security
-[Transport Layer Security (TLS)](https://en.wikipedia.org/wiki/Transport_Layer_Security) is a standard protocol that provides authentication, privacy and data integrity between two communicating computer applications.
-TLS uses a client-server handshake mechanism to establish an encrypted and secure connection and to ensure the authenticity of the communication.
+[Transport Layer Security (TLS)](https://en.wikipedia.org/wiki/Transport_Layer_Security) is a standard networking protocol that provides authentication, privacy and data integrity between two communicating computer applications.
+TLS uses a client-server handshake mechanism to establish an encrypted and secure connection and also to validate the authenticity of the communication parties.
 
 The following diagram illustrates how TLS works:
 ![img.png](img.png)
