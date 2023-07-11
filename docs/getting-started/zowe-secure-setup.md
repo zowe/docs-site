@@ -57,12 +57,8 @@ For more details about how Zowe leverages certificates, and to understand the va
 For more practical guidance about how to set up and configure digital certificates used in Zowe, follow [Certs-Configuration-Guide](<!-- #TODO Provide link.-->)
 
 ### Public key infrastructure
-Public Key Infrastructure (PKI) is a key aspect of internet security. PKI is both the technology and processes that make up the framework for encryption to protect and authenticate digital communications.
+[Public Key Infrastructure (PKI)](https://en.wikipedia.org/wiki/Public_key_infrastructure) is a key aspect of internet security. PKI is both the technology and processes that make up the framework for encryption to protect and authenticate digital communications.
 PKI includes software, hardware, policies, and procedures that are used to create, distribute, manage, store, and revoke digital certificates.
-
-<!-- TODO: Learn more about PKI ...provide link to:
-  - GLosary, FAQ, Standards, Specifications BLogs?
--->
 
 ### Digital certificates types
 Digital certificates can be issued in various formats. The format is dependent on the certificate storage type. Zowe supports:
