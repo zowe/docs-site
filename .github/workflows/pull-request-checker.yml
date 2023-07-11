@@ -20,7 +20,7 @@ jobs:
         with:
           header: Initial comment
           message: |
-          Thank you for creating this PR! To publish your content on Zowe Docs, follow these instructions.
+            :smiley_cat: Thank you for creating this PR! To publish your content on Zowe Docs, follow these instructions.
 
             **If you are *not* a Doc Squad writer**
             1. Add the label `needs review by doc`.
