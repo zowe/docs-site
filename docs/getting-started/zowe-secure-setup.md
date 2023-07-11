@@ -62,21 +62,23 @@ PKI includes software, hardware, policies, and procedures that are used to creat
 
 Visit the following external link, to learn [How Does PKI Work](https://www.keyfactor.com/education-center/what-is-pki/#section2).
 
+Visit the following link to learn more about PKI in the context of the [z/OS Cryptographic Services](https://www.ibm.com/docs/en/zos/2.3.0?topic=planning-introducing-pki-services). 
+
 ### Transport Layer Security
-Transport Layer Security (TLS) is a standard protocol that provides authentication, privacy and data integrity between two communicating computer applications.
+[Transport Layer Security (TLS)](https://en.wikipedia.org/wiki/Transport_Layer_Security) is a standard protocol that provides authentication, privacy and data integrity between two communicating computer applications.
 TLS uses a client-server handshake mechanism to establish an encrypted and secure connection and to ensure the authenticity of the communication.
 
-The TLS should be used to ensure secure data-transport for all connections to API Mediation Layer services.
 The following diagram illustrates how TLS works:
 ![img.png](img.png)
 <!-- #TODO: Provide TLS diagram - either own or from a free source -->
+
+The TLS should always be used to ensure secure data-transport for all connections to API Mediation Layer services.
 
 Zowe fully relies on TLS for securing the communication between its components, as well as between client application and Zowe server components.
 
 For more information, see the [TLS requirements in Zowe API ML requirements](../extend/extend-apiml/zowe-api-mediation-layer-security-overview#zowe-api-ml-tls-requirements).
 
 **Note** When installed on a mainframe system, Zowe is able to utilize the AT-TLS implementation if supported by the corresponding z/OS version/installation.
-
 
 ### Digital certificates types
 Digital certificates can be issued in various formats. The format is dependent on the certificate storage type. Zowe supports:
