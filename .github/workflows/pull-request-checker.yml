@@ -45,8 +45,8 @@ jobs:
           repo-token: ${{ secrets.GITHUB_TOKEN }}
           template-path: "./.github/pull_request_template.md"  
           comment: true
-          comment-empty-description: "The PR description is empty, please add a valid description."
-          comment-template-not-filled: "It looks like your description is too short. The PR description must be at least 85 characters."
+          comment-empty-description: ":warning: The PR description is empty, please add a valid description."
+          comment-template-not-filled: ":warning: It looks like your description is too short. The PR description must be at least 85 characters."
 
   review-labels:
     name: Check for missing review label
@@ -66,7 +66,7 @@ jobs:
         with:
           header: Review label missing
           message: |
-            :heavy_check_mark: The **review** label is missing. Add a `needs review by` label so we can determine who needs to approve this PR.
+            :pencil: The **review** label is missing. Add a `needs review by` label so we can determine who needs to approve this PR.
 
           
   release-labels:
@@ -86,7 +86,7 @@ jobs:
         with:
           header: Release label missing
           message: |
-            :hash: The **release** label is missing. Add a `current release` or `next release` label so your content is published with the correct Zowe release.
+            :heavy_exclamation_mark: The **release** label is missing. Add a `current release` or `next release` label so your content is published with the correct Zowe release.
 
   area-labels:
     name: Check for missing area label
@@ -105,5 +105,5 @@ jobs:
         with:
           header: Area label missing
           message: |
-            :bookmark_tabs: The **subject area** label is missing. Add an `area:` label so we know what your content is about.
+            :pushpin: The **subject area** label is missing. Add an `area:` label so we know what your content is about.
     
