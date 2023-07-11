@@ -17,8 +17,8 @@ See the following topics to learn more detail about how Zowe leverages modern se
 - [Digital certificates](#digital-certificates)
   - [Digital certificates usage](#digital-certificates-usage)
   - [PKI (Public Key Infrastructure)](#public-key-infrastructure)
-  - [Digital certificates types](#digital-certificates-types)
   - [Transport Layer Security (TLS)](#transport-layer-security)
+  - [Digital certificates types](#digital-certificates-types)
   - [Certificates storage](#certificates-storage)
 - [Authentication methods](#authentication-methods)
   - [Authentication with JSON Web Tokens(JWT)](#authentication-with-json-web-tokensjwt)
@@ -62,15 +62,6 @@ PKI includes software, hardware, policies, and procedures that are used to creat
 
 Visit the following external link, to learn [How Does PKI Work](https://www.keyfactor.com/education-center/what-is-pki/#section2).
 
-### Digital certificates types
-Digital certificates can be issued in various formats. The format is dependent on the certificate storage type. Zowe supports:
-* **file-based PKCS12**  
-  PKCS12 certificates are the most general and widely deployed certificate format.
-* **z/OS keyring-based keystore (JKS/JCEKS)**  
-  JKS/JCEKS certificates are specific types of certificates that depend on the Java environment.
-
-**Note:** Java 9 and higher can also work with PKCS12 certificates.
-
 ### Transport Layer Security
 Transport Layer Security (TLS) is a standard protocol that provides authentication, privacy and data integrity between two communicating computer applications.
 TLS uses a client-server handshake mechanism to establish an encrypted and secure connection and to ensure the authenticity of the communication.
@@ -85,6 +76,16 @@ Zowe fully relies on TLS for securing the communication between its components, 
 For more information, see the [TLS requirements in Zowe API ML requirements](../extend/extend-apiml/zowe-api-mediation-layer-security-overview#zowe-api-ml-tls-requirements).
 
 **Note** When installed on a mainframe system, Zowe is able to utilize the AT-TLS implementation if supported by the corresponding z/OS version/installation.
+
+
+### Digital certificates types
+Digital certificates can be issued in various formats. The format is dependent on the certificate storage type. Zowe supports:
+* **file-based PKCS12**  
+  PKCS12 certificates are the most general and widely deployed certificate format.
+* **z/OS keyring-based keystore (JKS/JCEKS)**  
+  JKS/JCEKS certificates are specific types of certificates that depend on the Java environment.
+
+**Note:** Java 9 and higher can also work with PKCS12 certificates.
 
 ### Certificates storage
 
