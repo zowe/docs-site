@@ -20,7 +20,7 @@ jobs:
         with:
           header: Initial comment
           message: |
-            :smiley_cat: Thank you for creating this PR! To publish your content to [Zowe Docs](https://docs.zowe.org/), follow the required steps below. Need help? Contact the Doc Squad in the [#zowe-doc](https://openmainframeproject.slack.com/archives/CC961JYMQ) Slack channel.
+            :smiley_cat: Thank you for creating this PR! To publish your content to [Zowe Docs](https://docs.zowe.org/), follow the required steps below.
 
             **If you are *not* a Doc Squad writer**
             1. Add the label `needs review by doc`.
@@ -37,6 +37,8 @@ jobs:
             5. Fix broken links found in your content areas.
             6. Notify the SME to review this PR.
             7. Merge to the `master` branch if your content documents the current release or a previous release. Merge to `docs-staging` if your content is for the next release.
+
+            **Need help?** Contact the Doc Squad in the [#zowe-doc](https://openmainframeproject.slack.com/archives/CC961JYMQ) Slack channel.
       - name: Checkout file
         uses: Bhacaz/checkout-files@v2
         with:
