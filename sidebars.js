@@ -128,8 +128,9 @@ module.exports = {
                   label: "Configuring certificates",
                   items: [
                     "user-guide/configure-certificates",
-                    "user-guide/configure-certificates-keystore",
-                    "user-guide/configure-certificates-keyring",
+                    "user-guide/generate-certificates",
+                    "user-guide/import-certificates",
+                    "user-guide/use-certificates",
                     "user-guide/certificates-setup",
                   ],
                 },
@@ -639,6 +640,7 @@ module.exports = {
       items: [
         "troubleshoot/troubleshooting",
         "troubleshoot/troubleshoot-zowe-release",
+        "troubleshoot/troubleshoot-check-your-zowe-version",
       ],
     },
     {
