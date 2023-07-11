@@ -31,15 +31,18 @@ See the following topics to learn more detail about how Zowe leverages modern se
 
 ## Digital certificates
 A Digital Certificate is an electronic file that is tied to a cryptographic (public and private) key pair and authenticates the identity of a website, individual, organization, user, device or server.
-The x.509 certificates are the foundation behind [Public Key Infrastructure (PKI)](#public-key-infrastructure) security. They are issued by Certificate Authorities (CAs), which are trusted organizations providing infrastructure for creation of the certificates according to the contemporary security standards.   
-CAs also provide certificate revocation and validation methods.
+The nowadays de-facto standard is the x.509 family type of certificates, which are the foundation behind [Public Key Infrastructure (PKI)](#public-key-infrastructure) security. 
 
 <!-- #TODO: Provide a concise description of what digital certificate is. Keep it basic and don't focus that much on details on usage or infrastructure. -->
 
 Digital certificates according to x.509 standard specification are the cornerstone for securing communication channels between clients and servers.
-x.509 certificates can also be used to provide identification of clients and service users.  
-The communication channels between Zowe components are secured by the latest versions of Transport Layer Security (TLS) using x.509 certificates. 
-Client identification can be ensured by the proof of ownership of the provided x.509 certificate.  
+x.509 certificates can also be used to provide identification of clients and service users.
+
+Zowe doesn't compromise components communication channels security and strictly implements the latest versions of Transport Layer Security (TLS) using x.509 certificates. 
+Additionally, Zowe provides client identity validation functionality based on the ownership of the provided x.509 client certificate and the mainframe security authentication mechanism.   
+
+Certificate can be self-signed or issued by a Certificate Authority (CA). A CA is an organization which provides infrastructure for creation, validation and revocation of the certificates according to the contemporary security standards.
+Digital certificates used by Zowe can be issued by the company's private CA or an external widely trusted CA.
 
 **Note** In some cases, such as for testing purposes of Zowe, it is acceptable to use certificates issued and signed either by a company local CA, or even self-signed certificates issued by Zowe security tools specific for the target technology platform.
 This is, however, not recommended for production environments.
@@ -49,12 +52,13 @@ Read the following sections to learn about the key concepts of the certificates-
 ### Digital certificates usage
 Digital certificates perform two primary functions:
 - Verification of the identity of a sender/receiver of an electronic message
-- Eencryption/Decryption of the messages between the sender and the receiver.
+- Encryption/Decryption of the messages between the sender and the receiver.
 
 Zowe uses digital certificates as a foundational element of both, communication and identity security.
 
-For more details about how Zowe leverages certificates, and to understand the various options for Zowe certificate configuration, see the article [Zowe certificate configuration overview](../user-guide/configure-certificates.md) in the Zowe User Guide documentation.
-For more practical guidance about how to set up and configure digital certificates used in Zowe, follow [Certs-Configuration-Guide](<!-- #TODO Provide link.-->)
+Visit the [Zowe certificate usage](../user-guide/use-certificates.md) dedicated article, to learn details about how Zowe leverages certificates.
+
+Read the [Zowe certificate configuration overview](../user-guide/configure-certificates.md) article in the Zowe User Guide documentation to understand the various options for Zowe certificate configuration.
 
 ### Public key infrastructure
 [Public Key Infrastructure (PKI)](https://en.wikipedia.org/wiki/Public_key_infrastructure) is a key aspect of internet security. PKI is both the technology and processes that make up the framework for encryption to protect and authenticate digital communications.
@@ -81,7 +85,16 @@ For more information, see the [TLS requirements in Zowe API ML requirements](../
 **Note** When installed on a mainframe system, Zowe is able to utilize the AT-TLS implementation if supported by the corresponding z/OS version/installation.
 
 ### Digital certificates types
-Digital certificates can be issued in various formats. The format is dependent on the certificate storage type. Zowe supports:
+When we discuss digital certificates types, we distinguish several aspects of the certificates as artifacts and their usage.
+Certificates come in various file formats and can be stored in different [certificates storage](#certificates-storage) types. 
+
+Digital X.509 certificates can be issued in various file formats such as PEM, DER, PKCS#7 and PKCS#12. 
+PEM and PKCS#7 formats use Base64 ASCII encoding while DER and PKCS#12 use binary encoding.
+
+In general, the choice of certificates format depends on the technologies used for the implementation of the server components and on the certificate storage type. 
+
+
+Zowe supports:
 * **file-based PKCS12**  
   PKCS12 certificates are the most general and widely deployed certificate format.
 * **z/OS keyring-based keystore (JKS/JCEKS)**  
