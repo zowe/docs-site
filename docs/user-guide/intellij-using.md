@@ -64,7 +64,7 @@ There are some options to copy and move z/OS datasets and members, and USS files
 
 **Important note**: the contents of the source files and datasets will stay the same, until you try to copy/move a file from USS to a z/OS partitioned dataset. If the file contents are longer than the specified for the PDS logical record length, then firstly the content will be cut to the specified LRECL, and the rest is going to be on the next lines. 
 
-It is possible to move and copy files and datasets either through hotkey buttons and context menu, or using drag and drop.
+It is possible to move and copy files and datasets either through keyboard shortcut buttons and context menu, or using drag and drop.
 
 To move a member from one dataset to another:
 1. Right click on the member to be moved
@@ -161,7 +161,7 @@ Also, it is possible to control the job execution through the console view.
 
 If you don't need the job anymore:
 1. Right click on the job
-2. Select **Purge Job** *(**Delete** is the hotkey)*
+2. Select **Purge Job** *(**Delete** is the keyboard shortcut)*
 
 ![Working with jobs](../images/intellij/work_with_jes_jobs.gif)
 

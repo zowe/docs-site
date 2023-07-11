@@ -48,14 +48,14 @@ To create a new file, complete these steps:
 5. Click **Save**
 6. To close a file, click the X icon in its tab, double-click on the tab, or use (Alt+W).   
 
-## Hotkeys
+## Keyboard shortcuts
 
-The following hotkeys can be used in the editor to navigate or perform actions with only the keyboard.
+The following keyboard shortcuts can be used in the editor to navigate or perform actions with only the keyboard.
 
 - TAB/Shift + TAB: Cycle through the menu bar, browsing type, search bar, file tree, and editor component.  
     - Individual options within the menu bar and individual nodes within the file tree can be navigated with the arrow keys and ENTER (to select).
 
-|Hot Key|Command|
+|Keyboard Shortcut|Command|
 |---	|---	|
 |ALT+K  |Open a dataset |
 |ALT+O  |Open a directory |
