@@ -206,8 +206,12 @@ Badge {
   display: none;
 }
 
-.zowe-faq p {
-  margin: revert;
+.zowe-faq > summary::after {
+  content: "Click to show answer";
+}
+
+.zowe-faq[open] > summary::after {
+  content: "Click to hide answer";
 }
 
 .hero__title {
