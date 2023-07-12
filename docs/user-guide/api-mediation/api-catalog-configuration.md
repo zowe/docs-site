@@ -68,22 +68,5 @@ It is possible to customize logotype and selected style options directly in `zow
                     textColor: blue
                     docLink: Custom Documentation|https://somedoc.com
     ```
-
-  An alternative example is to define the parameter only for a high availability instance on lpar1:
-
-    ```yaml
-      haInstances:
-        lpar1:
-          configs:
-            apiml:
-               catalog:
-                  customStyles:
-                      logo: /path/to/logo.png
-                      titlesColor: #F7190E
-                      fontFamily: Roboto
-                      headerColor: grey
-                      backgroundColor: #FFFFFF
-                      textColor: blue
-                      docLink: Custom Documentation|https://somedoc.com
-    ```
+  
   In case some above properties is not set, the default Zowe API Catalog css values will be used.
