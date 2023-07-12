@@ -44,12 +44,46 @@ As a system programmer who wants to configure advanced API Catalog features of t
 
 It is possible to customize logotype and selected style options directly in `zowe.yaml`. The following properties can be set under `apiml.catalog.customStyles`:
 
-- `logo`: Set the location of the logo, defaults to ...
-- `titlesColor`: Set the title color, defaults to ...
-- `fontFamily`: Set the font family to use across the API Catalog, defaults to ...
-- `hoverColor`: Set the HTML color
-- `focusColor`: Set the HTML color
-- `hyperlinksColor`: Set the HTML color of hyperlinks (`a` elements)
-- `boxShadowColor`: Set the HTML color of displayed shadows
+- `logo`: Set the location of the logo that will replace the default Zowe logo in the API Catalog header. The supported image formats are: `svg`, `png` and `jpg/jpeg`
+- `titlesColor`: Set the title color
+- `fontFamily`: Set the font family to use across the API Catalog
 - `headerColor`: Set the HTML color of the header element in the API Catalog home page
 - `backgroundColor`: Set the HTML color of the main background across the API Catalog
+- `textColor`: Set the HTML color of the main text across the API Catalog
+- `docLink`: Set a custom link that will be displayed in the header. It can be used to refer to some documentation. The format is `<link_name>|<link_url>`
+    **Example:** `docLink: Custom Documentation|https://somedoc.com`
+
+  Example to define this parameter globally:
+
+    ```yaml
+      configs:
+         apiml:
+            catalog:
+                customStyles:
+                    logo: /path/to/logo.png
+                    titlesColor: #F7190E
+                    fontFamily: Roboto
+                    headerColor: grey
+                    backgroundColor: #FFFFFF
+                    textColor: blue
+                    docLink: Custom Documentation|https://somedoc.com
+    ```
+
+  An alternative example is to define the parameter only for a high availability instance on lpar1:
+
+    ```yaml
+      haInstances:
+        lpar1:
+          configs:
+            apiml:
+               catalog:
+                  customStyles:
+                      logo: /path/to/logo.png
+                      titlesColor: #F7190E
+                      fontFamily: Roboto
+                      headerColor: grey
+                      backgroundColor: #FFFFFF
+                      textColor: blue
+                      docLink: Custom Documentation|https://somedoc.com
+    ```
+  In case some above properties is not set, the default Zowe API Catalog css values will be used.
