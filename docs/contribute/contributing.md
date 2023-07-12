@@ -226,6 +226,12 @@ Example:
 
 #### Avoid complex sentences that overuse punctuation such as commas and semicolons.
 
+### Release notes
+
+Release notes should be written in a consistent style that is easy to read and provides relevant information to users.
+
+To help ensure these best practices are followed, see [CHANGELOG and release notes formatting](../../release-handbook/release_notes_guide.md#changelog-and-release-notes-formatting) and [Writing style for release notes entries](../../release-handbook/release_notes_guide.md#writing-style-for-release-notes-entries).
+
 ### Word usage and punctuation
 
 #### Note headings such as Note, Important, and Tip should be formatted using the lower case and bold format
