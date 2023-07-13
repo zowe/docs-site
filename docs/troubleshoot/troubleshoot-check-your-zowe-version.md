@@ -16,7 +16,7 @@ The `zwe version` command returns a single line with the Zowe release number:
 ```
 Zowe v2.0.0
 ```
-### Using other commands
+### Using additional commands
 
 Add the `debug` or `trace` options to the `zwe version` command to show more information.
 
