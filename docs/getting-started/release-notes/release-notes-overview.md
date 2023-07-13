@@ -7,7 +7,7 @@ Release notes detail all the new features, enhancements, bug fixes, and security
 Select a Zowe release version on the **Table of Contents** located on the left of the page to view its release notes.
 
 ## Gathering release version information
-If you would like to find out your release number, see [Checking your Zowe version release number](/docs/troubleshoot/troubleshoot-check-your-zowe-version.md). For more information on Zowe release numbers, see [Understanding Zowe release versions](/docs/troubleshoot/troubleshoot-zowe-release.md).
+To find out your release number, see [Checking your Zowe version release number](/docs/troubleshoot/troubleshoot-check-your-zowe-version.md). For more information on Zowe release numbers, see [Understanding Zowe release versions](/docs/troubleshoot/troubleshoot-zowe-release.md).
 
 ## Accessing older release notes
 
