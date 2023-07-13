@@ -80,8 +80,7 @@ Most importantly, TLS defines a client-server handshake mechanism to establish a
 During the handshake, the parties negotiate exchange algorithm, cipher suites and exchange key material to establish a stateful encrypted connection.   
 The exact steps of the TLS handshake depend on the protocol version/s supported by the client and the server. The current version is 1.3, while version 1.2 is still more popular and is widely supported. 
 
-It is important to learn the TLS terminology in order to understand the handshake protocol. Knowing the key concepts and terms helps to properly setup the Zowe servers network security and to troubleshoot configuration issues.
-Make sure you understand at minimum the following concepts and terms:
+Knowing the key concepts and terms helps to properly setup the Zowe servers network security and to troubleshoot configuration issues. Please, make sure you understand at minimum the following concepts and terms:
   - Cipher Suite
   - Key Exchange
   - Symmetric Encryption
@@ -90,9 +89,9 @@ Make sure you understand at minimum the following concepts and terms:
   - Basic vs mutually-authenticated handshake
 
 
-The following diagram illustrates the TLS handshake steps :
-![img.png](img.png)
-<!-- #TODO: Provide TLS diagram - either own or from a free source -->
+The following diagram illustrates the TLS handshake steps:
+
+![TLS handshake v 1.2](../images/certificates/ssl-handshake-10-steps.png)
 
 The TLS should always be used to ensure secure data-transport for all connections to API Mediation Layer services.
 
