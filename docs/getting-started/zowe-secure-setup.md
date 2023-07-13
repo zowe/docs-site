@@ -1,7 +1,9 @@
 # Zowe Security Overview
 <!-- #NOTE: This article is not about certificates configuration. 
-It is placed in the Getting Started department and is intended to provide a hogh-level overview of the security concepts
-implemented by Zowe.
+It is placed in the Getting Started Top-Level section and is intended to provide a high-level overview of the security concepts
+implemented by Zowe, particularly focuses on certificates and their usage.
+
+#TODO: Consider splitting the document to separate the certificates overview into a separate document while keeping the zowe-secure-setup as a security overview, kinda security related table of contents.  
 -->
 
 Before installation and use of Zowe server-side components it is practical to first learn about security features built into the Zowe architecture.
@@ -69,10 +71,26 @@ Visit the following external link, to learn [How Does PKI Work](https://www.keyf
 Visit the following link to learn more about PKI in the context of the [z/OS Cryptographic Services](https://www.ibm.com/docs/en/zos/2.3.0?topic=planning-introducing-pki-services). 
 
 ### Transport Layer Security
-[Transport Layer Security (TLS)](https://en.wikipedia.org/wiki/Transport_Layer_Security) is a standard networking protocol that provides authentication, privacy and data integrity between two communicating computer applications.
-TLS uses a client-server handshake mechanism to establish an encrypted and secure connection and also to validate the authenticity of the communication parties.
+[Transport Layer Security (TLS)](https://en.wikipedia.org/wiki/Transport_Layer_Security) is a networking cryptography protocol that provides authentication, privacy and data integrity between two communicating computer applications.
+TLS is a successor to Secure Socket Layer (SSL), which was deprecated in 2015. 
 
-The following diagram illustrates how TLS works:
+***Note*** Although the transition from SSL 3.0 to TLS 1.0 happened back in 1999, people still often would refer to SSL instead of to TLS, eventually voice it tas SSL/TLS.  
+
+Most importantly, TLS defines a client-server handshake mechanism to establish an encrypted and secure connection, to ensure the authenticity of the communication parties. 
+During the handshake, the parties negotiate exchange algorithm, cipher suites and exchange key material to establish a stateful encrypted connection.   
+The exact steps of the TLS handshake depend on the protocol version/s supported by the client and the server. The current version is 1.3, while version 1.2 is still more popular and is widely supported. 
+
+It is important to learn the TLS terminology in order to understand the handshake protocol. Knowing the key concepts and terms helps to properly setup the Zowe servers network security and to troubleshoot configuration issues.
+Make sure you understand at minimum the following concepts and terms:
+  - Cipher Suite
+  - Key Exchange
+  - Symmetric Encryption
+  - Asymmetric Encryption
+  - Authentication
+  - Basic vs mutually-authenticated handshake
+
+
+The following diagram illustrates the TLS handshake steps :
 ![img.png](img.png)
 <!-- #TODO: Provide TLS diagram - either own or from a free source -->
 
@@ -92,7 +110,7 @@ Digital X.509 certificates can be issued in various file formats such as PEM, DE
 PEM and PKCS#7 formats use Base64 ASCII encoding while DER and PKCS#12 use binary encoding.
 
 In general, the choice of certificates format depends on the technologies used for the implementation of the server components and on the certificate storage type. 
-
+For example, Java servers can use JKS and JCEKS keystores, which are specific for the platform 
 
 Zowe supports:
 * **file-based PKCS12**  
@@ -109,7 +127,7 @@ There are two options for the storage of certificates:
 * Keystore and Truststore Combination
 * SAF Keyrings
 
-#### Keystore and Truststore Combination
+#### Keystore and Truststore
 
 Two key concepts to understand storage and verification of certificates are keystores and truststores.
 
