@@ -28,12 +28,6 @@ The following tutorials are available in Github.
   [zlux-app-server](https://github.com/zowe/zlux-app-server/tree/staging/README.md)
   :::
 
-- **User Browser Workshop App**
-
-  :::tip Github Repo:
-  [User Browser Workshop App](https://github.com/zowe/workshop-user-browser-app/blob/master/README.md)
-  :::
-
 - **Internationalization in Angular Templates in Zowe Application Server**
 
   :::tip Github Sample Repo:
