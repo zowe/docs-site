@@ -27,9 +27,9 @@ See the following topics to learn more detail about how Zowe leverages modern se
   - [Authentication with client certificates](#authentication-with-client-certificates)
   - [Authentication with Personal Access Token (PAT)](#authentication-with-personal-access-token-pat)
   - [Authentication with SAF IDT Tokens (SAF IDT)](#authentication-with-saf-identity-tokens)
-  - [Multi-factor authentication (MFA)](#multi-factor-authentication-mfa)
+  - [Multifactor authentication (MFA)](#multi-factor-authentication-mfa)
   - [Certificate Authority Advanced Authentication Mainframe (CA AAM)](#certificate-authority-advanced-authentication-mainframe-ca-aam)
-- [Access Authorization](#authorization)
+- [Access Authorization](#access-authorization)
 
 ## Digital certificates
 A Digital Certificate is an electronic file that is tied to a cryptographic (public and private) key pair and authenticates the identity of a website, individual, organization, user, device or server.
@@ -40,7 +40,7 @@ The nowadays de-facto standard is the x.509 family type of certificates, which a
 Digital certificates according to x.509 standard specification are the cornerstone for securing communication channels between clients and servers.
 x.509 certificates can also be used to provide identification of clients and service users.
 
-Zowe doesn't compromise on components communication channels security and strictly implements the latest versions of Transport Layer Security (TLS) using x.509 certificates. 
+Zowe doesn't compromise on security and strictly relies on the Transport Layer Security (TLS) to secure the  communication channels between its components.  
 Additionally, Zowe provides client identity validation functionality based on the ownership of the provided x.509 client certificate and the mainframe security authentication mechanism.   
 
 Certificate can be self-signed or issued by a Certificate Authority (CA). A CA is an organization which provides infrastructure for creation, validation and revocation of the certificates according to the contemporary security standards.
@@ -91,7 +91,8 @@ Knowing the key concepts and terms helps to properly setup the Zowe servers netw
 
 The following diagram illustrates the TLS handshake steps:
 
-![TLS handshake v 1.2](../images/certificates/ssl-handshake-10-steps.png)
+<!-- ![TLS handshake v 1.2](../images/certificates/ssl-handshake-10-steps.png) -->
+<img src="../images/certificates/ssl-handshake-10-steps.png" width="50%" height="50%"/>
 
 The TLS should always be used to ensure secure data-transport for all connections to API Mediation Layer services.
 
@@ -248,7 +249,7 @@ To support the multi-factor authentication, it is necessary to apply z/OSMF APAR
 - Next token mode isn’t supported. But there is a workaround using TN3270.
 - New PIN Mode isn’t supported.
 
-## Authorization
+## Access Authorization
 
 The API ML can check for the authorization of the user on certain endpoints. Access to a SAF resource is checked with External Security Manager (ESM).
 
@@ -259,7 +260,7 @@ To verify the ownership of the SAF resource, you can use the following available
 - `native`(*default*) - on-platform
 - `endpoint` - off-platform
 
-**Example of the protected service**
+**Example of a protected service**
 
 `GET /gateway/{serviceId}/`
 
