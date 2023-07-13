@@ -24,6 +24,7 @@ module.exports = {
       label: "Release notes",
       items: [
         "getting-started/release-notes/release-notes-overview",
+        "getting-started/release-notes/v2_10_0",
         "getting-started/release-notes/v2_9_0",
         "getting-started/release-notes/v2_8_0",
         "getting-started/release-notes/v2_7_0",
@@ -667,6 +668,7 @@ module.exports = {
             "troubleshoot/app-framework/app-mustgather",
             "troubleshoot/app-framework/app-issue",
             "troubleshoot/app-framework/app-return-codes",
+            "troubleshoot/app-framework/appserver-error-codes",
             "troubleshoot/app-framework/zss-error-codes",
             "troubleshoot/app-framework/zis-error-codes",
           ],
