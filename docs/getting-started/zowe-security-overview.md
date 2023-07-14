@@ -8,13 +8,13 @@ implemented by Zowe, particularly focuses on certificates and their usage.
 
 Before installation and use of Zowe server-side components it is practical to first learn about security features built into the Zowe architecture.
 
-Zowe implements comprehensive measures to secure mainframe services and data resources from unauthorized access.
-Digital certificates are used by Zowe to facilitate secure electronic communication and data exchange between people, systems, and devices online.
-User access is managed by authenticating user identity thorough modern authentication methods such as Multi-Factor Authentication (MFA), JWT, or Personal Access Token (PAT).
-Authorization to access is managed by the mainframe security facility. 
-Data is protected, in transition and in rest.
+Zowe implements comprehensive measures to secure mainframe services and data resources in transition and in rest:
 
-See the following topics to learn more detail about how Zowe leverages modern security concepts and technologies:
+  - Digital certificates are used by Zowe to facilitate secure electronic communication and data exchange between people, systems, and devices online.
+  - User identity is authenticated through modern authentication methods such as Multi-Factor Authentication (MFA), JWT, or Personal Access Token (PAT).
+  - User access is authorized by SAF (the installed mainframe Extended Security Manager (ESM)).
+
+Read the following topics to learn more detail about how Zowe leverages modern security concepts and technologies:
 
 - [Digital certificates](#digital-certificates)
   - [Digital certificates usage](#digital-certificates-usage)
@@ -77,10 +77,12 @@ TLS is a successor to Secure Socket Layer (SSL), which was deprecated in 2015.
 ***Note*** Although the transition from SSL 3.0 to TLS 1.0 happened back in 1999, people still often would refer to SSL instead of to TLS, eventually voice it tas SSL/TLS.  
 
 Most importantly, TLS defines a client-server handshake mechanism to establish an encrypted and secure connection, to ensure the authenticity of the communication parties. 
-During the handshake, the parties negotiate exchange algorithm, cipher suites and exchange key material to establish a stateful encrypted connection.   
-The exact steps of the TLS handshake depend on the protocol version/s supported by the client and the server. The current version is 1.3, while version 1.2 is still more popular and is widely supported. 
+During the handshake, the parties negotiate exchange algorithm, cipher suites and exchange key material to establish a stateful encrypted connection. 
+The exact steps of the TLS handshake depend on the protocol version/s supported by the client and the server. 
+The current version is 1.3, while version 1.2 is widely supported and is still more popular than 1.3. 
 
-Knowing the key concepts and terms helps to properly setup the Zowe servers network security and to troubleshoot configuration issues. Please, make sure you understand at minimum the following concepts and terms:
+Knowing the key concepts and terms helps to properly set up the Zowe servers network security and to troubleshoot configuration issues. 
+Please, make sure you understand at minimum the following concepts and terms:
   - Cipher Suite
   - Key Exchange
   - Symmetric Encryption
@@ -92,11 +94,10 @@ Knowing the key concepts and terms helps to properly setup the Zowe servers netw
 The following diagram illustrates the TLS handshake steps:
 
 <!-- ![TLS handshake v 1.2](../images/certificates/ssl-handshake-10-steps.png) -->
-<img src="../images/certificates/ssl-handshake-10-steps.png" width="50%" height="50%"/>
+<img src="../images/certificates/ssl-handshake-10-steps.png" width="50%" height="50%" alt="TLS handshake v 1.2"/>
 
-The TLS should always be used to ensure secure data-transport for all connections to API Mediation Layer services.
 
-Zowe fully relies on TLS for securing the communication between its components, as well as between client application and Zowe server components.
+Zowe relies on TLS for securing the communication between its components, as well as between client application and Zowe server components.
 
 For more information, see the [TLS requirements in Zowe API ML requirements](../extend/extend-apiml/zowe-api-mediation-layer-security-overview#zowe-api-ml-tls-requirements).
 
