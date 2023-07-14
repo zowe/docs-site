@@ -32,7 +32,7 @@ Be sure your z/OS system meets the following prerequisites:
 
    **Note:** z/OS V2.2 reached end of support on 30 September 2020. For more information, see the z/OS v2.2 lifecycle details [https://www.ibm.com/support/lifecycle/details?q45=Z497063S01245B61](https://www.ibm.com/support/lifecycle/details?q45=Z497063S01245B61). 
 
-- zFS volume has at least 833 mb of free space for Zowe server components, their keystore, instance configuration files and logs, and third-party plug-ins.
+- zFS volume has at least 1500 MB of free space for Zowe server components, their keystore, instance configuration files and logs, and third-party plug-ins.
 
 - (Optional, recommended) z/OS OpenSSH V2.2.0 or later
   
