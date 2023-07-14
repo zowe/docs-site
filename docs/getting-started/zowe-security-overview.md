@@ -6,7 +6,12 @@ implemented by Zowe, particularly focuses on certificates and their usage.
 #TODO: Consider splitting the document to separate the certificates overview into a separate document while keeping the zowe-secure-setup as a security overview, kinda security related table of contents.  
 -->
 
-Before installation and use of Zowe server-side components it is practical to first learn about security features built into the Zowe architecture.
+Before installation and use of Zowe server-side components it is practical to first learn about core security features built into the Zowe architecture.
+
+This document provides an overview of the security technologies and features implemented by Zowe. The following sections describe briefly the basic security terms and concepts, and provide links to more extensive resources of information. 
+
+If you are familiar with security technologies and concepts such as digital certificates, authentication, authorization, and z/OS security, 
+you may prefer to skip the following introductory definitions provided in this document, and use the [Links section at the end of this document](#links) to jump directly to the more technical and detailed articles dedicated to the Setup, Usage and Extending Zowe. 
 
 Zowe implements comprehensive measures to secure mainframe services and data resources in transition and in rest:
 
@@ -266,3 +271,11 @@ To verify the ownership of the SAF resource, you can use the following available
 `GET /gateway/{serviceId}/`
 
 For detailed information, see the [SAF resource checking documentation](../user-guide/api-mediation/api-gateway-configuration#saf-resource-checking).
+
+
+#Links
+Visit the following links to learn About the: 
+- [Varios certificates configuration scenarios](#../user-guide/api-mediation/certificate-configuration-scenarios).
+- [Generate certificates for Zowe servers](#../user-guide/generate-certificates)
+- [Import certificates](w#../user-guide/import-certificates)
+- [Configure Zowe to use certificates](#../user-guide/configure-certificates)
