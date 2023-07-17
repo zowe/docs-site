@@ -54,6 +54,7 @@ Importing a certifacte authority (CA) is a prerequisite to import a PKCS12 certi
 
 * [Manually import a certificate authority into a web browser](#manually-import-a-certificate-authority-into-a-web-browser)
 * [Import a local CA certificate on Linux](#import-a-local-ca-certificate-on-linux)
+
 ### Manually import a certificate authority into a web browser
 
 To avoid the browser untrusted CA challenge, import Zowe's certificates into the browser.
@@ -129,6 +130,7 @@ Follow these steps to import `local_ca.cer` from the path `.../zowe/keystore/loc
 --header 'Authorization: Basic ************'
 ```
 After successfully importing your local CA certificate on Linux, you can now [Import an existing PKCS12 certificate](#import-an-existing-pkcs12-certificate)
+
 ## Import an existing JCERACFKS certificate
 
 To import a JCERACFKS certificate, use the example yaml according to [Scenario 4: Use a z/OS keyring-based keystore and connect to an existing certificate](#certificate-configuration-scenarios.md/#scenario-4-use-a-zos-keyring-and-connect-to-an-existing-certificate) in the article Certificate configuration scenarios.
@@ -141,6 +143,7 @@ To use a JCERACFKS certificate, specify the following parameters in the `zowe.ya
 | `zowe.setup.certificate.keyring.connect.label` | This is a required parameter that sets the label of an existing certificate. |
 
 **Configure `zowe.yaml` for a JCERACFKS certificate:**
+
 ```
 zowe:
   setup:
@@ -173,6 +176,7 @@ To import a certificate that is stored in a data set into a key ring, configure 
 | `zowe.setup.certificate.keyring.label`  | This parameter specifies that label of the certificate that is imported. |
 
 **Configure `zowe.yaml` for a JCERACFKS certificate stored in an MVS data set:**
+
 ```
 zowe:
   setup:
@@ -191,3 +195,4 @@ zowe:
 ## Next steps
 
 Once your certificate is successfully imported, review the documentation about [how to use these certificates](./use-certificates.md) in a Zowe production environement.
+

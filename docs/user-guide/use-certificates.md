@@ -5,7 +5,6 @@ Once you have generated or imported your certificates you can now use the certif
 - [Use PKCS12 certificates](#use-pkcs12-certificates)
 - [Use JCERACFKS certificates](#use-jceracfks-certificates)
 
-
 ## Use PKCS12 certificates
 
 To use PKCS12 certificates, run the command `zwe start -c ./zowe.yaml` in the directory with the `zowe.yaml` file to start Zowe.
@@ -47,3 +46,4 @@ certificate:
 ```
 
 If you run into the error message `<ZWED:527259> SZOWE CRITICAL unable to get issuer certificate`, check this section in your `zowe.yaml` file and verify that the syntax is correct.
+

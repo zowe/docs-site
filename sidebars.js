@@ -24,6 +24,7 @@ module.exports = {
       label: "Release notes",
       items: [
         "getting-started/release-notes/release-notes-overview",
+        "getting-started/release-notes/v2_10_0",
         "getting-started/release-notes/v2_9_0",
         "getting-started/release-notes/v2_8_0",
         "getting-started/release-notes/v2_7_0",
@@ -127,8 +128,9 @@ module.exports = {
                   label: "Configuring certificates",
                   items: [
                     "user-guide/configure-certificates",
-                    "user-guide/configure-certificates-keystore",
-                    "user-guide/configure-certificates-keyring",
+                    "user-guide/generate-certificates",
+                    "user-guide/import-certificates",
+                    "user-guide/use-certificates",
                     "user-guide/certificates-setup",
                   ],
                 },
@@ -404,6 +406,7 @@ module.exports = {
           items: [
             "user-guide/cli-using-usingcli",
             "user-guide/cli-using-displaying-help",
+            "user-guide/cli-using-command-precedence",
             "user-guide/cli-using-understanding-core-command-groups",
             "user-guide/cli-using-issuing-first-command",
             {
@@ -637,6 +640,7 @@ module.exports = {
       items: [
         "troubleshoot/troubleshooting",
         "troubleshoot/troubleshoot-zowe-release",
+        "troubleshoot/troubleshoot-check-your-zowe-version",
       ],
     },
     {
@@ -664,6 +668,7 @@ module.exports = {
             "troubleshoot/app-framework/app-mustgather",
             "troubleshoot/app-framework/app-issue",
             "troubleshoot/app-framework/app-return-codes",
+            "troubleshoot/app-framework/appserver-error-codes",
             "troubleshoot/app-framework/zss-error-codes",
             "troubleshoot/app-framework/zis-error-codes",
           ],

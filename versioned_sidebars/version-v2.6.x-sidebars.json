@@ -674,10 +674,6 @@
           "items": [
             {
               "type": "doc",
-              "id": "version-v2.6.x/user-guide/configure-data-sets-jobs-api"
-            },
-            {
-              "type": "doc",
               "id": "version-v2.6.x/user-guide/api-mediation/api-catalog-configuration"
             },
             {

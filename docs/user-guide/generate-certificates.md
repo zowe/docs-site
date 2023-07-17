@@ -1,3 +1,4 @@
+
 # Generating a certificate if you do not have one
 
 If you do not have a certificate, follow the procedure that corresponds to the certificate type you choose to generate: 
@@ -202,8 +203,6 @@ zowe:
 - `dname` for distinguished name is all optional.
 - Domain names and IPs should be added into certificate SAN. If the field `san` is not defined, the `zwe init` command will use `zowe.externalDomains`. The value for the `san` parameter presented in the example is for demonstration purposes.
 
-
-
 ### Run the command to generate a JCERACFKS certificate
 
 After you configure the `zowe.yaml`, use the following procedure to generate a JCERACFKS certificate.
@@ -260,6 +259,7 @@ zowe:
       certificate:
       certificateAuthorities: safkeyring://ZWESVUSR/ZoweKeyring&localca
 ```
+
 **Note:**  
 * `zowe.certificate.keystore.password` has a hardcoded password value. However, if you are using `type: PKCS12`, the password field must be the real password.
 
