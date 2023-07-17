@@ -40,28 +40,26 @@ Read the following topics to learn more detail about how Zowe leverages modern s
 A Digital Certificate is an electronic file that is tied to a cryptographic (public and private) key pair and authenticates the identity of a website, individual, organization, user, device or server.
 The nowadays de-facto standard is the x.509 family type of certificates, which are the foundation behind [Public Key Infrastructure (PKI)](#public-key-infrastructure) security. 
 
-<!-- #TODO: Provide a concise description of what digital certificate is. Keep it basic and don't focus that much on details on usage or infrastructure. -->
-
-Digital certificates according to x.509 standard specification are the cornerstone for securing communication channels between clients and servers.
-x.509 certificates can also be used to provide identification of clients and service users.
-
-Zowe doesn't compromise on security and strictly relies on the Transport Layer Security (TLS) to secure the  communication channels between its components.  
-Additionally, Zowe provides client identity validation functionality based on the ownership of the provided x.509 client certificate and the mainframe security authentication mechanism.   
+An X.509 certificate binds an identity to a public key using a digital signature. 
+A certificate contains an identity (a hostname, or an organization, or an individual) and a public key (RSA, DSA, ECDSA, ed25519, etc.).
 
 Certificate can be self-signed or issued by a Certificate Authority (CA). A CA is an organization which provides infrastructure for creation, validation and revocation of the certificates according to the contemporary security standards.
-Digital certificates used by Zowe can be issued by the company's private CA or an external widely trusted CA.
-
 **Note** In some cases, such as for testing purposes of Zowe, it is acceptable to use certificates issued and signed either by a company local CA, or even self-signed certificates issued by Zowe security tools specific for the target technology platform.
 This is, however, not recommended for production environments.
 
 Read the following sections to learn about the key concepts of the certificates-based security in Zowe.  
 
 ### Digital certificates usage
+
+Digital certificates according to x.509 standard specification are the cornerstone for securing communication channels between clients and servers.
+x.509 certificates can also be used to provide identification of clients and service users.
+
 Digital certificates perform two primary functions:
 - Verification of the identity of a sender/receiver of an electronic message
 - Encryption/Decryption of the messages between the sender and the receiver.
 
-Zowe uses digital certificates as a foundational element of both, communication and identity security.
+Zowe uses digital certificates as a foundational element of both, communication and identity security. 
+Additionally, Zowe provides client identity validation functionality based on the ownership of the provided x.509 client certificate and the mainframe security authentication mechanism.
 
 Visit the [Zowe certificate usage](../user-guide/use-certificates.md) dedicated article, to learn details about how Zowe leverages certificates.
 
@@ -101,16 +99,27 @@ The following diagram illustrates the TLS handshake steps:
 <!-- ![TLS handshake v 1.2](../images/certificates/ssl-handshake-10-steps.png) -->
 <img src="../images/certificates/ssl-handshake-10-steps.png" width="50%" height="50%" alt="TLS handshake v 1.2"/>
 
+<img src="../images/certificates/Full_TLS_1.2_Handshake.svg" width="50%" height="50%" alt="TLS handshake v 1.2"/>
 
-Zowe relies on TLS for securing the communication between its components, as well as between client application and Zowe server components.
+<img src="../images/certificates/TLC-Handshake_Diagram.png" width="50%" height="50%" alt="TLS handshake v 1.2"/>
+
+<img src="../images/certificates/tls-handshake-textual.webp" width="50%" height="50%" alt="TLS handshake v 1.2"/>
+
+Zowe doesn't compromise on security and strictly relies on the Transport Layer Security (TLS) to secure the  communication channels between its components, 
+as well as between client application and Zowe server components.
 
 For more information, see the [TLS requirements in Zowe API ML requirements](../extend/extend-apiml/zowe-api-mediation-layer-security-overview#zowe-api-ml-tls-requirements).
 
 **Note** When installed on a mainframe system, Zowe is able to utilize the AT-TLS implementation if supported by the corresponding z/OS version/installation.
 
 ### Digital certificates types
-When we discuss digital certificates types, we distinguish several aspects of the certificates as artifacts and their usage.
-Certificates come in various file formats and can be stored in different [certificates storage](#certificates-storage) types. 
+We distinguish several aspects of the PKI artifacts and their usage, that influence the categorization and the decision, which certificate type to use.
+Some certificates types are specific for a given technology, while others are generic and applicable across wider spectrum of platforms.
+
+
+Certificates come in various file formats and can be stored in different [certificates storage](#certificates-storage) types.
+Zowe 
+The file formats currently used 
 
 Digital X.509 certificates can be issued in various file formats such as PEM, DER, PKCS#7 and PKCS#12. 
 PEM and PKCS#7 formats use Base64 ASCII encoding while DER and PKCS#12 use binary encoding.
@@ -277,5 +286,5 @@ For detailed information, see the [SAF resource checking documentation](../user-
 Visit the following links to learn About the: 
 - [Varios certificates configuration scenarios](#../user-guide/api-mediation/certificate-configuration-scenarios).
 - [Generate certificates for Zowe servers](#../user-guide/generate-certificates)
-- [Import certificates](w#../user-guide/import-certificates)
+- [Import certificates](#../user-guide/import-certificates)
 - [Configure Zowe to use certificates](#../user-guide/configure-certificates)
