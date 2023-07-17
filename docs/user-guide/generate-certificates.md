@@ -1,6 +1,6 @@
 # Generating a certificate if you do not have one
 
-If you do not have a certificate, follow the procedure depending on the certificate type you choose: 
+If you do not have a certificate, follow the procedure that corresponds to the certificate type you choose to generate: 
 
 * [Create a PKCS12 certificate](#create-a-pkcs12-keystore)
 * [Create a JCERACFKS certificate](#create-a-jceracfks-certificate)
@@ -27,7 +27,7 @@ For PKCS12 certificate users, customize the following parameters in the `zowe.ya
 | `zowe.setup.certificate.pkcs12` (*Optional*) | Defines name, password, caAlias and caPassword to customize the keystore and truststore. It is recommended to update these values from the default values. **Note:** Alias names should be all in lower case.|
 | `dname` (*Optional*) | Specifies the distinguished name. Domain names and IPs should be added into certificate SAN. If the field `san` is not defined, the `zwe init` command uses `zowe.externalDomains`.|
 
-**Configuring the `zowe.yaml` file:**  
+**Configuring the `zowe.yaml` file for a PKCS12 certificate**  
 The following `zowe.yaml` example generates the following artifacts:
 
  - A `PKCS12` certificate, specified in `zowe.setup.certificate.type`.
@@ -74,8 +74,7 @@ After you configure the `zowe.yaml`, use the following procedure to generate the
 
    `zwe init certificate -c ./zowe.yaml --update-config`
 
-The following command output shows the generation of a PKCS12 keystore using the default values, and has the following associated artifacts:  
-(Note that some detailed output messages have been omitted.)
+The following command output shows the generation of a PKCS12 keystore using the default values, and has the following associated artifacts. (Note that some detailed output messages have been omitted.)
 
 - The CA is created.
 - The keystore is created and the CA is added to the keystore.
@@ -145,7 +144,7 @@ The `zwe init certificate` command generates a certificate based on `zowe.yaml` 
 
 ### Next steps after PKCS12 setup
 
-When using a Zowe-generated certificate, you will be challenged by your browser when logging in to Zowe to accept Zowe's untrusted certificate authority. Depending on the browser you are using there are different ways to proceed. See next steps about how to [import the PKCS12 certificate to your brower](./import-certificates#import-your-pkcs12-certificate).
+When using a Zowe-generated certificate, you will be challenged by your browser when logging in to Zowe to accept Zowe's untrusted certificate authority. Depending on the browser you are using, there are different ways to proceed. See next steps about how to [import the PKCS12 certificate to your brower](./import-certificates#import-your-pkcs12-certificate).
 
 ## Create a JCERACFKS certificate
 
