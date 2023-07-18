@@ -1,90 +1,129 @@
-# Configuring Zowe certificates 
+# Zowe certificate configuration overview
 
-As a system administrator, review this article to learn about the key concepts of Zowe certificates.
+As a system programmer, review this article to learn about the key concepts of Zowe certificates, and options for certificate configuration.
 
-Zowe uses a certificate to encrypt data for communication across secure sockets. An instance of Zowe references a USS directory referred to as a `KEYSTORE_DIRECTORY` which contains information about where the certificate is located.
-<!--issue: Make separate pages for keyring/keystore instructions.-->
- 
-## Northbound Certificate
+Zowe provides the ability to [generate a certificate](./use-certificates.md) using the `zwe init certificate` command. Zowe can also be configured to [use an existing certificate](./import-certificates.md) provided by the user's security team in a z/OS customer shop.
 
-The Zowe certificate is used by the API Mediation Layer on its northbound edge when identifying itself and encrypting `https://` traffic to web browsers or REST client applications.  If the Zowe Command Line Interface (CLI) is configured to use the Zowe API Mediation Layer, then the CLI is a client of the Zowe certificate. For more information, see [Using the Zowe Command Line Interface, Integrating with the API Mediation Layer](./cli-usingcli.md#integrating-with-api-mediation-layer).
+## What Zowe certificates are used for?
 
-**Note:** The certificate used by Zowe for its northbound edge must have the extended key usage `TLS Web Server authentication` set. For more information, see [Extended Key Usage](#extended-key-usage).
+Zowe uses certificates to verify the identity and subsequently establish an encrypted network connection between applications. The connection is using the Secure Sockets Layer/Transport Layer Security (SSL/TLS) protocol. Certificates and their associated private keys need to be stored either in a SAF key ring or in a `PKCS12` keystore.
 
-## Southbound Certificate
+## What certificates Zowe supports?
 
-As well as being a server, Zowe itself is a client to services on the southbound edge of its API Mediation Layer. Zowe communicates to these services over secure sockets.  These southbound services use certificates to encrypt their data, and Zowe uses a trust store to store its relationship to these certificates.  The southbound services that are started by Zowe itself and run as address spaces under its `ZWESVSTC` started task (such as the API discovery service, the explorer JES REST API server) re-use the same Zowe certificate used by the API Mediation Layer on its northbound client edge.  
+Zowe supports keystores and truststores that are either z/OS key rings (when on z/OS) or PKCS12 files.
 
-**Note:** The certificate used by Zowe for its southbound edge must have the extended key usage `TLS Web Client Authentication` set. For more information, see [Extended Key Usage](#extended-key-usage).  
+### PKCS12 certificates in a keystore
 
-## Trust store
+Zowe is able to use PKCS12 certificates that are stored in USS. This certificate is used for encrypting TLS communication between Zowe clients and Zowe z/OS servers, as well as intra z/OS Zowe server to Zowe server communication. Zowe uses a `keystore` directory to contain its external certificate, and a `truststore` directory to hold the public keys of servers which Zowe communicates with (for example z/OSMF).
 
-In addition to Zowe using the intra-address space of certificates, Zowe uses external services on z/OS (such as z/OSMF or Zowe conformant extensions that have registered themselves with the API Mediation Layer) to encrypt messages between its servers.  These services present their own certificate to the API Mediation Layer, in which case the trust store is used to capture the relationship between Zowe's southbound edge and these external certificates.  
+By default, Zowe is reading PKCS12 keystore from `keystore` directory which can be located in zowe.yaml. This directory contains a server certificate, the Zowe generated certificate authority, and a `truststore` which holds intermediate certificates of servers that Zowe communicates with (for example z/OSMF).
 
-To disable the trust store validation of southbound certificates, set the value `VERIFY_CERTIFICATES=true` to `false` in the `zowe-setup-certificates.env` file in the `KEYSTORE_DIRECTORY`.  A scenario when this is recommended is if the certificate presented to the API Mediation Layer is self-signed, such as from an unknown certificate authority.  For example, the z/OSMF certificate may be self-signed. In this case, Zowe API Mediation Layer does not recognize the signing authority.  
+The use of a USS PKCS12 keystore is suitable for proof-of-concept projects as special permissions to create and manage the PKCS12 keystore are not required. For production usage of Zowe, it is recommended to work with certificates held in z/OS key rings. Configuring z/OS key rings may require security administrator privileges.  
 
+### JCERACFKS certificates in a key ring
 
-To enable certificate validation without hostname validation, set `NONSTRICT_VERIFY_CERTIFICATES=true`. Using this setting, the certificate Common Name or Subject Alternate Name (SAN) is not checked. This facilitates deployment to environments where certificates are valid but do not contain a valid hostname. This configuration is for development purposes only and should not be used for production.
+Zowe is able to work with certificates held in a **z/OS Key ring**.  
 
-The utility script `zowe-setup-certificates.sh` or the `ZWEKRING` JCL can help you import z/OSMF certificate authority into trust store. If you are not using Zowe to generate certificates or want to trust other external services, you can customize `zowe-setup-certificates.env` or `ZWEKRING` JCL to import them as external certificate authorities.
+The JCL member `.SZWESAMP(ZWEKRING)` contains security commands to create a SAF key ring. By default, this keyring is named `ZoweKeyring`. You can use the security commands in this JCL member to generate a Zowe certificate authority (CA) and sign the server certificate with this CA. The JCL contains commands for three z/OS security managers: RACF, TopSecret, and ACF/2.
 
-A proper setup of trust store is mandatory to successfully start Zowe with `VERIFY_CERTIFICATES` or `NONSTRICT_VERIFY_CERTIFICATES` enabled in `zowe-setup-certificates.env` and used by `zowe-setup-certificates.sh`.
+There are two ways to configure and submit `ZWEKRING`:
 
+- Customize and submit the `ZWEKRING` JCL member.
+- Customize the `zowe.setup.certificate` section in `zowe.yaml` and use the `zwe init certificate` command.
 
-## Certificates in the Zowe architecture
+Use the `zwe init certificate` command to prepare a customized JCL member using `ZWEKRING` as a template.  
 
-The [Zowe architecture diagram](../getting-started/zowe-architecture.md) shows the Zowe API Mediation Layer positioned on the client-server boundary between applications such as web browsers or the Zowe CLI accessing z/OS services.  The following diagram is a section of the architecture annotated to describe the role of certificates and trust stores.  
+A number of key ring scenarios are supported:
 
-<img src={require("../images/common/zowe-ssl.png").default} alt="Zowe SSL" width="700px"/> 
+- Creation of a local certificate authority (CA) which is used to sign a locally generated certificate. Both the CA and the certificate are placed in the `ZoweKeyring`.
+- Import of an existing certificate already held in z/OS to the `ZoweKeyring` for use by Zowe.  
+- Creation of a locally generated certificate and signed by an existing certificate authority. The certificate is placed in the key ring.
 
-The lines shown in bold red are communication over a TCP/IP connection that is encrypted with the Zowe certificate.  
-- On the northbound edge of the API gateway, the certificate is used between client applications such as web browsers, Zowe CLI, or any other application wishing to access Zowe's REST APIs.  
-- On the southbound edge of the API Gateway, there are a number of Zowe micro services providing HTML GUIs for the Zowe desktop or REST APIs for the API Catalog.  These also use the Zowe certificate for data encryption.
+## Where to get started with Zowe certificates?
 
-The lines in bold green are external certificates for servers that are not managed by Zowe, such as z/OSMF itself or any Zowe conformant REST API or App Framework servers that are registered with the API Mediation Layer.  For the API Mediation Layer to be able to accept these certificates, they either need to be signed by a recognized certificate authority, or else the API Mediation Layer needs to be configured to accept unverified certificates.  Even if the API Mediation Layer is configured to accept certificates signed by unverified CAs on its southbound edge, client applications on the northbound edge of the API gateway will be presented with the Zowe certificate.  
+Zowe records the configuration in `zowe.yaml` file with [5 different scenarios](./certificate-configuration-scenarios.md) for you to quickly get started with.
 
-## Keystore versus key ring
+Before starting configuring your certificate, you might want to get familiar with the concepts in Zowe certificates.
 
-Zowe supports certificates that are stored either in a USS directory **Java KeyStore** format or else held in a **z/OS Keyring**.  z/OS keystore are the preferred choice for storing certificates where system programmers are already familiar with their operation and usage.  The user ID setting up a keystore and connecting it with certificates requires elevated permissions, and in scenarios where you need to create a Zowe sandbox environment or for testing purposes and your TSO user ID doesn't have authority to manipulate key rings, USS keystores are a good alternative.  
+### Background knowledge
 
-- If you are using a USS keystore, then the script `zowe-setup-certificates.env` is the configuration step required to create the USS directory that contains the certificate.  This is described in detail in [Configuring Zowe certificates in a USS KeyStore](./configure-certificates-keystore.md).
+#### Certificates in Zowe architecture
 
-- If you are using a key ring, the sample JCL member `ZWEKRING` provided in the PDS library `SZWESAMP` contains the security commands to create a key ring and manage its associated certificates. This is described in [Configuring Zowe certificates in a key ring](./configure-certificates-keyring.md) which provides instructions for how to configure Zowe to work with the following certificates.
-  - a self-signed certificate
-  - a certificate signed with an existing certificate authority
-  - an existing certificate already held in the SAF database that can be added to the Zowe key ring.  
+Placeholder for a diagram
 
-For both scenarios, where the certificate is held in a USS Java Keystore or a z/OS key ring, the USS `KEYSTORE_DIRECTORY` is still required which is created with the script `zowe-setup-certificates.sh`.  
+#### Truststore
 
-- In the USS scenario, this directory holds the `.cer` and `.pem` files for the certificate itself.
-- In the key ring scenario, this directory stores the location and name of the Zowe key ring and its certificates.  
+Truststores are the repositories that contain cryptographic artifacts like certificates and private keys that are used for cryptographic protocols such as TLS. A truststore contains the certificate authority certificates which the endpoint trusts.
 
-## Keystore directory creation
+The concept of the "truststore" is vital when it comes to secure communication with external services. It serves as a secure repository for storing certificates and trust anchors. In Zowe, the "truststore" is utilized to establish trust relationships with external services. The truststore captures and manages the relationship between Zowe's components and the certificates presented by the external services.
 
-The `KEYSTORE_DIRECTORY` is created by running the script `<RUNTIME_DIR>/bin/zowe-setup-certificates.sh`.  This script has a number of input parameters that are specified in a configuration file whose location is passed as an argument to the `-p` parameter.  
+In addition to utilizing the intra-address space of certificates, Zowe incorporates external services on z/OS to enhance the encryption of messages transmitted between its servers. These external services, such as z/OSMF or Zowe conformant extensions, have registered themselves with the API Mediation Layer.
 
-The configuration file `<RUNTIME_DIR>/bin/zowe-setup-certificates.env` is provided for setting up a Keystore directory that contains the Zowe certificate in JavaKeystore format.  The configuration file `<RUNTIME_DIR>/bin/zowe-setup-certificates-keyring.env` is provided for setting up a Keystore directory that references the Zowe certificate held in a z/OS keyring.  
+[Zowe API Mediation Layer](../user-guide/api-mediation/api-mediation-overview.md), acting as an intermediary, is responsible for validating these certificates. When the API Mediation Layer receives a certificate from an external service, it examines each certificate in the certificate chain and compares it to the certificates in the "truststore."
 
-The `.env` configuration file should be customized based on security rules and practices for the z/OS environment.  Once the script has been successfully executed and the `KEYSTORE_DIRECTORY` is created successfully, it is referenced by a Zowe launch `instance.env` file. A `KEYSTORE_DIRECTORY` can be used by more than one instance of Zowe. See [Creating and configuring the Zowe instance directory](../user-guide/configure-instance-directory.md#keystore-configuration) for more information.
+By leveraging the truststore, Zowe ensures that only trusted and authorized external services can establish communication with its servers. The truststore validates the authenticity and integrity of the presented certificates, providing an additional layer of security.
 
-The Zowe launch diagram shows the relationship between a Zowe instance directory, a Zowe runtime directory, the Zowe keystore directory, and (if used to store the Zowe certificate) the z/OS keyring.  
+#### Keystore and Key ring
 
-<img src={require("../images/common/zowe-directories-keys.png").default} alt="Zowe Directories" width="700"/> 
+Keystores are repositories that contain cryptographic artifacts like certificates and private keys that are used for cryptographic protocols such as TLS.
 
-You create a `KEYSTORE_DIRECTORY` in USS by using the script `zowe-setup-certificates.sh` (1) with a `-p` argument that specifies a `.env` configuration file.  
-- If the `-p` argument file `zowe-setup-certificates.env` (2) is used, the `KEYSTORE_DIRECTORY` will contain the certificate, the certificate authority, the trust store, and the JWT Secret.  
-- If the `-p` argument file `zowe-setup-keyring-certificates.env` (3) is used, the `KEYSTORE_DIRECTORY` contains no certificates and is a pass-through to configure a Zowe instance to use a z/OS keyring.
+A keystore contains personal certificates, plus the corresponding private keys that are used to identify the owner of the certificate.
+For TLS, a personal certificate represents the identity of a TLS endpoint. Both the client (for example, a REST client) and the server (for example, a IBM® z/OS® Connect server) might have personal certificates to identify themselves.
 
-The JCL member `ZWEKRING` (4) is used to create a z/OS Keyring to hold the Zowe certificate and its signing certificate authority.  
+What is key ring?
 
-At launch time, a Zowe instance is started using the script `<INSTANCE_DIR>/bin/zowe-start.sh` which takes configuration arguments from `<INSTANCE_DIR>/instance.env`.  The argument (5)  `KEYSTORE_DIRECTORY=<KEYSTORE_DIRECTORY>` specifies the path to the keystore directory that Zowe will use.  
+#### Extended key usage
 
-## Extended key usage
+When a TLS certificate is used for encryption across a socket connection two enpoints are used: One endpoint for the client, and another endpoint for the server. This usage is restricted with the `Extended Key Usage` (EKU) attribute. Zowe is using the same certificate for server and client authentication and so it is required that this certificate is valid for both. Certificate extension Extended Key Usage (EKU) is not required, however, if an EKU is specified, it must have both server and client usage. Otherwise, a connection will be refused.
 
-When a TLS certificate is used for encryption across a socket connection, one of those endpoints is the client and the other is a server.  This usage is restricted with the `Extended Key Usage` attribute.  
+**Note:**  
+ A problem can occur when z/OS certificates are configured to explicitly act only as a server for northbound certificates with a `TLS Web Server Authentication (1.3.6.1.5.5.7.3.1)` OID. As Zowe's micro services authenticate to the API Catalog on USS using TLS, the certificate needs to be valid as a southbound client certificate. To maintain server northbound functionality as well as validation as a southbound certificate, ensure that the certificate contains the `TLS Web Client Authentication (1.3.6.1.5.5.7.3.2)` value in the Extended Key Usage section.
 
-Many existing z/OS certificates will be configured to act as server certificates. However, Zowe requires certificates to be enabled for Client Authentication so its servers can communicate and trust each other.  To do this, ensure that the certificate contains the `TLS Web Client Authentication (1.3.6.1.5.5.7.3.2)` value in the Extended Key Usage section. 
+Additionally, the `Digital signature and/or key agreement` must also be set with the extension value in the Key Usage section. For more information, see [key usage extensions and extended key usage](https://help.hcltechsw.com/domino/10.0.1/admin/conf_keyusageextensionsandextendedkeyusage_r.html).
 
-Additionally, the `Digital signature and/or key agreement` must also be set as extension value in the Key Usage section. For more information, see [key usage extensions and extended key usage](https://help.hcltechsw.com/domino/10.0.1/admin/conf_keyusageextensionsandextendedkeyusage_r.html).
+### Configuration in zowe.yaml file
 
-For more information about the Zowe launch topology, see [Topology of the Zowe z/OS launch process](./installandconfig.md#topology-of-the-zowe-z-os-launch-process).
+Zowe records the final configuration in `zowe.yaml` file.
+
+## How to manage certificates and verification in Zowe?
+
+Certificates and their verification are managed within a keystore (certificate storage) and a truststore (verification storage).
+
+Zowe supports certificates that are stored either in a USS directory Java KeyStore format or else held in a z/OS Keyring. z/OS keystore is the preferred choice for storing certificates where system programmers are already familiar with their operation and usage. The user ID setting up a keystore and connecting it with certificates requires elevated permissions, and in scenarios where you need to create a Zowe sandbox environment or for testing purposes and your TSO user ID doesn't have authority to manipulate key rings, USS keystores are a good alternative.
+
+* If you are using a USS keystore, then the script zowe-setup-certificates.env is the configuration step required to create the USS directory that contains the certificate. This is described in detail in Configuring Zowe certificates in a USS KeyStore.
+
+* If you are using a key ring, the sample JCL member `ZWEKRING` provided in the PDS library `SZWESAMP` contains the security commands to create a key ring and manage its associated certificates. This is described in Configuring Zowe certificates in a key ring which provides instructions for how to configure Zowe to work with the following certificates.
+    * a self-signed certificate
+    * a certificate signed with an existing certificate authority
+    * an existing certificate already held in the SAF database that can be added to the Zowe key ring.
+
+For both scenarios, where the certificate is held in a USS Java Keystore or a z/OS key ring, the `USS KEYSTORE_DIRECTORY` is still required which is created with the script zowe-setup-certificates.sh.
+
+* In the USS scenario, this directory holds the `.cer` and `.pem` files for the certificate itself.
+* In the key ring scenario, this directory stores the location and name of the Zowe key ring and its certificates.
+
+### Enable certificate validation without hostname validation
+
+To enable certificate validation without hostname validation, set `zowe.verifyCertificates: NONSTRICT`. Using this setting, the certificate Common Name or Subject Alternate Name (SAN) is not checked. Disabling this parameter facilitates deployment to environments where certificates are valid but do not contain a valid hostname. This configuration is for development purposes only and should not be used for production.
+
+A proper setup of the truststore is mandatory to successfully start Zowe with `zowe.verifyCertificates: STRICT`.
+
+## Choosing USS Keystore or z/OS Key ring to store Zowe certificates
+
+Zowe supports certificates that are stored either in a USS directory **Java KeyStore** in the `.p12` format or, alternatively, certificates held in a **z/OS Key ring**. Use of a z/OS keystore is the recommended option for storing certificates if system programmers are already familiar with the certificate operation and usage.
+Creating a key ring and connecting the certificate key pair requires elevated permissions. When the TSO user ID does not have the authority to manipulate key rings and users want to create a Zowe sandbox environment or for testing purposes, the USS keystore is a good alternative.
+
+### Create a certificate authority and use it to self-signed a certificate
+
+The `zwe init security` command takes its input from the `zowe.setup.security` section in the `zowe.yaml` file. To help with file customization, there are five sections in the file.
+
+## Next steps: How to configure your certificate?
+
+If you have an existing certificate, you can import this certificate to the keystore or key ring. For more information, see the instructions in [Import and configure an existing certificate](./import-certificates.md).
+
+If you do not have an existing certificate, you need to create one. See instructions in [Generate a certificate if you do not have a certificate](./generate-certificates.md).
+
+When your certificate is in the keystore or key ring, it is ready for use. For more information, see instructions in [Use certificates](./use-certificates.md).
+
+If you run into any error when configuring certificates, see [Troubleshooting guide for certificate configuring](placeholder).
