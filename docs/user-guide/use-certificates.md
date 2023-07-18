@@ -45,5 +45,5 @@ certificate:
     - "safkeyring:////stcusername/KeyName&ca name 2"
 ```
 
-If you run into the error message `<ZWED:527259> SZOWE CRITICAL unable to get issuer certificate`, check this section in your `zowe.yaml` file and verify that the syntax is correct.
+If you receive the error message, `<ZWED:527259> SZOWE CRITICAL unable to get issuer certificate`, check this section in your `zowe.yaml` file and verify that the syntax is correct.
 
