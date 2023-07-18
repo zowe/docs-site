@@ -111,6 +111,10 @@ Once you have this repository set up locally and are in the `docs-site` director
 
 Once complete, you can open your browser and view the doc site locally at [http://localhost:3000/](http://localhost:3000/). As you make changes to the source files, the preview build will be triggered automatically, and then you can refresh your browser to see the changes.
 
+**Note:**  If you get an error `digital envelope routines::unsupported` this may be because of an incompatability between Node 18 and Webpack 5.  To remedy this set the environment variable `NODE_OPTIONS=--openssl-legacy-provider`.  
+
+![A gif build error node 16](./docs/images/troubleshoot/build/image.png)
+
 ## Thank you!
 
 We appreciate your contributions to our documentation!
