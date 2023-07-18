@@ -73,7 +73,7 @@ After you configure the `zowe.yaml`, use the following procedure to generate the
 
 2. Run the following command in the directory with this `zowe.yaml` in the terminal to generate the certificate and update the configuration values in the `zowe.yaml` file.
 
-   `zwe init certificate -c ./zowe.yaml --update-config`
+   `zwe init certificate -c <path-to-your-zowe-configuration-yaml> --update-config`
 
 The following command output shows the generation of a PKCS12 keystore using the default values, and has the following associated artifacts. (Note that some detailed output messages have been omitted.)
 
@@ -85,7 +85,7 @@ The following command output shows the generation of a PKCS12 keystore using the
 
 **Command output:**
 ```
-#>zwe init certificate -c ./zowe.yaml --update-config
+#>zwe init certificate -c <path-to-your-zowe-configuration-yaml> --update-config
 -------------------------------------------------------------------------------
 >> Creating certificate authority "local_ca"
 >> Certificate authority local_ca is created successfully.
@@ -104,7 +104,7 @@ The following command output shows the generation of a PKCS12 keystore using the
 >> Lock keystore directory /global/zowe/keystore
 >> Keystore directory /global/zowe/keystore is locked.
 -------------------------------------------------------------------------------
->> Update certificate configuration to ./zowe.yaml
+>> Update certificate configuration to <path-to-your-zowe-configuration-yaml>
 
 - update "zowe.certificate.keystore.type" with value: PKCS12
 ...
@@ -115,7 +115,7 @@ The following command output shows the generation of a PKCS12 keystore using the
 #>
 ```
 
-The `zwe init certificate` command generates a certificate based on `zowe.yaml` values in the `zowe.setup.certificate` section. The certificate values used at runtime are referenced in the `zowe.certificate` section in the `zowe.yaml` file. The command `zwe init certificate -c ./zowe.yaml --update-config` updates the runtime `zowe.certificate` section to reference the generated certificate generated from the `zowe.setup.certificate`.
+The `zwe init certificate` command generates a certificate based on `zowe.yaml` values in the `zowe.setup.certificate` section. The certificate values used at runtime are referenced in the `zowe.certificate` section in the `zowe.yaml` file. The command `zwe init certificate -c <path-to-your-zowe-configuration-yaml> --update-config` updates the runtime `zowe.certificate` section to reference the generated certificate generated from the `zowe.setup.certificate`.
 
 3. Open the `zowe.yaml` file to check the references to the newly generated certificate values as shown in the following code snippet:
 
@@ -211,7 +211,7 @@ After you configure the `zowe.yaml`, use the following procedure to generate a J
 
 2. Run the following command in the directory with this `zowe.yaml` in terminal to generate the certificate and update the configuration values in `zowe.yaml`.
 
-   `zwe init certificate -c ./zowe.yaml --update-config`
+   `zwe init certificate -c <path-to-your-zowe-configuration-yaml> --update-config`
 
     When the command is run, a customized JCL member name is created in the `CUST.JCLLIB` data set. The PDS name is defined in the `zowe.setup.dataset.jcllib` property. In the following example output, the PDS meember `USER.ZWEV2.CUST.JCLLIB(ZW101431)` is created that contains the security manager commands, and then submitted as a job ID: `ZWEKRING(JOB03054)`.
 
@@ -219,7 +219,7 @@ The following command output shows the generation of a JCERACFKS certificate usi
 
 **Command output:**
 ```
-#>zwe init certificate -c ./zowe.yaml --update-config
+#>zwe init certificate -c <path-to-your-zowe-configuration-yaml> --update-config
 -------------------------------------------------------------------------------
 >> Generate Zowe certificate in keyring
 
@@ -230,7 +230,7 @@ The following command output shows the generation of a JCERACFKS certificate usi
 >> Certificate is generated in keyring successfully.
 
 -------------------------------------------------------------------------------
->> Update certificate configuration to ./zowe.yaml
+>> Update certificate configuration to <path-to-your-zowe-configuration-yaml>
 >> Zowe configuration is updated successfully.
 
 #>
