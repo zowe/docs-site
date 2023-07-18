@@ -13,7 +13,7 @@ Zowe supports using either file-based (`PKCS12`) or z/OS key ring-based (when on
 Before getting started with configuring certificates, it is useful to familiarize yourself with the following key concepts:
 
 * [Keystore](#keystore)
-* [truststore](#truststore)
+* [Truststore](#truststore)
 * [PKCS12](#pkcs12)
 * [z/OS Key Ring](#zos-key-ring)
 * [Server certificate](#server-certificate)
@@ -71,7 +71,7 @@ If you do not yet have certificates, Zowe can create self-signed certificates fo
 ### Extended key usage
 Zowe server certificates must either not have the `Extended Key Usage` (EKU) attribute, or have both the `TLS Web Server Authentication (1.3.6.1.5.5.7.3.1)` and `TLS Web Client Authentication (1.3.6.1.5.5.7.3.2)` values present within.
 
-When a TLS certificate is used for encryption across a socket connection, two endpoints are used: One endpoint for the client, and another endpoint for the server. This usage is restricted with the `Extended Key Usage` (EKU) attribute. Zowe is using the same certificate for server and client authentication and so it is required that this certificate is valid for both. Certificate extension Extended Key Usage (EKU) is not required, however, if an EKU is specified, it must have both server and client usage. Otherwise, connection will be refused.
+When a TLS certificate is used for encryption across a socket connection, two endpoints are used: One endpoint for the client, and another endpoint for the server. This usage is restricted with the `Extended Key Usage` (EKU) attribute. Zowe is using the same certificate for server and client authentication and so it is required that this certificate is valid for both. Certificate extension EKU is not required, however, if an EKU is specified, it must have both server and client usage. Otherwise, connection will be refused.
 
 
 ### Hostname validity
@@ -96,7 +96,7 @@ The JCL member `.SZWESAMP(ZWEKRING)` contains security commands to create a SAF 
 
 There are two ways to configure and submit `ZWEKRING`:
 
-- Customize and submit the `ZWEKRING` JCL member.
+- Copy the JCL `ZWEKRING` member and customize its values. 
 - Customize the `zowe.setup.certificate` section in `zowe.yaml` and use the `zwe init certificate` command. 
 
     You can also use the `zwe init certificate` command to prepare a customized JCL member using `ZWEKRING` as a template.  
