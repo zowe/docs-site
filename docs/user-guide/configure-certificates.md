@@ -6,8 +6,7 @@ Zowe uses digital certificates for secure, encrypted network communication over 
 
 Zowe's certificates are stored in its **keystore**. Verification of these certificates and any incoming certificates from other servers or clients is done by using certificates of certificate authorities (CAs) within Zowe's **truststore**.
 
-Zowe supports using either file-based (`PKCS12`) or z/OS key ring-based (when on z/OS) keystores and truststores, and can re-use compatible stores if they exist. Alternatively, Zowe can assist in creating the stores by either generating certificates or by allowing users to import their own compatible certificates via the `zwe init certificate` command. For key rings, running the JCL `ZWEKRING` is also an option for certificate setup.
-
+Zowe supports using either file-based (`PKCS12`) or z/OS key ring-based (when on z/OS) keystores and truststores, and can re-use compatible stores if they exist. Alternatively, Zowe can assist in creating the stores by either generating certificates or by allowing users to import their own compatible certificates via the `zwe init certificate` command. For key rings, one option for certificate setup is to copy the JCL `ZWEKRING` member of Zowe's SAMPLIB and customize its values. 
 
 ## Certificate concepts
 
