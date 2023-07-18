@@ -46,8 +46,7 @@ Servers need a certificate to identify themselves to clients. Every time you go 
 Clients do not always need certificates when communicating with servers, but sometimes client certificates can be used wherein the server verifies authenticity of the client similar to how the client verifies authenticity for the server. When client certificates are unique to a client, this can be used as a form of authentication to provide convenient yet secure login.
 
 ### Self-signed certificates
-Self-signed certificates are certificates where the CA certificate that verifies the authenticity of the certificate is itself. This means there is no chain of trust to guarantee that the host with this certificate is the one you wanted to communicate with. Note that these certificates are not secure against other hosts masquerading as the one you wanted to access, so verifying certificates against the truststore is recommended for production environments.
-
+A self-signed certificate is one that is not signed by a CA at all – neither private nor public. In this case, the certificate is signed with its own private key, instead of requesting verification from a public or a private CA. This means there is no chain of trust to guarantee that the host with this certificate is the one you wanted to communicate with. Note that these certificates are not secure against other hosts masquerading as the one you want to access. As such, it is highly recommended that certificates be verified against the truststore for production environments.
 
 ## Certificate verification
 When you configure Zowe, it is necessary to decide whether or not Zowe will perform verification of certificates against its truststore.
