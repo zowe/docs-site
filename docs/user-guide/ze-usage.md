@@ -93,7 +93,7 @@ When working in remote or virtualized environments &mdash; such as Eclipse Che, 
 
    Credentials will be stored on a per profile/per panel basis until one of the following takes place:
 
-   - Data Sets/USS/Jobs panel refresh caused by an update to the `zowe.config.json` file
+   - Data Sets/USS/Jobs tree refresh caused by an update to the `zowe.config.json` file
    - Zowe Explorer refresh in the **Command Palette**
    - Reload of the Visual Studio Code window
    - Closing and reopening the VS Code window
@@ -112,6 +112,4 @@ When working in remote or virtualized environments &mdash; such as Eclipse Che, 
 
 1. Navigate to **Settings** in VS Code.
 
-2. In Zowe Explorer Settings, uncheck the **Zowe Security: Credential Key** checkbox.
-
-   When disabled and `autoStore` is set to True in `zowe.config.json`, z/OS credentials are stored as plain text in the configuration file.
+2. In Zowe Explorer Settings, leave the **Zowe Security: Credential Key** field blank.
