@@ -393,13 +393,33 @@ Secure credential storage functionality is now contained in the Zowe CLI core ap
 
 </details>
 
+### What if Secure Credential Storage does not work in my environment?
+
+<details className="zowe-faq">
+
+<summary></summary>
+
+When an environment does not support Secure Credential Storage, it is possible to disable it. See [Disabling Secure Credential Storage of credentials](./user-guide/ze-usage.md#disabling-secure-credential-storage-of-credentials) for more information.
+
+</details>
+
+### What if I do not want Zowe Explorer to store my credentials?
+
+<details className="zowe-faq">
+
+<summary></summary>
+
+Although not recommended in all cases, it is possible to disable Zowe Explorer's credential management functionality. See [Preventing Zowe Explorer from storing credentials](../user-guide/ze-usage.md#preventing-zowe-explorer-from-storing-credentials) for more information.
+
+</details>
+
 ### What types of profiles can I create for Zowe Explorer?
 
 <details className="zowe-faq">
 
 <summary></summary>
 
-Zowe Explorer V2 supports using Service Profiles, Base Profiles, and Team Profiles. For more information, see [Using V1 profiles](../user-guide/cli-using-using-profiles-v1.md) and [Team configurations](../user-guide/cli-using-using-team-profiles.md) in the Using Zowe CLI section. 
+Zowe Explorer V2 supports using Service Profiles, Base Profiles, and Team Profiles. For more information, see [Using V1 profiles](../user-guide/cli-using-using-profiles-v1.md) and [Team configurations](../user-guide/cli-using-using-team-profiles.md) in the Using Zowe CLI section.
 
 </details>
 
