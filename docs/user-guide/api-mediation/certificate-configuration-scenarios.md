@@ -37,7 +37,6 @@ Each scenario described in this article provides the configuration details via c
 * [Scenario 4: Use a z/OS keyring-based keystore and connect an existing certificate](#scenario-4-use-a-zos-keyring-and-connect-to-an-existing-certificate)
 * [Scenario 5: Use a z/OS keyring-based keystore and import a certificate stored in a data set](#scenario-5-use-a-zos-keyring-and-import-a-certificate-stored-in-a-data-set)
 
-=======
 ## Scenario 1: Use a file-based (PKCS12) keystore with Zowe generated certificates
 
 1. Set the `type` of the certificate storage to `PKCS12`.
@@ -148,8 +147,7 @@ Each scenario described in this article provides the configuration details via c
     **Note:** PEM format certificate authorities can be imported and trusted.
 
   **Example zowe yaml for scenario 2 (PKCS12)**
-      
-=======
+
    ```
    certificate:
      type: PKCS12
@@ -221,7 +219,6 @@ this field is not defined, the `zwe init` command uses the value `zowe.externalD
 
   **Example zowe yaml for scenario 3**
   
-=======
    ```
    certificate:
      type: JCERACFKS
@@ -275,7 +272,6 @@ this field is not defined, the `zwe init` command uses the value `zowe.externalD
   **Example zowe yaml for scenario 4**
 
   This example is using an existing JCERACFKS certificate to for Zowe's z/OS components. Find out more details in [this blog](https://medium.com/zowe/master-zowe-certificates-use-an-existing-jceracfks-certificate-for-zowes-z-os-components-975ffa0d9f2f).
-
 
 ```
  # >>>> Certificate setup scenario 4
