@@ -52,7 +52,7 @@ Log out to prompt the API ML token to expire and remove it from your base profil
 To log out of the API ML:
 
 ```
-zowe auth logout
+zowe auth logout apiml
 ```
 
 This causes the token to expire. Log in again to obtain a new token.
@@ -92,12 +92,6 @@ To specify a base path with Zowe V2 profiles:
 
     Commands issued with this profile are routed through the layer to access an appropriate z/OSMF instance.
 
-    For example:
-
-    ```
-    zowe config set --base-path "ibmzosmf/api/v1"
-    ```
-
 ### Specifying a base path with Zowe V1 profiles
 
 To specify a base path with Zowe V1 profiles:
@@ -121,11 +115,6 @@ To specify a base path with Zowe V1 profiles:
     ```
     Commands issued with this profile are routed through the layer to access an appropriate z/OSMF instance.
 
-    For example:
-
-    ```
-    zowe profiles create --base-path "ibmzosmf/api/v1"
-    ```
 
 ## Accessing multiple services with SSO
 
