@@ -9,7 +9,7 @@ Once you have generated or imported your certificates, you can now use the certi
 
 To use PKCS12 certificates, run the command `zwe start -c ./zowe.yaml` in the directory with the `zowe.yaml` file to start Zowe.
 
-When Zowe is launched, details for the PKCS12 certificate used are specified in the `zowe.yaml` section `certificates`. This section contains information about the certificate name and the location of the certificate, together with the truststore location.
+The details about the PKCS12 certificate used when Zowe is launched, are specified in the `zowe.yaml` section `certificates`. This section contains information about the certificate name and the location of the certificate, together with the truststore location.
 
 The two most common scenarios for using a PKCS12 certificate are:  
 * You have an existing certificate and wish to configure Zowe to use the certificate.
