@@ -66,7 +66,7 @@ If you set `zowe.verifyCertificates` to `NONSTRICT`, certificate verification wi
 
 
 ## Zowe certificate requirements
-If you do not yet have certificates, Zowe can create self-signed certificates for you. This is not recommended for production, so you should bring your own certificates. Note that these certificates must be valid for use with Zowe.
+If you do not yet have certificates, Zowe can create self-signed certificates for you. This is not recommended for production, so you should bring your own certificates. Note that the certificates must be valid for use with Zowe.
 
 ### Extended key usage
 Zowe server certificates must either not have the `Extended Key Usage` (EKU) attribute, or have both the `TLS Web Server Authentication (1.3.6.1.5.5.7.3.1)` and `TLS Web Client Authentication (1.3.6.1.5.5.7.3.2)` values present within.
