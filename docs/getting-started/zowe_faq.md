@@ -343,7 +343,7 @@ The Zowe Explorer VSCode extension provides developers new to the mainframe with
 First of all, make sure you fulfill the following Zowe Explorer software requirements:
 
 - Get access to z/OSMF.
-- Install [Node.js](https://nodejs.org/en/download/) v8.0 or later.
+- Install [Node.js](https://nodejs.org/en/download/) v14.0 or later.
 - Install [VSCode](https://code.visualstudio.com/).
 - Configure TSO/E address space services, z/OS data set, file REST interface, and z/OS jobs REST interface. For more information, see [z/OS Requirements](https://docs.zowe.org/stable/user-guide/systemrequirements-zosmf#z-os-requirements).
 
@@ -389,7 +389,7 @@ You can use Zowe Explorer either in [VSCode](https://marketplace.visualstudio.co
 
 The Secure Credential Store Plug-in is no longer required for Zowe Explorer.
 
-Secure credential storage functionality is now contained in the Zowe CLI core application.
+Secure credential storage functionality is now contained in the Zowe CLI core application, which stores credentials securely by default.
 
 </details>
 
@@ -429,7 +429,7 @@ Zowe Explorer V2 supports using Service Profiles, Base Profiles, and Team Profil
 
 <summary></summary>
 
-See the [Zowe FTP extension README](https://github.com/zowe/zowe-explorer-ftp-extension/#readme) in GitHub for information about how to build, install, and use FTP as your back-end service for working with UNIX files.
+See the [Zowe FTP extension README](https://github.com/zowe/zowe-explorer-ftp-extension/#readme) in GitHub for information about how to install FTP from the Visual Studio Code Marketplace and use it as your back-end service for working with UNIX files.
 
 </details>
 
