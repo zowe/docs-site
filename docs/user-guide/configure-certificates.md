@@ -78,7 +78,7 @@ When a TLS certificate is used for encryption across a socket connection, two en
 The host communicating with a certificate should have its hostname match one of the values of the certificate's Common Name or Subject Alternate Name (SAN). If this condition is not true for at least one of the certificates seen by Zowe, then you may wish to set [NONSTRICT verification](#nonstrict-verification) within Zowe's configuration.
 
 ### z/OSMF access
-The z/OSMF certificate is verified according to Zowe's [Certificate verification setting](#certificate-verification), as is the case with any certificate seen by Zowe. However, for z/OSMF, Zowe will also set up a trust relationship with z/OSMF within Zowe's truststore during certificate setup automation if the certificate setting is set to any value other than [DISABLED](#disabled-verification).
+The z/OSMF certificate is verified according to Zowe's [Certificate verification setting](#certificate-verification), as is the case with any certificate seen by Zowe. However, Zowe will also set up a trust relationship with z/OSMF within Zowe's truststore during certificate setup automation if the certificate setting is set to any value other than [DISABLED](#disabled-verification).
 
 
 ## Certificate setup type
