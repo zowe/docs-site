@@ -147,9 +147,8 @@ Each scenario described in this article provides the configuration details via c
     ```
     **Note:** PEM format certificate authorities can be imported and trusted.
 
-  **Example zowe yaml for scenario 2**
-  
-    * PKCS12  
+  **Example zowe yaml for scenario 2 (PKCS12)**
+      
 =======
    ```
    certificate:
@@ -220,7 +219,8 @@ this field is not defined, the `zwe init` command uses the value `zowe.externalD
     ```
     **Note**: Due to the limitation of the `RACDCERT` command, this field should contain exactly 2 entries with the domain name and IP address.
 
-  **Example zowe yaml for scenario 3**  
+  **Example zowe yaml for scenario 3**
+  
 =======
    ```
    certificate:
