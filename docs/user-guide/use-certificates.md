@@ -21,7 +21,7 @@ To troubleshoot issues during Zowe startup, see [Troubleshooting startup of Zowe
 
 ## Use JCERACFKS certificates
 
-When Zowe is launched, details for the JCERACFKS certificate used are specified in the `zowe.yaml` section `certificates`.  This contains information for the certificate name and its location, together with the truststore location.  
+The details about the JCERACFKS certificate used when Zowe is launched, are specified in the `zowe.yaml` section `certificates`.  This contains information about the certificate name and its location, together with the truststore location.  
 
 The two most common scenarios for using a JCERACFKS certificate are:
 
