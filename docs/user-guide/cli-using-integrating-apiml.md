@@ -36,7 +36,7 @@ To request a token and log in to API ML:
      If you use the  `--show-token` option with the log-in command, you must manually supply the token on each command using the `--token-value` option. For example:
 
      ```
-     zowe plugins list --base-path "ibmzosmf/api/v1" --token-value "123"
+     zowe auth login apiml --base-path "ibmzosmf/api/v1" --token-value "123"
      ```
 
 **Notes:**
@@ -95,7 +95,7 @@ To specify a base path with Zowe V2 profiles:
     For example:
 
     ```
-    zowe plugins list --base-path "ibmzosmf/api/v1"
+    zowe config set --base-path "ibmzosmf/api/v1"
     ```
 
 ### Specifying a base path with Zowe V1 profiles
@@ -124,7 +124,7 @@ To specify a base path with Zowe V1 profiles:
     For example:
 
     ```
-    zowe plugins list --base-path "ibmzosmf/api/v1"
+    zowe profiles create --base-path "ibmzosmf/api/v1"
     ```
 
 ## Accessing multiple services with SSO
