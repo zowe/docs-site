@@ -17,7 +17,7 @@ The two most common scenarios for using a PKCS12 certificate are:
 
   The `zwe init certificate` command supports both scenarios. The input parameters that control certificate configuration are specified in the section `zowe.setup.certificates`.
 
-To check startup of Zowe, see [Troubleshooting startup of Zowe z/OS components](https://docs.zowe.org/stable/troubleshoot/troubleshoot-zos-startup).
+To troubleshoot issues during Zowe startup, see [Troubleshooting startup of Zowe z/OS components](https://docs.zowe.org/stable/troubleshoot/troubleshoot-zos-startup).
 
 ## Use JCERACFKS certificates
 
