@@ -215,7 +215,10 @@ this field is not defined, the `zwe init` command uses the value `zowe.externalD
         ```
         **Note:** Due to the limitation of `RACDCERT` command, this field should contain a maximum of 2 entries.  
 
-  **Example zowe yaml for scenario 4** 
+  **Example zowe yaml for scenario 4**
+
+  This example is using an existing JCERACFKS certificate to for Zowe's z/OS components. Find out more details in [this blog](https://medium.com/zowe/master-zowe-certificates-use-an-existing-jceracfks-certificate-for-zowes-z-os-components-975ffa0d9f2f).
+
 
 ```
  # >>>> Certificate setup scenario 4
@@ -231,9 +234,6 @@ this field is not defined, the `zwe init` command uses the value `zowe.externalD
    importCertificateAuthorities:
      - "zOSMFCA"
 ```
-
-**Note:**
-This example is using an existing JCERACFKS certificate to for Zowe's z/OS components. Find out more details in [this blog](https://medium.com/zowe/master-zowe-certificates-use-an-existing-jceracfks-certificate-for-zowes-z-os-components-975ffa0d9f2f).
 
 ## Scenario 5: Use a z/OS keyring-based keystore and import a certificate stored in a data set
 
