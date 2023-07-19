@@ -220,7 +220,26 @@ this field is not defined, the `zwe init` command uses the value `zowe.externalD
     **Note**: Due to the limitation of the `RACDCERT` command, this field should contain exactly 2 entries with the domain name and IP address.
 
   **Example zowe yaml for scenario 3**  
-
+=======
+   ```
+   certificate:
+     type: JCERACFKS
+     keyring:
+       name: ZoweKeyring
+         label: localhost
+         caLabel: local_ca
+       dname:
+         caCommonName: "Zowe Instances CA"
+         commonName: "Zowe Service"
+         org: "My Company"
+         locality: "Prague"
+         state: "Prague"
+         country: "CZ"
+       validity: 3650
+       san:
+         - system.my-company.com
+         - 12.34.56.78
+   ```
 
 ## Scenario 4: Use a z/OS keyring-based keystore and connect to an existing certificate
 
