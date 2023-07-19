@@ -50,7 +50,7 @@ Due to the limitation of the RACDCERT command, the `importCertificateAuthorities
 You can now use your imported PKCS12 certificate. See [next steps](#next-steps).
 ## Importing a certificate Authority (CA)
 
-Importing a certifacte authority (CA) is a prerequisite to import a PKCS12 certificate. Use the method that applies to your use case.
+Importing a certificate authority (CA) is a prerequisite to importing a PKCS12 certificate. Use the method that applies to your use case.
 
 * [Manually import a certificate authority into a web browser](#manually-import-a-certificate-authority-into-a-web-browser)
 * [Import a local CA certificate on Linux](#import-a-local-ca-certificate-on-linux)
