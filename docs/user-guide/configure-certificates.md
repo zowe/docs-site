@@ -92,7 +92,7 @@ Zowe is able to use PKCS12 certificates that are stored in USS. Zowe uses a `key
 
 Zowe is able to work with certificates held in a **z/OS Key ring**.  
 
-The JCL member `.SZWESAMP(ZWEKRING)` contains security commands to create a SAF key ring. By default, this key ring is named `ZoweKeyring`. You can use the security commands in this JCL member to generate a Zowe certificate authority (CA) and sign the server certificate with this CA. The JCL contains commands for three z/OS security managers: RACF, TopSecret, and ACF2.
+The JCL member `.SZWESAMP(ZWEKRING)` contains security commands to create a SAF key ring. By default, this keyring is named `ZoweKeyring`. You can use the security commands in this JCL member to generate a Zowe certificate authority (CA) and sign the server certificate with this CA. The JCL contains commands for all three z/OS security managers: RACF, TopSecret, and ACF2.
 
 There are two ways to configure and submit `ZWEKRING`:
 
