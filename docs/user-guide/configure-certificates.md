@@ -82,7 +82,7 @@ The z/OSMF certificate is verified according to Zowe's [Certificate verification
 
 
 ## Certificate setup type
-Whether importing or letting Zowe generate certificates, the setup for Zowe certificate automation and the configuration to use an existing keystore and truststore depends upon the content type: file-based (`PKCS12`) or z/OS key ring-based.
+Whether importing or letting Zowe generate certificates, the setup for Zowe certificate automation and the configuration to use an existing keystore and truststore depends upon the content format: file-based (`PKCS12`) or z/OS key ring-based.
 
 ### File-based (PKCS12) certificate setup
 
