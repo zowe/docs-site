@@ -1,9 +1,10 @@
-# Generate a certificate if you do not have one
 
-If you do not have a certificate, you can generate either of the following certificate types:
+# Generating a certificate if you do not have one
 
-* [PKCS12 certificate](#create-a-pkcs12-keystore)
-* [JCERACFKS certificate](#create-a-jceracfks-certificate)
+If you do not have a certificate, follow the procedure that corresponds to the certificate type you choose to generate: 
+
+* [Create a PKCS12 certificate](#create-a-pkcs12-keystore)
+* [Create a JCERACFKS certificate](#create-a-jceracfks-certificate)
 
 Both certificate types are self-signed certificates.
 
@@ -14,11 +15,11 @@ Follow these steps to generate a PKCS12 keystore:
 1. [Configure the PKCS12 setup section in zowe.yaml](#configure-the-pkcs12-setup-section-in-zoweyaml)
 2. [Run the command to generate a PKCS12 keystore](#run-the-command-to-generate-a-pkcs12-keystore)
 
-### Configure the PKCS12 setup section in zowe.yaml
+### Configuring the PKCS12 setup section in zowe.yaml
 
-To assist with updating `zowe.yaml`, see the example yaml for [scenario 1: Use a file-based (PKCS12) keystore with Zowe generated certificates](#certificate-configuration-scenarios#scenario-1-use-a-pkcs12-keystore-with-zowe-generated-certificates) in the article Certificate configuration scenarios.
+To assist with updating `zowe.yaml`, see the example yaml for [scenario 1: Use a file-based (PKCS12) keystore with Zowe generated certificates](#certificate-configuration-scenarios.md/#scenario-1-use-a-pkcs12-keystore-with-zowe-generated-certificates) in the article Certificate configuration scenarios. 
 
-For PKCS12 certificate users, customize the following parameters in the `zowe.yaml` file.
+For PKCS12 certificate users, customize the following parameters in the `zowe.yaml` file:
 
 | Parameter | Description |
 | --------- | ----------- |
@@ -27,14 +28,15 @@ For PKCS12 certificate users, customize the following parameters in the `zowe.ya
 | `zowe.setup.certificate.pkcs12` (*Optional*) | Defines name, password, caAlias and caPassword to customize the keystore and truststore. It is recommended to update these values from the default values. **Note:** Alias names should be all in lower case.|
 | `dname` (*Optional*) | Specifies the distinguished name. Domain names and IPs should be added into certificate SAN. If the field `san` is not defined, the `zwe init` command uses `zowe.externalDomains`.|
 
-**Configure `zowe.yaml` file:**  
-The following `zowe.yaml` example generates the following artifacts.
+**Configuring the `zowe.yaml` file for a PKCS12 certificate**  
+The following `zowe.yaml` example generates the following artifacts:
 
- - A `PKCS12` certificate, specified in `zowe.setup.certificate.type`
+ - A `PKCS12` certificate, specified in `zowe.setup.certificate.type`.
  - A keystore directory `/var/zowe/keystore`, specified in  `zowe.setup.certificate.pkcs12.directory`.
- - A certificate name (or alias) `localhost`, specified in `zowe.setup.certificate.pkcs12.name`  
- - A certificate authority name `local_ca`, specified in `zowe.setup.certificate.certificate.pkcs12.caAlias`
+ - A certificate name (or alias) `localhost`, specified in `zowe.setup.certificate.pkcs12.name`.  
+ - A certificate authority name `local_ca`, specified in `zowe.setup.certificate.certificate.pkcs12.caAlias`.
 
+**Example `zowe.yaml` using PKCS12:**
 ```
 zowe:
   setup:
@@ -61,21 +63,19 @@ zowe:
         - 12.34.56.78
 ```
 
-**Tips:** To get the san IP address, you could run `ping dvipa.my-company.com` in your terminal. Please note that `dvipa.my-company.com` is an example address here.
+**Tip:** To get the san IP address, run `ping dvipa.my-company.com` in your terminal. Please note that `dvipa.my-company.com` is an example address.
 
-### Run the command to generate a PKCS12 keystore
+### Running the command to generate a PKCS12 keystore
 
-After you configure the `zowe.yaml`, use the following procedure to generate the certificate.
+After you configure the `zowe.yaml`, use the following procedure to generate the PKCS12 certificate.
 
-1. Log in to your system. In this example, run `ssh dvipa.my-company.com` with your password. Please note that `dvipa.my-company.com` is an example address here.
+1. Log in to your system. In this example, run `ssh dvipa.my-company.com` with your password. Please note that `dvipa.my-company.com` is an example address.
 
-2. Run the following command in the directory with this `zowe.yaml` in terminal to generate the certificate and update the configuration values in `zowe.yaml`.
+2. Run the following command in the directory with this `zowe.yaml` in the terminal to generate the certificate and update the configuration values in the `zowe.yaml` file.
 
-   `zwe init certificate -c ./zowe.yaml --update-config`
+   `zwe init certificate -c <path-to-your-zowe-configuration-yaml> --update-config`
 
-    The following command output shows the generation of a PKCS12 keystore using the default values, and has the following associated artifacts:
-
-    **Note:** Some detailed output messages have been omitted.
+The following command output shows the generation of a PKCS12 keystore using the default values, and has the following associated artifacts. (Note that some detailed output messages have been omitted.)
 
 - The CA is created.
 - The keystore is created and the CA is added to the keystore.
@@ -83,8 +83,9 @@ After you configure the `zowe.yaml`, use the following procedure to generate the
 - The truststore is created. 
 - Directory permissions are changed to restrict access to the private key.
 
+**Command output:**
 ```
-#>zwe init certificate -c ./zowe.yaml --update-config
+#>zwe init certificate -c <path-to-your-zowe-configuration-yaml> --update-config
 -------------------------------------------------------------------------------
 >> Creating certificate authority "local_ca"
 >> Certificate authority local_ca is created successfully.
@@ -103,7 +104,7 @@ After you configure the `zowe.yaml`, use the following procedure to generate the
 >> Lock keystore directory /global/zowe/keystore
 >> Keystore directory /global/zowe/keystore is locked.
 -------------------------------------------------------------------------------
->> Update certificate configuration to ./zowe.yaml
+>> Update certificate configuration to <path-to-your-zowe-configuration-yaml>
 
 - update "zowe.certificate.keystore.type" with value: PKCS12
 ...
@@ -113,12 +114,10 @@ After you configure the `zowe.yaml`, use the following procedure to generate the
 
 #>
 ```
-**Detailed explanation of generated output**
-* The `zwe init certificate` command generates a certificate based on `zowe.yaml` values in the `zowe.setup.certificate` section.
-* The certificate values used at runtime are referenced in the `zowe.certificate` section in the `zowe.yaml` file.
-* The command `zwe init certificate -c ./zowe.yaml --update-config` updates the runtime `zowe.certificate` section to reference the generated certificate generated from the `zowe.setup.certificate`.
 
-Open the `zowe.yaml` file to check the references to the newly generated certificate values as shown in the following code snippet.
+The `zwe init certificate` command generates a certificate based on `zowe.yaml` values in the `zowe.setup.certificate` section. The certificate values used at runtime are referenced in the `zowe.certificate` section in the `zowe.yaml` file. The command `zwe init certificate -c <path-to-your-zowe-configuration-yaml> --update-config` updates the runtime `zowe.certificate` section to reference the generated certificate generated from the `zowe.setup.certificate`.
+
+3. Open the `zowe.yaml` file to check the references to the newly generated certificate values as shown in the following code snippet:
 
 **Updated `zowe.certificate` section in `zowe.yaml`:**
 
@@ -139,26 +138,26 @@ Open the `zowe.yaml` file to check the references to the newly generated certifi
       certificateAuthorities: /var/zowe/keystore/local_ca/local_ca.cer
 ```
 
-For details about the certificate you generated, run the following command:  
+4. (Optional) For details about the certificate you generated, run the following command:  
 `keytool -v -list keystore localhost.keystore.p12 -storetype PKCS12`
 
-For more information about additional commands to manage a keystore, see the [keytool documentation](https://docs.oracle.com/en/java/javase/11/tools/keytool.html).
+ For more information about additional commands to manage a keystore, see the [keytool documentation](https://docs.oracle.com/en/java/javase/11/tools/keytool.html).
 
 ### Next steps after PKCS12 setup
 
-When using a Zowe-generated certificate, you will be challenged by your browser when logging in to Zowe to accept Zowe's untrusted certificate authority. Depending on the browser you are using there are different ways to proceed. See next steps about how to [import the PKCS12 certificate to your brower](./import-certificates#import-your-pkcs12-certificate).
+When using a Zowe-generated certificate, you will be challenged by your browser when logging in to Zowe to accept Zowe's untrusted certificate authority. Depending on the browser you are using, there are different ways to proceed. See next steps about how to [import the PKCS12 certificate to your brower](./import-certificates#import-your-pkcs12-certificate).
 
 ## Create a JCERACFKS certificate
 
-Use the following procedure to configure zowe.yaml:
+Use the following procedure to configure the `zowe.yaml` file for JCERACFKS certificates:
 
-1. [Configure the JCERACFKS setup section in zowe.yaml](#configure-the-jceracfks-setup-section-in-zoweyaml).
-2. [Run the command to generate a JCERACFKS certificate](#run-the-command-to-generate-a-jceracfks-certificate).
+1. [Configure the JCERACFKS setup section in zowe.yaml](#configure-the-jceracfks-setup-section-in-zoweyaml)
+2. [Run the command to generate a JCERACFKS certificate](#run-the-command-to-generate-a-jceracfks-certificate)
 
 To assist with updating `zowe.yaml`, see the example yaml in [Scenario 3: Use a z/OS keyring-based keystore with Zowe generated certificates](#certificate-configuration-scenarios.md/##scenario-3-use-a-zos-keyring-with-zowe-generated-certificates) in the article Certificate configuration scenarios.
 ### Configure the JCERACFKS setup section in zowe.yaml
 
-For JCERACFKS certificate (z/OS key ring) users, customize the following parameters in the `zowe.yaml` file.
+For JCERACFKS certificate (z/OS key ring) users, customize the following parameters in the `zowe.yaml` file:
 
 | Parameter | Description |
 | ---------- | ----------- |
@@ -167,12 +166,12 @@ For JCERACFKS certificate (z/OS key ring) users, customize the following paramet
 
 The following `zowe.yaml` example generates the following artifacts:
 
- - A `JCERACFKS` certificate, specified in `zowe.setup.certificate.type`
- - A key ring named `ZoweKeyring` specified in  `zowe.setup.certificate.keyring.name`
- - A certificate with the label `localhost` specified in `zowe.setup.certificate.keyring.label`  
- - A certificate authority with the label `localca` specified in  `zowe.setup.certificate.keyring.caLabel` with a common name `Zowe Service CA`
+ - A `JCERACFKS` certificate, specified in `zowe.setup.certificate.type`.
+ - A key ring named `ZoweKeyring` specified in  `zowe.setup.certificate.keyring.name`.
+ - A certificate with the label `localhost` specified in `zowe.setup.certificate.keyring.label`.  
+ - A certificate authority with the label `localca` specified in  `zowe.setup.certificate.keyring.caLabel` with a common name `Zowe Service CA`.
 
-**Configure `zowe.yaml` file:**
+**Example `zowe.yaml` file using a JCERACFKS certificate:**
 ```
 zowe:
   setup:
@@ -204,8 +203,6 @@ zowe:
 - `dname` for distinguished name is all optional.
 - Domain names and IPs should be added into certificate SAN. If the field `san` is not defined, the `zwe init` command will use `zowe.externalDomains`. The value for the `san` parameter presented in the example is for demonstration purposes.
 
-
-
 ### Run the command to generate a JCERACFKS certificate
 
 After you configure the `zowe.yaml`, use the following procedure to generate a JCERACFKS certificate.
@@ -214,20 +211,15 @@ After you configure the `zowe.yaml`, use the following procedure to generate a J
 
 2. Run the following command in the directory with this `zowe.yaml` in terminal to generate the certificate and update the configuration values in `zowe.yaml`.
 
-    `zwe init certificate -c ./zowe.yaml --update-config`
+   `zwe init certificate -c <path-to-your-zowe-configuration-yaml> --update-config`
 
-    Running this command generates the following artifacts:
-    * A customized JCL member name is created in the `CUST.JCLLIB` data set. 
-    * The PDS name is defined in the `zowe.setup.dataset.jcllib` property. 
-    
-    In the following example output, the PDS member `USER.ZWEV2.CUST.JCLLIB(ZW101431)` is created that contains the security manager commands, and then submitted as a job ID: `ZWEKRING(JOB03054)`.
+    When the command is run, a customized JCL member name is created in the `CUST.JCLLIB` data set. The PDS name is defined in the `zowe.setup.dataset.jcllib` property. In the following example output, the PDS meember `USER.ZWEV2.CUST.JCLLIB(ZW101431)` is created that contains the security manager commands, and then submitted as a job ID: `ZWEKRING(JOB03054)`.
 
-    The following command output shows the generation of a JCERACFKS certificate using the default values. 
+The following command output shows the generation of a JCERACFKS certificate using the default values. Note that some detailed output messages have been omitted.
 
-    **Note:** Some detailed output messages have been omitted.
-
+**Command output:**
 ```
-#>zwe init certificate -c ./zowe.yaml --update-config
+#>zwe init certificate -c <path-to-your-zowe-configuration-yaml> --update-config
 -------------------------------------------------------------------------------
 >> Generate Zowe certificate in keyring
 
@@ -238,7 +230,7 @@ After you configure the `zowe.yaml`, use the following procedure to generate a J
 >> Certificate is generated in keyring successfully.
 
 -------------------------------------------------------------------------------
->> Update certificate configuration to ./zowe.yaml
+>> Update certificate configuration to <path-to-your-zowe-configuration-yaml>
 >> Zowe configuration is updated successfully.
 
 #>
@@ -247,7 +239,7 @@ After you configure the `zowe.yaml`, use the following procedure to generate a J
 **Tips:**  
 As shown in the example, the job ends with code `0`. There may, however, be failures in the individual steps. It is advised to check the job output. The security manager commands in the job are generated based on the value of `zowe.security.product`. Job steps for each product can be determined by the security manager.  
 
-Open the `zowe.yaml` file to check the references to the newly generated certificate values. Because the `--update-config` parameter was specified, the runtime configuration section of zowe.yaml is updated to match the values to the generated keystore, certificate, and certificate authority. The updated section is shown in the following code snippet:
+3. Open the `zowe.yaml` file to check the references to the newly generated certificate values. Because the `--update-config` parameter was specified, the runtime configuration section of zowe.yaml is updated to match the values to the generated keystore, certificate, and certificate authority. The updated section is shown in the following code snippet:
 
 **Updated `zowe.certificate` section in `zowe.yaml`:**
 ```
@@ -267,7 +259,9 @@ zowe:
       certificate:
       certificateAuthorities: safkeyring://ZWESVUSR/ZoweKeyring&localca
 ```
-**Note:** `zowe.certificate.keystore.password` has a hardcoded password value. However, if you are using `type: PKCS12`, the password field must be the real password.
+
+**Note:**  
+* `zowe.certificate.keystore.password` has a hardcoded password value. However, if you are using `type: PKCS12`, the password field must be the real password.
 
 ### Next steps after JCERACFKS setup
 
