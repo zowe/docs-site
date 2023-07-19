@@ -269,6 +269,8 @@ this field is not defined, the `zwe init` command uses the value `zowe.externalD
         ```
         **Note:** Due to the limitation of `RACDCERT` command, this field should contain a maximum of 2 entries.  
 
+  The following example uses an existing JCERACFKS certificate to for Zowe's z/OS components. For more information, see [this blog post](https://medium.com/zowe/master-zowe-certificates-use-an-existing-jceracfks-certificate-for-zowes-z-os-components-975ffa0d9f2f).
+  
   **Example zowe yaml for scenario 4**
 
   This example is using an existing JCERACFKS certificate to for Zowe's z/OS components. Find out more details in [this blog](https://medium.com/zowe/master-zowe-certificates-use-an-existing-jceracfks-certificate-for-zowes-z-os-components-975ffa0d9f2f).
