@@ -148,6 +148,7 @@ Each scenario described in this article provides the configuration details via c
     **Note:** PEM format certificate authorities can be imported and trusted.
 
   **Example zowe yaml for scenario 2**
+  
     * PKCS12  
 =======
    ```
