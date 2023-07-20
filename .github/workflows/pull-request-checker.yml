@@ -26,11 +26,11 @@ jobs:
                         
             - [ ] Add the label `needs review by sme` if an SME needs to check your content.
             - [ ] Identify your content topic with a label. (Examples: `area: apiml`, `area: cli`, `area: install and config`, etc.)
-            3. Specify the Zowe release for your content. Use either label `current release` or `next release`.
-            4. Link any [Doc Issues](https://github.com/zowe/docs-site/issues) related to this PR.
-            5. Fix broken links found in your content areas.
-            6. Notify the SME to review this PR (if applicable).
-            7. Merge to the `master` branch if your content documents the current release or a previous release. Merge to `docs-staging` if your content is for the next release.
+            - [ ] Specify the Zowe release for your content. Use either label `current release` or `next release`.
+            - [ ] Link any [Doc Issues](https://github.com/zowe/docs-site/issues) related to this PR.
+            - [ ] Fix broken links found in your content areas.
+            - [ ] Notify the SME to review this PR (if applicable).
+            - [ ] Merge to the `master` branch if your content documents the current release or a previous release. Merge to `docs-staging` if your content is for the next release.
 
       - name: Add initial comment w/ instructions
         if: steps.initial_comment_writer.outcome == 'skipped'
@@ -40,11 +40,11 @@ jobs:
           message: |
             :smiley_cat: Thank you for creating this PR! To publish your content to [Zowe Docs](https://docs.zowe.org/), follow these required steps.
 
-            1. Add the label `needs review by doc`.
-            2. Identify your content topic with a label. (Examples: `area: apiml`, `area: cli`, `area: install and config`, etc.)
-            3. Specify the Zowe release for your content. Use either label `current release` or `next release`.
-            4. Select the `master` branch if your content documents the current release or a previous release. Select `docs-staging` if your content is for the next release.
-            5. Notify the Doc Squad about this PR. If you don't know who should review your content, message the [#zowe-doc](https://openmainframeproject.slack.com/archives/CC961JYMQ) Slack channel. If you know which Doc Squad writer should approve your content, add that person as a reviewer.
+            - [ ] Add the label `needs review by doc`.
+            - [ ] Identify your content topic with a label. (Examples: `area: apiml`, `area: cli`, `area: install and config`, etc.)
+            - [ ] Specify the Zowe release for your content. Use either label `current release` or `next release`.
+            - [ ] Select the `master` branch if your content documents the current release or a previous release. Select `docs-staging` if your content is for the next release.
+            - [ ] Notify the Doc Squad about this PR. If you don't know who should review your content, message the [#zowe-doc](https://openmainframeproject.slack.com/archives/CC961JYMQ) Slack channel. If you know which Doc Squad writer should approve your content, add that person as a reviewer.
 
             **Need help?** Contact the Doc Squad in the [#zowe-doc](https://openmainframeproject.slack.com/archives/CC961JYMQ) Slack channel.      
       - name: Checkout file
@@ -58,7 +58,7 @@ jobs:
           template-path: "./.github/pull_request_template.md"  
           comment: true
           comment-empty-description: ":warning: The PR description is empty, please add a valid description."
-          comment-template-not-filled: ":warning: It looks like your description is too short. The PR description must more than 95 characters (including spaces)."
+          comment-template-not-filled: ":warning: It looks like you may have deleted the instructions in the PR description. This makes it hard for the bot to tell if you've written a valid description. Please leave in the instructions and add your information after the colons."
 
   review-labels:
     name: Check for missing review label
