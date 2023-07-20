@@ -48,6 +48,7 @@ zowe:
 Due to the limitation of the RACDCERT command, the `importCertificateAuthorities` field can contain a maximum of two entries.
 
 You can now use your imported PKCS12 certificate. See [next steps](#next-steps).
+
 ## Importing a certificate Authority (CA)
 
 Importing a certifacte authority (CA) is a prerequisite to import a PKCS12 certificate. Use the method that applies to your use case.
@@ -161,6 +162,8 @@ zowe:
 **Note:**  
 Due to the limitation of the RACDCERT command, the `importCertificateAuthorities` field can contain a maximum of two entries.
 
+**Example:**
+
 You can now use your imported JCERACFKS certificate. See [next steps](#next-steps).
 
 ## Import a certificate stored in an MVS data set into a Zowe key ring
@@ -189,8 +192,7 @@ zowe:
         dsName: ""
         password: ""
 ```
-The configuration of `zowe.setup.certificate` populates information to be used by the subcommand `zwe init certificate` of `zwe init`. 
+The configuration of `zowe.setup.certificate` populates information to be used by the subcommand `zwe init certificate` of `zwe init`.
 ## Next steps
 
 Once your certificate is successfully imported, review the documentation about [how to use these certificates](./use-certificates.md) in a Zowe production environement.
-

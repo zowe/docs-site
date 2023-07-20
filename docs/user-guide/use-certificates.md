@@ -11,7 +11,8 @@ To use PKCS12 certificates, run the command `zwe start -c ./zowe.yaml` in the di
 
 When Zowe is launched, details for the PKCS12 certificate used are specified in the `zowe.yaml` section `certificates`. This section contains information about the certificate name and the location of the certificate, together with the truststore location.
 
-The two most common scenarios for using a PKCS12 certificate are:  
+The two most common scenarios for using a PKCS12 certificate are:
+
 * You have an existing certificate and wish to configure Zowe to use the certificate.
 * You do not have a certificate and wish to [generate a new certificate](./generate-certificates.md).  
 
@@ -29,7 +30,15 @@ The two most common scenarios for using a JCERACFKS certificate are:
 * You do not have a certificate and wish to generate a new one.
 
   The `zwe init certificate` command supports both scenarios. The input parameters that control certificate configuration
-are specified in the section `zowe.setup.certificates`
+are specified in the section `zowe.setup.certificates`. See the example of connecting a JCERACFKS certificate below.
+
+**Example:**
+![Alt text](../images/certificates/connect-JCERACFKS.png)
+
+**Note:**
+In this example, the command `zwe init certificate -c ./zowe.yaml --security-dry-run` allows the JCL to be inspected before submission, as well as handed off to a security administrator who has privileges to submit the JCL under their user ID. Or by defult, the JCL will be submitted immediately. For details about this example, check out the playlist here.
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/videoseries?list=PL8REpLGaY9QEHLNA81DRgGqWcgOYC0PDX" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
 ### Use multiple certificate authorities
 
