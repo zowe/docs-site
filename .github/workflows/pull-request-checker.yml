@@ -24,8 +24,8 @@ jobs:
           message: |
             :smiley_cat: Thank you for creating this PR! To publish your content to [Zowe Docs](https://docs.zowe.org/), follow these steps.
                         
-            1. Add the label `needs review by sme` if an SME needs to check your content.
-            2. Identify your content topic with a label. (Examples: `area: apiml`, `area: cli`, `area: install and config`, etc.)
+            - [ ] Add the label `needs review by sme` if an SME needs to check your content.
+            - [ ] Identify your content topic with a label. (Examples: `area: apiml`, `area: cli`, `area: install and config`, etc.)
             3. Specify the Zowe release for your content. Use either label `current release` or `next release`.
             4. Link any [Doc Issues](https://github.com/zowe/docs-site/issues) related to this PR.
             5. Fix broken links found in your content areas.
