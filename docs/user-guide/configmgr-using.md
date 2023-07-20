@@ -95,10 +95,15 @@ From the GitHub links above, if you want to see changes between versions, you ca
 When `zwe` is using Configuration Manager, the `CONFIG=` parameter in the z/OS ZWESLSTC JCL and the `--config` parameter in any `zwe` command that supports `--configmgr` can take a list of YAML file locations as an alternative to the backward-compatible single YAML file used in prior Zowe versions.
 
 
-When using a single unix file, the syntax is just the path to the file, such as `CONFIG=/my/zowe.yaml`. However, when using multiple files, you must use the syntax `FILE(file1):FILE(file2):...` where each file is surrounded with `FILE()` and files are separated by the colon `:` character. The use of `FILE()` will allow Zowe to support other types of storage in the future. An example of using multiple configuration files would be as follows: 
+When using a single unix file, the syntax is just the path to the file, such as `CONFIG=/my/zowe.yaml`. However, when using multiple files, you must use the syntax `FILE(file1):PARMLIB(DSN(MEMBER)):...` where each file is surrounded with `FILE()` or `PARMLIB()` and files are separated by the colon `:` character. An example of using multiple configuration files would be as follows:  
 
 ```
-CONFIG=FILE(/home/me/zowe-customizations.yaml):FILE(/global/zowe/example-zowe.yaml)
+CONFIG=FILE(/home/me/zowe-customizations.yaml):FILE(/global/zowe/example-zowe.yaml):PARMLIB(MYORG.ZOWE.PARMLIB(YAML))
+```
+
+**Note:** All `PARMLIB()` entries must all have the same member name:
+```
+CONFIG=PARMLIB(MYORG.ZOWE.PARM1(YAML)):PARMLIB(MYORG.ZOWE.PARM2(YAML))
 ```
 
 Each file in the list you provide must adhere to the same Zowe configuration schema, but the contents can be any subset you want per file. Zowe will merge together the contents of all the files into one unified configuration, so the collection of files must result in a configuration which is valid against the Zowe schema.
