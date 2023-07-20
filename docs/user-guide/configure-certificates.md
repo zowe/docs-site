@@ -109,13 +109,15 @@ A number of key ring scenarios are supported:
 
 ## Next steps: Creating or importing certificates to Zowe
 
-Review the following options to see which option best applies to your use case:
+Review the following options and choose which best applies to your use case:
 
 * If you have an existing certificate, you can import this certificate to the keystore. For more information, see [Import and configure an existing certificate](./import-certificates.md).
 
 * If you do not have an existing certificate, you can  create one. For more information, see [Generate a certificate if you do not have a certificate](./generate-certificates.md).
 
+* If you would like to see which certificate configuration applies to your specific use case, see [Certificate configuration scenarios](./certificate-configuration-scenarios.md).
+
 * When your certificate is already in the keystore, it is ready for use. For more information, see [Use certificates](./use-certificates.md).
 
-* If you run into any error when configuring certificates, see the [Troubleshooting guide for certificate configuring](placeholder).
+* If you run into any error when configuring certificates, see the [Troubleshooting the certificate configuration](../troubleshoot/troubleshoot-zos-certificate.md).
 

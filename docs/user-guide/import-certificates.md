@@ -1,6 +1,6 @@
 # Import and configure a certificate if you have one
 
-One option for using certificates in Zowe is to import and configure existing certificates. Use the procedure that applies to the type of certificate you wish to import:Zowe supports the following types of certificates for import:
+One option for using certificates in Zowe is to import and configure existing certificates. Use the procedure that applies to the type of certificate you wish to import.
 
 * [Import a file-based PKCS12 certificate](#import-an-existing-pkcs12-certificate)
 * [Import a JCERACFKS certificate](#import-an-existing-jceracfks-certificate)
@@ -69,7 +69,7 @@ The public certificate in [PEM format](https://en.wikipedia.org/wiki/Privacy-Enh
 **Note:**  
 Windows currently does not recognize the PEM format. For Windows, use the P12 version of the `local_cer`.
 
-**Follow these steps:**
+**Importing commands according to your operating system**
 
 To import the certificate to your root certificate store and trust it, follow the applicable procedure based on your operating system.
 
