@@ -47,3 +47,9 @@ By default, the CLI daemon mode binary creates or reuses a file in the user's ho
 | ---------------------- | ---------------------- | ---------------------- | ---------------------- | ---------------------- |
 | All | `ZOWE_DAEMON_DIR` | Lets you override the complete path to the directory that will hold daemon files related to this user. The directory can contain the following files:<ul><li>`daemon.lock`</li><li>`daemon.sock`</li><li>`daemon_pid.json`</li></ul> | Any valid path on your computer | `<your_home_dir>/.zowe/daemon`<p>**Examples:**</p><ul><li>**Windows:** `%HOMEPATH%\.zowe\daemon`</li><li>**Linux:** `$HOME/.zowe/daemon`</li></ul> |
 | Windows (only) | `ZOWE_DAEMON_PIPE` | Lets you override the last two segments of the name of the communication pipe between the daemon executable (.exe) and the daemon. | Any valid path on your computer | `\\.\pipe\%USERNAME%\ZoweDaemon
+
+## Setting other environment variables
+
+| Platform | Environment Variable  | Description | Values | Default |
+| ---------------------- | ---------------------- | ---------------------- | ---------------------- | ---------------------- |
+| All | `ZOWE_V3_ERR_FORMAT` | For Zowe V2, reformats the message displayed in REST request errors so problem details, and service response and diagnostic information, display in a reader friendly manner. | TRUE, FALSE, blank | blank |
