@@ -117,5 +117,5 @@ Review the following options to see which option best applies to your use case:
 
 * When your certificate is already in the keystore, it is ready for use. For more information, see [Use certificates](./use-certificates.md).
 
-* If you run into any error when configuring certificates, see the [Troubleshooting guide for certificate configuring](placeholder).
+* If you run into any error when configuring certificates, see the [Troubleshooting the certificate configuration](../troubleshoot/troubleshoot-zos-certificate.md).
 
