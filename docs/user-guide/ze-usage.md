@@ -33,9 +33,9 @@ Make the best use of the extension with the following tips:
 
 - **Edit a profile**: You can edit existing profiles listed in the **Side Bar** by clicking the profile's **Edit** icon (next to the **Search** icon). The feature lets you modify the information inside your profile.
 
-- **Delete a profile**: In Zowe Explorer V1, you can permanently delete profiles by right-clicking the profile and selecting the **Delete Profile** option. The feature deletes the profile from your `.zowe` folder. In Zowe Explorer V2, right-click the profile, and select **Delete Profile** to open the configuration file and manually delete the profile.
+- **Delete a profile**: In Zowe V1, you can permanently delete profiles by right-clicking the profile and selecting the **Delete Profile** option. The feature deletes the profile from your `.zowe` folder. In Zowe V2, right-click the profile, and select **Delete Profile** to open the configuration file and manually delete the profile.
 
-   **Tip:** Alternatively, you can delete a profile  by using the VS Code **Command Palette**. Press `F1` on your keyboard, then select the **Zowe Explorer: Delete a Profile Permanently** option. In V1, you select the profile to delete. In V2, the configuration file opens for you to delete the profile manually.
+   **Tip:** Alternatively, you can delete a profile  by using the VS Code **Command Palette**. Press `F1` on your keyboard, then select the **Zowe Explorer: Delete a Profile Permanently** option. In Zowe V1, you select the profile to delete. In Zowe V2, the configuration file opens for you to delete the profile manually.
 
 - **Hide a profile**: You can hide a profile from the **Side Bar** by right-clicking the profile and selecting the **Hide Profile** option. If necessary, add the profile back by clicking the **+** icon on the **DATA SETS**, **UNIX SYSTEM SERVICES (USS)**, or **JOBS** bar.
 

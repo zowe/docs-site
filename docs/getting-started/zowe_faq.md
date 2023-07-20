@@ -343,9 +343,9 @@ The Zowe Explorer VSCode extension provides developers new to the mainframe with
 First of all, make sure you fulfill the following Zowe Explorer software requirements:
 
 - Get access to z/OSMF.
-- Install [Node.js](https://nodejs.org/en/download/) v8.0 or later.
 - Install [VSCode](https://code.visualstudio.com/).
 - Configure TSO/E address space services, z/OS data set, file REST interface, and z/OS jobs REST interface. For more information, see [z/OS Requirements](https://docs.zowe.org/stable/user-guide/systemrequirements-zosmf#z-os-requirements).
+- For development, install [Node.js](https://nodejs.org/en/download/) v14.0 or later.
 
 Once the software requirements are fulfilled, create a Zowe Explorer profile.
 
