@@ -3,7 +3,8 @@
 It is placed in the Getting Started Top-Level section and is intended to provide a high-level overview of the security concepts
 implemented by Zowe, particularly focuses on certificates and their usage.
 
-#TODO: Consider splitting the document to separate the certificates overview into a separate document while keeping the zowe-secure-setup as a security overview, kinda security related table of contents.  
+#TODO: Consider splitting the document to separate the certificates overview into a separate document 
+while keeping the zowe-secure-setup as a security overview, kinda security related table of contents.  
 -->
 
 Before installation and use of Zowe server-side components it is practical to first learn about core security features built into the Zowe architecture.
@@ -282,9 +283,9 @@ To verify the ownership of the SAF resource, you can use the following available
 For detailed information, see the [SAF resource checking documentation](../user-guide/api-mediation/api-gateway-configuration#saf-resource-checking).
 
 
-#Links
+# Links
 Visit the following links to learn About the: 
-- [Varios certificates configuration scenarios](#../user-guide/api-mediation/certificate-configuration-scenarios).
-- [Generate certificates for Zowe servers](#../user-guide/generate-certificates)
-- [Import certificates](#../user-guide/import-certificates)
-- [Configure Zowe to use certificates](#../user-guide/configure-certificates)
+- [Varios certificates configuration scenarios](../user-guide/api-mediation/certificate-configuration-scenarios).
+- [Generate certificates for Zowe servers](../user-guide/generate-certificates)
+- [Import certificates](../user-guide/import-certificates)
+- [Configure Zowe to use certificates](../user-guide/configure-certificates)
