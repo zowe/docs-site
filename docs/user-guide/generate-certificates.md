@@ -161,8 +161,8 @@ For JCERACFKS certificate (z/OS key ring) users, customize the following paramet
 
 | Parameter | Description |
 | ---------- | ----------- |
-| `zowe.setup.certificate.keyring.owner` | The key ring owner. It's optional and default value is `zowe.setup.security.users.zowe`. If it's also not defined, the default value is ZWESVUSR.|
-| `zowe.setup.certificate.keyring.name`  | Specifies the key ring name to be created on z/OS. This is required if `zowe.setup.certificate.type` is `JCERACFKS`.|
+| `zowe.setup.certificate.keyring.owner` | The key ring owner. This parameter is optional and the default value is `zowe.setup.security.users.zowe`. If this parameter is not defined, the default value is ZWESVUSR.|
+| `zowe.setup.certificate.keyring.name`  | Specifies the key ring name to be created on z/OS. This parameter is required if `zowe.setup.certificate.type` is `JCERACFKS`.|
 
 The following `zowe.yaml` example generates the following artifacts:
 
