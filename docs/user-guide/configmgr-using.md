@@ -105,6 +105,7 @@ CONFIG=FILE(/home/me/zowe-customizations.yaml):FILE(/global/zowe/example-zowe.ya
 ```
 CONFIG=PARMLIB(MYORG.ZOWE.PARM1(YAML)):PARMLIB(MYORG.ZOWE.PARM2(YAML))
 ```
+**Note:** Characters `=`, `:`, `(` and `)` are considered as reserved. It is highly recommended to avoid using of these characters in the name of zowe.yaml file.
 
 Each file in the list you provide must adhere to the same Zowe configuration schema, but the contents can be any subset you want per file. Zowe will merge together the contents of all the files into one unified configuration, so the collection of files must result in a configuration which is valid against the Zowe schema.
 
