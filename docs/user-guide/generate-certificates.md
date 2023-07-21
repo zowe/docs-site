@@ -3,19 +3,19 @@
 
 If you do not have a certificate, follow the procedure that corresponds to the certificate type you choose to generate: 
 
-* [Create a PKCS12 certificate](#create-a-pkcs12-keystore)
-* [Create a JCERACFKS certificate](#create-a-jceracfks-certificate)
+* [Creating a PKCS12 certificate](#creating-a-pkcs12-keystore)
+* [Creating a JCERACFKS certificate](#creating-a-jceracfks-certificate)
 
 Both certificate types are self-signed certificates.
 
-## Create a PKCS12 keystore
+## Creating a PKCS12 keystore
 
 Follow these steps to generate a PKCS12 keystore:
 
 1. [Configure the PKCS12 setup section in zowe.yaml](#configure-the-pkcs12-setup-section-in-zoweyaml)
 2. [Run the command to generate a PKCS12 keystore](#run-the-command-to-generate-a-pkcs12-keystore)
 
-### Configuring the PKCS12 setup section in zowe.yaml
+### Configure the PKCS12 setup section in zowe.yaml
 
 To assist with updating `zowe.yaml`, see the example yaml for [scenario 1: Use a file-based (PKCS12) keystore with Zowe generated certificates](#certificate-configuration-scenarios.md/#scenario-1-use-a-pkcs12-keystore-with-zowe-generated-certificates) in the article Certificate configuration scenarios. 
 
@@ -65,7 +65,7 @@ zowe:
 
 **Tip:** To get the san IP address, run `ping dvipa.my-company.com` in your terminal. Please note that `dvipa.my-company.com` is an example address.
 
-### Running the command to generate a PKCS12 keystore
+### Run the command to generate a PKCS12 keystore
 
 After you configure the `zowe.yaml`, use the following procedure to generate the PKCS12 certificate.
 
@@ -147,7 +147,7 @@ The `zwe init certificate` command generates a certificate based on `zowe.yaml` 
 
 When using a Zowe-generated certificate, you will be challenged by your browser when logging in to Zowe to accept Zowe's untrusted certificate authority. Depending on the browser you are using, there are different ways to proceed. See next steps about how to [import the PKCS12 certificate to your brower](./import-certificates#import-your-pkcs12-certificate).
 
-## Create a JCERACFKS certificate
+## Creating a JCERACFKS certificate
 
 Use the following procedure to configure the `zowe.yaml` file for JCERACFKS certificates:
 
