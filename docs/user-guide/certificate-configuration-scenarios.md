@@ -10,9 +10,9 @@ This automation can be performed by defining and customizing the `zowe.setup.cer
 Zowe can then automate the certificate setup via the `zwe init certificate` command. This command is run as a subcommand of `zwe init`.
 
 **Note:**  
-Automated generation of certificates is an option, but is not required. If you already have a keystore that contains a valid certificate (see the description of a valid certificate), and the certificate's corresponding private key, along with a truststore which validates the certificate and any other certificates you expect to encounter, then you also have the option of directly defining the parameter `zowe.certificate` which specifies the location of each of these objects. Note that this parameter should not be confused with the parameter `zowe.setup.certificate`.
+Automated generation of certificates is an option, but is not required. If you already have a keystore that contains a valid certificate`*`, and the certificate's corresponding private key, along with a truststore which validates the certificate and any other certificates you expect to encounter, then you also have the option of directly defining the parameter `zowe.certificate` which specifies the location of each of these objects. Note that this parameter should not be confused with the parameter `zowe.setup.certificate`.
 
-## What is a valid certificate in Zowe?
+## `*` What is a valid certificate in Zowe?
 
 A valid certificate for use in Zowe is required to have one of the following attributes, regardless of the format:
 
@@ -86,7 +86,7 @@ Each scenario described in this article provides the configuration details via c
         - 12.34.56.78
      ```
 
-  **Example zowe yaml for scenario 1**  
+  **Example zowe yaml for scenario 1:**  
 
 ```
    certificate:
@@ -146,7 +146,7 @@ Each scenario described in this article provides the configuration details via c
     ```
     **Note:** PEM format certificate authorities can be imported and trusted.
 
-  **Example zowe yaml for scenario 2 (PKCS12)**
+  **Example zowe yaml for scenario 2 (PKCS12):**
 
    ```
    certificate:
@@ -217,7 +217,7 @@ this field is not defined, the `zwe init` command uses the value `zowe.externalD
     ```
     **Note**: Due to the limitation of the `RACDCERT` command, this field should contain exactly 2 entries with the domain name and IP address.
 
-  **Example zowe yaml for scenario 3**
+  **Example zowe yaml for scenario 3:**
   
    ```
    certificate:
@@ -268,12 +268,12 @@ this field is not defined, the `zwe init` command uses the value `zowe.externalD
           - ""
         ```
         **Note:** Due to the limitation of `RACDCERT` command, this field should contain a maximum of 2 entries.  
-
-  The following example uses an existing JCERACFKS certificate to for Zowe's z/OS components. For more information, see [this blog post](https://medium.com/zowe/master-zowe-certificates-use-an-existing-jceracfks-certificate-for-zowes-z-os-components-975ffa0d9f2f).
   
-  **Example zowe yaml for scenario 4**
+The following example uses an existing JCERACFKS certificate for Zowe's z/OS components. For more information about configuration in this scenario, see  [this blog post](https://medium.com/zowe/master-zowe-certificates-use-an-existing-jceracfks-certificate-for-zowes-z-os-components-975ffa0d9f2f).
 
-  This example is using an existing JCERACFKS certificate to for Zowe's z/OS components. Find out more details in [this blog](https://medium.com/zowe/master-zowe-certificates-use-an-existing-jceracfks-certificate-for-zowes-z-os-components-975ffa0d9f2f).
+  **Example zowe yaml for scenario 4:**
+
+  
 
 ```
  # >>>> Certificate setup scenario 4
@@ -289,12 +289,12 @@ this field is not defined, the `zwe init` command uses the value `zowe.externalD
      - "zOSMFCA"
 ```
 
-If you would like to use this example in your Zowe configuration YAML file, you just need to replace four fields with your own ones.
+If you would like to use this example in your Zowe configuration YAML file, replace the following four fields with your own values:
 
-1. Replace `ZoweKeyringZOSMF` with the your own key ring name.
-2. Replace 'IZUSVR' with the user name who is the owner of the existing certificate.
-3. Replace 'DefaultzOSMFCert.IZUDFLT' with the label of the existing certificate you're connecting to (which is owned by the user ID above).
-4. Replace `zOSMFCA` with the certificate authority that is used to sign the certificate used in step 3.
+* Replace `ZoweKeyringZOSMF` with the your own key ring name.
+* Replace `IZUSVR` with the user name who is the owner of the existing certificate.
+* Replace `DefaultzOSMFCert.IZUDFLT` with the label of the existing certificate you are connecting to (which is owned by the previously referenced user ID).
+* Replace `zOSMFCA` with the certificate authority that is used to sign the certificate. 
 
 ## Scenario 5: Use a z/OS keyring-based keystore and import a certificate stored in a data set
 
@@ -325,6 +325,16 @@ If you would like to use this example in your Zowe configuration YAML file, you 
         ```
         password: ""
         ```
-  **Example zowe yaml for scenario 5**  
+  **Example zowe yaml for scenario 5:**  
 
-**_ADD EXAMPLE_**
+```
+ # >>>> Certificate setup scenario 5
+ # z/OS Keyring and connect to existing certificate
+ certificate:
+   type: JCERACFKS
+   keyring:
+     name: ZoweKeyring
+     import:
+       dsName: PRODUCT.X.CERT.P12
+       password: password
+```
