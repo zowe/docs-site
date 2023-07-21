@@ -49,7 +49,7 @@ With the schema file, you can see that there are listed choices for certificate 
             "type": {
               "type": "string",
               "description": "Keystore type.",
-              "enum": ["PKCS12", "JCEKS", "JCECCAKS", "JCERACFKS", "JCECCARACFKS", "JCEHYBRIDRACFKS"],
+              "enum": ["PKCS12", "JCEKS", "JCECCAKS", "JCERACFKS", "JCECCARACFKS", "JCEHYBRIDRACFKS"]
             },
 ```
 
