@@ -292,9 +292,9 @@ this field is not defined, the `zwe init` command uses the value `zowe.externalD
 If you would like to use this example in your Zowe configuration YAML file, you just need to replace four fields with your own ones.
 
 1. Replace `ZoweKeyringZOSMF` with the your own key ring name.
-2. Replace `IZUSVR` with your user name.
-3. Replace `DefaultzOSMFCert.IZUDFLT` with your own label name.
-4. Replace `zOSMFCA` with your certificate authority name.
+2. Replace 'IZUSVR' with the user name who is the owner of the existing certificate.
+3. Replace 'DefaultzOSMFCert.IZUDFLT' with the label of the existing certificate you're connecting to (which is owned by the user ID above).
+4. Replace `zOSMFCA` with the certificate authority that is used to sign the certificate used in step 3.
 
 ## Scenario 5: Use a z/OS keyring-based keystore and import a certificate stored in a data set
 
