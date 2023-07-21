@@ -128,8 +128,9 @@ module.exports = {
                   label: "Configuring certificates",
                   items: [
                     "user-guide/configure-certificates",
-                    "user-guide/generate-certificates",
+                    "user-guide/certificate-configuration-scenarios",
                     "user-guide/import-certificates",
+                    "user-guide/generate-certificates",
                     "user-guide/use-certificates",
                     "user-guide/certificates-setup",
                   ],
