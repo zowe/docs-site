@@ -327,4 +327,14 @@ If you would like to use this example in your Zowe configuration YAML file, you 
         ```
   **Example zowe yaml for scenario 5**  
 
-**_ADD EXAMPLE_**
+```
+ # >>>> Certificate setup scenario 5
+ # z/OS Keyring and connect to existing certificate
+ certificate:
+   type: JCERACFKS
+   keyring:
+     name: ZoweKeyring
+     import:
+       dsName: PRODUCT.X.CERT.P12
+       password: password
+```
