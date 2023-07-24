@@ -1248,7 +1248,31 @@ The following error message codes may appear on logs or API responses. Use the f
 
   **Reason:**
 
-  The provided id is not valid under conformance criteria.
+  The provided id is not valid under the conformance criteria.
+
+  **Action:**
+
+  Verify the conformance criteria, provide valid service id.
+
+### ZWEAG718E
+
+  Cannot retrieve metadata: '%s'
+
+  **Reason:**
+
+  Metadata aren't accessible.
+
+  **Action:**
+
+  Verify that the metadata are accessible and not empty.
+
+  ### ZWEAG719I
+
+  The service id provided is invalid: '%s'
+
+  **Reason:**
+
+  The provided service does not satisfy the conformance criteria and therefore not valid.
 
   **Action:**
 
@@ -1601,6 +1625,18 @@ The following error message codes may appear on logs or API responses. Use the f
   **Action:**
 
   Contact the administrator to validate webfinger configuration in gateway service.
+
+### ZWEAG181W
+
+  apiml.security.auth.zosmf.serviceId = '%s' is either not registered or not online yet.
+
+  **Reason:**
+
+  An incorrect value of the apiml.security.auth.zosmf.serviceId parameter is set in the configuration or it is not registered.
+
+  **Action:**
+
+  Ensure that the value of apiml.security.auth.provider is set either to 'dummy' if you want to use dummy mode, or to 'zosmf' if you want to use the z/OSMF authentication provider.
 
 ## API Catalog messages
 
