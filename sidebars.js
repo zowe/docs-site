@@ -8,8 +8,18 @@ module.exports = {
       items: [
         "getting-started/overview", //folder_name/file_name
         "getting-started/zowe-architecture",
-        "getting-started/zowe-security-overview",
-        "getting-started/zowe-certificates-overview",
+        //"getting-started/zowe-security",
+        {
+          type: "category",
+          label: "Zowe security",
+          link: {type: "doc", id: "getting-started/zowe-security"},
+          items: [
+            "getting-started/zowe-certificates-overview",
+            "getting-started/zowe-security-authentication",
+            "getting-started/zowe-security-authorization",
+            "getting-started/zowe-security-zos",
+          ],
+        },
         "getting-started/zowe-high-availability"
       ],
     },
