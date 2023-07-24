@@ -447,7 +447,7 @@ The Zowe desktop is able to be displayed in a browser but fails to logon.
  
 **Solution:**
 
-Check that the Zowe certificate has been configured as a client certificate, and not just as a server certificate. More detail can be found in [Configuring PKCS12 certificates](../user-guide/configure-certificates.md/#pkcs12-certificates-in-a-keystore) and [Configuring JCERACFS certificates in a key ring](../user-guide/configure-certificates.md/#jceracfks-certificates-in-a-key-ring).
+Check that the Zowe certificate has been configured as a client certificate, and not just as a server certificate. For more informtion, see More detail can be found in [Configuring certificates overview](../user-guide/configure-certificates).
 
 ### Java z/OS components of Zowe unable to read certificates from keyring
 
@@ -525,7 +525,7 @@ at Object.getPemEncodedData (/software/zowev15/1.15.0/components/app-server/shar
 
 Zowe's local CA certificate has its default name `ZoweCert`. Zowe Desktop hardcodes this certificate in the configuration scripts.
 
-If you are using your own trusted CA certificate in the keyring, and the name is different from the default one, this error will occur. To resolve the issue, you must match the names in the [Zowe configuration](../user-guide/configure-certificates-keyring.md). 
+If you are using your own trusted CA certificate in the keyring, and the name is different from the default one, this error will occur. To resolve the issue, you must match the names in the [Zowe configuration](../user-guide/configure-certificates). 
 
 If you are using Zowe's local CA certificate and you still receive **ZWED0148E**, you may find the following message in the same log.
 
