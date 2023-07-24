@@ -68,14 +68,7 @@ Please, make sure you understand at minimum the following concepts and terms:
 
 The following diagram illustrates the TLS handshake steps:
 
-<!-- ![TLS handshake v 1.2](../images/certificates/ssl-handshake-10-steps.png) -->
 <img src="../images/certificates/ssl-handshake-10-steps.png" width="50%" height="50%" alt="TLS handshake v 1.2"/>
-
-<img src="../images/certificates/Full_TLS_1.2_Handshake.svg" width="50%" height="50%" alt="TLS handshake v 1.2"/>
-
-<img src="../images/certificates/TLC-Handshake_Diagram.png" width="50%" height="50%" alt="TLS handshake v 1.2"/>
-
-<img src="../images/certificates/tls-handshake-textual.webp" width="50%" height="50%" alt="TLS handshake v 1.2"/>
 
 Zowe doesn't compromise on security and strictly relies on the Transport Layer Security (TLS) to secure the  communication channels between its components,
 as well as between client application and Zowe server components.
