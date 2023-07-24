@@ -8,11 +8,10 @@ module.exports = {
       items: [
         "getting-started/overview", //folder_name/file_name
         "getting-started/zowe-architecture",
-        //"getting-started/zowe-security",
         {
           type: "category",
           label: "Zowe security",
-          link: {type: "doc", id: "getting-started/zowe-security"},
+          link: {type: "doc", id: "getting-started/zowe-security-overview"},
           items: [
             { type: "doc",
               label: "Digital Certificates",
