@@ -14,10 +14,24 @@ module.exports = {
           label: "Zowe security",
           link: {type: "doc", id: "getting-started/zowe-security"},
           items: [
-            "getting-started/zowe-certificates-overview",
-            "getting-started/zowe-security-authentication",
-            "getting-started/zowe-security-authorization",
-            "getting-started/zowe-security-zos",
+            { type: "doc",
+              label: "Digital Certificates",
+              id: "getting-started/zowe-certificates-overview",
+            },
+            { type: "doc",
+              label: "User authentication",
+              id: "getting-started/zowe-security-authentication",
+            },
+            {
+              type: "doc",
+              label: "Access authorization",
+              id: "getting-started/zowe-security-authorization",
+            },
+            {
+              type: "doc",
+              label: "z/OS Security",
+              id: "getting-started/zowe-security-zos"
+            }
           ],
         },
         "getting-started/zowe-high-availability"

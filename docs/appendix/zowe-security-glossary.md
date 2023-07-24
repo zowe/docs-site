@@ -3,9 +3,12 @@
 Zowe implements a number of modern cyber-security concepts. Before getting started with configuring certificates, it is useful to familiarize yourself with the basic terminology.
 Read the following definitions for explanation of the security terms related to the core security technologies applied by Zowe:
 
+- [z/OS security](#zos-security)
 - [Certificate concepts](#certificate-concepts)
 - [User Authentication](#user-authentication)
 - [Access authorization](#access-authorization)
+
+## z/OS security
 
 
 ## Certificate concepts
