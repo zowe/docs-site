@@ -2,12 +2,12 @@
 
 One option for using certificates in Zowe is to import and configure existing certificates. Use the procedure that applies to the type of certificate you wish to import.
 
-* [Import a file-based PKCS12 certificate](#import-an-existing-pkcs12-certificate)
-* [Import a JCERACFKS certificate](#import-an-existing-jceracfks-certificate)
+* [Importing a file-based PKCS12 certificate](#importing-an-existing-pkcs12-certificate)
+* [Importing a JCERACFKS certificate](#importing-an-existing-jceracfks-certificate)
 
-Additionally, you can [import a certificate stored in an MVS data set into a Zowe key ring](#import-a-certificate-stored-in-an-mvs-data-set-into-a-zowe-key-ring).
+Additionally, you can [import a certificate stored in an MVS data set into a Zowe key ring](#importing-a-certificate-stored-in-an-mvs-data-set-into-a-zowe-key-ring).
 
-## Import an existing PKCS12 certificate
+## Importing an existing PKCS12 certificate
 
 To import a PKCS12 certificate, it is first necessary to import a certificate authority (CA). There are two options for importing a CA:
 
@@ -131,7 +131,7 @@ Follow these steps to import `local_ca.cer` from the path `.../zowe/keystore/loc
 ```
 After successfully importing your local CA certificate on Linux, you can now [Import an existing PKCS12 certificate](#import-an-existing-pkcs12-certificate)
 
-## Import an existing JCERACFKS certificate
+## Importing an existing JCERACFKS certificate
 
 To import a JCERACFKS certificate, use the example yaml according to [Scenario 4: Use a z/OS keyring-based keystore and connect to an existing certificate](#certificate-configuration-scenarios.md/#scenario-4-use-a-zos-keyring-and-connect-to-an-existing-certificate) in the article Certificate configuration scenarios.
 
@@ -163,7 +163,7 @@ Due to the limitation of the RACDCERT command, the `importCertificateAuthorities
 
 You can now use your imported JCERACFKS certificate. See [next steps](#next-steps).
 
-## Import a certificate stored in an MVS data set into a Zowe key ring
+## Importing a certificate stored in an MVS data set into a Zowe key ring
 
 To import a certificate that is stored in a data set into a key ring, configure the zowe.yaml according to the example yaml in [Scenario 5: Use a z/OS keyring-based keystore and import a certificate stored in a data set](#certificate-configuration-scenarios/#scenario-5-use-a-zos-keyring-and-import-a-certificate-stored-in-a-data-set)
 
