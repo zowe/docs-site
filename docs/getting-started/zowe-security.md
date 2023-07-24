@@ -40,7 +40,7 @@ Read the [Zowe certificate configuration overview](../user-guide/configure-certi
 
 ## User Authentication
 
-[Authentication]("appendix/zowe-security-glossary/user-authentication" "The process or action of verifying the identity of a user or process.")
+[Authentication](../appendix/zowe-security-glossary#user-authentication "The process or action of verifying the identity of a user or process.")
 
 
 ## Access Authorization
