@@ -38,7 +38,10 @@ Read more about digital certificates mechanics in the [Zowe certificate usage](.
 
 Read the [Zowe certificate configuration overview](../user-guide/configure-certificates.md) article in the Zowe User Guide documentation to understand the various options for Zowe certificate configuration.
 
-## User [Authentication](../appendix/zowe-security-glossary#user-authentication "the process or action of verifying the identity of a user or process.")
+## User Authentication
+
+[Authentication]("appendix/zowe-security-glossary/user-authentication" "The process or action of verifying the identity of a user or process.")
+
 
 ## Access Authorization
 
