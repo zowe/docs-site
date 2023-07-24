@@ -38,12 +38,7 @@ Read more about digital certificates mechanics in the [Zowe certificate usage](.
 
 Read the [Zowe certificate configuration overview](../user-guide/configure-certificates.md) article in the Zowe User Guide documentation to understand the various options for Zowe certificate configuration.
 
-## User Authentication
-
-<tooltip content="Lorem ipsum dolor sit amet" placement="top">
-  <a class="btn btn-secondary">PKCE12</a>
-</tooltip>
-
+## User [Authentication](../appendix/zowe-security-glossary#user-authentication "the process or action of verifying the identity of a user or process.")
 
 ## Access Authorization
 
