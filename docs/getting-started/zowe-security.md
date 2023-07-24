@@ -1,4 +1,4 @@
-# Zowe Security Overview
+# Zowe Security
 Before installation and use of Zowe server-side components it is practical to first learn about core security features built into the Zowe architecture.
 
 This document provides 
@@ -39,6 +39,10 @@ Read more about digital certificates mechanics in the [Zowe certificate usage](.
 Read the [Zowe certificate configuration overview](../user-guide/configure-certificates.md) article in the Zowe User Guide documentation to understand the various options for Zowe certificate configuration.
 
 ## User Authentication
+
+<tooltip content="Lorem ipsum dolor sit amet" placement="top">
+  <a class="btn btn-secondary">PKCE12</a>
+</tooltip>
 
 The API Mediation Layer provides multiple methods which clients can use to authenticate.
 
