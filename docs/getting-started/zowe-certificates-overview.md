@@ -1,4 +1,4 @@
-#Zowe usage of Digital Certificates
+# Zowe usage of Digital Certificates
 
 Read the following topics to learn more detail about how Zowe leverages modern security concepts and technologies:
 
