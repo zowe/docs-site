@@ -1,4 +1,10 @@
 # Zowe Security
+Zowe implements comprehensive measures to secure mainframe services and data resources in transition and in rest:
+
+- Digital certificates are used by Zowe to facilitate secure electronic communication and data exchange between people, systems, and devices online.
+- User identity is authenticated through modern authentication methods such as Multi-Factor Authentication (MFA), JWT, or Personal Access Token (PAT).
+- User access is authorized by SAF (the installed mainframe Extended Security Manager (ESM)).
+
 Before installation and use of Zowe server-side components it is practical to first learn about core security features built into the Zowe architecture.
 
 This document provides 
@@ -6,23 +12,13 @@ This document provides
   - Links to Zowe practical guides on How-to fulfil/achieve specific tasks/goals.    
 
 **Note** If you are familiar with security technologies and concepts such as digital certificates, authentication, authorization, and z/OS security, 
-you may prefer to skip the introductory sections, and use the following [links section](#links) 
-to jump directly to the technical guidance provided on how to [Setup Zowe](#), [Use Zowe](#) and [Extend Zowe](#) documentation:
-
-  - [Setup certificates](#)
-  - [Authenticate users](#)
-  - [Authorize users](#)
+you may prefer to skip the introductory sections, and use the following [links section](#additional-resources) 
+to jump directly to the security related technical guidance provided on how to Set up Zowe, Use Zowe or Extend Zowe:
 
 <!-- TODO#PZA: provide general security architecture overview diagram -->
 
-Zowe implements comprehensive measures to secure mainframe services and data resources in transition and in rest:
-
-  - Digital certificates are used by Zowe to facilitate secure electronic communication and data exchange between people, systems, and devices online.
-  - User identity is authenticated through modern authentication methods such as Multi-Factor Authentication (MFA), JWT, or Personal Access Token (PAT).
-  - User access is authorized by SAF (the installed mainframe Extended Security Manager (ESM)).
-
-Read the following topics to learn more detail about how Zowe leverages modern security concepts and technologies:
-  - [Digital certificates usage](#digital-certificates-usage)
+Read the following sections to learn details about how Zowe leverages modern security concepts and technologies:
+  - [Digital certificates](#digital-certificates)
   - [User Authentication](#user-authentication)
   - [Access Authorization](#access-authorization)
   - [z/OS security](#zos-security)
