@@ -52,7 +52,7 @@ For detailed information, see the [SAF resource checking documentation](../user-
 
 # Additional resources
 Visit the following links to learn About the: 
-- [Varios certificates configuration scenarios](../user-guide/certificate-configuration-scenarios).
+- [Various certificates configuration scenarios](../user-guide/certificate-configuration-scenarios).
 - [Generate certificates for Zowe servers](../user-guide/generate-certificates)
 - [Import certificates](../user-guide/import-certificates)
 - [Configure Zowe to use certificates](../user-guide/configure-certificates)
