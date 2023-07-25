@@ -3,14 +3,10 @@
 Zowe implements a number of modern cyber-security concepts. Before getting started with configuring certificates, it is useful to familiarize yourself with the basic terminology.
 Read the following definitions for explanation of the security terms related to the core security technologies applied by Zowe:
 
-- [z/OS security](#zos-security)
 - [Certificate concepts](#certificate-concepts)
-- [User Authentication](#user-authentication)
-- [Access authorization](#access-authorization)
-
-## z/OS security
-
-
+- [Certificate verification](#certificate-verification)
+- [Zowe certificate requirements](#zowe-certificate-requirements)
+- [Certificate setup types](#certificate-setup-types)
 ## Certificate concepts
 
 * [Keystore](#keystore)
@@ -55,6 +51,10 @@ In the Zowe configuration YAML, the property `zowe.verifyCertificates` controls 
 
 You can set this property either before or after certificate setup, but **it is recommended to set `zowe.verifyCertificates` before certificate setup** because it affects the automation that Zowe can perform during certificate setup.
 
+- [DISABLED verification](#disabled-verification)
+- [NON-STRICT verification](#non-strict-verification)
+- [STRICT verification](#strict-verification)
+
 ### DISABLED verification
 If you set `zowe.verifyCertificates` to `DISABLED`, certificate verification is not performed. This is not recommended for security reasons, but may be used for proof of concept or when certificates within your environment are self-signed.
 
@@ -70,6 +70,9 @@ If you set `zowe.verifyCertificates` to `NONSTRICT`, certificate verification wi
 ## Zowe certificate requirements
 If you do not yet have certificates, Zowe can create self-signed certificates for you. This is not recommended for production. Note that the certificates must be valid for use with Zowe.
 
+- [Extended key usage](#extended-key-usage)
+- [Hostname validity](#hostname-validity)
+- [z/OSMF access](#zosmf-access)
 ### Extended key usage
 Zowe server certificates must either not have the `Extended Key Usage` (EKU) attribute, or have both the `TLS Web Server Authentication (1.3.6.1.5.5.7.3.1)` and `TLS Web Client Authentication (1.3.6.1.5.5.7.3.2)` values present within.
 
@@ -83,9 +86,11 @@ The host communicating with a certificate should have its hostname match one of 
 The z/OSMF certificate is verified according to Zowe [Certificate verification setting](#certificate-verification), as is the case with any certificate seen by Zowe. However, Zowe will also set up a trust relationship with z/OSMF within the Zowe truststore during certificate setup automation if the certificate setting is set to any value other than [DISABLED](#disabled-verification).
 
 
-## Certificate setup type
+## Certificate setup types
 Whether importing or letting Zowe generate certificates, the setup for Zowe certificate automation and the configuration to use an existing keystore and truststore depends upon the content format: file-based (`PKCS12`) or z/OS key ring-based.
 
+- [File-based (PKCS12) certificate setup](#file-based-pkcs12-certificate-setup)
+- [z/OS key ring-based certificate setup](#zos-key-ring-based-certificate-setup)
 ### File-based (PKCS12) certificate setup
 
 Zowe is able to use PKCS12 certificates that are stored in USS. Zowe uses a `keystore` directory to contain its certificates primarily in PKCS12 (`.p12`, `.pfx`) file format, but also in PEM (`.pem`) format. The truststore is in the `truststore` directory that holds the public keys and CA chain of servers which Zowe communicates with (for example z/OSMF).
@@ -108,8 +113,3 @@ A number of key ring scenarios are supported:
 - Creation of a local certificate authority (CA) which is used to sign a locally generated certificate. Both the CA and the certificate are placed in the `ZoweKeyring`.
 - Import of an existing certificate already held in z/OS to the `ZoweKeyring` for use by Zowe.
 - Creation of a locally generated certificate and signed by an existing certificate authority. The certificate is placed in the key ring.
-
-
-## User Authentication
-
-## Access Authorization
