@@ -13,17 +13,14 @@ This document provides an overview of the security technologies and features imp
 you may prefer to skip the introductory sections, and see the [Additional resources section](#additional-resources) at the end of this article
 to jump directly to the security related technical guidance provided on how to Set up Zowe, Use Zowe or Extend Zowe.
 
-<!-- TODO#PZA: provide general security architecture overview diagram -->
-
-Review the following sections to learn about how Zowe leverages modern security concepts and technologies:
+Read the following sections to learn about how Zowe leverages modern security concepts and technologies:
   - [Digital certificates](#digital-certificates)
   - [User Authentication](#user-authentication)
   - [Access Authorization](#access-authorization)
-  - [z/OS security](#zos-security)
-
+  
 ## Digital certificates
 A Digital Certificate is an electronic file that is tied to a cryptographic (public and private) key pair and authenticates the identity of a website, individual, organization, user, device or server.
-The de-facto standard is the x.509 family type of certificates, which are the foundation behind [Public Key Infrastructure (PKI)](#public-key-infrastructure) security.
+The nowadays de-facto standard is the x.509 family type of certificates, which are the foundation behind Public Key Infrastructure (PKI) security.
 An X.509 certificate binds an identity to a public key using a digital signature.
 A certificate contains an identity (a hostname, or an organization, or an individual) and a public key (RSA, DSA, ECDSA, ed25519, etc.).
 
@@ -69,9 +66,6 @@ Access to a SAF resource is checked with the installed z/OS External Security Ma
 
 **Next steps:**
 For detailed information, see the [SAF resource checking documentation](../user-guide/api-mediation/api-gateway-configuration#saf-resource-checking).
-
-## z/OS security
-<!-- TODO: PZA. Describe briefly z/OS security concepts (other that Authorization) -->
 
 ## Additional resources
 For more information about getting started with certificates including dertermining your certificate configuration use case, importing certificates, generating certificates and using certificates, see the following resources:  

@@ -20,16 +20,6 @@ module.exports = {
             { type: "doc",
               label: "User authentication",
               id: "getting-started/zowe-security-authentication",
-            },
-            {
-              type: "doc",
-              label: "Access authorization",
-              id: "getting-started/zowe-security-authorization",
-            },
-            {
-              type: "doc",
-              label: "z/OS Security",
-              id: "getting-started/zowe-security-zos"
             }
           ],
         },
