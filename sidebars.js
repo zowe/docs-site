@@ -843,7 +843,8 @@ module.exports = {
       ]
     },
     "appendix/zowe-yaml-configuration",
-    "appendix/server-component-manifest",
+    "appendix/server-component-manifest",    
+    "appendix/zowe-glossary", 
     "appendix/bill-of-materials",
     {
       type: "link",
