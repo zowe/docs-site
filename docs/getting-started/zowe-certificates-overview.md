@@ -24,11 +24,11 @@ This is, however, not recommended for production environments.
 ## Digital certificates usage
 
 Digital certificates according to x.509 standard specification are the cornerstone for securing communication channels between clients and servers.
-x.509 certificates can also be used to provide identification of clients and service users.
 
-Digital certificates perform two primary functions:
-- Verification of the identity of a sender/receiver of an electronic message
+X.509 Digital certificates are primarly used to implement the following functions:
+- Verification of the identity of a sender/receiver of an electronic message during TLS handshake.
 - Encryption/Decryption of the messages between the sender and the receiver.
+- Identification of client-service users.
 
 Zowe uses digital certificates as a foundational element of both, communication and identity security.
 Additionally, Zowe provides client identity validation functionality based on the ownership of the provided x.509 client certificate and the mainframe security authentication mechanism.
@@ -41,7 +41,7 @@ Read the [Zowe certificate configuration overview](../user-guide/configure-certi
 [Public Key Infrastructure (PKI)](https://en.wikipedia.org/wiki/Public_key_infrastructure) is a key aspect of internet security. PKI is both the technology and processes that make up the framework for encryption to protect and authenticate digital communications.
 PKI includes software, hardware, policies, and procedures that are used to create, distribute, manage, store, and revoke digital certificates and manage public-key encryption.
 
-Visit the following external link, to learn [How Does PKI Work](https://www.keyfactor.com/education-center/what-is-pki/#section2).
+Visit the following external link, to learn [How Does PKI Works](https://www.keyfactor.com/education-center/what-is-pki/#section2).
 
 Visit the following link to learn more about PKI in the context of the [z/OS Cryptographic Services](https://www.ibm.com/docs/en/zos/2.3.0?topic=planning-introducing-pki-services).
 
