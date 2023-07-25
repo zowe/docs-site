@@ -1260,7 +1260,7 @@ The following error message codes may appear on logs or API responses. Use the f
 
   **Reason:**
 
-  Metadata aren't accessible.
+  Metadata are not accessible.
 
   **Action:**
 
@@ -1272,7 +1272,7 @@ The following error message codes may appear on logs or API responses. Use the f
 
   **Reason:**
 
-  The provided service does not satisfy the conformance criteria and therefore not valid.
+  The provided service does not satisfy the conformance criteria and is therefore not valid.
 
   **Action:**
 
