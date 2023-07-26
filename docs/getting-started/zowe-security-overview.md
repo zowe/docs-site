@@ -46,18 +46,16 @@ Zowe API ML implements a Singls-Sign-On feature which allows users to authentica
 
 API ML uses multiple authentication methods - from Basic Auth (username-password), to external Multi-Factor Authentication providers, and modern authentication protocols, such as OIDC/OAuth2.    
 
-**Tip:** We recommend you review the core [User Authentication](../appendix/zowe-security-glossary#user-authentication "The process or action of verifying the identity of a user or process.") terminology provided in the [Zowe Security Glossary](../appendix/zowe-security-glossary).
-
 **Next steps:**
 - For more details on the authentication methods used by Zowe, see the dedicated [API ML User Authentication](./zowe-security-authentication) article.    
 
 ## Access Authorization
-[Authorization](../appendix/zowe-security-glossary#access-authorization "Authorization refers to the mechanism of granting specific permissions to users for accessing particular resources or functions.") is the mechanism by which a security system grants or rejects access to protected resources.
+[Authorization](https://en.wikipedia.org/wiki/Authorization "Authorization refers to the mechanism of granting specific permissions to users for accessing particular resources or functions.") is the mechanism by which a security system grants or rejects access to protected resources.
 
 Zowe fully relies on the SAF/ESM for control on the user access to mainframe resources. Authorization is processed by SAF when a mainframe service attempts to access these services under the identity of the user authenticated by Zowe.
 
 **Tip:**
-We recommend you review the core [Authorization](../appendix/zowe-security-glossary#access-authorization "Is any mechanism by which a system grants or revokes the right to access some data or perform some action.") concepts by reading the 
+We recommend you review the core [Authorization](https://en.wikipedia.org/wiki/Authorization "Is any mechanism by which a system grants or revokes the right to access some data or perform some action.") concepts by reading the 
 related topics in the [Zowe Security Glossary](../appendix/zowe-security-glossary).
 
 ### SAF resource check
