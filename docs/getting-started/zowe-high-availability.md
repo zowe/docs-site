@@ -9,14 +9,13 @@ Sysplex is required to make sure multiple Zowe instances can work together. For 
 
 To enable high availability when Zowe runs in Sysplex, it is necessary to meet the following requirements:
 
-- The Zowe instance with should be installed on every LPAR.
-- The API services must be registered to each Zowe instance.
-- A shared file system should be created between LPARs in Sysplex. See [How to share file systems in a Sysplex](https://www.ibm.com/docs/en/zos/2.4.0?topic=planning-sharing-file-systems-in-sysplex).
-- z/OSMF High Availability mode should be configured. See [Configuring z/OSMF high availability in Sysplex](../user-guide/systemrequirements-zosmf-ha).
-
+- The Zowe instance is installed on every LPAR.
+- The API services are registered to each Zowe instance.
+- A shared file system is created between LPARs in Sysplex. See [How to share file systems in a Sysplex](https://www.ibm.com/docs/en/zos/2.4.0?topic=planning-sharing-file-systems-in-sysplex).
+- z/OSMF High Availability mode is configured. See [Configuring z/OSMF high availability in Sysplex](../user-guide/systemrequirements-zosmf-ha).
 - The instance on every LPAR is started.
 
-**Configuration**
+**Configuration with high availability**
 
 The configuration for the specific instance is composed of the defaults in the main section and the overrides in the `haInstances` section of the `zowe.yaml` configuration file.
 
@@ -29,13 +28,13 @@ Zowe uses the Caching Service to centralize the state data persistent in high av
 If you are runnning the Caching Service on z/OS, there are three storage methods with their own characteristics:
 
 - [VSAM](../user-guide/configure-caching-service-ha)
-    - Familiar to zOS engineers.
-    - Slow.
+    - Familiar to z/OS engineers
+    - Slow
 - [Redis](../extend/extend-apiml/api-mediation-redis#redis-configuration)
-    - Needs to run in Distributed world separately.
-    - Good for Kubernetes deployment.
+    - Needs to run in Distributed world separately
+    - Good for Kubernetes deployment
 - [Infinispan (*recommended*)](../extend/extend-apiml/api-mediation-infinispan#infinispan-configuration)
-    - Part of the Caching service.
-    - Does not need separate processes.
-    - Highly performant.
+    - Part of the Caching service
+    - Does not need separate processes
+    - Highly performant
 
