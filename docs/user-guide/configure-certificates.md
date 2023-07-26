@@ -45,7 +45,7 @@ Servers need a certificate to identify themselves to clients. Every time that yo
 Clients do not always need certificates when they are communicating with servers, but sometimes client certificates can be used wherein the server verifies authenticity of the client similar to how the client verifies authenticity for the server. When client certificates are unique to a client, the certificate can be used as a form of authentication to provide convenient yet secure login.
 
 ### Self-signed certificates
-A self-signed certificate is one that is not signed by a CA at all – not private or public. In this case, the certificate is signed with its own private key, instead of requesting verification from a public or a private CA. It means that there is no chain of trust to guarantee that the host with this certificate is the one you wanted to communicate with. Note that these certificates are not secure against other hosts masquerading as the one you want to access. As such, it is highly recommended that certificates be verified against the truststore for production environments.
+A self-signed certificate is one that is not signed by a CA at all – neither private nor public. In this case, the certificate is signed with its own private key, instead of requesting verification from a public or a private CA. It means that there is no chain of trust to guarantee that the host with this certificate is the one you wanted to communicate with. Note that these certificates are not secure against other hosts masquerading as the one you want to access. As such, it is highly recommended that certificates be verified against the truststore for production environments.
 
 ## Certificate verification
 When you configure Zowe, it is necessary to decide whether Zowe verifies certificates against its truststore.
@@ -66,7 +66,7 @@ If you set `zowe.verifyCertificates` to `NONSTRICT`, certificate verification is
 
 
 ## Zowe certificate requirements
-If you do not yet have certificates, Zowe can create self-signed certificates for you. It is not recommended for production, so you should bring your own certificates. Note that the certificates must be valid for use with Zowe.
+If you do not yet have certificates, Zowe can create self-signed certificates for you. The use of self-signed certificates for production is not recommended, so you should bring your own certificates. Note that the certificates must be valid for use with Zowe.
 
 ### Extended key usage
 Zowe server certificates must either not have the `Extended Key Usage` (EKU) attribute, or have both the `TLS Web Server Authentication (1.3.6.1.5.5.7.3.1)` and `TLS Web Client Authentication (1.3.6.1.5.5.7.3.2)` values present within.
