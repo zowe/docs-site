@@ -25,7 +25,7 @@ In this section, `ha-instance` represents any Zowe high availability instance ID
 
 Zowe uses the Caching Service to centralize the state data persistent in high availability (HA) mode. This service can be used to share information between services.
 
-If you are runnning the Caching Service on z/OS, there are three storage methods with their own characteristics:
+If you are running the Caching Service on z/OS, there are three storage methods with their own characteristics:
 
 - [VSAM](../user-guide/configure-caching-service-ha)
     - Familiar to z/OS engineers
