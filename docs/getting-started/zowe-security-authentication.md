@@ -39,12 +39,12 @@ For more information about configuring the token, see the [Configure signed SAF 
 
 ## Multi-factor authentication (MFA)
 
-Multi-factor authentication is provided by third-party products which Zowe is compatible with. The following are known to work:
+Multi-factor authentication is provided by third-party products which Zowe is compatible with. The following are known to work with Zowe:
 - [CA Advanced Authentication Mainframe](https://techdocs.broadcom.com/us/en/ca-mainframe-software/security/ca-advanced-authentication-mainframe/2-0.html)
 - [IBM Z Multi-Factor Authentication](https://www.ibm.com/products/ibm-multifactor-authentication-for-zos).
 
-Additionally, Zowe API ML can be configured to accept OIDC/OAuth2 user authentication tokens. In that case the MFA support is built into the OIDC provider system.
-It doesn't rely on the mainframe MFA technology, but is equally secure.
+Additionally, Zowe API ML can be configured to accept OIDC/OAuth2 user authentication tokens. In this particular case, MFA support is built into the OIDC provider system.
+It does not rely on the mainframe MFA technology, but is equally secure.
 
 For details about multi-factor authentication, see [the MFA documentation here](../user-guide/mvd-configuration#multi-factor-authentication-configuration).
 
