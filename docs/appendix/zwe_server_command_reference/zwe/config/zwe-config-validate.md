@@ -17,6 +17,7 @@ This command can optionally validate enabled components or all components, but o
 ```
 zwe config validate -c /path/to/zowe.yaml
 zwe config validate -c FILE(/customizations/zowe.yaml):FILE(/defaults/zowe.yaml) --all
+zwe config validate -c 'FILE(/path/to/zowe.yaml):PARMLIB(ZOWE.PARMLIB(YAML))'
 ```
 
 ## Parameters
