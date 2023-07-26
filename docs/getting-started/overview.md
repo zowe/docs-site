@@ -6,7 +6,12 @@ meta:
 
 # Zowe overview
 
-Zowe&trade; is an open source software framework that allows mainframe development and operation teams to securely manage, control, script, and develop on the mainframe. It was created to host technologies that benefit the IBM Z platform for all members of the Z community, including Integrated Software Vendors (ISVs), System Integrators, and z/OS consumers. Like Mac or Windows, Zowe comes with a set of APIs and OS capabilities that applications build on and also includes some applications out of the box. Zowe offers modern interfaces to interact with z/OS and allows you to work with z/OS in a way that is similar to what you experience on cloud platforms today. You can use these interfaces as delivered or through plug-ins and extensions that are created by clients or third-party vendors. Zowe is a project within the Open Mainframe Project.
+Zowe&trade; is an open source software which provides both, a framework and a set of tools that allow mainframe development and operation teams to securely manage, develop, and automate resources and services on z/OS family mainframes.
+Zowe offers modern interfaces to interact with z/OS and allows users to interact with the mainframe system in a way that is similar to what they experience on cloud platforms today.
+Users can work with these interfaces as delivered or through plug-ins and extensions created by customers or third-party vendors.
+All members of the IBM Z platform community, including Independent Software Vendors (ISVs), System Integrators, and z/OS consumers, benefit from the modern and open approach to the mainframe computing delivered by Zowe.
+
+Zowe is a member of the Open Mainframe Project governed by Linux Foundation&trade;.
 
 ## Zowe demo video
 
@@ -20,57 +25,38 @@ Watch this [video](https://www.youtube.com/embed/NX20ZMRoTtk) to see a quick dem
 
 Zowe consists of the following components:
 
-- [Zowe Application Framework](#zowe-application-framework)
+- [Zowe Launcher](#zowe-launcher)
 - [API Mediation Layer](#api-mediation-layer)
+- [Zowe Application Framework](#zowe-application-framework)
 - [Zowe CLI](#zowe-cli)
 - [Zowe Explorer](#zowe-explorer)
 - [Zowe Client Software Development Kits SDKs](#zowe-client-software-development-kits-sdks)
-- [Zowe Launcher](#zowe-launcher)
 - [ZEBRA (Zowe Embedded Browser for RMF/SMF and APIs) - Incubator](#zebra-zowe-embedded-browser-for-rmfsmf-and-apis---incubator)
 
-### Zowe Application Framework
+### Zowe Launcher
 
-A web user interface (UI) that provides a virtual desktop containing a number of apps allowing access to z/OS function.  Base Zowe includes apps for traditional access such as a 3270 terminal and a VT Terminal, as well as an editor and explorers for working with JES, MVS Data Sets and Unix System Services.
+Provides an advanced launcher for Zowe z/OS server components in a high availability configuration. It performs the following operations:
 
-<details>
-<summary> Learn more </summary>
-
-The Zowe Application Framework modernizes and simplifies working on the mainframe. With the Zowe Application Framework, you can create applications to suit your specific needs. The Zowe Application Framework contains a web UI that has the following features:
-
-- The web UI works with the underlying REST APIs for data, jobs, and subsystem, but presents the information in a full screen mode as compared to the command line interface.
-- The web UI makes use of leading-edge web presentation technology and is also extensible through web UI plug-ins to capture and present a wide variety of information.
-- The web UI facilitates common z/OS developer or system programmer tasks by providing an editor for common text-based files like REXX or JCL along with general purpose data set actions for both Unix System Services (USS) and Partitioned Data Sets (PDS) plus Job Entry System (JES) logs.
-
-The Zowe Application Framework consists of the following components:
-
-- **Zowe Desktop**
-
-    The desktop, accessed through a browser.  The desktop contains a number of applications, including a TN3270 emulator for traditional Telnet or TLS terminal access to z/OS, a VT Terminal for SSH commands, as well as rich web GUI applications including a JES Explorer for working with jobs and spool output, a File Editor for working with USS directories and files and MVS data sets and members.   The Zowe desktop is extensible and allows vendors to provide their own applications to run within the desktop. See [Extending the Zowe Desktop](../extend/extend-desktop/mvd-extendingzlux.md).  The following screen capture of a Zowe desktop shows some of its composition as well as the TN3270 app, the JES Explorer, and the File Editor open and in use.
-
-    ![Zowe Desktop Screen Capture](./diagrams/zowe-desktop-sample.png)
-
-- **Zowe Application Server**
-
-    The Zowe Application Server runs the Zowe Application Framework. It consists of the Node.js server plus the Express.js as a webservices framework, and the proxy applications that communicate with the z/OS services and components.
-
-- **ZSS Server**
-
-    The ZSS Server provides secure REST services to support the Zowe Application Server.  For services that need to run as APF authorized code, Zowe uses an angel process that the ZSS Server calls using cross memory communication.  During installation and configuration of Zowe, you will see the steps needed to configure and launch the cross memory server.
-
-- **Application plug-ins**
-
-    Several application-type plug-ins are provided. For more information, see [Using the Zowe Application Framework application plug-ins](../user-guide/mvd-using.md#zowe-desktop-application-plug-ins).
-
-</details>
+- Start all Zowe server components using the 'START' (or 'S') operator command.
+- Stopping the Zowe server components using the `STOP` (or `P`) operator command
+- Stopping and starting specific server components without restarting the entire Zowe instance using `MODIFY` (or `F`) operator command
 
 ### API Mediation Layer
 
-Provides a gateway that acts as a reverse proxy for z/OS services, together with a catalog of REST APIs and a dynamic discovery capability. Base Zowe provides core services for working with MVS Data Sets, JES, as well as working with z/OSMF REST APIs.  The API Mediation Layer also provides a framework for [Single Sign On (SSO)](../extend/extend-apiml/api-mediation-sso.md). 
+The API Mediation Layer provides a single point of access for mainframe services APIs. It also provides a [Single Sign On (SSO)](../extend/extend-apiml/api-mediation-sso.md) capability for mainframe users.
 
 <details>
 <summary> Learn more </summary>
+The API Mediation Layer facilitates secure communication between loosely coupled clients and services through variety of API types, such as REST, GraphQL or Web-Socket. 
+It consists of three core components: the API Gateway, the Discovery Service, and the API Catalog:
 
-The API Mediation Layer provides a single point of access for mainframe service REST APIs. The layer offers enterprise, cloud-like features such as high-availability, scalability, dynamic API discovery, consistent security, a single sign-on experience, and documentation. The API Mediation Layer facilitates secure communication across loosely coupled microservices through the API Gateway. The API Mediation Layer consists of three components: the Gateway, the Discovery Service, and the Catalog. The Gateway provides secure communication across loosely coupled API services. The Discovery Service enables you to determine the location and status of service instances running inside the API ML ecosystem. The Catalog provides an easy-to-use interface to view all discovered services, their associated APIs, and Swagger documentation in a user-friendly manner.
+ The API Gateway provides secure routing of API requests from clients to registered API services.
+ The Discovery Service allows dynamic registration of microservices and enables their discoverability and status updates.
+ The services Catalog provides a user-friendly interface to view and try out all registered services, read their associated APIs documentation in OpenAPI/Swagger format.
+
+Core Zowe also provides out of the box services for working with MVS Data Sets, JES, as well as working with z/OSMF REST APIs.
+
+The API Mediation Layer offers enterprise, cloud-like features such as high-availability, scalability, dynamic API discovery, consistent security, a single sign-on experience, and API documentation.
 
 #### Key features
 * Consistent Access: API routing and standardization of API service URLs through the Gateway component provides users with a consistent way to access mainframe APIs at a predefined address.
@@ -129,6 +115,41 @@ Essential to the API Mediation Layer ecosystem is the API services that expose t
 </details>
 
 To learn more about the architecture of Zowe, see [Zowe architecture](zowe-architecture.md).
+
+### Zowe Application Framework
+
+A web user interface (UI) that provides a virtual desktop containing a number of apps allowing access to z/OS function.  Base Zowe includes apps for traditional access such as a 3270 terminal and a VT Terminal, as well as an editor and explorers for working with JES, MVS Data Sets and Unix System Services.
+
+<details>
+<summary> Learn more </summary>
+
+The Zowe Application Framework modernizes and simplifies working on the mainframe. With the Zowe Application Framework, you can create applications to suit your specific needs. The Zowe Application Framework contains a web UI that has the following features:
+
+- The web UI works with the underlying REST APIs for data, jobs, and subsystem, but presents the information in a full screen mode as compared to the command line interface.
+- The web UI makes use of leading-edge web presentation technology and is also extensible through web UI plug-ins to capture and present a wide variety of information.
+- The web UI facilitates common z/OS developer or system programmer tasks by providing an editor for common text-based files like REXX or JCL along with general purpose data set actions for both Unix System Services (USS) and Partitioned Data Sets (PDS) plus Job Entry System (JES) logs.
+
+The Zowe Application Framework consists of the following components:
+
+- **Zowe Desktop**
+
+    The desktop, accessed through a browser.  The desktop contains a number of applications, including a TN3270 emulator for traditional Telnet or TLS terminal access to z/OS, a VT Terminal for SSH commands, as well as rich web GUI applications including a JES Explorer for working with jobs and spool output, a File Editor for working with USS directories and files and MVS data sets and members.   The Zowe desktop is extensible and allows vendors to provide their own applications to run within the desktop. See [Extending the Zowe Desktop](../extend/extend-desktop/mvd-extendingzlux.md).  The following screen capture of a Zowe desktop shows some of its composition as well as the TN3270 app, the JES Explorer, and the File Editor open and in use.
+
+    ![Zowe Desktop Screen Capture](./diagrams/zowe-desktop-sample.png)
+
+- **Zowe Application Server**
+
+    The Zowe Application Server runs the Zowe Application Framework. It consists of the Node.js server plus the Express.js as a webservices framework, and the proxy applications that communicate with the z/OS services and components.
+
+- **ZSS Server**
+
+    The ZSS Server provides secure REST services to support the Zowe Application Server.  For services that need to run as APF authorized code, Zowe uses an angel process that the ZSS Server calls using cross memory communication.  During installation and configuration of Zowe, you will see the steps needed to configure and launch the cross memory server.
+
+- **Application plug-ins**
+
+    Several application-type plug-ins are provided. For more information, see [Using the Zowe Application Framework application plug-ins](../user-guide/mvd-using.md#zowe-desktop-application-plug-ins).
+
+</details>
 
 ### Zowe CLI
 Zowe CLI is a command-line interface that lets you interact with the mainframe in a familiar, off-platform format. Zowe CLI helps to increase overall productivity, reduce the learning curve for developing mainframe applications, and exploit the ease-of-use of off-platform tools. Zowe CLI lets you use common tools such as Integrated Development Environments (IDEs), shell commands, bash scripts, and build tools for mainframe development. Though its ecosystem of plug-ins, you can automate actions on systems such as IBM Db2, IBM CICS, and more. It  provides a set of utilities and services for users that want to become efficient in supporting and building z/OS applications quickly.
@@ -194,13 +215,6 @@ The Zowe Client SDKs consist of programmatic APIs that you can use to build clie
 
 For more information, see [Using the Zowe SDKs](../user-guide/sdks-using.md).
 
-### Zowe Launcher
-
-Provides an advanced launcher for Zowe z/OS server components in a high availability configuration. It performs the following operations:
-
-- Stopping the Zowe server components using the `STOP` (or `P`) operator command
-- Stopping and starting specific server components without restarting the entire Zowe instance using `MODIFY` (or `F`) operator command
-
 ### Zowe Chat (Technical Preview)
 
 Zowe Chat is a chatbot that aims to enable a ChatOps collaboration model including z/OS resources and tools. Zowe Chat enables you to  interact with the mainframe from chat clients such as Slack, Microsoft Teams, and Mattermost. Zowe Chat helps to increase your productivity by eliminating or minimizing the context switching between different tools and user interfaces.
@@ -249,7 +263,7 @@ For more information, see [Installing Zowe Chat](../user-guide/zowe-chat/chat_in
 
 Provides re-usable and industry compliant JSON formatted RMF/SMF data records, so that many other ISV SW and users can exploit them using open-source SW for many ways.
 
-For more information, see the [ZEBRA documentation](https://github.com/zowe/zebra/tree/main/Documentation). 
+For more information, see the [ZEBRA documentation](https://github.com/zowe/zebra/tree/main/Documentation) or visit the [ZEBRA test/trial site](https://zebra.talktothemainframe.com/).
 
 ### Zowe IntelliJ Plug-in
 
