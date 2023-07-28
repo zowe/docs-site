@@ -123,4 +123,4 @@ Review the following options and choose which best applies to your use case:
 
 * If you run into any error when configuring certificates, see the [Troubleshooting the certificate configuration](../troubleshoot/troubleshoot-zos-certificate.md).
 
-**Tip:** Get the [Certificates Configuration Questionnaire](certificates-configuration-questionnaire.md) to find the best options for your deployment.
+**Tip:** Get the [Certificates Configuration Questionnaire](certificates-configuration-questionnaire) to find the best options for your deployment.
