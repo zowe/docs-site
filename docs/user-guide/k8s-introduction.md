@@ -17,7 +17,7 @@ The Zowe containers are designed to be run together with extensions and Zowe uti
 4. [Starting, stopping, and monitoring](k8s-using.md)
 5. [Known limitations](#known-limitations)
 
-## Know limitations
+## Known limitations
 
 * You may encounter an issue that some plugins are not showing up in Zowe Desktop. You can try the **Refresh Applications** icon showing up in Desktop start menu.
 * You may encounter an issue that some services are not showing up in Zowe API Catalog. You can try the **Refresh Static APIs** button showing up in upper-right corner of API Catalog web page.
