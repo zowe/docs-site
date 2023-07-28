@@ -1248,31 +1248,7 @@ The following error message codes may appear on logs or API responses. Use the f
 
   **Reason:**
 
-  The provided id is not valid under the conformance criteria.
-
-  **Action:**
-
-  Verify the conformance criteria, provide valid service id.
-
-### ZWEAG718E
-
-  Cannot retrieve metadata: '%s'
-
-  **Reason:**
-
-  Metadata are not accessible.
-
-  **Action:**
-
-  Verify that the metadata are accessible and not empty.
-
-### ZWEAG719I
-
-  The service id provided is invalid: '%s'
-
-  **Reason:**
-
-  The provided service does not satisfy the conformance criteria and is therefore not valid.
+  The provided id is not valid under conformance criteria.
 
   **Action:**
 
