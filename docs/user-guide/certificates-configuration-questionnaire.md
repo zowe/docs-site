@@ -2,15 +2,15 @@
 
 Answering the questions in this questionnaire will help to narrow the choices of certificates setup according to your planned Zowe deployment.
 
-If you need to learn the certificates based security terminology, review the [certificates concepts](../appendix/zowe-security-glossary#certificate-concepts) in our Security Glossary.   
+If you need to learn more about the certificates based security terminology, review the [certificates concepts](../appendix/zowe-security-glossary#certificate-concepts) in our Security Glossary.   
 
-If you want to lean more about how Zowe uses digital certificates, visit the [Zowe Certificates Overview](zowe-certificates-overview).
+If you want to lean more about how Zowe uses digital certificates, visit the [Zowe Certificates Overview](../getting-started/zowe-certificates-overview).
 
 Before you answer the questions you could also review the [Certificate Configuration Scenarios](certificate-configuration-scenarios.md) to understand better the certificates configuration options. 
 
 ## Certificates configuration options
 
-### Keystore/Truststore storage 
+### Certificates storage type
 You can instruct Zowe installation to store your certificates in a:
 - File-based keystore/truststore pair
 - IBM keyring
@@ -25,7 +25,7 @@ The digital certificate types that can be used by Zowe are:
 - JKS / JCEKS
 
 ### Certificate signing
-Every digital certificate must be signed by a public/private Certificate Authority(CA), or they can be self-signed. Consequently, the CA's signing certificates also must be signed, 
+Every digital certificate must be signed by a public/private Certificate Authority(CA), or they can be self-signed. Recursively, the CA's signing certificates also must be signed, 
 effectively building a trust chain, rooted by a trusted Root Certificate Authority (who's certificate is self-signed). The Root CA can be a public or a private one.     
 
 When the certificates are signed by a public CA, their genuineness can be easily verified due to the transitive trust policy based on the signing certificates chain and the public availability of that certificates.   
