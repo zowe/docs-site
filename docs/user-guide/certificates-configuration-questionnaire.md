@@ -71,3 +71,9 @@ Based on the above options, answer the following questions to choose the best op
 - Yes, my valid certificates were previously imported
 
 - No, I need to import mys new certificates
+
+## Next Steps
+Based on your answer and choice of (Certificates Configuration Scenario](certificate-configuration-scenarios) you can review the following related articles.
+
+If yon need to learn more about the basics for configuring review certificates please review the [Configure Zowe Certificates](./configure-certificates) article
+or visit the [Certificates Overview](../getting-started/zowe-certificates-overview) in the Getting Started documentation.
