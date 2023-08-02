@@ -52,4 +52,4 @@ By default, the CLI daemon mode binary creates or reuses a file in the user's ho
 
 | Platform | Environment Variable  | Description | Values | Default |
 | ---------------------- | ---------------------- | ---------------------- | ---------------------- | ---------------------- |
-| All | `ZOWE_V3_ERR_FORMAT` | For Zowe V2, reformats the message displayed in REST request errors so problem details, and service response and diagnostic information, display in a reader friendly manner. | TRUE, FALSE, blank | blank |
+| All | `ZOWE_V3_ERR_FORMAT` | For Zowe V2, reformats the message displayed in REST request errors so problem details, and service response and diagnostic information, display in a reader friendly manner. In Zowe V3, this will be the only error format used and this environment variable will not be available.| TRUE, FALSE, blank | blank |
