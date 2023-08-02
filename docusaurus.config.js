@@ -1,4 +1,4 @@
-const LATEST_VERSION = "v2.5.x";
+const LATEST_VERSION = "v2.10.x";
 const versionsArray = require("./versions.json");
 
 module.exports = {
@@ -24,7 +24,11 @@ module.exports = {
     }),
   },
   themeConfig: {
-    hideableSidebar: true,
+    docs: {
+      sidebar: {
+        hideable: true
+      }
+    },
     image: "img/zowe-icon.png",
     navbar: {
       title: "Zowe Docs",
@@ -110,7 +114,7 @@ module.exports = {
             },
             {
               label: "Try Zowe",
-              href: "https://www.openmainframeproject.org/projects/zowe/ztrial",
+              href: "https://early-access.ibm.com/software/support/trial/cst/welcomepage.wss?siteId=936&tabId=2216&w=1",
             },
             {
               label: "Features",
@@ -164,7 +168,8 @@ module.exports = {
       copyright: `© Open Mainframe Project. a Linux Foundation Project. All Rights Reserved. The Linux Foundation has registered trademarks and uses trademarks. For a list of trademarks of The Linux Foundation, please see our Trademark Usage page. Please refer to Marketing and Branding Guidelines for name usage guidelines. Linux is a registered trademark of Linus Torvalds. Privacy Policy and Terms of Use`,
     },
     algolia: {
-      apiKey: "59ff39ed48d0820010c7e09fc4b677bf",
+      appId: "1AB1S8E42B",
+      apiKey: "de714331a88daaf9b541b4ad68c19d84",
       indexName: "zowe",
       contextualSearch: true,
     },
@@ -174,10 +179,6 @@ module.exports = {
     },
     prism: {
       additionalLanguages: ["ini", "java", "properties", "groovy", "markup"],
-    },
-    googleAnalytics: {
-      trackingID: "UA-123892882-1",
-      anonymizeIP: true,
     },
   },
   customFields: {
@@ -200,25 +201,32 @@ module.exports = {
               path: "stable",
               label: `${LATEST_VERSION}` + " LTS",
             },
+            "v2.9.x": {
+              label: "v2.9.x LTS",
+            },
+            "v2.8.x": {
+              label: "v2.8.x LTS",
+            },
+            "v2.7.x": {
+              label: "v2.7.x LTS",
+           },
+            "v2.6.x": {
+              label: "v2.6.x LTS",
+           },
+            "v2.5.x": {
+              label: "v2.5.x LTS",
+           },
             "v2.4.x": {
               label: "v2.4.x LTS",
            },
-            "v2.3.x": {
-              label: "v2.3.x LTS",
-           },
-            "v2.2.x": {
-              label: "v2.2.x LTS",
-           },
-            "v2.1.x": {
-               label: "v2.1.x LTS",
-            },
-            "v2.0.x": {
-              label: "v2.0.x LTS",
-            },
             "v1.28.x": {
               label: "v1.28.x LTS",
             },
           },
+        },    
+        googleAnalytics: {
+          trackingID: "UA-123892882-1",
+          anonymizeIP: true,
         },
         theme: {
           customCss: require.resolve("./src/css/custom.css"),

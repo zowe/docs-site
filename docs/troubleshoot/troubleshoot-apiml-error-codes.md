@@ -141,6 +141,30 @@ The following error message codes may appear on logs or API responses. Use the f
 
   Verify that the URL of the endpoint you are trying to reach is correct.
 
+### ZWEAG140E
+
+  The 'applicationName' parameter name is missing.
+
+  **Reason:**
+
+  The application name is not provided.
+
+  **Action:**
+
+  Provide the 'applicationName' parameter.
+
+### ZWEAG141E
+
+  The generation of the PassTicket failed. Reason: %s
+
+  **Reason:**
+
+  An error occurred in the SAF Auth Service. Review the reason in the error message.
+
+  **Action:**
+
+  Supply a valid user and application name, and check that corresponding permissions have been set up.
+
 ### ZWEAM400E
 
   Error initializing SSL Context: '%s'
@@ -576,6 +600,28 @@ The following error message codes may appear on logs or API responses. Use the f
   **Action:**
 
   Use a valid body in the request. Format of a message: {userId: string, (optional)timestamp: long} or {serviceId: string, (optional)timestamp: long}.
+
+### ZWEAT608E
+
+  Error mapping between distributed and mainframe identity. Reason: %s %s
+
+  **Reason:**
+
+  Unexpected error occurred when mapping between distributed and mainframe identity 
+
+  **Action:**
+
+  Contact Broadcom support.
+
+### ZWEAT609W
+
+  Mapping between distributed and mainframe identity failed. Reason: %s
+
+  **Reason:**
+
+  Mapping between distributed and mainframe identity failed.
+
+  **Action:**
 
 ## Security client messages
 
@@ -1140,24 +1186,24 @@ The following error message codes may appear on logs or API responses. Use the f
   **Action:**
 
   Based on the specific information in the message, verify that the key configuration is correct, or alternatively, that z/OSMF is available. If z/OSMF is available, specify the authentication type used by z/OSMF in your configuration settings.
-
+  
   Use the following configuration format:
   ```
-  apiml:
-    security:
-        auth: 
-            zosmf:
-                jwtAutoconfiguration: 
+  apiml: 
+    security: 
+       auth: 
+           zosmf: 
+               jwtAutoconfiguration:
   ```
   Apply one of the following values:
   
-  * **auto**  
+  * **auto**
   Signifies that API ML is enabled to resolve the JWT producer
   
-  * **jwt**  
+  * **jwt**
   Signifies that z/OSMF supports JWT (APAR PH12143 is applied)
   
-  * **ltpa**  
+  * **ltpa**
   Signifies that z/OSMF does not support JWT
 
 ### ZWEAG714E
@@ -1202,7 +1248,31 @@ The following error message codes may appear on logs or API responses. Use the f
 
   **Reason:**
 
-  The provided id is not valid under conformance criteria.
+  The provided id is not valid under the conformance criteria.
+
+  **Action:**
+
+  Verify the conformance criteria, provide valid service id.
+
+### ZWEAG718E
+
+  Cannot retrieve metadata: '%s'
+
+  **Reason:**
+
+  Metadata are not accessible.
+
+  **Action:**
+
+  Verify that the metadata are accessible and not empty.
+
+### ZWEAG719I
+
+  The service id provided is invalid: '%s'
+
+  **Reason:**
+
+  The provided service does not satisfy the conformance criteria and is therefore not valid.
 
   **Action:**
 
@@ -1400,30 +1470,6 @@ The following error message codes may appear on logs or API responses. Use the f
 
   Provide a valid authorization token.
 
-### ZWEAG140E
-
-  The 'applicationName' parameter name is missing.
-
-  **Reason:**
-
-  The application name is not provided.
-
-  **Action:**
-
-  Provide the 'applicationName' parameter.
-
-### ZWEAG141E
-
-  The generation of the PassTicket failed. Reason: %s
-
-  **Reason:**
-
-  An error occurred in the SAF Auth Service. Review the reason in the error message.
-
-  **Action:**
-
-  Supply a valid user and application name, and check that corresponding permissions have been set up.
-
 ### ZWEAG150E
 
   SAF IDT generation failed. Reason: %s
@@ -1567,6 +1613,30 @@ The following error message codes may appear on logs or API responses. Use the f
   **Action:**
 
   Use a valid body in the request. Format of a message: {userId: string, (optional)timestamp: long} or {serviceId: string, (optional)timestamp: long}.
+
+### ZWEAG180E
+
+  There was an error while reading webfinger configuration
+
+  **Reason:**
+
+  Webfinger provider contains incorrect configuration.
+
+  **Action:**
+
+  Contact the administrator to validate webfinger configuration in gateway service.
+
+### ZWEAG181W
+
+  apiml.security.auth.zosmf.serviceId = '%s' is either not registered or not online yet.
+
+  **Reason:**
+
+  An incorrect value of the apiml.security.auth.zosmf.serviceId parameter is set in the configuration or it is not registered.
+
+  **Action:**
+
+  Ensure that the value of apiml.security.auth.provider is set either to 'dummy' if you want to use dummy mode, or to 'zosmf' if you want to use the z/OSMF authentication provider.
 
 ## API Catalog messages
 

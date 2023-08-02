@@ -27,7 +27,6 @@
 /* Collapsible Components present in specific documentation */
 details {
   padding: 15px;
-  background-color: #f6f8fa;
   margin-bottom: 35px;
   border-radius: 5px;
 }
@@ -38,7 +37,6 @@ html[data-theme="dark"] details {
 
 summary {
   cursor: pointer;
-  background-color: #f6f8fa;
   list-style-image: none;
 }
 

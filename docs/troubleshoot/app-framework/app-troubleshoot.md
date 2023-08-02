@@ -55,7 +55,7 @@ There are three known problems that might cause this error.  The [Zowe architect
 
 ### ZSS server unable to communicate with ZIS
 
-- Open the log file `zowe.logsDirectory/zssServer-yyyy-mm-dd-hh-ss.log`.  This file is created each time ZWESLSTC is started and only the last five files are kept.  
+- Open the log file `zowe.logDirectory/zssServer-yyyy-mm-dd-hh-ss.log`.  This file is created each time ZWESLSTC is started and only the last five files are kept.  
 
 - Look for the message that starts with `ZIS status`.  
 
@@ -72,11 +72,15 @@ There are three known problems that might cause this error.  The [Zowe architect
    - If the communication is not working, the message includes `Failure`. For example:
 
      ```
-     ZIS status - Failure (name='ZWESIS_STD      ', cmsRC=39, description='Cross-memory call ABENDed'
+     ZIS status - Failure (name='ZWESIS_STD      ', cmsRC=39, description='Cross-memory call ABENDed')
      ```
      or
      ```
      ZIS status - Failure (name='ZWESIS_STD      ', cmsRC=64, description='N/A', clientVersion=`2`)
+     ```
+     or
+     ```
+     ZIS status - Failure (name='ZWESIS_STD      ',cmsRC=47, description='N/A', clientVersion='2')
      ```
      or
      ```
@@ -123,7 +127,7 @@ There are three known problems that might cause this error.  The [Zowe architect
 
 Follow these steps: 
 
-- Open the log file `zowe.logsDirectory/appServer-yyyy-mm-dd-hh-ss.log`.  This file is created each time ZWESLSTC is started and only the last five files are kept.  
+- Open the log file `zowe.logDirectory/appServer-yyyy-mm-dd-hh-ss.log`.  This file is created each time ZWESLSTC is started and only the last five files are kept.  
 
 - Look for the message that starts with `GetAddrInfoReqWrap.onlookup` and the log messages below.  
 
@@ -171,7 +175,7 @@ Follow these steps:
 ## Server startup problem ret=1115
 
 **Symptom:**
-When ZWESLSTC is restarted, the following message is returned in the output of the ZSS server log file, `zowe.logsDirectory/zssServer-yyyy-mm-dd-hh-ss.log`:
+When ZWESLSTC is restarted, the following message is returned in the output of the ZSS server log file, `zowe.logDirectory/zssServer-yyyy-mm-dd-hh-ss.log`:
 ```
 server startup problem ret=1115
 ```
@@ -237,7 +241,7 @@ at Object.getPemEncodedData (/software/zowev15/1.15.0/components/app-server/shar
 
 Zowe's local CA certificate has its default name `ZoweCert`, and the Zowe Desktop hardcodes this certificate in the configuration scripts.
 
-If you are using your own trusted CA certificate in the keyring and the name is different from the default one, this error will occur. To resolve the issue, you must match the names in the [Zowe configuration](../../user-guide/configure-certificates-keyring.md). 
+If you are using your own trusted CA certificate in the keyring and the name is different from the default one, this error will occur. To resolve the issue, you must match the names in the Zowe configuration. For more information, see [Configuring certificates overview](../../user-guide/configure-certificates). 
 
 If you are using Zowe's local CA certificate but it still reports **ZWED0148E**, you may find the following message in the same log.
 
@@ -248,14 +252,14 @@ If you are using Zowe's local CA certificate but it still reports **ZWED0148E**,
     ],
     "port": 8544,
     "keys": [
-      "safkeyring:////ZWESVUSR/ring&Label A"
+      "safkeyring://ZWESVUSR/ring&Label A"
     ],
     "certificates": [
-      "safkeyring:////ZWESVUSR/ring&Label A"
+      "safkeyring://ZWESVUSR/ring&Label A"
     ],
     "certificateAuthorities": [
-      "safkeyring:////ZWESVUSR/ring&Label B",
-      "safkeyring:////ZWESVUSR/ring&Label B"
+      "safkeyring://ZWESVUSR/ring&Label B",
+      "safkeyring://ZWESVUSR/ring&Label B"
     ]
   },
 ```
