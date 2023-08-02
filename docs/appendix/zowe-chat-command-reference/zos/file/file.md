@@ -1,6 +1,6 @@
 # `zos file`
 
-**[zos](.././zos-article) > [file](file-article)**
+**[zos](.././zos) > [file](file)**
 
 Manage USS files in a z/OS system. <!--file-description-->
 

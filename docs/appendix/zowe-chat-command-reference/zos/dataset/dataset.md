@@ -1,6 +1,6 @@
 # zos dataset
 
-**[zos](.././zos-article) > [dataset](dataset-article)**
+**[zos](.././zos) > [dataset](dataset)**
 
 Manages z/OS data sets. <!--dataset-description-->
 

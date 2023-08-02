@@ -1,6 +1,6 @@
 # `zos dataset list member`
 
-**[zos](../../zos-article) > [dataset](../dataset-article) > [list](./list-article) > [member](zos-dataset-list-member)**
+**[zos](../../zos) > [dataset](../dataset) > [list](./list) > [member](zos-dataset-list-member)**
 
 Show all members of a partitioned data set. <!--dataset-list-member-description-->
 

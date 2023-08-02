@@ -1,6 +1,6 @@
 # zos command issue console
 
-**[zos](../../zos-article) > [command](../command-article) > [issue](./issue-article) > [console](zos-command-issue-console)**
+**[zos](../../zos) > [command](../command) > [issue](./issue) > [console](zos-command-issue-console)**
 
 Issue a z/OS console command and print the response. In general, when issuing a z/OS console command, z/OS applications route responses to the originating console. Zowe Chat attempts to get the solicited messages immediately after the command is issued. If there is no message available within a certain time interval, approximately 3 seconds if your system workload is not high, Zowe Chat returns null. Usually it means that there is no command response. However, it is possible that the command response arrives after 3 seconds. In this case, you can click the command response URL in the response to retrieve the command response.
 

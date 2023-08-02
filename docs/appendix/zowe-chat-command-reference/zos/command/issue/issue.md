@@ -1,6 +1,6 @@
 # `zos command issue`
 
-**[zos](../../zos-article) > [command](../command-article)**
+**[zos](../../zos) > [command](../command)**
 
 Issue z/OS commands.
 
