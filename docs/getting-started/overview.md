@@ -249,7 +249,7 @@ For more information, see [Installing Zowe Chat](../user-guide/zowe-chat/chat_in
 
 Provides re-usable and industry compliant JSON formatted RMF/SMF data records, so that many other ISV SW and users can exploit them using open-source SW for many ways.
 
-For more information, see the [ZEBRA documentation](https://github.com/zowe/zebra/tree/main/Documentation) or visit the [ZEBRA test/trial site](https://zebra.talktothemainframe.com/).
+For more information, see the [ZEBRA documentation](https://github.com/zowe/zebra/tree/main/Documentation). 
 
 ### Zowe IntelliJ Plug-in
 
