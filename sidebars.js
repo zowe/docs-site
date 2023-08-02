@@ -786,10 +786,12 @@ module.exports = {
           type: "category",
           label: "zos",
           items: [
+            "appendix/zowe-chat-command-reference/zos/zos",
             {
               type: "category",
               label: "job",
               items: [
+                "appendix/zowe-chat-command-reference/zos/job/job",
                 {
                   type: "category",
                   label: "list",
@@ -803,6 +805,7 @@ module.exports = {
               type: "category",
               label: "dataset",
               items: [
+                "appendix/zowe-chat-command-reference/zos/dataset/dataset",
                 {
                   type: "category",
                   label: "list",
@@ -817,6 +820,7 @@ module.exports = {
               type: "category",
               label: "file",
               items: [
+                "appendix/zowe-chat-command-reference/zos/file/file",
                 {
                   type: "category",
                   label: "list",
@@ -831,6 +835,7 @@ module.exports = {
               type: "category",
               label: "command",
               items: [
+                "appendix/zowe-chat-command-reference/zos/command/command",
                 {
                   type: "category",
                   label: "issue",
@@ -844,6 +849,7 @@ module.exports = {
               type: "category",
               label: "help",
               items: [
+                "appendix/zowe-chat-command-reference/zos/help/help",
                 {
                   type: "category",
                   label: "list",
