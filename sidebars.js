@@ -4,9 +4,9 @@ module.exports = {
     {
       type: "category", // doc(default), 'link'(external links), 'ref'(page without without sidebar)
       label: "Zowe fundamentals",
+      link: {type:"doc", id:"/getting-started/overview"},
       collapsed: false,
       items: [
-        "getting-started/overview", //folder_name/file_name
         "getting-started/zowe-architecture",
         {
           type: "category",
