@@ -37,6 +37,7 @@ module.exports = {
     {
       type: "category",
       label: "Release notes",
+      link: {type:"doc", id:"getting-started/release-notes"},
       items: [
         "getting-started/release-notes/release-notes-overview",
         "getting-started/release-notes/v2_10_0",
