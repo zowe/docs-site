@@ -8,7 +8,22 @@ module.exports = {
       items: [
         "getting-started/overview", //folder_name/file_name
         "getting-started/zowe-architecture",
-        "getting-started/zowe-secure-setup",
+        {
+          type: "category",
+          label: "Zowe security",
+          link: {type: "doc", id: "getting-started/zowe-security-overview"},
+          items: [
+            { type: "doc",
+              label: "Digital Certificates",
+              id: "getting-started/zowe-certificates-overview",
+            },
+            { type: "doc",
+              label: "User authentication",
+              id: "getting-started/zowe-security-authentication",
+            }
+          ],
+        },
+        "getting-started/zowe-high-availability"
       ],
     },
     {
@@ -24,6 +39,7 @@ module.exports = {
       label: "Release notes",
       items: [
         "getting-started/release-notes/release-notes-overview",
+        "getting-started/release-notes/v2_10_0",
         "getting-started/release-notes/v2_9_0",
         "getting-started/release-notes/v2_8_0",
         "getting-started/release-notes/v2_7_0",
@@ -127,8 +143,10 @@ module.exports = {
                   label: "Configuring certificates",
                   items: [
                     "user-guide/configure-certificates",
-                    "user-guide/configure-certificates-keystore",
-                    "user-guide/configure-certificates-keyring",
+                    "user-guide/certificate-configuration-scenarios",
+                    "user-guide/import-certificates",
+                    "user-guide/generate-certificates",
+                    "user-guide/use-certificates",
                     "user-guide/certificates-setup",
                   ],
                 },
@@ -666,6 +684,7 @@ module.exports = {
             "troubleshoot/app-framework/app-mustgather",
             "troubleshoot/app-framework/app-issue",
             "troubleshoot/app-framework/app-return-codes",
+            "troubleshoot/app-framework/appserver-error-codes",
             "troubleshoot/app-framework/zss-error-codes",
             "troubleshoot/app-framework/zis-error-codes",
           ],

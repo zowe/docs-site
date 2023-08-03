@@ -2,8 +2,7 @@
 
 This tutorial will show you how to develop your own Zowe API's with Swagger notation. Although the resulting War file is "dropped into" a Liberty server, the same principles can be applied for other JEE servers.
 
-The source repo for the project can be found at the [rest-api-jzos sample](https://github.com/zowe/rest-api-jzos-sample)
-
+The source repo for the project can be found at the [rest-api-jzos sample](https://github.com/zowe/spring-boot-jzos-sample).
 This document describes how we can add new function and UI's to run alongside Zowe.
 
 So for example, as a team with an established z/OS application we may want to provide wider access to that functionality so that it can be exploited by different applications and organizations. This can include making functionality available to company DevOps processes or for inclusion in UI's.

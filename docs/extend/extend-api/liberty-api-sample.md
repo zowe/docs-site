@@ -1,7 +1,7 @@
 # Provide Liberty API Sample
 
 :::tip Github Sample Repo:
-[rest-api-jzos sample](https://github.com/zowe/rest-api-jzos-sample)
+[rest-api-jzos sample](https://github.com/zowe/spring-boot-jzos-sample)
 :::
 
 This sample is a boilerplate for creating Rest API's using a liberty. For more information, visit [Creating a RestAPI with Swagger documentation using Liberty](./libertyAPI).
