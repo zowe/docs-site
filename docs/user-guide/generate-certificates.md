@@ -1,5 +1,5 @@
 
-# Generating a certificate if you do not have one
+# Generating a certificate if you do not have one 
 
 If you do not have a certificate, follow the procedure that corresponds to the certificate type you choose to generate: 
 
