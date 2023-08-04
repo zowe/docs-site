@@ -1,4 +1,4 @@
-# Configuring Microsoft Teams chat platform
+# Configuring Microsoft Teams
 
 If you use Microsoft Teams as your chat platform, you need to create a bot app and a bot for Microsoft Teams and configure the messaging endpoint. Take the following steps to configure your Microsoft Teams for Zowe Chat.
 
