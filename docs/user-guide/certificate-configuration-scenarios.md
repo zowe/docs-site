@@ -1,4 +1,4 @@
-# Certificate configuration scenarios
+# Certificate configuration scenarios 
 
 As a system programmer, review the different scenarios for configuring Zowe for automatic certificate setup. Examples are provided for each scenario.
 
