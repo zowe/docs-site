@@ -71,7 +71,7 @@ jobs:
         with:
           header: File name is missing
           message: |
-            :mag: The file name(s) for the updated content is missing. List all the files included in this PR so this displays in our GitHub Slack channel.
+            :mag: The PR description is missing the file name(s) for the updated content. List all the files included in this PR so this information displays in our [Zowe Docs GitHub Slack channel](https://openmainframeproject.slack.com/archives/C05GH3LT59D).
           
   review-labels:
     name: Check for missing review label
