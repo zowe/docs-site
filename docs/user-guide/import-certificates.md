@@ -1,4 +1,4 @@
-# Import and configure a certificate if you have one
+# Import and configure a certificate if you have one 
 
 One option for using certificates in Zowe is to import and configure existing certificates. Use the procedure that applies to the type of certificate you wish to import.
 
