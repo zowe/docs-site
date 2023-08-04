@@ -29,8 +29,8 @@ module.exports = {
     {
       type: "category",
       label: "FAQ",
+      link: {type: "doc", id: "getting-started/zowe_faq"},
       items: [
-        "getting-started/zowe_faq",
         "getting-started/zowe_v2_faq",
       ],
     },
@@ -55,20 +55,8 @@ module.exports = {
         "getting-started/zowe-office-hours"
       ],
     },
-    {
-      type: "category",
-      label: "Quick start",
-      items: [
-        "getting-started/cli-getting-started",
-      ],
-    },
-    {
-      type: "category",
-      label: "Migrating from V1 to V2",
-      items: [
-        "extend/migrate-extensions",
-      ],
-    },
+    "getting-started/cli-getting-started",
+    "extend/migrate-extensions",
     "getting-started/zowe-resources",
   ],
 
@@ -77,12 +65,13 @@ module.exports = {
     {
       type: "category",
       label: "Zowe server-side components",
+      collapsed: false,
       items: [
         {
           type: "category",
           label: "Installing convenience, SMP/E, and PSWI builds",
+          link: {type:"doc", id:"user-guide/install-zos"},
           items: [
-            "user-guide/install-zos",
             "user-guide/zos-components-installation-checklist",
             "user-guide/zos-components-installation-checklist-dev",
             {
