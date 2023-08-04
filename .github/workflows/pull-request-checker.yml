@@ -59,7 +59,20 @@ jobs:
           comment: true
           comment-empty-description: ":warning: Looks like something is wrong with the PR description. Remember to include a description and the file(s) included in this PR."
           comment-template-not-filled: ":warning: Looks like you may have deleted the instructions in the PR description. This makes it hard for the bot to tell if you've written a valid description. Please leave in the instructions and add your information after the colons."
-
+      - name: Check PR
+        id: file_type_checker
+        uses: JJ/github-pr-contains-action@releases/v10
+        with:
+          github-token: ${{github.token}}
+          bodyContains: '\.md|\.jpg|\.gif|\.png'
+      - name: Missing File Name
+        if: failure() && steps.file_type_checker.outcome == 'failure'
+        uses: marocchino/sticky-pull-request-comment@v2
+        with:
+          header: File name is missing
+          message: |
+            :mag: The file name(s) for the updated content is missing. List all the files included in this PR so this displays in our GitHub Slack channel.
+          
   review-labels:
     name: Check for missing review label
     if: ${{ !contains(fromJson('["anaxceron", "jandacek", "nannanli", "samanthasusu", "nellietan", "lparadkar-rocket"]'), github.event.pull_request.user.login) }}
