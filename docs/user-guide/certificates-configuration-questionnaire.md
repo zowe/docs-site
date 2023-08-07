@@ -47,16 +47,7 @@ If needed to use the same certificate for both usage types, then it is necessary
 
 Based on the above options, answer the following questions to choose the best options for certificates format and storage according to your Zowe deployment plan.  
 
-## Q1: Will your installation run on mainframe (z/OS, USS)?
-- A1: Yes, all Zowe server components will be hosted on the mainframe.
-
-
-- A2: No, all Zowe server components will be installed off-platform (z/OS).
-
-
-- A3: Hybrid approach - some Zowe server components will be installed on-platform and some will be installed off-platform. 
-
-## Q2: What is your target environment
+## Q1: What is your target environment
 - A1: Production - Live production systems open for access from the internet/VPN
 
 - A2: Test (Services, Integrations, Set up, ) -
@@ -64,6 +55,15 @@ Based on the above options, answer the following questions to choose the best op
 - A3: Zowe Development (Enhance Zowe, Develop extensions, Develop services, ...)
 
 - A4: Private system (Learning, Experimenting)
+
+## Q2: Will your installation run on mainframe (z/OS, USS)?
+- A1: Yes, all Zowe server components will be hosted on the mainframe.
+
+
+- A2: No, all Zowe server components will be installed off-platform (z/OS).
+
+
+- A3: Hybrid approach - some Zowe server components will be installed on-platform and some will be installed off-platform. 
 
 ## Q3: 
 
