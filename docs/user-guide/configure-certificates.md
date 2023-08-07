@@ -58,7 +58,7 @@ If you set `zowe.verifyCertificates` to `DISABLED`, certificate verification is 
 
 If you set `DISABLED` before certificate setup, Zowe does not automate putting z/OSMF trust objects into the Zowe truststore. This action can result in failure to communicate with z/OSMF if later you enable verification. As such. It is recommended to either set verification on by default, or to reinitialize the keystore if you choose to turn on verification at a later point.
 
-### NONSTRICT verification
+### NON-STRICT verification
 If you set `zowe.verifyCertificates` to `NONSTRICT`, certificate verification is performed except for hostname validation. Using this setting, the certificate Common Name or Subject Alternate Name (SAN) is not checked. Skipping hostname validation facilitates deployment to environments where certificates are valid but do not contain a valid hostname. This configuration is for development purposes only and should not be used for production.
 
 ### STRICT verification
@@ -75,7 +75,7 @@ Some Zowe components act as a server, some as a client, and some as both - clien
 
 
 ### Hostname validity
-The host communicating with a certificate should have its hostname match one of the values of the certificate's Common Name or Subject Alternate Name (SAN). If this condition is not true for at least one of the certificates that are seen by Zowe, then you may wish to set [NONSTRICT verification](#nonstrict-verification) within Zowe's configuration.
+The host communicating with a certificate should have its hostname match one of the values of the certificate's Common Name or Subject Alternate Name (SAN). If this condition is not true for at least one of the certificates that are seen by Zowe, then you may wish to set [NON-STRICT verification](#non-strict-verification) within Zowe's configuration.
 
 ### z/OSMF access
 The z/OSMF certificate is verified according to Zowe's [Certificate verification setting](#certificate-verification), as is the case with any certificate that is seen by Zowe. However, Zowe will also set up a trust relationship with z/OSMF within Zowe's truststore during certificate setup automation if the certificate setting is set to any value other than [DISABLED](#disabled-verification).
@@ -110,6 +110,7 @@ A number of key ring scenarios are supported:
 - Import of an existing certificate already held in z/OS to the `ZoweKeyring` for use by Zowe.
 
 ## Next steps: Creating or importing certificates to Zowe
+![Certificates configuration decision tree](../images/install/config-certificates.png)
 
 Review the following options and choose which best applies to your use case:
 
