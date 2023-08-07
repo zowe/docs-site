@@ -112,11 +112,28 @@ A number of key ring scenarios are supported:
 ## Next steps: Creating or importing certificates to Zowe
 ![Certificates configuration decision tree](../images/install/config-certificates.png)
 
-Review the following options and choose which best applies to your use case:
+Review the above diagram to understand the certificates configuration decision flow and choose which options best apply to your use case:
 
-* If you have an existing certificate, you can import this certificate to the keystore. For more information, see [Import and configure an existing certificate](./import-certificates.md).
+* If you have an existing certificate, you can import this certificate to the keystore. Nevertheless, if your certificates are self-signed and your target environment is production, you need to reconsider using this certificates and generate or acquire new one from a trustable CA. 
+For more information, see [Import and configure an existing certificate](./import-certificates.md).
 
-* If you do not have an existing certificate, you can create one. For more information, see [Generate a certificate if you do not have a certificate](./generate-certificates.md).
+* If you do not have an existing certificate, depending on your target environment type you can create one (self-signed option) or acquire a new on from a trusted CA. 
+
+* If you plan to use z/OS keyring you'd need to generate JCEKS type of certificate. Contrary, if you prefer to store your certificates in a keystore/truststore pair, you'd need to generate PKCS12 type of certificate.
+
+For more information, see [Generate a certificate if you do not have a certificate](./generate-certificates.md).s
+
+** Note: ** If you plan for production deployment and need to acquire certificates from a trusted CA, follow the same rule to decide what type of certificate to request from the CA.
+
+* If you plan to use the same certificate for client and server usage (your service accepts inbound connections and performs calls to other secured services), you'd need to set the EXTENDED USAGE attribute to CLIENT and SERVER.
+
+If you plan production deployment and need to acquire certificates from a trusted CA, follow the same rule to decide what values for the EXTENDED USAGE attribute values to request from the CA.
+
+** Note: ** If you plan production deployment and need to acquire certificates from a trusted CA, follow the same rules as in 3 and 4, to decide what type of certificate and EXTENDED USAGE attribute values to request from the CA.    
+
+* Once you have the certificates created or acquired, import it to the certificate store type you planned earlier. 
+
+For more information, see the [Import certificates article](./import-certificates.md).
 
 * If you would like to see which certificate configuration applies to your specific use case, see [Certificate configuration scenarios](./certificate-configuration-scenarios.md).
 
