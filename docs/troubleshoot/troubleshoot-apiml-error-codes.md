@@ -1616,12 +1616,14 @@ The following error message codes may appear on logs or API responses. Use the f
 
 ### ZWEAG182E
 
-  SSL Misconfiguration, z/OSMF is not accessible. Please verify the following: \n
-  - CN (Common Name) and z/OSMF hostname have to match.\n
-  - Certificate is expired\n
-  - TLS version match\n
-Enable debugging to see further details in stack trace
-
+  SSL Misconfiguration, z/OSMF is not accessible.
+  Message: %s
+  Please verify the following:
+    - CN (Common Name) and z/OSMF hostname have to match.
+    - Certificate is expired
+    - TLS version match
+    - z/OSMF server certificate is trusted in Zowe's truststore
+  Enable debugging to see further details in stack trace
 
   **Reason:**
 
