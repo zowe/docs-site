@@ -110,39 +110,16 @@ A number of key ring scenarios are supported:
 - Import of an existing certificate already held in z/OS to the `ZoweKeyring` for use by Zowe.
 
 ## Next steps: Creating or importing certificates to Zowe
-![Certificates configuration decision tree](../images/install/config-certificates.png)
 
-Review the above diagram to understand the certificates configuration decision flow.
-Answer the questions in the yellow diamonds choosing the options which best apply to your use case:
-1. If you have an existing certificate, you can import it to a key storage of type depending on the certificates format. 
+Review the following options and choose which best applies to your use case:
 
-** Note: ** Before importing your certificates, check the next question to make sure that their format, type and properties correspond to the required protection and acceptability, according to the planned deployment environment (DEV, TEST, PROD). 
-For example, you should not use self-signed certificates for production environments.  
+* If you have an existing certificate, you can import this certificate to the keystore. For more information, see [Import and configure an existing certificate](./import-certificates.md).
 
-   For more information, see [Import and configure an existing certificate](./import-certificates.md).
+* If you do not have an existing certificate, you can create one. For more information, see [Generate a certificate if you do not have a certificate](./generate-certificates.md).
 
-2. If your existing certificates are self-signed (Q2) and your target environment is production (Q3), we strongly recommend that you acquire new certificates from your trusted CA. 
+* If you would like to see which certificate configuration applies to your specific use case, see [Certificate configuration scenarios](./certificate-configuration-scenarios.md).
 
-3. If you do not have an existing certificate, you can create one (self-signed option) or acquire a new one from a trusted CA, depending on your target environment type (DEV/TEST or PROD). 
+* When your certificate is already in the keystore, it is ready for use. For more information, see [Use certificates](./use-certificates.md).
 
-4. If you plan to use z/OS keyring you'd need to generate JCEKS type of certificate. On contrary, if you prefer to store your certificates in a keystore/truststore pair, you'd need to generate PKCS12 type of certificate.
+* If you run into any error when configuring certificates, see the [Troubleshooting the certificate configuration](../troubleshoot/troubleshoot-zos-certificate.md).
 
-For more information, see [Generate a certificate if you do not have a certificate](./generate-certificates.md).s
-
-** Note: ** If you plan for production deployment and need to acquire certificates from a trusted CA, follow the same rule to decide what type of certificate to request from the CA.
-
-5. If you plan to use the same certificate for client and server usage - Q5 and Q6 (your service accepts inbound connections and performs calls to other TLS-secured services), you'd need to generate your certificates with the EXTENDED USAGE attribute set to CLIENT and SERVER.
-
-** Note: ** If you plan production deployment and need to acquire certificates from a trusted CA, follow the same rule to decide what values for the EXTENDED USAGE attribute values to request from the CA.
-
-6. Once you have the certificates created or acquired, import them to your certificate store - Q8. 
-
-For more information, see the [Import certificates article](./import-certificates.md).
-
-7. When your certificate is already in the keystore, it is ready for use. Edit your Zowe configuration to reflect the options and settings selected above. 
-
-For more information, see [Use certificates](./use-certificates.md).
-
-8. If you run into any error when configuring certificates, see the [Troubleshooting the certificate configuration](../troubleshoot/troubleshoot-zos-certificate.md).
-
-**Tip:** Get the [Certificates Configuration Questionnaire](certificates-configuration-questionnaire) to find the best options for your deployment.
