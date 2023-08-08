@@ -116,33 +116,33 @@ Review the above diagram to understand the certificates configuration decision f
 
 1. If you have an existing certificate, you can import this certificate to the corresponding key storage type depending on the certificates format. Answer Question   
 
-However, before importing your certificates, check next point to make sure they correspond to the required protection and acceptability, according to the planned deployment environment (DEV, TEST, PROD).  
+** Note: ** Before importing your certificates, check the next point to make sure that their format, type and properties correspond to the required protection and acceptability, according to the planned deployment environment (DEV, TEST, PROD). For example, you should not use self-signed certificates for production environments.  
    For more information, see [Import and configure an existing certificate](./import-certificates.md).
 
 2. If your existing certificates are self-signed and your target environment is production, we strongly recommend you acquire new ones from your trustable CA. 
 
-3. If you do not have an existing certificate, depending on your target environment type you can create one (self-signed option) or acquire a new on from a trusted CA. 
+3. If you do not have an existing certificate, you can create one (self-signed option) or acquire a new on from a trusted CA, depending on your target environment type, keys storage type and required certificates properties. 
 
-* If you plan to use z/OS keyring you'd need to generate JCEKS type of certificate. Contrary, if you prefer to store your certificates in a keystore/truststore pair, you'd need to generate PKCS12 type of certificate.
+4. If you plan to use z/OS keyring you'd need to generate JCEKS type of certificate. On contrary, if you prefer to store your certificates in a keystore/truststore pair, you'd need to generate PKCS12 type of certificate.
 
 For more information, see [Generate a certificate if you do not have a certificate](./generate-certificates.md).s
 
 ** Note: ** If you plan for production deployment and need to acquire certificates from a trusted CA, follow the same rule to decide what type of certificate to request from the CA.
 
-3. If you plan to use the same certificate for client and server usage (your service accepts inbound connections and performs calls to other secured services), you'd need to set the EXTENDED USAGE attribute to CLIENT and SERVER.
+5. If you plan to use the same certificate for client and server usage (your service accepts inbound connections and performs calls to other secured services), you'd need to set the EXTENDED USAGE attribute to CLIENT and SERVER.
 
 If you plan production deployment and need to acquire certificates from a trusted CA, follow the same rule to decide what values for the EXTENDED USAGE attribute values to request from the CA.
 
 ** Note: ** If you plan production deployment and need to acquire certificates from a trusted CA, follow the same rules as in 3 and 4, to decide what type of certificate and EXTENDED USAGE attribute values to request from the CA.    
 
-4. Once you have the certificates created or acquired, import it to the certificate store type you planned earlier. 
+6. Once you have the certificates created or acquired, import it to the certificate store type you planned earlier. 
 
 For more information, see the [Import certificates article](./import-certificates.md).
 
-* If you would like to see which certificate configuration applies to your specific use case, see [Certificate configuration scenarios](./certificate-configuration-scenarios.md).
+7. If you would like to see which certificate configuration applies to your specific use case, see [Certificate configuration scenarios](./certificate-configuration-scenarios.md).
 
-* When your certificate is already in the keystore, it is ready for use. For more information, see [Use certificates](./use-certificates.md).
+8. When your certificate is already in the keystore, it is ready for use. For more information, see [Use certificates](./use-certificates.md).
 
-* If you run into any error when configuring certificates, see the [Troubleshooting the certificate configuration](../troubleshoot/troubleshoot-zos-certificate.md).
+9. If you run into any error when configuring certificates, see the [Troubleshooting the certificate configuration](../troubleshoot/troubleshoot-zos-certificate.md).
 
 **Tip:** Get the [Certificates Configuration Questionnaire](certificates-configuration-questionnaire) to find the best options for your deployment.
