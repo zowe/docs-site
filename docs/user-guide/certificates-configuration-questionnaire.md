@@ -6,7 +6,7 @@ If you need to learn more about the certificates based security terminology, rev
 
 If you want to lean more about how Zowe uses digital certificates, visit the [Zowe Certificates Overview](../getting-started/zowe-certificates-overview).
 
-Before you answer [the questions]() you could also review the [Certificate Configuration Scenarios](certificate-configuration-scenarios.md) to understand better the certificates configuration options. 
+Before you answer [the questions](#certificates-configuration-questionnaire) you could also review the [Certificate Configuration Scenarios](certificate-configuration-scenarios.md) to understand better the certificates configuration options. 
 
 ## Certificates configuration options
 
