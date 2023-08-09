@@ -1,6 +1,6 @@
 # Zowe certificates questionnaire
 
-Answering the questions in this questionnaire will help to make your choice of certificates setup according to your planned Zowe deployment.
+Answering [the questions](#certificates-configuration-questionnaire) in this questionnaire will help to make your choice of certificates setup according to your planned Zowe deployment.
 
 If you need to learn more about the certificates based security terminology, review the [certificates concepts](../appendix/zowe-security-glossary#certificate-concepts) in our Security Glossary.   
 
