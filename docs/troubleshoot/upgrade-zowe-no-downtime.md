@@ -66,17 +66,19 @@ More information available in <https://www.ibm.com/docs/en/zos/2.5.0?topic=space
 
 <!-- TODO link to existing IBM article about the VARY command, explicitly state which access is required in order to run such commands -->
 
-Upgrading the instances without downtime requires quescing the instance that's going to be replaced in the sysplex distributor until the new instance is available.
+1. Put instance B in quiescing mode
 
-Quiescing the Zowe instance: https://www.ibm.com/docs/en/zos/2.5.0?topic=distributor-manually-quiescing-dvipa-sysplex-server-applications
-With VARY command: https://www.ibm.com/docs/en/zos/2.5.0?topic=space-vary-tcpipsysplex
+Example:
+`VARY TCPIP,,SYSPLEX,QUIESCE,PORT=<port>`
 
-During the quescing period, only one instance will be responding. An alternative for this is to set up the new instance as a third instance.
+2. Stop instance B
+   
+3. Start upgraded instance
+   
+4. Resume instance B
 
-1. Quiesce the instance `B`, to avoid keep sending traffic to it.
-2. Stop instance B.
-3. Start new instance `C`, wait until it's up and responding. Verify services are replicated into this instance's Discovery Service.
-4. Re-enable traffic to new instance `C`.
+Example:
+`VARY TCPIP,,SYSPLEX,RESUME,PORT=<port>`
 
 At this time, Zowe is running in High Availability balancing the traffic between an instance running in v2.4.0 and another one in 2.10.0
 
