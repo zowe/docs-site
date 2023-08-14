@@ -29,7 +29,7 @@ Every digital certificate must be signed by a public/private Certificate Authori
 effectively building a trust chain, rooted by a trusted Root Certificate Authority (whose certificate is self-signed). The Root CA can be a public or a private one.     
 
 When the certificates are signed by a public CA, their authenticity can be easily verified due to the transitive trust policy based on the signing certificates chain and the public availability of that certificates.   
-When the CA is a private to the organization, the clients must explicitly request the CA certificate of the private Root CA and then import it to their trust stores in order to apply the transitive trust policy.   
+When the certificates are signed by a CA, which is owned by the organization, the clients must explicitly request the CA certificate of the organization private CA and then import it to their trust stores in order to apply the transitive trust policy.   
 
 Choose the type of certificate-signing:
 - Self-signed
