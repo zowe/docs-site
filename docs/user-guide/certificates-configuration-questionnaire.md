@@ -1,12 +1,11 @@
 # Zowe certificates questionnaire
 
-Answering [the questions](#certificates-configuration-questionnaire) in this questionnaire will help to make your choice of certificates setup according to your planned Zowe deployment.
+Answering this [questionnaire](#certificates-configuration-questionnaire) will help to select certificates setup options according to your planned Zowe deployment.
 
-If you need to learn more about the certificates based security terminology, review the [certificates concepts](../appendix/zowe-security-glossary#certificate-concepts) in our Security Glossary.   
-
-If you want to lean more about how Zowe uses digital certificates, visit the [Zowe Certificates Overview](../getting-started/zowe-certificates-overview).
-
-Before you answer [the questions](#certificates-configuration-questionnaire) you could also review the [Certificate Configuration Scenarios](certificate-configuration-scenarios.md) to understand better the certificates configuration options. 
+Before you answer [the questions](#certificates-configuration-questionnaire) you could also:
+- Learn the [Certificates concepts](../appendix/zowe-security-glossary#certificate-concepts) explained in our [Zowe Security Glossary](../appendix/zowe-security-glossary).
+- Visit the [Zowe certificates overview](../getting-started/zowe-certificates-overview).
+- Review the [Certificate configuration scenarios](certificate-configuration-scenarios.md) to understand better the certificates configuration options. 
 
 ## Certificates configuration options
 
@@ -26,7 +25,7 @@ The digital certificate types that can be used by Zowe are:
 
 3. Certificate signing
 
-Every digital certificate must be signed by a public/private Certificate Authority(CA), or they can be self-signed. Recursively, the CA's signing certificates also must be signed, 
+Every digital certificate must be signed by a public/private Certificate Authority(CA), or they can be [self-signed](/configure-certificates#self-signed-certificates "A self-signed certificate is one that is not signed by a CA at all – neither private nor public. In this case, the certificate is signed with its own private key, instead of requesting verification from a public or a private CA. This arrangement, however, means there is no chain of trust to guarantee that the host with this certificate is the one you wanted to communicate with. Note that these certificates are not secure against other hosts masquerading as the one you want to access. As such, it is highly recommended that certificates be verified against the truststore for production environments."). Recursively, the CA's signing certificates also must be signed, 
 effectively building a trust chain, rooted by a trusted Root Certificate Authority (who's certificate is self-signed). The Root CA can be a public or a private one.     
 
 When the certificates are signed by a public CA, their genuineness can be easily verified due to the transitive trust policy based on the signing certificates chain and the public availability of that certificates.   
