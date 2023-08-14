@@ -36,14 +36,14 @@ Choose the type of certificate-signing:
 - Private CA
 - Public CA
 
-4. Client or Server validation
+4. Client or server validation
 
 Certificates usage can be limited to a server, a client or both. This means that a certificate explicitly created for server usage, can't be used by a client application, and vice-versa a client certificate can't be used by a server component.
-If needed to use the same certificate for both usage types, then it is necessary to either not limit the usage to one type or specify both types in the Extended Usage Attribute. Zowe requires to explicitly state the Client and Server usage in the Extended Usage Atribute of the certificates.
+If needed to use the same certificate for both usage types, then it is necessary to either not limit the usage to one type or specify both types in the Extended Usage Attribute. Zowe requires to explicitly state the client and server usage in the Extended Usage Attribute of the certificates.
 
-- Only Client validation
-- Only Server validation
-- Both, Client and Server validation
+- Only client validation
+- Only server validation
+- Both, client and server validation
 
 ## Certificates configuration questionnaire
 
@@ -69,7 +69,7 @@ to choose the best options for certificates type and properties according to you
 5. Do you intend to use your certificates for server, for client, or for both?
    1. Server only (your service only accepts calls from TLS-secured clients).
    2. Client only (your service only performs calls to TLS-secured services).
-   3. Server and Client (your service accepts inbound connections and performs calls to other TLS-secured services).
+   3. Server and client (your service accepts inbound connections and performs calls to other TLS-secured services).
 
 6. Were the certificates already imported to your keystore/truststore (regardless of the certificate format and storage type)?
    1. Yes, my valid certificates were previously imported.
