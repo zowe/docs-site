@@ -13,7 +13,7 @@ Before you answer [the questions](#certificates-configuration-questionnaire) you
 
 You can instruct Zowe installation to store your certificates in a:
 - File-based keystore/truststore pair
-- IBM keyring
+- z/OS keyring
 
 2. Certificate file format
 
@@ -51,33 +51,30 @@ Now when you understand the certificates configuration options, answer the follo
 to choose the best options for certificates type and properties according to your Zowe deployment plan:
 
 1. Do you plan to use existing certificates?
-   1. Yes, I already have certificates for my server/s
-   2. No, I don't have certificates for my server/s
+   1. Yes, I already have certificates for my server/s.
+   2. No, I don't have certificates for my server/s.
    
-2. Will your installation run on mainframe (z/OS, USS)?
-   1. Yes, all Zowe server components will be hosted on the mainframe.
-   2. No, all Zowe server components will be installed off-platform (z/OS).
-   3. Hybrid approach - some Zowe server components will be installed on-platform and some will be installed off-platform. 
+2. Are your certificates self-signed?
+   1. Yes, my existing certificates are self-signed.
+   2. No, my existing certificates are signed by trusted CA.
 
-3. What is your target environment
-   1. Production - Live production systems open for access from the internet/VPN
-   2. Test (Services, Integrations, Set up, )
-   3. Zowe Development (Enhance Zowe, Develop extensions, Develop services, ...)
-   4. Private system (Learning, Experimenting)
+3. What is your target environment?
+   1. Production - Live production systems open for access from the internet/VPN.
+   2. Test/Dev/Private (Learning, Experimenting).
 
 4. What certificates storage type you plan to use? 
-   1. I plan to use z/OS keyring
-   2. I plan to use keystore/truststore files pair
+   1. I plan to use z/OS keyring.
+   2. I plan to use keystore/truststore files pair.
 
-5. Was the certificate already imported to your keystore/truststore (regardless of the certificate format and storage type)
-   1. Yes, my valid certificates were previously imported
-   2. No, I need to import my new certificates
+5. Do you intend to use your certificates for server, for client, or for both?
+   1. Server only (your service only accepts calls from TLS-secured clients).
+   2. Client only (your service only performs calls to TLS-secured services).
+   3. Server and Client (your service accepts inbound connections and performs calls to other TLS-secured services).
 
-6. Do you intend to use your certificate for server, for client, or for both?
-   1. Server only (your service only accepts calls from TLS-secured clients)
-   2. Client only (your service only performs calls to TLS-secured services)
-   3. Server and Client (your service accepts inbound connections and performs calls to other TLS-secured services)
-   
+6. Were the certificates already imported to your keystore/truststore (regardless of the certificate format and storage type)?
+   1. Yes, my valid certificates were previously imported.
+   2. No, I need to import my new certificates.
+
 ## Certificates configuration decision flow
 
 ![Certificates configuration decision tree](../images/install/config-certificates.png)
@@ -110,7 +107,7 @@ For more information, see [Generate a certificate if you do not have a certifica
 
 For more information, see the [Import certificates article](./import-certificates.md).
 
-7. When your certificate is already in the keystore, it is ready for use. Edit your Zowe configuration to reflect the options and settings selected above.
+7. When your certificate is in the keystore, it is ready for use. Edit your Zowe configuration to reflect the options and settings selected above.
 
 For more information, see [Use certificates](./use-certificates.md).
 
