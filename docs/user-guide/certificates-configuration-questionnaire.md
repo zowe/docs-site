@@ -41,6 +41,7 @@ Choose the type of certificate-signing:
 Certificates usage can be limited to a server, a client or both. This means that a certificate explicitly created for server usage can't be used by a client application, and vice-versa a client certificate can't be used by a server component.
 If it is necessary to use the same certificate for both usage types, then either don't limit the usage to one type and specify both types in the Extended Usage Attribute. Zowe requires to explicitly state the client and server usage in the Extended Usage Attribute of the certificates.
 
+Choose Extended Usage Attribute value:
 - Only client validation
 - Only server validation
 - Both, client and server validation
@@ -62,7 +63,7 @@ to choose the best options for certificates type and properties according to you
    1. Production - Live production systems open for access from the internet/VPN.
    2. Test/Dev/Private (Learning, Experimenting).
 
-4. What certificates storage type you plan to use? 
+4. What certificates storage type do you plan to use? 
    1. I plan to use z/OS keyring.
    2. I plan to use keystore/truststore files pair.
 
@@ -84,26 +85,33 @@ Use the answers you provided in the questionnaire to decide which path to follow
 
 1. If you have an existing certificates (Q1), you can import them to a key storage of corresponding type depending on the certificates format.
 
-** Note: ** Before importing your certificates, check the next question to make sure that their format, type and properties correspond to the required protection and acceptability, according to the planned deployment environment (DEV, TEST, PROD).
+:::note
+Before importing your certificates, check the next question to make sure that their format, type and properties correspond to the required protection and acceptability, according to the planned deployment environment (DEV, TEST, PROD).
 For example, you should not use self-signed certificates for production environments.
-
+:::
+:::info
 For more information, see [Import and configure an existing certificate](./import-certificates.md).
-
+:::
 2. If your existing certificates are self-signed (Q2) and your target environment is production (Q3), we strongly recommend that you acquire new certificates from your trusted CA.
 
 3. Depending on your target environment type (Q3) - DEV/TEST or PROD, you can create your certificates (self-signed option) or acquire a new ones from a trusted CA.
 
 4. If you plan to use z/OS keyring you'd need to generate JCEKS type of certificate. On contrary, if you prefer to store your certificates in a keystore/truststore pair, you'd need to generate PKCS12 type of certificate.
 
+:::note
+If you plan for production deployment and need to acquire certificates from a trusted CA, follow the same rule to decide what type of certificate to request from the CA.
+:::
+:::info
 For more information, see [Generate a certificate if you do not have a certificate](./generate-certificates.md).
+:::
 
-** Note: ** If you plan for production deployment and need to acquire certificates from a trusted CA, follow the same rule to decide what type of certificate to request from the CA.
+6. If you plan to use the same certificate for client and server usage (Q5), you'd need to generate your certificates with the EXTENDED USAGE attribute set to CLIENT and SERVER.
 
-5. If you plan to use the same certificate for client and server usage (Q5), you'd need to generate your certificates with the EXTENDED USAGE attribute set to CLIENT and SERVER.
+:::note
+If you plan production deployment and need to acquire certificates from a trusted CA, follow the same rule to decide what values for the EXTENDED USAGE attribute values to request from the CA.
+:::
 
-** Note: ** If you plan production deployment and need to acquire certificates from a trusted CA, follow the same rule to decide what values for the EXTENDED USAGE attribute values to request from the CA.
-
-6. Once you have the certificates created or acquired, import them to your certificate store - Q8.
+7. Once you have the certificates created or acquired, import them to your certificate store - Q8.
 
 For more information, see the [Import certificates article](./import-certificates.md).
 
