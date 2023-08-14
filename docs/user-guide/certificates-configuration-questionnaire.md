@@ -9,13 +9,13 @@ Before you answer [the questions](#certificates-configuration-questionnaire) you
 
 ## Certificates configuration options
 
-1. Certificates storage type.
+1. Certificates storage type
 
 You can instruct Zowe installation to store your certificates in a:
 - File-based keystore/truststore pair
 - IBM keyring
 
-2. Certificate file format.
+2. Certificate file format
 
 You need to acquire or generate certificates in the format accepted by the selected storage type.
 Vice-versa, if you already have digital certificates for your servers, you'd need to select the appropriate storage type that can host them. 
