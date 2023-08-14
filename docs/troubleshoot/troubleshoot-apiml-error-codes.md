@@ -1619,19 +1619,19 @@ The following error message codes may appear on logs or API responses. Use the f
   SSL Misconfiguration, z/OSMF is not accessible.
   Message: %s
   Please verify the following:
-    - CN (Common Name) and z/OSMF hostname have to match.
-    - Certificate is expired
-    - TLS version match
+    - CN (Common Name) and z/OSMF hostname match.
+    - The certificate is valid
+    - TLS version matches
     - z/OSMF server certificate is trusted in Zowe's truststore
-  Enable debugging to see further details in stack trace
+  Enable debugging to see further details in stack trace.
 
   **Reason:**
 
-  z/OSMF connection has an incorrect configuration.
+  The z/OSMF connection is incorrectly configured.
 
   **Action:**
 
-  Verify z/OSMF connection details. Verify z/OSMF can be accessed with HTTPS
+  Verify z/OSMF connection details. Verify z/OSMF can be accessed with HTTPS.
 
 ### ZWEAG183E
 
