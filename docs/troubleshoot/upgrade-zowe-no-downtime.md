@@ -69,7 +69,10 @@ More information available in <https://www.ibm.com/docs/en/zos/2.5.0?topic=space
 1. Put instance B in quiescing mode
 
 Example:
-`VARY TCPIP,,SYSPLEX,QUIESCE,PORT=<port>`
+
+```mvs
+VARY TCPIP,,SYSPLEX,QUIESCE,PORT=<port>
+```
 
 2. Stop instance B
    
@@ -78,7 +81,10 @@ Example:
 4. Resume instance B
 
 Example:
-`VARY TCPIP,,SYSPLEX,RESUME,PORT=<port>`
+
+```mvs
+VARY TCPIP,,SYSPLEX,RESUME,PORT=<port>
+```
 
 At this time, Zowe is running in High Availability balancing the traffic between an instance running in v2.4.0 and another one in 2.10.0
 
