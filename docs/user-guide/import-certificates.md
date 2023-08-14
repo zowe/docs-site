@@ -1,12 +1,13 @@
-# Import and configure a certificate if you have one 
-
+# Import and configure a certificate if you have one
+<!--'if you have one'=obvious and does not need to be in the article title --> 
+<!--Consider having each 'import a certificate method' as a standalone article, in this article you could add a high level description to help the user choose among those methods but the procedures are better off separately-->
 One option for using certificates in Zowe is to import and configure existing certificates. Use the procedure that applies to the type of certificate you wish to import.
 
 * [Importing a file-based PKCS12 certificate](#importing-an-existing-pkcs12-certificate)
 * [Importing a JCERACFKS certificate](#importing-an-existing-jceracfks-certificate)
 
 Additionally, you can [import a certificate stored in an MVS data set into a Zowe key ring](#importing-a-certificate-stored-in-an-mvs-data-set-into-a-zowe-key-ring).
-
+<!--why is this method not next to the others?; link text is too long-->
 ## Importing an existing PKCS12 certificate
 
 To import a PKCS12 certificate, it is first necessary to import a certificate authority (CA). There are two options for importing a CA:
@@ -22,7 +23,9 @@ For PKCS12 certificate users, specify the following parameters in the `zowe.yaml
 | --------- | ------------|
 | `zowe.setup.certificate.pkcs12.import.keystore` | Define it if you acquired one or more certificates from another CA, stored them in PKCS12 format, and now want to import the certificate(s) into the Zowe PKCS12 keystore.
 | `zowe.setup.certificate.pkcs12.import.password` | Specify it. This value is the password for keystore defined in `zowe.setup.certificate.pkcs12.import.keystore`. |
+<!--Not sure what 'Specify it' means-->
 | `zowe.setup.certificate.pkcs12.import.alias` | Specify it. This value is the original certificate alias defined in `zowe.setup.certificate.pkcs12.import.keystore`. |
+<!--Not sure what 'Specify it' means-->
 | `zowe.setup.certificate.pkcs12.name`| The imported certificate is saved under the alias specified in it. |
 
 **Configure `zowe.yaml` for a PKCS12 certificate:**
@@ -58,11 +61,13 @@ Importing a certificate authority (CA) is a prerequisite to importing a PKCS12 c
 ### Manually import a certificate authority into a web browser
 
 To avoid the browser untrusted CA challenge, import Zowe's certificates into the browser.
+<!--Zowe certificates= no possessive case-->
 
 Trust in the API ML server is a necessary precondition for secure communication between the browser or API Client application. Ensure this trust by installing a Certificate Authority (CA) public certificate. By default, API ML creates a local CA. Import the CA public certificate to the truststore for REST API clients and to your browser. You can also import the certificate to your root certificate store.
 
 **Important:**  
- If a SAF keyring is being used and set up with `ZWEKRING` JCL, the procedure to obtain the certificate does not apply. In this case, it is recommended that you work with your security system administrator to obtain the certificate.  
+ If a SAF keyring is being used and set up with `ZWEKRING` JCL, the procedure to obtain the certificate does not apply. In this case, it is recommended that you work with your security system administrator to obtain the certificate.
+ <!--If you use a SAF keyring...; we recommend instead of it is recommended-->  
 
 The public certificate in [PEM format](https://en.wikipedia.org/wiki/Privacy-Enhanced_Mail) is stored at `<KEYSTORE_DIRECTORY>/local_ca/localca.cer` where `<KEYSTORE_DIRECTORY>` is defined in a customized `<RUNTIME_DIR>/bin/zowe-setup-certificates.env` file during the installation step that generates Zowe certificates. The certificate is stored in UTF-8 encoding so you need to transfer it as a binary file. Since this is the certificate to be trusted by your browser, it is recommended to use a secure connection for transfer.
 

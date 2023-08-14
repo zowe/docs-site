@@ -1,6 +1,6 @@
 
 # Generating a certificate if you do not have one 
-
+<!--if you do not have one = obvious and does not need to be in the title, you can add it to the article body-->
 If you do not have a certificate, follow the procedure that corresponds to the certificate type you choose to generate: 
 
 * [Creating a PKCS12 certificate](#creating-a-pkcs12-keystore)
@@ -9,6 +9,7 @@ If you do not have a certificate, follow the procedure that corresponds to the c
 Both certificate types are self-signed certificates.
 
 ## Creating a PKCS12 keystore
+<!--What standard do you follow with regards to procedure titles? I noticed 'Creating a PKCS12 keystore' vs 'Configure the PKCS12 setup section in zowe.yaml'; add more info about why someone would want to generate a PKCS12 certificate to the introduction-->
 
 Follow these steps to generate a PKCS12 keystore:
 
@@ -25,6 +26,7 @@ For PKCS12 certificate users, customize the following parameters in the `zowe.ya
 | --------- | ----------- |
 | `zowe.setup.certificate.pkcs12.directory` | Specifies the directory where you plan to store the PKCS12 keystore and truststore. This is required if `zowe.setup.certificate.type` is PKCS12. |
 | `zowe.setup.certificate.pkcs12.lock` | Is a boolean configuration to tell if we should lock the PKCS12 keystore directory only for Zowe runtime user and group. Default value is true. |
+<!--Indicates whether the PKCS12 keystore directory...-->
 | `zowe.setup.certificate.pkcs12` (*Optional*) | Defines name, password, caAlias and caPassword to customize the keystore and truststore. It is recommended to update these values from the default values. **Note:** Alias names should be all in lower case.|
 | `dname` (*Optional*) | Specifies the distinguished name. Domain names and IPs should be added into certificate SAN. If the field `san` is not defined, the `zwe init` command uses `zowe.externalDomains`.|
 
@@ -64,12 +66,14 @@ zowe:
 ```
 
 **Tip:** To get the san IP address, run `ping dvipa.my-company.com` in your terminal. Please note that `dvipa.my-company.com` is an example address.
+<!--The note about the address being an example is obvious information-->
 
 ### Run the command to generate a PKCS12 keystore
 
 After you configure the `zowe.yaml`, use the following procedure to generate the PKCS12 certificate.
 
 1. Log in to your system. In this example, run `ssh dvipa.my-company.com` with your password. Please note that `dvipa.my-company.com` is an example address.
+<!--Same as above the note about example is obvious-->
 
 2. Run the following command in the directory with this `zowe.yaml` in the terminal to generate the certificate and update the configuration values in the `zowe.yaml` file.
 
@@ -140,7 +144,7 @@ The `zwe init certificate` command generates a certificate based on `zowe.yaml` 
 
 4. (Optional) For details about the certificate you generated, run the following command:  
 `keytool -v -list keystore localhost.keystore.p12 -storetype PKCS12`
-
+<!--What is the final result of the procedure?-->
  For more information about additional commands to manage a keystore, see the [keytool documentation](https://docs.oracle.com/en/java/javase/11/tools/keytool.html).
 
 ### Next steps after PKCS12 setup
@@ -197,7 +201,7 @@ zowe:
 ```
 
 **Notes:**
-
+<!--Lots of notes one after the other, can they be regular text?-->
 - Alias names should be all lower cases.
 - The name and lables shown above are the default value in `zowe.yaml`.
 - `dname` for distinguished name is all optional.
