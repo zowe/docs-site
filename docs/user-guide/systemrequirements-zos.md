@@ -1,3 +1,6 @@
+---
+keywords: [security permissions, system permissions]
+---
 # System requirements 
 
 Before installing Zowe&trade; z/OS components, ensure that your z/OS environment meets the prerequisites. The prerequisites you need to install depend on what Zowe z/OS components you want to use and how you want to install and configure Zowe on z/OS. Assess your installation scenario and install the prerequisites that meet your needs. 
