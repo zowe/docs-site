@@ -29,7 +29,7 @@ Every digital certificate must be signed by a public/private Certificate Authori
 effectively building a trust chain, rooted by a trusted Root Certificate Authority (whose certificate is self-signed). The Root CA can be a public or a private one.     
 
 When the certificates are signed by a public CA, their authenticity can be easily verified due to the transitive trust policy based on the signing certificates chain and the public availability of that certificates.   
-When the certificates are signed by a CA, which is owned by the organization, the clients must explicitly request the CA certificate of the organization private CA and then import it to their trust stores in order to apply the transitive trust policy.   
+When the certificates are signed by a CA which is owned by the organization, the clients must explicitly request the CA certificate of the organization private CA and then import it to their trust stores in order to apply the transitive trust policy.   
 
 Choose the type of certificate-signing:
 - Self-signed
@@ -38,8 +38,8 @@ Choose the type of certificate-signing:
 
 4. Client or server validation
 
-Certificates usage can be limited to a server, a client or both. This means that a certificate explicitly created for server usage, can't be used by a client application, and vice-versa a client certificate can't be used by a server component.
-If needed to use the same certificate for both usage types, then it is necessary to either not limit the usage to one type or specify both types in the Extended Usage Attribute. Zowe requires to explicitly state the client and server usage in the Extended Usage Attribute of the certificates.
+Certificates usage can be limited to a server, a client or both. This means that a certificate explicitly created for server usage can't be used by a client application, and vice-versa a client certificate can't be used by a server component.
+If it is necessary to use the same certificate for both usage types, then either don't limit the usage to one type and specify both types in the Extended Usage Attribute. Zowe requires to explicitly state the client and server usage in the Extended Usage Attribute of the certificates.
 
 - Only client validation
 - Only server validation
