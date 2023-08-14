@@ -25,10 +25,10 @@ The digital certificate types that can be used by Zowe are:
 
 3. Certificate signing
 
-Every digital certificate must be signed by a public/private Certificate Authority(CA), or they can be [self-signed](/configure-certificates#self-signed-certificates "A self-signed certificate is one that is not signed by a CA at all – neither private nor public. In this case, the certificate is signed with its own private key, instead of requesting verification from a public or a private CA. This arrangement, however, means there is no chain of trust to guarantee that the host with this certificate is the one you wanted to communicate with. Note that these certificates are not secure against other hosts masquerading as the one you want to access. As such, it is highly recommended that certificates be verified against the truststore for production environments."). Recursively, the CA's signing certificates also must be signed, 
-effectively building a trust chain, rooted by a trusted Root Certificate Authority (who's certificate is self-signed). The Root CA can be a public or a private one.     
+Every digital certificate must be signed by a public/private Certificate Authority (CA), or they can be [self-signed](/configure-certificates#self-signed-certificates "A self-signed certificate is one that is not signed by a CA at all – neither private nor public. In this case, the certificate is signed with its own private key, instead of requesting verification from a public or a private CA. This arrangement, however, means there is no chain of trust to guarantee that the host with this certificate is the one you wanted to communicate with. Note that these certificates are not secure against other hosts masquerading as the one you want to access. As such, it is highly recommended that certificates be verified against the truststore for production environments."). Recursively, the CA's signing certificates also must be signed, 
+effectively building a trust chain, rooted by a trusted Root Certificate Authority (whose certificate is self-signed). The Root CA can be a public or a private one.     
 
-When the certificates are signed by a public CA, their genuineness can be easily verified due to the transitive trust policy based on the signing certificates chain and the public availability of that certificates.   
+When the certificates are signed by a public CA, their authenticity can be easily verified due to the transitive trust policy based on the signing certificates chain and the public availability of that certificates.   
 When the CA is a private to the organization, the clients must explicitly request the CA certificate of the private Root CA and then import it to their trust stores in order to apply the transitive trust policy.   
 
 Choose the type of certificate-signing:
@@ -50,37 +50,42 @@ If needed to use the same certificate for both usage types, then it is necessary
 Now when you understand the certificates configuration options, answer the following questions
 to choose the best options for certificates type and properties according to your Zowe deployment plan:
 
-1. What is your target environment
-   1. Production - Live production systems open for access from the internet/VPN
-   2. Test (Services, Integrations, Set up, )
-   3. Zowe Development (Enhance Zowe, Develop extensions, Develop services, ...)
-   4. Private system (Learning, Experimenting)
-
+1. Do you plan to use existing certificates?
+   1. Yes, I already have certificates for my server/s
+   2. No, I don't have certificates for my server/s
+   
 2. Will your installation run on mainframe (z/OS, USS)?
    1. Yes, all Zowe server components will be hosted on the mainframe.
    2. No, all Zowe server components will be installed off-platform (z/OS).
    3. Hybrid approach - some Zowe server components will be installed on-platform and some will be installed off-platform. 
 
-3. What certificates storage type you plan to use? 
+3. What is your target environment
+   1. Production - Live production systems open for access from the internet/VPN
+   2. Test (Services, Integrations, Set up, )
+   3. Zowe Development (Enhance Zowe, Develop extensions, Develop services, ...)
+   4. Private system (Learning, Experimenting)
+
+4. What certificates storage type you plan to use? 
    1. I plan to use z/OS keyring
    2. I plan to use keystore/truststore files pair
 
-4. Was the certificate already imported to your keystore/truststore (regardless of the certificate format and storage type)
+5. Was the certificate already imported to your keystore/truststore (regardless of the certificate format and storage type)
    1. Yes, my valid certificates were previously imported
    2. No, I need to import my new certificates
 
-5. Do you intend to use your certificate for server, for client, or for both?
-   1. Server only
-   2. Client only
-   3. Server and Client
+6. Do you intend to use your certificate for server, for client, or for both?
+   1. Server only (your service only accepts calls from TLS-secured clients)
+   2. Client only (your service only performs calls to TLS-secured services)
+   3. Server and Client (your service accepts inbound connections and performs calls to other TLS-secured services)
    
 ## Certificates configuration decision flow
-Review the diagram below to understand the certificates configuration decision flow.
-Use the answers you provided in the questionnaire above to decide which path to follow in corresponding decision block (the yellow diamonds).
 
 ![Certificates configuration decision tree](../images/install/config-certificates.png)
 
-1. If you have an existing certificate, you can import it to a key storage of type depending on the certificates format.
+Review the diagram above to understand the certificates configuration decision flow.
+Use the answers you provided in the questionnaire to decide which path to follow in corresponding decision block (the numbered yellow diamonds).
+
+1. If you have an existing certificates (Q1), you can import them to a key storage of corresponding type depending on the certificates format.
 
 ** Note: ** Before importing your certificates, check the next question to make sure that their format, type and properties correspond to the required protection and acceptability, according to the planned deployment environment (DEV, TEST, PROD).
 For example, you should not use self-signed certificates for production environments.
@@ -89,15 +94,15 @@ For more information, see [Import and configure an existing certificate](./impor
 
 2. If your existing certificates are self-signed (Q2) and your target environment is production (Q3), we strongly recommend that you acquire new certificates from your trusted CA.
 
-3. If you do not have an existing certificate, you can create one (self-signed option) or acquire a new one from a trusted CA, depending on your target environment type (DEV/TEST or PROD).
+3. Depending on your target environment type (Q3) - DEV/TEST or PROD, you can create your certificates (self-signed option) or acquire a new ones from a trusted CA.
 
 4. If you plan to use z/OS keyring you'd need to generate JCEKS type of certificate. On contrary, if you prefer to store your certificates in a keystore/truststore pair, you'd need to generate PKCS12 type of certificate.
 
-For more information, see [Generate a certificate if you do not have a certificate](./generate-certificates.md).s
+For more information, see [Generate a certificate if you do not have a certificate](./generate-certificates.md).
 
 ** Note: ** If you plan for production deployment and need to acquire certificates from a trusted CA, follow the same rule to decide what type of certificate to request from the CA.
 
-5. If you plan to use the same certificate for client and server usage - Q5 and Q6 (your service accepts inbound connections and performs calls to other TLS-secured services), you'd need to generate your certificates with the EXTENDED USAGE attribute set to CLIENT and SERVER.
+5. If you plan to use the same certificate for client and server usage (Q5), you'd need to generate your certificates with the EXTENDED USAGE attribute set to CLIENT and SERVER.
 
 ** Note: ** If you plan production deployment and need to acquire certificates from a trusted CA, follow the same rule to decide what values for the EXTENDED USAGE attribute values to request from the CA.
 
