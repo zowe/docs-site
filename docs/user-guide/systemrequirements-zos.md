@@ -73,6 +73,7 @@ Be sure your z/OS system meets the following prerequisites:
 ## User ID requirements
 
 Specific user IDs with sufficient permissions are required to run or access Zowe. 
+Tags: security permissions, system permissions, READ, UPDATE
 
 ### ZWESVUSR
 
