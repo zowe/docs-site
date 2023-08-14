@@ -18,7 +18,7 @@ You can instruct Zowe installation to store your certificates in a:
 2. Certificate file format
 
 You need to acquire or generate certificates in the format accepted by the selected storage type.
-Vice-versa, if you already have digital certificates for your servers, you'd need to select the appropriate storage type that can host them. 
+Vice-versa, if you already have digital certificates for your servers, you need to select the appropriate storage type that can host them. 
 The digital certificate types that can be used by Zowe are: 
 - PKCS12
 - JKS / JCEKS
@@ -39,7 +39,10 @@ Choose the type of certificate-signing:
 4. Client or server validation
 
 Certificates usage can be limited to a server, a client or both. This means that a certificate explicitly created for server usage can't be used by a client application, and vice-versa a client certificate can't be used by a server component.
-If it is necessary to use the same certificate for both usage types, then either don't limit the usage to one type and specify both types in the Extended Usage Attribute. Zowe requires to explicitly state the client and server usage in the Extended Usage Attribute of the certificates.
+If it is necessary to use the same certificate for both usage types, then either don't limit the usage to one type and specify both types in the Extended Key Usage Attribute.
+:::info
+See the [Extended Key Usage definition in Zowe security glossary](../appendix/zowe-security-glossary.md#extended-key-usage)
+:::
 
 Choose Extended Usage Attribute value:
 - Only client validation
@@ -80,10 +83,10 @@ to choose the best options for certificates type and properties according to you
 
 ![Certificates configuration decision tree](../images/install/config-certificates.png)
 
-Review the diagram above to understand the certificates configuration decision flow.
+Review the diagram to understand the certificates configuration decision flow.
 Use the answers you provided in the questionnaire to decide which path to follow in corresponding decision block (the numbered yellow diamonds).
 
-1. If you have an existing certificates (Q1), you can import them to a key storage of corresponding type depending on the certificates format.
+1. If you have an existing certificates (see Question 1), you can import them to a key storage of corresponding type depending on the certificates format.
 
 :::note
 Before importing your certificates, check the next question to make sure that their format, type and properties correspond to the required protection and acceptability, according to the planned deployment environment (DEV, TEST, PROD).
@@ -92,11 +95,11 @@ For example, you should not use self-signed certificates for production environm
 :::info
 For more information, see [Import and configure an existing certificate](./import-certificates.md).
 :::
-2. If your existing certificates are self-signed (Q2) and your target environment is production (Q3), we strongly recommend that you acquire new certificates from your trusted CA.
+2. If your existing certificates are self-signed (see Question 2) and your target environment is production (see Question 3), we strongly recommend that you acquire new certificates from your trusted CA.
 
-3. Depending on your target environment type (Q3) - DEV/TEST or PROD, you can create your certificates (self-signed option) or acquire a new ones from a trusted CA.
+3. Depending on your target environment type (see Question 3) - DEV/TEST or PROD, you can create your certificates (self-signed option) or acquire a new ones from a trusted CA.
 
-4. If you plan to use z/OS keyring you'd need to generate JCEKS type of certificate. On contrary, if you prefer to store your certificates in a keystore/truststore pair, you'd need to generate PKCS12 type of certificate.
+4. If you plan to use z/OS keyring you need to generate JCEKS type of certificate. If you prefer to store your certificates in a keystore/truststore pair, you need to generate PKCS12 type of certificate.
 
 :::note
 If you plan for production deployment and need to acquire certificates from a trusted CA, follow the same rule to decide what type of certificate to request from the CA.
@@ -105,23 +108,25 @@ If you plan for production deployment and need to acquire certificates from a tr
 For more information, see [Generate a certificate if you do not have a certificate](./generate-certificates.md).
 :::
 
-6. If you plan to use the same certificate for client and server usage (Q5), you'd need to generate your certificates with the EXTENDED USAGE attribute set to CLIENT and SERVER.
+6. If you plan to use the same certificate for client and server usage (see Question 5), you need to generate your certificates with the EXTENDED USAGE attribute set to CLIENT and SERVER.
 
 :::note
 If you plan production deployment and need to acquire certificates from a trusted CA, follow the same rule to decide what values for the EXTENDED USAGE attribute values to request from the CA.
 :::
 
-7. Once you have the certificates created or acquired, import them to your certificate store - Q8.
+7. Once you have the certificates created or acquired, import them to your certificate store - see Question 8.
 
 For more information, see the [Import certificates article](./import-certificates.md).
 
-7. When your certificate is in the keystore, it is ready for use. Edit your Zowe configuration to reflect the options and settings selected above.
+7. When your certificate is in the keystore, it is ready for use. Edit your Zowe configuration to reflect the options and settings selected preceding.
 
+:::info
 For more information, see [Use certificates](./use-certificates.md).
-
-8. If you run into any error when configuring certificates, see the [Troubleshooting the certificate configuration](../troubleshoot/troubleshoot-zos-certificate.md).
-
+:::
+:::tip
+See the [Troubleshooting the certificate configuration](../troubleshoot/troubleshoot-zos-certificate.md), to find resolution of errors you encounter when configuring the Zowe certificates.
+:::
 
 ## Next Steps
-If yon need to learn more about the basics for configuring review certificates please review the [Configure Zowe Certificates](./configure-certificates) article
+If yon need to learn more about the basics for configuring review certificates, please review the [Configure Zowe Certificates](./configure-certificates) article
 or visit the [Certificates Overview](../getting-started/zowe-certificates-overview) in the Getting Started documentation.
