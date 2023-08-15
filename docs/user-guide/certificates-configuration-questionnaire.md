@@ -2,11 +2,6 @@
 
 Answering this [questionnaire](#certificates-configuration-questionnaire) will help to select certificates setup options according to your planned Zowe deployment.
 
-Before you answer [the questions](#certificates-configuration-questionnaire) you could also:
-- Learn the [Certificates concepts](../appendix/zowe-security-glossary#certificate-concepts) explained in our [Zowe Security Glossary](../appendix/zowe-security-glossary).
-- Visit the [Zowe certificates overview](../getting-started/zowe-certificates-overview).
-- Review the [Certificate configuration scenarios](certificate-configuration-scenarios.md) to understand better the certificates configuration options. 
-
 ## Certificates configuration options
 
 1. Certificates storage type
@@ -104,21 +99,24 @@ For more information, see [Import and configure an existing certificate](./impor
 :::note
 If you plan for production deployment and need to acquire certificates from a trusted CA, follow the same rule to decide what type of certificate to request from the CA.
 :::
-:::info
-For more information, see [Generate a certificate if you do not have a certificate](./generate-certificates.md).
-:::
 
-6. If you plan to use the same certificate for client and server usage (see Question 5), you need to generate your certificates with the EXTENDED USAGE attribute set to CLIENT and SERVER.
+5. If you plan to use the same certificate for client and server usage (see Question 5), you need to generate your certificates with the EXTENDED USAGE attribute set to CLIENT and SERVER.
 
 :::note
 If you plan production deployment and need to acquire certificates from a trusted CA, follow the same rule to decide what values for the EXTENDED USAGE attribute values to request from the CA.
 :::
+:::info
+For more information, see [Generate a certificate if you do not have a certificate](./generate-certificates.md).
+:::
 
-7. Once you have the certificates created or acquired, import them to your certificate store - see Question 8.
-
+6. Once you have the certificates created or acquired, import them to your certificate store - see Question 8.
+:::info
 For more information, see the [Import certificates article](./import-certificates.md).
+::
 
-7. When your certificate is in the keystore, it is ready for use. Edit your Zowe configuration to reflect the options and settings selected preceding.
+Ready! Your certificate is now in the keystore and is ready for use. 
+
+Edit your Zowe configuration to reflect the options and settings selected preceding.
 
 :::info
 For more information, see [Use certificates](./use-certificates.md).
@@ -127,6 +125,10 @@ For more information, see [Use certificates](./use-certificates.md).
 See the [Troubleshooting the certificate configuration](../troubleshoot/troubleshoot-zos-certificate.md), to find resolution of errors you encounter when configuring the Zowe certificates.
 :::
 
-## Next Steps
-If yon need to learn more about the basics for configuring review certificates, please review the [Configure Zowe Certificates](./configure-certificates) article
-or visit the [Certificates Overview](../getting-started/zowe-certificates-overview) in the Getting Started documentation.
+## Additional information
+
+You can find more information about the Zowe certificates configuration in these topics:
+- [Certificates concepts](../appendix/zowe-security-glossary#certificate-concepts) explained in our [Zowe Security Glossary](../appendix/zowe-security-glossary).
+- [Zowe certificates overview](../getting-started/zowe-certificates-overview).
+- [Certificate configuration scenarios](certificate-configuration-scenarios.md) to understand better the certificates configuration options.
+- [Configure Zowe Certificates](./configure-certificates).
