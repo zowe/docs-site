@@ -2,7 +2,7 @@
 
 As a systems programmer, it is necessary to upgrade Zowe regularly to ensure that you are using the latest features and  the latest security patches.
 
-This article describes the requirements and procedure to perform an upgrade of a Zowe installation in high availability mode with zero downtime.
+This article describes the requirements and procedure to perform an upgrade of a Zowe installation in high availability mode to a newer minor version with zero downtime.
 
 ## Assumptions
 
@@ -11,8 +11,7 @@ Review the following assumptions about the installation before starting the upgr
 - Zowe is installed in a single shared zFS.
 - Zowe is configured in high availability mode with a sysplex distributor and two instances (A and B).
 - The upgraded instance will replace one of the existing instances. (For the purposes of this procedure the replaced instance is instance B.)
-- Instances A and B run Zowe 2.4.0.
-- The upgraded instance is intended to run a newer minor version (i.e. 2.10.0).
+- Instances A and B run the same Zowe version.
 
 ## Requirements
 
