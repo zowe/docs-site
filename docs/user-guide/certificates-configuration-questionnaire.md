@@ -25,7 +25,7 @@ The digital certificate types that can be used by Zowe are:
 - JKS format
 
 :::note
-JKS certificates are only applicable for Java servers. 
+JKS certificates are only applicable for Java servers and can't be used for full Zowe installation including the Zowe non-Java servers such as ZSS and ZLUX.
 :::
 
 3. Certificate signing
