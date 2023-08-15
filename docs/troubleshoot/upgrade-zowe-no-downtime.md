@@ -21,12 +21,13 @@ When upgrading an installation in high availability, one or more instances run a
 - Only one API Catalog can be active at any moment.
 - HA settings are the same across both installations.
 - Each intance has its own configuration file (e.g. `zowe.yaml` file), and the HA and security settings are synchronized.
+- Onboarded services must be also in high availability mode.
 
-## Procedure
+## Steps
 
 Use the following procedure to perform the upgrade in high availability mode.
 
-1. Install a new Zowe instance with the upgraded version. 
+1. Install a new Zowe instance with the upgraded version.
 2. Switch traffic to the new instance to avoid downtime.
 
 ### New installation
@@ -68,8 +69,6 @@ More information available in <https://www.ibm.com/docs/en/zos/2.5.0?topic=space
 
 #### Procedure
 
-<!-- TODO link to existing IBM article about the VARY command, explicitly state which access is required in order to run such commands -->
-
 1. Put instance B in quiescing mode
 
 Example:
@@ -82,7 +81,9 @@ VARY TCPIP,,SYSPLEX,QUIESCE,PORT=<port>
    
 3. Start upgraded instance
    
-4. Resume instance B
+4. Wait until instance B is up and synchronized with instance A (services are registered in all Discovery Services)
+
+5. Resume instance B
 
 Example:
 
@@ -90,6 +91,12 @@ Example:
 VARY TCPIP,,SYSPLEX,RESUME,PORT=<port>
 ```
 
-At this time, Zowe is running in High Availability balancing the traffic between an instance running in v2.4.0 and another one in 2.10.0
+At this time, Zowe is running in high availability balancing the traffic between instances running in different maintainance levels.
 
-After testing is completed, the options are to switch to the new installation or perform a similar procedure of upgrading the instance `A` to the new version and keeping this one.
+### Verification
+
+Verifying if Zowe is running correctly with the new configuration involves the following steps:
+
+- Verify Discovery Services contain all the registered services from both instances.
+- API Gateway home page should show the number of instances running simultaneously.
+- Depending on the DVIPA configuration, accessing the API Gateway home page should interchangeably show both versions.
