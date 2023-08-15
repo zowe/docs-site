@@ -13,7 +13,7 @@ Visit the [certificates configuration decision flow](#certificates-configuration
 1. Certificates storage type
 
 You can instruct Zowe installation to store your certificates in a:
-- File-based keystore/truststore pair
+- File-based PKCS12 keystore/truststore pair
 - z/OS keyring
 
 2. Certificate file format
@@ -21,7 +21,7 @@ You can instruct Zowe installation to store your certificates in a:
 You need to acquire or generate certificates in the format accepted by the selected storage type.
 Vice-versa, if you already have digital certificates for your servers, you need to select the appropriate storage type that can host them. 
 The digital certificate types that can be used by Zowe are: 
-- PKCS12 format
+- PKCS12 format (prefered)
 - JKS format
 
 :::note
