@@ -15,7 +15,7 @@ Use this flow diagram to understand better the Zowe certificates configuration d
 ![Certificates configuration decision tree](../images/install/config-certificates.png)
 
 Review the diagram to understand the certificates configuration decision flow.
-Answer the questions (the numbered yellow diamonds) to decide which path to follow in corresponding decision block.
+Answer the questions (the numbered yellow diamonds) to decide which path to follow from the corresponding decision block.
 
 A. If you have an existing certificate (see Question 1), you can import it to the planned key storage z/OS keyring or file based keystore/truststore.
 
