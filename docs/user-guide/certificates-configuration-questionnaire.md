@@ -130,5 +130,7 @@ See the [Troubleshooting the certificate configuration](../troubleshoot/troubles
 You can find more information about the Zowe certificates configuration in these topics:
 - [Certificates concepts](../appendix/zowe-security-glossary#certificate-concepts) explained in our [Zowe Security Glossary](../appendix/zowe-security-glossary).
 - [Zowe certificates overview](../getting-started/zowe-certificates-overview).
-- [Certificate configuration scenarios](certificate-configuration-scenarios.md) to understand better the certificates configuration options.
 - [Configure Zowe Certificates](./configure-certificates).
+
+## Next Step
+Now that you understand your certificates configuration options, you can select a Zowe [certificate configuration scenario](certificate-configuration-scenarios.md).
