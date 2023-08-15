@@ -61,39 +61,42 @@ Switch traffic without incurring downtime with the following steps:
 
 1. Disable an application instance (`QUIESCE`) from the DVIPA of the sysplex distributor.
 2. Stop this original instance.
-3. Start the new instance. <!-- TODO: try what happens when the new instance finally starts, is it automatically resuming traffic? or does it wait for the manual resume command -->
+3. Start the new instance.
+4. Resume traffic to the instance.
 
-**Note:** Only new connections can be routed to the right instance. A decision needs to be made on long-lived connections, such as long running requests and Web Socket sessions. <!-- Why is it important to make this decision? If this is a tip, explain why this is recommended. -->
-
-#### Required access <!-- It seems this whole section should be a note before the procedure.>
-
-<!-- I don't see a previous mention of the `VARY` command. Is this required access to switch traffic? This sounds like a required first step or a note to ensure that the user has `CONTROL` access.-->
-Running the `VARY` command requires `CONTROL` access to the `MVS.VARY.TCPIP.SYSPLEX` profile.
-For more information, see the article _VARY TCPIP,,SYSPLEX_ in the IBM documentation.
+**Note:** Only new connections can be routed to the right instance. A decision needs to be made on long-lived connections, such as long running requests and Web Socket sessions, these can't be re-routed and will be closed when the instance is stopped.
 
 #### Procedure
 
-1. Put instance B in quiescing mode. <!-- where does the user make this `VARY` statement? -->
+1. Verify access to running the `VARY` command. It requires `CONTROL` access to the `MVS.VARY.TCPIP.SYSPLEX` profile.
+For more information, see the article _VARY TCPIP,,SYSPLEX_ in the IBM documentation.
 
-Example:
+2. Put instance B in quiescing mode by running the `VARY TCPIP` MVS command in the MVS console.
 
-```mvs
-VARY TCPIP,,SYSPLEX,QUIESCE,PORT=<port>
-```
+    Example:
 
-2. Stop instance B <!-- Please describe where the instance is stopped. -->
-   
-3. Start upgraded instance <!-- Please describe where the upgraded instance is started. -->
-   
-4. Wait until instance B is up and synchronized with instance A (services are registered in all Discovery Services) <!-- where can you see if the instance is up? -->
+    ```mvs
+    VARY TCPIP,,SYSPLEX,QUIESCE,PORT=<api gateway port>
+    ```
 
-5. Resume instance B
+3. Stop instance B
 
-Example:
+4. Start upgraded instance
 
-```mvs
-VARY TCPIP,,SYSPLEX,RESUME,PORT=<port>
-```
+    **Note:** For more information about stopping and starting instances, see [Starting and stopping Zowe](../user-guide/start-zowe-zos.md)
+
+5. Wait until instance B is up and synchronized with instance A (services are registered in all Discovery Services)
+
+    - Access to API Gateway through the LPAR URL is possible.
+    - Access to the Discovery Service homepage in both instance A and instance B to compare registered services.
+
+6. Resume connections from Sysplex Distributor to instance B by running the `VARY TCPIP` MVS command in the MVS console.
+
+    Example:
+
+    ```mvs
+    VARY TCPIP,,SYSPLEX,RESUME,PORT=<api gateway port>
+    ```
 
 Successfully completion of these steps enables Zowe to run in high availability, balancing traffic between instances running in different maintainance levels.
 
@@ -101,8 +104,5 @@ Successfully completion of these steps enables Zowe to run in high availability,
 
 Use the following steps to verify the Zowe is running correctly with the new configuration:
 
-- Verify Discovery Services contain all the registered services from both instances. <!-- how does the user perform this verification? -->
+- Verify Discovery Services contain all the registered services from both instances.
 - The API Gateway home page should show the number of instances running simultaneously.
-- Depending on the DVIPA configuration, accessing the API Gateway home page should interchangeably show both versions.
-
-<!-- Can we add an image/gif that shows this? -->
