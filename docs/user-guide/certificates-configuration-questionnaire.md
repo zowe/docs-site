@@ -1,8 +1,14 @@
 # Zowe certificates questionnaire
 
-Answering this [questionnaire](#certificates-configuration-questionnaire) will help to select certificates setup options according to your planned Zowe deployment.
-
+Answering this [questionnaire](#certificates-configuration-questionnaire) will help you understand the certificates setup options and to select applicable [cetificates confguration scenario](certificate-configuration-scenarios.md) 
+for your planned Zowe deployment.
+ 
 ## Certificates configuration options
+
+Before answering the questionnaire, make your self familiar with the certificate configuration options.
+:::tip
+Visit the [certificates configuration decision flow](#certificates-configuration-decision-flow) to understand better the decision process.
+:::
 
 1. Certificates storage type
 
@@ -15,8 +21,12 @@ You can instruct Zowe installation to store your certificates in a:
 You need to acquire or generate certificates in the format accepted by the selected storage type.
 Vice-versa, if you already have digital certificates for your servers, you need to select the appropriate storage type that can host them. 
 The digital certificate types that can be used by Zowe are: 
-- PKCS12
-- JKS / JCEKS
+- PKCS12 format
+- JKS format
+
+:::note
+JKS certificates are only applicable for Java servers. 
+:::
 
 3. Certificate signing
 
@@ -61,53 +71,50 @@ to choose the best options for certificates type and properties according to you
    1. Production - Live production systems open for access from the internet/VPN.
    2. Test/Dev/Private (Learning, Experimenting).
 
-4. What certificates storage type do you plan to use? 
-   1. I plan to use z/OS keyring.
-   2. I plan to use keystore/truststore files pair.
-
-5. Do you intend to use your certificates for server, for client, or for both?
+4. Do you intend to use your certificates for server, for client, or for both?
    1. Server only (your service only accepts calls from TLS-secured clients).
    2. Client only (your service only performs calls to TLS-secured services).
    3. Server and client (your service accepts inbound connections and performs calls to other TLS-secured services).
 
-6. Were the certificates already imported to your keystore/truststore (regardless of the certificate format and storage type)?
-   1. Yes, my valid certificates were previously imported.
-   2. No, I need to import my new certificates.
+5. What certificates storage type do you plan to use?
+   1. I plan to use z/OS keyring.
+   2. I plan to use keystore/truststore files pair.
 
 ## Certificates configuration decision flow
 
 ![Certificates configuration decision tree](../images/install/config-certificates.png)
 
 Review the diagram to understand the certificates configuration decision flow.
-Use the answers you provided in the questionnaire to decide which path to follow in corresponding decision block (the numbered yellow diamonds).
+Answer the questions (the numbered yellow diamonds) to decide which path to follow in corresponding decision block.
 
-1. If you have an existing certificates (see Question 1), you can import them to a key storage of corresponding type depending on the certificates format.
+1. If you have an existing certificate (see Question 1), you can import it to the planned key storage z/OS keyring or file based keystore/truststore.
 
 :::note
-Before importing your certificates, check the next question to make sure that their format, type and properties correspond to the required protection and acceptability, according to the planned deployment environment (DEV, TEST, PROD).
+Before importing your certificates, check the next questions to make sure that their format, type and properties correspond to the required protection and acceptability, according to the planned deployment environment (DEV, TEST, PROD).
 For example, you should not use self-signed certificates for production environments.
 :::
 :::info
 For more information, see [Import and configure an existing certificate](./import-certificates.md).
 :::
+
 2. If your existing certificates are self-signed (see Question 2) and your target environment is production (see Question 3), we strongly recommend that you acquire new certificates from your trusted CA.
 
 3. Depending on your target environment type (see Question 3) - DEV/TEST or PROD, you can create your certificates (self-signed option) or acquire a new ones from a trusted CA.
-
-4. If you plan to use z/OS keyring you need to generate JCEKS type of certificate. If you prefer to store your certificates in a keystore/truststore pair, you need to generate PKCS12 type of certificate.
-
 :::note
 If you plan for production deployment and need to acquire certificates from a trusted CA, follow the same rule to decide what type of certificate to request from the CA.
 :::
 
-5. If you plan to use the same certificate for client and server usage (see Question 5), you need to generate your certificates with the EXTENDED USAGE attribute set to CLIENT and SERVER.
-
+4. If you plan to use the same certificate for client and server usage (see Question 4), you need to generate your certificates with the EXTENDED USAGE attribute set to CLIENT and SERVER.
 :::note
 If you plan production deployment and need to acquire certificates from a trusted CA, follow the same rule to decide what values for the EXTENDED USAGE attribute values to request from the CA.
 :::
 :::info
 For more information, see [Generate a certificate if you do not have a certificate](./generate-certificates.md).
 :::
+
+5. Decide if you want to store the certificate in a z/OS keyring. 
+:::tip
+You may decide to store your certificates in a keystore/truststore pair, but you should prefer z/OS keyrings for production deployments.
 
 6. Once you have the certificates created or acquired, import them to your certificate store - see Question 8.
 :::info
