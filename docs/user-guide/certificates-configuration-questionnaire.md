@@ -2,7 +2,7 @@
 
 Answering this [questionnaire](#certificates-configuration-questionnaire) will help you understand the certificates setup options and to select applicable [cetificates confguration scenario](certificate-configuration-scenarios.md) 
 for your planned Zowe deployment.
-:::info
+:::tip
 Before answering the questionnaire you may want to make your self familiar with the certificate configuration basics and Zowe certificates configuration overview.
 - [Certificates concepts](../appendix/zowe-security-glossary#certificate-concepts) explained in our [Zowe Security Glossary](../appendix/zowe-security-glossary).
 - [Zowe certificates overview](../getting-started/zowe-certificates-overview).
