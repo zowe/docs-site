@@ -28,7 +28,7 @@ Use one of the following installation options to install Zowe z/OS components.
 
 | Task | Results | Time Estimate |  
 |--------------------|----|------|
-| Zowe is able to use PKCS12 certificates or certificates held in a z/OS Keyring.<br /><br />Use one of the following options:<br /> **Option 1: Use zwe command group** <br />* [Configure PKCS12 certificates](../user-guide/configure-certificates-keystore.md) <br />&nbsp;&nbsp;&nbsp;or<br />* [Configure JCERACFKS certificates in a key ring](../user-guide/configure-certificates-keyring.md) <br />**Option 2: [Set up Zowe certificates using workflows](../user-guide/certificates-setup.md)** | Your certificates are configured and stored securely|2 hours  
+| Zowe is able to use PKCS12 certificates or certificates held in a z/OS Keyring.<br /><br />Read the article [Zowe certificate configuration overview](../user-guide/configure-certificates.md). Then use one of the following options:<br /><br /> **Option 1: Review [certificate configuration scenarios](../user-guide/certificate-configuration-scenarios.md)** to determine which scenario best applies to your use case. <br /> Once you have imported or generated a certificate, see [Use certificates](../user-guide/use-certificates.md).  <br />**Option 2: [Set up Zowe certificates using workflows](../user-guide/certificates-setup.md)** | Your certificates are configured and stored securely|2 hours  
 
 ## Starting and Stopping Zowe  
 
