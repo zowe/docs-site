@@ -22,7 +22,6 @@ The questions presented in the numbered yellow diamonds can help you decide whic
 **Question 1:** Do you plan to use an existing certificate?  
 If you have an existing certificate, you can import this certificate to the planned key storage z/OS keyring or file based keystore/truststore.
 
-**Note:**
 Before importing your certificates, check to make sure that their format, type and properties correspond to the required protection and acceptability depending on the planned deployment environment (DEV, TEST, PROD).
 For example, use self-signed certificates only with development or testing environments and not with production environments.
 
@@ -34,12 +33,11 @@ If your existing certificates are self-signed and your target environment is pro
 **Question 3:** What is your target deployment environment?  
 Depending on your target environment type (DEV/TEST or PROD), you can create your certificates (self-signed option) or acquire a new ones from a trusted CA.
 
-**Note:** If you plan a production deployment and need to acquire certificates from a trusted CA, follow the same rule to decide what type of certificate to request from the CA.
+If you plan a production deployment and need to acquire certificates from a trusted CA, follow the same rule to decide what type of certificate to request from the CA.
 
 **Question 4:** Is your certificate only for SERVER usage?  
 If you plan to use the same certificate for client and server usage, you need to generate your certificates with the EXTENDED USAGE attribute set to CLIENT and SERVER.
-
-**Note:**  
+ 
 If you plan a production deployment and need to acquire certificates from a trusted CA, follow the same rule to determine the EXTENDED USAGE attribute values to request from the CA.
 
 For more information, see [Generate a certificate if you do not have a certificate](./generate-certificates).
