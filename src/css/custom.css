@@ -430,3 +430,9 @@ html[data-theme="light"] .darkTheme {
     margin-left: 0rem !important;
   }
 }
+
+.ZoweBanner {
+font-weight: medium;
+font-size: 1.5em;
+background: repeating-linear-gradient(35deg,#fbecec,#fbecec 20px,#fff 10px, #fff 40px) !important;
+}
