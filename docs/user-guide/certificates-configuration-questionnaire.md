@@ -20,7 +20,7 @@ Answer the questions (the numbered yellow diamonds) to decide which path to foll
 The decision blocks letters correspond to the questions of the certificates configuration questionnaire.
 :::
 
-A. If you have an existing certificate (see Question A), you can import it to the planned key storage z/OS keyring or file based keystore/truststore.
+1. If you have an existing certificate (see Question A), you can import it to the planned key storage z/OS keyring or file based keystore/truststore.
 
 :::note
 Before importing your certificates, check the next questions to make sure that their format, type and properties correspond to the required protection and acceptability, according to the planned deployment environment (DEV, TEST, PROD).
@@ -31,27 +31,27 @@ For example, you should not use self-signed certificates for production environm
 For more information, see [Import and configure an existing certificate](./import-certificates.md).
 :::
 
-B. If your existing certificates are self-signed (see Question B) and your target environment is production (see Question C), we strongly recommend that you acquire new certificates from your trusted CA.
+2. If your existing certificates are self-signed (see Question B) and your target environment is production (see Question C), we strongly recommend that you acquire new certificates from your trusted CA.
 
-C. Depending on your target environment type (see Question C) - DEV/TEST or PROD, you can create your certificates (self-signed option) or acquire a new ones from a trusted CA.
+3. Depending on your target environment type (see Question C) - DEV/TEST or PROD, you can create your certificates (self-signed option) or acquire a new ones from a trusted CA.
 :::note
    If you plan for production deployment and need to acquire certificates from a trusted CA, follow the same rule to decide what type of certificate to request from the CA.
 :::
 
-D. If you plan to use the same certificate for client and server usage (see Question D), you need to generate your certificates with the EXTENDED USAGE attribute set to CLIENT and SERVER.
+4. If you plan to use the same certificate for client and server usage (see Question D), you need to generate your certificates with the EXTENDED USAGE attribute set to CLIENT and SERVER.
 :::note
    If you plan production deployment and need to acquire certificates from a trusted CA, follow the same rule to decide what values for the EXTENDED USAGE attribute values to request from the CA.
 :::
 :::info
-   For more information, see [Generate a certificate if you do not have a certificate](./generate-certificates.md).
+   For more information, see [Generate a certificate if you do not have a certificate](./generate-certificates).
 :::
 
-E. If your certificate are not yet imported, move to the next question to decide where to import them.
+5. If your certificate are not yet imported, move to the next question to decide where to import them.
 :::info
 For more information, see the [Import certificates article](./import-certificates.md).
 ::
 
-F. Decide where you want to store the certificate in a z/OS keyring or to a file based keystore/truststore.
+6. Decide where you want to store the certificate in a z/OS keyring or to a file based keystore/truststore.
 :::tip
    You may decide to store your certificates in a keystore/truststore pair, but you should prefer z/OS keyrings for production deployments.
 :::
