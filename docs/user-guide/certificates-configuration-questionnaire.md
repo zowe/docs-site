@@ -1,6 +1,6 @@
 # Zowe certificates questionnaire
 
-To properly configure Zowe to use certificates for server-side component installation, it is important to understand certificate setup options. Understanding these options makes it possible to select the best [certificate configuration scenario](./certificate-configuration-scenarios.md) that fits your Zowe deployment use case. To assit you in making this certificate scenario selection, it is useful to familiarize yourself with the Zowe certificate decision process, and answer the questions in the following [questionnaire](#certificates-configuration-questionnaire).
+To properly configure Zowe to use certificates for server-side component installation, it is important to understand certificate setup options. Understanding these options makes it possible to select the best [certificate configuration scenario](./certificate-configuration-scenarios.md) that fits your Zowe deployment use case. To assist you in making this certificate scenario selection, it is useful to familiarize yourself with the Zowe certificate decision process, and answer the questions in the questionnaire at the end of this article.
 
 **Tip:**
 Before answering the questionnaire you may want to make your self familiar with the certificate configuration basics and Zowe certificates configuration overview.
@@ -10,25 +10,23 @@ Before answering the questionnaire you may want to make your self familiar with 
 
 ## Certificates configuration decision flow
 
-Review the following flow diagram to improve your understanding of the Zowe certificates configuration decision process.
-
-![Certificates configuration decision tree](../images/install/config-certificates.png)
-
-Answer the questions presented in the numbered yellow diamonds and decide which path best suits your certificate configuration use case. 
+Review the following flow diagram to improve your understanding of the Zowe certificates configuration decision process. 
 
 **Note:**
 The numerated decision blocks correspond to the questions of the certificates configuration questionnaire.
 
+![Certificates configuration decision tree](../images/install/config-certificates.png)
+
+The questions presented in the numbered yellow diamonds can help you decide which path best suits your certificate configuration use case. After considering the options outlined in the following section, use the [questionnaire](#certificates-configuration-questionnaire) to guide you to the configuration scenario that best suits your use case.
 
 **Question 1:** Do you plan to use an existing certificate?  
 If you have an existing certificate, you can import this certificate to the planned key storage z/OS keyring or file based keystore/truststore.
 
 **Note:**
-Before importing your certificates, check the following questions to make sure that their format, type and properties correspond to the required protection and acceptability depending on the planned deployment environment (DEV, TEST, PROD).
+Before importing your certificates, check to make sure that their format, type and properties correspond to the required protection and acceptability depending on the planned deployment environment (DEV, TEST, PROD).
 For example, use self-signed certificates only with development or testing environments and not with production environments.
 
 For more information, see [Import and configure an existing certificate](./import-certificates).
-
 
 **Question 2:** Is your certificate self-signed?  
 If your existing certificates are self-signed and your target environment is production, we strongly recommend that you acquire new certificates from your trusted CA.
