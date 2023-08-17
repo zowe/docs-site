@@ -12,7 +12,7 @@ The following are the logger names that you can specify:
 * **_zsf.install**: Logging for the installation of plug-ins.
 * **_zsf.apiml**: Logging for communication with the api mediation layer.
 * **_zsf.routing**: Logging for dispatching network requests to plug-in dataservices.
-* **_zsf.network**: Logging for the HTTPS server status (connection, ports, IP, and so on)
+* **_zsf.network**: Logging for the HTTPS server status (connection, ports, IP, and so on).
 
 # Zowe App Server Log levels
 * 0: SEVERE
@@ -30,7 +30,31 @@ The log prefix for ZSS is _zss. The following are the logger names that you can 
 * **_zss.socketTrace**: Logs general TCP Socket behavior.
 * **_zss.httpParseTrace**: Logs parsing of HTTP messages.
 * **_zss.httpDispatchTrace**: Logs dispatching of HTTP messages to dataservices.
-* **_zss.httpHeadersTrace**: logs parsing and setting of HTTP headers.
+* **_zss.httpHeadersTrace**: Logs parsing and setting of HTTP headers.
 * **_zss.httpSocketTrace**: Logs TCP socket behavior for HTTP.
 * **_zss.httpCloseConversationTrace**: Logs HTTP behavior for when an HTTP conversation ends.
 * **_zss.httpAuthTrace**: Logs behavior for session security.
+* **_zss.mvdserver**: Generic logging for ZSS items not covered by other loggers.
+* **_zss.ctds**: Controls logging of the built-in CTDS service.
+* **_zss.security**: Controls logging of the built-in security service.
+* **_zss.unixfile**: Controls logging of the built-in unixfile service.
+* **_zss.dataservice**: Controls logging of generic dataservice tasks.
+* **_zss.apimlstorage**: Controls logging of the dataservice storage API.
+* **_zss.jwk**: Controls logging of JWK use for SSO.
+* **_zss.alloc**: Controls logging alloc library functions.
+* **_zss.utils**: Controls logging of util library functions.
+* **_zss.collections**: Controls logging of collection structure library functions.
+* **_zss.serialization**: Controls logging of serialiation library functions.
+* **_zss.zlparser**: Controls logging of zlparser library functions.
+* **_zss.zlcompiler**: Controls logging of zlcompiler library functions.
+* **_zss.zlruntime**: Controls logging of zlruntime library functions.
+* **_zss.stcbase**: Controls logging of STC Base functions.
+* **_zss.httpserver**: Controls logging of the http server base.
+* **_zss.discovery**: Controls logging of discovery tools.
+* **_zss.cms**: Controls logging of cms library functions.
+* **_zss.lpa**: Controls logging of lpa library functions.
+* **_zss.restdataset**: Controls logging of restdataset functions.
+* **_zss.restfile**: Controls logging of the REST api for files.
+* **_zss.zos**: Controls logging of zos utility library functions.
+* **_zss.httpclient**: Controls logging of http client calls.
+* **_zss.jwt**: Controls logging of JWT library functions.
