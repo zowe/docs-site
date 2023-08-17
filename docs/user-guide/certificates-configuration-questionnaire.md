@@ -20,10 +20,10 @@ Answer the questions (the numbered yellow diamonds) to decide which path to foll
 The decision blocks letters correspond to the questions of the certificates configuration questionnaire.
 :::
 
-1. If you have an existing certificate (see Question A), you can import it to the planned key storage z/OS keyring or file based keystore/truststore.
+1. If you have an existing certificate already imported to the planned key storage - a z/OS keyring or file based keystore/truststore, you can move directly to the certificates configuration in zowe.yaml.
 
 :::note
-Before importing your certificates, check the next questions to make sure that their format, type and properties correspond to the required protection and acceptability, according to the planned deployment environment (DEV, TEST, PROD).
+Before configuring your certificates for Zowe, check the next questions to make sure that their format, type and properties correspond to the required protection and acceptability, according to the planned deployment environment (DEV, TEST, PROD).
 For example, you should not use self-signed certificates for production environments.
 :::
 
@@ -31,14 +31,14 @@ For example, you should not use self-signed certificates for production environm
 For more information, see [Import and configure an existing certificate](./import-certificates).
 :::
 
-2. If your existing certificates are self-signed (see Question B) and your target environment is production (see Question C), we strongly recommend that you acquire new certificates from your trusted CA.
-
-3. Depending on your target environment type (see Question C) - DEV/TEST or PROD, you can create your certificates (self-signed option) or acquire a new ones from a trusted CA.
+2. If your target Zowe deployment environment is PROD and your , you should acquire a new ones from a trusted CA.
 :::note
    If you plan for production deployment and need to acquire certificates from a trusted CA, follow the same rule to decide what type of certificate to request from the CA.
 :::
 
-4. If you plan to use the same certificate for client and server usage (see Question D), you need to generate your certificates with the EXTENDED USAGE attribute set to CLIENT and SERVER.
+3. If your existing certificates are self-signed (see Question B) and your target environment is production (see Question C), we strongly recommend that you acquire new certificates from your trusted CA.
+
+5. If you plan to use the same certificate for client and server usage (see Question D), you need to generate your certificates with the EXTENDED USAGE attribute set to CLIENT and SERVER.
 :::note
    If you plan production deployment and need to acquire certificates from a trusted CA, follow the same rule to decide what values for the EXTENDED USAGE attribute values to request from the CA.
 :::
