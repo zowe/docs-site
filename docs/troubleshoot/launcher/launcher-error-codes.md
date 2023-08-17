@@ -1,9 +1,11 @@
-# Error Message Codes
-
-The following error message codes may appear on Zowe Launcher SYSPRINT. Use the following message code references and the corresponding reasons and actions to help troubleshoot issues.
-
-## Zowe Launcher informational messages
   
+  # Error Message Codes
+  
+  The following error message codes may appear on Zowe Launcher SYSPRINT. Use the following message code references and the corresponding reasons and actions to help troubleshoot issues.
+  
+  ## Zowe Launcher informational messages
+  
+
 ### ZWEL0001I
 
   component %s started
@@ -235,18 +237,6 @@ The following error message codes may appear on Zowe Launcher SYSPRINT. Use the 
 
   No action required.
 
-### ZWEL0020I
-
-  loading '%s'
-
-  **Reason:**
-
-  Loading `<yaml-file>`
-
-  **Action:**
-
-  No action required.
-
 ### ZWEL0021I
 
   Zowe Launcher starting
@@ -277,7 +267,7 @@ The following error message codes may appear on Zowe Launcher SYSPRINT. Use the 
 
   **Reason:**
 
-  Zowe YAML config file is `<configuration-entries>:`
+  Zowe YAML config file is `<path-to-zowe-yaml>`.
 
   **Action:**
 
@@ -332,82 +322,9 @@ The following error message codes may appear on Zowe Launcher SYSPRINT. Use the 
 
   No action required.
   
-## Zowe Launcher warning messages  
-
-### ZWEL0051W
-
-  failed to read zowe.yaml, launcher will use default settings
-
-  **Reason:**
-
+  ## Zowe Launcher error messages
   
 
-  **Action:**
-
-  No action required.
-
-### ZWEL0052W
-
-  not all components started
-
-  **Reason:**
-
-  
-
-  **Action:**
-
-  No action required.
-
-### ZWEL0053W
-
-  not all components stopped gracefully
-
-  **Reason:**
-
-  
-
-  **Action:**
-
-  No action required.
-
-### ZWEL0054W
-
-  component %s not found
-
-  **Reason:**
-
-  
-
-  **Action:**
-
-  No action required.
-
-### ZWEL0063W
-
-  Component %s(%d) will be terminated using SIGKILL
-
-  **Reason:**
-
-  
-
-  **Action:**
-
-  No action required.
-
-### ZWEL0066W
-
-  command '%s' ended with code %d
-
-  **Reason:**
-
-  The command `<command>` ended with code `<return-code>`"
-
-  **Action:**
-
-  No action required.
-  
-## Zowe Launcher error messages
-  
 ### ZWEL0026E
 
   %s env variable not found
@@ -636,61 +553,13 @@ The following error message codes may appear on Zowe Launcher SYSPRINT. Use the 
 
   No action required.
 
-### ZWEL0045E
-
-  error converting zowe.yaml file - %s
-
-  **Reason:**
-
-  Error converting zowe.yaml file - `<path-to-zowe-yaml>`.
-
-  **Action:**
-
-  No action required.
-
-### ZWEL0046E
-
-  error reading zowe.yaml file - %s
-
-  **Reason:**
-
-  There is an error while reading zowe.yaml file - `<path-to-zowe.yaml>`
-
-  **Action:**
-
-  No action required.
-
-### ZWEL0047E
-
-  failed to parse zowe.yaml - %s
-
-  **Reason:**
-
-  
-
-  **Action:**
-
-  No action required.
-
-### ZWEL0048E
-
-  failed to open zowe.yaml - %s: %s
-
-  **Reason:**
-
-  
-
-  **Action:**
-
-  No action required.
-
 ### ZWEL0049E
 
   failed to restart component %s
 
   **Reason:**
 
-  
+  Failed to restart the component `<component-name>`."
 
   **Action:**
 
@@ -702,7 +571,7 @@ The following error message codes may appear on Zowe Launcher SYSPRINT. Use the 
 
   **Reason:**
 
-  
+  Cannot read the output from component `<component-name>` (`<process-id>`) - `<error-text>`"
 
   **Action:**
 
@@ -714,7 +583,7 @@ The following error message codes may appear on Zowe Launcher SYSPRINT. Use the 
 
   **Reason:**
 
-  
+  Failed to create the file for stdin(`<file>`) - <error-text>."
 
   **Action:**
 
@@ -726,7 +595,7 @@ The following error message codes may appear on Zowe Launcher SYSPRINT. Use the 
 
   **Reason:**
 
-  
+  Failed to open the file for stdin(`<file>`) - <error-text>."
 
   **Action:**
 
@@ -738,7 +607,7 @@ The following error message codes may appear on Zowe Launcher SYSPRINT. Use the 
 
   **Reason:**
 
-  
+  Failed to create the workspace directory `<path-to-workspace-dir>`.
 
   **Action:**
 
@@ -750,7 +619,7 @@ The following error message codes may appear on Zowe Launcher SYSPRINT. Use the 
 
   **Reason:**
 
-  
+  Failed to get the WORKSPACE_DIR (`zowe.workspaceDirectory`) directory."
 
   **Action:**
 
@@ -762,19 +631,7 @@ The following error message codes may appear on Zowe Launcher SYSPRINT. Use the 
 
   **Reason:**
 
-  
-
-  **Action:**
-
-  No action required.
-
-### ZWEL0061E
-
-  failed to find %s='%s', check if the file exists
-
-  **Reason:**
-
-  
+  The WORKSPACE_DIR (`zowe.workspaceDirectory`) is empty string.
 
   **Action:**
 
@@ -786,7 +643,7 @@ The following error message codes may appear on Zowe Launcher SYSPRINT. Use the 
 
   **Reason:**
 
-  
+  Failed to create the directory `<directory>` - `<error-text>`.
 
   **Action:**
 
@@ -798,7 +655,7 @@ The following error message codes may appear on Zowe Launcher SYSPRINT. Use the 
 
   **Reason:**
 
-  Failed to run command `<command>` - `<error-text>`.
+  Failed to run the command `<command>` - `<error-text>`.
 
   **Action:**
 
@@ -899,4 +756,61 @@ The following error message codes may appear on Zowe Launcher SYSPRINT. Use the 
   **Action:**
 
   Contact support.
+  
+  ## Zowe Launcher warning messages
+  
 
+### ZWEL0052W
+
+  not all components started
+
+  **Reason:**
+
+  Not all components were started.
+
+  **Action:**
+
+  No action required.
+
+### ZWEL0053W
+
+  not all components stopped gracefully
+
+  **Reason:**
+
+  Not all components were stopped gracefully.
+
+  **Action:**
+
+  No action required.
+
+### ZWEL0054W
+
+  component %s not found
+
+  **Reason:**
+
+  The component `<component-name>` was not found.
+
+  **Action:**
+
+  No action required.
+  **Reason:**
+
+  Component `<component-name>`(`<process-id>`) will be terminated using `SIGKILL`.
+
+  **Action:**
+
+  No action required.
+
+### ZWEL0066W
+
+  command '%s' ended with code %d
+
+  **Reason:**
+
+  The command `<command>` ended with return code `<return-code>`."
+
+  **Action:**
+
+  No action required.
