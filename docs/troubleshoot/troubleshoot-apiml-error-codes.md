@@ -1254,30 +1254,6 @@ The following error message codes may appear on logs or API responses. Use the f
 
   Verify the conformance criteria, provide valid service id.
 
-### ZWEAG718E
-
-  Cannot retrieve metadata: '%s'
-
-  **Reason:**
-
-  Metadata are not accessible.
-
-  **Action:**
-
-  Verify that the metadata are accessible and not empty.
-
-### ZWEAG719I
-
-  The service id provided is invalid: '%s'
-
-  **Reason:**
-
-  The provided service does not satisfy the conformance criteria and is therefore not valid.
-
-  **Action:**
-
-  Verify the conformance criteria, provide valid service id.
-
 ### ZWEAG100E
 
   Authentication exception: '%s' for URL '%s'
@@ -1628,15 +1604,104 @@ The following error message codes may appear on logs or API responses. Use the f
 
 ### ZWEAG181W
 
-  apiml.security.auth.zosmf.serviceId = '%s' is either not registered or not online yet.
+  z/OSMF service '%s' is either not registered or not online yet.
 
   **Reason:**
 
-  An incorrect value of the apiml.security.auth.zosmf.serviceId parameter is set in the configuration or it is not registered.
+  z/OSMF service may not be properly onboarded to API ML.
 
   **Action:**
 
-  Ensure that the value of apiml.security.auth.provider is set either to 'dummy' if you want to use dummy mode, or to 'zosmf' if you want to use the z/OSMF authentication provider.
+  Verify if z/OSMF is up and registered to Discovery Service.
+
+### ZWEAG182E
+
+  SSL Misconfiguration, z/OSMF is not accessible. Please verify the following: \n
+  - CN (Common Name) and z/OSMF hostname have to match.\n
+  - Certificate is expired\n
+  - TLS version match\n
+Enable debugging to see further details in stack trace
+
+
+  **Reason:**
+
+  z/OSMF connection has an incorrect configuration.
+
+  **Action:**
+
+  Verify z/OSMF connection details. Verify z/OSMF can be accessed with HTTPS
+
+### ZWEAG183E
+
+  z/OSMF internal error
+
+  **Reason:**
+
+  z/OSMF returned HTTP Status %s.
+
+  **Action:**
+
+  Review z/OSMF status and availability.
+
+### ZWEAG184E
+
+  Could not connect to z/OSMF: %s
+
+  **Reason:**
+
+  There was a connection issue between the API Mediation Layer instance and z/OSMF.
+
+  **Action:**
+
+  Verify z/OSMF is running. Verify connectivity to z/OSMF from this instance.
+
+### ZWEAG185W
+
+  The change password endpoint has failed with code %s
+
+  **Reason:**
+
+  The change password endpoint was not found.
+
+  **Action:**
+
+  Ensure PTF for APAR PH34912 is applied. (https://www.ibm.com/support/pages/apar/PH34912)
+
+### ZWEAG186E
+
+  z/OSMF internal error attempting password change: %s
+
+  **Reason:**
+
+  z/OSMF informed of an internal error.
+
+  **Action:**
+
+  Verify z/OSMF error log.
+
+### ZWEAG187W
+
+  The check of z/OSMF JWT authentication endpoint has failed. Using z/OSMF info endpoint as backup.
+
+  **Reason:**
+
+  z/OSMF JWT endpoint was not found.
+
+  **Action:**
+
+  Ensure APAR PH12143 (https://www.ibm.com/support/pages/apar/PH12143) fix has been applied.
+
+### ZWEAG188W
+
+  z/OSMF JWT builder endpoint call (%s) failed with %s
+
+  **Reason:**
+
+  z/OSMF returned an error code when calling JWT endpoint.
+
+  **Action:**
+
+  Review z/OSMF status. Contact your system administrator.
 
 ## API Catalog messages
 
