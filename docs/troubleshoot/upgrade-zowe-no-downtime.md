@@ -13,18 +13,22 @@ Review the following assumptions about the installation before you start the upg
 - The upgraded instance is intended to replace one of the existing instances. (For the purposes of this procedure the replaced instance is instance B.)
 - Instances A and B run the same Zowe version.
 
+## Limitations
+
+There is a known limitation with balancing traffic between different versions of the UI components, in particular about the API Catalog.
+Only one API Catalog instance can be active in an installation with multiple maintainance levels.
+
 ## Pre-requisites before installation upgrade with HA
 
 When upgrading an installation in high availability mode, one or more instances run at different maintainance levels. As such, a few restrictions apply:
 
-- Only one API Catalog can be active at any moment.
 - HA settings are the same across both installations.
 - Each instance has its own configuration file (e.g. `zowe.yaml` file), and the HA and security settings are synchronized.
 - Onboarded services must be also be in high availability mode.
 
 ## Upgrading installation with HA
 
-Upgrading installation to use high availability mode involves two general steps: 
+Upgrading installation to use high availability mode involves two general steps:
 
 1. Install a new Zowe instance with the upgraded version.
 2. Switch traffic to the new instance to avoid downtime.
@@ -37,25 +41,30 @@ Use the following procedure to install a new Zowe instance:
 
     **Note:** When performing a separate installation of Zowe, ensure that datasets, STCs definitions, and the USS installation directory are distinct from the original installation.
 
-2. Replace the following properties in instance B installation's `zowe.yaml` configuration file. Use the values from the `zowe.yaml` file of instance A.
+2. Replicate the configuration of instance A into instance B.
 
-```yaml
-externalDomains: <same external domain as instance A>
+    The settings across both instances must be the same, except for properties pointing to datasets and z/OS USS filesystems which are now separated.
 
-haInstances:
-    A: <Same settings as original instance A>
-    B: <Same settings as original instance B>
-```
+    The following is a list of properties that will be different between the instances:
+
+    ```yaml
+    zowe.setup.datasets
+    zowe.setup.security
+    zowe.runtimeDirectory
+    zowe.logDirectory
+    zowe.workspaceDirectory
+    zowe.job
+    ```
 
 3. Choose which instance you intend to run the UI services (API Catalog, Zowe Desktop), and disable these mentioned components in the other instance:
 
-```yaml
-api-catalog:
-    enabled: false
+    ```yaml
+    api-catalog:
+        enabled: false
 
-app-server:
-    enabled: false
-```
+    app-server:
+        enabled: false
+    ```
 
 ### Switching traffic
 
@@ -64,7 +73,8 @@ Switching traffic without incurring downtime involves the following general step
 1. Disable an application instance (`QUIESCE`) from the DVIPA of the sysplex distributor.
 2. Stop this original instance.
 3. Start the new instance.
-4. Resume traffic to the instance.
+4. Verifying service replication.
+5. Resume traffic to the instance.
 
 **Note:** Only new connections can be routed to the right instance. <!--What does "right" instance mean? The newly created instance? -->A decision needs to be made on long-lived connections, such as long running requests and Web Socket sessions. These connections cannot be re-routed. As such, these connections are closed when the instance is stopped.
 
@@ -85,7 +95,7 @@ For more information, see the article _VARY TCPIP,,SYSPLEX_ in the IBM documenta
 
     **Note:** For more information about stopping and starting instances, see [Starting and stopping Zowe](../user-guide/start-zowe-zos.md).
 
-5. Wait until instance B is up and synchronized with instance A, wherein services are registered in all Discovery Services. To verify that instance B is up and sychronized with instance A, check the following accessibility conditions: 
+5. Wait until instance B is up and synchronized with instance A, wherein services are registered in all Discovery Services. To verify that instance B is up and sychronized with instance A, check the following accessibility conditions:
 
     - Access to API Gateway through the LPAR URL is possible.
     - Access to the Discovery Service homepage in both instance A and instance B to compare registered services.
