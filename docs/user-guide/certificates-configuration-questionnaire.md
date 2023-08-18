@@ -13,18 +13,20 @@ Before answering the questionnaire you may want to make your self familiar with 
 Review the following flow diagram to improve your understanding of the Zowe certificates configuration decision process. 
 
 **Note:**
-The numerated decision blocks correspond to the questions of the certificates configuration questionnaire.
 
 ![Certificates configuration decision tree](../images/install/config-certificates.png)
 
-The questions presented in the numbered yellow diamonds can help you decide which path best suits your certificate configuration use case. After considering the options outlined in the following section, use the [questionnaire](#certificates-configuration-questionnaire) to guide you to the configuration scenario that best suits your use case.
+Review the diagram to understand the certificates configuration decision flow and select a [certificate configuration scenario](./certificate-configuration-scenarios.md) that best suits your use case.
+
+The questions presented in the numbered yellow diamonds can help you decide which path best suits your certificate configuration use case.
+The numerated decision blocks correspond to the questions of the certificates configuration [questionnaire](#certificates-configuration-questionnaire).
 
 **Question 1:** What is your target deployment environment?  
 Depending on your target environment type (DEV/TEST or PROD), you can create your certificates (self-signed option) or acquire a new ones from a trusted CA.
 
 If you plan a production deployment and need to acquire certificates from a trusted CA, follow the same rule to decide what type of certificate to request from the CA.
 
-**Question 2:** Do you need to use certificate signed by the company's or external CA?  
+**Question 2:** Do you need to use certificate signed by the company's or by an external CA?  
 If your existing certificates are self-signed and your target environment is production, we strongly recommend that you acquire new certificates from your trusted CA.
 
 **Question 3:** Do you plan to use a keyring?  
@@ -33,8 +35,8 @@ Decide if you want to store the certificate in a z/OS keyring or to a file based
 **Tip:**  
 While using a keystore/truststore pair is possible to store your certificates, we recommend that you use z/OS keyrings for production deployments.
 
-**Question 4:** Do you plan to use an existing certificate from another keyring or from dataset?  
-If you have an existing certificate, you can import this certificate to the planned key storage z/OS keyring or file based keystore/truststore.
+**Question 4:** Do you plan to use an existing certificate from another keyring or from a dataset?  
+If you have an existing certificate, you can import or connect this certificate to the planned z/OS keyring based storage.
 
 Before importing your certificates, check to make sure that their format, type and properties correspond to the required protection and acceptability depending on the planned deployment environment (DEV, TEST, PROD).
 For example, use self-signed certificates only with development or testing environments and not with production environments.
@@ -46,40 +48,28 @@ For more information, see [Import and configure an existing certificate](./impor
 Now that you understand the certificates configuration options, answer the following questions
 to choose the best options for certificates type and properties according to your Zowe deployment plan:
 
-**Question 1:** Do you plan to use existing certificates?
-   * Yes, I already have certificates for my server/s.  
-   See [certificates configuration scenario 4](./certificate-configuration-scenarios#scenario-4-use-a-zos-keyring-based-keystore-and-connect-to-an-existing-certificate).
-   * No, I do not have certificates for my server/s. See the following possible scenarios:
-      * [certificates configuration scenario 1](./certificate-configuration-scenarios#scenario-1-use-a-file-based-pkcs12-keystore-with-zowe-generated-certificates)
-      * [certificates configuration scenario 3](certificate-configuration-scenarios#scenario-3-use-a-zos-keyring-based-keystore-with-zowe-generated-certificates)
-      * [certificates configuration scenario 5](certificate-configuration-scenarios#scenario-5-use-a-zos-keyring-based-keystore-and-import-a-certificate-stored-in-a-data-set)
+**Question 1:** What is your target environment?
+* Production / live production systems open for access from the internet/VPN  
+  See the following possible scenarios:
+    * [certificates configuration scenario 3](certificate-configuration-scenarios#scenario-3-use-a-zos-keyring-based-keystore-with-zowe-generated-certificates)
+    * [certificates configuration scenario 4](certificate-configuration-scenarios#scenario-4-use-a-zos-keyring-based-keystore-and-connect-to-an-existing-certificate)
+    * [certificates configuration scenario 5](certificate-configuration-scenarios#scenario-5-use-a-zos-keyring-based-keystore-and-import-a-certificate-stored-in-a-data-set)
+* Test/Dev/Private (Learning, Experimenting)  
+  See the following possible scenarios:
+    * [certificates configuration scenario 1](certificate-configuration-scenarios#scenario-1-use-a-file-based-pkcs12-keystore-with-zowe-generated-certificates)
+    * [certificates configuration scenario2](certificate-configuration-scenarios#scenario-2-use-a-file-based-pkcs12-keystore-and-import-a-certificate-generated-by-another-ca)
+    * [certificates configuration scenario 3](certificate-configuration-scenarios#scenario-3-use-a-zos-keyring-based-keystore-with-zowe-generated-certificates)
 
-**Question 2:** Are your certificates self-signed?
-   * Yes, my existing certificates are self-signed. See the following possible sceanarios:
+**Question 2:** Do you need to use certificate signed by the company's or by an external CA?
+   * No, my existing certificates are self-signed. See the following possible sceanarios:
       * [certificates configuration scenario 1](certificate-configuration-scenarios#scenario-1-use-a-file-based-pkcs12-keystore-with-zowe-generated-certificates)
       * [certificates configuration scenario 3](certificate-configuration-scenarios#scenario-3-use-a-zos-keyring-based-keystore-with-zowe-generated-certificates)   
-   * No, my existing certificates are signed by trusted CA. See the following possible sceanarios:  
+   * Yes, my existing certificates are signed by trusted CA. See the following possible sceanarios:  
       * [certificates configuration scenario 2](certificate-configuration-scenarios#scenario-2-use-a-file-based-pkcs12-keystore-and-import-a-certificate-generated-by-another-ca)  
       * [certificates configuration scenario 4](certificate-configuration-scenarios#scenario-4-use-a-zos-keyring-based-keystore-and-connect-to-an-existing-certificate)  
       * [certificates configuration scenario 5](certificate-configuration-scenarios#scenario-5-use-a-zos-keyring-based-keystore-and-import-a-certificate-stored-in-a-data-set)
 
-**Question 3:** What is your target environment?
-   * Production / live production systems open for access from the internet/VPN  
-   See the following possible scenarios:  
-      * [certificates configuration scenario2](certificate-configuration-scenarios#scenario-2-use-a-file-based-pkcs12-keystore-and-import-a-certificate-generated-by-another-ca)  
-      * [certificates configuration scenario 4](certificate-configuration-scenarios#scenario-4-use-a-zos-keyring-based-keystore-and-connect-to-an-existing-certificate)  
-      * [certificates configuration scenario 5](certificate-configuration-scenarios#scenario-5-use-a-zos-keyring-based-keystore-and-import-a-certificate-stored-in-a-data-set)
-   * Test/Dev/Private (Learning, Experimenting)  
-   See the following possible scenarios:  
-      * [certificates configuration scenario 1](certificate-configuration-scenarios#scenario-1-use-a-file-based-pkcs12-keystore-with-zowe-generated-certificates)  
-      * [certificates configuration scenario 3](certificate-configuration-scenarios#scenario-3-use-a-zos-keyring-based-keystore-with-zowe-generated-certificates)
-
-**Question 4:** Do you intend to use your certificates for server, for client, or for both?
-   * Server only (your service only accepts calls from TLS-secured clients).
-   * Client only (your service only performs calls to TLS-secured services).
-   * Server and client (your service accepts inbound connections and performs calls to other TLS-secured services).
-
-**Question 5:** What certificates storage type do you plan to use?
+**Question 3:** What certificates storage type do you plan to use?
    * I plan to use a z/OS keyring.  
    See the following possible scenarios:
       * [certificates configuration scenario 3](certificate-configuration-scenarios#scenario-3-use-a-zos-keyring-based-keystore-with-zowe-generated-certificates)  
@@ -89,6 +79,15 @@ to choose the best options for certificates type and properties according to you
    See the following possible scenarios:
       * [certificates configuration scenario 1](certificate-configuration-scenarios#scenario-1-use-a-file-based-pkcs12-keystore-with-zowe-generated-certificates)  
       * [certificates configuration scenario 2](certificate-configuration-scenarios#scenario-2-use-a-file-based-pkcs12-keystore-and-import-a-certificate-generated-by-another-ca)
+
+**Question 4:** Do you plan to use an existing certificate from another keyring or from a dataset?
+* Yes, I already have certificates for my server/s.  
+  See [certificates configuration scenario 4](./certificate-configuration-scenarios#scenario-4-use-a-zos-keyring-based-keystore-and-connect-to-an-existing-certificate).
+* No, I do not have certificates for my server/s. See the following possible scenarios:
+    * [certificates configuration scenario 1](./certificate-configuration-scenarios#scenario-1-use-a-file-based-pkcs12-keystore-with-zowe-generated-certificates)
+    * [certificates configuration scenario 3](certificate-configuration-scenarios#scenario-3-use-a-zos-keyring-based-keystore-with-zowe-generated-certificates)
+    * [certificates configuration scenario 5](certificate-configuration-scenarios#scenario-5-use-a-zos-keyring-based-keystore-and-import-a-certificate-stored-in-a-data-set)
+
 
 ## Additional information
 
