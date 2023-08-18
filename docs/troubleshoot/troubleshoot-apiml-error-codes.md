@@ -1186,25 +1186,22 @@ The following error message codes may appear on logs or API responses. Use the f
   **Action:**
 
   Based on the specific information in the message, verify that the key configuration is correct, or alternatively, that z/OSMF is available. If z/OSMF is available, specify the authentication type used by z/OSMF in your configuration settings.
-  
-  Use the following configuration format:
-  ```
-  apiml: 
-    security: 
-       auth: 
-           zosmf: 
-               jwtAutoconfiguration:
-  ```
-  Apply one of the following values:
-  
-  * **auto**
-  Signifies that API ML is enabled to resolve the JWT producer
-  
-  * **jwt**
-  Signifies that z/OSMF supports JWT (APAR PH12143 is applied)
-  
-  * **ltpa**
-  Signifies that z/OSMF does not support JWT
+ Use the following configuration format: ```
+   apiml:
+     security:
+       auth:
+         zosmf:
+           jwtAutoconfiguration:
+ ``` Apply one of the following values:
+ * **auto**
+   Signifies that API ML is enabled to resolve the JWT producer
+ 
+ * **jwt**
+   Signifies that z/OSMF supports JWT (APAR PH12143 is applied)
+ 
+ * **ltpa**
+   Signifies that z/OSMF does not support JWT
+ 
 
 ### ZWEAG714E
 
@@ -1253,6 +1250,30 @@ The following error message codes may appear on logs or API responses. Use the f
   **Action:**
 
   Verify the conformance criteria, provide valid service id.
+
+### ZWEAG718E
+
+  Cannot retrieve metadata: '%s'
+
+  **Reason:**
+
+  Metadata aren't accessible
+
+  **Action:**
+
+  Verify that the metadata are accessible and not empty
+
+### ZWEAG719I
+
+  The service is not conformant: %s
+
+  **Reason:**
+
+  The provided service does not satisfy the conformance criteria and is therefore not valid.
+
+  **Action:**
+
+  Verify the conformance criteria.
 
 ### ZWEAG100E
 
@@ -1616,10 +1637,11 @@ The following error message codes may appear on logs or API responses. Use the f
 
 ### ZWEAG182E
 
-  SSL Misconfiguration, z/OSMF is not accessible. Please verify the following: \n
-  - CN (Common Name) and z/OSMF hostname have to match.\n
-  - Certificate is expired\n
-  - TLS version match\n
+  SSL Misconfiguration, z/OSMF is not accessible. Message: %s Please verify the following:
+  - CN (Common Name) and z/OSMF hostname have to match.
+  - Certificate is expired
+  - TLS version match
+  - z/OSMF server certificate is trusted in Zowe's truststore
 Enable debugging to see further details in stack trace
 
 
@@ -1707,15 +1729,15 @@ Enable debugging to see further details in stack trace
 
 ### ZWEAC100W
 
-  Could not retrieve all service info from discovery -- %s -- %s -- %s
+  Could not retrieve information about service %s from the Discovery Service. Requested URL: %s. Response received: status code: %s, body: %s
 
   **Reason:**
 
-  The response from The Discovery Service about the registered instances returned an error or empty body.
+  The response from The Discovery Service about the registered service instances returned an error or empty body.
 
   **Action:**
 
-  Make sure the Discovery Service is up and running. If the http response error code refers to a security issue, check that both the Discovery Service and Catalog are running with the https scheme and that security is configured properly.
+  Make sure the Discovery Service and requested service are up and running. If the HTTP response error code refers to a security issue, make sure that security configuration is correct.
 
 ### ZWEAC101E
 
