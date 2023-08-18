@@ -1254,6 +1254,30 @@ The following error message codes may appear on logs or API responses. Use the f
 
   Verify the conformance criteria, provide valid service id.
 
+### ZWEAG718E
+
+  Cannot retrieve metadata: '%s'
+
+  **Reason:**
+
+  Metadata are not accessible.
+
+  **Action:**
+
+  Verify that the metadata are accessible and not empty.
+
+### ZWEAG719I
+
+  The service id provided is invalid: '%s'
+
+  **Reason:**
+
+  The provided service does not satisfy the conformance criteria and is therefore not valid.
+
+  **Action:**
+
+  Verify the conformance criteria, provide valid service id.
+  
 ### ZWEAG100E
 
   Authentication exception: '%s' for URL '%s'
