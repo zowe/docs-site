@@ -19,40 +19,27 @@ The numerated decision blocks correspond to the questions of the certificates co
 
 The questions presented in the numbered yellow diamonds can help you decide which path best suits your certificate configuration use case. After considering the options outlined in the following section, use the [questionnaire](#certificates-configuration-questionnaire) to guide you to the configuration scenario that best suits your use case.
 
-**Question 1:** Do you plan to use an existing certificate?  
+**Question 1:** What is your target deployment environment?  
+Depending on your target environment type (DEV/TEST or PROD), you can create your certificates (self-signed option) or acquire a new ones from a trusted CA.
+
+If you plan a production deployment and need to acquire certificates from a trusted CA, follow the same rule to decide what type of certificate to request from the CA.
+
+**Question 2:** Do you need to use certificate signed by the company's or external CA?  
+If your existing certificates are self-signed and your target environment is production, we strongly recommend that you acquire new certificates from your trusted CA.
+
+**Question 3:** Do you plan to use a keyring?  
+Decide if you want to store the certificate in a z/OS keyring or to a file based keystore/truststore.
+
+**Tip:**  
+While using a keystore/truststore pair is possible to store your certificates, we recommend that you use z/OS keyrings for production deployments.
+
+**Question 4:** Do you plan to use an existing certificate from another keyring or from dataset?  
 If you have an existing certificate, you can import this certificate to the planned key storage z/OS keyring or file based keystore/truststore.
 
 Before importing your certificates, check to make sure that their format, type and properties correspond to the required protection and acceptability depending on the planned deployment environment (DEV, TEST, PROD).
 For example, use self-signed certificates only with development or testing environments and not with production environments.
 
 For more information, see [Import and configure an existing certificate](./import-certificates).
-
-**Question 2:** Is your certificate self-signed?  
-If your existing certificates are self-signed and your target environment is production, we strongly recommend that you acquire new certificates from your trusted CA.
-
-**Question 3:** What is your target deployment environment?  
-Depending on your target environment type (DEV/TEST or PROD), you can create your certificates (self-signed option) or acquire a new ones from a trusted CA.
-
-If you plan a production deployment and need to acquire certificates from a trusted CA, follow the same rule to decide what type of certificate to request from the CA.
-
-**Question 4:** Is your certificate only for SERVER usage?  
-If you plan to use the same certificate for client and server usage, you need to generate your certificates with the EXTENDED USAGE attribute set to CLIENT and SERVER.
- 
-If you plan a production deployment and need to acquire certificates from a trusted CA, follow the same rule to determine the EXTENDED USAGE attribute values to request from the CA.
-
-For more information, see [Generate a certificate if you do not have a certificate](./generate-certificates).
-:::
-
-**Question 5:** Is your certificate already imported to a keystore/truststore or keyring?  
-If your certificates are not yet imported, determine where to import them.
-
-For more information, see the [Import certificates article](./import-certificates).
-
-**Question 6:** Do you plan to use a keyring?  
-Decide if you want to store the certificate in a z/OS keyring or to a file based keystore/truststore.
-
-**Tip:**  
-While using a keystore/truststore pair is possible to store your certificates, we recommend that you use z/OS keyrings for production deployments.
 
 ## Certificates configuration questionnaire
 
