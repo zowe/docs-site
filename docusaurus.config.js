@@ -172,6 +172,9 @@ module.exports = {
       apiKey: "de714331a88daaf9b541b4ad68c19d84",
       indexName: "zowe",
       contextualSearch: true,
+      searchParameters: {
+        facetFilters: ["keywords"]
+      }
     },
     colorMode: {
       defaultMode: "light",
