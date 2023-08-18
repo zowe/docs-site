@@ -24,7 +24,7 @@ When upgrading an installation in high availability mode, one or more instances 
 
 - HA settings are the same across both installations.
 - Each instance has its own configuration file (e.g. `zowe.yaml` file), and the HA and security settings are synchronized.
-- Onboarded services must be also be in high availability mode.
+- Onboarded services must also be in high availability mode.
 
 ## Upgrading installation with HA
 
@@ -45,7 +45,7 @@ Use the following procedure to install a new Zowe instance:
 
     The settings across both instances must be the same, except for properties pointing to datasets and z/OS USS filesystems which are now separated.
 
-    The following is a list of properties that will be different between the instances:
+    Ensure that the following properties are different between instances:
 
     ```yaml
     zowe.setup.datasets
@@ -65,7 +65,7 @@ Use the following procedure to install a new Zowe instance:
     app-server:
         enabled: false
     ```
-
+You configured your installation for the two instances.
 ### Switching traffic
 
 Switching traffic without incurring downtime involves the following general steps. Details of these steps are described later in this section.
@@ -112,7 +112,7 @@ Successful completion of these steps enables Zowe to run in high availability mo
 
 ### Verifying the new connection
 
-Use the following checks to verify the Zowe is running correctly with the new configuration:
+Use the following checks to verify Zowe is running correctly with the new configuration:
 
 - Verify that Discovery Services contain all of the registered services from both instances.
 - Check that the API Gateway home page shows the number of instances running simultaneously.
