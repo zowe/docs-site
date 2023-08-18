@@ -15,7 +15,7 @@ Review the following flow diagram to improve your understanding of the Zowe cert
 
 **Note:**
 
-![Certificates configuration decision tree](../images/install/config-certificates.png)
+![Certificates configuration decision tree](../images/install/certificates-config-scenarios.png)
 
 The numerated decision blocks (the yellow diamonds) in the diagram correspond to the questions of the certificates configuration [questionnaire](#certificates-configuration-questionnaire).
 The questions presented in the numbered decision blocks can help you decide which path best suits your certificate configuration use case.
