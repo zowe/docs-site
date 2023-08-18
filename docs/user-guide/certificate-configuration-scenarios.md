@@ -321,7 +321,7 @@ If you would like to use this example in your Zowe configuration YAML file, repl
         ```
         dsName: ""
         ```
-    * The password for the PKS12 data set.
+    * The password for the PKCS12 data set.
         ```
         password: ""
         ```
