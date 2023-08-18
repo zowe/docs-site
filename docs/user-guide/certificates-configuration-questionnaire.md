@@ -2,23 +2,20 @@
 
 To properly configure Zowe to use certificates for server-side component installation, it is important to understand certificate setup options. 
 Understanding these options makes it possible to select the best [certificate configuration scenario](./certificate-configuration-scenarios.md) that fits your Zowe deployment use case. 
-To assist you in making this certificate scenario selection, it is useful to familiarize yourself with the Zowe certificate decision process, and answer the questions in the questionnaire at the end of this article.
+To assist you in making this certificate scenario selection, review the Zowe certificate decision process, and answer the questions in the questionnaire at the end of this article.
 
 **Tip:**
-Before answering the questionnaire you may want to make your self familiar with the certificate configuration basics and Zowe certificates configuration overview.
-- [Certificates concepts](../appendix/zowe-security-glossary#certificate-concepts) explained in our [Zowe Security Glossary](../appendix/zowe-security-glossary)
-- [Zowe certificates overview](../getting-started/zowe-certificates-overview)
+Before answering the questionnaire it is useful to  to familiarize yourself with [certificate configuration concepts](../appendix/zowe-security-glossary#certificate-concepts) explained in the [Zowe Security Glossary](../appendix/zowe-security-glossary) and the [Zowe certificates overview](../getting-started/zowe-certificates-overview).
 
 ## Certificates configuration decision flow
 
-Review the following flow diagram to improve your understanding of the Zowe certificates configuration decision process. 
+Review the following flow diagram to improve your understanding of the Zowe certificates configuration decision process and to guide you to which certificate configuration scenario best suits your use case.  
 
 **Note:**
 
 ![Certificates configuration decision tree](../images/install/certificates-config-scenarios.png)
 
 The numerated decision blocks (the yellow diamonds) in the diagram correspond to the questions of the certificates configuration [questionnaire](#certificates-configuration-questionnaire).
-The questions presented in the numbered decision blocks can help you decide which path best suits your certificate configuration use case.
 
 **Question 1:** What is your target deployment environment?  
 Depending on your target environment type (DEV/TEST or PROD), you can create your certificates (self-signed option), acquire a new ones from a trusted CA, or use existing certificates.
