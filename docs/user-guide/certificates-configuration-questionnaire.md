@@ -9,9 +9,7 @@ Before answering the questionnaire you may want to make your self familiar with 
 - [Certificates concepts](../appendix/zowe-security-glossary#certificate-concepts) explained in our [Zowe Security Glossary](../appendix/zowe-security-glossary)
 - [Zowe certificates overview](../getting-started/zowe-certificates-overview)
 
-Review the following flow diagram to improve your understanding of the Zowe certificates configuration decision process. 
-
-**Note:**
+Review the following flow diagram to improve your understanding of the Zowe certificates configuration decision process.
 
 ![Certificates configuration decision tree](../images/install/certificates-config-scenarios.png)
 
