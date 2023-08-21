@@ -126,6 +126,7 @@ module.exports = {
                     "user-guide/install-zowe-pswi-deployment",
                   ],
                 },
+                "user-guide/api-mediation/upgrade-zowe-no-downtime",
               ],
             },
             {
@@ -196,7 +197,6 @@ module.exports = {
                 "user-guide/configure-data-sets-jobs-api",
                 "user-guide/api-mediation/api-catalog-configuration",
                 "user-guide/api-mediation/api-gateway-configuration",
-                "user-guide/api-mediation/upgrade-zowe-no-downtime",
                 "user-guide/api-mediation/discovery-service-configuration",
                 "user-guide/api-mediation/api-mediation-internal-configuration",
                 "extend/extend-apiml/api-mediation-passtickets",
