@@ -49,7 +49,7 @@ Alternatively, you can create a mq profile manually by adding a section that con
 
 2. Open the `zowe.config.json` configuration file using a text editor or IDE, such as Visual Studio Code or IntelliJ. 
 
-    **NOTE:** If the file does not exist, issue the following command to create the configuration file: `zowe config init -–gc`
+    **NOTE:** If the file does not exist, issue the following command to create the configuration file: `zowe config init --gc`
 
 3. Add code to the "profiles" section as shown in the following example: 
 

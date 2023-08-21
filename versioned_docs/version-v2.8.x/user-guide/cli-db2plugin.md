@@ -169,7 +169,7 @@ Alternatively, you can create a db2 profile manually by adding a section that co
 
 2. Open the `zowe.config.json` configuration file using a text editor or IDE, such as Visual Studio Code or IntelliJ. 
 
-    **NOTE:** If the file does not exist, issue the following command to create the configuration file: `zowe config init -–gc`
+    **NOTE:** If the file does not exist, issue the following command to create the configuration file: `zowe config init --gc`
 
 3. Add code to the "profiles" section as shown in the following example:
     ```
@@ -197,7 +197,7 @@ The following steps describe how to create a profile using the `zowe profiles cr
 
 1. Open a terminal window and issue the following command:
     ```
-    zowe profiles create db2 <profile_name> –-host <host> --port <port> --user <user> --password <password> -–region-name <region>
+    zowe profiles create db2 <profile_name> –-host <host> --port <port> --user <user> --password <password> --region-name <region>
     ```
 
    **`profile_name`:** 
