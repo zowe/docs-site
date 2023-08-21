@@ -65,7 +65,9 @@ Use the following procedure to install a new Zowe instance:
     app-server:
         enabled: false
     ```
+
 You configured your installation for the two instances.
+
 ### Switching traffic
 
 Switching traffic without incurring downtime involves the following general steps. Details of these steps are described later in this section.
@@ -76,7 +78,7 @@ Switching traffic without incurring downtime involves the following general step
 4. Verifying service replication.
 5. Resume traffic to the instance.
 
-**Note:** Only new connections can be routed to the right instance. <!--What does "right" instance mean? The newly created instance? -->A decision needs to be made on long-lived connections, such as long running requests and Web Socket sessions. These connections cannot be re-routed. As such, these connections are closed when the instance is stopped.
+**Note:** Only new connections can be re-routed to avoid the instance shutting down. A decision needs to be made on long-lived connections, such as long running requests and Web Socket sessions. These connections cannot be re-routed. As such, these connections are closed when the instance is stopped.
 
 1. Verify access by running the `VARY` command. `CONTROL` access to the `MVS.VARY.TCPIP.SYSPLEX` profile is required.
 For more information, see the article _VARY TCPIP,,SYSPLEX_ in the IBM documentation.
