@@ -2502,7 +2502,7 @@ The following error message codes may appear on the app-server log. Use the foll
   Review the error to resolve it and contact support if needed. It's also possible as a workaround to explicitly state the CAs within the keyring that you would like to load, rather than relying upon the server's attempt to automatically find all CAs within the keyring.
 
 
-## App-server errormessages
+## App-server error messages
 
 ### ZWED0001E
 
