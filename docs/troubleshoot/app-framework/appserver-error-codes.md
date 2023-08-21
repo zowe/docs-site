@@ -1142,7 +1142,7 @@ The following error message codes may appear on the app-server log. Use the foll
 
   No action Required.
 
-
+## App-server warning messages
 
 ### ZWED0004W
 
@@ -2097,7 +2097,7 @@ The following error message codes may appear on the app-server log. Use the foll
 
 
 
-### ZWED0085
+### ZWED0085W
 
   Tomcat PID=_pid_ Error when stopping, error=_errorMessage_
 
@@ -2502,6 +2502,7 @@ The following error message codes may appear on the app-server log. Use the foll
   Review the error to resolve it and contact support if needed. It's also possible as a workaround to explicitly state the CAs within the keyring that you would like to load, rather than relying upon the server's attempt to automatically find all CAs within the keyring.
 
 
+## App-server errormessages
 
 ### ZWED0001E
 
