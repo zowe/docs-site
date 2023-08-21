@@ -73,7 +73,7 @@ Be sure your z/OS system meets the following prerequisites:
   - For production use of Zowe, see [Configuring z/OSMF](systemrequirements-zosmf.md).
   
 
-## User ID requirements
+## User ID requirements and security permissions
 
 Specific user IDs with sufficient permissions are required to run or access Zowe. 
 
