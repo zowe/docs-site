@@ -15,7 +15,7 @@ Review the following assumptions about the installation before you start the upg
 
 ## Limitations
 
-There is a known limitation with balancing traffic between different versions of the UI components, in particular about the API Catalog.
+There is a known limitation with balancing traffic between different versions of the UI components, in particular regarding the API Catalog.
 Only one API Catalog instance can be active in an installation with multiple maintainance levels.
 
 ## Pre-requisites before installation upgrade with HA
@@ -75,7 +75,7 @@ Switching traffic without incurring downtime involves the following general step
 1. Disable an application instance (`QUIESCE`) from the DVIPA of the sysplex distributor.
 2. Stop this original instance.
 3. Start the new instance.
-4. Verifying service replication.
+4. Verify service replication.
 5. Resume traffic to the instance.
 
 **Note:** Only new connections can be re-routed to avoid the instance shutting down. A decision needs to be made on long-lived connections, such as long running requests and Web Socket sessions. These connections cannot be re-routed. As such, these connections are closed when the instance is stopped.
