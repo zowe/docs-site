@@ -16,7 +16,7 @@ Review the following flow diagram to improve your understanding of the Zowe cert
 The numerated decision blocks (the yellow diamonds) in the diagram correspond to the questions of the certificates configuration questionnaire.
 The questions presented in the numbered decision blocks will guide you through the path to the certificate configuration scenario which best suits your certificate use case. 
 
-Answer each question and find which scenarios are relevant for the chosen option:
+Answer each question and find which scenarios are relevant for the selected option:
 
 **Question 1:** What is your target deployment environment?  
 Depending on your target environment type (DEV/TEST or PROD), you can create your certificates (self-signed option), acquire a new ones from a trusted CA, or use existing certificates.
