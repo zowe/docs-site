@@ -32,7 +32,7 @@ zowe:
 
 In the example, the certificate type `PCKS12` does not exist. It is a typo. Without schema validation, the servers might start and then crash due to the typo.
 
-With the schema file, you can see that there are only two choices for certificate types:
+With the schema file, you can see that there are listed choices for certificate types:
 
 ```
     "certificate": {
@@ -49,11 +49,11 @@ With the schema file, you can see that there are only two choices for certificat
             "type": {
               "type": "string",
               "description": "Keystore type.",
-              "enum": ["PKCS12", "JCERACFKS"]
+              "enum": ["PKCS12", "JCEKS", "JCECCAKS", "JCERACFKS", "JCECCARACFKS", "JCEHYBRIDRACFKS"]
             },
 ```
 
-The type can either be `PKCS12` or `JCERACFKS`. This allows you to not only detect this error but also see the options available.
+The type can only one from the `enum` list. This allows you to not only detect this error but also see the options available.
 
 When `zwe` runs and fails schema validation due to the "PCKS12" typo, it will print out the following message:
 
@@ -90,27 +90,33 @@ Zowe now publishes these schema files so that you can see all the configuration 
 
 From the GitHub links above, if you want to see changes between versions, you can compare by the GitHub tags.
 
-## Splitting configuration into multiple files
+## Splitting configuration into multiple storage types
 
-When `zwe` is using Configuration Manager, the `CONFIG=` parameter in the z/OS ZWESLSTC JCL and the `--config` parameter in any `zwe` command that supports `--configmgr` can take a list of YAML file locations as an alternative to the backward-compatible single YAML file used in prior Zowe versions.
+When `zwe` is using Configuration Manager, the `CONFIG=` parameter in the z/OS ZWESLSTC JCL and the `--config` parameter in any `zwe` command that supports `--configmgr` can take a list of YAML locations as an alternative to the backward-compatible single YAML file used in prior Zowe versions.
 
 
-When using a single unix file, the syntax is just the path to the file, such as `CONFIG=/my/zowe.yaml`. However, when using multiple files, you must use the syntax `FILE(file1):FILE(file2):...` where each file is surrounded with `FILE()` and files are separated by the colon `:` character. The use of `FILE()` will allow Zowe to support other types of storage in the future. An example of using multiple configuration files would be as follows: 
+When using a single Unix file, the syntax is just the path to the file, such as `CONFIG=/my/zowe.yaml`. However, when using multiple storage types, you must use the syntax `FILE(file1):PARMLIB(DSN(MEMBER)):...` where each storage types is surrounded with `FILE()` or `PARMLIB()` and storage types are separated by the colon `:` character. An example of using multiple configuration storage types would be as follows:  
 
 ```
-CONFIG=FILE(/home/me/zowe-customizations.yaml):FILE(/global/zowe/example-zowe.yaml)
+CONFIG=FILE(/home/me/zowe-customizations.yaml):FILE(/global/zowe/example-zowe.yaml):PARMLIB(MYORG.ZOWE.PARMLIB(YAML))
 ```
 
-Each file in the list you provide must adhere to the same Zowe configuration schema, but the contents can be any subset you want per file. Zowe will merge together the contents of all the files into one unified configuration, so the collection of files must result in a configuration which is valid against the Zowe schema.
+**Note:** All `PARMLIB()` entries must have the same member name:
+```
+CONFIG=PARMLIB(MYORG.ZOWE.PARM1(YAML)):PARMLIB(MYORG.ZOWE.PARM2(YAML))
+```
+**Note:** Characters `=`, `:`, `(` and `)` are considered as reserved. It is highly recommended to avoid using of these characters in the name of zowe.yaml file.
 
-Schema validation occurs upon the merged result, not the individual files.
-There are a few reasons you may want to split your Zowe configuration into multiple files, such as:
+Each storage type in the list you provide must adhere to the same Zowe configuration schema, but the contents can be any subset you want per storage types. Zowe will merge together the contents of all the storage types into one unified configuration, so the collection of storage types must result in a configuration which is valid against the Zowe schema.
+
+Schema validation occurs upon the merged result, not the individual storage type.
+There are a few reasons you may want to split your Zowe configuration into multiple storage types, such as:
 
 - Having a Zowe configuration file that is very small and containing only what is not the default configuration of Zowe, and then running Zowe with 2 configuration files: Your customizations, and the Zowe default such as `CONFIG=FILE(/home/me/zowe-customizations.yaml):FILE(/global/zowe/example-zowe.yaml)`
 - Splitting the Zowe configuration among administrators with certain responsibilities. You could have a file about the z/OSMF configuration, a file about the Java configuration, and so on. An example of this could look like `CONFIG=FILE(/home/me/zowe-customizations.yaml):FILE(/global/org/zosmf-zowe.yaml):FILE(/global/org/java-zowe.yaml):FILE(/global/zowe/example-zowe.yaml)`
    
 
-**Note:** When specifying many files, you may reach the line length limit in your STC JCL. The default JCL contains `_CEE_ENVFILE_CONTINUATION=\` to allow you to continue the `CONFIG` parameter to multiple lines. An example of this is as follows:
+**Note:** When specifying many storage types, you may reach the line length limit in your STC JCL. The default JCL contains `_CEE_ENVFILE_CONTINUATION=\` to allow you to continue the `CONFIG` parameter to multiple lines. An example of this is as follows:
 
 ```
 CONFIG=FILE(/home/me/zowe-customizations.yaml)\
@@ -119,13 +125,13 @@ CONFIG=FILE(/home/me/zowe-customizations.yaml)\
 :FILE(/global/zowe/example-zowe.yaml)
 ```
 
-When you use multiple files, Zowe constructs the unified configuration by having the files listed on the left override the values of files to their right in the list. This means the left-most file's values take priority, and the right-most file should be treated as a set of defaults. Here is an example of Splitting configuration into multiple files:
+When you use multiple storage types, Zowe constructs the unified configuration by having the storage types listed on the left override the values of storage types to their right in the list. This means the left-most storage type's values take priority, and the right-most storage type should be treated as a set of defaults. Here is an example of splitting configuration into multiple files:
 
 ![multi yaml example](../images/configure/multiyaml.png)
 
 ## Configuration templates
 
-Each Zowe configuration file provided to Zowe when using Configuration Manager can contain values which are templates. These templates are not the literal values of a parameter, but will be substituted for a real value by Configuration Manager. This allows you to simplify complex or tedious configuration such as:
+Each Zowe configuration provided to Zowe when using Configuration Manager can contain values which are templates. These templates are not the literal values of a parameter, but will be substituted for a real value by Configuration Manager. This allows you to simplify complex or tedious configuration such as:
   
 - Replacing occurrences of the same path in the configuration with templates that reference that path. Instead of needing to update every occurrence of a path when it changes, you would only need to update it once.
 - Having a value that is linked to another, such as that you may only want the gateway component to be enabled when the discovery component is enabled.
@@ -139,14 +145,14 @@ Here are some examples of templates that you can use to simplify your configurat
 
 ![templating example](../images/configure/templating.png)
 
-## Configuration Manager unix executable
+## Configuration Manager Unix executable
 
 `configmgr` is a file located within `<zowe.runtimeDirectory>/bin/utils` in the Zowe server component runtime for z/OS. If you run it with no arguments, it prints a help command that details what you can do with it. `configmgr` commands focus on providing input files and schemas, and then providing output such as validation success or printing the configuration.
 
 The `configmgr` executable needs the following as input:
 
-- A list of configuration locations. Each location can be a different type such as a unix file or parmlib from a dataset, but each must be YAML format. Every configuration object in the list must only contain data from the same schema because the list will be merged together into a single configuration object during processing. The rules and syntax are the same as seen in the `config` property of the [Using `zwe` with Configuration Manager section](#using-zwe-with-configuration-manager).
-- A list of json-schema unix files separated by a colon `:`, with the top-level schema being the left-most in the list. The unified configuration will be validated against this top-level schema and any references in the other schema files in the list.
+- A list of configuration locations. Each location can be a different type such as a Unix file or parmlib from a dataset, but each must be YAML format. Every configuration object in the list must only contain data from the same schema because the list will be merged together into a single configuration object during processing. The rules and syntax are the same as seen in the `config` property of the [Using `zwe` with Configuration Manager section](#using-zwe-with-configuration-manager).
+- A list of json-schema Unix files separated by a colon `:`, with the top-level schema being the left-most in the list. The unified configuration will be validated against this top-level schema and any references in the other schema files in the list.
    
 The `configmgr` executable can do the following with the input:
 
