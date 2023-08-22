@@ -126,7 +126,13 @@ module.exports = {
                     "user-guide/install-zowe-pswi-deployment",
                   ],
                 },
-                "user-guide/api-mediation/upgrade-zowe-no-downtime",
+                {
+                  type: "category",
+                  label: "Upgrading server-side components",
+                  items: [
+                    "user-guide/api-mediation/upgrade-zowe-no-downtime"
+                  ],
+                },
               ],
             },
             {
