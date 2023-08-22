@@ -1,8 +1,8 @@
-# Upgrade Zowe in high availability
+# Upgrade Zowe server-side components in high availability
 
-As a systems programmer, it is necessary to upgrade Zowe regularly to ensure that you are using the latest features and  the latest security patches.
+As a systems programmer, it is necessary to upgrade Zowe server-side components regularly to ensure that you are using the latest features and  the latest security patches.
 
-This article describes the requirements and procedure to perform an upgrade of a Zowe installation in high availability mode to a newer minor version with zero downtime.
+This article describes the requirements and procedure to perform an upgrade of a Zowe server-side components installation in high availability mode to a newer minor version with zero downtime.
 
 ## Installation assumptions
 
