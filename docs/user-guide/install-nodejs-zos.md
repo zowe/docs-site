@@ -1,4 +1,4 @@
-# Installing Node.js on z/OS
+# Address Node.js requirements
 
 **Note: This section is not required if using Docker or only using the CLI.**
 

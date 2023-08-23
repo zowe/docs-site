@@ -1,4 +1,5 @@
 # Zowe Security Overview
+
 Zowe implements comprehensive measures to secure mainframe services and data resources in transition and in rest:
 
 - Digital certificates are used by Zowe to facilitate secure electronic communication and data exchange between people, systems, and devices online.
@@ -19,6 +20,7 @@ Review the following sections to learn about how Zowe leverages modern security 
   - [Access Authorization](#access-authorization)
   
 ## Digital certificates
+
 A Digital Certificate is an electronic file that is tied to a cryptographic (public and private) key pair and authenticates the identity of a website, individual, organization, user, device or server.
 The de-facto standard is the x.509 family type of certificates, which are the foundation behind Public Key Infrastructure (PKI) security.
 An X.509 certificate binds an identity to a public key using a digital signature.

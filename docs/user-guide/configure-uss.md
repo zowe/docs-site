@@ -1,5 +1,4 @@
-<!-- omit in toc -->
-# Address USS Requirements 
+# Address UNIX System Services (USS) Requirements
 
 The Zowe z/OS component runtime requires UNIX System Services (USS) to be configured. As shown in the [Zowe architecture](../getting-started/zowe-architecture.md), a number of servers run under UNIX System Services (USS) on z/OS. Review this topic for knowledge and considerations about USS when you install and configure Zowe.
 
