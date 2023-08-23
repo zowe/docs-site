@@ -1,17 +1,20 @@
 # Glossary
 
 This glossary is part of a growing list of Zowe terminology.
+
 ## Architecture and other components
+
+### Components
 
 #### API Catalog
 
 Provides a list of the API services that have registered themselves as catalog tiles and renders those services' Swagger documents. There is also a plug-in for it.
 
-#### API Discovery
+#### Discovery Service
 
 Enables API Services to be onboarded to the API ML.
 
-#### API Gateway  
+#### Gateway Service
 
 A proxy server that routes requests from clients on its northbound edge (such as web browsers or Zowe CLI) to servers on its southbound edge that are able to provide data to serve the request.
   
@@ -19,7 +22,7 @@ Also responsible for generating the authentication token used to provide single 
 
 #### Caching Service
 
-Designed for Zowe components in a high availability configuration. It supports the HA of all components within Zowe, allowing components to be stateless by providing a mechanism to offload their state to a location accessible by all instances of the service, including those which just started.
+Designed for Zowe components in a high-availability configuration. It supports the HA of all components within Zowe, allowing components to be stateless by providing a mechanism to offload their state to a location accessible by all instances of the service, including those which just started.
 
 #### Configuration Manager
 
@@ -77,28 +80,35 @@ The set of programs (for example, `zwe` command) and utilities (for example, JCL
 
 #### Zowe IntelliJ Plug-in
 
-Through the IntelliJ IDE, this plug-in provides abilities to work with z/OS data sets, USS files, and exploring and managing JES jobs.
+Through the IntelliJ IDEs, this plug-in provides abilities to work with z/OS data sets, USS files, and exploring and managing JES jobs.
 
 #### Zowe Launcher
 
 A server-side program necessary for high availability/fault tolerance (HA/FT). It starts the Zowe server components and monitors their processes so that if a component fails to start or crashes, the launcher restarts it. The restarting of a component has limits to prevent loops in case of a component that has uncorrectable problems.
+
 ## Community
-
-#### Core components
-
-The definition of a core component is governed by the Technical Steering Committee (TSC), but typically, it is a packaged, foundational piece that is part of base Zowe.
-
-From the perspective of a conformant support provider, providing support for Zowe refers to providing support for each core component of Zowe (although a provider may place their own limitations on what they support).
-
-A core component is usually actively maintained by one or more squads. A component has a [component manifest file](https://docs.zowe.org/stable/appendix/server-component-manifest/) that helps identify it with the rest of Zowe. 
-
-#### Extension
-
-Generally used to describe additional, non-default Zowe plug-ins or components. See [plug-in](zowe-glossary.md#plug-in) for additional context.
 
 #### Open Mainframe Project (OMP)
   
 An organization which hosts and promotes development of open source software for the benefit of the IBM z mainframe community, including but not limited to z/OS. Zowe(.org) is one of several programs in this project. See the [Open Mainframe Project website](https://www.openmainframeproject.org/) for more information.
+
+#### Technical Steering Committee (TSC)
+
+The governing body that is responsible for the overall planning, development, and technical feedback assessment of Zowe. The TSC meets weekly to go over squad updates and discuss issues regarding the zowe initiative. To get notified of upcoming meetings and agendas, join the [TSC Slack channel](https://openmainframeproject.slack.com/archives/C01H6CY0ZD1). The TSC operates by [charter](https://github.com/zowe/community/blob/master/Technical-Steering-Committee/charter.md) and [tsc governance](https://github.com/zowe/community/blob/master/Technical-Steering-Committee/tsc-governance.md)
+
+#### Core projects
+
+Core is defined as Zowe projects that are required and are foundational in order to realize the full value of Zowe for everyone including all the other extensions that may depend on them. Configuration and usage is recommended.
+
+Zowe is fully responsible for all Core projects. A non-Zowe project cannot be clasified as a Core project. Each active squad is responsible for the core project with co-responsibility of the TSC.
+
+The [list of current core projects alongside with extension and their lifecycle stage](https://github.com/zowe/community/blob/master/PROJECTS.md) is owned by TSC. 
+
+#### Extension projects
+
+Zowe extension is a project within Zowe that is owned by one of the squads and that isn't part of the Core. As such it doesn't have to follow the version boundaries that the Zowe Core shares. 
+
+The [list of current core projects alongside with extension and their lifecycle stage](https://github.com/zowe/community/blob/master/PROJECTS.md) is owned by TSC. 
 
 #### Plug-in
 
@@ -108,13 +118,9 @@ A more general term used to describe a modular piece of some component. Dependin
   
 A group of people contributing and participating in the Zowe project. Such a group owns one or more projects. Every squad is required to have a representative on the Technical Steering Committee (TSC), and participate in relevant working groups. For more information about how a squad works, see [Squads](https://github.com/Zowe/community/blob/master/Technical-Steering-Committee/squads.md).
 
-#### Technical Steering Committee (TSC)
+#### Zowe Conformance Program
 
-The governing body that is responsible for the overall planning, development, and technical feedback assessment of Zowe. The TSC meets every Thursday to go over squad updates and discuss issues regarding the zowe initiative. To get notified of upcoming meetings and agendas, join the [TSC Slack channel](https://openmainframeproject.slack.com/archives/C01H6CY0ZD1).
-
-#### zZowe Conformance Program
-
-The Zowe Support Provider Conformance Program gives vendors the ability to showcase their Zowe support competencies via well defined criteria. It is administered by the Linux Foundation and Open Mainframe Project.
+The Zowe Support Provider Conformance Program gives vendors the ability to showcase their Zowe support competencies via well-defined criteria. It is administered by the Linux Foundation and Open Mainframe Project.
 
 #### Zowe Component
 
@@ -122,7 +128,7 @@ Zowe is a collection of both *client* and *server* code. You can install only so
   
 Server components are packaged in a standardized way to include all services and plug-ins in one deliverable. Extensions to Zowe can also be delivered as third-party server components. For more information about how these extensions can use a manifest file, see [Zowe component manifest](https://docs.Zowe.org/stable/extend/packaging-zos-extensions/#zowe-component-manifest).
 
-## Core Zowe components
+## Current projects
 
 #### API Mediation Layer (API ML)
 
@@ -216,6 +222,8 @@ Refers to the full, unarchived set of binaries, executable files, scripts, and o
 
 ### Security
 
+Read [the Zowe Security policy](https://www.zowe.org/security) on zowe.org. 
+
 #### Sample library
 
 The cross memory server runtime artifacts, the JCL for the started tasks, the parmlib, and members containing sample configuration commands are found in the SZWESAMP PDS sample library. For more information, see [PDS sample library and PDSE load library](https://docs.zowe.org/stable/user-guide/configure-xmem-server/#pds-sample-library-and-pdse-load-library).
@@ -232,14 +240,11 @@ This is a started task ID used to run the PROCLIB ZWESISTC that launches the cro
 
 This is a started task ID used to run the PROCLIB ZWESVSTC. The task starts a USS environment using BPXBATSL that executes server components such as the Application Framework, the API ML, and ZSS. To work with USS, the user ID ZWESVUSR must have a valid OMVS segment. For more information, see [System requirements](systemrequirements-zos#zwesvusr).
 
-## Plug-ins/Extensions
-
-### API ML
-
 #### API Catalog
 
 Displays API services that have been discovered by the API Mediation Layer.
-### Zowe Application Framework
+
+### Zowe Application Framework Extensions
 
 #### 3270 Terminal
 
@@ -273,7 +278,7 @@ An app in the Zowe Desktop that provides a user interface that emulates the basi
 
 An app in the Zowe Desktop to interact with z/OS data sets and Unix files. It uses the File Tree.
 
-### Zowe CLI
+### Zowe CLI Extensions
 
 #### IBM® CICS® Plug-in for Zowe CLI
 
@@ -284,6 +289,7 @@ Extends the Zowe CLI to interact with CICS programs and transactions.
 Enables interaction with Db2 for z/OS to perform tasks through Zowe CLI and integrate with modern development tools.
     
 ## Use and development
+
 ### API ML
 
 #### Micronaut
