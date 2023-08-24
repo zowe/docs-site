@@ -1,5 +1,5 @@
 ---
-name: "\U0001F4CC Doc Error Report"
+name: "\U0001F4CC Zowe Docs Banner Request"
 about: Propose a temporary banner message
 title: ''
 labels: ''

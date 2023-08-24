@@ -25,11 +25,10 @@ module.exports = {
   },
   themeConfig: {
         announcementBar: {
-      id: 'support_us',
+      id: 'announcementBar-1', // increment on change
       content:
-        '<div class="ZoweBanner">📌 Zowe Explorer, Zowe CLI extenders and users: node-keytar replaced by new <a target="_blank" rel="noopener noreferrer" href="https://github.com/zowe/zowe-cli/blob/master/packages/secrets/README.md">Secrets for Zowe SDK</a></div>',
+        '📌  <b>Zowe Explorer</b>, <b>Zowe CLI</b> announcement: node-keytar replaced by new <a target="_blank" rel="noopener noreferrer" href="https://github.com/zowe/zowe-cli/blob/master/packages/secrets/README.md">Secrets for Zowe SDK</a>',
       textColor: '#000',
-      isCloseable: false,
     },
     docs: {
       sidebar: {
