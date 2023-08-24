@@ -27,7 +27,7 @@ module.exports = {
         announcementBar: {
       id: 'support_us',
       content:
-        '<div class="ZoweBanner">📌 Zowe Explorer, Zowe CLI extenders and users: node-keytar replaced by new <a target="_blank" rel="noopener noreferrer" href="https://github.com/zowe/zowe-cli/blob/master/packages/secrets/README.md">Secrets for Zowe SDK</a> 🗝️</div>',
+        '<div class="ZoweBanner">📌 Zowe Explorer, Zowe CLI extenders and users: node-keytar replaced by new <a target="_blank" rel="noopener noreferrer" href="https://github.com/zowe/zowe-cli/blob/master/packages/secrets/README.md">Secrets for Zowe SDK</a></div>',
       textColor: '#000',
       isCloseable: false,
     },
