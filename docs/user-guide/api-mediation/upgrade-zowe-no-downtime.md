@@ -37,7 +37,7 @@ Upgrading installation to use high availability mode involves two general steps:
 
 Use the following procedure to install a new Zowe instance:
 
-1. Use one of the supported installation methods to perform a separate installation of the new version of Zowe. For more information about supported installation methods, see the [Installation roadmap](../user-guide/install-zos.md).
+1. Use one of the supported installation methods to perform a separate installation of the new version of Zowe. For more information about supported installation methods, see the [Installation roadmap](../install-zos.md).
 
     **Note:** When performing a separate installation of Zowe, ensure that datasets, STCs definitions, and the USS installation directory are distinct from the original installation.
 
@@ -95,7 +95,7 @@ For more information, see the article _VARY TCPIP,,SYSPLEX_ in the IBM documenta
 
 4. Start the upgraded instance.
 
-    **Note:** For more information about stopping and starting instances, see [Starting and stopping Zowe](../user-guide/start-zowe-zos.md).
+    **Note:** For more information about stopping and starting instances, see [Starting and stopping Zowe](../start-zowe-zos.md).
 
 5. Wait until instance B is up and synchronized with instance A, wherein services are registered in all Discovery Services. To verify that instance B is up and sychronized with instance A, check the following accessibility conditions:
 
