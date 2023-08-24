@@ -119,7 +119,7 @@ module.exports = {
         "user-guide/install-zowe-zos-convenience-build",
         {
           type: "category",
-          label: "Install Zowe via containerization build (PAX file)",
+          label: "Install Zowe via a containerization build (PAX file)",
           items: [
             "user-guide/k8s-introduction",
             "user-guide/k8s-prereqs",

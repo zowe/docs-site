@@ -1,4 +1,4 @@
-# Installing Zowe SMP/E
+# Install Zowe via SMP/E
 
 **Contents**
 
