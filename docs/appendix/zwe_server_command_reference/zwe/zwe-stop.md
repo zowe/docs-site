@@ -16,7 +16,8 @@ zowe:
     security:
       stcs:
         zowe: ZWESLSTC
-  jobname: ZWE1SV
+  job:
+    name: ZWE1SV
 haInstances:
   <ha-instance>:
     sysname: ZLP1
