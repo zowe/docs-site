@@ -1,6 +1,6 @@
 # Address security requirements
 
-As a ... (Identify the role/roles who are addressing these requirements.)
+As a ... (Identify the role/roles who are addressing these requirements. We should include an **Important:** note to inform readers in which use case they are likely to need permissions set by their security administrator.)
 
 Zowe implements comprehensive measures to secure mainframe services and data resources in transition and in rest:
 
@@ -12,6 +12,9 @@ Before installing Zowe server-side components, it is practical to first learn ab
 
 This document provides an overview of the security technologies and features implemented by Zowe and links to Zowe practical guides on how to achieve specific tasks and goals.
 
+
+<!-- We should describe which specific tasks involve the use of certificates, when users need to authenticate/authorize. -->
+
 Learn about the details of how Zowe leverages modern security concepts and technologies:
   - [Digital certificates](../getting-started/zowe-security-overview#digital-certificates)
   - [User Authentication](../getting-started/zowe-security-overview#user-authentication)
@@ -19,7 +22,7 @@ Learn about the details of how Zowe leverages modern security concepts and techn
 
 ## User ID requirements and security permissions
 
-Specific user IDs with sufficient permissions are required to run or access Zowe. <!-- Provide details about the task and the specific role to perform the task -->
+Specific user IDs with sufficient permissions are required to run or access Zowe. Review the following table to ... <!-- Provide details about the task and the specific role to perform the task -->
 
 ### ZWESVUSR
 
@@ -28,7 +31,7 @@ This is a started task ID for `ZWESLSTC`.
 The task starts a USS environment using `BPXBATSL` that executes the core Zowe Desktop (ZLUX) node.js server, the Java API Mediation Layer, and the Z Secure Services C component.  To work with USS, the user ID `ZWESVUSR` must have a valid OMVS segment.  
 
 
-| Class    | ID                          | Access | Reason                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
+| Class    | ID                          | Access | Reason                                                                                                                                                                                                                        |
 |----------|-----------------------------|--------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | CSFSERV  | `Multiple`                  | READ   | To generate symmetric keys using ICSF that is used by [Zowe Desktop cookies](./configure-zos-system.md#configure-an-icsf-cryptographic-services-environment). The list of IDs to enable include `CSF1TRD` , `CSF1TRC` , `CSF1SKE` , `CSF1SKD`. The full list of IDs is described in the z/OS Cryptographic Services user guide for your z/OS release level: [2.2](https://www.ibm.com/docs/en/zos/2.2.0?topic=ssl-racf-csfserv-resource-requirements), [2.3](https://www.ibm.com/docs/en/zos/2.3.0?topic=ssl-racf-csfserv-resource-requirements), [2.4](https://www.ibm.com/docs/en/zos/2.4.0?topic=ssl-racf-csfserv-resource-requirements) and [2.5](https://www.ibm.com/docs/en/zos/2.5.0?topic=ssl-racf-csfserv-resource-requirements). |
 | FACILITY | `ZWES.IS`                   | READ   | To allow Zowe ZWESLSTC processes to access the Zowe ZIS cross memory server.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
