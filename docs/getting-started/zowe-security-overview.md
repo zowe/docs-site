@@ -67,7 +67,7 @@ For detailed information, see the [SAF resource checking documentation](../user-
 
 ## Additional resources
 For more information about getting started with certificates including dertermining your certificate configuration use case, importing certificates, generating certificates and using certificates, see the following resources:  
-- [Use-case based certificates configuration scenarios](../user-guide/certificate-configuration-scenarios)
-- [Generate certificates for Zowe servers](../user-guide/generate-certificates)
-- [Import certificates](../user-guide/import-certificates)
-- [Configure Zowe to use certificates](../user-guide/configure-certificates)
+- [Use-case based certificates configuration scenarios](../user-guide/certificate-configuration-scenarios.md)
+- [Generate certificates for Zowe servers](../user-guide/generate-certificates.md
+- [Import certificates](../user-guide/import-certificates.md)
+- [Configure Zowe to use certificates](../user-guide/configure-certificates.md)
