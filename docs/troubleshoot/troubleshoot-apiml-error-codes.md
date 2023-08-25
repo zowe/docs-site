@@ -1186,25 +1186,22 @@ The following error message codes may appear on logs or API responses. Use the f
   **Action:**
 
   Based on the specific information in the message, verify that the key configuration is correct, or alternatively, that z/OSMF is available. If z/OSMF is available, specify the authentication type used by z/OSMF in your configuration settings.
-
-  Use the following configuration format:
-  ```
-  apiml: 
-    security: 
-       auth: 
-           zosmf: 
-               jwtAutoconfiguration:
-  ```
-  Apply one of the following values:
-
-  * **auto**
-  Signifies that API ML is enabled to resolve the JWT producer
-
-  * **jwt**
-  Signifies that z/OSMF supports JWT (APAR PH12143 is applied)
-
-  * **ltpa**
-  Signifies that z/OSMF does not support JWT
+ Use the following configuration format: ```
+   apiml:
+     security:
+       auth:
+         zosmf:
+           jwtAutoconfiguration:
+ ``` Apply one of the following values:
+ * **auto**
+   Signifies that API ML is enabled to resolve the JWT producer
+ 
+ * **jwt**
+   Signifies that z/OSMF supports JWT (APAR PH12143 is applied)
+ 
+ * **ltpa**
+   Signifies that z/OSMF does not support JWT
+ 
 
 ### ZWEAG714E
 
@@ -1260,15 +1257,15 @@ The following error message codes may appear on logs or API responses. Use the f
 
   **Reason:**
 
-  Metadata are not accessible.
+  Metadata aren't accessible
 
   **Action:**
 
-  Verify that the metadata are accessible and not empty.
+  Verify that the metadata are accessible and not empty
 
 ### ZWEAG719I
 
-  The service id provided is invalid: '%s'
+  The service is not conformant: %s
 
   **Reason:**
 
@@ -1276,8 +1273,8 @@ The following error message codes may appear on logs or API responses. Use the f
 
   **Action:**
 
-  Verify the conformance criteria, provide valid service id.
-  
+  Verify the conformance criteria.
+
 ### ZWEAG100E
 
   Authentication exception: '%s' for URL '%s'
@@ -1640,20 +1637,21 @@ The following error message codes may appear on logs or API responses. Use the f
 
 ### ZWEAG182E
 
-  SSL Misconfiguration, z/OSMF is not accessible. Please verify the following: \n
-  - CN (Common Name) and z/OSMF hostname have to match.\n
-  - Certificate is expired\n
-  - TLS version match\n
-Enable debugging to see further details in stack trace
+  SSL Misconfiguration, z/OSMF is not accessible. Message: %s Please verify the following:
+  - CN (Common Name) and z/OSMF hostname match.
+  - The certificate is valid
+  - TLS version matches
+  - z/OSMF server certificate is trusted in Zowe's truststore
+Enable debugging to see further details in stack trace.
 
 
   **Reason:**
 
-  z/OSMF connection has an incorrect configuration.
+  The z/OSMF connection is incorrectly configured.
 
   **Action:**
 
-  Verify z/OSMF connection details. Verify z/OSMF can be accessed with HTTPS
+  Verify z/OSMF connection details. Verify z/OSMF can be accessed with HTTPS. Configure sslDebug to see SSL debugging messages.
 
 ### ZWEAG183E
 
