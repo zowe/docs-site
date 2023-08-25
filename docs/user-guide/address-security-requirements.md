@@ -1,5 +1,7 @@
 # Address security requirements
 
+As a ... (Identify the role/roles who are addressing these requirements.)
+
 Zowe implements comprehensive measures to secure mainframe services and data resources in transition and in rest:
 
 - Digital certificates are used by Zowe to facilitate secure electronic communication and data exchange between people, systems, and devices online.
@@ -10,10 +12,6 @@ Before installing Zowe server-side components, it is practical to first learn ab
 
 This document provides an overview of the security technologies and features implemented by Zowe and links to Zowe practical guides on how to achieve specific tasks and goals.
 
-**Note:** If you are familiar with security technologies and concepts such as digital certificates, authentication, authorization, and z/OS security, 
-you may prefer to skip the introductory sections, and see the [Additional resources section](#additional-resources) at the end of this article
-to jump directly to the security related technical guidance provided on how to Set up Zowe, Use Zowe or Extend Zowe.
-
 Learn about the details of how Zowe leverages modern security concepts and technologies:
   - [Digital certificates](../getting-started/zowe-security-overview#digital-certificates)
   - [User Authentication](../getting-started/zowe-security-overview#user-authentication)
@@ -21,7 +19,7 @@ Learn about the details of how Zowe leverages modern security concepts and techn
 
 ## User ID requirements ans security permissions
 
-Specific user IDs with sufficient permissions are required to run or access Zowe. 
+Specific user IDs with sufficient permissions are required to run or access Zowe. <!-- Provide details about the task and the specific role to perform the task -->
 
 ### ZWESVUSR
 
