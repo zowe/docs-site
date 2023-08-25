@@ -17,7 +17,7 @@ Learn about the details of how Zowe leverages modern security concepts and techn
   - [User Authentication](../getting-started/zowe-security-overview#user-authentication)
   - [Access Authorization](../getting-started/zowe-security-overview#access-authorization)
 
-## User ID requirements ans security permissions
+## User ID requirements and security permissions
 
 Specific user IDs with sufficient permissions are required to run or access Zowe. <!-- Provide details about the task and the specific role to perform the task -->
 
