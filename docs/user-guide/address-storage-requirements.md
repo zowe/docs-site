@@ -1,5 +1,8 @@
 # Address storage requirements 
 
+As a system administrator installing Zowe server-side components, ensure that you have sufficient storage depending on the installation method. Review the storage requirements according to your installation method as presented in this article. <!-- Check this statemetn for accuracy. -->
+
+
 <!-- Are there diffent storage requrements dependin on teh installation method? -->
 
 ## Installing with SMP/E
