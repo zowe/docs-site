@@ -37,7 +37,7 @@ Upgrading installation to use high availability mode involves two general steps:
 
 Use the following procedure to install a new Zowe instance:
 
-1. Use one of the supported installation methods to perform a separate installation of the new version of Zowe. For more information about supported installation methods, see the [Installation roadmap](../user-guide/install-zos.md).
+1. Use one of the supported installation methods to perform a separate installation of the new version of Zowe. For more information about supported installation methods, see the [Installation roadmap](../install-zos.md).
 
     **Note:** When performing a separate installation of Zowe, ensure that datasets, STCs definitions, and the USS installation directory are distinct from the original installation.
 
