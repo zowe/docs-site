@@ -6,7 +6,7 @@ meta:
 
 # Zowe overview
 
-Zowe&trade; is an open source software within the Open Mainframe Project which provides both a extensible framework, and a set of tools that allow mainframe development and operation teams to securely manage, develop, and automate resources and services on z/OS family mainframes.
+Zowe&trade; is an open source software which provides both an extensible framework, and a set of tools that allow mainframe development and operation teams to securely manage, develop, and automate resources and services on z/OS family mainframes.
 Zowe offers modern interfaces to interact with z/OS and allows users to interact with the mainframe system in a way that is similar to what they experience on cloud platforms today.
 Users can work with these interfaces as delivered or through plug-ins and extensions created by customers or third-party vendors.
 All members of the IBM Z platform community, including Independent Software Vendors (ISVs), System Integrators, and z/OS consumers, benefit from the modern and open approach to mainframe computing delivered by Zowe.
@@ -71,7 +71,7 @@ The API Mediation Layer offers enterprise, cloud-like features such as high-avai
 #### API Mediation Layer architecture
 The following diagram illustrates the single point of access through the Gateway, and the interactions between API ML components and services:
 
-![API Mediation Layer Architecture diagram](./diagrams/apiml-architecture.png)
+![API Mediation Layer Architecture diagram](../images/api-mediation/api-ml-architecture.png)
 
 #### Components
 The API Layer consists of the following key components:
