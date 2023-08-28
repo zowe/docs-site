@@ -2,25 +2,15 @@
 
 As a ... (Identify the role/roles who are addressing these requirements. We should include an **Important:** note to inform readers in which use case they are likely to need permissions set by their security administrator.)
 
-Zowe implements comprehensive measures to secure mainframe services and data resources in transition and in rest:
-
-- Digital certificates are used by Zowe to facilitate secure electronic communication and data exchange between people, systems, and devices online.
-- User identity is authenticated through modern authentication methods such as OIDC/Oauth2, Multi-Factor Authentication (MFA), JWT, or Personal Access Token (PAT).
-- User access is authorized by System Authorization Facility (SAF) / External Security Manager (ESM).
-
-Before installing Zowe server-side components, it is practical to first learn about the core security features built into the Zowe architecture.
-
-This document provides an overview of the security technologies and features implemented by Zowe and links to Zowe practical guides on how to achieve specific tasks and goals.
+There are two parts of configuring security:
+* Configuring Zowe security
+* Extending Zowe
 
 
-<!-- We should describe which specific tasks involve the use of certificates, when users need to authenticate/authorize. -->
+## Configuring Zowe security
 
-Learn about the details of how Zowe leverages modern security concepts and technologies:
-  - [Digital certificates](../getting-started/zowe-security-overview#digital-certificates)
-  - [User Authentication](../getting-started/zowe-security-overview#user-authentication)
-  - [Access Authorization](../getting-started/zowe-security-overview#access-authorization)
 
-## User ID requirements and security permissions
+### User ID requirements and security permissions
 
 Specific user IDs with sufficient permissions are required to run or access Zowe. Review the following table to ... <!-- Provide details about the task and the specific role to perform the task -->
 
@@ -41,7 +31,9 @@ The task starts a USS environment using `BPXBATSL` that executes the core Zowe D
 | FACILITY | `IRR.RADMIN.LISTUSER`       | READ   | To allow Zowe to obtain information about OMVS segment of the user profile using `LISTUSER` TSO command.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
 | FACILITY | `IRR.RUSERMAP`              | READ   | **Optional** To allow Zowe to [map an X.509 client certificate to a z/OS identity](./configure-zos-system.md#configure-main-zowe-server-to-use-client-certificate-identity-mapping).                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
 | FACILITY | `IRR.IDIDMAP.QUERY`         | READ   | **Optional** To allow Zowe to [map an ditributed identity to a z/OS identity](./configure-zos-system.md#configure-main-zowe-server-to-use-distributed-identity-mapping).                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
-| FACILITY | `IRR.RAUDITX`               | READ   | **Optional** To allow API Mediation Layer to issue [SMF 83 records](./api-mediation/api-mediation-smf) about activity of Personal Access Tokens.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
+| FACILITY | `IRR.RAUDITX`               | READ   | **Optional** To allow API Mediation Layer to issue [SMF 83 records](./api-mediation/api-mediation-smf) about activity of Personal Access Tokens.                                                                                                                                                                                             For more information about configuring https://docs.zowe.org/stable/user-guide/systemrequirements-zos#multi-factor-authentication-mfa                                                                                                                                                                                                                                                                                                                                                                                             |
+
+## Extending Zowe 
 
 ### ZWESIUSR
 
@@ -54,3 +46,26 @@ This is a group that `ZWESVUSR` and `ZWESIUSR` should belong to. It must have a 
 ### zowe_user
 
 If z/OSMF is used for authentication and serving REST APIs for Zowe CLI and Zowe Explorer users, the TSO user ID for end users must belong to one or both of the groups `IZUUSER` or `IZUADMIN`.
+
+
+## Extending Zowe
+
+Zowe implements comprehensive measures to secure mainframe services and data resources in transition and in rest:
+
+- Digital certificates are used by Zowe to facilitate secure electronic communication and data exchange between people, systems, and devices online.
+- User identity is authenticated through modern authentication methods such as OIDC/Oauth2, Multi-Factor Authentication (MFA), JWT, or Personal Access Token (PAT).
+- User access is authorized by System Authorization Facility (SAF) / External Security Manager (ESM).
+
+Before installing Zowe server-side components, it is practical to first learn about the core security features built into the Zowe architecture.
+
+This document provides an overview of the security technologies and features implemented by Zowe and links to Zowe practical guides on how to achieve specific tasks and goals.
+
+
+<!-- We should describe which specific tasks involve the use of certificates, when users need to authenticate/authorize. -->
+
+Learn about the details of how Zowe leverages modern security concepts and technologies:
+  - [Digital certificates](../getting-started/zowe-security-overview#digital-certificates)
+  - [User Authentication](../getting-started/zowe-security-overview#user-authentication)
+  - [Access Authorization](../getting-started/zowe-security-overview#access-authorization)
+
+
