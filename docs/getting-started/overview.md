@@ -6,10 +6,10 @@ meta:
 
 # Zowe overview
 
-Zowe&trade; is an open source software which provides both, a framework and a set of tools that allow mainframe development and operation teams to securely manage, develop, and automate resources and services on z/OS family mainframes.
+Zowe&trade; is an open source software within the Open Mainframe Project which provides both a extensible framework, and a set of tools that allow mainframe development and operation teams to securely manage, develop, and automate resources and services on z/OS family mainframes.
 Zowe offers modern interfaces to interact with z/OS and allows users to interact with the mainframe system in a way that is similar to what they experience on cloud platforms today.
 Users can work with these interfaces as delivered or through plug-ins and extensions created by customers or third-party vendors.
-All members of the IBM Z platform community, including Independent Software Vendors (ISVs), System Integrators, and z/OS consumers, benefit from the modern and open approach to the mainframe computing delivered by Zowe.
+All members of the IBM Z platform community, including Independent Software Vendors (ISVs), System Integrators, and z/OS consumers, benefit from the modern and open approach to mainframe computing delivered by Zowe.
 
 Zowe is a member of the Open Mainframe Project governed by Linux Foundation&trade;.
 
@@ -35,28 +35,29 @@ Zowe consists of the following components:
 
 ### Zowe Launcher
 
-Provides an advanced launcher for Zowe z/OS server components in a high availability configuration. It performs the following operations:
+The Zowe Launcher makes it possible to launch Zowe z/OS server components in a high availability configuration, and performs the following operations:
 
-- Start all Zowe server components using the 'START' (or 'S') operator command.
-- Stopping the Zowe server components using the `STOP` (or `P`) operator command
-- Stopping and starting specific server components without restarting the entire Zowe instance using `MODIFY` (or `F`) operator command
+- Start all Zowe server components using the `START` (or `S`) operator command.
+- Stop Zowe server components using the `STOP` (or `P`) operator command.
+- Stop and start specific server components without restarting the entire Zowe instance using `MODIFY` (or `F`) operator command.
 
 ### API Mediation Layer
 
-The API Mediation Layer provides a single point of access for mainframe services APIs. It also provides a [Single Sign On (SSO)](../extend/extend-apiml/api-mediation-sso.md) capability for mainframe users.
+The API Mediation Layer provides a single point of access for APIs of mainframe services, and provides a [Single Sign On (SSO)](../extend/extend-apiml/api-mediation-sso.md) capability for mainframe users.
 
-<details>
-<summary> Learn more </summary>
-The API Mediation Layer facilitates secure communication between loosely coupled clients and services through variety of API types, such as REST, GraphQL or Web-Socket. 
-It consists of three core components: the API Gateway, the Discovery Service, and the API Catalog:
+The API Mediation Layer (API ML) facilitates secure communication between loosely coupled clients and services through a variety of API types, such as REST, GraphQL or Web-Socket. 
+API ML consists of three core components: the API Gateway, the Discovery Service, and the API Catalog:
 
- The API Gateway provides secure routing of API requests from clients to registered API services.
- The Discovery Service allows dynamic registration of microservices and enables their discoverability and status updates.
- The services Catalog provides a user-friendly interface to view and try out all registered services, read their associated APIs documentation in OpenAPI/Swagger format.
+- The API Gateway provides secure routing of API requests from clients to registered API services.
+- The Discovery Service allows dynamic registration of microservices and enables their discoverability and status updates.
+- The API Catalog provides a user-friendly interface to view and try out all registered services, read their associated APIs documentation in OpenAPI/Swagger format.
 
 Core Zowe also provides out of the box services for working with MVS Data Sets, JES, as well as working with z/OSMF REST APIs.
 
 The API Mediation Layer offers enterprise, cloud-like features such as high-availability, scalability, dynamic API discovery, consistent security, a single sign-on experience, and API documentation.
+
+<details>
+<summary> Learn more </summary>
 
 #### Key features
 * Consistent Access: API routing and standardization of API service URLs through the Gateway component provides users with a consistent way to access mainframe APIs at a predefined address.
@@ -112,9 +113,11 @@ Essential to the API Mediation Layer ecosystem is the API services that expose t
 * [Onboard an existing Node.js REST API service using Zowe API Mediation Layer](../extend/extend-apiml/onboard-nodejs-enabler.md)
 * [Using API Mediation Layer](../user-guide/api-mediation/using-api-mediation-layer.md)
 
-</details>
+
 
 To learn more about the architecture of Zowe, see [Zowe architecture](zowe-architecture.md).
+
+</details>
 
 ### Zowe Application Framework
 
@@ -263,7 +266,7 @@ For more information, see [Installing Zowe Chat](../user-guide/zowe-chat/chat_in
 
 Provides re-usable and industry compliant JSON formatted RMF/SMF data records, so that many other ISV SW and users can exploit them using open-source SW for many ways.
 
-For more information, see the [ZEBRA documentation](https://github.com/zowe/zebra/tree/main/Documentation) or visit the [ZEBRA test/trial site](https://zebra.talktothemainframe.com/).
+For more information, see the [ZEBRA documentation](https://github.com/zowe/zebra/tree/main/Documentation).
 
 ### Zowe IntelliJ Plug-in
 
@@ -291,5 +294,4 @@ This returns <a href={tpsrLatestLink}>Third-Party Software Requirements (TPSR)</
 
 -->
 
-- <tpsr />
 - [Bill of Materials (BOM)](../appendix/bill-of-materials.md)
