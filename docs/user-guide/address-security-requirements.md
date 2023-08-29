@@ -8,6 +8,31 @@ To configure Zowe for production purposes, security authorization is required. Y
   - [User Authentication](../getting-started/zowe-security-overview#user-authentication)
   - [Access Authorization](../getting-started/zowe-security-overview#access-authorization)
 
+## Tasks performed by your security administrator
+
+In order to configure security for production environments, various tasks need to be performed by your organization's security administrator. Some of the tasks apply to general Zowe configuration, while other tasks are required only if specific features are installed. 
+
+The following required configuration tasks are likely to be performed by your organization's security administrator:
+
+* [Initializing Zowe security configurations](../user-guide/initialize-security-configuration.md)
+* [Perform APF autorization of load libraries](../user-guide/apf-authorize-load-library.md)
+* [Configure the z/OS system for Zowe](../user-guide/configure-zos-system/#configure-user-ids-and-groups-for-the-zowe-started-tasks)
+* [Configure address space job naming](../user-guide/configure-zos-system/#configure-address-space-job-naming)
+* [Use certificates](../user-guide/use-certificates.md)
+
+If your installation of Zowe includes the following features, your organization's security administrator may also need to perform the following tasks:
+
+* z/OSMF authentication and service
+* ZSS, API ML certificate mapping, and identity mapping
+* TSS
+* High Availability
+* Cross-memory server for SAF
+* ZSS, API ML certificate mapping and identity mapping
+* APIML certificate mapping
+* APIML IDT
+* Configure Cross-memory servier load module
+* Configure cross-memory server SAF configuration
+
 ### User ID requirements and security permissions
 
 Specific user IDs with sufficient permissions are required to run or access Zowe. Review the following table to ... <!-- Provide details about the task and the specific role to perform the task -->
