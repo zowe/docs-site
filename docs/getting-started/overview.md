@@ -46,11 +46,12 @@ The Zowe Launcher makes it possible to launch Zowe z/OS server components in a h
 The API Mediation Layer provides a single point of access for APIs of mainframe services, and provides a [Single Sign On (SSO)](../extend/extend-apiml/api-mediation-sso.md) capability for mainframe users.
 
 The API Mediation Layer (API ML) facilitates secure communication between loosely coupled clients and services through a variety of API types, such as REST, GraphQL or Web-Socket. 
-API ML consists of three core components: the API Gateway, the Discovery Service, and the API Catalog:
+API ML consists of these core components: the API Gateway, the Discovery Service, the API Catalog, and the Caching service:
 
 - The API Gateway provides secure routing of API requests from clients to registered API services.
 - The Discovery Service allows dynamic registration of microservices and enables their discoverability and status updates.
 - The API Catalog provides a user-friendly interface to view and try out all registered services, read their associated APIs documentation in OpenAPI/Swagger format.
+- The API ML Caching Service allows components to store, search and retrieve their state. The Caching service can be configured to store the cached data in-memory or using Redis, or VSAM storage. 
 
 Core Zowe also provides out of the box services for working with MVS Data Sets, JES, as well as working with z/OSMF REST APIs.
 
@@ -68,7 +69,7 @@ The API Mediation Layer offers enterprise, cloud-like features such as high-avai
 * Presentation of Services: The API Catalog component provides easy access to discovered API services and their associated documentation in a user-friendly manner. Access to the contents of the API Catalog is controlled through a z/OS security facility.
 * Encrypted Communication: API ML facilitates secure and trusted communication across both internal components and discovered API services.
 
-#### API Mediation Layer architecture
+#### API Mediation Layer structural architecture
 The following diagram illustrates the single point of access through the Gateway, and the interactions between API ML components and services:
 
 ![API Mediation Layer Architecture diagram](../images/api-mediation/api-ml-architecture.png)
@@ -98,7 +99,7 @@ Access to the API Catalog can be protected with an Enterprise z/OS Security Mana
 
 **Caching Service**
 
-It provides an API in high-availability mode which offers the possibility to store, retrieve and delete data associated with keys. The service will be used only by internal Zowe applications and will not be exposed to the internet.
+It provides an API in high-availability mode which offers the possibility to store, retrieve and delete data associated with keys. The service can be used only by internal Zowe services and is not exposed to the internet.
 
 **Metrics Service (Technical Preview)**
 
