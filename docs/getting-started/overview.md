@@ -55,6 +55,9 @@ API ML consists of these core components: the API Gateway, the Discovery Service
 
 Core Zowe also provides out of the box services for working with MVS Data Sets, JES, as well as working with z/OSMF REST APIs.
 
+** Note: **
+The MVS datasets and JES services are deprecated and will not be available in Zowe V3. 
+
 The API Mediation Layer offers enterprise, cloud-like features such as high-availability, scalability, dynamic API discovery, consistent security, a single sign-on experience, and API documentation.
 
 <details>
