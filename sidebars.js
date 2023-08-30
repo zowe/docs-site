@@ -133,6 +133,13 @@ module.exports = {
                     "user-guide/install-zowe-pswi-deployment",
                   ],
                 },
+                {
+                  type: "category",
+                  label: "Upgrading server-side components",
+                  items: [
+                    "user-guide/api-mediation/upgrade-zowe-no-downtime"
+                  ],
+                },
               ],
             },
             {
@@ -150,6 +157,8 @@ module.exports = {
                   label: "Configuring certificates",
                   link: {type:"doc", id:"user-guide/configure-certificates"},
                   items: [
+                    "user-guide/configure-certificates",
+                    "user-guide/certificates-configuration-questionnaire",
                     "user-guide/certificate-configuration-scenarios",
                     "user-guide/import-certificates",
                     "user-guide/generate-certificates",
