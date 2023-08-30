@@ -9,6 +9,7 @@ Both the keystore and truststore can automatically be created by Zowe regardless
 This automation can be performed by defining and customizing the `zowe.setup.certificate` section of your Zowe YAML configuration.
 Zowe can then automate the certificate setup via the `zwe init certificate` command. 
 
+
 **Note:**  
 Automated generation of certificates is an option, but is not required. If you already have a keystore that contains a valid certificate`*`, and the certificate's corresponding private key, along with a truststore which validates the certificate and any other certificates you expect to encounter, then you also have the option of directly defining the parameter `zowe.certificate` which specifies the location of each of these objects. Note that this parameter should not be confused with the parameter `zowe.setup.certificate`.
 
@@ -36,6 +37,7 @@ Each scenario described in this article provides the configuration details via c
 * [Scenario 3: Use a z/OS keyring-based keystore with Zowe generated certificates](#scenario-3-use-a-zos-keyring-based-keystore-with-zowe-generated-certificates)
 * [Scenario 4: Use a z/OS keyring-based keystore and connect an existing certificate](#scenario-4-use-a-zos-keyring-based-keystore-and-connect-to-an-existing-certificate)
 * [Scenario 5: Use a z/OS keyring-based keystore and import a certificate stored in a data set](#scenario-5-use-a-zos-keyring-based-keystore-and-import-a-certificate-stored-in-a-data-set)
+
 
 ## Scenario 1: Use a file-based (PKCS12) keystore with Zowe generated certificates
 
