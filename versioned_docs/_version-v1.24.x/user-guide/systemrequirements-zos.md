@@ -148,13 +148,6 @@ The Zowe Desktop runs inside of a browser. No browser extensions or plugins are 
 The Zowe Desktop supports Google Chrome, Mozilla Firefox, Apple Safari and Microsoft Edge releases that are at most 1 year old, except when the newest release is older.
 For Firefox, both the regular and Extended Support Release (ESR) versions are supported under this rule.
 
-Currently, the following browsers are supported:
-
-- Google Chrome V79 or later
-- Mozilla Firefox V68 or later
-- Safari V13 or later
-- Microsoft Edge 79
-
 If you do not see your browser listed here, please contact the Zowe community so that it can be validated and included.
 
 ## Feature requirements
