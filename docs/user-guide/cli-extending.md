@@ -1,8 +1,12 @@
-# Extending Zowe CLI
+# Zowe CLI plug-ins
 
 You can install plug-ins to extend the capabilities of Zowe&trade; CLI. Plug-ins CLI to third-party applications are also available, such as Visual Studio Code Extension for Zowe (powered by Zowe CLI). Plug-ins add functionality to the product in the form of new command groups, actions, objects, and options.
 
-**Important!** Plug-ins can gain control of your CLI application legitimately during the execution of every command. Install third-party plug-ins at your own risk. We make no warranties regarding the use of third-party plug-ins.
+:::info Important
+
+Plug-ins can gain control of your CLI application legitimately during the execution of every command. Install third-party plug-ins at your own risk. Zowe makes no warranties regarding the use of third-party plug-ins.
+
+:::
 
 - [Install Zowe CLI plug-ins](cli-installplugins.md)
 - [IBM® CICS Plug-in for Zowe CLI](cli-cicsplugin.md)
