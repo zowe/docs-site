@@ -204,6 +204,9 @@ module.exports = {
               path: "stable",
               label: `${LATEST_VERSION}` + " LTS",
             },
+            "v2.10.x": {
+              label: "v2.9.x LTS",
+            },
             "v2.9.x": {
               label: "v2.9.x LTS",
             },
