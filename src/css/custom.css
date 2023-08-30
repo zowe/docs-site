@@ -430,20 +430,3 @@ html[data-theme="light"] .darkTheme {
     margin-left: 0rem !important;
   }
 }
-
-.ToCheadercolor > div > a {
-  color: #3162ac !important;
-}
-
-.ToCitemcolor > a {
-  color: #3162ac !important;
-}
-
-.navbar__link--active {
-  color: black !important;
-  text-decoration: underline;
-  text-decoration-thickness: 25%;
-  text-decoration-color: inherit;
-  text-underline-offset: 8px;
-  
-}
