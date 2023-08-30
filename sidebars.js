@@ -4,6 +4,7 @@ module.exports = {
     {
       type: "category", // doc(default), 'link'(external links), 'ref'(page without without sidebar)
       label: "Zowe fundamentals",
+      className: "ToCheadercolor",
       link: {type:"doc", id:"getting-started/overview"},
       collapsed: false,
       items: [
@@ -28,7 +29,8 @@ module.exports = {
     },
     {
       type: "category",
-      label: "FAQ",
+      label: "Zowe FAQ",
+      className: "ToCheadercolor",
       link: {type: "doc", id: "getting-started/zowe_faq"},
       items: [
         "getting-started/zowe_v2_faq",
@@ -37,6 +39,7 @@ module.exports = {
     {
       type: "category",
       label: "Release notes",
+      className: "ToCheadercolor",
       link: {type:"doc", id:"getting-started/release-notes/release-notes-overview"},
       items: [
         "getting-started/release-notes/v2_10_0",
@@ -55,9 +58,24 @@ module.exports = {
         "getting-started/zowe-office-hours"
       ],
     },
-    "getting-started/cli-getting-started",
-    "extend/migrate-extensions",
-    "getting-started/zowe-resources",
+    {
+      type: "doc",
+      label: "Zowe CLI quick start",
+      className: "ToCitemcolor",
+      id:"getting-started/cli-getting-started",
+    },
+    {
+      type: "doc",
+      label: "Migrating Zowe server component from V1 to V2",
+      className: "ToCitemcolor",
+      id:"extend/migrate-extensions",
+    },
+    {
+      type: "doc",
+      label: "Zowe learning resources",
+      className: "ToCitemcolor",
+      id:"getting-started/zowe-resources",
+    },
   ],
 
   "setup": [
@@ -341,20 +359,21 @@ module.exports = {
     {
       type: "category",
       label: "Zowe server-side components",
+      collapsed: false,
       items: [
         {
           type: "category",
           label: "Using Zowe Desktop",
+          link: {type:"doc", id:"user-guide/mvd-using"},
           items: [
-            "user-guide/mvd-using",
             "user-guide/mvd-editor",
           ],
         },
         {
           type: "category",
           label: "Using Zowe API Mediation Layer",
+          link: {type:"doc", id:"user-guide/api-mediation/using-api-mediation-layer"},
           items: [
-            "user-guide/api-mediation/using-api-mediation-layer",
             "getting-started/user-roadmap-apiml",
             {
               type: "category",
@@ -381,12 +400,13 @@ module.exports = {
     {
       type: "category",
       label: "Zowe client-side components",
+      collapsed: false,
       items: [
         {
           type: "category",
           label: "Using Zowe CLI",
+          link: {type:"doc", id:"user-guide/cli-using-usingcli"},
           items: [
-            "user-guide/cli-using-usingcli",
             "user-guide/cli-using-displaying-help",
             "user-guide/cli-using-command-precedence",
             "user-guide/cli-using-understanding-core-command-groups",
@@ -394,8 +414,8 @@ module.exports = {
             {
               type: "category",
               label: "Using team profiles",
+              link: {type:"doc", id:"user-guide/cli-using-using-team-profiles"},
               items: [
-                "user-guide/cli-using-using-team-profiles",
                 "user-guide/cli-using-initializing-team-configuration",
                 "user-guide/cli-using-test-zosmf-connection",
                 "user-guide/cli-using-team-configuration-application-developers",
@@ -409,8 +429,8 @@ module.exports = {
             {
               type: "category",
               label: "Configuring daemon mode",
+              link: {type:"doc", id:"user-guide/cli-using-using-daemon-mode"},
               items: [
-                "user-guide/cli-using-using-daemon-mode",
                 "user-guide/cli-configure-daemon-on-zlinux-os",
               ],
             },
@@ -421,8 +441,8 @@ module.exports = {
             {
               type: "category",
               label: "Using environment variables",
+              link: {type:"doc", id:"user-guide/cli-using-using-environment-variables"},
               items: [
-                "user-guide/cli-using-using-environment-variables",
                 "user-guide/cli-using-formatting-environment-variables",
                 "user-guide/cli-using-setting-environment-variables-in-automation-server",
               ],
@@ -432,16 +452,16 @@ module.exports = {
             {
               type: "category",
               label: "Zowe CLI plug-ins",
+              link: {type:"doc", id:"user-guide/cli-extending"},
               items: [
-                "user-guide/cli-extending",
                 "user-guide/cli-swreqplugins",
                 "user-guide/cli-installplugins",
                 "user-guide/cli-cicsplugin",
                 {
                   type: "category",
                   label: "IBM® Db2® Database Plug-in for Zowe CLI",
+                  link: {type:"doc", id:"user-guide/cli-db2plugin"},
                   items: [
-                    "user-guide/cli-db2plugin",
                     "user-guide/cli-db2-install-m1",
                   ],
                 },
@@ -456,8 +476,8 @@ module.exports = {
         {
           type: "category",
           label: "Using Zowe Explorer",
+          link: {type:"doc", id:"user-guide/ze-usage"},
           items: [
-            "user-guide/ze-usage",
             "user-guide/ze-use-cases",
             {
               type: "category",
@@ -466,8 +486,8 @@ module.exports = {
                 {
                   type: "category",
                   label: "Zowe Explorer CICS Extension",
+                  link: {type:"doc", id:"user-guide/ze-install-zowe-explorer-cics-ext"},
                   items: [
-                    "user-guide/ze-install-zowe-explorer-cics-ext",
                     "user-guide/ze-using-zowe-explorer-cics-ext",
                     "user-guide/ze-create-zowe-explorer-cics-ext-profiles",
                     "user-guide/ze-use-cics-resources",
@@ -479,8 +499,8 @@ module.exports = {
                 {
                   type: "category",
                   label: "Zowe Explorer FTP Extension",
+                  link: {type:"doc", id:"user-guide/ze-ftp-install-ze-ftp-ext"},
                   items: [
-                    "user-guide/ze-ftp-install-ze-ftp-ext",
                     "user-guide/ze-ftp-using-ze-ftp-ext",
                     "user-guide/ze-ftp-supported-functions",
                     "user-guide/ze-ftp-provide-feedback-contribute",
@@ -490,19 +510,13 @@ module.exports = {
             },
           ],
         },
-        {
-          type: "category",
-          label: "Using Zowe Chat",
-          items: [
-            "user-guide/zowe-chat/chat_use_interact_methods",
-          ],
-        },
+        "user-guide/zowe-chat/chat_use_interact_methods",
         {
           type: "category",
           label: "Using Zowe IntelliJ Plug-in",
+          link: {type:"doc", id:"user-guide/intellij-using"},
           items: [
             "user-guide/intellij-working-sets",
-            "user-guide/intellij-using",
           ],
         },
         "user-guide/sdks-using",        
@@ -515,6 +529,7 @@ module.exports = {
     {
       type: "category",
       label: "Developing server-side components",
+      collapsed: false,
       items: [
         {
           type: "category",
@@ -595,12 +610,13 @@ module.exports = {
     {
       type: "category",
       label: "Developing client-side components",
+      collapsed: false,
       items: [
         {
           type: "category",
           label: "Developing for Zowe CLI",
+          link: {type:"doc", id:"extend/extend-cli/cli-devTutorials"},
           items: [
-            "extend/extend-cli/cli-devTutorials",
             "extend/extend-cli/cli-setting-up",
             "extend/extend-cli/cli-creating-plug-in-lifecycle-actions",
             "extend/extend-cli/cli-installing-sample-plugin",
@@ -618,9 +634,9 @@ module.exports = {
   troubleshooting: [
     {
       type: "category",
-      label: "Overview",
+      label: "Troubleshooting overview",
+      link: {type:"doc", id:"troubleshoot/troubleshooting"},
       items: [
-        "troubleshoot/troubleshooting",
         "troubleshoot/troubleshoot-zowe-release",
         "troubleshoot/troubleshoot-check-your-zowe-version",
       ],
@@ -628,6 +644,7 @@ module.exports = {
     {
       type: "category",
       label: "Zowe server-side components",
+      collapsed: false,
       items: [
         "troubleshoot/servers/must-gather",
         "troubleshoot/verify-fingerprint",
@@ -636,17 +653,17 @@ module.exports = {
         "troubleshoot/troubleshoot-zos-certificate",
         {
           type: "category",
-          label: "Zowe API Mediation Layer",
+          label: "Troubleshooting Zowe API Mediation Layer",
+          link: {type:"doc", id:"troubleshoot/troubleshoot-apiml",},
           items: [
-            "troubleshoot/troubleshoot-apiml",
             "troubleshoot/troubleshoot-apiml-error-codes",
           ],
         },
         {
           type: "category",
-          label: "Zowe Application Framework",
+          label: "Troubleshooting Zowe Application Framework",
+          link: {type:"doc", id:"troubleshoot/app-framework/app-troubleshoot"},
           items: [
-            "troubleshoot/app-framework/app-troubleshoot",
             "troubleshoot/app-framework/app-mustgather",
             "troubleshoot/app-framework/app-issue",
             "troubleshoot/app-framework/app-return-codes",
@@ -657,9 +674,9 @@ module.exports = {
         },
         {
           type: "category",
-          label: "Zowe Launcher",
+          label: "Troubleshooting Zowe Launcher",
+          link: {type:"doc", id:"troubleshoot/launcher/launcher-troubleshoot"},
           items: [
-            "troubleshoot/launcher/launcher-troubleshoot",
             "troubleshoot/launcher/launcher-error-codes"
           ],
         },
@@ -668,32 +685,27 @@ module.exports = {
     {
       type: "category",
       label: "Zowe client-side components",
+      collapsed: false,
       items: [
         {
           type: "category",
-          label: "Zowe CLI",
+          label: "Troubleshooting Zowe CLI",
+          link: {type:"doc", id:"troubleshoot/cli/troubleshoot-cli"},
           items: [
-            "troubleshoot/cli/troubleshoot-cli",
             "troubleshoot/cli/mustgather-cli",
             "troubleshoot/cli/use-individual-troubleshoot-commands",
             "troubleshoot/cli/cli-use-curl-to-troubleshoot",
             "troubleshoot/cli/zosmf-cli",
             "troubleshoot/cli/known-cli",
             "troubleshoot/cli/cli-issue",
-            {
-              type: "category",
-              label: "Zowe CLI Plug-ins",
-              items: [
-                "troubleshoot/cli/troubleshoot-cli-plugins"
-              ],
-            }
+            "troubleshoot/cli/troubleshoot-cli-plugins",
           ],
         },
         {
           type: "category",
-          label: "Zowe Explorer",
+          label: "Troubleshooting Zowe Explorer",
+          link: {type:"doc", id:"troubleshoot/ze/troubleshoot-ze"},
           items: [
-            "troubleshoot/ze/troubleshoot-ze",
             "troubleshoot/ze/known-ze",
             "troubleshoot/ze/ze-known-limits",
             "troubleshoot/ze/ze-issues",
@@ -719,8 +731,8 @@ module.exports = {
     {
       type: "category",
       label: "UI Guidelines",
+      link: {type:"doc", id:"contribute/guidelines-ui/ui"},
       items: [
-        "contribute/guidelines-ui/ui",
         "contribute/guidelines-ui/colors",
         "contribute/guidelines-ui/typography",
         "contribute/guidelines-ui/grid",
@@ -736,6 +748,7 @@ module.exports = {
     {
       type: "category",
       label: "ZWE Server Command Reference",
+      link: {type:"doc", id:"appendix/zwe_server_command_reference_overview"},
       items: [
         {
           type: "autogenerated",
@@ -746,19 +759,22 @@ module.exports = {
     {
       type: "category",
       label: "Zowe Chat command reference",
+      link: {type:"doc", id:"appendix/zowe-chat-command-reference/zos/zowe-chat-command-reference"},
       items: [
-        "appendix/zowe-chat-command-reference/zos/zowe-chat-command-reference",
         {
           type: "category",
-          label: "zos",
+          label: "zos commands",
+          link: {type:"doc", id:"appendix/zowe-chat-command-reference/zos/zos-article"},
           items: [
             {
               type: "category",
-              label: "job",
+              label: "zos job",
+              link: {type:"doc", id:"appendix/zowe-chat-command-reference/zos/job/job-article"},
               items: [
                 {
                   type: "category",
-                  label: "list",
+                  label: "zos job list",
+                  link: {type:"doc", id:"appendix/zowe-chat-command-reference/zos/job/list/list-article"},
                   items: [
                     "appendix/zowe-chat-command-reference/zos/job/list/zos-job-list-status",
                   ]
@@ -767,11 +783,13 @@ module.exports = {
             },
             {
               type: "category",
-              label: "dataset",
+              label: "zos dataset",
+              link: {type:"doc", id:"appendix/zowe-chat-command-reference/zos/dataset/dataset-article"},
               items: [
                 {
                   type: "category",
-                  label: "list",
+                  label: "zos dataset list",
+                  link: {type:"doc", id:"appendix/zowe-chat-command-reference/zos/dataset/list/list-article"},
                   items: [
                     "appendix/zowe-chat-command-reference/zos/dataset/list/zos-dataset-list-status",
                     "appendix/zowe-chat-command-reference/zos/dataset/list/zos-dataset-list-member",
@@ -781,11 +799,13 @@ module.exports = {
             },
             {
               type: "category",
-              label: "file",
+              label: "zos file",
+              link: {type:"doc", id:"appendix/zowe-chat-command-reference/zos/file/file-article"},
               items: [
                 {
                   type: "category",
-                  label: "list",
+                  label: "zos file list",
+                  link: {type:"doc", id:"appendix/zowe-chat-command-reference/zos/file/list/list-article"},
                   items: [
                     "appendix/zowe-chat-command-reference/zos/file/list/zos-file-list-status",
                     "appendix/zowe-chat-command-reference/zos/file/list/zos-file-list-mounts",
@@ -795,11 +815,13 @@ module.exports = {
             },
             {
               type: "category",
-              label: "command",
+              label: "zos command",
+              link: {type:"doc", id:"appendix/zowe-chat-command-reference/zos/command/command-article"},
               items: [
                 {
                   type: "category",
-                  label: "issue",
+                  label: "zos command issue",
+                  link: {type:"doc", id:"appendix/zowe-chat-command-reference/zos/command/issue/issue-article"},
                   items: [
                     "appendix/zowe-chat-command-reference/zos/command/issue/zos-command-issue-console",
                   ]
@@ -808,11 +830,13 @@ module.exports = {
             },
             {
               type: "category",
-              label: "help",
+              label: "zos help",
+              link: {type:"doc", id:"appendix/zowe-chat-command-reference/zos/help/help-article"},
               items: [
                 {
                   type: "category",
-                  label: "list",
+                  label: "zos help list",
+                  link: {type:"doc", id:"appendix/zowe-chat-command-reference/zos/help/list/list-article"},
                   items: [
                     "appendix/zowe-chat-command-reference/zos/help/list/zos-help-list-command",
                   ]
