@@ -55,8 +55,7 @@ API ML consists of these core components: the API Gateway, the Discovery Service
 
 Core Zowe also provides out of the box services for working with MVS Data Sets, JES, as well as working with z/OSMF REST APIs.
 
-** Note: **
-The MVS datasets and JES services are deprecated and will not be available in Zowe V3. 
+**Note:** The MVS datasets and JES services are deprecated and will not be available in Zowe V3. 
 
 The API Mediation Layer offers enterprise, cloud-like features such as high-availability, scalability, dynamic API discovery, consistent security, a single sign-on experience, and API documentation.
 
@@ -67,7 +66,7 @@ The API Mediation Layer offers enterprise, cloud-like features such as high-avai
 * Consistent Access: API routing and standardization of API service URLs through the Gateway component provides users with a consistent way to access mainframe APIs at a predefined address.
 * Dynamic Discovery: The Discovery Service automatically determines the location and status of API services.
 * High-Availability: API Mediation Layer is designed with high-availability of services and scalability in mind.
-* Caching Service: This feature is designed for Zowe components in a high availability configuration. It supports the High Availability of all components within Zowe, allowing components to be stateless by providing a mechanism to offload their state to a location accessible by all instances of the service, including those which just started.
+* Caching Service: This feature is designed for Zowe components in a high availability configuration, and supports high availability of all components within Zowe. As such, components can remain stateless whereby the state of the component is offloaded to a location accessible by all instances of the service, including those which just started.
 * Redundancy and Scalability: API service throughput is easily increased by starting multiple API service instances without the need to change configuration.
 * Presentation of Services: The API Catalog component provides easy access to discovered API services and their associated documentation in a user-friendly manner. Access to the contents of the API Catalog is controlled through a z/OS security facility.
 * Encrypted Communication: API ML facilitates secure and trusted communication across both internal components and discovered API services.
@@ -102,7 +101,7 @@ Access to the API Catalog can be protected with an Enterprise z/OS Security Mana
 
 **Caching Service**
 
-It provides an API in high-availability mode which offers the possibility to store, retrieve and delete data associated with keys. The service can be used only by internal Zowe services and is not exposed to the internet.
+An API is provided in high-availability mode which offers the possibility to store, retrieve, and delete data associated with keys. The service can only be used by internal Zowe services and is not exposed to the internet.
 
 **Metrics Service (Technical Preview)**
 
@@ -116,8 +115,6 @@ Essential to the API Mediation Layer ecosystem is the API services that expose t
 * [Onboard an existing Spring Boot REST API service using Zowe API Mediation Layer](../extend/extend-apiml/onboard-spring-boot-enabler.md)
 * [Onboard an existing Node.js REST API service using Zowe API Mediation Layer](../extend/extend-apiml/onboard-nodejs-enabler.md)
 * [Using API Mediation Layer](../user-guide/api-mediation/using-api-mediation-layer.md)
-
-
 
 To learn more about the architecture of Zowe, see [Zowe architecture](zowe-architecture.md).
 
@@ -204,12 +201,12 @@ For information about extending the functionality of Zowe CLI by installing plug
 
 Zowe Explorer is a Visual Studio Code extension that modernizes the way developers and system administrators interact with z/OS mainframes. Zowe Explorer lets you interact with data sets, USS files, and jobs that are stored on z/OS. The extension complements your Zowe CLI experience and lets you use authentication services like API Mediation Layer. The extension provides the following benefits:
 
-- Enabling you to create, modify, rename, copy, and upload data sets directly to a z/OS mainframe.
-- Enabling you to create, modify, rename, and upload USS files directly to a z/OS mainframe.
-- Providing a more streamlined way to access data sets, uss files, and jobs.
+- Enables you to create, modify, rename, copy, and upload data sets directly to a z/OS mainframe.
+- Enables you to create, modify, rename, and upload USS files directly to a z/OS mainframe.
+- Provides a more streamlined way to access data sets, uss files, and jobs.
 - Letting you create, edit, and delete Zowe CLI `zosmf` compatible profiles.
-- Letting you use the Secure Credential Store plug-in to store your credentials securely in the settings.
-- Letting you leverage the API Mediation Layer token-based authentication to access z/OSMF.
+- Lets you use the Secure Credential Store plug-in to store your credentials securely in the settings.
+- Lets you leverage the API Mediation Layer token-based authentication to access z/OSMF.
 
 For more information, see [Information roadmap for Zowe Explorer](user-roadmap-zowe-explorer.md).
 
@@ -229,10 +226,10 @@ Zowe Chat is a chatbot that aims to enable a ChatOps collaboration model includi
 <details>
 <summary> Learn more </summary>
 
+
 #### Zowe Chat key features
 
 - **Manage z/OS resource in chat tool channels**
-
   Check your z/OS job, data set, and USS files status directly in chat tool channels. You can also issue z/OS console commands directly in the chat tool. You can drill down on a specific job, data set, error code, and so on to get more details through button or drop-down menu that Zowe Chat provides.
 
 - **Execute Zowe CLI commands in chat tool channels**
@@ -268,7 +265,7 @@ For more information, see [Installing Zowe Chat](../user-guide/zowe-chat/chat_in
 
 ### ZEBRA (Zowe Embedded Browser for RMF/SMF and APIs) - Incubator 
 
-Provides re-usable and industry compliant JSON formatted RMF/SMF data records, so that many other ISV SW and users can exploit them using open-source SW for many ways.
+ZEBRA Provides re-usable and industry compliant JSON formatted RMF/SMF data records, so that many other ISV SW and users can exploit them using open-source SW for many ways.
 
 For more information, see the [ZEBRA documentation](https://github.com/zowe/zebra/tree/main/Documentation).
 
@@ -281,14 +278,14 @@ Zowe IntelliJ plug-in helps you to:
 - Organize datasets on z/OS, files on USS into working sets.
 - Allocate datasets, create members, files and directories with different permissions.
 - Perform operations like renaming, copying and moving data in a modern way.
-- Edit datasets, files and members. Smart auto-save will keep your content both in the editor and on the mainframe in-sync.
+- Edit datasets, files and members. Smart auto-save keeps your content both in the editor and on the mainframe in-sync.
 - Create multiple connections to different z/OS systems.
 - Perform all available operations with jobs.
 - Highlight all IntelliJ supported languages automatically and recognize them once opened from the mainframe.
 
 For more information, see [Using Zowe IntelliJ plug-in](../user-guide/intellij-using.md).
 
-## Zowe Third-Party Software Requirements and Bill of Materials
+## Zowe Bill of Materials
 
 <!-- 
 
@@ -298,4 +295,4 @@ This returns <a href={tpsrLatestLink}>Third-Party Software Requirements (TPSR)</
 
 -->
 
-- [Bill of Materials (BOM)](../appendix/bill-of-materials.md)
+For information about the [Zowe Bill of Materials (BOM)](../appendix/bill-of-materials.md), see this link to the appendix.
