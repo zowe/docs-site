@@ -82,13 +82,13 @@ module.exports = {
     "user-guide/install-overview",
     {
       type: "category",
-      label: "Zowe server-side components",
+      label: "Zowe server-side installation overview",
+      link: {type:"doc", id:"user-guide/install-zos"},
       collapsed: false,
       items: [
         {
           type: "category",
           label: "Installing convenience, SMP/E, and PSWI builds",
-          link: {type:"doc", id:"user-guide/install-zos"},
           items: [
             "user-guide/zos-components-installation-checklist",
             "user-guide/zos-components-installation-checklist-dev",
