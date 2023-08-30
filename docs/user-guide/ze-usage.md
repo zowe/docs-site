@@ -33,9 +33,9 @@ Make the best use of the extension with the following tips:
 
 - **Edit a profile**: You can edit existing profiles listed in the **Side Bar** by clicking the profile's **Edit** icon (next to the **Search** icon). The feature lets you modify the information inside your profile.
 
-- **Delete a profile**: You can permanently delete profiles by right-clicking the profile and selecting the **Delete Profile** option. The feature deletes the profile from your `.zowe` folder. 
+- **Delete a profile**: In Zowe V1, you can permanently delete profiles by right-clicking the profile and selecting the **Delete Profile** option. The feature deletes the profile from your `.zowe` folder. In Zowe V2, right-click the profile, and select **Delete Profile** to open the configuration file and manually delete the profile.
 
-   **Tip:** Alternatively, you can delete a profile by using the VS Code **Command Palette**. Press `F1` on your keyboard, then select the **Zowe Explorer: Delete a Profile Permanently** option.
+   **Tip:** Alternatively, you can delete a profile  by using the VS Code **Command Palette**. Press `F1` on your keyboard, then select the **Zowe Explorer: Delete a Profile Permanently** option. In Zowe V1, you select the profile to delete. In Zowe V2, the configuration file opens for you to delete the profile manually.
 
 - **Hide a profile**: You can hide a profile from the **Side Bar** by right-clicking the profile and selecting the **Hide Profile** option. If necessary, add the profile back by clicking the **+** icon on the **DATA SETS**, **UNIX SYSTEM SERVICES (USS)**, or **JOBS** bar.
 
@@ -75,8 +75,41 @@ If Zowe Explorer is not installed, you can install the current release of the ex
 2. In the **Side Bar**, search for `Zowe Explorer`. Click the **Install** button on the Zowe Explorer search result item. This opens a Zowe Explorer tab in the **Editor** area.
 
    ![Zowe Explorer search result item](../images/ze/ZE-zowe-explorer-result-item.jpg "Zowe Explorer search result item")
-<br /><br />
-
+<br/><br/>
 
 3. Click the **Down** arrow next to the **Uninstall** button. Select **Install Another Version…** to open a dropdown menu that lists previous versions of Zowe Explorer.
 4. Search for and click the version of Zowe Explorer you want to install.
+
+## Credentials in Zowe Explorer
+
+When working in remote or virtualized environments &mdash; such as Eclipse Che, GitHub Codespaces, CodeReady Workspaces &mdash; administrators may find the configuration process for storing credentials securely too cumbersome. Instead, they may prefer to rely on the security tools integrated with these environments, such as file access permissions. To do so, administrators need to disable Zowe Explorer's credential management functionality.
+
+### Preventing Zowe Explorer from storing credentials
+
+1. Open the `zowe.config.json` file in Visual Studio Code.
+
+2. Find the `autoStore` property.
+3. Set the `autoStore` property to `false`.
+
+   Credentials will be stored on a per profile/per panel basis until one of the following takes place:
+
+   - Data Sets/USS/Jobs tree refresh caused by an update to the `zowe.config.json` file
+   - Zowe Explorer refresh in the **Command Palette**
+   - Reload of the Visual Studio Code window
+   - Closing and reopening the VS Code window
+
+### Disabling Secure Credential Storage of credentials
+
+#### Zowe Explorer v2
+
+1. Navigate to **Settings** in VS Code.
+
+2. In Zowe Explorer Settings, uncheck the **Zowe Security: Secure Credentials Enabled** checkbox.
+
+   When disabled and `autoStore` is set to True in `zowe.config.json`, z/OS credentials are stored as plain text in the configuration file.
+
+#### Zowe Explorer v1
+
+1. Navigate to **Settings** in VS Code.
+
+2. In Zowe Explorer Settings, leave the **Zowe Security: Credential Key** field blank.
