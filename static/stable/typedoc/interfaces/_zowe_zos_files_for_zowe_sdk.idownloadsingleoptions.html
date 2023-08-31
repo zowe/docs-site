@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>IUploadOptions | Zowe Node.js SDK - v2.11.0</title>
+	<title>IDownloadSingleOptions | Zowe Node.js SDK - v2.11.0</title>
 	<meta name="description" content="Documentation for Zowe Node.js SDK - v2.11.0">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -57,10 +57,10 @@
 					<a href="../modules/_zowe_zos_files_for_zowe_sdk.html">@zowe/zos-files-for-zowe-sdk</a>
 				</li>
 				<li>
-					<a href="_zowe_zos_files_for_zowe_sdk.iuploadoptions.html">IUploadOptions</a>
+					<a href="_zowe_zos_files_for_zowe_sdk.idownloadsingleoptions.html">IDownloadSingleOptions</a>
 				</li>
 			</ul>
-			<h1>Interface IUploadOptions</h1>
+			<h1>Interface IDownloadSingleOptions</h1>
 		</div>
 	</div>
 </header>
@@ -70,7 +70,7 @@
 			<section class="tsd-panel tsd-comment">
 				<div class="tsd-comment tsd-typography">
 					<div class="lead">
-						<p>This interface defines the options that can be sent into the upload data set function</p>
+						<p>This interface defines options for downloading a single data set or USS file</p>
 					</div>
 				</div>
 			</section>
@@ -78,10 +78,10 @@
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<a href="_zowe_zos_files_for_zowe_sdk.ioptions.html" class="tsd-signature-type">IOptions</a>
+						<a href="_zowe_zos_files_for_zowe_sdk.igetoptions.html" class="tsd-signature-type">IGetOptions</a>
 						<ul class="tsd-hierarchy">
 							<li>
-								<span class="target">IUploadOptions</span>
+								<span class="target">IDownloadSingleOptions</span>
 							</li>
 						</ul>
 					</li>
@@ -94,23 +94,21 @@
 						<section class="tsd-index-section ">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_zowe_zos_files_for_zowe_sdk.iuploadoptions.html#ascii_files" class="tsd-kind-icon">ascii_<wbr>files</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_zowe_zos_files_for_zowe_sdk.iuploadoptions.html#attributes" class="tsd-kind-icon">attributes</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="_zowe_zos_files_for_zowe_sdk.iuploadoptions.html#binary" class="tsd-kind-icon">binary</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_zowe_zos_files_for_zowe_sdk.iuploadoptions.html#binary_files" class="tsd-kind-icon">binary_<wbr>files</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="_zowe_zos_files_for_zowe_sdk.iuploadoptions.html#encoding" class="tsd-kind-icon">encoding</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_zowe_zos_files_for_zowe_sdk.iuploadoptions.html#etag" class="tsd-kind-icon">etag</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_zowe_zos_files_for_zowe_sdk.iuploadoptions.html#filesmap" class="tsd-kind-icon">files<wbr>Map</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_zowe_zos_files_for_zowe_sdk.iuploadoptions.html#includehidden" class="tsd-kind-icon">include<wbr>Hidden</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="_zowe_zos_files_for_zowe_sdk.iuploadoptions.html#localencoding" class="tsd-kind-icon">local<wbr>Encoding</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_zowe_zos_files_for_zowe_sdk.iuploadoptions.html#maxconcurrentrequests" class="tsd-kind-icon">max<wbr>Concurrent<wbr>Requests</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_zowe_zos_files_for_zowe_sdk.iuploadoptions.html#recall" class="tsd-kind-icon">recall</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="_zowe_zos_files_for_zowe_sdk.iuploadoptions.html#record" class="tsd-kind-icon">record</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_zowe_zos_files_for_zowe_sdk.iuploadoptions.html#recursive" class="tsd-kind-icon">recursive</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="_zowe_zos_files_for_zowe_sdk.iuploadoptions.html#responsetimeout" class="tsd-kind-icon">response<wbr>Timeout</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_zowe_zos_files_for_zowe_sdk.iuploadoptions.html#returnetag" class="tsd-kind-icon">return<wbr>Etag</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="_zowe_zos_files_for_zowe_sdk.iuploadoptions.html#task" class="tsd-kind-icon">task</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="_zowe_zos_files_for_zowe_sdk.iuploadoptions.html#volume" class="tsd-kind-icon">volume</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="_zowe_zos_files_for_zowe_sdk.idownloadsingleoptions.html#binary" class="tsd-kind-icon">binary</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_zowe_zos_files_for_zowe_sdk.idownloadsingleoptions.html#directory" class="tsd-kind-icon">directory</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="_zowe_zos_files_for_zowe_sdk.idownloadsingleoptions.html#encoding" class="tsd-kind-icon">encoding</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_zowe_zos_files_for_zowe_sdk.idownloadsingleoptions.html#extension" class="tsd-kind-icon">extension</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_zowe_zos_files_for_zowe_sdk.idownloadsingleoptions.html#file" class="tsd-kind-icon">file</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="_zowe_zos_files_for_zowe_sdk.idownloadsingleoptions.html#localencoding" class="tsd-kind-icon">local<wbr>Encoding</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_zowe_zos_files_for_zowe_sdk.idownloadsingleoptions.html#overwrite" class="tsd-kind-icon">overwrite</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_zowe_zos_files_for_zowe_sdk.idownloadsingleoptions.html#preserveoriginallettercase" class="tsd-kind-icon">preserve<wbr>Original<wbr>Letter<wbr>Case</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="_zowe_zos_files_for_zowe_sdk.idownloadsingleoptions.html#range" class="tsd-kind-icon">range</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="_zowe_zos_files_for_zowe_sdk.idownloadsingleoptions.html#record" class="tsd-kind-icon">record</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="_zowe_zos_files_for_zowe_sdk.idownloadsingleoptions.html#responsetimeout" class="tsd-kind-icon">response<wbr>Timeout</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_zowe_zos_files_for_zowe_sdk.idownloadsingleoptions.html#returnetag" class="tsd-kind-icon">return<wbr>Etag</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_zowe_zos_files_for_zowe_sdk.idownloadsingleoptions.html#stream" class="tsd-kind-icon">stream</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="_zowe_zos_files_for_zowe_sdk.idownloadsingleoptions.html#task" class="tsd-kind-icon">task</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="_zowe_zos_files_for_zowe_sdk.idownloadsingleoptions.html#volume" class="tsd-kind-icon">volume</a></li>
 							</ul>
 						</section>
 					</div>
@@ -118,36 +116,6 @@
 			</section>
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Properties</h2>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="ascii_files" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagOptional">Optional</span> ascii_<wbr>files</h3>
-					<div class="tsd-signature tsd-kind-icon">ascii_<wbr>files<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.18.4/packages/zosfiles/src/methods/upload/doc/IUploadOptions.ts#L40">@zowe/zos-files-for-zowe-sdk/src/methods/upload/doc/IUploadOptions.ts:40</a></li>
-						</ul>
-					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>The list of files to be uploaded in ASCII mode</p>
-						</div>
-					</div>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="attributes" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagOptional">Optional</span> attributes</h3>
-					<div class="tsd-signature tsd-kind-icon">attributes<span class="tsd-signature-symbol">:</span> <a href="../classes/_zowe_zos_files_for_zowe_sdk.zosfilesattributes.html" class="tsd-signature-type">ZosFilesAttributes</a></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.18.4/packages/zosfiles/src/methods/upload/doc/IUploadOptions.ts#L50">@zowe/zos-files-for-zowe-sdk/src/methods/upload/doc/IUploadOptions.ts:50</a></li>
-						</ul>
-					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>The ZosFilesAttributes instance describe upload attributes for the files and directories</p>
-						</div>
-					</div>
-				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
 					<a name="binary" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagOptional">Optional</span> binary</h3>
@@ -167,18 +135,23 @@
 					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="binary_files" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagOptional">Optional</span> binary_<wbr>files</h3>
-					<div class="tsd-signature tsd-kind-icon">binary_<wbr>files<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<a name="directory" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> directory</h3>
+					<div class="tsd-signature tsd-kind-icon">directory<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.18.4/packages/zosfiles/src/methods/upload/doc/IUploadOptions.ts#L35">@zowe/zos-files-for-zowe-sdk/src/methods/upload/doc/IUploadOptions.ts:35</a></li>
+							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.18.4/packages/zosfiles/src/methods/download/doc/IDownloadOptions.ts#L37">@zowe/zos-files-for-zowe-sdk/src/methods/download/doc/IDownloadOptions.ts:37</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
-							<p>The list of files to be uploaded in binary mode</p>
+							<p>The local directory to download all members from a pds</p>
 						</div>
+						<dl class="tsd-comment-tags">
+							<dt>example</dt>
+							<dd><p>&quot;./path/to/dir&quot;</p>
+							</dd>
+						</dl>
 					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
@@ -198,49 +171,46 @@
 					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="etag" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagOptional">Optional</span> etag</h3>
-					<div class="tsd-signature tsd-kind-icon">etag<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<a name="extension" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> extension</h3>
+					<div class="tsd-signature tsd-kind-icon">extension<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.18.4/packages/zosfiles/src/methods/upload/doc/IUploadOptions.ts#L65">@zowe/zos-files-for-zowe-sdk/src/methods/upload/doc/IUploadOptions.ts:65</a></li>
+							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.18.4/packages/zosfiles/src/methods/download/doc/IDownloadOptions.ts#L31">@zowe/zos-files-for-zowe-sdk/src/methods/download/doc/IDownloadOptions.ts:31</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
-							<p>Etag value to pass to z/OSMF API request.
-							It is used to check if the file was modified on target system before it is updated.</p>
+							<p>The extension you want to use for the file</p>
 						</div>
+						<dl class="tsd-comment-tags">
+							<dt>example</dt>
+							<dd><p>.txt</p>
+							</dd>
+							<dt>example</dt>
+							<dd><p>.c</p>
+							</dd>
+						</dl>
 					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="filesmap" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagOptional">Optional</span> files<wbr>Map</h3>
-					<div class="tsd-signature tsd-kind-icon">files<wbr>Map<span class="tsd-signature-symbol">:</span> <a href="_zowe_zos_files_for_zowe_sdk.iuploadmap.html" class="tsd-signature-type">IUploadMap</a></div>
+					<a name="file" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> file</h3>
+					<div class="tsd-signature tsd-kind-icon">file<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.18.4/packages/zosfiles/src/methods/upload/doc/IUploadOptions.ts#L45">@zowe/zos-files-for-zowe-sdk/src/methods/upload/doc/IUploadOptions.ts:45</a></li>
+							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.18.4/packages/zosfiles/src/methods/download/doc/IDownloadOptions.ts#L24">@zowe/zos-files-for-zowe-sdk/src/methods/download/doc/IDownloadOptions.ts:24</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
-							<p>The map of files and their upload mode to be used for binary_files and ascii_files</p>
+							<p>The local file to download the data set to</p>
 						</div>
-					</div>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="includehidden" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagOptional">Optional</span> include<wbr>Hidden</h3>
-					<div class="tsd-signature tsd-kind-icon">include<wbr>Hidden<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.18.4/packages/zosfiles/src/methods/upload/doc/IUploadOptions.ts#L78">@zowe/zos-files-for-zowe-sdk/src/methods/upload/doc/IUploadOptions.ts:78</a></li>
-						</ul>
-					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>Specifies whether hidden files whose names begin with a dot should be uploaded.</p>
-						</div>
+						<dl class="tsd-comment-tags">
+							<dt>example</dt>
+							<dd><p>&quot;./path/to/file.txt&quot;</p>
+							</dd>
+						</dl>
 					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
@@ -260,40 +230,55 @@
 					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="maxconcurrentrequests" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagOptional">Optional</span> max<wbr>Concurrent<wbr>Requests</h3>
-					<div class="tsd-signature tsd-kind-icon">max<wbr>Concurrent<wbr>Requests<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
+					<a name="overwrite" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> overwrite</h3>
+					<div class="tsd-signature tsd-kind-icon">overwrite<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.18.4/packages/zosfiles/src/methods/upload/doc/IUploadOptions.ts#L59">@zowe/zos-files-for-zowe-sdk/src/methods/upload/doc/IUploadOptions.ts:59</a></li>
+							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.18.4/packages/zosfiles/src/methods/download/doc/IDownloadOptions.ts#L58">@zowe/zos-files-for-zowe-sdk/src/methods/download/doc/IDownloadOptions.ts:58</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
-							<p>The maximum REST requests to perform at once
-								Increasing this value results in faster uploads but increases resource consumption
-								on z/OS and risks encountering an error caused
-								by making too many requests at once.
-							Default: 1</p>
+							<p>Specifies whether local files should be overwritten when downloaded.</p>
 						</div>
 					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="recall" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagOptional">Optional</span> recall</h3>
-					<div class="tsd-signature tsd-kind-icon">recall<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<a name="preserveoriginallettercase" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> preserve<wbr>Original<wbr>Letter<wbr>Case</h3>
+					<div class="tsd-signature tsd-kind-icon">preserve<wbr>Original<wbr>Letter<wbr>Case<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.18.4/packages/zosfiles/src/methods/upload/doc/IUploadOptions.ts#L25">@zowe/zos-files-for-zowe-sdk/src/methods/upload/doc/IUploadOptions.ts:25</a></li>
+							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.18.4/packages/zosfiles/src/methods/download/doc/IDownloadOptions.ts#L53">@zowe/zos-files-for-zowe-sdk/src/methods/download/doc/IDownloadOptions.ts:53</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
-							<p>The migrated recall option</p>
+							<p>Indicates if the created directories and files use the original letter case, which is for data sets always uppercase.
+								The default value is false for backward compability.
+								If the option &quot;directory&quot; or &quot;file&quot; is provided, this option doesn&#39;t have any effect.
+							This option has only effect on automatically generated directories and files.</p>
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
+					<a name="range" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> range</h3>
+					<div class="tsd-signature tsd-kind-icon">range<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<p>Inherited from <a href="_zowe_zos_files_for_zowe_sdk.igetoptions.html">IGetOptions</a>.<a href="_zowe_zos_files_for_zowe_sdk.igetoptions.html#range">range</a></p>
+						<ul>
+							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.18.4/packages/zosfiles/src/methods/get/doc/IGetOptions.ts#L25">@zowe/zos-files-for-zowe-sdk/src/methods/get/doc/IGetOptions.ts:25</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Range of records to return</p>
 						</div>
 						<dl class="tsd-comment-tags">
-							<dt>example</dt>
-							<dd><p>&quot;wait, nowait, error&quot;</p>
+							<dt>memberof</dt>
+							<dd><p>IGetOptions</p>
 							</dd>
 						</dl>
 					</div>
@@ -313,21 +298,6 @@
 							<p>The indicator to view the data set in record mode
 								Should not be specified for USS files
 							If binary and record are both specified, binary is used</p>
-						</div>
-					</div>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="recursive" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagOptional">Optional</span> recursive</h3>
-					<div class="tsd-signature tsd-kind-icon">recursive<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.18.4/packages/zosfiles/src/methods/upload/doc/IUploadOptions.ts#L30">@zowe/zos-files-for-zowe-sdk/src/methods/upload/doc/IUploadOptions.ts:30</a></li>
-						</ul>
-					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>The indicator to upload the directories recursively</p>
 						</div>
 					</div>
 				</section>
@@ -353,7 +323,7 @@
 					<div class="tsd-signature tsd-kind-icon">return<wbr>Etag<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.18.4/packages/zosfiles/src/methods/upload/doc/IUploadOptions.ts#L73">@zowe/zos-files-for-zowe-sdk/src/methods/upload/doc/IUploadOptions.ts:73</a></li>
+							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.18.4/packages/zosfiles/src/methods/download/doc/IDownloadOptions.ts#L45">@zowe/zos-files-for-zowe-sdk/src/methods/download/doc/IDownloadOptions.ts:45</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -362,6 +332,21 @@
 								If set to &#39;true&#39; it forces the response to include an &quot;ETag&quot; header, regardless of the size of the response data.
 								If it is not present, the the default is to only send an Etag for data sets smaller than a system determined length,
 							which is at least 8MB.</p>
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="stream" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> stream</h3>
+					<div class="tsd-signature tsd-kind-icon">stream<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Writable</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.18.4/packages/zosfiles/src/methods/download/doc/IDownloadOptions.ts#L63">@zowe/zos-files-for-zowe-sdk/src/methods/download/doc/IDownloadOptions.ts:63</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Optional stream to read the file contents</p>
 						</div>
 					</div>
 				</section>
@@ -461,58 +446,52 @@
 						<a href="../modules/_zowe_zos_files_for_zowe_sdk.html" class="tsd-kind-icon">@zowe/zos-<wbr>files-<wbr>for-<wbr>zowe-<wbr>sdk</a>
 						<ul>
 							<li class="current tsd-kind-interface tsd-parent-kind-module">
-								<a href="_zowe_zos_files_for_zowe_sdk.iuploadoptions.html" class="tsd-kind-icon">IUpload<wbr>Options</a>
+								<a href="_zowe_zos_files_for_zowe_sdk.idownloadsingleoptions.html" class="tsd-kind-icon">IDownload<wbr>Single<wbr>Options</a>
 								<ul>
-									<li class=" tsd-kind-property tsd-parent-kind-interface">
-										<a href="_zowe_zos_files_for_zowe_sdk.iuploadoptions.html#ascii_files" class="tsd-kind-icon">ascii_<wbr>files</a>
+									<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
+										<a href="_zowe_zos_files_for_zowe_sdk.idownloadsingleoptions.html#binary" class="tsd-kind-icon">binary</a>
 									</li>
 									<li class=" tsd-kind-property tsd-parent-kind-interface">
-										<a href="_zowe_zos_files_for_zowe_sdk.iuploadoptions.html#attributes" class="tsd-kind-icon">attributes</a>
+										<a href="_zowe_zos_files_for_zowe_sdk.idownloadsingleoptions.html#directory" class="tsd-kind-icon">directory</a>
 									</li>
 									<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
-										<a href="_zowe_zos_files_for_zowe_sdk.iuploadoptions.html#binary" class="tsd-kind-icon">binary</a>
+										<a href="_zowe_zos_files_for_zowe_sdk.idownloadsingleoptions.html#encoding" class="tsd-kind-icon">encoding</a>
 									</li>
 									<li class=" tsd-kind-property tsd-parent-kind-interface">
-										<a href="_zowe_zos_files_for_zowe_sdk.iuploadoptions.html#binary_files" class="tsd-kind-icon">binary_<wbr>files</a>
+										<a href="_zowe_zos_files_for_zowe_sdk.idownloadsingleoptions.html#extension" class="tsd-kind-icon">extension</a>
+									</li>
+									<li class=" tsd-kind-property tsd-parent-kind-interface">
+										<a href="_zowe_zos_files_for_zowe_sdk.idownloadsingleoptions.html#file" class="tsd-kind-icon">file</a>
 									</li>
 									<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
-										<a href="_zowe_zos_files_for_zowe_sdk.iuploadoptions.html#encoding" class="tsd-kind-icon">encoding</a>
+										<a href="_zowe_zos_files_for_zowe_sdk.idownloadsingleoptions.html#localencoding" class="tsd-kind-icon">local<wbr>Encoding</a>
 									</li>
 									<li class=" tsd-kind-property tsd-parent-kind-interface">
-										<a href="_zowe_zos_files_for_zowe_sdk.iuploadoptions.html#etag" class="tsd-kind-icon">etag</a>
+										<a href="_zowe_zos_files_for_zowe_sdk.idownloadsingleoptions.html#overwrite" class="tsd-kind-icon">overwrite</a>
 									</li>
 									<li class=" tsd-kind-property tsd-parent-kind-interface">
-										<a href="_zowe_zos_files_for_zowe_sdk.iuploadoptions.html#filesmap" class="tsd-kind-icon">files<wbr>Map</a>
-									</li>
-									<li class=" tsd-kind-property tsd-parent-kind-interface">
-										<a href="_zowe_zos_files_for_zowe_sdk.iuploadoptions.html#includehidden" class="tsd-kind-icon">include<wbr>Hidden</a>
+										<a href="_zowe_zos_files_for_zowe_sdk.idownloadsingleoptions.html#preserveoriginallettercase" class="tsd-kind-icon">preserve<wbr>Original<wbr>Letter<wbr>Case</a>
 									</li>
 									<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
-										<a href="_zowe_zos_files_for_zowe_sdk.iuploadoptions.html#localencoding" class="tsd-kind-icon">local<wbr>Encoding</a>
-									</li>
-									<li class=" tsd-kind-property tsd-parent-kind-interface">
-										<a href="_zowe_zos_files_for_zowe_sdk.iuploadoptions.html#maxconcurrentrequests" class="tsd-kind-icon">max<wbr>Concurrent<wbr>Requests</a>
-									</li>
-									<li class=" tsd-kind-property tsd-parent-kind-interface">
-										<a href="_zowe_zos_files_for_zowe_sdk.iuploadoptions.html#recall" class="tsd-kind-icon">recall</a>
+										<a href="_zowe_zos_files_for_zowe_sdk.idownloadsingleoptions.html#range" class="tsd-kind-icon">range</a>
 									</li>
 									<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
-										<a href="_zowe_zos_files_for_zowe_sdk.iuploadoptions.html#record" class="tsd-kind-icon">record</a>
+										<a href="_zowe_zos_files_for_zowe_sdk.idownloadsingleoptions.html#record" class="tsd-kind-icon">record</a>
+									</li>
+									<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
+										<a href="_zowe_zos_files_for_zowe_sdk.idownloadsingleoptions.html#responsetimeout" class="tsd-kind-icon">response<wbr>Timeout</a>
 									</li>
 									<li class=" tsd-kind-property tsd-parent-kind-interface">
-										<a href="_zowe_zos_files_for_zowe_sdk.iuploadoptions.html#recursive" class="tsd-kind-icon">recursive</a>
-									</li>
-									<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
-										<a href="_zowe_zos_files_for_zowe_sdk.iuploadoptions.html#responsetimeout" class="tsd-kind-icon">response<wbr>Timeout</a>
+										<a href="_zowe_zos_files_for_zowe_sdk.idownloadsingleoptions.html#returnetag" class="tsd-kind-icon">return<wbr>Etag</a>
 									</li>
 									<li class=" tsd-kind-property tsd-parent-kind-interface">
-										<a href="_zowe_zos_files_for_zowe_sdk.iuploadoptions.html#returnetag" class="tsd-kind-icon">return<wbr>Etag</a>
+										<a href="_zowe_zos_files_for_zowe_sdk.idownloadsingleoptions.html#stream" class="tsd-kind-icon">stream</a>
 									</li>
 									<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
-										<a href="_zowe_zos_files_for_zowe_sdk.iuploadoptions.html#task" class="tsd-kind-icon">task</a>
+										<a href="_zowe_zos_files_for_zowe_sdk.idownloadsingleoptions.html#task" class="tsd-kind-icon">task</a>
 									</li>
 									<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
-										<a href="_zowe_zos_files_for_zowe_sdk.iuploadoptions.html#volume" class="tsd-kind-icon">volume</a>
+										<a href="_zowe_zos_files_for_zowe_sdk.idownloadsingleoptions.html#volume" class="tsd-kind-icon">volume</a>
 									</li>
 								</ul>
 							</li>
