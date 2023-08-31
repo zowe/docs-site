@@ -1,4 +1,4 @@
-# Configuring Mattermost chat platform
+# Configuring Mattermost
 
 If you use Mattermost as your chat platform, you must configure your Mattermost before using Zowe Chat. You need to create an administrator account, a team, and a bot account in Mattermost.
 

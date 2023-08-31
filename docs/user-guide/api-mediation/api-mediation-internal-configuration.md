@@ -116,10 +116,13 @@ One use case for adding an environmental variable is to change the authenticatio
 
 **Follow the steps:**
 
-1. Open the file `<Zowe instance directory>/instance.env`.
-2. Add a new line with the following property:
-    
-     `apiml.security.auth.provider=saf`. 
+1. Open the file `<Zowe instance directory>/zowe.yaml`.
+2. Add a new line to the environments section with the following property:
+
+     ```
+     environments:
+         apiml.security.auth.provider: saf 
+     ```
 
 ## Service configuration
 
