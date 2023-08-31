@@ -42,6 +42,7 @@ module.exports = {
       className: "ToCheadercolor",
       link: {type:"doc", id:"getting-started/release-notes/release-notes-overview"},
       items: [
+        "getting-started/release-notes/v2_11_0",
         "getting-started/release-notes/v2_10_0",
         "getting-started/release-notes/v2_9_0",
         "getting-started/release-notes/v2_8_0",
@@ -862,7 +863,7 @@ module.exports = {
     {
       type: "link",
       label: "Third Party Software Requirements",
-      href: "https://github.com/zowe/docs-site/tree/master/tpsr/tpsr-v2.9.x.md",
+      href: "https://github.com/zowe/docs-site/tree/master/tpsr/tpsr-v2.10.x.md",
     },
   ],
 };

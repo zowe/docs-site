@@ -210,6 +210,9 @@ module.exports = {
               path: "stable",
               label: `${LATEST_VERSION}` + " LTS",
             },
+            "v2.10.x": {
+              label: "v2.10.x LTS",
+            },
             "v2.9.x": {
               label: "v2.9.x LTS",
             },
@@ -224,9 +227,6 @@ module.exports = {
            },
             "v2.5.x": {
               label: "v2.5.x LTS",
-           },
-            "v2.4.x": {
-              label: "v2.4.x LTS",
            },
             "v1.28.x": {
               label: "v1.28.x LTS",
