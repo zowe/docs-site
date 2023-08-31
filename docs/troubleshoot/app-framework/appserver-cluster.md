@@ -1,21 +1,24 @@
-# App-server cluster behavior control
+# Managing Cluster Mode for app-server
 
-On the Zowe servers, the component "app-server" has an environment variable "ZLUX_NO_CLUSTER" which controls whether or not it uses cluster mode. Cluster mode is enabled by default.
+On the Zowe servers, the component "app-server" has an environment variable "ZLUX_NO_CLUSTER" which controls whether or not it uses cluster mode. Cluster mode is enabled by default. However, you might need to disable cluster mode under certain circumstances. When cluster mode is disabled, make sure you are aware of the potential drawbacks and benefit. 
 
-When `ZLUX_NO_CLUSTER=1` as an environment variable, you **disable** cluster mode. Then you will lose the following benefits.
+When you **disable** cluster mode, you will lose the following benefits:
 
-- Performance under high user count due to lack of redundant workers.
-- Low-downtime when an unexpected exception occurs (only 1 interrupted request vs about 15 seconds downtime).
+1. **Performance under high user Count:** This is due to the absence of redundant workers, which can impact the system's efficiency when dealing with a large number of users.
 
-However, disabling the cluster mode can bring you an advantage: there is a limitation in node where it cannot handle a network interface going down. This leads to an infinite socket read loop until the process is canceled.
+2. **Reduced downtime during unexpected exceptions:** The low-downtime characteristic, where only one request is interrupted compared to around 15 seconds of downtime, is compromised.
+
+However, this trade-off comes with a specific benefit:
+
+- **Handling Network Interface Failures:** It addresses a limitation in Node.js where the system cannot effectively manage a network interface going offline. This limitation can result in an endless socket read loop until the process is manually terminated.
 
 ## To turn the cluster mode on
 
-- In Zowe V1, do NOT have `ZLUX_NO_CLUSTER` in `instance.env`.
-- In Zowe V2, do NOT have `zowe.environments.ZLUX_NO_CLUSTER `in `zowe.yaml`.
+- In Zowe V1, do NOT include the `ZLUX_NO_CLUSTER` environment variable in the `instance.env` configuration.
+- In Zowe V2, do NOT include the `zowe.environments.ZLUX_NO_CLUSTER `in the `zowe.yaml` file.
 
 ## To turn the cluster mode off
 
-- In Zowe V1, make `ZLUX_NO_CLUSTER=1` in `instance.env`.
-- In Zowe V2, make `zowe.environments.ZLUX_NO_CLUSTER=1`in `zowe.yaml`.
+- In Zowe V1, include `ZLUX_NO_CLUSTER=1` in the `instance.env` configuration.
+- In Zowe V2, include `zowe.environments.ZLUX_NO_CLUSTER=1` in the `zowe.yaml` file.
 
