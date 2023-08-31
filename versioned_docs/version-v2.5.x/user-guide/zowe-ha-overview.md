@@ -18,5 +18,5 @@ Zowe has high availability feature built-in. This doc guides you through the con
 
 If you deploy Zowe into Kubernetes, all components can also achieve high availability if you enable more than one replicas for each component.
 
-- [HorizontalPodAutoscaler](./k8s-config#horizontalpodautoscaler.md) is recommanded to let Kubernetes scales the component based on workdload.
-- [PodDisruptionBudget](./k8s-config#poddisruptionbudget.md) is recommended to let Kubernetes automatically handles disruptions like upgrade.
+- [HorizontalPodAutoscaler](./k8s-config#horizontalpodautoscaler) is recommended to let Kubernetes scales the component based on workdload.
+- [PodDisruptionBudget](./k8s-config#poddisruptionbudget) is recommended to let Kubernetes automatically handles disruptions like upgrade.
