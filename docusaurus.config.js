@@ -24,6 +24,12 @@ module.exports = {
     }),
   },
   themeConfig: {
+        announcementBar: {
+      id: 'announcementBar-1', // increment on change
+      content:
+        '📌  <b>Zowe Explorer</b>, <b>Zowe CLI</b> announcement: node-keytar replaced by new <a target="_blank" rel="noopener noreferrer" href="https://github.com/zowe/zowe-cli/blob/master/packages/secrets/OVERVIEW.md">Secrets for Zowe SDK</a>',
+      textColor: '#000',
+    },
     docs: {
       sidebar: {
         hideable: true
@@ -172,6 +178,9 @@ module.exports = {
       apiKey: "de714331a88daaf9b541b4ad68c19d84",
       indexName: "zowe",
       contextualSearch: true,
+      searchParameters: {
+        facetFilters: ["keywords"]
+      }
     },
     colorMode: {
       defaultMode: "light",

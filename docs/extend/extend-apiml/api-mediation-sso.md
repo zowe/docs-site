@@ -56,7 +56,7 @@ If you have a service that cannot be changed to adopt the Zowe authentication to
 ## Further resources
 
 * [Authentication Methods](./authentication-for-apiml-services/#supported-authentication-methods)
-* [User guide for SSO in Zowe CLI ](/docs/user-guide/cli-using-integrating-apiml.md/#accessing-multiple-services-with-sso)
+* [User guide for SSO in Zowe CLI ](../../user-guide/cli-using-integrating-apiml#accessing-multiple-services-with-sso)
 * [System requirements for using web tokens for SSO in Zlux and ZSS](/docs/user-guide/systemrequirements.md)
 
 

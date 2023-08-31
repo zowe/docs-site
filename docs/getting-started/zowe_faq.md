@@ -399,7 +399,7 @@ Secure credential storage functionality is now contained in the Zowe CLI core ap
 
 <summary></summary>
 
-When an environment does not support Secure Credential Storage, it is possible to disable it. See [Disabling Secure Credential Storage of credentials](./user-guide/ze-usage.md#disabling-secure-credential-storage-of-credentials) for more information.
+When an environment does not support Secure Credential Storage, it is possible to disable it. See [Disabling Secure Credential Storage of credentials](../user-guide/ze-usage.md#disabling-secure-credential-storage-of-credentials) for more information.
 
 </details>
 
