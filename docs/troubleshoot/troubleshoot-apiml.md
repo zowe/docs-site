@@ -1,4 +1,4 @@
-# Troubleshooting API ML
+# Troubleshooting Zowe API Mediation Layer
 
 As an API Mediation Layer user, you may encounter problems with how the API ML functions. This article presents known API ML issues and their solutions.
 
@@ -16,6 +16,8 @@ As an API Mediation Layer user, you may encounter problems with how the API ML f
     * [Java z/OS components of Zowe unable to read certificates from keyring](#java-zos-components-of-zowe-unable-to-read-certificates-from-keyring)
     * [Java z/OS components of Zowe cannot load the certificate private key pair from the keyring](#java-zos-components-of-zowe-cannot-load-the-certificate-private-key-pair-from-the-keyring)
     * [Exception thrown when reading SAF keyring {ZWED0148E}](#exception-thrown-when-reading-saf-keyring-zwed0148e)
+    * [ZWEAM400E Error initializing SSL Context when using Java 11](#zweam400e-error-initializing-ssl-context-when-using-java-11)
+    * [Failed to load JCERACFKS keyring when using Java 11](#failed-to-load-jceracfks-keyring-when-using-java-11)
 ## Install API ML without Certificate Setup
 
 For testing purposes, it is not necessary to set up certificates when configuring the API Mediation Layer. You can configure Zowe without certificate setup and run Zowe with `verify_certificates: DISABLED`.
@@ -261,13 +263,13 @@ Fix the missing z/OSMF host name in subject alternative names using the followin
 **Follow these steps:**
 
 1. Obtain a valid certificate for z/OSMF and place it in the z/OSMF keyring. For more information, see [Configure the z/OSMF Keyring and Certificate](https://www.ibm.com/support/knowledgecenter/en/SSLTBW_2.3.0/com.ibm.zos.v2r3.izua300/izuconfig_KeyringAndCertificate.htm).
-2. Re-create the Zowe keystore by deleting it and re-creating it. For more information, see [Configuring PKCS12 certificates](../user-guide/configure-certificates.md/#pkcs12-certificates-in-a-keystore).  The Zowe keystore directory is the value of the `KEYSTORE_DIRECTORY` variable in the `zowe.yaml` file that is used to launch Zowe.
+2. Re-create the Zowe keystore by deleting it and re-creating it. For more information, see [Zowe certificate configuration overview](../user-guide/configure-certificates.md) and the corresponding sub-articles in this section. The Zowe keystore directory is the value of the `KEYSTORE_DIRECTORY` variable in the `zowe.yaml` file that is used to launch Zowe.
 
 #### Insecure fix
 
 **Follow these steps:**
 
-1. Re-create the Zowe keystore by deleting it and re-creating it. For more information, see [Configuring PKCS12 certificates](../user-guide/configure-certificates.md/#pkcs12-certificates-in-a-keystore). 
+1. Re-create the Zowe keystore by deleting it and re-creating it. 
 2. In the `zowe-setup-certificates.env` file that is used to generate the keystore, ensure that the property `VERIFY_CERTIFICATES` and `NONSTRICT_VERIFY_CERTIFICATES` are set to `false`.
 
 **Important!** Disabling `VERIFY_CERTIFICATES` or `NONSTRICT_VERIFY_CERTIFICATES` may expose your server to security risks. Ensure that you contact your system administrator before disabling these certificates and use these options only for troubleshooting purposes.
@@ -445,7 +447,7 @@ The Zowe desktop is able to be displayed in a browser but fails to logon.
  
 **Solution:**
 
-Check that the Zowe certificate has been configured as a client certificate, and not just as a server certificate. More detail can be found in [Configuring PKCS12 certificates](../user-guide/configure-certificates.md/#pkcs12-certificates-in-a-keystore) and [Configuring JCERACFS certificates in a key ring](../user-guide/configure-certificates.md/#jceracfks-certificates-in-a-key-ring).
+Check that the Zowe certificate has been configured as a client certificate, and not just as a server certificate. For more informtion, see More detail can be found in [Configuring certificates overview](../user-guide/configure-certificates).
 
 ### Java z/OS components of Zowe unable to read certificates from keyring
 
@@ -523,7 +525,7 @@ at Object.getPemEncodedData (/software/zowev15/1.15.0/components/app-server/shar
 
 Zowe's local CA certificate has its default name `ZoweCert`. Zowe Desktop hardcodes this certificate in the configuration scripts.
 
-If you are using your own trusted CA certificate in the keyring, and the name is different from the default one, this error will occur. To resolve the issue, you must match the names in the [Zowe configuration](../user-guide/configure-certificates-keyring.md). 
+If you are using your own trusted CA certificate in the keyring, and the name is different from the default one, this error will occur. To resolve the issue, you must match the names in the [Zowe configuration](../user-guide/configure-certificates). 
 
 If you are using Zowe's local CA certificate and you still receive **ZWED0148E**, you may find the following message in the same log.
 
@@ -547,3 +549,76 @@ If you are using Zowe's local CA certificate and you still receive **ZWED0148E**
 ```
 
 In this case, ensure that the label names exactly match the names in TSO when confirming your keyring. Any difference in spaces, capitalization, or other places throw the error.
+
+### ZWEAM400E Error initializing SSL Context when using Java 11
+
+**Symptom:**
+
+API ML components configured with SAF keyring are not able to start due to an unrecoverable exception. The message indicates that `safkeyring` is an unknown protocol. 
+
+**Examples:**
+```
+2023-06-27 13:07:04.493 <ZWEAGW1:main:394418> ZWESVUSR ERROR (o.z.a.s.HttpsFactory) error java.net.MalformedURLException: unknown protocol: safkeyring                                           
+.at java.base/java.net.URL.<init>(URL.java:652)                                                        
+.at java.base/java.net.URL.<init>(URL.java:541)                                                        
+.at java.base/java.net.URL.<init>(URL.java:488)                                                        
+.at org.zowe.apiml.security.SecurityUtils.keyRingUrl(SecurityUtils.java:246)
+...                                                           
+```
+```
+2023-06-27 13:07:04.528 <ZWEAGW1:main:394418> ZWESVUSR ERROR (o.z.a.s.HttpsFactory) ZWEAM400E Error initializing SSL Context: 'unknown protocol: safkeyring' 
+```
+
+**Solution:**
+
+Starting with Java 11, the safkeyring URLs are dependent on the type of RACF keystore as presented in the following table.
+
+| URL | Keystore |
+|------|---------|
+| JCECCARACFKS | `safkeyringjcecca://ZWESVUSR/ZOWERING` |
+| JCERACFKS | `safkeyringjce://ZWESVUSR/ZOWERING` |
+| JCEHYBRIDRACFKS | `safkeyringjcehybrid://ZWESVUSR/ZOWERING` |
+
+### Failed to load JCERACFKS keyring when using Java 11
+
+**Symptom:**
+
+API ML components do not start properly because they fail to load the JCERACFKS keyring. The exception message indicates that the keyring is not available. 
+The keyring, however, is configured correctly and the STC user can access it. 
+
+**Examples:**
+```
+2023-06-27 13:07:45.138 ..35m<ZWEACS1:main:67502789>..0;39m APIMTST ..31mERROR..0;39m ..36m(o.a.t.u.n.SSLUtilBase)..0;39m Failed to load keystore type .JCERACFKS. with path .safkeyring://ZWESVUSR/ZOWERING. due to .JCERACFKS not found.
+java.security.KeyStoreException: JCERACFKS not found                                                                                                            
+.at java.base/java.security.KeyStore.getInstance(KeyStore.java:878)                                                                                             
+.at org.apache.tomcat.util.net.SSLUtilBase.getStore(SSLUtilBase.java:187)                                                                                       
+.at org.apache.tomcat.util.net.SSLHostConfigCertificate.getCertificateKeystore(SSLHostConfigCertificate.java:207)                                                                                                                                        
+...
+Caused by: java.security.NoSuchAlgorithmException:                           
+JCERACFKS KeyStore not available                                             
+.at java.base/sun.security.jca.GetInstance.getInstance(GetInstance.java:159) 
+.at java.base/java.security.Security.getImpl(Security.java:725)              
+.at java.base/java.security.KeyStore.getInstance(KeyStore.java:875)          
+```
+
+**Solution:**
+
+In Java 11 releases before 11.0.17.0, the `IBMZSecurity` security provider is not enabled by default. Locate the `java.security` configuration file in the `$JAVA_HOME/conf/security` USS directory 
+and open the file for editing. Modify the list of security providers and insert `IBMZSecurity` on second position. The list of enabled security providers should resemble the following series:
+```
+security.provider.1=OpenJCEPlus
+security.provider.2=IBMZSecurity
+security.provider.3=SUN
+security.provider.4=SunRsaSign
+security.provider.5=SunEC
+security.provider.6=SunJSSE
+security.provider.7=SunJCE
+security.provider.8=SunJGSS
+security.provider.9=SunSASL
+security.provider.10=XMLDSig
+security.provider.11=SunPCSC
+security.provider.12=JdkLDAP
+security.provider.13=JdkSASL
+security.provider.14=SunPKCS11
+```
+For more information see the steps in [Enabling the IBMZSecurity provider](https://www.ibm.com/docs/en/semeru-runtime-ce-z/11?topic=guide-ibmzsecurity#ibmzsecurity__enabling_z_provider__title__1).

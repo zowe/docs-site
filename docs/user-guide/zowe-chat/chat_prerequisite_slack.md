@@ -1,4 +1,4 @@
-# Configuring Slack chat platform
+# Configuring Slack
 
 If you use Slack as your chat platform, you must create and install one Slack App.
 
@@ -9,4 +9,3 @@ If you use Slack as your chat platform, you must create and install one Slack Ap
 2. [Adding your bot user to your Slack channel](chat_prerequisite_slack_invite_app_to_channel.md)  
 
    You can add the bot user that you created to your Slack channel in two ways: either mention your bot user directly in the message field or click the link **Add an app** at the beginning of your channel.
-
