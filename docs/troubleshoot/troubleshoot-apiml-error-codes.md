@@ -1655,7 +1655,7 @@ The following error message codes may appear on logs or API responses. Use the f
 
   **Action:**
 
-  Verify z/OSMF connection details. Verify z/OSMF can be accessed with HTTPS.
+  Verify z/OSMF connection details. Verify z/OSMF can be accessed with HTTPS. Configure sslDebug to see SSL debugging messages.
 
 ### ZWEAG183E
 
