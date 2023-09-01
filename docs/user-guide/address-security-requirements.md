@@ -10,7 +10,7 @@ To configure Zowe for production purposes, security authorization is required. Y
 
 ## Tasks performed by your security administrator
 
-In order to configure security for production environments, various tasks need to be performed by your organization's security administrator. Some of the tasks apply to general Zowe configuration, while other tasks are required only if specific features are installed. 
+In order to configure security for production environments, various tasks need to be performed by your organization's security administrator. Some of the tasks apply to general Zowe configuration, while other tasks are required only if specific Zowe components or features are planned to be used. 
 
 The following required configuration tasks are likely to be performed by your organization's security administrator:
 
