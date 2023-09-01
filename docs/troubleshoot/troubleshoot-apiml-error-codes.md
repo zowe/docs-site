@@ -523,11 +523,11 @@ The following error message codes may appear on logs or API responses. Use the f
 
   **Reason:**
 
-  The string sent by the central Gateway was not recognized as valid DER-encoded certificate in the Base64 printable form.
+  The string sent by the central Gateway was not recognized as a valid DER-encoded certificate in the Base64 printable form.
 
   **Action:**
 
-  Ensure that the forwarding of client certificate is enabled also in the central Gateway. Check for any error messages from the central Gateway.
+  Ensure that forwarding of the client certificate is also enabled in the central Gateway. Check for any error messages from the central Gateway.
 
 ### ZWEAT501E
 
@@ -535,7 +535,7 @@ The following error message codes may appear on logs or API responses. Use the f
 
   **Reason:**
   
-  The response status code is different from expected 200 OK.
+  The response status code is different from the expected 200 OK.
   
   **Action:**
   
@@ -559,7 +559,7 @@ The following error message codes may appear on logs or API responses. Use the f
   
   **Reason:**
   
-  The communication with the cloud gateway got interrupted or an error occurred during processing the response.
+  The communication with the cloud gateway got interrupted or an error occurred while processing the response.
   
   **Action:**
   
@@ -583,7 +583,7 @@ The following error message codes may appear on logs or API responses. Use the f
   
   **Reason:**
   
-  The Gateway performs additional check of request certificates when the central Gateway forwards incoming client certificate to the domain Gateway. This check may fail when the certificatesUrl parameter does not point to proper central Gateway certificates endpoint.
+  The Gateway performs an additional check of request certificates when the central Gateway forwards the incoming client certificate to the domain Gateway. This check may fail when the certificatesUrl parameter does not point to the proper central Gateway certificates endpoint.
   
   **Action:**
   
