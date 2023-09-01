@@ -76,7 +76,6 @@ Zowe Chat requires network connectivity to the mainframe system z/OSMF is runnin
 
 For more Slack related configuration, see [Configuring the chat tool Slack](chat_prerequisite_slack.md).
 
-
 **Microsoft Teams**:
 
 Both *outbound* and *inbound* public internet access are required if you plan to connect your Zowe Chat with Microsoft Teams chat platform, and will require network firewall configuration or use of proxy servers to allow the inbound traffic. 
@@ -92,14 +91,4 @@ Mattermost requires both *outbound* and *inbound* network access. However, the s
 
 ## Chat Tool Requirements
 
-Before you install Zowe Chat on your site, you must set up a bot in the Chat Tool you plan to connect with Zowe Chat. You will use the information from the bot setup in a future Zowe Chat configuration step. 
-
-**Slack**
-- See [Configuring Slack chat platform](chat_prerequisite_slack.md).
-
-**Microsoft Teams**
-- See [Configuring Microsoft Teams chat platform](chat_prerequisite_teams.md).
-
-**Mattermost**
--  Must be version 7.0 or newer. See [Configuring Mattermost chat platform](chat_prerequisite_mattermost.md).
-           
+See [Configuring chat platforms](chat_configure_chat_platforms) for information.
