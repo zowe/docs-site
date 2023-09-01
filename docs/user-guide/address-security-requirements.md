@@ -1,6 +1,6 @@
 # Address security requirements
 
-To configure Zowe for production purposes, security authorization is required. Your organization may require your security administrator to complete  steps to configure Zowe secuirity. As a system administrator/programmer first consult with your security administrator before you start the installation process. 
+During configuration of service-side components, it is necessary to configure various system security settings. Your organization may require your security administrator to complete steps to configure Zowe security. As a system administrator/programmer, first consult with your security administrator before you start the installation process. 
 
 **Note:** This article addresses configuring Zowe security during the installation process, and does not address security configuration to extend Zowe. For more information about security configuration to extend Zowe, see the following articles:
 
@@ -10,7 +10,7 @@ To configure Zowe for production purposes, security authorization is required. Y
 
 ## Tasks performed by your security administrator
 
-In order to configure security for production environments, various tasks need to be performed by your organization's security administrator. Some of the tasks apply to general Zowe configuration, while other tasks are required only if specific Zowe components or features are planned to be used. 
+To configure Zowe security for production environments, it is likely that your organization's security administrator will be required to perform various tasks. Some of the tasks apply to general Zowe configuration, while other tasks are required during installation if you plan to use specific Zowe components or features. 
 
 The following required configuration tasks are likely to be performed by your organization's security administrator:
 
@@ -20,21 +20,19 @@ The following required configuration tasks are likely to be performed by your or
 * [Configure address space job naming](../user-guide/configure-zos-system/#configure-address-space-job-naming)
 * [Use certificates](../user-guide/use-certificates.md)
 
-If your installation of Zowe includes the features listed in the following table, your organization's security administrator may also need to perform the associated tasks:
+If your Zowe server-side installation includes the features listed in the following table, your organization's security administrator may also need to perform the associated tasks:
 
 | Feature of a Zowe server-side component  | Configuration Task  | 
 | ---- | ---- | 
-| z/OSMF authentication or onboarding of z/OSMF service | [Granting users permission to access z/OSMF](../user-guide/grant-user-permission-zosmf.md) |
-| ZSS component enabled (required for API ML certificate and identity mapping) |[Configuring an ICSF cryptographic services environment](../user-guide/configure-zos-system.md/#configure-an-icsf-cryptographic-services-environment) |
-| When Top Secret is used | [Configuring multi-user address space (for TSS only)](../user-guide/configure-zos-system.md/#configure-multi-user-address-space-for-tss-only) |
+| Use of Top Secret | [Configuring multi-user address space (for TSS only)](../user-guide/configure-zos-system.md/#configure-multi-user-address-space-for-tss-only) |
 | High Availability | [Configuring ZWESLSTC to run Zowe high availability instances under ZWESVUSR user ID](../user-guide/configure-zos-system.md/#configure-zweslstc-to-run-zowe-high-availability-instances-under-zwesvusr-user-id) |
-| Cross memory server (XMEM) | [Configuring the cross memory server for SAF](../user-guide/configure-zos-system.md/#configure-the-cross-memory-server-for-saf) |
-| ZSS component enabled (required for API ML certificate and identity mapping) | [Configuring security environment switching](../user-guide/configure-zos-system.md/#configure-security-environment-switching) |
+| z/OSMF authentication or onboarding of z/OSMF service | [Granting users permission to access z/OSMF](../user-guide/grant-user-permission-zosmf.md) |
+| ZSS component enabled (required for API ML certificate and identity mapping) |[Configuring an ICSF cryptographic services environment](../user-guide/configure-zos-system.md/#configure-an-icsf-cryptographic-services-environment) <br />and<br /> [Configuring security environment switching](../user-guide/configure-zos-system.md/#configure-security-environment-switching)|
 | API Mediation Layer certificate mapping | [Configuring main Zowe server to use client certificate identity mapping](../user-guide/configure-zos-system.md/#configure-main-zowe-server-to-use-client-certificate-identity-mapping) |
 | API Mediation Layer identity mapping | [Configuring main Zowe server to use distributed identity mapping](../user-guide/configure-zos-system.md/#configure-main-zowe-server-to-use-distributed-identity-mapping) |
 | API Mediation Layer Identity tokens (IDT) | [Configuring signed SAF Identity tokens (IDT)](../user-guide/configure-zos-system.md/#configure-signed-saf-identity-tokens-idt) |
-| Cross memory server (XMEM) | [Configuring cross memory server load module](../user-guide/configure-xmem-server.md/#load-module) |
-| Cross memory server (XMEM) | [Configuring cross-memory server SAF configuration](../user-guide/configure-xmem-server.md/#saf-configuration) |
+| Cross memory server (XMEM) | [Configuring the cross memory server for SAF](../user-guide/configure-zos-system.md/#configure-the-cross-memory-server-for-saf)<br />and<br />[Configuring cross memory server load module](../user-guide/configure-xmem-server.md/#load-module)<br />and<br />[Configuring cross-memory server SAF configuration](../user-guide/configure-xmem-server.md/#saf-configuration) |
+
 
 
 
