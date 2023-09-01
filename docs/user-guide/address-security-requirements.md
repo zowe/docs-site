@@ -24,17 +24,17 @@ If your installation of Zowe includes the features listed in the following table
 
 | Feature of a Zowe server-side component  | Configuration Task  | 
 | ---- | ---- | 
-| z/OSMF authentication and service | [Granting users permission to access z/OSMF](../user-guide/grant-user-permission-zosmf.md) |
-| ZSS, API ML certificate mapping, and identity mapping |[Configuring an ICSF cryptographic services environment](../user-guide/configure-zos-system.md/#configure-an-icsf-cryptographic-services-environment) |
-| TSS | [Configuring multi-user address speace (for TSS only)](../user-guide/configure-zos-system.md/#configure-multi-user-address-space-for-tss-only) |
+| z/OSMF authentication or onboarding of z/OSMF service | [Granting users permission to access z/OSMF](../user-guide/grant-user-permission-zosmf.md) |
+| ZSS component enabled (required for API ML certificate and identity mapping) |[Configuring an ICSF cryptographic services environment](../user-guide/configure-zos-system.md/#configure-an-icsf-cryptographic-services-environment) |
+| When Top Secret is used | [Configuring multi-user address space (for TSS only)](../user-guide/configure-zos-system.md/#configure-multi-user-address-space-for-tss-only) |
 | High Availability | [Configuring ZWESLSTC to run Zowe high availability instances under ZWESVUSR user ID](../user-guide/configure-zos-system.md/#configure-zweslstc-to-run-zowe-high-availability-instances-under-zwesvusr-user-id) |
-| Cross memory server for SAF | [Configuring the cross memory server for SAF](../user-guide/configure-zos-system.md/#configure-the-cross-memory-server-for-saf) |
-| ZSS, API ML certificate mapping and identity mapping | [Configuring security environment switching](../user-guide/configure-zos-system.md/#configure-security-environment-switching) |
+| Cross memory server (XMEM) | [Configuring the cross memory server for SAF](../user-guide/configure-zos-system.md/#configure-the-cross-memory-server-for-saf) |
+| ZSS component enabled (required for API ML certificate and identity mapping) | [Configuring security environment switching](../user-guide/configure-zos-system.md/#configure-security-environment-switching) |
 | API Mediation Layer certificate mapping | [Configuring main Zowe server to use client certificate identity mapping](../user-guide/configure-zos-system.md/#configure-main-zowe-server-to-use-client-certificate-identity-mapping) |
 | API Mediation Layer identity mapping | [Configuring main Zowe server to use distributed identity mapping](../user-guide/configure-zos-system.md/#configure-main-zowe-server-to-use-distributed-identity-mapping) |
 | API Mediation Layer Identity tokens (IDT) | [Configuring signed SAF Identity tokens (IDT)](../user-guide/configure-zos-system.md/#configure-signed-saf-identity-tokens-idt) |
-| Cross memory server load module | [Configuring cross memory server load module](../user-guide/configure-xmem-server.md/#load-module) |
-| Cross memory server SAF | [Configuring cross-memory server SAF configuration](../user-guide/configure-xmem-server.md/#saf-configuration) |
+| Cross memory server (XMEM) | [Configuring cross memory server load module](../user-guide/configure-xmem-server.md/#load-module) |
+| Cross memory server (XMEM) | [Configuring cross-memory server SAF configuration](../user-guide/configure-xmem-server.md/#saf-configuration) |
 
 
 
