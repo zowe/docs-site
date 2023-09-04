@@ -16,9 +16,8 @@ The following required configuration tasks are likely to be performed by your or
 
 * [Initialize Zowe security configurations](../user-guide/initialize-security-configuration.md)
 * [Perform APF autorization of load libraries](../user-guide/apf-authorize-load-library.md)
-* [Configure the z/OS system for Zowe](../user-guide/configure-zos-system/#configure-user-ids-and-groups-for-the-zowe-started-tasks)
-* [Configure address space job naming](../user-guide/configure-zos-system/#configure-address-space-job-naming)
-* [Use certificates](../user-guide/configure-certificates.md)
+* [Configure the z/OS system for Zowe](../user-guide/configure-zos-system.md/#configure-user-ids-and-groups-for-the-zowe-started-tasks)
+* [Configure address space job naming](../user-guide/configure-zos-system.md/#configure-address-space-job-naming)
 
 If your Zowe server-side installation includes the features listed in the following table, your organization's security administrator may also need to perform the associated tasks:
 
