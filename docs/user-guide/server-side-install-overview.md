@@ -1,19 +1,19 @@
 # Server-side installation overview
 
-## Work items
+The installation of the Zowe server-side components covers the components either on z/OS only or you can install the components both on z/OS and on Docker.
 
-To explain the server-side scope, flow, roles, and so on.
+The Zowe server components provide a web desktop that runs a number of applications such as API Mediation Layer that includes the Single Sign-on (SSO) capability, organization of the multiple Zowe servers under a single website, and other useful features for z/OS developers.
 
-What to be covered in the overview:
+## End-to-end installatin flow chart
 
-End-to-end install flow diagram 
+placeholder
 
-config flow diagram
+## COnfiguration flow diagram
 
-Roles & Responsibilities
+placeholder
 
-Zowe Key Terms & Concepts: Zowe runtime, Zowe Application Framework, Zowe API Mediation Layer, Z Secure Services (ZSS), Zowe Cross Memory Server (@Joe)
+## Key terms and concepts
 
-Technology Needs: YAML, node.js, USS background details (existing content)
+Learn about the key terms and concepts used in Zowe.
 
 Install Methods Explained @Andrew
