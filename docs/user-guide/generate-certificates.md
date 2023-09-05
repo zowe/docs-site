@@ -153,6 +153,8 @@ When using a Zowe-generated certificate, you will be challenged by your browser 
 
 ## Creating a JCERACFKS certificate
 
+You can create a JCERACFKS certificate for use in a z/OS keystore. JCERACFKS uses SAF and RACF services to protect key material and certificates.
+
 Use the following procedure to configure the `zowe.yaml` file for JCERACFKS certificates:
 
 1. [Configure the JCERACFKS setup section in zowe.yaml](#configure-the-jceracfks-setup-section-in-zoweyaml)
