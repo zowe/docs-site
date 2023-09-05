@@ -1,4 +1,4 @@
-# Use certificates
+# Use certificates 
 
 Once you have generated or imported your certificates, you can now use the certificates with Zowe. Use the procedure that corresponds to the type of certificates you generated or imported:
 
@@ -9,7 +9,7 @@ Once you have generated or imported your certificates, you can now use the certi
 
 To use PKCS12 certificates, run the command `zwe start -c ./zowe.yaml` in the directory with the `zowe.yaml` file to start Zowe.
 
-The details about the PKCS12 certificate used when Zowe is launched, are specified in the `zowe.yaml` section `certificates`. This section contains information about the certificate name and the location of the certificate, together with the truststore location.
+Details about the PKCS12 certificate used when Zowe is launched are specified in the `zowe.yaml` section `certificates`. This section contains information about the certificate name and the location of the certificate, together with the truststore location.
 
 The two most common scenarios for using a PKCS12 certificate are:
 
@@ -22,7 +22,7 @@ To troubleshoot issues during Zowe startup, see [Troubleshooting startup of Zowe
 
 ## Use JCERACFKS certificates
 
-The details about the JCERACFKS certificate used when Zowe is launched, are specified in the `zowe.yaml` section `certificates`.  This contains information about the certificate name and its location, together with the truststore location.  
+Details about the JCERACFKS certificate used when Zowe is launched are specified in the `zowe.yaml` section `certificates`. This section contains information about the certificate name and location, together with the truststore location.  
 
 The two most common scenarios for using a JCERACFKS certificate are:
 
@@ -35,7 +35,7 @@ The two most common scenarios for using a JCERACFKS certificate are:
 ![Alt text](../images/certificates/connect-JCERACFKS.png)
 
 **Note:**
-In this example, the command `zwe init certificate -c ./zowe.yaml --security-dry-run` allows the JCL to be inspected before submission, as well as handed off to a security administrator who has privileges to submit the JCL under their user ID. Or by defult, the JCL will be submitted immediately. For details about this example, check out the [playlist here](https://youtube.com/playlist?list=PL8REpLGaY9QEHLNA81DRgGqWcgOYC0PDX).
+In this example, the command `zwe init certificate -c ./zowe.yaml --security-dry-run` allows the JCL to be inspected before submission, as well as handed off to a security administrator who has privileges to submit the JCL under their user ID. By default, the JCL id submitted immediately. For details about this example, see this [playlist](https://youtube.com/playlist?list=PL8REpLGaY9QEHLNA81DRgGqWcgOYC0PDX).
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/videoseries?list=PL8REpLGaY9QEHLNA81DRgGqWcgOYC0PDX" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 

@@ -1,4 +1,4 @@
-# FAQ: Zowe V2
+# Zowe V2 FAQ
 
 ## Where can I find the V1 and V2 LTS conformance criteria? 
 
