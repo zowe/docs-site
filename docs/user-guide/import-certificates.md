@@ -1,13 +1,10 @@
-# Import and configure a certificate if you have one
-<!--'if you have one'=obvious and does not need to be in the article title --> 
-<!--Consider having each 'import a certificate method' as a standalone article, in this article you could add a high level description to help the user choose among those methods but the procedures are better off separately-->
-One option for using certificates in Zowe is to import and configure existing certificates. Use the procedure that applies to the type of certificate you wish to import.
+# Import and configure a certificate
+
+One option to use certificates in Zowe is to import and configure existing certificates. Use the procedure that applies to the type of certificate you wish to import.
 
 * [Importing a file-based PKCS12 certificate](#importing-an-existing-pkcs12-certificate)
 * [Importing a JCERACFKS certificate](#importing-an-existing-jceracfks-certificate)
-
-Additionally, you can [import a certificate stored in an MVS data set into a Zowe key ring](#importing-a-certificate-stored-in-an-mvs-data-set-into-a-zowe-key-ring).
-<!--why is this method not next to the others?; link text is too long-->
+* [Importing a certificate stored in an MVS data set into a Zowe key ring](#importing-a-certificate-stored-in-an-mvs-data-set-into-a-zowe-key-ring).
 ## Importing an existing PKCS12 certificate
 
 To import a PKCS12 certificate, it is first necessary to import a certificate authority (CA). There are two options for importing a CA:
@@ -21,11 +18,9 @@ For PKCS12 certificate users, specify the following parameters in the `zowe.yaml
 
 | Parameter | Description |
 | --------- | ------------|
-| `zowe.setup.certificate.pkcs12.import.keystore` | Define it if you acquired one or more certificates from another CA, stored them in PKCS12 format, and now want to import the certificate(s) into the Zowe PKCS12 keystore.
-| `zowe.setup.certificate.pkcs12.import.password` | Specify it. This value is the password for keystore defined in `zowe.setup.certificate.pkcs12.import.keystore`. |
-<!--Not sure what 'Specify it' means-->
-| `zowe.setup.certificate.pkcs12.import.alias` | Specify it. This value is the original certificate alias defined in `zowe.setup.certificate.pkcs12.import.keystore`. |
-<!--Not sure what 'Specify it' means-->
+| `zowe.setup.certificate.pkcs12.import.keystore` | Specify this parameter if you acquired one or more certificates from another CA, stored them in PKCS12 format, and now want to import the certificate(s) into the Zowe PKCS12 keystore.
+| `zowe.setup.certificate.pkcs12.import.password` | Specify this password value  for the keystore defined in `zowe.setup.certificate.pkcs12.import.keystore`. |
+| `zowe.setup.certificate.pkcs12.import.alias` | This value is the original certificate alias defined in `zowe.setup.certificate.pkcs12.import.keystore`. |
 | `zowe.setup.certificate.pkcs12.name`| The imported certificate is saved under the alias specified in it. |
 
 **Configure `zowe.yaml` for a PKCS12 certificate:**
@@ -60,14 +55,12 @@ Importing a certificate authority (CA) is a prerequisite to importing a PKCS12 c
 
 ### Manually import a certificate authority into a web browser
 
-To avoid the browser untrusted CA challenge, import Zowe's certificates into the browser.
-<!--Zowe certificates= no possessive case-->
+To avoid the browser untrusted CA challenge, import Zowe certificates into the browser.
 
 Trust in the API ML server is a necessary precondition for secure communication between the browser or API Client application. Ensure this trust by installing a Certificate Authority (CA) public certificate. By default, API ML creates a local CA. Import the CA public certificate to the truststore for REST API clients and to your browser. You can also import the certificate to your root certificate store.
 
 **Important:**  
- If a SAF keyring is being used and set up with `ZWEKRING` JCL, the procedure to obtain the certificate does not apply. In this case, it is recommended that you work with your security system administrator to obtain the certificate.
- <!--If you use a SAF keyring...; we recommend instead of it is recommended-->  
+ If a SAF keyring is used and set up with `ZWEKRING` JCL, the procedure to obtain the certificate does not apply. In this case, we recommended that you work with your security system administrator to obtain the certificate.  
 
 The public certificate in [PEM format](https://en.wikipedia.org/wiki/Privacy-Enhanced_Mail) is stored at `<KEYSTORE_DIRECTORY>/local_ca/localca.cer` where `<KEYSTORE_DIRECTORY>` is defined in a customized `<RUNTIME_DIR>/bin/zowe-setup-certificates.env` file during the installation step that generates Zowe certificates. The certificate is stored in UTF-8 encoding so you need to transfer it as a binary file. Since this is the certificate to be trusted by your browser, it is recommended to use a secure connection for transfer.
 
@@ -105,7 +98,7 @@ To import the certificate to your root certificate store and trust it, follow th
 **Tip:**  
 To avoid requiring each browser to trust the CA that signed the Zowe certificate, you can use a public certificate authority to create a certificate. Optional public certificate authorities include _Symantec_, _Comodo_, _Let's Encrypt_, or _GoDaddy_.  Certificates generated by such public CAs are trusted by all browsers and most REST API clients. This option, however, requires a manual process to request a certificate and may incur a cost payable to the publicly trusted CA.
 
-After successfully manually importing a certificate authority into a web browser, you can now [Import an existing PKCS12 certificate](#import-an-existing-pkcs12-certificate).
+After successfully manually importing a certificate authority into a web browser, you can now [import an existing PKCS12 certificate](#import-an-existing-pkcs12-certificate).
 
 ### Import a local CA certificate on Linux
 
@@ -115,7 +108,7 @@ Follow these steps to import `local_ca.cer` from the path `.../zowe/keystore/loc
 
 **Note:** Steps are verified with Ubuntu 20.04.6 LTS.
 
-1. Rename `local_ca.cer` with `local_ca.crt` and copy it to the shared ca-certificates path.
+1. Rename `local_ca.cer` with `local_ca.crt` and copy to the shared ca-certificates path.
    
    `$ cp local_ca.cer /usr/local/share/ca-certificates/zowe_local_ca.crt`
 
@@ -123,18 +116,19 @@ Follow these steps to import `local_ca.cer` from the path `.../zowe/keystore/loc
    
    `$ sudo update-ca-certificates`
 
-3. Verify that the new expected certificate was added (the newest will be at the bottom of the list which contains an extended list of concatenated CAs)
+3. Verify that the new expected certificate was added (the newest will be at the bottom of the list which contains an extended list of concatenated CAs).
    
    `$ cat /etc/ssl/certs/ca-certificates.crt`
 
 4. Run a basic curl HTTPS request from the command line. For example, run the following command:
 
-```
+  ```
   curl --request 'GET'
---url 'https://tvt6092.svl.ibm.com:7554/jobs/api/v1?owner=ibmuser&prefix=*'
---header 'Authorization: Basic ************'
-```
-After successfully importing your local CA certificate on Linux, you can now [Import an existing PKCS12 certificate](#import-an-existing-pkcs12-certificate)
+  --url 'https://tvt6092.svl.ibm.com:7554/jobs/api/v1?owner=ibmuser&prefix=*'
+  --header 'Authorization: Basic ************'
+  ```
+
+After successfully importing your local CA certificate on Linux, you can now [import an existing PKCS12 certificate](#import-an-existing-pkcs12-certificate).
 
 ## Importing an existing JCERACFKS certificate
 
