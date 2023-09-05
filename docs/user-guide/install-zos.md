@@ -1,4 +1,4 @@
-# Installation roadmap
+# Zowe server-side installation overview
 
 When you install Zowe&trade; on z/OS, you install the following two parts: 
 

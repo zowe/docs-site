@@ -19,7 +19,7 @@ Follow these steps to generate a PKCS12 keystore:
 
 ### Configure the PKCS12 setup section in zowe.yaml
 
-To assist with updating `zowe.yaml`, see the example yaml for [scenario 1: Use a file-based (PKCS12) keystore with Zowe generated certificates](#certificate-configuration-scenarios.md/#scenario-1-use-a-pkcs12-keystore-with-zowe-generated-certificates) in the article Certificate configuration scenarios. 
+To assist with updating `zowe.yaml`, see the example yaml for [scenario 1: Use a file-based (PKCS12) keystore with Zowe generated certificates](certificate-configuration-scenarios.md/#scenario-1-use-a-file-based-pkcs12-keystore-with-zowe-generated-certificates) in the article Certificate configuration scenarios. 
 
 For PKCS12 certificate users, customize the following parameters in the `zowe.yaml` file:
 
@@ -149,7 +149,7 @@ You completed the procedure to generate a PKCS12 keystore.
 
 ### Next steps after PKCS12 setup
 
-When using a Zowe-generated certificate, you will be challenged by your browser when logging in to Zowe to accept Zowe's untrusted certificate authority. Depending on the browser you are using, there are different ways to proceed. See next steps about how to [import the PKCS12 certificate to your brower](./import-certificates#import-your-pkcs12-certificate).
+When using a Zowe-generated certificate, you will be challenged by your browser when logging in to Zowe to accept Zowe's untrusted certificate authority. Depending on the browser you are using, there are different ways to proceed. See next steps about how to [import the PKCS12 certificate to your browser](../import-certificates#importing-an-existing-pkcs12-certificate).
 
 ## Creating a JCERACFKS certificate
 
@@ -160,7 +160,7 @@ Use the following procedure to configure the `zowe.yaml` file for JCERACFKS cert
 1. [Configure the JCERACFKS setup section in zowe.yaml](#configure-the-jceracfks-setup-section-in-zoweyaml)
 2. [Run the command to generate a JCERACFKS certificate](#run-the-command-to-generate-a-jceracfks-certificate)
 
-To assist with updating `zowe.yaml`, see the example yaml in [Scenario 3: Use a z/OS keyring-based keystore with Zowe generated certificates](#certificate-configuration-scenarios.md/##scenario-3-use-a-zos-keyring-with-zowe-generated-certificates) in the article Certificate configuration scenarios.
+To assist with updating `zowe.yaml`, see the example yaml in [Scenario 3: Use a z/OS keyring-based keystore with Zowe generated certificates](certificate-configuration-scenarios.md#scenario-3-use-a-zos-keyring-based-keystore-with-zowe-generated-certificates) in the article Certificate configuration scenarios.
 ### Configure the JCERACFKS setup section in zowe.yaml
 
 For JCERACFKS certificate (z/OS key ring) users, customize the following parameters in the `zowe.yaml` file:
@@ -271,4 +271,4 @@ zowe:
 You completed the procedure to generate a JCERACFKS certificate.
 ### Next steps after JCERACFKS setup
 
-For more information about how to use your JCERACFKS certificate, see [Use JCERACFKS certificates](./use-certificates#use-jceracfks-certificates).
+For more information about how to use your JCERACFKS certificate, see [Use JCERACFKS certificates](../use-certificates#use-jceracfks-certificates).
