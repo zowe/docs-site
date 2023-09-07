@@ -39,15 +39,13 @@ If your Zowe server-side installation includes the features listed in the follow
 
 Specific user IDs with sufficient permissions are required to run or access Zowe.<!-- Provide details about the task and the specific role to perform the task -->
 
+If you have successfully run the [`ZWESECUR`](/docs/user-guide/initialize-security-configuration.md#configuring-with-zwe-init-security-command) JCL (either separately or by running the [`zwe init security`](/docs/user-guide/initialize-security-configuration.md#configuring-with-zwesecur-jcl) command),you do not need to perform the steps described in this section, because the TSO commands to create the user IDs and groups are executed during the JCL sections of `ZWESECUR`. See details about `zwe init security` command [here](../appendix/zwe_server_command_reference/zwe/init/zwe-init-security.md).
+
 ### ZWESVUSR
 
 This is a started task ID for `ZWESLSTC`. The task starts a USS environment using `BPXBATSL` that executes the core Zowe Desktop (ZLUX) node.js server, the Java API Mediation Layer, and the Z Secure Services C component. To work with USS, the user ID `ZWESVUSR` must have a valid OMVS segment.  
 
-If you have successfully run the `ZWESECUR` JCL (either separately or by running the [`zwe init security`](../appendix/zwe_server_command_reference/zwe/init/zwe-init-security.md) command), you do not need to perform the task. However, if you prefer to manually set permissions and configurations, you can refer to the following table to define the appropriate security permits.
-
-In Zowe V2, the configuration can be automatically finished by running the `zwe init security` command in the directory with Zowe installed. See details about this command [here](../appendix/zwe_server_command_reference/zwe/init/zwe-init-security.md).  
-
-
+You can refer to the following table to preview the commands and verify the required security permissions. If you prefer to manually perform the task, you can refer to the following table to define the appropriate security permits by copying and pasting commands into a TSO command prompt for step by step manual execution.
 
 | Resource class    | Resource name                          | Type of access required | Reason      | Actions                                                                                                                                                                                                                       |
 |----------|-----------------------------|--------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------|
