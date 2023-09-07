@@ -39,7 +39,7 @@ If your Zowe server-side installation includes the features listed in the follow
 
 Specific user IDs with sufficient permissions are required to run or access Zowe.<!-- Provide details about the task and the specific role to perform the task -->
 
-If you have successfully run the [`ZWESECUR`](/docs/user-guide/initialize-security-configuration.md#configuring-with-zwe-init-security-command) JCL (either separately or by running the [`zwe init security`](/docs/user-guide/initialize-security-configuration.md#configuring-with-zwesecur-jcl) command),you do not need to perform the steps described in this section, because the TSO commands to create the user IDs and groups are executed during the JCL sections of `ZWESECUR`. See details about `zwe init security` command [here](../appendix/zwe_server_command_reference/zwe/init/zwe-init-security.md).
+If you have successfully run the [`ZWESECUR`](/docs/user-guide/initialize-security-configuration.md#configuring-with-zwesecur-jcl) JCL (either separately or by running the [`zwe init security`](/docs/user-guide/initialize-security-configuration.md#configuring-with-zwe-init-security-command) command), you do not need to perform the steps described in this section, because the TSO commands to create the user IDs and groups are executed during the JCL sections of `ZWESECUR`. See details about `zwe init security` command [here](../appendix/zwe_server_command_reference/zwe/init/zwe-init-security.md).
 
 ### ZWESVUSR
 
