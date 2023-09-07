@@ -2,16 +2,17 @@
 
 Review this article to learn about the options to install, deploy and configure Zowe server-side components, and the roles and responsibilities to perform this installation.
 
-* Zowe server-side components in the installation
-* Parts of the server-side installation
-* Zowe runtime installation methods and roadmap
-    * Runtime installation methods details
-* Roles and responosibilities in server-side component installation process
-    * Tasks performed by the security administrator
-    * Tasks performed by the storage administrator
-    * Tasks performed by the network administrator
-    * Tasks performed by the system programmar
+* [Zowe server-side components in the installation](#zowe-server-side-components-in-the-installation)
+* [Parts of the server-side installation](#parts-of-the-server-side-installation)
+* [Zowe runtime installation methods and roadmap](#zowe-runtime-installation-methods-and-roadmap)
+    * [Runtime installation methods details](#runtime-installation-methods-details)
+* [Roles and responosibilities in server-side component installation process](#roles-and-responosibilities-in-server-side-component-installation-process)
+    * [Tasks performed by the security administrator](#tasks-performed-by-the-security-administrator)
+    * [Tasks performed by the storage administrator](#tasks-performed-by-the-storage-administrator)
+    * [Tasks performed by the network administrator](#tasks-performed-by-the-network-administrator)
+    * [Tasks performed by the system programmar](#tasks-performed-by-the-system-programmar)
 
+## Zowe server-side components in the installation
 
 The following Zowe server-side components are included in this installation: 
 
@@ -41,7 +42,7 @@ Installation of Zowe server-side components consists of two parts:
     * Z Secure Services (ZSS)
 * **Installation of the Zowe Cross-memory server**  
 The cross-memory server is an APF authorized server application that provides privileged services to Zowe in a secure manner.
-## Zowe runtime installation methods
+## Zowe runtime installation methods and roadmap
 
 To get started with installing Zowe runtime, select your installation method from the following options (Details of each installation method are described later in this article):
 
