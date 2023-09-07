@@ -1,6 +1,6 @@
 # Address security requirements
 
-During configuration of service-side components, it is necessary to configure various system security settings. Your organization may require your security administrator to complete steps to configure Zowe security. As a system administrator/programmer, first consult with your security administrator before you start the installation process. 
+During configuration of server-side components, it is necessary to configure various system security settings. Your organization may require your security administrator to complete steps to configure Zowe security. As a system administrator/programmer, first consult with your security administrator before you start the installation process. 
 
 **Note:** This article addresses configuring Zowe security during the installation process, and does not address security configuration to extend Zowe. For more information about security configuration to extend Zowe, see the following articles:
 
