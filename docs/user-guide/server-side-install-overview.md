@@ -54,7 +54,7 @@ To get started with installing Zowe runtime, select your installation method fro
 
 Zowe server-side components can be installed either on z/OS only, or both on z/OS and on Docker.
 
-The following diagram provides a roadmap for installation using the three primary installation methods. If you plan to install these components using a container build, see [Installing Zowe Containers](k8s-introduction.md).
+The following diagram provides a roadmap for installation using the three primary installation methods. If you plan to install these components using a container build, see Installing Zowe Containers.
 
 ![Install the Zowe z/OS runtime](../images/install/install.png)
 
@@ -103,7 +103,7 @@ To configure Zowe security for production environments, it is likely that your o
 
 ### Tasks performed by the storage administrator
 
-Before starting installation, notify the storage administrator to reserve enough space for USS, directory storage space, etc to install Zowe.
+Before starting installation, notify the storage administrator to reserve enough space for USS, directory storage space, and any other storage requrements to install Zowe.
 
 ### Tasks performed by the network administrator
 
