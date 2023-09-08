@@ -517,6 +517,78 @@ The following error message codes may appear on logs or API responses. Use the f
 
   Provide correct user name or password.
 
+### ZWEAT500E
+
+  Failed to parse the client certificate forwarded from the central Gateway. Error message %s. The client certificate was %s
+
+  **Reason:**
+
+  The string sent by the central Gateway was not recognized as a valid DER-encoded certificate in the Base64 printable form.
+
+  **Action:**
+
+  Ensure that forwarding of the client certificate is also enabled in the central Gateway. Check for any error messages from the central Gateway.
+
+### ZWEAT501E
+
+  Failed to get trusted certificates from the central Gateway. Unexpected response from %s endpoint. Status code: %s. Response body: %s
+
+  **Reason:**
+  
+  The response status code is different from the expected 200 OK.
+  
+  **Action:**
+  
+  Ensure that the parameter apiml.security.x509.certificatesUrl is correctly configured with the complete URL to the central Gateway certificates endpoint. Test the URL manually.
+
+### ZWEAT502E
+
+  Invalid URL specified to get trusted certificates from the central Gateway. Error message: %s
+  
+  **Reason:**
+  
+  The parameter apiml.security.x509.certificatesUrl is not correctly configured with the complete URL to the central Gateway certificates endpoint.
+  
+  **Action:**
+  
+  Ensure that the parameter apiml.security.x509.certificatesUrl is correctly configured.
+
+### ZWEAT503E
+
+  An error occurred during retrieval of trusted certificates from the central Gateway. Error message: %s
+  
+  **Reason:**
+  
+  The communication with the cloud gateway got interrupted or an error occurred while processing the response.
+  
+  **Action:**
+  
+  Check the provided error message. Contact the support.
+
+### ZWEAT504E
+
+  Failed to parse the trusted certificates provided by the central Gateway. Error message %s
+  
+  **Reason:**
+  
+  The string sent by the central Gateway was not recognized as valid DER-encoded certificates in the Base64 printable form.
+  
+  **Action:**
+  
+  Check that the URL configured in apiml.security.x509.certificatesUrl responds with valid DER-encoded certificates in the Base64 printable form.
+
+### ZWEAT505E
+
+  Incoming request certificate is not one of the trusted certificates provided by the central Gateway.
+  
+  **Reason:**
+  
+  The Gateway performs an additional check of request certificates when the central Gateway forwards the incoming client certificate to the domain Gateway. This check may fail when the certificatesUrl parameter does not point to the proper central Gateway certificates endpoint.
+  
+  **Action:**
+  
+  Check that the URL configured in apiml.security.x509.certificatesUrl points to the central Gateway and it responds with valid DER-encoded certificates in the Base64 printable form.
+
 ### ZWEAT601E
 
   z/OSMF service name not found. Set parameter apiml.security.auth.zosmf.serviceId to your service ID.
