@@ -99,7 +99,7 @@ The steps to prepare the z/OS environment to launch Zowe are the same for all in
 
 ### Tasks performed by the security administrator
 
-To configure Zowe security for production environments, it is likely that your organization's security administrator will be required to perform various tasks. See details in the [Address security requirements](./address-security-requirements#tasks-performed-by-your-security-administrator).
+To configure Zowe security for production environments, it is likely that your organization's security administrator will be required to perform various tasks. For more information,see [Address security requirements](./address-security-requirements#tasks-performed-by-your-security-administrator).
 
 ### Tasks performed by the storage administrator
 
