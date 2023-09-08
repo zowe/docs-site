@@ -34,8 +34,7 @@ The Zowe cross memory server (ZIS) provides privileged cross-memory services to 
 Installation of Zowe server-side components consists of two parts:
 
 * **Installation of Zowe runtime**  
-
-    Zowe runtime refers to the full, unarchived set of binaries, executable files, scripts, and other elements that are run when Zowe is started.
+Zowe runtime refers to the full, unarchived set of binaries, executable files, scripts, and other elements that are run when Zowe is started.
     Runtime installation includes the following components:  
     * Zowe Application Framework
     * Zowe API Mediation Layer
@@ -61,15 +60,15 @@ The following diagram provides a roadmap for installation using the three primar
 
 ![Install the Zowe z/OS runtime](../images/install/install.png)
 
-The Zowe z/OS binaries are distributed in the following installation formats. They contain the same contents but you install them by using different methods. You can choose which method to use depending on your needs.
+The Zowe z/OS binaries are distributed in the following installation formats. They contain the same contents but you install them by using different methods. 
 ### Runtime installation methods details
 
-Choose one of the following methods to install the Zowe server-side components on z/OS. 
+Select one of the following methods to install the Zowe server-side components on z/OS. 
 <!-- Add the advantages and disadvantanges to each method -->
 
    - **Convenience build**
 
-     Zowe z/OS binaries are packaged as a PAX file which is a full product install.  Transfer this to a USS directory and expand its contents.  Using the [zwe](installandconfig.md#zwe-server-command) command `zwe install` will extract a number of PDS members contain load modules, JCL scripts, and PARMLIB entries. 
+     Zowe z/OS binaries are packaged as a PAX file which is a full product install. Transfer this PAX file to a USS directory and expand its contents. Use the [zwe](installandconfig.md#zwe-server-command) command `zwe install` to extract a number of PDS members which contain load modules, JCL scripts, and PARMLIB entries. 
 
      To obtain and install the convenience build, see [Installing Zowe runtime from a convenience build](install-zowe-zos-convenience-build.md).
 
@@ -79,7 +78,7 @@ Choose one of the following methods to install the Zowe server-side components o
      - A pax.Z file, which contains an archive (compressed copy) of the FMIDs to be installed.
      - A readme file, which contains a sample job to decompress the pax.Z file, transform it into a format that SMP/E can process, and invoke SMP/E to extract and expand the compressed SMP/E input data sets.
 
-     To obtain the and install the SMP/E build, see [Installing Zowe SMP/E](install-zowe-smpe.md).
+     To obtain and install the SMP/E build, see [Installing Zowe SMP/E](install-zowe-smpe.md).
 
 
    - **Portable Software Instance (PSWI)**
@@ -88,9 +87,9 @@ Choose one of the following methods to install the Zowe server-side components o
 
      To obtain and install the PSWI, see [Installing Zowe from a Portable Software Instance](install-zowe-pswi.md).
 
-   While the procedures to obtain and install the convenience build, SMP/E build or PSWI are different, the procedure to configure a Zowe runtime is the same irrespective of how the build is obtained and installed.
+   While the procedures to obtain and install the convenience build, SMP/E build, or PSWI are different, configuration of a Zowe runtime is the same for all three installation methods.
 
-Successful installation of either a convenience build or an SMP/E build, creates the following artifacts:
+Successful installation of either a convenience build or an SMP/E build creates the following artifacts:
 * A zFS folder that contains the unconfigured Zowe runtime directory
 * A utility library `SZWEEXEC` that contains utilities
 * A SAMPLIB library `SZWESAMP` that contains sample members
@@ -106,19 +105,19 @@ To configure Zowe security for production environments, it is likely that your o
 
 ### Tasks performed by the storage administrator
 
-Before installing, the storage administrator will reserve enough space including for USS, directory storage space, etc to install Zowe.
+Before starting installation, notify the storage administrator to reserve enough space for USS, directory storage space, etc to install Zowe.
 
 ### Tasks performed by the network administrator
 
-When you are installing Zowe, it is likely that your network administrato will assign port numbers, reserve them, and arrange them for you.
+Notify your organization's network administrator to assign port numbers, reserve these port numbers, and arrange them for you.
 
 ### Tasks performed by the system programmar
 
-The system programmar will install and configure Zowe and start Zowe. They are skilled to SMP/E or z/OSMF workflow and regular maintanance. They also prepare jobs for other administrators.
+In most cases, the system programmar performs Zowe installation and configuration and starts Zowe. System programs are typically knowledgable about SMP/E, z/OSMF workflows, and regular maintanance procedures. This role also regularly prepares jobs for other administrators.
 
 ## Next steps
 
-Once you successfully install Zowe server-side components, you are ready to configure z/OS components. Use one of the following options to initialize Zowe z/OS runtime:
+Once you successfully install Zowe server-side components, you are ready to configure these z/OS components. Choose from the following options to initialize Zowe z/OS runtime:
 
 * [Initialize Zowe manually using init command group](../user-guide/initialize-zos-system.md)
 * [Configure Zowe with z/OSMF workflows](../user-guide/configure-zowe-zosmf-workflow.md)
