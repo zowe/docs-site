@@ -254,6 +254,8 @@ You must also grant READ access to the OMVSAPPL profile in the APPL class to the
 
 The user ID `ZWESVUSR` that is associated with the Zowe started task must have `READ` permission for the `BPX.JOBNAME` profile in the `FACILITY` class. This is to allow setting of the names for the different z/OS UNIX address spaces for the Zowe runtime components.
 
+**Note:** This procedure may require security administrator authorization. Consult with your security administrator.
+
 To display who is authorized to the profile, issue the following command:
 ```
 RLIST FACILITY BPX.JOBNAME AUTHUSER
