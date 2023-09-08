@@ -119,7 +119,7 @@ Zowe requires ACF2 APAR LU01316 to be applied when using the ACF2 security manag
 
 ## Memory requirements
 
-Zowe API ML components have following memory requiremets:
+Zowe API ML components have following memory requirements:
 
 Component name | Memory usage
 ---|---

@@ -23,7 +23,7 @@ If your Zowe server-side installation includes the features listed in the follow
 
 | Feature of a Zowe server-side component  | Configuration Task  | 
 | ---- | ---- | 
-| Use of Top Secret | [Configuring multi-user address space (for TSS only)](../user-guide/configure-zos-system.md/#configure-multi-user-address-space-for-tss-only) |
+| Use of Top Secret as your security manager | [Configuring multi-user address space (for TSS only)](../user-guide/configure-zos-system.md/#configure-multi-user-address-space-for-tss-only) |
 | High Availability | [Configuring ZWESLSTC to run Zowe high availability instances under ZWESVUSR user ID](../user-guide/configure-zos-system.md/#configure-zweslstc-to-run-zowe-high-availability-instances-under-zwesvusr-user-id) |
 | z/OSMF authentication or onboarding of z/OSMF service | [Granting users permission to access z/OSMF](../user-guide/grant-user-permission-zosmf.md) |
 | ZSS component enabled (required for API ML certificate and identity mapping) |[Configuring an ICSF cryptographic services environment](../user-guide/configure-zos-system.md/#configure-an-icsf-cryptographic-services-environment) <br />and<br /> [Configuring security environment switching](../user-guide/configure-zos-system.md/#configure-security-environment-switching)|
