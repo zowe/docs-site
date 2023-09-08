@@ -1,4 +1,4 @@
-# Glossary
+# Glossary of Zowe terminology
 
 This glossary is a comprehensive list of Zowe terminology. It includes technical terms that are specific to Zowe.
 
@@ -18,7 +18,7 @@ This glossary is a comprehensive list of Zowe terminology. It includes technical
 
 * **API Mediation Layer (API ML)**
 
-  provides a single point of access for mainframe service REST APIs.
+  Enables REST APIs by providing common functionality like a single point of access, Single-Sign-On, and workload balancing. API ML alos include the API Catalog. 
 
 * **Zowe Application Framework**
 
@@ -60,15 +60,15 @@ This glossary is a comprehensive list of Zowe terminology. It includes technical
 
 * **API Gateway**  
 
-  The API Gateway is a proxy server that routes requests from clients on its northbound edge, such as web browsers or the Zowe command line interface, to servers on its southbound edge that are able to provide data to serve the request. The API Gateway is also responsible for generating the authentication token used to provide single sign-on (SSO) functionality. See https://docs.zowe.org/stable/getting-started/zowe-architecture/#api-gateway
+  The API Gateway is a proxy server that provides a single point of access and routes requests from clients on its northbound edge, such as web browsers or the Zowe command line interface, to servers on its southbound edge that are able to provide data to serve the request. The API Gateway is also responsible for generating the authentication token used to provide single sign-on (SSO) functionality. See https://docs.zowe.org/stable/getting-started/zowe-architecture/#api-gateway
 
 * **API Catalog** 
 
-  The API Catalog provides a list of the API services that have registered themselves as catalog tiles. 
+  The API Catalog provides a list of the API services that have registered themselves as catalog tiles and renders the Swagger documentation of those services.
 
 * **API Discovery** 
 
-  a service to allow RESTful services to be dynamically added to the API Catalog
+  a service that enables API services to be onboarded to the API ML.
 
 * **App Server** 
 
@@ -76,7 +76,7 @@ This glossary is a comprehensive list of Zowe terminology. It includes technical
 
 * **Caching Service** 
 
-  This feature is designed for Zowe components in a high availability configuration. It supports the High Availability of all components within Zowe, allowing components to be stateless by providing a mechanism to offload their state to a location accessible by all instances of the service, including those which just started 
+  This service is designed for Zowe components in a high availability configuration. It supports the High Availability of all components within Zowe, allowing components to be stateless by providing a mechanism to offload their state to a location accessible by all instances of the service, including those which just started 
        
 * **z/OS Explorer Services**
   
