@@ -17,7 +17,7 @@ Review this overview to learn about the options to install Zowe server-side comp
 The following Zowe server-side components are included in this installation: 
 
 * **Zowe Application Framework**  
-A web user interface (UI) that provides a virtual desktop containing several apps allowing access to z/OS function.  <details><summary>Click here for more information about Zowe Application Framework</summary> Zowe™ Application Framework is a  Base Zowe includes apps for traditional access such as a 3270 terminal and a VT Terminal, as well as an editor and explorers for working with JES, MVS Data Sets and Unix System Services
+A web user interface (UI) that provides a virtual desktop containing several apps allowing access to z/OS functions.  <details><summary>Click here for more information about Zowe Application Framework</summary> Zowe™ Application Framework is a  Base Zowe includes apps for traditional access such as a 3270 terminal and a VT Terminal, as well as an editor and explorers for working with JES, MVS Data Sets and Unix System Services
 </details>
 
 *  **Zowe API Mediation Layer (API ML)**  
