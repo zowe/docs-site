@@ -1,9 +1,9 @@
 # Server-side installation overview
 
-Review this article to learn about the options to install, deploy and configure Zowe server-side components, and the roles and responsibilities to perform this installation.
+Review this overview to learn about the options to install Zowe server-side components, and the roles and responsibilities to perform this installation.
 
 * [Zowe server-side components in the installation](#zowe-server-side-components-in-the-installation)
-* [Parts of the server-side installation](#parts-of-the-server-side-installation)
+* [Installation of Zowe runtime](#installation-of-zowe-runtime)
 * [Zowe runtime installation methods and roadmap](#zowe-runtime-installation-methods-and-roadmap)
     * [Runtime installation methods details](#runtime-installation-methods-details)
 * [Roles and responosibilities in server-side component installation process](#roles-and-responosibilities-in-server-side-component-installation-process)
@@ -21,26 +21,27 @@ A web user interface (UI) that provides a virtual desktop containing several app
 </details>
 
 *  **Zowe API Mediation Layer (API ML)**  
-Zowe API Mediation Layer provides a reverse proxy and enables REST APIs by providing a single point of access for mainframe service REST APIs.<details><summary>Click here for more information about API Mediation Layer</summary> Such APIs include MVS Data Sets, JES, as well as working with z/OSMF. The API ML has dynamic discovery capability for these services and Gateway is also responsible for generating the authentication token used to provide single sign-on (SSO) functionality.</details>
+Zowe API Mediation Layer provides a reverse proxy and enables REST APIs by providing a single point of access for mainframe service REST APIs.<details><summary>Click here for more information about API Mediation Layer.</summary> Such APIs include MVS Data Sets, JES, as well as working with z/OSMF. The API ML has dynamic discovery capability for these services and Gateway is also responsible for generating the authentication token used to provide single sign-on (SSO) functionality.</details>
 
-* **Zowe System Services (ZSS)**  
-Working closely with ZIS, ZSS serves as one of the primary, authenticated back-ends that communicates with z/OS and provides Zowe with a number of APIs including z/OS Unix files and data sets, control of the plug-ins and services lifecycle, and security management.<details><summary>Click here for more information about Zowe System Services</summary> The Zowe Desktop delegates a number of its services to ZSS which it accesses through the default http port `7557`. ZSS is written in C and uses native calls to z/OS to provide its services.</details>
+* **Zowe System Services (ZSS)**  <!-- Is ZSS installed with Zowe runtime or is is part of ZIS installation in the configuring section? -->
+Working closely with ZIS, ZSS serves as one of the primary, authenticated back-ends that communicates with z/OS and provides Zowe with a number of APIs including z/OS Unix files and data sets, control of the plug-ins and services lifecycle, and security management.<details><summary>Click here for more information about Zowe System Services.</summary> The Zowe Desktop delegates a number of its services to ZSS which it accesses through the default http port `7557`. ZSS is written in C and uses native calls to z/OS to provide its services.</details>
 
-* **Zowe Cross Memory Server (ZIS)**  
-The Zowe cross memory server (ZIS) provides privileged cross-memory services to the Zowe Desktop and runs as an APF-authorized program.<details><summary> Click here for more information about ZIS</summary>The same cross memory server can be used by multiple Zowe desktops. The cross memory server is needed to be able to log on to the Zowe desktop and operate its apps such as the Code Editor.</details>
+## Installation of Zowe runtime
 
-## Parts of the server-side installation
-
-Installation of Zowe server-side components consists of two parts:
-
-* **Installation of Zowe runtime**  
 Zowe runtime refers to the full, unarchived set of binaries, executable files, scripts, and other elements that are run when Zowe is started.
-    Runtime installation includes the following components:  
-    * Zowe Application Framework
-    * Zowe API Mediation Layer
-    * Z Secure Services (ZSS)
-* **Installation of the Zowe Cross-memory server**  
-The cross-memory server is an APF authorized server application that provides privileged services to Zowe in a secure manner.
+Runtime installation includes the following components:  
+* Zowe Application Framework
+* Zowe API Mediation Layer
+* Z Secure Services (ZSS)
+
+<!-- Where does this next paragraph belong? -->
+The Zowe server components also includes a web desktop that runs a number of applications including API Mediation Layer that includes the Single Sign-on (SSO) capability, organization of multiple Zowe servers under a single website, and other useful features for z/OS developers.
+
+**Important:** To run all of these server-side components, or to run Zowe Application Framework, installation of the Zowe Cross Memory Server (ZIS) is required. The Zowe cross memory server (ZIS) provides privileged cross-memory services to the Zowe Desktop and runs as an APF-authorized program.<details><summary> Click here for more information about ZIS.</summary>The same cross memory server can be used by multiple Zowe desktops. The cross memory server is needed to be able to log on to the Zowe desktop and operate its apps such as the Code Editor.</details>
+
+
+For more information about the Zowe cross memory server, see [Installing and configuring the Zowe cross memory server (ZWESISTC)](./user-guide/configure-xmem-server).
+
 ## Zowe runtime installation methods and roadmap
 
 To get started with installing Zowe runtime, select your installation method from the following options (Details of each installation method are described later in this article):
@@ -52,9 +53,6 @@ To get started with installing Zowe runtime, select your installation method fro
     **Note:** The containerization build makes it possible for some UNIX components to run in a container rather than under USS. For more information about this build method, see [Installing Zowe Containers](k8s-introduction.md).
 
 Zowe server-side components can be installed either on z/OS only, or both on z/OS and on Docker.
-<!-- Where does this next paragraph belong? -->
-The Zowe server components also includes a web desktop that runs a number of applications including API Mediation Layer that includes the Single Sign-on (SSO) capability, organization of multiple Zowe servers under a single website, and other useful features for z/OS developers.
-
 
 The following diagram provides a roadmap for installation using the three primary installation methods. If you plan to install these components using a container build, see [Installing Zowe Containers](k8s-introduction.md).
 
@@ -101,7 +99,7 @@ The steps to prepare the z/OS environment to launch Zowe are the same for all in
 
 ### Tasks performed by the security administrator
 
-To configure Zowe security for production environments, it is likely that your organization's security administrator will be required to perform various tasks. See details in the [Address ecurity requirements](./address-security-requirements#tasks-performed-by-your-security-administrator)
+To configure Zowe security for production environments, it is likely that your organization's security administrator will be required to perform various tasks. See details in the [Address security requirements](./address-security-requirements#tasks-performed-by-your-security-administrator).
 
 ### Tasks performed by the storage administrator
 
@@ -111,14 +109,14 @@ Before starting installation, notify the storage administrator to reserve enough
 
 Notify your organization's network administrator to assign port numbers, reserve these port numbers, and arrange them for you.
 
-### Tasks performed by the system programmar
+### Tasks performed by the system programmer
 
-In most cases, the system programmar performs Zowe installation and configuration and starts Zowe. System programs are typically knowledgable about SMP/E, z/OSMF workflows, and regular maintanance procedures. This role also regularly prepares jobs for other administrators.
+In most cases, the system programmer performs Zowe installation and configuration and starts Zowe. System programmers are typically knowledgeable about SMP/E, z/OSMF workflows, and regular maintanance procedures. This role also regularly prepares jobs for other administrators.
 
 ## Next steps
 
 Once you successfully install Zowe server-side components, you are ready to configure these z/OS components. Choose from the following options to initialize Zowe z/OS runtime:
 
-* [Initialize Zowe manually using init command group](../user-guide/initialize-zos-system.md)
+* [Initialize Zowe manually using the _init_ command group](../user-guide/initialize-zos-system.md)
 * [Configure Zowe with z/OSMF workflows](../user-guide/configure-zowe-zosmf-workflow.md)
 
