@@ -259,6 +259,7 @@ The timeouts.json file has the following layout:
   "groups": {
     "developers": 7200
   }
+}
 ```
 
 Where you can have a "users" section that lists user accounts on the z/OS system, and "groups" section that lists groups on that system.
