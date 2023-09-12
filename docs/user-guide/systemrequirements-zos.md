@@ -1,6 +1,9 @@
+---
+keywords: [security permissions, system permissions, monacat]
+---
 # System requirements 
 
-Before installing Zowe&trade; z/OS components, ensure that your z/OS environment meets the prerequisites. The prerequisites you need to install depend on what Zowe z/OS components you want to use and how you want to install and configure Zowe on z/OS. Therefore, assess your installation scenario and install the prerequisites that meet your needs. 
+Before installing Zowe&trade; z/OS components, ensure that your z/OS environment meets the prerequisites. The prerequisites you need to install depend on what Zowe z/OS components you want to use and how you want to install and configure Zowe on z/OS. Assess your installation scenario and install the prerequisites that meet your needs. 
 
 All Zowe server components can be installed on a z/OS environment, while some can alternatively be installed on Linux or zLinux via Docker. The components provide a number of services that are accessed through a web browser such as an API catalog and a web desktop.  
 
@@ -18,6 +21,7 @@ All Zowe server components can be installed on a z/OS environment, while some ca
   - [Network requirements](#network-requirements)
   - [Zowe Containers requirements](#zowe-containers-requirements)
   - [Zowe Desktop requirements (client PC)](#zowe-desktop-requirements-client-pc)
+  - [Browser limitations in API Catalog](#browser-limitations-in-api-catalog)
   - [Feature requirements](#feature-requirements)
     - [Multi-Factor Authentication (MFA)](#multi-factor-authentication-mfa)
     - [Single Sign-On (SSO)](#single-sign-on-sso)
@@ -28,19 +32,19 @@ Be sure your z/OS system meets the following prerequisites:
 
 ### z/OS
 
-- z/OS version in active support, such as Version 2.3 and Version 2.4
+- z/OS version is in active support, such as Version 2.3 and Version 2.4
 
    **Note:** z/OS V2.2 reached end of support on 30 September 2020. For more information, see the z/OS v2.2 lifecycle details [https://www.ibm.com/support/lifecycle/details?q45=Z497063S01245B61](https://www.ibm.com/support/lifecycle/details?q45=Z497063S01245B61). 
 
-- zFS volume with at least 833 mb of free space for Zowe server components, their keystore, instance configuration files and logs, and third-party plug-ins.
+- zFS volume has at least 833 mb of free space for Zowe server components, their keystore, instance configuration files and logs, and third-party plug-ins.
 
 - (Optional, recommended) z/OS OpenSSH V2.2.0 or later
   
-  Some features of Zowe require SSH, such as the Desktop's SSH terminal. Or, you want to install and manage Zowe via SSH, as an alternative to OMVS over TN3270. 
+  Some features of Zowe require SSH, such as the Desktop's SSH terminal. Install and manage Zowe via SSH, as an alternative to OMVS over TN3270. 
 
 - (Optional, recommended) Parallel Sysplex.
   
-  To deploy Zowe for high availability, a Parallel Sysplex environment is recommended. Please check [Configuring Sysplex for high availability](configure-sysplex.md) for more information.
+  To deploy Zowe for high availability, a Parallel Sysplex environment is recommended. For more information, see [Configuring Sysplex for high availability](configure-sysplex.md).
 
 ### Node.js
 
@@ -70,7 +74,7 @@ Be sure your z/OS system meets the following prerequisites:
   - For production use of Zowe, see [Configuring z/OSMF](systemrequirements-zosmf.md).
   
 
-## User ID requirements
+## User ID requirements and security permissions
 
 Specific user IDs with sufficient permissions are required to run or access Zowe. 
 
@@ -81,18 +85,17 @@ This is a started task ID for `ZWESLSTC`.
 The task starts a USS environment using `BPXBATSL` that executes the core Zowe Desktop (ZLUX) node.js server, the Java API Mediation Layer, and the Z Secure Services C component.  To work with USS, the user ID `ZWESVUSR` must have a valid OMVS segment.  
 
 
-
-| Class  | ID     | Access |  Reason |
-|--------|--------|--------|---------|
-| CSFSERV | `Multiple` | READ | To generate symmetric keys using ICSF that is used by [Zowe Desktop cookies](./configure-zos-system.md#configure-an-icsf-cryptographic-services-environment). The list of IDs to enable will include `CSF1TRD` , `CSF1TRC` , `CSF1SKE` , `CSF1SKD`. The full list of IDs is described in the z/OS Cryptographic Services user guide for your z/OS release level: [2.2](https://www.ibm.com/docs/en/zos/2.2.0?topic=ssl-racf-csfserv-resource-requirements), [2.3](https://www.ibm.com/docs/en/zos/2.3.0?topic=ssl-racf-csfserv-resource-requirements), [2.4](https://www.ibm.com/docs/en/zos/2.4.0?topic=ssl-racf-csfserv-resource-requirements) and [2.5](https://www.ibm.com/docs/en/zos/2.5.0?topic=ssl-racf-csfserv-resource-requirements). |
-| FACILITY | `ZWES.IS` | READ | To allow Zowe ZWESLSTC processes to access the Zowe ZIS cross memory server |
-| FACILITY | `BPX.SERVER` + `BPX.DAEMON` | UPDATE | To allow the Zowe Desktop ZLUX server to run code on behalf of the API requester's TSO user ID. For more information, see [Security Environment Switching](./configure-zos-system.md#configure-security-environment-switching). |
-| FACILITY | `IRR.RUSERMAP` | READ | To allow Zowe to [map an X.509 client certificate to a z/OS identity](./configure-zos-system.md#configure-main-zowe-server-to-use-identity-mapping) | 
-| FACILITY | `BPX.JOBNAME` | READ | To allow z/OS address spaces for unix processes to be renamed for [ease of identification](./configure-zos-system.md#configure-address-space-job-naming) |
-| FACILITY | `IRR.RADMIN.LISTUSER` | READ | To allow Zowe to obtain information about OMVS segment of the user profile using `LISTUSER` TSO command |
-| FACILITY | `IRR.RAUDITX` | READ | **Optional** To allow API Mediation Layer to issue SMF 83 records about activity of Personal Access Tokens. [See here for more info](./api-mediation/api-mediation-smf) |
-| APPL     | 'OMVSAPPL' | READ | **Optional** To allow Zowe Desktop vendor extensions the ability to use single-sign on.  |
-
+| Class    | ID                          | Access | Reason                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
+|----------|-----------------------------|--------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| CSFSERV  | `Multiple`                  | READ   | To generate symmetric keys using ICSF that is used by [Zowe Desktop cookies](./configure-zos-system.md#configure-an-icsf-cryptographic-services-environment). The list of IDs to enable include `CSF1TRD` , `CSF1TRC` , `CSF1SKE` , `CSF1SKD`. The full list of IDs is described in the z/OS Cryptographic Services user guide for your z/OS release level: [2.2](https://www.ibm.com/docs/en/zos/2.2.0?topic=ssl-racf-csfserv-resource-requirements), [2.3](https://www.ibm.com/docs/en/zos/2.3.0?topic=ssl-racf-csfserv-resource-requirements), [2.4](https://www.ibm.com/docs/en/zos/2.4.0?topic=ssl-racf-csfserv-resource-requirements) and [2.5](https://www.ibm.com/docs/en/zos/2.5.0?topic=ssl-racf-csfserv-resource-requirements). |
+| FACILITY | `ZWES.IS`                   | READ   | To allow Zowe ZWESLSTC processes to access the Zowe ZIS cross memory server.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
+| FACILITY | `BPX.SERVER` + `BPX.DAEMON` | UPDATE | To allow Zowe to run code on behalf of the API requester's TSO user ID. For more information, see [Security Environment Switching](./configure-zos-system.md#configure-security-environment-switching).                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
+| APPL     | `OMVSAPPL`                  | READ   | To allow Zowe to run code on behalf of the API requester's TSO user ID. This permission is also required from a requester's TSO user. You can skip this requirement when the resource `OMVSAPPL` in the `APPL` class is not defined. For more information, see [Security Environment Switching](./configure-zos-system.md#configure-security-environment-switching).                                                                                                                                                                                                                                                                                                                                                                        |
+| FACILITY | `BPX.JOBNAME`               | READ   | To allow z/OS address spaces for unix processes to be renamed for [ease of identification](./configure-zos-system.md#configure-address-space-job-naming).                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
+| FACILITY | `IRR.RADMIN.LISTUSER`       | READ   | To allow Zowe to obtain information about OMVS segment of the user profile using `LISTUSER` TSO command.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
+| FACILITY | `IRR.RUSERMAP`              | READ   | **Optional** To allow Zowe to [map an X.509 client certificate to a z/OS identity](./configure-zos-system.md#configure-main-zowe-server-to-use-client-certificate-identity-mapping).                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
+| FACILITY | `IRR.IDIDMAP.QUERY`         | READ   | **Optional** To allow Zowe to [map an ditributed identity to a z/OS identity](./configure-zos-system.md#configure-main-zowe-server-to-use-distributed-identity-mapping).                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
+| FACILITY | `IRR.RAUDITX`               | READ   | **Optional** To allow API Mediation Layer to issue [SMF 83 records](./api-mediation/api-mediation-smf) about activity of Personal Access Tokens.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
 
 ### ZWESIUSR
 
@@ -100,7 +103,7 @@ This is a started task ID used to run the PROCLIB `ZWESISTC` that launches the [
 
 ### ZWEADMIN
 
-This is a group that `ZWESVUSR` and `ZWESIUSR` should belong to.  It must have a valid OMVS segment.  
+This is a group that `ZWESVUSR` and `ZWESIUSR` should belong to. It must have a valid OMVS segment.  
 
 ### zowe_user
 
@@ -138,17 +141,13 @@ The Zowe Desktop is powered by the Application Framework which has server prereq
 - [Application Framework on Docker prerequisites](#docker-requirements-host)
 
 The Zowe Desktop runs inside of a browser. No browser extensions or plugins are required.
-The Zowe Desktop supports Google Chrome, Mozilla Firefox, Apple Safari and Microsoft Edge releases that are at most 1 year old, except when the newest release is older.
-For Firefox, both the regular and Extended Support Release (ESR) versions are supported under this rule.
-
-Currently, the following browsers are supported:
-
-- Google Chrome V79 or later
-- Mozilla Firefox V68 or later
-- Safari V13 or later
-- Microsoft Edge 79
+The Zowe Desktop supports Google Chrome, Mozilla Firefox, Apple Safari and Microsoft Edge releases that are at most 1 year old, except when the newest release is older. For Firefox, both the regular and Extended Support Release (ESR) versions are supported under this rule.
 
 If you do not see your browser listed here, please contact the Zowe community so that it can be validated and included.
+
+## Browser limitations in API Catalog
+
+It is recommended to use Google Chrome when you are trying to access API Catalog. Errors might occur if you access API Catalog with Firefox. 
 
 ## Feature requirements
 
@@ -175,6 +174,10 @@ Zowe has an SSO scheme with the goal that each time you use multiple Zowe compon
 Requirements:
 
 - IBM z/OS Management Facility (z/OSMF)
+
+### API Mediation Layer OIDC Authentication
+
+Zowe requires ACF2 APAR LU01316 to be applied when using the ACF2 security manager.
 
 ## Memory requirements
 
