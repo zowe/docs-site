@@ -170,6 +170,69 @@ Accepts up to 8 Processor group names separated by &quot;, &quot;.</li>
 </ul>
 </li>
 </ul>
+<h4>endevor search text options</h4>
+<ul>
+<li>
+<p><code>--search-text</code> | <code>--stext</code> <em>(string)</em></p>
+<ul>
+<li>Search string(s) separated with AND or OR. E.g.: string_1 AND string_2 AND string_3 OR string_4.<br>
+For complex search strings with quotation marks use search-text-file parameter.</li>
+</ul>
+</li>
+<li>
+<p><code>--search-text-file</code> | <code>--stf</code> <em>(string)</em></p>
+<ul>
+<li>File which contains search string(s) separated with AND or OR. Recommended for complex search strings with quotation marks.</li>
+</ul>
+</li>
+<li>
+<p><code>--search-in</code> | <code>--si</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>2 letters describing where search should be performed:<br>
+es - Element Source<br>
+eh - Element History<br>
+ec - Element Changes<br>
+eu - Element Summary<br>
+cs - Components Source<br>
+ch - Components History<br>
+cc - Components Changes<br>
+cu - Components Summary.</p>
+<p>Allowed values: es, eh, ec, eu, cs, ch, cc, cu</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--search-from</code> | <code>--sf</code> <em>(number)</em></p>
+<ul>
+<li>Beginning interval of the column range for the search-text.</li>
+</ul>
+</li>
+<li>
+<p><code>--search-to</code> | <code>--st</code> <em>(number)</em></p>
+<ul>
+<li>Ending interval of the column range for the search-text.</li>
+</ul>
+</li>
+<li>
+<p><code>--search-ignore-case</code> | <code>--ic</code> <em>(boolean)</em></p>
+<ul>
+<li>Ignore search case.</li>
+</ul>
+</li>
+<li>
+<p><code>--search-in-binary</code> | <code>--bin</code> <em>(boolean)</em></p>
+<ul>
+<li>Should the text search be performed in binary elements.</li>
+</ul>
+</li>
+<li>
+<p><code>--search-limit</code> | <code>--sl</code> <em>(number)</em></p>
+<ul>
+<li>Maximum search limit where 0 is NOLIMIT.</li>
+</ul>
+</li>
+</ul>
 <h4>scl generation options</h4>
 <ul>
 <li>
@@ -361,6 +424,12 @@ Allowed values: http, https</p>
 <p>List elements in Endevor from the specified inventory location with the endevor profile set up:</p>
 <ul>
 <li><code>zowe endevor list elements -i ENDEVOR --env ENVNAME --sn 1 --sys SYSNAME --sub SUBNAME --typ TYPENAME</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe endevor list elements -i ENDEVOR --env ENVNAME --sn 1 --sys SYSNAME --sub SUBNAME --typ TYPENAME">Copy</button></li>
+</ul>
+</li>
+<li>
+<p>List elements in Endevor using search text string:</p>
+<ul>
+<li><code>zowe endevor list elements --stext &quot;first or second and third&quot;</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe endevor list elements --stext &quot;first or second and third&quot;">Copy</button></li>
 </ul>
 </li>
 </ul>
