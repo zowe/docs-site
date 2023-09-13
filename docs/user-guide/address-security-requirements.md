@@ -18,7 +18,7 @@ The following required configuration tasks are likely to be performed by your or
 * [Perform APF autorization of load libraries](../user-guide/apf-authorize-load-library.md)
 * [Configure the z/OS system for Zowe](../user-guide/configure-zos-system.md/#configure-user-ids-and-groups-for-the-zowe-started-tasks)
 * [Configure address space job naming](../user-guide/configure-zos-system.md/#configure-address-space-job-naming)
-* [Configure security permissions of users](#)
+* [Assign security permissions of users](#assign-security-permissions-of-users)
 
 If your Zowe server-side installation includes the features listed in the following table, your organization's security administrator may also need to perform the associated tasks:
 
@@ -33,13 +33,11 @@ If your Zowe server-side installation includes the features listed in the follow
 | API Mediation Layer Identity Tokens (IDT) | [Configuring signed SAF Identity tokens (IDT)](../user-guide/configure-zos-system.md/#configure-signed-saf-identity-tokens-idt) |
 | Cross memory server (ZIS) | [Configuring the cross memory server for SAF](../user-guide/configure-zos-system.md/#configure-the-cross-memory-server-for-saf)<br />and<br />[Configuring cross memory server load module](../user-guide/configure-xmem-server.md/#load-module)<br />and<br />[Configuring cross-memory server SAF configuration](../user-guide/configure-xmem-server.md/#saf-configuration) |
 
-
-## Assign security permissions as required
+## Assign security permissions of users
 
 As a security administrator, assign users and the ZWEADMIN security group permissions required to perform specific tasks. 
 
-**Note:** Some permissions are required to run Zowe core, while other permissions are required to run specific components. 
-### Overview of user security permissions
+### Overview of user categories and roles
 
 Specific user IDs with sufficient permissions are required to run or access Zowe. 
 As a security administrator, you are responsible to assign the following user IDs during Zowe z/OS component configuration.
@@ -59,6 +57,21 @@ This is a started task ID for `ZWESLSTC`.
 
 The task starts a USS environment using `BPXBATSL` that executes the core Zowe Desktop (ZLUX) node.js server, the Java API Mediation Layer, and the Z Secure Services C component.  To work with USS, the user ID `ZWESVUSR` must have a valid OMVS segment.  
 
+### ZWESIUSR
+
+This is a started task ID used to run the PROCLIB `ZWESISTC` that launches the [cross memory server](./configure-xmem-server.md) (also known as ZIS).  It must have a valid OMVS segment.
+
+### ZWEADMIN
+
+This is a group that `ZWESVUSR` and `ZWESIUSR` should belong to. It must have a valid OMVS segment.  
+
+### zowe_user
+
+If z/OSMF is used for authentication and serving REST APIs for Zowe CLI and Zowe Explorer users, the TSO user ID for end users must belong to one or both of the groups `IZUUSER` or `IZUADMIN`.
+
+## Security Permissions Reference Table 
+
+The following reference table describes which permissions are required to run Zowe core services as well as specific individual components.
 
 | Resource class    | Resource name                          | Type of access required | Reason                                                                                                                                                                                                                        |
 |----------|-----------------------------|--------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -71,16 +84,5 @@ The task starts a USS environment using `BPXBATSL` that executes the core Zowe D
 | FACILITY | `IRR.RUSERMAP`              | READ   | **Optional** To allow Zowe to [map an X.509 client certificate to a z/OS identity](./configure-zos-system.md#configure-main-zowe-server-to-use-client-certificate-identity-mapping).                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
 | FACILITY | `IRR.IDIDMAP.QUERY`         | READ   | **Optional** To allow Zowe to [map an ditributed identity to a z/OS identity](./configure-zos-system.md#configure-main-zowe-server-to-use-distributed-identity-mapping).                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
 | FACILITY | `IRR.RAUDITX`               | READ   | **Optional** To allow API Mediation Layer to issue [SMF 83 records](./api-mediation/api-mediation-smf) about activity of Personal Access Tokens.                                                                                                                                                                                             For more information about configuring https://docs.zowe.org/stable/user-guide/systemrequirements-zos#multi-factor-authentication-mfa                                                                                                         
-### ZWESIUSR
-
-This is a started task ID used to run the PROCLIB `ZWESISTC` that launches the [cross memory server](./configure-xmem-server.md) (also known as ZIS).  It must have a valid OMVS segment.
-
-### ZWEADMIN
-
-This is a group that `ZWESVUSR` and `ZWESIUSR` should belong to. It must have a valid OMVS segment.  
-
-### zowe_user
-
-If z/OSMF is used for authentication and serving REST APIs for Zowe CLI and Zowe Explorer users, the TSO user ID for end users must belong to one or both of the groups `IZUUSER` or `IZUADMIN`.
 
 
