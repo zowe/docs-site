@@ -18,6 +18,7 @@ The following required configuration tasks are likely to be performed by your or
 * [Perform APF autorization of load libraries](../user-guide/apf-authorize-load-library.md)
 * [Configure the z/OS system for Zowe](../user-guide/configure-zos-system.md/#configure-user-ids-and-groups-for-the-zowe-started-tasks)
 * [Configure address space job naming](../user-guide/configure-zos-system.md/#configure-address-space-job-naming)
+* [Configure security permissions of users](#)
 
 If your Zowe server-side installation includes the features listed in the following table, your organization's security administrator may also need to perform the associated tasks:
 
@@ -30,14 +31,27 @@ If your Zowe server-side installation includes the features listed in the follow
 | API Mediation Layer certificate mapping | [Configuring main Zowe server to use client certificate identity mapping](../user-guide/configure-zos-system.md/#configure-main-zowe-server-to-use-client-certificate-identity-mapping) |
 | API Mediation Layer identity mapping | [Configuring main Zowe server to use distributed identity mapping](../user-guide/configure-zos-system.md/#configure-main-zowe-server-to-use-distributed-identity-mapping) |
 | API Mediation Layer Identity Tokens (IDT) | [Configuring signed SAF Identity tokens (IDT)](../user-guide/configure-zos-system.md/#configure-signed-saf-identity-tokens-idt) |
-| Cross memory server (XMEM) | [Configuring the cross memory server for SAF](../user-guide/configure-zos-system.md/#configure-the-cross-memory-server-for-saf)<br />and<br />[Configuring cross memory server load module](../user-guide/configure-xmem-server.md/#load-module)<br />and<br />[Configuring cross-memory server SAF configuration](../user-guide/configure-xmem-server.md/#saf-configuration) |
+| Cross memory server (ZIS) | [Configuring the cross memory server for SAF](../user-guide/configure-zos-system.md/#configure-the-cross-memory-server-for-saf)<br />and<br />[Configuring cross memory server load module](../user-guide/configure-xmem-server.md/#load-module)<br />and<br />[Configuring cross-memory server SAF configuration](../user-guide/configure-xmem-server.md/#saf-configuration) |
 
 
+## Assign security permissions as required
 
+As a security administrator, assign users and the ZWEADMIN security group permissions required to perform specific tasks. 
 
-### User ID requirements and security permissions
+**Note:** Some permissions are required to run Zowe core, while other permissions are required to run specific components. 
+### Overview of user security permissions
 
-Specific user IDs with sufficient permissions are required to run or access Zowe. Review the following table to ... <!-- Provide details about the task and the specific role to perform the task -->
+Specific user IDs with sufficient permissions are required to run or access Zowe. 
+As a security administrator, you are responsible to assign the following user IDs during Zowe z/OS component configuration.
+
+The following user IDs can run Zowe: 
+
+* **[ZWESVUSR](#zwesvusr)**  
+This user runs most of the Zowe core components.
+* **[ZWESIUSR](#zwesiusr)**  
+This user runs the cross memory server (ZIS)
+
+The security administrator also assigns permissions to the security group [ZWEADMIN](#zweadmin), as well as permissions to individual Zowe users.
 
 ### ZWESVUSR
 
