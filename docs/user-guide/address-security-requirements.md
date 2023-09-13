@@ -40,7 +40,7 @@ As a security administrator, assign users and the ZWEADMIN security group permis
 ### Overview of user categories and roles
 
 Specific user IDs with sufficient permissions are required to run or access Zowe. 
-As a security administrator, you are responsible to assign the following user IDs during Zowe z/OS component configuration.
+Your organization's security administrator is responsible to assign the following user IDs during Zowe z/OS component configuration.
 
 The following user IDs can run Zowe: 
 
@@ -59,11 +59,11 @@ The task starts a USS environment using `BPXBATSL` that executes the core Zowe D
 
 ### ZWESIUSR
 
-This is a started task ID used to run the PROCLIB `ZWESISTC` that launches the [cross memory server](./configure-xmem-server.md) (also known as ZIS).  It must have a valid OMVS segment.
+This is a started task ID used to run the PROCLIB `ZWESISTC` that launches the [cross memory server (ZIS)](./configure-xmem-server.md). This started task ID must have a valid OMVS segment.
 
 ### ZWEADMIN
 
-This is a group that `ZWESVUSR` and `ZWESIUSR` should belong to. It must have a valid OMVS segment.  
+ZWEADMIN is a group that `ZWESVUSR` and `ZWESIUSR` should belong to. This group must have a valid OMVS segment.  
 
 ### zowe_user
 
