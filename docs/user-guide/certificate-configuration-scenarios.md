@@ -1,5 +1,6 @@
 # Certificate configuration scenarios 
 
+
 As a system programmer, or security administrator review the five scenarios for configuring Zowe for automatic certificate setup. Examples of the zowe.yaml files are provided for each scenario.
 
 **Tip:** To assist you with determining the specific certificate configuration scenario that applies to your use case, see [Zowe certificates configuration questionnaire](./certificates-configuration-questionnaire.md). This questionnaire will guide you through quetions that leads to a specific configuration scenario.
