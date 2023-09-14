@@ -6,7 +6,7 @@ Review this overview to learn about the options to install Zowe server-side comp
 * [Installation of Zowe runtime](#installation-of-zowe-runtime)
 * [Zowe runtime installation methods and roadmap](#zowe-runtime-installation-methods-and-roadmap)
     * [Details of runtime installation methods ](#details-of-runtime-installation-methods)
-* [Roles and responosibilities in server-side component installation process](#roles-and-responosibilities-in-server-side-component-installation-process)
+* [Roles and responsibilities for server-side component installation](#roles-and-responsibilities-for-server-side-component-installation)
     * [Tasks performed by the security administrator](#tasks-performed-by-the-security-administrator)
     * [Tasks performed by the storage administrator](#tasks-performed-by-the-storage-administrator)
     * [Tasks performed by the network administrator](#tasks-performed-by-the-network-administrator)
@@ -94,7 +94,7 @@ Successful installation of either an SMP/E build or a convenience build creates 
 
 The steps to prepare the z/OS environment to launch Zowe are the same for all installation methods.
 
-## Roles and responosibilities in server-side component installation process
+## Roles and responsibilities for server-side component installation
 
 ### Tasks performed by the security administrator
 
