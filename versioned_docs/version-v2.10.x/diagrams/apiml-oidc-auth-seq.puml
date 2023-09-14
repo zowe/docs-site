@@ -1,0 +1,35 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+actor User
+actor "User Agent" as Agent
+actor "Client App" as Client
+actor OIDC as OIDC
+actor "API ML GW" as GW
+
+User -> Agent: Do stuff
+Agent -> Client: Open Client App
+Client -> OIDC: Initiate OIDC flow [client_id, client_secret]
+loop [MFA]
+OIDC -> Agent: Request user credentials
+User <-> Agent: Provide credentials
+Agent -> OIDC: Validate credentials
+end
+OIDC --> Client: Return Auth Code / JWTs[access,refresh,identity]
+Client -> GW: Request resources [JWT AT]
+group validate
+GW -> GW: Validate AT
+GW -> OIDC: Validate AT
+end
+alt Validation success
+GW -> GW: Cache AT validity
+GW -> SAF: Map distributed ID to mainframe ID
+GW -> GW: Create Zowe JWT
+GW -> Service: call API service
+Service --> GW: return Response
+end
+GW --> Client: Response
+Client --> Agent: Response
+
+@enduml
