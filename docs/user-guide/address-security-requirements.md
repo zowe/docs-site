@@ -2,7 +2,7 @@
 
 During configuration of server-side components, it is necessary to configure various system security settings. Your organization may require your security administrator to complete steps to configure Zowe security. As a system administrator/programmer, first consult with your security administrator before you start the installation process. 
 
-**Note:** This article addresses configuring Zowe security during the installation process, and does not address security configuration to extend Zowe. For more information about security configuration to extend Zowe, see the following articles:
+**Note:** This article addresses configuring Zowe security during the Zowe z/OS components installation process, and does not address security configuration to extend Zowe. For more information about security configuration to extend Zowe, see the following articles:
 
   - [Digital certificates](../getting-started/zowe-security-overview#digital-certificates)
   - [User Authentication](../getting-started/zowe-security-overview#user-authentication)
@@ -10,17 +10,17 @@ During configuration of server-side components, it is necessary to configure var
 
 ## Tasks performed by your security administrator
 
-To configure Zowe security for production environments, it is likely that your organization's security administrator will be required to perform various tasks. Some of the tasks apply to general Zowe configuration, while other tasks are required during installation if you plan to use specific Zowe components or features. 
+To configure Zowe security for production environments, your organization's security administrator will be required to perform various tasks. Some of the tasks apply to general Zowe configuration, while other tasks are required during installation if you plan to use specific Zowe components or features. 
 
-The following required configuration tasks are likely to be performed by your organization's security administrator:
+The following required configuration tasks are  performed by your organization's security administrator:
 
 * [Initialize Zowe security configurations](../user-guide/initialize-security-configuration.md)
-* [Perform APF autorization of load libraries](../user-guide/apf-authorize-load-library.md)
+* [Perform APF authorization of load libraries](../user-guide/apf-authorize-load-library.md)
 * [Configure the z/OS system for Zowe](../user-guide/configure-zos-system.md/#configure-user-ids-and-groups-for-the-zowe-started-tasks)
 * [Configure address space job naming](../user-guide/configure-zos-system.md/#configure-address-space-job-naming)
 * [Assign security permissions of users](#assign-security-permissions-of-users)
 
-If your Zowe server-side installation includes the features listed in the following table, your organization's security administrator may also need to perform the associated tasks:
+If your Zowe server-side installation includes the features listed in the following table, consult your organization's security administrator to perform the associated security tasks:
 
 | Feature of a Zowe server-side component  | Configuration Task  | 
 | ---- | ---- | 
@@ -45,33 +45,16 @@ Your organization's security administrator is responsible to assign the followin
 The following user IDs can run Zowe: 
 
 * **[ZWESVUSR](#zwesvusr)**  
-This user runs most of the Zowe core components.
+This is the stated task ID of the Zowe runtime user who runs most of the Zowe core components. <!-- It seems this information about working with USS should be in a table and not in this short description -->To work with USS, this user ID must have a valid OMVS segment. For detailed information about which permissions are required to run Zowe core services as well as specific individual components, see the [Security Permissions Reference Table](#security-permissions-reference-table) in this article.
 * **[ZWESIUSR](#zwesiusr)**  
-This user runs the cross memory server (ZIS)
+This user runs the cross memory server (ZIS). This is a started task ID used to run the PROCLIB `ZWESISTC` that launches the [cross memory server (ZIS)](./configure-xmem-server.md). This started task ID must have a valid OMVS segment.
 
-The security administrator also assigns permissions to the security group [ZWEADMIN](#zweadmin), as well as permissions to individual Zowe users.
+The security administrator also assigns permissions to the security group [ZWEADMIN](#zweadmin). `ZWEADMIN` is a group consisting of `ZWESVUSR` and `ZWESIUSR`. This group must have a valid OMVS segment.   
 
-### ZWESVUSR
-
-This is a started task ID for `ZWESLSTC`.  
-
-The task starts a USS environment using `BPXBATSL` that executes the core Zowe Desktop (ZLUX) node.js server, the Java API Mediation Layer, and the Z Secure Services C component.  To work with USS, the user ID `ZWESVUSR` must have a valid OMVS segment.  
-
-### ZWESIUSR
-
-This is a started task ID used to run the PROCLIB `ZWESISTC` that launches the [cross memory server (ZIS)](./configure-xmem-server.md). This started task ID must have a valid OMVS segment.
-
-### ZWEADMIN
-
-ZWEADMIN is a group that `ZWESVUSR` and `ZWESIUSR` should belong to. This group must have a valid OMVS segment.  
-
-### zowe_user
-
-If z/OSMF is used for authentication and serving REST APIs for Zowe CLI and Zowe Explorer users, the TSO user ID for end users must belong to one or both of the groups `IZUUSER` or `IZUADMIN`.
-
+Additionally, the scurity administrator assigns permissions to individual Zowe users. If z/OSMF is used for authentication and serving REST APIs for Zowe CLI and Zowe Explorer users, the TSO user ID for end users must belong to one or both of the groups `IZUUSER` or `IZUADMIN`.
 ## Security Permissions Reference Table 
 
-The following reference table describes which permissions are required to run Zowe core services as well as specific individual components.
+The following reference table describes which permissions are required for the user ID `ZWESVUSR` to run Zowe core services and specific individual components.
 
 | Feature of a Zowe server-side component                    | Resource class    | Resource name                          | Type of access required | Reason                                                                                                                                                                                                                        |
 |------------------------------------------------------------|----------|-----------------------------|--------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
