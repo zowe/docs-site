@@ -5,7 +5,7 @@ Review this overview to learn about the options to install Zowe server-side comp
 * [Zowe server-side components in the installation](#zowe-server-side-components-in-the-installation)
 * [Installation of Zowe runtime](#installation-of-zowe-runtime)
 * [Zowe runtime installation methods and roadmap](#zowe-runtime-installation-methods-and-roadmap)
-    * [Runtime installation methods details](#runtime-installation-methods-details)
+    * [Details of runtime installation methods ](#details-of-runtime-installation-methods)
 * [Roles and responosibilities in server-side component installation process](#roles-and-responosibilities-in-server-side-component-installation-process)
     * [Tasks performed by the security administrator](#tasks-performed-by-the-security-administrator)
     * [Tasks performed by the storage administrator](#tasks-performed-by-the-storage-administrator)
@@ -44,7 +44,7 @@ For more information about the Zowe cross memory server, see [Installing and con
 
 ## Zowe runtime installation methods and roadmap
 
-To get started with installing Zowe runtime, select your installation method from the following options (Details of each installation method are described later in this article):
+To get started with installing Zowe runtime, select your installation method from the following options. (Details of each installation method are described later in this article).
 
 * SMP/E build
 * Convenience build
@@ -54,21 +54,15 @@ To get started with installing Zowe runtime, select your installation method fro
 
 Zowe server-side components can be installed either on z/OS only, or both on z/OS and on Docker.
 
-The following diagram provides a roadmap for installation using the three primary installation methods. If you plan to install these components using a container build, see Installing Zowe Containers.
+The following diagram presents a roadmap for installation using the three primary installation methods. If you plan to install these components using a container build, see Installing Zowe Containers.
 
 ![Install the Zowe z/OS runtime](../images/install/install.png)
 
-The Zowe z/OS binaries are distributed in the following installation formats. They contain the same contents but you install them by using different methods. 
-### Runtime installation methods details
+The Zowe z/OS binaries are distributed in the following installation formats. Each of these  formats contain the same contents, but the installation methods vary. 
+### Details of runtime installation methods
 
-Select one of the following methods to install the Zowe server-side components on z/OS. 
+Select from the following methods to install the Zowe server-side components on z/OS. 
 <!-- Add the advantages and disadvantanges to each method -->
-
-   - **Convenience build**
-
-     Zowe z/OS binaries are packaged as a PAX file which is a full product install. Transfer this PAX file to a USS directory and expand its contents. Use the [zwe](installandconfig.md#zwe-server-command) command `zwe install` to extract a number of PDS members which contain load modules, JCL scripts, and PARMLIB entries. 
-
-     To obtain and install the convenience build, see [Installing Zowe runtime from a convenience build](install-zowe-zos-convenience-build.md).
 
    - **SMP/E build**
 
@@ -78,6 +72,11 @@ Select one of the following methods to install the Zowe server-side components o
 
      To obtain and install the SMP/E build, see [Installing Zowe SMP/E](install-zowe-smpe.md).
 
+   - **Convenience build**
+
+     Zowe z/OS binaries are packaged as a PAX file which is a full product install. Transfer this PAX file to a USS directory and expand its contents. Use the [zwe](installandconfig.md#zwe-server-command) command `zwe install` to extract a number of PDS members which contain load modules, JCL scripts, and PARMLIB entries. 
+
+     To obtain and install the convenience build, see [Installing Zowe runtime from a convenience build](install-zowe-zos-convenience-build.md).
 
    - **Portable Software Instance (PSWI)**
 
@@ -85,9 +84,9 @@ Select one of the following methods to install the Zowe server-side components o
 
      To obtain and install the PSWI, see [Installing Zowe from a Portable Software Instance](install-zowe-pswi.md).
 
-   While the procedures to obtain and install the convenience build, SMP/E build, or PSWI are different, configuration of a Zowe runtime is the same for all three installation methods.
+   **Note:** While the procedures to obtain and install the SMP/E build, the convenience build, or PSWI are different, configuration of a Zowe runtime is the same for all three installation methods.
 
-Successful installation of either a convenience build or an SMP/E build creates the following artifacts:
+Successful installation of either an SMP/E build or a convenience build creates the following artifacts:
 * A zFS folder that contains the unconfigured Zowe runtime directory
 * A utility library `SZWEEXEC` that contains utilities
 * A SAMPLIB library `SZWESAMP` that contains sample members
@@ -99,15 +98,15 @@ The steps to prepare the z/OS environment to launch Zowe are the same for all in
 
 ### Tasks performed by the security administrator
 
-To configure Zowe security for production environments, it is likely that your organization's security administrator will be required to perform various tasks. For more information,see [Address security requirements](./address-security-requirements#tasks-performed-by-your-security-administrator).
+To configure Zowe security for production environments, it is likely that your organization's security administrator will be required to perform various tasks. For more information, see [Address security requirements](./address-security-requirements#tasks-performed-by-your-security-administrator).
 
 ### Tasks performed by the storage administrator
 
-Before starting installation, notify the storage administrator to reserve enough space for USS, directory storage space, and any other storage requrements to install Zowe.
+Before starting installation, notify the storage administrator to reserve enough space for USS, directory storage space, and any other storage requrements to install Zowe. For more information , see [Address storage requirements](./address-storage-requirements.md).
 
 ### Tasks performed by the network administrator
 
-Notify your organization's network administrator to assign port numbers, reserve these port numbers, and arrange them for you.
+Notify your organization's network administrator to assign port numbers, reserve these port numbers, and arrange them for you. For more information about network setup, see [Address network requirements](./address-network-requirements.md).
 
 ### Tasks performed by the system programmer
 
