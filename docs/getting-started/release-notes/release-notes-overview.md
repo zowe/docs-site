@@ -1,4 +1,4 @@
-# Release Notes Overview
+# Release Notes
 
 The release notes for all Zowe releases are published in this section.
 

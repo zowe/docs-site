@@ -6,7 +6,12 @@ meta:
 
 # Zowe overview
 
-Zowe&trade; is an open source software framework that allows mainframe development and operation teams to securely manage, control, script, and develop on the mainframe. It was created to host technologies that benefit the IBM Z platform for all members of the Z community, including Integrated Software Vendors (ISVs), System Integrators, and z/OS consumers. Like Mac or Windows, Zowe comes with a set of APIs and OS capabilities that applications build on and also includes some applications out of the box. Zowe offers modern interfaces to interact with z/OS and allows you to work with z/OS in a way that is similar to what you experience on cloud platforms today. You can use these interfaces as delivered or through plug-ins and extensions that are created by clients or third-party vendors. Zowe is a project within the Open Mainframe Project.
+Zowe&trade; is an open source software which provides both an extensible framework, and a set of tools that allow mainframe development and operation teams to securely manage, develop, and automate resources and services on z/OS family mainframes.
+Zowe offers modern interfaces to interact with z/OS and allows users to interact with the mainframe system in a way that is similar to what they experience on cloud platforms today.
+Users can work with these interfaces as delivered or through plug-ins and extensions created by customers or third-party vendors.
+All members of the IBM Z platform community, including Independent Software Vendors (ISVs), System Integrators, and z/OS consumers, benefit from the modern and open approach to mainframe computing delivered by Zowe.
+
+Zowe is a member of the Open Mainframe Project governed by Linux Foundation&trade;.
 
 ## Zowe demo video
 
@@ -20,13 +25,100 @@ Watch this [video](https://www.youtube.com/embed/NX20ZMRoTtk) to see a quick dem
 
 Zowe consists of the following components:
 
-- [Zowe Application Framework](#zowe-application-framework)
+- [Zowe Launcher](#zowe-launcher)
 - [API Mediation Layer](#api-mediation-layer)
+- [Zowe Application Framework](#zowe-application-framework)
 - [Zowe CLI](#zowe-cli)
 - [Zowe Explorer](#zowe-explorer)
 - [Zowe Client Software Development Kits SDKs](#zowe-client-software-development-kits-sdks)
-- [Zowe Launcher](#zowe-launcher)
 - [ZEBRA (Zowe Embedded Browser for RMF/SMF and APIs) - Incubator](#zebra-zowe-embedded-browser-for-rmfsmf-and-apis---incubator)
+
+### Zowe Launcher
+
+The Zowe Launcher makes it possible to launch Zowe z/OS server components in a high availability configuration, and performs the following operations:
+
+- Start all Zowe server components using the `START` (or `S`) operator command.
+- Stop Zowe server components using the `STOP` (or `P`) operator command.
+- Stop and start specific server components without restarting the entire Zowe instance using `MODIFY` (or `F`) operator command.
+
+### API Mediation Layer
+
+The API Mediation Layer provides a single point of access for APIs of mainframe services, and provides a [Single Sign On (SSO)](../extend/extend-apiml/api-mediation-sso.md) capability for mainframe users.
+
+The API Mediation Layer (API ML) facilitates secure communication between loosely coupled clients and services through a variety of API types, such as REST, GraphQL or Web-Socket. 
+API ML consists of these core components: the API Gateway, the Discovery Service, the API Catalog, and the Caching service:
+
+- The API Gateway provides secure routing of API requests from clients to registered API services.
+- The Discovery Service allows dynamic registration of microservices and enables their discoverability and status updates.
+- The API Catalog provides a user-friendly interface to view and try out all registered services, read their associated APIs documentation in OpenAPI/Swagger format.
+- The API ML Caching Service allows components to store, search and retrieve their state. The Caching service can be configured to store the cached data in-memory or using Redis, or VSAM storage. 
+
+Core Zowe also provides out of the box services for working with MVS Data Sets, JES, as well as working with z/OSMF REST APIs.
+
+**Note:** The MVS datasets and JES services are deprecated and will not be available in Zowe V3. 
+
+The API Mediation Layer offers enterprise, cloud-like features such as high-availability, scalability, dynamic API discovery, consistent security, a single sign-on experience, and API documentation.
+
+<details>
+<summary> Learn more </summary>
+
+#### Key features
+* Consistent Access: API routing and standardization of API service URLs through the Gateway component provides users with a consistent way to access mainframe APIs at a predefined address.
+* Dynamic Discovery: The Discovery Service automatically determines the location and status of API services.
+* High-Availability: API Mediation Layer is designed with high-availability of services and scalability in mind.
+* Caching Service: This feature is designed for Zowe components in a high availability configuration, and supports high availability of all components within Zowe. As such, components can remain stateless whereby the state of the component is offloaded to a location accessible by all instances of the service, including those which just started.
+* Redundancy and Scalability: API service throughput is easily increased by starting multiple API service instances without the need to change configuration.
+* Presentation of Services: The API Catalog component provides easy access to discovered API services and their associated documentation in a user-friendly manner. Access to the contents of the API Catalog is controlled through a z/OS security facility.
+* Encrypted Communication: API ML facilitates secure and trusted communication across both internal components and discovered API services.
+
+#### API Mediation Layer structural architecture
+The following diagram illustrates the single point of access through the Gateway, and the interactions between API ML components and services:
+
+![API Mediation Layer Architecture diagram](../images/api-mediation/api-ml-architecture.png)
+
+#### Components
+The API Layer consists of the following key components:
+
+**API Gateway**
+
+Services that comprise the API ML service ecosystem are located behind a gateway (reverse proxy). All end users and API client applications interact through the Gateway. Each service is assigned a unique service ID that is used in the access URL. Based on the service ID, the Gateway forwards incoming API requests to the appropriate service. Multiple Gateway instances can be started to achieve high-availability. The Gateway access URL remains unchanged. The Gateway is built using Netflix Zuul and Spring Boot technologies.
+
+**Discovery Service**
+
+The Discovery Service is the central repository of active services in the API ML ecosystem. The Discovery Service continuously collects and aggregates service information and serves as a repository of active services. When a service is started, it sends its metadata, such as the original URL, assigned serviceId, and status information to the Discovery Service. Back-end microservices register with this service either directly or by using a Eureka client. Multiple enablers are available to help with service on-boarding of various application architectures including plain Java applications and Java applications that use the Spring Boot framework. The Discovery Service is built on Eureka and Spring Boot technology.
+
+**Discovery Service TLS/SSL**
+
+HTTPS protocol can be enabled during API ML configuration and is highly recommended. Beyond encrypting communication, the HTTPS configuration for the Discovery Service enables heightened security for service registration. Without HTTPS, services provide a username and password to register in the API ML ecosystem. When using HTTPS, only trusted services that provide HTTPS certificates signed by a trusted certificate authority can be registered.
+
+**API Catalog**
+
+The API Catalog is the catalog of published API services and their associated documentation. The Catalog provides both the REST APIs and a web user interface (UI) to access them. The web UI follows the industry standard Swagger UI component to visualize API documentation in OpenAPI JSON format for each service. A service can be implemented by one or more service instances, which provide exactly the same service for high-availability or scalability.
+
+**Catalog Security**
+
+Access to the API Catalog can be protected with an Enterprise z/OS Security Manager such as IBM RACF, ACF2, or Top Secret. Only users who provide proper mainframe credentials can access the Catalog. Client authentication is implemented through the z/OSMF API.
+
+**Caching Service**
+
+An API is provided in high-availability mode which offers the possibility to store, retrieve, and delete data associated with keys. The service can only be used by internal Zowe services and is not exposed to the internet.
+
+**Metrics Service (Technical Preview)**
+
+The Metrics Service provides a web user interface to visualize requests to API Mediation Layer services. HTTP metrics such as number of requests and error rates are displayed for
+each API Mediation Layer service. This service is currently in technical preview and is not ready for production.
+
+#### Onboarding APIs
+Essential to the API Mediation Layer ecosystem is the API services that expose their useful APIs. Use the following topics to discover more about adding new APIs to the API Mediation Layer and using the API Catalog:
+
+* [Onboarding Overview](../extend/extend-apiml/onboard-overview.md)
+* [Onboard an existing Spring Boot REST API service using Zowe API Mediation Layer](../extend/extend-apiml/onboard-spring-boot-enabler.md)
+* [Onboard an existing Node.js REST API service using Zowe API Mediation Layer](../extend/extend-apiml/onboard-nodejs-enabler.md)
+* [Using API Mediation Layer](../user-guide/api-mediation/using-api-mediation-layer.md)
+
+To learn more about the architecture of Zowe, see [Zowe architecture](zowe-architecture.md).
+
+</details>
 
 ### Zowe Application Framework
 
@@ -62,73 +154,6 @@ The Zowe Application Framework consists of the following components:
     Several application-type plug-ins are provided. For more information, see [Using the Zowe Application Framework application plug-ins](../user-guide/mvd-using.md#zowe-desktop-application-plug-ins).
 
 </details>
-
-### API Mediation Layer
-
-Provides a gateway that acts as a reverse proxy for z/OS services, together with a catalog of REST APIs and a dynamic discovery capability. Base Zowe provides core services for working with MVS Data Sets, JES, as well as working with z/OSMF REST APIs.  The API Mediation Layer also provides a framework for [Single Sign On (SSO)](../extend/extend-apiml/api-mediation-sso.md). 
-
-<details>
-<summary> Learn more </summary>
-
-The API Mediation Layer provides a single point of access for mainframe service REST APIs. The layer offers enterprise, cloud-like features such as high-availability, scalability, dynamic API discovery, consistent security, a single sign-on experience, and documentation. The API Mediation Layer facilitates secure communication across loosely coupled microservices through the API Gateway. The API Mediation Layer consists of three components: the Gateway, the Discovery Service, and the Catalog. The Gateway provides secure communication across loosely coupled API services. The Discovery Service enables you to determine the location and status of service instances running inside the API ML ecosystem. The Catalog provides an easy-to-use interface to view all discovered services, their associated APIs, and Swagger documentation in a user-friendly manner.
-
-#### Key features
-* Consistent Access: API routing and standardization of API service URLs through the Gateway component provides users with a consistent way to access mainframe APIs at a predefined address.
-* Dynamic Discovery: The Discovery Service automatically determines the location and status of API services.
-* High-Availability: API Mediation Layer is designed with high-availability of services and scalability in mind.
-* Caching Service: This feature is designed for Zowe components in a high availability configuration. It supports the High Availability of all components within Zowe, allowing components to be stateless by providing a mechanism to offload their state to a location accessible by all instances of the service, including those which just started.
-* Redundancy and Scalability: API service throughput is easily increased by starting multiple API service instances without the need to change configuration.
-* Presentation of Services: The API Catalog component provides easy access to discovered API services and their associated documentation in a user-friendly manner. Access to the contents of the API Catalog is controlled through a z/OS security facility.
-* Encrypted Communication: API ML facilitates secure and trusted communication across both internal components and discovered API services.
-
-#### API Mediation Layer architecture
-The following diagram illustrates the single point of access through the Gateway, and the interactions between API ML components and services:
-
-![API Mediation Layer Architecture diagram](./diagrams/apiml-architecture.png)
-
-#### Components
-The API Layer consists of the following key components:
-
-**API Gateway**
-
-Services that comprise the API ML service ecosystem are located behind a gateway (reverse proxy). All end users and API client applications interact through the Gateway. Each service is assigned a unique service ID that is used in the access URL. Based on the service ID, the Gateway forwards incoming API requests to the appropriate service. Multiple Gateway instances can be started to achieve high-availability. The Gateway access URL remains unchanged. The Gateway is built using Netflix Zuul and Spring Boot technologies.
-
-**Discovery Service**
-
-The Discovery Service is the central repository of active services in the API ML ecosystem. The Discovery Service continuously collects and aggregates service information and serves as a repository of active services. When a service is started, it sends its metadata, such as the original URL, assigned serviceId, and status information to the Discovery Service. Back-end microservices register with this service either directly or by using a Eureka client. Multiple enablers are available to help with service on-boarding of various application architectures including plain Java applications and Java applications that use the Spring Boot framework. The Discovery Service is built on Eureka and Spring Boot technology.
-
-**Discovery Service TLS/SSL**
-
-HTTPS protocol can be enabled during API ML configuration and is highly recommended. Beyond encrypting communication, the HTTPS configuration for the Discovery Service enables heightened security for service registration. Without HTTPS, services provide a username and password to register in the API ML ecosystem. When using HTTPS, only trusted services that provide HTTPS certificates signed by a trusted certificate authority can be registered.
-
-**API Catalog**
-
-The API Catalog is the catalog of published API services and their associated documentation. The Catalog provides both the REST APIs and a web user interface (UI) to access them. The web UI follows the industry standard Swagger UI component to visualize API documentation in OpenAPI JSON format for each service. A service can be implemented by one or more service instances, which provide exactly the same service for high-availability or scalability.
-
-**Catalog Security**
-
-Access to the API Catalog can be protected with an Enterprise z/OS Security Manager such as IBM RACF, ACF2, or Top Secret. Only users who provide proper mainframe credentials can access the Catalog. Client authentication is implemented through the z/OSMF API.
-
-**Caching Service**
-
-It provides an API in high-availability mode which offers the possibility to store, retrieve and delete data associated with keys. The service will be used only by internal Zowe applications and will not be exposed to the internet.
-
-**Metrics Service (Technical Preview)**
-
-The Metrics Service provides a web user interface to visualize requests to API Mediation Layer services. HTTP metrics such as number of requests and error rates are displayed for
-each API Mediation Layer service. This service is currently in technical preview and is not ready for production.
-
-#### Onboarding APIs
-Essential to the API Mediation Layer ecosystem is the API services that expose their useful APIs. Use the following topics to discover more about adding new APIs to the API Mediation Layer and using the API Catalog:
-
-* [Onboarding Overview](../extend/extend-apiml/onboard-overview.md)
-* [Onboard an existing Spring Boot REST API service using Zowe API Mediation Layer](../extend/extend-apiml/onboard-spring-boot-enabler.md)
-* [Onboard an existing Node.js REST API service using Zowe API Mediation Layer](../extend/extend-apiml/onboard-nodejs-enabler.md)
-* [Using API Mediation Layer](../user-guide/api-mediation/using-api-mediation-layer.md)
-
-</details>
-
-To learn more about the architecture of Zowe, see [Zowe architecture](zowe-architecture.md).
 
 ### Zowe CLI
 Zowe CLI is a command-line interface that lets you interact with the mainframe in a familiar, off-platform format. Zowe CLI helps to increase overall productivity, reduce the learning curve for developing mainframe applications, and exploit the ease-of-use of off-platform tools. Zowe CLI lets you use common tools such as Integrated Development Environments (IDEs), shell commands, bash scripts, and build tools for mainframe development. Though its ecosystem of plug-ins, you can automate actions on systems such as IBM Db2, IBM CICS, and more. It  provides a set of utilities and services for users that want to become efficient in supporting and building z/OS applications quickly.
@@ -176,12 +201,12 @@ For information about extending the functionality of Zowe CLI by installing plug
 
 Zowe Explorer is a Visual Studio Code extension that modernizes the way developers and system administrators interact with z/OS mainframes. Zowe Explorer lets you interact with data sets, USS files, and jobs that are stored on z/OS. The extension complements your Zowe CLI experience and lets you use authentication services like API Mediation Layer. The extension provides the following benefits:
 
-- Enabling you to create, modify, rename, copy, and upload data sets directly to a z/OS mainframe.
-- Enabling you to create, modify, rename, and upload USS files directly to a z/OS mainframe.
-- Providing a more streamlined way to access data sets, uss files, and jobs.
+- Enables you to create, modify, rename, copy, and upload data sets directly to a z/OS mainframe.
+- Enables you to create, modify, rename, and upload USS files directly to a z/OS mainframe.
+- Provides a more streamlined way to access data sets, uss files, and jobs.
 - Letting you create, edit, and delete Zowe CLI `zosmf` compatible profiles.
-- Letting you use the Secure Credential Store plug-in to store your credentials securely in the settings.
-- Letting you leverage the API Mediation Layer token-based authentication to access z/OSMF.
+- Lets you use the Secure Credential Store plug-in to store your credentials securely in the settings.
+- Lets you leverage the API Mediation Layer token-based authentication to access z/OSMF.
 
 For more information, see [Information roadmap for Zowe Explorer](user-roadmap-zowe-explorer.md).
 
@@ -194,13 +219,6 @@ The Zowe Client SDKs consist of programmatic APIs that you can use to build clie
 
 For more information, see [Using the Zowe SDKs](../user-guide/sdks-using.md).
 
-### Zowe Launcher
-
-Provides an advanced launcher for Zowe z/OS server components in a high availability configuration. It performs the following operations:
-
-- Stopping the Zowe server components using the `STOP` (or `P`) operator command
-- Stopping and starting specific server components without restarting the entire Zowe instance using `MODIFY` (or `F`) operator command
-
 ### Zowe Chat (Technical Preview)
 
 Zowe Chat is a chatbot that aims to enable a ChatOps collaboration model including z/OS resources and tools. Zowe Chat enables you to  interact with the mainframe from chat clients such as Slack, Microsoft Teams, and Mattermost. Zowe Chat helps to increase your productivity by eliminating or minimizing the context switching between different tools and user interfaces.
@@ -208,10 +226,10 @@ Zowe Chat is a chatbot that aims to enable a ChatOps collaboration model includi
 <details>
 <summary> Learn more </summary>
 
+
 #### Zowe Chat key features
 
 - **Manage z/OS resource in chat tool channels**
-
   Check your z/OS job, data set, and USS files status directly in chat tool channels. You can also issue z/OS console commands directly in the chat tool. You can drill down on a specific job, data set, error code, and so on to get more details through button or drop-down menu that Zowe Chat provides.
 
 - **Execute Zowe CLI commands in chat tool channels**
@@ -247,9 +265,9 @@ For more information, see [Installing Zowe Chat](../user-guide/zowe-chat/chat_in
 
 ### ZEBRA (Zowe Embedded Browser for RMF/SMF and APIs) - Incubator 
 
-Provides re-usable and industry compliant JSON formatted RMF/SMF data records, so that many other ISV SW and users can exploit them using open-source SW for many ways.
+ZEBRA Provides re-usable and industry compliant JSON formatted RMF/SMF data records, so that many other ISV SW and users can exploit them using open-source SW for many ways.
 
-For more information, see the [ZEBRA documentation](https://github.com/zowe/zebra/tree/main/Documentation). 
+For more information, see the [ZEBRA documentation](https://github.com/zowe/zebra/tree/main/Documentation).
 
 ### Zowe IntelliJ Plug-in
 
@@ -260,14 +278,14 @@ Zowe IntelliJ plug-in helps you to:
 - Organize datasets on z/OS, files on USS into working sets.
 - Allocate datasets, create members, files and directories with different permissions.
 - Perform operations like renaming, copying and moving data in a modern way.
-- Edit datasets, files and members. Smart auto-save will keep your content both in the editor and on the mainframe in-sync.
+- Edit datasets, files and members. Smart auto-save keeps your content both in the editor and on the mainframe in-sync.
 - Create multiple connections to different z/OS systems.
 - Perform all available operations with jobs.
 - Highlight all IntelliJ supported languages automatically and recognize them once opened from the mainframe.
 
 For more information, see [Using Zowe IntelliJ plug-in](../user-guide/intellij-using.md).
 
-## Zowe Third-Party Software Requirements and Bill of Materials
+## Zowe Bill of Materials
 
 <!-- 
 
@@ -277,5 +295,4 @@ This returns <a href={tpsrLatestLink}>Third-Party Software Requirements (TPSR)</
 
 -->
 
-- <tpsr />
-- [Bill of Materials (BOM)](../appendix/bill-of-materials.md)
+For information about the [Zowe Bill of Materials (BOM)](../appendix/bill-of-materials.md), see this link to the appendix.
