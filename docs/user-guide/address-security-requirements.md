@@ -42,7 +42,7 @@ As a security administrator, assign users and the ZWEADMIN security group permis
 Specific user IDs with sufficient permissions are required to run or access Zowe. 
 Your organization's security administrator is responsible to assign the following user IDs during Zowe z/OS component configuration.
 
-The following user IDs can run Zowe: 
+The following user IDs run Zowe: 
 
 * **[ZWESVUSR](#zwesvusr)**  
 This is the stated task ID of the Zowe runtime user who runs most of the Zowe core components. <!-- It seems this information about working with USS should be in a table and not in this short description -->To work with USS, this user ID must have a valid OMVS segment. For detailed information about which permissions are required to run Zowe core services as well as specific individual components, see the [Security Permissions Reference Table](#security-permissions-reference-table) in this article.
