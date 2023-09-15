@@ -45,7 +45,7 @@ Your organization's security administrator is responsible to assign the followin
 The following user IDs run Zowe: 
 
 * **[ZWESVUSR](#zwesvusr)**  
-This is the stated task ID of the Zowe runtime user who runs most of the Zowe core components. <!-- It seems this information about working with USS should be in a table and not in this short description -->To work with USS, this user ID must have a valid OMVS segment. For detailed information about which permissions are required to run Zowe core services as well as specific individual components, see the [Security Permissions Reference Table](#security-permissions-reference-table) in this article.
+This is the started task ID of the Zowe runtime user who runs most of the Zowe core components. <!-- It seems this information about working with USS should be in a table and not in this short description -->To work with USS, this user ID must have a valid OMVS segment. For detailed information about which permissions are required to run Zowe core services as well as specific individual components, see the [Security Permissions Reference Table](#security-permissions-reference-table) in this article.
 * **[ZWESIUSR](#zwesiusr)**  
 This user runs the cross memory server (ZIS). This is a started task ID used to run the PROCLIB `ZWESISTC` that launches the [cross memory server (ZIS)](./configure-xmem-server.md). This started task ID must have a valid OMVS segment.
 
