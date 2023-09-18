@@ -158,7 +158,6 @@ module.exports = {
                   label: "Configuring certificates",
                   link: {type:"doc", id:"user-guide/configure-certificates"},
                   items: [
-                    "user-guide/configure-certificates",
                     "user-guide/certificates-configuration-questionnaire",
                     "user-guide/certificate-configuration-scenarios",
                     "user-guide/import-certificates",

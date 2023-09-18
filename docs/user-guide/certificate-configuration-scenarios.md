@@ -1,6 +1,9 @@
 # Certificate configuration scenarios 
 
-As a system programmer, review the five scenarios for configuring Zowe for automatic certificate setup. Examples of the zowe.yaml filw are provided for each scenario.
+
+As a system programmer, or security administrator review the five scenarios for configuring Zowe for automatic certificate setup. Examples of the zowe.yaml files are provided for each scenario.
+
+**Tip:** To assist you with determining the specific certificate configuration scenario that applies to your use case, see [Zowe certificates configuration questionnaire](./certificates-configuration-questionnaire.md). This questionnaire will guide you through quetions that leads to a specific configuration scenario.
 
 Zowe servers require both a keystore to store the certificates and a truststore to validate certificates.
 
@@ -25,7 +28,7 @@ A valid certificate for use in Zowe has the following qualities:
 
 Consider the scenario that best suits your use case:
 
-* Do you pla to use a file-based (PKCS12) certificates, or z/OS keyrings?
+* Do you plan to use a file-based (PKCS12) certificates, or z/OS keyrings?
 * Do you plan to enable Zowe to create self-signed certificates, or will Zowe be using pre-made certificates which you are providing?
 * If you are providing certificates to Zowe and using a keyring, does the certificate already exist in your security database, or are you importing it via a dataset?
 
