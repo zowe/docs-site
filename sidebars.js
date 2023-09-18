@@ -78,7 +78,6 @@ module.exports = {
       type: "category",
       label: "Install Zowe server-side components",
       items: [
-        "user-guide/server-side-install-overview",
         {
           type: "category",
           label: "Preparation for installation",
