@@ -1,4 +1,4 @@
-# FAQ: Zowe and components
+# Zowe FAQ
 
 Check out the following FAQs to learn more about the purpose and function of Zowe&trade;.
 

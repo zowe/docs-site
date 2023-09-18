@@ -1,13 +1,20 @@
 # Zowe certificate configuration overview
 
-As a system programmer, review this article to learn about the key concepts of Zowe certificates, and options for certificate configuration. 
+As a system programmer or security administrator, review this article to learn about the key concepts of Zowe certificates, and options for certificate configuration. 
 
-Zowe uses digital certificates for secure, encrypted network communication over Secure Sockets Layer/Transport Layer Security (SSL/TLS) and HTTPS protocols. Communication in Zowe can be between Zowe servers, or from Zowe to another server, or even between Zowe's servers and Zowe's client components.
+Zowe uses digital certificates for secure, encrypted network communication over Secure Sockets Layer/Transport Layer Security (SSL/TLS) and HTTPS protocols. Communication in Zowe can be between Zowe servers, from Zowe to another server, or even between Zowe's servers and Zowe's client components.
 
 Zowe's certificates are stored in its **keystore**. Verification of these certificates and any incoming certificates from other servers or clients is done by using certificates of certificate authorities (CAs) within Zowe's **truststore**.
 
-Zowe supports using either file-based (`PKCS12`) or z/OS key ring-based (when on z/OS) keystores and truststores, and can reuse compatible stores if they exist. Alternatively, Zowe can assist in creating the stores by either generating certificates or by allowing users to import their own compatible certificates via the `zwe init certificate` command. For key rings, one option for certificate setup is to copy the JCL `ZWEKRING` member of Zowe's SAMPLIB and customize its values. 
+Zowe supports using either file-based (`PKCS12`) or z/OS key ring-based (when on z/OS) keystores and truststores, and can reuse compatible stores if they exist. Zowe can assist in creating the stores by either generating certificates or by allowing users to import their own compatible certificates via the `zwe init certificate` command. 
 
+* [Certificate concepts](#certificate-concepts)
+* [Certificate verification](#certificate-verification)
+* [Zowe certificate requirements](#zowe-certificate-requirements)
+* [Certificate setup type](#certificate-setup-type)
+* [Next steps: Creating or importing certificates to Zowe](#next-steps-creating-or-importing-certificates-to-zowe)
+
+**Note:** If you are already familiar with certificate concepts and how Zowe uses certificates and are ready to get started, see the options under the section _Next steps: Creating or importing certificates to Zowe_ at the end of this article.
 ## Certificate concepts
 
 Before you get started with configuring certificates, it is useful to familiarize yourself with the following key concepts:
@@ -37,6 +44,8 @@ z/OS provides an interface to manage cryptographic objects in "key rings". As op
 Use of a z/OS keystore is the recommended option for storing certificates if system programmers are already familiar with the certificate operation and usage.
 Creating a key ring and connecting the certificate key pair requires elevated permissions. When the TSO user ID does not have the authority to manipulate key rings and users want to create a Zowe sandbox environment or for testing purposes, the USS keystore is a good alternative.
 
+One option for certificate setup for key rings is to copy the JCL `ZWEKRING` member of Zowe's SAMPLIB and customize its values. 
+
 ### Server certificate
 Servers need a certificate to identify themselves to clients. Every time that you go to an HTTPS website, for example, your browser checks the server certificate and its CA chain to verify that the server you reached is authentic.
 
@@ -58,7 +67,7 @@ If you set `zowe.verifyCertificates` to `DISABLED`, certificate verification is 
 
 If you set `DISABLED` before certificate setup, Zowe does not automate putting z/OSMF trust objects into the Zowe truststore. This action can result in failure to communicate with z/OSMF if later you enable verification. As such. It is recommended to either set verification on by default, or to reinitialize the keystore if you choose to turn on verification at a later point.
 
-### NONSTRICT verification
+### NON-STRICT verification
 If you set `zowe.verifyCertificates` to `NONSTRICT`, certificate verification is performed except for hostname validation. Using this setting, the certificate Common Name or Subject Alternate Name (SAN) is not checked. Skipping hostname validation facilitates deployment to environments where certificates are valid but do not contain a valid hostname. This configuration is for development purposes only and should not be used for production.
 
 ### STRICT verification
@@ -75,7 +84,7 @@ Some Zowe components act as a server, some as a client, and some as both - clien
 
 
 ### Hostname validity
-The host communicating with a certificate should have its hostname match one of the values of the certificate's Common Name or Subject Alternate Name (SAN). If this condition is not true for at least one of the certificates that are seen by Zowe, then you may wish to set [NONSTRICT verification](#nonstrict-verification) within Zowe's configuration.
+The host communicating with a certificate should have its hostname match one of the values of the certificate's Common Name or Subject Alternate Name (SAN). If this condition is not true for at least one of the certificates that are seen by Zowe, then you may wish to set [NON-STRICT verification](#non-strict-verification) within Zowe's configuration.
 
 ### z/OSMF access
 The z/OSMF certificate is verified according to Zowe's [Certificate verification setting](#certificate-verification), as is the case with any certificate that is seen by Zowe. However, Zowe will also set up a trust relationship with z/OSMF within Zowe's truststore during certificate setup automation if the certificate setting is set to any value other than [DISABLED](#disabled-verification).
@@ -113,13 +122,15 @@ A number of key ring scenarios are supported:
 
 Review the following options and choose which best applies to your use case:
 
+* Take our [Certificates Configuration Questionnaire](./certificates-configuration-questionnaire) to assist with determining which configuration scenario and associated zowe.yaml format best suits your use case.
+
+* To review the various zowe.yaml files to see which certificate configuration applies to your specific use case, see [Certificate configuration scenarios](./certificate-configuration-scenarios.md).
+
 * If you have an existing certificate, you can import this certificate to the keystore. For more information, see [Import and configure an existing certificate](./import-certificates.md).
 
-* If you do not have an existing certificate, you can create one. For more information, see [Generate a certificate if you do not have a certificate](./generate-certificates.md).
+* If you do not have an existing certificate, you can create one. For more information, see [Generate a certificate](./generate-certificates.md).
 
-* If you would like to see which certificate configuration applies to your specific use case, see [Certificate configuration scenarios](./certificate-configuration-scenarios.md).
+* When your certificate is already in the keystore, it is ready for use. For more information about how to use it, see [Use certificates](./use-certificates.md).
 
-* When your certificate is already in the keystore, it is ready for use. For more information, see [Use certificates](./use-certificates.md).
-
-* If you run into any error when configuring certificates, see the [Troubleshooting the certificate configuration](../troubleshoot/troubleshoot-zos-certificate.md).
+* If you run into any error when configuring certificates, see [Troubleshooting the certificate configuration](../troubleshoot/troubleshoot-zos-certificate.md).
 
