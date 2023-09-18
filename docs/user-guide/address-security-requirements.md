@@ -33,7 +33,7 @@ If your Zowe server-side installation includes the features listed in the follow
 | API Mediation Layer Identity Tokens (IDT) | [Configuring signed SAF Identity tokens (IDT)](../user-guide/configure-zos-system.md/#configure-signed-saf-identity-tokens-idt) |
 | Cross memory server (ZIS) | [Configuring the cross memory server for SAF](../user-guide/configure-zos-system.md/#configure-the-cross-memory-server-for-saf)<br />and<br />[Configuring cross memory server load module](../user-guide/configure-xmem-server.md/#load-module)<br />and<br />[Configuring cross-memory server SAF configuration](../user-guide/configure-xmem-server.md/#saf-configuration) |
 
-## Assign security permissions of users
+### Assign security permissions of users
 
 As a security administrator, assign users and the ZWEADMIN security group permissions required to perform specific tasks. 
 
