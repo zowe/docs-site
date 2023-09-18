@@ -1,7 +1,9 @@
 # Address network requirements
 
-When installing Zowe server-side components, review the following table to determine which ports are required. 
+When installing Zowe server-side components, review the following table to determine which TCP ports are required. 
 These are default values. You can change the values by updating variable values in the `zowe.yaml` file. 
+
+For more information about variable names in the following table, see the [Zowe YAML configuration file reference](../appendix/zowe-yaml-configuration.md) in the References section.
 
 | Port number | zowe.yaml variable name | Purpose |
 |------|------|------|
