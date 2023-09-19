@@ -12,6 +12,10 @@ Review this overview to learn about the options to install Zowe server-side comp
     * [Tasks performed by the network administrator](#tasks-performed-by-the-network-administrator)
     * [Tasks performed by the system programmar](#tasks-performed-by-the-system-programmar)
 
+## End-to-end diagram
+
+![4-installation-methods](../images/install/4-installation-methods.png)
+
 ## Zowe server-side components in the installation
 
 The following Zowe server-side components are included in this installation: 
