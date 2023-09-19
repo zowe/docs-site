@@ -1,6 +1,6 @@
-# Configuring the z/OS system for Zowe
+# Address z/OS requirements for Zowe
 
-Learn how to configure the z/OS system for Zowe. Before you begin, check the following table to understand which steps you need to perform based on your settings. 
+As a security administrator it is necessary to  configure the z/OS system for Zowe. Before you begin, check the following table to understand which steps you need to perform based on your settings. 
 
 Configuration step | Purpose |
 ---| ---|
