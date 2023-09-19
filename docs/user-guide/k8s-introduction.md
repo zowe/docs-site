@@ -42,7 +42,8 @@ In Stage 2, you download the Zowe containers. Two downloading methods are availa
 
 At Stage 3, you do not need to install the Zowe containers if you use Zowe's Kubernetes configuration samples. If you download container images, an could be considered "installed" when it is findable by Kubernetes. See more information [here](../user-guide/k8s-downloading/#installing).
 
-At Stage 4, you [configure the Zowe container environment](../user-guide/k8s-config.md). Follow these steps:
+At Stage 4, you [configure the Zowe container environment](../user-guide/k8s-config.md).  
+Follow these steps:
 
 1. [Create namespace and service account](../user-guide/k8s-config#1-create-namespace-and-service-account)
 2. [Create Persistent Volume Claim (PVC)](../user-guide/k8s-config#2-create-persistent-volume-claim-pvc)
@@ -51,8 +52,8 @@ At Stage 4, you [configure the Zowe container environment](../user-guide/k8s-con
 
 ### Stage 5: Start Zowe containers
 
-In Stage 5, you [start Zowe containers](../user-guide/k8s-using/#starting-zowe-containers). 
-Follow these steps:
+In Stage 5, you [start Zowe containers](../user-guide/k8s-using/#starting-zowe-containers).  
+ Follow these steps:
 1. [Apply the deployment files to start Zowe containers](../user-guide/k8s-using#starting-zowe-containers). 
 2. After you start Zowe containers, [verify that Zowe containers are started](../user-guide/k8s-using#verifying-zowe-containers).
 
