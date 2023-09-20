@@ -1,6 +1,6 @@
-# Installation checklist
+# Zowe CLI Installation checklist
 
-The following checklists summarize the required steps for a base installation (_first-time installation_) in the order you should perform them. 
+The following checklists summarize the required steps for a base installation (_first-time installation_) in the order you should perform them.
 
 The checklist includes a brief description of the steps, with links to the comprehensive information required for the installation. The checklist also identifies the roles that are typically required to complete the step, which enables the pre-installation planning team (systems administrator, DevOps architect, application developer, and so on) to focus on the tasks for which they are responsible. 
 

@@ -225,6 +225,8 @@ Refers to the full, unarchived set of binaries, executable files, scripts, and o
 
 ### Security
 
+For an overview of security in Zowe, see [the Zowe Security policy](https://www.zowe.org/security) on zowe.org. 
+
 #### Sample library
 
 The cross memory server runtime artifacts, the JCL for the started tasks, the parmlib, and members containing sample configuration commands are found in the SZWESAMP PDS sample library. For more information, see [PDS sample library and PDSE load library](https://docs.zowe.org/stable/user-guide/configure-xmem-server/#pds-sample-library-and-pdse-load-library).
@@ -282,7 +284,7 @@ An app in the [Zowe Desktop](#zowe-desktop) that provides a user interface that 
 
 An app in the [Zowe Desktop](#zowe-desktop) to interact with z/OS data sets and Unix files. It uses the [File Tree](#file-tree).
 
-### Zowe CLI
+### Zowe CLI Extensions
 
 #### IBM® CICS® Plug-in for Zowe CLI
 
@@ -295,7 +297,7 @@ Enables interaction with Db2 for z/OS to perform tasks through Zowe CLI and inte
 ## Use and development
 ### API Mediation Layer
 
-#### Micronaut
+#### Micronaut Enabler
 
 A guide which helps to simplify the process of onboarding a REST service with the API ML, using Micronaut **[why use Micronaut to define Micronaut? an we avoid doing this?]** and Gradle.
 

@@ -1,4 +1,4 @@
-# Troubleshooting API ML
+# Troubleshooting Zowe API Mediation Layer
 
 As an API Mediation Layer user, you may encounter problems with how the API ML functions. This article presents known API ML issues and their solutions.
 

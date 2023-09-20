@@ -1,4 +1,4 @@
-# Interacting with Zowe Chat
+# Using Zowe Chat
 
 You can interact with Zowe Chat by mouse navigation or issuing commands.
 

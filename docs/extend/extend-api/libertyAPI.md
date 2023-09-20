@@ -67,7 +67,7 @@ Within the Liberty server we have configured a function "APIDiscovery" which at 
 
 ## Anatomy of a project
 
-Using [rest-api-jzos sample](https://github.com/zowe/rest-api-jzos-sample) as a guide. Create a Dynamic web project (don't specify it as part of an EAR if using the wizard), or if using a
+Using [rest-api-jzos sample](https://github.com/zowe/spring-boot-jzos-sample) as a guide. Create a Dynamic web project (don't specify it as part of an EAR if using the wizard), or if using a
 Maven archetype choose one containing a simplified sample J2EE application.
 
 _Alternatively, use the project as a template. Download the code, rename it and use as the basis of your new project._
