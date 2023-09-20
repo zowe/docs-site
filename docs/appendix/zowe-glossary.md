@@ -116,7 +116,7 @@ This is an older, no-longer-used name for the [Zowe Application Framework](#zowe
 
 #### Zowe App Server
 
-Refers to the Node.js-powered Application Server and is part of the [Zowe Application Framework](#zowe-application-framework) core component. It hosts the web content of the Application Framework, and provides the [Zowe Desktop](#zowe-desktop), which is accessible through a web browser.
+Refers to the Node.js-powered Application Server and is part of the [Zowe Application Framework](#zowe-application-framework) core project. It hosts the web content of the Application Framework, and provides the [Zowe Desktop](#zowe-desktop), which is accessible through a web browser.
 
 #### Zowe Chat
 
@@ -147,6 +147,7 @@ Uses the IntelliJ IDE to provide the ability to work with z/OS data sets and USS
 #### Zowe Launcher
 
 A server-side program necessary for high availability/fault tolerance (HA/FT). It starts the Zowe server components and monitors their processes so that if a component fails to start or crashes, the launcher restarts it. The restarting of a component has limits to prevent loops in case of a component that has uncorrectable problems.
+
 ## Community
 
 #### Open Mainframe Project (OMP)
@@ -183,6 +184,10 @@ The Zowe instance directory contains a `instance.env` file that stores the Zowe 
 #### Log directory
 
 The standard z/OS Unix directory where Zowe logs are stored. It is specified in the Zowe configuration file via `zowe.logDirectory`.
+
+#### OMVS
+
+Use of z/OS UNIX services requires a z/OS UNIX security context, referred to as an OMVS segment, for the user ID associated with any unit of work requesting these services. To learn more consult [IBM Documentation](https://www.ibm.com/docs/en/zos/2.5.0?topic=profiles-omvs-segment-in-user)
 
 #### Runtime directory
 
@@ -235,11 +240,11 @@ The cross memory server runtime artifacts, the JCL for the started tasks, the pa
 
 #### ZWEADMIN
 
-A group **[of what? scripts? files? dinosaurs?]** that [ZWESVUSR](#zwesiusr) and [ZWESIUSR](#zwesvusr) should belong to. It must have a valid OMVS segment. **[we need to provide a definition for OMVS]**
+A user group on the system that [ZWESVUSR](#zwesiusr) and [ZWESIUSR](#zwesvusr) should belong to. It must have a valid [OMVS](#omvs) segment. 
 
 #### ZWESIUSR
 
-A started task ID used to run the PROCLIB ZWESISTC that launches the cross memory server (also known as ZIS). It must have a valid OMVS segment. For more information, see [System requirements](systemrequirements-zos#zwesvusr) **[this link doesn't work]**.
+A started task ID used to run the PROCLIB ZWESISTC that launches the cross memory server (also known as ZIS). It must have a valid [OMVS](#omvs) segment. For more information, see [System requirements](/user-guide/systemrequirements-zos/#zwesiusr).
 
 #### ZWESVUSR
 
@@ -252,6 +257,7 @@ A started task ID used to run the PROCLIB ZWESVSTC. The task starts a USS enviro
 #### API Catalog
 
 Displays API services that have been discovered by the API Mediation Layer.
+
 ### Zowe Application Framework
 
 #### 3270 Terminal
@@ -297,11 +303,12 @@ Extends the Zowe CLI to interact with CICS programs and transactions.
 Enables interaction with Db2 for z/OS to perform tasks through Zowe CLI and integrate with modern development tools.
     
 ## Use and development
+
 ### API Mediation Layer
 
 #### Micronaut Enabler
 
-A guide which helps to simplify the process of onboarding a REST service with the API ML, using Micronaut **[why use Micronaut to define Micronaut? an we avoid doing this?]** and Gradle.
+A guide which helps to simplify the process of onboarding a REST service with the API ML, using [Micronaut](https://micronaut.io/) and [Gradle](https://gradle.org/).
 
 #### Node.js Enabler
 
@@ -313,13 +320,13 @@ A library which helps to simplify the process of onboarding a REST service with 
 
 #### Sprint Boot Enablers
 
-A collection of enablers which help to simplify the process of onboarding a REST service with the API ML using various Spring frameworks.
+A collection of enablers which help to simplify the process of onboarding a REST service with the API ML using various versions of Spring framework.
 
 ### Zowe Application Framework
 
 #### Accessing the Desktop
 
-The [Zowe Desktop](#zowe-desktop) is accessed through the [API ML](#api-mediation-layer-api-ml). The URL **[For what? The Desktop or the API ML?]** would be:
+The [Zowe Desktop](#zowe-desktop) is accessed through the [API ML](#api-mediation-layer-api-ml). The URL for the Desktop would be:
 ```
 https://${zowe.externalDomains[0]}:{zowe.externalPort}/zlux/ui/v1
 ```
