@@ -8,7 +8,11 @@ The Zowe installation file for Zowe z/OS components is distributed as a PAX file
 
 The configuration data that is read by the `zwe` command are stored in a YAML configuration file named `zowe.yaml`. You modify the `zowe.yaml` file based on your environment. 
 
-Complete the following steps to install the Zowe runtime. 
+Complete the following steps to install the Zowe runtime.
+
+## End-to-end installation diagram
+
+![Convenience build install diagram](../images/install/Convenience-build-install.png)
 
 ## Step 1: Obtain the convenience build
 

@@ -1,5 +1,9 @@
 # Install Zowe via SMP/E
 
+## End-to-end installation diagram
+
+![Install Zowe with SMPE](../images/install/SMPE-install.png)
+
 **Contents**
 
 - [Introduction](#introduction)
