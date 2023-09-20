@@ -12,8 +12,9 @@ Review this overview to learn about the options to install Zowe server-side comp
     * [Tasks performed by the network administrator](#tasks-performed-by-the-network-administrator)
     * [Tasks performed by the system programmar](#tasks-performed-by-the-system-programmar)
 
-## End-to-end diagram
+## Complete installation ecosystem
 
+The following diagram presents the full ecosytem of options that can be used to install Zowe server-side components.
 ![4-installation-methods](../images/install/4-installation-methods.png)
 
 ## Zowe server-side components in the installation
@@ -27,8 +28,8 @@ A web user interface (UI) that provides a virtual desktop containing several app
 *  **Zowe API Mediation Layer (API ML)**  
 Zowe API Mediation Layer provides a reverse proxy and enables REST APIs by providing a single point of access for mainframe service REST APIs.<details><summary>Click here for more information about API Mediation Layer.</summary> Such APIs include MVS Data Sets, JES, as well as working with z/OSMF. The API ML has dynamic discovery capability for these services and Gateway is also responsible for generating the authentication token used to provide single sign-on (SSO) functionality.</details>
 
-* **Zowe System Services (ZSS)**  <!-- Is ZSS installed with Zowe runtime or is is part of ZIS installation in the configuring section? -->
-Working closely with the Zowe Cross Memory server (ZIS), ZSS serves as one of the primary, authenticated back-ends that communicates with z/OS and provides Zowe with a number of APIs including z/OS Unix files and data sets, control of the plug-ins and services lifecycle, and security management.<details><summary>Click here for more information about Zowe System Services.</summary> The Zowe Desktop delegates a number of its services to ZSS which it accesses through the default http port `7557`. ZSS is written in C and uses native calls to z/OS to provide its services.</details>
+* **Zowe System Services (ZSS)** 
+Working closely with the Zowe Cross Memory server (ZIS), ZSS serves as one of the primary, authenticated back-ends that communicates with z/OS and provides Zowe with a number of APIs including z/OS Unix files and data sets, control of the plug-ins and services lifecycle, and security management. ZSS is part of the Application Framework.<details><summary>Click here for more information about Zowe System Services.</summary> The Zowe Desktop delegates a number of its services to ZSS which it accesses through the default http port `7557`. ZSS is written in C and uses native calls to z/OS to provide its services.</details>
 
 ## Installation of Zowe runtime
 
@@ -38,8 +39,6 @@ Runtime installation includes the following components:
 * Zowe API Mediation Layer
 * Z Secure Services (ZSS)
 
-<!-- Where does this next paragraph belong? -->
-The Zowe server components also includes a web desktop that runs a number of applications including API Mediation Layer that includes the Single Sign-on (SSO) capability, organization of multiple Zowe servers under a single website, and other useful features for z/OS developers.
 
 **Important:** To run all of these server-side components, or to run Zowe Application Framework, installation of the Zowe Cross Memory Server (ZIS) is required. The Zowe cross memory server (ZIS) provides privileged cross-memory services to the Zowe Desktop and runs as an APF-authorized program.<details><summary> Click here for more information about ZIS.</summary>The same cross memory server can be used by multiple Zowe desktops. The cross memory server is needed to be able to log on to the Zowe desktop and operate its apps such as the Code Editor.</details>
 
