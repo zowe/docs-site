@@ -6,7 +6,7 @@ This reference includes both technical as well as organizational terms that are 
 
 Not finding what you are looking for? Send a message to the Zowe Docs squad in the [#zowe-doc](https://openmainframeproject.slack.com/archives/CC961JYMQ) Slack channel.
 
-## Core Zowe components
+## Core Zowe Projects
 
 #### API Mediation Layer (API ML)
 
@@ -20,9 +20,9 @@ Modernizes and simplifies working on the mainframe via a web visual interface. F
 
 Provides a command-line interface that lets you interact with the mainframe remotely and use common tools such as Integrated Development Environments (IDEs), shell commands, bash scripts, and build tools for mainframe development. The core set of commands includes working with data sets, USS, JES, as well as issuing TSO and console commands. The Zowe CLI is incredibly popular in modern mainframe education.
 
-#### Zowe client components
+#### Zowe client projects
 
-Includes all the Zowe components that are installed on the user's PC. Also known as *Zowe client-side components*. 
+Includes all the Zowe projects that are installed on the user's PC. Also known as *Zowe client-side projects*. 
 
 #### Zowe Client SDKs
 
@@ -46,10 +46,12 @@ ZSS is written in C and uses native calls to z/OS to provide its services.
 
 #### API Catalog
 
-A plug-in and a list of API services. The catalog provides a list of the API services registered as catalog tiles **[where do these tiles display?]** and renders the Swagger documents for those services **[where are these Swagger documents accessible or able to be viewed?]**.
+API Catalog is a service running as part of the API Mediation Layer. The catalog provides a UI with a list of the API services registered as catalog tiles and renders the Swagger documents for those services. The Swagger documents are shown in interactive form allowing for trying the APIs out. In the typical Zowe installation, you should be able to access the API Catalog via: {url}:7554/apicatalog/ui/v1/. You need to be logged in to explore APIs. 
+
 #### API Discovery Service
 
-As the central repository of active services in the [API Mediation Layer](#api-mediation-layer-api-ml) ecosystem, it continuously collects and aggregates service information to provide status updates. This enables the discoverability of services. **[should we be saying "microservices" instead of "services" in this definition?]**
+As the central repository of active services in the [API Mediation Layer](#api-mediation-layer-api-ml) ecosystem, it continuously collects and aggregates service information to provide status updates. This enables the discoverability of services. 
+
 #### API Gateway  
 
 A proxy server that routes requests from clients on its northbound edge (such as web browsers or [Zowe CLI](#zowe-cli)) to servers on its southbound edge that are able to provide data to serve the request.
