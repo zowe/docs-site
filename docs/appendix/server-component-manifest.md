@@ -1,6 +1,6 @@
 # Server component manifest file reference
 
-Zowe server component manifest file defines the name and purpose of the component. It also provides information about how this component should be installed, configured, and started. It can be named as `manifest.yaml`, `manifest.yml`, or `manifest.json` and should be located in the root directory of the component. Currently, only `YAML` or `JSON` format are supported.
+Zowe server component manifest file defines the name and purpose of the component. It also provides information about how this component should be installed, configured, and started. It can be named as `manifest.yaml`, `manifest.yml`, or `manifest.json` and should be located in the root directory of the component. Currently, only `YAML` or `JSON` format are supported. 
 
 The manifest file contains the following properties:
 
@@ -184,5 +184,11 @@ The manifest file contains the following properties:
 
   * For HA instance `lpar1`, `ZWE_components_myextension_port` value is `14567`, `ZWE_components_myextension_another_config` value is `my-value`, which are default values.
   * For HA instance `lpar2`, `ZWE_components_myextension_port` value is `24567`, `ZWE_components_myextension_another_config` value is `my-value2`.
+
+- **`dependencies`**: (Optional) This section defines the component's dependencies.
+  * **`zos`**: Array of objects. This subfield defines components or services from z/OS.
+    - **`apiml`**: true or false. Indicates whether the dependency is registered/searchable with the Discovery service
+    - **`version`**: This defines the version range of the dependency. Acceptable formats: `version`, `>version`, `>=version`, `<version`, `<=version`
+
 
 **Note:** All paths of directories or files mentioned previously should be relative paths to the root directory where manifest is located.
