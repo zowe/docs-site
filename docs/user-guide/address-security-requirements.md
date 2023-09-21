@@ -14,7 +14,7 @@ Zowe, see the following articles:
 
 ## Tasks performed by your security administrator
 
-To configure Zowe security for production environments, your organization's security administrator will be required to
+To configure Zowe security, your organization's security administrator will be required to
 perform various tasks. Some of the tasks apply to general Zowe configuration, while other tasks are required during
 installation if you plan to use specific Zowe components or features.
 
@@ -26,7 +26,7 @@ The following required configuration tasks are performed by your organization's 
 * [Configure address space job naming](../user-guide/configure-zos-system.md#configure-address-space-job-naming)
 * [Assign security permissions of users](#assign-security-permissions-of-users)
 
-If your Zowe server-side installation includes the features listed in the following table, consult your organization's
+If your Zowe server-side installation includes the features listed in the following table, consult your 
 security administrator to perform the associated security tasks:
 
 | Feature of a Zowe server-side component                                                                                                         | Configuration Task                                                                                                                                                                                                                                                                                                                                                         | 
@@ -42,7 +42,7 @@ security administrator to perform the associated security tasks:
 
 ### Assign security permissions of users
 
-As a security administrator, assign users and the ZWEADMIN security group permissions required to perform specific
+As a security administrator, assign users (ZWESVUSR and ) and the ZWEADMIN security group permissions required to perform specific
 tasks.
 
 ### Overview of user categories and roles
