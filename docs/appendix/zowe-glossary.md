@@ -1,10 +1,10 @@
 # Glossary of Zowe terminology
 
-This glossary is part of a growing list of terms and concepts used in the Zowe.
+This glossary is part of a growing list of terms and concepts used in the Zowe ecosystem of projects.
 
 This reference includes both technical as well as organizational terms that are specific to Zowe, the award-winning open source initiative part of the Linux Foundation's Open Mainframe Project (OMP).
 
-Not finding what you are looking for? Send a message to the Zowe Docs squad in the [#zowe-doc](https://openmainframeproject.slack.com/archives/CC961JYMQ) Slack channel.
+Not finding something you are looking for? Send a message to the Zowe Docs squad in the [#zowe-doc](https://openmainframeproject.slack.com/archives/CC961JYMQ) Slack channel to discuss updating this glossary.
 
 ## Core Zowe Projects
 
@@ -14,7 +14,7 @@ Provides a reverse proxy and enables REST APIs by providing a single point of ac
 
 #### Zowe Application Framework
 
-Modernizes and simplifies working on the mainframe via a web visual interface. Functionality is provided through apps and a desktop user experience called the [Zowe Desktop](#zowe-desktop). Base functionality includes apps to work with JES, MVS Data Sets, Unix System Services, as well as a [3270 Terminal](#3270-terminal), [Virtual Terminal](#virtual-vt-terminal)), and an [Editor](#zowe-editor).
+Modernizes and simplifies working on the mainframe via a web visual interface. Functionality is provided through apps and a desktop user experience called the [Zowe Desktop](#zowe-desktop). Base functionality includes apps to work with JES, MVS Data Sets, Unix System Services, as well as a [3270 Terminal](#3270-terminal), [Virtual Terminal](#virtual-vt-terminal), and an [Editor](#zowe-editor).
 
 #### Zowe CLI
 
@@ -46,11 +46,10 @@ ZSS is written in C and uses native calls to z/OS to provide its services.
 
 #### API Catalog
 
-API Catalog is a service running as part of the API Mediation Layer. The catalog provides a UI with a list of the API services registered as catalog tiles and renders the Swagger documents for those services. The Swagger documents are shown in interactive form allowing for trying the APIs out. In the typical Zowe installation, you should be able to access the API Catalog via: {url}:7554/apicatalog/ui/v1/. You need to be logged in to explore APIs. 
-
+Displays API services that have been discovered by the [API Mediation Layer](#api-mediation-layer-api-ml).
 #### API Discovery Service
 
-As the central repository of active services in the [API Mediation Layer](#api-mediation-layer-api-ml) ecosystem, it continuously collects and aggregates service information to provide status updates. This enables the discoverability of services. 
+As the central repository of active services in the [API Mediation Layer](#api-mediation-layer-api-ml) ecosystem, it continuously collects and aggregates service information to provide status updates. This enables the discoverability of services.
 
 #### API Gateway  
 
@@ -156,7 +155,9 @@ An organization which hosts and promotes development of open source software for
 
 #### Squad
   
-A group of people contributing and participating in the Zowe project. Such a group owns one or more projects. Every squad is required to have a representative on the [Technical Steering Committee](#technical-steering-committee-tsc) (TSC), and participate in relevant working groups. For more information about how a squad works, see [Squads](https://github.com/Zowe/community/blob/master/Technical-Steering-Committee/squads.md).
+A group of people contributing and participating in the Zowe project. Such a group owns one or more projects. 
+
+Every squad is required to have a representative on the [Technical Steering Committee](#technical-steering-committee-tsc) (TSC), and participate in relevant working groups. For more information about active Zowe squads, see [Current squads](https://github.com/Zowe/community/blob/master/Technical-Steering-Committee/squads.md#current-squads).
 
 #### Technical Steering Committee (TSC)
 
@@ -187,7 +188,7 @@ The standard z/OS Unix directory where Zowe logs are stored. It is specified in 
 
 #### OMVS
 
-Use of z/OS UNIX services requires a z/OS UNIX security context, referred to as an OMVS segment, for the user ID associated with any unit of work requesting these services. To learn more consult [IBM Documentation](https://www.ibm.com/docs/en/zos/2.5.0?topic=profiles-omvs-segment-in-user)
+Use of z/OS UNIX services requires a z/OS UNIX security context, referred to as an OMVS segment, for the user ID associated with any unit of work requesting these services. To learn more consult [IBM Documentation](https://www.ibm.com/docs/en/zos/2.5.0?topic=profiles-omvs-segment-in-user).
 
 #### Runtime directory
 
@@ -244,11 +245,11 @@ A user group on the system that [ZWESVUSR](#zwesiusr) and [ZWESIUSR](#zwesvusr) 
 
 #### ZWESIUSR
 
-A started task ID used to run the PROCLIB ZWESISTC that launches the cross memory server (also known as ZIS). It must have a valid [OMVS](#omvs) segment. For more information, see [System requirements](/user-guide/systemrequirements-zos/#zwesiusr).
+A started task ID used to run the PROCLIB ZWESISTC that launches the cross memory server (also known as ZIS). It must have a valid [OMVS](#omvs) segment. For more information, see [ZWESIUSR requirements](../user-guide/systemrequirements-zos.md/#zwesiusr).
 
 #### ZWESVUSR
 
-A started task ID used to run the PROCLIB ZWESVSTC. The task starts a USS environment using BPXBATSL that executes server components such as the Application Framework, the API ML, and ZSS. To work with USS, the user ID ZWESVUSR must have a valid OMVS segment. For more information, see [System requirements](systemrequirements-zos#zwesvusr).
+A started task ID used to run the PROCLIB ZWESVSTC. The task starts a USS environment using BPXBATSL that executes server components such as the Application Framework, the API ML, and ZSS. To work with USS, the user ID ZWESVUSR must have a valid OMVS segment. For more information, see [ZWESVUSR requirements](../user-guide/systemrequirements-zos.md#zwesvusr).
 
 ## Plug-ins and extensions
 
@@ -256,41 +257,41 @@ A started task ID used to run the PROCLIB ZWESVSTC. The task starts a USS enviro
 
 #### API Catalog
 
-Displays API services that have been discovered by the API Mediation Layer.
+Displays API services that have been discovered by the [API Mediation Layer](#api-mediation-layer-api-ml).
 
 ### Zowe Application Framework
 
 #### 3270 Terminal
 
-An app in the [Zowe Desktop](#zowe-desktop) that provides a user interface that emulates the basic functions of IBM 3270 family terminals.
+An applicationin the [Zowe Desktop](#zowe-desktop) that provides a user interface that emulates the basic functions of IBM 3270 family terminals.
 
 #### File Tree
 
-Formally known as the *File Explorer*, the FT refers to a re-usable widget existing in multiple apps across the [Zowe Desktop](#zowe-desktop) to display z/OS Unix files and datasets.
+Formally known as the *File Explorer*, the FT refers to a re-usable widget existing in multiple apps across the [Zowe Desktop](#zowe-desktop) to display z/OS Unix files and data sets.
 
 #### IP Explorer
 
-An app in the [Zowe Desktop](#zowe-desktop) you can use to monitor the TCP/IP stacks, and view active connections and reserved ports.
+An application in the [Zowe Desktop](#zowe-desktop) you can use to monitor the TCP/IP stacks, and view active connections and reserved ports.
 
 #### JES Explorer
 
-An app in the [Zowe Desktop](#zowe-desktop) to interact with z/OS UNIX files.
+An application in the [Zowe Desktop](#zowe-desktop) to interact with z/OS UNIX files.
 
-#### MVS (multiple virtual storage) Explorer
+#### MVS (Multiple Virtual Storage) Explorer
 
-An app in the [Zowe Desktop](#zowe-desktop) to interact with z/OS data sets. Though still supported, active development has been moved to the [Zowe Editor](#zowe-editor).
+An application in the [Zowe Desktop](#zowe-desktop) to interact with z/OS data sets. Though still supported, active development has been moved to the [Zowe Editor](#zowe-editor).
 
 #### USS Explorer
 
-An app in the [Zowe Desktop](#zowe-desktop) to interact with z/OS UNIX files. Though still supported, active development has been moved to the [Zowe Editor](#zowe-editor).
+An application in the [Zowe Desktop](#zowe-desktop) to interact with z/OS UNIX files. Though still supported, active development has been moved to the [Zowe Editor](#zowe-editor).
 
 #### Virtual (VT) Terminal
 
-An app in the [Zowe Desktop](#zowe-desktop) that provides a user interface that emulates the basic functions of DEC VT family terminals.
+An application in the [Zowe Desktop](#zowe-desktop) that provides a user interface that emulates the basic functions of DEC VT family terminals.
 
 #### Zowe Editor
 
-An app in the [Zowe Desktop](#zowe-desktop) to interact with z/OS data sets and Unix files. It uses the [File Tree](#file-tree).
+An application in the [Zowe Desktop](#zowe-desktop) to interact with z/OS data sets and Unix files. It uses the [File Tree](#file-tree).
 
 ### Zowe CLI Extensions
 
@@ -326,7 +327,7 @@ A collection of enablers which help to simplify the process of onboarding a REST
 
 #### Accessing the Desktop
 
-The [Zowe Desktop](#zowe-desktop) is accessed through the [API ML](#api-mediation-layer-api-ml). The URL for the Desktop would be:
+The [Zowe Desktop](#zowe-desktop) is accessed through the [API ML](#api-mediation-layer-api-ml). The Desktop URL uses the following format:
 ```
 https://${zowe.externalDomains[0]}:{zowe.externalPort}/zlux/ui/v1
 ```
