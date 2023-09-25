@@ -78,7 +78,6 @@ module.exports = {
       type: "category",
       label: "Install Zowe server-side components",
       items: [
-        "user-guide/server-side-install-overview",
         {
           type: "category",
           label: "Preparation for installation",
@@ -86,7 +85,6 @@ module.exports = {
           items: [
             "user-guide/zos-components-installation-checklist",
             "user-guide/zos-components-installation-checklist-dev",
-            "user-guide/install-config-best-practices",
             "user-guide/systemrequirements-zos",
             "user-guide/address-security-requirements",
             "user-guide/configure-uss",
