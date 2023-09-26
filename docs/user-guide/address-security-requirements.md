@@ -14,7 +14,7 @@ Zowe, see the following articles:
 
 ## Tasks performed by your security administrator
 
-To configure Zowe security, your organization's security administrator will be required to
+To configure Zowe security, your organization's security administrator is required to
 perform various tasks. Some of the tasks apply to general Zowe configuration, while other tasks are required during
 installation if you plan to use specific Zowe components or features.
 
