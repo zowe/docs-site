@@ -1,6 +1,6 @@
 # Address browser requirements
 
-As a system programmer, review the following browser requirements to avoid issues when running particular server-side components.
+As a system programmer, review the following browser requirements to avoid browser-specific issues when running particular server-side components.
 
 ## Zowe Desktop requirements (client PC)
 
