@@ -158,7 +158,6 @@ module.exports = {
                   label: "Configuring certificates",
                   link: {type:"doc", id:"user-guide/configure-certificates"},
                   items: [
-                    "user-guide/configure-certificates",
                     "user-guide/certificates-configuration-questionnaire",
                     "user-guide/certificate-configuration-scenarios",
                     "user-guide/import-certificates",
@@ -863,7 +862,7 @@ module.exports = {
     {
       type: "link",
       label: "Third Party Software Requirements",
-      href: "https://github.com/zowe/docs-site/tree/master/tpsr/tpsr-v2.10.x.md",
+      href: "https://github.com/zowe/docs-site/tree/master/tpsr/tpsr-v2.11.x.md",
     },
   ],
 };
