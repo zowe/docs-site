@@ -47,7 +47,7 @@ PS C:\Users\myName>
 
 We provide you with several methods to view Zowe CLI web help. You can browse Zowe CLI web help online, download the web help in a ZIP file that contains the HTML, or download the web help in a PDF file.
 
-- <a href="/stable/web_help/index.html" target="_blank">Browse Online</a>
-- <a href="/stable/zowe_web_help.zip" target="_blank">Download (ZIP)</a>
-- <a href="/stable/CLIReference_Zowe.pdf" target="_blank">Download (PDF)</a>
+- <a href="/v2.7.x/web_help/index.html" target="_blank">Browse Online</a>
+- <a href="/v2.7.x/zowe_web_help.zip" target="_blank">Download (ZIP)</a>
+- <a href="/v2.7.x/CLIReference_Zowe.pdf" target="_blank">Download (PDF)</a>
 

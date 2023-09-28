@@ -12,8 +12,7 @@
     "serve": "docusaurus serve",
     "write-translations": "docusaurus write-translations",
     "write-heading-ids": "docusaurus write-heading-ids",
-    "docs:pdf": "npx docs-to-pdf --initialDocURLs=\"http://localhost:3000/stable/getting-started/overview,http://localhost:3000/stable/user-guide/installandconfig,http://localhost:3000/stable/extend/extend-zowe-overview,http://localhost:3000/stable/troubleshoot/troubleshooting,http://localhost:3000/stable/contribute/roadmap-contribute,http://localhost:3000/stable/appendix/zowe-cli-command-reference\" --contentSelector=\"article\" --paginationSelector=\".pagination-nav__link--next\" --cssStyle=\":root{--ifm-font-size-base: 60%;}\" --excludeSelectors=\".announcementBar_UUUQ,nav.navbar,.docSidebarContainer_3pwe,.docMainContainer_2pgU .col.col--3,footer.footer,.docItemContainer_2szM > .margin-vert--xl > .row > .col:first-child,.pagination-nav,.docsRating,.navbar__inner,.thin-scrollbar\" --coverImage=\"http://localhost:3000/img/zowe-icon.png\" --coverTitle=\"Zowe Documentation\" --outputPDFFilename=\"static/zowe-docs.pdf\" --protocolTimeout=1800000",
-    "docs:pdf:user": "npx docs-to-pdf --initialDocURLs=\"http://localhost:3000/stable/getting-started/overview,http://localhost:3000/stable/user-guide/installandconfig,http://localhost:3000/stable/troubleshoot/troubleshooting\" --contentSelector=\"article\" --paginationSelector=\".pagination-nav__link--next\" --cssStyle=\":root{--ifm-font-size-base: 60%;}\" --excludeSelectors=\".announcementBar_UUUQ,nav.navbar,.docSidebarContainer_3pwe,.docMainContainer_2pgU .col.col--3,footer.footer,.docItemContainer_2szM > .margin-vert--xl > .row > .col:first-child,.pagination-nav,.docsRating,.navbar__inner,.thin-scrollbar\" --coverImage=\"http://localhost:3000/img/zowe-icon.png\" --coverTitle=\"Zowe Documentation\" --outputPDFFilename=\"static/zowe-docs-user.pdf\" --protocolTimeout=1800000"
+    "docs:pdf": "npx mr-pdf --initialDocURLs=\"http://localhost:3000/stable/getting-started/overview,http://localhost:3000/stable/user-guide/installandconfig,http://localhost:3000/stable/extend/extend-zowe-overview,http://localhost:3000/stable/troubleshoot/troubleshooting,http://localhost:3000/stable/contribute/roadmap-contribute,http://localhost:3000/stable/appendix/zowe-cli-command-reference\" --contentSelector=\"article\" --paginationSelector=\".pagination-nav__link--next\" --excludeSelectors=\".announcementBar_UUUQ,nav.navbar,.docSidebarContainer_3pwe,.docMainContainer_2pgU .col.col--3,footer.footer,.docItemContainer_2szM > .margin-vert--xl > .row > .col:first-child,.pagination-nav,.docsRating,.navbar__inner,.thin-scrollbar\" --coverImage=\"http://localhost:3000/img/zowe-icon.png\" --coverTitle=\"Zowe Documentation\" --outputPDFFilename=\"static/zowe-docs.pdf\""
   },
   "dependencies": {
     "@docusaurus/core": "^2.4.1",
@@ -41,7 +40,7 @@
   },
   "devDependencies": {
     "esbuild-loader": "^3.0.1",
-    "docs-to-pdf": "0.6.2",
+    "mr-pdf": "1.0.5",
     "netlify-plugin-cache": "^1.0.3"
   }
 }

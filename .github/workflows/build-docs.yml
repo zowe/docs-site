@@ -27,7 +27,7 @@ jobs:
       - name: Use Node.js LTS
         uses: actions/setup-node@v3
         with:
-          node-version: 18
+          node-version: 16
           cache: 'npm'
 
       - name: Cache Webpack Build
