@@ -523,70 +523,70 @@ The following error message codes may appear on logs or API responses. Use the f
 
   **Reason:**
 
-  The string sent by the central Gateway was not recognized as a valid DER-encoded certificate in the Base64 printable form.
+  The string sent by the central Gateway was not recognized as valid DER-encoded certificate in the Base64 printable form.
 
   **Action:**
 
-  Ensure that forwarding of the client certificate is also enabled in the central Gateway. Check for any error messages from the central Gateway.
+  Ensure that the forwarding of client certificate is enabled also in the central Gateway. Check for any error messages from the central Gateway.
 
 ### ZWEAT501E
 
   Failed to get trusted certificates from the central Gateway. Unexpected response from %s endpoint. Status code: %s. Response body: %s
 
   **Reason:**
-  
-  The response status code is different from the expected 200 OK.
-  
+
+  The response status code is different from expected 200 OK.
+
   **Action:**
-  
+
   Ensure that the parameter apiml.security.x509.certificatesUrl is correctly configured with the complete URL to the central Gateway certificates endpoint. Test the URL manually.
 
 ### ZWEAT502E
 
   Invalid URL specified to get trusted certificates from the central Gateway. Error message: %s
-  
+
   **Reason:**
-  
+
   The parameter apiml.security.x509.certificatesUrl is not correctly configured with the complete URL to the central Gateway certificates endpoint.
-  
+
   **Action:**
-  
+
   Ensure that the parameter apiml.security.x509.certificatesUrl is correctly configured.
 
 ### ZWEAT503E
 
   An error occurred during retrieval of trusted certificates from the central Gateway. Error message: %s
-  
+
   **Reason:**
-  
-  The communication with the cloud gateway got interrupted or an error occurred while processing the response.
-  
+
+  The communication with the cloud gateway got interrupted or an error occurred during processing the response.
+
   **Action:**
-  
+
   Check the provided error message. Contact the support.
 
 ### ZWEAT504E
 
   Failed to parse the trusted certificates provided by the central Gateway. Error message %s
-  
+
   **Reason:**
-  
+
   The string sent by the central Gateway was not recognized as valid DER-encoded certificates in the Base64 printable form.
-  
+
   **Action:**
-  
+
   Check that the URL configured in apiml.security.x509.certificatesUrl responds with valid DER-encoded certificates in the Base64 printable form.
 
 ### ZWEAT505E
 
   Incoming request certificate is not one of the trusted certificates provided by the central Gateway.
-  
+
   **Reason:**
-  
-  The Gateway performs an additional check of request certificates when the central Gateway forwards the incoming client certificate to the domain Gateway. This check may fail when the certificatesUrl parameter does not point to the proper central Gateway certificates endpoint.
-  
+
+  The Gateway performs additional check of request certificates when the central Gateway forwards incoming client certificate to the domain Gateway. This check may fail when the certificatesUrl parameter does not point to proper central Gateway certificates endpoint.
+
   **Action:**
-  
+
   Check that the URL configured in apiml.security.x509.certificatesUrl points to the central Gateway and it responds with valid DER-encoded certificates in the Base64 printable form.
 
 ### ZWEAT601E
@@ -1258,25 +1258,22 @@ The following error message codes may appear on logs or API responses. Use the f
   **Action:**
 
   Based on the specific information in the message, verify that the key configuration is correct, or alternatively, that z/OSMF is available. If z/OSMF is available, specify the authentication type used by z/OSMF in your configuration settings.
-
-  Use the following configuration format:
-  ```
-  apiml: 
-    security: 
-       auth: 
-           zosmf: 
-               jwtAutoconfiguration:
-  ```
-  Apply one of the following values:
-
-  * **auto**
-  Signifies that API ML is enabled to resolve the JWT producer
-
-  * **jwt**
-  Signifies that z/OSMF supports JWT (APAR PH12143 is applied)
-
-  * **ltpa**
-  Signifies that z/OSMF does not support JWT
+ Use the following configuration format: ```
+   apiml:
+     security:
+       auth:
+         zosmf:
+           jwtAutoconfiguration:
+ ``` Apply one of the following values:
+ * **auto**
+   Signifies that API ML is enabled to resolve the JWT producer
+ 
+ * **jwt**
+   Signifies that z/OSMF supports JWT (APAR PH12143 is applied)
+ 
+ * **ltpa**
+   Signifies that z/OSMF does not support JWT
+ 
 
 ### ZWEAG714E
 
@@ -1332,15 +1329,15 @@ The following error message codes may appear on logs or API responses. Use the f
 
   **Reason:**
 
-  Metadata are not accessible.
+  Metadata aren't accessible
 
   **Action:**
 
-  Verify that the metadata are accessible and not empty.
+  Verify that the metadata are accessible and not empty
 
 ### ZWEAG719I
 
-  The service id provided is invalid: '%s'
+  The service is not conformant: %s
 
   **Reason:**
 
@@ -1348,8 +1345,8 @@ The following error message codes may appear on logs or API responses. Use the f
 
   **Action:**
 
-  Verify the conformance criteria, provide valid service id.
-  
+  Verify the conformance criteria.
+
 ### ZWEAG100E
 
   Authentication exception: '%s' for URL '%s'
@@ -1712,20 +1709,21 @@ The following error message codes may appear on logs or API responses. Use the f
 
 ### ZWEAG182E
 
-  SSL Misconfiguration, z/OSMF is not accessible. Please verify the following: \n
-  - CN (Common Name) and z/OSMF hostname have to match.\n
-  - Certificate is expired\n
-  - TLS version match\n
-Enable debugging to see further details in stack trace
+  SSL Misconfiguration, z/OSMF is not accessible. Message: %s Please verify the following:
+  - CN (Common Name) and z/OSMF hostname match.
+  - The certificate is valid
+  - TLS version matches
+  - z/OSMF server certificate is trusted in Zowe's truststore
+Enable debugging to see further details in stack trace.
 
 
   **Reason:**
 
-  z/OSMF connection has an incorrect configuration.
+  The z/OSMF connection is incorrectly configured.
 
   **Action:**
 
-  Verify z/OSMF connection details. Verify z/OSMF can be accessed with HTTPS
+  Verify z/OSMF connection details. Verify z/OSMF can be accessed with HTTPS. Configure sslDebug to see SSL debugging messages.
 
 ### ZWEAG183E
 
