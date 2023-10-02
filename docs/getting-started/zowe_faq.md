@@ -423,6 +423,16 @@ Zowe Explorer V2 supports using Service Profiles, Base Profiles, and Team Profil
 
 </details>
 
+### Is it possible to change the detected language of a file or data set opened in Zowe Explorer?
+
+<details className="zowe-faq">
+
+<summary></summary>
+
+Yes, you can configure Visual Studio Code to use a specific language for a particular file extension. To set file associations, see [Add a file extension to a language](https://code.visualstudio.com/docs/languages/overview#_add-a-file-extension-to-a-language).
+
+</details>
+
 ### How can I use FTP as my back-end service for Zowe Explorer?
 
 <details className="zowe-faq">
