@@ -6,7 +6,6 @@ Review this section to familiarize yourself with Zowe Explorer and make the best
 
 ### Operating systems
 
-
 - MacOS 10.15 (Catalina), 11 (Big Sur), 12 (Monterey)
 - Unix-like:
    - [CentOS](https://www.centos.org/) 8+
@@ -31,11 +30,11 @@ Make the best use of Zowe Explorer with the following tips:
 You can store any data sets, USS files, or jobs permanently in the **Favorites** tab. Right-click on a data set, USS file, or job and click **Add Favorite**.
 
 ### Identify syntax errors with a syntax highlighter
-Zowe Explorer supports a syntax hightlighter for data sets. To enhance the experience of using the extension, you can download an extension that highlights syntax.
+Zowe Explorer supports a syntax highlighter for data sets. To enhance the experience of using the extension, you can download an extension that highlights syntax.
 
-### Change the detected language of a file or data set
+### Configure the detected language of a file or data set
 
-If the language for a file or data set opened in Zowe Explorer is not detected correctly, configure Visual Studio Code to use a specific language for a particular file extension. To set file associations, see [Add a file extension to a language](https://code.visualstudio.com/docs/languages/overview#_add-a-file-extension-to-a-language).
+You can configure Visual Studio Code to use a specific language for a particular file extension type. This prevents the language for a file or data set opened in Zowe Explorer to be detected incorrectly. To set file associations, see [Add a file extension to a language](https://code.visualstudio.com/docs/languages/overview#_add-a-file-extension-to-a-language).
 
 ### Edit a profile
 You can edit existing profiles listed in the **Side Bar** by clicking the profile's **Edit** icon (next to the **Search** icon). The feature lets you modify the information inside your profile.

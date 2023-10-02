@@ -429,7 +429,7 @@ Zowe Explorer V2 supports using Service Profiles, Base Profiles, and Team Profil
 
 <summary></summary>
 
-Yes, you can configure Visual Studio Code to use a specific language for a particular file extension. To set file associations, see [Add a file extension to a language](https://code.visualstudio.com/docs/languages/overview#_add-a-file-extension-to-a-language).
+Yes, you can configure Visual Studio Code to use a specific language for a particular file extension or data set qualifier. To set file associations, see [Add a file extension to a language](https://code.visualstudio.com/docs/languages/overview#_add-a-file-extension-to-a-language).
 
 </details>
 
