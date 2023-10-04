@@ -16,10 +16,10 @@
     "docs:pdf:user": "npx docs-to-pdf --initialDocURLs=\"http://localhost:3000/stable/getting-started/overview,http://localhost:3000/stable/user-guide/installandconfig,http://localhost:3000/stable/troubleshoot/troubleshooting\" --contentSelector=\"article\" --paginationSelector=\".pagination-nav__link--next\" --cssStyle=\":root{--ifm-font-size-base: 60%;}\" --excludeSelectors=\".announcementBar_UUUQ,nav.navbar,.docSidebarContainer_3pwe,.docMainContainer_2pgU .col.col--3,footer.footer,.docItemContainer_2szM > .margin-vert--xl > .row > .col:first-child,.pagination-nav,.docsRating,.navbar__inner,.thin-scrollbar\" --coverImage=\"http://localhost:3000/img/zowe-icon.png\" --coverTitle=\"Zowe Documentation\" --outputPDFFilename=\"static/zowe-docs-user.pdf\" --protocolTimeout=1800000"
   },
   "dependencies": {
-    "@docusaurus/core": "^2.4.1",
-    "@docusaurus/plugin-client-redirects": "^2.4.1",
-    "@docusaurus/plugin-pwa": "^2.4.1",
-    "@docusaurus/preset-classic": "^2.4.1",
+    "@docusaurus/core": "^2.4.3",
+    "@docusaurus/plugin-client-redirects": "^2.4.3",
+    "@docusaurus/plugin-pwa": "^2.4.3",
+    "@docusaurus/preset-classic": "^2.4.3",
     "@mdx-js/react": "1.6.22",
     "clsx": "1.1.1",
     "react": "17.0.2",
@@ -40,8 +40,8 @@
     ]
   },
   "devDependencies": {
-    "esbuild-loader": "^3.0.1",
     "docs-to-pdf": "0.6.2",
+    "esbuild-loader": "^3.0.1",
     "netlify-plugin-cache": "^1.0.3"
   }
 }
