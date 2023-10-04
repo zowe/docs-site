@@ -12,6 +12,10 @@ Contact your system administrator to determine if your FTP server is configured 
 
 To use the FTP Extension with Zowe Explorer:
 
+:::note
+When using Zowe Explorer,  use only ASCII characters. FTP does not support non-ASCII characters, such as glyphs or mathematical symbols.
+:::
+
 1. Select the **Zowe Explorer** icon on the **Activity Bar** in VS Code.
 
 2. Hover over the **DATA SETS**, **UNIX SYSTEM SERVICES (USS)**, or **JOBS** bar and select the corresponding **+** icon to view the Zowe CLI FTP profiles in the **picker** dropdown list.

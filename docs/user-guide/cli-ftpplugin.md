@@ -13,6 +13,10 @@ As a z/OS user, you can use the plug-in to perform the following tasks:
 
 ## Commands
 
+:::note
+When issuing commands, use only ASCII characters. FTP does not support non-ASCII characters, such as glyphs or mathematical symbols.
+:::
+
 For detailed documentation on commands, actions, and options available in this plug-in, see our Web Help. It is available for download in three formats: a PDF document, an interactive online version, and a ZIP file containing the HTML for the online version.
 
 - <a href="/stable/web_help/index.html" target="_blank">Browse Online</a>
