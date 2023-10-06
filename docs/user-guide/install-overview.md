@@ -1,4 +1,4 @@
-# Installation overview
+# Installing Zowe
 
 The installation of Zowe&trade; consists of the following processes:
 
