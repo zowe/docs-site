@@ -27,7 +27,7 @@ Be sure your z/OS system meets the following prerequisites.
 
 ### z/OS
 
-- z/OS version is in active support, such as Version 2.4, 2.5
+- z/OS version is in active support, such as Version 2.4 and 2.5
 
    **Note:** z/OS V2.3 reached end of support on 30 September 2022. For more information, see the z/OS v2.3 lifecycle details [https://www.ibm.com/support/pages/zos23x-withdrawal-notification](https://www.ibm.com/support/pages/zos23x-withdrawal-notification)
 
