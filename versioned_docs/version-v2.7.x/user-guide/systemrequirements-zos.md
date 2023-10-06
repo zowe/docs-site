@@ -28,7 +28,7 @@ Be sure your z/OS system meets the following prerequisites:
 
 ### z/OS
 
-- z/OS version is in active support, such as Version 2.4, 2.5, and 3.1
+- z/OS version is in active support, such as Version 2.4 and 2.5.
 
    **Note:** Zowe Version 2.11 or higher is required when using z/OS Version 3.1
 
