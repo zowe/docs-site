@@ -173,7 +173,7 @@ Requirements:
 
 ## Memory requirements
 
-Zowe's components have following memory requiremets:
+Zowe's components have following memory requirements:
 
 Component name | Category | Average memory usage
 ---|---|---
