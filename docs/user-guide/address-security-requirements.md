@@ -1,4 +1,4 @@
-# Address security requirements
+# Addressing security requirements
 
 During configuration of server-side components, it is necessary to configure various system security settings. Your
 organization may require your security administrator to complete steps to configure Zowe security. As a system

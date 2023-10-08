@@ -1,4 +1,4 @@
-# Address z/OSMF Requirements
+# Addressing z/OSMF Requirements
 
 Before you install Zowe using IBM z/OSMF, address the following installation and security requirements. Your systems programmers and security administrators can complete these tasks in parallel.  
 

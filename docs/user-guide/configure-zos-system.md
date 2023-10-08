@@ -1,4 +1,4 @@
-# Address z/OS requirements for Zowe
+# Addressing z/OS requirements for Zowe
 
 As a security administrator it is necessary to  configure the z/OS system for Zowe. Review the following article to learn about z/OS prerequisites, and z/OS configuration requirements for specific settings.
 

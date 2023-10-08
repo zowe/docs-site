@@ -1,4 +1,4 @@
-# Address Node.js requirements
+# Addressing Node.js requirements
 
 **Note: This section is not required if using Docker or only using the CLI.**
 

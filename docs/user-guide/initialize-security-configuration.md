@@ -1,4 +1,4 @@
-# Initialize Zowe security configurations
+# Initializing Zowe security configurations
 
 This security configuration step is required for first time setup of Zowe. If Zowe has already been launched on a z/OS system from a previous release of Zowe v2, you can skip this step unless told otherwise in the release documentation.
 

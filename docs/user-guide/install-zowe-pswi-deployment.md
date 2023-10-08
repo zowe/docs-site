@@ -1,4 +1,4 @@
-# Install Product Software Using z/OSMF Deployments
+# Installing Product Software Using z/OSMF Deployments
 
 As a systems programmer, your responsibilities include installing product software in your z/OS environment. After the portable software instance or software instance is registered in z/OSMF, you can use z/OSMF Deployments to install the product software and create the product data sets (global, CSI, target libraries, and distribution libraries) for the new software instance. The deployment jobs create a copy of the source product data sets to create the product target runtime environment. Creating a copy of the SMP/E target data sets keeps the SMP/E environment clean and it also isolates the product runtime environment for maintenance activities. You can also perform z/OSMF workflows to customize the SMP/E data sets, mount UNIX System Services (USS) files if necessary, and configure the new software instance on the target system.
 
