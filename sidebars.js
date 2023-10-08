@@ -113,8 +113,15 @@ module.exports = {
             "user-guide/install-zowe-smpe-zosmf-workflow",
             ]
           },
-        "user-guide/install-zowe-smpe",
-        "user-guide/install-zowe-zos-convenience-build",
+          {
+            type: "category",
+            label: "Installing Zowe via SMP/E",
+            link: {type:"doc", id: "user-guide/install-zowe-smpe-overview"},
+            items: [
+              "user-guide/install-zowe-smpe",
+              "user-guide/install-zowe-zos-convenience-build",
+            ]
+          },
         {
           type: "category",
           label: "Install Zowe via a containerization build (PAX file)",
