@@ -118,6 +118,11 @@ module.exports = {
                 "user-guide/install-zowe-pswi-acquire",
                 "user-guide/install-zowe-pswi-deployment",
               ]
+              label: "Planning",
+              link: {type:"doc", id:"user-guide/installandconfig"},
+              items: [
+                "user-guide/configure-uss",
+              ],
             },
             {
               type: "category",
