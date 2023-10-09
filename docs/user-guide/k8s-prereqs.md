@@ -1,4 +1,4 @@
-# Prerequisites
+# Prerequisites for Zowe server containers
 
 Before you install the Zowe server container, make sure that you have the required software and environments.
 
