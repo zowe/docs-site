@@ -1,4 +1,4 @@
-# FAQ: Zowe and components
+# Zowe FAQ
 
 Check out the following FAQs to learn more about the purpose and function of Zowe&trade;.
 
@@ -343,9 +343,9 @@ The Zowe Explorer VSCode extension provides developers new to the mainframe with
 First of all, make sure you fulfill the following Zowe Explorer software requirements:
 
 - Get access to z/OSMF.
-- Install [Node.js](https://nodejs.org/en/download/) v8.0 or later.
 - Install [VSCode](https://code.visualstudio.com/).
 - Configure TSO/E address space services, z/OS data set, file REST interface, and z/OS jobs REST interface. For more information, see [z/OS Requirements](https://docs.zowe.org/stable/user-guide/systemrequirements-zosmf#z-os-requirements).
+- For development, install [Node.js](https://nodejs.org/en/download/) v14.0 or later.
 
 Once the software requirements are fulfilled, create a Zowe Explorer profile.
 
@@ -389,7 +389,27 @@ You can use Zowe Explorer either in [VSCode](https://marketplace.visualstudio.co
 
 The Secure Credential Store Plug-in is no longer required for Zowe Explorer.
 
-Secure credential storage functionality is now contained in the Zowe CLI core application.
+Secure credential storage functionality is now contained in the Zowe CLI core application, which stores credentials securely by default.
+
+</details>
+
+### What if Secure Credential Storage does not work in my environment?
+
+<details className="zowe-faq">
+
+<summary></summary>
+
+When an environment does not support Secure Credential Storage, it is possible to disable it. See [Disabling Secure Credential Storage of credentials](../user-guide/ze-usage.md#disabling-secure-credential-storage-of-credentials) for more information.
+
+</details>
+
+### What if I do not want Zowe Explorer to store my credentials?
+
+<details className="zowe-faq">
+
+<summary></summary>
+
+Although not recommended in all cases, it is possible to disable Zowe Explorer's credential management functionality. See [Preventing Zowe Explorer from storing credentials](../user-guide/ze-usage.md#preventing-zowe-explorer-from-storing-credentials) for more information.
 
 </details>
 
@@ -399,7 +419,17 @@ Secure credential storage functionality is now contained in the Zowe CLI core ap
 
 <summary></summary>
 
-Zowe Explorer V2 supports using Service Profiles, Base Profiles, and Team Profiles. For more information, see [Using V1 profiles](../user-guide/cli-using-using-profiles-v1.md) and [Team configurations](../user-guide/cli-using-using-team-profiles.md) in the Using Zowe CLI section. 
+Zowe Explorer V2 supports using Service Profiles, Base Profiles, and Team Profiles. For more information, see [Using V1 profiles](../user-guide/cli-using-using-profiles-v1.md) and [Team configurations](../user-guide/cli-using-using-team-profiles.md) in the Using Zowe CLI section.
+
+</details>
+
+### Is it possible to change the detected language of a file or data set opened in Zowe Explorer?
+
+<details className="zowe-faq">
+
+<summary></summary>
+
+Yes, you can configure Visual Studio Code to use a specific language for a particular file extension or data set qualifier. To set file associations, see [Add a file extension to a language](https://code.visualstudio.com/docs/languages/overview#_add-a-file-extension-to-a-language).
 
 </details>
 
@@ -409,7 +439,7 @@ Zowe Explorer V2 supports using Service Profiles, Base Profiles, and Team Profil
 
 <summary></summary>
 
-See the [Zowe FTP extension README](https://github.com/zowe/zowe-explorer-ftp-extension/#readme) in GitHub for information about how to build, install, and use FTP as your back-end service for working with UNIX files.
+See the [Zowe FTP extension README](https://github.com/zowe/zowe-explorer-ftp-extension/#readme) in GitHub for information about how to install FTP from the Visual Studio Code Marketplace and use it as your back-end service for working with UNIX files.
 
 </details>
 

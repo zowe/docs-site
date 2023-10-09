@@ -1,8 +1,9 @@
-# Installing Zowe Explorer CICS Extension
+# Zowe Explorer CICS Extension
+## Installing
 
 You can install or update the extension from Visual Studio Code Extensions or from a VSIX file.
 
-## Installing from Visual Studio Code Extensions
+### Installing from Visual Studio Code Extensions
 
 1. Navigate to **Extensions** tab of your VS Code application.
 
@@ -12,7 +13,7 @@ You can install or update the extension from Visual Studio Code Extensions or fr
 
    If Zowe Explorer is not installed, this automatically installs it for you as part of the installation.
 
-## Installing from a VSIX file
+### Installing from a VSIX file
 
 Before you install Zowe Explorer CICS Extension from a VSIX file, ensure that Zowe Explorer is installed. Zowe Explorer is a required dependency. For more information, see [Installing Zowe Explorer](https://docs.zowe.org/stable/user-guide/ze-install#installing).
 

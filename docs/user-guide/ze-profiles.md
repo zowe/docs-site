@@ -2,8 +2,9 @@
 
 After you install Zowe Explorer, you need to have a Zowe Explorer profile to use all functions of the extension.
 
-**Note:** You can continue using Zowe V1 profiles with Zowe Explorer V2. 
-
+:::info
+You can continue using Zowe V1 profiles with Zowe Explorer V2.
+:::
 ## Configuring team profiles
 
 Zowe CLI team profiles simplify profile management by letting you to edit, store, and share mainframe configuration details in one location. You can use a text editor or an IDE to populate configuration files with connection details for your mainframe services. By default, your team configuration file is located in the `.zowe home` folder, whereas the project-level configuration file is located in the main directory of your project. You can create profiles that you use globally, given that the names of the globally-used profiles are different from your other profile names.
