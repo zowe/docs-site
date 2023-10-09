@@ -149,7 +149,7 @@ You completed the procedure to generate a PKCS12 keystore.
 
 ### Next steps after PKCS12 setup
 
-When using a Zowe-generated certificate, you will be challenged by your browser when logging in to Zowe to accept Zowe's untrusted certificate authority. Depending on the browser you are using, there are different ways to proceed. See next steps about how to [import the PKCS12 certificate to your browser](../import-certificates#importing-an-existing-pkcs12-certificate).
+When using a Zowe-generated certificate, you will be challenged by your browser when logging in to Zowe to accept Zowe's untrusted certificate authority. Depending on the browser you are using, there are different ways to proceed. See next steps about how to [import the PKCS12 certificate to your browser](./import-certificates.md).
 
 ## Creating a JCERACFKS certificate
 
@@ -271,4 +271,4 @@ zowe:
 You completed the procedure to generate a JCERACFKS certificate.
 ### Next steps after JCERACFKS setup
 
-For more information about how to use your JCERACFKS certificate, see [Use JCERACFKS certificates](../use-certificates#use-jceracfks-certificates).
+For more information about how to use your JCERACFKS certificate, see [Use JCERACFKS certificates](./use-certificates.md).
