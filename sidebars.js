@@ -83,10 +83,10 @@ module.exports = {
     "user-guide/install-overview",
     {
       type: "category",
-      label: "Install Zowe server-side components",
-      link: {type:"doc", id:"user-guide/install-zos"},
-      collapsed: false,
+      label: "Installing Zowe server-side components",
+            collapsed: false,
       items: [
+        "user-guide/install-zos",
         {
           type: "category",
           label: "Preparation for installation",
@@ -104,102 +104,29 @@ module.exports = {
           },
         {
           type: "category",
-          label: "Install Zowe via z/OSMF from PSWI and SMP/E workflow",
+          label: "Installing Zowe via z/OSMF from PSWI and SMP/E workflow",
           link: {type:"doc", id: "user-guide/zosmf-install"},
           items: [
             "user-guide/systemrequirements-zosmf",
             "user-guide/systemrequirements-zosmf-lite",
             {
               type: "category",
-              label: "Install Zowe via z/OSMF from PSWI",
+              label: "Installing Zowe via z/OSMF from PSWI",
               items: [
                 "user-guide/install-zowe-pswi",
                 "user-guide/install-zowe-pswi-address-requirements",
                 "user-guide/install-zowe-pswi-acquire",
                 "user-guide/install-zowe-pswi-deployment",
-              ]
-              label: "Planning",
-              link: {type:"doc", id:"user-guide/installandconfig"},
-              items: [
-                "user-guide/configure-uss",
               ],
+              },
+              "user-guide/install-zowe-smpe-zosmf-workflow",
+            ],
             },
-            {
-              type: "category",
-              label: "System requirements",
-              link: {type:"doc", id:"user-guide/systemrequirements-zos"},
-              items: [
-                "user-guide/install-nodejs-zos",
-                "user-guide/systemrequirements-zosmf",
-                "user-guide/systemrequirements-zosmf-lite",
-              ],
-            },
-                {
-                  type: "category",
-                  label: "Upgrading server-side components",
-                  items: [
-                    "user-guide/api-mediation/upgrade-zowe-no-downtime"
-                  ],
-                },
-              ],
-            },
-            {
-              type: "category",
-              label: "Configuring",
-              items: [
-                "user-guide/initialize-zos-system",
-                "user-guide/initialize-mvs-datasets",
-                "user-guide/initialize-security-configuration",
-                "user-guide/configure-zos-system",
-                "user-guide/grant-user-permission-zosmf",
-                "user-guide/apf-authorize-load-library",
-                {
-                  type: "category",
-                  label: "Configuring certificates",
-                  link: {type:"doc", id:"user-guide/configure-certificates"},
-                  items: [
-                    "user-guide/certificates-configuration-questionnaire",
-                    "user-guide/certificate-configuration-scenarios",
-                    "user-guide/import-certificates",
-                    "user-guide/generate-certificates",
-                    "user-guide/use-certificates",
-                    "user-guide/certificates-setup",
-                  ],
-                },
-                "user-guide/initialize-vsam-dataset",
-                "user-guide/install-stc-members",
-                "user-guide/configure-xmem-server",
-                "user-guide/configure-auxiliary-address-space",
-                "user-guide/configure-zowe-zosmf-workflow",
-                "user-guide/configmgr-using",
-                "user-guide/install-configure-zos-extensions"
-              ],
-            },
-            {
-              type: "category",
-              label: "High Availability",
-              link: {type:"doc", id:"user-guide/zowe-ha-overview"},
-              items: [
-                "user-guide/configure-sysplex",
-                "user-guide/systemrequirements-zosmf-ha",
-                "user-guide/configure-caching-service-ha",
-              ],
-            },
-            "user-guide/install-zowe-smpe-zosmf-workflow",
-            ]
-          },
-          {
-            type: "category",
-            label: "Installing Zowe via SMP/E",
-            link: {type:"doc", id: "user-guide/install-zowe-smpe-overview"},
-            items: [
               "user-guide/install-zowe-smpe",
               "user-guide/install-zowe-zos-convenience-build",
-            ]
-          },
-        {
+                    {
           type: "category",
-          label: "Install Zowe via a containerization build (PAX file)",
+          label: "Installing Zowe via a containerization build (PAX file)",
           items: [
             "user-guide/k8s-introduction",
             "user-guide/k8s-prereqs",
@@ -222,8 +149,9 @@ module.exports = {
         {
           type: "category",
           label: "Configuring certificates",
+          link: {type:"doc", id:"user-guide/configure-certificates"},
           items: [
-            "user-guide/configure-certificates",
+            "user-guide/certificates-configuration-questionnaire",
             "user-guide/certificate-configuration-scenarios",
             "user-guide/import-certificates",
             "user-guide/generate-certificates",
@@ -243,14 +171,14 @@ module.exports = {
     {
       type: "category",
       label: "High Availability",
+      link: {type:"doc", id:"user-guide/zowe-ha-overview"},
       items: [
-        "user-guide/zowe-ha-overview",
         "user-guide/configure-sysplex",
         "user-guide/systemrequirements-zosmf-ha",
         "user-guide/configure-caching-service-ha",
       ],
       },
-        "user-guide/start-zowe-zos",            
+        "user-guide/start-zowe-zos",       
       ],
       },            
     {
@@ -264,6 +192,7 @@ module.exports = {
           items: [
             "user-guide/configure-data-sets-jobs-api",
             "user-guide/api-mediation/api-catalog-configuration",
+            "user-guide/api-mediation/api-mediation-personal-access-token",
             "user-guide/api-mediation/api-gateway-configuration",
             "user-guide/api-mediation/discovery-service-configuration",
             "user-guide/api-mediation/api-mediation-internal-configuration",
