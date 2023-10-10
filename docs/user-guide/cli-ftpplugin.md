@@ -13,8 +13,10 @@ As a z/OS user, you can use the plug-in to perform the following tasks:
 
 ## Commands
 
-:::caution
+:::
+
 When transferring files, data sets, or data set members, use only ASCII characters. If a file contains non-ASCII characters (such as glyphs or mathematical symbols), a translation error can happen when the file is downloaded from, or uploaded to, the mainframe. This error can result in data loss.
+
 :::
 
 For detailed documentation on commands, actions, and options available in this plug-in, see the Web Help. It is available for download in the following formats:
