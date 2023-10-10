@@ -706,6 +706,7 @@ module.exports = {
             "troubleshoot/cli/use-individual-troubleshoot-commands",
             "troubleshoot/cli/cli-use-curl-to-troubleshoot",
             "troubleshoot/cli/zosmf-cli",
+            "troubleshoot/cli/troubleshoot-cli-credentials",
             "troubleshoot/cli/known-cli",
             "troubleshoot/cli/cli-issue",
             "troubleshoot/cli/troubleshoot-cli-plugins",
