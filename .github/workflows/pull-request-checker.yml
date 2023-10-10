@@ -1,0 +1,135 @@
+name: PR Checker
+
+on:
+  pull_request:
+    branches:
+      - docs-staging
+      - master
+    types: [opened, reopened, labeled]
+
+jobs:
+
+  initial-comment:
+    name: PR Instructions
+    runs-on: ubuntu-latest
+    # if: github.event.action == 'opened'
+
+    steps:
+      - name: Add initial comment w/ instructions
+        id: initial_comment_writer
+        if: contains(fromJson('["anaxceron", "jandacek", "nannanli", "samanthasusu", "nellietan", "lparadkar-rocket"]'), github.event.pull_request.user.login)
+        uses: marocchino/sticky-pull-request-comment@v2
+        with:
+          header: Initial comment writer
+          message: |
+            :smiley_cat: Thank you for creating this PR! To publish your content to [Zowe Docs](https://docs.zowe.org/), follow these steps.
+                        
+            - [ ] Add the label `needs review by sme` if an SME needs to check your content.
+            - [ ] Identify your content topic with a label. (Examples: `area: apiml`, `area: cli`, `area: install and config`, etc.)
+            - [ ] Specify the Zowe release for your content. Use either label `current release` or `next release`.
+            - [ ] Link any [Doc Issues](https://github.com/zowe/docs-site/issues) related to this PR.
+            - [ ] Fix broken links found in your content areas.
+            - [ ] Notify the SME to review this PR (if applicable).
+            - [ ] Merge to the `master` branch if your content documents the current release or a previous release. Merge to `docs-staging` if your content is for the next release.
+
+      - name: Add initial comment w/ instructions
+        if: steps.initial_comment_writer.outcome == 'skipped'
+        uses: marocchino/sticky-pull-request-comment@v2
+        with:
+          header: Initial comment non-writer
+          message: |
+            :smiley_cat: Thank you for creating this PR! To publish your content to [Zowe Docs](https://docs.zowe.org/), follow these required steps.
+
+            - [ ] Add the label `needs review by doc`.
+            - [ ] Identify your content topic with a label. (Examples: `area: apiml`, `area: cli`, `area: install and config`, etc.)
+            - [ ] Specify the Zowe release for your content. Use either label `current release` or `next release`.
+            - [ ] Select the `master` branch if your content documents the current release or a previous release. Select `docs-staging` if your content is for the next release.
+            - [ ] Notify the Doc Squad about this PR. If you don't know who should review your content, message the [#zowe-doc](https://openmainframeproject.slack.com/archives/CC961JYMQ) Slack channel. If you know which Doc Squad writer should approve your content, add that person as a reviewer.
+
+            **Need help?** Contact the Doc Squad in the [#zowe-doc](https://openmainframeproject.slack.com/archives/CC961JYMQ) Slack channel.      
+      - name: Checkout file
+        uses: Bhacaz/checkout-files@v2
+        with:
+          files: ".github/pull_request_template.md"  
+      - name: Description checker
+        uses: jadrol/pr-description-checker-action@v1.0.0
+        with:
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          template-path: "./.github/pull_request_template.md"  
+          comment: true
+          comment-empty-description: ":warning: Looks like something is wrong with the PR description. Remember to include a description and the file(s) included in this PR."
+          comment-template-not-filled: ":warning: Looks like you may have deleted the instructions in the PR description. This makes it hard for the bot to tell if you've written a valid description. Please leave in the instructions and add your information after the colons."
+      - name: Check PR
+        id: file_type_checker
+        uses: JJ/github-pr-contains-action@releases/v10
+        with:
+          github-token: ${{github.token}}
+          bodyContains: '\.md|\.jpg|\.gif|\.png'
+      - name: Missing File Name
+        if: failure() && steps.file_type_checker.outcome == 'failure'
+        uses: marocchino/sticky-pull-request-comment@v2
+        with:
+          header: File name is missing
+          message: |
+            :file_folder: The PR description is missing the file name(s) for the updated content. List all the files included in this PR so this information displays in our [Zowe Docs GitHub Slack channel](https://openmainframeproject.slack.com/archives/C05GH3LT59D).
+          
+  review-labels:
+    name: Check for missing review label
+    if: ${{ !contains(fromJson('["anaxceron", "jandacek", "nannanli", "samanthasusu", "nellietan", "lparadkar-rocket"]'), github.event.pull_request.user.login) }}
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Review Label Check
+        id: prefix_label_check
+        uses: docker://agilepathway/pull-request-label-checker:latest
+        with:
+          prefix_mode: true
+          any_of: "needs review by"
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Missing Review Label Comment PR
+        if: failure()
+        uses: marocchino/sticky-pull-request-comment@v2
+        with:
+          header: Review label missing
+          message: |
+            :mag: The **review** label is missing. Add a `needs review by` label so we can determine who needs to approve this PR.
+
+          
+  release-labels:
+    name: Check for missing release label
+    runs-on: ubuntu-latest
+
+    steps:
+      - id: prefix_label_check
+        uses: docker://agilepathway/pull-request-label-checker:latest
+        with:
+          prefix_mode: true
+          one_of: "release:"
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Missing Release Label Comment PR
+        if: failure()
+        uses: marocchino/sticky-pull-request-comment@v2
+        with:
+          header: Release label missing
+          message: |
+            :floppy_disk: The **release** label is missing. Add a `current release` or `next release` label so your content is published with the correct Zowe release.
+
+  area-labels:
+    name: Check for missing area label
+    runs-on: ubuntu-latest
+
+    steps:
+      - id: prefix_label_check
+        uses: docker://agilepathway/pull-request-label-checker:latest
+        with:
+          prefix_mode: true
+          any_of: "area:"
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Missing Area Label Comment PR
+        if: failure()
+        uses: marocchino/sticky-pull-request-comment@v2
+        with:
+          header: Area label missing
+          message: |
+            :pushpin: The **subject area** label is missing. Add an `area:` label so we know what your content is about.
+    
