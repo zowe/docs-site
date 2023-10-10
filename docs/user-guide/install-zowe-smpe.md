@@ -1,31 +1,4 @@
-# Installing Zowe via SMP/E
-
-**Contents**
-- [Installation instructions](#installation-instructions)
-	- [SMP/E considerations for installing Zowe](#smpe-considerations-for-installing-zowe)
-	- [SMP/E options subentry values](#smpe-options-subentry-values)
-	- [Overview of the installation steps](#overview-of-the-installation-steps)
-	- [Download the Zowe SMP/E package](#download-the-zowe-smpe-package)
-	- [Allocate file system to hold the download package](#allocate-file-system-to-hold-the-download-package)
-	- [Upload the download package to the host](#upload-the-download-package-to-the-host)
-	- [Extract and expand the compressed SMPMCS and RELFILEs](#extract-and-expand-the-compressed-smpmcs-and-relfiles)
-		- [GIMUNZIP](#gimunzip)
-	- [Sample installation jobs](#sample-installation-jobs)
-	- [Create SMP/E environment (optional)](#create-smpe-environment-optional)
-	- [Perform SMP/E RECEIVE](#perform-smp-e-receive)
-	- [Allocate SMP/E Target and Distributions Libraries](#allocate-smpe-target-and-distributions-libraries)
-	- [Allocate, create and mount ZSF Files (Optional)](#allocate-create-and-mount-zsf-files-optional)
-	- [Allocate z/OS UNIX Paths](#allocate-zos-unix-paths)
-	- [Create DDDEF Entries](#create-dddef-entries)
-	- [Perform SMP/E APPLY](#perform-smpe-apply)
-	- [Perform SMP/E ACCEPT](#perform-smpe-accept)
-	- [Run REPORT CROSSZONE](#run-report-crosszone)
-	- [Cleaning up obsolete data sets, paths, and DDDEFs](#cleaning-up-obsolete-data-sets-paths-and-dddefs)
-- [Activating Zowe](#activating-zowe)
-	- [File system execution](#file-system-execution)
-- [Zowe customization](#zowe-customization)
-
-## Installation instructions
+# Installation instructions
 
 This section describes the installation method and the step-by-step procedures to install and activate the functions of Zowe.
 

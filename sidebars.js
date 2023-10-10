@@ -84,7 +84,7 @@ module.exports = {
     {
       type: "category",
       label: "Installing Zowe server-side components",
-            collapsed: false,
+      collapsed: false,
       items: [
         "user-guide/install-zos",
         {
@@ -100,6 +100,7 @@ module.exports = {
             "user-guide/install-nodejs-zos",
             "user-guide/address-storage-requirements",
             "user-guide/address-network-requirements",
+            "user-guide/address-browser-requirements"
           ]
           },
         {
@@ -122,9 +123,16 @@ module.exports = {
               "user-guide/install-zowe-smpe-zosmf-workflow",
             ],
             },
-              "user-guide/install-zowe-smpe",
-              "user-guide/install-zowe-zos-convenience-build",
-                    {
+            {
+              type: "category",
+              label: "Installing Zowe via SMP/E",
+              items: [
+                "user-guide/install-zowe-smpe-overview",
+                "user-guide/install-zowe-smpe",
+              ]
+            },
+            "user-guide/install-zowe-zos-convenience-build",
+          {
           type: "category",
           label: "Installing Zowe via a containerization build (PAX file)",
           items: [
