@@ -421,3 +421,25 @@ Follow this procedure to configure a unique cookie name for the instances:
     If this parameter is set to `true`, and the cookieIdentifier is `1`, the name of the cookie transforms to `apimlAuthenticationToken.1`.  
     If this property is not set to `true`, the cookie name remains `apimlAuthenticationToken` by default.
 3. Restart Zowe.
+
+## Register with additional Discovery Services
+In a multi sysplex environment, the API Gateway may need to register also with a Central Discovery Service which gathers information about all installed API Gateways
+in isolated sysplex environments. The data from the Central Discovery Service can then be used by the Central Gateway for routing to individual API Gateways.
+Follow these steps to register with additional Discovery Services:
+1. Open the `zowe.yaml` configuration file.
+2. Add the property `components.gateway.apiml.service.additionalRegistration` and set the value to a List of Discovery service clusters to additional Disovery Services.
+   **Example:**
+   ```
+   components.gateway.apiml.service.additionalRegistration: 
+      <!--  central APIML -->
+       - discoveryServiceUrls: https://localhost:10021/eureka/,https://localhost:10031/eureka/
+      routes:
+               gatewayUrl: /
+               serviceUrl: /
+      <!-- developmnent apiml-->
+       - discoveryServiceUrls: https://localhost:10021/eureka/,https://localhost:10031/eureka/
+      routes:
+              gatewayUrl: /
+              serviceUrl: /
+    ```
+3. Restart Zowe.
