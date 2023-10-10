@@ -5,7 +5,7 @@ You can extend Zowe&trade; CLI by developing plug-ins and contributing code to t
 ## How to contribute
 You can contribute to Zowe CLI in the following ways:
 - Add new commands, options, or other improvements to the base CLI.
-- Develop a plug-in that users can install to Zowe CLI.
+- Develop a Zowe CLI plug-in.
 
 You might want to contribute to Zowe CLI to accomplish the following objectives:
 - Provide new scriptable functionality for yourself, your organization, or to a broader community.
