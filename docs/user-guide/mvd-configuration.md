@@ -674,10 +674,6 @@ When you **disable** cluster mode, you will lose the following benefits:
 
 2. **Reduced downtime during unexpected exceptions:** The low-downtime characteristic, where only one request is interrupted compared to around 15 seconds of downtime, is compromised.
 
-However, this trade-off comes with a specific benefit:
-
-- **Handling Network Interface Failures:** It addresses a limitation in Node.js where the system cannot effectively manage a network interface going offline. This limitation can result in an endless socket read loop until the process is manually terminated.
-
 ### To turn the cluster mode on
 
 - In Zowe V1, do NOT include the `ZLUX_NO_CLUSTER` environment variable in the `instance.env` configuration.
