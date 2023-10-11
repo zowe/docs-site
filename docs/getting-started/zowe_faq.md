@@ -1,4 +1,4 @@
-# FAQ: Zowe and components
+# Zowe FAQ
 
 Check out the following FAQs to learn more about the purpose and function of Zowe&trade;.
 
@@ -420,6 +420,16 @@ Although not recommended in all cases, it is possible to disable Zowe Explorer's
 <summary></summary>
 
 Zowe Explorer V2 supports using Service Profiles, Base Profiles, and Team Profiles. For more information, see [Using V1 profiles](../user-guide/cli-using-using-profiles-v1.md) and [Team configurations](../user-guide/cli-using-using-team-profiles.md) in the Using Zowe CLI section.
+
+</details>
+
+### Is it possible to change the detected language of a file or data set opened in Zowe Explorer?
+
+<details className="zowe-faq">
+
+<summary></summary>
+
+Yes, you can configure Visual Studio Code to use a specific language for a particular file extension or data set qualifier. To set file associations, see [Add a file extension to a language](https://code.visualstudio.com/docs/languages/overview#_add-a-file-extension-to-a-language).
 
 </details>
 

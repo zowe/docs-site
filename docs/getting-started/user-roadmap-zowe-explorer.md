@@ -1,12 +1,15 @@
-# Information Roadmap for Zowe Explorer
+# Zowe Explorer
 
-This roadmap outlines the information resources that are applicable to the users who are interested in Zowe Explorer. These resources provide information about various subject areas, such as learning basic skills, installation, developing, and troubleshooting for Zowe Explorer.
+The resources here provide information about various Zowe Explorer subject areas, such as learning basic skills, installation, developing, and troubleshooting.
 
-The following definition of skill levels about Zowe Explorer helps you find the most relevant resources:
+:::tip
+
+To identify the resources most relevant for you, use the following definitions of Zowe Explorer skill levels.
 
 * Beginner: You're starting out and want to learn the fundamentals.
 * Intermediate: You have some experience but want to learn more in-depth skills.
 * Advanced: You have lots of experience and are looking to learn about specialized topics.
+:::
 
 ## Fundamentals
 
