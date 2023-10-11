@@ -10,6 +10,12 @@ Contact your system administrator to determine if your FTP server is configured 
 
 ## Using
 
+:::caution
+
+When transferring files, data sets, or data set members, use only ASCII characters. If a file contains non-ASCII characters (such as glyphs or mathematical symbols), a translation error can happen when the file is downloaded from, or uploaded to, the mainframe. This error can result in data loss.
+
+:::
+
 To use the FTP Extension with Zowe Explorer:
 
 1. Select the **Zowe Explorer** icon on the **Activity Bar** in VS Code.

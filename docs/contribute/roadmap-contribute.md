@@ -1,4 +1,4 @@
-# Contribute to Zowe
+# Contributing to Zowe
 
 You are welcome to contribute to Zowe in many forms and help make this project better! We want to make it as easy as possible for you to become a Zowe contributor. This topic outlines the different ways that you can get involved and provides some of the resources that are available to help you get started. All feedback is welcome. 
 
