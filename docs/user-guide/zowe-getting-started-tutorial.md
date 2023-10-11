@@ -1,6 +1,6 @@
-# Getting started
+# Using Zowe
 
-Learn how to start exploring the Zowe components, applications and plug-ins.
+Learn how to start using Zowe components, applications, and plug-ins.
 
 ## Zowe server-side components
 

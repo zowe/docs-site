@@ -1,4 +1,4 @@
-const LATEST_VERSION = "v2.10.x";
+const LATEST_VERSION = "v2.11.x";
 const versionsArray = require("./versions.json");
 
 module.exports = {
@@ -24,7 +24,7 @@ module.exports = {
     }),
   },
   themeConfig: {
-    docs: {
+      docs: {
       sidebar: {
         hideable: true
       }
@@ -42,13 +42,13 @@ module.exports = {
       items: [
         {
           type: "doc",
-          label: "Get Started",
+          label: "Overview",
           docId: "getting-started/overview",
           position: "left",
         },
         {
           type: "doc",
-          label: "Setup",
+          label: "Install",
           docId: "user-guide/install-overview",
           position: "left",
         },
