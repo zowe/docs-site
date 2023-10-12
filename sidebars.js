@@ -27,6 +27,7 @@ module.exports = {
         "getting-started/zowe-high-availability"
       ],
     },
+    "appendix/zowe-glossary", 
     {
       type: "category",
       label: "Zowe FAQ",
