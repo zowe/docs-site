@@ -77,5 +77,4 @@ In Stage 6, [monitor your containers](../user-guide/k8s-using#monitoring-zowe-co
 * You may encounter an issue that some plugins are not showing up in Zowe Desktop. You can try the **Refresh Applications** icon showing up in Desktop start menu.
 * You may encounter an issue that some services are not showing up in Zowe API Catalog. You can try the **Refresh Static APIs** button showing up in upper-right corner of API Catalog web page.
 * `useConfigmgr` is disabled within containers, therefore yaml schema validation is not yet supported.
-* Containerization 2.10.x release still pending due to an issue related to app-server resulting to can't access the desktop, please use the [2.9.x documentation](../../../versioned_docs/version-v2.9.x/user-guide/k8s-introduction.md) instead.
 

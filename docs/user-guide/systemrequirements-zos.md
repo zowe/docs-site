@@ -1,7 +1,7 @@
 ---
 keywords: [security permissions, system permissions, monacat]
 ---
-# System requirements 
+# Address z/OS requirements
 
 Before installing Zowe&trade; z/OS components, ensure that your z/OS environment meets the prerequisites. The prerequisites you need to install depend on what Zowe z/OS components you want to use and how you want to install and configure Zowe on z/OS. Assess your installation scenario and install the prerequisites that meet your needs. 
 
@@ -71,23 +71,6 @@ Be sure your z/OS system meets the following prerequisites:
 
 Zowe (server) containers are available for download as an alternative to running Zowe servers on z/OS through the Zowe convenience and SMP/E builds Check [Zowe Containers Prerequisites](./k8s-prereqs.md) page for more details.
 
-## Zowe Desktop requirements (client PC)
-
-The Zowe Desktop is powered by the Application Framework which has server prereqs depending on where it is installed
-
-- [Zowe Application Framework on z/OS requirements](#zowe-application-framework-on-zos-requirements)
-- [Application Framework on Docker prerequisites](#docker-requirements-host)
-
-The Zowe Desktop runs inside of a browser. No browser extensions or plugins are required.
-
-The Zowe Desktop supports Google Chrome, Mozilla Firefox, Apple Safari and Microsoft Edge releases that are at most 1 year old, except when the newest release is older. For Firefox, both the regular and Extended Support Release (ESR) versions are supported under this rule.
-
-If you do not see your browser listed here, please contact the Zowe community so that it can be validated and included.
-
-## Browser limitations in API Catalog
-
-It is recommended to use Google Chrome when you are trying to access API Catalog. Errors might occur if you access API Catalog with Firefox. 
-
 ## Feature requirements
 
 Zowe has several optional features that have additional prerequisites as follows.
@@ -117,15 +100,3 @@ Requirements:
 ### API Mediation Layer OIDC Authentication
 
 Zowe requires ACF2 APAR LU01316 to be applied when using the ACF2 security manager.
-
-## Memory requirements
-
-Zowe API ML components have following memory requirements:
-
-Component name | Memory usage
----|---
-Gateway service | 256MB
-Discovery service | 256MB
-API Catalog | 512MB
-Metrics service | 512MB
-Caching service | 512MB

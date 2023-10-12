@@ -1,5 +1,4 @@
 # Installation overview
-
 ## Introduction
 
 This program directory is intended for system programmers who are responsible for program installation and maintenance. It contains information about the material and procedures associated with the installation of Zowe Open Source Project (Base). This publication refers to Zowe Open Source Project (Base) as Zowe.
