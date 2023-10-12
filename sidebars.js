@@ -27,6 +27,7 @@ module.exports = {
         "getting-started/zowe-high-availability"
       ],
     },
+    "appendix/zowe-glossary", 
     {
       type: "category",
       label: "Zowe FAQ",
@@ -859,7 +860,7 @@ module.exports = {
       ]
     },
     "appendix/zowe-yaml-configuration",
-    "appendix/server-component-manifest",
+    "appendix/server-component-manifest",    
     "appendix/bill-of-materials",
     {
       type: "link",
