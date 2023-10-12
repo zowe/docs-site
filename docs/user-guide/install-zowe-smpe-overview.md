@@ -4,12 +4,16 @@
 This program directory is intended for system programmers who are responsible for program installation and maintenance. It contains information about the material and procedures associated with the installation of Zowe Open Source Project (Base). This publication refers to Zowe Open Source Project (Base) as Zowe.
 
 The Program Directory contains the following sections:
-
+  - **[End-to-end installation diagram](#end-to-end-installation-diagram)** shows the overall installation process.
   - **[Program Materials](#program-materials)** identifies the basic program materials and documentation for Zowe.
   - **[Program Support](#program-support)** describes the support available for Zowe.
   - **[Program and Service Level Information](#program-and-service-level-information)** lists the APARs (program level) and PTFs (service level) that have been incorporated into Zowe.
   - **[Installation Requirements and Considerations](#installation-requirements-and-considerations)** identifies the resources and considerations that are required for installing and using Zowe.
-  - **[Installation Instructions](#installation-instructions)** provides detailed installation instructions for Zowe. It also describes the procedures for activating the functions of Zowe, or refers to appropriate publications.  
+  - **[Installation Instructions](#installation-instructions)** provides detailed installation instructions for Zowe. It also describes the procedures for activating the functions of Zowe, or refers to appropriate publications.
+
+### End-to-end installation diagram
+
+![Install Zowe with SMPE](../images/install/SMPE-install.png)
 
 ### Zowe description
 

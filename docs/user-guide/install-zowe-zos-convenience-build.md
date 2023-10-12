@@ -10,6 +10,10 @@ The configuration data that is read by the `zwe` command are stored in a YAML co
 
 Complete the following steps to install the Zowe runtime. 
 
+## End-to-end installation diagram
+
+![Convenience build install diagram](../images/install/Convenience-build-install.png)
+
 ## Step 1: Obtain the convenience build
 
 To download the PAX file, open your web browser on the [Zowe Download](https://www.zowe.org/download.html) website, navigate to **Zowe V2 Preview** -> **Convenience build** section, and select the button to download the v2 convenience build.
