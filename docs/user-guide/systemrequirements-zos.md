@@ -8,6 +8,7 @@ Before installing Zowe&trade; z/OS components, ensure that your z/OS environment
 All Zowe server components can be installed on a z/OS environment, while some can alternatively be installed on Linux or zLinux via Docker. The components provide a number of services that are accessed through a web browser such as an API catalog and a web desktop.  
 
 - [System requirements](#system-requirements)
+  - [Supported Technologies for Version 2](#supported-technologies-for-version-2)
   - [z/OS system requirements](#zos-system-requirements)
     - [z/OS](#zos)
     - [Node.js](#nodejs)
@@ -26,6 +27,55 @@ All Zowe server components can be installed on a z/OS environment, while some ca
     - [Multi-Factor Authentication (MFA)](#multi-factor-authentication-mfa)
     - [Single Sign-On (SSO)](#single-sign-on-sso)
   - [Memory requirements](#memory-requirements)
+
+
+## Supported Technologies for Version 2
+
+Zowe can claim support only for versions and technologies that Zowe can actually test on the Open Infrastructure. There is linked question on whether and how can Vendors claim anything. 
+
+### Technological pre-requisites
+
+| Name of the technology  | Zowe | API Mediation Layer | CLI | Intellij Plugin | Node.js Client SDK | Zowe Application Framework | Zowe Explorer | Zowe System Services (ZSS) |
+|----------------------|------|---------------------|-----|-----------------|--------------------|----------------------------|---------------|----------------------------|
+| **zOS** | | | | | | | | |
+| 2.3 | | | | | | | | |
+| 2.4 | | | | | | | | |
+| 2.5 | | | | | | | | |
+| 3.1 | | | | | | | | |
+| **Java** | | | | | | | | |
+| 8 | | Supported | | | | | | |
+| 11 | | [Supported](https://github.com/zowe/api-layer/issues/2955) | | | | | | |
+| 17 | | [In Progress](https://github.com/zowe/api-layer/issues/3113) | | | | | | |
+| **Node.js** | | | | | | | | |
+| 16 | | | | | | | | |
+| 18 | | | | | | | | |
+| 20 | | | | | | | | |
+| **Python** | | | | | | | | |
+| 3.10 | | N/A | | | | | | |
+| 3.11 | | N/A | | | | | | |
+| **zOSMF** | | | | | | | | |
+| V2R3 | | | | | | | | |
+| V2R4 | | | | | | | | |
+| V2R5 | | | | | | | | |
+
+### Technological Features
+
+| Name of the technology  | Zowe | API Mediation Layer | CLI | Intellij Plugin | Node.js Client SDK | Zowe Application Framework | Zowe Explorer | Zowe System Services (ZSS) |
+|----------------------|------|---------------------|-----|-----------------|--------------------|----------------------------|---------------|----------------------------|
+| **TLS** | | | | | | | | |
+| 1.2 | | | | | | | | |
+| 1.3 | | | | | | | | |
+| **AT-TLS** | | | | | | | | |
+| Unversioned | | | | | | | | |
+| **IP** | | | | | | | | |
+| V4 | | | | | | | | |
+| V6 | | | | | | | | |
+| **MFA** | | | | | | | | |
+| CA AAM | | | | | | | | |
+| IBM MFA | | | | | | | | |
+| Another provider | | | | | | | | |
+
+
 ## z/OS system requirements
 
 Be sure your z/OS system meets the following prerequisites:
