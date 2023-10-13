@@ -1,4 +1,4 @@
-# Acquire a z/OSMF Portable Software Instance
+# Acquiring a z/OSMF Portable Software Instance
 
 As a systems programmer, you can acquire an IBM z/OSMF portable package for your product and then add the portable software instance to z/OSMF. The product SMP/E environments are pre-built, backed up, and made available for download as a z/OSMF portable software instance. After you acquire the portable software instance, you can use z/OSMF Deployments to perform the installation and z/OSMF workflows to perform post-install configuration.
 

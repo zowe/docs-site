@@ -1,4 +1,4 @@
-# Install server-side components using containers
+# Installing server-side components using containers
 
 As a system programmer, you can download Zowe (server) containers as an alternative to running Zowe servers on z/OS through the Zowe convenience and SMP/E builds. Choose the appropriate installation type for your use case. Using containers has numerous advantaages:
 
@@ -29,7 +29,7 @@ Stage 1 ensures that your software and hardware are prepared for installation. F
   <figcaption></figcaption>
 </figure>
 
-In Stage 2, you download the Zowe containers. Two downloading methods are available.
+At Stage 2, you download the Zowe containers. Two downloading methods are available.
 * [Download Configuration samples](../user-guide/k8s-downloading#downloading-configuration-samples).(This is the recommended method) 
 * [Download container images](../user-guide/k8s-downloading#downloading-container-images).
 

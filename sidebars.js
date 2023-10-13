@@ -89,7 +89,7 @@ module.exports = {
         "user-guide/install-zos",
         {
           type: "category",
-          label: "Preparation for installation",
+          label: "Preparing for installation",
           link: {type: "doc", id: "user-guide/install-zos"},
           items: [
             "user-guide/zos-components-installation-checklist",
@@ -100,7 +100,8 @@ module.exports = {
             "user-guide/install-nodejs-zos",
             "user-guide/address-storage-requirements",
             "user-guide/address-network-requirements",
-            "user-guide/address-browser-requirements"
+            "user-guide/address-browser-requirements",
+            "user-guide/address-authentication-requirements"
           ]
           },
         {

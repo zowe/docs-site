@@ -1,7 +1,7 @@
 ---
 keywords: [security permissions, system permissions, monacat]
 ---
-# Address z/OS requirements
+# Addressing z/OS requirements
 
 Before installing Zowe&trade; z/OS components, ensure that your z/OS environment meets the prerequisites. The prerequisites you need to install depend on what Zowe z/OS components you want to use and how you want to install and configure Zowe on z/OS. Assess your installation scenario and install the prerequisites that meet your needs. 
 
@@ -14,12 +14,7 @@ All Zowe server components can be installed on a z/OS environment, while some ca
     - [Java](#java)
     - [z/OSMF (Optional)](#zosmf-optional)
   - [Zowe Containers requirements](#zowe-containers-requirements)
-  - [Zowe Desktop requirements (client PC)](#zowe-desktop-requirements-client-pc)
-  - [Browser limitations in API Catalog](#browser-limitations-in-api-catalog)
-  - [Feature requirements](#feature-requirements)
-    - [Multi-Factor Authentication (MFA)](#multi-factor-authentication-mfa)
-    - [Single Sign-On (SSO)](#single-sign-on-sso)
-  - [Memory requirements](#memory-requirements)
+
 ## z/OS system requirements
 
 Be sure your z/OS system meets the following prerequisites:
@@ -70,33 +65,3 @@ Be sure your z/OS system meets the following prerequisites:
 ## Zowe Containers requirements
 
 Zowe (server) containers are available for download as an alternative to running Zowe servers on z/OS through the Zowe convenience and SMP/E builds Check [Zowe Containers Prerequisites](./k8s-prereqs.md) page for more details.
-
-## Feature requirements
-
-Zowe has several optional features that have additional prerequisites as follows.
-
-### Multi-Factor Authentication (MFA)
-
-Multi-factor authentication is supported for several components, such as the Desktop and API Mediation Layer.
-Multi-factor authentication is provided by third-party products which Zowe is compatible with. The following are known to work:
-
-- [CA Advanced Authentication Mainframe](https://techdocs.broadcom.com/us/en/ca-mainframe-software/security/ca-advanced-authentication-mainframe/2-0.html)
-- [IBM Z Multi-Factor Authentication](https://www.ibm.com/products/ibm-multifactor-authentication-for-zos).
-
-**Note:** To support the multi-factor authentication, it is necessary to apply z/OSMF APAR  [PH39582](https://www.ibm.com/support/pages/apar/PH39582). 
-
-For information on using MFA in Zowe, see [Multi-Factor Authentication](mvd-configuration.md#multi-factor-authentication-configuration).
-
-**Note:** MFA must work with Single sign-on (SSO). Make sure that [SSO](#single-sign-on-sso) is configured before you use MFA in Zowe.
-
-### Single Sign-On (SSO)
-
-Zowe has an SSO scheme with the goal that each time you use multiple Zowe components you should only be prompted to login once. 
-
-Requirements:
-
-- IBM z/OS Management Facility (z/OSMF)
-
-### API Mediation Layer OIDC Authentication
-
-Zowe requires ACF2 APAR LU01316 to be applied when using the ACF2 security manager.
