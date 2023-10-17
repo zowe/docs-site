@@ -1,6 +1,8 @@
 # Configuring the z/OS system for Zowe
 
-Learn how to configure the z/OS system for Zowe. Before you begin, check the following table to understand which steps you need to perform based on your settings. 
+To deploy Zowe server-side components on z/OS, it is neceassary to configure the z/OS system for Zowe. As a security administrator, review the following table before you start z/OS system configuration for Zowe to determine which steps you need to perform based on your settings. 
+
+**Required role: Security administrator**
 
 Configuration step | Purpose |
 ---| ---|
@@ -20,15 +22,15 @@ Configuration step | Purpose |
 
 The zssServer uses cookies that require random number generation for security. To learn more about the zssServer, see the [Zowe architecture](../getting-started/zowe-architecture.md#zssserver). Integrated Cryptographic Service Facility (ICSF) is a secure way to generate random numbers. 
 
-If you have not configured your z/OS environment for ICSF, see [Cryptographic Services ICSF: System Programmer's Guide](https://www.ibm.com/support/knowledgecenter/en/SSLTBW_2.3.0/com.ibm.zos.v2r3.csfb200/abstract.htm) for more information.  To see whether ICSF has been started, check whether the started task `ICSF` or `CSF` is active.
+If you have not configured your z/OS environment for ICSF, see [Cryptographic Services ICSF: System Programmer's Guide](https://www.ibm.com/support/knowledgecenter/en/SSLTBW_2.3.0/com.ibm.zos.v2r3.csfb200/abstract.htm) for more information.  To see if ICSF has started, check if the started task `ICSF` or `CSF` is active.
 
-If you run Zowe high availability on a Sysplex, ICSF needs to be configured in a Sysplex environment to share KDS data sets across systems in a Sysplex. For detailed information, see [Running in a Sysplex Environment](https://www.ibm.com/docs/en/zos/2.3.0?topic=guide-running-in-sysplex-environment)
+If you run Zowe high availability on a Sysplex, ICSF needs to be configured in a Sysplex environment to share KDS data sets across systems in a Sysplex. For detailed information, see [Running in a Sysplex Environment](https://www.ibm.com/docs/en/zos/2.3.0?topic=guide-running-in-sysplex-environment).
 
 The Zowe z/OS environment configuration JCL member `ZWESECUR` does not perform any steps related to ICSF that is required for zssServer that the Zowe desktop uses. Therefore, if you want to use Zowe desktop, you must perform the steps that are described in this section manually.
 
 To generate symmetric keys, the `ZWESVUSR` user who runs Zowe server started task requires READ access to `CSFRNGL` in the `CSFSERV` class.
 
-Define or check the following configurations depending on whether ICSF is already installed:
+Define or check the following configurations depending on if ICSF is already installed:
 
 - The ICSF or CSF job that runs on your z/OS system.
 - The configuration of ICSF options in `SYS1.PARMLIB(CSFPRM00)`, `SYS1.SAMPLIB`, `SYS1.PROCLIB`.

@@ -1,14 +1,19 @@
-# APF authorize load libraries
+# Perform APF authorization of load libraries
 
 Learn how to perform APF authorization of Zowe load libraries that require access to make privileged calls.
 
-Zowe contains load modules that require access to make privileged z/OS security manager calls.  These are held in two load libraries which must be APF authorized. The command `zwe init apfauth` will read the PDS names for the load libraries from `zowe.yaml` and perform the APF authority commands.  
+**Required role: Security administrator**
 
-- `zowe.setup.dataset.authLoadLib` specifies the user custom load library, containing the `ZWELNCH`, `ZWESIS01` and `ZWESAUX` load modules.  These are the Zowe launcher, the ZIS cross memory server and the auxiliary server.  
-- `zowe.setup.dataset.authPluginLib` which references the load library for ZIS plugins.  
+Zowe contains load modules that require access to make privileged z/OS security manager calls.  These load modules are held in two load libraries which must be APF authorized. The command `zwe init apfauth` reads the PDS names for the load libraries from `zowe.yaml` and performs the APF authority commands.  
 
-Here is an example of running `zwe init apfauth`: 
+- **zowe.setup.dataset.authLoadLib**  
+ Specifies the user custom load library, containing the `ZWELNCH`, `ZWESIS01` and `ZWESAUX` load modules.  These are the Zowe launcher, the ZIS cross memory server and the auxiliary server.  
+- **zowe.setup.dataset.authPluginLib**  
+ References the load library for ZIS plugins.  
 
+The following command presents an example of running `zwe init apfauth`: 
+
+**Example:**
 ```
 #>zwe init apfauth -c ./zowe.yaml
 -------------------------------------------------------------------------------
@@ -21,7 +26,7 @@ APF authorize IBMUSER.ZWEV2.CUST.ZWESAPL
 #>
 ```
 
-Specify `--security-dry-run` to have the command echo the commands that need to be run without them being executed.  
+Specify `--security-dry-run` to have the command echo the commands that need to be run without executing the command.  
 
 ```
   SETPROG APF,ADD,DSNAME=IBMUSER.ZWEV2.SZWEAUTH,SMS
