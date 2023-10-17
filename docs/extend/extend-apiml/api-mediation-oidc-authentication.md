@@ -36,8 +36,15 @@ The following diagram illustrates the interactions between the participants of t
 - The user is asked to provide valid credentials (authentication factors).
 - After successful validation of all authentication factors, the OIDC provider grants the client an Access Token.
 - The client can then request from API ML Gateway the needed mainframe resources presenting the access token in the request.
+
+- The Gateway validates the access token 
+
+<!-- 
 - The Gateway validates the access token at the provider's OIDC/introspection end-point. If the access token is validated, the outcome is cached for a short time (20 sec by default).
-- In subsequent calls with the same token, the Gateway reuses the cached validation outcome. As such, round trips to the OIDC /introspection end-point are not required between short intervals, when the client needs to access multiple resources in a row to complete a unit of work. The caching interval is configurable with a default value of 20 seconds, which is typically a sufficient time to allow most client operations requiring multiple API requests to complete, while also providing adequate protection against unauthorized access.
+-->
+
+
+- In subsequent calls with the same token, the Gateway reuses the cached validation outcome. <!-- As such, round trips to the OIDC /introspection end-point are not required between short intervals, when the client needs to access multiple resources in a row to complete a unit of work -->. The caching interval is configurable with a default value of 20 seconds, which is typically a sufficient time to allow most client operations requiring multiple API requests to complete, while also providing adequate protection against unauthorized access.
 - The API ML Gateway fetches the distributed user identity from the distributed access token and maps this user identity to the user mainframe identity using SAF.
 - The API ML Gateway calls the requested mainframe service/s with mainframe user credentials (Zowe, SAF JWT, or pass-ticket) which are expected by the target mainframe service.
 
@@ -98,8 +105,11 @@ Use the following procedure to enable the feature to use an OIDC Access Token as
 - **`components.gateway.apiml.security.oidc.registry`**  
    Specifies the SAF registry used to group the identities recognized as having a OIDC identity mapping. The registry name is the string used during the creation of the mapping between the dustributed and mainframe user identities. For more information, see the [ESM configuration](#esm-configuration).
 
-- **`components.gateway.apiml.security.oidc.introspectUrl`**  
-    Specifies the full URL to the introspect endpoint of the OIDC provider. The OIDC token is sent to the provider's introspect endpoint for external validation.
+- **`components.gateway.apiml.security.oidc.jwks.uri`**
+   Specifies the URI obtained from the authorization server's metadata where the Gateway will query for the JWK used to sign and verify the access tokens.
+
+- **`components.gateway.apiml.security.oidc.jwks.refreshInternalHours`**
+   Specifies the frequency in hours to refresh the JWK keys from the OIDC provider. Defaults to one hour.  
 
 - **`components.gateway.apiml.security.oidc.identityMapperUser`**  
     (Optional) If the userId is different from the default Zowe runtime userId (`ZWESVUSR`), specify the `identityMapperUser` userId to configure API ML access to the external user identity mapper.
@@ -117,34 +127,6 @@ Use the following procedure to enable the feature to use an OIDC Access Token as
     ```
 
 ## Troubleshooting
-
-### API ML fails to validate the OIDC access token due to Identity Provider introspect endpoint misconfiguration
-
-**Symptom**  
-The Gateway log contains a WARNING with the following message:  
-`Missing or invalid introspectUrl configuration. Cannot proceed with token validation.`
-
-**Explanation**  
-`introspectUrl` is not configured in the API ML Gateway or does not contain the full URL for the Identity Provider introspect end-point.
-
-**Solution**  
-Configure `introspectUrl` properly to contain the full URL of the Identity Provider introspect end-point.
-
-### API ML cannot validate the OIDC access token due to misconfiguration of the Identity Provider certificate
-
-**Symptom**
-
-The following error is thrown:
-
-`ZWESVUSR ERROR (o.z.a.g.s.s.t.OIDCTokenProvider) Failed to validate the OIDC access token.`
-
-  `javax.net.ssl.SSLHandshakeException: com.ibm.jsse2.util.h: PKIX path building failed: com.ibm.security.cert.IBMCertPathBuilderException: unable to find valid certification path to requested target`  
-
-**Explanation**  
-API ML is sending the OIDC token to the `/introspect` API of the identity provider for validation. Successful connection to the identity provider requires that API ML knows and trusts the root certificate of the identity provider.
-
-**Solution**  
-Include the root certificate in the truststore or keyring used by API ML.
 
 ### API ML fails to validate the OIDC access token due to missing clientID and/or clientSecret
 
