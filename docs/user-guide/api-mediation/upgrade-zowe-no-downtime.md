@@ -95,7 +95,7 @@ For more information, see the article _VARY TCPIP,,SYSPLEX_ in the IBM documenta
 
 4. Start the upgraded instance.
 
-    **Note:** For more information about stopping and starting instances, see [Starting and stopping Zowe](../start-zowe-zos.md).
+    **Note:** For more information about stopping and starting instances, see [Starting and stopping Zowe](./../start-zowe-zos.md).
 
 5. Wait until instance B is up and synchronized with instance A, wherein services are registered in all Discovery Services. To verify that instance B is up and sychronized with instance A, check the following accessibility conditions:
 
