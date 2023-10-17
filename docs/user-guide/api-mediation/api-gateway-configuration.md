@@ -431,20 +431,20 @@ Follow these steps to register with additional Discovery Services:
    **Example:**
    ```
    components.gateway.apiml.service.additionalRegistration: 
-      <!--  central APIML -->
-       - discoveryServiceUrls: https://${ZWE_haInstance_hostname1}:${DISCOVERY_PORT-1}/eureka/,https://${ZWE_haInstance_hostname1}:${DISCOVERY_PORT-2}/eureka/
-          routes:
-               gatewayUrl: /
-               serviceUrl: /
-      <!-- APIML on System 2-->
-       - discoveryServiceUrls: https://${ZWE_haInstance_hostname2}:${DISCOVERY_PORT-1}/eureka/,https://${ZWE_haInstance_hostname2}:${DISCOVERY_PORT-2}/eureka/
-          routes:
-               gatewayUrl: /
-               serviceUrl: /
-       <!-- APIML on System 3-->
-       - discoveryServiceUrls: https://${ZWE_haInstance_hostname3}:${DISCOVERY_PORT-1}/eureka/,https://${ZWE_haInstance_hostname3}:${DISCOVERY_PORT-2}/eureka/
-          routes:
-               gatewayUrl: /
-               serviceUrl: /
+       <!-- central APIML -->
+       - discoveryServiceUrls: https://${ZWE_haInstance_hostname1}:${DISCOVERY_PORT1}/eureka/,https://${ZWE_haInstance_hostname1}:${DISCOVERY_PORT2}/eureka/
+              routes:
+                    gatewayUrl: /
+                    serviceUrl: /
+     <!-- APIML on System 2 -->
+       - discoveryServiceUrls: https://${ZWE_haInstance_hostname2}:${DISCOVERY_PORT1}/eureka/,https://${ZWE_haInstance_hostname2}:${DISCOVERY_PORT2}/eureka/
+              routes:
+                    gatewayUrl: /
+                    serviceUrl: /
+      <!-- APIML on System 3 -->
+       - discoveryServiceUrls: https://${ZWE_haInstance_hostname3}:${DISCOVERY_PORT1}/eureka/,https://${ZWE_haInstance_hostname3}:${DISCOVERY_PORT2}/eureka/
+              routes:
+                    gatewayUrl: /
+                    serviceUrl: /
     ```
 3. Restart Zowe.
