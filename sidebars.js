@@ -159,6 +159,7 @@ module.exports = {
                   items: [
                     "user-guide/initialize-security-configuration",
                     "user-guide/configure-zos-system",
+                    "user-guide/assign-security-permissions-to-users",
                     "user-guide/grant-user-permission-zosmf",
                   ],
                 },
