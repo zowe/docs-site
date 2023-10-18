@@ -1,6 +1,8 @@
-# Assign security permissions to users
+# Assigning security permissions to users
 
-As a security administrator, assign users (ZWESVUSR and ZWESIUSR) and the ZWEADMIN security group permissions required to perform specific tasks.
+Assign users (ZWESVUSR and ZWESIUSR) and the ZWEADMIN security group permissions required to perform specific tasks.
+
+**Required role: security administrator**
 
 ### Overview of user categories and roles
 
