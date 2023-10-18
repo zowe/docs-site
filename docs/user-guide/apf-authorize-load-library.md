@@ -1,8 +1,8 @@
-# APF authorize load libraries
+# Performing APF authorization of Zowe load libraries
 
-Learn how to perform APF authorization of Zowe load libraries that require access to make privileged calls.
+Review this article to learn about how to perform APF authorization of Zowe load libraries that require access to make privileged calls.
 
-Zowe contains load modules that require access to make privileged z/OS security manager calls.  These are held in two load libraries which must be APF authorized. The command `zwe init apfauth` will read the PDS names for the load libraries from `zowe.yaml` and perform the APF authority commands.  
+Zowe contains load modules that require access to make privileged z/OS security manager calls.  These modules are held in two load libraries which must be APF authorized. The command `zwe init apfauth` will read the PDS names for the load libraries from `zowe.yaml` and perform the APF authority commands.  
 
 - `zowe.setup.dataset.authLoadLib` specifies the user custom load library, containing the `ZWELNCH`, `ZWESIS01` and `ZWESAUX` load modules.  These are the Zowe launcher, the ZIS cross memory server and the auxiliary server.  
 - `zowe.setup.dataset.authPluginLib` which references the load library for ZIS plugins.  
