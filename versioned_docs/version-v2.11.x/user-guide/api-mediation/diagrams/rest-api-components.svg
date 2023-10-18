@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="451px" preserveAspectRatio="none" style="width:826px;height:451px;" version="1.1" viewBox="0 0 826 451" width="826px" zoomAndPan="magnify"><defs><filter height="300%" id="f13ebd844e0nuw" width="300%" x="-1" y="-1"><feGaussianBlur result="blurOut" stdDeviation="2.0"/><feColorMatrix in="blurOut" result="blurOut2" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .4 0"/><feOffset dx="4.0" dy="4.0" in="blurOut2" result="blurOut3"/><feBlend in="SourceGraphic" in2="blurOut3" mode="normal"/></filter></defs><g><!--cluster service1--><rect fill="#98FB98" filter="url(#f13ebd844e0nuw)" height="144" rx="12.5" ry="12.5" style="stroke: #000000; stroke-width: 1.5;" width="159" x="55.5" y="173"/><text fill="#000000" font-family="sans-serif" font-size="14" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="68" x="101" y="187.9951">«Service»</text><text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="66" x="102" y="204.292">service1</text><!--cluster server--><polygon fill="#FFFFFF" filter="url(#f13ebd844e0nuw)" points="316.5,151,326.5,141,804.5,141,804.5,315,794.5,325,316.5,325,316.5,151" style="stroke: #000000; stroke-width: 1.5;"/><line style="stroke: #000000; stroke-width: 1.5;" x1="794.5" x2="803.5" y1="151" y2="142"/><line style="stroke: #000000; stroke-width: 1.5;" x1="316.5" x2="794.5" y1="151" y2="151"/><line style="stroke: #000000; stroke-width: 1.5;" x1="794.5" x2="794.5" y1="151" y2="325"/><text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="180" x="466.5" y="166.9951">Web Application Server</text><!--cluster service3--><rect fill="#98FB98" filter="url(#f13ebd844e0nuw)" height="144" rx="12.5" ry="12.5" style="stroke: #000000; stroke-width: 1.5;" width="124" x="672.5" y="173"/><text fill="#000000" font-family="sans-serif" font-size="14" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="68" x="700.5" y="187.9951">«Service»</text><text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="66" x="701.5" y="204.292">service3</text><!--cluster service2--><rect fill="#98FB98" filter="url(#f13ebd844e0nuw)" height="144" rx="12.5" ry="12.5" style="stroke: #000000; stroke-width: 1.5;" width="302" x="351.5" y="173"/><text fill="#000000" font-family="sans-serif" font-size="14" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="68" x="468.5" y="187.9951">«Service»</text><text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="66" x="469.5" y="204.292">service2</text><!--entity api1v1--><rect fill="#ADD8E6" filter="url(#f13ebd844e0nuw)" height="93.1875" style="stroke: #000000; stroke-width: 1.5;" width="108" x="63.5" y="216"/><text fill="#000000" font-family="sans-serif" font-size="14" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="39" x="98" y="238.9951">«API»</text><text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="24" x="73.5" y="255.292">/v1</text><line style="stroke: #000000; stroke-width: 1.0;" x1="64.5" x2="170.5" y1="258.5938" y2="258.5938"/><line style="stroke: #000000; stroke-width: 1.0;" x1="64.5" x2="170.5" y1="260.5938" y2="260.5938"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="76" x="79.5" y="275.5889">/endpoint1</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="76" x="79.5" y="291.8857">/endpoint2</text><!--entity api3v1--><rect fill="#ADD8E6" filter="url(#f13ebd844e0nuw)" height="93.1875" style="stroke: #000000; stroke-width: 1.5;" width="108" x="680.5" y="216"/><text fill="#000000" font-family="sans-serif" font-size="14" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="39" x="715" y="238.9951">«API»</text><text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="24" x="690.5" y="255.292">/v1</text><line style="stroke: #000000; stroke-width: 1.0;" x1="681.5" x2="787.5" y1="258.5938" y2="258.5938"/><line style="stroke: #000000; stroke-width: 1.0;" x1="681.5" x2="787.5" y1="260.5938" y2="260.5938"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="76" x="696.5" y="275.5889">/endpoint1</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="76" x="696.5" y="291.8857">/endpoint2</text><!--entity api2v2--><rect fill="#ADD8E6" filter="url(#f13ebd844e0nuw)" height="93.1875" style="stroke: #000000; stroke-width: 1.5;" width="108" x="502.5" y="216"/><text fill="#000000" font-family="sans-serif" font-size="14" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="39" x="537" y="238.9951">«API»</text><text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="24" x="512.5" y="255.292">/v2</text><line style="stroke: #000000; stroke-width: 1.0;" x1="503.5" x2="609.5" y1="258.5938" y2="258.5938"/><line style="stroke: #000000; stroke-width: 1.0;" x1="503.5" x2="609.5" y1="260.5938" y2="260.5938"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="76" x="518.5" y="275.5889">/endpoint1</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="76" x="518.5" y="291.8857">/endpoint2</text><!--entity api2v1--><rect fill="#ADD8E6" filter="url(#f13ebd844e0nuw)" height="93.1875" style="stroke: #000000; stroke-width: 1.5;" width="108" x="359.5" y="216"/><text fill="#000000" font-family="sans-serif" font-size="14" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="39" x="394" y="238.9951">«API»</text><text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="24" x="369.5" y="255.292">/v1</text><line style="stroke: #000000; stroke-width: 1.0;" x1="360.5" x2="466.5" y1="258.5938" y2="258.5938"/><line style="stroke: #000000; stroke-width: 1.0;" x1="360.5" x2="466.5" y1="260.5938" y2="260.5938"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="76" x="375.5" y="275.5889">/endpoint1</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="76" x="375.5" y="291.8857">/endpoint2</text><!--entity gateway--><rect fill="#FEFECE" filter="url(#f13ebd844e0nuw)" height="125.4844" style="stroke: #000000; stroke-width: 1.5;" width="141" x="414" y="8"/><text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="95" x="424" y="30.9951">API Gateway</text><line style="stroke: #000000; stroke-width: 1.0;" x1="415" x2="554" y1="34.2969" y2="34.2969"/><line style="stroke: #000000; stroke-width: 1.0;" x1="415" x2="554" y1="36.2969" y2="36.2969"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="109" x="430" y="51.292">/api/v1/service1</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="109" x="430" y="67.5889">/api/v2/service1</text><line style="stroke: #000000; stroke-width: 1.0;" x1="415" x2="554" y1="74.8906" y2="74.8906"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="109" x="430" y="91.8857">/api/v2/service2</text><line style="stroke: #000000; stroke-width: 1.0;" x1="415" x2="554" y1="99.1875" y2="99.1875"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="109" x="430" y="116.1826">/api/v1/service3</text><path d="M278.5,384.5 L278.5,424.7656 L458.5,424.7656 L458.5,394.5 L448.5,384.5 L278.5,384.5 " fill="#FBFB77" filter="url(#f13ebd844e0nuw)" style="stroke: #A80036; stroke-width: 1.0;"/><path d="M448.5,384.5 L448.5,394.5 L458.5,394.5 L448.5,384.5 " fill="#FBFB77" style="stroke: #A80036; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="141" x="284.5" y="401.5669">A web server can host</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="159" x="284.5" y="416.6997">one or more API services</text><path d="M6,369 L6,439.5313 L243,439.5313 L243,379 L233,369 L6,369 " fill="#FBFB77" filter="url(#f13ebd844e0nuw)" style="stroke: #A80036; stroke-width: 1.0;"/><path d="M233,369 L233,379 L243,379 L233,369 " fill="#FBFB77" style="stroke: #A80036; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="216" x="12" y="386.0669">A service usually provides one API</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="0" x="16" y="401.1997"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="110" x="12" y="416.3325">A service can run</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="205" x="12" y="431.4653">in its own embedded web server</text><path d="M537,384.5 L537,424.7656 L754,424.7656 L754,394.5 L744,384.5 L537,384.5 " fill="#FBFB77" filter="url(#f13ebd844e0nuw)" style="stroke: #A80036; stroke-width: 1.0;"/><path d="M744,384.5 L744,394.5 L754,394.5 L744,384.5 " fill="#FBFB77" style="stroke: #A80036; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="136" x="543" y="401.5669">A service can provide</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="196" x="543" y="416.6997">multiple versions of a REST API</text><path d="M590,50.5 L590,66.5 L555.0234,70.5 L590,74.5 L590,90.7656 A0,0 0 0 0 590,90.7656 L787,90.7656 A0,0 0 0 0 787,90.7656 L787,60.5 L777,50.5 L590,50.5 A0,0 0 0 0 590,50.5 " fill="#FBFB77" filter="url(#f13ebd844e0nuw)" style="stroke: #A80036; stroke-width: 1.0;"/><path d="M777,50.5 L777,60.5 L787,60.5 L777,50.5 " fill="#FBFB77" style="stroke: #A80036; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="124" x="596" y="67.5669">API Gateway routes</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="176" x="596" y="82.6997">HTTP requests to REST APIs</text><!--link server to GMN11--><path d="M343.5,325 C349.7405,345.1811 356.9943,368.201 362.0759,384.2577 " fill="none" id="server-GMN11" style="stroke: #A80036; stroke-width: 1.0; stroke-dasharray: 7.0,7.0;"/><!--link service1 to GMN14--><path d="M192.2029,317.1089 C192.1602,317.2092 192.1174,317.3094 192.0745,317.4096 C191.9887,317.6099 191.9025,317.8098 191.8158,318.0094 C191.4691,318.8077 191.1152,319.6001 190.7541,320.3852 C190.0319,321.9555 189.2808,323.4969 188.5,325 C180.4953,340.4093 169.2402,355.6712 158.3965,368.6404 " fill="none" id="service1-GMN14" style="stroke: #A80036; stroke-width: 1.0; stroke-dasharray: 7.0,7.0;"/><!--link service2 to GMN17--><path d="M645.5,317.252 C645.5,317.4502 645.5,317.6487 645.5,317.8473 C645.5,318.2446 645.5,318.6425 645.5,319.0411 C645.5,319.8383 645.5,320.638 645.5,321.4398 C645.5,324.6471 645.5,327.8882 645.5,331.1359 C645.5,337.6313 645.5,344.1532 645.5,350.4836 C645.5,363.1446 645.5,375.0401 645.5,384.4279 " fill="none" id="service2-GMN17" style="stroke: #A80036; stroke-width: 1.0; stroke-dasharray: 7.0,7.0;"/><!--link gateway to api1v1--><path d="M413.8729,80.7776 C338.0698,92.9321 223.7769,114.8505 188.5,141 C164.8495,158.5313 147.7328,186.4782 136.2391,211.1512 " fill="none" id="gateway-api1v1" style="stroke: #A80036; stroke-width: 1.0;"/><polygon fill="#A80036" points="134.1581,215.7168,141.5307,209.1865,136.2319,211.1672,134.2513,205.8684,134.1581,215.7168" style="stroke: #A80036; stroke-width: 1.0;"/><!--link gateway to api2v1--><path d="M461.3502,133.1023 C452.0174,158.3401 441.3838,187.096 432.5147,211.0799 " fill="none" id="gateway-api2v1" style="stroke: #A80036; stroke-width: 1.0;"/><polygon fill="#A80036" points="430.7654,215.8106,437.6387,208.7567,432.4996,211.121,430.1354,205.9819,430.7654,215.8106" style="stroke: #A80036; stroke-width: 1.0;"/><!--link gateway to api2v2--><path d="M507.9759,133.1023 C517.4401,158.3401 528.2235,187.096 537.2175,211.0799 " fill="none" id="gateway-api2v2" style="stroke: #A80036; stroke-width: 1.0;"/><polygon fill="#A80036" points="538.9915,215.8106,539.5766,205.9791,537.2358,211.129,532.086,208.7882,538.9915,215.8106" style="stroke: #A80036; stroke-width: 1.0;"/><!--link gateway to api3v1--><path d="M555.0275,125.1431 C560.756,128.1511 566.6108,130.8262 572.5,133 C591.129,139.8762 644.6726,130.4569 661.5,141 C687.119,157.0514 704.961,185.6784 716.5902,211.1142 " fill="none" id="gateway-api3v1" style="stroke: #A80036; stroke-width: 1.0;"/><polygon fill="#A80036" points="718.6899,215.8228,718.6778,205.9739,716.6536,211.2562,711.3713,209.232,718.6899,215.8228" style="stroke: #A80036; stroke-width: 1.0;"/><!--
+@startuml
+skinparam rectangle {
+    roundCorner<<Service>> 25
+    BackgroundColor<<API>> LightBlue
+    BackgroundColor<<Service>> PaleGreen
+}
+
+rectangle gateway [
+<b>API Gateway</b>
+===
+/api/v1/service1
+/api/v2/service1
+- - -
+/api/v2/service2
+- - -
+/api/v1/service3
+]
+
+rectangle service1 <<Service>> {
+    rectangle api1v1 <<API>> [
+    <b>/v1</b>
+    ==
+    /endpoint1
+    /endpoint2
+    ]
+}
+
+node "Web Application Server" as server {
+    rectangle service3 <<Service>> {
+        rectangle api3v1 <<API>> [
+        <b>/v1</b>
+        ==
+        /endpoint1
+        /endpoint2
+        ]
+    }
+
+    rectangle service2 <<Service>> {
+        rectangle api2v2 <<API>> [
+        <b>/v2</b>
+        ==
+        /endpoint1
+        /endpoint2
+        ]
+
+        rectangle api2v1 <<API>> [
+        <b>/v1</b>
+        ==
+        /endpoint1
+        /endpoint2
+        ]
+    }
+
+}
+
+note bottom of server: A web server can host\none or more API services
+note bottom of service1: A service usually provides one API\n\nA service can run\nin its own embedded web server
+note bottom of service2: A service can provide\nmultiple versions of a REST API
+note right of gateway: API Gateway routes\nHTTP requests to REST APIs
+
+gateway - -> api1v1
+gateway - -> api2v1
+gateway - -> api2v2
+gateway - -> api3v1
+@enduml
+
+PlantUML version 1.2018.10(Sat Aug 25 17:02:59 UTC 2018)
+(GPL source distribution)
+Java Runtime: OpenJDK Runtime Environment
+JVM: OpenJDK 64-Bit Server VM
+Java Version: 10.0.2+13-Debian-1
+Operating System: Linux
+OS Version: 4.9.125-linuxkit
+Default Encoding: UTF-8
+Language: en
+Country: null
+--></g></svg>

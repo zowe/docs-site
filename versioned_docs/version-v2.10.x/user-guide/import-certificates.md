@@ -133,7 +133,7 @@ After successfully importing your local CA certificate on Linux, you can now [Im
 
 ## Importing an existing JCERACFKS certificate
 
-To import a JCERACFKS certificate, use the example yaml according to [Scenario 4: Use a z/OS keyring-based keystore and connect to an existing certificate](#certificate-configuration-scenarios.md/#scenario-4-use-a-zos-keyring-and-connect-to-an-existing-certificate) in the article Certificate configuration scenarios.
+To import a JCERACFKS certificate, use the example yaml according to [Scenario 4: Use a z/OS keyring-based keystore and connect to an existing certificate](certificate-configuration-scenarios.md#scenario-4-use-a-zos-keyring-based-keystore-and-connect-to-an-existing-certificate) in the article Certificate configuration scenarios.
 
 To use a JCERACFKS certificate, specify the following parameters in the `zowe.yaml` file:
 
