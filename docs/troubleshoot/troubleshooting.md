@@ -1,4 +1,4 @@
-# Troubleshooting overview
+# Troubleshooting Zowe
 
 To isolate and resolve Zowe&trade; problems, you can use the troubleshooting and support information.
 

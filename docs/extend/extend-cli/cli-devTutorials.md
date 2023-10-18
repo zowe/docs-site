@@ -5,15 +5,29 @@ You can extend Zowe&trade; CLI by developing plug-ins and contributing code to t
 ## How to contribute
 You can contribute to Zowe CLI in the following ways:
 - Add new commands, options, or other improvements to the base CLI.
-- Develop a plug-in that users can install to Zowe CLI.
+- Develop a Zowe CLI plug-in.
 
 You might want to contribute to Zowe CLI to accomplish the following objectives:
-* Provide new scriptable functionality for yourself, your organization, or to a broader community.
-* Make use of Zowe CLI infrastructure (profiles and programmatic APIs).
-* Participate in the Zowe CLI community space.
+- Provide new scriptable functionality for yourself, your organization, or to a broader community.
+- Make use of Zowe CLI infrastructure (profiles and programmatic APIs).
+- Participate in the Zowe CLI community space.
 
 ## Getting started
 If you want to start working with the code immediately, review the Readme file in the [Zowe CLI core repository](https://github.com/zowe/zowe-cli#zowe-cli--) and the Zowe [contribution guidelines](https://github.com/zowe/zowe-cli/blob/master/CONTRIBUTING.md#contribution-guidelines). The [zowe-cli-sample-plugin GitHub repository](https://github.com/zowe/zowe-cli-sample-plugin#zowe-cli-sample-plug-in) is a sample plug-in that adheres to the guidelines for contributing to Zowe CLI projects.
+
+### Contribution guidelines
+The Zowe CLI contribution guidelines contain standards and conventions for developing Zowe CLI plug-ins.
+
+The guidelines contain critical information about working with the code, running/writing/maintaining automated tests, developing consistent syntax in your plug-in, and ensuring that your plug-in integrates with Zowe CLI properly:
+
+| For more information about ... | See: |
+| ------------------------------ | ----- |
+| General guidelines that apply to contributing to Zowe CLI and Plug-ins | [Contribution Guidelines](https://github.com/zowe/zowe-cli/blob/master/CONTRIBUTING.md) |
+| Conventions and best practices for creating packages and plug-ins for Zowe CLI | [Package and Plug-in Guidelines](https://github.com/zowe/zowe-cli/blob/master/docs/PackagesAndPluginGuidelines.md)|
+| Guidelines for running tests on Zowe CLI | [Testing Guidelines](https://github.com/zowe/zowe-cli/blob/master/docs/TESTING.md) |
+| Guidelines for running tests on the plug-ins that you build| [Plug-in Testing Guidelines](https://github.com/zowe/zowe-cli/blob/master/docs/PluginTESTINGGuidelines.md) |
+Versioning conventions for Zowe CLI and Plug-ins| [Versioning Guidelines](https://github.com/zowe/zowe-cli/blob/master/docs/MaintainerVersioning.md) |
+
 
 ### Tutorials
 Follow these tutorials to get started working with the sample plug-in:
@@ -36,20 +50,25 @@ The following guidelines and documentation will assist you during development:
 ### Imperative CLI Framework documentation
 [Imperative CLI Framework documentation](https://github.com/zowe/imperative/wiki) is a key source of information to learn about the features of Imperative CLI Framework (the code framework that you use to build plug-ins for Zowe CLI). Refer to these supplementary documents during development to learn about specific features such as:
 
-* Auto-generated help
-* JSON responses
-* User profiles
-* Logging, progress bars, experimental commands, and more!
+- Auto-generated help
+- JSON responses
+- User profiles
+- Logging, progress bars, experimental commands, and more!
+- Authentication mechanisms
 
-### Contribution guidelines
-The Zowe CLI contribution guidelines contain standards and conventions for developing Zowe CLI plug-ins.
+### Authentication mechanisms
 
-The guidelines contain critical information about working with the code, running/writing/maintaining automated tests, developing consistent syntax in your plug-in, and ensuring that your plug-in integrates with Zowe CLI properly:
+As an extender, you can change the way Zowe CLI uses various mechanisms of authentication when communicating with the mainframe.
 
-| For more information about ... | See: |
-| ------------------------------ | ----- |
-| General guidelines that apply to contributing to Zowe CLI and Plug-ins | [Contribution Guidelines](https://github.com/zowe/zowe-cli/blob/master/CONTRIBUTING.md) |
-| Conventions and best practices for creating packages and plug-ins for Zowe CLI | [Package and Plug-in Guidelines](https://github.com/zowe/zowe-cli/blob/master/docs/PackagesAndPluginGuidelines.md)|
-| Guidelines for running tests on Zowe CLI | [Testing Guidelines](https://github.com/zowe/zowe-cli/blob/master/docs/TESTING.md) |
-| Guidelines for running tests on the plug-ins that you build| [Plug-in Testing Guidelines](https://github.com/zowe/zowe-cli/blob/master/docs/PluginTESTINGGuidelines.md) |
-Versioning conventions for Zowe CLI and Plug-ins| [Versioning Guidelines](https://github.com/zowe/zowe-cli/blob/master/docs/MaintainerVersioning.md) |
+Zowe CLI accepts various methods, or mechanisms, of authentication when communicating with the mainframe, and the method that the CLI ultimately follows is based on the service it is communicating with.
+
+However, some services can accept multiple methods of authentication. When multiple methods are provided (in a profile or command) for a service, the CLI follows an *order of precedence* to determine which method to apply. Extenders can modify this order for their plug-in.
+
+To learn the authentication methods used for different services and their order of precedence, refer to the following table:
+
+service | Zowe V1 order of precedence | Zowe V2 order of precedence
+|:--- |:--- |:--- |
+API ML | 1. username, password<br/> 2. API ML token | 1. username, password<br/> 2. API ML token<br/> 3. PEM certificate |
+Db2, <br/> FTP,<br/> most other services | username, password | username, password
+SSH | 1. SSH key<br/> 2. username, password | 1. SSH key<br/> 2. username, password
+ ZOSMF<br/> direct connection | username, password | 1. username, password<br/> 2. PEM certificate

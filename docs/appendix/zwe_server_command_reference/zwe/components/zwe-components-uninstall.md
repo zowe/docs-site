@@ -23,9 +23,11 @@ zwe components uninstall -c /path/to/zowe.yaml -o package-name
 Full name|Alias|Type|Required|Help message
 |---|---|---|---|---
 --component-name,--component|-o|string|yes|The name of an installed component.
---registry|-r|string|no|Specifies the registry to searh within instead of the default. The registry must be compatible with the manager used.
+--registry|-r|string|no|Specifies the registry to search within instead of the default. The registry must be compatible with the manager used.
 --handler||string|no|Specifies the registry handler name used with the package registry, instead of the default. The handler must be compatible with the registry used.
---dry-run|-d|boolean|no|Whether or not to perform the upgrade versus just checking if an upgrade is available### Inherited from parent command
+--dry-run|-d|boolean|no|Whether or not to perform the upgrade versus just checking if an upgrade is available.
+
+### Inherited from parent command
 
 Full name|Alias|Type|Required|Help message
 |---|---|---|---|---

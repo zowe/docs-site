@@ -185,6 +185,31 @@ This message means that some other process is already listening on port 7542, ei
 
 One possibility is that a previously running ZSS server did not shut down correctly, and either the operating system has not released the socket after the ZSS server shut down, or the ZSS server is still running.
 
+## Server error EACCESS on z/os
+
+**Symptoms:**
+When you see messages like this in the server logs:
+```
+Error: listen EACCES: permission denied 0.0.0.0:8548
+     at Server.setupListenHandle [as _listen2] (net.js:1305:21)
+     at listenInCluster (net.js:1370:12)
+```
+```
+<ZWED:1234> ZWEUSER WARN (_zsf.network,webserver.js:233) ZWED0071W - Unexpected error on server 0.0.0.0:8544. E=bind EACCES 0.0.0.0:8544. Stack trace follows.
+ Error: bind EACCES 0.0.0.0:8544
+     at listenOnMasterHandle (net.js:1389:18)
+```
+It is a sign that a permission error is stopping Zowe servers from completing the action of binding to a TCP Port for listening for client connections. This can manifest in the servers being inaccessible.
+
+Network permissions control varies by OS, to resolve this we don't have a tip for users of containers, but for z/os, IBM has a guide on access control, for more details check
+[Port Statement](https://www.ibm.com/docs/en/zos/2.4.0?topic=control-controlling-access-particular-ports) 
+
+Also, there is a very important part troubleshooting step just for Zowe.
+When you are setting a PORT statement, you can assign rules by jobname.
+When FACILITY resource `BPX.JOBNAME` is granted for the zowe STC user (recommended!) then each server of zowe will have a different jobname. It will not be "ZWESVSTC" or "ZWESLSTC" as it would be when that resource is not granted. They'll instead be other names that start with "ZWE".
+
+**Note**: So, for a troubleshooting tip on the server error EACCESS on z/os, note that not only should an administrator check their PORT statements, they should probably set their jobname in the port statements to `ZWE` since it will catch all zowe components regardless of whether or not `BPX.JOBNAME` is granted.
+
 
 ## Application plug-in not in Zowe Desktop
 
