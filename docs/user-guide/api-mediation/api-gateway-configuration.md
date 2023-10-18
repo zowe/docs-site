@@ -435,16 +435,16 @@ Follow these steps to register with additional Discovery Services:
        <!-- central APIML -->
        - discoveryServiceUrls: https://sys1:10011/eureka/,https://sys1:10021/eureka/ 
                     routes:
-                                 gatewayUrl: /
-                                 serviceUrl: /
+                            gatewayUrl: /
+                            serviceUrl: /
      <!-- APIML on System 2 -->
        - discoveryServiceUrls: https://sys2:10011/eureka/,https://sys2:10021/eureka/
                     routes:
-                                 gatewayUrl: /
-                                 serviceUrl: /
+                            gatewayUrl: /
+                            serviceUrl: /
       <!-- APIML on System 3 -->
        - discoveryServiceUrls: https://sys3:10011/eureka/,https://sys3:10021/eureka/ 
-                   routes:
-                                gatewayUrl: /
-                                serviceUrl: /
+                    routes:
+                            gatewayUrl: /
+                            serviceUrl: /
 3. Restart Zowe.
