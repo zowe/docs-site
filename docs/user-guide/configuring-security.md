@@ -1,4 +1,4 @@
-# Configuring security checklist
+# Configuring security 
 
 During the initial installation of Zowe server-side components, it is necessary for your organization's security administrator to perform a range of tasks that require elevated security permissions. As a security administrator, follow the procedures outlined in this checklist to configure Zowe and your z/OS system to run Zowe with z/OS.
 
@@ -6,7 +6,7 @@ During the initial installation of Zowe server-side components, it is necessary 
 
 ## Validate and re-run `zwe init` commands
 
-**Important!** During installation, the system programmer customizes values in the zowe.yaml file. However, due to insufficient permissions of the system programmer, the `zwe init security` command fails without notification. 
+**Important!** During installation, the system programmer customizes values in the zowe.yaml file. However, due to insufficient permissions of the system programmer, the `zwe init security` command is likely to fail. 
 
 <!-- ADD INSTRUCTIONS FOR HOW THE SECURITY ADMIN CHECKS FOR FAILED RUNS OF zwe init. -->
 
