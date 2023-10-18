@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>endevor-bridge-for-git endevor-connection list</title>
+<link rel="stylesheet" href="../css/bundle-docs.css">
+<link rel="stylesheet" href="../css/docs.css">
+<article class="markdown-body">
+<h2><a href="zowe.html">zowe</a> › <a href="zowe_endevor-bridge-for-git.html">endevor-bridge-for-git</a> › <a href="zowe_endevor-bridge-for-git_endevor-connection.html">endevor-connection</a> › <a href="zowe_endevor-bridge-for-git_endevor-connection_list.html">list</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
+<p>List Endevor connections used by Endevor Bridge for Git.</p>
+<h4>Usage</h4>
+<p>zowe endevor-bridge-for-git endevor-connection list [options]</p>
+<h4>Endevor Bridge for Git connection options (alternatively use an 'ebg' profile)</h4>
+<ul>
+<li>
+<p><code>--protocol</code> | <code>--prot</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>The Endevor Bridge for Git SCM protocol.</p>
+<p>Default value: https</p>
+<p>Default value: https<br>
+Allowed values: http, https</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--host</code> | <code>-H</code> <em>(string)</em></p>
+<ul>
+<li>The Endevor Bridge for Git hostname.</li>
+</ul>
+</li>
+<li>
+<p><code>--port</code> | <code>-P</code> <em>(number)</em></p>
+<ul>
+<li>The Endevor Bridge for Git port.</li>
+</ul>
+</li>
+<li>
+<p><code>--user</code> | <code>-u</code> <em>(string)</em></p>
+<ul>
+<li>Endevor Bridge for Git username (your git username).</li>
+</ul>
+</li>
+<li>
+<p><code>--token</code> | <code>-t</code> <em>(string)</em></p>
+<ul>
+<li>Git personal access token (it can be obtained from your Git Enterprise Server).</li>
+</ul>
+</li>
+<li>
+<p><code>--reject-unauthorized</code> | <code>--ru</code> <em>(boolean)</em></p>
+<ul>
+<li>
+<p>Reject self-signed certificates.</p>
+<p>Default value: false</p>
+</li>
+</ul>
+</li>
+</ul>
+<h4>Profile Options</h4>
+<ul>
+<li>
+<p><code>--ebg-profile</code> | <code>--ebg-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (ebg) profile to load for this command execution.</li>
+</ul>
+</li>
+<li>
+<p><code>--base-profile</code> | <code>--base-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (base) profile to load for this command execution.</li>
+</ul>
+</li>
+</ul>
+<h4>Base Connection Options</h4>
+<ul>
+<li>
+<p><code>--password</code> | <code>--pass</code> | <code>--pw</code> <em>(string)</em></p>
+<ul>
+<li>Password to authenticate to service on the mainframe.</li>
+</ul>
+</li>
+<li>
+<p><code>--token-type</code> | <code>--tt</code> <em>(string)</em></p>
+<ul>
+<li>The type of token to get and use for the API. Omit this option to use the default token type, which is provided by 'zowe auth login'.</li>
+</ul>
+</li>
+<li>
+<p><code>--token-value</code> | <code>--tv</code> <em>(string)</em></p>
+<ul>
+<li>The value of the token to pass to the API.</li>
+</ul>
+</li>
+<li>
+<p><code>--cert-file</code> <em>(local file path)</em></p>
+<ul>
+<li>The file path to a certificate file to use for authentication</li>
+</ul>
+</li>
+<li>
+<p><code>--cert-key-file</code> <em>(local file path)</em></p>
+<ul>
+<li>The file path to a certificate key file to use for authentication</li>
+</ul>
+</li>
+</ul>
+<h4>Response Format Options</h4>
+<ul>
+<li>
+<p><code>--response-format-filter</code> | <code>--rff</code> <em>(array)</em></p>
+<ul>
+<li>Filter (include) fields in the response. Accepts an array of field/property names to include in the output response. You can filter JSON objects properties OR table columns/fields. In addition, you can use this option in conjunction with '--response-format-type' to reduce the output of a command to a single field/property or a list of a single field/property.</li>
+</ul>
+</li>
+<li>
+<p><code>--response-format-type</code> | <code>--rft</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>The command response output format type. Must be one of the following:</p>
+<p>table: Formats output data as a table. Use this option when the output data is an array of homogeneous JSON objects. Each property of the object will become a column in the table.</p>
+<p>list: Formats output data as a list of strings. Can be used on any data type (JSON objects/arrays) are stringified and a new line is added after each entry in an array.</p>
+<p>object: Formats output data as a list of prettified objects (or single object). Can be used in place of &quot;table&quot; to change from tabular output to a list of prettified objects.</p>
+<p>string: Formats output data as a string. JSON objects/arrays are stringified.</p>
+<p>Allowed values: table, list, object, string</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--response-format-header</code> | <code>--rfh</code> <em>(boolean)</em></p>
+<ul>
+<li>If &quot;--response-format-type table&quot; is specified, include the column headers in the output.</li>
+</ul>
+</li>
+</ul>
+<h4>Examples</h4>
+<ul>
+<li>
+<p>List all the Endevor connections using the default EBG profile:</p>
+<ul>
+<li><code>zowe endevor-bridge-for-git endevor-connection list</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe endevor-bridge-for-git endevor-connection list">Copy</button></li>
+</ul>
+</li>
+<li>
+<p>List all the Endevor connections without an EBG profile:</p>
+<ul>
+<li><code>zowe endevor-bridge-for-git endevor-connection list --protocol http --host my-host --port 8080 --user my-git-username --token 1234567890</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe endevor-bridge-for-git endevor-connection list --protocol http --host my-host --port 8080 --user my-git-username --token 1234567890">Copy</button></li>
+</ul>
+</li>
+</ul>
+</article>
+<script src="../js/bundle-docs.js"></script>
+<script src="../js/docs.js"></script>
