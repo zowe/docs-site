@@ -43,6 +43,7 @@ module.exports = {
       className: "ToCheadercolor",
       link: {type:"doc", id:"getting-started/release-notes/release-notes-overview"},
       items: [
+        "getting-started/release-notes/v2_12_0",
         "getting-started/release-notes/v2_11_0",
         "getting-started/release-notes/v2_10_0",
         "getting-started/release-notes/v2_9_0",
