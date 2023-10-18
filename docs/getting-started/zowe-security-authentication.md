@@ -18,7 +18,7 @@ To utilize [Single-Sign-On (SSO)](../user-guide/systemrequirements-zos#single-si
 
 If the keyring or a truststore contains at least one valid certificate authority (CA) other than the CA of the API ML, it is possible to use client certificates issued by this CA to authenticate to the API ML.
 
-For more information, see the [Authentication for API ML services documentation](../extend/extend-apiml/authentication-for-apiml-services#authentication-parameters).
+For more information, see the [Authentication for API ML services documentation](../extend/extend-apiml/authentication-for-apiml-services.md)
 
 ## Authentication with Personal Access Token (PAT)
 

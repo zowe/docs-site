@@ -1,6 +1,9 @@
 # Certificate configuration scenarios 
 
-As a system programmer, review the five scenarios for configuring Zowe for automatic certificate setup. Examples are provided for each scenario.
+
+As a system programmer, or security administrator review the five scenarios for configuring Zowe for automatic certificate setup. Examples of the zowe.yaml files are provided for each scenario.
+
+**Tip:** To assist you with determining the specific certificate configuration scenario that applies to your use case, see [Zowe certificates configuration questionnaire](./certificates-configuration-questionnaire.md). This questionnaire will guide you through quetions that leads to a specific configuration scenario.
 
 Zowe servers require both a keystore to store the certificates and a truststore to validate certificates.
 
@@ -12,20 +15,20 @@ Zowe can then automate the certificate setup via the `zwe init certificate` comm
 
 
 **Note:**  
-Automated generation of certificates is an option, but is not required. If you already have a keystore that contains a valid certificate`*`, and the  corresponding private key of the certificate, along with a truststore which validates the certificate and any other certificates you expect to encounter, then you also have the option of directly defining the parameter `zowe.certificate` which specifies the location of each of these certificates and their storage objects. Note that this parameter should not be confused with the parameter `zowe.setup.certificate`.
+Automated generation of certificates is an option, but is not required. If you already have a keystore that contains a valid certificate*, and the  corresponding private key of the certificate, along with a truststore which validates the certificate and any other certificates you expect to encounter, then you also have the option to directly define the parameter `zowe.certificate` which specifies the location of each of these certificates and their storage objects. Note that this parameter should not be confused with the parameter `zowe.setup.certificate`.
 
-## `*` What is a valid certificate in Zowe?
+## <b>*</b> What is a valid certificate in Zowe?
 
-A valid certificate for use in Zowe is one that:
+A valid certificate for use in Zowe has the following qualities:
 
-* A certificate that does not contain the _Extended Key Usage_ section.
-* A certificate that contains the _Extended Key Usage_ section and also includes the **Server** and **Client** authentication fields.
+* The certificate does not contain the _Extended Key Usage_ section.
+* The certificate contains the _Extended Key Usage_ section and also includes the **Server** and **Client** authentication fields.
 
 ## Considerations for certificate scenario selection
 
-When configuring Zowe for certificates, consider the scenario that best suits your use case:
+Consider the scenario that best suits your use case:
 
-* Do you pla to use a file-based (PKCS12) certificates, or z/OS keyrings?
+* Do you plan to use a file-based (PKCS12) certificates, or z/OS keyrings?
 * Do you plan to enable Zowe to create self-signed certificates, or will Zowe be using pre-made certificates which you are providing?
 * If you are providing certificates to Zowe and using a keyring, does the certificate already exist in your security database, or are you importing it via a dataset?
 
