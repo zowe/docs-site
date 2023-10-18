@@ -146,6 +146,7 @@ module.exports = {
             {
               type: "category",
               label: "Configuring",
+              link: {type:"doc", id:"user-guide/configuring-overview"},
               items: [
                 "user-guide/initialize-zos-system",
                 "user-guide/initialize-mvs-datasets",
@@ -153,6 +154,16 @@ module.exports = {
                 "user-guide/configure-zos-system",
                 "user-guide/grant-user-permission-zosmf",
                 "user-guide/apf-authorize-load-library",
+                {
+                  type: "category",
+                  label: "Configuring security",
+                  link: {type:"doc", id:"user-guide/configuring-security"},
+                  items: [
+                    "user-guide/initialize-security-configuration",
+                    "user-guide/configure-zos-system",
+                    "user-guide/grant-user-permission-zosmf",
+                  ],
+                },
                 {
                   type: "category",
                   label: "Configuring certificates",
