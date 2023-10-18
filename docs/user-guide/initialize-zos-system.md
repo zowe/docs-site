@@ -1,4 +1,4 @@
-# Initializing the z/OS system
+# Initializing the z/OS system with `zwe init`
 
 After you install the Zowe runtime, you must initialize Zowe with proper security configurations and complete some configurations before you can start it. To do this, you run the `zwe init` command. This step is common for installing and configuring Zowe from either a convenience build or from an SMP/E build.
 
