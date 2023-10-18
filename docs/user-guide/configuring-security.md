@@ -1,12 +1,12 @@
 # Configuring security 
 
-During the initial installation of Zowe server-side components, it is necessary for your organization's security administrator to perform a range of tasks that require elevated security permissions. As a security administrator, follow the procedures outlined in this checklist to configure Zowe and your z/OS system to run Zowe with z/OS.
+During the initial installation of Zowe server-side components, it is necessary for your organization's security administrator to perform a range of tasks that require elevated security permissions. As a security administrator, follow the procedures outlined in this article to configure Zowe and your z/OS system to run Zowe with z/OS.
 
-**Tip:** We recommend that you consult with your security administrator who has the necessary permissions to perform the following security configuration procedures. 
+**Required role: security administrator** 
 
 ## Validate and re-run `zwe init` commands
 
-**Important!** During installation, the system programmer customizes values in the zowe.yaml file. However, due to insufficient permissions of the system programmer, the `zwe init security` command is likely to fail. 
+**Important!** During installation, the system programmer customizes values in the zowe.yaml file. However, due to insufficient permissions of the system programmer, the `zwe init security` command is likely to fail. Consult with your security administrator to review your ZWESECUR job content so that your security adminstrator can re-submit this command.
 
 <!-- ADD INSTRUCTIONS FOR HOW THE SECURITY ADMIN CHECKS FOR FAILED RUNS OF zwe init. -->
 
@@ -23,7 +23,7 @@ For more information about both of these methods, see [Initialize Zowe security 
 
 ## Perform APF authorization of load libraries
 
-Zowe contains load modules that require access to make privileged z/OS security manager calls. These load modules are held in two load libraries which must be APF authorized. For more information about how to issue the `zwe init apfauth` command to perform APF authority commands, see [Make z/OS security manager calls with APF authority commands](./apf-authorize-load-library.md).
+Zowe contains load modules that require access to make privileged z/OS security manager calls. These load modules are held in two load libraries which must be APF authorized. For more information about how to issue the `zwe init apfauth` command to perform APF authority commands, see [Performing APF authorization of load libraries](./apf-authorize-load-library.md).
 
 ## Configure the z/OS system for Zowe
 
