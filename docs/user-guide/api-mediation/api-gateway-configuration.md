@@ -424,31 +424,27 @@ Follow this procedure to configure a unique cookie name for the instances:
 3. Restart Zowe.
 
 ## Register with additional Discovery Services
-
-In a multi sysplex environment, the API Gateway may also need to register with a Central Discovery Service which gathers information about all installed API Gateways in isolated sysplex environments. The data from the Central Discovery Service can then be used by the Central Gateway for routing to individual API Gateways.
-
+In a multi sysplex environment, the API Gateway may need to register also with a Central Discovery Service which gathers information about all installed API Gateways
+in isolated sysplex environments. The data from the Central Discovery Service can then be used by the Central Gateway for routing to individual API Gateways.
 Follow these steps to register with additional Discovery Services:
 1. Open the `zowe.yaml` configuration file.
-2. Add the property `components.gateway.apiml.service.additionalRegistration` and set the value to a List of Discovery service clusters to additional Disovery Services.
-
+2. Add the property `components.gateway.apiml.service.additionalRegistration` and set the value to a List of Discovery service clusters to additional Disovery Services.
    **Example:**
    ```
    components.gateway.apiml.service.additionalRegistration: 
        <!-- central APIML -->
-       - discoveryServiceUrls: https://${ZWE_haInstance_hostname1}:${DISCOVERY_PORT1}/eureka/,https://${ZWE_haInstance_hostname1}:${DISCOVERY_PORT2}/eureka/
-              routes:
-                    gatewayUrl: /
-                    serviceUrl: /
+       - discoveryServiceUrls: https://sys1:10011/eureka/,https://sys1:10021/eureka/ 
+                    routes:
+                                 gatewayUrl: /
+                                 serviceUrl: /
      <!-- APIML on System 2 -->
-       - discoveryServiceUrls: https://${ZWE_haInstance_hostname2}:${DISCOVERY_PORT1}/eureka/,https://${ZWE_haInstance_hostname2}:${DISCOVERY_PORT2}/eureka/
-              routes:
-                    gatewayUrl: /
-                    serviceUrl: /
+       - discoveryServiceUrls: https://sys2:10011/eureka/,https://sys2:10021/eureka/
+                    routes:
+                                 gatewayUrl: /
+                                 serviceUrl: /
       <!-- APIML on System 3 -->
-       - discoveryServiceUrls: https://${ZWE_haInstance_hostname3}:${DISCOVERY_PORT1}/eureka/,https://${ZWE_haInstance_hostname3}:${DISCOVERY_PORT2}/eureka/
-              routes:
-                    gatewayUrl: /
-                    serviceUrl: /
-    ```
-
+       - discoveryServiceUrls: https://sys3:10011/eureka/,https://sys3:10021/eureka/ 
+                   routes:
+                                gatewayUrl: /
+                                serviceUrl: /
 3. Restart Zowe.
