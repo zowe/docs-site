@@ -33,7 +33,7 @@ Review and perform z/OS configuration steps based on your settings. For a detail
 
 The user ID ZWESVUSR that is associated with the Zowe started task must have `READ` permission for the `BPX.JOBNAME` profile in the `FACILITY` class. For more information about permitting user to activate the `FACILITY` class for this profile, see [Configuring addrss space job naming](./configure-zos-system/#configure-address-space-job-naming).
 
-## Assign security permissions of users
+## Assign security permissions to users
 
 Assign users (ZWESVUSR and ZWESIUSR) and the ZWEADMIN security group permissions required to perform specific tasks. For more information see, [Assign security permissions to users]().
 
