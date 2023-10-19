@@ -93,7 +93,6 @@ module.exports = {
           label: "Installing convenience, SMP/E, and PSWI builds",
           items: [
             "user-guide/zos-components-installation-checklist",
-            "user-guide/zos-components-installation-checklist-dev",
             {
               type: "category",
               label: "Planning",

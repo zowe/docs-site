@@ -22,7 +22,8 @@ To install and configure the cross memory server, it is necessary to define APF-
 - [Zowe auxiliary service](#zowe-auxiliary-service)
     - [When to configure the auxiliary service](#when-to-configure-the-auxiliary-service)
     - [Installing the auxiliary service](#installing-the-auxiliary-service)
-
+      - [Zowe Auxiliary Address space](#zowe-auxiliary-address-space)
+      
 ## PDS sample library and PDSE load library
 
 The cross memory server runtime artifacts, the JCL for the started tasks, the parmlib, and members containing sample configuration commands are found in the `SZWESAMP` PDS sample library.  
@@ -195,6 +196,18 @@ To install the auxiliary service to allow it to run, you take similar steps to i
 - The PDSE load library `SZWEAUTH`is APF-authorized, or load module `ZWESAUX` is copied to an existing APF Auth LoadLib.
 - The load module `ZWESAUX` must run in key 4 and be non-swappable by adding a PPT entry to the SCHEDxx member of the system PARMLIB `PPT PGMNAME(ZWESAUX) KEY(4) NOSWAP`.
 
-**Important!**
+#### Zowe Auxiliary Address space
 
+The cross memory server runs as a started task `ZWESISTC` that uses the load module `ZWESIS01`.
+
+In some use cases, the Zowe cross memory server has to spawn child address spaces, which are known as auxiliary (AUX) address spaces.  The auxiliary address spaces run as the started task `ZWESASTC` using the load module `ZWESAUX` and are started, controlled, and stopped by the cross memory server.  
+
+An example of when an auxiliary address space is used is for a system service that requires supervisor state but cannot run in cross-memory mode. The service can be run in an AUX address space which is invoked by the Cross Memory Server acting as a proxy for unauthorized users of the service. 
+
+Do not install the Zowe auxiliary address space unless a Zowe extension product's installation guide explicitly asks for it to be done.  This will occur if the extension product requires services of Zowe that cannot be performed by the cross memory server and an auxiliary address space needs to be started.  
+
+A default installation of Zowe does not require auxiliary address spaces to be configured.
+
+:::important
 The cross memory `ZWESISTC` task starts and stops the `ZWESASTC` task as needed. **Do not start the `ZWESASTC` task manually.**
+:::
