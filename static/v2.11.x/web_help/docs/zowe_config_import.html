@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>config import</title>
+<link rel="stylesheet" href="../css/bundle-docs.css">
+<link rel="stylesheet" href="../css/docs.css">
+<article class="markdown-body">
+<h2><a href="zowe.html">zowe</a> › <a href="zowe_config.html">config</a> › <a href="zowe_config_import.html">import</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
+<p>Import config files from another location on disk or from an Internet URL.</p>
+<p>If the config `$schema` property points to a relative path, the schema will also be imported.</p>
+<h4>Usage</h4>
+<p>zowe config import &lt;location&gt; [options]</p>
+<h4>Positional Arguments</h4>
+<ul>
+<li>
+<p><code>location</code>		 <em>(string)</em></p>
+<ul>
+<li>File path or URL to import from.</li>
+</ul>
+</li>
+</ul>
+<h4>Options</h4>
+<ul>
+<li>
+<p><code>--global-config</code> | <code>--gc</code> <em>(boolean)</em></p>
+<ul>
+<li>
+<p>Target the global config files.</p>
+<p>Default value: false</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--user-config</code> | <code>--uc</code> <em>(boolean)</em></p>
+<ul>
+<li>
+<p>Target the user config files.</p>
+<p>Default value: false</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--overwrite</code> | <code>--ow</code> <em>(boolean)</em></p>
+<ul>
+<li>
+<p>Overwrite config file if one already exists.</p>
+<p>Default value: false</p>
+</li>
+</ul>
+</li>
+</ul>
+<h4>Connection Options</h4>
+<ul>
+<li>
+<p><code>--user</code> | <code>-u</code> <em>(string)</em></p>
+<ul>
+<li>User name if authentication is required to download the config from a URL.</li>
+</ul>
+</li>
+<li>
+<p><code>--password</code> | <code>--pass</code> | <code>--pw</code> <em>(string)</em></p>
+<ul>
+<li>Password if authentication is required to download the config from a URL.</li>
+</ul>
+</li>
+<li>
+<p><code>--reject-unauthorized</code> | <code>--ru</code> <em>(boolean)</em></p>
+<ul>
+<li>
+<p>Reject self-signed certificates if config is downloaded from an HTTPS URL.</p>
+<p>Default value: true</p>
+</li>
+</ul>
+</li>
+</ul>
+<h4>Examples</h4>
+<ul>
+<li>
+<p>Import config from local file on disk:</p>
+<ul>
+<li><code>zowe config import ~/Downloads/zowe.config.json</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe config import ~/Downloads/zowe.config.json">Copy</button></li>
+</ul>
+</li>
+<li>
+<p>Import global config from Internet URL:</p>
+<ul>
+<li><code>zowe config import https://example.com/zowe.config.json --global-config</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe config import https://example.com/zowe.config.json --global-config">Copy</button></li>
+</ul>
+</li>
+</ul>
+</article>
+<script src="../js/bundle-docs.js"></script>
+<script src="../js/docs.js"></script>
