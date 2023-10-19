@@ -8,8 +8,11 @@
    
    The data sets that match your pattern(s) display in the **Side Bar**.
 
-   **Tip:** To use multiple filters, separate individual entries with a comma. You can append or postpend any filter with an \* to indicate a wildcard search. You cannot enter an \* as the entire pattern.
+   :::tip
+   
+   To use multiple filters, separate individual entries with a comma. You can append or postpend any filter with an \* to indicate a wildcard search. You cannot enter an \* as the entire pattern.
 
+   :::
    ![View Data Set](../images/ze/ZE-multiple-search.gif)
 
 ## Viewing data sets with member filters
@@ -50,7 +53,11 @@
 4. Edit the document.
 5. Press `Ctrl`+`S` or `Command`+`S` to save the changes and upload the data set to the mainframe.
 
-   **Note:** If someone else has made changes to the data set member while you were editing, you can merge your changes before uploading to the mainframe. See [Preventing merge conflicts](#preventing-merge-conflicts) for more information.
+   :::note 
+   
+   If someone else has made changes to the data set member while you were editing, you can merge your changes before uploading to the mainframe. See [Preventing merge conflicts](#preventing-merge-conflicts) for more information.
+
+   :::
 
    ![Edit and upload a data set member](../images/ze/ZE-edit-upload.gif)
 
@@ -135,7 +142,11 @@
 4. Confirm the deletion by selecting **Delete** on the **picker** drop-down menu.
 5. To delete a data set, right-click the data set and select **Delete Data Set**, then confirm the deletion.
 
-   **Note:** You can delete a data set before you delete its members.
+  :::note
+  
+  You can delete a data set before you delete its members.
+
+  :::
 
    ![Delete](../images/ze/ZE-delete-ds.gif)
 
@@ -146,7 +157,7 @@
 3. In the **picker** field, enter or select a search pattern to filter search results in the **Side Bar**.
 4. Right-click a data set or member and select the **Show Attributes** option.
 
-   This displays the attributes in an **Editor** tab.
+   The attributes display in an **Editor** tab.
 
     ![View Data Set, Member Attributes](../images/ze/ZE-show-attributes.gif)
 
@@ -164,7 +175,7 @@ Filter partitioned data set members in the **DATA SETS** tree view by **Date Mod
 
 ### Filtering all partitioned data set members under a specific profile
 
-1. In the **DATA SETS** tree, click on the **Filter** icon to the right of a profile, or right-click on a profile and select the **Filter PDS members…** option.
+1. In the **DATA SETS** tree, click on the **Filter** icon to the right of a profile.
 
    The filter selection menu appears in the **picker** field.
 2. Select a filter type from the list of available options:
@@ -198,7 +209,7 @@ Sort partitioned data set members in the **DATA SETS** tree view by member **Nam
 
 ### Sorting all partitioned data set members under a specific profile
 
-1. In the **DATA SETS** tree, click on the **Sort** icon to the right of a profile, or right-click on a profile and select the **Sort PDS members…** option.
+1. In the **DATA SETS** tree, click on the **Sort** icon to the right of a profile.
 
    The sorting selection menu appears in the **picker** field.
 2. To change the sorting direction, select the **Sort Direction** option and select a direction type from the **picker** menu.
@@ -231,7 +242,11 @@ Sort partitioned data set members in the **DATA SETS** tree view by member **Nam
 2. Select the data set or data set member you want to submit.
 3. Right-click the data set or member and select the **Submit Job** option.
 
-   **Note:** Click on the hyperlink on the notification pop-up message to view the job.
+   :::note
+   
+   Click on the hyperlink on the notification pop-up message to view the job.
+
+   :::
 
    ![Submit a JCL](../images/ze/ZE-submit-jcl.gif)
 

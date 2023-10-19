@@ -8,9 +8,14 @@
    
    All child files and directories of that path display in the **Side Bar**.
 
-   **Note:** You will not be able to expand directories or files to which you are not authorized.
+   :::note
+  
+   You cannot expand directories or files to which you are not authorized.
 
-    ![Enter Path](../images/ze/ZE-path.gif)
+   :::
+
+   ![Enter Path](../images/ze/ZE-path.gif)
+
 
 ## Refreshing the list of files
 
@@ -34,7 +39,11 @@
 
    This displays the file in an **Editor** tab.
 
-   **Note:** If you define file associations with syntax coloring, the suffix of your file will be marked up.
+   :::note
+
+   If you define file associations with syntax coloring, the suffix of your file is marked up.
+
+   :::
 
 3. Edit the document.
 4. Press `Ctrl`+`S` or `Command`+`S` to save the changes and upload the USS file to the mainframe.
