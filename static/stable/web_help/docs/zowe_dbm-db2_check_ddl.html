@@ -45,8 +45,8 @@
 <p><code>--modification</code> | <code>-m</code> <em>(string)</em></p>
 <ul>
 <li>
-<p>Identifies an existing named set of server-managed default parameter values that control the execution behavior of the zowe dbm-db2 commands. For example, you can use a modification to identify a set of default values that differ from the set of values that are normally used.</p>
-<p>For more information about using the modification option, see the DBM Data Service documentation at <a href="https://techdocs.broadcom.com/db2mgmt">https://techdocs.broadcom.com/db2mgmt</a>.</p>
+<p>Identifies a named set of server-managed default parameter values that control the execution behavior of the zowe dbm-db2 commands. For example, you can use a modification to identify a set of default values that differ from the set of values that are normally used.</p>
+<p>For more information about using the modification option, see the DBM Data Service documentation at <a href="https://techdocs.broadcom.com/db2mgmt">https://techdocs.broadcom.com/db2mgmt</a></p>
 </li>
 </ul>
 </li>
@@ -57,6 +57,54 @@
 <p>Specifies the local output error file in YAML format that contains basic execution information, connection details, dbm-db2 profile parameters, used arguments, and errors that occurred during execution of the command.</p>
 <p>Default value: error.log</p>
 </li>
+</ul>
+</li>
+</ul>
+<h4>DBM-Db2 Profile Options</h4>
+<ul>
+<li>
+<p><code>--job-cards</code> | <code>--jc</code> <em>(array)</em></p>
+<ul>
+<li>Specifies a string array of z/OS JCL JOB statements.</li>
+</ul>
+</li>
+<li>
+<p><code>--work-dataset-prefix</code> | <code>--wdp</code> <em>(string)</em></p>
+<ul>
+<li>Specifies the prefix that is used as the high level qualifier in z/OS work data set names.</li>
+</ul>
+</li>
+<li>
+<p><code>--authid</code> | <code>-a</code> <em>(string)</em></p>
+<ul>
+<li>Specifies the primary Db2 authorization ID (user ID) that is used to establish a connection between Db2 and a process.</li>
+</ul>
+</li>
+<li>
+<p><code>--sqlid</code> | <code>-s</code> <em>(string)</em></p>
+<ul>
+<li>Specifies the authorization ID that is used as the value in generated SET CURRENT SQLID statements most of the time.</li>
+</ul>
+</li>
+<li>
+<p><code>--overwrite-output-files</code> | <code>--oof</code> <em>(boolean)</em></p>
+<ul>
+<li>Specifies whether to overwrite output files when they already exist.</li>
+</ul>
+</li>
+<li>
+<p><code>--protocol</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>Specifies the communication protocol to use between the zowe dbm-db2 client and the DBM Data Service.</p>
+<p>Allowed values: http, https</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--environment-list</code> | <code>--el</code> <em>(string)</em></p>
+<ul>
+<li>Specifies an object of one or more values consisting of a Db2 subsystem ID and a DBM Data Service environment pair. The paired entry identifies the DBM Data Service environment to use for a subsystem that is accessible through multiple DBM Data Service environments. For more information about configuring the DBM Data Service, see the Database Management Solutions for Db2 for z/OS documentation at <a href="https://techdocs.broadcom.com/db2mgmt">https://techdocs.broadcom.com/db2mgmt</a></li>
 </ul>
 </li>
 </ul>

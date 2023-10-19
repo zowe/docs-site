@@ -59,7 +59,7 @@ database db1 include(children);</p>
 <p>Specifies the creator and name of an existing RC/Migrator global change set to be used to modify Db2 object attributes when generating the DDL.</p>
 <p>Format:</p>
 <p>&lt;change-set-creator.change-set-name&gt;</p>
-<p>For more information about global change services, see the RC/Migrator documentation at <a href="https://techdocs.broadcom.com/db2rcmig">https://techdocs.broadcom.com/db2rcmig</a>.</p>
+<p>For more information about global change services, see the RC/Migrator documentation at <a href="https://techdocs.broadcom.com/db2rcmig">https://techdocs.broadcom.com/db2rcmig</a></p>
 <p>Note: If change-set and change-set-file are both specified, specifications in change-set-file take precedence.</p>
 </li>
 </ul>
@@ -72,7 +72,7 @@ database db1 include(children);</p>
 <p>Format:</p>
 <p>&lt;object-attribute&gt; &lt;from-value&gt; &lt;to-value&gt;</p>
 <p>The &lt;object-attribute&gt; consists of four characters. The first two characters identify the object type. The last two characters identify the specific attribute. Wildcard characters are supported in the &lt;from-value&gt; and &lt;to-value&gt;. The first occurrence in multiple specifications for the same &lt;object-attribute&gt; has the highest precedence.</p>
-<p>For a list of global change set attributes, see the RC/Migrator documentation at <a href="https://techdocs.broadcom.com/db2rcmig">https://techdocs.broadcom.com/db2rcmig</a>.</p>
+<p>For a list of global change set attributes, see the RC/Migrator documentation at <a href="https://techdocs.broadcom.com/db2rcmig">https://techdocs.broadcom.com/db2rcmig</a></p>
 <p>Example:</p>
 <p>The following example demonstrates changes to table’s schema (creator) and tablespace names:</p>
 <p>TBCR TEST% PROD%<br>
@@ -105,7 +105,7 @@ Allowed values: drop, create</p>
 <ul>
 <li>
 <p>Identifies a named set of server-managed default parameter values that control the execution behavior of the zowe dbm-db2 commands. For example, you can use a modification to identify a set of default values that differ from the set of values that are normally used.</p>
-<p>For more information about using the modification option, see the DBM Data Service documentation at <a href="https://techdocs.broadcom.com/db2mgmt">https://techdocs.broadcom.com/db2mgmt</a>.</p>
+<p>For more information about using the modification option, see the DBM Data Service documentation at <a href="https://techdocs.broadcom.com/db2mgmt">https://techdocs.broadcom.com/db2mgmt</a></p>
 </li>
 </ul>
 </li>
@@ -125,6 +125,60 @@ Allowed values: drop, create</p>
 <p><code>--source-db2</code> | <code>--sd</code> <em>(string)</em></p>
 <ul>
 <li>Specifies the source Db2 subsystem ID where the objects that you want to generate DDL for are located.</li>
+</ul>
+</li>
+</ul>
+<h4>DBM-Db2 Profile Options</h4>
+<ul>
+<li>
+<p><code>--job-cards</code> | <code>--jc</code> <em>(array)</em></p>
+<ul>
+<li>Specifies a string array of z/OS JCL JOB statements.</li>
+</ul>
+</li>
+<li>
+<p><code>--work-dataset-prefix</code> | <code>--wdp</code> <em>(string)</em></p>
+<ul>
+<li>Specifies the prefix that is used as the high level qualifier in z/OS work data set names.</li>
+</ul>
+</li>
+<li>
+<p><code>--authid</code> | <code>-a</code> <em>(string)</em></p>
+<ul>
+<li>Specifies the primary Db2 authorization ID (user ID) that is used to establish a connection between Db2 and a process.</li>
+</ul>
+</li>
+<li>
+<p><code>--sqlid</code> | <code>-s</code> <em>(string)</em></p>
+<ul>
+<li>Specifies the authorization ID that is used as the value in generated SET CURRENT SQLID statements most of the time.</li>
+</ul>
+</li>
+<li>
+<p><code>--termination-character</code> | <code>--tc</code> <em>(string)</em></p>
+<ul>
+<li>Specifies the SQL termination character that you want to use to terminate object DDL for triggers, XML indexes, functions, and procedures that contain embedded semicolon-terminated SQL statements. You cannot use a comma, an underscore, a single quote, double quotes, left parentheses, or right parentheses for this value.</li>
+</ul>
+</li>
+<li>
+<p><code>--overwrite-output-files</code> | <code>--oof</code> <em>(boolean)</em></p>
+<ul>
+<li>Specifies whether to overwrite output files when they already exist.</li>
+</ul>
+</li>
+<li>
+<p><code>--protocol</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>Specifies the communication protocol to use between the zowe dbm-db2 client and the DBM Data Service.</p>
+<p>Allowed values: http, https</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--environment-list</code> | <code>--el</code> <em>(string)</em></p>
+<ul>
+<li>Specifies an object of one or more values consisting of a Db2 subsystem ID and a DBM Data Service environment pair. The paired entry identifies the DBM Data Service environment to use for a subsystem that is accessible through multiple DBM Data Service environments. For more information about configuring the DBM Data Service, see the Database Management Solutions for Db2 for z/OS documentation at <a href="https://techdocs.broadcom.com/db2mgmt">https://techdocs.broadcom.com/db2mgmt</a></li>
 </ul>
 </li>
 </ul>
