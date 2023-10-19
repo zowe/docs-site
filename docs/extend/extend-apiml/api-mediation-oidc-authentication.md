@@ -39,12 +39,11 @@ The following diagram illustrates the interactions between the participants of t
 
 - The Gateway validates the access token 
 
-<!-- 
-- The Gateway validates the access token at the provider's OIDC/introspection end-point. If the access token is validated, the outcome is cached for a short time (20 sec by default).
--->
+- The Gateway validates the access token by comparing the key id of the token against the key ids obtained from the authorization server's JWK keys endpoint,URL to end point should be set using the property jwks_uri. If the access token is validated, the outcome is cached for a short time (20 sec by default).
 
+- The JWK Keys obtained from the authorization server's endpoint are cached for a while to prevent the repeated calls to the endpoint. It can be set using the property jwks.refreshInternalHours (it's 1 hour by default)
 
-- In subsequent calls with the same token, the Gateway reuses the cached validation outcome. <!-- As such, round trips to the OIDC /introspection end-point are not required between short intervals, when the client needs to access multiple resources in a row to complete a unit of work -->. The caching interval is configurable with a default value of 20 seconds, which is typically a sufficient time to allow most client operations requiring multiple API requests to complete, while also providing adequate protection against unauthorized access.
+- In subsequent calls with the same token, the Gateway reuses the cached validation outcome. As such, round trips to the OIDC /parsing the jwt token for validation with the keys obtained from from the authorization server's JWK keys endpoint are not required between short intervals, when the client needs to access multiple resources in a row to complete a unit of work. The caching interval is configurable with a default value of 20 seconds, which is typically a sufficient time to allow most client operations requiring multiple API requests to complete, while also providing adequate protection against unauthorized access.
 - The API ML Gateway fetches the distributed user identity from the distributed access token and maps this user identity to the user mainframe identity using SAF.
 - The API ML Gateway calls the requested mainframe service/s with mainframe user credentials (Zowe, SAF JWT, or pass-ticket) which are expected by the target mainframe service.
 
@@ -100,7 +99,7 @@ Use the following procedure to enable the feature to use an OIDC Access Token as
    Specifies the value of the client identification (`client_id`) assigned by the OIDC provider to the API ML Gateway.
 
 - **`components.gateway.apiml.security.oidc.clientSecret`**
-   Specifies the client secret assigned by the OIDC provider to the API ML Gateway. This parameter is used in combination with the `client_id` in Access Token validation requests at the `/introspect` endpoint of the OIDC provider.
+   Specifies the client secret assigned by the OIDC provider to the API ML Gateway. This parameter is used in combination with the `client_id` to obtain JWKs from jwks.uri of the OIDC provider.
 
 - **`components.gateway.apiml.security.oidc.registry`**  
    Specifies the SAF registry used to group the identities recognized as having a OIDC identity mapping. The registry name is the string used during the creation of the mapping between the dustributed and mainframe user identities. For more information, see the [ESM configuration](#esm-configuration).
@@ -169,4 +168,3 @@ The client application is not properly configured in the API ML Gateway.
 
 **Solution**  
 Check that the `client_id` and `client_secret` configured in the API ML Gateway correspond to the `client_id` and `client_secret` of the client application as configured in the OIDC provider.
-  
