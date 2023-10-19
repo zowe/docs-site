@@ -1,6 +1,8 @@
 # Initializing the z/OS system with `zwe init`
 
-After you install the Zowe runtime, you must initialize Zowe with proper security configurations and complete some configurations before you can start it. To do this, you run the `zwe init` command. This step is common for installing and configuring Zowe from either a convenience build or from an SMP/E build.
+After you install the Zowe runtime, it is necessary to initialize Zowe with proper security configurations and complete some configurations before you can start Zowe. To simlify this configuration process, one option is to run the `zwe init` command. This step is common for installing and configuring Zowe from either a convenience build or from an SMP/E build.
+
+**Required roles:** system programmer, security administrator
 
 ## About the `zwe init` command
 
@@ -13,9 +15,9 @@ The `zwe init` command is a combination of the following subcommands. Each subco
 - **`vsam`**: Configure the VSAM files needed to run the Zowe caching service used for high availability (HA)
 - **`stc`**: Configure the system to launch the Zowe started task.
 
-You can type `zwe init --help` to learn more about the command or see the [`zwe init` command reference](../appendix/zwe_server_command_reference/zwe/init/zwe-init) for detailed explanation, examples, and parameters. 
+Enter `zwe init --help` to learn more about the command or see the [`zwe init` command reference](../appendix/zwe_server_command_reference/zwe/init/zwe-init) for detailed explanation, examples, and parameters. 
 
-`zwe init` command requires a [Zowe configuration file](installandconfig#zowe-configuration-file) to proceed. This configuration file instructs how Zowe should be initialized. You must create and review this file before proceeding. If you don't have the file already, you can copy from `example-zowe.yaml` located in the Zowe runtime directory.
+`zwe init` command requires a [Zowe configuration file](installandconfig#zowe-configuration-file) to proceed. This configuration file instructs how Zowe should be initialized. It is necessary to create and review this file before proceeding. If you do not have the file already, copy from `example-zowe.yaml` located in the Zowe runtime directory.
 
 :::tip
 The following `zwe init` arguments might be useful:
