@@ -158,11 +158,11 @@
 
    ![Add Profile](../images/ze/ZE-mult-profiles.gif)
 
-## Filtering data set members
+## Filtering partitioned data set members
 
 Filter partitioned data set members in the **DATA SETS** tree view by **Date Modified** or **User ID**.
 
-### Filtering all data set members under a specific profile
+### Filtering all partitioned data set members under a specific profile
 
 1. In the **DATA SETS** tree, click on the **Filter** icon to the right of a profile, or right-click on a profile and select the **Filter PDS members…** option.
 
@@ -177,7 +177,7 @@ Filter partitioned data set members in the **DATA SETS** tree view by **Date Mod
 
    ![Filtering all PDS members under a specific profile](../images/ze/ZE-filtering-profile-PDS-members.gif)
 
-### Filtering members for a single data set
+### Filtering members for a single partitioned data set
 
 1. In the **DATA SETS** tree, right-click on a data set and select the **Filter PDS members…** option.
 
@@ -192,11 +192,11 @@ Filter partitioned data set members in the **DATA SETS** tree view by **Date Mod
 
    ![Filtering PDS members for a single PDS](../images/ze/ZE-filtering-a-specific-PDS.gif)
 
-## Sorting data set members
+## Sorting partitioned data set members
 
 Sort partitioned data set members in the **DATA SETS** tree view by member **Name**, **Date Modified**, or **User ID**.
 
-### Sorting all data set members under a specific profile
+### Sorting all partitioned data set members under a specific profile
 
 1. In the **DATA SETS** tree, click on the **Sort** icon to the right of a profile, or right-click on a profile and select the **Sort PDS members…** option.
 
@@ -206,14 +206,12 @@ Sort partitioned data set members in the **DATA SETS** tree view by member **Nam
    - **Name**
    - **Date Modified**
    - **User ID**
-4. Enter a valid value for the selected sort type.
-5. Press the `Enter` key to confirm the sort type.
 
    Expanded data sets display a sorted list of members under the selected profile in the **DATA SETS** tree.
 
    ![Sorting all PDS members in a profile ](../images/ze/ZE-sorting-profile-PDS-members.gif)
 
-### Sorting members for a single data set
+### Sorting members for a single partitioned data set
 
 1. In the **DATA SETS** tree, right-click on a data set and select the **Sort PDS members…** option.
    The sort selection menu appears in the **picker** field.
@@ -222,10 +220,8 @@ Sort partitioned data set members in the **DATA SETS** tree view by member **Nam
    - **Name**
    - **Date Modified**
    - **User ID**
-4. Enter a valid value for the selected sort type.
-5. Press the `Enter` key to confirm the sort type. This overrides any *profile* sort preferences that might be in effect for the single PDS.
 
-   The selected data set displays a sorted list of members in the **DATA SETS** tree.
+   This overrides any *profile* sort preferences that might be in effect for the single PDS. The selected data set displays a sorted list of members in the **DATA SETS** tree.
 
    ![Sorting a single PDS](../images/ze/ZE-sorting-a-specific-PDS.gif)
 
