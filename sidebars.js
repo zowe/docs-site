@@ -176,9 +176,7 @@ module.exports = {
                   ],
                 },
                 "user-guide/configure-xmem-server",
-                "user-guide/initialize-vsam-dataset",
                 "user-guide/install-stc-members",
-                "user-guide/configure-auxiliary-address-space",
                 "user-guide/configure-zowe-zosmf-workflow",
                 "user-guide/configmgr-using",
                 "user-guide/install-configure-zos-extensions"
@@ -192,6 +190,7 @@ module.exports = {
                 "user-guide/configure-sysplex",
                 "user-guide/systemrequirements-zosmf-ha",
                 "user-guide/configure-caching-service-ha",
+                "user-guide/initialize-vsam-dataset",
               ],
             },
             "user-guide/start-zowe-zos",
