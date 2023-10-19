@@ -27,6 +27,7 @@ module.exports = {
         "getting-started/zowe-high-availability"
       ],
     },
+    "appendix/zowe-glossary", 
     {
       type: "category",
       label: "Zowe FAQ",
@@ -42,6 +43,7 @@ module.exports = {
       className: "ToCheadercolor",
       link: {type:"doc", id:"getting-started/release-notes/release-notes-overview"},
       items: [
+        "getting-started/release-notes/v2_12_0",
         "getting-started/release-notes/v2_11_0",
         "getting-started/release-notes/v2_10_0",
         "getting-started/release-notes/v2_9_0",
@@ -158,7 +160,6 @@ module.exports = {
                   label: "Configuring certificates",
                   link: {type:"doc", id:"user-guide/configure-certificates"},
                   items: [
-                    "user-guide/configure-certificates",
                     "user-guide/certificates-configuration-questionnaire",
                     "user-guide/certificate-configuration-scenarios",
                     "user-guide/import-certificates",
@@ -212,6 +213,7 @@ module.exports = {
               items: [
                 "user-guide/configure-data-sets-jobs-api",
                 "user-guide/api-mediation/api-catalog-configuration",
+                "user-guide/api-mediation/api-mediation-personal-access-token",
                 "user-guide/api-mediation/api-gateway-configuration",
                 "user-guide/api-mediation/discovery-service-configuration",
                 "user-guide/api-mediation/api-mediation-internal-configuration",
@@ -706,6 +708,7 @@ module.exports = {
             "troubleshoot/cli/use-individual-troubleshoot-commands",
             "troubleshoot/cli/cli-use-curl-to-troubleshoot",
             "troubleshoot/cli/zosmf-cli",
+            "troubleshoot/cli/troubleshoot-cli-credentials",
             "troubleshoot/cli/known-cli",
             "troubleshoot/cli/cli-issue",
             "troubleshoot/cli/troubleshoot-cli-plugins",
@@ -863,7 +866,7 @@ module.exports = {
     {
       type: "link",
       label: "Third Party Software Requirements",
-      href: "https://github.com/zowe/docs-site/tree/master/tpsr/tpsr-v2.10.x.md",
+      href: "https://github.com/zowe/docs-site/tree/master/tpsr/tpsr-v2.11.x.md",
     },
   ],
 };
