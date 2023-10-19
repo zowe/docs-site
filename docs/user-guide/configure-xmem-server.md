@@ -3,9 +3,12 @@
 The Zowe cross memory server (ZIS) provides privileged cross-memory services to the Zowe Desktop and runs as an
 APF-authorized program. The same cross memory server can be used by multiple Zowe desktops. The cross memory server is required to log on to the Zowe desktop and operate the desktop apps such as the Code Editor. If you wish to start Zowe without the desktop (for example bring up just the API Mediation Layer), you do not need to install and configure a cross memory server and can skip this step. 
 
-**Required role: system programmer, security administrator**
+:::info**Required roles:** system programmer, security administrator
+:::
 
-To install and configure the cross memory server, you must define APF-authorized load libraries, program properties table (PPT) entries, and a parmlib. This requires familiarity with z/OS.
+Before you install the Zowe cross memory server (ZIS), ensure that you have completed the initial steps for configuring Zowe z/OS components and the z/OS system. For more information, see the [Configuring Overview](./configuring-overview).
+
+To install and configure the cross memory server, it is necessary to define APF-authorized load libraries, program properties table (PPT) entries, and a parmlib. This requires familiarity with z/OS.
 
 - [PDS sample library and PDSE load library](#pds-sample-library-and-pdse-load-library)
 - [Load module](#load-module)
