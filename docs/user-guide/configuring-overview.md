@@ -11,6 +11,8 @@ Configuring Zowe z/OS components consists of the following four main steps:
 3. Grant users permission to access z/OSMF
 4. Install and configure the Zowe cross memory server (ZWESISTC)
 
+**Note:** Successful completion of steps 2 and 3 require elevated security permissions. We recommend you consult with your security administrator to assist with performing these steps. 
+
 ## Initialize Zowe z/OS runtime
 
 To initialize Zowe z/OS runtime, choose from the following options:
