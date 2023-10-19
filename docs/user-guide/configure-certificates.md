@@ -2,7 +2,8 @@
 
 Review this article to learn about the key concepts of Zowe certificates, and options for certificate configuration. 
 
-**Required roles: system programmer, security administrator**
+:::info**Required roles:** system programmer, security administrator
+:::
 
 Zowe uses digital certificates for secure, encrypted network communication over Secure Sockets Layer/Transport Layer Security (SSL/TLS) and HTTPS protocols. Communication in Zowe can be between Zowe servers, from Zowe to another server, or even between Zowe's servers and Zowe's client components.
 

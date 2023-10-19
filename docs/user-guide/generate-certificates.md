@@ -1,7 +1,12 @@
 
 # Generating a certificate  
 
-If you do not have a certificate, follow the procedure that corresponds to the certificate type you choose to generate: 
+If you do not have a certificate, follow the procedure in this article that corresponds to the certificate type you choose to generate.
+
+:::info**Required roles:** system programmer, security administrator
+:::
+
+Choose from the following certificate types:
 
 * [Creating a PKCS12 certificate](#creating-a-pkcs12-keystore)
 * [Creating a JCERACFKS certificate](#creating-a-jceracfks-certificate)

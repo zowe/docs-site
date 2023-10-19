@@ -2,7 +2,8 @@
 
 After you install the Zowe runtime, it is necessary to initialize Zowe with proper security configurations and complete some configurations before you can start Zowe. To simlify this configuration process, one option is to run the `zwe init` command. This step is common for installing and configuring Zowe from either a convenience build or from an SMP/E build.
 
-**Required roles:** system programmer, security administrator
+:::info**Required roles:** system programmer, security administrator
+:::
 
 ## About the `zwe init` command
 

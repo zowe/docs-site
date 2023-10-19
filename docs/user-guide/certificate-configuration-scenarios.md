@@ -1,9 +1,14 @@
 # Certificate configuration scenarios 
 
 
-As a system programmer, or security administrator review the five scenarios for configuring Zowe for automatic certificate setup. Examples of the zowe.yaml files are provided for each scenario.
+ After you complete the Zowe certificates configuration questionnaire to determine your specific configuration use case, review the five scenarios presented in this article for configuring Zowe for automatic certificate setup. Examples of the zowe.yaml files are provided for each scenario.
 
-**Tip:** To assist you with determining the specific certificate configuration scenario that applies to your use case, see [Zowe certificates configuration questionnaire](./certificates-configuration-questionnaire.md). This questionnaire will guide you through quetions that leads to a specific configuration scenario.
+:::info**Required roles:** system programmer, security administrator
+:::
+
+:::tip **Tip**
+To assist you with determining the specific certificate configuration scenario that applies to your use case, see [Zowe certificates configuration questionnaire](./certificates-configuration-questionnaire.md). This questionnaire will guide you through quetions that leads to a specific configuration scenario.
+:::
 
 Zowe servers require both a keystore to store the certificates and a truststore to validate certificates.
 
@@ -14,8 +19,9 @@ This automation can be performed by defining and customizing the `zowe.setup.cer
 Zowe can then automate the certificate setup via the `zwe init certificate` command. 
 
 
-**Note:**  
+:::note**Note:**  
 Automated generation of certificates is an option, but is not required. If you already have a keystore that contains a valid certificate*, and the  corresponding private key of the certificate, along with a truststore which validates the certificate and any other certificates you expect to encounter, then you also have the option to directly define the parameter `zowe.certificate` which specifies the location of each of these certificates and their storage objects. Note that this parameter should not be confused with the parameter `zowe.setup.certificate`.
+:::
 
 ## <b>*</b> What is a valid certificate in Zowe?
 

@@ -2,11 +2,14 @@
 
 During the initial installation of Zowe server-side components, it is necessary for your organization's security administrator to perform a range of tasks that require elevated security permissions. As a security administrator, follow the procedures outlined in this article to configure Zowe and your z/OS system to run Zowe with z/OS.
 
-**Required role: security administrator** 
+:::info**Required roles:** system programmer, security administrator
+:::
 
 ## Validate and re-run `zwe init` commands
 
-**Important!** During installation, the system programmer customizes values in the zowe.yaml file. However, due to insufficient permissions of the system programmer, the `zwe init security` command is likely to fail. Consult with your security administrator to review your ZWESECUR job content so that your security adminstrator can re-submit this command.
+:::note
+During installation, the system programmer customizes values in the zowe.yaml file. However, due to insufficient permissions of the system programmer, the `zwe init security` command is likely to fail. Consult with your security administrator to review your `ZWESECUR` job content so that your security adminstrator can re-submit this command.
+:::
 
 ## Initialize Zowe security configurations
 

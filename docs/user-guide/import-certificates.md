@@ -1,6 +1,9 @@
-# Import and configure a certificate
+# Importing and configuring a certificate
 
 One option to use certificates in Zowe is to import and configure existing certificates. Use the procedure that applies to the type of certificate you wish to import.
+
+:::info**Required roles:** system programmer, security administrator
+:::
 
 * [Importing a file-based PKCS12 certificate](#importing-an-existing-pkcs12-certificate)
 * [Importing a JCERACFKS certificate](#importing-an-existing-jceracfks-certificate)

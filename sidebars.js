@@ -151,14 +151,13 @@ module.exports = {
               items: [
                 "user-guide/initialize-zos-system",
                 "user-guide/initialize-mvs-datasets",
-                "user-guide/apf-authorize-load-library",
-                "user-guide/configure-xmem-server",
                 {
                   type: "category",
                   label: "Configuring security",
                   link: {type:"doc", id:"user-guide/configuring-security"},
                   items: [
                     "user-guide/initialize-security-configuration",
+                    "user-guide/apf-authorize-load-library",
                     "user-guide/configure-zos-system",
                     "user-guide/assign-security-permissions-to-users",
                     "user-guide/grant-user-permission-zosmf",
@@ -177,6 +176,7 @@ module.exports = {
                     "user-guide/certificates-setup",
                   ],
                 },
+                "user-guide/configure-xmem-server",
                 "user-guide/initialize-vsam-dataset",
                 "user-guide/install-stc-members",
                 "user-guide/configure-auxiliary-address-space",

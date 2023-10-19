@@ -1,13 +1,14 @@
 # Configuring the z/OS system for Zowe
 
-Configuration of the z/OS system is dependent on the specific Zowe features and functionalities you would like to employ with your Zowe installation. Review the following table to determine which configuration steps are required based on your Zowe use case.
+Configuration of your z/OS system is dependent on the specific Zowe features and functionalities you would like to employ with your Zowe installation. Review the following table to determine which configuration steps are required based on your Zowe use case.
 
-**Required role: security administrator**
+:::info**Required role:** security administrator
+:::
 
 Configuration step | Purpose |
 ---| ---|
-[Configure address space job naming](#configure-address-space-job-naming)| Required to set the names for the different z/OS UNIX address spaces for the Zowe runtime components. <br/>**Note:** This is a required configuration step.|
-[Configure an ICSF cryptographic services environment](#configure-an-icsf-cryptographic-services-environment) | Required if you want to use Zowe desktop. This step will generate random numbers for zssServer that the Zowe desktop uses. | 
+[Configure address space job naming](#configure-address-space-job-naming)| Required to set the names for the different z/OS UNIX address spaces for the Zowe runtime components. <br/>**Important:** This configuration step is required.|
+[Configure an ICSF cryptographic services environment](#configure-an-icsf-cryptographic-services-environment) | Required if you want to use Zowe desktop. This step generates random numbers for zssServer that the Zowe desktop uses. | 
 [Configure security environment switching](#configure-security-environment-switching) | Required if you want to allow users to log on to the Zowe desktop through impersonation. | 
 [Configure multi-user address space for TSS only](#configure-multi-user-address-space-for-tss-only) |Required for TSS only. A TSS FACILITY needs to be defined and assigned to the `ZWESLSTC` started task. |
 [Configure user IDs and groups for the Zowe started tasks](#configure-user-ids-and-groups-for-the-zowe-started-tasks) | Required if you have not run `ZWESECUR` and are manually creating the user ID and groups in your z/OS environment. |
