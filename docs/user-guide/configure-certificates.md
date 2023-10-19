@@ -17,7 +17,10 @@ Zowe supports using either file-based (`PKCS12`) or z/OS key ring-based (when on
 * [Certificate setup type](#certificate-setup-type)
 * [Next steps: Creating or importing certificates to Zowe](#next-steps-creating-or-importing-certificates-to-zowe)
 
-**Note:** If you are already familiar with certificate concepts and how Zowe uses certificates and are ready to get started, see the options under the section _Next steps: Creating or importing certificates to Zowe_ at the end of this article.
+:::note 
+If you are already familiar with certificate concepts and how Zowe uses certificates and are ready to get started, see the options under the section _Next steps: Creating or importing certificates to Zowe_ at the end of this article.
+:::
+
 ## Certificate concepts
 
 Before you get started with configuring certificates, it is useful to familiarize yourself with the following key concepts:

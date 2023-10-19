@@ -7,7 +7,7 @@
 :::
 
 :::tip **Tip**
-To assist you with determining the specific certificate configuration scenario that applies to your use case, see [Zowe certificates configuration questionnaire](./certificates-configuration-questionnaire.md). This questionnaire will guide you through quetions that leads to a specific configuration scenario.
+To assist you with determining the specific certificate configuration scenario that applies to your use case, see [Zowe certificates configuration questionnaire](./certificates-configuration-questionnaire.md). This questionnaire guides you through quetions that lead to a specific configuration scenario presented in this article.
 :::
 
 Zowe servers require both a keystore to store the certificates and a truststore to validate certificates.
