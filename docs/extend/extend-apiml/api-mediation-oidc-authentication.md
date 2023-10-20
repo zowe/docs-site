@@ -156,6 +156,21 @@ The HTTP code is one from the 40X variants to provide the reason of the failure.
 
 Correct the Gateway configuration according to the code returned by the OIDC Identity Provider.
 
+**Symptom**  
+`Failed to obtain JWKs from URI . Unexpected response: XXX.` 
+where:
+
+- _XXX_
+is the HTTP status code returned by the Identity Provider.
+
+**Explanation**  
+The HTTP code is one from the 40X variants to provide the reason of the failure.
+
+**Solution**  
+
+Please verify the correct `jwks_uri` for the authorization server is configured properly in the config file .
+
+
 ### The access token validation fails with HTTP error
 
 **Symptom**  
@@ -168,3 +183,29 @@ The client application is not properly configured in the API ML Gateway.
 
 **Solution**  
 Check that the `client_id` and `client_secret` configured in the API ML Gateway correspond to the `client_id` and `client_secret` of the client application as configured in the OIDC provider.
+
+### The JWT token validation fails with HTTP error
+
+**Symptom**  
+
+The OIDC provider returns an HTTP 40x error code.
+
+**Explanation**  
+
+The client application is not properly configured in the API ML Gateway.
+
+**Solution**  
+Check that the `client_id` and `client_secret` configured in the API ML Gateway correspond to the `client_id` and `client_secret` of the client application as configured in the OIDC provider.
+
+### The JWT token validation fails with an error
+
+**Symptom**  
+
+OIDC token is not valid.
+
+**Explanation**  
+
+JWK was revoked by the authorization server and it is not updated in API ML yet.
+
+**Solution**  
+Configure frequent refresh interval using the property `refreshInternalHours` in the config file or restart API ML to reflect the updates or wait until the refresh interval.
