@@ -32,18 +32,18 @@ The following diagram illustrates the interactions between the participants of t
 
 ![APIML OIDC Workflow](../../images/api-mediation/apiml-oidc-auth-seq.png)
 
-- When a user wants to access mainframe resources or services using the client application without a valid authentication / access token, the client redirects the user agent to the login end-point of the distributed OIDC provider.
+- When a user wants to access mainframe resources or services using the client application without a valid authentication or an access token, the client redirects the user agent to the login end-point of the distributed OIDC provider.
 - The user is asked to provide valid credentials (authentication factors).
 - After successful validation of all authentication factors, the OIDC provider grants the client an Access Token.
 - The client can then request from API ML Gateway the needed mainframe resources presenting the access token in the request.
 
-- The Gateway validates the access token 
+- The Gateway validates the access token.
 
 - The Gateway validates the access token by comparing the key id of the token against the key ids obtained from the authorization server's JWK keys endpoint,URL to end point should be set using the property jwks_uri. If the access token is validated, the outcome is cached for a short time (20 sec by default).
 
 - The JWK Keys obtained from the authorization server's endpoint are cached for a while to prevent the repeated calls to the endpoint. It can be set using the property jwks.refreshInternalHours (it's 1 hour by default)
 
-- In subsequent calls with the same token, the Gateway reuses the cached validation outcome. As such, round trips to the OIDC /parsing the jwt token for validation with the keys obtained from from the authorization server's JWK keys endpoint are not required between short intervals, when the client needs to access multiple resources in a row to complete a unit of work. The caching interval is configurable with a default value of 20 seconds, which is typically a sufficient time to allow most client operations requiring multiple API requests to complete, while also providing adequate protection against unauthorized access.
+- In subsequent calls with the same token, the Gateway reuses the cached validation outcome. As such, round trips to the OIDC /parsing the jwt token for validation with the keys obtained from the authorization server's JWK keys endpoint are not required between short intervals when the client needs to access multiple resources in a row to complete a unit of work. The caching interval is configurable with a default value of 20 seconds, which is typically a sufficient time to allow most client operations requiring multiple API requests to complete, while also providing adequate protection against unauthorized access.
 - The API ML Gateway fetches the distributed user identity from the distributed access token and maps this user identity to the user mainframe identity using SAF.
 - The API ML Gateway calls the requested mainframe service/s with mainframe user credentials (Zowe, SAF JWT, or pass-ticket) which are expected by the target mainframe service.
 
@@ -82,9 +82,9 @@ API ML provides a Zowe CLI plugin to help administrators to generate a JCL for c
 
 Alternatively, administrators can use the installed ESM functionality to create, delete, list, and query a distributed identity filter/s:
 
-- For RACF consult [RACMAP command](https://www.ibm.com/docs/en/zos/2.3.0?topic=rcs-racmap-create-delete-list-query-distributed-identity-filter).
-- For CA Top Secret use the [IDMAP Keyword - Implement z/OS Identity Propagation Mapping](https://techdocs.broadcom.com/us/en/ca-mainframe-software/security/ca-top-secret-for-z-os/16-0/administrating/issuing-commands-to-communicate-administrative-requirements/keywords/idmap-keyword-implement-z-os-identity-propagation-mapping.html).
-- For CA ACF2 use [IDMAP User Profile Data Records](https://techdocs.broadcom.com/us/en/ca-mainframe-software/security/ca-acf2-for-z-os/16-0/administrating/administer-records/user-profile-records/idmap-user-profile-records.html).
+- For RACF, consult [RACMAP command](https://www.ibm.com/docs/en/zos/2.3.0?topic=rcs-racmap-create-delete-list-query-distributed-identity-filter).
+- For CA Top Secret, use the [IDMAP Keyword - Implement z/OS Identity Propagation Mapping](https://techdocs.broadcom.com/us/en/ca-mainframe-software/security/ca-top-secret-for-z-os/16-0/administrating/issuing-commands-to-communicate-administrative-requirements/keywords/idmap-keyword-implement-z-os-identity-propagation-mapping.html).
+- For CA ACF2, use [IDMAP User Profile Data Records](https://techdocs.broadcom.com/us/en/ca-mainframe-software/security/ca-acf2-for-z-os/16-0/administrating/administer-records/user-profile-records/idmap-user-profile-records.html).
 
 ## API ML OIDC configuration
 
@@ -113,7 +113,7 @@ Use the following procedure to enable the feature to use an OIDC Access Token as
 - **`components.gateway.apiml.security.oidc.identityMapperUser`**  
     (Optional) If the userId is different from the default Zowe runtime userId (`ZWESVUSR`), specify the `identityMapperUser` userId to configure API ML access to the external user identity mapper.
 
-    **Note** User authorization is required to use the `IRR.RUSERMAP` resource within the `FACILITY` class. The default value is `ZWESVUSR`. Permissions are set up during installation with the `ZWESECUR` JCL or workflow. To authenticate to the mapping API, a JWT is sent with the request. The token represents the user that is configured with this property.
+    **Note:** User authorization is required to use the `IRR.RUSERMAP` resource within the `FACILITY` class. The default value is `ZWESVUSR`. Permissions are set up during installation with the `ZWESECUR` JCL or workflow. To authenticate to the mapping API, a JWT is sent with the request. The token represents the user that is configured with this property.
 
 - **`apiml.security.oidc.identityMapperUrl`**  
   Defines the URL where the Gateway can query the mapping of the distributed user ID to the mainframe user ID.
