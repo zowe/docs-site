@@ -148,8 +148,17 @@ module.exports = {
               label: "Configuring",
               link: {type:"doc", id:"user-guide/configuring-overview"},
               items: [
-                "user-guide/initialize-zos-system",
-                "user-guide/initialize-mvs-datasets",
+                "user-guide/initialize-zowe-zos-runtime",
+                {
+                  type: "category",
+                  label: "Initialize Zowe z/OS runtime",
+                  link: {type:"doc", id:"user-guide/initialize-zowe-zos-runtime"},
+                  items: [
+                    "user-guide/initialize-zos-system",
+                    "user-guide/initialize-mvs-datasets",
+                    "user-guide/configure-zowe-zosmf-workflow",
+                  ],
+                },
                 {
                   type: "category",
                   label: "Configuring security",
