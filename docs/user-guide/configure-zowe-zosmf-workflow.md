@@ -167,3 +167,7 @@ z/OSMF workflow simplifies the procedure to configure and start Zowe. Execute th
 11. Select **Finish**.
 
 After you execute each step, the step is marked as Complete. The workflow is executed.
+
+## Next step
+
+After you successfully execute the workflow, you are ready to [configure the z/OS system for Zowe](./configure-zos-system.md).
