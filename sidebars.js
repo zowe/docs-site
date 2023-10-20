@@ -154,7 +154,7 @@ module.exports = {
                   link: {type:"doc", id:"user-guide/initialize-zowe-zos-runtime"},
                   items: [
                     "user-guide/initialize-zos-system",
-                    "user-guide/initialize-mvs-datasets",
+                        "user-guide/initialize-mvs-datasets",
                     "user-guide/configure-zowe-zosmf-workflow",
                   ],
                 },
@@ -172,7 +172,7 @@ module.exports = {
                 },
                 {
                   type: "category",
-                  label: "Zowe main started task and cross memory server",
+                  label: "Configuring Zowe main started task and cross memory server",
                   items: [
                     "user-guide/install-stc-members",
                     "user-guide/configure-xmem-server",
@@ -193,7 +193,7 @@ module.exports = {
                 },
                 {
                   type: "category",
-                  label: "High Availability",
+                  label: "Configuring High Availability (HA)",
                   link: {type:"doc", id:"user-guide/zowe-ha-overview"},
                   items: [
                 "user-guide/configure-sysplex",

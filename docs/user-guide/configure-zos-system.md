@@ -94,12 +94,13 @@ Define or check the following configurations depending on whether ICSF is alread
         ```
         (repeat for user-acids IKED, NSSD, and Policy Agent)
 
-**Notes:**
 
+:::note**Notes:**
 - Determine whether you want SAF authorization checks against `CSFSERV` and set `CSF.CSFSERV.AUTH.CSFRNG.DISABLE` accordingly.
 - Refer to the [z/OS 2.3.0 z/OS Cryptographic Services ICSF System Programmer's Guide: Installation, initialization, and customization](https://www.ibm.com/support/knowledgecenter/en/SSLTBW_2.3.0/com.ibm.zos.v2r3.csfb200/iandi.htm).
 - CCA and/or PKCS #11 coprocessor for random number generation.
 - Enable `FACILITY IRR.PROGRAM.SIGNATURE.VERIFICATION` and `RDEFINE CSFINPV2` if required.
+:::
 
 ## Configure security environment switching
     
@@ -447,10 +448,11 @@ To do this, issue the following commands that are also included in the `ZWESECUR
     ```
     TSS PERMIT(ZWESVUSR) IBMFAC(ZWES.IS) ACCESS(READ)
     ```
-**Notes:**
 
+:::note**Notes:**
 - The cross memory server treats "no decision" style SAF return codes as failures. If there is no covering profile for the `ZWES.IS` resource in the FACILITY class, the request will be denied.
 - Cross memory server clients other than Zowe might have additional SAF security requirements. For more information, see the documentation for the specific client.
+:::
 
 ## Configure main Zowe server to use client certificate identity mapping
 
@@ -583,7 +585,8 @@ If you use TSS, verify and update permission in `FACILITY` class.
 
 This section provides a brief description of how to configure SAF Identity tokens on z/OS so that they can be used by Zowe components like zss or API Mediation layer ([Implement a new SAF IDT provider](../extend/extend-apiml/implement-new-saf-provider.md))
 
-General steps are:
+Follow these general steps:
+
 1. Create PKCS#11 token 
 2. Generate a secret key for the PKCS#11 token (you can use the sample program ZWESECKG in the SZWESAMP dataset)
 3. Define a SAF resource profile under the IDTDATA SAF resource class

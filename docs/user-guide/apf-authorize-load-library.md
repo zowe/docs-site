@@ -26,7 +26,9 @@ APF authorize IBMUSER.ZWEV2.CUST.ZWESAPL
 >> Zowe load libraries are APF authorized successfully.
 #>
 ```
-**Note:** If you do not have permissions to update your security configurations, use `security-dry-run`. We recommend you inform your security administrator to review your  job content.
+:::note
+If you do not have permissions to update your security configurations, use `security-dry-run`. We recommend you inform your security administrator to review your job content.
+:::
 
 Specify `--security-dry-run` to have the command echo the commands that need to be run without executing the command.  
 
