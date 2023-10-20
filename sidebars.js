@@ -148,10 +148,9 @@ module.exports = {
               label: "Configuring",
               link: {type:"doc", id:"user-guide/configuring-overview"},
               items: [
-                "user-guide/initialize-zowe-zos-runtime",
                 {
                   type: "category",
-                  label: "Initialize Zowe z/OS runtime",
+                  label: "Initializing Zowe z/OS runtime",
                   link: {type:"doc", id:"user-guide/initialize-zowe-zos-runtime"},
                   items: [
                     "user-guide/initialize-zos-system",
@@ -173,6 +172,14 @@ module.exports = {
                 },
                 {
                   type: "category",
+                  label: "Zowe main started task and cross memory server",
+                  items: [
+                    "user-guide/install-stc-members",
+                    "user-guide/configure-xmem-server",
+                  ],
+                },
+                {
+                  type: "category",
                   label: "Configuring certificates",
                   link: {type:"doc", id:"user-guide/configure-certificates"},
                   items: [
@@ -184,22 +191,19 @@ module.exports = {
                     "user-guide/certificates-setup",
                   ],
                 },
-                "user-guide/configure-xmem-server",
-                "user-guide/install-stc-members",
-                "user-guide/configure-zowe-zosmf-workflow",
-                "user-guide/configmgr-using",
-                "user-guide/install-configure-zos-extensions"
-              ],
-            },
-            {
-              type: "category",
-              label: "High Availability",
-              link: {type:"doc", id:"user-guide/zowe-ha-overview"},
-              items: [
+                {
+                  type: "category",
+                  label: "High Availability",
+                  link: {type:"doc", id:"user-guide/zowe-ha-overview"},
+                  items: [
                 "user-guide/configure-sysplex",
                 "user-guide/systemrequirements-zosmf-ha",
                 "user-guide/configure-caching-service-ha",
                 "user-guide/initialize-vsam-dataset",
+                  ],
+                },
+                "user-guide/configmgr-using",
+                "user-guide/install-configure-zos-extensions"
               ],
             },
             "user-guide/start-zowe-zos",

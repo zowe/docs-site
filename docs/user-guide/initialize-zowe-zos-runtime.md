@@ -1,4 +1,4 @@
-# Initialize Zowe z/OS runtime
+# Initializing Zowe z/OS runtime
 
 Begin configuration of your installation of Zowe z/OS components by initializing Zowe z/OS runtime.
 
@@ -11,19 +11,18 @@ Use one of the following options:
 
 After your installation of Zowe runtime, you can run the `zwe init` command to perform the following configurations:
 
-* to initialize Zowe with copies of data sets provided with Zowe
-* to create user IDs and security manager settings
-* to provide APF authorize load libraries
-* to configure Zowe to use TLS certificates
-* to configure VSAM files to run the Zowe caching service used for high availability (HA)
-* to configure the system to launch the Zowe started task
+* Initialize Zowe with copies of data sets provided with Zowe
+* Create user IDs and security manager settings
+* Provide APF authorize load libraries
+* Configure Zowe to use TLS certificates
+* Configure VSAM files to run the Zowe caching service used for high availability (HA)
+* Configure the system to launch the Zowe started task
 
 For more information about this z/OS runtime initialization method, see [Initializing the z/OS system with zwe init](./initialize-zos-system)
 
 ## Configure Zowe with z/OSMF workflows
 
-Another option to initialize Zowe z/OS runtime is to configure Zowe with z/OSMF workflows.
-You can use z/OSMF workflows to perform the following configurations:
+Another option to initialize Zowe z/OS runtime is to configure Zowe with z/OSMF workflows. This method also performs the initization using the `zwe init` command group. You can use z/OSMF workflows to perform the following configurations:
 
 * Configure the Zowe instance directory
 * Enable the API ML gateway

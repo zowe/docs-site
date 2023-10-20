@@ -1,6 +1,9 @@
-# Configure Zowe with z/OSMF Workflows
+# Configuring Zowe with z/OSMF Workflows
 
-As a system programmer, after you install Zowe, you can register and execute the z/OSMF workflows in the web interface to complete the Zowe configuration. z/OSMF helps to simplify the Zowe configuration tasks and reduce the level of expertise that is needed for Zowe configuration.
+After you install Zowe, you can register and execute the z/OSMF workflows in the web interface to complete the Zowe configuration. z/OSMF helps to simplify the Zowe configuration tasks and reduce the level of expertise that is needed for Zowe configuration.
+
+:::info**Required role:** system programmer
+:::
 
 Ensure that you meet the following requirements before you start the Zowe configuration:
 
@@ -10,7 +13,7 @@ Ensure that you meet the following requirements before you start the Zowe config
 You can complete the following tasks with the z/OSMF workflow:
 
 - Configure the Zowe instance directory
-- Enable the API ML gateway
+- Enable the API ML Gateway
 - Enable the metrics service
 - Enable the API catalog
 - Enable automatic discovery
