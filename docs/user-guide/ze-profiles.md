@@ -1,6 +1,6 @@
 # Zowe Explorer profiles
 
-After you install Zowe Explorer, you need to have a Zowe Explorer profile to use all functions of the extension.
+After you install Zowe Explorer, you must have a Zowe Explorer profile to use all functions of the extension.
 
 :::info
 You can continue using Zowe V1 profiles with Zowe Explorer V2. See [Working with Zowe CLI V1 profiles](#working-with-zowe-cli-v1-profiles) for more information.
@@ -10,19 +10,19 @@ You can continue using Zowe V1 profiles with Zowe Explorer V2. See [Working with
 
 Zowe V2 uses *team profiles* to simplify profile management by letting you edit, store, and share mainframe connection details in one location, a configuration file.
 
-You can use a text editor or an IDE to populate configuration files with the connection information for your mainframe services. By default, your *global* team configuration file is located in the `.zowe home` folder, whereas the *project* configuration file is located in the main directory of your project.
+You can use a text editor or an IDE to populate configuration files with the connection information for your mainframe services. By default, your *global* team configuration file is located in the `.zowe` home folder, whereas the *project* configuration file is located in the main directory of your project.
 
 You can create profiles that you use globally, given that the names of the globally-used profiles are different from your other profile names.
 
 :::note
 
-A project context takes precedence over global configuration.
+When multiple profiles are available in Zowe CLI, project configuration takes precedence over global configuration. To learn more, see [How Zowe CLI uses configurations](../user-guide/cli-using-understand-profiles-configs).
 
 :::
 
 ### Creating team configuration files
 
-Create a team configuration file.
+Create a team configuration file:
 
 1. Navigate to the explorer tree.
 2. Hover over **DATA SETS**, **USS**, or **JOBS**.
@@ -36,15 +36,15 @@ Create a team configuration file.
 
 ### Managing profiles
 
-Change profile validations and edit the profiles in your project or global configuration files.
+Change profile validations and edit the profiles in your project or global configuration files:
 
 1. Right-click on your profile.
 2. Select the **Manage Profile** option to choose from several authentication and profile management actions for the credentials detected in your Zowe Explorer session.
 
     Authentication options display according to the detected credentials:
 
-    - **Add Credentials** to store a username and password in **WHERE**
-    - **Update Credentials** to update the username and password stored in **WHERE**
+    - **Add Credentials** to store a username and password. Credentials are stored securely in the credential vault when the team or user profile has values in the `secure` array. Otherwise, the credentials are stored as plain text in the profile.
+    - **Update Credentials** to update the username and password. Credentials are stored securely in the credential vault when the team or user profile has values in the `secure` array. Otherwise, the credentials are stored as plain text in the profile.
     - **Log in to authentication service** to obtain a new authentication token when the token in the profile is no longer valid or is missing
     - **Log out of authentication service** to invalidate the token in the profile so a valid token is not stored
 
@@ -53,7 +53,7 @@ Change profile validations and edit the profiles in your project or global confi
     - **Disable/Enable Profile Validation** to disable or enable validation of access to z/OSMF
     - **Edit Profile** to update profile information in an **Editor** tab
     - **Hide Profile** to hide the profile name from the tree view
-    - **Delete Profile** to remove the profile from the configuration file
+    - **Delete Profile** to manually remove the profile information in an **Editor** tab
 
 3. Refresh the view by clicking the **Refresh** icon in the **DATA SETS**, **USS**, or **JOBS** tree view.
 
@@ -140,7 +140,7 @@ You must have a `zosmf` compatible profile before you can use Zowe Explorer. You
 To create a `zosmf` compatible profile:
 
 1. Navigate to the explorer tree.
-2. Click the **+** button next to the **DATA SETS**, **USS** or **JOBS** bar.
+2. Click the **+** button next to the **DATA SETS**, **USS**, or **JOBS** bar.
 
   :::note
 
@@ -152,7 +152,7 @@ To create a `zosmf` compatible profile:
 
    :::note
 
-   When you create a new profile, user name and password fields are optional. However, the system will prompt you to specify your credentials when you use the new profile for the first time.
+   When you create a new profile, username and password fields are optional. However, the system prompts you to specify your credentials when you use the new profile for the first time.
 
    :::
 
@@ -172,7 +172,7 @@ To edit a profile:
 
 To hide a profile from the tree view, right-click the profile and select the **Hide Profile** option.
 
-To delete a profile from the tree view, right-click the profile and select the **Delete Profile** option.
+To delete a profile from your system, right-click the profile and select the **Delete Profile** option.
 
 ### Validating profiles
 
@@ -191,7 +191,7 @@ Before you log in and connect your service profile, ensure that you have [Zowe C
 
 #### Accessing services through API ML using SSO
 
-Connect your service profile with a base profile and token.
+Connect your service profile with a base profile and token:
 
 1. Open Zowe CLI and issue the following command:
 
@@ -226,9 +226,9 @@ If the token for your base profile is no longer valid, you can log in again to g
 2. Right-click your profile.
 3. Select the **Log in to Authentication Service** option.
 
-   You will be prompted to enter your username and password beforehand.
+   You are prompted to enter your username and password beforehand.
 
-The token is stored in the corresponding base profile.
+    The token is stored in the corresponding base profile.
 
 If you do not want to store your token, request from the server to end the session of your token. Use the **Log out from Authentication Service** feature to invalidate the token.
 
@@ -236,4 +236,4 @@ If you do not want to store your token, request from the server to end the sessi
 2. Right-click your profile.
 3. Select the **Log out from Authentication Service** option.
 
-Your token has been successfully invalidated.
+    Your token has been successfully invalidated.
