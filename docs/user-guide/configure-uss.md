@@ -65,7 +65,7 @@ Error: A fatal exception has occurred. Program will exit
 
 You can fix the storage-related issue by making one of the following changes:
 
-- ASSIZEMAX parameter
+- `ASSIZEMAX` parameter
 
    The ASSIZEMAX parameter is the maximum size of the process's virtual memory (address space) in bytes.
 
@@ -73,7 +73,7 @@ You can fix the storage-related issue by making one of the following changes:
 
    **Note:** Running a shell script via TSO OMVS will run the shell in the TSO address space, unless you specify `_BPX_SHAREAS=NO` when invoking OMVS. If you are using TSO OMVS to install Zowe, you will need `export _BPX_SHAREAS=NO` to make the ASSIZEMAX change effective.
 
-- SIZE parameter of TSO segment
+- `SIZE` parameter of TSO segment
 
    Set SIZE operand of TSO segment to the value of `2096128`.
 

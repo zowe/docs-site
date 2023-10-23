@@ -6,18 +6,16 @@ When you complete the acquisition process, the product software is ready for ins
 
 - **Note**: Before you begin the acquisition process, ensure that you address the z/OSMF requirements.
 
-The z/OSMF product acquisition process consists of the following tasks.
+The z/OSMF product acquisition process consists of 2 tasks.
 
 1. Download the portable software instance from Zowe downloads and transfer it to the mainframe.
 2. Register the portable software instance in z/OSMF.
 
-Refer to the sections below for instructions.
-
 ## Download the Portable Software Instance from Zowe Downloads
 
-To acquire the portable software instance, you download it from the Zowe Downloads page and transfer it to a local z/OSMF host using a file transfer utility, such as FTP.
-
 The portable software instance is a portable form of a software instance, including the SMP/E CSI data sets, all associated SMP/E-managed target and distribution libraries, non-SMP/E-managed data sets, and meta-data that is required to describe the product software instance.
+
+To acquire the portable software instance, you can download it from the Zowe Downloads page and transfer it to a local z/OSMF host using a file transfer utility, such as FTP.
 
 1. Go to [Zowe Downloads](https://www.zowe.org/download.html) and find **Zowe - Portable Software Instance**.
 2. Download the latest version of the package to your workstation.

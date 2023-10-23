@@ -8,9 +8,11 @@ For more information about these tasks, see [Deploying software](https://www.ibm
 
 Subsequent maintenance activities for the product update the SMP/E environment without affecting your active product runtime environments. You decide when to redeploy the maintenance-updated SMP/E target data sets to each of the product runtime environments.
 
-**Note**: The installer requires read, create, update, and execute privileges in z/OS. Write access is also required to the USS directories that are used for the installation process. To deploy a product that has USS components, the installer's user ID must have access to the appropriate resource profiles in the UNIXPRIV class, access to the BPX.SUPERUSER resource profile in the FACILITY class, or UID(0). For UNIXPRIV, read access is required to SUPERUSER.FILESYS.CHOWN, SUPERUSER.FILESYS.CHGRP, and SUPERUSER.FILESYS.MOUNT.
+Before installing, make sure the [z/OSMF requirements](install-zowe-pswi-address-requirements#confirm-that-the-installer-has-read-create-update-and-execute-privileges-in-zos) are met.
 
-1. Display the Deployments table in z/OSMF (**Software ManagementU**, **Deployments**).
+## Installing process
+
+1.  Display the Deployments table in z/OSMF (**Software ManagementU**, **Deployments**).
 2. Define a new deployment by selecting **New** from the Actions menu.  
 The deployment checklist displays. You can also modify, view, copy, cancel, or remove existing deployments.
 3. Complete the deployment checklist items as described in Defining new deployments in the IBM documentation.  

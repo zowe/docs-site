@@ -14,6 +14,10 @@ Zowe provides the ability for some of its unix components to be run not under US
 
 If you want to configure Zowe for high availability, see [High Availability overview](zowe-ha-overview.md) for instructions.
 
+## End-to-end installation diagram
+
+![4 installation methods](../images/install/4-installation-methods.png)
+
 ## Stage 1: Planning and preparing
 
 Before continuing with the installation, you should be familiar with the following topics:

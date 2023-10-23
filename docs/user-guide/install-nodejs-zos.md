@@ -79,7 +79,7 @@ Follow these steps to install the PAX edition of Node.js - z/OS to run Zowe.
     node --version
     ```
 
-    If Node.js is installed correctly, the version of Node.js is displayed.
+    If Node.js is installed correctly, the version of Node.js is displayed. If it is intalled correctly, you will see the version information on your device.
 1. After you install Node.js, set the *NODE_HOME* environment variable to the directory where Node.js is installed. For example, `NODE_HOME=/proj/mvd/node/installs/node-v6.14.4-os390-s390x`.
 
 ## Installing the SMP/E edition of Node.js - z/OS

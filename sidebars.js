@@ -107,15 +107,15 @@ module.exports = {
         {
           type: "category",
           label: "Installing Zowe via z/OSMF from PSWI and SMP/E workflow",
-          link: {type:"doc", id: "user-guide/zosmf-install"},
+          link: {type:"doc", id:"user-guide/zosmf-install"},
           items: [
             "user-guide/systemrequirements-zosmf",
             "user-guide/systemrequirements-zosmf-lite",
             {
               type: "category",
               label: "Installing Zowe via z/OSMF from PSWI",
+              link: {type:"doc", id:"user-guide/install-zowe-pswi"},
               items: [
-                "user-guide/install-zowe-pswi",
                 "user-guide/install-zowe-pswi-address-requirements",
                 "user-guide/install-zowe-pswi-acquire",
                 "user-guide/install-zowe-pswi-deployment",

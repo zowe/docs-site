@@ -64,4 +64,4 @@ Be sure your z/OS system meets the following prerequisites:
 
 ## Zowe Containers requirements
 
-Zowe (server) containers are available for download as an alternative to running Zowe servers on z/OS through the Zowe convenience and SMP/E builds Check [Zowe Containers Prerequisites](./k8s-prereqs.md) page for more details.
+Zowe (server) containers are available for download as an alternative to running Zowe servers on z/OS through the Zowe convenience and SMP/E builds. Check [Zowe Containers Prerequisites](./k8s-prereqs.md) page for more details.
