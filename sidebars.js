@@ -154,7 +154,7 @@ module.exports = {
                   link: {type:"doc", id:"user-guide/initialize-zowe-zos-runtime"},
                   items: [
                     "user-guide/initialize-zos-system",
-                        "user-guide/initialize-mvs-datasets",
+                        "user-guide/zwe-init-subcommand-overview",
                     "user-guide/configure-zowe-zosmf-workflow",
                   ],
                 },
