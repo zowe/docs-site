@@ -7,9 +7,7 @@ During the initial installation of Zowe server-side components, it is necessary 
 
 ## Validate and re-run `zwe init` commands
 
-:::note 
-During installation, the system programmer customizes values in the zowe.yaml file. However, due to insufficient permissions of the system programmer, the `zwe init security` command is likely to fail. Consult with your security administrator to review your `ZWESECUR` job content so that your security adminstrator can re-submit this command.
-:::
+During installation, the system programmer customizes values in the zowe.yaml file. However, due to insufficient permissions of the system programmer, the `zwe init security` command may fail. Consult with your security administrator to review your `ZWESECUR` job content so that your security adminstrator can re-submit this command.
 
 ## Initialize Zowe security configurations
 
@@ -27,10 +25,6 @@ Zowe contains load modules that require access to make privileged z/OS security 
 ## Configure the z/OS system for Zowe
 
 Review and perform z/OS configuration steps based on your settings. For a detailed table of configuration procedures and associated purposes for performing these procedures, see [Configuring the z/OS system for Zowe](./configure-zos-system).
-
-## Configure address space job naming
-
-The user ID ZWESVUSR that is associated with the Zowe started task must have `READ` permission for the `BPX.JOBNAME` profile in the `FACILITY` class. For more information about permitting user to activate the `FACILITY` class for this profile, see [Configuring address space job naming](./configure-zos-system/#configure-address-space-job-naming).
 
 ## Assign security permissions to users
 
@@ -52,7 +46,9 @@ Depending on the specific Zowe server-side components that your organization is 
 | Cross memory server (ZIS)                                                                                                                       | [Configuring the cross memory server for SAF](../user-guide/configure-zos-system.md#configure-the-cross-memory-server-for-saf)<br />and<br />[Configuring cross memory server load module](../user-guide/configure-xmem-server.md#load-module)<br />and<br />[Configuring cross-memory server SAF configuration](./configure-xmem-server.md/#saf-configuration) |
 
 
+## Next step
 
+After these aforementioned security configuration steps are completed, the next step is to [install Zowe main started tasks](./install-stc-members)
 
 
  

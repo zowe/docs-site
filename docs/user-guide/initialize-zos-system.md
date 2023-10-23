@@ -56,3 +56,5 @@ For more information about `zwe init` subcommands, see [zwe init subcommand over
 ## Next step
 
 After all `zwe init` subcommands are successfully executed, the next step is to [configure the z/OS system for Zowe](./configure-zos-system).
+
+For detailed information about individual `zwe init` subcommands, see [zwe init subcommand overview](./zwe-init-subcommand-overview.md).

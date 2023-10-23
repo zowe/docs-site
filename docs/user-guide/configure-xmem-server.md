@@ -8,7 +8,7 @@ APF-authorized program. The same cross memory server can be used by multiple Zow
 
 Before you install the Zowe cross memory server (ZIS), ensure that you have completed the initial steps for configuring Zowe z/OS components and the z/OS system. For more information, see the [Configuring Overview](./configuring-overview).
 
-To install and configure the cross memory server, it is necessary to define APF-authorized load libraries, program properties table (PPT) entries, and a parmlib. This requires familiarity with z/OS.
+To install and configure the cross memory server, it is necessary to define APF-authorized load libraries, program properties table (PPT) entries, and a parmlib. Performing these steps requires familiarity with z/OS.
 
 - [PDS sample library and PDSE load library](#pds-sample-library-and-pdse-load-library)
 - [Load module](#load-module)
@@ -76,7 +76,7 @@ Issue one of the following operator commands to dynamically add the load library
 
 #### Configuring using `zwe init apfauth` 
 
-If you are using the `zwe init` command to configure your z/OS system, the step `zwe init apfauth` can be used to generate the `SETPROG` commands and execute them directly.  This takes the input parameters `zowe.setup.mvs.authLoadLib` for the `SZWEAUTH` PDS location, and `zowe.setup.mvs.authPluginLib` for the location of the PDS that is used to contain plugins for the cross memory server.  For more information on `zwe init apfauth` see, [APF Authorize Load Libraries](apf-authorize-load-library.md).
+If you are using the `zwe init` command to configure your z/OS system, the step `zwe init apfauth` can be used to generate the `SETPROG` commands and execute them directly. The generation of `SETPROG` commands and their execution takes the input parameters `zowe.setup.mvs.authLoadLib` for the `SZWEAUTH` PDS location, and `zowe.setup.mvs.authPluginLib` for the location of the PDS that is used to contain plugins for the cross memory server. For more information on `zwe init apfauth` see, [Performing APF Authorization of load libraries](apf-authorize-load-library).
 
 #### Making APF auth be part of the IPL
 
@@ -211,3 +211,7 @@ A default installation of Zowe does not require auxiliary address spaces to be c
 :::important
 The cross memory `ZWESISTC` task starts and stops the `ZWESASTC` task as needed. **Do not start the `ZWESASTC` task manually.**
 :::
+
+## Next step
+
+After you complete the installation and configuration of the Zowe cross memory server, the next step is to [configure certificates](./configure-certificates).

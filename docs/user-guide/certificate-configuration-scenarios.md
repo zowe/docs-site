@@ -50,7 +50,10 @@ Each scenario described in this article provides the configuration details via c
 * [Scenario 5: Use a z/OS keyring-based keystore and import a certificate stored in a data set](#scenario-5-use-a-zos-keyring-based-keystore-and-import-a-certificate-stored-in-a-data-set)
 
 
-**Note:** Ensure that all alias values for all scenarios use only lower-case.
+:::note
+Ensure that all alias values for all scenarios use only lower-case.
+:::
+
 ## Scenario 1: Use a file-based (PKCS12) keystore with Zowe generated certificates
 
 Use the following procedure to configure your yaml file to enable Zowe to use generated PKCS12 certificates to be used with a keystore directory to store your certificates.
@@ -160,7 +163,9 @@ Use the following procedure to configure your yaml file to enable Zowe to use a 
     ```
     importCertificateAuthorities:
     ```
-    **Note:** PEM format certificate authorities can be imported and trusted.
+    :::note
+    PEM format certificate authorities can be imported and trusted.
+    :::
 
   **Example zowe yaml for scenario 2 (PKCS12):**
 
@@ -232,8 +237,9 @@ this field is not defined, the `zwe init` command uses the value `zowe.externalD
       - dvipa.my-company.com
       - 12.34.56.78
     ```
-    **Note**: Due to the limitation of the `RACDCERT` command, this field should contain exactly two entries with the domain name and IP address.
-   
+    :::note
+    Due to the limitation of the `RACDCERT` command, this field should contain exactly two entries with the domain name and IP address.
+    :::
 
   **Example zowe yaml for scenario 3:**
   
@@ -287,7 +293,9 @@ Use the following procedure to configure your yaml file to use a z/OS keyring-ba
         importCertificateAuthorities:
           - ""
         ```
-        **Note:** Due to the limitation of `RACDCERT` command, this field should contain a maximum of 2 entries.  
+        :::note
+        Due to the limitation of `RACDCERT` command, this field should contain a maximum of 2 entries.
+        ::: 
   
 The following example uses an existing JCERACFKS certificate for Zowe's z/OS components. For more information about configuration in this scenario, see [this blog post](https://medium.com/zowe/master-zowe-certificates-use-an-existing-jceracfks-certificate-for-zowes-z-os-components-975ffa0d9f2f).
 
