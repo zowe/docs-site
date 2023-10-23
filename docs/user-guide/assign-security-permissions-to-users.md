@@ -2,6 +2,8 @@
 
 Assign users (ZWESVUSR and ZWESIUSR) and the ZWEADMIN security group permissions required to perform specific tasks.
 
+Also each TSO user ID that logs on to Zowe and uses Zowe services that use z/OSMF requires permission to access these z/OSMF services.
+
 :::info**Required roles:**  security administrator
 :::
 
@@ -57,3 +59,37 @@ see [zwe init security](../appendix/zwe_server_command_reference/zwe/init/zwe-in
 | ZSS                                                        | FACILITY       | `IRR.RADMIN.LISTUSER`       | READ                    | Allow Zowe to obtain information about OMVS segment of the user profile using `LISTUSER` TSO command.                                                                                                                                                                                                                                                             | This parameter permits the Zowe main server to obtain information about OMVS segment of the user profile. Run the command that applies to your ESM. <br/>• RACF <br/>• ACF2 <br/>• Top Secret                                                                                                                                                                                                                                                                                                                                                                                                    |
 | ZSS                                                        | CSFSERV        | `Multiple`                  | READ                    | Generate symmetric keys using ICSF that is used by [Zowe Desktop cookies](./configure-zos-system.md#configure-an-icsf-cryptographic-services-environment).                                                                                                                                                                                                        | The list of IDs to enable include `CSF1TRD` , `CSF1TRC` , `CSF1SKE` , `CSF1SKD`. The full list of IDs is described in the z/OS Cryptographic Services user guide for your z/OS release level: [2.2](https://www.ibm.com/docs/en/zos/2.2.0?topic=ssl-racf-csfserv-resource-requirements), [2.3](https://www.ibm.com/docs/en/zos/2.3.0?topic=ssl-racf-csfserv-resource-requirements), [2.4](https://www.ibm.com/docs/en/zos/2.4.0?topic=ssl-racf-csfserv-resource-requirements) and [2.5](https://www.ibm.com/docs/en/zos/2.5.0?topic=ssl-racf-csfserv-resource-requirements).                     |                |               |                         |                                                                                                                                                            |                                                                                                                                |
 | Cross memory server (ZIS)                                  | FACILITY       | `ZWES.IS`                   | READ                    | Allow Zowe ZWESLSTC processes to access the Zowe ZIS cross memory server.                                                                                                                                                                                                                                                                                         | This parameter permits the Zowe main server to use ZIS cross memory server. Run the command that applies to your ESM. <br/>• [RACF](https://github.com/zowe/zowe-install-packaging/blob/79527166f34e28c205c5f60bf4b4bb7b630bc6a1/workflows/templates/ZWESECUR.vtl#L329) <br/>• [ACF2](https://github.com/zowe/zowe-install-packaging/blob/79527166f34e28c205c5f60bf4b4bb7b630bc6a1/workflows/templates/ZWESECUR.vtl#L560) <br/>• [Top Secret](https://github.com/zowe/zowe-install-packaging/blob/79527166f34e28c205c5f60bf4b4bb7b630bc6a1/workflows/templates/ZWESECUR.vtl#L780)                |
+
+
+## Granting users permission to access z/OSMF
+
+Each TSO user ID that logs on to Zowe and uses Zowe services that use z/OSMF requires permission to access these z/OSMF services. It is necessary that every user ID be added to the group with the appropriate z/OSMF privileges, `IZUUSER` or `IZUADMIN` (default). 
+
+:::info**Required role:**  security administrator
+:::
+
+This step is not included in the provided Zowe JCL because it must be done for every TSO user ID who wants to access Zowe's z/OS services.  The list of those user IDs will typically be the operators, administrators, developers, or anyone else in the z/OS environment who is logging in to Zowe.
+
+**Note:** You can skip this section if you use Zowe without z/OSMF.  Zowe can operate without z/OSMF but services that use z/OSMF REST APIs will not be available, specifically the USS, MVS, and JES Explorers and the Zowe Command Line Interface files, jobs, workflows, tso, and console groups.
+
+To grant permissions to the user ID to access z/OSMF, issue the command(s) that corresponds to your ESM.
+
+- If you use RACF, issue the following command:
+
+  ```
+  CONNECT (userid) GROUP(IZUUSER)
+  ```
+
+- If you use ACF2, issue the following commands:
+
+  ```
+  ACFNRULE TYPE(TGR) KEY(IZUUSER) ADD(UID(<uid string of user>) ALLOW)
+  F ACF2,REBUILD(TGR)
+  ```
+
+- If you use Top Secret, issue the following commands:
+
+  ```
+  TSS ADD(userid)  PROFILE(IZUUSER)
+  TSS ADD(userid)  GROUP(IZUUSRGP) 
+  ```
