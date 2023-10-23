@@ -6,14 +6,19 @@ Based on your use case, you may choose to run the subcommands of `zwe init` indi
 Some of the following `zwe init` subcommands require elevated permissions. See the required roles associated with each of these commands.
 :::
 
-### Initializing Zowe custom data sets (`zwe init mvs`)
+* [Initializing Zowe custom data sets (`zwe init mvs`)](#initializing-zowe-custom-data-sets-zwe-init-mvs)
+* [Initializing Zowe security configurations  (`zwe init security`)](#initializing-zowe-security-configurations-zwe-init-security)
+* [Performing APF authorization of load libraries (`zwe init apfauth`)](#performing-apf-authorization-of-load-libraries-zwe-init-apfauth)
+* [Configuring Zowe to use TLS certificates (`zwe init certificate`)](#configuring-zowe-to-use-tls-certificates-zwe-init-certificate)
+* [Creating VSAM caching service datasets (`zwe init vsam`)](#creating-vsam-caching-service-datasets-zwe-init-vsam)
+* [Installing Zowe main started tasks (`zwe init stc`)](#installing-zowe-main-started-tasks-zwe-init-stc)
+
+## Initializing Zowe custom data sets (`zwe init mvs`)
 
 Use the `zwe init mvs` command to intialize Zowe custom MVS data sets. 
 
-
 :::info**Required role:** system programmer
 :::
-
 
 During the installation of Zowe, the following three data sets are created and populated with members copied across from the Zowe installation files:
 * `SZWEAUTH`
@@ -45,7 +50,7 @@ CUST.PARMLIB | PARM Library Members | zowe.setup.dataset.parmlib | ANY | U | PDS
 CUST.JCLLIB | JCL Members | zowe.setup.dataset.jcllib | ANY | U | PDSE | FB | 80 | 15 | 5
 CUST.ZWESAPL | CLIST copy utilities | zowe.setup.dataset.authPluginLib | ANY | U | PDSE | U | 0 | 15 | N/A
 
-#### Procedure to initialize Zowe custom data sets
+### Procedure to initialize Zowe custom data sets
 
 To initialize Zowe custom data sets, run the following command: 
 
@@ -93,7 +98,7 @@ Successful execution of `zwe init mvs` has the following results:
    You can ignore this message, or you can use the `--allow-overwritten` option on the command. For example, `zwe init mvs -c zowe.yaml --allow-overwritten`.
 
 
-### Initialize Zowe security configurations  (`zwe init security`)
+## Initializing Zowe security configurations  (`zwe init security`)
 
 This subcommand creates the user IDs and security manager settings.
 
@@ -107,7 +112,7 @@ The JCL member `.SZWESAMP(ZWESECUR)` is provided to assist with the security con
 For more information about `zwe init security`, see [Initializing Zowe security configurations](./initialize-security-configuration.).
 
 
-### Perform APF authorization of load libraries (`zwe init apfauth`)
+## Performing APF authorization of load libraries (`zwe init apfauth`)
 
 Zowe contains load modules that require access to make privileged z/OS security manager calls. These load modules are held in two load libraries which must be APF authorized. 
 
@@ -123,7 +128,7 @@ References the load library for ZIS plugins.
 
 For more information about `zwe init apfauth` see [Performing APF authorization of load libraries](./apf-authorize-load-library).
 
-### Configure Zowe to use TLS certificates (`zwe init certificate`)
+## Configuring Zowe to use TLS certificates (`zwe init certificate`)
 
 Zowe uses digital certificates for secure, encrypted network communication over Secure Sockets Layer/Transport Layer Security (SSL/TLS) and HTTPS protocols. 
 
@@ -134,7 +139,7 @@ Zowe supports using either file-based (PKCS12) or z/OS key ring-based (when on z
 
 For more information, see [Configuring certificates](./configure-certificates).
 
-### Creating VSAM caching service datasets (`zwe init vsam`)
+## Creating VSAM caching service datasets (`zwe init vsam`)
 
 Zowe can work in a high availability (HA) configuration where multiple instances of the Zowe launcher are started, either on the same LPAR or different LPARs connected through sysplex distributor. If you are only running a single Zowe instance on a single LPAR you do not need to create a caching service so you may skip this step.
 
@@ -145,7 +150,7 @@ The command `zwe init vsam` uses the template JCL in `SZWESAMP(ZWECSVSM)` to cop
 
 For more information about `zwe init vsam`, see [Creating VSAM caching service datasets](./initialize-vsam-dataset).
 
-### Installing Zowe main started tasks (`zwe init stc`)
+## Installing Zowe main started tasks (`zwe init stc`)
 
 Execute the subcommand `zwe init stc` to install Zowe main started tasks.
 
