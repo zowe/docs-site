@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>profiles update endevor-location-profile</title>
+<link rel="stylesheet" href="../css/bundle-docs.css">
+<link rel="stylesheet" href="../css/docs.css">
+<article class="markdown-body">
+<h2><a href="zowe.html">zowe</a> › <a href="zowe_profiles.html">profiles</a> › <a href="zowe_profiles_update.html">update</a> › <a href="zowe_profiles_update_endevor-location-profile.html">endevor-location-profile</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
+<p>The Endevor element location, where you specify your working environment, system and subsystem</p>
+<p>Warning: This command has been deprecated.<br>
+Recommended replacement: The 'config set' command</p>
+<h4>Usage</h4>
+<p>zowe profiles update endevor-location-profile &lt;profileName&gt; [options]</p>
+<h4>Positional Arguments</h4>
+<ul>
+<li>
+<p><code>profileName</code>		 <em>(string)</em></p>
+<ul>
+<li>Specifies the name of the new endevor-location profile. You can load this profile by using the name on commands that support the &quot;--endevor-location-profile&quot; option.</li>
+</ul>
+</li>
+</ul>
+<h4>Options</h4>
+<ul>
+<li>
+<p><code>--instance</code> | <code>-i</code> <em>(string)</em></p>
+<ul>
+<li>The STC/datasource of the session</li>
+</ul>
+</li>
+<li>
+<p><code>--environment</code> | <code>--env</code> <em>(string)</em></p>
+<ul>
+<li>The Endevor environment where your project resides</li>
+</ul>
+</li>
+<li>
+<p><code>--system</code> | <code>--sys</code> <em>(string)</em></p>
+<ul>
+<li>The Endevor system where the element resides</li>
+</ul>
+</li>
+<li>
+<p><code>--subsystem</code> | <code>--sub</code> <em>(string)</em></p>
+<ul>
+<li>The Endevor subsystem where your element resides</li>
+</ul>
+</li>
+<li>
+<p><code>--type</code> | <code>--typ</code> <em>(string)</em></p>
+<ul>
+<li>Name of the Endevor element's type</li>
+</ul>
+</li>
+<li>
+<p><code>--stage-number</code> | <code>--sn</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>The Endevor stage where your project resides</p>
+<p>Allowed values: 1, 2</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--comment</code> | <code>--com</code> <em>(string)</em></p>
+<ul>
+<li>The Endevor comment you want to use when performing an action</li>
+</ul>
+</li>
+<li>
+<p><code>--ccid</code> | <code>--cci</code> <em>(string)</em></p>
+<ul>
+<li>The Endevor CCID you want to use when performing an action</li>
+</ul>
+</li>
+<li>
+<p><code>--maxrc</code> <em>(number)</em></p>
+<ul>
+<li>The return code of Endevor that defines a failed action</li>
+</ul>
+</li>
+<li>
+<p><code>--override-signout</code> | <code>--os</code> <em>(boolean)</em></p>
+<ul>
+<li>Always override element signout, without having to specify the override signout option on each command</li>
+</ul>
+</li>
+</ul>
+</article>
+<script src="../js/bundle-docs.js"></script>
+<script src="../js/docs.js"></script>
