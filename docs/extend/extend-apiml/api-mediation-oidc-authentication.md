@@ -39,11 +39,11 @@ The following diagram illustrates the interactions between the participants of t
 
 - The Gateway validates the access token.
 
-- The Gateway validates the access token by comparing the key id of the token against the key ids obtained from the authorization server's JWK keys endpoint,URL to end point should be set using the property jwks_uri. If the access token is validated, the outcome is cached for a short time (20 sec by default).
+- The Gateway validates the access token by comparing the key id of the token against the key ids obtained from the authorization server's JWK keys endpoint. The URL to end point should be set using the property `jwks_uri`. If the access token is validated, the outcome is cached for a short time (20 sec by default).
 
-- The JWK Keys obtained from the authorization server's endpoint are cached for a while to prevent the repeated calls to the endpoint. It can be set using the property jwks.refreshInternalHours (it's 1 hour by default)
+- The JWK Keys obtained from the authorization server's endpoint are cached for a while to prevent repeated calls to the endpoint. The interval can be set using the property `jwks.refreshInternalHours` (The default value is one hour).
 
-- In subsequent calls with the same token, the Gateway reuses the cached validation outcome. As such, round trips to the OIDC /parsing the jwt token for validation with the keys obtained from the authorization server's JWK keys endpoint are not required between short intervals when the client needs to access multiple resources in a row to complete a unit of work. The caching interval is configurable with a default value of 20 seconds, which is typically a sufficient time to allow most client operations requiring multiple API requests to complete, while also providing adequate protection against unauthorized access.
+- In subsequent calls with the same token, the Gateway reuses the cached validation outcome. As such, round trips to the OIDC parsing the jwt token for validation with the keys obtained from the authorization server's JWK keys endpoint are not required between short intervals when the client needs to access multiple resources in a row to complete a unit of work. The caching interval is configurable with a default value of 20 seconds, which is typically a sufficient time to allow most client operations requiring multiple API requests to complete, while also providing adequate protection against unauthorized access.
 - The API ML Gateway fetches the distributed user identity from the distributed access token and maps this user identity to the user mainframe identity using SAF.
 - The API ML Gateway calls the requested mainframe service/s with mainframe user credentials (Zowe, SAF JWT, or pass-ticket) which are expected by the target mainframe service.
 
@@ -82,7 +82,7 @@ API ML provides a Zowe CLI plugin to help administrators to generate a JCL for c
 
 Alternatively, administrators can use the installed ESM functionality to create, delete, list, and query a distributed identity filter/s:
 
-- For RACF, consult [RACMAP command](https://www.ibm.com/docs/en/zos/2.3.0?topic=rcs-racmap-create-delete-list-query-distributed-identity-filter).
+- For RACF, consult the [RACMAP command](https://www.ibm.com/docs/en/zos/2.3.0?topic=rcs-racmap-create-delete-list-query-distributed-identity-filter).
 - For CA Top Secret, use the [IDMAP Keyword - Implement z/OS Identity Propagation Mapping](https://techdocs.broadcom.com/us/en/ca-mainframe-software/security/ca-top-secret-for-z-os/16-0/administrating/issuing-commands-to-communicate-administrative-requirements/keywords/idmap-keyword-implement-z-os-identity-propagation-mapping.html).
 - For CA ACF2, use [IDMAP User Profile Data Records](https://techdocs.broadcom.com/us/en/ca-mainframe-software/security/ca-acf2-for-z-os/16-0/administrating/administer-records/user-profile-records/idmap-user-profile-records.html).
 
@@ -150,26 +150,11 @@ where:
 is the HTTP status code returned by the Identity Provider.
 
 **Explanation**  
-The HTTP code is one from the 40X variants to provide the reason of the failure.
+The HTTP code is one of the 40X variants that provides the reason for the failure.
 
 **Solution**  
 
 Correct the Gateway configuration according to the code returned by the OIDC Identity Provider.
-
-**Symptom**  
-`Failed to obtain JWKs from URI . Unexpected response: XXX.` 
-where:
-
-- _XXX_
-is the HTTP status code returned by the Identity Provider.
-
-**Explanation**  
-The HTTP code is one from the 40X variants to provide the reason of the failure.
-
-**Solution**  
-
-Please verify the correct `jwks_uri` for the authorization server is configured properly in the config file .
-
 
 ### The access token validation fails with HTTP error
 
@@ -183,29 +168,3 @@ The client application is not properly configured in the API ML Gateway.
 
 **Solution**  
 Check that the `client_id` and `client_secret` configured in the API ML Gateway correspond to the `client_id` and `client_secret` of the client application as configured in the OIDC provider.
-
-### The JWT token validation fails with HTTP error
-
-**Symptom**  
-
-The OIDC provider returns an HTTP 40x error code.
-
-**Explanation**  
-
-The client application is not properly configured in the API ML Gateway.
-
-**Solution**  
-Check that the `client_id` and `client_secret` configured in the API ML Gateway correspond to the `client_id` and `client_secret` of the client application as configured in the OIDC provider.
-
-### The JWT token validation fails with an error
-
-**Symptom**  
-
-OIDC token is not valid.
-
-**Explanation**  
-
-JWK was revoked by the authorization server and it is not updated in API ML yet.
-
-**Solution**  
-Configure frequent refresh interval using the property `refreshInternalHours` in the config file or restart API ML to reflect the updates or wait until the refresh interval.
