@@ -1,8 +1,8 @@
-# Sample use cases
+# Sample Use Cases
 
 The following use cases demonstrate the various functionalities available in Zowe Explorer.
 
-## Working with data sets
+## Working with Data Sets
 
 ### Viewing data sets and using multiple filters
 
@@ -161,77 +161,6 @@ The following use cases demonstrate the various functionalities available in Zow
 3. Click the **Search** icon for each profile to search and select associated data sets.
 
    ![Add Profile](../images/ze/ZE-mult-profiles.gif)
-
-### Filtering data set members
-
-Filter partitioned data set members in the **DATA SETS** tree view by **Date Modified** or **User ID**.
-
-#### Filtering all data set members under a specific profile
-
-1. In the **DATA SETS** tree, click on the **Filter** icon to the right of a profile, or right-click on a profile and select the **Filter PDS members…** option.
-
-   The filter selection menu appears in the **picker** field.
-2. Select a filter type from the list of available options:
-   - **Date Modified**
-   - **User ID**
-3. Enter a valid value for the selected filter.
-4. Press the `Enter` key to confirm the filter.
-
-   Expanded data sets display a filtered list of members under the selected profile in the **DATA SETS** tree.
-
-   ![Filtering all PDS members under a specific profile](../images/ze/ZE-filtering-profile-PDS-members.gif)
-
-#### Filtering members for a single data set
-
-1. In the **DATA SETS** tree, right-click on a data set and select the **Filter PDS members…** option.
-
-   The filter selection menu appears in the **picker** field.
-2. Select a filter type from the list of available options:
-   - **Date Modified**
-   - **User ID**
-3. Enter a valid value for the selected filter.
-4. Press the `Enter` key to confirm the filter. This overrides any *profile* filter preferences that might be in effect for the single data set.
-
-   The selected data set displays a filtered list of members in the **DATA SETS** tree.
-
-   ![Filtering PDS members for a single PDS](../images/ze/ZE-filtering-a-specific-PDS.gif)
-
-### Sorting data set members
-
-Sort partitioned data set members in the **DATA SETS** tree view by member **Name**, **Date Modified**, or **User ID**.
-
-#### Sorting all data set members under a specific profile
-
-1. In the **DATA SETS** tree, click on the **Sort** icon to the right of a profile, or right-click on a profile and select the **Sort PDS members…** option.
-
-   The sorting selection menu appears in the **picker** field.
-2. To change the sorting direction, select the **Sort Direction** option and select a direction type from the **picker** menu.
-3. Select a sort type from the list of available options:
-   - **Name**
-   - **Date Modified**
-   - **User ID**
-4. Enter a valid value for the selected sort type.
-5. Press the `Enter` key to confirm the sort type.
-
-   Expanded data sets display a sorted list of members under the selected profile in the **DATA SETS** tree.
-
-   ![Sorting all PDS members in a profile ](../images/ze/ZE-sorting-profile-PDS-members.gif)
-
-#### Sorting members for a single data set
-
-1. In the **DATA SETS** tree, right-click on a data set and select the **Sort PDS members…** option.
-   The sort selection menu appears in the **picker** field.
-2. To change the sorting direction, select the **Sort Direction** option and select a direction type from the **picker** menu.
-3. Select a sort type from the list of available options:
-   - **Name**
-   - **Date Modified**
-   - **User ID**
-4. Enter a valid value for the selected sort type.
-5. Press the `Enter` key to confirm the sort type. This overrides any *profile* sort preferences that might be in effect for the single PDS.
-
-   The selected data set displays a sorted list of members in the **DATA SETS** tree.
-
-   ![Sorting a single PDS](../images/ze/ZE-sorting-a-specific-PDS.gif)
 
 ### Submiting a JCL
 
