@@ -21,13 +21,15 @@ Be sure your z/OS system meets the following prerequisites:
 
 ### z/OS
 
-- z/OS version is in active support, such as Version 2.3 and Version 2.4
+- z/OS version is in active support, such as Version 2.4, 2.5, and 3.1
 
-   **Note:** z/OS V2.2 reached end of support on 30 September 2020. For more information, see the z/OS v2.2 lifecycle details [https://www.ibm.com/support/lifecycle/details?q45=Z497063S01245B61](https://www.ibm.com/support/lifecycle/details?q45=Z497063S01245B61). 
+   **Note:** Zowe Version 2.11 or higher is required when using z/OS Version 3.1
 
-- zFS volume has at least 833 mb of free space for Zowe server components, their keystore, instance configuration files and logs, and third-party plug-ins.
+   **Note:** z/OS V2.3 reached end of support on 30 September 2022. For more information, see the z/OS v2.3 lifecycle details [https://www.ibm.com/support/pages/zos23x-withdrawal-notification](https://www.ibm.com/support/pages/zos23x-withdrawal-notification)
 
-- (Optional, recommended) z/OS OpenSSH V2.2.0 or later
+- zFS volume has at least 1200 mb of free space for Zowe server components, their keystore, instance configuration files and logs, and third-party plug-ins.
+
+- (Optional, recommended) z/OS OpenSSH
   
   Some features of Zowe require SSH, such as the Desktop's SSH terminal. Install and manage Zowe via SSH, as an alternative to OMVS over TN3270. 
 
@@ -37,11 +39,11 @@ Be sure your z/OS system meets the following prerequisites:
 
 ### Node.js
 
-- Node.js v14.x (except v14.17.2), or v16.x
+- Node.js v16.x or v18.x
 
   Node is not included with z/OS so must be installed separately.  To install Node.js on z/OS, follow the instructions in [Addressing Node.js requirements](install-nodejs-zos.md).
   
-  **Note:** If you are a software vendor building extensions for Zowe, when using Node.js v14.x or later, it is highly recommended that plug-ins used are tagged. For more information, see [Tagging on z/OS](../extend/extend-desktop/mvd-buildingplugins.md#tagging-plugin-files-on-z-os).
+  **Note:** If you are a software vendor building extensions for Zowe it is highly recommended that plug-ins used are tagged. For more information, see [Tagging on z/OS](../extend/extend-desktop/mvd-buildingplugins.md#tagging-plugin-files-on-z-os).
 
 ### Java 
 
@@ -49,7 +51,7 @@ Be sure your z/OS system meets the following prerequisites:
 
 ### z/OSMF (Optional) 
 
-- (Optional, recommended) IBM z/OS Management Facility (z/OSMF) Version 2.2, Version 2.3 or Version 2.4.
+- (Optional, recommended) IBM z/OS Management Facility (z/OSMF) Version 2.4, Version 2.5 or Version 3.1.
 
   z/OSMF is included with z/OS so does not need to be separately installed.  If z/OSMF is present, Zowe will detect this when it is configured and use z/OSMF for the following purposes:
 
