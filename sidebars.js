@@ -490,9 +490,7 @@ module.exports = {
           label: "Using Zowe Explorer",
           link: {type:"doc", id:"user-guide/ze-usage"},
           items: [
-            "user-guide/ze-working-with-data-sets",
-            "user-guide/ze-working-with-uss-files",
-            "user-guide/ze-working-with-jobs",
+            "user-guide/ze-use-cases",
             {
               type: "category",
               label: "Zowe Explorer extensions",
