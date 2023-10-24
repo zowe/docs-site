@@ -93,3 +93,7 @@ To grant permissions to the user ID to access z/OSMF, issue the command(s) that 
   TSS ADD(userid)  PROFILE(IZUUSER)
   TSS ADD(userid)  GROUP(IZUUSRGP) 
   ```
+
+## Next step
+
+After you complete the security permissions assigning, the next step is to [configure the Zowe cross memory server](./configure-xmem-server).

@@ -214,4 +214,4 @@ The cross memory `ZWESISTC` task starts and stops the `ZWESASTC` task as needed.
 
 ## Next step
 
-After you complete the installation and configuration of the Zowe cross memory server, the next step is to [configure certificates](./configure-certificates).
+After you complete the configuration of the Zowe cross memory server, you may [configure Zowe for High Availability](./zowe-ha-overview) or proceed to [starting Zowe](./start-zowe-zos).

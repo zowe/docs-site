@@ -43,6 +43,11 @@ The following `zwe init` arguments can assist you with the initization process:
 
 ## Zowe initilization command
 
+:::info
+There are two ways to use `zwe init` command group, you can run complete configuration with single command or submit subcommands sequentially. 
+For the first time installation we recommend to use the second option and run subcommands manually one by one.
+:::
+
 **Option 1**: Run complete initialization with one command
 
 The `zwe init` command runs the subcommands in sequence automatically. If you have the Zowe configuration file preparted and have security administrator privileges or security and certificates setup was already completed on the system you can run the following command. 
@@ -52,13 +57,6 @@ zwe init --config /path/to/zowe.yaml
 ```
 
 **Option 2**: Run zwe init subcommands sequentially
-:::note
-For the first time installation we recommend to use this option and run all the subcommands manually one by one 
-:::
-
-:::note
-Some of the following `zwe init` subcommands require elevated permissions. See the required roles associated with each of these commands.
-:::
 
 * [Initializing Zowe custom data sets (`zwe init mvs`)](#initializing-zowe-custom-data-sets-zwe-init-mvs)
 * [Initializing Zowe security configurations  (`zwe init security`)](#initializing-zowe-security-configurations-zwe-init-security)
@@ -196,7 +194,7 @@ For more information, see [Configuring certificates](./configure-certificates).
 ### Creating VSAM caching service datasets (`zwe init vsam`)
 
 Zowe can work in a high availability (HA) configuration where multiple instances of the Zowe launcher are started, either on the same LPAR or different LPARs connected through sysplex distributor. If you are only running a single Zowe instance on a single LPAR you do not need to create a caching service so you may skip this step.
-Even if you are planning to use Zowe in a High Availability mode consider using "infinispan" storage method instead of "VSAM"
+Even if you are planning to use Zowe in a High Availability mode consider using **infinispan** storage method instead of **VSAM**
 
 :::info**Required roles:** system programmer
 :::
