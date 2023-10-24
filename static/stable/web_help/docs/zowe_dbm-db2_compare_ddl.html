@@ -38,7 +38,7 @@
 <p>Specifies the creator and name of an existing RC/Migrator automapping mask set. Matching is used to pair objects in a DDL file to objects that are defined on a Db2 subsystem. Matching determines whether the 'change-set' or 'rule-set' options are applied.</p>
 <p>Format:</p>
 <p>&lt;match-set-creator.match-set-name&gt;</p>
-<p>For more information about mask services, see the RC/Migrator documentation at <a href="https://techdocs.broadcom.com/db2rcmig">https://techdocs.broadcom.com/db2rcmig</a>.</p>
+<p>For more information about mask services, see the RC/Migrator documentation at <a href="https://techdocs.broadcom.com/db2rcmig">https://techdocs.broadcom.com/db2rcmig</a></p>
 <p>Note: If --match-set and --match-set-file are both specified, specifications in match-set-file take precedence.</p>
 </li>
 </ul>
@@ -74,7 +74,7 @@ PROCEDURE &lt;schema.name[.version]&gt; &lt;schema.name[.version]&gt;</p>
 TABLE MYN-M-.MYT% YOURN-M-.YOURT%;<br>
 TABLE MYNAME.MYTABLE YOURNAME.YOURTABLE;<br>
 TABLE *.MYTABLE *.YOURTABLE;</p>
-<p>For a list of mask specifications, see the RC/Migrator documentation at <a href="https://techdocs.broadcom.com/db2rcmig">https://techdocs.broadcom.com/db2rcmig</a>.</p>
+<p>For a list of mask specifications, see the RC/Migrator documentation at <a href="https://techdocs.broadcom.com/db2rcmig">https://techdocs.broadcom.com/db2rcmig</a></p>
 <p>Note: If --match-set and --match-set-file are both specified, specifications in match-set-file take precedence.</p>
 </li>
 </ul>
@@ -86,7 +86,7 @@ TABLE *.MYTABLE *.YOURTABLE;</p>
 <p>Specifies the creator and name of an existing RC/Migrator global change set used for modifying Db2 object attributes. Depending on the backend configuration, the changes apply to either ALL objects in the DDL or to NEW objects only as determined by match-set processing.</p>
 <p>Format:</p>
 <p>&lt;change-set-creator.change-set-name&gt;</p>
-<p>For more information about global change services, see the RC/Migrator documentation at <a href="https://techdocs.broadcom.com/db2rcmig">https://techdocs.broadcom.com/db2rcmig</a>.</p>
+<p>For more information about global change services, see the RC/Migrator documentation at <a href="https://techdocs.broadcom.com/db2rcmig">https://techdocs.broadcom.com/db2rcmig</a></p>
 <p>Note: If change-set and change-set-file are both specified, specifications in change-set-file take precedence.</p>
 <p>Consult with your database administrator about global change behavior for the default or a specific modification parameter.</p>
 </li>
@@ -104,7 +104,7 @@ TABLE *.MYTABLE *.YOURTABLE;</p>
 <p>The following example demonstrates changes to table’s schema (creator) and tablespace names:</p>
 <p>TBCR TEST% PROD%<br>
 TBTS TESTTS% PRODTS%</p>
-<p>For more information about global change services, see the RC/Migrator documentation at <a href="https://techdocs.broadcom.com/db2rcmig">https://techdocs.broadcom.com/db2rcmig</a>.</p>
+<p>For more information about global change services, see the RC/Migrator documentation at <a href="https://techdocs.broadcom.com/db2rcmig">https://techdocs.broadcom.com/db2rcmig</a></p>
 <p>Note: If change-set and change-set-file are both specified, specifications in change-set-file take precedence.</p>
 <p>Consult with your database administrator about global change behavior for the default or a specific modification parameter.</p>
 </li>
@@ -117,7 +117,7 @@ TBTS TESTTS% PRODTS%</p>
 <p>Specifies the creator and name of an existing RC/Migrator rule set to be used to override Db2 object attributes in the target Db2 subsystem with the corresponding values from the input DDL file.The changes apply to the existing objects only (as determined by match-set processing).</p>
 <p>Format:</p>
 <p>&lt;rule-set-creator.rule-set-name&gt;</p>
-<p>For more information about rule database services, see the RC/Migrator documentation at <a href="https://techdocs.broadcom.com/db2rcmig">https://techdocs.broadcom.com/db2rcmig</a>.</p>
+<p>For more information about rule database services, see the RC/Migrator documentation at <a href="https://techdocs.broadcom.com/db2rcmig">https://techdocs.broadcom.com/db2rcmig</a></p>
 </li>
 </ul>
 </li>
@@ -161,7 +161,7 @@ TBTS TESTTS% PRODTS%</p>
 <p>Specifies the local output file name that contains the parseable impact analysis report in JSON or YAML format. This report helps identify significant DDL operations to be performed on Db2 objects. It provides the total number and type of DDL operations that are being performed on each object type, the list of DDL operations performed on each object instance, and the state of any pending changes.</p>
 <p>The report format is determined by the supplied file name extension: .json for JSON and .yaml or .yml for YAML. If no extension is provided, JSON format is used.</p>
 <p>Default value: impact.json</p>
-<p>For more information about the impact analysis report, see the RC/Migrator documentation at <a href="https://techdocs.broadcom.com/db2rcmig">https://techdocs.broadcom.com/db2rcmig</a>.</p>
+<p>For more information about the impact analysis report, see the RC/Migrator documentation at <a href="https://techdocs.broadcom.com/db2rcmig">https://techdocs.broadcom.com/db2rcmig</a></p>
 </li>
 </ul>
 </li>
@@ -170,7 +170,7 @@ TBTS TESTTS% PRODTS%</p>
 <ul>
 <li>
 <p>Identifies a named set of server-managed default parameter values that control the execution behavior of the zowe dbm-db2 commands. For example, you can use a modification to identify a set of default values that differ from the set of values that are normally used.</p>
-<p>For more information about using the modification option, see the DBM Data Service documentation at <a href="https://techdocs.broadcom.com/db2mgmt">https://techdocs.broadcom.com/db2mgmt</a>.</p>
+<p>For more information about using the modification option, see the DBM Data Service documentation at <a href="https://techdocs.broadcom.com/db2mgmt">https://techdocs.broadcom.com/db2mgmt</a></p>
 </li>
 </ul>
 </li>
@@ -181,6 +181,60 @@ TBTS TESTTS% PRODTS%</p>
 <p>Specifies the local output error file in YAML format that contains basic execution information, connection details, dbm-db2 profile parameters, used arguments, and errors that occurred during execution of the command.</p>
 <p>Default value: error.log</p>
 </li>
+</ul>
+</li>
+</ul>
+<h4>DBM-Db2 Profile Options</h4>
+<ul>
+<li>
+<p><code>--job-cards</code> | <code>--jc</code> <em>(array)</em></p>
+<ul>
+<li>Specifies a string array of z/OS JCL JOB statements.</li>
+</ul>
+</li>
+<li>
+<p><code>--work-dataset-prefix</code> | <code>--wdp</code> <em>(string)</em></p>
+<ul>
+<li>Specifies the prefix that is used as the high level qualifier in z/OS work data set names.</li>
+</ul>
+</li>
+<li>
+<p><code>--authid</code> | <code>-a</code> <em>(string)</em></p>
+<ul>
+<li>Specifies the primary Db2 authorization ID (user ID) that is used to establish a connection between Db2 and a process.</li>
+</ul>
+</li>
+<li>
+<p><code>--sqlid</code> | <code>-s</code> <em>(string)</em></p>
+<ul>
+<li>Specifies the authorization ID that is used as the value in generated SET CURRENT SQLID statements most of the time.</li>
+</ul>
+</li>
+<li>
+<p><code>--termination-character</code> | <code>--tc</code> <em>(string)</em></p>
+<ul>
+<li>Specifies the SQL termination character that you want to use to terminate object DDL for triggers, XML indexes, functions, and procedures that contain embedded semicolon-terminated SQL statements. You cannot use a comma, an underscore, a single quote, double quotes, left parentheses, or right parentheses for this value.</li>
+</ul>
+</li>
+<li>
+<p><code>--overwrite-output-files</code> | <code>--oof</code> <em>(boolean)</em></p>
+<ul>
+<li>Specifies whether to overwrite output files when they already exist.</li>
+</ul>
+</li>
+<li>
+<p><code>--protocol</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>Specifies the communication protocol to use between the zowe dbm-db2 client and the DBM Data Service.</p>
+<p>Allowed values: http, https</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--environment-list</code> | <code>--el</code> <em>(string)</em></p>
+<ul>
+<li>Specifies an object of one or more values consisting of a Db2 subsystem ID and a DBM Data Service environment pair. The paired entry identifies the DBM Data Service environment to use for a subsystem that is accessible through multiple DBM Data Service environments. For more information about configuring the DBM Data Service, see the Database Management Solutions for Db2 for z/OS documentation at <a href="https://techdocs.broadcom.com/db2mgmt">https://techdocs.broadcom.com/db2mgmt</a></li>
 </ul>
 </li>
 </ul>
