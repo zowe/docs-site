@@ -14,6 +14,24 @@ Zowe provides the ability for some of its unix components to be run not under US
 
 If you want to configure Zowe for high availability, see [High Availability overview](zowe-ha-overview.md) for instructions.
 
+## Roles and responsibilities for server-side component installation
+
+### Security administrator
+
+To configure Zowe security for production environments, it is likely that your organization's security administrator will be required to perform various tasks. For more information, see [Addressing security requirements](./address-security-requirements#tasks-performed-by-your-security-administrator).
+
+### Storage administrator
+
+Before starting installation, notify the storage administrator to reserve enough space for USS, directory storage space, and any other storage requrements to install Zowe. For more information , see [Addresing storage requirements](./address-storage-requirements.md).
+
+### Network administrator
+
+Notify your organization's network administrator to assign port numbers, reserve these port numbers, and arrange them for you. For more information about network setup, see [Addressing network requirements](./address-network-requirements.md).
+
+### System programmer
+
+In most cases, the system programmer performs Zowe installation and configuration and starts Zowe. System programmers are typically knowledgeable about SMP/E, z/OSMF workflows, and regular maintanance procedures. This role also regularly prepares jobs for other administrators.
+
 ## End-to-end installation diagram
 
 ![4 installation methods](../images/install/4-installation-methods.png)

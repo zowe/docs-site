@@ -25,7 +25,7 @@ PEMAX | SMP/E Default | IBM recommends using the SMP/E default for PEMAX.
 
 Follow these high-level steps to download and install Zowe Open Source Project (Base).
 
-  1. [Download the Zowe SMP/E package](#download-the-zowe-smpe-package)
+  1. [Download the Zowe SMP/E package](#download-and-unzip-the-zowe-smpe-package)
   2. [Allocate file system to hold web download package](#allocate-file-system-to-hold-the-download-package)
   3. [Upload the download package to the host](#upload-the-download-package-to-the-host)
   4. [Extract and expand the compress SMPMCS and RELFILEs](#extract-and-expand-the-compressed-smpmcs-and-relfiles)
@@ -41,11 +41,11 @@ Follow these high-level steps to download and install Zowe Open Source Project (
   14. [Run REPORT CROSSZONE](#run-report-crosszone)
   15. [Cleaning up obsolete data sets, paths, and DDDEFs](#cleaning-up-obsolete-data-sets-paths-and-dddefs)
 
-### Download the Zowe SMP/E package>P>
+### Download and unzip the Zowe SMP/E package
 
 To download the Zowe SMP/E package, open your web browser and go to the [Zowe Download](https://www.zowe.org/download.html) website. Click the **Zowe SMP/E FMID AZWE002** button to save the file to a folder on your desktop.
 
-You will receive one ZIP package on your desktop. Extract the following files from the package.  You may need to use the `unzip` command at a terminal rather than an unzip utility.
+You will receive one ZIP package on your desktop. Extract the following files from the package. You may need to use the `unzip` command at a terminal rather than an unzip utility. For example, run `unzip zowe-smpe-package-2.1.0.zip` in your terminal. 
 
   - **AZWE002.pax.Z (binary)**
 
@@ -124,7 +124,9 @@ Copy and paste the sample JCL into a separate data set, uncomment the job, and m
     MODE(RDWR) TYPE(ZFS) PARM('AGGRGROW')
 //*
 ```
-__Expected Return Codes and Messages:__ You will receive a return code of 0 if this job runs correctly.
+:::tip Expected results
+You will receive a return code of 0 if this job runs correctly.
+:::
 
 ### Upload the download package to the host
 
@@ -134,7 +136,9 @@ Upload the AZWE002.readme.txt file in text format and the AZWE002.pax.Z file in 
 
 There are many ways to transfer the files or make them available to the z/OS system where the package will be installed. In the following sample dialog, we use FTP from a Microsoft Windows command line to do the transfer. This assumes that the z/OS host is configured as an FTP host/server and that the workstation is an FTP client.  Commands or other information entered by the user are in bold, and the following values are assumed.
 
+:::note
 If you are not sure which protocol or port to use to transfer the files or any access that might be needed, you may need to consult with the network administrator. 
+:::
 
 User enters: | Values 
 ---|---
@@ -144,7 +148,9 @@ tsopw | Your TSO password
 d: | Location of the downloaded files
 @zfs_path@ | z/OS UNIX path where to store the files. This matches the @zfs_path@ variable you specified in the previous step.
 
-**Important!**  The AZWE002.pax.Z file must be uploaded to the z/OS driving system in binary format, or the subsequent UNPAX step will fail.
+:::danger Important 
+The AZWE002.pax.Z file must be uploaded to the z/OS driving system in binary format, or the subsequent UNPAX step will fail.
+:::
 
 This step of tranferring the files can take a long time to run, depending on the capacity of your system, and on what other jobs are running.
 
@@ -182,6 +188,7 @@ ftp: quit
 **If you are unable to connect with ftp and only able to use sftp**,
 the commands above are the same except that you will use _sftp_ at the command prompt instead of _ftp_. Also, because _sftp_ only supports binary file transfer, the ___ascii___ and ___binary___ commands should be omitted. After you transfer the AZWE002.readme.txt file, it will be in an ASCII codepage so you need to convert it to EBCDIC before it can be used. To convert AZWE002.readme.txt to EBCDIC, log in to the distribution system using ssh and run an ICONV command.
 
+```
 _C:>/__ssh tsouid@mvsaddr___   
 _tsouid@mvsaddr's password: __tsopw___  
 _/u/tsouid:>_  
@@ -192,6 +199,7 @@ _@zfs_path:>rm AZWE002.readme.txt_
 _@zfs_path:>mv AZWE002.readme.EBCDIC AZWE002.readme.txt_  
 _@zfs_path:>exit_  
 _C:>/_  
+```
 
 ### Extract and expand the compressed SMPMCS and RELFILEs
 
@@ -297,8 +305,7 @@ newname="@PREFIX@.ZOWE.&FMID..F4"/>
 </GIMUNZIP>                         
 //*                                 
 ```
-where, `&VOLSER` is a DISK volume with sufficient free space to hold temporary copies of the RELFILES.  As a guide, this may require 1,000 cylinders, or about 650 MB.
-
+where, `&VOLSER` is a DISK volume with sufficient free space to hold temporary copies of the RELFILES. As a guide, this may require 1,000 cylinders, or about 650 MB.
 
 ### Sample installation jobs
 
@@ -405,19 +412,25 @@ A sample job ZWE1SMPE is provided or you may choose to use your own JCL. If you 
 
 ```// SET CSIVOL=#csivol```
 
-__Expected Return Codes and Messages:__ You will receive a return code of 0 if this job runs correctly.
+:::tip Expected results
+You will receive a return code of 0 if this job runs correctly.
+:::
 
 ### Perform SMP/E RECEIVE
 
 Edit and submit sample job ZWE2RCVE to perform the SMP/E RECEIVE for Zowe. Consult the instructions in the sample job for more information.
 
-__Expected Return Codes and Messages:__ You will receive a return code of 0 if this job runs correctly.
+:::tip Expected results
+You will receive a return code of 0 if this job runs correctly.
+:::
 
 ### Allocate SMP/E target and distributions libraries
 
 Edit and submit sample job ZWE3ALOC to allocate the SMP/E target and distribution libraries for Zowe. Consult the instructions in the sample job for more information.
 
-__Expected Return Codes and Messages:__ You will receive a return code of 0 if this job runs correctly.
+:::tip Expected results
+You will receive a return code of 0 if this job runs correctly.
+:::
 
 ### Allocate, create and mount ZSF files (Optional)
 
@@ -446,7 +459,9 @@ See the following information to update the statements in the previous sample:
   * __#dsn__ is the name of the data set holding the z/OS UNIX file system.
   * ___/usr/lpp/zowe___ is the name of the mountpoint where the z/OS UNIX file system will be mounted.
 
-__Expected Return Codes and Messages:__ You will receive a return code of 0 if this job runs correctly.
+:::tip Expected results
+You will receive a return code of 0 if this job runs correctly.
+:::
 
 ### Allocate z/OS UNIX paths
 
@@ -462,13 +477,17 @@ Edit and submit sample job ZWE5MKD to allocate the HFS or zFS paths for Zowe. Co
 
 If you create a new file system for this product, consider updating the BPXPRMxx PARMLIB member to mount the new file system at IPL time. This action can be helpful if an IPL occurs before the installation is completed.
 
-__Expected Return Codes and Messages:__ You will receive a return code of 0 if this job runs correctly.
+:::tip Expected results
+You will receive a return code of 0 if this job runs correctly.
+:::
 
 ### Create DDDEF entries
 
 Edit and submit sample job ZWE6DDEF to create DDDEF entries for the SMP/E target and distribution libraries for Zowe. Consult the instructions in the sample job for more information.
 
-__Expected Return Codes and Messages:__ You will receive a return code of 0 if this job runs correctly.
+:::tip Expected results
+You will receive a return code of 0 if this job runs correctly.
+:::
 
 ### Perform SMP/E APPLY
 
@@ -516,9 +535,13 @@ In this step, you run the sample job ZWE7APLY to apply Zowe. This step can take 
 
 **Note:** The GROUPEXTENDED operand indicates the SMP/E applies all requisite SYSMODs. The requisite SYSMODS might be applicable to other functions.
 
-**Expected Return Codes and Messages from APPLY CHECK:** You will receive a return code of 0 if the job runs correctly.
+:::tip Expected results from APPLY CHECK
+You will receive a return code of 0 if this job runs correctly.
+:::
 
-**Expected Return Codes and Messages from APPLY:** You will receive a return code of 0 if the job runs correctly.
+:::tip Expected results from APPLY 
+You will receive a return code of 0 if the job runs correctly.
+:::
 
 ### Perform SMP/E ACCEPT
 
@@ -532,11 +555,15 @@ After you take actions that are indicated by the ACCEPT CHECK, remove the CHECK 
 
 **Note:** The GROUPEXTEND operand indicates that SMP/E accepts all requisite SYSMODs. The requisite SYSMODS might be applicable to other functions.
 
-**Expected Return Codes and Messages from ACCEPT CHECK:** You will receive a return code of 0 if this job runs correctly.
+:::tip Expected results from ACCEPT CHECK
+You will receive a return code of 0 if this job runs correctly.
+:::
 
 If PTFs that contain replacement modules are accepted, SMP/E ACCEPT processing will link-edit or bind the modules into the distribution libraries. During this processing, the Linkage Editor or Binder might issue messages that indicate unresolved external references, which will result in a return code of 4 during the ACCEPT phase. You can ignore these messages, because the distribution libraries are not executable and the unresolved external references do not affect the executable system libraries.
 
-**Expected Return Codes and Messages from ACCEPT:** You will receive a return code of 0 if this job runs correctly.
+:::tip Expected results from ACCEPT 
+You will receive a return code of 0 if this job runs correctly.
+:::
 
 ### Run REPORT CROSSZONE
 

@@ -1,5 +1,7 @@
 # Addressing security requirements
 
+:::info Roles required: security administrator
+:::
 During configuration of server-side components, it is necessary to configure various system security settings. Your
 organization may require your security administrator to complete steps to configure Zowe security. As a system
 administrator/programmer, first consult with your security administrator before you start the installation process.
@@ -42,7 +44,7 @@ security administrator to perform the associated security tasks:
 
 ### Assign security permissions of users
 
-As a security administrator, assign users (ZWESVUSR and ) and the ZWEADMIN security group permissions required to perform specific
+As a security administrator, assign users (`ZWESVUSR` and `ZWESIUSR`) and the `ZWEADMIN` security group permissions required to perform specific
 tasks.
 
 ### Overview of user categories and roles

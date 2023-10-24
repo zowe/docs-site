@@ -1,6 +1,10 @@
 # Addressing Node.js requirements
 
-**Note: This section is not required if using Docker or only using the CLI.**
+:::note
+
+This section is not required if using Docker or only using the CLI.
+
+:::
 
 Before you install Zowe&trade; on z/OS, you must install IBM SDK for Node.js on the same z/OS server that hosts the Zowe Application Server and z/OS Explorer Services. Review the information in this topic to obtain and install Node.js.
 

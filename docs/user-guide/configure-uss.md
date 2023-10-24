@@ -2,16 +2,6 @@
 
 The Zowe z/OS component runtime requires UNIX System Services (USS) to be configured. As shown in the [Zowe architecture](../getting-started/zowe-architecture.md), a number of servers run under UNIX System Services (USS) on z/OS. Review this topic for knowledge and considerations about USS when you install and configure Zowe.
 
-- [What is USS?](#what-is-uss)
-- [Setting up USS for the first time](#setting-up-uss-for-the-first-time)
-- [Language environment](#language-environment)
-- [OMVS segment](#omvs-segment)
-- [Address space region size](#address-space-region-size)
-- [Temporary files management](#temporary-files-management)
-  - [How to customize](#how-to-customize)
-    - [In STC](#in-stc)
-    - [In zowe.yaml](#in-zoweyaml)
-
 ## What is USS?
 
 The UNIX System Services element of z/OS® is a UNIX operating environment, which is implemented within the z/OS operating system. It is also known as z/OS UNIX. z/OS UNIX files are organized in a hierarchy, as in a UNIX system.  All files are members of a directory, and each directory in turn is a member of another directory at a higher level in the hierarchy. The highest level of the hierarchy is the *root* directory. The z/OS UNIX files system is also known as zFS.

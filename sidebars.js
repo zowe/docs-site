@@ -93,22 +93,30 @@ module.exports = {
           link: {type: "doc", id: "user-guide/install-zos"},
           items: [
             "user-guide/zos-components-installation-checklist",
-            "user-guide/zos-components-installation-checklist-dev",
             "user-guide/systemrequirements-zos",
             "user-guide/address-security-requirements",
             "user-guide/configure-uss",
-            "user-guide/install-nodejs-zos",
             "user-guide/address-storage-requirements",
             "user-guide/address-network-requirements",
+            "user-guide/install-nodejs-zos",
             "user-guide/address-browser-requirements",
             "user-guide/address-authentication-requirements"
           ]
           },
-        {
+          {
+            type: "category",
+            label: "Installing Zowe via SMP/E",
+            link: {type:"doc", id: "user-guide/install-zowe-smpe-overview"},
+            items: [
+              "user-guide/install-zowe-smpe",
+            ]
+          },
+          {
           type: "category",
           label: "Installing Zowe via z/OSMF from PSWI and SMP/E workflow",
           link: {type:"doc", id:"user-guide/zosmf-install"},
           items: [
+            "user-guide/install-zowe-pswi-address-requirements",
             "user-guide/systemrequirements-zosmf",
             "user-guide/systemrequirements-zosmf-lite",
             {
@@ -116,7 +124,6 @@ module.exports = {
               label: "Installing Zowe via z/OSMF from PSWI",
               link: {type:"doc", id:"user-guide/install-zowe-pswi"},
               items: [
-                "user-guide/install-zowe-pswi-address-requirements",
                 "user-guide/install-zowe-pswi-acquire",
                 "user-guide/install-zowe-pswi-deployment",
               ],
@@ -124,20 +131,12 @@ module.exports = {
               "user-guide/install-zowe-smpe-zosmf-workflow",
             ],
             },
-            {
-              type: "category",
-              label: "Installing Zowe via SMP/E",
-              items: [
-                "user-guide/install-zowe-smpe-overview",
-                "user-guide/install-zowe-smpe",
-              ]
-            },
             "user-guide/install-zowe-zos-convenience-build",
           {
           type: "category",
           label: "Installing Zowe via a containerization build (PAX file)",
+          link: {type:"doc", id:"user-guide/k8s-introduction"},
           items: [
-            "user-guide/k8s-introduction",
             "user-guide/k8s-prereqs",
             "user-guide/k8s-downloading",
             "user-guide/k8s-config",

@@ -14,16 +14,13 @@ To configure z/OSMF, follow these steps.
     ```
     /D IPLINFO
     ```
-    Part of the output contains the release, for example,
-    ```
-    RELEASE z/OS 02.02.00.
-    ```
+  **Expected results:** part of the output contains the release, for example, `RELEASE z/OS 02.02.00`.
 
 2. Configure z/OSMF.
 
     z/OSMF is a base element of z/OS V2.2 and V2.3, so it is already installed. But it might not be configured and running on every z/OS V2.2 and V2.3 system.
 
-    In short, to configure an instance of z/OSMF, run the IBM-supplied jobs IZUSEC and IZUMKFS, and then start the z/OSMF server.
+    In short, to configure an instance of z/OSMF, run the IBM-supplied jobs `IZUSEC` and `IZUMKFS`, and then start the z/OSMF server.
     The z/OSMF configuration process occurs in three stages, and in the following order:
     - Stage 1 - Security setup
     - Stage 2 - Configuration
@@ -44,35 +41,30 @@ To configure z/OSMF, follow these steps.
     /D A,IZU*
     ```
 
-    If jobs IZUANG1 and IZUSVR1 are not active, issue the following command to start the angel process:
+    If jobs `IZUANG1` and `IZUSVR1` are not active, issue the following command to start the angel process:
 
     ```
     /S IZUANG1
     ```
-
-    After you see the message ""CWWKB0056I INITIALIZATION COMPLETE FOR ANGEL"", issue the following command to start the server:
+  **Expected results:** you will see the message `CWWKB0056I INITIALIZATION COMPLETE FOR ANGEL`.
+  
+  To start the server, issue the following command:
 
     ```
     /S IZUSVR1
     ```
 
-    The server might take a few minutes to initialize. The z/OSMF server is available when the message ""CWWKF0011I: The server zosmfServer is ready to run a smarter planet."" is displayed.
+  **Expected results:** it might take a few minutes to initialize. The z/OSMF server is available when the message `CWWKF0011I: The server zosmfServer is ready to run a smarter planet.` is displayed.
 
-4. Issue the following command to find the startup messages in the SDSF log of the z/OSMF server:
+4. To find the startup messages in the SDSF log of the z/OSMF server, issue the following command:
 
     ```
     f IZUG349I
     ```
 
-    You could see a message similar to the following message, which indicates the port number:
+    **Expected results:** you will see a message that indicates the port number, for example, `IZUG349I: The z/OSMF STANDALONE Server home page can be accessed at  https://mvs.hursley.ibm.com:443/zosmf after the z/OSMF server is started on your system.` In this example, the port number is `443`. You will need this port number later.
 
-    ```
-    IZUG349I: The z/OSMF STANDALONE Server home page can be accessed at  https://mvs.hursley.ibm.com:443/zosmf after the z/OSMF server is started on your system.
-    ```
-
-    In this example, the port number is 443. You will need this port number later.
-
-    Point your browser at the nominated z/OSMF STANDALONE Server home page and you should see its Welcome Page where you can log in.
+5. Point your browser at the nominated z/OSMF STANDALONE Server home page and you should see its Welcome Page where you can log in.
 
 **Note:** If your implementation uses an external security manager other than RACF (for example, Top Secret for z/OS or ACF2 for z/OS), you provide equivalent commands for your environment. For more information, see the following product documentation:
 
@@ -92,18 +84,18 @@ The Zowe CLI uses z/OSMF Representational State Transfer (REST) APIs to work wit
   z/OS jobs REST interface  |z/OS jobs REST interface is required to use the zos-jobs command group in the Zowe CLI. Endpoints begin with `/zosmf/restjobs/`   |  [z/OS jobs REST interface][9d372fb1]
   z/OSMF workflow services  | z/OSMF workflow services is required to create and manage z/OSMF workflows on a z/OS system. Endpoints begin with `/zosmf/workflow/`  | [z/OSMF workflow services][4e443fd6]
 
-  [a5ec5a22]: https://www.ibm.com/support/knowledgecenter/SSLTBW_2.3.0/com.ibm.zos.v2r3.izua700/izuprog_API_TSOServices.htm "TSO/E address space services"
-  [aab6df02]: https://www.ibm.com/support/knowledgecenter/SSLTBW_2.3.0/com.ibm.zos.v2r3.izua300/izuconfig_CloudProvSecuritySetup.htm "Cloud provisioning services"
-  [cec53ca4]: https://www.ibm.com/support/knowledgecenter/SSLTBW_2.3.0/com.ibm.zos.v2r3.izua700/IZUHPINFO_API_RESTCONSOLE.htm "z/OS console"
-  [6bbf5bfd]: https://www.ibm.com/support/knowledgecenter/SSLTBW_2.3.0/com.ibm.zos.v2r3.izua700/IZUHPINFO_API_RESTFILES.htm "z/OS data set and file interface"
-  [9d372fb1]: https://www.ibm.com/support/knowledgecenter/SSLTBW_2.3.0/com.ibm.zos.v2r3.izua700/IZUHPINFO_API_RESTJOBS.htm "z/OS jobs interface"
-  [4e443fd6]: https://www.ibm.com/support/knowledgecenter/SSLTBW_2.3.0/com.ibm.zos.v2r3.izua700/izuprog_API_WorkflowServices.htm "z/OSMF workflow services"  
+  [a5ec5a22]: https://www.ibm.com/docs/en/zos/2.3.0?topic=services-tsoe-address-space "TSO/E address space services"
+  [aab6df02]: https://www.ibm.com/docs/en/zos/2.3.0?topic=configuration-preparing-use-cloud-provisioning "Cloud provisioning services"
+  [cec53ca4]: https://www.ibm.com/docs/en/zos/2.3.0?topic=services-zos-console "z/OS console"
+  [6bbf5bfd]: https://www.ibm.com/docs/en/zos/2.3.0?topic=services-zos-data-set-file-rest-interface "z/OS data set and file interface"
+  [9d372fb1]: https://www.ibm.com/docs/en/zos/2.3.0?topic=services-zos-jobs-rest-interface "z/OS jobs interface"
+  [4e443fd6]: https://www.ibm.com/docs/en/zos/2.3.0?topic=services-zosmf-workflow "z/OSMF workflow services"  
 
   Zowe uses symbolic links to the z/OSMF `bootstrap.properties`, `jvm.security.override.properties`, and `ltpa.keys` files. Zowe reuses SAF, SSL, and LTPA configurations; therefore, they must be valid and complete.
 
   For more information, see [Using the z/OSMF REST services][0c0f6f64] in IBM z/OSMF documentation.
 
-  [0c0f6f64]: https://www.ibm.com/support/knowledgecenter/SSLTBW_2.3.0/com.ibm.zos.v2r3.izua700/IZUHPINFO_RESTServices.htm "Using the z/OSMF REST services"
+  [0c0f6f64]: https://www.ibm.com/docs/en/zos/2.3.0?topic=guide-using-zosmf-rest-services "Using the z/OSMF REST services"
 
   To verify that z/OSMF REST services are configured correctly in your environment, enter the REST endpoint into your browser. For example: `https://mvs.ibm.com:443/zosmf/restjobs/jobs`
 
@@ -112,7 +104,7 @@ The Zowe CLI uses z/OSMF Representational State Transfer (REST) APIs to work wit
   - Browsing z/OSMF endpoints requests your user ID and password for defaultRealm; these are your TSO user credentials.
   - The browser returns the status code 200 and a list of all jobs on the z/OS system. The list is in raw JSON format.
 
-## Configuration of z/OSMF to properly work with API ML
+## Configuring z/OSMF to properly work with API ML
 
 There is an issue observed in z/OSMF which leads to a stuck JSON web token(JWT). It manifests as the endpoint `/zosmf/services/authenticate` issuing a JWT with success RC that is not valid for API calls, resulting in 401 response status code. This is a persistent condition.
 To get the token unstuck, perform a logout with the LTPA token from the login request. This causes logins to start serving unique JWTs again.
