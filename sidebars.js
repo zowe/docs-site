@@ -91,7 +91,7 @@ module.exports = {
         {
           type: "category",
           label: "Preparing for installation",
-          link: {type: "doc", id: "user-guide/install-zos"},
+          link: {type: "doc", id: "user-guide/installandconfig"},
           items: [
             "user-guide/zos-components-installation-checklist",
             "user-guide/systemrequirements-zos",

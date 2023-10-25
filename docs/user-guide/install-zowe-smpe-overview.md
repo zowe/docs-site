@@ -1,22 +1,10 @@
-# Installation overview
+# Installing Zowe SMP/E overview
 
 This program directory is intended for system programmers who are responsible for program installation and maintenance. It contains information about the material and procedures associated with the installation of Zowe Open Source Project (Base). This publication refers to Zowe Open Source Project (Base) as Zowe.
-
-The Program Directory contains the following sections:
-  - **[End-to-end installation diagram](#end-to-end-installation-diagram)** shows the overall installation process.
-  - **[Program Materials](#program-materials)** identifies the basic program materials and documentation for Zowe.
-  - **[Program Support](#program-support)** describes the support available for Zowe.
-  - **[Program and Service Level Information](#program-and-service-level-information)** lists the APARs (program level) and PTFs (service level) that have been incorporated into Zowe.
-  - **[Installation Requirements and Considerations](#installation-requirements-and-considerations)** identifies the resources and considerations that are required for installing and using Zowe.
-  - **[Installation Instructions](#installation-instructions)** provides detailed installation instructions for Zowe. It also describes the procedures for activating the functions of Zowe, or refers to appropriate publications.
 
 ### End-to-end installation diagram
 
 ![Install Zowe with SMPE](../images/install/SMPE-install.png)
-
-### Zowe description
-
-Zowe&trade; is an open source project created to host technologies that benefit the Z platform.  It is a sub-project of [Open Mainframe Project](https://www.openmainframeproject.org/all-projects) which is part of the Linux Foundation.  More information about Zowe is available at [https://zowe.org](https://zowe.org).
 
 ### Zowe FMIDs
 
@@ -65,7 +53,7 @@ Report any problems which you feel might be an error in the product materials to
 
 ## Program and service level information
 
-This section identifies the program and relevant service levels of Zowe. The program level refers to the APAR fixes that have been incorporated into the program. The service level refers to the PTFs that have been incorporated into the program.
+This section identifies the program and relevant service levels of Zowe. The program level refers to the APAR fixes that have been incorporated into the program. The service level refers to the PTFs that have been incorporated into the program. 
 
 ### Program level information
 

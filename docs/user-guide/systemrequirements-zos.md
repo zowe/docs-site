@@ -7,14 +7,6 @@ Before installing Zowe&trade; z/OS components, ensure that your z/OS environment
 
 All Zowe server components can be installed on a z/OS environment, while some can alternatively be installed on Linux or zLinux via Docker. The components provide a number of services that are accessed through a web browser such as an API catalog and a web desktop.  
 
-- [System requirements](#system-requirements)
-  - [z/OS system requirements](#zos-system-requirements)
-    - [z/OS](#zos)
-    - [Node.js](#nodejs)
-    - [Java](#java)
-    - [z/OSMF (Optional)](#zosmf-optional)
-  - [Zowe Containers requirements](#zowe-containers-requirements)
-
 ## z/OS system requirements
 
 Be sure your z/OS system meets the following prerequisites:

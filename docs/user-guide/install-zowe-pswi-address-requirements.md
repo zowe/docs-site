@@ -2,7 +2,7 @@
 
 Before you install Zowe using IBM z/OSMF, address the following installation and security requirements. Your systems programmers and security administrators can complete these tasks in parallel.  
 
-## Configuring z/OSMF
+## Configure z/OSMF
 
 :::info Roles required: Systems programmer, security administrator, domain administrator
 :::

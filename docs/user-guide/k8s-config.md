@@ -1,4 +1,4 @@
-# Configuring
+# Configuring Zowe containers
 
 Zowe provides sample configurations that make it easy for you to run Zowe in Kubernetes. You can use them directly or as a reference.
 

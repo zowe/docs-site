@@ -1,4 +1,4 @@
-# Installing server-side components using containers
+# Installing Zowe via a containerization build (PAX file)
 
 As a system programmer, you can download Zowe (server) containers as an alternative to running Zowe servers on z/OS through the Zowe convenience and SMP/E builds. Choose the appropriate installation type for your use case. Using containers has numerous advantaages:
 
@@ -20,7 +20,7 @@ Zowe containers are designed to run together with extensions and Zowe utilities,
   <figcaption></figcaption>
 </figure>
 
-Stage 1 ensures that your software and hardware are prepared for installation. For more information, see [Prerequisites for Zowe server containers](k8s-prereqs.md).
+Stage 1 ensures that your software and hardware are prepared for installation. For more information, see [Preparing for Zowe server containers installation](k8s-prereqs.md).
 
 ### Stage 2: Download Zowe containers
 
@@ -42,7 +42,7 @@ At Stage 2, you download the Zowe containers. Two downloading methods are availa
 
 At Stage 3, you do not need to install the Zowe containers if you use Zowe's Kubernetes configuration samples. If you download container images, an could be considered "installed" when it is findable by Kubernetes. See more information [here](../user-guide/k8s-downloading/#installing).
 
-At Stage 4, you [configure the Zowe container environment](../user-guide/k8s-config.md).  
+At Stage 4, you can [configure the Zowe container environment](../user-guide/k8s-config.md).  
 Follow these steps:
 
 1. [Create namespace and service account](../user-guide/k8s-config#1-create-namespace-and-service-account)
@@ -52,7 +52,7 @@ Follow these steps:
 
 ### Stage 5: Start Zowe containers
 
-In Stage 5, you [start Zowe containers](../user-guide/k8s-using/#starting-zowe-containers).  
+In Stage 5, you can [start Zowe containers](../user-guide/k8s-using/#starting-zowe-containers).  
  Follow these steps:
 1. [Apply the deployment files to start Zowe containers](../user-guide/k8s-using#starting-zowe-containers). 
 2. After you start Zowe containers, [verify that Zowe containers are started](../user-guide/k8s-using#verifying-zowe-containers).

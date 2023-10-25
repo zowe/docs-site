@@ -44,14 +44,13 @@ Before continuing with the installation, you should be familiar with the followi
 - The `zwe` utility used for installing, configuring, and managing Zowe
 - The configuration file used for Zowe, `zowe.yaml`
 
-These topics and more are covered in the [Planning the installation](installandconfig.md) page.
-
+These topics and more are covered in the [Preparing for installation](installandconfig.md) page.
 
 ## Stage 2: Installing the Zowe z/OS runtime
 
 ![Install the Zowe z/OS runtime](../images/install/install.png)
 
-1. Ensure that the software requirements are met. The prerequisites are described in [System requirements](systemrequirements-zos.md).
+1. Ensure that the software requirements are met. The prerequisites are described in [Preparing for installation](systemrequirements-zos.md).
 
 1. Choose the method of installing Zowe on z/OS. 
 
@@ -76,7 +75,7 @@ These topics and more are covered in the [Planning the installation](installandc
 1. Obtain and install the Zowe build.
 
    - For how to obtain the convenience build and install it, see [Installing Zowe runtime from a convenience build](install-zowe-zos-convenience-build.md).
-   - For how to obtain the SMP/E build and install it, see [Installing Zowe SMP/E](install-zowe-smpe.md).
+   - For how to obtain the SMP/E build and install it, see [Installing Zowe SMP/E overview](install-zowe-smpe-overview.md).
    - For how to obtain the PSWI and install it, see [Installing Zowe from a Portable Software Instance](install-zowe-pswi.md).
 
 After successful installation of either a convenience build or an SMP/E build, there will be a zFS folder that contains the unconfigured Zowe runtime directory, a utility library `SZWEEXEC` that contains utilities, a SAMPLIB library `SZWESAMP` that contains sample members, and a load library `SZWEAUTH` that contains load modules. The steps to prepare the z/OS environment to launch Zowe are the same irrespective of the installation method.
@@ -111,7 +110,7 @@ The `zwe init` command runs the subcommands in sequence automatically. You can c
 
 1. [Configure Zowe to use TLS certificates.](configure-certificates.md) (`zwe init certificate`)
 1. [Install Zowe main started tasks](install-stc-members.md). (`zwe init stc`)
-1. [Configure the z/OS system for Zowe](configure-zos-system.md).
+1. [Addressing z/OS requirements for Zowe](configure-zos-system.md).
 1. [Verify the installation](verify-zowe-runtime-install.md). Verify that Zowe is installed correctly on z/OS.
 
 :::tip

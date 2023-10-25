@@ -1,4 +1,4 @@
-# Installing Zowe via z/OSMF requirements
+# Installing Zowe via z/OSMF from PSWI and SMP/E workflow
 
 The following information contains procedures and tips for meeting z/OSMF requirements. For complete information, go to [IBM Documentation](https://www.ibm.com/docs/en/zos/2.3.0) and read the following documents.
 

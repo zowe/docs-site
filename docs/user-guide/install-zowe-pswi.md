@@ -19,11 +19,16 @@ To install Zowe using z/OSMF, ensure that you meet the following requirements:
 
 Refer to the following subpages to guide you through the installation procedure using z/OSMF.
 
-* **Address z/OSMF Requirements**  
+* [Address z/OSMF Requirements](./install-zowe-pswi-address-requirements.md)
+
 Provides information about z/OSMF general configuration and security requirements.
-* **Acquire a z/OSMF Portable Software Instance**  
+
+* [Acquire a z/OSMF Portable Software Instance](./install-zowe-pswi-acquire.md)
+
 Provides the steps to acquire the product software by downloading the z/OSMF portable software instance to the z/OSMF host. You must then register the portable software instance in z/OSMF.
-* **Install Product Software Using z/OSMF Deployments**  
+
+* [Install Product Software Using z/OSMF Deployments](./install-zowe-pswi-deployment.md) 
+
 Provides the steps to install (deploy) the portable software instance to an LPAR using z/OSMF Deployments. This step creates the SMP/E environment and runs the RECEIVE, APPLY, and ACCEPT steps to prepare the software instance for SMP/E operations. This step also:
     * Customizes the data set names that are defined to SMP/E.
     * Mounts required USS files if necessary.
