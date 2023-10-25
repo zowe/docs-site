@@ -868,7 +868,7 @@ module.exports = {
     {
       type: "link",
       label: "Third Party Software Requirements",
-      href: "https://github.com/zowe/docs-site/tree/master/tpsr/tpsr-v2.11.x.md",
+      href: "https://github.com/zowe/docs-site/tree/master/tpsr/tpsr-v2.12.x.md",
     },
   ],
 };
