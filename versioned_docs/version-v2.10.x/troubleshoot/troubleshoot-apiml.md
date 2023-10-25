@@ -296,7 +296,7 @@ Request a new certificate that contains a valid z/OSMF host name in the subject 
 
 #### Re-create the Zowe keystore
 
-Re-create the Zowe keystore by deleting it and re-creating it. For more information, see [Configuring PKCS12 certificates](../user-guide/configure-certificates.md/#pkcs12-certificates-in-a-keystore).  The Zowe keystore directory is the value of the `KEYSTORE_DIRECTORY` variable in the `zowe.yaml` file that is used to launch Zowe.
+Re-create the Zowe keystore by deleting it and re-creating it. For more information, see [Configuring PKCS12 certificates](../user-guide/configure-certificates/#pkcs12-certificates-in-a-keystore).  The Zowe keystore directory is the value of the `KEYSTORE_DIRECTORY` variable in the `zowe.yaml` file that is used to launch Zowe.
 
 ### API ML throws I/O error on GET request and cannot connect to other services
 

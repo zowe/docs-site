@@ -18,7 +18,7 @@ To utilize [Single-Sign-On (SSO)](../user-guide/systemrequirements-zos#single-si
 
 If the keyring or a truststore contains at least one valid certificate authority (CA) other than the CA of the API ML, it is possible to use client certificates issued by this CA to authenticate to the API ML.
 
-For more information, see the [Authentication for API ML services documentation](../extend/extend-apiml/authentication-for-apiml-services#authentication-parameters).
+For more information, see the [Authentication for API ML services documentation](../extend/extend-apiml/authentication-for-apiml-services.md)
 
 ## Authentication with Personal Access Token (PAT)
 
@@ -46,7 +46,7 @@ Multi-factor authentication is provided by third-party products which Zowe is co
 Additionally, Zowe API ML can be configured to accept OIDC/OAuth2 user authentication tokens. In this particular case, MFA support is built into the OIDC provider system.
 It does not rely on the mainframe MFA technology, but is equally secure.
 
-For details about multi-factor authentication, see [the MFA documentation here](../user-guide/mvd-configuration#multi-factor-authentication-configuration).
+For details about multi-factor authentication, see [the MFA documentation here](../user-guide/mvd-configuration.md#multi-factor-authentication-configuration).
 
 ## Certificate Authority Advanced Authentication Mainframe (CA AAM)
 
