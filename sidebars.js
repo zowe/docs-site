@@ -188,9 +188,11 @@ module.exports = {
                     "user-guide/certificates-setup",
                   ],
                 },
+                {
                   type: "category",
                   label: "Configuring the Zowe cross memory server",
                   link: {type:"doc", id:"user-guide/configure-xmem-server"},
+                }, 
                 {
                   type: "category",
                   label: "Configuring High Availability (HA)",
