@@ -5,6 +5,7 @@ on:
     branches:
       - docs-staging
       - master
+      - anax-test-branch
     types: [opened, reopened, labeled]
 
 jobs:
