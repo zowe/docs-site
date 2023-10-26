@@ -151,7 +151,7 @@ module.exports = {
                 {
                   type: "category",
                   label: "Initializing Zowe z/OS runtime",
-                  link: {type:"doc", id:"user-guide/initialize-zowe-zos-runtime"},
+                  link: {type:"doc", id:"user-guide/configure-zowe-runtime"},
                   items: [
                     "user-guide/initialize-zos-system",
                         "user-guide/zwe-init-subcommand-overview",
@@ -172,11 +172,8 @@ module.exports = {
                 },
                 {
                   type: "category",
-                  label: "Configuring Zowe main started task and cross memory server",
-                  items: [
-                    "user-guide/install-stc-members",
-                    "user-guide/configure-xmem-server",
-                  ],
+                  label: "Installing Zowe main started tasks",
+                  link: {type:"doc", id:"user-guide/install-stc-members"},
                 },
                 {
                   type: "category",
@@ -191,6 +188,9 @@ module.exports = {
                     "user-guide/certificates-setup",
                   ],
                 },
+                  type: "category",
+                  label: "Configuring the Zowe cross memory server",
+                  link: {type:"doc", id:"user-guide/configure-xmem-server"},
                 {
                   type: "category",
                   label: "Configuring High Availability (HA)",
@@ -199,11 +199,8 @@ module.exports = {
                 "user-guide/configure-sysplex",
                 "user-guide/systemrequirements-zosmf-ha",
                 "user-guide/configure-caching-service-ha",
-                "user-guide/initialize-vsam-dataset",
                   ],
                 },
-                "user-guide/configmgr-using",
-                "user-guide/install-configure-zos-extensions"
               ],
             },
             "user-guide/start-zowe-zos",
@@ -226,6 +223,8 @@ module.exports = {
           label: "Advanced server-side configuration",
           items: [
             "user-guide/mvd-configuration",
+            "user-guide/configmgr-using",
+            "user-guide/install-configure-zos-extensions"
             {
               type: "category",
               label: "API Mediation Layer",

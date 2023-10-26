@@ -1,4 +1,4 @@
-# Initializing the z/OS system with `zwe init`
+# Configuring Zowe with `zwe init`
 
 Once you complete the installation of the Zowe runtime, begin configuration by initializing Zowe with proper security configurations. To simplify this configuration process, one option is to run the `zwe init` command. This step is common for installing and configuring Zowe from either a convenience build or from an SMP/E build.
 
@@ -17,14 +17,13 @@ The `zwe init` command is a combination of the following subcommands. Each subco
 - **`stc`**: Configure the system to launch the Zowe started task.
 
 :::important
-To successfully run `zwe init security`, `zwe init apfauth`, and `zwe init certificate`, it is likely that your organization requires elevated permissions. We recommend you consult with yoursecurity administrator to run these commands. For more information about tasks for the security administrator, see the section [Configuring security](./configuring-security) in this configuration documentation.
+We recommend you to run these sub commands one by one to clearly see the output of each step. To successfully run `zwe init security`, `zwe init apfauth`, and `zwe init certificate`, it is likely that your organization requires elevated permissions. We recommend you consult with your security administrator to run these commands. For more information about tasks for the security administrator, see the section [Configuring security](./configuring-security) in this configuration documentation.
 ::: 
 
 :::tip
 Enter `zwe init --help` to learn more about the command or see the [`zwe init` command reference](../appendix/zwe_server_command_reference/zwe/init/zwe-init) for detailed explanation, examples, and parameters. 
 :::
 
-The `zwe init` command requires a [Zowe configuration file](installandconfig#zowe-configuration-file) to proceed. This configuration file instructs how Zowe should be initialized. It is necessary to create and review this file before proceeding. If you do not have the file already, copy from `example-zowe.yaml` located in the Zowe runtime directory.
 
 ## zwe init arguments
 
@@ -39,9 +38,9 @@ The following `zwe init` arguments can assist you with the initization process:
 - **T`-vv`** or **`--trace`**  
  This argument provides you more execution details than the `--verbose` mode for troubleshooting purposes.
 
-## z/OS system initilization command
+## Zowe initilization command
 
-The `zwe init` command runs the subcommands in sequence automatically. To initialize the z/OS system and permissions that Zowe requires, run the following command. 
+The `zwe init` command runs the subcommands in sequence automatically. If you have the Zowe configuration file preparted and have security administrator privileges, or security and certificates setup was already completed on the system, you can run the following command:
 
 ```
 zwe init --config /path/to/zowe.yaml

@@ -1,4 +1,4 @@
-# Installing and configuring the Zowe cross memory server (ZWESISTC)
+# Configuring the Zowe cross memory server (ZIS)
 
 The Zowe cross memory server (ZIS) provides privileged cross-memory services to the Zowe Desktop and runs as an
 APF-authorized program. The same cross memory server can be used by multiple Zowe desktops. The cross memory server is required to log on to the Zowe desktop and operate the desktop apps such as the Code Editor. If you wish to start Zowe without the desktop (for example bring up just the API Mediation Layer), you do not need to install and configure a cross memory server and can skip this step. 
@@ -214,4 +214,4 @@ The cross memory `ZWESISTC` task starts and stops the `ZWESASTC` task as needed.
 
 ## Next step
 
-After you complete the installation and configuration of the Zowe cross memory server, the next step is to [configure certificates](./configure-certificates).
+After you complete the configuration of the Zowe cross memory server, you may [configure Zowe for High Availability](./zowe-ha-overview), or proceed to [starting Zowe](./start-zowe-zos).
