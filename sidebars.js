@@ -81,6 +81,7 @@ module.exports = {
     },
   ],
 
+  setup : [
   "setup": [
     "user-guide/install-overview",
     {
@@ -146,71 +147,104 @@ module.exports = {
           ],
           },
         "user-guide/verify-zowe-runtime-install",
-    {
-      type: "category",
-      label: "Configuring",
-      items: [
-        "user-guide/initialize-zos-system",
-        "user-guide/initialize-mvs-datasets",
-        "user-guide/initialize-security-configuration",
-        "user-guide/configure-zos-system",
-        "user-guide/grant-user-permission-zosmf",
-        "user-guide/apf-authorize-load-library",
+		{
+              type: "category",
+              label: "Configuring",
+              link: {type:"doc", id:"user-guide/configuring-overview"},
+              items: [
+                {
+                  type: "category",
+                  label: "Initializing Zowe z/OS runtime",
+                  link: {type:"doc", id:"user-guide/configure-zowe-runtime"},
+                  items: [
+                    "user-guide/initialize-zos-system",
+                        "user-guide/zwe-init-subcommand-overview",
+                    "user-guide/configure-zowe-zosmf-workflow",
+                  ],
+                },
+                {
+                  type: "category",
+                  label: "Configuring security",
+                  link: {type:"doc", id:"user-guide/configuring-security"},
+                  items: [
+                    "user-guide/initialize-security-configuration",
+                    "user-guide/apf-authorize-load-library",
+                    "user-guide/configure-zos-system",
+                    "user-guide/assign-security-permissions-to-users",
+                  ],
+                },
+                {
+                  type: "category",
+                  label: "Configuring certificates",
+                  link: {type:"doc", id:"user-guide/configure-certificates"},
+                  items: [
+                    "user-guide/certificates-configuration-questionnaire",
+                    "user-guide/certificate-configuration-scenarios",
+                    "user-guide/import-certificates",
+                    "user-guide/generate-certificates",
+                    "user-guide/use-certificates",
+                    "user-guide/certificates-setup",
+                  ],
+                },
+                {
+                  type: "category",
+                  label: "Configuring the Zowe cross memory server",
+                  link: {type:"doc", id:"user-guide/configure-xmem-server"},
+                  items: [],
+                }, 
+                {
+                  type: "category",
+                  label: "Configuring high availability (optional)",
+                  link: {type:"doc", id:"user-guide/zowe-ha-overview"},
+                  items: [
+                "user-guide/configure-sysplex",
+                "user-guide/systemrequirements-zosmf-ha",
+                "user-guide/configure-caching-service-ha",
+                  ],
+                },
+              ],
+            },
+            "user-guide/start-zowe-zos",
+            "user-guide/verify-zowe-runtime-install",            
+          ],
+        },            
+        {
+          "type": "category",
+          "label": "Installing containerization build",
+          link: {type:"doc", id:"user-guide/k8s-introduction"},
+          "items": [
+            "user-guide/k8s-prereqs",
+            "user-guide/k8s-downloading",
+            "user-guide/k8s-config",
+            "user-guide/k8s-using",
+          ],
+        }, 
         {
           type: "category",
-          label: "Configuring certificates",
-          link: {type:"doc", id:"user-guide/configure-certificates"},
+          label: "Advanced server-side configuration",
           items: [
-            "user-guide/certificates-configuration-questionnaire",
-            "user-guide/certificate-configuration-scenarios",
-            "user-guide/import-certificates",
-            "user-guide/generate-certificates",
-            "user-guide/use-certificates",
-            "user-guide/certificates-setup",
+            "user-guide/mvd-configuration",
+            "user-guide/configmgr-using",
+            "user-guide/install-configure-zos-extensions",
           ],
-        },
-        "user-guide/initialize-vsam-dataset",
-        "user-guide/install-stc-members",
-        "user-guide/configure-xmem-server",
-        "user-guide/configure-auxiliary-address-space",
-        "user-guide/configure-zowe-zosmf-workflow",
-        "user-guide/configmgr-using",
-        "user-guide/install-configure-zos-extensions"
-      ],
-      },
-    {
-      type: "category",
-      label: "High Availability",
-      link: {type:"doc", id:"user-guide/zowe-ha-overview"},
-      items: [
-        "user-guide/configure-sysplex",
-        "user-guide/systemrequirements-zosmf-ha",
-        "user-guide/configure-caching-service-ha",
-      ],
-      },
-        "user-guide/start-zowe-zos",       
-      ],
-      },            
-    {
-      type: "category",
-      label: "Advanced server-side configuration",
-      items: [
-        "user-guide/mvd-configuration",
-        {
-          type: "category",
-          label: "API Mediation Layer",
-          items: [
-            "user-guide/configure-data-sets-jobs-api",
-            "user-guide/api-mediation/api-catalog-configuration",
-            "user-guide/api-mediation/api-mediation-personal-access-token",
-            "user-guide/api-mediation/api-gateway-configuration",
-            "user-guide/api-mediation/discovery-service-configuration",
-            "user-guide/api-mediation/api-mediation-internal-configuration",
-            "extend/extend-apiml/api-mediation-passtickets",
+            },
+            {
+              type: "category",
+              label: "API Mediation Layer",
+              items: [
+                "user-guide/configure-data-sets-jobs-api",
+                "user-guide/api-mediation/api-catalog-configuration",
+                "user-guide/api-mediation/api-mediation-personal-access-token",
+                "user-guide/api-mediation/api-gateway-configuration",
+                "user-guide/api-mediation/discovery-service-configuration",
+                "user-guide/api-mediation/api-mediation-internal-configuration",
+                "extend/extend-apiml/api-mediation-passtickets",
+              ],
+            },
           ],
-        },
+        },       
       ],
-    },       
+    },        
     {
       type: "category",
       label: "Zowe client-side components",
@@ -351,9 +385,8 @@ module.exports = {
           ],
         },
       ],
-    },    
-  ],  
-  "use": [
+   
+  use : [
     "user-guide/zowe-getting-started-tutorial",
     {
       type: "category",
@@ -436,7 +469,6 @@ module.exports = {
             "user-guide/cli-using-using-profiles-v1",
             "user-guide/cli-using-integrating-apiml",
             "user-guide/cli-using-working-certificates",
-    
             {
               type: "category",
               label: "Using environment variables",
@@ -477,7 +509,9 @@ module.exports = {
           label: "Using Zowe Explorer",
           link: {type:"doc", id:"user-guide/ze-usage"},
           items: [
-            "user-guide/ze-use-cases",
+            "user-guide/ze-working-with-data-sets",
+            "user-guide/ze-working-with-uss-files",
+            "user-guide/ze-working-with-jobs",
             {
               type: "category",
               label: "Zowe Explorer extensions",
@@ -853,7 +887,7 @@ module.exports = {
     {
       type: "link",
       label: "Third Party Software Requirements",
-      href: "https://github.com/zowe/docs-site/tree/master/tpsr/tpsr-v2.11.x.md",
+      href: "https://github.com/zowe/docs-site/tree/master/tpsr/tpsr-v2.12.x.md",
     },
   ],
 };
