@@ -18,7 +18,7 @@ jobs:
     steps:
       - name: Add initial comment w/ instructions
         id: initial_comment_writer
-        if: contains(fromJson('["jandacek", "nannanli", "samanthasusu", "nellietan", "lparadkar-rocket"]'), github.event.pull_request.user.login)
+        if: contains(fromJson('["anaxceron", "jandacek", "nannanli", "samanthasusu", "nellietan", "lparadkar-rocket"]'), github.event.pull_request.user.login)
         uses: marocchino/sticky-pull-request-comment@v2
         with:
           header: Initial comment writer
