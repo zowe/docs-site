@@ -79,7 +79,7 @@ module.exports = {
       id:"getting-started/zowe-resources",
     },
   ],
-  
+
   "setup": [
     "user-guide/install-overview",
     {
@@ -389,8 +389,8 @@ module.exports = {
         },
       ],
     },    
-  ]  
-  "use": [
+  ],
+  use : [
     "user-guide/zowe-getting-started-tutorial",
     {
       type: "category",
@@ -473,7 +473,6 @@ module.exports = {
             "user-guide/cli-using-using-profiles-v1",
             "user-guide/cli-using-integrating-apiml",
             "user-guide/cli-using-working-certificates",
-    
             {
               type: "category",
               label: "Using environment variables",
