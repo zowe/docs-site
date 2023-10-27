@@ -7,7 +7,7 @@ Some of the following `zwe init` subcommands require elevated permissions. See t
 :::
 
 * [Initializing Zowe custom data sets (`zwe init mvs`)](#initializing-zowe-custom-data-sets-zwe-init-mvs)
-* [Initializing Zowe security configurations  (`zwe init security`)](#initializing-zowe-security-configurations-zwe-init-security)
+* [Initializing Zowe security configurations (`zwe init security`)](#initializing-zowe-security-configurations-zwe-init-security)
 * [Performing APF authorization of load libraries (`zwe init apfauth`)](#performing-apf-authorization-of-load-libraries-zwe-init-apfauth)
 * [Configuring Zowe to use TLS certificates (`zwe init certificate`)](#configuring-zowe-to-use-tls-certificates-zwe-init-certificate)
 * [Creating VSAM caching service datasets (`zwe init vsam`)](#creating-vsam-caching-service-datasets-zwe-init-vsam)
@@ -98,7 +98,7 @@ Successful execution of `zwe init mvs` has the following results:
    You can ignore this message, or you can use the `--allow-overwritten` option on the command. For example, `zwe init mvs -c zowe.yaml --allow-overwritten`.
 
 
-## Initializing Zowe security configurations  (`zwe init security`)
+## Initializing Zowe security configurations (`zwe init security`)
 
 This subcommand creates the user IDs and security manager settings.
 
@@ -109,7 +109,7 @@ If Zowe has already been launched on a z/OS system from a previous release of Zo
 
 The JCL member `.SZWESAMP(ZWESECUR)` is provided to assist with the security configuration. Before submitting the `ZWESECUR` JCL member, customize this member to match site security rules. For script driven scenarios, you can run the command `zwe init security` which uses `ZWESECUR` as a template to create a customized member in `.CUST.JCLLIB`.  This member contains the commands required to perform the security configuration. 
 
-For more information about `zwe init security`, see [Initializing Zowe security configurations](./initialize-security-configuration.).
+For more information about `zwe init security`, see [Initializing Zowe security configurations](./initialize-security-configuration).
 
 
 ## Performing APF authorization of load libraries (`zwe init apfauth`)
@@ -148,7 +148,7 @@ Zowe can work in a high availability (HA) configuration where multiple instances
 
 The command `zwe init vsam` uses the template JCL in `SZWESAMP(ZWECSVSM)` to copy the source template member from `zowe.setup.mvs.hlq.SZWESAMP(ZWECVCSM)` and creates a target JCL member in `zowe.setup.mvs.jcllib(ZWECVSCM)` with values extracted from the `zowe.yaml` file.
 
-For more information about `zwe init vsam`, see [Creating VSAM caching service datasets](./initialize-vsam-dataset).
+For more information about `zwe init vsam`, see [Creating VSAM caching service datasets](./configure-caching-service-ha#vsam)
 
 ## Installing Zowe main started tasks (`zwe init stc`)
 
@@ -196,7 +196,4 @@ Copy IBMUSER.ZWEV2.CUST.JCLLIB(ZWESASTC) to USER.PROCLIB(ZWESASTC)
 
 ## Next steps
 
-After each of the `zwe init` subcommands run successfully, and you completed the security configuration, assigned security permissions to users, and configured the cross memory server (ZIS), you can procede to [starting Zowe](./start-zowe-zos.md).
-
-* For more information about configuring security, see the articles in the section [Configuring security](./configuring-security).
-* For more information about configuring the cross memory server (ZIS), see [Configuring the Zowe cross memory server (ZIS)](./configure-xmem-server.md).
+After each of the `zwe init` subcommands run successfully, the next step is to complete [configuring security](./configuring-security).
