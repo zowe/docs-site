@@ -230,6 +230,7 @@ module.exports = {
             "user-guide/configmgr-using",
             "user-guide/install-configure-zos-extensions"
           ]
+            }
             {
               type: "category",
               label: "API Mediation Layer",
