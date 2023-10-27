@@ -43,6 +43,7 @@ module.exports = {
       className: "ToCheadercolor",
       link: {type:"doc", id:"getting-started/release-notes/release-notes-overview"},
       items: [
+        "getting-started/release-notes/v2_12_0",
         "getting-started/release-notes/v2_11_0",
         "getting-started/release-notes/v2_10_0",
         "getting-started/release-notes/v2_9_0",
@@ -505,7 +506,9 @@ module.exports = {
           label: "Using Zowe Explorer",
           link: {type:"doc", id:"user-guide/ze-usage"},
           items: [
-            "user-guide/ze-use-cases",
+            "user-guide/ze-working-with-data-sets",
+            "user-guide/ze-working-with-uss-files",
+            "user-guide/ze-working-with-jobs",
             {
               type: "category",
               label: "Zowe Explorer extensions",
@@ -881,7 +884,7 @@ module.exports = {
     {
       type: "link",
       label: "Third Party Software Requirements",
-      href: "https://github.com/zowe/docs-site/tree/master/tpsr/tpsr-v2.11.x.md",
+      href: "https://github.com/zowe/docs-site/tree/master/tpsr/tpsr-v2.12.x.md",
     },
   ],
 };
