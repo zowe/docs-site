@@ -79,7 +79,7 @@ module.exports = {
       id:"getting-started/zowe-resources",
     },
   ],
-
+  
   "setup": [
     "user-guide/install-overview",
     {
@@ -389,7 +389,7 @@ module.exports = {
         },
       ],
     },    
-  ],  
+  ]  
   "use": [
     "user-guide/zowe-getting-started-tutorial",
     {
