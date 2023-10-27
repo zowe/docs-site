@@ -219,7 +219,7 @@ module.exports = {
             "user-guide/k8s-prereqs",
             "user-guide/k8s-downloading",
             "user-guide/k8s-config",
-            "user-guide/k8s-using"
+            "user-guide/k8s-using",
           ],
         }, 
         {
@@ -228,9 +228,9 @@ module.exports = {
           items: [
             "user-guide/mvd-configuration",
             "user-guide/configmgr-using",
-            "user-guide/install-configure-zos-extensions"
-          ]
-            }
+            "user-guide/install-configure-zos-extensions",
+          ],
+            },
             {
               type: "category",
               label: "API Mediation Layer",
