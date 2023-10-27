@@ -80,7 +80,7 @@ module.exports = {
     },
   ],
 
-  "setup": [
+  setup : [
     "user-guide/install-overview",
     {
       type: "category",
@@ -388,8 +388,7 @@ module.exports = {
           ],
         },
       ],
-    },    
-  ],
+   
   use : [
     "user-guide/zowe-getting-started-tutorial",
     {
