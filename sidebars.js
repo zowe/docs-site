@@ -174,6 +174,7 @@ module.exports = {
                   type: "category",
                   label: "Installing Zowe main started tasks",
                   link: {type:"doc", id:"user-guide/install-stc-members"},
+                  items: [],
                 },
                 {
                   type: "category",
@@ -192,6 +193,7 @@ module.exports = {
                   type: "category",
                   label: "Configuring the Zowe cross memory server",
                   link: {type:"doc", id:"user-guide/configure-xmem-server"},
+                  items: [],
                 }, 
                 {
                   type: "category",
