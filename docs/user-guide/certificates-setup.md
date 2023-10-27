@@ -1,8 +1,13 @@
-# Set up Zowe certificates using workflows
+# Setting up Zowe certificates using workflows
 
-Zowe uses certificates that are held in z/OS Keyring.
+Zowe can use certificates that are held in z/OS Keyring.
 
-You can use four z/OSMF workflows that enable you to manage keyring setup, certificates, certificate sign requests and signatures, and load certificates to a keyring. Use the following workflows to set up certificates for Zowe in your environment:
+You can use four z/OSMF workflows that enable you to manage keyring setup, certificates, certificate sign requests, and signatures, and load certificates to a keyring.
+
+:::info**Required roles:** system programmer, security administrator
+:::
+
+Use the following workflows to set up certificates for Zowe in your environment:
 
 1. Set up a Zowe certificate and keyring using ZWEKRING.xml
 
@@ -63,3 +68,6 @@ You can use four z/OSMF workflows that enable you to manage keyring setup, certi
    The workflow includes the steps that you can see on the following image:
 
    ![Workflow ZWELOADC](../images/configure/workflow-four.jpg)
+
+When you complete setting up Zowe certificate using workflows, you are ready to [start the cross memory server `ZWESISTC` on z/OS](./start-zowe-zos.md). 
+

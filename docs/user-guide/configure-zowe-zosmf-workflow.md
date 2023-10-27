@@ -13,7 +13,7 @@ Ensure that you meet the following requirements before you start your Zowe confi
 You can complete the following tasks with the z/OSMF workflow:
 
 - Configure the Zowe instance directory
-- Enable the API ML gateway
+- Enable the API ML Gateway
 - Enable the metrics service
 - Enable the API catalog
 - Enable automatic discovery
@@ -172,4 +172,5 @@ z/OSMF workflow simplifies the procedure to configure and start Zowe. Execute th
 After you execute each step, the step is marked as Complete. The workflow is executed.
 
 ## Next step
+
 After you successfully execute the workflow, you are ready to [configure the z/OS system for Zowe](./configure-zos-system.md).

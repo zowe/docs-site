@@ -1,6 +1,9 @@
-# Zowe certificate configuration overview
+# Configuring certificates
 
-As a system programmer or security administrator, review this article to learn about the key concepts of Zowe certificates, and options for certificate configuration. 
+Review this article to learn about the key concepts of Zowe certificates, and options for certificate configuration. 
+
+:::info**Required roles:** system programmer, security administrator
+:::
 
 Zowe uses digital certificates for secure, encrypted network communication over Secure Sockets Layer/Transport Layer Security (SSL/TLS) and HTTPS protocols. Communication in Zowe can be between Zowe servers, from Zowe to another server, or even between Zowe's servers and Zowe's client components.
 
@@ -14,7 +17,10 @@ Zowe supports using either file-based (`PKCS12`) or z/OS key ring-based (when on
 * [Certificate setup type](#certificate-setup-type)
 * [Next steps: Creating or importing certificates to Zowe](#next-steps-creating-or-importing-certificates-to-zowe)
 
-**Note:** If you are already familiar with certificate concepts and how Zowe uses certificates and are ready to get started, see the options under the section _Next steps: Creating or importing certificates to Zowe_ at the end of this article.
+:::note 
+If you are already familiar with certificate concepts and how Zowe uses certificates and are ready to get started, see the options under the section _Next steps: Creating or importing certificates to Zowe_ at the end of this article.
+:::
+
 ## Certificate concepts
 
 Before you get started with configuring certificates, it is useful to familiarize yourself with the following key concepts:
