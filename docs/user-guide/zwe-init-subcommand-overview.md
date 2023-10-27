@@ -1,8 +1,8 @@
 # zwe init subcommand overview
 
-Based on your use case, you may choose to run the subcommands of `zwe init` individually rather than running all of these commands together. Review this article to get started with using `zwe init` subcommands.
+Review this article to learn about the individual subcommands executed in `zwe init`. Based on your use case, you may choose to run the subcommands of `zwe init` individually rather than running all of these commands together. Review this article to get started with using `zwe init` subcommands.
 
-:::note
+:::important
 Some of the following `zwe init` subcommands require elevated permissions. See the required roles associated with each of these commands.
 :::
 
@@ -154,10 +154,14 @@ For more information about `zwe init vsam`, see [Creating VSAM caching service d
 
 Execute the subcommand `zwe init stc` to install Zowe main started tasks.
 
-:::info**Required roles:** system programmer
+Installation of Zowe main started tasks requires that JCL members for each of Zowe's started tasks be present on the JES proclib concatenation path. 
+
+Once you have completed security configuration, you can install the Zowe main started tasks. 
+
+:::info**Required role:** system programmer
 :::
 
-Installation of Zowe main started tasks requires that JCL members for each of Zowe's started tasks be present on the JES proclib concatenation path. The command `zwe init stc` copies these members from the install source location `.SZWESAMP` to the targted PDS specified in the `zowe.setup.dataset.proclib` value `USER.PROCLIB`. The three proclib member names are specified in `zowe.yaml` arguments.
+The JCL members for each of Zowe's started tasks need to be present on the JES proclib concatenation path. The command `zwe init stc` copies these members from the install source location `.SZWESAMP` to the targted PDS specified in the `zowe.setup.dataset.proclib` value `USER.PROCLIB`. The three proclib member names are specified in `zowe.yaml` arguments.  
 
 ```
 zowe
@@ -169,6 +173,30 @@ zowe
         aux: ZWESASTC
 ```
 
-The `zwe init stc` command uses the `CUST.JCL` LIB data sets as a staging area to contain intermediatory JCL which are transformed version of the originals that are shiped in `.SZWESAMP` with paths, PDS locations, and other runtime data updated.
+The `zwe init stc` command uses the `CUST.JCL` LIB data sets as a staging area to contain intermediatory JCL which are transformed version of the originals that are shiped in `.SZWESAMP` with paths, PDS locations, and other runtime data updated.  If you wish to just generate the `CUST.JCLLIB` members without having them copied to  `USER.PROCLIB`, specify `--security-dry-run`.  If the JCL members are already in the target PROCLIB, specify `--allow-overwritten`.   
 
-For more information about `zwe init stc`, see [Installing Zowe main started tasks](./install-stc-members).
+**Example:**
+
+```
+#>zwe init stc -c ./zowe.yaml
+-------------------------------------------------------------------------------
+>> Install Zowe main started task
+
+Modify ZWESLSTC
+Modify ZWESISTC
+Modify ZWESASTC
+
+Copy IBMUSER.ZWEV2.CUST.JCLLIB(ZWESLSTC) to USER.PROCLIB(ZWESLSTC)
+Copy IBMUSER.ZWEV2.CUST.JCLLIB(ZWESISTC) to USER.PROCLIB(ZWESISTC)
+Copy IBMUSER.ZWEV2.CUST.JCLLIB(ZWESASTC) to USER.PROCLIB(ZWESASTC)
+
+>> Zowe main started tasks are installed successfully.
+#>
+```
+
+## Next steps
+
+After each of the `zwe init` subcommands run successfully, and you completed the security configuration, assigned security permissions to users, and configured the cross memory server (ZIS), you can procede to [starting Zowe](./start-zowe-zos.md).
+
+* For more information about configuring security, see the articles in the section [Configuring security](./configuring-security).
+* For more information about configuring the cross memory server (ZIS), see [Configuring the Zowe cross memory server (ZIS)](./configure-xmem-server.md).

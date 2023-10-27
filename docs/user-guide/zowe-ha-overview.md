@@ -1,6 +1,6 @@
-# Configuring High Availability (HA)
+# Configuring high availability (optional)
 
-Zowe has a high availability feature built-in. This doc guides you through the configuration steps to enable this feature.
+Zowe has a high availability feature built-in. This doc guides you through the configuration steps to enable this feature. Note that configuring high availability is optional.
 
 :::info**Required role:** system programmer
 :::

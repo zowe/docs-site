@@ -1,6 +1,6 @@
 # Installing Zowe main started tasks
 
-Review this article to install Zowe main started tasks.
+Once you have completed security configuration, you can install the Zowe main started tasks. 
 
 :::info**Required role:** system programmer
 :::

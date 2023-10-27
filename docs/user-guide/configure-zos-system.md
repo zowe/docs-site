@@ -597,3 +597,6 @@ Details with examples can be found in documentation of external security product
 * **ACF2** - _**IDTDATA Profile Records**_ subsection in _Administrating_ chapter, [link](https://techdocs.broadcom.com/us/en/ca-mainframe-software/security/ca-acf2-for-z-os/16-0/administrating/administer-records/profile-records/idtdata-profile-records.html).
 
 A part of the Signed SAF Identity token configuration is a nontrivial step that has to generate a secret key for the PKCS#11 token. The secret key is generated in ICSF by calling the PKCS#11 Generate Secret Key (CSFPGSK) or Token Record Create (CSFPTRC) callable services. An example of the CSFPGSK callable service can be found in the SZWESAMP dataset as the ZWESECKG job.
+
+## Next step
+After you complete the z/OS configuration, the next step is to [assign security permissions to users](./assign-security-permissions-to-users).

@@ -95,4 +95,4 @@ To grant permissions to the user ID to access z/OSMF, issue the command(s) that 
 
 ## Next step
 
-After you complete the security permissions assigning, the next step is to [configure the Zowe cross memory server](./configure-xmem-server).
+After you complete the security permissions assigning, the next step is to [grant users permissions to access z/OSMF](./grant-user-permission-zosmf).

@@ -167,14 +167,7 @@ module.exports = {
                     "user-guide/apf-authorize-load-library",
                     "user-guide/configure-zos-system",
                     "user-guide/assign-security-permissions-to-users",
-                    "user-guide/grant-user-permission-zosmf",
                   ],
-                },
-                {
-                  type: "category",
-                  label: "Installing Zowe main started tasks",
-                  link: {type:"doc", id:"user-guide/install-stc-members"},
-                  items: [],
                 },
                 {
                   type: "category",
@@ -197,7 +190,7 @@ module.exports = {
                 }, 
                 {
                   type: "category",
-                  label: "Configuring High Availability (HA)",
+                  label: "Configuring high availability (optional)",
                   link: {type:"doc", id:"user-guide/zowe-ha-overview"},
                   items: [
                 "user-guide/configure-sysplex",
