@@ -1,4 +1,4 @@
-# Configuring the Caching Service for HA
+# Configuring the Caching Service for high availability
 
 Zowe can work in a high availability (HA) configuration where multiple instances of the Zowe launcher are started, either on the same LPAR, or different LPARs connected through sysplex distributor. If you are only running a single Zowe instance on a single LPAR you do not need to create a caching service so you may skip this step.  
 
@@ -103,7 +103,7 @@ The Infinispan storage method is recommended for production usage.
   >
   ```
 
-#### redis
+## redis
 
    Redis is not available if you are running the API Mediation Layer on z/OS under Unix System Services. Usage of redis is intended for when API ML is running off platform, such as in a Linux or Windows container as part of a hybrid cloud deployment.
 
