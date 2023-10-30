@@ -203,18 +203,18 @@ module.exports = {
               ],
             },
             "user-guide/start-zowe-zos",
-            "user-guide/verify-zowe-runtime-install",            
+            "user-guide/verify-zowe-runtime-install",
+            {
+              type: "category",
+              label: "Advanced server-side configuration",
+              items: [
+                "user-guide/mvd-configuration",
+                "user-guide/configmgr-using",
+                "user-guide/install-configure-zos-extensions",
+              ],
+            },
           ],
     },
-        {
-          type: "category",
-          label: "Advanced server-side configuration",
-          items: [
-            "user-guide/mvd-configuration",
-            "user-guide/configmgr-using",
-            "user-guide/install-configure-zos-extensions",
-          ],
-        },
         {
           type: "category",
           label: "API Mediation Layer",
