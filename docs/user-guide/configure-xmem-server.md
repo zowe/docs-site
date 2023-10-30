@@ -1,9 +1,14 @@
-# Installing and configuring the Zowe cross memory server (ZWESISTC)
+# Configuring the Zowe cross memory server (ZIS)
 
-The Zowe cross memory server, also known as ZIS, provides privileged cross-memory services to the Zowe Desktop and runs as an
-APF-authorized program. The same cross memory server can be used by multiple Zowe desktops. The cross memory server is needed to be able to log on to the Zowe desktop and operate its apps such as the Code Editor.  If you wish to start Zowe without the desktop (for example bring up just the API Mediation Layer), you do not need to install and configure a cross memory server and can skip this step. 
+The Zowe cross memory server (ZIS) provides privileged cross-memory services to the Zowe Desktop and runs as an
+APF-authorized program. The same cross memory server can be used by multiple Zowe desktops. The cross memory server is required to log on to the Zowe desktop and operate the desktop apps such as the Code Editor. If you wish to start Zowe without the desktop (for example bring up just the API Mediation Layer), you do not need to install and configure a cross memory server and can skip this step. 
 
-To install and configure the cross memory server, you must define APF-authorized load libraries, program properties table (PPT) entries, and a parmlib. This requires familiarity with z/OS.
+:::info**Required roles:** system programmer, security administrator
+:::
+
+Before you install the Zowe cross memory server (ZIS), ensure that you have completed the initial steps for configuring Zowe z/OS components and the z/OS system. For more information, see the [Configuring Overview](./configuring-overview).
+
+To install and configure the cross memory server, it is necessary to define APF-authorized load libraries, program properties table (PPT) entries, and a parmlib. Performing these steps requires familiarity with z/OS.
 
 - [PDS sample library and PDSE load library](#pds-sample-library-and-pdse-load-library)
 - [Load module](#load-module)
@@ -17,16 +22,19 @@ To install and configure the cross memory server, you must define APF-authorized
 - [Zowe auxiliary service](#zowe-auxiliary-service)
     - [When to configure the auxiliary service](#when-to-configure-the-auxiliary-service)
     - [Installing the auxiliary service](#installing-the-auxiliary-service)
-
+      - [Zowe Auxiliary Address space](#zowe-auxiliary-address-space)
+      
 ## PDS sample library and PDSE load library
 
 The cross memory server runtime artifacts, the JCL for the started tasks, the parmlib, and members containing sample configuration commands are found in the `SZWESAMP` PDS sample library.  
 
 The load modules for the cross memory server and an auxiliary server it uses are found in the `SZWEAUTH` PDSE.  
 
-  - **Convenience Build** The location of `SZWESAMP` and `SZWEAUTH` for a convenience build depends on the value of the `zowe.setup.dataset.prefix` parameters in the `zowe.yaml` file used to configure the `zwe install` command, see [Install the MVS data sets](./install-zowe-zos-convenience-build.md#step-5-install-the-mvs-data-sets).
+  - **Convenience Build**  
+  The location of `SZWESAMP` and `SZWEAUTH` for a convenience build depends on the value of the `zowe.setup.dataset.prefix` parameters in the `zowe.yaml` file used to configure the `zwe install` command, see [Install the MVS data sets](./install-zowe-zos-convenience-build.md#step-5-install-the-mvs-data-sets).
 
-  - **SMP/E** For an SMP/E installation, `SZWESAMP` and `SZWEAUTH` are the SMP/E target libraries whose location depends on the value of the `#thlq` placeholder in the sample member `AZWE001.F1(ZWE3ALOC)`.
+  - **SMP/E**  
+   For an SMP/E installation, `SZWESAMP` and `SZWEAUTH` are the SMP/E target libraries whose location depends on the value of the `#thlq` placeholder in the sample member `AZWE001.F1(ZWE3ALOC)`.
 
 The cross memory server is a long running server process that, by default, runs under the started task name `ZWESISTC` with the user ID `ZWESIUSR` and group of `ZWEADMIN`.   
 
@@ -68,7 +76,7 @@ Issue one of the following operator commands to dynamically add the load library
 
 #### Configuring using `zwe init apfauth` 
 
-If you are using the `zwe init` command to configure your z/OS system, the step `zwe init apfauth` can be used to generate the `SETPROG` commands and execute them directly.  This takes the input parameters `zowe.setup.mvs.authLoadLib` for the `SZWEAUTH` PDS location, and `zowe.setup.mvs.authPluginLib` for the location of the PDS that is used to contain plugins for the cross memory server.  For more information on `zwe init apfauth` see, [APF Authorize Load Libraries](apf-authorize-load-library.md).
+If you are using the `zwe init` command to configure your z/OS system, the step `zwe init apfauth` can be used to generate the `SETPROG` commands and execute them directly. The generation of `SETPROG` commands and their execution takes the input parameters `zowe.setup.mvs.authLoadLib` for the `SZWEAUTH` PDS location, and `zowe.setup.mvs.authPluginLib` for the location of the PDS that is used to contain plugins for the cross memory server. For more information on `zwe init apfauth` see, [Performing APF Authorization of load libraries](apf-authorize-load-library).
 
 #### Making APF auth be part of the IPL
 
@@ -188,6 +196,22 @@ To install the auxiliary service to allow it to run, you take similar steps to i
 - The PDSE load library `SZWEAUTH`is APF-authorized, or load module `ZWESAUX` is copied to an existing APF Auth LoadLib.
 - The load module `ZWESAUX` must run in key 4 and be non-swappable by adding a PPT entry to the SCHEDxx member of the system PARMLIB `PPT PGMNAME(ZWESAUX) KEY(4) NOSWAP`.
 
-**Important!**
+#### Zowe Auxiliary Address space
 
+The cross memory server runs as a started task `ZWESISTC` that uses the load module `ZWESIS01`.
+
+In some use cases, the Zowe cross memory server has to spawn child address spaces, which are known as auxiliary (AUX) address spaces.  The auxiliary address spaces run as the started task `ZWESASTC` using the load module `ZWESAUX` and are started, controlled, and stopped by the cross memory server.  
+
+An example of when an auxiliary address space is used is for a system service that requires supervisor state but cannot run in cross-memory mode. The service can be run in an AUX address space which is invoked by the Cross Memory Server acting as a proxy for unauthorized users of the service. 
+
+Do not install the Zowe auxiliary address space unless a Zowe extension product's installation guide explicitly asks for it to be done.  This will occur if the extension product requires services of Zowe that cannot be performed by the cross memory server and an auxiliary address space needs to be started.  
+
+A default installation of Zowe does not require auxiliary address spaces to be configured.
+
+:::important
 The cross memory `ZWESISTC` task starts and stops the `ZWESASTC` task as needed. **Do not start the `ZWESASTC` task manually.**
+:::
+
+## Next step
+
+After you complete the configuration of the Zowe cross memory server, you may [configure Zowe for High Availability](./zowe-ha-overview), or proceed to [starting Zowe](./start-zowe-zos).
